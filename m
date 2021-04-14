@@ -1,112 +1,127 @@
-X-GM-THRID: 6465882401621934080
-X-Received: by 10.107.141.11 with SMTP id p11mr2532073iod.124.1505455561337;
-        Thu, 14 Sep 2017 23:06:01 -0700 (PDT)
+X-GM-THRID: 6950478192224239616
+X-Received: by 2002:a05:6830:2083:: with SMTP id y3mr25026525otq.73.1618397892697;
+        Wed, 14 Apr 2021 03:58:12 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.82.209 with SMTP id d200ls504088itb.12.canary-gmail; Thu,
- 14 Sep 2017 23:06:00 -0700 (PDT)
-X-Received: by 10.129.172.99 with SMTP id z35mr13125785ywj.171.1505455560518;
-        Thu, 14 Sep 2017 23:06:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505455560; cv=none;
+Received: by 2002:a9d:638a:: with SMTP id w10ls467405otk.6.gmail; Wed, 14 Apr
+ 2021 03:58:12 -0700 (PDT)
+X-Received: by 2002:a05:6830:2117:: with SMTP id i23mr10836652otc.331.1618397892051;
+        Wed, 14 Apr 2021 03:58:12 -0700 (PDT)
+Received: by 2002:a05:6808:99b:b029:15a:18a2:2609 with SMTP id a27-20020a056808099bb029015a18a22609msoic;
+        Wed, 14 Apr 2021 00:22:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw37kG7ojxl8NeNw3HbFnzRwMzrh8M4q+4rt4rnRCmjB5SP/jF8KKfl5+9HXKQVC1k8VpT4
+X-Received: by 2002:a92:ce0e:: with SMTP id b14mr6550468ilo.283.1618384922514;
+        Wed, 14 Apr 2021 00:22:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618384922; cv=none;
         d=google.com; s=arc-20160816;
-        b=Riv079XdgPI9XVE/KhTGsrHpg+6QIZlk0Zt6tYwKbBk+exwCKwaaq3emDjmYFAw8R9
-         FFvVQYNnJYJZg9wuzHnw9jzCjs2GT78PK8+DaDa9sHk3gS+0cbeGPt4uPvl7YKf4WwG+
-         6uF16WWYopgz4s2aVh3zFu7rNyHrHyk5dyAlbtjTQwx/kqCtTzsbguv5WXQvJKonmSUU
-         X3CvgtlvbzlLSpPirjhseKC0I87KNIW5P+m6OdA7ARr12Ddx+2Tk9srSJSQ5LIvKf2mV
-         ffJwp35tDD2+PwHI2mECp5qVkLhWoUYcs3xRm/gQXZvLgR2XCzNSrrWA6unUfyB5j9z+
-         y8cw==
+        b=xmjA7sMyJHAP2mghOrIx34AI6q7NUnQMILYHCDBq/5kVKaZiwjG6F6X3IPLcWZX3qf
+         QDKP6NSsi4TPEAfp4S04rGwcT0LxR/0V6XfZ+Nepl0PYloZifXpwZkg8Js0nn8zmOZbD
+         j6vasWLNg24tQkSqlKa3yKrYsmVTq35WkcViw76aQkfCFdjqjaAdIggOeuEut4LkhwcU
+         v+v8FuSDrAKAdgYoT9U51Q91sYLhPGzdvjMbD61bxo8KTm4QZBZ7UoxeDjAd4IMzI4os
+         aw0t6QRDC0QlNuEmFWmT2GUQpYrp9PjoPna+xf4xcChiweUMN/gEJ3l466VvhxXkDE+o
+         dnJw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=Y6MDgGkgbDbqxhTL7MvUjlkf4BXePZYhUKcxFPJhpus=;
-        b=1EmLUjYcGUltavs/wmZkeAgYrOP9yjDQ2DDAB2abX4o/hy5KkVDgvsxx4CtF9U7xGh
-         B46nyYMZvE2d7pZLBnauLPVMQ3LNOIvzJR64he9V1RnBJ10C28xj/pLygkrw8r8x7IN4
-         lGRL5KWIJ+OEPX6z30Cyon6qCI5Zr2JLShw5xFeNvukitQCBWGyrf3YtpEQCqeH/vxDS
-         /i5A/0+ssGCSqxKFhKWCeght8Ou8k3ZaeDTMqkp5riijJcwkJJhExtFsxMwUc14vmY3+
-         61VbKmjYXDUW3fCR14D177TCB3UmVM0Y95fRuvb8hoKcLISVg6WVMba3XDzBD+InKOaM
-         UIUw==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=fOZOvYrVPIcZPO2R1dW7gEMhF5gXoGLf+TJd7DF8ljo=;
+        b=mUNc6A2tFkkytXcHD1gjZI7STJH9TI0Gv7GWjU40hudbM2Adq0Kb7pfdD9qpsKy5t2
+         hSQYVz8CqGPDOeMZOZpG7zGST4hloOt+DZRqH0VE+Nw1Ejz+3mXEP8dzn/bsxPdvls3L
+         px2mQ/uWD18g6HdSh0wCM6fNVueMl75I5VhVbNcZEBJ8CkUwvhdc2iSelNf5WVMfjgxR
+         PBh5nUnhobshoAB/ajkmRvF0T2tXlzAAFOaEcp3wwSns37NDPB50K1xxSBdlMflccx1o
+         0mbYg+aIA7ONJukmnXtO6RbedeHuaTQrEK3cyh8fvSZiyUyVJOdh+shQNMWwtgFl1zvB
+         uDSQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=M012e6UK;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <aastha.gupta4104@gmail.com>
-Received: from mail-pf0-x241.google.com (mail-pf0-x241.google.com. [2607:f8b0:400e:c00::241])
-        by gmr-mx.google.com with ESMTPS id c19si15769pfk.9.2017.09.14.23.06.00
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HRQJdPkh;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::633 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from mail-pl1-x633.google.com (mail-pl1-x633.google.com. [2607:f8b0:4864:20::633])
+        by gmr-mx.google.com with ESMTPS id y8si1108172iom.1.2021.04.14.00.22.02
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 14 Sep 2017 23:06:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) client-ip=2607:f8b0:400e:c00::241;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 14 Apr 2021 00:22:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::633 as permitted sender) client-ip=2607:f8b0:4864:20::633;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=M012e6UK;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::241 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x241.google.com with SMTP id i23so789806pfi.2
-        for <outreachy-kernel@googlegroups.com>; Thu, 14 Sep 2017 23:06:00 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=HRQJdPkh;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::633 as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl1-x633.google.com with SMTP id m18so7385023plc.13
+        for <outreachy-kernel@googlegroups.com>; Wed, 14 Apr 2021 00:22:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=Y6MDgGkgbDbqxhTL7MvUjlkf4BXePZYhUKcxFPJhpus=;
-        b=M012e6UK8PfyHxqWohyVwi2Fh6gZozp87f0yZX7Jt/J9QrqFcxNbVKI/QqXt86oJze
-         ajFidJ6DjQm1rnqC/0JSmcHGbRp3aj93DgXVShcNN2DVTIj8bt3eMJDlfV0dFLqyn9Ok
-         QqfCZ50mswcHDIsrIexoPEY5ff5htdp0oe0vdtlccs3ASdyhjdSWm1i4uuCCitkja6ij
-         lPSM66lUDDuiGSTE+BFFRa4x1Jk/mjx5pnM8DxXckRoF9m6EeC2uq0GfJgJ6uMowMUXn
-         DxzA5UNuX1njIU2EXeT/+n4LKzbP6f/uX53sDrgu0F5x5Fjy7vQWl6+hD2wg+ffNngd1
-         g2cA==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=fOZOvYrVPIcZPO2R1dW7gEMhF5gXoGLf+TJd7DF8ljo=;
+        b=HRQJdPkhGjqRsB6YI0Jwx0K/h2FghIaw9XUDYBGZiew7aqo8R0m2+CwOrjpTpGgFMC
+         S/srO2NNCgixWWUO7YixYFcQlf8oiduiBGx4n8LkDFwuL3+T/gTK3l8tijP8zio6TU7Y
+         5uw1v3/yBHIqq1kKWXQMPkJA7SNKMboqbJ3tmcI7HCqi0InZB2ogDCb+4zJbrkZJU87h
+         fUpoUQS8oWRB3DGalomq71SCS1uuBPudoMBaF71LbnDOne8pTYA6w9D0D+jekRTwZWUp
+         f5m4MGhcXrGMqrLdjZ61cCpOGB/T7eTn8NLa0YGNPpucf6sUPhh0AnPQS9R65OU7xlcJ
+         sOmw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=Y6MDgGkgbDbqxhTL7MvUjlkf4BXePZYhUKcxFPJhpus=;
-        b=ZMRADwQejxL8i+bv5hKPf2HbiJ4wKOnZj6rBE0GP6V31kvmW7c9sDfoowdvdIEEBbM
-         M6YK0V5kHlAQzWIx8+v73e5n6dtma8GxDCqIbtd+SMxQSf4e8NpmEoNaXwdxxfyL+xqF
-         GCdWYtqFb0oE5xQ3Y1Ys/supfeYJZTIP6Q/Hkdp5DqNj7dH/clraICMDWU2n1M/OZb8t
-         aP4AEXWiOTK87XJ1H9k6pxol4kberGWQzBN26L27N8BQFZLE7lSFcr7apJfCes1vWT23
-         LfEpp6ieE5fjzMA1tzqesxhdfn3YtsERzSFTp7BGmloZ05hINaG4MiyTYLPdxYRI/wHo
-         AhXg==
-X-Gm-Message-State: AHPjjUgfTKIewYWl0qv0/QzbGm5wSyIPKWMpQQc/sxbGGOrClMbrWIAD
-	IdeoE1mjV+TrMQ==
-X-Google-Smtp-Source: ADKCNb59WmU7ks6fmztD9DOWhNZjxpFBw2yzKrf5rWSlfCkBsjKMWVR6ieqoITvtuvI/3VWjH5vusw==
-X-Received: by 10.84.224.199 with SMTP id k7mr26960159pln.403.1505455560225;
-        Thu, 14 Sep 2017 23:06:00 -0700 (PDT)
-Return-Path: <aastha.gupta4104@gmail.com>
-Received: from aastha-HP-Pavilion-15-Notebook-PC ([171.78.243.118])
-        by smtp.gmail.com with ESMTPSA id m15sm480752pfh.35.2017.09.14.23.05.58
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 14 Sep 2017 23:05:59 -0700 (PDT)
-From: Aastha Gupta <aastha.gupta4104@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	Oleg Drokin <oleg.drokin@intel.com>,
-	Andreas Dilger <andreas.dilger@intel.com>,
-	James Simmons <jsimmons@infradead.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
-Subject: [PATCH] staging: lustre: fid: fix line over 80 characters
-Date: Fri, 15 Sep 2017 11:35:51 +0530
-Message-Id: <1505455551-14649-1-git-send-email-aastha.gupta4104@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=fOZOvYrVPIcZPO2R1dW7gEMhF5gXoGLf+TJd7DF8ljo=;
+        b=cu9+gz7friRO9ChI5eEZcHlX96ZRNmLtUrPdTxfUbaG9eHAQXKkZXWhwkHFZ+w5H+E
+         I8BnzYMtveUsDfPTtcD3mkK57nocMpekKvq36iKHpizT5BZJpSKoHgezLO33Q47QfmEG
+         LHATsqViVXiT1sYc/As/4lT8h/bH3NkRbCB7k4t3ipLLhz+rVT+1t3C0kyQCiyIeFhbl
+         hPASEENu5e9OVlLsq9pYtuwu7CNglQAuCxjiL/uCDOm5tbcwnNeAU3/jNHp5kiUcDkGl
+         jRr0sWRqxyirc1BfIIxh4NgDyWe6nXLu/XnQHoO9Cv8dwCU/KzTMJ+oNFoxI+Yt1ShLg
+         4inw==
+X-Gm-Message-State: AOAM530rsKYq15jNyVWqMMDsUWR8C5sCM1s4XgeTOC4OWczFRwltD0Zl
+	iZRDeshiZ8YqNZtcsK9NTXk=
+X-Received: by 2002:a17:902:6bcc:b029:ea:f58f:274c with SMTP id m12-20020a1709026bccb02900eaf58f274cmr15518935plt.68.1618384921966;
+        Wed, 14 Apr 2021 00:22:01 -0700 (PDT)
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from kali ([103.141.87.253])
+        by smtp.gmail.com with ESMTPSA id u1sm16135423pgg.11.2021.04.14.00.21.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 14 Apr 2021 00:22:01 -0700 (PDT)
+Date: Wed, 14 Apr 2021 12:51:55 +0530
+From: Mitali Borkar <mitaliborkar810@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in
+Subject: [PATCH v6 1/2] staging: rtl8192e: remove parentheses around boolean
+ expression
+Message-ID: <60483f646c16ffd3c19ca8f508a1f1c3a0a13db6.1618383684.git.mitaliborkar810@gmail.com>
+References: <cover.1618383684.git.mitaliborkar810@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1618383684.git.mitaliborkar810@gmail.com>
 
-This patch fixes checkpatch.pl warning:
+Removed unnecessary parentheses around '!xyz' boolean expression as '!'
+has higher precedance than '||'
 
-WARNING: line over 80 characters
-
-Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
+Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
 ---
- drivers/staging/lustre/lustre/fid/fid_request.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/staging/lustre/lustre/fid/fid_request.c b/drivers/staging/lustre/lustre/fid/fid_request.c
-index ba73623..6a98225 100644
---- a/drivers/staging/lustre/lustre/fid/fid_request.c
-+++ b/drivers/staging/lustre/lustre/fid/fid_request.c
-@@ -279,7 +279,8 @@ int seq_client_alloc_fid(const struct lu_env *env,
- 	*fid = seq->lcs_fid;
- 	mutex_unlock(&seq->lcs_mutex);
  
--	CDEBUG(D_INFO, "%s: Allocated FID " DFID "\n", seq->lcs_name,  PFID(fid));
-+	CDEBUG(D_INFO,
-+	       "%s: Allocated FID " DFID "\n", seq->lcs_name,  PFID(fid));
- 	return rc;
- }
- EXPORT_SYMBOL(seq_client_alloc_fid);
+Changes from v5:- No changes.
+Changes from v4:- No changes.
+Changes from v3:- No changes.
+Changes from v2:- Modified subject description. Changes has been made in
+v3.
+Changes from v1:- Removed unnecessary parentheses around boolean
+expression. Changes has been made in v2.
+
+ drivers/staging/rtl8192e/rtl819x_HTProc.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/rtl8192e/rtl819x_HTProc.c b/drivers/staging/rtl8192e/rtl819x_HTProc.c
+index b1fa8e9a4f28..431202927036 100644
+--- a/drivers/staging/rtl8192e/rtl819x_HTProc.c
++++ b/drivers/staging/rtl8192e/rtl819x_HTProc.c
+@@ -276,7 +276,7 @@ void HTConstructCapabilityElement(struct rtllib_device *ieee, u8 *posHTCap,
+ 	struct rt_hi_throughput *pHT = ieee->pHTInfo;
+ 	struct ht_capab_ele *pCapELE = NULL;
+ 
+-	if ((!posHTCap) || (!pHT)) {
++	if (!posHTCap || !pHT) {
+ 		netdev_warn(ieee->dev,
+ 			    "%s(): posHTCap and pHTInfo are null\n", __func__);
+ 		return;
 -- 
-2.7.4
+2.30.2
 
 
