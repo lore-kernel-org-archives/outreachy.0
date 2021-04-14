@@ -1,173 +1,127 @@
 X-GM-THRID: 6951081935014723584
-X-Received: by 2002:aa7:814c:0:b029:250:13db:3c6e with SMTP id d12-20020aa7814c0000b029025013db3c6emr10705351pfn.65.1618426548466;
-        Wed, 14 Apr 2021 11:55:48 -0700 (PDT)
+X-Received: by 2002:ab0:60d5:: with SMTP id g21mr28830239uam.53.1618425213267;
+        Wed, 14 Apr 2021 11:33:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a62:4e50:: with SMTP id c77ls1219053pfb.10.gmail; Wed, 14
- Apr 2021 11:55:47 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwcz9YI16GC3uiALmxVTycDl8XIiT/DAR2DDyftt+KRgcUDD0VIH8uOIGa0ou1fI4P1TdLR
-X-Received: by 2002:a63:fc56:: with SMTP id r22mr28792323pgk.324.1618426547367;
-        Wed, 14 Apr 2021 11:55:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618426547; cv=none;
+Received: by 2002:a9f:36cc:: with SMTP id p70ls289837uap.3.gmail; Wed, 14 Apr
+ 2021 11:33:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzBR1aq3ps6oRoAeCrwolM0VQbe5fu/7H/XD8+kCi1aLGdGI4HVhuxWFxpCCc8pWHIH+aQg
+X-Received: by 2002:ab0:6d8c:: with SMTP id m12mr10713672uah.32.1618425212215;
+        Wed, 14 Apr 2021 11:33:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618425212; cv=none;
         d=google.com; s=arc-20160816;
-        b=Vr1QAkVxeT+ryRYcUyC7OiUb0KFCNfZwOyvSRVteXiqvwhE0EgvKzD4/VYumcSPT0a
-         2cVuq++1i1p8Ds13pt19HQ6MbZUnwZqvcitkeaDvv+/iaS6Yjfx9wNNx2jh/xJMGF59a
-         A0TUWpiMId+18O56EN7Ibpgs8Hxn20W9/7wyVUFU5znc+ZAdC0TtcbGuCpH3RcBLTuRC
-         bcrT4oPuftrDq07CzmijKAMJM2N6AdBJMP2f8HqxU0CiX+TNSBk/KqhvS5W11+DexMVj
-         Ror68/e8Wuj+fbjB1V+AGqb1u73Yiztlu7BDztg5199SR6PD3iLf29DI3ZOJOKPaCbLh
-         tCxA==
+        b=EenhXkLfO9hZwmzBv8gqWqYvnB+t89tht9XSqJC0CX6LkCI+7dsdrZXlEAEGpcfVWk
+         mx8G2YjMopTNVpSXeOTIFZu52YxGxiXrZLu/smezbztChO3kcshH1nvrGRvctPqxmJAr
+         a+j3Y6FaxBZvZGXKJMTd77o35rwBJqQs37o+O3Gw/hp5tg+fNlN7v4iS7LT8UypGN1rB
+         UGHRY8K++R+2koZd9mmVDTGGY6fckUyXefS3t+4HWCiOqstvAPTAB2lIK0Ebz+gPLdIu
+         fLiscXTZseainnuUFXCWItaJt8udj9kf/XmQid1wFu+6pDjO22yacLInx3Z3D69iWkOv
+         tdow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:references
-         :in-reply-to:date:cc:to:from:subject:message-id:dkim-signature;
-        bh=OeVselHKPVLOZzCiq1K08wuQKbTOdMwo4rrb+WFfGok=;
-        b=Whcn9kRBpTMoZ8QZO0TkARJl2JzXZKAcrxSvDLtL6Bpm8GmGJ6saytC5mCbh1EqGtj
-         lvgaukZryc367QYzrqnvYL4AXFZy2CVldGTp7mJEXJxm/NCVJbY0G/MaJHCmhLTZQ4PZ
-         ysWrgrgDGG3xt8j4A0WpiKHZVCQwQbU3z1xM8VKxrsjD9gQbAKiforEe3qKCeUa+SPD+
-         Huok74A42wOg4eBO9GLXu8emWcFZZwKbFuKWMPgML0lgCV6cDD1LRt1PMjDHfWFNhi0I
-         rVW+JX1Iqsl1U9l4l41AePdfE2uhg6Tv79WMHO/1PQT8YXw2Ou6iqJ5ZKAYSxGgG/0LO
-         e7DA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:ironport-sdr:ironport-sdr;
+        bh=TZwqFkufBDHQaSzfiPBYitUDYEfMJrl1TPhD+O4ju88=;
+        b=CC1ixB44TXareyYEgMO9/aCefGjaM2OM5RooQlYnxcngqySkxtaKcdCIJi+GMYQDeE
+         XRZEU6XbpOt0px6mWlJbXTN1MGs0Nu1q0WJPzUazUA3BgscBmaP8/qbhFP4jIjwg+khe
+         pxhqsCVvIMDfICiU0gKSIGbW/DUIRdbRl/SxGxxnFtxLI0sy+7LWE51drv6kRd5gvwPv
+         RQCqc4MPN6MC0k9wwryP9Xjvol2OqXXebqw10K5+2ht6hh0+/gU7F3TtOztjgsbXbXrr
+         Wdx9ypabGzyhsGponQeWa7g2AOgn6wnZABKJjupcdWuPN2rjKOrvIbedgxHlOXz7aFvL
+         Mf9Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lFCnI3hp;
-       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::f34 as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <alinesantanacordeiro@gmail.com>
-Received: from mail-qv1-xf34.google.com (mail-qv1-xf34.google.com. [2607:f8b0:4864:20::f34])
-        by gmr-mx.google.com with ESMTPS id u7si33328pji.1.2021.04.14.11.55.47
+       spf=pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 192.55.52.151 as permitted sender) smtp.mailfrom=sakari.ailus@linux.intel.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <sakari.ailus@linux.intel.com>
+Received: from mga17.intel.com (mga17.intel.com. [192.55.52.151])
+        by gmr-mx.google.com with ESMTPS id o198si30127vkc.1.2021.04.14.11.33.31
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 14 Apr 2021 11:55:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::f34 as permitted sender) client-ip=2607:f8b0:4864:20::f34;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 14 Apr 2021 11:33:31 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 192.55.52.151 as permitted sender) client-ip=192.55.52.151;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lFCnI3hp;
-       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::f34 as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qv1-xf34.google.com with SMTP id j3so10439881qvs.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Apr 2021 11:55:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=message-id:subject:from:to:cc:date:in-reply-to:references
-         :user-agent:mime-version:content-transfer-encoding;
-        bh=OeVselHKPVLOZzCiq1K08wuQKbTOdMwo4rrb+WFfGok=;
-        b=lFCnI3hp3u4Er12GAIRoPmvUADqyOluplFCmLhhcA1pMyCvN8uXDqqBRLRFOlidy7C
-         CJZruXSU4BLU9OqaNUUpSFZurnqPU5hb/H695wM4wPWxe6MkllA7tlVmkz7gromzUMb/
-         C728BhxLQdAD5I8vsVv+axhY1MfsjVfTftkTsXav+T7xzEUJQN6snq7WfjJRRMQbfXJD
-         2FVfhEnrjQ04jyjJIWRYKKG3gACrKqjrxM3USPSAg3wU/8fYMnVJIeynLmhHqs8q+zO4
-         Iev9h6wXtUPn+B2m5lnubTvZfyC5EoyqniLu2lldL0eMiy0PLD2W98+MxtI9nAc8LH9Z
-         1x6w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
-         :references:user-agent:mime-version:content-transfer-encoding;
-        bh=OeVselHKPVLOZzCiq1K08wuQKbTOdMwo4rrb+WFfGok=;
-        b=MTpYK8TiJDhNSbyCMjr14cz6ajoOzMo63t+X4XX39UNMX83thBcKTSbsgj32KWGHw9
-         u2KoJoZeOAwOd6/JWglPJGYL/Zawj8bZwvYvpmtxfepUtaxMH01qcfcBfb7LIOjvtt2f
-         n571p9h0nAoVhSgKAtcXAtHWJQLjOzCuUU0ohZ7W5pntECFjfrAkTpU8owr8euZC6Rb6
-         jFtQCMTyeNNdgAtPkkdqtjih+0E2jd50nBJXAd/RKjqD0t0KqfvOMGmHtAg9bNh9f/B3
-         xIui8SjWd993K+JNtfiBWRTACRJv3bB6DFLWZpuBGVe6VUR4c7Oi09H4Xgbrj4OwZBmW
-         jriw==
-X-Gm-Message-State: AOAM5309ZGBV+pu3pmlS+8vVIw6SqBApN7Z2P65UQtMsZqv12TFldeyN
-	u9twmhGSI4H/F5yyTJHTeJw=
-X-Received: by 2002:a05:6214:f27:: with SMTP id iw7mr40641329qvb.50.1618426546599;
-        Wed, 14 Apr 2021 11:55:46 -0700 (PDT)
-Return-Path: <alinesantanacordeiro@gmail.com>
-Received: from ?IPv6:2001:1284:f016:a037:66e0:478a:8197:7396? ([2001:1284:f016:a037:66e0:478a:8197:7396])
-        by smtp.gmail.com with ESMTPSA id x82sm259362qkb.0.2021.04.14.11.55.44
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 14 Apr 2021 11:55:46 -0700 (PDT)
-Message-ID: <fae832b2555f1d971b45fcdfe34952aa03a42e4d.camel@gmail.com>
-Subject: Re: [PATCH] staging: media: atomisp: pci: Format multi-line
- comments according to coding-style in file atomisp_cmd.c
-From: ascordeiro <alinesantanacordeiro@gmail.com>
-To: Sakari Ailus <sakari.ailus@linux.intel.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Greg Kroah-Hartman
-	 <gregkh@linuxfoundation.org>, linux-media@vger.kernel.org, 
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, 
-	outreachy-kernel@googlegroups.com
-Date: Wed, 14 Apr 2021 15:55:42 -0300
-In-Reply-To: <20210414183325.GD3@paasikivi.fi.intel.com>
+       spf=pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 192.55.52.151 as permitted sender) smtp.mailfrom=sakari.ailus@linux.intel.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+IronPort-SDR: KlY/xT3XMcZVPAGdlxLNVUWPqiRn3Zc0W37E6XNyPXpy+T6ul3RCTqR2E3Wb7sKt1eetDoo+dx
+ FXcuyRZppvrg==
+X-IronPort-AV: E=McAfee;i="6200,9189,9954"; a="174811616"
+X-IronPort-AV: E=Sophos;i="5.82,223,1613462400"; 
+   d="scan'208";a="174811616"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Apr 2021 11:33:30 -0700
+IronPort-SDR: QWUsGFJgdDqPIdf8WgwLE3snSAtlxd3nPW6cEcKKnSYoIgIfBTbFPG31qYfmXL+6RRgisHlsrP
+ VPUpMILwql3Q==
+X-IronPort-AV: E=Sophos;i="5.82,223,1613462400"; 
+   d="scan'208";a="532871296"
+Received: from paasikivi.fi.intel.com ([10.237.72.42])
+  by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Apr 2021 11:33:28 -0700
+Received: from paasikivi.fi.intel.com (localhost [127.0.0.1])
+	by paasikivi.fi.intel.com (Postfix) with SMTP id E85DD200E8;
+	Wed, 14 Apr 2021 21:33:25 +0300 (EEST)
+Date: Wed, 14 Apr 2021 21:33:25 +0300
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] staging: media: atomisp: pci: Format multi-line comments
+ according to coding-style in file atomisp_cmd.c
+Message-ID: <20210414183325.GD3@paasikivi.fi.intel.com>
 References: <20210414182755.GA2799@focaruja>
-	 <20210414183325.GD3@paasikivi.fi.intel.com>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.40.0 (by Flathub.org) 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20210414182755.GA2799@focaruja>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 
-Em qua, 2021-04-14 às 21:33 +0300, Sakari Ailus escreveu:
-> Hi Aline,
+Hi Aline,
+
+Thanks for the patch.
+
+On Wed, Apr 14, 2021 at 03:27:55PM -0300, Aline Santana Cordeiro wrote:
+> Format multi-line comments according to the coding-style.
+> Issue detected by checkpatch.pl.
 > 
-> Thanks for the patch.
+> Signed-off-by: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
+> ---
+>  drivers/staging/media/atomisp/pci/atomisp_cmd.c | 109 ++++++++++++++----------
+>  1 file changed, 65 insertions(+), 44 deletions(-)
 > 
-> On Wed, Apr 14, 2021 at 03:27:55PM -0300, Aline Santana Cordeiro
-> wrote:
-> > Format multi-line comments according to the coding-style.
-> > Issue detected by checkpatch.pl.
-> > 
-> > Signed-off-by: Aline Santana Cordeiro <
-> > alinesantanacordeiro@gmail.com>
-> > ---
-> >  drivers/staging/media/atomisp/pci/atomisp_cmd.c | 109
-> > ++++++++++++++----------
-> >  1 file changed, 65 insertions(+), 44 deletions(-)
-> > 
-> > diff --git a/drivers/staging/media/atomisp/pci/atomisp_cmd.c
-> > b/drivers/staging/media/atomisp/pci/atomisp_cmd.c
-> > index 592ea99..6113785 100644
-> > --- a/drivers/staging/media/atomisp/pci/atomisp_cmd.c
-> > +++ b/drivers/staging/media/atomisp/pci/atomisp_cmd.c
-> > @@ -67,7 +67,8 @@
-> >   * At 15fps this means 133ms. We set the timeout a bit longer.
-> >   * Each flash driver is supposed to set its own timeout, but
-> >   * just in case someone else changed the timeout, we set it
-> > - * here to make sure we don't damage the flash hardware. */
-> > + * here to make sure we don't damage the flash hardware.
-> > + */
-> >  #define FLASH_TIMEOUT 800 /* ms */
-> >  
-> >  union host {
-> > @@ -562,7 +563,8 @@ irqreturn_t atomisp_isr(int irq, void *dev)
-> >                          * and driver needs to keep old
-> > sequence_temp value.
-> >                          * NOTE: There is assumption here that ISP
-> > will not
-> >                          * start processing next frame from sensor
-> > before old
-> > -                        * one is completely done. */
-> > +                        * one is completely done.
-> > +                        */
-> >                         if (atomic_read(&asd->sequence) ==
-> > atomic_read(
-> >                                 &asd->sequence_temp))
-> >                                 atomic_set(&asd->sequence_temp,
-> > @@ -1247,7 +1249,8 @@ void atomisp_buf_done(struct
-> > atomisp_sub_device *asd, int error,
-> >  
-> >         if (IS_ISP2401) {
-> >                 /* If there are no buffers queued then
-> 
-> This should begin with:
-> 
->                 /*
->                  *
-> 
-> And the same for the rest. Apart from this the patch seems fine.
-> 
-Hi Sakari,
+> diff --git a/drivers/staging/media/atomisp/pci/atomisp_cmd.c b/drivers/staging/media/atomisp/pci/atomisp_cmd.c
+> index 592ea99..6113785 100644
+> --- a/drivers/staging/media/atomisp/pci/atomisp_cmd.c
+> +++ b/drivers/staging/media/atomisp/pci/atomisp_cmd.c
+> @@ -67,7 +67,8 @@
+>   * At 15fps this means 133ms. We set the timeout a bit longer.
+>   * Each flash driver is supposed to set its own timeout, but
+>   * just in case someone else changed the timeout, we set it
+> - * here to make sure we don't damage the flash hardware. */
+> + * here to make sure we don't damage the flash hardware.
+> + */
+>  #define FLASH_TIMEOUT 800 /* ms */
+>  
+>  union host {
+> @@ -562,7 +563,8 @@ irqreturn_t atomisp_isr(int irq, void *dev)
+>  			 * and driver needs to keep old sequence_temp value.
+>  			 * NOTE: There is assumption here that ISP will not
+>  			 * start processing next frame from sensor before old
+> -			 * one is completely done. */
+> +			 * one is completely done.
+> +			 */
+>  			if (atomic_read(&asd->sequence) == atomic_read(
+>  				&asd->sequence_temp))
+>  				atomic_set(&asd->sequence_temp,
+> @@ -1247,7 +1249,8 @@ void atomisp_buf_done(struct atomisp_sub_device *asd, int error,
+>  
+>  	if (IS_ISP2401) {
+>  		/* If there are no buffers queued then
 
-I'm going to send a v2 correcting all the multi-line comments that are
-not beginning like this.
+This should begin with:
 
-Besides, there are single line comments with different styles, a few
-like this:
+		/*
+		 *
 
-case 1:				/* comment */
+And the same for the rest. Apart from this the patch seems fine.
 
-and the other like this:
-				/*
-case2:				 * comment
- 				 */
+-- 
+Kind regards,
 
-Should I standardize these ones to the first case?
-
-Thank you for yout attention,
-Aline
-
+Sakari Ailus
 
