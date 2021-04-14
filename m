@@ -1,158 +1,161 @@
 X-GM-THRID: 6950980105413853184
-X-Received: by 2002:a19:b94:: with SMTP id 142mr19998871lfl.309.1618417581700;
-        Wed, 14 Apr 2021 09:26:21 -0700 (PDT)
+X-Received: by 2002:aa7:c455:: with SMTP id n21mr37420286edr.48.1618414617899;
+        Wed, 14 Apr 2021 08:36:57 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6512:3b95:: with SMTP id g21ls2549651lfv.1.gmail; Wed,
- 14 Apr 2021 09:26:19 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwaGaUU6wS4F1zeCtC5VA4MKB/ufcMb847AN5cSr7gWR4pKAaFl+fB4yZ0ia9Bfv8cNuq8t
-X-Received: by 2002:a19:ef19:: with SMTP id n25mr18720947lfh.157.1618417579801;
-        Wed, 14 Apr 2021 09:26:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618417579; cv=none;
+Received: by 2002:a17:907:397:: with SMTP id ss23ls1224575ejb.3.gmail; Wed, 14
+ Apr 2021 08:36:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzeJgeNQHTXWTBWEBGCTKvUS26M9Cec0RkJRw/Ud3v4KruXKU8Xd+Uo3GJALl6Wy6RYAYBP
+X-Received: by 2002:a17:906:32da:: with SMTP id k26mr38033342ejk.483.1618414616351;
+        Wed, 14 Apr 2021 08:36:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618414616; cv=none;
         d=google.com; s=arc-20160816;
-        b=VDkybt53mdx1JhmVVpBtN0X/4v31+sKiYqGXQW8+rwMg7wdv+nP2cIZBugyn2K1O4g
-         qPooZxNl0wOrdsioCtUpN9qwpJULY7hjtIwYaowf9UeKDwCYpymXtsUDwvDmZM4FmKT3
-         dpDL3AsLNgJ1u8ZgJ6KEh1wGIxEcUGgplsmVACD0KUjkbageO8qBGd8P3H3mTEJzgUG0
-         J20j4JRCO2ul43mB7TmCC4UlPuhRMGpwS30mkqmDNets/TXGf9lY3hltr6PlRFrqOoOF
-         cxdhKHVwDGkwi6Mc3u3j0tjSCfEB2r1FMl1SgxcgWzwt+ZmHG3Fum9JAezQIgAnXoSpx
-         0j+g==
+        b=ed07AmUBb01b+GS4NEkbcgYut9v39OBXv9fxHbE9vDzRKDToaZKOJvqAh9hCcXyk18
+         VBKokVO04qJCHsLO3c7jWFSjWk9viUqkRb1WH5chf07NetuISeCctNe2tutz5FLYRb1L
+         2hYPWJFOWkTJ1/9Lo6kqNpMGWyoV0VcKOLrB8xvI3Cavc6g3T4v5Vp84jgMZ9NJLmVTM
+         EBsMrex6IpMrn2jEclvbWV54/Am7oJjyti+GiXSlCwrraPxDjFgAZwX/qcE4d7YnRSnR
+         NTsNs1TfjDzc/ABwojAnFkOzRJtUVBpamxkxP5NIZshGMzBnS6oKLDCwbA0sPdTvUvjX
+         Z2jw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=7OJ5/q27rVQyMJMOKx5XsjrMcpogAT1Y8irqV1uKSxE=;
-        b=V/S/rzXopn5VTny0ZJdFBg+sYx+B9cig27/TXIFEjibpJdfhqjGA1hFdzSRX7KmuZ9
-         tP1eWqLVByNRtqA1F+LthkfEix6dOlqE3egoPSn21XmBQHXHXRxKIFrqZknnO3njouWC
-         wFmOemUjFvQdZDkFQb2S6aAOdx7Gj78p5Aidzo+7cxz5v7ScrWaJTz8GyVzw3LHJjE7n
-         r7LvaxafQo956yEEQkF+zkUo1mNy9Cxysvu2MBquq9FDvk8gJpirq5W87NFkCVQOZ62T
-         UwY+kIWQJ1MdMigVzzispyp8HfFd4BDyy1T6nLLM0Y/k/9L+A8ubnvu8B5qk/2mwhezK
-         hOHA==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=f1Y5+4VG6CJZgdx4UWOh8zx7QoiyJatpZDoj3QFWUTQ=;
+        b=PAvXM2yB0eHhCYFjno3GCsM7gfZxry1IH+RBPEiNRCGNhJ32RpbXs4zbCGd286IVIY
+         cv4juCG/gQb7vp6VKbfYwQXoMyQgNssdMrBKuFWeGQtyPqysUfPvMdPTcuZmmHyCvrm6
+         AoQG7BNivfWD7FvQFDrrVeQJ8Kz57bUuds7ovmZB6a2wLW9WStyjxd4ONngynHfU1Xrh
+         S9qRKKwOlOZLNOeFus3ukCDY+rCKSobmfhi7ebOXHTrSuZBBdSVlv/Kpyll5YyxsO/Ob
+         PoJ8GR46JZzZOqxwIh7W0i8UWRd4/IrKQJOlZ4mAAEKi01afoZ9xDJDwF3JUBHB6w8jM
+         1lOg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nZJiQUOj;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62c as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=piifReYe;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::636 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <fmdefrancesco@gmail.com>
-Received: from mail-ej1-x62c.google.com (mail-ej1-x62c.google.com. [2a00:1450:4864:20::62c])
-        by gmr-mx.google.com with ESMTPS id c17si955984ljn.7.2021.04.14.09.26.19
+Received: from mail-ej1-x636.google.com (mail-ej1-x636.google.com. [2a00:1450:4864:20::636])
+        by gmr-mx.google.com with ESMTPS id y16si1395908edq.2.2021.04.14.08.36.56
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 14 Apr 2021 09:26:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62c as permitted sender) client-ip=2a00:1450:4864:20::62c;
+        Wed, 14 Apr 2021 08:36:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::636 as permitted sender) client-ip=2a00:1450:4864:20::636;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=nZJiQUOj;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62c as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=piifReYe;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::636 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ej1-x62c.google.com with SMTP id g5so25636653ejx.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Apr 2021 09:26:19 -0700 (PDT)
+Received: by mail-ej1-x636.google.com with SMTP id x12so11305536ejc.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 14 Apr 2021 08:36:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=7OJ5/q27rVQyMJMOKx5XsjrMcpogAT1Y8irqV1uKSxE=;
-        b=nZJiQUOjb34oGOxyGs8MPrzzBpINEaVqRnwnQlby3J29ZlZ2LSD+RySg/Em1usx/sp
-         VBK0JbsrcRrXtuDOhdLMWmFY6LgzU0M6QaaU8WoaImzFI4CKqOFK1JrAP0WCyW/2hupo
-         Y1jCnX4zRNDAlYQ91iTrV2Z0rolLlrV5hTsarOY7velbj2TE31ngP89BS2CFogI0lFmX
-         wtCS3p6NgPyLU267rbHlsAVf7mS34XhhHUx8qk1qor69S/3fx1hg6lCg7eLUw65IDKHA
-         o1ag3yhq5Q51sdXKtj0m+Nks9Gkv7RoGHXT8QgPR2/P/L+CZDl0T+A1sp1vNR8wsHr9m
-         zx2w==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=f1Y5+4VG6CJZgdx4UWOh8zx7QoiyJatpZDoj3QFWUTQ=;
+        b=piifReYeJ7FkLTHElIuXKecxeioDin2ZIZeegb8sFHRXjwXt1JAz67On69HayK6LXp
+         WXnsqQdz0qMTdsYaz13CI4Ps5BUZMZoSo+ctENjK/Msqg3CfNLwgy1l0yGqQX0h3RXr/
+         bar7RE5EEh7Om2DAWmBxCbhpHXRQQvpp0WGF7W+UiN3onvUnaYrGza5MqgJL4vQ2xwrm
+         UF23oOWmUZWXUvuCSV8Vv+PwJJ6l2bHk8N/LurpMl9GqeGYxZJl+M89fltT0zEin7GUW
+         7yjZkoUHPaefPgIiBu8hKc54YgcQExl6vbEdxrwHPGepZyWC7NlIXAyvR07dtK8dQaoG
+         G0rg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=7OJ5/q27rVQyMJMOKx5XsjrMcpogAT1Y8irqV1uKSxE=;
-        b=djnVtLkcbutwUgu6EWsUFIE6a63htcthbzSp/KbEitzq2T6aKNOYm2+NElGpmZmywk
-         jQXTgygt2s7ZLckk/pHY2R5uW6wl/rzH7JbNu1dVCw9NqnjmiENzScRwIkdBk/jpeRsF
-         hS/4JAXP4W0+xZa9mfgInKBGxRsI5qS/nJK6+/Y0jSBu4bqXLZrNV+tqS4+ar2YhyKyn
-         XUbpbOTGjthbexl0B4ZfSLdMK0FdrxFbx3hvDQXqfQzebJjHGjOsL4lPN8uuJSRYrQjo
-         CdhWxK4PhnjYYmqwhstUAqTTm/LOYLNT+vpyivDlKYoS0qywb+k+Y1ghOO4zo5mDPSVH
-         6i0g==
-X-Gm-Message-State: AOAM533WnccmN/qdwVudmleYs9STxW+i6rY68lp1KbALUWUUuxBGw/hB
-	f0inx1POTYDJLvFDZ0+dF7mi/Ir9o04Wtm0X
-X-Received: by 2002:a17:906:a385:: with SMTP id k5mr6548344ejz.148.1618417579300;
-        Wed, 14 Apr 2021 09:26:19 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=f1Y5+4VG6CJZgdx4UWOh8zx7QoiyJatpZDoj3QFWUTQ=;
+        b=nnTx1Vl7ovb12AEyJi56RTB9WTBJqdV6ha+FEqWLYgrJS2k/vWgf+ycfhAG2/BJEjK
+         TlZ4DCLowwE1eUd/9sDYZvCfQEHtvL2OzejxeYCkky8atRSMDsKREhFzOO1cJ5rE6WaB
+         LU1nnHt0GzhWrYV5zTrGP09fC4NGHSM7wsxCVXfXA7+zVNNR6YHuTvDw5mDK/z9TSNk+
+         2n9LXADSiLDWMWKLee+A4w+eU7QAe0xuyi4dCQXQdmB2YwSXVg2dEtuElYp7iuRzmQKA
+         5COUslM2gEeAgfheB4ir6lyCDKFmftGGB53fMyZoUHnM3/vqTkDrYnmiGovGRVRkdHZu
+         6vbQ==
+X-Gm-Message-State: AOAM532K0MoXgdfRvbzDXfPmYRzMrL+HkfI1yVyz87vSwU0P7/iP7vKm
+	kmHr+Dl9ePEbbV32buUH3Nk=
+X-Received: by 2002:a17:907:629e:: with SMTP id nd30mr38150830ejc.407.1618414616155;
+        Wed, 14 Apr 2021 08:36:56 -0700 (PDT)
 Return-Path: <fmdefrancesco@gmail.com>
 Received: from linux.local (host-95-237-55-30.retail.telecomitalia.it. [95.237.55.30])
-        by smtp.gmail.com with ESMTPSA id s17sm20803ejx.10.2021.04.14.09.26.17
+        by smtp.gmail.com with ESMTPSA id t1sm12190317eds.53.2021.04.14.08.36.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 14 Apr 2021 09:26:18 -0700 (PDT)
+        Wed, 14 Apr 2021 08:36:55 -0700 (PDT)
 From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	Matthew Wilcox <willy@infradead.org>,
-	Julia Lawall <julia.lawall@inria.fr>,
-	Dan Carpenter <dan.carpenter@oracle.com>
-Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Subject: [Outreachy kernel] [PATCH v2] staging: rtl8723bs: Remove useless led_blink_hdl()
-Date: Wed, 14 Apr 2021 18:26:14 +0200
-Message-Id: <20210414162614.14867-1-fmdefrancesco@gmail.com>
-X-Mailer: git-send-email 2.31.1
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Cc: outreachy-kernel@googlegroups.com, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, Matthew Wilcox <willy@infradead.org>, Julia Lawall <julia.lawall@inria.fr>
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8723bs: Remove useless led_blink_hdl()
+Date: Wed, 14 Apr 2021 17:36:54 +0200
+Message-ID: <4318909.BRL0aILv4p@linux.local>
+In-Reply-To: <20210414132414.GE6048@kadam>
+References: <20210414115243.32716-1-fmdefrancesco@gmail.com> <20210414132414.GE6048@kadam>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
 
-Removed useless led_blink_hdl() prototype and definition. In wlancmds[]
-the slot #60 is now set to NULL using the macro GEN_MLME_EXT_HANDLER. This
-change has not unwanted side effects because the code in rtw_cmd.c checks
-if the function pointer is valid before using it.
+On Wednesday, April 14, 2021 3:24:14 PM CEST Dan Carpenter wrote:
+> On Wed, Apr 14, 2021 at 01:52:43PM +0200, Fabio M. De Francesco wrote:
+> > Removed the led_blink_hdl() function (declaration and definition).
+> > Declared dummy_function() in include/rtw_mlme_ext.h and defined it in
+> > core/rtw_cmd.c. Changed the second parameter of GEN_MLME_EXT_HANDLER
+> > macro to make use of dummy_function().
+> > 
+> > Reported-by: Julia Lawall <julia.lawall@inria.fr>
+> > Suggested-by: Dan Carpenter <dan.carpenter@oracle.com>
+> > Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+> > ---
+> > 
+> >  drivers/staging/rtl8723bs/core/rtw_cmd.c         | 4 +++-
+> >  drivers/staging/rtl8723bs/core/rtw_mlme_ext.c    | 9 ---------
+> >  drivers/staging/rtl8723bs/include/rtw_mlme_ext.h | 3 ++-
+> >  3 files changed, 5 insertions(+), 11 deletions(-)
+> > 
+> > diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c
+> > b/drivers/staging/rtl8723bs/core/rtw_cmd.c index
+> > 0297fbad7bce..7b6102a2bb2c 100644
+> > --- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
+> > +++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
+> > @@ -87,6 +87,8 @@ static struct _cmd_callback rtw_cmd_callback[] = {
+> > 
+> >  	{GEN_CMD_CODE(_RunInThreadCMD), NULL},/*64*/
+> >  
+> >  };
+> > 
+> > +u8 dummy_functioni(struct adapter *var0, u8 *var1) { return 0; }
+> > +
+> > 
+> >  static struct cmd_hdl wlancmds[] = {
+> >  
+> >  	GEN_DRV_CMD_HANDLER(0, NULL) /*0*/
+> >  	GEN_DRV_CMD_HANDLER(0, NULL)
+> > 
+> > @@ -150,7 +152,7 @@ static struct cmd_hdl wlancmds[] = {
+> > 
+> >  	GEN_MLME_EXT_HANDLER(0, h2c_msg_hdl) /*58*/
+> >  	GEN_MLME_EXT_HANDLER(sizeof(struct SetChannelPlan_param),
+> >  	set_chplan_hdl) /*59*/> 
+> > -	GEN_MLME_EXT_HANDLER(sizeof(struct LedBlink_param), 
+led_blink_hdl)
+> > /*60*/ +	GEN_MLME_EXT_HANDLER(sizeof(struct LedBlink_param),
+> > dummy_function) /*60*/
+> No, no.  Don't create a dummy function. Do it like so:
+> 
+> 	GEN_DRV_CMD_HANDLER(0, NULL) /* 60 */
+> 
+> regards,
+> dan carpenter
+>
+I'm replying late because I didn't want to blindly use that solution; I 
+mean that I wanted to understand why I can simply put 0 and NULL into that 
+macro. I had seen it made in other lines that initialize wlancmds[] 
+elements, but I wasn't sure if it could work for the specific slot where 
+the pointer to led_blinck_hdl was supposed to be placed.
 
-Reported-by: Julia Lawall <julia.lawall@inria.fr>
-Suggested-by: Dan Carpenter <dan.carpenter@oracle.com>
-Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
----
+Now I think that it is why, in this case, cmd_hdl would be set to NULL by 
+the call to wlancmds[pcmd->cmdcode].h2cfuns and the cmd_hdl() function 
+wouldn't be called because cmd_hdl is tested within an "if" statement.
 
-Changes since v1: Corrected a bad solution to this issue that made use of
-an unnecessary dummy function.
+Therefore a simple GEN_DRV_CMD_HANDLER(0, NULL) at slot number would be the 
+simplest and most obvious solution.
 
- drivers/staging/rtl8723bs/core/rtw_cmd.c         | 2 +-
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c    | 9 ---------
- drivers/staging/rtl8723bs/include/rtw_mlme_ext.h | 1 -
- 3 files changed, 1 insertion(+), 11 deletions(-)
+Is the above argument sound?
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-index 0297fbad7bce..f82dbd4f4c3d 100644
---- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-@@ -150,7 +150,7 @@ static struct cmd_hdl wlancmds[] = {
- 
- 	GEN_MLME_EXT_HANDLER(0, h2c_msg_hdl) /*58*/
- 	GEN_MLME_EXT_HANDLER(sizeof(struct SetChannelPlan_param), set_chplan_hdl) /*59*/
--	GEN_MLME_EXT_HANDLER(sizeof(struct LedBlink_param), led_blink_hdl) /*60*/
-+	GEN_MLME_EXT_HANDLER(0, NULL) /*60*/
- 
- 	GEN_MLME_EXT_HANDLER(sizeof(struct SetChannelSwitch_param), set_csa_hdl) /*61*/
- 	GEN_MLME_EXT_HANDLER(sizeof(struct TDLSoption_param), tdls_hdl) /*62*/
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-index 873d3792ac8e..963ea80083c8 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-@@ -6189,15 +6189,6 @@ u8 set_chplan_hdl(struct adapter *padapter, unsigned char *pbuf)
- 	return	H2C_SUCCESS;
- }
- 
--u8 led_blink_hdl(struct adapter *padapter, unsigned char *pbuf)
--{
--
--	if (!pbuf)
--		return H2C_PARAMETERS_ERROR;
--
--	return	H2C_SUCCESS;
--}
--
- u8 set_csa_hdl(struct adapter *padapter, unsigned char *pbuf)
- {
- 	return	H2C_REJECTED;
-diff --git a/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h b/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h
-index 5e6cf63956b8..472818c5fd83 100644
---- a/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h
-+++ b/drivers/staging/rtl8723bs/include/rtw_mlme_ext.h
-@@ -745,7 +745,6 @@ u8 chk_bmc_sleepq_hdl(struct adapter *padapter, unsigned char *pbuf);
- u8 tx_beacon_hdl(struct adapter *padapter, unsigned char *pbuf);
- u8 set_ch_hdl(struct adapter *padapter, u8 *pbuf);
- u8 set_chplan_hdl(struct adapter *padapter, unsigned char *pbuf);
--u8 led_blink_hdl(struct adapter *padapter, unsigned char *pbuf);
- u8 set_csa_hdl(struct adapter *padapter, unsigned char *pbuf);	/* Kurt: Handling DFS channel switch announcement ie. */
- u8 tdls_hdl(struct adapter *padapter, unsigned char *pbuf);
- u8 run_in_thread_hdl(struct adapter *padapter, u8 *pbuf);
--- 
-2.31.1
+Thanks for your kind help,
+
+Fabio
+
+
 
 
