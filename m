@@ -1,156 +1,163 @@
 X-GM-THRID: 6950903323792769024
-X-Received: by 2002:a17:903:2488:b029:e9:708f:2e4a with SMTP id p8-20020a1709032488b02900e9708f2e4amr30957719plw.32.1618386945096;
-        Wed, 14 Apr 2021 00:55:45 -0700 (PDT)
+X-Received: by 2002:a17:902:ed87:b029:eb:a96:7892 with SMTP id e7-20020a170902ed87b02900eb0a967892mr12028054plj.47.1618383390406;
+        Tue, 13 Apr 2021 23:56:30 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:ecc2:: with SMTP id a2ls805583plh.7.gmail; Wed, 14
- Apr 2021 00:55:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz6qfgHquxNgTbzfbaGhLzzcqIKC/oMAdrpe79JuudZtrzCpCHXiQXLarOMLQcuWQNlSNH8
-X-Received: by 2002:a17:902:8c92:b029:e6:60ad:6924 with SMTP id t18-20020a1709028c92b02900e660ad6924mr35885401plo.16.1618386943995;
-        Wed, 14 Apr 2021 00:55:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618386943; cv=none;
+Received: by 2002:a17:902:b7c7:: with SMTP id v7ls724576plz.0.gmail; Tue, 13
+ Apr 2021 23:56:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw7Z4GjoYR021DmUVpu2hb+Q3Utd5UdUCofuHutxNQ0vv39Xmq9WJov/YixuChmFXBf84Ar
+X-Received: by 2002:a17:903:31cc:b029:e4:bd48:c8e3 with SMTP id v12-20020a17090331ccb02900e4bd48c8e3mr35593172ple.40.1618383389174;
+        Tue, 13 Apr 2021 23:56:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618383389; cv=none;
         d=google.com; s=arc-20160816;
-        b=SYFdhNmf0VAQEOgnSTtda1rgu1KqXFZSsRNo5h2YRdQ7v0GK4J3cp5zZELQP5EMjS4
-         4LgD2bHu7rGb3f6xQ3iI5PxQTYPl9ILiFvilOXCRJuJTCAS0xkyayWrrpWHQK5ZlHEj/
-         nSiFqN1Iu4V+UZlTdWEESz2M7MG/HKef8cG2QfGqlSeFBhwWROXzlCI1T04PTgRMBkly
-         uwBbLFbr480j6KsEqVDxoknrKf8BHyJW1h75nsvNA3VqRFJEFS+LaoHHq7r/NAgR/HlI
-         bAiHpLMialx/pAuefMztTItzDhx7eti4oIYBl49zUjKAS53AAiFQdar9ER1z8Y+lD3ze
-         WPDg==
+        b=RCWTcqR7KA3P+cZ+0k+k+gjFAuHFWe2dbnOcBGoKVithccSI2hUSGacRtbLSkjNTCl
+         pr3Nx9uw10xvlsVyTwUmnmWyVtxgKep6aVjo3MmnJq5uRfsTc7+HNOmKah/zuszbsyO6
+         NEF3yWsi9ZCrGlL4DdZZuTPZbrHfcUaLFYvYDWIc8EQ49BgXdzF+KUU5AilEeQWCPOit
+         RfAe6i2I9looO7LbKo/tPGgUz0JIJZ/8Ln3KD+RKPBH6qu62PpZxZv7QERpkCRbdrV8d
+         oz9kW41ml3Sx4d4hW7J1KF22b0tD/O9P4ff8B0S34u5yxnjQMNoIEJcbLwdGCX5HB7+J
+         NKEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=1thdEyOoz4Ff74p2RvNbSPbAdDaciwMX8cdY7e71W5Q=;
-        b=MZiWmsQjdnG5oRl3v4utn4MPeT2CMOYJa0Td+o9fmofrMvMUgP/kh4ITDi04MRHQvT
-         kIe3SqybZWuuBgeJudfBrF9evNxavSd/j+jqukbefEu9FSvJNKEA6beJ+69iYVTKLivM
-         JUSzAzmVIhBDRKciKQYPxcl/8WfZ0dSlpQuZFNdGNlcRoMcOQmQ1JBEyazESqJdhCBhZ
-         XkqpnA7JGfRBU1jeUH7dcqbW+On7PbAvvfPbfNsN6nLknpNt2Mfn0/33d71MFHHygGOJ
-         BPybm0iQriBcZu+cNmKTyMwh13xEBd9QXxFThVXS8IduATWlY/JXUVpwna9cFzzrfe1D
-         eaYg==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=QAdy8nO8sPO8ys8krsfaC4uTkzbD3JcH3dkMY189rx4=;
+        b=P5YEQu6bIvd35FVkpfoiMeTuzzy8gRnNmoTuAhe5V43aQ4S2xRQU9pwjGHPDIrOLX5
+         BUZPxWDO84DpcZoE9whgEQQk3ivqMnen0Bdb7p9jeH+mYVtx0QIOBb8I3QQwrFX+Aq0d
+         vTFtkLzY0mxG6dsal9ja/uXFuKV+oBNzF32z5Z77m32o3a8gkdI3Fse5fcCSxY+Gqi/a
+         gWa9v0TUqbIeUViK2fMDeFodrgKnbx9mmAh9Cp4UId3vwAWzliFrF7Qj+DBiGQK5cpsj
+         PhtOothCQxpuEOUkH6tQcOz4SS/ab4y6koCscMemv29oUh/UU4pA/NpeOxVA24fV1/1w
+         Z/7g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=e7lVDEq+;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.85 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Return-Path: <dan.carpenter@oracle.com>
-Received: from userp2120.oracle.com (userp2120.oracle.com. [156.151.31.85])
-        by gmr-mx.google.com with ESMTPS id nl15si254583pjb.2.2021.04.14.00.55.43
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="Ps0hH/LU";
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::42d as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from mail-pf1-x42d.google.com (mail-pf1-x42d.google.com. [2607:f8b0:4864:20::42d])
+        by gmr-mx.google.com with ESMTPS id t5si1538357pgv.4.2021.04.13.23.56.29
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Apr 2021 00:55:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.85 as permitted sender) client-ip=156.151.31.85;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 13 Apr 2021 23:56:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::42d as permitted sender) client-ip=2607:f8b0:4864:20::42d;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=e7lVDEq+;
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.85 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
-	by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 13E7nEoJ173917;
-	Wed, 14 Apr 2021 07:55:38 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
- : subject : message-id : references : mime-version : content-type :
- in-reply-to; s=corp-2020-01-29;
- bh=1thdEyOoz4Ff74p2RvNbSPbAdDaciwMX8cdY7e71W5Q=;
- b=e7lVDEq+e+jz6QqxUfLaCcBIa8q0jMnQG+fMf0Gm0+S9QyONyZjgl25RTglbmlRBzuA3
- fRKGFmaHC/yKK89+rNBySCI61S0m9k9LviGATE2j+G+N2GBxQnicIQO+gBxprefwC9Ep
- 1cCoX5/BmO1LR/54u9zQ77K1zf8ZGQ9LoPMdVDf/atosqO6lPKIVAE8kOQkC9VEJzE7y
- rUBg6rmFaGHiNYEn9aq6/UEuuOo7wHrMJpZR03uNwnYfGbZry9oO8HPnZbZJXdYKGOLU
- E5PJVX/MfU44X1MEqL9SJR9oUPH1g0/P+RfWhogXJaS65Jxre/hWwz/J/MQQqhbfA0QL pA== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
-	by userp2120.oracle.com with ESMTP id 37u4nnhek3-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 14 Apr 2021 07:55:38 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
-	by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 13E7tWoe050253;
-	Wed, 14 Apr 2021 07:55:36 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
-	by userp3020.oracle.com with ESMTP id 37unstjqvm-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 14 Apr 2021 07:55:36 +0000
-Received: from abhmp0016.oracle.com (abhmp0016.oracle.com [141.146.116.22])
-	by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 13E7tXgN003494;
-	Wed, 14 Apr 2021 07:55:33 GMT
-Received: from kadam (/102.36.221.92)
-	by default (Oracle Beehive Gateway v4.0)
-	with ESMTP ; Wed, 14 Apr 2021 00:55:33 -0700
-Date: Wed, 14 Apr 2021 10:55:25 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Mitali Borkar <mitaliborkar810@gmail.com>
-Cc: gregkh@linuxfoundation.org, davem@davemloft.net, kuba@kernel.org,
-        linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-        outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in
-Subject: Re: [PATCH v2 4/5] staging: rtl8192e: rectified spelling mistake and
- replace memcmp with ether_oui_equal
-Message-ID: <20210414075525.GR6021@kadam>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="Ps0hH/LU";
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::42d as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pf1-x42d.google.com with SMTP id y16so13103495pfc.5
+        for <outreachy-kernel@googlegroups.com>; Tue, 13 Apr 2021 23:56:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=QAdy8nO8sPO8ys8krsfaC4uTkzbD3JcH3dkMY189rx4=;
+        b=Ps0hH/LUdoDEUpfQpfyZNEhz4kWUppQUJJkxmfLlhtWchAhGJ2f/CfwFFg2cU4cjoF
+         9o8fbNgAkf3X4fcSAxQUoPrRHvHJqSjwCtePv0LgtRqvZEn9/h505kJcgbFVXrJ8RBe+
+         5YwbBYDLpQ1TYbO4baCrVCbZgIW1JKIWnT8hlNWe3gWdk5/UApWTDkRvAXolsCyutQEX
+         K7K9VOrrWpSh+gGdKwNVkFbSaoAgER3O5lkM0wJsmx2UOub45Qc81/vNIzlTag1LDHf7
+         IxW5GYpPBXrfGNYkL0EzHp0GPTgNSTG+ULEFCeuMn/x1aPPbVN5R7iD0nXlX90cXO7A4
+         sNlw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=QAdy8nO8sPO8ys8krsfaC4uTkzbD3JcH3dkMY189rx4=;
+        b=FEQjgRLCnhjBBgj8gBWqfJD9ecaabjGvJJGH0Cst9M0dmdAOPV+OzkuK0SuyxrTsjJ
+         HDVtEzQdfGUoIh/B16QUzpt/8LlVoAb/3rF784jfdZUMEhFwlaDOnlTaEK3ikw0E9QXm
+         7D8v9axxW+wF2TSUjsgsYirAlbQPrCIJdgoVcSLDYUxh24q9hydKF7qVdhVqnK5gRSgO
+         wXee0Aqq+wOh2yx+uFOv3ZtzUvZEqWnwr6M8V50DOlLcmcobULtOaTfUJKs00my3xw5E
+         e0kcTf2FHgzrXcobcqXDUIOAuCnmfF2uVWwmiVDBfbB2+wVXudxChpmZc5LouGBXuDkJ
+         eLAw==
+X-Gm-Message-State: AOAM5325GnqTBx2z398He8yuJPQdOeI2FbpW6YCnEtoyOYjnuraf3vZT
+	Tt+eW0NDjBgoUYMg+pZIAnA=
+X-Received: by 2002:a65:4887:: with SMTP id n7mr36018509pgs.14.1618383388867;
+        Tue, 13 Apr 2021 23:56:28 -0700 (PDT)
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from kali ([103.141.87.253])
+        by smtp.gmail.com with ESMTPSA id g24sm14123731pgn.18.2021.04.13.23.56.25
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 13 Apr 2021 23:56:28 -0700 (PDT)
+Date: Wed, 14 Apr 2021 12:26:20 +0530
+From: Mitali Borkar <mitaliborkar810@gmail.com>
+To: gregkh@linuxfoundation.org, davem@davemloft.net, kuba@kernel.org
+Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in
+Subject: [PATCH v2 5/5] staging: rtl8192e: removed multiple blank lines
+Message-ID: <2bfe551f152a611cc49a71a4984f41ef7ee69df5.1618380932.git.mitaliborkar810@gmail.com>
 References: <cover.1618380932.git.mitaliborkar810@gmail.com>
- <eda8d3401f2f7ff7a61137b4935c6ccb09112e52.1618380932.git.mitaliborkar810@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <eda8d3401f2f7ff7a61137b4935c6ccb09112e52.1618380932.git.mitaliborkar810@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-Proofpoint-IMR: 1
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9953 signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999 adultscore=0
- malwarescore=0 suspectscore=0 bulkscore=0 mlxscore=0 spamscore=0
- phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2104060000 definitions=main-2104140054
-X-Proofpoint-ORIG-GUID: 705QvOa-IL_yN18Aq_CePzFssLaaW_gL
-X-Proofpoint-GUID: 705QvOa-IL_yN18Aq_CePzFssLaaW_gL
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9953 signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0 malwarescore=0
- phishscore=0 suspectscore=0 mlxlogscore=999 priorityscore=1501
- clxscore=1015 lowpriorityscore=0 spamscore=0 impostorscore=0 bulkscore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2104060000 definitions=main-2104140053
+In-Reply-To: <cover.1618380932.git.mitaliborkar810@gmail.com>
 
-On Wed, Apr 14, 2021 at 12:26:01PM +0530, Mitali Borkar wrote:
-> Added a generic function of static inline bool in
-> include/linux/etherdevice.h to replace memcmp with
-> ether_oui_equal throughout the execution.
-> Corrected the misspelled words in this file.
-> 
-> Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
-> ---
->  
-> Changes from v1:- Rectified spelling mistake and replaced memcmp with
-> ether_oui_equal.
-> 
->  drivers/staging/rtl8192e/rtl819x_HTProc.c | 48 +++++++++++------------
->  include/linux/etherdevice.h               |  5 +++
-   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-This is networking code and not staging code, but the netdev mailing
-list isn't CC'd.
+Removed multiple blank lines to make code better and neater.
+Reported by checkpatch.
 
->  2 files changed, 29 insertions(+), 24 deletions(-)
-> 
-> diff --git a/drivers/staging/rtl8192e/rtl819x_HTProc.c b/drivers/staging/rtl8192e/rtl819x_HTProc.c
-> index ec6b46166e84..ce58feb2af9a 100644
-> --- a/drivers/staging/rtl8192e/rtl819x_HTProc.c
-> +++ b/drivers/staging/rtl8192e/rtl819x_HTProc.c
-> @@ -43,7 +43,7 @@ u16 MCS_DATA_RATE[2][2][77] = {
->  	 810, 720, 810, 900, 900, 990} }
->  };
->  
-> -static u8 UNKNOWN_BORADCOM[3] = {0x00, 0x14, 0xbf};
-> +static u8 UNKNOWN_BROADCOM[3] = {0x00, 0x14, 0xbf};
+Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
+---
+ 
+Changes from v1:- No changes.
 
-Please pull this spelling fix into its own patch.
+ drivers/staging/rtl8192e/rtl819x_HTProc.c | 7 -------
+ 1 file changed, 7 deletions(-)
 
-[ snip ]
-
-> diff --git a/include/linux/etherdevice.h b/include/linux/etherdevice.h
-> index 2e5debc0373c..6a1a63168319 100644
-> --- a/include/linux/etherdevice.h
-> +++ b/include/linux/etherdevice.h
-> @@ -87,6 +87,11 @@ static inline bool is_link_local_ether_addr(const u8 *addr)
->  #endif
->  }
->  
-> +static inline bool ether_oui_equal(const u8 *addr, const u8 *oui)
-> +{
-> +return addr[0] == oui[0] && addr[1] == oui[1] && addr[2] == oui[2];
-> +}
-
-The indenting is messed up on this.
-
-regards,
-dan carpenter
+diff --git a/drivers/staging/rtl8192e/rtl819x_HTProc.c b/drivers/staging/rtl8192e/rtl819x_HTProc.c
+index b11b0054d8cb..955442b95bdc 100644
+--- a/drivers/staging/rtl8192e/rtl819x_HTProc.c
++++ b/drivers/staging/rtl8192e/rtl819x_HTProc.c
+@@ -214,7 +214,6 @@ static u8 HTIOTActIsDisableMCS14(struct rtllib_device *ieee, u8 *PeerMacAddr)
+ 	return 0;
+ }
+ 
+-
+ static bool HTIOTActIsDisableMCS15(struct rtllib_device *ieee)
+ {
+ 	return false;
+@@ -236,7 +235,6 @@ static u8 HTIOTActIsMgntUseCCK6M(struct rtllib_device *ieee,
+ {
+ 	u8	retValue = 0;
+ 
+-
+ 	if (ieee->pHTInfo->IOTPeer == HT_IOT_PEER_BROADCOM)
+ 		retValue = 1;
+ 
+@@ -315,7 +313,6 @@ void HTConstructCapabilityElement(struct rtllib_device *ieee, u8 *posHTCap,
+ 	pCapELE->PSMP = 0;
+ 	pCapELE->LSigTxopProtect = 0;
+ 
+-
+ 	netdev_dbg(ieee->dev,
+ 		   "TX HT cap/info ele BW=%d MaxAMSDUSize:%d DssCCk:%d\n",
+ 		   pCapELE->ChlWidth, pCapELE->MaxAMSDUSize, pCapELE->DssCCk);
+@@ -390,7 +387,6 @@ void HTConstructInfoElement(struct rtllib_device *ieee, u8 *posHTInfo,
+ 
+ 		memset(pHTInfoEle->BasicMSC, 0, 16);
+ 
+-
+ 		*len = 22 + 2;
+ 
+ 	} else {
+@@ -541,7 +537,6 @@ void HTOnAssocRsp(struct rtllib_device *ieee)
+ 	else
+ 		pPeerHTInfo = (struct ht_info_ele *)(pHTInfo->PeerHTInfoBuf);
+ 
+-
+ #ifdef VERBOSE_DEBUG
+ 	print_hex_dump_bytes("%s: ", __func__, DUMP_PREFIX_NONE,
+ 			     pPeerHTCap, sizeof(struct ht_capab_ele));
+@@ -562,7 +557,6 @@ void HTOnAssocRsp(struct rtllib_device *ieee)
+ 			       ((pPeerHTCap->DssCCk == 1) ? true :
+ 			       false) : false);
+ 
+-
+ 	pHTInfo->bCurrent_AMSDU_Support = pHTInfo->bAMSDU_Support;
+ 
+ 	nMaxAMSDUSize = (pPeerHTCap->MaxAMSDUSize == 0) ? 3839 : 7935;
+@@ -750,7 +744,6 @@ void HTResetSelfAndSavePeerSetting(struct rtllib_device *ieee,
+ 		if (bIOTAction)
+ 			pHTInfo->IOTAction |= HT_IOT_ACT_DISABLE_ALL_2SS;
+ 
+-
+ 		bIOTAction = HTIOTActIsDisableEDCATurbo(ieee, pNetwork->bssid);
+ 		if (bIOTAction)
+ 			pHTInfo->IOTAction |= HT_IOT_ACT_DISABLE_EDCA_TURBO;
+-- 
+2.30.2
 
 
