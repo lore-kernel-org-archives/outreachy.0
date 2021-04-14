@@ -1,127 +1,374 @@
 X-GM-THRID: 6951081935014723584
-X-Received: by 2002:ab0:60d5:: with SMTP id g21mr28830239uam.53.1618425213267;
-        Wed, 14 Apr 2021 11:33:33 -0700 (PDT)
+X-Received: by 2002:a25:d343:: with SMTP id e64mr12528406ybf.421.1618424881106;
+        Wed, 14 Apr 2021 11:28:01 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9f:36cc:: with SMTP id p70ls289837uap.3.gmail; Wed, 14 Apr
- 2021 11:33:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzBR1aq3ps6oRoAeCrwolM0VQbe5fu/7H/XD8+kCi1aLGdGI4HVhuxWFxpCCc8pWHIH+aQg
-X-Received: by 2002:ab0:6d8c:: with SMTP id m12mr10713672uah.32.1618425212215;
-        Wed, 14 Apr 2021 11:33:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618425212; cv=none;
+Received: by 2002:a25:bac5:: with SMTP id a5ls1372086ybk.11.gmail; Wed, 14 Apr
+ 2021 11:28:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzsMoLQ4NmbcKQFV6U5kppuwAv4CZuSYlv7HELQyouzN+8ImkAc+UprJHm90MZgY6LA3zsl
+X-Received: by 2002:a25:e750:: with SMTP id e77mr35134317ybh.472.1618424880010;
+        Wed, 14 Apr 2021 11:28:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618424880; cv=none;
         d=google.com; s=arc-20160816;
-        b=EenhXkLfO9hZwmzBv8gqWqYvnB+t89tht9XSqJC0CX6LkCI+7dsdrZXlEAEGpcfVWk
-         mx8G2YjMopTNVpSXeOTIFZu52YxGxiXrZLu/smezbztChO3kcshH1nvrGRvctPqxmJAr
-         a+j3Y6FaxBZvZGXKJMTd77o35rwBJqQs37o+O3Gw/hp5tg+fNlN7v4iS7LT8UypGN1rB
-         UGHRY8K++R+2koZd9mmVDTGGY6fckUyXefS3t+4HWCiOqstvAPTAB2lIK0Ebz+gPLdIu
-         fLiscXTZseainnuUFXCWItaJt8udj9kf/XmQid1wFu+6pDjO22yacLInx3Z3D69iWkOv
-         tdow==
+        b=ce5eVEizqQ4pWV3X1MQ4F2oaAHR2AEOPVrR17/Eq8z26xX4/X6wUyeJzvl8jvBZOTv
+         eXC2AaTxSjqC7Ht45NB4ER2tJdytGDgo5TQmpV3CXydX/VmwV7h7KfbE5PmFk+2kUeZ2
+         b9UT173hNXnfp72XaCBnue53dgt5il75stbNEdFvovb13b935yfyw9/oBvhKtBcBJj2m
+         le7Gs71t9nqahwU68l2dTETX8X3POciyuHUQlCrLlnETYbQ7O9beR4g12ltMvNf+Bk3r
+         tspHLUsJX9YGcc0Tbs9lIiA3GRo15SxrAcAai+uRSVpLl3nUF6MVMl8sdaph8Hb+Nex8
+         yLvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:ironport-sdr:ironport-sdr;
-        bh=TZwqFkufBDHQaSzfiPBYitUDYEfMJrl1TPhD+O4ju88=;
-        b=CC1ixB44TXareyYEgMO9/aCefGjaM2OM5RooQlYnxcngqySkxtaKcdCIJi+GMYQDeE
-         XRZEU6XbpOt0px6mWlJbXTN1MGs0Nu1q0WJPzUazUA3BgscBmaP8/qbhFP4jIjwg+khe
-         pxhqsCVvIMDfICiU0gKSIGbW/DUIRdbRl/SxGxxnFtxLI0sy+7LWE51drv6kRd5gvwPv
-         RQCqc4MPN6MC0k9wwryP9Xjvol2OqXXebqw10K5+2ht6hh0+/gU7F3TtOztjgsbXbXrr
-         Wdx9ypabGzyhsGponQeWa7g2AOgn6wnZABKJjupcdWuPN2rjKOrvIbedgxHlOXz7aFvL
-         Mf9Q==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=bkCnPyijGf6102CFQmgNiT4dWq+AxqQZ3pCXHQt/lVg=;
+        b=bt4cPOzgHL95zJ8ddjeQL8nh58qIO7q/3smA0okYsemV7DwSE151FDcRgssni+2p/f
+         HZhESNo3dvznDQYK6QwziKKOCqbjX6/cCEIz5QB/s8hswRYPMtB02tJ3eMi6JTvbGCNI
+         7ZbgxQnloKdYLt1xnWzmbYE5D/SMtwoDQ6aW1DsXPFT4cxe4QB0MGKZmGvr6FH5ZzqNe
+         KWk/xSCocecLINpfxkmjMEyo6OUvob2h8khf4HzemszBcv0vf0ObYMvBVo1pgGsjw8pQ
+         V+a6qt+otuy2lVTbisGJhT+075dt24D+ZyqUbyKon2rIeAZ4+aFxDYpugshIoQ8+UQLA
+         gb/A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 192.55.52.151 as permitted sender) smtp.mailfrom=sakari.ailus@linux.intel.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <sakari.ailus@linux.intel.com>
-Received: from mga17.intel.com (mga17.intel.com. [192.55.52.151])
-        by gmr-mx.google.com with ESMTPS id o198si30127vkc.1.2021.04.14.11.33.31
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZyrnoXw5;
+       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::f2a as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <alinesantanacordeiro@gmail.com>
+Received: from mail-qv1-xf2a.google.com (mail-qv1-xf2a.google.com. [2607:f8b0:4864:20::f2a])
+        by gmr-mx.google.com with ESMTPS id k6si23361ybt.0.2021.04.14.11.27.59
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Apr 2021 11:33:31 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 192.55.52.151 as permitted sender) client-ip=192.55.52.151;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 14 Apr 2021 11:28:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::f2a as permitted sender) client-ip=2607:f8b0:4864:20::f2a;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 192.55.52.151 as permitted sender) smtp.mailfrom=sakari.ailus@linux.intel.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-IronPort-SDR: KlY/xT3XMcZVPAGdlxLNVUWPqiRn3Zc0W37E6XNyPXpy+T6ul3RCTqR2E3Wb7sKt1eetDoo+dx
- FXcuyRZppvrg==
-X-IronPort-AV: E=McAfee;i="6200,9189,9954"; a="174811616"
-X-IronPort-AV: E=Sophos;i="5.82,223,1613462400"; 
-   d="scan'208";a="174811616"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
-  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Apr 2021 11:33:30 -0700
-IronPort-SDR: QWUsGFJgdDqPIdf8WgwLE3snSAtlxd3nPW6cEcKKnSYoIgIfBTbFPG31qYfmXL+6RRgisHlsrP
- VPUpMILwql3Q==
-X-IronPort-AV: E=Sophos;i="5.82,223,1613462400"; 
-   d="scan'208";a="532871296"
-Received: from paasikivi.fi.intel.com ([10.237.72.42])
-  by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Apr 2021 11:33:28 -0700
-Received: from paasikivi.fi.intel.com (localhost [127.0.0.1])
-	by paasikivi.fi.intel.com (Postfix) with SMTP id E85DD200E8;
-	Wed, 14 Apr 2021 21:33:25 +0300 (EEST)
-Date: Wed, 14 Apr 2021 21:33:25 +0300
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZyrnoXw5;
+       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::f2a as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-qv1-xf2a.google.com with SMTP id i3so4854430qvj.7
+        for <outreachy-kernel@googlegroups.com>; Wed, 14 Apr 2021 11:27:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=bkCnPyijGf6102CFQmgNiT4dWq+AxqQZ3pCXHQt/lVg=;
+        b=ZyrnoXw5aVY1+QnuIab4bxD9nixmwCdalQ7qXLu7Wdqooi+qUA+6mNn5bpKWgMHQqJ
+         9b00u29jLXEfIkQ64RLQMZittvOdDsPFt+tnDx4ObSmVX3gUHrR4aA1A8nERSckqdqjb
+         x2g2au8KXlgmyV7eFyi+6NnMbu/JZdj9c25t/UI5p/1rRzs9cqfxgMox95ELo90qwN8u
+         GYvFFtcakH4aFCcMFOiCfFIPRmotJ5NZS3bjZ+nvEwoPaZZqghBFoXyC+C0sCnDxib33
+         QK0VsIFFukTqSs8ppzQX3MBJSeeBMP05aGNQ2mn//Ak5HlYpsnt1Xt+qm5aBGbbX88sH
+         7xtQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=bkCnPyijGf6102CFQmgNiT4dWq+AxqQZ3pCXHQt/lVg=;
+        b=r9JzvfFb751q15TRYcJecPQq6tpXsykcCKzcrCMJ49zCv2dglFHh1vvc/5BGkypceR
+         L88u7/siwhth6hJ4OdeZvqaPSvjs9uXPeW0QDEeQs32RC/UrTy9iglgSelZ8fvLirCEz
+         lAu0/pw26XkbdOI91KdYqqtWisLdxgn2QhIaoXfvWzoqCH44RQwddRCxSIIpkDWK02sy
+         NA8B2KHlcbzzjlqDZ7K8tSYmZX71Y1LdKcibZSy8wUg2a1II0vSOfMy7b0/KwtQ2B45B
+         /IOD1oU9Sn3Cn1jOHAFjw5uaa54t+MMNLssEtZ4QUvduutgBxNcIQMyYogncm17/0MQU
+         eWbA==
+X-Gm-Message-State: AOAM533ES41T5x41Cmp/MIgj893R6Eew100vMsNhmBOBCqNIOwh8jaH3
+	m63ghxfyASd2MX3+5ShWEcr+Gi9tLtKvehJx
+X-Received: by 2002:a05:6214:165:: with SMTP id y5mr39309142qvs.59.1618424879314;
+        Wed, 14 Apr 2021 11:27:59 -0700 (PDT)
+Return-Path: <alinesantanacordeiro@gmail.com>
+Received: from focaruja ([2001:1284:f016:a037:66e0:478a:8197:7396])
+        by smtp.gmail.com with ESMTPSA id v6sm143429qkf.132.2021.04.14.11.27.58
+        (version=TLS1 cipher=ECDHE-ECDSA-AES128-SHA bits=128/128);
+        Wed, 14 Apr 2021 11:27:58 -0700 (PDT)
+Date: Wed, 14 Apr 2021 15:27:55 -0300
+From: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
 	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: Re: [PATCH] staging: media: atomisp: pci: Format multi-line comments
+Subject: [PATCH] staging: media: atomisp: pci: Format multi-line comments
  according to coding-style in file atomisp_cmd.c
-Message-ID: <20210414183325.GD3@paasikivi.fi.intel.com>
-References: <20210414182755.GA2799@focaruja>
+Message-ID: <20210414182755.GA2799@focaruja>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20210414182755.GA2799@focaruja>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Hi Aline,
+Format multi-line comments according to the coding-style.
+Issue detected by checkpatch.pl.
 
-Thanks for the patch.
+Signed-off-by: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
+---
+ drivers/staging/media/atomisp/pci/atomisp_cmd.c | 109 ++++++++++++++----------
+ 1 file changed, 65 insertions(+), 44 deletions(-)
 
-On Wed, Apr 14, 2021 at 03:27:55PM -0300, Aline Santana Cordeiro wrote:
-> Format multi-line comments according to the coding-style.
-> Issue detected by checkpatch.pl.
-> 
-> Signed-off-by: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
-> ---
->  drivers/staging/media/atomisp/pci/atomisp_cmd.c | 109 ++++++++++++++----------
->  1 file changed, 65 insertions(+), 44 deletions(-)
-> 
-> diff --git a/drivers/staging/media/atomisp/pci/atomisp_cmd.c b/drivers/staging/media/atomisp/pci/atomisp_cmd.c
-> index 592ea99..6113785 100644
-> --- a/drivers/staging/media/atomisp/pci/atomisp_cmd.c
-> +++ b/drivers/staging/media/atomisp/pci/atomisp_cmd.c
-> @@ -67,7 +67,8 @@
->   * At 15fps this means 133ms. We set the timeout a bit longer.
->   * Each flash driver is supposed to set its own timeout, but
->   * just in case someone else changed the timeout, we set it
-> - * here to make sure we don't damage the flash hardware. */
-> + * here to make sure we don't damage the flash hardware.
-> + */
->  #define FLASH_TIMEOUT 800 /* ms */
->  
->  union host {
-> @@ -562,7 +563,8 @@ irqreturn_t atomisp_isr(int irq, void *dev)
->  			 * and driver needs to keep old sequence_temp value.
->  			 * NOTE: There is assumption here that ISP will not
->  			 * start processing next frame from sensor before old
-> -			 * one is completely done. */
-> +			 * one is completely done.
-> +			 */
->  			if (atomic_read(&asd->sequence) == atomic_read(
->  				&asd->sequence_temp))
->  				atomic_set(&asd->sequence_temp,
-> @@ -1247,7 +1249,8 @@ void atomisp_buf_done(struct atomisp_sub_device *asd, int error,
->  
->  	if (IS_ISP2401) {
->  		/* If there are no buffers queued then
-
-This should begin with:
-
-		/*
-		 *
-
-And the same for the rest. Apart from this the patch seems fine.
-
+diff --git a/drivers/staging/media/atomisp/pci/atomisp_cmd.c b/drivers/staging/media/atomisp/pci/atomisp_cmd.c
+index 592ea99..6113785 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp_cmd.c
++++ b/drivers/staging/media/atomisp/pci/atomisp_cmd.c
+@@ -67,7 +67,8 @@
+  * At 15fps this means 133ms. We set the timeout a bit longer.
+  * Each flash driver is supposed to set its own timeout, but
+  * just in case someone else changed the timeout, we set it
+- * here to make sure we don't damage the flash hardware. */
++ * here to make sure we don't damage the flash hardware.
++ */
+ #define FLASH_TIMEOUT 800 /* ms */
+ 
+ union host {
+@@ -562,7 +563,8 @@ irqreturn_t atomisp_isr(int irq, void *dev)
+ 			 * and driver needs to keep old sequence_temp value.
+ 			 * NOTE: There is assumption here that ISP will not
+ 			 * start processing next frame from sensor before old
+-			 * one is completely done. */
++			 * one is completely done.
++			 */
+ 			if (atomic_read(&asd->sequence) == atomic_read(
+ 				&asd->sequence_temp))
+ 				atomic_set(&asd->sequence_temp,
+@@ -1247,7 +1249,8 @@ void atomisp_buf_done(struct atomisp_sub_device *asd, int error,
+ 
+ 	if (IS_ISP2401) {
+ 		/* If there are no buffers queued then
+-		* delete wdt timer. */
++		 * delete wdt timer.
++		 */
+ 		if (asd->streaming != ATOMISP_DEVICE_STREAMING_ENABLED)
+ 			return;
+ 		if (!atomisp_buffers_queued_pipe(pipe))
+@@ -1312,10 +1315,10 @@ static void __atomisp_css_recover(struct atomisp_device *isp, bool isp_timeout)
+ 			continue;
+ 
+ 		/*
+-		* AtomISP::waitStageUpdate is blocked when WDT happens.
+-		* By calling acc_done() for all loaded fw_handles,
+-		* HAL will be unblocked.
+-		*/
++		 * AtomISP::waitStageUpdate is blocked when WDT happens.
++		 * By calling acc_done() for all loaded fw_handles,
++		 * HAL will be unblocked.
++		 */
+ 		acc_pipe = asd->stream_env[i].pipes[IA_CSS_PIPE_ID_ACC];
+ 		if (acc_pipe) {
+ 			acc_pipeline = ia_css_pipe_get_pipeline(acc_pipe);
+@@ -2350,8 +2353,9 @@ static void atomisp_update_grid_info(struct atomisp_sub_device *asd,
+ 	if (atomisp_css_get_grid_info(asd, pipe_id, source_pad))
+ 		return;
+ 
+-	/* We must free all buffers because they no longer match
+-	   the grid size. */
++	/* We must free all buffers because
++	 * they no longer match the grid size.
++	 */
+ 	atomisp_css_free_stat_buffers(asd);
+ 
+ 	err = atomisp_alloc_css_stat_bufs(asd, stream_id);
+@@ -2364,7 +2368,8 @@ static void atomisp_update_grid_info(struct atomisp_sub_device *asd,
+ 		/* Failure for 3A buffers does not influence DIS buffers */
+ 		if (asd->params.s3a_output_bytes != 0) {
+ 			/* For SOC sensor happens s3a_output_bytes == 0,
+-			 * using if condition to exclude false error log */
++			 * using if condition to exclude false error log
++			 */
+ 			dev_err(isp->dev, "Failed to allocate memory for 3A statistics\n");
+ 		}
+ 		goto err;
+@@ -2766,9 +2771,10 @@ int atomisp_3a_stat(struct atomisp_sub_device *asd, int flag,
+ 		return -EINVAL;
+ 
+ 	if (atomisp_compare_grid(asd, &config->grid_info) != 0) {
+-		/* If the grid info in the argument differs from the current
+-		   grid info, we tell the caller to reset the grid size and
+-		   try again. */
++		/* If the grid info in the argument differs
++		 * from the current grid info, we tell the
++		 * caller to reset the grid size and try again.
++		 */
+ 		return -EAGAIN;
+ 	}
+ 
+@@ -2822,16 +2828,18 @@ int atomisp_get_metadata(struct atomisp_sub_device *asd, int flag,
+ 	stream_info = &asd->stream_env[ATOMISP_INPUT_STREAM_GENERAL].
+ 		      stream_info;
+ 
+-	/* We always return the resolution and stride even if there is
+-	 * no valid metadata. This allows the caller to get the information
+-	 * needed to allocate user-space buffers. */
++	/* We always return the resolution and stride even if there
++	 * is no valid metadata. This allows the caller to get the
++	 * information needed to allocate user-space buffers.
++	 */
+ 	md->width  = stream_info->metadata_info.resolution.width;
+ 	md->height = stream_info->metadata_info.resolution.height;
+ 	md->stride = stream_info->metadata_info.stride;
+ 
+ 	/* sanity check to avoid writing into unallocated memory.
+ 	 * This does not return an error because it is a valid way
+-	 * for applications to detect that metadata is not enabled. */
++	 * for applications to detect that metadata is not enabled.
++	 */
+ 	if (md->width == 0 || md->height == 0 || !md->data)
+ 		return 0;
+ 
+@@ -2898,16 +2906,18 @@ int atomisp_get_metadata_by_type(struct atomisp_sub_device *asd, int flag,
+ 	stream_info = &asd->stream_env[ATOMISP_INPUT_STREAM_GENERAL].
+ 		      stream_info;
+ 
+-	/* We always return the resolution and stride even if there is
+-	 * no valid metadata. This allows the caller to get the information
+-	 * needed to allocate user-space buffers. */
++	/* We always return the resolution and stride even if there
++	 * is no valid metadata. This allows the caller to get the
++	 * information needed to allocate user-space buffers.
++	 */
+ 	md->width  = stream_info->metadata_info.resolution.width;
+ 	md->height = stream_info->metadata_info.resolution.height;
+ 	md->stride = stream_info->metadata_info.stride;
+ 
+ 	/* sanity check to avoid writing into unallocated memory.
+ 	 * This does not return an error because it is a valid way
+-	 * for applications to detect that metadata is not enabled. */
++	 * for applications to detect that metadata is not enabled.
++	 */
+ 	if (md->width == 0 || md->height == 0 || !md->data)
+ 		return 0;
+ 
+@@ -3705,9 +3715,10 @@ int atomisp_css_cp_dvs2_coefs(struct atomisp_sub_device *asd,
+ 		if (sizeof(*cur) != sizeof(coefs->grid) ||
+ 		    memcmp(&coefs->grid, cur, sizeof(coefs->grid))) {
+ 			dev_err(asd->isp->dev, "dvs grid mis-match!\n");
+-			/* If the grid info in the argument differs from the current
+-			grid info, we tell the caller to reset the grid size and
+-			try again. */
++			/* If the grid info in the argument differs
++			 * from the current grid info, we tell the
++			 * caller to reset the grid size and try again.
++			 */
+ 			return -EAGAIN;
+ 		}
+ 
+@@ -3761,9 +3772,10 @@ int atomisp_css_cp_dvs2_coefs(struct atomisp_sub_device *asd,
+ 		if (sizeof(*cur) != sizeof(dvs2_coefs.grid) ||
+ 		    memcmp(&dvs2_coefs.grid, cur, sizeof(dvs2_coefs.grid))) {
+ 			dev_err(asd->isp->dev, "dvs grid mis-match!\n");
+-			/* If the grid info in the argument differs from the current
+-			grid info, we tell the caller to reset the grid size and
+-			try again. */
++			/* If the grid info in the argument differs
++			 * from the current grid info, we tell the
++			 * caller to reset the grid size and try again.
++			 */
+ 			return -EAGAIN;
+ 		}
+ 
+@@ -4184,8 +4196,8 @@ void atomisp_handle_parameter_and_buffer(struct atomisp_video_pipe *pipe)
+ }
+ 
+ /*
+-* Function to configure ISP parameters
+-*/
++ * Function to configure ISP parameters
++ */
+ int atomisp_set_parameters(struct video_device *vdev,
+ 			   struct atomisp_parameters *arg)
+ {
+@@ -4289,9 +4301,10 @@ int atomisp_param(struct atomisp_sub_device *asd, int flag,
+ 
+ 		atomisp_curr_user_grid_info(asd, &config->info);
+ 
+-		/* We always return the resolution and stride even if there is
+-		 * no valid metadata. This allows the caller to get the
+-		 * information needed to allocate user-space buffers. */
++		/* We always return the resolution and stride even if there
++		 * is no valid metadata. This allows the caller to get the
++		 * information needed to allocate user-space buffers.
++		 */
+ 		config->metadata_config.metadata_height = asd->
+ 			stream_env[ATOMISP_INPUT_STREAM_GENERAL].stream_info.
+ 			metadata_info.resolution.height;
+@@ -4561,8 +4574,9 @@ atomisp_bytesperline_to_padded_width(unsigned int bytesperline,
+ 		return bytesperline / 2;
+ 	case IA_CSS_FRAME_FORMAT_RGBA888:
+ 		return bytesperline / 4;
+-	/* The following cases could be removed, but we leave them
+-	   in to document the formats that are included. */
++	/* The following cases could be removed, but we leave
++	 * them in to document the formats that are included.
++	 */
+ 	case IA_CSS_FRAME_FORMAT_NV11:
+ 	case IA_CSS_FRAME_FORMAT_NV12:
+ 	case IA_CSS_FRAME_FORMAT_NV16:
+@@ -4599,8 +4613,9 @@ atomisp_v4l2_framebuffer_to_css_frame(const struct v4l2_framebuffer *arg,
+ 			   arg->fmt.bytesperline, sh_format);
+ 
+ 	/* Note: the padded width on an ia_css_frame is in elements, not in
+-	   bytes. The RAW frame we use here should always be a 16bit RAW
+-	   frame. This is why we bytesperline/2 is equal to the padded with */
++	 * bytes. The RAW frame we use here should always be a 16bit RAW
++	 * frame. This is why we bytesperline/2 is equal to the padded with
++	 */
+ 	if (ia_css_frame_allocate(&res, arg->fmt.width, arg->fmt.height,
+ 				       sh_format, padded_width, 0)) {
+ 		ret = -ENOMEM;
+@@ -5017,8 +5032,9 @@ static inline int atomisp_set_sensor_mipi_to_isp(
+ 		    asd->stream_env[stream_id].isys_info[1].height);
+ 	}
+ 
+-	/* Compatibility for sensors which provide no media bus code
+-	 * in s_mbus_framefmt() nor support pad formats. */
++	/* Compatibility for sensors which provide no media bus
++	 * code in s_mbus_framefmt() nor support pad formats.
++	 */
+ 	if (mipi_info->input_format != -1) {
+ 		bayer_order = mipi_info->raw_bayer_order;
+ 
+@@ -5255,7 +5271,8 @@ static int atomisp_set_fmt_to_isp(struct video_device *vdev,
+ 		}
+ 
+ 		/* FIXME: proper format name for this one. See
+-		   atomisp_output_fmts[] in atomisp_v4l2.c */
++		 * atomisp_output_fmts[] in atomisp_v4l2.c
++		 */
+ 		vf_ffmt.code = V4L2_MBUS_FMT_CUSTOM_YUV420;
+ 
+ 		atomisp_subdev_set_selection(&asd->subdev, fh.pad,
+@@ -5410,8 +5427,9 @@ static int atomisp_set_fmt_to_isp(struct video_device *vdev,
+ 	if (asd->continuous_mode->val &&
+ 	    (configure_pp_input == atomisp_css_preview_configure_pp_input ||
+ 	     configure_pp_input == atomisp_css_video_configure_pp_input)) {
+-		/* for isp 2.2, configure pp input is available for continuous
+-		 * mode */
++		/* for isp 2.2, configure pp input is
++		 * available for continuous mode
++		 */
+ 		ret = configure_pp_input(asd, isp_sink_crop->width,
+ 					 isp_sink_crop->height);
+ 		if (ret) {
+@@ -5893,7 +5911,8 @@ int atomisp_set_fmt(struct video_device *vdev, struct v4l2_format *f)
+ 			V4L2_SEL_TGT_CROP);
+ 
+ 	/* Try to enable YUV downscaling if ISP input is 10 % (either
+-	 * width or height) bigger than the desired result. */
++	 * width or height) bigger than the desired result.
++	 */
+ 	if (isp_sink_crop.width * 9 / 10 < f->fmt.pix.width ||
+ 	    isp_sink_crop.height * 9 / 10 < f->fmt.pix.height ||
+ 	    (atomisp_subdev_format_conversion(asd, source_pad) &&
+@@ -5960,7 +5979,8 @@ int atomisp_set_fmt(struct video_device *vdev, struct v4l2_format *f)
+ 		 * GMIN to work around a CTS failures (GMINL-539)
+ 		 * which appears to be related by a hardware
+ 		 * performance limitation.  It's unclear why this
+-		 * particular code triggers the issue. */
++		 * particular code triggers the issue.
++		 */
+ 		if (!IS_ISP2401 || crop_needs_override) {
+ 			if (isp_sink_crop.width * main_compose.height >
+ 			    isp_sink_crop.height * main_compose.width) {
+@@ -6275,7 +6295,8 @@ int atomisp_offline_capture_configure(struct atomisp_sub_device *asd,
+ 			}
+ 
+ 			/* TODO: this can be removed once user-space
+-			 *       has been updated to use control API */
++			 *       has been updated to use control API
++			 */
+ 			asd->continuous_raw_buffer_size->val =
+ 			    max_t(int,
+ 				  asd->continuous_raw_buffer_size->val,
 -- 
-Kind regards,
+2.7.4
 
-Sakari Ailus
 
