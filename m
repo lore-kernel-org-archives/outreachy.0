@@ -1,127 +1,131 @@
 X-GM-THRID: 6951120130932736000
-X-Received: by 2002:a2e:8616:: with SMTP id a22mr1887988lji.509.1618495883811;
-        Thu, 15 Apr 2021 07:11:23 -0700 (PDT)
+X-Received: by 2002:a62:f249:0:b029:249:acb4:98b6 with SMTP id y9-20020a62f2490000b0290249acb498b6mr21873861pfl.55.1618433774549;
+        Wed, 14 Apr 2021 13:56:14 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:588:: with SMTP id 130ls1178016ljf.9.gmail; Thu, 15 Apr
- 2021 07:11:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwZ7R2dBmgqRDoeFbAgaycV0inF2V91QPglzlqQL5uT/PVvsUYTLe9M5BmOnhlYBcSRfnoS
-X-Received: by 2002:a2e:1641:: with SMTP id 1mr1868183ljw.253.1618495881669;
-        Thu, 15 Apr 2021 07:11:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618495881; cv=none;
+Received: by 2002:aa7:8e19:: with SMTP id c25ls1327733pfr.6.gmail; Wed, 14 Apr
+ 2021 13:56:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxVyFsgQGpALe7pTLXhhyzrpuuYSLf63nE24xxnqThMgloO95xFSA/l5PCVsfEvN1R1Dt0N
+X-Received: by 2002:aa7:91d1:0:b029:1fe:2a02:73b9 with SMTP id z17-20020aa791d10000b02901fe2a0273b9mr18511pfa.2.1618433773241;
+        Wed, 14 Apr 2021 13:56:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618433773; cv=none;
         d=google.com; s=arc-20160816;
-        b=kM5/lGnRr7nVbrSzLBMd6/6Ren9NXwP3SnruoGojXsFu5esRz1gQYB50gKxrModip9
-         R1C8yDXMUnzvLLoQCB/R1NYeK8/nUyxggL7f4EnwQxOEF9IIFaA4vSVDJp6l3B/kP058
-         IjnJZwcrZBFkKXifsx7Rk/h5AKBKu8rTvq+bvGkRIJGo8oQXDi9HM8aezgfQccAAEPSN
-         6YrzAZKNb5nJWJkIJJ5/Cj6pnmQGHaf65wzpC6Dbxm9L4o+OsS51v27IUFP/dKzX7dg0
-         5Aeof/KcJNt/QBION/CUvfCVFHoEHf22R+LRMKRtM6gOYPJrt1psQY4W9R5Ze4Gu22vU
-         pBDQ==
+        b=zWIadmprHfRFxULmrPsoyk4KLQGkBv2DhBQrQHETDiS5Tti4vHS8r8XvzRfSvEC4ke
+         6xx+Ra7X4sBNa0z0ZolAFwF6cEgpyYhtj3PccWiGV2suzKlP2KBWTkvAoh+RXWtA4ZIa
+         WxGXF2pypzwy66YyI9GXvhBuOqzLIUIYj0McNqD2jQatiEGJ2mapI+gXwxVITfz5pX4H
+         EkKn6Wo3QxQTQG4zIuju+Z9K97F5negMH9TuwRIZfUl+95TehaeMclneLvNi74TlqtuR
+         wadTsiP77TASIw6Z1acHEw1RsYKylPAF6dONxq+CJsapcTRRSw89EV37VrZo501lcBx8
+         Bpqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=2DW85aWGVpvApmaMvwStRRQ7A2RZRB6U7dGqbMFixgI=;
-        b=HkEddvK8JLJhmMM2jmGthBGb9q4zn3Yp014yehk4QduKUAlHfLBIo03AMN1XX+IH7K
-         Mu0NkyEW4Mb/T0hGVIso5PyYSWuo5t0WVO/PLzNr9+LjWx3A5rxm0vBB+6gCFehE7i8K
-         rMRUrAUYMbn7wHXm8nATOL+CVQfoibSpRZmXs2IfHBhrmWjknvB0un6xmYl8kfQcgzf/
-         qRONCExZhk4074RVobZR5GwEt8PACmEhu+wxC5ndwxBXR0pnxN/DuVllo854eK2jzR1N
-         XkNBpgDtN9WcZ/whAGo1dhc6x5kmEk3MR+sn+QOokhRulKixSZKOtMfhxOEnOv/XW6M4
-         wlHg==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=bmptYvWdWIOPCd1RN15wApNIIZ5dgXHAl1pedQA7xlU=;
+        b=eZp1JPIP38QF8s9ATxorE2bKgvO8jf3QuMQcWoL00gf7o1C397HuMoaDmp/Q0oacKw
+         nSWWAzTYyRHgfuZ6FW/y28tr4Gne4cmGkn0CO7b0j4nRxTMjBXqc99m1YBcj6r9uTz0I
+         Xhs2QlUkZxVqHdSazXq3PGL6xWF80CuwqnukwXC+LOOdF2ckyaW6T1+K/uXgmLVzDD69
+         DCR+nG27mMGOyc2QZrdwTz7+J91Pj0Uw/ah5aY0fYkh80oDe5WJ2ebiVZsNemFBQqitd
+         qE1MpTHA6zCfT7cJdviyg7lvh6sOZb32eQJoDpNb/zcUD33qakF//pbtDD0X+5qNEpZa
+         G8iw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@xs4all.nl header.s=s2 header.b=F7VbhHcE;
-       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.21 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
-Return-Path: <hverkuil@xs4all.nl>
-Received: from lb1-smtp-cloud8.xs4all.net (lb1-smtp-cloud8.xs4all.net. [194.109.24.21])
-        by gmr-mx.google.com with ESMTPS id u11si163582lfi.6.2021.04.15.07.11.21
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QPoJag9y;
+       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::732 as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <alinesantanacordeiro@gmail.com>
+Received: from mail-qk1-x732.google.com (mail-qk1-x732.google.com. [2607:f8b0:4864:20::732])
+        by gmr-mx.google.com with ESMTPS id u21si49857pfc.0.2021.04.14.13.56.13
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 15 Apr 2021 07:11:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.21 as permitted sender) client-ip=194.109.24.21;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 14 Apr 2021 13:56:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::732 as permitted sender) client-ip=2607:f8b0:4864:20::732;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@xs4all.nl header.s=s2 header.b=F7VbhHcE;
-       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.21 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
-Received: from [192.168.2.10] ([84.202.3.209])
-	by smtp.xs4all.nl with ESMTPA
-	id X2iDl3ogpsMyaX2iGlUQji; Thu, 15 Apr 2021 16:11:21 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
-	t=1618495881; bh=2DW85aWGVpvApmaMvwStRRQ7A2RZRB6U7dGqbMFixgI=;
-	h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
-	 Subject;
-	b=F7VbhHcEXqVlSqY9V5cWM11aNNUsbiVn5RKZ82GjlCfEC3fVNh7rrNu1NOyApS9ed
-	 H74idu5SCF50woNs6+nZI2sC+2jZR/CV+lMG2JHTTQqaFjiHTl40n6iWEf3pdEMBTS
-	 65ETtsHq/FxlUQqOtvEUUdkLaUGQSMXDpZ0ZmV8Ra6xC3Qw4XxsBCG8EYmu+ScpLda
-	 O1FS+ZtaCc2o+Bc9QCRra69LvorYoqbhS9lVHEJdUjM5E5n2tsQwAuV8oTWNTqLZlz
-	 H3vl8ayVkADs5D9pRvrOPFUC5qjZ6aNk/a3cxseZZ04z6HPWVOUzIlFv1NNnKzKAya
-	 049w7xB/8IJ4Q==
-Subject: Re: [PATCH] staging: media: atomisp: pci: Change line break to avoid
- an open parenthesis at the end of the line
-To: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QPoJag9y;
+       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::732 as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-qk1-x732.google.com with SMTP id f19so5288206qka.8
+        for <outreachy-kernel@googlegroups.com>; Wed, 14 Apr 2021 13:56:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=bmptYvWdWIOPCd1RN15wApNIIZ5dgXHAl1pedQA7xlU=;
+        b=QPoJag9yGA1GOBhwtT+1duhqIzzCY8qs/y3S8htwFw0U7Cyn23Ang5ej+HY456zf65
+         MMWDIjtr1shEafI7mOGdGjp6ZTDPlaQk3XfK1WHSyrE8sCaFPIwn3sXyKTnmpvuimYEt
+         t9cKTlufpbEWKxkyxbatsuQ4hJ6len8UhIjKVzIXKDjYxPu0eqG4FZKTgc+JZJ1OJ/0T
+         sZ+Ww8edrZ+EdbamN2+8xeZ1zshBeYMBoIQxWr7sb8xvQ4bz/4x6xwQfGuNucRAd1H/e
+         v89ff2n0nfWt6t8IM1shCsbr6u3tntF8CxVz97DB/dTXHc9cdKtUxWPMsdz55oke8Zkf
+         dvsw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=bmptYvWdWIOPCd1RN15wApNIIZ5dgXHAl1pedQA7xlU=;
+        b=hzOwEqarfoo9P56nxropiFB5iHcNdtMAAqmZiAZr5Wospgmbn4k56BaP9iUJGUIIgz
+         vXSO98U44azNppraObhGb9OqOLdde2Xtg4ZtPis74wxVPbL+DAYSeNkkUW5fYbksZpFL
+         TlmZ5VJstNTY96BWT4XzUo5/CtJZIS1zI8OmhSPY3Mxri39fzwqwqGZA9YPVxGa/sd/a
+         iPHj99EdQzmYYcyAKcJO3VswqCf7eohxYb5BkDLazK61w+kz7gPGFl11JkWKCsYuodpG
+         V105GlmzWH5f7aHjJgvtmgG8L4BuR0MWEQ4ytD6tcH3F149gzi0HbgeyKis7UWb9KBWk
+         nxnQ==
+X-Gm-Message-State: AOAM5339zyZawyn7cZ82jbceuV5gq47OOhWaXWm1CONAgCSB7S48Tc/W
+	6MEnQ3R779eywOX4fiO2PSKIyAZiLR/Tx30f
+X-Received: by 2002:a37:f612:: with SMTP id y18mr268067qkj.406.1618433772775;
+        Wed, 14 Apr 2021 13:56:12 -0700 (PDT)
+Return-Path: <alinesantanacordeiro@gmail.com>
+Received: from focaruja ([138.204.24.234])
+        by smtp.gmail.com with ESMTPSA id b83sm481917qkc.97.2021.04.14.13.56.12
+        (version=TLS1 cipher=ECDHE-ECDSA-AES128-SHA bits=128/128);
+        Wed, 14 Apr 2021 13:56:12 -0700 (PDT)
+Date: Wed, 14 Apr 2021 17:56:10 -0300
+From: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
- linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-References: <20210414205610.GA9017@focaruja>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Message-ID: <963781e9-118c-8b36-d395-e6fe67a4c5f7@xs4all.nl>
-Date: Thu, 15 Apr 2021 16:11:17 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Firefox/78.0 Thunderbird/78.9.0
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: [PATCH] staging: media: atomisp: pci: Change line break to avoid an
+ open parenthesis at the end of the line
+Message-ID: <20210414205610.GA9017@focaruja>
 MIME-Version: 1.0
-In-Reply-To: <20210414205610.GA9017@focaruja>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-CMAE-Envelope: MS4xfARA5CDS6hAFgvyRHve1Qyx0RD09qWRFv03Ssdzr3jQ+N1Nwzv4ZdPigVGYi+DLww9jHszQCLVWD1TLPLJBqq9jBxvlZIoPVPwOSfXXw2qQxnkuXca28
- 8cRBsAjDY0/jNHEGeUAKxN8yhQEHtUGV3yypia4uUx+/gmXdg7RPgbxL1OOyA1Tk3j21B1YfTaxvQA7gBWAv/MElQOn1m8jZj87C/+EcFJ/CZs/L+XpcNPKa
- Ru5/MHUpy0ZTZEPVgTY+1lJUb0rPE56GjEu8RZQwYfV6gmdfHcRdlz7wBXPJ+oyckTtpgqbPNSOAse/zlKebAaMtQgsw2vOwnaPUTGD+/paWWlK+FFx6VAz7
- qYju/mB7SLZdllmLdq/0TDkoP13o4Ggl25EMBQxrQJP7ViEuvAeCKxDokaK/zdormosG/ZabEFrJHRB+U27FFGrZeUQGn9LZ1j1qOoYvSiK7SdDK8yZuAuDI
- XjNFFZo4qICXFSFp
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-On 14/04/2021 22:56, Aline Santana Cordeiro wrote:
-> Change line break to avoid an open parenthesis at the end of the line.
-> It consequently removed spaces at the start of the subsequent line.
-> Both issues detected by checkpatch.pl.
-> 
-> Signed-off-by: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
-> ---
->  drivers/staging/media/atomisp/pci/atomisp_cmd.h | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/staging/media/atomisp/pci/atomisp_cmd.h b/drivers/staging/media/atomisp/pci/atomisp_cmd.h
-> index 1c0d464..8c4fc2b 100644
-> --- a/drivers/staging/media/atomisp/pci/atomisp_cmd.h
-> +++ b/drivers/staging/media/atomisp/pci/atomisp_cmd.h
-> @@ -75,8 +75,8 @@ void atomisp_wdt(struct timer_list *t);
->  void atomisp_setup_flash(struct atomisp_sub_device *asd);
->  irqreturn_t atomisp_isr(int irq, void *dev);
->  irqreturn_t atomisp_isr_thread(int irq, void *isp_ptr);
-> -const struct atomisp_format_bridge *get_atomisp_format_bridge_from_mbus(
-> -    u32 mbus_code);
-> +const struct atomisp_format_bridge
-> +*get_atomisp_format_bridge_from_mbus(u32 mbus_code);
+Change line break to avoid an open parenthesis at the end of the line.
+It consequently removed spaces at the start of the subsequent line.
+Both issues detected by checkpatch.pl.
 
-You keep the * on the previous line since it is part of the return type.
+Signed-off-by: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
+---
+ drivers/staging/media/atomisp/pci/atomisp_cmd.h | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-Regards,
-
-	Hans
-
->  bool atomisp_is_mbuscode_raw(uint32_t code);
->  int atomisp_get_frame_pgnr(struct atomisp_device *isp,
->  			   const struct ia_css_frame *frame, u32 *p_pgnr);
-> @@ -381,9 +381,9 @@ enum mipi_port_id __get_mipi_port(struct atomisp_device *isp,
->  
->  bool atomisp_is_vf_pipe(struct atomisp_video_pipe *pipe);
->  
-> -void atomisp_apply_css_parameters(
-> -    struct atomisp_sub_device *asd,
-> -    struct atomisp_css_params *css_param);
-> +void atomisp_apply_css_parameters(struct atomisp_sub_device *asd,
-> +				  struct atomisp_css_params *css_param);
-> +
->  void atomisp_free_css_parameters(struct atomisp_css_params *css_param);
->  
->  void atomisp_handle_parameter_and_buffer(struct atomisp_video_pipe *pipe);
-> 
+diff --git a/drivers/staging/media/atomisp/pci/atomisp_cmd.h b/drivers/staging/media/atomisp/pci/atomisp_cmd.h
+index 1c0d464..8c4fc2b 100644
+--- a/drivers/staging/media/atomisp/pci/atomisp_cmd.h
++++ b/drivers/staging/media/atomisp/pci/atomisp_cmd.h
+@@ -75,8 +75,8 @@ void atomisp_wdt(struct timer_list *t);
+ void atomisp_setup_flash(struct atomisp_sub_device *asd);
+ irqreturn_t atomisp_isr(int irq, void *dev);
+ irqreturn_t atomisp_isr_thread(int irq, void *isp_ptr);
+-const struct atomisp_format_bridge *get_atomisp_format_bridge_from_mbus(
+-    u32 mbus_code);
++const struct atomisp_format_bridge
++*get_atomisp_format_bridge_from_mbus(u32 mbus_code);
+ bool atomisp_is_mbuscode_raw(uint32_t code);
+ int atomisp_get_frame_pgnr(struct atomisp_device *isp,
+ 			   const struct ia_css_frame *frame, u32 *p_pgnr);
+@@ -381,9 +381,9 @@ enum mipi_port_id __get_mipi_port(struct atomisp_device *isp,
+ 
+ bool atomisp_is_vf_pipe(struct atomisp_video_pipe *pipe);
+ 
+-void atomisp_apply_css_parameters(
+-    struct atomisp_sub_device *asd,
+-    struct atomisp_css_params *css_param);
++void atomisp_apply_css_parameters(struct atomisp_sub_device *asd,
++				  struct atomisp_css_params *css_param);
++
+ void atomisp_free_css_parameters(struct atomisp_css_params *css_param);
+ 
+ void atomisp_handle_parameter_and_buffer(struct atomisp_video_pipe *pipe);
+-- 
+2.7.4
 
 
