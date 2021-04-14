@@ -1,131 +1,167 @@
-X-GM-THRID: 6802944332146933760
-X-Received: by 2002:a17:90a:da03:: with SMTP id e3mr3421372pjv.57.1583933907847;
-        Wed, 11 Mar 2020 06:38:27 -0700 (PDT)
+X-GM-THRID: 6951081935014723584
+X-Received: by 2002:a63:c042:: with SMTP id z2mr50860pgi.136.1618430796313;
+        Wed, 14 Apr 2021 13:06:36 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:a9c1:: with SMTP id b1ls732117plr.11.gmail; Wed, 11
- Mar 2020 06:38:26 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vu1Yu4CGJSRmORKkMtr5XvkORr+kclsdzs09ZhnD4BjHeePhUgHJM1rfp6BxhFsm0g3HgOy
-X-Received: by 2002:a17:90b:19ca:: with SMTP id nm10mr3467453pjb.157.1583933906149;
-        Wed, 11 Mar 2020 06:38:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583933906; cv=none;
+Received: by 2002:a17:90a:ab81:: with SMTP id n1ls1797100pjq.3.gmail; Wed, 14
+ Apr 2021 13:06:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzEV12hchnMUYHMsy2lpINKOX5pOl0cD6A6LZO5EOrzMahMCOAMZtLryI5tbjvdqTQAsm7O
+X-Received: by 2002:a17:902:b68c:b029:e6:bb9f:7577 with SMTP id c12-20020a170902b68cb02900e6bb9f7577mr39340429pls.0.1618430795174;
+        Wed, 14 Apr 2021 13:06:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618430795; cv=none;
         d=google.com; s=arc-20160816;
-        b=q7jgygPCN9w0dzIMRdI7OiD8srfPksqxaMxf79j6FfIwX5SOpu+rxCY3r3TVg4mJ9i
-         wyYxZr86NAPGACL+t/D9Jbg1eTCGrXxZnHMeDBHdWK7aPjAT43fcoBRQCO2CBazUO/3S
-         0BEebruBukLJKRgWINK2y5/kAMdz7/Omqp1LnJtZ3qo0sD0yjUYof1AWET2HFmTTLq1j
-         bVlqT7SDEYlCMf6O+vHIsmS/0g/FvpX698rbsu4VQl2/tGy4l83YQ6ukrNr+Xqghb02j
-         +0oWzVTTtGp2vwoXKALpQrFdY3VTwvCEspn8Uso84TYPiTBlK1wYs9s6EL07XH7u96dM
-         Lg9g==
+        b=SweWUO0A+wn61Y7GVquepL8aaIpskajKbFOFTd7EnGk2EI8ljKwS7spkh6yW9VvcCI
+         3m37C1KAR+mXP6T778EeyIWGDjiocmmIFWA6qdKlQIrmZoRwZpfckB6NEpi5dmD+Zhda
+         M1IR0zp0E03c2cvClrvbhhCVwjoRrrlBmhy+tyUvgaTUWNFhzxlrSQ7yeFt08cQGRVuP
+         h9l61A/cRGXXJvrotWbGdKjMcr9l/kkdGIZsS+zBVd+F2wCYgU1qiYQwGMLceBLJiWZZ
+         oh3DRc42XbhggDz0SKD0WkPT+8TRvJAWAO25nPOLqLCD6mrFmmZXvLKY/OCmR5ft+40J
+         Pg2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:to:from:dkim-signature;
-        bh=iwO+qWgIM9f3My2kQh2h35ZK0GeUk2RHl41oBvJStTA=;
-        b=neSlR0vgNWEq8fuidxAMyQ/Ol7eBSD1np6grl6Ek7EDBq5iaBNFgRQj0q7G5DbGTVy
-         LDwiS0xHaZvr9l7ZEV/teePWDkl72hKF2izyCMX07Bv6JhAXFFSg4X1kbHKDmap/Bz2z
-         2hiwy9Ml/t6bvsTiLrs7q4AjVKwHHk6sAeoyud+KpHY8zFZ8y0g17DUjSyO0RMww5mqn
-         4Apxc0BJYCBQXQIZ/xmmN0HaFioc5cxLw1qoqTKUYdY0UnveAXzPhdgVs1YjQgiDZETz
-         2ePsAMflmnfIw32m7OrF61dvMqM/yMsXWBS8fi9lH1Sj1ktV9w1W4Cm+24E7nKeITIc0
-         m/Hw==
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:ironport-sdr:ironport-sdr;
+        bh=m0UeUUmEb7K7Z7h4WXWoXlRLopbNknxKD3h/0+w8pnI=;
+        b=XmXYaF3zpQr5m2ashy1nLpxjufzcrHFMMvvmK1U/nDK2tBNtKAqcdxKmmhrKwSKVwQ
+         XyhnMGp/6zg26IhqPrY13k6ommwBhNAmLpnP+ZXJHiVc+iYUqG2NxtATRhPihH0vto/n
+         zdON3A/nDLVeXJoZm200DgbeLn9NBR/8OQdEQpE/8JnmEP4abEtjKgIkEiqMnxCOZ/Yi
+         C2J9WqaxaeOHUjhLpAf9XzkNWp8fGBukqTT3kOh28e0um6VmyaOmcTY1JyKKFEC/NYhC
+         DqOC6DhG33nuE65hNz28AMqj9u6kM2GS7S3rYctPub0EAR8hCni4nGg7Rc9XUIn8i33v
+         f6VQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eMZJz01m;
-       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <shreeya.patel23498@gmail.com>
-Received: from mail-pj1-x1041.google.com (mail-pj1-x1041.google.com. [2607:f8b0:4864:20::1041])
-        by gmr-mx.google.com with ESMTPS id x12si76787plv.3.2020.03.11.06.38.26
+       spf=pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 134.134.136.100 as permitted sender) smtp.mailfrom=sakari.ailus@linux.intel.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <sakari.ailus@linux.intel.com>
+Received: from mga07.intel.com (mga07.intel.com. [134.134.136.100])
+        by gmr-mx.google.com with ESMTPS id p18si33097pgi.3.2021.04.14.13.06.35
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 11 Mar 2020 06:38:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) client-ip=2607:f8b0:4864:20::1041;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 14 Apr 2021 13:06:35 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 134.134.136.100 as permitted sender) client-ip=134.134.136.100;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eMZJz01m;
-       spf=pass (google.com: domain of shreeya.patel23498@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) smtp.mailfrom=shreeya.patel23498@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pj1-x1041.google.com with SMTP id np16so1013248pjb.4
-        for <outreachy-kernel@googlegroups.com>; Wed, 11 Mar 2020 06:38:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:subject:date:message-id;
-        bh=iwO+qWgIM9f3My2kQh2h35ZK0GeUk2RHl41oBvJStTA=;
-        b=eMZJz01mXe3/ifT+hdwJkqR2hwnztmZqsn/QxoJpTI7gXv9Hq7Mho/K3STadVNsqnJ
-         Jx9efTHHul5gLpGYUqgE+I7KKMWhi54bV6FDskbH3N8PpmF7QAepzxONG3RQPwIfm1FY
-         EFbD9hs6enLO4wjYYQS3FeNT7JymO2VaJToosruysIL++2mTBak1+80XCKaphPE0Pww1
-         yhtQl+5WsH/zw3Ne0klDkA8tkO1R91+BvoGZftBIF5zK6tiCwqzLubSKJ3NDhj77PGVN
-         EdCBc/RmqQy3E8C4/YfnfMYDa6N3Q1bO7+ACYUGVnVM0JZpGSJogyiUQNz5ZaMDTlLl+
-         fTjg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:subject:date:message-id;
-        bh=iwO+qWgIM9f3My2kQh2h35ZK0GeUk2RHl41oBvJStTA=;
-        b=eWGuRHwVJxUJ9eQk4nP0OZ+ItuefRWlmP9Z3hO1yiwQkU9gNOG3HPdExC649zrw8xw
-         BE3Y80rcf8b7ZftoYHMiyVG4GbY2RarqGv6xLrk1rgu/W71xrnR70UNqA2OZ0UnXNHbU
-         vLWa2avEziQ5zEx47Z8h0V2qh7AttvBUWVnpgNismOm/UbuEPOP0SWsJdGIARsGVCyTt
-         GJWILJ2gNBcApfG60xxvHMRciHA2rlkD6/gNJtzNsknOy3MiJTEgpoBNFGjnV4o37EOP
-         DbHSF/7HIu8Gs8doN36ONIskvBzHclPXwZZ3wUuAs2D/ii6hJFLYFBHQmEnsxo2soLzN
-         pv7g==
-X-Gm-Message-State: ANhLgQ3WHAJ3inKXLVBlsztS5TBXKjsB8QFkvK22Qpcp62Wjxv8d9Z6v
-	jORmG5wEaKdxjip8A3uWcLU2rlOcGw0=
-X-Received: by 2002:a17:902:bcc5:: with SMTP id o5mr3126671pls.174.1583933905596;
-        Wed, 11 Mar 2020 06:38:25 -0700 (PDT)
-Return-Path: <shreeya.patel23498@gmail.com>
-Received: from localhost.localdomain ([2405:204:287:fb4d:18bc:a849:c699:3914])
-        by smtp.gmail.com with ESMTPSA id k5sm5668922pju.29.2020.03.11.06.38.20
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Mar 2020 06:38:25 -0700 (PDT)
-From: Shreeya Patel <shreeya.patel23498@gmail.com>
-To: gregkh@linuxfoundation.org,
-	devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	sbrivio@redhat.com,
-	daniel.baluta@gmail.com,
-	nramas@linux.microsoft.com,
-	hverkuil@xs4all.nl,
-	shreeya.patel23498@gmail.com,
-	Larry.Finger@lwfinger.net
-Subject: [Outreachy kernel] [PATCH] Staging: rtl8723bs: sdio_halinit: Remove unnecessary conditions
-Date: Wed, 11 Mar 2020 19:08:11 +0530
-Message-Id: <20200311133811.2246-1-shreeya.patel23498@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       spf=pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 134.134.136.100 as permitted sender) smtp.mailfrom=sakari.ailus@linux.intel.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+IronPort-SDR: ke2KYbrfHvzoqEtFaz1jd3XBxHIqKbppuk1eXjeV9fPWijp6up4B9wxHNZqXZLXYtYpKgJYmAq
+ BJ+MDkTeBwIg==
+X-IronPort-AV: E=McAfee;i="6200,9189,9954"; a="258688941"
+X-IronPort-AV: E=Sophos;i="5.82,223,1613462400"; 
+   d="scan'208";a="258688941"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Apr 2021 13:06:34 -0700
+IronPort-SDR: /F/n8F7lMm7e3GOVharWdu5rWXP8oSpLWbns0yEtrIrJZjMsOoYOhObCXE3k+ZJHuJvBwiCMCE
+ GPLVAO67U3gg==
+X-IronPort-AV: E=Sophos;i="5.82,223,1613462400"; 
+   d="scan'208";a="532893966"
+Received: from paasikivi.fi.intel.com ([10.237.72.42])
+  by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Apr 2021 13:06:32 -0700
+Received: from paasikivi.fi.intel.com (localhost [127.0.0.1])
+	by paasikivi.fi.intel.com (Postfix) with ESMTP id 66643204F8;
+	Wed, 14 Apr 2021 23:06:30 +0300 (EEST)
+Date: Wed, 14 Apr 2021 23:06:30 +0300
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: ascordeiro <alinesantanacordeiro@gmail.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH] staging: media: atomisp: pci: Format multi-line comments
+ according to coding-style in file atomisp_cmd.c
+Message-ID: <20210414200630.GE3@paasikivi.fi.intel.com>
+References: <20210414182755.GA2799@focaruja>
+ <20210414183325.GD3@paasikivi.fi.intel.com>
+ <fae832b2555f1d971b45fcdfe34952aa03a42e4d.camel@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <fae832b2555f1d971b45fcdfe34952aa03a42e4d.camel@gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 
-Remove if and else conditions since both are leading to the
-initialization of "valueDMATimeout" and "valueDMAPageCount" with
-the same value.
+On Wed, Apr 14, 2021 at 03:55:42PM -0300, ascordeiro wrote:
+> Em qua, 2021-04-14 �s 21:33 +0300, Sakari Ailus escreveu:
+> > Hi Aline,
+> > 
+> > Thanks for the patch.
+> > 
+> > On Wed, Apr 14, 2021 at 03:27:55PM -0300, Aline Santana Cordeiro
+> > wrote:
+> > > Format multi-line comments according to the coding-style.
+> > > Issue detected by checkpatch.pl.
+> > > 
+> > > Signed-off-by: Aline Santana Cordeiro <
+> > > alinesantanacordeiro@gmail.com>
+> > > ---
+> > > �drivers/staging/media/atomisp/pci/atomisp_cmd.c | 109
+> > > ++++++++++++++----------
+> > > �1 file changed, 65 insertions(+), 44 deletions(-)
+> > > 
+> > > diff --git a/drivers/staging/media/atomisp/pci/atomisp_cmd.c
+> > > b/drivers/staging/media/atomisp/pci/atomisp_cmd.c
+> > > index 592ea99..6113785 100644
+> > > --- a/drivers/staging/media/atomisp/pci/atomisp_cmd.c
+> > > +++ b/drivers/staging/media/atomisp/pci/atomisp_cmd.c
+> > > @@ -67,7 +67,8 @@
+> > > � * At 15fps this means 133ms. We set the timeout a bit longer.
+> > > � * Each flash driver is supposed to set its own timeout, but
+> > > � * just in case someone else changed the timeout, we set it
+> > > - * here to make sure we don't damage the flash hardware. */
+> > > + * here to make sure we don't damage the flash hardware.
+> > > + */
+> > > �#define FLASH_TIMEOUT 800 /* ms */
+> > > �
+> > > �union host {
+> > > @@ -562,7 +563,8 @@ irqreturn_t atomisp_isr(int irq, void *dev)
+> > > ������������������������ * and driver needs to keep old
+> > > sequence_temp value.
+> > > ������������������������ * NOTE: There is assumption here that ISP
+> > > will not
+> > > ������������������������ * start processing next frame from sensor
+> > > before old
+> > > -����������������������� * one is completely done. */
+> > > +����������������������� * one is completely done.
+> > > +����������������������� */
+> > > ������������������������if (atomic_read(&asd->sequence) ==
+> > > atomic_read(
+> > > ��������������������������������&asd->sequence_temp))
+> > > ��������������������������������atomic_set(&asd->sequence_temp,
+> > > @@ -1247,7 +1249,8 @@ void atomisp_buf_done(struct
+> > > atomisp_sub_device *asd, int error,
+> > > �
+> > > ��������if (IS_ISP2401) {
+> > > ����������������/* If there are no buffers queued then
+> > 
+> > This should begin with:
+> > 
+> > ����������������/*
+> > ���������������� *
+> > 
+> > And the same for the rest. Apart from this the patch seems fine.
+> > 
+> Hi Sakari,
+> 
+> I'm going to send a v2 correcting all the multi-line comments that are
+> not beginning like this.
+> 
+> Besides, there are single line comments with different styles, a few
+> like this:
+> 
+> case 1:				/* comment */
+> 
+> and the other like this:
+> 				/*
+> case2:				 * comment
+>  				 */
+> 
+> Should I standardize these ones to the first case?
 
-Found using coccinelle script.
+The first one is preferred for multi-line comments. But please keep under
+80 characters per line.
 
-Signed-off-by: Shreeya Patel <shreeya.patel23498@gmail.com>
----
- drivers/staging/rtl8723bs/hal/sdio_halinit.c | 17 +++++------------
- 1 file changed, 5 insertions(+), 12 deletions(-)
+> 
+> Thank you for yout attention,
 
-diff --git a/drivers/staging/rtl8723bs/hal/sdio_halinit.c b/drivers/staging/rtl8723bs/hal/sdio_halinit.c
-index e813382e78a6..643592b0bd38 100644
---- a/drivers/staging/rtl8723bs/hal/sdio_halinit.c
-+++ b/drivers/staging/rtl8723bs/hal/sdio_halinit.c
-@@ -551,18 +551,11 @@ static void HalRxAggr8723BSdio(struct adapter *padapter)
- 
- 	pregistrypriv = &padapter->registrypriv;
- 
--	if (pregistrypriv->wifi_spec) {
--		/*  2010.04.27 hpfan */
--		/*  Adjust RxAggrTimeout to close to zero disable RxAggr, suggested by designer */
--		/*  Timeout value is calculated by 34 / (2^n) */
--		valueDMATimeout = 0x06;
--		valueDMAPageCount = 0x06;
--	} else {
--		/*  20130530, Isaac@SD1 suggest 3 kinds of parameter */
--		/*  TX/RX Balance */
--		valueDMATimeout = 0x06;
--		valueDMAPageCount = 0x06;
--	}
-+	/*  2010.04.27 hpfan */
-+	/*  Adjust RxAggrTimeout to close to zero disable RxAggr, suggested by designer */
-+	/*  Timeout value is calculated by 34 / (2^n) */
-+	valueDMATimeout = 0x06;
-+	valueDMAPageCount = 0x06;
- 
- 	rtw_write8(padapter, REG_RXDMA_AGG_PG_TH + 1, valueDMATimeout);
- 	rtw_write8(padapter, REG_RXDMA_AGG_PG_TH, valueDMAPageCount);
+You're welcome!
+
 -- 
-2.17.1
+Kind regards,
 
+Sakari Ailus
 
