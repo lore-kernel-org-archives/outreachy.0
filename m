@@ -1,151 +1,153 @@
-X-GM-THRID: 6949973907804782592
-X-Received: by 2002:aa7:d445:: with SMTP id q5mr26943385edr.318.1618166898497;
-        Sun, 11 Apr 2021 11:48:18 -0700 (PDT)
+X-GM-THRID: 6950903323792769024
+X-Received: by 2002:a17:90a:d681:: with SMTP id x1mr4191200pju.82.1618495496561;
+        Thu, 15 Apr 2021 07:04:56 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6402:4c2:: with SMTP id n2ls438555edw.2.gmail; Sun, 11
- Apr 2021 11:48:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxkDpxSs42Fx5bnK3EY5McyXiGLRN1G80TxVYOq3gdTujhtKwD54RLKb4D/nV1n2JbBEsLm
-X-Received: by 2002:a05:6402:34c8:: with SMTP id w8mr27346075edc.235.1618166896964;
-        Sun, 11 Apr 2021 11:48:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618166896; cv=none;
+Received: by 2002:a17:902:860c:: with SMTP id f12ls3275599plo.5.gmail; Thu, 15
+ Apr 2021 07:04:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx2ZZqc1coPeS1g2KNsPOiok+gxYQ4VuVlS3rNvpvON+5pO8+KAdzMU9aC0v7SYT7pMN/pm
+X-Received: by 2002:a17:902:b602:b029:e6:cabb:10b9 with SMTP id b2-20020a170902b602b02900e6cabb10b9mr3995183pls.47.1618495445491;
+        Thu, 15 Apr 2021 07:04:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618495445; cv=none;
         d=google.com; s=arc-20160816;
-        b=jJpVcII4KuHRKt2YOpRHapeujAjzzoo8hn/JUf54TeAg5sSU5GMERxr6P5u6myG9M6
-         U1DQvM/AZBVK0waW3wMKL61L29yqZQ5NdFJLltd4oPGLqsLOAW8oWj6Py7KueJFuzlFM
-         LHj/CBZyy3YQTJqri/wxFiEDmZMUzIee+0b3eAWwz73M0uEgEhSON/b6O4LCrBzDARWO
-         p6QuaYxtQeq6eUNFlspS+HN/CIIHUcHOS/wPevi7HYk88uyMsM7SBEhjd21b2lA8ijn9
-         b06Se+fSudDV6LUaVYty53FaKgleMLOZeU8jlbK/xf0nOvfDDBzPFZoKuUn5jF6QMRYw
-         AWbQ==
+        b=kx/1y+/G3lLRPW505vOliRPRvM7KeV83zDxroMMZyrIyxHD9E/94z+TTuSJKjzOhad
+         tW6X7Io74VfZaa05eQ4M03Qfj0xzuz/xvYF+nB+o/bObo6Bmoq52IJW5DhdTz0nwpz/H
+         W+EzLIlLwXGoLZ5sWr+ZDMUwQm0mja9HGcWEat90i+OSRmPYBY0KHsD9j2alJZ5vRt7K
+         Uuxm6yA5HBDuly9pT2swkMVzJ6+gK3FTLaszQUUeQ8oDANRktTSNFfpNxhAaQR9QM988
+         xRR2ASBq3bnuZ2BB+Vecv1XoImb7fOJrZQoIhsi9lzD6Z1qOXpBLvkcIqFezEEcwOlo0
+         ekDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=CLWRaO5ZqKnnKAniIlo1Keihq6ioiH5Ebgdd1JLKcuU=;
-        b=g/KTo/ojK9+6xzFGm7JyRJ3aPhVQ2o37f65/L9SHjR3GBhKBEw/HkXgLqklmg6HvQn
-         yZ0HDQYH7DMfFDdhrvTeIkFYSpQ/siyeRHbi0ZcYhOvlUwHtdfObRGxGEqwpyOTDPdss
-         zEACfmIJTSITyM4ys69rnaHnBP4q1sPblXwq5pTw/qyWdLhwmt1XT5nbfDZnQpqRlIvJ
-         9p/9hZikYBNFjZ5Q7CAM0wur6Bp42qoXjRlEV2R91wluJGnVcIw47GDw9eHtDFmL6Mdt
-         zjnhnWbdWnl5mzV0UwWzUlXwX7Fl1mmMqF/e7ylxc3dmDXw9Y8O3vyBSXBH93IlBdOK9
-         BlvA==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=5XPT6W5he0UfMYjZNPGLkFire9o8RBMsN2S/bCzx5Ng=;
+        b=UA4yKBpd96Rd5vyf+ENDwUFqqeeLoxzbaxUnQ0FkRS+SBJARcuYb3kYcgz4usH7lTW
+         qvZ2HYtRL99xNHCv090XQKhxkZj8yy3tObiQKz3yj8vHaGp93chXcIv2Yxvh+pbx+fvR
+         jkRwcrm4p4BGDGtu9h+1Jj8y0m9bZ+ewEcx+x0gxrwtNpg1lGC937X9R09jUW0j308wn
+         PyVu8GALMqUL1i7y2afQqV08bV6/jXzOM4lZb++FyCWrM928iVzQtLCiY+2yuSrGpIh2
+         I8l2QZp1gGkkyPem9SC6m/ifns/LnJhvyj7u9WzyXZ42e4D8xmT28Md8WJ7zNEgXQv8R
+         1ysA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Tbw7JlML;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::529 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=cleochVx;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::52a as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from mail-ed1-x529.google.com (mail-ed1-x529.google.com. [2a00:1450:4864:20::529])
-        by gmr-mx.google.com with ESMTPS id r21si776081ejo.0.2021.04.11.11.48.16
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from mail-pg1-x52a.google.com (mail-pg1-x52a.google.com. [2607:f8b0:4864:20::52a])
+        by gmr-mx.google.com with ESMTPS id mz7si1110080pjb.0.2021.04.15.07.04.05
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 11 Apr 2021 11:48:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::529 as permitted sender) client-ip=2a00:1450:4864:20::529;
+        Thu, 15 Apr 2021 07:04:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::52a as permitted sender) client-ip=2607:f8b0:4864:20::52a;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Tbw7JlML;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::529 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=cleochVx;
+       spf=pass (google.com: domain of mitaliborkar810@gmail.com designates 2607:f8b0:4864:20::52a as permitted sender) smtp.mailfrom=mitaliborkar810@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ed1-x529.google.com with SMTP id m3so12425575edv.5
-        for <outreachy-kernel@googlegroups.com>; Sun, 11 Apr 2021 11:48:16 -0700 (PDT)
+Received: by mail-pg1-x52a.google.com with SMTP id 31so1518539pgn.13
+        for <outreachy-kernel@googlegroups.com>; Thu, 15 Apr 2021 07:04:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=CLWRaO5ZqKnnKAniIlo1Keihq6ioiH5Ebgdd1JLKcuU=;
-        b=Tbw7JlMLqgWsGYOF21ZRyS0bymgqTuwt4PVr2F6MnnlmvSonJJyx3KJmHrKSIJgy0e
-         0VSGrJeeZjQA8UFi9AJujw+qgIrazKf+HQJvj9gdTo/sxOmRGA4hnTuES41GB5bRgLKe
-         Y0O8FTDiUJsJ/b/zTD/YbrElyMWoFnw/kcSRp3gusC0i7IfEvYfU5uz7FFz0TdW480+U
-         2r6wKpDhZDEVdqx1r9xSCZH9cS2vvR6ZTpbdALxJNFCcdBDCZKwKNM9kFZ6tECRO0y/8
-         OeYIRheFAKCmu5bHEr2MgkYjkf1Hfydp22y9uXpwRvJrLGK12O615ivS8iSfyFIm+RIr
-         gHhA==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=5XPT6W5he0UfMYjZNPGLkFire9o8RBMsN2S/bCzx5Ng=;
+        b=cleochVxryEm6n+xPLdbi6rWCiJMx6jse9wDAZ2S6KURoNsWa8shkEYnqJ3kerW42j
+         aEoddADtBA7Je9fqWlaPShWFbBRSsrqjiFJlKDF1d95merOtepfBt0qOsNOw/vsfS5nL
+         tu+zjwAb4PDxVVsaJHws0sN7ld6LlZna6zZlwi3a/wwPIzmb22qvQIBBZKDUv5hhbZqB
+         hnNDSD+Wfd0Ps9LdLRQx30WNR/orJZjOCiDSB8EI8TvwtgE69qaWXUiKCJ9R/+O3XSYH
+         hbEZo9IJAzM7u9euVsmHGqSqZfPUS9MGhxZqOwNBnq8LDgTrRP3+lD6I8CqpAIOTRW0f
+         3tdQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=CLWRaO5ZqKnnKAniIlo1Keihq6ioiH5Ebgdd1JLKcuU=;
-        b=bEs79QjWrHiyX9amP0oAkj+mkXOHfXHCYW/kjUD0tNYGxL+UL4iBrXkxH0tC4kjZyL
-         Uat8uuIjJ133gXTfcYOZ/VZhMmJrj3Rr22wxxhTEBZ8Bg+z6rsEXBGIyuow9UZOb1RUs
-         JzEM9WUhQfZl+feY9E0YXJ2oVJdg1hgWlP6O3z4TL6jFmXo5hdFoIpSVT6BW+x1SFait
-         L3Lexi/1jgd97ejSyxAcj+UgTLoc9l5ntXwfe1EbbBsYj13xnhsB95Egm+rrOx0UuCmM
-         cHLEH9V0LhdIRRobJG3eLIfUs0DlNiLX8u+LawoWtSmihzZVA2ykZ0WG9XqOcuZVfzpy
-         P6tw==
-X-Gm-Message-State: AOAM5329ec5Z38rdo1aFGr0dhHk+W6LIishwhoh9HjZZQotFyEgatiJE
-	FVvayoPKecT5GLdwPv7wgjE=
-X-Received: by 2002:aa7:cb89:: with SMTP id r9mr26607291edt.245.1618166896788;
-        Sun, 11 Apr 2021 11:48:16 -0700 (PDT)
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from localhost.localdomain (host-95-237-55-30.retail.telecomitalia.it. [95.237.55.30])
-        by smtp.gmail.com with ESMTPSA id q18sm5069171edr.26.2021.04.11.11.48.15
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=5XPT6W5he0UfMYjZNPGLkFire9o8RBMsN2S/bCzx5Ng=;
+        b=FFMlZQZgI9Ic7DEDCBkZ6aaGTtKfpQNS5PInSDMV7CamsI2K12TDlF6NF1xgrZ69xC
+         IzIUV+M5N6hnqo7YUTYicpk+69FZp/R+N/oRu+39mnm+dzPeufXFWcw8VFtxGoDmshWk
+         5kJ6qmd+XNlYM+GH9GHe7Lbi+GS7wvpOhMtivLNtRqHkJoD219XyqW4bqmj1YgBCnH/L
+         6QHrXLNUzA1jn7SLBr2sfDouojhnuFjBB8RURojCvsAS1xvdYrESBRloylnaCUFsFQCU
+         nprr+Q4dls2acY9CHJZrG/UnV/Hugp8FLcZaXEU9IYbp1ULlIOjkf7QSmYPZ0LmDUtb4
+         qBJw==
+X-Gm-Message-State: AOAM532QoLhrTgUv4ALD3wwYOX2K/BqnvhOvNQkj8osx1BkwjgpzawGM
+	MxmwsGNXIvjvINnNre+qBZQ=
+X-Received: by 2002:a62:52c7:0:b029:255:e78e:5069 with SMTP id g190-20020a6252c70000b0290255e78e5069mr3227022pfb.45.1618495444989;
+        Thu, 15 Apr 2021 07:04:04 -0700 (PDT)
+Return-Path: <mitaliborkar810@gmail.com>
+Received: from kali ([103.141.87.254])
+        by smtp.gmail.com with ESMTPSA id y187sm2330633pfb.109.2021.04.15.07.04.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 11 Apr 2021 11:48:16 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>,
-	outreachy-kernel@googlegroups.com,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Subject: [Outreachy kernel] [PATCH] staging: rtl8192u: Remove function
-Date: Sun, 11 Apr 2021 20:48:13 +0200
-Message-Id: <20210411184813.22836-1-fmdefrancesco@gmail.com>
-X-Mailer: git-send-email 2.31.1
+        Thu, 15 Apr 2021 07:04:04 -0700 (PDT)
+Date: Thu, 15 Apr 2021 19:33:56 +0530
+From: Mitali Borkar <mitaliborkar810@gmail.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Cc: gregkh@linuxfoundation.org, davem@davemloft.net, kuba@kernel.org,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy-kernel@googlegroups.com, mitali_s@me.iitr.ac.in
+Subject: Re: [PATCH v2 4/5] staging: rtl8192e: rectified spelling mistake and
+ replace memcmp with ether_oui_equal
+Message-ID: <YHhHzF6A2Syfbxpi@kali>
+References: <cover.1618380932.git.mitaliborkar810@gmail.com>
+ <eda8d3401f2f7ff7a61137b4935c6ccb09112e52.1618380932.git.mitaliborkar810@gmail.com>
+ <20210414075525.GR6021@kadam>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20210414075525.GR6021@kadam>
 
-Remove cmpk_handle_query_config_rx() because it just initializes a local
-variable and then returns "void".
+On Wed, Apr 14, 2021 at 10:55:25AM +0300, Dan Carpenter wrote:
+> On Wed, Apr 14, 2021 at 12:26:01PM +0530, Mitali Borkar wrote:
+> > Added a generic function of static inline bool in
+> > include/linux/etherdevice.h to replace memcmp with
+> > ether_oui_equal throughout the execution.
+> > Corrected the misspelled words in this file.
+> > 
+> > Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
+> > ---
+> >  
+> > Changes from v1:- Rectified spelling mistake and replaced memcmp with
+> > ether_oui_equal.
+> > 
+> >  drivers/staging/rtl8192e/rtl819x_HTProc.c | 48 +++++++++++------------
+> >  include/linux/etherdevice.h               |  5 +++
+>    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> This is networking code and not staging code, but the netdev mailing
+> list isn't CC'd.
+>
+I didn't knew mail id then, I will look into this,
 
-Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
----
- drivers/staging/rtl8192u/r819xU_cmdpkt.c | 40 ------------------------
- 1 file changed, 40 deletions(-)
+> >  2 files changed, 29 insertions(+), 24 deletions(-)
+> > 
+> > diff --git a/drivers/staging/rtl8192e/rtl819x_HTProc.c b/drivers/staging/rtl8192e/rtl819x_HTProc.c
+> > index ec6b46166e84..ce58feb2af9a 100644
+> > --- a/drivers/staging/rtl8192e/rtl819x_HTProc.c
+> > +++ b/drivers/staging/rtl8192e/rtl819x_HTProc.c
+> > @@ -43,7 +43,7 @@ u16 MCS_DATA_RATE[2][2][77] = {
+> >  	 810, 720, 810, 900, 900, 990} }
+> >  };
+> >  
+> > -static u8 UNKNOWN_BORADCOM[3] = {0x00, 0x14, 0xbf};
+> > +static u8 UNKNOWN_BROADCOM[3] = {0x00, 0x14, 0xbf};
+> 
+> Please pull this spelling fix into its own patch.
+> 
+Okay Sir.
 
-diff --git a/drivers/staging/rtl8192u/r819xU_cmdpkt.c b/drivers/staging/rtl8192u/r819xU_cmdpkt.c
-index 4cece40a92f6..d5a54c2d3086 100644
---- a/drivers/staging/rtl8192u/r819xU_cmdpkt.c
-+++ b/drivers/staging/rtl8192u/r819xU_cmdpkt.c
-@@ -249,46 +249,6 @@ static void cmpk_handle_interrupt_status(struct net_device *dev, u8 *pmsg)
- 	DMESG("<---- cmpk_handle_interrupt_status()\n");
- }
- 
--/*-----------------------------------------------------------------------------
-- * Function:    cmpk_handle_query_config_rx()
-- *
-- * Overview:    The function is responsible for extract the message from
-- *		firmware. It will contain dedicated info in
-- *		ws-06-0063-rtl8190-command-packet-specification. Please
-- *		refer to chapter "Beacon State Element".
-- *
-- * Input:       u8    *pmsg	-	Message Pointer of the command packet.
-- *
-- * Output:      NONE
-- *
-- * Return:      NONE
-- *
-- * Revised History:
-- *  When		Who	Remark
-- *  05/12/2008		amy	Create Version 0 porting from windows code.
-- *
-- *---------------------------------------------------------------------------
-- */
--static void cmpk_handle_query_config_rx(struct net_device *dev, u8 *pmsg)
--{
--	struct cmpk_query_cfg	rx_query_cfg;
--
--	/* 1. Extract TX feedback info from RFD to temp structure buffer. */
--	/* It seems that FW use big endian(MIPS) and DRV use little endian in
--	 * windows OS. So we have to read the content byte by byte or transfer
--	 * endian type before copy the message copy.
--	 */
--	rx_query_cfg.cfg_action		= (pmsg[4] & 0x80) >> 7;
--	rx_query_cfg.cfg_type		= (pmsg[4] & 0x60) >> 5;
--	rx_query_cfg.cfg_size		= (pmsg[4] & 0x18) >> 3;
--	rx_query_cfg.cfg_page		= (pmsg[6] & 0x0F) >> 0;
--	rx_query_cfg.cfg_offset		= pmsg[7];
--	rx_query_cfg.value		= (pmsg[8]  << 24) | (pmsg[9]  << 16) |
--					  (pmsg[10] <<  8) | (pmsg[11] <<  0);
--	rx_query_cfg.mask		= (pmsg[12] << 24) | (pmsg[13] << 16) |
--					  (pmsg[14] <<  8) | (pmsg[15] <<  0);
--}
--
- /*-----------------------------------------------------------------------------
-  * Function:	cmpk_count_tx_status()
-  *
--- 
-2.31.1
+> [ snip ]
+> 
+> > diff --git a/include/linux/etherdevice.h b/include/linux/etherdevice.h
+> > index 2e5debc0373c..6a1a63168319 100644
+> > --- a/include/linux/etherdevice.h
+> > +++ b/include/linux/etherdevice.h
+> > @@ -87,6 +87,11 @@ static inline bool is_link_local_ether_addr(const u8 *addr)
+> >  #endif
+> >  }
+> >  
+> > +static inline bool ether_oui_equal(const u8 *addr, const u8 *oui)
+> > +{
+> > +return addr[0] == oui[0] && addr[1] == oui[1] && addr[2] == oui[2];
+> > +}
+> 
+> The indenting is messed up on this.
+>
+OKay Sir, I am looking into this.
 
+> regards,
+> dan carpenter
+> 
 
