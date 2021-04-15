@@ -1,62 +1,58 @@
 X-GM-THRID: 6951120130932736000
-X-Received: by 2002:a9d:730b:: with SMTP id e11mr993679otk.166.1618521725553;
-        Thu, 15 Apr 2021 14:22:05 -0700 (PDT)
+X-Received: by 2002:a17:907:210a:: with SMTP id qn10mr5341785ejb.414.1618516809973;
+        Thu, 15 Apr 2021 13:00:09 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:5c5:: with SMTP id 188ls1626889oif.6.gmail; Thu, 15 Apr
- 2021 14:22:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwRR+Ic+2kZBQs2OLTLJ4f7/QgYT6oShK/Kba688Zavf2GusMK8sK9BOs7l7fX/ZHEw0FLr
-X-Received: by 2002:aca:ba03:: with SMTP id k3mr3900962oif.103.1618521724655;
-        Thu, 15 Apr 2021 14:22:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618521724; cv=none;
+Received: by 2002:a05:6402:4c2:: with SMTP id n2ls6489520edw.2.gmail; Thu, 15
+ Apr 2021 13:00:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzMSIwJfTZBm2vgI5B9oytGoxcs2rCAerNGx+l1kM6l8W8X2CIU9INOYGvVYM+cta9HbhA2
+X-Received: by 2002:aa7:da0e:: with SMTP id r14mr5996689eds.375.1618516808552;
+        Thu, 15 Apr 2021 13:00:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618516808; cv=none;
         d=google.com; s=arc-20160816;
-        b=J8J5AhEV89xsH6NKI7doLJAXQysR6FUZ85oQ0qs5RLOI+5p6y33SRaiZdbFYsqK5kB
-         E3+kByfsNONd5ItuEOo3kQ1DkY+g7AcgJx6p+ERbNCXKhyfyDi6258X7OOryNUKOBgN9
-         TN/3w9fkaLSheJ+PrYpTc23r+1nkQksohx5UhfKsg9dkR5aQUEBZio8bGnRl0uX25bb1
-         vtsfIiGC5+TGddPT12jLtNOPS9zfPeaVTi3+zQfRlpch5b4AopzQBDDoL8yedzydD+3N
-         XZfmnBZuO/D5clS4h7Z0WsWabJi/yRx/d/b1je9mnYBazBrMvt6njGfUmWMlcixdjDKm
-         t9CQ==
+        b=e9OAC3396T4J/b7yZndla09GjlypUr3gnc8C6aQ7sF/8unYsulSxAgJIB47AyHoSpV
+         Ik2T3MdvA8ucnsXtzQvjvh2uqUBi8JSei+qnKCFlSyNQtHkOOwQTLthnJSpwfcY0X4PK
+         60T5fOV8wJmus0M4xtl9R9pxWjhD18uCfu5ffIbUDc7B8ooNSN+7PVrG34pBN77D5j9J
+         oMcP0tB3IwWIi8ORqzeOd5boKpVP6sFvb1yvtxzeygNNohwv2dr9xtfLhtCvZe1NWsXt
+         YWK5WlDaVHZ8DVWuEzvjPKntPdh0ODSODMzzxXYCPoNCWD5r0s7Y3XHOmId/Yioc/Lml
+         Oweg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:ironport-sdr:ironport-sdr;
-        bh=wbDH6xYQi3dYGx0flWx7XY975R06rnzEPKtU3x5/zDk=;
-        b=sfGZsWCH72kAiywmGl6CKzJVsWzoOUUwmeTl+3saqZyCtQOdQFds+KkaKFQM/agfgw
-         GBE8cQWHzwjZCTFLIMet9TwWLVG1/rncnF8IwNVq+qgunO7zmcHK788/M5t3j6MN8mVE
-         CwshLzVNslS8yCd8srOl3rmZfqtqOg4in9o2hMMOjqTVxsVHdoN4UE7bDOv4G0kAUhdR
-         gb8VlEcHy4Tx5FRvLiNPr4r+h0vRY7VgCCE6FBURPOdYUxyF5NgQ+mLIvshmTYSkB76f
-         e7vP884YjpWby9JmxqwS4nJ+R5OlCKLRW2Xum+p/+OF9fJ9LeITiGuRkcmGeL9vkhzDR
-         DzyQ==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=Jidstt2/GQtBM10h7qL1vxyo4ZsH+nyyJX9lVogApq4=;
+        b=IkpXoXYMfx2ZrkT434ZEwbeDfB5j2foYt59dLl4ab0ybHi+rOni2WC8/fy+AMHqT0Q
+         EMqPf7Y7jDBrJnxQulDz/yZ1m9Ct67YRrrQzEzCX1Iiiy4rPH/QJBoSStmFiRuYlEKwI
+         yTRPaqHXB1Eh8crwwhC0d3mosxeIh28F61GBhH9pUrp64eG0iuOcxyca4ekK4g4z5l1q
+         Ed/ntRiS13Y6sI90++bV6psJsNaAhTf+IZdlNxzYFX8clzYLDwcYnMoXoZ7kLLhJF5N3
+         lsrpO5Uei7PHwbrpPe7NCI+mAoUPRgpG6dsOmWUSr1v19Q5sbj8iH1ZSqawLVjra6u7q
+         Atyg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 192.55.52.43 as permitted sender) smtp.mailfrom=sakari.ailus@linux.intel.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <sakari.ailus@linux.intel.com>
-Received: from mga05.intel.com (mga05.intel.com. [192.55.52.43])
-        by gmr-mx.google.com with ESMTPS id m62si295307oig.5.2021.04.15.14.22.04
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=GXqEg47I;
+       spf=pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) smtp.mailfrom=willy@infradead.org
+Return-Path: <willy@infradead.org>
+Received: from casper.infradead.org (casper.infradead.org. [2001:8b0:10b:1236::1])
+        by gmr-mx.google.com with ESMTPS id h1si185871edw.3.2021.04.15.13.00.08
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Apr 2021 14:22:04 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 192.55.52.43 as permitted sender) client-ip=192.55.52.43;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 15 Apr 2021 13:00:08 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) client-ip=2001:8b0:10b:1236::1;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: best guess record for domain of sakari.ailus@linux.intel.com designates 192.55.52.43 as permitted sender) smtp.mailfrom=sakari.ailus@linux.intel.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-IronPort-SDR: BU5JLhwBe1eSDMip4DsHAkMkDPMrdl+R1ITUUm74VniWJRpdkXRmnAU9dloDOalBGRhqapK02O
- KpNXFjAURdZQ==
-X-IronPort-AV: E=McAfee;i="6200,9189,9955"; a="280260606"
-X-IronPort-AV: E=Sophos;i="5.82,225,1613462400"; 
-   d="scan'208";a="280260606"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
-  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Apr 2021 14:22:02 -0700
-IronPort-SDR: edfhmDWBq4D32ytRDaSJdaCo3lFDKzjLHcP4EAWXKQUPkEKrVTbYXKXBIceoIwGr8lx19WZnMn
- YI+F1VdRQubg==
-X-IronPort-AV: E=Sophos;i="5.82,225,1613462400"; 
-   d="scan'208";a="451258859"
-Received: from paasikivi.fi.intel.com ([10.237.72.42])
-  by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Apr 2021 14:22:00 -0700
-Received: from paasikivi.fi.intel.com (localhost [127.0.0.1])
-	by paasikivi.fi.intel.com (Postfix) with SMTP id 608852051E;
-	Fri, 16 Apr 2021 00:21:58 +0300 (EEST)
-Date: Fri, 16 Apr 2021 00:21:58 +0300
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Matthew Wilcox <willy@infradead.org>
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=GXqEg47I;
+       spf=pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) smtp.mailfrom=willy@infradead.org
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=Jidstt2/GQtBM10h7qL1vxyo4ZsH+nyyJX9lVogApq4=; b=GXqEg47IGUl3iUkF0KKQI28r5i
+	dXx0qi4Ae6gDsIoXFQVAAC2MYV3sv4hydRUaejqig0bIuTdEbTa42bMVyWl2MjtkrJy/n115VvYWe
+	AhMwH1m3yGKaa2KzY9fD65upkcgJwjyBdXpGxrkeOuUfulBaEqEom1khvrU0dhtXhi2ho7aYmCv4k
+	Y5TA/PCz/aBcZNTXvPHp354+UrRhf1bXzp5uBCI5OxTIE4pA4x3zVKYWTJaDC/SR+ElSEke5nWeb8
+	fjtpJh02CDA3xdPUdHKQD22nF2nG2kfSdC2bKHPdS4OR+BHsUsic7RIkbuyAARmJQRNr2BbsI1oyV
+	qxcO1aIw==;
+Received: from willy by casper.infradead.org with local (Exim 4.94 #2 (Red Hat Linux))
+	id 1lX89N-0091Za-NN; Thu, 15 Apr 2021 19:59:44 +0000
+Date: Thu, 15 Apr 2021 20:59:41 +0100
+From: Matthew Wilcox <willy@infradead.org>
+To: Sakari Ailus <sakari.ailus@linux.intel.com>
 Cc: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -64,47 +60,32 @@ Cc: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>,
 	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH v2] staging: media: atomisp: pci:
  Change line break to avoid an open parenthesis at the end of the line
-Message-ID: <20210415212158.GK3@paasikivi.fi.intel.com>
+Message-ID: <20210415195941.GF2531743@casper.infradead.org>
 References: <20210415170819.GA17534@focaruja>
  <20210415171409.GC2531743@casper.infradead.org>
  <20210415194955.GI3@paasikivi.fi.intel.com>
  <20210415195704.GE2531743@casper.infradead.org>
- <20210415195941.GF2531743@casper.infradead.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20210415195941.GF2531743@casper.infradead.org>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+In-Reply-To: <20210415195704.GE2531743@casper.infradead.org>
 
-On Thu, Apr 15, 2021 at 08:59:41PM +0100, Matthew Wilcox wrote:
-> On Thu, Apr 15, 2021 at 08:57:04PM +0100, Matthew Wilcox wrote:
-> > On Thu, Apr 15, 2021 at 10:49:55PM +0300, Sakari Ailus wrote:
-> > > On Thu, Apr 15, 2021 at 06:14:09PM +0100, Matthew Wilcox wrote:
-> > > > On Thu, Apr 15, 2021 at 02:08:19PM -0300, Aline Santana Cordeiro wrote:
-> > > > > -const struct atomisp_format_bridge *get_atomisp_format_bridge_from_mbus(
-> > > > > -    u32 mbus_code);
-> > > > > +const struct atomisp_format_bridge*
-> > > > > +get_atomisp_format_bridge_from_mbus(u32 mbus_code);
-> > > > 
-> > > > No, this does not match coding style.  Probably best to break the
-> > > > 80-column guideline in this instance.  Best would be to have a function
+On Thu, Apr 15, 2021 at 08:57:04PM +0100, Matthew Wilcox wrote:
+> On Thu, Apr 15, 2021 at 10:49:55PM +0300, Sakari Ailus wrote:
+> > On Thu, Apr 15, 2021 at 06:14:09PM +0100, Matthew Wilcox wrote:
+> > > On Thu, Apr 15, 2021 at 02:08:19PM -0300, Aline Santana Cordeiro wrote:
+> > > > -const struct atomisp_format_bridge *get_atomisp_format_bridge_from_mbus(
+> > > > -    u32 mbus_code);
+> > > > +const struct atomisp_format_bridge*
+> > > > +get_atomisp_format_bridge_from_mbus(u32 mbus_code);
 > > > 
-> > > Having the return type on the previous line is perfectly fine. There should
-> > > be a space before the asterisk though.
+> > > No, this does not match coding style.  Probably best to break the
+> > > 80-column guideline in this instance.  Best would be to have a function
 > > 
-> > No, it's not.  Linus has ranted about that before.
+> > Having the return type on the previous line is perfectly fine. There should
+> > be a space before the asterisk though.
 > 
-> Found it.  https://lore.kernel.org/lkml/1054519757.161606@palladium.transmeta.com/
+> No, it's not.  Linus has ranted about that before.
 
-Two decades ago, really?
-
-This is simply one of the practical means how you split long function
-declarations and avoid overly long lines. Not my favourite though, but
-still better than those long lines.
-
-My personal preference would be to wrap at the opening parenthesis and
-indent by just a tab, but I know many people who disagree with that...
-
--- 
-Sakari Ailus
+Found it.  https://lore.kernel.org/lkml/1054519757.161606@palladium.transmeta.com/
 
