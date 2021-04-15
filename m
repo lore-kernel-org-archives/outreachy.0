@@ -1,100 +1,87 @@
-X-GM-THRID: 6675288558686699520
-X-Received: by 2002:aca:e44f:: with SMTP id b76mr8366460oih.31.1554211731595;
-        Tue, 02 Apr 2019 06:28:51 -0700 (PDT)
+X-GM-THRID: 6951392846508195840
+X-Received: by 2002:a2e:9cc5:: with SMTP id g5mr1957603ljj.331.1618497270914;
+        Thu, 15 Apr 2021 07:34:30 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a9d:6406:: with SMTP id h6ls160887otl.14.gmail; Tue, 02 Apr
- 2019 06:28:50 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz0m0vWXWg/FN872YKyNwEbL36ntEkEq6R/1KUxVe0OhCIQGMeQlmKK2JEiDp09sFNJOiFA
-X-Received: by 2002:a9d:aea:: with SMTP id 97mr7893370otq.71.1554211730745;
-        Tue, 02 Apr 2019 06:28:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1554211730; cv=none;
+Received: by 2002:a2e:b014:: with SMTP id y20ls1213278ljk.0.gmail; Thu, 15 Apr
+ 2021 07:34:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzrBpl2ya4RXJZZrgQ6aqebOcbWYpi300lvcTgA3GjUJLNKlr5xijWiwjn2Bv4l4gfs+3yt
+X-Received: by 2002:a2e:302:: with SMTP id 2mr2086839ljd.159.1618497269097;
+        Thu, 15 Apr 2021 07:34:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618497269; cv=none;
         d=google.com; s=arc-20160816;
-        b=ag+2cXdOQkD4teHY79YWPjs/pZYElug/3wyrM8GfNruZxY3h95r0S0UHTcpZqnXhAc
-         h9cvNzgaYvoKDTC4rin/incyYYa0QYR14fNpTIF1hE8R/AGMlpTfZtIe2oJ25anmIv0F
-         R8ryFf5YoC6Vm2tq7Vdp4hD4MBhyjp7mdGfOeqH5OJwgDScFKzC+E2mVI/UMYIW/eJ1g
-         MhWAERfkhoAxVS0FUtgtgt08NN6qxDqkI8IEn2ie1/QSzdVGQoFKl02GbXZ5k9k7y0+f
-         1b2NGxggHpUcpLtUPUGL/7meM2YN/Gew1ZinVf6Cju9Ji1ej8K1pR8U5p4GWQFoIL8mY
-         eh3Q==
+        b=PY8CPt9GWWgP/rMr3Egwe7b0ilTiMBE4NT0y+YIukoGJAFIjmQ9P9IQOhTnPWwrx5G
+         GLSLrxUqTDGzMoY/XQhfky8NXdnRJVLrppp6+QScnu/+MSBzGFu4RXT0RsgXSNYvnkV5
+         tJHlLgBONZH+LHRMQITaW6RC+4cojM94KOll80SGN5veO/x8t32sg9zVT4fJsLdAid8U
+         vcWH74nbXv2a28equJNnlbxVuY3X0cMyXQ6Q5ZW65kE/BU6os3E3Q4tCNckbWoC0CrEH
+         Ow3j3oihrkXeiGuB+5ZQe/m5mcbjGsqbnZtlEQeBzhtRnMPHYjbAe3h/imt/RE87MDjY
+         p6BQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=l3jj9f06C3IrRKlpcJFD1n4dHBVGSZRqKWmtcB9DtWU=;
-        b=xmQyoUjX26GzTFQpXhoZvjpdD//u2Dap6qbFtI57XUdlNA6MMQnpavBpefpvjQFp9t
-         Qy6ZmKXLyCO7YhAP7UFO+IyTmP0wavUrQ22FY65xO6uaHl2eg/3yvXV2sl6jbZwe5Uao
-         9CkEbGUm21V7Q3W6Kns/M5LmwM5rsexHZ/aV+g/qupSL/kiYFcluqqXdJ3x+x5lHuUo3
-         q8uMRt/iBn5JSES+WdtGiNj9f2DEhkCdyRz59zxI1MyQt5Bu0CgfAHq28JYXGvsGAa7C
-         sBUZtQHWIo/k9SqUxwFeSeP/xtGy4RFJ6dHK7KTQM8u0zhl8FbU5vbBNfHOy4zDo7mcE
-         0pyg==
+        h=content-transfer-encoding:content-language:mime-version:user-agent
+         :date:message-id:subject:from:to:dkim-signature;
+        bh=WEdost48xlfZgn7NXmAQr/lhQKkbCatRLtTJ6WP8FtQ=;
+        b=FX2Z+rdOjOMzCQk0S8ek9DhvZMWFF5aMiwBCwBlgLwrpzbonK3o0he5mbGNQf8Hpud
+         GC059j3LHHrb+6v5gMjx7tPVj/8iomYTU+h6sQJRaFz3C2QYoiefkGhkj14NF+Jx9MBu
+         4dAKsRcMgSS17TuA9nwcvtttB9rGE0DuxRDo8AtKWJ/r4+lekt06/cckOJsaLwKUKx2q
+         6s+b31ox0JQS0hdqQfcqK9pMFH7J0yrLPEgBIM3ImcJmjW0cKZ1XX7Vfw43r3KjA8hFI
+         eG55KabZbQnnvh1CG9f79wnKNiWhutYHLmYqYljw+DSFpqVfuo6Wc/VYLDSTltp1UsB/
+         cDTQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Uk7OHqtm;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
-        by gmr-mx.google.com with ESMTPS id c13si559714oto.3.2019.04.02.06.28.50
+       dkim=pass header.i=@xs4all.nl header.s=s2 header.b="PGN/39yB";
+       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.21 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
+Return-Path: <hverkuil@xs4all.nl>
+Received: from lb1-smtp-cloud8.xs4all.net (lb1-smtp-cloud8.xs4all.net. [194.109.24.21])
+        by gmr-mx.google.com with ESMTPS id a36si67080ljq.5.2021.04.15.07.34.28
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 02 Apr 2019 06:28:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 15 Apr 2021 07:34:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.21 as permitted sender) client-ip=194.109.24.21;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Uk7OHqtm;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x441.google.com with SMTP id c8so6384488pfd.10
-        for <outreachy-kernel@googlegroups.com>; Tue, 02 Apr 2019 06:28:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=l3jj9f06C3IrRKlpcJFD1n4dHBVGSZRqKWmtcB9DtWU=;
-        b=Uk7OHqtmyPx4g0LRPNn58rTGahcswF7E6Du6frcKLnkMmpbaYSLeTEu6PJy7FyFrem
-         5g18FYFaMFahQzt3N1xTR9FpUyvkx//stmCinn2klcdF1+F7Ln6eOnQNWEizMOXtlZuE
-         0C2rZAYp/PHwoBqOuCO8W8q9l0RuMUi1ZXSZsCZUVDtvC9vedHqcEfzMXG5/VVjwoKva
-         91FQ5IqvTQ4t8lZqcMdqRBRY7oKjgyNaBKL2+LgSBBw4ghvb80EOdEsd2s7w5GAuD+rJ
-         G5NNf5AbNeKKftBOTGoKdtuxOzzaPE4Kb3v6gFrNvpKeyZGKd1CQoGO9un7fwI73aNuj
-         zgJw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=l3jj9f06C3IrRKlpcJFD1n4dHBVGSZRqKWmtcB9DtWU=;
-        b=ts3Zo8xse8CDAY4EH3SSpXi671BH5fWqdvYFIuwaI8CEZfEUsEJwasRZncq+l5Plkm
-         Q04Nn5xf6sjq2hDn74IdOzuacqCBp0owNh0scFFtpPpOzIfuDs8+5odZycL8YPIUJjVf
-         D24jPGTnVvy8LRI6IG/kFDTIXRcDgYxFSndwiNEJxgIuew8nVlTgbgRiko9I9v4UF25O
-         6zoUvAT/EsUZMZMH+wMmsky5PXlBegHzyk44Tbs6ddkFCFFZ5ouVz9VJDXy0NwyXCPUn
-         oKts+8AtIvzX2pY/+Nm6zTBEuaHQbCtyVe+gAA75MPMuIkICPpQr2N+GuY+w0waOEiUA
-         V3qQ==
-X-Gm-Message-State: APjAAAVl+6nFpK7uDyXZuydnii79OPNGuQSjB4grC3cNg7ZS6FP7hr9v
-	qjQc6+m89gSob8GI7aM+1xrzv0vI
-X-Received: by 2002:a63:170d:: with SMTP id x13mr63589488pgl.169.1554211729654;
-        Tue, 02 Apr 2019 06:28:49 -0700 (PDT)
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from localhost.localdomain ([49.35.213.122])
-        by smtp.gmail.com with ESMTPSA id v20sm18768706pfn.116.2019.04.02.06.28.46
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 02 Apr 2019 06:28:48 -0700 (PDT)
-From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
+       dkim=pass header.i=@xs4all.nl header.s=s2 header.b="PGN/39yB";
+       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.21 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
+Received: from [192.168.2.10] ([84.202.3.209])
+	by smtp.xs4all.nl with ESMTPA
+	id X34bl3vvHsMyaX34elUUEq; Thu, 15 Apr 2021 16:34:28 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
+	t=1618497268; bh=WEdost48xlfZgn7NXmAQr/lhQKkbCatRLtTJ6WP8FtQ=;
+	h=To:From:Subject:Message-ID:Date:MIME-Version:Content-Type:From:
+	 Subject;
+	b=PGN/39yBFMEkw+UfrfVl8AqLZY9kUy6FNOO9f+yo+mBvYCysmzi+S3wVIoDP7DG/e
+	 UEEGVFBURpll5WVHZfDM/JNC3Z1bmA++t2zKk0LkmfQsb/Ip8TiwC+apN47mjEsiYR
+	 TTYs1JujNBs89/UqlHyVkO/hzQ5DauNlTP4VATV22cRWYVFzCr/0MGL94QTwZSsezC
+	 0hOBN2cQHAYQpKZBbA4N8g/AUghh8vbcRRBAQyy8IT/855tnI3a1TROeOw4SJpBh7c
+	 r4+A8ZmguYGxSQa8k01rRpV/83FsMJ9JxnthGVgfgt6LhtkZNem6jl7RFq/rSkSl++
+	 Kj4NiJGWY1asQ==
 To: outreachy-kernel@googlegroups.com
-Cc: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Subject: [Outreachy kernel] [PATCH 0/3]  staging: rtl8192u: ieee80211: Replace bit shifting with BIT macro
-Date: Tue,  2 Apr 2019 18:58:31 +0530
-Message-Id: <cover.1554211049.git.payal.s.kshirsagar.98@gmail.com>
-X-Mailer: git-send-email 2.7.4
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Subject: Caught up with staging/media patch review
+Message-ID: <b2d28208-6f06-b57f-16f3-5f5eca0b5f11@xs4all.nl>
+Date: Thu, 15 Apr 2021 16:34:25 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Firefox/78.0 Thunderbird/78.9.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-CMAE-Envelope: MS4xfOHa7qhqpyL8UIosXS6O+E7zlU3mtqRQaJ+JRjs8P4PLf1Soh940F2543JuaVhHf0sInOO+1UPO30YEXaYPjZIqblN9mTMhWeScDZMR0qKWV3b5eWQEi
+ FmvoAC9W6J7uF4DsVXA+Sx3t819e1x5h7Ws8BWwQvdxunsQPLwGYpVVro4e8Bm0mGxvDuHv9jaix1cZ8xKALtulKNWFA6jsQGw4=
 
-Challenge suggested by coccinelle.
-Prefer using BIT and replace bit shifting with the BIT(x) macro.
+Hi all,
 
-Payal Kshirsagar (3):
-  staging: rtl8192u: ieee80211: ieee80211_rx.c: Replace bit shifting
-    with BIT macro
-  staging: rtl8192u: ieee80211: ieee80211_crypt_ccmp.c: Replace bit
-    shifting with BIT macro
-  staging: rtl8192u: ieee80211: ieee80211_crypt_tkip.c: Replace bit
-    shifting with BIT macro
+Similar message as Greg posted earlier today: I too caught up with all
+submitted patches. If you have not gotten a mail from patchwork about
+your patch changing status, then I missed it and you should drop me an
+email, ideally with a link to your patch(es) from our patchwork system:
 
- .../rtl8192u/ieee80211/ieee80211_crypt_ccmp.c      |  4 +--
- .../rtl8192u/ieee80211/ieee80211_crypt_tkip.c      |  4 +--
- drivers/staging/rtl8192u/ieee80211/ieee80211_rx.c  | 32 +++++++++++-----------
- 3 files changed, 20 insertions(+), 20 deletions(-)
+https://patchwork.linuxtv.org/project/linux-media/list/
 
--- 
-2.7.4
+The media git repo is also frozen for new patches until 5.13-rc1 will
+be released, so I will keep track of the accepted patches in patchwork.
+They will have status 'Under Review'. Once they are merged in a few
+weeks the status will change to 'Accepted'.
 
+I have a day off tomorrow, but I'll resume reviewing on Monday.
+
+Regards,
+
+	Hans
 
