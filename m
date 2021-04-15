@@ -1,127 +1,136 @@
-X-GM-THRID: 6662098979271999488
-X-Received: by 2002:a5b:d04:: with SMTP id y4mr7575971ybp.13.1551140793271;
-        Mon, 25 Feb 2019 16:26:33 -0800 (PST)
+X-GM-THRID: 6951450814320738304
+X-Received: by 2002:a17:907:c08:: with SMTP id ga8mr4751777ejc.376.1618510767528;
+        Thu, 15 Apr 2021 11:19:27 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:4c4:: with SMTP id 187ls3632413ybe.11.gmail; Mon, 25 Feb
- 2019 16:26:32 -0800 (PST)
-X-Google-Smtp-Source: AHgI3IZpmmHivKCBgfLDJGuNx+ZuxL0KdyZpTOspzJ4GUSFcS2LjAadBRo4m4oUmUY2Aa4JbBlgW
-X-Received: by 2002:a25:810b:: with SMTP id o11mr7297416ybk.43.1551140792394;
-        Mon, 25 Feb 2019 16:26:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551140792; cv=none;
+Received: by 2002:a17:906:ca0c:: with SMTP id jt12ls3101305ejb.11.gmail; Thu,
+ 15 Apr 2021 11:19:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzbc6W29rslzu3VyOhIwB20kwwp+oFhZd3zDr/cG1t69LlvoGOqUIO42hCYjOfLS2jDQ15W
+X-Received: by 2002:a17:907:9691:: with SMTP id hd17mr4856183ejc.205.1618510766046;
+        Thu, 15 Apr 2021 11:19:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618510766; cv=none;
         d=google.com; s=arc-20160816;
-        b=JStStvjxp1EGeMnRkDUg5KmfG/MW96jBPzEprrDbfg/ebSGlQpHVW/RCeu3SLRzv6A
-         XTELSP+gAZryaj4QyucSD16qYXBNck99fk2TaehBOQgLwPISCU/YufsBBkHZJvn8fndf
-         px5glyTuAIjh5x5F7nT5q84x11ivb7kNPvcveHKpHDqRrhI7emZAeu78vKgHPUNqYqII
-         /oSfW/Ef7uv24L4TAY++rVhgI1xfRIkqVYTDJV8Ry2wDHNAG5uX9tOSOG77zQ+I9lL3P
-         OrRz6UWIvEBaqNFgTDIEznCUfhGZIGY+OoKUOTBUI92kLSfGosYB1MSsUzjTIgAwypFg
-         np7w==
+        b=YionPbL1qtJf+ZYFoH/jV9rRqHE77nC36GSNmTYdc6CFCqFRE8ZN2/K9Vkj3LGyypX
+         6jCLYhmevabM5Akn0PSPEE5ZT9tJO4mU6/CHBRT/QGpvnDrLkb3z2sAcToHTcu9O15L+
+         yHiPo/kKtyrQ2II7mcAfbD/5D2oP/fX3Ap3ZvsUsyMrkQiDaH/WvNt78lc9b1Kilw13l
+         PrD2+cU0Z9dbOHOtYxOMmQF/5yO0xV+/VpE6lUL4mqFW0qZfWMhVS20bn8L1HetVr2xH
+         gYZMKZtzYWIMuJ8dgiJOzvlipMMP9RQlkbMKd3T8OYabTucMl6/iWYC4CdzmmgMJaoVa
+         +5DQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=LDPqnRhywRF7Wqjj7jwRJ4+cefCxsPk1gmCz/57i6xU=;
-        b=1KsF+zLutIF+uPDLLXCxhzAou/o3wVwHPvVtn+tRd431p8M9k7KEMedHcPyq5XlaSW
-         KA9UPzAbWbSDMT1nMnOxPQzAhB89Z38G7zbxm1Bw5KCg1j4rTRR0hZSDWVXBe34p8JSM
-         s80DHs1iC8FA9JBSfwY0y5TPoRyjsCzhNhHo5P3bWN/Xh4OGgwFYVdi7HEiXd10C1Xcd
-         sGH/McvGlbHGe8RR/ogC0B/UMiPzl2NifMbi8DVg7RJ8FWNDM+NgOMgrJ0SyFW9bW7Z9
-         CapJ350cFKwqUuYCL4MQxCIn0nmO7ocCgfVXvVIpKxYPE4Jf18tqQ6R0okYX7A6duLJB
-         VWzw==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=urMYKw+CObY8Bf46P0yEDPYdb/81R4owb7A3rC2Hphs=;
+        b=EQP+31H2A/Agx8z9Ztn/vnfWC8j/B7cKeQaumFi/EJillzHBNQ7zRm2J+7bcTBdzHE
+         DT0bIP59n7hiaOpswY/qRnQKknnoSSYzfRIIqrfyuBW1x2pCddkvFDmJMyg6Qg5smxub
+         +SwNX7STADre7E92G9PM2ImZGsU0ICc8V/sooauza3ptUDgnIKRRlLSYIRDI+cZX676P
+         u3u/lX4ehTMCp1tgUBdhHwQ1FPxWqQSx3x75Se/w/jC8ITNupwUlJDcZw9EqvRbfIcMg
+         iZlgMdst3y2tz+fr78bG48vVOlJ9MN5PtMPUpB2Y25YY0018JkLEDhsKcCdGBunG7tBj
+         5JnQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qkmgDQGT;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::433 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BPPP7qlb;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::632 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from mail-pf1-x433.google.com (mail-pf1-x433.google.com. [2607:f8b0:4864:20::433])
-        by gmr-mx.google.com with ESMTPS id l39si776964ywh.5.2019.02.25.16.26.32
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from mail-ej1-x632.google.com (mail-ej1-x632.google.com. [2a00:1450:4864:20::632])
+        by gmr-mx.google.com with ESMTPS id m18si99633edd.5.2021.04.15.11.19.26
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 25 Feb 2019 16:26:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::433 as permitted sender) client-ip=2607:f8b0:4864:20::433;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 15 Apr 2021 11:19:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::632 as permitted sender) client-ip=2a00:1450:4864:20::632;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qkmgDQGT;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::433 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BPPP7qlb;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::632 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x433.google.com with SMTP id a3so5278518pff.11
-        for <outreachy-kernel@googlegroups.com>; Mon, 25 Feb 2019 16:26:32 -0800 (PST)
+Received: by mail-ej1-x632.google.com with SMTP id sd23so29620887ejb.12
+        for <outreachy-kernel@googlegroups.com>; Thu, 15 Apr 2021 11:19:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=LDPqnRhywRF7Wqjj7jwRJ4+cefCxsPk1gmCz/57i6xU=;
-        b=qkmgDQGT+ZJaqZDPQIddXAdERFCUcBHWTUxWG9d/9+OcaW/1yTx0YVonjzWQx7yEUR
-         Hgm2ODqHHBUnVDWlX7Gf5JdmdcPjbqeOgyWsQlR0TjSIv8MdejhYwuVDWT8oE/YneP6L
-         iyUk0rb6LX4v0jMWNwroFz78ytsXtPCEShG6hg4flxcWWyZ5OQBJB3b3/1TDDDn5XPah
-         Ejwp9Id3NX1R2BCAoqXKclcns+pTunKdNa5I/5zdojIfdFysXKvILx0R3Yu51nVhQAAK
-         UyrP6husoTcIEpm/0IH8ifbwOctDHyoJdOpm8awJaNaLcsJyZnoSbORB3wdrQ0xhl4RS
-         WtRw==
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=urMYKw+CObY8Bf46P0yEDPYdb/81R4owb7A3rC2Hphs=;
+        b=BPPP7qlbJn0PdHs3aCepP/xzbyBa2FDzLTTkZc7CYGHtjfBhO68dg8hdNkiidOQBbo
+         vNcAClzViSNO9GITBFw+CLQdz6pJBmNR7vTaisFptWOqZLBRqd4or11c/QHt9Nrs2Wz3
+         SK/S6zPjz3pv9Ha1cNg4C6K49gtpNdBWk5GRbFoIOsh+ZSMPR1iFxdqo3da18pBACe1o
+         3mtuM/wH+Pgln2ffbgbmZZXnIlr7GlDPuwD0dNFEv+Ct1dEiCkKlMukzSl0D7WYlazZd
+         FUrTu3ACyiQHUKaG+6T5IhM7pseTbJsgHPLn28kPqXi7vILJ+IYG47fGXW/0/roSlIZN
+         YwmQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=LDPqnRhywRF7Wqjj7jwRJ4+cefCxsPk1gmCz/57i6xU=;
-        b=rMMnV6BJWlDgIrWT4J+EBJI9jwktRhqY2NQmxrDvzbg82oQFtnZ2VuDwuz9MBlVF2Q
-         oAbiErTAwIN+TdmmbfRuXTOUoOTxwkTUx5kp2QYB4qx1xTFJx7ZUJJ7bueqzOEjtc/lH
-         iZSl/KV2qomLQ7apj/Qeoey4mRqAFAnkdiBaYqgqRINAvJvC77QrqrlgGLFEPTdqYSMs
-         20+3cwLxR3DjcON6/Hok1hbxGrcsRXHTUm9HWwSUapmxLS/qFZbjobMnwI6+MOH7i578
-         zbF4sJ9bjUu16PvFJUOtNfc57DTAZSE9xyEjDqTckkzdbdFcTdOF/B9OauYp1o3/RN0y
-         oMpQ==
-X-Gm-Message-State: AHQUAuajbZA1YGXvyCxvIhaeBGA6f6pA9gSWDGFz50tfAjGGl17cfxuw
-	XCxYEgq1SZcJgHrAbdWtKsWk6RvHlsY=
-X-Received: by 2002:a63:516:: with SMTP id 22mr20933866pgf.353.1551140791663;
-        Mon, 25 Feb 2019 16:26:31 -0800 (PST)
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from localhost.localdomain ([183.83.84.116])
-        by smtp.googlemail.com with ESMTPSA id l12sm13267131pgk.40.2019.02.25.16.26.29
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 25 Feb 2019 16:26:30 -0800 (PST)
-From: Bhanusree Pola <bhanusreemahesh@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH v5] Staging: fbtft: Alignment should match open parenthesis
-Date: Tue, 26 Feb 2019 05:56:16 +0530
-Message-Id: <20190226002616.15394-1-bhanusreemahesh@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=urMYKw+CObY8Bf46P0yEDPYdb/81R4owb7A3rC2Hphs=;
+        b=lJ5wYv9GpD49b3lTdNuWjl9tjsrdb0TzAg6zfoy1hxaFnupmsMou+dKNBe7ALBfrwI
+         MM3K9kX60LyRi1ZIORMbVSgEEaQ+ivcKSHZVn9Y6w0OIPEXnbW+qTFneuRtoHcFxMMfy
+         mwsfeKL2YzRJFqxDQ/96qHgdiINbNp1BtrRtZ1gKBQGUXH/5F+Pf/M7Tmcvj5Xkipjfx
+         nWRPAIbjfCaBRrjKrd3lvD6hzbU8wbaZn2SijnsNa3CM9rI0a2SemCw8jXp6sonyv/p7
+         VwgZ3ECxSYFq69pgH5CV5TlqNoSkf0yUY0smOXfxJzshoUAyBqguJgLdHu2/npxMNxJ9
+         n/sQ==
+X-Gm-Message-State: AOAM532u2u8OkdGqEKgJel98OJvQiMFV6mYSbOZGHYKweMqpz+wdw+mr
+	6RLE9RY47LuGBEs+lYRMXAU=
+X-Received: by 2002:a17:906:724b:: with SMTP id n11mr4841403ejk.338.1618510765818;
+        Thu, 15 Apr 2021 11:19:25 -0700 (PDT)
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from linux.local (host-95-237-55-30.retail.telecomitalia.it. [95.237.55.30])
+        by smtp.gmail.com with ESMTPSA id gt26sm2517705ejb.31.2021.04.15.11.19.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 15 Apr 2021 11:19:25 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: dri-devel@lists.freedesktop.org,
+	outreachy-kernel@googlegroups.com,
+	Daniel Vetter <daniel.vetter@ffwll.ch>,
+	Melissa Wen <melissa.srw@gmail.com>,
+	Ben Skeggs <bskeggs@redhat.com>,
+	David Airlie <airlied@linux.ie>
+Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+Subject: [PATCH] drm: nouveau: nouveau_bo.c: Remove set but unused variables
+Date: Thu, 15 Apr 2021 20:19:21 +0200
+Message-Id: <20210415181921.15742-1-fmdefrancesco@gmail.com>
+X-Mailer: git-send-email 2.31.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 
-Clear the warning found by checkpatch.pl
-WARNING:Alignment should match open parenthesis
+Removed two variables set but unused.
 
-Adjust paremeters in fbtft_par_dbg and write_reg.
-
-Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
+Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
 ---
+ drivers/gpu/drm/nouveau/nouveau_bo.c | 4 ----
+ 1 file changed, 4 deletions(-)
 
-v2:The capitalization in the subject line is corrected.
-v3: Commitlog modified to make it imperative
-v4: Commit log modified
-v5: Commit log and subject line corrected
-	
- drivers/staging/fbtft/fb_ssd1351.c | 2 +-
- drivers/staging/fbtft/fb_tinylcd.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/fbtft/fb_ssd1351.c b/drivers/staging/fbtft/fb_ssd1351.c
-index a8980d9f7557..9ac78ce30619 100644
---- a/drivers/staging/fbtft/fb_ssd1351.c
-+++ b/drivers/staging/fbtft/fb_ssd1351.c
-@@ -164,7 +164,7 @@ static int set_gamma(struct fbtft_par *par, u32 *curves)
- static int blank(struct fbtft_par *par, bool on)
+diff --git a/drivers/gpu/drm/nouveau/nouveau_bo.c b/drivers/gpu/drm/nouveau/nouveau_bo.c
+index 2d5d68fc15c2..d0eac5375533 100644
+--- a/drivers/gpu/drm/nouveau/nouveau_bo.c
++++ b/drivers/gpu/drm/nouveau/nouveau_bo.c
+@@ -1247,7 +1247,6 @@ nouveau_ttm_tt_populate(struct ttm_device *bdev,
  {
- 	fbtft_par_dbg(DEBUG_BLANK, par, "(%s=%s)\n",
--		__func__, on ? "true" : "false");
-+		      __func__, on ? "true" : "false");
- 	if (on)
- 		write_reg(par, 0xAE);
- 	else
-diff --git a/drivers/staging/fbtft/fb_tinylcd.c b/drivers/staging/fbtft/fb_tinylcd.c
-index e463b0ddf16d..9469248f2c50 100644
---- a/drivers/staging/fbtft/fb_tinylcd.c
-+++ b/drivers/staging/fbtft/fb_tinylcd.c
-@@ -38,7 +38,7 @@ static int init_display(struct fbtft_par *par)
- 	write_reg(par, 0xE5, 0x00);
- 	write_reg(par, 0xF0, 0x36, 0xA5, 0x53);
- 	write_reg(par, 0xE0, 0x00, 0x35, 0x33, 0x00, 0x00, 0x00,
--			     0x00, 0x35, 0x33, 0x00, 0x00, 0x00);
-+		       0x00, 0x35, 0x33, 0x00, 0x00, 0x00);
- 	write_reg(par, MIPI_DCS_SET_PIXEL_FORMAT, 0x55);
- 	write_reg(par, MIPI_DCS_EXIT_SLEEP_MODE);
- 	udelay(250);
+ 	struct ttm_tt *ttm_dma = (void *)ttm;
+ 	struct nouveau_drm *drm;
+-	struct device *dev;
+ 	bool slave = !!(ttm->page_flags & TTM_PAGE_FLAG_SG);
+ 
+ 	if (ttm_tt_is_populated(ttm))
+@@ -1260,7 +1259,6 @@ nouveau_ttm_tt_populate(struct ttm_device *bdev,
+ 	}
+ 
+ 	drm = nouveau_bdev(bdev);
+-	dev = drm->dev->dev;
+ 
+ 	return ttm_pool_alloc(&drm->ttm.bdev.pool, ttm, ctx);
+ }
+@@ -1270,14 +1268,12 @@ nouveau_ttm_tt_unpopulate(struct ttm_device *bdev,
+ 			  struct ttm_tt *ttm)
+ {
+ 	struct nouveau_drm *drm;
+-	struct device *dev;
+ 	bool slave = !!(ttm->page_flags & TTM_PAGE_FLAG_SG);
+ 
+ 	if (slave)
+ 		return;
+ 
+ 	drm = nouveau_bdev(bdev);
+-	dev = drm->dev->dev;
+ 
+ 	return ttm_pool_free(&drm->ttm.bdev.pool, ttm);
+ }
 -- 
-2.17.1
+2.31.1
 
 
