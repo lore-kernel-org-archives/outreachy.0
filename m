@@ -1,110 +1,122 @@
-X-GM-THRID: 6674224303355985920
-X-Received: by 2002:aca:d457:: with SMTP id l84mr4785501oig.27.1553963940182;
-        Sat, 30 Mar 2019 09:39:00 -0700 (PDT)
+X-GM-THRID: 6948900055812145152
+X-Received: by 2002:a7b:cf2e:: with SMTP id m14mr3316516wmg.73.1618493821019;
+        Thu, 15 Apr 2021 06:37:01 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6830:1096:: with SMTP id y22ls1478959oto.9.gmail; Sat,
- 30 Mar 2019 09:38:59 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwoQt1q0C3R8cyoCUs+qeA0u4ibDU5n0FOsTjgGsqDwa6owW4IUMtZt5e9u2kVSH+oSR9z7
-X-Received: by 2002:a9d:7697:: with SMTP id j23mr448853otl.11.1553963939144;
-        Sat, 30 Mar 2019 09:38:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553963939; cv=none;
+Received: by 2002:a05:6000:162d:: with SMTP id v13ls1948298wrb.1.gmail; Thu,
+ 15 Apr 2021 06:36:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw2PKH+4+QZzeJ4jAONuKBj6gcJYynfHBNsi16q18uZn5OYbz57z8fkDf+84wQiu9zBvmLk
+X-Received: by 2002:adf:90f0:: with SMTP id i103mr3460635wri.318.1618493819541;
+        Thu, 15 Apr 2021 06:36:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618493819; cv=none;
         d=google.com; s=arc-20160816;
-        b=zTrpKleHzm6Dqtwg7h8lXq2DoOYjKEmbIiJE75rF6+TRn0RCoJq44ZpWdS4yElqlkq
-         +FLlZneCD+Im1HerhLN8S/lJF+G+P6P7uy/WKpnUpQqhWsHxcTjuaKZIMk+ltqgxcetc
-         beVfCPtdyg4OjRLqT88P9q/ofJU6xbiRmioTAkf3MKv0fcMRf3nxzmE0oKzwqLretTm2
-         XbjwizyD6XZei6fgVIXGLUTG5xMEVt4txpOVlbHrTt9uF5SjtZ4JH+Qwvch2zZv/RWvE
-         pfvf2mWnP68pUF8Y0ftzvnPCs/viAdT0aYOon7eA7dIGd/zsD5Xchr0Ebigtm4v1HScf
-         zVUg==
+        b=hoKdCwdLafrNAg5lUdeHsYj7c1PqjzF6s38k7XYNnJaxpKfLVb85339z4WY+e04bLX
+         aDeeucJ2MtFkjP+UHzhAueH7mPCB60z35PiMJbvvEiDcz22lQRxhaSX5IVyzmTUOk+p+
+         HWEpN6KOoMXKaCx7oqH/ov7vuci7uoGqpfOhbGYjzHrm7p/3aw7BK8iCiZRaBOFRUtPy
+         bjgvVI7Xr+/g5gY7/ekm82JystnVuQriCRm6i357sQfWnDFdhqDLJ2FLRDMOFJIUAQ7e
+         jVurAfj2WNOCWe59lWsj19nxnjqQE7Nnnxv3lFfdU1FRYi+0cZgY+C9JlydzSYHqSGQd
+         DKIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=lKuObNcqvdYMknO7zVpFNjuAM3PMCXYznONJ6NvfsUY=;
-        b=EI0x13Ng+jK2DGJS7lCuNw3gmlkjH726EhKq/1igVhAaqmBu9hVPmK8daAY3LoaaPj
-         FOAAoyfH+eVxJV8RP/aCDL3U9CSpg3+r9udhwgu5QhLmuTRJxEH4gIKJm5/x1WILkD78
-         KkbvX/au5HufjMyv8iMPSN5N0oRi1+wkmBL4rLX6IB0iq348iI7Q+NTAbd18avbYVH49
-         LsTDb7c+/2VL1zIFbhB2ZGCeRTxILwVCGeWhyj6k9MBwsygChF3ffRySAFtv5PlHFon7
-         xYSIpi9j+myGR0Y8yVwCqttHaMEQc7tcgotTY1Lib0sBcbFgcMjvPp7Xiv0fIJIfIQmg
-         q/DQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=gZoHwNCMoKyEmoDVfhautmQ8Mg0LQtbn5JZYlZAijxU=;
+        b=SPVwwBxptxpho5v4OpgGwrCioHiHMHn2TtcRPYYhhTY/xfdMYDmcA80/wmxPn0hoDX
+         uHW/aAtBhnThwdKeOJP+37yI0tPbN6jNtwjsH3hhe/cL7fcXLeRLLU5Gvf3OmdjcCqg+
+         SepIqnBykuWdehfN0e+wYXahLqZ3FOLVMgv7W1nqYStF6J9BDvJzs5Ewpuainx/AXH97
+         8kDL45CNrPC25Dh5WG0KFwKKPrswmPzbt8Jocw7KlnZxT2Ue6SUO88CWeRS7Wn9ShQb4
+         tc6Nik9W3ZEuZToRxGGLxcGiFkNjcsjqGWDwpCNT/FZWrl8zlvXBvKiD+EQRXSVKdq7Z
+         qpYA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=Kd+zJh0G;
-       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.244.83 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
-Return-Path: <nishka.dasgupta@yahoo.com>
-Received: from sonic309-20.consmr.mail.sg3.yahoo.com (sonic309-20.consmr.mail.sg3.yahoo.com. [106.10.244.83])
-        by gmr-mx.google.com with ESMTPS id t14si415204oth.0.2019.03.30.09.38.58
+       dkim=pass header.i=@xs4all.nl header.s=s2 header.b=mIjvdkYk;
+       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.21 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
+Return-Path: <hverkuil@xs4all.nl>
+Received: from lb1-smtp-cloud8.xs4all.net (lb1-smtp-cloud8.xs4all.net. [194.109.24.21])
+        by gmr-mx.google.com with ESMTPS id l4si148931wru.4.2021.04.15.06.36.59
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 30 Mar 2019 09:38:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.244.83 as permitted sender) client-ip=106.10.244.83;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 15 Apr 2021 06:36:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.21 as permitted sender) client-ip=194.109.24.21;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=Kd+zJh0G;
-       spf=pass (google.com: domain of nishka.dasgupta@yahoo.com designates 106.10.244.83 as permitted sender) smtp.mailfrom=nishka.dasgupta@yahoo.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1553963936; bh=lKuObNcqvdYMknO7zVpFNjuAM3PMCXYznONJ6NvfsUY=; h=From:To:Cc:Subject:Date:From:Subject; b=Kd+zJh0GjgBEg46zkUXlBDb/1Ajsm0mjZ+Klru3xZEETDz5zHNCk434JNpxU6yCOW58FXuYMAj+vFLLPoipR+tQ6PJ3C87Ea0bhmvTvxH22874UcsIR0jhxAPQ/Qh2hjhKRQWvAUylFQQj8VjolRDrvNrUIe9PpP1TrkWyMhCNhpjqrKcnToMrqzOXjxZHEeY0luV+fi5CNKyp1YTx2fkE0bkJqJqCTy2cFwRoPNXPrewFAzQsYxtaTBdmAat+EYh2ubNdTVl39LGvWIgzvEv+uD/AIzW3TlD/gIn39wBphMVE3y/km4pPaYQGHzY+RwxAAk0N4Epdb7by7/L+Nlcg==
-X-YMail-OSG: OUIhZF8VM1nwCEfcQiLp6GdPB.qo5IVDT3rVF7kY4uH4lIQt9vCKUFj6PMyZsD4
- 3qF7y14FsVt9UwwTBRziRfZTOfstrSPuOAQsPaTRgUj9ekndQOg.8QZ8tbI7ZbZov_gklSBolmhJ
- 7eLLOv__OPaHj63M03v7tS.UPlqfMLDs5itBZwZ_6UVYGTpDQUXyGAPXDrdiWGZFxuJrxh7BvCIv
- 4LTYHG2L2Yl2LpUDjxiQxq4HZv5zKLxHToscWfJuyQS5MXG2IjkQTBNAao1VFIxfh9ihSe6AtZSj
- 7BWJEeuYZapiQZwabj1RuosjHR8jxhBQrXqKjaWiNuHsZe.1WjykE5ppor9wP5pzbUYg.tY_1zg2
- RlktVbBzyyfufIb8dYYAGJmSYRUo4xvVhg_PeS6OHKWi0MbTeXWNdc8_X3eEqHYcsYaQB25kC50T
- ankEHwhTNwyODHqHHxuo3SbKZWAwm99vbGdfq.n5C5kG8g7vxJr9jXGLBiaQ.joO3sYmk5Frw2Uk
- 2pCCKIoE2YZ5RynPNx1jZzpQ8v4W_x455CVA3fObU5tkdMgFlz8avytp0MBaEYzyXMYuuy.2aHM_
- afNYF3egGvNOHrF789He72WuKW5ydbSYn3h9T2aHC02XqAMUcOcK1zFl.1c9TNIFAj0vEYuAvIlO
- VtnxwMj.Hlr.mJu5bOKj1RCxz4o0AWTPeso.WXhsZCJNBgWMQ61MCcRqh0xn0jy.KpyZnHQk68cJ
- YEI6RK0KB4ZrW5fv0steqmWiIL49gHWpPE08J03mHsCylUbraWphz6m_jZcRP_trL7_5Ip_aBX4U
- 6wg24Z_aG5NTYbG9p5gg0u7Uoudo.1EQOQZFc.yWe7P3GF2yh11P_Lt.6QLVyC.jGrVRJsrBNTn_
- jwkx0hPezLUobA4joOC.NPbU5KTQshqfC6wW9lReGvxE_pxBHJRbd4a3ebWQ2NCKkaLqWl_T7tEB
- H3gDcXKl8.cIp0YGH74.cdOL0zoa_y06NyYfQ5HMNXD7qyTiLMWwa.R53oYvGGGmXNuC1fkBB7IE
- jN61jO7mwH4jTLOV0xMzo2DHpKwrqyL7jvMr1s7kumZctcpYpdXA76.PVQy_vPYY3ns4s1ppsQDw
- 0947fAVNxIYWChMw29d46BKXM9o1XCM_cmg--
-Received: from sonic.gate.mail.ne1.yahoo.com by sonic309.consmr.mail.sg3.yahoo.com with HTTP; Sat, 30 Mar 2019 16:38:56 +0000
-Received: from 103.7.128.210 (EHLO localhost.localdomain) ([103.7.128.210])
-          by smtp426.mail.sg3.yahoo.com (Oath Hermes SMTP Server) with ESMTPA ID f70dfff138107e1562978818a6bbcfdf;
-          Sat, 30 Mar 2019 16:38:55 +0000 (UTC)
-From: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
-Subject: [PATCH] staging: rtlwifi: phydm: Simplify `status = status & <expression>`
-Date: Sat, 30 Mar 2019 22:08:47 +0530
-Message-Id: <20190330163847.2618-1-nishka.dasgupta@yahoo.com>
-X-Mailer: git-send-email 2.19.1
+       dkim=pass header.i=@xs4all.nl header.s=s2 header.b=mIjvdkYk;
+       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.21 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
+Received: from [192.168.2.10] ([84.202.3.209])
+	by smtp.xs4all.nl with ESMTPA
+	id X2Axl3eNOsMyaX2B0lULVP; Thu, 15 Apr 2021 15:36:59 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
+	t=1618493819; bh=gZoHwNCMoKyEmoDVfhautmQ8Mg0LQtbn5JZYlZAijxU=;
+	h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
+	 Subject;
+	b=mIjvdkYkWYVJLty5slqCe1PoUZ3rpdG6GeSyU0GnbmHbnCQEm/o5iAW0zWQs03AoK
+	 8K9QvGZsHtG5piJgaxS29cPMeN9Mm55nfkuSzfukSrYG7xl0XYbsCSaLxLuD7FNSJ5
+	 HZYo8KxK2wECqbY5mZVOkYEw50zd8816q1kldYhqeTPfWLSkbMxGUFG82wo3o86G6O
+	 PoADtAC3it5W30FRCRTeAIIusNB9YfjV2qT2GnOQALmCfOWCZUEU8GKHogvt+yB/4c
+	 sJFODgYIJOS749H8t4YXxfRoq8I7rgvCnBtINWRc6CoypbysJYUmV+/PDF8/EFnjy9
+	 D2MrV/XIV3KRQ==
+Subject: Re: [PATCH v3] staging: media: zoran: reduce length of a line
+To: Mitali Borkar <mitaliborkar810@gmail.com>, clabbe@baylibre.com,
+ mchehab@kernel.org, gregkh@linuxfoundation.org
+Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
+ linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
+ mitali_s@me.iitr.ac.in
+References: <YHXITpUbYOb2lO/u@kali>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Message-ID: <fbfe2705-30bd-dbaf-e3f4-95ef678a5089@xs4all.nl>
+Date: Thu, 15 Apr 2021 15:36:55 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Firefox/78.0 Thunderbird/78.9.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <YHXITpUbYOb2lO/u@kali>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-CMAE-Envelope: MS4xfF3kyduNUb4qus6KIfTU6+sc7BExhW7ghIVg9vBpD1Uf5EddXtrtZprcgXSCOUf4dC2fXnlx98lOQPg35NxGvOd2kl4jcpnRs+chJj5aAYsInSVqmKYb
+ fJeFHmbjtyxshFYEYouyY3n38ywXrlZ+6BEOdZm78kDALClha5nFFYknUjHZroVEvI1+WovF5VkKsAf5WLmmZWT67vruVRjr1qey8/cHQG0mHqUa5aW3FWrV
+ d1o5XX8NyOCA+sP7waguefMZd7sNDoOExhaf7bFC8h4F88sFaLoFlwfL00WRSGM0rkhbPwyHaDkV+acscIw+PgQ80qu1YMvvwMr1W3NBcvuEsVKWHBmtToWg
+ kn5apcFH6cV7kb1/KYqZguNBLqLcf8QvydO7IEJzJoiLIjMC+B9M5DStPF1TQjthb7Aoa4ePPk6bKLXw15zUI0UEYj9HRlZpU66MIKkHnhYzscAXeaC2ZjS/
+ tYNiGCrirBaBeItjov2es+okdiaOvmPJw7ZW8g==
 
-Simplify occurrences of `status = status & <expression>` by modifying
-them to `status &= <expression> to make the code more readable.
+On 13/04/2021 18:35, Mitali Borkar wrote:
+> Reduced length of a line which exceed the 100 columns limit by splitting
+> the line into two statements and commenting it with '*' to meet linux
+> kernel coding style for long(multi-line) comments.
+> Reported by checkpatch.
+> 
+> Signed-off-by: Mitali Borkar <mitaliborkar810@gmail.com>
+> ---
+> 
+> Changes from v2:- Rebased this patch and made changes against mainline
+> code.
+> Changes from v1:- Made style changes according to linux kernel coding style
+> for long comments.
+> 
+>  drivers/staging/media/zoran/zr36060.c | 6 +++++-
+>  1 file changed, 5 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/staging/media/zoran/zr36060.c b/drivers/staging/media/zoran/zr36060.c
+> index 4f9eb9ff2c42..27eec3446592 100644
+> --- a/drivers/staging/media/zoran/zr36060.c
+> +++ b/drivers/staging/media/zoran/zr36060.c
+> @@ -249,7 +249,11 @@ static const char zr36060_ta[8] = { 0, 1, 1, 0, 0, 0, 0, 0 };	//table idx's AC
+>  static const char zr36060_decimation_h[8] = { 2, 1, 1, 0, 0, 0, 0, 0 };
+>  static const char zr36060_decimation_v[8] = { 1, 1, 1, 0, 0, 0, 0, 0 };
+>  
+> -/* SOF (start of frame) segment depends on width, height and sampling ratio of each color component */
+> +/*
+> + * SOF (start of frame) segment depends on width,
+> + * height and sampling ratio of each color component
+> + */
+> +
 
-Signed-off-by: Nishka Dasgupta <nishka.dasgupta@yahoo.com>
----
- drivers/staging/rtlwifi/phydm/phydm_debug.c | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
+No need for this extra newline. The comment block describes the function,
+so the function should directly follow that comment.
 
-diff --git a/drivers/staging/rtlwifi/phydm/phydm_debug.c b/drivers/staging/rtlwifi/phydm/phydm_debug.c
-index a113e2b63153..5e0151036542 100644
---- a/drivers/staging/rtlwifi/phydm/phydm_debug.c
-+++ b/drivers/staging/rtlwifi/phydm/phydm_debug.c
-@@ -51,17 +51,13 @@ static inline void phydm_check_dmval_txagc(struct phy_dm_struct *dm, u32 used,
- 				      (power_index << 16) | (power_index << 8) |
- 				      (power_index);
- 			for (i = 0; i < ODM_RATEVHTSS2MCS9; i += 4)
--				status = status &
--					  phydm_api_set_txagc(
--						  dm, power_index,
-+				status &= phydm_api_set_txagc(dm, power_index,
- 						  (enum odm_rf_radio_path)
- 							  dm_value[1],
- 						  i, false);
- 		} else if (dm->support_ic_type & ODM_RTL8197F) {
- 			for (i = 0; i <= ODM_RATEMCS15; i++)
--				status = status &
--					 phydm_api_set_txagc(
--						  dm, power_index,
-+				status &= phydm_api_set_txagc(dm, power_index,
- 						  (enum odm_rf_radio_path)
- 							  dm_value[1],
- 						  i, false);
--- 
-2.19.1
+Regards,
+
+	Hans
+
+>  static int zr36060_set_sof(struct zr36060 *ptr)
+>  {
+>  	char sof_data[34];	// max. size of register set
+> 
 
 
