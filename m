@@ -1,108 +1,130 @@
-X-GM-THRID: 6946316684199198720
-X-Received: by 2002:a9d:2f24:: with SMTP id h33mr9087934otb.128.1617315384425;
-        Thu, 01 Apr 2021 15:16:24 -0700 (PDT)
+X-GM-THRID: 6951280273110597632
+X-Received: by 2002:a05:600c:4f8e:: with SMTP id n14mr1791349wmq.166.1618472683706;
+        Thu, 15 Apr 2021 00:44:43 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aca:d54d:: with SMTP id m74ls1593046oig.11.gmail; Thu, 01
- Apr 2021 15:16:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy55qQokCC3eYkdVj/CVf11X8pOh/rd299Xjl3DNrEuS+sk24jzTdrGBpUFdwBqZ8kI3olr
-X-Received: by 2002:a05:6808:f14:: with SMTP id m20mr7854035oiw.13.1617315383560;
-        Thu, 01 Apr 2021 15:16:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617315383; cv=none;
+Received: by 2002:a05:6000:162d:: with SMTP id v13ls579368wrb.1.gmail; Thu, 15
+ Apr 2021 00:44:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw72FsYkAsup3VvA2Yxjnal2fsuGCcOljnaxUg11I3hRpr/PjQq2aoi4EjdhN9PuHKeIEN0
+X-Received: by 2002:a5d:6a08:: with SMTP id m8mr1966710wru.57.1618472682347;
+        Thu, 15 Apr 2021 00:44:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618472682; cv=none;
         d=google.com; s=arc-20160816;
-        b=W1zRZWZIfSNuNC2i5IYISc1UF1iDKuDvgW3mw67OAezHHHiRlDuMrqPYm+M+SQwodg
-         rxWZ7zAx+wI65bpf2L+ZDH76Tcgrgv5TogQ47oryGDTC9RinK18ZKsgIxk9R2dzbXjl7
-         0PEDWAJS2CFLqo3QAAbJFDTdszyL3tCCgDz7aJ1Z2PvTm8uW3qma+0E17Upxu3jKvexj
-         8vWQ/wddPVeWe3RcrWp8c5KDGe0ii79qwwHCOq9Yeyjez4tjsnITaowTR08IlwX7J57m
-         x5IhxWWzopoa7SZxceLyP2AGFNHeCgEryand9Vve7WxkhI6P/Bh8fHnwojOvxIF5kaTf
-         jopA==
+        b=1EEsU7atqavSL928vJ69x08odgpACo+UsfzlW+1Dc4nY7D4x6oR28wpeT9PUGamO9U
+         rJR3f3YhmNNqa+fUi+DcHtc2NB6XSMpM2O052jaYp/T1vVgn7VEntTRbbLF7JpdIWaZI
+         lWTroSUgZ4v0XonV3oMxIOvdhYJn/igPUw3nBJvB+LVOFQThcYMTf7kFgZcm32CkpnjM
+         Ay3azJ67uYiATXMfMi7WgMxdIoVsWJD0kRlspJk+mdE4WMRNXpBaFbJ9MqsvUAHyJSWy
+         T/oEMhdV2gs8dW5xsRePSGVuJf4MQn7QJzMF28THtY0tqHAs1LWNEiihHOuKvVeDblRp
+         IIUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=jKf/bIRuPNdm99ftg+yWOdYdbkeJfbztmf6+BPi3ElY=;
-        b=0daESlo+qTdjFpV0FwRL6LVGwwH4le2tw2GjiRnHdqsllPZ7a0gwaeegTrtjJipRKv
-         4lDLSZlz27TPUx/+iOMzeS00LAx9ISZT3pgP/F5IlcMwGQfnfrFqHJueS5dHL7sMHA9p
-         oQ20FPfrTp3ha+xSO+ZyZraqUWeCBGLkC/KyCg+AJS2Kf0LpYUYfkpYcvJFLTOkHOdkW
-         U2dJhPJqykTM22jnDFv8x0SSITqIYHZblQXon5Z+rLKLYkQpRtwuBAP5TXweEkBgOZ5N
-         ASE6soQLRFy+MeDcdV9YeGpL77wDedYR/oCJQKJgxsdB8OAit+oT83TX0hB9yfi9BpFA
-         Nx1A==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=mo8VcWChyiswYqXafOgPzC0rghxOGJeUf888xhDxB7A=;
+        b=uGO0jFvodh5KmKG0+j88J+Uv+1v9D1joYsIbaMOdf3ilgynLWuPLtrF6a99VOG4n0X
+         W3r7t8oQGwBQRVvamMmvxt80gwroj3KaxDfdZu8upEm2gKxkfFDwuq8SVp2cOGk+EWvt
+         YLxJZ2bQVz7dcbbMLKiR+qDccTooKZCUUAsjlRbSfM3zfoUoap3CTDrNCewzK3gaPy17
+         Lm33dcCCKnzqPCuY4wPsyyIeIJz1TS4zi/bz1tarf6jeSjPDIGjZgb9sJkWGIM0tJEK1
+         uXdUd1BmFXSIR5YWT/kE5dTsQkjO+WaDXBXYA9LipHOHHFr1/odKypEDAYsa12MZYnz1
+         URFA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=X76vwLT0;
-       spf=pass (google.com: domain of deborahbrouwer3563@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=deborahbrouwer3563@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Djd1yu2y;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52e as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <deborahbrouwer3563@gmail.com>
-Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
-        by gmr-mx.google.com with ESMTPS id i14si568481ots.4.2021.04.01.15.16.23
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from mail-ed1-x52e.google.com (mail-ed1-x52e.google.com. [2a00:1450:4864:20::52e])
+        by gmr-mx.google.com with ESMTPS id x16si98046wmi.1.2021.04.15.00.44.42
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 01 Apr 2021 15:16:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of deborahbrouwer3563@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
+        Thu, 15 Apr 2021 00:44:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52e as permitted sender) client-ip=2a00:1450:4864:20::52e;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=X76vwLT0;
-       spf=pass (google.com: domain of deborahbrouwer3563@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=deborahbrouwer3563@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Djd1yu2y;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52e as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x441.google.com with SMTP id c17so2421024pfn.6
-        for <outreachy-kernel@googlegroups.com>; Thu, 01 Apr 2021 15:16:23 -0700 (PDT)
+Received: by mail-ed1-x52e.google.com with SMTP id i3so1177912edt.1
+        for <outreachy-kernel@googlegroups.com>; Thu, 15 Apr 2021 00:44:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=jKf/bIRuPNdm99ftg+yWOdYdbkeJfbztmf6+BPi3ElY=;
-        b=X76vwLT0ntTAWOqsz8Btk1VEg5vPVNk1nmpwaxxyJIF09eN/IEPp6XA4T4ZI8ptzaT
-         hSZYH0ORceccsuZI3SHstGm+vUz3jALF7vsVgUjDxxQ+DVHEFVO2AWGiewl38t/dCDQ1
-         2bSGeikoQ6Wd51f6QWHVm9Teoh7rXDH6YR6XPgwyn2lrDSh07m9aW8/QLobKMN+hYHKB
-         i9hIj53hO3YLAgW+Fi8mHMLsV9nIYUFPVLhiNo243JP9DWwjWfbMKr8SjEBhfPEC3VUr
-         SqhKadcZ4++9/0pUePggaXY9fcd3hsqMvufm08Habk4J0SZgYEw9u0tCNsww0CbX5v2r
-         NEjg==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=mo8VcWChyiswYqXafOgPzC0rghxOGJeUf888xhDxB7A=;
+        b=Djd1yu2ygNAB6AwkfDBSQM23UdPQgI7TRVwaPtaSVsOgZTsXMnEZf55dsV49AwyfqE
+         2/COw0IOUs30bcMPL2xIijtqsFtCwG8xaSgDGHFaYP40hX9uG2ZQgm/QJeCFeXg7SUIW
+         pP+Valr/YyuNLXEKM4zZ2tHWTNwZfXZ8BvDVv+hkeKYxeHDs5UqnX26mmGGAzClsHUsN
+         +cnMY9Z32Oja7hCewZctIGbz1TTfSHo+SQ1xSerPw9GWBhcVTI7Mwtsx+o3RaEnItZ5p
+         IOtllw0zzkMmaWZ1H88ziYgEuzUE/SzS0FDtsucdsP8ggYVaifte6MqK2hX9eJznRSjo
+         sizQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=jKf/bIRuPNdm99ftg+yWOdYdbkeJfbztmf6+BPi3ElY=;
-        b=bCdteOSWzRQvFtNCO891iyvLqAjXe1EDbmcNfSI3WCyd5GkH3wq0eXuaT0VAsNZw/8
-         b6cPaGbkCNRozMi012hBjWbmECg4Horlrr9w0djew7Nd8AC8yH6x+RSfwcXK4YP09wSm
-         jm826nyy43XD5lptHFGJm8QGq06t9fHFIg4HM4UY1L3sM/Yxl51/aRwYybYa3vZ4Js2J
-         Iy6f8RrTo/gpNyk3N9QzQgYuwKn607Rf9rvZL0/xwK0y9/VrVu243CUmUyDH709P6hYu
-         0o0ukqwNrIz5Exwi4WCcZUtPcCXCN/GdxhY3IVe8jD/HtY4pvDSdU1Z8JgrNh/vcqtyk
-         Ycag==
-X-Gm-Message-State: AOAM533Q0fy91gPvMCq9YQi8lCsQUyBSyShHc9xo0F5CED/15s3q7SEe
-	F4ul/O2Tgkkj3fhD6Hm/LXA=
-X-Received: by 2002:a65:4c43:: with SMTP id l3mr9284964pgr.327.1617315383009;
-        Thu, 01 Apr 2021 15:16:23 -0700 (PDT)
-Return-Path: <deborahbrouwer3563@gmail.com>
-Received: from djbComp.hitronhub.home (S0106ac202ecb0523.gv.shawcable.net. [70.67.120.89])
-        by smtp.gmail.com with ESMTPSA id d13sm6671494pgb.6.2021.04.01.15.16.22
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=mo8VcWChyiswYqXafOgPzC0rghxOGJeUf888xhDxB7A=;
+        b=DH8EKnW57z2z87dUqPXiLF3aTAcFhX4ADoIwf3pt4elJzuqT8iE/rKh6CE6bq72kYC
+         boMmVwBmnd1S0OuMpkl/JiACnXEUZP6TlYFROtKGFvxh/jEs/22hiyjFg1pdlHW+OGMi
+         8gr1aCaHK3JCLvZqSzR1/J/+h/1j7CObTaF7YFoLuLpC8jWh/Vrlr91lJgMoZIF1jeph
+         AzIfoJ4so/ybuP2mPOBOPKDObqSwgYe+iJV0+ZR9j1RYXRnR29MTLkI+J3Zg7eeMBJXm
+         WgQPKNnxE2RMrY5WJrMozqlpNG0rkbnKbWyIxrblHA6fLVwqpZs5PGeC4gfxSOChXZsU
+         HfLQ==
+X-Gm-Message-State: AOAM530IlJlmR+NAOUW1pdCbf9t4TvL6T7Qlv2ZuEYlCTuJDRwoWlHgY
+	m+VtdBMTYNCRqbhpkW94FNs=
+X-Received: by 2002:a05:6402:254a:: with SMTP id l10mr2543769edb.160.1618472682108;
+        Thu, 15 Apr 2021 00:44:42 -0700 (PDT)
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from linux.local (host-95-237-55-30.retail.telecomitalia.it. [95.237.55.30])
+        by smtp.gmail.com with ESMTPSA id ca1sm1654269edb.76.2021.04.15.00.44.41
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 01 Apr 2021 15:16:22 -0700 (PDT)
-From: Deborah Brouwer <deborahbrouwer3563@gmail.com>
-To: gregkh@linuxfoundation.org,
-	ross.schm.dev@gmail.com,
-	marcocesati@gmail.com,
-	fabioaiuto83@gmail.com,
-	dan.carpenter@oracle.com,
-	phil@philpotter.co.uk,
-	amarjargal16@gmail.com
-Cc: linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	Deborah Brouwer <deborahbrouwer3563@gmail.com>
-Subject: [PATCH v3 0/3] staging: rtl8723bs: core: block comment style changes
-Date: Thu,  1 Apr 2021 15:15:39 -0700
-Message-Id: <cover.1617314121.git.deborahbrouwer3563@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        Thu, 15 Apr 2021 00:44:41 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy-kernel@googlegroups.com, linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, Matthew Wilcox <willy@infradead.org>, Julia Lawall <julia.lawall@inria.fr>, Fabio Aiuto <fabioaiuto83@gmail.com>, Dan Carpenter <dan.carpenter@oracle.com>
+Subject: Re: [Outreachy kernel] [PATCH v4] staging: rtl8723bs: Remove led_blink_hdl() and everything related
+Date: Thu, 15 Apr 2021 09:44:40 +0200
+Message-ID: <50579851.vdsvJbu58s@linux.local>
+In-Reply-To: <YHfrLoot3iJSpAHU@kroah.com>
+References: <20210415071731.25725-1-fmdefrancesco@gmail.com> <YHfrLoot3iJSpAHU@kroah.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
 
-Style changes to block comments.
+On Thursday, April 15, 2021 9:28:46 AM CEST Greg Kroah-Hartman wrote:
+> On Thu, Apr 15, 2021 at 09:17:31AM +0200, Fabio M. De Francesco wrote:
+> > Removed useless led_blink_hdl() prototype and definition.
+> > Removed struct LedBlink_param. Removed LedBlink entries in
+> > rtw_cmd_callback[] and in wlancmds[]. Everything related to LedBlink is
+> > not anymore needed. Index of slots changed in arrays comments to
+> > reflect
+> > current positions.
+> > 
+> > Reported-by: Julia Lawall <julia.lawall@inria.fr>
+> > Reported-by: Fabio Aiuto <fabioaiuto83@gmail.com>
+> > Reported-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> > Suggested-by: Matthew Wilcox <willy@infradead.org>
+> > Suggested-by: Dan Carpenter <dan.carpenter@oracle.com>
+> > Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+> > ---
+> > 
+> > Changes from v3: Merged the series into one single patch for avoiding
+> > unnecessary intermediate stages.
+> 
+> Much better, thanks for sticking with this.  
+>
+I think it was worth doing this job well and getting it done, despite the 
+difficulties I had.
 
-Changes since v2:
-	- add subsystem/driver prefix into 0/X email subject line
-Changes since v1:
-	- all commit messages more accurately describe changes
+I really appreciate your message.
 
-Deborah Brouwer (3):
-  staging: rtl8723bs: core: add comma within a comment
-  staging: rtl8723bs: core: add * to block comments
-  staging: rtl8723bs: core: remove empty comment
+Thanks so much,
 
- drivers/staging/rtl8723bs/core/rtw_xmit.c | 61 +++++++++++------------
- 1 file changed, 28 insertions(+), 33 deletions(-)
+Fabio
+>
+> Now queued up, and I think
+> this is going to be the last patch I take for 5.13-rc1.  The rest I'll
+> store up for the next kernel release after that...
+> 
+> thanks,
+> 
+> greg k-h
 
---
-2.17.1
+
+
 
 
