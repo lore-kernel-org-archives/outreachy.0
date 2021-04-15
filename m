@@ -1,134 +1,123 @@
-X-GM-THRID: 6473412482924806144
-X-Received: by 10.99.3.8 with SMTP id 8mr241578pgd.20.1507208795204;
-        Thu, 05 Oct 2017 06:06:35 -0700 (PDT)
+X-GM-THRID: 6950999915860328448
+X-Received: by 2002:ac8:6906:: with SMTP id e6mr3881998qtr.121.1618507102819;
+        Thu, 15 Apr 2021 10:18:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.84.235.134 with SMTP id p6ls6577866plk.12.gmail; Thu, 05 Oct
- 2017 06:06:34 -0700 (PDT)
-X-Received: by 10.101.67.130 with SMTP id m2mr2104452pgp.178.1507208794118;
-        Thu, 05 Oct 2017 06:06:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1507208794; cv=none;
+Received: by 2002:a37:9e11:: with SMTP id h17ls3438738qke.10.gmail; Thu, 15
+ Apr 2021 10:18:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzYswbar+/r5eg+2PIikEpcJ+uaOk9dJw7fs8PBueheJ3okFz/Qo2za4nYQC0M4SVoKi7xN
+X-Received: by 2002:a05:620a:670:: with SMTP id a16mr4802070qkh.428.1618507101909;
+        Thu, 15 Apr 2021 10:18:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618507101; cv=none;
         d=google.com; s=arc-20160816;
-        b=mdK8fZqS2WEMrNZD9jn+x+3St55MePfX5TBXtM5E0Orlx/hr2jqwJ9TEkk46tJ6ERg
-         FxMWHEdWZP7u5lQfk1uGdK8O+1gsAwNkoC+JaeoU9m5VDWRGJh/MwqfVXUSbXTcBL2yR
-         Dgtf0SEn7lHPkoVv2mQojFKQUKI1wricxC12EXK97jU2k2ZPUqUqODKJwbHD9LnJiuC1
-         Ml3pfBgvmDVAeFLcgfWdPSDD/ZFTPNxEpJl4EgziZbl79xkA5+RDkHWnNNYCnRCtydVf
-         fNQFrTVAGouHb+qs8ZdKEKuf4uDXgwikmdoQ72VMVWuntiGAjR+FnngUW9/WJk8+K2mc
-         dDIA==
+        b=OXWqHghCAHMIOdVQPNbJ9mnCGoaG8rXnqpAV/evU/ux9pkECyLMDW/HcpX2aWaQuPh
+         IZYB2jpwAUCJuWARyz3OzpvFvBk9lKehuMrLQkRSeSiftkMoNXLplLa3V2hk7z/Hxsh1
+         Nzd+7/QZ3VTQxpa8eBqPnQZk/TM5FFODwzQE1HnK+h5qBmLEbsRULD8nL5nc5/+64CDB
+         tmlD4o3Vf7sISkR4HcaJ5H2gu9Y4spM37/DKzp+wnooFS8RDVoAj9hCu0vYVWtloQusp
+         gJ0DPxL/WtMCCB6otW7D/D89MnGhqqxeVDoqEeQUa7XdM6lrdNNZno+o/tXsxvfxGViE
+         9pIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=EgBbktxGoKKbfPQu+Od6eS7BTrqk4epN2Y55ndj04UU=;
-        b=LTulPh1W1fvdciyAUv50d1vTozwvS0/h+ZX5u8jSquxKXT1IaUPuG1jyP/J4mbCIBt
-         EjQKaV7Wk1YHzcua55cwggyvL4fNChHtcCOHqB6Q7J0U7QW/Np2DxwszDc9B1vRHZWxn
-         X2umv+DoVOqnGQPlthbpPCzw02TqFRV//l+CTzDIMxucBaTsKWMj+G3XlWbe01qgoSp9
-         iGQry2ZnmrzLBNiIxJ7tTYJAhRIFCReKuIFcLCOBXiaTqhxacok5w9jCCVQENsCqe6FI
-         9nHNZ8YPPyRQmSwQFzgpVrjXhEcyRtiZMnyiopJXV7dqD4SMgFUFQm3hm+1rCr6AhV36
-         RyrQ==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=Q96K00hD2NjD86HPQFbde/I+2OWvsg2PMKdChk2z1WQ=;
+        b=Zak41HKdSDTBpIbQftSGg0KsrgNmPyMWUMgrwPxD3q4SBIuABwQGgHVxlUedqEeE9M
+         fVt7lG3y3T3nrZCmq4HA9ORUNU4vIr5pIuQmxxPxJS7yyeoYPqDqZLT4ew/iMLDZj//T
+         U8ZUZqhTJAfkJLXRW/5THCZG63DK8cFFH1cTjFFsik9lbx2Zs3xiFxQue2S5bb/r2Yre
+         mW10ck6d+JofYn0JKVxT7b8cLqoUouxm5EB6WWrzEuDBKvQsp0tPuYSAoMYjt9D29JnC
+         ZKiO1jzi99nQf4YTErgh6MY74efRFYPVeIhzVa+xrURXI8iBa8dQYKvFoWBW8Bj13uXi
+         PaHw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lp8lE2Kt;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <aastha.gupta4104@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id x71si2025045pfe.0.2017.10.05.06.06.34
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ddvqhdSl;
+       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::72b as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <alinesantanacordeiro@gmail.com>
+Received: from mail-qk1-x72b.google.com (mail-qk1-x72b.google.com. [2607:f8b0:4864:20::72b])
+        by gmr-mx.google.com with ESMTPS id h62si194879qkc.3.2021.04.15.10.18.21
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 05 Oct 2017 06:06:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 15 Apr 2021 10:18:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::72b as permitted sender) client-ip=2607:f8b0:4864:20::72b;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lp8lE2Kt;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id g65so14602000pfe.1
-        for <outreachy-kernel@googlegroups.com>; Thu, 05 Oct 2017 06:06:34 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ddvqhdSl;
+       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::72b as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-qk1-x72b.google.com with SMTP id o5so26016075qkb.0
+        for <outreachy-kernel@googlegroups.com>; Thu, 15 Apr 2021 10:18:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=EgBbktxGoKKbfPQu+Od6eS7BTrqk4epN2Y55ndj04UU=;
-        b=lp8lE2KtZyBGZxvvsWOLGJ4+pnisAFWEYb9p+QKm0FOodH7nPu5SVsATvcsH07ZX3u
-         bPEI1z4kc6Lgd4Qa/W3+AMd/iLZNcmNI620sQkDOBRIGQxet40rNKEuRVFrPqaIdKKY/
-         cJXD4lJKJ7hfC7sgySfeKijqk/MeG00DEfSk/VtOPKQGVU6bmJQNG1BsrIbq35sSxA4M
-         beNCJlCoOa72HHqQiqbhay1h6IL1uKbpldAv/n8HMQvoW5+cUkXwKe7goYLBafvRwYpA
-         uVPT2UFCal3g7nIOukQxH89fFxtAAGAFzX1QFvOKWw+2ScFtCC8T1cSdqLkhRR2bvv62
-         Tqqg==
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
+         :user-agent;
+        bh=Q96K00hD2NjD86HPQFbde/I+2OWvsg2PMKdChk2z1WQ=;
+        b=ddvqhdSlR4JBrqD26ZAbHTyS/jISDCdj0isRUj+pXvidKnZWtAKeoAweWjGkUGyXre
+         8QrqI69VUqRxqTjbm4P/4j8oWMQK3J1+D583o1BReRErogmSzebk8tnUQdu8VfD1N9Qw
+         tfLUtjGTeXpkH2T/HKpZfODuzUCJeXWJ1gFOarOr4JUFKWANjLr07cuGNyQCuS68kfeb
+         6ZFijZIXXpGNRPLycR4T97CaAG7lwXcZ0gkhHozZbRFEyjrFhDZ1WmAKw3CUUllwhlvm
+         xKzpfOXQ+R93vvDW0/R4HVtcbl9Av/+6E4CYVaZK0C2n1XHD6kD6kYKfi7nFsZtiHFk7
+         upUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=EgBbktxGoKKbfPQu+Od6eS7BTrqk4epN2Y55ndj04UU=;
-        b=seFAc88uuK9ht9/jmgumoKWL2oP62wIq+pcUCEWaj9wHLkKEnjnNBABOP+DfqHs28f
-         iLb0w0rupjFTFxFa7mC4arNt22MIT6U9+JTIH9ZvsLJ4C7KBzIFgwIZGcICJYzXkfP75
-         JYpwDhhXkmxToL+kd5IpWRvkMR98tPveQW4gjhl2P9/H6DGJC5JQh7kTcC4l4EhhzQO9
-         7Tfu3g7AzqHrAlTRevauRP7Juc4DVZJAX1YZ3thqMhdb/xh6CRQzV6XnGF5NJf8Zlytg
-         XoYu9M7CtYGFMJ6qyrmhq+3CqVxSzxtTHgsqsxugdSJJb+NkLNjiyJDYsAEkh/N2Wmgo
-         jS5g==
-X-Gm-Message-State: AMCzsaVMH5q4LudRJrvXXG+Oclzk0iXMvtKFJTwgh1zNrDgemgTtE8w4
-	33I7ER3yiHMg1h8KXCCo8Io=
-X-Google-Smtp-Source: AOwi7QC05G02Ldcoa8wXx7MZKFJ4s/6dNwV/w38Wwnxf9DMEZqLE7hgaG4mIRo8LHTPwjE8OtC0f4A==
-X-Received: by 10.98.32.212 with SMTP id m81mr3432211pfj.227.1507208793780;
-        Thu, 05 Oct 2017 06:06:33 -0700 (PDT)
-Return-Path: <aastha.gupta4104@gmail.com>
-Received: from aastha-HP-Pavilion-15-Notebook-PC ([103.196.221.229])
-        by smtp.gmail.com with ESMTPSA id q23sm31091527pfk.182.2017.10.05.06.06.32
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 05 Oct 2017 06:06:33 -0700 (PDT)
-From: Aastha Gupta <aastha.gupta4104@gmail.com>
-To: outreachy-kernel@googlegroups.com,
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent;
+        bh=Q96K00hD2NjD86HPQFbde/I+2OWvsg2PMKdChk2z1WQ=;
+        b=g6UH/9HigA17FIpYBQXJpogxDl4uJpeB5/THvYUNvcXKgC0Z6mPSfGREv8X9c5i7Bs
+         k0WfedyKZS4dzLCX6idRcmld0oPqYqWJY8SrRAgtxuOcLUWzErlKNjGHjihB5fRTpRa7
+         95nh4QnjtJCRhNoOgeMvYo+aItIF9o+RsO4rDWTVpN6CUmeQ8jl86OG6QgH4ijNETM0d
+         eBumkBop9BmBTizlEtJLGLc66Fz0KbH5BtgCna6imbHMQJdPSB36VDHGzlQMOBpAh1yR
+         +2waV9tIW+aVRGdNRGGSSb/+kOiu7J04kz8ClDSGkIY+xaXCqE10KFYgCIUO8xeAR0O8
+         1nLg==
+X-Gm-Message-State: AOAM5321RreW7iZFk9DsXG1q/VQ0qBo99zKbh19WRN2L0cQ5f6DhrJyA
+	73GVFQSaX5xB/+c/6BVasOkoLAmgJHRaK/SP
+X-Received: by 2002:a05:620a:a4b:: with SMTP id j11mr4754516qka.19.1618507101535;
+        Thu, 15 Apr 2021 10:18:21 -0700 (PDT)
+Return-Path: <alinesantanacordeiro@gmail.com>
+Received: from focaruja ([2001:1284:f016:a037:fda3:4e59:60ec:90e5])
+        by smtp.gmail.com with ESMTPSA id c27sm2417598qtg.97.2021.04.15.10.18.20
+        (version=TLS1 cipher=ECDHE-ECDSA-AES128-SHA bits=128/128);
+        Thu, 15 Apr 2021 10:18:21 -0700 (PDT)
+Date: Thu, 15 Apr 2021 14:18:18 -0300
+From: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
+To: Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Sowjanya Komatineni <skomatineni@nvidia.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
-Subject: [PATCH 0/7] staging: rtl8188eu: fix code styling issues
-Date: Thu,  5 Oct 2017 18:36:20 +0530
-Message-Id: <1507208787-18008-1-git-send-email-aastha.gupta4104@gmail.com>
-X-Mailer: git-send-email 2.7.4
+Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: [PATCH v2] staging: media: tegra-video: Align line break to match
+ with the open parenthesis in file vi.c
+Message-ID: <20210415171818.GA18601@focaruja>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.5.24 (2015-08-30)
 
-These patches fix:
-- multi line comment styling
-- whitespaces styling issues
-- use pr_info() instead of printk()
-- prefer using BIT macro
+Align line break to match with the open parenthesis.
+Issue detected by checkpatch.pl.
 
-This patch series includes all the patches I sent for this driver to
-show the correct order.
+Signed-off-by: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
+---
 
-Aastha Gupta (7):
-  staging: rtl8188eu: fix block comment styling in rtl8188eu files
-  staging: rtl8188eu: fix space between function name and '('
-  staging: rtl8188eu: use pr_info() instead of printk()
-  staging: rtl8188eu: fix spaces before tabs
-  staging: rtl8188eu: add spaces around algebric and boolean operators
-  staging: rtl8188eu: prefer using BIT macro
-  staging: rtl8188eu: add spaces around '|'
+Changes since v1:
+ - Move short argument to the previous line in function call
+   since it didn't exceeded 80 characters in line
 
- drivers/staging/rtl8188eu/include/Hal8188EPhyCfg.h |  33 ++-
- drivers/staging/rtl8188eu/include/Hal8188EPhyReg.h |   3 +-
- .../rtl8188eu/include/Hal8188ERateAdaptive.h       |  28 +--
- drivers/staging/rtl8188eu/include/basic_types.h    |  14 +-
- drivers/staging/rtl8188eu/include/drv_types.h      |   3 +-
- drivers/staging/rtl8188eu/include/hal_intf.h       |   6 +-
- drivers/staging/rtl8188eu/include/ieee80211.h      | 114 ++++++-----
- drivers/staging/rtl8188eu/include/odm.h            |  44 ++--
- drivers/staging/rtl8188eu/include/osdep_intf.h     |   2 +-
- drivers/staging/rtl8188eu/include/pwrseq.h         |  44 ++--
- drivers/staging/rtl8188eu/include/rtl8188e_hal.h   |  29 ++-
- drivers/staging/rtl8188eu/include/rtl8188e_spec.h  | 153 +++++++-------
- drivers/staging/rtl8188eu/include/rtw_cmd.h        | 222 +++++++++++----------
- drivers/staging/rtl8188eu/include/rtw_debug.h      |   4 +-
- drivers/staging/rtl8188eu/include/rtw_eeprom.h     |   9 +-
- drivers/staging/rtl8188eu/include/rtw_event.h      |  40 ++--
- drivers/staging/rtl8188eu/include/rtw_led.h        |   6 +-
- drivers/staging/rtl8188eu/include/rtw_mlme.h       |  38 ++--
- drivers/staging/rtl8188eu/include/rtw_mlme_ext.h   |  27 ++-
- .../staging/rtl8188eu/include/rtw_mp_phy_regdef.h  |  19 +-
- drivers/staging/rtl8188eu/include/rtw_pwrctrl.h    |  22 +-
- drivers/staging/rtl8188eu/include/rtw_qos.h        |   3 +-
- drivers/staging/rtl8188eu/include/rtw_recv.h       |  80 ++++----
- drivers/staging/rtl8188eu/include/rtw_rf.h         |   6 +-
- drivers/staging/rtl8188eu/include/rtw_security.h   |  27 ++-
- drivers/staging/rtl8188eu/include/rtw_xmit.h       |  12 +-
- drivers/staging/rtl8188eu/include/sta_info.h       |  12 +-
- drivers/staging/rtl8188eu/include/wifi.h           |  25 ++-
- drivers/staging/rtl8188eu/include/wlan_bssdef.h    |  22 +-
- 29 files changed, 583 insertions(+), 464 deletions(-)
+ drivers/staging/media/tegra-video/vi.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
+diff --git a/drivers/staging/media/tegra-video/vi.c b/drivers/staging/media/tegra-video/vi.c
+index 7a09061c..3f06d69 100644
+--- a/drivers/staging/media/tegra-video/vi.c
++++ b/drivers/staging/media/tegra-video/vi.c
+@@ -1812,8 +1812,8 @@ static int tegra_vi_graph_parse_one(struct tegra_vi_channel *chan,
+ 			continue;
+ 		}
+ 
+-		tvge = v4l2_async_notifier_add_fwnode_subdev(&chan->notifier,
+-				remote, struct tegra_vi_graph_entity);
++		tvge = v4l2_async_notifier_add_fwnode_subdev(&chan->notifier, remote,
++							     struct tegra_vi_graph_entity);
+ 		if (IS_ERR(tvge)) {
+ 			ret = PTR_ERR(tvge);
+ 			dev_err(vi->dev,
 -- 
 2.7.4
 
