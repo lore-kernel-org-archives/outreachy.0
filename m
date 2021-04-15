@@ -1,182 +1,115 @@
 X-GM-THRID: 6951472733283680256
-X-Received: by 2002:a5d:6b50:: with SMTP id x16mr5331197wrw.379.1618520347874;
-        Thu, 15 Apr 2021 13:59:07 -0700 (PDT)
+X-Received: by 2002:a1c:4b19:: with SMTP id y25mr4768796wma.91.1618516630207;
+        Thu, 15 Apr 2021 12:57:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:6804:: with SMTP id w4ls3272409wru.2.gmail; Thu, 15 Apr
- 2021 13:59:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwImnxLpzeY8V7+LP+VoERypT0WuZk7ZDIv97jsOxf8oOyiCW3PPIgZK5aV3XcPw/bXk5eK
-X-Received: by 2002:adf:facf:: with SMTP id a15mr5414820wrs.261.1618520346445;
-        Thu, 15 Apr 2021 13:59:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618520346; cv=none;
+Received: by 2002:adf:d1c8:: with SMTP id b8ls3142299wrd.3.gmail; Thu, 15 Apr
+ 2021 12:57:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzZDVBE9suzGZwk0+OeFtsjscQLTs3NTT3bq91/l4Xb0WoJgE/LBTXe1MtpQzqzAk67GlQt
+X-Received: by 2002:a5d:4bce:: with SMTP id l14mr5244254wrt.359.1618516628617;
+        Thu, 15 Apr 2021 12:57:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618516628; cv=none;
         d=google.com; s=arc-20160816;
-        b=b6Amn5ANhRtW9bKNhpw8OheGsFlqdcEoPqYVXdsrpgLCLr2WyhUVOTs1PubrCDc09L
-         yVuk14ywv3z7uVL/lXMdFWpDpPgQowfB+4kj0u+Bbq2rJ2RDcHq73Gqy9v44vEduVGNu
-         fnLuu+F7Jef9o26phO3dSNaXnc5g3MJIE+JFNUOR1uOLYkDb9dZRePs1vvxZx1hXnuQD
-         wUtOlXi/VfiC88KtwxwBKUSyt8AVU2t+/YGj7TIQS8j+pAsWe2f4J6D1qQqyoW4XfP67
-         XwyIbuOWdx/Qull0BsyJMO4wBuFeU57x+tPOFQE0GpvZqfupzwWEK77OX0AJxo9MEMno
-         K11g==
+        b=mr9fZpj06gLYOmwm0Xyvr2pCS5Cz9TLMkLdvnxWj+Gt4ioGFeAsxcX7Jox/x0iiSIk
+         93a0PTdWSCdkXSYo11dmsjUBcr/tw8EEESNS4br4myHBUz8VJy+51kQ+kOU2zAweqV5d
+         dzviGaJCfxwTqGQ3tANNnPxBwb8CggkiYvGPScwHTb/QqWFtb3tB7HLNTXO3TS46GdmY
+         LuroEA7l+GbF/2TDQ9gCt5Zt2p2kfdpygGrHAQiSyqRaz7gxJPyXwbCpPBRLEX9FX8QT
+         ygRmOottSWEvcOHsERS2O6UZreihYUcpJJlNJiTwi9ajpugFFEE/r3nwCQ1EzucEuztl
+         9gSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=VqKz8czkX08y+e0ZGB+BKN4E0AUfG/jjvVBjvYwbxEo=;
-        b=dBxVUMBtxlYa9WrSl2mTbhlaXC7uOz2zXyNsFE7hcdu6AiYRIKm5PaxeAvZi+k3J2N
-         13QUpJYJx622wp59bsf6ntIuEaN9L6MPasfoXsT9YDpX3StW5yA54HkEYohTvvjreSLk
-         gPEQUvhvutcmoOKi5k0Memni9ii+sQqzKkLGwqdNWJa5LDLdbq3SEEQGRXwlB2hRNm5G
-         5SsgePvX2hrAxdhh5Y8CWRHLROGHIdTsCOD1T4Fyq+ZVJwo4S2/DK4bIuEbHLfWWgYcc
-         BO+7MSJxfSSkqzrnOdp0WCo6jWkELE5yxRWoxVFTGiCQVGpcMH0W1SgIubZX+3A3r/Ak
-         q1MA==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date;
+        bh=j4l+bjRXHsFutRZ08NnXtHpFhDNN/r8p94lIy8U9/j0=;
+        b=JdPzoMhOQRfBrqYEvC/PU+7CsLQ/OKWx8UVhcWB54pHLfkt0AOzLPS0WymISVgnvsv
+         9Ka0RlsWvbX85rB9t2RkpNHhqXqYYxe2Im7EA8y65MJvUAY0jGJgPvDe0WCZVwGZ6unu
+         VSbYPsdQkHpkMv/wXL/yv5qebaWTiqnlshBOIg36mz3xzGlAnDsiCv0AYS00EJD71gIl
+         CuSe9hFFB/Udv5pYfZUOn2ehEbiIbytx4ttMMrooKH+/PSqmfF9ta2owpCLiJJ464rNW
+         SmHA4+hBEQA9H9to9/HA+BOGXfsZ/qvEjySb72XCvxrH0AI43r3Rtg3xPaMn47f1WiHW
+         LL0g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jMZz9gs7;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::636 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from mail-ej1-x636.google.com (mail-ej1-x636.google.com. [2a00:1450:4864:20::636])
-        by gmr-mx.google.com with ESMTPS id s141si376122wme.2.2021.04.15.13.59.06
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id x16si195206wmi.1.2021.04.15.12.57.08
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 15 Apr 2021 13:59:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::636 as permitted sender) client-ip=2a00:1450:4864:20::636;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 15 Apr 2021 12:57:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jMZz9gs7;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::636 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ej1-x636.google.com with SMTP id g5so32229720ejx.0
-        for <outreachy-kernel@googlegroups.com>; Thu, 15 Apr 2021 13:59:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=VqKz8czkX08y+e0ZGB+BKN4E0AUfG/jjvVBjvYwbxEo=;
-        b=jMZz9gs7T0dcqwOzyzvkwp25WVb21FxR5488j9S4IMasAYzixOvsc+7S7cdby6wqbR
-         4o5JV77+RUfCLdY74Y3mRpcl0JRoy9xRFI4gfLy0n4MZQkYif9Yb+jF7Xzauon2Nk0QT
-         0LoTSBipANi90LMvCIn/Ir1IYzqLYglDkg3xJp1JSJl34xulCJzKJnEYHrCTQ9/qIoHW
-         udFCW2Uqvipaie60nJm60NeMj35uAMW5gryuit1w+5bjJmOBOQS+7WgCHSLjCgy/O1xI
-         v3ljN/DFle6LGTrx4+62y1g7lMLGFk/A7nyQwjp7zZUm3RvjAvWu7FVnu2iyuBi4oKUp
-         G3Aw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=VqKz8czkX08y+e0ZGB+BKN4E0AUfG/jjvVBjvYwbxEo=;
-        b=TrCN4XrsSi0bjh7I2gt8Q1ZrD7/0W03bdHjRIDHwKxF8BwUkWs30IwwNFbXIq6O70W
-         Kbm9Cngoz4R5i+NfYIEHOjDwDCgoQQuNWPk5V623ed2Lj8WVV4X9CH8uENL+akADwjIB
-         P6aEE2Gx/Xm8RYIoBCKlCks2ZcJP+ZeNtyqIXa5mWqdcwdBQit94WZpzjJdvkWvCJlGv
-         yqws/BtIX5mEWz4Dop+svYbjd4YwIWNaiJv6uyB8sDblvzKHyGlIcEgQdPm8OEF8c7tG
-         vbcstEC+CYt5hN3HP26aUmZr3CeRoH2rrXq5kQELFUTP5IvV1TdIyGOkziLIbph8VXzd
-         XYzA==
-X-Gm-Message-State: AOAM530VtcXUxSw1fAKNQWlhd8/Kq7ExWPRfcPF/wEzdmqJE+1dJZ8DI
-	9DburGynCxyqF+kJERwTaY4=
-X-Received: by 2002:a17:907:7745:: with SMTP id kx5mr5353769ejc.3.1618520346259;
-        Thu, 15 Apr 2021 13:59:06 -0700 (PDT)
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from linux.local (host-95-237-55-30.retail.telecomitalia.it. [95.237.55.30])
-        by smtp.gmail.com with ESMTPSA id h15sm2735858ejs.72.2021.04.15.13.59.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 15 Apr 2021 13:59:05 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: dri-devel@lists.freedesktop.org, outreachy-kernel@googlegroups.com, Daniel Vetter <daniel.vetter@ffwll.ch>, Melissa Wen <melissa.srw@gmail.com>, Ben Skeggs <bskeggs@redhat.com>, David Airlie <airlied@linux.ie>
-Subject: Re: [Outreachy kernel] [PATCH] drm: nouveau: dispnv50: disp.c: Remove set but unused variables
-Date: Thu, 15 Apr 2021 22:59:04 +0200
-Message-ID: <3639521.dS9dJRvPBs@linux.local>
-In-Reply-To: <alpine.DEB.2.22.394.2104152156530.32851@hadrien>
-References: <20210415194423.4880-1-fmdefrancesco@gmail.com> <alpine.DEB.2.22.394.2104152156530.32851@hadrien>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+X-IronPort-AV: E=Sophos;i="5.82,225,1613430000"; 
+   d="scan'208";a="378797013"
+Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 15 Apr 2021 21:57:07 +0200
+Date: Thu, 15 Apr 2021 21:57:07 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+cc: dri-devel@lists.freedesktop.org, outreachy-kernel@googlegroups.com, 
+    Daniel Vetter <daniel.vetter@ffwll.ch>, 
+    Melissa Wen <melissa.srw@gmail.com>, Ben Skeggs <bskeggs@redhat.com>, 
+    David Airlie <airlied@linux.ie>
+Subject: Re: [Outreachy kernel] [PATCH] drm: nouveau: dispnv50: disp.c: Remove
+ set but unused variables
+In-Reply-To: <20210415194423.4880-1-fmdefrancesco@gmail.com>
+Message-ID: <alpine.DEB.2.22.394.2104152156530.32851@hadrien>
+References: <20210415194423.4880-1-fmdefrancesco@gmail.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="US-ASCII"
+Content-Type: text/plain; charset=US-ASCII
 
-On Thursday, April 15, 2021 9:57:07 PM CEST Julia Lawall wrote:
-> On Thu, 15 Apr 2021, Fabio M. De Francesco wrote:
-> > Removed two set but unused variables.
-> 
-> Would it be useful to use the values?
+
+
+On Thu, 15 Apr 2021, Fabio M. De Francesco wrote:
+
+> Removed two set but unused variables.
+
+Would it be useful to use the values?
+
+julia
+
 >
-It would be useful if one wants to check returns for errors (which are 
-signaled by res different than 0). 
-
-However most other drm code never checks it (as in drivers/gpu/drm/radeon/
-radeon_dp_mst.c: lines 424 and 453).
-
-Differently, drivers/gpu/drm/i915/display/intel_dp_mst.c does some logging:
-
-ret = drm_dp_update_payload_part1(&intel_dp->mst_mgr);
-        if (ret) {
-                drm_dbg_kms(&i915->drm, "failed to update payload %d\n", ret);
-
-I could do like the second example, but I'm not sure maintainers would like 
-it.
-
-What do you think about it?
-
-Thanks,
-
-Fabio
-> 
-> julia
-> 
-> > Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
-> > ---
-> > 
-> >  drivers/gpu/drm/nouveau/dispnv50/disp.c | 8 +++-----
-> >  1 file changed, 3 insertions(+), 5 deletions(-)
-> > 
-> > diff --git a/drivers/gpu/drm/nouveau/dispnv50/disp.c
-> > b/drivers/gpu/drm/nouveau/dispnv50/disp.c index
-> > 196612addfd6..828f48d5bdd4 100644
-> > --- a/drivers/gpu/drm/nouveau/dispnv50/disp.c
-> > +++ b/drivers/gpu/drm/nouveau/dispnv50/disp.c
-> > @@ -1386,12 +1386,11 @@ nv50_mstm_cleanup(struct nv50_mstm *mstm)
-> > 
-> >  {
-> >  
-> >  	struct nouveau_drm *drm = nouveau_drm(mstm->outp->base.base.dev);
-> >  	struct drm_encoder *encoder;
-> > 
-> > -	int ret;
-> > 
-> >  	NV_ATOMIC(drm, "%s: mstm cleanup\n", mstm->outp->base.base.name);
-> > 
-> > -	ret = drm_dp_check_act_status(&mstm->mgr);
-> > +	drm_dp_check_act_status(&mstm->mgr);
-> > 
-> > -	ret = drm_dp_update_payload_part2(&mstm->mgr);
-> > +	drm_dp_update_payload_part2(&mstm->mgr);
-> > 
-> >  	drm_for_each_encoder(encoder, mstm->outp->base.base.dev) {
-> >  	
-> >  		if (encoder->encoder_type == DRM_MODE_ENCODER_DPMST) {
-> > 
-> > @@ -1410,10 +1409,9 @@ nv50_mstm_prepare(struct nv50_mstm *mstm)
-> > 
-> >  {
-> >  
-> >  	struct nouveau_drm *drm = nouveau_drm(mstm->outp->base.base.dev);
-> >  	struct drm_encoder *encoder;
-> > 
-> > -	int ret;
-> > 
-> >  	NV_ATOMIC(drm, "%s: mstm prepare\n", mstm->outp->base.base.name);
-> > 
-> > -	ret = drm_dp_update_payload_part1(&mstm->mgr);
-> > +	drm_dp_update_payload_part1(&mstm->mgr);
-> > 
-> >  	drm_for_each_encoder(encoder, mstm->outp->base.base.dev) {
-> >  	
-> >  		if (encoder->encoder_type == DRM_MODE_ENCODER_DPMST) {
-> > 
-> > --
-> > 2.31.1
-> > 
-> > --
-> > You received this message because you are subscribed to the Google
-> > Groups "outreachy-kernel" group. To unsubscribe from this group and
-> > stop receiving emails from it, send an email to
-> > outreachy-kernel+unsubscribe@googlegroups.com. To view this discussion
-> > on the web visit
-> > https://groups.google.com/d/msgid/outreachy-kernel/20210415194423.4880
-> > -1-fmdefrancesco%40gmail.com.
-
-
-
-
+> Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+> ---
+>  drivers/gpu/drm/nouveau/dispnv50/disp.c | 8 +++-----
+>  1 file changed, 3 insertions(+), 5 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/nouveau/dispnv50/disp.c b/drivers/gpu/drm/nouveau/dispnv50/disp.c
+> index 196612addfd6..828f48d5bdd4 100644
+> --- a/drivers/gpu/drm/nouveau/dispnv50/disp.c
+> +++ b/drivers/gpu/drm/nouveau/dispnv50/disp.c
+> @@ -1386,12 +1386,11 @@ nv50_mstm_cleanup(struct nv50_mstm *mstm)
+>  {
+>  	struct nouveau_drm *drm = nouveau_drm(mstm->outp->base.base.dev);
+>  	struct drm_encoder *encoder;
+> -	int ret;
+>
+>  	NV_ATOMIC(drm, "%s: mstm cleanup\n", mstm->outp->base.base.name);
+> -	ret = drm_dp_check_act_status(&mstm->mgr);
+> +	drm_dp_check_act_status(&mstm->mgr);
+>
+> -	ret = drm_dp_update_payload_part2(&mstm->mgr);
+> +	drm_dp_update_payload_part2(&mstm->mgr);
+>
+>  	drm_for_each_encoder(encoder, mstm->outp->base.base.dev) {
+>  		if (encoder->encoder_type == DRM_MODE_ENCODER_DPMST) {
+> @@ -1410,10 +1409,9 @@ nv50_mstm_prepare(struct nv50_mstm *mstm)
+>  {
+>  	struct nouveau_drm *drm = nouveau_drm(mstm->outp->base.base.dev);
+>  	struct drm_encoder *encoder;
+> -	int ret;
+>
+>  	NV_ATOMIC(drm, "%s: mstm prepare\n", mstm->outp->base.base.name);
+> -	ret = drm_dp_update_payload_part1(&mstm->mgr);
+> +	drm_dp_update_payload_part1(&mstm->mgr);
+>
+>  	drm_for_each_encoder(encoder, mstm->outp->base.base.dev) {
+>  		if (encoder->encoder_type == DRM_MODE_ENCODER_DPMST) {
+> --
+> 2.31.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20210415194423.4880-1-fmdefrancesco%40gmail.com.
+>
 
