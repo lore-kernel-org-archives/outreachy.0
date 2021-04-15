@@ -1,175 +1,169 @@
-X-GM-THRID: 6949155933016555520
-X-Received: by 2002:ab0:7142:: with SMTP id k2mr10885663uao.124.1617976448731;
-        Fri, 09 Apr 2021 06:54:08 -0700 (PDT)
+X-GM-THRID: 6951472733283680256
+X-Received: by 2002:adf:f80b:: with SMTP id s11mr4018476wrp.231.1618521386196;
+        Thu, 15 Apr 2021 14:16:26 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ab0:70d3:: with SMTP id r19ls849383ual.0.gmail; Fri, 09 Apr
- 2021 06:54:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyxkTkh59TFUWVsAYJzL5T5Z4Bn32CAsZbAbhRaJUGNeGpe/W41TzRZgvZvg769dyb07N6L
-X-Received: by 2002:ab0:7142:: with SMTP id k2mr10885600uao.124.1617976447735;
-        Fri, 09 Apr 2021 06:54:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1617976447; cv=none;
+Received: by 2002:a5d:6c6a:: with SMTP id r10ls3315850wrz.0.gmail; Thu, 15 Apr
+ 2021 14:16:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzfIwHEAiFMmLrxTcTxiNSR27t10JX6zROh3sSZ/oFeckClSkgJocvWiLngws8YILBwVuKl
+X-Received: by 2002:adf:e58f:: with SMTP id l15mr5362992wrm.175.1618521384587;
+        Thu, 15 Apr 2021 14:16:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618521384; cv=none;
         d=google.com; s=arc-20160816;
-        b=tPvjRSRHPTMgBw+/Lci6uweMFujCpSbIw5qWIePFYNFsgeC6UdMcaxfy7073CRZYZN
-         zKXVDdKZWlRhpiEEbKxjHniVHx89LjRIWTDmMCjqbdio0T7tnppVhqhCJfE+m57QdXax
-         1KAMm+hhyRHmQJXu6LkJKOxuDUBDiR+KIpkjVjDXrj+SVM6u0s0ZduEqBkuhNrbijm4O
-         6hqSLjBVGBQjqfbdioJGmWRtIv3UY6mZAtqxlJFgm1dCEZFXU6OWM2T5mOHwcC2NBKg/
-         NV6YNzp8fqoU3ZTjWMjNssOYd689spnAfkLVWSTgbvjx4BkCvYa0uG43eEbzV9ikBvTc
-         nTSA==
+        b=Ph4/O6y/poLibQqzKQkke7moKw3oUAr6A47dsMcoFpfJ93jp/A+EeFolF4dGTfyCKt
+         hN66Q99kQH8COorm0CbwzEZdOFPsgwkVcxvbbg2cq/E2t+E6CT0rxQqw2s8zIAaRUPLn
+         Y2UfSBT+m8vHzTMJ4DiMet9oyGubm6OQJ58/Mn8Su8eX/xb+iVzfAs1FXhlOHLmIk+52
+         0TFfP4XI0KMQvgF0wphDaABwXBkjQSrPvL71FiR2juxux3BlCjUDZP4xSEpMh53vb43+
+         lNgMZdyomco1ollyKsyX52R/nqi4DVq95A0f0cJMfQWOAghVrfQXZdSVQoVP0vDP8mbG
+         oTGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=Jxu1wXLzUTMlyWpYlkp0R09G/BZWO4W1YMvr+kxglyE=;
-        b=w6pYalV8S+kp256sNJ73p+ZghzDV+6CQdQTtMhQOgN8zA7eXcFHfltOvNTzy3D5jXc
-         niWUGR4wDl/CBmc2LlLYro7AfLDSm2d7WWdNptyvmGckDB6e9Mpe2nNO7BXzQKuiE96l
-         axkVuHDYNqQ1gpjIkcpuT2uMc5NCafV5kf/z2QrFXpJOgm6Y6WKLbOm2NnE7L0tRln85
-         pC+lXDLvlab33agUK2UjN71y/Gi4xEGl2UgrsXXuH7ah02jhxQF6QhToxg0VwCqrmhQs
-         LmnTDan7FvBNB++47v5K1WIrxHZQT5b3EWRhMjcj4ddKV7/K364L3SqTpY6Xx8GIyD+C
-         jvTQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:ironport-hdrordr;
+        bh=uCob9RPHEvNhHJKUwZ+lPkR9eIDaMbUPza31Arlxmzw=;
+        b=rVyIyJzgfxH0Lqql5yTR9uZxT7sP/djGaqwvar0wl//xqjrRl8U/m7lM+DkkzXOVp6
+         fxIiOJXt9REnPhOTaooZPaDkRcWTDVVRhqUvrwBgtlTXLVos/ANyUVaHwPWGu5UNHv0G
+         KllTpVB/V2n0oMMdXWQs3XJ734cm7OSa+MaMlu8sIKK4LzONZkmufrYzJZvxe5kE9jnu
+         SKP3Xwl86qJX9lrHvlV3LA7iUyNzQnJo+1RInHdKvSTLA+Y9c98LudfmRRp73OdVTE4T
+         ng9tigX9BoXNg0lmidtqrqBLNGjZTUNk3z2PPttO5cJBCV2A8jk5wNgL3vp0UzbHK8Ey
+         qfuA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YoLostOr;
-       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::72b as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <alinesantanacordeiro@gmail.com>
-Received: from mail-qk1-x72b.google.com (mail-qk1-x72b.google.com. [2607:f8b0:4864:20::72b])
-        by gmr-mx.google.com with ESMTPS id r8si225564uat.1.2021.04.09.06.54.07
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id p65si551474wmp.0.2021.04.15.14.16.24
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 09 Apr 2021 06:54:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::72b as permitted sender) client-ip=2607:f8b0:4864:20::72b;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 15 Apr 2021 14:16:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YoLostOr;
-       spf=pass (google.com: domain of alinesantanacordeiro@gmail.com designates 2607:f8b0:4864:20::72b as permitted sender) smtp.mailfrom=alinesantanacordeiro@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qk1-x72b.google.com with SMTP id g15so5834645qkl.4
-        for <outreachy-kernel@googlegroups.com>; Fri, 09 Apr 2021 06:54:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=Jxu1wXLzUTMlyWpYlkp0R09G/BZWO4W1YMvr+kxglyE=;
-        b=YoLostOrOk+/83vDEZ7NMYNOlGqThHG6PtvSR8NTDZ2V0Dz8mLGz/DgAkn3Y+tAqsp
-         exksTB54RI4P7i2E6syq1CqxiyOTJo3txgJH6h84AvFsr2yWt6PxZFtqRVO7wJIxhFzh
-         Ivqpjh6gIQZXZIHxMd8TOsEtOob64rWcT06arGCLlVnjNYbK1wzlaDE1IPYedXUIiBbp
-         Ir0rYwO2Ly4b0y6ydVbM9SyWTJ5HflsuaiOIOMK4eKxZmeeZ8aDB1OZFneNAd+Qm1PIn
-         FI3xAQnQVXRmT6FHrPMA+vkat2c0EPX+hc0s0XYvP+NZGOvFQaMpEEHBvCXqW3Io7+tS
-         k0BA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=Jxu1wXLzUTMlyWpYlkp0R09G/BZWO4W1YMvr+kxglyE=;
-        b=i1aQv67yUbq+NQbU9OqgWCEICiDy7xjFrHy5vYlIDDwfCAaaInjBt3g/fRQg8H15I7
-         LmbGSonCSL175FQwXXiu6JJwjHfPNAD8QK4jb3H6DSRujPoCCNGQ61+t3IjQrGScZVMr
-         /Zhwv9c5GCtoilPc2rnjMHuyqvaRPSSEvkJYz04pTyOpsQid4vRFAXg4nsPuBGoXFovi
-         dpGCYC603Ao9Gdohx0WPjWrTjF7rBDejucerF1Xrui5gGnwvMDCjfvX432BC2JxjAgm/
-         KPnOKH6lZ+Z+xTBAlLl7LzO5/dJDntpW408aioQrdorcE88d7q11vMpzmkK3i+fQZ6A0
-         Wdzw==
-X-Gm-Message-State: AOAM530QlsReJmtugAgsrhzxWburef2j9+obBTbvi3Jl54X4SxENjDYB
-	D6eWG3YkYFFXv+KQVJAdtQo=
-X-Received: by 2002:a37:7cd:: with SMTP id 196mr2553037qkh.33.1617976447481;
-        Fri, 09 Apr 2021 06:54:07 -0700 (PDT)
-Return-Path: <alinesantanacordeiro@gmail.com>
-Received: from focaruja ([177.220.174.147])
-        by smtp.gmail.com with ESMTPSA id l9sm1868895qtv.65.2021.04.09.06.54.06
-        (version=TLS1 cipher=ECDHE-ECDSA-AES128-SHA bits=128/128);
-        Fri, 09 Apr 2021 06:54:07 -0700 (PDT)
-Date: Fri, 9 Apr 2021 10:54:04 -0300
-From: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
-To: Ezequiel Garcia <ezequiel@collabora.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
-	alinesantanacordeiro@gmail.com
-Subject: [Outreachy kernel][PATCH] staging: media: hantro: Rewrite macro
- function in lower case
-Message-ID: <20210409135404.GA26172@focaruja>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+IronPort-HdrOrdr: =?us-ascii?q?A9a23=3AqVU6FavuN/eu2Z7CAjhyDYJc7skDh9V00zAX?=
+ =?us-ascii?q?/kB9WHVpW+afkN2jm+le6A/shF8qKRIdsP2jGI3Fe3PT8pZp/ZIcVI3IYCDKsH?=
+ =?us-ascii?q?alRbsO0aLM2DvlcheTysd51b18N5R4EsH6F1Jgjc33iTPIduoI5Pmi3OSWifzF?=
+ =?us-ascii?q?z3FrJDsLV4hF4x1iAgiWVm1aLTMpObMDGJCR5tVKqlObEBx8Uu2AGnIHU+Lfzu?=
+ =?us-ascii?q?erqLvaZ3c9aCIP2U21phyCzdfBYnql4is=3D?=
+X-IronPort-AV: E=Sophos;i="5.82,225,1613430000"; 
+   d="scan'208";a="378800570"
+Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 15 Apr 2021 23:16:23 +0200
+Date: Thu, 15 Apr 2021 23:16:23 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+cc: dri-devel@lists.freedesktop.org, outreachy-kernel@googlegroups.com, 
+    Daniel Vetter <daniel.vetter@ffwll.ch>, 
+    Melissa Wen <melissa.srw@gmail.com>, Ben Skeggs <bskeggs@redhat.com>, 
+    David Airlie <airlied@linux.ie>
+Subject: Re: [Outreachy kernel] [PATCH] drm: nouveau: dispnv50: disp.c: Remove
+ set but unused variables
+In-Reply-To: <3639521.dS9dJRvPBs@linux.local>
+Message-ID: <alpine.DEB.2.22.394.2104152316040.32851@hadrien>
+References: <20210415194423.4880-1-fmdefrancesco@gmail.com> <alpine.DEB.2.22.394.2104152156530.32851@hadrien> <3639521.dS9dJRvPBs@linux.local>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+Content-Type: text/plain; charset=US-ASCII
 
-Rewrite macros resembling functions #define HANTRO_PP_REG_WRITE
-and #define HANTRO_PP_RED_WRITE_S in lower case, according with
-code style.
 
-Signed-off-by: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
----
- drivers/staging/media/hantro/hantro_postproc.c | 34 +++++++++++++-------------
- 1 file changed, 17 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/staging/media/hantro/hantro_postproc.c b/drivers/staging/media/hantro/hantro_postproc.c
-index 6d2a8f2a..06279c0 100644
---- a/drivers/staging/media/hantro/hantro_postproc.c
-+++ b/drivers/staging/media/hantro/hantro_postproc.c
-@@ -12,14 +12,14 @@
- #include "hantro_hw.h"
- #include "hantro_g1_regs.h"
- 
--#define HANTRO_PP_REG_WRITE(vpu, reg_name, val) \
-+#define hantro_pp_reg_write(vpu, reg_name, val) \
- { \
- 	hantro_reg_write(vpu, \
- 			 &(vpu)->variant->postproc_regs->reg_name, \
- 			 val); \
- }
- 
--#define HANTRO_PP_REG_WRITE_S(vpu, reg_name, val) \
-+#define hantro_pp_reg_write_s(vpu, reg_name, val) \
- { \
- 	hantro_reg_write_s(vpu, \
- 			   &(vpu)->variant->postproc_regs->reg_name, \
-@@ -61,7 +61,7 @@ void hantro_postproc_enable(struct hantro_ctx *ctx)
- 		return;
- 
- 	/* Turn on pipeline mode. Must be done first. */
--	HANTRO_PP_REG_WRITE_S(vpu, pipeline_en, 0x1);
-+	hantro_pp_reg_write_s(vpu, pipeline_en, 0x1);
- 
- 	src_pp_fmt = VPU_PP_IN_NV12;
- 
-@@ -79,19 +79,19 @@ void hantro_postproc_enable(struct hantro_ctx *ctx)
- 	dst_buf = v4l2_m2m_next_dst_buf(ctx->fh.m2m_ctx);
- 	dst_dma = vb2_dma_contig_plane_dma_addr(&dst_buf->vb2_buf, 0);
- 
--	HANTRO_PP_REG_WRITE(vpu, clk_gate, 0x1);
--	HANTRO_PP_REG_WRITE(vpu, out_endian, 0x1);
--	HANTRO_PP_REG_WRITE(vpu, out_swap32, 0x1);
--	HANTRO_PP_REG_WRITE(vpu, max_burst, 16);
--	HANTRO_PP_REG_WRITE(vpu, out_luma_base, dst_dma);
--	HANTRO_PP_REG_WRITE(vpu, input_width, MB_WIDTH(ctx->dst_fmt.width));
--	HANTRO_PP_REG_WRITE(vpu, input_height, MB_HEIGHT(ctx->dst_fmt.height));
--	HANTRO_PP_REG_WRITE(vpu, input_fmt, src_pp_fmt);
--	HANTRO_PP_REG_WRITE(vpu, output_fmt, dst_pp_fmt);
--	HANTRO_PP_REG_WRITE(vpu, output_width, ctx->dst_fmt.width);
--	HANTRO_PP_REG_WRITE(vpu, output_height, ctx->dst_fmt.height);
--	HANTRO_PP_REG_WRITE(vpu, orig_width, MB_WIDTH(ctx->dst_fmt.width));
--	HANTRO_PP_REG_WRITE(vpu, display_width, ctx->dst_fmt.width);
-+	hantro_pp_reg_write(vpu, clk_gate, 0x1);
-+	hantro_pp_reg_write(vpu, out_endian, 0x1);
-+	hantro_pp_reg_write(vpu, out_swap32, 0x1);
-+	hantro_pp_reg_write(vpu, max_burst, 16);
-+	hantro_pp_reg_write(vpu, out_luma_base, dst_dma);
-+	hantro_pp_reg_write(vpu, input_width, MB_WIDTH(ctx->dst_fmt.width));
-+	hantro_pp_reg_write(vpu, input_height, MB_HEIGHT(ctx->dst_fmt.height));
-+	hantro_pp_reg_write(vpu, input_fmt, src_pp_fmt);
-+	hantro_pp_reg_write(vpu, output_fmt, dst_pp_fmt);
-+	hantro_pp_reg_write(vpu, output_width, ctx->dst_fmt.width);
-+	hantro_pp_reg_write(vpu, output_height, ctx->dst_fmt.height);
-+	hantro_pp_reg_write(vpu, orig_width, MB_WIDTH(ctx->dst_fmt.width));
-+	hantro_pp_reg_write(vpu, display_width, ctx->dst_fmt.width);
- }
- 
- void hantro_postproc_free(struct hantro_ctx *ctx)
-@@ -146,5 +146,5 @@ void hantro_postproc_disable(struct hantro_ctx *ctx)
- 	if (!vpu->variant->postproc_regs)
- 		return;
- 
--	HANTRO_PP_REG_WRITE_S(vpu, pipeline_en, 0x0);
-+	hantro_pp_reg_write_s(vpu, pipeline_en, 0x0);
- }
--- 
-2.7.4
+On Thu, 15 Apr 2021, Fabio M. De Francesco wrote:
 
+> On Thursday, April 15, 2021 9:57:07 PM CEST Julia Lawall wrote:
+> > On Thu, 15 Apr 2021, Fabio M. De Francesco wrote:
+> > > Removed two set but unused variables.
+> >
+> > Would it be useful to use the values?
+> >
+> It would be useful if one wants to check returns for errors (which are
+> signaled by res different than 0).
+>
+> However most other drm code never checks it (as in drivers/gpu/drm/radeon/
+> radeon_dp_mst.c: lines 424 and 453).
+>
+> Differently, drivers/gpu/drm/i915/display/intel_dp_mst.c does some logging:
+>
+> ret = drm_dp_update_payload_part1(&intel_dp->mst_mgr);
+>         if (ret) {
+>                 drm_dbg_kms(&i915->drm, "failed to update payload %d\n", ret);
+>
+> I could do like the second example, but I'm not sure maintainers would like
+> it.
+
+OK, perhaps then it is not necessary.
+
+julia
+
+>
+> What do you think about it?
+>
+> Thanks,
+>
+> Fabio
+> >
+> > julia
+> >
+> > > Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+> > > ---
+> > >
+> > >  drivers/gpu/drm/nouveau/dispnv50/disp.c | 8 +++-----
+> > >  1 file changed, 3 insertions(+), 5 deletions(-)
+> > >
+> > > diff --git a/drivers/gpu/drm/nouveau/dispnv50/disp.c
+> > > b/drivers/gpu/drm/nouveau/dispnv50/disp.c index
+> > > 196612addfd6..828f48d5bdd4 100644
+> > > --- a/drivers/gpu/drm/nouveau/dispnv50/disp.c
+> > > +++ b/drivers/gpu/drm/nouveau/dispnv50/disp.c
+> > > @@ -1386,12 +1386,11 @@ nv50_mstm_cleanup(struct nv50_mstm *mstm)
+> > >
+> > >  {
+> > >
+> > >  	struct nouveau_drm *drm = nouveau_drm(mstm->outp->base.base.dev);
+> > >  	struct drm_encoder *encoder;
+> > >
+> > > -	int ret;
+> > >
+> > >  	NV_ATOMIC(drm, "%s: mstm cleanup\n", mstm->outp->base.base.name);
+> > >
+> > > -	ret = drm_dp_check_act_status(&mstm->mgr);
+> > > +	drm_dp_check_act_status(&mstm->mgr);
+> > >
+> > > -	ret = drm_dp_update_payload_part2(&mstm->mgr);
+> > > +	drm_dp_update_payload_part2(&mstm->mgr);
+> > >
+> > >  	drm_for_each_encoder(encoder, mstm->outp->base.base.dev) {
+> > >
+> > >  		if (encoder->encoder_type == DRM_MODE_ENCODER_DPMST) {
+> > >
+> > > @@ -1410,10 +1409,9 @@ nv50_mstm_prepare(struct nv50_mstm *mstm)
+> > >
+> > >  {
+> > >
+> > >  	struct nouveau_drm *drm = nouveau_drm(mstm->outp->base.base.dev);
+> > >  	struct drm_encoder *encoder;
+> > >
+> > > -	int ret;
+> > >
+> > >  	NV_ATOMIC(drm, "%s: mstm prepare\n", mstm->outp->base.base.name);
+> > >
+> > > -	ret = drm_dp_update_payload_part1(&mstm->mgr);
+> > > +	drm_dp_update_payload_part1(&mstm->mgr);
+> > >
+> > >  	drm_for_each_encoder(encoder, mstm->outp->base.base.dev) {
+> > >
+> > >  		if (encoder->encoder_type == DRM_MODE_ENCODER_DPMST) {
+> > >
+> > > --
+> > > 2.31.1
+> > >
+> > > --
+> > > You received this message because you are subscribed to the Google
+> > > Groups "outreachy-kernel" group. To unsubscribe from this group and
+> > > stop receiving emails from it, send an email to
+> > > outreachy-kernel+unsubscribe@googlegroups.com. To view this discussion
+> > > on the web visit
+> > > https://groups.google.com/d/msgid/outreachy-kernel/20210415194423.4880
+> > > -1-fmdefrancesco%40gmail.com.
+>
+>
+>
+>
+>
 
