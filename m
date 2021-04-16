@@ -1,132 +1,170 @@
 X-GM-THRID: 6951120130932736000
-X-Received: by 2002:ac2:418f:: with SMTP id z15mr16000133lfh.2.1618922491105;
-        Tue, 20 Apr 2021 05:41:31 -0700 (PDT)
+X-Received: by 2002:a25:e043:: with SMTP id x64mr10969024ybg.299.1618564427525;
+        Fri, 16 Apr 2021 02:13:47 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:7c0c:: with SMTP id x12ls1043096ljc.0.gmail; Tue, 20 Apr
- 2021 05:41:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwi/SyLYZ5Llcdze9LjDiYEL9lqiwSmL5v323t873plFlJGbpP3Z/hAl7oFKF6Ze3Z7ddjZ
-X-Received: by 2002:a2e:9d88:: with SMTP id c8mr15239349ljj.257.1618922489204;
-        Tue, 20 Apr 2021 05:41:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618922489; cv=none;
+Received: by 2002:a25:1342:: with SMTP id 63ls4059484ybt.8.gmail; Fri, 16 Apr
+ 2021 02:13:46 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx+BeU+zJfDVno35Audqfo6dE7AETnEjQjF2nlDqEqHZnSwg9jaeTCsR9guBS2dx1WEx6D4
+X-Received: by 2002:a25:e750:: with SMTP id e77mr10442941ybh.472.1618564426422;
+        Fri, 16 Apr 2021 02:13:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618564426; cv=none;
         d=google.com; s=arc-20160816;
-        b=foC7fWEPZpQE/jnE1NFZCuL2XvgW25e1ADoK2k9aDm4Jg3KmoRi1brYyzfH8lHR+oF
-         4FAXUC18CXkAIeg4wr3O9conXSbzy4XHtp7v0gRP2Tz9RI/5AV6xioESgPI9JxpfgyQa
-         3yquEYl7R738kN/z1RlMA0coI+xTh/xh8B7qJkBfAKpzF8gz/IO1VXNqZ4RpuZKjPBQS
-         SeTCY40v5qfcw/BDZT6oI1ijE85OAh7JsEcRMbAFTatBYQMjZA+8nZcBTizXGr6lXx1E
-         pAmJY9Buvx8JvthHCuwSxsRKclFKggNjo3dhf2iXwefUabjUE2BZlZPEVsYTBk1mPdYN
-         9IIQ==
+        b=xDQ4lpIbVtRjPNfEeuD/NPaqD/BX0vUDNi26dAf62ZQ6E8vVjqaVG/KI+i7hBHJ1Rf
+         QMir5vUKourKCr+m8dEvi5WI58gidanPwQzcwvwKAYSOhZGQvER8qRRwic+k/jS0dWUO
+         83ZXba3BMoNPlCV7Y97Fu2YfaPZSHQ2E1wLTeNopJvPUrrUDxqAKLlNmv08hTx2MY2bf
+         RjW8GNmH97gSVU2H7wJkMFMME34xSWb8kSN1Rd2qWJ/kQu+QfrAZL4u49jX7CXghW2vx
+         wGwhYUSRwjHsLpfCdqpcByiKO9fnL6khQLMlWzqrJLVxWh7a/Vl0yQrfwagCygkZmNdh
+         XO2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=LmpPnPkn3X5VabNM+R3RACjye7cXzYGW2T06bu5PJOk=;
-        b=CO8c3qmKkCcVSuFTznSp8hAAzBJHW4NiJN61fvceNv2qHBC6zt7fIIZr9XXKmqCUYu
-         30aDftLquJtRPpfTykHTT8kvmTwzpirQRXgicoh1J1ThtHUpwTrpfS08uUblaRruaqv6
-         UmLZW+H0N+/3iLeGPLSfpI3RpscffMGYKWQJYLbwsPAYkwyuLPuLrAlVY6pEGAkewliS
-         4lE8hMdowiX4ABfqUoQPlvK5UevU6EjPxi9QFhoAZBoVwT2p5/ltpGBULS+Ijfj2gnDG
-         ZWjBtK/5fwn4SZ3UrxO9ckX4g3dl56xZyBmiW2+MUrB743uc1OVWPufwj/WkMM/eUxJz
-         Ol5w==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=op45Vt9QNCZlrOsT0yNWkAC1F6euLT9Icbvg5SmZawc=;
+        b=MjsXTTdOxhOayF62lkXTzCn63udkhhorx/wFuHiGKjsSf1e5jdWouSgakF6Ae1UfoD
+         JJPDcfS+oIsqjjpdsIqtnd2sL8pus7HBf/hkzxe0VSbGm2AcNUFk7VoHHyAnrCymQJ+Q
+         UcnW3hh4CV4TMfQehejjKQxrbi2jeEEjNgpwHOkF+/RbfUxU6qxIS0RykoWmrbUkkAo6
+         VuWow2h6Eh+oMe5znhwUXCXjwqV/QRMjgiTk8xdIFOOzgsAaULuZFz5fsvCxjKfsZyOK
+         WvIswdB/Bj8Hb/mfkYAM0k6LlPXUEp2sbtrPXZXJ7c8NyrgG34vN8RQxXGvyr5eBun1m
+         7Qlg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@xs4all.nl header.s=s2 header.b="n1KlLas/";
-       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.31 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
-Return-Path: <hverkuil@xs4all.nl>
-Received: from lb3-smtp-cloud7.xs4all.net (lb3-smtp-cloud7.xs4all.net. [194.109.24.31])
-        by gmr-mx.google.com with ESMTPS id y11si1165577lfg.8.2021.04.20.05.41.29
+       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=Xhln4dkC;
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.78 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Return-Path: <dan.carpenter@oracle.com>
+Received: from aserp2120.oracle.com (aserp2120.oracle.com. [141.146.126.78])
+        by gmr-mx.google.com with ESMTPS id f13si11516ybp.0.2021.04.16.02.13.46
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 20 Apr 2021 05:41:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.31 as permitted sender) client-ip=194.109.24.31;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 16 Apr 2021 02:13:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.78 as permitted sender) client-ip=141.146.126.78;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@xs4all.nl header.s=s2 header.b="n1KlLas/";
-       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.31 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
-Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
-	by smtp-cloud7.xs4all.net with ESMTPA
-	id YpgzlXqG48K3KYph2lzdcz; Tue, 20 Apr 2021 14:41:28 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
-	t=1618922488; bh=LmpPnPkn3X5VabNM+R3RACjye7cXzYGW2T06bu5PJOk=;
-	h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
-	 Subject;
-	b=n1KlLas/k8Ebog/po1csc3m+nORAZ3CBYWh7BZIl+OR0aJrCDMcFEwDFYftt+7cg/
-	 2Y2nw7fQmj7+VXokr5Fi7sOwcQNbHN2vNj6ulwP0pLgvluMpRPiT1/mqL29tUkhSpB
-	 FRwlnPJUQZiDpRccP/YTdJ76WWXUv46Ut758oLZKlJtNcg8LoCx57jCkpBB2x3wck8
-	 6MtrV3+xjuf4GvDBN032IH9Tkdt4xbj7z9tD/+H8LcOu4VEZ5g3+1yBUMNsyoqxhkU
-	 y6S5NY3Ul5whKry7TBs2fb7lnaEx21uVw8a4E1RiCxxwRAJWY/SUZmfW52aCcbckT/
-	 VpYQhFcB8oe0Q==
-Subject: Re: [PATCH v2] staging: media: atomisp: pci: Change line break to
- avoid an open parenthesis at the end of the line
-To: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
- linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=Xhln4dkC;
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.78 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+	by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 13G995Ta036648;
+	Fri, 16 Apr 2021 09:13:45 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=op45Vt9QNCZlrOsT0yNWkAC1F6euLT9Icbvg5SmZawc=;
+ b=Xhln4dkC8kBM8Y0iUi4mrzZJOYzqas0G0hxht1MmWO5m9xqYAJ6QzMqR7G1Dq5xaaa3n
+ tW9LgDUZUsVDdnzgjQVbToCKuK9lGo7vNO8e1OScgu+1ZNM9J4oHbdQu0vp1IVJtW2jf
+ Dluh9FlhjtD8O8jqt3gQTVOG1s0+nxQSHy15lOlLA5axuHcobOBACD5m9Lhvp5/rep8E
+ kjiAFE3FFNjefJNYyimYM6PbYF9nSMkj9wotfvR7mCa3TkzkdAhRsKWC7MR74bUmscAu
+ qqD/L4eiBO64yISmUUyMLwZiaql3JF2HwncJ/09cGZWLQqUjeRGGymbJR/v9Enl3NRvH kQ== 
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+	by aserp2120.oracle.com with ESMTP id 37u3ymrhpx-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 16 Apr 2021 09:13:44 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+	by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 13G99oot089563;
+	Fri, 16 Apr 2021 09:13:43 GMT
+Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
+	by aserp3020.oracle.com with ESMTP id 37unx47fy3-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 16 Apr 2021 09:13:43 +0000
+Received: from abhmp0012.oracle.com (abhmp0012.oracle.com [141.146.116.18])
+	by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 13G9Dc9g015177;
+	Fri, 16 Apr 2021 09:13:39 GMT
+Received: from kadam (/102.36.221.92)
+	by default (Oracle Beehive Gateway v4.0)
+	with ESMTP ; Fri, 16 Apr 2021 02:13:38 -0700
+Date: Fri, 16 Apr 2021 12:13:31 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: Matthew Wilcox <willy@infradead.org>,
+        Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>,
+        Mauro Carvalho Chehab <mchehab@kernel.org>,
+        Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+        linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
+        linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: media: atomisp: pci:
+ Change line break to avoid an open parenthesis at the end of the line
+Message-ID: <20210416091331.GG6021@kadam>
 References: <20210415170819.GA17534@focaruja>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Message-ID: <fd8eb0f1-aab4-17d8-f590-3e574799c9f5@xs4all.nl>
-Date: Tue, 20 Apr 2021 14:41:24 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Firefox/78.0 Thunderbird/78.9.0
+ <20210415171409.GC2531743@casper.infradead.org>
+ <20210415194955.GI3@paasikivi.fi.intel.com>
+ <20210415195704.GE2531743@casper.infradead.org>
+ <20210415195941.GF2531743@casper.infradead.org>
+ <20210415212158.GK3@paasikivi.fi.intel.com>
+ <20210416054941.GF6021@kadam>
+ <20210416083728.GL3@paasikivi.fi.intel.com>
 MIME-Version: 1.0
-In-Reply-To: <20210415170819.GA17534@focaruja>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-CMAE-Envelope: MS4xfJ+6TMWQZxkOW4WJICtb/CBRSGKDps49iYq/fH2/dS8SOcQjxwOncdgX0YfG0KSRgNNjBbbmYoz/Lzfs8wf8R3Dndf+foDpsLNdL+yHb6CYw5uixsER7
- XvKZUNSw/hRLlCHq1axRttZzRL/NJ9ArAu082BsIDoCwTj6XHwj8wzZHCVU1a+zb+8X3Ti9e/yJB/gPPg1BlfGRjWt5MhWAGEyR45eV8Lirk1QIDQdCoz5H5
- SqPUbAoSniEjRTcxu70VAfBpWkARgkHtTjDDduuoUQjR+6m/FwgNdvJppHQhVxwScCQazYlW/cwLg7vcORUAupf1zsW3/LvpeDBAq0bQvJgkzj84FnuhdDnh
- cvRowUQmylFXQ0zkmDyq1h5DaYzcMKNlNnnKiHxX5FqI2njH6noqmI6wASmVrHYQuuxySMWV+olkTe3OZezwTpdk40h8X+0nIOD9N/HxZ+qJjXgQenbMXYAI
- 6gfacz9j85iKKlUQ
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20210416083728.GL3@paasikivi.fi.intel.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-IMR: 1
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9955 signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999 suspectscore=0
+ mlxscore=0 malwarescore=0 adultscore=0 bulkscore=0 spamscore=0
+ phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2104060000 definitions=main-2104160070
+X-Proofpoint-GUID: TZZwkd1UcLjdaWLo9Gwz4W7eEvpQrFSZ
+X-Proofpoint-ORIG-GUID: TZZwkd1UcLjdaWLo9Gwz4W7eEvpQrFSZ
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9955 signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0 mlxlogscore=999 spamscore=0
+ impostorscore=0 priorityscore=1501 lowpriorityscore=0 adultscore=0
+ bulkscore=0 phishscore=0 suspectscore=0 malwarescore=0 clxscore=1031
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2104060000
+ definitions=main-2104160070
 
-On 15/04/2021 19:08, Aline Santana Cordeiro wrote:
-> Change line break to avoid an open parenthesis at the end of the line.
-> It consequently removed spaces at the start of the subsequent line.
-> Both issues detected by checkpatch.pl.
+On Fri, Apr 16, 2021 at 11:37:28AM +0300, Sakari Ailus wrote:
+> Hi Dan,
 > 
-> Signed-off-by: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
-> ---
+> On Fri, Apr 16, 2021 at 08:49:41AM +0300, Dan Carpenter wrote:
+> > On Fri, Apr 16, 2021 at 12:21:58AM +0300, Sakari Ailus wrote:
+> > > On Thu, Apr 15, 2021 at 08:59:41PM +0100, Matthew Wilcox wrote:
+> > > > On Thu, Apr 15, 2021 at 08:57:04PM +0100, Matthew Wilcox wrote:
+> > > > > On Thu, Apr 15, 2021 at 10:49:55PM +0300, Sakari Ailus wrote:
+> > > > > > On Thu, Apr 15, 2021 at 06:14:09PM +0100, Matthew Wilcox wrote:
+> > > > > > > On Thu, Apr 15, 2021 at 02:08:19PM -0300, Aline Santana Cordeiro wrote:
+> > > > > > > > -const struct atomisp_format_bridge *get_atomisp_format_bridge_from_mbus(
+> > > > > > > > -    u32 mbus_code);
+> > > > > > > > +const struct atomisp_format_bridge*
+> > > > > > > > +get_atomisp_format_bridge_from_mbus(u32 mbus_code);
+> > > > > > > 
+> > > > > > > No, this does not match coding style.  Probably best to break the
+> > > > > > > 80-column guideline in this instance.  Best would be to have a function
+> > > > > > 
+> > > > > > Having the return type on the previous line is perfectly fine. There should
+> > > > > > be a space before the asterisk though.
+> > > > > 
+> > > > > No, it's not.  Linus has ranted about that before.
+> > > > 
+> > > > Found it.  https://lore.kernel.org/lkml/1054519757.161606@palladium.transmeta.com/
+> > > 
+> > > Two decades ago, really?
+> > > 
+> > > This is simply one of the practical means how you split long function
+> > > declarations and avoid overly long lines. Not my favourite though, but
+> > > still better than those long lines.
+> > 
+> > I've always thought we allow either style, but it has to be done
+> > consistently within the file.  I was pretty sure that was policy but
+> > it's another thing that goes back decades so I don't have a reference.
+> > It shouldn't be about breaking up long lines.
+> > 
+> > > 
+> > > My personal preference would be to wrap at the opening parenthesis and
+> > > indent by just a tab, but I know many people who disagree with that...
+> > 
+> > If you're running into the 80 character limit, then it's fine to use
+> > two tabs.  I think we have been rejecting patches that push align the
+> > parameters but push past the 80 character limit.  Using one tab is
+> > confusing because it makes the decalarations line up with the code.
 > 
-> Changes since v1:
->  - Keep the * with the function return type 
->    instead of left it with the function name
-> 
->  drivers/staging/media/atomisp/pci/atomisp_cmd.h | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/staging/media/atomisp/pci/atomisp_cmd.h b/drivers/staging/media/atomisp/pci/atomisp_cmd.h
-> index 1c0d464..e2b36fa 100644
-> --- a/drivers/staging/media/atomisp/pci/atomisp_cmd.h
-> +++ b/drivers/staging/media/atomisp/pci/atomisp_cmd.h
-> @@ -75,8 +75,8 @@ void atomisp_wdt(struct timer_list *t);
->  void atomisp_setup_flash(struct atomisp_sub_device *asd);
->  irqreturn_t atomisp_isr(int irq, void *dev);
->  irqreturn_t atomisp_isr_thread(int irq, void *isp_ptr);
-> -const struct atomisp_format_bridge *get_atomisp_format_bridge_from_mbus(
-> -    u32 mbus_code);
-> +const struct atomisp_format_bridge*
+> Interesting. Do you have an example of this? I've thought checkpatch.pl
+> gave a warning if the line ended with an opening parenthesis no matter
+> what.
 
-Keep the space before the *!
+The prefered style is still aligning with the parentheses but if you
+have to choose between a warning about going over the limit or a warning
+about aligning then probably it's fine to not align.
 
-Regards,
+I can't find an example, but I'm pretty sure we've been rejecting
+patches that align the parameters but now go over the 80/100 char limit.
 
-	Hans
-
-> +get_atomisp_format_bridge_from_mbus(u32 mbus_code);
->  bool atomisp_is_mbuscode_raw(uint32_t code);
->  int atomisp_get_frame_pgnr(struct atomisp_device *isp,
->  			   const struct ia_css_frame *frame, u32 *p_pgnr);
-> @@ -381,9 +381,9 @@ enum mipi_port_id __get_mipi_port(struct atomisp_device *isp,
->  
->  bool atomisp_is_vf_pipe(struct atomisp_video_pipe *pipe);
->  
-> -void atomisp_apply_css_parameters(
-> -    struct atomisp_sub_device *asd,
-> -    struct atomisp_css_params *css_param);
-> +void atomisp_apply_css_parameters(struct atomisp_sub_device *asd,
-> +				  struct atomisp_css_params *css_param);
-> +
->  void atomisp_free_css_parameters(struct atomisp_css_params *css_param);
->  
->  void atomisp_handle_parameter_and_buffer(struct atomisp_video_pipe *pipe);
-> 
-
+regards,
+dan carpenter
 
