@@ -1,117 +1,145 @@
-X-GM-THRID: 6661198938033356800
-X-Received: by 2002:a02:b432:: with SMTP id i47mr2131212jaj.2.1550931236773;
-        Sat, 23 Feb 2019 06:13:56 -0800 (PST)
+X-GM-THRID: 6952206676913029120
+X-Received: by 2002:a2e:5445:: with SMTP id y5mr6247386ljd.381.1618686755476;
+        Sat, 17 Apr 2021 12:12:35 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:8c8b:: with SMTP id g11ls1345226ion.4.gmail; Sat, 23 Feb
- 2019 06:13:56 -0800 (PST)
-X-Google-Smtp-Source: AHgI3Ibb3hvOG/zwyiQZjNBVlDEEJKZNtnbyu8MJwLf9O6VpUK4u8xIjcvTgRE2I8tbVXJdaH6TN
-X-Received: by 2002:a6b:b281:: with SMTP id b123mr2483212iof.39.1550931236074;
-        Sat, 23 Feb 2019 06:13:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1550931236; cv=none;
+Received: by 2002:a05:6512:3b95:: with SMTP id g21ls3945163lfv.1.gmail; Sat,
+ 17 Apr 2021 12:12:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw6ObZPk/VY5uinKWE+DbYYjMBdiTBtFXQY6UeAFaNZaM3/Cum+DCqs+lW9hOkGV6KP84AM
+X-Received: by 2002:a05:6512:38c9:: with SMTP id p9mr6917541lft.572.1618686753798;
+        Sat, 17 Apr 2021 12:12:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618686753; cv=none;
         d=google.com; s=arc-20160816;
-        b=PpNXgFeo3S0HkIeRXt4kJ5Ao1Wv2V48/78fFwRrhtmWaJsfqJ15t5nlfMdyPZwEYtY
-         sZ5xGachk+3tmfz178K8EVaI3ATgOLwTfdqHnKTZdb2wvOl4HCskawUIh+wB4zyQtkwi
-         38GuLWLagmawFz2abihiCiABKnUDWBoEk7g3E5um+M2vZ42pREUC+e7v3F4IMUar6aw8
-         U+S5/9XpIysL+V42zWVU7tEM3Bx+EIntmkPE2YSQusC+hW+gEUkHbMrk+w1NaB4IAYAy
-         oPJFzi1fbgyS0+idrwkOr11Q8rZUUHoxoOGQFM5inuuE1ehnAKd1nf76Tmdj1zgfxwhJ
-         hBuw==
+        b=y81lvpF70rC46AQMEhH1u5ZDSLE+ENOHG5+cAA0xW9nAKy0MiIT/WCAOXfGvmtT94D
+         fpLVAqf/zZnO1vxvJQFGR8pLSu96RGhORJoRSXm8++3AewX41boZOS14YRUrqWA39qnm
+         iFijIiGwj5Vi3U9NuoEPjzpAc7KIUr9FPF/TpO2YNBhSonS8lcqcMXjwgNIllMLHshTg
+         2SuJ8zscxaYn98qWsX4h+snmBYgjhvW6NvG6IuNABmjQic46rk6psgDnkoj7L7qOSrZz
+         pO3CRR5F4ld8Rmmjo6jfNaXpG2sbG5uLPOrd7eHU3GOr8DukDuxGnFxHzYI/g1VqzR9a
+         XEzA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=UN88xCPL2hAwUk5bAa1SB3jis5gWM1kstDVhAOz+ejM=;
-        b=o7iaRmHfClvperJK6iMVH+gLcTsJZWlfXRtyF+DkOC5Bezl8XBh5SijjQKGodyP8y5
-         vyFuKZCgwQ7eewoh2eAMFMa//IrXraCd4MoRG5SavZw3aAUvgBxtfQ8kkat3HvMHg/kW
-         OTDXBTUetzXJ1rilggn3nabFicO7tLryXrcdDLOR1iA+bT3+EiF4YFrMqPnBNHAKspRn
-         mwbIZYgRte/j3geCPUEOThd3DNc+sePFdALKTyCvG09HwjTT974u5B7W18XcjuSj7AJ+
-         3A6riAJeKjiUcMSwl/ybV2SredC+iftXd5ojiTLk/bM+e44zyT+SkQuylHyt0Vcvmo9i
-         yIQw==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=4EeE/jEG+BwS2yLzax1oxoe1YlEFDe9IUirRYoBxddY=;
+        b=d3TH6pNUk5Ak/VZL/6TnMwxFt5GmxSrPjvwf99zhc5wy3JZM6TxHRugOST+NUXfZ9x
+         afd6GmbxqyvP1S7bhif3TskH1uTkyTYXtXu3SIyFu/GK/UdAG2NqePZkgEqyk9gunvex
+         gMfEkh/Wn84pBKLzOepbgjflC35bru57hG1yn3hBiPhtxutIwAdGM1Q+K88Hfkk5CrzM
+         qFveufUUP4yq1FUQtPvUZoAE8Ac+ZTWvUHcfYHbcZE2w3cHcl4AiQBW27h/RYPhmDkPM
+         HIMkql/UDrTTFm3R0PWpeqq6cTB3soDEutrVZboTsCHlii2Wf7+D736i8Bp1ncFFbWFf
+         BLdQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FKoUfuy9;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=c7+kaWC9;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62b as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from mail-pl1-x643.google.com (mail-pl1-x643.google.com. [2607:f8b0:4864:20::643])
-        by gmr-mx.google.com with ESMTPS id j6si263638itb.0.2019.02.23.06.13.56
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from mail-ej1-x62b.google.com (mail-ej1-x62b.google.com. [2a00:1450:4864:20::62b])
+        by gmr-mx.google.com with ESMTPS id a36si290498ljq.5.2021.04.17.12.12.33
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 23 Feb 2019 06:13:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) client-ip=2607:f8b0:4864:20::643;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 17 Apr 2021 12:12:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62b as permitted sender) client-ip=2a00:1450:4864:20::62b;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FKoUfuy9;
-       spf=pass (google.com: domain of bhanusreemahesh@gmail.com designates 2607:f8b0:4864:20::643 as permitted sender) smtp.mailfrom=bhanusreemahesh@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=c7+kaWC9;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62b as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x643.google.com with SMTP id e5so2408953plb.5
-        for <outreachy-kernel@googlegroups.com>; Sat, 23 Feb 2019 06:13:56 -0800 (PST)
+Received: by mail-ej1-x62b.google.com with SMTP id e14so46866727ejz.11
+        for <outreachy-kernel@googlegroups.com>; Sat, 17 Apr 2021 12:12:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=UN88xCPL2hAwUk5bAa1SB3jis5gWM1kstDVhAOz+ejM=;
-        b=FKoUfuy9C3h9HJmbCrCsGnQDBsqbG+fHOaQ5o/+DwbePnngtgSFF5xKf/H8YcwaqNf
-         umwEKeRQTO86wNLAt2fyuGI19XxJYc/l37BIjL/w9g1eNW4FW4Vfs20bQYBDYayXVmx9
-         Ohrv/Mu5mCAtkvGnD8Z+F9xrND9hni07xQPyjLM1qtO6yyVeu6C/XawYJ4SdQmZpsfPD
-         a15Wo+UWXvcnhuqQ+LiIE2upb8BJ3/YFv71oxy0DgWVltjS5p4bgGupxqGNqDQ9vbvhg
-         zdGIhAy7zbSzZh21NqCnyoCQvZXKo2HWUpnPWyYd8C1DSbLYlSDL+2CVXKueFvxMWYlL
-         Qq1Q==
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=4EeE/jEG+BwS2yLzax1oxoe1YlEFDe9IUirRYoBxddY=;
+        b=c7+kaWC9DjKkxn882whe6mMcd7HxFJ1bFx6boT52Kt5Na7Hsz74IweAgpdXTr9Hdqb
+         cHm600tCOzfepihXRSKoRjr6P6Y7eHYHOVaJM4nU41WthSVcIRCiEcASb4fNULWj5dHK
+         8cAGqT78I0dG6DkmvQFXelgrGqLF+iR5FO8Q83Llwb9dq3d6fRcivo0AMZoeFtu61O8u
+         gaJNhW5PcY9WXX5H/Xp07n41hirN7EnlshoAtZsKOU7mQMSw9zqmt6z11qzqVDZJSCXg
+         CwEkFYy4nhHJSDaTd8rYJP9LREtzHDp2MWoE4IMYRiJdzeIGdOPaL5AqlbeWNOwB38e7
+         ZonQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=UN88xCPL2hAwUk5bAa1SB3jis5gWM1kstDVhAOz+ejM=;
-        b=CozPI+2eTlzkRHtPMd5QKm+iZwJK0HL4j2W+cKOuzV5F0D/vveVOmlIjwuVAvAkWyd
-         5V91jLsfhPNvzbkRtSyP4PMEj6jzSivJzLGjVVVWNDc1UD0+k3x7bYu4xLcMwhNwFzaC
-         ZhxjZCnx3b7TXo7cCP5mZ5OibzYYlY/gPXs8UGTq6JGazvPTlQc2Y8dEhOqwkU/snL7w
-         ZcLTI68Bx5PVrjWXWFqRAoFmCud/r3RDv607AmfmWOpgJ5ItmKE1lqFs+Yf7YOkzhdrU
-         3izSg9K5MDNEzEHC7TJCF4c/iECbpFVOYysM1zzKRLtvmMjqwwnqGUoRetlOr5grk7m0
-         3aPw==
-X-Gm-Message-State: AHQUAuZNgilJ6wrTbUGCTEov7xuuMYCaPYd+KUsn5n5r2STfXzfUzIu7
-	EPTuzP5ZyXtF35Cls5wWXfYeHRLWGqk=
-X-Received: by 2002:a17:902:9a84:: with SMTP id w4mr9741146plp.283.1550931235122;
-        Sat, 23 Feb 2019 06:13:55 -0800 (PST)
-Return-Path: <bhanusreemahesh@gmail.com>
-Received: from localhost.localdomain ([183.83.84.116])
-        by smtp.googlemail.com with ESMTPSA id d188sm7021175pfg.98.2019.02.23.06.13.53
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 23 Feb 2019 06:13:54 -0800 (PST)
-From: Bhanusree Pola <bhanusreemahesh@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Subject: [PATCH] Staging: rtlwifi: Remove code guarded by undefined macros
-Date: Sat, 23 Feb 2019 19:43:35 +0530
-Message-Id: <20190223141335.6650-1-bhanusreemahesh@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=4EeE/jEG+BwS2yLzax1oxoe1YlEFDe9IUirRYoBxddY=;
+        b=idJMCeeLzh9sXafsRbCAHmF2O+OUWCJZNQYCwRb6A5KF1gXyexC91o6h6rBd/HNJCe
+         9uYuK6vEqm7ACd+k3pIq7TTYEvz/ZP8WXGfXVzcMnAxhXAk7J+3o8doSsapt8HdOhgKK
+         JLBUon2yfqEkM+SYDdTzOT9RugK8rrtrXmYalA3c7M25uRzGMyyS6w1LNLVKCZyF+Fkt
+         /l67+cX4oec91q80xUYRVolI3IUrz0v05AuqHNIKpyns+eRfunwOmMg04WYlJW2oeUcb
+         XFnJ9RHr2WLWoXL/GPOWB7uVSaQpyeLexlNqKe5wkRj8XQbJBf1GG8qS0fUDQy9552cX
+         eiCA==
+X-Gm-Message-State: AOAM531ic5r9mLcCDJMPofSJrHbA2YjnkspTAoKfHn2ayZ59/Fp1FIDi
+	30Ae2Ny6JANwv7MWCyCte54=
+X-Received: by 2002:a17:906:3509:: with SMTP id r9mr14193077eja.490.1618686753304;
+        Sat, 17 Apr 2021 12:12:33 -0700 (PDT)
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from linux.local (host-95-237-55-30.retail.telecomitalia.it. [95.237.55.30])
+        by smtp.gmail.com with ESMTPSA id g11sm8330120edy.9.2021.04.17.12.12.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 17 Apr 2021 12:12:32 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: dri-devel@lists.freedesktop.org,
+	outreachy-kernel@googlegroups.com,
+	Ben Skeggs <bskeggs@redhat.com>,
+	David Airlie <airlied@linux.ie>,
+	Daniel Vetter <daniel@ffwll.ch>
+Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+Subject: [PATCH] drm/nouveau/dispnv50: disp.c: Replace drm_modeset_*_all with DRM_MODESET_LOCK_ALL_*
+Date: Sat, 17 Apr 2021 21:12:28 +0200
+Message-Id: <20210417191228.2980-1-fmdefrancesco@gmail.com>
+X-Mailer: git-send-email 2.31.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 
-removes the code block guarded by never set CONFIG_PM defines
+Replace the deprecated API with DRM_MODESET_LOCK_ALL_* helpers (according
+to the TODO list of the DRM subsystem).
 
-Signed-off-by: Bhanusree Pola <bhanusreemahesh@gmail.com>
+Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
 ---
- drivers/staging/rtlwifi/base.c | 15 ---------------
- 1 file changed, 15 deletions(-)
+ drivers/gpu/drm/nouveau/dispnv50/disp.c | 15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/staging/rtlwifi/base.c b/drivers/staging/rtlwifi/base.c
-index 35df2cf60619..88838ab9e428 100644
---- a/drivers/staging/rtlwifi/base.c
-+++ b/drivers/staging/rtlwifi/base.c
-@@ -423,21 +423,6 @@ static void _rtl_init_mac80211(struct ieee80211_hw *hw)
- 	/* hw->max_rates = 1; */
- 	hw->sta_data_size = sizeof(struct rtl_sta_info);
+diff --git a/drivers/gpu/drm/nouveau/dispnv50/disp.c b/drivers/gpu/drm/nouveau/dispnv50/disp.c
+index 828f48d5bdd4..e167bf96ff12 100644
+--- a/drivers/gpu/drm/nouveau/dispnv50/disp.c
++++ b/drivers/gpu/drm/nouveau/dispnv50/disp.c
+@@ -666,16 +666,19 @@ nv50_audio_component_bind(struct device *kdev, struct device *hda_kdev,
+ 	struct drm_device *drm_dev = dev_get_drvdata(kdev);
+ 	struct nouveau_drm *drm = nouveau_drm(drm_dev);
+ 	struct drm_audio_component *acomp = data;
++	struct drm_modeset_acquire_ctx ctx;
++	int ret = 0;
  
--/* wowlan is not supported by kernel if CONFIG_PM is not defined */
--#ifdef CONFIG_PM
--	if (rtlpriv->psc.wo_wlan_mode) {
--		if (rtlpriv->psc.wo_wlan_mode & WAKE_ON_MAGIC_PACKET)
--			rtlpriv->wowlan.flags = WIPHY_WOWLAN_MAGIC_PKT;
--		if (rtlpriv->psc.wo_wlan_mode & WAKE_ON_PATTERN_MATCH) {
--			rtlpriv->wowlan.n_patterns =
--				MAX_SUPPORT_WOL_PATTERN_NUM;
--			rtlpriv->wowlan.pattern_min_len = MIN_WOL_PATTERN_SIZE;
--			rtlpriv->wowlan.pattern_max_len = MAX_WOL_PATTERN_SIZE;
--		}
--		hw->wiphy->wowlan = &rtlpriv->wowlan;
--	}
--#endif
--
- 	/* <6> mac address */
- 	if (is_valid_ether_addr(rtlefuse->dev_addr)) {
- 		SET_IEEE80211_PERM_ADDR(hw, rtlefuse->dev_addr);
+ 	if (WARN_ON(!device_link_add(hda_kdev, kdev, DL_FLAG_STATELESS)))
+ 		return -ENOMEM;
+ 
+-	drm_modeset_lock_all(drm_dev);
++	DRM_MODESET_LOCK_ALL_BEGIN(drm_dev, ctx, 0, ret);
+ 	acomp->ops = &nv50_audio_component_ops;
+ 	acomp->dev = kdev;
+ 	drm->audio.component = acomp;
+-	drm_modeset_unlock_all(drm_dev);
+-	return 0;
++	DRM_MODESET_LOCK_ALL_END(drm_dev, ctx, ret);
++
++	return ret;
+ }
+ 
+ static void
+@@ -685,12 +688,14 @@ nv50_audio_component_unbind(struct device *kdev, struct device *hda_kdev,
+ 	struct drm_device *drm_dev = dev_get_drvdata(kdev);
+ 	struct nouveau_drm *drm = nouveau_drm(drm_dev);
+ 	struct drm_audio_component *acomp = data;
++	struct drm_modeset_acquire_ctx ctx;
++	int ret = 0;
+ 
+-	drm_modeset_lock_all(drm_dev);
++	DRM_MODESET_LOCK_ALL_BEGIN(drm_dev, ctx, 0, ret);
+ 	drm->audio.component = NULL;
+ 	acomp->ops = NULL;
+ 	acomp->dev = NULL;
+-	drm_modeset_unlock_all(drm_dev);
++	DRM_MODESET_LOCK_ALL_END(drm_dev, ctx, ret);
+ }
+ 
+ static const struct component_ops nv50_audio_component_bind_ops = {
 -- 
-2.17.1
+2.31.1
 
 
