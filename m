@@ -1,90 +1,84 @@
 X-GM-THRID: 6952754810830454784
-X-Received: by 2002:ac8:6b52:: with SMTP id x18mr10294678qts.100.1618814381865;
-        Sun, 18 Apr 2021 23:39:41 -0700 (PDT)
+X-Received: by 2002:a37:bbc4:: with SMTP id l187mr10303943qkf.153.1618814377722;
+        Sun, 18 Apr 2021 23:39:37 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac8:5781:: with SMTP id v1ls6391388qta.3.gmail; Sun, 18 Apr
- 2021 23:39:41 -0700 (PDT)
-X-Received: by 2002:ac8:1009:: with SMTP id z9mr10185176qti.128.1618814381275;
-        Sun, 18 Apr 2021 23:39:41 -0700 (PDT)
-Received: by 2002:a05:620a:4402:b029:2df:fe2e:8653 with SMTP id af79cd13be357-2e23d2385c2ms85a;
-        Sun, 18 Apr 2021 07:48:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxjvZici1qdBDBVrB5G0Gl2Hb7oaUOCC2sSx30Vy9VhaCyfoXIPhCEFhNH40humXiWpQusC
-X-Received: by 2002:a17:907:770d:: with SMTP id kw13mr17277464ejc.339.1618757323524;
-        Sun, 18 Apr 2021 07:48:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618757323; cv=none;
+Received: by 2002:ac8:5a88:: with SMTP id c8ls6395560qtc.1.gmail; Sun, 18 Apr
+ 2021 23:39:36 -0700 (PDT)
+X-Received: by 2002:ac8:7f14:: with SMTP id f20mr10076523qtk.339.1618814376921;
+        Sun, 18 Apr 2021 23:39:36 -0700 (PDT)
+Received: by 2002:a05:620a:2446:b029:281:145d:e270 with SMTP id af79cd13be357-2e0960daf04ms85a;
+        Sun, 18 Apr 2021 07:48:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxDwY5LXrUv7rF4WSWDFWv7mThvp3cXH6uLI46ZivXyYIQPRU81VN5ArT2yPVj1vD2NKw/5
+X-Received: by 2002:a1c:804d:: with SMTP id b74mr16688769wmd.15.1618757312909;
+        Sun, 18 Apr 2021 07:48:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618757312; cv=none;
         d=google.com; s=arc-20160816;
-        b=iVF+dRoeyz0JdrQL6OC/EAu6AeFa9BYS5zAe9mVAiQHE+0600bpjeC8Q+xFVRzJbg3
-         bD4Otb1Tf+nvy+Tp0r3mxJjp1JdD9OSwVNXvhr12IjRPrWRqDoj+4w8uYB/iY6SQDRtI
-         ObUnWNB+tAcnAOSiRYiKe7fWrhbu8QNhjkdQ3+XZJdzDkQ9Hl0SYlwii4Nx/8YFQEEjb
-         5TvY2YVzhYbAlxFIcD4zFYUMxNaFAslmJ9fAlrvsy4LFq/oCZgHUtDW0OtVY0PMo/cC/
-         hucL8RgIab+V53pam0bTvgkKHgmQKX+oRMxCgO9mdavw5GdKq4Gn/7jr4h0Kwtbyu4Rh
-         kPrw==
+        b=Ru913ORMz2wsd39dm91DDUfHE/l226DrcpzGXXpjCC/N2e7oy2FHp5dWXhdKf9vZ0T
+         wKTzOtWwW42vxE1KMFuxd64jyX3fqHnFLTIKx4IwNFtoiaX5yIF6VD+NglSHJctEhg4h
+         zBycjudpuO2cEU/FczmAiRZSM6ZXUHiZEhcp23Sg3/ub5SIJyiYrqO/vYroP0stPwndB
+         xXO33skYvn2oMh17Fo0ZQQ6Db+I1qcAKUuTTtsODpPJpveidu4/3mk9ro/dZvCeDmq/H
+         rH2o9no+Jx9/pvZzI3yyaOw6KHTSzuSG0q/WDfEPsSgk3n2TFjKQJu8tFtxUHyvWkDuX
+         5ucg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=wbsSVt7sDZG21p+Jtcnqvu0ncqhD0atmQImaH5s0bwk=;
-        b=RXoiU/g0mRhKT5aDgQLecSybP/hdKejxvWnaVEbE2pjpno3tGtmFKb5AFHEBssaPuD
-         COSDMUYh0NWufqucIoon+eotw13K4gReZPvzB0VlDvifMn2dYxLyZBgz97mSfFnswHL8
-         sus0NmiyHqxt5MVsDzRd9Ccm0RCWEBxBcdjsOpj3w+E4RsnTdqj4TOC5h2l2EA719dcw
-         9H6UfYUs4dIMqWx5V646cdmCGO7uc8kMBOgf37fAPXMMKXQ7ALT8Txc6fFRGaZpU6TkH
-         boFX04xDyc6ll3HP0HFxgsP6xMSHdMMletq5jzl5QiCq9jdsUWTg0hPXrkYsi3EqTozz
-         W5oA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from;
+        bh=/kZqRjhE3R5JUG9kHiYQ4hDaNWVduuH/NPkt3x6nfsA=;
+        b=abuO9RiWotT8M8DAcccVNtm8v5uF/3l6jUlwn8F58lowSrr1/oLSghU/Sel3GsCmtY
+         13JUaBaeub1C1WrLmGRu5ZYLVa7QS5JYGAEFCjV3vC+l2/+RJQULRLeHnA3wBoSASwAq
+         LphQkGe/2GDRQxea/oYxguvBln5ca5kafUkpJF9ekHcHKMpdgFIhJ/uB37rY39jsWYYf
+         9yQmSn4qBqKqAAF8zpvwzwb10dQxudldF9N1pedI6PcpYZ49Cgiki88GU6LaI5mweNgZ
+         Tp2Wqm1jb+DXSjm7JR+is3CDKxl8aiYN1X4Lt8J7OwkzvHFDJDijDLBodtI66e3fHGEU
+         5L/Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
        spf=neutral (google.com: 188.37.95.113 is neither permitted nor denied by best guess record for domain of bcarvalho@bcarvalho-ubuntu.lan) smtp.mailfrom=bcarvalho@bcarvalho-ubuntu.lan;
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <bcarvalho@bcarvalho-ubuntu.lan>
 Received: from bcarvalho-Ubuntu.lan (113.95.37.188.rev.vodafone.pt. [188.37.95.113])
-        by gmr-mx.google.com with ESMTPS id m18si429874edd.5.2021.04.18.07.48.43
+        by gmr-mx.google.com with ESMTPS id c6si666380wmr.2.2021.04.18.07.48.32
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 18 Apr 2021 07:48:43 -0700 (PDT)
+        Sun, 18 Apr 2021 07:48:32 -0700 (PDT)
 Received-SPF: neutral (google.com: 188.37.95.113 is neither permitted nor denied by best guess record for domain of bcarvalho@bcarvalho-ubuntu.lan) client-ip=188.37.95.113;
 Authentication-Results: gmr-mx.google.com;
        spf=neutral (google.com: 188.37.95.113 is neither permitted nor denied by best guess record for domain of bcarvalho@bcarvalho-ubuntu.lan) smtp.mailfrom=bcarvalho@bcarvalho-ubuntu.lan;
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from bcarvalho-Ubuntu.lan (localhost [127.0.0.1])
-	by bcarvalho-Ubuntu.lan (8.15.2/8.15.2/Debian-18) with ESMTP id 13IEmfV6135439;
-	Sun, 18 Apr 2021 15:48:41 +0100
+	by bcarvalho-Ubuntu.lan (8.15.2/8.15.2/Debian-18) with ESMTP id 13IEmTTj135423;
+	Sun, 18 Apr 2021 15:48:29 +0100
 Received: (from bcarvalho@localhost)
-	by bcarvalho-Ubuntu.lan (8.15.2/8.15.2/Submit) id 13IEmfl4135438;
-	Sun, 18 Apr 2021 15:48:41 +0100
+	by bcarvalho-Ubuntu.lan (8.15.2/8.15.2/Submit) id 13IEmS7q135422;
+	Sun, 18 Apr 2021 15:48:28 +0100
 From: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
 To: maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
         airlied@linux.ie, daniel@ffwll.ch, dri-devel@lists.freedesktop.org,
         outreachy-kernel@googlegroups.com
 Cc: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
-Subject: [PATCH 2/5] drm: drm_auth.c: Adjust end of block comment
-Date: Sun, 18 Apr 2021 15:48:22 +0100
-Message-Id: <cd1e8f6637b914825ee4b9643a4e9d9eba49f276.1618756333.git.martinsdecarvalhobeatriz@gmail.com>
+Subject: [PATCH 0/5] drm: Adjust end of block comment
+Date: Sun, 18 Apr 2021 15:48:20 +0100
+Message-Id: <cover.1618756333.git.martinsdecarvalhobeatriz@gmail.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <cover.1618756333.git.martinsdecarvalhobeatriz@gmail.com>
-References: <cover.1618756333.git.martinsdecarvalhobeatriz@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-Add a new line with */ on the last line of a block comment to follow the
-Linux kernel coding conventions.
+Add a new line with */ on the last line of a block comment to follow 
+the Linux kernel coding conventions. 
 Problem found by checkpatch.
+in tree dpu/drm
 
-Signed-off-by: Beatriz Martins de Carvalho <martinsdecarvalhobeatriz@gmail.com>
----
- drivers/gpu/drm/drm_auth.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+Beatriz Martins de Carvalho (5):
+  drm: drm_atomic.c: Adjust end of block comment
+  drm: drm_auth.c: Adjust end of block comment
+  drm: drm_bufs.c: Adjust end of block comment
+  drm: drm_connector.c: Adjust end of block comment
+  drm: drm_context.c: Adjust end of block comment
 
-diff --git a/drivers/gpu/drm/drm_auth.c b/drivers/gpu/drm/drm_auth.c
-index f2d46b7ac6f9..f00e5abdbbf4 100644
---- a/drivers/gpu/drm/drm_auth.c
-+++ b/drivers/gpu/drm/drm_auth.c
-@@ -300,7 +300,8 @@ int drm_master_open(struct drm_file *file_priv)
- 	int ret = 0;
- 
- 	/* if there is no current master make this fd it, but do not create
--	 * any master object for render clients */
-+	 * any master object for render clients
-+	 */
- 	mutex_lock(&dev->master_mutex);
- 	if (!dev->master)
- 		ret = drm_new_set_master(dev, file_priv);
+ drivers/gpu/drm/drm_atomic.c    | 3 ++-
+ drivers/gpu/drm/drm_auth.c      | 3 ++-
+ drivers/gpu/drm/drm_bufs.c      | 3 ++-
+ drivers/gpu/drm/drm_connector.c | 9 ++++++---
+ drivers/gpu/drm/drm_context.c   | 3 ++-
+ 5 files changed, 14 insertions(+), 7 deletions(-)
+
 -- 
 2.25.1
 
