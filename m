@@ -1,107 +1,227 @@
-X-GM-THRID: 6664351741248536576
-X-Received: by 2002:a65:52c5:: with SMTP id z5mr2071828pgp.71.1551665305012;
-        Sun, 03 Mar 2019 18:08:25 -0800 (PST)
+X-GM-THRID: 6952884734330404864
+X-Received: by 2002:a1c:20c8:: with SMTP id g191mr5926461wmg.125.1618947539862;
+        Tue, 20 Apr 2021 12:38:59 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:e393:: with SMTP id ch19ls7303689plb.2.gmail; Sun,
- 03 Mar 2019 18:08:24 -0800 (PST)
-X-Google-Smtp-Source: APXvYqx6H8dtZHZQiVr3IJoEDEJA01AjypcKfNfd+QkRFOsahv5Bx/Sxf/D6fl+rXzi6WQrev/bM
-X-Received: by 2002:a17:902:18a:: with SMTP id b10mr5290460plb.139.1551665304338;
-        Sun, 03 Mar 2019 18:08:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551665304; cv=none;
+Received: by 2002:adf:d1e5:: with SMTP id g5ls14210127wrd.1.gmail; Tue, 20 Apr
+ 2021 12:38:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwZSDZ6EP5MR74qsnGTMW9C7MFHHZfHkNjrev/zsAIYcrN29NRDNIXux0fUtlW6KQUY+dAD
+X-Received: by 2002:adf:828e:: with SMTP id 14mr22258870wrc.410.1618947538549;
+        Tue, 20 Apr 2021 12:38:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618947538; cv=none;
         d=google.com; s=arc-20160816;
-        b=QDne9GELpoDsNijVW4RM+bA+uI7BgSiXaBtD8XO8cC84Ig3WGXq3PUeJe7XIk7XEiv
-         ExXz4296LO/pBLCAqfuLtLo3JpLq89iUoOVxlrFww6ljOuPfy7h/rcZm1dn9QksdtAzs
-         NrS72zEmxC/NJ1kxx8fz6g9YA5jNUvvkiLfmCn3g84tCS+/2wb9JWeZOmELZIo4Rx6Q7
-         YKGpzoAT6TnAVNvYaQFKmbri3gVHd0nblXFJScw1M5q/AmMrN1JbPb0rcS4s+urQGI2y
-         Qun6ir0atQ2bld4ymqi17odhDoss3jkCGUKYU1/yG8Fc13d16yxtqLWQy2q/bUr/wMx+
-         0ckw==
+        b=eEKwTbHahARDJFuEG7rvSJ3WX/F5FA+q1JJ5fMCGB+9iDR+QpI8sLjH6faQ/s+Yhg8
+         bEle48cib5265iVc6W7n7q70PkqfSR0ND1kiK92wYF1Wq1PEDXN+T7fyOONnHtkZ/rPu
+         psLBIjgkAZV5uNenSBfZnBtTq8fYpeTgyPI8x0nKKpJ2+8qfr8JKssPZ7+8jQSlhI74b
+         LFGbIKR4OgzyrY6rnfEbueqOBISEaOnhM4pA1vhsSq8W12YNW5WIdr1YtJCt5yzaX6dP
+         tJDA8A6ZTd0qPk77qtxPlWLFFCSPvNU+t+v5XUAncMsBXY9PbtljALqDTFtk0EoMFDD4
+         wB4g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=yJlEhQ4Ji0jLR+ktg4iwTTPZQfFOnccv7tJQKTva9G8=;
-        b=r02MV9Hr3nLPc5fqiv8gaYx1Xwq7bzz0RCmWLC1ZZployBsnMCrb2pt0mgAs4r1oqV
-         /+hUHe7rH1X4dpM1fI8POCTVnXlVQ/FVuq0l4+pE2wBFl9T5sKXajSHVGiccZxbawv8O
-         nI5JeTIhpWHoUZHLsZpxdjtnvdxYVEmDUTwb2YezGU9O8A9w2DBh4ZBzdW1ponQif2xq
-         6U0M/FPAD7YNDLRxYgrAg89mk9Zw3MypUcjU1xhUdjlU/lD47ONRAIp/OG30f/uhPyNl
-         xJ2l36etHXV3bIU+hmdxMAQnrMVKhg6CCo0TbjQ5UdYog86HLHLjRzvYHOnm9kOpQNhi
-         WnZg==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=hMkfPDMRdyyJ+LeflfeuMfIbnpp3+QEBfrxfVMuJb0A=;
+        b=dRdA12sqm0sGhwIDNmftcPfNHyCi9t3mIgN0BsvzEWu6QDAcqAn+HS9Gy/nQtk47ZV
+         7rm6jia2ckQg3IqKhr6v3UyEEKeJOp2/ux+m3yM2vwJFTRWnpWObxpMilwMOJpueHp2p
+         UVpWq7GKaJ9MtQ+53C0IP9WX1xmuM//AXRkwCzGP7DBN9becYCeNzg+mDmofBZ4YvzcX
+         jG+2vBXXx2VKPgTszYvtvUd6NdTADr3LgECvPr/uYSIk7JG0OXDugnmyn9ERE6Mi+ayA
+         FXCj59CIcLTlXgf77okdyQ6brnTp9XnlJ4uwtcjuaSdtZ+uV68E2kite2mCDP9vKrxiQ
+         QTng==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jvEtkuA3;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::32f as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qZPHzQyQ;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62b as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <madhumithabiw@gmail.com>
-Received: from mail-ot1-x32f.google.com (mail-ot1-x32f.google.com. [2607:f8b0:4864:20::32f])
-        by gmr-mx.google.com with ESMTPS id v132si205034pgb.3.2019.03.03.18.08.24
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from mail-ej1-x62b.google.com (mail-ej1-x62b.google.com. [2a00:1450:4864:20::62b])
+        by gmr-mx.google.com with ESMTPS id s141si977486wme.2.2021.04.20.12.38.58
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 03 Mar 2019 18:08:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::32f as permitted sender) client-ip=2607:f8b0:4864:20::32f;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 20 Apr 2021 12:38:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62b as permitted sender) client-ip=2a00:1450:4864:20::62b;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jvEtkuA3;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::32f as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qZPHzQyQ;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62b as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ot1-x32f.google.com with SMTP id i5so2931154oto.9
-        for <outreachy-kernel@googlegroups.com>; Sun, 03 Mar 2019 18:08:24 -0800 (PST)
+Received: by mail-ej1-x62b.google.com with SMTP id sd23so51374816ejb.12
+        for <outreachy-kernel@googlegroups.com>; Tue, 20 Apr 2021 12:38:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=yJlEhQ4Ji0jLR+ktg4iwTTPZQfFOnccv7tJQKTva9G8=;
-        b=jvEtkuA3S+3oa5+STAEdXKO8zmpMgWmQsIBNlJ7Cr79iTvHgmhoJcJkEC5H59f9xV/
-         ya3KLsvfXivFg7vZY8AOr6jOZruEdT3vphRIJFND9sEAaobAqcK6soEYwgPVQagPO9+2
-         48yynoSiCUF+YVkrw+oqTvnQZGGC7R5pNuyJpMLPJpsayHybHUfK5zXIqy55wGe1Zf5h
-         zhuygC695WphcoF+PIOdMDmfFteWCFN01i/0IhT7MsJ8lD06ddg+yOEeP7lxwxBcLLDq
-         B7AFSDauFD8yhfZCjtR5sYNYzwH5mYlwe7UXlSJRFYlerDGNGKL+3n8mxISOqm/aTut+
-         0qKw==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=hMkfPDMRdyyJ+LeflfeuMfIbnpp3+QEBfrxfVMuJb0A=;
+        b=qZPHzQyQCMCRF4gnmXoaOoci4QFkqPYegKngEamsno86xzSbDAOI3BvF2E+9VBiPVf
+         uHWUt6F0Lyy4FD4NuAQbhsxH4geIIZSjPTRQlOydIjQkrV4UjgCBRfqz/8f09o8Frkux
+         CnZMkXaY6YYOo7umM8eXFkzU1c4Ygi/LN/BVeefP6P3Y3QDplgKBTG1AIX16c/rt9Jbj
+         0O6ihhKGeMPBGJX9jfQ5LRXX2h9nOIZKAXOWLtqxfCPPzQ4sHKjNJ97j6O1GvxbTGDv+
+         zBA5cz4NssrmuZAIMoGIQEwn9FdMXMOTlDq9NjTshWtERlrW/Knl830tdYa0x8GD8eYq
+         Jkvg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=yJlEhQ4Ji0jLR+ktg4iwTTPZQfFOnccv7tJQKTva9G8=;
-        b=uY8D4PJSbLj4PZnGs6HJzQEMJ2fjPGjiZnvF6YAdkgG7BV4tc1/GS4ck+Fp8IaV5cR
-         evMTZAAnQMPfw/BGdkNQETqoUOuIC7yqS9lIXyBJOczyFM8HP9qBiVVy2bYfITh8nbkt
-         gGSWtBz1bWylqp5tapRVd2W+Xop2isxZa5dF1nLQSU3aVke77sw6GMWcA8CD5ag8yOW3
-         T5uH2Y1f5W4KzQfDODY/x2kJLqFO/2U6PKd1g3uxGXWD2mICLExHBSsTb7PLX8e+2MDW
-         xFwPpfW786ymizhfYPTvIHWK0MvV5KIXxLeqI3pmpXf3XSMwrovE3Xi3grOcNYoYjf2s
-         jFuA==
-X-Gm-Message-State: APjAAAWm2h6SNs0S17yZXB3HHl40jb629+J9tk6kJXxdU6QvPNYGjWE6
-	D5mpHmMxL031KWWdMCxCtnk=
-X-Received: by 2002:a9d:7596:: with SMTP id s22mr11268100otk.359.1551665303762;
-        Sun, 03 Mar 2019 18:08:23 -0800 (PST)
-Return-Path: <madhumithabiw@gmail.com>
-Received: from madhuleo (cpe-173-174-122-182.austin.res.rr.com. [173.174.122.182])
-        by smtp.gmail.com with ESMTPSA id e125sm1962645oia.18.2019.03.03.18.08.22
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Mar 2019 18:08:23 -0800 (PST)
-From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-To: forest@alittletooquiet.net,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-Subject: [PATCH] Staging: vt6655: Fix spelling mistake
-Date: Sun,  3 Mar 2019 20:08:20 -0600
-Message-Id: <20190304020820.18142-1-madhumithabiw@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=hMkfPDMRdyyJ+LeflfeuMfIbnpp3+QEBfrxfVMuJb0A=;
+        b=ICU6BVFMimRNiCG9Q8VhijFwyEwiYIiH0tbY0DoHKe0BQmRQ8X5TWMA7rRZDIwFOsh
+         isQ8JnDO8yqn8VtgtLB41Pgb7KigbJf/pOR/+bt1yP2FBjy3UphjvzaJXHS8WWSAgiR5
+         heYiuJRdM4h8XHUqbgJJZe8G4jyK+TsFOnEMLjvHB+qu/7QMGLmu2lLy4tRsau2MGJlc
+         /AH6sR1VYkFgM8BiZ9f3RuRFGqY+YekklGvNiJO0p9llAWZZEDgLMajsXzHKrZQbYNAi
+         T9Ml6Yqtaocs9PU1vbr7QUQq3ouWNS/sd/AYfr1kP4BqurUQOkv6HulqzsQTM2JczVL+
+         vWDw==
+X-Gm-Message-State: AOAM531A/BgOqjnZpLoAwCQp7B71RF7e5GdCWbfInUqavtOuwYspJPU4
+	UGHcWjWM5nAFLcB0rzHB8cw=
+X-Received: by 2002:a17:906:c419:: with SMTP id u25mr29857701ejz.332.1618947538214;
+        Tue, 20 Apr 2021 12:38:58 -0700 (PDT)
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from linux.local (host-79-52-107-152.retail.telecomitalia.it. [79.52.107.152])
+        by smtp.gmail.com with ESMTPSA id f20sm10363057ejw.36.2021.04.20.12.38.57
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 20 Apr 2021 12:38:57 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: Daniel Vetter <daniel@ffwll.ch>
+Cc: outreachy-kernel@googlegroups.com, dri-devel@lists.freedesktop.org, Alex Deucher <alexander.deucher@amd.com>, Christian =?ISO-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Melissa Wen <melissa.srw@gmail.com>
+Subject: Re: [PATCH v2 1/2] drm/amd/amdgpu/amdgpu_device.c: Replace drm_modeset_*_all with DRM_MODESET_LOCK_ALL_*
+Date: Tue, 20 Apr 2021 21:38:56 +0200
+Message-ID: <179886319.If19VHCz4f@linux.local>
+In-Reply-To: <YH8UL76DQZUrN0Jc@phenom.ffwll.local>
+References: <20210419150341.24959-1-fmdefrancesco@gmail.com> <20210419150341.24959-2-fmdefrancesco@gmail.com> <YH8UL76DQZUrN0Jc@phenom.ffwll.local>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
 
-Fix the check for spelling mistake
-CHECK: 'Regsiter' may be misspelled - perhaps 'Register'
+On Tuesday, April 20, 2021 7:49:35 PM CEST Daniel Vetter wrote:
+> On Mon, Apr 19, 2021 at 05:03:40PM +0200, Fabio M. De Francesco wrote:
+> > Replace the deprecated API with new helpers, according to the TODO list
+> > of the DRM subsystem. The new API has been introduced with commit
+> > b7ea04d299c7: DRM_MODESET_LOCK_ALL_BEGIN() simplifies grabbing all modeset
+> > locks using a local context and has the advantage of reducing boilerplate.
+> 
+> So this is only half of the story, because the boilerplate only exists
+> when you're using drm_modeset_lock_all_ctx. Which should be used for
+> modern atomic display drivers everywhere.
+> 
+> But drm_modeset_lock_all_ctx isn't exactly the same as
+> drm_modeset_lock_all, so this needs to be explained.
+> 
+> Now the problem with drm_modeset_lock_all is that it hides a memory
+> allocation, and if that allocation fails then we just die. Which isn't
+> great really, but in practice the kernel tries really hard to never fail
+> this allocation. That's why we move the drm_modeset_acquire_ctx onto the
+> stack.
+> 
+> I think for understanding what's going on here you'd first need to convert
+> the code to the full open-code boilerplate using drm_modeset_lock_all_ctx,
+> with explanations of why the changes are ok. Then replace it with the
+> convenient macro. Once it's clear what's going on under the hood it should
+> then be easier to explain the situation in subsequent conversions with
+> just one patch.
+> -Daniel
+>
+Thanks for the clarification. I'll go through this code again using the path 
+you showed. Eventually I will send out another patch.
 
-Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
----
- drivers/staging/vt6655/rf.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Fabio
+>
+> > Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+> > ---
+> > 
+> > Changes from v1: Added further information in the commit message.
+> > 
+> >  drivers/gpu/drm/amd/amdgpu/amdgpu_device.c | 18 ++++++++++++------
+> >  1 file changed, 12 insertions(+), 6 deletions(-)
+> > 
+> > diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c
+> > b/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c index 
+6447cd6ca5a8..e1a71579f8e6 100644
+> > --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c
+> > +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_device.c
+> > @@ -32,6 +32,7 @@
+> > 
+> >  #include <linux/slab.h>
+> >  
+> >  #include <drm/drm_atomic_helper.h>
+> > 
+> > +#include <drm/drm_drv.h>
+> > 
+> >  #include <drm/drm_probe_helper.h>
+> >  #include <drm/amdgpu_drm.h>
+> >  #include <linux/vgaarb.h>
+> > 
+> > @@ -3694,14 +3695,17 @@ int amdgpu_device_suspend(struct drm_device *dev, 
+bool fbcon)
+> > 
+> >  	if (!amdgpu_device_has_dc_support(adev)) {
+> >  	
+> >  		/* turn off display hw */
+> > 
+> > -		drm_modeset_lock_all(dev);
+> > +		struct drm_modeset_acquire_ctx ctx;
+> > +		int ret;
+> > +
+> > +		DRM_MODESET_LOCK_ALL_BEGIN(dev, ctx, 0, ret);
+> > 
+> >  		drm_connector_list_iter_begin(dev, &iter);
+> >  		drm_for_each_connector_iter(connector, &iter)
+> >  		
+> >  			drm_helper_connector_dpms(connector,
+> >  			
+> >  						  
+DRM_MODE_DPMS_OFF);
+> >  		
+> >  		drm_connector_list_iter_end(&iter);
+> > 
+> > -		drm_modeset_unlock_all(dev);
+> > -			/* unpin the front buffers and cursors */
+> > +		DRM_MODESET_LOCK_ALL_END(dev, ctx, ret);
+> > +		/* unpin the front buffers and cursors */
+> > 
+> >  		list_for_each_entry(crtc, &dev->mode_config.crtc_list, 
+head) {
+> >  		
+> >  			struct amdgpu_crtc *amdgpu_crtc = 
+to_amdgpu_crtc(crtc);
+> >  			struct drm_framebuffer *fb = crtc->primary-
+>fb;
+> > 
+> > @@ -3830,19 +3834,21 @@ int amdgpu_device_resume(struct drm_device *dev, 
+bool fbcon)
+> > 
+> >  	/* blat the mode back in */
+> >  	if (fbcon) {
+> >  	
+> >  		if (!amdgpu_device_has_dc_support(adev)) {
+> > 
+> > +			struct drm_modeset_acquire_ctx ctx;
+> > +			int ret;
+> > +
+> > 
+> >  			/* pre DCE11 */
+> >  			drm_helper_resume_force_mode(dev);
+> >  			
+> >  			/* turn on display hw */
+> > 
+> > -			drm_modeset_lock_all(dev);
+> > +			DRM_MODESET_LOCK_ALL_BEGIN(dev, ctx, 0, 
+ret);
+> > 
+> >  			drm_connector_list_iter_begin(dev, &iter);
+> >  			drm_for_each_connector_iter(connector, 
+&iter)
+> >  			
+> >  				
+drm_helper_connector_dpms(connector,
+> >  				
+> >  							  
+DRM_MODE_DPMS_ON);
+> >  			
+> >  			drm_connector_list_iter_end(&iter);
+> > 
+> > -
+> > -			drm_modeset_unlock_all(dev);
+> > +			DRM_MODESET_LOCK_ALL_END(dev, ctx, ret);
+> > 
+> >  		}
+> >  		amdgpu_fbdev_set_suspend(adev, 0);
+> >  	
+> >  	}
 
-diff --git a/drivers/staging/vt6655/rf.c b/drivers/staging/vt6655/rf.c
-index 03b0d56dbe9e..825b6ab5c0de 100644
---- a/drivers/staging/vt6655/rf.c
-+++ b/drivers/staging/vt6655/rf.c
-@@ -163,7 +163,7 @@ static const unsigned long dwAL7230InitTable[CB_AL7230_INIT_SEQ] = {
- 	0x841FF200 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* Need modify for 11a: 451FE2 */
- 	0x3FDFA300 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* Need modify for 11a: 5FDFA3 */
- 	0x7FD78400 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* 11b/g    // Need modify for 11a */
--	/* RoberYu:20050113, Rev0.47 Regsiter Setting Guide */
-+	/* RoberYu:20050113, Rev0.47 Register Setting Guide */
- 	0x802B5500 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* Need modify for 11a: 8D1B55 */
- 	0x56AF3600 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW,
- 	0xCE020700 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* Need modify for 11a: 860207 */
--- 
-2.17.1
+
+
 
 
