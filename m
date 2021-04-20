@@ -1,106 +1,129 @@
-X-GM-THRID: 6950245199494774784
-X-Received: by 2002:a19:f017:: with SMTP id p23mr19149126lfc.232.1618230063190;
-        Mon, 12 Apr 2021 05:21:03 -0700 (PDT)
+X-GM-THRID: 6952150809139216384
+X-Received: by 2002:adf:a1cd:: with SMTP id v13mr19604588wrv.332.1618908899306;
+        Tue, 20 Apr 2021 01:54:59 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6512:3b95:: with SMTP id g21ls1057204lfv.1.gmail; Mon,
- 12 Apr 2021 05:21:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyLXCCYb/dKrIRQwIZD6Vw7EHa8VTOLMeQirJ0kd4CZGWc+8TbeLVEhku0EsM2GmDQ+Bp+k
-X-Received: by 2002:a05:6512:1286:: with SMTP id u6mr7753986lfs.377.1618230061505;
-        Mon, 12 Apr 2021 05:21:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1618230061; cv=none;
+Received: by 2002:a05:600c:4101:: with SMTP id j1ls1184823wmi.2.canary-gmail;
+ Tue, 20 Apr 2021 01:54:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzQUkZaLBioGEHuPL2hdk1QLbztLtEWSddRiAWviP4Hz0YcvjhbT7wK9uVyd0C6W5QQd9lB
+X-Received: by 2002:a1c:6a06:: with SMTP id f6mr3242193wmc.179.1618908897984;
+        Tue, 20 Apr 2021 01:54:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618908897; cv=none;
         d=google.com; s=arc-20160816;
-        b=CzhcGcy4QV1pnRWf6pmYLWmcvB9e8fc/Ex4F6ZqkBEho1jdn8g+nwwZg02upVYRtHw
-         yNvA6kJ6o291VU5Hqhfst/RQ2TguuteRjWq+eaiHaUqkYaedEGXcDOfhFh5kbqavlgVq
-         Qppoel7QBbDpFwAFlnRX1vDzSW/AlySkf1eUGY6V7Xa/npdqxocZgqJEx0vnvl9Ryt1S
-         G4eSLpnb8y9Bc+UprV0KxIU0vYXcakRSn855D6kTfWLCKDAaHmRQSL50Rws3MD2nQqfc
-         vg5S+0Fb+bIsVPFKKsS/qJjmQbYK7+lho310RHQD3t4mNUH+tF2ToHdqup0kZxsEk7i9
-         5jQA==
+        b=0NslaktFwdbrm+eZNJKLwcS8uJQJVT8Hkgfy/YVySQ40hMDBvhTpxwZiWOyi0tMhuz
+         E7fgV79aJitZU+8c6RUoT8MK3tSwFL+iOc00kcWoaUS0jUpvZnVcOG7+drzOkURh0GPF
+         BCI3AueUzUKB8eu4+Xsa4CcDbERVZYES3IBr4/+c7BmaPUuj93RWjuGgJP+eOuUDzsEc
+         j8LSDY+oB6Fgy/PK8s+99jwYVAMcRtR9zndimdo9fqSoPx/GR95D/dxIFrgH99NjWzTO
+         CcJyTR1r/R+e9/t30Iwxepq2ApSpxC/nir//ZazSI/mKmLONfL/JAfHt19ljK6mBW1pM
+         dnwg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=1MdwSjx9JO8XVCTFQLq+wxeSF8HYjox1t1MpD7Ajw5s=;
-        b=oK1NDwK82x/3USyuvGQnrMZ9aDI/PRcarO1Ut2bidj3cFS7DByKO+WYmfAsdzIndOF
-         MEKnDSN9cdsv7Eg6CsL/bikQ5xPw/OLGVwoDlbKfpRQO0+aDsQ5PDqMVUpGpBAficD+6
-         VfG6sVWjaAESq0b6LkLxKRCBiGP3mIWa8y/fqYGkab/TU2SJNI18JntYoBHjdOGTnHqn
-         lQVP5+mGZoxpgPUYuy7897vxlYEa+mNXZM5ELG9GjR1buuM7BY+UwdmcDTRtkW96SvGr
-         NaS5GhfKY+v9dQNXE6hBgmbkGiMCCYfw+InPxJz2twsGm+MktG0s0pQ5qdblX5dFlLb1
-         d42g==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=OQ0bGSmF61lVuHRAxEBkn5f3XkSZTklGu+hYT4WzN9s=;
+        b=plrIlwiMzod4uvwlpKmXmsloGPhy35XBZLAvhvXgYMuYmQIjt4seaHVzCGxpptTp9S
+         5VLwniwfXvLW3KUJCho0VBvFhoRrqbyYCoOi1WnqAcI4DYSSWj0QudQriEs1mLe90Mak
+         Zi1raCRqDvqR++FWORjEQsjPhC1Wz7KElolvU74FOTIWNJtONZyVTPfmoC4AsGUoAWUn
+         x6Q0YRkjD6u1rxYdXVyy9WGKi+S7HV7aps05wowBNzQfodg9SZ78xcSUtKCycoAGroaJ
+         lTcLtJGHoYvHXISpIdxCHc6ViImBodSciF5Gc1jL/756R1iJGewpr+nrFTkWi7uLdXXm
+         vc0Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=q15ysuor;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::531 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from mail-ed1-x531.google.com (mail-ed1-x531.google.com. [2a00:1450:4864:20::531])
-        by gmr-mx.google.com with ESMTPS id y11si626216lfg.8.2021.04.12.05.21.01
+       dkim=pass header.i=@ffwll.ch header.s=google header.b=RwnMxIQS;
+       spf=neutral (google.com: 2a00:1450:4864:20::52b is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
+Return-Path: <daniel@ffwll.ch>
+Received: from mail-ed1-x52b.google.com (mail-ed1-x52b.google.com. [2a00:1450:4864:20::52b])
+        by gmr-mx.google.com with ESMTPS id c6si160802wmr.2.2021.04.20.01.54.57
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 12 Apr 2021 05:21:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::531 as permitted sender) client-ip=2a00:1450:4864:20::531;
+        Tue, 20 Apr 2021 01:54:57 -0700 (PDT)
+Received-SPF: neutral (google.com: 2a00:1450:4864:20::52b is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) client-ip=2a00:1450:4864:20::52b;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=q15ysuor;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::531 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ed1-x531.google.com with SMTP id r22so14774667edq.9
-        for <outreachy-kernel@googlegroups.com>; Mon, 12 Apr 2021 05:21:01 -0700 (PDT)
+       dkim=pass header.i=@ffwll.ch header.s=google header.b=RwnMxIQS;
+       spf=neutral (google.com: 2a00:1450:4864:20::52b is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
+Received: by mail-ed1-x52b.google.com with SMTP id s15so44094600edd.4
+        for <outreachy-kernel@googlegroups.com>; Tue, 20 Apr 2021 01:54:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=1MdwSjx9JO8XVCTFQLq+wxeSF8HYjox1t1MpD7Ajw5s=;
-        b=q15ysuorn/YUiUUavi8edT4vS1HRmIYWPBweYU97apO02lY67apbBijf8NsAUssGMa
-         jRhuSy+NQ3u/YOcWuE5EOdPNV/orFUQVggqNOru8PtUCV9JoGBH0PWcXQGmiWBeWIlIg
-         A5SWFuq4RdvSVudTB4qab7sdIOSYzjnnHuY5R3XU/mQICnPTgH6YhaoDweTVdIWQcMz6
-         ZULxKy0U6kAzQHG1lEzFhXuwgzYmW1JKiSYee3wmqCvzfq/cCQXjuLUF3+vHHV8rcnbU
-         h122xaspDs60AXm5QZVw1+mVHbUN/GEqfdFop6q9g8xh6OkeyoQejVeDtViSWy/zV5m5
-         p6Rw==
+        d=ffwll.ch; s=google;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=OQ0bGSmF61lVuHRAxEBkn5f3XkSZTklGu+hYT4WzN9s=;
+        b=RwnMxIQSK6ZsOWq1KAjkS7BHUuz+BlMaDqeW8B5MMkVrKW/wIBwhVwp3FldICE1lS9
+         /qZLYQIaPVnBl9fgu0re3UK+HLDxFwhDkuccpfbjMkXUbAYArzq39UGEgH/ev1UZphvo
+         /6bxIctVS07Mr9rIW70cXPWxBWvrfewSuieys=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=1MdwSjx9JO8XVCTFQLq+wxeSF8HYjox1t1MpD7Ajw5s=;
-        b=Emvy3MWQ7BQ/OdW/c5XI6ymV7Fxx7QlyAhjnSGMVV2Y+lG3WzNcCc0iN2Ib8aMFxKP
-         vzoP+lovXbVwLzFVMxTPSnrfaFbMs4wb39GV9EqHmGZFZJ/oPasqVpqJUXplLvOzfuSy
-         MC3X7CanXQFGzAv3oFOVdco/qXF5pgNxORvMtuodhKcPcZRC8UAWK2UIJjSWrS7Dmu5P
-         ZXp+iGYTV9I6DoJVKsn4InS1je/XUEvETtbKL53HPMCQp211gcQIwt29LxbYotrI2rV/
-         TDDtnDDbi/JuXeamYNk+TcRNhg3YYlDE7btfXQHB6PIXVQKmwGHYvBlgtFCfS4BDVZbh
-         uYVQ==
-X-Gm-Message-State: AOAM531Hqbh7nJ+di8UitCl0yWqBGBakIWF7qn936kEI3cZfdzH3+BZv
-	5LTpI5zyLVhFNufriRW5m0Y=
-X-Received: by 2002:aa7:c549:: with SMTP id s9mr23372390edr.326.1618230061014;
-        Mon, 12 Apr 2021 05:21:01 -0700 (PDT)
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from linux.local (host-95-237-55-30.retail.telecomitalia.it. [95.237.55.30])
-        by smtp.gmail.com with ESMTPSA id ck29sm6408191edb.47.2021.04.12.05.20.59
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=OQ0bGSmF61lVuHRAxEBkn5f3XkSZTklGu+hYT4WzN9s=;
+        b=Jadn4SWKUcESKIGrweeCPXjB7mMUyEgl7ORdMy8EgzceDKUPKW8mloEEj6qLvF7BoE
+         qahi5Y5evUdnPPJe14m3npCj9gtlXb3oF0KKD6lwPtGHaYucGvktSDY9jTZs8fqRUa2m
+         00ZB35a5CDFyhgnW/JLhEhfwAD1FyUrE/JJy6YPPgMin5idLq4vhn2rgbb17T3ie0yG3
+         vHVej9N/xdIaIhbYkPyXsoSEXoML787LblDMcoxnJsVDBrJpAAUpSAaCfIKmuKyuONOo
+         nsb9dyAdexzod1cVusGX9DO3cCgMlxDFb3ZpPhzA+YyhTPlJN73cgAKdp9nltOQi59XK
+         RrXA==
+X-Gm-Message-State: AOAM53160toOi92hxScW3jF7FH6J2w/7u2i6D6L38bNUHaJfvH42Y5bN
+	DoIXVeHox3a2j4S9daWQha6eCbLmsoxN+w==
+X-Received: by 2002:a05:6402:46:: with SMTP id f6mr31137197edu.252.1618908897839;
+        Tue, 20 Apr 2021 01:54:57 -0700 (PDT)
+Return-Path: <daniel@ffwll.ch>
+Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
+        by smtp.gmail.com with ESMTPSA id g11sm14951850edy.9.2021.04.20.01.54.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 Apr 2021 05:21:00 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: dri-devel@lists.freedesktop.org,
-	outreachy-kernel@googlegroups.com,
-	"Daniel Vetter" <daniel.vetter@ffwll.ch>,
-	"Melissa Wen" <melissa.srw@gmail.com>,
+        Tue, 20 Apr 2021 01:54:57 -0700 (PDT)
+Date: Tue, 20 Apr 2021 10:54:55 +0200
+From: Daniel Vetter <daniel@ffwll.ch>
+To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, dri-devel@lists.freedesktop.org,
 	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 	Maxime Ripard <mripard@kernel.org>,
 	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@linux.ie>
-Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Subject: [PATCH 0/2] gpu: drm: Change types and format comments
-Date: Mon, 12 Apr 2021 14:20:54 +0200
-Message-Id: <20210412122056.28351-1-fmdefrancesco@gmail.com>
-X-Mailer: git-send-email 2.31.1
+	David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [PATCH v2] drm/drm_bufs.c: In switch, add break in default case
+Message-ID: <YH6W3/dex+AJT93t@phenom.ffwll.local>
+References: <20210417161552.6571-1-fmdefrancesco@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20210417161552.6571-1-fmdefrancesco@gmail.com>
+X-Operating-System: Linux phenom 5.7.0-1-amd64 
 
-Replaced "unsigned" with "unsigned int" and formatted comments according
-to the Linux style guidelines. Issues detected by checkpatch.pl.
+On Sat, Apr 17, 2021 at 06:15:52PM +0200, Fabio M. De Francesco wrote:
+> Added a "break" in the default case of a switch select statement.
+> GCC complains, although this "break" is not strictly necessary 
+> for the code to work as expected.
 
-Fabio M. De Francesco (2):
-  gpu: drm: Replace "unsigned" with "unsigned int"
-  gpu: drm: Correct comments format
+Luckily we already have a comment stating that this is all just to make
+gcc happy.
+> 
+> Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
 
- drivers/gpu/drm/drm_atomic_helper.c | 40 ++++++++++++++++++-----------
- 1 file changed, 25 insertions(+), 15 deletions(-)
+Applied to drm-misc-next, thanks for the patch.
+-Daniel
+
+> ---
+> 
+> Changes from v1: Added the reason why of this change in the log.
+> 
+>  drivers/gpu/drm/drm_bufs.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/gpu/drm/drm_bufs.c b/drivers/gpu/drm/drm_bufs.c
+> index e3d77dfefb0a..fc40aa0adf73 100644
+> --- a/drivers/gpu/drm/drm_bufs.c
+> +++ b/drivers/gpu/drm/drm_bufs.c
+> @@ -79,7 +79,7 @@ static struct drm_map_list *drm_find_matching_map(struct drm_device *dev,
+>  				return entry;
+>  			break;
+>  		default: /* Make gcc happy */
+> -			;
+> +			break;
+>  		}
+>  		if (entry->map->offset == map->offset)
+>  			return entry;
+> -- 
+> 2.31.1
+> 
 
 -- 
-2.31.1
-
+Daniel Vetter
+Software Engineer, Intel Corporation
+http://blog.ffwll.ch
 
