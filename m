@@ -1,125 +1,204 @@
-X-GM-THRID: 6608871941819334656
-X-Received: by 2002:a24:f5c3:: with SMTP id k186-v6mr7987121ith.29.1538747908984;
-        Fri, 05 Oct 2018 06:58:28 -0700 (PDT)
+X-GM-THRID: 6952926381632126976
+X-Received: by 2002:a5d:66cd:: with SMTP id k13mr22214556wrw.387.1618938203882;
+        Tue, 20 Apr 2021 10:03:23 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:4d07:: with SMTP id l7-v6ls535879itb.4.gmail; Fri, 05
- Oct 2018 06:58:27 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV62ufFHGl+KxRqf51BxG2w6W5os+cGfAqLWL8JN2aH1cACr6w/yQ5xKMZc5zBz3/gXP2ZpOR
-X-Received: by 2002:a24:a048:: with SMTP id o69-v6mr8495201ite.39.1538747907939;
-        Fri, 05 Oct 2018 06:58:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538747907; cv=none;
+Received: by 2002:a7b:c1c3:: with SMTP id a3ls2018456wmj.0.gmail; Tue, 20 Apr
+ 2021 10:03:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzs9NKMgcpBeeOuvZrb4kfv1vEUXsTHMOZQkZGMBncgOA8QgTmpvDkWNi1NTQeF2GsFbYQx
+X-Received: by 2002:a1c:457:: with SMTP id 84mr5411985wme.38.1618938202529;
+        Tue, 20 Apr 2021 10:03:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1618938202; cv=none;
         d=google.com; s=arc-20160816;
-        b=iZoSXI/fNMFnv7/ksCRPY0b48NmRStxifckopA7A9H/54zxW3dwHpSQk6ooAQrTpvj
-         6/1/ap8Gjlsu6xb3RcZCeXUttG/uRrIpGS8Egk5GhH3J1ERgH/XGcbPQIAQDe1RD+cB1
-         XMmj6fQKpMReqVpXQwYao5x+/q4W1LxtapGU79NzrcOoF3+srtyMfiuvqFZ+HUqOQ4E3
-         EOvYOKN5UBcY09KjH3OZAurCCRqw8wb3LWNPcJMc5Dzrd81QGA9z3BALSOTIZIh5auEb
-         EbPckxc5vcN/7eTHx6kEmu6xmpNSi6vbylUocGogBOsoMMkaJClzVtgc8x+Ap35IVKae
-         KnqA==
+        b=eiiCy61HBlWR72tGFT6MLjbh6BZuzjn8eyDh3GGwCuAPEimPV3rboewIPTv+WejfOw
+         9yYROuOJJLkl555y39F87ZU5rgNvQqPxzedtYnXicgFyjBT57FeOyaPP+74Fb+MHBchi
+         8f2Gbc/HRWACLZcR/E4rY3sYOfsyFKE+CDllzN+2HMEmIn6gEzaimUCr7ef/7Dg67vUx
+         7BhI/63GewsjMWNbrLgMd/I/N8qg/WD+GJg/5ODm6ndbzAUWR2vEFzUkVrX5kEPBBt6Q
+         FuEkOq2e9JCOQuCPExa9oZPmjmWeWlmkiNb7q9k0aqze7E2PPTWBedBHBPs1SvPdmZiN
+         4YVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=6jNqmtvDs8QWBrTcXASjFUjZzy94KGZjXHtSzeZK51M=;
-        b=Ah8EqsfbMikuBp+Ib1ZB6H9yMCddWJ86cnRJjrO1wToraOZBMge8/xw7nvCNzmxjax
-         Ow7bUjJRYX8zmigYaVzEbEf+ArBqN7K0Rtqko3UpdwxJYJqyrozaFuEHOgwOo6aPtCDi
-         a92NWE9Rep4ft0oQ+f44pWFaJ2XmvLGxe/C7a4P2SIAK1F/oUo9820WkHDPUI+gLM6KA
-         c1xhjR50GMWQRXYgcoiIUwYhUGp4p6Djhr+p9sJUq7earw7kl4RdMjt2f4n77oy8Dvq9
-         VP6x8pHBZ0KgEG/1MCO7KVieutc7S8GGfe3JZ1PBudSbc+G+mQ7qYqi/5daNP7zLskE/
-         vphg==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=jycGi5q2y6ny3hnBoJiKqsMnarmlkkVgryQWDIQTABA=;
+        b=gh45onVi7h494UZZrWtPnjsvc5GGcKphpI8DSAaQ3JkjRB2ZVPQu7fERotaQD94Xnl
+         /tqC+9vrim8OTH3aMz+bee3HbSyaA0+p47ZWQeHlF4kVcvi4sCM3A66Yw24sgk0Nohj4
+         1hOBTaC23CeAOMkV6kB5ML+zd7/1HKM80pqdOwFbUlKzuzzixCFdboSi4PRvQJG+htJK
+         FXihr3+h9PRoIvx4k9ORGDNBoXfzZWVlfM/9waqe3Uvum7GbmvpEl84ylV9dP81WOS+I
+         /+dSUumMR6i3PjXjuwotKbPMFgSfARgkl9INRj22gYc0y+purJVvYiQ/9ZsGLIGAUkp3
+         AYBg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gOFpUsXV;
-       spf=pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=mamtashukla555@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=E3gTV9Hf;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62b as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mamtashukla555@gmail.com>
-Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id 137-v6si52597ita.0.2018.10.05.06.58.27
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from mail-ej1-x62b.google.com (mail-ej1-x62b.google.com. [2a00:1450:4864:20::62b])
+        by gmr-mx.google.com with ESMTPS id a191si616868wme.3.2021.04.20.10.03.22
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 05 Oct 2018 06:58:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 20 Apr 2021 10:03:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62b as permitted sender) client-ip=2a00:1450:4864:20::62b;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gOFpUsXV;
-       spf=pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=mamtashukla555@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=E3gTV9Hf;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62b as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x443.google.com with SMTP id j23-v6so5134909pfi.4
-        for <outreachy-kernel@googlegroups.com>; Fri, 05 Oct 2018 06:58:27 -0700 (PDT)
+Received: by mail-ej1-x62b.google.com with SMTP id r9so59355106ejj.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 20 Apr 2021 10:03:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=6jNqmtvDs8QWBrTcXASjFUjZzy94KGZjXHtSzeZK51M=;
-        b=gOFpUsXVN/niaV1TrsCi+s6smeki/AP1/2pSvY9PEoiC9WI1yHgPRBx6QDhU6C4rau
-         Y1JkYYNcuq9mYvFTngAhuOsGw4PGpcIbqaATHgBrMXNrXgDEMGcf3HB2BJGgeY4qNUZs
-         pnk1dNUb5EHrmfs2ZaAIZlfHwVhCHMFZjP+7GVs7RLPc/rXqjetPqKwEdwiHPLziaAP8
-         oLAcg8tFjlhUaNeWj1Ewh5Ro9D4hmfaNYz6L2ojN7q/iA0ckEAofQxWQuuI2cQfEtXFf
-         XyNEoGJFAM48KeXZafPDLmDvhDgAjioLUYUZ3f2vPc0bkXyQt8jQXVSLLtXr5QVcNWTe
-         yIjw==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=jycGi5q2y6ny3hnBoJiKqsMnarmlkkVgryQWDIQTABA=;
+        b=E3gTV9Hfh5dB4gwgivkfbv/q0hiXsSP8Jac1C6oSpxgCWzlcmuPrcivKvwqVkg/WK1
+         ieG6YKViMokN/s2lELoX7VJM1z1ADWOTOaTwvL4PbDxyIE6u25W8w7CYflMzSJxSemhH
+         f18/XCspN9LVd5uhJak/53jkEc5633zND29FoNzYEloQDtdyx5Kh2NPM8u3lFo4Ad+0e
+         MPx9kNR+1cuF3NRoQy/1kPq/d06ga7n9mTcuBJAfWzLw/DUvB93SYkP6M0Xc80updiZD
+         pmp1l+tQ0p8WFUtmZILHS92c4k4/WQiHLNUQNOUE/QdGQCGIuwqjATXO8x2eKAix9Vrz
+         ppuw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=6jNqmtvDs8QWBrTcXASjFUjZzy94KGZjXHtSzeZK51M=;
-        b=ecaOfmZfKW5TD85zPdztfu81JyFGR4XF2nlYvrGBy6P2NHEKtx5OeJgQgZ3yvPRI9O
-         XVJBTCUhkFx/5B9PmOJ+8kWOtiwqGD7sjf+NrTnUClMLWgdY1pVfYkWXda0w1vreHnzh
-         fqKHUWUM1GQHHa2n5mFdPILHvtCg/lQwE0XJSqtrSjS0MSFej4/4VFWVcYQn7Q9iAbjm
-         a8JwG9U+U/dAtXX7422L2PdpIhlk0g6xsor2CHNfGxkb4uUmBpJbMxdUw4KovY8k/E+0
-         eLA+bBBqHdBoXegs3eAmrkpnHpzmJk/paE89cZrhEI//5myGnJYjHYIjN1pSw1XTiDrj
-         yIcQ==
-X-Gm-Message-State: ABuFfoj2NrRY2HUXdO1e921ARZxuejXvcL+WmL4Tr1FSn3rWJE+T4Pj3
-	VHwktvFnyLJKwlJKGVanR+k=
-X-Received: by 2002:a63:7156:: with SMTP id b22-v6mr10258714pgn.342.1538747907340;
-        Fri, 05 Oct 2018 06:58:27 -0700 (PDT)
-Return-Path: <mamtashukla555@gmail.com>
-Received: from armorer ([59.88.105.99])
-        by smtp.gmail.com with ESMTPSA id c1-v6sm8649487pgp.34.2018.10.05.06.58.26
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 05 Oct 2018 06:58:26 -0700 (PDT)
-Date: Fri, 5 Oct 2018 19:28:20 +0530
-From: Mamta Shukla <mamtashukla555@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org, sudipm.mukherjee@gmail.com,
-	teddy.wang@siliconmotion.com, mamtashukla555@gmail.com
-Subject: [PATCH] staging: sm750fb: Remove space after cast
-Message-ID: <20181005135820.GA29318@armorer>
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=jycGi5q2y6ny3hnBoJiKqsMnarmlkkVgryQWDIQTABA=;
+        b=o3gn3rsWcA7YU0H+hfRHEPyEIIk2+SdewPfxNcra+4Nnsv/AdxB0XhVXBm/18Ru9EG
+         5XhPEJQr+DN85OCjvFVKlj83gZ+LmmP7hQBHxLRIgyTJI1SLn2XTVwuXfc+5tMFCqs4S
+         a5lKiCmz2G+x5/jEeY2QBCiuOBfQ9OdsmfO3QOdvZqBLuc5XtYdIohWBriTQ+l9JFmCm
+         o9GIl5MdABneJWhceIryrcDkKop77XCNG025ci51R290BhvOlFC+Dtw+Sp0J58LEOAC9
+         ImgkMKSSJshPrsf7JxjUHpnmsrq+0us3vsgcAxSQJArJVhohLvCVg9JrUekPjR4COTbD
+         4Cng==
+X-Gm-Message-State: AOAM533AEsShVLWGLdQODR9Tv4siJSTCBjs9JK2QUdrKLMWPuVXNAMXB
+	noPtq2VsQCDhB7LYX6e2kmA=
+X-Received: by 2002:a17:906:4004:: with SMTP id v4mr13048497ejj.278.1618938202182;
+        Tue, 20 Apr 2021 10:03:22 -0700 (PDT)
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from linux.local (host-79-52-107-152.retail.telecomitalia.it. [79.52.107.152])
+        by smtp.gmail.com with ESMTPSA id kj24sm13341854ejc.49.2021.04.20.10.03.21
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 20 Apr 2021 10:03:21 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] Coccinelle: understanding its output
+Date: Tue, 20 Apr 2021 19:03:20 +0200
+Message-ID: <7603910.ML0yFvfjEs@linux.local>
+In-Reply-To: <alpine.DEB.2.22.394.2104201837130.176476@hadrien>
+References: <3557115.gcaS8tdjop@linux.local> <1987250.8xKNmIyY3v@linux.local> <alpine.DEB.2.22.394.2104201837130.176476@hadrien>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="US-ASCII"
 
-Remove space after cast to fix checkpatch issue.
-CHECK: No space is necessary after a cast
+On Tuesday, April 20, 2021 6:37:35 PM CEST Julia Lawall wrote:
+> On Tue, 20 Apr 2021, Fabio M. De Francesco wrote:
+> > On Monday, April 19, 2021 8:58:24 PM CEST Julia Lawall wrote:
+> > > On Mon, 19 Apr 2021, Fabio M. De Francesco wrote:
+> > > > I think that I don't yet understand Coccinelle's output.
+> > > > 
+> > > > I've just run the following command:
+> > > > spatch --sp-file scripts/coccinelle/free/kfree.cocci --dir drivers/
+> > 
+> > staging/
+> > 
+> > > > wlan-ng/prism2fw.c
+> > > > 
+> > > > It outputs something that looks like a patch:
+> > > > 
+> > > > HANDLING: drivers/staging/wlan-ng/prism2fw.c
+> > > > 
+> > > >      (ONCE) already tagged but only removed, so safe
+> > > > 
+> > > > diff =
+> > > > --- drivers/staging/wlan-ng/prism2fw.c
+> > > > +++ /tmp/cocci-output-17844-0c6c7c-prism2fw.c
+> > > > 
+> > > > First, what is /tmp/cocci-output-17844-0c6c7c-prism2fwc? It is not a
+> > > > file
+> > 
+> > in
+> > 
+> > > > / tmp. If it is a file, where is it?
+> > > > 
+> > > > The output goes on with lines like the following ones:
+> > > >   @@ -1008,8 +1005,6 @@ static int writeimage(struct wlandevice
+> > > >   
+> > > >         rstmsg = kzalloc(sizeof(*rstmsg), GFP_KERNEL);
+> > > >         rwrmsg = kzalloc(sizeof(*rwrmsg), GFP_KERNEL);
+> > > >         if (!rstmsg || !rwrmsg) {
+> > > > 
+> > > > -               kfree(rstmsg);
+> > > > -               kfree(rwrmsg);
+> > > > 
+> > > >                 netdev_err(wlandev->netdev,
+> > > >                 
+> > > >                            "%s: no memory for firmware download,
+> > > >                            aborting
+> > > > 
+> > > > download\n",
+> > > > 
+> > > >                            __func__);
+> > > > 
+> > > > Please read the two lines with a trailing '-'... Does Coccinelle mean
+> > > > that
+> > > > they should be removed? If yes, I'm not able to understand why, 
+because
+> > > > I
+> > > > think they must not be removed. Am I wrong?
+> > > 
+> > > Sorry.  I think that the *s are a left over from a version of the 
+semantic
+> > > patch that was trying to do more.  The semantic patches in the Linux
+> > > kernel are meant to be used with make coccicheck, which would have 
+avoided
+> > > this problem.  The key is the lines
+> > 
+> > "make coccicheck" fails with the following message:
+> > 
+> > Python error: No module named coccilib.elems
+> > coccicheck failed
+> > make: *** [Makefile:1937: coccicheck] Error 255
+> > 
+> > > virtual org
+> > > virtual report
+> > > 
+> > > near the top of the file.  This means that the semantic patch should 
+only
+> > > be run with either the option -D org (producing emacs org mode) or the
+> > > option -D report (producing text).  Both of these modes suppress the -
+> > > that you are seeing.
+> > 
+> > Run of "spatch -D report --sp-file
+> > scripts/coccinelle/api/kfree_mismatch.cocci --dir drivers/staging/" fails
+> > too:
+> > 
+> > init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+> > Python error: No module named coccilib.elems
+> > 
+> > I think that it depends on some package I have not yet installed, or to 
+some
+> > environment variable that must be set for the Python interpreter to find 
+the
+> > coccili.elems module... I really don't know.
+> > 
+> > Do you have any idea for solving this problem?
+> 
+> How did you install Coccinelle?
+> 
+> julia
+>
+My laptop runs openSuSE Tumbleweed. Therefore I installed Coccinelle with a 
+simple "zypper install coccinelle". I see that it is (properly?) installed and 
+that also coccigrep has been installed, even though I didn't ask explicitly 
+for it.
 
-Signed-off-by: Mamta Shukla <mamtashukla555@gmail.com>
----
- drivers/staging/sm750fb/ddk750_sii164.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+Perhaps it would be better to reinstall Coccinelle from sources. I read on a 
+Vaishali Thakkar series of slides that they are clonable from github.com/
+coccinelle/coccinelle. I hope that I also find there some documentation that  
+guides me to installing prerequisites and configure the tool for integrating 
+with Tumbleweed environment.
 
-diff --git a/drivers/staging/sm750fb/ddk750_sii164.c b/drivers/staging/sm750fb/ddk750_sii164.c
-index 4b34a08..8391f57 100644
---- a/drivers/staging/sm750fb/ddk750_sii164.c
-+++ b/drivers/staging/sm750fb/ddk750_sii164.c
-@@ -39,8 +39,8 @@ unsigned short sii164GetVendorID(void)
- {
- 	unsigned short vendorID;
- 
--	vendorID = ((unsigned short) i2cReadReg(SII164_I2C_ADDRESS, SII164_VENDOR_ID_HIGH) << 8) |
--		    (unsigned short) i2cReadReg(SII164_I2C_ADDRESS, SII164_VENDOR_ID_LOW);
-+	vendorID = ((unsigned short)i2cReadReg(SII164_I2C_ADDRESS, SII164_VENDOR_ID_HIGH) << 8) |
-+		    (unsigned short)i2cReadReg(SII164_I2C_ADDRESS, SII164_VENDOR_ID_LOW);
- 
- 	return vendorID;
- }
-@@ -56,8 +56,8 @@ unsigned short sii164GetDeviceID(void)
- {
- 	unsigned short deviceID;
- 
--	deviceID = ((unsigned short) i2cReadReg(SII164_I2C_ADDRESS, SII164_DEVICE_ID_HIGH) << 8) |
--		    (unsigned short) i2cReadReg(SII164_I2C_ADDRESS, SII164_DEVICE_ID_LOW);
-+	deviceID = ((unsigned short)i2cReadReg(SII164_I2C_ADDRESS, SII164_DEVICE_ID_HIGH) << 8) |
-+		    (unsigned short)i2cReadReg(SII164_I2C_ADDRESS, SII164_DEVICE_ID_LOW);
- 
- 	return deviceID;
- }
--- 
-1.9.1
+Is it a good solution?
+
+Thanks,
+
+Fabio
+
+
 
 
