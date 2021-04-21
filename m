@@ -1,78 +1,78 @@
 X-GM-THRID: 6953573775310848000
-X-Received: by 2002:a19:b81:: with SMTP id 123mr19437620lfl.553.1619005064880;
-        Wed, 21 Apr 2021 04:37:44 -0700 (PDT)
+X-Received: by 2002:a19:480f:: with SMTP id v15mr12707559lfa.13.1619005062720;
+        Wed, 21 Apr 2021 04:37:42 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac2:5624:: with SMTP id b4ls1440934lff.0.gmail; Wed, 21 Apr
- 2021 04:37:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwlIg8uaT1UDdjeMZG266fAXPADmuMeAcyM9QEawTLtWZ8MdE5bmzA/fvbQBcZ4sicqaYmQ
-X-Received: by 2002:a05:6512:3e1:: with SMTP id n1mr14409022lfq.31.1619005063305;
-        Wed, 21 Apr 2021 04:37:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619005063; cv=none;
+Received: by 2002:a2e:9b88:: with SMTP id z8ls369289lji.2.gmail; Wed, 21 Apr
+ 2021 04:37:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyuMwRZuIafsWESp4WBBF8i/3T63IdPz6KCzx6Ekwa/8NZn2pZRMZ+FKt9ppTHgHQnxrv0P
+X-Received: by 2002:a2e:b0d5:: with SMTP id g21mr18489631ljl.258.1619005060658;
+        Wed, 21 Apr 2021 04:37:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619005060; cv=none;
         d=google.com; s=arc-20160816;
-        b=IzN4AyvcCDkzCzfNPPbV5VTkwLYHkp65w72C6rV1sRsaOzwSOPeNCl8lez2f5I16Mu
-         I0wF/LSdXjmaS5tv+NKjMjz+LQ0vTjExvD+lWbqkJGiZnFXW5DirRkPeVEmYzeyMPenU
-         6sk4Cg24KpK4qSBpEgdZqPxgLgfIFV5MFik2E9QHnzbcnu8qvxQHgntNyJMJALrkUHQr
-         Qua7vIqONu8EdDBRCEEpbs9lC6J12UAS8jxdzZjZduVwSig7RE8rgJi8q1VD0jaK49rN
-         aN1M2VnkuyqU+kQdPMzSNERv+rgEkEiL91EVmve622bWmWxsNQZItUp3PsW28YMr16C9
-         aJIg==
+        b=gypcmgxEQ6ItRVOz7xBQY05CwA6XQ6+dRVdeKjrBKnH9+q/fMbjW1PAMtcV6ynNjqS
+         A/7nsi8Ivqos/BG7DhL3Us/JZt2oVmJZZi56oF976aXxYY5DxrLz9EbTDmkI6uQc18Oq
+         9EfJSz+xkUWJ7Ck2tzAHhh2l53HnBGMD9VuJ9Vbu6mGNGKivjVTa/txPQGKKnkNnewuZ
+         dCFodiYB+Q+52rkv9DB0Z3d0btpWP4Kov1xYRvET9rw+OsdLl8yU5vCOr9v1GZ04xbr1
+         DXe3GXQ/BorR6HLMmNbLhZ2fYorQQZY4Y96sW6PtifV61+aAk0V1LZWuGaY4OW/BBjvt
+         6BIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=oWBPUAdz0xbZxQDvlBKt/PfAa9b2el0EabiMcGatIFg=;
-        b=hEO6RJMLPd2/rmPNtiYWbXI0lvy8MxiyTlbzh7BQYf2yYK+lK5YjNaTUKna3dYyMvp
-         2/t+L7XeMfgdZNeISZbAv+9ZY9t5SMs4GquZOayQcMgmf3MIoiLubGvsqLQoegFRFj1y
-         iXN/EmSDBfN5X9KcQIK4uzBDx5yyo3Q0Ddg21LMI++Zb7+IUxAe5Hm6tejxylURL+UIF
-         gQoSEJqpya7uS5Qcu+OW8gDnVZlGR/FjS+Dz7/CkZtt88jwgTqBGYbPNqlSD74ifdWyH
-         zJboLemUWrck9IoSGGYgpj3rh6ReBrN4rDchx/GRqr3scrIo4eCmxYdlw6LgRcj/eiwC
-         77sA==
+        bh=5XOmtO3aKusCf5Lce/csfkJaMwNoZRDDAdYgLWPv+zg=;
+        b=yEPjZQF4rZFCEbEu4PInJBJIyM/Z3uawBD/fKdpC6h6lSjANO79bPjORd6eARTMJTb
+         cU8TQdTZXqZp4vu117nJr6w27F+scWSKaDSPidfDnxHsGxfx13O7i7/kxFa5MeBURBiu
+         H5DHPmbsY3ArkA1ff8tW26EHEnOmKnNSPVzf3wotNO6bHBBd/fJUImxW46WB8k6DJhOn
+         HvUc8poDj38f3V+K7BzEdRhiSEPQZV8HFUk+rxPGYK+O5y+728LNU8bNvfB1acrONswZ
+         JuXZjQeDeBLEcedfkJyN0ssM3OyyiIfWB+y/BLjp0ozOIi79XcR0wGwDNnGJLf6MEt0g
+         lCRg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YPlvImMq;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eWSGEpvK;
        spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62c as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <fmdefrancesco@gmail.com>
 Received: from mail-ej1-x62c.google.com (mail-ej1-x62c.google.com. [2a00:1450:4864:20::62c])
-        by gmr-mx.google.com with ESMTPS id d19si153290ljo.1.2021.04.21.04.37.43
+        by gmr-mx.google.com with ESMTPS id d19si153290ljo.1.2021.04.21.04.37.40
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 21 Apr 2021 04:37:43 -0700 (PDT)
+        Wed, 21 Apr 2021 04:37:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62c as permitted sender) client-ip=2a00:1450:4864:20::62c;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YPlvImMq;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eWSGEpvK;
        spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62c as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: by mail-ej1-x62c.google.com with SMTP id n2so62986511ejy.7
-        for <outreachy-kernel@googlegroups.com>; Wed, 21 Apr 2021 04:37:43 -0700 (PDT)
+        for <outreachy-kernel@googlegroups.com>; Wed, 21 Apr 2021 04:37:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=oWBPUAdz0xbZxQDvlBKt/PfAa9b2el0EabiMcGatIFg=;
-        b=YPlvImMqdXUh5dVdxHkCpUAzrYQCivhicmqIMOZYoa2i/zeC0TylT2jZBPn+74Mk9e
-         eBS07n08b+dr5GEduJSwYvIs0R8Fw6kfHreHRKK/IsBqeGZVKKkPbzbXEOeaaEhyhJIQ
-         erEnNyTGQF32PqP1KxvNcYY44Hx25y2mDcFEQEnSVubq3da6C6ZM60eHPwk5OoC4MdS5
-         pkU96+MFndULmjJNKGui5Q7SZKalWkAIOCorFfaqx0tMUVarT3/xEReSit3bWy0MdSKt
-         nY+dWIPxk9alVxgebc65IRl65rAvKWKqZ4o6kho9jsFZxll+iCSV4SnN1Kz/jQC/P2yd
-         U0hg==
+        bh=5XOmtO3aKusCf5Lce/csfkJaMwNoZRDDAdYgLWPv+zg=;
+        b=eWSGEpvKLBek7/lVsE9LjYvp7By04Sr4KhlTSie0P7xukx+mwKDhI0v8poXW2RDY2m
+         +BvrL5WD781MJQnlHczy/gLqAQELgitzF7hGxS4jSbAr1Ab9Ra2tFq76qxeCMcjV+CXt
+         ONND88WYtVk/N63mIqq/4hU7mObQrq1czFA4Bjm8ZdeY2fURcDQoKKzqAvlXag4WPRc+
+         qV4Cr6QR/uuaqn4Ge8aq0nDtHftrIByMex9pznuABAzeZgX/9YZE9XKIKwKNv5Kym70D
+         XG78BVjq6gi14vAPzZs+gQKd1f0s1XInNfCUMo7ep7D69GAHBR/G1GJtfkAUgD+WfP28
+         EMXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=oWBPUAdz0xbZxQDvlBKt/PfAa9b2el0EabiMcGatIFg=;
-        b=mZ8eKygCCvfrPR0e+ETdP3zMQM3+4ZV+VoSSUnroIZdmdmBtPKK/xAGC1wtntL+2A6
-         wpAHLoTrvH0kNRE5jIy1UVJs27EjJBhytrHcws7mK2/W/v3zVL6aYi0Bt9SAQ+ou0OxG
-         T8PLSkgU5SGIdpyJ30a+3csSpSqU+O2wy9tXzlTpOEmI13gRDbkVO/uafDl8xAKOLHAT
-         qWb0LnkO8vxFAbTC9s2nOa3vFZE5mYcFmgdSHc8faNg1kA322juJqr9XhU4bYWzXGsRr
-         hHuNhqip0gKXHmoPIc/vHRdLUezMSDSNIVxrrjLQ/3iHjWXS3wYyGJ0T2GYOwN22xChJ
-         4Rmg==
-X-Gm-Message-State: AOAM530fIeLUTr9LV3rVg/mPitMyR2CNiliqgQjkSl6ibhLXFYhMLi3r
-	MoPknkCZA+n+qRATB8EhJz//jrSEGsbT56qV
-X-Received: by 2002:a17:906:7188:: with SMTP id h8mr22879487ejk.227.1619005062775;
-        Wed, 21 Apr 2021 04:37:42 -0700 (PDT)
+        bh=5XOmtO3aKusCf5Lce/csfkJaMwNoZRDDAdYgLWPv+zg=;
+        b=VLUFS+jgWq1sWEs8s1rkJqY9Rv/e1LEZPJeqVgQ1ADcqFTyBR+KcVZmVUlmqEvXX0r
+         pDW6fqgLD0Rk8EIiMwYUP8AWfXwHyHVY8xyYZ2vf/RLjjbGvK9WQTk/8q8nRgvbPYD8a
+         9QQ1gQfs2LxBUx5yOHJfQXh02JKeBmBqYwO9RfijNWpKrXswGTY3+vLPdMZrJ/T5pWdr
+         f1kSsmNTT39IOq159sxpNSP9keMsZmjdinAoxu8Devluje5ZgkA/mxTq3/mdxls6CVbe
+         wgqL1XTSazw+oKQ4J35gfL9yFLi2pkrS+Ie221H0H/Nbe2cpWpBR+2KZig1FKJ/OYC69
+         bM4Q==
+X-Gm-Message-State: AOAM530n4FJts+uDfc98FflBE9uic9sxuUnb986CtUHJV7J34Wg/hOCq
+	AX7lW76YoOu5hH3IOL3o5X9fNDi0JMFWCJnA
+X-Received: by 2002:a17:906:2b03:: with SMTP id a3mr33358442ejg.481.1619005060187;
+        Wed, 21 Apr 2021 04:37:40 -0700 (PDT)
 Return-Path: <fmdefrancesco@gmail.com>
 Received: from linux.local (host-79-52-107-152.retail.telecomitalia.it. [79.52.107.152])
-        by smtp.gmail.com with ESMTPSA id i1sm2735928edt.33.2021.04.21.04.37.41
+        by smtp.gmail.com with ESMTPSA id i1sm2735928edt.33.2021.04.21.04.37.38
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 21 Apr 2021 04:37:42 -0700 (PDT)
+        Wed, 21 Apr 2021 04:37:39 -0700 (PDT)
 From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
 To: outreachy-kernel@googlegroups.com,
 	dri-devel@lists.freedesktop.org,
@@ -82,18 +82,23 @@ To: outreachy-kernel@googlegroups.com,
 	Daniel Vetter <daniel@ffwll.ch>,
 	Melissa Wen <melissa.srw@gmail.com>
 Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Subject: [PATCH v3 2/2] drm/amd/amdgpu/amdgpu_drv.c: Replace drm_modeset_*_all_ctx() with DRM_MODESET_LOCK_ALL_*()
-Date: Wed, 21 Apr 2021 13:37:16 +0200
-Message-Id: <20210421113716.15472-3-fmdefrancesco@gmail.com>
+Subject: [PATCH v3 1/2] drm/amd/amdgpu/amdgpu_drv.c: Replace drm_modeset_lock_all() with drm_modeset_lock_all_ctx()
+Date: Wed, 21 Apr 2021 13:37:15 +0200
+Message-Id: <20210421113716.15472-2-fmdefrancesco@gmail.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20210421113716.15472-1-fmdefrancesco@gmail.com>
 References: <20210421113716.15472-1-fmdefrancesco@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
-This second patch makes use of the API that has been introduced with commit
-b7ea04d299c7: DRM_MODESET_LOCK_ALL_BEGIN() simplifies grabbing all modeset
-locks using a local context and has the advantage of reducing boilerplate.
+Replace the deprecated API with new helpers, according to the
+TODO list of the DRM subsystem.
+
+In this first patch drm_modeset_lock_all() is replaced with
+drm_modeset_lock_all_ctx(). Unlike drm_modeset_lock_all(),
+the latter doesn’t take the global drm_mode_config.mutex
+since that lock isn’t required for modeset state changes.
 
 Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
 ---
@@ -101,33 +106,37 @@ Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
 Changes from v2: The work is split in two consecutive logical steps.
 Changes from v1: Added further information to the commit message.
 
- drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c | 9 ++-------
- 1 file changed, 2 insertions(+), 7 deletions(-)
+ drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c b/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
-index 856903db34c5..43dd77c227ed 100644
+index 671ec1002230..856903db34c5 100644
 --- a/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
 +++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_drv.c
-@@ -1441,12 +1441,7 @@ static int amdgpu_pmops_runtime_idle(struct device *dev)
- 		struct drm_modeset_acquire_ctx ctx;
- 		int ret_lock = 0;
+@@ -1438,8 +1438,15 @@ static int amdgpu_pmops_runtime_idle(struct device *dev)
  
--retry:
--		drm_modeset_lock_all_ctx(drm_dev, &ctx);
--		if(ret_lock == -EDEADLK) {
--			drm_modeset_backoff(&ctx);
--			goto retry;
--		}
-+		DRM_MODESET_LOCK_ALL_BEGIN(drm_dev, ctx, 0, ret_lock);
+ 	if (amdgpu_device_has_dc_support(adev)) {
+ 		struct drm_crtc *crtc;
+-
+-		drm_modeset_lock_all(drm_dev);
++		struct drm_modeset_acquire_ctx ctx;
++		int ret_lock = 0;
++
++retry:
++		drm_modeset_lock_all_ctx(drm_dev, &ctx);
++		if(ret_lock == -EDEADLK) {
++			drm_modeset_backoff(&ctx);
++			goto retry;
++		}
  
  		drm_for_each_crtc(crtc, drm_dev) {
  			if (crtc->state->active) {
-@@ -1455,7 +1450,7 @@ static int amdgpu_pmops_runtime_idle(struct device *dev)
+@@ -1448,7 +1455,7 @@ static int amdgpu_pmops_runtime_idle(struct device *dev)
  			}
  		}
  
--		drm_modeset_drop_locks(&ctx);
-+		DRM_MODESET_LOCK_ALL_END(drm_dev, ctx, ret_lock);
+-		drm_modeset_unlock_all(drm_dev);
++		drm_modeset_drop_locks(&ctx);
  
  	} else {
  		struct drm_connector *list_connector;
