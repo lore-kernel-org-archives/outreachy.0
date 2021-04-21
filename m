@@ -1,78 +1,131 @@
 X-GM-THRID: 6951120130932736000
-X-Received: by 2002:a2e:320c:: with SMTP id y12mr19051948ljy.360.1619011001882;
-        Wed, 21 Apr 2021 06:16:41 -0700 (PDT)
+X-Received: by 2002:ac2:4187:: with SMTP id z7mr19041574lfh.4.1619010512889;
+        Wed, 21 Apr 2021 06:08:32 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:7c0c:: with SMTP id x12ls430695ljc.0.gmail; Wed, 21 Apr
- 2021 06:16:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxxs9lVZwmyiSyK/9fh1Nq2V+m8QomRj7EbRDw3OJjU/W49vKtRT8RzC9kkS4OHgdWikJ8T
-X-Received: by 2002:a05:651c:339:: with SMTP id b25mr18127089ljp.406.1619011000240;
-        Wed, 21 Apr 2021 06:16:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619011000; cv=none;
+Received: by 2002:a2e:890b:: with SMTP id d11ls417182lji.9.gmail; Wed, 21 Apr
+ 2021 06:08:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzYrHHCWDcBCrovWBnxvgf8tlZm45+gGWuN3S+ajk7BgGS69ZfsN2F8thUPEwFpHUeneG/7
+X-Received: by 2002:a05:651c:110a:: with SMTP id d10mr19397660ljo.307.1619010511077;
+        Wed, 21 Apr 2021 06:08:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619010511; cv=none;
         d=google.com; s=arc-20160816;
-        b=WBw9ZBk9iuxnzefjQQ+YPIU+VRHysDCcYpRt7sSLG4FCR81M1OJZjaEp4QyTTJKOv7
-         XKX2cE2/b9GGXRYn6wq3qf/FOx90vrLqNJPVlMc/PZfzxUEk7n1W44ZuZsMXu5iTODZ1
-         d3sW7aaHPrwnBUPW8vvHtCv9kVw6EJiaOvdCe6jT84Kc+aipEUR8FH57R+yQXsww1Qj2
-         Q8HPHrt5pHl+0eTWzxR624ZME1BuBFqx5au7V1ixsC0BOCcDpaatJ1iiWecr1BlyBE9e
-         7bm4PgG0pZ3Vmqu4JiPuSMcaAcWmXwaCoyO0pnJfVADcvgQnCQ0qGh1U7e6jiEYMiEvT
-         XQbQ==
+        b=lQq4LiIWCW9slYNF+ZDUiQ1jF7BWDK7sqp3AR2SD+R8sLWHJZHYwjOhXYlKagPBdGc
+         eDN85+gwDbpx8NXLGMTn1+d16RhzmgSno7tMmhYqw5a+tPR+JMDrEZCmQmELoaXnldTV
+         PK9Sj26Sw8JEQb/rIYbJb6kY6pwnY8dO8+U6XWTjFjx8MfuE39d7gwTHUEKc328ODgqj
+         dQaZk/jEBnaXyUBN7au1w7ACSMAHsxgX/MxL5lgr5qrtu9mKabG/iahLV4Ro0Pkx1ALO
+         Nt2o2Jh6wrgz8SQSoZtFEc3Ox8Lld2qWc8kVViCcEWcAlUH3CWKled/VT+YH2bLMnxxj
+         uO+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=dRzGSSNRpz+eFzH2So2ubKBvMje2zZTAEujED4XgJ/A=;
-        b=UBacRE8RRzqvw7qmXLKKCS/YmmZkolouyMtc4ApBnvFyRd31SOOGwtGg4hKmyH8HVH
-         gCHubbGLJIwtInrzpu8uNsih0uEd9t7wiHmNswC9Kw+o4KO7SrjmUCD4QnYnwQ9kRoaU
-         WpXb3ZNNu3wQaIs+vJkn4dxpq4LCiGEc/froBtbHjrZf2uAVNo7vFFeu3Jvi7svzFIxK
-         F6ICLF9R6oLEmTmrfrnDl1jcwX+uIiis6DCuiUxDDU/SHWle7l48hvMHZDku8Q5u7DKA
-         iuE1JQRKsxesv/dTwUZzW2O3zjoSWJQwHmcg8+a/e7GpVjP877KD/cQWoMwXgdnjLTNG
-         s79w==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:ironport-hdrordr;
+        bh=NuM0YaMrxmYNkVdJvPTMFmDl/GBTR9TzWnDzbPucv0M=;
+        b=kmUOUXDNG/rjYuS98PIM2gpPInw5Iqf0+BXSx8a0BcrKOJ5eJFCe3qV5bVGnMnXno6
+         UplgrGmFU2t72ROVTW3ki4wnf4kqjx6uwagHG7B2gRa/Y85cKkd9gkG5nTOybmoY2G8x
+         xvxXdxdDjo+OqljK6BPunPe/3b00OCm3um4bY4K/qRKOSOJxli7vFGPGwHcp7XXUvWjj
+         vELMEoj3VXHsULI/F0Kx0TT04yEeonVe+Ru3pZBiKmYDeJTX+YTnh4h+HNPH1Z3JtV8J
+         Mtz18U9y2RXquR6eJ0/t+Ibw2MBZgZs+Fraisp/ky3x7vMWiCttgltpcFEIcKp8cpkDU
+         pgAw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=cONTAs1f;
-       spf=pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) smtp.mailfrom=willy@infradead.org
-Return-Path: <willy@infradead.org>
-Received: from casper.infradead.org (casper.infradead.org. [2001:8b0:10b:1236::1])
-        by gmr-mx.google.com with ESMTPS id i11si134316lfj.6.2021.04.21.06.16.39
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id l11si154840lfg.13.2021.04.21.06.08.30
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 21 Apr 2021 06:16:39 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) client-ip=2001:8b0:10b:1236::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 21 Apr 2021 06:08:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=cONTAs1f;
-       spf=pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) smtp.mailfrom=willy@infradead.org
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=dRzGSSNRpz+eFzH2So2ubKBvMje2zZTAEujED4XgJ/A=; b=cONTAs1f8SM90mxQ+xn7aZBJEz
-	ZB+5o8m2aPzm6QanM+Jrbm3O0Kh2JwvtUC6otyn/AP0ZS5PxUxHSK3jK8yFxzlRYU/w3C/Vf+EnbJ
-	HgyOumHIQJ0YRrkd/XYygZoE1vE34hnc7Kd6uCW47XYJvoWpRvXbhnCbD8zwDJW6bVj7sFVS1dFg7
-	8w6lXL900xGpbrXunim5UE1K7cCdXdyhum3VTvJHYt4NG0vXdsUnJW5kZnUFAeDBdcEZbcXd71WG7
-	T5eucAm13curkj/KT24LbNYdehoqSQKxDPaYXpnXKN1KV1cXu/YBYZNzqc4t9tOh9N9p5h24ctKY9
-	O6Dp+/Ug==;
-Received: from willy by casper.infradead.org with local (Exim 4.94 #2 (Red Hat Linux))
-	id 1lZChO-00GYcv-1O; Wed, 21 Apr 2021 13:15:40 +0000
-Date: Wed, 21 Apr 2021 14:15:22 +0100
-From: Matthew Wilcox <willy@infradead.org>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+IronPort-HdrOrdr: =?us-ascii?q?A9a23=3AsWWe2a95b09bdMuPSMtuk+AnI+orLtY04lQ7?=
+ =?us-ascii?q?vn1ZYxY9SK2lvuqpm+kW0gKxtSYJVBgb9OyoFaGcTRrnm6JdzpIWOd6ZMDXOmG?=
+ =?us-ascii?q?ztF4166Jun/juIIULD38pQz71pfaQ7KNCYNzhHpOL75AX9LNo62tmA98mT79v2?=
+ =?us-ascii?q?9HtmQQF0Z6wI1W4QNi+hHkJ7XwVAD5YifaDshfZvnSaqengcc62AbUUtYu6rna?=
+ =?us-ascii?q?yoqLvWJToPBxsq82C1/FaV1II=3D?=
+X-IronPort-AV: E=Sophos;i="5.82,240,1613430000"; 
+   d="scan'208";a="504326993"
+Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 21 Apr 2021 15:08:28 +0200
+Date: Wed, 21 Apr 2021 15:08:28 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
 To: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
+cc: Mauro Carvalho Chehab <mchehab@kernel.org>, 
+    Sakari Ailus <sakari.ailus@linux.intel.com>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    linux-media@vger.kernel.org, linux-staging@lists.linux.dev, 
+    linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
 Subject: Re: [Outreachy kernel] [PATCH v3] staging: media: atomisp: pci:
  Change line break to avoid an open parenthesis at the end of the line
-Message-ID: <20210421131522.GI3596236@casper.infradead.org>
-References: <20210421123718.GA4597@focaruja>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 In-Reply-To: <20210421123718.GA4597@focaruja>
+Message-ID: <alpine.DEB.2.22.394.2104211507280.9436@hadrien>
+References: <20210421123718.GA4597@focaruja>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-On Wed, Apr 21, 2021 at 09:37:18AM -0300, Aline Santana Cordeiro wrote:
+
+
+On Wed, 21 Apr 2021, Aline Santana Cordeiro wrote:
+
+> Change line break to avoid an open parenthesis at the end of the line.
+> It consequently removed spaces at the start of the subsequent line.
+
+The message is hard to understand.  There are a lot of singular nouns, but
+actually there are two changes.  Which change is being described by the
+above message?  What does "It" refer to?
+
+julia
+
+
+> Both issues detected by checkpatch.pl.
+>
+> Signed-off-by: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
+> ---
+>
+> Changes since v2:
+>  - Insert a space between the function type and pointer
+>
+> Changes since v1:
+>  - Keep the pointer with the function return type
+>    instead of left it with the function name
+>
+>  drivers/staging/media/atomisp/pci/atomisp_cmd.h | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
+>
+> diff --git a/drivers/staging/media/atomisp/pci/atomisp_cmd.h b/drivers/staging/media/atomisp/pci/atomisp_cmd.h
+> index 1c0d464..639eca3 100644
+> --- a/drivers/staging/media/atomisp/pci/atomisp_cmd.h
+> +++ b/drivers/staging/media/atomisp/pci/atomisp_cmd.h
+> @@ -75,8 +75,8 @@ void atomisp_wdt(struct timer_list *t);
+>  void atomisp_setup_flash(struct atomisp_sub_device *asd);
+>  irqreturn_t atomisp_isr(int irq, void *dev);
+>  irqreturn_t atomisp_isr_thread(int irq, void *isp_ptr);
 > -const struct atomisp_format_bridge *get_atomisp_format_bridge_from_mbus(
 > -    u32 mbus_code);
 > +const struct atomisp_format_bridge *
 > +get_atomisp_format_bridge_from_mbus(u32 mbus_code);
-
-As I said, better to break the 80 column rule than do this.
-
+>  bool atomisp_is_mbuscode_raw(uint32_t code);
+>  int atomisp_get_frame_pgnr(struct atomisp_device *isp,
+>  			   const struct ia_css_frame *frame, u32 *p_pgnr);
+> @@ -381,9 +381,9 @@ enum mipi_port_id __get_mipi_port(struct atomisp_device *isp,
+>
+>  bool atomisp_is_vf_pipe(struct atomisp_video_pipe *pipe);
+>
+> -void atomisp_apply_css_parameters(
+> -    struct atomisp_sub_device *asd,
+> -    struct atomisp_css_params *css_param);
+> +void atomisp_apply_css_parameters(struct atomisp_sub_device *asd,
+> +				  struct atomisp_css_params *css_param);
+> +
+>  void atomisp_free_css_parameters(struct atomisp_css_params *css_param);
+>
+>  void atomisp_handle_parameter_and_buffer(struct atomisp_video_pipe *pipe);
+> --
+> 2.7.4
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20210421123718.GA4597%40focaruja.
+>
 
