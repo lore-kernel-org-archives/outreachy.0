@@ -1,126 +1,115 @@
 X-GM-THRID: 6954041305879019520
-X-Received: by 2002:adf:df01:: with SMTP id y1mr1946543wrl.247.1619453786337;
-        Mon, 26 Apr 2021 09:16:26 -0700 (PDT)
+X-Received: by 2002:a17:906:5619:: with SMTP id f25mr4547632ejq.393.1619113913638;
+        Thu, 22 Apr 2021 10:51:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6000:1287:: with SMTP id f7ls2410502wrx.3.gmail; Mon, 26
- Apr 2021 09:16:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyu4WFPzIqeLKKrfpQEKOYhsMO4MkCN+wCh8we6CGt9z6SgKouAch11VdJFEs3ENITHPOTm
-X-Received: by 2002:a5d:4ccc:: with SMTP id c12mr24685962wrt.268.1619453785036;
-        Mon, 26 Apr 2021 09:16:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619453785; cv=none;
+Received: by 2002:a17:907:397:: with SMTP id ss23ls3191639ejb.3.gmail; Thu, 22
+ Apr 2021 10:51:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyJJfr5Zuexx57JUQOR+iH7jN7/apZnI4stv8BMYuMcmwZEck7yuJ4Xcurxq6vnyWhY20Oo
+X-Received: by 2002:a17:906:9bd3:: with SMTP id de19mr4524591ejc.329.1619113912288;
+        Thu, 22 Apr 2021 10:51:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619113912; cv=none;
         d=google.com; s=arc-20160816;
-        b=R8X6ohQLFCRPm9k83sIn2nTUgHKvrFL6hQXF65dONImlbegzpEef10Ea8PhN1cQWJv
-         WzXMbTBc9bFcnkr3VKEb9u2rEB2SVrl1ytYbhpjlpSL4Gpo30fk5QvC4R21XwZ/R4m6r
-         /FshcNptobc8XgHc7GBpESedBBCLjrw1WSCSv228XbXn2EP59K7SekGbKe1GTc4XxZ0V
-         EoNQ6Vs9jzWf3scG9n3I/1PZ2DLnwSsufIAXSh1BtDa1U/NzvrsJug90rZx4eFS3GFvg
-         OShFpnnTlPUGr/QjxJ8Z8NwGe3htJ3p4ypi5KOiQmFLtNok76JKVG7nuEAdOnPD7p0JS
-         I0RA==
+        b=y9xU9g4OQpvv8QqMXEud9hNCTEB9BG6gWnBvPh2vIpa6cZmvSU4EQljSQOE5oKUfWT
+         WZOYTCxiWK3slBj+t7WbRtsvrGA2vTVGsUgK6bkpHW3yZqDO0W3AfOvfvGNkJFyl61Mx
+         y88xLxiPv0cV8Iz9HKWqwRoCJ8hkSygiOAC7GK/xUI2i91Ww9AK/x3VGu9OuoeKDWmCf
+         3O4QODomHn1HOpNI2XHp9335QAPw4/m64dQUIdfL5zkF4oEgtAMuB7F5YCDLbPTqj8Cf
+         o254o9UHqipmW8v4Bd99n/jQghVJEGnxUhE3WYde7JYFfMoMysQB/HLcZnw3DONqEPap
+         ByoA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=6YeXSR08Kz6QNybZkKw6GZ+ruRsXau9J7ptkqp4Tb+w=;
-        b=w5+FBos44jfCVGhyXph2W1GSvcUFWiErEQcTQH+5jWnd9j//+lHM2JlTd2lniQ2rqR
-         FQbd7GwFTknAr5r9Oop+V+nNDrdm7bR2Pa568g8W/wlbDhQ4NTkfS6ytgtoQbr2WQAIP
-         IgUw5EUX+DbU1rlnKuLSXZQNhcyyfmU9nXHDZmVQD1Ft+b0cM+hMhZouZ7YI42ZzaBZu
-         OY8prgBWFg0zDrBDy4C1/xMd44kbhjbZoqfzeZ0HQM5QOo+q81Sj+YMW0+LXT++yA1JZ
-         ZR5q4qaeoXREvVg2vdfGkm2YhR9b7ZonocELSle+bgKjttO34hYV0dnz4Y9KkvFHFLCt
-         xqGA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=pHZSVPByUbrA9Gg8y5xUcqloIpvDd4jTgwpwNHbORV4=;
+        b=Hsk7coh0VQx6H8l6NetRfYMPToSB/s8X/LLbve67/KLBLyf3rVpJLcnMpMS2BxTx23
+         Ui3UVABSPdE/HkIA4tG2ldTIRB9VXQ7AZF+NA7bbzO4vrbpSeU9KYYo3cJ4jShh2O9pv
+         NDFED2pbTt9+Hkkz1VVV+lC0oAF6/lDvZhYd2NrfW7CZgV/vIzVvlOn/2Zy6HYfDtZMJ
+         C2a1yVnnlxH5Ct/ezTo0MT9M7WHkfol8610Ul8HTylVsq7ms0l+dzRJuxMyyE7fBaCEG
+         UB3hPPgD0XSWv0/2oC4vYnKXgnW+9jIrT/xxb7QpTxgl9zcShoUdVgUvh5ka9u+8AD61
+         b+vQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ffwll.ch header.s=google header.b=fNJYzcQk;
-       spf=neutral (google.com: 2a00:1450:4864:20::434 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
-Return-Path: <daniel@ffwll.ch>
-Received: from mail-wr1-x434.google.com (mail-wr1-x434.google.com. [2a00:1450:4864:20::434])
-        by gmr-mx.google.com with ESMTPS id a14si155851wrm.2.2021.04.26.09.16.25
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="P2M/l+7X";
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62a as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from mail-ej1-x62a.google.com (mail-ej1-x62a.google.com. [2a00:1450:4864:20::62a])
+        by gmr-mx.google.com with ESMTPS id co24si464837edb.4.2021.04.22.10.51.52
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 26 Apr 2021 09:16:25 -0700 (PDT)
-Received-SPF: neutral (google.com: 2a00:1450:4864:20::434 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) client-ip=2a00:1450:4864:20::434;
+        Thu, 22 Apr 2021 10:51:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62a as permitted sender) client-ip=2a00:1450:4864:20::62a;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@ffwll.ch header.s=google header.b=fNJYzcQk;
-       spf=neutral (google.com: 2a00:1450:4864:20::434 is neither permitted nor denied by best guess record for domain of daniel@ffwll.ch) smtp.mailfrom=daniel@ffwll.ch
-Received: by mail-wr1-x434.google.com with SMTP id e5so27842317wrg.7
-        for <outreachy-kernel@googlegroups.com>; Mon, 26 Apr 2021 09:16:25 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="P2M/l+7X";
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62a as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-ej1-x62a.google.com with SMTP id r20so20308781ejo.11
+        for <outreachy-kernel@googlegroups.com>; Thu, 22 Apr 2021 10:51:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ffwll.ch; s=google;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=6YeXSR08Kz6QNybZkKw6GZ+ruRsXau9J7ptkqp4Tb+w=;
-        b=fNJYzcQkbTIjt2Q74OnHXm9C06S68bkF/fjApyVfL2GFH3nygGxiTxnYLK7kX9sZ9k
-         aSNWD/CUUVGB08ZV4PpFJPnATQAzOal/leF4x1hYtBiJ1Y2my+ln+LaH7co6IFHEe7IZ
-         J8SMKyUPsbQqgTibM8kd6mYrj9jr1ca+zNkkA=
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=pHZSVPByUbrA9Gg8y5xUcqloIpvDd4jTgwpwNHbORV4=;
+        b=P2M/l+7Xq3J+vEXbIk9mjSwXyztqvtyfn36ICb7jf07OZ7cA3/WofzdVBQAMU/Qfin
+         CtIsTcur0qnh1vFIpUFQM+KDY5brv+LTX1EmRUDbKT022Ldkrd0GYAEGT8s9JdSkxQ03
+         3cvxQU7O9nHEFr4C0VYv87MXoCJNeDk9PMjjh5JSU/1jdYgGZCyBU2OTum1u6+X49qKC
+         RgAc0Ae8R+o7/zn4QcGVfmG6LhDy8q0tjztuBUfP6mfySJ7fWK6ZygcnxyLxoawI5T8Q
+         wmmBveAZLGTM5LLTLtcJCR0V2UTJQ10pf5QTIsUoI7mLx8BGRRzmDmiwF1xVWuM5kehO
+         ylhg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=6YeXSR08Kz6QNybZkKw6GZ+ruRsXau9J7ptkqp4Tb+w=;
-        b=pawNhM2SwRl11VXCuAikJCjHr6HRcEzL8BTuFPHLNizvRTSqQGoFBA4YuLnYnKnF4l
-         UBYEHZHaGMlXYb5rNAsunFwP3PUY5wXSlz0akz0FHhpBMHwCsHvxsL8AvshrSHPzWZ94
-         yIswo1PO97JQ4JkX3h/BWt4wDIwKcvsSimnJpAjl5fiGlO+SuU8uMPoeuRlAzEqLWjtM
-         3PvCHUtM73v7AKssU9tAKOMU2hMJDMITZxq4flpiTCjaoZ3ur9wijYzwQAihISbTO4ek
-         WukUz9whYOKZ99iA9sqC0szJZpeV+0iQy1QfBnhPNgAcf1HTsalcFEvU8HZ93VwN4GIZ
-         /BHQ==
-X-Gm-Message-State: AOAM531ofAsa8/dW+E8YBXrSas4alcivug5NW+iz632H14grvPMJ5zSw
-	cGQrLoil6dMzuzpQqWpKTfYetQ==
-X-Received: by 2002:a5d:4584:: with SMTP id p4mr23631772wrq.383.1619453784818;
-        Mon, 26 Apr 2021 09:16:24 -0700 (PDT)
-Return-Path: <daniel@ffwll.ch>
-Received: from phenom.ffwll.local ([2a02:168:57f4:0:efd0:b9e5:5ae6:c2fa])
-        by smtp.gmail.com with ESMTPSA id r19sm19178286wmq.33.2021.04.26.09.16.23
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=pHZSVPByUbrA9Gg8y5xUcqloIpvDd4jTgwpwNHbORV4=;
+        b=Ky9IZTXAY6sycO8oSe2joea+OG3LAxKQwh3tJoGP/4HmUD3bHZKkyDPTBW/gA5RA0Q
+         BJD1EkbSz2JbbMQq9BZelLygdk+FNDxE1pH6V4z9tdixdrteYrCphLEG7iwAP0qdBKiT
+         Wph+k7zSzKo9D5YI+dRJxpUwabzBYDmFZfUGQEJ4J+QNM9diItFo5cHGqy/y6DNDmikx
+         MngT9yVjTiDawIYpAzjc/bGASpI6jBPfHzWZ152ynA9opYgbE1cAt2dDt4V8RQOv33aa
+         LsD85+h4xKn/FiDD9zfIK1hUk7B7GTd1LHZJsqNTwFLtsgfhoSk8lvVRKhaIxnXj1hbo
+         5R0Q==
+X-Gm-Message-State: AOAM532O73oe49I7K1tnj1uNbSC+WxOQrmdLDnrGXA100EM9G+j0uQp2
+	HsOrpERmJcc6tnBYp3o4ztHdDPDKbMOj769W
+X-Received: by 2002:a17:907:72cc:: with SMTP id du12mr4529458ejc.436.1619113911829;
+        Thu, 22 Apr 2021 10:51:51 -0700 (PDT)
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from linux.local (host-79-52-107-152.retail.telecomitalia.it. [79.52.107.152])
+        by smtp.gmail.com with ESMTPSA id c19sm2714401edu.20.2021.04.22.10.51.50
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 26 Apr 2021 09:16:24 -0700 (PDT)
-Date: Mon, 26 Apr 2021 18:16:22 +0200
-From: Daniel Vetter <daniel@ffwll.ch>
-To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, dri-devel@lists.freedesktop.org,
+        Thu, 22 Apr 2021 10:51:51 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	dri-devel@lists.freedesktop.org,
 	Christian Koenig <christian.koenig@amd.com>,
-	Huang Rui <ray.huang@amd.com>, David Airlie <airlied@linux.ie>,
+	Huang Rui <ray.huang@amd.com>,
+	David Airlie <airlied@linux.ie>,
 	Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [PATCH] drm/drm_file.c: Define drm_send_event_helper() as
- 'static'
-Message-ID: <YIbnVgM8Cb2AA+kh@phenom.ffwll.local>
-References: <20210422175146.29840-1-fmdefrancesco@gmail.com>
+Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+Subject: [PATCH] drm/drm_file.c: Define drm_send_event_helper() as 'static'
+Date: Thu, 22 Apr 2021 19:51:46 +0200
+Message-Id: <20210422175146.29840-1-fmdefrancesco@gmail.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20210422175146.29840-1-fmdefrancesco@gmail.com>
-X-Operating-System: Linux phenom 5.10.32scarlett+ 
+Content-Transfer-Encoding: 8bit
 
-On Thu, Apr 22, 2021 at 07:51:46PM +0200, Fabio M. De Francesco wrote:
-> drm_send_event_helper() has not prototype, it has internal linkage and
-> therefore it should be defined with storage class 'static'.
-> 
-> Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
-> ---
->  drivers/gpu/drm/drm_file.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/gpu/drm/drm_file.c b/drivers/gpu/drm/drm_file.c
-> index 7efbccffc2ea..17f38d873972 100644
-> --- a/drivers/gpu/drm/drm_file.c
-> +++ b/drivers/gpu/drm/drm_file.c
-> @@ -786,7 +786,7 @@ EXPORT_SYMBOL(drm_event_cancel_free);
->   * The timestamp variant of dma_fence_signal is used when the caller
->   * sends a valid timestamp.
->   */
+drm_send_event_helper() has not prototype, it has internal linkage and
+therefore it should be defined with storage class 'static'.
 
-Right above is the kerneldoc comment for documented the driver api that
-teh subsystem exposes. Generally we remove those when there's nothing
-interesting in there when making a function static, which is the case
-here. Can you pls do that too in v2?
+Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+---
+ drivers/gpu/drm/drm_file.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thanks, Daniel
-
-> -void drm_send_event_helper(struct drm_device *dev,
-> +static void drm_send_event_helper(struct drm_device *dev,
->  			   struct drm_pending_event *e, ktime_t timestamp)
->  {
->  	assert_spin_locked(&dev->event_lock);
-> -- 
-> 2.31.1
-> 
-
+diff --git a/drivers/gpu/drm/drm_file.c b/drivers/gpu/drm/drm_file.c
+index 7efbccffc2ea..17f38d873972 100644
+--- a/drivers/gpu/drm/drm_file.c
++++ b/drivers/gpu/drm/drm_file.c
+@@ -786,7 +786,7 @@ EXPORT_SYMBOL(drm_event_cancel_free);
+  * The timestamp variant of dma_fence_signal is used when the caller
+  * sends a valid timestamp.
+  */
+-void drm_send_event_helper(struct drm_device *dev,
++static void drm_send_event_helper(struct drm_device *dev,
+ 			   struct drm_pending_event *e, ktime_t timestamp)
+ {
+ 	assert_spin_locked(&dev->event_lock);
 -- 
-Daniel Vetter
-Software Engineer, Intel Corporation
-http://blog.ffwll.ch
+2.31.1
+
 
