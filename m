@@ -1,105 +1,142 @@
-X-GM-THRID: 6665257385329688576
-X-Received: by 2002:a2e:8ec9:: with SMTP id e9mr251219ljl.6.1551876167247;
-        Wed, 06 Mar 2019 04:42:47 -0800 (PST)
+X-GM-THRID: 6954765577462218752
+X-Received: by 2002:adf:ee83:: with SMTP id b3mr2461127wro.329.1619282545498;
+        Sat, 24 Apr 2021 09:42:25 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:4788:: with SMTP id u130ls207900lja.14.gmail; Wed, 06
- Mar 2019 04:42:46 -0800 (PST)
-X-Google-Smtp-Source: APXvYqxWtZu/Fbu4L/hYZOKCRPnimomWa9KD9SNVU0oaG8jwa7spwATYxxxLTu2I8FuDTkVm6xLS
-X-Received: by 2002:a2e:5d8b:: with SMTP id v11mr251095lje.4.1551876166295;
-        Wed, 06 Mar 2019 04:42:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551876166; cv=none;
+Received: by 2002:adf:fb47:: with SMTP id c7ls3028030wrs.0.gmail; Sat, 24 Apr
+ 2021 09:42:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzHcqLpiC7RM3i3WAYfUQQcDFtnLLmu1whioSCLeScsGbbXdK+lD98K+3ROGiu+myg5DA/F
+X-Received: by 2002:a05:6000:144d:: with SMTP id v13mr11773199wrx.73.1619282544157;
+        Sat, 24 Apr 2021 09:42:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619282544; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q+J+pVVCN8/wDaNNgaK8yuaZQLWeylgEqUXyeD0qWHr+C1oqO8O6Af0Tx/3KtRa10D
-         CH6nbti/3jiSi5iVCkYG4u4q6Jr44RlS7gx8ZythgMsdtiz8LOAl9WXtfZM/TR6GZobb
-         lFuxziRdiDpIz4jw+5qfINIeQSvOIJdHh/pZgEV/LU60fP4cBZilewgMw4Tw7PEO9KeZ
-         GekMGfEokHYeFjYKBDsovjPHt8qwkDxdUhwOaSUsofnQN9aiujAzxkVV0Ns/Rh99AYqF
-         cnf3qnjWtL79xuGsPj34yFgeOO8Xfbh4N7XaEhqpVOhdpPQ5AYjqBEgP2gXnsqz6GYV1
-         mMmw==
+        b=ElMR/smpcLYC5vhqy1X5e2SFH/ro0LdKHS4/QvecsqTsAJXb5i1N5Gf3FYrlt6ey0L
+         nRFzNAyKKt/uDKsZnZFhWImXrfXDQ5fR+qKlDa3au1YqgnQOWVWOQ8FNCiHSgKiE1E9P
+         +c95ZgB9NpazvTb+WJXBhG52KC5kKOJCpaLxg0heWGFifv/JaPYCgcJBMbEYKHq08JHS
+         6xgEHD7/Yr7TuUOtRgWtmbBSRr3WCkwMvAC0sIp9VCDV1NZYIrS0snweJx+73F+rLwT/
+         C0lY/YTVWQDa/ub1nLQ04EougpinlwmKBgO8qQB6Xogj9AbBHNMsz0DICJwdUXIIxpjA
+         Pufw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=WyqHV19CD3zxuGTNorsBs9ZQNWze18oD+j3t3nkGpyg=;
-        b=0vPOrD9KfjDIyNMB+e8knpQsXRJxxvA8W9Izo/J3ndIDrhQ3XahHwKdUQODGSaItL2
-         vMV/FM01bTu9bh0VCpIyZcpPGevBTsvCzojIS+3bBYWHiEwlKHImRigXCnNHU0As39z6
-         tyAZ5id/Gf0VHbcXXy712OYlgoJOMHytsq9hRTticlueaUN3XcnP4F0MF3F/8X8yrmCd
-         ZK5ef8SGMbUPdEZD/ErxI0IMnY5zxaR56QNQmnGNE+l65bHAD9l87aLSE1T2qgFWs8Zf
-         vB2Jsu6AgRZdBGSp0HD8ekudzyd0eTApj3ivt7Vjrf0JO4WoL0Kh8BSfVP7ixKdn3f0X
-         aOxg==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=X3nB2B4pvvUsFa8wxAgDFnWASBskzgD5/+De7g7TAR0=;
+        b=Tj9UcWDXnBQRRPG2/4LWxjnw+8iHg1cGrfZd+kRxKj+730P6/7yMey1HL4lj26lHvS
+         7g5F8tmyacaPvemMHb+k1kaGAnivO8oDXhdiE+V3wkImsmPVHo1pEZhqOh098vnwlsjW
+         Ae8ZAglxxy5jxOCrfc9wYo54iPfl9FnB1nJL7WhOq1xet0bbgiLh0yQFt+1i/tj+IPZr
+         VK0WYjp6pTxIwmYwefY/SI4pJqk/vGVSX1rd6JnUftOCbfWC63I7g9Ts9kLu1OOl/9Ej
+         XbS9snDB2F9XtTjb14XyqMybEA4Gqd5fWoSVzWDdrjjZ/OCPqmG9XvsAXVS6Z865nI1N
+         eFEw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fRpLEBl6;
-       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ENq3lkKv;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::534 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <daniela.mormocea@gmail.com>
-Received: from mail-wm1-x343.google.com (mail-wm1-x343.google.com. [2a00:1450:4864:20::343])
-        by gmr-mx.google.com with ESMTPS id v27si72124lje.0.2019.03.06.04.42.46
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from mail-ed1-x534.google.com (mail-ed1-x534.google.com. [2a00:1450:4864:20::534])
+        by gmr-mx.google.com with ESMTPS id s8si989256wrn.5.2021.04.24.09.42.24
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 06 Mar 2019 04:42:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) client-ip=2a00:1450:4864:20::343;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 24 Apr 2021 09:42:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::534 as permitted sender) client-ip=2a00:1450:4864:20::534;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=fRpLEBl6;
-       spf=pass (google.com: domain of daniela.mormocea@gmail.com designates 2a00:1450:4864:20::343 as permitted sender) smtp.mailfrom=daniela.mormocea@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ENq3lkKv;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::534 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm1-x343.google.com with SMTP id o10so4350548wmc.1
-        for <outreachy-kernel@googlegroups.com>; Wed, 06 Mar 2019 04:42:46 -0800 (PST)
+Received: by mail-ed1-x534.google.com with SMTP id k17so21320811edr.7
+        for <outreachy-kernel@googlegroups.com>; Sat, 24 Apr 2021 09:42:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=WyqHV19CD3zxuGTNorsBs9ZQNWze18oD+j3t3nkGpyg=;
-        b=fRpLEBl6fUdxSf0tjnI0BxtuNBfkHFIWBvfItgWpdzD2ohW4MWMSrhXCuoP/GcdVwM
-         ObnxU5mBbE6Opiu7HHTNVO9FqcU2TNVcLfwYqz/XQXznnV5posatXQT4H8EneLAYj3Av
-         oHlSzrGu3lxCewoh03N92Z6IW+chHFDInxRbFybNhcTfefLruIyfj6dDrD8Etx68UkSH
-         nhnL36gLTJHrqC0SUqTYowoI2v+fZkdVVwQ+uBVxPsWFt/klXGLcmXS4qx1QNylJtXY6
-         Ctd37c0FT2MMBV36dgWly7xiDaLmUrt8JugZr1qjKdQacs2dLttcQ+gChsCV8XJ7Ag+s
-         xuKg==
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=X3nB2B4pvvUsFa8wxAgDFnWASBskzgD5/+De7g7TAR0=;
+        b=ENq3lkKvA2pKrgNcT0EXOqs0N3MQ+JnUK0T4J29tl7pg5XTwHWx0+0CIyT2QOKj5uj
+         mm3rA+yXyzsNfFaexj6jBhz8VdZaJO2v2eaHbOFnDetX2C6vnXb/gctIlldtR9ffnxv4
+         MMf5aX3kxabScetyRbdq6APTOECqG8q3wmharE8zHMwTPLu99Vwoj5G1gASOS3AJCs1n
+         M5Q3Gavi3lPau3yKiLZDpCRE7U0kq/ErztrvwfwZw6+lnxA7+csFKpiYnfxe58I0M3jP
+         XZZy5XbUH8PIltOGQZxLKh6plNsn7Y4SbibUVIiQ3aZPw+sAFgB+PUZ92hBhlCHVwIxB
+         L3Nw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=WyqHV19CD3zxuGTNorsBs9ZQNWze18oD+j3t3nkGpyg=;
-        b=PhYL/XcFzT7MV77HEPns+JeSlFjQeboUiugIwvYXQAFo4K94yHL0bYQt4TgFguWbeM
-         or9jN2X64AzNutTe0UOKdLmqoYOfW63BpuVZ3TIlIYsyhm4UfEYh0klEFiB2CfrJN4kl
-         MzVfhYXBnmrFVwMNnkAz4qqUBQGt5YQH/5a/EfALII2v0j4ilVptlJvlPFq+EstVXFA/
-         GMAX9qz/PD+6NZqNUGiWHKYXwVV3+bK1inF711alh27y35m2svoW3BXj4v4Yo+KgBLz3
-         13YJCISRJG5wrGfH8aSHXP11WDnOznzz6ARHjc4gycc7o3VmffmaovThmX13q0kK7Fui
-         DtkA==
-X-Gm-Message-State: APjAAAW1iHAG5WEHy9UsOaFF4X61IGLG3gfvpgOGBrpfMwfiqdm0aBaf
-	rDqU3+u+tINS+fJcj+nuDtAeCQtal30=
-X-Received: by 2002:a1c:1fca:: with SMTP id f193mr2176122wmf.65.1551876165515;
-        Wed, 06 Mar 2019 04:42:45 -0800 (PST)
-Return-Path: <daniela.mormocea@gmail.com>
-Received: from pthm ([141.85.233.105])
-        by smtp.gmail.com with ESMTPSA id m189sm2290588wmf.7.2019.03.06.04.42.44
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 06 Mar 2019 04:42:45 -0800 (PST)
-From: Daniela Mormocea <daniela.mormocea@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: Daniela Mormocea <daniela.mormocea@gmail.com>
-Subject: [PATCH] staging: speakup: Fix NULL comparison warning
-Date: Wed,  6 Mar 2019 14:42:42 +0200
-Message-Id: <1551876162-1333-1-git-send-email-daniela.mormocea@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=X3nB2B4pvvUsFa8wxAgDFnWASBskzgD5/+De7g7TAR0=;
+        b=d3C5ZHbrmq9zx3OzBAbNOiDF9/aOlyZ0aYC+NkeQtoEfuCXr2VImVtaJepajd7AvVa
+         Yph/b9Mh1i187WllxFZ4cpdKxQCLbpXAVN9nbyEPljUcEbhIF2eLt7MM5EgmDK/K0yaX
+         qhCBnEEn++pnim651GIReHzkqlzyTh+7fSflUZDxm906sEUqJO3mBYoN/H1HxO9g4Xs9
+         KmtmTgWGzQ59HBhU7KsVpxynvKWnkkhLIcHoPDau14Reau+gPBuTQttEh5foGKHTRvFB
+         65e5HvfMe+NAkz8azPcwQv/M8D0/jqgKQWPC3pciHwuCxCxtpiRjZCBDsfKsPY55yT1P
+         ndtw==
+X-Gm-Message-State: AOAM531ApCAP0QfABxDTsxvesl30debDeVqeRS3+XaZM15cAkArFpDOA
+	dSFd50Cb/6c0kRcW2VZrnkvJAWKid8yuXxUh
+X-Received: by 2002:a50:c44f:: with SMTP id w15mr11178118edf.79.1619282543675;
+        Sat, 24 Apr 2021 09:42:23 -0700 (PDT)
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from linux.local (host-79-52-107-152.retail.telecomitalia.it. [79.52.107.152])
+        by smtp.gmail.com with ESMTPSA id he35sm7251831ejc.2.2021.04.24.09.42.22
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 24 Apr 2021 09:42:23 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: outreachy-kernel@googlegroups.com,
+	dri-devel@lists.freedesktop.org,
+	Evan Quan <evan.quan@amd.com>,
+	Alex Deucher <alexander.deucher@amd.com>,
+	=?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>,
+	David Airlie <airlied@linux.ie>,
+	Daniel Vetter <daniel@ffwll.ch>
+Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+Subject: [PATCH] drm/amd/pm/powerplay/hwmgr/ppatomctrl.c: Fix kerne-doc syntax in comments
+Date: Sat, 24 Apr 2021 18:42:18 +0200
+Message-Id: <20210424164218.18445-1-fmdefrancesco@gmail.com>
+X-Mailer: git-send-email 2.31.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 
-Replace NULL comparison with '!' operator as indicated
-by checkpatch
+In the documentation of functions, fixed kernel-doc syntax errors.
 
-Signed-off-by: Daniela Mormocea <daniela.mormocea@gmail.com>
+Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
 ---
- drivers/staging/speakup/spk_ttyio.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/gpu/drm/amd/pm/powerplay/hwmgr/ppatomctrl.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/staging/speakup/spk_ttyio.c b/drivers/staging/speakup/spk_ttyio.c
-index 0057eb9..5a9eff0 100644
---- a/drivers/staging/speakup/spk_ttyio.c
-+++ b/drivers/staging/speakup/spk_ttyio.c
-@@ -47,7 +47,7 @@ static int spk_ttyio_ldisc_open(struct tty_struct *tty)
- {
- 	struct spk_ldisc_data *ldisc_data;
+diff --git a/drivers/gpu/drm/amd/pm/powerplay/hwmgr/ppatomctrl.c b/drivers/gpu/drm/amd/pm/powerplay/hwmgr/ppatomctrl.c
+index b1038d30c8dc..f503e61faa60 100644
+--- a/drivers/gpu/drm/amd/pm/powerplay/hwmgr/ppatomctrl.c
++++ b/drivers/gpu/drm/amd/pm/powerplay/hwmgr/ppatomctrl.c
+@@ -275,7 +275,7 @@ static const ATOM_VOLTAGE_OBJECT_V3 *atomctrl_lookup_voltage_type_v3(
+ }
  
--	if (tty->ops->write == NULL)
-+	if (!tty->ops->write)
- 		return -EOPNOTSUPP;
- 	speakup_tty = tty;
+ /**
+- * atomctrl_get_memory_pll_dividers_si().
++ * atomctrl_get_memory_pll_dividers_si
+  *
+  * @hwmgr:           input parameter: pointer to HwMgr
+  * @clock_value:     input parameter: memory clock
+@@ -328,7 +328,7 @@ int atomctrl_get_memory_pll_dividers_si(
+ }
  
+ /**
+- * atomctrl_get_memory_pll_dividers_vi().
++ * atomctrl_get_memory_pll_dividers_vi
+  *
+  * @hwmgr:                 input parameter: pointer to HwMgr
+  * @clock_value:           input parameter: memory clock
+@@ -1104,7 +1104,7 @@ int atomctrl_calculate_voltage_evv_on_sclk(
+ }
+ 
+ /**
+- * atomctrl_get_voltage_evv_on_sclk gets voltage via call to ATOM COMMAND table.
++ * atomctrl_get_voltage_evv_on_sclk: gets voltage via call to ATOM COMMAND table.
+  * @hwmgr:              input: pointer to hwManager
+  * @voltage_type:       input: type of EVV voltage VDDC or VDDGFX
+  * @sclk:               input: in 10Khz unit. DPM state SCLK frequency
+@@ -1144,7 +1144,7 @@ int atomctrl_get_voltage_evv_on_sclk(
+ }
+ 
+ /**
+- * atomctrl_get_voltage_evv gets voltage via call to ATOM COMMAND table.
++ * atomctrl_get_voltage_evv: gets voltage via call to ATOM COMMAND table.
+  * @hwmgr:              input: pointer to hwManager
+  * @virtual_voltage_id: input: voltage id which match per voltage DPM state: 0xff01, 0xff02.. 0xff08
+  * @voltage: 	       output: real voltage level in unit of mv
 -- 
-2.7.4
+2.31.1
 
 
