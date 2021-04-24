@@ -1,117 +1,87 @@
-X-GM-THRID: 6478777723718205440
-X-Received: by 10.99.122.1 with SMTP id v1mr774614pgc.59.1508457987513;
-        Thu, 19 Oct 2017 17:06:27 -0700 (PDT)
+X-GM-THRID: 6954659298712485888
+X-Received: by 2002:ab0:35e6:: with SMTP id w6mr388181uau.130.1619257800155;
+        Sat, 24 Apr 2021 02:50:00 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.84.129.70 with SMTP id 64ls2183539plb.3.gmail; Thu, 19 Oct
- 2017 17:06:26 -0700 (PDT)
-X-Received: by 10.99.3.8 with SMTP id 8mr782424pgd.20.1508457986467;
-        Thu, 19 Oct 2017 17:06:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508457986; cv=none;
+Received: by 2002:ab0:72c2:: with SMTP id g2ls1123399uap.2.gmail; Sat, 24 Apr
+ 2021 02:49:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzU94mGqwKmeFm4nufRCI+a+vSHGsDzg6/ilnqJi4R6VrqOIr31vktZ2cjE1Rqs+Eour0PE
+X-Received: by 2002:ab0:1671:: with SMTP id l46mr6181741uae.98.1619257799244;
+        Sat, 24 Apr 2021 02:49:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619257799; cv=none;
         d=google.com; s=arc-20160816;
-        b=mPnEufL33Q7VkOZEUtViYUCRhhF7iI5/zA/Yv+nWDru/8odfj8nQYbmdPhqU8Ev+J3
-         bGOwLw2+j1k53LGYdURIufXANmRuuIZ365NU50yzFv561UWQJ24fBHO9C5FVN0Pwef5r
-         Iu4dZzYwq3AA3vawRSd0Ky6J3H2rdeJvaLdTTin45QfXQBqngxzMapf+Gi4QC5I/75PJ
-         uOaMEg6x0L9jj60cfhegMSFDawyrtvQAGbjvZjU8bct5xzibMXcZwgNSKusi2UdcZuYe
-         ZK3uwWvZffYQnWp+Ah6K7M1MiN0GOffG27kBIQDoUEq6nU+hRp3CpbXJhdPyXrkQg3KI
-         n+bg==
+        b=IN6xqgvu+q6HCYRqJJWXpS8Hou2Il3cxCvWK7xA+dNaJGZ2buQ55q2iJG2Pg9ajT9w
+         EPrWftu+9rvycQeKErSia7mBkskxfsSc/1wnnDN+oW2/s9f/YBZakBP3fkanUWxWXT0r
+         tZ9t5PL2k982kvamjb720jJTU7nzgWB3pqjFsesm2qwrTN06jJQTF7e5KgFMEAxxz9rT
+         lFc9wr/jyG9rUilzcNZ2YHuIXwgsh+DzE4SMLqFFlHOe6duC0EHtGhCdJnmdhSAgGZBW
+         heEedkqPJXJvd0TkiuvVd2L2qFd2Vd7aHYNmQzhEmXL/4GviKc35hJfMPZ8SEGRMkoPe
+         jqlg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature:arc-authentication-results;
-        bh=HKbjmXt/1vmkUErgo/3kS8BgsoJsCoXKqOuyiOXjvnw=;
-        b=AnZFE0qKhGkkL8gNYWC/sXcOwwkLsWVgIIO5nXd2vSwjKKteRL5sTMrj7SxZhFlx+G
-         3iQNWLcBsdxGhvkOO47l65VLmm7Q7ZCg3GWq/1si/jUi9IZenu62SNHqhLi8T1+UF/AW
-         p8Ps/+Cgca4iPSdYYzTl4V2NpLyahCyo0KApgSZ1jKaz2+xc4BYY7Yu1QCEfEsyW+9Pz
-         2RFe0jTJUcMaK02oVcW476UCh3bimmFi4VJpnIax1vNGzWzPg1coc4ql/s2NULgzJ2rq
-         aTsugyLOCwcLIOZAwU+Em/YJLrfUaU2hPX8AizG5ZIR7Y4TiziQdDzaZKXGRhi/atQhQ
-         E7rA==
+        h=to:subject:message-id:date:from:mime-version;
+        bh=9O3nf18aQZooH9lbcSPTeR1x5YwvRg/kSgHLvW3FsVs=;
+        b=h02p2SosU6jEnhccOXpyTqqm4DGPK+iNirKVHxQzSq1tPDxN9ldJqpcT+npOpOplkx
+         vURw6q0tfWPQo2VCYaGIoG5Ff6m3X94ZMQwKWNJCOjFQ7fkTcD6vJ2iu+PTEFmQ1abuV
+         iW9pizgRanvf1cxTRuooo7d89X0c9MQ6210sy+oEBXD/ifF7o7OZ3Ki+Fyy9Ijh7hvDt
+         UOwSm7BNQAjwYxc8iERBlc1PRRlDm9CIOzwZJiE6RrZY32uKHnB2fBxgvvPwdThZiuwt
+         YbCewrNDA4kwNVuSihJ07lla+tjp8GJOdSm4vJgKB1nvm4Oihhx0I4j6nFQGeBKxDv3u
+         vQAA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=t+cXIDWB;
-       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c08::22c as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
-Return-Path: <frank@generalsoftwareinc.com>
-Received: from mail-ua0-x22c.google.com (mail-ua0-x22c.google.com. [2607:f8b0:400c:c08::22c])
-        by gmr-mx.google.com with ESMTPS id l10si777033pgp.3.2017.10.19.17.06.26
+       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 68.178.252.232 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
+Return-Path: <vthakkar@vaishalithakkar.in>
+Received: from p3plsmtpa12-03.prod.phx3.secureserver.net (p3plsmtpa12-03.prod.phx3.secureserver.net. [68.178.252.232])
+        by gmr-mx.google.com with ESMTPS id p12si1208788vsm.0.2021.04.24.02.49.58
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Oct 2017 17:06:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c08::22c as permitted sender) client-ip=2607:f8b0:400c:c08::22c;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 24 Apr 2021 02:49:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vthakkar@vaishalithakkar.in designates 68.178.252.232 as permitted sender) client-ip=68.178.252.232;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@generalsoftwareinc-com.20150623.gappssmtp.com header.s=20150623 header.b=t+cXIDWB;
-       spf=pass (google.com: domain of frank@generalsoftwareinc.com designates 2607:f8b0:400c:c08::22c as permitted sender) smtp.mailfrom=frank@generalsoftwareinc.com
-Received: by mail-ua0-x22c.google.com with SMTP id n38so7212654uai.11
-        for <outreachy-kernel@googlegroups.com>; Thu, 19 Oct 2017 17:06:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=generalsoftwareinc-com.20150623.gappssmtp.com; s=20150623;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=HKbjmXt/1vmkUErgo/3kS8BgsoJsCoXKqOuyiOXjvnw=;
-        b=t+cXIDWBwM8rZlx0B0YMP9KpuV8SAwkQWcFR4+NATGA2iTL8X/Nu1RKc2azREjEGbQ
-         DZIObGzY5iEx2M/4upr5Nto89IVl8lamI1f/HnfAM3wiF5z0wS6N4fzYDw9wDqYtQLi5
-         CAEx1AuEpTxb8uRLba7n1rLAk36AKOOlj0SnuUWEYXmolmVPeAsvymiF5UwE6v3yCDD/
-         19jkdUCpnpOIBIDnD72GOeluaPydFQrCTJh9q/s9mtAnw5UaRuedvs3LTHQQxIFsExuT
-         onkycrVz5c/LC2JLhwmUfD0I17mOuIyk11+79tCfDGWdAm7bcnKnqZZwTdoDf3xGUwPQ
-         9/Sg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=HKbjmXt/1vmkUErgo/3kS8BgsoJsCoXKqOuyiOXjvnw=;
-        b=JeFWovSHbVJBmh5/XArbSr8XQczWJOqDX9tJPtdM9DSsq4YaMKY6ZdOKfRFczjlrDh
-         V3IFwOiyz6sAgmflVN8YedFWSJ8ZOtXgUjs6/aRsMevuF6PrX8lJAC21CAk/MT5XQBfi
-         nlPwqubZL7Vee/8j9f50YW7ZRDFip/CEI3wpw0ccdkHHGAxdY8iMM3eY4ucrEyEX/B2A
-         7Sxg6j2nhWpON+lfJfIIe+V36OG+/tnEYtAn9YNEGxBLW2Q9iOzu7IzUoQCPt2lbJJZS
-         7ynwz4p+3f4+faPOxKNamfVbUbAT4xM8t6BGuRlwa4lBXg2UZlsPVsMUFl7IDclL7EAu
-         o5SA==
-X-Gm-Message-State: AMCzsaWDLfL79DRhOloVLqLKE/g+vRpmXWQJu6zPtuvnukKRF6DlY2mj
-	AQknHEYX5G5NWPXNhde+f8JrsZv0
-X-Google-Smtp-Source: ABhQp+R9GoEe4iWkDqo0HykognzijX5EbLIfP6w4m4r/D9XJ8EvA91xON51tlqUnL32jKLPLSZITVw==
-X-Received: by 10.176.64.131 with SMTP id i3mr2659474uad.195.1508457985724;
-        Thu, 19 Oct 2017 17:06:25 -0700 (PDT)
-Return-Path: <frank@generalsoftwareinc.com>
-Received: from ubuntu-server-1604 ([152.207.209.222])
-        by smtp.gmail.com with ESMTPSA id y5sm8987641uay.35.2017.10.19.17.06.24
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 19 Oct 2017 17:06:24 -0700 (PDT)
-Date: Thu, 19 Oct 2017 20:06:22 -0400
-From: "Frank A. Cancio Bello" <frank@generalsoftwareinc.com>
-To: pablo@netfilter.org, Julia.Lawall@lip6.fr
-Cc: Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/6] staging: greybus: Correct code style issues
-Message-ID: <cover.1508457306.git.frank@generalsoftwareinc.com>
+       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 68.178.252.232 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
+Received: from mail-vs1-f53.google.com ([209.85.217.53])
+	by :SMTPAUTH: with ESMTPSA
+	id aEvFlB8bYr993aEvGlAOnU; Sat, 24 Apr 2021 02:49:58 -0700
+X-CMAE-Analysis: v=2.4 cv=cpVeL30i c=1 sm=1 tr=0 ts=6083e9c6
+ a=QyCWzIxlPHHTYLZ1QDq/uQ==:117 a=IkcTkHD0fZMA:10 a=MKtGQD3n3ToA:10
+ a=3YhXtTcJ-WEA:10 a=pFd2Zl5z2vwA:10 a=ZZnuYtJkoWoA:10
+ a=tYmRhbPFjoNRVs69Le0A:9 a=QEXdDO2ut3YA:10
+X-SECURESERVER-ACCT: vthakkar@vaishalithakkar.in
+Received: by mail-vs1-f53.google.com with SMTP id d25so19198230vsp.1
+        for <outreachy-kernel@googlegroups.com>; Sat, 24 Apr 2021 02:49:58 -0700 (PDT)
+X-Gm-Message-State: AOAM532MqJBibref5SiJI4TUHgJDhPvapMY+IVWGo/aZ8FC5yBB9e1ed
+	45T3LniWohJO8kXHWlygvALe0ayP5reCwlftHgo=
+X-Received: by 2002:a67:b107:: with SMTP id w7mr6471042vsl.38.1619257797620;
+ Sat, 24 Apr 2021 02:49:57 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+From: Vaishali Thakkar <vthakkar@vaishalithakkar.in>
+Date: Sat, 24 Apr 2021 11:49:46 +0200
+X-Gmail-Original-Message-ID: <CAK-LDb+R6rsehaLLQGbswhBv=u7w9i39xu3NXgCHVSpte5s9Ww@mail.gmail.com>
+Message-ID: <CAK-LDb+R6rsehaLLQGbswhBv=u7w9i39xu3NXgCHVSpte5s9Ww@mail.gmail.com>
+Subject: [Outreachy applicants] Reminder to submit your applicatiions
+To: Outreachy <outreachy-kernel@googlegroups.com>
+Content-Type: text/plain; charset="UTF-8"
+X-CMAE-Envelope: MS4xfHe8yZ0XjZ+5Yv1Yen4jxWIskSgAzrUdfgPfeC3rHebjvzd01ENx7cW2eDLfZPsxzPLDFXcRKJBMt38dmlL9oSuyNfdzRTqh67F3b+Wszzj4teG0mjv5
+ jbjlOvE3AERhgwA39dbzcXVdC1rS9GmFIMbNWCGZBEa+N5DTpygs3PC8vpkQDMrTeEuDYfq118uuU8u5meNYqSwGBdgSepd+9gn6vgeUN+VFko6CrUSwOkla
 
-This patchset address code style issues with blank lines, aligment,
-spacing. Beside it change 'var_name == NULL' by '!var_name' and use
-kernel type instead of C99 types.
+Hi All,
 
-Frank A. Cancio Bello (6):
-  staging: greybus: Remove unnecessary blank lines
-  staging: greybus: Fix alignment issues
-  staging: greybus: Use u32 instead of uint32_t
-  staging: greybus: Add space around ternary operator
-  staging: greybus: Move logical operator in previous line
-  staging: greybus: Rewrite NULL comparisons
+As we are only one week away from the deadline, I would like to remind
+you all to submit the applications on Outreachy's website. Please
+remember to submit the applications for all the projects you're
+interested in. You'll need to record the separate contributions for
+each link you would like to add there. Ideally you should have at
+least one with the link to your contributions in staging-testing and
+then others with your contributions to Media/DRM trees. If you've done
+any small tasks given by project mentors which didn't include sending
+patches to the kernel lists. feel free to record them as separate
+contributions too.
 
- drivers/staging/greybus/arche-apb-ctrl.c | 37 +++++++++++----------
- drivers/staging/greybus/arche-platform.c | 10 +++---
- drivers/staging/greybus/audio_codec.c    | 23 ++++++-------
- drivers/staging/greybus/audio_codec.h    |  2 +-
- drivers/staging/greybus/audio_module.c   |  4 +--
- drivers/staging/greybus/audio_topology.c | 55 ++++++++++++++++----------------
- drivers/staging/greybus/authentication.c |  2 +-
- drivers/staging/greybus/bootrom.c        | 20 ++++++------
- drivers/staging/greybus/bundle.c         |  2 +-
- drivers/staging/greybus/camera.c         | 16 +++++-----
- drivers/staging/greybus/connection.c     |  4 ---
- drivers/staging/greybus/control.c        |  1 -
- drivers/staging/greybus/core.c           |  2 +-
- 13 files changed, 84 insertions(+), 94 deletions(-)
+Also, don't forget to put the PRIORITY of the projects under
+'community specific questions'. This should also include any projects
+you've applied to in other communities.
+
+If you're having any difficulty to submit your application or have any
+questions, feel free to ping me via email or on IRC.
+
+Thanks!
 
 -- 
-2.7.4
-
+Vaishali
 
