@@ -1,227 +1,199 @@
 X-GM-THRID: 6955401561206947840
-X-Received: by 2002:a7b:cd07:: with SMTP id f7mr19877652wmj.119.1619437757729;
-        Mon, 26 Apr 2021 04:49:17 -0700 (PDT)
+X-Received: by 2002:a05:6512:3e0b:: with SMTP id i11mr4400308lfv.257.1619433738242;
+        Mon, 26 Apr 2021 03:42:18 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6000:1287:: with SMTP id f7ls1337177wrx.3.gmail; Mon, 26
- Apr 2021 04:49:16 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyeHCINNgxTXBTNYW4HNmKkL6081H2x+LJRgiXbhJ16RG84UpSqiq7JzPzxgLUMUkmIRJFM
-X-Received: by 2002:a05:6000:14c:: with SMTP id r12mr22254430wrx.48.1619437756268;
-        Mon, 26 Apr 2021 04:49:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619437756; cv=none;
+Received: by 2002:a2e:bc23:: with SMTP id b35ls5637264ljf.7.gmail; Mon, 26 Apr
+ 2021 03:42:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzIABqi3DZQ3hXmTTCQeYn2lVHlgcuX+PKcRr+ci3/oeet6yciDjWLfPB7JUPoCI8qBOdQ1
+X-Received: by 2002:a2e:b88d:: with SMTP id r13mr12514544ljp.479.1619433736324;
+        Mon, 26 Apr 2021 03:42:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619433736; cv=none;
         d=google.com; s=arc-20160816;
-        b=uReURD5GYp6sLqMhBG1T++O6n2nhVZjPZfS5AsrDdGTvp3nF1ZV+hX0di6/R6Lt+aY
-         4tN4ktUrRUKEStRL4gSpY9BcfiAMe4u8Bp3d9Pl9XzsVlwGzUfbRD+Lm5AphDNJfSGaK
-         jtYxwGBuwH4zG2e0O7m0Ob+oWtnlJwXOs/uz5BJvUQTW2MuAoicBIg4fOhX6AnXxRDOM
-         n19kZJ2rZNZEpHrrApJiFCKeovPyb2pweGYRvUjy7Zx+8QpMPLbAI5/VyxnqaV/oP0DB
-         M6VIl+WvEqM3LWYq5FjW0H4SSw4T0GEF0QaBaxrV8Hler5saLfZzsaXR+LbnAtlrtCbi
-         H9/A==
+        b=P/EUmMilip/zExBUCtJC7kiZZ7TN/PYAOi/WH1Q4dkYT9rPxlk5jY2YyUE7YwwzWNl
+         /41Wao95ANNXhvNFW5A5Jo5s3QmBNovchR4P10Jr+0EFty7y6STqesqxufN0Bbb2oBfs
+         4OXWjw9HsQ3BOCh5mxPN9PEcPhbuvMeEzI8UtznlIBKdls+KLmgwAqkQI45bH5EFuwav
+         x/uYP35Gev5NlPXaHLwKhRKTa5rOgJHXZlwp+GPuewr5TwWL2jWrAu76PCxxc67DaFf6
+         N5t1Sl4zFQ66VZK3PEXVYxbmwQHhxWyJ7b2nzpPWDwCVDKRarYYOW84HUUC2lonsm/mU
+         /hjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=SYKQ9oCxcSWwe5wSwHhuDS6qiub6VAFCoqgUBic5noU=;
-        b=R5VGmEsiKyehpPVPKPYdKeZiKDtCOPKPJYXVjTAkWJ0XAXexylOzN/eLfK3tW052CW
-         dzGAt+sPGlMbLYIStI/vZgh1YTodRvlPnzAtaykBo0IogGsTJ0uPIosgA8ReMj/Bnunw
-         KvjGQ9yDcAHqQffCXqNyrEhco+FqJ3T6VXLLjYP21rJJrx24116fppeH9viuiCGfq8GL
-         QWRBSHk5uWrxyMzjjeqr7rFCPD6cJY+wSKP9uhSkkdiqYsAvJYlmz+/dFduTeolcxugz
-         LJ+0Jg7VUQBwguQSF3ksYdExgX2sunr7+FgpiS7/Fwnfif9uRz02GpF6R6o/oN+bptIK
-         pM/w==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:ironport-hdrordr;
+        bh=/s+VPf0P5i+ED/taFeiqkIORnpA9PFm9T6viJF7rYWU=;
+        b=kDhZQEICpuE/82VZHfCjsjNVLQrF5wOjQPvgywEgd+vKSzCpPp+fywyWd3FWjturTf
+         q2w7nZPLEXP5LSpDZQvi+3ULo4cAEet843LRq9j8MB+RaUhaDkAhN84WV04z/D4tDmiT
+         LAFwnpXb4LHlYCiF0cxbY8NBDg2NFhlCpvmscDnrO2A4usd6q63p16h8Lci7ghA5siMl
+         v+uld/vODvNsjF9cPpUZ0XayZlddj10l0ed4RiyhGG+JAnylrYuxG21zZ85lNTAsrevz
+         dk/Zg8iXtVzC+otpjnHqUj2zhtOUR042LjWup2ITNaioC6ytfwftk0ZuhPZZoyOJNVHq
+         C4fw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=JcaImW1g;
-       spf=pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) smtp.mailfrom=willy@infradead.org
-Return-Path: <willy@infradead.org>
-Received: from casper.infradead.org (casper.infradead.org. [2001:8b0:10b:1236::1])
-        by gmr-mx.google.com with ESMTPS id 187si841772wmb.0.2021.04.26.04.49.16
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id v3si1362722lfp.0.2021.04.26.03.42.16
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 26 Apr 2021 04:49:16 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) client-ip=2001:8b0:10b:1236::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 26 Apr 2021 03:42:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=JcaImW1g;
-       spf=pass (google.com: best guess record for domain of willy@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) smtp.mailfrom=willy@infradead.org
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=SYKQ9oCxcSWwe5wSwHhuDS6qiub6VAFCoqgUBic5noU=; b=JcaImW1gEK6h9q8tQwRD8bt6Vx
-	CMbiB9SUpKICdiMygGUpNyrxLl/zCXJQeqOQrL+hEipcnO64TKBBsz9v95ULi/qW5AqHcFNHtNcbj
-	7J+N9exjen/qSrf2/OAPlOzGUN9PPZOHvvNE72ytzOOj7gtT1+eI2YO0QEKoLQY6zXSOt0g/7etIU
-	sntT5M5TTJ5LwQG/UTONKMURpYasR+OlXF9PZ08uLil0la547od4+ZUqV1H7iUaybUnfzDT95jVYy
-	D04/oWWIMTgiyAYPG+627zGFyZcQXKQSFZ8E5Mt1okA0HKkfhy3vGTz4FY3J2vbZb1gDXI6KxUYgi
-	9pXu/WpQ==;
-Received: from willy by casper.infradead.org with local (Exim 4.94 #2 (Red Hat Linux))
-	id 1lazja-005Z51-Dy; Mon, 26 Apr 2021 11:49:11 +0000
-Date: Mon, 26 Apr 2021 12:49:02 +0100
-From: Matthew Wilcox <willy@infradead.org>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+IronPort-HdrOrdr: =?us-ascii?q?A9a23=3AyA29FKGjWNd2RwvOpLqECceALOonbusQ8zAX?=
+ =?us-ascii?q?/mp2TgFYddHdqtC2kJ0gpHvJoRsYRX1Io7u9EYaaR3e0z/RIyKkXeYyvRQz3/F?=
+ =?us-ascii?q?avRbsC0aLH4xnNXxLz7fRc06AISdkaNPTVAUJhhcj3pCmUeuxB/PC9/KqlhfjT?=
+ =?us-ascii?q?wh5WJGlXQppt4AtjBgGQHlcefngkObMCCJGe6sBbzgDPRV0raK2AakUtY/LOvJ?=
+ =?us-ascii?q?nimp7gfHc9dnwawTjLvHeT5Ln2HwPw5HojejlEqI1MzVT4?=
+X-IronPort-AV: E=Sophos;i="5.82,252,1613430000"; 
+   d="scan'208";a="379682631"
+Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 26 Apr 2021 12:42:14 +0200
+Date: Mon, 26 Apr 2021 12:42:14 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
 To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	David Kershner <david.kershner@unisys.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Daniel Vetter <daniel@ffwll.ch>
-Subject: Re: [Outreachy kernel] [RFC PATCH] staging: unisys: visorhba:
- Convert module from IDR to XArray
-Message-ID: <20210426114902.GI235567@casper.infradead.org>
-References: <20210426095015.18556-1-fmdefrancesco@gmail.com>
+cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+    outreachy-kernel@googlegroups.com, linux-staging@lists.linux.dev, 
+    linux-kernel@vger.kernel.org, David Kershner <david.kershner@unisys.com>, 
+    Matthew Wilcox <willy@infradead.org>, Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [Outreachy kernel] [RFC PATCH] staging: unisys: visorhba: Convert
+ module from IDR to XArray
+In-Reply-To: <70412520.S8q5jszebs@linux.local>
+Message-ID: <alpine.DEB.2.22.394.2104261241000.7906@hadrien>
+References: <20210426095015.18556-1-fmdefrancesco@gmail.com> <YIaORY3B6+6vMvFj@kroah.com> <70412520.S8q5jszebs@linux.local>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20210426095015.18556-1-fmdefrancesco@gmail.com>
+Content-Type: text/plain; charset=US-ASCII
 
-On Mon, Apr 26, 2021 at 11:50:15AM +0200, Fabio M. De Francesco wrote:
->  #define VISORHBA_ERROR_COUNT 30
->  
-> +static DEFINE_XARRAY_ALLOC(xa_dtstr);
-> +
->  static struct dentry *visorhba_debugfs_dir;
->  
->  /* GUIDS for HBA channel type supported by this driver */
-> @@ -78,12 +80,6 @@ struct visorhba_devdata {
->  	unsigned int max_buff_len;
->  	int devnum;
->  	struct uiscmdrsp *cmdrsp;
-> -	/*
-> -	 * allows us to pass int handles back-and-forth between us and
-> -	 * iovm, instead of raw pointers
-> -	 */
-> -	struct idr idr;
-> -
 
-Why did you change the driver from having one namespace per HBA to having
-a global namespace?
 
->  /*
-> - * simple_idr_get - Associate a provided pointer with an int value
-> - *		    1 <= value <= INT_MAX, and return this int value;
-> - *		    the pointer value can be obtained later by passing
-> - *		    this int value to idr_find()
-> - * @idrtable: The data object maintaining the pointer<-->int mappings
-> - * @p:	      The pointer value to be remembered
-> - * @lock:     A spinlock used when exclusive access to idrtable is needed
-> - *
-> - * Return: The id number mapped to pointer 'p', 0 on failure
-> + * simple_xa_dtstr_get - Store a pointer to xa_dtstr xarray
-> + * @id: Pointer to ID
-> + * @entry: New entry
->   */
-> -static unsigned int simple_idr_get(struct idr *idrtable, void *p,
-> -				   spinlock_t *lock)
-> +static int simple_xa_dtstr_get(u32 *id, void *entry)
->  {
-> -	int id;
-> -	unsigned long flags;
-> +	int ret = xa_alloc_irq(&xa_dtstr, id, entry, xa_limit_32b, GFP_NOWAIT);
-> +	/* TODO: check for and manage errors */
->  
-> -	idr_preload(GFP_KERNEL);
-> -	spin_lock_irqsave(lock, flags);
-> -	id = idr_alloc(idrtable, p, 1, INT_MAX, GFP_NOWAIT);
-> -	spin_unlock_irqrestore(lock, flags);
-> -	idr_preload_end();
-> -	/* failure */
-> -	if (id < 0)
-> -		return 0;
-> -	/* idr_alloc() guarantees > 0 */
-> -	return (unsigned int)(id);
-> +	return ret;
->  }
+On Mon, 26 Apr 2021, Fabio M. De Francesco wrote:
 
-I would think that this wrapper should probably be removed.  It'll almost
-certainly be better to inline the call to xa_alloc_irq() at the call
-sites.
+> On Monday, April 26, 2021 11:56:21 AM CEST Greg Kroah-Hartman wrote:
+> > On Mon, Apr 26, 2021 at 11:50:15AM +0200, Fabio M. De Francesco wrote:
+> > > Converted visorhba from IDR to XArray. The abstract data type XArray is
+> > > more memory-efficient, parallelisable and cache friendly. It takes
+> > > advantage of RCU to perform lookups without locking.
+> > >
+> > > Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+> > > ---
+> > >
+> > >  .../staging/unisys/visorhba/visorhba_main.c   | 107 +++++++-----------
+> > >  1 file changed, 44 insertions(+), 63 deletions(-)
+> > >
+> > > diff --git a/drivers/staging/unisys/visorhba/visorhba_main.c
+> > > b/drivers/staging/unisys/visorhba/visorhba_main.c index
+> 4455d26f7c96..851e60ab0c46
+> > > 100644
+> > > --- a/drivers/staging/unisys/visorhba/visorhba_main.c
+> > > +++ b/drivers/staging/unisys/visorhba/visorhba_main.c
+> > > @@ -6,10 +6,10 @@
+> > >
+> > >  #include <linux/debugfs.h>
+> > >  #include <linux/kthread.h>
+> > >
+> > > -#include <linux/idr.h>
+> > >
+> > >  #include <linux/module.h>
+> > >  #include <linux/seq_file.h>
+> > >  #include <linux/visorbus.h>
+> > >
+> > > +#include <linux/xarray.h>
+> > >
+> > >  #include <scsi/scsi.h>
+> > >  #include <scsi/scsi_host.h>
+> > >  #include <scsi/scsi_cmnd.h>
+> > >
+> > > @@ -23,6 +23,8 @@
+> > >
+> > >  #define MAX_PENDING_REQUESTS (MIN_NUMSIGNALS * 2)
+> > >  #define VISORHBA_ERROR_COUNT 30
+> > >
+> > > +static DEFINE_XARRAY_ALLOC(xa_dtstr);
+> > > +
+> > >
+> > >  static struct dentry *visorhba_debugfs_dir;
+> > >
+> > >  /* GUIDS for HBA channel type supported by this driver */
+> > >
+> > > @@ -78,12 +80,6 @@ struct visorhba_devdata {
+> > >
+> > >  	unsigned int max_buff_len;
+> > >  	int devnum;
+> > >  	struct uiscmdrsp *cmdrsp;
+> > >
+> > > -	/*
+> > > -	 * allows us to pass int handles back-and-forth between us and
+> > > -	 * iovm, instead of raw pointers
+> > > -	 */
+> > > -	struct idr idr;
+> > > -
+> > >
+> > >  	struct dentry *debugfs_dir;
+> > >  	struct dentry *debugfs_info;
+> > >
+> > >  };
+> > >
+> > > @@ -183,32 +179,16 @@ static struct uiscmdrsp
+> *get_scsipending_cmdrsp(struct
+> > > visorhba_devdata *ddata,>
+> > >  }
+> > >
+> > >  /*
+> > >
+> > > - * simple_idr_get - Associate a provided pointer with an int value
+> > > - *		    1 <= value <= INT_MAX, and return this int value;
+> > > - *		    the pointer value can be obtained later by passing
+> > > - *		    this int value to idr_find()
+> > > - * @idrtable: The data object maintaining the pointer<-->int mappings
+> > > - * @p:	      The pointer value to be remembered
+> > > - * @lock:     A spinlock used when exclusive access to idrtable is needed
+> > > - *
+> > > - * Return: The id number mapped to pointer 'p', 0 on failure
+> > > + * simple_xa_dtstr_get - Store a pointer to xa_dtstr xarray
+> > > + * @id: Pointer to ID
+> > > + * @entry: New entry
+> > >
+> > >   */
+> > >
+> > > -static unsigned int simple_idr_get(struct idr *idrtable, void *p,
+> > > -				   spinlock_t *lock)
+> > > +static int simple_xa_dtstr_get(u32 *id, void *entry)
+> >
+> > What are you trying to really "get" here?  We shouldn't name the
+> > function based on the data type being used.  All we want is some sort of
+> > "token" or hash or something else?  It's hard to tell...
+> >
+> Sorry, I am so lazy that I just substituted the _idr_ in the old name with
+> _xa_dtstr_. Perhaps simple_entry_get() would be better. it deserves a v2.
+> >
+> > >  {
+> > >
+> > > -	int id;
+> > > -	unsigned long flags;
+> > > +	int ret = xa_alloc_irq(&xa_dtstr, id, entry, xa_limit_32b,
+> GFP_NOWAIT);
+> > > +	/* TODO: check for and manage errors */
+> >
+> > That's a nice TODO, which means we really should not be considering this
+> > patch to be merged, right?
+> >
+> Right, lazy again :)
+>
+> The fact is that I was just interested in conversion from IDR to XArray
+> because this would be the main subject of the project I applied for the DRM
+> subsystem. Therefore, where I didn't find proper error checking and management
+> in the old code, I simply wrote some TODO.
+>
+> I suppose that some more knowledge of both Linux device drivers programming
+> and of that specific driver is needed to do proper management of errors in
+> order to unwind what is already done by the code and leave everything in a
+> consistent state. I'd left that work to Unisys developers, if you don't mind.
+> I'd prefer to simply remove those TODO from where I placed them. I hope that
+> you agree with me.
 
-You've also changed the behaviour; it used to allocate an id between 1
-and INT_MAX; now it allocates an ID between 0 and UINT_MAX.  Maybe that's
-safe, but you need to argue for it in the changelog.
+I don't know the details of this code, but normally the code is written so
+that it is only what is done in the current function that has to be
+unwound.  Perhaps it is possible to find what to do by looking at similar
+code in other drivers.  It is better to do the whole thing than to leave
+the code partly done.
 
-And it shouldn't be using GFP_NOWAIT, but GFP_KERNEL, like the IDR code
-used to do.
-
->  /*
-> @@ -216,22 +196,25 @@ static unsigned int simple_idr_get(struct idr *idrtable, void *p,
->   *				completion processing logic for a taskmgmt
->   *				cmd will be able to find who to wake up
->   *				and where to stash the result
-> - * @idrtable: The data object maintaining the pointer<-->int mappings
-> - * @lock:     A spinlock used when exclusive access to idrtable is needed
-> + * @xa_dtstr: The data object maintaining the pointer<-->int mappings
-
-You added this in the documentation, but not in the function ...
-
->   * @cmdrsp:   Response from the IOVM
->   * @event:    The event handle to associate with an id
->   * @result:   The location to place the result of the event handle into
->   */
-> -static void setup_scsitaskmgmt_handles(struct idr *idrtable, spinlock_t *lock,
-> -				       struct uiscmdrsp *cmdrsp,
-> -				       wait_queue_head_t *event, int *result)
-> +static void setup_scsitaskmgmt_handles(struct uiscmdrsp *cmdrsp,
-> +				       wait_queue_head_t *event, u32 *result)
->  {
-> -	/* specify the event that has to be triggered when this */
-> -	/* cmd is complete */
-> -	cmdrsp->scsitaskmgmt.notify_handle =
-> -		simple_idr_get(idrtable, event, lock);
-> -	cmdrsp->scsitaskmgmt.notifyresult_handle =
-> -		simple_idr_get(idrtable, result, lock);
-> +	void *entry;
-> +	int ret;
-> +
-> +	/* specify the event that has to be triggered when this cmd is complete */
-> +	entry = &cmdrsp->scsitaskmgmt.notify_handle;
-> +	ret = simple_xa_dtstr_get(result, entry);
-> +	/* TODO: Check for and manage errors */
-
-The prior code assigned the ID for 'event' to scsitaskmgmt.notify_handle.
-Now, you're allocating an ID for the address of scsitaskmgmt.notify_handle
-to 'result'.  That's clearly not right.
-
-> +	entry = &cmdrsp->scsitaskmgmt.notifyresult_handle;
-> +	ret = simple_xa_dtstr_get(result, entry);
-> +	/* TODO: Check for and manage errors */
->  }
->  
->  /*
-> @@ -240,13 +223,17 @@ static void setup_scsitaskmgmt_handles(struct idr *idrtable, spinlock_t *lock,
->   * @idrtable: The data object maintaining the pointer<-->int mappings
->   * @cmdrsp:   Response from the IOVM
->   */
-> -static void cleanup_scsitaskmgmt_handles(struct idr *idrtable,
-> -					 struct uiscmdrsp *cmdrsp)
-> +static void cleanup_scsitaskmgmt_handles(struct uiscmdrsp_scsitaskmgmt *scsitaskmgmt)
->  {
-> -	if (cmdrsp->scsitaskmgmt.notify_handle)
-> -		idr_remove(idrtable, cmdrsp->scsitaskmgmt.notify_handle);
-> -	if (cmdrsp->scsitaskmgmt.notifyresult_handle)
-> -		idr_remove(idrtable, cmdrsp->scsitaskmgmt.notifyresult_handle);
-> +	struct uiscmdrsp *cmdrsp;
-> +	unsigned long index;
-> +
-> +	xa_for_each(&xa_dtstr, index, cmdrsp) {
-> +		if (&cmdrsp->scsitaskmgmt != scsitaskmgmt)
-> +			continue;
-> +		xa_erase(&xa_dtstr, index);
-> +		kfree(cmdrsp);
-> +	}
-
-I suspect this is part of the same confusion, but the old code passed in an
-ID that we just looked up & removed.  You've changed that to iterate over
-all the entries and remove the ones that match ...
-
-> @@ -1096,7 +1077,7 @@ static void visorhba_remove(struct visor_device *dev)
->  	scsi_remove_host(scsihost);
->  	scsi_host_put(scsihost);
->  
-> -	idr_destroy(&devdata->idr);
-> +	xa_destroy(&xa_dtstr);
->  
->  	dev_set_drvdata(&dev->device, NULL);
->  	debugfs_remove(devdata->debugfs_info);
-
-What happens if you have two HBAs in the system, one is active and you
-remove the other one?
-
-More generally, the IDR required you call idr_destroy() to avoid leaking
-preallocated memory.  I changed that, but there are still many drivers
-that have unnecessary calls to idr_destroy().  It's good form to just
-delete them and not turn them into calls to xa_destroy().
+julia
 
