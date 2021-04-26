@@ -1,81 +1,81 @@
 X-GM-THRID: 6955548350432149504
-X-Received: by 2002:a05:6000:1ac5:: with SMTP id i5mr24982799wry.412.1619465338823;
-        Mon, 26 Apr 2021 12:28:58 -0700 (PDT)
+X-Received: by 2002:a19:4082:: with SMTP id n124mr14220370lfa.154.1619464799928;
+        Mon, 26 Apr 2021 12:19:59 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1c:64c2:: with SMTP id y185ls162306wmb.2.canary-gmail; Mon,
- 26 Apr 2021 12:28:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzGffwtx7iSGtt4JvGpxC3PWbTtIxjb04CkJIKgF9jq24O7hSaEyl0T1S7+kFA89EECcqQ/
-X-Received: by 2002:a05:600c:2148:: with SMTP id v8mr13787832wml.35.1619465337389;
-        Mon, 26 Apr 2021 12:28:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619465337; cv=none;
+Received: by 2002:a05:6512:6c2:: with SMTP id u2ls1955195lff.3.gmail; Mon, 26
+ Apr 2021 12:19:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxhFHLCyLGpxzzTk84PqhIQJa66hiovsR5soJbrM/skdQlt+gNhbdHA+Eydj1MgT7hA1e7v
+X-Received: by 2002:a05:6512:3159:: with SMTP id s25mr13160179lfi.416.1619464798257;
+        Mon, 26 Apr 2021 12:19:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619464798; cv=none;
         d=google.com; s=arc-20160816;
-        b=PKMCjsQgNowwEzj1cD5Jo2xf74xm2ZEpcaoCaiJ9AryBqFXuluq3Y3ItaiDzxNRTDS
-         /5RR6jfdVcmuJ0tWpIbv4WDpV4Ea+KwrDCBnGjCyex0cfCtCuZdtEbJvFI2Vui6oolwY
-         yOmsojHB+FYW72q0hx0DXm9EdDb1KXhz5A8aMgext6CILgZRHDPreknuKEhb54wdYOAP
-         V5lXv8KPsE2cpy33xKKR2gLds7/IX72zliHFbXX9cQhgMrdfKoND9rB5Lr2gXn1R0p5L
-         Qm+Plp1C747E4kb/BTnqWm8zAn8oPzK5D7lCNe9J7nXy2klr2sqVJ3X4KdlCuSVxXUOb
-         dPwQ==
+        b=Chwb4geiyak8N5BclflhW2jSeovHfVcMhAsyl3VTBRf1/f6IX5gUFUHLi1r5K1gQ9x
+         F5i7RqjttmjgHh6NfU6AKz8nGydxClRoSBevQc1qp9kTJSm/G8ugb+0biUqo6zLwDQ8e
+         3VHVc26Uol7h1zQgaWakLeBggAbTErkfs64vXUMLS9YMucUNWozQc87U1hKIVi6lLYEw
+         kYk5qhC42EgtuLbgOh5V3jHZV1X+zOwXvuq7YUV0chHi7KMm500r42dJ6p1A/LBikIkr
+         sFswB2pvOAG51ZwEu+SrQQlCxuX/Vea58GJq6j27nOJDa0ZKJhU20DoK+OkrW9mfy4nn
+         joHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:dkim-signature;
         bh=uPSGYcihSYfm5NnA+nu9YTkGLMVNgdMxJvMX/B7FahE=;
-        b=ENq/aeqH9XtJ7UUpuEoC6Na9nyJKLOZs7egErG8GymYCqeiagX+roKuNPn5WqCAv/z
-         q17oB7T+5HKch6zwbbemtw2FpUEuF4XbUGyAk2fRm9yyBpS0f4oplA4GaCddNn0rOotL
-         9pUrdF2cxO9e7d48VHBGdDB+p/fOsmB0K7+8LO3/SYAq/7CExOCYuUddALjyp3bFPURt
-         Z+4MxV2qmEK8IwtXBq5xxWFZNPl2i2UWfTefKIMEOBUWSNXiob9lqDkd8wF962Nzblri
-         tNyW/YWo9FYUK1sD14TMWyCmPS4fPcbOR1VSjezT/gzF2ZOtLt+sjHSDUeOOqr8A5ZO9
-         WIAw==
+        b=tmVHyyMZjP/QPT80StXTgB8Sh0dr5oRM4bTfmn42wYOcqhvx32Xa+Zjc7k0u9oiy9x
+         3QovrPZ8RhFBfUpxOOj0xXLNh9VyczR8e+VgmYHhx4+nowdA5BPSCw/2dnaWUSjKDnIp
+         a6AgBZhVx+jVy23TiKhxyWQ1cdj2bTT2Q97Lew54M4dtbF80Zhd9tgkggPYKHkwg4SYE
+         XqNAhOuJswhW66N1kApDo23YZ4o45iXpCyBPu6IHJTPEJa/QJlimr/U02NhdkU1+CjFJ
+         ZLEr02cKfsiwWxRNoiIR9L1ZP09UvSAmmV+RUQ+7X3J+wTCAH6BKOZ9Z8Y8wbxtUmVwQ
+         Ka2A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ctXrYWq3;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62e as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WMibWvRW;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62b as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <fmdefrancesco@gmail.com>
-Received: from mail-ej1-x62e.google.com (mail-ej1-x62e.google.com. [2a00:1450:4864:20::62e])
-        by gmr-mx.google.com with ESMTPS id x11si474450wrn.1.2021.04.26.12.28.57
+Received: from mail-ej1-x62b.google.com (mail-ej1-x62b.google.com. [2a00:1450:4864:20::62b])
+        by gmr-mx.google.com with ESMTPS id x6si1112954ljh.4.2021.04.26.12.19.58
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 26 Apr 2021 12:28:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62e as permitted sender) client-ip=2a00:1450:4864:20::62e;
+        Mon, 26 Apr 2021 12:19:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62b as permitted sender) client-ip=2a00:1450:4864:20::62b;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ctXrYWq3;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62e as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WMibWvRW;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62b as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ej1-x62e.google.com with SMTP id u3so7440380eja.12
-        for <outreachy-kernel@googlegroups.com>; Mon, 26 Apr 2021 12:28:57 -0700 (PDT)
+Received: by mail-ej1-x62b.google.com with SMTP id w3so86150850ejc.4
+        for <outreachy-kernel@googlegroups.com>; Mon, 26 Apr 2021 12:19:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
         bh=uPSGYcihSYfm5NnA+nu9YTkGLMVNgdMxJvMX/B7FahE=;
-        b=ctXrYWq3oz6pjzAXmFpyJd/LoD0/v+4tl7HlYy8uF5CLLgpv6M8UmNUPLsPomE0iA1
-         IbJjJZ6tjjLS4sM55IgbpW9yDGZzZn9pJHHIFxfMVa2gbPU25sdhChZCVgJUZyDvH62f
-         IvusHlYK/dmNk4ddrQjOcQclx+tRkOIOBAOx5eh9z4GyeD7KsOwiwr6GEsOB2U1r1ZLy
-         fu9vfUQP3WT+EHM1aJ8f2ZuYcJbO63u9p+9s7HLJ/tKORD6z95KhytxfMmgWW55FD4dh
-         hCnTI5CqbHAR0XGbUSFIdUl+yXW3JUsNHGjIphoFg2dAlbppxLp6deUJSN56Ovvet3sx
-         xZCw==
+        b=WMibWvRWHe9598QLkUkR1PFJFBTq3S8q3+KsuQPGrI1VvjLWu7dAuOSdipKauCEyOs
+         EIR/XLrvRe3w1J3V4JvNdHsXbQQFkOyRlaFgbVfw7iLGnVVpLYJday9poK7L/6qDrzeb
+         PtXav7gnPmbFWFh9txlaM3yj0I30KBzxf2pzLADRunxi7O2Kx8aAIphhKAF5don1vLRC
+         pqGhM37wXjQh/MOx1YgrRYjB6QyASjt9o0OcYSDu4jcJY8RHDu+Sj9Qo7qDHV/1Tg4Hz
+         aCr4MmJwR+WWOe9m8F1PLqXmGXDfZvl/tgia+E7ZRagvnAdVZ9XS9au1A/2X2mYNlOog
+         KUdQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
         bh=uPSGYcihSYfm5NnA+nu9YTkGLMVNgdMxJvMX/B7FahE=;
-        b=Abbrzj9hMk6S43ozV5HmWfP/+HY6Erkx9Bf5lOKavQ1dl+Hh5nBo2IXlMSKR/8aTMx
-         mN9zIocj7MTqS1EciCfCS5AhOt2qt+WTCrlfBBa3SOS15XuQr52bjlHff0Xw3h5oa+QB
-         izXvuKBqzaETi5/omt0B7rmTbxNOEo7vBdiAiiCg9vbEPYKLLZ0XgtRj9Y0k0Se22LqY
-         vuv7ymGIooOIvUoFBogZ9/MJhxm8Nm+nKM7Ln7dac0MBxnOLl+YDeiAlVDsHiZJ0/2dd
-         9Jb6wkmX2zde9uj3G5OTCGFR6a/k0ETgbgjkXeBrlYRNrnjEMBmShRta29h11w2zolZE
-         4Z7Q==
-X-Gm-Message-State: AOAM531kbR84DHAcwPnqHxlYzchjYpL1XoDNFOOLDoleiWCExdAGtMW3
-	nQYIAt8WYw8/dlWjzSWqdLEuVTaleAH6P9Lx
-X-Received: by 2002:a17:906:cb88:: with SMTP id mf8mr20576558ejb.541.1619465336843;
-        Mon, 26 Apr 2021 12:28:56 -0700 (PDT)
+        b=P5mIqFH10Dprrd0Aobn8HYU3+DiUELVMWOKNtUouUN+VBuNCa8JQSU/q53SL/udN87
+         3f+fco5+j5U81pvUepPyfPFthbe+mes24wpzTiZH5pcPr5/7UkMuW+ePGv0PLX/ALlEV
+         C0xMsPRPB0LMnWABER7GiAyoVvUhNs5Tk4uyKXzZJeURv+xzqUPoXBB/anN99fZpQL8a
+         kpr3C6l3dBHAmQwKu4Qk4i5LPQWST/R0E7PKbd+6yB+eXoocEMEUV97UtdSug0mjwKqd
+         v+2d1pe+nMy7Jlp0pCGMDTFqs026qMV3nxmKSq9glWfzUBsa27kJPOa69LUbhBedAVhe
+         FVWg==
+X-Gm-Message-State: AOAM533oe6v8z/XYRij+5IFEiPsRZsgyh1wVGxbgrdtNQmtCO+03CYl/
+	PfNG3GbOn0e7VZszIHp+ZeCozDYQ7ETZdA93
+X-Received: by 2002:a17:906:85da:: with SMTP id i26mr7946351ejy.287.1619464797585;
+        Mon, 26 Apr 2021 12:19:57 -0700 (PDT)
 Return-Path: <fmdefrancesco@gmail.com>
 Received: from linux.local (host-79-52-107-152.retail.telecomitalia.it. [79.52.107.152])
-        by smtp.gmail.com with ESMTPSA id p4sm807568ejr.81.2021.04.26.12.28.54
+        by smtp.gmail.com with ESMTPSA id k19sm11878059ejk.117.2021.04.26.12.19.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 26 Apr 2021 12:28:55 -0700 (PDT)
+        Mon, 26 Apr 2021 12:19:56 -0700 (PDT)
 From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
 To: outreachy-kernel@googlegroups.com,
-	dri-devel@lists.freedesktop.org,
+	dri-devel@lists.fredesktop.org,
 	linux-kernel@vger.kernel.org,
 	Alex Deucher <alexander.deucher@amd.com>,
 	=?UTF-8?q?Christian=20K=C3=B6nig?= <christian.koenig@amd.com>,
@@ -88,8 +88,8 @@ To: outreachy-kernel@googlegroups.com,
 	Matthew Wilcox <willy@infradead.org>
 Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
 Subject: [PATCH v3] drm/amd/amdgpu: Replace drm_modeset_lock_all with drm_modeset_lock
-Date: Mon, 26 Apr 2021 21:28:51 +0200
-Message-Id: <20210426192851.30155-1-fmdefrancesco@gmail.com>
+Date: Mon, 26 Apr 2021 21:19:52 +0200
+Message-Id: <20210426191952.24385-1-fmdefrancesco@gmail.com>
 X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
