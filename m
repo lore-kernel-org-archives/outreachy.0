@@ -1,106 +1,170 @@
-X-GM-THRID: 6532877789444440064
-X-Received: by 10.129.115.2 with SMTP id o2mr2964998ywc.89.1521054140301;
-        Wed, 14 Mar 2018 12:02:20 -0700 (PDT)
+X-GM-THRID: 6955730517423554560
+X-Received: by 2002:a17:902:b68a:b029:e9:7643:6335 with SMTP id c10-20020a170902b68ab02900e976436335mr24877939pls.2.1619532111317;
+        Tue, 27 Apr 2021 07:01:51 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.129.123.67 with SMTP id w64ls159430ywc.8.gmail; Wed, 14 Mar
- 2018 12:02:19 -0700 (PDT)
-X-Google-Smtp-Source: AG47ELvnYs1mmavSUcoxfXoAVrEyP3MJjrd4vsG3TNTU8srEwXiHLEOwW2pP8mGE+Bpf4gbt42Nl
-X-Received: by 10.13.205.199 with SMTP id p190mr2671517ywd.37.1521054139018;
-        Wed, 14 Mar 2018 12:02:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1521054138; cv=none;
+Received: by 2002:a63:3fc1:: with SMTP id m184ls8221057pga.5.gmail; Tue, 27
+ Apr 2021 07:01:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx65x08+tMOaXXXDXhHMxsJPBVvb1zHUvVbQH7G+jNUz4Gs2qUGCVIuV3LPlw3Mk/lgRy6l
+X-Received: by 2002:aa7:9798:0:b029:25d:e0c7:471b with SMTP id o24-20020aa797980000b029025de0c7471bmr23225564pfp.11.1619532109711;
+        Tue, 27 Apr 2021 07:01:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619532109; cv=none;
         d=google.com; s=arc-20160816;
-        b=ImUFlZs20cgvFCMdav5ELZSXP3Km6STYPBYtw1998V43LT0vlBXOCVwPByRi7JZEdD
-         010Sbz1aatR0B8ek18PzVdEvHwxMM5blcdhVYbKpDYNamviJA9u4240xk2yyzv2iBQ6/
-         6m07D6vOpWXGpY1si4pG7ch/LGDUG3Sbp5T88Abxad2c9h1poV1HMwjOOUXdKDRAfIVX
-         LJtQE1T9jwcr8NeN+EjoZhMDln9Hv0DN2zRU0wHd2gbMrVI/4d2n8cINoNYqVxjdFOl4
-         SuabRcF3C4xXjik5JuJctjCKzuwTrkVSO7Ie04bt31jfiZwzWaLrKyg3H1LM26bmBcaS
-         ndlQ==
+        b=Yxq1X7fH1ozfCcUIIAdGOni7GRgAyfs0r7nXcEigBNTPZyJQpuogDdn67EdYVf1+zW
+         7YJB9TYQSU2td5AsAVQk5CX4XrwYhHG0q42UtscR55WFG8/BZJmrs02rQLkZDE/KB3Cw
+         9JwmmCmfMS6SYc/XRggaUoUgKh2nYO6WpCKc3Vah7oHbOxT6V1QDJgJNwMMw8Hry9bgu
+         6M9pIPSYtiq453i7279lZLMZ5MGpw44HJnDqYsm/hJor5K9n+6ij2s765IX1S778YQpW
+         NxqQpWPVjIP8Iq22UD1nUNLN3w1tm+1gQQQJmlETFImhgxE7rgWxDN1Wg/Ou2ppx+Vrc
+         7U4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=w3TX/y6ibOwLq04pzTWW0bsLbyklQR+ic7KKztX3hXE=;
-        b=S5LSTqM8HJI0QXVgp28CSPBaL3BdCdZ7PJ5OAgZ4oY6cw5nMklGrqrQezIfoPmb+dh
-         43lpPKFPRyulbH5/A2vCy9dv2CcA8AhVHFh75B+wKBjGzw0CSWqTjPKjdevramkFISi1
-         jE9cly/+N9HrYhbjWsjEg55VrV24AL2D5mPJp5HvAgoaijVptozX0wgaN2hYO3NPAtGY
-         PG0/4mFbVL1yUMZMMNvlAXTWfvarNjQe7DBYSbERZHjRnMDrnusA7eTQGMF2ZV1YSsJX
-         7KMMR29VfbP6hNpSmy4exm2KWAq1WPQ95PVDB2/qqtsuoFeGo7uMlW2PTWlfy7wT9aFe
-         WU5A==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version;
+        bh=5oezZwmN9sGbSwNpx+/G/J/tHgNwc64YjzTNEg1fUnc=;
+        b=jnVzVKZ9i/jsBzV15VmmPL1GM3ZjcYZqV+/KMSr5g/apYSeldrsIUQC9kvYvwNZsau
+         6ghX9SOG17eENwTeSRa7miK5oBTo2HwvNBThceKRZaBWpbMbZZkWuQ7b8uYVGC9HtArs
+         233cOWOVk+9DSqZtaxS23cqlfUs7j4tcgRags1Xo3OlzQs3xn8JRhRG2nndHb70TNm98
+         IF58XkwKquysv2Kk/rUqy2/N53v/0jN5DXjgWrJqNOtYvdWKGbaYrhgQ/jGAJp1oUDLr
+         bdhc44TALQUQFFEVq2x3YXkt8tUewsUJ3yS6qMusU5CAq51vP+Zph3T6B+uMn27X+Y/7
+         inhQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=VMyw+GCm;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c00::232 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from mail-pf0-x232.google.com (mail-pf0-x232.google.com. [2607:f8b0:400e:c00::232])
-        by gmr-mx.google.com with ESMTPS id m72si266362ywd.2.2018.03.14.12.02.18
+       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.192.237 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
+Return-Path: <vthakkar@vaishalithakkar.in>
+Received: from p3plsmtpa07-08.prod.phx3.secureserver.net (p3plsmtpa07-08.prod.phx3.secureserver.net. [173.201.192.237])
+        by gmr-mx.google.com with ESMTPS id r141si1331387pgr.5.2021.04.27.07.01.49
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 14 Mar 2018 12:02:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c00::232 as permitted sender) client-ip=2607:f8b0:400e:c00::232;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 27 Apr 2021 07:01:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.192.237 as permitted sender) client-ip=173.201.192.237;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@ashoka.edu.in header.s=google header.b=VMyw+GCm;
-       spf=pass (google.com: domain of nishka.dasgupta_ug18@ashoka.edu.in designates 2607:f8b0:400e:c00::232 as permitted sender) smtp.mailfrom=nishka.dasgupta_ug18@ashoka.edu.in
-Received: by mail-pf0-x232.google.com with SMTP id a16so1808138pfn.9
-        for <outreachy-kernel@googlegroups.com>; Wed, 14 Mar 2018 12:02:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ashoka.edu.in; s=google;
-        h=from:to:cc:subject:date:message-id;
-        bh=w3TX/y6ibOwLq04pzTWW0bsLbyklQR+ic7KKztX3hXE=;
-        b=VMyw+GCmLS3sB1bXjLcPyJCqwAcuOyhwBF1FR4smCNXTxkQmMnop8t9d3MkwoYnzpI
-         P9BL/FQrwcus4vTnFJnMWF2ApSW/AIcP1mQ7g4n2F/R47oS7H9oJvhrTK5a4uqQgTZ38
-         YeZOI/hGibvNKg3EAAxWvFZf+q1OHAjvOGPT4=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=w3TX/y6ibOwLq04pzTWW0bsLbyklQR+ic7KKztX3hXE=;
-        b=mKegs9Lk2pU9E2NRgWQM9OqDW+zxMfAoCq3k1sm7qRHoYQX/SO3g55OG7JaeSgsJh2
-         UcjN6uMcn6cleZL/8eGptmc/vwV2GAD2oXQFkpacaOQhVuo3F/QRckxfBz+IkkkupXhG
-         tF3LVqWy9wrlDJS/uybtr9ieK25U3VJOrJGcGqdkVS8niRovTs5inAaEJTjVH0MxTJMG
-         CI8jbXcGtCza0HHIkOnZmlK7blXOfp+9MIGbC0f4Zw3zF2Xn2UKqhURPj4LHV/VPORl+
-         PNCaIWhfl9C3SQi6rI326htFMz6V66I9iTdY0BZ8DnYWOytxlUcB7MjKG9RKo9gibs98
-         DeqA==
-X-Gm-Message-State: AElRT7FHfgUCIoWbzEvkPUo3I2cZwjs8eaUn0zg2y78ZoShTfLGPeO1K
-	bj9MBx9fRnhNP9AClF+/pM07og==
-X-Received: by 10.99.107.6 with SMTP id g6mr4639764pgc.109.1521054138572;
-        Wed, 14 Mar 2018 12:02:18 -0700 (PDT)
-Return-Path: <nishka.dasgupta_ug18@ashoka.edu.in>
-Received: from localhost.localdomain ([139.59.85.247])
-        by smtp.gmail.com with ESMTPSA id i127sm6323674pfc.136.2018.03.14.12.02.16
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 14 Mar 2018 12:02:17 -0700 (PDT)
-From: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-To: gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
-Subject: [PATCH] staging: vc04_services: bcm2835-camera: Fix multiple line dereference
-Date: Wed, 14 Mar 2018 19:02:05 +0000
-Message-Id: <1521054125-29737-1-git-send-email-nishka.dasgupta_ug18@ashoka.edu.in>
-X-Mailer: git-send-email 2.7.4
+       spf=pass (google.com: domain of vthakkar@vaishalithakkar.in designates 173.201.192.237 as permitted sender) smtp.mailfrom=vthakkar@vaishalithakkar.in
+Received: from mail-ua1-f53.google.com ([209.85.222.53])
+	by :SMTPAUTH: with ESMTPSA
+	id bOHblTYSJVPnYbOHcls8x7; Tue, 27 Apr 2021 07:01:48 -0700
+X-CMAE-Analysis: v=2.4 cv=Hu6zp2fS c=1 sm=1 tr=0 ts=6088194c
+ a=nvrhNPqt7iNyxjAkBxserw==:117 a=IkcTkHD0fZMA:10 a=MKtGQD3n3ToA:10
+ a=3YhXtTcJ-WEA:10 a=pFd2Zl5z2vwA:10 a=ZZnuYtJkoWoA:10 a=pGLkceISAAAA:8
+ a=4RBUngkUAAAA:8 a=1XWaLZrsAAAA:8 a=Wm2QblFjYE37K_-gV7gA:9 a=QEXdDO2ut3YA:10
+ a=cDyXFGGuxjcA:10 a=_sbA2Q-Kp09kWB8D3iXc:22
+X-SECURESERVER-ACCT: vthakkar@vaishalithakkar.in
+Received: by mail-ua1-f53.google.com with SMTP id s2so18678752uap.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 27 Apr 2021 07:01:47 -0700 (PDT)
+X-Gm-Message-State: AOAM532+NrtpdYUIc35M8Vreld4TVn+p6jTyRU70WxlLOBcayFHakP3B
+	exccTOvmaoAshGm+EK5egrJHUE1mnOJ6CbC9JDk=
+X-Received: by 2002:ab0:7686:: with SMTP id v6mr3802383uaq.99.1619532107444;
+ Tue, 27 Apr 2021 07:01:47 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAK-LDbK2r+14JB-m4KuU-vy=DAUnv6gmZkEnRyY7Fx_=guk_Ew@mail.gmail.com>
+ <alpine.DEB.2.22.394.2104270910230.31629@hadrien> <4286858.zKxzTp498l@linux.local>
+ <alpine.DEB.2.22.394.2104271016330.32852@hadrien> <9d5c58a73781b0e40f0d925bd3de1a0bec598cd0.camel@gmail.com>
+In-Reply-To: <9d5c58a73781b0e40f0d925bd3de1a0bec598cd0.camel@gmail.com>
+From: Vaishali Thakkar <vthakkar@vaishalithakkar.in>
+Date: Tue, 27 Apr 2021 16:01:35 +0200
+X-Gmail-Original-Message-ID: <CAK-LDbKXH27ax0uQ6pzdGpg1q=9TWs3B-0P-FWmwFGeX3=vJ2g@mail.gmail.com>
+Message-ID: <CAK-LDbKXH27ax0uQ6pzdGpg1q=9TWs3B-0P-FWmwFGeX3=vJ2g@mail.gmail.com>
+Subject: Re: [Outreachy kernel] Outreachy project looking for more applicants
+To: Aline Santana Cordeiro <alinesantanacordeiro@gmail.com>
+Cc: Julia Lawall <julia.lawall@inria.fr>, 
+	"Fabio M. De Francesco" <fmdefrancesco@gmail.com>, Outreachy <outreachy-kernel@googlegroups.com>, 
+	Vineeth Pillai <Vineeth.Pillai@microsoft.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-CMAE-Envelope: MS4xfNfuUesrS0BaTgTZvItaNZqgtwPORtgaVJeURj4YowfNZEnM9dm4CLwAPAMVO/PkRWr2c3SZZhLvqVzfgT160dmY8DJQ8OG/Kw8nRm0RfRaRFxSOV02Y
+ h8ZGdLqw0fYWIsFxkZU7BG7oJN/y9Q+qM4e9D1A9FW1vvVKRR7vxod6V36kHyrTG8BI3mlJy+8BwcABJz4TTMGRYvsf1KAF/2/6XIdHb04JNff4r2FxPx2xl
 
-Fix multiple line dereference. Issue found with checkpatch.
+On Tue, Apr 27, 2021 at 3:01 PM Aline Santana Cordeiro
+<alinesantanacordeiro@gmail.com> wrote:
+>
+> Em ter, 2021-04-27 =C3=A0s 10:17 +0200, Julia Lawall escreveu:
+> >
+> >
+> > On Tue, 27 Apr 2021, Fabio M. De Francesco wrote:
+> >
+> > > On Tuesday, April 27, 2021 9:10:44 AM CEST Julia Lawall wrote:
+> > > > On Tue, 27 Apr 2021, Vaishali Thakkar wrote:
+> > > > > Hi All,
+> > > > >
+> > > > > I quickly wanted to mention that while most of our projects
+> > > > > have
+> > > > > enough applicants, the following project will still be happy to
+> > > > > have
+> > > > > more applicants:
+> > > > >
+> > > > > "Create a linux scheduler test suite to understand
+> > > > > functionality and
+> > > > > performance of Core Scheduling"
+> > > > >
+> > > > > Feel free to contact the mentor - Vineeth and apply for it if
+> > > > > that's
+> > > > > something you're interested in.
+> > > >
+> > > > This looks like a really cool project :)
+> > > >
+> > > > julia
+> > > >
+> > > It is for sure. It would have been my first choice. The only
+> > > problem is that
+> > > it is preferable to have level 4 experience with Bash and Python.
+> > > I'm afraid I
+> > > have no more than 0 and 1 levels respectively with those scripting
+> > > languages.
+> >
+> > Perhaps it is possible to learn...
+> >
+> > julia
+>
+> Hi all,
+>
+> I already contact Vineeth, I was trying to finish the initial tasks to
+> apply to Core Scheduling Project, but I'd better to apply to it soon.
+> :)
 
-Signed-off-by: Nishka Dasgupta <nishka.dasgupta_ug18@ashoka.edu.in>
----
- drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+Yes, you should at least keep the application in draft/in progress
+so that we have a way to see who all are interested in the
+project and are planning to submit the application. Also, you should
+be able to edit it until the deadline even after submitting so should
+be fine. :)
 
-diff --git a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
-index d226227..263babc 100644
---- a/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
-+++ b/drivers/staging/vc04_services/bcm2835-camera/bcm2835-camera.c
-@@ -287,9 +287,11 @@ static int buffer_prepare(struct vb2_buffer *vb)
- 
- static inline bool is_capturing(struct bm2835_mmal_dev *dev)
- {
-+	int mcc = MMAL_COMPONENT_CAMERA;
-+	int mcpc = MMAL_CAMERA_PORT_CAPTURE;
-+
- 	return dev->capture.camera_port ==
--	    &dev->
--	    component[MMAL_COMPONENT_CAMERA]->output[MMAL_CAMERA_PORT_CAPTURE];
-+	    &dev->component[mcc]->output[mcpc];
- }
- 
- static void buffer_cb(struct vchiq_mmal_instance *instance,
--- 
-2.7.4
+> Aline
+>
+> >
+> > >
+> > > Fabio
+> > > > > Thanks!
+> > > > >
+> > > > > --
+> > > > > Vaishali
+> > > > >
+> > > > > --
+> > > > > You received this message because you are subscribed to the
+> > > > > Google Groups
+> > > > > "outreachy-kernel" group. To unsubscribe from this group and
+> > > > > stop
+> > > receiving emails
+> > > > > from it, send an email to
+> > > > > outreachy-kernel+unsubscribe@googlegroups.com.
+> > > To view this
+> > > > > discussion on the web visit
+> > > > > https://groups.google.com/d/msgid/outreachy-kernel/CAK-LDbK2r%2B1=
+4JB-m4KuU-vy%3DDAUnv
+> > > > > 6gmZkEnRyY7Fx_%3Dguk_Ew%40mail.gmail.com.
+> > >
+> > >
+> > >
+> > >
+> > >
+> >
+>
+>
+> --
+> You received this message because you are subscribed to the Google Groups=
+ "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an=
+ email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgi=
+d/outreachy-kernel/9d5c58a73781b0e40f0d925bd3de1a0bec598cd0.camel%40gmail.c=
+om.
 
+
+
+--=20
+Vaishali
 
