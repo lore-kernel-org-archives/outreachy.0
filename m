@@ -1,116 +1,209 @@
 X-GM-THRID: 6955860329873014784
-X-Received: by 2002:a17:906:858:: with SMTP id f24mr17832267ejd.347.1619546376270;
-        Tue, 27 Apr 2021 10:59:36 -0700 (PDT)
+X-Received: by 2002:a6b:cdc6:: with SMTP id d189mr19116762iog.46.1619543679153;
+        Tue, 27 Apr 2021 10:14:39 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:906:acb:: with SMTP id z11ls4159615ejf.2.gmail; Tue, 27
- Apr 2021 10:59:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy+87m18biPUZDklKQWoPlB5QowKcjX1z8NI3nLYAPziWam1O/zsTY8rxZJOO4k5UMQGzxR
-X-Received: by 2002:a17:906:7191:: with SMTP id h17mr12164757ejk.192.1619546374782;
-        Tue, 27 Apr 2021 10:59:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619546374; cv=none;
+Received: by 2002:a92:cb86:: with SMTP id z6ls6007115ilo.11.gmail; Tue, 27 Apr
+ 2021 10:14:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzuZAnlHf/XvzhqjFic6SBfK/FBZChZzAsiS3cYAy36J+OmcRT9Kh4BtF2Buza0GYlyzTQq
+X-Received: by 2002:a05:6e02:1be7:: with SMTP id y7mr19826825ilv.300.1619543678350;
+        Tue, 27 Apr 2021 10:14:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619543678; cv=none;
         d=google.com; s=arc-20160816;
-        b=M87eCpK2EXug4Plbr3SOiZI7qFbFDq3rUPD+n9eZbhcANT3IMOl+fZ/cbOaUrWbSl6
-         jVZl90dQY4NJk3iBfBFc9hVg1UKJLjSXqOe3lk0yYUXO7NI9mt6JKcpxLguvQRVes81f
-         2jmuFma/cJtaeoV3E1MW6DCK4VUumYHII7Odaf/Jz2oP+3Xdzl8DlGZaSqN+3k7JGqrv
-         FWQfzAAPNBblGL5g9epbuLs83swkgbxBZ4n+8+LhfCpjGnYNT3bA1SHGDDP92FeykNP0
-         ZHWJ5xq3AH/vtL+Rqd4sPNNGFhr8i77HF6faixUBIS/bANTAL6JkJ0yTrv0vtNtugL3w
-         pvJQ==
+        b=Xx1rRkFlwToKDAKPq5q6XmNxnck/s6EYfKltStwMCIJCTo3g8zNKhX5TDq/IAz/jlw
+         MDC+t+N7DkEfrVovfLyxjSsbpPotkCe5tpzGBJyNT0AHTV7rYmvjdcekp8obAlE/QMtn
+         Wj2AovfuI0oP4ogVGTWbDs/fR2el/HRs3GaOWVab+qEjtWfp97a3FRy7QCl1QNDdXXDO
+         F8gxOwKKelqUXg6N9olZOlEzOAxuIRbQvmlYqLR6qLmAbJ5l02KDjMxyq1S/eyc2TfSx
+         fmCivmFg3dgfip1ZA7UMUamhjYyVF2w57LjLzSWULrwuu/o8klrFlteBFQvfr9W5jLGc
+         +K0w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=G5Yr+1f9iXCo/5AgGjX5uQ6iD7ktZRznZo6VR93dzJE=;
-        b=HE5kS0SGfALNADjAy0UWb9pHj3LjED3y+o/zSGRkNwIjrod+zNh/kMx/Vm3m4l1qjR
-         IbCuFHMG4fvOuZFluNjnFSn3JSmcvvQw/F0bP63g+HyeaoN0GgMwhw2SU3ynCk5Gj8ni
-         yPOdpWKCRk0kH6gOmp3UlFzrKZAb+DYObem5CRzKU3M4wNWazt4lVQJcDK5TQsB3bvnw
-         sT/QeUkML82ynD84wTOv/Wmbva90nzgeQkedE8S11/kSO7njwuBzLC9fGeDwp5XiglCw
-         58aPjlOarlZn3K93TtOpCXQmbml1Si9DuEVNv5eRwiesQ1txGk8ssUM2hDxCPV+ME+7N
-         5oOw==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=/Y/saDIaE1oTNFwre9AVxGG+GFyB+GgdU+mzdknvG3Q=;
+        b=obAdwV42dDyY0Nw7bKK/OGNAJsJr4k8GXiss6ry3fnylgphhUJHnZRkaeB6EGPJhuS
+         QHnBTV5XtRdDhyXgWD6dTPkUZaDrzWnagWt5NinEDc1xjgR1cPCY9E00riNHrzm/S14d
+         XV+p7t8J6LwLGXENqloJl9yPK4RqI895gsrr3ZwdmOFfaqpBpgE6soZhmKIIzxkdkn3g
+         2WIOje89pVdP443FbLPd0AFVQ3+ZD/yOaegQCjEQG4pYaAZcW06h8mcCm8BLbwP/crr9
+         xkIGrLLMptLIYpsGhjs0izsjtHEBsRoPfStzivqNz1f3pbeWcTgwFPRVhpu2htlZU8OC
+         52Vg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=L+2EuPqk;
-       spf=pass (google.com: domain of tawahpeggy98@gmail.com designates 2a00:1450:4864:20::42e as permitted sender) smtp.mailfrom=tawahpeggy98@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eyxzngxX;
+       spf=pass (google.com: domain of tawahpeggy98@gmail.com designates 2607:f8b0:4864:20::32e as permitted sender) smtp.mailfrom=tawahpeggy98@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <tawahpeggy98@gmail.com>
-Received: from mail-wr1-x42e.google.com (mail-wr1-x42e.google.com. [2a00:1450:4864:20::42e])
-        by gmr-mx.google.com with ESMTPS id y16si1818665edq.2.2021.04.27.10.59.34
+Received: from mail-ot1-x32e.google.com (mail-ot1-x32e.google.com. [2607:f8b0:4864:20::32e])
+        by gmr-mx.google.com with ESMTPS id c1si1919356iot.4.2021.04.27.10.14.38
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 27 Apr 2021 10:59:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of tawahpeggy98@gmail.com designates 2a00:1450:4864:20::42e as permitted sender) client-ip=2a00:1450:4864:20::42e;
+        Tue, 27 Apr 2021 10:14:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of tawahpeggy98@gmail.com designates 2607:f8b0:4864:20::32e as permitted sender) client-ip=2607:f8b0:4864:20::32e;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=L+2EuPqk;
-       spf=pass (google.com: domain of tawahpeggy98@gmail.com designates 2a00:1450:4864:20::42e as permitted sender) smtp.mailfrom=tawahpeggy98@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eyxzngxX;
+       spf=pass (google.com: domain of tawahpeggy98@gmail.com designates 2607:f8b0:4864:20::32e as permitted sender) smtp.mailfrom=tawahpeggy98@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x42e.google.com with SMTP id q9so6206871wrs.6
-        for <outreachy-kernel@googlegroups.com>; Tue, 27 Apr 2021 10:59:34 -0700 (PDT)
+Received: by mail-ot1-x32e.google.com with SMTP id x54-20020a05683040b6b02902a527443e2fso4848540ott.1
+        for <outreachy-kernel@googlegroups.com>; Tue, 27 Apr 2021 10:14:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=G5Yr+1f9iXCo/5AgGjX5uQ6iD7ktZRznZo6VR93dzJE=;
-        b=L+2EuPqk98tU6qWB8G330YLCLDGjzOAQlDVjANRM9PGd/GoQy+VnzY0pjwguxM6BNS
-         vPYvBQr24qFHqkN0F5ds2OBVWaVl1dc5qMPKZmWY2YL28ff+IEwzTd0PsCNylh2TzkEI
-         Bu63GCWlQXQgqyAzJJbizZDVYWU3iO9eA8INw5fgxVxHKxJXrMD2D2LzkHkbdia5M63X
-         hpiQluIpE603VYxwfkr+YNJcV1awIMR8nZ804IRRBHIjO0zInjXWASCb6MGVsIdvS6ys
-         5ELUkEzCRWvHlPloxmBGmtpDW6aA9VDpDfbcOfo5u1FN/euF1ZvPyu6fgCfnroVJIfTi
-         eoeA==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=/Y/saDIaE1oTNFwre9AVxGG+GFyB+GgdU+mzdknvG3Q=;
+        b=eyxzngxXxVCXTJrRF4duf5+O8/zgu6aapF2x0WZr21JrSEcMf/Uvd1xqHCZjDKKGjH
+         pcZ2R+9n3t4GsuhkncdIqNSIxs7sKOm1ecCPOgfBu2yluRYoDmPRY4rw1afSr7VWbwdq
+         s+64sIF7RsTykdOZGCrR8E0qE7beipSSdHUtin+BpBr+KmG9lPIPwYEG28SA/z94iQ9a
+         3W59LiqlM9OzK6kkrM2j2Io9ARBWvuINGh8mLVKnwuS7N9Scwb3YMg2AFF7OywfUDcbb
+         IMjoUMc//bZGnYSVAHhltS1PoMDItXKroCwxbl4qebPu3N71UrzPD2ohIe+awSn7YLjN
+         lqKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=G5Yr+1f9iXCo/5AgGjX5uQ6iD7ktZRznZo6VR93dzJE=;
-        b=fwAdHzHk0alwpE3oRAD/wJSD9TfKGNpZ7YsEolsX1ZpylitUpyuz0J/c3ut65jA1vd
-         JZL6cf/rtubjfzjFD5jVIzfYJAb4AbqpUOt4EOa8VzI5buRq9mSR3mVZLRIEt7roayj6
-         TtRAVTM5O3LhjCrvBAEcLrxQ8X28jYCEoEYaShabLoc9cs+AG8/sRWr9I2JQM1Wa8NI6
-         /nZxdEzeFi7QPZNpdfJGUGr4J8yQAqyuXGGCXyUVQEZtiAIk/1PycqAXfAewNcKJjvtC
-         6oXPe1eEhIxR5uwzl8ggvU29qeGX8Mc7bmcobAtaG7Mg/ISd5TiARMIR/IagRQ1qha8N
-         LylA==
-X-Gm-Message-State: AOAM531IK0d0xjyoX8rTB5sAVi8eXDZIXCzo00Zm6V1F6pM02P2jDwnU
-	fmbK6I5beCDNDFEo8qNLKtE=
-X-Received: by 2002:adf:f20b:: with SMTP id p11mr16036488wro.244.1619546374643;
-        Tue, 27 Apr 2021 10:59:34 -0700 (PDT)
-Return-Path: <tawahpeggy98@gmail.com>
-Received: from peggy-Lenovo-V130-15IKB ([154.72.153.193])
-        by smtp.gmail.com with ESMTPSA id p18sm4600597wrs.68.2021.04.27.10.59.32
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Apr 2021 10:59:34 -0700 (PDT)
-Date: Tue, 27 Apr 2021 13:59:27 -0400
-From: Tawah Peggy <tawahpeggy98@gmail.com>
-To: Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH v2] Staging: greybus: Add () around gcam macro.
-Message-ID: <20210427175922.GA24978@peggy-Lenovo-V130-15IKB>
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=/Y/saDIaE1oTNFwre9AVxGG+GFyB+GgdU+mzdknvG3Q=;
+        b=SSLy/5elo48q3eGog1VZUpfo1/+WYuTA/t7w7aWfYslkiTtbFiNSwx5tmUlS1qE/zS
+         ZcovINPu5h7juqxpURy5T+pyblHPwcIG9zMNPwLZcp8gheMhNXbhAJqFC+RB81hpicCV
+         Yn67Nm6VtD3VN8K77hILcDt6q3ZPgeALTaI0G6NqJHETNFGNdF4o2jubGRr3ZqxkiFgg
+         WJpEY/uhNc5gIOGbEkF8n+Fi97mSYL1fJf5mMXfd9GTDHSuhgkMWyBlF7iLh7XqJXjqG
+         2U0suyBNCHlREIuch1IHMIgYnf1zPqC+ys6zH8bFp2rJ/d8p6gDOXjC4gXB/5Vn/mlb1
+         3bBg==
+X-Gm-Message-State: AOAM532MInaASjtZJI4X+3XH5eHFtMsBqkHeFJCaWAHejsDJwjNMhViW
+	nGhqYeMhHdYrnv/SoUfDDFYjF/Jhw+I+kPhBsvQ=
+X-Received: by 2002:a05:6830:22f4:: with SMTP id t20mr12915966otc.196.1619543678068;
+ Tue, 27 Apr 2021 10:14:38 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.9.4 (2018-02-28)
+References: <20210427170945.GA23366@peggy-Lenovo-V130-15IKB> <20210427171152.GB235567@casper.infradead.org>
+In-Reply-To: <20210427171152.GB235567@casper.infradead.org>
+From: PEGGY TAWAH <tawahpeggy98@gmail.com>
+Date: Tue, 27 Apr 2021 18:14:25 +0100
+Message-ID: <CADT-=4=UBJu90JHehHyOU518yFtS3egfZLG_tYDNkv8aVcJmVA@mail.gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH v2] Staging:greybus: Add () around gcam macro.
+To: Matthew Wilcox <willy@infradead.org>
+Cc: Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	outreachy-kernel <outreachy-kernel@googlegroups.com>
+Content-Type: multipart/alternative; boundary="000000000000a12ada05c0f765b2"
 
-checkpatch.pl suggest addition of parenthesis around the gcam macro.
+--000000000000a12ada05c0f765b2
+Content-Type: text/plain; charset="UTF-8"
 
-Signed-off-by: Tawah Peggy <tawahpeggy98@gmail.com>
+Okay sorry about that.let me check again.
 
----
- drivers/staging/greybus/camera.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+On Tue, Apr 27, 2021, 6:12 PM Matthew Wilcox <willy@infradead.org> wrote:
 
-diff --git a/drivers/staging/greybus/camera.c b/drivers/staging/greybus/camera.c
-index 324a26430f71..ae49e37a87e9 100644
---- a/drivers/staging/greybus/camera.c
-+++ b/drivers/staging/greybus/camera.c
-@@ -180,9 +180,9 @@ static const struct gb_camera_fmt_info *gb_camera_get_format_info(u16 gb_fmt)
- 
- #define GB_CAMERA_MAX_SETTINGS_SIZE	8192
- 
--#define gcam_dbg(gcam, format...)	dev_dbg(&gcam->bundle->dev, format)
--#define gcam_info(gcam, format...)	dev_info(&gcam->bundle->dev, format)
--#define gcam_err((gcam), format...)	dev_err(&gcam->bundle->dev, format)
-+#define gcam_dbg(gcam, format...)	dev_dbg(&(gcam)->bundle->dev, format)
-+#define gcam_info(gcam, format...)	dev_info(&(gcam)->bundle->dev, format)
-+#define gcam_err(gcam, format...)	dev_err(&(gcam)->bundle->dev, format)
- 
- static int gb_camera_operation_sync_flags(struct gb_connection *connection,
- 					  int type, unsigned int flags,
--- 
-2.17.1
+> On Tue, Apr 27, 2021 at 01:09:52PM -0400, Tawah Peggy wrote:
+> > checkpatch.pl suggested to add parenthesis around the gcam macro
+> > variable.
+> >
+> > Signed-off-by: Tawah Peggy <tawahpeggy98@gmail.com>
+> >
+> > ---
+> > changes in v2:
+> >   - Add parenthesis around other gcam macro in the same paragraph and
+> >     also remove previous parenthesis since it was added in the wrong
+> >     place
+>
+> Looks like you sent v1 of the patch
+>
+> >  drivers/staging/greybus/camera.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/staging/greybus/camera.c
+> b/drivers/staging/greybus/camera.c
+> > index cdbb42cd413b..324a26430f71 100644
+> > --- a/drivers/staging/greybus/camera.c
+> > +++ b/drivers/staging/greybus/camera.c
+> > @@ -182,7 +182,7 @@ static const struct gb_camera_fmt_info
+> *gb_camera_get_format_info(u16 gb_fmt)
+> >
+> >  #define gcam_dbg(gcam, format...)    dev_dbg(&gcam->bundle->dev, format)
+> >  #define gcam_info(gcam, format...)   dev_info(&gcam->bundle->dev,
+> format)
+> > -#define gcam_err(gcam, format...)    dev_err(&gcam->bundle->dev, format)
+> > +#define gcam_err((gcam), format...)  dev_err(&gcam->bundle->dev, format)
+> >
+> >  static int gb_camera_operation_sync_flags(struct gb_connection
+> *connection,
+> >                                         int type, unsigned int flags,
+> > --
+> > 2.17.1
+> >
+> > --
+> > You received this message because you are subscribed to the Google
+> Groups "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send
+> an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To view this discussion on the web visit
+> https://groups.google.com/d/msgid/outreachy-kernel/20210427170945.GA23366%40peggy-Lenovo-V130-15IKB
+> .
+>
 
+--000000000000a12ada05c0f765b2
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto">Okay sorry about that.let me check again.</div><br><div c=
+lass=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Apr 27, =
+2021, 6:12 PM Matthew Wilcox &lt;<a href=3D"mailto:willy@infradead.org">wil=
+ly@infradead.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" =
+style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">On =
+Tue, Apr 27, 2021 at 01:09:52PM -0400, Tawah Peggy wrote:<br>
+&gt; <a href=3D"http://checkpatch.pl" rel=3D"noreferrer noreferrer" target=
+=3D"_blank">checkpatch.pl</a> suggested to add parenthesis around the gcam =
+macro<br>
+&gt; variable.<br>
+&gt; <br>
+&gt; Signed-off-by: Tawah Peggy &lt;<a href=3D"mailto:tawahpeggy98@gmail.co=
+m" target=3D"_blank" rel=3D"noreferrer">tawahpeggy98@gmail.com</a>&gt;<br>
+&gt; <br>
+&gt; ---<br>
+&gt; changes in v2:<br>
+&gt;=C2=A0 =C2=A0- Add parenthesis around other gcam macro in the same para=
+graph and<br>
+&gt;=C2=A0 =C2=A0 =C2=A0also remove previous parenthesis since it was added=
+ in the wrong<br>
+&gt;=C2=A0 =C2=A0 =C2=A0place<br>
+<br>
+Looks like you sent v1 of the patch<br>
+<br>
+&gt;=C2=A0 drivers/staging/greybus/camera.c | 2 +-<br>
+&gt;=C2=A0 1 file changed, 1 insertion(+), 1 deletion(-)<br>
+&gt; <br>
+&gt; diff --git a/drivers/staging/greybus/camera.c b/drivers/staging/greybu=
+s/camera.c<br>
+&gt; index cdbb42cd413b..324a26430f71 100644<br>
+&gt; --- a/drivers/staging/greybus/camera.c<br>
+&gt; +++ b/drivers/staging/greybus/camera.c<br>
+&gt; @@ -182,7 +182,7 @@ static const struct gb_camera_fmt_info *gb_camera_=
+get_format_info(u16 gb_fmt)<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 #define gcam_dbg(gcam, format...)=C2=A0 =C2=A0 dev_dbg(&amp;gcam=
+-&gt;bundle-&gt;dev, format)<br>
+&gt;=C2=A0 #define gcam_info(gcam, format...)=C2=A0 =C2=A0dev_info(&amp;gca=
+m-&gt;bundle-&gt;dev, format)<br>
+&gt; -#define gcam_err(gcam, format...)=C2=A0 =C2=A0 dev_err(&amp;gcam-&gt;=
+bundle-&gt;dev, format)<br>
+&gt; +#define gcam_err((gcam), format...)=C2=A0 dev_err(&amp;gcam-&gt;bundl=
+e-&gt;dev, format)<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 static int gb_camera_operation_sync_flags(struct gb_connection *=
+connection,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0int type, unsigned int flags,<br>
+&gt; -- <br>
+&gt; 2.17.1<br>
+&gt; <br>
+&gt; -- <br>
+&gt; You received this message because you are subscribed to the Google Gro=
+ups &quot;outreachy-kernel&quot; group.<br>
+&gt; To unsubscribe from this group and stop receiving emails from it, send=
+ an email to <a href=3D"mailto:outreachy-kernel%2Bunsubscribe@googlegroups.=
+com" target=3D"_blank" rel=3D"noreferrer">outreachy-kernel+unsubscribe@goog=
+legroups.com</a>.<br>
+&gt; To view this discussion on the web visit <a href=3D"https://groups.goo=
+gle.com/d/msgid/outreachy-kernel/20210427170945.GA23366%40peggy-Lenovo-V130=
+-15IKB" rel=3D"noreferrer noreferrer" target=3D"_blank">https://groups.goog=
+le.com/d/msgid/outreachy-kernel/20210427170945.GA23366%40peggy-Lenovo-V130-=
+15IKB</a>.<br>
+</blockquote></div>
+
+--000000000000a12ada05c0f765b2--
 
