@@ -1,333 +1,178 @@
 X-GM-THRID: 6955401561206947840
-X-Received: by 2002:aa7:df8f:: with SMTP id b15mr4453117edy.68.1619529929113;
-        Tue, 27 Apr 2021 06:25:29 -0700 (PDT)
+X-Received: by 2002:a17:906:494d:: with SMTP id f13mr5471419ejt.490.1619524749056;
+        Tue, 27 Apr 2021 04:59:09 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6402:50cd:: with SMTP id h13ls686063edb.3.gmail; Tue, 27
- Apr 2021 06:25:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxw+iY4Ujn8gWqR0hVN8Po78slb/9oekUUUlV0egHHf209IfTkrytFgHJKw7eYJjNHhwkk/
-X-Received: by 2002:a05:6402:cb6:: with SMTP id cn22mr4340064edb.302.1619529927760;
-        Tue, 27 Apr 2021 06:25:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619529927; cv=none;
+Received: by 2002:a17:906:a194:: with SMTP id s20ls2640557ejy.9.gmail; Tue, 27
+ Apr 2021 04:59:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJym5JXM5t9y1rQel3tqqsOZPWvMNPvEkSKgf5DKVXjT3NrdCa5WhQMHT9PceImYD4R4JBPO
+X-Received: by 2002:a17:906:494d:: with SMTP id f13mr5471329ejt.490.1619524747567;
+        Tue, 27 Apr 2021 04:59:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619524747; cv=none;
         d=google.com; s=arc-20160816;
-        b=I44ACTuNECU/uo8JawwHepSnDMGblasZPpst4enRNWmXuqbSaUQAuzuqYYPxHqjlPL
-         r9D1j9MbDoKjKxeODTfSdJ8kATVHk0CYYGeEMwNMOk+FavtFsSwxt/vueDb6goCOKbOA
-         6c6TwIDFCWYStybu4SUpk5/gYeDuKy0c7OYpxuUCE/qgT8WKRUHlNQ5mZwv2N58Y49hy
-         v4Pf/KlfedZRjuh8DZPvk8zVQxRbOx5bwIN5M0qZh1R5TYVqme3avRPKoz/oTSEWB18N
-         8Hz2bBmp7HdcFwJYsfMh2PHZY+iGRqR8VPH6cXa/68IO8IpGDFLqFzq1o590fWpFz2NW
-         xVQw==
+        b=L0HkVy/SE84rwNXUO41/9nZXsONMZPx7ucYpC4UxqZp1uJ/9BLfCzBPqFTZPU1pkOc
+         5p5KiGjS3GQf8P4DidTtB+6rHQ2nBOqnXQfK9xkY9/q7K7uCEbN87Aq5pKSIH3HCX/WC
+         WvS+Itmid5KmKNx1OgN2hi5UvLw8h9H80R3rKfERjz0gXcouEu2HBdNirruZBMtyCge5
+         4kqXuaG7FYUke42OC7Zapf9hd3FLU5lp0UgPUT0YaGZAgSelqSAQfXP7K9UZ7lLTWxe5
+         S8sqh779UC3/nO9yRZZ5PE0h2k+x624+cQZgNdahfKJGABsWqg7mnLT8DAQ95zCxynGQ
+         9LLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=ox97eQahZzXAKhDhV83RnJG9UlXriZW0N3GFvMTDDRY=;
-        b=Tn9hPfk/KxY0zvT0vx4yHCmPTFhLXqKFIIfUeFKS/lY80Cjx+QmY3XRbWIkrhwHz1X
-         34hgY3ZfC+5zrfch6KFVB1FYzzAwLdHN8hFrdctwZf/mbiOAdJk6ABCZEZUHmAPnl/b4
-         Hdw4QtzdCXG1Zfj9c4B0d5yuTEQkWajZIUp9k5wwcb59U6MjByc0Y7/FNPYtipywlqhP
-         C9AWkUv2kx8DbZShyazx99Pa+749NiYXsMtsA/Swe47FzGWU4PbFyvUVjo4xqyl56+I5
-         kqMxG/PWlCWS9Kz5UezUNwZDWqpUwqN8BoUOwt66ExfLYDcEKaj+U3zaEruB6Gif5Sku
-         5B0Q==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=z8m8em6nxLodDrYPSG/Gs5MYAM2kwAYCaYB3DrEVfIg=;
+        b=RDklCVm31KWA7pPrAuEHUVxLU5Rbo7eBSUWHjB+WHwdWWilcgDvgetSiC+2vJmUAOo
+         8wzGBuRccD5tYy+7OwnC8ueNUfI/eXjH9OapZB8mM716PniP0XvdRIEsPcWjHNahp1Lw
+         +5L5Z98QGA2QmLumXXPs4LzeZyoaAVTbl1SFQDAvVIM19CxszYj1Ih+qZL4/FhUWceWH
+         3PM1EPJTKV06cYzIeO7fAl2oGb8qI42uixAiC2xSiNKcvcrBy3u6+Cg5qD23pLmUBKCS
+         iZEgkqcvIwm8atbhLgcz00S6tP76KMudHJpE5brQGsjXoxsrNNO7Ura3KI2AHSUmRJ5F
+         DoCQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PqcDQe91;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62a as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="Zw/itsC0";
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::532 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <fmdefrancesco@gmail.com>
-Received: from mail-ej1-x62a.google.com (mail-ej1-x62a.google.com. [2a00:1450:4864:20::62a])
-        by gmr-mx.google.com with ESMTPS id h3si309955edz.1.2021.04.27.06.25.27
+Received: from mail-ed1-x532.google.com (mail-ed1-x532.google.com. [2a00:1450:4864:20::532])
+        by gmr-mx.google.com with ESMTPS id y16si1758312edq.2.2021.04.27.04.59.07
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 27 Apr 2021 06:25:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62a as permitted sender) client-ip=2a00:1450:4864:20::62a;
+        Tue, 27 Apr 2021 04:59:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::532 as permitted sender) client-ip=2a00:1450:4864:20::532;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PqcDQe91;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::62a as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="Zw/itsC0";
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::532 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ej1-x62a.google.com with SMTP id u17so89581723ejk.2
-        for <outreachy-kernel@googlegroups.com>; Tue, 27 Apr 2021 06:25:27 -0700 (PDT)
+Received: by mail-ed1-x532.google.com with SMTP id q6so10327860edr.3
+        for <outreachy-kernel@googlegroups.com>; Tue, 27 Apr 2021 04:59:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=ox97eQahZzXAKhDhV83RnJG9UlXriZW0N3GFvMTDDRY=;
-        b=PqcDQe91kPsyWJo6gdTIZKgJ+AiBJb8Y0Ch1VIpEO/XL6a+vuMJHPTtGV03zmbqY3y
-         leYaYqT2SGzNBk8HwkZHoPuPSOyKixM96fZ7JBZG9ATjOr4ey+aw+t9AroEkWsDkh8RC
-         +jYebJzXlNUnqvsSp5Fw9kQ15YYj4xBoQ/9dK7qiv49NSOIoPazp7Vek3mp+CIYFo1wl
-         jof7l/Y0RN4zJ7hFXjuXM5O+kHKZGEuCk2g1wCSeyWuR2VFatJpvzUS0hwlov5MNMHcM
-         EzQNcuAerxbtpG2NuxGfxC+Oxlo5skm/WXmCXI6015WZ0sba+GLCi1NBsTGfbQUcr4tQ
-         UC+A==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=z8m8em6nxLodDrYPSG/Gs5MYAM2kwAYCaYB3DrEVfIg=;
+        b=Zw/itsC0IjGyghTlzOBWrKgLxqfbtcabyqvh7qYnGHVV4ekpTdK2Pl8j/7DYHVRUYW
+         Mi5Sf0ZB5RfrXQA53rjcAS5OwpJeTmTeO5tWiaZNnYpE/gzUDjRyqQUAu/5c63p1cHaW
+         sTL4HbtRl0esrnOfOpYM1IXoMhgkKOiutuBpidnpePAVTFMSw/n1vQarO+VYK0KB/WFs
+         ddiwyklNITaTqHriSVT/NwEgdYWb3atnhaJ/ZqNDVt9PRMXWXAcGo6TfrNy2qgD5AZAF
+         Y8WRyvH62gDcXsJ/xwl3Of1TlRXWB+ULI3ShDAUJiTGWOI0mQkdlHitjN4GiZ6Rqogp/
+         m8XQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=ox97eQahZzXAKhDhV83RnJG9UlXriZW0N3GFvMTDDRY=;
-        b=g4ZL8zcrd2+B4EEM6crFBMIGa1I9rCFLd2UWTdk7UOMDmZmCBWmKIB4qj+lsMmRzAl
-         NBtN6HF1EP5eBedVwGMjcQhOb2ATDcXlEuDorXALnUIKoK9QDSBXJMKQXTsbn2ws3qxe
-         dpNXTp3OJ7m5pryypvEGV0MQI5A6HsVXCjx/QtRwcMHBgO6M7ZM7y0rM2NH3S7mgFt73
-         wvMS2uZX/DGroIlm3mdcKUjnZ1lsea5L89FLmd3lhJUz1EBApHZWu8GLa9T1ywu1Uf0X
-         GRj3GGiu3AfaSKs+rXnvtuzPaRb7/8b166aHVYnQjIUS1kBYX5d5HhrtqYa9aROwyDpf
-         MuMA==
-X-Gm-Message-State: AOAM5302SsVoxqTT7CpecDAhYhjUkJVS3K9brjAIiayqbn5jwxygtUJz
-	Zmmj7EGFFP2qN+1BpXW+SDcZe7rmbd4aeO0z
-X-Received: by 2002:a17:906:2c55:: with SMTP id f21mr10774146ejh.41.1619529927216;
-        Tue, 27 Apr 2021 06:25:27 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=z8m8em6nxLodDrYPSG/Gs5MYAM2kwAYCaYB3DrEVfIg=;
+        b=MMulXzPtaClHRaoB5fwr6a6zQQjN+aBwmmakjUaBiiyCvniZpziJIfvfMOASSSvjqI
+         /PJRy9jGZcTVK2GkOniPcjs7F+gAmR185tOiLJ6gxlzZB9hclawKEP6aBIAeH8Waf8aL
+         h6E8I6RotbnTGiahdJ2OJHxJTWIM7jzwc2E25lxRi1IwZjrsTIHf2fauRKVTBiY8rGsI
+         Lw3tQY1L9FVAEcp54A/tQhRbSMZLMtZ1yI+65/hlRhHoE3/+IwuA8kVjxxJrvY4MRIyI
+         Z0pSjCNcT7CwYBbpXGVING9lRqLPPht0+FXRIGXyUQsHXXiQqa6LE00SvXQjoDVbOS8i
+         Ay/w==
+X-Gm-Message-State: AOAM5334icC+TIKmEWZYaGuPoV5b0XEVjr4AOXyg/yeYWONo7cMXj3FW
+	SKKWLbdxUAbPkhget4RkifY=
+X-Received: by 2002:aa7:cc94:: with SMTP id p20mr3901758edt.353.1619524747377;
+        Tue, 27 Apr 2021 04:59:07 -0700 (PDT)
 Return-Path: <fmdefrancesco@gmail.com>
 Received: from linux.local (host-79-52-107-152.retail.telecomitalia.it. [79.52.107.152])
-        by smtp.gmail.com with ESMTPSA id r5sm2414458eds.44.2021.04.27.06.25.25
+        by smtp.gmail.com with ESMTPSA id v5sm2246530edx.87.2021.04.27.04.59.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 27 Apr 2021 06:25:26 -0700 (PDT)
+        Tue, 27 Apr 2021 04:59:06 -0700 (PDT)
 From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	David Kershner <david.kershner@unisys.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	Daniel Vetter <daniel@ffwll.ch>,
-	Matthew Wilcox <willy@infradead.org>
-Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Subject: [Outreachy kernel] [PATCH v4] staging: unisys: visorhba: Convert module from IDR to XArray
-Date: Tue, 27 Apr 2021 15:25:22 +0200
-Message-Id: <20210427132522.14547-1-fmdefrancesco@gmail.com>
-X-Mailer: git-send-email 2.31.1
+To: Matthew Wilcox <willy@infradead.org>
+Cc: outreachy-kernel@googlegroups.com, linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, David Kershner <david.kershner@unisys.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Daniel Vetter <daniel@ffwll.ch>
+Subject: Re: [Outreachy kernel] [PATCH v3] staging: unisys: visorhba: Convert module from IDR to XArray
+Date: Tue, 27 Apr 2021 13:59:05 +0200
+Message-ID: <9700190.zQFrKL04sV@linux.local>
+In-Reply-To: <20210426220327.GT235567@casper.infradead.org>
+References: <20210426184245.12269-1-fmdefrancesco@gmail.com> <107967147.Ip005GxVp3@linux.local> <20210426220327.GT235567@casper.infradead.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
 
-Converted visorhba from IDR to XArray. The abstract data type XArray is
-more memory-efficient, parallelisable and cache friendly. It takes
-advantage of RCU to perform lookups without locking.
+On Tuesday, April 27, 2021 12:03:27 AM CEST Matthew Wilcox wrote:
+> On Mon, Apr 26, 2021 at 11:15:40PM +0200, Fabio M. De Francesco wrote:
+> > On Monday, April 26, 2021 9:21:01 PM CEST Matthew Wilcox wrote:
+> > > On Mon, Apr 26, 2021 at 08:42:45PM +0200, Fabio M. De Francesco wrote:
+> > > > +static void setup_scsitaskmgmt_handles(struct xarray *xa, struct
+> > 
+> > uiscmdrsp *cmdrsp,
+> > 
+> > > >  				       wait_queue_head_t *event,
+> > 
+> > int *result)
+> > 
+> > > >  {
+> > > > 
+> > > > -	/* specify the event that has to be triggered when this */
+> > > > -	/* cmd is complete */
+> > > > -	cmdrsp->scsitaskmgmt.notify_handle =
+> > > > -		simple_idr_get(idrtable, event, lock);
+> > > > -	cmdrsp->scsitaskmgmt.notifyresult_handle =
+> > > > -		simple_idr_get(idrtable, result, lock);
+> > > > +	u32 id;
+> > > > +	int ret;
+> > > > +
+> > > > +	/* specify the event that has to be triggered when this cmd is
+> > 
+> > complete */
+> > 
+> > > > +	id = (u32)cmdrsp->scsitaskmgmt.notify_handle;
+> > > > +	ret = xa_alloc_irq(xa, &id, event, XA_LIMIT(1, INT_MAX),
+> > 
+> > GFP_KERNEL);
+> > 
+> > > OK, think this one through a bit.  When xa_alloc_irq() stores the ID 
+that
+> > > it assigned into 'id', what happens to it next?
+> > 
+> > Oh, I overlooked that... The ID in 'id' is lost when the function exits 
+and
+> > the stack frame is unwound.
+> > 
+> > Now I have another problem: xa_alloc_irq() writes id u32* but I have an 
+u64*
+> > in 'id'. What happens if I cast 'id' to an u32* when passing it to
+> > xa_alloc_irq()?
+> > 
+> > u64 *id;
+> > int ret;
+> > id = &cmdrsp->scsitaskmgmt.notify_handle;
+> > ret = xa_alloc_irq(xa, (u32 *)id, event, XA_LIMIT(1, INT_MAX), 
+GFP_KERNEL);
+> > 
+> > Do I destroy the information stored in 'id' with that cast?
+> 
+> That is a great question!  That would be a really serious bug because
+> it behaves differently on big and little endian systems.  That is, on a
+> little endian system, a pointer to a u64 can be treated as a pointer to a
+> u32 and it will write to the bottom 32 bits of the u64.  On a big endian
+> system, treating a pointer to a u64 as if it's a pointer to a u32 means
+> you write to the _top_ 32 bits of the u64, and things go wrong from there!
+> 
+> Similarly, if you have a u16, you can't pass a pointer to it, because
+> the called function has no idea that it's only 16 bits, and will do a
+> 32-bit store to it, overwriting the 16 bits after it.
+> 
+> So you need to pass a pointer to a u32 on the stack, and then copy the
+> id out of it afterwards.
+>
+As far as I understand, in setup_scsitaskmgmt_handles(), the task of  
+xa_alloc_irq() is: find two empty entries in 'xa', store the indexes into the 
+'id'  pointer (before the first call this is set to &cmdrsp-
+>scsitaskmgmt.notify_handle, and before the second call it is changed to 
+&cmdrsp->scsitaskmgmt.notifyresult_handle), then store the entries at their 
+respective indexes.
 
-Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
----
+Indexes that xa_alloc_* set are of type u32*, so why not just change the type 
+of notify_handle and notifyresult_handle from u64 to u32?
 
-Changes from v3: Matthew Wilcox found that the XArray was not
-initialized: now it is. Changed types handles from u64 to u32 because
-they can't work as arguments of xa_alloc_irq() and u32 is enough large
-for storing XArray indexes.
-Changes from v2: Some residual errors from v1 were not fixed in v2. Now
-they have been removed.
-Changes from v1: After a first review by Matthew Wilcox, who found a
-series of errors and gave suggestions on how to fix them, I rewrote a
-larger part of the patch.
+Furthermore, I cannot understand why those indexes should be passed in and out 
+as arguments of the function . It seems that they are not needed anywhere else 
+in that file. Are they?
 
- drivers/staging/unisys/include/iochannel.h    |  4 +-
- .../staging/unisys/visorhba/visorhba_main.c   | 89 ++++++-------------
- 2 files changed, 28 insertions(+), 65 deletions(-)
+Maybe that I'm still missing something...
 
-diff --git a/drivers/staging/unisys/include/iochannel.h b/drivers/staging/unisys/include/iochannel.h
-index 9ef812c0bc42..fac89eac148b 100644
---- a/drivers/staging/unisys/include/iochannel.h
-+++ b/drivers/staging/unisys/include/iochannel.h
-@@ -474,8 +474,8 @@ struct uiscmdrsp_scsitaskmgmt {
- 	enum task_mgmt_types tasktype;
- 	struct uisscsi_dest vdest;
- 	u64 handle;
--	u64 notify_handle;
--	u64 notifyresult_handle;
-+	u32 notify_handle;
-+	u32 notifyresult_handle;
- 	char result;
- 
- #define TASK_MGMT_FAILED 0
-diff --git a/drivers/staging/unisys/visorhba/visorhba_main.c b/drivers/staging/unisys/visorhba/visorhba_main.c
-index 4455d26f7c96..2b6cde254f17 100644
---- a/drivers/staging/unisys/visorhba/visorhba_main.c
-+++ b/drivers/staging/unisys/visorhba/visorhba_main.c
-@@ -6,10 +6,10 @@
- 
- #include <linux/debugfs.h>
- #include <linux/kthread.h>
--#include <linux/idr.h>
- #include <linux/module.h>
- #include <linux/seq_file.h>
- #include <linux/visorbus.h>
-+#include <linux/xarray.h>
- #include <scsi/scsi.h>
- #include <scsi/scsi_host.h>
- #include <scsi/scsi_cmnd.h>
-@@ -82,7 +82,7 @@ struct visorhba_devdata {
- 	 * allows us to pass int handles back-and-forth between us and
- 	 * iovm, instead of raw pointers
- 	 */
--	struct idr idr;
-+	struct xarray xa;
- 
- 	struct dentry *debugfs_dir;
- 	struct dentry *debugfs_info;
-@@ -182,71 +182,40 @@ static struct uiscmdrsp *get_scsipending_cmdrsp(struct visorhba_devdata *ddata,
- 	return NULL;
- }
- 
--/*
-- * simple_idr_get - Associate a provided pointer with an int value
-- *		    1 <= value <= INT_MAX, and return this int value;
-- *		    the pointer value can be obtained later by passing
-- *		    this int value to idr_find()
-- * @idrtable: The data object maintaining the pointer<-->int mappings
-- * @p:	      The pointer value to be remembered
-- * @lock:     A spinlock used when exclusive access to idrtable is needed
-- *
-- * Return: The id number mapped to pointer 'p', 0 on failure
-- */
--static unsigned int simple_idr_get(struct idr *idrtable, void *p,
--				   spinlock_t *lock)
--{
--	int id;
--	unsigned long flags;
--
--	idr_preload(GFP_KERNEL);
--	spin_lock_irqsave(lock, flags);
--	id = idr_alloc(idrtable, p, 1, INT_MAX, GFP_NOWAIT);
--	spin_unlock_irqrestore(lock, flags);
--	idr_preload_end();
--	/* failure */
--	if (id < 0)
--		return 0;
--	/* idr_alloc() guarantees > 0 */
--	return (unsigned int)(id);
--}
--
- /*
-  * setup_scsitaskmgmt_handles - Stash the necessary handles so that the
-  *				completion processing logic for a taskmgmt
-  *				cmd will be able to find who to wake up
-  *				and where to stash the result
-- * @idrtable: The data object maintaining the pointer<-->int mappings
-- * @lock:     A spinlock used when exclusive access to idrtable is needed
-+ * @xa:       The data object maintaining the pointer<-->int mappings
-  * @cmdrsp:   Response from the IOVM
-  * @event:    The event handle to associate with an id
-  * @result:   The location to place the result of the event handle into
-  */
--static void setup_scsitaskmgmt_handles(struct idr *idrtable, spinlock_t *lock,
--				       struct uiscmdrsp *cmdrsp,
-+static void setup_scsitaskmgmt_handles(struct xarray *xa, struct uiscmdrsp *cmdrsp,
- 				       wait_queue_head_t *event, int *result)
- {
--	/* specify the event that has to be triggered when this */
--	/* cmd is complete */
--	cmdrsp->scsitaskmgmt.notify_handle =
--		simple_idr_get(idrtable, event, lock);
--	cmdrsp->scsitaskmgmt.notifyresult_handle =
--		simple_idr_get(idrtable, result, lock);
-+	int ret;
-+	u32 *id;
-+
-+	/* specify the event that has to be triggered when this cmd is complete */
-+	id = &cmdrsp->scsitaskmgmt.notify_handle;
-+	ret = xa_alloc_irq(xa, id, event, XA_LIMIT(1, INT_MAX), GFP_KERNEL);
-+	id = &cmdrsp->scsitaskmgmt.notifyresult_handle;
-+	ret = xa_alloc_irq(xa, id, result, XA_LIMIT(1, INT_MAX), GFP_KERNEL);
- }
- 
- /*
-  * cleanup_scsitaskmgmt_handles - Forget handles created by
-  *				  setup_scsitaskmgmt_handles()
-- * @idrtable: The data object maintaining the pointer<-->int mappings
-+ * @xa: The data object maintaining the pointer<-->int mappings
-  * @cmdrsp:   Response from the IOVM
-  */
--static void cleanup_scsitaskmgmt_handles(struct idr *idrtable,
-+static void cleanup_scsitaskmgmt_handles(struct xarray *xa,
- 					 struct uiscmdrsp *cmdrsp)
- {
--	if (cmdrsp->scsitaskmgmt.notify_handle)
--		idr_remove(idrtable, cmdrsp->scsitaskmgmt.notify_handle);
--	if (cmdrsp->scsitaskmgmt.notifyresult_handle)
--		idr_remove(idrtable, cmdrsp->scsitaskmgmt.notifyresult_handle);
-+	xa_erase(xa, cmdrsp->scsitaskmgmt.notify_handle);
-+	xa_erase(xa, cmdrsp->scsitaskmgmt.notifyresult_handle);
- }
- 
- /*
-@@ -273,8 +242,7 @@ static int forward_taskmgmt_command(enum task_mgmt_types tasktype,
- 	if (devdata->serverdown || devdata->serverchangingstate)
- 		return FAILED;
- 
--	scsicmd_id = add_scsipending_entry(devdata, CMD_SCSITASKMGMT_TYPE,
--					   NULL);
-+	scsicmd_id = add_scsipending_entry(devdata, CMD_SCSITASKMGMT_TYPE, NULL);
- 	if (scsicmd_id < 0)
- 		return FAILED;
- 
-@@ -284,8 +252,7 @@ static int forward_taskmgmt_command(enum task_mgmt_types tasktype,
- 
- 	/* issue TASK_MGMT_ABORT_TASK */
- 	cmdrsp->cmdtype = CMD_SCSITASKMGMT_TYPE;
--	setup_scsitaskmgmt_handles(&devdata->idr, &devdata->privlock, cmdrsp,
--				   &notifyevent, &notifyresult);
-+	setup_scsitaskmgmt_handles(&devdata->xa, cmdrsp, &notifyevent, &notifyresult);
- 
- 	/* save destination */
- 	cmdrsp->scsitaskmgmt.tasktype = tasktype;
-@@ -311,14 +278,14 @@ static int forward_taskmgmt_command(enum task_mgmt_types tasktype,
- 	dev_dbg(&scsidev->sdev_gendev,
- 		"visorhba: taskmgmt type=%d success; result=0x%x\n",
- 		 tasktype, notifyresult);
--	cleanup_scsitaskmgmt_handles(&devdata->idr, cmdrsp);
-+	cleanup_scsitaskmgmt_handles(&devdata->xa, cmdrsp);
- 	return SUCCESS;
- 
- err_del_scsipending_ent:
- 	dev_dbg(&scsidev->sdev_gendev,
- 		"visorhba: taskmgmt type=%d not executed\n", tasktype);
- 	del_scsipending_ent(devdata, scsicmd_id);
--	cleanup_scsitaskmgmt_handles(&devdata->idr, cmdrsp);
-+	cleanup_scsitaskmgmt_handles(&devdata->xa, cmdrsp);
- 	return FAILED;
- }
- 
-@@ -654,13 +621,12 @@ DEFINE_SHOW_ATTRIBUTE(info_debugfs);
-  * Service Partition returned the result of the task management
-  * command. Wake up anyone waiting for it.
-  */
--static void complete_taskmgmt_command(struct idr *idrtable,
--				      struct uiscmdrsp *cmdrsp, int result)
-+static void complete_taskmgmt_command(struct xarray *xa, struct uiscmdrsp *cmdrsp, int result)
- {
- 	wait_queue_head_t *wq =
--		idr_find(idrtable, cmdrsp->scsitaskmgmt.notify_handle);
-+		xa_load(xa, cmdrsp->scsitaskmgmt.notify_handle);
- 	int *scsi_result_ptr =
--		idr_find(idrtable, cmdrsp->scsitaskmgmt.notifyresult_handle);
-+		xa_load(xa, cmdrsp->scsitaskmgmt.notifyresult_handle);
- 	if (unlikely(!(wq && scsi_result_ptr))) {
- 		pr_err("visorhba: no completion context; cmd will time out\n");
- 		return;
-@@ -708,8 +674,7 @@ static void visorhba_serverdown_complete(struct visorhba_devdata *devdata)
- 			break;
- 		case CMD_SCSITASKMGMT_TYPE:
- 			cmdrsp = pendingdel->sent;
--			complete_taskmgmt_command(&devdata->idr, cmdrsp,
--						  TASK_MGMT_FAILED);
-+			complete_taskmgmt_command(&devdata->xa, cmdrsp, TASK_MGMT_FAILED);
- 			break;
- 		default:
- 			break;
-@@ -905,7 +870,7 @@ static void drain_queue(struct uiscmdrsp *cmdrsp,
- 			if (!del_scsipending_ent(devdata,
- 						 cmdrsp->scsitaskmgmt.handle))
- 				break;
--			complete_taskmgmt_command(&devdata->idr, cmdrsp,
-+			complete_taskmgmt_command(&devdata->xa, cmdrsp,
- 						  cmdrsp->scsitaskmgmt.result);
- 		} else if (cmdrsp->cmdtype == CMD_NOTIFYGUEST_TYPE)
- 			dev_err_once(&devdata->dev->device,
-@@ -1053,7 +1018,7 @@ static int visorhba_probe(struct visor_device *dev)
- 	if (err)
- 		goto err_debugfs_info;
- 
--	idr_init(&devdata->idr);
-+	xa_init(&devdata->xa);
- 
- 	devdata->cmdrsp = kmalloc(sizeof(*devdata->cmdrsp), GFP_ATOMIC);
- 	visorbus_enable_channel_interrupts(dev);
-@@ -1096,8 +1061,6 @@ static void visorhba_remove(struct visor_device *dev)
- 	scsi_remove_host(scsihost);
- 	scsi_host_put(scsihost);
- 
--	idr_destroy(&devdata->idr);
--
- 	dev_set_drvdata(&dev->device, NULL);
- 	debugfs_remove(devdata->debugfs_info);
- 	debugfs_remove_recursive(devdata->debugfs_dir);
--- 
-2.31.1
+Thanks,
+
+Fabio
+
+
+
 
 
