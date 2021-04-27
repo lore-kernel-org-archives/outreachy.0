@@ -1,80 +1,114 @@
-X-GM-THRID: 6394970463288688640
-X-Received: by 10.99.116.72 with SMTP id e8mr1723179pgn.92.1488945089255;
-        Tue, 07 Mar 2017 19:51:29 -0800 (PST)
+X-GM-THRID: 6955860329873014784
+X-Received: by 2002:a54:4484:: with SMTP id v4mr4306682oiv.70.1619549159996;
+        Tue, 27 Apr 2021 11:45:59 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.68.202 with SMTP id p10ls2141250otg.18.gmail; Tue, 07 Mar
- 2017 19:51:28 -0800 (PST)
-X-Received: by 10.13.215.203 with SMTP id z194mr1864244ywd.43.1488945088897;
-        Tue, 07 Mar 2017 19:51:28 -0800 (PST)
-Return-Path: <rvarsha016@gmail.com>
-Received: from mail-pg0-x242.google.com (mail-pg0-x242.google.com. [2607:f8b0:400e:c05::242])
-        by gmr-mx.google.com with ESMTPS id 2si387633pfz.1.2017.03.07.19.51.28
+Received: by 2002:a05:6808:13d0:: with SMTP id d16ls5540413oiw.10.gmail; Tue,
+ 27 Apr 2021 11:45:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy9ErQk9tKQdA3l2Trs+rEFiL7YzcsSK9rpS09IPoOXbzfD4HRzfT5L/oStP/eCqtZAblEP
+X-Received: by 2002:aca:1c07:: with SMTP id c7mr2223395oic.177.1619549159214;
+        Tue, 27 Apr 2021 11:45:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619549159; cv=none;
+        d=google.com; s=arc-20160816;
+        b=kdTIJgxppMhXiwSNT/CPMkRsaD482S7TSfFNfjZSKYDpSC4EFl+4U7sVYfWcUGmy/U
+         KcgHXqUiA5/AF8X3YNQnU147MmzIZ8GN+6sKEsRwD9ogaggGh6gChymvpWx8hHiQhDVM
+         e3P0MaGnQHHVP5npJ7xy9FMLpU1xT3kakfbMDF9Z2Zl4UPImBKKFPS7FGM1LKY+a6pYQ
+         hlUN+ijbOShupRwruCkb8bkGzQgQrvett1qsKQAFKfgp75LHaYtnrx54HF2V4VtkOZVo
+         FH/jshAuCNsIUkHmRbs7HM30m+cB7F3T58k2oq7Gn7Otr3OSYQZdjFtsfBwWX1S/z9Uz
+         QEJA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=kNdws0KCBDiZZ9iMxA3g16kmDyUmWnqBaPPD4fC21SM=;
+        b=DnT8gGtNBBhLEjgk4blhjYQijkxdZ7PbitX61q5sh7tFh8+MqYBXMUNfsJ72pgt76F
+         UlyGRDfwne6SP17MRBoUonBySw9Q3wG7+U109LC+5oZKdnX0QThZlYokV+u9sgMxeRxl
+         Ma9+CA2JchT/nkYlPK3oznU2q7axcW8wGV8MvjFAdb9kEqOw2F5cWvHchZ2wAT3aKK8+
+         o3fMIjlilv3IARl6ksnJYuuLWeTKjj4km+eTKlQRzzmOux1C97Zmm6mJSF3fOd1NydOZ
+         mbKSVmShmpmwgnw9d3ia/D16SojIzvZblJril6rvCkCf/QhG9LC+dZcpN+tL6pIupuyw
+         mm8w==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=dQAHfWnd;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id l20si671328otf.1.2021.04.27.11.45.59
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 07 Mar 2017 19:51:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) client-ip=2607:f8b0:400e:c05::242;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 27 Apr 2021 11:45:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of rvarsha016@gmail.com designates 2607:f8b0:400e:c05::242 as permitted sender) smtp.mailfrom=rvarsha016@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x242.google.com with SMTP id b5so2032341pgg.1
-        for <outreachy-kernel@googlegroups.com>; Tue, 07 Mar 2017 19:51:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=message-id:date:from:to:cc:subject:mime-version:content-disposition
-         :user-agent;
-        bh=HgjEXB7nK/O+s21uB4wOeeAgGBO0GZfgphJ5yUIsGwY=;
-        b=JVsFKVnoEbNzTFCnUwAbg56/MpNuLAxaGKut0kC3cD04MBBcNt7ttB4P8sAFPk/hz2
-         4KMnGFQxcMOq7ShbKM/cKVV7L8rbXyrdP6IUUdGRoj5S6FcghehLWE+lZE3hi0EUrR6M
-         CVWTcWIpZGwtg/o41BIwPKIN80Lei+pnMbijYHpy2kE6UyZ55DrVZebQ36x1EPDDv1H2
-         omobwAcrwzdulaFi84fZVsuNm3pxp0FeP24SocTa/yBY8+Rv1B4tHHkuaokKZsWevpo6
-         gW3AC5+pOyzsd9n9CAtxGAFN8sxibQgho5Go++K0d7teK7BgV8HIG2uoRW+U+CoKH2QR
-         HQ5g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:message-id:date:from:to:cc:subject:mime-version
-         :content-disposition:user-agent;
-        bh=HgjEXB7nK/O+s21uB4wOeeAgGBO0GZfgphJ5yUIsGwY=;
-        b=DMRBjMi/n04ADb5WerWdtuKBhvh2pfbKPnvvTTs+56mLwjxs70ofiCQi/vTz0O4iyU
-         h+bjnLXSXk1MMTVY6/nyJjoYzDh4uDzMYxWQYfr/9EMwE+NN03kg26fA1M9ahrxNSY+A
-         a1L2rP/AIlxqeB+Q3eGZP25JLRdR1B9sU6lsfQ7oJKacM/Aq9gKxZ7sMsbJGnq0D077m
-         XP8K1Mqb9O4XDWrfwyoHeiJTkYe88GYNeEU+a92hujzF6vEgYLJ4UvJUdW5YQhN2XRZ4
-         lywY/6Iwd8Vz07ztk5+qoREcJx2eSxX+nwhJlSp+/sEJksDcPdGCJ2SRBqRyT20dZ6io
-         SnVQ==
-X-Gm-Message-State: AMke39nx1t5jO+Z1S/u/besTzwAopQjfaZZqriEbAtsvtLVzTvu8NnH0LUoME/BfP0fpvA==
-X-Received: by 10.99.45.3 with SMTP id t3mr4486821pgt.162.1488945088697;
-        Tue, 07 Mar 2017 19:51:28 -0800 (PST)
-Return-Path: <rvarsha016@gmail.com>
-Received: from euri ([117.211.102.99])
-        by smtp.gmail.com with ESMTPSA id s87sm2449567pfa.29.2017.03.07.19.51.26
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 07 Mar 2017 19:51:27 -0800 (PST)
-Message-ID: <58bf7fbf.5a45620a.6b32b.8166@mx.google.com>
-X-Google-Original-Message-ID: <20170308035114.GA6075@<rvarsha016@gmail.com>>
-Date: Wed, 8 Mar 2017 09:21:14 +0530
-From: Varsha Rao <rvarsha016@gmail.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com
-Subject: [PATCH 0/2] staging: media: atomisp: Remove useless casts and
- identifier.
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=dQAHfWnd;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Received: by mail.kernel.org (Postfix) with ESMTPSA id C7B89613F4;
+	Tue, 27 Apr 2021 18:45:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1619549158;
+	bh=sXSfVqfvOOLBqZYV8fQLFeZBbjBSkY41/nIH5OyKZhI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=dQAHfWndcrTHXH4MjqpaxeQHys0LeL06LSmCnwIDdVrFGXSMW1c24sy9kSDBaZDKE
+	 n6aahpgfhZYtKit85ND52TwxijPRnETSuK/izHcPiBA+ZXkVX7irTOt0kB8v4ClHJY
+	 gcvBMxi7t4dhf4E7pN8dgL7iL6WpVMrTRMKuM6VY=
+Date: Tue, 27 Apr 2021 20:45:55 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Matthew Wilcox <willy@infradead.org>
+Cc: Tawah Peggy <tawahpeggy98@gmail.com>, Johan Hovold <johan@kernel.org>,
+	Alex Elder <elder@kernel.org>, outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] Re: [PATCH v2] Staging: greybus: Add ()
+ around gcam macro.
+Message-ID: <YIhb45k3YE+MZS4Z@kroah.com>
+References: <20210427175922.GA24978@peggy-Lenovo-V130-15IKB>
+ <YIhTJkPeSObYqdHE@kroah.com>
+ <20210427183241.GC235567@casper.infradead.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.7.1 (2016-10-04)
+In-Reply-To: <20210427183241.GC235567@casper.infradead.org>
 
-This patchset removes useless casts and indentifier in media driver.
+On Tue, Apr 27, 2021 at 07:32:41PM +0100, Matthew Wilcox wrote:
+> On Tue, Apr 27, 2021 at 08:08:38PM +0200, Greg Kroah-Hartman wrote:
+> > On Tue, Apr 27, 2021 at 01:59:27PM -0400, Tawah Peggy wrote:
+> > > checkpatch.pl suggest addition of parenthesis around the gcam macro.
+> > > 
+> > > Signed-off-by: Tawah Peggy <tawahpeggy98@gmail.com>
+> > > 
+> > > ---
+> > >  drivers/staging/greybus/camera.c | 6 +++---
+> > >  1 file changed, 3 insertions(+), 3 deletions(-)
+> > > 
+> > > diff --git a/drivers/staging/greybus/camera.c b/drivers/staging/greybus/camera.c
+> > > index 324a26430f71..ae49e37a87e9 100644
+> > > --- a/drivers/staging/greybus/camera.c
+> > > +++ b/drivers/staging/greybus/camera.c
+> > > @@ -180,9 +180,9 @@ static const struct gb_camera_fmt_info *gb_camera_get_format_info(u16 gb_fmt)
+> > >  
+> > >  #define GB_CAMERA_MAX_SETTINGS_SIZE	8192
+> > >  
+> > > -#define gcam_dbg(gcam, format...)	dev_dbg(&gcam->bundle->dev, format)
+> > > -#define gcam_info(gcam, format...)	dev_info(&gcam->bundle->dev, format)
+> > > -#define gcam_err((gcam), format...)	dev_err(&gcam->bundle->dev, format)
+> > > +#define gcam_dbg(gcam, format...)	dev_dbg(&(gcam)->bundle->dev, format)
+> > > +#define gcam_info(gcam, format...)	dev_info(&(gcam)->bundle->dev, format)
+> > > +#define gcam_err(gcam, format...)	dev_err(&(gcam)->bundle->dev, format)
+> > 
+> > This change makes no sense at all.  Please look at what this is doing
+> > and consider if it is actually a valid thing to do.
+> 
+> umm ... makes sense to me.  what if i call:
+> 
+> 	gcam_err(p + 1, "hi");
+> 
+> looks to me like it'll expand into:
+> 
+> 	dev_err(&p + 1->bundle->dev, "hi);
+> 
+> ok, the driver doesn't currently do that, but it's a nice bit of
+> resilience to add.
 
-Varsha Rao (2):
-  staging: media: atomisp: Remove useless cast.
-  staging: media: atomisp: Remove unnecessary identifier.
+No it isn't, this is a tiny little wrapper around a logging message.  It
+is fine as-is...
 
- drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css.c    | 1 -
- drivers/staging/media/atomisp/pci/atomisp2/css2400/sh_css_sp.c | 2 +-
- drivers/staging/media/atomisp/pci/atomisp2/hmm/hmm.c           | 2 +-
- 3 files changed, 2 insertions(+), 3 deletions(-)
+thanks,
 
--- 
-2.9.3
-
+greg k-h
 
