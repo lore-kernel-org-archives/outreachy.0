@@ -1,141 +1,125 @@
 X-GM-THRID: 6956170409670606848
-X-Received: by 2002:a19:ac4d:: with SMTP id r13mr911350lfc.360.1619681185330;
-        Thu, 29 Apr 2021 00:26:25 -0700 (PDT)
+X-Received: by 2002:a17:907:7634:: with SMTP id jy20mr818014ejc.553.1619609638174;
+        Wed, 28 Apr 2021 04:33:58 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:9b88:: with SMTP id z8ls960452lji.2.gmail; Thu, 29 Apr
- 2021 00:26:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwfpRiZFmAsa+B7eL4jPCRGywAjuiRMyKkvoueXxEzsrNvB1jzP3DOS2CfUD0CQglJbQZi2
-X-Received: by 2002:a05:651c:54d:: with SMTP id q13mr23589768ljp.408.1619681183604;
-        Thu, 29 Apr 2021 00:26:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619681183; cv=none;
+Received: by 2002:a17:906:1901:: with SMTP id a1ls10678237eje.0.gmail; Wed, 28
+ Apr 2021 04:33:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxSnPemWNnAmZ4G+YlOMkd4PtERuqdgMNGZJlJ99n64odsGNJRIcBqxHHco3QESUTgcnRqB
+X-Received: by 2002:a17:906:2287:: with SMTP id p7mr21557951eja.377.1619609636602;
+        Wed, 28 Apr 2021 04:33:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619609636; cv=none;
         d=google.com; s=arc-20160816;
-        b=iwAbEs+PjUok71+qAHDnNT8UB9NgWE6g39YB/TSH1JzWLuBZUG4F2DaPtBRaIvONSd
-         RuCtsYijv8s0MLNt4JoTEyYt9ncTmoEjISu0f4QxH6PvujaQZCGLwnfQukB7Pfy+yZCm
-         V7kuyPUueEOtCtenxrL1VtDii+5XycOQiTXBjGzs7VlZUfCdx6oNesInbQUkVsqGxO87
-         c+XX7uwChpzURLEeh+0HWX7AhbW0+JB+3jlPo5iJphKmFmeBn/B+qXOLcOV5pqUYBReo
-         zrm4NpMS2LhdlknahrIVQYlRKFKVjcZAF8oDZ6qRIOfVVFrig8jgAVWEyheLqZWOlOmC
-         t0GA==
+        b=G3/KXBt2EeOcN0Ot91DBMCCiHPU3ZZyvBz8Mm0ltcEceF2IZQedpCzHdploc9m0dOT
+         4I0/p2RHyCdX817qieotfFW2r9uXzkfbYN2noZY0dnZMhKMWHp/DRVBsfRzjjXWmyTgG
+         yZOFKesg2MzBthjDCZg1xGoybx5Q/gQNEdeW7S1fFJ5zMYjlYoNH5yt7C7EluUzS7MMP
+         6cB6To3tojbzUeyxVp6wQx7rreRZGeB/AhfoAj5+xFWOLPGuijHXuxLDnm3SJGSAa3wA
+         jrq7KtV6FPxKTJXwct3/87XiZ1++couDyEmn/Po7NpSEYVd0jImKSZlaNavbw3v5haf2
+         HDdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=fKADZqVqSc0IQida3fCMkFkfc3lO4PjliPGIsHxxals=;
-        b=bmnN6omOQTSvw/vi1Fq5SU63qqVbSTb2LZ4mFlzUWi7munIb72hLpc3iZ250YEKEvN
-         lIRs9wDV69SA3GOlo/ugZ1QZBCulGJCddiCbQBMbuEyHtfyCjD51u2lASS0W3ffqd45r
-         Se9Pt0+SLBxenC0PDQ6LBeAJVB55EjVVAeF9yJwfaDTac4okjtBDIsPdZTA1DecZHxmf
-         EOW1QpuPW4D9MC5jkpTtKLQclLkBVNHZp3DdeGAHKGU9qsvS/V2UfPRkS4v11k48A2aq
-         DjMxZZbQZdcUctP2njeWVROXlzeVaCS43y0NWSIhoGNk1JLOTfXl7GzDDH6cqTRZF2nr
-         ARww==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=zNqCBvfTc2uOfgSlghFo3TISsBCbOPttLe3KTxfSIXw=;
+        b=XO20a6pB/kAMS/u+Zldib/sKEu0fZDxwk1L6+kTkbnDyagdTbfn6d0W3PmyazH2T4I
+         tWYe1zmPy6UbJHB7Z67rYnPEOzW5KGYFpVY7EkbLKHR4Ic+c8yhgh42Weee4vfSsrKuv
+         g1fLS+eX2TksdEMjmmqEDtBjLlObGjUZPYqE+1UQef3eiCbJorTzlc1x/JkcxOHn3odX
+         sRFSlylR+EVA6atv+VwCQivK03QBODBHWKwarV2I/YrV4x/A2AKejGcORsE2TsmpMIBV
+         bcM/qfMBa55xNRLua674baBCZCzGgYmsuRRZ3a0qZqdDyqTOKSTZpk+dhRUMXkpTQUFW
+         9MBw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=AIjRR4E3;
-       spf=pass (google.com: domain of fabioaiuto83@gmail.com designates 2a00:1450:4864:20::636 as permitted sender) smtp.mailfrom=fabioaiuto83@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=vF1mxLZj;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::631 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <fabioaiuto83@gmail.com>
-Received: from mail-ej1-x636.google.com (mail-ej1-x636.google.com. [2a00:1450:4864:20::636])
-        by gmr-mx.google.com with ESMTPS id q13si159834lfm.5.2021.04.29.00.26.23
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from mail-ej1-x631.google.com (mail-ej1-x631.google.com. [2a00:1450:4864:20::631])
+        by gmr-mx.google.com with ESMTPS id g7si631357edm.3.2021.04.28.04.33.56
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 29 Apr 2021 00:26:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of fabioaiuto83@gmail.com designates 2a00:1450:4864:20::636 as permitted sender) client-ip=2a00:1450:4864:20::636;
+        Wed, 28 Apr 2021 04:33:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::631 as permitted sender) client-ip=2a00:1450:4864:20::631;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=AIjRR4E3;
-       spf=pass (google.com: domain of fabioaiuto83@gmail.com designates 2a00:1450:4864:20::636 as permitted sender) smtp.mailfrom=fabioaiuto83@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=vF1mxLZj;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::631 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ej1-x636.google.com with SMTP id zg3so16767857ejb.8
-        for <outreachy-kernel@googlegroups.com>; Thu, 29 Apr 2021 00:26:23 -0700 (PDT)
+Received: by mail-ej1-x631.google.com with SMTP id u21so94144012ejo.13
+        for <outreachy-kernel@googlegroups.com>; Wed, 28 Apr 2021 04:33:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=fKADZqVqSc0IQida3fCMkFkfc3lO4PjliPGIsHxxals=;
-        b=AIjRR4E3nM59Xx7lq22qZifXk7zFyDH16ehnF8+kS+odSosc2HjT9yf6HLsME8yCZN
-         3unezDVryQUxBu18wamkoKk96UfqcxfcLUhNgYeKbwhkhxtxokmrHBACYbg0YPmELa8H
-         9icRo0oxhbE0Umgz9BWVN75nDycpXP0oF0lEIeZ/SGTHWeN/zOuYRTXwDS7ba9hm1LDo
-         aqP4x6kk7eHJsA51LPiPvwNrNzGV/sOnaoNEQLDjPRf5V1IkJmGeZTKPdoH2ev4TbIrV
-         pfC6oWgteX5fPnGT6SVvtLd38YPJjbFSq8mUO3pQ0MUwrWvUNgvncDU01gP4DozvxQps
-         UjXQ==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=zNqCBvfTc2uOfgSlghFo3TISsBCbOPttLe3KTxfSIXw=;
+        b=vF1mxLZjy9Jdw9QxXGSMl5pJ59QItWKtIhNN7DTHEZz0NwgJbMkZ1hVqyuARSfAoA2
+         MK0Fz1QfyyLfPXPgZntgSbuEm4cq9dsZSwNePMYTgoGG9FYagCoLkYqLZzORcDvyOl9g
+         siTjRJ6pD+YaxBkB8SmVlxVkmXoIt9kmRPS4zogc+OGxxvJkRpH8bvr2kK96m12yEHNX
+         yinPbhcA69W7UTCYm+w+d2+4n6JbjIM6qmAKyxC1ophpA6Jz5rmo/H7Jx47SM07h/o3t
+         8SSpVNS8FLC0SF1T/F6Irj3ugmu2EgRgV0/13Atc5Cx0YMuoVuiRRYgFuvoBLvppjawP
+         1vFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=fKADZqVqSc0IQida3fCMkFkfc3lO4PjliPGIsHxxals=;
-        b=cJjIy37OgxCGfjEfapnV/eyKJ/bYDF2XJEUfKDLrE9GnkDp9hYnx0iLFQbJbqTcN4l
-         eDftbKIZ45sQ0P8cMjIKMLazEpZqkjIum1iWTnttwP+3J1gcS2Y+BwHkHLT7nm8NleV5
-         U6CerWkoykcqZlb69CCP65Vw8UTVXCAROYeXSX2+l4GnEZAAxKdt4Pe8wPVGtIAIqLmc
-         Wej5vpngHuPTa6vdftNQ+gztCWuyzk42AUEM0A3OxZHd5ba+eFSkHxwoHJOl+OHqIxXz
-         G2KUNCWU96SoF+3zmUcUR2/7iQgx16qg2t3mm/Gi1o44IkiDajclQhLuwiBfbbQZj7V6
-         PB+w==
-X-Gm-Message-State: AOAM531wEnTImd6hEz1ItLNYERuat5gN8UMJXqHJWxUd3vP3tlnkBa6J
-	KZ7Nu2s6lV7KOR+wTe2gwLc=
-X-Received: by 2002:a17:906:7f97:: with SMTP id f23mr14673562ejr.74.1619681183343;
-        Thu, 29 Apr 2021 00:26:23 -0700 (PDT)
-Return-Path: <fabioaiuto83@gmail.com>
-Received: from agape.jhs ([5.171.81.14])
-        by smtp.gmail.com with ESMTPSA id u11sm1688315edr.13.2021.04.29.00.26.22
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=zNqCBvfTc2uOfgSlghFo3TISsBCbOPttLe3KTxfSIXw=;
+        b=QzLoyaWh0ry+TpqiXoaeQzXts/pO6laB9RIf2gEDTfxpEeMUZb9Ajew9YNEWNu/MUD
+         pqMHVR3e/CvNBfF852bo3WuqGwfuvFL8MtN5z2n5XV735OwfWPoyEtJ6CoQlq+QiNTPZ
+         MVhrKCxtWX5Zyi4a5VQBi8CKVkOuf4WulxhjaXDOnfhtdwqvAZv/aJCM5p7D/nfbExtW
+         5OjwIFhgPq6aD5WwJxPbYJLtMyQiS5jA0R9SgwnD7eSkNWyQO/lD0mJwTTze8Sc5/+dL
+         GTnIQg0SIUKcQs7cSZzLqr+pvR3vrjgF8YS6tTQJpy/49HrFgSPdHFr/Tr41WYMNPvPP
+         CSZQ==
+X-Gm-Message-State: AOAM532jRTwkICKQF1rCqhy9YviCx9GDd03yFQu7iFsEQzCLgyXdkxls
+	vwP7zXU2Z/sVt5Uwk9bUB/sb/lGZkvgWIEhy
+X-Received: by 2002:a17:906:4d02:: with SMTP id r2mr16801792eju.464.1619609636163;
+        Wed, 28 Apr 2021 04:33:56 -0700 (PDT)
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from linux.local (host-79-52-107-152.retail.telecomitalia.it. [79.52.107.152])
+        by smtp.gmail.com with ESMTPSA id u19sm4677187edy.23.2021.04.28.04.33.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 29 Apr 2021 00:26:23 -0700 (PDT)
-Date: Thu, 29 Apr 2021 09:26:20 +0200
-From: Fabio Aiuto <fabioaiuto83@gmail.com>
-To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Cc: outreachy-kernel@googlegroups.com,
+        Wed, 28 Apr 2021 04:33:55 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: outreachy-kernel@googlegroups.com,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [Outreachy kernel] [PATCH 1/2] staging: rtl8723bs: hal: Remove
- set but unused variables
-Message-ID: <20210429072619.GB1409@agape.jhs>
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+Subject: [Outreachy kernel] [PATCH 2/2] staging: rtl8723bs: core: Removed set but unused variable.
+Date: Wed, 28 Apr 2021 13:33:46 +0200
+Message-Id: <20210428113346.28305-3-fmdefrancesco@gmail.com>
+X-Mailer: git-send-email 2.31.1
+In-Reply-To: <20210428113346.28305-1-fmdefrancesco@gmail.com>
 References: <20210428113346.28305-1-fmdefrancesco@gmail.com>
- <20210428113346.28305-2-fmdefrancesco@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20210428113346.28305-2-fmdefrancesco@gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
+Content-Transfer-Encoding: 8bit
 
-Hi Fabio,
+Removed set but unused variable. Issue detected by gcc.
 
-On Wed, Apr 28, 2021 at 01:33:45PM +0200, Fabio M. De Francesco wrote:
-> Removed four set but unused variables. Issue detected by gcc.
-> 
-> Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
-> ---
->  drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c | 5 -----
->  1 file changed, 5 deletions(-)
-> 
-> diff --git a/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c b/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
-> index 082448557b53..96cb4426a0f4 100644
-> --- a/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
-> +++ b/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
-> @@ -3900,14 +3900,11 @@ u8 GetHalDefVar8723B(struct adapter *padapter, enum hal_def_variable variable, v
->  			u32 cmd;
->  			u32 ra_info1, ra_info2;
->  			u32 rate_mask1, rate_mask2;
-> -			u8 curr_tx_rate, curr_tx_sgi, hight_rate, lowest_rate;
->  
->  			cmd = 0x40000100 | mac_id;
->  			rtw_write32(padapter, REG_HMEBOX_DBG_2_8723B, cmd);
->  			msleep(10);
->  			ra_info1 = rtw_read32(padapter, 0x2F0);
-> -			curr_tx_rate = ra_info1&0x7F;
-> -			curr_tx_sgi = (ra_info1>>7)&0x01;
->  
->  			cmd = 0x40000400 | mac_id;
->  			rtw_write32(padapter, REG_HMEBOX_DBG_2_8723B, cmd);
-> @@ -3916,8 +3913,6 @@ u8 GetHalDefVar8723B(struct adapter *padapter, enum hal_def_variable variable, v
->  			ra_info2 = rtw_read32(padapter, 0x2F4);
->  			rate_mask1 = rtw_read32(padapter, 0x2F8);
->  			rate_mask2 = rtw_read32(padapter, 0x2FC);
-> -			hight_rate = ra_info2&0xFF;
-> -			lowest_rate = (ra_info2>>8)  & 0xFF;
->  
->  		}
->  		break;
-> -- 
-> 2.31.1
-> 
->
+Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+---
+ drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-rate_mask{1,2} and ra_info{1,2} seems to be unused as well.
+diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
+index a2fdd5ea5fc4..b0d2ba5ed129 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
++++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
+@@ -1019,7 +1019,7 @@ unsigned int OnAssocReq(struct adapter *padapter, union recv_frame *precv_frame)
+ 	u16 capab_info;
+ 	struct rtw_ieee802_11_elems elems;
+ 	struct sta_info *pstat;
+-	unsigned char 	reassoc, *p, *pos, *wpa_ie;
++	unsigned char 	*p, *pos, *wpa_ie;
+ 	unsigned char WMM_IE[] = {0x00, 0x50, 0xf2, 0x02, 0x00, 0x01};
+ 	int		i, ie_len, wpa_ie_len, left;
+ 	unsigned char 	supportRate[16];
+@@ -1040,10 +1040,8 @@ unsigned int OnAssocReq(struct adapter *padapter, union recv_frame *precv_frame)
+ 
+ 	frame_type = GetFrameSubType(pframe);
+ 	if (frame_type == WIFI_ASSOCREQ) {
+-		reassoc = 0;
+ 		ie_offset = _ASOCREQ_IE_OFFSET_;
+ 	} else { /*  WIFI_REASSOCREQ */
+-		reassoc = 1;
+ 		ie_offset = _REASOCREQ_IE_OFFSET_;
+ 	}
+ 
+-- 
+2.31.1
 
-thank you,
-
-fabio 
 
