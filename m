@@ -1,117 +1,142 @@
-X-GM-THRID: 6477789465287852032
-X-Received: by 10.157.87.9 with SMTP id p9mr7138983oth.85.1508227890220;
-        Tue, 17 Oct 2017 01:11:30 -0700 (PDT)
+X-GM-THRID: 6956170409670606848
+X-Received: by 2002:a9f:3f09:: with SMTP id h9mr29566518uaj.139.1619706953052;
+        Thu, 29 Apr 2021 07:35:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.20.199 with SMTP id r7ls238997otr.2.gmail; Tue, 17 Oct
- 2017 01:11:29 -0700 (PDT)
-X-Received: by 10.157.60.221 with SMTP id t29mr6744642otf.23.1508227889474;
-        Tue, 17 Oct 2017 01:11:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508227889; cv=none;
+Received: by 2002:a67:7d96:: with SMTP id y144ls168191vsc.9.gmail; Thu, 29 Apr
+ 2021 07:35:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxu7fBgjZvQmjb2klMd8hgPwGRykLUorO7LCvBKxrXa2EVxZplL/EBLi7e2DDpdCwqzBOlB
+X-Received: by 2002:a67:2643:: with SMTP id m64mr415738vsm.6.1619706950646;
+        Thu, 29 Apr 2021 07:35:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619706950; cv=none;
         d=google.com; s=arc-20160816;
-        b=qvBJ7D68cK+BGI1daU7CtkSW6jU4cTy+fCQa1gAtb2cqAeIV/yu87SRJhmo/SMIeLa
-         nj+VWleaFARZEOOOsGt3joEpLicxxqyuWlrsuQo9vEVpkIT4/Qw5OEBlV0vWJJfAbMQ4
-         SKUFb69lntnHJlF7+vWEDV/W+U2Kgvj0tg6g2o+Ayy+houq7ym6JHJ9TCp4IOy738L9K
-         n8XSPiM8SJU76zt1Zdq1y/8/gU/WfYNOJTalTfnp0ppFxBBOaNU+/as+k4hGb+84MEDl
-         VTY2R4zp6qR9aNoxtO3KcqRyQS2dbB3ZAEz+yWgul/ArtEg3vyP9HOgnX0p2ZUHaQScs
-         KUbA==
+        b=ANyrVyd4igduQk14p4bvTp9/ij63ejspPri+pcrzpOMvIVy2+pC5DQNryhCddwrBS7
+         PXTobq4MWMuvrLtBbM7rtwPGatxRjIz7XNyCytCCa4mZOj9AseschQjmgA+4pKwmlSGZ
+         3V3jsaZnwKMA7U+ZbKoohlemXM7AzxVI5ndYPyKluZ/O7NDZgAYIB2V2ujld+tz8DDsN
+         cFd2FqeHz2EAH8LxIYTr/lBCpifnnf2vnw8pmBFT7+96WetAzObrIgbX/HtoB04Cc+tP
+         fOtXbF4jN+gqOFRc+JcTIJy+5menNjAN3K28iRtIxd2eWAOeGn/VR+8T6HyXfiMHGV/D
+         Qf3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=syf/t3z4M8dPaDhzsA/wmYWfKW38qn3JEHQl07yvyyY=;
-        b=Vp4FRPvZBzUDEo0mkHi/PLCANJfA41evZsXsfGI/sDI+tv1bWrsc7cr1O/F1ka+3/9
-         9Xv6bmEMRxsTEErreUb1ci7k3P817APsG/AbG3ox9O0RxBCmY8/eqfnP6rS9eg3LCcOu
-         /ac74EbaFYZJZEXQV0GFKL28xKpDrkrRbo1F7rrSCcGU6WA5mU6TE3XlFdEKKCdU9JJu
-         Vx+HXGH+E/ui+pNj3TVyfR3g+UMU485J5kDjPAiSFpgjndftkQlducT2L0Vb2GBOGXjA
-         pXnkig9JHr74bhZWgqwlBVmwAtZFG5mL5Aa6y8JVTana54grH60vpizrgfDwoFk20lL6
-         yjKg==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=OZcICzs7p+CNORIipbTD7WjNxFxyZPDdbnWZ3TzgtYQ=;
+        b=TeLDf1kHh+1CF9fZoTGcIoCRcwN2DfETDGZTBULZ7rcdcVGYQb14cSv2ae/6sbKpaZ
+         8EuKSeKFdRd6JhW6XeHgpTQ6eFV1Rv1RHVtcBBHqNF+T1/RNYRhHju1PlMZ78OXEtOYL
+         wQHhLabF3BeN60UupLZSTvu0LFea5EC5il+5B+uY6Dmba0qJWqn6dvGl7NOL1vUReEHe
+         sdMwTWDUDJAyXee426LzXZGt7ySL0F3u3LTixMIP4Byc0SqWw26RmihL9VkpE8FqW0iG
+         9xgUXJbPYX5moCnWd8LKAab6Cw8u5iFALNAzxD1vCj0xRNg6gr+q/aut79yZ8ilBtzHY
+         hJYA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ejL/qC8a;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::22e as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from mail-pg0-x22e.google.com (mail-pg0-x22e.google.com. [2607:f8b0:400e:c05::22e])
-        by gmr-mx.google.com with ESMTPS id k24si496365oiy.1.2017.10.17.01.11.29
+       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=YqIFGPBI;
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.78 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Return-Path: <dan.carpenter@oracle.com>
+Received: from aserp2120.oracle.com (aserp2120.oracle.com. [141.146.126.78])
+        by gmr-mx.google.com with ESMTPS id a6si285510vkh.0.2021.04.29.07.35.50
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Oct 2017 01:11:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::22e as permitted sender) client-ip=2607:f8b0:400e:c05::22e;
+        Thu, 29 Apr 2021 07:35:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.78 as permitted sender) client-ip=141.146.126.78;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ejL/qC8a;
-       spf=pass (google.com: domain of harshasharmaiitr@gmail.com designates 2607:f8b0:400e:c05::22e as permitted sender) smtp.mailfrom=harshasharmaiitr@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x22e.google.com with SMTP id a192so812836pge.9
-        for <outreachy-kernel@googlegroups.com>; Tue, 17 Oct 2017 01:11:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=syf/t3z4M8dPaDhzsA/wmYWfKW38qn3JEHQl07yvyyY=;
-        b=ejL/qC8aj3TnZZ53I0Z1NnfSyZQS7xoWlrI6NZjYZ5BOXogvgekx8n4xLpKMqTi8D7
-         IM5IpsH2KeWhbQKXWNS3aHrfcdTUiPQRTa9Pi2qFctzNApwHfhUEjEkX0Mn10qhFX28A
-         TzzmKQSSPmmfbT2ISW3sH2MUSLNJuwihVzI0ilgRkkzXDz3iodanaEhgWk/7s6Vo+JVn
-         MhrUI4yF9LYwjKn4j+1AMdrPLVTaaTL2JKD6WceDu62SGhH9zEJ8cm4ujLhSRif3MeiS
-         I0Px8tXBFCYW8dH8X0mkWxHYbJfnjQ0Yr549ADA6J6QYWeZdKgooMSaSFKW9AWrJ9znK
-         Extg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=syf/t3z4M8dPaDhzsA/wmYWfKW38qn3JEHQl07yvyyY=;
-        b=e06xw7NNjLwHmHme3ce++iNhrHV/HVdgBfw6vxNij/mTFVGQ0eA+9mgmPKj5GSGBI0
-         sQ/boOxzE0hOTENeEa/yW7PFNkMtW8B/HBLCR6ZcBHADYDXCIGkMryx1d85Db9ukuOKS
-         GN7RCJn8TomGfvZqnJlS7WLPMi9cCeoPSZnYOU9bPvzXZo7V9IN9fDp7KbhJSDj/qEDN
-         kJukJF52g7Z9fz0ssYB9twMEJQVm5zfcEXksOkwucCOP84ROfA1Hxzq9dxVe56LDsiaR
-         hyDA4vQs/rJroMbIOZqDbEy+DDFNMqIf7LhTeX703b63q0YZ8Lb54d9I8AG7AQiInTP7
-         oZuA==
-X-Gm-Message-State: AMCzsaVdyS7EsKfJkxU0pZsaFsMnf3S6tuCp9TlNw4NB08ZpSP8Siszl
-	laA7UDhNlYQaTjV413iHOXMyZi4E
-X-Google-Smtp-Source: AOwi7QDfaWo47wgOMo8Ja4MKjaXWOURxZE0dAJwKzNS9jbxWouzaOu7vMb8ol49v3Zh/5kZIbxhnew==
-X-Received: by 10.84.224.195 with SMTP id k3mr11354958pln.403.1508227889192;
-        Tue, 17 Oct 2017 01:11:29 -0700 (PDT)
-Return-Path: <harshasharmaiitr@gmail.com>
-Received: from localhost.localdomain ([103.37.201.27])
-        by smtp.gmail.com with ESMTPSA id 76sm18324933pfq.4.2017.10.17.01.11.22
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Oct 2017 01:11:28 -0700 (PDT)
-From: Harsha Sharma <harshasharmaiitr@gmail.com>
-To: pablo@netfilter.org
-Cc: netfilter-devel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	Harsha Sharma <harshasharmaiitr@gmail.com>
-Subject: [PATCH] tests: xlate: print tests passed or error for testfile argument
-Date: Tue, 17 Oct 2017 13:39:03 +0530
-Message-Id: <20171017080903.15719-1-harshasharmaiitr@gmail.com>
-X-Mailer: git-send-email 2.11.0
+       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=YqIFGPBI;
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 141.146.126.78 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+	by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 13TEGATE007742;
+	Thu, 29 Apr 2021 14:35:47 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
+ : subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=corp-2020-01-29;
+ bh=OZcICzs7p+CNORIipbTD7WjNxFxyZPDdbnWZ3TzgtYQ=;
+ b=YqIFGPBI9ME/+a2PoaA9CyZ3roMe9zeNWHB/VjPEqqH3KIsPHX+BnmUjsVgBl4kAbwkG
+ 4bFcc3OY2Qe7dJAMIn0YY4euZWVVCxsc8LULqX3Riky5CI3sK1UxzskHWD3LvxR23maf
+ JTU4ht8seluxEHUSEZYPqnXJdzjHjHtPnaAZTF5BgTN42D0gjjIUsX63isdV1dUJd/cR
+ a+h46WP4JJpz24Nl6rEWSmH3r28CtIKxSmT2t1Pz8WXf2UgNHGUVk8XqYtmk/Uvab8/0
+ f1Y8CzfapZGX2IUrQXPKS9xULg/lOcBxihXgKHDALOnztxKK39gVBk1561gA2HM6yRsI sA== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+	by aserp2120.oracle.com with ESMTP id 385ahbvkva-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Thu, 29 Apr 2021 14:35:46 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+	by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 13TEYu23142485;
+	Thu, 29 Apr 2021 14:35:46 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+	by userp3030.oracle.com with ESMTP id 3848f1653h-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Thu, 29 Apr 2021 14:35:46 +0000
+Received: from userp3030.oracle.com (userp3030.oracle.com [127.0.0.1])
+	by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 13TEZj0t147341;
+	Thu, 29 Apr 2021 14:35:45 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+	by userp3030.oracle.com with ESMTP id 3848f16538-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Thu, 29 Apr 2021 14:35:45 +0000
+Received: from abhmp0018.oracle.com (abhmp0018.oracle.com [141.146.116.24])
+	by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 13TEZiX6032445;
+	Thu, 29 Apr 2021 14:35:44 GMT
+Received: from kadam (/102.36.221.92)
+	by default (Oracle Beehive Gateway v4.0)
+	with ESMTP ; Thu, 29 Apr 2021 07:35:43 -0700
+Date: Thu, 29 Apr 2021 17:35:36 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+Cc: outreachy-kernel@googlegroups.com,
+        Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+        linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [Outreachy kernel] [PATCH 2/2] staging: rtl8723bs: core: Removed
+ set but unused variable.
+Message-ID: <20210429143536.GD1981@kadam>
+References: <20210428113346.28305-1-fmdefrancesco@gmail.com>
+ <20210428113346.28305-3-fmdefrancesco@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20210428113346.28305-3-fmdefrancesco@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Proofpoint-GUID: 3I-WfEfnF7HtXKDJ1_iqrugYLeTgwa2h
+X-Proofpoint-ORIG-GUID: 3I-WfEfnF7HtXKDJ1_iqrugYLeTgwa2h
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=9969 signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0 bulkscore=0 mlxlogscore=999
+ priorityscore=1501 clxscore=1031 adultscore=0 suspectscore=0 spamscore=0
+ phishscore=0 malwarescore=0 lowpriorityscore=0 impostorscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2104060000
+ definitions=main-2104290094
 
-Print tests passed with errors and warnings when run with only specified
-test file.
+On Wed, Apr 28, 2021 at 01:33:46PM +0200, Fabio M. De Francesco wrote:
+> Removed set but unused variable. Issue detected by gcc.
+> 
+> Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+> ---
+>  drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
+> index a2fdd5ea5fc4..b0d2ba5ed129 100644
+> --- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
+> +++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
+> @@ -1019,7 +1019,7 @@ unsigned int OnAssocReq(struct adapter *padapter, union recv_frame *precv_frame)
+>  	u16 capab_info;
+>  	struct rtw_ieee802_11_elems elems;
+>  	struct sta_info *pstat;
+> -	unsigned char 	reassoc, *p, *pos, *wpa_ie;
+> +	unsigned char 	*p, *pos, *wpa_ie;
+>  	unsigned char WMM_IE[] = {0x00, 0x50, 0xf2, 0x02, 0x00, 0x01};
+>  	int		i, ie_len, wpa_ie_len, left;
+>  	unsigned char 	supportRate[16];
+> @@ -1040,10 +1040,8 @@ unsigned int OnAssocReq(struct adapter *padapter, union recv_frame *precv_frame)
+>  
+>  	frame_type = GetFrameSubType(pframe);
+>  	if (frame_type == WIFI_ASSOCREQ) {
+> -		reassoc = 0;
+>  		ie_offset = _ASOCREQ_IE_OFFSET_;
+>  	} else { /*  WIFI_REASSOCREQ */
+> -		reassoc = 1;
+>  		ie_offset = _REASOCREQ_IE_OFFSET_;
+>  	}
 
-Signed-off-by: Harsha Sharma <harshasharmaiitr@gmail.com>
----
- xlate-test.py | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Get rid of the curly braces as well, otherwise the patch introduces a
+checkpatch warning.
 
-diff --git a/xlate-test.py b/xlate-test.py
-index 43c4be19..b7a053f9 100755
---- a/xlate-test.py
-+++ b/xlate-test.py
-@@ -51,7 +51,7 @@ def run_test(name, payload):
-                     result.append(magenta("exp: ") + expected)
-                     result.append(magenta("res: ") + translation + "\n")
-                     test_passed = False
--                elif args.all:
-+                elif args.all or args.test:
-                     result.append(green("Ok"))
-                     result.append(magenta("src: ") + line.rstrip(" \n"))
-                     result.append(magenta("res: ") + translation + "\n")
-@@ -60,7 +60,7 @@ def run_test(name, payload):
-                 result.append(red("Error: ") + "iptables-translate failure")
-                 result.append(error.decode("utf-8"))
- 
--    if not test_passed or args.all:
-+    if args.all or args.test:
-         print("\n".join(result))
- 
- 
--- 
-2.11.0
+regards,
+dan carpenter
 
 
