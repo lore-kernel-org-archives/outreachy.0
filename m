@@ -1,79 +1,99 @@
 X-GM-THRID: 6956170409670606848
-X-Received: by 2002:a67:684f:: with SMTP id d76mr10516764vsc.23.1619695285861;
-        Thu, 29 Apr 2021 04:21:25 -0700 (PDT)
+X-Received: by 2002:a2e:8449:: with SMTP id u9mr21768664ljh.370.1619692693743;
+        Thu, 29 Apr 2021 03:38:13 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ab0:7550:: with SMTP id k16ls277335uaq.11.gmail; Thu, 29 Apr
- 2021 04:21:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw7eVTHezkyd/dfBnW8yOZgXLg19YTjSlm8xBchWmwdVmQLTU6uxBPvORbQKKDMTgdLUKPJ
-X-Received: by 2002:a9f:37c8:: with SMTP id q66mr29357444uaq.129.1619695284865;
-        Thu, 29 Apr 2021 04:21:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1619695284; cv=none;
+Received: by 2002:a05:6512:6c2:: with SMTP id u2ls1126186lff.3.gmail; Thu, 29
+ Apr 2021 03:38:12 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzVZiunbz3MLS2bHGT0aValDt77xmT9NoHeH49WK9v0F4V6P5igHb7HFFhB7L1B3Uhu1Toj
+X-Received: by 2002:ac2:53b4:: with SMTP id j20mr25046597lfh.390.1619692691985;
+        Thu, 29 Apr 2021 03:38:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1619692691; cv=none;
         d=google.com; s=arc-20160816;
-        b=Nkrwm3SxcU62LuT897N0VAvExr1w538hglBy0k5WdV2+5JZVzc2ZdpkyqcGxrcPYOv
-         +p6oD7ZZ3kLTXcHjzYkwnjRsF8TTPaGpjbZxSunP9docZzXukpeOV/wSIqQH/cTywPL+
-         h8wNBVAc4pG5dzG+aFYPg4/yYh4o3yVBw4g8Y5M0HbfvWx1uYFlY4m8YI2s2CHoxXd0A
-         0ENMopcQhVSLuNp6mL6FYm0nyp1Nn/9/NvKgLaEIne4sB1M/5ocR7FOw2aLL89FzQXPA
-         gqSGRrRGgE0q2hprhD3cfzUbxYXNOvkqabgt9HQCAKnjUxCss1SsQ5WUEvH89M95/mEK
-         d9Ew==
+        b=GgwX+0K5L8u1xi/8E0m3JnjvoRHqBDeNTYmMsF7n75GuXE2Mz04G8E5yLyiq/7/bt2
+         LmzLWgd1U2UMGaezDlgl8tAjVsPXTWXKw0YDrw0ojsL4xhC4+rOL1YZ/KXONmi4OPerb
+         nZZx1aUHTuNkSHrdtu58LajVAdYEJHQRzwyKlbQDmimgVqC1anXkIutEB25HSY/umelH
+         FlUV+wnXfnBtZrzN5td15BpuqUcC9O/vGKA0t6Ep0y6TivL7hhh/rDTMEcWWf0NacZKB
+         uybVwxNIeQCf/FQ9tPKkY5Kcn2jDIGsj+g0aTwwYdXmQBTy10gVePZtlb9aqQDGZmiCP
+         By0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=co/MZ5cnHNHhqXEQStxKE9FZgHF7XDAWb3H15r+uTow=;
-        b=SSXaGxPWs88lPy6C7QwI8K2EaXqAIQu9eX/+mNpG/m3lh7gwuMnXLHFK86D0UqREMU
-         z4s36FnCS1dcZD4o3gD6Jq+8CDfVJ/Fy3vIpgJjbIykY/ur7o6L8RiuY5L97M+Ppbdji
-         sn23u5BAV5Rbea5SZJerEmWSKTMLcdAVGcUWJuqi3b9UgOlYlBADWKYeKYe21+ZN5DrO
-         4/Ua7QTgdPSRufqJX2f1pV3etFhS6oum+5kqCT11gxvD8RTLxLHZD0aLUBe3xTZlJx4Q
-         oF93xSuqjBolsLAFXPJNXDiGqtePOETism1MM3cNaDnJE/OQaeIEZRKPEn/QwWjcDaNg
-         O35g==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=xBV6M/QLKgL1OTP6r+L+BbrDYnsW4IUCG6lLR9TSS8w=;
+        b=bW+MZl/Km5fgcxmwuPoAEvNYlQWYd8RdwzQrOann6p5jUrrPzDoB13PyV6pcKldRCH
+         UYozivv835Jqu3eVdlw1pAwcXkqfGDkPabMgOWBv55IOHKJXnXc8sctrf2lQZoVfKTpF
+         fBleEygK73yaVrn6yIehqh5V0VaZIu/UMD7L/zZ6/ptNQFCPr/VIFXA8rraKYxUdFJrO
+         GZaPUKdWIRoHMFbUj5zwZNOj49WOZSO+KXrTNbiDu8NO9nnH0qohoRI3+iNQWuw5n8e9
+         rqtCX6ePavRrlv1H+vhCzhDVpK4xl8OEKZxCu1APq6HmjFkjL6Nq6hrpiL9L++h7Vn5X
+         tjcQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=ydnohWks;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id f9si257392vkm.2.2021.04.29.04.21.24
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="sKr/Kn7w";
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::633 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from mail-ej1-x633.google.com (mail-ej1-x633.google.com. [2a00:1450:4864:20::633])
+        by gmr-mx.google.com with ESMTPS id p18si181199lji.8.2021.04.29.03.38.11
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 29 Apr 2021 04:21:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 29 Apr 2021 03:38:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::633 as permitted sender) client-ip=2a00:1450:4864:20::633;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=ydnohWks;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 050CF613D9;
-	Thu, 29 Apr 2021 11:21:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1619695283;
-	bh=jKlpm3G7PbB50Ez26v5YugL6swUDAvRxbWGy6pq6Nms=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ydnohWks5nj3hC2Qt+4gPELzNLDZCjraOeIIVrrLsuAKm+3asmdsCqmVEacIyVTA5
-	 n/5PPvo9ej7R2lvw6jfNZMOuQRlnGU8dx1RcZVXgXY8tArErw+LYtDiyBKqnUdXYNC
-	 7mNiojGy3pg8emJ3hz2aMGKOqKtQ//omq7QlBvvM=
-Date: Thu, 29 Apr 2021 13:21:21 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Cc: Fabio Aiuto <fabioaiuto83@gmail.com>, outreachy-kernel@googlegroups.com,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [Outreachy kernel] [PATCH 1/2] staging: rtl8723bs: hal: Remove
- set but unused variables
-Message-ID: <YIqWsbTO8Zv1qFmT@kroah.com>
-References: <20210428113346.28305-1-fmdefrancesco@gmail.com>
- <20210429082552.GC1409@agape.jhs>
- <YIqECQk/1Zb4JRjb@kroah.com>
- <4187627.69DiqvND7d@linux.local>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="sKr/Kn7w";
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::633 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-ej1-x633.google.com with SMTP id w3so99168547ejc.4
+        for <outreachy-kernel@googlegroups.com>; Thu, 29 Apr 2021 03:38:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=xBV6M/QLKgL1OTP6r+L+BbrDYnsW4IUCG6lLR9TSS8w=;
+        b=sKr/Kn7wUKTLtfehYj5i1e+mIEGUL3B802GQEYYq34jQWkB+HJVksRpCbJ5hMoHI4b
+         +jslrzMdQqypeweXRvNbjWCzY31Xo9pK9Awoit1Dbp1ZU++UH9e54etWutZVAeWnRHdL
+         wZmtPEie5+//gLPg5mmMSLYLTJMws/WW+Q7C4YpVCbclF3UGYhxBbS4EGTB5S9m+t2at
+         jzIQWJw67TUeOEcw66xvHgFAHhDoBkpCvR4nIujRMqp4GCliBQvktTNpjUTlOIKdXoks
+         J1qHwm1BrykEH3zdFEG/KZsDIJBB+k2eIVkWkUAtNLTSjSgmTDncM/gfTVA7rHpspzUM
+         5W5A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=xBV6M/QLKgL1OTP6r+L+BbrDYnsW4IUCG6lLR9TSS8w=;
+        b=LRKv1DcjKgcLkIq2QRsKLsxDgK7jPNo2NBXc+wRh4XHEUUcWHaYrgivyOEKNoi0th9
+         VSpeGIWZL1v3vlhuTCFvl8LXx2lD+FRjQgbuMExQ+e+3aOzdJUqyLa3Bj8aDrn1gefLs
+         sZPdMcA+5Vt9q5++KdhehhP7SujtTXg7s6Ts8h21wHwiX/fK3XAA5ZM0ZrTReUB6udSf
+         ka78JWzeMhHaFff6q+TLkR5LC6MTt1t4DocgK5vL7I/awgu7VG/nkYE/0BB3EWX3kkvj
+         AhLcxff/iqUXj1XR+SaXVi10uzfI/cpBWEEL6lcrK67NApXXwRcGeqP48vSzUX79Gt23
+         Go8A==
+X-Gm-Message-State: AOAM533KH784waSU5GxJ9Wg+16cpmyjtUpYgH6xRWOdpAWvoENXozotT
+	y/ID5tidEisOBgixYWGb6so=
+X-Received: by 2002:a17:907:2628:: with SMTP id aq8mr16761560ejc.64.1619692691505;
+        Thu, 29 Apr 2021 03:38:11 -0700 (PDT)
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from linux.local (host-79-52-107-152.retail.telecomitalia.it. [79.52.107.152])
+        by smtp.gmail.com with ESMTPSA id cr21sm1534995ejc.2.2021.04.29.03.38.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 29 Apr 2021 03:38:10 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Fabio Aiuto <fabioaiuto83@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [Outreachy kernel] [PATCH 1/2] staging: rtl8723bs: hal: Remove set but unused variables
+Date: Thu, 29 Apr 2021 12:38:09 +0200
+Message-ID: <1870536.WTzYeaBcXf@linux.local>
+In-Reply-To: <20210429102201.GF1409@agape.jhs>
+References: <20210428113346.28305-1-fmdefrancesco@gmail.com> <YIqECQk/1Zb4JRjb@kroah.com> <20210429102201.GF1409@agape.jhs>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <4187627.69DiqvND7d@linux.local>
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
 
-On Thu, Apr 29, 2021 at 12:15:40PM +0200, Fabio M. De Francesco wrote:
-> On Thursday, April 29, 2021 12:01:45 PM CEST Greg Kroah-Hartman wrote:
+On Thursday, April 29, 2021 12:22:02 PM CEST Fabio Aiuto wrote:
+> On Thu, Apr 29, 2021 at 12:01:45PM +0200, Greg Kroah-Hartman wrote:
 > > On Thu, Apr 29, 2021 at 10:25:53AM +0200, Fabio Aiuto wrote:
 > > > On Thu, Apr 29, 2021 at 09:44:47AM +0200, Fabio M. De Francesco wrote:
 > > > > On Thursday, April 29, 2021 9:26:20 AM CEST Fabio Aiuto wrote:
 > > > > > Hi Fabio,
 > > > > > 
-> > > > > On Wed, Apr 28, 2021 at 01:33:45PM +0200, Fabio M. De Francesco wrote:
+> > > > > On Wed, Apr 28, 2021 at 01:33:45PM +0200, Fabio M. De Francesco 
+wrote:
 > > > > > > Removed four set but unused variables. Issue detected by gcc.
 > > > > > > 
 > > > > > > Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
@@ -91,7 +111,7 @@ On Thu, Apr 29, 2021 at 12:15:40PM +0200, Fabio M. De Francesco wrote:
 > > > > > > --- a/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
 > > > > > > +++ b/drivers/staging/rtl8723bs/hal/rtl8723b_hal_init.c
 > > > > > > @@ -3900,14 +3900,11 @@ u8 GetHalDefVar8723B(struct adapter 
-> *padapter,
+*padapter,
 > > > > 
 > > > > enum
 > > > > 
@@ -121,8 +141,8 @@ On Thu, Apr 29, 2021 at 12:15:40PM +0200, Fabio M. De Francesco wrote:
 > > > > 
 > > > > REG_HMEBOX_DBG_2_8723B, cmd);
 > > > > 
-> > > > > > @@ -3916,8 +3913,6 @@ u8 GetHalDefVar8723B(struct adapter *padapter, 
-> enum
+> > > > > > @@ -3916,8 +3913,6 @@ u8 GetHalDefVar8723B(struct adapter 
+*padapter, enum
 > > > > > > hal_def_variable variable, v>
 > > > > > > 
 > > > > > >  			ra_info2 = rtw_read32(padapter, 0x2F4);
@@ -144,13 +164,14 @@ On Thu, Apr 29, 2021 at 12:15:40PM +0200, Fabio M. De Francesco wrote:
 > > > > Hello Fabio,
 > > > > 
 > > > > I'm not sure about it: rtw_read32 calls a pointer to a function. I'm 
-> don't
+don't
 > > > > know drivers programming, however that function looks like an 
-> implementation
-> > > > of a read() system call. So I wouldn't be so sure to remove those calls.
+implementation
+> > > > of a read() system call. So I wouldn't be so sure to remove those 
+calls.
 > > > > 
-> > > > Could calling a (*read) method have side effects on subsequent read()? I 
-> mean:
+> > > > Could calling a (*read) method have side effects on subsequent read()? 
+I mean:
 > > > > could it update some internal data structure? If not I can remove the
 > > > > variables you mentioned above and the calls to read32.
 > > > > 
@@ -162,8 +183,8 @@ On Thu, Apr 29, 2021 at 12:15:40PM +0200, Fabio M. De Francesco wrote:
 > > > 
 > > > hi Fabio,
 > > > 
-> > > rtw_read32 is a macro wrapping _rtw_read32() defined as follows (in core/
-> rtw_io.c):
+> > > rtw_read32 is a macro wrapping _rtw_read32() defined as follows (in 
+core/rtw_io.c):
 > > > 
 > > > u32 _rtw_read32(struct adapter *adapter, u32 addr)
 > > > {
@@ -191,14 +212,14 @@ On Thu, Apr 29, 2021 at 12:15:40PM +0200, Fabio M. De Francesco wrote:
 > > > $ grep -r '\b_read32' drivers/staging/rtl8723bs/
 > > > 
 > > > drivers/staging/rtl8723bs/hal/sdio_ops.c:	ops->_read32 = 
-> &sdio_read32;
+&sdio_read32;
 > > > 
 > > > this is the place where _read32 is stored with sdio_read32 reference...
 > > > 
 > > > drivers/staging/rtl8723bs/core/rtw_io.c:	u32 (*_read32)(struct 
-> intf_hdl *pintfhdl, u32
-> > > addr); drivers/staging/rtl8723bs/core/rtw_io.c:	_read32 = pintfhdl-
-> >io_ops._read32;
+intf_hdl *pintfhdl,
+> > > u32 addr); drivers/staging/rtl8723bs/core/rtw_io.c:	_read32 =
+> > > pintfhdl->io_ops._read32;
 > > > ...
 > > > 
 > > > if you check it in hal/sdio_ops.c, nothing is written, just reads are
@@ -226,12 +247,27 @@ On Thu, Apr 29, 2021 at 12:15:40PM +0200, Fabio M. De Francesco wrote:
 > > thanks,
 > > 
 > > greg k-h
-> >
-> Just to be sure... does it mean that v1 can be applied as-is?
+> 
+> thank you for explanation, my hardware knowledge is poor:(
+> Sorry for noise.
+> 
+> fabio
+>
+I suspected that removing those variables could have been a source of troubles 
+(but I was thinking of possible side effects on internal kernel's data, not of 
+hardware related idiosyncrasies), however I think that you did well to point 
+it out because:
 
-I will review it when I get the time...
+1) We learned something new from Greg;
+2) I learned that, for the purpose of finding definitions, vim's ctrl-] is not 
+the right way to work out the problem.
 
-thanks,
+If you have time, I'd appreciate some comments on the topic of line (2).
 
-greg k-h
+Thanks,
+
+Fabio
+
+
+
 
