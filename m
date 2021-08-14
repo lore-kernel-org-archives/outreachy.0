@@ -1,104 +1,110 @@
-X-GM-THRID: 6801781024772587520
-X-Received: by 2002:a5d:8741:: with SMTP id k1mr9609333iol.30.1583663053223;
-        Sun, 08 Mar 2020 03:24:13 -0700 (PDT)
+X-GM-THRID: 6948309790946754560
+X-Received: by 2002:a2e:9a50:: with SMTP id k16mr6197236ljj.308.1628965863356;
+        Sat, 14 Aug 2021 11:31:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a92:ce82:: with SMTP id r2ls1738003ilo.7.gmail; Sun, 08 Mar
- 2020 03:24:11 -0700 (PDT)
-X-Google-Smtp-Source: ADFU+vv8j7pAL0Quc1g6FCG2ipqmU9VY1S7ulOUskpCm6hiFxPZwYLydkb3xrPWjysKo8j++MKoJ
-X-Received: by 2002:a92:c50e:: with SMTP id r14mr11302403ilg.52.1583663051868;
-        Sun, 08 Mar 2020 03:24:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1583663051; cv=none;
+Received: by 2002:ac2:4146:: with SMTP id c6ls1850200lfi.2.gmail; Sat, 14 Aug
+ 2021 11:31:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzYbOBDTJ+NJcFute1lOu0VJlhjn6ptAouv94ymGAlUk4BXmzUeA4VdgO9YW+7wxXc5GBcC
+X-Received: by 2002:a19:4958:: with SMTP id l24mr5566554lfj.48.1628965861291;
+        Sat, 14 Aug 2021 11:31:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1628965861; cv=none;
         d=google.com; s=arc-20160816;
-        b=A2TACVYffiv3Wwe0irOP+YMT3TAXVVuqBBPJ3ZklVn1wIRXomtFWcv2OPnMo2rPKXJ
-         rWtQeYWBYLQw96BOJCiGEnAP9sQ++B1ZUY6qiBQpjKFBEDngRKxIUhFzt+tpm2dwC16h
-         BSwbzoQKgIg6QDWvBJJiA0WrOV6zAJW6G4IdSZFHQ5coI+k5pGrmUChMlKFsZlbKi/Bj
-         vLJQxbPItr3ahCC52kbGXUETzFVW2xt8fqKO+OUuFiCPrskPf5ASTnc1n+8IBHZQX2V4
-         K33yiTrYX+6rpoZ01IAe2U9rJzQEDygeJjNyleA2RxqLPGXLOGCVV1XHKhGXQxHOgNgS
-         b4tQ==
+        b=kgYsWektfBwONnHKFbxG1tpQVLVzwefG0s65vSJiu6sTCKBJwkL7/laI/Xqw35hrl7
+         Jp9/XTM9K92wCMH1zN0rNDH84loz2aAujyTFNZbTMyTG0bgQC1ZFawLyeSRDHv/JXGIz
+         Ugi9EuTlh14bsQm11i5CLBLsWYiJrvmb3payG/BuM3IS8cHI3jE42dW45qxQs/Teq5XS
+         3F/vURXTPDbuym1xz927WLDZxe7CzIBwcztcnGPN449BbixMs9MEk+ObOejJkIK7zsV1
+         ZVXaZqWzoPOkx0OmJ5g0o57N4lfQe/XWRlxmKoAfJTXRmw7bcZk6xeUOSZedWqUN03y3
+         lspg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=to:subject:message-id:date:from:mime-version:dkim-signature;
-        bh=Da6L4ClIyjAYf7VrN4yVO0SksCN9MZQRQkpIVg0Vh2M=;
-        b=PLFBG9ZiCgouhiJ/a628141zbv45sdLeAVIVS3IuKxdYSLKYDsgZBpZ8fBVBBNAZcN
-         4ccTRbTgbpOD0xvE6gexOsQjWh3yZqFaoCGXstBdusYclkK7TJemxkiJ+UneVNxmZfBE
-         EcKMibEW9CghTc4t3v4v3H4P6/hEnhEhc0XXwiQ8AcgJFvNTGEUsqXweYU/FD9wamFDj
-         N782F8nPJkfO2iFdR6oPbPR8yKG9Mz+bFLW77ZhuWVTuAsgp9eeFzwcs6pPkY2HzLYt6
-         /pzRjLOabiP0H8+7HSuBXK8Zuulsx0AeoDEcnob+ATWsfRKTr8UxQyb1jT8BEkAXpO4Q
-         N9gA==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=JnqZXILM1RIhP57Il3WYBQqjCn7LvCxoyqcHO0oJx6s=;
+        b=kXpLfq+pHp5p1qVzQmCwj4tYsL/1vsVJJwuGpTscn69Qd1eQSIiCcUVm+Tjdb9Rxmz
+         v26OeaDdTVOkfOc/f0NmrTpYEQnIMBwq24V64a153E1goQ91hf6DsDfNuVLFXOJB5mw/
+         cBU8bxqhGpHMlWZsXFNRDPEIb0o+ial2igBgPo4ed9A7fQqWHcYSYXptD9eaKw+M+g/N
+         qDgOonApOVjjB43vrulARV9AuDQKgxRFntyggEcmYk3aflQd3pujQsF/gfwhIVLP3rek
+         3KRXUVCu58XK5bin8/zyJI1uBqrGwY13yj+RGnE+9jR88xX5Zsa0t1IW4Ek03at5zESO
+         lkLQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RY9adKtF;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::d2e as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rpD4e76Q;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::631 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <payal.s.kshirsagar.98@gmail.com>
-Received: from mail-io1-xd2e.google.com (mail-io1-xd2e.google.com. [2607:f8b0:4864:20::d2e])
-        by gmr-mx.google.com with ESMTPS id e7si298354iof.4.2020.03.08.03.24.11
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from mail-ej1-x631.google.com (mail-ej1-x631.google.com. [2a00:1450:4864:20::631])
+        by gmr-mx.google.com with ESMTPS id t8si270092lfc.11.2021.08.14.11.31.01
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 08 Mar 2020 03:24:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::d2e as permitted sender) client-ip=2607:f8b0:4864:20::d2e;
+        Sat, 14 Aug 2021 11:31:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::631 as permitted sender) client-ip=2a00:1450:4864:20::631;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RY9adKtF;
-       spf=pass (google.com: domain of payal.s.kshirsagar.98@gmail.com designates 2607:f8b0:4864:20::d2e as permitted sender) smtp.mailfrom=payal.s.kshirsagar.98@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rpD4e76Q;
+       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::631 as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-io1-xd2e.google.com with SMTP id k4so6363881ior.4
-        for <outreachy-kernel@googlegroups.com>; Sun, 08 Mar 2020 03:24:11 -0700 (PDT)
+Received: by mail-ej1-x631.google.com with SMTP id h9so24369229ejs.4
+        for <outreachy-kernel@googlegroups.com>; Sat, 14 Aug 2021 11:31:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=mime-version:from:date:message-id:subject:to;
-        bh=Da6L4ClIyjAYf7VrN4yVO0SksCN9MZQRQkpIVg0Vh2M=;
-        b=RY9adKtFMk+M3Dax3T//mr/fv3N0MScluPt24AbINPqN4Aoe5FIlDLywxeVzW0fmiT
-         94sqBB5kkTrQpkFVWpB+blfAGmdoSKz2vvNyVoK05jgSDq6ByE9xA8+FFUWW8UdAA/fV
-         2ob9ES3PsgBWdrQ4vlVjvdgYPhIiuq/0DWJ448+tkUalQ8QNxo6doMglQmiie5jH6ex3
-         z/rpyJx0GSYDzBWLBwTtDaXQD+KKMKsHfduMX6ZuVdluk3J68uj6hA4U6AiDtWATJIos
-         cZBm8B9ghCSzlVKMZRsxUNfXSMe3SsnkfV2apxjuOP1cK1ftxJTy4gVH3pKrYUI7oBUk
-         MLcA==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=JnqZXILM1RIhP57Il3WYBQqjCn7LvCxoyqcHO0oJx6s=;
+        b=rpD4e76Q3yBeM8HfJaRRbyrloBmbZrqekzzYuTfCnkwq3Gh/olbqofr2Hf+ndR9uJq
+         lZc+6Q3H4GLAyh8XSkLUiRq/UGDh4WnqhknVnVTzMd8WOHPaALNOjsTj/uWTG1IP97Lj
+         AHpktPK+y/u330xFZJ1uplf6ZrFIaRct37vyiEauxAnjaAPHgDeU0fGwN+9PsaiaNy62
+         5sqcGoQ8bL5Rm3c3WmrWp44Xu6rwntAP8uXKQo3+ZTU16TRTjdrP94NIgfV6TiEjeyct
+         u7wzJwHaxJQcbHd5Wde5KJEUd7v+MDlgUA/HEpUFia6paReoQj3ZsYkOoTsUoizGmHfe
+         8EYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
-        bh=Da6L4ClIyjAYf7VrN4yVO0SksCN9MZQRQkpIVg0Vh2M=;
-        b=JBtsLXVjmOqkU6XYU4Ux96EFL0yVjGks2kzUrzDvTO/Oojy57aj2dZ0dWSXV1LdGll
-         IrF9yLItncrhG35JgxXK1hksYeYUdkCHcZ2/D2mhlVv61GBN8t+fS6iDwiECQ7YR5s81
-         MjcA/Yr2a62jh2WIKECUuk4NkAD2XKvzCDpohV3LKGnu0nV0FfyjDxlVvxQ6WxCrNaue
-         keAJm0NFe2InTmoj2Z63B6A3ZEq0MAk4VHQdqj+wQ6iKfBt8SKIjVe8Xbm/DrZoU19iv
-         f5ujQqM243M4KwIFJTtvgN3PXHIB4lDAnUuh420/pZqb5UU4s7W/w1CDjSuHRg155Ch6
-         NjaQ==
-X-Gm-Message-State: ANhLgQ0+6QxlARPiqYgW11hCIniIG+QpBRwtiJdfBkJeFJoplNrE3tmp
-	HgyAdOo+A7RVNuGO0/x1VnH2rPViRI9MZ0zw5dPLxg==
-X-Received: by 2002:a05:6602:cb:: with SMTP id z11mr9428406ioe.57.1583663051230;
- Sun, 08 Mar 2020 03:24:11 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=JnqZXILM1RIhP57Il3WYBQqjCn7LvCxoyqcHO0oJx6s=;
+        b=rEW/sE6mRxcwp/Od68v/MMa17zVOj4DsiuVI/Rs52wplYz0cuLcEanQRG5tXxuzvya
+         /4U2jrLm+X0Yq7pNVlHlIBXJNgV+l6yrUR4VlwE0mJMMWIxD2wmOY3YPRbgFDtxZu8Nv
+         9Uwq89ZaosXab1vN2iCnv43EGqLkpS9I72Cm0VxnZEtaI82xXbiLaO6sjZjY8DirFxOV
+         ajY1ZdcLkl/Hl6q+yTpJ8vl5HJRkiwbE7g/Al+MD3rR7TJt/HFKPtERVCH0Bj/gYlCUN
+         NSHFeAwXKA0I+M/5slA/cLTjW9fLeggQ0/ilh4CrU/6DpCjEQ7cJLPPIphXvXx8BqqsJ
+         4amw==
+X-Gm-Message-State: AOAM530ESAgBrLzt7k7ts1KyNfxUzWmju7+sVwXVEyoyFAbCjTk98B/H
+	xspusZoO9sd5hBNgmXLfIvHoq6g0GwA=
+X-Received: by 2002:a17:906:119b:: with SMTP id n27mr8740645eja.388.1628965860889;
+        Sat, 14 Aug 2021 11:31:00 -0700 (PDT)
+Return-Path: <fmdefrancesco@gmail.com>
+Received: from localhost.localdomain (host-79-22-109-211.retail.telecomitalia.it. [79.22.109.211])
+        by smtp.gmail.com with ESMTPSA id r2sm2528832edv.78.2021.08.14.11.31.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 14 Aug 2021 11:31:00 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Cc: Igor Zhbanov <izh1979@gmail.com>
+Subject: Re: [Outreachy kernel] Re: checkpatch.pl
+Date: Sat, 14 Aug 2021 20:30:59 +0200
+Message-ID: <1939609.jx1U8J2NKu@localhost.localdomain>
+In-Reply-To: <4b96abb2-baea-4c16-9d7b-e2ce901a3b2fn@googlegroups.com>
+References: <2427703.GWXgmFPN0f@localhost.localdomain> <4b96abb2-baea-4c16-9d7b-e2ce901a3b2fn@googlegroups.com>
 MIME-Version: 1.0
-From: Payal Kshirsagar <payal.s.kshirsagar.98@gmail.com>
-Date: Sun, 8 Mar 2020 15:53:58 +0530
-Message-ID: <CANTOzWF=FTWsMtRXZnvPZAkLAkOPqJ9bpXtHPeD6OH00a1ZkUQ@mail.gmail.com>
-Subject: Sending patches using other Email address?
-To: outreachy-kernel@googlegroups.com
-Content-Type: multipart/alternative; boundary="0000000000009cd24b05a0554917"
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="ISO-8859-1"
 
---0000000000009cd24b05a0554917
-Content-Type: text/plain; charset="UTF-8"
+Hi Igor,
 
-Due to some security issues with my email ID(The email address which is
-associated with my outreachy account) I am not able to send patches neither
-using mutt nor git send-email using that email ID.
-Can I send patches using other email ID and record those patches for the
-outreachy account having different email address?
-Will those contributions be considered or not?
+On Wednesday, August 11, 2021 11:09:19 PM CEST Igor Zhbanov wrote:
+> Hi Fabio,
+> 
+> It seems that the script uses python2, so you need to install "python-ply"
+> package.
+> 
+> > [...]
 
-Please help:)
+Thanks for your reply, though I've already been able to solve this problem 
+some months ago :-)
 
-Payal
+It was only due to checkpatch.pl not able to find where "python-ply" had been  
+(correctly) installed. All that I had to do was to make a symbolic link to the 
+target directory where the module resides.
 
---0000000000009cd24b05a0554917
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Regards,
 
-<div dir=3D"auto">Due to some security issues with my email ID(The email ad=
-dress which is associated with my outreachy account) I am not able to send =
-patches neither using mutt nor git send-email using that email ID.<div dir=
-=3D"auto">Can I send patches using other email ID and record those patches =
-for the outreachy account having different email address?</div><div dir=3D"=
-auto">Will those contributions be considered or not?</div><div dir=3D"auto"=
-><br></div><div dir=3D"auto">Please help:)</div><div dir=3D"auto"><br></div=
-><div dir=3D"auto">Payal<br><div dir=3D"auto"><br></div></div></div>
+Fabio
 
---0000000000009cd24b05a0554917--
+
 
