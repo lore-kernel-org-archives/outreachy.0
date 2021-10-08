@@ -1,154 +1,93 @@
-X-GM-THRID: 6471138099019644928
-X-Received: by 10.98.103.26 with SMTP id b26mr602767pfc.46.1506679248029;
-        Fri, 29 Sep 2017 03:00:48 -0700 (PDT)
+X-GM-THRID: 7016533612499566592
+X-Received: by 2002:adf:a30b:: with SMTP id c11mr4970324wrb.289.1633707509120;
+        Fri, 08 Oct 2021 08:38:29 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.159.216.152 with SMTP id s24ls1879720plp.5.gmail; Fri, 29 Sep
- 2017 03:00:47 -0700 (PDT)
-X-Received: by 10.98.79.157 with SMTP id f29mr599694pfj.13.1506679247040;
-        Fri, 29 Sep 2017 03:00:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1506679247; cv=none;
+Received: by 2002:a05:600c:1caa:: with SMTP id k42ls4183359wms.3.canary-gmail;
+ Fri, 08 Oct 2021 08:38:27 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzupDkel46Xx12xsguMVtqws1/Kv6qYj4r86rbU0y/P3gCVfh+pnqj6RR3+1ibA8tUyIuZS
+X-Received: by 2002:a05:600c:3393:: with SMTP id o19mr4375074wmp.66.1633707507366;
+        Fri, 08 Oct 2021 08:38:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633707507; cv=none;
         d=google.com; s=arc-20160816;
-        b=go801vJ+dCVgiI6ar9LDdCrzlDKg881dbCfFpHI2y0RR3CLcRwAx4K+sqmYUoeR1Dh
-         wYC0yMAGaFwyYi9V7pD4iXmiXSWOWuuC3Q2fr/xPcqqbsV3uLB1WTq32zUg7Ahm3buTG
-         bBahKXmDFBsPazxpqkTSCJ8Qpmx+FUCMwqta6v0q8z0KhddP9tDm2INB/cbd/TTbopF1
-         6AvGYkOYsM3iAVPYitFToPBctTd56koL1lum5FGuONYzBObMXIxFGqU2kIZ8dkIg8408
-         c0K5z/EefPvFdCFPCO5KmOpCi6QqnXtezfXPhIvm+nqCggsLQl7Cfvjux7ZSeuRGHecg
-         05gQ==
+        b=KySiWA+TFdWbsn3sE/wO+5q/m+5LOlPwUFiXBcyCC4IjXcUdKXtxAhTlQm8RMuZV1x
+         iX9Ih9SzlJChkIx8w2+jObrGvig6U+IY2u8VTY6eH3/NCP0yo8mwui8gLB/CSFZAdBaH
+         j6WgmvZNFNdvtfOgRIczcsq9X3E2cxWAvirRJAdEA3MM4qc8Zegs0zLCbigQzXxEdWM4
+         QiYfSdNZNviyFeQHc3NQ8kjUCY86eiNPcZEcJqJdga72FCrSOCaQOcAJmp1ufQpmMpvn
+         ZXKcADmsBrgWJ6bDws1Tes0d7nuHZY+OwHdkv74bhqGIlM88FwyVHrMXBm5Aq1u1+AAh
+         h4IA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=d3lToHBP0OtPcU0pOJ3XB5YJSEWiDGQkDp2kIEQlQtk=;
-        b=xuOnWu48LtEOWndMdriaAAn3/U9N40TtNWzeUP0JpXfEW9O4dnplFAIGxKNt2OvHC4
-         U/BuUS/yMqWvNHIvwQTSFPHNCrrLQWSNSe5y2D9ewnBAZufU7CXpGxclbDdpuNnTZ+Hi
-         IKnju7NkRgwdv5WsDl4AuetrJTWTFof+IdNPXioJxGK1eTfuQjNv9lGqLhbHpoR05+96
-         MzcTunVtb069ugjCXPD0qR4Gp9WZYFl7ogp5qV2IylXZzwDiyKN+qWN1Kdm/tXz6oqQB
-         2XuiHcVklWJEnoNa+6zV3wPxAZgIFVVm1hjxbAU/S0NUcEqP+n23vEvG0zCDpbAkpxKW
-         WUzg==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date;
+        bh=fBSzHQSPD3XPM6FPMzjiOLG0BokY67X52V0fuIoBtIc=;
+        b=W7gLYV9198jboimbpQtqxswfi8LMgNbw8ZzTO8CAYGAmPpndKeJ/AiP9WVkPTv3jUW
+         ZQm2dGwBJcqSgP6S2KFi9bSu5SRp1qiscc9ASvKIcmUrKmd1tuMjqd9TuLagDKPE76CV
+         50iawTfcPwQWJE0kXqfLfKCwDlQEFHuAAPhIM7qDzKxQobGtW3AJg5qjSckxmVtguKWA
+         Q0xxzO7inmr0wy8gHXIe56KM1st8GfFYvNXtX5EGZ4sqt5Y+RK/1nXmrRvQApLzgdOC3
+         eL/uOu4QCTkO+CqURWTPCkGHODzc5xkra/RqOk4Fligo1Z2uByxnevj0piRxWeKDjpLS
+         5U4w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DyAtU3iH;
-       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <srishtishar@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id z74si499262pfj.21.2017.09.29.03.00.47
+       spf=pass (google.com: domain of alison.schofield@intel.com designates 134.134.136.100 as permitted sender) smtp.mailfrom=alison.schofield@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <alison.schofield@intel.com>
+Received: from mga07.intel.com (mga07.intel.com. [134.134.136.100])
+        by gmr-mx.google.com with ESMTPS id o16si947419wme.3.2021.10.08.08.38.26
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Sep 2017 03:00:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 08 Oct 2021 08:38:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of alison.schofield@intel.com designates 134.134.136.100 as permitted sender) client-ip=134.134.136.100;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=DyAtU3iH;
-       spf=pass (google.com: domain of srishtishar@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=srishtishar@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id i23so1021440pfi.2
-        for <outreachy-kernel@googlegroups.com>; Fri, 29 Sep 2017 03:00:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=d3lToHBP0OtPcU0pOJ3XB5YJSEWiDGQkDp2kIEQlQtk=;
-        b=DyAtU3iHwq5A+4U1kJdmsEDSX/a0zjVogrJoU3kQeOH2lP9k7k9g9kONAZFyH0YqGU
-         c8cDPkF7ZAmRQdsg0uRcBTD5J07uzDAEdBWxj1F7774tQMgpXo9FuxbgQO2Abca2Sm/W
-         pUJdYhggtzbT9f2cCIAmZF8xeCH1l2yDIyErhTyXUSzhIfudaGYL5T5kVt+mEf23SQmM
-         QzqSa49MjnX5bvxs9dGdVTPMEX6+0+EI3k+lM7b/fq4mQMEwOnvaqPqzrZtg9N7ea2HE
-         n+Nh43yeDssaiZJUviMxzDpbPjvvyIE2OzlESO/xHN+BHHxJbyA2b9wiFuKQVrm5u6Ro
-         VOHw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=d3lToHBP0OtPcU0pOJ3XB5YJSEWiDGQkDp2kIEQlQtk=;
-        b=HlXtoXHTgM9ieaqn0AZmSqe5xHNj4fBwYiNsuGUFCytLdrIQlZjzyrMTHqrY8wV+oF
-         2uhJolZMQLmSZBCmN/qXYFuJHn0dmiYbdwRUlh+BmYp72zRJfK5DymIysIT1Hf5iYutH
-         4qxeiSWkP5p0PBXHDRs/YETNn+QyCePFxt04r0ftCCEowJOwNVFhfp5+wXn2ph51m9ZC
-         FpjnTxh+bGxEIcDnsJEd6/AKQWuiBQa65Xe2JXbq3x6WtdAWxXqeEwwfNqlN1knm5LRB
-         NDzEDj4bC9rfO08i5JC5PgJNWtvP+wSGcj/cUsl2quF2YirZ60sGqI5EJ7cejm7M2c8C
-         WLog==
-X-Gm-Message-State: AHPjjUi+UIzHeQBEXBV99CIdvwFm3hZn2ursgW+2OmdGSR1DnzKvBbis
-	eP98uGzpnX4NqFXd2Az2t0Y=
-X-Google-Smtp-Source: AOwi7QCbmiS4j0lIrh2p/lBnKOaHnijT/7Lw/GM38CH8bg94YDtYDtHuFlHSFnjywYOl3AoP2pg3KA==
-X-Received: by 10.84.131.103 with SMTP id 94mr6418050pld.302.1506679246761;
-        Fri, 29 Sep 2017 03:00:46 -0700 (PDT)
-Return-Path: <srishtishar@gmail.com>
-Received: from srishti-PRODiiGY-945G ([122.175.215.134])
-        by smtp.gmail.com with ESMTPSA id 77sm6587421pfi.103.2017.09.29.03.00.45
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Fri, 29 Sep 2017 03:00:46 -0700 (PDT)
-From: Srishti Sharma <srishtishar@gmail.com>
-To: daniel.vetter@ffwll.ch
-Cc: seanpaul@chromium.org,
-	liviu.dudau@arm.com,
-	brian.starkey@arm.com,
-	malidp@foss.arm.com,
-	airlied@linux.ie,
-	dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	outreachy-kernel@googlegroups.com,
-	Srishti Sharma <srishtishar@gmail.com>
-Subject: [PATCH] drm/arm: Replace instances of drm_dev_unref with drm_dev_put.
-Date: Fri, 29 Sep 2017 15:30:40 +0530
-Message-Id: <1506679240-7061-1-git-send-email-srishtishar@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       spf=pass (google.com: domain of alison.schofield@intel.com designates 134.134.136.100 as permitted sender) smtp.mailfrom=alison.schofield@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+X-IronPort-AV: E=McAfee;i="6200,9189,10131"; a="290028588"
+X-IronPort-AV: E=Sophos;i="5.85,358,1624345200"; 
+   d="scan'208";a="290028588"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Oct 2021 08:38:25 -0700
+X-IronPort-AV: E=Sophos;i="5.85,358,1624345200"; 
+   d="scan'208";a="479016193"
+Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
+  by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Oct 2021 08:38:25 -0700
+Date: Fri, 8 Oct 2021 08:46:42 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: Martin Gachu <samkergachu@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] Outreachy Contribution Period is Open!
+Message-ID: <20211008154642.GA397677@alison-desk>
+References: <20211008034211.GA394953@alison-desk>
+ <CADjY451CXqLti+ju_0kHb-YK1d2ORjNkFfVq525B=s3k_1peNg@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CADjY451CXqLti+ju_0kHb-YK1d2ORjNkFfVq525B=s3k_1peNg@mail.gmail.com>
 
-Replace drm_dev_unref with drm_dev_put as it is more consistent
-with kernel coding style. Done using the following semantic
-patch by coccinelle.
++ outreachy-kernel@googlegroups.com
 
-@r@
-expression e;
-@@
+Thanks for the question Martin. 
+I've cc'd the group as this may be of general interest.
 
--drm_dev_unref();
-+drm_dev_put();
+No, getting this email does not indicate approval of application.
+I sent this email to all subscribers of this list. You will need
+to check your eligibility in the Outreachy website.
 
-Signed-off-by: Srishti Sharma <srishtishar@gmail.com>
----
- drivers/gpu/drm/arm/hdlcd_drv.c  | 4 ++--
- drivers/gpu/drm/arm/malidp_drv.c | 4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
+Alison
 
-diff --git a/drivers/gpu/drm/arm/hdlcd_drv.c b/drivers/gpu/drm/arm/hdlcd_drv.c
-index f9bda7b..1a96462 100644
---- a/drivers/gpu/drm/arm/hdlcd_drv.c
-+++ b/drivers/gpu/drm/arm/hdlcd_drv.c
-@@ -353,7 +353,7 @@ static int hdlcd_drm_bind(struct device *dev)
- err_free:
- 	drm_mode_config_cleanup(drm);
- 	dev_set_drvdata(dev, NULL);
--	drm_dev_unref(drm);
-+	drm_dev_put(drm);
- 
- 	return ret;
- }
-@@ -378,7 +378,7 @@ static void hdlcd_drm_unbind(struct device *dev)
- 	pm_runtime_disable(drm->dev);
- 	of_reserved_mem_device_release(drm->dev);
- 	drm_mode_config_cleanup(drm);
--	drm_dev_unref(drm);
-+	drm_dev_put(drm);
- 	drm->dev_private = NULL;
- 	dev_set_drvdata(dev, NULL);
- }
-diff --git a/drivers/gpu/drm/arm/malidp_drv.c b/drivers/gpu/drm/arm/malidp_drv.c
-index 7ae94a1..1b92f41 100644
---- a/drivers/gpu/drm/arm/malidp_drv.c
-+++ b/drivers/gpu/drm/arm/malidp_drv.c
-@@ -665,7 +665,7 @@ static int malidp_bind(struct device *dev)
- 		malidp_runtime_pm_suspend(dev);
- 	drm->dev_private = NULL;
- 	dev_set_drvdata(dev, NULL);
--	drm_dev_unref(drm);
-+	drm_dev_put(drm);
- alloc_fail:
- 	of_reserved_mem_device_release(dev);
- 
-@@ -698,7 +698,7 @@ static void malidp_unbind(struct device *dev)
- 		malidp_runtime_pm_suspend(dev);
- 	drm->dev_private = NULL;
- 	dev_set_drvdata(dev, NULL);
--	drm_dev_unref(drm);
-+	drm_dev_put(drm);
- 	of_reserved_mem_device_release(dev);
- }
- 
--- 
-2.7.4
+On Fri, Oct 08, 2021 at 09:27:55AM +0300, Martin Gachu wrote:
+> Hey Alison,
+> 
+> I saw your email does this mean my initial application was approved?
+> 
+> Best,
+> Martin
+> 
+> On Fri, 8 Oct 2021, 06:33 Alison Schofield, <alison.schofield@intel.com>
+> wrote:
+> 
+> > Welcome Applicants,
 
+snip...
+
+> > Please be aware that community coordinators and mentors do not have
+> > any role in the initial application process of Outreachy. Please email
+> > Outreachy organizers with any questions about your eligibility.
+> >
 
