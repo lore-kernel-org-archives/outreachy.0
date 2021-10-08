@@ -1,93 +1,133 @@
 X-GM-THRID: 7016533612499566592
-X-Received: by 2002:adf:a30b:: with SMTP id c11mr4970324wrb.289.1633707509120;
-        Fri, 08 Oct 2021 08:38:29 -0700 (PDT)
+X-Received: by 2002:a7b:cbc4:: with SMTP id n4mr839181wmi.37.1633664037261;
+        Thu, 07 Oct 2021 20:33:57 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:600c:1caa:: with SMTP id k42ls4183359wms.3.canary-gmail;
- Fri, 08 Oct 2021 08:38:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzupDkel46Xx12xsguMVtqws1/Kv6qYj4r86rbU0y/P3gCVfh+pnqj6RR3+1ibA8tUyIuZS
-X-Received: by 2002:a05:600c:3393:: with SMTP id o19mr4375074wmp.66.1633707507366;
-        Fri, 08 Oct 2021 08:38:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633707507; cv=none;
+Received: by 2002:adf:c782:: with SMTP id l2ls1217516wrg.2.gmail; Thu, 07 Oct
+ 2021 20:33:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzSemz83d5QuD10eeEnJFGC/7vlkyWqlls9KFgU31SZivWkf2THt8UWXuLNrmilwukccywN
+X-Received: by 2002:a5d:64a6:: with SMTP id m6mr960416wrp.282.1633664035658;
+        Thu, 07 Oct 2021 20:33:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633664035; cv=none;
         d=google.com; s=arc-20160816;
-        b=KySiWA+TFdWbsn3sE/wO+5q/m+5LOlPwUFiXBcyCC4IjXcUdKXtxAhTlQm8RMuZV1x
-         iX9Ih9SzlJChkIx8w2+jObrGvig6U+IY2u8VTY6eH3/NCP0yo8mwui8gLB/CSFZAdBaH
-         j6WgmvZNFNdvtfOgRIczcsq9X3E2cxWAvirRJAdEA3MM4qc8Zegs0zLCbigQzXxEdWM4
-         QiYfSdNZNviyFeQHc3NQ8kjUCY86eiNPcZEcJqJdga72FCrSOCaQOcAJmp1ufQpmMpvn
-         ZXKcADmsBrgWJ6bDws1Tes0d7nuHZY+OwHdkv74bhqGIlM88FwyVHrMXBm5Aq1u1+AAh
-         h4IA==
+        b=GRpHUQC3v4MoZMJTC5XihUXKWRXF6mHa9NFNa5CmT44XnaGRd/ykQdpRu7/uzY4Z+L
+         AF1nsDVbnX2s+HHEQI/Z+Y6NBHGjl9UNaSUFQvHIrvCGjKe9qN4FpHpDJm3lspRuPMQ6
+         q9UyLsauYt7Hmuhp2pI8NVHVQMWR3G3QTcnFUJUi/ocbXodmUpVWB7GKnaI+430oqEe8
+         9FxFZIj1znQtu+CRt/IFC2vtkTBeCZ2mlpuJK1pse0kq1Oo4Qo9dKMB6aW0m52qUTX4+
+         XKFe2Sr+64fKJdVs5o4D/pQtmxksnlXekOG4QfOMuFlmnr+ILsYqeU2YVKT1MP4QrpBy
+         m6Vw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date;
-        bh=fBSzHQSPD3XPM6FPMzjiOLG0BokY67X52V0fuIoBtIc=;
-        b=W7gLYV9198jboimbpQtqxswfi8LMgNbw8ZzTO8CAYGAmPpndKeJ/AiP9WVkPTv3jUW
-         ZQm2dGwBJcqSgP6S2KFi9bSu5SRp1qiscc9ASvKIcmUrKmd1tuMjqd9TuLagDKPE76CV
-         50iawTfcPwQWJE0kXqfLfKCwDlQEFHuAAPhIM7qDzKxQobGtW3AJg5qjSckxmVtguKWA
-         Q0xxzO7inmr0wy8gHXIe56KM1st8GfFYvNXtX5EGZ4sqt5Y+RK/1nXmrRvQApLzgdOC3
-         eL/uOu4QCTkO+CqURWTPCkGHODzc5xkra/RqOk4Fligo1Z2uByxnevj0piRxWeKDjpLS
-         5U4w==
+        h=content-transfer-encoding:content-disposition:mime-version
+         :message-id:subject:to:from:date;
+        bh=iF3GiLcQ4TZXvhxnuufaiFXdZtKVPV6ktWLc7Y4zBws=;
+        b=BvjBIZrVRB6V348EpPb12dO3MQKRIR/FUf5/cduUCxIjZYe1jJLyNAIoaAGt0IJdqg
+         1LiK5mqSNZOpQ5EAdk+aW6lfMhthjdFRHjhZn+2JSWJAJ3qt7HdhM4yb2+XPveoOGv+2
+         1TUPQrSGs0aRQ2BJnd/iZiFoALSE61fNhddbL04RFAI6amPrDmBnkiC6TpxwXmqj/pF0
+         rcqVvg9oSNAkq7TcBB0CCTO4vdxBTYu/MPIbNmQ2qNuYmk+c8ZQpka2cOr7SXotN9IG+
+         B5G2jaicKvijk0IrQ4FqF2pRYjgWI0Ana8ysC0GogAdqccVaG024vNJEBixwcCtcrvW6
+         6Acg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of alison.schofield@intel.com designates 134.134.136.100 as permitted sender) smtp.mailfrom=alison.schofield@intel.com;
+       spf=pass (google.com: domain of alison.schofield@intel.com designates 192.55.52.93 as permitted sender) smtp.mailfrom=alison.schofield@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <alison.schofield@intel.com>
-Received: from mga07.intel.com (mga07.intel.com. [134.134.136.100])
-        by gmr-mx.google.com with ESMTPS id o16si947419wme.3.2021.10.08.08.38.26
+Received: from mga11.intel.com (mga11.intel.com. [192.55.52.93])
+        by gmr-mx.google.com with ESMTPS id a11si53661wrh.5.2021.10.07.20.33.54
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 08 Oct 2021 08:38:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of alison.schofield@intel.com designates 134.134.136.100 as permitted sender) client-ip=134.134.136.100;
+        Thu, 07 Oct 2021 20:33:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of alison.schofield@intel.com designates 192.55.52.93 as permitted sender) client-ip=192.55.52.93;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of alison.schofield@intel.com designates 134.134.136.100 as permitted sender) smtp.mailfrom=alison.schofield@intel.com;
+       spf=pass (google.com: domain of alison.schofield@intel.com designates 192.55.52.93 as permitted sender) smtp.mailfrom=alison.schofield@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-X-IronPort-AV: E=McAfee;i="6200,9189,10131"; a="290028588"
-X-IronPort-AV: E=Sophos;i="5.85,358,1624345200"; 
-   d="scan'208";a="290028588"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
-  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Oct 2021 08:38:25 -0700
-X-IronPort-AV: E=Sophos;i="5.85,358,1624345200"; 
-   d="scan'208";a="479016193"
+X-IronPort-AV: E=McAfee;i="6200,9189,10130"; a="223834503"
+X-IronPort-AV: E=Sophos;i="5.85,356,1624345200"; 
+   d="scan'208";a="223834503"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Oct 2021 20:33:53 -0700
+X-IronPort-AV: E=Sophos;i="5.85,356,1624345200"; 
+   d="scan'208";a="439780295"
 Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
-  by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Oct 2021 08:38:25 -0700
-Date: Fri, 8 Oct 2021 08:46:42 -0700
+  by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Oct 2021 20:33:53 -0700
+Date: Thu, 7 Oct 2021 20:42:11 -0700
 From: Alison Schofield <alison.schofield@intel.com>
-To: Martin Gachu <samkergachu@gmail.com>
-Cc: outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] Outreachy Contribution Period is Open!
-Message-ID: <20211008154642.GA397677@alison-desk>
-References: <20211008034211.GA394953@alison-desk>
- <CADjY451CXqLti+ju_0kHb-YK1d2ORjNkFfVq525B=s3k_1peNg@mail.gmail.com>
+To: outreachy-kernel@googlegroups.com
+Subject: Outreachy Contribution Period is Open!
+Message-ID: <20211008034211.GA394953@alison-desk>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <CADjY451CXqLti+ju_0kHb-YK1d2ORjNkFfVq525B=s3k_1peNg@mail.gmail.com>
+Content-Transfer-Encoding: 8bit
 
-+ outreachy-kernel@googlegroups.com
+Welcome Applicants,
 
-Thanks for the question Martin. 
-I've cc'd the group as this may be of general interest.
+Please read this *entire* email, even if you have applied in the past.
 
-No, getting this email does not indicate approval of application.
-I sent this email to all subscribers of this list. You will need
-to check your eligibility in the Outreachy website.
+Our contribution period process works entirely via this mailing
+list. Make sure that you read over the emails on this list daily.
+Mentors and I will post any updates here and it is your chance to
+learn from each other.
 
-Alison
+Your first task is to use our tutorial to setup your system.
 
-On Fri, Oct 08, 2021 at 09:27:55AM +0300, Martin Gachu wrote:
-> Hey Alison,
-> 
-> I saw your email does this mean my initial application was approved?
-> 
-> Best,
-> Martin
-> 
-> On Fri, 8 Oct 2021, 06:33 Alison Schofield, <alison.schofield@intel.com>
-> wrote:
-> 
-> > Welcome Applicants,
+http://kernelnewbies.org/Outreachyfirstpatch
 
-snip...
+Ask your questions in this mailing list. Please help other applicants
+who face issues that you've addressed.
 
-> > Please be aware that community coordinators and mentors do not have
-> > any role in the initial application process of Outreachy. Please email
-> > Outreachy organizers with any questions about your eligibility.
-> >
+After your system is setup, the tutorial leads you through submitting
+your first patch. Please do not submit your second patch until your
+first patch is accepted. It may seem like a reach to get 10 patches
+submitted, but the magic is in the first patch, I assure you ;) Key
+point is that it is really helpful and efficient (for both submitters
+and reviewers) if you refine your skills one patch at a time.
+
+You are required to submit patches to this mailing list and to the
+mailing lists and maintainers derived from get_maintainer.pl. The
+tutorial walks you through how to use get_maintainer.pl.
+
+Once that first patch is accepted, you must record that contribution
+on the Outreachy website. This will close the loop on that first patch.
+It will also force you to double check your eligibility. Only eligible
+applicants will be able to log contributions on the Outreachy web site.
+
+Please be aware that community coordinators and mentors do not have
+any role in the initial application process of Outreachy. Please email
+Outreachy organizers with any questions about your eligibility.
+
+Congratulations on getting your first patch accepted into the Linux
+Kernel! Celebrate, then do more!
+
+Once you have completed working on a good number of cleanup patches
+and they have been accepted by Greg, we encourage applicants to move
+on to complete some small tasks outlined by the mentors. It’s
+preferable to CC the mentor when you are working on the task so that
+they don’t miss it. Small tasks for the projects can be found in the
+project detail here:
+
+https://www.outreachy.org/apply/project-selection/#linux-kernel
+
+Please record recording your contributions on Outreachy's website
+for the each project you are planning to submit an application. Keep
+editing your 'project contribution' on Outreachy's website based on
+your accepted patches links and project-specific completion of tasks.
+
+Make sure to add your project preferences under the question
+'Community-specific Questions' in the application.
+
+Applicants should also join the #outreachy IRC channel on
+irc.gnome.org, and the #kernel-outreachy channel on irc.oftc.net. If
+you're having trouble with IRC, please ask for help in this mailing
+list.
+
+If you’ve applied to Outreachy before, you’re still required to send
+a few staging driver cleanup patches to re-familiarize yourself with
+the process before you start to work on tasks.
+
+There is a tips section at the end of the tutorial to outline what
+behaviors we look for in potential Outreachy interns. I hope this will
+give more insight into our selection process.
+
+All the best!
+---
+Alison Schofield
+Outreachy Linux Kernel Coordinator
 
