@@ -1,115 +1,83 @@
 X-GM-THRID: 7016473009259020288
-X-Received: by 2002:a05:6512:717:: with SMTP id b23mr8807523lfs.191.1633680870101;
-        Fri, 08 Oct 2021 01:14:30 -0700 (PDT)
+X-Received: by 2002:a05:6602:29c6:: with SMTP id z6mr1350239ioq.215.1633671811076;
+        Thu, 07 Oct 2021 22:43:31 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:5453:: with SMTP id y19ls464447ljd.0.gmail; Fri, 08 Oct
- 2021 01:14:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzoq5l5nAZ5AWQutnxbiye/iqeDd5BHsgNWTfK9rm7WQI/B6KA94S98FcbbZFjof+x/RdlM
-X-Received: by 2002:a2e:5702:: with SMTP id l2mr2090860ljb.370.1633680867893;
-        Fri, 08 Oct 2021 01:14:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1633680867; cv=none;
+Received: by 2002:a6b:2cf:: with SMTP id 198ls429405ioc.1.gmail; Thu, 07 Oct
+ 2021 22:43:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxW3EJ0N6qgVd+L0I1eoNML6OZQqPSiEvaySZdhBopsNTkj6S0aiHBl43ZMJZGV39bW+s1y
+X-Received: by 2002:a5d:9492:: with SMTP id v18mr6203089ioj.158.1633671810162;
+        Thu, 07 Oct 2021 22:43:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633671810; cv=none;
         d=google.com; s=arc-20160816;
-        b=Tk1uAnMVZQyz/0MWYLqXV1LcZNUxTEtrvkm1T2Rk9xVDGKb5bUGQFHUIBlcBEnUyoC
-         YsEVPEGW0w8sN25WVE7X/7vxepWRlxjzzAfqLwvOLWykwSlHxI+1qu4CAAFJar1Bv+fO
-         ew8xhYkevEbRQlhE8p2PAA8XFI1/WwfMyaAjTOHwXpX66/QfKgMCzQDrAv3Y2gIG0za/
-         SuTHIbzuho/BgYndb9vWTyfgDplqRP+DaKvjapXzzwmmGUEMTH0XM8kclvf75/6LZyHk
-         caujB1yZOvMH+jP9lk+HTyluLuTb6mkyRq7TM6QOJJUHftFeWisZrvp88cA1nsSKUaSX
-         k3uA==
+        b=LoZUwqZrWj3bSvJCKmNo9Djip2MBW92Fnb6sCc+dO6AQcCeeHVBKPXSNIUQShmmDA8
+         vUVXEpu0rIv8zLJ7jnJBz5teQ//uOHfPeESGH3fv+ASvf0U+anR7HMrNg1nPDuz132fF
+         wRTTMRsHzeGMQRWDXSrV6ryLK9eF9dXBg47DlT1tebUJaJIjOcpywQ8A3/NwAoNlxTlJ
+         mNnSEaOWmur0imZxJbyhAfUIfoizbjTFUUG9XW0qc2cL/2Ovz0OSZdEddV0/tBq+Ws0I
+         JXF9VrssPZTL3k7bFQupXL9PIMVGAbe7OApdakYy4fVSeuuhyYWKAZxcc8Exoe6R4pL/
+         LZIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=qSGO2Vb4wQd7Y/U0ZFig6TyL8K2CwMJG9mLQ+gJ1xa8=;
-        b=sTAh/LCyHq96y3hkX9hJnr2RsrOPtXgRPJeRHVGvS4amqsE80i2SNWBQd6eTVH5ofd
-         J7VRm+J6W/ObFZDY9cVzwz7E5E2nqeLX9MT9RhBcaB+cxnnFC0WNu2wlFOzDJPXihRps
-         OBTd0pJyonkHpYJGgJZu6nHEWeH/legf2b6SjFRnlJkH1juAeYbta7kyBph24NueBbeT
-         6JPgdzLXGi1rQs0RLvBaLNE2PmwZ5Jt1iuDFwlaKgVdJxCudLNrAmFp/DOq8Nc1ZU/F1
-         4kCxZoBSvEx2F3kYBoabYNHykR4iZ/vV2GhIchRLA/XaNMnrrbDrHsaVc2osNAINz7J3
-         o2tw==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=gAnYGqWexdd9p6WIjPTHMl9IwcjrUTxD7qE9T/d3pSk=;
+        b=eYJuVJRUfiCbrCuq4hL7w/ZGQJ2tgGTEuZCtNt5CLIo66mRUcPmGd0yG2BQVX+lL8I
+         vxOt+403xTxB6OtfJ5Rc1wAf46rroLVT3q3926od9SW9QcFNsr+8TSFA17hdIDLAf+YV
+         ONA2d1cXaZTV20bysi8ZO+2ubVz3rpMEbdM9yuueKupCMBKfYQZdH4PdFFEDt/VfsC50
+         f/PMO9v3ciUeU/RtBXrb7oHCvjei0iFV3OayMhn2J87dvnzLpou4aXBt39HOaQ2/9Xfg
+         QHXSygbkrAyHkwS8q0vAMx1CDXE3s8G+NZu8pd9hmFXiuKCEYRc/MnBW/llkTrMiGYvK
+         JaLg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@xs4all.nl header.s=s2 header.b=KUzermu5;
-       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 2001:888:0:108::2b as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=xs4all.nl
-Return-Path: <hverkuil@xs4all.nl>
-Received: from lb2-smtp-cloud8.xs4all.net (lb2-smtp-cloud8.xs4all.net. [2001:888:0:108::2b])
-        by gmr-mx.google.com with ESMTPS id u26si118322ljg.7.2021.10.08.01.14.27
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=Xyzzd3fq;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id p184si68565iod.4.2021.10.07.22.43.30
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 08 Oct 2021 01:14:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of hverkuil@xs4all.nl designates 2001:888:0:108::2b as permitted sender) client-ip=2001:888:0:108::2b;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 07 Oct 2021 22:43:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@xs4all.nl header.s=s2 header.b=KUzermu5;
-       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 2001:888:0:108::2b as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=xs4all.nl
-Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
-	by smtp-cloud8.xs4all.net with ESMTPA
-	id Yl1KmPJU5x7rIYl1OmAPFR; Fri, 08 Oct 2021 10:14:26 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
-	t=1633680866; bh=qSGO2Vb4wQd7Y/U0ZFig6TyL8K2CwMJG9mLQ+gJ1xa8=;
-	h=Subject:To:From:Message-ID:Date:MIME-Version:Content-Type:From:
-	 Subject;
-	b=KUzermu50TAuTNrs/eTH9/gmo/2naKGfi/HvyrvuSlLFsNAnMUGW7fzA0XOPm8U3K
-	 +LyJFBszBRlc9Sk3SrdcmGBkG95SOe4DvarE1apg7OZaQaaYqRMk5WoN486He/3rB0
-	 P4yH5+pos5DK04p2yE2dXs643VNQEAivHhXe6DbeRr0FCM0NddCrULMKb01lNHtqRf
-	 DSTJ1rP/oOfO1pnh+q9djNf4UqlD5e7rutGrnXC0i68c4nZV3xgNyB0uiNAGBCOMwm
-	 EammxIuDJ4cAAalPDe3jweYJxlOJ4eAsQMGlm0jPQ339OWXgg9vCd/SRVk6DCFjX5N
-	 Rzt3O/EfnAezw==
-Subject: Re: Outreachy Patch Restrictions
-To: Alison Schofield <alison.schofield@intel.com>, gregkh@linuxfoundation.org
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=Xyzzd3fq;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Received: by mail.kernel.org (Postfix) with ESMTPSA id E6876610CE;
+	Fri,  8 Oct 2021 05:43:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1633671809;
+	bh=B6a3gs4cwWm84Yix/rIdBIdnCtH/pdx+xz+LGB+zIE0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Xyzzd3fqTWJHV2gBzl1PjrRB5Uy3k0CohqwpNm3toA636wuEaZ/p6JkCBQruziEEa
+	 ciCdSpfKLyGGnCjdiI+t2z764uQCm2SLJZmIKgKMPYjMVmTwoxdngyj8hRC9dSk7DM
+	 86XixNZQiVotrf9jrpvAOl5CrgS3zTJKbWiF9z/E=
+Date: Fri, 8 Oct 2021 07:43:25 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Alison Schofield <alison.schofield@intel.com>
 Cc: outreachy-kernel@googlegroups.com
+Subject: Re: Outreachy Patch Restrictions
+Message-ID: <YV/afTvmXgyL+sU8@kroah.com>
 References: <20211007234651.GA393313@alison-desk>
- <20211008011459.GA393580@alison-desk>
-From: Hans Verkuil <hverkuil@xs4all.nl>
-Message-ID: <cb4e6a98-5f41-7cc3-15de-0b3c7d8ac3cc@xs4all.nl>
-Date: Fri, 8 Oct 2021 10:14:22 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Firefox/78.0 Thunderbird/78.14.0
 MIME-Version: 1.0
-In-Reply-To: <20211008011459.GA393580@alison-desk>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-CMAE-Envelope: MS4xfOfHIk0TfCgvttlz56alY6XrPHmwefSON4geHuP6hhsEm5B0RKuu4kOraxx8M6GK7HUmVs1M8bmz2/PNNVyi0kpmywAvZNDJkht58kYSCGAXmLoizrL3
- 7uIkAAlJqmaOOCvs4cb3F55RhUAb7q+4OJw4zZHBpFZJ08X9oHPw9IJCDPU/RNcRvL2IMv+0aGorJMpwL5hohWdhSXJctRq+G1s3ERRYwYWCEKd7i7goc30z
- FV3vuVu9yh6x3ndDuqOLH92NdnFoLV/oq6U2NC0iXRSBBFBz7zPUHlTB6UDn6zdx
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20211007234651.GA393313@alison-desk>
 
-Hi Alison,
-
-On 08/10/2021 03:14, Alison Schofield wrote:
-> On Thu, Oct 07, 2021 at 04:46:52PM -0700, Alison Schofield wrote:
->>
->> Hi Greg,
->>
->> We are about to kick off the next contribution period for Outreachy Interns.
->> (October 8 - November 5)
->>
->> I found this note and would like to know if this restriction still stands?
->>
->>>> Please avoid sending patches for the drivers/staging/media directory
->>>> as Greg can't pick them in his tree during the contribution period.
+On Thu, Oct 07, 2021 at 04:46:51PM -0700, Alison Schofield wrote:
 > 
-> Hans,
+> Hi Greg,
 > 
-> Just read through some more backlog and see that you (Hans) welcomed these
-> patches in the last round. If you are still able to support these
-> patches, I'll drop this restriction.
-
-I suggest we narrow the restriction: I can handle patches for drivers/staging/media,
-but not for drivers/staging/media/atomisp. Last time reviewing patches for atomisp
-took up way too much time for very little gain.
-
-Regards,
-
-	Hans
-
+> We are about to kick off the next contribution period for Outreachy Interns.
+> (October 8 - November 5)
 > 
-> Thanks!
-> Alison
+> I found this note and would like to know if this restriction still stands?
 > 
->>
->> Is there anything else contributors should be aware of for this round?
->>
->> Thanks for your support,
->> Alison
+> >> Please avoid sending patches for the drivers/staging/media directory
+> >> as Greg can't pick them in his tree during the contribution period.
 
+For me, yes, this is still true.
+
+> Is there anything else contributors should be aware of for this round?
+
+Not that I know of, good luck!
+
+greg k-h
 
