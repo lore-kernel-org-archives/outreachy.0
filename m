@@ -1,100 +1,128 @@
-X-GM-THRID: 6670815133562830848
-X-Received: by 2002:a24:6cd5:: with SMTP id w204mr1023623itb.16.1553170181320;
-        Thu, 21 Mar 2019 05:09:41 -0700 (PDT)
+X-GM-THRID: 7016473009259020288
+X-Received: by 2002:a05:6000:1b90:: with SMTP id r16mr2280759wru.250.1633681077284;
+        Fri, 08 Oct 2021 01:17:57 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a02:3b2e:: with SMTP id c46ls1877262jaa.2.gmail; Thu, 21 Mar
- 2019 05:09:40 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwCpo++TTsJ8KYHY4KoL6Rioz13QfAYK9WzfyDKKNS8Y6aPkP1+vX4O/WVrlIxwbwoF/Bjj
-X-Received: by 2002:a02:ba89:: with SMTP id g9mr997315jao.14.1553170180458;
-        Thu, 21 Mar 2019 05:09:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553170180; cv=none;
+Received: by 2002:a05:600c:1caa:: with SMTP id k42ls3502249wms.3.canary-gmail;
+ Fri, 08 Oct 2021 01:17:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwTaCbES5TIn6mpto3niF9+x3bY80LxkvWOq6ccj+WqqFmeho9XxOtoUC2uFH2avo2kU0mT
+X-Received: by 2002:a1c:496:: with SMTP id 144mr1928255wme.60.1633681075684;
+        Fri, 08 Oct 2021 01:17:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1633681075; cv=none;
         d=google.com; s=arc-20160816;
-        b=UgHjntxQ9teSc9l9s2cPl7KehjlVLdkgLUq8S3IrpV0ZxaYLe+pGRbd6Jj7LGVCfoF
-         nvdS76qj4EkojYWE39VS0Ja1X3mkRaz7MEfbrxc3HfWUyVehyN8TKVVhYzErVTlmkLs8
-         sGYLXVoAZ5jpBNngltW8Olfx3lrFonmSYA6/nnHoeNK987N4F3RjvqJXT8EtU+VMDaEc
-         AyWbiVaewArxV3Cnq+K59PJnhRNntBu1tl5giUeMzLBPSTeven4SAoyrIhbdp+zGy3uz
-         QLimWJpuejyydsS90/hHf/PLtN0ak2UVnAe97ojEev15xvEm3lOYxrw5hT6HtSmyvCU3
-         WlZg==
+        b=PvH2WUxPXjJow0oFTfjJ9ru0nbp5SbwSgslgO+7De7DmJ5fjijdkkJNEbNzlC4BvxR
+         CzvAWyC95M+buNgo1eRZN0RhKMkntuGslmyiJwyrAGfXu2+EA/Imdme2HtifYuC0lbJt
+         2qS/wWxXOYSTZSySSj/ZT3EtGrQxpJlhoEkKcVKTRF+hoL3dihrCiZnK73E663Hinarg
+         F450BNiapuYma16bIXgqRoDuyHEFEdN2ms6wSvQAEao5PKQbu7z7f7Q2Cmywx9dfSpFD
+         uhVZnf6kh2GS/q2EnNwgTOm7UcnNs+AgS3QqxkCj+6xGOHJ3ZPQww0kOHDhfn5pQczB4
+         f3IA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=i95k9+StWP1zflD61TkIcnQWbJmtBB9H4A63/c49dYU=;
-        b=i/o5BXIn6hBN8a45YL0oXkEXnJkj1G9sSANpG2acFGbqSHouQYa0iPDnoneLhHO0cC
-         G3Quf93V+ZFzgk2lKT8HK4aoF13cKOo5mSyskagrRWW8MN3G4O7ywQCmmXIeK4iMO6xy
-         JiEwygAiK3yFF5UUMeKQmRpMYW8aRnJJTzryBpCsVCSnZyEXeszUJVdakyiRDvE8p5Q0
-         FUPBagbX+PxhK3BMCJCxFwNPSnmIgYIfRa4oUP1uT3e5+SvM5D7HGdHK/r+Ulsm33Svm
-         c7UnutDkRLHrCr4TsuSUt+ftrCYbSYCIOznNMGVSyL60ey+XQxxxNwMSH2oUJm0jCHPQ
-         G77w==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:references:cc:to:from:subject
+         :dkim-signature;
+        bh=qqEzQx8EVGDPnUCyU3/jqwOwfygE7CpH9xYIYlSqnUc=;
+        b=TxApCSERn/rouv0OeHKCdexi7FpoFSmvRSOklOBAv3Yq0vl1RFdb2Z+4ZnZV9XXXl1
+         xGzpw/S/ot9sD8npuCTRa8TDkDepKzkbOAL5z9HIOc2icLcq5rz4u0MzU10mqi10HSTZ
+         W9uDXFGl1aytZm22uutc1ZtC3t+sDAfp+GCnHId2dC7CcxzbSxWdkuUnAi1q52qZStxM
+         KR+3IgIj/mxBgGhCY/OYYb1+T//UA57JYxF/pQCiIfrKFK27maym5NJAc2mNoLplhher
+         fskVdP2z9uelZa+NZsRgQELa2T66Y5Kly2Vf5CMfINs0kZbjdI7tA6IXrTYo8NQczUzF
+         GV6A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZSLqW+qv;
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <himadri18.07@gmail.com>
-Received: from mail-pf1-x441.google.com (mail-pf1-x441.google.com. [2607:f8b0:4864:20::441])
-        by gmr-mx.google.com with ESMTPS id e74si454328ite.1.2019.03.21.05.09.40
+       dkim=pass header.i=@xs4all.nl header.s=s2 header.b=eKXZdVW+;
+       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 2001:888:0:108::2b as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=xs4all.nl
+Return-Path: <hverkuil@xs4all.nl>
+Received: from lb2-smtp-cloud8.xs4all.net (lb2-smtp-cloud8.xs4all.net. [2001:888:0:108::2b])
+        by gmr-mx.google.com with ESMTPS id e2si134586wrj.4.2021.10.08.01.17.55
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Mar 2019 05:09:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) client-ip=2607:f8b0:4864:20::441;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 08 Oct 2021 01:17:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hverkuil@xs4all.nl designates 2001:888:0:108::2b as permitted sender) client-ip=2001:888:0:108::2b;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=ZSLqW+qv;
-       spf=pass (google.com: domain of himadri18.07@gmail.com designates 2607:f8b0:4864:20::441 as permitted sender) smtp.mailfrom=himadri18.07@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pf1-x441.google.com with SMTP id 10so4174056pfo.5
-        for <outreachy-kernel@googlegroups.com>; Thu, 21 Mar 2019 05:09:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=i95k9+StWP1zflD61TkIcnQWbJmtBB9H4A63/c49dYU=;
-        b=ZSLqW+qvP0zOvewTQKFbwUZTXZixIKVffkKluF6vqvSB+Ruosa1FAI1vC2RJMvyASy
-         JGGdfEMNjKz+mXOdDXsxZBKuCG3XcLI4rKxu4oekbCUFscPNL5LTfy/xdfdeHu+6vO/k
-         Dm5XVn2inSX0bPPXh4M71QWfRDY3QFNuQ+PFuLnTgt2rMBDxmZ1mqBm+bLat6pKb2OOG
-         ApSr892YbuBFYX1zha3kgFBvwLChZEfZogreaG9lhhVwXRDBUVig/hc38S+bfLRbF9JA
-         20Mn+UloLL/74Z9eP26OYOgZqxSPjMTGc/AMqNDC4mQAF+TiW170Ra9loXrpbGzEFgFh
-         daTQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=i95k9+StWP1zflD61TkIcnQWbJmtBB9H4A63/c49dYU=;
-        b=XWj+jQqwGfISd3+DaK1oWSbNiWUFci3OM8nmCOSH0jr8Tk8Rt3sxkbX76zmgHMELpS
-         HcYvYaZ0u4qjdmzmMUox7OyRT2zUaU3qtnSZTbDUCHxUn4uf/szPcoBvlPWx9mpn85JC
-         zwQrACCBQ908PohEFEj5UMlkHulM+CCCgwgHyhhOKpJopqTGvGBRRV2X5AMstrvnHn2N
-         Vcdw+ZZWW45CZkVztLs+EUAt7orz+QaTyV9J01uxpfwNB89sMRXOWybc1YaTBle/jdMY
-         A+Qb7K7zSljNohxYCraIunb35pkQhHflaCuJ0hRQwWheeZcsWEewshlE3eIM+9QpOHGv
-         Rv+A==
-X-Gm-Message-State: APjAAAWi+G1G9u7p7cG1Lettz9GwYkWXHtvDsqUMtOnSwFW2/O1tgyTE
-	DngGRPlGfNcBDJBJCDm5Uaw=
-X-Received: by 2002:a63:6e8d:: with SMTP id j135mr3014163pgc.160.1553170179515;
-        Thu, 21 Mar 2019 05:09:39 -0700 (PDT)
-Return-Path: <himadri18.07@gmail.com>
-Received: from localhost.localdomain ([49.34.80.198])
-        by smtp.gmail.com with ESMTPSA id c130sm6687518pfb.145.2019.03.21.05.09.35
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 21 Mar 2019 05:09:38 -0700 (PDT)
-From: Himadri Pandya <himadri18.07@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com,
-	Himadri Pandya <himadri18.07@gmail.com>
-Subject: [PATCH 0/5] staging: rtl8723bs: include: remove typedef of
-Date: Thu, 21 Mar 2019 17:39:03 +0530
-Message-Id: <20190321120908.43680-1-himadri18.07@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       dkim=pass header.i=@xs4all.nl header.s=s2 header.b=eKXZdVW+;
+       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 2001:888:0:108::2b as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=xs4all.nl
+Received: from cust-b5b5937f ([IPv6:fc0c:c16d:66b8:757f:c639:739b:9d66:799d])
+	by smtp-cloud8.xs4all.net with ESMTPA
+	id Yl4imPKmkx7rIYl4lmAPnD; Fri, 08 Oct 2021 10:17:55 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=xs4all.nl; s=s2;
+	t=1633681075; bh=qqEzQx8EVGDPnUCyU3/jqwOwfygE7CpH9xYIYlSqnUc=;
+	h=Subject:From:To:Message-ID:Date:MIME-Version:Content-Type:From:
+	 Subject;
+	b=eKXZdVW+WjLa9IAcvc7UuLQaSGmgizQszqcJ5sG7E+rNpDnUNDckPBRdGYIn7BHjC
+	 smcRHlYpxEQTkoRzTbrevfVS0T6GACCNDb7mlErAV7FaTXudV7+G+2duNKYTaYHmdd
+	 PxG5pP6wZq+3WhQapTLs/bRt6/HDy+3ZEKrihJUYeT3LeX6j3HKWhS3BT/zsRQeYey
+	 mHeHmaOyXYEmv+vhTkrBrUUHEgDe8XM6YBr5M5t20l62m87HfT8YQhIqFb0YNb+IQj
+	 ZoyAJG2+OgPbcEs9mtcF4U1at6ThQxnQSKPjAnAXMp/UHenBawPH0FodbGkBaBCtIk
+	 avG5hitcXE8HQ==
+Subject: Re: [Outreachy kernel] Re: Outreachy Patch Restrictions
+From: Hans Verkuil <hverkuil@xs4all.nl>
+To: Alison Schofield <alison.schofield@intel.com>, gregkh@linuxfoundation.org
+Cc: outreachy-kernel@googlegroups.com
+References: <20211007234651.GA393313@alison-desk>
+ <20211008011459.GA393580@alison-desk>
+ <cb4e6a98-5f41-7cc3-15de-0b3c7d8ac3cc@xs4all.nl>
+Message-ID: <90508157-31f0-b038-4348-d215faeabfd2@xs4all.nl>
+Date: Fri, 8 Oct 2021 10:17:52 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Firefox/78.0 Thunderbird/78.14.0
+MIME-Version: 1.0
+In-Reply-To: <cb4e6a98-5f41-7cc3-15de-0b3c7d8ac3cc@xs4all.nl>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-CMAE-Envelope: MS4xfKShacaQ1p+iGGAp1yOLcKFykUXg+v79jYkNS+chSNBDlfg6YIrU++P+Tot+8y28aQ8cwGkCXqAR68g7fHvML/NLaee9xdu0nnEoDufigt6wnMeETwE/
+ U3x9mM0CG1DskdCZfJk47QmxZdMN7kbYlE2m19tO4m9/yBVqyjVTq80u8SJSp5O/QLU7Q7Jx5/5drQy+XNl7JYTRsSbvii0AnPEQ1gBZtebKyhA2fbWEt7Y0
+ GvSzW67O+dhVxDv1pazclbtMlLV9yK+zKbB0SOoUuL9CkFAj18dsQj3wGpCiuOSQ
 
-This patchset removes typedefs from various structures defined in
-/staging/rtl8723bs/include/rtw_pwrctrl.h as The Linux kernel coding
-style guidelines discourage the use of typedefs for struct types.
+On 08/10/2021 10:14, Hans Verkuil wrote:
+> Hi Alison,
+> 
+> On 08/10/2021 03:14, Alison Schofield wrote:
+>> On Thu, Oct 07, 2021 at 04:46:52PM -0700, Alison Schofield wrote:
+>>>
+>>> Hi Greg,
+>>>
+>>> We are about to kick off the next contribution period for Outreachy Interns.
+>>> (October 8 - November 5)
+>>>
+>>> I found this note and would like to know if this restriction still stands?
+>>>
+>>>>> Please avoid sending patches for the drivers/staging/media directory
+>>>>> as Greg can't pick them in his tree during the contribution period.
+>>
+>> Hans,
+>>
+>> Just read through some more backlog and see that you (Hans) welcomed these
+>> patches in the last round. If you are still able to support these
+>> patches, I'll drop this restriction.
+> 
+> I suggest we narrow the restriction: I can handle patches for drivers/staging/media,
+> but not for drivers/staging/media/atomisp. Last time reviewing patches for atomisp
+> took up way too much time for very little gain.
 
-Himadri Pandya (5):
-  staging: rtl8723bs: include: remove typedef for struct pno_nlo_info
-  staging: rtl8723bs: include: remove typedef for struct pno_ssid
-  staging: rtl8723bs: include: remove typedef for struct pno_ssid_list
-  staging: rtl8723bs: include: remove typedef for struct
-    pno_scan_channel_info
-  staging: rtl8723bs: include: remove typedef for struct pno_scan_info
+Ah, and any patches for drivers/staging/media must be CC-ed to the linux-media
+mailinglist. They should be anyway, but if not, then it is likely that I'll miss them.
 
- .../staging/rtl8723bs/include/rtw_pwrctrl.h   | 30 +++++++++----------
- 1 file changed, 15 insertions(+), 15 deletions(-)
+Since I'm not a mentor this round I won't be actively monitoring outreachy-kernel.
 
--- 
-2.17.1
+Regards,
+
+	Hans
+
+> 
+> Regards,
+> 
+> 	Hans
+> 
+>>
+>> Thanks!
+>> Alison
+>>
+>>>
+>>> Is there anything else contributors should be aware of for this round?
+>>>
+>>> Thanks for your support,
+>>> Alison
+> 
 
 
