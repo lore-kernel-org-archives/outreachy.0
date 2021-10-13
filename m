@@ -1,133 +1,120 @@
 X-GM-THRID: 7018482002461458432
-X-Received: by 2002:ac2:57d4:: with SMTP id k20mr40602762lfo.160.1634122432883;
-        Wed, 13 Oct 2021 03:53:52 -0700 (PDT)
+X-Received: by 2002:a05:600c:b5a:: with SMTP id k26mr11590457wmr.172.1634117873753;
+        Wed, 13 Oct 2021 02:37:53 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:3901:: with SMTP id g1ls338567lja.2.gmail; Wed, 13 Oct
- 2021 03:53:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyINyJ7gwVHWN3Sgoa9LhVnoEiZ2Ar6OA/PbfIXWneiC8Hv7GFVev0vuvaTph40udyOuLpP
-X-Received: by 2002:a05:651c:1596:: with SMTP id h22mr35478886ljq.405.1634122430875;
-        Wed, 13 Oct 2021 03:53:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634122430; cv=none;
+Received: by 2002:adf:a285:: with SMTP id s5ls2041800wra.1.gmail; Wed, 13 Oct
+ 2021 02:37:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxM2HCkPqgZdnu7cXBP3CfByhJMa5uaHL7EZpzlgMKU7GpFNCuBcPOHlMoTIuT/+wV++fMZ
+X-Received: by 2002:a05:6000:1889:: with SMTP id a9mr23031943wri.400.1634117872150;
+        Wed, 13 Oct 2021 02:37:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634117872; cv=none;
         d=google.com; s=arc-20160816;
-        b=qxA3hM6z2ZtI2RYLFkHiGTtb2SG3NLA4grWuPhz2yGC7/j07HtAwg7FCTwNVKZSEeN
-         12k5u3KgDPV17ycoRSYGwxhK3OeDxrfsCLSh6GuQRf2P0Ldm5Mk7KTM/vCKgodFm3FrQ
-         xOten9EC/S+J1A+JXidyNTrFaMDbrwkhvFBuy03A+C2w9EN3jA9BWeZ1WuRM0/aoDw96
-         SaOiWJePzHJ/jhni9NY85eG9hp4/FraUxhS37eupvPJsaQBPi8jjIzxFa/k13fOipPZD
-         kokqRnBiiejgJfWkUrM2Dg8pR4BqnmNQszBMcpntP4wZFMuGNl0HrlAsSS6mihiCqxow
-         rRXQ==
+        b=ti8y0RyfnolCeIx0Xdd/MWvwjODGKMMb3XMPYu22VCnFzZ+Nn7X615Jk3wOeHUaq5s
+         xLFF9MajhxHsstqRK7CPooeJ8wMYvS3BdLifzE4p7af5OYUy42d5TVQ/kX4DDKWE4kcG
+         vk8RxQjDpKBXa/EXKuN3cBVsj02X+p7+PsxvBpyWLtL3J0cMzR5Ao7A6zlliNzc6nqPE
+         GX2U6EWy5s+4haOTMMfDQ7xLEJAeOP9jwYI1rDgNfABiInJ47FoR1Bi6AuIWSnyRt0bj
+         PgLAo5yufK7sKBTYjN3/+Cf0qtOHH4QG/igP1B7DWYrS83Uv4zQKdNKklde+tc0WW1/A
+         GKmg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=BB3zqYO2QhRNzxwzhZrAGaFniaze27y2XdbAX6xo4OM=;
-        b=JiB5oJ4CoVqu9/c0L2m/U2kKtnzwklrjjir3ByQJUO1oAD2AA3gcYhnK1YesduuEhY
-         ByQRuwrYv+LS25Xv33uSyPotRoD5lyILEQrf3Jy9wO+uT+bEa9gH/t3KeDA9r6tRpq0C
-         aOO34i7rIzFZTwKLHTzJUOoV9Wf5YsnVnTvpy7O1C88ySwblhlo29LrugWtw5eVo/AZu
-         hmHx0AWxB+wJVUkh2RdHqddnerz68LDwrJ50bML6eIYzDvfz1g/vGJ6Anbrn+JBJ8r3o
-         l4yMUYvk8XG/oqi4Xol4fXTSlPM6cEANwxtBfhJN9BKgWrExNDmTbRsZYadlDMS3XGDS
-         x/vw==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:ironport-hdrordr;
+        bh=OVzTRNACLTqnTrHXKzhxeJyj2LqlhZeCxzwSnEEXqhI=;
+        b=w1ZuCtHGdY4sTq7wBPyBkEI8bPgCgodTra4yekeDzO7B81B5OD/X5AC+tDJOWoz1lB
+         qo+HmIvg9qZtPby0hmAGBbclYM5Dzg+6XRtCPEgByQcaBfdQxp2LJWiLsc5LaMnMRpQG
+         U7U72yZdi8vRsX5DTZ7R1l7I3O7O0kjPyfVhwttPh+MKeGfcIEBab5pLLyNN2o+CgSX7
+         x8u+ImzjriksyJ4RmApc4TJ0jcoRFll4n6r/9MKns5/MiUi3ODllkc0OP/yo67ZPoP2d
+         iOxM+6ACSbNMXx45TWgYWpGM7MSROUfw1Ryazi5tM5y16A2dkLZVGoraOsCKXovKiSgX
+         4ADw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=EYYDBAbT;
-       spf=pass (google.com: domain of mike.rapoport@gmail.com designates 2a00:1450:4864:20::431 as permitted sender) smtp.mailfrom=mike.rapoport@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mike.rapoport@gmail.com>
-Received: from mail-wr1-x431.google.com (mail-wr1-x431.google.com. [2a00:1450:4864:20::431])
-        by gmr-mx.google.com with ESMTPS id q4si862239lji.6.2021.10.13.03.53.50
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id f9si461788wmg.2.2021.10.13.02.37.52
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 13 Oct 2021 03:53:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mike.rapoport@gmail.com designates 2a00:1450:4864:20::431 as permitted sender) client-ip=2a00:1450:4864:20::431;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 13 Oct 2021 02:37:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=EYYDBAbT;
-       spf=pass (google.com: domain of mike.rapoport@gmail.com designates 2a00:1450:4864:20::431 as permitted sender) smtp.mailfrom=mike.rapoport@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x431.google.com with SMTP id t2so6859587wrb.8
-        for <outreachy-kernel@googlegroups.com>; Wed, 13 Oct 2021 03:53:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:content-transfer-encoding:in-reply-to;
-        bh=BB3zqYO2QhRNzxwzhZrAGaFniaze27y2XdbAX6xo4OM=;
-        b=EYYDBAbTBxIboqKztPcGhOeHqR35JGKvettjdPFqZz9skZLxmRb1g2UbPtaCMtGjCh
-         9NxBPVZB7hEgeZQUPPh0vYJxZAlyaPJTfKk/+s5631Mt+qh4dGQoSXgfTNsADTmNhW7o
-         rBk2Zl5InYHLE2aD0Y5I8hlYswQ7xduz1yyTKejAm1A7hBJPlRfzuOagacTQNOo0imJT
-         H+ZAhS5Pbk35lzzTlp4BZL6MeRm1+Qz6UnTnjezDcEDgZqE0JFJaXuutr4C5x9PSRXAX
-         cWwsoQcsCiyhC1fTXUuyzSUkIr+noZBPWBvzJWf6ZGZoY/u/0P0FVrZl46yBbKYd3oP/
-         eBFw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:content-transfer-encoding
-         :in-reply-to;
-        bh=BB3zqYO2QhRNzxwzhZrAGaFniaze27y2XdbAX6xo4OM=;
-        b=YFnjzXDqmVYnTCL7nQe6Cj7RtEosHdAZWo2qRw6ipVRJafA5GYn6HO4eSJXZuDIFP8
-         bwqZfmoQWcRg7lKh/chUukk6up3wW/smUVs76bu7yS0JL8bC77xFB7SDlt8k/FG/sa/a
-         xG+UoQq0mCeVQoUoeMnk9Fr1nL/th6k5BUMoXK96dNsnSLh19K7rD/MPrLeXcRZRUeW8
-         LWAXEbZPn5uzAVPUGcnob5d0rR3OFrQDL1CzbmbJpFseW5IO7XKViC8wmvgZqlW5iQaX
-         E6MkHjyZBaF0nZ+Oi4EHwvYTljbKRiSB1bB6/miZU2Gy+XPjZbVsD3yPsC7/GXu+7akU
-         daCg==
-X-Gm-Message-State: AOAM532UtTweMQZUHymewG1r6jx5Kzqehjw588gyykl5QoN6TmFJ5g8+
-	aG0MHxIIcbD3y0E328GUoxWN5c7tITw=
-X-Received: by 2002:a05:6000:1884:: with SMTP id a4mr17499296wri.356.1634122429689;
-        Wed, 13 Oct 2021 03:53:49 -0700 (PDT)
-Return-Path: <mike.rapoport@gmail.com>
-Received: from kernel.org ([2a0d:6fc0:681:b600:7549:3ae4:fb09:62e3])
-        by smtp.gmail.com with ESMTPSA id n68sm4951247wmn.13.2021.10.13.03.53.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 13 Oct 2021 03:53:49 -0700 (PDT)
-Date: Wed, 13 Oct 2021 13:53:46 +0300
-From: Mike Rapoport <mike.rapoport@gmail.com>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+IronPort-HdrOrdr: =?us-ascii?q?A9a23=3An/0FGqs1MDXH187yDLgqJ8Ib7skDcdV00zEX?=
+ =?us-ascii?q?/kB9WHVpm62j5qSTdZsgviMc5Ax6ZJhko7G90cq7MBbhHPxOgbX5VI3KNDUO+l?=
+ =?us-ascii?q?HYT72KhrGN/9SPIUHDH6JmpMVdWpk7OZnLAV92gd2S2mSFOtwrqePpzJyV?=
+X-IronPort-AV: E=Sophos;i="5.84,326,1620684000"; 
+   d="scan'208";a="395759119"
+Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 13 Oct 2021 11:37:51 +0200
+Date: Wed, 13 Oct 2021 11:37:51 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: julia@hadrien
 To: Karolina Drobnik <karolinadrobnik@gmail.com>
-Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: Re: [Outreachy kernel] =?utf-8?B?Q2Fu4oCZ?= =?utf-8?Q?t?= install
- kernel when CONFIG_SYSTEM_TRUSTED_KEYS is set
-Message-ID: <YWa6utZY5MmRQ5UM@kernel.org>
-References: <d89839a7-c1c6-4768-9f5c-c9001b1239a2n@googlegroups.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
+cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: =?ISO-8859-7?Q?Re=3A_=5BOutreachy_kernel=5D_Can=A2t_install_ker?=
+ =?ISO-8859-7?Q?nel_when_CONFIG=5FSYSTEM=5FTRUSTED=5FKEYS_is_set?=
 In-Reply-To: <d89839a7-c1c6-4768-9f5c-c9001b1239a2n@googlegroups.com>
+Message-ID: <alpine.DEB.2.22.394.2110131136370.3465@hadrien>
+References: <d89839a7-c1c6-4768-9f5c-c9001b1239a2n@googlegroups.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="8323329-534873501-1634117871=:3465"
 
-Hi,
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-On Wed, Oct 13, 2021 at 02:34:42AM -0700, Karolina Drobnik wrote:
+--8323329-534873501-1634117871=:3465
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
+
+
+
+On Wed, 13 Oct 2021, Karolina Drobnik wrote:
+
 > Hi everyone,
-> 
+>
 > I tried to compile a kernel using my system config file (Debian 11,
-> 5.10.0-9-amd64). Unfortunately, when I run `sudo make modules_install install`,
-> I got this:
-> 
+> 5.10.0-9-amd64). Unfortunately, when I run `sudo make modules_install
+> install`, I got this:
+>
 > ```
 > At main.c:160:
-> - SSL error:02001002:system library:fopen:No such file or directory: ../crypto/
-> bio/bss_file.c:69
-> - SSL error:2006D080:BIO routines:BIO_new_file:no such file: ../crypto/bio/
-> bss_file.c:76
+> - SSL error:02001002:system library:fopen:No such file or directory:
+> ../crypto/bio/bss_file.c:69
+> - SSL error:2006D080:BIO routines:BIO_new_file:no such file:
+> ../crypto/bio/bss_file.c:76
 > sign-file: : No such file or directory
 > ```
-> 
-> After a bit of a research, I found out that the solution is to comment out the
-> `CONFIG_SYSTEM_TRUSTED_KEYS` flag. Mine was set to "debian/certs/
-> debian-uefi-certs.pem", a file that’s clearly absent from the kernel tree.
-> 
+>
+> After a bit of a research, I found out that the solution is to comment out
+> the `CONFIG_SYSTEM_TRUSTED_KEYS` flag. Mine was set to
+> "debian/certs/debian-uefi-certs.pem", a file that’s clearly absent from the
+> kernel tree.
+>
 > I’m not quite sure if this is the right way of going about it. Is it fine to
 > leave this one out when I'm working on a kernel or not?
+>
+> Bonus question: What happens if TRUSTED_KEYS is commented out? Will the
+> *.pem file be generated automatically or does it turn the module signing
+> off?
 
-It should be fine unless you work on key management and some other security
-features that require this option.
- 
-> Bonus question: What happens if TRUSTED_KEYS is commented out? Will the *.pem
-> file be generated automatically or does it turn the module signing off?
+I often receive complaints about this file, and I have just replaced
+"debian/certs/debian-uefi-certs.pem" by "", rather than removing the
+configuration option.  No other changes to the configuration inherited
+from my debian installation.
 
-My understanding is that for module signing the key will be autogenerated
-regardless of the value of SYSTEM_TRUSTED_KEYS and the modules will be
-signed with the autogenerated key.
+julia
 
+>
+>
 > Many thanks,
 > Karolina
-
--- 
-Sincerely yours,
-Mike.
+>
+> --
+> You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visithttps://groups.google.com/d/msgid/outreachy-kernel/d89839a7-c1c6-4768-9f5c-
+> c9001b1239a2n%40googlegroups.com.
+>
+>
+--8323329-534873501-1634117871=:3465--
 
