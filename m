@@ -1,110 +1,217 @@
-X-GM-THRID: 6466360853693202432
-X-Received: by 10.31.96.135 with SMTP id u129mr16330711vkb.50.1505566959603;
-        Sat, 16 Sep 2017 06:02:39 -0700 (PDT)
+X-GM-THRID: 7018560405884633088
+X-Received: by 2002:a2e:95c6:: with SMTP id y6mr609516ljh.201.1634145452802;
+        Wed, 13 Oct 2021 10:17:32 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.36.84.140 with SMTP id t134ls2666270ita.14.gmail; Sat, 16 Sep
- 2017 06:02:38 -0700 (PDT)
-X-Received: by 10.36.7.79 with SMTP id f76mr3977255itf.4.1505566958723;
-        Sat, 16 Sep 2017 06:02:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1505566958; cv=none;
+Received: by 2002:a2e:2204:: with SMTP id i4ls576632lji.4.gmail; Wed, 13 Oct
+ 2021 10:17:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwiCUvU8NUN3EnkH9wELcA20hMpOiKZCDrZJo4WLqZfQquryyASiojopqMg4e/PduRQblgT
+X-Received: by 2002:a2e:9bc2:: with SMTP id w2mr604031ljj.109.1634145450873;
+        Wed, 13 Oct 2021 10:17:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634145450; cv=none;
         d=google.com; s=arc-20160816;
-        b=VvPOiCTM+kBkvR7F22kvLtzKzWCn7dELTlGKIFzrvdxAA3a64KsX4pzNbrWHQlyMBo
-         d1zFh7fci/VVUUj8ULeLwCVIKdcGKPtWwKZBt2W1vcO4eKTf10NHXVlnT6/Fm46HiUg/
-         NakpZ09cV5qFPHZM9HT5EVsy6bjYrPB/44nlPZbY2FLSWtsd5Q4YUAovgXGQ0btfmXS2
-         RAVJYLxy2HRULyiJ8N1Q8b4c/PXcTu8DHRSAvTu8st0L2Tg56pCZtF4lmMJTDWBBPoSA
-         KtK1QgMne1BCdgPt3fEp2hRn5QZgmTSsLwNrjvgfgnGk1jqWsbj0kH0byFxyz35WM3bB
-         IRDw==
+        b=B29mXC9sAyO9+NQ2wC8MbFtaaFe57pN3QrU0UYIxWETG6FGAu0LUrLk1ldsUag5AgX
+         +dCDbl/M5jqFubt5tk//lnwZ0RtlOgL4WkoJskYVZ1HoCPI6yfGANPMUVrEUGNUTXJ0K
+         g836i7pCnVCZPhTQDgFesuDdNg6whrhA1LRu20s9aBn3zybK4GXJYx0UhWoKpz65rRAC
+         GBmnIXhhPpzNgX/Jp7AtciaE6UwYXtG9Pmu6ik4nY2AkDLcglsyd0gz0GNr4MCt6VG7B
+         hQOl0GL+mpn27vXE+1Na3iYhgvT33VhToNqfWcJuChmpENlZG8m1hDktzF6RuCvsYsWb
+         Qfqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=QNFAmI77MY6egvnVUgPgCD6rA/FM3JmDTa9or3oXiss=;
-        b=n3KDfBeMO1s7GJ398KhXnkC3LeB+/MxGIZ7utiAS9JuGGctIXBktvALAyXaTFqQAb8
-         S4Okbw0hYquOcXGSHwwEAGOUNyClxVDHnTBAuj72h3urLWFIZF3WQ9aLGuf1OI48DLXR
-         u5hn4TB0Y7/w8T/rRsthvMIoHSumWWgX9HOhHhsutE9BpNt6hhoR5nvQW0Jwkdc/RIfO
-         Jzxq5q+z9s3IWgLdRVVFKTMXBddFuEYh4oA0Gac8GloFw5oy0JLBzOyPmba5PktTh47C
-         t7+bl/GAelh5AuJpEyHfx4ZUEz6mDa3zCF4hUAR2uLnCgviK7MxtiRWttY8G2kc7tOWm
-         /Paw==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date;
+        bh=0BSOGVKqoRyd3NM/sfpbvfSjcVy8X7PNl2uJ0hxn5jE=;
+        b=BYbcm1xqAqji0qYvzYk6R7uIOTCVNdz6G8e+KJqEEyUQVPM14ZPE2luN76bMv5omFE
+         NSJuQadHygH3YZ7qkVl+9poh1CaJCysFeNIbwJ16ittni32ta//FnU9wRzut3g+hkahT
+         y1JONVmbwYOZBVG1ruck6afFaQ6hG7/+ZobekYNhdZJ3IFK5WRx3DH3qFycLEM48kXto
+         KElOr27/D2MhfYgEsCNOG8/4FC0hPRNaAvQ8+3JnU9yGKN0p8Vqr5Uc5riFjg4HjBRRo
+         Vmn86DdS3WoO2aGrF0CrasCx97Q9oNAbynEI3NopSKWlUQKWFc2UzIa9h+0N+rNYjX90
+         pxlg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aL+9kyQ9;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <aastha.gupta4104@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id t77si297216pfi.13.2017.09.16.06.02.38
+       spf=pass (google.com: domain of alison.schofield@intel.com designates 134.134.136.126 as permitted sender) smtp.mailfrom=alison.schofield@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <alison.schofield@intel.com>
+Received: from mga18.intel.com (mga18.intel.com. [134.134.136.126])
+        by gmr-mx.google.com with ESMTPS id z21si9522ljn.1.2021.10.13.10.17.30
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 16 Sep 2017 06:02:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 13 Oct 2021 10:17:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of alison.schofield@intel.com designates 134.134.136.126 as permitted sender) client-ip=134.134.136.126;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aL+9kyQ9;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id j16so2738591pga.2
-        for <outreachy-kernel@googlegroups.com>; Sat, 16 Sep 2017 06:02:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=QNFAmI77MY6egvnVUgPgCD6rA/FM3JmDTa9or3oXiss=;
-        b=aL+9kyQ9JeTxdtsik/DbZXUwgPbHN4M0bJ47qT+DGQTmfqFtIPh9K3G6zN3JnYD+TO
-         K7UNlRRukM7VtZbrPQ2ZGkyeXzBiOwyIEtGGYUvO9kkX6mVLmFf4kETzdXcUekEdtzpq
-         YLF5NGjdlxJ2rH54v/vvjz4rIHBsadfCAur6PxmzQQHN/S4PexCHBqJzcfgaz6+FJrF0
-         E2vlGOFN5kt6hHild5pF6+BOAj+1IG2xVSZhYRC7EZPj5CemfTvMtohojHGWuPnaG7Yb
-         OKc6lZ2WTudjI8e1TxI3wgyEmdcNNLZSrvqRL47s1oqIVUJuclD2jAwh9uic41Z/uZzg
-         hI9Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=QNFAmI77MY6egvnVUgPgCD6rA/FM3JmDTa9or3oXiss=;
-        b=bfHyiuRhgn2uzpb7YGFyHa0iSVzBKmxfVjkZ8qtHzVe6dzsIA7NsB/hdtd7hSH9GbB
-         2CnCwft+GBzCri9BYcXujsV9+u2g2/lji4gh0E9XDild0jVAECRDSqg8yHk7/hG+T3g5
-         RBl6/ZJGOFN9TlDGvxWFmCqR1YVZ0NV1ibUft/SvedDqIr9bDvYBUsHYP4Xu+jG37drg
-         Pl5s6KHX94o4vfLYwCxqSH3KHLs9RLBnsd4WX3hOzTcOvn4prwpkhE41PC4zmC3PAiOh
-         BQwnA/na/BK/pxdymU7uOCymDS6tSIa/SveA6on7XGmdxtVcUTMFAuIc+sJYq/zEC19Z
-         aPLA==
-X-Gm-Message-State: AHPjjUgrPjduhWZv5UrW6gEIz4QI5iS3h2odMFpqpQsZtRWesE1rxjPq
-	1s5ibJHYJarA/wPXzBc=
-X-Google-Smtp-Source: ADKCNb6h95Khztceh8Mtfun4Mxzyiw/YOWxfd175wyjPGeEoIiMXh3UJQ1JNnOHLNub2HGZTzkExYg==
-X-Received: by 10.99.124.87 with SMTP id l23mr27101664pgn.351.1505566958439;
-        Sat, 16 Sep 2017 06:02:38 -0700 (PDT)
-Return-Path: <aastha.gupta4104@gmail.com>
-Received: from aastha-HP-Pavilion-15-Notebook-PC ([27.56.167.173])
-        by smtp.gmail.com with ESMTPSA id 20sm7886158pft.109.2017.09.16.06.02.37
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Sat, 16 Sep 2017 06:02:38 -0700 (PDT)
-From: Aastha Gupta <aastha.gupta4104@gmail.com>
-To: outreachy-kernel@googlegroups.com,
-	Lidza Louina <lidza.louina@gmail.com>,
-	Mark Hounschell <markh@compro.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
-Subject: [PATCH v2] staging: dgnc: remove unused variable
-Date: Sat, 16 Sep 2017 18:32:32 +0530
-Message-Id: <1505566952-15453-1-git-send-email-aastha.gupta4104@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       spf=pass (google.com: domain of alison.schofield@intel.com designates 134.134.136.126 as permitted sender) smtp.mailfrom=alison.schofield@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+X-IronPort-AV: E=McAfee;i="6200,9189,10136"; a="214425637"
+X-IronPort-AV: E=Sophos;i="5.85,371,1624345200"; 
+   d="scan'208";a="214425637"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Oct 2021 10:17:28 -0700
+X-IronPort-AV: E=Sophos;i="5.85,371,1624345200"; 
+   d="scan'208";a="570912517"
+Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
+  by fmsmga002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Oct 2021 10:17:27 -0700
+Date: Wed, 13 Oct 2021 10:25:34 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: kushal kothari <kushalkothari285@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] Re: Outreachy applicant 2021 - Interested in
+ the project : Create memblock simulator
+Message-ID: <20211013172534.GA421414@alison-desk>
+References: <CALtHPQvouXM=mvNH=m6dZ70BkhsksCSyS+F5kyb7NENa8-Knww@mail.gmail.com>
+ <CABpLfoj-C-E3JhNkz1w7foqsde+vnQvuxzjeDUke21QOdf+HKQ@mail.gmail.com>
+ <CALtHPQuOcvDcDU4PXBtQhaqt1BWtsrqWwZFVbF=dhhw1WnWmMQ@mail.gmail.com>
+ <YWbve+s/LkX+sAo5@kernel.org>
+ <20211013154012.GA421014@alison-desk>
+ <e97abd31-41ed-464d-8025-e1e830733ef6n@googlegroups.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <e97abd31-41ed-464d-8025-e1e830733ef6n@googlegroups.com>
 
-This patch removes unused variable.
+On Wed, Oct 13, 2021 at 09:12:49AM -0700, kushal kothari wrote:
+> > The first patch tutorial has a section on get_maintainers.pl usage. 
+> 
+> Thank you. I sent the patch to the maintainers. Unlike GitHub, this was new 
+> to me.
 
-Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
----
-changes in v2:
-	- removed some changes which were not of this patch
+Hi Kush,
 
- drivers/staging/dgnc/dgnc_driver.h | 1 -
- 1 file changed, 1 deletion(-)
+I don't see a patch on this mailing list yet. 
+Maybe you ommitted outreachy-kernel@googlegroups.com
+or maybe my mail is slow.
 
-diff --git a/drivers/staging/dgnc/dgnc_driver.h b/drivers/staging/dgnc/dgnc_driver.h
-index 764d6fe..d69d9c0 100644
---- a/drivers/staging/dgnc/dgnc_driver.h
-+++ b/drivers/staging/dgnc/dgnc_driver.h
-@@ -233,7 +233,6 @@ struct device;
-  */
- struct un_t {
- 	struct	channel_t *un_ch;
--	ulong	un_time;
- 	uint	un_type;
- 	uint	un_open_count;
- 	struct tty_struct *un_tty;
--- 
-2.7.4
+If you left out, please send a v2 and include this group.
+See the tutorial for how to add a changelog when revising a patch.
+
+outreachy-kernel@googlegroups.com needs to be 'cc on every patch to be
+considered for this program (in addition to the usual maintainters.)
+
+Thanks,
+Alison
+
+
+> 
+> Also, for any participant, after fixing the TODO and if facing with this 
+> issue: this blog 
+> <https://vthakkar1994.wordpress.com/2017/01/21/sending-patches-with-the-git-send-email/> will 
+> be helpful.
+> 
+> 
+> On Wednesday, October 13, 2021 at 9:02:11 PM UTC+5:30 Alison Schofield 
+> wrote:
+> 
+> > On Wed, Oct 13, 2021 at 05:38:51PM +0300, Mike Rapoport wrote:
+> > > (added outreachy-kernel <outreach...@googlegroups.com>)
+> > > 
+> > > Hi,
+> > > 
+> > > Please 'cc the outreachy-kernel group for process questions, they may be
+> > > relevant for other participants.
+> > > 
+> > > On Wed, Oct 13, 2021 at 07:53:13PM +0530, kushal kothari wrote:
+> > > > Hii,
+> > > > I need your help with the understanding of the patch.
+> > > > I fixed the code and created a small patch .And at the end while 
+> > submitting the
+> > > > patch I am stuck to whom should I send my patch to ?
+> > > > "To whom should the emails be sent (if anyone)?"
+> > > > 
+> > > > So, Should I mail it this to all the maintainer which gmail can be 
+> > found when
+> > > > running the script along with you
+> > > > git show HEAD | perl scripts/get_maintainer.pl --separator , 
+> > --nokeywords
+> > > > --nogit --nogit-fallback --norolestats --nol
+> > > > 
+> > > > Or am I missing something?
+> > > 
+> > > The simplest way to find out who should get the patch is indeed to use
+> > > scripts/get_maintainer.pl. Depending on your setup, the script output 
+> > can
+> > > be integrated with git send-email or mutt, but sometimes it is usefull to
+> > > review the addresses and edit the recipients list by hand.
+> > > 
+> > > Please also 'cc the outreachy-kernel group when you post your patches.
+> > > 
+> > > There are more details about how to select recipients here:
+> > > 
+> > > 
+> > https://www.kernel.org/doc/html/latest/process/submitting-patches.html#select-the-recipients-for-your-patch
+> > > 
+> >
+> > The first patch tutorial has a section on get_maintainers.pl usage.
+> >
+> > > > This is my first time submitting a patch .Can you please help me with 
+> > this? to
+> > > > whom to submit the patch? 
+> > > > 
+> > > > On Tue, Oct 12, 2021 at 5:29 PM Mike Rapoport <mike.r...@gmail.com> 
+> > wrote:
+> > > > 
+> > > > Hi Kush,
+> > > > 
+> > > > On Tue, Oct 12, 2021 at 8:25 AM kushal kothari
+> > > > <kushalko...@gmail.com> wrote:
+> > > > >
+> > > > > Good Morning Mike,
+> > > > >
+> > > > > My name is Kush from Mumbai, India. My Outreachy initial application 
+> > is
+> > > > accepted. I am very much interested in the topic "Create a memblock
+> > > > simulator" . I hope, I am not connecting with you late for this 
+> > Outreachy
+> > > > project.
+> > > > 
+> > > > It's not too late :)
+> > > > 
+> > > > > My previous work and interest in this topic:
+> > > > >
+> > > > > My previous internship(i.e.Summer ISCAS 2021) was with Apache Apisix
+> > > > under Apache Software Foundation. The program was almost similar where
+> > > > students connect with mentors and work remotely(similar to 
+> > Outreachy/GSoC).
+> > > > Though the main task there was to create a packaging tool(adding 
+> > support of
+> > > > Ubuntu/CentOS/Fedora) etc [Fedora commit hasn't been merged yet]. 
+> > Therein,
+> > > > I worked majorly with Makefile, Docker Shell Scripting, etc. Also, I 
+> > have
+> > > > understanding about Linux kernel development. So my tech stacks are 
+> > very
+> > > > much aligned with the requirements of the project.
+> > > > >
+> > > > > As the first task mentioned in the Outreachy project contribution
+> > > > information of ours -> I also went through complete Linux kernel 
+> > tutorials
+> > > > installing all the prerequisites, configuring mutt and sent you a null
+> > > > patch, and did all other setups as said in the tutorial.
+> > > > 
+> > > > I believe the next task for applicants wishing to participate in Linux
+> > > > kernel project is to upstream a couple of cleanup patches.
+> > > > As you've gone through the setup of the environment, it should not be
+> > > > a problem :)
+> > > > 
+> > > > > My Github: https://github.com/Kushal-kothari
+> > > > 
+> > > > --
+> > > > Sincerely yours,
+> > > > Mike.
+> > > > 
+> > > 
+> > > -- 
+> > > Sincerely yours,
+> > > Mike.
+> > > 
+> > > -- 
+> > > You received this message because you are subscribed to the Google 
+> > Groups "outreachy-kernel" group.
+> > > To unsubscribe from this group and stop receiving emails from it, send 
+> > an email to outreachy-kern...@googlegroups.com.
+> > > To view this discussion on the web visit 
+> > https://groups.google.com/d/msgid/outreachy-kernel/YWbve%2Bs/LkX%2BsAo5%40kernel.org
+> > .
+> >
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/e97abd31-41ed-464d-8025-e1e830733ef6n%40googlegroups.com.
 
 
