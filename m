@@ -1,141 +1,117 @@
 X-GM-THRID: 7018941118564794368
-X-Received: by 2002:a1c:a5cd:: with SMTP id o196mr7812955wme.96.1634236809408;
-        Thu, 14 Oct 2021 11:40:09 -0700 (PDT)
+X-Received: by 2002:a05:6a00:1346:b0:44d:242a:8151 with SMTP id k6-20020a056a00134600b0044d242a8151mr6707191pfu.62.1634234040679;
+        Thu, 14 Oct 2021 10:54:00 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:6141:: with SMTP id y1ls4301489wrt.3.gmail; Thu, 14 Oct
- 2021 11:40:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwff7pdtd6ecN51Vu57qIUq9ii0FNrPTpFlTOBxL61zpvqUP/XDzp2rgPXR4YYMhm0b3j14
-X-Received: by 2002:adf:b31c:: with SMTP id j28mr8745332wrd.0.1634236807885;
-        Thu, 14 Oct 2021 11:40:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634236807; cv=none;
+Received: by 2002:a62:6401:: with SMTP id y1ls2563238pfb.10.gmail; Thu, 14 Oct
+ 2021 10:53:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwX9O90GO47dZZat6/hdFQ/cJO+/aDf3L2ygqUHhQm+INvOvkgTTqlTLD3N//6tOMrtsXt7
+X-Received: by 2002:a62:33c2:0:b0:44d:ab9:2e92 with SMTP id z185-20020a6233c2000000b0044d0ab92e92mr6817744pfz.10.1634234039476;
+        Thu, 14 Oct 2021 10:53:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634234039; cv=none;
         d=google.com; s=arc-20160816;
-        b=bWtE4sjF1rRjb0aumpwO420s0rAphR13u20tEXkagxR5+zBYEuj6D3TsSk5VLqJgtY
-         d4xKoq70j3ZFIFMvLwxdOZIQIcMxd2QI9bkn2kFrgYz33DfDsRdch4KXRYE0SH6kYbFe
-         9uDc8+sOItLA4HjxumwVhuuVmjNxI8E/QtzwqTc5OvpqRT9qfSCZ1HeNwKqbxUF446BK
-         AlKsMVqCnP3G97rNtdTb8j7yTwu3YvGYABHzYZcMPkhhxnpyfA5pmndCYUQSe/Y3UB41
-         VlugCzcEkL5kfVaAJFZ5VGrmqFIkxkCmYDwxL+OEkjtazuNkxQW590sqD/n/dSVx0VyT
-         NmpQ==
+        b=HqUOgyMW37alxwhZJjrGMpkNUnzKmTDkNLEXmssfzLOEf8WJZKrzfX3IsFE298oky+
+         V6E4KVtsRR0GZLnVLlpcq9H/fcJEicS0da3NQZ3mJMlluKSNWtovFXC/Fj/nywo/r9yP
+         Nd/Sjt+RMZ5J9r1nhiODM3eqHxA8BjxPh4KS0EO4K61AQ7jUlKWJqgV/NPdJ0pFaiarD
+         eyXsOKPEFGIYS7FmNE/IGBX5TOOFSlbrk8cIhN6VawU5WmLyN2ukOYh5CdT85XnLKd0H
+         Do0m+st5/PPK+B8Kck1DNRNhWU9hXQpZQk17xNA6sJ1XpSoOgVekAIbwHKOSjkpNzWqK
+         od4Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:ironport-hdrordr;
-        bh=nj3MfGzbxenpViMHwjC3j1zi59ZQMPP0fY32UV1OiuE=;
-        b=SDinPclAk1IXktj1IFjNcAiwVEEDKpBs6zJLdug+iPPe97QnqDM3fJoVe+9mrWrUup
-         IzoG/xN8Ou9fbgpykXzhN7WP9T+MIb+LIOWh+AQMVdUJunm04yrkYL5mxdA9kjXEyDfq
-         0TWBgaNCFGKW7vGEC8dpXyV+1UXwrLUMEbOY2plo5wPWQlTzT/K9olpK8iuPiBdv+LtR
-         v2FAKwvnIqNR9Q+vGA6iXV+sWI4urGnX7+7cgY0d623FVj/6jYjfugbJrrqBcuT298k6
-         jqeXm+uimA0ownUymmjUHIUZKNtsIZlsPZ/uJyrfEkkTWIw26U5zjqK0NYxDXVwFGsqN
-         YqUQ==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=7Wj84qHtE5F1KKB4wkm6XhFM5kmq1+jaGsj05m+4kdk=;
+        b=RtaiaMECVSKhPce0HnGsE78IpjxSHhz538LnhokAqOp+B/vcZy4+15K48gL+RCdI7A
+         Ab5+S2LDpGaRa4A1MqQwenM9cnkGafARoMWpkwS1BxhZsNdUAe1XNh0SdUPvZo9RvxBL
+         levgPcWK9XRdgTjmSpAqiCAPyOtQSDY2vaaiP2zNrAnCMpM3aMrBptvefKWSwm30+Aal
+         GUmBFaMuTdn5bbdoPaopUblypkgshQeUQcQB+gU9pXY1TPVbNr6wUL3wxRt3UVERtXaz
+         AS0plgpy8iqKObAU4UJNTXoW0THZRuZa4DCvhGv8YWui2xjC7iSF3nU7AJH2we+Ep8ui
+         lSGQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-Return-Path: <julia.lawall@inria.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id h11si185918wrs.3.2021.10.14.11.40.07
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=CBQwc8lM;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id c21si163517pfb.0.2021.10.14.10.53.59
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 14 Oct 2021 11:40:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
+        Thu, 14 Oct 2021 10:53:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-IronPort-HdrOrdr: =?us-ascii?q?A9a23=3AheJ6rK1If/BG01zTOhIDqgqjBMckLtp133Aq?=
- =?us-ascii?q?2lEZdPU7SKClfqyV8cjzqyWbtN95YhhJ8uxoU5PufZqzz/RI3bU=3D?=
-X-IronPort-AV: E=Sophos;i="5.84,326,1620684000"; 
-   d="scan'208";a="534015649"
-Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 14 Oct 2021 20:40:07 +0200
-Date: Thu, 14 Oct 2021 20:40:07 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=CBQwc8lM;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Received: by mail.kernel.org (Postfix) with ESMTPSA id BB70261152;
+	Thu, 14 Oct 2021 17:53:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1634234039;
+	bh=Va3OICSLfKZaQMs68302uNcvcPSfBZoouqxIr3t+eJ8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=CBQwc8lMmnHTwmjFGKpllDhwfpnZWP+4+ONvhtxomHoyjA1POZM7QK8sP2xQ1Tw1R
+	 wf1zIQ62svE0VE5TjB57VBM2GapkfI7/lTyMnRsEruFM3god0Y+69nEufUfhgTMGMg
+	 Brg1eOxYoxPZnJb1re/jF61Ras/yyRKUscpTNIPA=
+Date: Thu, 14 Oct 2021 19:53:55 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
 To: Karolina Drobnik <karolinadrobnik@gmail.com>
-cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
-    forest@alittletooquiet.net
-Subject: Re: [Outreachy kernel] [PATCH] staging: vt6655: Rename byPreambleType
- field
-In-Reply-To: <08596422a73e37833b431fd5b922e7a02f6e4c0e.camel@gmail.com>
-Message-ID: <alpine.DEB.2.22.394.2110142031470.3289@hadrien>
-References: <20211014151543.46764-1-karolinadrobnik@gmail.com>  <alpine.DEB.2.22.394.2110141724560.3289@hadrien> <08596422a73e37833b431fd5b922e7a02f6e4c0e.camel@gmail.com>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+Cc: outreachy-kernel@googlegroups.com, forest@alittletooquiet.net,
+	julia.lawall@inria.fr
+Subject: Re: [PATCH] staging: vt6655: Rename byPreambleType field
+Message-ID: <YWhus0EGaPJXhsHv@kroah.com>
+References: <20211014151543.46764-1-karolinadrobnik@gmail.com>
+ <YWhOfPhVRBrH3gz8@kroah.com>
+ <e9c9154ba03e704c1e415c66f2d57f73a2379144.camel@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <e9c9154ba03e704c1e415c66f2d57f73a2379144.camel@gmail.com>
 
-
-
-On Thu, 14 Oct 2021, Karolina Drobnik wrote:
-
+On Thu, Oct 14, 2021 at 06:47:29PM +0100, Karolina Drobnik wrote:
 > Hi,
->
-> On Thu, 2021-10-14 at 17:26 +0200, Julia Lawall wrote:
-> > On Thu, 14 Oct 2021, Karolina Drobnik wrote:
-> >
+> 
+> On Thu, 2021-10-14 at 17:36 +0200, Greg KH wrote:
+> > On Thu, Oct 14, 2021 at 04:15:43PM +0100, Karolina Drobnik wrote:
 > > > Drop Hungarian notation prefix in `byPreambleType` member of
 > > > struct vnt_private. Change it to use snake case.
+> > >
+> > > Fix issue detected by checkpatch.pl:
+> > >   CHECK: Avoid CamelCase: <byPreambleType>
+> > >
+> > > Signed-off-by: Karolina Drobnik <karolinadrobnik@gmail.com>
+> > > ---
+> > >  drivers/staging/vt6655/baseband.c    | 10 +++---
+> > >  drivers/staging/vt6655/baseband.h    |  2 +-
+> > >  drivers/staging/vt6655/device.h      |  2 +-
+> > >  drivers/staging/vt6655/device_main.c |  8 ++---
+> > >  drivers/staging/vt6655/rxtx.c        | 50
+> > > ++++++++++++++--------------
+> > >  5 files changed, 36 insertions(+), 36 deletions(-)
+> > >
+> > > diff --git a/drivers/staging/vt6655/baseband.c
+> > > b/drivers/staging/vt6655/baseband.c
+> > > index 0bae35af6e0f..69739de927be 100644
+> > > --- a/drivers/staging/vt6655/baseband.c
+> > > +++ b/drivers/staging/vt6655/baseband.c
+> > > @@ -1691,8 +1691,8 @@ static const unsigned short
+> > > awc_frame_time[MAX_RATE] = {
+> > >   *
+> > >   * Parameters:
+> > >   *  In:
+> > > - *      by_preamble_type  - Preamble Type
+> > > - *      by_pkt_type        - PK_TYPE_11A, PK_TYPE_11B,
+> > > PK_TYPE_11GB, PK_TYPE_11GA
+> > > + *      preamble_type     - Preamble Type
+> > > + *      by_pkt_type       - PK_TYPE_11A, PK_TYPE_11B,
+> > > PK_TYPE_11GB, PK_TYPE_11GA
 > >
-> > Are you sure that it is an instance of Hungarian notation?  Could it
-> > be that "by" is meant to be the word "by"?
->
-> I saw that functions and parameters use it[1] so I deduced that "by"
-> might stand for byte.
+> > This is not described in your changelog as something you did.  Are
+> > you sure you are not mixing up different changes in one patch?
+> 
+> I added whitespace in `by_pkt_type` line to align hyphens after the
+> name change. Should I mention it in the description or just revert it?
 
-OK, I see your point.  I originally thought that doing something by the
-preamble type might be true or false.  But it looks like the developers
-have considered the use of booleans and that is not what they are using
-here, so it seems that my original idea was off the mark.
+Each patch should only do one logical thing.  And every "thing" you do,
+has to be described in the changelog text.
 
-> If this is not a case, I can revert that change
-> and leave `by_preamble_type` name. What do you think?
->
-> > I have the imrepssion from a
-> > quick look through the code that it should be a boolean.
->
-> Hmm, it really looks like it. In `vnt_bss_info_changed` definition we
-> use true/false values but in `bb_get_frame_time` we have such a line:
->
-> ```
-> if (byPreambleType == 1)     /* Short */
-> ```
->
-> I'm not quite sure to what this "short" might refer to.
->
-> > Maybe it  would be helpful to give it boolean value,
-> > eg true instead of 1.
->
-> This is a good idea but I'm not sure if it's only used as a boolean.
-> I could add this change but I'd like to test it more than just by
-> loading/unloading the module. Is there any way of testing drivers
-> without an actual hardware?
+thanks,
 
-There is also this code:
-
-vt6655/rxtx.c:          priv->byPreambleType = PREAMBLE_SHORT;
-vt6655/rxtx.c:          priv->byPreambleType = PREAMBLE_LONG;
-
-PREAMBLE_SHORT seems to be 3, which is not a boolean.
-
-There is also
-vt6655/rxtx.c:  return cpu_to_le16(wTimeStampOff[priv->byPreambleType % 2]
-which also makes no sense for a boolean.
-
-You would have to trace through the code and see what values are stored in
-this field and how they are used.
-
-julia
-
->
-> Thanks,
-> Karolina
->
-> ----------------------------------------
-> [1] - For example in rxtx.c, lines 154-161:
-> ```
-> static
-> unsigned int
-> s_uGetTxRsvTime(                     /* s - static, u - unsigned */
->         struct vnt_private *pDevice, /* p - pointer */
->         unsigned char byPktType,     /* by - byte */
->         unsigned int cbFrameLength,  /* not sure */
->         unsigned short wRate,        /* w - word */
->         bool bNeedAck                /* b - boolean */
-> )
-> ```
->
->
+greg k-h
 
