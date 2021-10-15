@@ -1,154 +1,171 @@
 X-GM-THRID: 7019053574676021248
-X-Received: by 2002:a05:6402:d47:: with SMTP id ec7mr17193205edb.230.1634299494936;
-        Fri, 15 Oct 2021 05:04:54 -0700 (PDT)
+X-Received: by 2002:a5d:64e2:: with SMTP id g2mr12706325wri.253.1634288049507;
+        Fri, 15 Oct 2021 01:54:09 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:906:340a:: with SMTP id c10ls3417782ejb.5.gmail; Fri, 15
- Oct 2021 05:04:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy3y/lVtDgDJA704EImRHFXMV8dCzKF2fAabnU0xl/Dqsn7Sl2Yv0QfK3R2aFMPIYas2m0+
-X-Received: by 2002:a17:906:274a:: with SMTP id a10mr6506686ejd.323.1634299493304;
-        Fri, 15 Oct 2021 05:04:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634299493; cv=none;
+Received: by 2002:a05:600c:3b9a:: with SMTP id n26ls3977219wms.1.gmail; Fri,
+ 15 Oct 2021 01:54:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJypmaHmyzyop/1U6tFMt3vcOSkuZdEQcfcTUjkxU9fQtIJKPeIgzmxTuWChw4saoMVvfoxY
+X-Received: by 2002:a1c:e906:: with SMTP id q6mr25221516wmc.126.1634288047927;
+        Fri, 15 Oct 2021 01:54:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634288047; cv=none;
         d=google.com; s=arc-20160816;
-        b=x6GxJI7/uRR7jz9TWxvV0YRqWrPzaIBniDQfZvc4kIA+6HZlxZxeIz1zAhrApJ9tqp
-         k1x0s3e0NkOgDD/JT43mUmcGeAYQNxFDkvdgbK2ebFGWoledCvcPdDitld5eZUH3SjEo
-         y2qvaupR7xzmVhSJrUkHf+OSX2/OVwdZikf8AdYfSm7xfKgU9cOao7pWhGhxzk1YTVtM
-         mcQRWaCZNe2uRj+8nB2Q5TfkVAyt8DYGNtpYGrhWZEOoqiGopFvl1X+MUfS10Sk5mS2I
-         LZdz3T+XBhJiattW15GxpZYLNDQnMhlSlInBEYbKAsOD3B1m98Q+owkvv8WLYiMzKbTF
-         ZxVQ==
+        b=BAs9TcB4YVC5+RPs++/JNTU9e2wjonlCyxKgW4E41XDjo1om66aPL1kaLyJ/m6iWi1
+         wm669FWnA23KAhXyancyWVMRCY5NmlEQPKYku8QbXILQFe37ThZrSqGJfuUNYJbAr/OL
+         GkCJWT4gBjLPQWoXL2sgeKvmirmE/+5ZOjr/4DBBPxbpsmoBorUZWqPMzSw3P4G0cBUK
+         98KjvVEhJPZXpq3BRAhXZWvzD+KlHBHVzAN4xIpqVIWxs6TuDsQrkMDEEsW9D+vbCU9b
+         UMaBhNROAXNlYU/nwyKPwF2SDFwYlQVehoPqtmvXc/HKEJUSJMH9rNQwOrxt1ijkXjce
+         cdbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=9OSynyGGGAN8wtHv0YsW4FTZom2/dUkzYJEdh5qmLC8=;
-        b=j9zRizzzlo4Chsmv9SMQQslZOMwVi1tekvx8ANESkUL6s+Xva/qtzmU27S2xS32Msx
-         hjryjLHzqWr5nLeDlrP/202v1pVhM3qNDRYD713kF310GkIm5xTzmbkm1MX5aFnH3OG+
-         nF3S9wv0LXhVtLeFDONhqSYWuMaGy647ik/LSkAwgQI7YQ1FRoOEst7Cr+cYMv9Ge4Yh
-         J8Fk8KQxCukcBvHcTkqVA4j8/1lrQRnwoR4u/KoOq4WcVzzCt9xzbd6queqjMIR54Yo7
-         khyqvKFOUJLX3i+1EU/JqD1Ye7DPVEi+1M7hLE1QebwU1qQh93gnaBW8vgzGdIUzd3xJ
-         NtrA==
+        h=user-agent:message-id:date:to:cc:from:subject:references
+         :in-reply-to:content-transfer-encoding:mime-version:dkim-signature;
+        bh=65AnN7seWYnn8G488ORsonj1U03qrc5tviv5J3rBW5M=;
+        b=dTnDpRFxXyz7vonN99zAqrZfDWQcOOjETXxCqEdRaVpHowHfN+EtXA0SH/zqgMVO7l
+         TLBWC34c7WPlLvpiCvRyeFzntEPuMLLNq9qec6sHYzZQwFu+efSKXJCa4xuetrrsjxTB
+         IFkP6DEHNic52+NhmXg2gSDpZu7HN+RsZxMVtSEOTEo9mOZ3R6059cy63FD9fg5zHQwc
+         Rd7kVTg9Ou4WlxxRpeCObFCJgtU2V/0X9seHGxJo0n6xLBZ0M9/YLX0FSNfm+XFdDrjQ
+         JVfga/X+4xAjZ9dRF166jJFL275tcWAcGOlVvh5j0EX0sutrxsNTOgTGsUjNlroU4Slg
+         4UAw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=l78p7XZF;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52a as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from mail-ed1-x52a.google.com (mail-ed1-x52a.google.com. [2a00:1450:4864:20::52a])
-        by gmr-mx.google.com with ESMTPS id i5si337965edk.3.2021.10.15.05.04.53
+       dkim=pass (test mode) header.i=@ideasonboard.com header.s=mail header.b="r2xHa+y/";
+       spf=pass (google.com: domain of kieran.bingham@ideasonboard.com designates 213.167.242.64 as permitted sender) smtp.mailfrom=kieran.bingham@ideasonboard.com
+Return-Path: <kieran.bingham@ideasonboard.com>
+Received: from perceval.ideasonboard.com (perceval.ideasonboard.com. [213.167.242.64])
+        by gmr-mx.google.com with ESMTPS id a11si259442wrh.5.2021.10.15.01.54.07
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 15 Oct 2021 05:04:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52a as permitted sender) client-ip=2a00:1450:4864:20::52a;
-Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=l78p7XZF;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52a as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ed1-x52a.google.com with SMTP id t16so37033416eds.9
-        for <outreachy-kernel@googlegroups.com>; Fri, 15 Oct 2021 05:04:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=9OSynyGGGAN8wtHv0YsW4FTZom2/dUkzYJEdh5qmLC8=;
-        b=l78p7XZFnc118bWny728QSKjMsheZVzV1hHDs8SKytvoKJJX4FHKR5L3wOidINl2N8
-         J961FGCChBqPezrNBBeeUYxn8yZYjOABZ6N/BwFdWyQ142QjUXYf07nZmtvarU0eRKwP
-         AYLb6qQLRkJZhMTM8p8qdyP2SVqiQSWpfsKZfr7kRsLDFXah5YTc5w1+AShAgAPdlsay
-         V+jKFqC5IOcZfowyb4SpU03m8l0x2Mih4ESvdDgS5QP3vtAoMf+I27nhbfHqMZBkU11S
-         YhSpkpPy3iegNeRbUdeHtF3w+tCQlz4oHN0GgU5gG/KhwGT3ew279m30S6xiRaz4864z
-         ef/A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=9OSynyGGGAN8wtHv0YsW4FTZom2/dUkzYJEdh5qmLC8=;
-        b=myLR3MVrnhiN2Rqgu4v8RXDfuSyAnzPg4pErb9ZF/zsnGORgYpn9pKhskpFPt8DRuz
-         pfdjpyQQVFsV7/hRiT3XNnk8Z2OPBLE0EsR5yIHabbbYR0ondB6hNZ5P9Nmjb/RFoneh
-         CHx273M4K0tN5If6TxreFbtMw0s7pZ0MCwa+vOvSj86yTOnMKLbXgFN/0sgrcgZ6Qb7F
-         MI8T/dfzVWlSt/j0b2RLY9aurTKElm95FKrLx62r+AkALK+cpp8xBswTos/8CxlA/J+s
-         OAI1T7l6xOCSilGCTJMkK5VUo04wlV7l+TaWtoyx5RqDC8rfGQS4G7j85k7PHopeiWFn
-         aHZA==
-X-Gm-Message-State: AOAM532wgIafjiLqoPHML9Y5LpI/yngsZnVth9Iq6ufKXDVR8g1Cnr0w
-	joV/zDlGpo+QDM2Qb/cNsMTk6eNc3Gs=
-X-Received: by 2002:aa7:dbcf:: with SMTP id v15mr17205932edt.243.1634299492799;
-        Fri, 15 Oct 2021 05:04:52 -0700 (PDT)
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from localhost.localdomain (host-79-47-104-180.retail.telecomitalia.it. [79.47.104.180])
-        by smtp.gmail.com with ESMTPSA id n10sm3993596ejk.86.2021.10.15.05.04.50
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 15 Oct 2021 05:04:51 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: mike.rapoport@gmail.com, outreachy-kernel@googlegroups.com, mchehab@kernel.org, sakari.ailus@linux.intel.com, gregkh@linuxfoundation.org, kushalkothari2850@gmail.com
-Cc: Kushal Kothari <kushalkothari285@gmail.com>, Kushal Kothari <kushalkothari285@gmail.com>
-Subject: Re: [Outreachy kernel] [PATCH] staging : media : atomisp : input_system.c : fixes the error of control reaches end of non-void function [-Werror=return-type]
-Date: Fri, 15 Oct 2021 14:04:49 +0200
-Message-ID: <2125107.Dqu8hxrGLC@localhost.localdomain>
-In-Reply-To: <20211014223007.596789-1-kushalkothari285@gmail.com>
-References: <20211014223007.596789-1-kushalkothari285@gmail.com>
+        Fri, 15 Oct 2021 01:54:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kieran.bingham@ideasonboard.com designates 213.167.242.64 as permitted sender) client-ip=213.167.242.64;
+Authentication-Results: gmr-mx.google.com;
+       dkim=pass (test mode) header.i=@ideasonboard.com header.s=mail header.b="r2xHa+y/";
+       spf=pass (google.com: domain of kieran.bingham@ideasonboard.com designates 213.167.242.64 as permitted sender) smtp.mailfrom=kieran.bingham@ideasonboard.com
+Received: from pendragon.ideasonboard.com (cpc89244-aztw30-2-0-cust3082.18-1.cable.virginm.net [86.31.172.11])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 526762E3;
+	Fri, 15 Oct 2021 10:54:07 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1634288047;
+	bh=mcekxGzN9HmK52MiYToVFMThi6o+ge4I8GdL5taem50=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=r2xHa+y/Z1DThazOHYjuc7OzrZ6t7sItKgVHGDjiY4RkM4Sr57xC6G+qIVN53N4gL
+	 8PJ5jK1DEhAsrVzdVc1WmPB1wGHE9YUVf0kO0pB6C+h0m+qA3PGRn4TuaCwKFSudLO
+	 U5CxjAelXeQG+AHldy2p/gO8PMQ4DI3R7qh75wr0=
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="UTF-8"
-
-On Friday, October 15, 2021 12:30:09 AM CEST Kushal Kothari wrote:
-> The compiler cannot tell from that code if the function will ever reach
-> the end and still return something. To make that clear, replaced the last
-> line with just "else" which fixes the error of "error: control reaches end 
-of non-void function [-Werror=return-type]"
-> 
-> Signed-off-by: Kushal Kothari <kushalkothari285@gmail.com>
-> ---
->  .../media/atomisp/pci/hive_isp_css_common/host/input_system.c    | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/staging/media/atomisp/pci/hive_isp_css_common/host/
-input_system.c b/drivers/staging/media/atomisp/pci/hive_isp_css_common/host/
-input_system.c
-> index 8e085dda0c18..91bad8f34efc 100644
-> --- a/drivers/staging/media/atomisp/pci/hive_isp_css_common/host/
-input_system.c
-> +++ b/drivers/staging/media/atomisp/pci/hive_isp_css_common/host/
-input_system.c
-> @@ -1587,6 +1587,7 @@ static input_system_err_t 
-input_system_configure_channel_sensor(
->  	status = set_source_type(&config.source_type, 
-channel.source_type,
->  				 &config.source_type_flags);
->  	if (status != INPUT_SYSTEM_ERR_NO_ERROR) return status;
-> +	else return status;
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20211015022659.GB428161@alison-desk>
+References: <20211014223007.596789-1-kushalkothari285@gmail.com> <20211015022659.GB428161@alison-desk>
+Subject: Re: [Outreachy kernel] [PATCH] staging : media : atomisp : input_system.c : fixes the error of control reaches end of non-void function [-Werror=return-type]
+From: Kieran Bingham <kieran.bingham@ideasonboard.com>
+Cc: mike.rapoport@gmail.com, outreachy-kernel@googlegroups.com, mchehab@kernel.org, sakari.ailus@linux.intel.com, gregkh@linuxfoundation.org, kushalkothari2850@gmail.com
+To: Alison Schofield <alison.schofield@intel.com>, Kushal Kothari <kushalkothari285@gmail.com>
+Date: Fri, 15 Oct 2021 09:54:05 +0100
+Message-ID: <163428804505.4050769.15896780268300373948@Monstersaurus>
+User-Agent: alot/0.9.1
 
 Hi Kushal,
 
-Aside from what Alison said about not accepting patches in this driver this 
-round, please note that this is not the correct way to address that compiler 
-warning.
+Quoting Alison Schofield (2021-10-15 03:26:59)
+> On Fri, Oct 15, 2021 at 04:00:09AM +0530, Kushal Kothari wrote:
+> > The compiler cannot tell from that code if the function will ever reach
+> > the end and still return something. To make that clear, replaced the la=
+st
+> > line with just "else" which fixes the error of "error: control reaches =
+end of non-void function [-Werror=3Dreturn-type]"
+> >=20
+> > Signed-off-by: Kushal Kothari <kushalkothari285@gmail.com>
+>=20
+> Hi Kushal,
+>=20
+> Thanks for the patch and welcome to Outreachy.
+>=20
+> Unfortunately we're not accepting patches in this driver this round.
+> Any other driver within media is OK. See the google-groups welcome
+> message and the email history since October 8th for more info.
+> I also updated the first patch tutorial, because you showed me that
+> this restriction was too easy to miss.
+>=20
+> Anyway, just so your patch isn't for nothing, I'll give you feedback
+> on the commit message. You'll want to write that in the imperative mode,
+> So, for one like this, maybe something like:
+>=20
+> 'remove conditional from return in non-void function'
+>=20
+> Alison
+>=20
+>=20
+> > ---
+> >  .../media/atomisp/pci/hive_isp_css_common/host/input_system.c    | 1 +
+> >  1 file changed, 1 insertion(+)
+> >=20
+> > diff --git a/drivers/staging/media/atomisp/pci/hive_isp_css_common/host=
+/input_system.c b/drivers/staging/media/atomisp/pci/hive_isp_css_common/hos=
+t/input_system.c
+> > index 8e085dda0c18..91bad8f34efc 100644
+> > --- a/drivers/staging/media/atomisp/pci/hive_isp_css_common/host/input_=
+system.c
+> > +++ b/drivers/staging/media/atomisp/pci/hive_isp_css_common/host/input_=
+system.c
+> > @@ -1587,6 +1587,7 @@ static input_system_err_t input_system_configure_=
+channel_sensor(
+> >       status =3D set_source_type(&config.source_type, channel.source_ty=
+pe,
+> >                                &config.source_type_flags);
+> >       if (status !=3D INPUT_SYSTEM_ERR_NO_ERROR) return status;
+> > +     else return status;
 
-Think about it: now, whatever "state" you get from set_source_type(), you 
-always return it to the caller of input_system_configure_channel_sensor().
-
-By doing so, you change the logic of the function and get dead code. This 
-change makes the rest of the function code unreachable and introduces a huge 
-bug.
-
-While the patch cannot be accepted for Outreachy, think of a better solution 
-as you may need to make similar changes in future patches.
-
-Thanks and welcome,
-
-Fabio M. De Francesco
-
->  
->  	// Check for conflicts on source (implicitly on multicast, 
-capture unit and input buffer).
->  
-> -- 
-> 2.25.1
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups 
-"outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an 
-email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/
-outreachy-kernel/20211014223007.596789-1-kushalkothari285%40gmail.com.
-> 
+I see the mention that outreachy are not taking patches to this driver
+currently, but I saw this and thought it might still be helpful to
+highlight that you should look more deeply at this change, and try to
+understand why it would not be possible to accept it. Given that a fix
+wouldn't be accepted through outreachy, it may not be worth submitting a
+new version but please make sure you examine why this would not be
+correct:
 
 
+You are introducing a line which would essentially cut out the rest of
+the function, as the compiler would alway return at this point with your
+change.
+Before your change:
+
+	If A
+		return status;
+
+	... many more lines of code ...
+
+After your change:
+
+	If A
+		return status;
+	else
+		return status;
+
+	... many more lines of now unreachable code ...
+	=09
+Good luck on your outreachy journey.
+
+--
+Kieran
 
 
+> > =20
+> >       // Check for conflicts on source (implicitly on multicast, captur=
+e unit and input buffer).
+> > =20
+> > --=20
+> > 2.25.1
+> >=20
+> > --=20
+> > You received this message because you are subscribed to the Google Grou=
+ps "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send =
+an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/ms=
+gid/outreachy-kernel/20211014223007.596789-1-kushalkothari285%40gmail.com.
+>=20
+> --=20
+> You received this message because you are subscribed to the Google Groups=
+ "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an=
+ email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgi=
+d/outreachy-kernel/20211015022659.GB428161%40alison-desk.
 
