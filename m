@@ -1,324 +1,82 @@
 X-GM-THRID: 7018941118564794368
-X-Received: by 2002:a2e:7212:: with SMTP id n18mr8811928ljc.369.1634552323889;
-        Mon, 18 Oct 2021 03:18:43 -0700 (PDT)
+X-Received: by 2002:a4a:e292:: with SMTP id k18mr9435346oot.80.1634310662991;
+        Fri, 15 Oct 2021 08:11:02 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:651c:1795:: with SMTP id bn21ls2637717ljb.10.gmail; Mon,
- 18 Oct 2021 03:18:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyyWZ3GA4TpTl6AYtfQbQJYh78LenhUkLglngxSpwPo75iiZOjFzO/ICcFxyGgwfr5GJ4TI
-X-Received: by 2002:a2e:a553:: with SMTP id e19mr32572928ljn.420.1634552322262;
-        Mon, 18 Oct 2021 03:18:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634552322; cv=none;
+Received: by 2002:a4a:b54d:: with SMTP id s13ls662363ooo.7.gmail; Fri, 15 Oct
+ 2021 08:11:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz975r/WNOpBKUAsDhwIYvUfyEe4H1T1pfno/aZfoIR9ZRoFe5xEjYLUpxWrdvbCvMjdhCB
+X-Received: by 2002:a4a:3c07:: with SMTP id d7mr9277452ooa.84.1634310662301;
+        Fri, 15 Oct 2021 08:11:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634310662; cv=none;
         d=google.com; s=arc-20160816;
-        b=iF2S6ollM8jQqZYB+0QNTK7mxJbcq8kkIZMlFxIrhf9lxwM5D9+It84WGaos+70br6
-         x4xUDHj7lbvrHnBPlagZNjE76CYlyyw/XelWT/fhE4k3aBJ6p7IjWl5+KTAJRg14ZOXG
-         jcA0bnt1e61I1mVA1qzqh4tIt0G8EDPTmUHsKQIrhG0PQ5sFYr/pdtI83VpqyK+sVZMu
-         4t9r+4eXQybvy7zskOFRDgM7Hd+VvcWRDmfmIDKgI/ZHbQw2WbS1Ct70l9T79RojAqrZ
-         y7CCV6u0xsrsSke+QuRvOm+dHusNzNnvoNZOub4cofQ4ZnkkCe5kjmr92L13VC/7PFSj
-         jguQ==
+        b=jbu/aXCZA5dYFknE52K9y9yWnZwaPTmU4RcUOtTsmHICeylDKo0BqGyifSl0Xb5DtN
+         I4qE+lLuh2r2IIL9D92wtUg1YNZHF57U287x8Uv3WkSLAAT13Hsl8TEzE9eENomd0Ztx
+         wUEFaVBzy6GvLlYn7ugH+lk/dd1ZdGX8i9MRWwIDPW6zmbfZ/rO2kbh7OReRZSibrwnc
+         gvda2/2aCkLsemzxJS06jTqkCWPs4PGONGDyT0gSx0849ES3LbWlBmQtzSjhYyOrz7Iv
+         NrTrr0aqiGBsSzfspsHG0GtN+zroeT8pxoPFO7IQe6l1FyJO7+1vWwVm7AOI5O6MKdRS
+         EUeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=VrpG3O8aFUjp17yTwxrPM4IKV9ZV92KkRTuziSyn93I=;
-        b=ATTmDrV3ESGap/A/F7jaR6CO5qvrD8siXZEFI+DGBx6Wy3WGbwBqDhBWSEEeMFVzD+
-         qpYq7mW7+vse4UK+5DXOfVRHpFd6Jws2ygdt8vAHBwNk9vvATItovjMq08XuxFjzb1qc
-         Db5AeTSKhGvkSI5rV4NepLsPiuf7AVk6QKeDYr2JHX64uyk9Vlsqyom6eMEnYLmGjEKp
-         rkDB1UTyWkX9CkRCy4Bhbh8jigcFGwnZO3T6f5cXyNNGUfXkvmqWNiQgUqHKvncbZRMH
-         ngybAPFwPD8ajLyCmC9MYWx3MK7OOLO9habMSrHG/aIDg/FvoiH9aSTB5agk9hpQ36DT
-         IIvQ==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=pKgc3kfAcqWF2MhHF58AuaVcPR4kIXS4KUhvKlSxUvE=;
+        b=z8JkL1dKAL2/YkoFORqpahH2NoDTelJ033WZ+TAzFGxomV0Q0WjeS7HK/FmBRvyIvc
+         v7OLS0tZ9gepVrXYxy319WN+u0oEVA3QPUoA20m6eyncuTFCJxORmwB8s1QqZIVNDK21
+         cFM99V/y+z2EYpffrqVHxsjWWEWzy+SYaLguYzLSe/kVgsiiwNDg2NU4JLE+fBrKR28g
+         7ChtCQsj4pbsanmm4tk0whxbFw+eRc3X+tfa4vD9T+YslIU9duYZNsYAVI7prtv6ZUQj
+         mObwMBDS8vAUsdOncK0/gTfaA3Ps9QMCaz4c8/8Y1XnqFJNZfpUYJD9TCDGuBKcaoMr6
+         /0XQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=mhMbtsLU;
-       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::334 as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <karolinadrobnik@gmail.com>
-Received: from mail-wm1-x334.google.com (mail-wm1-x334.google.com. [2a00:1450:4864:20::334])
-        by gmr-mx.google.com with ESMTPS id 8si475650lft.11.2021.10.18.03.18.42
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=SifqW+tm;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id q20si403287oot.2.2021.10.15.08.11.02
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 18 Oct 2021 03:18:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::334 as permitted sender) client-ip=2a00:1450:4864:20::334;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 15 Oct 2021 08:11:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=mhMbtsLU;
-       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::334 as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm1-x334.google.com with SMTP id y74-20020a1c7d4d000000b00322f53b9bbfso4299941wmc.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 18 Oct 2021 03:18:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=VrpG3O8aFUjp17yTwxrPM4IKV9ZV92KkRTuziSyn93I=;
-        b=mhMbtsLUaaKnanhDah8J3evPwarsG3YJvfg+IA+M7exagzYthn6fmhg6V2PbRhrSZE
-         46SO4PVcyiD6SF+n1MKI4XTkbTyAmqmtTtPIiEryfV7Hb1r2+AyolLhOwute0dq2Z0CU
-         W8XcqHSArfKntUzres/OdYhI8Mk7/DIMGNtgObu8tR+gyB0UKJJBbeBwl3kTCXAg0KDw
-         TtAJAeC5A2F2C9Y9AgMzPwpC8rv52m9BMU0OiwSKNBatb1KhyLucxq+V2SnhPRVtKHKq
-         6SY+EGVLRTN4S4/cSbdmeNWeLFXzrxa78eKvlyM6hkrlAH2cmvxqbboqauZ4XHbMVW0z
-         27Kg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=VrpG3O8aFUjp17yTwxrPM4IKV9ZV92KkRTuziSyn93I=;
-        b=XTRg6hqQXTX+XcK0gcGVo8DnL0JTZm6ImFcTMN1gPjVaviNCOhUCQf8HKrH68TpRnI
-         AW7Er9lQ8Ze5fCcB3G3S063Ldz7x/ld5H/d69Sv+HXp1D1J3R+zl/tIQYwremPifzcFD
-         j4F3Ay7mdS5CIKrcHgQRRr2Sn8AnUl3rNTQNi8RJJR37WvoXIqiNtQu6t2SsBvY0GUfh
-         /JDPyWmNyZedPENjvfmBJt1MhTFyeIqj4u0OuG6IATE5VkK9/b94eV9d2tYXzXLTcV0i
-         t94ATfPCvAb1Yc/37HjRZQJGBrLmeIgmwru4sENwaj1w099ze15Hb39BJS5UL7RC3Fkz
-         wj6Q==
-X-Gm-Message-State: AOAM530kZLp0d/Ouo5OAWTaoXuTfhpflfnR5yQ9IHbRys3mQ8tBGbiUM
-	+r8ctuNbP4yjfDKA07cng7+Q6gPkRcM1/Q==
-X-Received: by 2002:a05:600c:3511:: with SMTP id h17mr154099wmq.144.1634552321824;
-        Mon, 18 Oct 2021 03:18:41 -0700 (PDT)
-Return-Path: <karolinadrobnik@gmail.com>
-Received: from localhost.localdomain ([2a01:4b00:f411:e700:e085:8cb7:7bf6:5d62])
-        by smtp.gmail.com with ESMTPSA id o6sm15307864wri.49.2021.10.18.03.18.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 18 Oct 2021 03:18:41 -0700 (PDT)
-From: Karolina Drobnik <karolinadrobnik@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org,
-	forest@alittletooquiet.net,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	Karolina Drobnik <karolinadrobnik@gmail.com>
-Subject: [PATCH v3] staging: vt6655: Rename byPreambleType field
-Date: Mon, 18 Oct 2021 11:17:13 +0100
-Message-Id: <20211018101713.3599-1-karolinadrobnik@gmail.com>
-X-Mailer: git-send-email 2.30.2
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=SifqW+tm;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Received: by mail.kernel.org (Postfix) with ESMTPSA id D86516120A;
+	Fri, 15 Oct 2021 15:11:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1634310661;
+	bh=3jYoDtUPdFBEUryZYNHsyBzPurObUQOppTxdHPamp+Q=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=SifqW+tmi83vgBOT/JG7an3SFgEf3U28avuIKl5gdn4/f/gwrbRGm3iB33QKZMh2h
+	 l/YFf6zbXWcmWmBz3JoYpQacXmxoGeDyp2fEr9h6qQ+iY5x6Y7R9Jxum9CMNImVdbE
+	 Z9xC2Ny5MQVrzuUhc/r9+Pk5Rp1Nl1N+SSUMezPA=
+Date: Fri, 15 Oct 2021 17:10:58 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Karolina Drobnik <karolinadrobnik@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, forest@alittletooquiet.net,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2] staging: vt6655: Rename byPreambleType field
+Message-ID: <YWmaAqf8pusZGoBd@kroah.com>
+References: <20211015102444.90753-1-karolinadrobnik@gmail.com>
+ <YWlj9x6kwYUT1jlQ@kroah.com>
+ <85dfe2c18e7ec4bd5ae67f7a81ab6197a82e0d86.camel@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <85dfe2c18e7ec4bd5ae67f7a81ab6197a82e0d86.camel@gmail.com>
 
-Drop Hungarian notation prefix in `byPreambleType` member of
-struct vnt_private. Change it to use snake case.
+On Fri, Oct 15, 2021 at 03:47:46PM +0100, Karolina Drobnik wrote:
+> Hi Greg,
+> 
+> On Fri, 2021-10-15 at 13:20 +0200, Greg KH wrote:
+> > Do not do multiple different things in the same commit and especially
+> > when you do not describe them in the changelog text.
+> 
+> I wasn't aware that changing this preamble-related variable would be
+> counted as a different thing. It makes sense, my bad.
+> 
+> Would you like me to amend the message to say that I also changed
+> `bb_get_frame_time` parameter or just drop this change completely?
 
-Fix issue detected by checkpatch.pl:
-  CHECK: Avoid CamelCase: <byPreambleType>
-
-Signed-off-by: Karolina Drobnik <karolinadrobnik@gmail.com>
----
- drivers/staging/vt6655/baseband.c    |  2 +-
- drivers/staging/vt6655/device.h      |  2 +-
- drivers/staging/vt6655/device_main.c |  8 ++---
- drivers/staging/vt6655/rxtx.c        | 50 ++++++++++++++--------------
- 4 files changed, 31 insertions(+), 31 deletions(-)
-
-diff --git a/drivers/staging/vt6655/baseband.c b/drivers/staging/vt6655/baseband.c
-index 0bae35af6e0f..5efca92f1f18 100644
---- a/drivers/staging/vt6655/baseband.c
-+++ b/drivers/staging/vt6655/baseband.c
-@@ -1764,7 +1764,7 @@ void vnt_get_phy_field(struct vnt_private *priv, u32 frame_length,
- 	u32 count = 0;
- 	u32 tmp;
- 	int ext_bit;
--	u8 preamble_type = priv->byPreambleType;
-+	u8 preamble_type = priv->preamble_type;
- 
- 	bit_count = frame_length * 8;
- 	ext_bit = false;
-diff --git a/drivers/staging/vt6655/device.h b/drivers/staging/vt6655/device.h
-index 92d6f82f939f..4706bde1ec1d 100644
---- a/drivers/staging/vt6655/device.h
-+++ b/drivers/staging/vt6655/device.h
-@@ -203,7 +203,7 @@ struct vnt_private {
- 	unsigned char byMinChannel;
- 	unsigned char byMaxChannel;
- 
--	unsigned char byPreambleType;
-+	unsigned char preamble_type;
- 	unsigned char byShortPreamble;
- 
- 	unsigned short wCurrentRate;
-diff --git a/drivers/staging/vt6655/device_main.c b/drivers/staging/vt6655/device_main.c
-index 24f0e346da12..212d2a287b2c 100644
---- a/drivers/staging/vt6655/device_main.c
-+++ b/drivers/staging/vt6655/device_main.c
-@@ -177,11 +177,11 @@ device_set_options(struct vnt_private *priv)
- 	priv->byPacketType = priv->byBBType;
- 	priv->byAutoFBCtrl = AUTO_FB_0;
- 	priv->bUpdateBBVGA = true;
--	priv->byPreambleType = 0;
-+	priv->preamble_type = 0;
- 
- 	pr_debug(" byShortRetryLimit= %d\n", (int)priv->byShortRetryLimit);
- 	pr_debug(" byLongRetryLimit= %d\n", (int)priv->byLongRetryLimit);
--	pr_debug(" byPreambleType= %d\n", (int)priv->byPreambleType);
-+	pr_debug(" preamble_type= %d\n", (int)priv->preamble_type);
- 	pr_debug(" byShortPreamble= %d\n", (int)priv->byShortPreamble);
- 	pr_debug(" byBBType= %d\n", (int)priv->byBBType);
- }
-@@ -1424,10 +1424,10 @@ static void vnt_bss_info_changed(struct ieee80211_hw *hw,
- 	if (changed & BSS_CHANGED_ERP_PREAMBLE) {
- 		if (conf->use_short_preamble) {
- 			MACvEnableBarkerPreambleMd(priv->port_offset);
--			priv->byPreambleType = true;
-+			priv->preamble_type = true;
- 		} else {
- 			MACvDisableBarkerPreambleMd(priv->port_offset);
--			priv->byPreambleType = false;
-+			priv->preamble_type = false;
- 		}
- 	}
- 
-diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
-index ff0b5391ea0b..0de801b666da 100644
---- a/drivers/staging/vt6655/rxtx.c
-+++ b/drivers/staging/vt6655/rxtx.c
-@@ -142,7 +142,7 @@ s_uFillDataHead(
- 
- static __le16 vnt_time_stamp_off(struct vnt_private *priv, u16 rate)
- {
--	return cpu_to_le16(wTimeStampOff[priv->byPreambleType % 2]
-+	return cpu_to_le16(wTimeStampOff[priv->preamble_type % 2]
- 							[rate % MAX_RATE]);
- }
- 
-@@ -163,7 +163,7 @@ s_uGetTxRsvTime(
- {
- 	unsigned int uDataTime, uAckTime;
- 
--	uDataTime = bb_get_frame_time(pDevice->byPreambleType, byPktType, cbFrameLength, wRate);
-+	uDataTime = bb_get_frame_time(pDevice->preamble_type, byPktType, cbFrameLength, wRate);
- 
- 	if (!bNeedAck)
- 		return uDataTime;
-@@ -172,7 +172,7 @@ s_uGetTxRsvTime(
- 	 * CCK mode  - 11b
- 	 * OFDM mode - 11g 2.4G & 11a 5G
- 	 */
--	uAckTime = bb_get_frame_time(pDevice->byPreambleType, byPktType, 14,
-+	uAckTime = bb_get_frame_time(pDevice->preamble_type, byPktType, 14,
- 				     byPktType == PK_TYPE_11B ?
- 				     pDevice->byTopCCKBasicRate :
- 				     pDevice->byTopOFDMBasicRate);
-@@ -200,22 +200,22 @@ static __le16 get_rtscts_time(struct vnt_private *priv,
- 	unsigned int ack_time = 0;
- 	unsigned int data_time = 0;
- 
--	data_time = bb_get_frame_time(priv->byPreambleType, pkt_type, frame_length, current_rate);
-+	data_time = bb_get_frame_time(priv->preamble_type, pkt_type, frame_length, current_rate);
- 	if (rts_rsvtype == 0) { /* RTSTxRrvTime_bb */
--		rts_time = bb_get_frame_time(priv->byPreambleType, pkt_type, 20, priv->byTopCCKBasicRate);
--		ack_time = bb_get_frame_time(priv->byPreambleType, pkt_type, 14, priv->byTopCCKBasicRate);
-+		rts_time = bb_get_frame_time(priv->preamble_type, pkt_type, 20, priv->byTopCCKBasicRate);
-+		ack_time = bb_get_frame_time(priv->preamble_type, pkt_type, 14, priv->byTopCCKBasicRate);
- 		cts_time = ack_time;
- 	} else if (rts_rsvtype == 1) { /* RTSTxRrvTime_ba, only in 2.4GHZ */
--		rts_time = bb_get_frame_time(priv->byPreambleType, pkt_type, 20, priv->byTopCCKBasicRate);
--		cts_time = bb_get_frame_time(priv->byPreambleType, pkt_type, 14, priv->byTopCCKBasicRate);
--		ack_time = bb_get_frame_time(priv->byPreambleType, pkt_type, 14, priv->byTopOFDMBasicRate);
-+		rts_time = bb_get_frame_time(priv->preamble_type, pkt_type, 20, priv->byTopCCKBasicRate);
-+		cts_time = bb_get_frame_time(priv->preamble_type, pkt_type, 14, priv->byTopCCKBasicRate);
-+		ack_time = bb_get_frame_time(priv->preamble_type, pkt_type, 14, priv->byTopOFDMBasicRate);
- 	} else if (rts_rsvtype == 2) { /* RTSTxRrvTime_aa */
--		rts_time = bb_get_frame_time(priv->byPreambleType, pkt_type, 20, priv->byTopOFDMBasicRate);
--		ack_time = bb_get_frame_time(priv->byPreambleType, pkt_type, 14, priv->byTopOFDMBasicRate);
-+		rts_time = bb_get_frame_time(priv->preamble_type, pkt_type, 20, priv->byTopOFDMBasicRate);
-+		ack_time = bb_get_frame_time(priv->preamble_type, pkt_type, 14, priv->byTopOFDMBasicRate);
- 		cts_time = ack_time;
- 	} else if (rts_rsvtype == 3) { /* CTSTxRrvTime_ba, only in 2.4GHZ */
--		cts_time = bb_get_frame_time(priv->byPreambleType, pkt_type, 14, priv->byTopCCKBasicRate);
--		ack_time = bb_get_frame_time(priv->byPreambleType, pkt_type, 14, priv->byTopOFDMBasicRate);
-+		cts_time = bb_get_frame_time(priv->preamble_type, pkt_type, 14, priv->byTopCCKBasicRate);
-+		ack_time = bb_get_frame_time(priv->preamble_type, pkt_type, 14, priv->byTopOFDMBasicRate);
- 		rrv_time = cts_time + ack_time + data_time + 2 * priv->uSIFS;
- 		return cpu_to_le16((u16)rrv_time);
- 	}
-@@ -255,7 +255,7 @@ s_uGetDataDuration(
- 	switch (byDurType) {
- 	case DATADUR_B:    /* DATADUR_B */
- 		if (bNeedAck) {
--			uAckTime = bb_get_frame_time(pDevice->byPreambleType,
-+			uAckTime = bb_get_frame_time(pDevice->preamble_type,
- 						     byPktType, 14,
- 						     pDevice->byTopCCKBasicRate);
- 		}
-@@ -273,7 +273,7 @@ s_uGetDataDuration(
- 
- 	case DATADUR_A:    /* DATADUR_A */
- 		if (bNeedAck) {
--			uAckTime = bb_get_frame_time(pDevice->byPreambleType,
-+			uAckTime = bb_get_frame_time(pDevice->preamble_type,
- 						     byPktType, 14,
- 						     pDevice->byTopOFDMBasicRate);
- 		}
-@@ -292,7 +292,7 @@ s_uGetDataDuration(
- 	case DATADUR_A_F0:    /* DATADUR_A_F0 */
- 	case DATADUR_A_F1:    /* DATADUR_A_F1 */
- 		if (bNeedAck) {
--			uAckTime = bb_get_frame_time(pDevice->byPreambleType,
-+			uAckTime = bb_get_frame_time(pDevice->preamble_type,
- 						     byPktType, 14,
- 						     pDevice->byTopOFDMBasicRate);
- 		}
-@@ -344,17 +344,17 @@ s_uGetRTSCTSDuration(
- 
- 	switch (byDurType) {
- 	case RTSDUR_BB:    /* RTSDuration_bb */
--		uCTSTime = bb_get_frame_time(pDevice->byPreambleType, byPktType, 14, pDevice->byTopCCKBasicRate);
-+		uCTSTime = bb_get_frame_time(pDevice->preamble_type, byPktType, 14, pDevice->byTopCCKBasicRate);
- 		uDurTime = uCTSTime + 2 * pDevice->uSIFS + s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wRate, bNeedAck);
- 		break;
- 
- 	case RTSDUR_BA:    /* RTSDuration_ba */
--		uCTSTime = bb_get_frame_time(pDevice->byPreambleType, byPktType, 14, pDevice->byTopCCKBasicRate);
-+		uCTSTime = bb_get_frame_time(pDevice->preamble_type, byPktType, 14, pDevice->byTopCCKBasicRate);
- 		uDurTime = uCTSTime + 2 * pDevice->uSIFS + s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wRate, bNeedAck);
- 		break;
- 
- 	case RTSDUR_AA:    /* RTSDuration_aa */
--		uCTSTime = bb_get_frame_time(pDevice->byPreambleType, byPktType, 14, pDevice->byTopOFDMBasicRate);
-+		uCTSTime = bb_get_frame_time(pDevice->preamble_type, byPktType, 14, pDevice->byTopOFDMBasicRate);
- 		uDurTime = uCTSTime + 2 * pDevice->uSIFS + s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wRate, bNeedAck);
- 		break;
- 
-@@ -363,7 +363,7 @@ s_uGetRTSCTSDuration(
- 		break;
- 
- 	case RTSDUR_BA_F0: /* RTSDuration_ba_f0 */
--		uCTSTime = bb_get_frame_time(pDevice->byPreambleType, byPktType, 14, pDevice->byTopCCKBasicRate);
-+		uCTSTime = bb_get_frame_time(pDevice->preamble_type, byPktType, 14, pDevice->byTopCCKBasicRate);
- 		if ((byFBOption == AUTO_FB_0) && (wRate >= RATE_18M) && (wRate <= RATE_54M))
- 			uDurTime = uCTSTime + 2 * pDevice->uSIFS + s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wFB_Opt0[FB_RATE0][wRate - RATE_18M], bNeedAck);
- 		else if ((byFBOption == AUTO_FB_1) && (wRate >= RATE_18M) && (wRate <= RATE_54M))
-@@ -372,7 +372,7 @@ s_uGetRTSCTSDuration(
- 		break;
- 
- 	case RTSDUR_AA_F0: /* RTSDuration_aa_f0 */
--		uCTSTime = bb_get_frame_time(pDevice->byPreambleType, byPktType, 14, pDevice->byTopOFDMBasicRate);
-+		uCTSTime = bb_get_frame_time(pDevice->preamble_type, byPktType, 14, pDevice->byTopOFDMBasicRate);
- 		if ((byFBOption == AUTO_FB_0) && (wRate >= RATE_18M) && (wRate <= RATE_54M))
- 			uDurTime = uCTSTime + 2 * pDevice->uSIFS + s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wFB_Opt0[FB_RATE0][wRate - RATE_18M], bNeedAck);
- 		else if ((byFBOption == AUTO_FB_1) && (wRate >= RATE_18M) && (wRate <= RATE_54M))
-@@ -381,7 +381,7 @@ s_uGetRTSCTSDuration(
- 		break;
- 
- 	case RTSDUR_BA_F1: /* RTSDuration_ba_f1 */
--		uCTSTime = bb_get_frame_time(pDevice->byPreambleType, byPktType, 14, pDevice->byTopCCKBasicRate);
-+		uCTSTime = bb_get_frame_time(pDevice->preamble_type, byPktType, 14, pDevice->byTopCCKBasicRate);
- 		if ((byFBOption == AUTO_FB_0) && (wRate >= RATE_18M) && (wRate <= RATE_54M))
- 			uDurTime = uCTSTime + 2 * pDevice->uSIFS + s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wFB_Opt0[FB_RATE1][wRate - RATE_18M], bNeedAck);
- 		else if ((byFBOption == AUTO_FB_1) && (wRate >= RATE_18M) && (wRate <= RATE_54M))
-@@ -390,7 +390,7 @@ s_uGetRTSCTSDuration(
- 		break;
- 
- 	case RTSDUR_AA_F1: /* RTSDuration_aa_f1 */
--		uCTSTime = bb_get_frame_time(pDevice->byPreambleType, byPktType, 14, pDevice->byTopOFDMBasicRate);
-+		uCTSTime = bb_get_frame_time(pDevice->preamble_type, byPktType, 14, pDevice->byTopOFDMBasicRate);
- 		if ((byFBOption == AUTO_FB_0) && (wRate >= RATE_18M) && (wRate <= RATE_54M))
- 			uDurTime = uCTSTime + 2 * pDevice->uSIFS + s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wFB_Opt0[FB_RATE1][wRate - RATE_18M], bNeedAck);
- 		else if ((byFBOption == AUTO_FB_1) && (wRate >= RATE_18M) && (wRate <= RATE_54M))
-@@ -1289,9 +1289,9 @@ int vnt_generate_fifo_header(struct vnt_private *priv, u32 dma_idx,
- 		tx_buffer_head->fifo_ctl |= cpu_to_le16(FIFOCTL_LRETRY);
- 
- 	if (tx_rate->flags & IEEE80211_TX_RC_USE_SHORT_PREAMBLE)
--		priv->byPreambleType = PREAMBLE_SHORT;
-+		priv->preamble_type = PREAMBLE_SHORT;
- 	else
--		priv->byPreambleType = PREAMBLE_LONG;
-+		priv->preamble_type = PREAMBLE_LONG;
- 
- 	if (tx_rate->flags & IEEE80211_TX_RC_USE_RTS_CTS)
- 		tx_buffer_head->fifo_ctl |= cpu_to_le16(FIFOCTL_RTS);
--- 
-2.30.2
+I think I already answered this :)
 
 
