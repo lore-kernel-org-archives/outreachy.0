@@ -1,217 +1,103 @@
 X-GM-THRID: 7019965111499489280
-X-Received: by 2002:a2e:8608:: with SMTP id a8mr25115467lji.418.1634471823825;
-        Sun, 17 Oct 2021 04:57:03 -0700 (PDT)
+X-Received: by 2002:adf:fe45:: with SMTP id m5mr27928100wrs.197.1634464330090;
+        Sun, 17 Oct 2021 02:52:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:1506:: with SMTP id s6ls2247742ljd.6.gmail; Sun, 17 Oct
- 2021 04:57:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxdhr+0qM+rWtoXtygwVhI4Py4FzJFOgrEKNtso+6v3tUYEUx2SMKQUUQBFl5ZtvutUuaSM
-X-Received: by 2002:a2e:2e16:: with SMTP id u22mr21053306lju.244.1634471821931;
-        Sun, 17 Oct 2021 04:57:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634471821; cv=none;
+Received: by 2002:a5d:508a:: with SMTP id a10ls2870320wrt.1.gmail; Sun, 17 Oct
+ 2021 02:52:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxLJKwIYdL+kPBm0cAQH2eLd5jY5HzyPi5GoWf8Z2W2MZNn5QnA04xPyXNYzZfSNfTXqsBS
+X-Received: by 2002:adf:b31d:: with SMTP id j29mr27605234wrd.429.1634464328637;
+        Sun, 17 Oct 2021 02:52:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634464328; cv=none;
         d=google.com; s=arc-20160816;
-        b=A49es4Q0cSvl74ytd1nZFTyOIJ11qRQbATeaxsnVN5qWwS4CS4uBTDfi/32JBsabPW
-         hqXoGEj1kVswJiiTVo59EMP8A+AJnlQB6UrgEWwxR3FCGTEaSIdiYBUAf4+aqH3RS2sH
-         w0w9dTnICS93qWNBgXfP5BB3QUeaRG0mwhyPQDPP8pIFLlBakKlZigXmc0eRc67kriu3
-         H2pJW2VrW4x7PmGwiw9OSKz1PgsdiVAlm1a/d4BMt1f+IC5+SrQOF3aDGXRC9+gvKD5z
-         AkZSe2vbFS8whnHHp7Are1/3M1yX366FD+e7QHz/4R59qZktZEzErMjN8ro7CqQXtKld
-         uBUw==
+        b=hKSvh/nmFabpx1P8bKlDBJcppll5hgXhVsiVym4BdWwoZHMUHLnuCSxinaxKeg4K4K
+         DELOu3pmts2hYzWelwbuDUotGI3aBp9w+EAp/Enpx6RxVQGAQCszn9a8PUy6RQSHehs4
+         rProotjUDJO+0VoySlgklFYnY3bAtVWEwJrBwCoOtxH/stZBLZ5K9VQO9y7MnGIqsU2b
+         4BuXVAtAS3Qxt4CFIsAFN+9O8b77T/NYVRmzGeIIFtyj/9Wbj1Lz/0K1OzbOlXYeGoru
+         dJ3Sy9/Gbf2v8L86g//FCwgv9mWk8u0+zoFsvcjRGR7HtWBZs7udnluX+AbFJPBUDWuu
+         iAWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-language:content-transfer-encoding:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:from:cc:references:to:subject;
-        bh=ViTnFzw/SDd8S/KkN6mVVsH10y9odyksEi7TKFHHzOs=;
-        b=M49G5OkcBobzplvZ9u0+POiRezY726BG/OFrW1tyXx9IIVjW/v0fwfqZZNHNpSIrfZ
-         ogj7vPm+nnp52ilBe8mwdShEZrl7MKTwOuh9aYWTqc3v7e2wbcd/Cj+cIRx6Jsme+Aym
-         nfJ76wI01Kk72VtF/LjKSWUm1BddKCF6nizZQkEsR5PEhXWmjBct4Ba/7AG2R0qCobvY
-         jMR4GvLbI5eBZm8b52xrVHWp4qtxoJwLrQ23rHlV65cstqCkAULd4WjFzpHczSHqlQ1d
-         i9XXlQKPlsKwhU1bVIFN5SkXBhbX8t7nZf59ZRam3//wtG/zhpFAiXhM8vE6u+R/HxD4
-         193Q==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:ironport-hdrordr;
+        bh=DfBng9kCfzQ6rV/1UDfAIKvQaRvbfn+H0gLhfvIJOb4=;
+        b=oP/ckX3KCyfCA6geloK2fWnOi0jBA5yBgBXp/cuqBdoBe1DKsjh8I5/gH4rb9q0c3p
+         R/1I8DnUx3IAWpR8QaFZIYa9E/+fnz9I0uNeYn4ltkWiGGRY9uEo8JtObl+fZHgN2Axw
+         NNPZ7SDa99/H+al1hj//drovfhet66SpeQbWeADW3cbRkvs6eXjyyW7A6fcWkYrqUBAh
+         mQlJSsguVaKRi+9PnBOsFd6JQxH5H0AZwlZguk/P8LZ0qmYl9ibwyJhIhwluB030WeHE
+         mktuDcktv2MTpkrYVAmmofkfqwiFdnPBKGOKKGL0ujrrHCOj6xVCDlVMEfHaJoh0VCcU
+         v9aA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of stefan.wahren@i2se.com designates 212.227.126.187 as permitted sender) smtp.mailfrom=stefan.wahren@i2se.com
-Return-Path: <stefan.wahren@i2se.com>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.187])
-        by gmr-mx.google.com with ESMTPS id 8si324269lft.11.2021.10.17.04.57.01
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id z4si351121wre.0.2021.10.17.02.52.08
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 17 Oct 2021 04:57:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of stefan.wahren@i2se.com designates 212.227.126.187 as permitted sender) client-ip=212.227.126.187;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 17 Oct 2021 02:52:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of stefan.wahren@i2se.com designates 212.227.126.187 as permitted sender) smtp.mailfrom=stefan.wahren@i2se.com
-Received: from [192.168.1.107] ([37.4.249.122]) by mrelayeu.kundenserver.de
- (mreue011 [212.227.15.167]) with ESMTPSA (Nemesis) id
- 1MfYgC-1nDcSg2GIC-00fwEU; Sun, 17 Oct 2021 13:56:58 +0200
-Subject: Re: [PATCH v2] staging: vc04_services: replace msleep() by
- usleep_range()
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+IronPort-HdrOrdr: =?us-ascii?q?A9a23=3Ads00EKr/4iry/VVJ+OseFNkaV5oseYIsimQD?=
+ =?us-ascii?q?101hICG9E/bo8/xG885x6faZslwssTQb+OxoW5PwJE80l6QU3WB5B97LYOClgh?=
+ =?us-ascii?q?rKEGgI1+XfKlPbdxEWutQtt5tIQuxOTOf9ClV3lq/BjTWQGdxI+ra6zJw=3D?=
+X-IronPort-AV: E=Sophos;i="5.84,326,1620684000"; 
+   d="scan'208";a="396157498"
+Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 17 Oct 2021 11:52:07 +0200
+Date: Sun, 17 Oct 2021 11:52:07 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
 To: Kushal-kothari <kushalkothari285@gmail.com>
-References: <20211017092900.134752-1-kushalkothari285@gmail.com>
-Cc: linux-arm-kernel@lists.infradead.org, mike.rapoport@gmail.com,
- kushalkothari2850@gmail.com, outreachy-kernel@googlegroups.com,
- gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
- linux-staging@lists.linux.dev, nsaenz@kernel.org,
- bcm-kernel-feedback-list@broadcom.com, Julia Lawall <julia.lawall@inria.fr>
-From: Stefan Wahren <stefan.wahren@i2se.com>
-Autocrypt: addr=stefan.wahren@i2se.com; keydata=
- LS0tLS1CRUdJTiBQR1AgUFVCTElDIEtFWSBCTE9DSy0tLS0tClZlcnNpb246IEdudVBHIHYy
- CgptUUlOQkZ0NmdCTUJFQUN1Yi9wQmV2SHhidkplZnlaRzMySklObW4yYnNFUFgyNVY2ZmVq
- bXlZd21DR0tqRnRMCi9Eb1VNRVZIRHhDSjQ3Qk1YbzM0NGZIVjFDM0FudWRnTjFCZWhMb0J0
- TEh4bW5lQ3pnSDNLY1B0V1c3cHRqNEcKdEp2OUNRRFp5MjdTS29FUHh5YUk4Q0YweWdSeEpj
- NzJNOUk5d21zUFo1YlVIc0x1WVdNcVE3SmNSbVBzNkQ4ZwpCa2srOC95bmdFeU5FeHd4SnBS
- MXlsajVianhXREh5WVF2dUo1THpaS3VPOUxCM2xYVnNjNGJxWEVqYzZWRnVaCkZDQ2svc3lp
- by9ZaHNlOE4rUXN4N01RYWd6NHdLVWtRUWJmWGcxVnFrVG5BaXZYczQyVm5Ja211NWd6SXcv
- MHQKUkp2NTBGUmhIaHhweUtBSThCOG5oTjhRdng3TVZrUGM1dkRmZDN1R1lXNDdKUGhWUUJj
- VXdKd05rLzQ5RjllQQp2ZzJtdE1QRm5GT1JrV1VSdlArRzZGSmZtNitDdk92N1lmUDF1ZXdB
- aTRsbitKTzFnK2dqVklXbC9XSnB5MG5UCmlwZGZlSDlkSGtnU2lmUXVuWWN1Y2lzTXlvUmJG
- OTU1dENna0VZOUVNRWRZMXQ4aUdEaUNnWDZzNTBMSGJpM2sKNDUzdWFjcHhmUVhTYUF3UGtz
- bDhNa0NPc3YyZUVyNElOQ0hZUUR5WmljbEJ1dUNnOEVOYlI2QUdWdFpTUGNRYgplbnpTektS
- Wm9POUNhcUlEK2ZhdkxpQi9kaHptSEErOWJnSWhtWGZ2WFJMRFp6ZThwbzFkeXQzRTFzaFhp
- ZGRaClBBOE51SlZ6RUl0MmxtSTZWOHBaRHBuMjIxcmZLaml2UlFpYW9zNTRUZ1pqak1ZSTdu
- bko3ZTZ4endBUkFRQUIKdENCVGRHVm1ZVzRnVjJGb2NtVnVJRHgzWVdoeVpXNXpkRUJuYlhn
- dWJtVjBQb2tDTndRVEFRZ0FJUVVDWElkYwo0Z0liQXdVTENRZ0hBZ1lWQ0FrS0N3SUVGZ0lE
- QVFJZUFRSVhnQUFLQ1JDVWdld1BFWkR5MjFPVEQvOUdpWkxkCnRSWWNteVJKZ2x0aVFRekFp
- UWRjSUQ3OGxHb1dwL3grci92Y1U2YjZqdVl1ZVR3Z1Iwclc3djdsMklSQnlEN24KSEp4YSt0
- SVNvUVpCZ2hvbE1JZmI5TXRoR09KTENZNzdrL1FoQWhuMzJOR1prZWp3OXR6a3MvNDBtclpT
- VVQ4NApaeWJzUVhyTE0vSFI2VElJL0RlUEIwbktEM0ppcHBzMlVIUUQ5cUQySWpFd1NRUGxI
- akNPckVaaDQ1UFo3bTkrClo5M0x6aVRlc1dabFlRdUxpSndzNHJLcHRIVzFkL3dSZWxzaG1t
- NlFxY0wybDRDL2U0MGVEQjlncTRkU1poOVgKUEVZbGxpeU5RaDdhMkxTZHVtRTFyK2NTd0lq
- RS91ZHRSdmRPOWFLb0psT2JVSzVkTmpTUEg3d0tUYndkWGRZRApHUHdEaFhkNThOQXdyK1BY
- QmxQajB0STFMQ3ErTEJ4ZUt6aFdYK0dWcTlEb2pWanlVREV4Rk5Ga1h1b0M3ZzhtClY5VDB0
- ZUJpdVpSbm91WEt3VjJGcHRaT0hIN0JVRVd0a0t0aGgxZXRmT1dwaWdCemtVN2JQc2ZJWVQr
- cnk5dGIKMW9KK3Y0MVBOYXFaRW1QVXBKeHZmek5UN3Ayd01lRDdaajlmMHJ1YlJQdExBSjJR
- R2pyRkhzdVh3QU9xcHl6ZQoxOEVidHNZazBOMHp1SEVoY2orUEJJQmZoMFlJWWQ1MW9mNkdJ
- aU95UjlxMFhYdHBsVUo3VDIvSDF1UXFrWGxwCitnVzRWa2lmc2NJckl1eWZueFpXMTJlSXZq
- NnlicVdMN2FZS0dZbVQ2aUxDUGJIWXlZY2F5bDRFa0ZjckNGN0UKZTBXVC9zY1ZNaE8vNVgv
- SGFOQTVIQngvcjUycGdMY3Y0aTlNeExRbVUzUmxabUZ1SUZkaGFISmxiaUE4YzNSbApabUZ1
- TG5kaGFISmxia0JwTW5ObExtTnZiVDZKQWpnRUV3RUNBQ0lGQWx0NmdCTUNHd01HQ3drSUJ3
- TUNCaFVJCkFna0tDd1FXQWdNQkFoNEJBaGVBQUFvSkVKU0I3QThSa1BMYmpic1AvamdqYVNz
- NUh0bGtBSXZXUytGcm15N2MKaG5jT0F4TFRWL0Q2UkV3SU95R0poRkt3d29pck55UTJnOXZV
- YTNZQ1lDZjFmSjh3RWhhS09COWQwTHBNUm5MNApkRVQ4ZDgyMzhFL3BLK0hxTktpSXNKaHM2
- SnNLOFpnalZRR3JtbWZua0dyWisxdjBIQnV4ZGljZ0duUC9XdHVBClVsOGw2Mi9BTGJheXlq
- KzYxQ2xyc0V0UklhcU82N0xJWXdQaVBEUkkrWGlNek5pR3pIRi8xUTZHUjAyUkg2YTMKRjg5
- ejhhUHhjSGkxWnZDdDJ5a3o2VUVjaHpQMHI1Z3FGSisvTC9VcHU4ME1YaVk0djVlSWFCNTJn
- VlBnaXlNQQpsTDJkRHMxbUladm5yUkxSWTJ0YjNtQVlOa1Y1QjVJRFQzcGtXeTZrS281T0Nn
- SytZZFlPUjhGTloyb04ydDhPCnJLK1ZudGFLN01NU0tIbG1ZL3NPd3RSbEVoMU9CbXJjQ3dH
- d21wLzA1R2tSNDZmL0lzaFJWZUZPUmF3K0dBcXQKUDIrQ0ZhMkNOQS9JSG5aTm95aWtsRHpQ
- UUhVVUdzck5wcERyaFg5Sm1oQm1nMXYyeXdIMU5YdTFpRGZQMUJBdwpLZ29rdDVmNVVhUkY5
- c0FBNTN2V0V2YlVVTjllZXNGR0x6UFdkSkdRNWhwZC9WSDVJUXk5U0JyaC93SWNla3E1Cm4w
- a042cGJUSHhHRTUyU2kvTVZJa05UdURaM2FwbjJqbERaNHBPdHBCWEkydlAzYlBPK05pcUJa
- anNVM3R4TGkKV2R2MkZqeXp6NlhMUndlV1JZVkw1SGE2TER0eG9yMnZ1NlVQMDdwOXh6MXhS
- WmFPRFczb1lsSEZ6WXBhNFc1ZwpMSGIybEVrSXVVZlNjaWNHYmpqQXRDbFRkR1ZtWVc0Z1Yy
- Rm9jbVZ1SUR4emRHVm1ZVzR1ZDJGb2NtVnVRR2x1CkxYUmxZMmd1WTI5dFBva0NOd1FUQVFn
- QUlRVUNYSWRlaHdJYkF3VUxDUWdIQWdZVkNBa0tDd0lFRmdJREFRSWUKQVFJWGdBQUtDUkNV
- Z2V3UEVaRHkyeUhURC85VUY3UWxEa0d4elE3QWFDSTZOOTVpUWY4LzFvU1VhRE51Mlk2SQpL
- K0R6UXBiMVRiVE9yM1ZKd3dZOGEzT1d6NU5MU09MTVdlVnh0K29zTW1sUUlHdWJEM09EWko4
- aXpQbEcvSnJOCnQ1elNkbU41SUE1ZjNlc1dXUVZLdmdoWkFnVERxZHB2K1pIVzJFbXhuQUox
- dUxGWFhlUWQzVVpjQzVyMy9nL3YKU2FNbzl4ZWszSjVtTnVEbTcxbEVXc0FzL0JBY0ZjK3lu
- TGh4d0JXQld3c3Z3UjhiSHRKNURPTVd2YUt1RHNrcApJR0ZVZS9LYjJCK2pyYXZRM1RuNnMv
- SHFKTTBjZXhTSHo1cGUrMHNHdlArdDlKNzIzNEJGUXdlRkV4cmlleThVCkl4T3I0WEFiYWFi
- U3J5WW5VL3pWSDlVMWkyQUlRWk1XSkFldkN2VmdRL1UrTmVSaFh1ZGU5WVVtRE1EbzJzQjIK
- VkFGRUFxaUYyUVVIUEEybThhN0VPM3lmTDRyTWswaUh6TElLdmg2L3JIOFFDWThpM1h4VE5M
- OWlDTHpCV3UvTgpPbkNBYlMremx2TFphaVNNaDVFZnV4VHR2NFBsVmRFamY2MlArWkhJRDE2
- Z1VEd0VtYXpMQU1yeDY2NmpINWt1ClVDVFZ5bWJMMFR2Qis2TDZBUmw4QU55TTRBRG1rV2tw
- eU0yMmtDdUlTWUFFZlFSM3VXWFo5WWd4YVBNcWJWK3cKQnJoSmc0SGFONkM2eFRxR3YzcjRC
- MmFxYjc3L0NWb1JKMVo5Y3BIQ3dpT3pJYUFtdnl6UFU2TXhDRFhaOEZnWQpsVDR2MjNHNWlt
- SlAyemdYNXMrRjZBQ1VKOVVRUEQwdVRmK0o5RGEycitza2gvc1dPbloreWNvSE5CUXZvY1pF
- Ck5BSFFmN2tDRFFSYmVvQVRBUkFBMkhkMGZzRFZLNzJSTFNESGJ5ME9oZ0RjRGxWQk0yTSto
- WVlwTzNmWDFyKysKc2hpcVBLQ0hWQXNRNWJ4ZTdIbUppbUhhNEtLWXMya3YvbWx0L0NhdUNK
- Ly9wbWN5Y0JNN0d2d25Lem11WHp1QQpHbVZUWkM2V1I1TGtha0ZydEhPelZtc0VHcE52NVJj
- OWw2SFlGcExrYlNrVmk1U1BRWkp5K0VNZ01DRmdqclpmClZGNnlvdHdFMWFmN0hOdE1oTlBh
- TEROMW9VS0Y1aitSeVJnNWl3SnVDRGtuSGp3QlFWNHBndzIvNXZTOEE3WlEKdjJNYlcvVExF
- eXBLWGlmNzhJaGdBelh0RTJYck0xbi9vNlpINzFvUkZGS096NDJsRmR6ZHJTWDBZc3FYZ0hD
- WAo1Z0l0TGZxemoxcHNNYTlvMWVpTlRFbTFkVlFyVHFueXMwbDE4b2FsUk5zd1lsUW1uWUJ3
- cHdDa2FUSExNSHdLCmZHQmJvNWRMUEVzaHRWb3dJNm5zZ3FMVHlRSG1xSFlxVVpZSXBpZ21t
- QzNTd0JXWTFWNmZmVUVta3FwQUFDRW4KTDQvZ1Vnbjd5US81ZDBzZXFuQXEycFNCSE1VVW9D
- Y1R6RVFVV1ZraUR2M1JrN2hURm1oVHNNcTc4eHYyWFJzWApNUjZ5UWhTVFBGWkNZRFVFeEVs
- RXNTbzlGV0hXcjZ6SHlZY2M4cURMRnZHOUZQaG1RdVQyczlCbHg2Z0kzMjNHCm5FcTFsd1dQ
- SlZ6UDRqUWtKS0lBWHdGcHYrVzhDV0xxekRXT3ZkbHJEYVRhVk1zY0ZUZUg1VzZVcHJsNjVq
- cUYKUUdNcGNSR0NzOEdDVVcxM0gwSXlPdFF0d1dYQTRueStTTDgxcHZpQW1hU1hVOGxhS2FS
- dTkxVk9WYUY5ZjRzQQpFUUVBQVlrQ0h3UVlBUUlBQ1FVQ1czcUFFd0liREFBS0NSQ1VnZXdQ
- RVpEeTIrb1hELzljSEhSa0JaT2ZrbVNxCjE0U3Z4MDYyUHRVMEtWNDcwVFNucC9qV29ZSm5L
- SXczRzBtWElSZ3J0SDJkUHdwSWdWanNZeVJTVk1LbVNwdDUKWnJEZjlOdFRiTldnazhWb0xl
- WnpZRW8rSjNvUHFGclRNczNhWVl2N2U0K0pLNjk1WW5tUSttT0Q5bmlhOTE1dApyNUFaajk1
- VWZTVGx5VW15aWMxZDhvdnNmMWZQN1hDVVZSRmNSamZOZkRGMW9ML3BEZ01QNUdaMk93YVRl
- am15CkN1SGpNOElSMUNpYXZCcFlEbUJuVFlrN1B0aHk2YXRXdllsMGZ5L0NxYWpUS3N4Nytw
- OXh6aXU4WmZWWCtpS0IKQ2MrSGUrRURFZEdJRGh2TlovSVFIZk9CMlBVWFdHUytzOUZOVHhy
- L0E2bkxHWG5BOVk2dzkzaVBkWUl3eFM3SwpYTG9LSmVlMTBEamx6c1lzUmZsRk9XMFpPaVNp
- aElDWGlRVjF1cU02dHpGRzlndFJjaXVzNVVBdGhXYU8xT3dVClNDUW1mQ09tNGZ2TUlKSUE5
- cnh0b1M2T3FSUWNpRjNjcm1vMHJKQ3ROMmF3WmZnaThYRWlmN2Q2aGp2MEVLTTkKWFpvaUFa
- WVpEKy9pTG01VGFLV042b0dJdGkwVmpKdjhaWk9aT2ZDYjZ2cUZJa0pXK2FPdTRvclRMRk16
- MjhhbwpVM1F5V3BOQzhGRm1kWXNWdWE4czZnTjFOSWE2eTNxYS9aQjhiQS9pa3k1OUFFejRp
- RElScmdVek1FZzhBazdUCmZtMUtpWWVpVHRCRENvMjVCdlhqYnFzeXhrUUQxbmtSbTZGQVZ6
- RXVPUEllOEp1cVcyeEQ5aXhHWXZqVTVoa1IKZ0pwM2dQNWIrY25HM0xQcXF1UTJFNmdvS1VN
- TEFia0NEUVJiZmw5REFSQUFzRExjYStMbFAydm5mdEVHaHBjQQpCR1ZOUUVGbkdQckNhdVU2
- SGhOODA1V3RQVHRtc1JPdUp6cWdVVDBtcHFXSWZacTZzTXd5dkhLOVRzL0tIM0paClVWYlJD
- M3oyaDNLZmhIL0RhZjk1cGQ2bVBjL2g5dkYvT3kzK2VUV2hnR25QNmNBNWtsUitmTzFXaEc4
- VnJpWHYKck5lUkcyMHN6emplSG9jblNJY1Q1WHVaUjB1REhPaUd4T2l6MXNNUkZUR3h6R095
- MTlSOXJ2dTYzdGlJM2Q3dgpnYzc1T0NBZGtlQi9TZUNFbGFSdzBUZjdMWmJQampzRjI2M0JZ
- bk1mNGtrTkVLdnFXY1UyaWNNcCtxZXpqeW5CCnB2ZXVlMHJDVFFCWUFRbG9GQ1ZUR0hyV1dB
- NkQ0VzVPMkFmSWRJYzF1MUpDWnAyZjVMV1ZvVUZUVklyUW5RUVUKU0hDaWZyOU1aeExUdFBK
- ZFU1Mm9TUHczZGs0aExQOGlKSUx1dnYvYXZhakNzUVlIRXR3WXNiZUZaeGl1TGdscApBN1lj
- Sk5ObXBnQ3BNRDR3VWh2bEN0QUtOQlFXeXIyOTc2OThFUVRuNDZlQmVVNkttMkNpaFhrZ3dD
- eWY4ZXlLCkxFM3NYZXdhcTVrZ1pXdk5xNml1NXFZSVJCOXl3K2NYYzYwZE9aRE9scTkzWDVT
- QVJZemFvZXBrSHo0cmtMa1AKUG8rdENIeUhRUHNHblBYYzlXVDgwREM5Tm5KR2R2VWx5NXJk
- TUk0eHBaeWdlb2tqd293VlFsUFV1Y1M2TXluNwpmOHc4Y2dmQjdDMklBSWNEeDJwUC9IendY
- dmtDT1FOQTdtVjFsTTA4bitnVmtUcnpweGlwNURicTRDSW9ZeDJNCkpaVDhiR1JINlhqY1VE
- S2EwOVFoeVpzQUVRRUFBWWtFUkFRWUFRZ0FEd1VDVzM1ZlF3SWJBZ1VKQThKbkFBSXAKQ1JD
- VWdld1BFWkR5MjhGZElBUVpBUWdBQmdVQ1czNWZRd0FLQ1JCVnhETFBjVk1NamNkc0QvMFJo
- QXN1UVlPeQpyMTNCbDNOaFhrWUFaR3AyWkZER3VrZTdPU2tWOG9qT09UZFR5ei9jT1JHQ2J5
- ZEQrRGd2cUZ5VmRuT1hLZ08wCmxKbUd3ckdlTGRnZ0F2aDBpaHJwNU8wWVVKOWJCU1htR01t
- UVRZSC9BbUxUR2FkYnVqQ1dqNWZGVWtDeXd4aW0KSHV5MFBiMjRwelR2UzUwR1k1WStxSDBG
- SE5haWdka2tpV04zcnVnN0haRXUvQ3lsUFpqT1h6K0QxUVBNckV4dwo3ZC9NS2FiVis5YU5i
- UVlabGRJajk4UXd2VUYxS1N6YThqbFVJdnBoUnEyN0FUOGZER1lHUGZERU1nMmNCT2FlCkty
- N29uUXM0YjdhV082aWZEbHhRVHB6c3pvK0FuODA3Tk1TdFZFRmYrczNBaFZEM2U3bmY4SkJh
- dmJWckFlMGsKb20yNm96elBubnh6K2xxVlZ0dzZVazRYTUl6dGl4L0h3SFl3dUNuY1VYWndL
- MEkzeUFKd2pZd29vck9DaEozUwpFVWJKUVB0R3NneFJERXhWQkZlNk5MUC82MnhQOU82dGFj
- d09kYjBNbVAxYjM5cFJBVEM3YmdkMWxkVUxpNzVaCmxKckowL1NpVkVyb3FOWXk3OXRmbWdB
- WjJVeFptczlTckV5Nm85UVNmc24xYVh2K01QTDlKYUNHbWtQNnpiTFEKTm5kajBKY2FRbmtD
- MHZneWRPMUJtNk11OTZQOXVmbEtaY0FTNndtTE01SWRIT3lqTDg4d0h3anVjakFPQnRjdwpw
- MG9HVG5WT25Sc05ZU084VzhZWi9LZGJ1Nzg1ZGF6TXFKMmlOakFEdUJiZG02TjRqNUVkTW5r
- TG4wQklmUEpwCmRnbTR2bDJVcExqd1JHci9NM3dtbTVwdnMrNnVCN2hrL0ZKaUQvNGxsRU5Q
- NGVNMWg3U200aitWcTZOMSt6VEIKSVhKQWViSXFhc0RwNXlaUzdYcnk0STM2bjg1WEVZZkcw
- MWx0QXlob05WMkRPOFNJUlFwdWkydHErOVJQM1JLMQpKREJ4eEVKWTJFTzVKWjhNeGFQSFEw
- RFQwNWxSRmpLMkFsaGRFSXRqTGpwSjNmVW05c3FMeE1XeHpQNlV6M2lpCjJ1YTR1bnJ0Nk9D
- VHFRd2lqRi8zYlRXaXd2VkFBSG5NRlVpb1hzaEhhb2hWRGNWZm5lSU1mVjBiUUNYWWkzTnAK
- WTB2MFp3Y2lGSCtnU0M3cUQ2WE51aHBWR1NMNElpbGlGeS9TemNhSkV6QUhlTERTaFpQMkNX
- ZG5DNHZnbDM3dApocHg4aDU1WWhKbjZIU3VVelBnaGFLdFZCMmsrajdaZXlaK1NGeHA3SXVi
- SEN3TEhsUWhUNzVSd1EzaUF4S242CjBxajUxY1lUbnF4ZFpYVzZmSDNQa3VNellVNUdwcVIv
- MU9sNWMvd2ZJNmc2QW04eUtXLzBFVUx0K0tuNExGc1MKbTdZM201SDV2MTJVNkpCWXZWK3Ix
- M2paaW9zNEVFREU5M0Q1c05IMk1JeVJ6Q0RxMXpkZHQ0WHV5S0ZqUEtXMQo5aWJaRGZGVjdL
- dUNzdnVMMjNzQmMxc0NNb3ArRTFtVC9ReE9JQTZvRFQxTVFzdHdPVnVReURDdi9PdktTZ2Z6
- CjhGWEdMNkFQY2xqQ3FqOEFKaHhReXN4ZG9pUVA4bS92dStialdHR3Z4dzVzMWxncGlSRFRS
- VVBnY0pKTmFHWTIKVklEclpRaTROU2lOUTBOSWkrZGp1NGZOTW1DcFFxZzh0YkMzY0FhNnl3
- bTZvUUIxU0JobURYMmUxMWdSbGx1SQpPblRHUEUwSFRvM2w3MmxoYmc9PQo9cVpNVgotLS0t
- LUVORCBQR1AgUFVCTElDIEtFWSBCTE9DSy0tLS0tCg==
-Message-ID: <83076fd7-3183-5665-a9df-63a0b7e13c3f@i2se.com>
-Date: Sun, 17 Oct 2021 13:56:57 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
-MIME-Version: 1.0
+cc: linux-arm-kernel@lists.infradead.org, mike.rapoport@gmail.com, 
+    kushalkothari2850@gmail.com, outreachy-kernel@googlegroups.com, 
+    gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, 
+    linux-staging@lists.linux.dev, nsaenz@kernel.org, 
+    bcm-kernel-feedback-list@broadcom.com
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: vc04_services: replace
+ msleep() by usleep_range()
 In-Reply-To: <20211017092900.134752-1-kushalkothari285@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Content-Language: en-US
-X-Provags-ID: V03:K1:3CYSkxYK1sQ+u009ZWdl96JUNObZf6Uvl5mj+g3RLa3SOgOQlRX
- t050tnvjf3ixtjmmf6aitJ1feUY1LWMWDrn0JqwEEUPC8pEoMMdIapYcVuqSIso227b4Udh
- /RSNchhZjA/gyd8xo7jMcos4YuCYnV/U9bItHBnw+YQHq1BXNcxhPz+hq1Jb/32h6yadDK1
- d9gX78XVG82N5/JjUUTEw==
-X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V03:K0:wwnfYvIQVeU=:LUkFPn+pGdQF7TpVsntoWq
- uLl/KDLpFoDpdWPiNxQAQFWs1LsJ9+gogw4Oovdt4XM3XF7W/mbIS6cj9f1p0zNQyx4BBRLhW
- 9j71mVUlTQcEJRbGIqfrm1XrojcFQS2/yDfsFEwdQe6PtEiKhhjwmTW1yYdWF1mdqoma0f/qN
- mtV4daBAj6CXqt4rWF9ojogwz0wNzfYs57WI8DNmqCtCTtQpifhmkcgrebiEf9SzPHsDquCbK
- iLaFugCtQ8/gs5qbLHz2dhzNRZ8DI+RSSMaLmKxz1rvzIvlBwrUvnTU3Q3hxJy2e2DvP+uTve
- M1tbZH8btOAbBZ7NzwVKJI3FJ+VPnYg/NQKCO5NrqV6DRmKjVuwhi1NTBE9IiMwHLxm8P1fTW
- 8ErReoo9F3jt4O3WuX0zKJg1pXW31IOHDj/N+C/sbidw2RuywNiD9IggQTYzxoZDsH5zq7/15
- 7URuKX8udxEZO7y9RiRFVQz4pVw5emmnxMxLIjme+JIcv5hARyLGDLep2i0KU7Ga+OKKzSaPf
- +5/5L6tlAvpvL+yZp7vyvWfwIdSE7jA28/7uqQ5XqkjlV5YVlRg+SFdiPWbpG5bX3KRJ5VyOZ
- /Uu7DNgytO5M670rH8CBNwgQ8nWsxE/wgeM2up+NoniIOmqo4rqF3mPVfIdbcXcp67rCExDmY
- /B0zuFGguEcOsGyu0SVl9Gcad5QyYC4tFuk+eyQxlvASy9uhPVNjhEpC49PRWJJFuHH7+nZGV
- wKqngodN2raDpH0JSsvKBuJCgHegqaYSwzbHGvefAETFc7QwX4O6twj7ndY=
+Message-ID: <alpine.DEB.2.22.394.2110171140040.3026@hadrien>
+References: <20211017092900.134752-1-kushalkothari285@gmail.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-Hi,
 
-Am 17.10.21 um 11:29 schrieb Kushal-kothari:
+
+On Sun, 17 Oct 2021, Kushal-kothari wrote:
+
 > Fixed the warning:-msleep < 20ms can sleep for up to 20ms by replacing
 > msleep(unsigned long msecs) by usleep_range(unsigned long min, unsigned long max)
 > in usecs as msleep(1ms~20ms) can sleep for upto 20 ms.
+
+In addition to Greg's comments, the log message is still not really ideal.
+There is still the word Fix that doesn't really contribute anything.  The
+prototypes of msleep and usleep are also not useful - the reader either
+knows them or can easily find them.  A better messge could be something
+like:
+
+"Checkpatch warns that an msleep of less than 20ms can sleep for up to
+20ms.  Replace msleep(1) by a call to usleep_range that makes the possible
+range (1ms - 20ms) explicit."
+
+But the argument to msleep is in milliseconds.  If the appropriate first
+argument to usleep_range is 1000, then it would seem that the second
+argument should be 20000?
+
+One thing that you can do to try to understand such a problem better is to
+see what others have done before to resolve it.  You could try a command
+like
+
+git log -S msleep -p
+
+to see commits that have changed the number of calls to msleep.
+
+I reiterate Greg's comments that making these timing changes without being
+able to test the result is risky.  These are just suggestions of some
+methodologies that you could follow for a change where it is more clear
+that the change is correct.
+
+julia
+
 >
 > Signed-off-by: Kushal-kothari <kushalkothari285@gmail.com>
 > ---
@@ -228,15 +114,27 @@ Am 17.10.21 um 11:29 schrieb Kushal-kothari:
 > @@ -857,7 +857,7 @@ vchiq_bulk_transmit(unsigned int handle, const void *data, unsigned int size,
 >  		if (status != VCHIQ_RETRY)
 >  			break;
->  
+>
 > -		msleep(1);
 > +		usleep_range(1000, 2000);
-
-there was a recent discussion about this checkpatch warning [1]
-
-Best regards
-
-[1]
-https://lore.kernel.org/linux-staging/260b38b8-6f3f-f6cc-0388-09a269ead507@i2se.com/
-
+>  	}
+>
+>  	return status;
+> @@ -894,7 +894,7 @@ enum vchiq_status vchiq_bulk_receive(unsigned int handle, void *data,
+>  		if (status != VCHIQ_RETRY)
+>  			break;
+>
+> -		msleep(1);
+> +		usleep_range(1000, 2000);
+>  	}
+>
+>  	return status;
+> --
+> 2.25.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20211017092900.134752-1-kushalkothari285%40gmail.com.
+>
 
