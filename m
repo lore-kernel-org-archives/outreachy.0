@@ -1,106 +1,206 @@
-X-GM-THRID: 6751406799078817792
-X-Received: by 2002:a0c:8731:: with SMTP id 46mr15612157qvh.141.1571934390733;
-        Thu, 24 Oct 2019 09:26:30 -0700 (PDT)
+X-GM-THRID: 7020448359173324800
+X-Received: by 2002:ac2:54b0:: with SMTP id w16mr1624482lfk.190.1634586335897;
+        Mon, 18 Oct 2021 12:45:35 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aed:25f6:: with SMTP id y51ls1971203qtc.7.gmail; Thu, 24 Oct
- 2019 09:26:29 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyF2FjU5pJ/fce2Ot+Qhtx7t4xacbmF/emOQLew56cCCrr1ZKsB2gASZJ0x5yjbYTyaGzW2
-X-Received: by 2002:ac8:1244:: with SMTP id g4mr5042170qtj.3.1571934389864;
-        Thu, 24 Oct 2019 09:26:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571934389; cv=none;
+Received: by 2002:a05:6512:3f14:: with SMTP id y20ls838889lfa.1.gmail; Mon, 18
+ Oct 2021 12:45:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwwJE97M5EFy73YVz8vIcOlGccvvFjS9PVcQPAQZj5nk+8DQw+wgoe6VOwZKEPYETfXmxvd
+X-Received: by 2002:a19:c514:: with SMTP id w20mr1623676lfe.265.1634586334210;
+        Mon, 18 Oct 2021 12:45:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634586334; cv=none;
         d=google.com; s=arc-20160816;
-        b=C/m2zLCC2RiD+ewmohH8uPK4Y9cvThJSca3DwoH8Rbg9SaMol0zXDs932ANZyo/DKY
-         CxipFcxeqIraMBROEw0SAh/kNOYRL6DR9ZPOdsQIqXb88wraJb0LCUWtsXFQXoWDQ0qg
-         HZMXIE/IUTFoY8lSshdXywyOMXR9SbU2PDfSL6Ha6x8DcUpahHeoVwNM6MxDpXV2yPPt
-         2RfhQOw9wDlUQyoLfzt6JVYnn65N9s1Q29dCOT2XlUOo4l4PmPTVU3iUD4ELBAvem9wr
-         59Ykx593Jcc+8BOpgIU4iKp73jDDTFOiZSTJLdZ4p+PzZpNcg7hKdOc484A5yneSj/H/
-         fbOg==
+        b=ZyKs3v6teXEgjDno5WZF3O5A/l93cU1Bz7LGU+PAiPwXCSs4z4eA2gk9aNfb0g2ssY
+         upshUDVQkia107jJBmwvNig3IPAi6pdUjruLu0shuRCY0B4UwPrC5txZVCnGCDv36JNB
+         a21d/mwGFqoyLtOrXNlwm+ooVcz1P+EL5LI60WgF2jekPrvPBtZNLFdDETXasdj84SVM
+         CYmYjt+1d5SwsIhn3KYJg/p9zyMZg+nIvey6k+SPqF4Gn/sduXGufW0fzxdha7wAa218
+         MyJmOly1XvQHX2uSiBjoHQyyZha47I29qxQjpI0sFlmosXlrBpMwdXXOeT9+lfLC55Us
+         EZrQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=M4rMlp4nr3Gl3jgaHqsajNk8xbhK5NUaD+MhSNcFeIs=;
-        b=N1DTIhMYBc6EQepXe+4LexzKv9+vhu9GDpmVmuAGpDV4JF1Fz0pP6Wv4FPdaGt3dOl
-         TqFwhHqiQUArij7JGr3zEuhc4UPVust37M5rhBU8EGBa+XxcBb4ASm4+ynDo2GvQSQNI
-         YRV1ZtuhyQKT1Aky9nU2w/vj4qlcWFXHz5nO3N3CFW2fklA50+DfI4Tg2dP+Z+wwNfFw
-         ux8RUEKgiPym2x+Ew1P6XHsClZfK8XvJsN+yBQKZMb1AM/nCfsHomFH2rcCSO1ZgsK7v
-         OawKFUOtBMPUVIZnzNJqMcC7En0MfqUUo4IsiaK2oh4GaOb26NkGQyau/46/Shz3C4zh
-         T4zg==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date;
+        bh=lcr6RjZJl/XrPGwPdBr4Hof3Dfa7Jan6N6HKJaaWR0U=;
+        b=SKiNsoxGVYALIuGPP4slbo77H983MK3+5rQRi3hvaWC4SUX6EXCj9EDl0fuJciecB7
+         GifTHv05LgqHPuoxURC2v+G6r2p+gqJSNdLH6BSi4f0Bo2tew7ApXUxgSmYca1s2sWSW
+         YctX8wp+2rKWz3miHR/EuxffOakSOM4bfOw/hj2lcl7tOixBZyfMCCctlzZC+Pt1J6Yg
+         VsfH5PMC2YmyYAjidmwovnEaAQ9WNILyO6fqP+HE/hoBItD+JW01qm6oFDpo5desvu/M
+         UzoncC9lVeMzj7Yfpf+LD0Pr1FWJpzTGDiLPuwH7r2clOXBP2E2VDKMvjul1bShyVhnN
+         jrDw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=C59os57p;
-       spf=pass (google.com: domain of nachukannan@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) smtp.mailfrom=nachukannan@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <nachukannan@gmail.com>
-Received: from mail-qt1-x842.google.com (mail-qt1-x842.google.com. [2607:f8b0:4864:20::842])
-        by gmr-mx.google.com with ESMTPS id c78si1083660qkb.7.2019.10.24.09.26.29
+       spf=pass (google.com: domain of alison.schofield@intel.com designates 134.134.136.31 as permitted sender) smtp.mailfrom=alison.schofield@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <alison.schofield@intel.com>
+Received: from mga06.intel.com (mga06.intel.com. [134.134.136.31])
+        by gmr-mx.google.com with ESMTPS id z21si827553ljn.1.2021.10.18.12.45.32
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 24 Oct 2019 09:26:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of nachukannan@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) client-ip=2607:f8b0:4864:20::842;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 18 Oct 2021 12:45:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of alison.schofield@intel.com designates 134.134.136.31 as permitted sender) client-ip=134.134.136.31;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=C59os57p;
-       spf=pass (google.com: domain of nachukannan@gmail.com designates 2607:f8b0:4864:20::842 as permitted sender) smtp.mailfrom=nachukannan@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qt1-x842.google.com with SMTP id u22so38681354qtq.13
-        for <outreachy-kernel@googlegroups.com>; Thu, 24 Oct 2019 09:26:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=M4rMlp4nr3Gl3jgaHqsajNk8xbhK5NUaD+MhSNcFeIs=;
-        b=C59os57pdv/N85fdDfIV0CnL7QbybifIMAN34Ekf77rJnTaK42zz4E8SoVnTCXrUyb
-         Egubl+A4WQ4IaIhsGlAhAnCsNz+J1ghVN1+mVZz9rCeAnUW7I+1aGzsveXNDCVU3e8yK
-         UoTL7w/L62d5OBSbr+/ws+1DA1NsXb4NS/3+rEzSLoeuD1e0uRvCYPNPcr6ucjZUGa37
-         f1SU39w5lhs5Y6ujeIyiPwBdG63X5nSOm1XGSZTQVsjgcH4RrxOQUAQogzNzRCMKnVoS
-         sI3qmkgfnFFuz3jMBJwQWp4o6kSiKgOElCchLApMHg12cHFCRsrqdl72TPjEKEhDDjwu
-         Hx5w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=M4rMlp4nr3Gl3jgaHqsajNk8xbhK5NUaD+MhSNcFeIs=;
-        b=CkhkcvG3AOZbMocAs07HYE49ooggQMHffMuCHBI0tnPEiEz67m9StsBt/D46waElYa
-         nWTKJ/9kWHG/KGxs9XxO1YMP7DBS0jBnP6SfcaRiTym6YVWNaklWppY8A9gCYE44nvJ7
-         VsJduwdGgqzhjm9qfYKTbeYbZb1RgIwGPncmOhMcIG+5LjCRahWauuHcmNL7NGkPc2Pz
-         Mvm/fOEVwtOZWnckGQriCl/5QlsspVul03Z3h9XwuLaFyujNlWgMSu2GtpWMtM567Kh/
-         J5WWMjuPQyGnv2BQRwknLy1Hj1zYpk+wdCObyrw8bNHTDmBFY9SYLl0zXJPCH1zL1YVF
-         8bXA==
-X-Gm-Message-State: APjAAAWlC8TOWpDfH9whHQubhUWhc5hwf063gH09az6jgxwbIFYroDiu
-	+BzE+uzAMUcAzxAVGtvYHjPetf8e
-X-Received: by 2002:ac8:7007:: with SMTP id x7mr4911319qtm.89.1571934389628;
-        Thu, 24 Oct 2019 09:26:29 -0700 (PDT)
-Return-Path: <nachukannan@gmail.com>
-Received: from ubuntu ([107.15.113.108])
-        by smtp.gmail.com with ESMTPSA id k13sm9146200qkg.57.2019.10.24.09.26.28
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 24 Oct 2019 09:26:28 -0700 (PDT)
-From: Nachammai Karuppiah <nachukannan@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy-kernel@googlegroups.com,
-	Nachammai Karuppiah <nachukannan@gmail.com>
-Subject: [PATCH] staging: rtl8723bs: hal: Remove typecast in call to kfree
-Date: Thu, 24 Oct 2019 09:26:10 -0700
-Message-Id: <1571934370-39013-1-git-send-email-nachukannan@gmail.com>
-X-Mailer: git-send-email 2.7.4
+       spf=pass (google.com: domain of alison.schofield@intel.com designates 134.134.136.31 as permitted sender) smtp.mailfrom=alison.schofield@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+X-IronPort-AV: E=McAfee;i="6200,9189,10141"; a="289200327"
+X-IronPort-AV: E=Sophos;i="5.85,382,1624345200"; 
+   d="scan'208";a="289200327"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Oct 2021 12:45:14 -0700
+X-IronPort-AV: E=Sophos;i="5.85,382,1624345200"; 
+   d="scan'208";a="593966244"
+Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
+  by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Oct 2021 12:45:14 -0700
+Date: Mon, 18 Oct 2021 12:53:10 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: kushal kothari <kushalkothari285@gmail.com>
+Cc: outreachy-kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: sm750fb: make pointers in
+ array const
+Message-ID: <20211018195310.GA446900@alison-desk>
+References: <20211018164431.26462-1-kushalkothari285@gmail.com>
+ <9033544.t7rfKEcqWj@localhost.localdomain>
+ <0f0eb2e6b72bc5188d5eca3aa49eba1d8db0effd.camel@perches.com>
+ <6124760.3TRdS1uSHU@localhost.localdomain>
+ <alpine.DEB.2.22.394.2110182042500.3174@hadrien>
+ <cc951a48-8d3f-4243-8dc6-bae3446941c1n@googlegroups.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cc951a48-8d3f-4243-8dc6-bae3446941c1n@googlegroups.com>
 
-Remove typecast in the call to kfree as it is not needed.
-Issue found using coccinelle.
+On Mon, Oct 18, 2021 at 11:56:30AM -0700, kushal kothari wrote:
+> >As I wrote your patch has errors, however, if it had no errors it could 
+> not 
+> >be taken in any case. I just noticed that you forgot to CC linux- 
+> > <https://groups.google.com/>staging@lists.linux.dev. 
+> 
+> >Some days ago, Greg Kroah-Hartman wrote clearly that he cannot take 
+> patches 
+> >that are not submitted to linux-staging. 
+> 
+> Yes, I forgot and CC'ed only to the output of the list of that script . 
+> I'll keep this in mind ahead. 
+> Thanks.
 
-Signed-off-by: Nachammai Karuppiah <nachukannan@gmail.com>
----
- drivers/staging/rtl8723bs/hal/sdio_ops.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Hi Kushal,
 
-diff --git a/drivers/staging/rtl8723bs/hal/sdio_ops.c b/drivers/staging/rtl8723bs/hal/sdio_ops.c
-index 301d327..5645658 100644
---- a/drivers/staging/rtl8723bs/hal/sdio_ops.c
-+++ b/drivers/staging/rtl8723bs/hal/sdio_ops.c
-@@ -1029,7 +1029,7 @@ void sd_int_dpc(struct adapter *adapter)
- 				if (c2h_id_filter_ccx_8723b((u8 *)c2h_evt)) {
- 					/* Handle CCX report here */
- 					rtw_hal_c2h_handler(adapter, (u8 *)c2h_evt);
--					kfree((u8 *)c2h_evt);
-+					kfree(c2h_evt);
- 				} else {
- 					rtw_c2h_wk_cmd(adapter, (u8 *)c2h_evt);
- 				}
--- 
-2.7.4
+Thanks for your perserverance. 
+
+I'm not sure this is mentioned anywhere in the first patch tutorial,
+but is should be: avoid pruning the recipient list in an ongoing email
+thread. I wanted to reply to this, but I see the recipient list got
+truncated along the way. 
+
+Adding recipients, but pruning in an ongoing discussion gets confusing.
+
+wrt who to send the patches to - you should not be pruning that list
+either. Read back through previous emails on this list about that.
+The send to Greg is not a special request. It's default behavior when
+get_maintainers is used correctly.
+
+Thanks,
+Alison
+
+
+> 
+> On Tuesday, October 19, 2021 at 12:13:47 AM UTC+5:30 Julia....@inria.fr 
+> wrote:
+> 
+> >
+> >
+> > On Mon, 18 Oct 2021, Fabio M. De Francesco wrote:
+> >
+> > > On Monday, October 18, 2021 8:22:23 PM CEST Joe Perches wrote:
+> > > > On Mon, 2021-10-18 at 19:18 +0200, Fabio M. De Francesco wrote:
+> > > > > On Monday, October 18, 2021 7:01:42 PM CEST Julia Lawall wrote:
+> > > > > >
+> > > > > > On Mon, 18 Oct 2021, Fabio M. De Francesco wrote:
+> > > > > >
+> > > > > > > On Monday, October 18, 2021 6:44:31 PM CEST Kushal Kothari wrote:
+> > > > > > > > Change the parameters of functions from const char *g_fbmode[] 
+> > to
+> > > > > > > > const char * const g_fbmode[]. This additional const is needed 
+> > to
+> > > > > > > > allow us to fix checkpatch warning, as well as being good
+> > > > > > > > programming practice.
+> > > > > > > >
+> > > > > > > > For the checkpatch warnings, if we have a set of command line
+> > > > > > > > args that we want to check defined as:
+> > > > > > > > static const char * g_fbmode[] = {NULL, NULL};
+> > > > > > > >
+> > > > > > > > checkpatch will complain:
+> > > > > > > > WARNING: static const char * array should probably be static
+> > > > > const
+> > > > > > > char * const
+> > > > > > > >
+> > > > > > > > Signed-off-by: Kushal Kothari <kushalko...@gmail.com>
+> > > > > > > > ---
+> > > > > > > >
+> > > > > > > > [...]
+> > > > > > > >
+> > > > > > > > -static const char *g_fbmode[] = {NULL, NULL};
+> > > > > > > > +static const char * const g_fbmode[] = {NULL, NULL};
+> > > > > > >
+> > > > > > > You have introduced a logical change (g_fbmode[] entries cannot 
+> > be
+> > > > > assigned
+> > > > > > > any more) and a build error (because there is code somewhere that
+> > > assigns
+> > > > > > > values to those slots).
+> > > > > >
+> > > > > > I wonder if this warning makes much sense when the array elements 
+> > are
+> > > > > > NULL. I don't know if checkpatch could easily detect that.
+> > > >
+> > > > No, it couldn't really. It's a line by line parser and most frequently
+> > > > these are on separate lines.
+> > >
+> > > Sorry but I don't get it. For sure I'm missing something...
+> > >
+> > > I guess that checkpatch.pl warned Kushal because it detected that the 
+> > array
+> > > of pointers was assigned with something and so it output that "static 
+> > const
+> > > char * array should probably be static const".
+> > >
+> > > What I cannot understand is why it _can_ detect that the array is 
+> > assigned
+> > > with some values but it _cannot_ check that those values are 'NULL' and 
+> > so
+> > > avoid to warn.
+> >
+> > In this case it could, but this case is too specific to be worth making a
+> > special case for. The problem is that checkpatch only looks at one line
+> > at a time, so some values could be on another line.
+> >
+> > julia
+> >
+> > >
+> > > Thanks,
+> > >
+> > > Fabio
+> > >
+> > > >
+> > > > > However, it should be an easy fix in whatever programming language:
+> > > > > checkpatch should warn if and only if the array elements are assigned
+> > > with
+> > > > > non 'NULL' values, because it's pretty clear that somewhere else 
+> > there
+> > > must
+> > > > > be some lines that assign values to them.
+> > > >
+> > > > Don't take checkpatch warning too seriously and do compile
+> > > > and test any change you make _before_ you submit a patch.
+> > > >
+> > > >
+> > > >
+> > >
+> > >
+> > >
+> > >
+> > >
+> >
+> 
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/cc951a48-8d3f-4243-8dc6-bae3446941c1n%40googlegroups.com.
 
 
