@@ -1,104 +1,183 @@
 X-GM-THRID: 7018981355604148224
-X-Received: by 2002:a05:6638:348b:: with SMTP id t11mr2491805jal.70.1634624396471;
-        Mon, 18 Oct 2021 23:19:56 -0700 (PDT)
+X-Received: by 2002:adf:c986:: with SMTP id f6mr39410324wrh.216.1634579217659;
+        Mon, 18 Oct 2021 10:46:57 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a6b:2c8d:: with SMTP id s135ls3336677ios.0.gmail; Mon, 18
- Oct 2021 23:19:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzD3jjlJdtH/sbxHImOXgDfHttMwtrCTJ3iKPIl94ZtOvQcD4M/83iNvHFnm5AAp2+vs577
-X-Received: by 2002:a05:6602:15d3:: with SMTP id f19mr17706713iow.161.1634624395620;
-        Mon, 18 Oct 2021 23:19:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634624395; cv=none;
+Received: by 2002:adf:8b92:: with SMTP id o18ls8889102wra.0.gmail; Mon, 18 Oct
+ 2021 10:46:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyVBFAEzbFZuI3Sm0seMxURv6wIZjjvooNsIvz2eiwyaIg8fQ37mgXNmHmSLMoVVIBB0R06
+X-Received: by 2002:adf:8b98:: with SMTP id o24mr37635553wra.302.1634579215962;
+        Mon, 18 Oct 2021 10:46:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634579215; cv=none;
         d=google.com; s=arc-20160816;
-        b=ohFwJlGWSQ+Sgb3jn8bRJpNPQnXmrpU+541BRa24fuGt0htG8sGbRcf8Z0u3Gx2Gfz
-         pONUK2pnf4oLHS0Zl9zhin1DNmnHCoxo09Jc72oh+O1vP1D1rsikGMYdOm2EP36hwWrI
-         ZCfnj6BeeLB034/1a/BcesaVnZLnnC9hlSaXQEu7qXKnrNjjtF7BKcOz1wVKi+OSWfi6
-         9p7eduyx7JMarIbSK7Z/h6cM8Qz2NfycrzqmXci3BoaHRPAD5c5ANZnG12dJoxGixblX
-         9wtWBX59ReNgQo9qKhdZ+KJoQILHfVZSIJIc+QVOUu1JP0sKNAaF6QcHrMOaV3YDrVtJ
-         17jg==
+        b=LcqugrjnRbqzSB3waah0UmDQ5QuxMFwgKiBDlzHX3R1A8b7MgABCrZAYtPzsizNVHH
+         VTtps7o+ULwsOQq9Csnwv8lTSz5hSiAT+5oibVelpNiNmSFLF1k8AYMAfA5i/fDKATq6
+         dpjqToKMHtQB6kKqVa+JuELfScs6v/pih/huBx30bbhQjHkQajZ/Q9igY3r7+GYun4X3
+         gkdgl0lK7TOm3lvcZ2KG7vfKqhB0yBwNDQ/V3c1oYB7eBh/i9IIyhc7nXs0JylWwKO+D
+         KL7CbDg5iKqixV3A+69IHxqfb2wA3447GJsB+SV6Mfx1Ek4vJfEEhl1F4fg63ChilFuD
+         r5OA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=WKSpteTJfcWoZB02ubPiByff6ZSmaa7KcCiDF5LidJA=;
-        b=ry5gww38EFJpjq88yUagDhqc0Q0ItytmPWkApoShvf2huuXDVWM02rv5LRqbiK/5/Q
-         QKFMnpfaGD5GW/5JgXnzfHOK2i6SBQfmFS5mulxteDAWgEiwdGN6Dc/t2L9a/o1kWprI
-         ZlP54Lua0iFDpy4YiZzgSBSOX7nTQcsGeazXO3dP5RecaFuUERTLNJQYQhrw6IZlDeia
-         eEldT8isrP+Y079xiSGMYhI/SoCPDNZjSdfEeJuEqtJ871EkYMZ0fLk+Av8QaD6cK9i0
-         0Vz5TkvU9cd5TRUMuXD+BskRdzNzsmV5iMtaLcWqeK+6o3fBZ0c3Cy7KAe2/SA9ylvBL
-         ciHw==
+         :subject:cc:to:from:date;
+        bh=EnktU0oi/jtPWj2NTvi0GM6FWDsGp62HegE676A2iss=;
+        b=1KmD1CU38UWPKcIcJgFAEKY81qxQUv7UcyeRAy2t1OKd19PwKuRQj/rB5xxtykXmq6
+         BnxJNoiATimbFLp3S1nV089g2k8O63isAOW2VHgOfnyXKlDMVDQ91mtoUbDPcX8TtpXs
+         /VV1438jRZekQjCRlrfzZFabBA/FioUw1Ftbw7h/U/Wt/+VUZPAv4fJbfcvahhMHr7n4
+         Xl2BPS8LSLW5CyqNzifqh8hHcDchOET/bTqxkntSwy2AkrGOzpgxfSlvq4P/lhfCfSYT
+         Y1xhm83p2KruEGc7RaKhka+mn8APG0867t47nuQ6Wt60j/k+KQotQ7c0HYr5a7VnSyfC
+         ovsw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=DQVUaLSX;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id h10si287137ilq.2.2021.10.18.23.19.55
+       spf=pass (google.com: domain of alison.schofield@intel.com designates 134.134.136.65 as permitted sender) smtp.mailfrom=alison.schofield@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <alison.schofield@intel.com>
+Received: from mga03.intel.com (mga03.intel.com. [134.134.136.65])
+        by gmr-mx.google.com with ESMTPS id h26si7635wml.0.2021.10.18.10.46.55
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 18 Oct 2021 23:19:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Mon, 18 Oct 2021 10:46:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of alison.schofield@intel.com designates 134.134.136.65 as permitted sender) client-ip=134.134.136.65;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=DQVUaLSX;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 5FC17611BF;
-	Tue, 19 Oct 2021 06:19:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1634624394;
-	bh=AyQWwStnduaoKk0yTKhME53t1UT1lOcuONQ2qK6ZkGg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=DQVUaLSXIZT1yt60ijtfHEbroSxB+2owI5cOXA/jYYlk7+at1S9YLO5flX/DjpluP
-	 5oa+wL2PJ573X6avSDIyT+Z43YmTiarhXwLaWt8zXSOcTN8zqOtOSSozZPj796qZnV
-	 2bGNNTPwuJ5YNk3KCPCv4D5iUMG8hCBVDEJuVxas=
-Date: Tue, 19 Oct 2021 08:19:52 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Alison Schofield <alison.schofield@intel.com>
-Cc: Karolina Drobnik <karolinadrobnik@gmail.com>,
-	Outreachy Linux Kernel <outreachy-kernel@googlegroups.com>
+       spf=pass (google.com: domain of alison.schofield@intel.com designates 134.134.136.65 as permitted sender) smtp.mailfrom=alison.schofield@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+X-IronPort-AV: E=McAfee;i="6200,9189,10141"; a="228272018"
+X-IronPort-AV: E=Sophos;i="5.85,382,1624345200"; 
+   d="scan'208";a="228272018"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Oct 2021 10:46:24 -0700
+X-IronPort-AV: E=Sophos;i="5.85,382,1624345200"; 
+   d="scan'208";a="526357000"
+Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
+  by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Oct 2021 10:46:24 -0700
+Date: Mon, 18 Oct 2021 10:54:20 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: Karolina Drobnik <karolinadrobnik@gmail.com>
+Cc: Outreachy Linux Kernel <outreachy-kernel@googlegroups.com>
 Subject: Re: [Outreachy kernel] Help maintain the First Patch Tutorial
-Message-ID: <YW5jiKHmi3/cjXQW@kroah.com>
+Message-ID: <20211018175420.GA446414@alison-desk>
 References: <20211014174207.GA426328@alison-desk>
  <c924b4477fa4067b040e9a0d72af3d8eeb882a98.camel@gmail.com>
- <20211018175420.GA446414@alison-desk>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20211018175420.GA446414@alison-desk>
+In-Reply-To: <c924b4477fa4067b040e9a0d72af3d8eeb882a98.camel@gmail.com>
 
-On Mon, Oct 18, 2021 at 10:54:20AM -0700, Alison Schofield wrote:
-> On Mon, Oct 18, 2021 at 10:59:42AM +0100, Karolina Drobnik wrote:
-> > Hi Alison,
-> > 
-> > I updated the `get_maintainer.pl` code section and split it up a bit,
-> > hope it's fine. Additionally, I decided to extract the note on
-> > `vc04_services` so it's more visible and add a comment on including the
-> > outreachy list (as a reminder).
-> > 
-> > One thing - should I use double-spaces while editing this wiki? I see
-> > they're used there, I added some in but I wouldn't be surprised if I
-> > missed some.
+On Mon, Oct 18, 2021 at 10:59:42AM +0100, Karolina Drobnik wrote:
+> Hi Alison,
 > 
-> Is that the double spaces between sentences you are referring too?
-> HA HA - that shows that this writing is dated, because double space
-> between sentences, use to be the standard, but is not anymore ;)
-
-It is still the standard for plain-text email where your email client
-shows text in fixed-width fonts.  Just like the old typewriters where
-this style was created for.
-
-> > '''not''' to be CCd on Outreachy patches. Please CC Greg explicitly on
-> > these patches: Greg KH <gregkh@linuxfoundation.org>.
+> I updated the `get_maintainer.pl` code section and split it up a bit,
+> hope it's fine. Additionally, I decided to extract the note on
+> `vc04_services` so it's more visible and add a comment on including the
+> outreachy list (as a reminder).
 > 
-> wrt GregKH - 
-> If the code is in drivers/staging, I believe gregkh automatically
-> sees all patches because the patches go to linux-staging list.
-> Is there really a need to do special handling with GregKH?
+> One thing - should I use double-spaces while editing this wiki? I see
+> they're used there, I added some in but I wouldn't be surprised if I
+> missed some.
 
-You need to ALWAYS cc: the maintainers of the subsystem for a patch, I
-am not being treated differently here at all.
+Is that the double spaces between sentences you are referring too?
+HA HA - that shows that this writing is dated, because double space
+between sentences, use to be the standard, but is not anymore ;)
 
-To not do so is to risk your patches being lost in the noise.
+As you change things, certainly get rid of those.
 
-thanks,
+> 
+> Please let me know what do you think about these changes.
+> 
+> 
+> Thanks,
+> Karolina
+> 
+> ----------------------------------------------------------------------
+> 
+> <<Anchor(submit_a_patch)>>
+> = Submit a patch =
+> 
+> The first step to sending a patch is to figure out who to send it to. 
+> For this, you need to find the maintainer of the code you're patching,
+> and Cc the correct mailing list.  If you simply send it off to LKML, it
+> will get ignored. 
 
-greg k-h
+Perhaps explain what LKML is, include it's full address.
+
+
+> The perl script in the kernel source directory
+> ``scripts/get_maintainer.pl`` will either take a git commit or a file,
+> and tell you who to send your patch to:
+> 
+> {{{
+> $ git show --pretty=oneline --abbrev-commit HEAD
+> a490e2e84eda staging: vt6655: Rename byPreambleType field
+> diff --git a/drivers/staging/vt6655/baseband.c
+> b/drivers/staging/vt6655/baseband.c
+> index 0bae35af6e0f..5efca92f1f18 100644
+> --- a/drivers/staging/vt6655/baseband.c
+> +++ b/drivers/staging/vt6655/baseband.c
+> @@ -1764,7 +1764,7 @@ void vnt_get_phy_field(struct vnt_private *priv,
+> u32 frame_length,
+>         u32 count = 0;
+>         u32 tmp;
+>         int ext_bit;
+> -       u8 preamble_type = priv->byPreambleType;
+> +       u8 preamble_type = priv->preamble_type;
+>  
+>         bit_count = frame_length * 8;
+>         ext_bit = false;
+> 
+> $ git show HEAD | perl scripts/get_maintainer.pl --separator , --
+> nokeywords --nogit --nogit-fallback --norolestats
+> Forest Bond <forest@alittletooquiet.net>,Greg Kroah-Hartman
+> <gregkh@linuxfoundation.org>,linux-staging@lists.linux.dev,linux-kernel@vger.kernel.org
+> }}}
+> 
+> It is also possible to get a list of maintainers for a particular file
+> (`-f` option):
+> 
+> {{{
+> $ perl scripts/get_maintainer.pl --separator , --nokeywords --nogit --
+> nogit-fallback --norolestats -f drivers/staging/vt6655/baseband.c 
+> Forest Bond <forest@alittletooquiet.net>,Greg Kroah-Hartman
+> <gregkh@linuxfoundation.org>,linux-staging@lists.linux.dev,linux-kernel@vger.kernel.org
+> }}}
+> 
+> The many arguments to get_maintainer.pl cause the output to be in the
+> form of a comma-separated list and cause only the actual maintainers of
+> the affected files to be included. However, for IIO drivers, please
+> also include linux-iio@vger.kernel.org.  For Outreachy patches,
+> remember to include the outreachy mailing list in your `To:` field as
+> well.
+> 
+> '''Important:''' The maintainers of staging/vc04_services would prefer
+
+I think I'm going to pounce on the word 'prefer' and say not to include
+this comment. I don't get the inconvenience of Outreachy patches for
+2 contribution periods (2 months) per year, to warrant a special case,
+when a mail filter could achieve same result.
+
+FYI: Outreachy use to not send patches to maintainers during Outreachy,
+but changed that policy after maintainers asked for visibility into
+all patches, even though it was GregKH that was the one applying them.
+
+> '''not''' to be CCd on Outreachy patches. Please CC Greg explicitly on
+> these patches: Greg KH <gregkh@linuxfoundation.org>.
+
+wrt GregKH - 
+If the code is in drivers/staging, I believe gregkh automatically
+sees all patches because the patches go to linux-staging list.
+Is there really a need to do special handling with GregKH?
+
+> 
+> The second step to submitting a patch is to create and send a patch as
+> an email.  You cannot send patches as attachments to the mailing list.
+> Instead, you will have to craft a special email, and send the patch
+> inline.
+> 
+> There are two ways to send a patch.  Either way is correct, and we
+> suggest you get comfortable with sending patches both ways.  We suggest
+> sending your first patch to yourself, in order to make sure it works.
+> 
+
+
+
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/c924b4477fa4067b040e9a0d72af3d8eeb882a98.camel%40gmail.com.
 
