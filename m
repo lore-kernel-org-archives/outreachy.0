@@ -1,124 +1,165 @@
 X-GM-THRID: 7018981355604148224
-X-Received: by 2002:adf:df8c:: with SMTP id z12mr36034291wrl.292.1634565721082;
-        Mon, 18 Oct 2021 07:02:01 -0700 (PDT)
+X-Received: by 2002:ac2:51cd:: with SMTP id u13mr27262071lfm.200.1634551951610;
+        Mon, 18 Oct 2021 03:12:31 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:508a:: with SMTP id a10ls6899668wrt.1.gmail; Mon, 18 Oct
- 2021 07:01:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxYv/y9GIgzMN/AAKzC5hMJZz8usvg64B3EWpEt7MYP7WZDPaVzxwvb0o9PlY9GxV1Xp7dI
-X-Received: by 2002:adf:c78d:: with SMTP id l13mr35256479wrg.134.1634565715492;
-        Mon, 18 Oct 2021 07:01:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634565715; cv=none;
+Received: by 2002:a2e:9b44:: with SMTP id o4ls304720ljj.9.gmail; Mon, 18 Oct
+ 2021 03:12:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzU1fyYUD0iGpqSsDNMBV2LzF6C4VTzgqeuVf7bTisKSDLLtKdwf7AbAVUo4QP+sL1+irI9
+X-Received: by 2002:a05:651c:a06:: with SMTP id k6mr32058455ljq.237.1634551949862;
+        Mon, 18 Oct 2021 03:12:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634551949; cv=none;
         d=google.com; s=arc-20160816;
-        b=stwl5jFe1EbkvXBbdHeRsx5OyxskcYDK7H788cgL5pdSHtlqRxiTR/cV7/2HP59by+
-         K9TVtY2aagmCnP/guGOYIG88UuQ956X5BOGs7giRjQ6Xr6U292dWIQSDA87vs0yYC6OZ
-         ouHvkFTovaggcoGAxe0b/7CCt5z+eCvU8bSks4ZFhb2IDp2AVtrbAqJK2FasHShepKhQ
-         rA3X1uSHHGkrBysd+mBnsfrg/iup1dYnrrIR2IGSzpcr8W2/+z3mxmw7Qh1XqOs2HDOk
-         V2oD4+tCFzjZJqte8CYSQFpYd5qiC0YwAAPbQTpQKalmJmA/gPqERdnIxoknhIoUokvT
-         aLrw==
+        b=IirAJzS3n6n3h4kmS4pfs82iPbdhgIiajdNELYDByH/VGVELnyNIWX8DvupkVQU3ki
+         CMSmszppgzmjS0PZg2d78k63nRWMWQ/hWqfkqVGYlnDYttapnJjZbHoPGFm/gNe5GPoq
+         F7NuJYJqRTqwkrSWlWhdvnwEszAswDuwmYotnjbXJVJxRwQX3G7lSPxzhTglGlfvCkhT
+         uC0zdoTuYmiL2UoaJHDCeUIV0drC/CTQBXG+/NQc++8jJ76ghS6wSv/ta8aXTiE2OgLc
+         ZbKxd1RRCLTE4mA4pUEV45i5tRk46iHsfPeYG3Lbrv5lJdqfsICKHoO565VaCTSNm15N
+         Fq5w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:references
-         :in-reply-to:date:cc:to:from:subject:message-id:dkim-signature;
-        bh=Lti9U7AE0pTWNrkCXrGhNWMRjb1PyVn3fcG07hY1Kew=;
-        b=k+8uT699EwFpPfm4fz+XKbIOjB/xUj6vqYMkMbMwGgYju0zXX+JxEsYqtariI+iFYc
-         wunZJk1GDzXh0PPCn8mtirQie/AKVEzO25DUW9bIA8wF+ITlh6dhdFNRkJ/uuLv9IShV
-         EGyrw8Tlbaok/oTqXnongpohZgz8tDEibin1lwnVE3mJorc7XM7YSNyUgrLYiN5iF4P9
-         aSlcUyKXM+Q8GcYwzzlnWNP0KA3ikE4EW1ldKqQhU0POjtlaQyVbSDFXg6Yx95H0QZQk
-         n/Qbvcj49884H/w6BOBBZ0vyj0vdMlBTyUcI+fk5QY6KqiLxQziychCu1EhDT3vBOgOJ
-         AUzw==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:ironport-hdrordr;
+        bh=Xs8dMcAw//T/XXP/JirOTQFerpElBvwk2dURScFJc4c=;
+        b=Pe00na+uSIQJwdvDTOiPVwFhW00Z8TBoCIPvg9jVWbkKbTdBKy1pW0t0DV9nbAWHj9
+         ctFn+eqIGRyUFWeqNjOqBVVCmTdirt4XbhUn4Ww1r0+qHTl+yMf/H3pvvgmExCC+nqtl
+         Z4ArlHE/SHtxp1fC3IDatQ+r8DpANkrZqqwcaFhzHcqRclk7fIbDRuDyPJMEBZzj1yHo
+         nhTTCYdOZycf+rwDhCySGEf5AOQDinfZdW+5gRUE/8SlHj1Z7i+G6aZk56iFOAKBDqWk
+         22HyhCIJhUOVyArZh+HgFjvYOQHXz3Jv51f8LkpdTjrcvL5es+qYGQEf/1pskLWsrhnU
+         l32A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=VcZyV2jW;
-       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::436 as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <karolinadrobnik@gmail.com>
-Received: from mail-wr1-x436.google.com (mail-wr1-x436.google.com. [2a00:1450:4864:20::436])
-        by gmr-mx.google.com with ESMTPS id 26si4009wmk.0.2021.10.18.07.01.55
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id g28si827452lfv.3.2021.10.18.03.12.29
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 18 Oct 2021 07:01:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::436 as permitted sender) client-ip=2a00:1450:4864:20::436;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 18 Oct 2021 03:12:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=VcZyV2jW;
-       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::436 as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x436.google.com with SMTP id o20so41716265wro.3
-        for <outreachy-kernel@googlegroups.com>; Mon, 18 Oct 2021 07:01:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=message-id:subject:from:to:cc:date:in-reply-to:references
-         :user-agent:mime-version:content-transfer-encoding;
-        bh=Lti9U7AE0pTWNrkCXrGhNWMRjb1PyVn3fcG07hY1Kew=;
-        b=VcZyV2jWbvwOJbhJ+w4ZdRUl1GxDP+JsJzdonUs5xzbxBVAfePHVb7lxV+m4bzFjw4
-         H57lspEKtl9On3jrF9fOnLIyjbPt7pYsdi6WxD+g8LXQpluhwgFSMy/tT39XFRe1wvbp
-         ck31R2loZ5CsBROgnYkqMdcKBgXyR0rSQminqJmVvxyHmisENPkKbEJi6vcGmTz3m6+B
-         ft8EeHM1EZ+wTm8T5bAOpCP0g80WUxLj4ntz20uIfPpgoUA5o79kQa8ofsU+U3sW16ZG
-         IL3D5BH24PzIb5Hzk6v1QMlKWeGq5o3TYgaHF4ytnbRmdKOT1mMe8XaZlqLCVQgeke9T
-         Aduw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
-         :references:user-agent:mime-version:content-transfer-encoding;
-        bh=Lti9U7AE0pTWNrkCXrGhNWMRjb1PyVn3fcG07hY1Kew=;
-        b=Hx/ktC0emTK/0WQglDr3JYd1DwJyGsRw152/BL76ml9QlA/TaSXLj2DlfEK2wt6ej7
-         ZsvCvCgR2ql9dkim1Jl8LzJcjSccMyNaVoQRlxxWhdRyKOQ7N5gsyjDEmqinOw8s+e/B
-         B0b23q0DQD7Yyxz1nZhOdDNeisEUvHMo6DXLg5hwGAMVaBABhzBT0fqo/4fWSx4n/8eq
-         0Z9rZ2gKhUo2tXiW2kYpZvDfuWUo32phdAmvZnNB0aOwVa0kbwfmWiWpW1xFBJYzDbSq
-         Amt4d2UwO3OYNCJqtWCy7aBpViHDSPN7Y6aUuqfTq9VsJyOuerqot1ePEtdAr28OH5LT
-         uJQg==
-X-Gm-Message-State: AOAM530BCvkCVyZf39Ui+rdfqou5CeQ4k8Fxve8njeiaPGeHn8Z2TmWX
-	+DSLpSdXrlMZXFG0Ux/V7/0=
-X-Received: by 2002:adf:c70b:: with SMTP id k11mr34514628wrg.154.1634565715171;
-        Mon, 18 Oct 2021 07:01:55 -0700 (PDT)
-Return-Path: <karolinadrobnik@gmail.com>
-Received: from ?IPv6:2a01:4b00:f411:e700:e085:8cb7:7bf6:5d62? ([2a01:4b00:f411:e700:e085:8cb7:7bf6:5d62])
-        by smtp.gmail.com with ESMTPSA id s186sm14860282wme.14.2021.10.18.07.01.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 18 Oct 2021 07:01:54 -0700 (PDT)
-Message-ID: <4a2104cc5bc67387300aedfb2508f991e11bed44.camel@gmail.com>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+IronPort-HdrOrdr: =?us-ascii?q?A9a23=3AkmK3mawq+7+z89nv7HdFKrPw/r1zdoMgy1kn?=
+ =?us-ascii?q?xilNofs+SL3/qynIpoVm6faUskdtZJhEo7u90ca7LU80haQe3WB8B9qftXDdyQ?=
+ =?us-ascii?q?+VxeJZjbcKoQeQeREWrdQtsJuIGpIWYOEYa2IasS+Q2maF+zBL+qjhzEnHv4nj?=
+ =?us-ascii?q?J44Gd3ATV0mZhT0JcDpy6SdNNXJ77WBSLuvk2iIEzwDQGkgqUg=3D=3D?=
+X-IronPort-AV: E=Sophos;i="5.84,326,1620684000"; 
+   d="scan'208";a="396234999"
+Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 18 Oct 2021 12:12:28 +0200
+Date: Mon, 18 Oct 2021 12:12:28 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Karolina Drobnik <karolinadrobnik@gmail.com>
+cc: Alison Schofield <alison.schofield@intel.com>, 
+    Outreachy Linux Kernel <outreachy-kernel@googlegroups.com>
 Subject: Re: [Outreachy kernel] Help maintain the First Patch Tutorial
-From: Karolina Drobnik <karolinadrobnik@gmail.com>
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: Alison Schofield <alison.schofield@intel.com>, Outreachy Linux Kernel
-	 <outreachy-kernel@googlegroups.com>
-Date: Mon, 18 Oct 2021 15:01:53 +0100
-In-Reply-To: <alpine.DEB.2.22.394.2110181207200.3174@hadrien>
-References: <20211014174207.GA426328@alison-desk>
-	 <c924b4477fa4067b040e9a0d72af3d8eeb882a98.camel@gmail.com>
-	 <alpine.DEB.2.22.394.2110181207200.3174@hadrien>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.38.3-1 
+In-Reply-To: <c924b4477fa4067b040e9a0d72af3d8eeb882a98.camel@gmail.com>
+Message-ID: <alpine.DEB.2.22.394.2110181207200.3174@hadrien>
+References: <20211014174207.GA426328@alison-desk> <c924b4477fa4067b040e9a0d72af3d8eeb882a98.camel@gmail.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=US-ASCII
 
-Hi Julia,
 
-Thanks for taking a look at my changes. I'll update the section
-accordingly after getting more feedback, hope it's fine.
 
-On Mon, 2021-10-18 at 12:12 +0200, Julia Lawall wrote:
-> > The many arguments to get_maintainer.pl cause the output to be in
-> > the form of a comma-separated list and cause only the actual
-> > maintainers of the affected files to be included. However, for IIO
-> > drivers, please also include linux-iio@vger.kernel.org.
+On Mon, 18 Oct 2021, Karolina Drobnik wrote:
+
+> Hi Alison,
 >
-> I wonder if this sentence is still needed, if we are dropping the
-> suggestion to use the --nol argument.
-
-I'd like to still explain what the output would be like. The "actual
-maintainers" can also refer to `--nogit-faillback` option that excludes
-committers/git information. Can change it to something like "relevant
-lists and the actual maintainers..". What do you think?
-
-> > The second step to submitting a patch is to create and send a patch
-> > as an email. You cannot send patches as attachments to the mailing
-> > list.
+> I updated the `get_maintainer.pl` code section and split it up a bit,
+> hope it's fine. Additionally, I decided to extract the note on
+> `vc04_services` so it's more visible and add a comment on including the
+> outreachy list (as a reminder).
 >
-> This would be better as "You cannot send a patch as an attachment..."
+> One thing - should I use double-spaces while editing this wiki? I see
+> they're used there, I added some in but I wouldn't be surprised if I
+> missed some.
+>
+> Please let me know what do you think about these changes.
+>
+> Thanks,
+> Karolina
+>
+> ----------------------------------------------------------------------
+>
+> <<Anchor(submit_a_patch)>>
+> = Submit a patch =
+>
+> The first step to sending a patch is to figure out who to send it to.
+> For this, you need to find the maintainer of the code you're patching,
+> and Cc the correct mailing list.  If you simply send it off to LKML, it
+> will get ignored.  The perl script in the kernel source directory
+> ``scripts/get_maintainer.pl`` will either take a git commit or a file,
+> and tell you who to send your patch to:
+>
+> {{{
+> $ git show --pretty=oneline --abbrev-commit HEAD
+> a490e2e84eda staging: vt6655: Rename byPreambleType field
+> diff --git a/drivers/staging/vt6655/baseband.c
+> b/drivers/staging/vt6655/baseband.c
+> index 0bae35af6e0f..5efca92f1f18 100644
+> --- a/drivers/staging/vt6655/baseband.c
+> +++ b/drivers/staging/vt6655/baseband.c
+> @@ -1764,7 +1764,7 @@ void vnt_get_phy_field(struct vnt_private *priv,
+> u32 frame_length,
+>         u32 count = 0;
+>         u32 tmp;
+>         int ext_bit;
+> -       u8 preamble_type = priv->byPreambleType;
+> +       u8 preamble_type = priv->preamble_type;
+>
+>         bit_count = frame_length * 8;
+>         ext_bit = false;
+>
+> $ git show HEAD | perl scripts/get_maintainer.pl --separator , --
+> nokeywords --nogit --nogit-fallback --norolestats
+> Forest Bond <forest@alittletooquiet.net>,Greg Kroah-Hartman
+> <gregkh@linuxfoundation.org>,linux-staging@lists.linux.dev,linux-kernel@vger.kernel.org
+> }}}
+>
+> It is also possible to get a list of maintainers for a particular file
+> (`-f` option):
+>
+> {{{
+> $ perl scripts/get_maintainer.pl --separator , --nokeywords --nogit --
+> nogit-fallback --norolestats -f drivers/staging/vt6655/baseband.c
+> Forest Bond <forest@alittletooquiet.net>,Greg Kroah-Hartman
+> <gregkh@linuxfoundation.org>,linux-staging@lists.linux.dev,linux-kernel@vger.kernel.org
+> }}}
+>
+> The many arguments to get_maintainer.pl cause the output to be in the
+> form of a comma-separated list and cause only the actual maintainers of
+> the affected files to be included. However, for IIO drivers, please
+> also include linux-iio@vger.kernel.org.
 
-Can correct this, thanks.
+I wonder if this sentence is still needed, if we are dropping the
+suggestion to use the --nol argument.
+
+> For Outreachy patches,
+> remember to include the outreachy mailing list in your `To:` field as
+> well.
+>
+> '''Important:''' The maintainers of staging/vc04_services would prefer
+> '''not''' to be CCd on Outreachy patches. Please CC Greg explicitly on
+> these patches: Greg KH <gregkh@linuxfoundation.org>.
+>
+> The second step to submitting a patch is to create and send a patch as
+> an email.  You cannot send patches as attachments to the mailing list.
+
+This would be better as "You cannot send a patch as an attachment..."
+
+thanks,
+julia
 
 
-Karolina
-
-
-
+> Instead, you will have to craft a special email, and send the patch
+> inline.
+>
+> There are two ways to send a patch.  Either way is correct, and we
+> suggest you get comfortable with sending patches both ways.  We suggest
+> sending your first patch to yourself, in order to make sure it works.
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/c924b4477fa4067b040e9a0d72af3d8eeb882a98.camel%40gmail.com.
+>
 
