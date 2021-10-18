@@ -1,152 +1,140 @@
 X-GM-THRID: 7020448359173324800
-X-Received: by 2002:a5d:64cd:: with SMTP id f13mr38840973wri.92.1634577519378;
-        Mon, 18 Oct 2021 10:18:39 -0700 (PDT)
+X-Received: by 2002:a17:906:b1c3:: with SMTP id bv3mr22779304ejb.78.1634576505878;
+        Mon, 18 Oct 2021 10:01:45 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:600c:4ed1:: with SMTP id g17ls29076wmq.1.canary-gmail;
- Mon, 18 Oct 2021 10:18:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzTHS3HhJLbdL8T+9Ir9CUvGzOyWuaUdESQ3U4xLqgv7ORejDgYrKcW00T/ViTjYMHR+urv
-X-Received: by 2002:a1c:7d56:: with SMTP id y83mr195284wmc.86.1634577517974;
-        Mon, 18 Oct 2021 10:18:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634577517; cv=none;
+Received: by 2002:aa7:d39a:: with SMTP id x26ls17508759edq.2.gmail; Mon, 18
+ Oct 2021 10:01:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx3cBs72CAT+pqAqBdLFcp9DGf8UEVIFG8fIUUxLWwIOix/p07/FpRV5JWfAN7JkNeAWOKE
+X-Received: by 2002:a05:6402:1910:: with SMTP id e16mr47070920edz.176.1634576503614;
+        Mon, 18 Oct 2021 10:01:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634576503; cv=none;
         d=google.com; s=arc-20160816;
-        b=w1iUbYSPOmkAg/BuN70S/EJ/bWuDqoAEWcDoodFIqNAmbx72jhv5t5k7D9QP8E3CIT
-         qetQ47OTUPwdfQIITc3RMj1IQr2GLy2dQ6/4od/c0YJsVi9nOQOmr+1UmIlY/PhngmBc
-         KnjNKiN5x3rjTOG0PnLqKF0SNcVDVYeojBsX1tadKymY5Pkv7cHcggRQyAv7IEpMYQTF
-         qYNtRFfxVqgpj94Llf3BuDdDuC6gyxCdxzivorEI8cMqr470Czp/BAMKLAiK0WbN3Mu2
-         BOn+XTddZQxVFaV4HVBgI/cuPURgP44lPhWHPEokXIhDylk8lYfSeNohdlnI4X1WkOne
-         mtbA==
+        b=vIpSbnuFCBDNrg844aZk1H7UjpkVX+giJt7weCr/8SfYWV8Ib4tbLtorpMHYu8H4X4
+         jif2dy2cFrz76ZsVD6G34wV4bD/ZnNa/x72+yeiCge8mFGmkAb5X48jlLy3slXHeGgze
+         /fM9CUS1CADG6bG/tuRu7FWb7zn5jNjMUoNBlJrL654yjZD4+pJ9ziiixtCQhzoDIwt0
+         coZb2saYR4oFsK0ELsu6E+s24lBOzQrtop/cCzO3fQIjKshzn29GSziXtEpuVF25wglr
+         mu8FF5IyR04Y9RCQQR1U+qMW0BrNLmGTISiSDrKpr8E+6NSaSKdXTTxnKG5pvhJoGlmX
+         N+BQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=UzZREcgg1MkRFUwLSWGUnqIO8FKrP7/gzEgDf/fRTlU=;
-        b=yCPVq1PC68flmIV0G1uBgqNKHnTPOT6346VNorZMLC35UzXrYEe9Vn0puxrBfvSSDl
-         F/F1G8NAyAtWKHcOZNS5yjm2Sxut7Q2alQNwknx5fHRGliqLneUbYBkohrUDg/X4F+eb
-         6ZTA4jzCMd+hN4tPm6R3juP/JKdHZPSnsRwagyikaBnAr1C4O4tl7fapeRRqNo1F8neA
-         2VtI3GXiRHdVwIchH+ixdJxN6/Vy1GBWrvDUhAR0om6zCXHMMLX19gGbh1BKeX2jPOjJ
-         PtLbIkDO8f9k66gnVfw6oMvBA79HJPqq6BxG4pnx23eBgtyj9WWksfq5Rq9GGqT14uZ/
-         7l+A==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:ironport-hdrordr;
+        bh=iLs4AduXLpHHq68mroNtHQc6WXAIw2UA8lBaSOVtoDE=;
+        b=TgTfSVJv+XjMAwD2+Uo0+Nq2hh4SZEs7g9XNRw4Cc3pKFghHS0HCJhBHwvO0EKuraE
+         ngSi5CBgQR9qrx9m1XzhhMUXxcnZ9kcdFb+qf/04r0Vahvkm9F2WnbzHUtwy/rFEoCFS
+         gLxd3YphIzDa6GiH0sIm8GY+/awNdfwpf6qEsICJs3kOnpBTWIKCWAJa4/8jVV0Vayyy
+         /t0lcHVDP//Tw9JgDe0+bKSifu75N6fC0LaxSJCQB7SZpZZ9XTNbMkY6QtVF2dszC601
+         s08+EdfO/tw/KkVxmN36SBrMm4rVme4rptJXomVtMuu/dvv21Ix5EGBEV1nOBTSNz53R
+         0BJw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=NtXaeRYj;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52c as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from mail-ed1-x52c.google.com (mail-ed1-x52c.google.com. [2a00:1450:4864:20::52c])
-        by gmr-mx.google.com with ESMTPS id r3si380668wrc.2.2021.10.18.10.18.37
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id 14si693673edv.4.2021.10.18.10.01.43
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 18 Oct 2021 10:18:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52c as permitted sender) client-ip=2a00:1450:4864:20::52c;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 18 Oct 2021 10:01:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=NtXaeRYj;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52c as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ed1-x52c.google.com with SMTP id w14so2046039edv.11
-        for <outreachy-kernel@googlegroups.com>; Mon, 18 Oct 2021 10:18:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=UzZREcgg1MkRFUwLSWGUnqIO8FKrP7/gzEgDf/fRTlU=;
-        b=NtXaeRYjhAwDlBegPepmBLb/5cRWueJSSqt0FW2PTdfYa31T03SceFssmzlET0hU28
-         hyzIYtFrXP0GC3MdWuO6VCrV2vEH3GHFE+lAjt3gCrXn3dCwUUnxA+H4GYzcd28QDQ6T
-         xAOOthi3XbkeYbCTgB74nymwlXrlDXLO2slnhB+3z85QpTB9cOfRbfqcG6Pn9oQQxC01
-         M/spGv7NxNzOEUGophn9UoQQsgX2gbtJrShUGpRiI5ESccd8K5ZhfUFnSecLIRhpV4ya
-         VatxKHuwnRSXSaPjeliPC7Zoy494GVrPasVIqxZDVN/eiJWY36H3P5axrVB2y917M/6r
-         PpBw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=UzZREcgg1MkRFUwLSWGUnqIO8FKrP7/gzEgDf/fRTlU=;
-        b=pyKlwkuD/N6wAdJhurSE3al8dg0UjFnJbMCYUMk0lCfYYGNKe6R8NE3b8axqWT0eju
-         +APg2tk2mnQlXEt6sNWxQwE7S8ffW8gx28vUUIGaF0yMcpk20IkwRqRt7v6QM92GyM+T
-         ahsJStdKadCty5s1KM69+HUoh2yiRYel/c2DjGc34ubkE0KCyxffDbbI4GOv2VRpZUPo
-         qM+UmgAgDjScO6P8moDWZPr0tMeU4sM5D5ZWDnWcHAT+4aGl2R+NJ1COF/MABF+bS+Pi
-         4WqIZAxZTSbpzxcQVSBTmfiLzDJAo5o6J5RwMnshQ9ugkvdf8pznz7K8dykO9lqyTrWw
-         5csQ==
-X-Gm-Message-State: AOAM530/b3NG/drGa0K4yePsJ7YugF/3jJcylayRJ69LTJmUTiqDdJwc
-	LWH9yVtsjSFGvRCsvNHEHaM=
-X-Received: by 2002:a05:6402:50c7:: with SMTP id h7mr46643809edb.191.1634577517734;
-        Mon, 18 Oct 2021 10:18:37 -0700 (PDT)
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from localhost.localdomain (host-79-47-104-180.retail.telecomitalia.it. [79.47.104.180])
-        by smtp.gmail.com with ESMTPSA id g7sm9748441edu.48.2021.10.18.10.18.36
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 18 Oct 2021 10:18:37 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: sudipm.mukherjee@gmail.com, teddy.wang@siliconmotion.com, gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com, mike.rapoport@gmail.com, kushalkothari2850@gmail.com, Kushal Kothari <kushalkothari285@gmail.com>, Kushal Kothari <kushalkothari285@gmail.com>, Joe Perches <joe@perches.com>
-Subject: Re: [Outreachy kernel] [PATCH] staging: sm750fb: make pointers in array const
-Date: Mon, 18 Oct 2021 19:18:35 +0200
-Message-ID: <9033544.t7rfKEcqWj@localhost.localdomain>
-In-Reply-To: <alpine.DEB.2.22.394.2110181900410.3174@hadrien>
-References: <20211018164431.26462-1-kushalkothari285@gmail.com> <163460335.XzdQGyDEVH@localhost.localdomain> <alpine.DEB.2.22.394.2110181900410.3174@hadrien>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+IronPort-HdrOrdr: =?us-ascii?q?A9a23=3Ao74mYagtSloWCT3Hdzd0XrBra3BQXt0ji2hC?=
+ =?us-ascii?q?6mlwRA09TyX4rbHLoB1173TJYVoqMk3I3OrgBEDiewK4yXcW2+ks1N6ZNWHbUS?=
+ =?us-ascii?q?mTXeJfBODZrQEIdReTygcQ79YDT4FOTOy1N1R8gMrgiTPUL/8ryrC8n5yVuQ?=
+ =?us-ascii?q?=3D=3D?=
+X-IronPort-AV: E=Sophos;i="5.84,326,1620684000"; 
+   d="scan'208";a="396288625"
+Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 18 Oct 2021 19:01:42 +0200
+Date: Mon, 18 Oct 2021 19:01:42 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+cc: sudipm.mukherjee@gmail.com, teddy.wang@siliconmotion.com, 
+    gregkh@linuxfoundation.org, outreachy-kernel@googlegroups.com, 
+    mike.rapoport@gmail.com, kushalkothari2850@gmail.com, 
+    Kushal Kothari <kushalkothari285@gmail.com>, 
+    Kushal Kothari <kushalkothari285@gmail.com>, Joe Perches <joe@perches.com>
+Subject: Re: [Outreachy kernel] [PATCH] staging: sm750fb: make pointers in
+ array const
+In-Reply-To: <163460335.XzdQGyDEVH@localhost.localdomain>
+Message-ID: <alpine.DEB.2.22.394.2110181900410.3174@hadrien>
+References: <20211018164431.26462-1-kushalkothari285@gmail.com> <163460335.XzdQGyDEVH@localhost.localdomain>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="US-ASCII"
+Content-Type: text/plain; charset=US-ASCII
 
-On Monday, October 18, 2021 7:01:42 PM CEST Julia Lawall wrote:
-> 
-> On Mon, 18 Oct 2021, Fabio M. De Francesco wrote:
-> 
-> > On Monday, October 18, 2021 6:44:31 PM CEST Kushal Kothari wrote:
-> > > Change the parameters of functions from const char *g_fbmode[] to
-> > > const char * const g_fbmode[]. This additional const is needed to
-> > > allow us to fix  checkpatch warning, as well as being good
-> > > programming practice.
-> > >
-> > > For the checkpatch warnings, if we have a set of command line
-> > > args that we want to check defined as:
-> > > 	static const char * g_fbmode[] = {NULL, NULL};
-> > >
-> > > checkpatch will complain:
-> > > 	WARNING: static const char * array should probably be static 
-const
-> > char * const
-> > >
-> > > Signed-off-by: Kushal Kothari <kushalkothari285@gmail.com>
-> > > ---
-> > >
-> > > [...]
-> > >
-> > > -static const char *g_fbmode[] = {NULL, NULL};
-> > > +static const char * const g_fbmode[] = {NULL, NULL};
+
+
+On Mon, 18 Oct 2021, Fabio M. De Francesco wrote:
+
+> On Monday, October 18, 2021 6:44:31 PM CEST Kushal Kothari wrote:
+> > Change the parameters of functions from const char *g_fbmode[] to
+> > const char * const g_fbmode[]. This additional const is needed to
+> > allow us to fix  checkpatch warning, as well as being good
+> > programming practice.
 > >
-> > You have introduced a logical change (g_fbmode[] entries cannot be 
-assigned
-> > any more) and a build error (because there is code somewhere that assigns
-> > values to those slots).
-> 
-> I wonder if this warning makes much sense when the array elements are
-> NULL.  I don't know if checkpatch could easily detect that.
-> 
-> julia
-
-Unfortunately I cannot change checkpatch.pl because I am not able to program 
-with Perl.
-
-However, it should be an easy fix in whatever programming language: 
-checkpatch should warn if and only if the array elements are assigned with 
-non 'NULL' values, because it's pretty clear that somewhere else there must 
-be some lines that assign values to them.
-
-Fabio
- 
-> 
+> > For the checkpatch warnings, if we have a set of command line
+> > args that we want to check defined as:
+> > 	static const char * g_fbmode[] = {NULL, NULL};
 > >
-> > Please, build the code after you've changed it.
+> > checkpatch will complain:
+> > 	WARNING: static const char * array should probably be static const
+> char * const
 > >
-> > Thanks,
+> > Signed-off-by: Kushal Kothari <kushalkothari285@gmail.com>
+> > ---
+> >  drivers/staging/sm750fb/sm750.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
 > >
-> > Fabio
-> >
-> > >  static const char *g_def_fbmode = "1024x768-32@60";
-> > >  static char *g_settings;
-> > >  static int g_dualview;
-> > > --
-> > > 2.25.1
-> > >
+> > diff --git a/drivers/staging/sm750fb/sm750.c b/drivers/staging/sm750fb/
+> sm750.c
+> > index dbd1159a2ef0..3d9b4b0efcb1 100644
+> > --- a/drivers/staging/sm750fb/sm750.c
+> > +++ b/drivers/staging/sm750fb/sm750.c
+> > @@ -33,7 +33,7 @@
+> >  static int g_hwcursor = 1;
+> >  static int g_noaccel;
+> >  static int g_nomtrr;
+> > -static const char *g_fbmode[] = {NULL, NULL};
+> > +static const char * const g_fbmode[] = {NULL, NULL};
+>
+> You have introduced a logical change (g_fbmode[] entries cannot be assigned
+> any more) and a build error (because there is code somewhere that assigns
+> values to those slots).
+
+I wonder if this warning makes much sense when the array elements are
+NULL.  I don't know if checkpatch could easily detect that.
+
+julia
 
 
-
+>
+> Please, build the code after you've changed it.
+>
+> Thanks,
+>
+> Fabio
+>
+> >  static const char *g_def_fbmode = "1024x768-32@60";
+> >  static char *g_settings;
+> >  static int g_dualview;
+> > --
+> > 2.25.1
+> >
+> > --
+> > You received this message because you are subscribed to the Google Groups
+> "outreachy-kernel" group.
+> > To unsubscribe from this group and stop receiving emails from it, send an
+> email to outreachy-kernel+unsubscribe@googlegroups.com.
+> > To view this discussion on the web visit https://groups.google.com/d/msgid/
+> outreachy-kernel/20211018164431.26462-1-kushalkothari285%40gmail.com.
+> >
+>
+>
+>
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/163460335.XzdQGyDEVH%40localhost.localdomain.
+>
 
