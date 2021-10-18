@@ -1,105 +1,331 @@
-X-GM-THRID: 6673985943396941824
-X-Received: by 2002:a6b:c9c4:: with SMTP id z187mr5956435iof.4.1553908442467;
-        Fri, 29 Mar 2019 18:14:02 -0700 (PDT)
+X-GM-THRID: 7018941118564794368
+X-Received: by 2002:a19:494e:: with SMTP id l14mr296423lfj.180.1634569445485;
+        Mon, 18 Oct 2021 08:04:05 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a24:455f:: with SMTP id y92ls1237584ita.1.canary-gmail; Fri,
- 29 Mar 2019 18:14:01 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw2llBC8ebU2gU5TY1bdEQHd5jQ4yxqz6MuBJ9cQodE3Y2bKXyabHIvE3UU6kAIrNv9vPvQ
-X-Received: by 2002:a24:2404:: with SMTP id f4mr2442368ita.15.1553908441578;
-        Fri, 29 Mar 2019 18:14:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553908441; cv=none;
+Received: by 2002:a2e:a48d:: with SMTP id h13ls2846081lji.8.gmail; Mon, 18 Oct
+ 2021 08:04:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJysDOunt5m5DWgzdKWYqtw/BbFoqWKnKKRWCzZp3fshvEoNIFYbiJjRyv55IBzfqjDvGVdv
+X-Received: by 2002:a2e:82c7:: with SMTP id n7mr300725ljh.352.1634569443473;
+        Mon, 18 Oct 2021 08:04:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634569443; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ce97kXttCKmSpFtgM8hsM5ykYXkxK4k1qUm0xdZdokmb5K4yiKH4fPT99PTKwVpLbn
-         CQGL+DwUVA7thr6wnLZ0FenFbzEA1N7lyEAiij42PiER894tq1zpVg0El3NqMYbovz3K
-         K2nNZ+BLCsgSazBoZxBe+7yo+QhFXGdVfDU32JDpO5ib3RD82Fx/fsWTdkpnAmDgzee1
-         aRBcQNbO8WDCaWBSXn+cdbMoxVWocx34dwpQFg6969o+TCSFA2Bm031d5aHvepZoGeUI
-         /u7spI3rD6yr+85gj7BcmnfF2+EReT2h9qdYsepL0N/Ksk19gSq99MuCYLmpu2ekdIDm
-         n2Cg==
+        b=Gg8yL4nZOUKgQJdJIzyGSF7dCn5wit3gq36InjqNQScfzHCV3UWmPwr0c2Nk7oV2/n
+         fZ3/A3pehH+XdoMYEU1RaWM7OYCu7ZCd/Jy+1Enmzf4++Khjrq+KytgXOthq6NdKYoeJ
+         VscSjuasDJf6sRlHj2jTLItC2XOZSGhGTcoiE/9j4kqZRcbb91X7QO/vUiDFD15rRUVG
+         JBzUcer5qF+mGKC2VJ7MOSx7uIs+8a9oAJPK1oh6mEBphd8M6p7FOtltc9cJtYoGHCgX
+         XhjzLjpBmVT3n6db3wYNQluh5taV+5D/2YTDqRWJdjJyA9mRa86JrUP+el2ttSBiTLLP
+         9j4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=QvHvkc8QlwoRgDcd+d5Sg00BKrT1E0eYfCmVQflJ/Sc=;
-        b=y8UOd8+a8rrHVytL6ltRSrOybAx+vzvodDoBzRP/b6vB6Q3oJCxE+66OkDSrp6qGb3
-         pMxk9ae9qJ5JJFNBOR/pyIe05viXZKTQkyBJaGmPIC+AlqCxExarvCdeiOG+NpG1QNAw
-         KjwUNS+DAn5cI5Lmwx+7AB6vCobdvxStXzB4DDO1NVwgQcEjrCFQiv0D0iPHgfvCiczZ
-         eOcHQIWjYdiW7zDZbvklUDxzXngSwem8swSLInuB0KhmnWNy8Hq70C6/VvrhS0CaTN2p
-         IhV3Ju3rvMYzEgrTYqABfe2dKMLbx4n+EB0mw6npJlbWqk8vNkDN5WTnL6HbS0N9qjgc
-         C8WQ==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=L7BiP3smelTLM2yROa2YM08nmUrzbiL9g5dwi2F+x2g=;
+        b=HB3DfgjOJp8QFanGrf0x6U5YQDiLqmC5zt23NQAzUZo71t9iSS5WOUwfyftoZf0Lsg
+         oqfdBoKg77pA1zTr4BQcSd2ptsAaGj3ZiSmsM9s35ONz2R5GKNyu/XrsYgr5UBWZ9HJe
+         6NoQWGLeULUtI/oFapl8jJlCvYAIHqIeGUBf8RLn9H1DU3q7dkOsWsiylkeDU9OCRlbz
+         EnPjxl7D+WdEQ5phW2A7QQAuMRSufOU0OfO1We7PNGU+rk65s9kwne6TMR1o8jgzoDMW
+         xLLVrGfNrCIXPYiPCbguMwzhIG/OJeishS+zc+T8cGymF6A189fNxstxmY43iP64BnT7
+         0mtA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="PG/HoZwB";
-       spf=pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=vatsalanarang@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=SUn359++;
+       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::336 as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <vatsalanarang@gmail.com>
-Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id g127si755759ita.3.2019.03.29.18.14.01
+Return-Path: <karolinadrobnik@gmail.com>
+Received: from mail-wm1-x336.google.com (mail-wm1-x336.google.com. [2a00:1450:4864:20::336])
+        by gmr-mx.google.com with ESMTPS id w6si659465lfa.7.2021.10.18.08.04.03
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Mar 2019 18:14:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 18 Oct 2021 08:04:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::336 as permitted sender) client-ip=2a00:1450:4864:20::336;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="PG/HoZwB";
-       spf=pass (google.com: domain of vatsalanarang@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=vatsalanarang@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=SUn359++;
+       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::336 as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x542.google.com with SMTP id 85so1999743pgc.3
-        for <outreachy-kernel@googlegroups.com>; Fri, 29 Mar 2019 18:14:01 -0700 (PDT)
+Received: by mail-wm1-x336.google.com with SMTP id l38-20020a05600c1d2600b0030d80c3667aso233739wms.5
+        for <outreachy-kernel@googlegroups.com>; Mon, 18 Oct 2021 08:04:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=QvHvkc8QlwoRgDcd+d5Sg00BKrT1E0eYfCmVQflJ/Sc=;
-        b=PG/HoZwBtsGPGO3VAXwffbwOq/sgnX94XMHgcAs5g8nKMZSHNtMOy5l0m2raqBMR5K
-         G2WDP5htUahMLRb5o8TSYts/+wVfKw+qKgyZT03FJn4itpHY7pxqnJ/Vs2S3Z2je78Qr
-         +2XN54b8/4DeTdmupFT/T+8BAFCBKARO/54KXWOAtRUFqb2tofXU/GjD+JvABkFcBVzE
-         i1vuC6xHr+xXBYxpwpmojE+hINbYiLHhbqVkRxSUFRmIbQRqK7Z9PSQYJ5FDYC/uAI+i
-         w3BqZsToY0XpHZVjnqFhWW3sE0ksQeQWRebREAP2iSRn5URIfyZyRUhVcJg7/vEzFnga
-         h9yA==
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=L7BiP3smelTLM2yROa2YM08nmUrzbiL9g5dwi2F+x2g=;
+        b=SUn359++wbQizyVzVodHn0es10MpYihj1GzEUukImsbddB2uVctZxipCbC3rRbmUtn
+         2hoKvVE6bp1z5+BfA+FHlVbfnopKqWIgBcc6DqaaeHghUnd9WaWsAX2lQLph1lFDqJBc
+         EZFJFvJhK0pHFuy5NGGT7qhHFxzwbAxq7/3IkA8emZu9b/+pCcJxhz0Jd9rCyii0lzTv
+         GbUF+u8JwRhMO7atxucWrE+tchfuTvA1PVGjdMwBAbaLnWe7qPwoH0lR/bsTjzG0kqWZ
+         2edZ2B62QrMppMQVW8zNSlQhgAdarQrwBUm2Ug/LK98mLkQplk1Dcb2mhJQeP6VVDWb6
+         WbxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=QvHvkc8QlwoRgDcd+d5Sg00BKrT1E0eYfCmVQflJ/Sc=;
-        b=mmfDypA/O8YgFdxoBtIoO5DwKmzBVpRe77ZIaAsOd/+igxMy1s5i5EU4qr7/yD14FM
-         wk8T6NFt7FXnWiEDL1+IS5c5rbX4GaqLN0sPsq0fMqjtmiU8yFXuSdeq9UvHO/DgKVcB
-         kLylV/j3PJjMrYJcD6ef2D52pVv3BQKH+/IPl3Fr5SUzJB6ZWM2yImJpWr3YtuoUVVf/
-         waUD7L5Ei4iTdKV6zbpdUpCF4uXLCA3gvEn5TJqrWu0tB29AnFTosMh2+6po6qCCunSx
-         r8q0uwtEDf7y2CP8eBFrZvWE/1aadO70jVfXegOdgIXEx6oaxd8+Lckk5Gwt9ZeAWbjR
-         gt8g==
-X-Gm-Message-State: APjAAAXnzLpoEe6WRIV05h/WOTiRkYuNWEaKFx2HSqsFyNjQiU3lICil
-	aXdYjkbgNnx9jtm9KMv7vgtfW6BS7F4=
-X-Received: by 2002:a62:3047:: with SMTP id w68mr49815212pfw.17.1553908440723;
-        Fri, 29 Mar 2019 18:14:00 -0700 (PDT)
-Return-Path: <vatsalanarang@gmail.com>
-Received: from localhost.localdomain ([103.87.57.82])
-        by smtp.gmail.com with ESMTPSA id o5sm4481385pgc.16.2019.03.29.18.13.58
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 29 Mar 2019 18:14:00 -0700 (PDT)
-From: Vatsala Narang <vatsalanarang@gmail.com>
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=L7BiP3smelTLM2yROa2YM08nmUrzbiL9g5dwi2F+x2g=;
+        b=OuYaL4X5GjCNfRARNAU3J6CJT1Niu4SmhRSbMLhc+KHa99jYGwpUOAxOIxA+jiZrhz
+         PQ98gg1mMpNOBZ+tPe2WvEzsk/F6dUrheFuXmHKP4V4ZLBdWuyi2Bue1ljbB25ORtNwH
+         ottssN0Gibqk+y1hj04arfcNf3TONAmZJuvUyLAnEmZvt5MC7cIigiRMQC+ULsB9q9RJ
+         ROr5//8ouU2owHBjdnPRYGUMIQOOYyRA9PAIJSDcvBACa7ZdPSSxyMiptE5FRw2ytI7E
+         S1clpHjyXgoa/J/Pf8NOyB4s53HFWy2+YHF0Fm9bcOUekME3+oWIL8nq3Z1o7v4Gvp0L
+         DOTg==
+X-Gm-Message-State: AOAM5320ElnYP6QoNWC3I+5h7AdtTJAytiNM+vSpsrkJgbv30c02aSuZ
+	pic6+7iZHo+vNScz9a3BGeUnX3zXaMslRZcv
+X-Received: by 2002:a05:600c:1989:: with SMTP id t9mr30684791wmq.48.1634569442828;
+        Mon, 18 Oct 2021 08:04:02 -0700 (PDT)
+Return-Path: <karolinadrobnik@gmail.com>
+Received: from localhost.localdomain ([2a01:4b00:f411:e700:e085:8cb7:7bf6:5d62])
+        by smtp.gmail.com with ESMTPSA id g70sm11872138wme.29.2021.10.18.08.04.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 18 Oct 2021 08:04:02 -0700 (PDT)
+From: Karolina Drobnik <karolinadrobnik@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: gregkh@linuxfoundation.org,
-	Vatsala Narang <vatsalanarang@gmail.com>
-Subject: [PATCH] staging: rtl8712: Fix a space issue
-Date: Sat, 30 Mar 2019 06:43:43 +0530
-Message-Id: <20190330011343.30578-1-vatsalanarang@gmail.com>
-X-Mailer: git-send-email 2.17.1
+	forest@alittletooquiet.net,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	Karolina Drobnik <karolinadrobnik@gmail.com>
+Subject: [RESEND PATCH v3] staging: vt6655: Rename byPreambleType field
+Date: Mon, 18 Oct 2021 16:03:17 +0100
+Message-Id: <20211018150317.9590-1-karolinadrobnik@gmail.com>
+X-Mailer: git-send-email 2.30.2
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 
-Remove unnecessary space after a cast to get rid of checkpatch warning.
+Drop Hungarian notation prefix in `byPreambleType` member of
+struct vnt_private. Change it to use snake case.
 
-Signed-off-by: Vatsala Narang <vatsalanarang@gmail.com>
+Fix issue detected by checkpatch.pl:
+  CHECK: Avoid CamelCase: <byPreambleType>
+
+Signed-off-by: Karolina Drobnik <karolinadrobnik@gmail.com>
 ---
- drivers/staging/rtl8712/rtl8712_recv.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+v3:
+* Revert parameter name change in `bb_get_frame_time` function,
+  update patch description
 
-diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
-index cb0ee2f72e1c..82ddc0c3ecd4 100644
---- a/drivers/staging/rtl8712/rtl8712_recv.c
-+++ b/drivers/staging/rtl8712/rtl8712_recv.c
-@@ -51,7 +51,7 @@ int r8712_init_recv_priv(struct recv_priv *precvpriv, struct _adapter *padapter)
- 	if (!precvpriv->pallocated_recv_buf)
- 		return _FAIL;
- 	precvpriv->precv_buf = precvpriv->pallocated_recv_buf + 4 -
--			      ((addr_t) (precvpriv->pallocated_recv_buf) & 3);
-+			      ((addr_t)(precvpriv->pallocated_recv_buf) & 3);
- 	precvbuf = (struct recv_buf *)precvpriv->precv_buf;
- 	for (i = 0; i < NR_RECVBUFF; i++) {
- 		INIT_LIST_HEAD(&precvbuf->list);
+v2:
+* Revert whitespace comment change for `by_pkt_type` parameter
+
+ drivers/staging/vt6655/baseband.c    |  2 +-
+ drivers/staging/vt6655/device.h      |  2 +-
+ drivers/staging/vt6655/device_main.c |  8 ++---
+ drivers/staging/vt6655/rxtx.c        | 50 ++++++++++++++--------------
+ 4 files changed, 31 insertions(+), 31 deletions(-)
+
+diff --git a/drivers/staging/vt6655/baseband.c b/drivers/staging/vt6655/baseband.c
+index 0bae35af6e0f..5efca92f1f18 100644
+--- a/drivers/staging/vt6655/baseband.c
++++ b/drivers/staging/vt6655/baseband.c
+@@ -1764,7 +1764,7 @@ void vnt_get_phy_field(struct vnt_private *priv, u32 frame_length,
+ 	u32 count = 0;
+ 	u32 tmp;
+ 	int ext_bit;
+-	u8 preamble_type = priv->byPreambleType;
++	u8 preamble_type = priv->preamble_type;
+ 
+ 	bit_count = frame_length * 8;
+ 	ext_bit = false;
+diff --git a/drivers/staging/vt6655/device.h b/drivers/staging/vt6655/device.h
+index 92d6f82f939f..4706bde1ec1d 100644
+--- a/drivers/staging/vt6655/device.h
++++ b/drivers/staging/vt6655/device.h
+@@ -203,7 +203,7 @@ struct vnt_private {
+ 	unsigned char byMinChannel;
+ 	unsigned char byMaxChannel;
+ 
+-	unsigned char byPreambleType;
++	unsigned char preamble_type;
+ 	unsigned char byShortPreamble;
+ 
+ 	unsigned short wCurrentRate;
+diff --git a/drivers/staging/vt6655/device_main.c b/drivers/staging/vt6655/device_main.c
+index 24f0e346da12..212d2a287b2c 100644
+--- a/drivers/staging/vt6655/device_main.c
++++ b/drivers/staging/vt6655/device_main.c
+@@ -177,11 +177,11 @@ device_set_options(struct vnt_private *priv)
+ 	priv->byPacketType = priv->byBBType;
+ 	priv->byAutoFBCtrl = AUTO_FB_0;
+ 	priv->bUpdateBBVGA = true;
+-	priv->byPreambleType = 0;
++	priv->preamble_type = 0;
+ 
+ 	pr_debug(" byShortRetryLimit= %d\n", (int)priv->byShortRetryLimit);
+ 	pr_debug(" byLongRetryLimit= %d\n", (int)priv->byLongRetryLimit);
+-	pr_debug(" byPreambleType= %d\n", (int)priv->byPreambleType);
++	pr_debug(" preamble_type= %d\n", (int)priv->preamble_type);
+ 	pr_debug(" byShortPreamble= %d\n", (int)priv->byShortPreamble);
+ 	pr_debug(" byBBType= %d\n", (int)priv->byBBType);
+ }
+@@ -1424,10 +1424,10 @@ static void vnt_bss_info_changed(struct ieee80211_hw *hw,
+ 	if (changed & BSS_CHANGED_ERP_PREAMBLE) {
+ 		if (conf->use_short_preamble) {
+ 			MACvEnableBarkerPreambleMd(priv->port_offset);
+-			priv->byPreambleType = true;
++			priv->preamble_type = true;
+ 		} else {
+ 			MACvDisableBarkerPreambleMd(priv->port_offset);
+-			priv->byPreambleType = false;
++			priv->preamble_type = false;
+ 		}
+ 	}
+ 
+diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
+index ff0b5391ea0b..0de801b666da 100644
+--- a/drivers/staging/vt6655/rxtx.c
++++ b/drivers/staging/vt6655/rxtx.c
+@@ -142,7 +142,7 @@ s_uFillDataHead(
+ 
+ static __le16 vnt_time_stamp_off(struct vnt_private *priv, u16 rate)
+ {
+-	return cpu_to_le16(wTimeStampOff[priv->byPreambleType % 2]
++	return cpu_to_le16(wTimeStampOff[priv->preamble_type % 2]
+ 							[rate % MAX_RATE]);
+ }
+ 
+@@ -163,7 +163,7 @@ s_uGetTxRsvTime(
+ {
+ 	unsigned int uDataTime, uAckTime;
+ 
+-	uDataTime = bb_get_frame_time(pDevice->byPreambleType, byPktType, cbFrameLength, wRate);
++	uDataTime = bb_get_frame_time(pDevice->preamble_type, byPktType, cbFrameLength, wRate);
+ 
+ 	if (!bNeedAck)
+ 		return uDataTime;
+@@ -172,7 +172,7 @@ s_uGetTxRsvTime(
+ 	 * CCK mode  - 11b
+ 	 * OFDM mode - 11g 2.4G & 11a 5G
+ 	 */
+-	uAckTime = bb_get_frame_time(pDevice->byPreambleType, byPktType, 14,
++	uAckTime = bb_get_frame_time(pDevice->preamble_type, byPktType, 14,
+ 				     byPktType == PK_TYPE_11B ?
+ 				     pDevice->byTopCCKBasicRate :
+ 				     pDevice->byTopOFDMBasicRate);
+@@ -200,22 +200,22 @@ static __le16 get_rtscts_time(struct vnt_private *priv,
+ 	unsigned int ack_time = 0;
+ 	unsigned int data_time = 0;
+ 
+-	data_time = bb_get_frame_time(priv->byPreambleType, pkt_type, frame_length, current_rate);
++	data_time = bb_get_frame_time(priv->preamble_type, pkt_type, frame_length, current_rate);
+ 	if (rts_rsvtype == 0) { /* RTSTxRrvTime_bb */
+-		rts_time = bb_get_frame_time(priv->byPreambleType, pkt_type, 20, priv->byTopCCKBasicRate);
+-		ack_time = bb_get_frame_time(priv->byPreambleType, pkt_type, 14, priv->byTopCCKBasicRate);
++		rts_time = bb_get_frame_time(priv->preamble_type, pkt_type, 20, priv->byTopCCKBasicRate);
++		ack_time = bb_get_frame_time(priv->preamble_type, pkt_type, 14, priv->byTopCCKBasicRate);
+ 		cts_time = ack_time;
+ 	} else if (rts_rsvtype == 1) { /* RTSTxRrvTime_ba, only in 2.4GHZ */
+-		rts_time = bb_get_frame_time(priv->byPreambleType, pkt_type, 20, priv->byTopCCKBasicRate);
+-		cts_time = bb_get_frame_time(priv->byPreambleType, pkt_type, 14, priv->byTopCCKBasicRate);
+-		ack_time = bb_get_frame_time(priv->byPreambleType, pkt_type, 14, priv->byTopOFDMBasicRate);
++		rts_time = bb_get_frame_time(priv->preamble_type, pkt_type, 20, priv->byTopCCKBasicRate);
++		cts_time = bb_get_frame_time(priv->preamble_type, pkt_type, 14, priv->byTopCCKBasicRate);
++		ack_time = bb_get_frame_time(priv->preamble_type, pkt_type, 14, priv->byTopOFDMBasicRate);
+ 	} else if (rts_rsvtype == 2) { /* RTSTxRrvTime_aa */
+-		rts_time = bb_get_frame_time(priv->byPreambleType, pkt_type, 20, priv->byTopOFDMBasicRate);
+-		ack_time = bb_get_frame_time(priv->byPreambleType, pkt_type, 14, priv->byTopOFDMBasicRate);
++		rts_time = bb_get_frame_time(priv->preamble_type, pkt_type, 20, priv->byTopOFDMBasicRate);
++		ack_time = bb_get_frame_time(priv->preamble_type, pkt_type, 14, priv->byTopOFDMBasicRate);
+ 		cts_time = ack_time;
+ 	} else if (rts_rsvtype == 3) { /* CTSTxRrvTime_ba, only in 2.4GHZ */
+-		cts_time = bb_get_frame_time(priv->byPreambleType, pkt_type, 14, priv->byTopCCKBasicRate);
+-		ack_time = bb_get_frame_time(priv->byPreambleType, pkt_type, 14, priv->byTopOFDMBasicRate);
++		cts_time = bb_get_frame_time(priv->preamble_type, pkt_type, 14, priv->byTopCCKBasicRate);
++		ack_time = bb_get_frame_time(priv->preamble_type, pkt_type, 14, priv->byTopOFDMBasicRate);
+ 		rrv_time = cts_time + ack_time + data_time + 2 * priv->uSIFS;
+ 		return cpu_to_le16((u16)rrv_time);
+ 	}
+@@ -255,7 +255,7 @@ s_uGetDataDuration(
+ 	switch (byDurType) {
+ 	case DATADUR_B:    /* DATADUR_B */
+ 		if (bNeedAck) {
+-			uAckTime = bb_get_frame_time(pDevice->byPreambleType,
++			uAckTime = bb_get_frame_time(pDevice->preamble_type,
+ 						     byPktType, 14,
+ 						     pDevice->byTopCCKBasicRate);
+ 		}
+@@ -273,7 +273,7 @@ s_uGetDataDuration(
+ 
+ 	case DATADUR_A:    /* DATADUR_A */
+ 		if (bNeedAck) {
+-			uAckTime = bb_get_frame_time(pDevice->byPreambleType,
++			uAckTime = bb_get_frame_time(pDevice->preamble_type,
+ 						     byPktType, 14,
+ 						     pDevice->byTopOFDMBasicRate);
+ 		}
+@@ -292,7 +292,7 @@ s_uGetDataDuration(
+ 	case DATADUR_A_F0:    /* DATADUR_A_F0 */
+ 	case DATADUR_A_F1:    /* DATADUR_A_F1 */
+ 		if (bNeedAck) {
+-			uAckTime = bb_get_frame_time(pDevice->byPreambleType,
++			uAckTime = bb_get_frame_time(pDevice->preamble_type,
+ 						     byPktType, 14,
+ 						     pDevice->byTopOFDMBasicRate);
+ 		}
+@@ -344,17 +344,17 @@ s_uGetRTSCTSDuration(
+ 
+ 	switch (byDurType) {
+ 	case RTSDUR_BB:    /* RTSDuration_bb */
+-		uCTSTime = bb_get_frame_time(pDevice->byPreambleType, byPktType, 14, pDevice->byTopCCKBasicRate);
++		uCTSTime = bb_get_frame_time(pDevice->preamble_type, byPktType, 14, pDevice->byTopCCKBasicRate);
+ 		uDurTime = uCTSTime + 2 * pDevice->uSIFS + s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wRate, bNeedAck);
+ 		break;
+ 
+ 	case RTSDUR_BA:    /* RTSDuration_ba */
+-		uCTSTime = bb_get_frame_time(pDevice->byPreambleType, byPktType, 14, pDevice->byTopCCKBasicRate);
++		uCTSTime = bb_get_frame_time(pDevice->preamble_type, byPktType, 14, pDevice->byTopCCKBasicRate);
+ 		uDurTime = uCTSTime + 2 * pDevice->uSIFS + s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wRate, bNeedAck);
+ 		break;
+ 
+ 	case RTSDUR_AA:    /* RTSDuration_aa */
+-		uCTSTime = bb_get_frame_time(pDevice->byPreambleType, byPktType, 14, pDevice->byTopOFDMBasicRate);
++		uCTSTime = bb_get_frame_time(pDevice->preamble_type, byPktType, 14, pDevice->byTopOFDMBasicRate);
+ 		uDurTime = uCTSTime + 2 * pDevice->uSIFS + s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wRate, bNeedAck);
+ 		break;
+ 
+@@ -363,7 +363,7 @@ s_uGetRTSCTSDuration(
+ 		break;
+ 
+ 	case RTSDUR_BA_F0: /* RTSDuration_ba_f0 */
+-		uCTSTime = bb_get_frame_time(pDevice->byPreambleType, byPktType, 14, pDevice->byTopCCKBasicRate);
++		uCTSTime = bb_get_frame_time(pDevice->preamble_type, byPktType, 14, pDevice->byTopCCKBasicRate);
+ 		if ((byFBOption == AUTO_FB_0) && (wRate >= RATE_18M) && (wRate <= RATE_54M))
+ 			uDurTime = uCTSTime + 2 * pDevice->uSIFS + s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wFB_Opt0[FB_RATE0][wRate - RATE_18M], bNeedAck);
+ 		else if ((byFBOption == AUTO_FB_1) && (wRate >= RATE_18M) && (wRate <= RATE_54M))
+@@ -372,7 +372,7 @@ s_uGetRTSCTSDuration(
+ 		break;
+ 
+ 	case RTSDUR_AA_F0: /* RTSDuration_aa_f0 */
+-		uCTSTime = bb_get_frame_time(pDevice->byPreambleType, byPktType, 14, pDevice->byTopOFDMBasicRate);
++		uCTSTime = bb_get_frame_time(pDevice->preamble_type, byPktType, 14, pDevice->byTopOFDMBasicRate);
+ 		if ((byFBOption == AUTO_FB_0) && (wRate >= RATE_18M) && (wRate <= RATE_54M))
+ 			uDurTime = uCTSTime + 2 * pDevice->uSIFS + s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wFB_Opt0[FB_RATE0][wRate - RATE_18M], bNeedAck);
+ 		else if ((byFBOption == AUTO_FB_1) && (wRate >= RATE_18M) && (wRate <= RATE_54M))
+@@ -381,7 +381,7 @@ s_uGetRTSCTSDuration(
+ 		break;
+ 
+ 	case RTSDUR_BA_F1: /* RTSDuration_ba_f1 */
+-		uCTSTime = bb_get_frame_time(pDevice->byPreambleType, byPktType, 14, pDevice->byTopCCKBasicRate);
++		uCTSTime = bb_get_frame_time(pDevice->preamble_type, byPktType, 14, pDevice->byTopCCKBasicRate);
+ 		if ((byFBOption == AUTO_FB_0) && (wRate >= RATE_18M) && (wRate <= RATE_54M))
+ 			uDurTime = uCTSTime + 2 * pDevice->uSIFS + s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wFB_Opt0[FB_RATE1][wRate - RATE_18M], bNeedAck);
+ 		else if ((byFBOption == AUTO_FB_1) && (wRate >= RATE_18M) && (wRate <= RATE_54M))
+@@ -390,7 +390,7 @@ s_uGetRTSCTSDuration(
+ 		break;
+ 
+ 	case RTSDUR_AA_F1: /* RTSDuration_aa_f1 */
+-		uCTSTime = bb_get_frame_time(pDevice->byPreambleType, byPktType, 14, pDevice->byTopOFDMBasicRate);
++		uCTSTime = bb_get_frame_time(pDevice->preamble_type, byPktType, 14, pDevice->byTopOFDMBasicRate);
+ 		if ((byFBOption == AUTO_FB_0) && (wRate >= RATE_18M) && (wRate <= RATE_54M))
+ 			uDurTime = uCTSTime + 2 * pDevice->uSIFS + s_uGetTxRsvTime(pDevice, byPktType, cbFrameLength, wFB_Opt0[FB_RATE1][wRate - RATE_18M], bNeedAck);
+ 		else if ((byFBOption == AUTO_FB_1) && (wRate >= RATE_18M) && (wRate <= RATE_54M))
+@@ -1289,9 +1289,9 @@ int vnt_generate_fifo_header(struct vnt_private *priv, u32 dma_idx,
+ 		tx_buffer_head->fifo_ctl |= cpu_to_le16(FIFOCTL_LRETRY);
+ 
+ 	if (tx_rate->flags & IEEE80211_TX_RC_USE_SHORT_PREAMBLE)
+-		priv->byPreambleType = PREAMBLE_SHORT;
++		priv->preamble_type = PREAMBLE_SHORT;
+ 	else
+-		priv->byPreambleType = PREAMBLE_LONG;
++		priv->preamble_type = PREAMBLE_LONG;
+ 
+ 	if (tx_rate->flags & IEEE80211_TX_RC_USE_RTS_CTS)
+ 		tx_buffer_head->fifo_ctl |= cpu_to_le16(FIFOCTL_RTS);
 -- 
-2.17.1
+2.30.2
 
 
