@@ -1,84 +1,93 @@
 X-GM-THRID: 7020829636261052416
-X-Received: by 2002:a17:90a:2c8:: with SMTP id d8mr4980581pjd.113.1634727818647;
-        Wed, 20 Oct 2021 04:03:38 -0700 (PDT)
+X-Received: by 2002:a17:906:3c4e:: with SMTP id i14mr46369731ejg.399.1634727610256;
+        Wed, 20 Oct 2021 04:00:10 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:d2c2:: with SMTP id n2ls1296106plc.7.gmail; Wed, 20
- Oct 2021 04:03:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwwcdI/lkVecc2MW5ynDiAqvnT6AW+aHVCMhLBHGdExlJmVeMVRZUivagqnyV5ZAi/h3jsJ
-X-Received: by 2002:a17:90a:b391:: with SMTP id e17mr6660106pjr.137.1634727817510;
-        Wed, 20 Oct 2021 04:03:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634727817; cv=none;
+Received: by 2002:a05:6402:18c:: with SMTP id r12ls2234208edv.3.gmail; Wed, 20
+ Oct 2021 04:00:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxN+A+0jZTojq9NFSgN11Qdq9AShMyj168fdoFNzfMGjQdaJAcdpsoQQtdO4ucCixwUznkd
+X-Received: by 2002:a05:6402:1908:: with SMTP id e8mr61246531edz.252.1634727608254;
+        Wed, 20 Oct 2021 04:00:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634727608; cv=none;
         d=google.com; s=arc-20160816;
-        b=DNlpdWHPZCC2GMt8tJvmqBfSTmwmottbWJQF2lBQ5rSdKSDTE4WI0SW895Bw7+0dox
-         nKCZNwO3wGXFH/nGJMNEcxyyVSZrYvNTY7w+ndGPAYHx07oELw2sy7qKhEmk3JqmMZBJ
-         2X6TaspwohyiLA4XXkCo7bJIUCiXTea+BdllV3ilDszVChA9VUEA7hnT2TgE8mK858Gj
-         XrTRVDsNPqBygHolRknYZ6iEDhmNsRNBrW06niVh64zisT+HNcsIkhXhwyTw6wj9RiJ/
-         lTk8DCLbU1xA4S9JATBUsDJ+OFFj9ix7gPY9sXlC9XYat8co5DGEqMIW8BS1PlXXiEyN
-         rC4Q==
+        b=VJdPBBiVz++B6XIKGZqD+joZMKMH8HHoD9wJEpZUQxr1FXLJBS/tLKN9k3l7QUwoLq
+         In7/vLRtISpBeaTxLh+b2mgHKLxUEjE0mQMvWAaLSpAR6X0THP/MpQygfAiIK+yUV24V
+         h/V8Td/FdMe8ncQrGb+w7G9JK0aEFVuXj26K9L4VtRATtjQcvcaupB2P3UtD2+qxyzc4
+         zrBlpc7Rm2thq+nAjyx0AW1KRD4ffu/+4r7ziEMLdMQ1gor4uETuK8P4Aw5YNFFzlDq3
+         pVm58oqsoQ7B2iWp7Ov7j6oaOr2b4WXVhFJnloBUsqra5dY0208s9gaF9BTAOh1FXHa/
+         eULA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=KJUoWWS50AJCzcW+X67eTS+oGOVOsfqp2FnJa9erQtc=;
-        b=d/nXmxjYoM+Cv+ikkmhm/q63nv2rmIOxkcmVp0mQyEV8F5e4SGv1mrXUssbapJyZx5
-         0qUPGZlqQMYvKSYkkYiEvAQur5zwBqaW+l0EGzyBLQa2cJXKWe88jopFsJ5aI5eSROCm
-         m0RgBT2cU5XZnApyVOt8ZsjFmbpsWW7oMX2DJ4HbmdKPUJSFqX2fFrd5I3Q4C1zOmaAQ
-         HbXJFRtoWw04cHjE9NVIo1OQofWO07fUp2m7mZJI9xA/qtmBbuK9Cu0O0a2aUaX61e7I
-         A0nnxGHtEpL2u6rtpBmRMZP4nW8avWNfe8T3axxTkI4Ey3cOt/xnZYr3w3jlGHE2Va2M
-         kxlw==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:ironport-hdrordr;
+        bh=dzZd8a2iyUrnvxjRspD3503W9ONYgWEqudeAJ9c5wQk=;
+        b=p0/AOkeLJx8e0Tff+AjljeWfc1HYSbo+NOb5NAZDVkB6demG8pRx8qRMYFwpO87qMc
+         6jstrD0ARsoomDG+D+72ILsMMq5zPPxwunMwEffeqFkOJwMGBs1C+ubECFDYkyLlgj8x
+         044WANMe/j3PAuyxxt4+mN+IpBMzUN5DHW23k9GG0f1fNOYIXnDMOOhk1726sZ4fEkND
+         jF37OV1drM+PGW4NULPDTK0C2b7/y4R0L4FtoYXQ/zgRkAs8FPxnXR91SgOxP46c9SoS
+         QYWzh1ujAQDpv4dF/D/F+GoaaiHvP3RseiSXNkZ/QN6m1KZJYPiyifxR2TwoQaTbzDTC
+         csPg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=gmEfXtL7;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id v8si121737plo.3.2021.10.20.04.03.37
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr. [192.134.164.104])
+        by gmr-mx.google.com with ESMTPS id 14si88639edv.4.2021.10.20.04.00.08
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 20 Oct 2021 04:03:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Wed, 20 Oct 2021 04:00:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) client-ip=192.134.164.104;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=gmEfXtL7;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
-Received: by mail.kernel.org (Postfix) with ESMTPSA id B2C61613A7;
-	Wed, 20 Oct 2021 11:03:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1634727817;
-	bh=f8Lhl6mKTN67y6PmZ1jxu5lUkqjWdReY/Zc4Ljiid30=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=gmEfXtL79/x0McMbGKjYTAyrQtrnRA0L51KbagBD9VaMI0GUfTiyjT8bmVRyN97l8
-	 PPRA0ia9CTILPeI/dKA3q/wDzdOFpwbM04/aHf6lDnzBQDRYM9lxXb5MGjEdCGh35+
-	 +KxIO2Ift22K328aJIu2x9yRbTEvt/aN4p+z7LDQ=
-Date: Wed, 20 Oct 2021 13:03:34 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.104 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+IronPort-HdrOrdr: =?us-ascii?q?A9a23=3AcV7MfKEGsr1pVUf/pLqE78eALOsnbusQ8zAX?=
+ =?us-ascii?q?PiFKOHhom6Oj/PxG8M5w6fawslcssRIb6LW90cu7IU80nKQdibX5f43SPzUO01?=
+ =?us-ascii?q?HHEGgN1+ffKnHbak/D398Y5ONbf69yBMaYNzVHpMzxiTPWL+od?=
+X-IronPort-AV: E=Sophos;i="5.84,326,1620684000"; 
+   d="scan'208";a="396488697"
+Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 20 Oct 2021 13:00:07 +0200
+Date: Wed, 20 Oct 2021 13:00:06 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
 To: Kushal Kothari <kushalkothari285@gmail.com>
-Cc: fabioaiuto83@gmail.com, marcocesati@gmail.com, dan.carpenter@oracle.com,
-	ross.schm.dev@gmail.com, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
-	mike.rapoport@gmail.com, staging@lists.linux.dev
-Subject: Re: [PATCH v2] staging: rtl8723bs: core: Remove true and false
- comparison
-Message-ID: <YW/3hsflTpx3dSLK@kroah.com>
-References: <20211020105401.131254-1-kushalkothari285@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+cc: gregkh@linuxfoundation.org, fabioaiuto83@gmail.com, marcocesati@gmail.com, 
+    dan.carpenter@oracle.com, ross.schm.dev@gmail.com, 
+    linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, 
+    outreachy-kernel@googlegroups.com, mike.rapoport@gmail.com, 
+    staging@lists.linux.dev
+Subject: Re: [Outreachy kernel] [PATCH v2] staging: rtl8723bs: core: Remove
+ true and false comparison
 In-Reply-To: <20211020105401.131254-1-kushalkothari285@gmail.com>
+Message-ID: <alpine.DEB.2.22.394.2110201257590.2930@hadrien>
+References: <20211020105401.131254-1-kushalkothari285@gmail.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-On Wed, Oct 20, 2021 at 04:24:01PM +0530, Kushal Kothari wrote:
+
+
+On Wed, 20 Oct 2021, Kushal Kothari wrote:
+
 > Remove comparison to true and false in if statement.
 > Issue found with checkpatch.pl.
 > CHECK: Using comparison to true is error prone
 > CHECK: Using comparison to false is error prone
-> 
+>
 > Signed-off-by: Kushal Kothari <kushalkothari285@gmail.com>
 > ---
-> 
+>
 > Changes in v2: Remove unnecessary parentheses.
-> 
+
+The idea was to remove parentheses that were made unnecessary by the
+removal of true and false comparisons.  For example, if ((x == true) || (y
+== false)) should become if (x || !y), not if ((x) || (!y)).
+
+If you want to remove all unnecessary parentheses (definittely useful)
+that should be in a separate patch in a patch series.
+
+julia
+
+>
 >  drivers/staging/rtl8723bs/core/rtw_cmd.c | 50 ++++++++++++------------
 >  1 file changed, 25 insertions(+), 25 deletions(-)
-> 
+>
 > diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
 > index efc9b1974e38..3e0b910114da 100644
 > --- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
@@ -86,14 +95,14 @@ On Wed, Oct 20, 2021 at 04:24:01PM +0530, Kushal Kothari wrote:
 > @@ -309,8 +309,8 @@ int rtw_cmd_filter(struct cmd_priv *pcmdpriv, struct cmd_obj *cmd_obj)
 >  	if (cmd_obj->cmdcode == GEN_CMD_CODE(_SetChannelPlan))
 >  		bAllow = true;
->  
+>
 > -	if ((pcmdpriv->padapter->hw_init_completed == false && bAllow == false)
 > -		|| atomic_read(&(pcmdpriv->cmdthd_running)) == false	/* com_thread not running */
 > +	if ((!pcmdpriv->padapter->hw_init_completed && !bAllow) ||
 > +		!atomic_read(&pcmdpriv->cmdthd_running) 	/* com_thread not running */
 >  	)
 >  		return _FAIL;
->  
+>
 > @@ -372,7 +372,7 @@ void rtw_free_cmd_obj(struct cmd_obj *pcmd)
 >  void rtw_stop_cmd_thread(struct adapter *adapter)
 >  {
@@ -109,8 +118,197 @@ On Wed, Oct 20, 2021 at 04:24:01PM +0530, Kushal Kothari wrote:
 >  	struct adapter *padapter = context;
 > -	struct cmd_priv *pcmdpriv = &(padapter->cmdpriv);
 > +	struct cmd_priv *pcmdpriv = &padapter->cmdpriv;
-
-This is not described in your changelog text and has nothing to do with
-booleans :(
-
+>  	struct drvextra_cmd_parm *extra_parm = NULL;
+>
+>  	thread_enter("RTW_CMD_THREAD");
+> @@ -396,7 +396,7 @@ int rtw_cmd_thread(void *context)
+>  	pcmdbuf = pcmdpriv->cmd_buf;
+>
+>  	pcmdpriv->stop_req = 0;
+> -	atomic_set(&(pcmdpriv->cmdthd_running), true);
+> +	atomic_set(&pcmdpriv->cmdthd_running, true);
+>  	complete(&pcmdpriv->terminate_cmdthread_comp);
+>
+>  	while (1) {
+> @@ -407,7 +407,7 @@ int rtw_cmd_thread(void *context)
+>  			break;
+>  		}
+>
+> -		if ((padapter->bDriverStopped == true) || (padapter->bSurpriseRemoved == true)) {
+> +		if (padapter->bDriverStopped || padapter->bSurpriseRemoved) {
+>  			netdev_dbg(padapter->pnetdev,
+>  				   "%s: DriverStopped(%d) SurpriseRemoved(%d) break at line %d\n",
+>  				   __func__, padapter->bDriverStopped,
+> @@ -430,7 +430,7 @@ int rtw_cmd_thread(void *context)
+>  			continue;
+>
+>  _next:
+> -		if ((padapter->bDriverStopped == true) || (padapter->bSurpriseRemoved == true)) {
+> +		if (padapter->bDriverStopped || padapter->bSurpriseRemoved) {
+>  			netdev_dbg(padapter->pnetdev,
+>  				   "%s: DriverStopped(%d) SurpriseRemoved(%d) break at line %d\n",
+>  				   __func__, padapter->bDriverStopped,
+> @@ -472,7 +472,7 @@ int rtw_cmd_thread(void *context)
+>
+>  post_process:
+>
+> -		if (mutex_lock_interruptible(&(pcmd->padapter->cmdpriv.sctx_mutex)) == 0) {
+> +		if (mutex_lock_interruptible(&pcmd->padapter->cmdpriv.sctx_mutex) == 0) {
+>  			if (pcmd->sctx) {
+>  				netdev_dbg(padapter->pnetdev,
+>  					   FUNC_ADPT_FMT " pcmd->sctx\n",
+> @@ -483,7 +483,7 @@ int rtw_cmd_thread(void *context)
+>  				else
+>  					rtw_sctx_done_err(&pcmd->sctx, RTW_SCTX_DONE_CMD_ERROR);
+>  			}
+> -			mutex_unlock(&(pcmd->padapter->cmdpriv.sctx_mutex));
+> +			mutex_unlock(&pcmd->padapter->cmdpriv.sctx_mutex);
+>  		}
+>
+>  		/* call callback function for post-processed */
+> @@ -523,7 +523,7 @@ int rtw_cmd_thread(void *context)
+>  	} while (1);
+>
+>  	complete(&pcmdpriv->terminate_cmdthread_comp);
+> -	atomic_set(&(pcmdpriv->cmdthd_running), false);
+> +	atomic_set(&pcmdpriv->cmdthd_running, false);
+>
+>  	thread_exit();
+>  }
+> @@ -543,7 +543,7 @@ u8 rtw_sitesurvey_cmd(struct adapter  *padapter, struct ndis_802_11_ssid *ssid,
+>  	struct cmd_priv 	*pcmdpriv = &padapter->cmdpriv;
+>  	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
+>
+> -	if (check_fwstate(pmlmepriv, _FW_LINKED) == true)
+> +	if (check_fwstate(pmlmepriv, _FW_LINKED))
+>  		rtw_lps_ctrl_wk_cmd(padapter, LPS_CTRL_SCAN, 1);
+>
+>  	ph2c = rtw_zmalloc(sizeof(struct cmd_obj));
+> @@ -725,7 +725,7 @@ u8 rtw_joinbss_cmd(struct adapter  *padapter, struct wlan_network *pnetwork)
+>  	struct ht_priv 		*phtpriv = &pmlmepriv->htpriv;
+>  	enum ndis_802_11_network_infrastructure ndis_network_mode = pnetwork->network.infrastructure_mode;
+>  	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
+> -	struct mlme_ext_info *pmlmeinfo = &(pmlmeext->mlmext_info);
+> +	struct mlme_ext_info *pmlmeinfo = &pmlmeext->mlmext_info;
+>  	u32 tmp_len;
+>  	u8 *ptmp = NULL;
+>
+> @@ -776,7 +776,7 @@ u8 rtw_joinbss_cmd(struct adapter  *padapter, struct wlan_network *pnetwork)
+>  	/*  If not,  we have to copy the connecting AP's MAC address to it so that */
+>  	/*  the driver just has the bssid information for PMKIDList searching. */
+>
+> -	if (pmlmepriv->assoc_by_bssid == false)
+> +	if (!pmlmepriv->assoc_by_bssid)
+>  		memcpy(&pmlmepriv->assoc_bssid[0], &pnetwork->network.mac_address[0], ETH_ALEN);
+>
+>  	psecnetwork->ie_length = rtw_restruct_sec_ie(padapter, &pnetwork->network.ies[0], &psecnetwork->ies[0], pnetwork->network.ie_length);
+> @@ -927,7 +927,7 @@ u8 rtw_setstakey_cmd(struct adapter *padapter, struct sta_info *sta, u8 unicast_
+>  	else
+>  		GET_ENCRY_ALGO(psecuritypriv, sta, psetstakey_para->algorithm, false);
+>
+> -	if (unicast_key == true)
+> +	if (unicast_key)
+>  		memcpy(&psetstakey_para->key, &sta->dot118021x_UncstKey, 16);
+>  	else
+>  		memcpy(&psetstakey_para->key, &psecuritypriv->dot118021XGrpKey[psecuritypriv->dot118021XGrpKeyid].skey, 16);
+> @@ -1165,7 +1165,7 @@ u8 rtw_set_chplan_cmd(struct adapter *padapter, u8 chplan, u8 enqueue, u8 swconf
+>  	u8 res = _SUCCESS;
+>
+>  	/*  check if allow software config */
+> -	if (swconfig && rtw_hal_is_disable_sw_channel_plan(padapter) == true) {
+> +	if (swconfig && rtw_hal_is_disable_sw_channel_plan(padapter)) {
+>  		res = _FAIL;
+>  		goto exit;
+>  	}
+> @@ -1251,7 +1251,7 @@ u8 traffic_status_watchdog(struct adapter *padapter, u8 from_timer)
+>  	/*  */
+>  	/*  Determine if our traffic is busy now */
+>  	/*  */
+> -	if ((check_fwstate(pmlmepriv, _FW_LINKED) == true)
+> +	if (check_fwstate(pmlmepriv, _FW_LINKED)
+>  		/*&& !MgntInitAdapterInProgress(pMgntInfo)*/) {
+>  		/*  if we raise bBusyTraffic in last watchdog, using lower threshold. */
+>  		if (pmlmepriv->LinkDetectInfo.bBusyTraffic)
+> @@ -1283,7 +1283,7 @@ u8 traffic_status_watchdog(struct adapter *padapter, u8 from_timer)
+>  			(pmlmepriv->LinkDetectInfo.NumRxUnicastOkInPeriod > 2)) {
+>  			bEnterPS = false;
+>
+> -			if (bBusyTraffic == true) {
+> +			if (bBusyTraffic) {
+>  				if (pmlmepriv->LinkDetectInfo.TrafficTransitionCount <= 4)
+>  					pmlmepriv->LinkDetectInfo.TrafficTransitionCount = 4;
+>
+> @@ -1343,7 +1343,7 @@ static void dynamic_chk_wk_hdl(struct adapter *padapter)
+>
+>  	pmlmepriv = &(padapter->mlmepriv);
+>
+> -	if (check_fwstate(pmlmepriv, WIFI_AP_STATE) == true)
+> +	if (check_fwstate(pmlmepriv, WIFI_AP_STATE))
+>  		expire_timeout_chk(padapter);
+>
+>  	/* for debug purpose */
+> @@ -1378,8 +1378,8 @@ void lps_ctrl_wk_hdl(struct adapter *padapter, u8 lps_ctrl_type)
+>  	struct mlme_priv *pmlmepriv = &(padapter->mlmepriv);
+>  	u8 mstatus;
+>
+> -	if ((check_fwstate(pmlmepriv, WIFI_ADHOC_MASTER_STATE) == true)
+> -		|| (check_fwstate(pmlmepriv, WIFI_ADHOC_STATE) == true)) {
+> +	if (check_fwstate(pmlmepriv, WIFI_ADHOC_MASTER_STATE) ||
+> +		check_fwstate(pmlmepriv, WIFI_ADHOC_STATE)) {
+>  		return;
+>  	}
+>
+> @@ -1387,7 +1387,7 @@ void lps_ctrl_wk_hdl(struct adapter *padapter, u8 lps_ctrl_type)
+>  	case LPS_CTRL_SCAN:
+>  		hal_btcoex_ScanNotify(padapter, true);
+>
+> -		if (check_fwstate(pmlmepriv, _FW_LINKED) == true) {
+> +		if (check_fwstate(pmlmepriv, _FW_LINKED)) {
+>  			/*  connect */
+>  			LPS_Leave(padapter, "LPS_CTRL_SCAN");
+>  		}
+> @@ -1513,7 +1513,7 @@ static void rtw_lps_change_dtim_hdl(struct adapter *padapter, u8 dtim)
+>  	if (dtim <= 0 || dtim > 16)
+>  		return;
+>
+> -	if (hal_btcoex_IsBtControlLps(padapter) == true)
+> +	if (hal_btcoex_IsBtControlLps(padapter))
+>  		return;
+>
+>  	mutex_lock(&pwrpriv->lock);
+> @@ -1619,7 +1619,7 @@ static void rtw_chk_hi_queue_hdl(struct adapter *padapter)
+>
+>  	rtw_hal_get_hwreg(padapter, HW_VAR_CHK_HI_QUEUE_EMPTY, &empty);
+>
+> -	while (false == empty && jiffies_to_msecs(jiffies - start) < g_wait_hiq_empty) {
+> +	while (!empty && jiffies_to_msecs(jiffies - start) < g_wait_hiq_empty) {
+>  		msleep(100);
+>  		rtw_hal_get_hwreg(padapter, HW_VAR_CHK_HI_QUEUE_EMPTY, &empty);
+>  	}
+> @@ -1841,7 +1841,7 @@ static void c2h_wk_callback(struct work_struct *work)
+>  			continue;
+>  		}
+>
+> -		if (ccx_id_filter(c2h_evt) == true) {
+> +		if (ccx_id_filter(c2h_evt)) {
+>  			/* Handle CCX report here */
+>  			rtw_hal_c2h_handler(adapter, c2h_evt);
+>  			kfree(c2h_evt);
+> @@ -2054,7 +2054,7 @@ void rtw_setassocsta_cmdrsp_callback(struct adapter *padapter,  struct cmd_obj *
+>
+>  	spin_lock_bh(&pmlmepriv->lock);
+>
+> -	if ((check_fwstate(pmlmepriv, WIFI_MP_STATE) == true) && (check_fwstate(pmlmepriv, _FW_UNDER_LINKING) == true))
+> +	if (check_fwstate(pmlmepriv, WIFI_MP_STATE) && check_fwstate(pmlmepriv, _FW_UNDER_LINKING))
+>  		_clr_fwstate_(pmlmepriv, _FW_UNDER_LINKING);
+>
+>  	set_fwstate(pmlmepriv, _FW_LINKED);
+> --
+> 2.25.1
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20211020105401.131254-1-kushalkothari285%40gmail.com.
+>
 
