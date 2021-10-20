@@ -1,147 +1,152 @@
 X-GM-THRID: 7021065776829300736
-X-Received: by 2002:ac2:4251:: with SMTP id m17mr11217693lfl.514.1634720065102;
-        Wed, 20 Oct 2021 01:54:25 -0700 (PDT)
+X-Received: by 2002:a17:907:d8c:: with SMTP id go12mr45585357ejc.472.1634719263003;
+        Wed, 20 Oct 2021 01:41:03 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:5c87:: with SMTP id q129ls278389ljb.3.gmail; Wed, 20 Oct
- 2021 01:54:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJysn0ijIFFwBNfSvJ3vDkvjioG+GAL/Dgc1Qe4syeS0st3DRjev7L0iKS0VoDiHbiyHvqlH
-X-Received: by 2002:a2e:9241:: with SMTP id v1mr12138266ljg.99.1634720063229;
-        Wed, 20 Oct 2021 01:54:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634720063; cv=none;
+Received: by 2002:aa7:cc15:: with SMTP id q21ls1822350edt.0.gmail; Wed, 20 Oct
+ 2021 01:41:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwsliabD8ZmGR40/VYxS/8vZp1ys5yLS6CPomhdo/qI/qzD7n7E/y+ZeyeLL5KSN+n6QOBc
+X-Received: by 2002:a50:9d8e:: with SMTP id w14mr60002378ede.74.1634719261580;
+        Wed, 20 Oct 2021 01:41:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634719261; cv=none;
         d=google.com; s=arc-20160816;
-        b=tkJwfDBcADDZYi1h/2Zd7bFc7nmQ7xwA4GF8ipHG2Phl0mc8gg9EcDJfg2fPTx5Qfd
-         VCfpua6xRIBjaVns/IfbP22QVNqq5fWfLBIZdk7GPBeeNCx+TU902r3E/a5aai8489ZX
-         vqkXagm4jhwrmgv68CtVfKmu/28OK1/Mwm2N8w6Sy7XfFEnY/rypVz0IMkF+RC5MlBXl
-         mNlYGUISmgAGevmBokaL0dORK/iznyKVGus6iihgJBw/CmN2Y1QQQk2GyzqV/AfIyMNN
-         JhrwphAoLpq7V7zqQ6g6K0n95LgV5qgwV1ncD4AroIBo+rcP4fXneZgB0dyqamwJvkNN
-         y2jQ==
+        b=gPFzKS68yIaGnwdUbtnKVllC7W8MTqVku+2YJzqtg6uFcOzdI8j90A+ncOFee1bdME
+         ALbh74aSZnTl4M7vsKncj6Xrp0s8i972vUShkBtbW3opyRqtG11CXyOuE4Rolrf26yyg
+         mth3VXN3RaPMBmAj0ofPTl6GBptJuhLk/EIgtkzuyYFbPmx258O6JpTqWIP0q1Og3jpj
+         SXLIGs02O/xqMXuVE1ZVM3tPnLIALCUElNG219gGXgjyUu/NHrDt7iERyH4CC1fwkdRf
+         Nynis6IN53f3BOwKB+dQXgZ0rpXCNOcbJ840EFVKqvePz4AgFmDzslVcrwu1+gSQvqPq
+         2NcQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:references:message-id:in-reply-to:subject
-         :cc:to:from:date:ironport-hdrordr;
-        bh=h3ejTtOYCbX7I7HBRj9Dj61VcWRCjgaVkJNGt9LBJqc=;
-        b=rUZoSZdKraNA5Urr+XL84JmD8F79qVzEu4dKfu1lR6dafRdSeVk6Lb2E7Avg1CX6XC
-         R80mdZtDqhfyDysjVBmaIv9Hii3i/4nGoexECqOHAmYwuQv6/VQsNC8F7rwV+T3z45bF
-         A9rLZ2TUMCyOWsIQyGKd2w0TF0jtwEv968Es3GUh7gXxwaqKZ2nkjZaqNj5QDcjHHFMm
-         zm7k4DkG+wJ3yC/t+rO/W+AJ9UWT6anm6CrNm+oskiIa/9BeoRiZ9vPO2ud33q6jSZj9
-         tD6Ju1McDNXle2l+Qf7E/gnX6rYjL2Bax51Pd/ygI7KvjuXM+O/tZkfTFywMmLi9FUl0
-         Tl7Q==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=0DxiQ6TI/H+Bup1Rn6Wt67LAOz/W7N5QmWO1MsPbNPg=;
+        b=sP9KR1LmOtW+aRhiZtaoBw6744SLIE/MPjSXUx6ErKdXM+wXVYRMafWXfg9mqQD+bJ
+         FBqF0MHWecKOs7DnLumV/jZEjqmRf7xliJQmv9rqTD9g4o51p5N0ytv9cd24oSbr7Ghi
+         Jdz9pKuexj5C1HTpiqYgIiAfrhBpV6pz54vgEEBEG9tU1hYbWimHtghm1XmjUbZeDYNk
+         wtY15JnCE7nJ6lygnn4I7IHt8B1vjUjpseR2IqgyTwh6ha8FLOVrqR4lB4qm9PpXVihv
+         CtZzggRX6VRd6B4uQ5rw0Eb8GBYdhZzTvI/tyXfmdJmbtKN7fxzOpN2JoEAMTUcWpRa9
+         MJYg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-Return-Path: <julia.lawall@inria.fr>
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
-        by gmr-mx.google.com with ESMTPS id f20si73479ljn.4.2021.10.20.01.54.22
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=hk9EFm6E;
+       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::336 as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <karolinadrobnik@gmail.com>
+Received: from mail-wm1-x336.google.com (mail-wm1-x336.google.com. [2a00:1450:4864:20::336])
+        by gmr-mx.google.com with ESMTPS id o25si88489eju.1.2021.10.20.01.41.01
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 20 Oct 2021 01:54:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 20 Oct 2021 01:41:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::336 as permitted sender) client-ip=2a00:1450:4864:20::336;
 Authentication-Results: gmr-mx.google.com;
-       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
-IronPort-HdrOrdr: =?us-ascii?q?A9a23=3AG0BvIa2ZOUpDxLLfve4VbAqjBLEkLtp133Aq?=
- =?us-ascii?q?2lEZdPUzSL37qynOpoV56faQsl0ssR4b9OxoVJPufZq+z/5ICOsqXItKNTOO0A?=
- =?us-ascii?q?GVxepZg7cKrQeNJwTOssZAyKZtdLV/AtXsAVU/rcuS2njcL+od?=
-X-IronPort-AV: E=Sophos;i="5.84,326,1620684000"; 
-   d="scan'208";a="534925257"
-Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 20 Oct 2021 10:54:22 +0200
-Date: Wed, 20 Oct 2021 10:54:21 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Karolina Drobnik <karolinadrobnik@gmail.com>
-cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
-    forest@alittletooquiet.net, linux-staging@lists.linux.dev, 
-    linux-kernel@vger.kernel.org
-Subject: Re: [Outreachy kernel] [PATCH] staging: vt6655: Rename `by_preamble_type`
- parameter
-In-Reply-To: <20211020084033.414994-1-karolinadrobnik@gmail.com>
-Message-ID: <alpine.DEB.2.22.394.2110201051300.2930@hadrien>
-References: <20211020084033.414994-1-karolinadrobnik@gmail.com>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=hk9EFm6E;
+       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::336 as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wm1-x336.google.com with SMTP id 63-20020a1c0042000000b0030d60716239so9317410wma.4
+        for <outreachy-kernel@googlegroups.com>; Wed, 20 Oct 2021 01:41:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=0DxiQ6TI/H+Bup1Rn6Wt67LAOz/W7N5QmWO1MsPbNPg=;
+        b=hk9EFm6Ew7/OwTOILie+GA5vHO1+XXROBxMTy0GYFycHK16AAuIKgfwOauIM9zhSoT
+         iNyaXuY0zIlwORFLZ2Jn4WR4UdQ2HEUgjwoVudlGjMCkYLXVzsJh3xzXwLCOKQY0xHeE
+         ION4kdrI9I/wwG+fHY2eN5Js8chUiGO56m2+OYdOojZrLn6Ipw/dw1Wxph5PsBB48aAI
+         NgDUa9XVtwa1qAOOeO8LbZtahrUKm2BLEoHwAHF7NokfQzDFvYsIXOfYjKm5ixEDcaAL
+         dHUGxQBsrIKchpo+QJ/yM2dv5zeWcmVM7UX1Jtrg9/09qlEqD5etSvOm6TdWrZawFu04
+         L5Jg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=0DxiQ6TI/H+Bup1Rn6Wt67LAOz/W7N5QmWO1MsPbNPg=;
+        b=u9lJ1pybLPwLkrOKMdjLbeTgpsR/o+fIRhRUXDLC5/wGB33kYzg5ExEt/Sy9lVrvr4
+         X8tF0pIbUrm0Hr4l1MKtsuDpVfEqR0UOVAls6uZm69EvKeMGSIu0rxd2vBGM5xbtiGwy
+         oN6NIoZcwfZT89a+azNPwEKusLXYnsD8+bBXM1s+Yc7XRiT6HppIxqaGKmHFeW1dY2hH
+         WBCJtIicIeKZpXo3eZr9q0YQ7PZ/BccfJm+Zn29II2Jc7eAGjyFfiQh/CGW6EzeNqlu8
+         IYYVMgBhGwna9As1bw/VhpvdauSxGtgUeYat1oii4c2/xMn/DnCZOMCsf24vFKsMHH2W
+         dqPQ==
+X-Gm-Message-State: AOAM533FMQFDobZx9kgBCPSiYrf3mRmcNgb9VMBbmgMuRt5TChSPgMGf
+	YkMO2zSkJJnjecYcEpHqLLQLNo0akm/w9V2t
+X-Received: by 2002:adf:ead0:: with SMTP id o16mr18972262wrn.106.1634719261399;
+        Wed, 20 Oct 2021 01:41:01 -0700 (PDT)
+Return-Path: <karolinadrobnik@gmail.com>
+Received: from localhost.localdomain ([2a01:4b00:f411:e700:e085:8cb7:7bf6:5d62])
+        by smtp.gmail.com with ESMTPSA id l13sm1348612wrn.79.2021.10.20.01.41.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 20 Oct 2021 01:41:00 -0700 (PDT)
+From: Karolina Drobnik <karolinadrobnik@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org,
+	forest@alittletooquiet.net,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	Karolina Drobnik <karolinadrobnik@gmail.com>
+Subject: [PATCH] staging: vt6655: Rename `by_preamble_type` parameter
+Date: Wed, 20 Oct 2021 09:40:33 +0100
+Message-Id: <20211020084033.414994-1-karolinadrobnik@gmail.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 8bit
 
+Drop `by` prefix in the first parameter of `bb_get_frame_time` function.
+As the original argument, `byPreambleType`, was renamed to `preamble_type`,
+the parameter referring to it is now renamed to match the new naming
+convention.
+Update `bb_get_frame_time` comment to reflect that change.
 
+This patch is a follow-up work to this commit:
+    Commit 548b6d7ebfa4 ("staging: vt6655: Rename byPreambleType field")
 
-On Wed, 20 Oct 2021, Karolina Drobnik wrote:
+Signed-off-by: Karolina Drobnik <karolinadrobnik@gmail.com>
+---
+ drivers/staging/vt6655/baseband.c | 6 +++---
+ drivers/staging/vt6655/baseband.h | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-> Drop `by` prefix in the first parameter of `bb_get_frame_time` function.
-> As the original argument, `byPreambleType`, was renamed to `preamble_type`,
-> the parameter referring to it is now renamed to match the new naming
-> convention.
-> Update `bb_get_frame_time` comment to reflect that change.
->
-> This patch is a follow-up work to this commit:
->     Commit 548b6d7ebfa4 ("staging: vt6655: Rename byPreambleType field")
+diff --git a/drivers/staging/vt6655/baseband.c b/drivers/staging/vt6655/baseband.c
+index 5efca92f1f18..8f9177db6663 100644
+--- a/drivers/staging/vt6655/baseband.c
++++ b/drivers/staging/vt6655/baseband.c
+@@ -1691,7 +1691,7 @@ static const unsigned short awc_frame_time[MAX_RATE] = {
+  *
+  * Parameters:
+  *  In:
+- *      by_preamble_type  - Preamble Type
++ *      preamble_type     - Preamble Type
+  *      by_pkt_type        - PK_TYPE_11A, PK_TYPE_11B, PK_TYPE_11GB, PK_TYPE_11GA
+  *      cb_frame_length   - Baseband Type
+  *      tx_rate           - Tx Rate
+@@ -1700,7 +1700,7 @@ static const unsigned short awc_frame_time[MAX_RATE] = {
+  * Return Value: FrameTime
+  *
+  */
+-unsigned int bb_get_frame_time(unsigned char by_preamble_type,
++unsigned int bb_get_frame_time(unsigned char preamble_type,
+ 			       unsigned char by_pkt_type,
+ 			       unsigned int cb_frame_length,
+ 			       unsigned short tx_rate)
+@@ -1717,7 +1717,7 @@ unsigned int bb_get_frame_time(unsigned char by_preamble_type,
+ 	rate = (unsigned int)awc_frame_time[rate_idx];
+ 
+ 	if (rate_idx <= 3) {		    /* CCK mode */
+-		if (by_preamble_type == 1) /* Short */
++		if (preamble_type == 1) /* Short */
+ 			preamble = 96;
+ 		else
+ 			preamble = 192;
+diff --git a/drivers/staging/vt6655/baseband.h b/drivers/staging/vt6655/baseband.h
+index 0a30afaa7cc3..15b2802ed727 100644
+--- a/drivers/staging/vt6655/baseband.h
++++ b/drivers/staging/vt6655/baseband.h
+@@ -44,7 +44,7 @@
+ #define TOP_RATE_2M         0x00200000
+ #define TOP_RATE_1M         0x00100000
+ 
+-unsigned int bb_get_frame_time(unsigned char by_preamble_type,
++unsigned int bb_get_frame_time(unsigned char preamble_type,
+ 			       unsigned char by_pkt_type,
+ 			       unsigned int cb_frame_length,
+ 			       unsigned short w_rate);
+-- 
+2.30.2
 
-This is not going to be practical.  If the previous patch is accepted,
-then this it not needed.  If the previous patch is not yet accepted, then
-there needs to be a vn+1 putting the patches together into a series.
-
-> Signed-off-by: Karolina Drobnik <karolinadrobnik@gmail.com>
-> ---
->  drivers/staging/vt6655/baseband.c | 6 +++---
->  drivers/staging/vt6655/baseband.h | 2 +-
->  2 files changed, 4 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/staging/vt6655/baseband.c b/drivers/staging/vt6655/baseband.c
-> index 5efca92f1f18..8f9177db6663 100644
-> --- a/drivers/staging/vt6655/baseband.c
-> +++ b/drivers/staging/vt6655/baseband.c
-> @@ -1691,7 +1691,7 @@ static const unsigned short awc_frame_time[MAX_RATE] = {
->   *
->   * Parameters:
->   *  In:
-> - *      by_preamble_type  - Preamble Type
-> + *      preamble_type     - Preamble Type
->   *      by_pkt_type        - PK_TYPE_11A, PK_TYPE_11B, PK_TYPE_11GB, PK_TYPE_11GA
-
-In the realm of small cleanups to this driver, the extra space in front of
-the - above is a bit annoying.
-
->   *      cb_frame_length   - Baseband Type
->   *      tx_rate           - Tx Rate
-> @@ -1700,7 +1700,7 @@ static const unsigned short awc_frame_time[MAX_RATE] = {
->   * Return Value: FrameTime
->   *
->   */
-> -unsigned int bb_get_frame_time(unsigned char by_preamble_type,
-> +unsigned int bb_get_frame_time(unsigned char preamble_type,
->  			       unsigned char by_pkt_type,
->  			       unsigned int cb_frame_length,
->  			       unsigned short tx_rate)
-> @@ -1717,7 +1717,7 @@ unsigned int bb_get_frame_time(unsigned char by_preamble_type,
->  	rate = (unsigned int)awc_frame_time[rate_idx];
->
->  	if (rate_idx <= 3) {		    /* CCK mode */
-> -		if (by_preamble_type == 1) /* Short */
-> +		if (preamble_type == 1) /* Short */
-
-I hope you will get around to replacing the 1 by the appropriate constant
-and removing the "Short" comment.
-
-julia
-
->  			preamble = 96;
->  		else
->  			preamble = 192;
-> diff --git a/drivers/staging/vt6655/baseband.h b/drivers/staging/vt6655/baseband.h
-> index 0a30afaa7cc3..15b2802ed727 100644
-> --- a/drivers/staging/vt6655/baseband.h
-> +++ b/drivers/staging/vt6655/baseband.h
-> @@ -44,7 +44,7 @@
->  #define TOP_RATE_2M         0x00200000
->  #define TOP_RATE_1M         0x00100000
->
-> -unsigned int bb_get_frame_time(unsigned char by_preamble_type,
-> +unsigned int bb_get_frame_time(unsigned char preamble_type,
->  			       unsigned char by_pkt_type,
->  			       unsigned int cb_frame_length,
->  			       unsigned short w_rate);
-> --
-> 2.30.2
->
-> --
-> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20211020084033.414994-1-karolinadrobnik%40gmail.com.
->
 
