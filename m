@@ -1,82 +1,82 @@
 X-GM-THRID: 7021079829858484224
-X-Received: by 2002:a65:6287:: with SMTP id f7mr33394031pgv.444.1634723491882;
-        Wed, 20 Oct 2021 02:51:31 -0700 (PDT)
+X-Received: by 2002:a05:6638:a2d:: with SMTP id 13mr7733782jao.12.1634723297280;
+        Wed, 20 Oct 2021 02:48:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:9341:: with SMTP id g1ls1192105plp.6.gmail; Wed, 20
- Oct 2021 02:51:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxBEb/05IH1dcEpEtG3C1kj+CLEEZXZbjHc0rVaK8w80twBdiHlcwmKVpd950wI9wIOiokw
-X-Received: by 2002:a17:90a:7d11:: with SMTP id g17mr6076582pjl.19.1634723490629;
-        Wed, 20 Oct 2021 02:51:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634723490; cv=none;
+Received: by 2002:a6b:f906:: with SMTP id j6ls286551iog.9.gmail; Wed, 20 Oct
+ 2021 02:48:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJytyUn5VHNhtJescUXYjip0wbjFjZQRgYAhor8+qDxYeOFAjXkMgXwrHvJjZ4kc5eHZcbdd
+X-Received: by 2002:a05:6602:158a:: with SMTP id e10mr22443662iow.157.1634723296286;
+        Wed, 20 Oct 2021 02:48:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634723296; cv=none;
         d=google.com; s=arc-20160816;
-        b=WJZUkKIThgVyaqpqk40d/tRMa9I5hH8aMZvyxXd75WczwBCqtwLrJz3K90eN343tqo
-         KumFYLQYGq9jLPfhyleKpHTBhrmqM/oUZINVjXYJT8lGqs57WtCqJQUwK/f2j8vMfL2v
-         OGWQuta1pXvIKU+8+8xt0cTSQBlZi1nV/aLOVzj+xzVl/8aLqkQ7QwBRUg4G1jDJ74Hb
-         heoSDtsyG0Lbr9Y557dHtWLo+08q1mxf4bV4QW6ennW77s4c4m/fk+EsuCjg4oVPHnkb
-         IduDGg7fg+FW7yPclNNy1BiMudUMWgeB5O5jzGTiBaEV/h04NT+ZXgo+xNjEjn9ju9NY
-         N8Gw==
+        b=omCKQ5AmqyK8bwHaIzJ/u6lqj0pVa1uGQZ/a9RQcBtCXa7RpItBMSXuRzqyxB1/Fa0
+         H44ae3Ep2wAWn6zG4mAUt1Mo519R21NevsC8TgROAlngBtmqgWR6m+x0MCD/wrXoHnn/
+         1RKjgtWJsW1b03xh+JRNXVYG8JFOYUhey+ZHSWEot9yCRh7DADg63gPMSXeGVJOZ9qQh
+         bFWl0PEkRZo5l5UobEWYdgSBQAMlKWzYW4oT6wE/qwEeb45tAb6M9X98RbQ7cRIXF1DU
+         lVVu8sOeJvNJZsW882DJJszHCmoc/+v/YGR9rmnOlYoJTrIiaCJQLrq/zLdVArV5vG4F
+         oDkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=j4WlK2hOFHNCDGbyNuqEGjx1ER9zvNdVKUnQngZATS0=;
-        b=gmytfCyHbj9CIAZnhPpbUIJUEyt1FgS38nt8cOkL51FTXA5jS3y8X7sjmIHxWtu9tU
-         24tdWEf06JpmRJBxF/voiuuqX6KhSFLJ2mshEpwAIghwpk7g4JRqX1MFVeegzl6kc3h/
-         YEzYItZg8hRv/JJj4ygbwrOcPxGU7F2hucdQHLPzYa4LaEUZcUVeJj8eYDSrAFDz6FV2
-         MjdbhMvLtj34eITa5vYuMvBEv82fHTrZZaiL4Ta6ylPDJIHXTMOAVtrCrJEm1V8Lu9Gl
-         t0dvGYMPCyM6TtOtGV9erYDtlgAfni7rI+LxcPrHhOGYNinzTOJCJz2FP9Cv4qPLVQbi
-         gFnQ==
+        bh=NUxRW7fqD+7h9FNXnAUbVGq3Yz7ElzK6RCQA7Y5NoBs=;
+        b=PDPg4mWmbtUoY+VmVjTuh2x+XRYpDVpOa1e7Jdrjb72B/8Ns5Zkq30RLrN37S9bmiu
+         rvuv5tddNxOunucDpp/QfYsbbLCUSVJnKWS4uQ3fWaUu4yTr03BvW3yCpFeY1N+ggWYy
+         UzpG5OZFdZYLSUdReTwAkemYkRnf3ZjBAqaMOqjh3gj98uUG/gJFcwgX5wpXZ3z1Jznk
+         6n7T8ZpdbhdPks1cirMh9vJCn4OvE3DI38l8BLo65WuBzpMPhRlczFeYqdN07k51lPB8
+         LhB9shN2u486I8OzszcOIjRuk84SHjU1kKfzZM6jp/4wXMbF6VP7tG5/u30bZUhJ3LTg
+         UvMg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Qm1PZYIC;
-       spf=pass (google.com: domain of kpraveen.lkml@gmail.com designates 2607:f8b0:4864:20::52a as permitted sender) smtp.mailfrom=kpraveen.lkml@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=XEIfcuWZ;
+       spf=pass (google.com: domain of kpraveen.lkml@gmail.com designates 2607:f8b0:4864:20::435 as permitted sender) smtp.mailfrom=kpraveen.lkml@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <kpraveen.lkml@gmail.com>
-Received: from mail-pg1-x52a.google.com (mail-pg1-x52a.google.com. [2607:f8b0:4864:20::52a])
-        by gmr-mx.google.com with ESMTPS id t34si124513pfg.3.2021.10.20.02.51.30
+Received: from mail-pf1-x435.google.com (mail-pf1-x435.google.com. [2607:f8b0:4864:20::435])
+        by gmr-mx.google.com with ESMTPS id d20si146043ioy.2.2021.10.20.02.48.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 20 Oct 2021 02:51:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kpraveen.lkml@gmail.com designates 2607:f8b0:4864:20::52a as permitted sender) client-ip=2607:f8b0:4864:20::52a;
+        Wed, 20 Oct 2021 02:48:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kpraveen.lkml@gmail.com designates 2607:f8b0:4864:20::435 as permitted sender) client-ip=2607:f8b0:4864:20::435;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Qm1PZYIC;
-       spf=pass (google.com: domain of kpraveen.lkml@gmail.com designates 2607:f8b0:4864:20::52a as permitted sender) smtp.mailfrom=kpraveen.lkml@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=XEIfcuWZ;
+       spf=pass (google.com: domain of kpraveen.lkml@gmail.com designates 2607:f8b0:4864:20::435 as permitted sender) smtp.mailfrom=kpraveen.lkml@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x52a.google.com with SMTP id e65so19608207pgc.5
-        for <outreachy-kernel@googlegroups.com>; Wed, 20 Oct 2021 02:51:30 -0700 (PDT)
+Received: by mail-pf1-x435.google.com with SMTP id o133so2461819pfg.7
+        for <outreachy-kernel@googlegroups.com>; Wed, 20 Oct 2021 02:48:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=message-id:date:mime-version:user-agent:subject:content-language:to
          :references:from:in-reply-to:content-transfer-encoding;
-        bh=j4WlK2hOFHNCDGbyNuqEGjx1ER9zvNdVKUnQngZATS0=;
-        b=Qm1PZYICeYlQbT8TaxFLElQoIXgzW5G2AnD3Gc4EY23N/Y8TghR0aTarDyQth7DQRc
-         /LGP+OFxyOzhU1cGoRIqg1CVG45WZy1vEuYRfZRhvbwTIpciffawhg+ANDlpMKMJ/WSs
-         uybWD8eg650GxSVogdkJov4lA/KUVCwwLliUJXUzEIwgLAbDEBoO4EdLzVargytDT6rL
-         gYnk18mCfnh1hkEeo75VKaSUWgiWCYPHQIIskwnu0EH8SGGVBSCDkSvxB2jZ2lXr4yhK
-         Pqh6m6+la/4UlEkonqf97/+t/tFgg0bgfMMzdp2kVg/Fs4c0AdzMN1sVlQlxeY4Vxmio
-         getg==
+        bh=NUxRW7fqD+7h9FNXnAUbVGq3Yz7ElzK6RCQA7Y5NoBs=;
+        b=XEIfcuWZcnGZols3cvNhdggc7M+/qf+bjI4H3z2fKtehoXl2MfSwk/dHO+ak8lEi6j
+         j0Ca1a0VuPa/OpVdkLPsaLb6irFfvo2Iil98UZ94ucwhKwCdpJxxmwqI1TCazcYzvTFv
+         XlDV8mZi+3ezS+WUVZ5UAItXir+oiPVJFbrWSCqGxG1VHZkdlzpSSOGek2pV0t0azm3c
+         5gmHSehIySxMNR/fLz9rzZ3KPTvEt7aQETOWHH/fYJYVk8Z26kj56kf0k9FLVLPHuyn/
+         FhTkIjYNLVA+hFGQ0NG2tza9854E+2AmlkvmqBbevoSEJaEy5bTlXD8+IZzg3KBFT07Y
+         9DOA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
          :content-language:to:references:from:in-reply-to
          :content-transfer-encoding;
-        bh=j4WlK2hOFHNCDGbyNuqEGjx1ER9zvNdVKUnQngZATS0=;
-        b=XX+QGtgJUys1EDdMIWvtgzzGgD3hZHok60qjyX+mEjwUBJ3tn55nhgIj1SamC3g+be
-         Sj3p1h9lLNceC3A65K0ntbSiqZ2x5ee8QfR+VZHPuc0KWZN6yoDLe5kLLG2gDvGugtfz
-         1Tkw+aoRHxnoZ/xxZsvX/dircIri2m5REug+rxpRN6AmzcI6PwfJMqVAEiw7GjKZ+Zg0
-         gN6PsYtXY58pXCdyvuvGGpjWHDCLQJA2OK8eIzOYf8Fh8An748difNto0yfPwO3cG9nm
-         hiXAD6pG+JSbOYamRvVX0i+srVkQu+QVAXBkBB+dQZTaPqG6XSWDLUZxIP4eDmi2kZn8
-         +Thw==
-X-Gm-Message-State: AOAM531kQ8GplXs49s69LI7syQlTuigxkQjtfqEvv5hWfQeCDOoZzAoL
-	ENKdmAYi621pkvMmQayjAQ0=
-X-Received: by 2002:a05:6a00:815:b0:44d:2193:f688 with SMTP id m21-20020a056a00081500b0044d2193f688mr5294132pfk.4.1634723490207;
-        Wed, 20 Oct 2021 02:51:30 -0700 (PDT)
+        bh=NUxRW7fqD+7h9FNXnAUbVGq3Yz7ElzK6RCQA7Y5NoBs=;
+        b=gtw3427NGlvMa0AifIuph55hM2491TF7nTBThYSuih58OBODOUZDLHrfaRpzyD2q0b
+         WmtegpEhw2twcnCr7uIxWgfpF2vUAeXeYpuBletIIPbDwLpK+QFxPoPT65ZKD1iC0RUS
+         tugjNQlK0OCsAlB9xWCwpg+R/ndSVodhzypRDt+h97FlqWxOvouv4dfUIPMm/gmbJAtQ
+         +cURn8FOo5iwDx5vcIZXvZaYuL8xZO/DLrscvuCMrEsmsWoMVlsT5WGn4xF8fZJ7ZE4z
+         p9BureejlqAS364sGGp3wBdpSvuSjk9uB/mzYK/1dGtrmzgi4rGXIZCJdi2OG0Ohore2
+         hONA==
+X-Gm-Message-State: AOAM531KrKSEX8h6q46Sxun++EQ4eorQtJODvz+ABkpFtjeoS7+cD8eX
+	zzJLYW7XDKLluhs2wV9hVWE=
+X-Received: by 2002:aa7:96ab:0:b0:44c:f3e2:a7d1 with SMTP id g11-20020aa796ab000000b0044cf3e2a7d1mr5354472pfk.78.1634723295553;
+        Wed, 20 Oct 2021 02:48:15 -0700 (PDT)
 Return-Path: <kpraveen.lkml@gmail.com>
 Received: from [192.168.1.122] ([122.171.220.247])
-        by smtp.gmail.com with ESMTPSA id b8sm1849206pfi.103.2021.10.20.02.51.26
+        by smtp.gmail.com with ESMTPSA id h13sm1643282pgf.14.2021.10.20.02.48.12
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 20 Oct 2021 02:51:29 -0700 (PDT)
-Message-ID: <3e8b8712-72bd-2d3f-e3d3-16b912706a4e@gmail.com>
-Date: Wed, 20 Oct 2021 15:21:25 +0530
+        Wed, 20 Oct 2021 02:48:15 -0700 (PDT)
+Message-ID: <497cce54-ed95-0fd3-b9b7-41a7aa4db6b4@gmail.com>
+Date: Wed, 20 Oct 2021 15:18:11 +0530
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
  Thunderbird/91.2.0
@@ -99,10 +99,6 @@ On 20-10-2021 15:04, Kushal Kothari wrote:
 > Issue found with checkpatch.pl.
 > CHECK: Using comparison to true is error prone
 > CHECK: Using comparison to false is error prone
-
-Request to please document the modification / comments handled from the previous patch sent.
-Also, please update [PATCH V*] in the Subject, that will help keeping track of versions. Thanks.
-
 > CHECK: Unnecessary parentheses
 > 
 > Signed-off-by: Kushal Kothari <kushalkothari285@gmail.com>
@@ -123,6 +119,14 @@ Also, please update [PATCH V*] in the Subject, that will help keeping track of v
 > +	if ((!pcmdpriv->padapter->hw_init_completed && !bAllow) ||
 > +		!atomic_read(&pcmdpriv->cmdthd_running) 	/* com_thread not running */
 >  	)
+
+Please move ')' something like this.
+
+> +	if ((!pcmdpriv->padapter->hw_init_completed && !bAllow) ||
+> +		!atomic_read(&pcmdpriv->cmdthd_running)) 	/* com_thread not running */
+
+
+
 >  		return _FAIL;
 >  
 > @@ -372,7 +372,7 @@ void rtw_free_cmd_obj(struct cmd_obj *pcmd)
@@ -176,6 +180,10 @@ Also, please update [PATCH V*] in the Subject, that will help keeping track of v
 >  
 > -		if (mutex_lock_interruptible(&(pcmd->padapter->cmdpriv.sctx_mutex)) == 0) {
 > +		if (mutex_lock_interruptible(&pcmd->padapter->cmdpriv.sctx_mutex) == 0) {
+
+Is this change required ? This is not inline with the v1 patch summary as well.
+If required, I would request to make it in a different patch.
+
 >  			if (pcmd->sctx) {
 >  				netdev_dbg(padapter->pnetdev,
 >  					   FUNC_ADPT_FMT " pcmd->sctx\n",
@@ -330,4 +338,5 @@ Also, please update [PATCH V*] in the Subject, that will help keeping track of v
 Regards,
 
 ~Praveen.
+
 
