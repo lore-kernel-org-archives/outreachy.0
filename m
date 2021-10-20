@@ -1,199 +1,108 @@
 X-GM-THRID: 7021079829858484224
-X-Received: by 2002:a17:902:e890:b0:142:f3:7bf7 with SMTP id w16-20020a170902e89000b0014200f37bf7mr7180898plg.87.1635860945635;
-        Tue, 02 Nov 2021 06:49:05 -0700 (PDT)
+X-Received: by 2002:a65:6287:: with SMTP id f7mr33394031pgv.444.1634723491882;
+        Wed, 20 Oct 2021 02:51:31 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a17:902:e5d0:: with SMTP id u16ls3871888plf.0.gmail; Tue, 02
- Nov 2021 06:49:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzzjKy9F6VhGUjnqf/jrvHV4wO1mcViCay9Eq03uvEFa37DPcgGF0DXcq39zVlBRQVjLbgn
-X-Received: by 2002:a17:90a:6283:: with SMTP id d3mr6832343pjj.64.1635860944247;
-        Tue, 02 Nov 2021 06:49:04 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1635860944; cv=pass;
+Received: by 2002:a17:902:9341:: with SMTP id g1ls1192105plp.6.gmail; Wed, 20
+ Oct 2021 02:51:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxBEb/05IH1dcEpEtG3C1kj+CLEEZXZbjHc0rVaK8w80twBdiHlcwmKVpd950wI9wIOiokw
+X-Received: by 2002:a17:90a:7d11:: with SMTP id g17mr6076582pjl.19.1634723490629;
+        Wed, 20 Oct 2021 02:51:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634723490; cv=none;
         d=google.com; s=arc-20160816;
-        b=E72xhGvyDGEqdqbTb6dutE6sEXzWyd/W4KvYiDoVK5Bo1lGlx/Rcm5T5/GyrlxTqHw
-         0myLXlF6j1hw987c5WdIfDrwktd/9813fpB37JNoV7iXZIv1pbJA8p47qrEj0j42L75o
-         Tpm1Ga9zl1a0DVYuCefrUBcjhetpEkQnr3y/EsnmyMaq9Uj974B/DiA/fgQL5aEsdnxo
-         bfBMQa5vzJ4SuzYNuOlyaXRP89lY5RQ3Cu9PXPCn1lfOyvbO4z1C0FqJbXC0NjHEReFb
-         fw0uwvnZiRGX8NskBX5Eta+rjijsaeMyIb1ujhCH3SkM4R594TqLiTS//6OPBSyUGi53
-         mEHQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:in-reply-to:content-disposition:references
-         :message-id:subject:cc:to:from:date:dkim-signature:dkim-signature;
-        bh=t6mK7CdNAWeS1TrGnruXIBBD3cRcGk4v7jTcfTxJqIE=;
-        b=Uki9tGttH8IzKbwpRH0S3+o+UsWxhaHm+pRvIH2tM118Y0w5wvMewSASdHq2EKQVbW
-         YmpTxCggGZ8LqmtC0rAw1Cwd64wZiVEvAyNYB/GhHtQaSBEIhpsb6lUIQrwrFmytx5mr
-         QtwcHDdE18DTZiwBCfNHtSCBcRG74fLkTN8sE7Gp9NAmFfZAqiwmMIlXg1gmwyPqdUnJ
-         yT+DSV46sKvLuQeUL3eSPrr6vKa7TJy+RabfbeSHdHv6uZYv9MuMWWxxlJnMWN+NmzX8
-         E1xPPr503JfdDZ88rAa5zhj3WvC2IwmYL+s4AaYUPEnR0Ea7bLtGXcuWF4LtBjxj0PjG
-         sQcg==
-ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2021-07-09 header.b="B/0ved1z";
-       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=yDYdUurC;
-       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 205.220.177.32 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Return-Path: <dan.carpenter@oracle.com>
-Received: from mx0b-00069f02.pphosted.com (mx0b-00069f02.pphosted.com. [205.220.177.32])
-        by gmr-mx.google.com with ESMTPS id w3si943864ply.5.2021.11.02.06.49.04
+        b=WJZUkKIThgVyaqpqk40d/tRMa9I5hH8aMZvyxXd75WczwBCqtwLrJz3K90eN343tqo
+         KumFYLQYGq9jLPfhyleKpHTBhrmqM/oUZINVjXYJT8lGqs57WtCqJQUwK/f2j8vMfL2v
+         OGWQuta1pXvIKU+8+8xt0cTSQBlZi1nV/aLOVzj+xzVl/8aLqkQ7QwBRUg4G1jDJ74Hb
+         heoSDtsyG0Lbr9Y557dHtWLo+08q1mxf4bV4QW6ennW77s4c4m/fk+EsuCjg4oVPHnkb
+         IduDGg7fg+FW7yPclNNy1BiMudUMWgeB5O5jzGTiBaEV/h04NT+ZXgo+xNjEjn9ju9NY
+         N8Gw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:in-reply-to:from:references:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=j4WlK2hOFHNCDGbyNuqEGjx1ER9zvNdVKUnQngZATS0=;
+        b=gmytfCyHbj9CIAZnhPpbUIJUEyt1FgS38nt8cOkL51FTXA5jS3y8X7sjmIHxWtu9tU
+         24tdWEf06JpmRJBxF/voiuuqX6KhSFLJ2mshEpwAIghwpk7g4JRqX1MFVeegzl6kc3h/
+         YEzYItZg8hRv/JJj4ygbwrOcPxGU7F2hucdQHLPzYa4LaEUZcUVeJj8eYDSrAFDz6FV2
+         MjdbhMvLtj34eITa5vYuMvBEv82fHTrZZaiL4Ta6ylPDJIHXTMOAVtrCrJEm1V8Lu9Gl
+         t0dvGYMPCyM6TtOtGV9erYDtlgAfni7rI+LxcPrHhOGYNinzTOJCJz2FP9Cv4qPLVQbi
+         gFnQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Qm1PZYIC;
+       spf=pass (google.com: domain of kpraveen.lkml@gmail.com designates 2607:f8b0:4864:20::52a as permitted sender) smtp.mailfrom=kpraveen.lkml@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <kpraveen.lkml@gmail.com>
+Received: from mail-pg1-x52a.google.com (mail-pg1-x52a.google.com. [2607:f8b0:4864:20::52a])
+        by gmr-mx.google.com with ESMTPS id t34si124513pfg.3.2021.10.20.02.51.30
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 02 Nov 2021 06:49:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 205.220.177.32 as permitted sender) client-ip=205.220.177.32;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 20 Oct 2021 02:51:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kpraveen.lkml@gmail.com designates 2607:f8b0:4864:20::52a as permitted sender) client-ip=2607:f8b0:4864:20::52a;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2021-07-09 header.b="B/0ved1z";
-       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=yDYdUurC;
-       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 205.220.177.32 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 1A2DPfAA001771;
-	Tue, 2 Nov 2021 13:49:02 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
- : subject : message-id : references : content-type : in-reply-to :
- mime-version; s=corp-2021-07-09;
- bh=t6mK7CdNAWeS1TrGnruXIBBD3cRcGk4v7jTcfTxJqIE=;
- b=B/0ved1z2lmFfMHSRWm/pfAP6jSL/xBIAp+O0bzC/RoPUPBcspSZgT6TMNQuuGZu90d8
- 8Htn3IPlDu6/kfeCbsyVOyQJJiMWbiFVmbFOvlF/GcgabjhGfr104MN/SvOwpoMCmT8g
- +YOPwYQc2j2T1PGRStMu+kGArdkBc2PnupSo5VvsvSP4Z/cdIbQCV4ZoFiT1FJYe3ZNa
- ISGKX+knqKy+jY3tUh2BWNKLwMA7mcN/Z8Hw3OpJ5MN2bivKC4NDldDGT8Kf4f6J8oqF
- xFJK/yVsav/QRe41e3NQV82aU3W6rKESpWGBmwSDpXDX8jFxl0Ui2X+F9Ks2gkku6oxe fw== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
-	by mx0b-00069f02.pphosted.com with ESMTP id 3c27r5f4aj-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 02 Nov 2021 13:49:01 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
-	by aserp3030.oracle.com (8.16.1.2/8.16.1.2) with SMTP id 1A2DjcTj002766;
-	Tue, 2 Nov 2021 13:49:01 GMT
-Received: from nam11-dm6-obe.outbound.protection.outlook.com (mail-dm6nam11lp2176.outbound.protection.outlook.com [104.47.57.176])
-	by aserp3030.oracle.com with ESMTP id 3c0v3dq9sy-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 02 Nov 2021 13:49:00 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jT7Pb5zcPYwBk6cd6ytxD3jZjmgXrfLypv45lVsWRMcFeK7U5xXkuBri1kXQMsLmyJ4gHipCHtXW1O3teVFrnihUeZoQ9OP8EpNHrEgO66UedYuIduyNDlHewSnbINXLNysFQWwnunSZUo8xWvyvHMvjb5HNoONmqANu8O2JZ4qDH54FmWKz+5FIooT5p0kyrlcgVCZEKTFomXVl/e7GHeVVAVpeo1Nh+lbKvpEB3u8r18LLnh/GMy9C/RqjfarNtuto8onN0PHDEQ7umZ+RY2HxLM3HjlkewmiFRyK79uNhA9QME2GLbISqUQKM8GNWO/LTo3h0e2DdznkAdHlNfQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=t6mK7CdNAWeS1TrGnruXIBBD3cRcGk4v7jTcfTxJqIE=;
- b=cby2mh5qEEwe2KqTBzHFmaeGsBMzWcMk0eWsLSPsU5U89WzCqnkf5sQ4b/CsreT+fo1m44Se53QE3SPyOioSKb3kuZ5QgiHqFWRjwdqyoXw2BwVd6S3u/cCQUGmUu86K62lqEkFT8zU0F7UAy/zRaUNeh5besQztficB6IE1RkMrO3iMsz3Uapkq9NSrF9imqmO7N8rcZIFSJMvmqBXxdW2XX+Vxvapwh2a7W4TP2+xCGj8pS/b9SoBwm052tJ9MYCbdh/AxqHj21n94feDgQNjeoOm+Dc7i5b6o6MlncfyB2dhEMeMW8pWwSUZFXUpSrle2cCPEYx6sxHygixNC3g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=Qm1PZYIC;
+       spf=pass (google.com: domain of kpraveen.lkml@gmail.com designates 2607:f8b0:4864:20::52a as permitted sender) smtp.mailfrom=kpraveen.lkml@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pg1-x52a.google.com with SMTP id e65so19608207pgc.5
+        for <outreachy-kernel@googlegroups.com>; Wed, 20 Oct 2021 02:51:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=t6mK7CdNAWeS1TrGnruXIBBD3cRcGk4v7jTcfTxJqIE=;
- b=yDYdUurCuoJYGJlVg6xqfUDSzcLMGRCWldNAwdwGkIIFZuXfAdpU9/XrkZFwqujBiQpGXyXBMX8rZgf/RI4UpGTjyv2aw6lJ2e13PvbfiDCviPoS7m2JSq6KsHinvFtC2Vz2kq41CJ6Fcb8zcicMf3OLepSP3YbO9iTeDMTXMGM=
-Authentication-Results: gmail.com; dkim=none (message not signed)
- header.d=none;gmail.com; dmarc=none action=none header.from=oracle.com;
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28) by MWHPR10MB1951.namprd10.prod.outlook.com
- (2603:10b6:300:10a::14) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4649.15; Tue, 2 Nov
- 2021 13:48:59 +0000
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::d409:11b5:5eb2:6be9]) by MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::d409:11b5:5eb2:6be9%5]) with mapi id 15.20.4649.020; Tue, 2 Nov 2021
- 13:48:59 +0000
-Date: Tue, 2 Nov 2021 16:48:37 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Kushal Kothari <kushalkothari285@gmail.com>
-Cc: gregkh@linuxfoundation.org, fabioaiuto83@gmail.com, marcocesati@gmail.com,
-        ross.schm.dev@gmail.com, linux-staging@lists.linux.dev,
-        linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
-        mike.rapoport@gmail.com, staging@lists.linux.dev
-Subject: Re: [PATCH] staging: rtl8723bs: core: Remove true and false
- comparison and unnecessary parentheses
-Message-ID: <20211102134837.GI2794@kadam>
-References: <20211020093458.129672-1-kushalkothari285@gmail.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20211020093458.129672-1-kushalkothari285@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-ClientProxiedBy: JNXP275CA0019.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:19::31)
- To MWHPR1001MB2365.namprd10.prod.outlook.com (2603:10b6:301:2d::28)
+        d=gmail.com; s=20210112;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :references:from:in-reply-to:content-transfer-encoding;
+        bh=j4WlK2hOFHNCDGbyNuqEGjx1ER9zvNdVKUnQngZATS0=;
+        b=Qm1PZYICeYlQbT8TaxFLElQoIXgzW5G2AnD3Gc4EY23N/Y8TghR0aTarDyQth7DQRc
+         /LGP+OFxyOzhU1cGoRIqg1CVG45WZy1vEuYRfZRhvbwTIpciffawhg+ANDlpMKMJ/WSs
+         uybWD8eg650GxSVogdkJov4lA/KUVCwwLliUJXUzEIwgLAbDEBoO4EdLzVargytDT6rL
+         gYnk18mCfnh1hkEeo75VKaSUWgiWCYPHQIIskwnu0EH8SGGVBSCDkSvxB2jZ2lXr4yhK
+         Pqh6m6+la/4UlEkonqf97/+t/tFgg0bgfMMzdp2kVg/Fs4c0AdzMN1sVlQlxeY4Vxmio
+         getg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=j4WlK2hOFHNCDGbyNuqEGjx1ER9zvNdVKUnQngZATS0=;
+        b=XX+QGtgJUys1EDdMIWvtgzzGgD3hZHok60qjyX+mEjwUBJ3tn55nhgIj1SamC3g+be
+         Sj3p1h9lLNceC3A65K0ntbSiqZ2x5ee8QfR+VZHPuc0KWZN6yoDLe5kLLG2gDvGugtfz
+         1Tkw+aoRHxnoZ/xxZsvX/dircIri2m5REug+rxpRN6AmzcI6PwfJMqVAEiw7GjKZ+Zg0
+         gN6PsYtXY58pXCdyvuvGGpjWHDCLQJA2OK8eIzOYf8Fh8An748difNto0yfPwO3cG9nm
+         hiXAD6pG+JSbOYamRvVX0i+srVkQu+QVAXBkBB+dQZTaPqG6XSWDLUZxIP4eDmi2kZn8
+         +Thw==
+X-Gm-Message-State: AOAM531kQ8GplXs49s69LI7syQlTuigxkQjtfqEvv5hWfQeCDOoZzAoL
+	ENKdmAYi621pkvMmQayjAQ0=
+X-Received: by 2002:a05:6a00:815:b0:44d:2193:f688 with SMTP id m21-20020a056a00081500b0044d2193f688mr5294132pfk.4.1634723490207;
+        Wed, 20 Oct 2021 02:51:30 -0700 (PDT)
+Return-Path: <kpraveen.lkml@gmail.com>
+Received: from [192.168.1.122] ([122.171.220.247])
+        by smtp.gmail.com with ESMTPSA id b8sm1849206pfi.103.2021.10.20.02.51.26
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 20 Oct 2021 02:51:29 -0700 (PDT)
+Message-ID: <3e8b8712-72bd-2d3f-e3d3-16b912706a4e@gmail.com>
+Date: Wed, 20 Oct 2021 15:21:25 +0530
 MIME-Version: 1.0
-Received: from kadam (62.8.83.22) by JNXP275CA0019.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:19::31) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4649.17 via Frontend Transport; Tue, 2 Nov 2021 13:48:50 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 5e678998-76b8-403a-b33b-08d99e078525
-X-MS-TrafficTypeDiagnostic: MWHPR10MB1951:
-X-Microsoft-Antispam-PRVS: 
-	<MWHPR10MB19514ABF60B0FEC76AE34ED68E8B9@MWHPR10MB1951.namprd10.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:660;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 
-	YJkVXYNxEcFmNW1G57wBUCDTk7XmRtremdlh0BSfmZE/GsjRVzHABnck0FN7Wg8Bql4ewePOhG4td9VGJv55YG5msb8JB7a6RHMxU/6GCEMJZF6Jwyuv/LomdwbxSGrybAekGN26ip1LlO6FnqqP9w3jiwDMwjQy9r/mnqfFEw2IMa8Lsd8ytp6sQ6D74lB0MTNDeWnpdeZJpyvOVB9hz7vQVYxcjRt874eDkqU80TQkaglWkhwU9L/m1r3oyqJEvAkprMCwJUit48H2MR15DzBJZhFK4kySoB2VEVQLcM0Sk4PcHw7gtZROWI7E+hyEgpnkE720FxOHAWYpDlY1MkzCMaYHmZSwfNpKkZrj8Mlgfijupi19ATsKyMs6OS26GOuOFyqn9ooa04COeC93kyrfuRlykCpObjfV531BJxJZW07fxednJ0n4neTa7J+S64dNLqqpPEDi5vmzKXjYquH5fLMSkvdWrvX92U1UQ0iZY+xC3mxbvZ7YWbHt7iw52SNEhE2XgiZ++XXSOET+sc+e0fNN/2zn2/aM5SSRbLS/Nt+cpTa9W22nTxm4wHuoj4AuIekvZGPBx1js5bNquj+ddr8h4TSNy0SXNi56aoi+f8KPSyYy/b8rXR0pnILZBKX5if2/08GlAHS3w5LV4b2FHQOnFl2yTi0ScQAlUO578EDcGGjj3fcsVFOK4WZPLRjVek2nbwBY2pdOZ/Ft3w==
-X-Forefront-Antispam-Report: 
-	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MWHPR1001MB2365.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(366004)(316002)(186003)(66556008)(66476007)(66946007)(1076003)(8676002)(38350700002)(38100700002)(9576002)(956004)(6496006)(2906002)(6916009)(52116002)(4326008)(83380400001)(8936002)(7416002)(26005)(508600001)(55016002)(9686003)(33716001)(33656002)(6666004)(44832011)(5660300002)(86362001);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 
-	=?us-ascii?Q?zUy2pT0QEddoC7cwi8FM0tL6mMjxzzScIsLHirqhxIom3jz6PsfzEic1MMgL?=
- =?us-ascii?Q?HuR7D4oLP/xtw5XaznK/atLAiVy5Zd+z0JQU9rGEYqw4MJFFbIy4QoZw0iBR?=
- =?us-ascii?Q?bXCo8uNnDvdUj2b0K/a3uyyb4YBQv2q1S1T9H7dUUMcdoq5OUcMTO5H4GSgJ?=
- =?us-ascii?Q?CNgX8myKikSlmmyhG5libo1AHZbO6iUK+15G39iWmo6esvGF7/tdbuUP+Gsf?=
- =?us-ascii?Q?YH/kFxgGSX35/OH5kDgH6PsxOLlnszSI2FBBRwnpDMPApDDJHTTXqxURGWKD?=
- =?us-ascii?Q?3sME2GVStgN3dPSYLIxHgv+oSB0MbFpF8611lvgHsUBcNNXzY1fuVIKg23Tl?=
- =?us-ascii?Q?VujckQS+Ta9URR3uurbjtNmMTyKH8Oy5Esaev1jIuD8Rm2BvYboW+A9sg+P3?=
- =?us-ascii?Q?hWOYzfcjCjAddQMuJHkH8lYLlG5jBLfW98riwvHpgGX79koNNBfcbMryxCb1?=
- =?us-ascii?Q?OpbUjjcRuoDj8p85P/R2iX3BvG9yAN5R3CZi8+opU1KWZy7hZNJbM38NilJI?=
- =?us-ascii?Q?gzhL/44cMX6ZJ09JKA6ko0cfxES/fNury/aI48qwCfhK7FUXgGhJ4RWBO6ie?=
- =?us-ascii?Q?SqakWpmPOFH/C/XWhg/Jc1UOhBgW5lsVD2ImVWyGR0SGzX+BXz0neEW4cFQ3?=
- =?us-ascii?Q?FN4ExSJVnO3Eev9GpW3ASVRc0+kiV049cGGSl5BqaVjRmY82AMB1wOzm7F/p?=
- =?us-ascii?Q?C/AdMujkJxO+XRto5I6FRDZit8tr0XqfGu72JylcNXcm2k2mJ7EPKgdE7edj?=
- =?us-ascii?Q?RzNnstGqkq1B6cDsr85U01KD9BYozaIcVoqhmhw3bq1W/YctO/HQ8LgThQzn?=
- =?us-ascii?Q?XtY2i7Yco068YLMA+Iwuucw2Z1qUJn1ySH6RZGSA0d6S+hR13nUoBnCcnduH?=
- =?us-ascii?Q?JmN1wLDPbMDHWPkO4it1jv/vIKwJWotSkA7L7enNv1eHFm93+4IZxcir+n3o?=
- =?us-ascii?Q?PrU0gAnjN2oAdKTnEVG6B7/C9qJ/MV2RsDsReOcBkcHBphDleB3PKP2CUeBg?=
- =?us-ascii?Q?z33sh6BV8H40MdZ7oA3C1ZS+DM0cASK2ekfr7BqQTWJmwzpaT58UcAmy0ZT5?=
- =?us-ascii?Q?8k68zwP5kb69leCxIav+fqazShxY1Np6/JImQK8JR6OfO+mvC8kI79YRT+tT?=
- =?us-ascii?Q?I8Cg+Ni15A35FKeCgm+0V5sWgBhS4F6LhtDWRfuID69Uz7W0zx9tbzi+zn7L?=
- =?us-ascii?Q?EY9RYQtEij8fSQWBZnonlLAUH5Xv5I3B88lMgrFDiBsx295EdiXN7mxrfi53?=
- =?us-ascii?Q?K09zGCL/lWJqg6wBXC0h9UwaOzoASDKMLhzAH2ukKpkjrSMJuOVKJzRzt4AV?=
- =?us-ascii?Q?OFI/2Cd6iTwKVD56cgJUDiD6Y/LAXAj80a8vVc+qUR80JahRYGywdUegAAxZ?=
- =?us-ascii?Q?P8GGFRhoBf+p/aCXBJBN0w3Og4nR4xppbigwYE1G9eHeFyxxHEpxpWxOTY/W?=
- =?us-ascii?Q?hELVVKg/m+4McI8piAg9cVVsxnVFo9vrO7frbmw0/Dl8H/fv0WwKF8EVYgRP?=
- =?us-ascii?Q?jhlyyvb5HnH4yBIp8X3u/ALqhDa3Znkb6dtEq9157x1Bz5Ul82jXrjME4a8c?=
- =?us-ascii?Q?DakfnT33q7Zjae/W3NLM/5Qsrh28/qBxVnp2VYmE6x2fV2uFoYwkppAyr7GU?=
- =?us-ascii?Q?o8mtALQPnrkxKLKclpQpIxMWmjvIfjwaZyif0yg5XITaV33n7cbs4hByyKqB?=
- =?us-ascii?Q?CMz6TQ=3D=3D?=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5e678998-76b8-403a-b33b-08d99e078525
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Nov 2021 13:48:58.8923
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: IrktFTPP0vce6wsrbHDW/LEBhoCDocxdlscSzGt3X1vnugDhAhKZr9hIvqvJ6JZ82T23rX7DEC3XPJRiRP4HcXxprdwj/xhsaJpcRFvM7yM=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR10MB1951
-X-Proofpoint-Virus-Version: vendor=nai engine=6300 definitions=10155 signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999 mlxscore=0 adultscore=0
- spamscore=0 bulkscore=0 phishscore=0 suspectscore=0 malwarescore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2110150000
- definitions=main-2111020081
-X-Proofpoint-ORIG-GUID: fsAocce2eMbfQSN5A00kWPbI6GK3EjOV
-X-Proofpoint-GUID: fsAocce2eMbfQSN5A00kWPbI6GK3EjOV
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.2.0
+Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8723bs: core: Remove true
+ and false comparison and unnecessary parentheses
+Content-Language: en-US
+To: Kushal Kothari <kushalkothari285@gmail.com>, gregkh@linuxfoundation.org,
+ fabioaiuto83@gmail.com, marcocesati@gmail.com, dan.carpenter@oracle.com,
+ ross.schm.dev@gmail.com, linux-staging@lists.linux.dev,
+ linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com,
+ mike.rapoport@gmail.com, staging@lists.linux.dev
+References: <20211020093458.129672-1-kushalkothari285@gmail.com>
+From: Praveen Kumar <kpraveen.lkml@gmail.com>
+In-Reply-To: <20211020093458.129672-1-kushalkothari285@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-This should be a v2 patch.  There is a specific format for that.  The
-subject isn't really correct.  It should just be:
-
-Subject: [PATCH] staging: rtl8723bs: Remove true and false comparisons
-
-Removing the unnecessary parentheses is a necessary part of removing the
-comparisons but it's not its own thing.  You can mention it in the
-commit message if you want, but don't put it in the subject.  It's not
-even necessarily something I would mention because everyone understands
-why you're removing the parentheses...  But if you want you can add that
-to the commit message:  "After I removed the "== true" then I had to
-remove some extra parentheses to avoid introducing a new checkpatch
-warning".
-
-On Wed, Oct 20, 2021 at 03:04:58PM +0530, Kushal Kothari wrote:
+On 20-10-2021 15:04, Kushal Kothari wrote:
 > Remove comparison to true and false in if statement.
 > Issue found with checkpatch.pl.
 > CHECK: Using comparison to true is error prone
 > CHECK: Using comparison to false is error prone
+
+Request to please document the modification / comments handled from the previous patch sent.
+Also, please update [PATCH V*] in the Subject, that will help keeping track of versions. Thanks.
+
 > CHECK: Unnecessary parentheses
 > 
 > Signed-off-by: Kushal Kothari <kushalkothari285@gmail.com>
@@ -214,13 +123,6 @@ On Wed, Oct 20, 2021 at 03:04:58PM +0530, Kushal Kothari wrote:
 > +	if ((!pcmdpriv->padapter->hw_init_completed && !bAllow) ||
 > +		!atomic_read(&pcmdpriv->cmdthd_running) 	/* com_thread not running */
 >  	)
-
-In your v1 patch, you were more conservative and changed fewer things.
-Once you start moving the || to the previous line, then it opens up
-other questions like should you align the !atomic_read() correctly and
-move the ')' character?  And the answer is probably no.  Just do it like
-you did in v1.  No one had an issue with that.
-
 >  		return _FAIL;
 >  
 > @@ -372,7 +372,7 @@ void rtw_free_cmd_obj(struct cmd_obj *pcmd)
@@ -229,10 +131,6 @@ you did in v1.  No one had an issue with that.
 >  	if (adapter->cmdThread &&
 > -		atomic_read(&(adapter->cmdpriv.cmdthd_running)) == true &&
 > +		atomic_read(&adapter->cmdpriv.cmdthd_running) &&
-
-This is not related to boolean comparisons so it belongs in another
-patch.
-
 >  		adapter->cmdpriv.stop_req == 0) {
 >  		adapter->cmdpriv.stop_req = 1;
 >  		complete(&adapter->cmdpriv.cmd_queue_comp);
@@ -242,9 +140,6 @@ patch.
 >  	struct adapter *padapter = context;
 > -	struct cmd_priv *pcmdpriv = &(padapter->cmdpriv);
 > +	struct cmd_priv *pcmdpriv = &padapter->cmdpriv;
-
-Separate patch.
-
 >  	struct drvextra_cmd_parm *extra_parm = NULL;
 >  
 >  	thread_enter("RTW_CMD_THREAD");
@@ -254,9 +149,6 @@ Separate patch.
 >  	pcmdpriv->stop_req = 0;
 > -	atomic_set(&(pcmdpriv->cmdthd_running), true);
 > +	atomic_set(&pcmdpriv->cmdthd_running, true);
-
-Separate.
-
 >  	complete(&pcmdpriv->terminate_cmdthread_comp);
 >  
 >  	while (1) {
@@ -266,9 +158,6 @@ Separate.
 >  
 > -		if ((padapter->bDriverStopped == true) || (padapter->bSurpriseRemoved == true)) {
 > +		if (padapter->bDriverStopped || padapter->bSurpriseRemoved) {
-
-Good.
-
 >  			netdev_dbg(padapter->pnetdev,
 >  				   "%s: DriverStopped(%d) SurpriseRemoved(%d) break at line %d\n",
 >  				   __func__, padapter->bDriverStopped,
@@ -278,9 +167,6 @@ Good.
 >  _next:
 > -		if ((padapter->bDriverStopped == true) || (padapter->bSurpriseRemoved == true)) {
 > +		if (padapter->bDriverStopped || padapter->bSurpriseRemoved) {
-
-Good.
-
 >  			netdev_dbg(padapter->pnetdev,
 >  				   "%s: DriverStopped(%d) SurpriseRemoved(%d) break at line %d\n",
 >  				   __func__, padapter->bDriverStopped,
@@ -290,9 +176,6 @@ Good.
 >  
 > -		if (mutex_lock_interruptible(&(pcmd->padapter->cmdpriv.sctx_mutex)) == 0) {
 > +		if (mutex_lock_interruptible(&pcmd->padapter->cmdpriv.sctx_mutex) == 0) {
-
-Separate.
-
 >  			if (pcmd->sctx) {
 >  				netdev_dbg(padapter->pnetdev,
 >  					   FUNC_ADPT_FMT " pcmd->sctx\n",
@@ -302,11 +185,149 @@ Separate.
 >  			}
 > -			mutex_unlock(&(pcmd->padapter->cmdpriv.sctx_mutex));
 > +			mutex_unlock(&pcmd->padapter->cmdpriv.sctx_mutex);
+>  		}
+>  
+>  		/* call callback function for post-processed */
+> @@ -523,7 +523,7 @@ int rtw_cmd_thread(void *context)
+>  	} while (1);
+>  
+>  	complete(&pcmdpriv->terminate_cmdthread_comp);
+> -	atomic_set(&(pcmdpriv->cmdthd_running), false);
+> +	atomic_set(&pcmdpriv->cmdthd_running, false);
+>  
+>  	thread_exit();
+>  }
+> @@ -543,7 +543,7 @@ u8 rtw_sitesurvey_cmd(struct adapter  *padapter, struct ndis_802_11_ssid *ssid,
+>  	struct cmd_priv 	*pcmdpriv = &padapter->cmdpriv;
+>  	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
+>  
+> -	if (check_fwstate(pmlmepriv, _FW_LINKED) == true)
+> +	if (check_fwstate(pmlmepriv, _FW_LINKED))
+>  		rtw_lps_ctrl_wk_cmd(padapter, LPS_CTRL_SCAN, 1);
+>  
+>  	ph2c = rtw_zmalloc(sizeof(struct cmd_obj));
+> @@ -725,7 +725,7 @@ u8 rtw_joinbss_cmd(struct adapter  *padapter, struct wlan_network *pnetwork)
+>  	struct ht_priv 		*phtpriv = &pmlmepriv->htpriv;
+>  	enum ndis_802_11_network_infrastructure ndis_network_mode = pnetwork->network.infrastructure_mode;
+>  	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
+> -	struct mlme_ext_info *pmlmeinfo = &(pmlmeext->mlmext_info);
+> +	struct mlme_ext_info *pmlmeinfo = &pmlmeext->mlmext_info;
+>  	u32 tmp_len;
+>  	u8 *ptmp = NULL;
+>  
+> @@ -776,7 +776,7 @@ u8 rtw_joinbss_cmd(struct adapter  *padapter, struct wlan_network *pnetwork)
+>  	/*  If not,  we have to copy the connecting AP's MAC address to it so that */
+>  	/*  the driver just has the bssid information for PMKIDList searching. */
+>  
+> -	if (pmlmepriv->assoc_by_bssid == false)
+> +	if (!pmlmepriv->assoc_by_bssid)
+>  		memcpy(&pmlmepriv->assoc_bssid[0], &pnetwork->network.mac_address[0], ETH_ALEN);
+>  
+>  	psecnetwork->ie_length = rtw_restruct_sec_ie(padapter, &pnetwork->network.ies[0], &psecnetwork->ies[0], pnetwork->network.ie_length);
+> @@ -927,7 +927,7 @@ u8 rtw_setstakey_cmd(struct adapter *padapter, struct sta_info *sta, u8 unicast_
+>  	else
+>  		GET_ENCRY_ALGO(psecuritypriv, sta, psetstakey_para->algorithm, false);
+>  
+> -	if (unicast_key == true)
+> +	if (unicast_key)
+>  		memcpy(&psetstakey_para->key, &sta->dot118021x_UncstKey, 16);
+>  	else
+>  		memcpy(&psetstakey_para->key, &psecuritypriv->dot118021XGrpKey[psecuritypriv->dot118021XGrpKeyid].skey, 16);
+> @@ -1165,7 +1165,7 @@ u8 rtw_set_chplan_cmd(struct adapter *padapter, u8 chplan, u8 enqueue, u8 swconf
+>  	u8 res = _SUCCESS;
+>  
+>  	/*  check if allow software config */
+> -	if (swconfig && rtw_hal_is_disable_sw_channel_plan(padapter) == true) {
+> +	if (swconfig && rtw_hal_is_disable_sw_channel_plan(padapter)) {
+>  		res = _FAIL;
+>  		goto exit;
+>  	}
+> @@ -1251,7 +1251,7 @@ u8 traffic_status_watchdog(struct adapter *padapter, u8 from_timer)
+>  	/*  */
+>  	/*  Determine if our traffic is busy now */
+>  	/*  */
+> -	if ((check_fwstate(pmlmepriv, _FW_LINKED) == true)
+> +	if (check_fwstate(pmlmepriv, _FW_LINKED)
+>  		/*&& !MgntInitAdapterInProgress(pMgntInfo)*/) {
+>  		/*  if we raise bBusyTraffic in last watchdog, using lower threshold. */
+>  		if (pmlmepriv->LinkDetectInfo.bBusyTraffic)
+> @@ -1283,7 +1283,7 @@ u8 traffic_status_watchdog(struct adapter *padapter, u8 from_timer)
+>  			(pmlmepriv->LinkDetectInfo.NumRxUnicastOkInPeriod > 2)) {
+>  			bEnterPS = false;
+>  
+> -			if (bBusyTraffic == true) {
+> +			if (bBusyTraffic) {
+>  				if (pmlmepriv->LinkDetectInfo.TrafficTransitionCount <= 4)
+>  					pmlmepriv->LinkDetectInfo.TrafficTransitionCount = 4;
+>  
+> @@ -1343,7 +1343,7 @@ static void dynamic_chk_wk_hdl(struct adapter *padapter)
+>  
+>  	pmlmepriv = &(padapter->mlmepriv);
+>  
+> -	if (check_fwstate(pmlmepriv, WIFI_AP_STATE) == true)
+> +	if (check_fwstate(pmlmepriv, WIFI_AP_STATE))
+>  		expire_timeout_chk(padapter);
+>  
+>  	/* for debug purpose */
+> @@ -1378,8 +1378,8 @@ void lps_ctrl_wk_hdl(struct adapter *padapter, u8 lps_ctrl_type)
+>  	struct mlme_priv *pmlmepriv = &(padapter->mlmepriv);
+>  	u8 mstatus;
+>  
+> -	if ((check_fwstate(pmlmepriv, WIFI_ADHOC_MASTER_STATE) == true)
+> -		|| (check_fwstate(pmlmepriv, WIFI_ADHOC_STATE) == true)) {
+> +	if (check_fwstate(pmlmepriv, WIFI_ADHOC_MASTER_STATE) ||
+> +		check_fwstate(pmlmepriv, WIFI_ADHOC_STATE)) {
+>  		return;
+>  	}
+>  
+> @@ -1387,7 +1387,7 @@ void lps_ctrl_wk_hdl(struct adapter *padapter, u8 lps_ctrl_type)
+>  	case LPS_CTRL_SCAN:
+>  		hal_btcoex_ScanNotify(padapter, true);
+>  
+> -		if (check_fwstate(pmlmepriv, _FW_LINKED) == true) {
+> +		if (check_fwstate(pmlmepriv, _FW_LINKED)) {
+>  			/*  connect */
+>  			LPS_Leave(padapter, "LPS_CTRL_SCAN");
+>  		}
+> @@ -1513,7 +1513,7 @@ static void rtw_lps_change_dtim_hdl(struct adapter *padapter, u8 dtim)
+>  	if (dtim <= 0 || dtim > 16)
+>  		return;
+>  
+> -	if (hal_btcoex_IsBtControlLps(padapter) == true)
+> +	if (hal_btcoex_IsBtControlLps(padapter))
+>  		return;
+>  
+>  	mutex_lock(&pwrpriv->lock);
+> @@ -1619,7 +1619,7 @@ static void rtw_chk_hi_queue_hdl(struct adapter *padapter)
+>  
+>  	rtw_hal_get_hwreg(padapter, HW_VAR_CHK_HI_QUEUE_EMPTY, &empty);
+>  
+> -	while (false == empty && jiffies_to_msecs(jiffies - start) < g_wait_hiq_empty) {
+> +	while (!empty && jiffies_to_msecs(jiffies - start) < g_wait_hiq_empty) {
+>  		msleep(100);
+>  		rtw_hal_get_hwreg(padapter, HW_VAR_CHK_HI_QUEUE_EMPTY, &empty);
+>  	}
+> @@ -1841,7 +1841,7 @@ static void c2h_wk_callback(struct work_struct *work)
+>  			continue;
+>  		}
+>  
+> -		if (ccx_id_filter(c2h_evt) == true) {
+> +		if (ccx_id_filter(c2h_evt)) {
+>  			/* Handle CCX report here */
+>  			rtw_hal_c2h_handler(adapter, c2h_evt);
+>  			kfree(c2h_evt);
+> @@ -2054,7 +2054,7 @@ void rtw_setassocsta_cmdrsp_callback(struct adapter *padapter,  struct cmd_obj *
+>  
+>  	spin_lock_bh(&pmlmepriv->lock);
+>  
+> -	if ((check_fwstate(pmlmepriv, WIFI_MP_STATE) == true) && (check_fwstate(pmlmepriv, _FW_UNDER_LINKING) == true))
+> +	if (check_fwstate(pmlmepriv, WIFI_MP_STATE) && check_fwstate(pmlmepriv, _FW_UNDER_LINKING))
+>  		_clr_fwstate_(pmlmepriv, _FW_UNDER_LINKING);
+>  
+>  	set_fwstate(pmlmepriv, _FW_LINKED);
+> 
 
-Separate.  Etc, same thing everywhere.  Don't fix parentheses check
-patch warnings, but don't introduce new ones either.
+Regards,
 
-regards,
-dan carpenter
-
+~Praveen.
 
