@@ -1,229 +1,151 @@
-X-GM-THRID: 6400147141672566784
-X-Received: by 10.99.1.3 with SMTP id 3mr20374445pgb.150.1490150378788;
-        Tue, 21 Mar 2017 19:39:38 -0700 (PDT)
+X-GM-THRID: 7021065776829300736
+X-Received: by 2002:a7b:c40b:: with SMTP id k11mr13752152wmi.181.1634736232834;
+        Wed, 20 Oct 2021 06:23:52 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.7.18 with SMTP id 18ls839097ote.1.gmail; Tue, 21 Mar 2017
- 19:39:38 -0700 (PDT)
-X-Received: by 10.157.14.20 with SMTP id c20mr16983535otc.149.1490150378316;
-        Tue, 21 Mar 2017 19:39:38 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from mail-pg0-x243.google.com (mail-pg0-x243.google.com. [2607:f8b0:400e:c05::243])
-        by gmr-mx.google.com with ESMTPS id y203si4248pfb.0.2017.03.21.19.39.38
+Received: by 2002:a05:600c:4ed1:: with SMTP id g17ls2769840wmq.1.canary-gmail;
+ Wed, 20 Oct 2021 06:23:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyGizFxmnh6K5VNklqrU1Xoies2GW20auE0Ir2inAMh/9dx9Ibu1BzHzj5QdMw8pWTLM1KB
+X-Received: by 2002:a7b:c214:: with SMTP id x20mr13142650wmi.103.1634736231457;
+        Wed, 20 Oct 2021 06:23:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634736231; cv=none;
+        d=google.com; s=arc-20160816;
+        b=xeu4CkG+THtfk8V6/bJvo8Kfd6p+jMHQ1KgTGT1yJmclOWrFN+fLe5r5R67UNNlZIB
+         RTnMHqPtFcNjxqXy2Ejc1MT2HTyHB60zjBqQgWWrFWwOqxP94CQU5k9tiVvjAp1Fo60e
+         mBCRX9Ru5MJWjksjBroi1uFZMiP4O5EXMLZKHfB0DiqPbri3rlp7gbRk2Rlb4xJO/3Jj
+         j20Sw1+dAqht+hsWi4CHU1ui0gtMrHI0QW/5nGFrhr4uwAR6XSJteMrKZc/nLj/p2nX2
+         xg+CJGqGrXyAkzfGx9fKNeqN1TqjSuL+JkBdXChuybBQbfJIEufx7TJZbyiCepcrOQRb
+         W0Zg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=xK9DNZI2WxuIz+Ctgl2vXcWcIENDorkB7WicrZ5sMlw=;
+        b=GCOcta2Q5RGt2uR7+QGOAyxSi7TFnUnzMV7zvT5FOHcYWVxbpF/HgH0lcsnSKqecLa
+         BFuVnTj7KemkwkSlIG3ipoT61asISSyzIw4rF6bhmw6C1y+xWwoavYXcF9539aqP5HfT
+         4f9qQ3A4C91AszSBSNkDFDJdmioFKQqHLqJZBtigFnC11SCjA6IytUCVFEl0kbw2VXKg
+         TXLGnDLMXpvdqpqgAz3v4OYCYEOq+HbCoJrPx9MeK/I7Hfmtr8BCxAG9unh3Pp0A5MCV
+         J94oZAQSH7VNtKV3ylY+31R+UdaVcIj5kRBzILXi/Um1E8ADOX2botyYk0IkDKHJXZLy
+         JxVQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=D2jt52BW;
+       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::32b as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <karolinadrobnik@gmail.com>
+Received: from mail-wm1-x32b.google.com (mail-wm1-x32b.google.com. [2a00:1450:4864:20::32b])
+        by gmr-mx.google.com with ESMTPS id o16si459377wme.3.2021.10.20.06.23.51
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 21 Mar 2017 19:39:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) client-ip=2607:f8b0:400e:c05::243;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 20 Oct 2021 06:23:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::32b as permitted sender) client-ip=2a00:1450:4864:20::32b;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of arushisinghal19971997@gmail.com designates 2607:f8b0:400e:c05::243 as permitted sender) smtp.mailfrom=arushisinghal19971997@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x243.google.com with SMTP id 79so19350067pgf.0
-        for <outreachy-kernel@googlegroups.com>; Tue, 21 Mar 2017 19:39:38 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=D2jt52BW;
+       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::32b as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wm1-x32b.google.com with SMTP id 77-20020a1c0450000000b0030da2439b21so1768362wme.0
+        for <outreachy-kernel@googlegroups.com>; Wed, 20 Oct 2021 06:23:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=ZHuRSObIN/WcSGWg7P2twxl/QrloglKThJwuBdpsxSw=;
-        b=JQKTSrmHs3C0yPrIyFEntjr7W6XaO37gKo7zDBg+V3vKiPXc9sXqNcKx5WMQot5x/Q
-         AY5oYdyVa58IRDfR4BdPhVN4++exXLTKxFZaASOT1wXDAFJdZNcjWCfP1t/J/GoVzblc
-         g/vzLLMWixrzyTz3qBsgb09M/NcGDr9ttoZ/fp3yRCNAYr+4QuuqZggxeCvo1p0zONk4
-         5785nYDMKGDyvr5VKi1CcLcYpTIhkAhMsDO8OOzRki7jZiBLW7dQ75qQXlzmbZHH4hOH
-         CasMvxRLJJsT/jsWchNJchtnrxMiQnQFQsVpJkx24NCTIfkqXrX9b/2JJVrgHTIgpC9+
-         dpfQ==
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=xK9DNZI2WxuIz+Ctgl2vXcWcIENDorkB7WicrZ5sMlw=;
+        b=D2jt52BW4x4UxWlPWIeJILigF+dk35bbQBWylH2BYt9nYqPexh7mFTEru41QxZwN+O
+         UHut3BOS91CHPbXg07iVYWFqs4M6XrrjFpzFzxaA63EkYAIR8VM4vwdns8mZVepmfonc
+         Joshy7f06L3vP1zPh1ybGSHok0GjxN+1KHpeOnqs6fEDuDAJQW2MusejKeaEZgK0KKk/
+         RjlcisnP4yilFg5Nq5xZlYkmHCguyJQDikhfTTtXCUrNGUPPrRkOhUCyImEf8xmHYEpA
+         qDHcnnEgZCFfvYYpj/ZwGY6JVWcMhpte1zpejzNRmuTDcjIrwt2j797AS7szY+pCNQAM
+         Qbtw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=ZHuRSObIN/WcSGWg7P2twxl/QrloglKThJwuBdpsxSw=;
-        b=V+yX+sx3xy3oCJsfr6vOEuHpPcoZOANjjEPf8u5GhVn29aGEcavtXCeFHTvK/7ufBt
-         ZQmNz94S4zk9TvukK5lzFotjOzG4i1qQ2r9p40DElCxsHe01PUDpZvifxqxmaLqBs8hP
-         v4u1zMocoGK+binW7KrhODD/UHkdpDVtxZNyUEoSUPXDsID0GJxf9wL8J43R/Ew6A3Io
-         55avjjwCOGKDN+7IMgVHDLxB/9XHT8BWjI4XZEFXd7t/A4OEekT2wDfHXkY5cEUQf/vG
-         HknDquMZFDf99BvH9ZdQsxfbxI2/1KsK+lS+HeXj402h03ioV7zlWh2zfgFeYUTv8ya1
-         uCww==
-X-Gm-Message-State: AFeK/H1d+5r4uCsN6aWlu4vaE/3+5qNQjqkYYzM3zGGhVUtoVcWPq3i6RI9tqabBR2rfjw==
-X-Received: by 10.84.233.200 with SMTP id m8mr51707317pln.92.1490150378007;
-        Tue, 21 Mar 2017 19:39:38 -0700 (PDT)
-Return-Path: <arushisinghal19971997@gmail.com>
-Received: from arushi-HP-Pavilion-Notebook ([14.139.82.6])
-        by smtp.gmail.com with ESMTPSA id l3sm26235pgn.10.2017.03.21.19.39.36
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 21 Mar 2017 19:39:36 -0700 (PDT)
-Date: Wed, 22 Mar 2017 08:09:33 +0530
-From: Arushi Singhal <arushisinghal19971997@gmail.com>
-To: oleg.drokin@intel.com
-Cc: Andreas Dilger <andreas.dilger@intel.com>,
-	James Simmons <jsimmons@infradead.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	lustre-devel@lists.lustre.org, devel@driverdev.osuosl.org,
-	linux-kernel@vger.kernel.org, outreachy-kernel@googlegroups.com
-Subject: [PATCH] staging: lustre: Replace a bit shift by a use of BIT.
-Message-ID: <20170322023933.GA11339@arushi-HP-Pavilion-Notebook>
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=xK9DNZI2WxuIz+Ctgl2vXcWcIENDorkB7WicrZ5sMlw=;
+        b=UWQ9q99oNzSs8Axzoy1Lu6pcwlF8h5stwSemQEGC+gi4FNCzoX+MiL2MvWolPgGuPC
+         yqQnoxRCYl5JXeb1ie75ix7kTYX8PUwd1atLudiAOPaj6tkajK2QEFg7j74KpwNFaM4O
+         Bz0JkXEJTAboYx/ectI7VH/pDC/OpCWyLoNxSLklwDc9fllvXwYA/SUVqNa+DRQAwlV1
+         cmyo40bR8KONM8j41mpBSipuJ2Pa02tFvv+zRrTopLAAhFEMtzQbN904f3buHNd84sj0
+         wYBi5bBqSLLDwD9Y6mNrNZi/JRoWK/xtzy/VPXcruibqwxIcWHvPef4BTNvmtl8TtBkK
+         hwhQ==
+X-Gm-Message-State: AOAM530EqpwZK7z+0cQ3kHL+w5zheVyuGF1QuQ2Lp5vPoDxDQOZKVRA1
+	VsCIxbd81PKlNjWLobNzTjXVPvf4lSB+QzKQ
+X-Received: by 2002:adf:bc42:: with SMTP id a2mr52925368wrh.4.1634736231141;
+        Wed, 20 Oct 2021 06:23:51 -0700 (PDT)
+Return-Path: <karolinadrobnik@gmail.com>
+Received: from localhost.localdomain ([2a01:4b00:f411:e700:e085:8cb7:7bf6:5d62])
+        by smtp.gmail.com with ESMTPSA id l5sm2064106wru.24.2021.10.20.06.23.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 20 Oct 2021 06:23:50 -0700 (PDT)
+From: Karolina Drobnik <karolinadrobnik@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org,
+	forest@alittletooquiet.net,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	Karolina Drobnik <karolinadrobnik@gmail.com>
+Subject: [PATCH v2] staging: vt6655: Rename `by_preamble_type` parameter
+Date: Wed, 20 Oct 2021 14:23:26 +0100
+Message-Id: <20211020132326.417059-1-karolinadrobnik@gmail.com>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+Content-Transfer-Encoding: 8bit
 
-This patch replaces bit shifting on 1 with the BIT(x) macro.
-This was done with coccinelle:
-@@
-constant c;
-@@
+Drop Hungarian notation prefix in the first parameter of
+`bb_get_frame_time` function. Update the comment to
+reflect that change.
 
--1 << c
-+BIT(c)
-
-Signed-off-by: Arushi Singhal <arushisinghal19971997@gmail.com>
+Signed-off-by: Karolina Drobnik <karolinadrobnik@gmail.com>
 ---
- drivers/staging/lustre/lnet/klnds/o2iblnd/o2iblnd.c           | 2 +-
- drivers/staging/lustre/lnet/klnds/socklnd/socklnd_cb.c        | 8 ++++----
- drivers/staging/lustre/lnet/klnds/socklnd/socklnd_modparams.c | 2 +-
- drivers/staging/lustre/lnet/lnet/lib-ptl.c                    | 4 ++--
- drivers/staging/lustre/lnet/lnet/net_fault.c                  | 8 ++++----
- drivers/staging/lustre/lustre/llite/lproc_llite.c             | 4 ++--
- drivers/staging/lustre/lustre/obdclass/lustre_handles.c       | 2 +-
- drivers/staging/lustre/lustre/osc/osc_request.c               | 2 +-
- 8 files changed, 16 insertions(+), 16 deletions(-)
+v2:
+* Update the change log: delete description of why `byPreambleType`
+  rename influenced that change and reference to an already merged commit
 
-diff --git a/drivers/staging/lustre/lnet/klnds/o2iblnd/o2iblnd.c b/drivers/staging/lustre/lnet/klnds/o2iblnd/o2iblnd.c
-index 79321e4aaf30..449f04f125b7 100644
---- a/drivers/staging/lustre/lnet/klnds/o2iblnd/o2iblnd.c
-+++ b/drivers/staging/lustre/lnet/klnds/o2iblnd/o2iblnd.c
-@@ -2241,7 +2241,7 @@ static int kiblnd_hdev_get_attr(struct kib_hca_dev *hdev)
- 	 * matching that of the native system
- 	 */
- 	hdev->ibh_page_shift = PAGE_SHIFT;
--	hdev->ibh_page_size  = 1 << PAGE_SHIFT;
-+	hdev->ibh_page_size  = BIT(PAGE_SHIFT);
- 	hdev->ibh_page_mask  = ~((__u64)hdev->ibh_page_size - 1);
+ drivers/staging/vt6655/baseband.c | 6 +++---
+ drivers/staging/vt6655/baseband.h | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/staging/vt6655/baseband.c b/drivers/staging/vt6655/baseband.c
+index 5efca92f1f18..8f9177db6663 100644
+--- a/drivers/staging/vt6655/baseband.c
++++ b/drivers/staging/vt6655/baseband.c
+@@ -1691,7 +1691,7 @@ static const unsigned short awc_frame_time[MAX_RATE] = {
+  *
+  * Parameters:
+  *  In:
+- *      by_preamble_type  - Preamble Type
++ *      preamble_type     - Preamble Type
+  *      by_pkt_type        - PK_TYPE_11A, PK_TYPE_11B, PK_TYPE_11GB, PK_TYPE_11GA
+  *      cb_frame_length   - Baseband Type
+  *      tx_rate           - Tx Rate
+@@ -1700,7 +1700,7 @@ static const unsigned short awc_frame_time[MAX_RATE] = {
+  * Return Value: FrameTime
+  *
+  */
+-unsigned int bb_get_frame_time(unsigned char by_preamble_type,
++unsigned int bb_get_frame_time(unsigned char preamble_type,
+ 			       unsigned char by_pkt_type,
+ 			       unsigned int cb_frame_length,
+ 			       unsigned short tx_rate)
+@@ -1717,7 +1717,7 @@ unsigned int bb_get_frame_time(unsigned char by_preamble_type,
+ 	rate = (unsigned int)awc_frame_time[rate_idx];
  
- 	hdev->ibh_mr_size = hdev->ibh_ibdev->attrs.max_mr_size;
-diff --git a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_cb.c b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_cb.c
-index eaa4399e6a2e..5bef8a7e053b 100644
---- a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_cb.c
-+++ b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_cb.c
-@@ -1906,14 +1906,14 @@ ksocknal_connect(struct ksock_route *route)
- 		if (retry_later) /* needs reschedule */
- 			break;
+ 	if (rate_idx <= 3) {		    /* CCK mode */
+-		if (by_preamble_type == 1) /* Short */
++		if (preamble_type == 1) /* Short */
+ 			preamble = 96;
+ 		else
+ 			preamble = 192;
+diff --git a/drivers/staging/vt6655/baseband.h b/drivers/staging/vt6655/baseband.h
+index 0a30afaa7cc3..15b2802ed727 100644
+--- a/drivers/staging/vt6655/baseband.h
++++ b/drivers/staging/vt6655/baseband.h
+@@ -44,7 +44,7 @@
+ #define TOP_RATE_2M         0x00200000
+ #define TOP_RATE_1M         0x00100000
  
--		if (wanted & (1 << SOCKLND_CONN_ANY)) {
-+		if (wanted & (BIT(SOCKLND_CONN_ANY))) {
- 			type = SOCKLND_CONN_ANY;
--		} else if (wanted & (1 << SOCKLND_CONN_CONTROL)) {
-+		} else if (wanted & (BIT(SOCKLND_CONN_CONTROL))) {
- 			type = SOCKLND_CONN_CONTROL;
--		} else if (wanted & (1 << SOCKLND_CONN_BULK_IN)) {
-+		} else if (wanted & (BIT(SOCKLND_CONN_BULK_IN))) {
- 			type = SOCKLND_CONN_BULK_IN;
- 		} else {
--			LASSERT(wanted & (1 << SOCKLND_CONN_BULK_OUT));
-+			LASSERT(wanted & (BIT(SOCKLND_CONN_BULK_OUT)));
- 			type = SOCKLND_CONN_BULK_OUT;
- 		}
- 
-diff --git a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_modparams.c b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_modparams.c
-index fc7eec83ac07..2d1e3479cf7e 100644
---- a/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_modparams.c
-+++ b/drivers/staging/lustre/lnet/klnds/socklnd/socklnd_modparams.c
-@@ -71,7 +71,7 @@ static int typed_conns = 1;
- module_param(typed_conns, int, 0444);
- MODULE_PARM_DESC(typed_conns, "use different sockets for bulk");
- 
--static int min_bulk = 1 << 10;
-+static int min_bulk = BIT(10);
- module_param(min_bulk, int, 0644);
- MODULE_PARM_DESC(min_bulk, "smallest 'large' message");
- 
-diff --git a/drivers/staging/lustre/lnet/lnet/lib-ptl.c b/drivers/staging/lustre/lnet/lnet/lib-ptl.c
-index 63cce0c4a065..b980c669705e 100644
---- a/drivers/staging/lustre/lnet/lnet/lib-ptl.c
-+++ b/drivers/staging/lustre/lnet/lnet/lib-ptl.c
-@@ -332,7 +332,7 @@ lnet_mt_test_exhausted(struct lnet_match_table *mtable, int pos)
- 	LASSERT(pos <= LNET_MT_HASH_IGNORE);
- 	/* mtable::mt_mhash[pos] is marked as exhausted or not */
- 	bmap = &mtable->mt_exhausted[pos >> LNET_MT_BITS_U64];
--	pos &= (1 << LNET_MT_BITS_U64) - 1;
-+	pos &= (BIT(LNET_MT_BITS_U64)) - 1;
- 
- 	return (*bmap & (1ULL << pos));
- }
-@@ -347,7 +347,7 @@ lnet_mt_set_exhausted(struct lnet_match_table *mtable, int pos, int exhausted)
- 
- 	/* set mtable::mt_mhash[pos] as exhausted/non-exhausted */
- 	bmap = &mtable->mt_exhausted[pos >> LNET_MT_BITS_U64];
--	pos &= (1 << LNET_MT_BITS_U64) - 1;
-+	pos &= (BIT(LNET_MT_BITS_U64)) - 1;
- 
- 	if (!exhausted)
- 		*bmap &= ~(1ULL << pos);
-diff --git a/drivers/staging/lustre/lnet/lnet/net_fault.c b/drivers/staging/lustre/lnet/lnet/net_fault.c
-index 18183cbb9859..e83761a77d22 100644
---- a/drivers/staging/lustre/lnet/lnet/net_fault.c
-+++ b/drivers/staging/lustre/lnet/lnet/net_fault.c
-@@ -997,10 +997,10 @@ lnet_fault_ctl(int opc, struct libcfs_ioctl_data *data)
- int
- lnet_fault_init(void)
- {
--	BUILD_BUG_ON(LNET_PUT_BIT != 1 << LNET_MSG_PUT);
--	BUILD_BUG_ON(LNET_ACK_BIT != 1 << LNET_MSG_ACK);
--	BUILD_BUG_ON(LNET_GET_BIT != 1 << LNET_MSG_GET);
--	BUILD_BUG_ON(LNET_REPLY_BIT != 1 << LNET_MSG_REPLY);
-+	BUILD_BUG_ON(LNET_PUT_BIT != BIT(LNET_MSG_PUT));
-+	BUILD_BUG_ON(LNET_ACK_BIT != BIT(LNET_MSG_ACK));
-+	BUILD_BUG_ON(LNET_GET_BIT != BIT(LNET_MSG_GET));
-+	BUILD_BUG_ON(LNET_REPLY_BIT != BIT(LNET_MSG_REPLY));
- 
- 	mutex_init(&delay_dd.dd_mutex);
- 	spin_lock_init(&delay_dd.dd_lock);
-diff --git a/drivers/staging/lustre/lustre/llite/lproc_llite.c b/drivers/staging/lustre/lustre/llite/lproc_llite.c
-index 40f1fcf8b5c0..366833dd8aa3 100644
---- a/drivers/staging/lustre/lustre/llite/lproc_llite.c
-+++ b/drivers/staging/lustre/lustre/llite/lproc_llite.c
-@@ -1308,7 +1308,7 @@ static void ll_display_extents_info(struct ll_rw_extents_info *io_extents,
- 			   r, pct(r, read_tot), pct(read_cum, read_tot),
- 			   w, pct(w, write_tot), pct(write_cum, write_tot));
- 		start = end;
--		if (start == 1 << 10) {
-+		if (start == BIT(10)) {
- 			start = 1;
- 			units += 10;
- 			unitp++;
-@@ -1506,7 +1506,7 @@ void ll_rw_stats_tally(struct ll_sb_info *sbi, pid_t pid,
- 		lprocfs_oh_clear(&io_extents->pp_extents[cur].pp_w_hist);
- 	}
- 
--	for (i = 0; (count >= (1 << LL_HIST_START << i)) &&
-+	for (i = 0; (count >= (BIT(LL_HIST_START) << i)) &&
- 	     (i < (LL_HIST_MAX - 1)); i++)
- 		;
- 	if (rw == 0) {
-diff --git a/drivers/staging/lustre/lustre/obdclass/lustre_handles.c b/drivers/staging/lustre/lustre/obdclass/lustre_handles.c
-index c9445e5ec271..11e32b5174f2 100644
---- a/drivers/staging/lustre/lustre/obdclass/lustre_handles.c
-+++ b/drivers/staging/lustre/lustre/obdclass/lustre_handles.c
-@@ -49,7 +49,7 @@ static struct handle_bucket {
- 	struct list_head	head;
- } *handle_hash;
- 
--#define HANDLE_HASH_SIZE (1 << 16)
-+#define HANDLE_HASH_SIZE (BIT(16))
- #define HANDLE_HASH_MASK (HANDLE_HASH_SIZE - 1)
- 
- /*
-diff --git a/drivers/staging/lustre/lustre/osc/osc_request.c b/drivers/staging/lustre/lustre/osc/osc_request.c
-index d8aa3fb468c7..8739abf639a7 100644
---- a/drivers/staging/lustre/lustre/osc/osc_request.c
-+++ b/drivers/staging/lustre/lustre/osc/osc_request.c
-@@ -2847,7 +2847,7 @@ static int __init osc_init(void)
- 	register_shrinker(&osc_cache_shrinker);
- 
- 	/* This is obviously too much memory, only prevent overflow here */
--	if (osc_reqpool_mem_max >= 1 << 12 || osc_reqpool_mem_max == 0) {
-+	if (osc_reqpool_mem_max >= BIT(12) || osc_reqpool_mem_max == 0) {
- 		rc = -EINVAL;
- 		goto out_type;
- 	}
+-unsigned int bb_get_frame_time(unsigned char by_preamble_type,
++unsigned int bb_get_frame_time(unsigned char preamble_type,
+ 			       unsigned char by_pkt_type,
+ 			       unsigned int cb_frame_length,
+ 			       unsigned short w_rate);
 -- 
-2.11.0
+2.30.2
 
 
