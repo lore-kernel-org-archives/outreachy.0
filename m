@@ -1,84 +1,147 @@
 X-GM-THRID: 7021065776829300736
-X-Received: by 2002:ac8:3d49:: with SMTP id u9mr5544955qtf.264.1634720107262;
-        Wed, 20 Oct 2021 01:55:07 -0700 (PDT)
+X-Received: by 2002:ac2:4251:: with SMTP id m17mr11217693lfl.514.1634720065102;
+        Wed, 20 Oct 2021 01:54:25 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:ac8:5a0f:: with SMTP id n15ls846931qta.1.gmail; Wed, 20 Oct
- 2021 01:55:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw0cupkOMHlx/53TayrMPNCy5SCuf1lg7iW8WEQr4TcaJXFmY9axm25zwzRukJe+cQVSq4p
-X-Received: by 2002:ac8:4f14:: with SMTP id b20mr5571519qte.252.1634720106521;
-        Wed, 20 Oct 2021 01:55:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634720106; cv=none;
+Received: by 2002:a2e:5c87:: with SMTP id q129ls278389ljb.3.gmail; Wed, 20 Oct
+ 2021 01:54:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJysn0ijIFFwBNfSvJ3vDkvjioG+GAL/Dgc1Qe4syeS0st3DRjev7L0iKS0VoDiHbiyHvqlH
+X-Received: by 2002:a2e:9241:: with SMTP id v1mr12138266ljg.99.1634720063229;
+        Wed, 20 Oct 2021 01:54:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634720063; cv=none;
         d=google.com; s=arc-20160816;
-        b=Sg1PNka+HNajOWcz7V3ZbXmmBvV8whKEK7dIz/2LebP3IIwjK4Akm3gtEct/90LoBt
-         FIoGc4yarin102iRonZPqCFPJF4DeybH6U+2ZYjlQLFwDMnjObsG06wYmmWoQF4atsiv
-         nGwB3bIcjkhBeXPdX1YigmmvBLrQ/dvNcAH/h8Oq6zPfx5wV+Z4dzdIQfu+NESkVhP3h
-         qOkEuhs35sckD1WxzdzpE3ZcsaL2dhZHbtu21R1D4VSAvUjxmx3hCFq9o3qOQlgVRGwS
-         lPm941C2UMTBdbiJhLquDnCCOq1q+1zpWEi0TZ9l+oNxUXFKVVKZxEbJ7/wAdShl4Y5U
-         QLlg==
+        b=tkJwfDBcADDZYi1h/2Zd7bFc7nmQ7xwA4GF8ipHG2Phl0mc8gg9EcDJfg2fPTx5Qfd
+         VCfpua6xRIBjaVns/IfbP22QVNqq5fWfLBIZdk7GPBeeNCx+TU902r3E/a5aai8489ZX
+         vqkXagm4jhwrmgv68CtVfKmu/28OK1/Mwm2N8w6Sy7XfFEnY/rypVz0IMkF+RC5MlBXl
+         mNlYGUISmgAGevmBokaL0dORK/iznyKVGus6iihgJBw/CmN2Y1QQQk2GyzqV/AfIyMNN
+         JhrwphAoLpq7V7zqQ6g6K0n95LgV5qgwV1ncD4AroIBo+rcP4fXneZgB0dyqamwJvkNN
+         y2jQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=U/sSZ8mX8debnLGodoq/GWfLouENCs0+NDFcoK33oMA=;
-        b=HvDWdUUhqHbbveW0qAZjcTTHC6Ly5OfXXY8knzHOFbVY+I/oHjmwpv3obuY9xU88l6
-         78iPwRYYwTUwCzIRxc7r0/vNVW3i8qRFAiGyNgTYj76xaVcbuklmje6xNiUJryMQ3KtJ
-         ykbNhpD0KHEThgBKQm/u5Ah6YO9UCYCWXp9UEhOtuRBg9Ue6OnuJfKqrl2fHHeoYadbN
-         0Ma7WK/Cdx7TmqP6xVeuGrGdMGeOOueqPfyf8HJYPtageYkNPiS+O/VvxrTvbmCA/3BG
-         l+pjXTJedk1Y2ioJw/cN9BJApK7iaN0DGPlNHpgluPOu/RfBloZh9FOl818Gbp+lkj3B
-         hg1A==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:ironport-hdrordr;
+        bh=h3ejTtOYCbX7I7HBRj9Dj61VcWRCjgaVkJNGt9LBJqc=;
+        b=rUZoSZdKraNA5Urr+XL84JmD8F79qVzEu4dKfu1lR6dafRdSeVk6Lb2E7Avg1CX6XC
+         R80mdZtDqhfyDysjVBmaIv9Hii3i/4nGoexECqOHAmYwuQv6/VQsNC8F7rwV+T3z45bF
+         A9rLZ2TUMCyOWsIQyGKd2w0TF0jtwEv968Es3GUh7gXxwaqKZ2nkjZaqNj5QDcjHHFMm
+         zm7k4DkG+wJ3yC/t+rO/W+AJ9UWT6anm6CrNm+oskiIa/9BeoRiZ9vPO2ud33q6jSZj9
+         tD6Ju1McDNXle2l+Qf7E/gnX6rYjL2Bax51Pd/ygI7KvjuXM+O/tZkfTFywMmLi9FUl0
+         Tl7Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=yyrrTIfk;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
-Return-Path: <gregkh@linuxfoundation.org>
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id m17si197532qkp.2.2021.10.20.01.55.06
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id f20si73479ljn.4.2021.10.20.01.54.22
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 20 Oct 2021 01:55:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+        Wed, 20 Oct 2021 01:54:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=yyrrTIfk;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
-Received: by mail.kernel.org (Postfix) with ESMTPSA id ECD4361004;
-	Wed, 20 Oct 2021 08:55:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1634720105;
-	bh=PCVaDpH+mrpLD0GnvIKW+142iEL4rJTf3kGqaYnQ0Rc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=yyrrTIfkiLCiG1EoFREEO6IG9ruiFtqAxzrmETyg6LcZUPtgzSCrjQhIbbwKJHunb
-	 vSRM96Q3aHW14dqoxfdiUp2gzLk2NJz6nccOpRi3H3Pn/P+kNl8mWVD+nlVHT0jyz3
-	 aW/gFSPAtSXQtLWkstyDBvrQwLIKkkP5GY6UkCFE=
-Date: Wed, 20 Oct 2021 10:55:02 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+IronPort-HdrOrdr: =?us-ascii?q?A9a23=3AG0BvIa2ZOUpDxLLfve4VbAqjBLEkLtp133Aq?=
+ =?us-ascii?q?2lEZdPUzSL37qynOpoV56faQsl0ssR4b9OxoVJPufZq+z/5ICOsqXItKNTOO0A?=
+ =?us-ascii?q?GVxepZg7cKrQeNJwTOssZAyKZtdLV/AtXsAVU/rcuS2njcL+od?=
+X-IronPort-AV: E=Sophos;i="5.84,326,1620684000"; 
+   d="scan'208";a="534925257"
+Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 20 Oct 2021 10:54:22 +0200
+Date: Wed, 20 Oct 2021 10:54:21 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
 To: Karolina Drobnik <karolinadrobnik@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, forest@alittletooquiet.net,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] staging: vt6655: Rename `by_preamble_type` parameter
-Message-ID: <YW/ZZho43B6tbys+@kroah.com>
-References: <20211020084033.414994-1-karolinadrobnik@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
+    forest@alittletooquiet.net, linux-staging@lists.linux.dev, 
+    linux-kernel@vger.kernel.org
+Subject: Re: [Outreachy kernel] [PATCH] staging: vt6655: Rename `by_preamble_type`
+ parameter
 In-Reply-To: <20211020084033.414994-1-karolinadrobnik@gmail.com>
+Message-ID: <alpine.DEB.2.22.394.2110201051300.2930@hadrien>
+References: <20211020084033.414994-1-karolinadrobnik@gmail.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
-On Wed, Oct 20, 2021 at 09:40:33AM +0100, Karolina Drobnik wrote:
+
+
+On Wed, 20 Oct 2021, Karolina Drobnik wrote:
+
 > Drop `by` prefix in the first parameter of `bb_get_frame_time` function.
 > As the original argument, `byPreambleType`, was renamed to `preamble_type`,
 > the parameter referring to it is now renamed to match the new naming
 > convention.
 > Update `bb_get_frame_time` comment to reflect that change.
-> 
+>
 > This patch is a follow-up work to this commit:
 >     Commit 548b6d7ebfa4 ("staging: vt6655: Rename byPreambleType field")
 
-There is no need for these two lines in the changelog text.  They can go
-below --- if you want to have them.
+This is not going to be practical.  If the previous patch is accepted,
+then this it not needed.  If the previous patch is not yet accepted, then
+there needs to be a vn+1 putting the patches together into a series.
 
-But, as the above commit is already in my tree, there's no need for this
-information at all, right?
+> Signed-off-by: Karolina Drobnik <karolinadrobnik@gmail.com>
+> ---
+>  drivers/staging/vt6655/baseband.c | 6 +++---
+>  drivers/staging/vt6655/baseband.h | 2 +-
+>  2 files changed, 4 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/staging/vt6655/baseband.c b/drivers/staging/vt6655/baseband.c
+> index 5efca92f1f18..8f9177db6663 100644
+> --- a/drivers/staging/vt6655/baseband.c
+> +++ b/drivers/staging/vt6655/baseband.c
+> @@ -1691,7 +1691,7 @@ static const unsigned short awc_frame_time[MAX_RATE] = {
+>   *
+>   * Parameters:
+>   *  In:
+> - *      by_preamble_type  - Preamble Type
+> + *      preamble_type     - Preamble Type
+>   *      by_pkt_type        - PK_TYPE_11A, PK_TYPE_11B, PK_TYPE_11GB, PK_TYPE_11GA
 
-thanks,
+In the realm of small cleanups to this driver, the extra space in front of
+the - above is a bit annoying.
 
-greg k-h
+>   *      cb_frame_length   - Baseband Type
+>   *      tx_rate           - Tx Rate
+> @@ -1700,7 +1700,7 @@ static const unsigned short awc_frame_time[MAX_RATE] = {
+>   * Return Value: FrameTime
+>   *
+>   */
+> -unsigned int bb_get_frame_time(unsigned char by_preamble_type,
+> +unsigned int bb_get_frame_time(unsigned char preamble_type,
+>  			       unsigned char by_pkt_type,
+>  			       unsigned int cb_frame_length,
+>  			       unsigned short tx_rate)
+> @@ -1717,7 +1717,7 @@ unsigned int bb_get_frame_time(unsigned char by_preamble_type,
+>  	rate = (unsigned int)awc_frame_time[rate_idx];
+>
+>  	if (rate_idx <= 3) {		    /* CCK mode */
+> -		if (by_preamble_type == 1) /* Short */
+> +		if (preamble_type == 1) /* Short */
+
+I hope you will get around to replacing the 1 by the appropriate constant
+and removing the "Short" comment.
+
+julia
+
+>  			preamble = 96;
+>  		else
+>  			preamble = 192;
+> diff --git a/drivers/staging/vt6655/baseband.h b/drivers/staging/vt6655/baseband.h
+> index 0a30afaa7cc3..15b2802ed727 100644
+> --- a/drivers/staging/vt6655/baseband.h
+> +++ b/drivers/staging/vt6655/baseband.h
+> @@ -44,7 +44,7 @@
+>  #define TOP_RATE_2M         0x00200000
+>  #define TOP_RATE_1M         0x00100000
+>
+> -unsigned int bb_get_frame_time(unsigned char by_preamble_type,
+> +unsigned int bb_get_frame_time(unsigned char preamble_type,
+>  			       unsigned char by_pkt_type,
+>  			       unsigned int cb_frame_length,
+>  			       unsigned short w_rate);
+> --
+> 2.30.2
+>
+> --
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/20211020084033.414994-1-karolinadrobnik%40gmail.com.
+>
 
