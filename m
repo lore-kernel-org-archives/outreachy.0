@@ -1,109 +1,127 @@
-X-GM-THRID: 6747862437229232128
-X-Received: by 2002:a81:2046:: with SMTP id g67mr14110113ywg.352.1571109154914;
-        Mon, 14 Oct 2019 20:12:34 -0700 (PDT)
+X-GM-THRID: 7021139911434567680
+X-Received: by 2002:a2e:3207:: with SMTP id y7mr199258ljy.291.1634745382206;
+        Wed, 20 Oct 2021 08:56:22 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:240d:: with SMTP id k13ls2624089ybk.16.gmail; Mon, 14
- Oct 2019 20:12:33 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxaz/QvwfeIXL9eCtZydzVpXTMIyBur1hNqe2aX9YKYAX/rZEV8ZPm2rUKqqP1fYTlfLhK4
-X-Received: by 2002:a5b:d09:: with SMTP id y9mr4240850ybp.113.1571109153539;
-        Mon, 14 Oct 2019 20:12:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571109153; cv=none;
+Received: by 2002:a2e:2204:: with SMTP id i4ls548303lji.4.gmail; Wed, 20 Oct
+ 2021 08:56:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyvRDqHhrXa2a/9rB11A7/t0/XjZN+K1wn5oZhhjEkDVNaXEu/2wk3o2Jp3zlPs614d1QKI
+X-Received: by 2002:a2e:bf18:: with SMTP id c24mr254060ljr.408.1634745380418;
+        Wed, 20 Oct 2021 08:56:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634745380; cv=none;
         d=google.com; s=arc-20160816;
-        b=nJ0rqNZoxP8vK0Itkocr+KT8mz9axhAo7zAvFENry9vgQTMRv3n0peUE2zhax2Rlz+
-         lOZfWQIw3zSpoES3/ueWQTQY+WP4xDtgSP0XX+EXdd4F9wMSgO1db+IMx8iBly69Kom4
-         s3GOTJ1dgEPuf0LE6B8K88IgfoxbBu3YzczOtF3cN/ILREqF0XQITOlVJPHsY9Q2sJl8
-         IHeNdlEGHhmAR/lH75hRfPDikeIwPW1AK/bJEK//JgRhYU4bGG/Seaysd1RqFEFILni1
-         0v4Z95k0jl5vqCpOBOlwJ/ueqCMASMImMRjDVMu0HO1TT+Ig2+OIP+LxXIKx8iiae8LK
-         nUCg==
+        b=gP7i6azcKABvibp9TNell/fzzudqdGYJMfCAivWMATm/YnKaRC0HBGk9ksK0i5aZti
+         AwUEoIFJoF90kETEBeUEUQDIaKdjixG9+cmDv0s6eggQEbOssZmFsmq0dPWTE6JCZ8tL
+         zOXUD0tRae42QIQnX52qDg+U1qdT192FEVsCIfwGFR+rbxIS/uoLBORh5nawqL/panBt
+         murnsnyPd90fnj+7qNypxoxAY4KZAyu7R3N+cBRcmXjl3uCVP7sxfL+41SphlogiCGNd
+         p9Gcxj84DgpY8E03pdCevKw0POZeG5wJdxxV/rDki+jxNgwd7o98Hd8lF3erfp2lQDdI
+         3c0w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=bFAxSpkkfCgIqBxvOIDok+oo3PUBuraxt59KA3O6rko=;
-        b=ZP/nHMjd52g0i1/aR3VP457Wf0wK/YC7Uk0OAyaW2ocgTaRd8QJ0r7ZEtNvUkY0iIZ
-         Ojb10NZPv/74xtY9G+xJ09fefxMU5IMJ8akwrcgFd6PnApaMvN33klyVtiN79NNm4ME9
-         GpAnvRlFw0An5J+VBuxzQ6geb6/G46Qsbd15E1+zZ1MgKZFyY+WeUO1haPDT4bR7CVhD
-         oM8UGj5pUxc/2CwryXnvrFkqpU67RLrBnDn+kEdfBrWm0fAGH19UROVtxE2CAdqBzVM6
-         6HdghhuX57lXR8dlMtcuc/bW6zP+0dm5rdt25VaXxrCfeb8lCxpFNPV+NcXKVqHh+iuS
-         ArNg==
+        h=content-transfer-encoding:mime-version:user-agent:references
+         :in-reply-to:date:cc:to:from:subject:message-id:dkim-signature;
+        bh=uqT1+bpO5GtTAP8kk5EhhjPAS0dVX5h+L+bMjzTPiks=;
+        b=nSlfjhZGY/pGCsKo5s/ce9rZRGg+2dpNMliZ9evvpj03L/E57OKJaT8USLISY8SuYD
+         ZJAgKooMYeO/rjurwuAW2h0EY45iMemnsApS9e/tvyi9cRENUuPzABslZzJqzb2xdTUg
+         jlzJGy8FtOc7oA6E+ArPHajDvjL2LOtZUfv3MqBfpZ740sngSYBVct38bqH+zOtF0eYf
+         KA1BZkatmlb0u7rFQ46felsW/i2SukPsY86Kii1echUJ5N1iPOEf5VjepJvAMU773P8b
+         3ZCrAZNAcXp3cHTxPn288xvZBK5XSfrZchjzpsRUBaF5KrvL34iCyoB5dn4S7Om9vJi/
+         7XSw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YXf1CCzm;
-       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=cEtB6xSB;
+       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::32f as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <jamal.k.shareef@gmail.com>
-Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id y7si1128833ybg.5.2019.10.14.20.12.33
+Return-Path: <karolinadrobnik@gmail.com>
+Received: from mail-wm1-x32f.google.com (mail-wm1-x32f.google.com. [2a00:1450:4864:20::32f])
+        by gmr-mx.google.com with ESMTPS id b27si111148ljf.3.2021.10.20.08.56.20
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 14 Oct 2019 20:12:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
+        Wed, 20 Oct 2021 08:56:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::32f as permitted sender) client-ip=2a00:1450:4864:20::32f;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YXf1CCzm;
-       spf=pass (google.com: domain of jamal.k.shareef@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=jamal.k.shareef@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=cEtB6xSB;
+       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::32f as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x542.google.com with SMTP id i32so11203114pgl.10
-        for <outreachy-kernel@googlegroups.com>; Mon, 14 Oct 2019 20:12:33 -0700 (PDT)
+Received: by mail-wm1-x32f.google.com with SMTP id p21so19998053wmq.1
+        for <outreachy-kernel@googlegroups.com>; Wed, 20 Oct 2021 08:56:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=bFAxSpkkfCgIqBxvOIDok+oo3PUBuraxt59KA3O6rko=;
-        b=YXf1CCzmcDJO16T3T9D4vsIuEqUXyFiOwuHi/exvbxq+f1/ORc9NMOyWhSuCAkEqSq
-         +pje26rJ83txR/mKQF26W6xtpwzfO0p8Or+JLmqDHhZBAq8NUZTLq0HyTzA6zqJtm9Ta
-         rBONwWNaOtJi++SWQRxdiFSXxalr6tMBJ1+R66y2JD2qNvOC10z4CnHGeG2VihgHU9xr
-         xTix6JAzvFDswhNp+yRDUVXr88VxRseD4zZwrRs4cGZeC4XnJBFhjXUDfR03PNJGbI+C
-         ncr7WE5HPohsO0KIMwv8PAH/7i3fmHyjJKAQeS2kMlnufzxApR5vYlZa5E0XUZwrL1yx
-         0O9A==
+        d=gmail.com; s=20210112;
+        h=message-id:subject:from:to:cc:date:in-reply-to:references
+         :user-agent:mime-version:content-transfer-encoding;
+        bh=uqT1+bpO5GtTAP8kk5EhhjPAS0dVX5h+L+bMjzTPiks=;
+        b=cEtB6xSBPm7ST6GkvnB078hot11IthI5rZs3+CQtixOEi4fr82nqsPAEVmThIQf5Ex
+         c3SpfkdSOkWM0kh1zVUOkre2FPT9SD+2oOSDTHrJDDg+WcfsvdoBQQ8Oa/WnRAIEaC+e
+         dHgBI/x+tc1/iL9lAiRc9V5lE/b44f+h40y4oifolKaBQ5B3y8YM2tX6vjFTuZRBfNQc
+         /FOMrr/GCT7E3Yn41vovi94RBCpbHbqAjBMS2kqoE87S31/hcJGsJTaO0Guk04uvFg+p
+         egz/MvfAZmI3/4lrBu4Nk7PD5tho6I/FhQzD1suV8GbbGrQNr+wddfF7t+fKa0tSvrCy
+         SLng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=bFAxSpkkfCgIqBxvOIDok+oo3PUBuraxt59KA3O6rko=;
-        b=AgjTTh2IJWaMcstRZ1+o7hH0h8d4JcZIExIgo4Y1fR/IlTqdD3GDGknwbcGloZutp3
-         /lJxWGBGPg1k2SuIZb064+XIrjEZC26r+FOMVE/Naa4Wk2/lIyNyIw/Zufkgr8yefT3M
-         Ckwj+WH1BwHbTPA0Y9AzoPsOROuXeyAGD3tzjU/bPTQoqKaFgwLGnJKxeZtXPZxhrU1I
-         Z/9Wpvhqc49MUtldNObGM8jK0NEXymue23M+LSr0w4luVIMExIDKyM9kP+5tpcU+v/9u
-         Z5yqhUCtddrYAs7GzAJoZmBxrNu3tG1/VwX0svOMjQhPASAnAk0JPgdJHXu7s8+at1Mi
-         GDCg==
-X-Gm-Message-State: APjAAAVBI+DXGl2HXm2TmXUt4M3LWyN+fVZ9eN7yNS0C4CYjAZYRYRQF
-	T0Yu/qwhot8DGQP6kUv7H8U=
-X-Received: by 2002:a17:90a:6509:: with SMTP id i9mr39344976pjj.47.1571109153033;
-        Mon, 14 Oct 2019 20:12:33 -0700 (PDT)
-Return-Path: <jamal.k.shareef@gmail.com>
-Received: from jamal-XPS-13-9343 (97-126-66-56.tukw.qwest.net. [97.126.66.56])
-        by smtp.gmail.com with ESMTPSA id ce16sm17355104pjb.29.2019.10.14.20.12.32
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+         :references:user-agent:mime-version:content-transfer-encoding;
+        bh=uqT1+bpO5GtTAP8kk5EhhjPAS0dVX5h+L+bMjzTPiks=;
+        b=E34T57DX4G/K7KB9GUgRGHBkWI67TF6Ec7yd90gCmPX7ll5h/ROqunpCwJWH5zvEhW
+         vW2A4vc4S+Xkg9davNSVr97nhiYmh4xPpWDu8ny+zjqSkV8nTOgX8Y6H8dEbqtKjok/p
+         rg8/MIi773cEBSLTSzQOcj23iuBMDJabs0yjIPpeUKyIBZM0yWSeUgUa0ZLrgRp1np7D
+         I7IcrcHar0khg6ysjSEdsgxQOJiejHUXZZtutMJGypC19/XZnpU2lH/0e4hMTrNlg0ZZ
+         +2TeH4FbEL+fkg7/BK7vKJY4Pip0v1XAuY2Yjqt7hemXzMdjQYbd/fOrneSiKv4mOyhF
+         sllQ==
+X-Gm-Message-State: AOAM5332LJVmTWg9Qe3TYlDJvk3N68wJc+1pogQ5E64lxFcv5bAqHtXW
+	XGhWvFnwxb9VNb9HuErIaaM=
+X-Received: by 2002:a05:6000:1567:: with SMTP id 7mr42183wrz.408.1634745380064;
+        Wed, 20 Oct 2021 08:56:20 -0700 (PDT)
+Return-Path: <karolinadrobnik@gmail.com>
+Received: from ?IPv6:2a01:4b00:f411:e700:e085:8cb7:7bf6:5d62? ([2a01:4b00:f411:e700:e085:8cb7:7bf6:5d62])
+        by smtp.gmail.com with ESMTPSA id g10sm2877383wmq.13.2021.10.20.08.56.19
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 14 Oct 2019 20:12:32 -0700 (PDT)
-From: Jamal Shareef <jamal.k.shareef@gmail.com>
-To: boqun.feng@microsoft.com,
-	andrea.parri@microsoft.com
-Cc: sudipm.mukherjee@gmail.com,
-	teddy.wang@siliconmotion.com,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com,
-	jamal.k.shareef@gmail.com
-Subject: [PATCH 0/2] Fix line over 80 characters warnings
-Date: Mon, 14 Oct 2019 20:12:11 -0700
-Message-Id: <cover.1571108943.git.jamal.k.shareef@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        Wed, 20 Oct 2021 08:56:19 -0700 (PDT)
+Message-ID: <596fba87187b73277fd5c1102baa1815ed8fe4f8.camel@gmail.com>
+Subject: Re: [Outreachy kernel] Re: [PATCH] staging: vt6655: Rename
+ `dwAL2230InitTable` array
+From: Karolina Drobnik <karolinadrobnik@gmail.com>
+To: Julia Lawall <julia.lawall@inria.fr>, Joe Perches <joe@perches.com>
+Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
+	forest@alittletooquiet.net, linux-staging@lists.linux.dev, 
+	linux-kernel@vger.kernel.org
+Date: Wed, 20 Oct 2021 16:56:18 +0100
+In-Reply-To: <alpine.DEB.2.22.394.2110201615590.2930@hadrien>
+References: <20211020132811.417341-1-karolinadrobnik@gmail.com>
+	  <16db455b46f130300b5c346160aa434616e4f6b4.camel@perches.com>
+	 <157ee66fd0e3304c238e7ad8123277892e0d1132.camel@perches.com>
+	 <alpine.DEB.2.22.394.2110201615590.2930@hadrien>
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.38.3-1 
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
 
-This patchset addresses "line over 80 characters" warnings from
-checkpatch.
+On Wed, 2021-10-20 at 07:09 -0700, Joe Perches wrote:
+> On Wed, 2021-10-20 at 06:44 -0700, Joe Perches wrote:
+> > In this file there are more than 100 uses of
+> > 
+> >         (BY_AL2230_REG_LEN << 3) + IFREGCTL_REGW
+> > 
+> > Maybe add a define for it and substitute the uses for the define.
+> 
+> Look at the code too.
+> 
+> It looks as if every use of IFRFbWriteEmbedded() has this added to
+> the 2nd argument and that the 2nd argument isn't used anywhere else.
+> 
+> Maybe remove it altogether and add it to IFRFbWriteEmbedded().
+> 
+> And it looks as if the + uses for these should logically be |
 
-The patches were split mainly for ease of review, however
- - Patch 1 fixes mainly function calls exceeding the 80 character limit
- - Patch 2 fixes block comments and variables over the limit
+Sounds like a very good idea. I'll add it to my to-do list, thanks :)
 
-Jamal Shareef (2):
-  staging: sm750fb: Fix lines over 80 characters
-  staging: sm750fb: Fix comments and assignments over 80 chars
+On Wed, 2021-10-20 at 16:16 +0200, Julia Lawall wrote:
+> Karolina,
+> 
+> If more than a hundred such changes are necessary, you may find
+> Coccinelle
+> useful:  https://coccinelle.gitlabpages.inria.fr/website/
 
- drivers/staging/sm750fb/ddk750_display.c |  4 +-
- drivers/staging/sm750fb/ddk750_mode.c    |  5 +-
- drivers/staging/sm750fb/ddk750_sii164.c  | 28 ++++++----
- drivers/staging/sm750fb/ddk750_sii164.h  | 11 ++--
- drivers/staging/sm750fb/sm750.c          | 22 +++++---
- drivers/staging/sm750fb/sm750_accel.c    | 69 ++++++++++++++++++------
- drivers/staging/sm750fb/sm750_accel.h    | 51 ++++++++++++++----
- 7 files changed, 139 insertions(+), 51 deletions(-)
+Hmm, I'll check this out, it may come in handy.
 
--- 
-2.17.1
+
+Thanks,
+Karolina
 
 
