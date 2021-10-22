@@ -1,82 +1,83 @@
-X-GM-THRID: 6331266648892243968
-X-Received: by 10.66.234.197 with SMTP id ug5mr1288207pac.143.1474112889450;
-        Sat, 17 Sep 2016 04:48:09 -0700 (PDT)
+X-GM-THRID: 7021921902776025088
+X-Received: by 2002:a7b:c38f:: with SMTP id s15mr12600642wmj.167.1634921912494;
+        Fri, 22 Oct 2021 09:58:32 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.40.231 with SMTP id s94ls7399022ota.17.gmail; Sat, 17 Sep
- 2016 04:48:09 -0700 (PDT)
-X-Received: by 10.129.78.134 with SMTP id c128mr10150288ywb.50.1474112889171;
-        Sat, 17 Sep 2016 04:48:09 -0700 (PDT)
-Return-Path: <namrataashettar@gmail.com>
-Received: from mail-pf0-x22f.google.com (mail-pf0-x22f.google.com. [2607:f8b0:400e:c00::22f])
-        by gmr-mx.google.com with ESMTPS id z4si3406570pam.0.2016.09.17.04.48.09
+Received: by 2002:adf:ef8b:: with SMTP id d11ls372418wro.2.gmail; Fri, 22 Oct
+ 2021 09:58:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwjlmpDDEZH77+E/GdD+oHAAck1qhC705We21+9GG1Ct0BEINg5UjBVzbhGrueskjsTDR29
+X-Received: by 2002:a05:6000:184b:: with SMTP id c11mr1229409wri.29.1634921911072;
+        Fri, 22 Oct 2021 09:58:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634921911; cv=none;
+        d=google.com; s=arc-20160816;
+        b=iHYqIk7BaFhoLkdjtr5hgV8nliteUPM8sXSkp6OuhCw/QcCngwO1DYOjJ1lYqdzDbY
+         oYGVCPhb8gYK/jR3qODlHfIkLmCyUmtNHUxHP7ob6UaC2cJO90LYqH0vIvW9+AKtr3Kf
+         ia+JDx1Jlk2/HlmBp+4ECtQRfQNxl4G0TZHH+6rnmNaURpXDAdvNf2C+75T9MguHs6L7
+         60J8uIwiWtQu/gKgsbzT35WwaWbc5CbCy8c/DQz+fXDit6PIvMOtqUeJ3dfRVfThnAQQ
+         ZLodtyRuW5iLOFA3pxalVTrHB2pR0tNsb8RD9BwPE+jqKt+fb2giT6srvCd4I9c1uya5
+         g1Rg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date;
+        bh=1vr5RbHapqR4+49f8NeqmPXs5XngMUpd3NuLFRaZXno=;
+        b=dxGhq0HTE+r5YE2zOIz75PeZ2PUkd/maxjw1dO0GMEUUEaKLnafyYQaiKSNd8qxvp5
+         wiEdc8gsAsayUw5Tz51bczBJkJcTRIdWRedFFNhTv6TOfB8BJFA+Hf3JRwdeaKML/4BV
+         8274KWMLgO3pwVopfnlFruxmoLXCfAG56Jglw/XHQkiHFucvwJWifcwP9vlc/4SLAtsZ
+         1RV/Y/X5x0IgOKyZ1uauFdLkICUzeThAicQpD+to2xi3XIiMcMcWlEjxRV38FqEL7crK
+         aTYma565HI8u5j1rMwc7/L/ioeAhEyjSJlb9kPEa5PlULTejsdRenWUo/4la7WihOQ2e
+         NF9g==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of alison.schofield@intel.com designates 192.55.52.43 as permitted sender) smtp.mailfrom=alison.schofield@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <alison.schofield@intel.com>
+Received: from mga05.intel.com (mga05.intel.com. [192.55.52.43])
+        by gmr-mx.google.com with ESMTPS id a10si634411wmb.0.2021.10.22.09.58.30
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 17 Sep 2016 04:48:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c00::22f as permitted sender) client-ip=2607:f8b0:400e:c00::22f;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 22 Oct 2021 09:58:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of alison.schofield@intel.com designates 192.55.52.43 as permitted sender) client-ip=192.55.52.43;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of namrataashettar@gmail.com designates 2607:f8b0:400e:c00::22f as permitted sender) smtp.mailfrom=namrataashettar@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x22f.google.com with SMTP id p64so35580607pfb.1
-        for <outreachy-kernel@googlegroups.com>; Sat, 17 Sep 2016 04:48:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=jrvhINh5EBzvNlz8qMaz8Tm7Q+UiHxtEQO/efkNdUA4=;
-        b=DeV8deV/1QjmOTHyumCf61avIi1amAVMNeAbohYOW82TFgwNFkwAmV9sehyKRjUkbV
-         5+wfKt7F1rf+Uz9uWWVHaKYWI5zru1eUvUUK+dWo8ILE4wm9j4LBP92W10uC2Bym2YTF
-         R/l6PJREYPEUhAt0IxjyIBk75SGRChhattP5sBLDqbCZ6ez/sqPnz5PJt3sYZ8pN7A/r
-         HbcKmyw1S0R78C4iCwcC2NOXH+8Hs+ohe8+0Ki2vr4XFr3Gp8Hy3qLgIbtaXSPQpxwqf
-         ylmsVu5/zcWLjXDu7UKeGx6llPYzAuG5UsW9BIVwgQLEZV1ViMx2t1vI/e76+3IG8g7I
-         cVMA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=jrvhINh5EBzvNlz8qMaz8Tm7Q+UiHxtEQO/efkNdUA4=;
-        b=dDy/8MBIM3/x4frU8oXEs8KCvvJw68Tn34d9EzIjlOwpx+9ueWyEvaBdC2F5sBu08I
-         VTkKOIhmVPTpvFNX1ETsR8n6y0z8B5KLX82ZAYenAzfThSfazwsDF0yEC3SGWll5rivm
-         yBt2pQxyw+KVt+gv5SdCOfSvd4KOTP3sm3Txjo9M0JKUb6Nqvu56y6Pi04PeIt6rBFSx
-         PRCb6Qga5QSKSw8ghqM8ZlqQmozuDIOtcZDq+4aV2jybPUhyxISykUnyqOTTuW37M6cG
-         UOB/bfYyiAlIZcI11rt73rKsW1DVILmFMHG2Mu+xG4TyifhkCtHkguWeBbIE5GZyTTaJ
-         YnNw==
-X-Gm-Message-State: AE9vXwOV0UbDdty9w9LSxfh0HyYTr5nhnRS9KTS4cYK3AYs1+7ljdDuFKvackuT7kt71YQ==
-X-Received: by 10.98.110.4 with SMTP id j4mr30730087pfc.56.1474112888967;
-        Sat, 17 Sep 2016 04:48:08 -0700 (PDT)
-Return-Path: <namrataashettar@gmail.com>
-Received: from namrata-HP-Pavilion-g6-Notebook-PC ([103.225.101.21])
-        by smtp.gmail.com with ESMTPSA id u1sm56764174pfb.62.2016.09.17.04.48.06
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 17 Sep 2016 04:48:08 -0700 (PDT)
-Date: Sat, 17 Sep 2016 17:18:03 +0530
-From: Namrata A Shettar <namrataashettar@gmail.com>
-To: Forest Bond <forest@alittletooquiet.net>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Malcolm Priestley <tvboxspy@gmail.com>,
-	Anson Jacob <ansonjacob.aj@gmail.com>,
-	Haneen Mohammed <hamohammed.sa@gmail.com>,
-	outreachy-kernel <outreachy-kernel@googlegroups.com>
-Subject: [PATCH 0/4] staging: vt6655: Fix checkpatch issues
-Message-ID: <cover.1474108444.git.namrataashettar@gmail.com>
+       spf=pass (google.com: domain of alison.schofield@intel.com designates 192.55.52.43 as permitted sender) smtp.mailfrom=alison.schofield@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+X-IronPort-AV: E=McAfee;i="6200,9189,10145"; a="315545519"
+X-IronPort-AV: E=Sophos;i="5.87,173,1631602800"; 
+   d="scan'208";a="315545519"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Oct 2021 09:58:29 -0700
+X-IronPort-AV: E=Sophos;i="5.87,173,1631602800"; 
+   d="scan'208";a="569278180"
+Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
+  by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Oct 2021 09:58:28 -0700
+Date: Fri, 22 Oct 2021 10:06:16 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: Karolina Drobnik <karolinadrobnik@gmail.com>
+Cc: outreachy-kernel@googlegroups.com
+Subject: Re: [Outreachy kernel] Recording patch sets as contributions
+Message-ID: <20211022170616.GA465124@alison-desk>
+References: <0383e80d9465c23dd69defb867f604ef7d482d00.camel@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
+In-Reply-To: <0383e80d9465c23dd69defb867f604ef7d482d00.camel@gmail.com>
 
-Fix multiple checkpatch issues.
+On Fri, Oct 22, 2021 at 05:03:12PM +0100, Karolina Drobnik wrote:
+> Hi,
+> 
+> I have a question about recording patch sets as contributions. Should I
+> add it as one contribution or record each commit in the series as such?
+> 
+> 
+> Thanks,
+> Karolina
+> 
 
-Namrata A Shettar (4):
-  staging: vt6655: Replace explicit NULL comparison
-  staging: vt6655: Replace explicit NULL comparison
-  staging: vt6655: Break multiple assignments
-  staging: vt6655: Break multiple assignments
+Record a patchset as one contribution. Include links to each commit
+(accepted into GregKH staging tree) that is part of the set.
 
- drivers/staging/vt6655/card.c        | 6 ++++--
- drivers/staging/vt6655/device_main.c | 7 ++++---
- 2 files changed, 8 insertions(+), 5 deletions(-)
+Thanks,
+Alison
 
--- 
-2.7.4
-
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/0383e80d9465c23dd69defb867f604ef7d482d00.camel%40gmail.com.
 
