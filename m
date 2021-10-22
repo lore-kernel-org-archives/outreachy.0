@@ -1,78 +1,78 @@
 X-GM-THRID: 7021822549853995008
-X-Received: by 2002:a19:f805:: with SMTP id a5mr6860277lff.644.1634895471497;
-        Fri, 22 Oct 2021 02:37:51 -0700 (PDT)
+X-Received: by 2002:adf:a30c:: with SMTP id c12mr14577874wrb.366.1634895467064;
+        Fri, 22 Oct 2021 02:37:47 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a2e:4a1a:: with SMTP id x26ls1627341lja.11.gmail; Fri, 22
- Oct 2021 02:37:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyhscUiL8CdoFPZcH8HmnHaVfErwlj1W9b4R/T51PfskGIoxerC9AZQq1jT0tbnmpkG0hnn
-X-Received: by 2002:a2e:8841:: with SMTP id z1mr11866859ljj.180.1634895469902;
-        Fri, 22 Oct 2021 02:37:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634895469; cv=none;
+Received: by 2002:a5d:508a:: with SMTP id a10ls1102038wrt.1.gmail; Fri, 22 Oct
+ 2021 02:37:45 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyy7eeC4+w5QKkrxIiIgpTTdQ051H/IxhterwYKOuZADdK0pJ4EWJcO4jO3DiIyLE7iAC79
+X-Received: by 2002:adf:e746:: with SMTP id c6mr13976304wrn.367.1634895465623;
+        Fri, 22 Oct 2021 02:37:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634895465; cv=none;
         d=google.com; s=arc-20160816;
-        b=hkaLaUuygDQ5ycYA8wSexSxxPZKcYvfv/nWvI6rL82ADXxxxdpPTeJt0i0oSWedDA8
-         QypTPYnoM3wk1qbN5wNq7JvAE95xbvaBROQAo14fvQuM/E2r0kbhG26coKRkWLR01uy8
-         o6v6VotPuJfiKdqwUk9A+JkGx5DM/yoEaZdsC30j+AS/6HUnMbWpVPRIIyykFycMsnFj
-         ojymDk6s+UMgkg63u0A0GPStB4J3aYvSSRSMjWtkRmTeXkFnlcNW9zb0UVLHQ+gglePu
-         WhJvSq3ho6Wo6X0ikU8+TpEK0oy3/CVxbu47VCkhjmoEsdNZZbblBK4WmwZlONGzLdx2
-         R1Zw==
+        b=a620pNBJ302njKjBYLEpEPmtPef/2C6/mpgZ0DRXHuuGqUXxEqGEGtr1m6jDDEjKyU
+         duLDQJEKWCJyirbJEMfJpMoiODD5WWNtnH6akKrjx5augbFnz8ikK+1iaRXK0MxXN/+o
+         XPLDmEEnbr1BXxFn8f+xN1V7YCGE3EmRz7aLwyYYKNHqJX9/vqODW4xvkA2WPy/jEuL1
+         N2OF9CDJnBouyBMDZZZtV45mC47TfYrC+k5j1FtcJLvYptbEjiC//WBcrqJ3UjKbbptw
+         22SkfbVDF+aS8XA7hqxlb7Jx2QtW+dmxhbYvra6BNUPTg0o3Rdz2z9wjT4aU5l1cy9I4
+         luqA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=eHPc3N37Jxt/ha1mRXWgFzhusdcNwFGBiIe67sBVlN8=;
-        b=Wq96GEzxmO418wi8oycEDAXnfEoTXRVZUowUqW6pMo5PzE3qrdt+YCP7pVmItZY3gP
-         DngQIEWUZ+OjoL9+B6wsQAOrKj4/4Ri+N3aGLC1U6g1uDNYKbQza1neHBAtavl7CnD7F
-         AOAG7jDnYErDNhXa4Gyl2zneB1+D45i3HikN3IdTx8DQkxJsVARqikxu65P8oBsjYK4V
-         n/3Nq517IJ+4gVFgS0D9wU0l9a7YH8D2Dfruh/Le0dTdnMmcX8cQrQdxCXbW+zHifsg6
-         NjLXwVAwfqtOXDsELQiWkViHNl9/HJF0vwfRro/f/cfUvF6TRZm5o7zTVpZ+ITeugwof
-         59Ag==
+        bh=V57x0MEr6fuE5L3vURExVJ6RMqS7xwkhHXyJYTkcluM=;
+        b=wSQqSISfK6KlYtSpplplHMYchMw7SuE+XiKHAj5kAxB0B+L+JTmFevnmj6OQo7DFBY
+         o4Rok49wNFm5V4PrvQVpXgCIH3A67gZ3QJU9GTGJxWaFhnWNFhcxQGmWrUVFXfDKp3DY
+         zrPwezolTxabPk8GylPtfiCqkkZbj71yGZNOLxr0F4EoNF+lhZGA5EkQXGv6LFlZeHZi
+         NeSnkWhQ3r/IIWK3mbfow9LaRnJrDTFplc60t40sOI3lHwux8BF8GXUa/55h64n+XIip
+         Da860utDucss9ht1qNeFiYrng8QCah13B/Zm7bhYK1ogSom4Ae3e1rCHldDQuIZXHL8o
+         5xDQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=FeEQdVMl;
-       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::435 as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=d3zqbzBk;
+       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::331 as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <karolinadrobnik@gmail.com>
-Received: from mail-wr1-x435.google.com (mail-wr1-x435.google.com. [2a00:1450:4864:20::435])
-        by gmr-mx.google.com with ESMTPS id 8si451858lft.11.2021.10.22.02.37.49
+Received: from mail-wm1-x331.google.com (mail-wm1-x331.google.com. [2a00:1450:4864:20::331])
+        by gmr-mx.google.com with ESMTPS id f9si700503wmg.2.2021.10.22.02.37.45
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 22 Oct 2021 02:37:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::435 as permitted sender) client-ip=2a00:1450:4864:20::435;
+        Fri, 22 Oct 2021 02:37:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::331 as permitted sender) client-ip=2a00:1450:4864:20::331;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=FeEQdVMl;
-       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::435 as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=d3zqbzBk;
+       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::331 as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x435.google.com with SMTP id i12so1311859wrb.7
-        for <outreachy-kernel@googlegroups.com>; Fri, 22 Oct 2021 02:37:49 -0700 (PDT)
+Received: by mail-wm1-x331.google.com with SMTP id y22-20020a1c7d16000000b003231ea3d705so2662884wmc.4
+        for <outreachy-kernel@googlegroups.com>; Fri, 22 Oct 2021 02:37:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=eHPc3N37Jxt/ha1mRXWgFzhusdcNwFGBiIe67sBVlN8=;
-        b=FeEQdVMlkj1f+mgd3LmPprz60U9As8acN3sZRT3ZCY9dzNTv7zL2uA/Youp08xl6T0
-         3cYHQADkjWAlH9buYpdGfr7TKnkKG0yACywB4EzXaJ163xKF1+9pcpz3JDSGv0LphDCy
-         V/uyrTXNk1VXVHIfY+f+HKtlepT34gJrVnSjIGs7u1bkKv5ikuJgewS9oA0pJKmBZTLY
-         7EQpGxatqZcOBkB8SZJiRzfw3VufwAlX7tyEmVyyZJuOFDBnyoRSQYf8Q0KDMEuMheLc
-         4/xdWK3Xc7Cg0HeB4txEiguNcZEzzQns5w6d54htqWUCJrol5AzIfElHqoDljVIqkcG3
-         GaQA==
+        bh=V57x0MEr6fuE5L3vURExVJ6RMqS7xwkhHXyJYTkcluM=;
+        b=d3zqbzBkMTaMN+TQfvkijPPkv8G4hEufMVUiYKmqQaecIbqqDBlf6sdbonICXPubU4
+         FCSbsdbrLOhcZYVnI0fLzr4QL7/ReF/4vCRNHL+bgLeBJvzJpMUqv0iiASu51wqzmrAq
+         QzbCFzT5NKnuygO8Mkje4BuN+GoHLUkdoktjcePMkt+dwTmKDct52Gb9TQRytCVKHx9C
+         0K0snlfZ4qQyGt/GiZK4i4p46utLgbXX4HX9eujI1oNxCXq26urPotJ5w2FDtLTOaZTG
+         EIX7KEXB9QyG5NE7kH/xXactMiTCY96YLBIWIK8+TjAM8dNoVn1ILEjTRjeuBEh7r3tQ
+         J4Ew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=eHPc3N37Jxt/ha1mRXWgFzhusdcNwFGBiIe67sBVlN8=;
-        b=tLVOlsy7LgpPJ4Yc/ozd3s6CK8ATR07VIR1ScJiSS06RE4qN0CJWEV2q+MF8qDMV/d
-         clyLiVY9sru32v8by6WqDlR8tf0pbgjehA0Z2k4a+8zt85ivU258dx7L9RhIZBmhXX8t
-         Qybm09LmIMi5JGDZ3BNKYnfU4oPSW5hrabpkMnz2CzGTlZxA/L3z6S98yQ2vonDxgr/V
-         aeL57jCXJyRYPOT0E419WRN06j9DhjHWHXcUxorAhseebzkxOMVguM8Sbu1DsXZcL3El
-         NWSh3L8Rdg2iJfs6j4w730JSrtnTmkTV9brwLSEAyICdo05vHlDUeqzUorCGAWUsEArE
-         iiTw==
-X-Gm-Message-State: AOAM531E3tA0a4TyJAYUZRuVazWk5cE05k/nQYi1yU4yoeNo5gbIi3HG
-	JmtRWYScjf5Gu4YmTIteWmglrQ1BPm0NVJNo
-X-Received: by 2002:adf:d218:: with SMTP id j24mr14679201wrh.50.1634895469456;
-        Fri, 22 Oct 2021 02:37:49 -0700 (PDT)
+        bh=V57x0MEr6fuE5L3vURExVJ6RMqS7xwkhHXyJYTkcluM=;
+        b=vwIxu50x9LXl5mZdjyC2rIlzJrAl1MYPLCJFiOv4OMSTYrD99eSLowBPJd3hyNWWNU
+         XtbrDvVDla0p6poTvwvYXDM+p3K70ztoBptTV152w038Qf0aQLTiWwkQ6NhJXoezJszf
+         c0X9fh+/vcR9IRtAScie40LT1klpcbW31KCNE0VcqvZhjhu7smD18Ay+3kqvdPy9jHRl
+         JrQYMVJ6+L8K5CEVDYhkcv7HHujzYjoJpA7qjR2Fo5YL7nDyV3+nSEllLCOrTGzH3ttF
+         a4x2kp4YMj1+nw90pngbGloMSrXUTLxRZEYyTvpTjQVxECpncin0N1Q/CQ3eH8takX9G
+         fpbQ==
+X-Gm-Message-State: AOAM532A8w/iO6yVnoqGRS6QtnDcjIpYWS0kZ1xrovigvts+KPrefY7u
+	F32XUwd2xwynHoIf+9rZK5j6CjOh59i77fcv
+X-Received: by 2002:a7b:cd15:: with SMTP id f21mr11130877wmj.87.1634895465474;
+        Fri, 22 Oct 2021 02:37:45 -0700 (PDT)
 Return-Path: <karolinadrobnik@gmail.com>
 Received: from localhost.localdomain ([2a01:4b00:f411:e700:e085:8cb7:7bf6:5d62])
-        by smtp.gmail.com with ESMTPSA id r15sm1643602wru.9.2021.10.22.02.37.48
+        by smtp.gmail.com with ESMTPSA id r15sm1643602wru.9.2021.10.22.02.37.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 22 Oct 2021 02:37:48 -0700 (PDT)
+        Fri, 22 Oct 2021 02:37:45 -0700 (PDT)
 From: Karolina Drobnik <karolinadrobnik@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: gregkh@linuxfoundation.org,
@@ -80,72 +80,82 @@ Cc: gregkh@linuxfoundation.org,
 	linux-staging@lists.linux.dev,
 	linux-kernel@vger.kernel.org,
 	Karolina Drobnik <karolinadrobnik@gmail.com>
-Subject: [PATCH 2/5] staging: vt6655: Rename `byInitCount` variable
-Date: Fri, 22 Oct 2021 10:37:15 +0100
-Message-Id: <53430b1183324f6a715999792a15df2ea6a3e206.1634826774.git.karolinadrobnik@gmail.com>
+Subject: [PATCH 1/5] staging: vt6655: Rename `ii` variable
+Date: Fri, 22 Oct 2021 10:37:14 +0100
+Message-Id: <91591b7ca0aaf05d2de1e5ae9477ae3b8f13427f.1634826774.git.karolinadrobnik@gmail.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <cover.1634826774.git.karolinadrobnik@gmail.com>
 References: <cover.1634826774.git.karolinadrobnik@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-Drop Hungarian notation in `byInitCount` variable in
-`RFvWriteWakeProgSyn` function. Change it to use snake case.
-
-Fix issue detected by checkpatch.pl:
-  CHECK: Avoid CamelCase: <byInitCount>
+Drop Hungarian notation in the loop counter `ii` in
+`RFvWriteWakeProgSyn` function.
 
 Signed-off-by: Karolina Drobnik <karolinadrobnik@gmail.com>
 ---
- drivers/staging/vt6655/rf.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ drivers/staging/vt6655/rf.c | 30 +++++++++++++++---------------
+ 1 file changed, 15 insertions(+), 15 deletions(-)
 
 diff --git a/drivers/staging/vt6655/rf.c b/drivers/staging/vt6655/rf.c
-index 7e441309dd9c..36708af7d612 100644
+index 6bdacf8fbc27..7e441309dd9c 100644
 --- a/drivers/staging/vt6655/rf.c
 +++ b/drivers/staging/vt6655/rf.c
-@@ -681,7 +681,7 @@ bool RFvWriteWakeProgSyn(struct vnt_private *priv, unsigned char byRFType,
+@@ -680,7 +680,7 @@ bool RFvWriteWakeProgSyn(struct vnt_private *priv, unsigned char byRFType,
+ 			 u16 uChannel)
  {
  	void __iomem *iobase = priv->port_offset;
- 	int i;
--	unsigned char byInitCount = 0;
-+	unsigned char init_count = 0;
+-	int   ii;
++	int i;
+ 	unsigned char byInitCount = 0;
  	unsigned char bySleepCount = 0;
  
- 	VNSvOutPortW(iobase + MAC_REG_MISCFFNDEX, 0);
-@@ -693,9 +693,9 @@ bool RFvWriteWakeProgSyn(struct vnt_private *priv, unsigned char byRFType,
+@@ -698,12 +698,12 @@ bool RFvWriteWakeProgSyn(struct vnt_private *priv, unsigned char byRFType,
+ 		if (byInitCount > (MISCFIFO_SYNDATASIZE - bySleepCount))
  			return false;
  
- 		 /* Init Reg + Channel Reg (2) */
--		byInitCount = CB_AL2230_INIT_SEQ + 2;
-+		init_count = CB_AL2230_INIT_SEQ + 2;
- 		bySleepCount = 0;
--		if (byInitCount > (MISCFIFO_SYNDATASIZE - bySleepCount))
-+		if (init_count > (MISCFIFO_SYNDATASIZE - bySleepCount))
- 			return false;
+-		for (ii = 0; ii < CB_AL2230_INIT_SEQ; ii++)
+-			MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + ii), al2230_init_table[ii]);
++		for (i = 0; i < CB_AL2230_INIT_SEQ; i++)
++			MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + i), al2230_init_table[i]);
  
- 		for (i = 0; i < CB_AL2230_INIT_SEQ; i++)
-@@ -709,9 +709,9 @@ bool RFvWriteWakeProgSyn(struct vnt_private *priv, unsigned char byRFType,
+-		MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + ii), dwAL2230ChannelTable0[uChannel - 1]);
+-		ii++;
+-		MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + ii), dwAL2230ChannelTable1[uChannel - 1]);
++		MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + i), dwAL2230ChannelTable0[uChannel - 1]);
++		i++;
++		MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + i), dwAL2230ChannelTable1[uChannel - 1]);
+ 		break;
+ 
  		/* Need to check, PLLON need to be low for channel setting */
- 	case RF_AIROHA7230:
- 		 /* Init Reg + Channel Reg (3) */
--		byInitCount = CB_AL7230_INIT_SEQ + 3;
-+		init_count = CB_AL7230_INIT_SEQ + 3;
- 		bySleepCount = 0;
--		if (byInitCount > (MISCFIFO_SYNDATASIZE - bySleepCount))
-+		if (init_count > (MISCFIFO_SYNDATASIZE - bySleepCount))
+@@ -715,18 +715,18 @@ bool RFvWriteWakeProgSyn(struct vnt_private *priv, unsigned char byRFType,
  			return false;
  
  		if (uChannel <= CB_MAX_CHANNEL_24G) {
-@@ -736,7 +736,7 @@ bool RFvWriteWakeProgSyn(struct vnt_private *priv, unsigned char byRFType,
- 		return false;
- 	}
+-			for (ii = 0; ii < CB_AL7230_INIT_SEQ; ii++)
+-				MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + ii), dwAL7230InitTable[ii]);
++			for (i = 0; i < CB_AL7230_INIT_SEQ; i++)
++				MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + i), dwAL7230InitTable[i]);
+ 		} else {
+-			for (ii = 0; ii < CB_AL7230_INIT_SEQ; ii++)
+-				MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + ii), dwAL7230InitTableAMode[ii]);
++			for (i = 0; i < CB_AL7230_INIT_SEQ; i++)
++				MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + i), dwAL7230InitTableAMode[i]);
+ 		}
  
--	MACvSetMISCFifo(priv, MISCFIFO_SYNINFO_IDX, (unsigned long)MAKEWORD(bySleepCount, byInitCount));
-+	MACvSetMISCFifo(priv, MISCFIFO_SYNINFO_IDX, (unsigned long)MAKEWORD(bySleepCount, init_count));
+-		MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + ii), dwAL7230ChannelTable0[uChannel - 1]);
+-		ii++;
+-		MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + ii), dwAL7230ChannelTable1[uChannel - 1]);
+-		ii++;
+-		MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + ii), dwAL7230ChannelTable2[uChannel - 1]);
++		MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + i), dwAL7230ChannelTable0[uChannel - 1]);
++		i++;
++		MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + i), dwAL7230ChannelTable1[uChannel - 1]);
++		i++;
++		MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + i), dwAL7230ChannelTable2[uChannel - 1]);
+ 		break;
  
- 	return true;
- }
+ 	case RF_NOTHING:
 -- 
 2.30.2
 
