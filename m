@@ -1,122 +1,115 @@
 X-GM-THRID: 7021611435626070016
-X-Received: by 2002:a05:620a:444d:: with SMTP id w13mr10025423qkp.10.1634908424495;
-        Fri, 22 Oct 2021 06:13:44 -0700 (PDT)
+X-Received: by 2002:a05:620a:2587:: with SMTP id x7mr8231010qko.181.1634882622103;
+        Thu, 21 Oct 2021 23:03:42 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:620a:4692:: with SMTP id bq18ls2384098qkb.0.gmail; Fri,
- 22 Oct 2021 06:13:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy6p09mGDxblx+bm9ijRN5tfRPP8Zzutj0xUs28gydpbEg71pjI9VgTJSAA5fDSEMkTsGls
-X-Received: by 2002:a37:9c50:: with SMTP id f77mr9819864qke.221.1634908423623;
-        Fri, 22 Oct 2021 06:13:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634908423; cv=none;
+Received: by 2002:aed:27d8:: with SMTP id m24ls4272692qtg.6.gmail; Thu, 21 Oct
+ 2021 23:03:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz/jF2iQmNsIOEbvC434svc6+rTeXr14Q+FPs4Dksi0F1HkbFrc7WHlxUo2krZSrAL7AIxz
+X-Received: by 2002:a05:622a:1a8c:: with SMTP id s12mr10867267qtc.303.1634882621220;
+        Thu, 21 Oct 2021 23:03:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634882621; cv=none;
         d=google.com; s=arc-20160816;
-        b=zGP8IoyCPyfJZbCcTWE3860cttSgEvtqVhlZH1TipcDe3NloRIygfTCN9dMM7ADGNN
-         ou5kxTJu7MA6T+ku/nFn9jEBdXpI0TaGqubqhqTgRHibAJI0ICkmRImFtuLs2+BUlI7L
-         Jxfvj91xUPb/k2RyT+1BhrI/1C9SCqe27raUP04tuAASt3bKw3TsLvv8Z4P4/ZILeA7U
-         bv9d/DlbIAq5sY3CEgHfxcY6bXZXwqsrJO3Bka7w5MpRuA3o6ommNuZ1QQU6CPakCPzT
-         PapRtrrxyNFAodnrl6OzCiteANPjenapWnZ4tdb+bNY46nGCJGzxub2I6gT7JoyZpzPy
-         cdGA==
+        b=WsTYNCRLfpcfjpFH3bxS2NRXXgiqWPHzgzK+psajynTBl50u3zD+HjK5I662253Bv4
+         sWdlv8s3nwQ774rBYAQBrSxsZxBxptcLvgaJFgmiZwnTTRM0dZbw/L1WQfqO4600DPBp
+         YQQPKgRudXz/1LUAU9BVVu48QLDuE8s/foDI2JIwzcRvZdXyKv8Uf/vpFzKTPlpWLRho
+         elX3Nf6D41yenHgqvcYyljqzApN1Pv6Dgud9rnEWvVcrOif5Bc+ywA9QhNeOvAwSoG04
+         4ST1VcH+ilDxg41xXIOVktV+Pn/ufhH96ktp5jdp+lcDYHvkY8VLZGkSmEKWYGdoaOTv
+         fv6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=gthT7Vq77opBc/rSgVQR3VqXY4Alj06CFLF17FWMuIY=;
-        b=Gqyy3Q6ZAYuP/oce/vV9sf+xtsn4tj/SGywLhMS5J4IMmrqoH4vPEERC04Exio3OBe
-         OvtQm+/iFq4y9Roz0wssHLeaYcMrrJLfP2olMOtZO6Etinf3B4I9PGTE9uageXFRev8g
-         ys/WNhlddlUeJj1B08FUJbh56YEvBwkYJ5gApnnwVb7vxvD8nobbfTYrRm/DOu9Dh/Ri
-         SNFDBLIsyyyaFcc2vxYMj6R3Tlw1ScQbwbwkYBcZ3v6yzIqZvYup53jdGVzbrAKxYXmH
-         pJXjsw3CAXD6X9zSqfxVPXRZiJkdcG1yZeMZA5ZP9h3S7xGcSm2/E9HHEGWOTuZxd37b
-         oVVA==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=TK+U5Q771MhRvzUVYU2a4IL5GQ7nLjK+WI5xf/sZ0Zs=;
+        b=FBp8Fu/FxjtTEg2bgXVv0wB3pK7ovhttu4ah3oTG9816RCRdrTcg99ZRP/TsMe3HyK
+         c0GA1SZOm+2ny6TamFNiKZuplobVlBqrJF8UOFSXr9srRrKg/rkYjdfVAbiNXNSCQJ3l
+         K6PfxKTUjC8zE35mx10YUHSqh1CAa2GqXl9+20fW8SDAoO5gw3iRuU4902rKWz8lU2vV
+         hqSDBqrml1rwCkoV48YWrIG+G3IpJN4JpdeaHICaQW8CsHfDLATOSFQC4BN1OwKodsR0
+         kiJdj1CRFuGIc5l1TYFHks7voFYvxDGz/yBPv9tLDWKFx7Vog391rpjdsT6X4SUHpmyD
+         gbDQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=En2gcfJ9;
-       spf=pass (google.com: domain of kushalkothari285@gmail.com designates 2607:f8b0:4864:20::62e as permitted sender) smtp.mailfrom=kushalkothari285@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <kushalkothari285@gmail.com>
-Received: from mail-pl1-x62e.google.com (mail-pl1-x62e.google.com. [2607:f8b0:4864:20::62e])
-        by gmr-mx.google.com with ESMTPS id z18si952933qtj.2.2021.10.22.06.13.43
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 22 Oct 2021 06:13:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kushalkothari285@gmail.com designates 2607:f8b0:4864:20::62e as permitted sender) client-ip=2607:f8b0:4864:20::62e;
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b="gP4eMK/D";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Return-Path: <gregkh@linuxfoundation.org>
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id 12si819257qtu.0.2021.10.21.23.03.41
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 21 Oct 2021 23:03:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=En2gcfJ9;
-       spf=pass (google.com: domain of kushalkothari285@gmail.com designates 2607:f8b0:4864:20::62e as permitted sender) smtp.mailfrom=kushalkothari285@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x62e.google.com with SMTP id e10so2657672plh.8;
-        Fri, 22 Oct 2021 06:13:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=gthT7Vq77opBc/rSgVQR3VqXY4Alj06CFLF17FWMuIY=;
-        b=En2gcfJ9Ru+zVl0TwpHEs5pyKOGRbt1GMa7imWuY4HgR3Yl9auatghwvmBLRFEkmLb
-         Sci9S6TlpqOLHMeusZ9UngOP3p7qHuAhKCAIPKZYttR1rQVAv46ZDJ/Y3W/VH9zrZWfK
-         cqmB0YpE9d8IdqDwQNstkODz/1kpCcLDt1AhQrCftVBsgyDy2DySzoXP3DhvEtnD9GdG
-         Sn9rF/9eTCoPQkF9L4FZG94aWdMyiJnSIIBHtJzWze7/Jo9w/EL3ZRbfoEeBoKwYwT97
-         oC5AIjUXacawMexdTVNnjEi2kqUm8csbhKJugHm1EE33AF6spmmtcLQu8ZbzBDHTUipa
-         EvSA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=gthT7Vq77opBc/rSgVQR3VqXY4Alj06CFLF17FWMuIY=;
-        b=mAOx8g4cBFJTZ1RxLdZlEJdj8l2rwdbPNuI1+LFrhmwvSq6yFGk7beBjThqEY4YCIx
-         D3HlcJ0u7zP/Nyb3FVXx7lICzgQ0+0HL9P1dTKeO2kG4blvPBP6iy5PDme5fG7Jr2VKR
-         aYv0tmPDEM0XaSlYD5n/K/KzUvLhg4+2qmKTpr9gH3Cg23heloG6uQJ7va2+Yhr9fCiU
-         VYjIsH4hWYb27tAhSEbIzY04vdepVrod2JWjwN1EpI49/EZfD8br+Q33I6Pjy46pY7vt
-         OyPJwbC+RS95U6cDXBEJglC5eYbRK4Fw9uwovYwrrI/PE2NfD27kUlHqNWGMz/fKKD88
-         K7jg==
-X-Gm-Message-State: AOAM533DyIT+ZEZERiHdWEyclyQ/aEjEmdriJAfIyor7h7mRVoXS68uy
-	upXizHaNpW7XfA+JVhOfE1Q=
-X-Received: by 2002:a17:90a:784a:: with SMTP id y10mr6678931pjl.211.1634908423193;
-        Fri, 22 Oct 2021 06:13:43 -0700 (PDT)
-Return-Path: <kushalkothari285@gmail.com>
-Received: from localhost.localdomain ([115.96.219.100])
-        by smtp.googlemail.com with ESMTPSA id mq3sm11932413pjb.33.2021.10.22.06.13.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 22 Oct 2021 06:13:42 -0700 (PDT)
-From: Kushal Kothari <kushalkothari285@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: kushalkothari285@gmail.com,
-	kush19992810@gmail.com,
-	outreachy-kernel@googlegroups.com,
-	fabioaiuto83@gmail.com,
-	ross.schm.dev@gmail.com,
-	fmdefrancesco@gmail.com,
-	marcocesati@gmail.com,
-	straube.linux@gmail.com,
-	philippesdixon@gmail.com,
-	manuelpalenzuelamerino@gmail.com,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	mike.rapoport@gmail.com,
-	kushalkotharitest@googlegroups.com
-Subject: [PATCH v3 0/4] staging: rtl8723bs: core: Cleanup patchset for style issues in rtw_cmd.c
-Date: Fri, 22 Oct 2021 18:43:17 +0530
-Message-Id: <cover.1634906059.git.kushalkothari285@gmail.com>
-X-Mailer: git-send-email 2.25.1
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b="gP4eMK/D";
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Received: by mail.kernel.org (Postfix) with ESMTPSA id D9C0E610CF;
+	Fri, 22 Oct 2021 06:03:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1634882620;
+	bh=JzgnnT1vFNgovNqLd0ix+p3ErAjwejA4YDXOJPW46DY=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=gP4eMK/D/5vCVwIvgd2zAttaYuMFnHtCLmZpd1H506OMwbnAOo/VXsYOw34oPxeSb
+	 Wk4A28bCoQy/XAVs2Xhb1xoB9DcJj2t68x8gK/qAQRpS5Nh+jMzzKCre3XevUKSdRN
+	 aTAKYkAI9E4YWXy6V9UTCnHQ+J0UUl3KOXJa+tgk=
+Date: Fri, 22 Oct 2021 08:03:35 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Kushal Kothari <kushalkothari285@gmail.com>
+Cc: fabioaiuto83@gmail.com, ross.schm.dev@gmail.com,
+	fmdefrancesco@gmail.com, marcocesati@gmail.com,
+	straube.linux@gmail.com, philippesdixon@gmail.com,
+	manuelpalenzuelamerino@gmail.com, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org, mike.rapoport@gmail.com,
+	kushalkotharitest@googlegroups.com,
+	outreachy-kernel@googlegroups.com
+Subject: Re: [PATCH 4/4] staging: rtl8723bs: core: Remove unnecessary blank
+ lines
+Message-ID: <YXJUNy0VXEwxeBe+@kroah.com>
+References: <cover.1634845504.git.kushalkothari285@gmail.com>
+ <f6d2ba1d544c70519bad5c04f012cba0214b379a.1634845504.git.kushalkothari285@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <f6d2ba1d544c70519bad5c04f012cba0214b379a.1634845504.git.kushalkothari285@gmail.com>
 
-These patches make changes to clean up style issues identified
-by checkpatch. 
+On Fri, Oct 22, 2021 at 01:27:53AM +0530, Kushal Kothari wrote:
+> Remove useless blank lines
+> 
+> Signed-off-by: Kushal Kothari <kushalkothari285@gmail.com>
+> ---
+>  drivers/staging/rtl8723bs/core/rtw_cmd.c | 7 +------
+>  1 file changed, 1 insertion(+), 6 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
+> index fce3256cc275..690e4627663c 100644
+> --- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
+> +++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
+> @@ -316,8 +316,6 @@ int rtw_cmd_filter(struct cmd_priv *pcmdpriv, struct cmd_obj *cmd_obj)
+>  	return _SUCCESS;
+>  }
+>  
+> -
+> -
+>  int rtw_enqueue_cmd(struct cmd_priv *pcmdpriv, struct cmd_obj *cmd_obj)
+>  {
+>  	int res = _FAIL;
+> @@ -367,7 +365,6 @@ void rtw_free_cmd_obj(struct cmd_obj *pcmd)
+>  	kfree(pcmd);
+>  }
+>  
+> -
+>  void rtw_stop_cmd_thread(struct adapter *adapter)
+>  {
+>  	if (adapter->cmdThread &&
+> @@ -735,8 +732,7 @@ u8 rtw_joinbss_cmd(struct adapter  *padapter, struct wlan_network *pnetwork)
+>  	}
+>  	/* for ies is fix buf size */
+>  	t_len = sizeof(struct wlan_bssid_ex);
+> -
+> -
+> +	
 
-Kushal Kothari (4):
-  v3 staging: rtl8723bs: core: Remove true and false comparison
-  v3 staging: rtl8723bs: core: Remove unnecessary parentheses
-  v3 staging: rtl8723bs: core: Remove unnecessary space after a cast
-  v3 staging: rtl8723bs: core: Remove unnecessary blank lines
+Please do not add new whitespace errors :(
 
-Changes in v3:
-Enclose the version number inside the square bracket in all the subjects
+Always run your patches through checkpatch.pl to ensure this.
 
-Changes in v2:
-[PATCH 1/4]: Moved unnecessary parentheses change in PATCH 2/4
-[PATCH 2/4]: Added the extra parentheses change from PATCH 1/4 here.
-[PATCH 3/4]: No Changes
-[PATCH 4/4]: Fix whitespace error. 
+thanks,
 
- drivers/staging/rtl8723bs/core/rtw_cmd.c | 94 +++++++++---------------
- 1 file changed, 34 insertions(+), 60 deletions(-)
-
--- 
-2.25.1
-
+greg k-h
 
