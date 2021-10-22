@@ -1,135 +1,164 @@
 X-GM-THRID: 7021822549853995008
-X-Received: by 2002:a05:6000:1107:: with SMTP id z7mr8206209wrw.370.1635154734270;
-        Mon, 25 Oct 2021 02:38:54 -0700 (PDT)
+X-Received: by 2002:a2e:a413:: with SMTP id p19mr990994ljn.488.1634920348901;
+        Fri, 22 Oct 2021 09:32:28 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:adf:ef8b:: with SMTP id d11ls898517wro.2.gmail; Mon, 25 Oct
- 2021 02:38:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz35PDDUA1KoG7R/TTlmU+lRWQUtTU81IAjiEVXRZDx4WUb75+x/+ZUPWMMMnyF6qDbDJDK
-X-Received: by 2002:adf:9dc1:: with SMTP id q1mr22082771wre.13.1635154732880;
-        Mon, 25 Oct 2021 02:38:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1635154732; cv=none;
+Received: by 2002:a2e:8949:: with SMTP id b9ls1867678ljk.2.gmail; Fri, 22 Oct
+ 2021 09:32:27 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzc6TN1OCacfcHslEIt5NoJPHmygOZkrcXNE5IVg4nAAappGl34tjjMN5zIf2Rz4DTrHIv1
+X-Received: by 2002:a05:651c:a0c:: with SMTP id k12mr878572ljq.491.1634920347258;
+        Fri, 22 Oct 2021 09:32:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634920347; cv=none;
         d=google.com; s=arc-20160816;
-        b=n7QpJg5QWySQWkxcuw8bDu/8DyJqPx8ZbuJyfOIBRgdl9n4RzONVB5y+Ly+BmUinF3
-         7ozLhtH/yWHn9IiJL+IUNW7YH7x4ycNjIsSiLc3aSLCLsIfbXBAYnfaB8yOJ1OH4k5OY
-         9YXAuqFfAD3F4M/zF5t7Y+URNeT26Jek8QFcwm933H2p2CSUIn5KS7/TLG3QGP5zhMlC
-         JpZwfb542gk+8sFEFCoEsC5dH1W5CXEXL2SclXaBf0E8DG13ixmeVfCJU168mzNXqPTL
-         klygJYFW41UJWcnVAxFfCCpK/0CmIO4j4ph6LfxDwvCR43WPiDAA9xeXR9JKltIk1067
-         Ksfw==
+        b=yHPfyRS8K/KiUWH0NvbmcnMUuypql/YTOvABmfcTUxfFX0kYiCEjsJQswbL4Nepa+S
+         Z9Z+oivFPz6LFJlNxIGvI9hTvyVazXp7MgdfuiRK8lL+XICcJ6piAma/6A992QTsI/2f
+         WmFqPsW4FRQn/Iy/vDumuRIdjG2sfXSjVUfOAZu+jGeiPMBWz8yqIniMlOtzZrQrGZ6u
+         /lc6nsYZ5yAn0DtoSKtoxxfSPWe+qtfetPkU7W5MZSw+uHsHHs2NiwiDlj+isV+6Wju/
+         WXXAjX7nJRSvHOlFU62wh5ljY6R6hPhoRkmPcScp/KvVNIRpf/PmMu0qmZkiMef8gf/G
+         VmSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:references
-         :in-reply-to:date:cc:to:from:subject:message-id:dkim-signature;
-        bh=j2/0T+iSdDtcRBJSHhWbXXR9G0R0VHtIn5iZtNGvdpY=;
-        b=ZVemBA2VDKYg1YfiNDx0wK10+5nwrkHFWPgakNroBIexuR65jfA0ReIHmA9ROJibl/
-         nBFRr/l6SppieOpn16b9u6UXh77gDBhUqOLY7nYY1o6wyvtEkah6tu0ikqeUb17Mr0Z0
-         p4mkJa4mmzCKy/phsHqxafvXOgdLqzRYvEVFSy/zsUuAFc/cwaYYAYoJTOHRMofDmUmv
-         FBxY+wrIYCwdngOR8EFpU/Jy7WmbGubSyWIzE2E2xVhuOjHRHelXgU+s9TMoBmBYGZNo
-         sd7nmJRVjCbPtvdHo+LD/c0IWs+y4owlwsZNUXSJqu6db3c83ymMcaDg4DT+TqTILUSi
-         FNbQ==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date;
+        bh=dw/aae5jLqsZOHALdXeqaGvrr42JuHEanMHVdKxRfY0=;
+        b=Rpg1ytZAt/loYhKjBX0y8ecYzMBBeE3kpi0cZNB5uO50+8Irn8yhiZ0XHrzQz+HmJ2
+         Z/uQh7GaRjQtihlC9ob3x3UyVvPPIgiqPW5OeU5zRHcTc/Us0ZzsYcfe+bFNmtbgar0J
+         zGUBuSxQNrbBLNiu8YJWXPTOqRN+z1qvSCd3CvvICxOoizc6U1kaWXJZF7+Ykb1J4qoh
+         a74qxtmZ1YfFqW/tpaIwo3o9gdEx1mb5cIVNfAAEjf8TCigJdOa2Y97Ohec/bMsijZRE
+         JA5fuNDu3UIj0SOY9uoiSmGJ0jdSLc1PL3o2cMJ7bghMTJqehwwvpFVuoX7HCdqzamwI
+         9WKg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=O8IHmCxE;
-       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::42d as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <karolinadrobnik@gmail.com>
-Received: from mail-wr1-x42d.google.com (mail-wr1-x42d.google.com. [2a00:1450:4864:20::42d])
-        by gmr-mx.google.com with ESMTPS id j23si786678wms.0.2021.10.25.02.38.52
+       spf=pass (google.com: domain of alison.schofield@intel.com designates 134.134.136.24 as permitted sender) smtp.mailfrom=alison.schofield@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <alison.schofield@intel.com>
+Received: from mga09.intel.com (mga09.intel.com. [134.134.136.24])
+        by gmr-mx.google.com with ESMTPS id a19si569426lfb.10.2021.10.22.09.32.26
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 25 Oct 2021 02:38:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::42d as permitted sender) client-ip=2a00:1450:4864:20::42d;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 22 Oct 2021 09:32:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of alison.schofield@intel.com designates 134.134.136.24 as permitted sender) client-ip=134.134.136.24;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=O8IHmCxE;
-       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::42d as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x42d.google.com with SMTP id d10so7594331wrb.1
-        for <outreachy-kernel@googlegroups.com>; Mon, 25 Oct 2021 02:38:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=message-id:subject:from:to:cc:date:in-reply-to:references
-         :user-agent:mime-version:content-transfer-encoding;
-        bh=j2/0T+iSdDtcRBJSHhWbXXR9G0R0VHtIn5iZtNGvdpY=;
-        b=O8IHmCxEqS6oDsG6t3xo1/CJc/mKQKQrKBE5I0MDKkQGd03S7OqsFskcTN/dsmOWNR
-         zTybvOnp12d3zvtbq0kzMNc80oUxNQlH6SiLR4G4PUQe+9fyKLHiE+QjHnxB2LT1uDZM
-         aMeiJaIIwsjLS1pRgtWUeFfZOyZGA2P7T6lx3YFlIVWFCaA4gbSZHwYulHYFELdB+YPU
-         4ZhqrdqRwXram+3kTOs+Pctv8HtyIeM3xcbOkEwZjL9FA7AwVhobHrMR0pSwObfT990U
-         qQQKhYLDr6/gONsRQZcKMb3gGBND4mxKesrP2atjQclfE/kHB7OtEb4gQ6YYl6JBUk2z
-         CHXg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
-         :references:user-agent:mime-version:content-transfer-encoding;
-        bh=j2/0T+iSdDtcRBJSHhWbXXR9G0R0VHtIn5iZtNGvdpY=;
-        b=JVkkKgHvBS3zJ/ZjtYC1HkTcvvx1gRD874iYDMGaR3lMuUesF7lWGsNRVhCpwtkMaQ
-         reRndp3XQ3UluQCWgc2zW4Q0rG/nH4aieLbp6KWL7q/XX9m3fXJd7IxDsx4A0MFxYD0/
-         GzZzPRH1Yhl5GawJGuBDuEnljjAMkMIf6hHy25E8NKNsBkRALhb1poRg0bbVs4/A/BRc
-         XckJeG56ay93Q6urT3LMZhu0EqCTxZqRxzfxLNi+Ate0VpZQzyMUcd+w7RJuHSL58QW9
-         8earKRum5pU1hJbU7LnTq6Fgj3ZFVquSy60JUjl0NUFscJj9BudSNQBIyEBFI4JK3ZDc
-         vvDA==
-X-Gm-Message-State: AOAM533u1CLqPxuFqpWv9d50STnoNOSXlX0rTiMEpd4ewN1C85XuE7IC
-	3bTfdGcLmmb9F/xLJmXC/eI=
-X-Received: by 2002:adf:8bce:: with SMTP id w14mr7800346wra.391.1635154732530;
-        Mon, 25 Oct 2021 02:38:52 -0700 (PDT)
-Return-Path: <karolinadrobnik@gmail.com>
-Received: from ?IPv6:2a01:4b00:f411:e700:e085:8cb7:7bf6:5d62? ([2a01:4b00:f411:e700:e085:8cb7:7bf6:5d62])
-        by smtp.gmail.com with ESMTPSA id l20sm21094729wmq.42.2021.10.25.02.38.51
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 Oct 2021 02:38:51 -0700 (PDT)
-Message-ID: <4a0993774f75323c803f7b07ff9825d7beb6d95b.camel@gmail.com>
+       spf=pass (google.com: domain of alison.schofield@intel.com designates 134.134.136.24 as permitted sender) smtp.mailfrom=alison.schofield@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+X-IronPort-AV: E=McAfee;i="6200,9189,10145"; a="229203709"
+X-IronPort-AV: E=Sophos;i="5.87,173,1631602800"; 
+   d="scan'208";a="229203709"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Oct 2021 09:32:24 -0700
+X-IronPort-AV: E=Sophos;i="5.87,173,1631602800"; 
+   d="scan'208";a="534986075"
+Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
+  by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Oct 2021 09:32:23 -0700
+Date: Fri, 22 Oct 2021 09:40:11 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: Karolina Drobnik <karolinadrobnik@gmail.com>
+Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org,
+	forest@alittletooquiet.net, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org
 Subject: Re: [Outreachy kernel] [PATCH 2/5] staging: vt6655: Rename
  `byInitCount` variable
-From: Karolina Drobnik <karolinadrobnik@gmail.com>
-To: Alison Schofield <alison.schofield@intel.com>
-Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
-	forest@alittletooquiet.net, linux-staging@lists.linux.dev, 
-	linux-kernel@vger.kernel.org
-Date: Mon, 25 Oct 2021 10:38:46 +0100
-In-Reply-To: <20211022164011.GB464908@alison-desk>
+Message-ID: <20211022164011.GB464908@alison-desk>
 References: <cover.1634826774.git.karolinadrobnik@gmail.com>
-	 <53430b1183324f6a715999792a15df2ea6a3e206.1634826774.git.karolinadrobnik@gmail.com>
-	 <20211022164011.GB464908@alison-desk>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.38.3-1 
+ <53430b1183324f6a715999792a15df2ea6a3e206.1634826774.git.karolinadrobnik@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <53430b1183324f6a715999792a15df2ea6a3e206.1634826774.git.karolinadrobnik@gmail.com>
 
-Hi Alison,
-
-On Fri, 2021-10-22 at 09:40 -0700, Alison Schofield wrote:
-> On Fri, Oct 22, 2021 at 10:37:15AM +0100, Karolina Drobnik wrote:
-> > Drop Hungarian notation in `byInitCount` variable in
-> > `RFvWriteWakeProgSyn` function. Change it to use snake case.
-> > 
-> > Fix issue detected by checkpatch.pl:
-> >   CHECK: Avoid CamelCase: <byInitCount>
+On Fri, Oct 22, 2021 at 10:37:15AM +0100, Karolina Drobnik wrote:
+> Drop Hungarian notation in `byInitCount` variable in
+> `RFvWriteWakeProgSyn` function. Change it to use snake case.
 > 
-> Hi Karolina,
+> Fix issue detected by checkpatch.pl:
+>   CHECK: Avoid CamelCase: <byInitCount>
+
+Hi Karolina,
+
+This comment is for all the patches.
+
+Commit msg:
+We've got plenty of space on that line, how about:
+"Rename byInitCount init_count"
+
+(I say this because when someone searches by the oneliners it's
+nice to give as many keywords as possible - within the line limit)
+
+
+Commit log:
+The log (why this patch is important) seems to be saying that
+snake case is the fix for Hungarian notation. I don't think that
+is completely true. Snake case avoids the camel case of Hungarian
+notation, but we are also dropping the type descriptor which is
+another signature of Hungarian notation.
+
+Perhaps this would be more direct:
+
+To align with the kernel coding style, remove the type from
+the variable name and do not use CamelCase.
+
+Reported by checkpatch.pl:
+	CHECK: Avoid CamelCase: <byInitCount>
+
+(Not for the log, but a ref if you don't have:
+https://www.kernel.org/doc/html/v4.10/process/coding-style.html)
+
+Alison
+
 > 
-> This comment is for all the patches.
+> Signed-off-by: Karolina Drobnik <karolinadrobnik@gmail.com>
+> ---
+>  drivers/staging/vt6655/rf.c | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
 > 
-> Commit msg:
-> We've got plenty of space on that line, how about:
-> "Rename byInitCount init_count"
+> diff --git a/drivers/staging/vt6655/rf.c b/drivers/staging/vt6655/rf.c
+> index 7e441309dd9c..36708af7d612 100644
+> --- a/drivers/staging/vt6655/rf.c
+> +++ b/drivers/staging/vt6655/rf.c
+> @@ -681,7 +681,7 @@ bool RFvWriteWakeProgSyn(struct vnt_private *priv, unsigned char byRFType,
+>  {
+>  	void __iomem *iobase = priv->port_offset;
+>  	int i;
+> -	unsigned char byInitCount = 0;
+> +	unsigned char init_count = 0;
+>  	unsigned char bySleepCount = 0;
+>  
+>  	VNSvOutPortW(iobase + MAC_REG_MISCFFNDEX, 0);
+> @@ -693,9 +693,9 @@ bool RFvWriteWakeProgSyn(struct vnt_private *priv, unsigned char byRFType,
+>  			return false;
+>  
+>  		 /* Init Reg + Channel Reg (2) */
+> -		byInitCount = CB_AL2230_INIT_SEQ + 2;
+> +		init_count = CB_AL2230_INIT_SEQ + 2;
+>  		bySleepCount = 0;
+> -		if (byInitCount > (MISCFIFO_SYNDATASIZE - bySleepCount))
+> +		if (init_count > (MISCFIFO_SYNDATASIZE - bySleepCount))
+>  			return false;
+>  
+>  		for (i = 0; i < CB_AL2230_INIT_SEQ; i++)
+> @@ -709,9 +709,9 @@ bool RFvWriteWakeProgSyn(struct vnt_private *priv, unsigned char byRFType,
+>  		/* Need to check, PLLON need to be low for channel setting */
+>  	case RF_AIROHA7230:
+>  		 /* Init Reg + Channel Reg (3) */
+> -		byInitCount = CB_AL7230_INIT_SEQ + 3;
+> +		init_count = CB_AL7230_INIT_SEQ + 3;
+>  		bySleepCount = 0;
+> -		if (byInitCount > (MISCFIFO_SYNDATASIZE - bySleepCount))
+> +		if (init_count > (MISCFIFO_SYNDATASIZE - bySleepCount))
+>  			return false;
+>  
+>  		if (uChannel <= CB_MAX_CHANNEL_24G) {
+> @@ -736,7 +736,7 @@ bool RFvWriteWakeProgSyn(struct vnt_private *priv, unsigned char byRFType,
+>  		return false;
+>  	}
+>  
+> -	MACvSetMISCFifo(priv, MISCFIFO_SYNINFO_IDX, (unsigned long)MAKEWORD(bySleepCount, byInitCount));
+> +	MACvSetMISCFifo(priv, MISCFIFO_SYNINFO_IDX, (unsigned long)MAKEWORD(bySleepCount, init_count));
+>  
+>  	return true;
+>  }
+> -- 
+> 2.30.2
 > 
-> (I say this because when someone searches by the oneliners it's
-> nice to give as many keywords as possible - within the line limit)
-
-Ok, will do my best to include it in my upcoming patchset.
-
-> Commit log:
-> The log (why this patch is important) seems to be saying that
-> snake case is the fix for Hungarian notation. I don't think that
-> is completely true. Snake case avoids the camel case of Hungarian
-> notation, but we are also dropping the type descriptor which is
-> another signature of Hungarian notation.
-> 
-> Perhaps this would be more direct:
-> 
-> To align with the kernel coding style, remove the type from
-> the variable name and do not use CamelCase.
-
-Ok, I'll use this format from now on.
-
-
-Thanks,
-Karolina
-
+> -- 
+> You received this message because you are subscribed to the Google Groups "outreachy-kernel" group.
+> To unsubscribe from this group and stop receiving emails from it, send an email to outreachy-kernel+unsubscribe@googlegroups.com.
+> To view this discussion on the web visit https://groups.google.com/d/msgid/outreachy-kernel/53430b1183324f6a715999792a15df2ea6a3e206.1634826774.git.karolinadrobnik%40gmail.com.
 
