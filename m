@@ -1,77 +1,77 @@
 X-GM-THRID: 7021611435626070016
-X-Received: by 2002:a05:620a:28c9:: with SMTP id l9mr3705082qkp.360.1634974644051;
-        Sat, 23 Oct 2021 00:37:24 -0700 (PDT)
+X-Received: by 2002:aa7:8882:0:b0:44c:9270:1cba with SMTP id z2-20020aa78882000000b0044c92701cbamr5058037pfe.26.1634974635222;
+        Sat, 23 Oct 2021 00:37:15 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:aed:27d8:: with SMTP id m24ls5957495qtg.6.gmail; Sat, 23 Oct
- 2021 00:37:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxSiuQJd/Z0yVd/qntFy8xXgXtJA6o5llYDeAYtv3gc8W4Y1tO4z/QR7SNJOEyvWoMixEX1
-X-Received: by 2002:a05:622a:174b:: with SMTP id l11mr4872394qtk.306.1634974643114;
-        Sat, 23 Oct 2021 00:37:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1634974643; cv=none;
+Received: by 2002:a05:6a00:a81:: with SMTP id b1ls4844305pfl.3.gmail; Sat, 23
+ Oct 2021 00:37:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxX/ReinASYF3bhST+MAFJZVhU/S95ayLgCtO4no1BFn6gwt6uylaCvRClUXN0XZEYO2g/M
+X-Received: by 2002:a63:7119:: with SMTP id m25mr3502243pgc.253.1634974634003;
+        Sat, 23 Oct 2021 00:37:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634974634; cv=none;
         d=google.com; s=arc-20160816;
-        b=WERT8gHARVhzJRustYjYofA8V4zrXflH4aI0dZdOMj9ozD5ikxtZXkRVo37CLL4o7h
-         WCwE6cKXzw/x0QXLPp4JeaHgfuFrc/C4qe2F9IO0gcqbXEa2J3fnWOFmM36gv8a2J3H1
-         2/Fs3ah8EBE4Y0ptRa9jWnl4uRIsOwpIZ5fF2J/kni4/SG6IFMrVXiF68zKD/mEP/FvB
-         Z/cfde312jieUM2YMFJO6FShpLlGXNsg0IZm7KjKv0LLsxxPCS4mDNw+U2xZ4+9qdyTe
-         eTqQKtPikDNJloDurahze9dVB7xQasuu4lh5nhn+/DGeTX8yJD+CmDiM2K5b9yDfwtZF
-         kFFg==
+        b=D5Jwm4/qY+lrr8KWUDk5mT+dBmLyFcWvw283ewjMGM3vs23sweTwiXGzKj8/GGgI0p
+         UIgdZa20UwvWfAMWMw/LghIH+dTHR/pd+5MhvUaY5P7PgANHoWvaS1ssBc8w9zg2wxcI
+         zx0E0n8VPPO5Amh+erV9S9Hr+y0z8vUbXW34c+XqQRFNq0AEPDHeyB1fgOMATvr5aFbE
+         xE5Yb3krq8n/jM5dN3tAsyyQQKv+IU9dbxrE//SES9tvxxFrO/1OQ8r+vcTTgw6EpK+B
+         2vfsSQxlN57T00C5TJsWVM40nCNX+y5wPJF8xDdoH/gDmCuUR1+sO6rsij9Fj3I+qejT
+         l3Hg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Q5L97OuwvQtPMGsCqSSGgMgXb4wrKIfzBKtlfkqJvOI=;
-        b=ol12/ROEKcmCFX0/VDOaBIUy5F/bU/LRI2MFNhRSIZp1krWYannUVK3Ja0jkRh0ktd
-         CnsQLYoTfP3GTOU9a0xsxQAOAsqydrrWpIQ/GtM93t4Ir7uqtDgekzRiQywE50ZI+jBt
-         pi6FYXAizetZjgLO/17HqctNdnQH0ll7mSkd7yDLB//bEQTs1lnGJIJ82Ymq8YaoScDm
-         I1HKF+Mg9m+BOXLvtmkbxii7G94+VOjXHvJ4CjPmbfnmIxb0Pz/J+0gjhb00YBH2JbzW
-         lv8RBwy4VjOMOqCdQMAic221NAsXeRbt3v5aGrmB6P3e5L+o0KB70oKuBsrvZr2XhQoI
-         htWw==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=P+5ziw6NsyhF53DNCK8sntvKXOSlWURctQDb8KvB3dQ=;
+        b=IygWikJEulx4/CRKcWJOjj2aZ31XlGcRzc+OvW7uZtEhGhPsrXHHAUwGvx7cmJgClK
+         cjoXh94H6M9gvpfbY71pgYH00TnSnztJWA03sTAO80b8xqbDPjKhXMhIbWRZSNYs/YSa
+         cnyuQK5kVkBreLBLQNi8Hctx8ekLleCtr5dZgMiwrshi6uBeGUuYCBHijT8f4WZYVkx2
+         4KMv4BxogyDMd4BHNEzkvVpXGMKRa4CUn4vWsOKSr9xjPwFnRPBrCmdz6lgstp+kvKKf
+         SM8SwDMdon9HAHGmukgjhAK57UVfYxfbE7rDECcpRZoi9MXti+e9mHzrC+byWEgk/x6Z
+         PWvA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=lLTSW56+;
-       spf=pass (google.com: domain of kushalkothari285@gmail.com designates 2607:f8b0:4864:20::62f as permitted sender) smtp.mailfrom=kushalkothari285@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=m9lRHPRy;
+       spf=pass (google.com: domain of kushalkothari285@gmail.com designates 2607:f8b0:4864:20::52d as permitted sender) smtp.mailfrom=kushalkothari285@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <kushalkothari285@gmail.com>
-Received: from mail-pl1-x62f.google.com (mail-pl1-x62f.google.com. [2607:f8b0:4864:20::62f])
-        by gmr-mx.google.com with ESMTPS id w22si99623qkp.7.2021.10.23.00.37.23
+Received: from mail-pg1-x52d.google.com (mail-pg1-x52d.google.com. [2607:f8b0:4864:20::52d])
+        by gmr-mx.google.com with ESMTPS id w9si841867plq.0.2021.10.23.00.37.13
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 23 Oct 2021 00:37:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kushalkothari285@gmail.com designates 2607:f8b0:4864:20::62f as permitted sender) client-ip=2607:f8b0:4864:20::62f;
+        Sat, 23 Oct 2021 00:37:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kushalkothari285@gmail.com designates 2607:f8b0:4864:20::52d as permitted sender) client-ip=2607:f8b0:4864:20::52d;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=lLTSW56+;
-       spf=pass (google.com: domain of kushalkothari285@gmail.com designates 2607:f8b0:4864:20::62f as permitted sender) smtp.mailfrom=kushalkothari285@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=m9lRHPRy;
+       spf=pass (google.com: domain of kushalkothari285@gmail.com designates 2607:f8b0:4864:20::52d as permitted sender) smtp.mailfrom=kushalkothari285@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x62f.google.com with SMTP id c4so409403plg.13;
-        Sat, 23 Oct 2021 00:37:23 -0700 (PDT)
+Received: by mail-pg1-x52d.google.com with SMTP id t7so5462886pgl.9;
+        Sat, 23 Oct 2021 00:37:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=Q5L97OuwvQtPMGsCqSSGgMgXb4wrKIfzBKtlfkqJvOI=;
-        b=lLTSW56+Lh2AK6bcA539cCpPFy2XFgZpbl6+f59UyIzQ+qx/kT774kanb0VHOOOXB3
-         zXlA/az5KJhmCXh7+5t3uRBFYOriWC/tAaWrmAOItPBTndXeUXg9m1JbaZqKR2WgccTK
-         nzT2KTpuXKDPiCqgWySnX2vh84/W5IkVJotbqJoTz/c/rU5Z+gyN0ZauXBMy8tWKfvIZ
-         dQ/mZyLkJJJUn7wuCNO8f/pEEoOTcFVv25rrE5+pzNPcwOrCuoU3ormiBzw2mfN6Vox6
-         Qakj/tV4L9jmDPky9A2JLAUggGL1xQczFDe5eNuRPBLrs7gX8IZu12g/ZOHx/2K5wW4Z
-         a62g==
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=P+5ziw6NsyhF53DNCK8sntvKXOSlWURctQDb8KvB3dQ=;
+        b=m9lRHPRyDfHhdaCjSgkwRrfTDVO1ixInKtfSwv2eH2tCgk8kmaAzxnUlw8xzYdYBZu
+         eMMkbLD0EZRIgWK9IeZSfPWMM8wKV1XGYot0HLPpP3AFny7nCR3ZggzUKy9x4K4MJoel
+         LxB3+xCZKSIpsNiDTmx2A5TupFhUDD37tjNJe51qP9tR0V38mLjHbIPkC+wPGy2OdoW/
+         wRjSbIZhWmsTsIVnA4lEdOHGLTV4Brg9aTmDPYoHzLs5SoxiLhCjLNQ4jLAgoEfCvXpv
+         qH+tWIYM6NxwAcNA6lfZS3dTYW8SNbraPmN6sd7+VDgTzH1WtaMTa/1AzblWZAjiJkOt
+         8lyA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=Q5L97OuwvQtPMGsCqSSGgMgXb4wrKIfzBKtlfkqJvOI=;
-        b=VXTyDd8PAQApt3owOq7M/doJO//dRj62eXdm7MdY7VLMz+ZXFWHX5xhClz27f1lhki
-         56XFixSawp+YMZ7vHr0PZgnALatiET015ySl2ypbnEo+vbZTsvNsogdavtgL60gKzMUS
-         v1n4qdhyqMevdZlkjJJrxQNa9pjexFwkEue5VbPpawD0lSywQARbGx6+bG3+v9FUxHnn
-         TjfWnpWN2BMGypZkdSAGDzl9QmpZcKj/GYohLIjvcDtM93dc/xNKrsS3FNak+fA5GUOn
-         ClTcD8guuWniuQCR/6JntzCnvBUh0hnJUibUq3MV0F820H45i8FccAJKjs9eGJWY1icQ
-         Ho6A==
-X-Gm-Message-State: AOAM531dhmeuxFD7baXKmBOdNetxfF9TsBAMpI0Dk2N3l/sB2J+WfTkQ
-	03jy3ssdvI0d0DImTtS8OUk=
-X-Received: by 2002:a17:90b:3144:: with SMTP id ip4mr5458803pjb.23.1634974642253;
-        Sat, 23 Oct 2021 00:37:22 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=P+5ziw6NsyhF53DNCK8sntvKXOSlWURctQDb8KvB3dQ=;
+        b=m3s4YlrCjhgrEESG9PB+VqWfGXF8HNmyH7Tw2wl2Ic/ODCAn/WLhu/KcFp3ANhI/WP
+         Ksq0gN/09sIZqADXBbyQrMZX9ktfVP3e9KunlIksjYCbGNKyLSRqIHntWTGUayDd767q
+         I+PQDH12PlHsCNRlqYm6g1icjLUW7lPfThgHE48lgisfYfHUgHFtGfLEt5GeR0yOh/s8
+         CqmwM6lPTdEUwoRB6YWOaKH8Rkp6zobcDLMiND6kxxXYpwEsfXlBP44nMdzg1E1gQbTD
+         U9ML5MukqbHDwbFWVyvKn9f02J6xtG+qrCUa43hLEE7/QnlPQ1nNruJ0PXkgp/OXPWax
+         qywg==
+X-Gm-Message-State: AOAM533JTQabQbpqLcVQ9xBVQFr324m7Q0me4L8Ridm8rc5hMKBIToOB
+	C2UL5fLa+LKO859s+lBQHP0mS4bFz+nwPQ==
+X-Received: by 2002:a05:6a00:1148:b0:47b:c0c6:75da with SMTP id b8-20020a056a00114800b0047bc0c675damr3649320pfm.61.1634974633691;
+        Sat, 23 Oct 2021 00:37:13 -0700 (PDT)
 Return-Path: <kushalkothari285@gmail.com>
 Received: from localhost.localdomain ([2401:4900:5173:67c9:d8e4:2819:8ee8:8de4])
-        by smtp.googlemail.com with ESMTPSA id c4sm13949791pfv.144.2021.10.23.00.37.15
+        by smtp.googlemail.com with ESMTPSA id c4sm13949791pfv.144.2021.10.23.00.37.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 23 Oct 2021 00:37:21 -0700 (PDT)
+        Sat, 23 Oct 2021 00:37:13 -0700 (PDT)
 From: Kushal Kothari <kushalkothari285@gmail.com>
 To: gregkh@linuxfoundation.org
 Cc: kushalkothari285@gmail.com,
@@ -88,127 +88,38 @@ Cc: kushalkothari285@gmail.com,
 	linux-kernel@vger.kernel.org,
 	mike.rapoport@gmail.com,
 	kushalkotharitest@googlegroups.com
-Subject: [PATCH v4 1/4] staging: rtl8723bs: core: Remove true and false comparison
-Date: Sat, 23 Oct 2021 13:05:47 +0530
-Message-Id: <47dd38847c4e36742f88f4493773fef602ca079b.1634967010.git.kushalkothari285@gmail.com>
+Subject: [PATCH v4 0/4] staging: rtl8723bs: core: Cleanup patchset for style issues in rtw_cmd.c
+Date: Sat, 23 Oct 2021 13:05:46 +0530
+Message-Id: <cover.1634967010.git.kushalkothari285@gmail.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <cover.1634967010.git.kushalkothari285@gmail.com>
-References: <cover.1634967010.git.kushalkothari285@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-Remove comparison to true and false in if statement.
-Issue found with checkpatch.pl.
-CHECK: Using comparison to true is error prone
-CHECK: Using comparison to false is error prone
+These patches make changes to clean up style issues identified
+by checkpatch.
 
-Signed-off-by: Kushal Kothari <kushalkothari285@gmail.com>
----
+Kushal Kothari (4):
+  staging: rtl8723bs: core: Remove true and false comparison
+  staging: rtl8723bs: core: Remove unnecessary parentheses
+  staging: rtl8723bs: core: Remove unnecessary space after a cast
+  staging: rtl8723bs: core: Remove unnecessary blank lines
 
-Changes in v4: move these version notes
-Changes in v3: Enclose the version number inside the square bracket.
-Changes in v2: Unnecessary parantheses handled in *v2 staging: rtl8723bs: core: Remove unnecessary parentheses*
+ drivers/staging/rtl8723bs/core/rtw_cmd.c | 94 +++++++++---------------
+ 1 file changed, 34 insertions(+), 60 deletions(-)
 
- drivers/staging/rtl8723bs/core/rtw_cmd.c | 22 +++++++++++-----------
- 1 file changed, 11 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-index 2624e994513f..acd4e8b1fad5 100644
---- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-@@ -371,7 +371,7 @@ void rtw_free_cmd_obj(struct cmd_obj *pcmd)
- void rtw_stop_cmd_thread(struct adapter *adapter)
- {
- 	if (adapter->cmdThread &&
--		atomic_read(&(adapter->cmdpriv.cmdthd_running)) == true &&
-+		atomic_read(&(adapter->cmdpriv.cmdthd_running)) &&
- 		adapter->cmdpriv.stop_req == 0) {
- 		adapter->cmdpriv.stop_req = 1;
- 		complete(&adapter->cmdpriv.cmd_queue_comp);
-@@ -542,7 +542,7 @@ u8 rtw_sitesurvey_cmd(struct adapter  *padapter, struct ndis_802_11_ssid *ssid,
- 	struct cmd_priv 	*pcmdpriv = &padapter->cmdpriv;
- 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
- 
--	if (check_fwstate(pmlmepriv, _FW_LINKED) == true)
-+	if (check_fwstate(pmlmepriv, _FW_LINKED))
- 		rtw_lps_ctrl_wk_cmd(padapter, LPS_CTRL_SCAN, 1);
- 
- 	ph2c = rtw_zmalloc(sizeof(struct cmd_obj));
-@@ -775,7 +775,7 @@ u8 rtw_joinbss_cmd(struct adapter  *padapter, struct wlan_network *pnetwork)
- 	/*  If not,  we have to copy the connecting AP's MAC address to it so that */
- 	/*  the driver just has the bssid information for PMKIDList searching. */
- 
--	if (pmlmepriv->assoc_by_bssid == false)
-+	if (!pmlmepriv->assoc_by_bssid)
- 		memcpy(&pmlmepriv->assoc_bssid[0], &pnetwork->network.mac_address[0], ETH_ALEN);
- 
- 	psecnetwork->ie_length = rtw_restruct_sec_ie(padapter, &pnetwork->network.ies[0], &psecnetwork->ies[0], pnetwork->network.ie_length);
-@@ -1164,7 +1164,7 @@ u8 rtw_set_chplan_cmd(struct adapter *padapter, u8 chplan, u8 enqueue, u8 swconf
- 	u8 res = _SUCCESS;
- 
- 	/*  check if allow software config */
--	if (swconfig && rtw_hal_is_disable_sw_channel_plan(padapter) == true) {
-+	if (swconfig && rtw_hal_is_disable_sw_channel_plan(padapter)) {
- 		res = _FAIL;
- 		goto exit;
- 	}
-@@ -1250,7 +1250,7 @@ u8 traffic_status_watchdog(struct adapter *padapter, u8 from_timer)
- 	/*  */
- 	/*  Determine if our traffic is busy now */
- 	/*  */
--	if ((check_fwstate(pmlmepriv, _FW_LINKED) == true)
-+	if ((check_fwstate(pmlmepriv, _FW_LINKED))
- 		/*&& !MgntInitAdapterInProgress(pMgntInfo)*/) {
- 		/*  if we raise bBusyTraffic in last watchdog, using lower threshold. */
- 		if (pmlmepriv->LinkDetectInfo.bBusyTraffic)
-@@ -1342,7 +1342,7 @@ static void dynamic_chk_wk_hdl(struct adapter *padapter)
- 
- 	pmlmepriv = &(padapter->mlmepriv);
- 
--	if (check_fwstate(pmlmepriv, WIFI_AP_STATE) == true)
-+	if (check_fwstate(pmlmepriv, WIFI_AP_STATE))
- 		expire_timeout_chk(padapter);
- 
- 	/* for debug purpose */
-@@ -1377,8 +1377,8 @@ void lps_ctrl_wk_hdl(struct adapter *padapter, u8 lps_ctrl_type)
- 	struct mlme_priv *pmlmepriv = &(padapter->mlmepriv);
- 	u8 mstatus;
- 
--	if ((check_fwstate(pmlmepriv, WIFI_ADHOC_MASTER_STATE) == true)
--		|| (check_fwstate(pmlmepriv, WIFI_ADHOC_STATE) == true)) {
-+	if ((check_fwstate(pmlmepriv, WIFI_ADHOC_MASTER_STATE)) ||
-+		(check_fwstate(pmlmepriv, WIFI_ADHOC_STATE))) {
- 		return;
- 	}
- 
-@@ -1386,7 +1386,7 @@ void lps_ctrl_wk_hdl(struct adapter *padapter, u8 lps_ctrl_type)
- 	case LPS_CTRL_SCAN:
- 		hal_btcoex_ScanNotify(padapter, true);
- 
--		if (check_fwstate(pmlmepriv, _FW_LINKED) == true) {
-+		if (check_fwstate(pmlmepriv, _FW_LINKED)) {
- 			/*  connect */
- 			LPS_Leave(padapter, "LPS_CTRL_SCAN");
- 		}
-@@ -1512,7 +1512,7 @@ static void rtw_lps_change_dtim_hdl(struct adapter *padapter, u8 dtim)
- 	if (dtim <= 0 || dtim > 16)
- 		return;
- 
--	if (hal_btcoex_IsBtControlLps(padapter) == true)
-+	if (hal_btcoex_IsBtControlLps(padapter))
- 		return;
- 
- 	mutex_lock(&pwrpriv->lock);
-@@ -1840,7 +1840,7 @@ static void c2h_wk_callback(struct work_struct *work)
- 			continue;
- 		}
- 
--		if (ccx_id_filter(c2h_evt) == true) {
-+		if (ccx_id_filter(c2h_evt)) {
- 			/* Handle CCX report here */
- 			rtw_hal_c2h_handler(adapter, c2h_evt);
- 			kfree(c2h_evt);
 -- 
 2.25.1
+
+Changes in v4:
+move version notes below the cutoff
+
+Changes in v3:
+Enclose the version number inside the square bracket in the subject.
+
+Changes in v2:
+[PATCH 1/4]: Moved unnecessary parentheses change in PATCH 2/4
+[PATCH 2/4]: Added the extra parentheses change from PATCH 1/4 here.
+[PATCH 3/4]: No Changes
+[PATCH 4/4]: Fix whitespace error.
 
 
