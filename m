@@ -1,218 +1,265 @@
 X-GM-THRID: 7021611435626070016
-X-Received: by 2002:a05:6e02:1ba5:: with SMTP id n5mr28489102ili.249.1635940395832;
-        Wed, 03 Nov 2021 04:53:15 -0700 (PDT)
+X-Received: by 2002:a17:90b:4a07:: with SMTP id kk7mr5322601pjb.37.1634974668470;
+        Sat, 23 Oct 2021 00:37:48 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6e02:219a:: with SMTP id j26ls393577ila.11.gmail; Wed,
- 03 Nov 2021 04:53:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJysiAT7c5M3sXY0IGnSfHGQbX4zzg5aQ6fHKgUQSdUfYKqvpgW+Owp9eQy5b6iRofRlNwck
-X-Received: by 2002:a05:6e02:c68:: with SMTP id f8mr30209194ilj.184.1635940394903;
-        Wed, 03 Nov 2021 04:53:14 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1635940394; cv=pass;
+Received: by 2002:a17:902:e80a:: with SMTP id u10ls6942655plg.5.gmail; Sat, 23
+ Oct 2021 00:37:47 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyjBg7i9b9suCuSiBCF2He3US1BZcd0TE2b79juzX69oYKUqNAeFAeMA6DWU5xpEfNP14Ms
+X-Received: by 2002:a17:90b:1804:: with SMTP id lw4mr5404008pjb.174.1634974667211;
+        Sat, 23 Oct 2021 00:37:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1634974667; cv=none;
         d=google.com; s=arc-20160816;
-        b=UnGxVt8fO5NaNylRr6MbAksOX3rM5dlJHhKHSFVGls8gnegUBoDj9SY6Z66SO4mv3P
-         9Gvsa2eeWKjBBbBEb5oryKoS7RriFVmPTfqFtz9V4F1D5cK1LGilBlAVxHPiU2u8XpoI
-         rR7zIc2gY4/8WpOPkCioWGpzJXDOsAh2g+H/q0WEsPSAhzXBWf0eOcIeCZjXxN27bR7Q
-         6nVn4TZVJhHQz9q70NeQnocGX0lJ41Pub0UI+mnDx/QniKjzmgoOaCHy61yKXEGfl9sc
-         94sT3+R2edvPh37kys06cbRuC3O0FGAdL6L+Y8ZqwYK6Pk2sWys407usTQXs9IlJeOoh
-         xpGA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:in-reply-to:content-disposition:references
-         :message-id:subject:cc:to:from:date:dkim-signature:dkim-signature;
-        bh=+RQRDqBxEOIue+Wf3/s+C3cI9HUjy5f2Lnef9JJCnI8=;
-        b=x2AMnEJ+9Cu72jbgTuRz1nKAuPdFJGqEkt4nZpCn0B0n3CJgy9XCWMQzew9+BYtZo3
-         yhCcf0QI929++PV1MyyjKe+UHDTlBmXKxwYIBzHOY9t83rLUEZV+acJl7UIgC69vefnw
-         U2UuEZzQAberkFDzmAlW/ZEOHVw/5hMwVGfvZx5chvWieRji7mhKFyhkeEROppvVDrKC
-         7ju1Yk6l6S760eUPKUIztU3+NaQRbk6Yc7OHeUh3QfCdw9yaI43uJt2YbsgNjicFt61v
-         ekqOamAtan6npnxcDuMATV1+GbsZAZyEEI2gm1c8Lp6XxN9wvhVm94AUVpWpyEVBaU9c
-         a5YQ==
-ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2021-07-09 header.b=hH4LXtqJ;
-       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b="C/qHD/AX";
-       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 205.220.177.32 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Return-Path: <dan.carpenter@oracle.com>
-Received: from mx0b-00069f02.pphosted.com (mx0b-00069f02.pphosted.com. [205.220.177.32])
-        by gmr-mx.google.com with ESMTPS id j18si126210ilc.4.2021.11.03.04.53.14
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 03 Nov 2021 04:53:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 205.220.177.32 as permitted sender) client-ip=205.220.177.32;
+        b=DBF3nVm6cAvFM5Y0LG4Wh5ACM7DU4YyQMhFRjsQz5ZkihigC+/vIEoUqE178Bnn4KT
+         je/A6UmNWKyIDeym5pB7cu7Gm8jpLIZqc9JBkAoa7KbOiA0Rk2tVxS6VJIQfi3pugo5b
+         s+BtyKUns0rn/3n3M/IK3p+DDezUMqbo6RA8V4juBfgTG6b8NL+WEfU/s5c8vW47iV+t
+         LoUjRi3ehmtKdROogg3hUK+eNcbm00t6oFTVMPCu/u8+eMkUU0wKjFGp4KxAa7GI1r2i
+         j0jykH8/GSBHxKGxc34tfr9Tehu62o09YiYwnnREOCtHzN9N88DzjxcL3nSK7htw1bY8
+         0yCQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=JBgnyAymbMlZzBjwCM1w0weMiRh/0NNAG6lng/vwJrY=;
+        b=aD11Bfm4QNrsdrmePOq6/7zTX8sj5+5mhbgK/thR2RCAdUpapiWZjpWkjesU9SIJv0
+         fOhT5ECUen9ywhwSxxDnbN0fl+uHvDW9817sUpqO+ngyA75oYraQNt2LmcdP2Y5a6GyR
+         2YaG+eQ6it5Nh7/j+FnRA/Hl0ZTY0pwrAyoh0MNJTe72O6O/YvhvFL7+sP/Jp1gMoPUk
+         YoUWsVfBFbfzwE/41bXYp0rb57OQ4ygc4mHSJABgQ1Dm/aw0YLuYcW9xirX+I5K7dBa8
+         0cYso6IvLSTKctlQbDVWoLhXAuPhPSetDcSepYn5C7zJqh853Sil8ElUtcJUKAywJrUf
+         kqqA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ohmblJTb;
+       spf=pass (google.com: domain of kushalkothari285@gmail.com designates 2607:f8b0:4864:20::62a as permitted sender) smtp.mailfrom=kushalkothari285@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <kushalkothari285@gmail.com>
+Received: from mail-pl1-x62a.google.com (mail-pl1-x62a.google.com. [2607:f8b0:4864:20::62a])
+        by gmr-mx.google.com with ESMTPS id s22si519068pfg.2.2021.10.23.00.37.47
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 23 Oct 2021 00:37:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kushalkothari285@gmail.com designates 2607:f8b0:4864:20::62a as permitted sender) client-ip=2607:f8b0:4864:20::62a;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2021-07-09 header.b=hH4LXtqJ;
-       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b="C/qHD/AX";
-       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 205.220.177.32 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 1A3BOUtW017352;
-	Wed, 3 Nov 2021 11:53:12 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
- : subject : message-id : references : content-type : in-reply-to :
- mime-version; s=corp-2021-07-09;
- bh=+RQRDqBxEOIue+Wf3/s+C3cI9HUjy5f2Lnef9JJCnI8=;
- b=hH4LXtqJTeMPc8TwH1d2ikAkvfTikwzWEgGbmYyBGRHlxE9tz9GLCAYxxQ7tmtxBTbv9
- V00NbkLAYzJb0asEp9ZlBEy9x/+p6MNCMh4qA3gUS/QoP1CO51fcBw2P0U7Jce0uo0jm
- xCvF1o9rOCCdn+tttehmuScEs32jNIjbZcDSpE6rc2AH+y93DH6lQQPTA5j782EzRdX7
- sg3ECTGth1qK91GJ16GrKH1KpBvcaUxJzhOtDlbnnEfISdFYXrpYQLgxa/+pf5FUEoWb
- XHznaz0HHgMtZ6IBTnzM3vTK4pXDJBclvzIVv2KVUjawtGpNKW7N/6RGTehAH+NR2lR8 Dg== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
-	by mx0b-00069f02.pphosted.com with ESMTP id 3c3n9xhbjq-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 03 Nov 2021 11:53:12 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
-	by userp3030.oracle.com (8.16.1.2/8.16.1.2) with SMTP id 1A3Bp3cH114839;
-	Wed, 3 Nov 2021 11:53:11 GMT
-Received: from nam10-mw2-obe.outbound.protection.outlook.com (mail-mw2nam10lp2109.outbound.protection.outlook.com [104.47.55.109])
-	by userp3030.oracle.com with ESMTP id 3c27k6w91j-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 03 Nov 2021 11:53:11 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=MBtFZFlQK5BCQIn/uXLyASA4GyG72+vvoFB/pq4c0VX6Psv1KBxXjiEJbDItWPdDIXdGvtBTN7GMk43xMwPfLSipPRYaMz4j1CB+iC1qE720Pn0UPRXKXHnKK6Ees+RCfXTJf04Tju1D4t9E/9pRhB1YatPajp3MLG/8+CedxOXBlainJM7WkTVIz0h+c2GuCsVdkxnvwuRj13rIHSW+i4FUSjkjRYLB3AN9o1OujXVDM1IUmC3OLvpjMhvvkRnfp3VAiHG014U04veetk/EVq5f/RhDLnR5u8pFxxYB7T47FfSAaaFNICJxxHFKDaoNwbc0tyHdEUpZgNNhLuWl4g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=+RQRDqBxEOIue+Wf3/s+C3cI9HUjy5f2Lnef9JJCnI8=;
- b=Q+eB6XsC3nWnmLWtg6fj2OyrgN65gOTyDR1seOMD1X69RCHGks5ge/yDQxQS3DUueubgIifFOJjYDJYYNxmbk2pbUw1k6Vtt5WusxO0f2YeUACZzKnLeltsf5RP1JtG46gDN5rsTIx3Dq+b/FTFgs9nmBqBKxhNMl7bOh2JsuesbHCWrGMZMJ12KbGyCmhsSePy9UZHbUkLrpKxRelbjEVOHnZPcnVlR/h13dqfHnp0X72GPkj71wRYuswVRdlHMgHxpCxs74lHvKvSWIuS1Qs+PZ7nar5Xbi9fedCJPHCXLY5IpJA276kB0jFIpFAC6RpxP214pQs1kRKlvMen3DA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ohmblJTb;
+       spf=pass (google.com: domain of kushalkothari285@gmail.com designates 2607:f8b0:4864:20::62a as permitted sender) smtp.mailfrom=kushalkothari285@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-pl1-x62a.google.com with SMTP id f4so1567320plt.3;
+        Sat, 23 Oct 2021 00:37:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=+RQRDqBxEOIue+Wf3/s+C3cI9HUjy5f2Lnef9JJCnI8=;
- b=C/qHD/AXiwgvDZLdkbgcWKhr0IOsL4OhKqGddEqkDJGYvN+s9Uln3+mUrFaHJerhCDSw6C0ltpB6lv8NP03N+j76GeygdYHl0ro2nZBPYtDD7GeNMr9LQyYhn3/NKDuOSpGx/v7of6DoJdhRp91dVpIl033w0N/ecF4viU8sZo8=
-Authentication-Results: gmail.com; dkim=none (message not signed)
- header.d=none;gmail.com; dmarc=none action=none header.from=oracle.com;
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28) by CO1PR10MB4500.namprd10.prod.outlook.com
- (2603:10b6:303:98::18) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4669.11; Wed, 3 Nov
- 2021 11:53:09 +0000
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::d409:11b5:5eb2:6be9]) by MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::d409:11b5:5eb2:6be9%5]) with mapi id 15.20.4649.020; Wed, 3 Nov 2021
- 11:53:09 +0000
-Date: Wed, 3 Nov 2021 14:52:47 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Praveen Kumar <kpraveen.lkml@gmail.com>
-Cc: Kushal Kothari <kushalkothari285@gmail.com>, gregkh@linuxfoundation.org,
-        fabioaiuto83@gmail.com, ross.schm.dev@gmail.com,
-        fmdefrancesco@gmail.com, marcocesati@gmail.com,
-        straube.linux@gmail.com, philippesdixon@gmail.com,
-        manuelpalenzuelamerino@gmail.com, linux-staging@lists.linux.dev,
-        linux-kernel@vger.kernel.org, mike.rapoport@gmail.com,
-        kushalkotharitest@googlegroups.com, outreachy-kernel@googlegroups.com
-Subject: Re: [Outreachy kernel] [PATCH 1/4] staging: rtl8723bs: core: Remove
- true and false comparison
-Message-ID: <20211103115247.GR2794@kadam>
-References: <cover.1634845504.git.kushalkothari285@gmail.com>
- <a9b75b3ab7c83dc5cef541301263fe17a704f026.1634845504.git.kushalkothari285@gmail.com>
- <32059290-6c59-1cee-5edc-563fe5c2f18b@gmail.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <32059290-6c59-1cee-5edc-563fe5c2f18b@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-ClientProxiedBy: JNXP275CA0007.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:19::19)
- To MWHPR1001MB2365.namprd10.prod.outlook.com (2603:10b6:301:2d::28)
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=JBgnyAymbMlZzBjwCM1w0weMiRh/0NNAG6lng/vwJrY=;
+        b=ohmblJTbXi5lxEg9vYHKWeZWZmjf8pnULMSTu6HJ3gyJwn4Q6/ydLLHtKDJI38nqiF
+         eLijtzM/mYDQuIyP40aOIRm6Icaaj4t24j4b5UXMpp/Vvqard7MJaJ9hJtIYwHfFjGRA
+         9Zg7Vy1C8QK9nfjLOP983Uflnf74rBejcil5wjQvvaI4u7eRYk6qGkpgzG25V2LUKOXT
+         cQvia8Ka5+ry+sds87AlsLCZxAhi+aqR0ORUyb1MFkKSZwvyi4WeGDrFS73PaqtQeBO8
+         hzU3xGaPqe8pFLKTveA5MCqqRmR5ntv1LTDvCyTdugbuOMgd24epDsHN5WN3t/pKGgL1
+         Yffw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=JBgnyAymbMlZzBjwCM1w0weMiRh/0NNAG6lng/vwJrY=;
+        b=f5wcxecyXvR4N8iELfVfDINBMC74QQCadjELbd10vBcI5m+yHbVhRZ9prKTZ8yDI3m
+         I80eajno8MQkHxMJMnSn7VDEV46sonqPKRzGwzfANtGPg3hou0L+LqJhJeGqy1XyKmmy
+         f8POlTMgLxrizY1px9XAwckL3K5guz3sfL6Jp+YrRyMQIotItkw+n1/j7Qqud0RbOOtQ
+         mNUfvdcbnpRUA2+4Ifiel/BdLYxWJInJbMNQin3gGTyQYlc9Zvs8w5JV3Ke+/otE4j/l
+         L/uAlzPth6I3ZrMko6lVdAyObjSqiS9q/W2XXzPblEZmfldKwN0gvRyeB5W6y/eWxppD
+         qmDw==
+X-Gm-Message-State: AOAM530TosAQzI5T7cdU2GWhh+jR3oVaczgDux2QqrpaA03Il1l3hEr9
+	o8OC1mlx386aaXK1cN9MppI=
+X-Received: by 2002:a17:90b:4f4d:: with SMTP id pj13mr16595670pjb.243.1634974666927;
+        Sat, 23 Oct 2021 00:37:46 -0700 (PDT)
+Return-Path: <kushalkothari285@gmail.com>
+Received: from localhost.localdomain ([2401:4900:5173:67c9:d8e4:2819:8ee8:8de4])
+        by smtp.googlemail.com with ESMTPSA id c4sm13949791pfv.144.2021.10.23.00.37.39
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 23 Oct 2021 00:37:46 -0700 (PDT)
+From: Kushal Kothari <kushalkothari285@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: kushalkothari285@gmail.com,
+	kush19992810@gmail.com,
+	outreachy-kernel@googlegroups.com,
+	fabioaiuto83@gmail.com,
+	ross.schm.dev@gmail.com,
+	fmdefrancesco@gmail.com,
+	marcocesati@gmail.com,
+	straube.linux@gmail.com,
+	philippesdixon@gmail.com,
+	manuelpalenzuelamerino@gmail.com,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	mike.rapoport@gmail.com,
+	kushalkotharitest@googlegroups.com
+Subject: [PATCH v4 4/4] staging: rtl8723bs: core: Remove unnecessary blank lines
+Date: Sat, 23 Oct 2021 13:05:50 +0530
+Message-Id: <78aabc0031d43c21ef06ae8d70f79412142d0784.1634967010.git.kushalkothari285@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <cover.1634967010.git.kushalkothari285@gmail.com>
+References: <cover.1634967010.git.kushalkothari285@gmail.com>
 MIME-Version: 1.0
-Received: from kadam (62.8.83.22) by JNXP275CA0007.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:19::19) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4669.10 via Frontend Transport; Wed, 3 Nov 2021 11:53:01 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 7149ace2-f8ca-400a-e96b-08d99ec080f3
-X-MS-TrafficTypeDiagnostic: CO1PR10MB4500:
-X-Microsoft-Antispam-PRVS: 
-	<CO1PR10MB450062FE107E090A6E402F778E8C9@CO1PR10MB4500.namprd10.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:7219;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 
-	k/Sg6LyawcFYnYwQjFhW18Bxy2ITU8R9w32LMQtkcJ9i5G8c8FtidYrvEvYlzLDP43/9IeQVs7Oq3Q20tHWsyQqC10ops2yzhcjk7p2edSrEgjk5N97crz0Ia0bMGPTIVac+60M0YoVJ746MiunN1avn037WDDQfUQaopS5E7TXqdoEe3Xsai5AmhFd74MtWxG3gudBGRY9rqirDmMoZ2DmL1nDzhMBu2sY/BLwPwYkxPuYYQwRWSFnjl44LqdzIIQsfLt7yalbVj+835HOwSWP0MAqOzPgBUY866HbL3Ns0U+sLvOHnSIUvNKwo/DVxSaygC4TaJXnCQkYKOV3a9isBj3eCU0sYsRF6+iG7WNLvZHbq4sRMB5XNYupPJu/D5KbfraDhTrAzTt4W0OZMI59hzoZwhtcR89n+/jqk7c8bNHJp/LrLMWR4j+09Npf7ztM7CX6VbT9NxrNkinmsHRSFOHHAQaRA3ABZS1Gf41eP74AdYthjJva6Lhp8xlWTc5uINgD+jxyjOOGVKAacuP3NgAyWPr5d3NUvXzDtlVoxIffD2H7ytLs4tUorAje8wpP4v/76tBN3rp6qLVKpc2G54D15tnMnuQDl7BBTmWEgJ0jgiw6OsBm3KZWkpswwC85zOmYg6+O4zJyUpnj6i8PTQR2sVv2nf4nJyC2L1LLw5jMiTYca3xQf8BBWm6wGEVT1V6+KWL1gspIDpUGdYw==
-X-Forefront-Antispam-Report: 
-	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MWHPR1001MB2365.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(366004)(33716001)(956004)(55016002)(38350700002)(33656002)(38100700002)(8936002)(186003)(26005)(6916009)(316002)(9686003)(9576002)(6666004)(508600001)(4326008)(52116002)(1076003)(86362001)(7416002)(66946007)(2906002)(5660300002)(66556008)(6496006)(66476007)(44832011)(53546011)(8676002);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 
-	=?us-ascii?Q?3VuCVAqdmk4jUkBVUiF7P0e+3RZc6V0nghwsu4OgTpQKVea9FBkLfLhnZCCN?=
- =?us-ascii?Q?yHyV8sK/U6heIlfnn2t6ONNuk920xEgQRZA1bks4TrI9T0jHSmZltXkPsIxd?=
- =?us-ascii?Q?oB2GB/z3DFOz5pYCYGuMtECT/wYFgrwuzLXcxO5N18VTihlgEyYSyz388cuV?=
- =?us-ascii?Q?HLX6xYjodV1KZqyGwlGiJGPByu6gIZMgmx0dGoM3dUh0XpN+BY8sO1FFRn+F?=
- =?us-ascii?Q?7BLGVo6211j2H6FCbyhLwrJm+eeFMVz9f0wcjTrmkWMYb5D5MJjFu2ljZl2s?=
- =?us-ascii?Q?ZdLfxBqj6u7uGPIlgtRLHEmI/CZ+piXbqsSmll0eXLY/YHid6OZqOHuBJhTg?=
- =?us-ascii?Q?ccXf69jVFqByQeEK/NdKYgS5DznWcD9GkDaJl/DsH2ZTywHNvNKgTucuN/Pf?=
- =?us-ascii?Q?H3xlnh8M5ohDoZqCOilymbElRQpU+x1rmWR26pd85LncS2KJvIBXzgtw9qDg?=
- =?us-ascii?Q?2zvaEQyWT8IKhXWTWKvE57HW1gKQLAaKB1GyN3XsKK+fkHKhWj9rcr6SBrMN?=
- =?us-ascii?Q?/uJWh+VeU31xJGg60+laHWaxvwWY10ObwBphqKKGy/uqIgG+znbgzm8k0gP9?=
- =?us-ascii?Q?qtnzC1uKzgagzyn98rGf6mJADPJLH3YktR68RLZALSYFe45hwdRugbprrIuQ?=
- =?us-ascii?Q?P9Y73vIpBed0nF0XbINw7SUvl+Rw/muAc438BtLhqoUS6yiUPyUSi3jtMqRM?=
- =?us-ascii?Q?jjqMKcXjileHsV4K0ShhxBGPJV9dBws9VRr5AW+xDTPn/ZVfSSG2p/5BC1NQ?=
- =?us-ascii?Q?yWRl2td9c+vGF9rTiBRsAJOCzswzKPqy0Ml5oyzkBrWsdKHzBI1MP1ZNiPnb?=
- =?us-ascii?Q?Yu2rc4+K9/MuCvYFaQeQ94P9daOZSufqRqsGYahSFLjmvM9FvOqOT31GAGHA?=
- =?us-ascii?Q?PGs1qzf96NCkNR3NifyPKx2tZvOLBRej8p7zjVSWOOA5ad/GEdfyPPT+v9GY?=
- =?us-ascii?Q?DwCyiCcjHqgJqRhZ5WisWNOg56IJEKpk/Ica5fY1VNSm+PWys1KxN5iJNxs7?=
- =?us-ascii?Q?6yrz4t6pKyDOFIieu5vjeEI32SikwRF06X5Q3EbvyQhinVJUjQHGyycim6d1?=
- =?us-ascii?Q?lSnFNS94CyaFEyXU7wZmiD4qjiMHGDSHlVylXEjd1dlNxA6M/BcJ6tJD1dZ/?=
- =?us-ascii?Q?cxXCMJHGTuHPbp0lkueGyzotKJ3Qx7AWs+S8ejd9U4VGpMs9hl+zndZPlr9V?=
- =?us-ascii?Q?HIRkKDXqTzjRgYS+iK8T2oabRVBeR7XxGO1XV/6fPBgN7oE8Cl84+VF1TYjU?=
- =?us-ascii?Q?GaKAwAOUeDTRDIHps90WQpuYE8rPi7ixhV4Meq3Ic0H+xu7+t+Le+pLzhPJh?=
- =?us-ascii?Q?oKB1B0R4Idlt+71dlngw67reQnOF4FWVJVQIiuuw7pv5FmeggIv77K3smvws?=
- =?us-ascii?Q?0H72NZmVyL4Ndxulg6IXfDgoChw6DXaLyRMQdTjg3k1sAj47Ik1mD4dz0y2U?=
- =?us-ascii?Q?8MozxN7itvG9dYcqK/b2aRwZMWU6ly+wXatl+GStL7ATWOLwEr3f0sCN1QhE?=
- =?us-ascii?Q?kUZ61SYBuML2+nR/uJJcAa10q6RxpAwUneUgHpTqAf1uucJpaGQsjMGqp0aT?=
- =?us-ascii?Q?lMfcPyrGD+p/JSe6MtIT46+eJ7b4qevQzLE08JLIDC6igfudZVyd65/TS76g?=
- =?us-ascii?Q?kTnFv1mdSlqcHp9cGk6HQzKaqJZR4xJdblqUDonWGHcIhXvsICabyGL4DbDG?=
- =?us-ascii?Q?eBPY7w=3D=3D?=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7149ace2-f8ca-400a-e96b-08d99ec080f3
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Nov 2021 11:53:08.9610
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: f1I2Qz/vZ74qIdCHls37Gxnt0b3NiTwsST9kX0kYZODHVIRNZ9xwe9PPBPzvsKz/AdoyxEP9d91WpFn6KFAdsZamPMjdCT1dAVgP3Bfe0w8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO1PR10MB4500
-X-Proofpoint-Virus-Version: vendor=nai engine=6300 definitions=10156 signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0 mlxscore=0 spamscore=0
- malwarescore=0 mlxlogscore=999 adultscore=0 phishscore=0 bulkscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2110150000
- definitions=main-2111030068
-X-Proofpoint-ORIG-GUID: bCdaTLdP2xcJXQLknkvspcwf9daDqKxm
-X-Proofpoint-GUID: bCdaTLdP2xcJXQLknkvspcwf9daDqKxm
+Content-Transfer-Encoding: 8bit
 
-On Fri, Oct 22, 2021 at 08:14:29AM +0530, Praveen Kumar wrote:
-> On 22-10-2021 01:27, Kushal Kothari wrote:
-> > diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-> > index 2624e994513f..0be3a8dbeec8 100644
-> > --- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
-> > +++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
-> > @@ -371,7 +371,7 @@ void rtw_free_cmd_obj(struct cmd_obj *pcmd)
-> >  void rtw_stop_cmd_thread(struct adapter *adapter)
-> >  {
-> >  	if (adapter->cmdThread &&
-> > -		atomic_read(&(adapter->cmdpriv.cmdthd_running)) == true &&
-> > +		atomic_read(&adapter->cmdpriv.cmdthd_running) &&
-> 
-> Lets keep it "atomic_read(&(adapter->cmdpriv.cmdthd_running))"
-> and remove the parentheses in next patch.
-> 
+Remove useless blank lines
 
-There is a certain amount of flexibility in fixing style errors which
-occur on a line that you are already modifying.  But your advice is good
-because 1) Then the inclination is to say "please fix the alignment as
-well".  2)  There is already a [PATCH 2/4] which removes these extra
-parentheses so it makes more sense to do it there.  3) This patchset
-will need to be redone anyway because of the white space error in
-[PATCH 4/4].
+Signed-off-by: Kushal Kothari <kushalkothari285@gmail.com>
+---
 
-So, you are right, and especially in this case you're right.  But there
-are always going to be minor issues with a patch and some of them we can
-let slide.
+Changes in v4: Move the version notes
+Changes in v3: Enclose the version number inside the square bracket.
+Changes in v2: Removed whitespace errors
 
-I have occasionally waited for Greg to apply a patch and then sent an
-email, "Greg has already applied your patch but next time do it like
-this."  :P
 
-regards,
-dan carpenter
+ drivers/staging/rtl8723bs/core/rtw_cmd.c | 26 ------------------------
+ 1 file changed, 26 deletions(-)
+
+diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
+index fce3256cc275..639459d52261 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
++++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
+@@ -316,8 +316,6 @@ int rtw_cmd_filter(struct cmd_priv *pcmdpriv, struct cmd_obj *cmd_obj)
+ 	return _SUCCESS;
+ }
+ 
+-
+-
+ int rtw_enqueue_cmd(struct cmd_priv *pcmdpriv, struct cmd_obj *cmd_obj)
+ {
+ 	int res = _FAIL;
+@@ -367,7 +365,6 @@ void rtw_free_cmd_obj(struct cmd_obj *pcmd)
+ 	kfree(pcmd);
+ }
+ 
+-
+ void rtw_stop_cmd_thread(struct adapter *adapter)
+ {
+ 	if (adapter->cmdThread &&
+@@ -497,11 +494,8 @@ int rtw_cmd_thread(void *context)
+ 		} else {
+ 			rtw_free_cmd_obj(pcmd);
+ 		}
+-
+ 		flush_signals_thread();
+-
+ 		goto _next;
+-
+ 	}
+ 
+ 	/*  free all cmd_obj resources */
+@@ -591,7 +585,6 @@ u8 rtw_sitesurvey_cmd(struct adapter  *padapter, struct ndis_802_11_ssid *ssid,
+ 	res = rtw_enqueue_cmd(pcmdpriv, ph2c);
+ 
+ 	if (res == _SUCCESS) {
+-
+ 		pmlmepriv->scan_start_time = jiffies;
+ 		_set_timer(&pmlmepriv->scan_to_timer, SCANNING_TIMEOUT);
+ 	} else {
+@@ -752,7 +745,6 @@ u8 rtw_joinbss_cmd(struct adapter  *padapter, struct wlan_network *pnetwork)
+ 		case Ndis802_11AutoUnknown:
+ 		case Ndis802_11InfrastructureMax:
+ 			break;
+-
+ 		}
+ 	}
+ 
+@@ -1010,9 +1002,7 @@ u8 rtw_clearstakey_cmd(struct adapter *padapter, struct sta_info *sta, u8 enqueu
+ 		psetstakey_para->algorithm = _NO_PRIVACY_;
+ 
+ 		res = rtw_enqueue_cmd(pcmdpriv, ph2c);
+-
+ 	}
+-
+ exit:
+ 	return res;
+ }
+@@ -1080,7 +1070,6 @@ u8 rtw_reset_securitypriv_cmd(struct adapter *padapter)
+ 
+ 	/* rtw_enqueue_cmd(pcmdpriv, ph2c); */
+ 	res = rtw_enqueue_cmd(pcmdpriv, ph2c);
+-
+ exit:
+ 	return res;
+ }
+@@ -1112,10 +1101,8 @@ u8 rtw_free_assoc_resources_cmd(struct adapter *padapter)
+ 
+ 	init_h2fwcmd_w_parm_no_rsp(ph2c, pdrvextra_cmd_parm, GEN_CMD_CODE(_Set_Drv_Extra));
+ 
+-
+ 	/* rtw_enqueue_cmd(pcmdpriv, ph2c); */
+ 	res = rtw_enqueue_cmd(pcmdpriv, ph2c);
+-
+ exit:
+ 	return res;
+ }
+@@ -1150,7 +1137,6 @@ u8 rtw_dynamic_chk_wk_cmd(struct adapter *padapter)
+ 
+ 	/* rtw_enqueue_cmd(pcmdpriv, ph2c); */
+ 	res = rtw_enqueue_cmd(pcmdpriv, ph2c);
+-
+ exit:
+ 	return res;
+ }
+@@ -1347,14 +1333,11 @@ static void dynamic_chk_wk_hdl(struct adapter *padapter)
+ 
+ 	/* for debug purpose */
+ 	_linked_info_dump(padapter);
+-
+-
+ 	/* if (check_fwstate(pmlmepriv, _FW_UNDER_LINKING|_FW_UNDER_SURVEY) ==false) */
+ 	{
+ 		linked_status_chk(padapter);
+ 		traffic_status_watchdog(padapter, 0);
+ 	}
+-
+ 	rtw_hal_dm_watchdog(padapter);
+ 
+ 	/* check_hw_pbc(padapter, pdrvextra_cmd->pbuf, pdrvextra_cmd->type); */
+@@ -1500,9 +1483,7 @@ u8 rtw_dm_in_lps_wk_cmd(struct adapter *padapter)
+ 	res = rtw_enqueue_cmd(pcmdpriv, ph2c);
+ 
+ exit:
+-
+ 	return res;
+-
+ }
+ 
+ static void rtw_lps_change_dtim_hdl(struct adapter *padapter, u8 dtim)
+@@ -1542,7 +1523,6 @@ u8 rtw_dm_ra_mask_wk_cmd(struct adapter *padapter, u8 *psta)
+ 	struct cmd_priv *pcmdpriv = &padapter->cmdpriv;
+ 	u8 res = _SUCCESS;
+ 
+-
+ 	ph2c = rtw_zmalloc(sizeof(struct cmd_obj));
+ 	if (!ph2c) {
+ 		res = _FAIL;
+@@ -1577,7 +1557,6 @@ u8 rtw_ps_cmd(struct adapter *padapter)
+ 	struct drvextra_cmd_parm	*pdrvextra_cmd_parm;
+ 	struct cmd_priv *pcmdpriv = &padapter->cmdpriv;
+ 	u8 res = _SUCCESS;
+-
+ 	ppscmd = rtw_zmalloc(sizeof(struct cmd_obj));
+ 	if (!ppscmd) {
+ 		res = _FAIL;
+@@ -1673,9 +1652,7 @@ u8 rtw_chk_hi_queue_cmd(struct adapter *padapter)
+ 	res = rtw_enqueue_cmd(pcmdpriv, ph2c);
+ 
+ exit:
+-
+ 	return res;
+-
+ }
+ 
+ struct btinfo {
+@@ -2021,11 +1998,8 @@ void rtw_createbss_cmd_callback(struct adapter *padapter, struct cmd_obj *pcmd)
+ 	rtw_free_cmd_obj(pcmd);
+ }
+ 
+-
+-
+ void rtw_setstaKey_cmdrsp_callback(struct adapter *padapter,  struct cmd_obj *pcmd)
+ {
+-
+ 	struct sta_priv *pstapriv = &padapter->stapriv;
+ 	struct set_stakey_rsp *psetstakey_rsp = (struct set_stakey_rsp *)(pcmd->rsp);
+ 	struct sta_info *psta = rtw_get_stainfo(pstapriv, psetstakey_rsp->addr);
+-- 
+2.25.1
 
 
