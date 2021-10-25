@@ -1,229 +1,167 @@
-X-GM-THRID: 6480146584250089472
-X-Received: by 10.31.3.232 with SMTP id f101mr7266365vki.101.1508776700831;
-        Mon, 23 Oct 2017 09:38:20 -0700 (PDT)
+X-GM-THRID: 7023011661987446784
+X-Received: by 2002:a2e:8099:: with SMTP id i25mr19629810ljg.277.1635172350681;
+        Mon, 25 Oct 2021 07:32:30 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.31.115.6 with SMTP id o6ls2252617vkc.14.gmail; Mon, 23 Oct
- 2017 09:38:19 -0700 (PDT)
-X-Received: by 10.31.98.66 with SMTP id w63mr7188977vkb.0.1508776699963;
-        Mon, 23 Oct 2017 09:38:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1508776699; cv=none;
+Received: by 2002:a05:6512:31d4:: with SMTP id j20ls379935lfe.2.gmail; Mon, 25
+ Oct 2021 07:32:28 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz+2TVVmZ8QmU5FkW08VxLhnzsLUbvMVAoKmaTM5Ch+Qc4/+U5WopTk3Dn8j0ii3NfRlhld
+X-Received: by 2002:a05:6512:68e:: with SMTP id t14mr17953715lfe.625.1635172348574;
+        Mon, 25 Oct 2021 07:32:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1635172348; cv=none;
         d=google.com; s=arc-20160816;
-        b=btI395arVf1ZaF8Sg2SUBMw45/rJ8lo7WBB4nv/pclY50ENeNuq8ORl6YUQdYoiWwN
-         L7JIAPtMiW+aKQaKBrE8HhqIA9hnB0Nd6tveQn0tauqffvyMWK9Iol6IE3Z1Eza3f7Y3
-         068GXxfPU4COjuGYVGRkGiY3PkEmoZrfTWBf+/VV+KTKtuaduh+/EVykI/UfKhq6gBuJ
-         Za3Brqj5j1s9EKZYNRqjGE5yw1ckrCTk0EDu2mvViS4WjdPy+NKZXFhBX+HiCg9+iI5W
-         LJ4O6B+Mun3z61qnL9yuXF0kuzDUq8fsX13DlxUQXTji8Af/Hx10UGTk6co/enZnxImI
-         KV1A==
+        b=FJBUHSQ7cVgb7sR+kwQ4HjMjwv4CQrVDRL+aW9VVKTt0ctTpfE60kVN+S0oBdkOxJg
+         UZeK9ynSmzQA68olAgwJ6uY6rLgglDdBzSwsh/ESG6Ze0h+mVCHKruqtpkPUmJ0F+Sr5
+         gixYvURUjLCAT15uwPOV09+5JuRfv+jHIL70f5CqbIUtm4dXB8E0+ooVZfh3RAaWb2qR
+         GlDXZq3HVEY0bO/jdKwMhtqS8Hwccm8DJuLTMgP+wDxR9C/ym//WSZ/ZHDWszjZfOn88
+         7O38LxC/KkQhRMbDtDewptsjhc44TLuK4JkfjtfvN3otp2jgF41q/LbsNUx4XjPu04Nd
+         W0Qg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature
-         :arc-authentication-results;
-        bh=8qc/nEyd+MKfrUjs5FYK/Z8G8j8CmJxoDLOYrmx3C0M=;
-        b=WOOaUI9lTTAS71R6vdTj3NPPn+uFyfhqt/cuDTMLt3wjK1+K9g1zjRWnSUgdrX2QVO
-         /mOreZGZLlSjl7UOm0R5FOvtA9xsRar7zRTTVkqS9XBCrH5riQZ85J6W8O6tVvU8E8lR
-         VMqdz1UxJMdKZGiSTK4DKEpgo8ko/u10hu+proFvQdgUBNdKBgLQYqzu4EVSgw54+Om/
-         GFtQg9yVXWFKPEzcDfw+t6cCtSontbM91HtSgjvCV329Rwzmlt5SjFLUNrEHwLBS+Ki1
-         4UwAFGmvkOSnaXoNxvsitzCZp8sWV9YTUZBR8vxappCb+rgf8I70KMGYNApnZgrluv2w
-         dvkQ==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=RAj0aiWl+Hji1MErAOm7QfqsGTlwZNUkSUsTTflQ6nc=;
+        b=MbcQZ8VJkxfgwGHmSmMHUkfsVBz1yg0Iq3pcxeAuvy1MZp4Z1heyMtCQSHHHPtNkBd
+         f8y/oF53PGEyjjpV9P+GXmHv2+rDOQCxRmYopQZwoDwx8fYMLw057WQ5Fr88+6JiKD17
+         g2eCn+ymJa0hvhOneGwVBtP3DwBEKH29vMesnSr+Jc2gBBmQJsKw5VFKXiWDW42p6BOR
+         ZGao28Q4i0a3LSwXfGmH4swlB4+TTUoSAuCkfoTkAsl6Zlm5bmQZchgf6UT6mY1EuPud
+         ApyGocQVfXH7dPtTRuM67UNkXdfr3+KoYdQqza7r5do6RaK2EY9AJz8Tuu5nXg8dZHbP
+         +ETg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FrrnvZZT;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::235 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Return-Path: <aastha.gupta4104@gmail.com>
-Received: from mail-pg0-x235.google.com (mail-pg0-x235.google.com. [2607:f8b0:400e:c05::235])
-        by gmr-mx.google.com with ESMTPS id l14si456171vki.1.2017.10.23.09.38.19
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=czlC5k1W;
+       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::32e as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <karolinadrobnik@gmail.com>
+Received: from mail-wm1-x32e.google.com (mail-wm1-x32e.google.com. [2a00:1450:4864:20::32e])
+        by gmr-mx.google.com with ESMTPS id x78si135441lff.10.2021.10.25.07.32.28
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 23 Oct 2017 09:38:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::235 as permitted sender) client-ip=2607:f8b0:400e:c05::235;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 25 Oct 2021 07:32:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::32e as permitted sender) client-ip=2a00:1450:4864:20::32e;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FrrnvZZT;
-       spf=pass (google.com: domain of aastha.gupta4104@gmail.com designates 2607:f8b0:400e:c05::235 as permitted sender) smtp.mailfrom=aastha.gupta4104@gmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pg0-x235.google.com with SMTP id g6so12197345pgn.6
-        for <outreachy-kernel@googlegroups.com>; Mon, 23 Oct 2017 09:38:19 -0700 (PDT)
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=czlC5k1W;
+       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::32e as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wm1-x32e.google.com with SMTP id 83-20020a1c0456000000b0032cb02544aaso162733wme.5
+        for <outreachy-kernel@googlegroups.com>; Mon, 25 Oct 2021 07:32:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=8qc/nEyd+MKfrUjs5FYK/Z8G8j8CmJxoDLOYrmx3C0M=;
-        b=FrrnvZZT5sprfx3o397kDpyhAnKw/KR1l570p8Tl0+9G2WgVN4lbCo2QL+Imfqv5tA
-         tXkaCFKDEy+5/HMlmMEXz07y+fSWxig2sXkX8zcadcZB23vzhR9lL2CZ9ceO0NO2HWul
-         oOFXHbKWVI85E4nNpreCbt4nu0FtKoZ4eOyAJWZpVDgT6jQUhXwBBQe/TYb4AvBnlEAm
-         wB/4rLkoCJ+oHBMUBfgrLxUcNiLzUKR6r1RnO9IeKUUVoLj0fKsUF4xYUcgMLDMB0Kja
-         PfaqXu4NYBByYv86A3dTz5L33FmDoNWKp31RB2JsgH0LHdSpuyX1MmIE+kDCl/rFDUY7
-         YTUg==
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=RAj0aiWl+Hji1MErAOm7QfqsGTlwZNUkSUsTTflQ6nc=;
+        b=czlC5k1WkXToJ+m2VHFI27g7tQ3OxyiA3rL2Yq4a+KMUhEOAgXei30wU1sGBisPT+z
+         vh0cIZnHRn2JCE23Zs3Azd2GrEqWdb2NVeLV9UZGIKdykjJRYXXnkjKq6lm5qe9FzIhf
+         Rr2nlL/Lg74QzynpN+ffYQ+MKRZA6vqWTIJ4B/Bvvics4eSusk9iEAlReengHJl3GV18
+         QwwV7o/a9z/sxk9vw33VRn4cEQqF9J8reBi1W42T3LRB6bDh74K5fqBiVo1YfKX9z0WL
+         o02tWsvG+p5f++FAbVfpxJV/P/dD2HPvu+GSPvReGWdrY8vhrvB2VrXfEAidzO0kex+Q
+         ezsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=8qc/nEyd+MKfrUjs5FYK/Z8G8j8CmJxoDLOYrmx3C0M=;
-        b=ewqGuH3A+X7GjuqHQurA8FwNJWWt/+c8sdoen/Qo/QIYZ3aSk2IQKLtItCEPfwo/Gx
-         nRUHIib0XfAY0CTifJRBNRUij/bbh5rwos9ZlxTBos2XajoKFPpHX2sGOcPB7LfcnMdO
-         PICBP/5EWXi8NDmAc2hazGj3eQI7Epfo0PxleLOyDypxXnCpjPdfRUPJBEwfv1yZaMQz
-         vP4Zib0p3We78W0WcwleYIh11eTWQ+Z5L8Glofj5tBnXsygocRvImXMjTW7lviEbFfUt
-         Hpf5w/JvNkvmF3fwxKHBzHz0aVz1+wLJKZOqMShxcAo4XBURClnYzPK7+bnyFxbTfoeP
-         y+BA==
-X-Gm-Message-State: AMCzsaU5WtXtwrmCfY5yeqXkeDXB4DptQw6EDgmkTeU2BVU5esNh5ABO
-	wBzI2dUcy80Smzgktt7lMfE=
-X-Google-Smtp-Source: ABhQp+RgjetPi/FpjhGzkv07jRHKiGHnWl27MRvV+rKXswppsHBr9KhzMbLdCBArPVHIH7ZTfaD3zw==
-X-Received: by 10.84.169.36 with SMTP id g33mr9499383plb.216.1508776699445;
-        Mon, 23 Oct 2017 09:38:19 -0700 (PDT)
-Return-Path: <aastha.gupta4104@gmail.com>
-Received: from aastha-HP-Pavilion-15-Notebook-PC ([103.196.221.228])
-        by smtp.gmail.com with ESMTPSA id l23sm14436044pfg.83.2017.10.23.09.38.16
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 23 Oct 2017 09:38:18 -0700 (PDT)
-From: Aastha Gupta <aastha.gupta4104@gmail.com>
-To: airlied@linux.ie,
-	kraxel@redhat.com,
-	daniel@ffwll.ch,
-	dri-devel@lists.freedesktop.org,
-	outreachy-kernel@googlegroups.com
-Cc: Aastha Gupta <aastha.gupta4104@gmail.com>
-Subject: [PATCH] drm: virtio: replace reference/unreference with get/put
-Date: Mon, 23 Oct 2017 22:08:06 +0530
-Message-Id: <1508776686-29664-1-git-send-email-aastha.gupta4104@gmail.com>
-X-Mailer: git-send-email 2.7.4
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=RAj0aiWl+Hji1MErAOm7QfqsGTlwZNUkSUsTTflQ6nc=;
+        b=a+oJ/QkqkNVEsOTypt0ollivRbx3wML1J82/s5Kimr5f2R+FrOZvBIocRwrwmqpa9G
+         ZuOrPHNZBVliPXUIZr6ozWxzsZIGspowjhozvaruBp1q2rC+oe453fUJG2wTVxmFvElp
+         ISghvG8cWkh0vTTGByPdtDNrW3zcGufLVEPsBkt+W3wMDQCKAAzBXAhCWVd8hVB+156o
+         ZhYf+DRbxgRZGN7n1wirCNMbpxQxTHudeuecxNFkjjaUdYovC4gwV8URsvrQ50dF5csN
+         v5Q8nh31bjTHKW23LmY+P9m85sBpuMAe5bQC8GX9sJSn753U5s4FRwk/be85EPCRI3gQ
+         pgaA==
+X-Gm-Message-State: AOAM531spvk3f1E/HFKeAb9irVLtk+RIV205N+X5epaNDJeTpFEjNkQd
+	pFEXtmgGnLwDWJlDTqLh9Gt/fx6pPk3eBA==
+X-Received: by 2002:a7b:c442:: with SMTP id l2mr49988880wmi.131.1635172348279;
+        Mon, 25 Oct 2021 07:32:28 -0700 (PDT)
+Return-Path: <karolinadrobnik@gmail.com>
+Received: from localhost.localdomain ([2a01:4b00:f411:e700:e085:8cb7:7bf6:5d62])
+        by smtp.gmail.com with ESMTPSA id x8sm13011500wrr.53.2021.10.25.07.32.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 25 Oct 2021 07:32:27 -0700 (PDT)
+From: Karolina Drobnik <karolinadrobnik@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org,
+	forest@alittletooquiet.net,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	Karolina Drobnik <karolinadrobnik@gmail.com>
+Subject: [PATCH 8/8] staging: vt6655: Rename `dwAL7230InitTable` array
+Date: Mon, 25 Oct 2021 15:31:34 +0100
+Message-Id: <4e78c4628ba75d9793bd8a60d69a1b0cc4d2a073.1635171519.git.karolinadrobnik@gmail.com>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <cover.1635171518.git.karolinadrobnik@gmail.com>
+References: <cover.1635171518.git.karolinadrobnik@gmail.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 
-DRM core uses reference/unreference suffixes for refcounting
-functions, but kernel uses get/put (e.g. kref_get/put()).
-Replace reference/unreference with get/put for consistency
-and also it's shorter.
+To align with the kernel coding style, remove the type from
+the variable name and do not use CamelCase.
 
-The following cocci script was used to generate the patch:
+Fix issue detected by checkpatch.pl:
+  CHECK: Avoid CamelCase: <dwAL7230InitTable>
 
-@@
-expression e;
-@@
-
-(
--drm_gem_object_reference(e);
-+drm_gem_object_get(e);
-|
--drm_gem_object_unreference(e);
-+drm_gem_object_put(e);
-|
--drm_gem_object_unreference_unlocked(e);
-+drm_gem_object_put_unlocked(e);
-)
-
-Signed-off-by: Aastha Gupta <aastha.gupta4104@gmail.com>
+Signed-off-by: Karolina Drobnik <karolinadrobnik@gmail.com>
 ---
- drivers/gpu/drm/virtio/virtgpu_display.c |  4 ++--
- drivers/gpu/drm/virtio/virtgpu_gem.c     |  4 ++--
- drivers/gpu/drm/virtio/virtgpu_ioctl.c   | 14 +++++++-------
- 3 files changed, 11 insertions(+), 11 deletions(-)
+ drivers/staging/vt6655/rf.c | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/gpu/drm/virtio/virtgpu_display.c b/drivers/gpu/drm/virtio/virtgpu_display.c
-index b6d5205..41b0930 100644
---- a/drivers/gpu/drm/virtio/virtgpu_display.c
-+++ b/drivers/gpu/drm/virtio/virtgpu_display.c
-@@ -53,7 +53,7 @@ static void virtio_gpu_user_framebuffer_destroy(struct drm_framebuffer *fb)
- 	struct virtio_gpu_framebuffer *virtio_gpu_fb
- 		= to_virtio_gpu_framebuffer(fb);
+diff --git a/drivers/staging/vt6655/rf.c b/drivers/staging/vt6655/rf.c
+index 1c81c44f086c..bc4abe77db7b 100644
+--- a/drivers/staging/vt6655/rf.c
++++ b/drivers/staging/vt6655/rf.c
+@@ -155,7 +155,7 @@ static unsigned long al2230_power_table[AL2230_PWR_IDX_LEN] = {
+ /* 40MHz reference frequency
+  * Need to Pull PLLON(PE3) low when writing channel registers through 3-wire.
+  */
+-static const unsigned long dwAL7230InitTable[CB_AL7230_INIT_SEQ] = {
++static const unsigned long al7230_init_table[CB_AL7230_INIT_SEQ] = {
+ 	0x00379000 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* Channel1 // Need modify for 11a */
+ 	0x13333100 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* Channel1 // Need modify for 11a */
+ 	0x841FF200 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW, /* Need modify for 11a: 451FE2 */
+@@ -420,7 +420,7 @@ static bool s_bAL7230Init(struct vnt_private *priv)
+ 	bb_power_save_mode_off(priv); /* RobertYu:20050106, have DC value for Calibration */
  
--	drm_gem_object_unreference_unlocked(virtio_gpu_fb->obj);
-+	drm_gem_object_put_unlocked(virtio_gpu_fb->obj);
- 	drm_framebuffer_cleanup(fb);
- 	kfree(virtio_gpu_fb);
- }
-@@ -327,7 +327,7 @@ virtio_gpu_user_framebuffer_create(struct drm_device *dev,
- 	ret = virtio_gpu_framebuffer_init(dev, virtio_gpu_fb, mode_cmd, obj);
- 	if (ret) {
- 		kfree(virtio_gpu_fb);
--		drm_gem_object_unreference_unlocked(obj);
-+		drm_gem_object_put_unlocked(obj);
- 		return NULL;
+ 	for (ii = 0; ii < CB_AL7230_INIT_SEQ; ii++)
+-		ret &= IFRFbWriteEmbedded(priv, dwAL7230InitTable[ii]);
++		ret &= IFRFbWriteEmbedded(priv, al7230_init_table[ii]);
+ 
+ 	/* PLL On */
+ 	MACvWordRegBitsOn(iobase, MAC_REG_SOFTPWRCTL, SOFTPWRCTL_SWPE3);
+@@ -434,7 +434,7 @@ static bool s_bAL7230Init(struct vnt_private *priv)
+ 	ret &= IFRFbWriteEmbedded(priv, (0x3ABA8F00 + (BY_AL7230_REG_LEN << 3) + IFREGCTL_REGW));
+ 	MACvTimer0MicroSDelay(priv, 30);/* 30us */
+ 	/* TXDCOC:disable, RCK:disable */
+-	ret &= IFRFbWriteEmbedded(priv, dwAL7230InitTable[CB_AL7230_INIT_SEQ - 1]);
++	ret &= IFRFbWriteEmbedded(priv, al7230_init_table[CB_AL7230_INIT_SEQ - 1]);
+ 
+ 	MACvWordRegBitsOn(iobase, MAC_REG_SOFTPWRCTL, (SOFTPWRCTL_SWPE3    |
+ 							 SOFTPWRCTL_SWPE2    |
+@@ -716,7 +716,7 @@ bool RFvWriteWakeProgSyn(struct vnt_private *priv, unsigned char rf_type,
+ 
+ 		if (channel <= CB_MAX_CHANNEL_24G) {
+ 			for (i = 0; i < CB_AL7230_INIT_SEQ; i++)
+-				MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + i), dwAL7230InitTable[i]);
++				MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + i), al7230_init_table[i]);
+ 		} else {
+ 			for (i = 0; i < CB_AL7230_INIT_SEQ; i++)
+ 				MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + i), al7230_init_table_a_mode[i]);
+@@ -932,13 +932,13 @@ bool RFbAL7230SelectChannelPostProcess(struct vnt_private *priv,
+ 		ret &= IFRFbWriteEmbedded(priv, al7230_init_table_a_mode[15]);
+ 	} else if ((byOldChannel > CB_MAX_CHANNEL_24G) && (byNewChannel <= CB_MAX_CHANNEL_24G)) {
+ 		/* Change from 5G to 2.4G [Reg] */
+-		ret &= IFRFbWriteEmbedded(priv, dwAL7230InitTable[2]);
+-		ret &= IFRFbWriteEmbedded(priv, dwAL7230InitTable[3]);
+-		ret &= IFRFbWriteEmbedded(priv, dwAL7230InitTable[5]);
+-		ret &= IFRFbWriteEmbedded(priv, dwAL7230InitTable[7]);
+-		ret &= IFRFbWriteEmbedded(priv, dwAL7230InitTable[10]);
+-		ret &= IFRFbWriteEmbedded(priv, dwAL7230InitTable[12]);
+-		ret &= IFRFbWriteEmbedded(priv, dwAL7230InitTable[15]);
++		ret &= IFRFbWriteEmbedded(priv, al7230_init_table[2]);
++		ret &= IFRFbWriteEmbedded(priv, al7230_init_table[3]);
++		ret &= IFRFbWriteEmbedded(priv, al7230_init_table[5]);
++		ret &= IFRFbWriteEmbedded(priv, al7230_init_table[7]);
++		ret &= IFRFbWriteEmbedded(priv, al7230_init_table[10]);
++		ret &= IFRFbWriteEmbedded(priv, al7230_init_table[12]);
++		ret &= IFRFbWriteEmbedded(priv, al7230_init_table[15]);
  	}
  
-diff --git a/drivers/gpu/drm/virtio/virtgpu_gem.c b/drivers/gpu/drm/virtio/virtgpu_gem.c
-index 72ad7b1..92fb277 100644
---- a/drivers/gpu/drm/virtio/virtgpu_gem.c
-+++ b/drivers/gpu/drm/virtio/virtgpu_gem.c
-@@ -72,7 +72,7 @@ int virtio_gpu_gem_create(struct drm_file *file,
- 	*obj_p = &obj->gem_base;
- 
- 	/* drop reference from allocate - handle holds it now */
--	drm_gem_object_unreference_unlocked(&obj->gem_base);
-+	drm_gem_object_put_unlocked(&obj->gem_base);
- 
- 	*handle_p = handle;
- 	return 0;
-@@ -130,7 +130,7 @@ int virtio_gpu_mode_dumb_mmap(struct drm_file *file_priv,
- 		return -ENOENT;
- 	obj = gem_to_virtio_gpu_obj(gobj);
- 	*offset_p = virtio_gpu_object_mmap_offset(obj);
--	drm_gem_object_unreference_unlocked(gobj);
-+	drm_gem_object_put_unlocked(gobj);
- 	return 0;
- }
- 
-diff --git a/drivers/gpu/drm/virtio/virtgpu_ioctl.c b/drivers/gpu/drm/virtio/virtgpu_ioctl.c
-index b94bd54..461f81a 100644
---- a/drivers/gpu/drm/virtio/virtgpu_ioctl.c
-+++ b/drivers/gpu/drm/virtio/virtgpu_ioctl.c
-@@ -86,7 +86,7 @@ static void virtio_gpu_unref_list(struct list_head *head)
- 		bo = buf->bo;
- 		qobj = container_of(bo, struct virtio_gpu_object, tbo);
- 
--		drm_gem_object_unreference_unlocked(&qobj->gem_base);
-+		drm_gem_object_put_unlocked(&qobj->gem_base);
- 	}
- }
- 
-@@ -261,7 +261,7 @@ static int virtio_gpu_resource_create_ioctl(struct drm_device *dev, void *data,
- 		ret = virtio_gpu_object_attach(vgdev, qobj, res_id, NULL);
- 	} else {
- 		/* use a gem reference since unref list undoes them */
--		drm_gem_object_reference(&qobj->gem_base);
-+		drm_gem_object_get(&qobj->gem_base);
- 		mainbuf.bo = &qobj->tbo;
- 		list_add(&mainbuf.head, &validate_list);
- 
-@@ -304,7 +304,7 @@ static int virtio_gpu_resource_create_ioctl(struct drm_device *dev, void *data,
- 		}
- 		return ret;
- 	}
--	drm_gem_object_unreference_unlocked(obj);
-+	drm_gem_object_put_unlocked(obj);
- 
- 	rc->res_handle = res_id; /* similiar to a VM address */
- 	rc->bo_handle = handle;
-@@ -341,7 +341,7 @@ static int virtio_gpu_resource_info_ioctl(struct drm_device *dev, void *data,
- 
- 	ri->size = qobj->gem_base.size;
- 	ri->res_handle = qobj->hw_res_handle;
--	drm_gem_object_unreference_unlocked(gobj);
-+	drm_gem_object_put_unlocked(gobj);
- 	return 0;
- }
- 
-@@ -389,7 +389,7 @@ static int virtio_gpu_transfer_from_host_ioctl(struct drm_device *dev,
- out_unres:
- 	virtio_gpu_object_unreserve(qobj);
- out:
--	drm_gem_object_unreference_unlocked(gobj);
-+	drm_gem_object_put_unlocked(gobj);
  	return ret;
- }
- 
-@@ -439,7 +439,7 @@ static int virtio_gpu_transfer_to_host_ioctl(struct drm_device *dev, void *data,
- out_unres:
- 	virtio_gpu_object_unreserve(qobj);
- out:
--	drm_gem_object_unreference_unlocked(gobj);
-+	drm_gem_object_put_unlocked(gobj);
- 	return ret;
- }
- 
-@@ -462,7 +462,7 @@ static int virtio_gpu_wait_ioctl(struct drm_device *dev, void *data,
- 		nowait = true;
- 	ret = virtio_gpu_object_wait(qobj, nowait);
- 
--	drm_gem_object_unreference_unlocked(gobj);
-+	drm_gem_object_put_unlocked(gobj);
- 	return ret;
- }
- 
 -- 
-2.7.4
+2.30.2
 
 
