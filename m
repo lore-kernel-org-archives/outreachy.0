@@ -1,196 +1,185 @@
 X-GM-THRID: 7022901752311578624
-X-Received: by 2002:a17:90b:4a4d:: with SMTP id lb13mr33812195pjb.122.1635153191207;
-        Mon, 25 Oct 2021 02:13:11 -0700 (PDT)
+X-Received: by 2002:a05:6638:2581:: with SMTP id s1mr9422350jat.35.1635148573247;
+        Mon, 25 Oct 2021 00:56:13 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a63:1521:: with SMTP id v33ls1477740pgl.0.gmail; Mon, 25 Oct
- 2021 02:13:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwOvHJ1tvrPZd3C5pnjk37NjAVz+POxLir7K7Dz+/ClLiKSZmiFWsgaro2Iww4rKs1q3jen
-X-Received: by 2002:a05:6a00:2410:b0:40e:7d8:ad7f with SMTP id z16-20020a056a00241000b0040e07d8ad7fmr17060766pfh.25.1635153189833;
-        Mon, 25 Oct 2021 02:13:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1635153189; cv=none;
+Received: by 2002:a05:6e02:1bac:: with SMTP id n12ls3562296ili.9.gmail; Mon,
+ 25 Oct 2021 00:56:12 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwARCvOCVpITSVTg+NJulC+3IFEmFfDkPgz1bMtsqki9BXwgGfiRV6gVirYZuIlRVB8q2dT
+X-Received: by 2002:a05:6e02:8ad:: with SMTP id a13mr9005094ilt.136.1635148572492;
+        Mon, 25 Oct 2021 00:56:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1635148572; cv=none;
         d=google.com; s=arc-20160816;
-        b=W+a/SJVW2+mc+VBU+phIGvgPQzSVxpgW5wZawr330E4xkypWoqyeRSgQ6xGILgOTN8
-         3qRKSY+FJ46WXWjFMUHmw2ZDeuFhqUhhRnekgjKGYDKKafy2mkJe6Lu9YSJWDKlatBFd
-         kLDm6+cD/tB9M4aEYXKblanhlPzcDBPCHApmxmHiwaC4h27svKATRhs1rr9D6w4sRhmM
-         CN0PunRwBncPwpcyX30X+zaLEIsXXcTYTH/SAYQZLBl/2xmXh4ALkGT/jejvf9pBeG7d
-         xvOYGIG5mUA64pIgvwzPsNdwqY7tslj1bK34aLrXjIDoUiA8xrLCnbQVHNe/V4vAP40s
-         eKRg==
+        b=UhduIROo28/rQlBv6hFDIIOyD+aRRKZMfGJixzstufDLmpfHh/lkb/daSUp6IqHWkL
+         LNvgusZMa+3BPT4zPT3+YTNhmLoFJGq8jajN8llF+Qykaq//Gv+kfYv09gZUp2lwYNBF
+         Mmod68K+8o61fQvdikKOiYdl6oFd9i8H7tQS6m78HEDkK8bRRamzUYimJncaGWHcDcSk
+         Xek2tuSe1o3Mv9kkkHIylB2yY0yY9WnHwl8U5fYCqwaqf35/kC7SI3e0VBNdG9nnUXJU
+         dmRJpHpm4anxz1FE7GAaGUwp2ZNJpJEsZ9SdmJsLfPGphmzhRurFnngLHtk73oT+Rgxs
+         gkpA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=ATtusDzZDIylNdGI8yivyPmdhTP5mkz+4pQcoTIn5lo=;
-        b=j4IPAv12N7pp+DUUCg0lVoZiruN20EU+vDoimdzTXG8ZsJ2AEvOg8A8T92tLJxXEHF
-         bl9SckiqNIBgT38xBuAZo9vKKL097JlFGMZC2pKWwT5sa1oD748eBMuX1BymBmGKV3xN
-         ycxzgI3302hTYV9IZYgZI+8vl7LaeU3gs0D0EqFEAgOQ6uCy++HxcELJcvHLMv/k5BMW
-         CXdnQnGEmqaxKLrtNLc+V5ISSyIQ2u8FcNvlEt4R4uv2cL2xlr8u3LPPHkX4lED6PJcW
-         lyOsaJZaL+C0aZCrXlTjKU8zKBMC84R/HyTR8VLn2KU23VmUfjy4fFyc95V5hL4Ni85A
-         lqdA==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=pLAmtnd2uwvPw1Cgk3UJ1FSf3lSG6KjWA4uBZ9ybIsQ=;
+        b=x2MwlBprWfBFjn9/FQQ9rXJsGO6yWKoHZ+WrDGc50ZoqzV3pqyV3rOq8zwE/hopfs9
+         x6J5GurLTmWyWIRsYG/2pSFyjuMVUdPmCblxgAZjZxv0cfdJFYxWyINXbJohUkK21H4Q
+         yrZK9txVZjjP3Pr3sHynkol/45bNhGcu4ysOmCTmX0wVXrvdf0ydFmC0H7+8ppTc8a4A
+         1hAiDq4AqS3kgUt8PJcGBwDloxp6xYJwDg0YUR5BXTOsGGCx2pWOAh0bHVVl/hejtZZ4
+         2tfQVQPDe78VRT7+L6m70H7W70etTYKuupPK+PHOCqD/+I4yIWLp8Ac+0ePzep8w2nfl
+         xDiA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=jGEUbIXR;
-       spf=pass (google.com: domain of kpraveen.lkml@gmail.com designates 2607:f8b0:4864:20::62b as permitted sender) smtp.mailfrom=kpraveen.lkml@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=mWfjykjX;
+       spf=pass (google.com: domain of kushalkothari285@gmail.com designates 2607:f8b0:4864:20::732 as permitted sender) smtp.mailfrom=kushalkothari285@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <kpraveen.lkml@gmail.com>
-Received: from mail-pl1-x62b.google.com (mail-pl1-x62b.google.com. [2607:f8b0:4864:20::62b])
-        by gmr-mx.google.com with ESMTPS id m1si82955pjv.1.2021.10.25.02.13.09
+Return-Path: <kushalkothari285@gmail.com>
+Received: from mail-qk1-x732.google.com (mail-qk1-x732.google.com. [2607:f8b0:4864:20::732])
+        by gmr-mx.google.com with ESMTPS id e16si912944ilm.3.2021.10.25.00.56.12
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 25 Oct 2021 02:13:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kpraveen.lkml@gmail.com designates 2607:f8b0:4864:20::62b as permitted sender) client-ip=2607:f8b0:4864:20::62b;
+        Mon, 25 Oct 2021 00:56:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kushalkothari285@gmail.com designates 2607:f8b0:4864:20::732 as permitted sender) client-ip=2607:f8b0:4864:20::732;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=jGEUbIXR;
-       spf=pass (google.com: domain of kpraveen.lkml@gmail.com designates 2607:f8b0:4864:20::62b as permitted sender) smtp.mailfrom=kpraveen.lkml@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=mWfjykjX;
+       spf=pass (google.com: domain of kushalkothari285@gmail.com designates 2607:f8b0:4864:20::732 as permitted sender) smtp.mailfrom=kushalkothari285@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pl1-x62b.google.com with SMTP id t11so7459823plq.11
-        for <outreachy-kernel@googlegroups.com>; Mon, 25 Oct 2021 02:13:09 -0700 (PDT)
+Received: by mail-qk1-x732.google.com with SMTP id g20so11056786qka.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 25 Oct 2021 00:56:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :references:from:in-reply-to:content-transfer-encoding;
-        bh=ATtusDzZDIylNdGI8yivyPmdhTP5mkz+4pQcoTIn5lo=;
-        b=jGEUbIXRYvuB0DrV+TSzKVqHPQhjz4+WwI9i9s8d5F3r3jIyl7jzHRW6VzhP1pw5Ku
-         mLaGVq6dBPHN7MmQDZGADNH11wTKfciU0kZto8qjs6gZ+fFtMNZ3FG3BIu20G3E/WUyV
-         Lf7t8U1VfDgh/VkY401jniye7a9E7jbSaTmicUmcWwt8EM5vcp7zm4QYFx0Ag6qRTWLf
-         Tk+aChdCxmBZeZ1EmVffeuTOZrxgVG9mwtOfzW1mPDKnOyRBaMgGRVLpTL/ZdDtxfMz5
-         dlpVr++Angmfl8OZOpqWWkxf8f8/2O5j74/tzeZhj2CByW4M7qCHVr1REnTujeNzANGd
-         bqZQ==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=pLAmtnd2uwvPw1Cgk3UJ1FSf3lSG6KjWA4uBZ9ybIsQ=;
+        b=mWfjykjX/IKzHMiAkrPGcHrO5rDj4qcPWRN9EzdKrWrRao8lDJVJFzl6gvr2d9omgF
+         3RrNIHXQSqlUg1E6zMF4mXQRPUZu6NlCUeF8BGdrlEUhcenbNTNynMsGGYNaFKoNEpeH
+         VII/SVnzu+ZeWZHxirJhgHGPGiJs+IYg99tul28l2rD2FiFHbBIIlBwPwyLCO9dbTaWF
+         xDRN936qlmC3Z00ULrcdIYQB/she+NhNGmZOso3FId4Uk4GC1RpTHBVmVCkETjHXgJdK
+         0BszqpmORMCjyB1ts+H0mXHItoWmRy+Rg7Y5uVtPQzxxpkyKz/k6tTeslFYz8ErSo9JT
+         oGAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=ATtusDzZDIylNdGI8yivyPmdhTP5mkz+4pQcoTIn5lo=;
-        b=6mUwvckCrwwIJdtuQk8uvAzs6hE1r+2S81gUZj0R/usxVsGWZxf6g42PPkdS6O74fs
-         IR1cKLx7n1XzX97Hg+gIRivpbnTBFw2IKTO7kihuJpIYD6D8y7RMilAJh8Pyw3ykMj5m
-         OsmwRuEoyWN3fPDpzWeGZAK4WYX209RisTT9MC8PtfLiwYba1QvaqrZJlNmDybq6d1Uq
-         cQhpDXkfDDEAErd4HzPhJry6LW7hmbMCOhc2V/RGY5q8TOflxv6WtTyBzAh3hIgnA7Du
-         K9ZboonxuUhuB9nXTR5PU6HSl0ZruOcAp6jI3OUDUr2KI9fdmMZr8Vg7AHi2DfYd9OYF
-         jTwQ==
-X-Gm-Message-State: AOAM533G1zVC5flSjmXoC+vffdZo7UUGdOpySEhefoWsALemGORspjdV
-	F337Doqb0YfEl5JsSoiihk4raJ738/o=
-X-Received: by 2002:a17:90b:3e85:: with SMTP id rj5mr34001833pjb.104.1635153189553;
-        Mon, 25 Oct 2021 02:13:09 -0700 (PDT)
-Return-Path: <kpraveen.lkml@gmail.com>
-Received: from [192.168.1.122] ([122.181.48.19])
-        by smtp.gmail.com with ESMTPSA id y6sm14772373pfi.154.2021.10.25.02.13.05
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 25 Oct 2021 02:13:09 -0700 (PDT)
-Message-ID: <4715e602-bdc0-e0d9-ff99-8eb08c8c5063@gmail.com>
-Date: Mon, 25 Oct 2021 14:43:03 +0530
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=pLAmtnd2uwvPw1Cgk3UJ1FSf3lSG6KjWA4uBZ9ybIsQ=;
+        b=g4JEGUL+tPAaqJlM1EwAy/w7XmRe2x/8YSVFF/OGROH5t7nI3NW1hmEEsdlMklN56L
+         mGypqPxoA9WxaT1vFSo5LnwLA7XfF2MzjSuT6yKVImzXxZcGCejjt0jyHXLvd0th7Rdx
+         0LkAUeqoUnE4ErMJudtcqgHx+dbgH0xbzhpGIE4/Oo5lVfiVNG8fMRVo3bt18i/Linyq
+         ntlYdUsg4pWVeywyQ9KwO0KjsT0cHiO7hWJ52utV8yPrlFA1p5LHMTGLCOgZr1CvcDQk
+         a4wslhGkrssvXluhHlwNj3Pw/V4cWFV70WAZF9lNdWlZXMtpR2qP0DjSzXCopJL9y75r
+         BQcw==
+X-Gm-Message-State: AOAM531U7ra996n+01FEL3VZVai87fW277E15sVKCckAMeXPuIse+QXv
+	WYJdtGh55Wm27NrnTba/9RgDJSl+L4Zllq3cOWA=
+X-Received: by 2002:a05:620a:199e:: with SMTP id bm30mr12044345qkb.113.1635148571955;
+ Mon, 25 Oct 2021 00:56:11 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.2.1
-Subject: Re: [Outreachy kernel] [PATCH] staging: rtl8723bs: core: Refactor
- nested if-else
-Content-Language: en-US
-To: Kushal Kothari <kushalkothari285@gmail.com>, gregkh@linuxfoundation.org,
- fabioaiuto83@gmail.com, ross.schm.dev@gmail.com, hdegoede@redhat.com,
- marcocesati@gmail.com, fmdefrancesco@gmail.com,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
- outreachy-kernel@googlegroups.com, mike.rapoport@gmail.com,
- kushalkothari2850@gmail.com
-References: <20211025072528.152028-1-kushalkothari285@gmail.com>
-From: Praveen Kumar <kpraveen.lkml@gmail.com>
-In-Reply-To: <20211025072528.152028-1-kushalkothari285@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+References: <20211025072528.152028-1-kushalkothari285@gmail.com> <YXZdvdj6EQsrfhqt@kroah.com>
+In-Reply-To: <YXZdvdj6EQsrfhqt@kroah.com>
+From: kushal kothari <kushalkothari285@gmail.com>
+Date: Mon, 25 Oct 2021 13:26:00 +0530
+Message-ID: <CALtHPQsQe06MhSvgs25TVbsjEvfU=ELbK3eFfKunRHXM1+HDxA@mail.gmail.com>
+Subject: Re: [PATCH] staging: rtl8723bs: core: Refactor nested if-else
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: fabioaiuto83@gmail.com, ross.schm.dev@gmail.com, hdegoede@redhat.com, 
+	marcocesati@gmail.com, "Fabio M. De Francesco" <fmdefrancesco@gmail.com>, 
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, 
+	outreachy-kernel@googlegroups.com, Mike Rapoport <mike.rapoport@gmail.com>, 
+	kushalkothari2850@gmail.com
+Content-Type: multipart/alternative; boundary="000000000000c954bc05cf28b15c"
 
-On 25-10-2021 12:55, Kushal Kothari wrote:
-> Refactor nested if else by combining nested if into a single if condition and removing unnecessary else conditionals which leads to removing unnecessary tabs .There is no change in logic of new code.
-> checkpatch warning : Too many leading tabs - consider code refactoring
-> 
-> Signed-off-by: Kushal Kothari <kushalkothari285@gmail.com>
-> ---
->  drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 65 ++++++++-----------
->  1 file changed, 26 insertions(+), 39 deletions(-)
-> 
-> diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-> index 0f82f5031c43..eb10b6f85426 100644
-> --- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-> +++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-> @@ -1192,46 +1192,33 @@ unsigned int OnAssocReq(struct adapter *padapter, union recv_frame *precv_frame)
->  		p = pframe + WLAN_HDR_A3_LEN + ie_offset; ie_len = 0;
->  		for (;;) {
->  			p = rtw_get_ie(p, WLAN_EID_VENDOR_SPECIFIC, &ie_len, pkt_len - WLAN_HDR_A3_LEN - ie_offset);
-> -			if (p) {
-> -				if (!memcmp(p+2, WMM_IE, 6)) {
-> -
-> -					pstat->flags |= WLAN_STA_WME;
-> -
-> -					pstat->qos_option = 1;
-> -					pstat->qos_info = *(p+8);
-> -
-> -					pstat->max_sp_len = (pstat->qos_info>>5)&0x3;
-> -
-> -					if ((pstat->qos_info&0xf) != 0xf)
-> -						pstat->has_legacy_ac = true;
-> -					else
-> -						pstat->has_legacy_ac = false;
-> -
-> -					if (pstat->qos_info&0xf) {
-> -						if (pstat->qos_info&BIT(0))
-> -							pstat->uapsd_vo = BIT(0)|BIT(1);
-> -						else
-> -							pstat->uapsd_vo = 0;
-> -
-> -						if (pstat->qos_info&BIT(1))
-> -							pstat->uapsd_vi = BIT(0)|BIT(1);
-> -						else
-> -							pstat->uapsd_vi = 0;
-> -
-> -						if (pstat->qos_info&BIT(2))
-> -							pstat->uapsd_bk = BIT(0)|BIT(1);
-> -						else
-> -							pstat->uapsd_bk = 0;
-> -
-> -						if (pstat->qos_info&BIT(3))
-> -							pstat->uapsd_be = BIT(0)|BIT(1);
-> -						else
-> -							pstat->uapsd_be = 0;
-> -
-> -					}
-> -
-> -					break;
-> +			if (p && !memcmp(p+2, WMM_IE, 6)) {
-> +				pstat->flags |= WLAN_STA_WME;
-> +				pstat->qos_option = 1;
-> +				pstat->qos_info = *(p+8);
-> +				pstat->max_sp_len = (pstat->qos_info>>5)&0x3;
-> +				pstat->has_legacy_ac = false;
-> +				if ((pstat->qos_info&0xf) != 0xf)
-> +					pstat->has_legacy_ac = true;
-> +
-> +				pstat->uapsd_vo = 0;
-> +				if (pstat->qos_info&0xf) {
-> +					if (pstat->qos_info&BIT(0))
-> +						pstat->uapsd_vo = BIT(0)|BIT(1);
-> +
-> +					pstat->uapsd_vi = 0;
-> +					if (pstat->qos_info&BIT(1))
-> +						pstat->uapsd_vi = BIT(0)|BIT(1);
-> +
-> +					pstat->uapsd_bk = 0;
-> +					if (pstat->qos_info&BIT(2))
-> +						pstat->uapsd_bk = BIT(0)|BIT(1);
-> +
-> +					pstat->uapsd_be = 0;
-> +					if (pstat->qos_info&BIT(3))
-> +						pstat->uapsd_be = BIT(0)|BIT(1);
->  				}
-> +				break;
->  			} else {
->  				break;
->  			}
+--000000000000c954bc05cf28b15c
+Content-Type: text/plain; charset="UTF-8"
 
-there is a bug here, if *p* is not null, and *memcmp* failed; then we fall in else part and break, and will miss the next entry in *p* using below statement
+>Very long line, please break it up at 72 columns.
 
-p = p + ie_len + 2;
+>And your space around the '.' is odd :(
+
+Yes,fixing it.
+
+>> checkpatch warning : Too many leading tabs - consider code refactoring
+
+>What does this mean?
+Asking about the warning ,correct?
+The current code is using very deep indentations (which can be avoided) and
+due to this there are many leading tabs. So the checkpatch.pl warns of  "Too
+many leading tabs - consider code refactoring"
+<http://checkpatch.pl>
 
 
-> 
 
-Regards,
+On Mon, Oct 25, 2021 at 1:03 PM Greg KH <gregkh@linuxfoundation.org> wrote:
 
-~Praveen.
+> On Mon, Oct 25, 2021 at 12:55:28PM +0530, Kushal Kothari wrote:
+> > Refactor nested if else by combining nested if into a single if
+> condition and removing unnecessary else conditionals which leads to
+> removing unnecessary tabs .There is no change in logic of new code.
+>
+> Very long line, please break it up at 72 columns.
+>
+> And your space around the '.' is odd :(
+>
+> > checkpatch warning : Too many leading tabs - consider code refactoring
+>
+> What does this mean?
+>
+> >
+> > Signed-off-by: Kushal Kothari <kushalkothari285@gmail.com>
+> > ---
+> >  drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 65 ++++++++-----------
+> >  1 file changed, 26 insertions(+), 39 deletions(-)
+> >
+>
+> thanks,
+>
+> greg k-h
+>
 
+--000000000000c954bc05cf28b15c
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">&gt;Very long line, please break it up at 72 columns.<br>
+<br><div>
+&gt;And your space around the &#39;.&#39; is odd :(<span><br></span></div><=
+div><br></div><div>Yes,fixing it.</div><div><br></div><div><span>&gt;&gt; c=
+heckpatch warning : Too many leading tabs - consider code refactoring<br>
+<br></span>
+&gt;What does this mean?<span><br></span></div><div><span>Asking about the =
+warning ,correct? <br></span></div><div><span>The current code is using ver=
+y deep indentations (which can be avoided) and due to this there are many l=
+eading tabs. So the <a href=3D"http://checkpatch.pl" target=3D"_blank">chec=
+kpatch.pl</a> warns of=C2=A0 </span>&quot;Too many leading tabs - consider =
+code refactoring&quot;<span><a href=3D"http://checkpatch.pl" rel=3D"nofollo=
+w" target=3D"_blank"><br></a></span></div><div><br></div><div><br></div><di=
+v><span></span></div><div><span></span></div><span></span></div><br><div cl=
+ass=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Oct 25, 2=
+021 at 1:03 PM Greg KH &lt;<a href=3D"mailto:gregkh@linuxfoundation.org" ta=
+rget=3D"_blank">gregkh@linuxfoundation.org</a>&gt; wrote:<br></div><blockqu=
+ote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px=
+ solid rgb(204,204,204);padding-left:1ex">On Mon, Oct 25, 2021 at 12:55:28P=
+M +0530, Kushal Kothari wrote:<br>
+&gt; Refactor nested if else by combining nested if into a single if condit=
+ion and removing unnecessary else conditionals which leads to removing unne=
+cessary tabs .There is no change in logic of new code.<br>
+<br>
+Very long line, please break it up at 72 columns.<br>
+<br>
+And your space around the &#39;.&#39; is odd :(<br>
+<br>
+&gt; checkpatch warning : Too many leading tabs - consider code refactoring=
+<br>
+<br>
+What does this mean?<br>
+<br>
+&gt; <br>
+&gt; Signed-off-by: Kushal Kothari &lt;<a href=3D"mailto:kushalkothari285@g=
+mail.com" target=3D"_blank">kushalkothari285@gmail.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 65 ++++++++-----=
+------<br>
+&gt;=C2=A0 1 file changed, 26 insertions(+), 39 deletions(-)<br>
+&gt; <br>
+<br>
+thanks,<br>
+<br>
+greg k-h<br>
+</blockquote></div>
+
+--000000000000c954bc05cf28b15c--
 
