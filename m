@@ -1,111 +1,135 @@
-X-GM-THRID: 6665741201511022592
-X-Received: by 2002:ac8:18e5:: with SMTP id o34mr8276549qtk.39.1551988814846;
-        Thu, 07 Mar 2019 12:00:14 -0800 (PST)
+X-GM-THRID: 7021822549853995008
+X-Received: by 2002:a05:6000:1107:: with SMTP id z7mr8206209wrw.370.1635154734270;
+        Mon, 25 Oct 2021 02:38:54 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:4ad6:: with SMTP id x205ls2886381qka.5.gmail; Thu, 07
- Mar 2019 12:00:14 -0800 (PST)
-X-Google-Smtp-Source: APXvYqzxEV9HPdfWpSG19l53DkZ96B9Ki76hcUiqcdfb72Gwq7k4jhEyv+8ZDk5LFbEORsOhh3UK
-X-Received: by 2002:a37:6750:: with SMTP id b77mr8391319qkc.53.1551988814278;
-        Thu, 07 Mar 2019 12:00:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1551988814; cv=none;
+Received: by 2002:adf:ef8b:: with SMTP id d11ls898517wro.2.gmail; Mon, 25 Oct
+ 2021 02:38:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz35PDDUA1KoG7R/TTlmU+lRWQUtTU81IAjiEVXRZDx4WUb75+x/+ZUPWMMMnyF6qDbDJDK
+X-Received: by 2002:adf:9dc1:: with SMTP id q1mr22082771wre.13.1635154732880;
+        Mon, 25 Oct 2021 02:38:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1635154732; cv=none;
         d=google.com; s=arc-20160816;
-        b=gkjoggt97Z1WcApFS3n/LNhLyJW9MSrC2IEb/tH2Dcq9VK6ZTs8Gr+XjZ/zMxkBuH1
-         Fq9s/MHI4ok82cIqnva0rdvd6DSNNBlmVKJEBPZIPKW+7L3OAzX8qA+RPjc1cBvSOnFl
-         ZQjUjVwBzK9Fxe2mTZ4fOjHMC7ugbYEuGmNfS66xOub0QXU9FexLfm4Ock6ESmC7Xq4N
-         mjppU0Jx7wRl2EffPwZvPrgObhq7Wk3lEF6IcqgAy82Qe7W1dezpVf1gUD2uiBHRysxH
-         N9NluRzEMiQTmec+VZyn38sJcJFGu0ZCLLgxoeQpX5u4NbFOZse/6kMbFd0yn3mmEMMp
-         JzTg==
+        b=n7QpJg5QWySQWkxcuw8bDu/8DyJqPx8ZbuJyfOIBRgdl9n4RzONVB5y+Ly+BmUinF3
+         7ozLhtH/yWHn9IiJL+IUNW7YH7x4ycNjIsSiLc3aSLCLsIfbXBAYnfaB8yOJ1OH4k5OY
+         9YXAuqFfAD3F4M/zF5t7Y+URNeT26Jek8QFcwm933H2p2CSUIn5KS7/TLG3QGP5zhMlC
+         JpZwfb542gk+8sFEFCoEsC5dH1W5CXEXL2SclXaBf0E8DG13ixmeVfCJU168mzNXqPTL
+         klygJYFW41UJWcnVAxFfCCpK/0CmIO4j4ph6LfxDwvCR43WPiDAA9xeXR9JKltIk1067
+         Ksfw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=NINKsGFcQsHiuGBy/+Vvxc+PJD+gm8MquacxByN7wjM=;
-        b=Fq0krVHbPQ4iHMCYUMkKuA8onA3LxlTlJ3+BMJd4wHiBK0YgrmUVWsnY9D25vhvNOt
-         0U1MC//OvShQ04wsm6YeTd10p82Rj5168wXP2dcve5fIsV07HEMJAC76t5hXU0/V8osi
-         wbTHcbl6/vI0PaesVkpVCWctJMhK9ob4CmmGNuDq7rlA4E81apG0oCcecLJuxXdbSunr
-         I6edq9a9RHSM8UaBa7CB1VEFIpogU87+9gJvwSW4sZ9kbvFfZJzOAB04qlrElP8z4546
-         o5JfOw5qdGfda519LQrgjY1j8OxewMGMzxGoD5msrPRBn0bsc0UHQFJ4SJyyiDDiDa6x
-         K6jg==
+        h=content-transfer-encoding:mime-version:user-agent:references
+         :in-reply-to:date:cc:to:from:subject:message-id:dkim-signature;
+        bh=j2/0T+iSdDtcRBJSHhWbXXR9G0R0VHtIn5iZtNGvdpY=;
+        b=ZVemBA2VDKYg1YfiNDx0wK10+5nwrkHFWPgakNroBIexuR65jfA0ReIHmA9ROJibl/
+         nBFRr/l6SppieOpn16b9u6UXh77gDBhUqOLY7nYY1o6wyvtEkah6tu0ikqeUb17Mr0Z0
+         p4mkJa4mmzCKy/phsHqxafvXOgdLqzRYvEVFSy/zsUuAFc/cwaYYAYoJTOHRMofDmUmv
+         FBxY+wrIYCwdngOR8EFpU/Jy7WmbGubSyWIzE2E2xVhuOjHRHelXgU+s9TMoBmBYGZNo
+         sd7nmJRVjCbPtvdHo+LD/c0IWs+y4owlwsZNUXSJqu6db3c83ymMcaDg4DT+TqTILUSi
+         FNbQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=NIDMMBaf;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::343 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=O8IHmCxE;
+       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::42d as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <madhumithabiw@gmail.com>
-Received: from mail-ot1-x343.google.com (mail-ot1-x343.google.com. [2607:f8b0:4864:20::343])
-        by gmr-mx.google.com with ESMTPS id a3si361886qtc.0.2019.03.07.12.00.14
+Return-Path: <karolinadrobnik@gmail.com>
+Received: from mail-wr1-x42d.google.com (mail-wr1-x42d.google.com. [2a00:1450:4864:20::42d])
+        by gmr-mx.google.com with ESMTPS id j23si786678wms.0.2021.10.25.02.38.52
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 07 Mar 2019 12:00:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::343 as permitted sender) client-ip=2607:f8b0:4864:20::343;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 25 Oct 2021 02:38:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::42d as permitted sender) client-ip=2a00:1450:4864:20::42d;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=NIDMMBaf;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::343 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=O8IHmCxE;
+       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::42d as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ot1-x343.google.com with SMTP id v20so15257168otk.7
-        for <outreachy-kernel@googlegroups.com>; Thu, 07 Mar 2019 12:00:14 -0800 (PST)
+Received: by mail-wr1-x42d.google.com with SMTP id d10so7594331wrb.1
+        for <outreachy-kernel@googlegroups.com>; Mon, 25 Oct 2021 02:38:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=NINKsGFcQsHiuGBy/+Vvxc+PJD+gm8MquacxByN7wjM=;
-        b=NIDMMBafaG4rH0tTtJqzn8rb88deUnm6/GTYXaBHg77dKoPSvxfpap46tc3aAJ4nO7
-         +oreFJurHAc5YpzZBaqaF+bHnAD2IVFnVDAO5GEPASbUUMPBz1BIjcZ7BbUqHik9PJzP
-         1DygOvqRqZSXGOg0Pir8nvE6pJg2yQaAEGOekidl7gSBvcY1ploOk7umFbVnOb/LmINN
-         KtfBeMy0k/Qmw+Xrgw8/k7KCOV4SLWFvyPl4FovfULya4sARlbyzhhEPD885SgUGqEbB
-         ffszrIz3mwdhSUAqa6tNbUxqkGDw1IIqLcJOQ4cOVkYZAxrIHYiifHfPjD5pPrklCo8t
-         8wMw==
+        d=gmail.com; s=20210112;
+        h=message-id:subject:from:to:cc:date:in-reply-to:references
+         :user-agent:mime-version:content-transfer-encoding;
+        bh=j2/0T+iSdDtcRBJSHhWbXXR9G0R0VHtIn5iZtNGvdpY=;
+        b=O8IHmCxEqS6oDsG6t3xo1/CJc/mKQKQrKBE5I0MDKkQGd03S7OqsFskcTN/dsmOWNR
+         zTybvOnp12d3zvtbq0kzMNc80oUxNQlH6SiLR4G4PUQe+9fyKLHiE+QjHnxB2LT1uDZM
+         aMeiJaIIwsjLS1pRgtWUeFfZOyZGA2P7T6lx3YFlIVWFCaA4gbSZHwYulHYFELdB+YPU
+         4ZhqrdqRwXram+3kTOs+Pctv8HtyIeM3xcbOkEwZjL9FA7AwVhobHrMR0pSwObfT990U
+         qQQKhYLDr6/gONsRQZcKMb3gGBND4mxKesrP2atjQclfE/kHB7OtEb4gQ6YYl6JBUk2z
+         CHXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=NINKsGFcQsHiuGBy/+Vvxc+PJD+gm8MquacxByN7wjM=;
-        b=i0hIY72YJRvON1yoAzMRLS0yq+pKNgm1o9yo4L2SyYhaLEVRCI5I7IRMOzeH2z9uSc
-         P0Enpdg1r5gbexwcF6mQ960TwBLSfoo57a0UqTP889+c+Gvy89HWYkK/RkRJm4kQwPcF
-         1WeA7WuiPdPNIzJeJ86ZEA9CSGyOdPAOv2N9OoWT7n15FS0PUBH7dT4EFaqPa0IkuUIW
-         AOMG2ROWoqYi/7Qvqt5vT0Fo6K2yoJKxCZdydLulXmsPGw8ssbGPhMCHqaTK6iQS9Ddw
-         iH+38iLHrun9R7mNnaYsH2koqbEFK4xSWV7YutC1qA9cXyw5ez2jzcX3KhKhwN6QDUlr
-         jwfw==
-X-Gm-Message-State: APjAAAUjogAjxeVHR8nJoEWGSsHMTHopybi+aaUWRs1RI+CT5JnrlSGX
-	kquNSIPAT0KpXNpkLe/W1OY=
-X-Received: by 2002:a9d:7348:: with SMTP id l8mr9343902otk.284.1551988813716;
-        Thu, 07 Mar 2019 12:00:13 -0800 (PST)
-Return-Path: <madhumithabiw@gmail.com>
-Received: from madhuleo (cpe-173-174-122-182.austin.res.rr.com. [173.174.122.182])
-        by smtp.gmail.com with ESMTPSA id e89sm2476170otb.30.2019.03.07.12.00.12
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Mar 2019 12:00:13 -0800 (PST)
-From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-To: forest@alittletooquiet.net,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-Subject: [PATCH v2] Staging: vt6655: Remove an unused function prototype
-Date: Thu,  7 Mar 2019 14:00:08 -0600
-Message-Id: <20190307200008.23438-1-madhumithabiw@gmail.com>
-X-Mailer: git-send-email 2.17.1
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+         :references:user-agent:mime-version:content-transfer-encoding;
+        bh=j2/0T+iSdDtcRBJSHhWbXXR9G0R0VHtIn5iZtNGvdpY=;
+        b=JVkkKgHvBS3zJ/ZjtYC1HkTcvvx1gRD874iYDMGaR3lMuUesF7lWGsNRVhCpwtkMaQ
+         reRndp3XQ3UluQCWgc2zW4Q0rG/nH4aieLbp6KWL7q/XX9m3fXJd7IxDsx4A0MFxYD0/
+         GzZzPRH1Yhl5GawJGuBDuEnljjAMkMIf6hHy25E8NKNsBkRALhb1poRg0bbVs4/A/BRc
+         XckJeG56ay93Q6urT3LMZhu0EqCTxZqRxzfxLNi+Ate0VpZQzyMUcd+w7RJuHSL58QW9
+         8earKRum5pU1hJbU7LnTq6Fgj3ZFVquSy60JUjl0NUFscJj9BudSNQBIyEBFI4JK3ZDc
+         vvDA==
+X-Gm-Message-State: AOAM533u1CLqPxuFqpWv9d50STnoNOSXlX0rTiMEpd4ewN1C85XuE7IC
+	3bTfdGcLmmb9F/xLJmXC/eI=
+X-Received: by 2002:adf:8bce:: with SMTP id w14mr7800346wra.391.1635154732530;
+        Mon, 25 Oct 2021 02:38:52 -0700 (PDT)
+Return-Path: <karolinadrobnik@gmail.com>
+Received: from ?IPv6:2a01:4b00:f411:e700:e085:8cb7:7bf6:5d62? ([2a01:4b00:f411:e700:e085:8cb7:7bf6:5d62])
+        by smtp.gmail.com with ESMTPSA id l20sm21094729wmq.42.2021.10.25.02.38.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 25 Oct 2021 02:38:51 -0700 (PDT)
+Message-ID: <4a0993774f75323c803f7b07ff9825d7beb6d95b.camel@gmail.com>
+Subject: Re: [Outreachy kernel] [PATCH 2/5] staging: vt6655: Rename
+ `byInitCount` variable
+From: Karolina Drobnik <karolinadrobnik@gmail.com>
+To: Alison Schofield <alison.schofield@intel.com>
+Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
+	forest@alittletooquiet.net, linux-staging@lists.linux.dev, 
+	linux-kernel@vger.kernel.org
+Date: Mon, 25 Oct 2021 10:38:46 +0100
+In-Reply-To: <20211022164011.GB464908@alison-desk>
+References: <cover.1634826774.git.karolinadrobnik@gmail.com>
+	 <53430b1183324f6a715999792a15df2ea6a3e206.1634826774.git.karolinadrobnik@gmail.com>
+	 <20211022164011.GB464908@alison-desk>
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.38.3-1 
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
 
-Remove an unused function prototype as there is no such function in the
-kernel tree.
+Hi Alison,
 
-Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
+On Fri, 2021-10-22 at 09:40 -0700, Alison Schofield wrote:
+> On Fri, Oct 22, 2021 at 10:37:15AM +0100, Karolina Drobnik wrote:
+> > Drop Hungarian notation in `byInitCount` variable in
+> > `RFvWriteWakeProgSyn` function. Change it to use snake case.
+> > 
+> > Fix issue detected by checkpatch.pl:
+> >   CHECK: Avoid CamelCase: <byInitCount>
+> 
+> Hi Karolina,
+> 
+> This comment is for all the patches.
+> 
+> Commit msg:
+> We've got plenty of space on that line, how about:
+> "Rename byInitCount init_count"
+> 
+> (I say this because when someone searches by the oneliners it's
+> nice to give as many keywords as possible - within the line limit)
 
----
-Changes in v2:
-- Changed commit log and subject line.
----
- drivers/staging/vt6655/mac.h | 2 --
- 1 file changed, 2 deletions(-)
+Ok, will do my best to include it in my upcoming patchset.
 
-diff --git a/drivers/staging/vt6655/mac.h b/drivers/staging/vt6655/mac.h
-index 99de843b4551..59538ac09fc5 100644
---- a/drivers/staging/vt6655/mac.h
-+++ b/drivers/staging/vt6655/mac.h
-@@ -887,8 +887,6 @@ void MACvSetShortRetryLimit(struct vnt_private *priv,
- 			    unsigned char byRetryLimit);
- 
- void MACvSetLongRetryLimit(struct vnt_private *priv, unsigned char byRetryLimit);
--void MACvGetLongRetryLimit(struct vnt_private *priv,
--			   unsigned char *pbyRetryLimit);
- 
- void MACvSetLoopbackMode(struct vnt_private *priv, unsigned char byLoopbackMode);
- 
--- 
-2.17.1
+> Commit log:
+> The log (why this patch is important) seems to be saying that
+> snake case is the fix for Hungarian notation. I don't think that
+> is completely true. Snake case avoids the camel case of Hungarian
+> notation, but we are also dropping the type descriptor which is
+> another signature of Hungarian notation.
+> 
+> Perhaps this would be more direct:
+> 
+> To align with the kernel coding style, remove the type from
+> the variable name and do not use CamelCase.
+
+Ok, I'll use this format from now on.
+
+
+Thanks,
+Karolina
 
 
