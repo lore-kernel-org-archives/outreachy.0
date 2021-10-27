@@ -1,117 +1,192 @@
-X-GM-THRID: 6671279616502530048
-X-Received: by 2002:a17:902:b788:: with SMTP id e8mr587111pls.339.1553278327351;
-        Fri, 22 Mar 2019 11:12:07 -0700 (PDT)
+X-GM-THRID: 7018981355604148224
+X-Received: by 2002:a2e:544b:: with SMTP id y11mr12788996ljd.10.1635361961868;
+        Wed, 27 Oct 2021 12:12:41 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a62:b60a:: with SMTP id j10ls435820pff.6.gmail; Fri, 22 Mar
- 2019 11:12:06 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxi/F/BaD0lB2GMckFmNdFZzZejnoiGZ3CTQBu4PUIqIa9HENflCMhONclRFvtSIdcYwA6x
-X-Received: by 2002:a63:6841:: with SMTP id d62mr10312325pgc.133.1553278326659;
-        Fri, 22 Mar 2019 11:12:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1553278326; cv=none;
+Received: by 2002:a19:c74d:: with SMTP id x74ls625677lff.3.gmail; Wed, 27 Oct
+ 2021 12:12:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJysjBDIBZ53Jk+MQDAWs+mOhnY9VIkVExwXCZiXVB8GqDoJHGU7WH/Fx6Q5xXwIVKilZN5E
+X-Received: by 2002:a19:5f15:: with SMTP id t21mr27170567lfb.466.1635361960176;
+        Wed, 27 Oct 2021 12:12:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1635361960; cv=none;
         d=google.com; s=arc-20160816;
-        b=a9E2NiVLrNvb1ADOS7cam42QHG3Zl+DQ3BHCjp85I6noEfyq0AB2oSl6CIjSL2lFcT
-         cZbMXYibfnp6D1OIU8UfD4i462CPZv15eNFWzi/0KHsTBUMvxC+vFGNLvhMZ/xRMVKe7
-         4svCxYBC1uKPiMUFYIs9uuCj9NvwPJEzlfRn7IPNLy8DiUGb3dl17tDKg1dtgZ3039H4
-         G/ZcG7nrCa4ltc+cEnkzCMwsWw7Y9bOCh7KWxlV6RSUBs90nKaEYybkgSj37GovXfp4s
-         5ksht2U5J0r20chCqsObp4x8+e098cpcvrW8vpnZxqYQK9S0wi9chJ/qcJhvLvro2UDg
-         BDAw==
+        b=niGKN5CdwHiSqF4QkZht6r8MC1LZrO8NvfgjOty0hRHJ3EgzBzyOQ5zNntTUGSP/Au
+         yfSeSX5BJAcl/KF0iJAgmhBvSAK4Gwqkc5zh/hjI7w1+8oa5NBBbEAp/EG9pdeysUL45
+         gwPlJaUeVQ8zruDoXGxPTzFs1+CgM7KDYEGCVkd3l80PxvYWhANqi/EPgvadRUgFpM9p
+         3ie4VX0uD6pXheMRC4ttKM/3lIDY0AJQcuhjR6naN18vmFhKfsw7aiXVyTPIkeEqkLaN
+         paLIKpNmGWifofw/HwD0Z4a+QGgNafZ48Ykvlu8aXZHygTwp0QplPHuGVM+0xd4Ed8nY
+         M3Sw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ePmVlMJYrFcaL3sFW94YWTN2xgvyhMkrdWvIkDloQPk=;
-        b=f2zFqQ5qSrp4s/3PX14Dpn2sxJhd6N12HevIBzuxaV3W6ZxugO6bZ+W1YUVTXFcBev
-         D6uu7H1W6jqQsXKqB0RI2HvuTlTt5esvFEe90SVVJgBRGRXMSOjxMtXju11x59ktTIE6
-         cW8q4y8BE73D+9Hjc5+kgIotilJ5IG+d0CvJWyP2nqlQdIUGk2rbg3BpR1K8lqtHZ1X7
-         MLUNW7tT1JI7WjXuj/k+ifUhUreQPSuAe/bNC6KP1u2QWeLis5VC5q/9NExbARall7Po
-         8mIGEmbb8VXUZJSIZgIf2I5VkpdhoQENMPEntvxG299my0vrIfzNaybP9wgHbGJPBVb3
-         Kg9g==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date;
+        bh=ubsj451AnIu/GjczD/kNt6KLVKN/L8B9D7/qvw5dfTc=;
+        b=r+YxlX4RH+xaxS5JCgcGY/UuuGVflPUCsxTGp5nhqug8zr9FVKKsE/n7hXWIAoT3tD
+         a8+mGdYpiQAYtYF8t87n5pfNpIT0eDiqTJWfK2g9w14TBbTRFnb+IU+0NFeuBxJnjB2G
+         xe0/xXbIbYak6hI185NhvUchqwaHthB/cGXYyMWZOj5pOPtmFGAIpnKJcTdPu01kZTRH
+         dl90sbvkaJ9oVMJp+dPNFxon0ssZD52ENdqPORb8wTwFlB9Yl0Bm5E1QjqOwQX3tdLpQ
+         qRhrRChxfy1Kw1fJIGBEsTVk5qDmlkibkRuOy2ngoL7MJSeTUHAOtgfL3J5Ix9xxi8v0
+         Zl4w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XFBttcT8;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::343 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <madhumithabiw@gmail.com>
-Received: from mail-ot1-x343.google.com (mail-ot1-x343.google.com. [2607:f8b0:4864:20::343])
-        by gmr-mx.google.com with ESMTPS id b38si387030plb.1.2019.03.22.11.12.06
+       spf=pass (google.com: domain of alison.schofield@intel.com designates 192.55.52.43 as permitted sender) smtp.mailfrom=alison.schofield@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <alison.schofield@intel.com>
+Received: from mga05.intel.com (mga05.intel.com. [192.55.52.43])
+        by gmr-mx.google.com with ESMTPS id b27si58895ljf.3.2021.10.27.12.12.39
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 22 Mar 2019 11:12:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::343 as permitted sender) client-ip=2607:f8b0:4864:20::343;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 27 Oct 2021 12:12:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of alison.schofield@intel.com designates 192.55.52.43 as permitted sender) client-ip=192.55.52.43;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XFBttcT8;
-       spf=pass (google.com: domain of madhumithabiw@gmail.com designates 2607:f8b0:4864:20::343 as permitted sender) smtp.mailfrom=madhumithabiw@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ot1-x343.google.com with SMTP id k21so1363762otf.1
-        for <outreachy-kernel@googlegroups.com>; Fri, 22 Mar 2019 11:12:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:to:cc:subject:date:message-id;
-        bh=ePmVlMJYrFcaL3sFW94YWTN2xgvyhMkrdWvIkDloQPk=;
-        b=XFBttcT8oFEhjHZe8vDFBkZG8OYRvCGev1C3qPM59apPuQ5KjWQ9jMbgucLxIt+t1e
-         3aPhXGgPtOpbP9yUmtAg/rRq4LOSyx+qaL9zhfS+wxog6Yyjsc1s0aMCxBg0vJ351FqQ
-         nVSlBsoo9oOekANCgfXeU3lM/IP35WKOYePNRSvQrSauTwWPRr77mGmYgCZi2kPJ1XcX
-         1x2JtXWT4nzcWF2Kk5SfyWC8ovzfpjjhuiIv6ECcDw4pEJlI7e+iT+JfWWvtNhZD7hl9
-         nNP0vF7QnVRSyAaZHjP8uuftltimSS54lH4sEs+rhrZLitCrTUxf3HcOzWFmnHSKdsEb
-         FlSQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id;
-        bh=ePmVlMJYrFcaL3sFW94YWTN2xgvyhMkrdWvIkDloQPk=;
-        b=KTApd+69VWg7mZhaiPPpsZwh+fIUVsApwIrop5j22HyPdPY+x/QVNdMA/5ddkJAgc1
-         Tew9H4bHOMvxnc23A47Y/KUgJaUxVVvs99ttgiR6o8DtaNqFAC+vIqGwAMctCfhZ05D1
-         Jma26WDif+TYnrKaEChCSkQn3OyI5rWKeUo1k2vmuRCr36v3zhpoXBvjlpzbvJKOsAi+
-         dgDjtbrwBFWEw7jIknM6S0zweMdd6HnYvj3wGFZfZG4blnLjQXnFKa7EuEPiJ8ktLvEn
-         tNt5zrUtCN68CTd64DtdoqvurHNr4OiFyPTbjhjj3lu5RaMNzJxg49K48yuGWIcXMV9s
-         J+Pw==
-X-Gm-Message-State: APjAAAXJjUFEV21OHzBTY7YS96u7mdTAHi60cDCBenir8sWC0p+X81Yy
-	/TBdeipbQKFQamIrbYXKZsw=
-X-Received: by 2002:a9d:7207:: with SMTP id u7mr8283033otj.48.1553278325805;
-        Fri, 22 Mar 2019 11:12:05 -0700 (PDT)
-Return-Path: <madhumithabiw@gmail.com>
-Received: from madhuleo ([2605:6000:1023:606d:25c4:3243:c335:9f7b])
-        by smtp.gmail.com with ESMTPSA id k25sm3287743otl.58.2019.03.22.11.12.04
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 Mar 2019 11:12:04 -0700 (PDT)
-From: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-To: mchehab@kernel.org,
-	gregkh@linuxfoundation.org,
-	outreachy-kernel@googlegroups.com
-Cc: Madhumitha Prabakaran <madhumithabiw@gmail.com>
-Subject: [PATCH v2] Staging: media: davinci_vpfe: Convert macros into inline functions
-Date: Fri, 22 Mar 2019 13:12:02 -0500
-Message-Id: <20190322181202.6289-1-madhumithabiw@gmail.com>
-X-Mailer: git-send-email 2.17.1
+       spf=pass (google.com: domain of alison.schofield@intel.com designates 192.55.52.43 as permitted sender) smtp.mailfrom=alison.schofield@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+X-IronPort-AV: E=McAfee;i="6200,9189,10150"; a="316448176"
+X-IronPort-AV: E=Sophos;i="5.87,187,1631602800"; 
+   d="scan'208";a="316448176"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Oct 2021 12:12:27 -0700
+X-IronPort-AV: E=Sophos;i="5.87,187,1631602800"; 
+   d="scan'208";a="573151034"
+Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
+  by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Oct 2021 12:12:27 -0700
+Date: Wed, 27 Oct 2021 12:20:03 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: Karolina Drobnik <karolinadrobnik@gmail.com>
+Cc: Outreachy Linux Kernel <outreachy-kernel@googlegroups.com>
+Subject: Re: [Outreachy kernel] Help maintain the First Patch Tutorial
+Message-ID: <20211027192003.GA489756@alison-desk>
+References: <20211014174207.GA426328@alison-desk>
+ <9bb37f004a66b22114572ada1a3d20def81fbcff.camel@gmail.com>
+ <20211025163004.GA478658@alison-desk>
+ <36e3a34901080637471bd619060fe9ffd65c8aaf.camel@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <36e3a34901080637471bd619060fe9ffd65c8aaf.camel@gmail.com>
 
-Convert macros into inline functions, as inline functions are perferable
-to macros resembling function based on documentation of linux kernel
-coding style.
+On Wed, Oct 27, 2021 at 03:48:18PM +0100, Karolina Drobnik wrote:
+> On Mon, 2021-10-25 at 09:30 -0700, Alison Schofield wrote:
+> > Thanks for the update.
+> > It seems that the original was lacking the fill in the cover letter
+> > step...at least in this section. Going directly from format-patch >
+> > to send-email on a patchset would send an empty cover letter.
+> > See if you can fix that up.
+> > Thanks!
+> 
+> Hi Alison,
+> 
+> I added a description on the cover letter file. Could you take a look
+> and see if it looks alright?
+> 
+Thanks Karolina. It looks good. Please post it.
+I expect that maintaining the tutorial is an iterative process.
+We'll keep at it.
 
-Signed-off-by: Madhumitha Prabakaran <madhumithabiw@gmail.com>
----
- drivers/staging/media/davinci_vpfe/dm365_ipipeif.h | 11 +++++++++--
- 1 file changed, 9 insertions(+), 2 deletions(-)
+Alison
 
-diff --git a/drivers/staging/media/davinci_vpfe/dm365_ipipeif.h b/drivers/staging/media/davinci_vpfe/dm365_ipipeif.h
-index 4685d64016de..fe608be00154 100644
---- a/drivers/staging/media/davinci_vpfe/dm365_ipipeif.h
-+++ b/drivers/staging/media/davinci_vpfe/dm365_ipipeif.h
-@@ -166,8 +166,15 @@ struct vpfe_ipipeif_device {
- #define IPIPEIF_RSZ_MIN			16
- #define IPIPEIF_RSZ_MAX			112
- #define IPIPEIF_RSZ_CONST		16
--#define SETBIT(reg, bit)   (reg = ((reg) | ((0x00000001)<<(bit))))
--#define RESETBIT(reg, bit) (reg = ((reg) & (~(0x00000001<<(bit)))))
-+static inline void set_bit(u32 *reg, int bit)
-+{
-+	*reg |= (0x00000001 << bit);
-+}
-+
-+static inline void clear_bit(u32 *reg, int bit)
-+{
-+	*reg &= ~(0x00000001 << bit);
-+}
- 
- #define IPIPEIF_ADOFS_LSB_MASK		0x1ff
- #define IPIPEIF_ADOFS_LSB_SHIFT		5
--- 
-2.17.1
 
+> 
+> Thanks,
+> Karolina
+> 
+> --------------------------------------------------------------------
+> 
+> <<Anchor(git_format_patch_patchset)>>
+> == Using git format-patch to send patchsets ==
+> 
+> First, use {{{`git log --pretty=oneline --abbrev-commit`}}} to figure
+> out the first commit ID you want to send. For example, say that my tree
+> had this git log history:
+> 
+> {{{
+> b7ca36a Docs: Move ref to Frohwalt Egerer to end of REPORTING-BUGS
+> bf6adaf Docs: Add a tips section to REPORTING-BUGS.
+> bc6bed4 Docs: Expectations for bug reporters and maintainers
+> 2c97a63 Docs: Add info on supported kernels to REPORTING-BUGS.
+> 7883a25 Docs: Add "Gather info" section to REPORTING-BUGS.
+> d60418b Docs: Step-by-step directions for reporting bugs.
+> 3b12c21 Trivial: docs: Remove six-space indentation in REPORTING-BUGS.
+> bb33db7 Merge branches 'timers-urgent-for-linus', 'irq-urgent-for-
+> linus' and 'core-urgent-for-linus' of
+> git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip
+> 41ef2d5 Linux 3.9-rc7
+> }}}
+> 
+> The first commit I want to send as part of the patchset has commit ID
+> 3b12c21. The last patch I want to send has commit ID b7ca36a. So, I
+> want to pass the commit range {{{3b12c21^..b7ca36a}}} to {{{git format-
+> patch}}}. (Remember, the {{{git format-patch}}} range starting
+> commit must be the commit ''before'' the first commit you want to send,
+> so we use the '^' to specify the patch before commit 3b12c21). The
+> command will look something like this:
+> 
+> {{{
+> git format-patch -o /tmp/ --cover-letter -n --thread=shallow
+> 3b12c21^..b7ca36a
+> }}}
+> 
+> Again, the -o flag specifies where to put the email files. The -n flag
+> says to add numbering to each patch (e.g. [PATCH 2/5]). The `--
+> thread=shallow` flag specifies that all patches will be In-Reply-To
+> your cover letter.
+> 
+> That will output files into /tmp:
+> {{{
+> /tmp/0000-cover-letter.patch
+> /tmp/0001-Trivial-docs-Remove-six-space-indentation-in-REPORTI.patch
+> /tmp/0002-Docs-Step-by-step-directions-for-reporting-bugs.patch
+> /tmp/0003-Docs-Add-Gather-info-section-to-REPORTING-BUGS.patch
+> /tmp/0004-Docs-Add-info-on-supported-kernels-to-REPORTING-BUGS.patch
+> /tmp/0005-Docs-Expectations-for-bug-reporters-and-maintainers.patch
+> /tmp/0006-Docs-Add-a-tips-section-to-REPORTING-BUGS.patch
+> /tmp/0007-Docs-Move-ref-to-Frohwalt-Egerer-to-end-of-REPORTING.patch
+> }}}
+> 
+> As you can see, there's an extra file called `0000-cover-letter.patch`.
+> This special file describes a list of commits in the patch series,
+> changed files and author information:
+> 
+> {{{
+> From a67edde382e1c4bc5068ce100a9370ede402695b Mon Sep 17 00:00:00 2001
+> Message-Id: <cover.1635340747.git.author@example.com>
+> From: Patchset Author <author@example.com>
+> Date: Wed, 27 Oct 2021 14:19:07 +0100
+> Subject: [PATCH 0/7] *** SUBJECT HERE ***
+> 
+> *** BLURB HERE ***
+> 
+> Patchset Author (7):
+>   Trivial: docs: Remove six-space indentation in REPORTING-BUGS.
+>   Docs: Step-by-step directions for reporting bugs.
+>   Docs: Add "Gather info" section to REPORTING-BUGS.
+>   Docs: Add info on supported kernels to REPORTING-BUGS.
+>   Docs: Expectations for bug reporters and maintainers
+>   Docs: Add a tips section to REPORTING-BUGS.
+>   Docs: Move ref to Frohwalt Egerer to end of REPORTING-BUGS
+> 
+>  REPORTING-BUGS |  162 ++++++++++++++++++++++++++++++++++++++++++++++--
+> --------
+>  1 files changed, 134 insertions(+), 28 deletions(-)
+> 
+> -- 
+> 2.30.2
+> }}}
+> 
+> You need to modify this file before sending the patchset. In `***
+> SUBJECT HERE ***`, write a short description just like you did it for
+> single patches. In `*** BLURB HERE ***` briefly describe why your
+> patchset was created and what was changed and/or fixed.
+> 
+> To send the patchset, you need to provide a path that matches all of
+> the generated files. In this case, the `git send-email` command would
+> look like this:
+> 
+> {{{
+> git send-email --to <outreachy mailing list if required> --cc
+> <addresses from get_maintainer.pl output> /tmp/*.patch
+> }}}
+> 
+> If you would like to test your patchset emails before sending them, you
+> can add `--dry-run` option that will execute the command without
+> sending the actual emails. 
+> 
+> 
 
