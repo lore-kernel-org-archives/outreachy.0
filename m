@@ -1,126 +1,93 @@
 X-GM-THRID: 7024064041486123008
-X-Received: by 2002:a5d:69ce:: with SMTP id s14mr5527781wrw.25.1635435381769;
-        Thu, 28 Oct 2021 08:36:21 -0700 (PDT)
+X-Received: by 2002:a17:907:1c84:: with SMTP id nb4mr6002607ejc.396.1635432038363;
+        Thu, 28 Oct 2021 07:40:38 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a5d:4e85:: with SMTP id e5ls4289482wru.1.gmail; Thu, 28 Oct
- 2021 08:36:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxivtlfaRAP43jTzD46LprnDarWmExkelbZQKHmG53Zp0cZ7qFwz9Onl8fZkEksGy1AjXnT
-X-Received: by 2002:a05:6000:2a3:: with SMTP id l3mr6627162wry.12.1635435380285;
-        Thu, 28 Oct 2021 08:36:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1635435380; cv=none;
+Received: by 2002:a17:907:960a:: with SMTP id gb10ls1758087ejc.0.gmail; Thu,
+ 28 Oct 2021 07:40:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyDlFI8bhT3fJTSKTkYf512Rno8ginRQwODwmvYXV3WfkPmtRCapkXynhXo7rbWVWn2UD7s
+X-Received: by 2002:a17:907:3e92:: with SMTP id hs18mr5779346ejc.433.1635432036407;
+        Thu, 28 Oct 2021 07:40:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1635432036; cv=none;
         d=google.com; s=arc-20160816;
-        b=tIzi6wYUQnrsA/BooPRpIa8w1kpQFebAIYZl06r5171O3gfukVisjYBHRfAJ/hO+qH
-         t4dfIIl02ubMQTIPKaouRXcB7JBInqOhcpvWyLIbwndAg8JWwy5LfREY13SR2EnBcuUw
-         +nAe5d42iH1FgNeQgGXVBkYjvQbi/U7sD8U1EbTkP3OEirR1Mdf25mcgHnPu0Tl2wyy5
-         RG46F6NmHW+Gs5Qn1ieNcCI+fcDAHQ5ZGZD5g6tpgEMTPm03dLVstzYSOi9ZlvPudKa6
-         eZb495CvYqVlp/8rMtLTgbH77HJELkmIq3dH+cSGQqPPkN0Wh9w9pCWP2Cv/TaAfhwtm
-         0nRA==
+        b=OWn47ySgaCwEfhFyFG3qbPuUvS+OQFL7HVSkcLP2b4Unui/KIK585GW+8yZgs/nrur
+         GRvC/wQhIqnPHdaOoWHI3RbWITijnH5Sl2gBRDAUSh9uAeZvEWHSj/5gOYeon0CIpx9t
+         LWF5zonYb5x+6iCQuigcKMfg7VHcxuH/TTjawTyupCEam661igKNSAJOEgtJ9nXNtmlm
+         t7R+W3KtcQiiMke44jETwskVS6MFlwU+A0Crz7DFmfXJt8VtliEeg5h5YsrK8soxDniX
+         ON6Kq5ib0fZcRqS32+IDoSWAdtYsFGwh9LTqfGydKDN2+ojHYHmWB2o0XFEZelpmCqgL
+         YAtQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Km7RN9DuYhSgIdZd4vw5rE9R6RjCpFJ/7Jxi8UL+wpU=;
-        b=PV+sN57RygXJYKQM/zUi9tuJeiJZjzBQtXjY5LeCGDKjSOoHWvdn2JkCvqDdxf/eEd
-         XMjGyzIaR+tXaVavppDLJz8HiqQqbYfFM8F98bcO8m3r526WWxLlWj0Cx/AP3bbbuviC
-         YTSXcKaQ6WyZH1WhBBJgIb/GEZuYjCuwHyEN59BuTSZ0RWmRBrowJuSa1MnW25mnbV06
-         ckHwh5AsUPG5rOJhAKEJChuOqivPEzDwv54BJRL2Rjlfd9IArAxzroLguM5JOfbJo35g
-         aq7bPkt5kd9KJcAMZ5u8THa7vlMoL8agBWZmDmOvg6Xhry17gaCW5bNt4UgPnQIu6tJr
-         IxnQ==
+        h=mime-version:user-agent:references:message-id:in-reply-to:subject
+         :cc:to:from:date:ironport-hdrordr:ironport-data;
+        bh=ZoyeY4Wl6nHdKvNI7kuVoxICG9L5Mdey0U8e+wm+Ah8=;
+        b=w0rqpNQkxbZGi0J5EIDkvD7eVAM4hPjdjBL7g96Z0sy/78nW7WibWgf10UgwZUEE7f
+         SlyXfyIS3ArHdzjsajnUOXfNXZECc2utjhRrRpXr7uay7g1HHUdsEmBMJVV4oAAvagWL
+         Gh8vgUVXhZEwlkpxgSLpx0ZiY4FGnrbvFHmn6jI5anlD3RVtty/JIiLmnFS6hoUCxG9U
+         jCqP0TJmCXliVNEtnn8p7MaGAI1XdXO6m0djElotO884UpuvQdkyOewfSAvsge2LDSmV
+         ADoKFId3I6PeR2+kcyzpLAPCx1ktFJEm0Vn5rBoImlJ8TZhc2Gd1kF3W2fJY8fMLhJ/A
+         DyMg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=AlM+eueZ;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52e as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from mail-ed1-x52e.google.com (mail-ed1-x52e.google.com. [2a00:1450:4864:20::52e])
-        by gmr-mx.google.com with ESMTPS id a10si301104wmb.0.2021.10.28.08.36.20
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+Return-Path: <julia.lawall@inria.fr>
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr. [192.134.164.83])
+        by gmr-mx.google.com with ESMTPS id 6si125507edx.5.2021.10.28.07.40.36
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 28 Oct 2021 08:36:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52e as permitted sender) client-ip=2a00:1450:4864:20::52e;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 28 Oct 2021 07:40:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) client-ip=192.134.164.83;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=AlM+eueZ;
-       spf=pass (google.com: domain of fmdefrancesco@gmail.com designates 2a00:1450:4864:20::52e as permitted sender) smtp.mailfrom=fmdefrancesco@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-ed1-x52e.google.com with SMTP id h7so27061484ede.8
-        for <outreachy-kernel@googlegroups.com>; Thu, 28 Oct 2021 08:36:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=Km7RN9DuYhSgIdZd4vw5rE9R6RjCpFJ/7Jxi8UL+wpU=;
-        b=AlM+eueZXz8t3SOmFz7G6PaqrKh/8fZ7t4ebW1BfNzZVsiSmiuBcpXUbFbzFr80EPh
-         b3wK5Fp0Dah+Kr1sNSpyk3ND5UYWlrL/QOBud8eo4PQUE0gfQoRFuRqEgC+ZOIoJMKVD
-         4srzw4IwWjmkY1d/GYfmTHou9jwST8itfs7PmfHN/JidMIqJqyLQy1VyqeLduhjGFjyn
-         6XUaxx0+1udNHyqUeGnqhCwUy1wftttRahRagX9OMuFb4FiDStKPkPdoxEjwwkPgSmBg
-         CCcgJHeJRZtecoilsnWiJCaQtgJ/bzROBO8Pv3XJtxy4/e3M5GVe7t7ezA0qUiXdr1Cs
-         3CTg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=Km7RN9DuYhSgIdZd4vw5rE9R6RjCpFJ/7Jxi8UL+wpU=;
-        b=Arsc5I7X3TTogn9Y3+blmKuaBBTQc7pHc2F/gbXqWFq31q4HfgijLnB4cWvAVLBT8R
-         3A96o8X8L8Qoi3kw0YxocsSv5rf5RIaywdGPcgu14c1zJNn/dRJmnkF3n97pY1iIQ9g8
-         /LsrHV2CyixP0hltDF/qEU7THs8G0iMveTsNqYMktCgUm0lTEWDjin2yoIxmRvK+1qec
-         tDTGdMwo5Sf+qO0+Txao41V0ST9TuobUTMX9xkthC3zBqSKer2bV907erdFDKAbK0+4Q
-         Fy5tEXfo+aIq5b1a89Efc0Pv+cXEA0wgXgta98zStPF2xEacqDfz+0t+WTNcTuE5AupX
-         rryw==
-X-Gm-Message-State: AOAM531m7hkzkYNtkNDf4ddrsPkyt+2hCGVb1jC8omMMb4+6pmHhpEnJ
-	H8rBtFT7NNSsM/SifIbDE/U=
-X-Received: by 2002:a17:906:1848:: with SMTP id w8mr6316533eje.485.1635435379975;
-        Thu, 28 Oct 2021 08:36:19 -0700 (PDT)
-Return-Path: <fmdefrancesco@gmail.com>
-Received: from localhost.localdomain (host-79-56-54-101.retail.telecomitalia.it. [79.56.54.101])
-        by smtp.gmail.com with ESMTPSA id hv9sm1604735ejc.51.2021.10.28.08.36.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 28 Oct 2021 08:36:19 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Julia Lawall <julia.lawall@inria.fr>, Karolina Drobnik <karolinadrobnik@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, forest@alittletooquiet.net, linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [Outreachy kernel] [PATCH 5/7] staging: vt6655: Rewrite conditional in AL7320 initialization
-Date: Thu, 28 Oct 2021 17:36:18 +0200
-Message-ID: <9038076.3kJb6oI6SG@localhost.localdomain>
-In-Reply-To: <6d2590b127499ba7ae1e7bc36d71064a5262659d.camel@gmail.com>
-References: <cover.1635415820.git.karolinadrobnik@gmail.com> <alpine.DEB.2.22.394.2110281505170.9518@hadrien> <6d2590b127499ba7ae1e7bc36d71064a5262659d.camel@gmail.com>
+       spf=pass (google.com: domain of julia.lawall@inria.fr designates 192.134.164.83 as permitted sender) smtp.mailfrom=julia.lawall@inria.fr
+IronPort-Data: =?us-ascii?q?A9a23=3Aga/KPqB0g3RQ3BVW/37iw5YqxClBgxIJ4g17XOL?=
+ =?us-ascii?q?fU1HrgGkr3mdRn2AfWz2GP/vfYGrzeNggO4q0909V7Z+Ax9UxeLYW3SE0HigS8?=
+ =?us-ascii?q?aIpJvzAcxyuZ3vKRiH7ofMOA/w2MrEsF+hpCC+DzvuRGuK59yAljfvYHuCU5NP?=
+ =?us-ascii?q?sYUideyc1EU/Ntjozw4bVsqYw6TSIK1vlVeHa+6UzC3f5s9JACV/43orYwP9ZU?=
+ =?us-ascii?q?FsejxtD1rA2TagjUFYzDBD5BrpHTU26ByOQroW5goeHq+j/ILGRpgs1/j8tA9+?=
+ =?us-ascii?q?/k7v9GqEIau6Pe1bezCMMAu773UMqSi8ai87XMNIedENWgnONls94zNFltJqqS?=
+ =?us-ascii?q?A5vMLekdOE1AkgFSX8hVUFB0PqdSZSliuSQxlfBd3rqyvl0C0swPI4w9eN+AGU?=
+ =?us-ascii?q?I/vsdQBgDaxyOifi/xrm2UeJrrssmJcjveogYvxlIyizFF/svSpDSBqbH/9lV2?=
+ =?us-ascii?q?B8/gcdBGfvRfc0EcSEpZxPFCzVAIFoYC5IWmOaum2nxdCBepFuJpK0xpW/Jw2R?=
+ =?us-ascii?q?Z3r/3PcHJUtWORNlJmkuEoWXf4mX0HlccOcD34T6E9G+8w/TTlCz6Xo06ELyj6?=
+ =?us-ascii?q?uUshFyV23xVBBAIPXO/oP+kmgu9VshZJkg85CUjt+4x+VatQ927WAe3yENoFDZ?=
+ =?us-ascii?q?0t8F4SrJhrljXk+yKs0DJWy4eQyAHc9I88sk7WVQXOpayt4uBLVRSXHe9ExpxL?=
+ =?us-ascii?q?oupkA4=3D?=
+IronPort-HdrOrdr: =?us-ascii?q?A9a23=3Aw+FPzaOMK6uACMBcTsCjsMiBIKoaSvp037BL?=
+ =?us-ascii?q?7TETdfU7SKelfqyV9sjzkCWatN9zYhEdcLK7VJVoKEm0naKdo7N+AV7IZmjbUR?=
+ =?us-ascii?q?6TXeZfBPzZslnd8kPFm9K1rZ0QFpSWX+eAb2RHsQ=3D=3D?=
+X-IronPort-AV: E=Sophos;i="5.87,190,1631570400"; 
+   d="scan'208";a="995267"
+Received: from 173.121.68.85.rev.sfr.net (HELO hadrien) ([85.68.121.173])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 28 Oct 2021 16:40:36 +0200
+Date: Thu, 28 Oct 2021 16:40:35 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Karolina Drobnik <karolinadrobnik@gmail.com>
+cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>, 
+    outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
+    forest@alittletooquiet.net, linux-staging@lists.linux.dev, 
+    linux-kernel@vger.kernel.org
+Subject: Re: [Outreachy kernel] [PATCH 4/7] staging: vt6655: Introduce `data`
+ temporary variable
+In-Reply-To: <186358f460f2093dc8a60a8120be3dc6f830c81f.camel@gmail.com>
+Message-ID: <alpine.DEB.2.22.394.2110281639360.9518@hadrien>
+References: <cover.1635415820.git.karolinadrobnik@gmail.com>  <2039159.k92FijXA2m@localhost.localdomain>  <alpine.DEB.2.22.394.2110281332040.9518@hadrien>  <39890856.3BBMun7449@localhost.localdomain>
+ <186358f460f2093dc8a60a8120be3dc6f830c81f.camel@gmail.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=US-ASCII
 
-On Thursday, October 28, 2021 4:35:30 PM CEST Karolina Drobnik wrote:
-> On Thu, 2021-10-28 at 14:36 +0200, Fabio M. De Francesco wrote:
-> > As far as I know by reading some Greg K-H's replies to other
-> > developers, this 
-> > "<test> ? <true> : <false>" style is not well accepted here.
-> 
-> I thought that the expression is simple enough that it can be written
-> this way. Julia nicely summarised why I think it's a good usage of the
-> conditional operator. Still, there's no problem in changing it to "if-
-> else" statement if that's the preferred option.
+> On Thu, 2021-10-28 at 13:32 +0200, Julia Lawall wrote:
+> > Would it be better as data[i] ?
+> >
+> > Could there be a better name than "data"?  Perhaps "table"?
+>
+> Hmm, now when I'm thinking about, it indeed looks like a better option.
+> I would even say that `data` (or `table`/`init_table`) can be only used
+> in the AL7320 case and we can go with `al2230_init_table` for AL2230.
+> The line would be 61 characters long, way below the limit.
+>
+> What do you think?
 
-If I were you, I'd leave the patch as-is and wait for Greg review.
+That would amount to dropping patch 4?  That seems fine.  It is better to
+avoid creating aliases.
 
-I was only reporting some words that I recall I read in some emails of Greg. 
-But it is highly probable that those contexts were a bit different or that 
-the statements were much more complex.
-
-As far as what my personal preference is, I think that you shouldn't care 
-because I'm not one of the maintainers. Above all, even if I were one of the 
-maintainers I'd never prevent developers to use their own style with this 
-kind of statements.
-
-To summarize, you'd better leave the patch as-is.
-
-Thanks,
-
-Fabio
-
-> 
-> Thanks,
-> Karolina
-> > 
-> 
-> 
-
-
-
-
+julia
 
