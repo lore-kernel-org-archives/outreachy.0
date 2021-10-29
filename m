@@ -1,155 +1,159 @@
 X-GM-THRID: 7024064041486123008
-X-Received: by 2002:a25:6c89:: with SMTP id h131mr12074185ybc.0.1635519389560;
-        Fri, 29 Oct 2021 07:56:29 -0700 (PDT)
+X-Received: by 2002:ad4:4e49:: with SMTP id eb9mr11533402qvb.22.1635518872087;
+        Fri, 29 Oct 2021 07:47:52 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a25:1805:: with SMTP id 5ls4743847yby.0.gmail; Fri, 29 Oct
- 2021 07:56:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJypPk+iQTY4JrWjrUI9Bn+0TE8UQI3+w34XblF6i/DK/Bs3ykclicvc4m8sW01VoRY8KoCr
-X-Received: by 2002:a25:3108:: with SMTP id x8mr8945119ybx.497.1635519388421;
-        Fri, 29 Oct 2021 07:56:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1635519388; cv=none;
+Received: by 2002:a05:620a:1a0c:: with SMTP id bk12ls3809501qkb.8.gmail; Fri,
+ 29 Oct 2021 07:47:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyGHomNRtR6Hy97OeECl0vPWDYhgcVEcqU8fomQkbPW17Q3kRmjtuO65MZylvGwFgZ1qddj
+X-Received: by 2002:a05:620a:254c:: with SMTP id s12mr9351525qko.36.1635518871148;
+        Fri, 29 Oct 2021 07:47:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1635518871; cv=none;
         d=google.com; s=arc-20160816;
-        b=oT3Wgi9FY5IBekKXjwRk2MSTBI/QlgB4Ncyk9Xx9X+7QLOrNP32C/Ts7VLapNLUXrK
-         RoLyzS2uw1CdbIXCPDtb3C5gkhz+Trh5DtIEYQ9IqTvYY3vM9LHSvfCFyDSQ1tw6iUsz
-         cvZ/y/VpN0RqEGzl9gdipTnqNXBbmExqjj/MWB+NMJxlyqTFO8QR/mwYDHyCHyXQQlMp
-         CM6xUu8SEPcNIjYwYKSClpojk2ioo/aFT7rr/D3o9+VvkiZwdmloEoNW53UKToJPbw9w
-         S5pdxqUJjneROMBUN4aRjIcA3KRCbTPSSjX8FLU3uo0kglOzoHtpYhZktWqJrJNya28A
-         yQRQ==
+        b=Ubv4W1dAIPa9I4jpdQxK/1rxBBSm/6OV9WEX7D+gQ8g9YT4hDCJ5r6Awrj5ySfpZvz
+         ZwWzttf8qVpwm7CvtemFoSaAlAIK86os3ne7mjwyU9Vex5Q4suBex0SxqyFvvjin+hmu
+         COX5hiCjC7cD/2L3kRTC1iboPypHzX7mr3OLNaA9yupTEoeacnIvkQFcfVO71dG9nQqb
+         2xjSBw0/0tMwTjSsd1N+WyUie2LS0Hv0NTQq9UAon7VhLYwnqH+QbptOmiWn9RXoHuru
+         B24m2PkJm5q/cI4qPVvXWytNjWI7kFNd0d4CtXaNQ/RmYCWZib70LkuJN+IvQIriuBhb
+         NvxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=Psdok0lolc/DRk6gfEZkpmxNT4+m/VOYNLeCH1dS5Kw=;
-        b=XkYy9qPgP/wXqks1arU3FBtfTXPHlRnDpiCxXTQpPY1tWmNzXZW15z62UN4w+k6t7U
-         On3ta6fFC7pJBXxaU+rx9umUY++a59rvbDkZN0qoP8g+4fOFO5Nt0GPupRsGeg0koqg0
-         aNTrMnf0XS4RmqOp31SaDI4ffl0sWaIVERVYL2cLB2rfkbvJVmFPXfOiMTSPvSq0SgxZ
-         EGRp3LzjvElqV2XTYvDsDNvzIqrSN21VI6LRG5eu7w+KQGUP3Ush7dztRq9EatQFHjKk
-         KRRIel0vROvAuD20QB2WcaY/ew+RNXpO8EHGmBGEKVIWEjROd2TAQxH6yXeuPRR8rJiI
-         n9uQ==
+        bh=hV6vofY7LVmgEKN79iTvz1KdYYvMLZvDW2AQ8HYXn/E=;
+        b=QaM+gOMlk8mgIIo89h+eH/g58xXIJNTqbgmrt/ciBuGjhR2N723ramQtYtU6AmroTx
+         wmFgyffHNGTdD+gC+hI/rOUoBqAlnh1GnJCFcls9R+vLBrnrrFiHnPpnMfEJlLoGzVVM
+         Xxvubzzub6+E070c2EN1xKd2r03oELsONnRfaUGoGH1RJ/kYC/fOuhXC2FW3aXdvbUqE
+         jqp8lun1irdIkg5ogasArVxlKKanzK9dBMAQtvVWtEu3TjhZ2kfld8goaWYJrbetwCIp
+         xm3NCvx2E9nPuuD6bGocx6WhG9xa7RDDJq4RiPtGe96zj5sQ2f2KaoKBsLSXqQ11sj8f
+         15qg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=c88mFZGR;
-       spf=pass (google.com: domain of kpraveen.lkml@gmail.com designates 2607:f8b0:4864:20::102d as permitted sender) smtp.mailfrom=kpraveen.lkml@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=PchEGoqz;
+       spf=pass (google.com: domain of kpraveen.lkml@gmail.com designates 2607:f8b0:4864:20::631 as permitted sender) smtp.mailfrom=kpraveen.lkml@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <kpraveen.lkml@gmail.com>
-Received: from mail-pj1-x102d.google.com (mail-pj1-x102d.google.com. [2607:f8b0:4864:20::102d])
-        by gmr-mx.google.com with ESMTPS id o13si539356ybu.3.2021.10.29.07.56.28
+Received: from mail-pl1-x631.google.com (mail-pl1-x631.google.com. [2607:f8b0:4864:20::631])
+        by gmr-mx.google.com with ESMTPS id b125si782251qkf.0.2021.10.29.07.47.51
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 29 Oct 2021 07:56:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kpraveen.lkml@gmail.com designates 2607:f8b0:4864:20::102d as permitted sender) client-ip=2607:f8b0:4864:20::102d;
+        Fri, 29 Oct 2021 07:47:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kpraveen.lkml@gmail.com designates 2607:f8b0:4864:20::631 as permitted sender) client-ip=2607:f8b0:4864:20::631;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=c88mFZGR;
-       spf=pass (google.com: domain of kpraveen.lkml@gmail.com designates 2607:f8b0:4864:20::102d as permitted sender) smtp.mailfrom=kpraveen.lkml@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=PchEGoqz;
+       spf=pass (google.com: domain of kpraveen.lkml@gmail.com designates 2607:f8b0:4864:20::631 as permitted sender) smtp.mailfrom=kpraveen.lkml@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pj1-x102d.google.com with SMTP id n36-20020a17090a5aa700b0019fa884ab85so10766914pji.5
-        for <outreachy-kernel@googlegroups.com>; Fri, 29 Oct 2021 07:56:28 -0700 (PDT)
+Received: by mail-pl1-x631.google.com with SMTP id l13so1946027pls.3
+        for <outreachy-kernel@googlegroups.com>; Fri, 29 Oct 2021 07:47:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=message-id:date:mime-version:user-agent:subject:content-language:to
          :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=Psdok0lolc/DRk6gfEZkpmxNT4+m/VOYNLeCH1dS5Kw=;
-        b=c88mFZGRY94DlJQosTNHHqjAM1zsfGZjFnJpNLRb9jvir3ir+OsuQ93qUFRiVZ5w+9
-         CD796z/24q/IZg+sWZjvP4DpkNAuePSXi3T9a0Sqcjo0kzOuxXXvFt0KFZSSf1EvAkRy
-         xl1LASVrzVLZReVmf2Few2Z3u2t9igt7q+sflgo734CGMnuuNiWhnyz3ZbSm0pkHTExl
-         PILHvtrgyzvMYLr2EYCecdnNjLN946sFlahG/KODZOKlMh5KIDggHVSW1ogSlR7RFO8I
-         AKbQjROVoBiBgYrt70Sy6gxsWGjho2R44tMNw44vA1OzBOeEE0wiPIzXALmPNfWUkWfr
-         VL4g==
+        bh=hV6vofY7LVmgEKN79iTvz1KdYYvMLZvDW2AQ8HYXn/E=;
+        b=PchEGoqznLSapRib9ayECws6mKwf45wiAVWBNDkJ3CUb8tFnVGhuCvyAqoG3Y7wa+X
+         oxUXyRklHvdyeUK1TiKYHaOuXmR/fG7PRLWCycEjQwL3bKyZI5TAnrnG1TvZDENcOVAR
+         kOU65pb2p3EAVzHgR+s5jGWQLp524ixxd17ZXbRu1tRLWYCh0fthr+WyTb6cxOJqw42L
+         O2/xwEzF2LqlzPxD+R3OKWdAlGNCSL3J0DPk0JsiGX4OfvXeEa7fs8Csw0Lszdgypvk3
+         mTEsKi0ESFvBcTaG0v8Bk1Q1jiM1acSq44s4HxbkyAyVRiK798g3xcBcduWSv3+WGpNi
+         /eHw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
          :content-language:to:cc:references:from:in-reply-to
          :content-transfer-encoding;
-        bh=Psdok0lolc/DRk6gfEZkpmxNT4+m/VOYNLeCH1dS5Kw=;
-        b=XOumoa0A12fYmTUSadH+A/UVCRiNCy3dQzohWIEKcZG+PnwBBec5rcmFkW76BmfdE5
-         m80XsscfVJyPKiZo0xng0Bcm1BH2GHgCYj93CDw1v4ukFkO7wwaJNHRZ0Ts39BJIAGw1
-         uXWnjOXVDHIFIGc9NDAUWBGqql0lEBpTDIldSaVJFweLYvpyk3HbjLkZcSVuTb5qV+ZK
-         sboPBiSOnty46Tod9V5RZpQQH9AzCwYUM+CoSUAUW/pEyrMWmiGD8NbEOyz1CTXoA4q9
-         c5r812VEPdYESuWn/5F1L4F185bVLBmqZYYXe30/6k57AHvGwiJHZxhwXayx/o3FEZ9c
-         Kglw==
-X-Gm-Message-State: AOAM531zS72F53zGr6KPZhZ/nYQAFSTP1UzWzCaulKxyinWWWPAfzK7/
-	vD1d37d3DenhjUq6Uh/lNfs=
-X-Received: by 2002:a17:902:e806:b0:141:5df8:c535 with SMTP id u6-20020a170902e80600b001415df8c535mr10263327plg.9.1635519387911;
-        Fri, 29 Oct 2021 07:56:27 -0700 (PDT)
+        bh=hV6vofY7LVmgEKN79iTvz1KdYYvMLZvDW2AQ8HYXn/E=;
+        b=QSuUXgTEx4aTeWT5qliwRWs5PG196EiUxFvS0P9FZsdVm3dF6X5DSxZXeLDNthmAz1
+         xWPcCdSVOn0eoHfeiKErWrvgYWtqWXT2cimHy2mVdfMAm2nxbyp61QO2RMD+vjLOfHHf
+         y4RudJoS14ZJlwzA2FsSGj4h8GaR/cM0sa58e5jBZf/w2KiBsMt0Sfmkg7mE7xSTI3cF
+         gjiI33oAZlZh0UTFr5Rva5LN2NObsQO+p424C87CrsmSssCnsqHXewdfFLm95/qxrPO/
+         j5W07T9uag9mR5HgN7+pGyElvMsy6eQIuTQm8Eow6pI+osq/EV2NMqrwdFEjQSXKX64x
+         wJWw==
+X-Gm-Message-State: AOAM531VCADfN2rgLgAFbVVetAduD7jurncKoCUQqTD92HdYYyRm2Pmb
+	WjybleR01zZFS/hwaNd0jOM=
+X-Received: by 2002:a17:902:e848:b0:13e:f908:155a with SMTP id t8-20020a170902e84800b0013ef908155amr10320481plg.13.1635518870777;
+        Fri, 29 Oct 2021 07:47:50 -0700 (PDT)
 Return-Path: <kpraveen.lkml@gmail.com>
 Received: from ?IPV6:2405:201:d007:e827:3d78:7315:8c23:fdaf? ([2405:201:d007:e827:3d78:7315:8c23:fdaf])
-        by smtp.gmail.com with ESMTPSA id v8sm6462465pjd.7.2021.10.29.07.56.25
+        by smtp.gmail.com with ESMTPSA id k22sm7629195pfu.148.2021.10.29.07.47.47
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 29 Oct 2021 07:56:27 -0700 (PDT)
-Message-ID: <3dfc45e5-12bc-72da-a260-5551a483fe6e@gmail.com>
-Date: Fri, 29 Oct 2021 20:26:25 +0530
+        Fri, 29 Oct 2021 07:47:50 -0700 (PDT)
+Message-ID: <8cf5e5a4-675e-8c50-f234-018321dcb93a@gmail.com>
+Date: Fri, 29 Oct 2021 20:17:45 +0530
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
  Thunderbird/91.2.1
-Subject: Re: [Outreachy kernel] [PATCH 2/7] staging: vt6655: Use
- incrementation in `idx`
+Subject: Re: [Outreachy kernel] [PATCH 1/7] staging: vt6655: Introduce `idx`
+ temporary variable
 Content-Language: en-US
 To: Karolina Drobnik <karolinadrobnik@gmail.com>,
  outreachy-kernel@googlegroups.com
 Cc: gregkh@linuxfoundation.org, forest@alittletooquiet.net,
  linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
 References: <cover.1635415820.git.karolinadrobnik@gmail.com>
- <c569952d92ba51f32679c2fd87fd48ad8e49e3fc.1635415820.git.karolinadrobnik@gmail.com>
+ <34bd0e8f42597edf006a950d420345befc4e0bc2.1635415820.git.karolinadrobnik@gmail.com>
 From: Praveen Kumar <kpraveen.lkml@gmail.com>
-In-Reply-To: <c569952d92ba51f32679c2fd87fd48ad8e49e3fc.1635415820.git.karolinadrobnik@gmail.com>
+In-Reply-To: <34bd0e8f42597edf006a950d420345befc4e0bc2.1635415820.git.karolinadrobnik@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 
 On 28-10-2021 16:05, Karolina Drobnik wrote:
-> Increment `idx` in a loop instead of adding the loop counter
-> `i` to do so. Thanks to this change, the cast to unsigned short
-> can be removed.
-
+> Add a local variable to store `MISCFIFO_SYNDATA_IDX` offset.
+> This change helps in shortening the lines in `rf.c` that
+> are deemed too long by checkpatch.pl.
 > 
 > Signed-off-by: Karolina Drobnik <karolinadrobnik@gmail.com>
 > ---
->  drivers/staging/vt6655/rf.c | 16 ++++++++--------
->  1 file changed, 8 insertions(+), 8 deletions(-)
+>  drivers/staging/vt6655/rf.c | 17 +++++++++--------
+>  1 file changed, 9 insertions(+), 8 deletions(-)
 > 
 > diff --git a/drivers/staging/vt6655/rf.c b/drivers/staging/vt6655/rf.c
-> index f195dafb6e63..c07653566d17 100644
+> index bc4abe77db7b..f195dafb6e63 100644
 > --- a/drivers/staging/vt6655/rf.c
 > +++ b/drivers/staging/vt6655/rf.c
-> @@ -700,11 +700,11 @@ bool RFvWriteWakeProgSyn(struct vnt_private *priv, unsigned char rf_type,
+> @@ -681,6 +681,7 @@ bool RFvWriteWakeProgSyn(struct vnt_private *priv, unsigned char rf_type,
+>  {
+>  	void __iomem *iobase = priv->port_offset;
+>  	int i;
+
+Why not to make *i* as unsigned short and get rid of all the type conversions below ?
+
+> +	unsigned short idx = MISCFIFO_SYNDATA_IDX;
+>  	unsigned char init_count = 0;
+>  	unsigned char sleep_count = 0;
+>  
+> @@ -699,11 +700,11 @@ bool RFvWriteWakeProgSyn(struct vnt_private *priv, unsigned char rf_type,
 >  			return false;
 >  
 >  		for (i = 0; i < CB_AL2230_INIT_SEQ; i++)
-> -			MACvSetMISCFifo(priv, (unsigned short)(idx + i), al2230_init_table[i]);
-> +			MACvSetMISCFifo(priv, idx++, al2230_init_table[i]);
+> -			MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + i), al2230_init_table[i]);
+> +			MACvSetMISCFifo(priv, (unsigned short)(idx + i), al2230_init_table[i]);
 >  
-> -		MACvSetMISCFifo(priv, (unsigned short)(idx + i), al2230_channel_table0[channel - 1]);
-> +		MACvSetMISCFifo(priv, idx++, al2230_channel_table0[channel - 1]);
+> -		MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + i), al2230_channel_table0[channel - 1]);
+> +		MACvSetMISCFifo(priv, (unsigned short)(idx + i), al2230_channel_table0[channel - 1]);
 >  		i++;
-> -		MACvSetMISCFifo(priv, (unsigned short)(idx + i), al2230_channel_table1[channel - 1]);
-> +		MACvSetMISCFifo(priv, idx++, al2230_channel_table1[channel - 1]);
+> -		MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + i), al2230_channel_table1[channel - 1]);
+> +		MACvSetMISCFifo(priv, (unsigned short)(idx + i), al2230_channel_table1[channel - 1]);
 >  		break;
 >  
 >  		/* Need to check, PLLON need to be low for channel setting */
-> @@ -717,17 +717,17 @@ bool RFvWriteWakeProgSyn(struct vnt_private *priv, unsigned char rf_type,
+> @@ -716,17 +717,17 @@ bool RFvWriteWakeProgSyn(struct vnt_private *priv, unsigned char rf_type,
 >  
 >  		if (channel <= CB_MAX_CHANNEL_24G) {
 >  			for (i = 0; i < CB_AL7230_INIT_SEQ; i++)
-> -				MACvSetMISCFifo(priv, (unsigned short)(idx + i), al7230_init_table[i]);
-> +				MACvSetMISCFifo(priv, idx++, al7230_init_table[i]);
-
-If I'm not wrong, there is a problem here, we are using the modified idx value here, instead of original which is *MISCFIFO_SYNDATA_IDX*.
-I don't see idx value being reset either. Am I missing something ?
-
-Further, this bring a question, how are you validating or planning to validate these changes ?
-
+> -				MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + i), al7230_init_table[i]);
+> +				MACvSetMISCFifo(priv, (unsigned short)(idx + i), al7230_init_table[i]);
 >  		} else {
 >  			for (i = 0; i < CB_AL7230_INIT_SEQ; i++)
-> -				MACvSetMISCFifo(priv, (unsigned short)(idx + i), al7230_init_table_a_mode[i]);
-> +				MACvSetMISCFifo(priv, idx++, al7230_init_table_a_mode[i]);
+> -				MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + i), al7230_init_table_a_mode[i]);
+> +				MACvSetMISCFifo(priv, (unsigned short)(idx + i), al7230_init_table_a_mode[i]);
 >  		}
 >  
-> -		MACvSetMISCFifo(priv, (unsigned short)(idx + i), al7230_channel_table0[channel - 1]);
-> +		MACvSetMISCFifo(priv, idx++, al7230_channel_table0[channel - 1]);
+> -		MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + i), al7230_channel_table0[channel - 1]);
+> +		MACvSetMISCFifo(priv, (unsigned short)(idx + i), al7230_channel_table0[channel - 1]);
 >  		i++;
-> -		MACvSetMISCFifo(priv, (unsigned short)(idx + i), al7230_channel_table1[channel - 1]);
-> +		MACvSetMISCFifo(priv, idx++, al7230_channel_table1[channel - 1]);
+> -		MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + i), al7230_channel_table1[channel - 1]);
+> +		MACvSetMISCFifo(priv, (unsigned short)(idx + i), al7230_channel_table1[channel - 1]);
 >  		i++;
-> -		MACvSetMISCFifo(priv, (unsigned short)(idx + i), al7230_channel_table2[channel - 1]);
-> +		MACvSetMISCFifo(priv, idx++, al7230_channel_table2[channel - 1]);
+> -		MACvSetMISCFifo(priv, (unsigned short)(MISCFIFO_SYNDATA_IDX + i), al7230_channel_table2[channel - 1]);
+> +		MACvSetMISCFifo(priv, (unsigned short)(idx + i), al7230_channel_table2[channel - 1]);
 >  		break;
 >  
 >  	case RF_NOTHING:
