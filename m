@@ -1,78 +1,78 @@
 X-GM-THRID: 7025609319157596160
-X-Received: by 2002:a05:651c:4c6:: with SMTP id e6mr23885649lji.447.1635777146664;
-        Mon, 01 Nov 2021 07:32:26 -0700 (PDT)
+X-Received: by 2002:a2e:571d:: with SMTP id l29mr23104610ljb.357.1635777144946;
+        Mon, 01 Nov 2021 07:32:24 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6512:1314:: with SMTP id x20ls1216770lfu.1.gmail; Mon,
- 01 Nov 2021 07:32:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyis+9efUk7Pc2X+7D7S6NDhyXJ0VF9DUN7DbYcP3tsMbhhUloOnab+6lT2PZHOQgdBJn46
-X-Received: by 2002:a05:6512:33d1:: with SMTP id d17mr23973785lfg.573.1635777145056;
-        Mon, 01 Nov 2021 07:32:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1635777145; cv=none;
+Received: by 2002:a05:651c:1253:: with SMTP id h19ls620118ljh.3.gmail; Mon, 01
+ Nov 2021 07:32:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxGmvYQjHqmDoZeeUqD6DKmLLv109Wzq1A1oT+VBxW1vhrpe1REI+TTlxjBkz2ECwlN2K5R
+X-Received: by 2002:a2e:95d3:: with SMTP id y19mr12135368ljh.356.1635777143403;
+        Mon, 01 Nov 2021 07:32:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1635777143; cv=none;
         d=google.com; s=arc-20160816;
-        b=EJeHlei/VFdIGhOFDB8A/PXRmNy/mZbSQicTfrVOu/U0LK7+G0FUoqKABc843buoRX
-         qf/RMzoWoD0x1FUQ+Rod5UhnxzdGuHrJg1vV8WeJ04hrIh/GDEnM03wRFdJb7a96Rl74
-         7+o2f7nVAw6ScIcVwdWTOwhgqzomLbBbcdb65KfJUuk6OMi2hnYtEABe2FGsaNKnWCU9
-         xwVLGvn4TP8/4/VpEM0R8AMrwu7a6xewYeFz+D4Pw833NA23VgjlLLTHC6kPc1FNzqhu
-         UvQpR9LnQcMJcgCUQcOq/ReOs4Qj5//zZjMRI0GlbYqYc5sVpCTNPcKpB5oW89G2t3M5
-         +w9Q==
+        b=OLSiwvwcHheMqZ9Yq4kDC1AORSY2ku4jrjkSUmH/HfH6d4Z2bjxsoL5mxazv+SCOF+
+         zXs5RNFmb6Sg7AhHDWNChYP5+DQOaf/3xP0492g36giP9mSZiQVfv5cKTjQCyQkU6mhU
+         yl8f5FEBaGg6EsEuLAbu8oHB5HN8PzZGRmfBCZuckgIy0BdiLrpD6OjMSy7JZCTyfIT9
+         PeY3wGPHCLEbPO6SSJysced0AW+MNSQ09+3LmtMs9txhsdiErkFUijwm2O2/bcE5pG3I
+         BNhyXz/wezvIIVK1cCetIioYLWQkEeNHj5l5RXamkv/gIvY7DRnmQ8ibTYICUybZmekL
+         qJOQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ccxJHQnZxwCRL5ALIeLwb3BTgkZUnkc6gC/ao5xjt48=;
-        b=yXJlpxpBBlaThHpbKwL2Rsa5SaMJRqBOKWZRqLV5b0BpOS1yCco9hMkUUtfsGJhs0Z
-         5UmGStYSkL0kadvgRPgv/y4SQglQEvjw+Pk0z4Ka0tPo/g2ybXGyTfr+2xrMr7wEBQMH
-         iToIUKiw+pvdJwKi7WfmrUqsDMuHjOvmRwxCzRak/gw8g30i/BmcqwQZtTIUL8Cee5jl
-         hr0uwyRyDFKMCZXFtOXhPtfD5241o5yDRa+BSXzqwcuuqIf8ErwhbRs+RFmr/XR16eoe
-         vahssB0VCYdmGiZ2MXQzly3ZuXhYFQQ6+VMzwb7qSUo15jCTXZDb3RQY2pAbKAkdiPRm
-         ZoFg==
+        bh=IGvktVhPA6KMBN53Q9S7sFoN48GUfEwFvixIWYHV+nI=;
+        b=A6uZzWbOYtbux+3tXHW7NWYwQFsIztiphhjzH30iUO/ob8bbwS7nQs2XCavjpGpMpk
+         B5GAtetwTMdIbF9ZZJgw8Tsxl1h+T5NS2m6ZZFmlLchfbt0H36vkZejevuNv7YqAv0b4
+         NZybKl/HdTmUUOC8DjFrTnCjLnwAWfCTeXPYXDYml7nuq+xiQI3H/bSN6m25NUuHEuyt
+         EhHrQHIueaQeO48t5bgIECNyL2pmrnN5Bgvby/bioOiPjJFLZW4LzVQRr8kG4tqqv++c
+         TML4OIQLf4IXQHFw4cd7mLzb9K0Ja+x9ToLeyGX7OBd6zOlHMwYUAw4vLr0HIYwJJZsK
+         Q8ew==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=UqbfzRP2;
-       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::336 as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=QrSVBQO2;
+       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::32e as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <karolinadrobnik@gmail.com>
-Received: from mail-wm1-x336.google.com (mail-wm1-x336.google.com. [2a00:1450:4864:20::336])
-        by gmr-mx.google.com with ESMTPS id y27si27656ljn.7.2021.11.01.07.32.25
+Received: from mail-wm1-x32e.google.com (mail-wm1-x32e.google.com. [2a00:1450:4864:20::32e])
+        by gmr-mx.google.com with ESMTPS id t1si431844ljg.3.2021.11.01.07.32.23
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 01 Nov 2021 07:32:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::336 as permitted sender) client-ip=2a00:1450:4864:20::336;
+        Mon, 01 Nov 2021 07:32:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::32e as permitted sender) client-ip=2a00:1450:4864:20::32e;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=UqbfzRP2;
-       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::336 as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=QrSVBQO2;
+       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::32e as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wm1-x336.google.com with SMTP id y84-20020a1c7d57000000b00330cb84834fso8055771wmc.2
-        for <outreachy-kernel@googlegroups.com>; Mon, 01 Nov 2021 07:32:25 -0700 (PDT)
+Received: by mail-wm1-x32e.google.com with SMTP id 67-20020a1c1946000000b0030d4c90fa87so79334wmz.2
+        for <outreachy-kernel@googlegroups.com>; Mon, 01 Nov 2021 07:32:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=ccxJHQnZxwCRL5ALIeLwb3BTgkZUnkc6gC/ao5xjt48=;
-        b=UqbfzRP2IFjComwjTeq/suWfT5hLr3qKp728wk8yf7PbLSdilMsp9Pec2Kug6ifr+d
-         XsBAajd6tuaF50om8XOl7ys8YVIST46qAJSLWS6R6Wmh3OlHVHoBaYzfFb0BOVzAlerd
-         za63p3FoJUrrPWy6PwNypcccCNHaUUa3H5SLep9zuSjLyeCdRMO8CELHpMvT+UP8Uizw
-         ZGkJGnzmKtMGOS7YgYYY1CtEQRSkRsin71fK2u9I81fG8iv37aKNJoDECVtps7x11aI2
-         GRppSF4yZixWNE8gaypQ6kvFHK0VoAkJCWKdfvY8AGz59myd03/tSIaU/U0y2TD3gCki
-         xCfg==
+        bh=IGvktVhPA6KMBN53Q9S7sFoN48GUfEwFvixIWYHV+nI=;
+        b=QrSVBQO2aEvZdNSzkMa9ZuGKL08XxThQoagtuWQgTesTJCvoQsEqE48/j+Oi5/B83L
+         CAtxsju77hrS9XtiBLOLxZcCS8/zgkjnYcyC1PZvHWjt32h+Z5skC74MvTZ/8M+jrski
+         22p6QszRKI7EOwtJuvK+KrKWwFhitEc8VePs/pvV3t9tB9hJ6dJ28Gr+NPlLSptzVxAi
+         nBhGqNSkPWxpdZTpPWOF6/CBMYg2iZVjLiObHsf6t7IQnsQz2g6ZEiRPDvdeQ+tDb0Y4
+         ch0NJkQFe/8anOQ5/1WQvtFNMoJshsu0//egt5Divhi6A8rZ+M2cV8swmaLKG/WQHwzs
+         8mqQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=ccxJHQnZxwCRL5ALIeLwb3BTgkZUnkc6gC/ao5xjt48=;
-        b=QDQFSlQOwOF78pTqee1P5x6rK7wlFhOW6LqEpYJ+5h+xuF60/u3JgfbyBUyr2n6pxT
-         JO68LaBnT6FuL5TQLcbLYUrpa8dwgCTlBmOOZeUiCDIC5qTCQ7fN7aBSGYamhN52BJOA
-         unls+VMQ9UzrdVuyR09H1ESLY68sEQUSHI3ilU6rqQMUOFu+vtwZIZk4Hb4FV/toSl4a
-         x8XhqmMi+Xz+Dxo37ZvHDu9UHKgf1qADaU596DM+KLW5QGwe2m66HxtaHbpliKU11plJ
-         BvGJ+1GxbXMiSS1BCmc1UZKyhmEha0o6M8PL+myUAtUCRR/4eHmpbL3ANR52ZKjRH0zC
-         twUg==
-X-Gm-Message-State: AOAM533RXH0qJAMws57LfKsB0kJdWB7VRXbAOnFZ+W5NQfe3+PntwMh1
-	sdNCjJR6EcNZbWnO1VNYJRqJSIXxB0tb0w==
-X-Received: by 2002:a05:600c:378f:: with SMTP id o15mr32286025wmr.63.1635777144591;
-        Mon, 01 Nov 2021 07:32:24 -0700 (PDT)
+        bh=IGvktVhPA6KMBN53Q9S7sFoN48GUfEwFvixIWYHV+nI=;
+        b=COXGZnd6o/8ejoZw/OXk8kqKVScgD5v/uSClGemw5EEAs7J/ZMBZvvL5CALhJUHhj9
+         XH8XHGl0ILpfUB98Zd9Y/o9EfumELpP3pGM8sxz4viLjNtC+yxxwa64BDzgi7itqZs03
+         U46aCvgKexRrN3kzT4Cj2U7q0ROkeu+9Pmx/JkcP2yaa/YwGYqxYHPiCHi91sxXkkYC1
+         YoNPD0upa4bb7KvqU/auJNzNr17cqIQclkT9d5N3+37rk7QmeSP4sXzD7Fo1UJ0qQPCS
+         /hhuWqRmZ+nRlN4DTfKq2IxA5WlJJ8RuvOFyPHZaTUxh/KG3oUkI7nYxByWgK5c2k/fR
+         AGLQ==
+X-Gm-Message-State: AOAM531nvkSTeAv4oLH1eqpOKB6pQ4iVEDs9ZjWAOXRJb+vC2lfoq+DL
+	ze4eS8GArwjOUBjXnG4p5Pr91FhVDlJGXw==
+X-Received: by 2002:a1c:1f94:: with SMTP id f142mr22652861wmf.192.1635777143199;
+        Mon, 01 Nov 2021 07:32:23 -0700 (PDT)
 Return-Path: <karolinadrobnik@gmail.com>
 Received: from localhost.localdomain ([2a01:4b00:f411:e700:e085:8cb7:7bf6:5d62])
-        by smtp.gmail.com with ESMTPSA id l8sm17157721wry.43.2021.11.01.07.32.23
+        by smtp.gmail.com with ESMTPSA id l8sm17157721wry.43.2021.11.01.07.32.22
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 01 Nov 2021 07:32:24 -0700 (PDT)
+        Mon, 01 Nov 2021 07:32:22 -0700 (PDT)
 From: Karolina Drobnik <karolinadrobnik@gmail.com>
 To: outreachy-kernel@googlegroups.com
 Cc: gregkh@linuxfoundation.org,
@@ -80,46 +80,66 @@ Cc: gregkh@linuxfoundation.org,
 	linux-staging@lists.linux.dev,
 	linux-kernel@vger.kernel.org,
 	Karolina Drobnik <karolinadrobnik@gmail.com>
-Subject: [PATCH v2 3/8] staging: vt6655: Remove unused `i` increments
-Date: Mon,  1 Nov 2021 14:32:01 +0000
-Message-Id: <79a4f03c8f2bfa555ea149ddd1c0f938dd431a0b.1635773680.git.karolinadrobnik@gmail.com>
+Subject: [PATCH v2 2/8] staging: vt6655: Use incrementation in `idx`
+Date: Mon,  1 Nov 2021 14:32:00 +0000
+Message-Id: <c569952d92ba51f32679c2fd87fd48ad8e49e3fc.1635773680.git.karolinadrobnik@gmail.com>
 X-Mailer: git-send-email 2.30.2
 In-Reply-To: <cover.1635773679.git.karolinadrobnik@gmail.com>
 References: <cover.1635773679.git.karolinadrobnik@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-Commit c569952d92ba ("staging: vt6655: Use incrementation in `idx`")
-rendered the incrementation of `i` outside of the loop unnecessary
-so it can be deleted.
+Increment `idx` in a loop instead of adding the loop counter
+`i` to do so. Thanks to this change, the cast to unsigned short
+can be removed.
 
 Signed-off-by: Karolina Drobnik <karolinadrobnik@gmail.com>
 ---
- drivers/staging/vt6655/rf.c | 3 ---
- 1 file changed, 3 deletions(-)
+ drivers/staging/vt6655/rf.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/staging/vt6655/rf.c b/drivers/staging/vt6655/rf.c
-index c07653566d17..ea74701917e5 100644
+index f195dafb6e63..c07653566d17 100644
 --- a/drivers/staging/vt6655/rf.c
 +++ b/drivers/staging/vt6655/rf.c
-@@ -703,7 +703,6 @@ bool RFvWriteWakeProgSyn(struct vnt_private *priv, unsigned char rf_type,
- 			MACvSetMISCFifo(priv, idx++, al2230_init_table[i]);
+@@ -700,11 +700,11 @@ bool RFvWriteWakeProgSyn(struct vnt_private *priv, unsigned char rf_type,
+ 			return false;
  
- 		MACvSetMISCFifo(priv, idx++, al2230_channel_table0[channel - 1]);
--		i++;
- 		MACvSetMISCFifo(priv, idx++, al2230_channel_table1[channel - 1]);
+ 		for (i = 0; i < CB_AL2230_INIT_SEQ; i++)
+-			MACvSetMISCFifo(priv, (unsigned short)(idx + i), al2230_init_table[i]);
++			MACvSetMISCFifo(priv, idx++, al2230_init_table[i]);
+ 
+-		MACvSetMISCFifo(priv, (unsigned short)(idx + i), al2230_channel_table0[channel - 1]);
++		MACvSetMISCFifo(priv, idx++, al2230_channel_table0[channel - 1]);
+ 		i++;
+-		MACvSetMISCFifo(priv, (unsigned short)(idx + i), al2230_channel_table1[channel - 1]);
++		MACvSetMISCFifo(priv, idx++, al2230_channel_table1[channel - 1]);
  		break;
  
-@@ -724,9 +723,7 @@ bool RFvWriteWakeProgSyn(struct vnt_private *priv, unsigned char rf_type,
+ 		/* Need to check, PLLON need to be low for channel setting */
+@@ -717,17 +717,17 @@ bool RFvWriteWakeProgSyn(struct vnt_private *priv, unsigned char rf_type,
+ 
+ 		if (channel <= CB_MAX_CHANNEL_24G) {
+ 			for (i = 0; i < CB_AL7230_INIT_SEQ; i++)
+-				MACvSetMISCFifo(priv, (unsigned short)(idx + i), al7230_init_table[i]);
++				MACvSetMISCFifo(priv, idx++, al7230_init_table[i]);
+ 		} else {
+ 			for (i = 0; i < CB_AL7230_INIT_SEQ; i++)
+-				MACvSetMISCFifo(priv, (unsigned short)(idx + i), al7230_init_table_a_mode[i]);
++				MACvSetMISCFifo(priv, idx++, al7230_init_table_a_mode[i]);
  		}
  
- 		MACvSetMISCFifo(priv, idx++, al7230_channel_table0[channel - 1]);
--		i++;
- 		MACvSetMISCFifo(priv, idx++, al7230_channel_table1[channel - 1]);
--		i++;
- 		MACvSetMISCFifo(priv, idx++, al7230_channel_table2[channel - 1]);
+-		MACvSetMISCFifo(priv, (unsigned short)(idx + i), al7230_channel_table0[channel - 1]);
++		MACvSetMISCFifo(priv, idx++, al7230_channel_table0[channel - 1]);
+ 		i++;
+-		MACvSetMISCFifo(priv, (unsigned short)(idx + i), al7230_channel_table1[channel - 1]);
++		MACvSetMISCFifo(priv, idx++, al7230_channel_table1[channel - 1]);
+ 		i++;
+-		MACvSetMISCFifo(priv, (unsigned short)(idx + i), al7230_channel_table2[channel - 1]);
++		MACvSetMISCFifo(priv, idx++, al7230_channel_table2[channel - 1]);
  		break;
  
+ 	case RF_NOTHING:
 -- 
 2.30.2
 
