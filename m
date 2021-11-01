@@ -1,191 +1,120 @@
 X-GM-THRID: 7025609319157596160
-X-Received: by 2002:a67:d48d:: with SMTP id g13mr25855078vsj.34.1636027775172;
-        Thu, 04 Nov 2021 05:09:35 -0700 (PDT)
+X-Received: by 2002:aa7:db85:: with SMTP id u5mr41269261edt.234.1635777153079;
+        Mon, 01 Nov 2021 07:32:33 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:6102:a89:: with SMTP id n9ls1465062vsg.3.gmail; Thu, 04
- Nov 2021 05:09:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJySqPbvzpT61whk4UDJ8GWHjFB4b7tYID44n2BsgGWtpHqxaT6oEvS+PdmiW6LGfJtIFZ2O
-X-Received: by 2002:a67:ed54:: with SMTP id m20mr52797534vsp.50.1636027774358;
-        Thu, 04 Nov 2021 05:09:34 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1636027774; cv=pass;
+Received: by 2002:a17:906:c143:: with SMTP id dp3ls495355ejc.0.gmail; Mon, 01
+ Nov 2021 07:32:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzAcxQFeuZ2ZMaqE1DlEzl6897r8XS0xs64FUoJ7DaTansMLpk+u/mMhdhRal7u6+Wgjco7
+X-Received: by 2002:a17:906:c7c1:: with SMTP id dc1mr37986209ejb.6.1635777151692;
+        Mon, 01 Nov 2021 07:32:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1635777151; cv=none;
         d=google.com; s=arc-20160816;
-        b=NU7VzfdSvmTq9d21SYSksTnPnLTSI/hbqopLiNlUe45ueJTjMZzAMXFrII0tg2FdU/
-         wFqTwfhRzbZ8xGhaGtZKXEH2e5K4S/5NDTV0KIW3I/+lETm69a08PZxDQCJTEx6UNQIO
-         FdDd28HOIYDp557AGkaMQY+/Pihh86WQzscRgmp5ouNzGFy5HbYsHicyjaaKnXdildlA
-         HOxEWzqVhHp5/T+i3996JP2PbYVS6yNw4qX+u7Re4z9sY2Wx9E9wXO5MULL7Ncw5sPaZ
-         lTd1bRZQFG+6xQlTSpxQjN7oHs9sqxDhIPhYknaOKj0ALcrwdv5Ml8pbWUvMSOhbsTME
-         Lwxw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:in-reply-to:content-disposition:references
-         :message-id:subject:cc:to:from:date:dkim-signature:dkim-signature;
-        bh=EqLAdqHY3etkcPYWPSHo3tgNngL4zTVP879nZai9yBQ=;
-        b=mfaECTvhRab2Zq/YWzFUsC+xIdhnsuPin3RnVIkpdqeCHD0S0S92xJYMXyLN2vWztl
-         Si8WO+kVxWOr1sQZIZPH9nYO+iaN6CP2rFi26hhlZidHmnuTQq4rDQPrHHiBiPZboubG
-         HglVNB21sn+3mweUUHT7Holp5LXqZmmsv8E+nGjmI1+fhG/gYU8KNtURA3nj1dAdZfug
-         ipXUYeysm5baf2g1GaRUSv0ve4GhnSE0E/8/9dS8EzuXYlqbqXjwQg6RDWGmzCLkvcDk
-         x/tjMv/vGNHO5NTXVMbPnCTjBBc1bi9FaPzEF9wlF+PuAyQvTCAg1Gpp9hCSvZQ7SfWo
-         oprA==
-ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2021-07-09 header.b=kdv5mlzz;
-       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b="ANJE7z5/";
-       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 205.220.165.32 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Return-Path: <dan.carpenter@oracle.com>
-Received: from mx0a-00069f02.pphosted.com (mx0a-00069f02.pphosted.com. [205.220.165.32])
-        by gmr-mx.google.com with ESMTPS id n25si1051469vsj.0.2021.11.04.05.09.34
+        b=W/1Sohi9rC9PZh1r1UuDDRf67mo8UB1ECXUqliPERKv8ZakN5lmjKECr4DmufK7lxs
+         8/mp87hWnKKuUB35Ar1t1c3v9KXDg25YRfODSONT8M13aO243K7R5B2wgO8uktuf1X/G
+         AVAjVSubBeyP77E0pqB8nTn8xLX31xBgpIzsDHTJJRqnZVXlCxz0MmQQr/owCidW7c1g
+         M/zZIugtoOjzHXhe0V/YU6wEVA3iMT8+QD70DB0RYT4WJwF/YtHzYJIxCl4J4ceU4Xq0
+         yMgTGNVGK7tY6tNq7SqCNp+mrjzNtNe8BdAt3GU2M/5tJErFbQ5kix2MAH7hJG4qGxoc
+         /T5A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=eQqahKTGy/MjzWPjPgHv9G3Dq9AQliR92JEsevc2x1Y=;
+        b=bIaYk4QWKRodqocQ9Teo8jyjrFlTYz06stSQf9G86V1pw4OziBL3ima3l9MjgM/2DF
+         S4mAQh78gkZBl0hl9t8Rd4CHWej12B27wZi6h7evVnzJ4cQw/LwacOG5x/HoOln46gVv
+         PY9wVu+7YGkUE/+iJH0B3GTorsjCZqVOvk65UsBZkLNLzE7MehaTYBVRX6UynJnYWoZd
+         tQb4lJhAzPgDP+N6BwpCY0J9dkvs5vMn2GrzoEW3iqpdYG7R1htOGjcxvjSQdKtB6OKo
+         +4O/FepMgra78tZAT06rTYO1pVjgiFt4bIYkX9+B1SgYv28aod8K/oOqEo9cNNihzFtw
+         f3Ig==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=nE28LLhF;
+       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::336 as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <karolinadrobnik@gmail.com>
+Received: from mail-wm1-x336.google.com (mail-wm1-x336.google.com. [2a00:1450:4864:20::336])
+        by gmr-mx.google.com with ESMTPS id dr8si1473373ejc.0.2021.11.01.07.32.31
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 04 Nov 2021 05:09:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 205.220.165.32 as permitted sender) client-ip=205.220.165.32;
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 01 Nov 2021 07:32:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::336 as permitted sender) client-ip=2a00:1450:4864:20::336;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2021-07-09 header.b=kdv5mlzz;
-       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b="ANJE7z5/";
-       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 205.220.165.32 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from pps.filterd (m0246627.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 1A4C6cXs019885;
-	Thu, 4 Nov 2021 12:09:31 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
- : subject : message-id : references : content-type : in-reply-to :
- mime-version; s=corp-2021-07-09;
- bh=EqLAdqHY3etkcPYWPSHo3tgNngL4zTVP879nZai9yBQ=;
- b=kdv5mlzzNFLCdDKw5M3ZAmzwBXszCdIFsI1wqWMFxktJrC3dHgLXVJBclmzviWquAecB
- i97bbD95IStcD8j700Iwsv+N+hAasxe07aRzJqC4qFzkFJDU39Uf4RWZE8vOEiCYs0+w
- thESuA3nefe7YHZLEmEDw401yG6lf8zotQP/h6vNt49ZCpY82GfQW5s+4ptMzP23YDzY
- Z3useTIxRTA64q0kBHuWwbs9ryToKmFbKXbUwPVOyZjsaxrJxSTeXM84wH9CHRNLTfel
- pLYbOIAxWwub5uGdHVD4ypS3B611Lmk2JX/WopSYjm6HpPyX4lLxomSLaHMPDW3SOV2d Kw== 
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
-	by mx0b-00069f02.pphosted.com with ESMTP id 3c3mt5g1y0-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Thu, 04 Nov 2021 12:09:31 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
-	by userp3030.oracle.com (8.16.1.2/8.16.1.2) with SMTP id 1A4C15T7045878;
-	Thu, 4 Nov 2021 12:09:29 GMT
-Received: from nam04-bn8-obe.outbound.protection.outlook.com (mail-bn8nam08lp2047.outbound.protection.outlook.com [104.47.74.47])
-	by userp3030.oracle.com with ESMTP id 3c27k8k0cx-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Thu, 04 Nov 2021 12:09:29 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=n0DZyhhImErUqiyo6iirzSlSg0oHNyyulvWefkODaZuE2j2Ghwpk4q0fRpBjUL0P9afhA8zMEu6i2zDfxnv2Q35kkm1sLP1So+Oedrtc2bnytPldIQRZ3ifAnFeD9bnG3EwgcqUUrLb5GkW9A8Zs3RMtTaBcEJzc6RQMn/5IrsaGVLTosQxxzbzjUG2YKcI1HVOUSqAbbe5EsKOAkl2KK28LxBa5uSjtuZIUhDExIxnOgAQJ37OqdhuSOMxiP1GZy9q5XZqUDn89ZcI1vbkHHqn9vSiawV1g0otNmr4BlfADKV4eoqHwAyFuITO4+YOXkqf9uGXU+CzJ9YsT4RSczg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=EqLAdqHY3etkcPYWPSHo3tgNngL4zTVP879nZai9yBQ=;
- b=U0ePiJs6PktxKam7exvvd5KnAJlBAH68g0aRwY7H7ptzEXtp28uT22wwe63XIvlgiWeojPgOcTs5TUoSbSbB61dJYgNDI5krHgRfJw8nLwn3GNA8netLff8C4W1tAtes5I0XvTl0tdHWBcsi/2WJggPlcNaw+oqaXiRoWSHs1v6FeVEAHsEWlKFpuJ6J4b/BvvXawmE+tK48xAJ7hY3L8ihUE0gGmt9ypcwb50sUo2jrQ+kBckc3Z2z+h6Q6KAagTdLb8K0uVVbMfE8kCfYrkxU7FM7W9W5FcrD1weu8SmmfZEOVUaPYpEGnYlGEmHZhl16kGhTxqi6nPn2iiAMROg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=nE28LLhF;
+       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::336 as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by mail-wm1-x336.google.com with SMTP id 77-20020a1c0450000000b0033123de3425so2248256wme.0
+        for <outreachy-kernel@googlegroups.com>; Mon, 01 Nov 2021 07:32:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=EqLAdqHY3etkcPYWPSHo3tgNngL4zTVP879nZai9yBQ=;
- b=ANJE7z5/Kdaduz3BmT6jOmqC8nM8Vbgw/8uqJvoQABmLmz4pqpTBEAePjrorVVTt9eVM/HfWVXHg+Wlw5SJoCpWSKtrXpMmj3U/uC6NaSrl7htGzN7AaxtFTghSJbgi1ebh2ZLa8LcdA/aVqJ+JdnrZYeqrNaug3FHsCVhBHY7g=
-Authentication-Results: gmail.com; dkim=none (message not signed)
- header.d=none;gmail.com; dmarc=none action=none header.from=oracle.com;
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28) by MWHPR10MB1551.namprd10.prod.outlook.com
- (2603:10b6:300:27::16) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4649.17; Thu, 4 Nov
- 2021 12:09:27 +0000
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::d409:11b5:5eb2:6be9]) by MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::d409:11b5:5eb2:6be9%5]) with mapi id 15.20.4669.011; Thu, 4 Nov 2021
- 12:09:27 +0000
-Date: Thu, 4 Nov 2021 15:09:06 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Karolina Drobnik <karolinadrobnik@gmail.com>
-Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org,
-        forest@alittletooquiet.net, linux-staging@lists.linux.dev,
-        linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 1/8] staging: vt6655: Introduce `idx` temporary
- variable
-Message-ID: <20211104120906.GZ2794@kadam>
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=eQqahKTGy/MjzWPjPgHv9G3Dq9AQliR92JEsevc2x1Y=;
+        b=nE28LLhF3UnGHnDj48x/XzJJMVEJCxwyGRf2cmDGJqjSnuRt7grKqgiOnoqF8n0Fpq
+         oA/BHmbaCPyX0CCRmfZ9Ce8C0xY7GH9diteX7/7Ok1fYP/WkxdSy+lXx2ePqR64O8N86
+         ArX8bvlVZYKx/Gsq+8gzKS0z6Td3X6Nl0aiZk2pdHzsXYKisVP7dY12N8FdGq8fY2Ib1
+         HoPYQO33UwPCgJDkU3EdiM33zQ7H5J3pnkh1BN5EyqMoWVFZhUU3ZDwe7PEYBiWtbg/Y
+         BRpiKyJ/9jBQ9Cf17VJCcTlIb6UPxhWU+Q74Ka9nSzukmaXhrdqDgR8mPLa+Yt7S24ZU
+         4twg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=eQqahKTGy/MjzWPjPgHv9G3Dq9AQliR92JEsevc2x1Y=;
+        b=6dR++4aBjQSVoxhPkW6mZA3a9M99KMPrMkHVVrLUgy7qndnQXlXcsEckfNSF5/09RH
+         DobLKEsfJU+01Ed/MgOJA7VSLRs0qdID01WReoBw8IrivYreqx9eiz1qAbr34FpDo1q9
+         h2NteQbcxWtmsJrAcfzUKXTZhzLh00tvZAl84QGFAbGEA6MSg8daywNU6MD24+UN2hwb
+         F0uVpSp8iSHBpGnEHaPyNUV9YTHPz8AeuRDUeU5a2xqfyHwMwY0v7xhw8F5vwHBiT6fB
+         jlYWK74VCsgbSA0EQ2/HdEQC5BaRQbCS6plt/n+T1zpfvHpBsn1tB55/BaTcyorYUE02
+         RrmA==
+X-Gm-Message-State: AOAM531aErILEw6fK8E4MzxjtAiEwMOThftX/aLnYJ35RE4Ngb5Mxjzo
+	KTnkMkGW7jNHYGgnFOpd/fvBamYCQypIBQ==
+X-Received: by 2002:a7b:ce16:: with SMTP id m22mr9092639wmc.39.1635777151495;
+        Mon, 01 Nov 2021 07:32:31 -0700 (PDT)
+Return-Path: <karolinadrobnik@gmail.com>
+Received: from localhost.localdomain ([2a01:4b00:f411:e700:e085:8cb7:7bf6:5d62])
+        by smtp.gmail.com with ESMTPSA id l8sm17157721wry.43.2021.11.01.07.32.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 01 Nov 2021 07:32:31 -0700 (PDT)
+From: Karolina Drobnik <karolinadrobnik@gmail.com>
+To: outreachy-kernel@googlegroups.com
+Cc: gregkh@linuxfoundation.org,
+	forest@alittletooquiet.net,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	Karolina Drobnik <karolinadrobnik@gmail.com>,
+	Mike Rapoport <mike.rapoport@gmail.com>
+Subject: [PATCH v2 8/8] staging: vt6655: Delete bogus check for `init_count` in AL7230
+Date: Mon,  1 Nov 2021 14:32:06 +0000
+Message-Id: <ef1cc739e6b3e00c0ff138f25d1b9eb4d27e7763.1635773681.git.karolinadrobnik@gmail.com>
+X-Mailer: git-send-email 2.30.2
+In-Reply-To: <cover.1635773679.git.karolinadrobnik@gmail.com>
 References: <cover.1635773679.git.karolinadrobnik@gmail.com>
- <34bd0e8f42597edf006a950d420345befc4e0bc2.1635773680.git.karolinadrobnik@gmail.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <34bd0e8f42597edf006a950d420345befc4e0bc2.1635773680.git.karolinadrobnik@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-ClientProxiedBy: JNXP275CA0009.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:19::21)
- To MWHPR1001MB2365.namprd10.prod.outlook.com (2603:10b6:301:2d::28)
 MIME-Version: 1.0
-Received: from kadam (102.222.70.114) by JNXP275CA0009.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:19::21) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4669.10 via Frontend Transport; Thu, 4 Nov 2021 12:09:21 +0000
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: adf8d0dc-48ff-4abc-4935-08d99f8bf29e
-X-MS-TrafficTypeDiagnostic: MWHPR10MB1551:
-X-Microsoft-Antispam-PRVS: 
-	<MWHPR10MB15517BAC2574890E04103B9B8E8D9@MWHPR10MB1551.namprd10.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:9508;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 
-	bPZB2DrmIklCZDI6U2U1mZLHsxyOzlP9jUcybdtqYSuCGLTZyFJsE+xSX5eViGWHonTKuTtaeWg2t9dJwSDGxWUR/C3n9uTqNmeZaZ3+RNQLNj2TDvOsHA6LltaclIXR/bSYtD5Kv6LaIRhgwCzHty7/sPj0wqP/20ZSvt7dpb3UAIBulo1oLz4ghQ1fC2+xiaLYJ8OLp7FValICpc75F7pNl/eU+ydxuQ+kJ1mS4KaCITRhyAJb0Vz0e+UT8I4g5gSbbXxFbh1jwAmtYLSDe3naxyyXCfHG31DZsRJElK2TsOWV4gYIVFlQDU5pgsK42Vb0wVEsZeHlrBr9gT7+4zrUdK/S9svEkEUm+RDrXaAJPv9rxz7dBH56cB6u2sCLjDv/m+iZzDuWjMlXPWyuwXxACl5nUrPZst4Y2RHbvIJ2iPnY+97QPJxIIKE3k8VoaxB+b/pNl6/MtBq3xFLJn7MqfBpT8JJGMaNOwGUWJ1ekd25a7vU9URi1319bkokEeKWDtouzKLi49+1t+eWuSKz1g5Hsg6Z/uJ2yFAWQiUH7CPxhlcnHz0+zspbhhPzTLvBzdtX86JTHmIInMeOjYyXwiV1TLzAEyMJKgIpkT6KAk25Z7lIy7JVoit/FvccSXDFUBWbeS3amVjvrd3mURwfAEIG3JzEsqLvy37xftroBJTvbmNl9eKLfax6eG+z2DD6aWXzS+GQgXjA83Ut1VveUpozCEkSyJGLG7kupQFk=
-X-Forefront-Antispam-Report: 
-	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MWHPR1001MB2365.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(366004)(33716001)(9686003)(5660300002)(38100700002)(956004)(66556008)(66476007)(66946007)(33656002)(508600001)(26005)(186003)(6666004)(52116002)(6496006)(1076003)(4744005)(38350700002)(55016002)(6916009)(4326008)(2906002)(8676002)(44832011)(86362001)(316002)(9576002)(8936002)(81973001);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 
-	=?us-ascii?Q?oy9HO6Ls6m8mDtsPhG+iQ7yro/iMovt8RWq71KQTAbSzlJ188cC5e7nTpn7/?=
- =?us-ascii?Q?6AwQgjVHad32+2ogANWLwmNBwUKx/JyCGkxJPfnNsfnIPP7oS+hpvdA84sCU?=
- =?us-ascii?Q?gl6ahl+D4ZpTMEZxCao/2VmqjSd/tE1uBMtK6ROwuuePXx62+pLmdJSUSGmM?=
- =?us-ascii?Q?6yt6/U4uVdvZGg22Ej2xDzkLQeDhd22XZ33cnIlEnGAOkk+nXeLThq+B4vZX?=
- =?us-ascii?Q?+6YiaO/ffWb8yXzFi7oLrpp4SIIRXe1FekRJ7k5c4D86S+Y7niLrNPDwsaGV?=
- =?us-ascii?Q?s3MRnFVKDkMO3CcLpMN/fehQRAild7HpUU6ix8c1qHOBRrmJ+2G4bdnIxGt+?=
- =?us-ascii?Q?VINjj3wHDF1q8E/34jPSeUGFGNYTcKuAEorNQGUohcGvXBPDPfO+KMJzVRGa?=
- =?us-ascii?Q?SCmG9rNQIGccm071TidkGcvDLu+hdgpNxWQIp1VyORVg9trMjzekLl2iSNwE?=
- =?us-ascii?Q?ZpgPH8ohHSpBRySAFkpril7NggenwLUHijuIRkqQeMMWqlhyBoxNBqoHbeB7?=
- =?us-ascii?Q?Q1itWvSH6fCvuh5ra94fzeNDUz54sSrMSuOKykOV65fdtx9RrdV7rhbdoxv8?=
- =?us-ascii?Q?92e/XObsxQFLIIGvE/4B/QqUOExj1SDxz/MKztClLuDTzkWwTAkCgS0av6TQ?=
- =?us-ascii?Q?CwYR3+aP1fl2uCy1wccN7MbV/0Ynmckorv0CnFGqtumKnS/qsJmrbBB6vPvh?=
- =?us-ascii?Q?5eXTwxzELHoPg9oEzFqtZPM3q2Fjfu62Z6gcREE1jSBzqCaqNZ8dLEGRwo4N?=
- =?us-ascii?Q?Hv7X/iZGHj4sHN5mVsPhnVl5GR5hHVEa0c0PTaM3sgcTBvJUNt7SXJhXBuOi?=
- =?us-ascii?Q?TV3oa2UAaHQZdi0pRFvXBIoaY/1kB2wLRE9weYkNPLm7o05cuQr7OW+PT89v?=
- =?us-ascii?Q?YSyjFjfuGGzjbkxCGvVvAExjSLqaxsx660n5CSU0pmTe8I1uWs4dTOuo+0u0?=
- =?us-ascii?Q?Acao+oyWNF+Vxds45520HniGOuaBWvjSOjS/qHrg1Bgi2QgvNTLfnIFMzXUZ?=
- =?us-ascii?Q?pivMxLNB/CGpRng+BB72Sncdvacy7zTjpFnRUuODm6fFgGJR/62bdqzqNrfP?=
- =?us-ascii?Q?yffjuv9evO/c9Cx5py0g3aJQNdxCJ2wToPpQCE7BQWQN5frFJtq6Jp2lApdV?=
- =?us-ascii?Q?CordFUglmSRW5gwLk9ie3btNn99/yoQ7npij8NV7fNl3nL7WHPBvdEVaaxR3?=
- =?us-ascii?Q?Js0GBGQSYlz0za1l1DhkOMR7AKKO0jWbtIaz5xa/kGuDKDAr8RcYmvx4PUIS?=
- =?us-ascii?Q?+n25b5wU9j+anoFeQYquKHMb5SjMGuKpPswvtdv461bL6+uGXhvySWhuHXVV?=
- =?us-ascii?Q?N6PIM5QMZJEeoIJtv8ZoHVm1LHz3SFmgWvyLISe1DHbHj40qjsXahjdJKXuG?=
- =?us-ascii?Q?Ib+oqdAC5yslC76j5/YWI4AE3Pa3vY74dlAmmDXmJ0ychO+r0l3MmcvhJOks?=
- =?us-ascii?Q?GyNgGrA6M6MvQk6fNf48d02ilIs1g8aQCIUnd7Gup8Vh1DSeYKgLJxxkY/de?=
- =?us-ascii?Q?DW1LoZ9qs2fMeqtyXjB/glbYdluJIpsOmnOAtI5r6nVs4JbrK0Xl3+wWP9Uc?=
- =?us-ascii?Q?Y6wdMKhm3S6RoKCaosH+Qbt70xZle8j9suZ/boqaJWrzbKao0REyWSyLYD6B?=
- =?us-ascii?Q?J54jCpZggMMBPwp4SIiGQwkavd7LtDT8IPXek0AWW2VMomJDquGpdGnBVlla?=
- =?us-ascii?Q?99kuX7zpJXnC98At/cCA+yexhnk=3D?=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: adf8d0dc-48ff-4abc-4935-08d99f8bf29e
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Nov 2021 12:09:27.1032
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: LJ205VF6isAcLaMxlqRy6dMotV0IthYc5DZPGcfQG0XmGWiglMRMpWh1OPIucwRt5NzmcSsp/mM//aRAJ8EHeBw9CWrQ6W7E/gYbwPeH4vI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR10MB1551
-X-Proofpoint-Virus-Version: vendor=nai engine=6300 definitions=10157 signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0 mlxscore=0 spamscore=0
- malwarescore=0 mlxlogscore=851 adultscore=0 phishscore=0 bulkscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2110150000
- definitions=main-2111040051
-X-Proofpoint-ORIG-GUID: QH9LKGvYLPvhB6ljC21aeJVpPIe66iLc
-X-Proofpoint-GUID: QH9LKGvYLPvhB6ljC21aeJVpPIe66iLc
+Content-Transfer-Encoding: 8bit
 
-On Mon, Nov 01, 2021 at 02:31:59PM +0000, Karolina Drobnik wrote:
-> Add a local variable to store `MISCFIFO_SYNDATA_IDX` offset.
-> This change helps in shortening the lines in `rf.c` that
-> are deemed too long by checkpatch.pl.
-> 
+Remove an unnecessary check in `rf_write_wake_prog_syn` in `RF_AIROHA7230`
+switch case. This `if` conditional will never be true as `init_count` is
+equal to 19 and can't be bigger than `MISCFIFO_SYNDATASIZE - 0`, which
+is equal to 21.
 
-I started reviewing the v1 patch but I should have been reviewing this
-patchset.  Please don't do this.  Leave the constant as a constant so
-we don't have to look it up.
+Suggested-by: Mike Rapoport <mike.rapoport@gmail.com>
+Signed-off-by: Karolina Drobnik <karolinadrobnik@gmail.com>
+---
+ drivers/staging/vt6655/rf.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-regards,
-dan carpenter
+diff --git a/drivers/staging/vt6655/rf.c b/drivers/staging/vt6655/rf.c
+index a150f1df3824..653f72c7ce5b 100644
+--- a/drivers/staging/vt6655/rf.c
++++ b/drivers/staging/vt6655/rf.c
+@@ -710,8 +710,6 @@ bool rf_write_wake_prog_syn(struct vnt_private *priv, unsigned char rf_type,
+ 		 /* Init Reg + Channel Reg (3) */
+ 		init_count = CB_AL7230_INIT_SEQ + 3;
+ 		sleep_count = 0;
+-		if (init_count > (MISCFIFO_SYNDATASIZE - sleep_count))
+-			return false;
+ 
+ 		init_table = (channel <= CB_MAX_CHANNEL_24G) ?
+ 			al7230_init_table : al7230_init_table_a_mode;
+-- 
+2.30.2
 
 
