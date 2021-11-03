@@ -1,115 +1,224 @@
-X-GM-THRID: 6336161909682733056
-X-Received: by 10.66.159.193 with SMTP id xe1mr2199320pab.1.1475252655134;
-        Fri, 30 Sep 2016 09:24:15 -0700 (PDT)
+X-GM-THRID: 7021611435626070016
+X-Received: by 2002:ad4:5dce:: with SMTP id m14mr41778477qvh.29.1635942151898;
+        Wed, 03 Nov 2021 05:22:31 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 10.157.24.75 with SMTP id t11ls5934462ott.34.gmail; Fri, 30 Sep
- 2016 09:24:14 -0700 (PDT)
-X-Received: by 10.200.55.71 with SMTP id p7mr2150684qtb.16.1475252654710;
-        Fri, 30 Sep 2016 09:24:14 -0700 (PDT)
-Return-Path: <anchalj109@gmail.com>
-Received: from mail-pf0-x244.google.com (mail-pf0-x244.google.com. [2607:f8b0:400e:c00::244])
-        by gmr-mx.google.com with ESMTPS id u125si487191itc.0.2016.09.30.09.24.14
-        for <outreachy-kernel@googlegroups.com>
+Received: by 2002:ac8:4a04:: with SMTP id x4ls1231131qtq.1.gmail; Wed, 03 Nov
+ 2021 05:22:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyRMPe9DWGdfp+WZ8pGnrR/STtijy44/aLwe8RxF3n+oEw/0VbfCHsilpBKEVM7kYb/nCTG
+X-Received: by 2002:a05:622a:194:: with SMTP id s20mr20598654qtw.66.1635942150948;
+        Wed, 03 Nov 2021 05:22:30 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1635942150; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=vXeBPsoC5cBN+EHXc3DvGDG4Jiz9bKFMouGyJYl66ZQuZmEZfcP8rZARbv0MsMKyFB
+         ct7gdXAujMOkVC3NCINHzThoBUIYuY7/lujxEwkrEk+qh1dQ79RXOQLJpvC7ebj/M8dU
+         FDhl/0NWbTtKeTYlGdizZ9XVxbWqMYF0qwwliiP3sN7O2RalVhdfPblZvv/nroLvRcem
+         w/3gv/Zqz2IniS/WObfihBHdwT6qAJaLqglTOkUk81YjRzQALNM2hkbEYpCptOwDwP21
+         /3fXiKMSvHphJOm6JOFmPvbWsHIwF7v96Ns9ktbkb6oHOnkS1OO+N7d0DBWZhTi+2eP8
+         IKbw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:in-reply-to:content-disposition:references
+         :message-id:subject:cc:to:from:date:dkim-signature:dkim-signature;
+        bh=Se8eDQLCoI9vVS0mZwUGgYaJiTCvEBVx324dqDeDQb4=;
+        b=XaTTu8seGpLvWgGGpbnGbgezqdpdhYYQHm0oN09vncCYdUoy7dzT8hgZO0zTTwhfO2
+         CBZ7WUzKRe3roGxyG469QcdzHRGTBaBOQ5caIPyPQy9ukPsKcHM/v7iLPw+1QBLUx6U4
+         4zWXtAU71r577+Uo/YJz4+cUNxm7TjZxaA8HoF7EUZMIP8f+3QAcbVT0gAqmY3F61bUK
+         gg3rgViEckIjWe8TY8WdNZSi4ZnuuyfBx9rfomNfldNoLkPJt1RffN5UfpUWf0eDVKqp
+         ASky/vmTQ60XMZogv0BYxAwYMvSAhZFkK9dVouD40aYR32MpOGdRlSTQjIFQJzu+MEgK
+         1KHQ==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=pass header.i=@oracle.com header.s=corp-2021-07-09 header.b=bms2Rss7;
+       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=tJ6QFBbZ;
+       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 205.220.177.32 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Return-Path: <dan.carpenter@oracle.com>
+Received: from mx0b-00069f02.pphosted.com (mx0b-00069f02.pphosted.com. [205.220.177.32])
+        by gmr-mx.google.com with ESMTPS id n2si365859qkp.4.2021.11.03.05.22.30
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 30 Sep 2016 09:24:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) client-ip=2607:f8b0:400e:c00::244;
+        Wed, 03 Nov 2021 05:22:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 205.220.177.32 as permitted sender) client-ip=205.220.177.32;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com;
-       spf=pass (google.com: domain of anchalj109@gmail.com designates 2607:f8b0:400e:c00::244 as permitted sender) smtp.mailfrom=anchalj109@gmail.com;
-       dmarc=pass (p=NONE dis=NONE) header.from=gmail.com
-Received: by mail-pf0-x244.google.com with SMTP id q2so5176541pfj.0
-        for <outreachy-kernel@googlegroups.com>; Fri, 30 Sep 2016 09:24:14 -0700 (PDT)
+       dkim=pass header.i=@oracle.com header.s=corp-2021-07-09 header.b=bms2Rss7;
+       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=tJ6QFBbZ;
+       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 205.220.177.32 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 1A3BOUE5017352;
+	Wed, 3 Nov 2021 12:22:28 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
+ : subject : message-id : references : content-type : in-reply-to :
+ mime-version; s=corp-2021-07-09;
+ bh=Se8eDQLCoI9vVS0mZwUGgYaJiTCvEBVx324dqDeDQb4=;
+ b=bms2Rss7TUs3+skPhp5oZVBweQ2SyMODhT3Q2PFYF+r/cof/2s9d0sLh45MVGxDKGnzh
+ HrylURg0hsLlqxQm0NSjim/UupEp19bAGtmXQqlFAQcXEHziYrnUR5CjNkdKGNJP3MDq
+ EK0C13zcK47Ug6AG+6Pl5wmRv0rbESRsGZb/F8LI9W/xEk3Pvf4uZToIRTHa4agBlJmQ
+ CPrAll46S7vLFxOj7lCG5GMtLbWQ+2qj3s+dCdw9A58dLR8ChHoKJfDJrZMq20Fjd48E
+ Nltreedd2S6QcPwAQfAhHplujEsYyPXsyWnXY9ZUkE7YkYhyRmYBUJWZ/4B56810hK5F 2Q== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+	by mx0b-00069f02.pphosted.com with ESMTP id 3c3n9xhg91-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 03 Nov 2021 12:22:27 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+	by aserp3030.oracle.com (8.16.1.2/8.16.1.2) with SMTP id 1A3CFd50038172;
+	Wed, 3 Nov 2021 12:22:26 GMT
+Received: from nam12-mw2-obe.outbound.protection.outlook.com (mail-mw2nam12lp2048.outbound.protection.outlook.com [104.47.66.48])
+	by aserp3030.oracle.com with ESMTP id 3c3pfxhwbb-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 03 Nov 2021 12:22:26 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=QXSzPoSxPtroTb4R1bxpEdYLADZsSxneFqrZNSZ26YOXCRyoT+ci0WQOvkm0CIf29oYKNGFkn7BAXIl2ZPEVXOz52ps2nxWH+GIixFASLm2G5DJNVx8zmPnetEQtykubRo1n6GcjqJr+o/5hRCr9d8aEGwdVZXQUjXAevgt4O086SGsez/msfgcxLxHCX/jlRL2CU4A+WtVV++JIG4Zd49fouceOH+PeYROXN68s1VzAzJo1D7tu4FfcdJM3uRhgHW1eedviuUxIcYmbjaed2p26KEOZtBnJpMmvJ3+7gWLg8AJ2MgGmOW4pNpK68eV2q7p6w9aIIb8Z46i8tGjlNg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Se8eDQLCoI9vVS0mZwUGgYaJiTCvEBVx324dqDeDQb4=;
+ b=Oc2e1VaXBDcM6l6qvrQM+ff2jA9OXVdCPYUjcrUARG0B6j6MNV2u7t9ScJYRxhmXM9DOkyoZ2/Qlck+Bk0kf4o3PaPX2OECcD4OyMQN05FVHEY/q6zxhrwYOd5hZMvvP/5BsdUs1ZbnQpWx8AMkKHRIYhQmGpOfua9PIrQeDJxRu5lJUXtncUfIJn7Txy11uWQ6DhqtESOO71tSQkVXYqJhdDundQfzhIggZCStjGYRwXgD4rNR39dqfSQLbYmsbLNtJtDl8MIqzJrVZfIu3LLKRj9yKetl37jxCrBc/KdMHyA0k22a99mOrxUGbv25r50OIkfuzdgexi9XRmkTs1w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20120113;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent;
-        bh=VN1Fa4Q2C4FlUTda9PQSuGj+JZrBVGJbKjSHSWtpmKU=;
-        b=XPiacV37nVCTiRu7oLfvYSsnvbB+40yZ6GAXGJcZBg3BvTbz0UYIZmWKjbWQCcC3QR
-         BEZ4d4tjPzrSloZ1S0FQB1RXjTARjaATZ65EZBUww8lco8aHadla7fbuUHd2LSLDAnSH
-         ljbSarxXSADnAqjIfw/FmEzAAqSlRR/ONMF1SvpjtDvflyac6jhQBH8AsckX/k6vjzQc
-         ++VQA645YbWZmjOAFfw9RKP0lwymOZrhvu+VTY6yKl7KkEkhQgIzKWO8xw2EWg5YvvMa
-         0co4uOPLUusECm+Ztl6nx8UvoAzZEEvwXDtc2nfTrXXPL/D6Bdr8f6WxKAl2AyIv+Rhs
-         pTcg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20130820;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to:user-agent;
-        bh=VN1Fa4Q2C4FlUTda9PQSuGj+JZrBVGJbKjSHSWtpmKU=;
-        b=eETBIjBPu/beI9jg2iYeiSqx+y+gpCv4BYg5Vd7q7LPBvlHwkECeNti7jfjfmUB7lT
-         sSyD1qGxnW5iwjAhkg4oDjWG06WUZOpm2vlZZUbcTKpIpZIdLxQUmRdmxseOBLG9waWq
-         VyVdsDi27QQI1BR6Xhd4+yS1VVs8s2A8VvZvyVjgucreXa2R7bKqffRnJER9M2HGZdUN
-         9u1FqaG1X5P2nus6Kujq231Xh5755UaLbpDS+gupNBZlLUjzbzY1Hf7IovfRGffhpiO6
-         yE9LzUjtQU0lJwKkqbOOuNEqewuHp45Qx3nKA2pPOIrEwl7LOI+j1But/oBpZfAbhIzT
-         K1MQ==
-X-Gm-Message-State: AA6/9Rlwm07Sx38Tv/EDUaEutOmYncOsUc4BkWisUTxjWJgPk8Z2dt/kNLbgwjV+KGhKYg==
-X-Received: by 10.98.14.20 with SMTP id w20mr13300028pfi.9.1475252654277;
-        Fri, 30 Sep 2016 09:24:14 -0700 (PDT)
-Return-Path: <anchalj109@gmail.com>
-Received: from life-desktop ([182.71.113.218])
-        by smtp.gmail.com with ESMTPSA id x8sm29043022pfi.93.2016.09.30.09.24.11
-        (version=TLS1_2 cipher=AES128-SHA bits=128/128);
-        Fri, 30 Sep 2016 09:24:13 -0700 (PDT)
-Date: Fri, 30 Sep 2016 21:54:02 +0530
-From: Anchal Jain <anchalj109@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy-kernel@googlegroups.com, knaack.h@gmx.de, pmeerw@pmeerw.net
-Subject: [PATCH] staging: iio: adc: ad7192: Fix block comment
-Message-ID: <e55c4a26afeb396db3cefe4071125b228d4ba3a0.1475252219.git.anchalj109@gmail.com>
-References: <cover.1475252219.git.anchalj109@gmail.com>
-MIME-Version: 1.0
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Se8eDQLCoI9vVS0mZwUGgYaJiTCvEBVx324dqDeDQb4=;
+ b=tJ6QFBbZCi2bmG+GBbtmB4OwI2c7vhrW4zo3sI6Ladeu426f27L2ZMsU9abz6gixxd433wNwMzA+EojL53nNkzN5xl8/NyJuoESqrR+Hr3NRBOYeXgWbI4MrBFKSD3AJOA50v+H7yAZKAB7F4CCz3HrP0BcLSvnqTfnaG0lIHtw=
+Authentication-Results: gmail.com; dkim=none (message not signed)
+ header.d=none;gmail.com; dmarc=none action=none header.from=oracle.com;
+Received: from CY4PR1001MB2358.namprd10.prod.outlook.com
+ (2603:10b6:910:4a::32) by CY4PR1001MB2200.namprd10.prod.outlook.com
+ (2603:10b6:910:3f::28) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4669.11; Wed, 3 Nov
+ 2021 12:22:23 +0000
+Received: from CY4PR1001MB2358.namprd10.prod.outlook.com
+ ([fe80::e5e3:725b:4bb:7809]) by CY4PR1001MB2358.namprd10.prod.outlook.com
+ ([fe80::e5e3:725b:4bb:7809%5]) with mapi id 15.20.4649.020; Wed, 3 Nov 2021
+ 12:22:23 +0000
+Date: Wed, 3 Nov 2021 15:21:59 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Kushal Kothari <kushalkothari285@gmail.com>
+Cc: gregkh@linuxfoundation.org, kush19992810@gmail.com,
+        outreachy-kernel@googlegroups.com, fabioaiuto83@gmail.com,
+        ross.schm.dev@gmail.com, fmdefrancesco@gmail.com,
+        marcocesati@gmail.com, straube.linux@gmail.com,
+        philippesdixon@gmail.com, manuelpalenzuelamerino@gmail.com,
+        linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+        mike.rapoport@gmail.com, kushalkotharitest@googlegroups.com
+Subject: Re: [PATCH v4 1/4] staging: rtl8723bs: core: Remove true and false
+ comparison
+Message-ID: <20211103122159.GT2794@kadam>
+References: <cover.1634967010.git.kushalkothari285@gmail.com>
+ <47dd38847c4e36742f88f4493773fef602ca079b.1634967010.git.kushalkothari285@gmail.com>
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1475252219.git.anchalj109@gmail.com>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <47dd38847c4e36742f88f4493773fef602ca079b.1634967010.git.kushalkothari285@gmail.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-ClientProxiedBy: JN2P275CA0011.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:3::23)
+ To CY4PR1001MB2358.namprd10.prod.outlook.com (2603:10b6:910:4a::32)
+MIME-Version: 1.0
+Received: from kadam (62.8.83.22) by JN2P275CA0011.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:3::23) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4649.19 via Frontend Transport; Wed, 3 Nov 2021 12:22:15 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: bb2e974c-c050-4f1b-f5f3-08d99ec496a9
+X-MS-TrafficTypeDiagnostic: CY4PR1001MB2200:
+X-Microsoft-Antispam-PRVS: 
+	<CY4PR1001MB22004B0A4BBD6410DEA2CF718E8C9@CY4PR1001MB2200.namprd10.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:5516;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 
+	v5fi399kutyN1wJ0nvRV60LkHiLLWjKAFq3rqjhX9DHx6+Q2ZLlsUAyaIXXiOGwdXmy6N38qqWgSMpjqxyPnDn/AcoS6YTF1wLTLNRuA7jsWRSBVqQVm4R0ro15DLditSijolsUa7tYE8J75jMqPQNUg/GLlGE5MYruNlCagslZrcCp6zpiioW/6kkUsEyp9TaaOF5YjSUPrqaspxghmtJjl0aJH6gQ8iuZvXE2vCDryCbyBKYymKrauLH5ZDlggq79tfUmOk6m/BXCrtA6n1NurA6Nmz3d6uaJ2ARWlh+qJAMubPcT+O0G/o0Fh4q+yqFfjL/QL9aTWkeUrA4ujKncM51Rm9vkOamEjYzAAuSkuf+gIExfv9FuFWgueWXA3WZdToAo7tU5u2dIUzJnKovPrC2fGPFM4Ry6T/d7GeresB72gJHMn4XeBGUecRUwScKzpRJrmL9rlM35Q7x1Krf4K5CK0Xh7w40J5mcq1bI3wDUgiTBBbePBFdTgj1UDUdeHEtto7d16lZD7bJw5htlZfGgIy0Y0jMgN1Ha+K5po30I0BWISwjkYOFE1Ly3Lv7ZhnU4hh9KQetIo7uKd6MFOAKxkBF4geZyABmkTLCyvXrTClu1FWkT1hr5YQ/w1pDiUd6qrWztwJ6xeNzkr+ZB9W//9zjvMsay8xVTX5J4Q3EEUxoEdNc5i59BJNdIuNRtGOL5Ezh8XEXagQ5O2nGw==
+X-Forefront-Antispam-Report: 
+	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CY4PR1001MB2358.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(366004)(38350700002)(38100700002)(508600001)(66946007)(9686003)(2906002)(55016002)(86362001)(5660300002)(186003)(26005)(6496006)(44832011)(66556008)(66476007)(956004)(52116002)(33716001)(83380400001)(316002)(6666004)(8936002)(6916009)(4326008)(1076003)(7416002)(9576002)(33656002)(8676002);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 
+	=?us-ascii?Q?zcCqAotKJ2A2X5vw+mBA+7BUmdRef2gdIgMSucJIvLTAI+lxfd6COolLMpQw?=
+ =?us-ascii?Q?WsWD3v6mRd3bfWQes9dFJdzhOo/GxKAy0zvyZ+whGcaMqPs3cY8PrVW8k0Bt?=
+ =?us-ascii?Q?ohIVvjFJvU7zm4X1Mzzf1h+YdoNR7xHUwtKZbLgTkLCJUDLWiVj4C4lqlez3?=
+ =?us-ascii?Q?Pr8qZnYgTfofVgR44fKdbBzf1qeLjlcj32Ynqh1/EO8kvuaOmLkH9Z2EsfOC?=
+ =?us-ascii?Q?4D2QmSTpCaMR9bEt9IgPBn1wSrXFShT5yR/HXdYkyFYOGxpd5YMdjVKz08jr?=
+ =?us-ascii?Q?JdikOxkdf1UJfQjf2unWNB4IG7N1BtTd8r+jplvQJAXe7To1dIKho2OQc4H1?=
+ =?us-ascii?Q?AbSiV20bAFuC99FqE3Yr9oEBJMlUtW4a0ydPdzq+MeVxyIzm+T9gTH8CPcAs?=
+ =?us-ascii?Q?xDqhNppqUTgdrdi6vf80VDhh9Yc85NX62jenXCUQVUz0lEjdklQj7yUR24zJ?=
+ =?us-ascii?Q?V359YomBrCxxUOU6Ih8ieV2lXjQhgJ9B830Zi0nTW4cuPvPv1XCqLQ8EWJUY?=
+ =?us-ascii?Q?smZJIt1tSGbqaNDRKlrBHn375Bor/8TU6nE0+uSxMGohiL6JdTTTVNUepAil?=
+ =?us-ascii?Q?lsLsjIZLZHpHVzVXQ/olomes/MZNbYmMuVptgIMWbpvrSVFISbxDLBo55hDg?=
+ =?us-ascii?Q?tS8smKh7hjWJVnrhNcEKDAex4fVtfvYUaCh5H9or1MDcLhTqDvgd1sGiu0+y?=
+ =?us-ascii?Q?5RYQv1f4r57V6bsyKOhcR478gcCZT61erQcUdgFg8bmdE8IyEUwknr5NyP86?=
+ =?us-ascii?Q?oINwl8XKRc+0B6DjdIFzPNoaRgk+QoF0d6rKcez8E4NToAjgJxJqVR2neu3p?=
+ =?us-ascii?Q?ZxCs94vcOjZ1xwtZdrdBP5S6qeKuOGvoM+YXrwuyzefBJQBmPvRI9M4fWpj4?=
+ =?us-ascii?Q?luy4H/0f3pSy7OHnUvCXwwlHTnHseZZd5iaNy5TQl742/l8QE+Q7n4FaZe3L?=
+ =?us-ascii?Q?IzWZ8e7WJc1Ykcp4ixCALZQTf6hEybyeYBwQpZffv9kzr1W7D7T/g/1qYvTw?=
+ =?us-ascii?Q?fcTGaa8jsQG6p8Ty5mpmn61cJwd1bj7h+Ztc/wICDagCcECWLSB6KHYlS3Aw?=
+ =?us-ascii?Q?ZATKlLwN636rMdSajiBHHlBDSukzVjK8X07iJon4sHITkFXf/2t0V3IXGycc?=
+ =?us-ascii?Q?XoTvIdDGUlgF5/gtH78bT/zYXtCothe3xKfztRIJ1spwNG5XkQiAx0NCbHXv?=
+ =?us-ascii?Q?W/fY1I5IgoedyUlM0GQjcguOyX1xsbclxCuGmaYL5FjhdCgm5Q+LbaYV700O?=
+ =?us-ascii?Q?vrsg7h3cU3EmteZzhUYSZ33AnU8dnJFbB9GRutJ8foiVKkIt5rmO2zhpZPbO?=
+ =?us-ascii?Q?G075Zh9xwkbUxshq+N5fnNEO6jCNDbLiDPJaUtdQmuZe4Kl9QibZ/PiYTwfb?=
+ =?us-ascii?Q?IbYjBgj9IFEhVz3CHc1KHZOUVTOJziWfHr421rD85veC5GOXk9c2sJVZGUhi?=
+ =?us-ascii?Q?MiWwQsLQbpqQ9sKrNlqOFvueoH+B3SPxOTa30gxYt8amvHDFzqCEv+J6i2M/?=
+ =?us-ascii?Q?Puu41lfAOddVFnN6tJZjW9JbYpmIyu6rVEr80GSJgBYLYNU/R0gN9aL3/EHD?=
+ =?us-ascii?Q?24VoRgdD1jUGPbNuwTFZ9zckl3021wNvalheyYiwfGuJI5qtnv3OosgDLDcK?=
+ =?us-ascii?Q?y98pPUhEsQzw6+7madb2l1EW4bsLNwUTsegAciP2NFApUYaPu6hp+AxZWa9B?=
+ =?us-ascii?Q?tV5UHA=3D=3D?=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: bb2e974c-c050-4f1b-f5f3-08d99ec496a9
+X-MS-Exchange-CrossTenant-AuthSource: CY4PR1001MB2358.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Nov 2021 12:22:23.7380
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: LiyBoBlm33/y3nJ+KRkJzfhPjEcKUbIm7lyd+J1hehCVX8drzf1E27zPua6CfXakeY+pdVOLqig3c1NYOssmi4H96LCJAusGpLUFpwpxZgE=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR1001MB2200
+X-Proofpoint-Virus-Version: vendor=nai engine=6300 definitions=10156 signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0 suspectscore=0
+ malwarescore=0 bulkscore=0 spamscore=0 adultscore=0 mlxlogscore=999
+ phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2110150000 definitions=main-2111030071
+X-Proofpoint-ORIG-GUID: yYIy_Y5s1wbUMDnARvE39VDL2C4li0B5
+X-Proofpoint-GUID: yYIy_Y5s1wbUMDnARvE39VDL2C4li0B5
 
-This patch fix the problem of block comment when the block comment 
-detect by the checkpatch.pl 
-CHECK: Block comments use a trailing */ on a separate line
-so to fix this problem just remove trailing */ and add it on the next line
+On Sat, Oct 23, 2021 at 01:05:47PM +0530, Kushal Kothari wrote:
+>  	struct mlme_priv *pmlmepriv = &(padapter->mlmepriv);
+>  	u8 mstatus;
+>  
+> -	if ((check_fwstate(pmlmepriv, WIFI_ADHOC_MASTER_STATE) == true)
+> -		|| (check_fwstate(pmlmepriv, WIFI_ADHOC_STATE) == true)) {
+> +	if ((check_fwstate(pmlmepriv, WIFI_ADHOC_MASTER_STATE)) ||
+> +		(check_fwstate(pmlmepriv, WIFI_ADHOC_STATE))) {
+>  		return;
+>  	}
+>  
 
-Signed-off-by: Anchal Jain <anchalj109@gmail.com>
----
- drivers/staging/iio/adc/ad7192.c | 15 ++++++++++-----
- 1 file changed, 10 insertions(+), 5 deletions(-)
+This is a "let it slide" moment.
 
-diff --git a/drivers/staging/iio/adc/ad7192.c b/drivers/staging/iio/adc/ad7192.c
-index f843f19..7c0635f 100644
---- a/drivers/staging/iio/adc/ad7192.c
-+++ b/drivers/staging/iio/adc/ad7192.c
-@@ -36,9 +36,11 @@
- #define AD7192_REG_ID		4 /* ID Register	     (RO, 8-bit) */
- #define AD7192_REG_GPOCON	5 /* GPOCON Register	     (RO, 8-bit) */
- #define AD7192_REG_OFFSET	6 /* Offset Register	     (RW, 16-bit
--				   * (AD7792)/24-bit (AD7192)) */
-+				   * (AD7792)/24-bit (AD7192))
-+				   */
- #define AD7192_REG_FULLSALE	7 /* Full-Scale Register
--				   * (RW, 16-bit (AD7792)/24-bit (AD7192)) */
-+				   * (RW, 16-bit (AD7792)/24-bit (AD7192))
-+				   */
- 
- /* Communications Register Bit Designations (AD7192_REG_COMM) */
- #define AD7192_COMM_WEN		BIT(7) /* Write Enable */
-@@ -81,12 +83,15 @@
- 
- /* Mode Register: AD7192_MODE_CLKSRC options */
- #define AD7192_CLK_EXT_MCLK1_2		0 /* External 4.92 MHz Clock connected
--					   * from MCLK1 to MCLK2 */
-+					   * from MCLK1 to MCLK2
-+					   */
- #define AD7192_CLK_EXT_MCLK2		1 /* External Clock applied to MCLK2 */
- #define AD7192_CLK_INT			2 /* Internal 4.92 MHz Clock not
--					   * available at the MCLK2 pin */
-+					   * available at the MCLK2 pin
-+					   */
- #define AD7192_CLK_INT_CO		3 /* Internal 4.92 MHz Clock available
--					   * at the MCLK2 pin */
-+					   * at the MCLK2 pin
-+					   */
- 
- /* Configuration Register Bit Designations (AD7192_REG_CONF) */
- 
--- 
-1.9.1
+Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
 
+Normally would keep my mouth shut but we had already discussed it a bit
+and it's really important to know the rules.  In your original patch
+you did this correctly, and then a reviewer made a comment about a
+different set of parentheses and you modified this one as well so now
+it's wrong.  The extra parens get removed in [PATCH 2/2] so, whatever,
+it's fine.
+
+The rule is that if you change a line of code you are allowed to make
+small changes to fix the style to make checkpatch happy about *THAT
+LINE*.  It's not required.  Try to avoid making too many unrelated
+changes if it's going to make reviewing difficult.
+
+But I don't want to see three patches fixing the style for a single line
+of code.  You can take it too far in either direction.  We had a guy
+who was re-writing all the error handling for a function but he would do
+it in 5 to 8 patches.  It was crazy hard to review.  He introduced a lot
+of bugs as well.  It would have been easier to review as one patch.
+
+But if you change a line and your change introduces a checkpatch warning
+then you *must* change the line.  So here, removing the == true, means
+you *must* remove the extra parentheses.
+
+But it's fine.  Now you know the rules and can do correctly going
+forward.
+
+regards,
+dan carpenter
 
