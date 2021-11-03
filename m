@@ -1,170 +1,225 @@
-X-GM-THRID: 6608122280379678720
-X-Received: by 2002:a67:8146:: with SMTP id c67-v6mr1331124vsd.32.1538573363045;
-        Wed, 03 Oct 2018 06:29:23 -0700 (PDT)
+X-GM-THRID: 7019965111499489280
+X-Received: by 2002:a37:44cc:: with SMTP id r195mr35031632qka.77.1635936557664;
+        Wed, 03 Nov 2021 03:49:17 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a1f:93d2:: with SMTP id v201-v6ls166622vkd.2.gmail; Wed, 03
- Oct 2018 06:29:22 -0700 (PDT)
-X-Google-Smtp-Source: ACcGV63pmYukfzb5SG/KoNF6ifvznouJpeDxBHfxa6wOKr+SBOO6B4VGV2lNsaS6e5s81iUspr8V
-X-Received: by 2002:a1f:9757:: with SMTP id z84-v6mr1276024vkd.19.1538573362349;
-        Wed, 03 Oct 2018 06:29:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1538573362; cv=none;
+Received: by 2002:a05:622a:1d3:: with SMTP id t19ls1082305qtw.6.gmail; Wed, 03
+ Nov 2021 03:49:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyTSiiGCFDoStkk3sJL5xmac6NKwOdffRCdhlZqX8N0XFdiaX+InJUsAkkTKkRY/upLI2n0
+X-Received: by 2002:ac8:7e87:: with SMTP id w7mr45322734qtj.34.1635936556733;
+        Wed, 03 Nov 2021 03:49:16 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1635936556; cv=pass;
         d=google.com; s=arc-20160816;
-        b=QhA7SZxj5Lk7/eurBrr9obRxYhiPFTIcQi1F0Q42wF5KVKfXqd2ZKCcfmnQq3bsOWU
-         1fGOCcuMK60OPNOyZjUMR7aKr3RQVBRKMcIEGY/RWc2i6aIG9+/ehd6DMCNqx8Augzs4
-         nJ55DJ5qXp6TkKymHEm8B7bfE8POf/sFDU6oTUQWRRSCAUuqu/SyYc7NvlcplYfurPUn
-         2u+hy0NkQXtq/iXldU7IKwojNVe6XwEY0GuybOhaWVt1suJzdtaO4mfo4nah06q7wxLp
-         JBoLGr2Slea6n+FT5qzkgpD3HI5Sz00nv6+MMa9yPziLZxO4oBf5tdAVpnrx84XcKfGW
-         1Qpw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=bbCzqYIe9MB5OztHKGIWplG5nDOgpzMAOkRNok8RtBM=;
-        b=tcHzoq0Y5Cf2iTovhbsguMtoQ80WntNfqAkH1nqic7igZ/O2JpyPfDvUeoHcJHtKl9
-         89JyMYOwwp8ixCOPFxd1sRQE4Zn9+hEjkmVAJCDGSXMB04j2TL98HSM9bmZiajOvHan/
-         Zt0efSLQNUiXC0aeBEHZ3srJaR0xwV/3CU3WYNBmdkt1Sbtf/di5QOuB9FUE8blPlPWe
-         ssBFtoLLZ4+AC8Soks7UGWq7Qa42XVSq5+7F8o/Xo6NQeNhprbpB4d5P8kpVIGGhM52W
-         D7ImMqXixSePp6Q71LcGLEl0t8kSnV3y3GK73Tae9QtxiNJ9Ogv8vbLtP79yEjhUqdIF
-         N2iQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MuaUX9J0;
-       spf=pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::52f as permitted sender) smtp.mailfrom=mamtashukla555@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <mamtashukla555@gmail.com>
-Received: from mail-pg1-x52f.google.com (mail-pg1-x52f.google.com. [2607:f8b0:4864:20::52f])
-        by gmr-mx.google.com with ESMTPS id p9-v6si46131vkp.4.2018.10.03.06.29.22
+        b=lTknl1sgS8aVeXUOkY+9a/7UeVkVb+vzK2tkg+d5w4iXT49gddeOchaMcTRjkTaGaD
+         wMG5YztTkh/x3ifSlhnXfbE9rfYVddn/o5xRGyze5zwoQTvWpKfYza/UBG9Qfi7LjZ0P
+         Ue6mYJEtpYmUQiCSBNFMXmLpVKc1elD4qOAcD2mkAi4y7jVJ7ijYxCstBxUl9+0hZpPg
+         PGHMcQ9fDZCZyWN7LUU9cjxeWpn1hvrC8zoByA0CzGTT9odD4Lf9J6kovFuRtunoLDvf
+         icZwiOzUA3X3e5TDEqkWdE/D+t8A52PTuzovZHeTFSaR3yxjIIwKtWmj1OISVO+M9a8F
+         nLsg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:in-reply-to:content-disposition:references
+         :message-id:subject:cc:to:from:date:dkim-signature:dkim-signature;
+        bh=YTKqAO+ra+a26fFReInrrWH+KFx4C80i8jhFBLVr6ZY=;
+        b=DoV6P0QlRv9Ui0rrkECmZ7zKgpt4fGBs2O7aizVqmwPBMtMu0VZJCsztA3XFkpIrgB
+         DGpcMayxGegpG7vnrML5W9nyrhRq/oTWEircV0M7q9lPeyeapf/GDYVqQzGdJFj1PC5J
+         ZbYSUCQW+Hrjwpb9TVQmHvWBrqabwJUq66+KYFsEKlAJLYr2UNwfSBZQzcIc4KBJ/vHg
+         S6tkB5VnjK2fW5nvgUxy7pq4tgD1UO63vxZ5aTJU4UCsiLuZt/M/T2XQ5ePAm66hdb7A
+         x1Wxv0/XoPN0BzFqjyj7fIQxsoDM77tTBAA70Mfj3X5tvr+DroFkBmHVpDHirCTbHHJy
+         k66g==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=pass header.i=@oracle.com header.s=corp-2021-07-09 header.b=PGVJa0LJ;
+       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=VPNKuVo2;
+       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 205.220.177.32 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Return-Path: <dan.carpenter@oracle.com>
+Received: from mx0b-00069f02.pphosted.com (mx0b-00069f02.pphosted.com. [205.220.177.32])
+        by gmr-mx.google.com with ESMTPS id bk24si279235qkb.3.2021.11.03.03.49.16
         for <outreachy-kernel@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 03 Oct 2018 06:29:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::52f as permitted sender) client-ip=2607:f8b0:4864:20::52f;
+        Wed, 03 Nov 2021 03:49:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 205.220.177.32 as permitted sender) client-ip=205.220.177.32;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MuaUX9J0;
-       spf=pass (google.com: domain of mamtashukla555@gmail.com designates 2607:f8b0:4864:20::52f as permitted sender) smtp.mailfrom=mamtashukla555@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-pg1-x52f.google.com with SMTP id y18-v6so1601024pge.0
-        for <outreachy-kernel@googlegroups.com>; Wed, 03 Oct 2018 06:29:22 -0700 (PDT)
+       dkim=pass header.i=@oracle.com header.s=corp-2021-07-09 header.b=PGVJa0LJ;
+       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=VPNKuVo2;
+       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 205.220.177.32 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 1A3AFhMK027859;
+	Wed, 3 Nov 2021 10:49:15 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
+ : subject : message-id : references : content-type : in-reply-to :
+ mime-version; s=corp-2021-07-09;
+ bh=YTKqAO+ra+a26fFReInrrWH+KFx4C80i8jhFBLVr6ZY=;
+ b=PGVJa0LJ/aNQE+cGy2e2KV9tXdUN0ZSBRJioSpSBlC8p6jW/4ZcuDhqvueDdOEXhkPWq
+ 097hGPOXkGiOW8nNrzglBRDOosyQFjJ11cy4A0TWHjI5qk73aizHlYee7kyGGQNBX/UB
+ uT2AKvCEU0Qp5Cemcj8OcrIKcudLz7NiDkQVElfXILGm2VPDsWOXo8ecikffEx0smbZ9
+ pkY8Q/j6iZdR/1+B5bbZuhdn8kstM9cNB3nodgay4IW8g5B+ERdk8Sdw9Bhs5EOSWjUb
+ RBF2epGDIQClYtIb+lHrGqy1mk5gv6XhUhQOYgQkYGDSe8ENe+dunjNTBu9Y9GRahYTd aQ== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+	by mx0b-00069f02.pphosted.com with ESMTP id 3c3n9xh2rb-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 03 Nov 2021 10:49:15 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+	by userp3030.oracle.com (8.16.1.2/8.16.1.2) with SMTP id 1A3Al2vq039146;
+	Wed, 3 Nov 2021 10:49:14 GMT
+Received: from nam12-dm6-obe.outbound.protection.outlook.com (mail-dm6nam12lp2172.outbound.protection.outlook.com [104.47.59.172])
+	by userp3030.oracle.com with ESMTP id 3c27k6tya1-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 03 Nov 2021 10:49:14 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=HlQv/rUJFFBfsMBn1zvTH73Vq1GnOGqdq0aDe3hBAgyql84C+I87Z8ZQD7WD/aNKnGF8cq3QeiAXWJpHyEp+dY8EM5MoPQFqR/vZ78NYcXKY2UAKbaZ+meQ7QvM+uTqkKBRcn30f5fflBtst5PBSAYRSNpgjHx5i1xcWB0sdgyR7S2kJXQn09l0H575qp8GQanBJtEcJdcYq5VdtD/+xAcGLUzf5aWeGWXrw1cX0nLu7PuVooU2YK7/H4xxf+6h0fQyyEsUGAGdkFGR4jRJnIFmJcZfnxzs4XlIVoQ6iBpcGtjJr1fx9hFToyYR7UDzwGTH061Jgsg7uqMEU82+uNw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=YTKqAO+ra+a26fFReInrrWH+KFx4C80i8jhFBLVr6ZY=;
+ b=DhQIHXfWh5Mx0O/U2py6u/S8M5W5GW8OC0CRHwhINB0Do3l5yL1tCbQzIjbX4I4TCs+MR91loQ4YM0uTvZvGvk0jNtcYeBdbzOhVyj4AuJD7c3m9KsyJ4OomvlfgXNQO84HX5vxJIHo4+rPK4Ti1ogPB0SjVoNdH+wAV611F2EV+PMJd4H5zB3VLoaPTqebbGKZCqX2+BqNRyMSZPsV9dhrDgdHHQkH+eZeHBLL7qWvhOxNpapl5lc0BuGw7mKgzIi+GUqVukvz/+0gIA2EwEW/Th8+ei5z4AoT7e5x6fMpgyUtu1sXrTyskmQh3OCv/VRrnJyK885uNEV9Mz9kvHA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=bbCzqYIe9MB5OztHKGIWplG5nDOgpzMAOkRNok8RtBM=;
-        b=MuaUX9J0LyD55CwTATq3ZmCJHoV9Iym0mMPzaIvR+Ljw7ppQyAgBHapyf16E2AD313
-         rK+LGvHl5+UjPRsFLFKxJYTf07OSqB4ViV85rvWZu9um+m7/++Q2ACc3JXWMa/xbYZAl
-         ZqSt2Anr19iM1kEQ4cPfDU0P/YgUhsqTwn2UcYoEUaB77bN6cUUlQ5JTMUxjQx8d2Xnr
-         F9/rv73nKZkjtEYZZ5nojRUdW2NYlEiWW2+lOFRFBmtsGgMc6EfFDJ0eLUyx0iXO6kl6
-         RBkfCRK6saOYUOnggPxwaSxhopVzbigVDqMWReTxgvhNyuo3o0x/O4DOItyLt3HuSF91
-         RngQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=bbCzqYIe9MB5OztHKGIWplG5nDOgpzMAOkRNok8RtBM=;
-        b=NMNHnAEVPEqms6s8K7AemPJW1uUYZq4zcw3ebKBgvLUn1OEFUllHqO1/M8EtJpQjkl
-         MEDN2r5Q0iZFcPRn7DzyfRqwxKC88dyUI/UqwbzIe46CQSgOGyaovjwM8cQHoFfw4yp8
-         KyUmaZkhOenTEz9yKOZVatUAeM9tO7mbtgXQva/pvQQ4Z2G9sg2fKRbAmcpouSFZSryf
-         c3pT13lUPffBIQ3eohE4k4mL+OZwuc+g2EcW9/XqgRsi53zrjfUyfJJ/9gXuwIQ1CTOl
-         YMwQOn63hP8VSyfdXmxymZyb39IWInm/SSHdfXxBxJwZCF9izglH4XUPEjjXEw2Hel5p
-         kvAQ==
-X-Gm-Message-State: ABuFfojpsN7di4NtJmafk+jUZy1Na4HC4iRI4Kt8a6hF7l4J/+hZeBEd
-	4Rqiw5X7iFEEvo8jaJzNhMY=
-X-Received: by 2002:a63:c44a:: with SMTP id m10-v6mr1410171pgg.416.1538573361885;
-        Wed, 03 Oct 2018 06:29:21 -0700 (PDT)
-Return-Path: <mamtashukla555@gmail.com>
-Received: from armorer ([59.97.9.91])
-        by smtp.gmail.com with ESMTPSA id q5-v6sm6769603pfj.127.2018.10.03.06.29.20
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Wed, 03 Oct 2018 06:29:21 -0700 (PDT)
-Date: Wed, 3 Oct 2018 18:59:17 +0530
-From: Mamta Shukla <mamtashukla555@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: gregkh@linuxfoundation.org, mamtashukla555@gmail.com
-Subject: [PATCH] staging: fbtft: Adding spaces around '<<'
-Message-ID: <20181003132917.GA29977@armorer>
-MIME-Version: 1.0
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=YTKqAO+ra+a26fFReInrrWH+KFx4C80i8jhFBLVr6ZY=;
+ b=VPNKuVo2kBXiA8/KXN3AKphrHGmVLtwi/CxHF9VetHNuj6QdNGXMjJQ2McE8kCDqEQSJXe638ED6t+4RqanexmnEaoLcvrfNnb6v7SlOBh+h4EfRRFk94DoSAYGt5WI8zsPHOc3fMkJexGs9dNbYcJDR7qW+HQaCH0Rmz9YVZu8=
+Authentication-Results: inria.fr; dkim=none (message not signed)
+ header.d=none;inria.fr; dmarc=none action=none header.from=oracle.com;
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28) by MWHPR1001MB2127.namprd10.prod.outlook.com
+ (2603:10b6:301:33::12) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4649.19; Wed, 3 Nov
+ 2021 10:49:12 +0000
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::d409:11b5:5eb2:6be9]) by MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::d409:11b5:5eb2:6be9%5]) with mapi id 15.20.4649.020; Wed, 3 Nov 2021
+ 10:49:12 +0000
+Date: Wed, 3 Nov 2021 13:48:54 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: Stefan Wahren <stefan.wahren@i2se.com>,
+        Kushal-kothari <kushalkothari285@gmail.com>,
+        linux-arm-kernel@lists.infradead.org, mike.rapoport@gmail.com,
+        kushalkothari2850@gmail.com, outreachy-kernel@googlegroups.com,
+        gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
+        linux-staging@lists.linux.dev, nsaenz@kernel.org,
+        bcm-kernel-feedback-list@broadcom.com
+Subject: Re: [PATCH v2] staging: vc04_services: replace msleep() by
+ usleep_range()
+Message-ID: <20211103104854.GO2794@kadam>
+References: <20211017092900.134752-1-kushalkothari285@gmail.com>
+ <83076fd7-3183-5665-a9df-63a0b7e13c3f@i2se.com>
+ <alpine.DEB.2.22.394.2110171433141.3026@hadrien>
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <alpine.DEB.2.22.394.2110171433141.3026@hadrien>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-ClientProxiedBy: JNAP275CA0017.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:4c::22)
+ To MWHPR1001MB2365.namprd10.prod.outlook.com (2603:10b6:301:2d::28)
+MIME-Version: 1.0
+Received: from kadam (62.8.83.22) by JNAP275CA0017.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:4c::22) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4669.10 via Frontend Transport; Wed, 3 Nov 2021 10:49:06 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: f52bcc53-8bc1-4654-fb54-08d99eb79232
+X-MS-TrafficTypeDiagnostic: MWHPR1001MB2127:
+X-Microsoft-Antispam-PRVS: 
+	<MWHPR1001MB21272CA0D0438C521D9FA6A28E8C9@MWHPR1001MB2127.namprd10.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:541;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 
+	bssZJB74tS/ygegAoaNvtFWP7gkzBtDgWGjb4Jw1BG4pP7+7oY4MGVmagSxB4zsUaSxdK5EIZsOSVyWI4mGSUkSHoY6Y5MnvtmKooHcWog2RTfiqueS/r2w7EXZiUojbx7OOhgh54PV6BIEmZPd9LDefsPyPzOl5jIPfz24sbwzjf36LvKDQbqwJE36hLjHL1VkWRco4th4DJDnlZ/isHQ1ZXb+cy0CRPTLV/3o8AJuV08eveT7n4TvymBcY7Qw37d8gKX3rhsMioFNsXliJt49blbHkTcPXcnTjQhARRMnupGf1kM6dgiQSZJz1OT0ZnlQZoxW2BVGRG/ipgihqtZsVnS4PiIEFrSMWv1s+hxqFBwaS4+B/Pp0NemOG9b0WtSWOUzkWLBsjfVJqcpzby6ENFrfLcH2kDbseQ8Ufd8FvMZjeRrmq04ebE53zokKzbC1b+N6XTocOIIlxlo0Q1y5NPGmZkjXFB+d4WUE1gwJAQ193vWD3zfs0G9wngf6wY3pgrbJEkSDLlAOz267LRpBIa9Ga9/4VgVVTJTWYgFJimutwW0a02BR+ilIm3a7RsrMs8QFLalflQERIzOKyiP1+PruCFNjYgMx614XHdVl5PaQrsZpXZiBuOCMWfolMuN08YCfYXUx9jiIRdonlzuggfZL0jJBepw5lRX+F13C9kA8tQ+NmjlCnNhCbEBFs6S/MDx3Iuu6dloRjdhCmkg==
+X-Forefront-Antispam-Report: 
+	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MWHPR1001MB2365.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(366004)(186003)(52116002)(956004)(9576002)(6666004)(6916009)(54906003)(4326008)(66476007)(5660300002)(66556008)(33716001)(38100700002)(38350700002)(26005)(83380400001)(508600001)(316002)(86362001)(8676002)(1076003)(8936002)(44832011)(9686003)(33656002)(66946007)(2906002)(6496006)(7416002)(55016002);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 
+	=?us-ascii?Q?m/NhsOsPSo3bGrFx5vDY/kRgxsYjQBhzh3u1dsZZ6KZvaJVs33tM6Dnduri8?=
+ =?us-ascii?Q?ZBM0V4kqAIaFz/SQ5Uo6vaOesoc+8gyDHOuJQOrep9x1lvra1oji3FYZhuFs?=
+ =?us-ascii?Q?mFlqBYCHmT4MA8BjWLlbMuxhx7iNnoMW6IBjOcq62+hbBr9VHyKHRLnjwYlO?=
+ =?us-ascii?Q?8RAvAC4qY5mrMgppTGwSaNxSErHTFQDai7orgqCmwBXfvi70Wzzu7+x5988j?=
+ =?us-ascii?Q?2YjyvpqEo73jGzWxyKtKY5CiugOoO8ERTNG6gO1PfBdmEb/GB07FecEzkqZz?=
+ =?us-ascii?Q?Sdo/hIJzBwq7OgFqyG/nyCAMIAJIpU5g/Ai54/Cc15jz3kCSG8x5SDktDhXD?=
+ =?us-ascii?Q?XfD0elpis2l16/gSMJgn5nz5WUmvDkBEsh7fvoV/wwGHviwK22xha5pSwNmd?=
+ =?us-ascii?Q?SMgAdb/7uBQ17MNPTSZIUI10nn2tDX3ab+tTCJqbRlCezs8un7FqfZdjhjYE?=
+ =?us-ascii?Q?a9am0Qpw0Krl6E+a5LsYpowT4W4/vx1LZqcaqJHTgZJuwBKGrngi4ZYypLhM?=
+ =?us-ascii?Q?p/48DBHFns2tPD1QYO0j9zfiHNkgWzl4xcrsieLOxh9vtBmTgnQqflMjE7uU?=
+ =?us-ascii?Q?Sik/Uq5JalvRphXgkevv+bcE4eRdPDGsyUiLwk2+kIJyKOMdih0gfxCQ6iKV?=
+ =?us-ascii?Q?3hluTSsGLfJj6RYHsZWQGB4KH3tH7Q9z6UjA2uClRta/XTvmts+K+/IsnB+H?=
+ =?us-ascii?Q?T4NglGmwXt5GEPZ47p7s/d89qFlZyBipFX8dy/VrDChJ/sLJm4cH5X9GVwK2?=
+ =?us-ascii?Q?m96CU6mp6Mglp8wUfiPIGMVf20r/UkzclFEItsNkHlWasdz8tqC+hrGuvLAe?=
+ =?us-ascii?Q?6k7p+SVxlAMQ3DQ2lkz2amsKL/RPCRdqtE6PnPWYNSxK2UogM5ruF/78UHZF?=
+ =?us-ascii?Q?FtBqes/zU09Nw9LrXJOdItUDaT1+0jY8S0TmGbn7MugoJLYAdfiKoOe5lZM2?=
+ =?us-ascii?Q?bHiM6a7Ji+HIznYdGJ8XCogIY0dzsJPIpU3xMI0IEp4xMsBscB8BMLj9q1qJ?=
+ =?us-ascii?Q?QELOVtWUzB1YQh3AYfJX4KXrMFFjKOqJvWoNfKtik8aosn0ApiDLRaqE2WEs?=
+ =?us-ascii?Q?Br1tjBG8qs08wNqH8aN32DV1QEUmK3UnxeZ5F75/N/AV5k5FcPNqkK9ztLdY?=
+ =?us-ascii?Q?FzCfttCSpFsKhb15gVWjz2IkWXGzBELeZnwcnytKt8Sd9itZIMQLaz56vESN?=
+ =?us-ascii?Q?NlHaZdQ2RDpyxnLQCAYHrQDEioqNN1CgJZ10aX928NJh1K5HRPVeXRNPXuh4?=
+ =?us-ascii?Q?OeERfgtpmEHuK/t6TGajHTr1nKSjsd4zatmirskx3f76c+1nFdPOe5Gc3raq?=
+ =?us-ascii?Q?EAb7QP6WT9bBOOea6n7K44k/7bXsPs8xF5Y+vNXUikfJNg+sXZJebhhsxHvf?=
+ =?us-ascii?Q?mza+TgyzvaGoaYycfSbNwImNHxl57gL9dQgr7YJ7zsQx+AovTp8pXocgmFid?=
+ =?us-ascii?Q?j+VmLKLfvE4FJE62JCksJH8hiQ07aCSmgeDQVbHMRZTor9+yGKRfUQcYZ6Ag?=
+ =?us-ascii?Q?0CEXAtIZEG2AsC2yPc1yNughlEfX2xdZRINeZDzxu89GbVe41hWGBla9QucI?=
+ =?us-ascii?Q?SvbempGk7GBht3kxHJsGyZpZbGe1n+Wxq+VRjqIGTRfHeahbdGuLKsA8Erz1?=
+ =?us-ascii?Q?eV0P9gBDy07KAy552otUPoszIa9f1EnjzyL2rLPJ5+od959TkueLdCVYFTm6?=
+ =?us-ascii?Q?/bbH7A=3D=3D?=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f52bcc53-8bc1-4654-fb54-08d99eb79232
+X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Nov 2021 10:49:12.3261
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: rZ/7HxZndfEWGYOxHkSp9u8tevxzBTIHauVNYsFOdyCTzgLYfurZuMKhww64hkMKxqtQ/FXCbB8OmIBfirOSHJv2+RvzIrpmvH4y6gep4F0=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR1001MB2127
+X-Proofpoint-Virus-Version: vendor=nai engine=6300 definitions=10156 signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0 mlxscore=0 spamscore=0
+ malwarescore=0 mlxlogscore=999 adultscore=0 phishscore=0 bulkscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2110150000
+ definitions=main-2111030061
+X-Proofpoint-ORIG-GUID: kxsBo0HpiC4P2seiMjNDwhATSgj5mAmK
+X-Proofpoint-GUID: kxsBo0HpiC4P2seiMjNDwhATSgj5mAmK
 
-Adding spaces around '<<' to fix checkpatch issue.
-CHECK: spaces preferred around that '<<' (ctx:VxV)
+On Sun, Oct 17, 2021 at 02:33:57PM +0200, Julia Lawall wrote:
+> 
+> 
+> On Sun, 17 Oct 2021, Stefan Wahren wrote:
+> 
+> > Hi,
+> >
+> > Am 17.10.21 um 11:29 schrieb Kushal-kothari:
+> > > Fixed the warning:-msleep < 20ms can sleep for up to 20ms by replacing
+> > > msleep(unsigned long msecs) by usleep_range(unsigned long min, unsigned long max)
+> > > in usecs as msleep(1ms~20ms) can sleep for upto 20 ms.
+> > >
+> > > Signed-off-by: Kushal-kothari <kushalkothari285@gmail.com>
+> > > ---
+> > >
+> > > Changes from v1: Reword both the subject and the log message.
+> > >
+> > >  drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c | 4 ++--
+> > >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > >
+> > > diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+> > > index 6fbafdfe340f..80a7898c5331 100644
+> > > --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+> > > +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+> > > @@ -857,7 +857,7 @@ vchiq_bulk_transmit(unsigned int handle, const void *data, unsigned int size,
+> > >  		if (status != VCHIQ_RETRY)
+> > >  			break;
+> > >
+> > > -		msleep(1);
+> > > +		usleep_range(1000, 2000);
+> >
+> > there was a recent discussion about this checkpatch warning [1]
+> 
+> Should there be a comment about it?
 
-Signed-off-by: Mamta Shukla <mamtashukla555@gmail.com>
----
- drivers/staging/fbtft/fbtft.h | 56 +++++++++++++++++++++----------------------
- 1 file changed, 28 insertions(+), 28 deletions(-)
+Even better would be an alternate wrapper around usleep(1) which would
+silence the checkpatch warning.  Something like:
 
-diff --git a/drivers/staging/fbtft/fbtft.h b/drivers/staging/fbtft/fbtft.h
-index 25302ff..a3db23b 100644
---- a/drivers/staging/fbtft/fbtft.h
-+++ b/drivers/staging/fbtft/fbtft.h
-@@ -355,39 +355,39 @@ static void __exit fbtft_driver_module_exit(void)                          \
- #define DEBUG_LEVEL_6	(DEBUG_LEVEL_4 | DEBUG_LEVEL_5)
- #define DEBUG_LEVEL_7	0xFFFFFFFF
- 
--#define DEBUG_DRIVER_INIT_FUNCTIONS (1<<3)
--#define DEBUG_TIME_FIRST_UPDATE     (1<<4)
--#define DEBUG_TIME_EACH_UPDATE      (1<<5)
--#define DEBUG_DEFERRED_IO           (1<<6)
--#define DEBUG_FBTFT_INIT_FUNCTIONS  (1<<7)
-+#define DEBUG_DRIVER_INIT_FUNCTIONS  (1 << 3)
-+#define DEBUG_TIME_FIRST_UPDATE      (1 << 4)
-+#define DEBUG_TIME_EACH_UPDATE       (1 << 5)
-+#define DEBUG_DEFERRED_IO            (1 << 6)
-+#define DEBUG_FBTFT_INIT_FUNCTIONS   (1 << 7)
- 
- /* fbops */
--#define DEBUG_FB_READ               (1<<8)
--#define DEBUG_FB_WRITE              (1<<9)
--#define DEBUG_FB_FILLRECT           (1<<10)
--#define DEBUG_FB_COPYAREA           (1<<11)
--#define DEBUG_FB_IMAGEBLIT          (1<<12)
--#define DEBUG_FB_SETCOLREG          (1<<13)
--#define DEBUG_FB_BLANK              (1<<14)
-+#define DEBUG_FB_READ                (1 << 8)
-+#define DEBUG_FB_WRITE               (1 << 9)
-+#define DEBUG_FB_FILLRECT            (1 << 10)
-+#define DEBUG_FB_COPYAREA            (1 << 11)
-+#define DEBUG_FB_IMAGEBLIT           (1 << 12)
-+#define DEBUG_FB_SETCOLREG           (1 << 13)
-+#define DEBUG_FB_BLANK               (1 << 14)
- 
--#define DEBUG_SYSFS                 (1<<16)
-+#define DEBUG_SYSFS                  (1 << 16)
- 
- /* fbtftops */
--#define DEBUG_BACKLIGHT             (1<<17)
--#define DEBUG_READ                  (1<<18)
--#define DEBUG_WRITE                 (1<<19)
--#define DEBUG_WRITE_VMEM            (1<<20)
--#define DEBUG_WRITE_REGISTER        (1<<21)
--#define DEBUG_SET_ADDR_WIN          (1<<22)
--#define DEBUG_RESET                 (1<<23)
--#define DEBUG_MKDIRTY               (1<<24)
--#define DEBUG_UPDATE_DISPLAY        (1<<25)
--#define DEBUG_INIT_DISPLAY          (1<<26)
--#define DEBUG_BLANK                 (1<<27)
--#define DEBUG_REQUEST_GPIOS         (1<<28)
--#define DEBUG_FREE_GPIOS            (1<<29)
--#define DEBUG_REQUEST_GPIOS_MATCH   (1<<30)
--#define DEBUG_VERIFY_GPIOS          (1<<31)
-+#define DEBUG_BACKLIGHT              (1 << 17)
-+#define DEBUG_READ                   (1 << 18)
-+#define DEBUG_WRITE                  (1 << 19)
-+#define DEBUG_WRITE_VMEM             (1 << 20)
-+#define DEBUG_WRITE_REGISTER         (1 << 21)
-+#define DEBUG_SET_ADDR_WIN           (1 << 22)
-+#define DEBUG_RESET                  (1 << 23)
-+#define DEBUG_MKDIRTY                (1 << 24)
-+#define DEBUG_UPDATE_DISPLAY         (1 << 25)
-+#define DEBUG_INIT_DISPLAY           (1 << 26)
-+#define DEBUG_BLANK                  (1 << 27)
-+#define DEBUG_REQUEST_GPIOS          (1 << 28)
-+#define DEBUG_FREE_GPIOS             (1 << 29)
-+#define DEBUG_REQUEST_GPIOS_MATCH    (1 << 30)
-+#define DEBUG_VERIFY_GPIOS           (1 << 31)
- 
- #define fbtft_init_dbg(dev, format, arg...)                  \
- do {                                                         \
--- 
-1.9.1
+#define short_sleep() usleep(1)
 
+regards,
+dan carpenter
 
