@@ -1,135 +1,202 @@
 X-GM-THRID: 7025609319157596160
-X-Received: by 2002:a2e:a283:: with SMTP id k3mr2332806lja.210.1636365454820;
-        Mon, 08 Nov 2021 01:57:34 -0800 (PST)
+X-Received: by 2002:a05:622a:1cd:: with SMTP id t13mr47590035qtw.35.1636116741206;
+        Fri, 05 Nov 2021 05:52:21 -0700 (PDT)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a05:651c:178b:: with SMTP id bn11ls2515409ljb.7.gmail; Mon,
- 08 Nov 2021 01:57:33 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy6KNvMdgNYVurpiLzMLwANeHT0hUvcT6tMTW+HWiC/ZR70YK90/Cv0tPnxc5MRG2A2r1Qq
-X-Received: by 2002:a2e:9197:: with SMTP id f23mr10964752ljg.235.1636365453307;
-        Mon, 08 Nov 2021 01:57:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1636365453; cv=none;
+Received: by 2002:a37:444c:: with SMTP id r73ls4992118qka.10.gmail; Fri, 05
+ Nov 2021 05:52:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxiv4F6qOak9LOPlDvMC8lOHYQpSFWk3xqY1kGLkqT6pfYE/HwkpGp5V9KXImCBmqa1dqs4
+X-Received: by 2002:a37:b7c2:: with SMTP id h185mr47343826qkf.311.1636116740127;
+        Fri, 05 Nov 2021 05:52:20 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1636116740; cv=pass;
         d=google.com; s=arc-20160816;
-        b=wT3945I5T9I4BSboob+mP9pJczdky6XID/+aAQZnSkDm+AjpWq0jUM8znz3NK9Vu2U
-         KVuMPCHewOhXpXK/ktz4WIzQenB+szQ+MbTy3hGGRv8YXf3WU2uQ3nG+/zEKCJKwNiK5
-         mO5EvS6nnQu9md83aHkLuhPyCmxq3oBrwkOsYnovHesUEBJcdcOAtUCB+is8vpXnozo/
-         rg7N1FkmdL+ymKSnwL71ct9wIWklGs6kR724TamQoMMxWV4WSnIrUyKce/tTw19NlqKs
-         WR9dJ2qxzdp8o1kMz2LMzxpH86rCzSGsC2BFXW6FKzHt7OFsKzq1ocycU9NafQl2491x
-         Y2ow==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:references
-         :in-reply-to:date:cc:to:from:subject:message-id:dkim-signature;
-        bh=kOUbhllrGgmpU45GMJothVqWnhtxz4cIj2zv5C1qMWk=;
-        b=FH7eJ4Gg/NQHn1BKsPeKRNWPeEpmDppDwjioP4WQ1ZMyTCqsaH+FsTAZn2EBwpXLl0
-         rdTftyalzT3t47Dpx5wSRBgkNPL+x8pecaMp9oCvA5Ir69Y9BzaV8k8iAlgyY8oYNMjm
-         E4RNc1RWzdL4vGckMOJ+UVGrnwcl98135MX2aeLZsC4XAiLYAFdp32OQxKvbIZCPI1l0
-         mZ4kFCxyqC57pwJYVSQUYKe3UIMf1/qa3OwNmN4bf/V2Npf3vS5iCQDXikU8fnZaNuzl
-         LVjqIgHWobVtnZejivQ8mNyMYreajfNi6XYClZj4yI6ImN9eoVNXOEaAK0mG/oOQhRj9
-         44OQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=oQBdMvS4;
-       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::42b as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <karolinadrobnik@gmail.com>
-Received: from mail-wr1-x42b.google.com (mail-wr1-x42b.google.com. [2a00:1450:4864:20::42b])
-        by gmr-mx.google.com with ESMTPS id i16si18228lfv.2.2021.11.08.01.57.33
+        b=FAGYSvbkirvrpYmAScqz3FzM3Jz7GhQIqudf4xPKFkHbhksEx22Rc6vcWgVQdtqxCA
+         oPWYpi8ep5ud7vOUlF9L/njkSGdY3vItZgWKlNeF/RWoZe7ubyml3g2x8MKRJupjnfob
+         LMoq+QhRLww4o+yQ5V95OuZ4U89/eYPnLWH2iuChlzLl1bAXp/tqkK93t8DV/5ENINiV
+         ixsI1dJDE7l2urxrMV0f4l5WuPriHrXdpf11ioM8+f2B6x2dS2uNRmygRMz0Q6iKmvJY
+         Wn46ucO1oT31ko5C+qkHL/v3a4vVyXTGJS72vKQjILq55enl2CC7P7r335+H2/U1PldG
+         ERIw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:user-agent:in-reply-to:content-disposition:references
+         :message-id:subject:cc:to:from:date:dkim-signature:dkim-signature;
+        bh=ALA7A0/9xtIwGZJvAsLxHWfXsFtXQTwJAXPrZUJnbAY=;
+        b=NrC2V34Sdku4Acb9aVRenOgHdJwP82iPYkc2yuXWFx1ijy1h/xBUk4yi57aJr3qOUv
+         pylpmVE7RmTgrLzIzOIw8uUudek4oGVQDmOEW+b8MgmYBQjEt3mVHRZ7+6l0kcKL6LEG
+         28gNlgkgABilVQvCEsNCd89ml+HDyUvvYXiW7K3mPh+oQtY2fDQv8zHTP4kybc4uzw+g
+         CKsCr28f9YneFe5sSbAYijzQc8n3ff2nQXUNaXMs21ylTv/cz1bZ4UroUE4opOk4vyI2
+         aa6/6/WC1CUsM19585teoqWykJhdIzNiomofb7oy0xFqgJASCbXyUREZZOn+B3JTl4Jz
+         wkfg==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=pass header.i=@oracle.com header.s=corp-2021-07-09 header.b=sIUm+yLk;
+       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=ZpSRSKL9;
+       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 205.220.165.32 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Return-Path: <dan.carpenter@oracle.com>
+Received: from mx0a-00069f02.pphosted.com (mx0a-00069f02.pphosted.com. [205.220.165.32])
+        by gmr-mx.google.com with ESMTPS id k12si1193472qko.5.2021.11.05.05.52.19
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 08 Nov 2021 01:57:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::42b as permitted sender) client-ip=2a00:1450:4864:20::42b;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 05 Nov 2021 05:52:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 205.220.165.32 as permitted sender) client-ip=205.220.165.32;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=oQBdMvS4;
-       spf=pass (google.com: domain of karolinadrobnik@gmail.com designates 2a00:1450:4864:20::42b as permitted sender) smtp.mailfrom=karolinadrobnik@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-wr1-x42b.google.com with SMTP id b12so25796556wrh.4
-        for <outreachy-kernel@googlegroups.com>; Mon, 08 Nov 2021 01:57:33 -0800 (PST)
+       dkim=pass header.i=@oracle.com header.s=corp-2021-07-09 header.b=sIUm+yLk;
+       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=ZpSRSKL9;
+       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 205.220.165.32 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Received: from pps.filterd (m0246617.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 1A5CIHVv009152;
+	Fri, 5 Nov 2021 12:52:17 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
+ : subject : message-id : references : content-type : in-reply-to :
+ mime-version; s=corp-2021-07-09;
+ bh=ALA7A0/9xtIwGZJvAsLxHWfXsFtXQTwJAXPrZUJnbAY=;
+ b=sIUm+yLkSzv9DryHYvRkwFRXNLRis9KPGQuqf9P7ufwCM2CNZzIInPm98VdoC/j52VLR
+ XboLaP7STuVjSXl/Sys2JmuVzsOjbqyYmj12YeI1Wpsookd0nHU7KXa4s/bNQuQewjYV
+ kBoiC0/24Vg1YOA/7tf+SgLawJY6gdFVjOrs3oA/bkB3E6Ib2Nqz79uImyqs1nCaV2L9
+ IxRtwi98Hxg4jtNXwC0ZDIsCMac2OrTQZcAL2ErMF1TDngf4wI5nwazehrvl/Uc8CoO1
+ Dbe8iV85EX+6b/vIea/oNFuYU7+8llcldEOsmYgwAE+Pw1b36Lxhh+OSiETZg0gqXBBl hg== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+	by mx0b-00069f02.pphosted.com with ESMTP id 3c4t7htcum-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 05 Nov 2021 12:52:16 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+	by userp3030.oracle.com (8.16.1.2/8.16.1.2) with SMTP id 1A5CpAkV043996;
+	Fri, 5 Nov 2021 12:52:15 GMT
+Received: from nam10-dm6-obe.outbound.protection.outlook.com (mail-dm6nam10lp2109.outbound.protection.outlook.com [104.47.58.109])
+	by userp3030.oracle.com with ESMTP id 3c4t5cxb1j-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 05 Nov 2021 12:52:15 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=le7uSPNxhRQ+edkTKsIotpTTYHHh0A5Fhl1CIrqfNjKIpyfnNf+HmkTv/jnd4O7msUrDMaw5lTg8pPMcwmbgqcFSlOCxxW1oOHIL8RTvfIIw3B08RJtW1deTdzLXtur9iNlVC91Nt1zDx9NZG/RyCbseJzRi/v44lWQJuQ7M1EQ0NCl5ElpBBzaw9c3w6TiUQJyt7o741cmrD/vmFb5fnPoxRUN3XlZkW6gioG/Ka9ILPdL53yroV4FB/+7115CHgXsuEInX/qg1DVhM9Qx4TRJOLz7vU6KPQQ2d+ugGyBXsFiVbQKdvuxdH9A/WvqYtvfokbIJpa14df0MkCa6bUg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ALA7A0/9xtIwGZJvAsLxHWfXsFtXQTwJAXPrZUJnbAY=;
+ b=DcIsitxP5r8wU32N3MEIjY2w0Wv42DCU6nB3rLvxEOxaSUCsL6uCSDpTq602xkl35E0/3qYxo2O4/MsPKHcffRp+NX0CctVuseOBJHRQluTk8EXXRNupzRkJva+exzRiQjgEBv/Qgian5R5WrUBixtNjnbFQEA8hKHx60CdC3pGDDPQkcVDYP6abG0h/xuO55mfMVDIokm/SS/N70ZJW8PQhqFdxJ6pVLVkvvQ7gCu1xk2l8HU96w3THGnDguzA6ZYDIMOIpV8RMBrRPb+9AWDkwMU7OdP34ywPPUR/ZQVtGy/LlT4R0o5C31EZKsp9Mo74ncfo2yZviq8RWjrh4BQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=message-id:subject:from:to:cc:date:in-reply-to:references
-         :user-agent:mime-version:content-transfer-encoding;
-        bh=kOUbhllrGgmpU45GMJothVqWnhtxz4cIj2zv5C1qMWk=;
-        b=oQBdMvS4KhzP9XZLtihtlQjZay5WL9YgNRwpEZsNQ8c5RhtCKzDNkrNUpBHVgJMA8Z
-         hdR9qkW/20y/bhNkqFX9pFUpJuVjeicAqADHFJE/cVFJ6CsI2UsRB7+R7qguW9/QerXr
-         TEwz24q0kXdt6phkXxkzdS7WBlcG5BkzwUN7hGxzUBSAFneS9A06eQee+Hu+RL1NWB3N
-         DE5N/9TEWC2DxsxcBb2HNgdg0ZiO5H+l0YVmryVK/JZVDFjDd8poG3hDeQ4Rqr7G7MAL
-         w6JGJuSbaQXdfs0PS1OL7+MWJqE7CJwZeK4b0zCmTOQWqbLofenvbujzq3sGG7ub0T/U
-         RTxA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
-         :references:user-agent:mime-version:content-transfer-encoding;
-        bh=kOUbhllrGgmpU45GMJothVqWnhtxz4cIj2zv5C1qMWk=;
-        b=W9Z9FRdCYjqSrwAik5s2dxcq5bh+PsybmeibUWbFzZ7taHFHJUIxnq1vipmwlpFAWu
-         gzU7gphCudKWBvi7Y0KWHW8UQDPwAVHrk2PLQ3O+XRUDu/1Z7Hb1Ycv/H4l6T5UiT4Mc
-         fdhaPDqH8adIGxFVVRmiACJnx4JohnhHqSZSOP28WGPNhPzDxWDqA2Ivnz8IyM6z8zI6
-         34mwyITeGOLRGXg13BQb/SuKvydyNv7uOJ8kdgAHbveErI4clvXPUYEnA8GC6xatnJMd
-         ld4KeGi/4tid9c/8xF5JetS/2IlhsZnWjJMJ56u1Qs9nFfMD3xqg+3Z+OJ6RSCVIMxrK
-         3ekQ==
-X-Gm-Message-State: AOAM531zccoa880eb9fX+COpsaH6+KliQXDhOd/3MTtB6pRUSWWrPEhM
-	QPSV9GP2zZJ30o4HNWxq5I84yflBK1puEg==
-X-Received: by 2002:adf:f787:: with SMTP id q7mr78460918wrp.1.1636365452804;
-        Mon, 08 Nov 2021 01:57:32 -0800 (PST)
-Return-Path: <karolinadrobnik@gmail.com>
-Received: from ?IPv6:2a01:4b00:f411:e700:e085:8cb7:7bf6:5d62? ([2a01:4b00:f411:e700:e085:8cb7:7bf6:5d62])
-        by smtp.gmail.com with ESMTPSA id f6sm15600793wmj.40.2021.11.08.01.57.31
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 08 Nov 2021 01:57:32 -0800 (PST)
-Message-ID: <0a4c26bdabadd666ddf124bbb767e5cc802af937.camel@gmail.com>
-Subject: Re: [PATCH v2 3/8] staging: vt6655: Remove unused `i` increments
-From: Karolina Drobnik <karolinadrobnik@gmail.com>
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Cc: outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org, 
-	forest@alittletooquiet.net, linux-staging@lists.linux.dev, 
-	linux-kernel@vger.kernel.org
-Date: Mon, 08 Nov 2021 09:57:25 +0000
-In-Reply-To: <20211104133803.GC2794@kadam>
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ALA7A0/9xtIwGZJvAsLxHWfXsFtXQTwJAXPrZUJnbAY=;
+ b=ZpSRSKL975gapumCTfEfc1qP7YvkTkH8vKTIv3DfhCnw24ZSYWBA+3Ep9vyn9MNzF2nvGGfgfVKvEhFCm33o621wXkfvxXkaWkww8b5QMJ4slb5nKad3c/pYClvmanMYQ603Q0Lz0fqUITQ8WhmCYH7LCkcvri2pCCSgQkH4TO8=
+Authentication-Results: perches.com; dkim=none (message not signed)
+ header.d=none;perches.com; dmarc=none action=none header.from=oracle.com;
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ (2603:10b6:301:2d::28) by MWHPR10MB1824.namprd10.prod.outlook.com
+ (2603:10b6:300:10a::11) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4669.13; Fri, 5 Nov
+ 2021 12:52:13 +0000
+Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::d409:11b5:5eb2:6be9]) by MWHPR1001MB2365.namprd10.prod.outlook.com
+ ([fe80::d409:11b5:5eb2:6be9%5]) with mapi id 15.20.4669.011; Fri, 5 Nov 2021
+ 12:52:13 +0000
+Date: Fri, 5 Nov 2021 15:51:45 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Joe Perches <joe@perches.com>
+Cc: Karolina Drobnik <karolinadrobnik@gmail.com>,
+        outreachy-kernel@googlegroups.com, gregkh@linuxfoundation.org,
+        forest@alittletooquiet.net, linux-staging@lists.linux.dev,
+        linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 1/8] staging: vt6655: Introduce `idx` temporary
+ variable
+Message-ID: <20211105125144.GA2001@kadam>
 References: <cover.1635773679.git.karolinadrobnik@gmail.com>
-	 <79a4f03c8f2bfa555ea149ddd1c0f938dd431a0b.1635773680.git.karolinadrobnik@gmail.com>
-	 <20211104133803.GC2794@kadam>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.38.3-1 
+ <34bd0e8f42597edf006a950d420345befc4e0bc2.1635773680.git.karolinadrobnik@gmail.com>
+ <20211104120906.GZ2794@kadam>
+ <2dd81d1a081562dc38bf9d8c6c73b432c5c5f496.camel@perches.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <2dd81d1a081562dc38bf9d8c6c73b432c5c5f496.camel@perches.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-ClientProxiedBy: JN2P275CA0020.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:3::32)
+ To MWHPR1001MB2365.namprd10.prod.outlook.com (2603:10b6:301:2d::28)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Received: from kadam (102.222.70.114) by JN2P275CA0020.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:3::32) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4669.11 via Frontend Transport; Fri, 5 Nov 2021 12:52:08 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 17ea7535-37cc-4f4b-0bac-08d9a05b1691
+X-MS-TrafficTypeDiagnostic: MWHPR10MB1824:
+X-Microsoft-Antispam-PRVS: 
+	<MWHPR10MB18245FDFA8A29A21C258CF9D8E8E9@MWHPR10MB1824.namprd10.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:8273;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 
+	xuBjQ5On+R3VisfxNyvr1v1j5qaZqd2ugj4P9AZIKwLYLVnyXPHIyAC+nQOcq4wUJIeLxiR2oSbOcRMnz4qTyZLUDraH34sb7sLzh5l3AYe+vcGh013sU+Y1tK/23CqwpSV1ufVtq6FWR+LI3aoFF6KrYLS43xVou58PbOE7oLzlClzQapq3zcVvxEh8jB36Xy3sISL9vvj1svN73dGNv4xWMektR/frhf6lzaE/sGp4Vy9kpnj7RwxpUJ3P3VolP94rnkhd8cpnKcoqm/AIGLcXp8F20xNI3rvzqjihoQhtbgMJbmZsqa1xNKxsdATUA2Ghk7wgSVxouLRhCd0olodX4wzStJZ25nXaLn5OFCzI7Syfc8rRWnLl42P1Kc2alDnL8XzPupEuoRQx+SpCZJmZwA/pcW0rawj+Ky+GjFl+ltpQ/5lVGpoaj5qPC0GsVCJ4SIje/YnFDf+UiNNohKfvhxqSbpeItv8AVw1x9U5UW1TfMYKEziMjjHOTFUjP+ThlZIsCJwCelxkGjWy333BzXBQbS/XFYIcEi9IEDiGwE4krAiYROs/gMrujWKglgiODk4jakvz6AJIDqxO3Rr5aQSXhruC25Z4mQKGqtev4G8JbIrYfS5IXFyXu3rjn034rSQM8scMqKD5SsGDzZsQHCJEUbmu3b0hSCNj6OYuFr/a1eDYHThwAjWxa/LSp26iUOV7PH4OIidoo8a5aMTh5HBVOwTh7PciKoRPFSXc=
+X-Forefront-Antispam-Report: 
+	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MWHPR1001MB2365.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(366004)(8676002)(26005)(9686003)(186003)(55016002)(508600001)(33656002)(1076003)(38350700002)(38100700002)(44832011)(6916009)(956004)(4744005)(33716001)(6666004)(316002)(52116002)(6496006)(4326008)(5660300002)(9576002)(2906002)(8936002)(66476007)(66556008)(86362001)(66946007)(81973001);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: 
+	=?us-ascii?Q?DFKUkNdys/J9Sv5ajrAC97q3KQQuC0xxH9+YeOY7g9tK40qtOLIPm1zul1jG?=
+ =?us-ascii?Q?dWDtCHt8aBsBYHGHEdrfsuSml7V2h3ixNIwRlBNNbT+ax4+tyPKN6yShzcKQ?=
+ =?us-ascii?Q?rRjkayToxVSat4kW40sw6syW+MKmV/vZCt0/yGYIjL4xRl5h4j6UMPHy4acf?=
+ =?us-ascii?Q?shHy2tknrh+geJ3lnOEImStVm3hMvs9GFN9VdIfpMsiCdIQXSEqaBq5aMQ5Z?=
+ =?us-ascii?Q?etPyV4yYkyHjrAiCw+y6gw0guo6vKHV3hINh05w1UTe3U9B51KH9hNfc7hFl?=
+ =?us-ascii?Q?2cbKu2GfwkNrxv3OgX8NRpkYgVZpZmwENEoAgkvbLBbzyGXXq4r7thtnv2Bf?=
+ =?us-ascii?Q?s//jrEa5xaTnzwj+OqlXMU5Js8XPt2LwLS8mENlBHRdHvc4ZYuu3uOdFJQ9i?=
+ =?us-ascii?Q?AU3/aWUxUXcDOXXEiYTQR/oE/ccsRKy9RuRXVKUq5+V1viiwW0rmDz9GqWQa?=
+ =?us-ascii?Q?91frpnrVgMb07rlpXQCmPwHPFizzs762+ttFWbR6Fjr62/i+EQweDZezt73W?=
+ =?us-ascii?Q?hxxTMd66/IIJnfapks9L8+zBpYOJkwM6uSBTJcgDiWq3uNtV1eL2iFcSZxYI?=
+ =?us-ascii?Q?nZcsdZW2bZhCJRgtAT1wpblaF6usB9b+oJjyZAFjjn4NY/l/JmwepD/ICAJ8?=
+ =?us-ascii?Q?M5AYkSdbdkemWOCaTvKi6uejGeEU3K2Nk8p8x+Zc6RImYtPGQLERnJ3Etp4x?=
+ =?us-ascii?Q?XYvx3uCB1PXx39BhzB103dxyUSkHBALJ5nAqmrX4rmtAW8d2e6LiPTr9M+OB?=
+ =?us-ascii?Q?xxCivKtClgTGuIINhKkmfbBdv72ltCjooqv3gGeDECcLBCMEjd2P9oGk+Ox0?=
+ =?us-ascii?Q?9a0UXESpXK55W3fx3zaFAuqEhlddRAveP6v3xv/TPRyC6Inzi7m+Ea2/n9vL?=
+ =?us-ascii?Q?pYllwQDq6tj9L3jUTi2Edmqm6DlcCYPufXN07V+S/2wLtgN22wctP8MNZFyf?=
+ =?us-ascii?Q?AEN4R8Xeqc1b3l4T6ToBvT5sO7ntICQFWUmNPcXxHcrEUJ1Cc4Lzpp7Goqa0?=
+ =?us-ascii?Q?xBbI03B1q6JjJQSqgpW52fcHufPbqTZWaZebCoqS5dK4ZpOwka2NGmskZX3p?=
+ =?us-ascii?Q?PXX78NONigLjqIcNAmc4caRu+lw2jNHYRyxzAcl6FZQnLWUQtUO+8wKVS7ks?=
+ =?us-ascii?Q?AogTT7lQX4WFCcvT2xpw/UGpL2matbj8iWmKtI+jmSOX5WWEvdkARoupZn2k?=
+ =?us-ascii?Q?BorPRdeEkXbcoHNgboE2fuQ/9KHWMDIWvlq5dcbUDYi3GKh1mKl0I0Z8cPGk?=
+ =?us-ascii?Q?pdepzXEl39hKWnrVgadLu1hS9dPcHFnKwlytnsqoR4kF64OtiIW0KhgIFfmC?=
+ =?us-ascii?Q?FtzJslSioLiUznEWlq579ZGXPaeWrJIezeISZ6l7zR4owhF/OILkfzxbpD7T?=
+ =?us-ascii?Q?3iKckGeeqh+M32q0qva3b8vGMyJDnge+xr+vDJCboWUfa3y46786qKUfNNN4?=
+ =?us-ascii?Q?oAUYtPeZSM/0bFROlQ6yeMdYatcnizZEXOsaSM8yk/kyROUv5qansFJA66Z5?=
+ =?us-ascii?Q?L6mQFksNyxRBoTgk2QCjYTEL+x3z/SyQovzPBiI58rRcQ/Zrq19Xcf/HQ7QC?=
+ =?us-ascii?Q?vpU6663xdW+a0QePqndlHooZR1FKgDp5AT9iUXXYgJK0unMEDp8fLBWjOdrf?=
+ =?us-ascii?Q?gPKK/ui7+ZnYR9+OUdLXAIklUL+flF0eOIM8jzk/xEGfpAnjFP2XWwq84ra6?=
+ =?us-ascii?Q?aJKuniGuxxgdtDy6ZeZwQsHq7rs=3D?=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 17ea7535-37cc-4f4b-0bac-08d9a05b1691
+X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Nov 2021 12:52:13.5893
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: v7spBijo93cSVwHwvmeEupjojP6KOt6FlSJCbejh8cUmaq7XdcGPgZm17GpkCUUSZq3OYAN+NHCgVt1EnAk51Xhe6LS4szok8aEpQRcgwXo=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR10MB1824
+X-Proofpoint-Virus-Version: vendor=nai engine=6300 definitions=10158 signatures=668683
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxlogscore=999 adultscore=0
+ suspectscore=0 mlxscore=0 spamscore=0 bulkscore=0 malwarescore=0
+ phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2110150000 definitions=main-2111050075
+X-Proofpoint-GUID: x2z_an8bP-sccqLUxITwyOosyRA2mx8q
+X-Proofpoint-ORIG-GUID: x2z_an8bP-sccqLUxITwyOosyRA2mx8q
 
-Hi Dan,
-
-Thanks for taking a look at my patches.
-
-On Thu, 2021-11-04 at 16:38 +0300, Dan Carpenter wrote:
-> On Mon, Nov 01, 2021 at 02:32:01PM +0000, Karolina Drobnik wrote:
-> > Commit c569952d92ba ("staging: vt6655: Use incrementation in
-> > `idx`")
-> > rendered the incrementation of `i` outside of the loop unnecessary
-> > so it can be deleted.
+On Thu, Nov 04, 2021 at 07:33:36AM -0700, Joe Perches wrote:
+> On Thu, 2021-11-04 at 15:09 +0300, Dan Carpenter wrote:
+> > On Mon, Nov 01, 2021 at 02:31:59PM +0000, Karolina Drobnik wrote:
+> > > Add a local variable to store `MISCFIFO_SYNDATA_IDX` offset.
+> > > This change helps in shortening the lines in `rf.c` that
+> > > are deemed too long by checkpatch.pl.
+> > > 
 > > 
+> > I started reviewing the v1 patch but I should have been reviewing this
+> > patchset.  Please don't do this.  Leave the constant as a constant so
+> > we don't have to look it up.
 > 
-> That commit hash is something that only exists on your system. 
-> Commit hashes are stable once they hit Greg's tree (he only rebases 
-> in extremely rarely cases).
+> It's just an intermediate step to use idx++.
+> Personally, I'd combine patches to add and use idx++ directly.
 
-Ok, I can rewrite the message but I'm not sure how should I refer to
-another patch from my patch set. I followed these guidelines[1] but if
-there's a different way of describing it then please let me know.
+Yep.  I saw that when I reviewed the later patches.  This patch should
+be combined with those as you say.
 
-> This commit is cleaning something that was left in a different patch
-> in the same patch set.  Just merge it into the original patch.  Don't
-> make a mess and then fix it.
-
-I tried adding more than one logical change per patch some time ago and
-Greg asked me to stop doing this.
-
-> It's tricky to know how to break up patches.  My suggestion is:
-> patch 1: remove all the unnecesary (unsigned short) casts
-> patch 2: merge the rest of patches 1-3 together and send it at once
-
-Sounds good. If Greg is happy with your approach, I can merge these
-patches, no problem. 
-
-
-Thanks,
-Karolina
-
----------------------------------------------------------------
-[1] -
-https://elixir.bootlin.com/linux/latest/source/Documentation/process/submitting-patches.rst#L106
+regards,
+dan carpenter
 
 
