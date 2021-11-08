@@ -1,100 +1,70 @@
-X-GM-THRID: 6750983693634895872
-X-Received: by 2002:a37:5784:: with SMTP id l126mr1235185qkb.373.1571835878123;
-        Wed, 23 Oct 2019 06:04:38 -0700 (PDT)
+X-GM-THRID: 7028286413648953344
+X-Received: by 2002:a05:6000:12c5:: with SMTP id l5mr1943812wrx.173.1636400449914;
+        Mon, 08 Nov 2021 11:40:49 -0800 (PST)
 X-BeenThere: outreachy-kernel@googlegroups.com
-Received: by 2002:a37:2786:: with SMTP id n128ls725309qkn.0.gmail; Wed, 23 Oct
- 2019 06:04:37 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzxmYXqIE3veLkJWA0vf7ijck5fcy5bf3I5XzvjaU0FkB2EoaVMXNUDy4NXUdrr62oqMwrV
-X-Received: by 2002:a37:5b46:: with SMTP id p67mr8248887qkb.318.1571835876951;
-        Wed, 23 Oct 2019 06:04:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571835876; cv=none;
+Received: by 2002:a1c:1c7:: with SMTP id 190ls155224wmb.3.canary-gmail; Mon,
+ 08 Nov 2021 11:40:48 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxGmL+5uGa4im3twlr3J1eyTUUBbBX6Zqs9vwQU5SYh55/DVNxyR5UzS1I8oLxPaRaHxTO/
+X-Received: by 2002:a1c:4d0b:: with SMTP id o11mr828495wmh.68.1636400448466;
+        Mon, 08 Nov 2021 11:40:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1636400448; cv=none;
         d=google.com; s=arc-20160816;
-        b=Uai5Ui5HzzdAC4GKsUEqQiMRjX8S+uGxp8oOMaJk5HUf6RtPi7YBkXu94azvL9zcgs
-         OVKS3iDvgsE9zCznN8A9qGqBYJlEiy4k6EbtixQy0qcuqHNU/H7PTdQ9gVdM0jRD+1cw
-         qeb/UeI/Mep3/VhZ2TCconANqf90lvxB4GBT9AFZ8l1xtHI+rPyRHVaGOB2Ib3n/7zVT
-         nfJMdmJpewXtXppr2aEZUXRPTBsDkaD4v3GIRkgGTCSvo/fBkLtUfpeMNMNqxy/DchaB
-         gHzbBhRZ+3FXsZaoaPBdDdc84yuPR1v+qi7drNstTMYCVCDJz7NvJbMjQSiHkUl3qtSh
-         QZkg==
+        b=lTp3MVcOxIPZKjOaL1PpBi2YoehrAMJN0U/3WHG2ZejrRLBhW6RK08pmD16Li8QPe9
+         tD6LthiEKeOwd4zD3LK5c2lFMB0fpcmlP/rMm181uS713AfJ9WzJUcDzttE0yXqGGa9X
+         QNPqWOrNpiVmj1JNKEZ/7aziIldUcKqvxvYFEgLal+XG2H17FjPCKuGRgeNrHd7qWQKV
+         te+eKs5VLH83IRXLgr719+AmLelIW7bG+1m0Vszmkn1X8LIwbXDFy9S/53R207IbqBW5
+         OjIRjtqv698AvmYFIN6b+vaJzg7g95KLj9PFolPxoEdWHXEeBb8CHOPvHpKttL7bxWwk
+         gz2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=sWmijOlLw9L+Z7Zdc88aDcQ/f+m+VqQLLaambnkwdQk=;
-        b=Vo4GfKSfgoPclw+8B35YTIAD3uz9VFwFgKjJWCsZFVGUhnyluHxCo1hEBwo3UnAn49
-         VbuJyRP13HPlh3XSTvGq2z1oOgp7ukfGuErt/0pyniLPwYZQg+6H8o7fhycoHdgO7KBb
-         E0YWnYZuSCM6JVhR/A4n7CdBROAKLHegyen8H+av/wD2RQcrcA30SsNmtHzUbrrRGvHu
-         0GzTZikuIa1XC6FGST9th6TLEh9ixtFVWJbZw3dXOKiMIBBdJ12W77hV5UySnkgmvgUf
-         SWXTjPyY/eXvOCnYBh1P7UrEoWWwAZ7UZff0D5y5UUAyOyGi7EIkk1CSDnZWWd+dlQQm
-         Y4kg==
+        h=content-disposition:mime-version:message-id:subject:to:from:date;
+        bh=GgSKqhU8o1tzzRG58zdBCmI/DsbJaKDz/Ll9ooFF+hc=;
+        b=xPSDxlK0HTO+L82Hg3d/Tbw2AJHPmI+zmPGjS1oPfyXi6dWz41dwOlujsx5qhBnZNv
+         Rk9Z+SRZ4gojR0pfJh0R93N9YfFAkKx7bUfg2wuji1hlS+aRcC9OUYnFbfQ127CGkgAU
+         wLaN2OdSdDcYw3kKDtiRvclF6fOdmZInFAN9eYWRDFhm3abQDUDLLrUbxxRm5Ncb1bT3
+         Z+VLAdAUBQ15T+H8X0AqQpQNRjaY5HFviva2Tv8RjQcifyH/nt0YIJJIiWG3mWqaSaA6
+         H1c9Z2m5x0mXRBZBED8hCYEfSn77YzfTrNnH3aJm0EY7emJ4eYvAvnXV6DcwPIrfxGr5
+         9a8A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lsvA+WuX;
-       spf=pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::843 as permitted sender) smtp.mailfrom=cristianenavescardoso09@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <cristianenavescardoso09@gmail.com>
-Received: from mail-qt1-x843.google.com (mail-qt1-x843.google.com. [2607:f8b0:4864:20::843])
-        by gmr-mx.google.com with ESMTPS id y203si547743qka.4.2019.10.23.06.04.36
+       spf=pass (google.com: domain of alison.schofield@intel.com designates 192.55.52.88 as permitted sender) smtp.mailfrom=alison.schofield@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <alison.schofield@intel.com>
+Received: from mga01.intel.com (mga01.intel.com. [192.55.52.88])
+        by gmr-mx.google.com with ESMTPS id 201si30596wma.1.2021.11.08.11.40.47
         for <outreachy-kernel@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 23 Oct 2019 06:04:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::843 as permitted sender) client-ip=2607:f8b0:4864:20::843;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 08 Nov 2021 11:40:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of alison.schofield@intel.com designates 192.55.52.88 as permitted sender) client-ip=192.55.52.88;
 Authentication-Results: gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=lsvA+WuX;
-       spf=pass (google.com: domain of cristianenavescardoso09@gmail.com designates 2607:f8b0:4864:20::843 as permitted sender) smtp.mailfrom=cristianenavescardoso09@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: by mail-qt1-x843.google.com with SMTP id c21so32079251qtj.12
-        for <outreachy-kernel@googlegroups.com>; Wed, 23 Oct 2019 06:04:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent;
-        bh=sWmijOlLw9L+Z7Zdc88aDcQ/f+m+VqQLLaambnkwdQk=;
-        b=lsvA+WuXW9hndAyoEr5RvLtJABNPJQDJ351XMA4q4gyMKTefHQegjRC1/k9nYmmF5v
-         uJNUUkFD07u4/fQHM3N1ApwFuMrp3iD5JgsNaSZJd362q8ZAjIP+vWdFGri4LiqtXkfV
-         gliA7Dd7vI2wDm2l2VZtQQYMyEQYaPLgylrNFfLdzzxLEubnJNCQ/+enjvyRGzmqqUDC
-         pgM7fp1YECVyuNZIFbX23iKIlHEhofzPC4Wf0akNBFrxmfarvufaG4BOd3T/vZWe2F0B
-         nR4F75T5bUbAsayJ8ZDMSGfxF9iKZYbN/MG2k218NComt20EH+7JPnX3mZVSEp5goIAV
-         qmOA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent;
-        bh=sWmijOlLw9L+Z7Zdc88aDcQ/f+m+VqQLLaambnkwdQk=;
-        b=XA/ipv0YxN101twyyemm27+4S2m7FgIa0I+1FuHov+UMhJeo/KhVfZ5soT8kgkyW0Y
-         yAKGDXmPsHSmRGWSoE/HS0OyEK+DBX3MMuiDP0ph2ZbKcGhkicBEozlopxHCxToDobZ9
-         ThhxfYQp2dZ/fXMOlO558NU94GkkxEi1/xq6cKztidaAavZawjkNfFJEKqGEyUXKhbPo
-         fcLN/+ehbbrF7KsbqpDN2ucGUUDUn42be3j34GKauXk0GP5EwdL9Lo2gjnh17sqywEUG
-         LKQUTZaPnN3lWSjjTU/s1wC71pxyTAPkUS/LFKF2hR1kcB+4anAuXG7JGgyriJolUuf1
-         pNug==
-X-Gm-Message-State: APjAAAVQMlw/+iOorlHlClMskZQLRP2Ip8X7iMaGDTKOV0TaC+jdD82f
-	7n68921uHo2sTK69XKs62O5Ot5EVMluwJQ==
-X-Received: by 2002:ac8:2191:: with SMTP id 17mr9185375qty.112.1571835876442;
-        Wed, 23 Oct 2019 06:04:36 -0700 (PDT)
-Return-Path: <cristianenavescardoso09@gmail.com>
-Received: from cristiane-Inspiron-5420 ([131.100.148.220])
-        by smtp.gmail.com with ESMTPSA id z70sm7604872qkb.60.2019.10.23.06.04.34
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 23 Oct 2019 06:04:35 -0700 (PDT)
-Date: Wed, 23 Oct 2019 11:04:31 -0200
-From: CristianeNaves <cristianenavescardoso09@gmail.com>
-To: outreachy-kernel@googlegroups.com
-Cc: outreachy-kernel@googlegroups.com, Larry.Finger@lwfinger.net,
-	florian.c.schilhabel@googlemail.com, gregkh@linuxfoundation.org
-Subject: [PATCH 0/2] Cleanup in rtl8712_recv.c
-Message-ID: <cover.1571834718.git.cristianenavescardoso09@gmail.com>
+       spf=pass (google.com: domain of alison.schofield@intel.com designates 192.55.52.88 as permitted sender) smtp.mailfrom=alison.schofield@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+X-IronPort-AV: E=McAfee;i="6200,9189,10162"; a="255985510"
+X-IronPort-AV: E=Sophos;i="5.87,218,1631602800"; 
+   d="scan'208";a="255985510"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Nov 2021 11:40:46 -0800
+X-IronPort-AV: E=Sophos;i="5.87,218,1631602800"; 
+   d="scan'208";a="491346646"
+Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
+  by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Nov 2021 11:40:46 -0800
+Date: Mon, 8 Nov 2021 11:47:58 -0800
+From: Alison Schofield <alison.schofield@intel.com>
+To: Outreachy Linux Kernel <outreachy-kernel@googlegroups.com>
+Subject: Contribution Period Has Closed
+Message-ID: <20211108194758.GA545430@alison-desk>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-User-Agent: Mutt/1.5.24 (2015-08-30)
 
-Cleanup in rtl8712_recv.c
 
-CristianeNaves (2):
-  staging: r8712: Fix Alignment of open parenthesis
-  staging: r8712: Remove lines before a close brace
+Thank-you to applicants, mentors, and reviewers for participating
+in this contribution period. It is now closed. Our mentors will be
+reviewing and selecting applicants for the December cohort.
 
- drivers/staging/rtl8712/rtl8712_recv.c | 32 +++++++++++++++-----------------
- 1 file changed, 15 insertions(+), 17 deletions(-)
+If you have patches in flight, go ahead and continue to copy this
+list until you get closure on them.
 
--- 
-2.7.4
+If you have new patches to send, use your get_maintainers script only.
 
+This list will not be monitored until the next contribution period opens
+in March 2022.
 
