@@ -1,59 +1,65 @@
-Received: from mail-4322.protonmail.ch (mail-4322.protonmail.ch [185.70.43.22])
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BAC0315A4
-	for <outreachy@lists.linux.dev>; Sun, 27 Mar 2022 02:54:45 +0000 (UTC)
-Date: Sun, 27 Mar 2022 02:54:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
-	s=protonmail; t=1648349682;
-	bh=qjMZ53dWYqoys9WYqlLtGduOD0GGuXwYMPuvTBPi8us=;
-	h=Date:To:From:Reply-To:Subject:Message-ID:From:To:Cc:Date:Subject:
-	 Reply-To:Feedback-ID:Message-ID;
-	b=xjOujVTaKsoFfRnF0aSoZZyCUl2W0KAg4HbB/jCKxAzfV2eqoU9j1+Sna6ZStcMUf
-	 HvHnvBW5rLf+oBVQb8vd824Mj9ysuQYFY95t8OG618MYNgUXWw5odOHVyus7DwYauu
-	 Kbm/wNtsyNX6VMMjomFVeFlxxRtir/Jpbk6TLeDGu8vk+4CfnN6mXDonjDaK+6Gi7y
-	 KpAOABgAJI47YFSnGPfw84ic6JxmhoVBkGijrSUTVoerR6iw/6jwm5+VFXquVUAKCk
-	 zfl9sda79bGDxV8Mv0rYG9gAEY+BGlj82W3fN9pysXMYaLmBb0oSsLg5ti5H2KNJJ8
-	 G6FSK9+ybohLw==
-To: "outreachy@lists.linux.dev" <outreachy@lists.linux.dev>
-From: Rebecca Mckeever <rebecca.mckeever@protonmail.com>
-Reply-To: Rebecca Mckeever <rebecca.mckeever@protonmail.com>
-Subject: Help with Outreachy Setup
-Message-ID: <VlGZ-Rt6GMrT_vsR1Bi_X3co5-hOiETSXBNNVG77hbb2vELgPzsd2fv5T4Qnd14G3z6f-ocpRTj2uT2ampl1aB6PyXJkWRS_5l8BH3nNcRM=@protonmail.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E8CD715A4
+	for <outreachy@lists.linux.dev>; Sun, 27 Mar 2022 04:21:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1648354901; x=1679890901;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=nSqbs680vrqBB0tXtf7W2KanzD+dzot5mVs8gL8PkY8=;
+  b=O7Vrd4QR9Knu6zHrRpfxW0E375Gfl4k7YEKaoG7trFnB229np99QX/r9
+   7EjylEz5FP3XiV6okoTIXefZa5DHlhH5pSwnnTsRp/3EM1/Dx5LNzkH4m
+   Pz+CDrhYe8u7Pjl3UrCuih48jbNuPhzRG2w1GKEVNDRBbRu3FuE7Gpijf
+   irYRFa2hOTkdSJ3SqlkrVyjjcRFBW6XGgCnyyHWA97pUT6c2R9e2XyTT9
+   YGA8p1ez1hsL+rd/VfVpRBs5r1+Aq/cAlDmH1HkQ3CjAVwYXKfMxNwLhw
+   257QbWjQhTQZO2aw2PATzQSNDHBwToQRCY/jBHshYqmG+JdQD16PTVtZE
+   A==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10298"; a="240977177"
+X-IronPort-AV: E=Sophos;i="5.90,214,1643702400"; 
+   d="scan'208";a="240977177"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Mar 2022 21:21:41 -0700
+X-IronPort-AV: E=Sophos;i="5.90,214,1643702400"; 
+   d="scan'208";a="520614739"
+Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
+  by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Mar 2022 21:21:41 -0700
+Date: Sat, 26 Mar 2022 21:24:12 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: Formasit Fokunang <formasitf@gmail.com>
+Cc: outreachy@lists.linux.dev
+Subject: Re: #Outreachy-Contribution
+Message-ID: <20220327042412.GA1158431@alison-desk>
+References: <CAL1a2smMNX16+hNuCjJJ+Yq8iU0+0hvh1AyCf-K9imtBM_vHWA@mail.gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAL1a2smMNX16+hNuCjJJ+Yq8iU0+0hvh1AyCf-K9imtBM_vHWA@mail.gmail.com>
 
-I am going through the Outreachy setup instructions (https://kernelnewbies.=
-org/OutreachyfirstpatchSetup), and I am stuck at 'Installing the kernel'. M=
-y computer is an HP laptop with Intel Core i5-8250U and I'm using Ubuntu.
-
-When I run
-
-    sudo make modules_install install
-
-I receive the following error message:
-
-arch/x86/Makefile:154: CONFIG_X86_X32 enabled but no binutils support
-make[2]: *** No rule to make target '/lib/modules/5.17.0-rc8-outreachy+/ker=
-nel/arch/x86/crypto/aesni-intel.ko', needed by '__modinst'.  Stop.
-make[1]: *** [Makefile:1757: modules_install] Error 2
-make: *** [Makefile:350: __build_one_by_one] Error 2
-
-I already have binutils installed:
-
-sudo apt install binutils
-
-Reading package lists... Done
-Building dependency tree
-Reading state information... Done
-binutils is already the newest version (2.34-6ubuntu1.3).
-
-I searched online and couldn't find anything helpful. I tried setting CONFI=
-G_X86_X32 to n in .config and that didn't help. Anyone have suggestions abo=
-ut what else I can do?
+On Sat, Mar 26, 2022 at 09:42:59PM +0100, Formasit Fokunang wrote:
+> Greetings,
+>   I am Formasit Chijoh a second year student studying Computer
+> Engineering and a beginner to open source contributions.I am
+> participating in the Outreachy 2022 cohort.Due to my keen interest in
+> operating system development especially the linux kernel, I would like
+> to contribute to the Linux kernel project (Refactoring HIGHMEM
+> Interface) proposed for Outreachy mid-term  session.Contributing to
+> this project will go a long way to improve my knowledge about open
+> source and equally improve my skills to becoming a software
+> engineer.I have a general knowledge in fullstack development,
+> shell(Bash) programming and am equally good in C/C++ programming.I
+> will be glad to learn and apply from  @iweiny@gmail.com   and everyone
+> in the community.
+> 
+> Thank you,
+> --
+> Formasit Chijoh
+>
+Welcome to the Outreachy Linux Kernel Community!
+Alison
