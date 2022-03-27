@@ -1,73 +1,82 @@
-Received: from mail-pl1-f178.google.com (mail-pl1-f178.google.com [209.85.214.178])
+Received: from mail-pf1-f176.google.com (mail-pf1-f176.google.com [209.85.210.176])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BD7133237
-	for <outreachy@lists.linux.dev>; Sun, 27 Mar 2022 15:42:45 +0000 (UTC)
-Received: by mail-pl1-f178.google.com with SMTP id m18so7880067plx.3
-        for <outreachy@lists.linux.dev>; Sun, 27 Mar 2022 08:42:45 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 842553D79
+	for <outreachy@lists.linux.dev>; Sun, 27 Mar 2022 15:44:33 +0000 (UTC)
+Received: by mail-pf1-f176.google.com with SMTP id b13so8585268pfv.0
+        for <outreachy@lists.linux.dev>; Sun, 27 Mar 2022 08:44:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=kx08h8j+yVg+VoOvZYPYIyf1qJz+YxUQCZ63Avu+Mw8=;
-        b=qA20gRbb7wdC69qF+S7IkQMy5z43hNi5XPVHuLFA/7JurHkng+JV6lzD7OO+CbsqdK
-         LWoM1tkK/XXJAmj/QXpHZl0FuvMirnurMvM7bB3Oz1/CZFBxJ9sJk15q4aHQTWthADzC
-         possD3daMiyVWapQsfgHbJdKhORr0xDPoRVrXyJKL/BL65kuiCHSmxMt9vndsLwLBR5O
-         g6Hb7SUiaKFhCwPoj1Ys/QRuLnzd0e8GLupLOFPWmGMSWoBTg370CgE77IXGTtvlUAxn
-         onEtQ2LRFffBhkXRiP6gJFQJczp1DEB8kfbmKxIi5cTYneGaw+G3uW5//unsq1DAva8A
-         jWXQ==
+         :cc:content-transfer-encoding;
+        bh=793ANMwrMyKIqDI0hl8AWsxNk7hK0Gsc9Q6xm/2ekKY=;
+        b=DUnzCisEbvxOwACfOVgrlLViZTi81/Exq20MHd/RVQ1CnvNFeTxWTn8ygjm0QcobHR
+         f5TiupCv5nWtc2xc8+S3ys/5E3IY2Tr6owLas33YQEYQQD+tS+NDnfiNYkaE1ytWmuBL
+         oS5Vpd49wLzRL4DRDz70wbwPya22HOIVjLrm0UIunOvSWukDMpYOcsLTMkQh3y0Zw6ol
+         UP58jGFeqC1orh0OKiphYwY5QdRF8cEHYc6PtP22ilzp7XbG/z4iC2YBEPzcftc/V+99
+         hIU9iS0lGbCnettyIdvqmlWWqxnakkQKibiOBFbWSVrc7rhXnRQGeXni/we+9XTCdT2x
+         nuLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=kx08h8j+yVg+VoOvZYPYIyf1qJz+YxUQCZ63Avu+Mw8=;
-        b=btP5XcUjLVDyLtllW4hiz0w8zM7fcemCXnfpIxJIjwxErctQycXpFC8vOtyMhugg8G
-         iWi6ed5JUsBDkB3zP106X1I4MFT2EkaU/GOLKnjJRoR6QbeF6wAnD32bFLN8hB1WTPxV
-         /syYEaTPWtFSepjRJncDIygQTmDfpf82GW9te0AJSq1nz1iHr0DETrRwYOY32zbk43ux
-         0W4YyciijTFgM4Bdv3AjuYF21RpKOydDiWpXFZGEBmLJAovyoitb39tKx+evErTxmH4K
-         FQmoEKStnIxjm+lw8Dn5yIHRXpbbDfCcuCzDMhMyEAgw4FfKudjsQiWqiEFJ5hMIW4cH
-         PvOw==
-X-Gm-Message-State: AOAM531NmzlnhGLHX5jm6FhQfRUSo0NqQY3lbNqJ2inA9D8j0K4QXG5b
-	y8BH+2BUQ72iZc/mnNUidAmPz8o7zqMNj01lD5c=
-X-Google-Smtp-Source: ABdhPJziZhBCA11xnqjW5eKAgikMzylCIzwvHq4tY1EtPbspEN6sSS/seov1P9oK38lLapEqKIqE183UZ2pSYnCScpA=
-X-Received: by 2002:a17:90a:ee94:b0:1c6:4580:1e5 with SMTP id
- i20-20020a17090aee9400b001c6458001e5mr24546982pjz.47.1648395765092; Sun, 27
- Mar 2022 08:42:45 -0700 (PDT)
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=793ANMwrMyKIqDI0hl8AWsxNk7hK0Gsc9Q6xm/2ekKY=;
+        b=rT+Mmr79+5/dCOjhM5Jy1rH9SVk23k7IqFQjGPX1USQyk7GOT37WTNYJ1pTSFV1ftR
+         k/DnzuGbT8/iyX9fev5SRrpkV1Jh2oPHLgWe6HajFxK7Fk+fO7ZNwwWScJaFDnno/5ua
+         I/ZM3rvsQQdeex7MH/WFZwOKVVnP/lkmj/SmOtHcaUHkgRbdW0S40f3OmwZragrfanKF
+         8kuywYBKuu9RklZGym2/W5+FDd882Z4qGr51gcg+lxbT2GXesXKmsGMtN44Z9cws+LM4
+         rD3s+xSy+e/bXiJmg2TYiMhv/tMZxjrEdAC8ok6YSkBGBDJXuiSjnSqHlrzzwMVMaiSc
+         7Bww==
+X-Gm-Message-State: AOAM531eAuk3DoB+bz75KpFn1gDWJ8CBcFAUkl9Qe9JgVgDsyar3cbZK
+	w7JM8aWng/Ds9iRStajyz0+VSvSqtJeQMvPK3/8=
+X-Google-Smtp-Source: ABdhPJwQ9XMTd4TVRErvJ0Ru4dFRlFFabBR+/l0FlJFPhT452GbXnTLVuhaE2RaH+QssR9+vP8WxGYCUgZ1aIH6KhXU=
+X-Received: by 2002:a63:8c5a:0:b0:387:6367:c08a with SMTP id
+ q26-20020a638c5a000000b003876367c08amr7143621pgn.155.1648395869340; Sun, 27
+ Mar 2022 08:44:29 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-References: <CAMWRUK5t=LZG4Ay=RaFkBbV4q3JYayMqm=Sb_dkO92wJfgH64Q@mail.gmail.com>
-In-Reply-To: <CAMWRUK5t=LZG4Ay=RaFkBbV4q3JYayMqm=Sb_dkO92wJfgH64Q@mail.gmail.com>
+References: <czc1Q3u3JwStzJdk-IfMTM0FJ6qL6VVwdARgZba9HUAUqTICywXm1VvrqOB4KhqeJ0n6sfrmL173Bgjyed46_BZ6u2RfuejW1SZQLcFd1jc=@protonmail.com>
+ <20220327043307.GB1158431@alison-desk>
+In-Reply-To: <20220327043307.GB1158431@alison-desk>
 From: Roopa Prabhu <roopa.prabhu@gmail.com>
-Date: Sun, 27 Mar 2022 08:42:34 -0700
-Message-ID: <CAGe6so8aaM82W6SYOtcbRen=BGxq5M58rjPrpANtyaVcMfRC0Q@mail.gmail.com>
-Subject: Re: Outreachy contributor
-To: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
-Cc: outreachy@lists.linux.dev, Stefano Brivio <sbrivio@redhat.com>, 
-	Julia Denham <jdenham@redhat.com>
+Date: Sun, 27 Mar 2022 08:44:18 -0700
+Message-ID: <CAGe6so_ACf0ELjwF1N-Ht4zYzGJzjbtZqcWi2um6Y_Pw7On7rA@mail.gmail.com>
+Subject: Re: Outreachy Contributor
+To: Alison Schofield <alison.schofield@intel.com>
+Cc: Rebecca Mckeever <rebecca.mckeever@protonmail.com>, 
+	"outreachy@lists.linux.dev" <outreachy@lists.linux.dev>
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Welcome Sevinj!, thanks for your interest.
+On Sat, Mar 26, 2022 at 9:30 PM Alison Schofield
+<alison.schofield@intel.com> wrote:
+>
+> On Sun, Mar 27, 2022 at 02:20:33AM +0000, Rebecca Mckeever wrote:
+> > Hello Everyone,
+> >
+> > My name is Rebecca Mckeever, and I am a senior Computer Science student=
+ and an Outreachy May 2022 applicant. I am interested in contributing to on=
+e of the three Linux kernel projects, but I haven't yet decided which one. =
+I am new to open source contributions, but I am very interested in operatin=
+g system development. I am taking the Operating Systems 2 course at my scho=
+ol this term, so I expect to expand my knowledge during the contribution pe=
+riod. I have a lot of experience with C/C++, some experience with bash, and=
+ I am familiar with basic Operating Systems concepts. I am familiar with th=
+e Continuous Integration process and have used git/GitHub extensively for p=
+ersonal and class projects. I am looking forward to working with this commu=
+nity.
+> >
+>
+> Welcome to the Outreachy Linux Kernel Community!
+>
+> BTW - Applicants are welcome to explore (and apply to) as many projects a=
+s
+> they wish by taking on starter tasks that the mentors define once the
+> cleanup patches are completed.
+>
 
-pls reach out to us with any questions/problems. We are on irc too.
-
-On Sun, Mar 27, 2022 at 7:42 AM Sevinj Aghayeva
-<sevinj.aghayeva@gmail.com> wrote:
->
-> Hi all,
->
-> My name is Sevinj Aghayeva, and I'm an MS student in Computer Science
-> at Penn State. My initial application for Outreachy has been approved,
-> and I will try to make contributions to Linux Kernel Networking API
-> and selftest improvements so that I'm elected for the internship. I
-> have been programming in C for about two years now, and I'm currently
-> taking a course on Computer Networks. I don't have a background in
-> kernel programming, and I hope to learn that during this project.
->
-> Cheers!
->
-> Sevinj.Aghayeva
->
+Welcome Rebecca!.
