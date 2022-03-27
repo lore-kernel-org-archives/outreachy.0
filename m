@@ -1,79 +1,60 @@
-Received: from mail-pj1-f44.google.com (mail-pj1-f44.google.com [209.85.216.44])
+Received: from mail-wm1-f46.google.com (mail-wm1-f46.google.com [209.85.128.46])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 675A03D79
-	for <outreachy@lists.linux.dev>; Sun, 27 Mar 2022 15:46:33 +0000 (UTC)
-Received: by mail-pj1-f44.google.com with SMTP id o3-20020a17090a3d4300b001c6bc749227so13205295pjf.1
-        for <outreachy@lists.linux.dev>; Sun, 27 Mar 2022 08:46:33 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2C5FF7E
+	for <outreachy@lists.linux.dev>; Sun, 27 Mar 2022 18:08:06 +0000 (UTC)
+Received: by mail-wm1-f46.google.com with SMTP id p189so7132014wmp.3
+        for <outreachy@lists.linux.dev>; Sun, 27 Mar 2022 11:08:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=S0Yz/dqzHBB8FThs/HmajL/JFQeeiGaZ5qurabktgBU=;
-        b=AvveYWnytXUHMVGn2qbCQyrREkKD8pxw1NIYAfNey9UsxYPglbyOsqWrj4e5AiN+Wk
-         REG1Gld/YXpLjtYPXWWqALAjCoEeE6zSO0XHt85J43ICL+41ub13XDdfoF6CFOlzsHzY
-         zK4mRlshiuljm27nSPVZXscYSU76rSjJlxzYjmPLwcP8LMXtE00nCUg6ZHfXJTZzE+m2
-         MewJeFRhHjqE0F7avPPas9HDIWUyFet7Cy4g9OXjUBaLFqostOJNrZ/XBqvsu4UX7UaN
-         h3Wp20uDcz72MXWmmsKYTvyeZq3CMUBe/o/7nupB8icK1vDrMPTzK2LqmtAiQV8XVLJv
-         /zgw==
+        h=date:from:to:subject:message-id:mime-version:content-disposition
+         :content-transfer-encoding;
+        bh=aCSX7ZpB+yXBejZq0+mDgE4pGOcLcl44iTrYQYgIeqM=;
+        b=G13+TgZaop50N5iiVvCg9CDckpEi8bOPpmgd1DzJ35youzW4QcjksSQN0cRa9sHNcZ
+         UD9ghEMhL//ME1Q8Ri23yuU+XwBZruH22js2ox1Ll/Rr7Vpkg7CtjkkdKUmYWsZWY4MH
+         /6WQnpDm2Oph/hvTx5R1j5zORIO5b+79EOjiLZr9aWdWDclfL9PH6Q03xlrnDfiJ60d7
+         asGqYPVONk1mWvnFCzvD/DQ/IpvcilSeFgitvkvtTVZaVZVMhDKM3hMsOXWzp/zAzvUv
+         6DJnG2ygNHiVgBEl4/IQEbZPyxycw24Nms1O8XLh/uHYmF3p6K6Pvfga/V32QDTDhD5s
+         dVLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=S0Yz/dqzHBB8FThs/HmajL/JFQeeiGaZ5qurabktgBU=;
-        b=jxCdRuFMepqb7iXAZI1/u0del/5nJGEmutdk3XNDm2WHbuVUB42w9PWiTezNxWYiUY
-         nhQ60vStd33dLMEEIq5nVGY7kYcKhZRpKPrxCk7nbwCscAzkOghS8PlKucx8Rjr+2fDB
-         u3BeuPRiKoP0jcGEjIDMoVd1yVuYRXT2sjvpldO7k+AssvtnJ+brQHrxB/Y0m7a0qjoK
-         r80k7sP8HKsYhlR/bY0AZ1CbSn3c4IVX/SGhyyzJfEzb0Pd94c+BezkbURglwyuLzYEL
-         RgC8tKmneRecWtq06/2o3CKUreJ7k5nQpQ1MCaKTYCNFRda5x4TPFF+zyNU5wR9ZNG6z
-         1Kag==
-X-Gm-Message-State: AOAM531tBDmmraEM7oxqUqVfnPJet4r9mra+ETsa/zpEGDlyCcLA0JIy
-	zUFZsH1ITRKI2EQ5pj4839M5yzmkdwyO/EvsONs=
-X-Google-Smtp-Source: ABdhPJzcFuPQLtDsLfs1M1zCFe8v/5SNAAbSHn9AmNhsoyLt1Qt3GQHRF5z0r6UJwEZbFJyfdxi6/982snAoIc1vObc=
-X-Received: by 2002:a17:90b:3e8b:b0:1c7:852d:e843 with SMTP id
- rj11-20020a17090b3e8b00b001c7852de843mr24357490pjb.244.1648395992899; Sun, 27
- Mar 2022 08:46:32 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition:content-transfer-encoding;
+        bh=aCSX7ZpB+yXBejZq0+mDgE4pGOcLcl44iTrYQYgIeqM=;
+        b=gXM1CFUh3ZQdTiPDtCfWUuTB02B2jbY3XfKlffRcqLnjiEnLelxwGZ/XEyB0CzEr0x
+         EoWNuv6h75I9GK1rDEbNczHuep4aPTfCljfT3/Wpv9kJEZEIbpxc9wL4IYYi39Q1QdqR
+         +jU1mEeXDgvzNBQHXz2tWkqmuBj4DEZvUeQAL/K501z8QxmaTYgmrcIOOcp0s5lTDH1A
+         z05S41cxnjJGQCm1n+aKRuZEJl0TtVxdHFHEKKJc7EcgHq4xu05PLTcj65uO3GuLvseK
+         rk/md+EoSwwT/CRdJBsjbD8RVe6eQsSq0/YhrWqt6oL+PfV3F4eoRUPEDitW13sLGEER
+         V5qA==
+X-Gm-Message-State: AOAM533/52hDzuC5Z1kpNlGX+m4Q9dwFCn9BLc2XHB787dvcIfC9uMdR
+	oLMl6njvfzYNQKGLxImtRNcZempEy40=
+X-Google-Smtp-Source: ABdhPJzcKFFtK4rD8V327NTABMnrPoITgBliUW8/Hukxp8pVVdBfRtziQiY5Ol56QcuR/UNCy0dglg==
+X-Received: by 2002:a05:600c:644:b0:38c:8aab:1708 with SMTP id p4-20020a05600c064400b0038c8aab1708mr20692648wmm.149.1648404484300;
+        Sun, 27 Mar 2022 11:08:04 -0700 (PDT)
+Received: from alaa-emad ([102.41.111.198])
+        by smtp.gmail.com with ESMTPSA id p15-20020a05600c358f00b0038cc046cb2esm14941282wmq.32.2022.03.27.11.08.03
+        for <outreachy@lists.linux.dev>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 27 Mar 2022 11:08:03 -0700 (PDT)
+Date: Sun, 27 Mar 2022 20:08:01 +0200
+From: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+To: outreachy@lists.linux.dev
+Subject: IRC channels
+Message-ID: <20220327180801.GA477239@alaa-emad>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-References: <CAL1a2smMNX16+hNuCjJJ+Yq8iU0+0hvh1AyCf-K9imtBM_vHWA@mail.gmail.com>
- <20220327042412.GA1158431@alison-desk>
-In-Reply-To: <20220327042412.GA1158431@alison-desk>
-From: Roopa Prabhu <roopa.prabhu@gmail.com>
-Date: Sun, 27 Mar 2022 08:46:22 -0700
-Message-ID: <CAGe6so-jsaAeBznNMTMN6CQwnv6VkDAFDna2Vu4m51rLgAQFzA@mail.gmail.com>
-Subject: Re: #Outreachy-Contribution
-To: Alison Schofield <alison.schofield@intel.com>
-Cc: Formasit Fokunang <formasitf@gmail.com>, outreachy@lists.linux.dev
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
 
-On Sat, Mar 26, 2022 at 9:21 PM Alison Schofield
-<alison.schofield@intel.com> wrote:
->
-> On Sat, Mar 26, 2022 at 09:42:59PM +0100, Formasit Fokunang wrote:
-> > Greetings,
-> >   I am Formasit Chijoh a second year student studying Computer
-> > Engineering and a beginner to open source contributions.I am
-> > participating in the Outreachy 2022 cohort.Due to my keen interest in
-> > operating system development especially the linux kernel, I would like
-> > to contribute to the Linux kernel project (Refactoring HIGHMEM
-> > Interface) proposed for Outreachy mid-term  session.Contributing to
-> > this project will go a long way to improve my knowledge about open
-> > source and equally improve my skills to becoming a software
-> > engineer.I have a general knowledge in fullstack development,
-> > shell(Bash) programming and am equally good in C/C++ programming.I
-> > will be glad to learn and apply from  @iweiny@gmail.com   and everyone
-> > in the community.
-> >
-> > Thank you,
-> > --
-> > Formasit Chijoh
-> >
-> Welcome to the Outreachy Linux Kernel Community!
-> Alison
->
+Hello All,
 
-Welcome Formasit!
+I am Alaa , My initial application approved. I have three years experience with C and want to apply for linux kernel projects .I am following mentioned tutorial for first patch but I have one issue I couldn’t join both irc channels, any guide plz
+
+Thanks in advance,
+Alaa
