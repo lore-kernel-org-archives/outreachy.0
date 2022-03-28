@@ -1,147 +1,83 @@
-Received: from mail-40133.protonmail.ch (mail-40133.protonmail.ch [185.70.40.133])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-wm1-f53.google.com (mail-wm1-f53.google.com [209.85.128.53])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 13D0A17E7
-	for <outreachy@lists.linux.dev>; Mon, 28 Mar 2022 23:16:08 +0000 (UTC)
-Date: Mon, 28 Mar 2022 23:15:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
-	s=protonmail; t=1648509360;
-	bh=ERdvr4koN//8O0yWGGTOqTrB4qDUF6+4RCVc2IgfTmU=;
-	h=Date:To:From:Cc:Reply-To:Subject:Message-ID:In-Reply-To:
-	 References:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID;
-	b=HEEmnWhUT/WaU90xYPxTbhkdNRqN3vbX2IIWK4nIDAsKN2YzDn9GpjgM+Bop+k/JW
-	 j3jhDHl7uByf2re7e9neD3RQd61dMIouZ+wdlc36rAShE2mFkFp7mgvx6dc/S6rMmB
-	 qm+tCsmlrBlFPBKQ+YNrFLZDr4RL000815yvK0GkFQhO6p6Nc8hgTAsbqlWDrYTFOf
-	 tHPFe+a2wuHiYqbzAidA9auIvJ7eliOet+y0KBrzZ9AM1QXhuodKaXRVOs5+dSduw5
-	 V9v+kyGZn5F0VxpxEEP7kk69gI7Zgwb0wNuYHBwP5RX7O62VTwuA8tQzWOl9eexeHd
-	 ++XomvrIlcVpA==
-To: Stefano Brivio <sbrivio@redhat.com>
-From: Rebecca Mckeever <rebecca.mckeever@protonmail.com>
-Cc: "outreachy@lists.linux.dev" <outreachy@lists.linux.dev>
-Reply-To: Rebecca Mckeever <rebecca.mckeever@protonmail.com>
-Subject: Re: Help with Outreachy Setup
-Message-ID: <tNBPktxWF2otxi8_ncSeM-0JgzTQmBXSgYhPAg1PevCPu-Lqr8pJDNRwMcq7onLpeAUF70r1P7JUlHeP-P7RxoR3aloWi-yuosT_E7k4xk8=@protonmail.com>
-In-Reply-To: <20220327105438.26ec0e70@elisabeth>
-References: <VlGZ-Rt6GMrT_vsR1Bi_X3co5-hOiETSXBNNVG77hbb2vELgPzsd2fv5T4Qnd14G3z6f-ocpRTj2uT2ampl1aB6PyXJkWRS_5l8BH3nNcRM=@protonmail.com> <hIoORnc6IGx_3SqRrbAJGrJBMH4ZnHvpDMUrXAkvsbULD_5Ab9D-w_2na1gq1TlO7bX0JdMAx_CBriDDpoqStYKNXmqu4HZUugAX1HJ0ius=@protonmail.com> <20220327105438.26ec0e70@elisabeth>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1C4BC17E7
+	for <outreachy@lists.linux.dev>; Mon, 28 Mar 2022 23:25:09 +0000 (UTC)
+Received: by mail-wm1-f53.google.com with SMTP id p12-20020a05600c430c00b0038cbdf52227so452383wme.2
+        for <outreachy@lists.linux.dev>; Mon, 28 Mar 2022 16:25:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=W2+QnfDLI9bZuB4ejF4uihDFHRYkKKFrKgLbbWsABqo=;
+        b=Cizk17/06JtJdVHd89UnYX6XuyelMuYjGc/F0qXSEg5VR3tOMHrG1aUjESEEm62VGy
+         9ofWuXHOhFbIZI5/SvKK+eCJcOs7REHjmpXmq6Ylfo6yaYHyxnZTKRgab2Q1y7ZmSRB/
+         XC46fCJxrNxB51030MdX3qTU/vLGd2duELlHoVlIDa8xywy579m5caUWJGR7c9QPzTa7
+         oJVoJ0I09JDl3ohxL9YQC5bwexPlFN3TM8z44mTiLnGEm9l6eMV+GldjoDM3uPsLpA6M
+         Ft13BmrkoNby4riW0U5KyGurYCLDH3gRDDsmq7IzWBzAjMY7hyRTUR7/ry3B5R/obTFp
+         ZYAQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=W2+QnfDLI9bZuB4ejF4uihDFHRYkKKFrKgLbbWsABqo=;
+        b=RWeu+ZvXO35LIu158yI5SdfvjNvTPi+hFohWXR1W3e85L/3iCSoQb19pTGt/tdu3X/
+         19uD2/pVGmCMgr1s87sY2orGAMP1qRgsZcli8XlB5jc9iWjuY2HVHm/JcSr7E02dB7jc
+         9rAeQZLpw4Ao+8ZItNnTix/+BA2YJ3omvJUUEDcZG+8+Sl1wzb1pVo51bAcAdcNGAJ0j
+         yptOkzD0XwII4DMvw8hmM51tYb7dt6JmnGbrL/q4/Wb5UMdPp03f02+kd4+xrjZpMgrL
+         Yc1Ecs+jNTs1Lv2VSGwOyt+gIALUzhF6UmOVjtnfuUK46ibjG8RDfNv6kdnEJUsM0hEh
+         PbYg==
+X-Gm-Message-State: AOAM530/dE41LTKPcB5bga46JdO1DRK0vf8SvNClHLbsm04pg+8QKt+l
+	mXRgxnG1kZAtUEqNDqcZu7o=
+X-Google-Smtp-Source: ABdhPJyzqO0kh01/y3eCfZMQUE4yOSBWUcPimLlPZrb+yjgeieDaDEQFBuncHUjuEd5Dsj65Cya78g==
+X-Received: by 2002:a7b:c452:0:b0:38c:9146:569 with SMTP id l18-20020a7bc452000000b0038c91460569mr2285041wmi.201.1648509907358;
+        Mon, 28 Mar 2022 16:25:07 -0700 (PDT)
+Received: from alaa-emad ([41.45.69.52])
+        by smtp.gmail.com with ESMTPSA id i10-20020a0560001aca00b00203daf3759asm13945792wry.68.2022.03.28.16.25.06
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 28 Mar 2022 16:25:07 -0700 (PDT)
+From: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+To: outreachy@lists.linux.dev
+Cc: toke@toke.dk,
+	kvalo@kernel.org,
+	davem@davemloft.net,
+	kuba@kernel.org,
+	linux-wireless@vger.kernel.org,
+	netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	eng.alaamohamedsoliman.am@gmail.com
+Subject: [PATCH] First Patch: Add Printk to pci.c
+Date: Tue, 29 Mar 2022 01:24:49 +0200
+Message-Id: <20220328232449.132550-1-eng.alaamohamedsoliman.am@gmail.com>
+X-Mailer: git-send-email 2.35.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 
-Hi Stefano,
+This patch for adding Printk line to ath9k probe function as a task
+for Outreachy internship
 
-------- Original Message -------
+Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+---
+ drivers/net/wireless/ath/ath9k/pci.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-On Sunday, March 27th, 2022 at 03:54, Stefano Brivio <sbrivio@redhat.com> w=
-rote:
+diff --git a/drivers/net/wireless/ath/ath9k/pci.c b/drivers/net/wireless/ath/ath9k/pci.c
+index a074e23013c5..e16bdf343a2f 100644
+--- a/drivers/net/wireless/ath/ath9k/pci.c
++++ b/drivers/net/wireless/ath/ath9k/pci.c
+@@ -892,6 +892,7 @@ static int ath_pci_probe(struct pci_dev *pdev, const struct pci_device_id *id)
+ 	int ret = 0;
+ 	char hw_name[64];
+ 	int msi_enabled = 0;
++	printk(KERN_DEBUG "I can modify the Linux kernel!\n");
+ 
+ 	if (pcim_enable_device(pdev))
+ 		return -EIO;
+-- 
+2.35.1
 
-> Hi Rebecca,
->
-> First off, welcome to Outreachy and I'm glad you were able to build the
->
-> kernel and boot it! About the issues you hit.
->
-> On Sun, 27 Mar 2022 04:58:01 +0000
->
-> Rebecca Mckeever rebecca.mckeever@protonmail.com wrote:
->
-> > I was able to get it working on a different computer. It still shows
-> >
-> > the "CONFIG_X86_X32 enabled but no binutils support" message, but
-> >
-> > there was no error message and I was able to boot into it, so
-> >
-> > hopefully it's not a problem.
->
-> CONFIG_X86_X32 enables, I quote from the Kconfig help: "x32 native
->
-> 32-bit ABI for 64-bit processors" -- which is a memory-saving feature
->
-> not commonly enabled.
->
-> On 64-bit processors (such as, probably, yours), pointers (that is,
->
-> references to data, or functions) use 64 bits. That's convenient, among
->
-> other reasons, because 4 GiB of memory nowadays isn't that much and,
->
-> using fewer bits, some (further) translation of memory addresses is
->
-> needed to address what programs and kernel might want to refer to.
->
-> It takes a bit more space, in both programs and kernel. So the kernel
->
-> offers, as a rather extreme measure of memory optimisation, the
->
-> possibility to keep the storage of pointers to 32 bits. That would be
->
-> used mostly by embedded systems, I guess.
->
-> To build the kernel with that option, you don't just need binutils, you
->
-> would also need binutils with this specific support, which is not
->
-> commonly available in distribution. I bet "elf32-86-64" is missing in
->
-> the list of supported "targets" when you issue:
->
-> objcopy --help
-
-Yes, "elf32-86-64" was missing from the list of targets. But the list did i=
-nclude "elf32-x86-64". Do you know what the difference between them is?
-
->
-> Anyway, yes, it's just a warning. You can get rid of the warning by
->
-> disabling the CONFIG_X86_X32 in your kernel configuration. Maybe you
->
-> could make sure you disabled it with the correct syntax with this, from
->
-> your kernel tree:
->
-> scripts/config -d CONFIG_X86_X32
->
-> ...it can still be that it's selected by another option, so it would be
->
-> re-enabled automatically. Search for it from 'make menuconfig', typing
->
-> '/' (slash) and searching for X86_X32. Then you will see if that's the
->
-> case.
-
-This worked for me. I was able to recompile without seeing the warning.
-
->
-> The actual build error you got on the other machine is probably a
->
-> dependency issue between options, which happens with your particular
->
-> configuration, but it really shouldn't happen no matter how your
->
-> configuration looks like.
->
-> The relevant configuration options are CONFIG_CRYPTO_AES_NI_INTEL and
->
-> CONFIG_64BIT -- you could start having a look at the state of those two.
->
-
-CONFIG_CRYPTO_AES_NI_INTEL was set to m. I tried changing it to n and then =
-y, and neither removed the error. Changing CONFIG_64BIT didn't remove the e=
-rror either. I think I may have made a mistake early in the process and wou=
-ld need to start over to get it working. I will stick with compiling on the=
- other machine for now; I actually prefer it that way.
-
-> I hope this helps,
->
-> --
->
-> Stefano
-
-Thanks for you help Stefano!
-
-Rebecca
