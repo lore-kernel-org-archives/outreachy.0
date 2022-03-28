@@ -1,77 +1,101 @@
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ot1-f46.google.com (mail-ot1-f46.google.com [209.85.210.46])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DEE033234
-	for <outreachy@lists.linux.dev>; Sun, 27 Mar 2022 19:30:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1648409446;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=T03fS5mkOM2NFBWhJ/14mLo4scA8oy5pqj44dSsVIk4=;
-	b=V0y2xCcWByYVqDQGTwAKYEIzItIvEcWESTP23mZcq2x9avwIZxy3mNmlfYUfNvY9mTHiY8
-	hZzEBegN543EfsNyB34aUIkH50kBsvMdHt8nCDWgr67aYoNMetzma0KJsKXLoIRe8etcR/
-	9mSgVLuCQGGlP9oR1TqYAWxvn1z2foA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-600-lmr35tB5PE6FJ0bEP52KoQ-1; Sun, 27 Mar 2022 15:30:43 -0400
-X-MC-Unique: lmr35tB5PE6FJ0bEP52KoQ-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1261B5EF;
-	Sun, 27 Mar 2022 19:30:42 +0000 (UTC)
-Received: from maya.cloud.tilaa.com (unknown [10.40.208.6])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id A0E2D60BF1;
-	Sun, 27 Mar 2022 19:30:41 +0000 (UTC)
-Date: Sun, 27 Mar 2022 21:30:39 +0200
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-Cc: outreachy@lists.linux.dev
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 14CF87C
+	for <outreachy@lists.linux.dev>; Mon, 28 Mar 2022 00:16:16 +0000 (UTC)
+Received: by mail-ot1-f46.google.com with SMTP id a17-20020a9d3e11000000b005cb483c500dso9666526otd.6
+        for <outreachy@lists.linux.dev>; Sun, 27 Mar 2022 17:16:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=message-id:subject:from:to:cc:date:in-reply-to:references
+         :user-agent:mime-version:content-transfer-encoding;
+        bh=Fzs2IKPVwMwL0NmMAqC0j3iNnoXFsg1gGQk2oPbhwHk=;
+        b=mdp56HB5d+6BsQjsOAgPIkp3DRG9jxnIzu4sX1wSt5Ijcnl2PLxGykuTwm6+WfIii+
+         RItauRrHCmw/iqNthcXiDz24FEvu+xNEOW0yFqXYHgimLDawGTmd+Bru9exgxTLqTNtj
+         oX73SJPEkBjIeg5WTh2ss/fAAhtTpu5jrQ1DYYbwv7NezRzsw3wzSZtkGkLL6hmJfUG/
+         21ruLmdgXBsv3eYQvyVbrlIf11DWuD0+9WlKobod+pOlJn2T8kYW/AS5Je0LZekXsjAm
+         p3vBzHZgaiDZiC/8ulJGKO8ZPm4udl05B5kvsGHhExj9JM43YQ7XGhUVEf2XOj3PC42u
+         nDwQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+         :references:user-agent:mime-version:content-transfer-encoding;
+        bh=Fzs2IKPVwMwL0NmMAqC0j3iNnoXFsg1gGQk2oPbhwHk=;
+        b=MbfB6AqPDFE04zq/CcPgQtY1L+komly7y3VxVzPkLA0Z264Hi0iI3DAb+cBOkuPi6Y
+         wXhTorOTxAJBCoxqI6V4qSXk9d+wjYDwRN/p+uMFsvl6Wb8OMpMSu/bLx6Dtk8yJGX4p
+         aqLZuoSDDA5wAalWiizxFHP7//W6Jg+hH8ghDXeyQlK6efnBAcm3H96BzhqJ5JywfQgb
+         H0QWmX1LoOVb0/H473eNK7L3o1SLD0LtL/DwAryGt1Yc0Jx5lRxIhzJ78Px2XmkDRnlu
+         C7PYa/QcV+CmZt6adEWWiaLDlkhiCu5PNBwgnPVaawUA48I/8Cv0zFFVfYckUPcGXbun
+         Meew==
+X-Gm-Message-State: AOAM533rswgI6iAXsl55bGHF5esrE6X6gu8QyU9O2hEYJgNRgQ0c8hZu
+	xme1Qrs0m1Y7IIDzwFD+JTM=
+X-Google-Smtp-Source: ABdhPJy0OEAZOFrJl42yNCVMySeWHNS9zQlwBrDo7RuiCV89twDcGqVF6xopgyHLfVhbw54ondd8TQ==
+X-Received: by 2002:a9d:66cd:0:b0:5b2:3cf2:2e21 with SMTP id t13-20020a9d66cd000000b005b23cf22e21mr8929421otm.5.1648426575208;
+        Sun, 27 Mar 2022 17:16:15 -0700 (PDT)
+Received: from [192.168.21.4] ([170.84.56.148])
+        by smtp.gmail.com with ESMTPSA id s26-20020a4ac81a000000b00322a2b5d943sm6051466ooq.37.2022.03.27.17.16.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 27 Mar 2022 17:16:14 -0700 (PDT)
+Message-ID: <dd79b324e01740af619f4d3e0a57e1409e718606.camel@gmail.com>
 Subject: Re: IRC channels
-Message-ID: <20220327213039.579d15d7@elisabeth>
-In-Reply-To: <20220327180801.GA477239@alaa-emad>
+From: brunodout.dev@gmail.com
+To: Stefano Brivio <sbrivio@redhat.com>, Alaa Mohamed
+	 <eng.alaamohamedsoliman.am@gmail.com>
+Cc: outreachy@lists.linux.dev
+Date: Sun, 27 Mar 2022 21:16:11 -0300
+In-Reply-To: <20220327213039.579d15d7@elisabeth>
 References: <20220327180801.GA477239@alaa-emad>
-Organization: Red Hat
+	 <20220327213039.579d15d7@elisabeth>
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.42.4 
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=sbrivio@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 
 Hi Alaa,
+Hi Stefano,
 
-On Sun, 27 Mar 2022 20:08:01 +0200
-Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com> wrote:
+On Sun, 2022-03-27 at 21:30 +0200, Stefano Brivio wrote:
+> Hi Alaa,
+> 
+> On Sun, 27 Mar 2022 20:08:01 +0200
+> Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com> wrote:
+> 
+> > Hello All,
+> > 
+> > I am Alaa , My initial application approved. I have
 
-> Hello All,
->=20
-> I am Alaa , My initial application approved. I have three years
-> experience with C and want to apply for linux kernel projects .I am
-> following mentioned tutorial for first patch but I have one issue I
-> couldn=E2=80=99t join both irc channels, any guide plz
+Heyy Alaa, congratulations for that! I am very glad to be
+here and hope you are too!
 
-Can you try these links?
+> >  I couldn’t join both irc channels, any guide plz
 
-=09https://webchat.oftc.net/?randomnick=3D1&channels=3Doutreachy-kernel-net=
-working&prompt=3D1
+Are you using the web client? If you are, you might access
+one of Stefano's links to join the first channel, and then
+join the second one with the command:
 
-=09https://webchat.oftc.net/?randomnick=3D1&channels=3Dkernel-outreachy&pro=
-mpt=3D1
+/join #second-channel
 
-and, if something doesn't work, tell us exactly what's... not working?
-:) Thanks,
+> 
+> Can you try these links?
+> 
+>         
+> https://webchat.oftc.net/?randomnick=1&channels=outreachy-
+> kernel-networking&prompt=1
+> 
+>         
+> https://webchat.oftc.net/?randomnick=1&channels=kernel-
+> outreachy&prompt=1
 
---=20
-Stefano
+Using both links as Stefano said will also work, but you'll
+have two browser tabs and two different connections using
+two different nicknames for that. I think adding both
+channels sepparated by comma in the channels=... part of the
+URL might also work, but I haven't tried.
 
+Best regards,
+Bruno (IRC: CodeAgain)
