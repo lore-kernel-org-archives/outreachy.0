@@ -1,101 +1,111 @@
-Received: from mail-ot1-f46.google.com (mail-ot1-f46.google.com [209.85.210.46])
+Received: from mail-wr1-f52.google.com (mail-wr1-f52.google.com [209.85.221.52])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 14CF87C
-	for <outreachy@lists.linux.dev>; Mon, 28 Mar 2022 00:16:16 +0000 (UTC)
-Received: by mail-ot1-f46.google.com with SMTP id a17-20020a9d3e11000000b005cb483c500dso9666526otd.6
-        for <outreachy@lists.linux.dev>; Sun, 27 Mar 2022 17:16:15 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 85C227C
+	for <outreachy@lists.linux.dev>; Mon, 28 Mar 2022 15:58:52 +0000 (UTC)
+Received: by mail-wr1-f52.google.com with SMTP id w21so16493792wra.2
+        for <outreachy@lists.linux.dev>; Mon, 28 Mar 2022 08:58:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=message-id:subject:from:to:cc:date:in-reply-to:references
-         :user-agent:mime-version:content-transfer-encoding;
-        bh=Fzs2IKPVwMwL0NmMAqC0j3iNnoXFsg1gGQk2oPbhwHk=;
-        b=mdp56HB5d+6BsQjsOAgPIkp3DRG9jxnIzu4sX1wSt5Ijcnl2PLxGykuTwm6+WfIii+
-         RItauRrHCmw/iqNthcXiDz24FEvu+xNEOW0yFqXYHgimLDawGTmd+Bru9exgxTLqTNtj
-         oX73SJPEkBjIeg5WTh2ss/fAAhtTpu5jrQ1DYYbwv7NezRzsw3wzSZtkGkLL6hmJfUG/
-         21ruLmdgXBsv3eYQvyVbrlIf11DWuD0+9WlKobod+pOlJn2T8kYW/AS5Je0LZekXsjAm
-         p3vBzHZgaiDZiC/8ulJGKO8ZPm4udl05B5kvsGHhExj9JM43YQ7XGhUVEf2XOj3PC42u
-         nDwQ==
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=BUuQtDre2SbW9YQChHCUIKV3LZ+6xhZRSLRw6p7DnxQ=;
+        b=jQ6y6+s1/9SZL/E4NPLmUG07PMCa3jk2GdD0eSnV8y3F5W1XcvJURYZh8bbxoIUh+o
+         i5ZqJlQ9PZhs9JnrmaoCwmmDXli7fKD4t7p3zTSpriYN7NFRjmsUFVme55ze/rQoh0Fp
+         hHV45XzqVoabSt08wqyfv3SpFEGEDElOGfJxqJ6WAnpKkSJyX2muA4t/ePQchKh3H1xi
+         G9uvIyxp6SeQjhHh5HQs0WnbyCcaPplKz2vdequ15yAIyB8K7Vl/UOH5oxOx5OpwE40r
+         lRKMAF041/0ZedZ797rT2N4xv/xpPS+q61McKC/mSN/C3oLV767ciAbEb298l0I8xfd6
+         DnAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
-         :references:user-agent:mime-version:content-transfer-encoding;
-        bh=Fzs2IKPVwMwL0NmMAqC0j3iNnoXFsg1gGQk2oPbhwHk=;
-        b=MbfB6AqPDFE04zq/CcPgQtY1L+komly7y3VxVzPkLA0Z264Hi0iI3DAb+cBOkuPi6Y
-         wXhTorOTxAJBCoxqI6V4qSXk9d+wjYDwRN/p+uMFsvl6Wb8OMpMSu/bLx6Dtk8yJGX4p
-         aqLZuoSDDA5wAalWiizxFHP7//W6Jg+hH8ghDXeyQlK6efnBAcm3H96BzhqJ5JywfQgb
-         H0QWmX1LoOVb0/H473eNK7L3o1SLD0LtL/DwAryGt1Yc0Jx5lRxIhzJ78Px2XmkDRnlu
-         C7PYa/QcV+CmZt6adEWWiaLDlkhiCu5PNBwgnPVaawUA48I/8Cv0zFFVfYckUPcGXbun
-         Meew==
-X-Gm-Message-State: AOAM533rswgI6iAXsl55bGHF5esrE6X6gu8QyU9O2hEYJgNRgQ0c8hZu
-	xme1Qrs0m1Y7IIDzwFD+JTM=
-X-Google-Smtp-Source: ABdhPJy0OEAZOFrJl42yNCVMySeWHNS9zQlwBrDo7RuiCV89twDcGqVF6xopgyHLfVhbw54ondd8TQ==
-X-Received: by 2002:a9d:66cd:0:b0:5b2:3cf2:2e21 with SMTP id t13-20020a9d66cd000000b005b23cf22e21mr8929421otm.5.1648426575208;
-        Sun, 27 Mar 2022 17:16:15 -0700 (PDT)
-Received: from [192.168.21.4] ([170.84.56.148])
-        by smtp.gmail.com with ESMTPSA id s26-20020a4ac81a000000b00322a2b5d943sm6051466ooq.37.2022.03.27.17.16.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 27 Mar 2022 17:16:14 -0700 (PDT)
-Message-ID: <dd79b324e01740af619f4d3e0a57e1409e718606.camel@gmail.com>
-Subject: Re: IRC channels
-From: brunodout.dev@gmail.com
-To: Stefano Brivio <sbrivio@redhat.com>, Alaa Mohamed
-	 <eng.alaamohamedsoliman.am@gmail.com>
-Cc: outreachy@lists.linux.dev
-Date: Sun, 27 Mar 2022 21:16:11 -0300
-In-Reply-To: <20220327213039.579d15d7@elisabeth>
-References: <20220327180801.GA477239@alaa-emad>
-	 <20220327213039.579d15d7@elisabeth>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.42.4 
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=BUuQtDre2SbW9YQChHCUIKV3LZ+6xhZRSLRw6p7DnxQ=;
+        b=00cfJ0I+qCS1CNge4DdPcGUR6Fsgu4aOJsevLUMb1WDWh0uANNpMjG/7Atu3g0Lx5L
+         0F7ciwRnl4xQBkiXAZ5Wfz0yODCGX4fZO7QaxpZ0V+jhg7RnT3k0jllI8ggPKZpNuOPR
+         Ds5G/996TKXiey6jAH9wfXhiyN59g4KeNf5JY4t9yhYX7/UNar7JkUIBSQ85fz3SNg9i
+         Ry7JMOBwEnaI7QNdKXj3GiremffQuF6AAOQTZeH4PTntMIuoN4+58H3rOToki6MU26zR
+         7kADSC941swR04625e2SSqalyNYGFRFwzp1uy4YQ601+ESluj7+yyWLolCax1W9q1+vl
+         xumQ==
+X-Gm-Message-State: AOAM5303nTOGGThKXseHy3DSDTzpQDW0nx13n3A626IzdrkzfJv6zQ/V
+	l7HRnRRxnWz/ugC33jdu33s=
+X-Google-Smtp-Source: ABdhPJw+npS8UFm/QNK0vnzOcFxT3yHpuVYfekJkkUkx8du5jBr1LSuwrS96kBs8XklLJyE68/zCrg==
+X-Received: by 2002:adf:b60b:0:b0:205:9cf1:20fd with SMTP id f11-20020adfb60b000000b002059cf120fdmr20951851wre.253.1648483130725;
+        Mon, 28 Mar 2022 08:58:50 -0700 (PDT)
+Received: from [192.168.1.14] ([102.41.111.198])
+        by smtp.gmail.com with ESMTPSA id v14-20020a7bcb4e000000b0034492fa24c6sm12118182wmj.34.2022.03.28.08.58.49
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 28 Mar 2022 08:58:50 -0700 (PDT)
+Message-ID: <1d305abf-1b0d-c43e-6fe9-aa6e74fcb430@gmail.com>
+Date: Mon, 28 Mar 2022 17:58:00 +0200
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: IRC channels
+Content-Language: en-US
+To: brunodout.dev@gmail.com, Stefano Brivio <sbrivio@redhat.com>
+Cc: outreachy@lists.linux.dev
+References: <20220327180801.GA477239@alaa-emad>
+ <20220327213039.579d15d7@elisabeth>
+ <dd79b324e01740af619f4d3e0a57e1409e718606.camel@gmail.com>
+From: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+In-Reply-To: <dd79b324e01740af619f4d3e0a57e1409e718606.camel@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 
-Hi Alaa,
-Hi Stefano,
 
-On Sun, 2022-03-27 at 21:30 +0200, Stefano Brivio wrote:
+On ٢٨‏/٣‏/٢٠٢٢ ٠٢:١٦, brunodout.dev@gmail.com wrote:
 > Hi Alaa,
-> 
-> On Sun, 27 Mar 2022 20:08:01 +0200
-> Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com> wrote:
-> 
-> > Hello All,
-> > 
-> > I am Alaa , My initial application approved. I have
+> Hi Stefano,
+>
+> On Sun, 2022-03-27 at 21:30 +0200, Stefano Brivio wrote:
+>> Hi Alaa,
+>>
+>> On Sun, 27 Mar 2022 20:08:01 +0200
+>> Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com> wrote:
+>>
+>>> Hello All,
+>>>
+>>> I am Alaa , My initial application approved. I have
+> Heyy Alaa, congratulations for that! I am very glad to be
+> here and hope you are too!
+>
+>>>   I couldn’t join both irc channels, any guide plz
+> Are you using the web client? If you are, you might access
+> one of Stefano's links to join the first channel, and then
+> join the second one with the command:
+>
+> /join #second-channel
+>
+>> Can you try these links?
+>>
+>>          
+>> https://webchat.oftc.net/?randomnick=1&channels=outreachy-
+>> kernel-networking&prompt=1
+>>
+>>          
+>> https://webchat.oftc.net/?randomnick=1&channels=kernel-
+>> outreachy&prompt=1
+> Using both links as Stefano said will also work, but you'll
+> have two browser tabs and two different connections using
+> two different nicknames for that. I think adding both
+> channels sepparated by comma in the channels=... part of the
+> URL might also work, but I haven't tried.
+>
+> Best regards,
+> Bruno (IRC: CodeAgain)
 
-Heyy Alaa, congratulations for that! I am very glad to be
-here and hope you are too!
 
-> >  I couldn’t join both irc channels, any guide plz
+Hi Stefano & Bruno
 
-Are you using the web client? If you are, you might access
-one of Stefano's links to join the first channel, and then
-join the second one with the command:
+Thanks a lot for your help , I am able to join both channels.
 
-/join #second-channel
+Best Regards,
+Alaa
 
-> 
-> Can you try these links?
-> 
->         
-> https://webchat.oftc.net/?randomnick=1&channels=outreachy-
-> kernel-networking&prompt=1
-> 
->         
-> https://webchat.oftc.net/?randomnick=1&channels=kernel-
-> outreachy&prompt=1
-
-Using both links as Stefano said will also work, but you'll
-have two browser tabs and two different connections using
-two different nicknames for that. I think adding both
-channels sepparated by comma in the channels=... part of the
-URL might also work, but I haven't tried.
-
-Best regards,
-Bruno (IRC: CodeAgain)
