@@ -1,39 +1,34 @@
-Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4651B258C;
-	Tue, 29 Mar 2022 20:08:36 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AD956258C
+	for <outreachy@lists.linux.dev>; Tue, 29 Mar 2022 20:11:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1648584516; x=1680120516;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=jJBFAHQdu8LK3MnfBlyd4ynLCpZPwxsuj3ERMXvrSf4=;
-  b=Y/80ewZzz3JX/GADYrqpFODP9wq4b9dcEWBHf4/bFCihtn7piIzK/lKz
-   9DDZSg72QBAizAaZ0XTR2/ApCAxd/Av7bSM+MkRBShhjvC19OSgCkDbCJ
-   xPCnV74FmoxiHXVEwVXaF1nuy7ASSGl3X6lxLy0P7wGG1IxEP3fnepbeV
-   ABQVsLmj2MJdTvoYlxDn3EUR1pEAiSSE5/mqgKVikuzqS/1yFQIQd3kcg
-   RMdEmpFaGX3NoCPNZRYDTMtKUPJ72P2JtrzxhcFDMAJ+7L1vDX1DdtrH0
-   fcjasa9VqIYTnKvIutzezeK6nTCQDY/KtyYfVl357ye/Ouopqdp6Sx/ZI
-   A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10301"; a="239292949"
+  t=1648584703; x=1680120703;
+  h=date:from:to:subject:message-id:mime-version;
+  bh=rg8qUBtzaoWBqIfC1N6DSMtXt7HOZ7mjakn0SixGD2s=;
+  b=dz3vfdp4hSYNoyWO+6ku4tstO7JAHz8fiWwI1I+wVNUEZXPlmabaxEyo
+   EF9sMxZ2yEBS67HnvGyy8wNLPYZOp9X0Vw+QORjIRCfOecI7J3qyI7xno
+   0RPlombYUxvXbKIkcYGgapLLebHcfe85k9IRDc/wO8qTHhvfCZ0PhTRdT
+   Ife4CiV6SeKVeAj90I9zRhI8+NpaVVJMDpvl4KEb490M0v5BFDEsWtvj7
+   v0fszqCZXBhO/mMwXkqod7PjhDH9xQhMTbXmMLJyCItZWizIF6xCIwQ64
+   WSXZpRVRCRkwwZPdQU3vAHWn2sXPlEHIdYkd23O/XFw633/9P97IsThRO
+   w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10301"; a="259335513"
 X-IronPort-AV: E=Sophos;i="5.90,220,1643702400"; 
-   d="scan'208";a="239292949"
+   d="scan'208";a="259335513"
 Received: from fmsmga001.fm.intel.com ([10.253.24.23])
-  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Mar 2022 13:08:16 -0700
+  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Mar 2022 13:11:43 -0700
 X-IronPort-AV: E=Sophos;i="5.90,220,1643702400"; 
-   d="scan'208";a="694848177"
+   d="scan'208";a="694849613"
 Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
-  by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Mar 2022 13:08:15 -0700
-Date: Tue, 29 Mar 2022 13:10:21 -0700
+  by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Mar 2022 13:11:42 -0700
+Date: Tue, 29 Mar 2022 13:14:07 -0700
 From: Alison Schofield <alison.schofield@intel.com>
-To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-Cc: outreachy@lists.linux.dev, mchehab@kernel.org,
-	gregkh@linuxfoundation.org, linux-media@vger.kernel.org,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] media:av7110:av7110_av.c remove blank line
-Message-ID: <20220329201021.GA1171096@alison-desk>
-References: <20220329190133.6243-1-eng.alaamohamedsoliman.am@gmail.com>
+To: Outreachy Linux Kernel <outreachy@lists.linux.dev>
+Subject: [ANNOUNCE] No drivers/staging/media PATCHes
+Message-ID: <20220329201407.GA1171146@alison-desk>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -42,57 +37,57 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220329190133.6243-1-eng.alaamohamedsoliman.am@gmail.com>
 
-On Tue, Mar 29, 2022 at 09:01:33PM +0200, Alaa Mohamed wrote:
-> according to checkpatch.pl results
-> "CHECK: Please don't use multiple blank lines"
-> after lines 73 and 78 ,I removed the blank lines
+We won't be accepting patches for drivers/staging/media in
+this round of Outreachy. 
+
+If you are interested in the why, see appended discussion.
+
+Date: Wed, 23 Mar 2022 10:52:00 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: Hans Verkuil <hverkuil@xs4all.nl>
+Cc: gregkh@linuxfoundation.org, Outreachy Linux Kernel
+	<outreachy@lists.linux.dev>
+Subject: Re: Outreachy drivers/staging patch restrictions
+
+On Wed, Mar 23, 2022 at 06:35:52PM +0100, Hans Verkuil wrote:
+> Hi Alison,
 > 
-> Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-> ---
->  drivers/staging/media/av7110/av7110_av.c | 2 --
-
-Hi Alaa,
-
-We are not taking cleanup patches in drivers/staging/media.
-It's documented in here https://kernelnewbies.org/Outreachyfirstpatch
-and I will repost the restriction on this list as the discussion
-occurred a few days before the contribution period began.
-
-If you look at the git history on this file, you'll see it is
-on it's way out of the kernel, not on it's way in!
-
-Please look at my feedback to Rebecca and Sevinj recent checkpatch
-cleanups as guidance for your next (non-media) cleanup patch.
-
-Thanks!
-Alison
-
-
-
-
-
->  1 file changed, 2 deletions(-)
+> On 23/03/2022 17:48, Alison Schofield wrote:
+> > Hi Greg, Hans,
+> > 
+> > We are preparing to kick off the next contribution period for
+> > Outreachy Interns. (March 25 - April 22)
+> > 
+> > Last round we ran with one restriction:
+> >>> Do not send patches for drivers/staging/media/atomisp
+> > 
+> > Hans handled drivers/staging/media (except for atomisp) and
+> > Greg picked up all the rest.
+> > 
+> > Will that work in the upcoming round?
 > 
-> diff --git a/drivers/staging/media/av7110/av7110_av.c b/drivers/staging/media/av7110/av7110_av.c
-> index 91f4866c7e59..1544f120e8b1 100644
-> --- a/drivers/staging/media/av7110/av7110_av.c
-> +++ b/drivers/staging/media/av7110/av7110_av.c
-> @@ -70,12 +70,10 @@
->  #define PIECE_RATE	 0x40
->  #define SEAM_SPLICE	 0x20
->  
-> -
->  static void p_to_t(u8 const *buf, long int length, u16 pid,
->  		   u8 *counter, struct dvb_demux_feed *feed);
->  static int write_ts_to_decoder(struct av7110 *av7110, int type, const u8 *buf, size_t len);
->  
-> -
->  int av7110_record_cb(struct dvb_filter_pes2ts *p2t, u8 *buf, size_t len)
->  {
->  	struct dvb_demux_feed *dvbdmxfeed = (struct dvb_demux_feed *) p2t->priv;
-> -- 
-> 2.35.1
+> Actually, I think it is best to skip drivers/staging/media altogether.
 > 
+> I have a lot less time for code review this round, and in addition
+> the media staging drivers are usually not a good match for code cleanups:
+> usually they are either already in very good shape and just stuck
+> in staging because they are waiting for some missing core functionality,
+> or they are being deprecated.
+
+Got it. We'll restrict driver/staging/media completely.
+Thanks for letting me know!
+
 > 
+> Regards,
+> 
+> 	Hans
+> 
+> > Anything else contributors should be aware of for this round?
+> > 
+> > Thanks for your support,
+> > Alison
+> > 
+> 
+
+----- End forwarded message -----
