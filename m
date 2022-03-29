@@ -1,83 +1,87 @@
-Received: from mail-wm1-f53.google.com (mail-wm1-f53.google.com [209.85.128.53])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1C4BC17E7
-	for <outreachy@lists.linux.dev>; Mon, 28 Mar 2022 23:25:09 +0000 (UTC)
-Received: by mail-wm1-f53.google.com with SMTP id p12-20020a05600c430c00b0038cbdf52227so452383wme.2
-        for <outreachy@lists.linux.dev>; Mon, 28 Mar 2022 16:25:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=W2+QnfDLI9bZuB4ejF4uihDFHRYkKKFrKgLbbWsABqo=;
-        b=Cizk17/06JtJdVHd89UnYX6XuyelMuYjGc/F0qXSEg5VR3tOMHrG1aUjESEEm62VGy
-         9ofWuXHOhFbIZI5/SvKK+eCJcOs7REHjmpXmq6Ylfo6yaYHyxnZTKRgab2Q1y7ZmSRB/
-         XC46fCJxrNxB51030MdX3qTU/vLGd2duELlHoVlIDa8xywy579m5caUWJGR7c9QPzTa7
-         oJVoJ0I09JDl3ohxL9YQC5bwexPlFN3TM8z44mTiLnGEm9l6eMV+GldjoDM3uPsLpA6M
-         Ft13BmrkoNby4riW0U5KyGurYCLDH3gRDDsmq7IzWBzAjMY7hyRTUR7/ry3B5R/obTFp
-         ZYAQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=W2+QnfDLI9bZuB4ejF4uihDFHRYkKKFrKgLbbWsABqo=;
-        b=RWeu+ZvXO35LIu158yI5SdfvjNvTPi+hFohWXR1W3e85L/3iCSoQb19pTGt/tdu3X/
-         19uD2/pVGmCMgr1s87sY2orGAMP1qRgsZcli8XlB5jc9iWjuY2HVHm/JcSr7E02dB7jc
-         9rAeQZLpw4Ao+8ZItNnTix/+BA2YJ3omvJUUEDcZG+8+Sl1wzb1pVo51bAcAdcNGAJ0j
-         yptOkzD0XwII4DMvw8hmM51tYb7dt6JmnGbrL/q4/Wb5UMdPp03f02+kd4+xrjZpMgrL
-         Yc1Ecs+jNTs1Lv2VSGwOyt+gIALUzhF6UmOVjtnfuUK46ibjG8RDfNv6kdnEJUsM0hEh
-         PbYg==
-X-Gm-Message-State: AOAM530/dE41LTKPcB5bga46JdO1DRK0vf8SvNClHLbsm04pg+8QKt+l
-	mXRgxnG1kZAtUEqNDqcZu7o=
-X-Google-Smtp-Source: ABdhPJyzqO0kh01/y3eCfZMQUE4yOSBWUcPimLlPZrb+yjgeieDaDEQFBuncHUjuEd5Dsj65Cya78g==
-X-Received: by 2002:a7b:c452:0:b0:38c:9146:569 with SMTP id l18-20020a7bc452000000b0038c91460569mr2285041wmi.201.1648509907358;
-        Mon, 28 Mar 2022 16:25:07 -0700 (PDT)
-Received: from alaa-emad ([41.45.69.52])
-        by smtp.gmail.com with ESMTPSA id i10-20020a0560001aca00b00203daf3759asm13945792wry.68.2022.03.28.16.25.06
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 28 Mar 2022 16:25:07 -0700 (PDT)
-From: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-To: outreachy@lists.linux.dev
-Cc: toke@toke.dk,
-	kvalo@kernel.org,
-	davem@davemloft.net,
-	kuba@kernel.org,
-	linux-wireless@vger.kernel.org,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	eng.alaamohamedsoliman.am@gmail.com
-Subject: [PATCH] First Patch: Add Printk to pci.c
-Date: Tue, 29 Mar 2022 01:24:49 +0200
-Message-Id: <20220328232449.132550-1-eng.alaamohamedsoliman.am@gmail.com>
-X-Mailer: git-send-email 2.35.1
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ABFF517C9
+	for <outreachy@lists.linux.dev>; Tue, 29 Mar 2022 01:02:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1648515769; x=1680051769;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=E1Mse4J2gkjy4zky9Hh8Adz/f4f0mswnlvb9K0UZs84=;
+  b=YYr1t7VPxHjjssml6QxE5xv4/IiWakAtLpoNcXT9rJ+KK1BKCbELmSnm
+   yrjD34/e/2Xj4FhYXW2wBkFCJyA2w9gAlGmYt3zR3Zo5xG8jN69VW0WGs
+   QTLFOS1RNUIfX6eyx2yTz7qU2upujh8aBzD7YEfyWMEYiBBgcRlabIkqF
+   5RGnts+BeP54dd/I6/y68HF7bWjpzhChpxMIyDWzlAvFbKStUhhdt0pgx
+   CjTTafsKwK/3gvHosZ2aMRfDpUjvmvoyTAhXJB9tYOj5+WZPTdIXg3oSi
+   KSoawSXBy1zP8K2hAydQvzN4ijy6MxOohhiFjWoDO95XBpxETfr7LWq28
+   g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10300"; a="259104059"
+X-IronPort-AV: E=Sophos;i="5.90,218,1643702400"; 
+   d="scan'208";a="259104059"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Mar 2022 18:02:49 -0700
+X-IronPort-AV: E=Sophos;i="5.90,218,1643702400"; 
+   d="scan'208";a="652505910"
+Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
+  by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Mar 2022 18:02:49 -0700
+Date: Mon, 28 Mar 2022 18:05:16 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+Cc: outreachy@lists.linux.dev, toke@toke.dk, kvalo@kernel.org,
+	davem@davemloft.net, kuba@kernel.org,
+	linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] First Patch: Add Printk to pci.c
+Message-ID: <20220329010516.GA1166534@alison-desk>
+References: <20220328232449.132550-1-eng.alaamohamedsoliman.am@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220328232449.132550-1-eng.alaamohamedsoliman.am@gmail.com>
 
-This patch for adding Printk line to ath9k probe function as a task
-for Outreachy internship
+On Tue, Mar 29, 2022 at 01:24:49AM +0200, Alaa Mohamed wrote:
+> This patch for adding Printk line to ath9k probe function as a task
+> for Outreachy internship
+> 
+> Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
 
-Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
----
- drivers/net/wireless/ath/ath9k/pci.c | 1 +
- 1 file changed, 1 insertion(+)
+Hi Alaa,
 
-diff --git a/drivers/net/wireless/ath/ath9k/pci.c b/drivers/net/wireless/ath/ath9k/pci.c
-index a074e23013c5..e16bdf343a2f 100644
---- a/drivers/net/wireless/ath/ath9k/pci.c
-+++ b/drivers/net/wireless/ath/ath9k/pci.c
-@@ -892,6 +892,7 @@ static int ath_pci_probe(struct pci_dev *pdev, const struct pci_device_id *id)
- 	int ret = 0;
- 	char hw_name[64];
- 	int msi_enabled = 0;
-+	printk(KERN_DEBUG "I can modify the Linux kernel!\n");
- 
- 	if (pcim_enable_device(pdev))
- 		return -EIO;
--- 
-2.35.1
+Based on your 'CC to outreachy I can guess you are following out 'First
+Patch Tutorial'. A patch for this step does not need to be sent out to
+the maintainers and lists, since it's not something we actually want
+to change in the Linux Kernel. 
 
+Your next patch, a cleanup patch in drivers/staging/ does need to get
+sent. I guess we'll see that soon!
+
+Thanks & welcome to this round of Outreachy,
+Alison
+
+
+> ---
+>  drivers/net/wireless/ath/ath9k/pci.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/net/wireless/ath/ath9k/pci.c b/drivers/net/wireless/ath/ath9k/pci.c
+> index a074e23013c5..e16bdf343a2f 100644
+> --- a/drivers/net/wireless/ath/ath9k/pci.c
+> +++ b/drivers/net/wireless/ath/ath9k/pci.c
+> @@ -892,6 +892,7 @@ static int ath_pci_probe(struct pci_dev *pdev, const struct pci_device_id *id)
+>  	int ret = 0;
+>  	char hw_name[64];
+>  	int msi_enabled = 0;
+> +	printk(KERN_DEBUG "I can modify the Linux kernel!\n");
+>  
+>  	if (pcim_enable_device(pdev))
+>  		return -EIO;
+> -- 
+> 2.35.1
+> 
+> 
