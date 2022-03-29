@@ -1,114 +1,117 @@
-Received: from mail-oi1-f182.google.com (mail-oi1-f182.google.com [209.85.167.182])
+Received: from mail-qt1-f182.google.com (mail-qt1-f182.google.com [209.85.160.182])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 20E462572
-	for <outreachy@lists.linux.dev>; Tue, 29 Mar 2022 16:24:22 +0000 (UTC)
-Received: by mail-oi1-f182.google.com with SMTP id r8so19563643oib.5
-        for <outreachy@lists.linux.dev>; Tue, 29 Mar 2022 09:24:22 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 451A9257F;
+	Tue, 29 Mar 2022 17:21:24 +0000 (UTC)
+Received: by mail-qt1-f182.google.com with SMTP id i4so15861871qti.7;
+        Tue, 29 Mar 2022 10:21:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=message-id:subject:from:to:date:user-agent:mime-version
-         :content-transfer-encoding;
-        bh=qW+3nZwLinP/l5PaI+PgnRlLtSRRpWswma4ppWYyOhg=;
-        b=YxmsfWcUPjAqU1CMWCLZa3jfBxp+fgtc7nye6ZzqNr5Q/ByNOtsaCduntixFqj/cA1
-         gKAy2oVyp0JLoe1k/lojUkMNd0ToGgX62nUnQdy1PAyvjGdvOjrVCXmSk2l+4dxl0l2f
-         NbluqGovW3Kn6aYoSiceroVIEjyzPK1g14EnxAcw4taur2CIKvq45x/aOoJwfo7orKPn
-         5Tr47P9TlUhaHbBJqdn2PEgK6Vj3lx/t3xo0rVoKX/orQWYVZLU3D5No+pz0iqMt9PT0
-         e8gp3/xYgwYhyZj9T2q5EVwXNoNeJpo08Nirn3Bcq/Jkg6yXqa/Z6dJDme+xLp8yfkr0
-         sSsg==
+        h=date:from:to:subject:message-id:mime-version:content-disposition;
+        bh=Kf1v8hS8vyA7Y5W9J43n/PAPUIUn4eGCoQYkh6AdKJ0=;
+        b=Aa/bMcJenjtxFF5mhNT5iiE4M9JTC0iCsIzerOh5vuhT2TOu1A0cg7mP0Cly9SodV2
+         1sfMfIIv5yxlIzS3b2XjQXxA1qfklG08+dQ8Uh2nIqSPX5g5MFT6oZ+VH4KJXzBUsgDZ
+         tc0oUyCIOW3XL++hTPLa5WRZnog1dp3/QPxwgG8Vij6MOyXe2/0Xw5VVtFo3vlXqOogy
+         3qyJDw8++eNDXTqH9XjUAmkVmkmS1IfjdoH0hzCyuT6Wzdioo8/59H+lZfGHHCZgqe2A
+         dt7Olf5cRk5+BZ5K99oi+NaU80jGDnDRXhCJjPYNLCQ4H/Y9jmwpeukOvdiF0Jb8yXV8
+         VSZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:subject:from:to:date:user-agent
-         :mime-version:content-transfer-encoding;
-        bh=qW+3nZwLinP/l5PaI+PgnRlLtSRRpWswma4ppWYyOhg=;
-        b=5yyDUiz3nCRyHeYdU5h9M3g7UhVutEbvIk6wbFpZvuMr0ApdU2zceQH2k+j7nES3Bj
-         Vn6Z2zlEITjJerwBsq2ZDf/UcN3ysTzq15jo18upjQ3scXxveiAdazTbX9wLbY5c8XST
-         04MXvyT3gLTwOOeLO5Szv/x3uIoBO1yMP2sh+K3L55LFVTVMZS68pvpRi6s5Z4rm11g0
-         +PM399iBwfV+qP4j/v0m9iVGGIyN9X1qFgUWDsaNdLfgyyd0/F7rSxBdyIEpnn6PVi/j
-         xDdEaHh/GhG3IufYgkPEy2RBQh208/VjrAe8CzOs1OTSI68NXecFgzeeQxbxdCLNVwfm
-         m73Q==
-X-Gm-Message-State: AOAM532wt29ExRicTfjZAWUICfqJT6XioOcqbtqZO/J+qxvd+NaHB1eY
-	s7NgqHlMb93Q0R0/GTPftOM7VPqP75Q=
-X-Google-Smtp-Source: ABdhPJycaRIYqsBZAlYUnwyg3FlIR/IIprTQkQe3I6q3Tt88ZUqTrnb4/0Lj0qKNIKN44TNQ6EiPMw==
-X-Received: by 2002:a05:6808:2204:b0:2da:30c1:dd4c with SMTP id bd4-20020a056808220400b002da30c1dd4cmr225479oib.195.1648571060657;
-        Tue, 29 Mar 2022 09:24:20 -0700 (PDT)
-Received: from [192.168.21.4] ([170.84.56.148])
-        by smtp.gmail.com with ESMTPSA id d17-20020a05683025d100b005cdb1be632esm9731299otu.26.2022.03.29.09.24.19
-        for <outreachy@lists.linux.dev>
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition;
+        bh=Kf1v8hS8vyA7Y5W9J43n/PAPUIUn4eGCoQYkh6AdKJ0=;
+        b=flnfwT0deOQw8qDaj8276vR9HnKf/0oagdBCA9pHj8W/kLEz+V0Cucks04ODOm8zeC
+         4/RAjdrxXVmSrXdl4maEFdxJ2VnULndIGYJU5856koNRcubOhXS5khdWSqsrD67U4fO6
+         ONY3r1eVTEWQWYcBuo+IpcOiVkqIoL5GtRgLK+ZPGPae7YvamQrP2T+dNCnBGyjkATD/
+         tQP06+xAzTtZfDv9dFvrs8l3g5o7I6ezPSvq6Uqcl9mDlcueqLmDilYNmHSmkovl6J/5
+         w5YsGE4Dlh+EhlZQHeNF7/IJc9xenZATAYe5eW3/VhbStGTRz958o46JcUGjAgNcswLM
+         Vprg==
+X-Gm-Message-State: AOAM533h0WC/nJ0lY66CJDfc69t14e2mojYtizKzs58ns/t/YdIWIZnn
+	xmkKC6f8M7H7CSEAO+kPhhCNJUZCzSZ4dg==
+X-Google-Smtp-Source: ABdhPJzd+TvCfuNO8xYNBI86wdS+kYFzzEDJm5od6F+y3VVnDsW2sUTNvvOelHDWj5ejtlr0wtf54w==
+X-Received: by 2002:a05:622a:1994:b0:2e1:a3dc:23dd with SMTP id u20-20020a05622a199400b002e1a3dc23ddmr29120672qtc.203.1648574482441;
+        Tue, 29 Mar 2022 10:21:22 -0700 (PDT)
+Received: from euclid ([104.39.252.111])
+        by smtp.gmail.com with ESMTPSA id k73-20020a37a14c000000b0067b316a4161sm10082583qke.120.2022.03.29.10.21.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 29 Mar 2022 09:24:20 -0700 (PDT)
-Message-ID: <3485392358307ad16335e30e6bd41c78cc977840.camel@gmail.com>
-Subject: Information for the Kernelnewbies Outreachy Docs
-From: brunodout.dev@gmail.com
-To: outreachy linux kernel <outreachy@lists.linux.dev>
-Date: Tue, 29 Mar 2022 13:24:17 -0300
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.42.4 
+        Tue, 29 Mar 2022 10:21:21 -0700 (PDT)
+Date: Tue, 29 Mar 2022 13:21:20 -0400
+From: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Fabio Aiuto <fabioaiuto83@gmail.com>,
+	Lee Jones <lee.jones@linaro.org>,
+	Muhammad Usama Anjum <musamaanjum@gmail.com>,
+	"Fabio M. De Francesco" <fmdefrancesco@gmail.com>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy@lists.linux.dev
+Subject: [PATCH] staging: rtl8723bs: Remove redundant braces in if statements.
+Message-ID: <20220329172037.GA208840@euclid>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Hello,
+This patch fixes the following checkpatch.pl warning:
 
-As     Roopa suggested me on IRC yesterda, I am sharing some
-info    that could be updated in the KernelNewbies Outreachy
-tutorial.  Some instructions for Arch(/Arch based) users and
-possibly    other minimalist VM setups (I run a minimal arch
-install  on a small filesystem for each kernel tree, and all
-space necessary to build the kernel I use virtiofs).
+WARNING: braces {} are not necessary for single statement blocks
 
-I will try to enumerate them:
+Signed-off-by: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
+---
+ drivers/staging/rtl8723bs/core/rtw_ieee80211.c | 12 ++++--------
+ 1 file changed, 4 insertions(+), 8 deletions(-)
 
-REQUIREMENTS
+diff --git a/drivers/staging/rtl8723bs/core/rtw_ieee80211.c b/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
+index 27de086903e2..68e41d99679d 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
++++ b/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
+@@ -335,9 +335,8 @@ int rtw_generate_ie(struct registry_priv *pregistrypriv)
+ 
+ 	ie = rtw_set_ie(ie, WLAN_EID_IBSS_PARAMS, 2, (u8 *)&(pdev_network->configuration.atim_window), &sz);
+ 
+-	if (rateLen > 8) {
++	if (rateLen > 8)
+ 		ie = rtw_set_ie(ie, WLAN_EID_EXT_SUPP_RATES, (rateLen - 8), (pdev_network->supported_rates + 8), &sz);
+-	}
+ 
+ 	/* HT Cap. */
+ 	if ((pregistrypriv->wireless_mode & WIRELESS_11_24N) &&
+@@ -366,9 +365,8 @@ unsigned char *rtw_get_wpa_ie(unsigned char *pie, int *wpa_ie_len, int limit)
+ 
+ 		if (pbuf) {
+ 			/* check if oui matches... */
+-			if (memcmp((pbuf + 2), wpa_oui_type, sizeof(wpa_oui_type))) {
++			if (memcmp((pbuf + 2), wpa_oui_type, sizeof(wpa_oui_type)))
+ 				goto check_next_ie;
+-			}
+ 
+ 			/* check version... */
+ 			memcpy((u8 *)&le_tmp, (pbuf + 6), sizeof(val16));
+@@ -493,9 +491,8 @@ int rtw_parse_wpa_ie(u8 *wpa_ie, int wpa_ie_len, int *group_cipher, int *pairwis
+ 	if (is_8021x) {
+ 		if (left >= 6) {
+ 			pos += 2;
+-			if (!memcmp(pos, SUITE_1X, 4)) {
++			if (!memcmp(pos, SUITE_1X, 4))
+ 				*is_8021x = 1;
+-			}
+ 		}
+ 	}
+ 
+@@ -514,9 +511,8 @@ int rtw_parse_wpa2_ie(u8 *rsn_ie, int rsn_ie_len, int *group_cipher, int *pairwi
+ 		return _FAIL;
+ 	}
+ 
+-	if ((*rsn_ie != WLAN_EID_RSN) || (*(rsn_ie+1) != (u8)(rsn_ie_len - 2))) {
++	if ((*rsn_ie != WLAN_EID_RSN) || (*(rsn_ie+1) != (u8)(rsn_ie_len - 2)))
+ 		return _FAIL;
+-	}
+ 
+ 	pos = rsn_ie;
+ 	pos += 4;
+-- 
+2.25.1
 
-1. cpio
-A    non-minimalist install will likely have cpio on it, but
-case    it doesn't you'll likely get a tricky error when the
-build   system runs kernel/gen_kheaders.sh. (sorry, I didn't
-save the output, but the error code is 127)
-Perhaps the script also needs a better error message
-
-Cpio     requirement is also missing in the kernel compiling
-docs[1].
-
-2. ncurses5
-This one isn't missing but it's outdated. It says arch users
-must       build it, but actually the arch available package
-'ncurses'     (version 6) worked for me so far (at least for
-targets like menuconfig, which I believe to be the reason of
-this requirement, right?)
-
-3. Possibly python3
-I    was following the tutorial for the staging kernel tree,
-and      ran `make` to build the kernel (I usually run `make
-bzImage`      followed by `make modules`, like usual in 2005
-LOL),  and  got  an  error  that  python3  wasn't  found.  I
-installed  python but then switched back to my old procedure
-and      it worked. I'm not sure if the default target isn't
-doing    something else, since re docs[1] also don't mention
-python3 as a requirement.
-
-ARCH PACKAGE NAMES
-
-Arch  packages  are  not  as  much  granular       as  other
-distributions, so some packages will be differently named. I
-have listed them just in case anyone feels stuck:
-
-1. gitk => already contained in: git
-2. git-email => already contained in: git
-3. esmtp => libesmtp
-
-REFERENCES
-[1] https://docs.kernel.org/process/changes.html
-
-
-I        hope it becomes helpful for other applicants and to
-improve the docs.
-
-Sincerely,
-Bruno | Pronouns: they/them/theirs
-IRC: CodeAgain
