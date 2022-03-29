@@ -1,270 +1,79 @@
-Received: from mail-lf1-f46.google.com (mail-lf1-f46.google.com [209.85.167.46])
+Received: from mail-qv1-f42.google.com (mail-qv1-f42.google.com [209.85.219.42])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 32D9F29A2
-	for <outreachy@lists.linux.dev>; Tue, 29 Mar 2022 21:42:28 +0000 (UTC)
-Received: by mail-lf1-f46.google.com with SMTP id d5so32568039lfj.9
-        for <outreachy@lists.linux.dev>; Tue, 29 Mar 2022 14:42:27 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D176829A2;
+	Tue, 29 Mar 2022 22:25:40 +0000 (UTC)
+Received: by mail-qv1-f42.google.com with SMTP id gi14so15600607qvb.0;
+        Tue, 29 Mar 2022 15:25:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=H68amN4zktn4ne+U6g1708rX5wp24aStihPSW/Ai1/s=;
-        b=B9wiOpUfOgz11GG/+k1zplzUSwWBtu3Tt+wVegDuBcnoDC/PbihwdYyZen5aTIIvlt
-         52DixZkXfULmkU0hyzetIoNG9coRLYAknwE2rubAZDv/6FljFYBhoCtXKs4jmIJprNpV
-         LkvaLW3KEY8TPywjvjCzwkEOwBhv/JEMuRbbyKciF3Av4JDxnEnzZ1Bdaacg8ntqyPke
-         TcZHMF14Kf3sJfpKQKOv2DWb5ZzIFusjnUBuY4ZdpfamsyRBU5YJgShJVHGycyUQdCxx
-         Gp+V+oVah55rliUEukESBlghQfEYIe5DiKNEiMIvGtEFGWBvbDLL34Ssl2nfxaoGc5aw
-         zNtw==
+        h=date:from:to:subject:message-id:mime-version:content-disposition;
+        bh=EDIv2NnbA2HoBvysLf3wHiMFJpgyzFX6SdC4PgZ8XbE=;
+        b=E078j+CtyyfVfdi8VFaQaMdt+NElXSLQzSkBfloPiGe2UYTglMBZJz7mpbohxh8F39
+         S+8oZhLeHVKS0ITF6aHCz8jNJLeK5L7/k5RXItXPMyWa6nbWmUAufWcoYpxEMdxyBPNM
+         CmcQpNUwtyC0HhEqmZAPs6nZaRv6F+qnXuwlrM+XztOrZa4XD7ny2FJp+jdlzCXzBdjs
+         Pd5WXBXG0LY1pnRanTcouM6xMyslAf64QA5OaDFcrR7+XR9uZyYcRjUxD+UQrT9oKBcN
+         p4v/9P8minyCaTbqkJ3lEf0kxw2rHo1UX04iVsr+2lez3FyYWm0yKpNW2rXYFClkdG57
+         ourw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=H68amN4zktn4ne+U6g1708rX5wp24aStihPSW/Ai1/s=;
-        b=TacAX/FJLtA/5/mwSalLRd7S0owJ5OwuPGtV4OGMixFi1+nWBlT/UxTjiYARFvMLZI
-         7HcCUlahp7rMBG90E+qoGtNUMTjeZRnkALVnLJxIgitznuJrQX/vC3MX8sTE8VrKZIZy
-         dj8HTot+V6pJMNWdtsPnozV/1JZv0BR8dzMKfEnwe0RLy+xUvRniG2WZC1mWNzIV4Qv2
-         RhA6vomhjM1cw0skIvgFQXClJKPxQX/g1cO+SEbT5NxPZnrzA72B7f2ge+hsygLuBk1o
-         zbFmtGDCOat2nrB0fP5lGiPKb8MeNnEE8bvQUazsBemLBTWaD9EmKXz+qVDURZ9EH2IP
-         vGaw==
-X-Gm-Message-State: AOAM530kuKJydb4JzoLPAKzjimuPfexeRO1FcN0NwKykjxqf0Xo6wewI
-	rVrTcuGsRMv4monxevSgijZ1QR4euL+I1YlH1pPqn9I69xTZsQ==
-X-Google-Smtp-Source: ABdhPJxNkSanHctaF9Bodr/Uy40e7HitMdYPccx4ZZSyYvLwPYYy3rt4kCDK78QQsxcSyGRrLYAzVDGiYgPbej/E5u8=
-X-Received: by 2002:a19:7501:0:b0:44a:2f6f:3ae8 with SMTP id
- y1-20020a197501000000b0044a2f6f3ae8mr4272824lfe.143.1648590146111; Tue, 29
- Mar 2022 14:42:26 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition;
+        bh=EDIv2NnbA2HoBvysLf3wHiMFJpgyzFX6SdC4PgZ8XbE=;
+        b=zdOetnLZPaJrJLbRZccl1jlg6toQxQtLrVfGTocJbT7aCf5ZyrEXjPLlCaK05KtqLb
+         iVqlwQLYgHY888cT1Z4pRH954MGDeuIbrxuxNIeG6J7OkV/Je5e2Hz4NsrpKERHHA7RU
+         8GNRd0IkumdJLbTxCrEazgagmI90LC/bhhY/4Y4DC06/hAClSTFGbnH9dCj+tVPFRANR
+         S1DAxkcvtEd/cUBWYliozWkj9fWeTelMdKZXnSP213vdJ+AkfTf3ufDMfusBOd4qvzcw
+         QxSpY1HYyONjtPC1uB6L16wVIflbjiAu2J09t7HELl+ZVOol8+TK8kHnyvNUQG2hf+25
+         RqrA==
+X-Gm-Message-State: AOAM531/5ysTMfGIO0ZHnyvYvJNAdmP9y/NCrX206KcQZq/CCQ89+rOp
+	BshX4WBC1grqY7dckhqXmDs=
+X-Google-Smtp-Source: ABdhPJwQeCznI7jJGwMXETg1DyJ2CXIcdL8cnv8H29sEKJ+HqpOlskcyhNZrmoCsSiKDi98S2MQ+6Q==
+X-Received: by 2002:a05:6214:19e9:b0:443:6799:829e with SMTP id q9-20020a05621419e900b004436799829emr7392065qvc.30.1648592739643;
+        Tue, 29 Mar 2022 15:25:39 -0700 (PDT)
+Received: from jaehee-ThinkPad-X1-Extreme ([4.34.18.218])
+        by smtp.gmail.com with ESMTPSA id v5-20020a05622a144500b002e1c7d027b1sm15338135qtx.66.2022.03.29.15.25.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 29 Mar 2022 15:25:38 -0700 (PDT)
+Date: Tue, 29 Mar 2022 18:25:34 -0400
+From: Jaehee Park <jhpark1013@gmail.com>
+To: =?iso-8859-1?B?Suly9G1l?= Pouiller <jerome.pouiller@silabs.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy@lists.linux.dev
+Subject: [PATCH] staging: wfx: remove space at the start of the line
+Message-ID: <20220329222534.GA1002253@jaehee-ThinkPad-X1-Extreme>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-References: <20220329140904.GA3566@ubuntu> <20220329200053.GA1170989@alison-desk>
- <CAMWRUK4ti6QxA4JWbG_XwZHwQwWUKYu+HvVHvEBX-k82oaEP6g@mail.gmail.com> <20220329212426.GA1171538@alison-desk>
-In-Reply-To: <20220329212426.GA1171538@alison-desk>
-From: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
-Date: Tue, 29 Mar 2022 14:15:04 -0700
-Message-ID: <CAMWRUK6Pca47JcLUJwxFz7c37yQtvEAjL41O-GTB2DfASUURGw@mail.gmail.com>
-Subject: Re: [PATCH] staging: rtl8723bs: Remove redundant else branches.
-To: Alison Schofield <alison.schofield@intel.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, outreachy@lists.linux.dev
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-On Tue, Mar 29, 2022 at 2:22 PM Alison Schofield
-<alison.schofield@intel.com> wrote:
->
-> On Tue, Mar 29, 2022 at 01:59:52PM -0700, Sevinj Aghayeva wrote:
-> > Hi Alison,
-> >
-> > Thanks for the feedback! Please see inline.
-> >
-> > On Tue, Mar 29, 2022 at 12:58 PM Alison Schofield <
-> > alison.schofield@intel.com> wrote:
-> >
-> > > Hi Sevinj,
-> > >
-> > > You can do this to make sure your commit msg 'looks' similar to
-> > > others in the file:
-> > >
-> > > $git log --pretty=oneline --abbrev-commit
-> > >
-> > > d6ad258ae15d staging: rtl8723bs: Remove redundant else branches.
-> > > 24e65aac9457 staging: rtl8723bs: remove rf type branching (fourth patch)
-> > > 167fc30e8e51 staging: rtl8723bs: remove unused macros
-> > > d7361874468f staging: rtl8723bs: fix camel case in struct wlan_bcn_info
-> > > 6994aa430368 staging: rtl8723bs: fix camel case in struct ndis_802_11_ssid
-> > >
-> > > That tells me the 'Remove' should not start with an uppercase and
-> > > there should be no period at the end of line. Note that I look at this
-> > > per patch, because different drivers and subsystems have different
-> > > conventions. The point is to try to discern the prevailing style,
-> > > and follow it.
-> > >
-> >
-> > Got it. The few examples that I saw in other places were using
-> > grammatically formatted sentences, but I'll take the subsystem conventions
-> > into account.
-> >
-> >
-> > > Please check the get_maintainers instruction in the first patch tutorial.
-> > > I only got this:
-> > >
-> > > $ git show HEAD | perl scripts/get_maintainer.pl --separator ,
-> > > --nokeywords --nogit --nogit-fallback --norolestats
-> > > Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-> > > linux-staging@lists.linux.dev,linux-kernel@vger.kernel.org
-> >
-> >
-> > My bad! I ran get_maintainer.pl without those options and got those a lot
-> > more email addresses.
-> >
-> >
-> > >
-> > >
-> > >
-> > > On Tue, Mar 29, 2022 at 07:09:04AM -0700, Sevinj Aghayeva wrote:
-> > >
-> > > Please state the 'why' of this patch. ie something like:
-> > > Adhere to Linux kernel coding style.
-> > >
-> > > > This patch fixes the following checkpatch.pl warning:
-> > > The phrases 'This patch' is frowned upon as unecessarily wordy.
-> > > Perhaps simply:
-> > > Reported by checkpatch:
-> > >
-> >
-> > Okay. I think we should update the https://kernelnewbies.org/PatchPhilosophy
-> > because I took "This patch..." from there.
->
-> Yeah, there's a lot of 'This patch...' and 'Fixes...' and some other
-> stuff that has fallen out of favor.
-> I just made a small edit getting rid of a 'Fixes' subject line.
->
-> How about if you update this example:
-> Subject: [OPW kernel] [PATCH] Staging: rtl8192e: Fix printk() warning style
-> with your patch right here..once it is done!
+Remove spaces at the start of the line to follow the linux kernel
+coding style. Issue found by checkpatch:
+WARNING: please, no spaces at the start of a line.
 
-Sounds good! I think I will have to send a request for editing pages
-like you explained in a previous email...
+Signed-off-by: Jaehee Park <jhpark1013@gmail.com>
+---
+ drivers/staging/wfx/main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-(Removed non-maintainers' email address from this thread. It's
-baffling that a script called get_maintainers would return email
-addresses of people who are not maintainers :-).)
-
->
-> Thanks!
-> Alison
->
-> >
-> >
-> > >
-> > > You have another patch in flight with similar things to update.
-> > > Please post a v2 of that one that addresses the feedback given
-> > > here.
-> > >
-> >
-> > That one has already landed. Is it okay if I send v2 just for this patch?
->
-> Did you see it applied already?
->
-> >
-> > Thanks!
-> >
-> >
->
->
->
-> > >
-> > > I thought both patches had good scope in that they addressed multiple
-> > > instances of the same issue in a single file.
-> > >
-> > > Thanks!
-> > > Alison
-> > >
-> > > >
-> > > > WARNING: else is not generally useful after a break or return
-> > > >
-> > > > Signed-off-by: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
-> > > > ---
-> > > >  .../staging/rtl8723bs/core/rtw_ieee80211.c    | 32 ++++++++-----------
-> > > >  1 file changed, 13 insertions(+), 19 deletions(-)
-> > > >
-> > > > diff --git a/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
-> > > b/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
-> > > > index b449be537376..27de086903e2 100644
-> > > > --- a/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
-> > > > +++ b/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
-> > > > @@ -94,16 +94,14 @@ bool rtw_is_cckratesonly_included(u8 *rate)
-> > > >
-> > > >  int rtw_check_network_type(unsigned char *rate, int ratelen, int
-> > > channel)
-> > > >  {
-> > > > -     if (channel > 14) {
-> > > > +     if (channel > 14)
-> > > >               return WIRELESS_INVALID;
-> > > > -     } else { /*  could be pure B, pure G, or B/G */
-> > > > -             if (rtw_is_cckratesonly_included(rate))
-> > > > -                     return WIRELESS_11B;
-> > > > -             else if (rtw_is_cckrates_included(rate))
-> > > > -                     return  WIRELESS_11BG;
-> > > > -             else
-> > > > -                     return WIRELESS_11G;
-> > > > -     }
-> > > > +     /* could be pure B, pure G, or B/G */
-> > > > +     if (rtw_is_cckratesonly_included(rate))
-> > > > +             return WIRELESS_11B;
-> > > > +     if (rtw_is_cckrates_included(rate))
-> > > > +             return WIRELESS_11BG;
-> > > > +     return WIRELESS_11G;
-> > > >  }
-> > > >
-> > > >  u8 *rtw_set_fixed_ie(unsigned char *pbuf, unsigned int len, unsigned
-> > > char *source,
-> > > > @@ -151,11 +149,10 @@ u8 *rtw_get_ie(u8 *pbuf, signed int index, signed
-> > > int *len, signed int limit)
-> > > >               if (*p == index) {
-> > > >                       *len = *(p + 1);
-> > > >                       return p;
-> > > > -             } else {
-> > > > -                     tmp = *(p + 1);
-> > > > -                     p += (tmp + 2);
-> > > > -                     i += (tmp + 2);
-> > > >               }
-> > > > +             tmp = *(p + 1);
-> > > > +             p += (tmp + 2);
-> > > > +             i += (tmp + 2);
-> > > >               if (i >= limit)
-> > > >                       break;
-> > > >       }
-> > > > @@ -199,9 +196,8 @@ u8 *rtw_get_ie_ex(u8 *in_ie, uint in_len, u8 eid, u8
-> > > *oui, u8 oui_len, u8 *ie, u
-> > > >                               *ielen = in_ie[cnt+1]+2;
-> > > >
-> > > >                       break;
-> > > > -             } else {
-> > > > -                     cnt += in_ie[cnt+1]+2; /* goto next */
-> > > >               }
-> > > > +             cnt += in_ie[cnt+1]+2; /* goto next */
-> > > >       }
-> > > >
-> > > >       return target_ie;
-> > > > @@ -697,9 +693,8 @@ u8 *rtw_get_wps_ie(u8 *in_ie, uint in_len, u8
-> > > *wps_ie, uint *wps_ielen)
-> > > >                       cnt += in_ie[cnt+1]+2;
-> > > >
-> > > >                       break;
-> > > > -             } else {
-> > > > -                     cnt += in_ie[cnt+1]+2; /* goto next */
-> > > >               }
-> > > > +             cnt += in_ie[cnt+1]+2; /* goto next */
-> > > >       }
-> > > >
-> > > >       return wpsie_ptr;
-> > > > @@ -748,9 +743,8 @@ u8 *rtw_get_wps_attr(u8 *wps_ie, uint wps_ielen, u16
-> > > target_attr_id, u8 *buf_att
-> > > >                               *len_attr = attr_len;
-> > > >
-> > > >                       break;
-> > > > -             } else {
-> > > > -                     attr_ptr += attr_len; /* goto next */
-> > > >               }
-> > > > +             attr_ptr += attr_len; /* goto next */
-> > > >       }
-> > > >
-> > > >       return target_attr_ptr;
-> > > > --
-> > > > 2.25.1
-> > > >
-> > > >
-> > >
-> >
-> >
-> > --
-> >
-> > Sevinj.Aghayeva
-
-
-
+diff --git a/drivers/staging/wfx/main.c b/drivers/staging/wfx/main.c
+index b93b16b900c8..e575a81ca2ca 100644
+--- a/drivers/staging/wfx/main.c
++++ b/drivers/staging/wfx/main.c
+@@ -170,7 +170,7 @@ bool wfx_api_older_than(struct wfx_dev *wdev, int major, int minor)
+  *
+  * The PDS file is an array of Time-Length-Value structs.
+  */
+- int wfx_send_pds(struct wfx_dev *wdev, u8 *buf, size_t len)
++int wfx_send_pds(struct wfx_dev *wdev, u8 *buf, size_t len)
+ {
+ 	int ret, chunk_type, chunk_len, chunk_num = 0;
+ 
 -- 
+2.25.1
 
-Sevinj.Aghayeva
