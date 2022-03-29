@@ -1,145 +1,104 @@
-Received: from mail-qt1-f178.google.com (mail-qt1-f178.google.com [209.85.160.178])
+Received: from mail-wm1-f41.google.com (mail-wm1-f41.google.com [209.85.128.41])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9504F2565;
-	Tue, 29 Mar 2022 14:09:07 +0000 (UTC)
-Received: by mail-qt1-f178.google.com with SMTP id j21so15336500qta.0;
-        Tue, 29 Mar 2022 07:09:07 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E5B312572;
+	Tue, 29 Mar 2022 15:02:59 +0000 (UTC)
+Received: by mail-wm1-f41.google.com with SMTP id bg31-20020a05600c3c9f00b00381590dbb33so1659419wmb.3;
+        Tue, 29 Mar 2022 08:02:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=date:from:to:subject:message-id:mime-version:content-disposition;
-        bh=CadD3hhKKTwQgUWh8yT3Nub3Kin1uglS1pMurhgrLiQ=;
-        b=p6ae6wHr5ltI75bmz6MP1kBq3t6Kyi7FA0hKJcpbDRrtN1+emiMtn9q17vk1zBV2zm
-         BcTUziWYInXtVko7X6CC21lYmuSiw5tqdXlgZioMJV8YLSV1IMaoESQY+SZDRP7VTlDe
-         38WEDcMN8YQQTmP3rVfHU7tJHQ8rbVJo2jq//xwKVDhaObQRGo5Q8ayGyB5ddYCUr8b3
-         xRypqXfR/o5Yth4EzO7d+esndkg2Yv4mUxTvlT9ZOmG1HCY1ScQdVreeuOEEMBrXfben
-         O21iSGpAkTrNI8F+UpmGqq2MHxUe5RbVa5BuqaGISd5QhIp8Ij/HdP4eey2j+khneDP5
-         a5NQ==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=moLFBme3l1MFSRqv3HwjWFIls+K2bshAzpdyHy0MNyk=;
+        b=NjZgkuVQxWE5kDMvScRuxs+9TFNgXSyY+QQCXH6ML3o//up532bifrBrmytwgWxciz
+         aLk0JzAznjSCGyAgCoDPBtfKxaxGFqv4E7AGvY0xm25dtMcMiuKVnHiKuklpYR4RkDMs
+         wra+3Glwhas7Hs5uHVUqz3lkYqmv+Gc1IiorsAcvH4lfl6cz/3MWu6jPL7lyXoqa/8xI
+         ZY8YLtPwbHgcIopLU1rWyNvQ8JhrTCkl0IhSnQ2elJ0qRfIDXq5bSwfESxE/kXGe3+l7
+         baxKRnMq+OFDOTwZfyqorUsTndZ2tUNa4AwBnEXEVEQQqHIO7FAUqyWGEjJtNPX8RbG9
+         Mc/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition;
-        bh=CadD3hhKKTwQgUWh8yT3Nub3Kin1uglS1pMurhgrLiQ=;
-        b=59gFhQsn37QfVCKSVTEUTIYSXwG6aNihrdNluqnE/+CIMZIIPw/OXkK/JjLidu75iv
-         mSWc4u+7/i2SEoEe8hyVvPiX+smNra6uoE9MnCjCGI6E8XMh2VYPt9nGeUqMANGw1qR3
-         BECK3q9MEzhd8588WqIx/DxkXSs27vi/iaBuLLxGBSzAIGItBd68pQRm2UqGfo1hcHx7
-         s2yHseRTwzN+MWrr+7KJWO+yTDYTvbuXXLQZXloPuZljjq3pynDfA7Ovu+X5m0tcQhWM
-         Uoh5OKSdWRRfbgRUVZKhndK3wst9DIdvthgcsbbftH1Ukv1vQ53VS9GPn0ODDlLjNrd1
-         2v8A==
-X-Gm-Message-State: AOAM5305dB2EdjakjuOSv78AteLUQCMei/LPGNwag5v8fanLBs7R6sOu
-	YWIdn63dE62GDjRJxlORk38eab01DQaI7g==
-X-Google-Smtp-Source: ABdhPJxGl082pU/FH/JMQ3CRB0DA7rq9puCVcTW9raR8hcfYDGRaDgRVY0o8TZLm0KKmKMEopO7FZg==
-X-Received: by 2002:a05:622a:1a8c:b0:2e1:d7b8:5c0d with SMTP id s12-20020a05622a1a8c00b002e1d7b85c0dmr27944510qtc.56.1648562945903;
-        Tue, 29 Mar 2022 07:09:05 -0700 (PDT)
-Received: from ubuntu ([104.39.252.111])
-        by smtp.gmail.com with ESMTPSA id bm1-20020a05620a198100b0047bf910892bsm10194685qkb.65.2022.03.29.07.09.05
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=moLFBme3l1MFSRqv3HwjWFIls+K2bshAzpdyHy0MNyk=;
+        b=tQadgrWV2a32hsOKi1g+qN3+mQ4I+voE7UOo191W6Yrg/ZA79YLcibBcpHAMrzmd1s
+         AuKJpWRh4kLHNNwxdP09XhRHTBSndFqIgEPJJWHgH4HqFSiciwAFu6MYFIa35+jKuVNZ
+         JHEhhoH5FB20YseGwTR6Bia+wkMV02WeA+EglycXtW5YZX6AkQ7VJNIMGn5Nd5s1MoCW
+         DwrVnl9dIFavZdZGIMWDLtl/yPzZJx404ItHICuzLgs77LeFMKHRHe2NdyGt6yHp+G63
+         g9TTuueEm3Wzc2POkzOI/xJkjTHRvq3VfS1L/Y/r7MGb3XEWbPAnpbIu0XkN7Ov81KiK
+         43sw==
+X-Gm-Message-State: AOAM532xJr1NJUSO0ubO0EnThhS70Xs6UPPFE5JJ4zg5suIolMZVOTf7
+	6aMxAEnugszs9E3QJwcSKLo=
+X-Google-Smtp-Source: ABdhPJyLlZsIm4LXUAyjPuGNL42MJl4z/IdaIzJgFCWreFpO5AzXezgcyOPB95pFjd+FJPKcKl/rgQ==
+X-Received: by 2002:a05:600c:1d95:b0:38c:f943:c20c with SMTP id p21-20020a05600c1d9500b0038cf943c20cmr62758wms.19.1648566178086;
+        Tue, 29 Mar 2022 08:02:58 -0700 (PDT)
+Received: from leap.localnet (host-95-249-145-232.retail.telecomitalia.it. [95.249.145.232])
+        by smtp.gmail.com with ESMTPSA id r65-20020a1c4444000000b0038c48dd23b9sm3724849wma.5.2022.03.29.08.02.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 29 Mar 2022 07:09:05 -0700 (PDT)
-Date: Tue, 29 Mar 2022 07:09:04 -0700
-From: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Fabio Aiuto <fabioaiuto83@gmail.com>,
-	Lee Jones <lee.jones@linaro.org>,
-	Muhammad Usama Anjum <musamaanjum@gmail.com>,
-	"Fabio M. De Francesco" <fmdefrancesco@gmail.com>,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev
-Subject: [PATCH] staging: rtl8723bs: Remove redundant else branches.
-Message-ID: <20220329140904.GA3566@ubuntu>
+        Tue, 29 Mar 2022 08:02:56 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Benjamin Philip <benjamin.philip495@gmail.com>, Bart Van Assche <bvanassche@acm.org>, "Martin K. Petersen" <martin.petersen@oracle.com>, "Eric W. Biederman" <ebiederm@xmission.com>, Colin Ian King <colin.king@intel.com>, Samuel =?ISO-8859-1?Q?Sj=F6berg?= <info@samuelsjoberg.se>, Charlie Sands <sandsch@northvilleschools.net>, linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, outreachy@lists.linux.dev, ira.weiny@intel.com
+Subject: Re: [PATCH v2] staging: rts5208: Convert kmap() to kmap_local_page()
+Date: Tue, 29 Mar 2022 17:02:54 +0200
+Message-ID: <4055501.1IzOArtZ34@leap>
+In-Reply-To: <20220329091827.GY3293@kadam>
+References: <20220329055539.29299-1-fmdefrancesco@gmail.com> <20220329091827.GY3293@kadam>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
 
-This patch fixes the following checkpatch.pl warning:
+On marted? 29 marzo 2022 11:18:27 CEST Dan Carpenter wrote:
+> On Tue, Mar 29, 2022 at 07:55:39AM +0200, Fabio M. De Francesco wrote:
+> > diff --git a/drivers/staging/rts5208/rtsx_transport.c b/drivers/staging/rts5208/rtsx_transport.c
+> > index 805dc18fac0a..56b6cc845619 100644
+> > --- a/drivers/staging/rts5208/rtsx_transport.c
+> > +++ b/drivers/staging/rts5208/rtsx_transport.c
+> > @@ -92,13 +92,11 @@ unsigned int rtsx_stor_access_xfer_buf(unsigned char *buffer,
+> >  			while (sglen > 0) {
+> >  				unsigned int plen = min(sglen, (unsigned int)
+> >  						PAGE_SIZE - poff);
+> > -				unsigned char *ptr = kmap(page);
+> >  
+> >  				if (dir == TO_XFER_BUF)
+> > -					memcpy(ptr + poff, buffer + cnt, plen);
+> > +					memcpy_to_page(page + poff, 0, buffer + cnt, plen);
+> 
+> You meant:
+> 
+> 	memcpy_to_page(page, poff, buffer + cnt, plen);
+> 
 
-WARNING: else is not generally useful after a break or return
+Yes, correct. I meant exactly what you wrote.
 
-Signed-off-by: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
----
- .../staging/rtl8723bs/core/rtw_ieee80211.c    | 32 ++++++++-----------
- 1 file changed, 13 insertions(+), 19 deletions(-)
+It's the first time that I use these API and, after 30 seconds look at their 
+prototypes, I thought that either have the same semantics.
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_ieee80211.c b/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
-index b449be537376..27de086903e2 100644
---- a/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
-@@ -94,16 +94,14 @@ bool rtw_is_cckratesonly_included(u8 *rate)
- 
- int rtw_check_network_type(unsigned char *rate, int ratelen, int channel)
- {
--	if (channel > 14) {
-+	if (channel > 14)
- 		return WIRELESS_INVALID;
--	} else { /*  could be pure B, pure G, or B/G */
--		if (rtw_is_cckratesonly_included(rate))
--			return WIRELESS_11B;
--		else if (rtw_is_cckrates_included(rate))
--			return	WIRELESS_11BG;
--		else
--			return WIRELESS_11G;
--	}
-+	/* could be pure B, pure G, or B/G */
-+	if (rtw_is_cckratesonly_included(rate))
-+		return WIRELESS_11B;
-+	if (rtw_is_cckrates_included(rate))
-+		return WIRELESS_11BG;
-+	return WIRELESS_11G;
- }
- 
- u8 *rtw_set_fixed_ie(unsigned char *pbuf, unsigned int len, unsigned char *source,
-@@ -151,11 +149,10 @@ u8 *rtw_get_ie(u8 *pbuf, signed int index, signed int *len, signed int limit)
- 		if (*p == index) {
- 			*len = *(p + 1);
- 			return p;
--		} else {
--			tmp = *(p + 1);
--			p += (tmp + 2);
--			i += (tmp + 2);
- 		}
-+		tmp = *(p + 1);
-+		p += (tmp + 2);
-+		i += (tmp + 2);
- 		if (i >= limit)
- 			break;
- 	}
-@@ -199,9 +196,8 @@ u8 *rtw_get_ie_ex(u8 *in_ie, uint in_len, u8 eid, u8 *oui, u8 oui_len, u8 *ie, u
- 				*ielen = in_ie[cnt+1]+2;
- 
- 			break;
--		} else {
--			cnt += in_ie[cnt+1]+2; /* goto next */
- 		}
-+		cnt += in_ie[cnt+1]+2; /* goto next */
- 	}
- 
- 	return target_ie;
-@@ -697,9 +693,8 @@ u8 *rtw_get_wps_ie(u8 *in_ie, uint in_len, u8 *wps_ie, uint *wps_ielen)
- 			cnt += in_ie[cnt+1]+2;
- 
- 			break;
--		} else {
--			cnt += in_ie[cnt+1]+2; /* goto next */
- 		}
-+		cnt += in_ie[cnt+1]+2; /* goto next */
- 	}
- 
- 	return wpsie_ptr;
-@@ -748,9 +743,8 @@ u8 *rtw_get_wps_attr(u8 *wps_ie, uint wps_ielen, u16 target_attr_id, u8 *buf_att
- 				*len_attr = attr_len;
- 
- 			break;
--		} else {
--			attr_ptr += attr_len; /* goto next */
- 		}
-+		attr_ptr += attr_len; /* goto next */
- 	}
- 
- 	return target_attr_ptr;
--- 
-2.25.1
+I don't yet know if I'm wrong. However, even if either were correct, yours 
+would be more consistent and elegant. Therefore, I am going to change these
+calls and submit a v3.
+
+Thanks for your review,
+
+Fabio M. De Francesco
+
+> >  				else
+> > -					memcpy(buffer + cnt, ptr + poff, plen);
+> > -				kunmap(page);
+> > +					memcpy_from_page(buffer + cnt, page + poff, 0, plen);
+> 
+> Same.
+> 
+> regards,
+> dan carpenter
+> 
+> 
+
+
+
 
