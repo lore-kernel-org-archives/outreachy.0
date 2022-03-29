@@ -1,108 +1,88 @@
-Received: from mail-wr1-f54.google.com (mail-wr1-f54.google.com [209.85.221.54])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 853EF20F4;
-	Tue, 29 Mar 2022 05:55:46 +0000 (UTC)
-Received: by mail-wr1-f54.google.com with SMTP id a1so23177302wrh.10;
-        Mon, 28 Mar 2022 22:55:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=Lp6iFcVQQfN6RB1G5twPiDqbYeVPiefY9x2TyOoT1Lo=;
-        b=ViQll1CKhjxzTW1n2Vrc7m+gaQSejBQC5RnFdieKXLkHgNnyfCsP1zIt7sxaOWvzji
-         CdfS8mTV8gM9Iedi2NKvCWF9urVA+EqAiJpqyMXXAssDgWrC1ZdaWi3qA0lQCGvI5Vdk
-         45MDiLFKmDNQSKp9Zw4NW/oDDd4y8QsLmT8/zSRnNPb9P2wkG6Tlo31rBQlpbKXHSHV9
-         RBgfOTaFq7LHsl8h3DqDtVi2NqIjrRBchDAd4U+PJeRjCifYVDI7iHlwUHAQ8cUseVAL
-         Rs/EVZ2fmAFEkkwx6hgpxKS51VjBKUSVCFL/ga9NjDBqqTlFX99ayUdxbei9laS3cyuv
-         tFrQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=Lp6iFcVQQfN6RB1G5twPiDqbYeVPiefY9x2TyOoT1Lo=;
-        b=6jL9gySMo3eQYRvBITmg0q6L3bvbYv9ND4V+yzdaPy7kaT5e8ZsCzpmIA6h6Bvj+F4
-         f9kNns1oVGEV96SzH/LHdnTh/lgibsqNiryYeDfsGQMA3MPaEGjARpFUe+d+8xtKfvm2
-         2Jx8R/WhTyddNK/Tx67moQFIkNNss+vXDK/vazIVUO0AShCuSDO3BcZPd1ewLl5/M+7f
-         W3mLrTQcbpvHJNlEPqLAvv8KyNtE2cx/W0OhKlTIehK1Rp3CLkYJKc0Voz/MkGMOuKmg
-         2nLJi5u+tO2J71Bj7VCb7HCFOLS5LWwohmlrAQr8Hm4w6GAhSMYvl20o/N1v/RWLAoqc
-         7hww==
-X-Gm-Message-State: AOAM532igpxx3CRNcwYWLVD3sBpB7IDAK8WfznSB9lg0hWmWWV3iVA8h
-	LE15uvUsi2SVyo31Wz2QNkY=
-X-Google-Smtp-Source: ABdhPJxWGBSOJPkXKd7AjnRno9Xor5TPQgfWQJbe5VcF9z0USi9NW7m8DhKdyuDe3ssVKrP4H7qY0g==
-X-Received: by 2002:a5d:584f:0:b0:204:1749:2ce7 with SMTP id i15-20020a5d584f000000b0020417492ce7mr28885199wrf.584.1648533344729;
-        Mon, 28 Mar 2022 22:55:44 -0700 (PDT)
-Received: from localhost.localdomain (host-95-249-145-232.retail.telecomitalia.it. [95.249.145.232])
-        by smtp.gmail.com with ESMTPSA id i6-20020adffc06000000b00203f2828075sm13865382wrr.19.2022.03.28.22.55.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 28 Mar 2022 22:55:43 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Benjamin Philip <benjamin.philip495@gmail.com>,
-	Bart Van Assche <bvanassche@acm.org>,
-	"Martin K. Petersen" <martin.petersen@oracle.com>,
-	"Eric W. Biederman" <ebiederm@xmission.com>,
-	Colin Ian King <colin.king@intel.com>,
-	=?UTF-8?q?Samuel=20Sj=C3=B6berg?= <info@samuelsjoberg.se>,
-	Charlie Sands <sandsch@northvilleschools.net>,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev,
-	ira.weiny@intel.com
-Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Subject: [PATCH v2] staging: rts5208: Convert kmap() to kmap_local_page()
-Date: Tue, 29 Mar 2022 07:55:39 +0200
-Message-Id: <20220329055539.29299-1-fmdefrancesco@gmail.com>
-X-Mailer: git-send-email 2.34.1
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4BA6E20FF
+	for <outreachy@lists.linux.dev>; Tue, 29 Mar 2022 07:28:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0D7E1C340ED;
+	Tue, 29 Mar 2022 07:28:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1648538924;
+	bh=dwp8+q0C+ulsW8juYMkwtN9Qf4zb5tTejayfBHJLRxo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=l9ts/5j75dchWBGYLVl4dQO5n7hHfz8eQfje7ctsQBVIuVB/VjRM3xYa50wVIHzMH
+	 buaLyMhg1WkFcyJ+jTmqvDhnxDIZjqenY8YSSa3exdmsVutB+3NsDOXfygF5lkWWfr
+	 1Ki4+CGITQ7Y9DqtuHkZByyDkDpdwnvvhjZMYb57VdZLpHULxckjaa/lGmEU4aMyni
+	 oQG6J3nnP3nkJowQGN+nwU9K7cW21piMowmAmRtfFIl0cnS69AqVze7ATgzrQV0jYw
+	 XyrZ1cT9EAl026wYEUwNcLXjbDYugfTytvbTdlErRutepa3adKk3yUfU8rSP6Db5Hk
+	 yIlLMmxwithnw==
+Date: Tue, 29 Mar 2022 10:28:39 +0300
+From: Mike Rapoport <rppt@kernel.org>
+To: Formasit Fokunang <formasitf@gmail.com>
+Cc: outreachy@lists.linux.dev
+Subject: Re: Build Error
+Message-ID: <YkK1Jyyt7L6aYNAA@kernel.org>
+References: <CAL1a2sm42ebvt5zKNbQEdojR2vnQqvO6-v2+JGbEE4puxFXRzQ@mail.gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAL1a2sm42ebvt5zKNbQEdojR2vnQqvO6-v2+JGbEE4puxFXRzQ@mail.gmail.com>
 
-The use of kmap() is being deprecated in favor of kmap_local_page()
-where it is feasible.
+Hello,
 
-With kmap_local_page(), the mapping is per thread, CPU local and not
-globally visible. Therefore rtsx_stor_access_xfer_buf() is a function
-where the use of kmap_local_page() in place of kmap() is correctly
-suited.
+On Tue, Mar 29, 2022 at 05:32:14AM +0100, Formasit Fokunang wrote:
+> Hello,
+>          I have this error when building my new kernel it occurs when
+> run the make -j3 command,though it continues to run after error but i
+> can't install the new kernel . I tried looking at the file at
+> ./include/linux/elfnote.h to check if i could override the permission
+> but i couldn't figure out what exactly caused the error.
+> please i will really appreciate some help.
+> 
+> In file included from ./include/linux/build-salt.h:4,
+>                 from init/version.c:11:
+> ./include/linux/elfnote.h:74:10: fatal error: opening dependency file init/
+> .version.o.d: Permission denied
 
-Convert to kmap_local_page() but, instead of open coding it, use the
-helpers memcpy_to_page() and memcpy_from_page().
+My guess would be that you've run one of the previous builds as root and
+now when you run it as normal user there is not enough permissions to
+modify some files.
 
-Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
----
+Try checking who owns the file init/.version.o.d using 'ls -l' and if the
+owner is root change the ownership for the entire kernel directory with 
 
-v1 -> v2: Rework the commit message and use the appropriate helpers
-instead of open coding the use of kmap_local_page()/kunmap_local_page().
-(Many thanks to Ira Weiny <ira.weiny@intel.com>).
+sudo chown -R $USER .
 
- drivers/staging/rts5208/rtsx_transport.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+You may also try running 'sudo make mrproper' to wipe the files generated
+during previous builds and then start over from clean slate.
 
-diff --git a/drivers/staging/rts5208/rtsx_transport.c b/drivers/staging/rts5208/rtsx_transport.c
-index 805dc18fac0a..56b6cc845619 100644
---- a/drivers/staging/rts5208/rtsx_transport.c
-+++ b/drivers/staging/rts5208/rtsx_transport.c
-@@ -92,13 +92,11 @@ unsigned int rtsx_stor_access_xfer_buf(unsigned char *buffer,
- 			while (sglen > 0) {
- 				unsigned int plen = min(sglen, (unsigned int)
- 						PAGE_SIZE - poff);
--				unsigned char *ptr = kmap(page);
- 
- 				if (dir == TO_XFER_BUF)
--					memcpy(ptr + poff, buffer + cnt, plen);
-+					memcpy_to_page(page + poff, 0, buffer + cnt, plen);
- 				else
--					memcpy(buffer + cnt, ptr + poff, plen);
--				kunmap(page);
-+					memcpy_from_page(buffer + cnt, page + poff, 0, plen);
- 
- 				/* Start at the beginning of the next page */
- 				poff = 0;
+>   74 |   struct elf##size##_note _nhdr;    \
+>      |          ^~~
+> ./include/linux/elfnote.h:93:2: note: in expansion of macro ‘_ELFNOTE’
+>   93 |  _ELFNOTE(size, name, __LINE__, type, desc)
+>      |  ^~~~~~~~
+> ./include/linux/elfnote.h:95:37: note: in expansion of macro ‘ELFNOTE’
+>   95 | #define ELFNOTE32(name, type, desc) ELFNOTE(32, name, type, desc)
+>      |                                     ^~~~~~~
+> ./include/linux/elfnote-lto.h:11:24: note: in expansion of macro ‘ELFNOTE32
+> ’
+>   11 | #define BUILD_LTO_INFO ELFNOTE32("Linux", LINUX_ELFNOTE_LTO_INFO, 0
+> )
+>      |                        ^~~~~~~~~
+> init/version.c:49:1: note: in expansion of macro ‘BUILD_LTO_INFO’
+>   49 | BUILD_LTO_INFO;
+>      | ^~~~~~~~~~~~~~
+> compilation terminated.
+> make[1]: *** [scripts/Makefile.build:288: init/version.o] Error 1
+> make: *** [Makefile:1831: init] Error 2
+> make: *** Waiting for unfinished jobs....
+> 
+
 -- 
-2.34.1
-
+Sincerely yours,
+Mike.
