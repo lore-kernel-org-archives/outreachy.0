@@ -1,93 +1,125 @@
-Received: from mail-pj1-f44.google.com (mail-pj1-f44.google.com [209.85.216.44])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mail-40133.protonmail.ch (mail-40133.protonmail.ch [185.70.40.133])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0DF6220F4
-	for <outreachy@lists.linux.dev>; Tue, 29 Mar 2022 04:43:21 +0000 (UTC)
-Received: by mail-pj1-f44.google.com with SMTP id v4so16283558pjh.2
-        for <outreachy@lists.linux.dev>; Mon, 28 Mar 2022 21:43:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=udV+udycErN18goFS1kOxFC4FYoRvwZOUYTf8up07qQ=;
-        b=o4KCo7bAxzDlPveTsphaMnHlnXpTH7+mOuzE/NIixl3OXShavpOWmBc6vXXaxjshfn
-         qCLel2E0jRlNy92F/5RxvYlwLH2Oz+sUnsKcYK+X1ku8qQZzZkaTdxlSYt2y5mmpAhjl
-         p4X999+KoF8XMQCx9jo7RAbW8LbzkN7+2onyy/pd6f2d/OfL3s5I+dpNCOKXfYqwG00M
-         V5N+5nzg7KMsBl4XHkYyqdraK/pKJqqJrUkTGKCYAOG1mHlZ+yv5myOMfVKuqxGAWYlH
-         HbjuLfJ1pFJBVf9YFZffBh/vdHZQZ7RfNd18bMDd1Fgwi7KLAdtVBI8sQ18GwFc6+55p
-         JMHQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=udV+udycErN18goFS1kOxFC4FYoRvwZOUYTf8up07qQ=;
-        b=BwDfgTwFrdLc4zOoRTU6Ob7iWq6c4ocIozwHbTpdsUv+PM5xOvlRQbsmOMgzYGD9cu
-         JwEaDYlfP9RZOdMZsMDFG3yoIOZMqJt0czUShDqoyvVEkewMNz/tBokroBJ1Fs32ACAe
-         BF2+MTGgsXZhJ/GuZ3GKmETjz91uaUdg8bjMOS2EfURYsXCMyXLQzt2bmlsMg0GkYWTj
-         8RUYPTVGCw7dZ/CQkszcuE1A1CCNPb1n3MJuCL4dFFz5mrCa1xpAFBDM2w4Nm11/ZHBl
-         8wUk1j/1Ma0VH2j3UlvuZj6IYUM+9YjQoeSxIcZvxBw5kDhi824waKB3ZRXinQpdZrwY
-         elHw==
-X-Gm-Message-State: AOAM5311IOM8RkFDcReweWuqJ93Ldk4Ar5W3x6oq3ITb96Y2ticX1QJk
-	tkq+jX0BjWlC5QyprdK034AJU8qL5KOhGHulZvo=
-X-Google-Smtp-Source: ABdhPJwJ5dgiISHPp/mcQIluN4wb7E0s4C5A9cZg5eRbeLRCNmqIvZpp+RxS12MFVb3btp+1v1OR8/vkN8BVhk8EXzw=
-X-Received: by 2002:a17:90b:3e8b:b0:1c7:852d:e843 with SMTP id
- rj11-20020a17090b3e8b00b001c7852de843mr2598041pjb.244.1648529001425; Mon, 28
- Mar 2022 21:43:21 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 41ADD20F4
+	for <outreachy@lists.linux.dev>; Tue, 29 Mar 2022 05:53:29 +0000 (UTC)
+Date: Tue, 29 Mar 2022 05:53:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
+	s=protonmail; t=1648533206;
+	bh=kUc+bsHE6QxdfJ+yvls3s4KlNDZwIxXC1aTnR7KHtv0=;
+	h=Date:To:From:Cc:Reply-To:Subject:Message-ID:In-Reply-To:
+	 References:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID;
+	b=39Seco04JmKq3siuSnG5sMhBGepmr9p7H9Xht04oW5MnN2sQjF3QqQj+OxmZAVpaz
+	 N+9tq5nI1gT8TRFX+heuG0Jx/heqwT5mv3IJuQYB+2eOAEUCEBE2YUkjJ76wEi3icF
+	 0nmTMFEmQuMre8zkfjh8Tb5q892CsrLELYNx/32QTgGXfXb8B2lUPRnnnyzj0a+CkV
+	 2sI9AAKOeXfPODLAmlztiRttA2P8WajioRmYD1mwvuFLlSca+tpjgFRiOG9StUzVHU
+	 JEQ4fTgR5FKLZ4vSL59IbGRt1iYPzrppYIMbLdNz+3RR07IoscCMjKWwOVmeB0h233
+	 12AE2T0krCrSQ==
+To: Formasit Fokunang <formasitf@gmail.com>
+From: Rebecca Mckeever <rebecca.mckeever@protonmail.com>
+Cc: outreachy@lists.linux.dev
+Reply-To: Rebecca Mckeever <rebecca.mckeever@protonmail.com>
+Subject: Re: Build Error
+Message-ID: <2U_Eq4CJuJ8U_2OxXTu8LsSjc9QLQpWrnZerrdsl8-FU1Oq2odof3SAg2A5-X1OLk7BXwXMTuIcOGo1FbVgvvpqfv50104ElDnhOEMYcV7M=@protonmail.com>
+In-Reply-To: <CAL1a2sm42ebvt5zKNbQEdojR2vnQqvO6-v2+JGbEE4puxFXRzQ@mail.gmail.com>
+References: <CAL1a2sm42ebvt5zKNbQEdojR2vnQqvO6-v2+JGbEE4puxFXRzQ@mail.gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-References: <CAMWRUK56zyGmOu+=eS9SHGnMpvVR9gtD-OoZaf5dbWRk+zEZ7Q@mail.gmail.com>
- <20220329042925.GB1167211@alison-desk>
-In-Reply-To: <20220329042925.GB1167211@alison-desk>
-From: Roopa Prabhu <roopa.prabhu@gmail.com>
-Date: Mon, 28 Mar 2022 21:43:10 -0700
-Message-ID: <CAGe6so_B+p8M67vdsBocQ2D+M4oY_HhxQx6B67HOkdiaPG8O-Q@mail.gmail.com>
-Subject: Re: networking task 3
-To: Alison Schofield <alison.schofield@intel.com>
-Cc: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>, Stefano Brivio <sbrivio@redhat.com>, 
-	outreachy@lists.linux.dev
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-On Mon, Mar 28, 2022 at 9:27 PM Alison Schofield
-<alison.schofield@intel.com> wrote:
+Hi Formasit,
+
+------- Original Message -------
+
+On Monday, March 28th, 2022 at 23:32, Formasit Fokunang <formasitf@gmail.co=
+m> wrote:
+
+> Hello,
 >
-> On Mon, Mar 28, 2022 at 08:41:44PM -0700, Sevinj Aghayeva wrote:
-> > Hi Roopa, Stefano,
-> >
-> > I finished tasks 1 through 3, and I've attached the output of running
-> > fib_tests.sh and fib-onlink-tests.sh on a kernel that I built.
-> >
-> > Cheers
-> >
-> > --
-> >
-> > Sevinj.Aghayeva
+> I have this error when building my new kernel it occurs when
 >
-> Hi Sevinj,
+> run the make -j3 command,though it continues to run after error but i
 >
-> Welcome to the community!
+> can't install the new kernel . I tried looking at the file at
 >
-> Please review the project contribution guidelines in the project description:
-> https://www.outreachy.org/outreachy-may-2022-internship-round/communities/linux-kernel/#linux-kernel-networking-selftest-cleanups-networki
+> ./include/linux/elfnote.h to check if i could override the permission
 >
-> Mentors begin reviewing project specific tasks, such as the ones you
-> posted, after an applicant has gotten 10 cleanup patches accepted into
-> drivers/staging/.
+> but i couldn't figure out what exactly caused the error.
 >
-> Other useful links:
-> https://lore.kernel.org/outreachy/20220325172530.GA1151996@alison-desk/T/#u
-> https://kernelnewbies.org/Outreachyfirstpatch
+> please i will really appreciate some help.
 >
-> Please let me know where I may be able to clarify the instructions.
+> In file included from ./include/linux/build-salt.h:4,
 >
-> Hold onto these, and resubmmit when appropriate.
+> from init/version.c:11:
+>
+> ./include/linux/elfnote.h:74:10: fatal error: opening dependency file ini=
+t/
+>
+> .version.o.d: Permission denied
 >
 
-Thanks Alison for clarifying!. Sevinj did check with me on irc before
-sending.., he had accidentally started the project tasks but has now
-gone back to finishing his cleanup patches.
+Have you tried checking the permissions for that file with the following co=
+mmand?
 
-Sevinj, thanks for sending the results!. good luck with the cleanup patches.
+ls -l init/.version.o.d
+
+When I run it, it shows that I have read permissions for owner, group, and =
+others:
+
+-rw-rw-r--
+
+To add missing read permissions, run
+
+chmod a+r init/.version.o.d
+
+> 74 | struct elf##size##_note _nhdr; \
+>
+> | ^~~
+>
+> ./include/linux/elfnote.h:93:2: note: in expansion of macro =E2=80=98_ELF=
+NOTE=E2=80=99
+>
+> 93 | _ELFNOTE(size, name, LINE, type, desc)
+>
+> | ^~~~~~~~
+>
+> ./include/linux/elfnote.h:95:37: note: in expansion of macro =E2=80=98ELF=
+NOTE=E2=80=99
+>
+> 95 | #define ELFNOTE32(name, type, desc) ELFNOTE(32, name, type, desc)
+>
+> | ^~~~~~~
+>
+> ./include/linux/elfnote-lto.h:11:24: note: in expansion of macro =
+=E2=80=98ELFNOTE32
+>
+> =E2=80=99
+>
+> 11 | #define BUILD_LTO_INFO ELFNOTE32("Linux", LINUX_ELFNOTE_LTO_INFO, 0
+>
+> )
+>
+> | ^~~~~~~~~
+>
+> init/version.c:49:1: note: in expansion of macro =E2=80=98BUILD_LTO_INFO=
+=E2=80=99
+>
+> 49 | BUILD_LTO_INFO;
+>
+> | ^~~~~~~~~~~~~~
+>
+> compilation terminated.
+>
+> make[1]: *** [scripts/Makefile.build:288: init/version.o] Error 1
+>
+> make: *** [Makefile:1831: init] Error 2
+>
+> make: *** Waiting for unfinished jobs....
+
+Rebecca
