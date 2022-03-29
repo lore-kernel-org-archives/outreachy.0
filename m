@@ -1,88 +1,123 @@
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4BA6E20FF
-	for <outreachy@lists.linux.dev>; Tue, 29 Mar 2022 07:28:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0D7E1C340ED;
-	Tue, 29 Mar 2022 07:28:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1648538924;
-	bh=dwp8+q0C+ulsW8juYMkwtN9Qf4zb5tTejayfBHJLRxo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=l9ts/5j75dchWBGYLVl4dQO5n7hHfz8eQfje7ctsQBVIuVB/VjRM3xYa50wVIHzMH
-	 buaLyMhg1WkFcyJ+jTmqvDhnxDIZjqenY8YSSa3exdmsVutB+3NsDOXfygF5lkWWfr
-	 1Ki4+CGITQ7Y9DqtuHkZByyDkDpdwnvvhjZMYb57VdZLpHULxckjaa/lGmEU4aMyni
-	 oQG6J3nnP3nkJowQGN+nwU9K7cW21piMowmAmRtfFIl0cnS69AqVze7ATgzrQV0jYw
-	 XyrZ1cT9EAl026wYEUwNcLXjbDYugfTytvbTdlErRutepa3adKk3yUfU8rSP6Db5Hk
-	 yIlLMmxwithnw==
-Date: Tue, 29 Mar 2022 10:28:39 +0300
-From: Mike Rapoport <rppt@kernel.org>
-To: Formasit Fokunang <formasitf@gmail.com>
-Cc: outreachy@lists.linux.dev
-Subject: Re: Build Error
-Message-ID: <YkK1Jyyt7L6aYNAA@kernel.org>
-References: <CAL1a2sm42ebvt5zKNbQEdojR2vnQqvO6-v2+JGbEE4puxFXRzQ@mail.gmail.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 652F920FF
+	for <outreachy@lists.linux.dev>; Tue, 29 Mar 2022 07:29:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1648538942;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=V2R2I8peWErZ98sUgp0q5Kfkn6k2CTtNAwJOPevv6lY=;
+	b=c1+cdpmQE9L9ZBXYRi+YWoAsbjNdCDrt/6N86zRFMbnEKthiyRybi/3JKqdi9o7YO2/w4N
+	JPLdmGBmWAHBld1l39Hh+KOUBOdUPB5rXk4xJFbYy0k+qhx6/3g3C1l82zEdF7gVoKMFW9
+	A/PuyG0j83BDamoOxGU2s8zOZ/r52vg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-644-IH4fPf-jMUyDaGtfUdDuyA-1; Tue, 29 Mar 2022 03:29:00 -0400
+X-MC-Unique: IH4fPf-jMUyDaGtfUdDuyA-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AE40510059AB;
+	Tue, 29 Mar 2022 07:28:59 +0000 (UTC)
+Received: from maya.cloud.tilaa.com (unknown [10.40.208.6])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 43207604CC;
+	Tue, 29 Mar 2022 07:28:59 +0000 (UTC)
+Date: Tue, 29 Mar 2022 09:28:57 +0200
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Rebecca Mckeever <rebecca.mckeever@protonmail.com>
+Cc: "outreachy@lists.linux.dev" <outreachy@lists.linux.dev>
+Subject: Re: Help with Outreachy Setup
+Message-ID: <20220329092857.5dba3c3f@elisabeth>
+In-Reply-To: <tNBPktxWF2otxi8_ncSeM-0JgzTQmBXSgYhPAg1PevCPu-Lqr8pJDNRwMcq7onLpeAUF70r1P7JUlHeP-P7RxoR3aloWi-yuosT_E7k4xk8=@protonmail.com>
+References: <VlGZ-Rt6GMrT_vsR1Bi_X3co5-hOiETSXBNNVG77hbb2vELgPzsd2fv5T4Qnd14G3z6f-ocpRTj2uT2ampl1aB6PyXJkWRS_5l8BH3nNcRM=@protonmail.com>
+	<hIoORnc6IGx_3SqRrbAJGrJBMH4ZnHvpDMUrXAkvsbULD_5Ab9D-w_2na1gq1TlO7bX0JdMAx_CBriDDpoqStYKNXmqu4HZUugAX1HJ0ius=@protonmail.com>
+	<20220327105438.26ec0e70@elisabeth>
+	<tNBPktxWF2otxi8_ncSeM-0JgzTQmBXSgYhPAg1PevCPu-Lqr8pJDNRwMcq7onLpeAUF70r1P7JUlHeP-P7RxoR3aloWi-yuosT_E7k4xk8=@protonmail.com>
+Organization: Red Hat
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAL1a2sm42ebvt5zKNbQEdojR2vnQqvO6-v2+JGbEE4puxFXRzQ@mail.gmail.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=sbrivio@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-Hello,
+On Mon, 28 Mar 2022 23:15:58 +0000
+Rebecca Mckeever <rebecca.mckeever@protonmail.com> wrote:
 
-On Tue, Mar 29, 2022 at 05:32:14AM +0100, Formasit Fokunang wrote:
-> Hello,
->          I have this error when building my new kernel it occurs when
-> run the make -j3 command,though it continues to run after error but i
-> can't install the new kernel . I tried looking at the file at
-> ./include/linux/elfnote.h to check if i could override the permission
-> but i couldn't figure out what exactly caused the error.
-> please i will really appreciate some help.
+> Hi Stefano,
 > 
-> In file included from ./include/linux/build-salt.h:4,
->                 from init/version.c:11:
-> ./include/linux/elfnote.h:74:10: fatal error: opening dependency file init/
-> .version.o.d: Permission denied
-
-My guess would be that you've run one of the previous builds as root and
-now when you run it as normal user there is not enough permissions to
-modify some files.
-
-Try checking who owns the file init/.version.o.d using 'ls -l' and if the
-owner is root change the ownership for the entire kernel directory with 
-
-sudo chown -R $USER .
-
-You may also try running 'sudo make mrproper' to wipe the files generated
-during previous builds and then start over from clean slate.
-
->   74 |   struct elf##size##_note _nhdr;    \
->      |          ^~~
-> ./include/linux/elfnote.h:93:2: note: in expansion of macro ‘_ELFNOTE’
->   93 |  _ELFNOTE(size, name, __LINE__, type, desc)
->      |  ^~~~~~~~
-> ./include/linux/elfnote.h:95:37: note: in expansion of macro ‘ELFNOTE’
->   95 | #define ELFNOTE32(name, type, desc) ELFNOTE(32, name, type, desc)
->      |                                     ^~~~~~~
-> ./include/linux/elfnote-lto.h:11:24: note: in expansion of macro ‘ELFNOTE32
-> ’
->   11 | #define BUILD_LTO_INFO ELFNOTE32("Linux", LINUX_ELFNOTE_LTO_INFO, 0
-> )
->      |                        ^~~~~~~~~
-> init/version.c:49:1: note: in expansion of macro ‘BUILD_LTO_INFO’
->   49 | BUILD_LTO_INFO;
->      | ^~~~~~~~~~~~~~
-> compilation terminated.
-> make[1]: *** [scripts/Makefile.build:288: init/version.o] Error 1
-> make: *** [Makefile:1831: init] Error 2
-> make: *** Waiting for unfinished jobs....
+> ------- Original Message -------
 > 
+> On Sunday, March 27th, 2022 at 03:54, Stefano Brivio <sbrivio@redhat.com> wrote:
+>
+> [...]
+>
+> > To build the kernel with that option, you don't just need binutils, you
+> > would also need binutils with this specific support, which is not
+> > commonly available in distribution. I bet "elf32-86-64" is missing in
+> > the list of supported "targets" when you issue:
+> >
+> > objcopy --help  
+> 
+> Yes, "elf32-86-64" was missing from the list of targets. But the list did include "elf32-x86-64". Do you know what the difference between them is?
+
+That was just my typo :( So objcopy supports it. The other component
+that needs to support that is ld (the dynamic linker), you could check:
+
+	$ ld --help|grep elf32_x86_64
+
+but I think it's very unlikely that objcopy has that and ld doesn't, so
+there must be some other issue. If you're interested, you could try to
+add some debugging to that Makefile, it's arch/x86/Makefile.
+
+> > Anyway, yes, it's just a warning. You can get rid of the warning by
+> > disabling the CONFIG_X86_X32 in your kernel configuration. Maybe you
+> > could make sure you disabled it with the correct syntax with this, from
+> > your kernel tree:
+> >
+> > scripts/config -d CONFIG_X86_X32
+> >
+> > ...it can still be that it's selected by another option, so it would be
+> > re-enabled automatically. Search for it from 'make menuconfig', typing
+> > '/' (slash) and searching for X86_X32. Then you will see if that's the
+> > case.  
+> 
+> This worked for me. I was able to recompile without seeing the warning.
+
+Okay, nice!
+
+> > The actual build error you got on the other machine is probably a
+> > dependency issue between options, which happens with your particular
+> > configuration, but it really shouldn't happen no matter how your
+> > configuration looks like.
+> >
+> > The relevant configuration options are CONFIG_CRYPTO_AES_NI_INTEL and
+> > CONFIG_64BIT -- you could start having a look at the state of those two.
+> 
+> CONFIG_CRYPTO_AES_NI_INTEL was set to m. I tried changing it to n and
+> then y, and neither removed the error. Changing CONFIG_64BIT didn't
+> remove the error either. I think I may have made a mistake early in the
+> process and would need to start over to get it working. I will stick
+> with compiling on the other machine for now; I actually prefer it that
+> way.
+
+Good, let's try to debug that only if it comes up again.
+
+> Thanks for you help Stefano!
+
+You're welcome!
 
 -- 
-Sincerely yours,
-Mike.
+Stefano
+
