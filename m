@@ -1,87 +1,84 @@
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-oa1-f49.google.com (mail-oa1-f49.google.com [209.85.160.49])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ABFF517C9
-	for <outreachy@lists.linux.dev>; Tue, 29 Mar 2022 01:02:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1648515769; x=1680051769;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=E1Mse4J2gkjy4zky9Hh8Adz/f4f0mswnlvb9K0UZs84=;
-  b=YYr1t7VPxHjjssml6QxE5xv4/IiWakAtLpoNcXT9rJ+KK1BKCbELmSnm
-   yrjD34/e/2Xj4FhYXW2wBkFCJyA2w9gAlGmYt3zR3Zo5xG8jN69VW0WGs
-   QTLFOS1RNUIfX6eyx2yTz7qU2upujh8aBzD7YEfyWMEYiBBgcRlabIkqF
-   5RGnts+BeP54dd/I6/y68HF7bWjpzhChpxMIyDWzlAvFbKStUhhdt0pgx
-   CjTTafsKwK/3gvHosZ2aMRfDpUjvmvoyTAhXJB9tYOj5+WZPTdIXg3oSi
-   KSoawSXBy1zP8K2hAydQvzN4ijy6MxOohhiFjWoDO95XBpxETfr7LWq28
-   g==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10300"; a="259104059"
-X-IronPort-AV: E=Sophos;i="5.90,218,1643702400"; 
-   d="scan'208";a="259104059"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
-  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Mar 2022 18:02:49 -0700
-X-IronPort-AV: E=Sophos;i="5.90,218,1643702400"; 
-   d="scan'208";a="652505910"
-Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
-  by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Mar 2022 18:02:49 -0700
-Date: Mon, 28 Mar 2022 18:05:16 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-Cc: outreachy@lists.linux.dev, toke@toke.dk, kvalo@kernel.org,
-	davem@davemloft.net, kuba@kernel.org,
-	linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] First Patch: Add Printk to pci.c
-Message-ID: <20220329010516.GA1166534@alison-desk>
-References: <20220328232449.132550-1-eng.alaamohamedsoliman.am@gmail.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E33D317C9
+	for <outreachy@lists.linux.dev>; Tue, 29 Mar 2022 01:23:23 +0000 (UTC)
+Received: by mail-oa1-f49.google.com with SMTP id 586e51a60fabf-d39f741ba0so17167918fac.13
+        for <outreachy@lists.linux.dev>; Mon, 28 Mar 2022 18:23:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=message-id:subject:from:to:date:user-agent:mime-version
+         :content-transfer-encoding;
+        bh=EQqvEimX+YqnSmnTpsG2lqDuyKno1VvAoJiA/d4TDuE=;
+        b=USZPWmKLtX6oXXqsR8geJOsdG2ocwDYnCfWaYMZFuqmPlhL1R/csC+b1tepEgtySsw
+         do+yWWnLzFdo7sd5Xv6b5xC9bWyJjoCklT++D1IGiNx2I86cGM4HLFV5YdKveZ2treFF
+         RrryAMQ31cLvvr6GusFCKKL5aN9207R/XObLcCXenU6p0F+1z2zr5A2l1YE0BEKRnlnl
+         BniHfxg4ivY8ohrTsJrNYDCWoxx0oWbFp3OUfug6qu5VCTjUgcthCQc7qeDACp3ds/fH
+         eizuT9mbr1NyXWfB+u7BgHbzMKN5V6eEM/lB+eCcQ21kzFv3nhgRbx+EO7FGtLI5Jphu
+         COnA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:subject:from:to:date:user-agent
+         :mime-version:content-transfer-encoding;
+        bh=EQqvEimX+YqnSmnTpsG2lqDuyKno1VvAoJiA/d4TDuE=;
+        b=7khqCjy5V5hQ9Q0JYUfrUSQRMEh8yBbY97Ak8WNIUKC4YiERGWE+KmmwuasPC8X0yA
+         37ak0uX3/I0IoGR/WQka7raOAKcPXdgT7kdGoMpEkI2MIrNxkJxc3qz6+wlcbwDLm3cJ
+         WVaRWmoNbxjubYOmhYx9nnAR+UKva6ODJPkC0lm7QrJfxuv9vvEbX4Jbl0h2/BKYaxZ/
+         y1q++zfLlmGy+pNGXbRYOT+COGEzKvYY7HC0BoJk3H6xJl2w/Lu8OCEFG+CjRHu+N2N7
+         D5EaNuMnLv7331MGSeYtEdVBopty02D27cVrD5qhwffrV6sw20RWVGST/9ucyXr/BnxC
+         BGNA==
+X-Gm-Message-State: AOAM533FDCwK6Rn9Ht/jSAr54Pl2zbEKTNNiRSZNpcuQOPe/dRbpM8My
+	3OnU0M6tVjGYxBq56kTxcHKgDX2Vs9U=
+X-Google-Smtp-Source: ABdhPJwVd8nk82+y9BXyIc3qp8FDLllN+ULDFPQd/dEMjUM5+XRenzZfDo0v+Nh+HpaYmkPVc4qbjw==
+X-Received: by 2002:a05:6870:889f:b0:de:44c7:5a38 with SMTP id m31-20020a056870889f00b000de44c75a38mr1000930oam.83.1648517002550;
+        Mon, 28 Mar 2022 18:23:22 -0700 (PDT)
+Received: from [192.168.21.4] ([170.84.56.148])
+        by smtp.gmail.com with ESMTPSA id h186-20020acab7c3000000b002ef5106248asm8236819oif.45.2022.03.28.18.23.21
+        for <outreachy@lists.linux.dev>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 28 Mar 2022 18:23:22 -0700 (PDT)
+Message-ID: <fde3e9e7444d85229a80eabbfeb6abade96d51a9.camel@gmail.com>
+Subject: IRC Logs for #outreachy-kernel-networking
+From: brunodout.dev@gmail.com
+To: outreachy linux kernel <outreachy@lists.linux.dev>
+Date: Mon, 28 Mar 2022 22:23:19 -0300
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.42.4 
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220328232449.132550-1-eng.alaamohamedsoliman.am@gmail.com>
+Content-Transfer-Encoding: 8bit
 
-On Tue, Mar 29, 2022 at 01:24:49AM +0200, Alaa Mohamed wrote:
-> This patch for adding Printk line to ath9k probe function as a task
-> for Outreachy internship
-> 
-> Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+Hello there!
 
-Hi Alaa,
+Earlier today we were talking about conversation history on
+IRC (#outreachy-kernel-networking channel). I think it was
+Alaa who asked if there was a way to read them.
 
-Based on your 'CC to outreachy I can guess you are following out 'First
-Patch Tutorial'. A patch for this step does not need to be sent out to
-the maintainers and lists, since it's not something we actually want
-to change in the Linux Kernel. 
+Since IRC doesn't implement server-level message history, I
+offered to send my client logs, as my client is expected to
+be connected most of the time (no guarantees, though).
+Considering Stefano said it was okay and no one else
+opposed, so I made a script so the logs are available at:
+https://share.codeagain.dev/outreachy/irclogs/%23outreachy-kernel-networking.log
 
-Your next patch, a cleanup patch in drivers/staging/ does need to get
-sent. I guess we'll see that soon!
+It's expected to update regularly, but ping me if they
+don't. I also recommend saving the file every time it has
+new information you find useful, considering that I'm not
+100% sure my IRC client won't delete old messages or, which
+will be replicated to the file in the link. If I face
+downtime (sometimes I run out of RAM) the logs will not be
+recorded, though.
 
-Thanks & welcome to this round of Outreachy,
-Alison
+I hope it helps, there are some interesting discussions
+going on there time to time.
+
+-- 
+Sincerely,
+Bruno | Pronouns: they/them/theirs
+IRC: CodeAgain
 
 
-> ---
->  drivers/net/wireless/ath/ath9k/pci.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/net/wireless/ath/ath9k/pci.c b/drivers/net/wireless/ath/ath9k/pci.c
-> index a074e23013c5..e16bdf343a2f 100644
-> --- a/drivers/net/wireless/ath/ath9k/pci.c
-> +++ b/drivers/net/wireless/ath/ath9k/pci.c
-> @@ -892,6 +892,7 @@ static int ath_pci_probe(struct pci_dev *pdev, const struct pci_device_id *id)
->  	int ret = 0;
->  	char hw_name[64];
->  	int msi_enabled = 0;
-> +	printk(KERN_DEBUG "I can modify the Linux kernel!\n");
->  
->  	if (pcim_enable_device(pdev))
->  		return -EIO;
-> -- 
-> 2.35.1
-> 
-> 
