@@ -1,104 +1,106 @@
-Received: from mail-wm1-f41.google.com (mail-wm1-f41.google.com [209.85.128.41])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E5B312572;
-	Tue, 29 Mar 2022 15:02:59 +0000 (UTC)
-Received: by mail-wm1-f41.google.com with SMTP id bg31-20020a05600c3c9f00b00381590dbb33so1659419wmb.3;
-        Tue, 29 Mar 2022 08:02:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=moLFBme3l1MFSRqv3HwjWFIls+K2bshAzpdyHy0MNyk=;
-        b=NjZgkuVQxWE5kDMvScRuxs+9TFNgXSyY+QQCXH6ML3o//up532bifrBrmytwgWxciz
-         aLk0JzAznjSCGyAgCoDPBtfKxaxGFqv4E7AGvY0xm25dtMcMiuKVnHiKuklpYR4RkDMs
-         wra+3Glwhas7Hs5uHVUqz3lkYqmv+Gc1IiorsAcvH4lfl6cz/3MWu6jPL7lyXoqa/8xI
-         ZY8YLtPwbHgcIopLU1rWyNvQ8JhrTCkl0IhSnQ2elJ0qRfIDXq5bSwfESxE/kXGe3+l7
-         baxKRnMq+OFDOTwZfyqorUsTndZ2tUNa4AwBnEXEVEQQqHIO7FAUqyWGEjJtNPX8RbG9
-         Mc/A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=moLFBme3l1MFSRqv3HwjWFIls+K2bshAzpdyHy0MNyk=;
-        b=tQadgrWV2a32hsOKi1g+qN3+mQ4I+voE7UOo191W6Yrg/ZA79YLcibBcpHAMrzmd1s
-         AuKJpWRh4kLHNNwxdP09XhRHTBSndFqIgEPJJWHgH4HqFSiciwAFu6MYFIa35+jKuVNZ
-         JHEhhoH5FB20YseGwTR6Bia+wkMV02WeA+EglycXtW5YZX6AkQ7VJNIMGn5Nd5s1MoCW
-         DwrVnl9dIFavZdZGIMWDLtl/yPzZJx404ItHICuzLgs77LeFMKHRHe2NdyGt6yHp+G63
-         g9TTuueEm3Wzc2POkzOI/xJkjTHRvq3VfS1L/Y/r7MGb3XEWbPAnpbIu0XkN7Ov81KiK
-         43sw==
-X-Gm-Message-State: AOAM532xJr1NJUSO0ubO0EnThhS70Xs6UPPFE5JJ4zg5suIolMZVOTf7
-	6aMxAEnugszs9E3QJwcSKLo=
-X-Google-Smtp-Source: ABdhPJyLlZsIm4LXUAyjPuGNL42MJl4z/IdaIzJgFCWreFpO5AzXezgcyOPB95pFjd+FJPKcKl/rgQ==
-X-Received: by 2002:a05:600c:1d95:b0:38c:f943:c20c with SMTP id p21-20020a05600c1d9500b0038cf943c20cmr62758wms.19.1648566178086;
-        Tue, 29 Mar 2022 08:02:58 -0700 (PDT)
-Received: from leap.localnet (host-95-249-145-232.retail.telecomitalia.it. [95.249.145.232])
-        by smtp.gmail.com with ESMTPSA id r65-20020a1c4444000000b0038c48dd23b9sm3724849wma.5.2022.03.29.08.02.55
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 29 Mar 2022 08:02:56 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Dan Carpenter <dan.carpenter@oracle.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Benjamin Philip <benjamin.philip495@gmail.com>, Bart Van Assche <bvanassche@acm.org>, "Martin K. Petersen" <martin.petersen@oracle.com>, "Eric W. Biederman" <ebiederm@xmission.com>, Colin Ian King <colin.king@intel.com>, Samuel =?ISO-8859-1?Q?Sj=F6berg?= <info@samuelsjoberg.se>, Charlie Sands <sandsch@northvilleschools.net>, linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, outreachy@lists.linux.dev, ira.weiny@intel.com
-Subject: Re: [PATCH v2] staging: rts5208: Convert kmap() to kmap_local_page()
-Date: Tue, 29 Mar 2022 17:02:54 +0200
-Message-ID: <4055501.1IzOArtZ34@leap>
-In-Reply-To: <20220329091827.GY3293@kadam>
-References: <20220329055539.29299-1-fmdefrancesco@gmail.com> <20220329091827.GY3293@kadam>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DD4DA2572;
+	Tue, 29 Mar 2022 16:15:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1648570506; x=1680106506;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=V7I1wdGG6eu8VtqmUYmFQ80cpXVRC0RQdim1swUODT4=;
+  b=jb6UEUH/ymhxSYzY8GuLFNIKQ1KGlK1He1p8h15HzrzQxzcF/yEx6gI9
+   SZD9ZQuW8AYRfhZcDYgrdkswovxV7aZ6/vVl76eKuT4tsvmtwPknVIftc
+   Y47ewiu2BkaTWGN9w4nOZGzDfnikSPYRyq51lRD32nIeOoHKSxKRvBavo
+   8jfLsb2dqJ5TrWxfYeaLJffIDOMWMJatIcxc3Y9KbRs1jrOIG/aMq+2j7
+   Fa3uDaGsz1TiHDWlxpRY9xIffTMtIf+9RHdoQM9gMBLG0CJSOriEjXxbc
+   Aaff3p+D1XQ6kabihFN5xewMoLttFq1YOPF8AkNwFY3VydlcubEtODYHv
+   Q==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10301"; a="256866020"
+X-IronPort-AV: E=Sophos;i="5.90,220,1643702400"; 
+   d="scan'208";a="256866020"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Mar 2022 09:14:07 -0700
+X-IronPort-AV: E=Sophos;i="5.90,220,1643702400"; 
+   d="scan'208";a="564742695"
+Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
+  by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Mar 2022 09:14:06 -0700
+Date: Tue, 29 Mar 2022 09:16:32 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: Rebecca Mckeever <remckee0@gmail.com>
+Cc: Larry Finger <Larry.Finger@lwfinger.net>,
+	Phillip Potter <phil@philpotter.co.uk>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy@lists.linux.dev
+Subject: Re: [PATCH] staging: r8188eu: fix suspect code indent for
+ conditional statements
+Message-ID: <20220329161632.GA1169956@alison-desk>
+References: <YkK7ABTVt0TCbd18@bertie>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <YkK7ABTVt0TCbd18@bertie>
 
-On marted? 29 marzo 2022 11:18:27 CEST Dan Carpenter wrote:
-> On Tue, Mar 29, 2022 at 07:55:39AM +0200, Fabio M. De Francesco wrote:
-> > diff --git a/drivers/staging/rts5208/rtsx_transport.c b/drivers/staging/rts5208/rtsx_transport.c
-> > index 805dc18fac0a..56b6cc845619 100644
-> > --- a/drivers/staging/rts5208/rtsx_transport.c
-> > +++ b/drivers/staging/rts5208/rtsx_transport.c
-> > @@ -92,13 +92,11 @@ unsigned int rtsx_stor_access_xfer_buf(unsigned char *buffer,
-> >  			while (sglen > 0) {
-> >  				unsigned int plen = min(sglen, (unsigned int)
-> >  						PAGE_SIZE - poff);
-> > -				unsigned char *ptr = kmap(page);
-> >  
-> >  				if (dir == TO_XFER_BUF)
-> > -					memcpy(ptr + poff, buffer + cnt, plen);
-> > +					memcpy_to_page(page + poff, 0, buffer + cnt, plen);
+On Tue, Mar 29, 2022 at 02:53:36AM -0500, Rebecca Mckeever wrote:
+> Align the if and else if branches of the conditional statement
+> to improve readability. Prevent bugs that could be introduced
+> if developers misread the code. Issue found by checkpatch.
+
+Thanks for the patch Rebecca!
+
+Lots of stuff done right - passes chkp, compiles, patch is sent to
+correct recipients, the commit message follows the format of the file.
+
+Let's set a pattern here for all checkpatch related cleanups,
+for you and others that follow.(Thanks for being the first ;))
+
+Commit msg says 'what'. Commit log says 'why'. Acknowledge that
+it was found using checkpatch in the commit log also. (In the future
+you may be acknowledging use of other tools like sparse, coccinelle.)
+
+Note that the 'why' is never that a tool reported an error. The 'why'
+for these checkpatch reports is usually to follow the Linux Kernel
+Coding Style.
+
+'Fix' in the commit message is needlessly generic. Perhaps:
+[PATCH] staging: r8188eu: align both branches of a conditional statement
+
+Commit log: (what you have is fine in the log)
+I usually paste in the checkpatch error explicitly so it can be grep'd
+for. Something like:
+
+Issue found by checkpatch:
+WARNING: suspect code indent for conditional statements
+
+Thanks,
+Alison
+
 > 
-> You meant:
+> Signed-off-by: Rebecca Mckeever <remckee0@gmail.com>
+> ---
+>  drivers/staging/r8188eu/core/rtw_cmd.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> 	memcpy_to_page(page, poff, buffer + cnt, plen);
-> 
-
-Yes, correct. I meant exactly what you wrote.
-
-It's the first time that I use these API and, after 30 seconds look at their 
-prototypes, I thought that either have the same semantics.
-
-I don't yet know if I'm wrong. However, even if either were correct, yours 
-would be more consistent and elegant. Therefore, I am going to change these
-calls and submit a v3.
-
-Thanks for your review,
-
-Fabio M. De Francesco
-
-> >  				else
-> > -					memcpy(buffer + cnt, ptr + poff, plen);
-> > -				kunmap(page);
-> > +					memcpy_from_page(buffer + cnt, page + poff, 0, plen);
-> 
-> Same.
-> 
-> regards,
-> dan carpenter
+> diff --git a/drivers/staging/r8188eu/core/rtw_cmd.c b/drivers/staging/r8188eu/core/rtw_cmd.c
+> index 6eca30124ee8..ccc43c0ba433 100644
+> --- a/drivers/staging/r8188eu/core/rtw_cmd.c
+> +++ b/drivers/staging/r8188eu/core/rtw_cmd.c
+> @@ -1408,7 +1408,7 @@ void rtw_survey_cmd_callback(struct adapter *padapter,  struct cmd_obj *pcmd)
+>  		/* TODO: cancel timer and do timeout handler directly... */
+>  		/* need to make timeout handlerOS independent */
+>  		_set_timer(&pmlmepriv->scan_to_timer, 1);
+> -		} else if (pcmd->res != H2C_SUCCESS) {
+> +	} else if (pcmd->res != H2C_SUCCESS) {
+>  		_set_timer(&pmlmepriv->scan_to_timer, 1);
+>  	}
+>  
+> -- 
+> 2.32.0
 > 
 > 
-
-
-
-
