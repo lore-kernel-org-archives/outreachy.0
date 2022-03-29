@@ -1,121 +1,87 @@
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-wm1-f51.google.com (mail-wm1-f51.google.com [209.85.128.51])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B45BA257F
-	for <outreachy@lists.linux.dev>; Tue, 29 Mar 2022 17:52:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1648576340; x=1680112340;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=PP17N6DuwTymw7oBG+kak6UIyiKEBtga970V4HMLVqw=;
-  b=gNPean8oNrFngymFiVl/yq2z2NxpKSZKYheWsg3ydBmx2M2Fh9gjm6nH
-   O5btfhuD+M1gsE2gctCIu/vGFsoWqpuv0F/iyI1dco6h/x3C1VpK0l6fl
-   PisATnH6e07kR7C2PQwNmrGBeLHK3m8MmNmIAzhGP8QonPYzNbytPyXF+
-   WiZxxomiRHoJcBqaxKWv3HuMCac/2FrWiBmnGUqWfOxvVD0Y6AbtfA/pF
-   ksRb0aM0ttx21w8dDnB7r1cOcc/2OcKDW/897wPuq82PWG3O1fOu9AhRk
-   wZlvr6vkCqKN01rNtkWFJMn5N0eop80LoNPD/hte2ivWek0VoyIvpetFo
-   g==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10301"; a="241477967"
-X-IronPort-AV: E=Sophos;i="5.90,220,1643702400"; 
-   d="scan'208";a="241477967"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
-  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Mar 2022 10:52:18 -0700
-X-IronPort-AV: E=Sophos;i="5.90,220,1643702400"; 
-   d="scan'208";a="519094776"
-Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
-  by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Mar 2022 10:52:18 -0700
-Date: Tue, 29 Mar 2022 10:54:44 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: brunodout.dev@gmail.com
-Cc: outreachy linux kernel <outreachy@lists.linux.dev>
-Subject: Re: Information for the Kernelnewbies Outreachy Docs
-Message-ID: <20220329175444.GA1170522@alison-desk>
-References: <3485392358307ad16335e30e6bd41c78cc977840.camel@gmail.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 21030258C;
+	Tue, 29 Mar 2022 19:01:51 +0000 (UTC)
+Received: by mail-wm1-f51.google.com with SMTP id 123-20020a1c1981000000b0038b3616a71aso2075730wmz.4;
+        Tue, 29 Mar 2022 12:01:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=R3zMo+uDtp2l+2kaX1Lp74xR1gw/ziE5ozZsnq4hQ8k=;
+        b=U+PDa1smVYwC3pwXcJQc790e48a0STXHiJ1Tob4ZhZoOp359ppRiQcIiaruJv4Wonw
+         vtGz291Bq4w0J332K00NGOGkTfqExMDhH7mrTif2Ci+lxQZFI47qvSACcVIamsVQKuLs
+         /UtkQTP3EyFjF9oFQg5iTDAgeqdbOKGJLcTHCfzi11U5u131O6A7BpsZ5uFkyOd4CkqB
+         7W/jshZwoROJnQ/czND4bmqo018rQ5HtLCDsIFC3fWDbNX7e1rIpXsvlC/m0bxguZbNy
+         hS0ex9YQURLG4ZwalU3bmxGgm7oOxduNVuQR/7GA9DXN8v5Li/sQ/9qlc+K9sMrWJOE/
+         9UaA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=R3zMo+uDtp2l+2kaX1Lp74xR1gw/ziE5ozZsnq4hQ8k=;
+        b=uPdMrsVeM1892F9+rRuzp0tc0KGkz1zBbMsFyRtYWRZgnZebK0i/x8SA+vteeLNo3A
+         J2A52IrrglT+85WIWcZvADsIFYUyNewmW6ZIxu/AIpGA4KcuDlT1Z/YPpD7P2LJg4BRA
+         jKIVxGiGUZ+JAv3StIN7ed5MdliewQVrfBHCrmQH7ICyOVEB7XrcV5JH6+RQ7cUvT6aa
+         MoclEKR1frJrKUoeJlGDSQIaU7sJh7yFm7X8Q4XnC13z0KE446B4voYLc85z+013J9zt
+         C6WI3lkEK2r2Q7B3iqC69PryqCGIwWKfUNPl0XMrtA5SqbdJoar+AzDdIXKa6MyJqt9i
+         DT1Q==
+X-Gm-Message-State: AOAM531EBfdeh6f+jY8t6yT0drrDzFIrz1CXw7RiG4cXDG+v8V88h3xc
+	bVc/rWt5NxfJkxeWx5RyB8xUgu2tZr2uvA==
+X-Google-Smtp-Source: ABdhPJztfYohtHoyBbHivKC+K8e7yMSDnLaeZ2arGqm7/qRuJ+I4cwrg3KZKsxzzBqJCb9PiJYomfg==
+X-Received: by 2002:a05:600c:1d26:b0:38e:2c97:6f19 with SMTP id l38-20020a05600c1d2600b0038e2c976f19mr916630wms.89.1648580509138;
+        Tue, 29 Mar 2022 12:01:49 -0700 (PDT)
+Received: from alaa-emad ([41.37.132.115])
+        by smtp.gmail.com with ESMTPSA id j16-20020a05600c191000b0038ca3500494sm4884687wmq.27.2022.03.29.12.01.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 29 Mar 2022 12:01:48 -0700 (PDT)
+From: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+To: outreachy@lists.linux.dev
+Cc: mchehab@kernel.org,
+	gregkh@linuxfoundation.org,
+	linux-media@vger.kernel.org,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	eng.alaamohamedsoliman.am@gmail.com
+Subject: [PATCH] media:av7110:av7110_av.c remove blank line
+Date: Tue, 29 Mar 2022 21:01:33 +0200
+Message-Id: <20220329190133.6243-1-eng.alaamohamedsoliman.am@gmail.com>
+X-Mailer: git-send-email 2.35.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <3485392358307ad16335e30e6bd41c78cc977840.camel@gmail.com>
+Content-Transfer-Encoding: 8bit
 
-On Tue, Mar 29, 2022 at 01:24:17PM -0300, brunodout.dev@gmail.com wrote:
-> Hello,
-> 
-> As     Roopa suggested me on IRC yesterda, I am sharing some
-> info    that could be updated in the KernelNewbies Outreachy
-> tutorial.  Some instructions for Arch(/Arch based) users and
-> possibly    other minimalist VM setups (I run a minimal arch
-> install  on a small filesystem for each kernel tree, and all
-> space necessary to build the kernel I use virtiofs).
-> 
-> I will try to enumerate them:
+according to checkpatch.pl results
+"CHECK: Please don't use multiple blank lines"
+after lines 73 and 78 ,I removed the blank lines
 
-These sound very useful. Can you update the wiki yourself:
+Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+---
+ drivers/staging/media/av7110/av7110_av.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-From the https://kernelnewbies.org/Outreachyfirstpatch :
+diff --git a/drivers/staging/media/av7110/av7110_av.c b/drivers/staging/media/av7110/av7110_av.c
+index 91f4866c7e59..1544f120e8b1 100644
+--- a/drivers/staging/media/av7110/av7110_av.c
++++ b/drivers/staging/media/av7110/av7110_av.c
+@@ -70,12 +70,10 @@
+ #define PIECE_RATE	 0x40
+ #define SEAM_SPLICE	 0x20
+ 
+-
+ static void p_to_t(u8 const *buf, long int length, u16 pid,
+ 		   u8 *counter, struct dvb_demux_feed *feed);
+ static int write_ts_to_decoder(struct av7110 *av7110, int type, const u8 *buf, size_t len);
+ 
+-
+ int av7110_record_cb(struct dvb_filter_pes2ts *p2t, u8 *buf, size_t len)
+ {
+ 	struct dvb_demux_feed *dvbdmxfeed = (struct dvb_demux_feed *) p2t->priv;
+-- 
+2.35.1
 
-'To edit the wiki, create an account, and then send an email to
-the outreachy@lists.linux.dev with the subject "[KERNEL NEWBIES ACCESS]
-username", where username is your kernel newbies username.'
-
-Someone on list, with edit privileges can grant you edit privilege
-and then you can do it yourself. 
-
-Thanks!
-Alison
-
-> 
-> REQUIREMENTS
-> 
-> 1. cpio
-> A    non-minimalist install will likely have cpio on it, but
-> case    it doesn't you'll likely get a tricky error when the
-> build   system runs kernel/gen_kheaders.sh. (sorry, I didn't
-> save the output, but the error code is 127)
-> Perhaps the script also needs a better error message
-> 
-> Cpio     requirement is also missing in the kernel compiling
-> docs[1].
-> 
-> 2. ncurses5
-> This one isn't missing but it's outdated. It says arch users
-> must       build it, but actually the arch available package
-> 'ncurses'     (version 6) worked for me so far (at least for
-> targets like menuconfig, which I believe to be the reason of
-> this requirement, right?)
-> 
-> 3. Possibly python3
-> I    was following the tutorial for the staging kernel tree,
-> and      ran `make` to build the kernel (I usually run `make
-> bzImage`      followed by `make modules`, like usual in 2005
-> LOL),  and  got  an  error  that  python3  wasn't  found.  I
-> installed  python but then switched back to my old procedure
-> and      it worked. I'm not sure if the default target isn't
-> doing    something else, since re docs[1] also don't mention
-> python3 as a requirement.
-> 
-> ARCH PACKAGE NAMES
-> 
-> Arch  packages  are  not  as  much  granular       as  other
-> distributions, so some packages will be differently named. I
-> have listed them just in case anyone feels stuck:
-> 
-> 1. gitk => already contained in: git
-> 2. git-email => already contained in: git
-> 3. esmtp => libesmtp
-> 
-> REFERENCES
-> [1] https://docs.kernel.org/process/changes.html
-> 
-> 
-> I        hope it becomes helpful for other applicants and to
-> improve the docs.
-> 
-> Sincerely,
-> Bruno | Pronouns: they/them/theirs
-> IRC: CodeAgain
-> 
