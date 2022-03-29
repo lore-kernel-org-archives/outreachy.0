@@ -1,67 +1,87 @@
-Received: from vps0.lunn.ch (vps0.lunn.ch [185.16.172.187])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-pj1-f50.google.com (mail-pj1-f50.google.com [209.85.216.50])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E550D20E5
-	for <outreachy@lists.linux.dev>; Tue, 29 Mar 2022 02:17:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=qaND8+B6waDWPFPdKzaecCSWoSAUGh/VQVoLfMgXSYk=; b=hwYjO874ASl2BkckrGepN+KyIq
-	/9tUz6Xd1fR2IR/CIckcYJngrHzLXbpU5uI6UanGGTLSCoGXYSqDemc43OHxsSOUsMRIxZSv8EmaY
-	8ZSHW6FgzGwbFSeSNda4MmAbqgUJXeJ3OSqfX1vZtM9Pl9fK9pYRHP+jFYYXPG9zS7MY=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1nZ0T0-00D5hw-0X; Tue, 29 Mar 2022 03:16:14 +0200
-Date: Tue, 29 Mar 2022 03:16:13 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-Cc: outreachy@lists.linux.dev, toke@toke.dk, kvalo@kernel.org,
-	davem@davemloft.net, kuba@kernel.org,
-	linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] First Patch: Add Printk to pci.c
-Message-ID: <YkJd3cW4DeHZePpI@lunn.ch>
-References: <20220328232449.132550-1-eng.alaamohamedsoliman.am@gmail.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 10DDA7C
+	for <outreachy@lists.linux.dev>; Tue, 29 Mar 2022 03:18:12 +0000 (UTC)
+Received: by mail-pj1-f50.google.com with SMTP id gb19so16152356pjb.1
+        for <outreachy@lists.linux.dev>; Mon, 28 Mar 2022 20:18:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=/AsPTKpYQsviTj9ZhZ2Dhquh0fxVzEjD1LXW9W6crGQ=;
+        b=qI53Ozt/w81rdL5YjB3Ty89usav4/gLUt2TqZaf2RqImxBwPXuwugcGaFv+wIj/qsQ
+         el51+XKl7r0mwuq82Y7xN+YWASu5du01R5iDzkRlrvaclwtKB9HYxUcjm0BOcOyCLKW2
+         4O/fP03vkFLVbnDhUfvZUa5tcowZJHB14yGGW8angYYMW4Unh+HatYJT9IgmA05akYEQ
+         rLRoMOEGR9wDW2c6sz9h72EbE+I0bnUXnA+DhpQ2Z8ZykZV1xUuUKMp5hUEKy0834vMp
+         is1TVZgRCWxarqN9IT5GRlvtaZI2184QTLNT3zY7s1VpjbZLQJKHIc/NqNbt3tfbaehH
+         FHJw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=/AsPTKpYQsviTj9ZhZ2Dhquh0fxVzEjD1LXW9W6crGQ=;
+        b=RS+yMVFO4fiXfFnx2XDInTszwPrxnx7sQFSQ8ZdtUOJLtH+Wlf6F+eNPBWLWorqUy3
+         ECSDXp7AizkuPmDTjsldl2AxckTxfEeOVJPttC0y+j5jRw8KTNhZyRrWtxC4CTjY6VM9
+         CXKW5OoBUZxHRGdoj6q/ykSOrbx1Pye/sktTVwg0n5bMIVYNvoGszUXck3FzFtGBdRtp
+         /HwlPOrHS5+xVVHhXq1T3JYiSzRA8/kmORgu4trtun9Abptz+j0ZSbAvfL6ot0ovPgyz
+         W1fzZ7OGr8/gEtNbP/higCLm9EXEpIcNfVgBanNPFtoGIcq5Y/jeEo0Y6Smuk7dgQL0y
+         tfEg==
+X-Gm-Message-State: AOAM532P4Zw8heR+vKBrII7PNDfzD50X4cG3Q/JhNQPpkbmqYofpVXyC
+	YeatsPDgkd3rqrS78x5m/AYA1jar1yFRj4qVRVQ=
+X-Google-Smtp-Source: ABdhPJyCYqPUU/VKj9kJWravQ68752rK01jGSqt6pQdJ7HF7NEs2Dcnc3gKyGU8wvOCE/XpYj5nw9eoNxbRKEoZ4hqs=
+X-Received: by 2002:a17:90b:17c4:b0:1c6:e74b:31d9 with SMTP id
+ me4-20020a17090b17c400b001c6e74b31d9mr2293651pjb.242.1648523892505; Mon, 28
+ Mar 2022 20:18:12 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220328232449.132550-1-eng.alaamohamedsoliman.am@gmail.com>
+References: <fde3e9e7444d85229a80eabbfeb6abade96d51a9.camel@gmail.com>
+In-Reply-To: <fde3e9e7444d85229a80eabbfeb6abade96d51a9.camel@gmail.com>
+From: Roopa Prabhu <roopa.prabhu@gmail.com>
+Date: Mon, 28 Mar 2022 20:18:01 -0700
+Message-ID: <CAGe6so-nfZGbA2fv_puOoPjzTV=KkNEGSpz=SvFQz0Y2PAwDzw@mail.gmail.com>
+Subject: Re: IRC Logs for #outreachy-kernel-networking
+To: brunodout.dev@gmail.com
+Cc: outreachy linux kernel <outreachy@lists.linux.dev>
+Content-Type: text/plain; charset="UTF-8"
 
-On Tue, Mar 29, 2022 at 01:24:49AM +0200, Alaa Mohamed wrote:
-> This patch for adding Printk line to ath9k probe function as a task
-> for Outreachy internship
-> 
-> Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-> ---
->  drivers/net/wireless/ath/ath9k/pci.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/net/wireless/ath/ath9k/pci.c b/drivers/net/wireless/ath/ath9k/pci.c
-> index a074e23013c5..e16bdf343a2f 100644
-> --- a/drivers/net/wireless/ath/ath9k/pci.c
-> +++ b/drivers/net/wireless/ath/ath9k/pci.c
-> @@ -892,6 +892,7 @@ static int ath_pci_probe(struct pci_dev *pdev, const struct pci_device_id *id)
->  	int ret = 0;
->  	char hw_name[64];
->  	int msi_enabled = 0;
-> +	printk(KERN_DEBUG "I can modify the Linux kernel!\n");
+This is great, thanks Bruno!
+I have added it to the resources section on our starter task board
 
-Hi Alaa
-
-Nice first patch. Everybody has to start somewhere. The description is
-good, it explains 'why', which is the important thing. The signed-off-by
-is there, and it looks like it did not get mangled by your mailer.
-
-I suspect if you run ./scripts/checkpatch.pl on the patch it will ask
-you to use something other than printk(KERN_DEBUG). I guess this comes
-later in the Outreach internship program, so don't worry about it. But
-it is a useful script to know about.
-
-   Andrew
+On Mon, Mar 28, 2022 at 6:23 PM <brunodout.dev@gmail.com> wrote:
+>
+> Hello there!
+>
+> Earlier today we were talking about conversation history on
+> IRC (#outreachy-kernel-networking channel). I think it was
+> Alaa who asked if there was a way to read them.
+>
+> Since IRC doesn't implement server-level message history, I
+> offered to send my client logs, as my client is expected to
+> be connected most of the time (no guarantees, though).
+> Considering Stefano said it was okay and no one else
+> opposed, so I made a script so the logs are available at:
+> https://share.codeagain.dev/outreachy/irclogs/%23outreachy-kernel-networking.log
+>
+> It's expected to update regularly, but ping me if they
+> don't. I also recommend saving the file every time it has
+> new information you find useful, considering that I'm not
+> 100% sure my IRC client won't delete old messages or, which
+> will be replicated to the file in the link. If I face
+> downtime (sometimes I run out of RAM) the logs will not be
+> recorded, though.
+>
+> I hope it helps, there are some interesting discussions
+> going on there time to time.
+>
+> --
+> Sincerely,
+> Bruno | Pronouns: they/them/theirs
+> IRC: CodeAgain
+>
+>
+>
