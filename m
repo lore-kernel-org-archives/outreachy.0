@@ -1,98 +1,130 @@
-Received: from mail-oi1-f196.google.com (mail-oi1-f196.google.com [209.85.167.196])
+Received: from mail-ej1-f51.google.com (mail-ej1-f51.google.com [209.85.218.51])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 03879363;
-	Wed, 30 Mar 2022 13:07:39 +0000 (UTC)
-Received: by mail-oi1-f196.google.com with SMTP id e189so21988524oia.8;
-        Wed, 30 Mar 2022 06:07:39 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 31F187B;
+	Wed, 30 Mar 2022 14:33:38 +0000 (UTC)
+Received: by mail-ej1-f51.google.com with SMTP id pv16so41973107ejb.0;
+        Wed, 30 Mar 2022 07:33:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=date:from:to:subject:message-id:mime-version:content-disposition;
-        bh=iHRrjC7NGgHX48bIJgJGcmUknIuFtHx4WhnT2MgRlL4=;
-        b=Kp0gzgzMfQ3kAvf1gdqVG9PW5fvH8A0wiM4iIvt/os2m6GCy08yYL67z/4CzATgJeE
-         uWtPe78fPYk6XMDFsIi+sC12sSsR7hWAI01iUU/B4UeBhpp5yuWO1APRl80MMrCw8nXt
-         az93SELSRfONXauqZ+Uu9Ti+fOA7Pypjke+BMgKn4U4EGLjaLw07BFcr+jcIVg2igMLk
-         pSTUW5v6OhQ+M89TATX9k5I5KvYJ8rhmW96WrZi1dEP9c3PdkThDfiqqlj7UK7Kra4KA
-         h0xyfDDbPGR7k5w6MGeKR3kJW1BJhwPa1VfpK8odK3A3koHsn3fZ4BdVJYU7I54cZqhp
-         7pfQ==
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=PYeSRhL4EJ9kSjRef+3ZDgUv5eRzmfmbrcZOn+mT5cQ=;
+        b=ByVj0awv3/ZKRFds4TIlXaEjOC213gnC/dsMTaTQtZw+cwLgR1OMv4LtfQ26nkhV/n
+         L62vIfDajYdNXaNr2oHb9LUPwLg32m7+HnZLmdcRd4o7JLE6+ijC8SPd1UQ3bYJYPh93
+         KgKm+iijnBLydGJgg9AclIlxR1Ikhoy9GcaGwqup0FwT6At4zii4UapWKJ3VUIVZe73M
+         8RGmv6XGmszVo0X1oyUWpdCApg5JAmZbRd0O1CgaKPdTG9BvLkDm86irEMrrNIBrl3aP
+         8o8kBwBz2ByYhnvtzrB3QN5BhEmjzNfCevBW9hcYZb3rXXKpH2fcD9xd5vE+vfZMIfWe
+         DVZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition;
-        bh=iHRrjC7NGgHX48bIJgJGcmUknIuFtHx4WhnT2MgRlL4=;
-        b=ppQeZ+gkReMDdNDRFc/GwS2gBabNU84WggL1bXvjBKEjAJqly6I1mbC29Cfy2ON8yd
-         r/Wg4AeXkoQ0qR8E9vZMHx3rMxCQn/Xqsb8ECyHD/iWdT7YAG0BonNL3Rg8yx7G/4Mk/
-         TSl18b0DthYI747K/mow60SGM/P6QU8vpLSrYCaYHREtQIAdUKgd2A3GTXpJiB+rYek6
-         Hkko33aJCr6QpkJue1bg/FIr+tmfPnHYu6RD6Xklc9r+ripPwPscptKpIYbvvJ95/E01
-         28Z0W28ajSowbYz+Uvy9gPGDDQ+wRJjKeO4484xnPTzTRt75VS5k3Xvh4fe/4ACxhY2r
-         XDKQ==
-X-Gm-Message-State: AOAM530/Vp/uA2kWgrNuTVc3bTaMxRnDbthO3Ob5NBxtXF9nU7+UCEzr
-	8CanrMDxmmV4EGHvhbESH3QT9AGa0kw0oA==
-X-Google-Smtp-Source: ABdhPJyrbIXiZOh+V+60qXAY07OWSGBpHcV9cLP7AqXSJjdmJ5cpofJ52ZV786SXOXELUk9wteiGSQ==
-X-Received: by 2002:a05:6808:146:b0:2f4:748:5588 with SMTP id h6-20020a056808014600b002f407485588mr1704317oie.292.1648645658296;
-        Wed, 30 Mar 2022 06:07:38 -0700 (PDT)
-Received: from bertie (072-190-140-117.res.spectrum.com. [72.190.140.117])
-        by smtp.gmail.com with ESMTPSA id q6-20020acaf206000000b002ef960f65b3sm10264175oih.25.2022.03.30.06.07.37
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=PYeSRhL4EJ9kSjRef+3ZDgUv5eRzmfmbrcZOn+mT5cQ=;
+        b=OXeP4q0/0+Ka0RxfDZxoHhvh9K6IvnKutPauaBcfBPT69ZnhaeBozMmhUd5DgO5ndw
+         RdD/uuYl60magpwpqyux1nYNb+g1D29V//SYW7MaDJM99wL7tDPl3we+Rp/qii2At4Nz
+         CzThUmlpRda9q7m/sLXaT525nwJBr6ZwO7P2pcTClZKZKqqmUCV9mkFMV6Ep4nplLo8t
+         8K6LTHA7T1yHTVkENDioyFI4szUVxgklB+iSx4A9NpCx7yaG5IxUko37hQzH0aguQqV9
+         +8Z6Hph1MkPAlC2pbf9qYUfWixlFu/HcK+ssTbrHlJZ+C5DY+tgaj7gr5ggbsSSTPjDH
+         LTDA==
+X-Gm-Message-State: AOAM532NIwdykwkTLqNrbLdFD5666zgOLyolP5dL27+bH2HI2LE/N+LK
+	VLQef2K3trSkayyGF+HA6fk=
+X-Google-Smtp-Source: ABdhPJwgs/G9LRh561o9F93/Of7ZKFv9d4D65V/c+PfKjEaQdtjtvqaZ2eEvROGfRAYDtVOvsttR1w==
+X-Received: by 2002:a17:907:6da6:b0:6e0:bb24:f731 with SMTP id sb38-20020a1709076da600b006e0bb24f731mr29818767ejc.25.1648650816253;
+        Wed, 30 Mar 2022 07:33:36 -0700 (PDT)
+Received: from localhost.localdomain (host-95-249-145-232.retail.telecomitalia.it. [95.249.145.232])
+        by smtp.gmail.com with ESMTPSA id z2-20020a17090674c200b006e13403964asm2069249ejl.77.2022.03.30.07.33.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 30 Mar 2022 06:07:37 -0700 (PDT)
-Date: Wed, 30 Mar 2022 08:07:36 -0500
-From: Rebecca Mckeever <remckee0@gmail.com>
-To: Larry Finger <Larry.Finger@lwfinger.net>,
-	Phillip Potter <phil@philpotter.co.uk>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+        Wed, 30 Mar 2022 07:33:35 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Benjamin Philip <benjamin.philip495@gmail.com>,
+	Bart Van Assche <bvanassche@acm.org>,
+	"Martin K. Petersen" <martin.petersen@oracle.com>,
+	"Eric W. Biederman" <ebiederm@xmission.com>,
+	Colin Ian King <colin.king@intel.com>,
+	=?UTF-8?q?Samuel=20Sj=C3=B6berg?= <info@samuelsjoberg.se>,
+	Charlie Sands <sandsch@northvilleschools.net>,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	Dan Carpenter <dan.carpenter@oracle.com>,
+	ira.weiny@intel.com,
 	outreachy@lists.linux.dev
-Subject: [PATCH] staging: r8188eu: remove unnecessary spaces
-Message-ID: <YkRWGCmMytlqgvkZ@bertie>
+Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+Subject: [PATCH v4] staging: rts5208: Convert kmap() to kmap_local_page()
+Date: Wed, 30 Mar 2022 16:33:31 +0200
+Message-Id: <20220330143331.8306-1-fmdefrancesco@gmail.com>
+X-Mailer: git-send-email 2.34.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
 
-Conform to Linux kernel coding style. Issue found by checkpatch:
+The use of kmap() is being deprecated in favor of kmap_local_page()
+where it is feasible.
 
-WARNING: Statements should start on a tabstop
+With kmap_local_page(), the mapping is per thread, CPU local and not
+globally visible. Therefore rtsx_stor_access_xfer_buf() is a function
+where the use of kmap_local_page() in place of kmap() is correctly
+suited.
 
-Signed-off-by: Rebecca Mckeever <remckee0@gmail.com>
+Convert to kmap_local_page() but, instead of open coding it, use the
+helpers memcpy_to_page() and memcpy_from_page().
+
+Make a minor change to a comment related to scatter-gather.
+
+Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
 ---
- drivers/staging/r8188eu/core/rtw_led.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/staging/r8188eu/core/rtw_led.c b/drivers/staging/r8188eu/core/rtw_led.c
-index ccd43accb7dc..4b047c438389 100644
---- a/drivers/staging/r8188eu/core/rtw_led.c
-+++ b/drivers/staging/r8188eu/core/rtw_led.c
-@@ -278,7 +278,7 @@ void rtw_led_control(struct adapter *padapter, enum LED_CTL_MODE LedAction)
- 			else
- 				pLed->BlinkingLedState = RTW_LED_ON;
- 			schedule_delayed_work(&pLed->blink_work, LED_BLINK_SCAN_INTVL);
--		 }
-+		}
- 		break;
- 	case LED_CTL_TX:
- 	case LED_CTL_RX:
-@@ -304,7 +304,7 @@ void rtw_led_control(struct adapter *padapter, enum LED_CTL_MODE LedAction)
- 		}
- 		break;
- 	case LED_CTL_START_WPS: /* wait until xinpin finish */
--		 if (!pLed->bLedWPSBlinkInProgress) {
-+		if (!pLed->bLedWPSBlinkInProgress) {
- 			if (pLed->bLedNoLinkBlinkInProgress) {
- 				cancel_delayed_work(&pLed->blink_work);
- 				pLed->bLedNoLinkBlinkInProgress = false;
-@@ -328,7 +328,7 @@ void rtw_led_control(struct adapter *padapter, enum LED_CTL_MODE LedAction)
- 			else
- 				pLed->BlinkingLedState = RTW_LED_ON;
- 			schedule_delayed_work(&pLed->blink_work, LED_BLINK_SCAN_INTVL);
--		 }
-+		}
- 		break;
- 	case LED_CTL_STOP_WPS:
- 		if (pLed->bLedNoLinkBlinkInProgress) {
+v1 -> v2: Rework the commit message and use the appropriate helpers
+instead of open coding the use of kmap_local_page()/kunmap_local_page().
+(Thanks to Ira Weiny <ira.weiny@intel.com>).
+
+v2 -> v3: Use memcpy_{to,from}_page() arguments correctly.
+(Thanks to Dan Carpenter <dan.carpenter@oracle.com>).
+
+v3 -> v4: According to a suggestion by Ira Weiny, change the test
+of a comment related to the use of scatter-gather.
+
+ drivers/staging/rts5208/rtsx_transport.c | 12 +++++-------
+ 1 file changed, 5 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/staging/rts5208/rtsx_transport.c b/drivers/staging/rts5208/rtsx_transport.c
+index 805dc18fac0a..d5ad49de4c56 100644
+--- a/drivers/staging/rts5208/rtsx_transport.c
++++ b/drivers/staging/rts5208/rtsx_transport.c
+@@ -55,9 +55,9 @@ unsigned int rtsx_stor_access_xfer_buf(unsigned char *buffer,
+ 		*offset += cnt;
+ 
+ 	/*
+-	 * Using scatter-gather.  We have to go through the list one entry
+-	 * at a time.  Each s-g entry contains some number of pages, and
+-	 * each page has to be kmap()'ed separately.
++	 * Using scatter-gather. We have to go through the list one entry
++	 * at a time. Each s-g entry contains some number of pages which
++	 * have to be copied one at a time.
+ 	 */
+ 	} else {
+ 		struct scatterlist *sg =
+@@ -92,13 +92,11 @@ unsigned int rtsx_stor_access_xfer_buf(unsigned char *buffer,
+ 			while (sglen > 0) {
+ 				unsigned int plen = min(sglen, (unsigned int)
+ 						PAGE_SIZE - poff);
+-				unsigned char *ptr = kmap(page);
+ 
+ 				if (dir == TO_XFER_BUF)
+-					memcpy(ptr + poff, buffer + cnt, plen);
++					memcpy_to_page(page, poff, buffer + cnt, plen);
+ 				else
+-					memcpy(buffer + cnt, ptr + poff, plen);
+-				kunmap(page);
++					memcpy_from_page(buffer + cnt, page, poff, plen);
+ 
+ 				/* Start at the beginning of the next page */
+ 				poff = 0;
 -- 
-2.32.0
+2.34.1
 
