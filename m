@@ -1,96 +1,81 @@
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-wr1-f41.google.com (mail-wr1-f41.google.com [209.85.221.41])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F22BB7B
-	for <outreachy@lists.linux.dev>; Wed, 30 Mar 2022 15:14:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1648653248; x=1680189248;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=gbyZNkK5Z3/WE0Hf/IxuFhFFjW4/MSPB2tYnBRb6iXk=;
-  b=cAarDhn/YrqhNw3bx5L2MfSnMv/Fqw4OGSzHKWQDQ3+SRNqh0bITXBi7
-   8iG+coZsr69OP2XUhD+u38Ab3xBwofDzyDCGWcl6tQKQY5jbRgrbn8jYc
-   JeQPYfXrGYLey6agUYBF5v8j6QzCcrSdY5t4cimAZR8ZceVqcjCxWAq3U
-   xpqpXbB7UQwCiBd4fPY8N7UODnegswp+F4o94vCQ5JdeaRL2kqduckblw
-   DGz08tArZXYvz9j/eNVTRxsomMehvseXm9htvDym6hSux+TP16H7y1DFd
-   RhMnmzt4V9IN7kZ4kVnMLZTreGKn0w2JfShYdqZfXd6c3whz83xfbEbRm
-   Q==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10302"; a="257146493"
-X-IronPort-AV: E=Sophos;i="5.90,223,1643702400"; 
-   d="scan'208";a="257146493"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Mar 2022 08:14:08 -0700
-X-IronPort-AV: E=Sophos;i="5.90,223,1643702400"; 
-   d="scan'208";a="618564443"
-Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
-  by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Mar 2022 08:14:08 -0700
-Date: Wed, 30 Mar 2022 08:16:31 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
-Cc: outreachy@lists.linux.dev
-Subject: Re: [KERNEL NEWBIES ACCESS] SevinjAghayeva
-Message-ID: <20220330151631.GA1176177@alison-desk>
-References: <CAMWRUK7oaT3bh7pJK5oMWYh3Sptwx6UdgNwds6d_A0CQxC24pw@mail.gmail.com>
- <20220330013408.GA1173441@alison-desk>
- <CAMWRUK4xoy3M8ob2soAwp-RHvro8TGGQdXBim9K1z5nXTTer_g@mail.gmail.com>
- <20220330025333.GA1173893@alison-desk>
- <CAMWRUK4Tq3Y3TU1BivAyYeYimPUU9QBLS8LDvA-WcB2=ns3h0A@mail.gmail.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 464007B;
+	Wed, 30 Mar 2022 15:31:06 +0000 (UTC)
+Received: by mail-wr1-f41.google.com with SMTP id a1so29811980wrh.10;
+        Wed, 30 Mar 2022 08:31:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=gJz7fYhfJWqCmC2Mcr5bDAKKPMhr/W9ez4DMr6xey+k=;
+        b=ceMznRGpwFxnxcArdnMPvl5HfRy3xwhignwESlXi8csYWIHvoOJgFAo5Zgd/QYaJV7
+         MgyMMgu7jf1EjzdpvqwE/VKjXqFQEwIjy5oy0T8WiPOG33kxtDrxRmkyVw21mQvd1q8e
+         SNb6F9/3Ot8HjzH09hMBFZaJ2SDZVPbI/JjgPF+iBHtv4WPJvP2OTSDslvQrO/Pv8Rr3
+         3K+k8g933wH7ED+RGvaewwvAzJpOS4/MuFF5np0jd8FPaDWtbn8r067f3TZ9hpGBjgLo
+         YG6uGUp1ZzhAdf4W6UYRgZG4ikloQBt6WRXWtkzhzpgyeBJihtgSUOx8ubhs9gPO8ksE
+         kC2g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=gJz7fYhfJWqCmC2Mcr5bDAKKPMhr/W9ez4DMr6xey+k=;
+        b=NnJhv89mXiuUtIgzwMtGcDxwfFeZRTu53xxnS/eXIO4yFlVqoC3CO4Zv7SRdBNG9ow
+         sUq9SYja4y++e3vQGtX9crSfDeJsswbG4qo9MSZYnDZLUH0r9TT9nQfK0Jvua094rL42
+         eywRm4jJutzL7vQHwN1enFXBOJR2AtSqXj/ek+AzaCu6BA/iogU6EDR5ilO4NTK8kPJQ
+         4O66vXiqemfpWWVYSNnfQW5JA6ranSr08J0/Rhsp5vBwVpgFqZHu4KZ7X/9jsqtKzrUq
+         0HNuI/JBTFo1BUxsNrRUZ4/uFiXWU51XPhgwxjxgMiYF3RCbBNpJXRlfcfC5KMeMF+EC
+         Wp7Q==
+X-Gm-Message-State: AOAM530mAe0jnIjJSoK2uf1CKiFcgrBaMfYnv7LkWIdXrLNYbKbEorNT
+	raWMvPjpiiosz3KeJXwjBaA=
+X-Google-Smtp-Source: ABdhPJxbORWcrgcXzlxBYwb0i9BcaEP/wUxgwjqJd3r8z/OOO2KndntviGQfobOQHpFnLywO1zI5fQ==
+X-Received: by 2002:a5d:64ce:0:b0:204:1177:e1c4 with SMTP id f14-20020a5d64ce000000b002041177e1c4mr134091wri.692.1648654264520;
+        Wed, 30 Mar 2022 08:31:04 -0700 (PDT)
+Received: from alaa-emad ([41.37.132.115])
+        by smtp.gmail.com with ESMTPSA id q16-20020adff950000000b00205aa05fa03sm13450509wrr.58.2022.03.30.08.31.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 30 Mar 2022 08:31:03 -0700 (PDT)
+From: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+To: outreachy@lists.linux.dev
+Cc: gregkh@linuxfoundation.org,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	eng.alaamohamedsoliman.am@gmail.com
+Subject: [PATCH] staging:rtl8723bs:rtw_cmd.c remove suspect indent
+Date: Wed, 30 Mar 2022 17:31:00 +0200
+Message-Id: <20220330153100.5813-1-eng.alaamohamedsoliman.am@gmail.com>
+X-Mailer: git-send-email 2.35.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAMWRUK4Tq3Y3TU1BivAyYeYimPUU9QBLS8LDvA-WcB2=ns3h0A@mail.gmail.com>
+Content-Transfer-Encoding: 8bit
 
-On Wed, Mar 30, 2022 at 07:10:25AM -0400, Sevinj Aghayeva wrote:
-> On Tue, Mar 29, 2022 at 10:51 PM Alison Schofield
-> <alison.schofield@intel.com> wrote:
-> >
-> > On Tue, Mar 29, 2022 at 09:50:46PM -0400, Sevinj Aghayeva wrote:
-> > > Thanks! If you think my "[PATCH v2] staging: rtl8723bs: remove
-> > > redundant braces in if statements" is okay, I can replace the example
-> > > in PatchPhilosophy that contains "This patch fixes...".
-> > >
-> > Yes, go ahead and update the wiki directly. I can look at it in place
-> > once it's changed. Thanks!
-> 
-> Updated.
+Fix "WARNING: suspect code indent for conditional
+statements (16, 32)" for line 1240
+founded by checkpatch.pl
 
-Reviewed 2 changes - setup & patchphilosophy.
-Thanks!
+Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+---
+ drivers/staging/rtl8723bs/core/rtw_cmd.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> 
-> 
-> >
-> >
-> > > On Tue, Mar 29, 2022 at 9:31 PM Alison Schofield
-> > > <alison.schofield@intel.com> wrote:
-> > > >
-> > > > On Tue, Mar 29, 2022 at 09:25:10PM -0400, Sevinj Aghayeva wrote:
-> > > > > Please grant me edit privileges to improve the wiki pages.
-> > > > >
-> > > > > Thanks!
-> > > > Added you to https://kernelnewbies.org/EditorsGroup
-> > > > Ping me back if any issues.
-> > > > Thanks for helping maintain the wiki.
-> > > > >
-> > > > > --
-> > > > >
-> > > > > Sevinj.Aghayeva
-> > > > >
-> > >
-> > >
-> > >
-> > > --
-> > >
-> > > Sevinj.Aghayeva
-> 
-> 
-> 
-> --
-> 
-> Sevinj.Aghayeva
+diff --git a/drivers/staging/rtl8723bs/core/rtw_cmd.c b/drivers/staging/rtl8723bs/core/rtw_cmd.c
+index 14d37b369273..46e18a90529f 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_cmd.c
++++ b/drivers/staging/rtl8723bs/core/rtw_cmd.c
+@@ -1238,7 +1238,7 @@ u8 traffic_status_watchdog(struct adapter *padapter, u8 from_timer)
+ 		/*&& !MgntInitAdapterInProgress(pMgntInfo)*/) {
+ 		/*  if we raise bBusyTraffic in last watchdog, using lower threshold. */
+ 		if (pmlmepriv->LinkDetectInfo.bBusyTraffic)
+-				BusyThreshold = BusyThresholdLow;
++			BusyThreshold = BusyThresholdLow;
+ 
+ 		if (pmlmepriv->LinkDetectInfo.NumRxOkInPeriod > BusyThreshold ||
+ 			pmlmepriv->LinkDetectInfo.NumTxOkInPeriod > BusyThreshold) {
+-- 
+2.35.1
+
