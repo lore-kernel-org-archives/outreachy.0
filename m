@@ -1,51 +1,37 @@
-Received: from mail-qt1-f172.google.com (mail-qt1-f172.google.com [209.85.160.172])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D91487C
-	for <outreachy@lists.linux.dev>; Wed, 30 Mar 2022 02:35:24 +0000 (UTC)
-Received: by mail-qt1-f172.google.com with SMTP id bp39so16993324qtb.6
-        for <outreachy@lists.linux.dev>; Tue, 29 Mar 2022 19:35:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=3I6+yGyLBBc7SN/2bT0y7pdmGV0qhEvg91j0foiyqc4=;
-        b=GT3KEL+XvTyeDJ+V2vY+6HvRkhuCzuY3KPH0ue3V8ZXv9isug5Ph3MvIdqAn1FVh8s
-         QYuyvotwi0pNT0uKvP73qjW9MrbkpvxHY6NjxfUOCaSOEr75DvJPCcRfF4PgrI/cRo0E
-         vlvMnXop2i0qXocFAjDeBpb19M3m36tPPZJRlMRtD9InDZ16aO4m5GTIoIXP0HJtVYP6
-         cV1TvmzhA/bB4B92UW4gHSjGBmgAhxnAfBVfYlWh7Kwk+M8uyKrb1dON2t4ntayMTOQF
-         7VGITkTHzIE1f7i+80pNaeayN4JXR07vXRNwe7ZrTthocJaHGY68IoGcYzZrHLGMFybf
-         Dt9A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=3I6+yGyLBBc7SN/2bT0y7pdmGV0qhEvg91j0foiyqc4=;
-        b=nSGOhWctFc+A3EzF7UwP9MaEPLAO2cymLkQlQDhLI6CDxBCvacdUzZM0uWWr02UgyY
-         vO0QJTUq1VmoTbrSCBGloNIkOLg9URGranQ5RgfM0fFGw35jD946/eRkUtDZVB0JBwMo
-         Ku/UAtsT3IrBl7Da8QXRiWu2H/1FWem6mtM04HEFgcOKQS5Dd0AdkVwyGIQB6lR5sel2
-         jwz4/RZXQMg45XSWQZYsRxQ9V42kG0GGxbShG3ROH/mFqwwN9sgWLmUCbZcEBzRGgYoD
-         bl0X30gHZP98+9sKfb+diC4j+PDyOZ/wXZ0tfJsTjiuAa0V1b6REPeG4vvSrh3ZTAUpV
-         uPxg==
-X-Gm-Message-State: AOAM530MjYujTaJxfzFgkIZJSyN8KSzQtlNcUROBA/5tZaWzWSCimpwI
-	948tUlvNw6ZIn3BvZEuHDMw=
-X-Google-Smtp-Source: ABdhPJz/ApwXUhHsDz6KQbIUQE0/5i+M7Pfr5o1HTegAvD1n2NiAw+zgY5hP1ZVUjFjL0O7SHz1Pcg==
-X-Received: by 2002:ac8:5a16:0:b0:2e1:ea00:b4e1 with SMTP id n22-20020ac85a16000000b002e1ea00b4e1mr30996113qta.329.1648607723795;
-        Tue, 29 Mar 2022 19:35:23 -0700 (PDT)
-Received: from jaehee-ThinkPad-X1-Extreme ([2607:fb90:5335:484d:fb8a:ce2f:93bb:7019])
-        by smtp.gmail.com with ESMTPSA id v18-20020a05622a189200b002e22e09d77fsm16415276qtc.59.2022.03.29.19.35.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 29 Mar 2022 19:35:23 -0700 (PDT)
-Date: Tue, 29 Mar 2022 22:35:20 -0400
-From: Jaehee Park <jhpark1013@gmail.com>
-To: Stefano Brivio <sbrivio@redhat.com>
-Cc: Alison Schofield <alison.schofield@intel.com>,
-	outreachy@lists.linux.dev
-Subject: Re: mail question
-Message-ID: <20220330023520.GA1034773@jaehee-ThinkPad-X1-Extreme>
-References: <20220329235021.GA1009484@jaehee-ThinkPad-X1-Extreme>
- <20220329235706.GA1172722@alison-desk>
- <20220330023434.0a265390@elisabeth>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 49CDA7C
+	for <outreachy@lists.linux.dev>; Wed, 30 Mar 2022 02:47:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1648608449; x=1680144449;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=4vKfZuaWhcABFGgrHJQWj0ZQlIe1183czgyKh9d6QXg=;
+  b=nedU5MxdzKuYQtJ5PFwik9Lj72mfmlAgM7pU++klb2ilzfQldFoU5BFQ
+   bbl+tyBEp+0GCikJ8AasXcx0R8kKQ0PX9P0O7zPyhGnZb6zCD0G9tuXB5
+   DHtZWWMmbYn3akFtUDlGtN6bYrmPnMQRYPCaDB2/n28oBtReGz0WLe050
+   OMqfprG7yuvkwxsMIQZRZKfes2tSCoZtzsmOHWC7scd3HvrKpYxbP1DTr
+   Z+ncCkeSOcY50IsSk2eIhjmYjI+/VxCeTo4iDE1QAat+rCeBaDl9weVXh
+   9rL/tN4jOlwp2Voajpmug8eMkInogVIi2gX+NwiCpug/Fpg7EGqfcP9iF
+   w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10301"; a="322612293"
+X-IronPort-AV: E=Sophos;i="5.90,221,1643702400"; 
+   d="scan'208";a="322612293"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Mar 2022 19:47:28 -0700
+X-IronPort-AV: E=Sophos;i="5.90,221,1643702400"; 
+   d="scan'208";a="565188821"
+Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
+  by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Mar 2022 19:47:28 -0700
+Date: Tue, 29 Mar 2022 19:49:53 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: brunodout.dev@gmail.com
+Cc: outreachy linux kernel <outreachy@lists.linux.dev>
+Subject: Re: [KERNEL NEWBIES ACCESS] Bruno
+Message-ID: <20220330024953.GA1173853@alison-desk>
+References: <f763f6f42e3d3c35c404e50f6ffc60e622559fa1.camel@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -54,43 +40,19 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220330023434.0a265390@elisabeth>
+In-Reply-To: <f763f6f42e3d3c35c404e50f6ffc60e622559fa1.camel@gmail.com>
 
-On Wed, Mar 30, 2022 at 02:34:34AM +0200, Stefano Brivio wrote:
-> Hi,
+On Tue, Mar 29, 2022 at 11:06:13PM -0300, brunodout.dev@gmail.com wrote:
+> Hello,
 > 
-> On Tue, 29 Mar 2022 16:57:06 -0700
-> Alison Schofield <alison.schofield@intel.com> wrote:
+> As Alison instructed, please add my username "Bruno" to the
+> EditorsGroup so I can update information on KernelNewbies
+> website based on the previous e-mail.
+
+Added here https://kernelnewbies.org/EditorsGroup
+Thanks for improving the wiki!
+
 > 
-> > On Tue, Mar 29, 2022 at 07:50:21PM -0400, Jaehee Park wrote:
-> >
-> > [...]
-> >
-> > > Q2: I see that my patch was sent
-> > > (https://lore.kernel.org/outreachy/) but I didn't get an email yet
-> > > from the outreachy mailing list. I was wondering if there is a
-> > > delay?   
-> > 
-> > Your patch is on the list. You can see it through lore - right?
-> > I see it on the list, and since I'm subscribed, it came to my mailbox
-> > too. There is no automatic reply from the outreachy list.
+> Thanks,
+> Bruno Moreira-Guedes
 > 
-> There might be another issue: you're using Gmail, and you sent the
-> patch also to:
-> 	linux-staging@lists.linux.dev
-> 	linux-kernel@vger.kernel.org
-> 
-> ...which is correct, of course. But if you're subscribed to one of those
-> lists, Gmail will "deduplicate" your own email, that is, it actually
-> deletes any copy received after the first one. :/
-> 
-> In case you're subscribed to either list, can you check if your patch
-> is in your archives of those lists?
-> 
-> -- 
-> Stefano
->
-Thank you Alison and Stefano for your answers!
-That's interesting that gmail deduplicates but it makes sense -- good to
-know! I checked the archive of linux-staging and I see my patch there.
-Thank you for your clarifications.
