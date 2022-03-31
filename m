@@ -1,181 +1,197 @@
-Received: from mail-qv1-f44.google.com (mail-qv1-f44.google.com [209.85.219.44])
+Received: from mail-wr1-f42.google.com (mail-wr1-f42.google.com [209.85.221.42])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0F0AF7C;
-	Thu, 31 Mar 2022 12:26:20 +0000 (UTC)
-Received: by mail-qv1-f44.google.com with SMTP id a5so19562492qvx.1;
-        Thu, 31 Mar 2022 05:26:20 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A66F97E0;
+	Thu, 31 Mar 2022 13:09:54 +0000 (UTC)
+Received: by mail-wr1-f42.google.com with SMTP id d7so33755339wrb.7;
+        Thu, 31 Mar 2022 06:09:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=date:from:to:subject:message-id:mime-version:content-disposition;
-        bh=inD3SnFltpIfXrHtLPhpTWjxkAMH823Ag7N/71vk5DY=;
-        b=ZQ5xftc/E2Sid0uo09kzQyKlBB6ON4adiW19kxUoGVe0YV3Bu/j3m1+iG4OxgTeqJl
-         Co6n8MGRSKbVGgkPZygeY6XPPXp5Msqi+svw9IIIg4ZQdvTBTOTTbvNWh840Y/lMCxYR
-         nEn+Hf59X9kemMlkf2yQG1fXvSCyMC9YNzhDZgoSwUb8PSzCYavQqqFicwaKIOzroy6H
-         LzxIc3md0auTgehZp1yTp2QkEw0Q0a3uTyODNF503ffm6Y86egF2k+1LdA0XkAKmb7M7
-         QjA6iQA9PpcCDV73ZiTdEnMGYkFttiQyaqeYI84HrN906y5zxUKaD3dNpddY//Onp6lk
-         wRVA==
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=BV/bIHTT1neiW4KaA2YJdbMk/VdfvUqsLrJa1P0rOGk=;
+        b=jdZY1CShnQz+gjzfn4c5QInD9OvUvgHhBakTnvP29jkgwaq8BVcr/L0rdvOwxsNStp
+         UNFT4h8GjY5/HM88JI6BJeon0UClKG/c+RnJ5KeVOb0U5+Tbw0rahFs80y2PvchgV8WE
+         FMkhNonvBeOLZsfa82VkZ6pj2gLdq22olUgjPqlVnZZ7XJNEsQeAUCpM7Oq4Mt46yE3U
+         uHUGe1W/aJlEgsp6KH2kG5eftsc7orLhhH1mmPojaKU2hPTQpe2GdyR5tgfjOQLdZ7Xj
+         J4sWhEmyxgdbofVsJxRjJ5sXSortzu+HBVUHCVzf/Vucz3VU8GfJjp17x7HEE1ydcGFp
+         WFLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition;
-        bh=inD3SnFltpIfXrHtLPhpTWjxkAMH823Ag7N/71vk5DY=;
-        b=RWSbNqcFJyAcuEOccmpAqcNzoD1sj3Bie+I6dB1UM0/BsRaYIvqooBsqYauZ+c091d
-         uBuTayZtI+PtZYpXzOuu3b76qhffHIhoP2apk+SMsEARFf/0ttb0ut9Y8Rzzh4KAsX+5
-         pQO/PR9kSs+F8NewPJcfgmv3WJdxhgmvT09+nGmKx0H3PsntearXKt3P6W3jCPMR+v2z
-         UOjXGxvCXsERonc0xvgT6AmuUuGdJgnkGTO7V0SncsgoC+efOoB2CptfcZt9x9llH8MJ
-         BdgnCO+HFfM1pBIi5X8tJWCiX1Eko9mNysTy49kLV+iorA4NtyvCcBo65eMyqSi7GtQx
-         QJtw==
-X-Gm-Message-State: AOAM531t8MhjIxGO6XeVfSNMmJS9HKd25g4IKddFk5T0T9SH3e/J7daJ
-	NEg0vBNhVLFsPCGgxgju65m99MOs5va/tA==
-X-Google-Smtp-Source: ABdhPJyGoRv10oxt0Yxp7IIsoIxrcILPeJWgBV+CPY92jfoubgGlq/8jxJ12WTuQaPkbbS2k7TdwIw==
-X-Received: by 2002:a0c:fbc8:0:b0:440:faa1:880d with SMTP id n8-20020a0cfbc8000000b00440faa1880dmr4008981qvp.66.1648729579481;
-        Thu, 31 Mar 2022 05:26:19 -0700 (PDT)
-Received: from euclid ([71.58.109.160])
-        by smtp.gmail.com with ESMTPSA id p17-20020a37a611000000b0067b2b2c41fasm12672654qke.81.2022.03.31.05.26.18
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=BV/bIHTT1neiW4KaA2YJdbMk/VdfvUqsLrJa1P0rOGk=;
+        b=6wlw5FvsBHrNSmROyTcAhBq74qGH2vQKqIbZwt/DwIPf95xa6gN+Hhz8HZMYBuhlIz
+         5Q66ViPuonA9fulOgt8QKXWoYmD3HvgJ1OaZOea+EMlbaucRmXJdX6pu5AIpoYwxCauw
+         PHxoEMqJkU5VEj3nuCXYTo1k+0Rad42+wp7VMwh6KE73gAX7Kn10pZxj+PjEDMoSjY/Z
+         QZBsDAfsQBFfUd6ouKm/hHQ4rh9uEfg4ggABv7S6Aov+xeDTWmfpFBF+U+1MAJQN8wSe
+         5iBei1F0dy84qtIb+r7ZJtS72anZAPg008qn0QwSS/vppO2VHcSwIKZctzLsmUXy/WE4
+         oPxw==
+X-Gm-Message-State: AOAM533OoeXm/VckabnvfWapS/jd+P/SZjMMwB2U2RsQmjIPNoGIrmjM
+	z2WLe6RAwiin2Tj+tpGLpCo=
+X-Google-Smtp-Source: ABdhPJyvjYt9wLvH682uZ+aLb5dzowvSPZC9TGQqNZGDrGWH9B/reFQrxPC0eXEDTojUf/CgGJ4gEg==
+X-Received: by 2002:a5d:64ae:0:b0:205:dc46:faff with SMTP id m14-20020a5d64ae000000b00205dc46faffmr3990442wrp.195.1648732192802;
+        Thu, 31 Mar 2022 06:09:52 -0700 (PDT)
+Received: from alaa-emad ([41.37.132.115])
+        by smtp.gmail.com with ESMTPSA id p14-20020a05600c1d8e00b0038dbb5ecc8asm6898070wms.2.2022.03.31.06.09.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 31 Mar 2022 05:26:18 -0700 (PDT)
-Date: Thu, 31 Mar 2022 08:26:18 -0400
-From: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev
-Subject: [PATCH v2] staging: rtl8723bs: place constants on the right side of
- tests
-Message-ID: <20220331122618.GA434796@euclid>
+        Thu, 31 Mar 2022 06:09:52 -0700 (PDT)
+From: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+To: outreachy@lists.linux.dev
+Cc: gregkh@linuxfoundation.org,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	eng.alaamohamedsoliman.am@gmail.com
+Subject: [PATCH] staging: rtl8723bs: Fix No space before tabs
+Date: Thu, 31 Mar 2022 15:09:48 +0200
+Message-Id: <20220331130948.74835-1-eng.alaamohamedsoliman.am@gmail.com>
+X-Mailer: git-send-email 2.35.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
 
-Adhere to Linux kernel coding style.
+Fix "WARNING: please, no space before tabs"
+reported by checkpatch
 
-Reported by checkpatch:
-
-WARNING: Comparisons should place the constant on the right side of the test
-
-Signed-off-by: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
+Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
 ---
+ drivers/staging/rtl8723bs/core/rtw_efuse.c | 54 +++++++++++-----------
+ 1 file changed, 27 insertions(+), 27 deletions(-)
 
-v1 -> v2: Missed one case of constant being placed on the left. Now
-checkpath reports no such warnings for this file.
-
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 32 +++++++++----------
- 1 file changed, 16 insertions(+), 16 deletions(-)
-
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-index 49a3f45cb771..359a67462611 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-@@ -311,11 +311,11 @@ static void init_channel_list(struct adapter *padapter, struct rt_channel_info *
- 			if (!has_channel(channel_set, chanset_size, ch))
- 				continue;
+diff --git a/drivers/staging/rtl8723bs/core/rtw_efuse.c b/drivers/staging/rtl8723bs/core/rtw_efuse.c
+index 3d3c77273026..06e727ce9cc2 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_efuse.c
++++ b/drivers/staging/rtl8723bs/core/rtw_efuse.c
+@@ -100,7 +100,7 @@ u8 PwrState)
+ u16
+ Efuse_GetCurrentSize(
+ 	struct adapter *padapter,
+-	u8 	efuseType,
++	u8	efuseType,
+ 	bool		bPseudoTest)
+ {
+ 	return padapter->HalFunc.EfuseGetCurrentSize(padapter, efuseType,
+@@ -124,29 +124,29 @@ Efuse_CalculateWordCnts(u8 word_en)
+ }
  
--			if ((0 == padapter->registrypriv.ht_enable) && (8 == o->inc))
-+			if ((padapter->registrypriv.ht_enable == 0) && (o->inc == 8))
- 				continue;
+ /*  */
+-/* 	Description: */
+-/* 		1. Execute E-Fuse read byte operation according as map offset and */
+-/* 		    save to E-Fuse table. */
+-/* 		2. Referred from SD1 Richard. */
++/* Description: */
++/*		1. Execute E-Fuse read byte operation according as map offset and */
++/*			save to E-Fuse table. */
++/*		2. Referred from SD1 Richard. */
+ /*  */
+-/* 	Assumption: */
+-/* 		1. Boot from E-Fuse and successfully auto-load. */
+-/* 		2. PASSIVE_LEVEL (USB interface) */
++/* Assumption: */
++/*		1. Boot from E-Fuse and successfully auto-load. */
++/*		2. PASSIVE_LEVEL (USB interface) */
+ /*  */
+-/* 	Created by Roger, 2008.10.21. */
++/* Created by Roger, 2008.10.21. */
+ /*  */
+-/* 	2008/12/12 MH	1. Reorganize code flow and reserve bytes. and add description. */
+-/* 					2. Add efuse utilization collect. */
+-/* 	2008/12/22 MH	Read Efuse must check if we write section 1 data again!!! Sec1 */
+-/* 					write addr must be after sec5. */
++/* 2008/12/12 MH	1. Reorganize code flow and reserve bytes. and add description. */
++/*					2. Add efuse utilization collect. */
++/* 2008/12/22 MH	Read Efuse must check if we write section 1 data again!!! Sec1 */
++/*					write addr must be after sec5. */
+ /*  */
  
- 			if ((0 < (padapter->registrypriv.bw_mode & 0xf0)) &&
--				((BW40MINUS == o->bw) || (BW40PLUS == o->bw)))
-+				((o->bw == BW40MINUS) || (o->bw == BW40PLUS)))
- 				continue;
+ void
+ efuse_ReadEFuse(
+ 	struct adapter *Adapter,
+ 	u8 efuseType,
+-	u16 	_offset,
+-	u16 	_size_byte,
++	u16		_offset,
++	u16		_size_byte,
+ 	u8 *pbuf,
+ bool	bPseudoTest
+ 	);
+@@ -154,8 +154,8 @@ void
+ efuse_ReadEFuse(
+ 	struct adapter *Adapter,
+ 	u8 efuseType,
+-	u16 	_offset,
+-	u16 	_size_byte,
++	u16		_offset,
++	u16		_size_byte,
+ 	u8 *pbuf,
+ bool	bPseudoTest
+ 	)
+@@ -168,7 +168,7 @@ EFUSE_GetEfuseDefinition(
+ 	struct adapter *padapter,
+ 	u8 efuseType,
+ 	u8 type,
+-	void 	*pOut,
++	void	*pOut,
+ 	bool		bPseudoTest
+ 	)
+ {
+@@ -194,7 +194,7 @@ EFUSE_GetEfuseDefinition(
+ u8
+ EFUSE_Read1Byte(
+ struct adapter *Adapter,
+-u16 	Address)
++u16		Address)
+ {
+ 	u8 Bytetemp = {0x00};
+ 	u8 temp = {0x00};
+@@ -235,8 +235,8 @@ u16 	Address)
+ u8
+ efuse_OneByteRead(
+ struct adapter *padapter,
+-u16 		addr,
+-u8 	*data,
++u16	addr,
++u8	*data,
+ bool		bPseudoTest)
+ {
+ 	u32 tmpidx = 0;
+@@ -324,8 +324,8 @@ u8 efuse_OneByteWrite(struct adapter *padapter, u16 addr, u8 data, bool bPseudoT
  
- 			if (!reg) {
-@@ -345,7 +345,7 @@ static u8 init_channel_set(struct adapter *padapter, u8 ChannelPlan, struct rt_c
+ int
+ Efuse_PgPacketRead(struct adapter *padapter,
+-				u8 	offset,
+-				u8 	*data,
++				u8	offset,
++				u8	*data,
+ 				bool		bPseudoTest)
+ {
+ 	return padapter->HalFunc.Efuse_PgPacketRead(padapter, offset, data,
+@@ -334,9 +334,9 @@ Efuse_PgPacketRead(struct adapter *padapter,
  
- 	if (is_supported_24g(padapter->registrypriv.wireless_mode)) {
- 		b2_4GBand = true;
--		if (RT_CHANNEL_DOMAIN_REALTEK_DEFINE == ChannelPlan)
-+		if (ChannelPlan == RT_CHANNEL_DOMAIN_REALTEK_DEFINE)
- 			Index2G = RTW_CHANNEL_PLAN_MAP_REALTEK_DEFINE.Index2G;
- 		else
- 			Index2G = RTW_ChannelPlanMap[ChannelPlan].Index2G;
-@@ -355,14 +355,14 @@ static u8 init_channel_set(struct adapter *padapter, u8 ChannelPlan, struct rt_c
- 		for (index = 0; index < RTW_ChannelPlan2G[Index2G].Len; index++) {
- 			channel_set[chanset_size].ChannelNum = RTW_ChannelPlan2G[Index2G].Channel[index];
+ int
+ Efuse_PgPacketWrite(struct adapter *padapter,
+-				u8 	offset,
+-				u8 	word_en,
+-				u8 	*data,
++				u8	offset,
++				u8	word_en,
++				u8	*data,
+ 				bool		bPseudoTest)
+ {
+ 	return padapter->HalFunc.Efuse_PgPacketWrite(padapter, offset, word_en,
+@@ -386,7 +386,7 @@ efuse_WordEnableDataRead(u8 word_en,
  
--			if ((RT_CHANNEL_DOMAIN_GLOBAL_DOAMIN == ChannelPlan) ||/* Channel 1~11 is active, and 12~14 is passive */
--				(RT_CHANNEL_DOMAIN_GLOBAL_NULL == ChannelPlan)) {
-+			if ((ChannelPlan == RT_CHANNEL_DOMAIN_GLOBAL_DOAMIN) ||/* Channel 1~11 is active, and 12~14 is passive */
-+				(ChannelPlan == RT_CHANNEL_DOMAIN_GLOBAL_NULL)) {
- 				if (channel_set[chanset_size].ChannelNum >= 1 && channel_set[chanset_size].ChannelNum <= 11)
- 					channel_set[chanset_size].ScanType = SCAN_ACTIVE;
- 				else if ((channel_set[chanset_size].ChannelNum  >= 12 && channel_set[chanset_size].ChannelNum  <= 14))
- 					channel_set[chanset_size].ScanType  = SCAN_PASSIVE;
--			} else if (RT_CHANNEL_DOMAIN_WORLD_WIDE_13 == ChannelPlan ||
--				RT_CHANNEL_DOMAIN_2G_WORLD == Index2G) { /*  channel 12~13, passive scan */
-+			} else if (ChannelPlan == RT_CHANNEL_DOMAIN_WORLD_WIDE_13 ||
-+				 Index2G == RT_CHANNEL_DOMAIN_2G_WORLD) { /*  channel 12~13, passive scan */
- 				if (channel_set[chanset_size].ChannelNum <= 11)
- 					channel_set[chanset_size].ScanType = SCAN_ACTIVE;
- 				else
-@@ -1331,7 +1331,7 @@ unsigned int OnAssocReq(struct adapter *padapter, union recv_frame *precv_frame)
- 	spin_unlock_bh(&pstapriv->asoc_list_lock);
- 
- 	/*  now the station is qualified to join our BSS... */
--	if (pstat && (pstat->state & WIFI_FW_ASSOC_SUCCESS) && (WLAN_STATUS_SUCCESS == status)) {
-+	if (pstat && (pstat->state & WIFI_FW_ASSOC_SUCCESS) && (status == WLAN_STATUS_SUCCESS)) {
- 		/* 1 bss_cap_update & sta_info_update */
- 		bss_cap_update_on_sta_join(padapter, pstat);
- 		sta_info_update(padapter, pstat);
-@@ -1520,7 +1520,7 @@ unsigned int OnDeAuth(struct adapter *padapter, union recv_frame *precv_frame)
- 			(pmlmeinfo->state & WIFI_FW_ASSOC_STATE)) {
- 			if (reason == WLAN_REASON_CLASS2_FRAME_FROM_NONAUTH_STA) {
- 				ignore_received_deauth = 1;
--			} else if (WLAN_REASON_PREV_AUTH_NOT_VALID == reason) {
-+			} else if (reason == WLAN_REASON_PREV_AUTH_NOT_VALID) {
- 				/*  TODO: 802.11r */
- 				ignore_received_deauth = 1;
- 			}
-@@ -1531,7 +1531,7 @@ unsigned int OnDeAuth(struct adapter *padapter, union recv_frame *precv_frame)
- 			   reason, GetAddr3Ptr(pframe),
- 			   ignore_received_deauth);
- 
--		if (0 == ignore_received_deauth) {
-+		if (ignore_received_deauth == 0) {
- 			receive_disconnect(padapter, GetAddr3Ptr(pframe), reason);
- 		}
- 	}
-@@ -3552,13 +3552,13 @@ void issue_action_BA(struct adapter *padapter, unsigned char *raddr, unsigned ch
- 				rtw_hal_get_def_var(padapter,
- 						    HW_VAR_MAX_RX_AMPDU_FACTOR, &max_rx_ampdu_factor);
- 
--			if (IEEE80211_HT_MAX_AMPDU_64K == max_rx_ampdu_factor)
-+			if (max_rx_ampdu_factor == IEEE80211_HT_MAX_AMPDU_64K)
- 				BA_para_set = ((le16_to_cpu(pmlmeinfo->ADDBA_req.BA_para_set) & 0x3f) | 0x1000); /* 64 buffer size */
--			else if (IEEE80211_HT_MAX_AMPDU_32K == max_rx_ampdu_factor)
-+			else if (max_rx_ampdu_factor == IEEE80211_HT_MAX_AMPDU_32K)
- 				BA_para_set = ((le16_to_cpu(pmlmeinfo->ADDBA_req.BA_para_set) & 0x3f) | 0x0800); /* 32 buffer size */
--			else if (IEEE80211_HT_MAX_AMPDU_16K == max_rx_ampdu_factor)
-+			else if (max_rx_ampdu_factor == IEEE80211_HT_MAX_AMPDU_16K)
- 				BA_para_set = ((le16_to_cpu(pmlmeinfo->ADDBA_req.BA_para_set) & 0x3f) | 0x0400); /* 16 buffer size */
--			else if (IEEE80211_HT_MAX_AMPDU_8K == max_rx_ampdu_factor)
-+			else if (max_rx_ampdu_factor == IEEE80211_HT_MAX_AMPDU_8K)
- 				BA_para_set = ((le16_to_cpu(pmlmeinfo->ADDBA_req.BA_para_set) & 0x3f) | 0x0200); /* 8 buffer size */
- 			else
- 				BA_para_set = ((le16_to_cpu(pmlmeinfo->ADDBA_req.BA_para_set) & 0x3f) | 0x1000); /* 64 buffer size */
-@@ -5086,7 +5086,7 @@ void linked_status_chk(struct adapter *padapter)
- 			if (pmlmeinfo->FW_sta_info[i].status == 1) {
- 				psta = pmlmeinfo->FW_sta_info[i].psta;
- 
--				if (NULL == psta)
-+				if (psta == NULL)
- 					continue;
- 
- 				if (pmlmeinfo->FW_sta_info[i].rx_pkt == sta_rx_pkts(psta)) {
-@@ -6073,7 +6073,7 @@ u8 run_in_thread_hdl(struct adapter *padapter, u8 *pbuf)
- 	struct RunInThread_param *p;
- 
- 
--	if (NULL == pbuf)
-+	if (pbuf == NULL)
- 		return H2C_PARAMETERS_ERROR;
- 	p = (struct RunInThread_param *)pbuf;
- 
+ u8
+ Efuse_WordEnableDataWrite(struct adapter *padapter,
+-						u16 	efuse_addr,
++						u16		efuse_addr,
+ 						u8 word_en,
+ 						u8 *data,
+ 						bool		bPseudoTest)
 -- 
-2.25.1
+2.35.1
 
