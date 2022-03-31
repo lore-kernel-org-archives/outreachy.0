@@ -1,66 +1,94 @@
-Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-wm1-f46.google.com (mail-wm1-f46.google.com [209.85.128.46])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A6A86A2D
-	for <outreachy@lists.linux.dev>; Thu, 31 Mar 2022 16:52:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1648745573; x=1680281573;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=nmOeehkp/0q1vUGzH0Sx0bQGs0PnF6+QYAELBtOj0Us=;
-  b=Y0Pt17OmDlAq8TdPyp1OopyR3PaoM7Ge/jO9Sx6qb/Nf7eSHsc4V6iH/
-   EszrhqHkbA2LBsFN2t3OfOIDkgYKyQ4oFmVVTpPg3Ptx5L8/PMYBthTMw
-   gV2LkI67LAf8dH7M1JO8zcgEk/cO4okha5lNvDdSER4j1WrobEzgZZvev
-   N38F9rL4SBk+j6i/N1MKZNZ8uXRLivHjIQPtBHEWFW5bnp2fEEv7qya9V
-   DGGz9CDnAQDuaYqrpgyCtPCwFK1BD3aYz+P0X3JJ7Z3SHXLT+dyzKFtoh
-   ijfuvMuYK6TlUeBqbSASsCLshbitO1MTn40VRNsIwFVpJfgbns0SQQ3k/
-   A==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10302"; a="320586390"
-X-IronPort-AV: E=Sophos;i="5.90,225,1643702400"; 
-   d="scan'208";a="320586390"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
-  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Mar 2022 09:52:52 -0700
-X-IronPort-AV: E=Sophos;i="5.90,225,1643702400"; 
-   d="scan'208";a="522420135"
-Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
-  by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Mar 2022 09:52:52 -0700
-Date: Thu, 31 Mar 2022 09:55:14 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: Jaehee Park <jhpark1013@gmail.com>
-Cc: outreachy@lists.linux.dev
-Subject: Re: make mrclean for each build?
-Message-ID: <20220331165514.GA1182235@alison-desk>
-References: <20220331162817.GA1374158@jaehee-ThinkPad-X1-Extreme>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4BF4EA2D;
+	Thu, 31 Mar 2022 16:59:03 +0000 (UTC)
+Received: by mail-wm1-f46.google.com with SMTP id l7-20020a05600c1d0700b0038c99618859so2064337wms.2;
+        Thu, 31 Mar 2022 09:59:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=vrgHRAcGFYBW5//Px3FPaIXJFM+ziIQctDRECHM/5Yc=;
+        b=L5mcU8fek7ltwjMyOO8VtBdjLOs6rCjrIcH1SxftOcNUCue44IkMbLx0FutOlIy9Gy
+         678tQasKLTf8JXDUXlAw+pdCKki/CSbvtJcQYLW9o4sZs9wlmwzgAzh99PpGut4nG4Nr
+         RdmGICjFxuXuEu/eaCSkEN2vfeWihguDKUEgDseKIZ2x+ENnyf4eFeJCik5OZYUGB0O0
+         ihJudIy+wwooJad80VmxU4sXePSaQ2LDxtDBF6lQ5poJNMC77F7VM3VH+0TdzQsdAhFO
+         LYXb2xvRsHAsnQudaJJNKBXt6HIXmpgu8aKngWU32vZwTEpwWepfIbmNH7s8IdlBe1v5
+         0ZXA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=vrgHRAcGFYBW5//Px3FPaIXJFM+ziIQctDRECHM/5Yc=;
+        b=niV5MTX8ubf6tptnfw1JKWnjUGATW2do336+e+vhEe4dUwLEmncID308EzAp2oIX8p
+         OtB0qNML4i9BwKbyeGAjGvs4HI+GcyCaOq/KlMDC5NbN7iMNE9uV/sUqouTZDVdt8GAb
+         VlI4FrvKCAlTDTitBaVY86D+69ASqVkVhipaobf7yb27FA7YDBsfAZzHGSnAgiWj0Tma
+         vV1vAU8SaxIXPfEmMHREt6HHGcvtyf3ZRR6sLAUED20K+euegqt1J/u1cbbbCCCWnfUE
+         Ly917jRpVM2PRsIQjEY04oX0mwokigDwPTYRiDtOAkdOb49unoqPoEw/Ugk7BcIDDjAB
+         hbPg==
+X-Gm-Message-State: AOAM53271cu1FZHa9Yp6W++iDdd8Zytti4EwWDrk6+qY+IeoCf39UuBy
+	Zfguod5hFneCZvExsxrcMuA=
+X-Google-Smtp-Source: ABdhPJyY9VFEb1OxfOzeK9H/V3w75Pxss7kmhEAc3nqyEsc2M5BH0HyOboimDEnBmqGNI8ZTgrH3CA==
+X-Received: by 2002:a1c:4e18:0:b0:38c:bd8d:6bd9 with SMTP id g24-20020a1c4e18000000b0038cbd8d6bd9mr5410289wmh.94.1648745941467;
+        Thu, 31 Mar 2022 09:59:01 -0700 (PDT)
+Received: from leap.localnet (host-95-249-145-232.retail.telecomitalia.it. [95.249.145.232])
+        by smtp.gmail.com with ESMTPSA id d5-20020adfef85000000b00205b3945fdasm13858693wro.92.2022.03.31.09.58.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 31 Mar 2022 09:59:00 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: sparmaintainer@unisys.com, linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, outreachy@lists.linux.dev
+Subject: Re: [PATCH v2] staging: unisys: Remove "struct dentry *eth_debugfs_dir"
+Date: Thu, 31 Mar 2022 18:58:58 +0200
+Message-ID: <5558288.DvuYhMxLoT@leap>
+In-Reply-To: <20220331082202.GZ12805@kadam>
+References: <20220331064751.29634-1-fmdefrancesco@gmail.com> <20220331082202.GZ12805@kadam>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220331162817.GA1374158@jaehee-ThinkPad-X1-Extreme>
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
 
-On Thu, Mar 31, 2022 at 12:28:17PM -0400, Jaehee Park wrote:
-> Should we be doing `make mrclean` or `make mrproper`(probably not this extreme) to rebuild after each change?
-> Or is compling only part of the kernel (as it says in the outreachy firstpatch guide) good enough?
-> I think the latter is probably fine because we're working on one module at a time, but just wanted to confirm.
-
-Generally, no need to clean/rebuild entire kernel when you are
-working on a loadable module in drivers/staging.
-
-The frequently occuring issue, is that you send a patch that does
-not apply to Greg's tree because your tree is outdated.
-As you can see, Greg is constantly accepting cleanups in staging,
-so you need to stay in sync with that moving target!
-See the https://kernelnewbies.org/Outreachyfirstpatch part about
-"Update your kernel" where it explains how to fetch and rebase.
-
-You will go to sync one day and find that what you were working
-on, has been fixed by someone else. It happens ;)
-
+On gioved? 31 marzo 2022 10:22:02 CEST Dan Carpenter wrote:
+> On Thu, Mar 31, 2022 at 08:47:51AM +0200, Fabio M. De Francesco wrote:
+> > There is no need for "struct dentry *eth_debugfs_dir" which is used for
+> > debug / sysfs directories. Therefore, remove this "struct dentry" and
+> > everything related (i.e., creation and removal).
+> > 
+> > As a side effect of this change, the code has no more need of the
+> > "cleanup_register_netdev" label, which can also be removed.
+> > 
+> > Suggested-by: Dan Carpenter <dan.carpenter@oracle.com>
+> > Suggested-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> > Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+> > ---
+> > 
+> > v1 - v2: Add a couple of "Suggested-by" tags which were forgotten. 
+> > Thanks to Dan Carpenter and Greg Kroah-Hartman.
+> > 
 > 
-> Thanks,
-> Jaehee ("Jay-hee") 
+> Thanks!
 > 
+> Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
+> 
+> regards,
+> dan carpenter
+> 
+I've just noticed that visornic and visorhba do other calls to 
+debugfs_create_dir() and debugfs_create_file() functions.
+
+I'm not sure whether or not this driver still needs those other calls.
+
+Do you think that they should be removed as well as it has been done 
+in the patch above?
+
+Thanks,
+
+Fabio M. De Francesco
+
+
+
