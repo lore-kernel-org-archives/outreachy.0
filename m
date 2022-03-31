@@ -1,41 +1,41 @@
-Received: from mail-ed1-f44.google.com (mail-ed1-f44.google.com [209.85.208.44])
+Received: from mail-ed1-f41.google.com (mail-ed1-f41.google.com [209.85.208.41])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 816497B;
-	Thu, 31 Mar 2022 06:41:22 +0000 (UTC)
-Received: by mail-ed1-f44.google.com with SMTP id h1so27031688edj.1;
-        Wed, 30 Mar 2022 23:41:22 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7AA8A7B;
+	Thu, 31 Mar 2022 06:47:57 +0000 (UTC)
+Received: by mail-ed1-f41.google.com with SMTP id h4so19239451edr.3;
+        Wed, 30 Mar 2022 23:47:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=vRVZfZhek/ld27PxqrvAQx7maxQWJQLXz5r4N00GOvw=;
-        b=Xi15f2aQFwUqwT9TRfxb1qLZvAF/UDB1Tt0O9qg5coX6j0xbBItJGn1yVFfRp2bGWs
-         CyISIlUzkJxbvKCdz+xyfNlp4GXb9ZaA2NELq4JW91qbOeZTPzWd4iZY6XL9JPC9P+1t
-         +TIQoHlEn5SxgLYrk4/UK4irrscHYYlOJOv5Fjm61PDQyTpJfOLjJ3VcMc2kAxBwETUO
-         xa8EE6m9WBm2PqMFCF6SMxNdalTNQzljyMoUOC/4BLfWqfeqjmyvoKfgHh2MtKAbJH9N
-         UWRqJLBk+Nvrn8+5LValSaXCvoxz9R0Usfvuhx3gKu9XNZI/16lDqDAdL6APKiLxTOZF
-         V9yQ==
+        bh=g1JtTmDSsjT/JKwoohwXjZdpIO33MVT5jjl60V1LMmQ=;
+        b=OjcqCymz2Jqp4RIWZLuiV+tt/V0bIVyJjrGu5ftViQNgUXxcvp3sUA4kO2/Mwvpz0M
+         CXUBXzmAn5bheg10sMnrIT+uG3DrIcjlUVUsBwXNXNsMNCHMpzFpiZ4oK+bkPqnBp7ZV
+         g+9hyZJs88czgFL/PaKATyOq5FAj9B0O+25nvegHiNTIoRe+M44UtQtfk2wP63197LwV
+         3j/CpZR/4E5qaXJTi9oAKlwF9muoaxQs2ls7ERTieUNPsil2f9vG31fdBuVCacxdNh/A
+         MDpPAcstfrZRI2aEV/ypbq3LVopfMT5Y/ADtkbJENaKssUFhbGkvMEA12wSCkuSlHfGN
+         5Oiw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=vRVZfZhek/ld27PxqrvAQx7maxQWJQLXz5r4N00GOvw=;
-        b=U3vRRQDG3I7mbelprMMnHXD6d+ilpORUSJ6+tzbdoD9W69kk80alYw2JrWzS6Fj4gU
-         ENYwQPoMLlDTSMR1UISEwlBTw96JqyC9xO77Y2vimlip4/GiQsLyFUIZKncer0l9RvLp
-         mcFWTZIvNk+OL/DSHZuVJCZpfsBoBBT5NkuOJ87WpkXeaH72SsT+9mk3GpCA9EifIuhp
-         RDW2M7PYqpypubscektagrt7GtEx5wPdBiXWjWz6MveMwRSdoinD1Ba+RPHcR4vLkmda
-         5ezIYyd7i5fWcM+BgEynk3rrFMpS91gVBEZd/4RO9hqz4oFA+EAp2CZeT+H5vrxJi9GZ
-         3vkg==
-X-Gm-Message-State: AOAM531YGrPAyC/lamuwUS8h8UFjZZHRomsmDRC8lT5GEtMDWnhEAXwu
-	0sVmCMBw26Jrb9BI7NloZHE=
-X-Google-Smtp-Source: ABdhPJzhFtKO5Fs8WACAacp4q9R9a24cKA+TW99SvZ81BfLY1EtflbXpMX6JRr/ibKETH7Zt2DpGMw==
-X-Received: by 2002:aa7:d58e:0:b0:419:c121:ea33 with SMTP id r14-20020aa7d58e000000b00419c121ea33mr14939013edq.256.1648708880560;
-        Wed, 30 Mar 2022 23:41:20 -0700 (PDT)
+        bh=g1JtTmDSsjT/JKwoohwXjZdpIO33MVT5jjl60V1LMmQ=;
+        b=4PsIvrYu3WNum4HWtG10dRb4c9Q97sPCiWbWN9VA3je+hVvoOy7IB0N0lWy6TznaiK
+         gAQu8XV7RgbP9bfARYzE0LmVIq+JE7dasuG/xQLlDlT7bU4/rtwuPUYa5tbSbuElWftK
+         xeVyAiz+G7gwX7FXnoDpOzMBeAc6VFAmLQWT1b5nLjUTixc3Hl8OTQRjZzndWDSosOy6
+         rAC9KAue3QPBwmEiW0ZJv+YF8aJod/nCKP4ziSgE+pW8r8IlSDLiGBe7xFqOUsD69HMH
+         5av6nIks06/I4zKUO7UYU8N12AeRwDttvdda7RXMLkqQGv/7DMIXGhDwnHPTqywG6k5U
+         i9yg==
+X-Gm-Message-State: AOAM532z3BfzhKkJ0oaVEuXoCQXntl0jodJK9lX2RJufQ98QkRnHBiz2
+	YCiiYbYtjDIn0nHUI5OJ99c=
+X-Google-Smtp-Source: ABdhPJyvFOEjtIdxk3uQZ18fXFu/x90nFX3NmRWstUZSdw682pcmaa975KRBGhinfixwhwoeHO5C/g==
+X-Received: by 2002:a05:6402:1107:b0:416:439a:6a9e with SMTP id u7-20020a056402110700b00416439a6a9emr14948578edv.382.1648709275569;
+        Wed, 30 Mar 2022 23:47:55 -0700 (PDT)
 Received: from localhost.localdomain (host-95-249-145-232.retail.telecomitalia.it. [95.249.145.232])
-        by smtp.gmail.com with ESMTPSA id eq7-20020a056402298700b00419d8d46a8asm5368593edb.39.2022.03.30.23.41.18
+        by smtp.gmail.com with ESMTPSA id b11-20020a170906728b00b006df8494d384sm9227155ejl.122.2022.03.30.23.47.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 30 Mar 2022 23:41:18 -0700 (PDT)
+        Wed, 30 Mar 2022 23:47:54 -0700 (PDT)
 From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
 To: David Kershner <david.kershner@unisys.com>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -43,10 +43,11 @@ To: David Kershner <david.kershner@unisys.com>,
 	linux-staging@lists.linux.dev,
 	linux-kernel@vger.kernel.org,
 	outreachy@lists.linux.dev
-Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Subject: [PATCH] staging: unisys: Remove "struct dentry *eth_debugfs_dir"
-Date: Thu, 31 Mar 2022 08:41:15 +0200
-Message-Id: <20220331064115.29345-1-fmdefrancesco@gmail.com>
+Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>,
+	Dan Carpenter <dan.carpenter@oracle.com>
+Subject: [PATCH v2] staging: unisys: Remove "struct dentry *eth_debugfs_dir"
+Date: Thu, 31 Mar 2022 08:47:51 +0200
+Message-Id: <20220331064751.29634-1-fmdefrancesco@gmail.com>
 X-Mailer: git-send-email 2.34.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
@@ -58,13 +59,19 @@ Content-Transfer-Encoding: 8bit
 
 There is no need for "struct dentry *eth_debugfs_dir" which is used for
 debug / sysfs directories. Therefore, remove this "struct dentry" and
-everything related (i.e., creation, test, removal).
+everything related (i.e., creation and removal).
 
 As a side effect of this change, the code has no more need of the
 "cleanup_register_netdev" label, which can also be removed.
 
+Suggested-by: Dan Carpenter <dan.carpenter@oracle.com>
+Suggested-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
 ---
+
+v1 - v2: Add a couple of "Suggested-by" tags which were forgotten. 
+Thanks to Dan Carpenter and Greg Kroah-Hartman.
+
  drivers/staging/unisys/visornic/visornic_main.c | 17 -----------------
  1 file changed, 17 deletions(-)
 
