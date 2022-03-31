@@ -1,85 +1,62 @@
-Received: from eu-smtp-delivery-151.mimecast.com (eu-smtp-delivery-151.mimecast.com [185.58.86.151])
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DDBFE804
-	for <outreachy@lists.linux.dev>; Thu, 31 Mar 2022 10:29:08 +0000 (UTC)
-Received: from AcuMS.aculab.com (156.67.243.121 [156.67.243.121]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id
- uk-mta-263-wT2Z8KTZO1SBLQAzOKJ3pQ-1; Thu, 31 Mar 2022 11:29:05 +0100
-X-MC-Unique: wT2Z8KTZO1SBLQAzOKJ3pQ-1
-Received: from AcuMS.Aculab.com (fd9f:af1c:a25b:0:994c:f5c2:35d6:9b65) by
- AcuMS.aculab.com (fd9f:af1c:a25b:0:994c:f5c2:35d6:9b65) with Microsoft SMTP
- Server (TLS) id 15.0.1497.32; Thu, 31 Mar 2022 11:29:04 +0100
-Received: from AcuMS.Aculab.com ([fe80::994c:f5c2:35d6:9b65]) by
- AcuMS.aculab.com ([fe80::994c:f5c2:35d6:9b65%12]) with mapi id
- 15.00.1497.033; Thu, 31 Mar 2022 11:29:04 +0100
-From: David Laight <David.Laight@ACULAB.COM>
-To: 'Alaa Mohamed' <eng.alaamohamedsoliman.am@gmail.com>,
-	"outreachy@lists.linux.dev" <outreachy@lists.linux.dev>
-CC: "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
-	"linux-staging@lists.linux.dev" <linux-staging@lists.linux.dev>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-Subject: RE: [PATCH] staging: gdm724x: Fix Duplication of Side Effects
-Thread-Topic: [PATCH] staging: gdm724x: Fix Duplication of Side Effects
-Thread-Index: AQHYROi924sZ22xfrE+zbiso9jQv5KzZSk9w
-Date: Thu, 31 Mar 2022 10:29:04 +0000
-Message-ID: <ebbc4a14c30f492f8553e6ef572bbcbe@AcuMS.aculab.com>
-References: <20220331101849.71046-1-eng.alaamohamedsoliman.am@gmail.com>
-In-Reply-To: <20220331101849.71046-1-eng.alaamohamedsoliman.am@gmail.com>
-Accept-Language: en-GB, en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-exchange-transport-fromentityheader: Hosted
-x-originating-ip: [10.202.205.107]
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E92897C
+	for <outreachy@lists.linux.dev>; Thu, 31 Mar 2022 10:37:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1648723053;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=E5z39jPPejWX5KgO5P8YJsmE2TeZKTFfKVS+JoPvQAs=;
+	b=hpvburPbqHWMQ06hfv5hpLSTKE2aYF+LL6q+9Dk6D6jfYWv3KYI2cT89ICxYGkfNUybs75
+	pOqAS3pOQVzpeZqTcEfqq2vSfj7jD/Gua4dP7hfuJWjnD7f9m2ukfRM0QhB6Amovl0oyOs
+	j29r8E02q2mVJlCpWltTE4wslCv6RDY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-209-vpiHKjTSMz-YVczlgADp5A-1; Thu, 31 Mar 2022 06:37:32 -0400
+X-MC-Unique: vpiHKjTSMz-YVczlgADp5A-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BC10510055A6;
+	Thu, 31 Mar 2022 10:37:30 +0000 (UTC)
+Received: from maya.cloud.tilaa.com (unknown [10.40.208.6])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 628EC60853;
+	Thu, 31 Mar 2022 10:37:30 +0000 (UTC)
+Date: Thu, 31 Mar 2022 12:37:28 +0200
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Rebecca Mckeever <remckee0@gmail.com>
+Cc: outreachy@lists.linux.dev
+Subject: Re: Completing TODO items
+Message-ID: <20220331123728.3eb75100@elisabeth>
+In-Reply-To: <YkV5jFwoFMXKyxaO@bertie>
+References: <YkV5jFwoFMXKyxaO@bertie>
+Organization: Red Hat
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=C51A453 smtp.mailfrom=david.laight@aculab.com
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=sbrivio@redhat.com
 X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: aculab.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-From: Alaa Mohamed
-> Sent: 31 March 2022 11:19
->=20
-> Fix Duplication of Side Effects for GDM_TTY_READY(gdm) macro
-> reported by checkpatch
-> "CHECK: Macro argument reuse 'gdm' - possible side-effects?"
->=20
-> Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-> ---
->  drivers/staging/gdm724x/gdm_tty.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
->=20
-> diff --git a/drivers/staging/gdm724x/gdm_tty.c b/drivers/staging/gdm724x/=
-gdm_tty.c
-> index 04df6f9f5403..6f0274470e69 100644
-> --- a/drivers/staging/gdm724x/gdm_tty.c
-> +++ b/drivers/staging/gdm724x/gdm_tty.c
-> @@ -27,7 +27,9 @@
->=20
->  #define MUX_TX_MAX_SIZE 2048
->=20
-> -#define GDM_TTY_READY(gdm) (gdm && gdm->tty_dev && gdm->port.count)
-> +#define GDM_TTY_READY(_gdm) \
-> +=09({ typeof(_gdm) (gdm) =3D (_gdm); \
-> +=09(gdm && gdm->tty_dev && gdm->port.count); })
+On Thu, 31 Mar 2022 04:51:08 -0500
+Rebecca Mckeever <remckee0@gmail.com> wrote:
 
-Did you test this?
+> If we submit a patch that completely addresses an item in a TODO file,
+> should we remove the item from the TODO file as part of the patch?
 
-see https://godbolt.org/z/cazPrrzPv
+Yes, definitely.
 
-=09David
-
--
-Registered Address Lakeside, Bramley Road, Mount Farm, Milton Keynes, MK1 1=
-PT, UK
-Registration No: 1397386 (Wales)
+-- 
+Stefano
 
