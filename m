@@ -1,46 +1,34 @@
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A02002C80;
-	Wed, 30 Mar 2022 21:11:20 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 30F4D64F
+	for <outreachy@lists.linux.dev>; Thu, 31 Mar 2022 01:48:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1648674680; x=1680210680;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=keon6mJSiu6oJTFE85youukWofwphPuyQTu9o5aZfkI=;
-  b=IHlTFB+2s8niBP3np51PR7rAGkkpRpK42uzFh4VfYV63RhixM+Cmb606
-   Y9krwY35KyW1CZfZ+pPqMcLezy6+VtEmnMZllP44u8soDl+Y9wTdwWiOp
-   WaaJv2BtalAdkqspSk4Aw+CLe6dahazsGiQbiIAyIyR3VHmPyC8z+zdbm
-   Miqw1TVWxdtYE5bCEI6ui4WvSNRxX99yZ2DYhOpDGPFCAQe2kFYh1c4uo
-   WU6nyt419UiXkTdKk5hAy+qls70CJbkdvxearTpybqhlN8k5xSuXZaDP+
-   OpEXgtXf6N91NAq2FAHCn5a2FqmF95HxBMVO6zFUOcFL7MsEXsPQtwUoN
-   g==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10302"; a="346083831"
-X-IronPort-AV: E=Sophos;i="5.90,223,1643702400"; 
-   d="scan'208";a="346083831"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
-  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Mar 2022 14:11:20 -0700
-X-IronPort-AV: E=Sophos;i="5.90,223,1643702400"; 
-   d="scan'208";a="639869076"
-Received: from npeper-mobl1.amr.corp.intel.com (HELO localhost) ([10.212.16.15])
-  by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Mar 2022 14:11:19 -0700
-Date: Wed, 30 Mar 2022 14:11:19 -0700
-From: Ira Weiny <ira.weiny@intel.com>
-To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Benjamin Philip <benjamin.philip495@gmail.com>,
-	Bart Van Assche <bvanassche@acm.org>,
-	"Martin K. Petersen" <martin.petersen@oracle.com>,
-	"Eric W. Biederman" <ebiederm@xmission.com>,
-	Colin Ian King <colin.king@intel.com>,
-	Samuel =?iso-8859-1?Q?Sj=F6berg?= <info@samuelsjoberg.se>,
-	Charlie Sands <sandsch@northvilleschools.net>,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	Dan Carpenter <dan.carpenter@oracle.com>, outreachy@lists.linux.dev
-Subject: Re: [PATCH v4] staging: rts5208: Convert kmap() to kmap_local_page()
-Message-ID: <YkTHG+HSlU9u1FoV@iweiny-desk3>
-References: <20220330143331.8306-1-fmdefrancesco@gmail.com>
+  t=1648691320; x=1680227320;
+  h=date:from:to:subject:message-id:mime-version;
+  bh=fiLmT/ky+fNb+2dQi4BokvihGxqFOucKz+T9/ngEONs=;
+  b=b6/B4VJWG6YaG4ihHYnC46LZwtAzv61e2fv3tGgDGo48k2P/gWZHFwPN
+   xeLxsQKVeg5FRuQy6imlc62UU2bSE/pztJ6sX0HG4vX60I1aEs1Da+e1C
+   LnRhheyj8/3S08b1EFfDcXC4W/SHYOwyawWm5FmBTWe5mjql5BwiVPfWW
+   GXz+3BkTz3GBMi7lhjdCs+0BcKc8+YueLx0/I/lN1k1fhx6hRZt2r4pxG
+   oVOGJjqOeuCyizMx1S+yeuSewfSD66VK/DiYDeA4XADAZ895tntCIvfbP
+   F7ymDqhN75sei/59mrWu52ydUD0bUnYVgxXhdVmNZU/tYQBeq+S74o2hc
+   Q==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10302"; a="284602387"
+X-IronPort-AV: E=Sophos;i="5.90,224,1643702400"; 
+   d="scan'208";a="284602387"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Mar 2022 18:48:39 -0700
+X-IronPort-AV: E=Sophos;i="5.90,224,1643702400"; 
+   d="scan'208";a="788217006"
+Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
+  by fmsmga006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Mar 2022 18:48:39 -0700
+Date: Wed, 30 Mar 2022 18:51:01 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: Outreachy Linux Kernel <outreachy@lists.linux.dev>
+Subject: Tracking your PATCH submissions
+Message-ID: <20220331015101.GA1179236@alison-desk>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -49,76 +37,29 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220330143331.8306-1-fmdefrancesco@gmail.com>
 
-On Wed, Mar 30, 2022 at 04:33:31PM +0200, Fabio M. De Francesco wrote:
-> The use of kmap() is being deprecated in favor of kmap_local_page()
-> where it is feasible.
-> 
-> With kmap_local_page(), the mapping is per thread, CPU local and not
-> globally visible. Therefore rtsx_stor_access_xfer_buf() is a function
-> where the use of kmap_local_page() in place of kmap() is correctly
-> suited.
-> 
-> Convert to kmap_local_page() but, instead of open coding it, use the
-> helpers memcpy_to_page() and memcpy_from_page().
-> 
-> Make a minor change to a comment related to scatter-gather.
-> 
-> Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
 
-Thanks!
+In case you are wondering the status of your patches -
 
-Reviewed-by: Ira Weiny <ira.weiny@intel.com>
+When GregKH accepts your patch you get an acknowledgment email directly.
+If he specifically rejects it, you also get feedback from him on what
+to improve. Occasionally a patch gets missed in a flurry of patches.
 
-> ---
-> 
-> v1 -> v2: Rework the commit message and use the appropriate helpers
-> instead of open coding the use of kmap_local_page()/kunmap_local_page().
-> (Thanks to Ira Weiny <ira.weiny@intel.com>).
-> 
-> v2 -> v3: Use memcpy_{to,from}_page() arguments correctly.
-> (Thanks to Dan Carpenter <dan.carpenter@oracle.com>).
-> 
-> v3 -> v4: According to a suggestion by Ira Weiny, change the test
-> of a comment related to the use of scatter-gather.
-> 
->  drivers/staging/rts5208/rtsx_transport.c | 12 +++++-------
->  1 file changed, 5 insertions(+), 7 deletions(-)
-> 
-> diff --git a/drivers/staging/rts5208/rtsx_transport.c b/drivers/staging/rts5208/rtsx_transport.c
-> index 805dc18fac0a..d5ad49de4c56 100644
-> --- a/drivers/staging/rts5208/rtsx_transport.c
-> +++ b/drivers/staging/rts5208/rtsx_transport.c
-> @@ -55,9 +55,9 @@ unsigned int rtsx_stor_access_xfer_buf(unsigned char *buffer,
->  		*offset += cnt;
->  
->  	/*
-> -	 * Using scatter-gather.  We have to go through the list one entry
-> -	 * at a time.  Each s-g entry contains some number of pages, and
-> -	 * each page has to be kmap()'ed separately.
-> +	 * Using scatter-gather. We have to go through the list one entry
-> +	 * at a time. Each s-g entry contains some number of pages which
-> +	 * have to be copied one at a time.
->  	 */
->  	} else {
->  		struct scatterlist *sg =
-> @@ -92,13 +92,11 @@ unsigned int rtsx_stor_access_xfer_buf(unsigned char *buffer,
->  			while (sglen > 0) {
->  				unsigned int plen = min(sglen, (unsigned int)
->  						PAGE_SIZE - poff);
-> -				unsigned char *ptr = kmap(page);
->  
->  				if (dir == TO_XFER_BUF)
-> -					memcpy(ptr + poff, buffer + cnt, plen);
-> +					memcpy_to_page(page, poff, buffer + cnt, plen);
->  				else
-> -					memcpy(buffer + cnt, ptr + poff, plen);
-> -				kunmap(page);
-> +					memcpy_from_page(buffer + cnt, page, poff, plen);
->  
->  				/* Start at the beginning of the next page */
->  				poff = 0;
-> -- 
-> 2.34.1
-> 
+He won't accept a patch where another reviewer has already requested
+an update. So, once you get any feedback, revise and send the new 
+version.
+
+You can follow the staging-testing tree [1] and see if Greg has pulled
+patches since your submittal. That might make you think about RESENDing.
+You can always ask on this list for help too.
+
+For example, at this moment I can see that Rebecca & Sevinj had patches
+accepted 16 hours ago, and that seems to be the last time Greg accepted
+anything. I expect to see a few more Outreachy patches taken the next
+time Greg works his queue.
+
+Hope that's useful,
+Alison
+
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/log/?h=staging-testing
+
