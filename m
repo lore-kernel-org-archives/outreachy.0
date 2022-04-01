@@ -1,137 +1,106 @@
-Received: from mail-qk1-f180.google.com (mail-qk1-f180.google.com [209.85.222.180])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5A6487B
-	for <outreachy@lists.linux.dev>; Fri,  1 Apr 2022 15:18:33 +0000 (UTC)
-Received: by mail-qk1-f180.google.com with SMTP id q200so2339343qke.7
-        for <outreachy@lists.linux.dev>; Fri, 01 Apr 2022 08:18:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=+DIwAem2DGAnRaO7zae73Gv5LiZtPH8amtTIRF6Hpik=;
-        b=Q2dP6PNdea7SgI9M25reG+ZCdhDWV4phVvVb0PIAnxzB8Dm802vtFAijGpD2SWb8QY
-         n3wZ3Znto1qTGMKs+kXSVkGga6tmBP6TnWq2iewBd80QDyQcXqICiLPKSCkIPIcob12e
-         2Ntbey5ILaPzLRogfIs7FfyJXvulwFuQf7Mr+7vbyIGiuYS3ksqaQ7DiuGKl4qY8aL+q
-         PYxuSLAbYuVqoZ5Z0G0TJEC3ZrCLtQ0YTSbdrPPTKNk8s5zZzPmk4ZFHoTrJ7+e5WCqr
-         /CgfVi34ZD6dkIx25RDnKp6cQHHr6ahZJuwt0RMzc5h3jU5qwDY2z6VyB4KS4wsf4m20
-         p20g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=+DIwAem2DGAnRaO7zae73Gv5LiZtPH8amtTIRF6Hpik=;
-        b=tbWi8UsDGW3xhU33E2Z5pfNoKNWvqmhRhiwWccRjvK3/mbnG4uW6NYFRJ8bxt6Gi9L
-         M02NiEjXjnJkPOiUOLnsnlJcput2UzT1SvttIHC6NKB6yuxdtbDZ7WjzGe8rYV+cI73I
-         K5WtNSDQqJC6dl6CPMiGggLZ+/r9db54NSdt7YwUHUJ8wg1tk3VBoHfMgpsCKw4ZmNj/
-         4ZzdRvbCwvOAlPAZajaRzTKryLnewxbOrkWtjumhWOX3CLmZO2g+S0DHJNEn/mH7ipeY
-         fQMGnTPNN8rhb2s3j1p3sX1VoiEi3V58WEnJD+wjGDMbWPOd3fF2vmo0AyN4SmtFayXq
-         nXYA==
-X-Gm-Message-State: AOAM53005HgNqNCAICTbPwcL7ViDXbFKyDGbiQKtp0B/xebysoORO86M
-	Mh8UGQFsePd1A1wVY72uZJY=
-X-Google-Smtp-Source: ABdhPJw1mmo5HgBjvqEJuAiCFS10/3r35kmOPF/B8CYf1IDVzvtXVCfHFovE5x9WRRzF+7EEiBW/+Q==
-X-Received: by 2002:a37:6153:0:b0:67b:1bf7:69b with SMTP id v80-20020a376153000000b0067b1bf7069bmr6738401qkb.27.1648826312252;
-        Fri, 01 Apr 2022 08:18:32 -0700 (PDT)
-Received: from jaehee-ThinkPad-X1-Extreme ([4.34.18.218])
-        by smtp.gmail.com with ESMTPSA id t7-20020a05622a180700b002e0ccf0aa49sm2122049qtc.62.2022.04.01.08.18.30
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 01 Apr 2022 08:18:31 -0700 (PDT)
-Date: Fri, 1 Apr 2022 11:18:27 -0400
-From: Jaehee Park <jhpark1013@gmail.com>
-To: Stefano Brivio <sbrivio@redhat.com>
-Cc: Alison Schofield <alison.schofield@intel.com>,
-	Outreachy Linux Kernel <outreachy@lists.linux.dev>
-Subject: Re: Finding Clean-up Tasks
-Message-ID: <20220401151827.GB49127@jaehee-ThinkPad-X1-Extreme>
-References: <20220331183805.GA1182645@alison-desk>
- <20220401142803.GA38814@jaehee-ThinkPad-X1-Extreme>
- <20220401170839.3919d0b4@elisabeth>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 54E897B
+	for <outreachy@lists.linux.dev>; Fri,  1 Apr 2022 16:06:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1648829203; x=1680365203;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=1pjlfbgNJKotl63LQiH4d3ZLE9A1i6QRRCWD5/8ZL/8=;
+  b=eK1ycQZk257HtQDqjHlNtixwM79hdkxtCIE+xedk6aIadzIlxboPEXnK
+   YENjk5vyFLPotHTkEnNfKOxUI1cZL5ztPSUDkgS2yxdedVNoB8MG+zNe7
+   IOYjtg2Hs2IstuwcKchgk1c9X3LR56WRZ4IpQiHQNahnvSA+alXDGeNCw
+   lIL7LPIWgj8KuujuTK1y2IgR1Xcc2+tbxAXNBx49p76syLxS2BVgPCkvn
+   qevYLdovIBTy0TVpvk0/0sI4RH4KUzAZ+ngdNbf6tbSl/LMOAGHtNdZrH
+   AaUN+MWL4jBg829EwbUzsEy4/obP5KCbYsJeXIWp6BuWvfzI3qYYev8Lm
+   g==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10304"; a="257749534"
+X-IronPort-AV: E=Sophos;i="5.90,228,1643702400"; 
+   d="scan'208";a="257749534"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Apr 2022 09:06:41 -0700
+X-IronPort-AV: E=Sophos;i="5.90,228,1643702400"; 
+   d="scan'208";a="720928735"
+Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
+  by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Apr 2022 09:06:41 -0700
+Date: Fri, 1 Apr 2022 09:09:01 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+Cc: Stefano Brivio <sbrivio@redhat.com>, outreachy@lists.linux.dev
+Subject: Re: Compilation errors
+Message-ID: <20220401160901.GA1186855@alison-desk>
+References: <3603561.MHq7AAxBmi@leap>
+ <3410190.V25eIC5XRa@leap>
+ <20220401145714.5a0d826f@elisabeth>
+ <1943335.PIDvDuAF1L@leap>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <20220401170839.3919d0b4@elisabeth>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <1943335.PIDvDuAF1L@leap>
 
-On Fri, Apr 01, 2022 at 05:08:39PM +0200, Stefano Brivio wrote:
-> On Fri, 1 Apr 2022 10:28:03 -0400
-> Jaehee Park <jhpark1013@gmail.com> wrote:
-> 
-> > On Thu, Mar 31, 2022 at 11:38:05AM -0700, Alison Schofield wrote:
-> >
-> > [...]
-> >
-> > > If you have a patch AND a question, you can send the patch
-> > > and put your question below the scissors line. For example,
-> > > you might see multiple instances of something but are not sure
-> > > the patch will be well-received. Fix one instance - and below
-> > > the scissor line ask you question: "There are 10 more of these
-> > > in this file, just want to sanity check that my approach here
-> > > is wanted."  (If I were doing cleanup today, I'd use this tactic
-> > > for drivers/staging/iio checkpatch ERROR about octals.)
-> > >   
+On Fri, Apr 01, 2022 at 03:07:24PM +0200, Fabio M. De Francesco wrote:
+> On venerdì 1 aprile 2022 14:57:14 CEST Stefano Brivio wrote:
 > > 
-> > Thank you for advice! I had a question about where to put the questions
-> > in the patch. When you say scissor line, are we putting dashed lined
-> > somewhere in the patch and writing our questions?
+> > Okay, then that's really an error.
+> > 
+> > It might simply be that the you're building some drivers on your
+> > staging tree that you're not building on the mainline tree.
 > 
-> Let's say this is the original patch as prepared by git format-patch:
+> Yes, this is why I've decided to use the .config that I have in Torvald's 
+> tree. They should only differ for the drivers/staging part and the suffix 
+> for vmlinuz.
 > 
-> --
-> This is a commit message.
+> Now it builds correctly with gcc11 :)
 > 
-> Signed-off-by: you
-> ---
->  file.c | 1 -
->  1 file changed, 1 deletion(-)
+> I must look carefully at the diff between the two files and figure out
+> what doesn't work.
 > 
-> diff --git a/file.c
-> index 148b06a..ceb10a6 100644
-> --- a/file.c
-> +++ b/file.c
-> @@ -927,7 +927,6 @@ int function(void)
->  
-> -
->  
-> --
+> However what really counts is that now I can go back to work with "staging".
 > 
-> you can put your question (or any kind of comment, really) there:
+> Thanks for your time,
 > 
-> --
-> This is a commit message.
+> Fabio 
+
+Sounds like you all got things moving along wrt the compile issue.
+I do want to follow up on a couple of things buried in this thread.
+
+It's good that compile issue is getting fixed because you can't get
+too far without hitting requirements to build w ALLYESCONFIG or
+ALLMODCONFIG, or the like, while doing kernel development.
+
+The thought of not compiling before sending is blasphemy ;)
+We see patches come through this list on occasion that don't compile
+and usually it's a cockpit error, not an intentional error. ie. The
+applicant did compile the module, loaded/unloaded it, but then some
+process thing went wrong and they created the patch from a different
+branch. There are all sorts of ways to mangle a patch, but intentionally
+not compiling it is just plain bad. That's another reason to create patches,
+send them to yourself, apply to a clean tree, in the beginning to build
+confidence in your processes.
+
+wrt the 10 patch cleanup requirement. We often have applicants work
+multiple contribution periods for a multitude of reasons. For applicants
+who already have patches accepted in drivers/staging, we ask that they
+submit a few, to show they are current (if needed). Again, if your 'old'
+patches were from last month, no need to prove currency.
+
+So, Fabio, this means for you personally, go ahead and link to prior
+patches when you record your contribution in the Outreachy application.
+
+Anyone else in this situation, please ask. 
+
+Thanks,
+Alison
+
+
 > 
-> Signed-off-by: you
-> ---
-> I'm not sure this patch does anything. Should it do something?
 > 
->  file.c | 1 -
->  1 file changed, 1 deletion(-)
 > 
-> diff --git a/file.c
-> index 148b06a..ceb10a6 100644
-> --- a/file.c
-> +++ b/file.c
-> @@ -927,7 +927,6 @@ int function(void)
->  
-> -
->  
-> --
-> 
-> Those three dashes are also commonly called Signed-off-by-line, or
-> SoB-line (the term might refer to the line above, to the dashes, to the
-> line below, depending on whom you're speaking to :)).
-> 
-> > Or did you mean we should reply to our patch?   
-> 
-> You can also do that. If you're really unsure, you can also add [RFC]
-> to the subject, before [PATCH], to make it clear you're asking for
-> comments rather than actually submitting a change, and then write your
-> questions, concerns or considerations directly in the commit message.
-> 
-> -- 
-> Stefano
->
-Makes sense, Thank you Stefano!
