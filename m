@@ -1,106 +1,130 @@
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ed1-f44.google.com (mail-ed1-f44.google.com [209.85.208.44])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 54E897B
-	for <outreachy@lists.linux.dev>; Fri,  1 Apr 2022 16:06:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1648829203; x=1680365203;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=1pjlfbgNJKotl63LQiH4d3ZLE9A1i6QRRCWD5/8ZL/8=;
-  b=eK1ycQZk257HtQDqjHlNtixwM79hdkxtCIE+xedk6aIadzIlxboPEXnK
-   YENjk5vyFLPotHTkEnNfKOxUI1cZL5ztPSUDkgS2yxdedVNoB8MG+zNe7
-   IOYjtg2Hs2IstuwcKchgk1c9X3LR56WRZ4IpQiHQNahnvSA+alXDGeNCw
-   lIL7LPIWgj8KuujuTK1y2IgR1Xcc2+tbxAXNBx49p76syLxS2BVgPCkvn
-   qevYLdovIBTy0TVpvk0/0sI4RH4KUzAZ+ngdNbf6tbSl/LMOAGHtNdZrH
-   AaUN+MWL4jBg829EwbUzsEy4/obP5KCbYsJeXIWp6BuWvfzI3qYYev8Lm
-   g==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10304"; a="257749534"
-X-IronPort-AV: E=Sophos;i="5.90,228,1643702400"; 
-   d="scan'208";a="257749534"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Apr 2022 09:06:41 -0700
-X-IronPort-AV: E=Sophos;i="5.90,228,1643702400"; 
-   d="scan'208";a="720928735"
-Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
-  by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Apr 2022 09:06:41 -0700
-Date: Fri, 1 Apr 2022 09:09:01 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6779C137F
+	for <outreachy@lists.linux.dev>; Fri,  1 Apr 2022 17:58:32 +0000 (UTC)
+Received: by mail-ed1-f44.google.com with SMTP id h4so3846546edr.3
+        for <outreachy@lists.linux.dev>; Fri, 01 Apr 2022 10:58:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=Tvh7PojNOU8ixwM/VVoBe7OJ3tPnUoL+wy9VL5Eh99M=;
+        b=mEyqPOy/vdn0Atw3WBSWSwe4clSEqjbbZnxsy2ewo/e6KlEVBz8/r3UiAtdPwj3c+T
+         XtyTc4DitOv8fE7AnPMx8Oc/HLU2AcXIkfTkxAywe0b9yfoinXlMsutN5HN840yUhSFz
+         4C68KTn0+nJlVGKDt50/9pkqz/EM+FhxWf1F8wl7I/qFCHc39sz7b0MNfjvdXalbCEX2
+         TwgGPboqXcOVp0YKig4fN+sREZLvPdoebsOkmJJb6C2MDDrJT4aY9OPqt0RoBLTqUtEq
+         fobuhBSof7qbowJ+/34W0qYr73lF5ag1I/lmo6K2AiwhlLbuUqUIS+qt5vLAh6tUGQ6U
+         SzuA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=Tvh7PojNOU8ixwM/VVoBe7OJ3tPnUoL+wy9VL5Eh99M=;
+        b=c85GN+DvYdumtCyL2LYMs/QZtHQQCPIgZ0ArbD9K1BZR4mLXyU5gF1i4kbz2zpon0t
+         tBaoFQ2Z9/wdyUa5OOA0S8geDio4rwuyYqOdYr9dvlt3rwjde7bmUozdHy+VA+v09IfM
+         Bd6ftNt3lErCyp3MfwT1EBpBD03kPhbKGp2Tcu5WTMRhQLRFthvK3PZ4HV5xmv8g7kus
+         vZ+X0a+WoS1Zvxk02gmECgshKCMkpze1w5XtKl5tU05EHSsGXobh/Bro5jRB8JrTmzQo
+         vhpYZBiqS1TCcnBZ6KuhRW3Y7s8KdopdV/z1tPF68LZLiYXMhq8yKOc90uYcWlV+UaGP
+         F14g==
+X-Gm-Message-State: AOAM5322RpANFsGRNRnSE7YlXvMzEkklbY2zsK2WIgwPXGY+Wu00wnQ/
+	gOMlCIYrUazpgSdXqfmk3aI=
+X-Google-Smtp-Source: ABdhPJx98HUnS9yU+Rlhl1XP4eV/g3NBwJeJHslH+VYGoQfkqgyDVdrwWEHbM4HLO3fFT8OvGnQ+gw==
+X-Received: by 2002:a50:ec16:0:b0:40f:28a0:d0d6 with SMTP id g22-20020a50ec16000000b0040f28a0d0d6mr22345747edr.368.1648835910597;
+        Fri, 01 Apr 2022 10:58:30 -0700 (PDT)
+Received: from leap.localnet (host-95-249-145-232.retail.telecomitalia.it. [95.249.145.232])
+        by smtp.gmail.com with ESMTPSA id sd7-20020a1709076e0700b006e015549bdfsm1213470ejc.53.2022.04.01.10.58.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 01 Apr 2022 10:58:29 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: Alison Schofield <alison.schofield@intel.com>
 Cc: Stefano Brivio <sbrivio@redhat.com>, outreachy@lists.linux.dev
 Subject: Re: Compilation errors
-Message-ID: <20220401160901.GA1186855@alison-desk>
-References: <3603561.MHq7AAxBmi@leap>
- <3410190.V25eIC5XRa@leap>
- <20220401145714.5a0d826f@elisabeth>
- <1943335.PIDvDuAF1L@leap>
+Date: Fri, 01 Apr 2022 19:58:28 +0200
+Message-ID: <2937420.687JKscXgg@leap>
+In-Reply-To: <20220401160901.GA1186855@alison-desk>
+References: <3603561.MHq7AAxBmi@leap> <1943335.PIDvDuAF1L@leap> <20220401160901.GA1186855@alison-desk>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <1943335.PIDvDuAF1L@leap>
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="iso-8859-1"
 
-On Fri, Apr 01, 2022 at 03:07:24PM +0200, Fabio M. De Francesco wrote:
-> On venerdì 1 aprile 2022 14:57:14 CEST Stefano Brivio wrote:
-> > 
-> > Okay, then that's really an error.
-> > 
-> > It might simply be that the you're building some drivers on your
-> > staging tree that you're not building on the mainline tree.
-> 
-> Yes, this is why I've decided to use the .config that I have in Torvald's 
-> tree. They should only differ for the drivers/staging part and the suffix 
-> for vmlinuz.
-> 
-> Now it builds correctly with gcc11 :)
-> 
-> I must look carefully at the diff between the two files and figure out
-> what doesn't work.
-> 
-> However what really counts is that now I can go back to work with "staging".
-> 
-> Thanks for your time,
-> 
-> Fabio 
+On venerd=EC 1 aprile 2022 18:09:01 CEST Alison Schofield wrote:
+> On Fri, Apr 01, 2022 at 03:07:24PM +0200, Fabio M. De Francesco wrote:
+> > On venerd=EC 1 aprile 2022 14:57:14 CEST Stefano Brivio wrote:
+> > >=20
+> > > Okay, then that's really an error.
+> > >=20
+> > > It might simply be that the you're building some drivers on your
+> > > staging tree that you're not building on the mainline tree.
+> >=20
+> > Yes, this is why I've decided to use the .config that I have in Torvald=
+'s=20
+> > tree. They should only differ for the drivers/staging part and the suff=
+ix=20
+> > for vmlinuz.
+> >=20
+> > Now it builds correctly with gcc11 :)
+> >=20
+> > I must look carefully at the diff between the two files and figure out
+> > what doesn't work.
+> >=20
+> > However what really counts is that now I can go back to work with "stag=
+ing".
+> >=20
+> > Thanks for your time,
+> >=20
+> > Fabio=20
+>=20
+> Sounds like you all got things moving along wrt the compile issue.
 
-Sounds like you all got things moving along wrt the compile issue.
-I do want to follow up on a couple of things buried in this thread.
+Yes, thank you. The problem was due to UBSan enabled.
 
-It's good that compile issue is getting fixed because you can't get
-too far without hitting requirements to build w ALLYESCONFIG or
-ALLMODCONFIG, or the like, while doing kernel development.
+> I do want to follow up on a couple of things buried in this thread.
+>=20
+> It's good that compile issue is getting fixed because you can't get
+> too far without hitting requirements to build w ALLYESCONFIG or
+> ALLMODCONFIG, or the like, while doing kernel development.
+>=20
+> The thought of not compiling before sending is blasphemy ;)
 
-The thought of not compiling before sending is blasphemy ;)
-We see patches come through this list on occasion that don't compile
-and usually it's a cockpit error, not an intentional error. ie. The
-applicant did compile the module, loaded/unloaded it, but then some
-process thing went wrong and they created the patch from a different
-branch. There are all sorts of ways to mangle a patch, but intentionally
-not compiling it is just plain bad. That's another reason to create patches,
-send them to yourself, apply to a clean tree, in the beginning to build
-confidence in your processes.
+I agree in full. It was just the desperation talking :-)
 
-wrt the 10 patch cleanup requirement. We often have applicants work
-multiple contribution periods for a multitude of reasons. For applicants
-who already have patches accepted in drivers/staging, we ask that they
-submit a few, to show they are current (if needed). Again, if your 'old'
-patches were from last month, no need to prove currency.
+> wrt the 10 patch cleanup requirement. We often have applicants work
+> multiple contribution periods for a multitude of reasons. For applicants
+> who already have patches accepted in drivers/staging, we ask that they
+> submit a few, to show they are current (if needed). Again, if your 'old'
+> patches were from last month, no need to prove currency.
 
-So, Fabio, this means for you personally, go ahead and link to prior
-patches when you record your contribution in the Outreachy application.
+Most of my patches (a bit less than 100) are a bit older. The large part of=
+=20
+them are since March 2021 to October 2021. In 2022 I have submitted only=20
+7 patches to net/smc, usb/core, staging.=20
 
-Anyone else in this situation, please ask. 
+But I usually don't do clean-ups. For instance, two recent patches were to
+fix bugs reported by Syzbot in "net" and in "usb". A couple of recent=20
+"staging" patches are about converting kmap() to kmap_local_page().
+
+> So, Fabio, this means for you personally, go ahead and link to prior
+> patches when you record your contribution in the Outreachy application.
+
+Therefore, since the number of recent patches is low, can you please confirm
+whether or not I can register also some of those of 2021 "to prove currency=
+"?
+Please notice that only 4 or 5 are from the last month.
 
 Thanks,
-Alison
+
+=46abio
+=20
+> Anyone else in this situation, please ask.=20
+>=20
+> Thanks,
+> Alison
 
 
-> 
-> 
-> 
+
