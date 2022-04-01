@@ -1,116 +1,130 @@
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from m228-62.mailgun.net (m228-62.mailgun.net [159.135.228.62])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6689B1363;
-	Fri,  1 Apr 2022 21:34:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1648848846; x=1680384846;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=gQWF+3nXXQTVuvvNU3qL73QaPoVzfmUyNSXaNlhBWWg=;
-  b=IK4c6oV7lZhIK5AkyH0tG03ZqOueEelNxU8UdjJK1/DLdp3ZJU6FF6Gg
-   FKtVGAFAJ2afzJtlfTuMsfoCIpyzkp1N2iDJfsSRebt2aqlrgua3VrNjw
-   ehkGkvx0IOXDILZz6c/NINVgsp+vfCP2NvPwdkv4QcRdPw5mq21hzlSU9
-   Zcy9NMb8+kO0XtRM3VHsaMXi9RAHIgSC/XrZ1xcvqJtNEo1WGdjNVkSIW
-   recy8FY/Azj0oDxsBcF482+DdcIjUQdUi5w4RgH35DtPrHdlcSNEnRkFZ
-   YXucRwlbgIX3n3v7ATVfbJ0ArEenM3Kr7kZfTw7eQSMd1dS6J2dinokZM
-   Q==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10304"; a="240823952"
-X-IronPort-AV: E=Sophos;i="5.90,228,1643702400"; 
-   d="scan'208";a="240823952"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
-  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Apr 2022 14:34:05 -0700
-X-IronPort-AV: E=Sophos;i="5.90,228,1643702400"; 
-   d="scan'208";a="656042806"
-Received: from kmislam-mobl1.amr.corp.intel.com (HELO localhost) ([10.212.112.89])
-  by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Apr 2022 14:34:05 -0700
-Date: Fri, 1 Apr 2022 14:34:04 -0700
-From: Ira Weiny <ira.weiny@intel.com>
-To: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev
-Subject: Re: [PATCH] staging: rtl8723bs: simplify control flow
-Message-ID: <YkdvzIyz/WGlm2uy@iweiny-desk3>
-References: <20220401114635.GA567659@euclid>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 452BF1363
+	for <outreachy@lists.linux.dev>; Fri,  1 Apr 2022 21:38:51 +0000 (UTC)
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=codeagain.dev; q=dns/txt;
+ s=smtp; t=1648849131; h=Content-Transfer-Encoding: MIME-Version:
+ Content-Type: References: In-Reply-To: Date: Cc: To: To: From: From:
+ Subject: Subject: Message-ID: Sender: Sender;
+ bh=kL0YzjM8JV6X9Of6gBs4D64BbEjr6okBDe7FUfK+jOg=; b=WuCjO6Au+OSL7s7gO7nxK92qeH/V7Ly4ad7aosCWLlEHMKcSomUu8rSe0+WZpcpNFOC/64Uy
+ RwlvZEbCX/3AzjjOk+pWNjjlCi0gStpmRwcqcyAP0IX84vPHqQmg+QkaVelV2UVbhZJEzllT
+ mx+AG/vOUK4xGDrwCx9zJ8qJzgNCP/ou8VsFyCsE5vqWVKJHQ3p9gGs5YiRF2Up8VbKZidEi
+ OA8gPcnxA/ljMmO5u+2k7Fsf4bd+SKqj7gVg5eGAm2Z4kUEvT0wtDIjq273wwJ/Z1pjHNvoh
+ Od2YtNKJkI3+HjV1BIRZraSlKDRhLKZSzmePS6KsBx8NC3fBhgrbfg==
+X-Mailgun-Sending-Ip: 159.135.228.62
+X-Mailgun-Sid: WyI2Y2ZlNyIsICJvdXRyZWFjaHlAbGlzdHMubGludXguZGV2IiwgImJlOWM2ZCJd
+Received: from [192.168.21.4] (dynamic-user.170.84.58.28.mhnet.com.br
+ [170.84.58.28]) by smtp-out-n03.prod.us-west-2.postgun.com with SMTP id
+ 624770ea0418b8d3d76a1315 (version=TLS1.3, cipher=TLS_AES_128_GCM_SHA256);
+ Fri, 01 Apr 2022 21:38:50 GMT
+Sender: codeagain@codeagain.dev
+Message-ID: <3dfdcbd06a0fe14254a7874b4894261da85073e0.camel@codeagain.dev>
+Subject: Re: Information for the Kernelnewbies Outreachy Docs
+From: Bruno Moreira-Guedes <codeagain@codeagain.dev>
+To: Alison Schofield <alison.schofield@intel.com>
+Cc: outreachy linux kernel <outreachy@lists.linux.dev>
+Date: Fri, 01 Apr 2022 18:38:47 -0300
+In-Reply-To: <20220329175444.GA1170522@alison-desk>
+References: <3485392358307ad16335e30e6bd41c78cc977840.camel@gmail.com>
+	 <20220329175444.GA1170522@alison-desk>
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.42.4 
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220401114635.GA567659@euclid>
+Content-Transfer-Encoding: 8bit
 
-On Fri, Apr 01, 2022 at 07:46:35AM -0400, Sevinj Aghayeva wrote:
-> The function iterates an index from 0 to NUM_PMKID_CACHE and returns
-> the first index for which the condition is true. If no such index is
-> found, the function returns -1. Current code has a complex control
-> flow that obfuscates this simple task. Replace it with a loop.
+On Tue, 2022-03-29 at 10:54 -0700, Alison Schofield wrote:
+> On Tue, Mar 29, 2022 at 01:24:17PM -0300,
+> brunodout.dev@gmail.com wrote:
+NOTE: I posted my first e-mail with my gmail account, but the above
+address and the one I'm using right now are the same person.
+> > 
+> > I am sharing some info that could be updated in the KernelNewbies
+> > Outreachy tutorial.  Some instructions for Arch(/Arch based) users
+> > and possibly other minimalist VM setups
 > 
-> Also, given the shortened function body, replace the long variable
-> name psecuritypriv with a short variable name p.
+> These sound very useful. Can you update the wiki yourself:
 > 
-> Reported by checkpatch:
+> From the https://kernelnewbies.org/Outreachyfirstpatch :
 > 
-> WARNING: else is not generally useful after a break or return
-> 
-> Signed-off-by: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
+> 'To edit the wiki, create an account, and then send an email to
+> the outreachy@lists.linux.dev with the subject "[KERNEL NEWBIES
+> ACCESS]
+> username", where username is your kernel newbies username.'
 
-Wow!  Nice find!  This is a huge clean up.  Extra kudos recognizing that it is
-not just the else statement which is broken here!
+Just a follow up, I already requested a couple of days ago, and I have
+updated the OutreachyfirstpatchSetup page[1] now including the
+enumerated items from the previous e-mail and some new details.
 
-The only issue for the patch is that I don't see any maintainer emailed?
-However, I don't see a maintainer listed in the MAINTAINERS file so ...
-
-Reviewed-by: Ira Weiny <ira.weiny@intel.com>
-
-> ---
->  drivers/staging/rtl8723bs/core/rtw_mlme.c | 28 ++++++-----------------
->  1 file changed, 7 insertions(+), 21 deletions(-)
 > 
-> diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme.c b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-> index d5bb3a5bd2fb..3eacf8f9d236 100644
-> --- a/drivers/staging/rtl8723bs/core/rtw_mlme.c
-> +++ b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-> @@ -2036,28 +2036,14 @@ int rtw_restruct_wmm_ie(struct adapter *adapter, u8 *in_ie, u8 *out_ie, uint in_
->  
->  static int SecIsInPMKIDList(struct adapter *Adapter, u8 *bssid)
->  {
-> -	struct security_priv *psecuritypriv = &Adapter->securitypriv;
-> -	int i = 0;
-> -
-> -	do {
-> -		if ((psecuritypriv->PMKIDList[i].bUsed) &&
-> -				(!memcmp(psecuritypriv->PMKIDList[i].Bssid, bssid, ETH_ALEN))) {
-> -			break;
-> -		} else {
-> -			i++;
-> -			/* continue; */
-> -		}
-> -
-> -	} while (i < NUM_PMKID_CACHE);
-> -
-> -	if (i == NUM_PMKID_CACHE) {
-> -		i = -1;/*  Could not find. */
-> -	} else {
-> -		/*  There is one Pre-Authentication Key for the specific BSSID. */
-> -	}
-> -
-> -	return i;
-> +	struct security_priv *p = &Adapter->securitypriv;
-> +	int i;
->  
-> +	for (i = 0; i < NUM_PMKID_CACHE; i++)
-> +		if ((p->PMKIDList[i].bUsed) &&
-> +				(!memcmp(p->PMKIDList[i].Bssid, bssid, ETH_ALEN)))
-> +			return i;
-> +	return -1;
->  }
->  
->  /*  */
-> -- 
-> 2.25.1
+> Thanks!
+> Alison
 > 
+> > 
+> > REQUIREMENTS
+> > 
+> > 3. Possibly python3
+> > I was following the tutorial for the staging kernel tree,
+> > and ran `make` to build the kernel (I usually run `make
+> > bzImage` followed by `make modules`, like usual in 2005
+> > LOL), and got an error that python3 wasn't found. I installed 
+> > python but then switched back to my old procedure and it worked.
+> > I'm not sure if the default target isn't doing something else,
+> > since re docs[1] also don't mention python3 as a requirement.
+
+I added this requirement and detailed the reason it might be needed:
+several self-test and kunit tools in the /tools tree require python.
+It likely explains why I just got the missing python error when I
+built with `make` (default target) and not when running `make bzImage
+&& make modules`.
+
+I also added perl, which wasn't missing in my list but in minimalist
+setups it might. Also added information regarding perl modules that
+might be necessary for other tools, that could be installed easily
+with `cpan`.
+
+> > 
+> > ARCH PACKAGE NAMES
+> > 
+> > some packages will be differently named. I have listed them just
+> > in case anyone feels stuck:
+> > 
+> > 1. gitk => already contained in: git
+> > 2. git-email => already contained in: git
+
+I detailed the above differences in packaging scheme in the wiki, but
+I didn't update the information below:
+
+> > 3. esmtp => libesmtp
+
+Turns out this information was wrong, libesmtp and esmtp are not the
+same package with different names as I thought, it's actually not
+provided in ArchLinux official packages (to my knowledge). I think
+users might find a build package in the AUR repo, though. However, the
+`mail` utility, from the 's-nail' package, can also be used to achieve
+the same goals. I'll go back there and write about that at some point.
+
+> > 
+> > REFERENCES
+> > [1] https://docs.kernel.org/process/changes.html
+> > 
+Regarding kernel docs missing some points, mentioned in the original
+post, could I update kernel docs on that too? I've found the online
+docs to be based on the docs present in Documentation. Also, would it
+count towards my 10 patches requirements? (I plan on doing anyway, but
+the answer would help me to prioritize)
+> 
+
+REFERENCES 
+[1] https://kernelnewbies.org/OutreachyfirstpatchSetup
+
+
+-- 
+Sincerely,
+Bruno | Pronouns: they/them/theirs
+IRC: CodeAgain
