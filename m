@@ -1,53 +1,59 @@
-Received: from mail-qt1-f169.google.com (mail-qt1-f169.google.com [209.85.160.169])
+Received: from relay3-n.mailbaby.net (relay3-n.mailbaby.net [66.45.229.238])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 57D367C;
-	Fri,  1 Apr 2022 19:28:53 +0000 (UTC)
-Received: by mail-qt1-f169.google.com with SMTP id o15so1636213qtv.8;
-        Fri, 01 Apr 2022 12:28:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=7duh5/e6azg6x7M9ZEJraSnYR2xg1p2mo3IgTU2n19I=;
-        b=OCd3gsRyzYDvDg9YDJvm6gTOtL0bDx/HUB4aqjhCnua1UdduM1FJa09W17iXTQufZ+
-         qhW/keWErJpwKgsd+dcRGjKQpGKUH0cFEx4yxd1YhhZKOjAsdw2W9j0OrHxfERT9LkW+
-         yScp27OffdfjqiyTuE3rNkff7aMBuVpbUh+zU4zyRw70xOeXU3IsK5eA2+LBg5Mn3mgv
-         HN3GgX6rIQdMWbYOb5mbphx4kZGbTuWdm+PbFpomJ3F0IEFQMU0dur+lUsGl/FgAyEuS
-         T21r7a+0IfnpmZ3/KArTz0nNNaMIBinIwHdaGW/WU6O4dJF8syG0SS2bKUMHbGgKHemS
-         25CQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=7duh5/e6azg6x7M9ZEJraSnYR2xg1p2mo3IgTU2n19I=;
-        b=gZzpzi6IFZfYCWkB3HeWcNQxmVVdQKd+Gb/nt4ZIMED4gvyQPqTyhwlOa/+kzy6k5F
-         PKUz/3jP+BnknebtklaSZbWa1rVXAMzXxIIrKgaG7E4Wr2FS19mBhvqoAXwRF4YJFNtS
-         NAZzxFGU8h26aLQRN3ZIR6Gy6mNCFO/ItN9FKHpNXiouHauOMDn/nIe6k5XSed9GgXIQ
-         DP2V7bGGLcujfZqjUsLNi99A0KPj34X/eGWY4zsumseVDxgFgIefSyNi2uuQILC795zG
-         HpeRXoyeXCuUnEI86Ys6Ujnz0qLRxAo5aiSPj6+HkeJpC7ryrK9uf2sbYzL6o5Ttw6vz
-         PfVQ==
-X-Gm-Message-State: AOAM531EQuAYOFtJzKi/XzPqcJrUK+na4LJ/aUMjsYG/1ICkubcn0xat
-	dKbgvdpOVzrqrM5b0+rkwNM=
-X-Google-Smtp-Source: ABdhPJxXC0lHmceb2Y8k4OsE50EED8DUfZseas9xERkD5RyGCqRGAtTNynL89XVJY6mzl7JYj85oBw==
-X-Received: by 2002:a05:622a:164e:b0:2e1:e204:44c6 with SMTP id y14-20020a05622a164e00b002e1e20444c6mr9708398qtj.193.1648841332284;
-        Fri, 01 Apr 2022 12:28:52 -0700 (PDT)
-Received: from euclid ([71.58.109.160])
-        by smtp.gmail.com with ESMTPSA id g14-20020ae9e10e000000b0067b520a01afsm1646527qkm.108.2022.04.01.12.28.51
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 01 Apr 2022 12:28:51 -0700 (PDT)
-From: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev,
-	Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
-Subject: [PATCH v3 3/3] staging: rtl8723bs: remove redundant else branches
-Date: Fri,  1 Apr 2022 15:28:38 -0400
-Message-Id: <eb57817c25a90a98d5f1602f6595cae13b2ae7ef.1648840991.git.sevinj.aghayeva@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <cover.1648840991.git.sevinj.aghayeva@gmail.com>
-References: <cover.1648840991.git.sevinj.aghayeva@gmail.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3F08D1363
+	for <outreachy@lists.linux.dev>; Fri,  1 Apr 2022 20:34:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailbaby.net;
+ q=dns/txt; s=bambino; bh=+jHW1mmcRjXEfmPVDPS2P0Sb4a9eHyeVWzKg43U1n98=;
+ h=from:subject:date:message-id:to:mime-version:content-type:content-transfer-encoding:in-reply-to:references;
+ b=TBJfBCQNo5+6RDx319ErQ7zvcTcZyyiAIRJYpSSMPD5YMV6RJe2ijUgS7DmZX93/u9gfoB7KO
+ eKpfi6jGgdZcZw6gWWhiDYa7Ix9y5CLN831VkAGYZRPQYapxLzHirQBjS4Sy24L/1BWzIsV/3IN
+ LioqtEbNBw5VppReZkSNRgs=
+Received: from mia1000.iaasdns.com ([162.254.200.130] mia1000.iaasdns.com)
+ (Authenticated sender: mb6724)
+ by relay3-n.mailbaby.net (InterServerMTA) with ESMTPSA id 17fe6d10e83000aa7b.001
+ for <outreachy@lists.linux.dev>
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256);
+ Fri, 01 Apr 2022 20:28:54 +0000
+X-Zone-Loop: 9593d430d0a93c0ea373adc42d5c08114182eca6bb14
+ARC-Authentication-Results: i=1;	relay3.mailbaby.net;	auth=pass
+ smtp.auth=mb6724 smtp.mailfrom=codeagain@codeagain.dev
+ARC-Seal: i=1; s=detka; d=mailbaby.net; t=1648844934; a=rsa-sha256;
+	cv=none;
+	b=MuhKqX/CRX6wsr3bt9edWiVB83C3JvY8Gaz1wBfE6qJn06kGEfyrERJaaghvKHlMaWpW5c
+	BRRqgVzwhZeo8Up2jifQ5c0uGcWriSB4F7gkAJmy9uFFi0SAvqo4KLWE9A0+P3p/yhUXCY
+	YxrpAGZanRq5ff9/wSoWvdHVmet27vJyf7VOnMeGWC2expk2fWiuiAGhzfHLuoCXuN7v3J
+	9d2nhEFmBkjDLVOvB/CBYeoSc307SGbg/Co+sXM33ap4X7W/bIurR1wxfaz+9f+dPM3VDN
+	1MM2fGHwbvvQXIHgNtA08gtwngVovQrzwW/EoVjrJwfJHpoQZnzDrkGr5bt55Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mailbaby.net;	s=detka; t=1648844934;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=+jHW1mmcRjXEfmPVDPS2P0Sb4a9eHyeVWzKg43U1n98=;
+	b=kQWqmhBs6rBFHnaDnd7Mn0dzY/EerMhGuuFqHG6blMG3T9EDH0yq3owpZO2mHimZZ8hWoK
+	ppAX6+38cuivwI8QN1c485SEMO+9fOCZhpDQme8HsfQ75Gw8+SR3ESJtQZciFPNQxyM6FM
+	OVWqBk8NSPrUocSLdWA/vuJ7SMZgsi5wuyAiUbSWaVCjoJX8FScyMoL3yoASNkSZo61K9w
+	EWtY4FasOFBLoCsds4EjOw13czRd/tLoRR87Hx3zPMi+O5Jz8cdSX0KwJn5FCuIujdAyMA
+	kTpfzMLY5NT1XfrWse6ujcaRs1N7PxUnGtucHKQE3o6oeNEEwOJzcNlmSYaiqw==
+X-Originating-IP: [162.254.200.130]
+Received: from [170.84.58.28] (port=23974 helo=[192.168.21.4])
+	by mia1000.iaasdns.com with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <codeagain@codeagain.dev>)
+	id 1naNt7-0005Cm-Jv
+	for outreachy@lists.linux.dev; Fri, 01 Apr 2022 16:28:53 -0400
+Message-ID: <1a8d18273836c87deff1833baf0748e2c1a14308.camel@codeagain.dev>
+Subject: Re: Missing package when sending patchset
+From: Bruno <codeagain@codeagain.dev>
+To: outreachy@lists.linux.dev
+Date: Fri, 01 Apr 2022 17:28:51 -0300
+In-Reply-To: <CAMWRUK6g5qytnqqNV9GmWgWYsxHFXm0iBEw05Gp62v7tFSg8tQ@mail.gmail.com>
+References: 
+	<CAMWRUK6g5qytnqqNV9GmWgWYsxHFXm0iBEw05Gp62v7tFSg8tQ@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.42.4 
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -55,120 +61,33 @@ List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+X-AuthUser: me@brunodout.dev
 
-Adhere to Linux kernel coding style.
+Heyy, I replied this e-mail from my phone in the morning and it sent
+in HTML, even though it appeared to be text plain. I apologize. Now
+I'm sending an updated status!
 
-Reported by checkpatch:
+On Fri, 2022-04-01 at 09:11 -0400, Sevinj Aghayeva wrote:
+> Hi all,
+> 
+> I just tried sending out the first patchset,
+Congrats, Sevinj!
+> 
+> git: 'send-email' is not a git command. See 'git --help'.
 
-WARNING: else is not generally useful after a break or return
+Indeed in some distributions a software is fragmented into lots of
+packages. On Arch, though, the package git comes complete.
 
-Signed-off-by: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
----
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 63 +++++++++----------
- 1 file changed, 30 insertions(+), 33 deletions(-)
+> 
+> Stefano on IRC pointed out that I'm missing the git-email package.
+> After installing the package I was able to send out the patchset.
+> I've
+> updated https://kernelnewbies.org/OutreachyfirstpatchSetup to
+> include
+> the git-email package in the list of packages needed for Ubuntu.
+> 
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-index 81e4b1bf68f6..7a941832ee34 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-@@ -907,10 +907,9 @@ unsigned int OnAuthClient(struct adapter *padapter, union recv_frame *precv_fram
- 			set_link_timer(pmlmeext, REAUTH_TO);
- 
- 			return _SUCCESS;
--		} else {
--			/*  open system */
--			go2asoc = 1;
- 		}
-+		/*  open system */
-+		go2asoc = 1;
- 	} else if (seq == 4) {
- 		if (pmlmeinfo->auth_algo == dot11AuthAlgrthm_Shared)
- 			go2asoc = 1;
-@@ -1467,6 +1466,7 @@ unsigned int OnDeAuth(struct adapter *padapter, union recv_frame *precv_frame)
- 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
- 	struct mlme_ext_info *pmlmeinfo = &(pmlmeext->mlmext_info);
- 	u8 *pframe = precv_frame->u.hdr.rx_data;
-+	int ignore_received_deauth = 0;
- 
- 	/* check A3 */
- 	if (memcmp(GetAddr3Ptr(pframe), get_my_bssid(&pmlmeinfo->network), ETH_ALEN))
-@@ -1502,32 +1502,31 @@ unsigned int OnDeAuth(struct adapter *padapter, union recv_frame *precv_frame)
- 
- 
- 		return _SUCCESS;
--	} else {
--		int	ignore_received_deauth = 0;
--
--		/* 	Commented by Albert 20130604 */
--		/* 	Before sending the auth frame to start the STA/GC mode connection with AP/GO, */
--		/* 	we will send the deauth first. */
--		/* 	However, the Win8.1 with BRCM Wi-Fi will send the deauth with reason code 6 to us after receieving our deauth. */
--		/* 	Added the following code to avoid this case. */
--		if ((pmlmeinfo->state & WIFI_FW_AUTH_STATE) ||
--			(pmlmeinfo->state & WIFI_FW_ASSOC_STATE)) {
--			if (reason == WLAN_REASON_CLASS2_FRAME_FROM_NONAUTH_STA) {
--				ignore_received_deauth = 1;
--			} else if (reason == WLAN_REASON_PREV_AUTH_NOT_VALID) {
--				/*  TODO: 802.11r */
--				ignore_received_deauth = 1;
--			}
-+	}
-+
-+	/* 	Commented by Albert 20130604 */
-+	/* 	Before sending the auth frame to start the STA/GC mode connection with AP/GO, */
-+	/* 	we will send the deauth first. */
-+	/* 	However, the Win8.1 with BRCM Wi-Fi will send the deauth with reason code 6 to us after receieving our deauth. */
-+	/* 	Added the following code to avoid this case. */
-+	if ((pmlmeinfo->state & WIFI_FW_AUTH_STATE) ||
-+		(pmlmeinfo->state & WIFI_FW_ASSOC_STATE)) {
-+		if (reason == WLAN_REASON_CLASS2_FRAME_FROM_NONAUTH_STA) {
-+			ignore_received_deauth = 1;
-+		} else if (reason == WLAN_REASON_PREV_AUTH_NOT_VALID) {
-+			/*  TODO: 802.11r */
-+			ignore_received_deauth = 1;
- 		}
-+	}
- 
--		netdev_dbg(padapter->pnetdev,
--			   "sta recv deauth reason code(%d) sta:%pM, ignore = %d\n",
--			   reason, GetAddr3Ptr(pframe),
--			   ignore_received_deauth);
-+	netdev_dbg(padapter->pnetdev,
-+		"sta recv deauth reason code(%d) sta:%pM, ignore = %d\n",
-+		reason, GetAddr3Ptr(pframe),
-+		ignore_received_deauth);
-+
-+	if (ignore_received_deauth == 0)
-+		receive_disconnect(padapter, GetAddr3Ptr(pframe), reason);
- 
--		if (ignore_received_deauth == 0)
--			receive_disconnect(padapter, GetAddr3Ptr(pframe), reason);
--	}
- 	pmlmepriv->LinkDetectInfo.bBusyTraffic = false;
- 	return _SUCCESS;
- 
-@@ -1574,16 +1573,14 @@ unsigned int OnDisassoc(struct adapter *padapter, union recv_frame *precv_frame)
- 		}
- 
- 		return _SUCCESS;
--	} else {
--		netdev_dbg(padapter->pnetdev,
--			   "sta recv disassoc reason code(%d) sta:%pM\n",
--			   reason, GetAddr3Ptr(pframe));
--
--		receive_disconnect(padapter, GetAddr3Ptr(pframe), reason);
- 	}
-+	netdev_dbg(padapter->pnetdev,
-+		"sta recv disassoc reason code(%d) sta:%pM\n",
-+		reason, GetAddr3Ptr(pframe));
-+
-+	receive_disconnect(padapter, GetAddr3Ptr(pframe), reason);
- 	pmlmepriv->LinkDetectInfo.bBusyTraffic = false;
- 	return _SUCCESS;
--
- }
- 
- unsigned int OnAtim(struct adapter *padapter, union recv_frame *precv_frame)
--- 
-2.25.1
-
+In the message this morning I told I would update it too for two
+missing perl packages for Arch users, likely related to SMTP
+authentication: 'MIME::Base64' and 'Authen::SASL'. I updated the page
+with instructions on how to do that too!
