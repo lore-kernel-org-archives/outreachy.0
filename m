@@ -1,51 +1,38 @@
-Received: from mail-qk1-f175.google.com (mail-qk1-f175.google.com [209.85.222.175])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 41B837B
-	for <outreachy@lists.linux.dev>; Fri,  1 Apr 2022 15:17:33 +0000 (UTC)
-Received: by mail-qk1-f175.google.com with SMTP id d142so2348430qkc.4
-        for <outreachy@lists.linux.dev>; Fri, 01 Apr 2022 08:17:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=lN+rNFFMJ9KVppUdsz9Xg1IuyXuqKr5H/LWMCLFArsk=;
-        b=gYXFv43492lVos4TdB0flCn5WICmh6i7mZSqhd+fy0/P278/JK/bw7LEqWuZ+YLrNd
-         13kR9muAxg5MsWYWIbcxOOlCeCpweLi0qi7ZG7tNvcfJLf20niN5562byp1XEDzKy+S6
-         QowoSHiK5o7S1T6bhaRXEU/SgIgDEK9KzydyLpThFikn1H0AfG8ExsPVVsn6i/Jor2Eg
-         Z/VcbI8dMid+uyKKydPtaU018Ml6XPt5ni8OEOx9KI834pJjueXZ/wPXV9cbvXthzAyp
-         sKEHFPcMkkXgDYMB5+l8CFplB0OrPS8R0RYgOU+VLBE7Ho+J1I3vhSghcdB7px1/Fj7q
-         i0yQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=lN+rNFFMJ9KVppUdsz9Xg1IuyXuqKr5H/LWMCLFArsk=;
-        b=05KN5Tm8u/2XLyC1BlcreUwvfCybN2qSbPi0EXfGo6TA/F1bNOB28XXVdo50zV9SbK
-         fmC0yxOA5T4w5rFZz2qE5u72VP3xLX+dP4ptagaV5acol97+Ht0y4J+fcb6KYYiWsUrR
-         A1/87I7hhfQVF1ndWP4OIg1Db2MyP5TS8DnUJKh0DGL9MWGvZj0+Cm4gE86O1zFeDhD2
-         OATpgTIsiQQ485RwVxruh2jg+uiV4qm3rICy2VELN86T4QoLVaOVCIi5IflM3PDD3qhr
-         jWxLF0vKQH6M26oEAtu+lqk03wgPr0EJgAgoQqBsbZ50q6dhvQS9TiniFsdJySbdymxA
-         T4WA==
-X-Gm-Message-State: AOAM532Yd7ZNu4f9DskRyipuu2j0xG0VdPEOTS8po/jX3DogiMpzLVhP
-	nFaVkwE3zDkyPhFdyVqqM4U=
-X-Google-Smtp-Source: ABdhPJyK+IkSJ8Uavia6nKxfZXfvVVhRva1B8OmoSOiEDWMolzexVDVgjxhi19MNUIwuM04XdAc3hg==
-X-Received: by 2002:a05:620a:290b:b0:680:cfcc:4e0b with SMTP id m11-20020a05620a290b00b00680cfcc4e0bmr6955545qkp.145.1648826252148;
-        Fri, 01 Apr 2022 08:17:32 -0700 (PDT)
-Received: from jaehee-ThinkPad-X1-Extreme ([4.34.18.218])
-        by smtp.gmail.com with ESMTPSA id 11-20020ac8590b000000b002e1e5c5c866sm2071836qty.42.2022.04.01.08.17.30
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 01 Apr 2022 08:17:31 -0700 (PDT)
-Date: Fri, 1 Apr 2022 11:17:27 -0400
-From: Jaehee Park <jhpark1013@gmail.com>
-To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Cc: Alison Schofield <alison.schofield@intel.com>,
-	Outreachy Linux Kernel <outreachy@lists.linux.dev>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7DB0F7B
+	for <outreachy@lists.linux.dev>; Fri,  1 Apr 2022 15:17:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1648826277; x=1680362277;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=wRdsJnV7L47enwRYdoNj+F2fBENubMXiEP2h1ijvgK8=;
+  b=fSydKGZN2gsKAERHMnmlxBsCfRJ+R1hR1TG7O5W6HxnV8iIsxSclZLoa
+   HkAprqiH/IxVKP7JV6GilkpKEP2XSSEwp1D7aLeZ6OA+fy9v0auCXWxPE
+   cn7DBmmd8C9SzK9zzP8bxkF0pQkZdnTd0FOrpt5Z23L+iwl1lsuD/5t1A
+   XUKyqnDiXPHsvB4+Wf8dPxS1H5ew9zjy6jjhZvYLvfXLl4wUr6+rPuy+T
+   R98WfWAxPh3oNnP7E8K573dIVyCyBlFqCiLQI/zy1R3JMv0yLwoq3Cxvv
+   RNPRyAQ5fb+inAPGnkeZ4HRqp2n42MYcgJJ3WNo+CusjeoowotzYAzt+2
+   w==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10304"; a="260339018"
+X-IronPort-AV: E=Sophos;i="5.90,228,1643702400"; 
+   d="scan'208";a="260339018"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Apr 2022 08:17:56 -0700
+X-IronPort-AV: E=Sophos;i="5.90,228,1643702400"; 
+   d="scan'208";a="521462609"
+Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
+  by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Apr 2022 08:17:55 -0700
+Date: Fri, 1 Apr 2022 08:20:15 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: Jaehee Park <jhpark1013@gmail.com>
+Cc: Outreachy Linux Kernel <outreachy@lists.linux.dev>
 Subject: Re: Finding Clean-up Tasks
-Message-ID: <20220401151727.GA49127@jaehee-ThinkPad-X1-Extreme>
+Message-ID: <20220401152015.GA1186574@alison-desk>
 References: <20220331183805.GA1182645@alison-desk>
  <20220401142803.GA38814@jaehee-ThinkPad-X1-Extreme>
- <17732861.sWSEgdgrri@leap>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -54,59 +41,53 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <17732861.sWSEgdgrri@leap>
+In-Reply-To: <20220401142803.GA38814@jaehee-ThinkPad-X1-Extreme>
 
-On Fri, Apr 01, 2022 at 05:14:48PM +0200, Fabio M. De Francesco wrote:
-> On venerd? 1 aprile 2022 16:28:03 CEST Jaehee Park wrote:
-> > On Thu, Mar 31, 2022 at 11:38:05AM -0700, Alison Schofield wrote: 
-> > > Confidence to send the patch:
-> > > -----------------------------
-> > > Go ahead and search on this mailing list for the checkpatch
-> > > string. You should find many examples that match what you
-> > > are about to do. See what worked well, what needed rework.
-> > > 
-> > > If you have a patch AND a question, you can send the patch
-> > > and put your question below the scissors line. For example,
-> > > you might see multiple instances of something but are not sure
-> > > the patch will be well-received. Fix one instance - and below
-> > > the scissor line ask you question: "There are 10 more of these
-> > > in this file, just want to sanity check that my approach here
-> > > is wanted."  (If I were doing cleanup today, I'd use this tactic
-> > > for drivers/staging/iio checkpatch ERROR about octals.)
-> > > 
+On Fri, Apr 01, 2022 at 10:28:03AM -0400, Jaehee Park wrote:
+> On Thu, Mar 31, 2022 at 11:38:05AM -0700, Alison Schofield wrote:
+
+snip
+
+> > Confidence to send the patch:
+> > -----------------------------
+> > Go ahead and search on this mailing list for the checkpatch
+> > string. You should find many examples that match what you
+> > are about to do. See what worked well, what needed rework.
 > > 
-> > Thank you for advice! I had a question about where to put the questions
-> > in the patch. When you say scissor line, are we putting dashed lined
-> > somewhere in the patch and writing our questions? Or did you mean we
-> > should reply to our patch?
+> > If you have a patch AND a question, you can send the patch
+> > and put your question below the scissors line. For example,
+> > you might see multiple instances of something but are not sure
+> > the patch will be well-received. Fix one instance - and below
+> > the scissor line ask you question: "There are 10 more of these
+> > in this file, just want to sanity check that my approach here
+> > is wanted."  (If I were doing cleanup today, I'd use this tactic
+> > for drivers/staging/iio checkpatch ERROR about octals.)
 > > 
-> Hi Jaehee,
 > 
-> Alison is talking about the three dashes that patches have soon after 
-> the line with the "Signed-off-by:" tag.
+> Thank you for advice! I had a question about where to put the questions
+> in the patch. When you say scissor line, are we putting dashed lined
+> somewhere in the patch and writing our questions? Or did you mean we
+> should reply to our patch?   
 > 
-> Look at your own patch as an example:
-> 
-> "Change variable name to be consistent with the naming conventions.
-> ssidlen was changed to ssid_len and ssidie was changed to ssid_ie to be
-> consistent. This makes the variables more readable. The other ssid
-> names in the code are separated by an underscore. For example,
-> bssid_filter and num_of_ssids have the ssid separated from the rest of
-> the words with an underscore.
-> 
-> Signed-off-by: Jaehee Park <jhpark1013@gmail.com>
-> --- 
-> 
-> -> Place your questions and revision history here <-
-> 
-> drivers/staging/wfx/hif_tx.c | 10 +++++-----
->  drivers/staging/wfx/sta.c    | 20 ++++++++++----------
->  2 files changed, 15 insertions(+), 15 deletions(-)"
-> 
-> Regards,
-> 
-> Fabio M. De Francesco
-> 
-> 
->
-Got it, Thanks Fabio!
+Below the 'scissor line' is the same place you would place a Changelog
+when versioning the patch. Anything below the "---" and before the
+diffstat gets automagically tossed when the patch is applied.
+So, it looks something like this:
+
+>> bssid_filter and num_of_ssids have the ssid separated from the rest of
+>> the words with an underscore.
+>> 
+>> Signed-off-by: Jaehee Park <jhpark1013@gmail.com>
+>> ---
+
+Insert question, additional comment here. 
+In the future, you'll learn about RFC patches, where we are sometimes
+asking for a greater conceptual review before posting. But, for small
+questions about a specific patch - this space works well.
+
+>>  drivers/staging/wfx/hif_tx.c | 10 +++++-----
+>>  drivers/staging/wfx/sta.c    | 20 ++++++++++----------
+>>  2 files changed, 15 insertions(+), 15 deletions(-)
+
+Alison
+
