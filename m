@@ -1,118 +1,113 @@
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-qv1-f41.google.com (mail-qv1-f41.google.com [209.85.219.41])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1B55DED5
-	for <outreachy@lists.linux.dev>; Fri,  1 Apr 2022 10:14:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1648808044;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Gf3p8FG/lFcTTBg9efi6YXsLyDuj0O3K5Yb4XtyRGkI=;
-	b=Zn47tTUxnYzw5HzyKCs3hNNJLJJ6r3hXLqG6glC+QHGmCw+3bxEVT+Uq/Xgi7zARSygJXK
-	EzoSAFkh4U1gvDB65VsBqgLddlHCRf5nlZv0I3cLxctdgQM6dl3EJP3qHPqEmQD5r2A5n2
-	Uy6eUjh1bSjNLT7HcklSzBYL+BAfUvU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-155-nirNnh_2Npe4oud8Zv3Ypw-1; Fri, 01 Apr 2022 06:14:01 -0400
-X-MC-Unique: nirNnh_2Npe4oud8Zv3Ypw-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B1ACA1800DB7;
-	Fri,  1 Apr 2022 10:13:59 +0000 (UTC)
-Received: from maya.cloud.tilaa.com (unknown [10.40.208.6])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 5479219648;
-	Fri,  1 Apr 2022 10:13:59 +0000 (UTC)
-Date: Fri, 1 Apr 2022 12:13:57 +0200
-From: Stefano Brivio <sbrivio@redhat.com>
-To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Cc: outreachy@lists.linux.dev
-Subject: Re: Compilation errors
-Message-ID: <20220401121357.09ae33d7@elisabeth>
-In-Reply-To: <3603561.MHq7AAxBmi@leap>
-References: <3603561.MHq7AAxBmi@leap>
-Organization: Red Hat
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 63D907C;
+	Fri,  1 Apr 2022 11:46:40 +0000 (UTC)
+Received: by mail-qv1-f41.google.com with SMTP id kl29so1808135qvb.2;
+        Fri, 01 Apr 2022 04:46:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=date:from:to:subject:message-id:mime-version:content-disposition;
+        bh=tj0eNhKFTRgfzMUzArZlhD6QnaURQ8wTdtssetTRosY=;
+        b=KzIzeaYzf4tIG+9XJ/8/tTFusg2jVfudxBBaoDpAzW+mgKn1Isc5QsPfXnbq/Nx09r
+         3R0iEkoClUBuQFNcUwmc11x+5P59EpMjMvD7Fi3aUe1EizO5WpGG1xS2naPg93vYAhfM
+         7U/WNhMOIWIKkyqGOscZIRBiH7zToF/h9D8/mg89LGQPwC4Xr5eNaqSl34+EfGTFcYnR
+         mpHhDgxZ420NyYluQgv9t0u/JcoHwZ76WpPKxS2xmBWWHl8bzSZqCKGEZXpQlynI1hwi
+         XBqV/GaS5foi34EvogInHcl1rdyYfazPUmw5Tj6hClhKjVtPD22ypP2+OwpNlMk63fWE
+         jXKw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition;
+        bh=tj0eNhKFTRgfzMUzArZlhD6QnaURQ8wTdtssetTRosY=;
+        b=If0Qxt5OjGKNB3s/SV35tQEu056o824wDYxjsMbPlPxyIOBUt30aTW4qLV5VTMdYLO
+         Cshmp9wrHkq8zkjfQwSUXomaUFBXHh3ohxxNIVT5ZdeYr0rgdczxJcZC2/WA4J+SuV0G
+         huEg1R0le2Xja3ErG80eekpBHLIfa0R3+qEef5O747mAzo7UEh3yDAha1h69Z5F1yNwZ
+         6YfpeaR289KE0kLj7C3nbEG92A0Ohfcd8lHhCiWWTKHo64InYpUWvJYb6rLsG8xBzrLx
+         MavEuz4YHunYY1vVogjugdPbicMgzjoK4wZSxBWQu1Q0V9C6rUqgRFFutvQQKV5r6UsP
+         UaDQ==
+X-Gm-Message-State: AOAM533mWkQIvOYOHduFcKWR/sr/Xu9TFMNaxzocS9c9Qgh1N9MI8Hir
+	TvWTHigqxZm1CtXJUwzQsiI=
+X-Google-Smtp-Source: ABdhPJw7758JWF0PuLJ7DJ2/46WviL/79JThXVCdP5eGNfwJtsO3e6//YTHB906fnz3tmqICDZdc4A==
+X-Received: by 2002:a05:6214:400f:b0:441:2cd7:9cf2 with SMTP id kd15-20020a056214400f00b004412cd79cf2mr7385441qvb.111.1648813599101;
+        Fri, 01 Apr 2022 04:46:39 -0700 (PDT)
+Received: from euclid ([71.58.109.160])
+        by smtp.gmail.com with ESMTPSA id s12-20020a05622a018c00b002e1cd88645dsm1669422qtw.74.2022.04.01.04.46.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 01 Apr 2022 04:46:38 -0700 (PDT)
+Date: Fri, 1 Apr 2022 07:46:35 -0400
+From: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy@lists.linux.dev
+Subject: [PATCH] staging: rtl8723bs: simplify control flow
+Message-ID: <20220401114635.GA567659@euclid>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=sbrivio@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Hi Fabio,
+The function iterates an index from 0 to NUM_PMKID_CACHE and returns
+the first index for which the condition is true. If no such index is
+found, the function returns -1. Current code has a complex control
+flow that obfuscates this simple task. Replace it with a loop.
 
-On Fri, 01 Apr 2022 11:35:13 +0200
-"Fabio M. De Francesco" <fmdefrancesco@gmail.com> wrote:
+Also, given the shortened function body, replace the long variable
+name psecuritypriv with a short variable name p.
 
-> Hello everybody,
->=20
-> I've made hundreds of Linux builds and never had problems, but since=20
-> few days I'm not anymore able to compile the kernel with GCC or Clang.
->=20
-> I get many errors like the following and the build crashes:
->=20
-> # CC=3Dgcc-11 make -j12
-> [...]
-> drivers/net/ethernet/broadcom/bnx2x/bnx2x_main.c: In function =E2=80=98bn=
-x2x_check_blocks_with_parity3=E2=80=99:
-> drivers/net/ethernet/broadcom/bnx2x/bnx2x_main.c:4917:4: error: case labe=
-l does not reduce to an integer constant
->     case AEU_INPUTS_ATTN_BITS_MCP_LATCHED_SCPAD_PARITY:
-> [...]
-> make[5]: *** [scripts/Makefile.build:289: drivers/net/ethernet/broadcom/b=
-nx2x/bnx2x_main.o] Error 1
-> make[4]: *** [scripts/Makefile.build:551: drivers/net/ethernet/broadcom/b=
-nx2x] Error 2
-> make[4]: *** Waiting for unfinished jobs....
->=20
-> One more example...
->=20
-> # make mrproper
-> # CC=3Dclang make -j12
-> [...]
-> drivers/usb/typec/tcpm/tcpm.c:4724:3: error: case label does not reduce t=
-o an integer constant
->    case BDO_MODE_TESTDATA:
->    ^~~~
-> make[4]: *** [scripts/Makefile.build:288: drivers/usb/typec/tcpm/tcpm.o] =
-Error 1
-> make[3]: *** [scripts/Makefile.build:550: drivers/usb/typec/tcpm] Error 2
-> make[2]: *** [scripts/Makefile.build:550: drivers/usb/typec] Error 2
-> make[2]: *** Waiting for unfinished jobs....
->=20
-> Can someone help me to understand what is happening and how to fix this i=
-ssue?
-> Could it depend on a configuration option that, unintentionally enabled, =
-make=20
-> the build fail whenever "case label does not reduce to an integer constan=
-t" is=20
-> hit? If so, which option?
+Reported by checkpatch:
 
-Those would be warnings, but kernel builds switched to -Werror by
-default a while ago, see commit 3fe617ccafd6 ("Enable '-Werror' by
-default for all kernel builds") -- meaning that all warnings are
-treated as errors. You can disable CONFIG_WERROR:
+WARNING: else is not generally useful after a break or return
 
-=09scripts/config -d WERROR
+Signed-off-by: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
+---
+ drivers/staging/rtl8723bs/core/rtw_mlme.c | 28 ++++++-----------------
+ 1 file changed, 7 insertions(+), 21 deletions(-)
 
-to double check. But I guess you just found a source of very useful,
-relatively trivial patches. :) Of course, chances are that some of
-those are already fixed in some other tree.
-
-As to why it started happening for you recently: maybe you just
-switched to gcc 11 and a newer version of clang? Can you try with
-gcc 10 if you have it still installed?
-
---=20
-Stefano
+diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme.c b/drivers/staging/rtl8723bs/core/rtw_mlme.c
+index d5bb3a5bd2fb..3eacf8f9d236 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_mlme.c
++++ b/drivers/staging/rtl8723bs/core/rtw_mlme.c
+@@ -2036,28 +2036,14 @@ int rtw_restruct_wmm_ie(struct adapter *adapter, u8 *in_ie, u8 *out_ie, uint in_
+ 
+ static int SecIsInPMKIDList(struct adapter *Adapter, u8 *bssid)
+ {
+-	struct security_priv *psecuritypriv = &Adapter->securitypriv;
+-	int i = 0;
+-
+-	do {
+-		if ((psecuritypriv->PMKIDList[i].bUsed) &&
+-				(!memcmp(psecuritypriv->PMKIDList[i].Bssid, bssid, ETH_ALEN))) {
+-			break;
+-		} else {
+-			i++;
+-			/* continue; */
+-		}
+-
+-	} while (i < NUM_PMKID_CACHE);
+-
+-	if (i == NUM_PMKID_CACHE) {
+-		i = -1;/*  Could not find. */
+-	} else {
+-		/*  There is one Pre-Authentication Key for the specific BSSID. */
+-	}
+-
+-	return i;
++	struct security_priv *p = &Adapter->securitypriv;
++	int i;
+ 
++	for (i = 0; i < NUM_PMKID_CACHE; i++)
++		if ((p->PMKIDList[i].bUsed) &&
++				(!memcmp(p->PMKIDList[i].Bssid, bssid, ETH_ALEN)))
++			return i;
++	return -1;
+ }
+ 
+ /*  */
+-- 
+2.25.1
 
