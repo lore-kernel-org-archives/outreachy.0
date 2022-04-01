@@ -1,93 +1,73 @@
-Received: from m228-13.mailgun.net (m228-13.mailgun.net [159.135.228.13])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7B86AEBF
-	for <outreachy@lists.linux.dev>; Fri,  1 Apr 2022 05:00:57 +0000 (UTC)
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=codeagain.dev; q=dns/txt;
- s=smtp; t=1648789257; h=Content-Transfer-Encoding: MIME-Version:
- Message-Id: Date: Subject: Subject: Cc: To: To: From: From: Sender:
- Sender; bh=l+7Y194RkHEDvlBRUE9dOX8hqW2hHbFhgCzQfGAyZwQ=; b=Iob4k9IZ6MgOWCUF5iraIlqHcqH7c9Gv3kgUZ/PgXeS/qT27dm9uIGFyPqUc3vepl58yTRIC
- QqEb8r7htD266WnzUWW/zVy/SAC+qYzQGML8csyhklEqd4CWSQbmfzz8BhS2Qk6p8lHN5lwy
- NeqcYTM4gZRD0v8UVFhnR8ltYGo/Stb1/7cJj/UwPiiq5uSVtTgZu72c+V7m+nZtanL2H4Qv
- nIpaDB8XskaCl7zITdkjaxJgYy3NVtm4ckaGw72yO8+xBOexmUM37F7h96fhmbMWg7kK/HTK
- jHrDMzPQepYN5G6SMBPdYVv2o1fw4W5D3u/baAXs9PvJxrXVdw4Rmw==
-X-Mailgun-Sending-Ip: 159.135.228.13
-X-Mailgun-Sid: WyI2Y2ZlNyIsICJvdXRyZWFjaHlAbGlzdHMubGludXguZGV2IiwgImJlOWM2ZCJd
-Received: from localhost.localdomain (dynamic-user.170.84.58.28.mhnet.com.br
- [170.84.58.28]) by smtp-out-n06.prod.us-east-1.postgun.com with SMTP id
- 624687077afabd0707a01257 (version=TLS1.3, cipher=TLS_AES_128_GCM_SHA256);
- Fri, 01 Apr 2022 05:00:55 GMT
-Sender: codeagain@codeagain.dev
-From: Bruno Moreira-Guedes <codeagain@codeagain.dev>
-To: reg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Martyn Welch <martyn@welchs.me.uk>,
-	Manohar Vanga <manohar.vanga@gmail.com>,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E8B52EBF;
+	Fri,  1 Apr 2022 06:01:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 425D8C2BBE4;
+	Fri,  1 Apr 2022 06:01:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1648792896;
+	bh=usiQ5/kmWskool16uoQNuX3zH9fqlkLk8OXUJrapyVs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=hgDBvIU4HK7sNSbq7Es2681HocJZvVfc0diInnEolZ0o577aEhp56QPwNvlmJKHEO
+	 0uXwiEaG1aIFcpFH/FnZM2z6CUYsNxMR8OirdyOoidTg/bIL3PA6wvUrobP+xQWci3
+	 4vTuXwDt8myng+TKtmwZxbmwo0U8Rm/ffsOwCDqA=
+Date: Fri, 1 Apr 2022 08:01:34 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+Cc: Dan Carpenter <dan.carpenter@oracle.com>, sparmaintainer@unisys.com,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
 	outreachy@lists.linux.dev
-Cc: Bruno Moreira-Guedes <codeagain@codeagain.dev>
-Subject: [PATCH] staging: vme: Adjusted VME_USER in Kconfig
-Date: Fri,  1 Apr 2022 02:00:45 -0300
-Message-Id: <20220401050045.3686663-1-codeagain@codeagain.dev>
-X-Mailer: git-send-email 2.35.1
+Subject: Re: [PATCH v2] staging: unisys: Remove "struct dentry
+ *eth_debugfs_dir"
+Message-ID: <YkaVPtpgLk7zc1e/@kroah.com>
+References: <20220331064751.29634-1-fmdefrancesco@gmail.com>
+ <20220331082202.GZ12805@kadam>
+ <5558288.DvuYhMxLoT@leap>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <5558288.DvuYhMxLoT@leap>
 
-Currently, the VME_USER driver is in the staging tree Kconfig, unlike
-other VME drivers already moved to the main portions of the kernel tree.
-Its configuration is, however, nested into the VME_BUS config option,
-which might be misleading.
+On Thu, Mar 31, 2022 at 06:58:58PM +0200, Fabio M. De Francesco wrote:
+> On gioved? 31 marzo 2022 10:22:02 CEST Dan Carpenter wrote:
+> > On Thu, Mar 31, 2022 at 08:47:51AM +0200, Fabio M. De Francesco wrote:
+> > > There is no need for "struct dentry *eth_debugfs_dir" which is used for
+> > > debug / sysfs directories. Therefore, remove this "struct dentry" and
+> > > everything related (i.e., creation and removal).
+> > > 
+> > > As a side effect of this change, the code has no more need of the
+> > > "cleanup_register_netdev" label, which can also be removed.
+> > > 
+> > > Suggested-by: Dan Carpenter <dan.carpenter@oracle.com>
+> > > Suggested-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> > > Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+> > > ---
+> > > 
+> > > v1 - v2: Add a couple of "Suggested-by" tags which were forgotten. 
+> > > Thanks to Dan Carpenter and Greg Kroah-Hartman.
+> > > 
+> > 
+> > Thanks!
+> > 
+> > Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
+> > 
+> > regards,
+> > dan carpenter
+> > 
+> I've just noticed that visornic and visorhba do other calls to 
+> debugfs_create_dir() and debugfs_create_file() functions.
+> 
+> I'm not sure whether or not this driver still needs those other calls.
 
-Since the staging tree "[...] is used to hold stand-alone[1] drivers and
-filesystem that are not ready to be merged into the main portion of the
-Linux kernel tree [...]"[1], IMHO all staging drivers should appear
-nested into the Main Menu -> Device Drivers -> Staging Drivers to make
-sure the user don't pick it without being fully aware of its staging
-status as it could be the case in Menu -> Device Drivers -> VME bridge
-support (the current location).
+It looks like those drivers create actual files in debugfs with
+information in them, so I would leave them alone.
 
-With this change menuconfig users will clearly know this is not a driver
-in the main portion of the kernel tree and decide whether to build it or
-not with that clearly in mind.
+thanks,
 
-This change goes into the same direction of commit 4b4cdf3979c3
-("STAGING: Move staging drivers back to staging-specific menu")
-
-[1] https://lkml.org/lkml/2009/3/18/314
-
-Signed-off-by: Bruno Moreira-Guedes <codeagain@codeagain.dev>
----
- drivers/staging/Kconfig | 2 ++
- drivers/vme/Kconfig     | 2 --
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/Kconfig b/drivers/staging/Kconfig
-index 932acb4e8cbc..0545850eb2ff 100644
---- a/drivers/staging/Kconfig
-+++ b/drivers/staging/Kconfig
-@@ -88,4 +88,6 @@ source "drivers/staging/qlge/Kconfig"
- 
- source "drivers/staging/wfx/Kconfig"
- 
-+source "drivers/staging/vme/devices/Kconfig"
-+
- endif # STAGING
-diff --git a/drivers/vme/Kconfig b/drivers/vme/Kconfig
-index 936392ca3c8c..c13dd9d2a604 100644
---- a/drivers/vme/Kconfig
-+++ b/drivers/vme/Kconfig
-@@ -15,6 +15,4 @@ source "drivers/vme/bridges/Kconfig"
- 
- source "drivers/vme/boards/Kconfig"
- 
--source "drivers/staging/vme/devices/Kconfig"
--
- endif # VME
--- 
-2.35.1
-
+greg k-h
