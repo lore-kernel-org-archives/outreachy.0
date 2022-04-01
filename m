@@ -1,106 +1,102 @@
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-wr1-f52.google.com (mail-wr1-f52.google.com [209.85.221.52])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 43C7AED5;
-	Fri,  1 Apr 2022 09:09:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6A24CC2BBE4;
-	Fri,  1 Apr 2022 09:09:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1648804143;
-	bh=MOGtfJobPi0ZSab1gabpQOfmpSETqgpVKmTH8A1H2PQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=q/KGEFkj9oWQynZ+Z20+nsb5t/AJ5qsXg1sK+TUpusQF3ymkYnD/WUq1ZDMqkFUSK
-	 dc7I0WMpI26Dr3z/gqLcy0ll4A1LnWjY/4gbLcoTGnCGBnxP9KLI6EkmU9khutZZGl
-	 zldgmY7TCprnpG7K7ez+Gy22oCfZ+VXmPSIyjFoE=
-Date: Fri, 1 Apr 2022 11:09:00 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Cc: Nicolas Saenz Julienne <nsaenz@kernel.org>,
-	bcm-kernel-feedback-list@broadcom.com,
-	linux-rpi-kernel@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, ira.weiny@intel.com,
-	outreachy@lists.linux.dev
-Subject: Re: [PATCH] staging: vc04_services: Convert kmap() to
- kmap_local_page()
-Message-ID: <YkbBLCzkJCBamdKs@kroah.com>
-References: <20220330191414.23141-1-fmdefrancesco@gmail.com>
- <3162339.aeNJFYEL58@leap>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 15E3BED5
+	for <outreachy@lists.linux.dev>; Fri,  1 Apr 2022 09:35:18 +0000 (UTC)
+Received: by mail-wr1-f52.google.com with SMTP id a1so3331694wrh.10
+        for <outreachy@lists.linux.dev>; Fri, 01 Apr 2022 02:35:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=from:to:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=MHc4kL4tHnaD/k7QZHyRxRtGvdo2Hat2LBYSinl0WGU=;
+        b=ho0RIAzbZGOHMTkgLzmpSSKB4Yot+O/IN6PjBt/iRFi/IdWU4sW9X90o5Hd4fpGZhc
+         GwwmG85vq8zd5xbGTJ2PWSAXYq2/NI7IApyWxxrKs1bNlwH29ROJTrnQXir6wI2ZG523
+         /LMQkHMXUth2ENcekoExXH0yaBjGLQjoebmSTy8wotqKtlRAbFNMrVHf3ygqaI71AZxT
+         VCVRxdlpT4fRIZkGeXfWKodZ16lTYCSkiQ6cdYiGkcs1w9lFwrQzvf/9/kknLzif3i15
+         EBzQTad6/aCB4so+HTrz4HHY+UJ8t248rY1A6JXifyB0q3XsElwz79xf35j9o9ONSi5B
+         YaYg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=MHc4kL4tHnaD/k7QZHyRxRtGvdo2Hat2LBYSinl0WGU=;
+        b=YNDMkYR3f7Cl5ziIFpk3KHcCDuASUeV/4rVpXZZCqvexOOTqdLQfqHOmPuyDxlZcA1
+         hy+7dFRJYNlHPLNrFfZu1MsUZn8dDb2v0UYOJLiExrbhCg0G1GC+y2swNZ3M77bLJyrp
+         zNN3eXNVvagTZ/ITK4RGYTV8/pgt/G7/lWq46hnu88saOwdYXa0yiGIIC6UWekGta4XF
+         etIeLy9GiFfSlFSfs0JyWN0Rb25F/0E9Pq2SxB8XjpOZ4o04JLZs22zE4NyJR+TLOrJE
+         wg7bVNnkyIbpS9sHfpzXbAHeR/+LCKwENGvyuABpeRmSYrfxO4Hq4159O1Tlv7C4rG2X
+         WGLg==
+X-Gm-Message-State: AOAM530Ovn+pEVm+yq735W59hqbibGBPFbMdciJnf8xXagx5nOQUUOEm
+	MIwmgCcaI0mQkmKm4t2NyKEUBNXEcEk=
+X-Google-Smtp-Source: ABdhPJycuzGiaB66t5g0Iz481JmyGJYebB1aK10YzZRZ4FUAG4JtebPUaKDbjJESPVxDsbaF+H8NkQ==
+X-Received: by 2002:a5d:6301:0:b0:205:cb42:74a5 with SMTP id i1-20020a5d6301000000b00205cb4274a5mr7106903wru.385.1648805715718;
+        Fri, 01 Apr 2022 02:35:15 -0700 (PDT)
+Received: from leap.localnet (host-95-249-145-232.retail.telecomitalia.it. [95.249.145.232])
+        by smtp.gmail.com with ESMTPSA id m8-20020a05600c3b0800b0038cc8f116d3sm9331812wms.44.2022.04.01.02.35.14
+        for <outreachy@lists.linux.dev>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 01 Apr 2022 02:35:14 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: outreachy@lists.linux.dev
+Subject: Compilation errors
+Date: Fri, 01 Apr 2022 11:35:13 +0200
+Message-ID: <3603561.MHq7AAxBmi@leap>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <3162339.aeNJFYEL58@leap>
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
 
-On Fri, Apr 01, 2022 at 10:07:36AM +0200, Fabio M. De Francesco wrote:
-> On mercoledì 30 marzo 2022 21:14:14 CEST Fabio M. De Francesco wrote:
-> > The use of kmap() is being deprecated in favor of kmap_local_page()
-> > where it is feasible. In file interface/vchiq_arm/vchiq_arm.c,
-> > function free_pagelist() calls kmap() / kunmap() from two places.
-> > 
-> > With kmap_local_page(), the mapping is per thread, CPU local and not
-> > globally visible. Therefore, free_pagelist() is a function where the
-> > use of kmap_local_page() in place of kmap() is correctly suited.
-> > 
-> > Convert to kmap_local_page() but, instead of open coding it, use the
-> > memcpy_to_page() helper.
-> > 
-> > Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
-> > ---
-> >  .../vc04_services/interface/vchiq_arm/vchiq_arm.c   | 13 +++++--------
-> >  1 file changed, 5 insertions(+), 8 deletions(-)
-> > 
-> > diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-> > index f0bfacfdea80..efb1383b5218 100644
-> > --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-> > +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
-> > @@ -431,21 +431,18 @@ free_pagelist(struct vchiq_pagelist_info *pagelistinfo,
-> >  			if (head_bytes > actual)
-> >  				head_bytes = actual;
-> >  
-> > -			memcpy((char *)kmap(pages[0]) +
-> > +			memcpy_to_page(pages[0],
-> >  				pagelist->offset,
-> >  				fragments,
-> >  				head_bytes);
-> > -			kunmap(pages[0]);
-> >  		}
-> >  		if ((actual >= 0) && (head_bytes < actual) &&
-> > -		    (tail_bytes != 0)) {
-> > -			memcpy((char *)kmap(pages[num_pages - 1]) +
-> > -				((pagelist->offset + actual) &
-> > -				(PAGE_SIZE - 1) & ~(g_cache_line_size - 1)),
-> > +		    (tail_bytes != 0))
-> > +			memcpy_to_page(pages[num_pages - 1],
-> > +				(pagelist->offset + actual) &
-> > +				(PAGE_SIZE - 1) & ~(g_cache_line_size - 1),
-> >  				fragments + g_cache_line_size,
-> >  				tail_bytes);
-> > -			kunmap(pages[num_pages - 1]);
-> > -		}
-> >  
-> >  		down(&g_free_fragments_mutex);
-> >  		*(char **)fragments = g_free_fragments;
-> > -- 
-> > 2.34.1
-> > 
-> Hi Greg,
-> 
-> I've just received a message from you that says that a patch that I sent
-> on March 31 has been applied to staging testing. I know that you usually
-> apply patches in first come first served fashion (FIFO), therefore I wonder
-> why this patch has not yet been applied.
-> 
-> Please don't misunderstand me: I have no hurry. I'm asking only because 
-> I suspect that this patch, sent on March 30th) could have been overlooked 
-> since it has the very identical subject of another patch that I sent on 
-> the same day (or the day before, I'm not sure about it now) and which has 
-> already been applied. Therefore, they may appear to be the same patch,
-> because the only difference is that the drivers are different.
+Hello everybody,
 
-I wanted to give others the chance to review this before applying it :)
+I've made hundreds of Linux builds and never had problems, but since=20
+few days I'm not anymore able to compile the kernel with GCC or Clang.
+
+I get many errors like the following and the build crashes:
+
+# CC=3Dgcc-11 make -j12
+[...]
+drivers/net/ethernet/broadcom/bnx2x/bnx2x_main.c: In function =E2=80=98bnx2=
+x_check_blocks_with_parity3=E2=80=99:
+drivers/net/ethernet/broadcom/bnx2x/bnx2x_main.c:4917:4: error: case label =
+does not reduce to an integer constant
+    case AEU_INPUTS_ATTN_BITS_MCP_LATCHED_SCPAD_PARITY:
+[...]
+make[5]: *** [scripts/Makefile.build:289: drivers/net/ethernet/broadcom/bnx=
+2x/bnx2x_main.o] Error 1
+make[4]: *** [scripts/Makefile.build:551: drivers/net/ethernet/broadcom/bnx=
+2x] Error 2
+make[4]: *** Waiting for unfinished jobs....
+
+One more example...
+
+# make mrproper
+# CC=3Dclang make -j12
+[...]
+drivers/usb/typec/tcpm/tcpm.c:4724:3: error: case label does not reduce to =
+an integer constant
+   case BDO_MODE_TESTDATA:
+   ^~~~
+make[4]: *** [scripts/Makefile.build:288: drivers/usb/typec/tcpm/tcpm.o] Er=
+ror 1
+make[3]: *** [scripts/Makefile.build:550: drivers/usb/typec/tcpm] Error 2
+make[2]: *** [scripts/Makefile.build:550: drivers/usb/typec] Error 2
+make[2]: *** Waiting for unfinished jobs....
+
+Can someone help me to understand what is happening and how to fix this iss=
+ue?
+Could it depend on a configuration option that, unintentionally enabled, ma=
+ke=20
+the build fail whenever "case label does not reduce to an integer constant"=
+ is=20
+hit? If so, which option?
+
+Thanks,
+
+=46abio M. De Francesco
+
+
