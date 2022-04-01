@@ -1,116 +1,128 @@
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ed1-f41.google.com (mail-ed1-f41.google.com [209.85.208.41])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 09073EBF;
-	Fri,  1 Apr 2022 06:10:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5AB3AC340EE;
-	Fri,  1 Apr 2022 06:10:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1648793421;
-	bh=rozckvYCH6DkysLLr4xlH/qYY4wlewysqNuUHaglUy0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=TvE+JXsjadyuO6RU/3z5Q/sYwPrHJ7r4p17AoSkNq2lryy4xj0H0uB8gqD4ZRiSBa
-	 eb/i7wtl0mm4nnNuTEovIUQADYiGJo+Ormixd7fmpgCcU214wZ56Y+PW3CWJ6AGnTP
-	 y+7F27D+Y6DjsqKx1TzeqmghNRazUs4v3X3vaN5c=
-Date: Fri, 1 Apr 2022 08:10:14 +0200
-From: reg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Bruno Moreira-Guedes <codeagain@codeagain.dev>
-Cc: Martyn Welch <martyn@welchs.me.uk>,
-	Manohar Vanga <manohar.vanga@gmail.com>,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev
-Subject: Re: [PATCH] staging: vme: Adjusted VME_USER in Kconfig
-Message-ID: <YkaXRpIElW1BwKGb@kroah.com>
-References: <20220401050045.3686663-1-codeagain@codeagain.dev>
- <YkaW0ThT8Ah3z0wW@kroah.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 072727B;
+	Fri,  1 Apr 2022 08:26:46 +0000 (UTC)
+Received: by mail-ed1-f41.google.com with SMTP id h1so2096190edj.1;
+        Fri, 01 Apr 2022 01:26:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=9hsMF7BCfjYirFT1IksTwNQVIId/FnL7I37gK+LNZTY=;
+        b=coHjGKP2dzde1Xd07Zjvj7YNaOPUdCjyk2t2tfXmsE0tcUE75ziOcdpt1fFPR6xlE0
+         qhPrIoZTrHX3XDBZcbWK2JV7qu2xXdArmEcIh9e1fUmmuE/nxFwhA56aFiL3+1Pap3Zx
+         R6uwSoW2crKgJRdu0mrbKFaVinGAyfij3jgLGZCw2R0yOkP5cYuDTt61e54mU2h28yzV
+         1vjZDKpMxE1TnESzbHi2TGM5AORJN4oJuRwahUv6pnzkuGlTvZKT1G5QyJ+cQcmdhtth
+         Rp+G/R7kq8XRHRaDQ8G/DeUtQeK9c77P/vGz71SLP3eoNjwTOWqGaiJu/C843q/R4Cnn
+         /WDg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=9hsMF7BCfjYirFT1IksTwNQVIId/FnL7I37gK+LNZTY=;
+        b=oCwqU9z/cFjCY1zWMbGvXXAfpm0J5UNbh4lyO12HSCvoltNsPR1/SoiuHl0nurLRKa
+         7hWmqug1TpspIQ0eLay3lSn+bUwlIeW+TZ0mjiYCkGhsSnohzSn7RPvSC2pNQ/32vwbW
+         +qiFckmYB1JQQruVcAPJecHXFTLQ6lD0gmB04odz97x3ZI029lDu89dxp9RZArINO02H
+         JqZEumsadB4+iNpNPVZIIOcgUZEVQqVzo4Bm3Goq32QYiLY5A5iVNfv9Fb9dUqgmgKjA
+         CUriE/1Vu3pUH+0sxTAttIiazp/YnaP9D6SjoaKYZbCzue+Xb7E7FgCVYX5tEYEzwmYg
+         aHEQ==
+X-Gm-Message-State: AOAM531G/tm0H7m4Zp4n+FJRukABpkF7xWGECD/UJ5xwl9U0a5hQnLBl
+	yk6QMXAMqNSaJ5vmBeSxJWE=
+X-Google-Smtp-Source: ABdhPJwtVEmM1Ovd0jOYKQpen33GZA28WERT42Fptm2WeHbobCIIXTD/T9VT5RllPkXMqD/pA8yRkA==
+X-Received: by 2002:a05:6402:524c:b0:419:4d8c:e959 with SMTP id t12-20020a056402524c00b004194d8ce959mr20062285edd.398.1648801605184;
+        Fri, 01 Apr 2022 01:26:45 -0700 (PDT)
+Received: from leap.localnet (host-95-249-145-232.retail.telecomitalia.it. [95.249.145.232])
+        by smtp.gmail.com with ESMTPSA id c5-20020a170906d18500b006ce371f09d4sm757857ejz.57.2022.04.01.01.26.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 01 Apr 2022 01:26:43 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Nicolas Saenz Julienne <nsaenz@kernel.org>, bcm-kernel-feedback-list@broadcom.com, linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, ira.weiny@intel.com, outreachy@lists.linux.dev
+Subject: Re: [PATCH] staging: vc04_services: Convert kmap() to kmap_local_page()
+Date: Fri, 01 Apr 2022 10:07:36 +0200
+Message-ID: <3162339.aeNJFYEL58@leap>
+In-Reply-To: <20220330191414.23141-1-fmdefrancesco@gmail.com>
+References: <20220330191414.23141-1-fmdefrancesco@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <YkaW0ThT8Ah3z0wW@kroah.com>
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="ISO-8859-1"
 
-On Fri, Apr 01, 2022 at 08:08:17AM +0200, reg Kroah-Hartman wrote:
-> On Fri, Apr 01, 2022 at 02:00:45AM -0300, Bruno Moreira-Guedes wrote:
-> > Currently, the VME_USER driver is in the staging tree Kconfig, unlike
-> > other VME drivers already moved to the main portions of the kernel tree.
-> > Its configuration is, however, nested into the VME_BUS config option,
-> > which might be misleading.
-> > 
-> > Since the staging tree "[...] is used to hold stand-alone[1] drivers and
-> > filesystem that are not ready to be merged into the main portion of the
-> > Linux kernel tree [...]"[1], IMHO all staging drivers should appear
-> > nested into the Main Menu -> Device Drivers -> Staging Drivers to make
-> > sure the user don't pick it without being fully aware of its staging
-> > status as it could be the case in Menu -> Device Drivers -> VME bridge
-> > support (the current location).
-> > 
-> > With this change menuconfig users will clearly know this is not a driver
-> > in the main portion of the kernel tree and decide whether to build it or
-> > not with that clearly in mind.
-> > 
-> > This change goes into the same direction of commit 4b4cdf3979c3
-> > ("STAGING: Move staging drivers back to staging-specific menu")
-> > 
-> > [1] https://lkml.org/lkml/2009/3/18/314
-> > 
-> > Signed-off-by: Bruno Moreira-Guedes <codeagain@codeagain.dev>
-> > ---
-> >  drivers/staging/Kconfig | 2 ++
-> >  drivers/vme/Kconfig     | 2 --
-> >  2 files changed, 2 insertions(+), 2 deletions(-)
-> > 
-> > diff --git a/drivers/staging/Kconfig b/drivers/staging/Kconfig
-> > index 932acb4e8cbc..0545850eb2ff 100644
-> > --- a/drivers/staging/Kconfig
-> > +++ b/drivers/staging/Kconfig
-> > @@ -88,4 +88,6 @@ source "drivers/staging/qlge/Kconfig"
-> >  
-> >  source "drivers/staging/wfx/Kconfig"
-> >  
-> > +source "drivers/staging/vme/devices/Kconfig"
-> > +
-> >  endif # STAGING
-> > diff --git a/drivers/vme/Kconfig b/drivers/vme/Kconfig
-> > index 936392ca3c8c..c13dd9d2a604 100644
-> > --- a/drivers/vme/Kconfig
-> > +++ b/drivers/vme/Kconfig
-> > @@ -15,6 +15,4 @@ source "drivers/vme/bridges/Kconfig"
-> >  
-> >  source "drivers/vme/boards/Kconfig"
-> >  
-> > -source "drivers/staging/vme/devices/Kconfig"
-> > -
-> >  endif # VME
-> > -- 
-> > 2.35.1
-> > 
-> > 
-> 
-> The problem with this change is that you just changed the initialization
-> order of the drivers if they are built into the kernel.  Are you sure
-> that you can initialize a vme device driver before the vme bridge and
-> bus code is run?  I don't know if that will work properly, which is why
-> the Kconfig entries are in the order they currently are in (we preserved
-> the link order.)
-> 
-> It's not an obvious thing at all, sorry, but build order defines link
-> order, which defines the order in which things are initialized in the
-> kernel.
-> 
-> So I can't take this change unless you are able to prove that it still
-> works properly on the hardware that these drivers control.  Do you have
-> this hardware to test this change with?
+On mercoled=EC 30 marzo 2022 21:14:14 CEST Fabio M. De Francesco wrote:
+> The use of kmap() is being deprecated in favor of kmap_local_page()
+> where it is feasible. In file interface/vchiq_arm/vchiq_arm.c,
+> function free_pagelist() calls kmap() / kunmap() from two places.
+>=20
+> With kmap_local_page(), the mapping is per thread, CPU local and not
+> globally visible. Therefore, free_pagelist() is a function where the
+> use of kmap_local_page() in place of kmap() is correctly suited.
+>=20
+> Convert to kmap_local_page() but, instead of open coding it, use the
+> memcpy_to_page() helper.
+>=20
+> Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+> ---
+>  .../vc04_services/interface/vchiq_arm/vchiq_arm.c   | 13 +++++--------
+>  1 file changed, 5 insertions(+), 8 deletions(-)
+>=20
+> diff --git a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.=
+c b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+> index f0bfacfdea80..efb1383b5218 100644
+> --- a/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+> +++ b/drivers/staging/vc04_services/interface/vchiq_arm/vchiq_arm.c
+> @@ -431,21 +431,18 @@ free_pagelist(struct vchiq_pagelist_info *pagelisti=
+nfo,
+>  			if (head_bytes > actual)
+>  				head_bytes =3D actual;
+> =20
+> -			memcpy((char *)kmap(pages[0]) +
+> +			memcpy_to_page(pages[0],
+>  				pagelist->offset,
+>  				fragments,
+>  				head_bytes);
+> -			kunmap(pages[0]);
+>  		}
+>  		if ((actual >=3D 0) && (head_bytes < actual) &&
+> -		    (tail_bytes !=3D 0)) {
+> -			memcpy((char *)kmap(pages[num_pages - 1]) +
+> -				((pagelist->offset + actual) &
+> -				(PAGE_SIZE - 1) & ~(g_cache_line_size - 1)),
+> +		    (tail_bytes !=3D 0))
+> +			memcpy_to_page(pages[num_pages - 1],
+> +				(pagelist->offset + actual) &
+> +				(PAGE_SIZE - 1) & ~(g_cache_line_size - 1),
+>  				fragments + g_cache_line_size,
+>  				tail_bytes);
+> -			kunmap(pages[num_pages - 1]);
+> -		}
+> =20
+>  		down(&g_free_fragments_mutex);
+>  		*(char **)fragments =3D g_free_fragments;
+> --=20
+> 2.34.1
+>=20
+Hi Greg,
 
-Oh wait, it's the Makefile order that controls this, not the Kconfig
-order.  Sorry for the noise here, it's still early...
+I've just received a message from you that says that a patch that I sent
+on March 31 has been applied to staging testing. I know that you usually
+apply patches in first come first served fashion (FIFO), therefore I wonder
+why this patch has not yet been applied.
 
-So this change _should_ be fine, but it would be good if you could prove
-it still works with some build tests.  How did you test this change?
+Please don't misunderstand me: I have no hurry. I'm asking only because=20
+I suspect that this patch, sent on March 30th) could have been overlooked=20
+since it has the very identical subject of another patch that I sent on=20
+the same day (or the day before, I'm not sure about it now) and which has=20
+already been applied. Therefore, they may appear to be the same patch,
+because the only difference is that the drivers are different.
 
-thanks,
+Thanks,
 
-greg k-h
+=46abio
+
+
+
