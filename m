@@ -1,114 +1,93 @@
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from m228-13.mailgun.net (m228-13.mailgun.net [159.135.228.13])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 03C7CA4C
-	for <outreachy@lists.linux.dev>; Thu, 31 Mar 2022 22:12:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1648764742;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=5ywNPOixItCwgtLaWhB4rCstLBtOoIeIWk205IUF9Ik=;
-	b=VKO615IcEn1ChDdkrUUg/LJZA6IayHBxi4L9roZCDvlyUvBpNGx4+ESw37dZPhGoEFV+Ax
-	EU5hJntIO2tQaFI2XcoUUcOxsF+5MABolIr4+dW8TPXT5ux3PgIVApWVcy56NWwKKGhJA1
-	jGSGNQMiVFwdBsZlM1mlD2/Y3oawzfg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-267-8GeJdQSHP36A3PrqayEIiA-1; Thu, 31 Mar 2022 18:12:21 -0400
-X-MC-Unique: 8GeJdQSHP36A3PrqayEIiA-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2C0C41080865;
-	Thu, 31 Mar 2022 22:12:19 +0000 (UTC)
-Received: from maya.cloud.tilaa.com (unknown [10.40.208.6])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id CBB135D9D5;
-	Thu, 31 Mar 2022 22:12:18 +0000 (UTC)
-Date: Fri, 1 Apr 2022 00:12:16 +0200
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Jaehee Park <jhpark1013@gmail.com>
-Cc: outreachy@lists.linux.dev
-Subject: Re: patch idea for wfx
-Message-ID: <20220401001216.727c2ef1@elisabeth>
-In-Reply-To: <20220331214733.GA1508153@jaehee-ThinkPad-X1-Extreme>
-References: <20220331141434.GA1104155@jaehee-ThinkPad-X1-Extreme>
-	<20220331195212.7e25d12a@elisabeth>
-	<20220331214733.GA1508153@jaehee-ThinkPad-X1-Extreme>
-Organization: Red Hat
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7B86AEBF
+	for <outreachy@lists.linux.dev>; Fri,  1 Apr 2022 05:00:57 +0000 (UTC)
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=codeagain.dev; q=dns/txt;
+ s=smtp; t=1648789257; h=Content-Transfer-Encoding: MIME-Version:
+ Message-Id: Date: Subject: Subject: Cc: To: To: From: From: Sender:
+ Sender; bh=l+7Y194RkHEDvlBRUE9dOX8hqW2hHbFhgCzQfGAyZwQ=; b=Iob4k9IZ6MgOWCUF5iraIlqHcqH7c9Gv3kgUZ/PgXeS/qT27dm9uIGFyPqUc3vepl58yTRIC
+ QqEb8r7htD266WnzUWW/zVy/SAC+qYzQGML8csyhklEqd4CWSQbmfzz8BhS2Qk6p8lHN5lwy
+ NeqcYTM4gZRD0v8UVFhnR8ltYGo/Stb1/7cJj/UwPiiq5uSVtTgZu72c+V7m+nZtanL2H4Qv
+ nIpaDB8XskaCl7zITdkjaxJgYy3NVtm4ckaGw72yO8+xBOexmUM37F7h96fhmbMWg7kK/HTK
+ jHrDMzPQepYN5G6SMBPdYVv2o1fw4W5D3u/baAXs9PvJxrXVdw4Rmw==
+X-Mailgun-Sending-Ip: 159.135.228.13
+X-Mailgun-Sid: WyI2Y2ZlNyIsICJvdXRyZWFjaHlAbGlzdHMubGludXguZGV2IiwgImJlOWM2ZCJd
+Received: from localhost.localdomain (dynamic-user.170.84.58.28.mhnet.com.br
+ [170.84.58.28]) by smtp-out-n06.prod.us-east-1.postgun.com with SMTP id
+ 624687077afabd0707a01257 (version=TLS1.3, cipher=TLS_AES_128_GCM_SHA256);
+ Fri, 01 Apr 2022 05:00:55 GMT
+Sender: codeagain@codeagain.dev
+From: Bruno Moreira-Guedes <codeagain@codeagain.dev>
+To: reg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Martyn Welch <martyn@welchs.me.uk>,
+	Manohar Vanga <manohar.vanga@gmail.com>,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	outreachy@lists.linux.dev
+Cc: Bruno Moreira-Guedes <codeagain@codeagain.dev>
+Subject: [PATCH] staging: vme: Adjusted VME_USER in Kconfig
+Date: Fri,  1 Apr 2022 02:00:45 -0300
+Message-Id: <20220401050045.3686663-1-codeagain@codeagain.dev>
+X-Mailer: git-send-email 2.35.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=sbrivio@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 
-On Thu, 31 Mar 2022 17:47:33 -0400
-Jaehee Park <jhpark1013@gmail.com> wrote:
+Currently, the VME_USER driver is in the staging tree Kconfig, unlike
+other VME drivers already moved to the main portions of the kernel tree.
+Its configuration is, however, nested into the VME_BUS config option,
+which might be misleading.
 
-> [...]
->
-> Ok so my understanding is: vif is an instance of the struct
-> ieee80211_vif which is from the /net/mac80211.h in the linux kernel
-> code and so the compiler knows the offset of drv_priv because it's
-> defined within this generic struct.
+Since the staging tree "[...] is used to hold stand-alone[1] drivers and
+filesystem that are not ready to be merged into the main portion of the
+Linux kernel tree [...]"[1], IMHO all staging drivers should appear
+nested into the Main Menu -> Device Drivers -> Staging Drivers to make
+sure the user don't pick it without being fully aware of its staging
+status as it could be the case in Menu -> Device Drivers -> VME bridge
+support (the current location).
 
-Correct! Well, it's not an instance, it's just a reference to an
-instance -- note that it's a pointer. Usually by "instance" one refers
-to something more concrete (such as the storage for a given struct).
+With this change menuconfig users will clearly know this is not a driver
+in the main portion of the kernel tree and decide whether to build it or
+not with that clearly in mind.
 
-	struct ieee80211_vif vif <- instance!
+This change goes into the same direction of commit 4b4cdf3979c3
+("STAGING: Move staging drivers back to staging-specific menu")
 
-	struct ieee80211_vif *vif -> hmm, you could call it an
-				     instance, but might cause confusion
+[1] https://lkml.org/lkml/2009/3/18/314
 
-> This makes is so much clearer in my head; Thank you so much!! I
-> didn't know about pahole. Such a neat tool!
+Signed-off-by: Bruno Moreira-Guedes <codeagain@codeagain.dev>
+---
+ drivers/staging/Kconfig | 2 ++
+ drivers/vme/Kconfig     | 2 --
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-You're welcome, I'm glad it's clear now!
-
-> [...]
->
-> Thank you Stefano for explanining contain_of() so clearly! To
-> implement it, I think I need to implement work_struct from
-> linux/workqueue.h because I see it's being used in container_of()
-> defined in functions: wfx_cooling_timeout_work, wfx_beacon_loss_work,
-> wfx_update_tim_work.
-
-Hah, no, forget about that! It's just the very same construct but it
-has little to do with what you want to change.
-
-Take wfx_update_tim_work(): struct wfx_vif here is like struct
-ieee80211_vif because it carries a struct work_struct, here, which is
-like your struct wfx_wif:
-
-	struct wfx_vif *wvif = container_of(work, struct wfx_vif, update_tim_work);
-
-meaning:
-
-- struct wfx_vif contains a struct work_struct, and you have a pointer
-  to the inner struct ("work")
-
-- "update_tim_work" is the name of the instance of struct work_struct
-  inside struct wfx_vif
-
-- from "work", take a pointer to the struct wfx_vif which contains it
-
-> I'm not totally sure of my questions / what to ask here - maybe how
-> does the kernel know that there is work and what work to queue?
-
-http://www.makelinux.net/ldd3/chp-7-sect-6.shtml
-
-...but it's unrelated with the issue at hand. :)
-
+diff --git a/drivers/staging/Kconfig b/drivers/staging/Kconfig
+index 932acb4e8cbc..0545850eb2ff 100644
+--- a/drivers/staging/Kconfig
++++ b/drivers/staging/Kconfig
+@@ -88,4 +88,6 @@ source "drivers/staging/qlge/Kconfig"
+ 
+ source "drivers/staging/wfx/Kconfig"
+ 
++source "drivers/staging/vme/devices/Kconfig"
++
+ endif # STAGING
+diff --git a/drivers/vme/Kconfig b/drivers/vme/Kconfig
+index 936392ca3c8c..c13dd9d2a604 100644
+--- a/drivers/vme/Kconfig
++++ b/drivers/vme/Kconfig
+@@ -15,6 +15,4 @@ source "drivers/vme/bridges/Kconfig"
+ 
+ source "drivers/vme/boards/Kconfig"
+ 
+-source "drivers/staging/vme/devices/Kconfig"
+-
+ endif # VME
 -- 
-Stefano
+2.35.1
 
