@@ -1,130 +1,167 @@
-Received: from mail-ed1-f44.google.com (mail-ed1-f44.google.com [209.85.208.44])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6779C137F
-	for <outreachy@lists.linux.dev>; Fri,  1 Apr 2022 17:58:32 +0000 (UTC)
-Received: by mail-ed1-f44.google.com with SMTP id h4so3846546edr.3
-        for <outreachy@lists.linux.dev>; Fri, 01 Apr 2022 10:58:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=Tvh7PojNOU8ixwM/VVoBe7OJ3tPnUoL+wy9VL5Eh99M=;
-        b=mEyqPOy/vdn0Atw3WBSWSwe4clSEqjbbZnxsy2ewo/e6KlEVBz8/r3UiAtdPwj3c+T
-         XtyTc4DitOv8fE7AnPMx8Oc/HLU2AcXIkfTkxAywe0b9yfoinXlMsutN5HN840yUhSFz
-         4C68KTn0+nJlVGKDt50/9pkqz/EM+FhxWf1F8wl7I/qFCHc39sz7b0MNfjvdXalbCEX2
-         TwgGPboqXcOVp0YKig4fN+sREZLvPdoebsOkmJJb6C2MDDrJT4aY9OPqt0RoBLTqUtEq
-         fobuhBSof7qbowJ+/34W0qYr73lF5ag1I/lmo6K2AiwhlLbuUqUIS+qt5vLAh6tUGQ6U
-         SzuA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=Tvh7PojNOU8ixwM/VVoBe7OJ3tPnUoL+wy9VL5Eh99M=;
-        b=c85GN+DvYdumtCyL2LYMs/QZtHQQCPIgZ0ArbD9K1BZR4mLXyU5gF1i4kbz2zpon0t
-         tBaoFQ2Z9/wdyUa5OOA0S8geDio4rwuyYqOdYr9dvlt3rwjde7bmUozdHy+VA+v09IfM
-         Bd6ftNt3lErCyp3MfwT1EBpBD03kPhbKGp2Tcu5WTMRhQLRFthvK3PZ4HV5xmv8g7kus
-         vZ+X0a+WoS1Zvxk02gmECgshKCMkpze1w5XtKl5tU05EHSsGXobh/Bro5jRB8JrTmzQo
-         vhpYZBiqS1TCcnBZ6KuhRW3Y7s8KdopdV/z1tPF68LZLiYXMhq8yKOc90uYcWlV+UaGP
-         F14g==
-X-Gm-Message-State: AOAM5322RpANFsGRNRnSE7YlXvMzEkklbY2zsK2WIgwPXGY+Wu00wnQ/
-	gOMlCIYrUazpgSdXqfmk3aI=
-X-Google-Smtp-Source: ABdhPJx98HUnS9yU+Rlhl1XP4eV/g3NBwJeJHslH+VYGoQfkqgyDVdrwWEHbM4HLO3fFT8OvGnQ+gw==
-X-Received: by 2002:a50:ec16:0:b0:40f:28a0:d0d6 with SMTP id g22-20020a50ec16000000b0040f28a0d0d6mr22345747edr.368.1648835910597;
-        Fri, 01 Apr 2022 10:58:30 -0700 (PDT)
-Received: from leap.localnet (host-95-249-145-232.retail.telecomitalia.it. [95.249.145.232])
-        by smtp.gmail.com with ESMTPSA id sd7-20020a1709076e0700b006e015549bdfsm1213470ejc.53.2022.04.01.10.58.29
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 01 Apr 2022 10:58:29 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Alison Schofield <alison.schofield@intel.com>
-Cc: Stefano Brivio <sbrivio@redhat.com>, outreachy@lists.linux.dev
-Subject: Re: Compilation errors
-Date: Fri, 01 Apr 2022 19:58:28 +0200
-Message-ID: <2937420.687JKscXgg@leap>
-In-Reply-To: <20220401160901.GA1186855@alison-desk>
-References: <3603561.MHq7AAxBmi@leap> <1943335.PIDvDuAF1L@leap> <20220401160901.GA1186855@alison-desk>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 64AA8137F;
+	Fri,  1 Apr 2022 18:08:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1648836514; x=1680372514;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=DU9PgH/5rb/qkF9q+WrXb9XrVXA9a5dGo5mm1m9YnB0=;
+  b=UCtb36vYQL9/5IroLSSPLErbYBjMEr+WP1VQ9amTS/C2WTzhj1kK1Y81
+   PKW3jnwZQgZ14LCanGztoSg5GZgluXO/K82UsIlcmIsAMvDCRoHAuP+j0
+   ZtMuUiiG9ygbIKOFPwlB5S4ygKFj/H263Rn2JtWxZ9hbG6Zr5VljVaXh1
+   3EdQbVmnvOEQ0I3wmKoOATKzC9lRM5LxHi9C/Huulal0CJRC2eYmfQbut
+   tsbFx77svSEWUdCzfwHdeULNG+KE2jDqYNGcj/VzN+WMxckWDAOxA1e3K
+   N94Z+1MF6qUfi5bHj2+4fEG0JsUcXunxTJuSM58dKJYV5sjzTQZDP6vH7
+   Q==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10304"; a="320899495"
+X-IronPort-AV: E=Sophos;i="5.90,228,1643702400"; 
+   d="scan'208";a="320899495"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Apr 2022 11:08:34 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.90,228,1643702400"; 
+   d="scan'208";a="547894028"
+Received: from lkp-server02.sh.intel.com (HELO 3231c491b0e2) ([10.239.97.151])
+  by orsmga007.jf.intel.com with ESMTP; 01 Apr 2022 11:08:32 -0700
+Received: from kbuild by 3231c491b0e2 with local (Exim 4.95)
+	(envelope-from <lkp@intel.com>)
+	id 1naLhH-0001S0-EK;
+	Fri, 01 Apr 2022 18:08:31 +0000
+Date: Sat, 2 Apr 2022 02:08:02 +0800
+From: kernel test robot <lkp@intel.com>
+To: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: kbuild-all@lists.01.org, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org, outreachy@lists.linux.dev,
+	Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
+Subject: Re: [PATCH 3/3] staging: rtl8723bs: remove redundant else branches
+Message-ID: <202204020208.cUdIa2Q2-lkp@intel.com>
+References: <8d745122cd10f5db59393b1bff09e6a73e88640b.1648817213.git.sevinj.aghayeva@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="iso-8859-1"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <8d745122cd10f5db59393b1bff09e6a73e88640b.1648817213.git.sevinj.aghayeva@gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
 
-On venerd=EC 1 aprile 2022 18:09:01 CEST Alison Schofield wrote:
-> On Fri, Apr 01, 2022 at 03:07:24PM +0200, Fabio M. De Francesco wrote:
-> > On venerd=EC 1 aprile 2022 14:57:14 CEST Stefano Brivio wrote:
-> > >=20
-> > > Okay, then that's really an error.
-> > >=20
-> > > It might simply be that the you're building some drivers on your
-> > > staging tree that you're not building on the mainline tree.
-> >=20
-> > Yes, this is why I've decided to use the .config that I have in Torvald=
-'s=20
-> > tree. They should only differ for the drivers/staging part and the suff=
-ix=20
-> > for vmlinuz.
-> >=20
-> > Now it builds correctly with gcc11 :)
-> >=20
-> > I must look carefully at the diff between the two files and figure out
-> > what doesn't work.
-> >=20
-> > However what really counts is that now I can go back to work with "stag=
-ing".
-> >=20
-> > Thanks for your time,
-> >=20
-> > Fabio=20
->=20
-> Sounds like you all got things moving along wrt the compile issue.
+Hi Sevinj,
 
-Yes, thank you. The problem was due to UBSan enabled.
+Thank you for the patch! Perhaps something to improve:
 
-> I do want to follow up on a couple of things buried in this thread.
->=20
-> It's good that compile issue is getting fixed because you can't get
-> too far without hitting requirements to build w ALLYESCONFIG or
-> ALLMODCONFIG, or the like, while doing kernel development.
->=20
-> The thought of not compiling before sending is blasphemy ;)
+[auto build test WARNING on staging/staging-testing]
+[also build test WARNING on v5.17 next-20220401]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch]
 
-I agree in full. It was just the desperation talking :-)
+url:    https://github.com/intel-lab-lkp/linux/commits/Sevinj-Aghayeva/rlt8723bs-cleanup/20220401-210507
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git b22c721c4f3fd4608da059c56fbe7a0cc598fb6a
+config: alpha-allyesconfig (https://download.01.org/0day-ci/archive/20220402/202204020208.cUdIa2Q2-lkp@intel.com/config)
+compiler: alpha-linux-gcc (GCC) 11.2.0
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://github.com/intel-lab-lkp/linux/commit/ed0a6d578663ac28fa89918bc7ad86c0e6f82f8a
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Sevinj-Aghayeva/rlt8723bs-cleanup/20220401-210507
+        git checkout ed0a6d578663ac28fa89918bc7ad86c0e6f82f8a
+        # save the config file to linux build tree
+        mkdir build_dir
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-11.2.0 make.cross O=build_dir ARCH=alpha SHELL=/bin/bash drivers/staging/
 
-> wrt the 10 patch cleanup requirement. We often have applicants work
-> multiple contribution periods for a multitude of reasons. For applicants
-> who already have patches accepted in drivers/staging, we ask that they
-> submit a few, to show they are current (if needed). Again, if your 'old'
-> patches were from last month, no need to prove currency.
+If you fix the issue, kindly add following tag as appropriate
+Reported-by: kernel test robot <lkp@intel.com>
 
-Most of my patches (a bit less than 100) are a bit older. The large part of=
-=20
-them are since March 2021 to October 2021. In 2022 I have submitted only=20
-7 patches to net/smc, usb/core, staging.=20
+All warnings (new ones prefixed by >>):
 
-But I usually don't do clean-ups. For instance, two recent patches were to
-fix bugs reported by Syzbot in "net" and in "usb". A couple of recent=20
-"staging" patches are about converting kmap() to kmap_local_page().
-
-> So, Fabio, this means for you personally, go ahead and link to prior
-> patches when you record your contribution in the Outreachy application.
-
-Therefore, since the number of recent patches is low, can you please confirm
-whether or not I can register also some of those of 2021 "to prove currency=
-"?
-Please notice that only 4 or 5 are from the last month.
-
-Thanks,
-
-=46abio
-=20
-> Anyone else in this situation, please ask.=20
->=20
-> Thanks,
-> Alison
+   drivers/staging/rtl8723bs/core/rtw_mlme_ext.c: In function 'OnDeAuth':
+>> drivers/staging/rtl8723bs/core/rtw_mlme_ext.c:1505:9: warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+    1505 |         int     ignore_received_deauth = 0;
+         |         ^~~
 
 
+vim +1505 drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
 
+554c0a3abf216c Hans de Goede   2017-03-29  1461  
+554c0a3abf216c Hans de Goede   2017-03-29  1462  unsigned int OnDeAuth(struct adapter *padapter, union recv_frame *precv_frame)
+554c0a3abf216c Hans de Goede   2017-03-29  1463  {
+554c0a3abf216c Hans de Goede   2017-03-29  1464  	unsigned short	reason;
+554c0a3abf216c Hans de Goede   2017-03-29  1465  	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
+554c0a3abf216c Hans de Goede   2017-03-29  1466  	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
+554c0a3abf216c Hans de Goede   2017-03-29  1467  	struct mlme_ext_info *pmlmeinfo = &(pmlmeext->mlmext_info);
+554c0a3abf216c Hans de Goede   2017-03-29  1468  	u8 *pframe = precv_frame->u.hdr.rx_data;
+554c0a3abf216c Hans de Goede   2017-03-29  1469  
+554c0a3abf216c Hans de Goede   2017-03-29  1470  	/* check A3 */
+554c0a3abf216c Hans de Goede   2017-03-29  1471  	if (memcmp(GetAddr3Ptr(pframe), get_my_bssid(&pmlmeinfo->network), ETH_ALEN))
+554c0a3abf216c Hans de Goede   2017-03-29  1472  		return _SUCCESS;
+554c0a3abf216c Hans de Goede   2017-03-29  1473  
+554c0a3abf216c Hans de Goede   2017-03-29  1474  	reason = le16_to_cpu(*(__le16 *)(pframe + WLAN_HDR_A3_LEN));
+554c0a3abf216c Hans de Goede   2017-03-29  1475  
+0ad02fa8b90a87 Georgiana Chelu 2017-09-22  1476  	if (check_fwstate(pmlmepriv, WIFI_AP_STATE)) {
+554c0a3abf216c Hans de Goede   2017-03-29  1477  		struct sta_info *psta;
+554c0a3abf216c Hans de Goede   2017-03-29  1478  		struct sta_priv *pstapriv = &padapter->stapriv;
+554c0a3abf216c Hans de Goede   2017-03-29  1479  
+554c0a3abf216c Hans de Goede   2017-03-29  1480  		/* rtw_free_stainfo(padapter, psta); */
+554c0a3abf216c Hans de Goede   2017-03-29  1481  
+79df841b435018 Fabio Aiuto     2021-04-15  1482  		netdev_dbg(padapter->pnetdev,
+79df841b435018 Fabio Aiuto     2021-04-15  1483  			   "ap recv deauth reason code(%d) sta:%pM\n", reason,
+79df841b435018 Fabio Aiuto     2021-04-15  1484  			   GetAddr2Ptr(pframe));
+554c0a3abf216c Hans de Goede   2017-03-29  1485  
+554c0a3abf216c Hans de Goede   2017-03-29  1486  		psta = rtw_get_stainfo(pstapriv, GetAddr2Ptr(pframe));
+554c0a3abf216c Hans de Goede   2017-03-29  1487  		if (psta) {
+554c0a3abf216c Hans de Goede   2017-03-29  1488  			u8 updated = false;
+554c0a3abf216c Hans de Goede   2017-03-29  1489  
+554c0a3abf216c Hans de Goede   2017-03-29  1490  			spin_lock_bh(&pstapriv->asoc_list_lock);
+554c0a3abf216c Hans de Goede   2017-03-29  1491  			if (list_empty(&psta->asoc_list) == false) {
+554c0a3abf216c Hans de Goede   2017-03-29  1492  				list_del_init(&psta->asoc_list);
+554c0a3abf216c Hans de Goede   2017-03-29  1493  				pstapriv->asoc_list_cnt--;
+554c0a3abf216c Hans de Goede   2017-03-29  1494  				updated = ap_free_sta(padapter, psta, false, reason);
+554c0a3abf216c Hans de Goede   2017-03-29  1495  
+554c0a3abf216c Hans de Goede   2017-03-29  1496  			}
+554c0a3abf216c Hans de Goede   2017-03-29  1497  			spin_unlock_bh(&pstapriv->asoc_list_lock);
+554c0a3abf216c Hans de Goede   2017-03-29  1498  
+554c0a3abf216c Hans de Goede   2017-03-29  1499  			associated_clients_update(padapter, updated);
+554c0a3abf216c Hans de Goede   2017-03-29  1500  		}
+554c0a3abf216c Hans de Goede   2017-03-29  1501  
+554c0a3abf216c Hans de Goede   2017-03-29  1502  
+554c0a3abf216c Hans de Goede   2017-03-29  1503  		return _SUCCESS;
+ed0a6d578663ac Sevinj Aghayeva 2022-04-01  1504  	}
+554c0a3abf216c Hans de Goede   2017-03-29 @1505  	int	ignore_received_deauth = 0;
+554c0a3abf216c Hans de Goede   2017-03-29  1506  
+554c0a3abf216c Hans de Goede   2017-03-29  1507  	/* 	Commented by Albert 20130604 */
+554c0a3abf216c Hans de Goede   2017-03-29  1508  	/* 	Before sending the auth frame to start the STA/GC mode connection with AP/GO, */
+554c0a3abf216c Hans de Goede   2017-03-29  1509  	/* 	we will send the deauth first. */
+554c0a3abf216c Hans de Goede   2017-03-29  1510  	/* 	However, the Win8.1 with BRCM Wi-Fi will send the deauth with reason code 6 to us after receieving our deauth. */
+554c0a3abf216c Hans de Goede   2017-03-29  1511  	/* 	Added the following code to avoid this case. */
+554c0a3abf216c Hans de Goede   2017-03-29  1512  	if ((pmlmeinfo->state & WIFI_FW_AUTH_STATE) ||
+554c0a3abf216c Hans de Goede   2017-03-29  1513  		(pmlmeinfo->state & WIFI_FW_ASSOC_STATE)) {
+554c0a3abf216c Hans de Goede   2017-03-29  1514  		if (reason == WLAN_REASON_CLASS2_FRAME_FROM_NONAUTH_STA) {
+554c0a3abf216c Hans de Goede   2017-03-29  1515  			ignore_received_deauth = 1;
+a8be3a14951eb8 Sevinj Aghayeva 2022-04-01  1516  		} else if (reason == WLAN_REASON_PREV_AUTH_NOT_VALID) {
+554c0a3abf216c Hans de Goede   2017-03-29  1517  			/*  TODO: 802.11r */
+554c0a3abf216c Hans de Goede   2017-03-29  1518  			ignore_received_deauth = 1;
+554c0a3abf216c Hans de Goede   2017-03-29  1519  		}
+554c0a3abf216c Hans de Goede   2017-03-29  1520  	}
+554c0a3abf216c Hans de Goede   2017-03-29  1521  
+79df841b435018 Fabio Aiuto     2021-04-15  1522  	netdev_dbg(padapter->pnetdev,
+79df841b435018 Fabio Aiuto     2021-04-15  1523  		"sta recv deauth reason code(%d) sta:%pM, ignore = %d\n",
+79df841b435018 Fabio Aiuto     2021-04-15  1524  		reason, GetAddr3Ptr(pframe),
+79df841b435018 Fabio Aiuto     2021-04-15  1525  		ignore_received_deauth);
+554c0a3abf216c Hans de Goede   2017-03-29  1526  
+a8be3a14951eb8 Sevinj Aghayeva 2022-04-01  1527  	if (ignore_received_deauth == 0)
+554c0a3abf216c Hans de Goede   2017-03-29  1528  		receive_disconnect(padapter, GetAddr3Ptr(pframe), reason);
+ed0a6d578663ac Sevinj Aghayeva 2022-04-01  1529  
+554c0a3abf216c Hans de Goede   2017-03-29  1530  	pmlmepriv->LinkDetectInfo.bBusyTraffic = false;
+554c0a3abf216c Hans de Goede   2017-03-29  1531  	return _SUCCESS;
+554c0a3abf216c Hans de Goede   2017-03-29  1532  
+
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
