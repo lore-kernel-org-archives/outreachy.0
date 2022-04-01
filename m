@@ -1,53 +1,51 @@
-Received: from mail-ed1-f42.google.com (mail-ed1-f42.google.com [209.85.208.42])
+Received: from mail-qt1-f173.google.com (mail-qt1-f173.google.com [209.85.160.173])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 255177C;
-	Fri,  1 Apr 2022 18:35:19 +0000 (UTC)
-Received: by mail-ed1-f42.google.com with SMTP id g20so3925022edw.6;
-        Fri, 01 Apr 2022 11:35:18 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9613B7C;
+	Fri,  1 Apr 2022 19:07:07 +0000 (UTC)
+Received: by mail-qt1-f173.google.com with SMTP id z19so2985377qtw.2;
+        Fri, 01 Apr 2022 12:07:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=HwvsNVubztdYKgXLtsvkx6INUsTkEhAT0Rw4f8IMAMo=;
-        b=Xcn8nF2R5LJEHbhs1V1/l/VEgg+pGar5DdZIQ8xwzExhCd/A84R4g77oZby0x19077
-         /uJCka7iPlqTiJ029x+CbwGcCwEE2jFye6DjEkl2q80KKzlr7ngt3CTEbaoRv4feSaM7
-         Z0dDYsw0wadOXuPR4Jgg96elUr3DG2wZocmySOXbiRXJu5952YSxEw87YPows1xpiN8B
-         HRFWOxEH+leHb3skrswnGhFL+CHRBZa1C6VchrIKRJtIU+fFDWFVN1MSqizlyNYS6Eno
-         Roil+V+pbnhlJqmdHH38rccM+6/LLvw9L+QxEHLkkE9nVvxvgwnMbdEcSYCnQpd2I3rd
-         UCsw==
+        bh=7sCg00QwNMKVUFlzQkj2jwwa0uYhEC8jL1U6rlvYrSo=;
+        b=klBxS0IuRANL9EkV0AlTz7LfzK2HCEuB8787h4LJqwiiafZvZ1IoFlcrBBD3IzOlfe
+         +KxC7PFfqALM13UDk0nBznmlKk3pLKttxxohCRaOnT+FqLK86EKdXlhuOEpC9I1F0ISx
+         BNtFO5r+FOz/4S5IQ3SvA54Kj8dNpiMGM7Iuy6gfYgiVhrMeE6s3qoHzYV8E+DWDuqcI
+         4HAm9W3hYNvVk1rBMy7x6Mdz1Mqq5mFWgesqFnKPDSk5cd6pX8UFOUWkwImJgHgW3aXc
+         WFC54LPQGB54yujmOs9Tv4RgCFHNR+pY30y3w1L7/93sHUOdDMCMSEbDwXnVS8HSQAyB
+         HDpw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=HwvsNVubztdYKgXLtsvkx6INUsTkEhAT0Rw4f8IMAMo=;
-        b=s7isUQWI+KQVeKb/SeyAUxiE3ulxv+BESe/maHN7QHnK982G5286fZ0WI6h85V0CPj
-         IzS3becsGmdkz7FMPNDGE4zAPcFU4dXzWx89apxCfbDE4rKkiLHFvPGsiXJVu0jRPfPs
-         1/RPpnZhOYR7PX5pGgb50oCwQBLObt4oZxrHqVNDBizRvDX3wcAiUmSIofWkXoCEWJ48
-         rLO3D5dYQVv1OEM2KozpQpK9BHlEkiGTzFjPOZOLh+9CIUl1UlFHkoLov55z16kL82Jz
-         tNBbxCVMLIvTJhvyEcINnkeFJeAWySieJ+rlE7COu65DzcRlVRFZp161dh07Vm7EF9N0
-         U0zg==
-X-Gm-Message-State: AOAM530BTnJbXU2IQpAT723nYlBuCEfRj5A+6uALimINYbg2mR9CytvO
-	3l1lA5zDoq7yU4ughpVARbM=
-X-Google-Smtp-Source: ABdhPJwHOb8kRreHG9rzDqQ31EWROiF+cK8Oi1m/wEhs46Appl0tGn8pjrroiFnmjIfLZk6mxRdYdQ==
-X-Received: by 2002:a05:6402:510c:b0:419:3fe5:15f with SMTP id m12-20020a056402510c00b004193fe5015fmr22337749edd.274.1648838117280;
-        Fri, 01 Apr 2022 11:35:17 -0700 (PDT)
-Received: from localhost.localdomain (host-95-249-145-232.retail.telecomitalia.it. [95.249.145.232])
-        by smtp.gmail.com with ESMTPSA id b7-20020a170906490700b006b2512921b2sm1296420ejq.48.2022.04.01.11.35.15
+        bh=7sCg00QwNMKVUFlzQkj2jwwa0uYhEC8jL1U6rlvYrSo=;
+        b=XwDhkNQeJEDxLEfzy33ebAcHpJOB5sI/2buQeUuw9yQH+VMBhEngR1cQaJ/FfRvc/N
+         0ZW2nM4dkXMDwIgP2E/ienpqJONpCi6Rm/hlnJXqYs3AH7mzs9mqRra9rMS68mY+bXMJ
+         9sJQ/d0AkjsCYNSHZOEh+WZeLRr6tl89GV9zIH+Il4iDn0ChMV6ky1SKfSr67HUSvGyJ
+         wZvzJfLWDlrQzd5N7kxIMylZUKfoxZS/rNdTZJrtMHRIZ6NDZYCqv48lYtRrMYoY8RiB
+         1YJhzzibdYve6i661A+KirgZxcgO6aDjE3C9r03U4av9wL4rf9m9/DamnFEhdxy66Uka
+         qLmg==
+X-Gm-Message-State: AOAM532wEsx64lcAs7PYpJcnPXJYsPjlfROPWX71vwy9eO/jLbM587uS
+	Gq2F1DR68EdC/yxU/x0xPBZfbtOvxGOK/zhj
+X-Google-Smtp-Source: ABdhPJwpO0qbLyMdD6SzmDXNla4KlXsoLvFGbpLE5RJEEM73tH2inLiDjeKeBTv3EfGrih8xy0EzHQ==
+X-Received: by 2002:ac8:5855:0:b0:2eb:87af:ab50 with SMTP id h21-20020ac85855000000b002eb87afab50mr9628284qth.406.1648840026397;
+        Fri, 01 Apr 2022 12:07:06 -0700 (PDT)
+Received: from euclid ([71.58.109.160])
+        by smtp.gmail.com with ESMTPSA id r11-20020ae9d60b000000b0067e5308d664sm1797765qkk.92.2022.04.01.12.07.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 01 Apr 2022 11:35:16 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Larry Finger <Larry.Finger@lwfinger.net>,
-	Phillip Potter <phil@philpotter.co.uk>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-staging@lists.linux.dev,
+        Fri, 01 Apr 2022 12:07:05 -0700 (PDT)
+From: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: linux-staging@lists.linux.dev,
 	linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev
-Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Subject: [PATCH] staging: r8188eu: Remove goto to no-op exit label
-Date: Fri,  1 Apr 2022 20:35:13 +0200
-Message-Id: <20220401183513.26222-1-fmdefrancesco@gmail.com>
-X-Mailer: git-send-email 2.34.1
+	outreachy@lists.linux.dev,
+	Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
+Subject: [PATCH v2 0/3] rlt8723bs cleanup
+Date: Fri,  1 Apr 2022 15:06:55 -0400
+Message-Id: <cover.1648839305.git.sevinj.aghayeva@gmail.com>
+X-Mailer: git-send-email 2.25.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -56,39 +54,31 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-In function rtw_free_netdev() there are two "goto" jumps to a no-op exit
-label called "RETURN". Remove the label and return in line.
+These patches fix three categories of checkpatch warnings (redundant
+braces, redundant else branches after return/break, and constant
+placements on tests) in file rtw_mlme_ext.c, which is part of the
+rtl8723bs driver. False positives, such as
 
-Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+if (foo) {
+	/* TODO: ... */
+}
+
+were not altered.
+
 ---
- drivers/staging/r8188eu/os_dep/osdep_service.c | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
+v1 -> v2: Removing a redundant else branch left a variable declaration
+mixed with code, which was caught by the kernel test bot. Move the
+declaration to the beginning of a function.
+---
 
-diff --git a/drivers/staging/r8188eu/os_dep/osdep_service.c b/drivers/staging/r8188eu/os_dep/osdep_service.c
-index 7a6fcc96081a..d680bfba7f5d 100644
---- a/drivers/staging/r8188eu/os_dep/osdep_service.c
-+++ b/drivers/staging/r8188eu/os_dep/osdep_service.c
-@@ -117,18 +117,15 @@ void rtw_free_netdev(struct net_device *netdev)
- 	struct rtw_netdev_priv_indicator *pnpi;
- 
- 	if (!netdev)
--		goto RETURN;
-+		return;
- 
- 	pnpi = netdev_priv(netdev);
- 
- 	if (!pnpi->priv)
--		goto RETURN;
-+		return;
- 
- 	vfree(pnpi->priv);
- 	free_netdev(netdev);
--
--RETURN:
--	return;
- }
- 
- int rtw_change_ifname(struct adapter *padapter, const char *ifname)
+Sevinj Aghayeva (3):
+  staging: rtl8723bs: remove redundant braces in if statements
+  staging: rtl8723bs: place constants on the right side of tests
+  staging: rtl8723bs: remove redundant else branches
+
+ drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 167 ++++++++----------
+ 1 file changed, 70 insertions(+), 97 deletions(-)
+
 -- 
-2.34.1
+2.25.1
 
