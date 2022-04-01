@@ -1,150 +1,130 @@
-Received: from mail-qv1-f43.google.com (mail-qv1-f43.google.com [209.85.219.43])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1B0917B;
-	Fri,  1 Apr 2022 14:53:57 +0000 (UTC)
-Received: by mail-qv1-f43.google.com with SMTP id hu11so2188366qvb.7;
-        Fri, 01 Apr 2022 07:53:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=date:from:to:subject:message-id:mime-version:content-disposition;
-        bh=Qd7+UMiN3Jrll9fNOSYkpHLr2EKG3gIqE6IEorWFPTo=;
-        b=frhnIWwX5xEJfxxbkE/n9nEd6dE/TeDbW4SLwUwBveOv2aw7Dz1nk5aApc1nvf8271
-         pLwhEcIZXPWFnuLMEPuh4Xo+HviPV7y6uyxVowzlLGed/+eMajBWaaoyAAb+HUfQ0A/1
-         rCJ3N9Cn68SJFgAWkQL0H2BKx1CLbjuLYO5NPKkooHJ7k9A4nMNvdPuXkqfGRwpFyJFa
-         akkMzxvvoSPZg0cAUJFX8gwoIm6Ib6peqfsZegtq2NwpLcbySC8S6ttsC5Zq1T0OpB5V
-         GS4fTPDFal55l3KY9ramCBrqwpX61mlvQAkawS6oydb1GnExWqjrJ6y8xFlkhuCpxuSS
-         hxUw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition;
-        bh=Qd7+UMiN3Jrll9fNOSYkpHLr2EKG3gIqE6IEorWFPTo=;
-        b=pCIijn7R/W4XmlzU75zAz8cmorTMwxyoTRR1GjYR+ERsFzxI2eh/vGpGdK4Llrayz9
-         bZct4LUfD0Iixj1qLiVxvIUF9CkPbkaeOzkSe71QMjyxcSin1Gqy0CuWdh49xZesEVTZ
-         kOMv2d1cNgo+cjkuSMOR67ORvnNYcKJPZ/EwIguDmmr9T1nw/BcwmC/FwW9qLfM3dlNF
-         WxOiL8w67/U/2AJPKkRx0eH+3APUOl6eZ6qDxzO4glJXEkRC5u8ViWQJIe+8eux/dut9
-         bDE7oJA6535GUD0BlYChVExv/aC5HVXzdO80N2QhAKkIBR9ROT/2UWrgYOJtqmdW2EiI
-         ZTuA==
-X-Gm-Message-State: AOAM5316L3N8tD17pSmpzx63VequijMbcmrhwnlWw1xErU6qsAl8n8x6
-	dge4L5FnhMxUwg6Z6Ory4Zo=
-X-Google-Smtp-Source: ABdhPJy03H5LmOvAHNjNyWo4gCVB0lYUhUS1sgLswcBnnNIHvMqyZuLbnB1sbi1joMr9KqFX9Idebw==
-X-Received: by 2002:a05:6214:2388:b0:443:865c:5623 with SMTP id fw8-20020a056214238800b00443865c5623mr8396733qvb.72.1648824835916;
-        Fri, 01 Apr 2022 07:53:55 -0700 (PDT)
-Received: from jaehee-ThinkPad-X1-Extreme ([4.34.18.218])
-        by smtp.gmail.com with ESMTPSA id i68-20020a375447000000b006809e0adfffsm1511818qkb.25.2022.04.01.07.53.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 01 Apr 2022 07:53:55 -0700 (PDT)
-Date: Fri, 1 Apr 2022 10:53:50 -0400
-From: Jaehee Park <jhpark1013@gmail.com>
-To: =?iso-8859-1?B?Suly9G1l?= Pouiller <jerome.pouiller@silabs.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev
-Subject: [PATCH] staging: wfx: change variable name to be consistent
-Message-ID: <20220401145350.GA45053@jaehee-ThinkPad-X1-Extreme>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CBCB97B
+	for <outreachy@lists.linux.dev>; Fri,  1 Apr 2022 15:13:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1648826027;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=i4Ur6+3lL+e4B0kPoD23SFMwI3VPujxtuJiXik4CMtQ=;
+	b=aHHr6p7qqYWT+Yz4iDBXvmi6iRi2/xe3rcwAS2P0Jo+JfiMFzkQljDV0Y9yT18pXc5P5mL
+	Frnvoi/iTzHcTZr8jW3g1Nq5VWWZ7h7ZOYJaoqVrPytes0UQcktObQSEQzOBRxICPo8ue+
+	D3ygBSOo311uHhzjqt1y6fbDyLnYssc=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-604-rG7dABAPMwOuguxUMUOabA-1; Fri, 01 Apr 2022 11:13:44 -0400
+X-MC-Unique: rG7dABAPMwOuguxUMUOabA-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B2B42801AB2;
+	Fri,  1 Apr 2022 15:13:42 +0000 (UTC)
+Received: from maya.cloud.tilaa.com (unknown [10.40.208.6])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 4F3465D6B1;
+	Fri,  1 Apr 2022 15:13:42 +0000 (UTC)
+Date: Fri, 1 Apr 2022 17:08:39 +0200
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Jaehee Park <jhpark1013@gmail.com>
+Cc: Alison Schofield <alison.schofield@intel.com>, Outreachy Linux Kernel
+ <outreachy@lists.linux.dev>
+Subject: Re: Finding Clean-up Tasks
+Message-ID: <20220401170839.3919d0b4@elisabeth>
+In-Reply-To: <20220401142803.GA38814@jaehee-ThinkPad-X1-Extreme>
+References: <20220331183805.GA1182645@alison-desk>
+	<20220401142803.GA38814@jaehee-ThinkPad-X1-Extreme>
+Organization: Red Hat
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=sbrivio@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-Change variable name to be consistent with the naming conventions.
-ssidlen was changed to ssid_len and ssidie was changed to ssid_ie to be
-consistent. This makes the variables more readable. The other ssid
-names in the code are separated by an underscore. For example,
-bssid_filter and num_of_ssids have the ssid separated from the rest of
-the words with an underscore.
+On Fri, 1 Apr 2022 10:28:03 -0400
+Jaehee Park <jhpark1013@gmail.com> wrote:
 
-Signed-off-by: Jaehee Park <jhpark1013@gmail.com>
+> On Thu, Mar 31, 2022 at 11:38:05AM -0700, Alison Schofield wrote:
+>
+> [...]
+>
+> > If you have a patch AND a question, you can send the patch
+> > and put your question below the scissors line. For example,
+> > you might see multiple instances of something but are not sure
+> > the patch will be well-received. Fix one instance - and below
+> > the scissor line ask you question: "There are 10 more of these
+> > in this file, just want to sanity check that my approach here
+> > is wanted."  (If I were doing cleanup today, I'd use this tactic
+> > for drivers/staging/iio checkpatch ERROR about octals.)
+> >   
+> 
+> Thank you for advice! I had a question about where to put the questions
+> in the patch. When you say scissor line, are we putting dashed lined
+> somewhere in the patch and writing our questions?
+
+Let's say this is the original patch as prepared by git format-patch:
+
+--
+This is a commit message.
+
+Signed-off-by: you
 ---
- drivers/staging/wfx/hif_tx.c | 10 +++++-----
- drivers/staging/wfx/sta.c    | 20 ++++++++++----------
- 2 files changed, 15 insertions(+), 15 deletions(-)
+ file.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/drivers/staging/wfx/hif_tx.c b/drivers/staging/wfx/hif_tx.c
-index ae3cc5919dcd..9c653d0e9034 100644
---- a/drivers/staging/wfx/hif_tx.c
-+++ b/drivers/staging/wfx/hif_tx.c
-@@ -280,7 +280,7 @@ int wfx_hif_stop_scan(struct wfx_vif *wvif)
- }
+diff --git a/file.c
+index 148b06a..ceb10a6 100644
+--- a/file.c
++++ b/file.c
+@@ -927,7 +927,6 @@ int function(void)
  
- int wfx_hif_join(struct wfx_vif *wvif, const struct ieee80211_bss_conf *conf,
--		 struct ieee80211_channel *channel, const u8 *ssid, int ssidlen)
-+		 struct ieee80211_channel *channel, const u8 *ssid, int ssid_len)
- {
- 	int ret;
- 	struct wfx_hif_msg *hif;
-@@ -288,8 +288,8 @@ int wfx_hif_join(struct wfx_vif *wvif, const struct ieee80211_bss_conf *conf,
+-
  
- 	WARN_ON(!conf->beacon_int);
- 	WARN_ON(!conf->basic_rates);
--	WARN_ON(sizeof(body->ssid) < ssidlen);
--	WARN(!conf->ibss_joined && !ssidlen, "joining an unknown BSS");
-+	WARN_ON(sizeof(body->ssid) < ssid_len);
-+	WARN(!conf->ibss_joined && !ssid_len, "joining an unknown BSS");
- 	if (!hif)
- 		return -ENOMEM;
- 	body->infrastructure_bss_mode = !conf->ibss_joined;
-@@ -300,8 +300,8 @@ int wfx_hif_join(struct wfx_vif *wvif, const struct ieee80211_bss_conf *conf,
- 	body->basic_rate_set = cpu_to_le32(wfx_rate_mask_to_hw(wvif->wdev, conf->basic_rates));
- 	memcpy(body->bssid, conf->bssid, sizeof(body->bssid));
- 	if (ssid) {
--		body->ssid_length = cpu_to_le32(ssidlen);
--		memcpy(body->ssid, ssid, ssidlen);
-+		body->ssid_length = cpu_to_le32(ssid_len);
-+		memcpy(body->ssid, ssid, ssid_len);
- 	}
- 	wfx_fill_header(hif, wvif->id, HIF_REQ_ID_JOIN, sizeof(*body));
- 	ret = wfx_cmd_send(wvif->wdev, hif, NULL, 0, false);
-diff --git a/drivers/staging/wfx/sta.c b/drivers/staging/wfx/sta.c
-index b1e9fb14d2b4..03025ef7f1be 100644
---- a/drivers/staging/wfx/sta.c
-+++ b/drivers/staging/wfx/sta.c
-@@ -392,8 +392,8 @@ static void wfx_join(struct wfx_vif *wvif)
- 	struct ieee80211_bss_conf *conf = &wvif->vif->bss_conf;
- 	struct cfg80211_bss *bss = NULL;
- 	u8 ssid[IEEE80211_MAX_SSID_LEN];
--	const u8 *ssidie = NULL;
--	int ssidlen = 0;
-+	const u8 *ssid_ie = NULL;
-+	int ssid_len = 0;
+--
+
+you can put your question (or any kind of comment, really) there:
+
+--
+This is a commit message.
+
+Signed-off-by: you
+---
+I'm not sure this patch does anything. Should it do something?
+
+ file.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/file.c
+index 148b06a..ceb10a6 100644
+--- a/file.c
++++ b/file.c
+@@ -927,7 +927,6 @@ int function(void)
  
- 	wfx_tx_lock_flush(wvif->wdev);
+-
  
-@@ -404,21 +404,21 @@ static void wfx_join(struct wfx_vif *wvif)
- 		return;
- 	}
- 
--	rcu_read_lock(); /* protect ssidie */
-+	rcu_read_lock(); /* protect ssid_ie */
- 	if (bss)
--		ssidie = ieee80211_bss_get_ie(bss, WLAN_EID_SSID);
--	if (ssidie) {
--		ssidlen = ssidie[1];
--		if (ssidlen > IEEE80211_MAX_SSID_LEN)
--			ssidlen = IEEE80211_MAX_SSID_LEN;
--		memcpy(ssid, &ssidie[2], ssidlen);
-+		ssid_ie = ieee80211_bss_get_ie(bss, WLAN_EID_SSID);
-+	if (ssid_ie) {
-+		ssid_len = ssid_ie[1];
-+		if (ssid_len > IEEE80211_MAX_SSID_LEN)
-+			ssid_len = IEEE80211_MAX_SSID_LEN;
-+		memcpy(ssid, &ssid_ie[2], ssid_len);
- 	}
- 	rcu_read_unlock();
- 
- 	cfg80211_put_bss(wvif->wdev->hw->wiphy, bss);
- 
- 	wvif->join_in_progress = true;
--	ret = wfx_hif_join(wvif, conf, wvif->channel, ssid, ssidlen);
-+	ret = wfx_hif_join(wvif, conf, wvif->channel, ssid, ssid_len);
- 	if (ret) {
- 		ieee80211_connection_loss(wvif->vif);
- 		wfx_reset(wvif);
+--
+
+Those three dashes are also commonly called Signed-off-by-line, or
+SoB-line (the term might refer to the line above, to the dashes, to the
+line below, depending on whom you're speaking to :)).
+
+> Or did you mean we should reply to our patch?   
+
+You can also do that. If you're really unsure, you can also add [RFC]
+to the subject, before [PATCH], to make it clear you're asking for
+comments rather than actually submitting a change, and then write your
+questions, concerns or considerations directly in the commit message.
+
 -- 
-2.25.1
+Stefano
 
