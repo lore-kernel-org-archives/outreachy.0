@@ -1,93 +1,106 @@
-Received: from relay3-n.mailbaby.net (relay3-n.mailbaby.net [66.45.229.238])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3F08D1363
-	for <outreachy@lists.linux.dev>; Fri,  1 Apr 2022 20:34:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailbaby.net;
- q=dns/txt; s=bambino; bh=+jHW1mmcRjXEfmPVDPS2P0Sb4a9eHyeVWzKg43U1n98=;
- h=from:subject:date:message-id:to:mime-version:content-type:content-transfer-encoding:in-reply-to:references;
- b=TBJfBCQNo5+6RDx319ErQ7zvcTcZyyiAIRJYpSSMPD5YMV6RJe2ijUgS7DmZX93/u9gfoB7KO
- eKpfi6jGgdZcZw6gWWhiDYa7Ix9y5CLN831VkAGYZRPQYapxLzHirQBjS4Sy24L/1BWzIsV/3IN
- LioqtEbNBw5VppReZkSNRgs=
-Received: from mia1000.iaasdns.com ([162.254.200.130] mia1000.iaasdns.com)
- (Authenticated sender: mb6724)
- by relay3-n.mailbaby.net (InterServerMTA) with ESMTPSA id 17fe6d10e83000aa7b.001
- for <outreachy@lists.linux.dev>
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256);
- Fri, 01 Apr 2022 20:28:54 +0000
-X-Zone-Loop: 9593d430d0a93c0ea373adc42d5c08114182eca6bb14
-ARC-Authentication-Results: i=1;	relay3.mailbaby.net;	auth=pass
- smtp.auth=mb6724 smtp.mailfrom=codeagain@codeagain.dev
-ARC-Seal: i=1; s=detka; d=mailbaby.net; t=1648844934; a=rsa-sha256;
-	cv=none;
-	b=MuhKqX/CRX6wsr3bt9edWiVB83C3JvY8Gaz1wBfE6qJn06kGEfyrERJaaghvKHlMaWpW5c
-	BRRqgVzwhZeo8Up2jifQ5c0uGcWriSB4F7gkAJmy9uFFi0SAvqo4KLWE9A0+P3p/yhUXCY
-	YxrpAGZanRq5ff9/wSoWvdHVmet27vJyf7VOnMeGWC2expk2fWiuiAGhzfHLuoCXuN7v3J
-	9d2nhEFmBkjDLVOvB/CBYeoSc307SGbg/Co+sXM33ap4X7W/bIurR1wxfaz+9f+dPM3VDN
-	1MM2fGHwbvvQXIHgNtA08gtwngVovQrzwW/EoVjrJwfJHpoQZnzDrkGr5bt55Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mailbaby.net;	s=detka; t=1648844934;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=+jHW1mmcRjXEfmPVDPS2P0Sb4a9eHyeVWzKg43U1n98=;
-	b=kQWqmhBs6rBFHnaDnd7Mn0dzY/EerMhGuuFqHG6blMG3T9EDH0yq3owpZO2mHimZZ8hWoK
-	ppAX6+38cuivwI8QN1c485SEMO+9fOCZhpDQme8HsfQ75Gw8+SR3ESJtQZciFPNQxyM6FM
-	OVWqBk8NSPrUocSLdWA/vuJ7SMZgsi5wuyAiUbSWaVCjoJX8FScyMoL3yoASNkSZo61K9w
-	EWtY4FasOFBLoCsds4EjOw13czRd/tLoRR87Hx3zPMi+O5Jz8cdSX0KwJn5FCuIujdAyMA
-	kTpfzMLY5NT1XfrWse6ujcaRs1N7PxUnGtucHKQE3o6oeNEEwOJzcNlmSYaiqw==
-X-Originating-IP: [162.254.200.130]
-Received: from [170.84.58.28] (port=23974 helo=[192.168.21.4])
-	by mia1000.iaasdns.com with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <codeagain@codeagain.dev>)
-	id 1naNt7-0005Cm-Jv
-	for outreachy@lists.linux.dev; Fri, 01 Apr 2022 16:28:53 -0400
-Message-ID: <1a8d18273836c87deff1833baf0748e2c1a14308.camel@codeagain.dev>
-Subject: Re: Missing package when sending patchset
-From: Bruno <codeagain@codeagain.dev>
-To: outreachy@lists.linux.dev
-Date: Fri, 01 Apr 2022 17:28:51 -0300
-In-Reply-To: <CAMWRUK6g5qytnqqNV9GmWgWYsxHFXm0iBEw05Gp62v7tFSg8tQ@mail.gmail.com>
-References: 
-	<CAMWRUK6g5qytnqqNV9GmWgWYsxHFXm0iBEw05Gp62v7tFSg8tQ@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.42.4 
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9DA931363;
+	Fri,  1 Apr 2022 20:41:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1648845701; x=1680381701;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=Utj1K8zHur0DD48Ld1ZfQvhBSbjz4rhtoEl2dU5x5CY=;
+  b=hwSG0NX3axmV/YeTJgMdVUB33mJi7KNdz4JncsBOW5tURSYN8ogzP4OE
+   ZzgOxyT3uHvgn1KEDUPWUqMVbi+EvAwEqBCCDzDHJPdw7U3YRGUOaTYw2
+   d2jZpKen97ZHsij3IV3gnAxJMh3VgnZYoY+ZMNVfxqc+vy9d45trR0tUm
+   eBgt4B2F8zfGCelQ5uGvK5jDeMNGJz0a0VFWxvDfHdvMeLui6dkjDuUS2
+   ewX2EpiKWCg81EV98PuwcQhkgAF6CCSzGr6d9FuMUBCTVfqdVoFZzFwAv
+   wyIYhB6wQp/+NYr564EA8AoVqLXemYn8PQU+Is5CZj9UUuc8ix+9tARS7
+   A==;
+X-IronPort-AV: E=McAfee;i="6200,9189,10304"; a="247734934"
+X-IronPort-AV: E=Sophos;i="5.90,228,1643702400"; 
+   d="scan'208";a="247734934"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Apr 2022 13:41:41 -0700
+X-IronPort-AV: E=Sophos;i="5.90,228,1643702400"; 
+   d="scan'208";a="586984045"
+Received: from kmislam-mobl1.amr.corp.intel.com (HELO localhost) ([10.212.112.89])
+  by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Apr 2022 13:41:40 -0700
+Date: Fri, 1 Apr 2022 13:41:40 -0700
+From: Ira Weiny <ira.weiny@intel.com>
+To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+Cc: Larry Finger <Larry.Finger@lwfinger.net>,
+	Phillip Potter <phil@philpotter.co.uk>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy@lists.linux.dev
+Subject: Re: [PATCH] staging: r8188eu: Remove goto to no-op exit label
+Message-ID: <YkdjhGtMwnbJcz+P@iweiny-desk3>
+References: <20220401183513.26222-1-fmdefrancesco@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-AuthUser: me@brunodout.dev
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220401183513.26222-1-fmdefrancesco@gmail.com>
 
-Heyy, I replied this e-mail from my phone in the morning and it sent
-in HTML, even though it appeared to be text plain. I apologize. Now
-I'm sending an updated status!
+On Fri, Apr 01, 2022 at 08:35:13PM +0200, Fabio M. De Francesco wrote:
+> In function rtw_free_netdev() there are two "goto" jumps to a no-op exit
+> label called "RETURN". Remove the label and return in line.
 
-On Fri, 2022-04-01 at 09:11 -0400, Sevinj Aghayeva wrote:
-> Hi all,
+Thanks for the patch!  However, A good commit message lists the why and what of
+a change.  I don't see a why for this commit?
+
+FWIW (For what it's worth) I know of a couple of good reasons for this change
+but you should get in the habit of putting that in the commit message.  Even
+for obvious things like this.
+
+Anyway, I think this patch can stand on it's own with an updated commit
+message.  However, see below...
+
 > 
-> I just tried sending out the first patchset,
-Congrats, Sevinj!
+> Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+> ---
+>  drivers/staging/r8188eu/os_dep/osdep_service.c | 7 ++-----
+>  1 file changed, 2 insertions(+), 5 deletions(-)
 > 
-> git: 'send-email' is not a git command. See 'git --help'.
+> diff --git a/drivers/staging/r8188eu/os_dep/osdep_service.c b/drivers/staging/r8188eu/os_dep/osdep_service.c
+> index 7a6fcc96081a..d680bfba7f5d 100644
+> --- a/drivers/staging/r8188eu/os_dep/osdep_service.c
+> +++ b/drivers/staging/r8188eu/os_dep/osdep_service.c
+> @@ -117,18 +117,15 @@ void rtw_free_netdev(struct net_device *netdev)
+>  	struct rtw_netdev_priv_indicator *pnpi;
+>  
+>  	if (!netdev)
+> -		goto RETURN;
+> +		return;
+>  
+>  	pnpi = netdev_priv(netdev);
+>  
+>  	if (!pnpi->priv)
+> -		goto RETURN;
+> +		return;
 
-Indeed in some distributions a software is fragmented into lots of
-packages. On Arch, though, the package git comes complete.
+This does not look right.  If netdev is not NULL why does this function skip
+free_netdev()?
 
+Fabio could you follow up with Larry and/or Phillip and see why the code does
+this?  To me it looks like a potential bug.
+
+Thanks!
+Ira
+
+>  
+>  	vfree(pnpi->priv);
+>  	free_netdev(netdev);
+> -
+> -RETURN:
+> -	return;
+>  }
+>  
+>  int rtw_change_ifname(struct adapter *padapter, const char *ifname)
+> -- 
+> 2.34.1
 > 
-> Stefano on IRC pointed out that I'm missing the git-email package.
-> After installing the package I was able to send out the patchset.
-> I've
-> updated https://kernelnewbies.org/OutreachyfirstpatchSetup to
-> include
-> the git-email package in the list of packages needed for Ubuntu.
-> 
-
-In the message this morning I told I would update it too for two
-missing perl packages for Arch users, likely related to SMTP
-authentication: 'MIME::Base64' and 'Authen::SASL'. I updated the page
-with instructions on how to do that too!
