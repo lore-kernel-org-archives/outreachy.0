@@ -1,186 +1,87 @@
-Received: from mail-oa1-f43.google.com (mail-oa1-f43.google.com [209.85.160.43])
+Received: from mail-ej1-f42.google.com (mail-ej1-f42.google.com [209.85.218.42])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CCF5C186B;
-	Sat,  2 Apr 2022 16:49:28 +0000 (UTC)
-Received: by mail-oa1-f43.google.com with SMTP id 586e51a60fabf-de3eda6b5dso6007268fac.0;
-        Sat, 02 Apr 2022 09:49:28 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 57461186B;
+	Sat,  2 Apr 2022 17:57:02 +0000 (UTC)
+Received: by mail-ej1-f42.google.com with SMTP id yy13so12095308ejb.2;
+        Sat, 02 Apr 2022 10:57:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=sender:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
+        h=from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=fBPqA3mIoazbMcWh1HJQC0i7QW16Cn/Q0zy0h/lyGM4=;
-        b=opdiIEImdazw2oXX9vf14k8HMCDV5ZVwl/h/PMR4FOMfvLCWp/n+83/7Vg+dYSR212
-         vKTNev7s3/9SBQ1JWZAG1BNhW8gLp7S0W/uwmecvU4rCjWCg09YoM7FYfpL4DFBDT0Xz
-         TydiyvLJLwp64q1+EQK0CdUcnNs8vhhfYSLHXdNYdVzUM/ZqWMspdsLWlM3pNjWg0Jg8
-         QWCBmj3Qy0kTZvmt5jqzqyM93jD4wCG0WZ6W3WocTqjS5cDUoUMNJq0n7RR69cPTWFl6
-         QHbGsBQW8fmnjtOCmwXvMUlHOkBz/LCGB73EPnZQ8JtrWNWn6inNr8L5zoO88rrkSj2b
-         kvZA==
+        bh=BVxMHUicLbUH3Hvb1PPfVYvYyoskkvyv49vbgbrFCNo=;
+        b=l4c6G01X/mM7+1GnZ7oTuCLmtLgPbKG3mx7SbFPIku+ccwGTElZ0p+W8JpJcckG2wh
+         /lF6CkMeckAATTx3qq8eCxC0mdDSJ0VT019mKzu8JOetLhqQuR09W5RVyrR1UzGEDt7H
+         knZw+WaqR0Sidvgu5QJrnqYYMGo1Y1pb08ICafpgzDjkd/Q6yIWrf7dgseR/JD945Em3
+         9BH+Nb3SU6TlJBW8YtlSz/fuKkv3a9zHjIUAn2x7LKtTPE+BqSFW9l9bishHF4Eei2fe
+         fJhs+n3r7vBmF7oQn92ysEu3AeNjnZ7OlVofn2YH8295+lgWegZ90Ap6GMNXlUY+LxGh
+         c2sw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
-         :subject:content-language:to:cc:references:from:in-reply-to
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=fBPqA3mIoazbMcWh1HJQC0i7QW16Cn/Q0zy0h/lyGM4=;
-        b=MCBvn7rDdCMMGnbAEOLJvCbtUFUxw6Bodb45Jw42AI2iRnYMdvqWZ/4KIcUID+saA3
-         s0zFRHRM+5LY9miKq7AJtbz13bhvfPT463w0SjCeEYZtmT7clGbXPHqdmdbcPARIFk/T
-         QfQfcuL7q0jpWj8CAXoVFCcMbhivijGWvY6M8RchC/L4dQb+a/NSDvlUjX1fS/VfcMUO
-         bCTAt4ykW4Qf/KVe9SWKDWGq6QTKsU1oclLaCBm8yjdaoZ5l2hVDjmaoevYre1apSBLH
-         U+eRnPlHQFKDpvQ8439Po2Kz+IpGfHmUbPtzHQJcrIok2um5m1CL+/O11u+ymWjKvWh7
-         u+Eg==
-X-Gm-Message-State: AOAM531+CoAddWHuZ2RphShrKIQojOtKdUhG7d8zT5DEcwgE69C+vN25
-	sR6VBLT1bqnEfVdkp7HjWgw=
-X-Google-Smtp-Source: ABdhPJxJWq+VuYlkerr9lIuYyPsl/SGyckYnNzw7rEgf7b+NzQYtayfwjM+JJJgCdJONRjads69UWw==
-X-Received: by 2002:a05:6870:d182:b0:dd:bf35:48 with SMTP id a2-20020a056870d18200b000ddbf350048mr7297004oac.255.1648918167900;
-        Sat, 02 Apr 2022 09:49:27 -0700 (PDT)
-Received: from ?IPV6:2603:8090:2005:39b3::1004? (2603-8090-2005-39b3-0000-0000-0000-1004.res6.spectrum.com. [2603:8090:2005:39b3::1004])
-        by smtp.gmail.com with ESMTPSA id h186-20020acab7c3000000b002ef5106248asm2315385oif.45.2022.04.02.09.49.26
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 02 Apr 2022 09:49:27 -0700 (PDT)
-Sender: Larry Finger <larry.finger@gmail.com>
-Message-ID: <dcd28510-b585-b366-92fb-05c162904cc5@lwfinger.net>
-Date: Sat, 2 Apr 2022 11:49:25 -0500
+        bh=BVxMHUicLbUH3Hvb1PPfVYvYyoskkvyv49vbgbrFCNo=;
+        b=pMg3g7CJu2U53hSc9teVTIuYQQSdrADXaWbvp1lsOWxC0/sUJuZV5s9znFCSNqY6AV
+         GD28GpRrVkM0G+Z59NRfUk1LeuzrqWWCngL+Hr4sSS3jxtBKEVbql+uCyyf6Raxl4l+T
+         KqpmO7+itti0CLUkBmk+NwKXidTtxxiCAWv1oq0Ku6qa6yCVjfb4hWudvbJ/GUR+49rj
+         j3vSV9VwnSWeALL/ZsXh06zAm9up30vAeiYMa2Q2GS0Pjf41RJIGMbhCBXVLAdsiVOJ1
+         fr02kJ3HYfntViwda0QU1qlz5YS6eY0THLJP+TLygyJ8AsjXTPR0dGxM0U5bhaU+cbOr
+         CMHw==
+X-Gm-Message-State: AOAM533tJedNb+Z3yGc1j9FoKkDvqYegcGqBLQ1fmD8POS5HrtYFGXzk
+	LlCUGfqKMOSChD1cjdqLRXY=
+X-Google-Smtp-Source: ABdhPJxRkR3w6MzpTeXo9b3BtpKvfUhBJrw6SYUseLvbqksVCDq8E3opTpW2w3JsDEAmAT8cwPaL5Q==
+X-Received: by 2002:a17:907:62a9:b0:6da:7953:4df0 with SMTP id nd41-20020a17090762a900b006da79534df0mr4472210ejc.316.1648922220505;
+        Sat, 02 Apr 2022 10:57:00 -0700 (PDT)
+Received: from localhost.localdomain (host-95-249-145-232.retail.telecomitalia.it. [95.249.145.232])
+        by smtp.gmail.com with ESMTPSA id hs12-20020a1709073e8c00b006dfd7dee980sm2330857ejc.30.2022.04.02.10.56.58
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 02 Apr 2022 10:56:59 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
+	Teddy Wang <teddy.wang@siliconmotion.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-fbdev@vger.kernel.org,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	outreachy@lists.linux.dev
+Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+Subject: [PATCH] staging: sm750fb: Call iounmap() to free mapped bus memory
+Date: Sat,  2 Apr 2022 19:56:55 +0200
+Message-Id: <20220402175655.31512-1-fmdefrancesco@gmail.com>
+X-Mailer: git-send-email 2.34.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH 1/2] staging: rtl8712: remove blank line after brace {
-Content-Language: en-US
-To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>,
- outreachy@lists.linux.dev
-Cc: florian.c.schilhabel@googlemail.com, gregkh@linuxfoundation.org,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-References: <8c88829f625f9847a1db18fe467399594dacb064.1648902188.git.eng.alaamohamedsoliman.am@gmail.com>
-From: Larry Finger <Larry.Finger@lwfinger.net>
-In-Reply-To: <8c88829f625f9847a1db18fe467399594dacb064.1648902188.git.eng.alaamohamedsoliman.am@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 
-On 4/2/22 07:28, Alaa Mohamed wrote:
-> Fix " CHECK: Blank lines aren't necessary after an open brace '{' "
-> Reported by checkpatch
-> 
-> Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-> ---
->   drivers/staging/rtl8712/rtl8712_xmit.c | 25 ++++++++++++-------------
->   1 file changed, 12 insertions(+), 13 deletions(-)
-> 
-> diff --git a/drivers/staging/rtl8712/rtl8712_xmit.c b/drivers/staging/rtl8712/rtl8712_xmit.c
-> index 84a22eba7ebf..05ba0ca7d627 100644
-> --- a/drivers/staging/rtl8712/rtl8712_xmit.c
-> +++ b/drivers/staging/rtl8712/rtl8712_xmit.c
-> @@ -147,7 +147,7 @@ static u32 get_ff_hwaddr(struct xmit_frame *pxmitframe)
->   }
->   
->   static struct xmit_frame *dequeue_one_xmitframe(struct xmit_priv *pxmitpriv,
-> -					 struct hw_xmit *phwxmit,
-> +						struct hw_xmit *phwxmit,
->   					 struct tx_servq *ptxservq,
->   					 struct  __queue *pframe_queue)
->   {
-> @@ -167,7 +167,7 @@ static struct xmit_frame *dequeue_one_xmitframe(struct xmit_priv *pxmitpriv,
->   }
->   
->   static struct xmit_frame *dequeue_xframe_ex(struct xmit_priv *pxmitpriv,
-> -				     struct hw_xmit *phwxmit_i, sint entry)
-> +					    struct hw_xmit *phwxmit_i, sint entry)
->   {
->   	unsigned long irqL0;
->   	struct list_head *sta_plist, *sta_phead;
-> @@ -201,7 +201,7 @@ static struct xmit_frame *dequeue_xframe_ex(struct xmit_priv *pxmitpriv,
->   						tx_pending);
->   			pframe_queue = &ptxservq->sta_pending;
->   			pxmitframe = dequeue_one_xmitframe(pxmitpriv, phwxmit,
-> -				     ptxservq, pframe_queue);
-> +							   ptxservq, pframe_queue);
->   			if (pxmitframe) {
->   				phwxmit->accnt--;
->   				goto exit_dequeue_xframe_ex;
-> @@ -292,14 +292,14 @@ void r8712_append_mpdu_unit(struct xmit_buf *pxmitbuf,
->   	r8712_xmit_complete(padapter, pxmitframe);
->   	if (pxmitframe->attrib.ether_type != 0x0806) {
->   		if ((pxmitframe->attrib.ether_type != 0x888e) &&
-> -			(pxmitframe->attrib.dhcp_pkt != 1)) {
-> +		    (pxmitframe->attrib.dhcp_pkt != 1)) {
->   			r8712_issue_addbareq_cmd(padapter,
-> -					pxmitframe->attrib.priority);
-> +						 pxmitframe->attrib.priority);
->   		}
->   	}
->   	pxmitframe->last[0] = 1;
->   	update_txdesc(pxmitframe, (uint *)(pxmitframe->buf_addr),
-> -		pxmitframe->attrib.last_txcmdsz);
-> +		      pxmitframe->attrib.last_txcmdsz);
->   	/*padding zero */
->   	last_txcmdsz = pxmitframe->attrib.last_txcmdsz;
->   	padding_sz = (8 - (last_txcmdsz % 8));
-> @@ -334,7 +334,7 @@ void r8712_xmitframe_aggr_1st(struct xmit_buf *pxmitbuf,
->   }
->   
->   u16 r8712_xmitframe_aggr_next(struct xmit_buf *pxmitbuf,
-> -			struct xmit_frame *pxmitframe)
-> +			      struct xmit_frame *pxmitframe)
->   {
->   	pxmitframe->pxmitbuf = pxmitbuf;
->   	pxmitbuf->priv_data = pxmitframe;
-> @@ -388,7 +388,7 @@ void r8712_dump_aggr_xframe(struct xmit_buf *pxmitbuf,
->   		/*default = 32 bytes for TX Desc*/
->   	}
->   	r8712_write_port(pxmitframe->padapter, RTL8712_DMA_H2CCMD,
-> -			total_length + TXDESC_SIZE, (u8 *)pxmitframe);
-> +			 total_length + TXDESC_SIZE, (u8 *)pxmitframe);
->   }
->   
->   #endif
-> @@ -618,14 +618,13 @@ int r8712_xmitframe_complete(struct _adapter *padapter,
->   	pxmitframe = dequeue_xframe_ex(pxmitpriv, phwxmits, hwentry);
->   	/* need to remember the 1st frame */
->   	if (pxmitframe) {
-> -
->   #ifdef CONFIG_R8712_TX_AGGR
->   		/* 1. dequeue 2nd frame
->   		 * 2. aggr if 2nd xframe is dequeued, else dump directly
->   		 */
->   		if (AGGR_NR_HIGH_BOUND > 1)
->   			p2ndxmitframe = dequeue_xframe_ex(pxmitpriv, phwxmits,
-> -							hwentry);
-> +							  hwentry);
->   		if (pxmitframe->frame_tag != DATA_FRAMETAG) {
->   			r8712_free_xmitbuf(pxmitpriv, pxmitbuf);
->   			return false;
-> @@ -663,7 +662,7 @@ int r8712_xmitframe_complete(struct _adapter *padapter,
->   		if (pxmitframe->frame_tag == DATA_FRAMETAG) {
->   			if (pxmitframe->attrib.priority <= 15)
->   				res = r8712_xmitframe_coalesce(padapter,
-> -					pxmitframe->pkt, pxmitframe);
-> +							       pxmitframe->pkt, pxmitframe);
->   			/* always return ndis_packet after
->   			 * r8712_xmitframe_coalesce
->   			 */
-> @@ -715,10 +714,10 @@ static void dump_xframe(struct _adapter *padapter,
->   		ff_hwaddr = get_ff_hwaddr(pxmitframe);
->   #ifdef CONFIG_R8712_TX_AGGR
->   		r8712_write_port(padapter, RTL8712_DMA_H2CCMD, w_sz,
-> -				(unsigned char *)pxmitframe);
-> +				 (unsigned char *)pxmitframe);
->   #else
->   		r8712_write_port(padapter, ff_hwaddr, w_sz,
-> -			   (unsigned char *)pxmitframe);
-> +				 (unsigned char *)pxmitframe);
->   #endif
->   		mem_addr += w_sz;
->   		mem_addr = (u8 *)RND4(((addr_t)(mem_addr)));
+If ioremap_wc() fails, the code jumps to the "exit" label and forgets to
+free the bus memory mapped into "sm750_dev->pvReg". Mapped bus memory must
+always be freed by calling iounmap().
 
-Almost all of these changes are changing code alignment, NOT removing blank 
-lines after a brace. Please do only one type of change for each patch, and 
-please make the change indicated in the commit message.
+Call iounmap(sm750_dev->pvReg) when the above-mentioned failures happen.
 
-NACK
+The site of the missing iounmap() has been detected by Smatch.
 
-Larry
+Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+---
+ drivers/staging/sm750fb/sm750_hw.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/staging/sm750fb/sm750_hw.c b/drivers/staging/sm750fb/sm750_hw.c
+index a7c6eb07b62e..55cb00e8b0d1 100644
+--- a/drivers/staging/sm750fb/sm750_hw.c
++++ b/drivers/staging/sm750fb/sm750_hw.c
+@@ -81,6 +81,7 @@ int hw_sm750_map(struct sm750_dev *sm750_dev, struct pci_dev *pdev)
+ 	sm750_dev->pvMem =
+ 		ioremap_wc(sm750_dev->vidmem_start, sm750_dev->vidmem_size);
+ 	if (!sm750_dev->pvMem) {
++		iounmap(sm750_dev->pvReg);
+ 		pr_err("Map video memory failed\n");
+ 		ret = -EFAULT;
+ 		goto exit;
+-- 
+2.34.1
 
