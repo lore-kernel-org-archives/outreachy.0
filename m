@@ -1,56 +1,67 @@
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from m228-13.mailgun.net (m228-13.mailgun.net [159.135.228.13])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 710BD10E9
-	for <outreachy@lists.linux.dev>; Sat,  2 Apr 2022 02:27:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1648866456; x=1680402456;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=E/zMTK6n9gljXZK+Xday6j7Es/JRg+TldT9N/gh6YYk=;
-  b=hjpcxskf+ez7HFAnjzkiUiWY/5s+/zFlDRvov8e3XDjvZqDegMYvztrz
-   4/yx1kSAUi0XfHzLNan9fQY88s7PL1LXdspxAfJjmq1M3PpSFDuL/OTl4
-   1fH2BbQi1tqe2ugxA7hXlogpFxULzSvCpNKUKT9tZtuM7/NrL4o9Y/x2J
-   4W7YgloyKXsQieIILtrlw0d6uCSZBGfeptMW0BdV7/bcimA3HuGDkhBz/
-   4ZMOUom1NSuSWT6Bh5YLxcGwkoQ/yUmEzplMWXH+3XSSyVLR60WM558sd
-   6rnnnkxOcbtCBoYlMGXZmxtKuQPPzQd1nORlRW/1OoRticIg+/KLAXDSc
-   w==;
-X-IronPort-AV: E=McAfee;i="6200,9189,10304"; a="323444418"
-X-IronPort-AV: E=Sophos;i="5.90,229,1643702400"; 
-   d="scan'208";a="323444418"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
-  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Apr 2022 19:27:36 -0700
-X-IronPort-AV: E=Sophos;i="5.90,229,1643702400"; 
-   d="scan'208";a="522989929"
-Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
-  by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Apr 2022 19:27:36 -0700
-Date: Fri, 1 Apr 2022 19:29:54 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: Rebecca Mckeever <remckee0@gmail.com>
-Cc: outreachy@lists.linux.dev
-Subject: Re: [KERNEL NEWBIES ACCESS] RebeccaMckeever
-Message-ID: <20220402022954.GA1189513@alison-desk>
-References: <YkeuMR49KKGhLma9@bertie>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CE73B7C
+	for <outreachy@lists.linux.dev>; Sat,  2 Apr 2022 03:54:40 +0000 (UTC)
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=codeagain.dev; q=dns/txt;
+ s=smtp; t=1648871680; h=Content-Transfer-Encoding: MIME-Version:
+ Content-Type: References: In-Reply-To: Date: Cc: To: To: From: From:
+ Subject: Subject: Message-ID: Sender: Sender;
+ bh=YLQb9h5A7nXCW01Oy06nUFUp66nD1ujEmjYEbKHcn88=; b=W2cUpD9LoN0PMa+YeaOqfqpqaQteH+9LcqvjuYZocB7Y5w3gIEhxr8aMuF2ZSagPGEODSknU
+ wVnnKDhazfUq9QvDwYfmOfnwlP23yyLUtC1irUsI3oshVS01AuMMdc4/3ZpBIISbO89OBYMp
+ eHXBAOi2N4Xmva+QNlPaMOupTlXmunmQAFLnoQnH61hn6m1xWZT7lMl+ukeaWn4GpPY/yxh/
+ 83HGcqTsnImyRCxZZPMU8T2pOMuxlC3GlCHHcGpbbRaJZkT3ZqWoz3aff5J8Gymhf8ryactF
+ k+x/daUb8JKPs7IPoqjwCpN7/YhD2vMvxg3GHpYctSUw7edU/iy9oQ==
+X-Mailgun-Sending-Ip: 159.135.228.13
+X-Mailgun-Sid: WyI2Y2ZlNyIsICJvdXRyZWFjaHlAbGlzdHMubGludXguZGV2IiwgImJlOWM2ZCJd
+Received: from [192.168.21.5] (dynamic-user.170.84.58.28.mhnet.com.br
+ [170.84.58.28]) by smtp-out-n07.prod.us-east-1.postgun.com with SMTP id
+ 6247c8ffcb3e04acafd91cee (version=TLS1.3, cipher=TLS_AES_128_GCM_SHA256);
+ Sat, 02 Apr 2022 03:54:39 GMT
+Sender: codeagain@codeagain.dev
+Message-ID: <1c7a7e6e77cff87e6ae268318bc71306ac68091d.camel@codeagain.dev>
+Subject: Re: Testing Only - Ignore
+From: Bruno Moreira-Guedes <codeagain@codeagain.dev>
+To: Alison Schofield <alison.schofield@intel.com>
+Cc: Outreachy Linux Kernel <outreachy@lists.linux.dev>
+Date: Sat, 02 Apr 2022 00:54:36 -0300
+In-Reply-To: <20220401221251.GA1188492@alison-desk>
+References: <20220401221251.GA1188492@alison-desk>
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.42.4 
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <YkeuMR49KKGhLma9@bertie>
+Content-Transfer-Encoding: 7bit
 
-On Fri, Apr 01, 2022 at 09:00:17PM -0500, Rebecca Mckeever wrote:
-> Please grant me edit privileges so I can improve the wiki.
+On Fri, 2022-04-01 at 15:12 -0700, Alison Schofield wrote:
+> This mailing list is very small (since it's so new), and friendly,
+> so I'm spamming it with my private email test.
+> 
+> Not even sure this is a reasonable test.
+> 
+> Mail in which I am in the To: is not coming through to my Intel
+> email.
+> For example, Bruno's last email I see when I browse w Lore, but I 
+> didn't get it in my @intel.com INBOX. 
 
-You're in the EditorsGroup now.
-Thanks for helping out!
-
+I think what you saw might be caused by issues on my side. The last
+two days I kept trying to fix the problem, but my mail provider is
+having serious delivery issues. They use a SMTP re-routing service for
+cases where delivery fails, but I have to request them case-by-case
+after it happens. To don't risk fragmenting my patch submissions I
+found an alternative SMTP service, but I failed to add it also to my
+mail client, and that's likely the reason you didn't receive it.
 
 > 
-> Thanks,
-> Rebecca
-> 
-> 
+> It reminded me of something Stefano mentioned about mail getting
+> de-dup'd and then you wind up with nothing.
+
+If the e-mails get de-dup and my mail provider failed the delivery, my
+best guess is that you won't receive it at all, since my post would be
+the only one (my greatest fear in the last couple of days).
+
+I hope it stops happening now!
