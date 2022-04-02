@@ -1,41 +1,41 @@
-Received: from mail-wm1-f54.google.com (mail-wm1-f54.google.com [209.85.128.54])
+Received: from mail-ej1-f51.google.com (mail-ej1-f51.google.com [209.85.218.51])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E64971856;
-	Sat,  2 Apr 2022 14:07:04 +0000 (UTC)
-Received: by mail-wm1-f54.google.com with SMTP id r7so3283147wmq.2;
-        Sat, 02 Apr 2022 07:07:04 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0A0E0111D;
+	Sat,  2 Apr 2022 16:34:45 +0000 (UTC)
+Received: by mail-ej1-f51.google.com with SMTP id a6so847796ejk.0;
+        Sat, 02 Apr 2022 09:34:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=fg7D1iGUfw9j684AaN9ZwUUtm9p5W+5qSKHanyjniig=;
-        b=XhKe6RBzOIYGM7e1jgWJtS6NaOo4+4DLXXecjeNVeEgHXKdrxJ54a8D6RAAHjJ5QOY
-         BlkaPbXoCClrtXJ5Rl+dzMbMRuL69iFqyY0BlGEa6j7/TXmR7/nEewXOEipQuLbycwIk
-         EER4AZGnsSfOtNsL0LkfXOnzds3+z1PJQxYRzwP81AX1QWdDebCsV0KWRSnw+6vtvogF
-         RGJiuz0XHVxeTkSCQToYFFxfOD4hKaSZBJZQnk7D3gzEXzm/YPXTNKl87tQ7RD8FIWFg
-         BkOTUR5Vqcs+P3DxcqD53+CDLJ/i8yM0CGVjDbEQsxQBmYHYyBnwouSSEkHLUR5Y/cz0
-         LmFw==
+        bh=/FUIvc/vDnMsC8g3By0xz2o93YIAaNo0DmbUPR75Tlc=;
+        b=Ioi61ehSCrXnxLXiUDHyumdLEB4WVYi0QVlxNUL2ed3iV843fKZaDve+2MpfC/8G5J
+         x4KZDzHzRvf5A9KYLawd2xkLz3U3C2lc/ofNKczlkanAj5jwaZVkKKkrmeaKbbiaLeof
+         oi8LgC+BF5j3duxC/OEIitiA/o+xBkNhgB09T3wwbJ40k1yBS2K+6FatLnxPu0GHZUrs
+         KmuipXAqwxdBUFU+O19jfc2TBpM2iLafe8ARV9lZaphs7EYb+0iDUvB1wKN/rS0Qt4+s
+         bkHGMxghC9ZADEqlsTctvDu7TyNIYX17XomcLzYbJ5dMwVBxVI7/VkFC/caEdkepdKuL
+         i9dA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=fg7D1iGUfw9j684AaN9ZwUUtm9p5W+5qSKHanyjniig=;
-        b=jkF8M1J9Y3F3s1voPOt5V0KwlorhpMxGzy5VJdNDc2SBOWGai7LYDP6VbXbGvDnU71
-         FAblCaWeXR17HUEXWjRQWPmmNpMppkn5Dzk1Pw4hg0CCmnH5o4SapaCdJSC6j9Nq3Vq5
-         k0tO89AR9d6FvsYz0E/QPDoKdDwJPNYkt1BbdIxNowK49oEZ/xovnqOl+uCNH+ctXp/8
-         SGpWfj/FIIvGH8yFTFFn6QWNxvWPnA35YOqTTgCAaN9NMUcZZDLNHZdVx+1NTiTj/SLk
-         x7Plk7wo9S77dA2RgigSkupGPGEyHreN7MN85C/D108lxrf9QdSdqmke1sfUejkJ2AY3
-         WRqg==
-X-Gm-Message-State: AOAM530gO101hNvarZsC763lJf+ni/NjKIWcTD0mRFMnSQFTS58nUUCF
-	IHiIeLayeAG7gNiTMEPetto=
-X-Google-Smtp-Source: ABdhPJygcdRjc8ahdcTdoCmXr0p4Hl8GYpF9eDNU5lTcaWSQGrz4m6EBUQgXxO4UOGoIYdwA68lXVw==
-X-Received: by 2002:a7b:c5d0:0:b0:355:482a:6f44 with SMTP id n16-20020a7bc5d0000000b00355482a6f44mr12523721wmk.58.1648908423127;
-        Sat, 02 Apr 2022 07:07:03 -0700 (PDT)
+        bh=/FUIvc/vDnMsC8g3By0xz2o93YIAaNo0DmbUPR75Tlc=;
+        b=HtafNI68IXiU3NksqUOOTTi0bNYq9/A9POdoONLwcsE3EWjyDBNmm5Q/Ofuss9+4w0
+         yFmXSl6vltYRql6KfN63/DrAkMMy7ypDTPPLxycFMk/PcYwpnRIxBlByeF97m7JA8B/3
+         6GltemOh+F4w3pcbwulWXw1EEK7dIVcjfmjhroT5tmz7B1e/UA/sSVHcQr3saBGRYo53
+         UuS6OaqLQ335vsKVMlLJw4k2BfYuDP2DknR809CwMB680asgL+QDbBUs2hPKWN1jcQ0F
+         gyh31B2Qaf0EGl83L/UrYv80ji0rzXPFgOEWrYNzbYErcXj0gj9QNrJK2/ipFT1o2e11
+         Pdlg==
+X-Gm-Message-State: AOAM531XLInobe/x9fRGbQAV9aEfO25qorYKN0EcDJgaLJraENKU1Rju
+	em0holpirkWVVT97qQ0Sghg=
+X-Google-Smtp-Source: ABdhPJy2M5JbKf2OjnCPA6qJuPiQbgigSFQO/VYzmNX4uOlglDcSFd71pcHoDc/5PYlOC4uf4RS7eg==
+X-Received: by 2002:a17:906:b107:b0:6e0:a25a:af6e with SMTP id u7-20020a170906b10700b006e0a25aaf6emr4308839ejy.359.1648917284171;
+        Sat, 02 Apr 2022 09:34:44 -0700 (PDT)
 Received: from localhost.localdomain (host-95-249-145-232.retail.telecomitalia.it. [95.249.145.232])
-        by smtp.gmail.com with ESMTPSA id z13-20020a5d440d000000b00203f2b010b1sm4638195wrq.44.2022.04.02.07.07.00
+        by smtp.gmail.com with ESMTPSA id ka22-20020a170907921600b006e4c1ab0bbdsm2191216ejb.207.2022.04.02.09.34.42
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 02 Apr 2022 07:07:01 -0700 (PDT)
+        Sat, 02 Apr 2022 09:34:42 -0700 (PDT)
 From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
 To: Larry Finger <Larry.Finger@lwfinger.net>,
 	Phillip Potter <phil@philpotter.co.uk>,
@@ -43,12 +43,10 @@ To: Larry Finger <Larry.Finger@lwfinger.net>,
 	linux-staging@lists.linux.dev,
 	linux-kernel@vger.kernel.org,
 	outreachy@lists.linux.dev
-Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>,
-	Pavel Skripkin <paskripkin@gmail.com>,
-	Martin Kaiser <martin@kaiser.cx>
-Subject: [PATCH] staging: r8188eu: Remove redundant code from rtw_free_netdev()
-Date: Sat,  2 Apr 2022 16:06:57 +0200
-Message-Id: <20220402140657.10549-1-fmdefrancesco@gmail.com>
+Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+Subject: [PATCH] staging: r8188eu: Use the ARRAY_SIZE() macro
+Date: Sat,  2 Apr 2022 18:34:39 +0200
+Message-Id: <20220402163439.20457-1-fmdefrancesco@gmail.com>
 X-Mailer: git-send-email 2.34.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
@@ -58,50 +56,111 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-In rtw_free_netdev() there are two redundant tests. The first checks for
-a valid pointer to a "struct net_device". This pointer is the argument
-of rtw_free_netdev(). The two callers of this function already test this
-parameter immediatelly before the calls. The second checks for a valid
-pointer to a "struct rtw_netdev_priv_indicator". This pointer is always
-valid and, even if it were not, vfree() is a no-op on NULL pointers.
+Use the ARRAY_SIZE() macro in places where there are open coded
+calculations of the size of arrays.
 
-Therefore the above-mentioned two "if" statements are unnecessary and
-redundant. For this reason, remove these two tests.
+ARRAY_SIZE(arr) makes sure that "arr" is an array, it's safer than
+sizeof(arr) / sizeof(arr[0]), and improves readibility.
 
-After removing these tests there is no more need of the "RETURN" label.
-Therefore, remove also the "RETURN" label.
+Detected with the help of Coccinelle.
 
-Cc: Pavel Skripkin <paskripkin@gmail.com>
-Cc: Martin Kaiser <martin@kaiser.cx>
 Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
 ---
- drivers/staging/r8188eu/os_dep/osdep_service.c | 9 ---------
- 1 file changed, 9 deletions(-)
+ drivers/staging/r8188eu/core/rtw_mlme_ext.c     | 2 +-
+ drivers/staging/r8188eu/hal/HalHWImg8188E_BB.c  | 6 +++---
+ drivers/staging/r8188eu/hal/HalHWImg8188E_MAC.c | 2 +-
+ drivers/staging/r8188eu/hal/HalHWImg8188E_RF.c  | 2 +-
+ drivers/staging/r8188eu/os_dep/ioctl_linux.c    | 6 +++---
+ 5 files changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/staging/r8188eu/os_dep/osdep_service.c b/drivers/staging/r8188eu/os_dep/osdep_service.c
-index 7a6fcc96081a..fc10eefe04a9 100644
---- a/drivers/staging/r8188eu/os_dep/osdep_service.c
-+++ b/drivers/staging/r8188eu/os_dep/osdep_service.c
-@@ -116,19 +116,10 @@ void rtw_free_netdev(struct net_device *netdev)
+diff --git a/drivers/staging/r8188eu/core/rtw_mlme_ext.c b/drivers/staging/r8188eu/core/rtw_mlme_ext.c
+index 10d5f1222936..2ce130165b39 100644
+--- a/drivers/staging/r8188eu/core/rtw_mlme_ext.c
++++ b/drivers/staging/r8188eu/core/rtw_mlme_ext.c
+@@ -3985,7 +3985,7 @@ unsigned int OnAction(struct adapter *padapter, struct recv_frame *precv_frame)
+ 
+ 	category = frame_body[0];
+ 
+-	for (i = 0; i < sizeof(OnAction_tbl) / sizeof(struct action_handler); i++) {
++	for (i = 0; i < ARRAY_SIZE(OnAction_tbl); i++) {
+ 		ptable = &OnAction_tbl[i];
+ 		if (category == ptable->num)
+ 			ptable->func(padapter, precv_frame);
+diff --git a/drivers/staging/r8188eu/hal/HalHWImg8188E_BB.c b/drivers/staging/r8188eu/hal/HalHWImg8188E_BB.c
+index e7f834b02567..7901d0afa2e7 100644
+--- a/drivers/staging/r8188eu/hal/HalHWImg8188E_BB.c
++++ b/drivers/staging/r8188eu/hal/HalHWImg8188E_BB.c
+@@ -170,7 +170,7 @@ enum HAL_STATUS ODM_ReadAndConfig_AGC_TAB_1T_8188E(struct odm_dm_struct *dm_odm)
  {
- 	struct rtw_netdev_priv_indicator *pnpi;
+ 	u32     hex         = 0;
+ 	u32     i           = 0;
+-	u32     arraylen    = sizeof(array_agc_tab_1t_8188e) / sizeof(u32);
++	u32     arraylen    = ARRAY_SIZE(array_agc_tab_1t_8188e);
+ 	u32    *array       = array_agc_tab_1t_8188e;
+ 	bool		biol = false;
+ 	struct adapter *adapter =  dm_odm->Adapter;
+@@ -446,7 +446,7 @@ enum HAL_STATUS ODM_ReadAndConfig_PHY_REG_1T_8188E(struct odm_dm_struct *dm_odm)
+ {
+ 	u32     hex         = 0;
+ 	u32     i           = 0;
+-	u32     arraylen    = sizeof(array_phy_reg_1t_8188e) / sizeof(u32);
++	u32     arraylen    = ARRAY_SIZE(array_phy_reg_1t_8188e);
+ 	u32    *array       = array_phy_reg_1t_8188e;
+ 	bool	biol = false;
+ 	struct adapter *adapter =  dm_odm->Adapter;
+@@ -651,7 +651,7 @@ void ODM_ReadAndConfig_PHY_REG_PG_8188E(struct odm_dm_struct *dm_odm)
+ {
+ 	u32  hex;
+ 	u32  i           = 0;
+-	u32  arraylen    = sizeof(array_phy_reg_pg_8188e) / sizeof(u32);
++	u32  arraylen    = ARRAY_SIZE(array_phy_reg_pg_8188e);
+ 	u32 *array       = array_phy_reg_pg_8188e;
  
--	if (!netdev)
--		goto RETURN;
--
- 	pnpi = netdev_priv(netdev);
+ 	hex = ODM_ITRF_USB << 8;
+diff --git a/drivers/staging/r8188eu/hal/HalHWImg8188E_MAC.c b/drivers/staging/r8188eu/hal/HalHWImg8188E_MAC.c
+index 20ce1571fc26..77b25885c63b 100644
+--- a/drivers/staging/r8188eu/hal/HalHWImg8188E_MAC.c
++++ b/drivers/staging/r8188eu/hal/HalHWImg8188E_MAC.c
+@@ -132,7 +132,7 @@ enum HAL_STATUS ODM_ReadAndConfig_MAC_REG_8188E(struct odm_dm_struct *dm_odm)
  
--	if (!pnpi->priv)
--		goto RETURN;
--
- 	vfree(pnpi->priv);
- 	free_netdev(netdev);
--
--RETURN:
--	return;
- }
+ 	u32     hex         = 0;
+ 	u32     i;
+-	u32     array_len    = sizeof(array_MAC_REG_8188E) / sizeof(u32);
++	u32     array_len    = ARRAY_SIZE(array_MAC_REG_8188E);
+ 	u32    *array       = array_MAC_REG_8188E;
+ 	bool	biol = false;
  
- int rtw_change_ifname(struct adapter *padapter, const char *ifname)
+diff --git a/drivers/staging/r8188eu/hal/HalHWImg8188E_RF.c b/drivers/staging/r8188eu/hal/HalHWImg8188E_RF.c
+index 9dc888a66d09..08cbfce3808d 100644
+--- a/drivers/staging/r8188eu/hal/HalHWImg8188E_RF.c
++++ b/drivers/staging/r8188eu/hal/HalHWImg8188E_RF.c
+@@ -138,7 +138,7 @@ enum HAL_STATUS ODM_ReadAndConfig_RadioA_1T_8188E(struct odm_dm_struct *pDM_Odm)
+ 
+ 	u32     hex         = 0;
+ 	u32     i           = 0;
+-	u32     ArrayLen    = sizeof(Array_RadioA_1T_8188E) / sizeof(u32);
++	u32     ArrayLen    = ARRAY_SIZE(Array_RadioA_1T_8188E);
+ 	u32    *Array       = Array_RadioA_1T_8188E;
+ 	bool		biol = false;
+ 	struct adapter *Adapter =  pDM_Odm->Adapter;
+diff --git a/drivers/staging/r8188eu/os_dep/ioctl_linux.c b/drivers/staging/r8188eu/os_dep/ioctl_linux.c
+index eb9375b0c660..dd2f9ae59c3f 100644
+--- a/drivers/staging/r8188eu/os_dep/ioctl_linux.c
++++ b/drivers/staging/r8188eu/os_dep/ioctl_linux.c
+@@ -3958,10 +3958,10 @@ static struct iw_statistics *rtw_get_wireless_stats(struct net_device *dev)
+ 
+ struct iw_handler_def rtw_handlers_def = {
+ 	.standard = rtw_handlers,
+-	.num_standard = sizeof(rtw_handlers) / sizeof(iw_handler),
++	.num_standard = ARRAY_SIZE(rtw_handlers),
+ 	.private = rtw_private_handler,
+ 	.private_args = (struct iw_priv_args *)rtw_private_args,
+-	.num_private = sizeof(rtw_private_handler) / sizeof(iw_handler),
+-	.num_private_args = sizeof(rtw_private_args) / sizeof(struct iw_priv_args),
++	.num_private = ARRAY_SIZE(rtw_private_handler),
++	.num_private_args = ARRAY_SIZE(rtw_private_args),
+ 	.get_wireless_stats = rtw_get_wireless_stats,
+ };
 -- 
 2.34.1
 
