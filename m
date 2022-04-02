@@ -1,67 +1,75 @@
-Received: from m228-13.mailgun.net (m228-13.mailgun.net [159.135.228.13])
+Received: from mail-oo1-f66.google.com (mail-oo1-f66.google.com [209.85.161.66])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CE73B7C
-	for <outreachy@lists.linux.dev>; Sat,  2 Apr 2022 03:54:40 +0000 (UTC)
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=codeagain.dev; q=dns/txt;
- s=smtp; t=1648871680; h=Content-Transfer-Encoding: MIME-Version:
- Content-Type: References: In-Reply-To: Date: Cc: To: To: From: From:
- Subject: Subject: Message-ID: Sender: Sender;
- bh=YLQb9h5A7nXCW01Oy06nUFUp66nD1ujEmjYEbKHcn88=; b=W2cUpD9LoN0PMa+YeaOqfqpqaQteH+9LcqvjuYZocB7Y5w3gIEhxr8aMuF2ZSagPGEODSknU
- wVnnKDhazfUq9QvDwYfmOfnwlP23yyLUtC1irUsI3oshVS01AuMMdc4/3ZpBIISbO89OBYMp
- eHXBAOi2N4Xmva+QNlPaMOupTlXmunmQAFLnoQnH61hn6m1xWZT7lMl+ukeaWn4GpPY/yxh/
- 83HGcqTsnImyRCxZZPMU8T2pOMuxlC3GlCHHcGpbbRaJZkT3ZqWoz3aff5J8Gymhf8ryactF
- k+x/daUb8JKPs7IPoqjwCpN7/YhD2vMvxg3GHpYctSUw7edU/iy9oQ==
-X-Mailgun-Sending-Ip: 159.135.228.13
-X-Mailgun-Sid: WyI2Y2ZlNyIsICJvdXRyZWFjaHlAbGlzdHMubGludXguZGV2IiwgImJlOWM2ZCJd
-Received: from [192.168.21.5] (dynamic-user.170.84.58.28.mhnet.com.br
- [170.84.58.28]) by smtp-out-n07.prod.us-east-1.postgun.com with SMTP id
- 6247c8ffcb3e04acafd91cee (version=TLS1.3, cipher=TLS_AES_128_GCM_SHA256);
- Sat, 02 Apr 2022 03:54:39 GMT
-Sender: codeagain@codeagain.dev
-Message-ID: <1c7a7e6e77cff87e6ae268318bc71306ac68091d.camel@codeagain.dev>
-Subject: Re: Testing Only - Ignore
-From: Bruno Moreira-Guedes <codeagain@codeagain.dev>
-To: Alison Schofield <alison.schofield@intel.com>
-Cc: Outreachy Linux Kernel <outreachy@lists.linux.dev>
-Date: Sat, 02 Apr 2022 00:54:36 -0300
-In-Reply-To: <20220401221251.GA1188492@alison-desk>
-References: <20220401221251.GA1188492@alison-desk>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.42.4 
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D67F510E9;
+	Sat,  2 Apr 2022 08:51:03 +0000 (UTC)
+Received: by mail-oo1-f66.google.com with SMTP id p10-20020a056820044a00b00320d7d4af22so918997oou.4;
+        Sat, 02 Apr 2022 01:51:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=VUOMhCxGGDDxH0dnq3ze5cK/Iq3zT9j9067V4Svj/w8=;
+        b=hrLcCtLYrV4YeL/G377XYASUh4ynccAF3dZOX/TdMfZ0LT7DWHenqFFyLsgJ+xcmWY
+         l30NBxyr80GQFqz2/yVqvr1QHMERlogfqRKw6AxdrAOikr9iths9SSGjgA6uZpq8IMXG
+         +8hEFoqw969OmbP089du3ZZ6uDbQiiOAwEdtW5wH21gwR162yn+8axiyenkjardWQWEK
+         oST7dqdh5VWZlBFhlphAzewFXgGGslRtGwBqwLtVOo+u2ccMieDYdKxUHVQd8EcjSsq5
+         vqoFpNvvTlti4wUkJ/HqKUcglFP1uLPiuidpO6h1EVORreAvpbuuWdC0QlwvzTJw8ZRB
+         o4SA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=VUOMhCxGGDDxH0dnq3ze5cK/Iq3zT9j9067V4Svj/w8=;
+        b=QzYWUu6EgBiw287cLzhKr/T9kINSawUb8zExvr2OvJ9/5AXjiHa5LFDfYavQJ/3xce
+         /wDBQtZ1GhvvNe1v4AjN6+wO9hmL3itLm++Dq3C6UcLGGaa5bBGOvdpQQSgxosPd6xR8
+         Cch/NgWoADc6pPqIa1MmpLzRA5mT/qTGZtRJZna8yL07UJErBKeDfBhS/NeG09mn9Rho
+         CjoCwV3k7jcz2e6xg8guHjxS9L/Rc8fJpslz3+aCwI9sHNtmscrwp73j0AYK4k9wWlHY
+         RHUaQHmS/kSe8sYC/oCJnZn510uC/eEkL8yYED4ljdFMVOnS0MOLBEHip3y+FtlhfbP2
+         Dhzw==
+X-Gm-Message-State: AOAM530/Q4cLows+Jr252ghXhjjq3PVdVKxzGfdGbFU9AMjQqCM5vFBK
+	xp044z6BqdKoxM2/eKMR9Pk=
+X-Google-Smtp-Source: ABdhPJxrzV+xUQGXp8PKXfzymFhsePke7giMv8WhRPhF+uAjb81XNa8NFgNWfLbe2Tkz9gZNql63bw==
+X-Received: by 2002:a4a:5510:0:b0:328:faf7:9ed9 with SMTP id e16-20020a4a5510000000b00328faf79ed9mr3063895oob.65.1648889462911;
+        Sat, 02 Apr 2022 01:51:02 -0700 (PDT)
+Received: from bertie (072-190-140-117.res.spectrum.com. [72.190.140.117])
+        by smtp.gmail.com with ESMTPSA id o17-20020a9d5c11000000b005b2611a13edsm2146162otk.61.2022.04.02.01.51.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 02 Apr 2022 01:51:02 -0700 (PDT)
+From: Rebecca Mckeever <remckee0@gmail.com>
+To: outreachy@lists.linux.dev
+Cc: Larry Finger <Larry.Finger@lwfinger.net>,
+	Phillip Potter <phil@philpotter.co.uk>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	Rebecca Mckeever <remckee0@gmail.com>
+Subject: [PATCH 0/6] staging: r8188eu: cleanup
+Date: Sat,  2 Apr 2022 03:50:42 -0500
+Message-Id: <cover.1648888461.git.remckee0@gmail.com>
+X-Mailer: git-send-email 2.32.0
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 
-On Fri, 2022-04-01 at 15:12 -0700, Alison Schofield wrote:
-> This mailing list is very small (since it's so new), and friendly,
-> so I'm spamming it with my private email test.
-> 
-> Not even sure this is a reasonable test.
-> 
-> Mail in which I am in the To: is not coming through to my Intel
-> email.
-> For example, Bruno's last email I see when I browse w Lore, but I 
-> didn't get it in my @intel.com INBOX. 
+These patches address style issues found by checkpatch.
 
-I think what you saw might be caused by issues on my side. The last
-two days I kept trying to fix the problem, but my mail provider is
-having serious delivery issues. They use a SMTP re-routing service for
-cases where delivery fails, but I have to request them case-by-case
-after it happens. To don't risk fragmenting my patch submissions I
-found an alternative SMTP service, but I failed to add it also to my
-mail client, and that's likely the reason you didn't receive it.
+Rebecca Mckeever (6):
+  staging: r8188eu: place constants on the right side of tests
+  staging: r8188eu: remove else after return
+  staging: r8188eu: correct misspelling in comment "conider" ->
+    "consider"
+  staging: r8188eu: format block comments
+  staging: r8188eu: remove unnecessary braces in conditional statements
+  staging: r8188eu: remove spaces before tabs
 
-> 
-> It reminded me of something Stefano mentioned about mail getting
-> de-dup'd and then you wind up with nothing.
+ drivers/staging/r8188eu/core/rtw_cmd.c | 70 +++++++++++++-------------
+ 1 file changed, 34 insertions(+), 36 deletions(-)
 
-If the e-mails get de-dup and my mail provider failed the delivery, my
-best guess is that you won't receive it at all, since my post would be
-the only one (my greatest fear in the last couple of days).
+-- 
+2.32.0
 
-I hope it stops happening now!
