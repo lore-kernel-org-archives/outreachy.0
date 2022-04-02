@@ -1,51 +1,52 @@
-Received: from mail-wr1-f48.google.com (mail-wr1-f48.google.com [209.85.221.48])
+Received: from mail-wr1-f47.google.com (mail-wr1-f47.google.com [209.85.221.47])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5758A7C;
-	Sat,  2 Apr 2022 11:48:36 +0000 (UTC)
-Received: by mail-wr1-f48.google.com with SMTP id u16so7670505wru.4;
-        Sat, 02 Apr 2022 04:48:36 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2005F7C;
+	Sat,  2 Apr 2022 12:28:27 +0000 (UTC)
+Received: by mail-wr1-f47.google.com with SMTP id w21so7774846wra.2;
+        Sat, 02 Apr 2022 05:28:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=sLXbcmO5F8pv8rU06HtWAEl2LZNlFUBFepYo7bqA8sQ=;
-        b=YZ0ff4QfkkKYik0Vim4MSpP3bN0N0LcK+nM0VE1FGCerrllFUhIfVbhPJZSGOq9UY2
-         rm++WGs1Uro1wZ9AqpC08iVStCTiZf9w+0aj6NM6GdHlV/IgA8MhU3YqTg9J3dYmoTmQ
-         ESa/8d1mte243ArJihnXqBeB55SdB5UWhpcKzn20c1R7oUmV7kuuNY+qdcSTqCithHDp
-         qn5TN4a2bFyfN52cjMmDBsc7elP1Ss8qh2mWnr9cyIRHruTO/eGkkq4sayiT4rpdHhhN
-         hYHkqNk9GL4jqwSiYdjfYXQjf/3+EgnjMqUbRTYjP/KT0dB+8KYjety3U5a9NfpngyrB
-         +Dng==
+        bh=c+wUVfcP1Kq4anpR9aDlXlD62iSVYYqFHg1dfGPcvyE=;
+        b=SuqBZt9WHRSlMmoDljfZ2o6v2iqbSxryE8SmG7HI0zvApvlnAay0YbN9uRijWGsMlQ
+         iaLz9+Op0PJFTD6Dl/2RkkC9E0afHnKBFecJi6QwgJm7SGK8bbfrNK7GWjbj1FZepICX
+         uKQLS8v77mLfroFmp/MpCHXZeL0RKrTCAO5RO7zXalGMXifVhBbq+0OUiKf0Nn+toN5f
+         jM12uokZDPGW6jFzaU9AiGxdOCqW31i7ytMfv1hwVR+eAX5NL6+UVBxCBkh1M6y/3IpJ
+         fJBuVtYZ5mF3PjKa/sUaXMxek6J3/Bv+f95BvNnPEtfmXBsfaw8EaC06aI53hmwOefUq
+         hblA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=sLXbcmO5F8pv8rU06HtWAEl2LZNlFUBFepYo7bqA8sQ=;
-        b=dNi1ffZsKBF3R8BuATUYxdQTfhznBaLq3FPDboWmg0uH2QPzVpwr6X/9GlZ0nTg31p
-         w36GXdYBhwyQSztg2Z3qbJuJt5W92k/Mz9o7dgW/6bPZ2NQPOGJ4kM2He3uOdQeA7+3E
-         8At08VrdtSYtEQ7a2gzzHUEQsh9XitSUzbPvcpu0OzGOa2Gu+0NeFN50LcqFbYuEUFUP
-         B1J5BO1gmLS31PViGJQNcvEVto9OgTED7953wFDxeImz6sdlXOi/X9v8n8ypCfb7YD6u
-         lHnaI3TBhZ5GTXkNnS9/S0ebwj9AlB5bCdLO3ClBRohbTqDh6VLttqoXLbCc1AqPtccr
-         6bEQ==
-X-Gm-Message-State: AOAM532xYKADCRncJoqAdpSwwzFfzdn2uLcWL3ACnEe53lm+Qz9XXYBO
-	DeB76o5TNqW1iisA8gBce+M=
-X-Google-Smtp-Source: ABdhPJzlEQrZpBfNWxy5rUyYWm2MUxbS9tdhMq6oiwzO860+COc7AiCOzFMqZeStqkrybW2oOky2DQ==
-X-Received: by 2002:a5d:6d8b:0:b0:203:f9b4:be1d with SMTP id l11-20020a5d6d8b000000b00203f9b4be1dmr11020010wrs.298.1648900114696;
-        Sat, 02 Apr 2022 04:48:34 -0700 (PDT)
+        bh=c+wUVfcP1Kq4anpR9aDlXlD62iSVYYqFHg1dfGPcvyE=;
+        b=wn15E83QpbIrkdJqmyJBPQhatZvpUY4akYrl0+BcE8XANNzwqpXsijSzoia7mriCpV
+         ECm2Z1EnHJBoCuQtV2sx0JNhZkoPSvEYlcBzVLvj2/v0UXiqNtkMV6y2y6cjhd2E0mCj
+         2LFgvxC48lS4xQXFBOAHuabtcBei0CTyllqEOlZq7uzPB6ih1FH3hFf1QvJwiwyOWgld
+         GDQc9lqxZlzMT0ctFbhfYjH3q0Ub2B1u+FvCKz+WFHdJAQme55XnjHB5L62aVqhbeIas
+         Mc3MwbWwoUMujVoEWDSS6IeTfzV4tl12FgUSnX9CpahM1qpFpg+JaD2zzci2IhvW9LKF
+         pHtg==
+X-Gm-Message-State: AOAM533WRchwkKBko+5/r6pH2u5etSMx8vpPGJ535rimPeMCQ80W2L7d
+	SY7gb11EeNgQ5I7X6z/7QA8=
+X-Google-Smtp-Source: ABdhPJwHB1o3gLPTaHMN2eGdujHQRk9YnbPhNyCqzdRLhiYg7/HNsdgt+L6kRLixDM02UIT7e396hA==
+X-Received: by 2002:a05:6000:1d8b:b0:203:df82:ff8d with SMTP id bk11-20020a0560001d8b00b00203df82ff8dmr11039502wrb.623.1648902505436;
+        Sat, 02 Apr 2022 05:28:25 -0700 (PDT)
 Received: from alaa-emad ([197.57.138.121])
-        by smtp.gmail.com with ESMTPSA id v1-20020adff681000000b00205f21617d5sm4532563wrp.105.2022.04.02.04.48.33
+        by smtp.gmail.com with ESMTPSA id n10-20020a5d588a000000b002052e4aaf89sm4563681wrf.80.2022.04.02.05.28.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 02 Apr 2022 04:48:34 -0700 (PDT)
+        Sat, 02 Apr 2022 05:28:24 -0700 (PDT)
 From: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
 To: outreachy@lists.linux.dev
-Cc: gregkh@linuxfoundation.org,
-	jerome.pouiller@silabs.com,
+Cc: Larry.Finger@lwfinger.net,
+	florian.c.schilhabel@googlemail.com,
+	gregkh@linuxfoundation.org,
 	linux-staging@lists.linux.dev,
 	linux-kernel@vger.kernel.org,
 	eng.alaamohamedsoliman.am@gmail.com
-Subject: [PATCH] staging: wfx: remove space at the start of a line
-Date: Sat,  2 Apr 2022 13:48:31 +0200
-Message-Id: <20220402114831.14977-1-eng.alaamohamedsoliman.am@gmail.com>
+Subject: [PATCH 1/2] staging: rtl8712: remove blank line after brace {
+Date: Sat,  2 Apr 2022 14:28:16 +0200
+Message-Id: <8c88829f625f9847a1db18fe467399594dacb064.1648902188.git.eng.alaamohamedsoliman.am@gmail.com>
 X-Mailer: git-send-email 2.35.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
@@ -55,27 +56,119 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-Fix " WARNING: please, no spaces at the start of a line"
+Fix " CHECK: Blank lines aren't necessary after an open brace '{' "
 Reported by checkpatch
 
 Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
 ---
- drivers/staging/wfx/main.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/rtl8712/rtl8712_xmit.c | 25 ++++++++++++-------------
+ 1 file changed, 12 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/staging/wfx/main.c b/drivers/staging/wfx/main.c
-index b93b16b900c8..e575a81ca2ca 100644
---- a/drivers/staging/wfx/main.c
-+++ b/drivers/staging/wfx/main.c
-@@ -170,7 +170,7 @@ bool wfx_api_older_than(struct wfx_dev *wdev, int major, int minor)
-  *
-  * The PDS file is an array of Time-Length-Value structs.
-  */
-- int wfx_send_pds(struct wfx_dev *wdev, u8 *buf, size_t len)
-+int wfx_send_pds(struct wfx_dev *wdev, u8 *buf, size_t len)
- {
- 	int ret, chunk_type, chunk_len, chunk_num = 0;
+diff --git a/drivers/staging/rtl8712/rtl8712_xmit.c b/drivers/staging/rtl8712/rtl8712_xmit.c
+index 84a22eba7ebf..05ba0ca7d627 100644
+--- a/drivers/staging/rtl8712/rtl8712_xmit.c
++++ b/drivers/staging/rtl8712/rtl8712_xmit.c
+@@ -147,7 +147,7 @@ static u32 get_ff_hwaddr(struct xmit_frame *pxmitframe)
+ }
  
+ static struct xmit_frame *dequeue_one_xmitframe(struct xmit_priv *pxmitpriv,
+-					 struct hw_xmit *phwxmit,
++						struct hw_xmit *phwxmit,
+ 					 struct tx_servq *ptxservq,
+ 					 struct  __queue *pframe_queue)
+ {
+@@ -167,7 +167,7 @@ static struct xmit_frame *dequeue_one_xmitframe(struct xmit_priv *pxmitpriv,
+ }
+ 
+ static struct xmit_frame *dequeue_xframe_ex(struct xmit_priv *pxmitpriv,
+-				     struct hw_xmit *phwxmit_i, sint entry)
++					    struct hw_xmit *phwxmit_i, sint entry)
+ {
+ 	unsigned long irqL0;
+ 	struct list_head *sta_plist, *sta_phead;
+@@ -201,7 +201,7 @@ static struct xmit_frame *dequeue_xframe_ex(struct xmit_priv *pxmitpriv,
+ 						tx_pending);
+ 			pframe_queue = &ptxservq->sta_pending;
+ 			pxmitframe = dequeue_one_xmitframe(pxmitpriv, phwxmit,
+-				     ptxservq, pframe_queue);
++							   ptxservq, pframe_queue);
+ 			if (pxmitframe) {
+ 				phwxmit->accnt--;
+ 				goto exit_dequeue_xframe_ex;
+@@ -292,14 +292,14 @@ void r8712_append_mpdu_unit(struct xmit_buf *pxmitbuf,
+ 	r8712_xmit_complete(padapter, pxmitframe);
+ 	if (pxmitframe->attrib.ether_type != 0x0806) {
+ 		if ((pxmitframe->attrib.ether_type != 0x888e) &&
+-			(pxmitframe->attrib.dhcp_pkt != 1)) {
++		    (pxmitframe->attrib.dhcp_pkt != 1)) {
+ 			r8712_issue_addbareq_cmd(padapter,
+-					pxmitframe->attrib.priority);
++						 pxmitframe->attrib.priority);
+ 		}
+ 	}
+ 	pxmitframe->last[0] = 1;
+ 	update_txdesc(pxmitframe, (uint *)(pxmitframe->buf_addr),
+-		pxmitframe->attrib.last_txcmdsz);
++		      pxmitframe->attrib.last_txcmdsz);
+ 	/*padding zero */
+ 	last_txcmdsz = pxmitframe->attrib.last_txcmdsz;
+ 	padding_sz = (8 - (last_txcmdsz % 8));
+@@ -334,7 +334,7 @@ void r8712_xmitframe_aggr_1st(struct xmit_buf *pxmitbuf,
+ }
+ 
+ u16 r8712_xmitframe_aggr_next(struct xmit_buf *pxmitbuf,
+-			struct xmit_frame *pxmitframe)
++			      struct xmit_frame *pxmitframe)
+ {
+ 	pxmitframe->pxmitbuf = pxmitbuf;
+ 	pxmitbuf->priv_data = pxmitframe;
+@@ -388,7 +388,7 @@ void r8712_dump_aggr_xframe(struct xmit_buf *pxmitbuf,
+ 		/*default = 32 bytes for TX Desc*/
+ 	}
+ 	r8712_write_port(pxmitframe->padapter, RTL8712_DMA_H2CCMD,
+-			total_length + TXDESC_SIZE, (u8 *)pxmitframe);
++			 total_length + TXDESC_SIZE, (u8 *)pxmitframe);
+ }
+ 
+ #endif
+@@ -618,14 +618,13 @@ int r8712_xmitframe_complete(struct _adapter *padapter,
+ 	pxmitframe = dequeue_xframe_ex(pxmitpriv, phwxmits, hwentry);
+ 	/* need to remember the 1st frame */
+ 	if (pxmitframe) {
+-
+ #ifdef CONFIG_R8712_TX_AGGR
+ 		/* 1. dequeue 2nd frame
+ 		 * 2. aggr if 2nd xframe is dequeued, else dump directly
+ 		 */
+ 		if (AGGR_NR_HIGH_BOUND > 1)
+ 			p2ndxmitframe = dequeue_xframe_ex(pxmitpriv, phwxmits,
+-							hwentry);
++							  hwentry);
+ 		if (pxmitframe->frame_tag != DATA_FRAMETAG) {
+ 			r8712_free_xmitbuf(pxmitpriv, pxmitbuf);
+ 			return false;
+@@ -663,7 +662,7 @@ int r8712_xmitframe_complete(struct _adapter *padapter,
+ 		if (pxmitframe->frame_tag == DATA_FRAMETAG) {
+ 			if (pxmitframe->attrib.priority <= 15)
+ 				res = r8712_xmitframe_coalesce(padapter,
+-					pxmitframe->pkt, pxmitframe);
++							       pxmitframe->pkt, pxmitframe);
+ 			/* always return ndis_packet after
+ 			 * r8712_xmitframe_coalesce
+ 			 */
+@@ -715,10 +714,10 @@ static void dump_xframe(struct _adapter *padapter,
+ 		ff_hwaddr = get_ff_hwaddr(pxmitframe);
+ #ifdef CONFIG_R8712_TX_AGGR
+ 		r8712_write_port(padapter, RTL8712_DMA_H2CCMD, w_sz,
+-				(unsigned char *)pxmitframe);
++				 (unsigned char *)pxmitframe);
+ #else
+ 		r8712_write_port(padapter, ff_hwaddr, w_sz,
+-			   (unsigned char *)pxmitframe);
++				 (unsigned char *)pxmitframe);
+ #endif
+ 		mem_addr += w_sz;
+ 		mem_addr = (u8 *)RND4(((addr_t)(mem_addr)));
 -- 
 2.35.1
 
