@@ -1,87 +1,145 @@
-Received: from mail-ej1-f42.google.com (mail-ej1-f42.google.com [209.85.218.42])
+Received: from mail-qt1-f196.google.com (mail-qt1-f196.google.com [209.85.160.196])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 57461186B;
-	Sat,  2 Apr 2022 17:57:02 +0000 (UTC)
-Received: by mail-ej1-f42.google.com with SMTP id yy13so12095308ejb.2;
-        Sat, 02 Apr 2022 10:57:02 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 915D210EE;
+	Sun,  3 Apr 2022 04:55:35 +0000 (UTC)
+Received: by mail-qt1-f196.google.com with SMTP id j21so5388315qta.0;
+        Sat, 02 Apr 2022 21:55:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=BVxMHUicLbUH3Hvb1PPfVYvYyoskkvyv49vbgbrFCNo=;
-        b=l4c6G01X/mM7+1GnZ7oTuCLmtLgPbKG3mx7SbFPIku+ccwGTElZ0p+W8JpJcckG2wh
-         /lF6CkMeckAATTx3qq8eCxC0mdDSJ0VT019mKzu8JOetLhqQuR09W5RVyrR1UzGEDt7H
-         knZw+WaqR0Sidvgu5QJrnqYYMGo1Y1pb08ICafpgzDjkd/Q6yIWrf7dgseR/JD945Em3
-         9BH+Nb3SU6TlJBW8YtlSz/fuKkv3a9zHjIUAn2x7LKtTPE+BqSFW9l9bishHF4Eei2fe
-         fJhs+n3r7vBmF7oQn92ysEu3AeNjnZ7OlVofn2YH8295+lgWegZ90Ap6GMNXlUY+LxGh
-         c2sw==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=kUho+lhvmxV7brTbWyWD6YBAbxEiznMLxM2RG/qNbi0=;
+        b=C/VjivnMQ7u3WrE2jMPbSdDZ66Apq6t9jTvxgevpelL7gFXesHnmMuBMTb423wzHZe
+         T9um4G9m00c+tBGrArgCttnBudMADQj/hBR/B37yqyaU0JCDuuFebOmJBvNx25FxDDCQ
+         4386gXqEeSTAV+LFXYg3XIb8D3xVDpOjIxIDJKs0B70kLyU80C3P3fJJ++ChZMkAkXZn
+         1CopDq3PBX0rUDeexfzKFSEDP3buvWAvB18vn7RWtxz6wNRj5TtuaEGrAK2myYaLXS8u
+         RrRWugvGI33g6gdecB+X0/ulbHJnsH+xXJB2YGZr5BYqYk1B/M/MhbEHxEPJ/8D/h48N
+         cPfQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=BVxMHUicLbUH3Hvb1PPfVYvYyoskkvyv49vbgbrFCNo=;
-        b=pMg3g7CJu2U53hSc9teVTIuYQQSdrADXaWbvp1lsOWxC0/sUJuZV5s9znFCSNqY6AV
-         GD28GpRrVkM0G+Z59NRfUk1LeuzrqWWCngL+Hr4sSS3jxtBKEVbql+uCyyf6Raxl4l+T
-         KqpmO7+itti0CLUkBmk+NwKXidTtxxiCAWv1oq0Ku6qa6yCVjfb4hWudvbJ/GUR+49rj
-         j3vSV9VwnSWeALL/ZsXh06zAm9up30vAeiYMa2Q2GS0Pjf41RJIGMbhCBXVLAdsiVOJ1
-         fr02kJ3HYfntViwda0QU1qlz5YS6eY0THLJP+TLygyJ8AsjXTPR0dGxM0U5bhaU+cbOr
-         CMHw==
-X-Gm-Message-State: AOAM533tJedNb+Z3yGc1j9FoKkDvqYegcGqBLQ1fmD8POS5HrtYFGXzk
-	LlCUGfqKMOSChD1cjdqLRXY=
-X-Google-Smtp-Source: ABdhPJxRkR3w6MzpTeXo9b3BtpKvfUhBJrw6SYUseLvbqksVCDq8E3opTpW2w3JsDEAmAT8cwPaL5Q==
-X-Received: by 2002:a17:907:62a9:b0:6da:7953:4df0 with SMTP id nd41-20020a17090762a900b006da79534df0mr4472210ejc.316.1648922220505;
-        Sat, 02 Apr 2022 10:57:00 -0700 (PDT)
-Received: from localhost.localdomain (host-95-249-145-232.retail.telecomitalia.it. [95.249.145.232])
-        by smtp.gmail.com with ESMTPSA id hs12-20020a1709073e8c00b006dfd7dee980sm2330857ejc.30.2022.04.02.10.56.58
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=kUho+lhvmxV7brTbWyWD6YBAbxEiznMLxM2RG/qNbi0=;
+        b=aJp+97S4ZWgBBgmI5uDuEy0mSAnGxqzdbVsJk4ferl/qQ0airtXtY4b9IublsfM4Iw
+         PidRva9dafzCCkHaNezlWd7ilqY1xAW0kV7W1en7VnTtSnYT2rrv2fONfH0PdFEiOO0G
+         uaX4GICfiz7VR9Cqsfk5eqet4Z0Ujh1tI+afkAexKmvhbHzdnfc3ygcQskaqW1WUgiiB
+         CyXfnZs3KZ8emlSjMWKZuwvv3umEQl/8LgPQmWHY9N0RXLroyue2+6P0m7T51xR/XkPF
+         0rlW3lNU7zYAc6BE4N492H9mx/TduQaDHPF/qHEh/YH0OjTOeKUoIEBOrwdtQSrfvN+G
+         JCNw==
+X-Gm-Message-State: AOAM532T/DWw4eIyqm/TformixDaahKMYhY9+xh/vzCjObYHMcPQIU5R
+	EBjXRxc3/uRCsF4gg/d2RxM=
+X-Google-Smtp-Source: ABdhPJyjS3PusZ7wLVd4SqsMjD6uPEcBYYEPhF4QBQ+xq7Dt8koQL+u681oR/qxGQVCBHyeEL5dP5A==
+X-Received: by 2002:a05:622a:1646:b0:2e0:6fe2:9f7d with SMTP id y6-20020a05622a164600b002e06fe29f7dmr13477824qtj.174.1648961734509;
+        Sat, 02 Apr 2022 21:55:34 -0700 (PDT)
+Received: from sophie ([45.134.140.181])
+        by smtp.gmail.com with ESMTPSA id s5-20020a37a905000000b0067d35f2fdb1sm3990931qke.37.2022.04.02.21.55.33
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 02 Apr 2022 10:56:59 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
-	Teddy Wang <teddy.wang@siliconmotion.com>,
+        Sat, 02 Apr 2022 21:55:34 -0700 (PDT)
+Date: Sat, 2 Apr 2022 23:55:32 -0500
+From: Rebecca Mckeever <remckee0@gmail.com>
+To: Larry Finger <Larry.Finger@lwfinger.net>
+Cc: outreachy@lists.linux.dev, Phillip Potter <phil@philpotter.co.uk>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-fbdev@vger.kernel.org,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev
-Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Subject: [PATCH] staging: sm750fb: Call iounmap() to free mapped bus memory
-Date: Sat,  2 Apr 2022 19:56:55 +0200
-Message-Id: <20220402175655.31512-1-fmdefrancesco@gmail.com>
-X-Mailer: git-send-email 2.34.1
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 4/6] staging: r8188eu: format block comments
+Message-ID: <20220403045532.GA12084@sophie>
+References: <cover.1648888461.git.remckee0@gmail.com>
+ <0387f3df49d89c17acf96cf072e70c98e81e58f7.1648888462.git.remckee0@gmail.com>
+ <563ddd2d-b8b2-dde6-a0de-c7bbebcc834e@lwfinger.net>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <563ddd2d-b8b2-dde6-a0de-c7bbebcc834e@lwfinger.net>
 
-If ioremap_wc() fails, the code jumps to the "exit" label and forgets to
-free the bus memory mapped into "sm750_dev->pvReg". Mapped bus memory must
-always be freed by calling iounmap().
+Hi Larry,
 
-Call iounmap(sm750_dev->pvReg) when the above-mentioned failures happen.
+On Sat, Apr 02, 2022 at 11:37:27AM -0500, Larry Finger wrote:
+> On 4/2/22 03:50, Rebecca Mckeever wrote:
+> > Add ' * ' or ' ' to beginning of block comment lines
+> > to conform to Linux kernel coding style.
+> > 
+> > Reported by checkpatch:
+> > 
+> > WARNING: Block comments use * on subsequent lines
+> > 
+> > Signed-off-by: Rebecca Mckeever <remckee0@gmail.com>
+> > ---
+> >   drivers/staging/r8188eu/core/rtw_cmd.c | 29 +++++++++++++-------------
+> >   1 file changed, 14 insertions(+), 15 deletions(-)
+> > 
+> > diff --git a/drivers/staging/r8188eu/core/rtw_cmd.c b/drivers/staging/r8188eu/core/rtw_cmd.c
+> > index 2e135bbd836a..0c659b40aa1c 100644
+> > --- a/drivers/staging/r8188eu/core/rtw_cmd.c
+> > +++ b/drivers/staging/r8188eu/core/rtw_cmd.c
+> > @@ -12,9 +12,9 @@
+> >   #include "../include/rtl8188e_dm.h"
+> >   /*
+> > -Caller and the rtw_cmd_thread can protect cmd_q by spin_lock.
+> > -No irqsave is necessary.
+> > -*/
+> > + * Caller and the rtw_cmd_thread can protect cmd_q by spin_lock.
+> > + * No irqsave is necessary.
+> > + */
+> >   static int _rtw_init_cmd_priv(struct cmd_priv *pcmdpriv)
+> >   {
+> > @@ -97,14 +97,13 @@ static void _rtw_free_cmd_priv(struct cmd_priv *pcmdpriv)
+> >   }
+> >   /*
+> > -Calling Context:
+> > -
+> > -rtw_enqueue_cmd can only be called between kernel thread,
+> > -since only spin_lock is used.
+> > -
+> > -ISR/Call-Back functions can't call this sub-function.
+> > -
+> > -*/
+> > + * Calling Context:
+> > + *
+> > + * rtw_enqueue_cmd can only be called between kernel thread,
+> > + * since only spin_lock is used.
+> > + *
+> > + * ISR/Call-Back functions can't call this sub-function.
+> > + */
+> >   static int _rtw_enqueue_cmd(struct __queue *queue, struct cmd_obj *obj)
+> >   {
+> > @@ -319,10 +318,10 @@ int rtw_cmd_thread(void *context)
+> >   }
+> >   /*
+> > -rtw_sitesurvey_cmd(~)
+> > -	### NOTE:#### (!!!!)
+> > -	MUST TAKE CARE THAT BEFORE CALLING THIS FUNC, YOU SHOULD HAVE LOCKED pmlmepriv->lock
+> > -*/
+> > + * rtw_sitesurvey_cmd(~)
+> > + *	### NOTE:#### (!!!!)
+> > + *	MUST TAKE CARE THAT BEFORE CALLING THIS FUNC, YOU SHOULD HAVE LOCKED pmlmepriv->lock
+> > + */
+> >   u8 rtw_sitesurvey_cmd(struct adapter  *padapter, struct ndis_802_11_ssid *ssid, int ssid_num,
+> >   	struct rtw_ieee80211_channel *ch, int ch_num)
+> >   {
+> 
+> These changes are OK, but the rules in drivers/net/wireless specify using
+> 
+> /* abcd
+> 
+> rather than
+> 
+> /*
+>  * abcd
+> 
+> Thus, if and when this driver is accepted into the drivers/net/wireless
+> tree, another change will be needed. I suggest doing that now.
+> 
+> Larry
 
-The site of the missing iounmap() has been detected by Smatch.
+To clarify, I should make that change in this file?
+And would it be better to make a new patch for it, or make a revision to this patch?
 
-Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
----
- drivers/staging/sm750fb/sm750_hw.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/staging/sm750fb/sm750_hw.c b/drivers/staging/sm750fb/sm750_hw.c
-index a7c6eb07b62e..55cb00e8b0d1 100644
---- a/drivers/staging/sm750fb/sm750_hw.c
-+++ b/drivers/staging/sm750fb/sm750_hw.c
-@@ -81,6 +81,7 @@ int hw_sm750_map(struct sm750_dev *sm750_dev, struct pci_dev *pdev)
- 	sm750_dev->pvMem =
- 		ioremap_wc(sm750_dev->vidmem_start, sm750_dev->vidmem_size);
- 	if (!sm750_dev->pvMem) {
-+		iounmap(sm750_dev->pvReg);
- 		pr_err("Map video memory failed\n");
- 		ret = -EFAULT;
- 		goto exit;
--- 
-2.34.1
+Thanks,
+Rebecca
 
