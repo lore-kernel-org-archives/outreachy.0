@@ -1,130 +1,77 @@
-Received: from mail-lf1-f46.google.com (mail-lf1-f46.google.com [209.85.167.46])
+Received: from mail-pl1-f174.google.com (mail-pl1-f174.google.com [209.85.214.174])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2767E7A;
-	Sun,  3 Apr 2022 15:34:05 +0000 (UTC)
-Received: by mail-lf1-f46.google.com with SMTP id e16so12968773lfc.13;
-        Sun, 03 Apr 2022 08:34:04 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 740567A
+	for <outreachy@lists.linux.dev>; Sun,  3 Apr 2022 15:40:20 +0000 (UTC)
+Received: by mail-pl1-f174.google.com with SMTP id o10so372623ple.7
+        for <outreachy@lists.linux.dev>; Sun, 03 Apr 2022 08:40:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc;
-        bh=mIC6+nPyLNVJaE3S1OhJgHqXEDSVnYfTyjeRKg1mrs4=;
-        b=GeYFG9nTDUXSnCsLuryw0kNRtPQSYiO5g35lKNgE14JldKA6j75lNmRDchCCdAgpUv
-         cmD35zgE2pewBFV9E9dchYEWjvM8ONvkxcbhH6wZMyN1tLGGLXrAKY0d8Q26OiVtT3jI
-         tN+2na86ZvTOipKrQLA4qV5dP2z4Nmvzy9i1dmoQBgyZHmzo94K9cfDGCkZt0yt1FnkE
-         mmBaDqWdBI1U+DWtKKCgmH/2CKjVA00/AOnI/eyhbvLECA1XIhFBw0u9KBGrMwzwHvc/
-         Q6XgJjkqLa6IcPRTZZUOTlKJXBi6GxwvsOtX0uf1tKg2wyEk8FfaO/incESquyAXeqtm
-         VHpw==
+        bh=RpQYISdRRpLfVyXfATp6DsH9qKThvuoblW9QuxPtZhk=;
+        b=p2t+8AyaV/nupgfcvLfH5phQtBLmV04JWTYo2jrW8To+e9NikL8siFZ2Y5IE259rdH
+         78BsWqYntMPUIMIZaZ3NndRxtDGG4cgScjA/EyVuRHwJQBVdv6mxVVvAzsRWyjOKNQyU
+         H/J7soCLoXx5EZhfSZ4GIIFebbgoWbYfMpEnJvS0Q72Mit4IRk4tYWC/CeHK5EEk22d1
+         p/4k4To1K2X7MvkDU3n7qcRCS4PR3A5VA56XkqGDcd6n/ZEMsEMGI/I61kTm7b2dwmIb
+         vn1ARwbWoM97GElBzxqFTX0M792X0oSDV2n0GvMJLcq4OLrWJ8dwk/c9FS4iO84+v1ed
+         bIpQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=mIC6+nPyLNVJaE3S1OhJgHqXEDSVnYfTyjeRKg1mrs4=;
-        b=2Y6vriPf0ngyvdoh2Z9loYrz/93tTk8RVMXJ/f3y7SitWR/5KtAtPOcGkTQP0KTnex
-         uvIrtehYH9771iCng/RWg4aRMp0XPsvevJC7mQ/5eOj4ixA8/c2aZIu2Aik3iS9l+IUd
-         w1WRpIMaantUcAhdwRQ0lnBCE4sBq5oEALkG9vUw7hJuZCWBziLf0Xsnou27XKPgMN3c
-         K726JhYFuJaVaX34mE6RN37gjZxWDsFqiAo/bCvQBJaCttI+AAqjLBaADtu17fJ2QsuZ
-         ZXHdsuxKQNXyLKmo6cHdiI7tVLSFyD9dStwXf2w/cqG2rVqiePj4rea2xXHipZVIKQcT
-         gafw==
-X-Gm-Message-State: AOAM532jHwjbPzw43zXsE/O4p7cCLLF8EgNNGz2MEGsZ78r9SWlFFgc0
-	GMJ+ErL/YDh4AVEq7T+1DGCTH+DjEAQVTt323Eg=
-X-Google-Smtp-Source: ABdhPJz/nL7zr6+3VO14htVnHlFLPjNAmBSr7VkYGC+fRtykkcRSWiIqb+qKA0SfyySBsesv0QEbHeKCnKq1A9izojw=
-X-Received: by 2002:a05:6512:b91:b0:44a:d2be:7ad3 with SMTP id
- b17-20020a0565120b9100b0044ad2be7ad3mr10510438lfv.538.1649000042918; Sun, 03
- Apr 2022 08:34:02 -0700 (PDT)
+        bh=RpQYISdRRpLfVyXfATp6DsH9qKThvuoblW9QuxPtZhk=;
+        b=qklufqVxi2nIHzHk7SE9G1+Th80IqUHpdapF0nvtPFFG6BU3MRzQ8fJrO0HX+Rgqq4
+         8l7ofMF0kxTZnYDikn8ZU9OzY6wdxfeA6kgT+TsgwAZkads2lCHpUnRKA+PaWvqHNmMf
+         mkga9iUBNbSFxjD4B6nIHiB//4ZqcRreCsk+v3ePHDUpn3XbuBJ0exa7DjXs2UF1L6Dv
+         54/4Zsxx2QaiCAfEt6HnN3UmESSMXoJQLOuaByCGyTFfD6ZpSkvPV5Mletn5dXDd5XI8
+         YHLQHRRS/cjdkU2bqFIk1bKtbDFUxu7jYZE9Tr6SDifvLJ9AhFJ29YuVxpfK5r5S+1eW
+         NkCw==
+X-Gm-Message-State: AOAM531DHr3+1CN94q9gUmQDNsRvmB4IpiKQfThwW9rBxz8TZv2s97Eh
+	y520s6xuy323SvvgEksoANBCGW38pdWvaCRJfSOVhVWY
+X-Google-Smtp-Source: ABdhPJwJiBdUwtCvO0ttzN2ukbWIE1zHbRVRayG1DPdqj1zRK765T7onFArSPKNgM7NTzjOpLu9QZ4PYBlrGZNWE85Q=
+X-Received: by 2002:a17:90b:3e8b:b0:1c7:852d:e843 with SMTP id
+ rj11-20020a17090b3e8b00b001c7852de843mr21688286pjb.244.1649000419766; Sun, 03
+ Apr 2022 08:40:19 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-References: <cover.1648817213.git.sevinj.aghayeva@gmail.com>
- <8d745122cd10f5db59393b1bff09e6a73e88640b.1648817213.git.sevinj.aghayeva@gmail.com>
- <Ykl+5reEIg31WHyy@kroah.com>
-In-Reply-To: <Ykl+5reEIg31WHyy@kroah.com>
-From: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
-Date: Sun, 3 Apr 2022 11:33:51 -0400
-Message-ID: <CAMWRUK6iuyRguC67J2ErzBp6p86OzaqxNDxhKUU=Gpw6crj3TA@mail.gmail.com>
-Subject: Re: [PATCH 3/3] staging: rtl8723bs: remove redundant else branches
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, 
-	outreachy@lists.linux.dev
+References: <cover.1648840991.git.sevinj.aghayeva@gmail.com>
+ <1a9f181f7f30f71c03e6e88df9fb8c17a298a192.1648840991.git.sevinj.aghayeva@gmail.com>
+ <Ykl/4mIsSzaPRr+y@kroah.com> <CAMWRUK4BpTFf8fGoANjjOEZ2dxCws=QPLPJ166JPgnsdsy+pmg@mail.gmail.com>
+ <CAMWRUK43UO-nT3-8G1GBt9ZzTqGo_j2=_YyE686-8H01ub3meQ@mail.gmail.com>
+In-Reply-To: <CAMWRUK43UO-nT3-8G1GBt9ZzTqGo_j2=_YyE686-8H01ub3meQ@mail.gmail.com>
+From: Roopa Prabhu <roopa.prabhu@gmail.com>
+Date: Sun, 3 Apr 2022 08:40:08 -0700
+Message-ID: <CAGe6so8TdMGFzuGGwR9n5KS1iQjPsxq+VUMp1HgGBn5=eC4b-g@mail.gmail.com>
+Subject: Re: [PATCH v3 1/3] staging: rtl8723bs: remove redundant braces in if statements
+To: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
+Cc: outreachy linux kernel <outreachy@lists.linux.dev>
 Content-Type: text/plain; charset="UTF-8"
 
-On Sun, Apr 3, 2022 at 7:03 AM Greg Kroah-Hartman
-<gregkh@linuxfoundation.org> wrote:
+On Sun, Apr 3, 2022 at 7:25 AM Sevinj Aghayeva
+<sevinj.aghayeva@gmail.com> wrote:
 >
-> On Fri, Apr 01, 2022 at 09:02:47AM -0400, Sevinj Aghayeva wrote:
-> > Adhere to Linux kernel coding style.
-> >
-> > Reported by checkpatch:
-> >
-> > WARNING: else is not generally useful after a break or return
-> >
-> > Signed-off-by: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
-> > ---
-> >  drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 63 +++++++++----------
-> >  1 file changed, 30 insertions(+), 33 deletions(-)
-> >
-> > diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-> > index 81e4b1bf68f6..b80d9061f5a5 100644
-> > --- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-> > +++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-> > @@ -907,10 +907,9 @@ unsigned int OnAuthClient(struct adapter *padapter, union recv_frame *precv_fram
-> >                       set_link_timer(pmlmeext, REAUTH_TO);
-> >
-> >                       return _SUCCESS;
-> > -             } else {
-> > -                     /*  open system */
-> > -                     go2asoc = 1;
-> >               }
-> > +             /*  open system */
-> > +             go2asoc = 1;
-> >       } else if (seq == 4) {
-> >               if (pmlmeinfo->auth_algo == dot11AuthAlgrthm_Shared)
-> >                       go2asoc = 1;
-> > @@ -1502,32 +1501,32 @@ unsigned int OnDeAuth(struct adapter *padapter, union recv_frame *precv_frame)
-> >
-> >
-> >               return _SUCCESS;
-> > -     } else {
-> > -             int     ignore_received_deauth = 0;
-> > -
-> > -             /*      Commented by Albert 20130604 */
-> > -             /*      Before sending the auth frame to start the STA/GC mode connection with AP/GO, */
-> > -             /*      we will send the deauth first. */
-> > -             /*      However, the Win8.1 with BRCM Wi-Fi will send the deauth with reason code 6 to us after receieving our deauth. */
-> > -             /*      Added the following code to avoid this case. */
-> > -             if ((pmlmeinfo->state & WIFI_FW_AUTH_STATE) ||
-> > -                     (pmlmeinfo->state & WIFI_FW_ASSOC_STATE)) {
-> > -                     if (reason == WLAN_REASON_CLASS2_FRAME_FROM_NONAUTH_STA) {
-> > -                             ignore_received_deauth = 1;
-> > -                     } else if (reason == WLAN_REASON_PREV_AUTH_NOT_VALID) {
-> > -                             /*  TODO: 802.11r */
-> > -                             ignore_received_deauth = 1;
-> > -                     }
-> > +     }
-> > +     int     ignore_received_deauth = 0;
-> > +
-> > +     /*      Commented by Albert 20130604 */
-> > +     /*      Before sending the auth frame to start the STA/GC mode connection with AP/GO, */
-> > +     /*      we will send the deauth first. */
-> > +     /*      However, the Win8.1 with BRCM Wi-Fi will send the deauth with reason code 6 to us after receieving our deauth. */
-> > +     /*      Added the following code to avoid this case. */
-> > +     if ((pmlmeinfo->state & WIFI_FW_AUTH_STATE) ||
-> > +             (pmlmeinfo->state & WIFI_FW_ASSOC_STATE)) {
+> (Sending this only to outreachy.)
 >
-> Very odd indentation :(
+> I just did "git fetch origin" and then "git rebase origin" while I was
+> in the branch that didn't apply to Greg's tree. I got a merge conflict
+> in ext4/super.c. None of my changes have modified ext4/super.c, so why
+> do I get a conflict on this file? Can someone please explain?
+
+The file on your branch is still different from the one on
+master/origin even if you have not changed it and git is not able to
+merge the file automatically.
+rebasing your branch often with a master usually helps.
+Maybe others on this list have better explanation/suggestions.
+
 >
+> Thanks
+>
+> In the meantime, I will make a fresh clone...
 
-Just to make sure, are you not happy about the existing code or the
-comments being indented? Because I've preserved the code structure and
-have only removed the else branch. If you could clarify, I would know
-what to fix.
-
-Thanks!
-
--- 
-
-Sevinj.Aghayeva
+good call. You can also resolve the conflict by picking the latest on
+master since you have not changed the file on your branch
