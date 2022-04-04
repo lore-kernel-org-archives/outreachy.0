@@ -1,85 +1,90 @@
-Received: from mail-qt1-f173.google.com (mail-qt1-f173.google.com [209.85.160.173])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AF32615A7;
-	Tue,  5 Apr 2022 03:16:37 +0000 (UTC)
-Received: by mail-qt1-f173.google.com with SMTP id 10so9426649qtz.11;
-        Mon, 04 Apr 2022 20:16:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=tpmJ9JB/ykvkb+WcvF07K5tTjzwOCUQVaGyVvSReF7c=;
-        b=Z7GpZlyDyQiEzgCn9NVqlL1a/EOlD60omRHVpUSC98e37MBwA9XFLiJosEUBFkLdux
-         sHbFUF8eAsyYOEszsfiWgNA1hetcXk2YQvkIkEZmN0iwgLgKebI+NIvcwO+/kCn8iGem
-         M8HGk9yJw2JhlJZTQxm79xUIzMGFNImPkMBPriRr0yUMwlSxl5r+eODQsmzXnr0VDq2H
-         f/5wzQuotHv6NcH2SDh4Ujg0VFas0p4InJLON7jDQ2iYO5dygAEjMxNFUt5uFvxseik4
-         PmbL177c0plkgqFHuxA6+tk5LPECgLqkbr7DjHWHvv5NkkUS4JBggVZmpoix0CzivVyX
-         N9Ig==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=tpmJ9JB/ykvkb+WcvF07K5tTjzwOCUQVaGyVvSReF7c=;
-        b=wnii45XQlN9cFdJoZ7vgEdZdl0IXHDhpX687wJGoiyR9mKZco2WgTIlwZCp2DkW9z7
-         Ck55BewBStpn/eN+oMMnyRJuCZ74LN/eOByauxd83SJX6fOjtSFyKiNr2jfV6BIqq0Es
-         rz7wNYtxbG0IY6CZTuOSUNgv0X0l8+adGt5UoBrgiU0JOCUivfAa3I+8BnRTFR+xxy+H
-         xn+GU2yGgx4Og7NL95YDIaNHW3tL8iAGl4eDccMpYgGR040uqjJo00Sw65j8Tomvd+H7
-         Fot7nwVZfSLYfBqaLkJHBsXbYgHN6uPB20VRgMncnZxDR/eAqPCtz7WYYHE9fSjyUsYX
-         VY+Q==
-X-Gm-Message-State: AOAM533nmDvNlMolDzgzncsW6ZCI0TB4cHRae53DYxwKZOxpXgEc2t1e
-	IeFK7CI1f+4SNXaUYKePNPU=
-X-Google-Smtp-Source: ABdhPJwlpP2v6CjMbc42ukFJfS0blQ4VolnyepFQ8f9fW6HWjm+Gn6GD+9s7SlxHER617ErrOGBaPA==
-X-Received: by 2002:ac8:5f4f:0:b0:2e1:d42d:b5bb with SMTP id y15-20020ac85f4f000000b002e1d42db5bbmr1320722qta.48.1649128596650;
-        Mon, 04 Apr 2022 20:16:36 -0700 (PDT)
-Received: from euclid ([71.58.109.160])
-        by smtp.gmail.com with ESMTPSA id j20-20020a37a014000000b0067b3a0c7d89sm7179208qke.38.2022.04.04.20.16.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 04 Apr 2022 20:16:36 -0700 (PDT)
-From: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev,
-	Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
-Subject: [PATCH 5/5] staging: rtl8723bs: remove space after function name
-Date: Mon,  4 Apr 2022 23:16:12 -0400
-Message-Id: <86494fef795f1c3e28c55e556d68b407dadd1488.1649128267.git.sevinj.aghayeva@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <cover.1649128267.git.sevinj.aghayeva@gmail.com>
-References: <cover.1649128267.git.sevinj.aghayeva@gmail.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 457FE15A3
+	for <outreachy@lists.linux.dev>; Tue,  5 Apr 2022 06:28:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1649140116;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=KEKlEv58ZHkzNhHBvSzA16QuYkhZYoS535UPRn0P2DE=;
+	b=JGatyc2Mt0Fvvj3Gpkg7qEUd2zyeU8c5v265V4bXP+gwrvdxfymiHb/s6ifZ0Y2B3skg1j
+	bF/MlYIeenCcpwdQxGASy8Wo9I06LYBSfVnKh17UE/EfInSQjfTDQOQKe9T72HR5Vj9uGk
+	IL4V8Hci98BM1ZCTTlqyYs2ReARn02Q=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-297-aKsut7aYMjmvrYgZuOKKqg-1; Tue, 05 Apr 2022 02:28:34 -0400
+X-MC-Unique: aKsut7aYMjmvrYgZuOKKqg-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com [10.11.54.1])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 7E0AE1C05AE6;
+	Tue,  5 Apr 2022 06:28:34 +0000 (UTC)
+Received: from maya.cloud.tilaa.com (unknown [10.40.208.6])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 4C24C4082381;
+	Tue,  5 Apr 2022 06:28:34 +0000 (UTC)
+Date: Mon, 4 Apr 2022 07:47:56 +0200
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Alison Schofield <alison.schofield@intel.com>
+Cc: Outreachy Linux Kernel <outreachy@lists.linux.dev>
+Subject: Re: Testing Only - Ignore
+Message-ID: <20220404074524.40d08e4b@elisabeth>
+In-Reply-To: <20220401221251.GA1188492@alison-desk>
+References: <20220401221251.GA1188492@alison-desk>
+Organization: Red Hat
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.84 on 10.11.54.1
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=sbrivio@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-Adhere to Linux kernel coding style.
+On Fri, 1 Apr 2022 15:12:51 -0700
+Alison Schofield <alison.schofield@intel.com> wrote:
 
-Reported by checkpatch:
+> This mailing list is very small (since it's so new), and friendly,
+> so I'm spamming it with my private email test.
+> 
+> Not even sure this is a reasonable test.
+> 
+> Mail in which I am in the To: is not coming through to my Intel email.
+> For example, Bruno's last email I see when I browse w Lore, but I 
+> didn't get it in my @intel.com INBOX. 
 
-WARNING: space prohibited between function name and open parenthesis
+That's, most likely, because Bruno's email had 162.254.200.130 as
+originating IP address -- it was in Spamhaus' XBL list a couple of days
+ago:
+	https://www.spamhaus.org/query/ip/162.254.200.130
 
-Signed-off-by: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
----
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+and you might have (as I had) a corporate "spam filter" querying
+Spamhaus lists.
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-index 5eddff488f27..56e3b85f7006 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-@@ -2388,7 +2388,7 @@ void issue_probersp(struct adapter *padapter, unsigned char *da, u8 is_valid_p2p
- 				pframe += ssid_ielen_diff;
- 				pattrib->pktlen += ssid_ielen_diff;
- 			}
--			kfree (buf);
-+			kfree(buf);
- 		}
- 	} else {
- 		/* timestamp will be inserted by hardware */
+That doesn't mean that Bruno's machine had any reason to be in that
+list. That's because of another host with that address in the past. Now
+it has been de-listed.
+
+On the other hand, smtp.subspace.kernel.org doesn't use those lists (in
+my opinion very sensibly, but this is subject to debate), so it
+actually went through the list.
+
+> It reminded me of something Stefano mentioned about mail getting
+> de-dup'd and then you wind up with nothing.
+
+That's just Gmail, judging from the delivery chain reported in
+the headers of your emails, you should be safe. :)
+
+I have some procmail machinery in place to undo that "feature". :(
+
 -- 
-2.25.1
+Stefano
 
