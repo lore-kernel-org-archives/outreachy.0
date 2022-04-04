@@ -1,47 +1,51 @@
-Received: from mail-qv1-f46.google.com (mail-qv1-f46.google.com [209.85.219.46])
+Received: from mail-qv1-f52.google.com (mail-qv1-f52.google.com [209.85.219.52])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 91D5F7A;
-	Sun,  3 Apr 2022 22:42:15 +0000 (UTC)
-Received: by mail-qv1-f46.google.com with SMTP id kd21so6222510qvb.6;
-        Sun, 03 Apr 2022 15:42:15 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DF4DB7C;
+	Mon,  4 Apr 2022 02:46:25 +0000 (UTC)
+Received: by mail-qv1-f52.google.com with SMTP id cs16so764099qvb.8;
+        Sun, 03 Apr 2022 19:46:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=date:from:to:subject:message-id:mime-version:content-disposition;
-        bh=Ylr/q7X8v75OzYx2YPZzEqtYHesEZdwi5ZjBwvGkMpk=;
-        b=VHzrwaEIoRFGPw+0/6o86lbnEVNoSpp9KxVUXEjK8HnYRn5OU7YLDiYjBHd3RGBdwl
-         1IfnSaFh/5+DNFUHHYYOzcacLzlHR7a5oNw5XDf6/iYOB0OTB5vcstUjas81HSj1EIS0
-         Dw0Zj0HMspIsnQkr3I+fUemNYTOB2Sz+75s3+Hn1tYCAuFMBDl4DSOgKZoEPrxhCOvxB
-         Ev2OtF0GzOTUZdh6if9IHDin89gtNuxECbo7SFNeEzbn+7yKef0/jihuyL2bRiIhcSIp
-         w1b2MJRW9UEtLwWQTZB76yblgLF/AQ+hg5PGNlzLO8isY9WWfgRjhcuOFrY5sftlq3ug
-         7sYQ==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=/81xVbmtDHf2WP/8R42ewco+CVAZUSyt+UDb78zyCNY=;
+        b=WaOiAQ9HUXu2dOsc71oDP61MKAQzGHcuv5C4UTqGyUnJupaRgsFAy47D3pKUuRBbxG
+         c3G87jn1HfDnnGdGswOb53F2E8S0Tp9IAqATQN9hBsu4bJX3b79ZX1oJ5p4fm8mfj1bO
+         ArAjJDXnGRWi5x96GFpZmSdbssHeDhHMz6JFfzdnUP06beIBV+lDCk8QpCsHvKxKn5ty
+         9H9/KV6kum8IVy+U+0FY/CAiCrrsnNDui7FqdHpvtjuSMuKOXNgj7gXyy2eoWFRVH0Us
+         fM2PVIhsBvN2kxpA2/cbVgguAnRTlIZcuA/f09bV46s6fokwMULxsvfmIObSJ2AoRgZv
+         gmqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition;
-        bh=Ylr/q7X8v75OzYx2YPZzEqtYHesEZdwi5ZjBwvGkMpk=;
-        b=F4XlfYFM0EFLNeBMuejMlp450xzqLEiJJjohES+iVMvl0LJ4Di0ic3FnYUXXlbkpIs
-         01q6tcZiMYBV7jVzmziVEjGniBMSpQF9PF6xlF4Az6vaUStPV+iPzuCZ+2PIeiG0vuks
-         dxqzF0+fWZ6BCGhJz9kna5K0Ndc9rgGNoUJiw9APPuBIExbRa9MweZ68nmAlKFs8n9Th
-         FteF7UBagg5IJ5wrlQ9bGMCX/tDVOmXRGDhiBxcl5mptupeIQp6g8KAR95rlHCpQnEw9
-         cy/F1do01VO0UZ7TjaNr1DczZKRiSe7vZeAirUlu2UI8hvrKq2xWO5+pOjrKF1JyoIJ7
-         RGfA==
-X-Gm-Message-State: AOAM5321DlzkPRPfGgG+AWn/9YGhuSC4jvFvHz099S0xuyrGQSr6mYBZ
-	lTknxuSOFVklMClr9KoRfyaC+/WK61oBrQ==
-X-Google-Smtp-Source: ABdhPJykPbgKEIE6CUeou3/iSifvRf6zrTNJMVFvxt7I57A0orWy2N0jeetD/xK4ObYXWUbxN9bF2w==
-X-Received: by 2002:ad4:5be1:0:b0:440:a2ec:ea99 with SMTP id k1-20020ad45be1000000b00440a2ecea99mr46809616qvc.20.1649025734384;
-        Sun, 03 Apr 2022 15:42:14 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=/81xVbmtDHf2WP/8R42ewco+CVAZUSyt+UDb78zyCNY=;
+        b=GUyJi+mp61uFD1haqwfcq30vVgZ0ugmx7DtPuyPAkA/7upmBBRatQ7aQruorEvxl3J
+         IuS2GU03fVOiWP6KujcmOtDipKppBXtn3mHI5p3YF806k5YgaJ6PCc3VN711AvADm9y/
+         iS3SlU+3Fx25jm4v79sybTcjV4CM1M2w7Sf6053h9la5EB5Au90t/GCvPcWQN2sCk/TI
+         X7rvgA8BrSfB1gM+xPZj33cDL8/orDE/1EZjFZp6qxhNkVpPZk/c9zfhYqjO6Xz4RIDu
+         LQgrzqEIsDo6hUwiHW0iAY+tiXZRJfwt9+Cg2pKV4rhWJCUjJajwP6BqMnpRVf7ysmS2
+         Z+cg==
+X-Gm-Message-State: AOAM532JWYfZvKv87JHM+FHfCvrR8hitRw/XI6CRKJ4d5w3a69W6q2zw
+	adaqcxo2ZPwgQ7EP+YhgKjM=
+X-Google-Smtp-Source: ABdhPJypTgjTr0aY3ypx41+nz0v0Jzf8hsPx6PwC0VJDwsUaS/jO0ZAEvoZ6QO3Z+Bk3TgZDO6AWNw==
+X-Received: by 2002:ad4:5bc2:0:b0:443:901b:39a with SMTP id t2-20020ad45bc2000000b00443901b039amr17615989qvt.78.1649040384788;
+        Sun, 03 Apr 2022 19:46:24 -0700 (PDT)
 Received: from euclid ([71.58.109.160])
-        by smtp.gmail.com with ESMTPSA id e7-20020a37ac07000000b0067d7cd47af4sm5165031qkm.31.2022.04.03.15.42.11
+        by smtp.gmail.com with ESMTPSA id b13-20020ac85bcd000000b002e06856b04fsm7728729qtb.51.2022.04.03.19.46.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 03 Apr 2022 15:42:13 -0700 (PDT)
-Date: Sun, 3 Apr 2022 18:42:07 -0400
+        Sun, 03 Apr 2022 19:46:24 -0700 (PDT)
+Date: Sun, 3 Apr 2022 22:46:15 -0400
 From: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
 	outreachy@lists.linux.dev
-Subject: [PATCH] staging: rtl8723bs: simplify control flow
-Message-ID: <20220403224207.GA397480@euclid>
+Cc: Larry Finger <Larry.Finger@lwfinger.net>,
+	Phillip Potter <phil@philpotter.co.uk>
+Subject: Re: [PATCH v2] staging: r8188eu: simplify control flow
+Message-ID: <20220404024615.GA410484@euclid>
+References: <20220403164250.GA371601@euclid>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -50,111 +54,69 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <20220403164250.GA371601@euclid>
 
-Checkpatch issues "WARNING: else is not generally useful after a break
-or return" for the following code:
+My apologies for forgetting to Cc the maintainers! Added them now.
 
-while (1) {
-	do_join_r = rtw_do_join(padapter);
-	if (do_join_r == _SUCCESS) {
-		break;
-	} else {
-		rtw_dec_to_roam(padapter);
-
-		if (rtw_to_roam(padapter) > 0) {
-			continue;
-		} else {
-			rtw_indicate_disconnect(padapter);
-			break;
-		}
-	}
-}
-
-We simplify this code in multiple steps. First, we remove do_join_r
-variable because it is only used right after it is assigned. Second,
-we remove the unnecessary else statement right after break:
-
-while (1) {
-	if (rtw_do_join(padapter) == _SUCCESS)
-		break;
-	rtw_dec_to_roam(padapter);
-
-	if (rtw_to_roam(padapter) > 0) {
-		continue;
-	} else {
-		rtw_indicate_disconnect(padapter);
-		break;
-	}
-}
-
-Next, we move the call to rtw_do_join into the while test because the
-while will loop only until the call is successful:
-
-while (rtw_do_join(padapter) != _SUCCESS) {
-	rtw_dec_to_roam(padapter);
-	if (rtw_to_roam(padapter) > 0) {
-		continue;
-	} else {
-		rtw_indicate_disconnect(padapter);
-		break;
-	}
-}
-
-Finally, looking at the code above, it is clear that the code will
-break out of the loop if rtw_to_roam call is <= 0. Hence:
-
-while (rtw_do_join(padapter) != _SUCCESS) {
-	rtw_dec_to_roam(padapter);
-	if (rtw_to_roam(padapter) <= 0) {
-		rtw_indicate_disconnect(padapter);
-		break;
-	}
-}
-
-Signed-off-by: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
----
- drivers/staging/rtl8723bs/core/rtw_mlme.c | 18 ++++--------------
- 1 file changed, 4 insertions(+), 14 deletions(-)
-
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme.c b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-index 3eacf8f9d236..a45df775d535 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme.c
-@@ -2594,30 +2594,20 @@ void _rtw_roaming(struct adapter *padapter, struct wlan_network *tgt_network)
- {
- 	struct mlme_priv *pmlmepriv = &padapter->mlmepriv;
- 	struct wlan_network *cur_network = &pmlmepriv->cur_network;
--	int do_join_r;
- 
- 	if (rtw_to_roam(padapter) > 0) {
- 		memcpy(&pmlmepriv->assoc_ssid, &cur_network->network.ssid, sizeof(struct ndis_802_11_ssid));
- 
- 		pmlmepriv->assoc_by_bssid = false;
- 
--		while (1) {
--			do_join_r = rtw_do_join(padapter);
--			if (do_join_r == _SUCCESS) {
-+		while (rtw_do_join(padapter) != _SUCCESS) {
-+			rtw_dec_to_roam(padapter);
-+			if (rtw_to_roam(padapter) <= 0) {
-+				rtw_indicate_disconnect(padapter);
- 				break;
--			} else {
--				rtw_dec_to_roam(padapter);
--
--				if (rtw_to_roam(padapter) > 0) {
--					continue;
--				} else {
--					rtw_indicate_disconnect(padapter);
--					break;
--				}
- 			}
- 		}
- 	}
--
- }
- 
- signed int rtw_linked_check(struct adapter *padapter)
--- 
-2.25.1
-
+On Sun, Apr 03, 2022 at 12:42:50PM -0400, Sevinj Aghayeva wrote:
+> The function iterates an index from 0 to NUM_PMKID_CACHE and returns
+> the first index for which the condition is true. If no such index is
+> found, the function returns -1. Current code has a complex control
+> flow that obfuscates this simple task. Replace it with a loop.
+> 
+> Also, given the shortened function body, replace the long variable
+> name psecuritypriv with a short variable name p.
+> 
+> Reported by checkpatch:
+> 
+> WARNING: else is not generally useful after a break or return
+> 
+> Signed-off-by: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
+> ---
+> 
+> v1 -> v2: Put the conditional in a single line to avoid checkpatch
+> complaint.
+> 
+>  drivers/staging/r8188eu/core/rtw_mlme.c | 25 ++++++-------------------
+>  1 file changed, 6 insertions(+), 19 deletions(-)
+> 
+> diff --git a/drivers/staging/r8188eu/core/rtw_mlme.c b/drivers/staging/r8188eu/core/rtw_mlme.c
+> index f94b1536a177..cddd8ab80236 100644
+> --- a/drivers/staging/r8188eu/core/rtw_mlme.c
+> +++ b/drivers/staging/r8188eu/core/rtw_mlme.c
+> @@ -1637,26 +1637,13 @@ int rtw_restruct_wmm_ie(struct adapter *adapter, u8 *in_ie, u8 *out_ie, uint in_
+>  
+>  static int SecIsInPMKIDList(struct adapter *Adapter, u8 *bssid)
+>  {
+> -	struct security_priv *psecuritypriv = &Adapter->securitypriv;
+> -	int i = 0;
+> -
+> -	do {
+> -		if ((psecuritypriv->PMKIDList[i].bUsed) &&
+> -		    (!memcmp(psecuritypriv->PMKIDList[i].Bssid, bssid, ETH_ALEN))) {
+> -			break;
+> -		} else {
+> -			i++;
+> -			/* continue; */
+> -		}
+> -
+> -	} while (i < NUM_PMKID_CACHE);
+> +	struct security_priv *p = &Adapter->securitypriv;
+> +	int i;
+>  
+> -	if (i == NUM_PMKID_CACHE) {
+> -		i = -1;/*  Could not find. */
+> -	} else {
+> -		/*  There is one Pre-Authentication Key for the specific BSSID. */
+> -	}
+> -	return i;
+> +	for (i = 0; i < NUM_PMKID_CACHE; i++)
+> +		if (p->PMKIDList[i].bUsed && !memcmp(p->PMKIDList[i].Bssid, bssid, ETH_ALEN))
+> +			return i;
+> +	return -1;
+>  }
+>  
+>  /*  */
+> -- 
+> 2.25.1
+> 
