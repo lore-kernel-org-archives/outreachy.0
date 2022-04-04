@@ -1,165 +1,265 @@
-Received: from mx0b-00069f02.pphosted.com (mx0b-00069f02.pphosted.com [205.220.177.32])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-wr1-f47.google.com (mail-wr1-f47.google.com [209.85.221.47])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9899123DE;
-	Mon,  4 Apr 2022 12:52:25 +0000 (UTC)
-Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 234ATZON000752;
-	Mon, 4 Apr 2022 12:52:22 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
- : subject : message-id : references : content-type : in-reply-to :
- mime-version; s=corp-2021-07-09;
- bh=92mICdgQau6O4ZoTfuAaD2nB9bysbFq56gbRlPi6bOE=;
- b=fpFfSG7zruYBo4lS2hdZKFPt9n244l8o5txWRm9hTx3tJ+6jyaFuVTKhKhSYGOGRDn51
- LeAv+ePXlrNo1wnugLq0NafmDd9vaG7TaD+rq1gGHOeJ6QooF9Yo8/HFxTyDSZJGmQox
- ZWtkabcsCdo7XAzKXAUVT0/paJDYrxBWX965ABeieMFpGJQalTGdhRoerE2pVamHmaeg
- melBS5qtks61yufnHXJixsWG1XGAJPfZY+TRSUwyH28dKOa3jyVPNb9xbhL88cECx5gt
- JqHngV1NmFZuGbzZ3CNeKWsJkoA0ozr9hk93Xq2vSlzRrahSvHpW6iP2hKOJykieysju 8A== 
-Received: from phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta01.appoci.oracle.com [138.1.114.2])
-	by mx0b-00069f02.pphosted.com with ESMTP id 3f6e3sk1qu-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Mon, 04 Apr 2022 12:52:21 +0000
-Received: from pps.filterd (phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (8.16.1.2/8.16.1.2) with SMTP id 234CqKwu011681;
-	Mon, 4 Apr 2022 12:52:20 GMT
-Received: from nam10-dm6-obe.outbound.protection.outlook.com (mail-dm6nam10lp2106.outbound.protection.outlook.com [104.47.58.106])
-	by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com with ESMTP id 3f6cx2875h-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Mon, 04 Apr 2022 12:52:20 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=I5viW8uv6lgsOl1zwqd7CMgisHmxVmydEZHsUy3MlNsnogPCw+KbewWrgW6fS2XMhWSvnMq/dm9mKejviQFQobzYC3gXWyIVsHBxfUhur0mRiNDJLrPIKI33Yz+/RcDxX9tnXKJRIdc3DQKS1rNB+RD9CpfBDkxtCiovR1hjiT8NTRY0M1Y0XvFh7E7S1m/7fQG4OOv8qUVF13dvpLEAtuDptTrRGD95bwOXMigPxaXk6urWjUDojxZZVcjqXwC7nadFBkkAaUPyWDyxbx1DyVpgCUah0kJdLFmEyekRnE88Wk7vz1ZrEuTPv5v8togzGxEMPplAdXxN/ynX8QfoOQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=92mICdgQau6O4ZoTfuAaD2nB9bysbFq56gbRlPi6bOE=;
- b=ceJZxNr0gGaFqN7EMG9g01KR/Qp/l6PcdrmvPerWA9HkRn1ttry9yUt+0eSHxspCeQcjhbR3L9Fz5qNfP2awZhsBPBQKqG/y5oOmvQ/5PwpxP+24H/RVzm9a0oqN35Oc626qEm79TnXzUHyUbr6EGKfg6TwZnbmfsSs/Et9TEBZnok31sOqi7zwpTcXJQPHkmH94ruyfwjT+xgqd3KkOzS91R3JBqdJ7e7OHi5CtSvyoFGzMxaVCJ7ITBYFPD02TyvzG07zNAhSpLME4zvOgDYsFDsqf5yMfBG8dc3doBm4JPSD1KUcEEiHRKv6Am7JZHf6OOxwjTfET7OW2Pf/M+w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1D5D17A;
+	Mon,  4 Apr 2022 14:39:26 +0000 (UTC)
+Received: by mail-wr1-f47.google.com with SMTP id j12so7232523wrb.5;
+        Mon, 04 Apr 2022 07:39:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=92mICdgQau6O4ZoTfuAaD2nB9bysbFq56gbRlPi6bOE=;
- b=I8vNrY0b/kO191FuamEBgTUVYpL6zvLh/9sW/HNNyhvmnfCHbwjkQG8VE05R+OBDpLr9v3Azv3kQFsuIu8LIwHX8OlwBuOO/x2QLtRccSy2THwNSLPMcD7J0kkATxbJdHcIi1uGIoXu28P8AETqobc5gtCw4ifnRhjAS4vG0Vmc=
-Received: from CY4PR1001MB2358.namprd10.prod.outlook.com
- (2603:10b6:910:4a::32) by DM5PR10MB1993.namprd10.prod.outlook.com
- (2603:10b6:3:110::20) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5123.31; Mon, 4 Apr
- 2022 12:52:16 +0000
-Received: from CY4PR1001MB2358.namprd10.prod.outlook.com
- ([fe80::ddcf:9371:2380:d00f]) by CY4PR1001MB2358.namprd10.prod.outlook.com
- ([fe80::ddcf:9371:2380:d00f%7]) with mapi id 15.20.5123.030; Mon, 4 Apr 2022
- 12:52:16 +0000
-Date: Mon, 4 Apr 2022 15:51:54 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-Cc: outreachy@lists.linux.dev, Larry.Finger@lwfinger.net,
-        florian.c.schilhabel@googlemail.com, gregkh@linuxfoundation.org,
-        linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/2] staging: rtl8712: remove blank line after brace {
-Message-ID: <20220404125153.GA3293@kadam>
-References: <8c88829f625f9847a1db18fe467399594dacb064.1648902188.git.eng.alaamohamedsoliman.am@gmail.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <8c88829f625f9847a1db18fe467399594dacb064.1648902188.git.eng.alaamohamedsoliman.am@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-ClientProxiedBy: JNXP275CA0003.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:19::15)
- To CY4PR1001MB2358.namprd10.prod.outlook.com (2603:10b6:910:4a::32)
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=4e0THtH7HznDcWSwiMPH5m54e1RQzNhsqL65CUDNWCc=;
+        b=m0FPiCI/2iSJfaW0JLY1BQ9yaPDiWcVCMxC48R1jFyV2Uo2PXe6Jb59KM+IefL9Fzg
+         N9jM86q5XZM2sIY2NZ9YlzvheAs1NPUjPPEvknZo1dQeLCydt+xvhGDxPRnyV0/qE/jJ
+         eUYo3lSpV7S8M9QddHSnBde1ZGqO5c7q5u0CJudSNTfWONtA9zxQZ1tZRyyXDplUjYt9
+         l7e1TXq50hZRaQO7tAka/ww/U+bK+witTmF7RZKjO3x5mVMbr2xgfV4cBA0btVqK2q3K
+         et3nYXPGsOxW1VTIzDeAujQSghd5ZiokrlZk3h18kotHEAPxk68uU+qGVXIMAGiX46ui
+         byiA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=4e0THtH7HznDcWSwiMPH5m54e1RQzNhsqL65CUDNWCc=;
+        b=QxmvLWxieI4Nm6YuGEVv+dISH86xdYuABjrmotIDOczuvnftIarQ9uZAIqPcRAug0k
+         DOO4lDHAD9CcYuUkNPu/6vJ27CUOa1SEUN+2Gk44TBbXGXDqrjsQmMBpDKW/v4t0VmkV
+         aVAUOzGBl23KG8F14ObwoWMs43d1QBi8um6L1mvgqIf2aLJO0QHoEptLpKGGjXad6nP0
+         D/v1Rd+EQZ6AJXhqob0FebrMHBGx76dyTx5H8a+kZzwrYcmWrfKtdZXzdn350WYz4CHW
+         qPIR3CBEQkpMG77qMr8uwg/dA9wTA7zGot/aJ44/tiAIzwdFUSj42iklddFlrHKX7C8p
+         8MrQ==
+X-Gm-Message-State: AOAM531vTg7wSJPzoj538f6igCVTFkr7/KIE8nTJaFHEjhFbgStIS1ZH
+	RaE2uqwNxWyXz1wZ0qoAbec=
+X-Google-Smtp-Source: ABdhPJz/cBmXoYIm2iieMeipG7my0PpjLNQJYJJOye42uAfdsxGGcgrk3YvBbBAk1w64GHs+C+Fq9w==
+X-Received: by 2002:a05:6000:1687:b0:205:80b7:afca with SMTP id y7-20020a056000168700b0020580b7afcamr16584445wrd.665.1649083164246;
+        Mon, 04 Apr 2022 07:39:24 -0700 (PDT)
+Received: from alaa-emad ([41.42.174.117])
+        by smtp.gmail.com with ESMTPSA id g6-20020a5d5406000000b001f049726044sm9447984wrv.79.2022.04.04.07.39.22
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 04 Apr 2022 07:39:23 -0700 (PDT)
+From: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+To: outreachy@lists.linux.dev
+Cc: Larry.Finger@lwfinger.net,
+	phil@philpotter.co.uk,
+	gregkh@linuxfoundation.org,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	eng.alaamohamedsoliman.am@gmail.com
+Subject: [PATCH 1/2] staging: r8188eu: add space around arithmatic sign
+Date: Mon,  4 Apr 2022 16:39:16 +0200
+Message-Id: <860d8e222e2b695ce5cb4f48aa46a7f66e05d8e4.1649082939.git.eng.alaamohamedsoliman.am@gmail.com>
+X-Mailer: git-send-email 2.35.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 204654ea-a2eb-433d-1692-08da1639f25f
-X-MS-TrafficTypeDiagnostic: DM5PR10MB1993:EE_
-X-Microsoft-Antispam-PRVS: 
-	<DM5PR10MB19939C1800AC94CA08ED96CD8EE59@DM5PR10MB1993.namprd10.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 
-	OAX5W4nbhSQpHmDgidw6OEm+myrtfUivyfMQH6WlZeYbh0Oz5LIvW2qwZ5/4cpPGv83UL3Mn6q1BE9zx8dyhPkIs/EcXziczjLaBXTCpEfCCxnfsc7Oh46DN6YboH+Gq7QEknvCJEx4LSSORgPaIC6CQUlr1tMTO526Oc0AFqrrotyPBFqgn5ENenoCukwn5C02NBdu4gqInSv2FDsK2G16N3zQNL4xpED6oN4MDYq3BydsaqTDvmIgXrnUfO9Wj/Av7yoS3Ngz4x15qG20CSlX2xXqPAoaTYT5hJtzZ/aJecg/5VnMqHNOXYlKd5JZ9J/yX9HPWyW8afLE1yYzo1lacOqOayG/KItISdf78oz1EOSWk1vHPcqNgTReXLxpcUQfpU+cADodjB8Ky7fcgVp16YaCgL9PGqY6XeGR7Ux1ruX5qM6kRZaEBWBdwjp7tBsW7P0hhlXe6vjcTOwGLTUE3DZluqd5xleqHfGIM/QRaD2tUe9cLr0nGb7utXd2tUxbuEmHM91mC3Wb1Ie04J6js6bNIOARiuRwENMWparuBiris8A6L5RYjcXcrnLWCWDQt4x63rQUW7ZcDyGg0RC9mYjEBFWtIT0Eu6LJG879uH9L0XCtqzFKjJ7l7vl6zC9cI1Ke2f34/4KzqNY25vu7GrurMGKfeRpes7paOBE6yWj/2BvEy2L7G5JnKFJxcGee/K0gLD5kFI4dn7Ik1KQ==
-X-Forefront-Antispam-Report: 
-	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CY4PR1001MB2358.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230001)(7916004)(366004)(1076003)(186003)(9686003)(83380400001)(38350700002)(6512007)(8936002)(33656002)(38100700002)(33716001)(44832011)(86362001)(2906002)(6666004)(26005)(6486002)(316002)(4744005)(5660300002)(66476007)(8676002)(4326008)(52116002)(66556008)(66946007)(508600001)(6916009)(6506007);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 
-	=?us-ascii?Q?eh8TbyECPi/SSIJbPNzlVmZfPkp5Xt+sNAcWKl8h9u2LQgVtSTZDJ/2TGswO?=
- =?us-ascii?Q?ad1Mrwyc+JAGoMsAU65J8ofasENQwhck63SDRExRVe/OEh9C/0SOtpYw9SGA?=
- =?us-ascii?Q?xB9xHtxEvZkB3X6vHfmA14GAOpbXYG0HetaK7a5T6YWOuuAvQhoubedL7Qmn?=
- =?us-ascii?Q?QZLWt+hlp7gBM+nxrsoqoSe3J6xRQWxWxjOCsGYXlU7Bk1GsBmsx9NVSijv4?=
- =?us-ascii?Q?ZVX7+8c3tJf8CTxzNO5hVNqJEhXAHxGWV2y8KEetXBrhTr2tej9zp6b2u98P?=
- =?us-ascii?Q?CbOKMBEMVLOKqjyYf2H+I+2zBx80X/hxAiaXrFCsdTG7AMXWfI7GVxSEQ00B?=
- =?us-ascii?Q?pDV0iYsbrPD8q5RPLLu5h9UsI9tW+twBd0HM6C3PjUfHGIKw7gzybVaDKJVO?=
- =?us-ascii?Q?8eNyOphbrW7ffkJwhqbEE/NDfb5E4cSroBKkyc3o/0AGFk9JXmTZii/Bn8gp?=
- =?us-ascii?Q?DDVxtynUmet+Q3N6oCOb1wIwxdi+RReCFruTPUAxw2DF+1obeOT+gxTcuquj?=
- =?us-ascii?Q?ebd6jop2BfGJfqYbcYGEPueDScayZ0ITA4jTAl+JjvlR7rm4EHDbcV4MiIXU?=
- =?us-ascii?Q?5XP7mP7Wgpx7fgrebJSaIHf29s2AFA1BPPyaUYX0L7Vm+vmzo6CkySr1Fh9m?=
- =?us-ascii?Q?X92ooi/oUjViCr0eATcdVBF02Y77qLnwsh1oUAv7BtcX/4tIDl6L1CHYmEnR?=
- =?us-ascii?Q?178wXMJNXpDtWZA0qVB3b1yWSWI9p47tHmCiBbWBVn1VqZiPOt3wOXiBD3M5?=
- =?us-ascii?Q?Rl4yQIT/Ya64+AG8OIcp64HREzOb5Uc8Oa6ycBriPc+3zse+o6qfW8vxMbA7?=
- =?us-ascii?Q?4jsFnXCZOcgNp7J0VsK+oE+O9Dv6ewwMEYJ587kWXKWmRPsAdu6YF0x2CkGb?=
- =?us-ascii?Q?H+cBqEcT/3mTvQAESyw09e7BhKoxDcT3hJ1Osc1GCQmemVtfUBMuBgOIxIMu?=
- =?us-ascii?Q?yqtpsG9Rj4AAxYFwTPwTICwh5vQHQfvwFKALQknXT542D2m8/1FZYSxCs5k2?=
- =?us-ascii?Q?ktyOpx2hRiQv2n+L2zDrLxncFtao2u5deBvPlYHIX8v+ElbWlplh5XLRj5lY?=
- =?us-ascii?Q?kNYQlAU3vP1aKGNCIqAaIN8ITl1cXWvcFPBpWlgPtyCprs5eIJHvCQE0HwNm?=
- =?us-ascii?Q?vuCbNFNhLZgHDjpg2vRfVnu6lI5p0kktRaDhPVfrbKMBaYx9f/gz6f0Oy+cR?=
- =?us-ascii?Q?+EfAa3CybOhGI3TJ91iVrv4/a6lcE0hY8KdWy1KNCbckbk8z30emcWif09jT?=
- =?us-ascii?Q?d/CIO5m5X31AVbS3NprMyw58kSuQBmKoYpoNTIi9++pYihQBIzHV4FjnHsb7?=
- =?us-ascii?Q?UkjfrNQ2JX9HRjUKClfEqS0L0OKiURc76CKN4jTIH50YCTK9rlT0Dq//zy+Y?=
- =?us-ascii?Q?i0crYT4aVTvhVRHNQ/upGrp2PBfK7LOBi6B2BkmS9zcCkBi6052LJku9b6Fs?=
- =?us-ascii?Q?TFBabmikdJO+DwOdojgYkyDIrsbEq17whGSkWp99AzwIWL4YxVCuwqFGs2ZC?=
- =?us-ascii?Q?3aVewSdAuIDe3qSuwFcfhbtO7tNRFojoCLTBWgsBQ3cVDgDAINs06EkVvxOi?=
- =?us-ascii?Q?HrBhOaO18aWP5ajI1gqA1c3JTLfkCm90LHVylA1FKICHQNPG7M0pT9NNm6fx?=
- =?us-ascii?Q?aDiglK+j2TEfxPJoTQZTfZtYN1tp1P0DsLcE0Cnf0xT0y0enLlM9HaD32Mmm?=
- =?us-ascii?Q?edezDd4pMkpbq5sB801Q3nEBpo0ZMjWOI3Z6I30sYbJMwNPTJeGy4kVUfzrD?=
- =?us-ascii?Q?LAwr1eGlKD4xHnu5ndYo02xTEzteCnc=3D?=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 204654ea-a2eb-433d-1692-08da1639f25f
-X-MS-Exchange-CrossTenant-AuthSource: CY4PR1001MB2358.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Apr 2022 12:52:16.7236
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: sTSnmSzqCdw9Da6ShoqmkGiZei+j8LfsOe91OLspoLwsbn5z4QRwiWgvIyJ725hchs1XiTGdJTWvywzb/QPyqOtcLX1K9VGUFVTKEpD8FwI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR10MB1993
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.425,18.0.850
- definitions=2022-04-04_05:2022-03-30,2022-04-04 signatures=0
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0 spamscore=0 bulkscore=0
- adultscore=0 mlxscore=0 phishscore=0 suspectscore=0 mlxlogscore=999
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2202240000
- definitions=main-2204040073
-X-Proofpoint-ORIG-GUID: lHLT380eRvTZ9gEuRHmppSNGo43mx6EX
-X-Proofpoint-GUID: lHLT380eRvTZ9gEuRHmppSNGo43mx6EX
+Content-Transfer-Encoding: 8bit
 
-On Sat, Apr 02, 2022 at 02:28:16PM +0200, Alaa Mohamed wrote:
-> Fix " CHECK: Blank lines aren't necessary after an open brace '{' "
-> Reported by checkpatch
-> 
-> Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-> ---
->  drivers/staging/rtl8712/rtl8712_xmit.c | 25 ++++++++++++-------------
->  1 file changed, 12 insertions(+), 13 deletions(-)
-> 
-> diff --git a/drivers/staging/rtl8712/rtl8712_xmit.c b/drivers/staging/rtl8712/rtl8712_xmit.c
-> index 84a22eba7ebf..05ba0ca7d627 100644
-> --- a/drivers/staging/rtl8712/rtl8712_xmit.c
-> +++ b/drivers/staging/rtl8712/rtl8712_xmit.c
-> @@ -147,7 +147,7 @@ static u32 get_ff_hwaddr(struct xmit_frame *pxmitframe)
->  }
->  
->  static struct xmit_frame *dequeue_one_xmitframe(struct xmit_priv *pxmitpriv,
-> -					 struct hw_xmit *phwxmit,
-> +						struct hw_xmit *phwxmit,
->  					 struct tx_servq *ptxservq,
->  					 struct  __queue *pframe_queue)
->  {
+Reported by checkpatch:
 
-Try be more aware of the surrounding code.
+CHECK: spaces preferred around that '+' , '-' and '*'
 
-regards,
-dan carpenter
+Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+---
+ drivers/staging/r8188eu/core/rtw_br_ext.c | 58 +++++++++++------------
+ 1 file changed, 29 insertions(+), 29 deletions(-)
+
+diff --git a/drivers/staging/r8188eu/core/rtw_br_ext.c b/drivers/staging/r8188eu/core/rtw_br_ext.c
+index d68611ef22f8..7c664f80fa99 100644
+--- a/drivers/staging/r8188eu/core/rtw_br_ext.c
++++ b/drivers/staging/r8188eu/core/rtw_br_ext.c
+@@ -87,19 +87,19 @@ static int skb_pull_and_merge(struct sk_buff *skb, unsigned char *src, int len)
+ 	int tail_len;
+ 	unsigned long end, tail;
+ 
+-	if ((src+len) > skb_tail_pointer(skb) || skb->len < len)
++	if ((src + len) > skb_tail_pointer(skb) || skb->len < len)
+ 		return -1;
+ 
+ 	tail = (unsigned long)skb_tail_pointer(skb);
+-	end = (unsigned long)src+len;
++	end = (unsigned long)src + len;
+ 	if (tail < end)
+ 		return -1;
+ 
+-	tail_len = (int)(tail-end);
++	tail_len = (int)(tail - end);
+ 	if (tail_len > 0)
+-		memmove(src, src+len, tail_len);
++		memmove(src, src + len, tail_len);
+ 
+-	skb_trim(skb, skb->len-len);
++	skb_trim(skb, skb->len - len);
+ 	return 0;
+ }
+ 
+@@ -117,7 +117,7 @@ static void __nat25_generate_ipv4_network_addr(unsigned char *networkAddr,
+ 	memset(networkAddr, 0, MAX_NETWORK_ADDR_LEN);
+ 
+ 	networkAddr[0] = NAT25_IPV4;
+-	memcpy(networkAddr+7, (unsigned char *)ipAddr, 4);
++	memcpy(networkAddr + 7, (unsigned char *)ipAddr, 4);
+ }
+ 
+ static void __nat25_generate_pppoe_network_addr(unsigned char *networkAddr,
+@@ -126,8 +126,8 @@ static void __nat25_generate_pppoe_network_addr(unsigned char *networkAddr,
+ 	memset(networkAddr, 0, MAX_NETWORK_ADDR_LEN);
+ 
+ 	networkAddr[0] = NAT25_PPPOE;
+-	memcpy(networkAddr+1, (unsigned char *)sid, 2);
+-	memcpy(networkAddr+3, (unsigned char *)ac_mac, 6);
++	memcpy(networkAddr + 1, (unsigned char *)sid, 2);
++	memcpy(networkAddr + 3, (unsigned char *)ac_mac, 6);
+ }
+ 
+ static  void __nat25_generate_ipv6_network_addr(unsigned char *networkAddr,
+@@ -136,17 +136,17 @@ static  void __nat25_generate_ipv6_network_addr(unsigned char *networkAddr,
+ 	memset(networkAddr, 0, MAX_NETWORK_ADDR_LEN);
+ 
+ 	networkAddr[0] = NAT25_IPV6;
+-	memcpy(networkAddr+1, (unsigned char *)ipAddr, 16);
++	memcpy(networkAddr + 1, (unsigned char *)ipAddr, 16);
+ }
+ 
+ static unsigned char *scan_tlv(unsigned char *data, int len, unsigned char tag, unsigned char len8b)
+ {
+ 	while (len > 0) {
+-		if (*data == tag && *(data+1) == len8b && len >= len8b*8)
+-			return data+2;
++		if (*data == tag && *(data + 1) == len8b && len >= len8b * 8)
++			return data + 2;
+ 
+-		len -= (*(data+1))*8;
+-		data += (*(data+1))*8;
++		len -= (*(data + 1)) * 8;
++		data += (*(data + 1)) * 8;
+ 	}
+ 	return NULL;
+ }
+@@ -158,7 +158,7 @@ static int update_nd_link_layer_addr(unsigned char *data, int len, unsigned char
+ 
+ 	if (icmphdr->icmp6_type == NDISC_ROUTER_SOLICITATION) {
+ 		if (len >= 8) {
+-			mac = scan_tlv(&data[8], len-8, 1, 1);
++			mac = scan_tlv(&data[8], len - 8, 1, 1);
+ 			if (mac) {
+ 				memcpy(mac, replace_mac, 6);
+ 				return 1;
+@@ -166,7 +166,7 @@ static int update_nd_link_layer_addr(unsigned char *data, int len, unsigned char
+ 		}
+ 	} else if (icmphdr->icmp6_type == NDISC_ROUTER_ADVERTISEMENT) {
+ 		if (len >= 16) {
+-			mac = scan_tlv(&data[16], len-16, 1, 1);
++			mac = scan_tlv(&data[16], len - 16, 1, 1);
+ 			if (mac) {
+ 				memcpy(mac, replace_mac, 6);
+ 				return 1;
+@@ -174,7 +174,7 @@ static int update_nd_link_layer_addr(unsigned char *data, int len, unsigned char
+ 		}
+ 	} else if (icmphdr->icmp6_type == NDISC_NEIGHBOUR_SOLICITATION) {
+ 		if (len >= 24) {
+-			mac = scan_tlv(&data[24], len-24, 1, 1);
++			mac = scan_tlv(&data[24], len - 24, 1, 1);
+ 			if (mac) {
+ 				memcpy(mac, replace_mac, 6);
+ 				return 1;
+@@ -182,7 +182,7 @@ static int update_nd_link_layer_addr(unsigned char *data, int len, unsigned char
+ 		}
+ 	} else if (icmphdr->icmp6_type == NDISC_NEIGHBOUR_ADVERTISEMENT) {
+ 		if (len >= 24) {
+-			mac = scan_tlv(&data[24], len-24, 2, 1);
++			mac = scan_tlv(&data[24], len - 24, 2, 1);
+ 			if (mac) {
+ 				memcpy(mac, replace_mac, 6);
+ 				return 1;
+@@ -190,7 +190,7 @@ static int update_nd_link_layer_addr(unsigned char *data, int len, unsigned char
+ 		}
+ 	} else if (icmphdr->icmp6_type == NDISC_REDIRECT) {
+ 		if (len >= 40) {
+-			mac = scan_tlv(&data[40], len-40, 2, 1);
++			mac = scan_tlv(&data[40], len - 40, 2, 1);
+ 			if (mac) {
+ 				memcpy(mac, replace_mac, 6);
+ 				return 1;
+@@ -396,7 +396,7 @@ int nat25_db_handle(struct adapter *priv, struct sk_buff *skb, int method)
+ 			tmp = be32_to_cpu(iph->saddr);
+ 			__nat25_generate_ipv4_network_addr(networkAddr, &tmp);
+ 			/* record source IP address and , source mac address into db */
+-			__nat25_db_network_insert(priv, skb->data+ETH_ALEN, networkAddr);
++			__nat25_db_network_insert(priv, skb->data + ETH_ALEN, networkAddr);
+ 			return 0;
+ 		default:
+ 			return -1;
+@@ -421,7 +421,7 @@ int nat25_db_handle(struct adapter *priv, struct sk_buff *skb, int method)
+ 			arp_ptr += arp->ar_hln;
+ 			sender = (unsigned int *)arp_ptr;
+ 			__nat25_generate_ipv4_network_addr(networkAddr, sender);
+-			__nat25_db_network_insert(priv, skb->data+ETH_ALEN, networkAddr);
++			__nat25_db_network_insert(priv, skb->data + ETH_ALEN, networkAddr);
+ 			return 0;
+ 		default:
+ 			return -1;
+@@ -458,22 +458,22 @@ int nat25_db_handle(struct adapter *priv, struct sk_buff *skb, int method)
+ 							    sizeof(tag_buf))
+ 								return -1;
+ 
+-							memcpy(tag->tag_data+MAGIC_CODE_LEN+RTL_RELAY_TAG_LEN,
++							memcpy(tag->tag_data + MAGIC_CODE_LEN + RTL_RELAY_TAG_LEN,
+ 								pOldTag->tag_data, old_tag_len);
+ 
+-							if (skb_pull_and_merge(skb, (unsigned char *)pOldTag, TAG_HDR_LEN+old_tag_len) < 0)
++							if (skb_pull_and_merge(skb, (unsigned char *)pOldTag, TAG_HDR_LEN + old_tag_len) < 0)
+ 								return -1;
+ 
+-							ph->length = htons(ntohs(ph->length)-TAG_HDR_LEN-old_tag_len);
++							ph->length = htons(ntohs(ph->length) - TAG_HDR_LEN - old_tag_len);
+ 						}
+ 
+ 						tag->tag_type = PTT_RELAY_SID;
+-						tag->tag_len = htons(MAGIC_CODE_LEN+RTL_RELAY_TAG_LEN+old_tag_len);
++						tag->tag_len = htons(MAGIC_CODE_LEN + RTL_RELAY_TAG_LEN + old_tag_len);
+ 
+ 						/*  insert the magic_code+client mac in relay tag */
+ 						pMagic = (unsigned short *)tag->tag_data;
+ 						*pMagic = htons(MAGIC_CODE);
+-						memcpy(tag->tag_data+MAGIC_CODE_LEN, skb->data+ETH_ALEN, ETH_ALEN);
++						memcpy(tag->tag_data + MAGIC_CODE_LEN, skb->data + ETH_ALEN, ETH_ALEN);
+ 
+ 						/* Add relay tag */
+ 						if (__nat25_add_pppoe_tag(skb, tag) < 0)
+@@ -486,7 +486,7 @@ int nat25_db_handle(struct adapter *priv, struct sk_buff *skb, int method)
+ 							return -2;
+ 
+ 						if (priv->pppoe_connection_in_progress == 0)
+-							memcpy(priv->pppoe_addr, skb->data+ETH_ALEN, ETH_ALEN);
++							memcpy(priv->pppoe_addr, skb->data + ETH_ALEN, ETH_ALEN);
+ 
+ 						priv->pppoe_connection_in_progress = WAIT_TIME_PPPOE;
+ 					}
+@@ -496,11 +496,11 @@ int nat25_db_handle(struct adapter *priv, struct sk_buff *skb, int method)
+ 			} else {	/*  session phase */
+ 				__nat25_generate_pppoe_network_addr(networkAddr, skb->data, &ph->sid);
+ 
+-				__nat25_db_network_insert(priv, skb->data+ETH_ALEN, networkAddr);
++				__nat25_db_network_insert(priv, skb->data + ETH_ALEN, networkAddr);
+ 
+ 				if (!priv->ethBrExtInfo.addPPPoETag &&
+ 				    priv->pppoe_connection_in_progress &&
+-				    !memcmp(skb->data+ETH_ALEN, priv->pppoe_addr, ETH_ALEN))
++				    !memcmp(skb->data + ETH_ALEN, priv->pppoe_addr, ETH_ALEN))
+ 					priv->pppoe_connection_in_progress = 0;
+ 			}
+ 			return 0;
+@@ -548,7 +548,7 @@ int nat25_db_handle(struct adapter *priv, struct sk_buff *skb, int method)
+ 		case NAT25_INSERT:
+ 			if (memcmp(&iph->saddr, "\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0\x0", 16)) {
+ 				__nat25_generate_ipv6_network_addr(networkAddr, (unsigned int *)&iph->saddr);
+-				__nat25_db_network_insert(priv, skb->data+ETH_ALEN, networkAddr);
++				__nat25_db_network_insert(priv, skb->data + ETH_ALEN, networkAddr);
+ 
+ 				if (iph->nexthdr == IPPROTO_ICMPV6 &&
+ 						skb->len > (ETH_HLEN +  sizeof(*iph) + 4)) {
+-- 
+2.35.1
 
