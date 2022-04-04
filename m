@@ -1,108 +1,224 @@
-Received: from mail-oi1-f174.google.com (mail-oi1-f174.google.com [209.85.167.174])
+Received: from mail-wr1-f45.google.com (mail-wr1-f45.google.com [209.85.221.45])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8069E3200;
-	Mon,  4 Apr 2022 18:49:23 +0000 (UTC)
-Received: by mail-oi1-f174.google.com with SMTP id j83so11006219oih.6;
-        Mon, 04 Apr 2022 11:49:23 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DBB9928F3;
+	Mon,  4 Apr 2022 21:00:16 +0000 (UTC)
+Received: by mail-wr1-f45.google.com with SMTP id z1so4061130wrg.4;
+        Mon, 04 Apr 2022 14:00:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=sender:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
+        h=from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=+x8xeE7VdwyEBg9gBJjb/VSkL3ctOrEYGykxx0ig/m0=;
-        b=aIIJqQOlgGEaPFjQYKZkBfSoalRDYuXCqe3vleD+YoMT6FyQdOFPNf+S+9sxlwUq54
-         NmltyIWDy33kTR0OTRadOhK77QdqSl8Vr+QvqTOBdxzTwwZoyooJtH7PAoM4B6VuHvOb
-         mnKMngV7nKSgJ1NYzzG0jE2zETbUAFXGphzJoGcUTTRIAspUa2tNMrIYjM7MWIWIy/8E
-         NjJS7bznd7wBf5/40L9ymVkjSitPiflm5WaSfgHVSllrk9/yCcHtgWJ+KTmIMLY7VEhr
-         o2TpSk48hwsKaRx3fAQt2RGKCujfvasVxP9JLA++ZfvQi49nDSq+okk9BBSdlu/rffvk
-         cO1Q==
+        bh=Zg14HKB8Tn7Zkt9AnuTFrogrSTPKR6syFIM0HfENyTw=;
+        b=AvMyV1kK4/g5y5+g/++IKdQ13rHCkaFko6oOh2JFQkN5qcmS604s5CoC3yRwIaMUiM
+         CvsXSoFK0wdmbhy6+s/+0Jjeidr/vkQ6+M6fyCH1XZaFZbnU/Sv8dbqUd6GimVLhDNzA
+         0Mroa5MzT6lFnfkfFQbAM3X741eYAd6JfFFCfBOwaAtfQP/Hovfyk3mWq14kAhzEYg0G
+         XECSOKeH+wHp56JAzSNBO4VtcX3lkjXiycz1bTxU6G8WPaVeXtuKFD+RtSZVj7G3um+x
+         DEtblWoM8zMNLj/ailnkMBvfxH50JdzfV9x6MTA5x+cf6cysy6vAZQN3gEVWmVZ3Qs/s
+         r0MA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
-         :subject:content-language:to:cc:references:from:in-reply-to
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=+x8xeE7VdwyEBg9gBJjb/VSkL3ctOrEYGykxx0ig/m0=;
-        b=LEKGROjBrIRNXxY60rEDnS+ctM+dZWz148ioteMc8pJRnnWnmWhhGjK8ix3hlOKIcW
-         uj2xWs0M9nk12+DnbHD31hqfN1NMVWsKfuUCdI+kofaoDyQc0YsNQsgc9QbbW7aG6370
-         61s0CEiJTQyK6a2MLPKjqXMTtOQBdmqT5bTC9bOSrBQg2h/7YlK0k4VFDoFZxMSm08CZ
-         mxXLGLoiMcyofW145G1Q9Nybh8NducMS8GolwKS6opn0kUk9H7+yCUnVVVbJoxB/mquW
-         pEqHMhhy078tJtuf8aUQ5rdzIi2PKYkK77xHd9yweHhFN3BFQG4wyblt5HPq5TY3/pY9
-         u/hQ==
-X-Gm-Message-State: AOAM533pd/LuqTo+KshadZSaxLmiQFcZXy3RJK6g8k0sDVMNkE2Lc0kf
-	p8ec4eXS+4K5yt6teedVMTM=
-X-Google-Smtp-Source: ABdhPJy1vzaNMEa6qR1jv8tDRSZiMxYpeg4RNjKExhY59rCu0Q+CxA5CqAv26vovX2cZDXQXs4yhBg==
-X-Received: by 2002:a05:6808:9ae:b0:2d9:a01a:4bf4 with SMTP id e14-20020a05680809ae00b002d9a01a4bf4mr238080oig.283.1649098162576;
-        Mon, 04 Apr 2022 11:49:22 -0700 (PDT)
-Received: from ?IPV6:2603:8090:2005:39b3::1004? (2603-8090-2005-39b3-0000-0000-0000-1004.res6.spectrum.com. [2603:8090:2005:39b3::1004])
-        by smtp.gmail.com with ESMTPSA id m17-20020a0568301e7100b005b256697d7csm4795089otr.72.2022.04.04.11.49.21
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 04 Apr 2022 11:49:21 -0700 (PDT)
-Sender: Larry Finger <larry.finger@gmail.com>
-Message-ID: <547963ab-4922-3208-fe63-07e0756890d9@lwfinger.net>
-Date: Mon, 4 Apr 2022 13:49:20 -0500
+        bh=Zg14HKB8Tn7Zkt9AnuTFrogrSTPKR6syFIM0HfENyTw=;
+        b=xjrXXWITxmU56zp3MpWxHspTrF1XGJ4F1w0HryrHoOKpOOfUWAI2g6/b3vNEvmTdBA
+         qmPBuVLMNjdZUTd8XtKw831as8IHoMRCWXZruujRh++GodigYd7i0hBeYLkzwxYElvhz
+         KIR6vhhdMkLUUOq9lQoiMGbHWdH8bBGZeOQgahIb+bdGebzyt2LBTVQeeGPxM225r3Ju
+         rcTIwmH+JYbRTtNnqiQ1yG7w+jRdRiciqNPIvDijhfOQSG/eCoBDsfy3ADOs1F5wFfcm
+         D1KidDYf4jVW9NtGz01wLzYggLyByYkj0EGea9UH0kSDFiwbWJmv4Jem/lOdpYSkTV7h
+         runQ==
+X-Gm-Message-State: AOAM533oNeZIqjDGAuFyK/VfX3tJgC3I3m+3LyErCoTrJzIWOT82QryS
+	ZWIGjEX+OyXeTu7V2zbewPY=
+X-Google-Smtp-Source: ABdhPJyYfvJ6npuFsstgJYWJ0aTV/xG8rAhVsj7Yzhv6TKaA0uRCh4m9BcqLhEy+4OSAIOZcuLVDjw==
+X-Received: by 2002:a5d:59a1:0:b0:204:1777:fc08 with SMTP id p1-20020a5d59a1000000b002041777fc08mr57988wrr.545.1649106014971;
+        Mon, 04 Apr 2022 14:00:14 -0700 (PDT)
+Received: from alaa-emad ([41.42.174.117])
+        by smtp.gmail.com with ESMTPSA id g16-20020a05600c4ed000b0038ceb0b21b4sm120757wmq.24.2022.04.04.14.00.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 04 Apr 2022 14:00:13 -0700 (PDT)
+From: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+To: outreachy@lists.linux.dev
+Cc: Larry.Finger@lwfinger.net,
+	florian.c.schilhabel@googlemail.com,
+	gregkh@linuxfoundation.org,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	eng.alaamohamedsoliman.am@gmail.com
+Subject: [PATCH] staging: rtl8712: Fix multiple line dereference
+Date: Mon,  4 Apr 2022 23:00:10 +0200
+Message-Id: <20220404210010.9795-1-eng.alaamohamedsoliman.am@gmail.com>
+X-Mailer: git-send-email 2.35.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH] staging: r8188eu: remove unnecessary blank lines
-Content-Language: en-US
-To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>,
- outreachy@lists.linux.dev
-Cc: phil@philpotter.co.uk, gregkh@linuxfoundation.org,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-References: <20220404145217.15069-1-eng.alaamohamedsoliman.am@gmail.com>
-From: Larry Finger <Larry.Finger@lwfinger.net>
-In-Reply-To: <20220404145217.15069-1-eng.alaamohamedsoliman.am@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 
-On 4/4/22 09:52, Alaa Mohamed wrote:
-> Reported by checkpatch:
-> 
-> CHECK: Blank lines aren't necessary before a close brace '}'
-> 
-> Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-> ---
->   drivers/staging/r8188eu/core/rtw_ap.c | 3 ---
->   1 file changed, 3 deletions(-)
-> 
-> diff --git a/drivers/staging/r8188eu/core/rtw_ap.c b/drivers/staging/r8188eu/core/rtw_ap.c
-> index 2ff78ed1faab..ac6effbecf6d 100644
-> --- a/drivers/staging/r8188eu/core/rtw_ap.c
-> +++ b/drivers/staging/r8188eu/core/rtw_ap.c
-> @@ -188,7 +188,6 @@ void	expire_timeout_chk(struct adapter *padapter)
->   				spin_lock_bh(&pstapriv->auth_list_lock);
->   			}
->   		}
-> -
->   	}
->   	spin_unlock_bh(&pstapriv->auth_list_lock);
->   
-> @@ -381,7 +380,6 @@ void add_RATid(struct adapter *padapter, struct sta_info *psta, u8 rssi_level)
->   		/* set ra_id, init_rate */
->   		psta->raid = raid;
->   		psta->init_rate = init_rate;
-> -
->   	}
->   }
->   
-> @@ -455,7 +453,6 @@ void update_bmc_sta(struct adapter *padapter)
->   		spin_lock_bh(&psta->lock);
->   		psta->state = _FW_LINKED;
->   		spin_unlock_bh(&psta->lock);
-> -
->   	}
->   }
->   
+Reported by checkpatch:
 
-Acked_by: Larry Finger <Larry.Finger@lwfinger.net>
+WARNING: Avoid multiple line dereference
 
-Thanks,
+Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+---
+ drivers/staging/rtl8712/rtl871x_mlme.c | 77 +++++++++-----------------
+ 1 file changed, 25 insertions(+), 52 deletions(-)
 
-Larry
+diff --git a/drivers/staging/rtl8712/rtl871x_mlme.c b/drivers/staging/rtl8712/rtl871x_mlme.c
+index 92b7c9c07df6..6406132ca5ea 100644
+--- a/drivers/staging/rtl8712/rtl871x_mlme.c
++++ b/drivers/staging/rtl8712/rtl871x_mlme.c
+@@ -431,8 +431,7 @@ static int is_desired_network(struct _adapter *adapter,
+ 		bselected = false;
+ 	if (check_fwstate(&adapter->mlmepriv, WIFI_ADHOC_STATE)) {
+ 		if (pnetwork->network.InfrastructureMode !=
+-			adapter->mlmepriv.cur_network.network.
+-			InfrastructureMode)
++			adapter->mlmepriv.cur_network.network.InfrastructureMode)
+ 			bselected = false;
+ 	}
+ 	return bselected;
+@@ -539,8 +538,7 @@ void r8712_surveydone_event_callback(struct _adapter *adapter, u8 *pbuf)
+ 					struct wlan_bssid_ex *pdev_network =
+ 					  &(adapter->registrypriv.dev_network);
+ 					u8 *pibss =
+-						 adapter->registrypriv.
+-							dev_network.MacAddress;
++						 adapter->registrypriv.dev_network.MacAddress;
+ 					pmlmepriv->fw_state ^= _FW_UNDER_SURVEY;
+ 					memcpy(&pdev_network->Ssid,
+ 						&pmlmepriv->assoc_ssid,
+@@ -688,11 +686,9 @@ void r8712_joinbss_event_callback(struct _adapter *adapter, u8 *pbuf)
+ 	pnetwork->network.Configuration.DSConfig =
+ 		 le32_to_cpu(pnetwork->network.Configuration.DSConfig);
+ 	pnetwork->network.Configuration.FHConfig.DwellTime =
+-		 le32_to_cpu(pnetwork->network.Configuration.FHConfig.
+-			     DwellTime);
++		 le32_to_cpu(pnetwork->network.Configuration.FHConfig.DwellTime);
+ 	pnetwork->network.Configuration.FHConfig.HopPattern =
+-		 le32_to_cpu(pnetwork->network.Configuration.
+-			     FHConfig.HopPattern);
++		 le32_to_cpu(pnetwork->network.Configuration.FHConfig.HopPattern);
+ 	pnetwork->network.Configuration.FHConfig.HopSet =
+ 		 le32_to_cpu(pnetwork->network.Configuration.FHConfig.HopSet);
+ 	pnetwork->network.Configuration.FHConfig.Length =
+@@ -717,36 +713,29 @@ void r8712_joinbss_event_callback(struct _adapter *adapter, u8 *pbuf)
+ 			if (check_fwstate(pmlmepriv, _FW_LINKED)) {
+ 				if (the_same_macaddr) {
+ 					ptarget_wlan =
+-					    r8712_find_network(&pmlmepriv->
+-					    scanned_queue,
++					    r8712_find_network(&pmlmepriv->scanned_queue,
+ 					    cur_network->network.MacAddress);
+ 				} else {
+ 					pcur_wlan =
+-					     r8712_find_network(&pmlmepriv->
+-					     scanned_queue,
++					     r8712_find_network(&pmlmepriv->scanned_queue,
+ 					     cur_network->network.MacAddress);
+ 					if (pcur_wlan)
+ 						pcur_wlan->fixed = false;
+ 
+ 					pcur_sta = r8712_get_stainfo(pstapriv,
+ 					     cur_network->network.MacAddress);
+-					spin_lock_irqsave(&pstapriv->
+-						sta_hash_lock, irqL2);
++					spin_lock_irqsave(&pstapriv->sta_hash_lock, irqL2);
+ 					r8712_free_stainfo(adapter, pcur_sta);
+-					spin_unlock_irqrestore(&(pstapriv->
+-						sta_hash_lock), irqL2);
++					spin_unlock_irqrestore(&(pstapriv->sta_hash_lock), irqL2);
+ 
+ 					ptarget_wlan =
+-						 r8712_find_network(&pmlmepriv->
+-						 scanned_queue,
+-						 pnetwork->network.
+-						 MacAddress);
++						 r8712_find_network(&pmlmepriv->scanned_queue,
++						 pnetwork->network.MacAddress);
+ 					if (ptarget_wlan)
+ 						ptarget_wlan->fixed = true;
+ 				}
+ 			} else {
+-				ptarget_wlan = r8712_find_network(&pmlmepriv->
+-						scanned_queue,
++				ptarget_wlan = r8712_find_network(&pmlmepriv->scanned_queue,
+ 						pnetwork->network.MacAddress);
+ 				if (ptarget_wlan)
+ 					ptarget_wlan->fixed = true;
+@@ -779,39 +768,25 @@ void r8712_joinbss_event_callback(struct _adapter *adapter, u8 *pbuf)
+ 					ptarget_sta->aid = pnetwork->join_res;
+ 					ptarget_sta->qos_option = 1;
+ 					ptarget_sta->mac_id = 5;
+-					if (adapter->securitypriv.
+-					    AuthAlgrthm == 2) {
+-						adapter->securitypriv.
+-							binstallGrpkey =
+-							 false;
+-						adapter->securitypriv.
+-							busetkipkey =
+-							 false;
+-						adapter->securitypriv.
+-							bgrpkey_handshake =
+-							 false;
+-						ptarget_sta->ieee8021x_blocked
+-							 = true;
+-						ptarget_sta->XPrivacy =
+-							 adapter->securitypriv.
+-							 PrivacyAlgrthm;
+-						memset((u8 *)&ptarget_sta->
+-							 x_UncstKey,
++					if (adapter->securitypriv.AuthAlgrthm == 2) {
++						adapter->securitypriv.binstallGrpkey = false;
++						adapter->securitypriv.busetkipkey = false;
++						adapter->securitypriv.bgrpkey_handshake = false;
++						ptarget_sta->ieee8021x_blocked = true;
++						ptarget_sta->XPrivacy = adapter->
++						securitypriv.PrivacyAlgrthm;
++						memset((u8 *)&ptarget_sta->x_UncstKey,
+ 							 0,
+ 							 sizeof(union Keytype));
+-						memset((u8 *)&ptarget_sta->
+-							 tkiprxmickey,
++						memset((u8 *)&ptarget_sta->tkiprxmickey,
+ 							 0,
+ 							 sizeof(union Keytype));
+-						memset((u8 *)&ptarget_sta->
+-							 tkiptxmickey,
++						memset((u8 *)&ptarget_sta->tkiptxmickey,
+ 							 0,
+ 							 sizeof(union Keytype));
+-						memset((u8 *)&ptarget_sta->
+-							 txpn, 0,
++						memset((u8 *)&ptarget_sta->txpn, 0,
+ 							 sizeof(union pn48));
+-						memset((u8 *)&ptarget_sta->
+-							 rxpn, 0,
++						memset((u8 *)&ptarget_sta->rxpn, 0,
+ 							 sizeof(union pn48));
+ 					}
+ 				} else {
+@@ -942,8 +917,7 @@ void r8712_stadel_event_callback(struct _adapter *adapter, u8 *pbuf)
+ 			pdev_network = &(adapter->registrypriv.dev_network);
+ 			pibss = adapter->registrypriv.dev_network.MacAddress;
+ 			memcpy(pdev_network, &tgt_network->network,
+-				r8712_get_wlan_bssid_ex_sz(&tgt_network->
+-							network));
++				r8712_get_wlan_bssid_ex_sz(&tgt_network->network));
+ 			memcpy(&pdev_network->Ssid,
+ 				&pmlmepriv->assoc_ssid,
+ 				sizeof(struct ndis_802_11_ssid));
+@@ -1092,8 +1066,7 @@ int r8712_select_and_join_from_scan(struct mlme_priv *pmlmepriv)
+ 			src_ssid = pmlmepriv->assoc_bssid;
+ 			if (!memcmp(dst_ssid, src_ssid, ETH_ALEN)) {
+ 				if (check_fwstate(pmlmepriv, _FW_LINKED)) {
+-					if (is_same_network(&pmlmepriv->
+-					    cur_network.network,
++					if (is_same_network(&pmlmepriv->cur_network.network,
+ 					    &pnetwork->network)) {
+ 						_clr_fwstate_(pmlmepriv,
+ 							_FW_UNDER_LINKING);
+-- 
+2.35.1
 
