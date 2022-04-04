@@ -1,98 +1,109 @@
-Received: from mail-wm1-f53.google.com (mail-wm1-f53.google.com [209.85.128.53])
+Received: from mail-oi1-f169.google.com (mail-oi1-f169.google.com [209.85.167.169])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 168267A;
-	Mon,  4 Apr 2022 14:52:23 +0000 (UTC)
-Received: by mail-wm1-f53.google.com with SMTP id n63-20020a1c2742000000b0038d0c31db6eso5768831wmn.1;
-        Mon, 04 Apr 2022 07:52:22 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 341E22F25;
+	Mon,  4 Apr 2022 18:47:36 +0000 (UTC)
+Received: by mail-oi1-f169.google.com with SMTP id z8so11004126oix.3;
+        Mon, 04 Apr 2022 11:47:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:mime-version
+        h=sender:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
          :content-transfer-encoding;
-        bh=qYxLsEyrkgXdnm5LAQn/zPFIjossJ27xzVLlTLKNJ1o=;
-        b=mJwseqYMjX/TfeU0TOz5lm6Zk4glWq/g3mAYF7Z4aRpv+SDPrL8NZyBjFJ3xeKA1W9
-         nygt+qc3exzXmzW90iQSz1PtJ2DGIqDxkXPTKcqsYffKmUADTvOyM0UDX/cv4hUsayET
-         5nc2qAPmbJzkwxox6fOSHbKecczcn2eUCS5mHAY1piJgJArOS4t5Gt7vcX914nqEHCHV
-         KFNKev5qRw4vMDGKJWAtryaWmFOZBoDURehR9o+t/0WCRn7a7XnqiVXifEOlMMTm5emR
-         l6g5bVk4Bq1ZpF0RUXNdk/1TJ3Gs7R6JDloT/xpvIeMbhdkA6HY1k+z+YrbmzokwPPH6
-         zXDA==
+        bh=1Hoq9zXJV39q89hBa70SrMFhPx8RZY0vhEzpf12yaGE=;
+        b=LSDGLhsnVOEx9ODwTEz2zHFdkwTWjGz5Yo86ybGpgs1MipIaI4GOjquCyXvF9ddLuM
+         VoaKZ6VLJF53zEIJDCd4sMGtAQFALWJeU5zPvaToQUZ0owHRy3bMhnaD2Lgjr8O4sfEb
+         5UuE4j3b8f5YfXQt0y6PC6UZljX+obS8xTeM5hh6Yh1d2dNhmGJE+WOdiQmqLFHTaHTB
+         USikjQjDFJ2FnR/mouImDqGzIdaPd5up5AHTQvOGmZGSabhc0sAMMwcuHHitW+3Ay2TA
+         QntueumZ9NdCyF/kx897lTqDNdgz9Z7lx9lwsZbIjR0B0EsRsCiWp2+gpmM5suJQGgVx
+         oUVw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+        h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+         :subject:content-language:to:cc:references:from:in-reply-to
          :content-transfer-encoding;
-        bh=qYxLsEyrkgXdnm5LAQn/zPFIjossJ27xzVLlTLKNJ1o=;
-        b=N3yqTWpjlqIu0+T2VDz6rwxVx0b/oj9w8EPv8zNMF5dvn1qMR6VLnJyAUk27yXsl36
-         LvHzXNyw6Z0YtARzteUq1qMhx8kX6chsAq3GS4U8N1gN8akcyx3SvcDb/8OWGlfFwsaS
-         tCv9UpEjbx3xOHc48ckSvhVsDbrVeEqDE5XDscfPmc/c4DwjRobapuFJAbJNltnd/h36
-         CdqPqCvlFE3SEswfURfe2YooAuKNCWMSfzoKRGuHshW6P4ZhPMsbrvr2DeViimkVmDW0
-         tunOD+slWFZejUknXgRW5A2Q8tX8OEM1b3fT9IzhpRlVJG9EVeWPvVvSkIbUADJYH1xG
-         B+sA==
-X-Gm-Message-State: AOAM533JI10d/8K48eUkGVllYYq144CwKH0pY8JBcz0FtHUGQhtjg1nC
-	SJvknao4SS0EGFcwKF9NzR8=
-X-Google-Smtp-Source: ABdhPJyAXJ20VBx2Ek7B4vBvpOYLDKniIMEAu9TwaQfHA38MDBoTVIZu0vLfi112O8MFSf5vnU6jvg==
-X-Received: by 2002:a7b:cb84:0:b0:382:a9b9:2339 with SMTP id m4-20020a7bcb84000000b00382a9b92339mr20140642wmi.91.1649083941411;
-        Mon, 04 Apr 2022 07:52:21 -0700 (PDT)
-Received: from alaa-emad ([41.42.174.117])
-        by smtp.gmail.com with ESMTPSA id 20-20020a05600c22d400b0038c8dbdc1a3sm9412536wmg.38.2022.04.04.07.52.20
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 04 Apr 2022 07:52:20 -0700 (PDT)
-From: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-To: outreachy@lists.linux.dev
-Cc: Larry.Finger@lwfinger.net,
-	phil@philpotter.co.uk,
-	gregkh@linuxfoundation.org,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	eng.alaamohamedsoliman.am@gmail.com
-Subject: [PATCH] staging: r8188eu: remove unnecessary blank lines
-Date: Mon,  4 Apr 2022 16:52:17 +0200
-Message-Id: <20220404145217.15069-1-eng.alaamohamedsoliman.am@gmail.com>
-X-Mailer: git-send-email 2.35.1
+        bh=1Hoq9zXJV39q89hBa70SrMFhPx8RZY0vhEzpf12yaGE=;
+        b=493eCLvauXI7pOw6BEs7jues5+x0Lk45JfFiy0Gtz6GSPriQgHQPEjQ+W73y8wcCwO
+         Ai6JR0q0hf4mdHePZ96G8md91DVYM6beKEQnH3odrUprMUJ2SGzIv3XvDfEEILv85KhY
+         /KauzgJki1FoqHsgkFjPpS0yoyTae7WRC0MO++xAmeQIV3vxXkTGIeun2FStGfSLqL/i
+         b6x8g0YuGq09WeIyIHUGrnbtG+6EVdMqTH4X8Gfgxjhf7qMJAe4ZbGtXrLCvqEdZ6O6Z
+         nI9Kt1Omhg+jimDOG40xVb5pRo0U2CyPQKhX2O6LcQQkptgxWGdz/nOa81El74xgohf5
+         Z64g==
+X-Gm-Message-State: AOAM531VIvq+ica2x3M1YNgssqf1oxnqX1cJcwZD2jmQ1eCBjGPA7FLR
+	864HeMiFOKHVXuLw3v5jTrk=
+X-Google-Smtp-Source: ABdhPJzEjbx27tmxLs/LVr3uhQkFFqUI9HaEIAsh0oSN0nUwdqNC2wsAJHzzG7/fEE8PMynXI3Gtkw==
+X-Received: by 2002:aca:2b14:0:b0:2ef:89b7:a885 with SMTP id i20-20020aca2b14000000b002ef89b7a885mr264764oik.16.1649098055299;
+        Mon, 04 Apr 2022 11:47:35 -0700 (PDT)
+Received: from ?IPV6:2603:8090:2005:39b3::1004? (2603-8090-2005-39b3-0000-0000-0000-1004.res6.spectrum.com. [2603:8090:2005:39b3::1004])
+        by smtp.gmail.com with ESMTPSA id u16-20020a056808151000b002f734da0881sm4708936oiw.57.2022.04.04.11.47.33
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 04 Apr 2022 11:47:34 -0700 (PDT)
+Sender: Larry Finger <larry.finger@gmail.com>
+Message-ID: <c8461d9c-dda1-3c1e-0e3b-169073e8c4d0@lwfinger.net>
+Date: Mon, 4 Apr 2022 13:47:33 -0500
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH 2/2] staging: r8188eu: Add line after declarations
+Content-Language: en-US
+To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>,
+ outreachy@lists.linux.dev
+Cc: phil@philpotter.co.uk, gregkh@linuxfoundation.org,
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+References: <860d8e222e2b695ce5cb4f48aa46a7f66e05d8e4.1649082939.git.eng.alaamohamedsoliman.am@gmail.com>
+ <19d8f316e43d16c9341f7fe94e68534cf60cc05c.1649082939.git.eng.alaamohamedsoliman.am@gmail.com>
+From: Larry Finger <Larry.Finger@lwfinger.net>
+In-Reply-To: <19d8f316e43d16c9341f7fe94e68534cf60cc05c.1649082939.git.eng.alaamohamedsoliman.am@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 
-Reported by checkpatch:
+On 4/4/22 09:39, Alaa Mohamed wrote:
+> Reported by checkpatch:
+> 
+> WARNING: Missing a blank line after declarations
+> 
+> Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+> ---
+>   drivers/staging/r8188eu/core/rtw_br_ext.c | 5 +++--
+>   1 file changed, 3 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/r8188eu/core/rtw_br_ext.c b/drivers/staging/r8188eu/core/rtw_br_ext.c
+> index 7c664f80fa99..f7811b46db1c 100644
+> --- a/drivers/staging/r8188eu/core/rtw_br_ext.c
+> +++ b/drivers/staging/r8188eu/core/rtw_br_ext.c
+> @@ -313,6 +313,7 @@ void nat25_db_cleanup(struct adapter *priv)
+>   
+>   	for (i = 0; i < NAT25_HASH_SIZE; i++) {
+>   		struct nat25_network_db_entry *f;
+> +
+>   		f = priv->nethash[i];
+>   		while (f) {
+>   			struct nat25_network_db_entry *g;
+> @@ -339,12 +340,12 @@ void nat25_db_expire(struct adapter *priv)
+>   
+>   	for (i = 0; i < NAT25_HASH_SIZE; i++) {
+>   		struct nat25_network_db_entry *f;
+> -		f = priv->nethash[i];
+>   
+> +		f = priv->nethash[i];
+>   		while (f) {
+>   			struct nat25_network_db_entry *g;
+> -			g = f->next_hash;
+>   
+> +			g = f->next_hash;
+>   			if (__nat25_has_expired(f)) {
+>   				if (atomic_dec_and_test(&f->use_count)) {
+>   					if (priv->scdb_entry == f) {
 
-CHECK: Blank lines aren't necessary before a close brace '}'
+Acked_by: Larry Finger <Larry.Finger@lwfinger.net>
 
-Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
----
- drivers/staging/r8188eu/core/rtw_ap.c | 3 ---
- 1 file changed, 3 deletions(-)
+That applies to both patches.
 
-diff --git a/drivers/staging/r8188eu/core/rtw_ap.c b/drivers/staging/r8188eu/core/rtw_ap.c
-index 2ff78ed1faab..ac6effbecf6d 100644
---- a/drivers/staging/r8188eu/core/rtw_ap.c
-+++ b/drivers/staging/r8188eu/core/rtw_ap.c
-@@ -188,7 +188,6 @@ void	expire_timeout_chk(struct adapter *padapter)
- 				spin_lock_bh(&pstapriv->auth_list_lock);
- 			}
- 		}
--
- 	}
- 	spin_unlock_bh(&pstapriv->auth_list_lock);
- 
-@@ -381,7 +380,6 @@ void add_RATid(struct adapter *padapter, struct sta_info *psta, u8 rssi_level)
- 		/* set ra_id, init_rate */
- 		psta->raid = raid;
- 		psta->init_rate = init_rate;
--
- 	}
- }
- 
-@@ -455,7 +453,6 @@ void update_bmc_sta(struct adapter *padapter)
- 		spin_lock_bh(&psta->lock);
- 		psta->state = _FW_LINKED;
- 		spin_unlock_bh(&psta->lock);
--
- 	}
- }
- 
--- 
-2.35.1
+Thanks,
 
+Larry
