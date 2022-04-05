@@ -1,107 +1,80 @@
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 042C815A3
-	for <outreachy@lists.linux.dev>; Tue,  5 Apr 2022 06:28:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1649140117;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=galeP/y/YwbqJSjm9PPEw+il6Sd4MtBL6LNP/RZpjVI=;
-	b=IgBe/uUoOJYUXAk1MMMtZQZRM8BISdvtQ1uAZbtegRWJDanlEQhlagIrZGsaXyWnr4pmCc
-	xcd16OggFLcPTFCOjDHR5NGYGZbwwgW5UWy1F682obVW78QlTIj018Ain1cm/TGBq0USoQ
-	E1aqMp5a0HxaCy3cUo3LFNvNhL4RCAs=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-222-roajJVFhMX2Aow2CGNL73Q-1; Tue, 05 Apr 2022 02:28:34 -0400
-X-MC-Unique: roajJVFhMX2Aow2CGNL73Q-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com [10.11.54.10])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 7E28780A0AD;
-	Tue,  5 Apr 2022 06:28:34 +0000 (UTC)
-Received: from maya.cloud.tilaa.com (unknown [10.40.208.6])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 5184943202D;
-	Tue,  5 Apr 2022 06:28:34 +0000 (UTC)
-Date: Mon, 4 Apr 2022 07:48:06 +0200
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
-Cc: Roopa Prabhu <roopa.prabhu@gmail.com>, outreachy linux kernel
- <outreachy@lists.linux.dev>
-Subject: Re: [PATCH v3 1/3] staging: rtl8723bs: remove redundant braces in
- if statements
-Message-ID: <20220404074806.739c9fc3@elisabeth>
-In-Reply-To: <CAGe6so8TdMGFzuGGwR9n5KS1iQjPsxq+VUMp1HgGBn5=eC4b-g@mail.gmail.com>
-References: <cover.1648840991.git.sevinj.aghayeva@gmail.com>
-	<1a9f181f7f30f71c03e6e88df9fb8c17a298a192.1648840991.git.sevinj.aghayeva@gmail.com>
-	<Ykl/4mIsSzaPRr+y@kroah.com>
-	<CAMWRUK4BpTFf8fGoANjjOEZ2dxCws=QPLPJ166JPgnsdsy+pmg@mail.gmail.com>
-	<CAMWRUK43UO-nT3-8G1GBt9ZzTqGo_j2=_YyE686-8H01ub3meQ@mail.gmail.com>
-	<CAGe6so8TdMGFzuGGwR9n5KS1iQjPsxq+VUMp1HgGBn5=eC4b-g@mail.gmail.com>
-Organization: Red Hat
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0935228E5;
+	Tue,  5 Apr 2022 13:46:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 46BB2C385A0;
+	Tue,  5 Apr 2022 13:46:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1649166367;
+	bh=tEPAy+NbytRr8LPw00hVjTlHe62y4ooPjjnn32amCII=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=OyNi6FyvaNdAHMo2HEF5qEjBKMeMUTU3O/vPvFBgdkzXewf1tDQ+QF0VMQIG3TTrx
+	 sr/y65z0al95dQNkLplZ3mcnx9HCK4sJFFf8gQjgzLIJ8sohAxlK86eIHYgOca+g2n
+	 iacvEz+fISPqWVOzWMP3bo8LeSGYymg4P8JaHOFg=
+Date: Tue, 5 Apr 2022 15:45:49 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Larry Finger <Larry.Finger@lwfinger.net>
+Cc: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>,
+	outreachy@lists.linux.dev, phil@philpotter.co.uk,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 2/2] staging: r8188eu: Add line after declarations
+Message-ID: <YkxIDdCrJT1rV3SZ@kroah.com>
+References: <860d8e222e2b695ce5cb4f48aa46a7f66e05d8e4.1649082939.git.eng.alaamohamedsoliman.am@gmail.com>
+ <19d8f316e43d16c9341f7fe94e68534cf60cc05c.1649082939.git.eng.alaamohamedsoliman.am@gmail.com>
+ <c8461d9c-dda1-3c1e-0e3b-169073e8c4d0@lwfinger.net>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.10
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=sbrivio@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <c8461d9c-dda1-3c1e-0e3b-169073e8c4d0@lwfinger.net>
 
-Sevinj,
-
-On Sun, 3 Apr 2022 08:40:08 -0700
-Roopa Prabhu <roopa.prabhu@gmail.com> wrote:
-
-> On Sun, Apr 3, 2022 at 7:25 AM Sevinj Aghayeva
-> <sevinj.aghayeva@gmail.com> wrote:
-> >
-> > (Sending this only to outreachy.)
-> >
-> > I just did "git fetch origin" and then "git rebase origin" while I was
-> > in the branch that didn't apply to Greg's tree. I got a merge conflict
-> > in ext4/super.c. None of my changes have modified ext4/super.c, so why
-> > do I get a conflict on this file? Can someone please explain?  
+On Mon, Apr 04, 2022 at 01:47:33PM -0500, Larry Finger wrote:
+> On 4/4/22 09:39, Alaa Mohamed wrote:
+> > Reported by checkpatch:
+> > 
+> > WARNING: Missing a blank line after declarations
+> > 
+> > Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+> > ---
+> >   drivers/staging/r8188eu/core/rtw_br_ext.c | 5 +++--
+> >   1 file changed, 3 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/staging/r8188eu/core/rtw_br_ext.c b/drivers/staging/r8188eu/core/rtw_br_ext.c
+> > index 7c664f80fa99..f7811b46db1c 100644
+> > --- a/drivers/staging/r8188eu/core/rtw_br_ext.c
+> > +++ b/drivers/staging/r8188eu/core/rtw_br_ext.c
+> > @@ -313,6 +313,7 @@ void nat25_db_cleanup(struct adapter *priv)
+> >   	for (i = 0; i < NAT25_HASH_SIZE; i++) {
+> >   		struct nat25_network_db_entry *f;
+> > +
+> >   		f = priv->nethash[i];
+> >   		while (f) {
+> >   			struct nat25_network_db_entry *g;
+> > @@ -339,12 +340,12 @@ void nat25_db_expire(struct adapter *priv)
+> >   	for (i = 0; i < NAT25_HASH_SIZE; i++) {
+> >   		struct nat25_network_db_entry *f;
+> > -		f = priv->nethash[i];
+> > +		f = priv->nethash[i];
+> >   		while (f) {
+> >   			struct nat25_network_db_entry *g;
+> > -			g = f->next_hash;
+> > +			g = f->next_hash;
+> >   			if (__nat25_has_expired(f)) {
+> >   				if (atomic_dec_and_test(&f->use_count)) {
+> >   					if (priv->scdb_entry == f) {
 > 
-> The file on your branch is still different from the one on
-> master/origin even if you have not changed it and git is not able to
-> merge the file automatically.
+> Acked_by: Larry Finger <Larry.Finger@lwfinger.net>
+> 
+> That applies to both patches.
 
-...this can happen, in turn, for (at least?) two reasons:
+b4 doesn't pick this ack up for both patches, you either need to do it
+on the 0/X message, or on each one individually.
 
-- true, you didn't modify ext4/super.c, but another commit (not
-  yours) touching ext4/super.c also affects one of the files that are
-  modified by any of your commits, or anything you have in your local
-  tree. This is probably the case here.
+thanks,
 
-- the upstream tree, itself, was rebased. Most kernel trees upstream
-  have a no-rebase policy, that is, once a commit (including merge
-  commits) has been published (pushed) by the maintainer to that tree,
-  that commit will never disappear from the history. This should be the
-  case for the staging tree as well, as far as I know.
-
-  So you can pull, at any moment, and that will just "add" commits to
-  your history, never modify one. The rationale is somewhat explained
-  by:
-
-	https://lwn.net/Articles/328438/
-
-  ...but not all kernel trees follow this policy, for some (such as
-  linux-next, or nf-next) it would be impractical and of little value:
-  they're not trees people are expected to do significant work on.
-
-  In that case, contributors can expect some small disruptions in their
-  workflow: at some point, their local trees might have commits based
-  on a former upstream commit that doesn't exist anymore.
-
--- 
-Stefano
-
+greg k-h
