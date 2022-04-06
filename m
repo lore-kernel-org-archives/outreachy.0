@@ -1,353 +1,119 @@
-Received: from mail-oa1-f67.google.com (mail-oa1-f67.google.com [209.85.160.67])
+Received: from mail-ej1-f54.google.com (mail-ej1-f54.google.com [209.85.218.54])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E140C17FB;
-	Wed,  6 Apr 2022 08:31:29 +0000 (UTC)
-Received: by mail-oa1-f67.google.com with SMTP id 586e51a60fabf-d6e29fb3d7so2153463fac.7;
-        Wed, 06 Apr 2022 01:31:29 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 437B233D7
+	for <outreachy@lists.linux.dev>; Wed,  6 Apr 2022 13:54:45 +0000 (UTC)
+Received: by mail-ej1-f54.google.com with SMTP id n6so4358522ejc.13
+        for <outreachy@lists.linux.dev>; Wed, 06 Apr 2022 06:54:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=qrs+CFWmrW8BeESnOm/6cRIphI8Wl9VDHYuHbUM3OO4=;
-        b=RORbisXWSMCQFYIFBfrpeCMwr6DsmVVdhLIStqeO9ldOQf3FAVH/P4CO0SqUK3kdQ2
-         PkArFpxrsdtjhuq1anbVuTAWRea9iDs3/ppC53RrfoBoryg66DS2jVwfpa9PjuktWnAq
-         4K9W76QM3hxCIV4IHeMZmOOD2uIJhuWxjWPA6wX56DhsyFg0Dp3Wva++8BHgP5SpyPlT
-         rlA1P+HLOfNgO3rI26tNIp1l2GyamMnMguQP/29HLP/k+V4mDt4mOXu1IGOuQklWx2cq
-         pQVx4ow2vtfm32r45vSAIGJtfMCq9ElNmlElf8Abkx+H51LQMXZdZuyQZ0fyptR0IcP9
-         SudA==
+        bh=8xDyPfj6UDl0oLu7z7wuxFo8zbZVoYhd5X5rj7SrlRo=;
+        b=kZOK0dbk2GiISqhUjdJ6iuS78XLmqnjmfj/uTCZ6GJwVHwV9yZrcjWuAgw7Owau1VJ
+         nxS6Kzk57mnjF2isJy58eExsjPrUiXTwTJm5ggZxJZ3G+OozWqSh89QIq99TIgVI4KMe
+         e3bus3zNHtB2ApOByl9BqK8qv1yhEDSnM3A/fjF7uO9b2SyV4+XseEe83IswDcs1YrE9
+         wmJOc7hgzIjomM9O7xXwfi7gI4PzdlfHDGsfAyzWvnxZHGtKqlRxjvjWJt7hRQ5C2BWN
+         Z4MsZ0PEkh5myvzbuwWcOD8ed3SWzTvtS0HCmY3MOz1iofV7KmnpLTonmBzw4FtEKsDi
+         cMzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=qrs+CFWmrW8BeESnOm/6cRIphI8Wl9VDHYuHbUM3OO4=;
-        b=f4wUtJ5avrGb0yNalCayG6AACZewSnpdbj1x2zvfNSXlaRLIQB+kljv0aVdEs2r2zl
-         YdQ5utFqD/Brku3/sv4atpjTv22NEK/zmi/WTMLMJAs8wyH5wSLwEfpx1rag9Idxces8
-         Lx/8h1mTaxqCbcu8+WiHfdbJI6AsjJlSTTsvXVqnXDItageHrMTwdo/4wPugOwCcWcpw
-         ZXx/dYB+sYt9X8SzSFb1ttspFlfleWlL7fxi3IEvpj89Pk4mAgxkK3CN6OAFjO7GZR3e
-         HF+N5NYWnwKeQS/SIwxRl9vwJPs/lmGEY/ARCfcSXTmhkk6Hwfr/duoYnjN3A4UMcOku
-         Nghg==
-X-Gm-Message-State: AOAM532GzneKeGkqGvCYS0tlQ8/uioOJvMDqXEP8VzFAAPK3FBFfSQV6
-	xSgtaZZue0XXB6l1Hqv+bXM=
-X-Google-Smtp-Source: ABdhPJybWLBDvyaNTwqZZZ4PT6DF2PcM3Vg7gZhU9/SelxXcndU8UVYVwmUzYaZZX78gRgHAIO9+og==
-X-Received: by 2002:a05:6870:b6a6:b0:dd:999f:6596 with SMTP id cy38-20020a056870b6a600b000dd999f6596mr3384235oab.106.1649233889106;
-        Wed, 06 Apr 2022 01:31:29 -0700 (PDT)
-Received: from bertie ([172.58.102.145])
-        by smtp.gmail.com with ESMTPSA id 190-20020a4a0dc7000000b003244ae0bbd5sm5835478oob.7.2022.04.06.01.31.28
+        bh=8xDyPfj6UDl0oLu7z7wuxFo8zbZVoYhd5X5rj7SrlRo=;
+        b=IbdsbLu/UHNP52hbb5/iN2C7o3yIOj2EFO+ntpAQ105ymvlqJpiqDjlRZ56LEK4y0z
+         qKdXOmXL7UUH4mn140Euj5zOmbFNC8ylXkw5QJ5hri/R2nUsgZbs+CF/XeEjJZ+G7FvB
+         3sOwb1JTOjzDEV17N1YNnT3frIYwut0ZoFTClWWiC4SQT42wMB/rAOy9Kc/R1tio4Me5
+         5IYoYdZgGk1MRmIJ9mf0pWlkDVcxiN0OKP2tPRyjvXkWtkBsG+FEGwHPGo7iG1rppntf
+         qPtJyhNIxzV/bjdai5wOFI46mEfp2Ds2qJrYEsw5vLF70fR0Ex9Ap5+eWzw4LiOvTrjh
+         eecw==
+X-Gm-Message-State: AOAM5301rgCq0Do3klQec0Wsrm4dGErgQCTXqdxkercI2M14ZIipAC3j
+	jAOK83inYicRLgEMVGhrS7bcoRzCKVE=
+X-Google-Smtp-Source: ABdhPJw772pbcXudmMNx5/i6huswQ0CX7GqwOj/Ctr+SsyuStSVE8r4VaZtG1AsFtoXzYsZQgm5D1Q==
+X-Received: by 2002:a17:907:961a:b0:6e4:a32a:f78f with SMTP id gb26-20020a170907961a00b006e4a32af78fmr8416216ejc.7.1649253283449;
+        Wed, 06 Apr 2022 06:54:43 -0700 (PDT)
+Received: from leap.localnet (host-95-249-145-232.retail.telecomitalia.it. [95.249.145.232])
+        by smtp.gmail.com with ESMTPSA id nd31-20020a170907629f00b006dff863d41asm6661111ejc.156.2022.04.06.06.54.41
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 06 Apr 2022 01:31:28 -0700 (PDT)
-From: Rebecca Mckeever <remckee0@gmail.com>
-To: outreachy@lists.linux.dev
-Cc: Larry Finger <Larry.Finger@lwfinger.net>,
-	Phillip Potter <phil@philpotter.co.uk>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	Rebecca Mckeever <remckee0@gmail.com>
-Subject: [PATCH 4/4] staging: r8188eu: use sizeof(*pvar) for allocating structs
-Date: Wed,  6 Apr 2022 03:31:00 -0500
-Message-Id: <5b526d8c178d89328de935ff4ff57651bdd8379b.1649233201.git.remckee0@gmail.com>
-X-Mailer: git-send-email 2.32.0
-In-Reply-To: <cover.1649233201.git.remckee0@gmail.com>
-References: <cover.1649233201.git.remckee0@gmail.com>
+        Wed, 06 Apr 2022 06:54:42 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: Stefano Brivio <sbrivio@redhat.com>, jhpark1013@gmail.com, Jaehee Park <jhpark1013@gmail.com>
+Cc: outreachy@lists.linux.dev
+Subject: Re: patch idea for wfx
+Date: Wed, 06 Apr 2022 15:54:35 +0200
+Message-ID: <4705777.GXAFRqVoOG@leap>
+In-Reply-To: <20220406042821.GA989392@jaehee-ThinkPad-X1-Extreme>
+References: <20220331141434.GA1104155@jaehee-ThinkPad-X1-Extreme> <20220401001216.727c2ef1@elisabeth> <20220406042821.GA989392@jaehee-ThinkPad-X1-Extreme>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
 
-Use sizeof(*pvar) instead of sizeof(struct var) when allocating memory.
-This conforms to Linux kernel coding style, improves readability,
-and decreases the opportunity for bugs if the pointer variable type is
-changed. Issue found by checkpatch messages of the following format:
+On mercoled=C3=AC 6 aprile 2022 06:28:21 CEST Jaehee Park wrote:
+> -----Section 2-----
+> Here's my diff (below). I've implemented container_of() in function wfx_a=
+dd_interface (to start).
+> - If I'm understanding this correctly, we're replacing the line
+> `struct wfx_vif *wvif =3D (struct wfx_vif *)vif->drv_priv`
+> and replacing it with
+> `struct wfx_vif *wvif =3D container_of(vif, struct ieee80211_vif, drv_pri=
+v)`
+>=20
+> This is the error message I get:
+> ./include/linux/container_of.h:17:41: error: initialization of =E2=80=98s=
+truct wfx_vif *=E2=80=99 from incompatible pointer type =E2=80=98struct iee=
+e80211_vif *=E2=80=99 [-Werror=3Dincompatible-pointer-types]
 
-CHECK: Prefer kzalloc(sizeof(*pvar)...) over kzalloc(sizeof(struct var)...)
+Hi Jaehee,
 
-Signed-off-by: Rebecca Mckeever <remckee0@gmail.com>
----
- drivers/staging/r8188eu/core/rtw_cmd.c | 68 +++++++++++++-------------
- 1 file changed, 34 insertions(+), 34 deletions(-)
+Probably, before changing any code which could be improved with the use of=
+=20
+container_of(), you'd better see how this macro is used in other code that=
+=20
+works properly.
 
-diff --git a/drivers/staging/r8188eu/core/rtw_cmd.c b/drivers/staging/r8188eu/core/rtw_cmd.c
-index f4a277e6b654..110959148648 100644
---- a/drivers/staging/r8188eu/core/rtw_cmd.c
-+++ b/drivers/staging/r8188eu/core/rtw_cmd.c
-@@ -334,11 +334,11 @@ u8 rtw_sitesurvey_cmd(struct adapter  *padapter, struct ndis_802_11_ssid *ssid,
- 	if (check_fwstate(pmlmepriv, _FW_LINKED))
- 		p2p_ps_wk_cmd(padapter, P2P_PS_SCAN, 1);
- 
--	ph2c = kzalloc(sizeof(struct cmd_obj), GFP_ATOMIC);
-+	ph2c = kzalloc(sizeof(*ph2c), GFP_ATOMIC);
- 	if (!ph2c)
- 		return _FAIL;
- 
--	psurveyPara = kzalloc(sizeof(struct sitesurvey_parm), GFP_ATOMIC);
-+	psurveyPara = kzalloc(sizeof(*psurveyPara), GFP_ATOMIC);
- 	if (!psurveyPara) {
- 		kfree(ph2c);
- 		return _FAIL;
-@@ -399,13 +399,13 @@ u8 rtw_setdatarate_cmd(struct adapter *padapter, u8 *rateset)
- 	struct cmd_priv *pcmdpriv = &padapter->cmdpriv;
- 	u8	res = _SUCCESS;
- 
--	ph2c = kzalloc(sizeof(struct cmd_obj), GFP_ATOMIC);
-+	ph2c = kzalloc(sizeof(*ph2c), GFP_ATOMIC);
- 	if (!ph2c) {
- 		res = _FAIL;
- 		goto exit;
- 	}
- 
--	pbsetdataratepara = kzalloc(sizeof(struct setdatarate_parm), GFP_ATOMIC);
-+	pbsetdataratepara = kzalloc(sizeof(*pbsetdataratepara), GFP_ATOMIC);
- 	if (!pbsetdataratepara) {
- 		kfree(ph2c);
- 		res = _FAIL;
-@@ -438,7 +438,7 @@ u8 rtw_createbss_cmd(struct adapter  *padapter)
- 
- 	rtw_led_control(padapter, LED_CTL_START_TO_LINK);
- 
--	pcmd = kzalloc(sizeof(struct cmd_obj), GFP_ATOMIC);
-+	pcmd = kzalloc(sizeof(*pcmd), GFP_ATOMIC);
- 	if (!pcmd) {
- 		res = _FAIL;
- 		goto exit;
-@@ -475,7 +475,7 @@ u8 rtw_joinbss_cmd(struct adapter  *padapter, struct wlan_network *pnetwork)
- 
- 	rtw_led_control(padapter, LED_CTL_START_TO_LINK);
- 
--	pcmd = kzalloc(sizeof(struct cmd_obj), GFP_ATOMIC);
-+	pcmd = kzalloc(sizeof(*pcmd), GFP_ATOMIC);
- 	if (!pcmd) {
- 		res = _FAIL;
- 		goto exit;
-@@ -624,12 +624,12 @@ u8 rtw_setopmode_cmd(struct adapter  *padapter, enum ndis_802_11_network_infra n
- 	struct	cmd_priv   *pcmdpriv = &padapter->cmdpriv;
- 	u8	res = _SUCCESS;
- 
--	ph2c = kzalloc(sizeof(struct cmd_obj), GFP_KERNEL);
-+	ph2c = kzalloc(sizeof(*ph2c), GFP_KERNEL);
- 	if (!ph2c) {
- 		res = false;
- 		goto exit;
- 	}
--	psetop = kzalloc(sizeof(struct setopmode_parm), GFP_KERNEL);
-+	psetop = kzalloc(sizeof(*psetop), GFP_KERNEL);
- 
- 	if (!psetop) {
- 		kfree(ph2c);
-@@ -659,20 +659,20 @@ u8 rtw_setstakey_cmd(struct adapter *padapter, u8 *psta, u8 unicast_key)
- 	struct sta_info *sta = (struct sta_info *)psta;
- 	u8	res = _SUCCESS;
- 
--	ph2c = kzalloc(sizeof(struct cmd_obj), GFP_KERNEL);
-+	ph2c = kzalloc(sizeof(*ph2c), GFP_KERNEL);
- 	if (!ph2c) {
- 		res = _FAIL;
- 		goto exit;
- 	}
- 
--	psetstakey_para = kzalloc(sizeof(struct set_stakey_parm), GFP_KERNEL);
-+	psetstakey_para = kzalloc(sizeof(*psetstakey_para), GFP_KERNEL);
- 	if (!psetstakey_para) {
- 		kfree(ph2c);
- 		res = _FAIL;
- 		goto exit;
- 	}
- 
--	psetstakey_rsp = kzalloc(sizeof(struct set_stakey_rsp), GFP_KERNEL);
-+	psetstakey_rsp = kzalloc(sizeof(*psetstakey_rsp), GFP_KERNEL);
- 	if (!psetstakey_rsp) {
- 		kfree(ph2c);
- 		kfree(psetstakey_para);
-@@ -718,13 +718,13 @@ u8 rtw_clearstakey_cmd(struct adapter *padapter, u8 *psta, u8 entry, u8 enqueue)
- 	if (!enqueue) {
- 		clear_cam_entry(padapter, entry);
- 	} else {
--		ph2c = kzalloc(sizeof(struct cmd_obj), GFP_ATOMIC);
-+		ph2c = kzalloc(sizeof(*ph2c), GFP_ATOMIC);
- 		if (!ph2c) {
- 			res = _FAIL;
- 			goto exit;
- 		}
- 
--		psetstakey_para = kzalloc(sizeof(struct set_stakey_parm),
-+		psetstakey_para = kzalloc(sizeof(*psetstakey_para),
- 					  GFP_ATOMIC);
- 		if (!psetstakey_para) {
- 			kfree(ph2c);
-@@ -732,7 +732,7 @@ u8 rtw_clearstakey_cmd(struct adapter *padapter, u8 *psta, u8 entry, u8 enqueue)
- 			goto exit;
- 		}
- 
--		psetstakey_rsp = kzalloc(sizeof(struct set_stakey_rsp),
-+		psetstakey_rsp = kzalloc(sizeof(*psetstakey_rsp),
- 					 GFP_ATOMIC);
- 		if (!psetstakey_rsp) {
- 			kfree(ph2c);
-@@ -765,13 +765,13 @@ u8 rtw_addbareq_cmd(struct adapter *padapter, u8 tid, u8 *addr)
- 	struct addBaReq_parm *paddbareq_parm;
- 	u8	res = _SUCCESS;
- 
--	ph2c = kzalloc(sizeof(struct cmd_obj), GFP_ATOMIC);
-+	ph2c = kzalloc(sizeof(*ph2c), GFP_ATOMIC);
- 	if (!ph2c) {
- 		res = _FAIL;
- 		goto exit;
- 	}
- 
--	paddbareq_parm = kzalloc(sizeof(struct addBaReq_parm), GFP_ATOMIC);
-+	paddbareq_parm = kzalloc(sizeof(*paddbareq_parm), GFP_ATOMIC);
- 	if (!paddbareq_parm) {
- 		kfree(ph2c);
- 		res = _FAIL;
-@@ -798,13 +798,13 @@ u8 rtw_dynamic_chk_wk_cmd(struct adapter *padapter)
- 	struct cmd_priv	*pcmdpriv = &padapter->cmdpriv;
- 	u8	res = _SUCCESS;
- 
--	ph2c = kzalloc(sizeof(struct cmd_obj), GFP_ATOMIC);
-+	ph2c = kzalloc(sizeof(*ph2c), GFP_ATOMIC);
- 	if (!ph2c) {
- 		res = _FAIL;
- 		goto exit;
- 	}
- 
--	pdrvextra_cmd_parm = kzalloc(sizeof(struct drvextra_cmd_parm), GFP_ATOMIC);
-+	pdrvextra_cmd_parm = kzalloc(sizeof(*pdrvextra_cmd_parm), GFP_ATOMIC);
- 	if (!pdrvextra_cmd_parm) {
- 		kfree(ph2c);
- 		res = _FAIL;
-@@ -839,7 +839,7 @@ u8 rtw_set_chplan_cmd(struct adapter *padapter, u8 chplan)
- 	}
- 
- 	/* prepare cmd parameter */
--	setChannelPlan_param = kzalloc(sizeof(struct SetChannelPlan_param),
-+	setChannelPlan_param = kzalloc(sizeof(*setChannelPlan_param),
- 				       GFP_KERNEL);
- 	if (!setChannelPlan_param) {
- 		res = _FAIL;
-@@ -848,7 +848,7 @@ u8 rtw_set_chplan_cmd(struct adapter *padapter, u8 chplan)
- 	setChannelPlan_param->channel_plan = chplan;
- 
- 	/* need enqueue, prepare cmd_obj and enqueue */
--	pcmdobj = kzalloc(sizeof(struct	cmd_obj), GFP_KERNEL);
-+	pcmdobj = kzalloc(sizeof(*pcmdobj), GFP_KERNEL);
- 	if (!pcmdobj) {
- 		kfree(setChannelPlan_param);
- 		res = _FAIL;
-@@ -1010,13 +1010,13 @@ u8 rtw_lps_ctrl_wk_cmd(struct adapter *padapter, u8 lps_ctrl_type, u8 enqueue)
- 	/*	return res; */
- 
- 	if (enqueue) {
--		ph2c = kzalloc(sizeof(struct cmd_obj), GFP_ATOMIC);
-+		ph2c = kzalloc(sizeof(*ph2c), GFP_ATOMIC);
- 		if (!ph2c) {
- 			res = _FAIL;
- 			goto exit;
- 		}
- 
--		pdrvextra_cmd_parm = kzalloc(sizeof(struct drvextra_cmd_parm),
-+		pdrvextra_cmd_parm = kzalloc(sizeof(*pdrvextra_cmd_parm),
- 					     GFP_ATOMIC);
- 		if (!pdrvextra_cmd_parm) {
- 			kfree(ph2c);
-@@ -1056,13 +1056,13 @@ u8 rtw_rpt_timer_cfg_cmd(struct adapter *padapter, u16 min_time)
- 
- 	u8	res = _SUCCESS;
- 
--	ph2c = kzalloc(sizeof(struct cmd_obj), GFP_ATOMIC);
-+	ph2c = kzalloc(sizeof(*ph2c), GFP_ATOMIC);
- 	if (!ph2c) {
- 		res = _FAIL;
- 		goto exit;
- 	}
- 
--	pdrvextra_cmd_parm = kzalloc(sizeof(struct drvextra_cmd_parm),
-+	pdrvextra_cmd_parm = kzalloc(sizeof(*pdrvextra_cmd_parm),
- 				     GFP_ATOMIC);
- 	if (!pdrvextra_cmd_parm) {
- 		kfree(ph2c);
-@@ -1109,13 +1109,13 @@ u8 rtw_antenna_select_cmd(struct adapter *padapter, u8 antenna, u8 enqueue)
- 		return res;
- 
- 	if (enqueue) {
--		ph2c = kzalloc(sizeof(struct cmd_obj), GFP_KERNEL);
-+		ph2c = kzalloc(sizeof(*ph2c), GFP_KERNEL);
- 		if (!ph2c) {
- 			res = _FAIL;
- 			goto exit;
- 		}
- 
--		pdrvextra_cmd_parm = kzalloc(sizeof(struct drvextra_cmd_parm),
-+		pdrvextra_cmd_parm = kzalloc(sizeof(*pdrvextra_cmd_parm),
- 					     GFP_KERNEL);
- 		if (!pdrvextra_cmd_parm) {
- 			kfree(ph2c);
-@@ -1148,13 +1148,13 @@ u8 p2p_protocol_wk_cmd(struct adapter *padapter, int intCmdType)
- 	if (rtw_p2p_chk_state(pwdinfo, P2P_STATE_NONE))
- 		return res;
- 
--	ph2c = kzalloc(sizeof(struct cmd_obj), GFP_ATOMIC);
-+	ph2c = kzalloc(sizeof(*ph2c), GFP_ATOMIC);
- 	if (!ph2c) {
- 		res = _FAIL;
- 		goto exit;
- 	}
- 
--	pdrvextra_cmd_parm = kzalloc(sizeof(struct drvextra_cmd_parm), GFP_ATOMIC);
-+	pdrvextra_cmd_parm = kzalloc(sizeof(*pdrvextra_cmd_parm), GFP_ATOMIC);
- 	if (!pdrvextra_cmd_parm) {
- 		kfree(ph2c);
- 		res = _FAIL;
-@@ -1182,13 +1182,13 @@ u8 rtw_ps_cmd(struct adapter *padapter)
- 
- 	u8	res = _SUCCESS;
- 
--	ppscmd = kzalloc(sizeof(struct cmd_obj), GFP_ATOMIC);
-+	ppscmd = kzalloc(sizeof(*ppscmd), GFP_ATOMIC);
- 	if (!ppscmd) {
- 		res = _FAIL;
- 		goto exit;
- 	}
- 
--	pdrvextra_cmd_parm = kzalloc(sizeof(struct drvextra_cmd_parm), GFP_ATOMIC);
-+	pdrvextra_cmd_parm = kzalloc(sizeof(*pdrvextra_cmd_parm), GFP_ATOMIC);
- 	if (!pdrvextra_cmd_parm) {
- 		kfree(ppscmd);
- 		res = _FAIL;
-@@ -1253,13 +1253,13 @@ u8 rtw_chk_hi_queue_cmd(struct adapter *padapter)
- 	struct cmd_priv	*pcmdpriv = &padapter->cmdpriv;
- 	u8	res = _SUCCESS;
- 
--	ph2c = kzalloc(sizeof(struct cmd_obj), GFP_ATOMIC);
-+	ph2c = kzalloc(sizeof(*ph2c), GFP_ATOMIC);
- 	if (!ph2c) {
- 		res = _FAIL;
- 		goto exit;
- 	}
- 
--	pdrvextra_cmd_parm = kzalloc(sizeof(struct drvextra_cmd_parm), GFP_ATOMIC);
-+	pdrvextra_cmd_parm = kzalloc(sizeof(*pdrvextra_cmd_parm), GFP_ATOMIC);
- 	if (!pdrvextra_cmd_parm) {
- 		kfree(ph2c);
- 		res = _FAIL;
-@@ -1284,13 +1284,13 @@ u8 rtw_c2h_wk_cmd(struct adapter *padapter, u8 *c2h_evt)
- 	struct cmd_priv	*pcmdpriv = &padapter->cmdpriv;
- 	u8	res = _SUCCESS;
- 
--	ph2c = kzalloc(sizeof(struct cmd_obj), GFP_ATOMIC);
-+	ph2c = kzalloc(sizeof(*ph2c), GFP_ATOMIC);
- 	if (!ph2c) {
- 		res = _FAIL;
- 		goto exit;
- 	}
- 
--	pdrvextra_cmd_parm = kzalloc(sizeof(struct drvextra_cmd_parm), GFP_ATOMIC);
-+	pdrvextra_cmd_parm = kzalloc(sizeof(*pdrvextra_cmd_parm), GFP_ATOMIC);
- 	if (!pdrvextra_cmd_parm) {
- 		kfree(ph2c);
- 		res = _FAIL;
--- 
-2.32.0
+Look at the following example. In drivers/dma/tegra20-apb-dma.c, we can loo=
+k=20
+at a one line function called "to_tegra_dma_chan()":
+
+static inline struct tegra_dma_channel *to_tegra_dma_chan(struct dma_chan *=
+dc)
+{
+        return container_of(dc, struct tegra_dma_channel, dma_chan);
+}
+
+"to_tegra_dma_chan()" takes a pointer to a "struct dma_chan" that is called=
+=20
+"dc" and it returns a pointer to the "struct tegra_dma_channel" which embed=
+s=20
+the above-mentioned "struct dma_chan".=20
+
+Please take a look at the definition of "struct tegra_dma_channel". You'll=
+=20
+notice that it has a field of type "dma_chan" that is called "dma_chan"=20
+(coincidentally the names of field and type are the same; this could confus=
+e=20
+you but you easily see that they are different entities):
+
+struct tegra_dma_channel {
+        struct dma_chan dma_chan;
+        ...
+}
+
+How can "to_tegra_dma_chan()" return a pointer to the embedding "struct=20
+tegra_dma_channel"?
+
+It uses cointainer_of(). The first argument of that macro is the pointer=20
+passed to the function ("struct dma_chan *dc"). The second argument is=20
+the embedding "struct tegra_dma_channel". The third is the name of the=20
+field (not the type) pointed by "dc".
+
+I hope it helps.
+
+=46abio
+
 
