@@ -1,166 +1,96 @@
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-wr1-f52.google.com (mail-wr1-f52.google.com [209.85.221.52])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 454F133E0
-	for <outreachy@lists.linux.dev>; Wed,  6 Apr 2022 15:41:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1649259699;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=/LcWgRErzi2SZmXuRzwXxyEMQ+ytoXbl2bbg3lYk+I8=;
-	b=XNA9cDUr8uUExnQ+OUhTty+hQdaGJbPy2XFhFYmsAPliEJgFoYsSyjMQxzop5ESF4YGvPJ
-	8b2r9q6MfxNOflGTAuh1s9NRe/oSWh1dOtyfCWlZG1WxZRhdn0Hvypur1VOR2/8ZSylIXk
-	3rndjI2f7uBnGPway+lKndey9yu+Ezg=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-553-RddtqI3lMha4wEE-0pbmMA-1; Wed, 06 Apr 2022 11:41:38 -0400
-X-MC-Unique: RddtqI3lMha4wEE-0pbmMA-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com [10.11.54.8])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A4D66811E83;
-	Wed,  6 Apr 2022 15:41:37 +0000 (UTC)
-Received: from maya.cloud.tilaa.com (unknown [10.40.208.6])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 4C768C54180;
-	Wed,  6 Apr 2022 15:41:37 +0000 (UTC)
-Date: Wed, 6 Apr 2022 17:41:10 +0200
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Jaehee Park <jhpark1013@gmail.com>
-Cc: outreachy@lists.linux.dev
-Subject: Re: patch idea for wfx
-Message-ID: <20220406174110.57504b92@elisabeth>
-In-Reply-To: <20220406042821.GA989392@jaehee-ThinkPad-X1-Extreme>
-References: <20220331141434.GA1104155@jaehee-ThinkPad-X1-Extreme>
-	<20220331195212.7e25d12a@elisabeth>
-	<20220331214733.GA1508153@jaehee-ThinkPad-X1-Extreme>
-	<20220401001216.727c2ef1@elisabeth>
-	<20220406042821.GA989392@jaehee-ThinkPad-X1-Extreme>
-Organization: Red Hat
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1AB8C33E0;
+	Wed,  6 Apr 2022 15:49:27 +0000 (UTC)
+Received: by mail-wr1-f52.google.com with SMTP id q19so3876096wrc.6;
+        Wed, 06 Apr 2022 08:49:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=pJRePmaoHF8y9FcZ88YD095N9pjI+K9p1C7d1voMNQA=;
+        b=UFnMBRRFAUq1tdwAQKRJaM+eU87Z4OIegSIOZnkvB4DjllOHIR5VnrGYdqcX+pR1ZK
+         dp3gLQR390O9+4ea1Ze/CqHSjkSnroqWL1B+k4eAapO/p9o82Elcy0deHnBT+Xh53pYG
+         4RZ0yRGwAhCiii5qMrpf1hy9zws2ct/H5Z8XIGx5C5DrH+9PTeA0lFG9ji8CQjbjKdBx
+         vJDc6d9MsfKeyq8ZNUkrWgk54MEkKLMEnIG/2UI1q87zK8jKM7ilkAvAioRTqaNTMaG2
+         Vvc2QDm94TLnmOfxnQGOn6m6LPY2qsKnLxAnrZD/kMHD530f0qwwR54v7HvBDePEQRVn
+         xcBw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=pJRePmaoHF8y9FcZ88YD095N9pjI+K9p1C7d1voMNQA=;
+        b=srgxMuTjDEErhezobFGsYcmGB6yOfSoA6oA5l0AXwOl7VCUMBAVUT6VQOPs5kQabeK
+         HnQxL8vd1HZKn4slMzKCDyvG+H9gKVh8zj6GsdoINRnWgZyp5sMMaMIAKo9TsioowlK0
+         W1uzl1sZeeqVcII4RNQ+Q1GWgWXQQkD2PDgAccWXKYx5MivfhhxiXY9inn9u2dkm8pvK
+         g7UAvDGuKhVSnqZd//M1/pq42J62/H9gHpVjswAWoo5acBUBK13EITHe2kdVWIEez0wy
+         P78f1eI99cDErUSaz/pY93cxXp96pUqtJRqsU4t0RYWTIg2ZVOwVlk1UYmSY7XnzM1yH
+         ZVpg==
+X-Gm-Message-State: AOAM532BLyR1Ax7xbl8A5nEjbi80cy3fGIBsM4CSpkEVisIFpyXrw37d
+	r7FfE/Xffr5lWgx21HIvhiE=
+X-Google-Smtp-Source: ABdhPJzQm9bjq8yLnVVnEajucrpLRFaujEv+Fn79oRJYooXadcAXYaqU3o9yLXxhp4haoMeNnzBtsg==
+X-Received: by 2002:adf:ce06:0:b0:206:fd5:6644 with SMTP id p6-20020adfce06000000b002060fd56644mr7434505wrn.624.1649260165196;
+        Wed, 06 Apr 2022 08:49:25 -0700 (PDT)
+Received: from alaa-emad ([197.57.159.73])
+        by smtp.gmail.com with ESMTPSA id m20-20020a05600c4f5400b0038b5162260csm7577725wmq.23.2022.04.06.08.49.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 06 Apr 2022 08:49:24 -0700 (PDT)
+From: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+To: outreachy@lists.linux.dev
+Cc: gregkh@linuxfoundation.org,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	eng.alaamohamedsoliman.am@gmail.com
+Subject: [PATCH] staging: rtl8192e: remove multiple blank lines
+Date: Wed,  6 Apr 2022 17:49:21 +0200
+Message-Id: <20220406154921.15532-1-eng.alaamohamedsoliman.am@gmail.com>
+X-Mailer: git-send-email 2.35.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.8
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=sbrivio@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 
-Hi Jaehee,
+Reported by checkpatch:
 
-On Wed, 6 Apr 2022 00:28:21 -0400
-Jaehee Park <jhpark1013@gmail.com> wrote:
+CHECK: Please don't use multiple blank lines
 
-> [...]
->
-> Sorry about the late reply! It's taking me a while to wrap my head around=
- this! I think I'm slowly getting it, but I have a few questions. This emai=
-l is long so here's an outline to make it a bit more readable:
-> Section 1: my current understanding (reiteration of what you had already =
-explained)
-> Section 2: my implementation of container_of() and the error message
-> Section 3: my confusion about the different types (struct wfx_vif vs u8 d=
-rv_priv[])
->=20
-> -----Section 1-----
-> - We're implementing container_of() to get vif. we are doing so with cont=
-ainer_of() which does two things: [1] it speeds up compilation because the =
-container_of() saves steps that the cpu would have to take to retrieve data=
-, [2] we don't have to define multipe pointers by setting it in code:
->     - the code before: got a pointer to the drv_priv, then point back to =
-the generic interface data (wvif->vif =3D vif;). So, another pointer is def=
-ind by the vif in struct wfx_vif to point to the struct ieee80211_vif inter=
-face.
->     - after implementing container_of: we don't have to define another po=
-inter. the compiler already has the pointer to the struct ieee80211_vif via=
- offset of drv_priv! So all it needs to do is subtract the offset and you h=
-ave the pointer.
+Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+---
+ drivers/staging/rtl8192e/rtl819x_BAProc.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
-This looks correct to me.
-
-> -----Section 2-----
-> Here's my diff (below). I've implemented container_of() in function wfx_a=
-dd_interface (to start).
-> - If I'm understanding this correctly, we're replacing the line
-> `struct wfx_vif *wvif =3D (struct wfx_vif *)vif->drv_priv`
-> and replacing it with
-> `struct wfx_vif *wvif =3D container_of(vif, struct ieee80211_vif, drv_pri=
-v)`
-
-Not really: wvif (the driver-specific structure) is included in vif
-(the generic structure), not the other way around. This:
-
-=09struct wfx_vif *wvif =3D (struct wfx_vif *)vif->drv_priv;
-
-should stay as it is -- you don't have another way to fetch wvif.
-
-> This is the error message I get:
-> ./include/linux/container_of.h:17:41: error: initialization of =E2=80=98s=
-truct wfx_vif *=E2=80=99 from incompatible pointer type =E2=80=98struct iee=
-e80211_vif *=E2=80=99 [-Werror=3Dincompatible-pointer-types]
-
-Right, because you're getting a pointer to struct ieee80211_vif,
-correctly, but for the wrong purpose. It's fetching "vif" that you want
-to simplify, not fetching "wvif".
-
-> -----Section 3-----
-> So there is an incompatible pointer type error. I think to solve this err=
-or, I need to clarify this line:
-> struct wfx_vif *wvif =3D (struct wfx_vif *)vif->drv_priv; link below
-> Can you help me understand this line of code again?
-> https://github.com/SiliconLabs/wfx-linux-driver/blob/63952592e64d2ca5b461=
-3ab5559ba40b73ef47e8/sta.c#L724
->=20
-> **Question: Are they punning raw bytes from drv_priv into the struct wfx_=
-vif?**
-
-Yes.
-
-> So there's already data in the drv_priv, and this line of code is taking =
-those raw bytes (u8 drv_priv[]) into the wfx_vif struct?
-
-Yes. It's not really "taking" anything, it's just a reference
-assignment.
-
-> This is a very new concept to me and I wanted to ask if this is a correct=
- thought:
->=20
-> - drv_priv: the bytes are in u8 array so whatever is in this array will b=
-e ordered in contiguous memory (https://elixir.bootlin.com/linux/latest/sou=
-rce/include/net/mac80211.h#L1756) where the __aligned is a compiler builtin=
- that guarantees alignment.
-
-Alignment doesn't specifically matter here, but yes, that's correct.
-
-> - (struct wfx_vif *): The pointer seems to be of unsigned bytes (https://=
-github.com/SiliconLabs/wfx-linux-driver/blob/63952592e64d2ca5b4613ab5559ba4=
-0b73ef47e8/wfx.h#L115)
-
-...what do you mean exactly?
-
-> - They are taking those raw bytes into the struct. (or the other way arou=
-nd?)
-
-Nothing is copied, they're taking a reference to this data.
-
-> So maybe the solution would be to set the container_of() to struct ieee80=
-211_vif to match the pointer type. And then afterwards pack that into struc=
-t wfx_vif?=20
-
-Not really, you just need to turn things around. :)
-
-> Let me know if my question doesn't make sense and I'm happy to get on a c=
-hat/call if it makes it easier.
-
-Does IRC work for you now?
-
---=20
-Stefano
+diff --git a/drivers/staging/rtl8192e/rtl819x_BAProc.c b/drivers/staging/rtl8192e/rtl819x_BAProc.c
+index 97afea4c3511..b0b1c839e770 100644
+--- a/drivers/staging/rtl8192e/rtl819x_BAProc.c
++++ b/drivers/staging/rtl8192e/rtl819x_BAProc.c
+@@ -343,7 +343,6 @@ int rtllib_rx_ADDBARsp(struct rtllib_device *ieee, struct sk_buff *skb)
+ 		goto OnADDBARsp_Reject;
+ 	}
+ 
+-
+ 	if (!GetTs(ieee, (struct ts_common_info **)(&pTS), dst,
+ 		   (u8)(pBaParamSet->field.tid), TX_DIR, false)) {
+ 		netdev_warn(ieee->dev, "%s(): can't get TS\n", __func__);
+@@ -355,7 +354,6 @@ int rtllib_rx_ADDBARsp(struct rtllib_device *ieee, struct sk_buff *skb)
+ 	pPendingBA = &pTS->TxPendingBARecord;
+ 	pAdmittedBA = &pTS->TxAdmittedBARecord;
+ 
+-
+ 	if (pAdmittedBA->b_valid) {
+ 		netdev_dbg(ieee->dev, "%s(): ADDBA response already admitted\n",
+ 			   __func__);
+@@ -374,7 +372,6 @@ int rtllib_rx_ADDBARsp(struct rtllib_device *ieee, struct sk_buff *skb)
+ 		DeActivateBAEntry(ieee, pPendingBA);
+ 	}
+ 
+-
+ 	if (*pStatusCode == ADDBA_STATUS_SUCCESS) {
+ 		if (pBaParamSet->field.ba_policy == BA_POLICY_DELAYED) {
+ 			pTS->bAddBaReqDelayed = true;
+-- 
+2.35.1
 
