@@ -1,165 +1,104 @@
-Received: from mail-wr1-f43.google.com (mail-wr1-f43.google.com [209.85.221.43])
+Received: from mail-lf1-f45.google.com (mail-lf1-f45.google.com [209.85.167.45])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 552922564;
-	Thu,  7 Apr 2022 12:59:55 +0000 (UTC)
-Received: by mail-wr1-f43.google.com with SMTP id u3so7762521wrg.3;
-        Thu, 07 Apr 2022 05:59:55 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BCA3B257C
+	for <outreachy@lists.linux.dev>; Thu,  7 Apr 2022 16:17:48 +0000 (UTC)
+Received: by mail-lf1-f45.google.com with SMTP id i38so2221713lfv.3
+        for <outreachy@lists.linux.dev>; Thu, 07 Apr 2022 09:17:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=kVP0DeosChaP4vnFzIKGWwoOlpAbwuSOyH45+/mZoL0=;
-        b=EKN2hIRsBqehxl1LPwDXn+MG5SyKoqhVpkpyr2FlER8hbxE9Ay7WNPPw4ChApC65YQ
-         J30V9zKdRjJj8mCycqBYe6r/yZbYQ0Syua9qMK/XX+36rrCYQsATeqXHCoUQ9wc9vX4Q
-         FSlomHsQTEMFxVm7f4qT2/pO9mm/xpdt0tgcZlCsItIrg93Wb/3T2aD77sBXVXPboyt3
-         LXBikbAHA50KRnYq74MsZDjdGerLMWIh4JIhh2PbGZJJDz/TUc1izmizbOFwGvt7GfZ1
-         smc9IZOkpFiM1D4yqyI865GU7OL7PJcOQzjADzTNCkCAPlwgZwdDXZ0OpgG9OVqBzL4i
-         BO7A==
+        d=cs-iitr-ac-in.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=wjO0bs1qvXp5AP5h5pS2WCcaezCLjsHDm5T0Nl0HxQY=;
+        b=ghBT/e4ySWCB0ovgQR8E03ayNEJigtDReWTbUsMXn/TLVJWCV9WApQT02QFREECsyD
+         s/HktNUEtI3RVxP2V2zPzpA5moJaxOJYdhwcM7+KdzPzGXRJhk/jaH1psFS7Y++lFj2n
+         VVLnIUvxVmBFmfkBh0ERTAQ2VFtTinCjFJSmxNaZN92z0Yx0bDvI3lu4XCWsTN8Q5DGO
+         Y98s6aH+yyFnKYK5Kuk/M3ahk2/wdpPU1Z+/97AmhOKLPExaC8reR6gYRtH5dh3tRhYy
+         T/hUP867TYL3Q2ER8ffKJcjtCV7SbOCLCLyquwEMJkRIqAeP/wiq4AG1OlG7vN0dZvI7
+         WIxA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=kVP0DeosChaP4vnFzIKGWwoOlpAbwuSOyH45+/mZoL0=;
-        b=gTiD932kqL/gdaZziMId6ai7RCsw3NzQFFqOMBIzAdp8tXPveSBWzYQ9wlfEABFYly
-         VV/26tDtP/OJvpEOSbF4przmFEVVEolHV/bKCEJJiQuF3yiAP+UirW0kLELKz01tSBj5
-         9j+Yx1ezhvN0TyNv34S3WZlfgGWrfcSLGAihtqewZns1ZhQiu/zCA7Uy9yk+QfkR3zZI
-         cQi3PWVP8QmFrXAy8nYAtwpXDTFSLVXws0R5BmfBeD7xC1I0OyvCoAiGEbrvbTO/5uZl
-         l9iSGuXUL4rraZyBUg3Wvwzg9Gx7RTmfGDN+N86hfcHBusFTcfBOg2X+6cI6NzL72C8b
-         qXOQ==
-X-Gm-Message-State: AOAM533r5ISjcLqMg49TjarSIomyKvob6WX1uMHLLkz4RD4EQnakqwC3
-	iVE1KwUtdbwN/9kBwDkXaz6ARG8UCsY=
-X-Google-Smtp-Source: ABdhPJxshfU1NOlOOLmqcrimT11cLGwoDeMBpIbUyzbLG9YPscs+Pk4CihETUqSB0wB9UMgpKC6DVg==
-X-Received: by 2002:adf:ee08:0:b0:206:1b1e:bc20 with SMTP id y8-20020adfee08000000b002061b1ebc20mr10973407wrn.541.1649336393481;
-        Thu, 07 Apr 2022 05:59:53 -0700 (PDT)
-Received: from alaa-emad ([197.57.231.245])
-        by smtp.gmail.com with ESMTPSA id l20-20020a05600c1d1400b0038cba2f88c0sm10704711wms.26.2022.04.07.05.59.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 07 Apr 2022 05:59:52 -0700 (PDT)
-From: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-To: outreachy@lists.linux.dev
-Cc: Larry.Finger@lwfinger.net,
-	florian.c.schilhabel@googlemail.com,
-	gregkh@linuxfoundation.org,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	eng.alaamohamedsoliman.am@gmail.com
-Subject: [PATCH v4] staging: rtl8712: remove unnecessary parentheses
-Date: Thu,  7 Apr 2022 14:59:47 +0200
-Message-Id: <20220407125947.8525-1-eng.alaamohamedsoliman.am@gmail.com>
-X-Mailer: git-send-email 2.35.1
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=wjO0bs1qvXp5AP5h5pS2WCcaezCLjsHDm5T0Nl0HxQY=;
+        b=kuxWh4qO0DmhAOSu6YLUGyt9WTyuXx1/DmWf/vFjXUs+pxZiR6GiPZzITgZhCILkM1
+         Hgob8UrW+++3cjhX5wbvXI0T403nDuX9+9S1IK5rAEpOn4kH4+a1wTyCq33QgL0c9r+G
+         5bYzD5XPjWd2+GFcGPvxRPOSNJvKwIo7wVdVuYEgNEF/1tuPQUC+quimvExMofiUOVCS
+         EdgyE9YJfWPv8yMlyN1wz2u4afmIncqCwgu/9eubuNIircHVHluwOq6zo8EbiBKmqioi
+         AxmCikalglldbbda0dFL1rR8baWvTpIQLhyE2tnuzgGZs5xoTlQWhE7lnaBCIFONU7L1
+         RSxA==
+X-Gm-Message-State: AOAM530EY1WTdlpJSbm9KPB673wiVT4V3jmVvD/wAgbNGfqcrShw6TMY
+	MpuOmlGNxDH03Iepq9LRXHuFjvWBzWPBuzMsYAOwMg==
+X-Google-Smtp-Source: ABdhPJx1AntGzS/rBalHe6cpDFXldbK0o8QTe7Iu4ifkfngxq4NABQay5eYCVKcNzCDUc0j4GKW3Mg4laLmQa6ViisA=
+X-Received: by 2002:a05:6512:3c6:b0:44a:b66d:6d04 with SMTP id
+ w6-20020a05651203c600b0044ab66d6d04mr10174664lfp.428.1649348265832; Thu, 07
+ Apr 2022 09:17:45 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20220407120945.31030-1-mahak_g@cs.iitr.ac.in> <alpine.DEB.2.22.394.2204071414080.2213@hadrien>
+In-Reply-To: <alpine.DEB.2.22.394.2204071414080.2213@hadrien>
+From: MAHAK GUPTA <mahak_g@cs.iitr.ac.in>
+Date: Thu, 7 Apr 2022 21:47:09 +0530
+Message-ID: <CANnaPbD7C8kvz-fK4js=zprck58=Yxp8h+wBLmXfQNKsHMDytw@mail.gmail.com>
+Subject: Re: [PATCH] staging: rtl8712: fix camel case in function r8712_generate_ie
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: Larry.Finger@lwfinger.net, florian.c.schilhabel@googlemail.com, 
+	gregkh@linuxfoundation.org, linux-staging@lists.linux.dev, 
+	linux-kernel@vger.kernel.org, outreachy@lists.linux.dev
+Content-Type: text/plain; charset="UTF-8"
 
-Reported by checkpatch:
+On Thu, Apr 7, 2022 at 5:44 PM Julia Lawall <julia.lawall@inria.fr> wrote:
+>
+>
+>
+> On Thu, 7 Apr 2022, Mahak Gupta wrote:
+>
+> > Adhere to linux kernel coding style.
+> >
+> > Reported by checkpatch:
+> >
+> > CHECK: Avoid CamelCase: <beaconPeriod>
+>
+> As another patch, you could also adjust the structure field name.
+>
+> julia
+>
+> >
+> > Signed-off-by: Mahak Gupta <mahak_g@cs.iitr.ac.in>
+> > ---
+> >  drivers/staging/rtl8712/ieee80211.c | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/drivers/staging/rtl8712/ieee80211.c b/drivers/staging/rtl8712/ieee80211.c
+> > index f926809b1021..7d8f1a29d18a 100644
+> > --- a/drivers/staging/rtl8712/ieee80211.c
+> > +++ b/drivers/staging/rtl8712/ieee80211.c
+> > @@ -162,13 +162,13 @@ int r8712_generate_ie(struct registry_priv *registrypriv)
+> >       uint sz = 0;
+> >       struct wlan_bssid_ex *dev_network = &registrypriv->dev_network;
+> >       u8 *ie = dev_network->IEs;
+> > -     u16 beaconPeriod = (u16)dev_network->Configuration.BeaconPeriod;
+> > +     u16 beacon_period = (u16)dev_network->Configuration.BeaconPeriod;
+> >
+> >       /*timestamp will be inserted by hardware*/
+> >       sz += 8;
+> >       ie += sz;
+> >       /*beacon interval : 2bytes*/
+> > -     *(__le16 *)ie = cpu_to_le16(beaconPeriod);
+> > +     *(__le16 *)ie = cpu_to_le16(beacon_period);
+> >       sz += 2;
+> >       ie += 2;
+> >       /*capability info*/
+> > --
+> > 2.17.1
+> >
+> >
+> >
 
-Remove unnecessary parentheses around structure field references
+Sure, on it. Thanks.
 
-Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
----
-Changes in v2:
-	- Edit commit subject
-	- Edit commit message
-	- Fix the same check in more lines
-	- Remove space before '.skey' in
-"memcpy(psta->tkiptxmickey.skey," in lines 84 and 86.
----
-Changes in v3:
-	return the space before '.skey' in
-"memcpy(psta->tkiptxmickey.skey," in lines 84 and 86
----
-Changes in v4:
-	edit commit message to be clearer.
----
- drivers/staging/rtl8712/rtl871x_ioctl_linux.c | 20 +++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
-
-diff --git a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-index 3b6926613257..f1e352b7f83e 100644
---- a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-+++ b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
-@@ -82,9 +82,9 @@ static inline void handle_pairwise_key(struct sta_info *psta,
- 	       (param->u.crypt. key_len > 16 ? 16 : param->u.crypt.key_len));
- 	if (strcmp(param->u.crypt.alg, "TKIP") == 0) { /* set mic key */
- 		memcpy(psta->tkiptxmickey. skey,
--		       &(param->u.crypt.key[16]), 8);
-+		       &param->u.crypt.key[16], 8);
- 		memcpy(psta->tkiprxmickey. skey,
--		       &(param->u.crypt.key[24]), 8);
-+		       &param->u.crypt.key[24], 8);
- 		padapter->securitypriv. busetkipkey = false;
- 		mod_timer(&padapter->securitypriv.tkip_timer,
- 			  jiffies + msecs_to_jiffies(50));
-@@ -600,7 +600,7 @@ static int r8711_wx_get_name(struct net_device *dev,
- 	u32 ht_ielen = 0;
- 	char *p;
- 	u8 ht_cap = false;
--	struct	mlme_priv	*pmlmepriv = &(padapter->mlmepriv);
-+	struct	mlme_priv	*pmlmepriv = &padapter->mlmepriv;
- 	struct wlan_bssid_ex *pcur_bss = &pmlmepriv->cur_network.network;
- 	u8 *prates;
- 
-@@ -1494,7 +1494,7 @@ static int r8711_wx_set_enc(struct net_device *dev,
- 	u32 keyindex_provided;
- 	struct NDIS_802_11_WEP	 wep;
- 	enum NDIS_802_11_AUTHENTICATION_MODE authmode;
--	struct iw_point *erq = &(wrqu->encoding);
-+	struct iw_point *erq = &wrqu->encoding;
- 	struct _adapter *padapter = netdev_priv(dev);
- 
- 	key = erq->flags & IW_ENCODE_INDEX;
-@@ -1589,8 +1589,8 @@ static int r8711_wx_get_enc(struct net_device *dev,
- {
- 	uint key;
- 	struct _adapter *padapter = netdev_priv(dev);
--	struct iw_point *erq = &(wrqu->encoding);
--	struct	mlme_priv	*pmlmepriv = &(padapter->mlmepriv);
-+	struct iw_point *erq = &wrqu->encoding;
-+	struct	mlme_priv	*pmlmepriv = &padapter->mlmepriv;
- 	union Keytype *dk = padapter->securitypriv.DefKey;
- 
- 	if (!check_fwstate(pmlmepriv, _FW_LINKED)) {
-@@ -1670,7 +1670,7 @@ static int r871x_wx_set_auth(struct net_device *dev,
- 				union iwreq_data *wrqu, char *extra)
- {
- 	struct _adapter *padapter = netdev_priv(dev);
--	struct iw_param *param = (struct iw_param *)&(wrqu->param);
-+	struct iw_param *param = (struct iw_param *)&wrqu->param;
- 	int paramid;
- 	int paramval;
- 	int ret = 0;
-@@ -1964,7 +1964,7 @@ static int r871x_get_ap_info(struct net_device *dev,
- 		return -EINVAL;
- 	data[32] = 0;
- 
--	spin_lock_irqsave(&(pmlmepriv->scanned_queue.lock), irqL);
-+	spin_lock_irqsave(&pmlmepriv->scanned_queue.lock, irqL);
- 	phead = &queue->queue;
- 	plist = phead->next;
- 	while (1) {
-@@ -1974,7 +1974,7 @@ static int r871x_get_ap_info(struct net_device *dev,
- 		if (!mac_pton(data, bssid)) {
- 			netdev_info(dev, "r8712u: Invalid BSSID '%s'.\n",
- 				    (u8 *)data);
--			spin_unlock_irqrestore(&(pmlmepriv->scanned_queue.lock),
-+			spin_unlock_irqrestore(&pmlmepriv->scanned_queue.lock,
- 					       irqL);
- 			return -EINVAL;
- 		}
-@@ -1996,7 +1996,7 @@ static int r871x_get_ap_info(struct net_device *dev,
- 		}
- 		plist = plist->next;
- 	}
--	spin_unlock_irqrestore(&(pmlmepriv->scanned_queue.lock), irqL);
-+	spin_unlock_irqrestore(&pmlmepriv->scanned_queue.lock, irqL);
- 	if (pdata->length >= 34) {
- 		if (copy_to_user((u8 __user *)pdata->pointer + 32,
- 		    (u8 *)&pdata->flags, 1))
--- 
-2.35.1
-
+Mahak
