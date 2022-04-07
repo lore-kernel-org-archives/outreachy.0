@@ -1,41 +1,41 @@
-Received: from mail-wr1-f52.google.com (mail-wr1-f52.google.com [209.85.221.52])
+Received: from mail-wr1-f43.google.com (mail-wr1-f43.google.com [209.85.221.43])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 010022564;
-	Thu,  7 Apr 2022 12:48:32 +0000 (UTC)
-Received: by mail-wr1-f52.google.com with SMTP id j12so7702696wrb.5;
-        Thu, 07 Apr 2022 05:48:32 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 552922564;
+	Thu,  7 Apr 2022 12:59:55 +0000 (UTC)
+Received: by mail-wr1-f43.google.com with SMTP id u3so7762521wrg.3;
+        Thu, 07 Apr 2022 05:59:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
         bh=kVP0DeosChaP4vnFzIKGWwoOlpAbwuSOyH45+/mZoL0=;
-        b=WJ+kAroNj7E7A5y908A71aFJJj+nAvEUf4Ay0YLozhvoTHYxB902LFt2Od7TY10Wl4
-         MDtb0HNH2KI/aBYiddHdz1k5GRwnn5f0NxSBI/KuW8tYFoLP3fb7MV7vZs4Os7EQarFN
-         Dgs0YtQuP/Xuvpln1PFj/fDipk+nDKU5ckItz0m02ENbvnF8DuxySx8L9k9muCsMTORC
-         AOsHmomnvr2/rP0bfrxp7bPq9QSMKEOoWHbW/JLLg0fQjhDOgJu/5bKzY34INCmn6LgK
-         cUnRng5ayAzLyosP4ozBSF4L8uDB0FEaAlbbZiozeQWVnCoBO1Oa7znXd0VU+IHOEkvq
-         tevg==
+        b=EKN2hIRsBqehxl1LPwDXn+MG5SyKoqhVpkpyr2FlER8hbxE9Ay7WNPPw4ChApC65YQ
+         J30V9zKdRjJj8mCycqBYe6r/yZbYQ0Syua9qMK/XX+36rrCYQsATeqXHCoUQ9wc9vX4Q
+         FSlomHsQTEMFxVm7f4qT2/pO9mm/xpdt0tgcZlCsItIrg93Wb/3T2aD77sBXVXPboyt3
+         LXBikbAHA50KRnYq74MsZDjdGerLMWIh4JIhh2PbGZJJDz/TUc1izmizbOFwGvt7GfZ1
+         smc9IZOkpFiM1D4yqyI865GU7OL7PJcOQzjADzTNCkCAPlwgZwdDXZ0OpgG9OVqBzL4i
+         BO7A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
         bh=kVP0DeosChaP4vnFzIKGWwoOlpAbwuSOyH45+/mZoL0=;
-        b=JuNTmowusC4RTHZozQPdK1pqbE7MaXLYHFxOxxLf16MfYEzBTT8LwQaTHUjPPANmcY
-         g92e6FrJGh0td9Vxmaut5KDn+oMEKq26t+7YZ92P0z3kdPSdXHCFUnqeYlvJ6K/NaueC
-         rTBgO7nDZSye7jiGFQocGnKCkHe534CObFtnMPbSVzjHMGi8QwumFkrQIg4t93ciP3OG
-         Krb9dW7qH7sAF9HwzLwug3m6+tTsuJjO/8yxi5AwsCF3iKCEEG8p0L42I7CzonGLwsk8
-         2mgW/oAcF7coH9rKvd6+/9nSnPQW9e6RVqgZ3YIL27ttqz+KGdAoDhpRHaeRpAlNwPj0
-         +zVA==
-X-Gm-Message-State: AOAM531r0uqYMJ92DpdT4Pwyx4flNu7uFYx7bcHndcjSMgwg5021c+pD
-	P7T9vN6iblcr+NB2o+ke/dfemI6mnfY=
-X-Google-Smtp-Source: ABdhPJwcz9vVn9c0DLHAhAgTiD1FsFIPhhJ34CoOVsuCWnlvNQU1WIQX8uuwY6ONIZ02Z+NbDhdpng==
-X-Received: by 2002:adf:d1e3:0:b0:204:7e76:8a70 with SMTP id g3-20020adfd1e3000000b002047e768a70mr11019097wrd.580.1649335711115;
-        Thu, 07 Apr 2022 05:48:31 -0700 (PDT)
+        b=gTiD932kqL/gdaZziMId6ai7RCsw3NzQFFqOMBIzAdp8tXPveSBWzYQ9wlfEABFYly
+         VV/26tDtP/OJvpEOSbF4przmFEVVEolHV/bKCEJJiQuF3yiAP+UirW0kLELKz01tSBj5
+         9j+Yx1ezhvN0TyNv34S3WZlfgGWrfcSLGAihtqewZns1ZhQiu/zCA7Uy9yk+QfkR3zZI
+         cQi3PWVP8QmFrXAy8nYAtwpXDTFSLVXws0R5BmfBeD7xC1I0OyvCoAiGEbrvbTO/5uZl
+         l9iSGuXUL4rraZyBUg3Wvwzg9Gx7RTmfGDN+N86hfcHBusFTcfBOg2X+6cI6NzL72C8b
+         qXOQ==
+X-Gm-Message-State: AOAM533r5ISjcLqMg49TjarSIomyKvob6WX1uMHLLkz4RD4EQnakqwC3
+	iVE1KwUtdbwN/9kBwDkXaz6ARG8UCsY=
+X-Google-Smtp-Source: ABdhPJxshfU1NOlOOLmqcrimT11cLGwoDeMBpIbUyzbLG9YPscs+Pk4CihETUqSB0wB9UMgpKC6DVg==
+X-Received: by 2002:adf:ee08:0:b0:206:1b1e:bc20 with SMTP id y8-20020adfee08000000b002061b1ebc20mr10973407wrn.541.1649336393481;
+        Thu, 07 Apr 2022 05:59:53 -0700 (PDT)
 Received: from alaa-emad ([197.57.231.245])
-        by smtp.gmail.com with ESMTPSA id n23-20020a05600c3b9700b0038b7c4c0803sm8172229wms.30.2022.04.07.05.48.30
+        by smtp.gmail.com with ESMTPSA id l20-20020a05600c1d1400b0038cba2f88c0sm10704711wms.26.2022.04.07.05.59.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 07 Apr 2022 05:48:30 -0700 (PDT)
+        Thu, 07 Apr 2022 05:59:52 -0700 (PDT)
 From: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
 To: outreachy@lists.linux.dev
 Cc: Larry.Finger@lwfinger.net,
@@ -45,8 +45,8 @@ Cc: Larry.Finger@lwfinger.net,
 	linux-kernel@vger.kernel.org,
 	eng.alaamohamedsoliman.am@gmail.com
 Subject: [PATCH v4] staging: rtl8712: remove unnecessary parentheses
-Date: Thu,  7 Apr 2022 14:48:17 +0200
-Message-Id: <20220407124817.7714-1-eng.alaamohamedsoliman.am@gmail.com>
+Date: Thu,  7 Apr 2022 14:59:47 +0200
+Message-Id: <20220407125947.8525-1-eng.alaamohamedsoliman.am@gmail.com>
 X-Mailer: git-send-email 2.35.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
