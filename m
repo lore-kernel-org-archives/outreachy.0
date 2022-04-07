@@ -1,223 +1,167 @@
-Received: from mail-qt1-f180.google.com (mail-qt1-f180.google.com [209.85.160.180])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 29C7817F3
-	for <outreachy@lists.linux.dev>; Thu,  7 Apr 2022 01:57:49 +0000 (UTC)
-Received: by mail-qt1-f180.google.com with SMTP id t7so6984591qta.10
-        for <outreachy@lists.linux.dev>; Wed, 06 Apr 2022 18:57:48 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C45B220EA;
+	Thu,  7 Apr 2022 04:05:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:content-transfer-encoding:in-reply-to;
-        bh=/vC1HedW2WP2oUTEU9qhfcDgmKT3dmtCwtJCiolXwuQ=;
-        b=ErRcmRMp9nMR4atjusx4jjkd4IPQNqyVDAe1TU0sV337zlpAJDrEfNHrjpHDPvGY//
-         IAusFiWvQ1uhqPpy3ffekVVuvj43567gJe/flfrZS3Iulv0Ldqco2dh0xN3TWTrcZ3xu
-         eOvMI60ZfUFoBzPzyS0LUuCAx8dqWgQsPmOe0lZ8voEXU8XzmWqdwRUvfoZxxF5O6q8T
-         eTuUpDm+grWC7k0FEsE7m8z0hrY6EeZ8/HQ+hKVBI82Bx4X3zJFZgVcWn3LMLPeFMPg5
-         vIBEx4r79nw72KhAqDgPUHNbTzZ8QgIuZO1YVH18KM3za9hCBuLsYuD5HAmsecnlbHgT
-         sXFQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:content-transfer-encoding
-         :in-reply-to;
-        bh=/vC1HedW2WP2oUTEU9qhfcDgmKT3dmtCwtJCiolXwuQ=;
-        b=hr4/HwQqD6cdPa1AdhuOE7g3uyC9s4Yzj3WEMdyYKzS4jpZ1QRvkcsQlKrGwllm1qV
-         1e8XJ3fVcR68pFu2n4uWwzrbzn8nub05/OKY0U2JH5rWeHJuxOfioyRyPcZfQvh8Gjpq
-         JTtAbtjkPaOP3Azikh638Zz+LWPnYmT9gQBZ/13stk1vUghiZhfRHViPQWE15wcYb46y
-         0VPdyJVoh/0HDRRmVDJCKJjLospREUVJ0s25XsTM/SEYSdGGkwHx+TPqAOeuwfSCX96P
-         jViNdVSUrM86apVXuJKfunopi6rrPyo02nYshpcX9tc5nXZj5VJ+4VQcNUU2Fyv1QKph
-         u5Yg==
-X-Gm-Message-State: AOAM532L+/1/LQ7BOX9HnCsMKBt4ApIAtkCGbrmeJp9VxLIr1/pS2ow5
-	u8L0wbcI/dZhr/t58xsAGDE=
-X-Google-Smtp-Source: ABdhPJxshN2jhq8/pLXiZ1F6pB1dpuUaggvLkPwCj6fDIA/mP417mpx+XmYli2yc2+BK8XSrjIbtJA==
-X-Received: by 2002:ac8:7dc3:0:b0:2e1:cfdc:1a28 with SMTP id c3-20020ac87dc3000000b002e1cfdc1a28mr10006264qte.459.1649296667893;
-        Wed, 06 Apr 2022 18:57:47 -0700 (PDT)
-Received: from jaehee-ThinkPad-X1-Extreme ([2607:fb90:5335:484d:fc70:59f:6d6c:d33a])
-        by smtp.gmail.com with ESMTPSA id z6-20020ae9c106000000b0067d3b9ef387sm10736881qki.28.2022.04.06.18.57.46
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 06 Apr 2022 18:57:47 -0700 (PDT)
-Date: Wed, 6 Apr 2022 21:57:45 -0400
-From: Jaehee Park <jhpark1013@gmail.com>
-To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Cc: Stefano Brivio <sbrivio@redhat.com>, outreachy@lists.linux.dev
-Subject: Re: patch idea for wfx
-Message-ID: <20220407015745.GA1618544@jaehee-ThinkPad-X1-Extreme>
-References: <20220331141434.GA1104155@jaehee-ThinkPad-X1-Extreme>
- <4705777.GXAFRqVoOG@leap>
- <20220406142432.GA1113438@jaehee-ThinkPad-X1-Extreme>
- <1744943.TLkxdtWsSY@leap>
+  d=inria.fr; s=dc;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=Hb3fQ72S8kwAbM+KS3Vg2Hf5vL+s7WtSbsiDvS5WHCU=;
+  b=L2Rah73/y/lODEkv+pnO0oc8qwWdfoNi19axFMr/wGC4R4io84GXPXoY
+   +ti2mkiI90FqH6N23M6gv32apMRMGgzCsFhJKIAOycrhvBq5fUIQ4t//1
+   cTCN/5n92hy/cYGFcVDfofk3kdaE6U6P2fR5RBCfBEzTmKYh0B38c5m3L
+   U=;
+Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="5.90,241,1643670000"; 
+   d="scan'208";a="10799887"
+Received: from lputeaux-656-1-153-249.w217-128.abo.wanadoo.fr (HELO hadrien) ([217.128.47.249])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Apr 2022 06:04:30 +0200
+Date: Thu, 7 Apr 2022 06:04:28 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: julia@hadrien
+To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+cc: outreachy@lists.linux.dev, Larry.Finger@lwfinger.net, 
+    florian.c.schilhabel@googlemail.com, gregkh@linuxfoundation.org, 
+    linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2] staging: rtl8712: remove unnecessary parentheses
+In-Reply-To: <20220406215051.20483-1-eng.alaamohamedsoliman.am@gmail.com>
+Message-ID: <alpine.DEB.2.22.394.2204070601380.2191@hadrien>
+References: <20220406215051.20483-1-eng.alaamohamedsoliman.am@gmail.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <1744943.TLkxdtWsSY@leap>
+Content-Type: text/plain; charset=US-ASCII
 
-On Wed, Apr 06, 2022 at 06:04:12PM +0200, Fabio M. De Francesco wrote:
-> On mercoledì 6 aprile 2022 16:24:32 CEST Jaehee Park wrote:
-> > On Wed, Apr 06, 2022 at 03:54:35PM +0200, Fabio M. De Francesco wrote:
-> > > On mercoledì 6 aprile 2022 06:28:21 CEST Jaehee Park wrote:
-> > > > -----Section 2-----
-> > > > Here's my diff (below). I've implemented container_of() in function wfx_add_interface (to start).
-> > > > - If I'm understanding this correctly, we're replacing the line
-> > > > `struct wfx_vif *wvif = (struct wfx_vif *)vif->drv_priv`
-> > > > and replacing it with
-> > > > `struct wfx_vif *wvif = container_of(vif, struct ieee80211_vif, drv_priv)`
-> > > > 
-> > > > This is the error message I get:
-> > > > ./include/linux/container_of.h:17:41: error: initialization of ‘struct wfx_vif *’ from incompatible pointer type ‘struct ieee80211_vif *’ [-Werror=incompatible-pointer-types]
-> > > 
-> > > Hi Jaehee,
-> > > 
-> > > Probably, before changing any code which could be improved with the use of 
-> > > container_of(), you'd better see how this macro is used in other code that 
-> > > works properly.
-> > > 
-> > > Look at the following example. In drivers/dma/tegra20-apb-dma.c, we can look 
-> > > at a one line function called "to_tegra_dma_chan()":
-> > > 
-> > > static inline struct tegra_dma_channel *to_tegra_dma_chan(struct dma_chan *dc)
-> > > {
-> > >         return container_of(dc, struct tegra_dma_channel, dma_chan);
-> > > }
-> > > 
-> > > "to_tegra_dma_chan()" takes a pointer to a "struct dma_chan" that is called 
-> > > "dc" and it returns a pointer to the "struct tegra_dma_channel" which embeds 
-> > > the above-mentioned "struct dma_chan". 
-> > > 
-> > > Please take a look at the definition of "struct tegra_dma_channel". You'll 
-> > > notice that it has a field of type "dma_chan" that is called "dma_chan" 
-> > > (coincidentally the names of field and type are the same; this could confuse 
-> > > you but you easily see that they are different entities):
-> > > 
-> > > struct tegra_dma_channel {
-> > >         struct dma_chan dma_chan;
-> > >         ...
-> > > }
-> > > 
-> > > How can "to_tegra_dma_chan()" return a pointer to the embedding "struct 
-> > > tegra_dma_channel"?
-> > > 
-> > > It uses cointainer_of(). The first argument of that macro is the pointer 
-> > > passed to the function ("struct dma_chan *dc"). The second argument is 
-> > > the embedding "struct tegra_dma_channel". The third is the name of the 
-> > > field (not the type) pointed by "dc".
-> > > 
-> > > I hope it helps.
-> > > 
-> > > Fabio
-> > > 
-> > >
-> > Hi Fabio, Thank you for your explanation! I wanted to go over how I defined container_of() -- I think I am following the macros input correctly (see my explanation below). Let me know if there's anything odd:
-> > 
-> > As you've mentioned, the container_of() function contains first the pointer, container struct that embeds the member, and the name of the member within the struct.
-> > 
-> > In my case, the first argument of the macro is the pointer vif which is from struct ieee80211_vif *vif.
-> > The second argument is the embedding structure struct ieee80211_vif.
-> > The third is the name of the field pointed by vif which is drv_priv (this is a member within the struct ieee80211_vif.)
-> > 
-> > I also found this example:
-> > https://github.com/open-sdr/openwifi/blob/b9b3abd35319afbe6475a268730b06772cef23a5/driver/sdr.c#L1742
-> > Their implementation seems similar. But they are setting the output of container of to struct ieee80211_vif -- this makes total sense because the pointer types of the container_of output and whatever we're setting it to should match.
-> > 
-> > I'm setting it to struct wfx_vif which doesn't match. The reason I did this is so that I can follow the original code which seems to be type punning ieee80211_vif into wfx_vif.
-> > 
-> > (Attempt 1)
-> > So, to match, it should actually be:
-> > struct wfx_vif *wvif = (struct wfx_vif *)container_of(vif, struct ieee80211_vif, drv_priv);
-> > But this gives an error:
-> >  error: static assertion failed: "pointer type mismatch in container_of()"
-> > 
-> > (Attempt 2)
-> > Another thing I tried was
-> > struct ieee80211_vif *vif_container = container_of(vif, struct ieee80211_vif, drv_priv);
-> > struct wfx_vif *wvif = (struct wfx_vif *)vif_container;
-> > Here, I was trying to set it to struct ieee80211_vif first before type punning it to struct wfx_vif.. but got the same error.
-> > error: static assertion failed: "pointer type mismatch in container_of()
-> > 
-> > (Attempt 3):
-> > Then I tried:
-> > struct ieee80211_vif *vif_container = container_of((void *)vif, struct ieee80211_vif, drv_priv);
-> > struct wfx_vif *wvif = (struct wfx_vif *)vif_container;
-> > 
-> > and now it's building without errors.
-> > 
-> > But I'm still not sure if this is correct. I'm trying to understand it right now.
-> > I wanted to convey my thought process but maybe I made it more confusing. Let me know your thoughts!
-> > 
-> > Thanks,
-> > Jaehee
-> > 
-> Hi Jaehee,
-> 
-> A little premise: I haven't neither looked at the code you are trying to 
-> change, nor at the struct ieee80211_vif and its members. 
-> 
-> Instead I've only taken a look at the prototype of the function 
-> wfx_add_interface(), which is:
-> 
-> int wfx_add_interface(struct ieee80211_hw *hw, struct ieee80211_vif *vif);
-> 
-> It is clear that "vif" is a pointer to a "struct ieee80211_vif".
-> 
-> You wrote the following:
-> 
-> "In my case, the first argument of the macro is the pointer vif which is 
-> from struct ieee80211_vif *vif.".
-> 
-> Nit, pointers are addresses _to_ memory locations, not _from_ memory 
-> locations. Besides. if vif is a pointer to a "struct ieee80211_vif" (as
-> the prototype says) how can it be a pointer to a member field of the
-> same "struct ieee80211_vif"?
-> 
-> And the you went on with this:
-> 
-> "The second argument is the embedding structure struct ieee80211_vif.
-> The third is the name of the field pointed by vif which is drv_priv 
-> (this is a member within the struct ieee80211_vif.)"
-> 
-> ^^^^^ here you write that "vif" is a pointer to a member within the struct ieeee80211_vif ^^^^^
-> 
-> Having said this, now I'm looking at "Attempt 3":
-> 
-> "struct ieee80211_vif *vif_container = container_of((void *)vif, struct ieee80211_vif, drv_priv);"
-> 
-> You are still using container_of() incorrectly. As you see, the function's 
-> prototype says that "vif" is a pointer to a "struct ieee80211_vif".
-> 
-> Either "vif" is a pointer to the embedding structure (struct ieee80211_vif)
-> or it is a pointer to a member contained in the above struct :) 
-> 
-> Instead you're still confusing members (fields, if you prefer) and embedding 
-> structures. 
-> 
-> The first parameter of container_of() must be a pointer to the third parameter 
-> (a member of the struct whose name is in the second parameter of that macro), 
-> but you are still using a pointer to the second parameter (i.e., the struct that contains "drv_priv" (I take your words for true when you say that "drv_priv" is a member of 
-> "struct ieee80211_vif" because I haven't checked).
-> 
-> As I said I don't want to read the code of wfx_add_interface() and I don't
-> want to say to you what has to be fixed. But you are still using container_of()
-> incorrectly and for the wrong purpose: the purpose of container_of() is to 
-> return a pointer to the second parameter, while you have only the name of a
-> member and a pointer to that same member.
-> 
-> The fact that the code compiles only after casting the first argument to 
-> "void *" is another strong hint that something is still wrong.
-> 
-> Please take your time to re-read the emails that Stefano and I sent to you.
-> I'm sure that you now have enough information to figure it out when and
-> how to use container_of()
-> 
-> Thanks,
-> 
-> Fabio
-> 
+
+
+On Wed, 6 Apr 2022, Alaa Mohamed wrote:
+
+> Reported by checkpatch:
 >
-Thanks for helping! I sorted it out through on irc; the container_of() inputs have been corrected.
+> CHECK: Unnecessary parentheses around param->u.crypt.key[16]: 85
+> CHECK: Unnecessary parentheses around param->u.crypt.key[24]: 87
+> CHECK: Unnecessary parentheses around padapter->mlmepriv: 603
+> CHECK: Unnecessary parentheses around wrqu->encoding: 1497
+> CHECK: Unnecessary parentheses around wrqu->encoding: 1592
+> CHECK: Unnecessary parentheses around padapter->mlmepriv: 1593
+> CHECK: Unnecessary parentheses around wrqu->param: 1673
+> CHECK: Unnecessary parentheses around pmlmepriv->scanned_queue.lock: 1967
+> CHECK: Unnecessary parentheses around pmlmepriv->scanned_queue.lock: 1977
+> CHECK: Unnecessary parentheses around pmlmepriv->scanned_queue.lock: 1999
 
+This is not what I was suggesting.  What do all of these things have in
+common?  How would you describe them in a single English sentence?
+
+>
+> Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+> ---
+> Changes in v2:
+> 	- Edit commit subject
+> 	- Edit commit message
+> 	- Fix the same check in more lines
+> 	- Remove space before '.skey' in
+> "memcpy(psta->tkiptxmickey.skey," in lines 84 and 86.
+
+This is another change (no parentheses involved), so it should be in
+another patch.  Also, all changes should be described in the log message.
+
+julia
+
+> ---
+>  drivers/staging/rtl8712/rtl871x_ioctl_linux.c | 24 +++++++++----------
+>  1 file changed, 12 insertions(+), 12 deletions(-)
+>
+> diff --git a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
+> index 3b6926613257..e11332352285 100644
+> --- a/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
+> +++ b/drivers/staging/rtl8712/rtl871x_ioctl_linux.c
+> @@ -81,10 +81,10 @@ static inline void handle_pairwise_key(struct sta_info *psta,
+>  	memcpy(psta->x_UncstKey.skey, param->u.crypt.key,
+>  	       (param->u.crypt. key_len > 16 ? 16 : param->u.crypt.key_len));
+>  	if (strcmp(param->u.crypt.alg, "TKIP") == 0) { /* set mic key */
+> -		memcpy(psta->tkiptxmickey. skey,
+> -		       &(param->u.crypt.key[16]), 8);
+> -		memcpy(psta->tkiprxmickey. skey,
+> -		       &(param->u.crypt.key[24]), 8);
+> +		memcpy(psta->tkiptxmickey.skey,
+> +		       &param->u.crypt.key[16], 8);
+> +		memcpy(psta->tkiprxmickey.skey,
+> +		       &param->u.crypt.key[24], 8);
+>  		padapter->securitypriv. busetkipkey = false;
+>  		mod_timer(&padapter->securitypriv.tkip_timer,
+>  			  jiffies + msecs_to_jiffies(50));
+> @@ -600,7 +600,7 @@ static int r8711_wx_get_name(struct net_device *dev,
+>  	u32 ht_ielen = 0;
+>  	char *p;
+>  	u8 ht_cap = false;
+> -	struct	mlme_priv	*pmlmepriv = &(padapter->mlmepriv);
+> +	struct	mlme_priv	*pmlmepriv = &padapter->mlmepriv;
+>  	struct wlan_bssid_ex *pcur_bss = &pmlmepriv->cur_network.network;
+>  	u8 *prates;
+>
+> @@ -1494,7 +1494,7 @@ static int r8711_wx_set_enc(struct net_device *dev,
+>  	u32 keyindex_provided;
+>  	struct NDIS_802_11_WEP	 wep;
+>  	enum NDIS_802_11_AUTHENTICATION_MODE authmode;
+> -	struct iw_point *erq = &(wrqu->encoding);
+> +	struct iw_point *erq = &wrqu->encoding;
+>  	struct _adapter *padapter = netdev_priv(dev);
+>
+>  	key = erq->flags & IW_ENCODE_INDEX;
+> @@ -1589,8 +1589,8 @@ static int r8711_wx_get_enc(struct net_device *dev,
+>  {
+>  	uint key;
+>  	struct _adapter *padapter = netdev_priv(dev);
+> -	struct iw_point *erq = &(wrqu->encoding);
+> -	struct	mlme_priv	*pmlmepriv = &(padapter->mlmepriv);
+> +	struct iw_point *erq = &wrqu->encoding;
+> +	struct	mlme_priv	*pmlmepriv = &padapter->mlmepriv;
+>  	union Keytype *dk = padapter->securitypriv.DefKey;
+>
+>  	if (!check_fwstate(pmlmepriv, _FW_LINKED)) {
+> @@ -1670,7 +1670,7 @@ static int r871x_wx_set_auth(struct net_device *dev,
+>  				union iwreq_data *wrqu, char *extra)
+>  {
+>  	struct _adapter *padapter = netdev_priv(dev);
+> -	struct iw_param *param = (struct iw_param *)&(wrqu->param);
+> +	struct iw_param *param = (struct iw_param *)&wrqu->param;
+>  	int paramid;
+>  	int paramval;
+>  	int ret = 0;
+> @@ -1964,7 +1964,7 @@ static int r871x_get_ap_info(struct net_device *dev,
+>  		return -EINVAL;
+>  	data[32] = 0;
+>
+> -	spin_lock_irqsave(&(pmlmepriv->scanned_queue.lock), irqL);
+> +	spin_lock_irqsave(&pmlmepriv->scanned_queue.lock, irqL);
+>  	phead = &queue->queue;
+>  	plist = phead->next;
+>  	while (1) {
+> @@ -1974,7 +1974,7 @@ static int r871x_get_ap_info(struct net_device *dev,
+>  		if (!mac_pton(data, bssid)) {
+>  			netdev_info(dev, "r8712u: Invalid BSSID '%s'.\n",
+>  				    (u8 *)data);
+> -			spin_unlock_irqrestore(&(pmlmepriv->scanned_queue.lock),
+> +			spin_unlock_irqrestore(&pmlmepriv->scanned_queue.lock,
+>  					       irqL);
+>  			return -EINVAL;
+>  		}
+> @@ -1996,7 +1996,7 @@ static int r871x_get_ap_info(struct net_device *dev,
+>  		}
+>  		plist = plist->next;
+>  	}
+> -	spin_unlock_irqrestore(&(pmlmepriv->scanned_queue.lock), irqL);
+> +	spin_unlock_irqrestore(&pmlmepriv->scanned_queue.lock, irqL);
+>  	if (pdata->length >= 34) {
+>  		if (copy_to_user((u8 __user *)pdata->pointer + 32,
+>  		    (u8 *)&pdata->flags, 1))
+> --
+> 2.35.1
+>
+>
+>
