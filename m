@@ -1,50 +1,39 @@
-Received: from mail-qk1-f174.google.com (mail-qk1-f174.google.com [209.85.222.174])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mga06.intel.com (mga06.intel.com [134.134.136.31])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6175129A1;
-	Thu,  7 Apr 2022 21:17:23 +0000 (UTC)
-Received: by mail-qk1-f174.google.com with SMTP id c199so1625989qkg.4;
-        Thu, 07 Apr 2022 14:17:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=date:from:to:subject:message-id:references:mime-version
-         :content-disposition:content-transfer-encoding:in-reply-to;
-        bh=rKLun7tNmJlVydWOT8il/OTLbOYx5b7ZumsvOHVJ95k=;
-        b=DAkRCqExfbeEH06qON3EcbLyDQiDef7BSSxNmCZieTP1sTAoW9lSQX2JYAG07bhpr2
-         CtSMDxwLohY580CBUDxAiMZV/CeTTiwPxTok/5u5X9gfkr1LOeZB0lI9VKZi9YhFunP4
-         GfwaUe0kr/fuHNow+0F40GN+LL1xgtqI5w1WM/H+gwCc70XbXZaXPzHk5v80CgjZ4qTd
-         ktpI805a8r5vbML0ivjNHJzGys6kyxy6UQCz1ZskDh71qyKNw1a+WHQWA+JQJTE7LKKC
-         2utABwsS9HXcosbDnoW+JLHHcrF84I/3vwyADORPEpXjY2MQ/VcSoDByx5DgG6twLVrJ
-         imdw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:subject:message-id:references
-         :mime-version:content-disposition:content-transfer-encoding
-         :in-reply-to;
-        bh=rKLun7tNmJlVydWOT8il/OTLbOYx5b7ZumsvOHVJ95k=;
-        b=77Trbl2S6lXnJou1GQg5aolDFtWKBNlYSS6bAUfi/jHOIAXFs4WvrlXxD7qR6cv7DV
-         qOR7KkhPaJiHi0h/ftIviZ924equkgK8XTeoUSy4EyOEZS/p1eRFgtODl+d6K2KmBHPV
-         ed7NqDZjdzWPaoWnVzmo3pjGghpmrBJImFvBrp8VPMAlOB/PdSAs44Mn86Al9Tgj45WD
-         ZZLAlJWZeaXfn43H67sqqeQBaoWpVbWPD0v15eG43DXgwaJ3DKPXPG4t4aUFPJJMgSn+
-         bm5EC2UzkA4DcIysbRtSpjsYFON0J/TWxf7IQCRq1EI9qQQfQbXm3zJ0L0o6ayBELgv4
-         5h5A==
-X-Gm-Message-State: AOAM532lKx4tOvtEUPTs6w6nOB8QfO67He9gLt+kkGV36oQsjfeClZ0v
-	YpdrnnuuOVzTKWpanLNwELE=
-X-Google-Smtp-Source: ABdhPJzKN4BUQGKyx8v1/Qkj9In2l2oGhFk3ylyDs1XxY2PoViyEvAvCbpTqG6nc3EAaXrcYPwyODA==
-X-Received: by 2002:a05:620a:c08:b0:67d:3b4e:229f with SMTP id l8-20020a05620a0c0800b0067d3b4e229fmr10917977qki.550.1649366242112;
-        Thu, 07 Apr 2022 14:17:22 -0700 (PDT)
-Received: from jaehee-ThinkPad-X1-Extreme ([4.34.18.218])
-        by smtp.gmail.com with ESMTPSA id e15-20020a05622a110f00b002e1ed105652sm15612766qty.2.2022.04.07.14.17.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 07 Apr 2022 14:17:21 -0700 (PDT)
-Date: Thu, 7 Apr 2022 17:17:17 -0400
-From: Jaehee Park <jhpark1013@gmail.com>
-To: =?iso-8859-1?B?Suly9G1l?= Pouiller <jerome.pouiller@silabs.com>,
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7F716368;
+	Fri,  8 Apr 2022 01:07:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1649380047; x=1680916047;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=WOQrvv0ZRplfT73gsieRtsGwp6wIjnnDLnqNLOV403k=;
+  b=afZzWoaxLiEeJ9P5peY5w/srtPPWQahifpn/FAHRRNfoZx2V4DY3nl+k
+   ClhTl1emxIHLk5zVrKu0a2ZfuIQ9vyLT9hKl50uzZUoSMxeLY+Opg2OkA
+   JFZ+0vtRwnbvCzkMeu8+SPFHydpjo88H2jhd0FtShEmqCRnF99/hHshV/
+   QD/Ht8pa7IOUC3SsRlVCcmNwzO+b/yNgKYotPS8iwQLXMw/f1FjKNY2z1
+   L7GyQC3h14m2OaAuvceKqq5Slzuqdwa1sPybivzZoEVlsz/nMHH7+vhqp
+   v05HNS1np1dchbWnpQJQ4KmZ4KQa2cGpg44iqCGZzN2REXJ/x4XWlJ1T2
+   A==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10310"; a="322168855"
+X-IronPort-AV: E=Sophos;i="5.90,243,1643702400"; 
+   d="scan'208";a="322168855"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Apr 2022 18:07:25 -0700
+X-IronPort-AV: E=Sophos;i="5.90,243,1643702400"; 
+   d="scan'208";a="642706985"
+Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
+  by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Apr 2022 18:07:24 -0700
+Date: Thu, 7 Apr 2022 18:09:30 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: Jaehee Park <jhpark1013@gmail.com>
+Cc: =?iso-8859-1?B?Suly9G1l?= Pouiller <jerome.pouiller@silabs.com>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
 	outreachy@lists.linux.dev, Stefano Brivio <sbrivio@redhat.com>
 Subject: Re: [PATCH] staging: wfx: use container_of() to get vif
-Message-ID: <20220407211717.GA1934834@jaehee-ThinkPad-X1-Extreme>
+Message-ID: <20220408010930.GA1215532@alison-desk>
 References: <20220407204128.GA1810425@jaehee-ThinkPad-X1-Extreme>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
@@ -74,9 +63,15 @@ On Thu, Apr 07, 2022 at 04:41:28PM -0400, Jaehee Park wrote:
 > - These changes built for me, but it would be great if someone can test it on the actual hardware.
 > - We noticed that the development of the wfx driver is happening in netdev instead of the staging directory. Do you suggest that I use the net-next tree for this change?
 
-Sorry, to clarify my question regarding which tree to submit this patch to, I meant the netdev tree vs greg's tree:
-https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git/log/drivers/staging/wfx
-https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/log/drivers/staging/wfx
+Hi Jaehee,
+
+Yes - it looks like you missed staging by just a couple of days with this one.
+
+Perhaps use .gitorderfile to order how the files appear in the diff.
+Here, it would be helpful to see the new define first (in wfx.h)
+followed by all usages.
+
+Alison
 
 >  
 >  drivers/staging/wfx/data_rx.c |  4 ++--
@@ -367,4 +362,5 @@ https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/log/drivers/s
 >  
 > -- 
 > 2.25.1
+> 
 > 
