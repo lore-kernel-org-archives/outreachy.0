@@ -1,110 +1,56 @@
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-qk1-f176.google.com (mail-qk1-f176.google.com [209.85.222.176])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9F7F6A22;
-	Sat,  9 Apr 2022 15:37:47 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0944DEA9
+	for <outreachy@lists.linux.dev>; Sun, 10 Apr 2022 05:51:35 +0000 (UTC)
+Received: by mail-qk1-f176.google.com with SMTP id s4so8221661qkh.0
+        for <outreachy@lists.linux.dev>; Sat, 09 Apr 2022 22:51:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=qSAd225M961dn+WkBnENZ0S8iDdzBuda9tOMKouPLss=;
-  b=vOiUMr0h2cq52oDuERvHs4ZaBVcfR84QTX8JxgbvtYFZXtIYzldUuZLd
-   f+DLVg6BZd6WIFzqEOqoH32xNvKYftdU0ya9dZsLsANA1grbkK+lKKcOx
-   xXuWcRR0og+kj0YTvW3v3lBP9+CSYjIF82WZHAoT5l9Xf0rH8XzopdpGx
-   Q=;
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="5.90,248,1643670000"; 
-   d="scan'208";a="30916323"
-Received: from unknown (HELO hadrien) ([109.190.253.16])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Apr 2022 17:37:39 +0200
-Date: Sat, 9 Apr 2022 17:37:32 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: julia@hadrien
-To: =?ISO-8859-15?Q?J=E9r=F4me_Pouiller?= <jerome.pouiller@silabs.com>
-cc: Jaehee Park <jhpark1013@gmail.com>, 
-    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-    linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, 
-    outreachy@lists.linux.dev, Stefano Brivio <sbrivio@redhat.com>
-Subject: Re: [PATCH] staging: wfx: use container_of() to get vif
-In-Reply-To: <1911301.taCxCBeP46@pc-42>
-Message-ID: <alpine.DEB.2.22.394.2204091737130.2655@hadrien>
-References: <20220407204128.GA1810425@jaehee-ThinkPad-X1-Extreme> <alpine.DEB.2.22.394.2204081149360.2196@hadrien> <20220408222102.GB2511628@jaehee-ThinkPad-X1-Extreme> <1911301.taCxCBeP46@pc-42>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+        d=gmail.com; s=20210112;
+        h=mime-version:from:date:message-id:subject:to;
+        bh=oLKyz79zscyLXNIhbz0P/ma8gwujbHgglcgPTK0HRZ0=;
+        b=S0tT1j0cLWM8yoPIOvGJS1W/xKA+auk4sz9FmOa5Lc+/FdmZf9CWhg+TH06KCva+l3
+         9e1sbx0144WS/i8Yr2UHOkrJZm6SvPsXwNYgnT5HharLXtT9CUKQMTos+U6fQ4sFUaml
+         nLcBhA0lqsOP0q+hVfaScHVpdCVkpyhKg4okAJA5mCZCV8sqeCjrKUmQhG1OuzC4oM1E
+         kmJUcj6FLVKrfamsbW+RHCffeAoa+RfQtdPID3eohzeRYwHbTZMsF4ATdwvvToxOYKyU
+         OgHFufzkGKTBdzUgOnAQ/7gjEQPmCHccYq+RbZ52+EG8lehHKQfkWgVdUINgmQu5uxZt
+         La8w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+        bh=oLKyz79zscyLXNIhbz0P/ma8gwujbHgglcgPTK0HRZ0=;
+        b=MJi5/GXqCX0Fm0ILOGSzudH4+5ykVJy99WC4l2rrpkCTdjn2BHDQBHB7hqfSo36Ecg
+         y5pZaSXXrU4xYQTmSPv2+EnuMcrlbLynpdImS68hmm5EQfOWIh0jc0u1O0AB8Y2/E7b2
+         prbV4BeJ3l+zcdw8xZ8YC0+JUrFSgoz+ixOUSpWYmprU8Lzw6trkOCW5gLF0ZuHjr4iv
+         qXfGleGYddd3NRqhBJbSqlvgnCKMV4N+DjlwhsneLTL3C5wgAQRbCwuFJCPyRzybLnnQ
+         QfnA9oEEG+88n8uNu9RtxjR1ojjE46Aaqbh9hcoPz8CZ0uI7LDeS5wixNxIGJhe3vRK2
+         XsvQ==
+X-Gm-Message-State: AOAM532FpWMHrZ/wJ6u5ANWoyOoYnnZOrlPXIZOwzDey5EaLP0hherHe
+	EMSuFWEvi05XnAOKnPvGPdhS/nlbNVdEbFx10sVL12UM
+X-Google-Smtp-Source: ABdhPJxzsPRW4giqi3VLck7BvoK9+9WGPOMtS0pOgNimQkxmEFj9iH43HfKS6v2fJzRxnRHf07N0CddDmZslxz1UqgU=
+X-Received: by 2002:a05:620a:290f:b0:67b:3212:d529 with SMTP id
+ m15-20020a05620a290f00b0067b3212d529mr17796673qkp.4.1649569894680; Sat, 09
+ Apr 2022 22:51:34 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-1289766131-1649518660=:2655"
+From: Soumya Negi <soumya.negi97@gmail.com>
+Date: Sat, 9 Apr 2022 22:51:23 -0700
+Message-ID: <CAHH-VXfEno3K6azNLKibRwCxsDm1Xu0w-PFpi6cJdR3f=hJJFw@mail.gmail.com>
+Subject: Applicant introduction
+To: outreachy@lists.linux.dev
+Content-Type: text/plain; charset="UTF-8"
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+Hello,
+My name is Soumya Negi and I am a CS masters student at USC. Please
+pardon my late introduction( due to overlapping midterms). I took an
+Operating Systems course last semester and have thus worked with C on
+academic projects. I hope it will be a good foundation for the Linux
+projects offered this year. I am excited to finally get started and
+contribute to the linux kernel community!
 
---8323329-1289766131-1649518660=:2655
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8BIT
-
-
-
-On Sat, 9 Apr 2022, Jérôme Pouiller wrote:
-
-> On Saturday 9 April 2022 00:21:02 CEST Jaehee Park wrote:
-> > On Fri, Apr 08, 2022 at 11:49:49AM +0200, Julia Lawall wrote:
-> > > On Thu, 7 Apr 2022, Jaehee Park wrote:
-> > >
-> > > > Use container_of() to get vif. This improves the code in two ways:
-> > > > [1] it speeds up the compilation because container_of() saves steps to
-> > > > retrieve vif (the representation of ieee80211_vif), and
-> > >
-> > > I don't understand this part.
-> > >
-> > > julia
-> > >
-> >
-> > Thank you for your message. I revised the commit message (below)--
-> > I hope it makes it clearer. I'm open to suggestions as well!
-> >
-> > Currently, upon virtual interface creation, wfx_add_interface() stores
-> > a reference to the corresponding struct ieee80211_vif in private data,
-> > for later usage. This is not needed when using the container_of
-> > construct. This construct already has all the info it needs to retrieve
-> > the reference to the corresponding struct from the offset that is
-> > already available, inherent in container_of(), between its type and
-> > member inputs (struct ieee80211_vif and drv_priv, respectively).
-> > Remove vif (which was previously storing the reference to the struct
-> > ieee80211_vif) from the struct wfx_vif, define a macro
-> > wvif_to_vif(wvif) for container_of(), and replace all wvif->vif with
-> > the newly defined container_of construct.
-> >
-> > Sorry if I'm putting out more information than was asked for:
-> > Diagram is worth a thousand words; this one is made by Stefano when
-> > he was explaining the container_of() construct:
-> >
-> > .-----------------------------------.
-> > |  .------------------------------. |
-> > '->| struct ieee80211_vif         | |
-> >    |------------------------------| |
-> >    | 1                            | |
-> >    | 2                            | |
-> >    |  .--------------------------.| |
-> >    | 3| struct wfx_vif drv_priv   | |
-> >    |  |---------------------------| |
-> >    |  | ...                       | |
-> >    |  |                           | |
-> >    |  | struct ieee80211_vif *vif---'
-> >    '------------------------------'
-> > In this example, the offset is 3.
-> > What I want to convey here is the compiler already knows the offset
-> > of drv_priv within struct ieee80211_vif by using the container_of()
-> > construct. So, it doesn't need to do extra work.
->
-> Wow, nice ascii art :)
->
-> I think that Julia has not understand why you said it "speeds up the
-> compilation". I think you meant "speeds up the execution", don't you?
-
-Yes, that was my concern.
-
-julia
---8323329-1289766131-1649518660=:2655--
+Regards,
+Soumya Negi
