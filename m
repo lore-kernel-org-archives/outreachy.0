@@ -1,66 +1,87 @@
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-pf1-f182.google.com (mail-pf1-f182.google.com [209.85.210.182])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 29A031FA1;
-	Tue, 12 Apr 2022 04:59:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 66164C385A6;
-	Tue, 12 Apr 2022 04:59:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1649739584;
-	bh=7GTblpVpSQYcAVhFqTpBAzjm8SimTPaUHKg0ETvVUI0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=bxXrb3FNHbJBnyOCUDOz2Y+T89PrBH/HRtU3ykwISXCaDAPkHd7OOsNnkZT9CkX4/
-	 x1ZnFXoudcryTVI0Ny+Tc6dlwwI/QiuphrVkXnuViw23GzN7J+Z07UICJSDp9jI4Uq
-	 VMG/Qs5IJMOXZIkBOokMJjAQnZq4pQfzqQcoRwnU=
-Date: Tue, 12 Apr 2022 06:59:42 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Jaehee Park <jhpark1013@gmail.com>
-Cc: =?iso-8859-1?B?Suly9G1l?= Pouiller <jerome.pouiller@silabs.com>,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev, Stefano Brivio <sbrivio@redhat.com>
-Subject: Re: [PATCH V3] wfx: use container_of() to get vif
-Message-ID: <YlUHPjw2mbhnuZCM@kroah.com>
-References: <20220412041218.GA2859599@jaehee-ThinkPad-X1-Extreme>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8CF0046A5;
+	Tue, 12 Apr 2022 06:15:44 +0000 (UTC)
+Received: by mail-pf1-f182.google.com with SMTP id cw11so531984pfb.1;
+        Mon, 11 Apr 2022 23:15:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=XHWMHnieMRPWnnTbhgeIU4H7tm3e3STl/gyvGxE87wI=;
+        b=gU0sJC/XFrrS/WAVUaoDaCteB8WfHghYL9+kBc3P8+iZi48UBITZ2DpTm3yonEaB6a
+         LCxAJqhPg5Rw0Rm1/KcZ47uxjjehVeca7EgtX8fVvLD0PK6ZrLFdObJZNer3OE2UN8gc
+         uFrZBipyUs7kp+ShVqa8eDZAeq1p8JyTkHyU00ElxoUXQnINC8xEJ5pX4KnUyGyX/83l
+         5fVMjGTjLdfcuBnDb/nZXPFrlkeRNppoxgfcgjuuXkFRwTaLFkzJUl/NBCQF92nLLFrD
+         scN1TlcDTgADJvptdMhz7bBm+pJQab6c8ioZFN5vQEwJDBlnqrsoowF2dNy9FWXp9jW6
+         QFhA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=XHWMHnieMRPWnnTbhgeIU4H7tm3e3STl/gyvGxE87wI=;
+        b=fjNfNYYU+grPMdJlwhvEcJUPgkQ0KB0p5SXq49gU3Sj1UY27nMgRWalAYd9kaMWsbf
+         RCsQkPk0xQpRhGbi9qts4QXbzL5Mlq3yLpUOJMQZRLPFqnx5A/bRsl54zNgHERUxi/8x
+         oqScSxaakGbRr8+1TydoYHBuGAsK/eI8R8JNX26jnfPmQxizjp02ML3v23f7IqdLiUQt
+         Iom1RpM2/fgMID8T9YCaYWthNaaAcGcGJFm7PAFIr+BhVvwK5rYzjiMz7mzzBdRtLIJH
+         yzF+xDJw01bUHgc3svUnajJDLNEPO6V2FEX6t/ctOirWyqW6J4fy5LsZZBJGGZ6/B4j9
+         tp5Q==
+X-Gm-Message-State: AOAM533S/a5HtMxjarS0oxA5Sr23r1P6psjf8/NI3P7mZPIaydqgRkYj
+	sZW4B9ywTz5Q6QsWYsoUit8=
+X-Google-Smtp-Source: ABdhPJz+BoA1aKSFG0aHLEkP/6kSptsQACrbzoaROFCaesPOafTklorN5/QOVVUkbekS7FUBOCG7kw==
+X-Received: by 2002:a63:d1e:0:b0:399:8cc:e86f with SMTP id c30-20020a630d1e000000b0039908cce86fmr28609762pgl.230.1649744143999;
+        Mon, 11 Apr 2022 23:15:43 -0700 (PDT)
+Received: from aliyaR-laptop.domain.name ([14.139.241.88])
+        by smtp.googlemail.com with ESMTPSA id o4-20020a625a04000000b004fdf5419e41sm29589231pfb.36.2022.04.11.23.15.41
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 11 Apr 2022 23:15:43 -0700 (PDT)
+From: aliya-rahmani <aliyarahmani786@gmail.com>
+To: florian.c.schilhabel@googlemail.com
+Cc: gregkh@linuxfoundation.org,
+	linux-staging@lists.linux.dev,
+	outreachy@lists.linux.dev,
+	Aliya Rahmani <aliyarahmani786@gmail.com>
+Subject: [PATCH v2] staging: rtl8712: efuse: code style - avoid macro argument precedence issues
+Date: Tue, 12 Apr 2022 11:44:42 +0530
+Message-Id: <20220412061442.32536-1-aliyarahmani786@gmail.com>
+X-Mailer: git-send-email 2.25.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220412041218.GA2859599@jaehee-ThinkPad-X1-Extreme>
+Content-Transfer-Encoding: 8bit
 
-On Tue, Apr 12, 2022 at 12:12:18AM -0400, Jaehee Park wrote:
-> Currently, upon virtual interface creation, wfx_add_interface() stores
-> a reference to the corresponding struct ieee80211_vif in private data,
-> for later usage. This is not needed when using the container_of
-> construct. This construct already has all the info it needs to retrieve
-> the reference to the corresponding struct from the offset that is
-> already available, inherent in container_of(), between its type and
-> member inputs (struct ieee80211_vif and drv_priv, respectively).
-> Remove vif (which was previously storing the reference to the struct
-> ieee80211_vif) from the struct wfx_vif, define a macro
-> wvif_to_vif(wvif) for container_of(), and replace all wvif->vif with
-> the newly defined container_of construct.
-> 
-> Signed-off-by: Jaehee Park <jhpark1013@gmail.com>
-> ---
-> 
-> Changes in v3:
-> - Made edits to the commit message.
-> - Shortened the macro name from wvif_to_vif to to_vif.
-> - For functions that had more than one instance of vif, defined one 
-> reference vif at the beginning of the function and used that instead.
-> - Broke the if-statements that ran long into two lines.
-> (There are 3 lines that exceed 80 by less than 4 characters. Two of 
-> those lines of code could be shorted but it involved defining two more 
-> variables, and could potentially make the code less readable.)
-> 
-> Note: I will mail this patch to the wireless-next tree after testing.
-> 
-> 
->  drivers/staging/wfx/wfx.h     |  2 +-
+From: Aliya Rahmani <aliyarahmani786@gmail.com>
 
-This file is not in linux-next anymore.
+This patch fixes checkpatch warnings of precedence issues. Added parentheses
+around macro arguments 'offset' and 'word_en'.
+
+Signed-off-by: Aliya Rahmani <aliyarahmani786@gmail.com>
+---
+v1 -> v2: Updated the description of the fixes.
+---
+
+ drivers/staging/rtl8712/rtl8712_efuse.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/staging/rtl8712/rtl8712_efuse.h b/drivers/staging/rtl8712/rtl8712_efuse.h
+index 4969d307e978..2e1ea9d7a295 100644
+--- a/drivers/staging/rtl8712/rtl8712_efuse.h
++++ b/drivers/staging/rtl8712/rtl8712_efuse.h
+@@ -15,8 +15,8 @@
+ 
+ #define GET_EFUSE_OFFSET(header)	((header & 0xF0) >> 4)
+ #define GET_EFUSE_WORD_EN(header)	(header & 0x0F)
+-#define MAKE_EFUSE_HEADER(offset, word_en)	(((offset & 0x0F) << 4) | \
+-						(word_en & 0x0F))
++#define MAKE_EFUSE_HEADER(offset, word_en)	((((offset) & 0x0F) << 4) | \
++						((word_en) & 0x0F))
+ /*--------------------------------------------------------------------------*/
+ struct PGPKT_STRUCT {
+ 	u8 offset;
+-- 
+2.25.1
 
