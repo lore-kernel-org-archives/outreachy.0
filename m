@@ -1,80 +1,89 @@
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-oa1-f41.google.com (mail-oa1-f41.google.com [209.85.160.41])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0B7DB1FC6;
-	Tue, 12 Apr 2022 15:54:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4C0B4C385A1;
-	Tue, 12 Apr 2022 15:54:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1649778889;
-	bh=dbQHjtWTndQ3IhJbJ7Bf8ue3XoQqen/tZP8psUGBdro=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=D0Flk52zzKTiOJtrDbgYOw3HQZfvDWYR5IKWnmBiBv05GWrNgJEFRwVa7lDxf2EDo
-	 SZIZG3XhBYGNiBN8PR23PBJWk6w73PpfhJ23BSXmSq0vypF4dM+TRah0cQD6APe0xP
-	 zZBeatO+KMyPwMoUvG1R1aTl//Qvq68wnbq4gPXw=
-Date: Tue, 12 Apr 2022 17:54:46 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Bruno Moreira-Guedes <codeagain@codeagain.dev>
-Cc: Martyn Welch <martyn@welchs.me.uk>,
-	Manohar Vanga <manohar.vanga@gmail.com>,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev
-Subject: Re: [PATCH] staging: vme: Adjusted VME_USER in Kconfig
-Message-ID: <YlWgxjZk8kiwARtL@kroah.com>
-References: <20220401050045.3686663-1-codeagain@codeagain.dev>
- <YkaW0ThT8Ah3z0wW@kroah.com>
- <YkaXRpIElW1BwKGb@kroah.com>
- <37e5203d1efd310ea82cf91c18c6a07eea743ac7.camel@codeagain.dev>
- <Ykl/iBR+pDaaLImA@kroah.com>
- <20220412151432.zsdxrag7myyzgv6o@AN5Bruno>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E4A101FD7;
+	Tue, 12 Apr 2022 17:18:52 +0000 (UTC)
+Received: by mail-oa1-f41.google.com with SMTP id 586e51a60fabf-d6e29fb3d7so21428217fac.7;
+        Tue, 12 Apr 2022 10:18:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=sender:message-id:date:mime-version:user-agent:subject
+         :content-language:to:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=1MO+MVC56kZBEIzmrDTAZJIjtd3zPAk5txwHxsm638E=;
+        b=gZQ3Y+NeEP9WnYsHYan82XhAQmdLR4MoAYCSbsu+ev2sTjAHgsufOBM6FCGYJU6zEP
+         3/pVjKBm/n0l4n4QmRYbeKn8rcIf8jo8aU/wEdDTv2h1z0d02KAoQ9RV4vQzITsBeuyh
+         ML8muAuO9gykkVbYrJbzdXzwOHKwZElndDEDN5SKcgm4G5174MHF/izLExQEIQONlexh
+         vwdEolH6xG21PjvQA6tOxn8mvBAhzHeOA9olSMPX+2SdmH6JQevgwga4LBINfT3Yig0W
+         8I1f6cFrA6eb8XFuMqL5XMqaTIhWWS+8hWrkBXbatE9XfCc9zXOLlOAwTX3q4WcuS0hj
+         WMPQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:sender:message-id:date:mime-version:user-agent
+         :subject:content-language:to:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=1MO+MVC56kZBEIzmrDTAZJIjtd3zPAk5txwHxsm638E=;
+        b=6+E9huXESr+OeXDe1coiG0AwGFFo+5O0YZLgziUDwyxOV+iDdihrsmCsDTpK1pt5W1
+         ghf6dB8PSCQpoF3Aids4cIowDIpkapUNUWLpnrFYrut5HHXbN+Nf9z76bdIcTRgGzH71
+         Igpoh++oki2RPgH/09IMS3u/5WxzJpflySh4PDqzdtDzlYhBinvk9PgGRYoM3JNpEX1F
+         OmudNAcTSH72RQ0ekvQxvxQ/rawiF1VwYAZsGWTyH91fNuHTeCrApnkNIESJp/a9qmTY
+         G5aQZRdNN9mRuDXgfIIL8CCR+W7h2Nooh6mGZcanRKakyFICzIaQy52HdTqyJffgwDhO
+         DBYg==
+X-Gm-Message-State: AOAM532IvOYuc4XEWeSJ5mAPDplYKs840NkDatDgB2gDV7aAJW0ItxDA
+	r1mmOhhTr3BQoH9hvq3ijGc=
+X-Google-Smtp-Source: ABdhPJwKWPBqgUckZLmmXiV4ZdPDvtEqvyf2VWE1hES3i003XDLdLa/VDYnij36CUwjRegV5hR17xw==
+X-Received: by 2002:a05:6870:b408:b0:dd:ed4f:b1c7 with SMTP id x8-20020a056870b40800b000dded4fb1c7mr2652911oap.41.1649783932009;
+        Tue, 12 Apr 2022 10:18:52 -0700 (PDT)
+Received: from ?IPV6:2603:8090:2005:39b3::100e? (2603-8090-2005-39b3-0000-0000-0000-100e.res6.spectrum.com. [2603:8090:2005:39b3::100e])
+        by smtp.gmail.com with ESMTPSA id z10-20020a0568301daa00b005ce0f36dd81sm13529594oti.12.2022.04.12.10.18.50
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 12 Apr 2022 10:18:51 -0700 (PDT)
+Sender: Larry Finger <larry.finger@gmail.com>
+Message-ID: <027acae3-29ee-ae35-4448-a56e66383849@lwfinger.net>
+Date: Tue, 12 Apr 2022 12:18:50 -0500
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220412151432.zsdxrag7myyzgv6o@AN5Bruno>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH] staging: r8188eu: correct multiple misspellings in driver
+ r8188eu
+Content-Language: en-US
+To: Dave Jiang <dave.jiang@intel.com>, Mahak Gupta <mahak_g@cs.iitr.ac.in>,
+ phil@philpotter.co.uk, gregkh@linuxfoundation.org,
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+ outreachy@lists.linux.dev
+References: <20220411205321.13109-1-mahak_g@cs.iitr.ac.in>
+ <c5fc1685-b1cc-7cfa-1ddd-e2f93105c2a5@intel.com>
+From: Larry Finger <Larry.Finger@lwfinger.net>
+In-Reply-To: <c5fc1685-b1cc-7cfa-1ddd-e2f93105c2a5@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 
-On Tue, Apr 12, 2022 at 12:14:32PM -0300, Bruno Moreira-Guedes wrote:
-> On Sun, Apr 03, 2022 at 01:05:44PM +0200, Greg Kroah-Hartman wrote:
-> > 
-> >On Fri, Apr 01, 2022 at 03:21:50PM -0300, Bruno wrote:
-> >> With my tests in my, I have found two other things that I think are
-> >> remarkable to mention. First one is a missing `depends on` line for
-> >> `VME_BRIDGE` in drivers/staging/vme/devices/Kconfig, not visible
-> >> because they were in the same tree, but now unveiled. I'm fixing it,
-> >> do you think it's best to add it in the same patch?
-> > 
-> > Make that a second patch, and resend it as part of a patch series since
-> > your first patch here is gone from my queue.
+On 4/11/22 16:28, Dave Jiang wrote:
+> Subject:
 > 
-> This patch is already sent, so I'll trim most of this message to avoid
-> duplicating the discussions. There's only one thing I'd like some input
-> first, if you don't mind.
+> staging: r8188eu: fix multiple spelling errors in driver source
 > 
-> >> Do you think it would be interesting for a future patch to provide
-> >> some output when drivers from the staging tree are present in the
-> >> running kernel image?
-> > 
-> > If you can figure out how to do so, that would be interesting to see.
-> I think I might have figured out. In "include/modules.h" and
-> "include/init.h" I happened to notice the driver initialization is
-> handled by some macros. After some inspection through gcc -E and looking
-> how they are defined, I figured out a scenario (when MODULE is not
-> defined) where the module_init() macro is defined as (among other
-> things) an inline initcall function that wraps the driver initialization
-> function.
+> Given that it already annotated that it's the r8188eu driver, no need to add "in 
+> driver r8188eu".
 > 
-> So I thought about implementing it by creating a -DSTAGING flag in 
-> drivers/staging/Makefile, and then using this macro to make an #ifdef
-> STAGING to add a similar inline wrapping function, except that in this
-> case the function makes a pr_warning() before calling the initialization
-> function.
+> Maybe the log can be something less terse:
 > 
-> Do you think it would be a good way of solving that?
+> Fix multiple spelling errors reported by checkpatch.
+> 
+> 
+> Probably doesn't hurt to fix other issues on the same line while you are at it. 
+> See below...
 
-Yes, that would be a possible way, try it and see!
+Wrong on the first and last points. That subject is exactly what should be used 
+- it describes what is being modified.
 
-greg k-h
+A given patch should fix one, and only one, problem.
+
+Yes, the commit message could be less terse, but that is not a problem.
+
+Larry
