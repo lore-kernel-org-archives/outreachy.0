@@ -1,38 +1,43 @@
-Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 601BA23A6
-	for <outreachy@lists.linux.dev>; Tue, 12 Apr 2022 22:34:11 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0EB3923AC;
+	Tue, 12 Apr 2022 23:36:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1649802851; x=1681338851;
+  t=1649806587; x=1681342587;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=zZFWm2ZvTNl3DBVLXTHE3LSe5J6Xzl/eJCit39wlEMQ=;
-  b=OKQtoGVIFfj07HcSnVCoUbSJth7A6iV8KjMmnhLyb5xekMunvFQOklCS
-   Xb07F65PgAbRKRFS8Zp5YdTletK09es7IppqqzioJHwJVzajc/TGQard3
-   gWIPPH9C145y0qu4MAVgOdn14od8KM6944kxM8Ch1ogD/GaJyIQW9HYQF
-   ZjtL767Azri7NTzFgdGmxnYSDxYzesjA/gVHTBhMr2yKhKBfjf/mQuNG4
-   Lozwv31+IR/qUUDGWsf1/tze8vZu1HQDIO1lbXgDIqdFddbrRUl4i6zwr
-   wWlgaWhvMW8MqQjqr9+c+StFCay7ERw0P7YoBGDVo+vM41lHOhgsCtdRj
+  bh=mjhF2LEHO+cHqCM8/1aoy6xD1SETj0bTEeakqPsejYM=;
+  b=Z3q9uojZOMckXphVwEM/LMdnE7MP2VKtclK+nevu+G0bmOjiC3DtXdlu
+   PKOToyy0j20eGHWTb+zbKbsUY77mwCCdFbqjq5VukUF8oMLtv25Oi+bfJ
+   p79SvbPpHUfY4DScg+7I91TYtKvNEV2tnlnqxNz8aXYHiFpFlsCE3oDhC
+   TUf2mya5juvFKtiTb/ZMbgpgKXXf6D5ciyp8grC+c7EAv8BwgU7duKZxX
+   YwmFB7v6ZvZ/DP35U4PTwiv07AQMlEhjVVEgnf1s3o24IYZHJxLTrmpcV
+   mjaCYAaMSyNwYNR0d+nug+Y/lFuLit+cTd80XwjsXIsATMKEzx/EeS0xJ
    g==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10315"; a="243105902"
+X-IronPort-AV: E=McAfee;i="6400,9594,10315"; a="242468038"
 X-IronPort-AV: E=Sophos;i="5.90,254,1643702400"; 
-   d="scan'208";a="243105902"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
-  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Apr 2022 15:34:07 -0700
+   d="scan'208";a="242468038"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Apr 2022 16:36:26 -0700
 X-IronPort-AV: E=Sophos;i="5.90,254,1643702400"; 
-   d="scan'208";a="700021983"
-Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
-  by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Apr 2022 15:34:07 -0700
-Date: Tue, 12 Apr 2022 15:36:03 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Cc: outreachy@lists.linux.dev
-Subject: Re: Should we Cc this list when submitting patches for subsystems
- other than "staging"?
-Message-ID: <20220412223603.GA1237891@alison-desk>
-References: <1859502.6tgchFWduM@leap>
+   d="scan'208";a="660707822"
+Received: from aalaniz-mobl.amr.corp.intel.com (HELO localhost) ([10.209.160.104])
+  by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Apr 2022 16:36:25 -0700
+Date: Tue, 12 Apr 2022 16:36:24 -0700
+From: Ira Weiny <ira.weiny@intel.com>
+To: Rebecca Mckeever <remckee0@gmail.com>
+Cc: outreachy@lists.linux.dev, Larry Finger <Larry.Finger@lwfinger.net>,
+	Phillip Potter <phil@philpotter.co.uk>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	Dan Carpenter <dan.carpenter@oracle.com>
+Subject: Re: [PATCH 2/3] staging: r8188eu: combine both sides of conditional
+ statement
+Message-ID: <YlYM+LjgZWALaa1R@iweiny-desk3>
+References: <cover.1649011311.git.remckee0@gmail.com>
+ <d33c51bc3a20fa25e4737b258f3b1c42cc8124e3.1649011311.git.remckee0@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -41,46 +46,51 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <1859502.6tgchFWduM@leap>
+In-Reply-To: <d33c51bc3a20fa25e4737b258f3b1c42cc8124e3.1649011311.git.remckee0@gmail.com>
 
-On Tue, Apr 12, 2022 at 10:21:31PM +0200, Fabio M. De Francesco wrote:
-> Hello,
+On Sun, Apr 03, 2022 at 02:17:05PM -0500, Rebecca Mckeever wrote:
+> Both sides of conditional statement are the same except for the comment.
+> Additional instance found with git grep.
 > 
-> During the current month I have submitted some patches for subsystems other
-> than drivers/staging. When I sent them I thought that those shouldn't be 
-> Cc'ed also to this list. Now I'm not anymore sure if I did it correctly.
-> 
-> My question is if all patches sent by the Outreachy's applicants until 
-> April 22nd should also be sent to this list, even when they are for 
-> subsystems other than drivers/staging.
-> 
-> Furthermore, one of the above-mentioned patches is strictly related to one
-> of the three Linux projects, being it a reworking and extension of a large 
-> section of the documentation of HIGHMEM. Is it sufficient to add that patch 
-> to the page where we register our contributions in the Outreachy's website? 
-> 
-> I'm also asking because during these days I'm preparing further patches to
-> other subsystems and I'm going to submit them well before April 22nd. 
+> Suggested-by: Dan Carpenter <dan.carpenter@oracle.com>
+> Signed-off-by: Rebecca Mckeever <remckee0@gmail.com>
 
-Thanks for asking Fabio,
+Reviewed-by: Ira Weiny <ira.weiny@intel.com>
 
-Yes, all contributions that an applicant considers to be part of their
-application should be shared on this list.
-
-There's always an exception! Perhaps if a mentor gives out a small
-task for which a posting to this list would spoil the task for others,
-only gets sent to the mentor(s). I expect project mentors would tell
-you that case explicitly.
-
-We like to see everything you all are doing and we want the list archive 
-to accurately reflect all contributions and communications.
-
-Alison
-
+> ---
+>  drivers/staging/r8188eu/core/rtw_cmd.c | 8 ++------
+>  1 file changed, 2 insertions(+), 6 deletions(-)
 > 
-> Thanks,
-> 
-> Fabio M. De Francesco
-> 
-> 
+> diff --git a/drivers/staging/r8188eu/core/rtw_cmd.c b/drivers/staging/r8188eu/core/rtw_cmd.c
+> index da455eb4d8cb..2d316a6c8294 100644
+> --- a/drivers/staging/r8188eu/core/rtw_cmd.c
+> +++ b/drivers/staging/r8188eu/core/rtw_cmd.c
+> @@ -1411,11 +1411,9 @@ void rtw_survey_cmd_callback(struct adapter *padapter,  struct cmd_obj *pcmd)
+>  {
+>  	struct	mlme_priv *pmlmepriv = &padapter->mlmepriv;
+>  
+> -	if (pcmd->res == H2C_DROPPED) {
+> +	if (pcmd->res != H2C_SUCCESS) {
+>  		/* TODO: cancel timer and do timeout handler directly... */
+>  		_set_timer(&pmlmepriv->scan_to_timer, 1);
+> -	} else if (pcmd->res != H2C_SUCCESS) {
+> -		_set_timer(&pmlmepriv->scan_to_timer, 1);
+>  	}
+>  
+>  	/*  free cmd */
+> @@ -1445,11 +1443,9 @@ void rtw_joinbss_cmd_callback(struct adapter *padapter,  struct cmd_obj *pcmd)
+>  {
+>  	struct	mlme_priv *pmlmepriv = &padapter->mlmepriv;
+>  
+> -	if (pcmd->res == H2C_DROPPED) {
+> +	if (pcmd->res != H2C_SUCCESS) {
+>  		/* TODO: cancel timer and do timeout handler directly... */
+>  		_set_timer(&pmlmepriv->assoc_timer, 1);
+> -	} else if (pcmd->res != H2C_SUCCESS) {
+> -		_set_timer(&pmlmepriv->assoc_timer, 1);
+>  	}
+>  
+>  	rtw_free_cmd_obj(pcmd);
+> -- 
+> 2.32.0
 > 
