@@ -1,66 +1,78 @@
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-qk1-f169.google.com (mail-qk1-f169.google.com [209.85.222.169])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5E3ED1FD1;
-	Tue, 12 Apr 2022 18:13:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1649787228; x=1681323228;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=dDaXrLDw4lgEJumSnzdhY5w+I+hBHbc9J2e6IHG1N5I=;
-  b=UgUNIauu60evxxC50ssd2WFnvHvGCPDMo+H+HshnJyaec5UyTThc9rNf
-   Tgjiv2VvDACA7Ye9cprII75Z355Os2eykB6fyU6J53s9k+MIHtXVPq5Vj
-   5tQtg3AqAxxuL2QtUyQ3BuNFjLo4JJYo8B5qEbp7I5/PsIJvFbeQHQ4qR
-   /WPRZ5w9VJmgAwk0GmIqxKxr2Rz/NihYLOO+neCo47uqbtmUkLVl6C7rc
-   MasG1z+0bKRQqxNtQxj7tvXMcXSur7efo9Y+VyAj/WbBCOFxI3+PwE+2e
-   QY7+SBniHuD8tZMQCuctmRt9dzv0GmqFUaoFt4eFmz3Fw6CjrZ//dmUzC
-   g==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10315"; a="261909058"
-X-IronPort-AV: E=Sophos;i="5.90,254,1643702400"; 
-   d="scan'208";a="261909058"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
-  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Apr 2022 11:10:29 -0700
-X-IronPort-AV: E=Sophos;i="5.90,254,1643702400"; 
-   d="scan'208";a="526605347"
-Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
-  by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Apr 2022 11:10:29 -0700
-Date: Tue, 12 Apr 2022 11:12:25 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: Bruno Moreira-Guedes <codeagain@codeagain.dev>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Martyn Welch <martyn@welchs.me.uk>,
-	Manohar Vanga <manohar.vanga@gmail.com>,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7BE0F33C0;
+	Tue, 12 Apr 2022 19:59:23 +0000 (UTC)
+Received: by mail-qk1-f169.google.com with SMTP id d71so6522280qkg.12;
+        Tue, 12 Apr 2022 12:59:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=OSSxqX8tPYg/tg3+HY2atLHtEG2+4vSWaPUPQtk8FFs=;
+        b=ME2rzraFEBzLQVyEICnGlhLGN3TYXUG40fsZvzk0YNOCUqDi+p+05CekzEMeh8zQJn
+         IOe43DpXusxGAK420y04rWTM7YGwlp9Z1NW5W2U5fVSOeG95xLGy0K5CZoXHG2XG5Rrn
+         Ci/TmgBDCP6sRQZtWU24HxbQg8FK8axzA8RvRss8FNfKxVojSWHjxNmIxUMZczaEpGjm
+         IurY4UMmCo5QwbcVGiI6ZWXP3aOlHNYAXBlAcefoDYaeNeptXyn68wV2oqFAjeeZKBnP
+         xpZOAPEeEx5U3NeK0IRuu8hqnfxwXJBRECsvswtiu1V4FZoYbi9y5BTZdgg6OwpKkdsn
+         Ltzg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=OSSxqX8tPYg/tg3+HY2atLHtEG2+4vSWaPUPQtk8FFs=;
+        b=QhPTbD7p8GSaj7vVOx0PdkmGxKWcrUtAINw9YpPgwFBq8J1QAlKdZ1YljVCqxCiUMq
+         FUfn/zbrK6Bk5/0qZeLtumT4NTTa9omv2LTLDDcXP9cGwOAiqLIeblMPhYU+X2/gbmWp
+         taw99I0k7dRf4QjsNm7ItjWtum58bNhLA0/Xc24i6Rl5B6LuuarlxYwle5BMS3m69vOe
+         fKSDZ0UMoYr9Zu/sLivCNwHFEGvQiLFjutXD48RFxWCEwJlguCpwp7qAXceh3vR4qSxr
+         Sq/e615179s3EJYqCiPGq2AGAr0yn8FfktZs7JpFzae+KxDuovG3IX5a7maYXIDyt7HG
+         UjEQ==
+X-Gm-Message-State: AOAM530l9vTLDKGjfaVX0el0oAwiDATHwbppBP50ohJbUxMLnxlu6OHY
+	XafMWCnVtF+LmqxfEC5OO9I=
+X-Google-Smtp-Source: ABdhPJzPGA2WvKxT8VEv/QVQmi6hhSwsxGpUOGCJCjo4PLAHqRM02+IDxZUA/gXJEnbYAbOmKtXTVQ==
+X-Received: by 2002:a05:620a:4689:b0:67d:4c03:651c with SMTP id bq9-20020a05620a468900b0067d4c03651cmr4343932qkb.475.1649793562350;
+        Tue, 12 Apr 2022 12:59:22 -0700 (PDT)
+Received: from jaehee-ThinkPad-X1-Extreme.wework.com ([4.34.18.218])
+        by smtp.gmail.com with ESMTPSA id t7-20020a05622a01c700b002e1b3555c2fsm27270744qtw.26.2022.04.12.12.59.21
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 12 Apr 2022 12:59:21 -0700 (PDT)
+From: Jaehee Park <jhpark1013@gmail.com>
+To: johan@kernel.org
+Cc: elder@kernel.org,
+	gregkh@linuxfoundation.org,
+	greybus-dev@lists.linaro.org,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
 	outreachy@lists.linux.dev,
-	Bruno's Patch Watchbox <patch-reply@codeagain.dev>
-Subject: Re: [PATCH v2 3/3] staging: vme: "drivers/staging/vme" tree cleanup
-Message-ID: <20220412181225.GC1236898@alison-desk>
-References: <cover.1649721450.git.codeagain@codeagain.dev>
- <142698e3761c1e7ba8b17cdd9dc077472ef81668.1649721450.git.codeagain@codeagain.dev>
+	jhpark1013@gmail.com
+Subject: [PATCH v2 0/2] staging: greybus: fix warnings reported by checkpatch
+Date: Tue, 12 Apr 2022 15:59:13 -0400
+Message-Id: <cover.1649793138.git.jhpark1013@gmail.com>
+X-Mailer: git-send-email 2.25.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <142698e3761c1e7ba8b17cdd9dc077472ef81668.1649721450.git.codeagain@codeagain.dev>
+Content-Transfer-Encoding: 8bit
 
-On Tue, Apr 12, 2022 at 03:58:25AM -0300, Bruno Moreira-Guedes wrote:
+The first patch corrects a typo in a comment. The second patch removes
+an unneeded return.
 
-> [PATCH v2 3/3] staging: vme: "drivers/staging/vme" tree cleanup
+Changes in version 2:
+- edited the subject to be more concise.
+- edited the log message to be more descriptive.
 
-Only the commit msg again ;)
 
-staging: vme: Move drivers/vme to drivers/vme_user
+Jaehee Park (2):
+  staging: greybus: correct typo in comment
+  staging: greybus: remove unneeded return
 
-I think that's the whole point here.
+ drivers/staging/greybus/arche-apb-ctrl.c | 2 +-
+ drivers/staging/greybus/audio_codec.c    | 1 -
+ 2 files changed, 1 insertion(+), 2 deletions(-)
 
-That's all!
-
-snip
-> 
-
+-- 
+2.25.1
 
