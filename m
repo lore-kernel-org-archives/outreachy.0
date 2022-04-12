@@ -1,82 +1,90 @@
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from m228-62.mailgun.net (m228-62.mailgun.net [159.135.228.62])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CD45846A6;
-	Tue, 12 Apr 2022 06:26:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=ApQqvHX1Fx8sflvlvQmwRhONGqWTINNRm0+wqk9JS6k=;
-  b=WcszQplcsf1aF1TsDapBD4HbNua+g6tpGjQthHkOPuKdit2MxOQyIoBZ
-   gBgA4HO2vrLlfhzFh13dK9Z7wNqee81ynqgB5xZXuePSWQL5fFZH5GPMJ
-   2Jh3aPMKowPhV52MBrUQbSjTKlurrUcgtVRtqxfO/v05UMlZW8pVhYn7v
-   U=;
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="5.90,253,1643670000"; 
-   d="scan'208";a="31240623"
-Received: from 203.107.68.85.rev.sfr.net (HELO hadrien) ([85.68.107.203])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Apr 2022 08:26:31 +0200
-Date: Tue, 12 Apr 2022 08:26:31 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: aliya-rahmani <aliyarahmani786@gmail.com>
-cc: florian.c.schilhabel@googlemail.com, gregkh@linuxfoundation.org, 
-    linux-staging@lists.linux.dev, outreachy@lists.linux.dev
-Subject: Re: [PATCH v2] staging: rtl8712: efuse: code style - avoid macro
- argument precedence issues
-In-Reply-To: <20220412061442.32536-1-aliyarahmani786@gmail.com>
-Message-ID: <alpine.DEB.2.22.394.2204120825400.3122@hadrien>
-References: <20220412061442.32536-1-aliyarahmani786@gmail.com>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 220B71FA1
+	for <outreachy@lists.linux.dev>; Tue, 12 Apr 2022 06:53:55 +0000 (UTC)
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=codeagain.dev; q=dns/txt;
+ s=smtp; t=1649746435; h=Content-Type: MIME-Version: Message-ID:
+ Subject: Subject: Cc: To: To: From: From: Date: Sender: Sender;
+ bh=CrnCIOfBYIadE7ysir0roGXoerEsn51pLccKc9in+ho=; b=SfBgpv9S8r0zXcRtRbgNngZrwv5X9ZmrtOTB49ItuqzYCMUh+QGoJS9aOof2203ezNYJ1jbq
+ pDl+WznNvSqthIYaHaIAZPoE584VzwCeHWYBLyB4heW36k60weTvXZZT5fIDRNiCTX8LzQ7X
+ /aTULZGmnz/lTeCq0WNJv+GytaWdWAp0JaCG94dtgFGIL+lAzNMqJxAeAelQFAYQxwID6nIU
+ HoG3krrgxJ6WJDwlYjWHRyAXeStkfBfk1kA1G10tdKjpZEMGGRwV5mrSnpEugNHzbbQZqIkC
+ J/qeTpmn3OZuzL0aty6DIE44lNX9gaSqY/SmprcFigD9zjYVDnjbZQ==
+X-Mailgun-Sending-Ip: 159.135.228.62
+X-Mailgun-Sid: WyI2Y2ZlNyIsICJvdXRyZWFjaHlAbGlzdHMubGludXguZGV2IiwgImJlOWM2ZCJd
+Received: from AN5Bruno (186-250-90-1.mhnet.com.br [186.250.90.1]) by
+ smtp-out-n05.prod.us-east-1.postgun.com with SMTP id
+ 62552202225c469082002d65 (version=TLS1.3, cipher=TLS_AES_128_GCM_SHA256);
+ Tue, 12 Apr 2022 06:53:54 GMT
+Sender: codeagain@codeagain.dev
+Date: Tue, 12 Apr 2022 03:53:46 -0300
+From: Bruno Moreira-Guedes <codeagain@codeagain.dev>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Martyn Welch <martyn@welchs.me.uk>,
+	Manohar Vanga <manohar.vanga@gmail.com>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy@lists.linux.dev
+Cc: Bruno's Patch Watchbox <patch-reply@codeagain.dev>
+Subject: [PATCH v2 0/3] staging: vme: Restructuring menuconfig and tree
+Message-ID: <cover.1649721450.git.codeagain@codeagain.dev>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="mnzhopgrmzo5kgdj"
+Content-Disposition: inline
 
 
+--mnzhopgrmzo5kgdj
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On Tue, 12 Apr 2022, aliya-rahmani wrote:
+This patch series modify the vme_user driver's place in
+menuconfig (1/3), fixes a missing `depends on` line in a Kconfig file
+(2/3), and rearrages the directory tree for the driver allowing a more
+straightforward comprehension of its contents (3/3).
 
-> From: Aliya Rahmani <aliyarahmani786@gmail.com>
->
-> This patch fixes checkpatch warnings of precedence issues. Added parentheses
-> around macro arguments 'offset' and 'word_en'.
->
-> Signed-off-by: Aliya Rahmani <aliyarahmani786@gmail.com>
-> ---
-> v1 -> v2: Updated the description of the fixes.
+Signed-off-by: Bruno Moreira-Guedes <codeagain@codeagain.dev>
 
-You have a lot of messages labeled v2 now.  This will be confusing for
-Greg.  Make a v3 that is entirely correct.
+Bruno Moreira-Guedes (3):
+  staging: vme: Adjusted VME_USER in Kconfig
+  staging: vme: Fix missing `depends on` at KConfig
+  staging: vme: "drivers/staging/vme" tree cleanup
 
-julia
+ MAINTAINERS                                          | 2 +-
+ drivers/staging/Kconfig                              | 2 ++
+ drivers/staging/Makefile                             | 2 +-
+ drivers/staging/vme/Makefile                         | 2 --
+ drivers/staging/{vme/devices =3D> vme_user}/Kconfig    | 2 +-
+ drivers/staging/{vme/devices =3D> vme_user}/Makefile   | 0
+ drivers/staging/{vme/devices =3D> vme_user}/vme_user.c | 0
+ drivers/staging/{vme/devices =3D> vme_user}/vme_user.h | 0
+ drivers/vme/Kconfig                                  | 2 --
+ 9 files changed, 5 insertions(+), 7 deletions(-)
+ delete mode 100644 drivers/staging/vme/Makefile
+ rename drivers/staging/{vme/devices =3D> vme_user}/Kconfig (93%)
+ rename drivers/staging/{vme/devices =3D> vme_user}/Makefile (100%)
+ rename drivers/staging/{vme/devices =3D> vme_user}/vme_user.c (100%)
+ rename drivers/staging/{vme/devices =3D> vme_user}/vme_user.h (100%)
 
-> ---
->
->  drivers/staging/rtl8712/rtl8712_efuse.h | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/staging/rtl8712/rtl8712_efuse.h b/drivers/staging/rtl8712/rtl8712_efuse.h
-> index 4969d307e978..2e1ea9d7a295 100644
-> --- a/drivers/staging/rtl8712/rtl8712_efuse.h
-> +++ b/drivers/staging/rtl8712/rtl8712_efuse.h
-> @@ -15,8 +15,8 @@
->
->  #define GET_EFUSE_OFFSET(header)	((header & 0xF0) >> 4)
->  #define GET_EFUSE_WORD_EN(header)	(header & 0x0F)
-> -#define MAKE_EFUSE_HEADER(offset, word_en)	(((offset & 0x0F) << 4) | \
-> -						(word_en & 0x0F))
-> +#define MAKE_EFUSE_HEADER(offset, word_en)	((((offset) & 0x0F) << 4) | \
-> +						((word_en) & 0x0F))
->  /*--------------------------------------------------------------------------*/
->  struct PGPKT_STRUCT {
->  	u8 offset;
-> --
-> 2.25.1
->
->
->
+--=20
+2.35.1
+
+
+--mnzhopgrmzo5kgdj
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQQTUrsHCxGmQ5vyKRAZtd3tyEY2kgUCYlUh+gAKCRAZtd3tyEY2
+kpMsAP9wfC+zTcnd/S0kjFyUc8rojGzBJsHhIx8Rwq6YXQIMKAD/R7hm08SbS5TE
+/RoiuhqA54lIdJKL4fT/SqEMEvMtpwo=
+=SnJU
+-----END PGP SIGNATURE-----
+
+--mnzhopgrmzo5kgdj--
