@@ -1,81 +1,108 @@
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from m228-62.mailgun.net (m228-62.mailgun.net [159.135.228.62])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DE9581FBA;
-	Tue, 12 Apr 2022 13:35:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 31C33C385A5;
-	Tue, 12 Apr 2022 13:35:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1649770536;
-	bh=vNQOBDQdMni8jds0z2+VqbUL+Zc+eovCppk8nBmVt/M=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=AQpdhQ9Jy//mWBYBcfXL7e6OY/PbhclRiMeYneJGshb8YN9EvilTqLP4M8mreulTh
-	 kdEQyahAtqhEwKn6huAr4zO2m/ZLUgn3He9gwqlJm4HaFTqWcqzqTD2H6gYZ0vu+aC
-	 pFyQgVhsLZTice6QbvAhv026stpiWUTmGiH2p0Tc=
-Date: Tue, 12 Apr 2022 15:35:33 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Bruno Moreira-Guedes <codeagain@codeagain.dev>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 890E71FCA
+	for <outreachy@lists.linux.dev>; Tue, 12 Apr 2022 15:14:45 +0000 (UTC)
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=codeagain.dev; q=dns/txt;
+ s=smtp; t=1649776485; h=In-Reply-To: Content-Type: MIME-Version:
+ References: Message-ID: Subject: Subject: Cc: To: To: From: From: Date:
+ Sender: Sender; bh=5sXCut8TWVHUJUklXIfFZgNr0FAeWRkchT3uWz5fv5M=; b=LCUSzEWkNMX40iTn6NwMmxFcoHJz6U2NdsjBAnqDYlhfnei91rLtS8HWFwrLaQ4BQDmOHc51
+ pZqskvV3KXHejWyl9cISr5OL/Q6oe67Di15xz0BHy3wOsC5EmEGPwSWmS4H98msRwh6XeWOO
+ X4Edd4c60nfBllnH6fHtx7ZOwyag/21QiCYR1jAzDUtgX6gXLoEOwIXl7togZ4XqID0Q2q8c
+ EtBSRsvo7H+Np/yeysQ+ydSJx9vrhF2QakJjuxPH4SCJ7BlKDpG3f3ql3d4dXotHAyhSM+8p
+ HwTs+fWuYGn35pMdMTvLHb2g3ESCyu9EFLZB8j5nNdXBaKgXIhzkgg==
+X-Mailgun-Sending-Ip: 159.135.228.62
+X-Mailgun-Sid: WyI2Y2ZlNyIsICJvdXRyZWFjaHlAbGlzdHMubGludXguZGV2IiwgImJlOWM2ZCJd
+Received: from AN5Bruno (177.75.142.178.mhnet.com.br [177.75.142.178]) by
+ smtp-out-n01.prod.us-west-2.postgun.com with SMTP id
+ 62559763c172fc5066696990 (version=TLS1.3, cipher=TLS_AES_128_GCM_SHA256);
+ Tue, 12 Apr 2022 15:14:43 GMT
+Sender: codeagain@codeagain.dev
+Date: Tue, 12 Apr 2022 12:14:32 -0300
+From: Bruno Moreira-Guedes <codeagain@codeagain.dev>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: Martyn Welch <martyn@welchs.me.uk>,
 	Manohar Vanga <manohar.vanga@gmail.com>,
 	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev,
-	Bruno's Patch Watchbox <patch-reply@codeagain.dev>
-Subject: Re: [PATCH v2 1/3] staging: vme: Adjusted VME_USER in Kconfig
-Message-ID: <YlWAJfoRxWPjSEnz@kroah.com>
-References: <cover.1649721450.git.codeagain@codeagain.dev>
- <cfd7014e7f70cb928aa957f56bb31d8f514c2446.1649721450.git.codeagain@codeagain.dev>
+	outreachy@lists.linux.dev
+Subject: Re: [PATCH] staging: vme: Adjusted VME_USER in Kconfig
+Message-ID: <20220412151432.zsdxrag7myyzgv6o@AN5Bruno>
+References: <20220401050045.3686663-1-codeagain@codeagain.dev>
+ <YkaW0ThT8Ah3z0wW@kroah.com>
+ <YkaXRpIElW1BwKGb@kroah.com>
+ <37e5203d1efd310ea82cf91c18c6a07eea743ac7.camel@codeagain.dev>
+ <Ykl/iBR+pDaaLImA@kroah.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="uzroyt2mhu6e5h2z"
+Content-Disposition: inline
+In-Reply-To: <Ykl/iBR+pDaaLImA@kroah.com>
+
+
+--uzroyt2mhu6e5h2z
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cfd7014e7f70cb928aa957f56bb31d8f514c2446.1649721450.git.codeagain@codeagain.dev>
+Content-Transfer-Encoding: quoted-printable
 
-On Tue, Apr 12, 2022 at 03:55:21AM -0300, Bruno Moreira-Guedes wrote:
-> Currently, the VME_USER driver is in the staging tree Kconfig, unlike
-> other VME drivers already moved to the main portions of the kernel tree.
-> Its configuration is, however, nested into the VME_BUS config option,
-> which might be misleading.
-> 
-> Since the staging tree "[...] is used to hold stand-alone[1] drivers and
-> filesystem that are not ready to be merged into the main portion of the
-> Linux kernel tree [...]"[1], IMHO all staging drivers should appear
-> nested into the Main Menu -> Device Drivers -> Staging Drivers to make
-> sure the user don't pick it without being fully aware of its staging
-> status as it could be the case in Menu -> Device Drivers -> VME bridge
-> support (the current location).
-> 
-> With this change menuconfig users will clearly know this is not a driver
-> in the main portion of the kernel tree and decide whether to build it or
-> not with that clearly in mind.
-> 
-> This change goes into the same direction of commit 4b4cdf3979c3
-> ("STAGING: Move staging drivers back to staging-specific menu")
-> 
-> CHANGELOG
-> v1:
->  - Sourced "drivers/staging/vme/devices/Kconfig" in
->    "drivers/staging/Kconfig" and unsourced in "drivers/vme/Kconfig".
-> 
-> v2:
-> - Turned into a patchset to (1) fix missing "depends on" missing entry
->   in config VME_USER at "drivers/staging/vme/devices/Kconfig",
->   affecting the behavior of this patch, and (2) fix unnecessary
->   remaining files from the time the whole vme subtree was in staging.
+On Sun, Apr 03, 2022 at 01:05:44PM +0200, Greg Kroah-Hartman wrote:
+>=20
+>On Fri, Apr 01, 2022 at 03:21:50PM -0300, Bruno wrote:
+>> With my tests in my, I have found two other things that I think are
+>> remarkable to mention. First one is a missing `depends on` line for
+>> `VME_BRIDGE` in drivers/staging/vme/devices/Kconfig, not visible
+>> because they were in the same tree, but now unveiled. I'm fixing it,
+>> do you think it's best to add it in the same patch?
+>=20
+> Make that a second patch, and resend it as part of a patch series since
+> your first patch here is gone from my queue.
 
+This patch is already sent, so I'll trim most of this message to avoid
+duplicating the discussions. There's only one thing I'd like some input
+first, if you don't mind.
 
-Changelog goes below the --- line please.
+>> Do you think it would be interesting for a future patch to provide
+>> some output when drivers from the staging tree are present in the
+>> running kernel image?
+>=20
+> If you can figure out how to do so, that would be interesting to see.
+I think I might have figured out. In "include/modules.h" and
+"include/init.h" I happened to notice the driver initialization is
+handled by some macros. After some inspection through gcc -E and looking
+how they are defined, I figured out a scenario (when MODULE is not
+defined) where the module_init() macro is defined as (among other
+things) an inline initcall function that wraps the driver initialization
+function.
 
-> REFERENCES
-> [1] https://lkml.org/lkml/2009/3/18/314
+So I thought about implementing it by creating a -DSTAGING flag in=20
+drivers/staging/Makefile, and then using this macro to make an #ifdef
+STAGING to add a similar inline wrapping function, except that in this
+case the function makes a pr_warning() before calling the initialization
+function.
 
-Never reference lkml.org, we have no control over it and it goes down a
-lot.  Please use lore.kernel.org links, and put the link in the body of
-the text, no need for footnotes.
+Do you think it would be a good way of solving that?
 
-thanks,
+>=20
+> thanks,
+>=20
+> greg k-h
 
-greg k-h
+Sincerely,
+Bruno
+
+--uzroyt2mhu6e5h2z
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQQTUrsHCxGmQ5vyKRAZtd3tyEY2kgUCYlWXWAAKCRAZtd3tyEY2
+krH+AQCOA6xs+ZfEOtSqkDyDQo7guUekOMvEkl3nwrFWp7XxcwEA/U77ucSBvvUC
+Pjapi3KlYMIytoVGNTDlwkBkCxQP6w4=
+=Pzsg
+-----END PGP SIGNATURE-----
+
+--uzroyt2mhu6e5h2z--
