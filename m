@@ -1,104 +1,79 @@
-Received: from mail-lf1-f47.google.com (mail-lf1-f47.google.com [209.85.167.47])
+Received: from mail-pf1-f179.google.com (mail-pf1-f179.google.com [209.85.210.179])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 488AE23AB;
-	Wed, 13 Apr 2022 20:34:19 +0000 (UTC)
-Received: by mail-lf1-f47.google.com with SMTP id k5so5608516lfg.9;
-        Wed, 13 Apr 2022 13:34:19 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2BF7D2F23;
+	Wed, 13 Apr 2022 20:40:17 +0000 (UTC)
+Received: by mail-pf1-f179.google.com with SMTP id w7so2988501pfu.11;
+        Wed, 13 Apr 2022 13:40:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=v/vz88+MzPaF9+gxdJjGj9X24km3lwGNweK9uHwzCBE=;
-        b=LcP3wgBirZj9Ean8yRjuduXu8kcCP+8ZJJviSlkM0WcUGQVUW9r3Beube3Q/w8167U
-         fnHJSfeViDL5ZLnwl2lHsNXTGGa/t9CWxXeKtalepowghtRZk9bEIHwhvd5q5oqJpLm7
-         VVFbNA4biJ541tbDKQ8QEPuLizcbl8zNut09yKmxiQc+gdabofYoBL8Nt/FWJIgzbD3c
-         LFVVIa5vbG8JX4fcNjf73J6MyM+b4z/Cv/+MN08wa8Qnp9GrySucokoF6dA9F2VSPVwp
-         +5jQn+c2Oe42MgA5kJyoh+SlTHli796o4nSdsTdXLAhnhdgJ8nRebGXKgVWJ73xQo/im
-         61zw==
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=ofzGk5ytG3lYUW93rmfcZLd9Bf4p7SSPpSO9tlTspg8=;
+        b=Eud21792IoQcEQWMPPwHo7zSKQqwGSLROhNSufibN233z9QUrPLBbdTvwSwHOc3lxe
+         ZDmH1wU+Kx4XTgSoeFVg+lCkngTuZmx4Q2sQTVVK6lWcZMkKnva0hUk8jvC4XWwWjMzA
+         ZQCoZH7ZMlqJSZ04xwtoJS+vSGRumO/sxka8wCj8KBGGw9V6fyrSsrhObIcFZSF8M0M4
+         8liOfKsmjA0vOS8VTcSltiFqRWxF7WezoT/jg931VPEPWoXxMxwAS8e9NK5Gtswf+VMh
+         fxm+KHGwy8eB/pAlPhVfpFm57vqKIiTr4/uAG1b/yBuN0hyzsXGaSgRLVHS5QZEu3HFO
+         FdPg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=v/vz88+MzPaF9+gxdJjGj9X24km3lwGNweK9uHwzCBE=;
-        b=xIHyGVbyjeD8PYNA63tDNil9M+ic9oR+WP7Xs/1xyiRhk+8qeOWVeL1RmSmCYrcF69
-         RT8oKBEQDxcnTK86phcsK+Ia3Uanb20K5LKwf3Osv36IewIKsbAUSbB2HJg+x5/EzE9K
-         oqbYKirjA0K8BbxZo865qUh0lQdy1sXM4tgF2SNJeu91zLnN44XrWS9p2nM2kyS3CS7y
-         nYJ6xjveONk6rrUWANTy8usSLKKkAT9gTg1QnjKSxJkR/kokDO/NZa/rJjJ1V7nvqSCj
-         XtoFTL/ywxJxO48mvplxNSplaDWbuFuArJ4piYBc3vjXhAAME10Cwg8sD1cm90QYJKV0
-         3ctQ==
-X-Gm-Message-State: AOAM533zYkHxpqd1yH+byF2Q5yvJHtdJOeYSzQxhaGnzdK9psm5pEdRi
-	nN0ebeIyN8MHN72gJaKyPcKWOiD5jPtxjw==
-X-Google-Smtp-Source: ABdhPJxN01CWnr32DOv6C3yB1Nh97ZYIuWrEWuN2tQ9CtSTD4i8eVnP0H+vGx/FX7bTWphFt6EEtuQ==
-X-Received: by 2002:a05:6512:1322:b0:44b:75d:ac8 with SMTP id x34-20020a056512132200b0044b075d0ac8mr28290383lfu.213.1649882057138;
-        Wed, 13 Apr 2022 13:34:17 -0700 (PDT)
-Received: from [192.168.1.11] ([94.103.225.17])
-        by smtp.gmail.com with ESMTPSA id e18-20020a196752000000b0046b8d3cd18csm2754lfj.55.2022.04.13.13.34.16
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 13 Apr 2022 13:34:16 -0700 (PDT)
-Message-ID: <e32f1f61-127c-3e90-0f06-7b60cdca9ef7@gmail.com>
-Date: Wed, 13 Apr 2022 23:34:14 +0300
+        bh=ofzGk5ytG3lYUW93rmfcZLd9Bf4p7SSPpSO9tlTspg8=;
+        b=CoGjF6cOYEPplgR6j8ZqSZiz1NMPGRJQqqxnRYJTV0CjMQMEaeIlGAJvnu/OGFCINH
+         d7lfxycs9Rr39MXZ/9+kWuvb2u7ODxydWbOhax87CUEogeDcLel00ihJyTIqCAn8mxY6
+         Y4VeM6iQ2PTKA/o881+hzukfsNUHcdK29foR4OUW+3IiakeQPCiAjKuSKnvXht6BqRF+
+         zGfzylpQuYgAhOS8fwzZQF8/1AI3KQ8HxcAJyu0wkI3u/TVBsZPtL6WZ6TRWWWDeLmnl
+         98WwrNrIanXtpYYY0ZF4pOcKKx8vqHdGjPV6wpyh5SpKZdOXjcgUJNDW9l4Xb0DDLGa4
+         L/XQ==
+X-Gm-Message-State: AOAM531BL0w/u/+D55qJFhfUvF9TsVrNNdcsMix0DsEQjg4sDyCvQA7X
+	0ahEVPYDcTTbXiKqLLVnp5g=
+X-Google-Smtp-Source: ABdhPJxQPKxszN7r8f/WJ8l58NLLTGIARGqd7xrDBil970t2NDCKHhCewJxsqZLT3MI9JecP3P5rDQ==
+X-Received: by 2002:a63:510d:0:b0:39d:3f7d:2b0d with SMTP id f13-20020a63510d000000b0039d3f7d2b0dmr15992746pgb.448.1649882416582;
+        Wed, 13 Apr 2022 13:40:16 -0700 (PDT)
+Received: from aliyaR-laptop.domain.name ([14.139.241.88])
+        by smtp.googlemail.com with ESMTPSA id a67-20020a621a46000000b005060c73ef43sm3969101pfa.195.2022.04.13.13.40.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 13 Apr 2022 13:40:16 -0700 (PDT)
+From: Aliya Rahmani <aliyarahmani786@gmail.com>
+To: sudipm.mukherjee@gmail.com
+Cc: gregkh@linuxfoundation.org,
+	linux-staging@lists.linux.dev,
+	outreachy@lists.linux.dev,
+	Aliya Rahmani <aliyarahmani786@gmail.com>
+Subject: [PATCH] staging: sm750fb: Remove volatile
+Date: Thu, 14 Apr 2022 02:09:15 +0530
+Message-Id: <20220413203914.59533-1-aliyarahmani786@gmail.com>
+X-Mailer: git-send-email 2.25.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH 5/6] staging: r8188eu: replace spaces with tabs
-Content-Language: en-US
-To: Jaehee Park <jhpark1013@gmail.com>, Larry.Finger@lwfinger.net
-Cc: phil@philpotter.co.uk, gregkh@linuxfoundation.org,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
- outreachy@lists.linux.dev
-References: <cover.1649880454.git.jhpark1013@gmail.com>
- <c2d719eba2a374be573034022218a098e4db9e77.1649880454.git.jhpark1013@gmail.com>
-From: Pavel Skripkin <paskripkin@gmail.com>
-In-Reply-To: <c2d719eba2a374be573034022218a098e4db9e77.1649880454.git.jhpark1013@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 
-Hi Jaehee,
+Remove volatile to fix checkpatch.pl warning.
 
-On 4/13/22 23:11, Jaehee Park wrote:
-> Use tabs instead of spaces. Issue found with checkpatch.
-> WARNING: suspect code indent for conditional statements
-> 
-> Signed-off-by: Jaehee Park <jhpark1013@gmail.com>
-> ---
->   drivers/staging/r8188eu/core/rtw_mlme.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/r8188eu/core/rtw_mlme.c b/drivers/staging/r8188eu/core/rtw_mlme.c
-> index b943fb190e4c..7a90fe826d1d 100644
-> --- a/drivers/staging/r8188eu/core/rtw_mlme.c
-> +++ b/drivers/staging/r8188eu/core/rtw_mlme.c
-> @@ -722,7 +722,7 @@ void rtw_surveydone_event_callback(struct adapter	*adapter, u8 *pbuf)
->   			pmlmepriv->to_join = false;
->   			s_ret = rtw_select_and_join_from_scanned_queue(pmlmepriv);
->   			if (s_ret == _SUCCESS) {
-> -			     _set_timer(&pmlmepriv->assoc_timer, MAX_JOIN_TIMEOUT);
-> +				_set_timer(&pmlmepriv->assoc_timer, MAX_JOIN_TIMEOUT);
->   			} else if (s_ret == 2) { /* there is no need to wait for join */
->   				_clr_fwstate_(pmlmepriv, _FW_UNDER_LINKING);
->   				rtw_indicate_connect(adapter);
+Signed-off-by: Aliya Rahmani <aliyarahmani786@gmail.com>
+---
+ drivers/staging/sm750fb/sm750.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Not related to your patch, but looks like `s_ret` can't be 2.
+diff --git a/drivers/staging/sm750fb/sm750.h b/drivers/staging/sm750fb/sm750.h
+index aff69661c8e6..7a11f8593596 100644
+--- a/drivers/staging/sm750fb/sm750.h
++++ b/drivers/staging/sm750fb/sm750.h
+@@ -52,7 +52,7 @@ struct lynx_accel {
+ 	/* base virtual address of DPR registers */
+ 	volatile unsigned char __iomem *dprBase;
+ 	/* base virtual address of de data port */
+-	volatile unsigned char __iomem *dpPortBase;
++	unsigned char __iomem *dpPortBase;
+ 
+ 	/* function pointers */
+ 	void (*de_init)(struct lynx_accel *accel);
+-- 
+2.25.1
 
-rtw_select_and_join_from_scanned_queue
-
-   rtw_joinbss_cmd
-
-     rtw_enqueue_cmd
-       _rtw_enqueue_cmd <- always returns SUCCESS
-
-
-Other functions from calltrace may return _FAIL, but _FAIL is not equal 
-2, right?
-
-
-
-With regards,
-Pavel Skripkin
