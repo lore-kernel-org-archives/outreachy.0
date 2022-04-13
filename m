@@ -1,96 +1,105 @@
-Received: from mail-lj1-f178.google.com (mail-lj1-f178.google.com [209.85.208.178])
+Received: from mail-ej1-f54.google.com (mail-ej1-f54.google.com [209.85.218.54])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5A4C12F23;
-	Wed, 13 Apr 2022 21:03:59 +0000 (UTC)
-Received: by mail-lj1-f178.google.com with SMTP id m8so3701478ljc.7;
-        Wed, 13 Apr 2022 14:03:59 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 34D092F23;
+	Wed, 13 Apr 2022 21:22:17 +0000 (UTC)
+Received: by mail-ej1-f54.google.com with SMTP id l7so6521341ejn.2;
+        Wed, 13 Apr 2022 14:22:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=uHKbCBmnIIIRLgpQ0EmAyBKmMcbrd4irGnlfoP/C+RI=;
-        b=ZP17KYX4mcH6KpW1uhtlPKqUArldlkE90jZ+7dlzp20+ZqNJn1arSXOfIMzcjuq9nN
-         4egETmP+sj3If9hxd+ZqG6gUmhaW/V7gpLfkRrBqbtlrJ82vX5KLnsnfFhkdDGtN5tKQ
-         j0sgoh8rAtu7SkB4ZB6GXGKSQDKcPyWlVYt3zf+x/RLtQZU9BCJRMs3IesiHmyy7yCUh
-         6tTMYJb+kdIoyE2op4+QE5CCLN7E4pexI9hjwkUxvofdBRS+UF6GA9HbtwRZmu0Q6zvq
-         GA23a94Eof5rE8cfcT4y/kYQ4gcY5/Zuf6P9UhaXQDphXlH4N4OlVvXo2AW5K7Ur+prz
-         W1uQ==
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=LbnAeJu+mSJrOhK0YF2KczoT41D0h8PfC3LbVNUGzpE=;
+        b=aa+5LyswOpxqjG7WzCPpOCdbgp/WuK2qXlP817DNGTK6jUIufD5TzDs9RA2MsJln1+
+         0Z1lvg7BMweewUwAduqBkG49jSLyPlzD9kj6T816ZVKoAnlVMrxCNvd1oSKsRfYUHfeC
+         AQsxsu7H8tANDPU42PgNsaHyv0dQGPMzFr2rFPJNsIpQokqz7+ZAAES2h93mssw7W6ZE
+         TPP6rEOtrkHPw2Rd/mPb6YYuQcnObWMqeIiACyaUxjwN6YacZTnf18qAheRAd40FK+7V
+         z57zj7n4iKeNu1CYELHZbw3k3tknVlfG8nZPMdsu7QPoa8r3NJEYjs2enKa4Y5gEhUld
+         WTLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=uHKbCBmnIIIRLgpQ0EmAyBKmMcbrd4irGnlfoP/C+RI=;
-        b=St4F9yo4eGrTi8VFyLpE8wXRjn7HDbhskWnkpfhYWHjZ7RRDBIlOlhfk89EVaOl+T4
-         /SFUQCinhJ6zdzfdPkBBEq3/pabx/J6i4xcNhGu/knQN+9N4D30WIi25Jpttrn2R2diT
-         iEwFLy7UqRnX/elhGYG5ybcscW7YkL2ilv+5YYSNLzEH32qZ1n/10Ev0RVQglLBb0rVU
-         YfNagvjswAm8S8+b7YpE1Z6pV4kQmJBnepVAi18QbLCNIlhwhlBGw7tXm+fKAh9iFoaT
-         53kHZQy82P9nHa9IjlbF/aOzbmUGHFiSXx0C2ttTjdp/HeAfGME6a3W0XQI3Dh07G0Mz
-         STDw==
-X-Gm-Message-State: AOAM532sJJ+ncdx3ae277L7b6EZr3Wv27Wuu5Io78Rw8U1wYLRDzQe5q
-	FNgTD9f8vxtuEYUndIIgnK0=
-X-Google-Smtp-Source: ABdhPJwQnSfWZWGA34zlZV9A8IlUzMB8+GgkTdwZVb4zbXDZ6syiCOLwpkFz+BZLV9YU45+kOxf/oQ==
-X-Received: by 2002:a2e:9e90:0:b0:24a:fb77:814 with SMTP id f16-20020a2e9e90000000b0024afb770814mr28798748ljk.186.1649883837393;
-        Wed, 13 Apr 2022 14:03:57 -0700 (PDT)
-Received: from [192.168.1.11] ([94.103.225.17])
-        by smtp.gmail.com with ESMTPSA id s12-20020a19770c000000b0046b87800f71sm9846lfc.49.2022.04.13.14.03.56
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 13 Apr 2022 14:03:56 -0700 (PDT)
-Message-ID: <b7668e4f-d46e-8592-31f4-b192053de7ee@gmail.com>
-Date: Thu, 14 Apr 2022 00:03:56 +0300
+        bh=LbnAeJu+mSJrOhK0YF2KczoT41D0h8PfC3LbVNUGzpE=;
+        b=F4s8Cxcnfu8s0A6B1rAX43zyqBDXo9FMMwQRtHxeORAQOIt5tjYTOSFZeU64Zr+UNN
+         xH00FGNvRFfaAt2vHxogH5CiERZ7MIYZH0BhCmW5DjXJPw0Fp2U4PAMeTH5EHHZa6hn+
+         q9YrFUnZdJyTh3+ZWtY5ju2FnRTwZNgG1HyEvsiEklY01SZWlMAFwPtxi0bkyet5ERqu
+         eQXxIK4N2lCop0MNC0T3wmVA/E2jVxN+o1I/KDC5gpN+xba1CUzHQ9BnXEE4e2IKw0WF
+         zBt+0BR0rQ/xvHp4eshHipAN/OGbii9umtmvuQXoYlJMSyXGwEmAlgKmJGUQHk3wvbd0
+         uXkQ==
+X-Gm-Message-State: AOAM531mKFHXFUne5SeJRlmylNo0946HFu/GbKENuur6rIQ2I5pyGOxr
+	+gZQ3wf9gLkjYzLGm3VWc4w=
+X-Google-Smtp-Source: ABdhPJxvooD4u6SAjw+4A4hPyn40ux/U5r40VIzqQDjzdLtvQHLsWPGxk146dW4t8vuSsZKQFmNgbQ==
+X-Received: by 2002:a17:907:3f0f:b0:6e8:3b05:cc6 with SMTP id hq15-20020a1709073f0f00b006e83b050cc6mr30886644ejc.91.1649884935461;
+        Wed, 13 Apr 2022 14:22:15 -0700 (PDT)
+Received: from localhost.localdomain (host-79-43-11-75.retail.telecomitalia.it. [79.43.11.75])
+        by smtp.gmail.com with ESMTPSA id k22-20020a508ad6000000b00420bd71e06bsm30883edk.79.2022.04.13.14.22.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 13 Apr 2022 14:22:14 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
+	Tsuchiya Yuto <kitakar@gmail.com>,
+	Martiros Shakhzadyan <vrzh@vrzh.net>,
+	Hans de Goede <hdegoede@redhat.com>,
+	linux-media@vger.kernel.org,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	Ira Weiny <ira.weiny@intel.com>,
+	outreachy@lists.linux.dev
+Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+Subject: [PATCH] staging: media: atomisp: Use kmap_local_page() in hmm_set()
+Date: Wed, 13 Apr 2022 23:22:10 +0200
+Message-Id: <20220413212210.18494-1-fmdefrancesco@gmail.com>
+X-Mailer: git-send-email 2.34.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH v3] staging: vt6655f: rxtx: code style - Fix Lines should
- not end with a '('
-Content-Language: en-US
-To: Aliya Rahmani <aliyarahmani786@gmail.com>, forest@alittletooquiet.net
-Cc: gregkh@linuxfoundation.org, linux-staging@lists.linux.dev,
- outreachy@lists.linux.dev
-References: <20220413190021.36742-1-aliyarahmani786@gmail.com>
-From: Pavel Skripkin <paskripkin@gmail.com>
-In-Reply-To: <20220413190021.36742-1-aliyarahmani786@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 
-Hi Aliya,
+The use of kmap() is being deprecated in favor of kmap_local_page()
+where it is feasible. In file pci/hmm/hmm.c, function hmm_set() calls
+kmap() / kunmap() where kmap_local_page() can instead do the mapping.
 
-On 4/13/22 22:00, Aliya Rahmani wrote:
-> Code style warnings reported by checkpatch.
-> Improve the layout of a function header:
-> *Put the first parameter immediately after the '(' and align the other
-> parameters underneath it.
-> 
-> Signed-off-by: Aliya Rahmani <aliyarahmani786@gmail.com>
-> ---
-> v1->v2 changes: Put static and void on a single line.
-> 
-> v2->v3 changes: Rework commit description.
-> ---
->   drivers/staging/vt6655/rxtx.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
-> index 01dc83b2f4bc..2853cb9efd30 100644
-> --- a/drivers/staging/vt6655/rxtx.c
-> +++ b/drivers/staging/vt6655/rxtx.c
-> @@ -568,7 +568,7 @@ s_uFillDataHead(
->   }
->   
->   static void
-> -s_vFillRTSHead(struct vnt_private *pDevice,
-> +s_vFillRTSHead( struct vnt_private *pDevice,
+With kmap_local_page(), the mapping is per thread, CPU local and not
+globally visible. Therefore, hmm_set()() is a function where the use
+of kmap_local_page() in place of kmap() is correctly suited.
 
-You have only added extra space. Why?
+Convert the calls of kmap() / kunmap() to kmap_local_page() /
+kunmap_local().
 
+Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+---
+ drivers/staging/media/atomisp/pci/hmm/hmm.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
+diff --git a/drivers/staging/media/atomisp/pci/hmm/hmm.c b/drivers/staging/media/atomisp/pci/hmm/hmm.c
+index 6394385b6637..46ac082cd3f1 100644
+--- a/drivers/staging/media/atomisp/pci/hmm/hmm.c
++++ b/drivers/staging/media/atomisp/pci/hmm/hmm.c
+@@ -563,7 +563,7 @@ int hmm_set(ia_css_ptr virt, int c, unsigned int bytes)
+ 		idx = (virt - bo->start) >> PAGE_SHIFT;
+ 		offset = (virt - bo->start) - (idx << PAGE_SHIFT);
+ 
+-		des = (char *)kmap(bo->page_obj[idx].page) + offset;
++		des = (char *)kmap_local_page(bo->page_obj[idx].page) + offset;
+ 
+ 		if ((bytes + offset) >= PAGE_SIZE) {
+ 			len = PAGE_SIZE - offset;
+@@ -579,7 +579,7 @@ int hmm_set(ia_css_ptr virt, int c, unsigned int bytes)
+ 
+ 		clflush_cache_range(des, len);
+ 
+-		kunmap(bo->page_obj[idx].page);
++		kunmap_local(des);
+ 	}
+ 
+ 	return 0;
+-- 
+2.34.1
 
-
-With regards,
-Pavel Skripkin
