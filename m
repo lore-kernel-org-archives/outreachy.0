@@ -1,109 +1,68 @@
-Received: from mail-io1-f45.google.com (mail-io1-f45.google.com [209.85.166.45])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0981428FE
-	for <outreachy@lists.linux.dev>; Wed, 13 Apr 2022 12:48:05 +0000 (UTC)
-Received: by mail-io1-f45.google.com with SMTP id 9so1716630iou.5
-        for <outreachy@lists.linux.dev>; Wed, 13 Apr 2022 05:48:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ieee.org; s=google;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=9jPZG9/+m97btsIbUfBFkqEN0JQ7wZ3+b8nQQ/RX0/U=;
-        b=QBoFY5ec7cTEQSifRW8FUGrkedVgwRZQotcNk3yipnOF3lhr9Pcn4eFZ9Puuwt97s9
-         uXvcFWEzJ2ok1oCj6cpgUqFryCjxuO3hPjWQrNyMdJDmwZw2HOQrGwO1anN03ZPZZR65
-         VSUM5TcLIQTgDrKFO1rlFgqmx4H88Sn4OPrXo=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=9jPZG9/+m97btsIbUfBFkqEN0JQ7wZ3+b8nQQ/RX0/U=;
-        b=kVEXYQ3GcHd8VFHTpCFsn8Z2FOh3bZ3Apr20j3NRB/HxMgftINah0YGSaEkFLkSyGp
-         nT5WwBvgLJQr10ff0A5en3S7rMbolMJgtFwF187ciwTc9YECWmRbcohplO5zIjftsZcc
-         OIheM7eAd2HFwfYVtJM8W3aMN/Wzmf+9lA/i4B7EbNcL8Ad6lNzZhrlV3NxvZe7GyoCv
-         C5L0NTa1KiqLjWAro+454u51ZBCr5G5SABkHSwx9kstKNQxmyA8lt68AayVq6b8AXuan
-         SLJgr2MhL17VVxRfaRUrWM9EK6TK6BcH/eTp0WDoaStnL8J5oojI/xAG87zG0uPlHPaK
-         K5gw==
-X-Gm-Message-State: AOAM533WezBN1MqMwb3xX46zcgxm4KHaLZ1BtxEeBsPP9lJT/mX5e4Jm
-	nyoYNho+8L/R4UlN4toPKL+9Gw==
-X-Google-Smtp-Source: ABdhPJwcDwROpz/UfIELVwrdwOuvg76PG0BW+jpB2S6XlS8+0l+GjJIkxkMWI7DdRYklftWbiiTamQ==
-X-Received: by 2002:a02:271f:0:b0:326:af4:3f0c with SMTP id g31-20020a02271f000000b003260af43f0cmr11290770jaa.300.1649854085065;
-        Wed, 13 Apr 2022 05:48:05 -0700 (PDT)
-Received: from [172.22.22.4] (c-73-185-129-58.hsd1.mn.comcast.net. [73.185.129.58])
-        by smtp.googlemail.com with ESMTPSA id x186-20020a6bc7c3000000b00648deae6630sm24343335iof.54.2022.04.13.05.48.04
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 13 Apr 2022 05:48:04 -0700 (PDT)
-Message-ID: <a4e5c567-63dd-f7de-114b-a357075444a2@ieee.org>
-Date: Wed, 13 Apr 2022 07:48:03 -0500
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B885F23AE
+	for <outreachy@lists.linux.dev>; Wed, 13 Apr 2022 14:56:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1649861781; x=1681397781;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=bG3YpEdyMU3+sdESGcm4VWbEga844Tq2XFHs6/A6+Mw=;
+  b=NSRYX2/Hfd8sPuQU1ohHG/NsXfgxSkiJB2zU6iyOxwGYx7f2OsZiAm4x
+   fVapvbq453HfitG1B3CoiSBZ0IasHjZmi0n9KuyW7E8RanGVA+Lw3D+at
+   BQ3RzxoifAGvBylunYJEf7fhVB+nDvngGoGtiCIicyMHc+l4CJXnTcXIp
+   B1p9WOtP2rmwQI1Xdw/uCcmtRFHqeDsKikqlWbZhetMqeQag6i3iUVLbq
+   qJW8x3d4ZsAmZgH6NzTBs4IdsjeOCaoyuhbdqHggIHX7fg/1fXOTyLwU7
+   zzaszi1z+tV5SFNIc1F+lOMqRkceoHmkFX7GVk3OGGY9/DtDmhptFCy/h
+   w==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10315"; a="262869295"
+X-IronPort-AV: E=Sophos;i="5.90,257,1643702400"; 
+   d="scan'208";a="262869295"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Apr 2022 07:56:21 -0700
+X-IronPort-AV: E=Sophos;i="5.90,257,1643702400"; 
+   d="scan'208";a="508009180"
+Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
+  by orsmga003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Apr 2022 07:56:20 -0700
+Date: Wed, 13 Apr 2022 07:58:16 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+Cc: "outreachy@lists.linux.dev" <outreachy@lists.linux.dev>
+Subject: Re: Should we Cc this list when submitting patches for subsystems
+ other than "staging"?
+Message-ID: <20220413145816.GA1241133@alison-desk>
+References: <1859502.6tgchFWduM@leap>
+ <20220412223603.GA1237891@alison-desk>
+ <1891396.fIoEIV5pvu@leap>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.7.0
-Subject: Re: [PATCH v3 2/2] staging: greybus: remove empty callback function
-Content-Language: en-US
-To: Jaehee Park <jhpark1013@gmail.com>, johan@kernel.org
-Cc: elder@kernel.org, gregkh@linuxfoundation.org,
- greybus-dev@lists.linaro.org, linux-staging@lists.linux.dev,
- linux-kernel@vger.kernel.org, outreachy@lists.linux.dev,
- Dan Carpenter <dan.carpenter@oracle.com>
-References: <cover.1649824370.git.jhpark1013@gmail.com>
- <12037ae2502ad7d0311bcdf2178c3d2156293236.1649824370.git.jhpark1013@gmail.com>
-From: Alex Elder <elder@ieee.org>
-In-Reply-To: <12037ae2502ad7d0311bcdf2178c3d2156293236.1649824370.git.jhpark1013@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1891396.fIoEIV5pvu@leap>
 
-On 4/12/22 11:38 PM, Jaehee Park wrote:
-> Remove the optional remove callback for the soc_codec_dev_gbaudio
-> structure. The only place it is referenced is
-> snd_soc_component_remove() which is only called if the sound_component
-> pointer is non-null. The null function pointers here can be optionally
-> ommitted. When a sound component is registered this way, the remove
-> callback is optional. We can safely remove the whole gbcodec_remove
-> function, which used to be an empty function with a void return type.
+On Wed, Apr 13, 2022 at 12:09:46AM -0700, Fabio M. De Francesco wrote:
+> On mercoled? 13 aprile 2022 00:36:03 CEST Alison Schofield wrote:
+> > On Tue, Apr 12, 2022 at 10:21:31PM +0200, Fabio M. De Francesco wrote:
 
-Now I think your description is a little long...  But that's OK.
 
-This looks good to me.  Thank you for responding to all our
-feedback.
+> Good to know, but unfortunately now is too late for sharing on this list 
+> the patches which I've already sent to linux-kernel@vger.kernel.org and 
+> other lists, but...
+>
 
-Reviewed-by: Alex Elder <elder@linaro.org>
+Your patches related to HIGHMEM project are of most interest to this list.
+Please 'CC the outreachy list on the next rev of any of those patches,
+and 'CC outreachy on any new ones related to HIGHMEM.
+
+Same goes for any patches for memblock and networking projects.
+
+Let's give all applicants easy access to all project related info.
+
+Thanks,
+Alison
 > 
-> Suggested-by: Dan Carpenter <dan.carpenter@oracle.com>
-> Signed-off-by: Jaehee Park <jhpark1013@gmail.com>
-> ---
->   drivers/staging/greybus/audio_codec.c | 8 --------
->   1 file changed, 8 deletions(-)
-> 
-> diff --git a/drivers/staging/greybus/audio_codec.c b/drivers/staging/greybus/audio_codec.c
-> index 0f50d1e51e2c..dc030caa64ba 100644
-> --- a/drivers/staging/greybus/audio_codec.c
-> +++ b/drivers/staging/greybus/audio_codec.c
-> @@ -1029,12 +1029,6 @@ static int gbcodec_probe(struct snd_soc_component *comp)
->   	return 0;
->   }
->   
-> -static void gbcodec_remove(struct snd_soc_component *comp)
-> -{
-> -	/* Empty function for now */
-> -	return;
-> -}
-> -
->   static int gbcodec_write(struct snd_soc_component *comp, unsigned int reg,
->   			 unsigned int value)
->   {
-> @@ -1049,8 +1043,6 @@ static unsigned int gbcodec_read(struct snd_soc_component *comp,
->   
->   static const struct snd_soc_component_driver soc_codec_dev_gbaudio = {
->   	.probe	= gbcodec_probe,
-> -	.remove	= gbcodec_remove,
-> -
->   	.read = gbcodec_read,
->   	.write = gbcodec_write,
->   };
-
