@@ -1,47 +1,42 @@
-Received: from mail-qk1-f179.google.com (mail-qk1-f179.google.com [209.85.222.179])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BE3CB3234
-	for <outreachy@lists.linux.dev>; Thu, 14 Apr 2022 23:09:28 +0000 (UTC)
-Received: by mail-qk1-f179.google.com with SMTP id e128so3490730qkd.7
-        for <outreachy@lists.linux.dev>; Thu, 14 Apr 2022 16:09:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
-        bh=0VLp4N16N1/GWwUnD8EMen/RViLBDYcphNsOnIxIrZY=;
-        b=A0XKZQMv6pqurFtbkSeKOPEqs7NeCPuuNkbsWic5tLxrwnGRsTQwu+tIJrK1vHzDIJ
-         cke2lsVTVqnLRGQen9vKGlUse8jNvOl86w1JHMOd6W8EtEu9huqjiwWFIb1/cBbqahJh
-         p2mi8N9178HjjFAtRGl8dz+UCDka2XzEyVISbQZKZewanduiYOX8ZQ5dNuxVz/3YrYiQ
-         Gi48e991QJHoT5SSEHTB/DYZYputTgir1/iSyK5GY+1+0/jV48MWw0npO590snIHCweu
-         ogiNWpOZeJunEVl4HBlnLrvn5P1aEqcmhSOopx/l0ob6iVIQ+Y3jMOBruL/SEBeXbHMj
-         m+1g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition;
-        bh=0VLp4N16N1/GWwUnD8EMen/RViLBDYcphNsOnIxIrZY=;
-        b=GXzW4Bsdh/CuSQHHDAgGnWLjmDLcsZsEJmoHGeFxNLq40cr1lOa9L5yPzDOl7BieQ2
-         z5GqCN8Q17PvpUYXTe7y7xj0EbUQtoMsyQOfGTqkxQlQBSYlfO+u7cMHXvPGa6J4BLPC
-         I5a04sc3Gz62KeWJCu4UO+XpcWTVqpEsFbb2sJy9uxI6/kgnBghWSNMkxh57IeMP/ox3
-         LINdsZRg4rLFXyvzbFumRHND6dzDt86WeVctWozoUjLTP3ltgfBuni5OSjIK2Pqn7W41
-         8esbiN6uUyEdNhK1rcTcpmf7omqKhF/JrKp6i7A7MgMKYSz1zW6MQfASaWJBL7NxLuJT
-         q0xg==
-X-Gm-Message-State: AOAM531fdo3QyCUy68af6hUmNmbL/fMsNkkzNFUTy8pAnP9RYyX58RnE
-	t+zKcFsqySxYiTrxWjr/aPpow8UjfzHqxA==
-X-Google-Smtp-Source: ABdhPJyUNjwh0MbEnwzekOIHyUyglYPWmGqkMjLPRooJIDMMnP+7lVt8MFkqH7r+qKFPe64+3YU83A==
-X-Received: by 2002:a37:f50b:0:b0:680:d577:baf6 with SMTP id l11-20020a37f50b000000b00680d577baf6mr3695391qkk.328.1649977767620;
-        Thu, 14 Apr 2022 16:09:27 -0700 (PDT)
-Received: from euclid ([71.58.109.160])
-        by smtp.gmail.com with ESMTPSA id l21-20020a05620a211500b0069bf630f3b4sm1554173qkl.125.2022.04.14.16.09.26
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 14 Apr 2022 16:09:27 -0700 (PDT)
-Date: Thu, 14 Apr 2022 19:09:23 -0400
-From: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
-To: sbrivio@redhat.com
-Cc: outreachy@lists.linux.dev
-Subject: [PATCH v2] mbuto: support building a minimal image for kernel
- selftests
-Message-ID: <20220414230923.GA594872@euclid>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 450B43234;
+	Thu, 14 Apr 2022 23:43:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1649979833; x=1681515833;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=0IUhWj+DA/vCGWmzK8INQH8Jud0K/gNfGVfy/BfNSHA=;
+  b=UxVrGVq7s7CxYZTs3Geu5XdX80Q2cbMYxlSvnMS3EhrYjnj6JRBa5/ux
+   Vxyr1iqBdb3WFduJvgIvkmBG84WkATFGM863hBhjZ/7YFJIckamY6F0Fy
+   BL3Uw3o4wnvgkOK6Lw7Qj2/AOwItGuzuj5E/r2yvUyrhCw+rqUoqKTW40
+   ID43DIOy/isTAktsNeQqCg+G5dAEbNDCEQowDPNfg5Q5XujHGweKE82p9
+   BfmbGsaZBC9flUoeizBiyX2tUI1nKV4a6jesH3NXukDsGnE/G75uB6mAs
+   J1zU6uTwE1/Lc9J6TbiT/nRL1GRPiMpkoQA364UhY7iSNGv/JbknIZwfh
+   A==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10317"; a="288115495"
+X-IronPort-AV: E=Sophos;i="5.90,261,1643702400"; 
+   d="scan'208";a="288115495"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Apr 2022 16:43:52 -0700
+X-IronPort-AV: E=Sophos;i="5.90,261,1643702400"; 
+   d="scan'208";a="591371274"
+Received: from aimeehax-mobl1.amr.corp.intel.com (HELO localhost) ([10.212.113.132])
+  by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Apr 2022 16:43:51 -0700
+Date: Thu, 14 Apr 2022 16:43:51 -0700
+From: Ira Weiny <ira.weiny@intel.com>
+To: Rebecca Mckeever <remckee0@gmail.com>
+Cc: outreachy@lists.linux.dev, Larry Finger <Larry.Finger@lwfinger.net>,
+	Phillip Potter <phil@philpotter.co.uk>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 4/4] staging: r8188eu: use sizeof(*pvar) for allocating
+ structs
+Message-ID: <Ylixt2gxhcmDJq11@iweiny-desk3>
+References: <cover.1649233201.git.remckee0@gmail.com>
+ <5b526d8c178d89328de935ff4ff57651bdd8379b.1649233201.git.remckee0@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -50,255 +45,302 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <5b526d8c178d89328de935ff4ff57651bdd8379b.1649233201.git.remckee0@gmail.com>
 
-Adds suboption -c for the case of -p kselftests for choosing a test collection
-to run. For example, specifying "-p kselftests -c net" creates an image that
-contains only the tests from the net collection and only the kernel modules
-needed to run those tests. If there are missing modules for running the tests, a
-warning will be emitted showing missing modules names. The -c option is similar
-to the -c option of run_kselftests.sh, but unlike run_kselftest.sh's option it
-currently it doesn't support specifying multiple collections. This will be fixed
-later.
+On Wed, Apr 06, 2022 at 03:31:00AM -0500, Rebecca Mckeever wrote:
+> Use sizeof(*pvar) instead of sizeof(struct var) when allocating memory.
+> This conforms to Linux kernel coding style, improves readability,
+> and decreases the opportunity for bugs if the pointer variable type is
+> changed. Issue found by checkpatch messages of the following format:
+> 
+> CHECK: Prefer kzalloc(sizeof(*pvar)...) over kzalloc(sizeof(struct var)...)
+> 
+> Signed-off-by: Rebecca Mckeever <remckee0@gmail.com>
 
-Also adds suboption -t for the case of -p kselftests for choosing a specific
-test. For example, specifying "-p kselftests -t net:ip_defrag.sh" creates an
-image that runs only the single test when booted. This option is also similar to
-run_kselftest.sh's -t option, but it is also lacking some functionality, which
-will be fixed later.
+Reviewed-by: Ira Weiny <ira.weiny@intel.com>
 
-Signed-off-by: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
-
-v1 -> v2: Update TOOLS, Use variable names for commands, and use capitalized
-versions of run_kselftests.sh options (-C and -T).
----
- mbuto | 161 ++++++++++++++++++++++++++++++++++++++++++++++++----------
- 1 file changed, 135 insertions(+), 26 deletions(-)
-
-diff --git a/mbuto b/mbuto
-index c643c9b..74c81eb 100755
---- a/mbuto
-+++ b/mbuto
-@@ -205,7 +205,12 @@ profile_kselftests() {
- 
- 	KERNEL="$(cat include/config/kernel.release)"
- 
--	${MAKE} -C tools/testing/selftests/ install >/dev/null 2>&1
-+	__skip_targets=$(${AWK} '/^TARGETS/ { print $3}' \
-+		tools/testing/selftests/Makefile | \
-+		${GREP} -v "^${SUBOPT_collection}$" | ${TR} '\n' ' ')
-+
-+	${MAKE} SKIP_TARGETS="${__skip_targets}" -C \
-+		tools/testing/selftests/ install >/dev/null 2>&1
- 
- 	MODDIR="$(${REALPATH} .mbuto_mods)"
- 	${RM} -rf "${MODDIR}"
-@@ -213,19 +218,46 @@ profile_kselftests() {
- 	INSTALL_MOD_PATH="${MODDIR}" ${MAKE} modules_install -j ${THREADS} \
- 								>/dev/null
- 
--	__skip_dirs="drivers/gpu drivers/iio drivers/infiniband drivers/media
--		     drivers/net/ethernet drivers/net/wireless
--		     drivers/scsi drivers/usb"
--	__skip_args=
--	for __d in ${__skip_dirs}; do
--		__skip_args="${__skip_args}-path ${__d} -prune "
--	done
--	KMODS="$(${FIND} "${MODDIR}" ${__skip_args}			\
--		-o -name '*.ko' -printf "%p ")"
-+	__cfg="./tools/testing/selftests/${SUBOPT_collection}/config"
-+	KMODS=
-+	if [ -f ${__cfg} ]; then
-+		__mods=$(${AWK} -F'=' '/=m/ {print $1}' ${__cfg} | ${SORT} -u)
-+
-+		__egrep_pattern=""
-+		for __c in ${__mods}; do
-+	    		__egrep_pattern='^obj-\$\('"${__c}"'\).*.o$|'"${__egrep_pattern}"
-+		done
-+		__egrep_pattern=${__egrep_pattern%|}
-+
-+		__kmods_needed=
-+		__find_pattern=
-+		for __mo in $(${EGREP} -rn --include "*Makefile" ${__egrep_pattern} | \
-+				${AWK} -F'+=' '/+=/ {print $2}'); do
-+			__m=$(${BASENAME} -s .o ${__mo})
-+			__find_pattern="-name ${__m}.ko -o ${__find_pattern}"
-+			__kmods_needed="${__m} ${__kmods_needed}"
-+		done
-+		__find_pattern=${__find_pattern%-o }
- 
--	workers kmod_strip_worker
-+		KMODS=$(${FIND} "${MODDIR}" ${__find_pattern} | ${TR} '\n' ' ')
- 
--	KMODS="$(basename -a -s .ko ${KMODS})"
-+		workers kmod_strip_worker
-+
-+		KMODS="$(${BASENAME} -a -s .ko ${KMODS})"
-+
-+		__kmods_missing=
-+		for __n in ${__kmods_needed}; do
-+			__found=0
-+			for __f in ${KMODS}; do
-+				[ ${__n} = ${__f} ] && __found=1
-+			done
-+			[ ${__found} -eq 0 ] && \
-+				__kmods_missing="${__n} ${__kmods_missing}"
-+		done
-+		if [ ! -z "${__kmods_missing}" ]; then
-+			notice "WARNING: missing modules: ${__kmods_missing}"
-+		fi
-+	fi
- 
- 	LINKS="${LINKS:-
- 		 bash		/init
-@@ -240,6 +272,10 @@ profile_kselftests() {
- 	COPIES="${COPIES}
- 		tools/testing/selftests/kselftest_install/*,"
- 
-+	__run_args=
-+	[ ! -z ${SUBOPT_collection} ] && __run_args="-c ${SUBOPT_collection}"
-+	[ ! -z ${SUBOPT_test} ] && __run_args="${__run_args} -t ${SUBOPT_test}"
-+
- 	FIXUP='#!/bin/sh
- 
- 		export PATH=/bin:/usr/bin:/sbin:/usr/sbin
-@@ -266,7 +302,7 @@ profile_kselftests() {
- 		echo 3 > /proc/sys/kernel/printk
- 		echo "Press s for shell, any other key to run selftests"
- 		read a
--		[ "${a}" != "s" ] && ./run_kselftest.sh
-+		[ "${a}" != "s" ] && ./run_kselftest.sh '"${__run_args}"'
- '
- 
- 	for __f in $(${FIND} tools/testing/selftests/kselftest_install/ \
-@@ -286,9 +322,10 @@ profile_kselftests() {
- ### Helpers ####################################################################
- 
- # List of tools used here, assigned to uppercase variable names
--TOOLS="basename bc cat cd chmod cp cpio depmod diff dirname du file find grep
--       gzip ldconfig ldd ln ls make mkdir mknod mktemp modprobe mv printf
--       readlink realpath rm rmdir seq sleep strip sync umount uname wget which"
-+TOOLS="awk basename bc cat cd chmod cp cpio depmod diff dirname du file find 
-+       grep egrep gzip ldconfig ldd ln ls make mkdir mknod mktemp modprobe mv
-+       printf readlink realpath rm rmdir seq sleep sort strip sync tr umount
-+       uname wget which"
- 
- # err() - Print error and exit
- # $@:	Error message, optionally with printf format and arguments
-@@ -392,6 +429,63 @@ workers() {
- ################################################################################
- 
- 
-+### Suboption Parsing #########################################################
-+
-+SUBOPTS='
-+	kselftests	C	collection	Select a collection of kernel tests
-+	kselftests	T	test		Select a test from a collection
-+'
-+
-+subopts_profile=
-+subopts_usage_one() {
-+	__profile="${1}"
-+	__short="${2}"
-+	__help="${4}"
-+
-+	if [ "${usage_subopts_profile}" != ${__profile} ]; then
-+		usage_subopts_profile="${__profile}"
-+		printf "\tSub-options for profile ${__profile}:\n"
-+	fi
-+
-+	printf "\t\t-%s: %s\n" ${__short} "${__help}"
-+}
-+
-+subopts_usage() {
-+	IFS='
-+'
-+	for __line in ${SUBOPTS}; do
-+		IFS='	'
-+		subopts_usage_one ${__line}
-+		IFS='
-+'
-+	done
-+	unset IFS
-+}
-+
-+subopts_get_one() {
-+	__profile="${3}"
-+	__short="${4}"
-+	__name="${5}"
-+
-+	[ "${__profile}" != "${PROFILE}" ] 	&& return 1
-+	[ "${1}" != "${4}" ]			&& return 1
-+
-+	eval $(echo SUBOPT_${__name}="${2}")
-+}
-+
-+subopts_get() {
-+	IFS='
-+'
-+	for __line in ${SUBOPTS}; do
-+		IFS='	'
-+		subopts_get_one "${1}" "${2}" ${__line} && unset IFS && return 0
-+		IFS='
-+'
-+	done
-+	unset IFS
-+	return 1
-+}
-+
- ### CPIO #######################################################################
- 
- # cpio_init() - Source existing CPIO archive, or create if needed
-@@ -972,8 +1066,19 @@ usage() {
- 	echo "		relative root for /lib/modules. Default: /"
- 	echo "	-p PROFILE"
- 	echo "		select profile for add-ons, one of:"
--	echo "			base bash kata kata_debug passt"
-+	echo "			base bash kata kata_debug passt kselftests"
- 	echo "		Default: base"
-+	echo "          when profile is kselftests there are two suboptions"
-+	echo "          that are identical to run_kselftests.sh options:"
-+	echo "          -C collection"
-+	echo "                 select a collection of tests to run"
-+	echo "          -T collection:test"
-+	echo "                 select a specific test to run"
-+	echo "          For example, specifying:"
-+	echo "                 -p kselftests -c net"
-+	echo "          runs all the tests in net collection; specifying"
-+	echo "                 -p kselftests -t net:ip_defrag.sh"
-+	echo "          runs only the ip_defrag.sh test from net collection"
- 	echo "	-s SCRIPT|-"
- 	echo "		fix-up script to run before init, '-' for none"
- 	echo "	-v: verbose"
-@@ -1026,16 +1131,20 @@ usage() {
- ARGS=${@}
- 
- # Parse options
--while getopts c:df:k:m:p:s:vh __opt; do
-+while getopts :c:df:k:m:p:s:vh __opt; do
- 	case ${__opt} in
--	c) COMPRESS="${OPTARG}"	;;
--	d) STRIP="n"		;;
--	f) OUT="${OPTARG}"	;;
--	k) KERNEL="${OPTARG}"	;;
--	m) MODDIR="${OPTARG}"	;;
--	p) PROFILE="${OPTARG}"	;;
--	s) SCRIPT="${OPTARG}"	;;
--	v) VERBOSE="y"		;;
-+	c) COMPRESS="${OPTARG}"					;;
-+	d) STRIP="n"						;;
-+	f) OUT="${OPTARG}"					;;
-+	k) KERNEL="${OPTARG}"					;;
-+	m) MODDIR="${OPTARG}"					;;
-+	p) PROFILE="${OPTARG}"					;;
-+	s) SCRIPT="${OPTARG}"					;;
-+	v) VERBOSE="y"						;;
-+	?)
-+		eval arg=\${$((OPTIND))}
-+		OPTIND=$((OPTIND + 1))
-+		subopts_get "${OPTARG}" "${arg}" || usage	;;
- 	h|*) usage		;;
- 	esac
- done
--- 
-2.25.1
-
+> ---
+>  drivers/staging/r8188eu/core/rtw_cmd.c | 68 +++++++++++++-------------
+>  1 file changed, 34 insertions(+), 34 deletions(-)
+> 
+> diff --git a/drivers/staging/r8188eu/core/rtw_cmd.c b/drivers/staging/r8188eu/core/rtw_cmd.c
+> index f4a277e6b654..110959148648 100644
+> --- a/drivers/staging/r8188eu/core/rtw_cmd.c
+> +++ b/drivers/staging/r8188eu/core/rtw_cmd.c
+> @@ -334,11 +334,11 @@ u8 rtw_sitesurvey_cmd(struct adapter  *padapter, struct ndis_802_11_ssid *ssid,
+>  	if (check_fwstate(pmlmepriv, _FW_LINKED))
+>  		p2p_ps_wk_cmd(padapter, P2P_PS_SCAN, 1);
+>  
+> -	ph2c = kzalloc(sizeof(struct cmd_obj), GFP_ATOMIC);
+> +	ph2c = kzalloc(sizeof(*ph2c), GFP_ATOMIC);
+>  	if (!ph2c)
+>  		return _FAIL;
+>  
+> -	psurveyPara = kzalloc(sizeof(struct sitesurvey_parm), GFP_ATOMIC);
+> +	psurveyPara = kzalloc(sizeof(*psurveyPara), GFP_ATOMIC);
+>  	if (!psurveyPara) {
+>  		kfree(ph2c);
+>  		return _FAIL;
+> @@ -399,13 +399,13 @@ u8 rtw_setdatarate_cmd(struct adapter *padapter, u8 *rateset)
+>  	struct cmd_priv *pcmdpriv = &padapter->cmdpriv;
+>  	u8	res = _SUCCESS;
+>  
+> -	ph2c = kzalloc(sizeof(struct cmd_obj), GFP_ATOMIC);
+> +	ph2c = kzalloc(sizeof(*ph2c), GFP_ATOMIC);
+>  	if (!ph2c) {
+>  		res = _FAIL;
+>  		goto exit;
+>  	}
+>  
+> -	pbsetdataratepara = kzalloc(sizeof(struct setdatarate_parm), GFP_ATOMIC);
+> +	pbsetdataratepara = kzalloc(sizeof(*pbsetdataratepara), GFP_ATOMIC);
+>  	if (!pbsetdataratepara) {
+>  		kfree(ph2c);
+>  		res = _FAIL;
+> @@ -438,7 +438,7 @@ u8 rtw_createbss_cmd(struct adapter  *padapter)
+>  
+>  	rtw_led_control(padapter, LED_CTL_START_TO_LINK);
+>  
+> -	pcmd = kzalloc(sizeof(struct cmd_obj), GFP_ATOMIC);
+> +	pcmd = kzalloc(sizeof(*pcmd), GFP_ATOMIC);
+>  	if (!pcmd) {
+>  		res = _FAIL;
+>  		goto exit;
+> @@ -475,7 +475,7 @@ u8 rtw_joinbss_cmd(struct adapter  *padapter, struct wlan_network *pnetwork)
+>  
+>  	rtw_led_control(padapter, LED_CTL_START_TO_LINK);
+>  
+> -	pcmd = kzalloc(sizeof(struct cmd_obj), GFP_ATOMIC);
+> +	pcmd = kzalloc(sizeof(*pcmd), GFP_ATOMIC);
+>  	if (!pcmd) {
+>  		res = _FAIL;
+>  		goto exit;
+> @@ -624,12 +624,12 @@ u8 rtw_setopmode_cmd(struct adapter  *padapter, enum ndis_802_11_network_infra n
+>  	struct	cmd_priv   *pcmdpriv = &padapter->cmdpriv;
+>  	u8	res = _SUCCESS;
+>  
+> -	ph2c = kzalloc(sizeof(struct cmd_obj), GFP_KERNEL);
+> +	ph2c = kzalloc(sizeof(*ph2c), GFP_KERNEL);
+>  	if (!ph2c) {
+>  		res = false;
+>  		goto exit;
+>  	}
+> -	psetop = kzalloc(sizeof(struct setopmode_parm), GFP_KERNEL);
+> +	psetop = kzalloc(sizeof(*psetop), GFP_KERNEL);
+>  
+>  	if (!psetop) {
+>  		kfree(ph2c);
+> @@ -659,20 +659,20 @@ u8 rtw_setstakey_cmd(struct adapter *padapter, u8 *psta, u8 unicast_key)
+>  	struct sta_info *sta = (struct sta_info *)psta;
+>  	u8	res = _SUCCESS;
+>  
+> -	ph2c = kzalloc(sizeof(struct cmd_obj), GFP_KERNEL);
+> +	ph2c = kzalloc(sizeof(*ph2c), GFP_KERNEL);
+>  	if (!ph2c) {
+>  		res = _FAIL;
+>  		goto exit;
+>  	}
+>  
+> -	psetstakey_para = kzalloc(sizeof(struct set_stakey_parm), GFP_KERNEL);
+> +	psetstakey_para = kzalloc(sizeof(*psetstakey_para), GFP_KERNEL);
+>  	if (!psetstakey_para) {
+>  		kfree(ph2c);
+>  		res = _FAIL;
+>  		goto exit;
+>  	}
+>  
+> -	psetstakey_rsp = kzalloc(sizeof(struct set_stakey_rsp), GFP_KERNEL);
+> +	psetstakey_rsp = kzalloc(sizeof(*psetstakey_rsp), GFP_KERNEL);
+>  	if (!psetstakey_rsp) {
+>  		kfree(ph2c);
+>  		kfree(psetstakey_para);
+> @@ -718,13 +718,13 @@ u8 rtw_clearstakey_cmd(struct adapter *padapter, u8 *psta, u8 entry, u8 enqueue)
+>  	if (!enqueue) {
+>  		clear_cam_entry(padapter, entry);
+>  	} else {
+> -		ph2c = kzalloc(sizeof(struct cmd_obj), GFP_ATOMIC);
+> +		ph2c = kzalloc(sizeof(*ph2c), GFP_ATOMIC);
+>  		if (!ph2c) {
+>  			res = _FAIL;
+>  			goto exit;
+>  		}
+>  
+> -		psetstakey_para = kzalloc(sizeof(struct set_stakey_parm),
+> +		psetstakey_para = kzalloc(sizeof(*psetstakey_para),
+>  					  GFP_ATOMIC);
+>  		if (!psetstakey_para) {
+>  			kfree(ph2c);
+> @@ -732,7 +732,7 @@ u8 rtw_clearstakey_cmd(struct adapter *padapter, u8 *psta, u8 entry, u8 enqueue)
+>  			goto exit;
+>  		}
+>  
+> -		psetstakey_rsp = kzalloc(sizeof(struct set_stakey_rsp),
+> +		psetstakey_rsp = kzalloc(sizeof(*psetstakey_rsp),
+>  					 GFP_ATOMIC);
+>  		if (!psetstakey_rsp) {
+>  			kfree(ph2c);
+> @@ -765,13 +765,13 @@ u8 rtw_addbareq_cmd(struct adapter *padapter, u8 tid, u8 *addr)
+>  	struct addBaReq_parm *paddbareq_parm;
+>  	u8	res = _SUCCESS;
+>  
+> -	ph2c = kzalloc(sizeof(struct cmd_obj), GFP_ATOMIC);
+> +	ph2c = kzalloc(sizeof(*ph2c), GFP_ATOMIC);
+>  	if (!ph2c) {
+>  		res = _FAIL;
+>  		goto exit;
+>  	}
+>  
+> -	paddbareq_parm = kzalloc(sizeof(struct addBaReq_parm), GFP_ATOMIC);
+> +	paddbareq_parm = kzalloc(sizeof(*paddbareq_parm), GFP_ATOMIC);
+>  	if (!paddbareq_parm) {
+>  		kfree(ph2c);
+>  		res = _FAIL;
+> @@ -798,13 +798,13 @@ u8 rtw_dynamic_chk_wk_cmd(struct adapter *padapter)
+>  	struct cmd_priv	*pcmdpriv = &padapter->cmdpriv;
+>  	u8	res = _SUCCESS;
+>  
+> -	ph2c = kzalloc(sizeof(struct cmd_obj), GFP_ATOMIC);
+> +	ph2c = kzalloc(sizeof(*ph2c), GFP_ATOMIC);
+>  	if (!ph2c) {
+>  		res = _FAIL;
+>  		goto exit;
+>  	}
+>  
+> -	pdrvextra_cmd_parm = kzalloc(sizeof(struct drvextra_cmd_parm), GFP_ATOMIC);
+> +	pdrvextra_cmd_parm = kzalloc(sizeof(*pdrvextra_cmd_parm), GFP_ATOMIC);
+>  	if (!pdrvextra_cmd_parm) {
+>  		kfree(ph2c);
+>  		res = _FAIL;
+> @@ -839,7 +839,7 @@ u8 rtw_set_chplan_cmd(struct adapter *padapter, u8 chplan)
+>  	}
+>  
+>  	/* prepare cmd parameter */
+> -	setChannelPlan_param = kzalloc(sizeof(struct SetChannelPlan_param),
+> +	setChannelPlan_param = kzalloc(sizeof(*setChannelPlan_param),
+>  				       GFP_KERNEL);
+>  	if (!setChannelPlan_param) {
+>  		res = _FAIL;
+> @@ -848,7 +848,7 @@ u8 rtw_set_chplan_cmd(struct adapter *padapter, u8 chplan)
+>  	setChannelPlan_param->channel_plan = chplan;
+>  
+>  	/* need enqueue, prepare cmd_obj and enqueue */
+> -	pcmdobj = kzalloc(sizeof(struct	cmd_obj), GFP_KERNEL);
+> +	pcmdobj = kzalloc(sizeof(*pcmdobj), GFP_KERNEL);
+>  	if (!pcmdobj) {
+>  		kfree(setChannelPlan_param);
+>  		res = _FAIL;
+> @@ -1010,13 +1010,13 @@ u8 rtw_lps_ctrl_wk_cmd(struct adapter *padapter, u8 lps_ctrl_type, u8 enqueue)
+>  	/*	return res; */
+>  
+>  	if (enqueue) {
+> -		ph2c = kzalloc(sizeof(struct cmd_obj), GFP_ATOMIC);
+> +		ph2c = kzalloc(sizeof(*ph2c), GFP_ATOMIC);
+>  		if (!ph2c) {
+>  			res = _FAIL;
+>  			goto exit;
+>  		}
+>  
+> -		pdrvextra_cmd_parm = kzalloc(sizeof(struct drvextra_cmd_parm),
+> +		pdrvextra_cmd_parm = kzalloc(sizeof(*pdrvextra_cmd_parm),
+>  					     GFP_ATOMIC);
+>  		if (!pdrvextra_cmd_parm) {
+>  			kfree(ph2c);
+> @@ -1056,13 +1056,13 @@ u8 rtw_rpt_timer_cfg_cmd(struct adapter *padapter, u16 min_time)
+>  
+>  	u8	res = _SUCCESS;
+>  
+> -	ph2c = kzalloc(sizeof(struct cmd_obj), GFP_ATOMIC);
+> +	ph2c = kzalloc(sizeof(*ph2c), GFP_ATOMIC);
+>  	if (!ph2c) {
+>  		res = _FAIL;
+>  		goto exit;
+>  	}
+>  
+> -	pdrvextra_cmd_parm = kzalloc(sizeof(struct drvextra_cmd_parm),
+> +	pdrvextra_cmd_parm = kzalloc(sizeof(*pdrvextra_cmd_parm),
+>  				     GFP_ATOMIC);
+>  	if (!pdrvextra_cmd_parm) {
+>  		kfree(ph2c);
+> @@ -1109,13 +1109,13 @@ u8 rtw_antenna_select_cmd(struct adapter *padapter, u8 antenna, u8 enqueue)
+>  		return res;
+>  
+>  	if (enqueue) {
+> -		ph2c = kzalloc(sizeof(struct cmd_obj), GFP_KERNEL);
+> +		ph2c = kzalloc(sizeof(*ph2c), GFP_KERNEL);
+>  		if (!ph2c) {
+>  			res = _FAIL;
+>  			goto exit;
+>  		}
+>  
+> -		pdrvextra_cmd_parm = kzalloc(sizeof(struct drvextra_cmd_parm),
+> +		pdrvextra_cmd_parm = kzalloc(sizeof(*pdrvextra_cmd_parm),
+>  					     GFP_KERNEL);
+>  		if (!pdrvextra_cmd_parm) {
+>  			kfree(ph2c);
+> @@ -1148,13 +1148,13 @@ u8 p2p_protocol_wk_cmd(struct adapter *padapter, int intCmdType)
+>  	if (rtw_p2p_chk_state(pwdinfo, P2P_STATE_NONE))
+>  		return res;
+>  
+> -	ph2c = kzalloc(sizeof(struct cmd_obj), GFP_ATOMIC);
+> +	ph2c = kzalloc(sizeof(*ph2c), GFP_ATOMIC);
+>  	if (!ph2c) {
+>  		res = _FAIL;
+>  		goto exit;
+>  	}
+>  
+> -	pdrvextra_cmd_parm = kzalloc(sizeof(struct drvextra_cmd_parm), GFP_ATOMIC);
+> +	pdrvextra_cmd_parm = kzalloc(sizeof(*pdrvextra_cmd_parm), GFP_ATOMIC);
+>  	if (!pdrvextra_cmd_parm) {
+>  		kfree(ph2c);
+>  		res = _FAIL;
+> @@ -1182,13 +1182,13 @@ u8 rtw_ps_cmd(struct adapter *padapter)
+>  
+>  	u8	res = _SUCCESS;
+>  
+> -	ppscmd = kzalloc(sizeof(struct cmd_obj), GFP_ATOMIC);
+> +	ppscmd = kzalloc(sizeof(*ppscmd), GFP_ATOMIC);
+>  	if (!ppscmd) {
+>  		res = _FAIL;
+>  		goto exit;
+>  	}
+>  
+> -	pdrvextra_cmd_parm = kzalloc(sizeof(struct drvextra_cmd_parm), GFP_ATOMIC);
+> +	pdrvextra_cmd_parm = kzalloc(sizeof(*pdrvextra_cmd_parm), GFP_ATOMIC);
+>  	if (!pdrvextra_cmd_parm) {
+>  		kfree(ppscmd);
+>  		res = _FAIL;
+> @@ -1253,13 +1253,13 @@ u8 rtw_chk_hi_queue_cmd(struct adapter *padapter)
+>  	struct cmd_priv	*pcmdpriv = &padapter->cmdpriv;
+>  	u8	res = _SUCCESS;
+>  
+> -	ph2c = kzalloc(sizeof(struct cmd_obj), GFP_ATOMIC);
+> +	ph2c = kzalloc(sizeof(*ph2c), GFP_ATOMIC);
+>  	if (!ph2c) {
+>  		res = _FAIL;
+>  		goto exit;
+>  	}
+>  
+> -	pdrvextra_cmd_parm = kzalloc(sizeof(struct drvextra_cmd_parm), GFP_ATOMIC);
+> +	pdrvextra_cmd_parm = kzalloc(sizeof(*pdrvextra_cmd_parm), GFP_ATOMIC);
+>  	if (!pdrvextra_cmd_parm) {
+>  		kfree(ph2c);
+>  		res = _FAIL;
+> @@ -1284,13 +1284,13 @@ u8 rtw_c2h_wk_cmd(struct adapter *padapter, u8 *c2h_evt)
+>  	struct cmd_priv	*pcmdpriv = &padapter->cmdpriv;
+>  	u8	res = _SUCCESS;
+>  
+> -	ph2c = kzalloc(sizeof(struct cmd_obj), GFP_ATOMIC);
+> +	ph2c = kzalloc(sizeof(*ph2c), GFP_ATOMIC);
+>  	if (!ph2c) {
+>  		res = _FAIL;
+>  		goto exit;
+>  	}
+>  
+> -	pdrvextra_cmd_parm = kzalloc(sizeof(struct drvextra_cmd_parm), GFP_ATOMIC);
+> +	pdrvextra_cmd_parm = kzalloc(sizeof(*pdrvextra_cmd_parm), GFP_ATOMIC);
+>  	if (!pdrvextra_cmd_parm) {
+>  		kfree(ph2c);
+>  		res = _FAIL;
+> -- 
+> 2.32.0
+> 
