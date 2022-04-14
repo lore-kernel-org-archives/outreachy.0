@@ -1,167 +1,359 @@
-Received: from mx0b-00069f02.pphosted.com (mx0b-00069f02.pphosted.com [205.220.177.32])
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 741CA17C8;
-	Thu, 14 Apr 2022 10:33:46 +0000 (UTC)
-Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.16.1.2/8.16.1.2) with SMTP id 23EARCKP029741;
-	Thu, 14 Apr 2022 10:33:44 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
- : subject : message-id : references : content-type : in-reply-to :
- mime-version; s=corp-2021-07-09;
- bh=NhYZIoijGA6P9DhNzZqi3PYD706wAKrpB93kQpSy37w=;
- b=YkHOvSHKbGXf9X65V2VRC2HlxtItvAfdk5OCKghbiRJu+StxprHXe1N5A8tQH3tDJZKu
- KdbyvQRxKPw8eJCPO7UWzvrARSrKDo8yPNHI9G8o4rFFBextabXNGt0P6t4fYAU0gfZm
- rX4PEcvuDTy25DvisFc8ke+0fu3so0C+sz1Ni5afebzF5GjMoFPcg0C3T5ie3tpEWt9N
- M1sDA3jEy+os2QD3PHyAXwOB7Oc4/7r2fnckyswXyz1K9a3TQSHVA1q6L+wiECzj/InF
- MNwQwryFarkuMNoNW05UPIMNaPKF9Iye950kR/ig1HoL8JtMIJBBp5KouRXRtlv/Pyr+ nA== 
-Received: from phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta02.appoci.oracle.com [147.154.114.232])
-	by mx0b-00069f02.pphosted.com with ESMTP id 3fb0jdc2a3-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Thu, 14 Apr 2022 10:33:43 +0000
-Received: from pps.filterd (phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (8.16.1.2/8.16.1.2) with SMTP id 23EAGM6I012774;
-	Thu, 14 Apr 2022 10:33:42 GMT
-Received: from nam10-mw2-obe.outbound.protection.outlook.com (mail-mw2nam10lp2102.outbound.protection.outlook.com [104.47.55.102])
-	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com with ESMTP id 3fcg9knemt-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Thu, 14 Apr 2022 10:33:42 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=lT1r++Tl/5r9OAxdML6rtDvCKbLoHSMf5geaTsKDoxngCPPBMvdCY9GlaLWY7dO685tnighmuhPAGZXLLIhFWhrJBHQx4aVbFv/1stMhmh5xVsKps1iVDzp6DRtENaS1A6x3C+zN4NWSc6Ln684NITeNJdu66OTuiToT0D0nDJVh70236Rr2BptPl42FrCHu22BcEfBcxUq2L6NGuhkv76W1QaXP9JzzLF8lLlOUZBfFnlAUoHyK59iD3R1D2AMkMFlXh67HlEd2V9URRHjOWjioDTkrkkurH+lomjxNqmvAi6RSBfKf1nL5O8maSqd7mxSgU1/lUW/8gob34VfxcA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=NhYZIoijGA6P9DhNzZqi3PYD706wAKrpB93kQpSy37w=;
- b=JpW/0Nzi3QgqtL+2SR/yHm4YnjAiuxsM5tnDPtXuX+6R0JEStPpBApjjzkz5dvih8I1sHnyj8zY+wJHKS/M/OVOOnXvdRECo0HCJwyZxxp/coOhtXBY3ledHo43YgTVT9U2kChxbs9137bOkfwaTg3/A2nDAB6NueUlYlhlkvJ98vsD1a2SCDu0a9fU/MOwI9VQG8FVatxYHxzgBHnylsATeZEjHcfgthEXN4JiHrljoSJ2WBQYxImhXgbXu+i+REPdAC82N0lNlBPv8RVsPiuQMl2vJm8BW32WSdMlWM6V9yoVVbewzuS0t7lMpD5XDp1U6ejKzZMAA0ovN34/Zyg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=NhYZIoijGA6P9DhNzZqi3PYD706wAKrpB93kQpSy37w=;
- b=dcMi0Pyq8CpJaytrVmrf+G9Jl14lS3jJ8ux33XM9OVdLWHoXngz/VULibAljJdCC3NoBZ8prU403216AKbshpdsLFgP5u75X/zz+OleY8cnYSKfB9/CZ0AuDVjhOqu0DNDoiLF2HLCSiVeIqcs+iJ5fN3aYVK9D9Ww4ioCzVp7U=
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- (2603:10b6:301:2d::28) by BN6PR10MB1441.namprd10.prod.outlook.com
- (2603:10b6:404:43::19) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5164.20; Thu, 14 Apr
- 2022 10:33:39 +0000
-Received: from MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::b5d5:7b39:ca2d:1b87]) by MWHPR1001MB2365.namprd10.prod.outlook.com
- ([fe80::b5d5:7b39:ca2d:1b87%5]) with mapi id 15.20.5144.022; Thu, 14 Apr 2022
- 10:33:39 +0000
-Date: Thu, 14 Apr 2022 13:33:28 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Aliya Rahmani <aliyarahmani786@gmail.com>
-Cc: sudipm.mukherjee@gmail.com, gregkh@linuxfoundation.org,
-        linux-staging@lists.linux.dev, outreachy@lists.linux.dev
-Subject: Re: [PATCH] staging: sm750fb: Remove volatile
-Message-ID: <20220414103328.GI3293@kadam>
-References: <20220413203914.59533-1-aliyarahmani786@gmail.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220413203914.59533-1-aliyarahmani786@gmail.com>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-X-ClientProxiedBy: MR2P264CA0034.FRAP264.PROD.OUTLOOK.COM (2603:10a6:500::22)
- To MWHPR1001MB2365.namprd10.prod.outlook.com (2603:10b6:301:2d::28)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5DD4615A3
+	for <outreachy@lists.linux.dev>; Thu, 14 Apr 2022 13:12:25 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1649941944;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=e/NxxN5nfVKytVABR3MGNFpAu503cJowA6BFv6K2CcU=;
+	b=MIFo8oJBcMnkRju/2hZNnD9xHHvpL3Zwx/6lAVw+PU7THqVFk42yvGGKDfvdnmwZDuzYfP
+	xJ0SSjWQKU6vonJqPbQvV6CbYWgMZxNsH2I6GlxF+NHtnPdvyp3myWnVLWuCzs5zL3bUld
+	jYvmoQJbK3sLF6E0SRgAgYBkJXYOpRM=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-351-jlp7UfNjPrO3W25Nq0yozA-1; Thu, 14 Apr 2022 09:12:22 -0400
+X-MC-Unique: jlp7UfNjPrO3W25Nq0yozA-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com [10.11.54.7])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 6171688B7A5;
+	Thu, 14 Apr 2022 13:12:14 +0000 (UTC)
+Received: from maya.cloud.tilaa.com (unknown [10.40.208.6])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 09910145B965;
+	Thu, 14 Apr 2022 13:12:14 +0000 (UTC)
+Date: Thu, 14 Apr 2022 15:12:11 +0200
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
+Cc: outreachy@lists.linux.dev
+Subject: Re: [PATCH] mbuto: support building a minimal image for kernel
+ selftests
+Message-ID: <20220414151211.6ba90067@elisabeth>
+In-Reply-To: <20220413201758.GA387675@euclid>
+References: <20220413201758.GA387675@euclid>
+Organization: Red Hat
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 6138a63e-05e7-48a6-3174-08da1e023cb7
-X-MS-TrafficTypeDiagnostic: BN6PR10MB1441:EE_
-X-Microsoft-Antispam-PRVS: 
-	<BN6PR10MB144138B3D8F26C9E303F809E8EEF9@BN6PR10MB1441.namprd10.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 
-	oZ/rSyZFVvHf6k/3K/RNtVUXJL4jTqXbA0RNT7Y3p+fYH8QBbWSlkKpdq5uCisyDpmenJ/VDBUPVthjcF0pdNcCj+5OkqEXtGHVlyFnXBBbn2Y1jDGw2xmSdYbeVAviHJCy0/59ZF9u9FmXJibFK2jzTuJNk0tQLfGNz9JVHXSEwu3rdgoPTNsDVURXT+6CTeZEVQG8vs5DR5pEe9p/dFF5Rj3EQxSQNzKTu91L+MJRVUzYdkOpy/pHfvg7jpTLG6jMUzhyIlb5DvMHyzCuZ812+dAjs1O6a/AdNmn6EQsmuqOh0BVMhLXorS6Tuy1exFz/Gy0v3wwq7KiPcwCT5X/O+JooAUFyg+NUdR4MkBP5jHfGYCisHn8eKnptqguuhXcKr4Oe27VEneBYYB5q9/zwjJFl1RI+cDOCRIjdjBuriQTCXObDm/IjQF1vD9P5qEHeB+LOXszGrd3U2d992fUn5kvjrDmKusQ+qV+Ru2fTmItDn3LeSHfPvoQVOjMkRVkTKT0MuqfMf7TwozCYotR2AwFpQ5z4on+xTJIS6+xxsACQMRr8ZnD7gAmDF5NGxhskg2hsoSoyQ8sgz0/DdqTTAweNO8VzSMvDrZlXEU/4S/F3EzqgAyXvGoSidRH/vbAvDcNlTm72BE0F77rnDBAyMK9fO7FI3FavR/LxfEd8BXmJYgU24kAoC3sXldg27QzEvF3Ok/o8H9djtQ+OAag==
-X-Forefront-Antispam-Report: 
-	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MWHPR1001MB2365.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230001)(7916004)(366004)(5660300002)(6506007)(186003)(2906002)(26005)(83380400001)(1076003)(4744005)(8936002)(6666004)(52116002)(6512007)(9686003)(44832011)(66556008)(38100700002)(8676002)(38350700002)(66946007)(66476007)(4326008)(316002)(33656002)(86362001)(33716001)(6916009)(508600001)(6486002);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 
-	=?us-ascii?Q?pUO0cu6OOJ6ezHnx1ShWK0TsPPRCO7hPuiw6mLCR1uoqW18B4J6+TLM+CLrn?=
- =?us-ascii?Q?D4MogmsLp7yKBK441MZw7jfLwuaP4H/4MCVoWvFKRhDgqun3beWRY7Pvu8yx?=
- =?us-ascii?Q?Z6MKNKDYGT/pX3C5QpTTyvmX1+MmurS9kJbSRYhwOBR19gGzSDSY6NtBNlcI?=
- =?us-ascii?Q?3An5tlGTDurXmESfnyI1s3KhMVYvjW41vTc3oivVY7MpR0THG+mhW+zFqQrE?=
- =?us-ascii?Q?lQjAbcirw2cCun5QX4krEy00yaHMQu0/ZL0ATfnshX5JwZbmrq9XLQkvJjI0?=
- =?us-ascii?Q?G8ApvTJMqH0CH9o+J7Poe9Jv8eDy0z2p27stFDgOoKfWt2QhU172boLqpHoo?=
- =?us-ascii?Q?+4iVngj3M9fTEu4QP5ghNWLLCCi15Kq4tTLVQuf8nwfe08GKooYgWh8iLTIK?=
- =?us-ascii?Q?deUWI3wkcM0h3vpQApyZeBWgXdPJMT1gs2iS4ruMUpa8CyD2Zzsy3pM8fjqw?=
- =?us-ascii?Q?SlVjhYxeDyaatDJ2SyzceN1OHOyDYnCm1jE8puysZIMed6RLGa/P47SNMBfU?=
- =?us-ascii?Q?15RM78x2G5yua83USefLLhZv+ZyFUsSaB8E5ubnzPc2Y+Oye1oq2nbvH8ycW?=
- =?us-ascii?Q?1ZnTsZBcMIcKUmvCETOy8hy2Sy1+cOKn3NxU8DpjXmFX01+FbhAcPbbcwvNW?=
- =?us-ascii?Q?UekK8DX4qBh0Kb8edPimtsai6MHeX/tm9dgx5gdQ7afAzcVCX2T47m83G+dy?=
- =?us-ascii?Q?w9Qdg+rwM1xIfZirf7eJJF45i5HaPbLyhAeebKPV6l73yz8TuX5Wp/2LIJEE?=
- =?us-ascii?Q?POj45GZC2rykbNgXRD458M1SEtvdT2EzhBkEyNL4NVvf2vh/iqsTeZBQqubo?=
- =?us-ascii?Q?1vvY/CN5rJvommRARnxkcW5uPn4QRiWhL4T78mf78/bRZY+9O6TCHGyI8TFL?=
- =?us-ascii?Q?54rPwgYGIw1sERJCjmzNsVkeHU22uFiho6JCGSj1tAMuFhXo1H2jCPE48WKC?=
- =?us-ascii?Q?xOPic6VI2KLbL5eu/9BXf60nIDfrWAm+tgcIJ01PLvM+viYYZwoZBa0VG2GN?=
- =?us-ascii?Q?l3Pu4PVF/uJIQUjHzjaSN+lDpBC26lyjwUSdY5Nj8n55e+1O7gijYPX2axVV?=
- =?us-ascii?Q?9qNQAVjQWwJyrOYNrYl5JE8spNAvD3WEsXx5psz3DQk6Q/oQb57eurq5la0Q?=
- =?us-ascii?Q?j2n8B1rTAwzTGKiqDF64PcIP9hFkLt8VGBFGekQzB6Hu3yMzBKLRiqSYYt0M?=
- =?us-ascii?Q?tZFyIzaeFNYr7Uqu2TQzQ5aiKWjymrsoTnbiGzXY+HpCZTDmIXzCvvf2INBM?=
- =?us-ascii?Q?EF4wxDm0AVYebRbhzCvlQdq3GxzqkdhQEkWkFG0/iXMZxbB0I6/Vh4knMgjU?=
- =?us-ascii?Q?1rc+tPpE7laANXUYKMjIVAu41Dlgsr+6VQ5CTzTKFZPPN+TJV3x8unMECQRB?=
- =?us-ascii?Q?dONiaL6KjdbGP7zZ1gIF3NcbB/C2qoUZiOq+d2zzhn1jFrDy3JaqqmYJBsBJ?=
- =?us-ascii?Q?jbR0z8b+ALHwlZWIz9udXJ9985JAh0jdOcD5SkPZDZK5zmZgyhZxnwTHyV0A?=
- =?us-ascii?Q?hW3yYC3ER4HuiCIhgKww8O4h1pcmfIHR4pg9RWwPN/R0SzHunonZ0F6xWKsD?=
- =?us-ascii?Q?CRL72oEeUrW22O1KPf1KukbAXkDbuw8UpKIyigkplAM6f/i7cpMEjMSifF+l?=
- =?us-ascii?Q?pVnHiSXybzqf6N3ZWQAYtNoi3xFjT32O/kEDFOl0SE7eOeyZxwH/0IrpLWKb?=
- =?us-ascii?Q?pmIAHZiNqq68HiKAzGu2ejFgQG8iUyFlFpxJCrggDHZra5L7kSnKVroGKcN2?=
- =?us-ascii?Q?3pL9aNnBZCpMc04tb6jNAR4VGRMNtQw=3D?=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6138a63e-05e7-48a6-3174-08da1e023cb7
-X-MS-Exchange-CrossTenant-AuthSource: MWHPR1001MB2365.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Apr 2022 10:33:39.0158
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: grC9qHW4mh+4NKGM2BqJmoBT2Io9qTnF0uM+r21EtacV824buGKK1pqK2gMG7Uw1WsUKxHd+UdQXXrcqe0qCY1Tof54u45A5wGAW0vhLByk=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR10MB1441
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.486,18.0.858
- definitions=2022-04-14_02:2022-04-14,2022-04-14 signatures=0
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0 mlxlogscore=999
- spamscore=0 suspectscore=0 malwarescore=0 adultscore=0 bulkscore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2202240000 definitions=main-2204140056
-X-Proofpoint-ORIG-GUID: 4ksvf6Q1pbOzOkfKpsiF3ZjGDfuHbY3A
-X-Proofpoint-GUID: 4ksvf6Q1pbOzOkfKpsiF3ZjGDfuHbY3A
+X-Scanned-By: MIMEDefang 2.85 on 10.11.54.7
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=sbrivio@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-On Thu, Apr 14, 2022 at 02:09:15AM +0530, Aliya Rahmani wrote:
-> Remove volatile to fix checkpatch.pl warning.
+Thanks for the patch! The feature looks really nice now. I haven't had
+time to test it as much as I wanted yet, a few comments below.
+
+Note: I can also change those myself before pushing. This is usually not
+the case for kernel trees -- the maintainers/committers will only apply
+patches with no changes from their side (i.e. you would have to send a
+new version).
+
+But there are also some exceptions there, I guess it depends on how
+busy a given maintainer is.
+
+On Wed, 13 Apr 2022 16:17:58 -0400
+Sevinj Aghayeva <sevinj.aghayeva@gmail.com> wrote:
+
+> Adds suboption -c for the case of -p kselftests for choosing a test collection
+> to run. For example, specifying "-p kselftests -c net" creates an image that
+> contains only the tests from the net collection and only the kernel modules
+> needed to run those tests. If there are missing modules for running the tests, a
+> warning will be emitted showing missing modules names. The -c option is similar
+> to the -c option of run_kselftests.sh, but unlike run_kselftest.sh's option it
+> currently it doesn't support specifying multiple collections. This will be fixed
+> later.
 > 
-
-You want to sound more confident like you know what you're talking
-about and not just doing things because checkpatch says.  "The volatile
-is meaningless here and checkpatch.pl complains about it.  Delete it."
-
-> Signed-off-by: Aliya Rahmani <aliyarahmani786@gmail.com>
+> Also adds suboption -t for the case of -p kselftests for choosing a specific
+> test. For example, specifying "-p kselftests -t net:ip_defrag.sh" creates an
+> image that runs only the single test when booted. This option is also similar to
+> run_kselftest.sh's -t option, but it is also lacking some functionality, which
+> will be fixed later.
+> 
+> Signed-off-by: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
 > ---
->  drivers/staging/sm750fb/sm750.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  mbuto | 156 +++++++++++++++++++++++++++++++++++++++++++++++++---------
+>  1 file changed, 132 insertions(+), 24 deletions(-)
 > 
-> diff --git a/drivers/staging/sm750fb/sm750.h b/drivers/staging/sm750fb/sm750.h
-> index aff69661c8e6..7a11f8593596 100644
-> --- a/drivers/staging/sm750fb/sm750.h
-> +++ b/drivers/staging/sm750fb/sm750.h
-> @@ -52,7 +52,7 @@ struct lynx_accel {
->  	/* base virtual address of DPR registers */
->  	volatile unsigned char __iomem *dprBase;
-        ^^^^^^^^
-Missed one here.
+> diff --git a/mbuto b/mbuto
+> index c643c9b..e786592 100755
+> --- a/mbuto
+> +++ b/mbuto
+> @@ -205,7 +205,12 @@ profile_kselftests() {
+>  
+>  	KERNEL="$(cat include/config/kernel.release)"
+>  
+> -	${MAKE} -C tools/testing/selftests/ install >/dev/null 2>&1
+> +	__skip_targets=$(awk '/^TARGETS/ { print $3}' \
 
->  	/* base virtual address of de data port */
-> -	volatile unsigned char __iomem *dpPortBase;
-> +	unsigned char __iomem *dpPortBase;
+We should use ${AWK} and add it to the list of required tools, so that
+if it's missing this becomes clearly visible, and so that one can use
+their own version or wrapper of it (perhaps for debugging).
 
-regards,
-dan carpenter
+> +		tools/testing/selftests/Makefile | \
+> +		grep -v "^${SUBOPT_collection}$" | tr '\n' ' ')
 
+Same here, ${GREP} and ${TR}
+
+> +
+> +	${MAKE} SKIP_TARGETS="${__skip_targets}" -C \
+> +		tools/testing/selftests/ install >/dev/null 2>&1
+>  
+>  	MODDIR="$(${REALPATH} .mbuto_mods)"
+>  	${RM} -rf "${MODDIR}"
+> @@ -213,19 +218,46 @@ profile_kselftests() {
+>  	INSTALL_MOD_PATH="${MODDIR}" ${MAKE} modules_install -j ${THREADS} \
+>  								>/dev/null  
+>  
+> -	__skip_dirs="drivers/gpu drivers/iio drivers/infiniband drivers/media
+> -		     drivers/net/ethernet drivers/net/wireless
+> -		     drivers/scsi drivers/usb"
+> -	__skip_args=
+> -	for __d in ${__skip_dirs}; do
+> -		__skip_args="${__skip_args}-path ${__d} -prune "
+> -	done
+> -	KMODS="$(${FIND} "${MODDIR}" ${__skip_args}			\
+> -		-o -name '*.ko' -printf "%p ")"
+> +	__cfg="./tools/testing/selftests/${SUBOPT_collection}/config"
+> +	KMODS=
+> +	if [ -f ${__cfg} ]; then
+> +		__mods=$(awk -F'=' '/=m/ {print $1}' ${__cfg} | sort -u)
+
+${AWK}, ${SORT}
+
+> +
+> +		__egrep_pattern=""
+> +		for __c in ${__mods}; do
+> +	    		__egrep_pattern='^obj-\$\('"${__c}"'\).*.o$|'"${__egrep_pattern}"
+> +		done
+> +		__egrep_pattern=${__egrep_pattern%|}
+> +
+> +		__kmods_needed=
+> +		__find_pattern=
+> +		for __mo in $(egrep -rn --include "*Makefile" ${__egrep_pattern} | \
+> +				awk -F'+=' '/+=/ {print $2}'); do
+> +			__m=$(basename -s .o ${__mo})
+
+${EGREP} (to be added to list), ${AWK}, ${BASENAME}
+
+> +			__find_pattern="-name ${__m}.ko -o ${__find_pattern}"
+> +			__kmods_needed="${__m} ${__kmods_needed}"
+> +		done
+> +		__find_pattern=${__find_pattern%-o }
+>  
+> -	workers kmod_strip_worker
+> +		KMODS=$(${FIND} "${MODDIR}" ${__find_pattern} | tr '\n' ' ')
+
+${TR}
+
+>  
+> -	KMODS="$(basename -a -s .ko ${KMODS})"
+> +		workers kmod_strip_worker
+> +
+> +		KMODS="$(basename -a -s .ko ${KMODS})"
+
+
+${BASENAME}
+
+> +
+> +		__kmods_missing=
+> +		for __n in ${__kmods_needed}; do
+> +			__found=0
+> +			for __f in ${KMODS}; do
+> +				[ ${__n} = ${__f} ] && __found=1
+> +			done
+> +			[ ${__found} -eq 0 ] && \
+> +				__kmods_missing="${__n} ${__kmods_missing}"
+> +		done
+> +		if [ ! -z "${__kmods_missing}" ]; then
+> +			notice "WARNING: missing modules: ${__kmods_missing}"
+> +		fi
+> +	fi
+
+Not a strong preference: this could also be implemented as a separate
+helper. Example:
+	https://passt.top/passt/tree/test/lib/util#n16
+
+>  
+>  	LINKS="${LINKS:-
+>  		 bash		/init
+> @@ -240,6 +272,10 @@ profile_kselftests() {
+>  	COPIES="${COPIES}
+>  		tools/testing/selftests/kselftest_install/*,"
+>  
+> +	__run_args=
+> +	[ ! -z ${SUBOPT_collection} ] && __run_args="-c ${SUBOPT_collection}"
+> +	[ ! -z ${SUBOPT_test} ] && __run_args="${__run_args} -t ${SUBOPT_test}"
+> +
+>  	FIXUP='#!/bin/sh
+>  
+>  		export PATH=/bin:/usr/bin:/sbin:/usr/sbin
+> @@ -266,7 +302,7 @@ profile_kselftests() {
+>  		echo 3 > /proc/sys/kernel/printk
+>  		echo "Press s for shell, any other key to run selftests"
+>  		read a
+> -		[ "${a}" != "s" ] && ./run_kselftest.sh
+> +		[ "${a}" != "s" ] && ./run_kselftest.sh '"${__run_args}"'
+>  '
+>  
+>  	for __f in $(${FIND} tools/testing/selftests/kselftest_install/ \
+> @@ -392,6 +428,63 @@ workers() {
+>  ################################################################################
+>  
+>  
+> +### Suboption Parsing #########################################################
+> +
+> +SUBOPTS='
+> +	kselftests	c	collection	Select a collection of kernel tests
+> +	kselftests	t	test		Select a test from a collection
+> +'
+> +
+> +subopts_profile=
+> +subopts_usage_one() {
+
+I know I supplied this myself as a snippet, but I forgot to add a
+comment about the function usage. :)
+
+> +	__profile="${1}"
+> +	__short="${2}"
+> +	__help="${4}"
+> +
+> +	if [ "${usage_subopts_profile}" != ${__profile} ]; then
+> +		usage_subopts_profile="${__profile}"
+> +		printf "\tSub-options for profile ${__profile}:\n"
+> +	fi
+> +
+> +	printf "\t\t-%s: %s\n" ${__short} "${__help}"
+> +}
+> +
+> +subopts_usage() {
+
+Same here.
+
+> +	IFS='
+> +'
+> +	for __line in ${SUBOPTS}; do
+> +		IFS='	'
+> +		subopts_usage_one ${__line}
+> +		IFS='
+> +'
+> +	done
+> +	unset IFS
+> +}
+> +
+> +subopts_get_one() {
+> +	__profile="${3}"
+> +	__short="${4}"
+> +	__name="${5}"
+> +
+> +	[ "${__profile}" != "${PROFILE}" ] 	&& return 1
+> +	[ "${1}" != "${4}" ]			&& return 1
+> +
+> +	eval $(echo SUBOPT_${__name}="${2}")
+> +}
+> +
+> +subopts_get() {
+> +	IFS='
+> +'
+> +	for __line in ${SUBOPTS}; do
+> +		IFS='	'
+> +		subopts_get_one "${1}" "${2}" ${__line} && unset IFS && return 0
+> +		IFS='
+> +'
+> +	done
+> +	unset IFS
+> +	return 1
+> +}
+> +
+>  ### CPIO #######################################################################
+>  
+>  # cpio_init() - Source existing CPIO archive, or create if needed
+> @@ -960,7 +1053,7 @@ usage() {
+>  	echo "${0} [OPTIONS] [ADD_ON]..."
+>  	echo
+>  	echo "Options:"
+> -	echo "	-c gzip|lz4|lzma|lzo|auto|none"
+> +	echo "	-z gzip|lz4|lzma|lzo|auto|none"
+
+I wouldn't change this. Okay, I'm probably the only user at the moment:
+	https://passt.top/passt/tree/test/lib/setup#n37
+
+but "-c" reflects "compression" better. Perhaps we could use uppercase
+letters for all the sub-options instead? Also to distinguish that
+visually on the command line.
+
+>  	echo "		compression method for CPIO file. Default: none"
+>  	echo "	-d"
+>  	echo "		don't strip binary objects"
+> @@ -972,8 +1065,19 @@ usage() {
+>  	echo "		relative root for /lib/modules. Default: /"
+>  	echo "	-p PROFILE"
+>  	echo "		select profile for add-ons, one of:"
+> -	echo "			base bash kata kata_debug passt"
+> +	echo "			base bash kata kata_debug passt kselftests"
+>  	echo "		Default: base"
+> +	echo "          when profile is kselftests there are two suboptions"
+> +	echo "          that are identical to run_kselftests.sh options:"
+> +	echo "          -c collection"
+> +	echo "                 select a collection of tests to run"
+> +	echo "          -t collection:test"
+> +	echo "                 select a specific test to run"
+> +	echo "          For example, specifying:"
+> +	echo "                 -p kselftests -c net"
+> +	echo "          runs all the tests in net collection; specifying"
+> +	echo "                 -p kselftests -t net:ip_defrag.sh"
+> +	echo "          runs only the ip_defrag.sh test from net collection"
+>  	echo "	-s SCRIPT|-"
+>  	echo "		fix-up script to run before init, '-' for none"
+>  	echo "	-v: verbose"
+> @@ -1026,16 +1130,20 @@ usage() {
+>  ARGS=${@}
+>  
+>  # Parse options
+> -while getopts c:df:k:m:p:s:vh __opt; do
+> +while getopts :z:df:k:m:p:s:vh __opt; do
+>  	case ${__opt} in
+> -	c) COMPRESS="${OPTARG}"	;;
+> -	d) STRIP="n"		;;
+> -	f) OUT="${OPTARG}"	;;
+> -	k) KERNEL="${OPTARG}"	;;
+> -	m) MODDIR="${OPTARG}"	;;
+> -	p) PROFILE="${OPTARG}"	;;
+> -	s) SCRIPT="${OPTARG}"	;;
+> -	v) VERBOSE="y"		;;
+> +	z) COMPRESS="${OPTARG}"					;;
+> +	d) STRIP="n"						;;
+> +	f) OUT="${OPTARG}"					;;
+> +	k) KERNEL="${OPTARG}"					;;
+> +	m) MODDIR="${OPTARG}"					;;
+> +	p) PROFILE="${OPTARG}"					;;
+> +	s) SCRIPT="${OPTARG}"					;;
+> +	v) VERBOSE="y"						;;
+> +	?)
+> +		eval arg=\${$((OPTIND))}
+> +		OPTIND=$((OPTIND + 1))
+> +		subopts_get "${OPTARG}" "${arg}" || usage	;;
+>  	h|*) usage		;;
+>  	esac
+>  done
+
+The rest looks good to me! I'll try to test this later today and push.
+
+We should also update the demo script by the way, I can take care of
+that unless you want to play with it.
+
+Once that's ready, we can document this a bit and probably other
+applicants can also benefit from it.
+
+-- 
+Stefano
 
