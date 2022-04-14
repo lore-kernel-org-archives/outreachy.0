@@ -1,49 +1,49 @@
-Received: from mail-ed1-f54.google.com (mail-ed1-f54.google.com [209.85.208.54])
+Received: from mail-ej1-f41.google.com (mail-ej1-f41.google.com [209.85.218.41])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 99B117B;
-	Thu, 14 Apr 2022 08:40:31 +0000 (UTC)
-Received: by mail-ed1-f54.google.com with SMTP id t25so5421790edt.9;
-        Thu, 14 Apr 2022 01:40:31 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 828BA7B;
+	Thu, 14 Apr 2022 09:03:40 +0000 (UTC)
+Received: by mail-ej1-f41.google.com with SMTP id r13so8788463ejd.5;
+        Thu, 14 Apr 2022 02:03:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=am1NIkz6tOpNczOlzqelfWQy0MAGLWn7F9cz1V3LtzI=;
-        b=aImOuH3f+KOJXtLNTY1AS408NTZZ9DtGBMtQLVaHok1qyR9QMQwlj6KlF1ac2u5pMg
-         AScB1kMF5Ik7pUKeH4PYqYyv+w+PKoMvaM0oCI6Heqs6y3xyawEKa5MjUWjvytM51nSh
-         V3m2tb1kGTAkacUVTWhqHRdIEp49sAbSVIWN/nDKiMrpjn0Jx1N8bN94TpwnistNmfNY
-         Stlm7YaO0NhWqXiQsW2u8vh0QEGgpDWvEuQzBZyzfzXGchOjmY2fUzPRLmXD2cezziWW
-         e4ivR3S0xUPhbMH7541wi/qarj+OGzJLkyBxxIoiw1y1I7qaTW6eOTXU/QGzUu/AUi3W
-         lD7g==
+        bh=9u7qw4yp00eYY5QfUw6RMbFSecwCVYTFJ19bEl/qjdM=;
+        b=AeKpdJKEodMNW2v4OrFzSphwYbliqKh3Sb491uSvXD6kjTpGBShcuurHxzXApjAm/7
+         9gsi/w8Quy6dIfB/9Xrn0xDLMFWRJ334ZhY+EZ0d65IRGoRmrvB/g3J4RaS/7gR/xzTC
+         Mu27Wi/qyqXdahzyu5oH3cZZckQ/sle14p3A+7JGeR6ANrPKidpJJ8ssZFfMg+1pwu/e
+         Ypiob70EBAgmGfJfpTlNyMtltBCr2EEm+isaiR6ds38HQ0L2OqdRjcjyjinOmQk8zp26
+         xfjsQlvZAL0AlS7M2KV+jVFII5qIigTJ4Fa1NBhr0umX/LlD5nQkSw8ACrUlNLDjNVca
+         JT3g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=am1NIkz6tOpNczOlzqelfWQy0MAGLWn7F9cz1V3LtzI=;
-        b=YeCIpNP0s2Mx9yZqPGbWuT0OzHUMAlMNsbMp4Za9jxJbgvTd3Grx6U+pPaewOdsdgq
-         SaJiEhDVsYO/VicfO45wNoj3pY26PKD7bZbC7NS1u9I8ro54naRPYH+kCM6BjXXbbx4i
-         Urk6O3SmQw7vml/0dGNanY8w4umabz/JDXEnIwrUdfYj8d+x5dQySfU1csvQFjOCDZEr
-         tLj+B0/SU80o330cgSr2LQjFVwP45oYTQSF/IhV7yPJEghLhbBR+qkxAR9poVx2CvHsr
-         Mx0cP4PVBT1uj6H6aP60Rl32jVhXpf9TOhpoNfy5bAAKZgNmbNXv6PtiVvX24Md4H5/H
-         xJAg==
-X-Gm-Message-State: AOAM531JI3mLFwiy6WGrAFEM0eS3RBFOR/LIfp+5T0KNtZSs7tv7QKix
-	RhXdvVUTgg73LLFpaDjmh0L+50BOzo8=
-X-Google-Smtp-Source: ABdhPJyV95K340bLEdgVVeTTZWMr7Zfbw8u+Zrr9DoJfHrfeW42yBcWA+KVWYLh7bs/7HTCoYdE3Ig==
-X-Received: by 2002:a05:6402:1cc1:b0:413:2b12:fc49 with SMTP id ds1-20020a0564021cc100b004132b12fc49mr1807087edb.118.1649925629784;
-        Thu, 14 Apr 2022 01:40:29 -0700 (PDT)
+        bh=9u7qw4yp00eYY5QfUw6RMbFSecwCVYTFJ19bEl/qjdM=;
+        b=aZi7984CDyE7B2hEV6GhhpwHa+DMowRqVU6Akc0E7UTRBzCgT7/Tq2AlAkYs7yPZfv
+         CjWdfaNAcgf2Ikc6J8Xz3WOui5q5Jrc2Yn7rdJuCKqp0gz5eL6HPt951+/E8wPgrI15H
+         Amk8UzSzIllXMiAEBH0Dv7dqJ9hq5TXnKHlfon55vXCM1YsZhDRJjanCg+q6Ig8rRpFy
+         g3IDbn5Vp7t6RuJzew2q67AX+ZaZCfdtIlzxrrdMka2YVZ1rhygIo3mn1NthPbrY6oVu
+         THTMDhCqzFElYxHR5ln+1TmgX+8Cz4IdvGdrDmlUeuN+9cePCngl9wkP9d0YcB8soTpS
+         A80A==
+X-Gm-Message-State: AOAM532dn3PIrvupF5g1TNlfahUJ6PLFhv1weWe23BH4jtZzB09Lqdkb
+	eFCkGMlzxMUL/Rpc9/+5z4M=
+X-Google-Smtp-Source: ABdhPJxClkNKCFq2g+KTlgIrqxgJ2pli/Y86+JHuXOupIt/wTAfEaxcHxqIwG0S0s6bhMpHN9LCfkQ==
+X-Received: by 2002:a17:907:6095:b0:6e7:cc3f:c33d with SMTP id ht21-20020a170907609500b006e7cc3fc33dmr1505722ejc.570.1649927018678;
+        Thu, 14 Apr 2022 02:03:38 -0700 (PDT)
 Received: from leap.localnet (host-79-43-11-75.retail.telecomitalia.it. [79.43.11.75])
-        by smtp.gmail.com with ESMTPSA id v10-20020a170906380a00b006a68610908asm421825ejc.24.2022.04.14.01.40.28
+        by smtp.gmail.com with ESMTPSA id s4-20020a170906a18400b006db0a78bde8sm436003ejy.87.2022.04.14.02.03.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 14 Apr 2022 01:40:28 -0700 (PDT)
+        Thu, 14 Apr 2022 02:03:37 -0700 (PDT)
 From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, outreachy@lists.linux.dev, David Kershner <david.kershner@unisys.com>, sparmaintainer@unisys.com
-Subject: Re: [PATCH v2] staging: Remove the drivers for the Unisys s-Par
-Date: Thu, 14 Apr 2022 10:40:26 +0200
-Message-ID: <2100119.irdbgypaU6@leap>
-In-Reply-To: <YlfJ1UQQQeYBvTHV@kroah.com>
-References: <20220413080111.13861-1-fmdefrancesco@gmail.com> <YlfJ1UQQQeYBvTHV@kroah.com>
+To: Ira Weiny <ira.weiny@intel.com>, Julia Lawall <julia.lawall@inria.fr>
+Cc: Alison Schofield <alison.schofield@intel.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Sakari Ailus <sakari.ailus@linux.intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Hans Verkuil <hverkuil-cisco@xs4all.nl>, Tsuchiya Yuto <kitakar@gmail.com>, Martiros Shakhzadyan <vrzh@vrzh.net>, Hans de Goede <hdegoede@redhat.com>, linux-media@vger.kernel.org, linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, outreachy@lists.linux.dev
+Subject: Re: [PATCH] staging: media: atomisp: Use kmap_local_page() in hmm_store()
+Date: Thu, 14 Apr 2022 11:03:35 +0200
+Message-ID: <4180675.ejJDZkT8p0@leap>
+In-Reply-To: <alpine.DEB.2.22.394.2204140902030.3023@hadrien>
+References: <20220413225531.9425-1-fmdefrancesco@gmail.com> <Yld+wpMe1C51bKU3@iweiny-desk3> <alpine.DEB.2.22.394.2204140902030.3023@hadrien>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -51,102 +51,83 @@ List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset="US-ASCII"
 
-On gioved? 14 aprile 2022 09:14:29 CEST Greg Kroah-Hartman wrote:
-> On Wed, Apr 13, 2022 at 10:01:11AM +0200, Fabio M. De Francesco wrote:
-> > The Unisys sub-tree contains three drivers for the "Unisys Secure 
-Partition"
-> > (s-Par(R)): visorhba, visorinput, visornic.
-> > 
-> > They have no maintainers, in fact the only one that is listed in 
-MAINTAINERS
-> > has an unreacheable email address. During 2021 and 2022 several patches 
-have
-> > been submitted to these drivers but nobody at Unisys cared of reviewing 
-the
-> > changes. Probably, also the "sparmaintainer" internal list of 
-unisys.com is
-> > not anymore read by interested Unisys' engineers.
-> > 
-> > Therefore, remove the ./unisys subdirectory and delete the relevant 
-entries
-> > in the MAINTAINERS, Kconfig, Makefile files.
-> > 
-> > Cc: David Kershner <david.kershner@unisys.com>
-> > Cc: sparmaintainer@unisys.com
-> > Suggested-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-> > Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
-> > ---
-> > 
-> > v1->v2: Add two "Cc:" lines, one to David Kershner and the second to 
-the
-> > "sparmaintainer" list at unisys.com, as requested by Greg Kroah-
-Hartman.
-> > 
-> >  MAINTAINERS                                   |    8 -
-> >  drivers/staging/Kconfig                       |    2 -
-> >  drivers/staging/Makefile                      |    1 -
-> >  .../ABI/sysfs-platform-visorchipset           |   89 -
-> >  .../staging/unisys/Documentation/overview.txt |  337 ---
-> >  drivers/staging/unisys/Kconfig                |   16 -
-> >  drivers/staging/unisys/MAINTAINERS            |    5 -
-> >  drivers/staging/unisys/Makefile               |    7 -
-> >  drivers/staging/unisys/TODO                   |   16 -
-> >  drivers/staging/unisys/include/iochannel.h    |  571 -----
-> >  drivers/staging/unisys/visorhba/Kconfig       |   15 -
-> >  drivers/staging/unisys/visorhba/Makefile      |   10 -
-> >  .../staging/unisys/visorhba/visorhba_main.c   | 1142 ---------
-> >  drivers/staging/unisys/visorinput/Kconfig     |   16 -
-> >  drivers/staging/unisys/visorinput/Makefile    |    7 -
-> >  .../staging/unisys/visorinput/visorinput.c    |  788 ------
-> >  drivers/staging/unisys/visornic/Kconfig       |   16 -
-> >  drivers/staging/unisys/visornic/Makefile      |   10 -
-> >  .../staging/unisys/visornic/visornic_main.c   | 2131 -----------------
+On gioved? 14 aprile 2022 09:03:40 CEST Julia Lawall wrote:
 > 
+> On Wed, 13 Apr 2022, Ira Weiny wrote:
 > 
+> > On Wed, Apr 13, 2022 at 05:44:54PM -0700, Alison Schofield wrote:
+> > > On Thu, Apr 14, 2022 at 12:55:31AM +0200, Fabio M. De Francesco 
+wrote:
+> > > > The use of kmap() is being deprecated in favor of kmap_local_page()
+> > > > where it is feasible. The same is true for kmap_atomic().
+> > > >
+> > > > In file pci/hmm/hmm.c, function hmm_store() test if we are in 
+atomic
+> > > > context and, if so, it calls kmap_atomic(), if not, it calls 
+kmap().
+> > > >
+> > > > First of all, in_atomic() shouldn't be used in drivers. This macro
+> > > > cannot always detect atomic context; in particular, it cannot know
+> > > > about held spinlocks in non-preemptible kernels.
+> > > >
+> > > > Notwithstanding what it is said above, this code doesn't need to 
+care
+> > > > whether or not it is executing in atomic context. It can simply use
+> > > > kmap_local_page() / kunmap_local() that can instead do the mapping 
+/
+> > > > unmapping regardless of the context.
+> > > >
+> > > > With kmap_local_page(), the mapping is per thread, CPU local and 
+not
+> > > > globally visible. Therefore, hmm_store()() is a function where the 
+use
+> > > > of kmap_local_page() in place of both kmap() and kmap_atomic() is
+> > > > correctly suited.
+> > > >
+> > > > Convert the calls of kmap() / kunmap() and kmap_atomic() /
+> > > > kunmap_atomic() to kmap_local_page() / kunmap_local() and drop the
+> > > > unnecessary tests which test if the code is in atomic context.
+> > > >
+> > >
+> > > Not specifically about this patch, but more generally about all
+> > > such conversions - is there a 'proof' that shows this just works
+> >
+> > Just code inspection.  Most of them that I have done have been compile 
+tested
+> > only.  Part of the key is that des is a local variable and is not 
+aliased by
+> > anything outside this function.
 > 
-> >  19 files changed, 5187 deletions(-)
-> >  delete mode 100644 drivers/staging/unisys/Documentation/ABI/sysfs-
-platform-visorchipset
-> >  delete mode 100644 drivers/staging/unisys/Documentation/overview.txt
-> >  delete mode 100644 drivers/staging/unisys/Kconfig
-> >  delete mode 100644 drivers/staging/unisys/MAINTAINERS
-> >  delete mode 100644 drivers/staging/unisys/Makefile
-> >  delete mode 100644 drivers/staging/unisys/TODO
-> >  delete mode 100644 drivers/staging/unisys/include/iochannel.h
-> >  delete mode 100644 drivers/staging/unisys/visorhba/Kconfig
-> >  delete mode 100644 drivers/staging/unisys/visorhba/Makefile
-> >  delete mode 100644 drivers/staging/unisys/visorhba/visorhba_main.c
-> >  delete mode 100644 drivers/staging/unisys/visorinput/Kconfig
-> >  delete mode 100644 drivers/staging/unisys/visorinput/Makefile
-> >  delete mode 100644 drivers/staging/unisys/visorinput/visorinput.c
-> >  delete mode 100644 drivers/staging/unisys/visornic/Kconfig
-> >  delete mode 100644 drivers/staging/unisys/visornic/Makefile
-> >  delete mode 100644 drivers/staging/unisys/visornic/visornic_main.c
-> > 
-> > diff --git a/MAINTAINERS b/MAINTAINERS
-> > index 3ed62dcd144e..a62da6d0f943 100644
-> > --- a/MAINTAINERS
-> > +++ b/MAINTAINERS
-> > @@ -20183,14 +20183,6 @@ F:	drivers/cdrom/cdrom.c
-> >  F:	include/linux/cdrom.h
-> >  F:	include/uapi/linux/cdrom.h
-> >  
-> > -UNISYS S-PAR DRIVERS
-> > -M:	David Kershner <david.kershner@unisys.com>
-> > -L:	sparmaintainer@unisys.com (Unisys internal)
-> > -S:	Supported
-> > -F:	drivers/staging/unisys/
-> > -F:	drivers/visorbus/
-> 
-> You forgot to delete the files in this directory as well :(
-> 
-Sorry, that's worse than just being forgetful. I did not carefully read the
-lines I deleted in MAINTAINERS :(
+> Typically, the concern about being in atomic context has to do with
+> whether GFP_KERNEL or GFP_ATOMIC should be used, ie whether allocation 
+> can sleep.  
 
-I will post a v3 soon. In the meantime, I'll also add between the lines
-"Cc:" that other person that Alison found in drivers/staging/unisys/TODO.
+I'd add that the concern about being in atomic context has mainly to do 
+with calling whatever function that may sleep. 
+
+Some time ago I analyzed a calls chain which, under spinlocks and with 
+IRQ's disabled, led to console_lock() which is annotated with 
+might_sleep(). It took about 8000 ms to recover when executing in a 4 CPU / 
+8 SMT System. Linus T. suggested to make this work asynchronous (commit 
+1ee33b1ca2b8 ("tty: n_hdlc: make n_hdlc_tty_wakeup() asynchronous")).
+
+> It doesn't have to do with whether some data can be shared.  
+
+Yes, FWIW I agree with you.
+
+> Is that the concern here?
+
+The concern here is about the locality of the pointer variable to which the 
+struct page has been mapped to. In atomic context we are not allowed to 
+kmap() (this is why in the code we had that in_atomic() test), instead we 
+can kmap_local_page() or kmap_atomic(). The latter is strongly discouraged 
+in favor of the former.
+
+Furthermore, Alison was asking if we can prove that these kinds of 
+conversions can actually work when we have not the hardware for testing. As 
+Ira wrote, code inspection is sufficient to prove it.
 
 Thanks,
 
