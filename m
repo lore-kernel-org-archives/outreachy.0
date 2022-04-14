@@ -1,140 +1,98 @@
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-pf1-f176.google.com (mail-pf1-f176.google.com [209.85.210.176])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8E69115A8;
-	Thu, 14 Apr 2022 01:54:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1649901252; x=1681437252;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=ue8ojU1OGz7ohSofSTg5I/S9UOIB+twveGfs8YIbCw0=;
-  b=Hs8qNEZbYNR/VSC0EMUQPD5Qo90oBIT/qAuXfiQSYfoU6EFoVj9LkEdr
-   AiPvwhGrEbIJDDESZZV1UvKXGCC5zRKtPOt6frbjxGmkjqu1gfx3wbb2D
-   AC/vwFoYpOZkW+G6D+L3NUtG6yDU9+Xl7favyS6M7jAJwFT8eNDO5fhyQ
-   NX6kPHIdjrBEZtqm1Z5DWqObyBgPHlTvYXGL4nnnVcXnWp4nNUZo6NAKy
-   25iIqnwbcikMaBMq3DKHiqlutah9zQp+zuiI3q4b9EFI9GGHpESu/uLPy
-   w717BLXxDSm5674ldh3WuBNq/GV87b2jppNEk3Jv3f+FZZzrCX4tLQz3a
-   A==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10316"; a="262999800"
-X-IronPort-AV: E=Sophos;i="5.90,258,1643702400"; 
-   d="scan'208";a="262999800"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
-  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Apr 2022 18:54:11 -0700
-X-IronPort-AV: E=Sophos;i="5.90,258,1643702400"; 
-   d="scan'208";a="725156508"
-Received: from sdoyen-mobl1.amr.corp.intel.com (HELO localhost) ([10.213.179.195])
-  by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Apr 2022 18:54:11 -0700
-Date: Wed, 13 Apr 2022 18:54:10 -0700
-From: Ira Weiny <ira.weiny@intel.com>
-To: Alison Schofield <alison.schofield@intel.com>
-Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Hans Verkuil <hverkuil-cisco@xs4all.nl>,
-	Tsuchiya Yuto <kitakar@gmail.com>,
-	Martiros Shakhzadyan <vrzh@vrzh.net>,
-	Hans de Goede <hdegoede@redhat.com>, linux-media@vger.kernel.org,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev
-Subject: Re: [PATCH] staging: media: atomisp: Use kmap_local_page() in
- hmm_store()
-Message-ID: <Yld+wpMe1C51bKU3@iweiny-desk3>
-References: <20220413225531.9425-1-fmdefrancesco@gmail.com>
- <20220414004454.GA1243697@alison-desk>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D300615A6;
+	Thu, 14 Apr 2022 06:07:07 +0000 (UTC)
+Received: by mail-pf1-f176.google.com with SMTP id bo5so3968171pfb.4;
+        Wed, 13 Apr 2022 23:07:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=FsVNlmo76coFyDtRUEkwklGp3gT9bCDAz+fEnEz9lfA=;
+        b=HXxkXiotQoiTFZM3OV1IPhsqwrRnlwKKdhwXsStXIFoPNv8hoE96ziQy9cnrv407F8
+         lfsnceJfHOc0tV2YLNuRkk21Tn3RsVlWnxu9qgYnQxZJNVO6nkjFgPvxgb+7Fc5pXXA5
+         SwQNE/3ctsYFFJj+sNgAxm2qJj46SIFnOG4/G1D2fBkDlm/xU5Kk2tS1AY38raohjB3a
+         zwCaUmb7d/rDiHLVqknqqba0fn3P1CG8CE52+IyXEMV54FPyVIqEGhrOY6mQrvSYeQ5B
+         lg2Vtp65tC1YbqQCxklAPB2mwg9X3mKY0bhzqwTM57L0kWZq61XdI69iKusf73wBaUHZ
+         swUw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=FsVNlmo76coFyDtRUEkwklGp3gT9bCDAz+fEnEz9lfA=;
+        b=HOffXj4kAgjomJJbWhk60slEguAZ1JUsw4FRD2ObSlYH4rJQxMy8gckVneFqbyG7OK
+         /Mtpy8Rud+GzUlRTYOFz//mxKPhX/v+hf/aE1oC6ubpPMYYD+tRF77vSqUjFo8a2UX7w
+         bJx5RKGO1S1WvKM3Hk/+Wn9nIvGQaha9cBCS9pu8AaI63sL8b07+8mbVl07AOjoTgnlA
+         UGVBANuOaxOPHjIrxfqNy+CgCKSk860cbqQJKD0wJPSY3SYN0Xh9yYTIMdb6AWHvlEL6
+         LUSxPEBLpOKt9LZRO6oTbG8JE844aa0alKcTZzgRDqplgiudmzuy5rrDMYeXfL+C0HTW
+         ZuGw==
+X-Gm-Message-State: AOAM531fo1gEzGpPDL1p4DeCyU4FHIPi9UkaH5b2GnDXjdOrF8P2Mbi2
+	JqA6uXSDKYJIUbi0sSBxyrIS30FZnpwafb7KJnE=
+X-Google-Smtp-Source: ABdhPJyNb2NHZvzPmlLrW8QatcbD7K1uL3uwObckZgEka8AARyRjRnlDAclwRQV4DYcNskA2+HbKbCMAkF9t5ztW5r0=
+X-Received: by 2002:a63:788d:0:b0:386:361f:e908 with SMTP id
+ t135-20020a63788d000000b00386361fe908mr1019712pgc.395.1649916427148; Wed, 13
+ Apr 2022 23:07:07 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220414004454.GA1243697@alison-desk>
+References: <20220413203914.59533-1-aliyarahmani786@gmail.com> <20220414011156.GA1243803@alison-desk>
+In-Reply-To: <20220414011156.GA1243803@alison-desk>
+From: Aliya <aliyarahmani786@gmail.com>
+Date: Thu, 14 Apr 2022 11:36:53 +0530
+Message-ID: <CAGTWmRGPyD8_zSQu17eQ5MQnYyxFaLQuL8L+H5=J-Td9n5VsOg@mail.gmail.com>
+Subject: Re: [PATCH] staging: sm750fb: Remove volatile
+To: Alison Schofield <alison.schofield@intel.com>
+Cc: sudipm.mukherjee@gmail.com, gregkh@linuxfoundation.org, 
+	linux-staging@lists.linux.dev, outreachy@lists.linux.dev
+Content-Type: text/plain; charset="UTF-8"
 
-On Wed, Apr 13, 2022 at 05:44:54PM -0700, Alison Schofield wrote:
-> On Thu, Apr 14, 2022 at 12:55:31AM +0200, Fabio M. De Francesco wrote:
-> > The use of kmap() is being deprecated in favor of kmap_local_page()
-> > where it is feasible. The same is true for kmap_atomic().
-> > 
-> > In file pci/hmm/hmm.c, function hmm_store() test if we are in atomic
-> > context and, if so, it calls kmap_atomic(), if not, it calls kmap().
-> > 
-> > First of all, in_atomic() shouldn't be used in drivers. This macro
-> > cannot always detect atomic context; in particular, it cannot know
-> > about held spinlocks in non-preemptible kernels.
-> > 
-> > Notwithstanding what it is said above, this code doesn't need to care
-> > whether or not it is executing in atomic context. It can simply use
-> > kmap_local_page() / kunmap_local() that can instead do the mapping /
-> > unmapping regardless of the context.
-> > 
-> > With kmap_local_page(), the mapping is per thread, CPU local and not
-> > globally visible. Therefore, hmm_store()() is a function where the use
-> > of kmap_local_page() in place of both kmap() and kmap_atomic() is
-> > correctly suited.
-> > 
-> > Convert the calls of kmap() / kunmap() and kmap_atomic() /
-> > kunmap_atomic() to kmap_local_page() / kunmap_local() and drop the
-> > unnecessary tests which test if the code is in atomic context.
-> > 
-> 
-> Not specifically about this patch, but more generally about all
-> such conversions - is there a 'proof' that shows this just works
-
-Just code inspection.  Most of them that I have done have been compile tested
-only.  Part of the key is that des is a local variable and is not aliased by
-anything outside this function.
-
-> or do we need to test each one. If the latter, then how?
-
-Generally there is no test if we don't have the hardware.  Some of the more
-difficult conversions will probably need to have some testing done but that
-will need to be discussed with the subsystem maintainers at the time.
-
-Ira
-
-> 
-> 
-> > Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+On Thu, Apr 14, 2022 at 6:40 AM Alison Schofield
+<alison.schofield@intel.com> wrote:
+>
+> On Thu, Apr 14, 2022 at 02:09:15AM +0530, Aliya Rahmani wrote:
+>
+> Hi Aliya,
+>
+> Wondering why the recipient list different than this:
+>
+> $ perl scripts/get_maintainer.pl --nogit-fallback --no-rolestats -f drivers/staging/sm750fb/sm750.h
+> Sudip Mukherjee <sudipm.mukherjee@gmail.com>
+> Teddy Wang <teddy.wang@siliconmotion.com>
+> Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> linux-fbdev@vger.kernel.org
+> linux-staging@lists.linux.dev
+> linux-kernel@vger.kernel.org
+>
+Do I need to include all the maintainers and mailing lists?
+>
+> > Remove volatile to fix checkpatch.pl warning.
+> >
+> > Signed-off-by: Aliya Rahmani <aliyarahmani786@gmail.com>
 > > ---
-> >  drivers/staging/media/atomisp/pci/hmm/hmm.c | 14 ++------------
-> >  1 file changed, 2 insertions(+), 12 deletions(-)
-> > 
-> > diff --git a/drivers/staging/media/atomisp/pci/hmm/hmm.c b/drivers/staging/media/atomisp/pci/hmm/hmm.c
-> > index 46ac082cd3f1..54188197c3dc 100644
-> > --- a/drivers/staging/media/atomisp/pci/hmm/hmm.c
-> > +++ b/drivers/staging/media/atomisp/pci/hmm/hmm.c
-> > @@ -482,10 +482,7 @@ int hmm_store(ia_css_ptr virt, const void *data, unsigned int bytes)
-> >  		idx = (virt - bo->start) >> PAGE_SHIFT;
-> >  		offset = (virt - bo->start) - (idx << PAGE_SHIFT);
-> >  
-> > -		if (in_atomic())
-> > -			des = (char *)kmap_atomic(bo->page_obj[idx].page);
-> > -		else
-> > -			des = (char *)kmap(bo->page_obj[idx].page);
-> > +		des = (char *)kmap_local_page(bo->page_obj[idx].page);
-> >  
-> >  		if (!des) {
-> >  			dev_err(atomisp_dev,
-> > @@ -512,14 +509,7 @@ int hmm_store(ia_css_ptr virt, const void *data, unsigned int bytes)
-> >  
-> >  		clflush_cache_range(des, len);
-> >  
-> > -		if (in_atomic())
-> > -			/*
-> > -			 * Note: kunmap_atomic requires return addr from
-> > -			 * kmap_atomic, not the page. See linux/highmem.h
-> > -			 */
-> > -			kunmap_atomic(des - offset);
-> > -		else
-> > -			kunmap(bo->page_obj[idx].page);
-> > +		kunmap_local(des);
-> >  	}
-> >  
-> >  	return 0;
-> > -- 
-> > 2.34.1
-> > 
-> > 
+> >  drivers/staging/sm750fb/sm750.h | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/staging/sm750fb/sm750.h b/drivers/staging/sm750fb/sm750.h
+> > index aff69661c8e6..7a11f8593596 100644
+> > --- a/drivers/staging/sm750fb/sm750.h
+> > +++ b/drivers/staging/sm750fb/sm750.h
+> > @@ -52,7 +52,7 @@ struct lynx_accel {
+> >       /* base virtual address of DPR registers */
+> >       volatile unsigned char __iomem *dprBase;
+> >       /* base virtual address of de data port */
+> > -     volatile unsigned char __iomem *dpPortBase;
+> > +     unsigned char __iomem *dpPortBase;
+> >
+> >       /* function pointers */
+> >       void (*de_init)(struct lynx_accel *accel);
+> > --
+> > 2.25.1
+> >
+> >
+
+Thanks,
+Aliya
