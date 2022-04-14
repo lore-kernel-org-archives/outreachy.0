@@ -1,370 +1,374 @@
-Received: from mail-lj1-f179.google.com (mail-lj1-f179.google.com [209.85.208.179])
+Received: from mail-pl1-f169.google.com (mail-pl1-f169.google.com [209.85.214.169])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B82D93225
-	for <outreachy@lists.linux.dev>; Thu, 14 Apr 2022 21:35:18 +0000 (UTC)
-Received: by mail-lj1-f179.google.com with SMTP id n17so2706056ljc.11
-        for <outreachy@lists.linux.dev>; Thu, 14 Apr 2022 14:35:18 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 284623225
+	for <outreachy@lists.linux.dev>; Thu, 14 Apr 2022 21:53:13 +0000 (UTC)
+Received: by mail-pl1-f169.google.com with SMTP id n18so5798289plg.5
+        for <outreachy@lists.linux.dev>; Thu, 14 Apr 2022 14:53:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=rAaNbv/SoHeB9Ei19o3wRu1Ks5Ni6dSISGy1eIEirkY=;
-        b=A0kmNElDUYTXWe75tPlT0wm2JWH49KbU0Qs7oXoefizMUuOSwWZHGIfxUNMIDmntvB
-         Viik/Bq8k9UR/9w4sDPBO/eEuZhz4I+QAprcUeJJjuX1YzfLu1pm7LXNDloU7yQDnL90
-         yAZa16SviOhWtZ0nKMbGedh6q5wjUgNASQ1hW7lAws5/VCRtUXBwEetUAq2ma6+gKS92
-         mLFtKRxOIBRfOTq+lvY/+wbdh04AnoVbfaT5RpqlqXit05CKLliz/hZ2kPRW8ZTKLh44
-         2D3HAq8jW7zH1Nn981G3r0eJPbl1pEz0om5L3effhAI+P8nxfElyYbDs7dBnBu5kuyQ6
-         SxHw==
+        d=cs-iitr-ac-in.20210112.gappssmtp.com; s=20210112;
+        h=from:to:cc:subject:date:message-id;
+        bh=5vNqDBnpadD/QERZEu5w63uXKzZ75hm8iP+4mptmKR0=;
+        b=mBiilraeyC3bvH336FhBmPNvuD1C9f/iUbeVExO1TU4umXI63Xa6yFbvxCsP5jHv46
+         Sn72bKpXOwUf2HimsZiWvV415Ai7MeSRmbIsmzMKVIRRKMgW/632AOOTb2aIf5vaVKh1
+         eEytNCpReB1zFTFsNuyJtjc145AQvQNCqz5ozyL2al5Rlsnok9cQ0sfIUM3WDMwH37oN
+         yP+1ZgvlCXjLHpOUXjyhlbLaWA/O+KEBoQ+Ny106lDh2QF2jHo2qw3B68zDBUeTjCewG
+         wmkcsGeGN6kPoBDWkyNxFQGk5XXOxKEVasNchKvhsKkIzQ//28S2lqDKLPHefrNT9uZu
+         HfCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=rAaNbv/SoHeB9Ei19o3wRu1Ks5Ni6dSISGy1eIEirkY=;
-        b=QBhu0IdAK+6ScuFOCNcy36uroB5uRBybIMlVW2yFvT+7dk0bHmH7UBOXrdBC+TNk/V
-         MkZ/ddK9gSKuwT9awa/tYYiAfdpQHrjQHHgA9EKjybf5CTe1dlCy75ckvfgbJ/RiXzg6
-         xGtUODhbgVozWlU8i5exioQETaVoxe2ywF2bSVoVw+GWjs1Si07+OQqK/S0he/SYNKLk
-         ix7OeFOZAb8d4TN6CKTeGa+kWFKqbrzHi+izKQtKmK5UwEQW3Kf27H5S2/t4o5TQ5Dy9
-         8wgV9QRBu+ksSV267vmb81Hc7GouAmsVmLY1AbMJWV+d6GvvU52eIiUN4pTLi2UAvakC
-         yR4g==
-X-Gm-Message-State: AOAM531SYkzF/rqqN4VIq7b/q+kUAS7p31r6K9rfgEBsfri+eht5BxMG
-	9kG423W1kNjcrWYQpCp2I3a/MdrXWFIl1qjYarv+o9d4uXo=
-X-Google-Smtp-Source: ABdhPJyU2pbP0nzLMyU4xAihdKYJKx9gqzT80QiGBXlcJtSowmluV4ejZ+5Lef7k2aurtk+IL1TpKIZz/HazEeC+owk=
-X-Received: by 2002:a05:651c:1546:b0:24c:7e0c:38b1 with SMTP id
- y6-20020a05651c154600b0024c7e0c38b1mr2656582ljp.375.1649972116365; Thu, 14
- Apr 2022 14:35:16 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id;
+        bh=5vNqDBnpadD/QERZEu5w63uXKzZ75hm8iP+4mptmKR0=;
+        b=dOEuze1nvDLPsRI7SWOZO5Kr/hP1l/+BJADzGMw/IOJp0+3fsHvwWtnEaMcWuybd90
+         Jt1H3u8WS2IL2nUZppC+UTETws+3d/Yf4Jj4Z8Dlt3M9JUxhojb651T8+njqx2gQpaV9
+         ra0O7y2y4xXHMckqPkarZoxrsIZ4DBZz4jRsvrMpz0VtoQFucTIHudhCJWaDqIHzhPrs
+         u5BlRqdlRLOCNSLa+Im5x/f1BQKz1sSZB7U4aigXPwop/POzk5d6jFsWz2HNd6BACMEG
+         Q1d1RUIeHLRU/Mnefu+dJegnazMi71etPSKjLzSdnJGiwFk7MB0dWz5cigSb/FUjlZbP
+         bT1A==
+X-Gm-Message-State: AOAM533DIZoJ1X2WPok87GaAcnTIw+cxbfrA3qklspmFwzF+s+WwmTFs
+	tQrsafEkQ95E+a9eu2c6q8YgOA==
+X-Google-Smtp-Source: ABdhPJzDwL36O/oHpjUPvxRENcdfeAhDmhy3VlxzACh8EFRekL2BtzwcxcygyEtPsWLxdP0mya7VZA==
+X-Received: by 2002:a17:90b:1bc2:b0:1c9:9cd1:a4fe with SMTP id oa2-20020a17090b1bc200b001c99cd1a4femr661752pjb.136.1649973191393;
+        Thu, 14 Apr 2022 14:53:11 -0700 (PDT)
+Received: from mahak-Inspiron-7570.iitr.ac.in ([103.37.201.168])
+        by smtp.googlemail.com with ESMTPSA id d6-20020a056a00244600b004f701135460sm794842pfj.146.2022.04.14.14.53.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 14 Apr 2022 14:53:11 -0700 (PDT)
+From: Mahak Gupta <mahak_g@cs.iitr.ac.in>
+To: Larry.Finger@lwfinger.net,
+	phil@philpotter.co.uk,
+	gregkh@linuxfoundation.org,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	outreachy@lists.linux.dev
+Cc: Mahak Gupta <mahak_g@cs.iitr.ac.in>
+Subject: [PATCH v3] staging: r8188eu: correct multiple misspellings
+Date: Fri, 15 Apr 2022 03:23:02 +0530
+Message-Id: <20220414215302.3690-1-mahak_g@cs.iitr.ac.in>
+X-Mailer: git-send-email 2.17.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
-MIME-Version: 1.0
-References: <20220413201758.GA387675@euclid> <20220414151211.6ba90067@elisabeth>
-In-Reply-To: <20220414151211.6ba90067@elisabeth>
-From: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
-Date: Thu, 14 Apr 2022 17:35:04 -0400
-Message-ID: <CAMWRUK4scFOEXQA-PvGi=xMTQUXgqcOsUgCNXhs_8diQOspXag@mail.gmail.com>
-Subject: Re: [PATCH] mbuto: support building a minimal image for kernel selftests
-To: Stefano Brivio <sbrivio@redhat.com>
-Cc: outreachy linux kernel <outreachy@lists.linux.dev>
-Content-Type: text/plain; charset="UTF-8"
 
-On Thu, Apr 14, 2022 at 9:12 AM Stefano Brivio <sbrivio@redhat.com> wrote:
->
-> Thanks for the patch! The feature looks really nice now. I haven't had
-> time to test it as much as I wanted yet, a few comments below.
->
-> Note: I can also change those myself before pushing. This is usually not
-> the case for kernel trees -- the maintainers/committers will only apply
-> patches with no changes from their side (i.e. you would have to send a
-> new version).
->
-> But there are also some exceptions there, I guess it depends on how
-> busy a given maintainer is.
->
-> On Wed, 13 Apr 2022 16:17:58 -0400
-> Sevinj Aghayeva <sevinj.aghayeva@gmail.com> wrote:
->
-> > Adds suboption -c for the case of -p kselftests for choosing a test collection
-> > to run. For example, specifying "-p kselftests -c net" creates an image that
-> > contains only the tests from the net collection and only the kernel modules
-> > needed to run those tests. If there are missing modules for running the tests, a
-> > warning will be emitted showing missing modules names. The -c option is similar
-> > to the -c option of run_kselftests.sh, but unlike run_kselftest.sh's option it
-> > currently it doesn't support specifying multiple collections. This will be fixed
-> > later.
-> >
-> > Also adds suboption -t for the case of -p kselftests for choosing a specific
-> > test. For example, specifying "-p kselftests -t net:ip_defrag.sh" creates an
-> > image that runs only the single test when booted. This option is also similar to
-> > run_kselftest.sh's -t option, but it is also lacking some functionality, which
-> > will be fixed later.
-> >
-> > Signed-off-by: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
-> > ---
-> >  mbuto | 156 +++++++++++++++++++++++++++++++++++++++++++++++++---------
-> >  1 file changed, 132 insertions(+), 24 deletions(-)
-> >
-> > diff --git a/mbuto b/mbuto
-> > index c643c9b..e786592 100755
-> > --- a/mbuto
-> > +++ b/mbuto
-> > @@ -205,7 +205,12 @@ profile_kselftests() {
-> >
-> >       KERNEL="$(cat include/config/kernel.release)"
-> >
-> > -     ${MAKE} -C tools/testing/selftests/ install >/dev/null 2>&1
-> > +     __skip_targets=$(awk '/^TARGETS/ { print $3}' \
->
-> We should use ${AWK} and add it to the list of required tools, so that
-> if it's missing this becomes clearly visible, and so that one can use
-> their own version or wrapper of it (perhaps for debugging).
->
-> > +             tools/testing/selftests/Makefile | \
-> > +             grep -v "^${SUBOPT_collection}$" | tr '\n' ' ')
->
-> Same here, ${GREP} and ${TR}
->
-> > +
-> > +     ${MAKE} SKIP_TARGETS="${__skip_targets}" -C \
-> > +             tools/testing/selftests/ install >/dev/null 2>&1
-> >
-> >       MODDIR="$(${REALPATH} .mbuto_mods)"
-> >       ${RM} -rf "${MODDIR}"
-> > @@ -213,19 +218,46 @@ profile_kselftests() {
-> >       INSTALL_MOD_PATH="${MODDIR}" ${MAKE} modules_install -j ${THREADS} \
-> >                                                               >/dev/null
-> >
-> > -     __skip_dirs="drivers/gpu drivers/iio drivers/infiniband drivers/media
-> > -                  drivers/net/ethernet drivers/net/wireless
-> > -                  drivers/scsi drivers/usb"
-> > -     __skip_args=
-> > -     for __d in ${__skip_dirs}; do
-> > -             __skip_args="${__skip_args}-path ${__d} -prune "
-> > -     done
-> > -     KMODS="$(${FIND} "${MODDIR}" ${__skip_args}                     \
-> > -             -o -name '*.ko' -printf "%p ")"
-> > +     __cfg="./tools/testing/selftests/${SUBOPT_collection}/config"
-> > +     KMODS=
-> > +     if [ -f ${__cfg} ]; then
-> > +             __mods=$(awk -F'=' '/=m/ {print $1}' ${__cfg} | sort -u)
->
-> ${AWK}, ${SORT}
->
-> > +
-> > +             __egrep_pattern=""
-> > +             for __c in ${__mods}; do
-> > +                     __egrep_pattern='^obj-\$\('"${__c}"'\).*.o$|'"${__egrep_pattern}"
-> > +             done
-> > +             __egrep_pattern=${__egrep_pattern%|}
-> > +
-> > +             __kmods_needed=
-> > +             __find_pattern=
-> > +             for __mo in $(egrep -rn --include "*Makefile" ${__egrep_pattern} | \
-> > +                             awk -F'+=' '/+=/ {print $2}'); do
-> > +                     __m=$(basename -s .o ${__mo})
->
-> ${EGREP} (to be added to list), ${AWK}, ${BASENAME}
->
-> > +                     __find_pattern="-name ${__m}.ko -o ${__find_pattern}"
-> > +                     __kmods_needed="${__m} ${__kmods_needed}"
-> > +             done
-> > +             __find_pattern=${__find_pattern%-o }
-> >
-> > -     workers kmod_strip_worker
-> > +             KMODS=$(${FIND} "${MODDIR}" ${__find_pattern} | tr '\n' ' ')
->
-> ${TR}
->
-> >
-> > -     KMODS="$(basename -a -s .ko ${KMODS})"
-> > +             workers kmod_strip_worker
-> > +
-> > +             KMODS="$(basename -a -s .ko ${KMODS})"
->
->
-> ${BASENAME}
->
-> > +
-> > +             __kmods_missing=
-> > +             for __n in ${__kmods_needed}; do
-> > +                     __found=0
-> > +                     for __f in ${KMODS}; do
-> > +                             [ ${__n} = ${__f} ] && __found=1
-> > +                     done
-> > +                     [ ${__found} -eq 0 ] && \
-> > +                             __kmods_missing="${__n} ${__kmods_missing}"
-> > +             done
-> > +             if [ ! -z "${__kmods_missing}" ]; then
-> > +                     notice "WARNING: missing modules: ${__kmods_missing}"
-> > +             fi
-> > +     fi
->
-> Not a strong preference: this could also be implemented as a separate
-> helper. Example:
->         https://passt.top/passt/tree/test/lib/util#n16
->
-> >
-> >       LINKS="${LINKS:-
-> >                bash           /init
-> > @@ -240,6 +272,10 @@ profile_kselftests() {
-> >       COPIES="${COPIES}
-> >               tools/testing/selftests/kselftest_install/*,"
-> >
-> > +     __run_args=
-> > +     [ ! -z ${SUBOPT_collection} ] && __run_args="-c ${SUBOPT_collection}"
-> > +     [ ! -z ${SUBOPT_test} ] && __run_args="${__run_args} -t ${SUBOPT_test}"
-> > +
-> >       FIXUP='#!/bin/sh
-> >
-> >               export PATH=/bin:/usr/bin:/sbin:/usr/sbin
-> > @@ -266,7 +302,7 @@ profile_kselftests() {
-> >               echo 3 > /proc/sys/kernel/printk
-> >               echo "Press s for shell, any other key to run selftests"
-> >               read a
-> > -             [ "${a}" != "s" ] && ./run_kselftest.sh
-> > +             [ "${a}" != "s" ] && ./run_kselftest.sh '"${__run_args}"'
-> >  '
-> >
-> >       for __f in $(${FIND} tools/testing/selftests/kselftest_install/ \
-> > @@ -392,6 +428,63 @@ workers() {
-> >  ################################################################################
-> >
-> >
-> > +### Suboption Parsing #########################################################
-> > +
-> > +SUBOPTS='
-> > +     kselftests      c       collection      Select a collection of kernel tests
-> > +     kselftests      t       test            Select a test from a collection
-> > +'
-> > +
-> > +subopts_profile=
-> > +subopts_usage_one() {
->
-> I know I supplied this myself as a snippet, but I forgot to add a
-> comment about the function usage. :)
->
-> > +     __profile="${1}"
-> > +     __short="${2}"
-> > +     __help="${4}"
-> > +
-> > +     if [ "${usage_subopts_profile}" != ${__profile} ]; then
-> > +             usage_subopts_profile="${__profile}"
-> > +             printf "\tSub-options for profile ${__profile}:\n"
-> > +     fi
-> > +
-> > +     printf "\t\t-%s: %s\n" ${__short} "${__help}"
-> > +}
-> > +
-> > +subopts_usage() {
->
-> Same here.
->
-> > +     IFS='
-> > +'
-> > +     for __line in ${SUBOPTS}; do
-> > +             IFS='   '
-> > +             subopts_usage_one ${__line}
-> > +             IFS='
-> > +'
-> > +     done
-> > +     unset IFS
-> > +}
-> > +
-> > +subopts_get_one() {
-> > +     __profile="${3}"
-> > +     __short="${4}"
-> > +     __name="${5}"
-> > +
-> > +     [ "${__profile}" != "${PROFILE}" ]      && return 1
-> > +     [ "${1}" != "${4}" ]                    && return 1
-> > +
-> > +     eval $(echo SUBOPT_${__name}="${2}")
-> > +}
-> > +
-> > +subopts_get() {
-> > +     IFS='
-> > +'
-> > +     for __line in ${SUBOPTS}; do
-> > +             IFS='   '
-> > +             subopts_get_one "${1}" "${2}" ${__line} && unset IFS && return 0
-> > +             IFS='
-> > +'
-> > +     done
-> > +     unset IFS
-> > +     return 1
-> > +}
-> > +
-> >  ### CPIO #######################################################################
-> >
-> >  # cpio_init() - Source existing CPIO archive, or create if needed
-> > @@ -960,7 +1053,7 @@ usage() {
-> >       echo "${0} [OPTIONS] [ADD_ON]..."
-> >       echo
-> >       echo "Options:"
-> > -     echo "  -c gzip|lz4|lzma|lzo|auto|none"
-> > +     echo "  -z gzip|lz4|lzma|lzo|auto|none"
->
-> I wouldn't change this. Okay, I'm probably the only user at the moment:
->         https://passt.top/passt/tree/test/lib/setup#n37
->
-> but "-c" reflects "compression" better. Perhaps we could use uppercase
-> letters for all the sub-options instead? Also to distinguish that
-> visually on the command line.
->
-> >       echo "          compression method for CPIO file. Default: none"
-> >       echo "  -d"
-> >       echo "          don't strip binary objects"
-> > @@ -972,8 +1065,19 @@ usage() {
-> >       echo "          relative root for /lib/modules. Default: /"
-> >       echo "  -p PROFILE"
-> >       echo "          select profile for add-ons, one of:"
-> > -     echo "                  base bash kata kata_debug passt"
-> > +     echo "                  base bash kata kata_debug passt kselftests"
-> >       echo "          Default: base"
-> > +     echo "          when profile is kselftests there are two suboptions"
-> > +     echo "          that are identical to run_kselftests.sh options:"
-> > +     echo "          -c collection"
-> > +     echo "                 select a collection of tests to run"
-> > +     echo "          -t collection:test"
-> > +     echo "                 select a specific test to run"
-> > +     echo "          For example, specifying:"
-> > +     echo "                 -p kselftests -c net"
-> > +     echo "          runs all the tests in net collection; specifying"
-> > +     echo "                 -p kselftests -t net:ip_defrag.sh"
-> > +     echo "          runs only the ip_defrag.sh test from net collection"
-> >       echo "  -s SCRIPT|-"
-> >       echo "          fix-up script to run before init, '-' for none"
-> >       echo "  -v: verbose"
-> > @@ -1026,16 +1130,20 @@ usage() {
-> >  ARGS=${@}
-> >
-> >  # Parse options
-> > -while getopts c:df:k:m:p:s:vh __opt; do
-> > +while getopts :z:df:k:m:p:s:vh __opt; do
-> >       case ${__opt} in
-> > -     c) COMPRESS="${OPTARG}" ;;
-> > -     d) STRIP="n"            ;;
-> > -     f) OUT="${OPTARG}"      ;;
-> > -     k) KERNEL="${OPTARG}"   ;;
-> > -     m) MODDIR="${OPTARG}"   ;;
-> > -     p) PROFILE="${OPTARG}"  ;;
-> > -     s) SCRIPT="${OPTARG}"   ;;
-> > -     v) VERBOSE="y"          ;;
-> > +     z) COMPRESS="${OPTARG}"                                 ;;
-> > +     d) STRIP="n"                                            ;;
-> > +     f) OUT="${OPTARG}"                                      ;;
-> > +     k) KERNEL="${OPTARG}"                                   ;;
-> > +     m) MODDIR="${OPTARG}"                                   ;;
-> > +     p) PROFILE="${OPTARG}"                                  ;;
-> > +     s) SCRIPT="${OPTARG}"                                   ;;
-> > +     v) VERBOSE="y"                                          ;;
-> > +     ?)
-> > +             eval arg=\${$((OPTIND))}
-> > +             OPTIND=$((OPTIND + 1))
-> > +             subopts_get "${OPTARG}" "${arg}" || usage       ;;
-> >       h|*) usage              ;;
-> >       esac
-> >  done
->
-> The rest looks good to me! I'll try to test this later today and push.
+Fix multiple spelling errors in comments reported by checkpatch.
 
-Thanks!
+Signed-off-by: Mahak Gupta <mahak_g@cs.iitr.ac.in>
+---
+ drivers/staging/r8188eu/core/rtw_ioctl_set.c |  2 +-
+ drivers/staging/r8188eu/core/rtw_mlme.c      | 10 +++---
+ drivers/staging/r8188eu/core/rtw_mlme_ext.c  | 36 ++++++++++----------
+ drivers/staging/r8188eu/core/rtw_recv.c      |  8 ++---
+ drivers/staging/r8188eu/core/rtw_xmit.c      |  8 ++---
+ 5 files changed, 32 insertions(+), 32 deletions(-)
 
-> We should also update the demo script by the way, I can take care of
-> that unless you want to play with it.
-
-Once you push it, I'd like to make it completely compatible with
-run_kselftests.sh script. I'll catch up with you on IRC.
-
-> Once that's ready, we can document this a bit and probably other
-> applicants can also benefit from it.
->
-> --
-> Stefano
->
-
-
+diff --git a/drivers/staging/r8188eu/core/rtw_ioctl_set.c b/drivers/staging/r8188eu/core/rtw_ioctl_set.c
+index 4b78e42d180d..9df6fb122bc5 100644
+--- a/drivers/staging/r8188eu/core/rtw_ioctl_set.c
++++ b/drivers/staging/r8188eu/core/rtw_ioctl_set.c
+@@ -290,7 +290,7 @@ u8 rtw_set_802_11_infrastructure_mode(struct adapter *padapter,
+ 
+ 		if ((*pold_state == Ndis802_11Infrastructure) || (*pold_state == Ndis802_11IBSS)) {
+ 			if (check_fwstate(pmlmepriv, _FW_LINKED))
+-				rtw_indicate_disconnect(padapter); /* will clr Linked_state; before this function, we must have chked whether  issue dis-assoc_cmd or not */
++				rtw_indicate_disconnect(padapter); /* will clr Linked_state; before this function, we must have checked whether  issue dis-assoc_cmd or not */
+ 	       }
+ 
+ 		*pold_state = networktype;
+diff --git a/drivers/staging/r8188eu/core/rtw_mlme.c b/drivers/staging/r8188eu/core/rtw_mlme.c
+index aa39f07847c2..93f7d6e3df7f 100644
+--- a/drivers/staging/r8188eu/core/rtw_mlme.c
++++ b/drivers/staging/r8188eu/core/rtw_mlme.c
+@@ -193,7 +193,7 @@ void _rtw_free_network_nolock(struct	mlme_priv *pmlmepriv, struct wlan_network *
+ /*
+ 	return the wlan_network with the matching addr
+ 
+-	Shall be calle under atomic context... to avoid possible racing condition...
++	Shall be called under atomic context... to avoid possible racing condition...
+ */
+ struct wlan_network *_rtw_find_network(struct __queue *scanned_queue, u8 *addr)
+ {
+@@ -329,7 +329,7 @@ void rtw_free_network_queue(struct adapter *dev, u8 isfreeall)
+ /*
+ 	return the wlan_network with the matching addr
+ 
+-	Shall be calle under atomic context... to avoid possible racing condition...
++	Shall be called under atomic context... to avoid possible racing condition...
+ */
+ struct	wlan_network *rtw_find_network(struct __queue *scanned_queue, u8 *addr)
+ {
+@@ -912,7 +912,7 @@ static struct sta_info *rtw_joinbss_update_stainfo(struct adapter *padapter, str
+ 		}
+ 		/* 	Commented by Albert 2012/07/21 */
+ 		/* 	When doing the WPS, the wps_ie_len won't equal to 0 */
+-		/* 	And the Wi-Fi driver shouldn't allow the data packet to be tramsmitted. */
++		/* 	And the Wi-Fi driver shouldn't allow the data packet to be transmitted. */
+ 		if (padapter->securitypriv.wps_ie_len != 0) {
+ 			psta->ieee8021x_blocked = true;
+ 			padapter->securitypriv.wps_ie_len = 0;
+@@ -1304,7 +1304,7 @@ void rtw_stadel_event_callback(struct adapter *adapter, u8 *pbuf)
+ }
+ 
+ /*
+-* _rtw_join_timeout_handler - Timeout/faliure handler for CMD JoinBss
++* _rtw_join_timeout_handler - Timeout/failure handler for CMD JoinBss
+ * @adapter: pointer to struct adapter structure
+ */
+ void _rtw_join_timeout_handler (struct adapter *adapter)
+@@ -1339,7 +1339,7 @@ void _rtw_join_timeout_handler (struct adapter *adapter)
+ }
+ 
+ /*
+-* rtw_scan_timeout_handler - Timeout/Faliure handler for CMD SiteSurvey
++* rtw_scan_timeout_handler - Timeout/Failure handler for CMD SiteSurvey
+ * @adapter: pointer to struct adapter structure
+ */
+ void rtw_scan_timeout_handler (struct adapter *adapter)
+diff --git a/drivers/staging/r8188eu/core/rtw_mlme_ext.c b/drivers/staging/r8188eu/core/rtw_mlme_ext.c
+index 66dd06371991..10cc87a1ee5d 100644
+--- a/drivers/staging/r8188eu/core/rtw_mlme_ext.c
++++ b/drivers/staging/r8188eu/core/rtw_mlme_ext.c
+@@ -156,7 +156,7 @@ static struct rt_channel_plan_map	RTW_ChannelPlanMap[RT_CHANNEL_DOMAIN_MAX] = {
+ 	{0x03},	/* 0x41, RT_CHANNEL_DOMAIN_GLOBAL_DOAMIN_2G */
+ };
+ 
+-static struct rt_channel_plan_map RTW_CHANNEL_PLAN_MAP_REALTEK_DEFINE = {0x03}; /* use the conbination for max channel numbers */
++static struct rt_channel_plan_map RTW_CHANNEL_PLAN_MAP_REALTEK_DEFINE = {0x03}; /* use the combination for max channel numbers */
+ 
+ /*
+  * Search the @param channel_num in given @param channel_set
+@@ -1733,7 +1733,7 @@ void issue_p2p_GO_request(struct adapter *padapter, u8 *raddr)
+ 	p2pie[p2pielen++] = 0x09;	/*	WFA P2P v1.0 */
+ 
+ 	/*	Commented by Albert 20110306 */
+-	/*	According to the P2P Specification, the group negoitation request frame should contain 9 P2P attributes */
++	/*	According to the P2P Specification, the group negotiation request frame should contain 9 P2P attributes */
+ 	/*	1. P2P Capability */
+ 	/*	2. Group Owner Intent */
+ 	/*	3. Configuration Timeout */
+@@ -2088,7 +2088,7 @@ static void issue_p2p_GO_response(struct adapter *padapter, u8 *raddr, u8 *frame
+ 	p2pie[p2pielen++] = 0x09;	/*	WFA P2P v1.0 */
+ 
+ 	/*	Commented by Albert 20100908 */
+-	/*	According to the P2P Specification, the group negoitation response frame should contain 9 P2P attributes */
++	/*	According to the P2P Specification, the group negotiation response frame should contain 9 P2P attributes */
+ 	/*	1. Status */
+ 	/*	2. P2P Capability */
+ 	/*	3. Group Owner Intent */
+@@ -2384,7 +2384,7 @@ static void issue_p2p_GO_confirm(struct adapter *padapter, u8 *raddr, u8 result)
+ 	p2pie[p2pielen++] = 0x09;	/*	WFA P2P v1.0 */
+ 
+ 	/*	Commented by Albert 20110306 */
+-	/*	According to the P2P Specification, the group negoitation request frame should contain 5 P2P attributes */
++	/*	According to the P2P Specification, the group negotiation request frame should contain 5 P2P attributes */
+ 	/*	1. Status */
+ 	/*	2. P2P Capability */
+ 	/*	3. Operating Channel */
+@@ -4009,7 +4009,7 @@ struct xmit_frame *alloc_mgtxmitframe(struct xmit_priv *pxmitpriv)
+ 
+ /****************************************************************************
+ 
+-Following are some TX fuctions for WiFi MLME
++Following are some TX functions for WiFi MLME
+ 
+ *****************************************************************************/
+ 
+@@ -4611,7 +4611,7 @@ int issue_probereq_ex(struct adapter *padapter, struct ndis_802_11_ssid *pssid,
+ 	return ret;
+ }
+ 
+-/*  if psta == NULL, indiate we are station(client) now... */
++/*  if psta == NULL, indicate we are station(client) now... */
+ void issue_auth(struct adapter *padapter, struct sta_info *psta, unsigned short status)
+ {
+ 	struct xmit_frame *pmgntframe;
+@@ -5010,7 +5010,7 @@ void issue_assocreq(struct adapter *padapter)
+ 				if (!padapter->registrypriv.wifi_spec) {
+ 					/* Commented by Kurt 20110629 */
+ 					/* In some older APs, WPS handshake */
+-					/* would be fail if we append vender extensions informations to AP */
++					/* would be fail if we append vender extensions information to AP */
+ 					if (!memcmp(pIE->data, WPS_OUI, 4))
+ 						pIE->Length = 14;
+ 				}
+@@ -5165,7 +5165,7 @@ void issue_assocreq(struct adapter *padapter)
+ 		kfree(pmlmepriv->assoc_req);
+ }
+ 
+-/* when wait_ack is ture, this function shoule be called at process context */
++/* when wait_ack is true, this function should be called at process context */
+ static int _issue_nulldata(struct adapter *padapter, unsigned char *da, unsigned int power_mode, int wait_ack)
+ {
+ 	int ret = _FAIL;
+@@ -5234,7 +5234,7 @@ static int _issue_nulldata(struct adapter *padapter, unsigned char *da, unsigned
+ 	return ret;
+ }
+ 
+-/* when wait_ms > 0 , this function shoule be called at process context */
++/* when wait_ms > 0 , this function should be called at process context */
+ /* da == NULL for station mode */
+ int issue_nulldata(struct adapter *padapter, unsigned char *da, unsigned int power_mode, int try_cnt, int wait_ms)
+ {
+@@ -5243,7 +5243,7 @@ int issue_nulldata(struct adapter *padapter, unsigned char *da, unsigned int pow
+ 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
+ 	struct mlme_ext_info	*pmlmeinfo = &pmlmeext->mlmext_info;
+ 
+-	/* da == NULL, assum it's null data for sta to ap*/
++	/* da == NULL, assume it's null data for sta to ap*/
+ 	if (!da)
+ 		da = get_my_bssid(&pmlmeinfo->network);
+ 
+@@ -5267,7 +5267,7 @@ int issue_nulldata(struct adapter *padapter, unsigned char *da, unsigned int pow
+ 	return ret;
+ }
+ 
+-/* when wait_ack is ture, this function shoule be called at process context */
++/* when wait_ack is true, this function should be called at process context */
+ static int _issue_qos_nulldata(struct adapter *padapter, unsigned char *da, u16 tid, int wait_ack)
+ {
+ 	int ret = _FAIL;
+@@ -5340,7 +5340,7 @@ static int _issue_qos_nulldata(struct adapter *padapter, unsigned char *da, u16
+ 	return ret;
+ }
+ 
+-/* when wait_ms > 0 , this function shoule be called at process context */
++/* when wait_ms > 0 , this function should be called at process context */
+ /* da == NULL for station mode */
+ int issue_qos_nulldata(struct adapter *padapter, unsigned char *da, u16 tid, int try_cnt, int wait_ms)
+ {
+@@ -5349,7 +5349,7 @@ int issue_qos_nulldata(struct adapter *padapter, unsigned char *da, u16 tid, int
+ 	struct mlme_ext_priv	*pmlmeext = &padapter->mlmeextpriv;
+ 	struct mlme_ext_info	*pmlmeinfo = &pmlmeext->mlmext_info;
+ 
+-	/* da == NULL, assum it's null data for sta to ap*/
++	/* da == NULL, assume it's null data for sta to ap*/
+ 	if (!da)
+ 		da = get_my_bssid(&pmlmeinfo->network);
+ 
+@@ -5783,7 +5783,7 @@ void clear_beacon_valid_bit(struct adapter *adapter)
+ 
+ /****************************************************************************
+ 
+-Following are some utitity fuctions for WiFi MLME
++Following are some utility functions for WiFi MLME
+ 
+ *****************************************************************************/
+ 
+@@ -5895,7 +5895,7 @@ void site_survey(struct adapter *padapter)
+ 		} else {
+ 			/*  20100721:Interrupt scan operation here. */
+ 			/*  For SW antenna diversity before link, it needs to switch to another antenna and scan again. */
+-			/*  It compares the scan result and select beter one to do connection. */
++			/*  It compares the scan result and select better one to do connection. */
+ 			if (AntDivBeforeLink8188E(padapter)) {
+ 				pmlmeext->sitesurvey_res.bss_cnt = 0;
+ 				pmlmeext->sitesurvey_res.channel_idx = -1;
+@@ -6156,7 +6156,7 @@ void start_create_ibss(struct adapter *padapter)
+ 	/* update wireless mode */
+ 	update_wireless_mode(padapter);
+ 
+-	/* udpate capability */
++	/* update capability */
+ 	caps = rtw_get_capability((struct wlan_bssid_ex *)pnetwork);
+ 	update_capinfo(padapter, caps);
+ 	if (caps & cap_IBSS) {/* adhoc master */
+@@ -6206,7 +6206,7 @@ void start_clnt_join(struct adapter *padapter)
+ 	/* update wireless mode */
+ 	update_wireless_mode(padapter);
+ 
+-	/* udpate capability */
++	/* update capability */
+ 	caps = rtw_get_capability((struct wlan_bssid_ex *)pnetwork);
+ 	update_capinfo(padapter, caps);
+ 	if (caps & cap_ESS) {
+@@ -6784,7 +6784,7 @@ void mlmeext_joinbss_event_callback(struct adapter *padapter, int join_res)
+ 	/* BCN interval */
+ 	rtw_write16(padapter, REG_BCN_INTERVAL, pmlmeinfo->bcn_interval);
+ 
+-	/* udpate capability */
++	/* update capability */
+ 	update_capinfo(padapter, pmlmeinfo->capability);
+ 
+ 	/* WMM, Update EDCA param */
+diff --git a/drivers/staging/r8188eu/core/rtw_recv.c b/drivers/staging/r8188eu/core/rtw_recv.c
+index 91a6e0f035f4..a3f71697f6d7 100644
+--- a/drivers/staging/r8188eu/core/rtw_recv.c
++++ b/drivers/staging/r8188eu/core/rtw_recv.c
+@@ -877,7 +877,7 @@ static void validate_recv_ctrl_frame(struct adapter *padapter,
+ 			if (psta->sleepq_len == 0) {
+ 				pstapriv->tim_bitmap &= ~BIT(psta->aid);
+ 
+-				/* upate BCN for TIM IE */
++				/* update BCN for TIM IE */
+ 				/* update_BCNTIM(padapter); */
+ 				update_beacon(padapter, _TIM_IE_, NULL, false);
+ 			}
+@@ -891,7 +891,7 @@ static void validate_recv_ctrl_frame(struct adapter *padapter,
+ 
+ 				pstapriv->tim_bitmap &= ~BIT(psta->aid);
+ 
+-				/* upate BCN for TIM IE */
++				/* update BCN for TIM IE */
+ 				/* update_BCNTIM(padapter); */
+ 				update_beacon(padapter, _TIM_IE_, NULL, false);
+ 			}
+@@ -1810,13 +1810,13 @@ void rtw_signal_stat_timer_hdl(struct timer_list *t)
+ 	} else {
+ 		if (recvpriv->signal_strength_data.update_req == 0) {/*  update_req is clear, means we got rx */
+ 			avg_signal_strength = recvpriv->signal_strength_data.avg_val;
+-			/*  after avg_vals are accquired, we can re-stat the signal values */
++			/*  after avg_vals are acquired, we can re-stat the signal values */
+ 			recvpriv->signal_strength_data.update_req = 1;
+ 		}
+ 
+ 		if (recvpriv->signal_qual_data.update_req == 0) {/*  update_req is clear, means we got rx */
+ 			avg_signal_qual = recvpriv->signal_qual_data.avg_val;
+-			/*  after avg_vals are accquired, we can re-stat the signal values */
++			/*  after avg_vals are acquired, we can re-stat the signal values */
+ 			recvpriv->signal_qual_data.update_req = 1;
+ 		}
+ 
+diff --git a/drivers/staging/r8188eu/core/rtw_xmit.c b/drivers/staging/r8188eu/core/rtw_xmit.c
+index 029b994e1b71..2a686b5c65b1 100644
+--- a/drivers/staging/r8188eu/core/rtw_xmit.c
++++ b/drivers/staging/r8188eu/core/rtw_xmit.c
+@@ -958,7 +958,7 @@ s32 rtw_xmitframe_coalesce(struct adapter *padapter, struct sk_buff *pkt, struct
+ 		}
+ 
+ 		if (bmcst) {
+-			/*  don't do fragment to broadcat/multicast packets */
++			/*  don't do fragment to broadcast/multicast packets */
+ 			mem_sz = _rtw_pktfile_read(&pktfile, pframe, pattrib->pktlen);
+ 		} else {
+ 			mem_sz = _rtw_pktfile_read(&pktfile, pframe, mpdu_len);
+@@ -1768,7 +1768,7 @@ int xmitframe_enqueue_for_sleeping_sta(struct adapter *padapter, struct xmit_fra
+ 			pstapriv->tim_bitmap |= BIT(0);/*  */
+ 			pstapriv->sta_dz_bitmap |= BIT(0);
+ 
+-			update_beacon(padapter, _TIM_IE_, NULL, false);/* tx bc/mc packets after upate bcn */
++			update_beacon(padapter, _TIM_IE_, NULL, false);/* tx bc/mc packets after update bcn */
+ 
+ 			ret = true;
+ 		}
+@@ -1818,7 +1818,7 @@ int xmitframe_enqueue_for_sleeping_sta(struct adapter *padapter, struct xmit_fra
+ 				pstapriv->tim_bitmap |= BIT(psta->aid);
+ 
+ 				if (psta->sleepq_len == 1) {
+-					/* upate BCN for TIM IE */
++					/* update BCN for TIM IE */
+ 					update_beacon(padapter, _TIM_IE_, NULL, false);
+ 				}
+ 			}
+@@ -2087,7 +2087,7 @@ void xmit_delivery_enabled_frames(struct adapter *padapter, struct sta_info *pst
+ 		if ((psta->sleepq_ac_len == 0) && (!psta->has_legacy_ac) && (wmmps_ac)) {
+ 			pstapriv->tim_bitmap &= ~BIT(psta->aid);
+ 
+-			/* upate BCN for TIM IE */
++			/* update BCN for TIM IE */
+ 			update_beacon(padapter, _TIM_IE_, NULL, false);
+ 		}
+ 	}
 -- 
+2.17.1
 
-Sevinj.Aghayeva
