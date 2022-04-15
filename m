@@ -1,97 +1,130 @@
-Received: from mail-wr1-f50.google.com (mail-wr1-f50.google.com [209.85.221.50])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9F9BC7A
-	for <outreachy@lists.linux.dev>; Fri, 15 Apr 2022 20:53:12 +0000 (UTC)
-Received: by mail-wr1-f50.google.com with SMTP id u3so11856061wrg.3
-        for <outreachy@lists.linux.dev>; Fri, 15 Apr 2022 13:53:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=ZyOgwEJ9l8EA5lTTda7+EsCqxDSAHYk8KWdTQlUMJjs=;
-        b=hURxvbcmXHZE0cQH3he2QePF/JGuwU07L7NGIqE/2niCHabgXwWqBKJKSoyZOLoD7u
-         sz3kg9MLB33erxci1PiAerJBsobmblASO5dM6QkSEdatwtp9cYp/a7/Eh1MvKxZptgql
-         aKud9nAnTNe2KL+vZidB4WUXvykVT8eoPBPEsx5wApTLFqievy5rjge9ym8ILqBBYMl5
-         zrYkDoubRBWNgQ5SFhp+FaIpbqA7aUXtfS9IUD5uMvL3V5bWGEJBk0F60dhKqEaAHMH+
-         G1BfjyOAQ6tQy/YEjoiNZ9iiLkwqYf6RrRc5OVrG4CGOuIJDF5v0r3MxQ5wwfaWXJaML
-         ABcA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=ZyOgwEJ9l8EA5lTTda7+EsCqxDSAHYk8KWdTQlUMJjs=;
-        b=Z9OhTdGmTS8DIRkRYOeYCOV6z/MhOJIisuhIjY7qcv0Xr6hn0jC8utuxWtF49xOSLn
-         +03Cvg7+pToaMmcf9oTA9elbDSVDS+KLmlW7n2zH6mf+JnOmSaIilkBIE3bO9/G+dnc0
-         RaOp0bcyr8YerRAeWtmXUt0e1JnH5JrDeuLf5YM8s7ImVLJ/4J0dIlOmzJ/ZFww8EZn7
-         3T/aJ4UvPgD2wP+AjiQTCRCF258gMtdEU1iNHhL2D0dDoLuhgMgNMSWOtESEscuf3veZ
-         uRz7fvC/k8c44z+czkUl1FE7LeS32VuhoMYAfdIxEWiiTsNnoxJSPV3Qsjkf3fukCm5D
-         mwrg==
-X-Gm-Message-State: AOAM531RMN+yrJqQ+90CYk+tIFa4KsD7NsfdzQEwThy2AhFMWJP+mW1o
-	D+Gryzz20FUHit1pr5qtf3Y=
-X-Google-Smtp-Source: ABdhPJyIDzuWNU+lgGyISF0WOPX13KdzXq4i1qTNAc+fd86+SmAMO+2T2lNd4SeTSq93uytVO66I+Q==
-X-Received: by 2002:a5d:4085:0:b0:207:b13e:e8dd with SMTP id o5-20020a5d4085000000b00207b13ee8ddmr538897wrp.557.1650055990836;
-        Fri, 15 Apr 2022 13:53:10 -0700 (PDT)
-Received: from alaa-emad ([197.57.90.163])
-        by smtp.gmail.com with ESMTPSA id v5-20020a5d6785000000b0020a792848eesm3181988wru.82.2022.04.15.13.53.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 15 Apr 2022 13:53:10 -0700 (PDT)
-From: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-To: outreachy@lists.linux.dev
-Cc: jesse.brandeburg@intel.com,
-	anthony.l.nguyen@intel.com,
-	davem@davemloft.net,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	intel-wired-lan@lists.osuosl.org,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	ira.weiny@intel.com,
-	eng.alaamohamedsoliman.am@gmail.com
-Subject: [PATCH] intel: igb: igb_ethtool.c: Convert kmap() to kmap_local_page()
-Date: Fri, 15 Apr 2022 22:53:07 +0200
-Message-Id: <20220415205307.675650-1-eng.alaamohamedsoliman.am@gmail.com>
-X-Mailer: git-send-email 2.35.2
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9C4167A
+	for <outreachy@lists.linux.dev>; Fri, 15 Apr 2022 21:19:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1650057539;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Vc3emlvhr4q+PPGlUA2myv0HbC0goeaO/4hw/DaRDz8=;
+	b=gGxHJZh0Hg4k9MlZKF3XiQRmg8psAQ8ca4CVsjkMS0vskaQ4R03gilkSJGeQ9tYCX7lpeN
+	kvis7T5hZKyXxm/EXms0ALHIcIW8lI+6SMIx8Ir1eMmaJd4XXXy4bX8XYvuU2ivmh8lBFw
+	tHcSeAcHFPINTkTfIitjUge9QV28fHQ=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-628-X2wQU8AmN9ihFShDbV8zsQ-1; Fri, 15 Apr 2022 17:18:58 -0400
+X-MC-Unique: X2wQU8AmN9ihFShDbV8zsQ-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com [10.11.54.3])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C78E6101AA45;
+	Fri, 15 Apr 2022 21:18:57 +0000 (UTC)
+Received: from maya.cloud.tilaa.com (unknown [10.40.208.6])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 9CC41111D3C8;
+	Fri, 15 Apr 2022 21:18:57 +0000 (UTC)
+Date: Fri, 15 Apr 2022 23:18:53 +0200
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Alison Schofield <alison.schofield@intel.com>
+Cc: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>, "outreachy@lists.linux.dev"
+ <outreachy@lists.linux.dev>
+Subject: Re: [PATCH v2] mbuto: support building a minimal image for kernel
+ selftests
+Message-ID: <20220415231853.6da3e7ad@elisabeth>
+In-Reply-To: <20220415192339.GA1252106@alison-desk>
+References: <20220414230923.GA594872@euclid>
+	<20220415171019.091e123c@elisabeth>
+	<20220415170543.GA1251615@alison-desk>
+	<20220415202405.53ffd848@elisabeth>
+	<20220415192339.GA1252106@alison-desk>
+Organization: Red Hat
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.78 on 10.11.54.3
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=sbrivio@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-The use of kmap() is being deprecated in favor of kmap_local_page()
-where it is feasible.
+On Fri, 15 Apr 2022 12:23:39 -0700
+Alison Schofield <alison.schofield@intel.com> wrote:
 
-With kmap_local_page(), the mapping is per thread, CPU local and not
-globally visible.
+> On Fri, Apr 15, 2022 at 11:24:05AM -0700, Stefano Brivio wrote:
+> > On Fri, 15 Apr 2022 10:05:43 -0700
+> > Alison Schofield <alison.schofield@intel.com> wrote:
+> >   
+> > > On Fri, Apr 15, 2022 at 05:10:19PM +0200, Stefano Brivio wrote:  
+> > > > This is really valuable work, thank you. I took the liberty of fixing
+> > > > up a few things, listed below, and pushed:    
+> > > 
+> > > What repository is this in?  
+> > 
+> > https://mbuto.sh/mbuto -- we're tracking project-specific tasks at
+> > https://board.net/p/Outreachy2022KernelNetworking and this is task #7 there.
+> > 
+> > Documentation is still a bit lacking (I'm working on it on and off), I
+> > hope it can become finally usable for other applicants (to run
+> > kselftests without semi-complicated VM installs) in a couple of days.  
+> 
+> I see, thanks!
+> 
+> So do you think "Minimal Builder Using Terse Options" will someday land
+> in the kernels scripts/ directory?
 
-Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
----
- drivers/net/ethernet/intel/igb/igb_ethtool.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+That might be an attempt/possibility, yes, but not necessarily: it has
+other use cases as well. I actually started it for a completely
+different reason, and right now the only automated user it has is yet
+another thing (tests for https://passt.top).
 
-diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-index 2a5782063f4c..ba93aa4ae6a0 100644
---- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
-+++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-@@ -1798,14 +1798,14 @@ static int igb_check_lbtest_frame(struct igb_rx_buffer *rx_buffer,
- 
- 	frame_size >>= 1;
- 
--	data = kmap(rx_buffer->page);
-+	data = kmap_local_page(rx_buffer->page);
- 
- 	if (data[3] != 0xFF ||
- 	    data[frame_size + 10] != 0xBE ||
- 	    data[frame_size + 12] != 0xAF)
- 		match = false;
- 
--	kunmap(rx_buffer->page);
-+	kunmap_local(rx_buffer->page);
- 
- 	return match;
- }
+> Wondering why this isn't in a github repository? I think you (Stefano)
+> told me something previously about access issues that some folks have with
+> github.
+
+First off, opinions expressed here are solely my own and do not express
+the views or opinions of my employer. :)
+
+Three categories of reasons:
+
+1. GitHub is subject to US trade control laws (EAR), and access is
+   currently excluded for at least developers residing in Cuba and Syria
+   -- it looks like it's working fine for Iran-based developers, and I
+   understand there's the will from GitHub to find workarounds for
+   others:
+	https://twitter.com/github/status/1346626296219099136?lang=en
+
+   ...but I would still define the current situation somewhat exclusive
+   (and only partially under control of GitHub, of course).
+
+2. I don't like using proprietary software (especially since a. I'm
+   volunteering and b. Outreachy is involved)
+
+3. technical reasons: I think an email-based workflow has many
+   advantages over "trendy" things, and for example contributing to
+   mbuto can be "used" to get more familiar with the kernel changes
+   workflow as well, as it's essentially the same.
+
+   There are also some tricks I couldn't do on GitHub, for example
+   arbitrary HTML/JavaScript in web pages:
+	https://mbuto.sh/mbuto/tree/README.md
+
+   ...and actually I have a ton of them, but I don't want to make this
+   email overly long. :)
+
+> Thanks for helping me understand!
+
+You're welcome! Out of personal curiosity, and I'm mostly interested in
+an instinctive/first-thought answer here: why did you expect it to be on
+GitHub?
+
 -- 
-2.35.2
+Stefano
 
