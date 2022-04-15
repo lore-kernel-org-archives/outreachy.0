@@ -1,134 +1,126 @@
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-qt1-f175.google.com (mail-qt1-f175.google.com [209.85.160.175])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 566B47B;
-	Fri, 15 Apr 2022 09:08:32 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E75CF7B
+	for <outreachy@lists.linux.dev>; Fri, 15 Apr 2022 10:23:25 +0000 (UTC)
+Received: by mail-qt1-f175.google.com with SMTP id p1so5678447qtq.10
+        for <outreachy@lists.linux.dev>; Fri, 15 Apr 2022 03:23:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=1IB+AYrMADaOCol/Ics482qObTIxCkr1TUEEibKg3ZM=;
-  b=fHSLbC+OQzDO7QbF10PsD5NMNxwvyNu3/bChaFGSYyXWM2cXeez/iLvr
-   uL+NlmjQMzvE0fzOHzREnmrGnbLPIVoIrj1196b7S8xqpD2sUdKECvnOO
-   sz33g4rvJSAeMYqXaTp8V9jhflZKdI7uF+j04GIQg7QMF6isfKUSkCwkK
-   U=;
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="5.90,262,1643670000"; 
-   d="scan'208";a="31846000"
-Received: from 203.107.68.85.rev.sfr.net (HELO hadrien) ([85.68.107.203])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Apr 2022 11:08:30 +0200
-Date: Fri, 15 Apr 2022 11:08:29 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-cc: forest@alittletooquiet.net, Aliya Rahmani <aliyarahmani786@gmail.com>, 
-    gregkh@linuxfoundation.org, linux-staging@lists.linux.dev, 
-    outreachy@lists.linux.dev
-Subject: Re: [PATCH v4] staging: vt6655f: rxtx: code style - Fix Lines should
- not end with a '('
-In-Reply-To: <1749887.3VsfAaAtOV@leap>
-Message-ID: <alpine.DEB.2.22.394.2204151107350.3175@hadrien>
-References: <20220415051900.5801-1-aliyarahmani786@gmail.com> <1749887.3VsfAaAtOV@leap>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+        d=gmail.com; s=20210112;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
+        bh=5anLCU1hgz9xnTwkWucIBexZ7YBsZkD7mlEDF6g7Q0Y=;
+        b=BwTd9aXXz8uNsBn6tU7BxwVOJUDx/2gHl0WRxXBWdSA1qmc7itqhd3nW+1QeDEe9X0
+         YaQ3lBwsm+UponSKE57BAa/6Wzt4DbPa6Jj2bUnn6Vup2CB0ub2qgNuK8Niq0ENJiUg7
+         MpCy4dUaSpz/v+n23Gln5ZqmfHnX0q2PHh/z/7LrN67eoZLfWqi46lslFwB68+dqh4+0
+         NhJJkgmEM/XnInhELIsJeVnkKUUprhtoctnWYu8oJKWGpimw12hClNeog0jj2Jx/Nbc7
+         ughPe++nwALmTfstBoDSZrCY0amGr3YfdyhvLCx/AbdsIkTE9BQdcyGtPFEdikFm4PnG
+         Jmng==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition;
+        bh=5anLCU1hgz9xnTwkWucIBexZ7YBsZkD7mlEDF6g7Q0Y=;
+        b=6MWJNrIX5yfaRA45LJWk5QF+xB9TuoLC7HBLvf3OIvLHaA0NKktJVN4kXetx1fL+Qp
+         hpmMekj0f6Uf9Wqvb9vuSSOLt/rD8UtaabXO06tq2ID6Mb92L+i30EoFXHwET1A1rkMf
+         zSBSjwaU4yCZ2QQBH/ZkGolFWhPj3JW0WS+XR0GLyqCEQR7VxkUlyonq8SHu1Z+cQApU
+         b6SYWgus59c0ORrE4MF3Sc54Yg9NC6w3Mrb2QaoIF4lNLeEXuo6R8tpctmVNxxkj95eP
+         NaVoJgvgzNIdrAmlDE4iN8hyYM+eRCH/piHW0yN/z5cLylLQf+P73oizsUtycl2cMWNi
+         bcCg==
+X-Gm-Message-State: AOAM530WeslNd8OPpvDh62LcLq7OS+w8ZxSi63+NgX++P/WCqtiDTh3k
+	80HcDjQysIFYDcYo3ys/ROF6m1LQCnlCtg==
+X-Google-Smtp-Source: ABdhPJyVT9/XViexf1dU7x28n30HpOIUgcbGJOblwLUWlBtxYJ26NRolJ0TrUg01EsIel4518qMLxg==
+X-Received: by 2002:a05:622a:120b:b0:2e0:6878:cea with SMTP id y11-20020a05622a120b00b002e068780ceamr4755633qtx.547.1650018204409;
+        Fri, 15 Apr 2022 03:23:24 -0700 (PDT)
+Received: from euclid ([71.58.109.160])
+        by smtp.gmail.com with ESMTPSA id 16-20020a370c10000000b0069c00772054sm2315628qkm.114.2022.04.15.03.23.21
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 15 Apr 2022 03:23:23 -0700 (PDT)
+Date: Fri, 15 Apr 2022 06:23:17 -0400
+From: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
+To: sbrivio@redhat.com
+Cc: outreachy@lists.linux.dev
+Subject: [PATCH] mbuto: add a function to join elements of a list into a
+ string
+Message-ID: <20220415102317.GA882489@euclid>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-1404162921-1650013710=:3175"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+In multiple places we loop over a list by joining its elements with a prefix,
+suffix, and a delimiter into a single string. Add a function for this
+functionality and replace these loops with a function.
 
---8323329-1404162921-1650013710=:3175
-Content-Type: text/plain; charset=ISO-8859-1
-Content-Transfer-Encoding: 8BIT
+Signed-off-by: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
+---
+ mbuto | 36 +++++++++++++++++++++---------------
+ 1 file changed, 21 insertions(+), 15 deletions(-)
 
+diff --git a/mbuto b/mbuto
+index 14176c3..c1695fb 100755
+--- a/mbuto
++++ b/mbuto
+@@ -223,21 +223,11 @@ profile_kselftests() {
+ 	if [ -f ${__cfg} ]; then
+ 		__mods=$(${AWK} -F'=' '/=m/ {print $1}' ${__cfg} | ${SORT} -u)
+ 
+-		__egrep_pattern=""
+-		for __c in ${__mods}; do
+-	    		__egrep_pattern='^obj-\$\('"${__c}"'\).*.o$|'"${__egrep_pattern}"
+-		done
+-		__egrep_pattern=${__egrep_pattern%|}
+-
+-		__kmods_needed=
+-		__find_pattern=
+-		for __mo in $(${EGREP} -rn --include "*Makefile" ${__egrep_pattern} | \
+-				${AWK} -F'+=' '/+=/ {print $2}'); do
+-			__m=$(${BASENAME} -s .o ${__mo})
+-			__find_pattern="-name ${__m}.ko -o ${__find_pattern}"
+-			__kmods_needed="${__m} ${__kmods_needed}"
+-		done
+-		__find_pattern=${__find_pattern%-o }
++		__egrep_pattern=$(list_join "${__mods}" '^obj-\$\(' '\).*.o$' '|')
++		__egrep_result=$(${BASENAME} -a -s .o \
++				$(${EGREP} -rn --include "*Makefile" ${__egrep_pattern} | \
++  				${AWK} -F'+=' '/+=/ {print $2}'))
++		__find_pattern=$(list_join "${__egrep_result}" '-name ' '.ko ' '-o ')
+ 
+ 		KMODS=$(${FIND} "${MODDIR}" ${__find_pattern} | ${TR} '\n' ' ')
+ 
+@@ -245,6 +235,7 @@ profile_kselftests() {
+ 
+ 		KMODS="$(${BASENAME} -a -s .ko ${KMODS})"
+ 
++		__kmods_needed=$(list_join "${__egrep_result}" '' '' ' ')
+ 		__kmods_missing=$(list_diff "${__kmods_needed}" "${KMODS}")
+ 
+ 		if [ ! -z "${__kmods_missing}" ]; then
+@@ -435,6 +426,21 @@ list_diff() {
+ 	printf '%s' "${__diff}"
+ }
+ 
++# list_join() - Given a list of tokens $1, prepend prefix $2 and append suffix
++# $3 to each token and join them with a delimiter $3 into a single string
++# $1: list
++# $2: prefix
++# $3: suffix
++# $4: delimiter
++list_join() {
++	__s=
++	for __t in ${1}; do
++		__s="${2}${__t}${3}${4}${__s}"
++	done
++	__s=${__s%${4}}
++	printf '%s' "${__s}"
++}
++
+ ################################################################################
+ 
+ 
+-- 
+2.25.1
 
-
-On Fri, 15 Apr 2022, Fabio M. De Francesco wrote:
-
-> Hi Aliya,
->
-> I think that the subject of your patch can be reduced a bit. For example,
-> why don't you remove that "code style -"?
->
-> On venerdì 15 aprile 2022 07:19:01 CEST Aliya Rahmani wrote:
-> > Code style warnings reported by checkpatch.
-> > Improve the layout of a function header:
-> > *Put the first parameter immediately after the '(' and align the other
-> > parameters underneath it.
->
-> You are doing two different things. Please only one logical change per
-> patch. Furthermore, why that "*" before "Put"?
-
-I think that fixing up a function header could be considered to be one
-thing?
-
-But the subject line should reflect the complete one thing.
-
-julia
-
->
-> >
-> > Signed-off-by: Aliya Rahmani <aliyarahmani786@gmail.com>
-> > ---
-> > v1->v2 changes: Put static and void on a single line.
-> >
-> > v2->v3->v4 changes: Rework commit description.
-> >
-> > ---
-> >  drivers/staging/vt6655/rxtx.c | 23 ++++++++++-------------
-> >  1 file changed, 10 insertions(+), 13 deletions(-)
-> >
-> > diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/
-> rxtx.c
-> > index 53506e242a96..01dc83b2f4bc 100644
-> > --- a/drivers/staging/vt6655/rxtx.c
-> > +++ b/drivers/staging/vt6655/rxtx.c
-> > @@ -567,19 +567,16 @@ s_uFillDataHead(
-> >  	return buf->duration;
-> >  }
-> >
-> > -static
-> > -void
-> > -s_vFillRTSHead(
-> > -	struct vnt_private *pDevice,
-> > -	unsigned char byPktType,
-> > -	void *pvRTS,
-> > -	unsigned int cbFrameLength,
-> > -	bool bNeedAck,
-> > -	bool bDisCRC,
-> > -	struct ieee80211_hdr *hdr,
-> > -	unsigned short wCurrentRate,
-> > -	unsigned char byFBOption
-> > -)
-> > +static void
->
-> Why storage class and function type are on a separate line? Is it a special
-> convention for this driver?
->
-> > +s_vFillRTSHead(struct vnt_private *pDevice,
-> > +		unsigned char byPktType,
-> > +		void *pvRTS,
-> > +		unsigned int cbFrameLength,
-> > +		bool bNeedAck,
-> > +		bool bDisCRC,
-> > +		struct ieee80211_hdr *hdr,
-> > +		unsigned short wCurrentRate,
-> > +		unsigned char byFBOption)
-> >  {
-> >  	unsigned int uRTSFrameLen = 20;
-> >
-> > --
-> > 2.25.1
->
-> Thanks,
->
-> Fabio M. De Francesco
->
->
->
->
---8323329-1404162921-1650013710=:3175--
