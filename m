@@ -1,108 +1,142 @@
-Received: from mail-qv1-f47.google.com (mail-qv1-f47.google.com [209.85.219.47])
+Received: from mail-ej1-f43.google.com (mail-ej1-f43.google.com [209.85.218.43])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CF16D17CA
-	for <outreachy@lists.linux.dev>; Fri, 15 Apr 2022 04:03:20 +0000 (UTC)
-Received: by mail-qv1-f47.google.com with SMTP id x20so5808297qvl.10
-        for <outreachy@lists.linux.dev>; Thu, 14 Apr 2022 21:03:20 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CC55B17CA;
+	Fri, 15 Apr 2022 04:29:20 +0000 (UTC)
+Received: by mail-ej1-f43.google.com with SMTP id lc2so13497871ejb.12;
+        Thu, 14 Apr 2022 21:29:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
-        bh=L96pSfq/y/LU5Ii+9L+Ld5DmAuLv3zyEzL5USs8GnHE=;
-        b=mcNaQX4MejtlAZX4/BNaGW9UBAcI0w/GMK5wK229Bs29y6tzFpVgyzMkaP/8Jqm+au
-         M9Qe0fCtMmi6Hu9KNht9Q65xjoDYtLlOMWqw+AmVspmkkA5Pbv6cEvvS3gnAEpTxUwdK
-         CIy6eJiKaH1tE/peEkUbOnTS2ZOK6n5G+BdOyuGApRl55TaFTDT8QsSz5SyYAiqn8w1Z
-         5qGJ68cxCo8P9pkapOe0c3QyP4mT4/Hd3swZZWlZ/fwl22Key0QxOKphepyK03V50+LN
-         /RT/zS39Wu0bfklisOMeF2NzwDsfW8YPHYVdWefefDcliftcMquihiqLWQvvK3ZzaQzT
-         Kgbg==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=FgxYdQH4K38jxNj0/3LE0gePenpz/atsMgD0HUgrDoY=;
+        b=e4jXfgsF5YlWiMUmnnB0B+djmpAX1cPH6imE207G8QL6ayEIlZBgagLfXWWwnJDJzv
+         FW5NzNeum50fDZBq4cYUXPV9R9VXWci0YOwdipH3e6iHXVGAHUFxy10UgqvhrtijONJY
+         jHWeW9ht6IjUVmu6r7WtuH2LKQ/KB2jekSCBi0XUQlHA3sCCf9Ztk0dD1xmQsJlZX9P5
+         rvoBGyE2xUkSy2Iihndwf/vd+tPVNMS//QsL4icjiHBJfinxfkRZRmewG9+Z+3Y8rxjD
+         oZsyf3064cyeh8/lMjDebuvCEOv9IIumzIA5qFb1Z9U4tYdJUm7bKKqn7cV7Sq/UwBCW
+         H5vg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition;
-        bh=L96pSfq/y/LU5Ii+9L+Ld5DmAuLv3zyEzL5USs8GnHE=;
-        b=HVQBOKoNwBjnnV69XLVK5Iwc1buFo0zAPzPNivNMn/7Sfheg/0H2P0HOBc9B2PZz44
-         SKeeTgW3fDDc3QRbziyYVI2fdQXNWrO7OcFKJKXvcHJwhFzY9dBhToUpv172K1XwoxkX
-         XuuStwhn6mM/FiUgVzge6dugh3QnetSFy6+nx6f5kZcuSCsLlikTLeyYV+yVJlPx/nvW
-         7rqPjgwnUg7k8N9lPw3g5+9+WDojVnkBtXq2Gmv/T7rM0TBSOEo4bdov6yY9vfjlR4va
-         fACSE8e1RYPSf6bzX00N+htTqxjdLVGBq3g4Aqk0+0YYRLB2j+N+GcGIXjZvquZbmcjd
-         +HOQ==
-X-Gm-Message-State: AOAM532qLZaEha5uzXBGO5xOSplxCDQ02kMVnbHfPClAq+dKTJiJIVWM
-	bE9CkkqP8WDGeVfKwoFnnQE=
-X-Google-Smtp-Source: ABdhPJxFLSBqqq9CRgK2y+X9QCK9WRtEWeVuz6JLrwtoUaIAji9YOzb/FCgrra0VsaHm2OXxedozrQ==
-X-Received: by 2002:a05:6214:2469:b0:446:356c:474c with SMTP id im9-20020a056214246900b00446356c474cmr1741395qvb.102.1649995399668;
-        Thu, 14 Apr 2022 21:03:19 -0700 (PDT)
-Received: from euclid ([71.58.109.160])
-        by smtp.gmail.com with ESMTPSA id v67-20020a379346000000b0069bdb3bb132sm2007258qkd.37.2022.04.14.21.03.17
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=FgxYdQH4K38jxNj0/3LE0gePenpz/atsMgD0HUgrDoY=;
+        b=isGJFXeLfBp67nS1E3JvZaHCfD6FwwpF8V5KGhaMNnsURn9tBgdSHtczBw/i9XSm2b
+         Jne43Ysbhkwi7BWteoiiVc/cPBmTn/NBrc5NcxtB5nqrGZ9mdCook1igJoAABGO4KMK3
+         QwDmx1ykRX+uH0qp2DpIr0DyrpgnitBkHD5+EC6sDkp5IfAdOSBRHNE5HbMYvsDrdm+G
+         pgdkikid98K0lasIprGlMMjTow3m1JNy5GYrhmEwQa24E8aL1XyAI0SDujzBrPbZZsCN
+         zLQuhiuGFTk4no9xIe5f44GFYR3GOmj9bg9daAD7kXoR/LjqAP6HMpDs6kTE+TFScbZV
+         h6Sg==
+X-Gm-Message-State: AOAM533X628inm2ENQrsdotXgwbBa+hGvGumuC8C0Ja8hS9h3CN15u0z
+	e8n8bqr8/zKGxkK1rm5X3Z0=
+X-Google-Smtp-Source: ABdhPJxhIdWVi5QikpsHemiGrQkXmL48dWqnyIk/NRWOmMCNgUvcg7ZoWvSluufqF+Nb/7co/OrUKQ==
+X-Received: by 2002:a17:906:7943:b0:6df:e5b3:6553 with SMTP id l3-20020a170906794300b006dfe5b36553mr4892245ejo.398.1649996959018;
+        Thu, 14 Apr 2022 21:29:19 -0700 (PDT)
+Received: from leap.localnet (host-79-43-11-75.retail.telecomitalia.it. [79.43.11.75])
+        by smtp.gmail.com with ESMTPSA id e35-20020a056402332300b004209638cb94sm1960352eda.6.2022.04.14.21.29.17
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 14 Apr 2022 21:03:19 -0700 (PDT)
-Date: Fri, 15 Apr 2022 00:03:12 -0400
-From: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
-To: sbrivio@redhat.com
-Cc: outreachy@lists.linux.dev
-Subject: [PATCH] mbuto: add a function to find the difference of two lists
-Message-ID: <20220415040312.GA769838@euclid>
+        Thu, 14 Apr 2022 21:29:17 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: Larry.Finger@lwfinger.net, Jaehee Park <jhpark1013@gmail.com>
+Cc: phil@philpotter.co.uk, gregkh@linuxfoundation.org, linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, outreachy@lists.linux.dev, jhpark1013@gmail.com, Pavel Skripkin <paskripkin@gmail.com>
+Subject: Re: [PATCH v2 1/6] staging: r8188eu: remove unused member free_bss_buf
+Date: Fri, 15 Apr 2022 06:29:15 +0200
+Message-ID: <3608313.MHq7AAxBmi@leap>
+In-Reply-To: <e41e0d3b62395d04f41d6934074074c431e7aacc.1649990500.git.jhpark1013@gmail.com>
+References: <cover.1649990500.git.jhpark1013@gmail.com> <e41e0d3b62395d04f41d6934074074c431e7aacc.1649990500.git.jhpark1013@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="ISO-8859-1"
 
-Adds a function to find the difference of two lists and use that function to
-determine the list of missing modules.
+On venerd=EC 15 aprile 2022 04:48:32 CEST Jaehee Park wrote:
+> The free_bss_buf member of pmlmepriv is unused. Remove all related
+> lines.
+>=20
+> Suggested-by: Pavel Skripkin <paskripkin@gmail.com>
+> Signed-off-by: Jaehee Park <jhpark1013@gmail.com>
+> ---
+>  drivers/staging/r8188eu/include/rtw_mlme.h | 1 -
+>  drivers/staging/r8188eu/core/rtw_mlme.c    | 7 -------
+>  2 files changed, 8 deletions(-)
+>=20
+> diff --git a/drivers/staging/r8188eu/include/rtw_mlme.h b/drivers/
+staging/r8188eu/include/rtw_mlme.h
+> index 1dc1fbf049af..0f03ac43079c 100644
+> --- a/drivers/staging/r8188eu/include/rtw_mlme.h
+> +++ b/drivers/staging/r8188eu/include/rtw_mlme.h
+> @@ -319,7 +319,6 @@ struct mlme_priv {
+>  	struct list_head *pscanned;
+>  	struct __queue free_bss_pool;
+>  	struct __queue scanned_queue;
+> -	u8 *free_bss_buf;
+>  	u8	key_mask; /* use to restore wep key after hal_init */
+>  	u32	num_of_scanned;
+> =20
+> diff --git a/drivers/staging/r8188eu/core/rtw_mlme.c b/drivers/staging/
+r8188eu/core/rtw_mlme.c
+> index 3e9882f89f76..aed868d1d47b 100644
+> --- a/drivers/staging/r8188eu/core/rtw_mlme.c
+> +++ b/drivers/staging/r8188eu/core/rtw_mlme.c
+> @@ -61,7 +61,6 @@ static int _rtw_init_mlme_priv(struct adapter=20
+*padapter)
+>  		res =3D _FAIL;
+>  		goto exit;
+>  	}
+> -	pmlmepriv->free_bss_buf =3D pbuf;
 
-Signed-off-by: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
----
- mbuto | 27 ++++++++++++++++++---------
- 1 file changed, 18 insertions(+), 9 deletions(-)
+Hi Jaehee,
 
-diff --git a/mbuto b/mbuto
-index 74c81eb..14176c3 100755
---- a/mbuto
-+++ b/mbuto
-@@ -245,15 +245,8 @@ profile_kselftests() {
- 
- 		KMODS="$(${BASENAME} -a -s .ko ${KMODS})"
- 
--		__kmods_missing=
--		for __n in ${__kmods_needed}; do
--			__found=0
--			for __f in ${KMODS}; do
--				[ ${__n} = ${__f} ] && __found=1
--			done
--			[ ${__found} -eq 0 ] && \
--				__kmods_missing="${__n} ${__kmods_missing}"
--		done
-+		__kmods_missing=$(list_diff "${__kmods_needed}" "${KMODS}")
-+
- 		if [ ! -z "${__kmods_missing}" ]; then
- 			notice "WARNING: missing modules: ${__kmods_missing}"
- 		fi
-@@ -426,6 +419,22 @@ workers() {
- 	while ! ${RMDIR} "${__sync_dir}" 2>/dev/null; do ${SLEEP} 1; done
- }
- 
-+# list_diff() - Given two lists, $1 and $2, returns the tokens that exist in $1
-+# but not in $2
-+# $1: list
-+# $2: list
-+list_diff() {
-+	__diff=
-+	for __e1 in ${1}; do
-+		__found=0
-+		for __e2 in ${2}; do
-+			[ ${__e1} = ${__e2} ] && __found=1
-+		done
-+		[ ${__found} -eq 0 ] && __diff="${__e1} ${__diff}"
-+	done
-+	printf '%s' "${__diff}"
-+}
-+
- ################################################################################
- 
- 
--- 
-2.25.1
+"pmlmepriv->free_bss_buf" is assigned with "pbuf". The latter is a pointer=
+=20
+to virtually contiguous memory which was allocated by vmalloc() or=20
+vzalloc() (I didn't check, but the vfree() in _rtw_free_mlme_priv() tells=20
+me that indeed it was).
+
+>  	pnetwork =3D (struct wlan_network *)pbuf;
+> =20
+> @@ -109,13 +108,7 @@ void rtw_free_mlme_priv_ie_data(struct mlme_priv=20
+*pmlmepriv)
+> =20
+>  void _rtw_free_mlme_priv(struct mlme_priv *pmlmepriv)
+>  {
+> -
+>  	rtw_free_mlme_priv_ie_data(pmlmepriv);
+> -
+> -	if (pmlmepriv) {
+> -		vfree(pmlmepriv->free_bss_buf);
+> -	}
+
+Therefore, here you are causing a memory leak, which is something you=20
+should avoid :)=20
+
+Why did you delete that call to vfree()?=20
+
+I think that you are misunderstanding what Pavel said. Even if it were true=
+=20
+that the code makes no use of that region of memory (again, I didn't=20
+check), nevertheless, that memory was allocated somewhere and its address=20
+is now in "pmlmepriv->free_bss_buf".
+
+If you can confirm that this memory is allocated for no purpose you should=
+=20
+also remove the call to vmalloc() / vzalloc().
+
+Thanks,
+
+=46abio M. De Francesco =20
+
+> -
+>  }
+> =20
+>  struct	wlan_network *_rtw_alloc_network(struct	mlme_priv *pmlmepriv)/*=20
+_queue *free_queue) */
+> --=20
+> 2.25.1
+>
+
 
