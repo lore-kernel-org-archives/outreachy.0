@@ -1,129 +1,94 @@
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ej1-f46.google.com (mail-ej1-f46.google.com [209.85.218.46])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0E2787A
-	for <outreachy@lists.linux.dev>; Fri, 15 Apr 2022 21:51:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1650059499; x=1681595499;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=3uhyHTO5ftv2odcfrEJy+EXLNUnTCOF2aLkJsZFazvY=;
-  b=QKRikolcsyblEWXbgulutVOKJKDm+iaJ/hmosr0WsLbCWYwzxXJgMesv
-   q5OFSNAtI6to/mdVBxQIDIcgC1DJjFb0TkpqMSY/jInuUUbVwwNikOcGf
-   P6DVhmK48258SOoqK/RTFtRwxIrH1I/X3K3l6qcHlMAkzDnR8udAh/a1T
-   vPp4e/xuGr8B+6UajwJxCGdny5EIgjjQaOXpqWz84oW8/AXygF+KhFfCl
-   rv6JRTeYyyvE79FPIZ4QtPcSRQ3m+DJ+JtWLOzAONpnJUkr/KesLSwIjQ
-   V1QxWpDLzCk6aiR4KkMzRgcIYz+4P1tuFBmhNetsE0N47gejqBr+r0UV+
-   Q==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10318"; a="260831416"
-X-IronPort-AV: E=Sophos;i="5.90,263,1643702400"; 
-   d="scan'208";a="260831416"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Apr 2022 14:51:38 -0700
-X-IronPort-AV: E=Sophos;i="5.90,263,1643702400"; 
-   d="scan'208";a="574548299"
-Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
-  by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Apr 2022 14:51:38 -0700
-Date: Fri, 15 Apr 2022 14:53:28 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: Stefano Brivio <sbrivio@redhat.com>
-Cc: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>,
-	"outreachy@lists.linux.dev" <outreachy@lists.linux.dev>
-Subject: Re: [PATCH v2] mbuto: support building a minimal image for kernel
- selftests
-Message-ID: <20220415215328.GA1252509@alison-desk>
-References: <20220414230923.GA594872@euclid>
- <20220415171019.091e123c@elisabeth>
- <20220415170543.GA1251615@alison-desk>
- <20220415202405.53ffd848@elisabeth>
- <20220415192339.GA1252106@alison-desk>
- <20220415231853.6da3e7ad@elisabeth>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 512B933F4
+	for <outreachy@lists.linux.dev>; Fri, 15 Apr 2022 22:49:08 +0000 (UTC)
+Received: by mail-ej1-f46.google.com with SMTP id i27so17401006ejd.9
+        for <outreachy@lists.linux.dev>; Fri, 15 Apr 2022 15:49:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=CLcz8570HW2ZMhfu3Nh/81bksrUpmcwxfu6iKdbtpi4=;
+        b=H+CPrkR+Z3XXz5RBMVwoNLUITcXLMAj9NsLaBR7JfoBtO/rMqXowm0awFGLy8w/H+M
+         2O4a1aTEKv/gLX6qQwcdWJ46JnudIO8rJHIxCVUtpS3btAOiniEZFY2XKcHcuusfagE+
+         LwsWopnF8GeCbT4H4lnpH+Td7fcJTHq/spSXGUS0HQkFF5Hcy5mnIrB5N/tRvmVupMMK
+         77f+TQ7IAUmTGU3v2WYGS3w0DI/Eq5uehFd2DgJI/G7T2tHBV8j+yUGQME5OaBSf1DLE
+         B5/dlpWIs4HCaG9PJt2wdKlO4AvTUdmO8ukZoGHrHIInl17BIuh8HmN6fDXasjYtwTtD
+         9S+A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=CLcz8570HW2ZMhfu3Nh/81bksrUpmcwxfu6iKdbtpi4=;
+        b=Ozwl/IMMfOZr8qhYEw74uLBH6PQNtzMrEhUiCY17Fe6H8yg2yR92Yc1szgi73BXukd
+         rLfTfbICAMfzUcSr0H8zHmI+VkQbX/WLW8R/DAbTn8qZsCgMUU+LQn/GujDR4hweFaQW
+         5G+UgEa44MCKS/EYC+TnPZc1+wEu6Q9Grq627X/gDujX+jMTv/g0XKCJAUMseNc1S9ww
+         wRiXrWUCNU9mZ+t9GL8UsiRY8r+0UDw+rwNNb++X/0wua6blgqXhUFiegueT3gcvyWAO
+         jCYH0LDVOo+Ny/LUd3/OqC8K0atoAuQRY4TVg58ej2TZjWiLwGhuT/dJXWf1gfp30fMs
+         5r7Q==
+X-Gm-Message-State: AOAM531C4J5pOsCbKP4iPDKvSuvyE4EcN2GUVpTbofCAENSYABIRGitn
+	IoULmsVwJSmSBIjke1NoZgk=
+X-Google-Smtp-Source: ABdhPJxN13L9Vaj5bE8Fm/0G6BDBO4e/autlgHVEpujaMUfyo+twcX+XEKSk4po3HLNZUpGksOU6xQ==
+X-Received: by 2002:a17:906:5d14:b0:6ef:77c4:2d3b with SMTP id g20-20020a1709065d1400b006ef77c42d3bmr587483ejt.734.1650062946454;
+        Fri, 15 Apr 2022 15:49:06 -0700 (PDT)
+Received: from localhost.localdomain (host-79-43-11-75.retail.telecomitalia.it. [79.43.11.75])
+        by smtp.gmail.com with ESMTPSA id gh9-20020a170906e08900b006e8662287edsm2026409ejb.54.2022.04.15.15.49.04
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 15 Apr 2022 15:49:05 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: Jonathan Corbet <corbet@lwn.net>,
+	Andrew Morton <akpm@linux-foundation.org>,
+	SeongJae Park <sj@kernel.org>,
+	Jiajian Ye <yejiajian2018@email.szu.edu.cn>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	Ira Weiny <ira.weiny@intel.com>,
+	Matthew Wilcox <willy@infradead.org>,
+	Peter Zijlstra <peterz@infradead.org>,
+	outreachy@lists.linux.dev
+Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+Subject: [PATCH v3 0/2] Documentation/vm: Rework and extend highmem.rst 
+Date: Sat, 16 Apr 2022 00:48:57 +0200
+Message-Id: <20220415224859.21060-1-fmdefrancesco@gmail.com>
+X-Mailer: git-send-email 2.34.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220415231853.6da3e7ad@elisabeth>
+Content-Transfer-Encoding: 8bit
 
-On Fri, Apr 15, 2022 at 02:18:53PM -0700, Stefano Brivio wrote:
-> On Fri, 15 Apr 2022 12:23:39 -0700
-> Alison Schofield <alison.schofield@intel.com> wrote:
-> 
-> > On Fri, Apr 15, 2022 at 11:24:05AM -0700, Stefano Brivio wrote:
-> > > On Fri, 15 Apr 2022 10:05:43 -0700
-> > > Alison Schofield <alison.schofield@intel.com> wrote:
-> > >   
-> > > > On Fri, Apr 15, 2022 at 05:10:19PM +0200, Stefano Brivio wrote:  
-> > > > > This is really valuable work, thank you. I took the liberty of fixing
-> > > > > up a few things, listed below, and pushed:    
-> > > > 
-> > > > What repository is this in?  
-> > > 
-> > > https://mbuto.sh/mbuto -- we're tracking project-specific tasks at
-> > > https://board.net/p/Outreachy2022KernelNetworking and this is task #7 there.
-> > > 
-> > > Documentation is still a bit lacking (I'm working on it on and off), I
-> > > hope it can become finally usable for other applicants (to run
-> > > kselftests without semi-complicated VM installs) in a couple of days.  
-> > 
-> > I see, thanks!
-> > 
-> > So do you think "Minimal Builder Using Terse Options" will someday land
-> > in the kernels scripts/ directory?
-> 
-> That might be an attempt/possibility, yes, but not necessarily: it has
-> other use cases as well. I actually started it for a completely
-> different reason, and right now the only automated user it has is yet
-> another thing (tests for https://passt.top).
-> 
-> > Wondering why this isn't in a github repository? I think you (Stefano)
-> > told me something previously about access issues that some folks have with
-> > github.
-> 
-> First off, opinions expressed here are solely my own and do not express
-> the views or opinions of my employer. :)
-> 
-> Three categories of reasons:
-> 
-> 1. GitHub is subject to US trade control laws (EAR), and access is
->    currently excluded for at least developers residing in Cuba and Syria
->    -- it looks like it's working fine for Iran-based developers, and I
->    understand there's the will from GitHub to find workarounds for
->    others:
-> 	https://twitter.com/github/status/1346626296219099136?lang=en
-> 
->    ...but I would still define the current situation somewhat exclusive
->    (and only partially under control of GitHub, of course).
-> 
-> 2. I don't like using proprietary software (especially since a. I'm
->    volunteering and b. Outreachy is involved)
-> 
-> 3. technical reasons: I think an email-based workflow has many
->    advantages over "trendy" things, and for example contributing to
->    mbuto can be "used" to get more familiar with the kernel changes
->    workflow as well, as it's essentially the same.
-> 
->    There are also some tricks I couldn't do on GitHub, for example
->    arbitrary HTML/JavaScript in web pages:
-> 	https://mbuto.sh/mbuto/tree/README.md
-> 
->    ...and actually I have a ton of them, but I don't want to make this
->    email overly long. :)
-> 
-> > Thanks for helping me understand!
-> 
-> You're welcome! Out of personal curiosity, and I'm mostly interested in
-> an instinctive/first-thought answer here: why did you expect it to be on
-> GitHub?
+Extend and rework the "Temporary Virtual Mappings" section of the highmem.rst
+documentation.
 
-I'm in U.S. and in my circles, github is the defacto location for
-sharing code. 
+Do a partial rework of the paragraph related to kmap() and add a new paragraph
+in order to document the set of kmap_local_*() functions. Re-order paragraphs
+in decreasing order of preference of usage.
 
-> 
-> -- 
-> Stefano
-> 
+Include kerneldoc comments from include/linux/highmem.h and remove
+redundant and obsolete section about kmap_atomic().
+
+v1-v2:
+	1/2 - According to comments on v1 by Mattew Wilcox and Ira Weiny,
+	      correct a mistake in text, format paragraphs to stay within 
+	      the 75 characters limit, re-order the flow of the same 
+	      paragraphs in decreasing order of preference of usage.
+	2/2 - No patch.
+
+v2->v3:
+	1/2 - No changes.
+	2/2 - Added patch to include kernel-doc to highmem.rst and
+	      remove the now redundant section about kmap_atomic().
+
+Fabio M. De Francesco (2):
+  Documentation/vm: Extend "Temporary Virtual Mappings" section in
+    highmem.rst
+  Documentation/vm: Include kernel-doc to highmem.rst
+
+ Documentation/vm/highmem.rst | 96 +++++++++++++++++++++---------------
+ 1 file changed, 56 insertions(+), 40 deletions(-)
+
+-- 
+2.34.1
+
