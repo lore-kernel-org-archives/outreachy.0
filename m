@@ -1,82 +1,97 @@
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-wr1-f50.google.com (mail-wr1-f50.google.com [209.85.221.50])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8718E33D6
-	for <outreachy@lists.linux.dev>; Fri, 15 Apr 2022 19:21:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1650050511; x=1681586511;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=wHtZKeNCI9zMlGvX/3TLnXx4CUiNBhlYCt+yvCfTeFk=;
-  b=L28+9vY6zNGiJ23sonLRudjnsnzly/zzHLxwM3lXFUEqztLXF2UBxXjD
-   uYnU9jH7cW4sYhyTLF52ZWIvINf3ixFttUnE2hO8bY+BmvPPUZaSnBrs+
-   /FFSO+3yLivpPDgdMDNlHU0KX+eag270wCIU7VezhE7WC/AxLV32U51Ex
-   YCWJLYfjrzXXapCHkvCu5kgIxhqq0zVAP0fWPJlrjWMKf7a6Jl198yfiQ
-   7DurcjC8kMQpX2W0mP/ohAkKABI1tk0sb1RvGOKUqRcTBItb44ZtgwRIp
-   iYx1V/1glbL1EYa3mh7r3zT5+QVVf68baZiN/RBCHEzQ/yPVtjUxUKh7o
-   A==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10318"; a="349663204"
-X-IronPort-AV: E=Sophos;i="5.90,263,1643702400"; 
-   d="scan'208";a="349663204"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
-  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Apr 2022 12:21:50 -0700
-X-IronPort-AV: E=Sophos;i="5.90,263,1643702400"; 
-   d="scan'208";a="656525590"
-Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
-  by fmsmga002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Apr 2022 12:21:50 -0700
-Date: Fri, 15 Apr 2022 12:23:39 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: Stefano Brivio <sbrivio@redhat.com>
-Cc: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>,
-	"outreachy@lists.linux.dev" <outreachy@lists.linux.dev>
-Subject: Re: [PATCH v2] mbuto: support building a minimal image for kernel
- selftests
-Message-ID: <20220415192339.GA1252106@alison-desk>
-References: <20220414230923.GA594872@euclid>
- <20220415171019.091e123c@elisabeth>
- <20220415170543.GA1251615@alison-desk>
- <20220415202405.53ffd848@elisabeth>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9F9BC7A
+	for <outreachy@lists.linux.dev>; Fri, 15 Apr 2022 20:53:12 +0000 (UTC)
+Received: by mail-wr1-f50.google.com with SMTP id u3so11856061wrg.3
+        for <outreachy@lists.linux.dev>; Fri, 15 Apr 2022 13:53:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=ZyOgwEJ9l8EA5lTTda7+EsCqxDSAHYk8KWdTQlUMJjs=;
+        b=hURxvbcmXHZE0cQH3he2QePF/JGuwU07L7NGIqE/2niCHabgXwWqBKJKSoyZOLoD7u
+         sz3kg9MLB33erxci1PiAerJBsobmblASO5dM6QkSEdatwtp9cYp/a7/Eh1MvKxZptgql
+         aKud9nAnTNe2KL+vZidB4WUXvykVT8eoPBPEsx5wApTLFqievy5rjge9ym8ILqBBYMl5
+         zrYkDoubRBWNgQ5SFhp+FaIpbqA7aUXtfS9IUD5uMvL3V5bWGEJBk0F60dhKqEaAHMH+
+         G1BfjyOAQ6tQy/YEjoiNZ9iiLkwqYf6RrRc5OVrG4CGOuIJDF5v0r3MxQ5wwfaWXJaML
+         ABcA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=ZyOgwEJ9l8EA5lTTda7+EsCqxDSAHYk8KWdTQlUMJjs=;
+        b=Z9OhTdGmTS8DIRkRYOeYCOV6z/MhOJIisuhIjY7qcv0Xr6hn0jC8utuxWtF49xOSLn
+         +03Cvg7+pToaMmcf9oTA9elbDSVDS+KLmlW7n2zH6mf+JnOmSaIilkBIE3bO9/G+dnc0
+         RaOp0bcyr8YerRAeWtmXUt0e1JnH5JrDeuLf5YM8s7ImVLJ/4J0dIlOmzJ/ZFww8EZn7
+         3T/aJ4UvPgD2wP+AjiQTCRCF258gMtdEU1iNHhL2D0dDoLuhgMgNMSWOtESEscuf3veZ
+         uRz7fvC/k8c44z+czkUl1FE7LeS32VuhoMYAfdIxEWiiTsNnoxJSPV3Qsjkf3fukCm5D
+         mwrg==
+X-Gm-Message-State: AOAM531RMN+yrJqQ+90CYk+tIFa4KsD7NsfdzQEwThy2AhFMWJP+mW1o
+	D+Gryzz20FUHit1pr5qtf3Y=
+X-Google-Smtp-Source: ABdhPJyIDzuWNU+lgGyISF0WOPX13KdzXq4i1qTNAc+fd86+SmAMO+2T2lNd4SeTSq93uytVO66I+Q==
+X-Received: by 2002:a5d:4085:0:b0:207:b13e:e8dd with SMTP id o5-20020a5d4085000000b00207b13ee8ddmr538897wrp.557.1650055990836;
+        Fri, 15 Apr 2022 13:53:10 -0700 (PDT)
+Received: from alaa-emad ([197.57.90.163])
+        by smtp.gmail.com with ESMTPSA id v5-20020a5d6785000000b0020a792848eesm3181988wru.82.2022.04.15.13.53.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 15 Apr 2022 13:53:10 -0700 (PDT)
+From: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+To: outreachy@lists.linux.dev
+Cc: jesse.brandeburg@intel.com,
+	anthony.l.nguyen@intel.com,
+	davem@davemloft.net,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	intel-wired-lan@lists.osuosl.org,
+	netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	ira.weiny@intel.com,
+	eng.alaamohamedsoliman.am@gmail.com
+Subject: [PATCH] intel: igb: igb_ethtool.c: Convert kmap() to kmap_local_page()
+Date: Fri, 15 Apr 2022 22:53:07 +0200
+Message-Id: <20220415205307.675650-1-eng.alaamohamedsoliman.am@gmail.com>
+X-Mailer: git-send-email 2.35.2
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220415202405.53ffd848@elisabeth>
+Content-Transfer-Encoding: 8bit
 
-On Fri, Apr 15, 2022 at 11:24:05AM -0700, Stefano Brivio wrote:
-> On Fri, 15 Apr 2022 10:05:43 -0700
-> Alison Schofield <alison.schofield@intel.com> wrote:
-> 
-> > On Fri, Apr 15, 2022 at 05:10:19PM +0200, Stefano Brivio wrote:
-> > > This is really valuable work, thank you. I took the liberty of fixing
-> > > up a few things, listed below, and pushed:  
-> > 
-> > What repository is this in?
-> 
-> https://mbuto.sh/mbuto -- we're tracking project-specific tasks at
-> https://board.net/p/Outreachy2022KernelNetworking and this is task #7 there.
-> 
-> Documentation is still a bit lacking (I'm working on it on and off), I
-> hope it can become finally usable for other applicants (to run
-> kselftests without semi-complicated VM installs) in a couple of days.
+The use of kmap() is being deprecated in favor of kmap_local_page()
+where it is feasible.
 
-I see, thanks!
+With kmap_local_page(), the mapping is per thread, CPU local and not
+globally visible.
 
-So do you think "Minimal Builder Using Terse Options" will someday land
-in the kernels scripts/ directory?
+Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+---
+ drivers/net/ethernet/intel/igb/igb_ethtool.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Wondering why this isn't in a github repository? I think you (Stefano)
-told me something previously about access issues that some folks have with
-github.
+diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c b/drivers/net/ethernet/intel/igb/igb_ethtool.c
+index 2a5782063f4c..ba93aa4ae6a0 100644
+--- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
++++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
+@@ -1798,14 +1798,14 @@ static int igb_check_lbtest_frame(struct igb_rx_buffer *rx_buffer,
+ 
+ 	frame_size >>= 1;
+ 
+-	data = kmap(rx_buffer->page);
++	data = kmap_local_page(rx_buffer->page);
+ 
+ 	if (data[3] != 0xFF ||
+ 	    data[frame_size + 10] != 0xBE ||
+ 	    data[frame_size + 12] != 0xAF)
+ 		match = false;
+ 
+-	kunmap(rx_buffer->page);
++	kunmap_local(rx_buffer->page);
+ 
+ 	return match;
+ }
+-- 
+2.35.2
 
-Thanks for helping me understand!
-Alison
-
-> 
-> -- 
-> Stefano
-> 
