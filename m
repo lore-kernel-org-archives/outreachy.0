@@ -1,51 +1,57 @@
-Received: from mail-ot1-f68.google.com (mail-ot1-f68.google.com [209.85.210.68])
+Received: from mail-wm1-f48.google.com (mail-wm1-f48.google.com [209.85.128.48])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2AD097B;
-	Sat, 16 Apr 2022 10:25:09 +0000 (UTC)
-Received: by mail-ot1-f68.google.com with SMTP id l9-20020a056830268900b006054381dd35so561311otu.4;
-        Sat, 16 Apr 2022 03:25:09 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 498277A
+	for <outreachy@lists.linux.dev>; Sat, 16 Apr 2022 11:15:02 +0000 (UTC)
+Received: by mail-wm1-f48.google.com with SMTP id n40-20020a05600c3ba800b0038ff1939b16so5082853wms.2
+        for <outreachy@lists.linux.dev>; Sat, 16 Apr 2022 04:15:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=iAwdY3/hpZa+mDgOL5jFRGta3ky0j/Xe63lExx20fBM=;
-        b=HVr29EqsqK3Zl2aR8tUdn+y3xstnHREd7s8CtWCSqIvUVgS0oLKIa3ibRiuEJFsY1u
-         /UCCFzQ3T88Q5CArGa9lSjdPbSbjA/C1R7atgIPAOGnSrsdqXyWqtswmzCHOf1JVnMct
-         Cl2RnzDt//+tu1fBM+AMLrkAGvpE/HBPE0LjyWJga8KaNqx1FRcFHBLPdyTwlWzjoEQD
-         iyfvsLyVqBPpcyEXJZmB0MBg7v/YiArtZh/w449/Z+MqeryRkgoCl+ExvyNdHYCxswwE
-         XedvTbaO0rgtbfBvMUH1l/JhdT4uuf/X+s/YxUTmcL/U8QF62vkY52p7DiLF2WK1t1yB
-         rDNw==
+        bh=uEhSMDHJtiuwdrj4dJJyu97KIVJOOD+nk/JiQfVUpZY=;
+        b=dAvG/VUOiUi0sXwkQHoF+5NVAuiQMfKZcP1vqgjbrBMkds32W4S/eU8nfu9IqtPPMh
+         RAk15ZLBRCzkyRWKkGVGJpTDzaSReBgjw+tB0S7YEMHgWwyGmXlgdNTTvue7wzattbWH
+         6/vvwJXkAwZvshn54gexQbZcinhpcI4xzvXg3WLmsxJL7y0INjgfbhPUZKVTWaVHWPZs
+         hUMyU6iVTLqHlA8iSHqeZj8/wn8dBw8KYI6VkbA5YMmL7AkLk5GoX42GmWcNeitGY8lq
+         2LT9Kqd1NhYAjJYGdAgPh9rKu9HOKoKFVzLMflSZnl+3U1TQg8kn1sKUX7Tgj0kUP149
+         66lw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=iAwdY3/hpZa+mDgOL5jFRGta3ky0j/Xe63lExx20fBM=;
-        b=7B4g/VdCl5t/85u1M04hlvDG+eHs1IRaqJMoFfoZSBPcYU5EM9rVoNc3dYLCbqR7zf
-         rNjrP3C+gHnrql9XEVc2+srkBYXuFIzhJ7gv++paLbXYaslsveo7YO7WPWmg2L6mvkit
-         K+c+Pk6VsaVrvYpfNacHvCvPeKFpqZAmXxm4c3vD2jUAKZvX7hxGPZmv5x6EmVeCQmJ4
-         Z3soGg9caT6BqGdaK610JPhbNOKA3rU6x+M08e6Eq82yppoFUSH9NXvCjfbf1G0S4YhG
-         ZOS+xj6og161MYhCGYIcuCJ9oQRL+GaPKMDK5WUQnuV0KGxhm0r5QW8h+2jXRkLuWA2q
-         cQcA==
-X-Gm-Message-State: AOAM530U4jwRIrwgKDrha522KHWeduh25FchUZeihpuM6+fhAH4aeoYN
-	uI0eQ9t9bwNiTlUxZ5KZwcY=
-X-Google-Smtp-Source: ABdhPJyLKZhUaF8GS1HD5pzG3omywEfOv5Ge4CVMmZ4eh2pLDTxKQnOI/7pgVbCkE9sNl8AOamyhzw==
-X-Received: by 2002:a9d:65c1:0:b0:5b2:3556:a612 with SMTP id z1-20020a9d65c1000000b005b23556a612mr961395oth.132.1650104708229;
-        Sat, 16 Apr 2022 03:25:08 -0700 (PDT)
-Received: from bertie (072-190-140-117.res.spectrum.com. [72.190.140.117])
-        by smtp.gmail.com with ESMTPSA id r3-20020aca4403000000b002ecf4d70c83sm1910132oia.27.2022.04.16.03.25.07
+        bh=uEhSMDHJtiuwdrj4dJJyu97KIVJOOD+nk/JiQfVUpZY=;
+        b=bexrL4NXorUrnl70lLIaySnoUFRdDfUFljHjF0ldnCiOHueplehFKp2n/0W0n84v6m
+         JL5EdEA3Q/1iij1AZb1j0xJiEKpP1SJ6To7IBLbob0CzCVv/UvI8PJUb8FtgW0gE6o5l
+         O7ld3nLgRAo6NtnMpTnLoqGJ9Tz/VOvZS1pVbKphJ8fuKaGcvPphfzlk+oJDEZPa8yV7
+         oHX+M4HilrDiMVOLvnCjZ5JgNC3ndZA3OdeZmG+Ugd4mjz2aHLxvA0rui59MfGbcenYv
+         Y5PWNabNyKZvBKvigf/6lfTYKqEWHfuU97/5YshLWCN5GaRSSwEmwXlA+hJDRHNmykfX
+         uezw==
+X-Gm-Message-State: AOAM533Lma8WGwzvQqbTrzqLZ7lrxnXXaKtaxV9zDI8wWcqiW41sF+Xx
+	Qd6rZOvIl48rHj46tO79FEw=
+X-Google-Smtp-Source: ABdhPJxpvZFQaoNKdlYwE8qfxCxznE1bYGAnUYXCQP5HCgyf90I8tzuMZa59kHFBG+rR05HyfPdo7A==
+X-Received: by 2002:a05:600c:1e8a:b0:38e:d57d:a3fe with SMTP id be10-20020a05600c1e8a00b0038ed57da3femr7027147wmb.59.1650107700553;
+        Sat, 16 Apr 2022 04:15:00 -0700 (PDT)
+Received: from alaa-emad ([197.57.90.163])
+        by smtp.gmail.com with ESMTPSA id 2-20020a1c1902000000b00380d3873d6asm7344196wmz.43.2022.04.16.04.15.00
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 16 Apr 2022 03:25:07 -0700 (PDT)
-From: Rebecca Mckeever <remckee0@gmail.com>
+        Sat, 16 Apr 2022 04:15:00 -0700 (PDT)
+From: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
 To: outreachy@lists.linux.dev
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-staging@lists.linux.dev,
+Cc: jesse.brandeburg@intel.com,
+	anthony.l.nguyen@intel.com,
+	davem@davemloft.net,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	intel-wired-lan@lists.osuosl.org,
+	netdev@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	Rebecca Mckeever <remckee0@gmail.com>
-Subject: [PATCH] staging: rtl8192u: compare strcmp result to zero
-Date: Sat, 16 Apr 2022 05:24:34 -0500
-Message-Id: <20220416102434.97567-1-remckee0@gmail.com>
-X-Mailer: git-send-email 2.32.0
+	ira.weiny@intel.com,
+	eng.alaamohamedsoliman.am@gmail.com
+Subject: [PATCH v3] intel: igb: igb_ethtool.c: Convert kmap() to kmap_local_page()
+Date: Sat, 16 Apr 2022 13:14:57 +0200
+Message-Id: <20220416111457.5868-1-eng.alaamohamedsoliman.am@gmail.com>
+X-Mailer: git-send-email 2.35.2
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -54,59 +60,43 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-Add " == 0" to the condition in both else if branches to address a
-possible bug. strcmp returns 0 when its arguments are equal, which
-evaluates to false, often leading to errors when used in if statements.
+Convert kmap() to kmap_local_page()
 
-Currently, the statement in the first else if branch does not execute
-when its arguments are equal, but it does execute when crypt->ops->name
-equals any string other than "WEP" or "TKIP".
+With kmap_local_page(), the mapping is per thread, CPU local and not
+globally visible.
 
-Similarly, the second else if branch does not execute when its arguments
-are equal, and it only executes when crypt->ops->name equals "TKIP".
-The else branch never executes.
-
-It is unlikely that this is working as intended.
-
-Signed-off-by: Rebecca Mckeever <remckee0@gmail.com>
+Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
 ---
-There is a similiar issue in
-drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
-but I'm not sure if it's incorrect. The strcmp on line 2847 isn't
-negated, but the ones on lines 2851, 2853, and 2855 are.
-
-2845         /* IPW HW cannot build TKIP MIC, host decryption still needed. */
-2846         if (!(ieee->host_encrypt || ieee->host_decrypt) &&
-2847             strcmp(param->u.crypt.alg, "TKIP"))
-2848                 goto skip_host_crypt;
-2849 
-2850         //set WEP40 first, it will be modified according to WEP104 or WEP40 at other place
-2851         if (!strcmp(param->u.crypt.alg, "WEP"))
-2852                 module = "ieee80211_crypt_wep";
-2853         else if (!strcmp(param->u.crypt.alg, "TKIP"))
-2854                 module = "ieee80211_crypt_tkip";
-2855         else if (!strcmp(param->u.crypt.alg, "CCMP"))
-2856                 module = "ieee80211_crypt_ccmp"; 
-
-drivers/staging/rtl8192u/ieee80211/ieee80211_wx.c | 4 ++--
+changes in V2:
+	fix kunmap_local path value to take address of the mapped page.
+---
+changes in V3:
+	edit commit message to be clearer
+---
+ drivers/net/ethernet/intel/igb/igb_ethtool.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_wx.c b/drivers/staging/rtl8192u/ieee80211/ieee80211_wx.c
-index 9885917b9199..d6829cf6f7e3 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211_wx.c
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_wx.c
-@@ -688,9 +688,9 @@ int ieee80211_wx_get_encode_ext(struct ieee80211_device *ieee,
- 	} else {
- 		if (strcmp(crypt->ops->name, "WEP") == 0)
- 			ext->alg = IW_ENCODE_ALG_WEP;
--		else if (strcmp(crypt->ops->name, "TKIP"))
-+		else if (strcmp(crypt->ops->name, "TKIP") == 0)
- 			ext->alg = IW_ENCODE_ALG_TKIP;
--		else if (strcmp(crypt->ops->name, "CCMP"))
-+		else if (strcmp(crypt->ops->name, "CCMP") == 0)
- 			ext->alg = IW_ENCODE_ALG_CCMP;
- 		else
- 			return -EINVAL;
+diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c b/drivers/net/ethernet/intel/igb/igb_ethtool.c
+index 2a5782063f4c..c14fc871dd41 100644
+--- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
++++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
+@@ -1798,14 +1798,14 @@ static int igb_check_lbtest_frame(struct igb_rx_buffer *rx_buffer,
+ 
+ 	frame_size >>= 1;
+ 
+-	data = kmap(rx_buffer->page);
++	data = kmap_local_page(rx_buffer->page);
+ 
+ 	if (data[3] != 0xFF ||
+ 	    data[frame_size + 10] != 0xBE ||
+ 	    data[frame_size + 12] != 0xAF)
+ 		match = false;
+ 
+-	kunmap(rx_buffer->page);
++	kunmap_local(data);
+ 
+ 	return match;
+ }
 -- 
-2.32.0
+2.35.2
 
