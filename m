@@ -1,129 +1,106 @@
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ej1-f50.google.com (mail-ej1-f50.google.com [209.85.218.50])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E8DF42567
-	for <outreachy@lists.linux.dev>; Sat, 16 Apr 2022 14:10:05 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CAD117B
+	for <outreachy@lists.linux.dev>; Sat, 16 Apr 2022 15:52:25 +0000 (UTC)
+Received: by mail-ej1-f50.google.com with SMTP id u15so20026635ejf.11
+        for <outreachy@lists.linux.dev>; Sat, 16 Apr 2022 08:52:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=QXg79ITIMb+c/YfTxTorJco9Mt6LYRevJ11/hq3FBHM=;
-  b=fmJwVTpLkxQYJ84reDMPtf2kdPCy1MxrwZogdslFhrQhcidTftQca1zB
-   VDQQHeuEtFCSO4nHYtOSPVwEae3uCetGHZTbhmQlZ770ZtDBtQjqUDskl
-   Uvs9Xz7l5HY7zTbYbVLzjJRxg/3NQdnvRz3VJaSidouSlW2874zxBStNj
-   4=;
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="5.90,264,1643670000"; 
-   d="scan'208";a="32016200"
-Received: from 203.107.68.85.rev.sfr.net (HELO hadrien) ([85.68.107.203])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Apr 2022 16:09:58 +0200
-Date: Sat, 16 Apr 2022 16:09:58 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-cc: Julia Lawall <julia.lawall@inria.fr>, outreachy@lists.linux.dev, 
-    jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com, 
-    davem@davemloft.net, kuba@kernel.org, pabeni@redhat.com, 
-    intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, 
-    linux-kernel@vger.kernel.org, ira.weiny@intel.com
-Subject: Re: [PATCH v3] intel: igb: igb_ethtool.c: Convert kmap() to
- kmap_local_page()
-In-Reply-To: <857a2d22-5d0f-99d6-6686-98d50e4491d5@gmail.com>
-Message-ID: <alpine.DEB.2.22.394.2204161608230.3501@hadrien>
-References: <20220416111457.5868-1-eng.alaamohamedsoliman.am@gmail.com> <alpine.DEB.2.22.394.2204161331080.3501@hadrien> <857a2d22-5d0f-99d6-6686-98d50e4491d5@gmail.com>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=WB0OkA4npUVlTHKxP5L/zecMJKXRJHu4yHb6ykPI+d0=;
+        b=p1PdgWeV4/8OWZSYyJ2Gtl7Sb29XmosvPG966HCgE+yOaNpBXl37cLieNQh1YhCimK
+         cfjREeBGHHB7QtLvlG2M7NPMi038s27WDZ0PyHroXUbzv8mgsj8Qhdb/F8TEqVYIKDvg
+         tN2I6HQfvs2KlGV6UrdM8caLjg8HNpylVyGPM+5YIoS2WwN63G32fgwrsxy2k66zCBgy
+         Bri21J62bTzs2JnbGPL282vrgIBnHBLUgIuY3xW1qVAqJTdBaTnOL018zIF1KpddLUp4
+         4Ah+hh5gs2LzYujyxZoo+L3hfQCXXhiJI0eiTbhDXRppsWwKweBe2G3/IYbK4AkHMquQ
+         LBYQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=WB0OkA4npUVlTHKxP5L/zecMJKXRJHu4yHb6ykPI+d0=;
+        b=FKkwnUYTKrlx8RPUczPf7FX+uqOLh/ubVNlZPwxeZqyC9mDKnR4iCwgW0LZEXZb+h/
+         Y7uuql64l32xWKksW5+xlfHapy9L4J8iA7BTXKoIiZF37ayvuWUtaV/jAXa8xtsFfZVg
+         tAQpTrbRe2FZFOiNaAfgFEv9C3cv37eXlKtsFCSHucqVerPxAAQhU/dKF8I6EyP9DHWS
+         /cjYmou0UvjgvCRrluTDcsXbzG7Fc7kzOXhclurq9LDJ/i/XkJeNAZPSE6V88StdZiwK
+         UKVfm3gdQ3HkcdyWN8MYBGcsnrHQ8Hjrk9DXazTejAYfbJSZFfStVKalWufkixOsim1L
+         4edg==
+X-Gm-Message-State: AOAM533043TcKXTLmpWDUd9N9TeXNhZEtkmzpZXFgs5mAmBBJqOrzMjC
+	esbBcLRU2t5y3I8frT2ONi0=
+X-Google-Smtp-Source: ABdhPJwxtNuBtqOCmrmCxvK+GvsLdC4aeyXb2uo3u3eVpeTvHsXFV6Kh5xcnPCNk6rHSsh2eMiP5cg==
+X-Received: by 2002:a17:906:dc8b:b0:6ef:86e8:777 with SMTP id cs11-20020a170906dc8b00b006ef86e80777mr1451459ejc.326.1650124343944;
+        Sat, 16 Apr 2022 08:52:23 -0700 (PDT)
+Received: from leap.localnet (host-79-50-86-254.retail.telecomitalia.it. [79.50.86.254])
+        by smtp.gmail.com with ESMTPSA id fy11-20020a1709069f0b00b006e8b68c92d8sm2752978ejc.162.2022.04.16.08.52.21
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 16 Apr 2022 08:52:22 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>, Julia Lawall <julia.lawall@inria.fr>
+Cc: Julia Lawall <julia.lawall@inria.fr>, outreachy@lists.linux.dev, jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com, davem@davemloft.net, kuba@kernel.org, pabeni@redhat.com, intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, ira.weiny@intel.com
+Subject: Re: [PATCH v3] intel: igb: igb_ethtool.c: Convert kmap() to kmap_local_page()
+Date: Sat, 16 Apr 2022 17:52:20 +0200
+Message-ID: <1897617.PYKUYFuaPT@leap>
+In-Reply-To: <alpine.DEB.2.22.394.2204161608230.3501@hadrien>
+References: <20220416111457.5868-1-eng.alaamohamedsoliman.am@gmail.com> <857a2d22-5d0f-99d6-6686-98d50e4491d5@gmail.com> <alpine.DEB.2.22.394.2204161608230.3501@hadrien>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-848588355-1650118198=:3501"
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="ISO-8859-1"
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
-
---8323329-848588355-1650118198=:3501
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
-
-
-
-On Sat, 16 Apr 2022, Alaa Mohamed wrote:
-
->
-> On ١٦/٤/٢٠٢٢ ١٣:٣١, Julia Lawall wrote:
+On sabato 16 aprile 2022 16:09:58 CEST Julia Lawall wrote:
+>=20
+> On Sat, 16 Apr 2022, Alaa Mohamed wrote:
+>=20
 > >
-> > On Sat, 16 Apr 2022, Alaa Mohamed wrote:
-> >
-> > > Convert kmap() to kmap_local_page()
+> > On =D9=A1=D9=A6/=D9=A4/=D9=A2=D9 =D9=A2=D9=A2 =D9=A1=D9=A3:=D9=A3=D9=A1=
+, Julia Lawall wrote:
 > > >
-> > > With kmap_local_page(), the mapping is per thread, CPU local and not
-> > > globally visible.
-> > It's not clearer.
-> I mean this " fix kunmap_local path value to take address of the mapped page"
-> be more clearer
-> > This is a general statement about the function.  You
-> > need to explain why it is appropriate to use it here.  Unless it is the
-> > case that all calls to kmap should be converted to call kmap_local_page.
-> It's required to convert all calls kmap to kmap_local_page. So, I don't what
-> should the commit message be?
+> > > On Sat, 16 Apr 2022, Alaa Mohamed wrote:
+> > >
+> > > > Convert kmap() to kmap_local_page()
+> > > >
+> > > > With kmap_local_page(), the mapping is per thread, CPU local and=20
+not
+> > > > globally visible.
+> > > It's not clearer.
+> > I mean this " fix kunmap_local path value to take address of the mapped=
+=20
+page"
+> > be more clearer
+> > > This is a general statement about the function.  You
+> > > need to explain why it is appropriate to use it here.  Unless it is=20
+the
+> > > case that all calls to kmap should be converted to call=20
+kmap_local_page.
+> > It's required to convert all calls kmap to kmap_local_page. So, I don't=
+=20
+what
+> > should the commit message be?
+>=20
+> If all calls should be changed then you can also say that.
 
-If all calls should be changed then you can also say that.
+If all calls should be changed with no regards to the surrounding contexts=
+=20
+and special situations, we can just make an automated s/kmap()/
+kmap_local_page()/ or something else similar :)
 
-I thought that a previous commit on the outreachy list made some arguments
-about how the affacted value was just allocated and thus could not yet be
-shared.
+Thanks,
 
-julia
+=46abio M. De Francesco
 
->
-> Is this will be good :
->
-> "kmap_local_page() was recently developed as a replacement for kmap().  The
-> kmap_local_page() creates a mapping which is restricted to local use by a
-> single thread of execution. "
-> >
-> > julia
-> >
-> > > Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-> > > ---
-> > > changes in V2:
-> > > 	fix kunmap_local path value to take address of the mapped page.
-> > > ---
-> > > changes in V3:
-> > > 	edit commit message to be clearer
-> > > ---
-> > >   drivers/net/ethernet/intel/igb/igb_ethtool.c | 4 ++--
-> > >   1 file changed, 2 insertions(+), 2 deletions(-)
-> > >
-> > > diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c
-> > > b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-> > > index 2a5782063f4c..c14fc871dd41 100644
-> > > --- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
-> > > +++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-> > > @@ -1798,14 +1798,14 @@ static int igb_check_lbtest_frame(struct
-> > > igb_rx_buffer *rx_buffer,
-> > >
-> > >   	frame_size >>= 1;
-> > >
-> > > -	data = kmap(rx_buffer->page);
-> > > +	data = kmap_local_page(rx_buffer->page);
-> > >
-> > >   	if (data[3] != 0xFF ||
-> > >   	    data[frame_size + 10] != 0xBE ||
-> > >   	    data[frame_size + 12] != 0xAF)
-> > >   		match = false;
-> > >
-> > > -	kunmap(rx_buffer->page);
-> > > +	kunmap_local(data);
-> > >
-> > >   	return match;
-> > >   }
-> > > --
-> > > 2.35.2
-> > >
-> > >
-> > >
->
---8323329-848588355-1650118198=:3501--
+>=20
+> I thought that a previous commit on the outreachy list made some=20
+arguments
+> about how the affacted value was just allocated and thus could not yet be
+> shared.
+>=20
+> julia
+
+
+
