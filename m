@@ -1,96 +1,106 @@
-Received: from mail-ej1-f42.google.com (mail-ej1-f42.google.com [209.85.218.42])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E94577A
-	for <outreachy@lists.linux.dev>; Mon, 18 Apr 2022 08:17:45 +0000 (UTC)
-Received: by mail-ej1-f42.google.com with SMTP id u15so25558872ejf.11
-        for <outreachy@lists.linux.dev>; Mon, 18 Apr 2022 01:17:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=7KtsXjPh9lfFnODrrFCb9+TsBoLzX4dD8HDH0L28ETo=;
-        b=qGvm/KPaMmFmxeZQ9Ci1YPmBGPqYHItSqLu2nR0o7qsOBNcHjBa173id0xrm17VBJG
-         9SbkEWiHhoF7oPOJ8N+kwFWqBIUAjwnW6a1A56mOxc1woFJT2MDOGFJ3cMe6Ugfo/t2Z
-         DUwHEPpRk8hncMUuxz0lykj9cS7afW2on5arFNggQqo8M2W6v1Gf7KBXuoQOB2sGb4xG
-         qQEoMZSRDXbf6Wom/OCRdkORGdR6s+NHLG0loaaKYkezAJsPUrldfe2sNxEliP+owy/t
-         sHTMBTybK6EeByHtu0SAwFaBJkcVTMfLBXpDpVKfBf0qnPUBcsOFWi1E90IZwpv9ncY2
-         8BAA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=7KtsXjPh9lfFnODrrFCb9+TsBoLzX4dD8HDH0L28ETo=;
-        b=4TiIgc3v0sfLgLBpYsxqFBMKD8vwzBUmqAWu9TbFXUHhwVxwwjBVVvA/GALCI3RTym
-         FTXvHfo3L9ae2mzZvz7HP/v+hkNE5FFO3mJYjgZo0q/ejWfAuVVfhAHxjC9rjAOZ8yf0
-         qqIfDV1vI+4JE1cfxiG//2oMn4wis1LXHI7iM8LwwyBRfEJ0wSLTA9dcCKl4dfB8WZBQ
-         7kt8CFgO1sK3ewyCnxneSW23XXzZoESI2j9B6LhL7mq4WWYNKsdXp4aD7rEU3mN2df7U
-         GM5pN5W6pumd0A/NEttsPOTbQJrp0cmY7h+ZgoX4E4ygvO9R/NWNSSf5wAhni5PWg5kF
-         cNEw==
-X-Gm-Message-State: AOAM530L4HMFF2kNIHXmo26g2/6ifgpCldesrfIDHsIqpv9fdiMriD3v
-	ERzAOaqI3rbj4utqiBC85WI=
-X-Google-Smtp-Source: ABdhPJzs0nbDO3Ua/XZPtya90bEQnjKykEsVRVQvWzz/925zERd1qCgU2TBxRtja+LwOMrTNL2p+hQ==
-X-Received: by 2002:a17:907:2d23:b0:6e8:807c:cd94 with SMTP id gs35-20020a1709072d2300b006e8807ccd94mr8085785ejc.502.1650269864091;
-        Mon, 18 Apr 2022 01:17:44 -0700 (PDT)
-Received: from localhost.localdomain (host-79-50-86-254.retail.telecomitalia.it. [79.50.86.254])
-        by smtp.gmail.com with ESMTPSA id o5-20020a170906974500b006dfc781498dsm4346365ejy.37.2022.04.18.01.17.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 18 Apr 2022 01:17:42 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Jonathan Corbet <corbet@lwn.net>,
-	Andrew Morton <akpm@linux-foundation.org>,
-	SeongJae Park <sj@kernel.org>,
-	Jiajian Ye <yejiajian2018@email.szu.edu.cn>,
-	Thomas Gleixner <tglx@linutronix.de>,
-	Ira Weiny <ira.weiny@intel.com>,
-	Matthew Wilcox <willy@infradead.org>,
-	Peter Zijlstra <peterz@infradead.org>,
-	outreachy@lists.linux.dev,
-	linux-doc@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Subject: [PATCH] Documentation/vm: Include kernel-doc from highmem-internal.h
-Date: Mon, 18 Apr 2022 10:17:40 +0200
-Message-Id: <20220418081740.21001-1-fmdefrancesco@gmail.com>
-X-Mailer: git-send-email 2.34.1
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B2E687EC
+	for <outreachy@lists.linux.dev>; Mon, 18 Apr 2022 10:29:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1650277773;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=IxSWKWmPC+lM6Feu2DJuL3YwA5z0gMEjYtyNIzeoaoU=;
+	b=TbWEj/VcaXiYrfkPuKLCuDLGTlmJm4RuPYafsbJCw9w1snUgLsL3EDm6DZi7nu54Evc9o2
+	pwwLAFeqPTiVcnaLCUD5bjdK7/aFm8RqU2kSfngP6zLtdHCV32cVmA7lWatk1ItjJxNq45
+	BrEdbocQIHhcdH6pj1qGbf5/gdwz0Mk=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-510-KJT8CnwfO3ehA6XEVBVHug-1; Mon, 18 Apr 2022 06:29:30 -0400
+X-MC-Unique: KJT8CnwfO3ehA6XEVBVHug-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com [10.11.54.5])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id CAF1885A5A8;
+	Mon, 18 Apr 2022 10:29:29 +0000 (UTC)
+Received: from maya.cloud.tilaa.com (unknown [10.40.208.6])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 9A2CC9D54;
+	Mon, 18 Apr 2022 10:29:29 +0000 (UTC)
+Date: Mon, 18 Apr 2022 12:29:17 +0200
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
+Cc: outreachy@lists.linux.dev
+Subject: Re: [PATCH 0/4] enable passing multiple collections/tests to
+ suboptions
+Message-ID: <20220418122917.27fa1955@elisabeth>
+In-Reply-To: <cover.1650215918.git.sevinj.aghayeva@gmail.com>
+References: <cover.1650215918.git.sevinj.aghayeva@gmail.com>
+Organization: Red Hat
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.79 on 10.11.54.5
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=sbrivio@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-In Documentation/vm/highmem.rst the kernel-doc comments are missing,
-therefore kunmap_local() and kunmap_atomic() are yet undocumented.
+On Sun, 17 Apr 2022 13:27:17 -0400
+Sevinj Aghayeva <sevinj.aghayeva@gmail.com> wrote:
 
-Add a kernel-doc directive to include the above-mentioned kernel-doc
-comments in highmem.rst.
+> Enable mbuto's -C and -T options accept multiple collection names and test
+> names, similar to the -c and -t options of run_kselftest.sh.
 
-Cc: Jonathan Corbet <corbet@lwn.net>
-Cc: Thomas Gleixner <tglx@linutronix.de>
-Cc: Ira Weiny <ira.weiny@intel.com>
-Cc: Matthew Wilcox <willy@infradead.org>
-Cc: Peter Zijlstra <peterz@infradead.org>
-Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
----
+Thanks, this looks rather complete now. I just started reviewing the
+series and I plan to finish reviewing/testing later today or early
+tomorrow as I'm adding this kind of usage to demos and documentation
+(also in progress).
 
-This patch must be applied and built on top of 
-"[PATCH v3 2/2] Documentation/vm: Include kernel-doc to highmem.rst"
-https://lore.kernel.org/lkml/20220415231917.25962-3-fmdefrancesco@gmail.com/
+Two smaller things I think we're missing:
 
- Documentation/vm/highmem.rst | 1 +
- 1 file changed, 1 insertion(+)
+- your patch 2/4 reverts the fix for "mbuto -h" with no fakeroot
+  available (sorry, commit message of 6199e368 wasn't exceedingly
+  clear). If fakeroot is not there, you don't even get a help message.
 
-diff --git a/Documentation/vm/highmem.rst b/Documentation/vm/highmem.rst
-index 5dcee6233cd5..1a3e6a8f5d3e 100644
---- a/Documentation/vm/highmem.rst
-+++ b/Documentation/vm/highmem.rst
-@@ -161,3 +161,4 @@ Functions
- =========
- 
- .. kernel-doc:: include/linux/highmem.h
-+.. kernel-doc:: include/linux/highmem-internal.h
+  Perhaps we could handle that as special case (in a second revision of
+  patch 2, or as another patch), something on the lines of:
+
+	if ! FAKEROOT="$(command -v fakeroot)"; then
+		__missing_fakeroot=1
+	fi
+
+	...
+
+	# after parsing options, and displaying usage if needed
+	if [ ${__missing_fakeroot} -eq 1 ]; then
+		err "Not root and no fakeroot available, exiting"
+	fi
+
+- with the 'kvm/qemu-kvm ... -initrd $(mbuto) ...' usage, we leave the
+  image we built around. It could be deleted as soon as qemu is done
+  reading it. I have two ideas (more welcome of course):
+
+  1. use inotifywait(1) if available, use it (in a subshell) to watch
+     for the IN_CLOSE_NOWRITE event on the file, then delete it after
+     the event and close the subshell. If it's not available,
+     'sleep 60' (perhaps with a warning) looks reasonable
+
+  2. or check the parent PID from mbuto, once it terminates, delete the
+     file and exit the subshell. I think it's more portable, but it
+     might require some tricks (I haven't tried at all) to keep the
+     subshell alive as long as it's needed
+
+  ...in both cases, deletion should be configurable, I guess enabled by
+  default if and only if we're running from a non-interactive
+  context, that is, '$(mbuto)' as opposed to 'mbuto' on a command line.
+  Check with [ ! -t 0 ]: if stdin (file descriptor 0) is not open, the
+  user didn't start mbuto directly.
+
 -- 
-2.34.1
+Stefano
 
