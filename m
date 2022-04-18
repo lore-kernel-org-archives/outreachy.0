@@ -1,134 +1,181 @@
-Received: from mail-ed1-f44.google.com (mail-ed1-f44.google.com [209.85.208.44])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6AEE12567
-	for <outreachy@lists.linux.dev>; Mon, 18 Apr 2022 22:05:12 +0000 (UTC)
-Received: by mail-ed1-f44.google.com with SMTP id 21so19030829edv.1
-        for <outreachy@lists.linux.dev>; Mon, 18 Apr 2022 15:05:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=qvyMTbp6qzFtYs01g3/WRgGGqHIALLjUx9LyH/RZFQw=;
-        b=jt8J3wmF1cufjRi2NhOBWl2z41tnRDI/8d1DDhxwtqFY2aY7Z+c5naIyB66DARgQm5
-         OFWtN+Xanr8XKb9dBpX2mgE4orYXWKjQzPBHuKUYaVMSKbOEvFA0TqL106mQ1FC8ilPp
-         jM0EW/UHmX8BdKPibC4iZFlGLDwEF/YqCs7ISQf8q5IP3g/7axKLNFlhVerJMf30Sqrp
-         mWYO+5LhENR7b9PIo3mAh1BUMZzpCDdYQIhQj2keM+EUlxYya9kDruL48q1EZ6G8ZbzZ
-         9+76fZGTMVEai3DOWgGkbWM+vMUrKE/gppTWtGCBVLmEe+JFT2cuynZ0NhXzX2/FvVSg
-         0UoQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=qvyMTbp6qzFtYs01g3/WRgGGqHIALLjUx9LyH/RZFQw=;
-        b=654s1AyQU3jVeLPr1/Jf7zK7e6awaNye7KsLmsJQIOAXKUeVrHonXOCwqAtWhj4hBI
-         SSu6JtvAs6BNPBt5jDMgeDWjhUPzQ0VTExbb+FS9khvC40/jzgS6jrHicpbnsdzSNPJk
-         lajoWyweKnYCD7OSfmQiH8znZ8xq8q/zycnLijsoCOn2vVSiBzyitA0zO8a6l8HXz337
-         H1QwpaYTBegu13Fw5BgVJcmoKSQRtcUm3fxRJ0bywoRaQRObtb9cxAgHvfXPKWSXTgue
-         1jysHshQ2lfQsUEXZmxpZfzDiQS/GWtC4nqsuWAxwOMYwWdfzIIL6tbgjJfA4oL5M9Sj
-         uMKA==
-X-Gm-Message-State: AOAM533Z5gTRhIzASM10ZraKoRdXCjVFQgG2uj51mGLIUtwtfEMt1p7t
-	V7j5oY57N9mpq1IIZqNTEOw=
-X-Google-Smtp-Source: ABdhPJyfCezo9Tr9RFzy90vhk2rAq++34sWEtmK4x+AGeOegyZ8ipPNU4litJv+L/weVN/9Oal7aUg==
-X-Received: by 2002:aa7:c946:0:b0:416:226f:f8a6 with SMTP id h6-20020aa7c946000000b00416226ff8a6mr14172729edt.360.1650319510489;
-        Mon, 18 Apr 2022 15:05:10 -0700 (PDT)
-Received: from leap.localnet (host-79-50-86-254.retail.telecomitalia.it. [79.50.86.254])
-        by smtp.gmail.com with ESMTPSA id q19-20020a17090676d300b006e8ab621e6dsm5022698ejn.19.2022.04.18.15.05.08
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 18 Apr 2022 15:05:09 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Ira Weiny <ira.weiny@intel.com>
-Cc: Jonathan Corbet <corbet@lwn.net>, Andrew Morton <akpm@linux-foundation.org>, SeongJae Park <sj@kernel.org>, Jiajian Ye <yejiajian2018@email.szu.edu.cn>, Thomas Gleixner <tglx@linutronix.de>, Matthew Wilcox <willy@infradead.org>, Peter Zijlstra <peterz@infradead.org>, outreachy@lists.linux.dev, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] Documentation/vm: Include kernel-doc from highmem-internal.h
-Date: Tue, 19 Apr 2022 00:05:07 +0200
-Message-ID: <8118428.NyiUUSuA9g@leap>
-In-Reply-To: <Yl3Z8Qll+zGo4v/D@iweiny-desk3>
-References: <20220418081740.21001-1-fmdefrancesco@gmail.com> <Yl3Z8Qll+zGo4v/D@iweiny-desk3>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 033B333F1
+	for <outreachy@lists.linux.dev>; Mon, 18 Apr 2022 22:19:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1650320383; x=1681856383;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=tkMPhmpg8zUnNqBW3w1L4glAPuX9BfNfJ6dlQLQ2H9M=;
+  b=STRyR/RdituV4m0VH/4ByF0w18ggDOcX57/KFCPcru1ARi7Fh/sqyudM
+   7MJPMwIpxVU/XHICxZlDKjQpPnBwFsg95Nq5vwvVV/BPAGQb1Odjkrmed
+   8/f7oTNr/QLYs4WYzPXl6JXqlfLwOHd43MtlK28+Z4ZEfBn/FnPbB8Qr/
+   vveGeI5dUZA8WQGrNY/YkPTXfhEnYcvZPDpN96qlCVkh4rzb1MV5URxtH
+   IzeFAB2mRQHsMMKnru3ER+rWXdeZtZ7mB18sBc9xO54sEIHklhwqBhGqL
+   byfwlwwF+sJMM+Z59J+wA2YtVhB47FAu0KSx+YZKWhR0MDfiYESTfDem4
+   A==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10321"; a="245514083"
+X-IronPort-AV: E=Sophos;i="5.90,271,1643702400"; 
+   d="scan'208";a="245514083"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Apr 2022 15:19:43 -0700
+X-IronPort-AV: E=Sophos;i="5.90,271,1643702400"; 
+   d="scan'208";a="726810261"
+Received: from moseshab-mobl1.amr.corp.intel.com (HELO localhost) ([10.209.143.127])
+  by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Apr 2022 15:19:42 -0700
+Date: Mon, 18 Apr 2022 15:19:41 -0700
+From: Ira Weiny <ira.weiny@intel.com>
+To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+Cc: Julia Lawall <julia.lawall@inria.fr>, outreachy@lists.linux.dev,
+	jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
+	davem@davemloft.net, kuba@kernel.org, pabeni@redhat.com,
+	intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3] intel: igb: igb_ethtool.c: Convert kmap() to
+ kmap_local_page()
+Message-ID: <Yl3j/bOvoX13WGSW@iweiny-desk3>
+References: <20220416111457.5868-1-eng.alaamohamedsoliman.am@gmail.com>
+ <alpine.DEB.2.22.394.2204161331080.3501@hadrien>
+ <df4c0f81-454d-ab96-1d74-1c4fbc3dbd63@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <df4c0f81-454d-ab96-1d74-1c4fbc3dbd63@gmail.com>
 
-On luned=C3=AC 18 aprile 2022 23:36:49 CEST Ira Weiny wrote:
-> On Mon, Apr 18, 2022 at 10:17:40AM +0200, Fabio M. De Francesco wrote:
-> > In Documentation/vm/highmem.rst the kernel-doc comments are missing,
-> > therefore kunmap_local() and kunmap_atomic() are yet undocumented.
-> >=20
-> > Add a kernel-doc directive to include the above-mentioned kernel-doc
-> > comments in highmem.rst.
-> >=20
-> > Cc: Jonathan Corbet <corbet@lwn.net>
-> > Cc: Thomas Gleixner <tglx@linutronix.de>
-> > Cc: Ira Weiny <ira.weiny@intel.com>
-> > Cc: Matthew Wilcox <willy@infradead.org>
-> > Cc: Peter Zijlstra <peterz@infradead.org>
-> > Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
->=20
-> I thought I saw a patch fly by which changed the comment of=20
-kunmap_atomic() in
-> include/linux/highmem-internal.h?  Did I miss that somewhere?
+On Sat, Apr 16, 2022 at 03:14:57PM +0200, Alaa Mohamed wrote:
+>    On ١٦‏/٤‏/٢٠٢٢ ١٣:٣١, Julia Lawall wrote:
+> 
+> 
+>  On Sat, 16 Apr 2022, Alaa Mohamed wrote:
+> 
+> 
+>  Convert kmap() to kmap_local_page()
+> 
+>  With kmap_local_page(), the mapping is per thread, CPU local and not
+>  globally visible.
+> 
+>  It's not clearer. 
+> 
+>    I mean this " fix kunmap_local path value to take address of the mapped
+>    page" be more clearer
+> 
+>  This is a general statement about the function.  You
+>  need to explain why it is appropriate to use it here.  Unless it is the
+>  case that all calls to kmap should be converted to call kmap_local_page.
+> 
+>    It's required to convert all calls kmap to kmap_local_page. So, I don't
+>    what should the commit message be?
+> 
+>    Is this will be good :
+> 
+>    "kmap_local_page() was recently developed as a replacement for kmap(). 
+>    The
+>    kmap_local_page() creates a mapping which is restricted to local use by a
+>    single thread of execution. "
+> 
 
-No, you're right. I had noticed just some minutes before reading your=20
-review that a made a typo.
+I think I am missing some thread context here.  I'm not sure who said what
+above.  So I'm going to start over.
 
-I wanted to write: "In Documentation/vm/highmem.rst some kernel-doc=20
-comments are missing" instead for some unknown reason I wrote "the" in=20
-place of "some" :(
+Alaa,
 
-I'll fix it ASAP.
+It is important to remember that a good commit message says 2 things.
 
-> This is a good inclusion for now.  However, I think I would rather see=20
-this as
-> part of a new series which puts the bulk of the documentation with the=20
-code as
-> I proposed in patch 1/2 in your other series.
+	1) What is the problem you are trying to solve
+	2) Overview of the solution
 
-I have also read your review of the patch above. I agree with you that the=
-=20
-"how" should be placed in the kernel-doc comments in the code. And I also=20
-agree that this patch should be part of a new version of a reorganized=20
-series.
+First off I understand your frustration.  In my opinion fixes and clean ups
+like this are very hard to write good commit messages for because so often the
+code diff seems so self explanatory.  However, each code change comes at the
+identification of a problem.  And remember that 'problem' does not always mean
+a bug fix.
 
-I'll start working on your suggestions by tomorrow morning (it's midnight=20
-here in Italy).
+The deprecation of kmap() may not seem like a problem.  I mean why can't we
+just leave kmap() as it is?  It works right?
 
-> For this particular change:
->=20
-> Reviewed-by: Ira Weiny <ira.weiny@intel.com>
+But the problem is that the kmap (highmem) interface has become stale and its
+original purpose was targeted toward large memory systems with 32 bit kernels.
+There are very few systems being run like that any longer.
 
-Thank you so much for your review,
+So how do we clean up the kmap interface to be more useful to the kernel
+community now that 32 bit kernels with highmem are so rare?
 
-=46abio
+The community has identified that a first step of that is to move away from and
+eventually remove the kmap() call.  This is due to the call being incorrectly
+used to create long term mappings.  Most calls to kmap() are not used
+incorrectly but those call sites needed something in between kmap() and
+kmap_atmoic().  That call is kmap_local_page().
 
-> > ---
-> >=20
-> > This patch must be applied and built on top of=20
-> > "[PATCH v3 2/2] Documentation/vm: Include kernel-doc to highmem.rst"
-> > https://lore.kernel.org/lkml/20220415231917.25962-3-fmdefrancesco@gmail=
-=2Ecom/
-> >=20
-> >  Documentation/vm/highmem.rst | 1 +
-> >  1 file changed, 1 insertion(+)
-> >=20
-> > diff --git a/Documentation/vm/highmem.rst b/Documentation/vm/
-highmem.rst
-> > index 5dcee6233cd5..1a3e6a8f5d3e 100644
-> > --- a/Documentation/vm/highmem.rst
-> > +++ b/Documentation/vm/highmem.rst
-> > @@ -161,3 +161,4 @@ Functions
-> >  =3D=3D=3D=3D=3D=3D=3D=3D=3D
-> > =20
-> >  .. kernel-doc:: include/linux/highmem.h
-> > +.. kernel-doc:: include/linux/highmem-internal.h
-> > --=20
-> > 2.34.1
-> >=20
->=20
+Now that kmap_local_page() exists the kmap() calls can be audited and most (I
+hope most)[1] can be replaced with kmap_local_page().
 
+The change you have below is correct.  But it lacks a good commit message.  We
+need to cover the 2 points above.
 
+	1) Julia is asking why you needed to do this change.  What is the
+	   problem or reason for this change?  (Ira told you to is not a good
+	   reason.  ;-)
 
+	   PS In fact me telling you to may actually be a very bad reason...
+	   j/k ;-)
 
+	2) Why is this solution ok as part of the deprecation and removal of
+	   kmap()?
+
+A final note; the 2 above points don't need a lot of text.  Here I used
+2 simple sentences.
+
+https://lore.kernel.org/lkml/20220124015409.807587-2-ira.weiny@intel.com/
+
+I hope this helps,
+Ira
+
+[1] But not all...  some uses of kmap() have been identified as being pretty
+complex.
+
+> 
+>  julia
+> 
+> 
+>  Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+>  ---
+>  changes in V2:
+>          fix kunmap_local path value to take address of the mapped page.
+>  ---
+>  changes in V3:
+>          edit commit message to be clearer
+>  ---
+>   drivers/net/ethernet/intel/igb/igb_ethtool.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+>  diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c b/drivers/net/ethernet/intel/igb/igb_ethtool.c
+>  index 2a5782063f4c..c14fc871dd41 100644
+>  --- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
+>  +++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
+>  @@ -1798,14 +1798,14 @@ static int igb_check_lbtest_frame(struct igb_rx_buffer *rx_buffer,
+> 
+>          frame_size >>= 1;
+> 
+>  -       data = kmap(rx_buffer->page);
+>  +       data = kmap_local_page(rx_buffer->page);
+> 
+>          if (data[3] != 0xFF ||
+>              data[frame_size + 10] != 0xBE ||
+>              data[frame_size + 12] != 0xAF)
+>                  match = false;
+> 
+>  -       kunmap(rx_buffer->page);
+>  +       kunmap_local(data);
+> 
+>          return match;
+>   }
+>  --
+>  2.35.2
