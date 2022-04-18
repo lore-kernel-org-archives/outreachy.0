@@ -1,181 +1,138 @@
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from m228-13.mailgun.net (m228-13.mailgun.net [159.135.228.13])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 033B333F1
-	for <outreachy@lists.linux.dev>; Mon, 18 Apr 2022 22:19:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1650320383; x=1681856383;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=tkMPhmpg8zUnNqBW3w1L4glAPuX9BfNfJ6dlQLQ2H9M=;
-  b=STRyR/RdituV4m0VH/4ByF0w18ggDOcX57/KFCPcru1ARi7Fh/sqyudM
-   7MJPMwIpxVU/XHICxZlDKjQpPnBwFsg95Nq5vwvVV/BPAGQb1Odjkrmed
-   8/f7oTNr/QLYs4WYzPXl6JXqlfLwOHd43MtlK28+Z4ZEfBn/FnPbB8Qr/
-   vveGeI5dUZA8WQGrNY/YkPTXfhEnYcvZPDpN96qlCVkh4rzb1MV5URxtH
-   IzeFAB2mRQHsMMKnru3ER+rWXdeZtZ7mB18sBc9xO54sEIHklhwqBhGqL
-   byfwlwwF+sJMM+Z59J+wA2YtVhB47FAu0KSx+YZKWhR0MDfiYESTfDem4
-   A==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10321"; a="245514083"
-X-IronPort-AV: E=Sophos;i="5.90,271,1643702400"; 
-   d="scan'208";a="245514083"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
-  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Apr 2022 15:19:43 -0700
-X-IronPort-AV: E=Sophos;i="5.90,271,1643702400"; 
-   d="scan'208";a="726810261"
-Received: from moseshab-mobl1.amr.corp.intel.com (HELO localhost) ([10.209.143.127])
-  by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Apr 2022 15:19:42 -0700
-Date: Mon, 18 Apr 2022 15:19:41 -0700
-From: Ira Weiny <ira.weiny@intel.com>
-To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-Cc: Julia Lawall <julia.lawall@inria.fr>, outreachy@lists.linux.dev,
-	jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
-	davem@davemloft.net, kuba@kernel.org, pabeni@redhat.com,
-	intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3] intel: igb: igb_ethtool.c: Convert kmap() to
- kmap_local_page()
-Message-ID: <Yl3j/bOvoX13WGSW@iweiny-desk3>
-References: <20220416111457.5868-1-eng.alaamohamedsoliman.am@gmail.com>
- <alpine.DEB.2.22.394.2204161331080.3501@hadrien>
- <df4c0f81-454d-ab96-1d74-1c4fbc3dbd63@gmail.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8F2A83D65
+	for <outreachy@lists.linux.dev>; Mon, 18 Apr 2022 23:29:56 +0000 (UTC)
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=codeagain.dev; q=dns/txt;
+ s=smtp; t=1650324596; h=Content-Type: MIME-Version: Message-ID:
+ Subject: Subject: To: To: From: From: Date: Sender: Sender;
+ bh=vzqFYCUJwk1+an4GHI9rSJK5ONK4gma9ml5pjiRuVh8=; b=Jz7kUYqNbN2EUT2K5sXpbMJ0ozHAdAu7ru8YAMWxO/e34V6lhOfqcKH74QcqI5jTrBL5UB0W
+ GjOdMlApSNcBy8Q3ZVueAVRVkmgC91Qt4Yde1/l20GXW0DqrrQvQUKwNP7uuIVmbiexV/E2Q
+ fjqli5iEmqIjCIITbciJ9IwMS7dedh7d+cR02ecl3vX5AMlrdv1lAf6i0zbQmYcqrgWu3pvy
+ j1mYLXVZz4cxe/TAWcnMixI2jPpSm/hBfBSu+2chxwxJJojGukTymS1mQWiUz2gKTxoYIKca
+ unnPjfvANIaLmSDBy5cxELZTwt1lO3v3P1P34+UX5nmE+VzeU10U2g==
+X-Mailgun-Sending-Ip: 159.135.228.13
+X-Mailgun-Sid: WyI2Y2ZlNyIsICJvdXRyZWFjaHlAbGlzdHMubGludXguZGV2IiwgImJlOWM2ZCJd
+Received: from AN5Bruno (186-250-90-1.mhnet.com.br [186.250.90.1]) by
+ smtp-out-n02.prod.us-west-2.postgun.com with SMTP id
+ 625df473487c9ee854f55f2b (version=TLS1.3, cipher=TLS_AES_128_GCM_SHA256);
+ Mon, 18 Apr 2022 23:29:55 GMT
+Sender: codeagain@codeagain.dev
+Date: Mon, 18 Apr 2022 20:29:49 -0300
+From: Bruno Moreira-Guedes <codeagain@codeagain.dev>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Martyn Welch <martyn@welchs.me.uk>,
+	Manohar Vanga <manohar.vanga@gmail.com>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy@lists.linux.dev,
+	Bruno's Patch Watchbox <patch-reply@codeagain.dev>
+Subject: [PATCH v3 0/3] staging: vme: Cleanup driver tree old structures
+Message-ID: <cover.1650321310.git.codeagain@codeagain.dev>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="q2kxa542hsfldolc"
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <df4c0f81-454d-ab96-1d74-1c4fbc3dbd63@gmail.com>
 
-On Sat, Apr 16, 2022 at 03:14:57PM +0200, Alaa Mohamed wrote:
->    On ١٦‏/٤‏/٢٠٢٢ ١٣:٣١, Julia Lawall wrote:
-> 
-> 
->  On Sat, 16 Apr 2022, Alaa Mohamed wrote:
-> 
-> 
->  Convert kmap() to kmap_local_page()
-> 
->  With kmap_local_page(), the mapping is per thread, CPU local and not
->  globally visible.
-> 
->  It's not clearer. 
-> 
->    I mean this " fix kunmap_local path value to take address of the mapped
->    page" be more clearer
-> 
->  This is a general statement about the function.  You
->  need to explain why it is appropriate to use it here.  Unless it is the
->  case that all calls to kmap should be converted to call kmap_local_page.
-> 
->    It's required to convert all calls kmap to kmap_local_page. So, I don't
->    what should the commit message be?
-> 
->    Is this will be good :
-> 
->    "kmap_local_page() was recently developed as a replacement for kmap(). 
->    The
->    kmap_local_page() creates a mapping which is restricted to local use by a
->    single thread of execution. "
-> 
 
-I think I am missing some thread context here.  I'm not sure who said what
-above.  So I'm going to start over.
+--q2kxa542hsfldolc
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Alaa,
+This patch series modify the vme_user driver's place in
+menuconfig (1/3), fixes a missing `depends on` line in a Kconfig file
+(2/3), and rearrages the directory tree for the driver allowing a more
+straightforward comprehension of its contents (3/3).
 
-It is important to remember that a good commit message says 2 things.
+The 'vme_user/' driver is the only remaining vme-family driver in the
+'staging/' tree, but its structure, entry in menuconfig and building
+routines are still attached to the 'vme/' subtree now outside
+'staging/'. The present patchset fixes it.
 
-	1) What is the problem you are trying to solve
-	2) Overview of the solution
+Signed-off-by: Bruno Moreira-Guedes <codeagain@codeagain.dev>
+---
+CHANGE SUMMARY
 
-First off I understand your frustration.  In my opinion fixes and clean ups
-like this are very hard to write good commit messages for because so often the
-code diff seems so self explanatory.  However, each code change comes at the
-identification of a problem.  And remember that 'problem' does not always mean
-a bug fix.
+  Version:  v1  v2  v3
+[PATCH 1/3] *   -   *
+[PATCH 2/3] -   *   *
+[PATCH 3/3] -   *   *
 
-The deprecation of kmap() may not seem like a problem.  I mean why can't we
-just leave kmap() as it is?  It works right?
+CHANGELOG
+[PATCH 0/3] staging: vme: Restructuring menuconfig and tree
+v1:
+  Created PATCH 1/3 as a single patch
+v2:
+  Added PATCH 2/3 and 3/3, turning it into a patchset
+v3:
+  Fixed and improved commit messages according to previous comments by
+  Greg and Alison (to whom I'm indebted for their kind reviews). The
+  commit titles got changed to be more specific and use the present
+  imperative tense as for Alison's suggestions. The message body got
+  fixed according to Greg formatting comments. The changelogs were moved
+  to the cover letter as per another suggestion by Alison, and I added
+  missing details (like the update in the MAINTAINERS I failed to
+  mention in v2) and made textual improvements for clarity that I also
+  noticed.
 
-But the problem is that the kmap (highmem) interface has become stale and its
-original purpose was targeted toward large memory systems with 32 bit kernels.
-There are very few systems being run like that any longer.
+[PATCH 1/3] staging: vme: Move vme_user to staging KConfig
+v1:
+ - Sourced "drivers/staging/vme/devices/Kconfig" in
+   "drivers/staging/Kconfig" and unsourced in "drivers/vme/Kconfig".
+v3:
+ - Modified the commit subject and text body.
 
-So how do we clean up the kmap interface to be more useful to the kernel
-community now that 32 bit kernels with highmem are so rare?
+[PATCH 2/3] staging: vme: Add VME_BUS dependency to Kconfig
+v2:
+ - Added this patch to the patchset.
+v3:
+ - Modified the commit subject and text body.
 
-The community has identified that a first step of that is to move away from and
-eventually remove the kmap() call.  This is due to the call being incorrectly
-used to create long term mappings.  Most calls to kmap() are not used
-incorrectly but those call sites needed something in between kmap() and
-kmap_atmoic().  That call is kmap_local_page().
+[PATCH 3/3] staging: vme: Move 'vme/devices' to 'vme_user/'
+v2:
+ - Added this patch to the patchset
+v3
+ - Modified the commit subject and text body.
 
-Now that kmap_local_page() exists the kmap() calls can be audited and most (I
-hope most)[1] can be replaced with kmap_local_page().
+Bruno Moreira-Guedes (3):
+  staging: vme: Adjusted VME_USER in Kconfig
+  staging: vme: Fix missing `depends on` at KConfig
+  staging: vme: "drivers/staging/vme" tree cleanup
 
-The change you have below is correct.  But it lacks a good commit message.  We
-need to cover the 2 points above.
+ MAINTAINERS                                          | 2 +-
+ drivers/staging/Kconfig                              | 1 +
+ drivers/staging/Makefile                             | 2 +-
+ drivers/staging/vme/Makefile                         | 2 --
+ drivers/staging/{vme/devices =3D> vme_user}/Kconfig    | 2 +-
+ drivers/staging/{vme/devices =3D> vme_user}/Makefile   | 0
+ drivers/staging/{vme/devices =3D> vme_user}/vme_user.c | 0
+ drivers/staging/{vme/devices =3D> vme_user}/vme_user.h | 0
+ drivers/vme/Kconfig                                  | 2 --
+ 9 files changed, 4 insertions(+), 7 deletions(-)
+ delete mode 100644 drivers/staging/vme/Makefile
+ rename drivers/staging/{vme/devices =3D> vme_user}/Kconfig (93%)
+ rename drivers/staging/{vme/devices =3D> vme_user}/Makefile (100%)
+ rename drivers/staging/{vme/devices =3D> vme_user}/vme_user.c (100%)
+ rename drivers/staging/{vme/devices =3D> vme_user}/vme_user.h (100%)
 
-	1) Julia is asking why you needed to do this change.  What is the
-	   problem or reason for this change?  (Ira told you to is not a good
-	   reason.  ;-)
+--=20
+2.35.3
 
-	   PS In fact me telling you to may actually be a very bad reason...
-	   j/k ;-)
 
-	2) Why is this solution ok as part of the deprecation and removal of
-	   kmap()?
+--q2kxa542hsfldolc
+Content-Type: application/pgp-signature; name="signature.asc"
 
-A final note; the 2 above points don't need a lot of text.  Here I used
-2 simple sentences.
+-----BEGIN PGP SIGNATURE-----
 
-https://lore.kernel.org/lkml/20220124015409.807587-2-ira.weiny@intel.com/
+iHUEABYIAB0WIQQTUrsHCxGmQ5vyKRAZtd3tyEY2kgUCYl30bQAKCRAZtd3tyEY2
+kn6pAP4158LdkTRNmvunY82m1T4P60jVTXIJrPQ1wCmCMGtpPQD/aPBy5PYYyls8
+issxKcmW2UE0FFGN0+LkCpfkEIsmNAE=
+=whXS
+-----END PGP SIGNATURE-----
 
-I hope this helps,
-Ira
-
-[1] But not all...  some uses of kmap() have been identified as being pretty
-complex.
-
-> 
->  julia
-> 
-> 
->  Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
->  ---
->  changes in V2:
->          fix kunmap_local path value to take address of the mapped page.
->  ---
->  changes in V3:
->          edit commit message to be clearer
->  ---
->   drivers/net/ethernet/intel/igb/igb_ethtool.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
-> 
->  diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c b/drivers/net/ethernet/intel/igb/igb_ethtool.c
->  index 2a5782063f4c..c14fc871dd41 100644
->  --- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
->  +++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
->  @@ -1798,14 +1798,14 @@ static int igb_check_lbtest_frame(struct igb_rx_buffer *rx_buffer,
-> 
->          frame_size >>= 1;
-> 
->  -       data = kmap(rx_buffer->page);
->  +       data = kmap_local_page(rx_buffer->page);
-> 
->          if (data[3] != 0xFF ||
->              data[frame_size + 10] != 0xBE ||
->              data[frame_size + 12] != 0xAF)
->                  match = false;
-> 
->  -       kunmap(rx_buffer->page);
->  +       kunmap_local(data);
-> 
->          return match;
->   }
->  --
->  2.35.2
+--q2kxa542hsfldolc--
