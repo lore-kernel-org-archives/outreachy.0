@@ -1,78 +1,137 @@
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1D338801;
-	Mon, 18 Apr 2022 12:11:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=nlZTs2EHSVsUyk1Bfx1ucHBhq1nc96y85fwK/m4VS8o=;
-  b=Ztt7IfzFy0k4GPLo5+lWjD1pdUNA//BQgMpRhdMXMTeRKWFiqkQ5s6Yc
-   t8Jzt/OY2XlpCdk1Kxb6l5CDVSGiIXObShwXElOiEWXJwzfUFxxpuEDf6
-   bIwlHANpRUE0P8LMwUlHpB3f/AL79uBMKoCG1ec3roHLgtNwdq82vuRcV
-   8=;
-Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="5.90,269,1643670000"; 
-   d="scan'208";a="11791770"
-Received: from 203.107.68.85.rev.sfr.net (HELO hadrien) ([85.68.107.203])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Apr 2022 14:11:21 +0200
-Date: Mon, 18 Apr 2022 14:11:21 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Aliya Rahmani <aliyarahmani786@gmail.com>
-cc: clabbe@baylibre.com, gregkh@linuxfoundation.org, 
-    linux-staging@lists.linux.dev, outreachy@lists.linux.dev, 
-    linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 2/3] staging: media: zoran: Code cleanup - else is not
- generally useful after a break or return
-In-Reply-To: <20220418115948.5456-3-aliyarahmani786@gmail.com>
-Message-ID: <alpine.DEB.2.22.394.2204181409550.11986@hadrien>
-References: <20220418115948.5456-1-aliyarahmani786@gmail.com> <20220418115948.5456-3-aliyarahmani786@gmail.com>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2BCAA7A
+	for <outreachy@lists.linux.dev>; Mon, 18 Apr 2022 14:43:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6235DC385A7;
+	Mon, 18 Apr 2022 14:43:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1650292994;
+	bh=pCzNBiYtmbJhPHrsJO++0NSN3gB8rHy4nNJp5dK5FG8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=KJXdSyX93GEMJI06EbNkh/Mx/o3MyrubhqW4DG+Zt2+TaUCJmVuML6PM1TO06BJrE
+	 MivA7r0x7D5w9wCnMwGCNcMsGQkPY7m1keQ9klUF+OgB4qPI3jOfDC6pCBwuFGTrkR
+	 2dOsLJySE+GWedUqzsQ95oXc3etEnJwdc/dCkS3s2aeFNrVVe/zHon4uBXpXDS0q83
+	 IfHD46LXVgpN6TTmSYpLGm1d02+8FJw2TtxZGUxAL32tPR2b+gc8B6ktJgtfTfUOdd
+	 wCLZW55kRRGz9w/mtfl8hP4/lAnBrKqAmB2e+8DzsJknmKBP0TZV/O7EMm6BmsDMzI
+	 SeCFP6BLXEFYA==
+Date: Mon, 18 Apr 2022 17:43:05 +0300
+From: Mike Rapoport <rppt@kernel.org>
+To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+Cc: Ira Weiny <ira.weiny@intel.com>,
+	Andrew Morton <akpm@linux-foundation.org>,
+	Catalin Marinas <catalin.marinas@arm.com>,
+	"Matthew Wilcox (Oracle)" <willy@infradead.org>,
+	Will Deacon <will@kernel.org>, Peter Collingbourne <pcc@google.com>,
+	Vlastimil Babka <vbabka@suse.cz>,
+	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+	linux-kernel@vger.kernel.org, outreachy@lists.linux.dev
+Subject: Re: [PATCH] mm/highmem: Fix kernel-doc warnings in highmem*.h
+Message-ID: <Yl14+RJjFU58yNpR@kernel.org>
+References: <20220418075304.20259-1-fmdefrancesco@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220418075304.20259-1-fmdefrancesco@gmail.com>
 
-Just say concisely what you did in the subject line.  For example, "remove
-unneeded else".  The reader can wait to see the message to find out the
-details.  "Code cleanup" takes up a lot of space, and doesn't give much
-information.
+Hi,
 
-On Mon, 18 Apr 2022, Aliya Rahmani wrote:
+On Mon, Apr 18, 2022 at 09:53:04AM +0200, Fabio M. De Francesco wrote:
+> `scripts/kernel-doc -none include/linux/highmem*` reports the following
+> warnings:
+> 
+> include/linux/highmem.h:160: warning: expecting prototype for kunmap_atomic(). Prototype was for nr_free_highpages() instead
+> include/linux/highmem-internal.h:256: warning: Function parameter or member '__addr' not described in 'kunmap_atomic'
+> include/linux/highmem-internal.h:256: warning: Excess function parameter 'addr' description in 'kunmap_atomic'
+> 
+> Fix these warnings by (1) move the kernel-doc comments from highmem.h to
+> highmem-internal.h (which is the file were the kunmap_atomic() macro is
+> actually defined), merge it with the comment which already was in
 
-> Remove the else without affecting the logic. Fixes the checkpatch warning: else is not generally useful after a break or return
+                   ^ (2) ?
 
-Commit log messages should be limited to around 70 characters per line.
+> highmem-internal.h, and (3) replace "@addr" with "@__addr".
 
-julia
+There is also replacement of "addr" with "page", so I'd phrase (3) as
+"use correct parameter names"
+ 
+> Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
 
-> Signed-off-by: Aliya Rahmani <aliyarahmani786@gmail.com>
+Other than that
+
+Acked-by: Mike Rapoport <rppt@linux.ibm.com>
+
 > ---
->  drivers/staging/media/zoran/videocodec.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
->
-> diff --git a/drivers/staging/media/zoran/videocodec.c b/drivers/staging/media/zoran/videocodec.c
-> index 16a1f23a7f19..19732a47c8bd 100644
-> --- a/drivers/staging/media/zoran/videocodec.c
-> +++ b/drivers/staging/media/zoran/videocodec.c
-> @@ -98,9 +98,8 @@ struct videocodec *videocodec_attach(struct videocodec_master *master)
->
->  				h->attached += 1;
->  				return codec;
-> -			} else {
-> -				kfree(codec);
->  			}
-> +			kfree(codec);
->  		}
->  		h = h->next;
->  	}
-> --
-> 2.25.1
->
->
->
+>  include/linux/highmem-internal.h | 14 +++++++++++---
+>  include/linux/highmem.h          | 13 +------------
+>  2 files changed, 12 insertions(+), 15 deletions(-)
+> 
+> diff --git a/include/linux/highmem-internal.h b/include/linux/highmem-internal.h
+> index a77be5630209..7307de391288 100644
+> --- a/include/linux/highmem-internal.h
+> +++ b/include/linux/highmem-internal.h
+> @@ -236,9 +236,17 @@ static inline unsigned long totalhigh_pages(void) { return 0UL; }
+>  
+>  #endif /* CONFIG_HIGHMEM */
+>  
+> -/*
+> - * Prevent people trying to call kunmap_atomic() as if it were kunmap()
+> - * kunmap_atomic() should get the return value of kmap_atomic, not the page.
+> +/**
+> + * kunmap_atomic - Unmap the virtual address mapped by kmap_atomic()
+> + * @__addr:       Virtual address to be unmapped
+> + *
+> + * Counterpart to kmap_atomic().
+> + *
+> + * Effectively a wrapper around kunmap_local() which additionally undoes
+> + * the side effects of kmap_atomic(), i.e. reenabling pagefaults and
+> + * preemption. Prevent people trying to call kunmap_atomic() as if it
+> + * were kunmap() because kunmap_atomic() should get the return value of
+> + * kmap_atomic(), not its argument which is a pointer to struct page.
+>   */
+>  #define kunmap_atomic(__addr)					\
+>  do {								\
+> diff --git a/include/linux/highmem.h b/include/linux/highmem.h
+> index 39bb9b47fa9c..0a7a89721e5d 100644
+> --- a/include/linux/highmem.h
+> +++ b/include/linux/highmem.h
+> @@ -37,7 +37,7 @@ static inline void *kmap(struct page *page);
+>  
+>  /**
+>   * kunmap - Unmap the virtual address mapped by kmap()
+> - * @addr:	Virtual address to be unmapped
+> + * @page:	Virtual address to be unmapped
+>   *
+>   * Counterpart to kmap(). A NOOP for CONFIG_HIGHMEM=n and for mappings of
+>   * pages in the low memory area.
+> @@ -145,17 +145,6 @@ static inline void *kmap_local_folio(struct folio *folio, size_t offset);
+>   */
+>  static inline void *kmap_atomic(struct page *page);
+>  
+> -/**
+> - * kunmap_atomic - Unmap the virtual address mapped by kmap_atomic()
+> - * @addr:	Virtual address to be unmapped
+> - *
+> - * Counterpart to kmap_atomic().
+> - *
+> - * Effectively a wrapper around kunmap_local() which additionally undoes
+> - * the side effects of kmap_atomic(), i.e. reenabling pagefaults and
+> - * preemption.
+> - */
+> -
+>  /* Highmem related interfaces for management code */
+>  static inline unsigned int nr_free_highpages(void);
+>  static inline unsigned long totalhigh_pages(void);
+> -- 
+> 2.34.1
+> 
+> 
+
+-- 
+Sincerely yours,
+Mike.
