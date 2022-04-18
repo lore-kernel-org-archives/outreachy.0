@@ -1,69 +1,68 @@
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E70C9A29;
-	Mon, 18 Apr 2022 16:40:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=JEyLkzAr/J9bETgVauK6m0tVJCy2MXHWmUiz3mbifTM=;
-  b=ebnXOPWJTF/dmPAHTKvNEJRN+3nIny042uTfNGS4/va65MBGmsQLAhJc
-   HMWvcN7CMiutdBDQ2yy/UZgAE1DRRvAM/8YKkIvSL4YFNbdOcyJ4rPnRA
-   QOf4fWUxgYUyxd7nimbxk0efAoXy3mQDzX4HKcWjXb4o8+8fKEh6w7XwB
-   k=;
-Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="5.90,270,1643670000"; 
-   d="scan'208";a="11802419"
-Received: from 203.107.68.85.rev.sfr.net (HELO hadrien) ([85.68.107.203])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Apr 2022 18:40:04 +0200
-Date: Mon, 18 Apr 2022 18:40:03 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Aliya Rahmani <aliyarahmani786@gmail.com>
-cc: clabbe@baylibre.com, gregkh@linuxfoundation.org, 
-    linux-staging@lists.linux.dev, outreachy@lists.linux.dev, 
-    linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 0/3] staging: media: zoran: fix warnings reported by
- checkpatch
-In-Reply-To: <20220418162244.15346-1-aliyarahmani786@gmail.com>
-Message-ID: <alpine.DEB.2.22.394.2204181839370.13551@hadrien>
-References: <20220418162244.15346-1-aliyarahmani786@gmail.com>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9E906A29
+	for <outreachy@lists.linux.dev>; Mon, 18 Apr 2022 16:46:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1650300406; x=1681836406;
+  h=date:from:to:subject:message-id:mime-version;
+  bh=qEM9KRPlarnmoeuWqV8YT4Z0TmxFkfDJjtcQbXeyVyo=;
+  b=geHd3PyZg+u/oVilKiyrV6F6lKp3qCW1imVEHbPWaUUQniOG4c/rD8ct
+   fu9JiOAvZT2Jq8LUekmbzqCL28ex01Y0sM/602bqxkGQvuA98X3+vZzVs
+   TId9emAda+PokROOP5PsBKzftNOWvaW2f+05um+Bj06mUilZxL6p+AeeS
+   KY3N0/BpkAI7CYb1BndhlOJ5b8i7d0f4OtyztkBvUJ4rvL9ewu8ytn5Dm
+   TqwYAJqc07OdpeEz0aIdPIOH3aRuPF22OUndAUhON6ZqApzJZhQxgoyVE
+   jS1ZLsB0zRwteIy6PuzuCciK360boN7fw/u+3nyP5STaKxMOUZhjJo+SJ
+   g==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10321"; a="263024394"
+X-IronPort-AV: E=Sophos;i="5.90,270,1643702400"; 
+   d="scan'208";a="263024394"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Apr 2022 09:46:40 -0700
+X-IronPort-AV: E=Sophos;i="5.90,270,1643702400"; 
+   d="scan'208";a="665346880"
+Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
+  by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Apr 2022 09:46:39 -0700
+Date: Mon, 18 Apr 2022 09:48:24 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: Outreachy Linux Kernel <outreachy@lists.linux.dev>
+Subject: [ANNOUNCE] Closed to New Applicants
+Message-ID: <20220418164824.GA1264757@alison-desk>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
 
+The projects in our community have all closed for new applicants.
 
-On Mon, 18 Apr 2022, Aliya Rahmani wrote:
+A new applicant is someone who has *not* recorded a contribution for
+a project. For those who have already recorded contributions under
+one or more projects, please continue to record and update your
+contributions, work with your mentors, and submit a final application.
 
-> These patches address style issues found by checkpatch in the
-> zoran/videocodec.c file.
->
-> changes since v1: Rework commit description and subject.
+Application Deadline:  April 22 at 4pm UTC
+See https://www.outreachy.org/docs/applicant/ Final Application.
+Suggestion: Submit it today! You can always edit it thru the deadline,
+however if you miss the deadline, for any reason, there is no recourse. 
 
-The change description is not very specific.  Does it affect all of the
-patches, or are some unchanged?
+What about the applicants who have not recorded a contribution?
 
-julia
+Other communities in Outreachy may still be taking new applicants.
 
->
-> Aliya Rahmani (3):
->  staging: media: zoran: use seq_puts() instead of seq_printf()
->  staging: media: zoran: else is not generally useful after a break or return
->  staging: media: zoran: avoid macro argument precedence issues
->
-> drivers/staging/media/zoran/videocodec.c | 9++++-----
-> 1 file changed, 4 insertions(+), 5 deletions(-)
->
->
-> --
-> 2.25.1
->
->
->
+You are welcome to continue to work on cleanup patches and use this
+list through April 22nd. (I'll send a notice to quiesce the list). If
+you are able to come back for the next round, your patches will count
+towards your clean up set, so you will basically have a running start
+for the next round! The same is true for those who submit applications
+but are not offered an internship.
+
+Questions, please ask on the list, email your project mentors or me.
+
+Thanks,
+Alison
