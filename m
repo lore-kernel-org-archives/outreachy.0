@@ -1,34 +1,46 @@
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-qk1-f176.google.com (mail-qk1-f176.google.com [209.85.222.176])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2BCAA7A
-	for <outreachy@lists.linux.dev>; Mon, 18 Apr 2022 14:43:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6235DC385A7;
-	Mon, 18 Apr 2022 14:43:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1650292994;
-	bh=pCzNBiYtmbJhPHrsJO++0NSN3gB8rHy4nNJp5dK5FG8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KJXdSyX93GEMJI06EbNkh/Mx/o3MyrubhqW4DG+Zt2+TaUCJmVuML6PM1TO06BJrE
-	 MivA7r0x7D5w9wCnMwGCNcMsGQkPY7m1keQ9klUF+OgB4qPI3jOfDC6pCBwuFGTrkR
-	 2dOsLJySE+GWedUqzsQ95oXc3etEnJwdc/dCkS3s2aeFNrVVe/zHon4uBXpXDS0q83
-	 IfHD46LXVgpN6TTmSYpLGm1d02+8FJw2TtxZGUxAL32tPR2b+gc8B6ktJgtfTfUOdd
-	 wCLZW55kRRGz9w/mtfl8hP4/lAnBrKqAmB2e+8DzsJknmKBP0TZV/O7EMm6BmsDMzI
-	 SeCFP6BLXEFYA==
-Date: Mon, 18 Apr 2022 17:43:05 +0300
-From: Mike Rapoport <rppt@kernel.org>
-To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Cc: Ira Weiny <ira.weiny@intel.com>,
-	Andrew Morton <akpm@linux-foundation.org>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	"Matthew Wilcox (Oracle)" <willy@infradead.org>,
-	Will Deacon <will@kernel.org>, Peter Collingbourne <pcc@google.com>,
-	Vlastimil Babka <vbabka@suse.cz>,
-	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
-	linux-kernel@vger.kernel.org, outreachy@lists.linux.dev
-Subject: Re: [PATCH] mm/highmem: Fix kernel-doc warnings in highmem*.h
-Message-ID: <Yl14+RJjFU58yNpR@kernel.org>
-References: <20220418075304.20259-1-fmdefrancesco@gmail.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9AD6D7A
+	for <outreachy@lists.linux.dev>; Mon, 18 Apr 2022 15:55:38 +0000 (UTC)
+Received: by mail-qk1-f176.google.com with SMTP id q75so2805165qke.6
+        for <outreachy@lists.linux.dev>; Mon, 18 Apr 2022 08:55:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
+        bh=rMbcoiiKdv/dV0rlsS/FQYGQZIPeFQVaWwscYitL/QI=;
+        b=YRNZpTBvwMwsyUrFbpP+BjkpSEVtqdFcqAlpPPL9bbxKXhbUQa7ILTITQ1IAcVjxIi
+         bzFfrcCSATwnz9+lZrD9vmKp29H42kKYbQgagv5nx1qs/b2YShpE8VaokAhoSiCPK7K1
+         A5D9RZTMAP8NaTokgnjp3TvD0TFe3XprPDaUvDqoCdMsShpRC5PoO61W//oB7ex2l/Ae
+         Fr9fufIJBMudjbubOzyldnMF2Ky+vP98eLNNxAmzRqMBEWz3ue9/ZfAgAu8X3VonE8Xp
+         Rcm93+Qky1I9JB6mmzOJQy9T4ddo7rz1o0aLVhR+3aWTDXABDkF/IBVoTEvzsSeqh5Le
+         tvzw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition;
+        bh=rMbcoiiKdv/dV0rlsS/FQYGQZIPeFQVaWwscYitL/QI=;
+        b=GXT4ihMYBdr6MaEaFndBx5vtD5L8tncKjhTPNaHegCRRgVd2N1TjRgpL+gt6p2d5od
+         Qm6mdytB+K7BEmebtUoFnY0aNaf/Tsain1jnBBcct1hq5T1M71hVWyPsxm+N3nFJAAQX
+         zrrMN32ceimNffrV74I8m+uDcbzfI+kGZJ6m2+DmvZkVHeI5soignqk+bwBJHME1oLiK
+         bPM7HN5iae0z2FPuWcd4h2Br/miDeZHR5bYAIIR95byksoqpQ2s2NNPAtYOoQMJEWw9t
+         /BnVjnhO10s0+tOK5whpgiiLn5N52bLVLnLfBVnGsZEyBe4sEMZlZ1giqm8E0ODgsFrr
+         Wxgg==
+X-Gm-Message-State: AOAM531NNBusumBDfCENSzMg3uKye0NwLayEDnQ7groFNY1eDBgPGgwb
+	GkgGAyqN1goa9XNh2yXzyn0=
+X-Google-Smtp-Source: ABdhPJxmIzes8LZK4xfGHhywE9zT25xBdalkv1rpFJ+BgSQtR/flsBb8kAo8/BmSkWH6ektrv4W6TA==
+X-Received: by 2002:a37:9ad5:0:b0:69e:8c03:7e0 with SMTP id c204-20020a379ad5000000b0069e8c0307e0mr4025044qke.747.1650297337377;
+        Mon, 18 Apr 2022 08:55:37 -0700 (PDT)
+Received: from euclid ([71.58.109.160])
+        by smtp.gmail.com with ESMTPSA id p13-20020a05622a048d00b002e1ce0c627csm8136969qtx.58.2022.04.18.08.55.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 18 Apr 2022 08:55:35 -0700 (PDT)
+Date: Mon, 18 Apr 2022 11:55:30 -0400
+From: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
+To: sbrivio@redhat.com
+Cc: outreachy@lists.linux.dev
+Subject: [PATCH] mbuto: always display help message
+Message-ID: <20220418155530.GA43865@euclid>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -37,101 +49,41 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220418075304.20259-1-fmdefrancesco@gmail.com>
 
-Hi,
+Currently, if the user is not root or if fakeroot is not available, no help
+message is displayed. Parse the command line, display the help message and then
+exit if the user is not root or if fakeroot is not available.
 
-On Mon, Apr 18, 2022 at 09:53:04AM +0200, Fabio M. De Francesco wrote:
-> `scripts/kernel-doc -none include/linux/highmem*` reports the following
-> warnings:
-> 
-> include/linux/highmem.h:160: warning: expecting prototype for kunmap_atomic(). Prototype was for nr_free_highpages() instead
-> include/linux/highmem-internal.h:256: warning: Function parameter or member '__addr' not described in 'kunmap_atomic'
-> include/linux/highmem-internal.h:256: warning: Excess function parameter 'addr' description in 'kunmap_atomic'
-> 
-> Fix these warnings by (1) move the kernel-doc comments from highmem.h to
-> highmem-internal.h (which is the file were the kunmap_atomic() macro is
-> actually defined), merge it with the comment which already was in
+Signed-off-by: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
+---
+ mbuto | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
-                   ^ (2) ?
-
-> highmem-internal.h, and (3) replace "@addr" with "@__addr".
-
-There is also replacement of "addr" with "page", so I'd phrase (3) as
-"use correct parameter names"
+diff --git a/mbuto b/mbuto
+index 49b8139..c9f0b18 100755
+--- a/mbuto
++++ b/mbuto
+@@ -1179,7 +1179,7 @@ usage() {
+ # If we're not running as root, re-run with fakeroot
+ if [ "${LD_PRELOAD}" != "libfakeroot-sysv.so" ] && [ "$(id -u)" -ne 0 ]; then
+ 	if ! FAKEROOT="$(command -v fakeroot)"; then
+-		err "Not root and no fakeroot available, exiting"
++		__missing_fakeroot=1
+ 	fi
+ 	PATH="${PATH}:/sbin:/usr/sbin" "${FAKEROOT}" "${0}" "${@}"
+ 	exit ${?}
+@@ -1203,6 +1203,11 @@ while getopts :c:df:k:m:p:s:vh __opt; do
+ 	h|*) usage						;;
+ 	esac
+ done
++
++if [ ${__missing_fakeroot} -eq 1 ]; then
++	err "Not root and no fakeroot available, exiting"
++fi
++
+ shift $((OPTIND - 1))
+ [ -z "${PROFILE}" ] && PROFILE="base"
  
-> Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
-
-Other than that
-
-Acked-by: Mike Rapoport <rppt@linux.ibm.com>
-
-> ---
->  include/linux/highmem-internal.h | 14 +++++++++++---
->  include/linux/highmem.h          | 13 +------------
->  2 files changed, 12 insertions(+), 15 deletions(-)
-> 
-> diff --git a/include/linux/highmem-internal.h b/include/linux/highmem-internal.h
-> index a77be5630209..7307de391288 100644
-> --- a/include/linux/highmem-internal.h
-> +++ b/include/linux/highmem-internal.h
-> @@ -236,9 +236,17 @@ static inline unsigned long totalhigh_pages(void) { return 0UL; }
->  
->  #endif /* CONFIG_HIGHMEM */
->  
-> -/*
-> - * Prevent people trying to call kunmap_atomic() as if it were kunmap()
-> - * kunmap_atomic() should get the return value of kmap_atomic, not the page.
-> +/**
-> + * kunmap_atomic - Unmap the virtual address mapped by kmap_atomic()
-> + * @__addr:       Virtual address to be unmapped
-> + *
-> + * Counterpart to kmap_atomic().
-> + *
-> + * Effectively a wrapper around kunmap_local() which additionally undoes
-> + * the side effects of kmap_atomic(), i.e. reenabling pagefaults and
-> + * preemption. Prevent people trying to call kunmap_atomic() as if it
-> + * were kunmap() because kunmap_atomic() should get the return value of
-> + * kmap_atomic(), not its argument which is a pointer to struct page.
->   */
->  #define kunmap_atomic(__addr)					\
->  do {								\
-> diff --git a/include/linux/highmem.h b/include/linux/highmem.h
-> index 39bb9b47fa9c..0a7a89721e5d 100644
-> --- a/include/linux/highmem.h
-> +++ b/include/linux/highmem.h
-> @@ -37,7 +37,7 @@ static inline void *kmap(struct page *page);
->  
->  /**
->   * kunmap - Unmap the virtual address mapped by kmap()
-> - * @addr:	Virtual address to be unmapped
-> + * @page:	Virtual address to be unmapped
->   *
->   * Counterpart to kmap(). A NOOP for CONFIG_HIGHMEM=n and for mappings of
->   * pages in the low memory area.
-> @@ -145,17 +145,6 @@ static inline void *kmap_local_folio(struct folio *folio, size_t offset);
->   */
->  static inline void *kmap_atomic(struct page *page);
->  
-> -/**
-> - * kunmap_atomic - Unmap the virtual address mapped by kmap_atomic()
-> - * @addr:	Virtual address to be unmapped
-> - *
-> - * Counterpart to kmap_atomic().
-> - *
-> - * Effectively a wrapper around kunmap_local() which additionally undoes
-> - * the side effects of kmap_atomic(), i.e. reenabling pagefaults and
-> - * preemption.
-> - */
-> -
->  /* Highmem related interfaces for management code */
->  static inline unsigned int nr_free_highpages(void);
->  static inline unsigned long totalhigh_pages(void);
-> -- 
-> 2.34.1
-> 
-> 
-
 -- 
-Sincerely yours,
-Mike.
+2.25.1
+
