@@ -1,58 +1,52 @@
-Received: from mail-ed1-f51.google.com (mail-ed1-f51.google.com [209.85.208.51])
+Received: from mail-pl1-f169.google.com (mail-pl1-f169.google.com [209.85.214.169])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9DDFBA29
-	for <outreachy@lists.linux.dev>; Mon, 18 Apr 2022 17:56:47 +0000 (UTC)
-Received: by mail-ed1-f51.google.com with SMTP id b24so18256358edu.10
-        for <outreachy@lists.linux.dev>; Mon, 18 Apr 2022 10:56:47 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DF799A29;
+	Mon, 18 Apr 2022 18:10:10 +0000 (UTC)
+Received: by mail-pl1-f169.google.com with SMTP id d15so12954769pll.10;
+        Mon, 18 Apr 2022 11:10:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=v1E7Ts386sKVAH7+jIanD8UQPmSLGesSvaWCqD54Wgw=;
-        b=WwbM0f8zF5Y8W0wt7jEc0r3fvsBMhaGs1CVLq/a/i+HPsEJMaB/La8Yh4AARtI7qpL
-         XOuUOpP+qZPTsZr9kRRcIUVbm/VgIg/VCNQPhu0bNbDh66o88434UHiXflLE3k16vNfi
-         +QVCa/0K2JXyqb/65Ol6vJ66T4YhFJpOfMijv48PEk1i3TQjJXafB1yoY+bTVxQ8SRej
-         1W/DPsrA3pHUK3SKhPHyTGekrIk6/k7GFn1NHcTBhdemplWpw1lLC+ExXlwsc4NxyyH/
-         GA/2Iahx5BqDNnV6iBWkgN9JcBQ4NT10jfscB6dj66Q8/mpVAFPyyzicylWrVKdLohjQ
-         IItw==
+        bh=uMrcwYlsopVDqMWUTs3qkmmFIb/yivyw+8YXRb2YVA0=;
+        b=bXiQ6T1FgzxyPdZKJtm0Tm1b6DC5PC0FjlGDaX043FwoLMk1zsc04G6GITsPVVyNH0
+         9wdjzK3P6xbnqSYDNnVTzdvu5YKrFdL7L9/1ei1zvawLgVctKiA6Ojwp5Gwsky9nZY1B
+         GWXa28WnNn1RUNB4BofS3LtBSdtONh5Mz0qKIXwG4Aexb9Do+XXptyXX4JGG9rxuokdx
+         V/VwF1O9Jl0AQqLCoR2FlMOQLDr/bAcx/Qf75m2GLV1zbTUpdjtaYiN9CyBOAvyspnGo
+         mIb1HZ/oh1D4DVwl64zVwmEnSnl88paSlDTe9weE7KxR6MZSMU9Q6ENo0uJqTztO2RGk
+         j5lQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=v1E7Ts386sKVAH7+jIanD8UQPmSLGesSvaWCqD54Wgw=;
-        b=iYamGSGgFOugcsT3vZp1gUIdcmpYzO/d4WDLgd950A8dLNo8TmrC1gluA0PmbyclAg
-         rC58HwbLVcva/MqBNie+oUihk1d4COGs5xN0mCZ/5p63VkMQADZcbed9rBfrTl/QxWSC
-         MZmKh0jo2nwcOtNipU9EyNJZFpWM/QjhNUZD8loFKJ7wScVgKgjtv4tm+YGy1/ZA0jeR
-         VZMh2kuVlr3FnGG1oVD+xSbKvNTMxz5Z/akXmgJnKJQ0Zif8AfwgI11EpS3BqpCZO68D
-         JW6Lz8040t6fJWg8zM1/wHrZpNM3utgx5znGsO/v6PtX061HDSmZbgQwhYp7FovPTZQe
-         ab9Q==
-X-Gm-Message-State: AOAM532xEkPFQbd+p2N2GgSv/r8ArikCuYahkvghhiPR0rB3wu42d/Et
-	bJyJgvFHRHRW2CyrJMmv14oYUYw1oc4=
-X-Google-Smtp-Source: ABdhPJwy5yL7UaRad6BVYWw8wXFOviOlGpuvjAgU1trs9KwsdyqlpDrmgRppquaqLOHq0ZNdLa5gSw==
-X-Received: by 2002:a05:6402:1b07:b0:41d:7abf:8337 with SMTP id by7-20020a0564021b0700b0041d7abf8337mr13170834edb.185.1650304605813;
-        Mon, 18 Apr 2022 10:56:45 -0700 (PDT)
-Received: from localhost.localdomain (host-79-50-86-254.retail.telecomitalia.it. [79.50.86.254])
-        by smtp.gmail.com with ESMTPSA id q14-20020a17090622ce00b006e898c912e5sm4776154eja.217.2022.04.18.10.56.43
+        bh=uMrcwYlsopVDqMWUTs3qkmmFIb/yivyw+8YXRb2YVA0=;
+        b=40dotn5vwX9wKOxrllgUlWeGzgxvmH1CUJZ/5J8BKGALboqUDTs9M5fca76spr+sox
+         2UeZJgCkuSx9j5UmZmeVBMj/tnnfbGCxZQzVUzW+MXE3nZCub0INLv8S4ObaVPVY/DvF
+         D2viFneJ1U+GoavktRM6m637oQR8I/OxVnxzCPPL9eHhtJsHMb8cl9hcbM5Zjc+CAfY4
+         piG9/3F3Y27OQD0tw23Yq/h8+BFuToRLGbRMof0H0aOq2g9qy2g0tdx7Jyr8ZxLQwWQo
+         7y4kzid0jMjSybAbOqSiN4uSSq/q93MVLIDRcoggCAIM0+8UQ/S1H0djyEf7tvXhvQpo
+         Ujng==
+X-Gm-Message-State: AOAM533/jfnOlyuvPWYP6B7PxgC2k+Hkcxo9MRZtVLjpBeif2IO+pE9o
+	+11gvFToAkZq4j3pfrebvlQ=
+X-Google-Smtp-Source: ABdhPJwcnn/UGh09oo4BTd8LWL5E9cjB11+kD7eHuSt0qMNAnLH37OC9uK12Fxk3xukJIjTAu12ixw==
+X-Received: by 2002:a17:902:7c17:b0:158:f6ef:497e with SMTP id x23-20020a1709027c1700b00158f6ef497emr8092615pll.134.1650305410270;
+        Mon, 18 Apr 2022 11:10:10 -0700 (PDT)
+Received: from aliyar-HP-Laptop-15-da1xxx.domain.name ([14.139.241.88])
+        by smtp.gmail.com with ESMTPSA id b10-20020a056a00114a00b004f784ba5e6asm14416578pfm.17.2022.04.18.11.10.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 18 Apr 2022 10:56:44 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Ira Weiny <ira.weiny@intel.com>,
-	Andrew Morton <akpm@linux-foundation.org>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	"Matthew Wilcox (Oracle)" <willy@infradead.org>,
-	Will Deacon <will@kernel.org>,
-	Peter Collingbourne <pcc@google.com>,
-	Vlastimil Babka <vbabka@suse.cz>,
-	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
-	Mike Rapoport <rppt@linux.ibm.com>,
+        Mon, 18 Apr 2022 11:10:09 -0700 (PDT)
+From: Aliya Rahmani <aliyarahmani786@gmail.com>
+To: mchehab@kernel.org
+Cc: gregkh@linuxfoundation.org,
+	linux-staging@lists.linux.dev,
+	outreachy@lists.linux.dev,
 	linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev
-Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Subject: [PATCH v2] mm/highmem: Fix kernel-doc warnings in highmem*.h
-Date: Mon, 18 Apr 2022 19:56:38 +0200
-Message-Id: <20220418175638.30018-1-fmdefrancesco@gmail.com>
-X-Mailer: git-send-email 2.34.1
+	Aliya Rahmani <aliyarahmani786@gmail.com>
+Subject: [PATCH] staging: media: av7110: comparison to NULL could be written "fe_func"
+Date: Mon, 18 Apr 2022 23:39:00 +0530
+Message-Id: <20220418180859.18488-1-aliyarahmani786@gmail.com>
+X-Mailer: git-send-email 2.25.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -61,86 +55,27 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-`scripts/kernel-doc -none include/linux/highmem*` reports the following
-warnings:
+Fixed coding style for null comparisons to be more
+consistent with the rest of the kernel coding style.
 
-include/linux/highmem.h:160: warning: expecting prototype for kunmap_atomic(). Prototype was for nr_free_highpages() instead
-include/linux/highmem-internal.h:256: warning: Function parameter or member '__addr' not described in 'kunmap_atomic'
-include/linux/highmem-internal.h:256: warning: Excess function parameter 'addr' description in 'kunmap_atomic'
-
-Fix these warnings by (1) move the kernel-doc comments from highmem.h to
-highmem-internal.h (which is the file were the kunmap_atomic() macro is
-actually defined), (2) merge it with the comment which already was in
-highmem-internal.h, and (3) use correct parameter names.
-
-Acked-by: Mike Rapoport <rppt@linux.ibm.com>
-Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+Signed-off-by: Aliya Rahmani <aliyarahmani786@gmail.com>
 ---
+ drivers/staging/media/av7110/av7110.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-v1->v2: Re-word the last sentence of the commit message and add a missing
-	number to the second entry in the fixes list. Add Mike Rapoport's
-	"Acked-by:" tag (thanks!).
-
- include/linux/highmem-internal.h | 14 +++++++++++---
- include/linux/highmem.h          | 13 +------------
- 2 files changed, 12 insertions(+), 15 deletions(-)
-
-diff --git a/include/linux/highmem-internal.h b/include/linux/highmem-internal.h
-index a77be5630209..7307de391288 100644
---- a/include/linux/highmem-internal.h
-+++ b/include/linux/highmem-internal.h
-@@ -236,9 +236,17 @@ static inline unsigned long totalhigh_pages(void) { return 0UL; }
+diff --git a/drivers/staging/media/av7110/av7110.c b/drivers/staging/media/av7110/av7110.c
+index d74ee0ecfb36..bdc6adf70d72 100644
+--- a/drivers/staging/media/av7110/av7110.c
++++ b/drivers/staging/media/av7110/av7110.c
+@@ -107,7 +107,7 @@ static int av7110_num;
  
- #endif /* CONFIG_HIGHMEM */
- 
--/*
-- * Prevent people trying to call kunmap_atomic() as if it were kunmap()
-- * kunmap_atomic() should get the return value of kmap_atomic, not the page.
-+/**
-+ * kunmap_atomic - Unmap the virtual address mapped by kmap_atomic()
-+ * @__addr:       Virtual address to be unmapped
-+ *
-+ * Counterpart to kmap_atomic().
-+ *
-+ * Effectively a wrapper around kunmap_local() which additionally undoes
-+ * the side effects of kmap_atomic(), i.e. reenabling pagefaults and
-+ * preemption. Prevent people trying to call kunmap_atomic() as if it
-+ * were kunmap() because kunmap_atomic() should get the return value of
-+ * kmap_atomic(), not its argument which is a pointer to struct page.
-  */
- #define kunmap_atomic(__addr)					\
- do {								\
-diff --git a/include/linux/highmem.h b/include/linux/highmem.h
-index 39bb9b47fa9c..0a7a89721e5d 100644
---- a/include/linux/highmem.h
-+++ b/include/linux/highmem.h
-@@ -37,7 +37,7 @@ static inline void *kmap(struct page *page);
- 
- /**
-  * kunmap - Unmap the virtual address mapped by kmap()
-- * @addr:	Virtual address to be unmapped
-+ * @page:	Virtual address to be unmapped
-  *
-  * Counterpart to kmap(). A NOOP for CONFIG_HIGHMEM=n and for mappings of
-  * pages in the low memory area.
-@@ -145,17 +145,6 @@ static inline void *kmap_local_folio(struct folio *folio, size_t offset);
-  */
- static inline void *kmap_atomic(struct page *page);
- 
--/**
-- * kunmap_atomic - Unmap the virtual address mapped by kmap_atomic()
-- * @addr:	Virtual address to be unmapped
-- *
-- * Counterpart to kmap_atomic().
-- *
-- * Effectively a wrapper around kunmap_local() which additionally undoes
-- * the side effects of kmap_atomic(), i.e. reenabling pagefaults and
-- * preemption.
-- */
--
- /* Highmem related interfaces for management code */
- static inline unsigned int nr_free_highpages(void);
- static inline unsigned long totalhigh_pages(void);
+ #define FE_FUNC_OVERRIDE(fe_func, av7110_copy, av7110_func) \
+ {\
+-	if (fe_func != NULL) { \
++	if (fe_func) { \
+ 		av7110_copy = fe_func; \
+ 		fe_func = av7110_func; \
+ 	} \
 -- 
-2.34.1
+2.25.1
 
