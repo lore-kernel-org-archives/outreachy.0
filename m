@@ -1,164 +1,94 @@
-Received: from smtp-out1.suse.de (smtp-out1.suse.de [195.135.220.28])
+Received: from mail-ej1-f46.google.com (mail-ej1-f46.google.com [209.85.218.46])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B9B1CECA
-	for <outreachy@lists.linux.dev>; Tue, 19 Apr 2022 09:16:39 +0000 (UTC)
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by smtp-out1.suse.de (Postfix) with ESMTPS id 62195210F4;
-	Tue, 19 Apr 2022 09:16:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
-	t=1650359792; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=tpJbvqgQUJ8X2kcphBh+0uKSEVkbF9cJfYcLIzuVqyA=;
-	b=hDul1sqy58qB9kficlyggAc8SgDIhrlLzjE3rX0oWjFD3BfL86cuE2+5KgFADUhxG6N5kE
-	LtpS9EKc1f++W5n8u6/Sa40utnibS+JQp5R89n2G8EDE8Z31J1cTygmNq2sSepwFMjUHwS
-	IxOdiDE5F1FUdQ0gCSSmLrM5OIgOydA=
-Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
-	(No client certificate requested)
-	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 28E9B132E7;
-	Tue, 19 Apr 2022 09:16:32 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([192.168.254.65])
-	by imap2.suse-dmz.suse.de with ESMTPSA
-	id Y8iOCPB9XmKaCgAAMHmgww
-	(envelope-from <jgross@suse.com>); Tue, 19 Apr 2022 09:16:32 +0000
-Message-ID: <cc7e517a-b1e7-95f1-d230-a635f7d84ef5@suse.com>
-Date: Tue, 19 Apr 2022 11:16:31 +0200
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 607D47A
+	for <outreachy@lists.linux.dev>; Tue, 19 Apr 2022 12:35:52 +0000 (UTC)
+Received: by mail-ej1-f46.google.com with SMTP id i27so32579309ejd.9
+        for <outreachy@lists.linux.dev>; Tue, 19 Apr 2022 05:35:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=BaNLhQu+QWWvZbpDFGtXSt3/5W9s0AKclZhaLjx4Bo8=;
+        b=F7wPvxjsI3taT1eprbvJq5aN0oQ/3ONZTdNjhmhmAq9MYhceoNcHAeXrl2o7mHbafY
+         bTZYbVi1qbJ9TFn3DtwyH540d6Ps+YRQxT4hlakrN/dkb6lKuWVS9cLgKO/ta6qLHn/a
+         i2yF31VlQKf3hYHa6NOehBJNkgm00T3oUfJsOTkeAD8d8xGaYOsHy0Ax59P8OU74xTMe
+         dsAJKkJ87Y5ugq0p3INoX8datsKRKAJ5Od1zeqb0RDifG8E03ApGz1uuU3CVnnfHbZ/P
+         VYxSvN/vdOkoknlTL/c7CeKvMvaPmXKa6/8pK9tqimsRgBkp6Oey8IXVil+H6r4PsW5K
+         zvDg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=BaNLhQu+QWWvZbpDFGtXSt3/5W9s0AKclZhaLjx4Bo8=;
+        b=LlaUkkC8PtSck5Uft9fRmJgvtCqtFhwxbIFhq6YPOWljx5Pc7g7hHjY7HwXLKHC8s5
+         wbVR29F89dl94swjyKNovB1ewigF7mGFs5Ex3nsUYOxLP7Qmv9HSLDImG6JDH3CVfSHh
+         ee/GiIC6BiXjk/Uo7fTsjqd7hYfeSGLnmRwq+k+xenyKSoirkny41LKk9X3/SegGGy+D
+         G5wDddkzipGbbzz/vuvwbFZEzZfokV+4/Sk9rRv+h1f+M1vsMi3nQSjr7nHeUNMngSjn
+         yOAH7KRxuG54VjYSOPmOfT8FTusO4/FCacxWQtf173z25WC2EP06/4tFsewrw4/CdYiy
+         +7gw==
+X-Gm-Message-State: AOAM533IVKULA5wUtBgsBgU6I7b/gJj0CJf/Iia7QER5z8FSwPa1dBGE
+	O6x9SFO/dKu8YhnvKA9/a3Y=
+X-Google-Smtp-Source: ABdhPJzMKqFT9NsTEuV6XDc1/i5YPbX23EMYYcdpp9FAwsphV2nOFI2phUGBoYRO1oH977BD5TSmSg==
+X-Received: by 2002:a17:907:1c2a:b0:6ef:e251:1611 with SMTP id nc42-20020a1709071c2a00b006efe2511611mr2186451ejc.532.1650371750557;
+        Tue, 19 Apr 2022 05:35:50 -0700 (PDT)
+Received: from leap.localnet (host-79-50-86-254.retail.telecomitalia.it. [79.50.86.254])
+        by smtp.gmail.com with ESMTPSA id fq6-20020a1709069d8600b006e891c0b7e0sm5568898ejc.129.2022.04.19.05.35.48
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 19 Apr 2022 05:35:49 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: Ira Weiny <ira.weiny@intel.com>
+Cc: Jonathan Corbet <corbet@lwn.net>, Andrew Morton <akpm@linux-foundation.org>, SeongJae Park <sj@kernel.org>, Jiajian Ye <yejiajian2018@email.szu.edu.cn>, Thomas Gleixner <tglx@linutronix.de>, Matthew Wilcox <willy@infradead.org>, Peter Zijlstra <peterz@infradead.org>, outreachy@lists.linux.dev, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] Documentation/vm: Include kernel-doc from highmem-internal.h
+Date: Tue, 19 Apr 2022 14:35:48 +0200
+Message-ID: <2824835.e9J7NaK4W3@leap>
+In-Reply-To: <Yl3Z8Qll+zGo4v/D@iweiny-desk3>
+References: <20220418081740.21001-1-fmdefrancesco@gmail.com> <Yl3Z8Qll+zGo4v/D@iweiny-desk3>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.0
-Subject: Re: [PATCH] xen: gntalloc.c: Convert kmap() to kmap_local_page()
-Content-Language: en-US
-To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>,
- outreachy@lists.linux.dev
-Cc: boris.ostrovsky@oracle.com, sstabellini@kernel.org,
- xen-devel@lists.xenproject.org, linux-kernel@vger.kernel.org,
- ira.weiny@intel.com
-References: <20220418061927.6833-1-eng.alaamohamedsoliman.am@gmail.com>
-From: Juergen Gross <jgross@suse.com>
-In-Reply-To: <20220418061927.6833-1-eng.alaamohamedsoliman.am@gmail.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="------------9vkSMHlYMu8moakU4AvthWPm"
-
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---------------9vkSMHlYMu8moakU4AvthWPm
-Content-Type: multipart/mixed; boundary="------------S5XLYnp6xrs0fDIWycnnF3TJ";
- protected-headers="v1"
-From: Juergen Gross <jgross@suse.com>
-To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>,
- outreachy@lists.linux.dev
-Cc: boris.ostrovsky@oracle.com, sstabellini@kernel.org,
- xen-devel@lists.xenproject.org, linux-kernel@vger.kernel.org,
- ira.weiny@intel.com
-Message-ID: <cc7e517a-b1e7-95f1-d230-a635f7d84ef5@suse.com>
-Subject: Re: [PATCH] xen: gntalloc.c: Convert kmap() to kmap_local_page()
-References: <20220418061927.6833-1-eng.alaamohamedsoliman.am@gmail.com>
-In-Reply-To: <20220418061927.6833-1-eng.alaamohamedsoliman.am@gmail.com>
-
---------------S5XLYnp6xrs0fDIWycnnF3TJ
-Content-Type: multipart/mixed; boundary="------------QEG3IN2lZzp121HpNvmVs0ze"
-
---------------QEG3IN2lZzp121HpNvmVs0ze
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: base64
-
-T24gMTguMDQuMjIgMDg6MTksIEFsYWEgTW9oYW1lZCB3cm90ZToNCj4gVGhlIHVzZSBvZiBr
-bWFwKCkgaXMgYmVpbmcgZGVwcmVjYXRlZCBpbiBmYXZvciBvZiBrbWFwX2xvY2FsX3BhZ2Uo
-KQ0KPiB3aGVyZSBpdCBpcyBmZWFzaWJsZS4NCj4gDQo+IFdpdGgga21hcF9sb2NhbF9wYWdl
-KCksIHRoZSBtYXBwaW5nIGlzIHBlciB0aHJlYWQsIENQVSBsb2NhbCBhbmQgbm90DQo+IGds
-b2JhbGx5IHZpc2libGUuIFRoZXJlZm9yZSBfX2RlbF9ncmVmKCkgaXMgYSBmdW5jdGlvbg0K
-PiB3aGVyZSB0aGUgdXNlIG9mIGttYXBfbG9jYWxfcGFnZSgpIGluIHBsYWNlIG9mIGttYXAo
-KSBpcyBjb3JyZWN0bHkNCj4gc3VpdGVkLg0KPiANCj4gU2lnbmVkLW9mZi1ieTogQWxhYSBN
-b2hhbWVkIDxlbmcuYWxhYW1vaGFtZWRzb2xpbWFuLmFtQGdtYWlsLmNvbT4NCg0KUmV2aWV3
-ZWQtYnk6IEp1ZXJnZW4gR3Jvc3MgPGpncm9zc0BzdXNlLmNvbT4NCg0KDQpKdWVyZ2VuDQo=
-
---------------QEG3IN2lZzp121HpNvmVs0ze
-Content-Type: application/pgp-keys; name="OpenPGP_0xB0DE9DD628BF132F.asc"
-Content-Disposition: attachment; filename="OpenPGP_0xB0DE9DD628BF132F.asc"
-Content-Description: OpenPGP public key
 Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
 
------BEGIN PGP PUBLIC KEY BLOCK-----
+On luned=C3=AC 18 aprile 2022 23:36:49 CEST Ira Weiny wrote:
+> On Mon, Apr 18, 2022 at 10:17:40AM +0200, Fabio M. De Francesco wrote:
+> > In Documentation/vm/highmem.rst the kernel-doc comments are missing,
+> > therefore kunmap_local() and kunmap_atomic() are yet undocumented.
+> >=20
+> > Add a kernel-doc directive to include the above-mentioned kernel-doc
+> > comments in highmem.rst.
+> >=20
+> > Cc: Jonathan Corbet <corbet@lwn.net>
+> > Cc: Thomas Gleixner <tglx@linutronix.de>
+> > Cc: Ira Weiny <ira.weiny@intel.com>
+> > Cc: Matthew Wilcox <willy@infradead.org>
+> > Cc: Peter Zijlstra <peterz@infradead.org>
+> > Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+>=20
+> I thought I saw a patch fly by which changed the comment of=20
+kunmap_atomic() in
+> include/linux/highmem-internal.h?  Did I miss that somewhere?
 
-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
-jR/i1DG86lem3iBDXzXsZDn8R38=3D
-=3D2wuH
------END PGP PUBLIC KEY BLOCK-----
+Sorry, in my other email I responded after misunderstanding your question=20
+because I had just noticed a typo so that I had something else in my mind.
 
---------------QEG3IN2lZzp121HpNvmVs0ze--
+It looks that you are talking about the following patch and, if so, you saw=
+=20
+it correctly:
 
---------------S5XLYnp6xrs0fDIWycnnF3TJ--
+"[PATCH v2] mm/highmem: Fix kernel-doc warnings in highmem*.h" at=20
+https://lore.kernel.org/lkml/20220418175638.30018-1-fmdefrancesco@gmail.com/
 
---------------9vkSMHlYMu8moakU4AvthWPm
-Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="OpenPGP_signature"
+I forgot to send it to the Outreachy list. I'm about to resend it only to=20
+this list in order to make Outreachy's organizers to know about it. For v1=
+=20
+already had an "Acked-by:" tag from Mike Rapoport.
 
------BEGIN PGP SIGNATURE-----
+Thanks,
 
-wsB5BAABCAAjFiEEhRJncuj2BJSl0Jf3sN6d1ii/Ey8FAmJefe8FAwAAAAAACgkQsN6d1ii/Ey8S
-wgf/YdYBK3TJNqEFYhYzob4kXXTI/Q7kjJSzXiu5Nag8Sl8TC9nVthn7m35+2s7/l5oNDp6j4sn4
-HhEdNvmsWptIfy95yxQdCbzoTkD2Vz6NXFi1lbTJvmpUp6y2yTtoE4mOhCsqNCcdCKKw0+gWbqbD
-cH7sRAiGNlj4RCUR4TaTqbhJIvZUgzTfLwVbOVZDiK9x76Ua58DAh44qm4G+A7s53woIljMcD7Y/
-vDYurOJJeQ+TPro4K7ass7aIQQfisdg7mMqnUsdtZ0fljdqss0ufJSK4Wyx7pdZj40YDyJL0Da7+
-Ft/Kd38C4ddUurRyQqNJ3hkk8WztoR6OGAVD66Kgcg==
-=vt7X
------END PGP SIGNATURE-----
+=46abio M. De Francesco
 
---------------9vkSMHlYMu8moakU4AvthWPm--
+
