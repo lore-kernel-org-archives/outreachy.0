@@ -1,116 +1,203 @@
-Received: from mail-ed1-f45.google.com (mail-ed1-f45.google.com [209.85.208.45])
+Received: from mail-wm1-f46.google.com (mail-wm1-f46.google.com [209.85.128.46])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 947267A
-	for <outreachy@lists.linux.dev>; Tue, 19 Apr 2022 13:25:20 +0000 (UTC)
-Received: by mail-ed1-f45.google.com with SMTP id v4so21233693edl.7
-        for <outreachy@lists.linux.dev>; Tue, 19 Apr 2022 06:25:20 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 045157A
+	for <outreachy@lists.linux.dev>; Tue, 19 Apr 2022 13:37:50 +0000 (UTC)
+Received: by mail-wm1-f46.google.com with SMTP id q20so10692184wmq.1
+        for <outreachy@lists.linux.dev>; Tue, 19 Apr 2022 06:37:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=NYGYZ+AaeH1UkoR29hN0ONV45IHPGeVO496rVaCsOeg=;
-        b=ZcP63KQbJe/fq2lztFobt+4aFZJsU7bmacoc7UrvUOEBPRCGkn8K2Uwgz1TudU1vVm
-         m/AG5apYjCzvfnZjgqvfy3ERIKR46quwZkbQs6eqYdyzvjhjwgawy2pmk6QIFggBSFoT
-         oOKSlIa+QZB5Z7Bi0bVwZYyRH3vmhvpt/+PYNbftMzYV9afjOcEAj3kVfmrGObuF8erl
-         S1u/FdJMXedCwFu88jEuVQme82CXHn/xWoapZfPCRfd5muPPBWXap3gonUSvM6oHhfj4
-         XeFBi/ldwlcGrKX5nmEVdrRi5ehZTc/DFaN3NTDOXvRCXPer+X26HBfyvbV7Q2q5oNP3
-         6/CA==
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=BKJP+wMrhLiv8U5mTohtsHkHVrvr/Qn6/7wcj0YmhTU=;
+        b=KdaXrlnGCGTk+uPwx5slgKSFhnCLkbBPxUSL24gpJtec6AR0NnpchiHu4In5Ly1UsB
+         rXLZJ6GUAqjlmTHfVbhaxGzJ+AeoX7RXfjpE19dQYXAfmWCL1NGsKP+9gGeeggoOeocu
+         uxLTgHkscj2XdEc3tYKTux1IJx+e3FYvcy0A2oZaL9Vh0WHEd1hp7ed0hxiDrXL3zopH
+         SnUnzCXBB9R39gE/VoxX7/G4JHPFA5B6AlHuzOWvG3vTHwBYFAakkcNvfTEKvef+hpby
+         hW7L7spMZ+OUvwD/21tsN3aGHitmM87X/weekFDpGcZ9efcpvJYsJvgLJOdweorDjtps
+         m79w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=NYGYZ+AaeH1UkoR29hN0ONV45IHPGeVO496rVaCsOeg=;
-        b=N43gPqpa3Ati7c/fVeqDe+lWDaUfF4l0ATe2sNIOZJXlfJwUcSw1eVe0zZ5kRnZEHE
-         OeoR88rutNEu5i63dnjUjjKhVkKXJgO7nG8jGfbgk196GXmL89lvNWkBLLBoOCLGXvJ/
-         2sRPii5NFMJ6sZWUqUF7PpiN6jAjx+yPIsdiLd/FT2mn66gxhnt88WaLQxIoW38tnp70
-         ZhA2gU83SDZOqbvN3C0Q4jqTRXTE23j4qQtP8tpIxJWuw0vKffuK9ql4/wZA1njE+2u3
-         nm1C4pwK8fZj2hXCb0AAVdQfGyIRqgYwQpzpfEc1fK++1/SZOBCnlwrQ99hG/weUKVeg
-         ueEw==
-X-Gm-Message-State: AOAM531JzW0hm4Yl7cXXzEqHnLEU8OlpOMGxEGDrp2iplpzLX+gptJb5
-	ciGVpDwVwg4lwUeFuJafDhA=
-X-Google-Smtp-Source: ABdhPJyXcDMv8ru2Wi8pUK5GB8l76sJTEXGV6d+L1yqBCA/Bh8rnWTOm2dfGw8CclmZl5FbXqKjm4g==
-X-Received: by 2002:a05:6402:2318:b0:413:7645:fa51 with SMTP id l24-20020a056402231800b004137645fa51mr17623149eda.201.1650374718896;
-        Tue, 19 Apr 2022 06:25:18 -0700 (PDT)
-Received: from leap.localnet (host-79-50-86-254.retail.telecomitalia.it. [79.50.86.254])
-        by smtp.gmail.com with ESMTPSA id fx3-20020a170906b74300b006daecedee44sm5661666ejb.220.2022.04.19.06.25.16
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 19 Apr 2022 06:25:17 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Matthew Wilcox <willy@infradead.org>
-Cc: Ira Weiny <ira.weiny@intel.com>, Andrew Morton <akpm@linux-foundation.org>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Peter Collingbourne <pcc@google.com>, Vlastimil Babka <vbabka@suse.cz>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, Mike Rapoport <rppt@linux.ibm.com>, linux-kernel@vger.kernel.org, outreachy@lists.linux.dev
-Subject: Re: [PATCH v2] mm/highmem: Fix kernel-doc warnings in highmem*.h
-Date: Tue, 19 Apr 2022 15:25:16 +0200
-Message-ID: <4058661.1IzOArtZ34@leap>
-In-Reply-To: <Yl6unkluUEeRZBbB@casper.infradead.org>
-References: <20220418175638.30018-1-fmdefrancesco@gmail.com> <Yl6unkluUEeRZBbB@casper.infradead.org>
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=BKJP+wMrhLiv8U5mTohtsHkHVrvr/Qn6/7wcj0YmhTU=;
+        b=XE4DEXE6xJdxmyfEb7lrZWZ4OV0gxhrtx7XS8rYEWpe963ybaU8j6rbAu1UZSgfCf8
+         WhG7oGnAEIsgZV4iVcJ/Ybu4V1hJP5MefGMCjMcWSAdkPAZjKBMvyh6Mp90O3gHgyBoc
+         YCdNoX7V/+dXCURWEqO7t4lgXh4ky9Y2mIenIgDSsLDYaTgW98gHNDVw7thKULABZFji
+         eTFilXRRibzJUSvn+wg1o2SZct8xsfEy1/M7U9qy+zSmJ7yn6uNNViDwKLxEhUWGZ4Qa
+         afUS5c4qqvWFiKnPbwPpwRBzGtK2MLpBswnhC6bTXUWuBzi/7iZNYLA7iI0cGTcy5OGz
+         uzmQ==
+X-Gm-Message-State: AOAM531IbuInGon9PU2cth6MvzZQYp8iGOucf7Vfqr3YPmtErBGs3mFN
+	kqWJCAcT6DrNn1SQagu4Jmw=
+X-Google-Smtp-Source: ABdhPJxDwv1X+/hRo9xop6SusTrN9bqC+b3UgjZEDmS4PvBBI8m7xydBHlVoZ0adElhpenF0fFUI4A==
+X-Received: by 2002:a1c:f719:0:b0:381:ba:5247 with SMTP id v25-20020a1cf719000000b0038100ba5247mr16059496wmh.183.1650375469098;
+        Tue, 19 Apr 2022 06:37:49 -0700 (PDT)
+Received: from [192.168.1.5] ([102.41.109.205])
+        by smtp.gmail.com with ESMTPSA id c12-20020a05600c0a4c00b00381141f4967sm17985490wmq.35.2022.04.19.06.37.47
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 19 Apr 2022 06:37:48 -0700 (PDT)
+Message-ID: <21796697-e4e1-bf51-76fc-bdb0e28d6b60@gmail.com>
+Date: Tue, 19 Apr 2022 15:37:47 +0200
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="utf-8"
-
-On marted=C3=AC 19 aprile 2022 14:44:14 CEST Matthew Wilcox wrote:
-> On Mon, Apr 18, 2022 at 07:56:38PM +0200, Fabio M. De Francesco wrote:
-> > +/**
-> > + * kunmap_atomic - Unmap the virtual address mapped by kmap_atomic()
-> > + * @__addr:       Virtual address to be unmapped
-> > + *
-> > + * Counterpart to kmap_atomic().
->=20
-> I don't think this is a terribly useful paragraph?
-
-I agree but let me remind you that this patch is _only_ about fixing=20
-kernel-doc warnings. This warning was simply fixed by moving kdoc comment=20
-from highmem.h to highmem-internal.h (which is the file where the=20
-definition of kunmap_atomic() resides) and merging the text with few lines=
-=20
-that already were in highmem-internal.h.
-
-=46urthermore, I've already had an "Acked-by:" tag from Mike Rapoport. I=20
-suppose that if I changed the paragraph here I could not forward his ack to=
-=20
-the next version.
-
-> > + * Effectively a wrapper around kunmap_local() which additionally=20
-undoes
-> > + * the side effects of kmap_atomic(), i.e. reenabling pagefaults and
-> > + * preemption. Prevent people trying to call kunmap_atomic() as if it
-> > + * were kunmap() because kunmap_atomic() should get the return value=20
-of
-> > + * kmap_atomic(), not its argument which is a pointer to struct page.
->=20
-> I'd rather this were useful advice to the caller than documentation of
-> how it works.  How about:
->=20
->  * Unmap an address previously mapped by kmap_atomic().  Mappings
->  * should be unmapped in the reverse order that they were mapped.
->  * See kmap_local_page() for details.  @__addr can be any address within
->  * the mapped page, so there is no need to subtract any offset that has
->  * been added.  In contrast to kunmap(), this function takes the address
->  * returned from kmap_atomic(), not the page passed to kmap_atomic().
->  * The compiler will warn you if you pass the page.
-
-A change like this should go to a separate patch and indeed I'll send it=20
-ASAP. Probably, when I'll rework this text in a separate patch, I'll also=20
-copy-paste the paragraph you wrote as-is (too easy!).
-
-However, since the rework of the text in paragraph can only be applied on=20
-top of this patch, I'm not sure if I should either (1) make a series with=20
-two patches or (2) make a separate patch with a warning to Maintainers that=
-=20
-the changes in the new patch can only be applied on top of this patch.
-
-Actually, I don't yet know how the Community wants tasks like these to be=20
-carried out. Any suggestion?
-
-Thanks for your review and for suggesting a better suited text for the next=
-=20
-patch.
-
-=46abio M. De Francesco
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH v3] intel: igb: igb_ethtool.c: Convert kmap() to
+ kmap_local_page()
+Content-Language: en-US
+To: Ira Weiny <ira.weiny@intel.com>
+Cc: Julia Lawall <julia.lawall@inria.fr>, outreachy@lists.linux.dev,
+ jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com, davem@davemloft.net,
+ kuba@kernel.org, pabeni@redhat.com, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org
+References: <20220416111457.5868-1-eng.alaamohamedsoliman.am@gmail.com>
+ <alpine.DEB.2.22.394.2204161331080.3501@hadrien>
+ <df4c0f81-454d-ab96-1d74-1c4fbc3dbd63@gmail.com>
+ <Yl3j/bOvoX13WGSW@iweiny-desk3>
+From: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+In-Reply-To: <Yl3j/bOvoX13WGSW@iweiny-desk3>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 
 
+On ١٩‏/٤‏/٢٠٢٢ ٠٠:١٩, Ira Weiny wrote:
+> On Sat, Apr 16, 2022 at 03:14:57PM +0200, Alaa Mohamed wrote:
+>>     On ١٦‏/٤‏/٢٠٢٢ ١٣:٣١, Julia Lawall wrote:
+>>
+>>
+>>   On Sat, 16 Apr 2022, Alaa Mohamed wrote:
+>>
+>>
+>>   Convert kmap() to kmap_local_page()
+>>
+>>   With kmap_local_page(), the mapping is per thread, CPU local and not
+>>   globally visible.
+>>
+>>   It's not clearer.
+>>
+>>     I mean this " fix kunmap_local path value to take address of the mapped
+>>     page" be more clearer
+>>
+>>   This is a general statement about the function.  You
+>>   need to explain why it is appropriate to use it here.  Unless it is the
+>>   case that all calls to kmap should be converted to call kmap_local_page.
+>>
+>>     It's required to convert all calls kmap to kmap_local_page. So, I don't
+>>     what should the commit message be?
+>>
+>>     Is this will be good :
+>>
+>>     "kmap_local_page() was recently developed as a replacement for kmap().
+>>     The
+>>     kmap_local_page() creates a mapping which is restricted to local use by a
+>>     single thread of execution. "
+>>
+> I think I am missing some thread context here.  I'm not sure who said what
+> above.  So I'm going to start over.
+>
+> Alaa,
+>
+> It is important to remember that a good commit message says 2 things.
+>
+> 	1) What is the problem you are trying to solve
+> 	2) Overview of the solution
+>
+> First off I understand your frustration.  In my opinion fixes and clean ups
+> like this are very hard to write good commit messages for because so often the
+> code diff seems so self explanatory.  However, each code change comes at the
+> identification of a problem.  And remember that 'problem' does not always mean
+> a bug fix.
+>
+> The deprecation of kmap() may not seem like a problem.  I mean why can't we
+> just leave kmap() as it is?  It works right?
+>
+> But the problem is that the kmap (highmem) interface has become stale and its
+> original purpose was targeted toward large memory systems with 32 bit kernels.
+> There are very few systems being run like that any longer.
+>
+> So how do we clean up the kmap interface to be more useful to the kernel
+> community now that 32 bit kernels with highmem are so rare?
+>
+> The community has identified that a first step of that is to move away from and
+> eventually remove the kmap() call.  This is due to the call being incorrectly
+> used to create long term mappings.  Most calls to kmap() are not used
+> incorrectly but those call sites needed something in between kmap() and
+> kmap_atmoic().  That call is kmap_local_page().
+>
+> Now that kmap_local_page() exists the kmap() calls can be audited and most (I
+> hope most)[1] can be replaced with kmap_local_page().
+>
+> The change you have below is correct.  But it lacks a good commit message.  We
+> need to cover the 2 points above.
+>
+> 	1) Julia is asking why you needed to do this change.  What is the
+> 	   problem or reason for this change?  (Ira told you to is not a good
+> 	   reason.  ;-)
+>
+> 	   PS In fact me telling you to may actually be a very bad reason...
+> 	   j/k ;-)
+>
+> 	2) Why is this solution ok as part of the deprecation and removal of
+> 	   kmap()?
+>
+> A final note; the 2 above points don't need a lot of text.  Here I used
+> 2 simple sentences.
+>
+> https://lore.kernel.org/lkml/20220124015409.807587-2-ira.weiny@intel.com/
+>
+> I hope this helps,
+> Ira
+>
+> [1] But not all...  some uses of kmap() have been identified as being pretty
+> complex.
+
+
+Thanks a lot for detailed explaining , yes you help me a lot.
+
+
+Thanks again,
+
+Alaa
+
+>>   julia
+>>
+>>
+>>   Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+>>   ---
+>>   changes in V2:
+>>           fix kunmap_local path value to take address of the mapped page.
+>>   ---
+>>   changes in V3:
+>>           edit commit message to be clearer
+>>   ---
+>>    drivers/net/ethernet/intel/igb/igb_ethtool.c | 4 ++--
+>>    1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+>>   diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c b/drivers/net/ethernet/intel/igb/igb_ethtool.c
+>>   index 2a5782063f4c..c14fc871dd41 100644
+>>   --- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
+>>   +++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
+>>   @@ -1798,14 +1798,14 @@ static int igb_check_lbtest_frame(struct igb_rx_buffer *rx_buffer,
+>>
+>>           frame_size >>= 1;
+>>
+>>   -       data = kmap(rx_buffer->page);
+>>   +       data = kmap_local_page(rx_buffer->page);
+>>
+>>           if (data[3] != 0xFF ||
+>>               data[frame_size + 10] != 0xBE ||
+>>               data[frame_size + 12] != 0xAF)
+>>                   match = false;
+>>
+>>   -       kunmap(rx_buffer->page);
+>>   +       kunmap_local(data);
+>>
+>>           return match;
+>>    }
+>>   --
+>>   2.35.2
