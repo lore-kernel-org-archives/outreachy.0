@@ -1,41 +1,41 @@
-Received: from mail-wm1-f47.google.com (mail-wm1-f47.google.com [209.85.128.47])
+Received: from mail-wr1-f51.google.com (mail-wr1-f51.google.com [209.85.221.51])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7CBDE1364
-	for <outreachy@lists.linux.dev>; Tue, 19 Apr 2022 14:37:31 +0000 (UTC)
-Received: by mail-wm1-f47.google.com with SMTP id l3-20020a05600c1d0300b0038ff89c938bso1229790wms.0
-        for <outreachy@lists.linux.dev>; Tue, 19 Apr 2022 07:37:31 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 236BA1367
+	for <outreachy@lists.linux.dev>; Tue, 19 Apr 2022 14:37:33 +0000 (UTC)
+Received: by mail-wr1-f51.google.com with SMTP id w4so22707127wrg.12
+        for <outreachy@lists.linux.dev>; Tue, 19 Apr 2022 07:37:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=apLaTEZZEAwI37R7bAYRVPalHy5HX+eTKkaH6HP8kI0=;
-        b=Wmb1OzM10dFFXwZXNBU0w27+pZwLjo8obxZEVtTsBzVl2iE47Qz+KMZoYuk0z2Fix+
-         MV47k/j6Dvzq4TDpwEENQ03AxQhfa6M61k++KngerRKAloU6UnE69A4dovIAN27qHGGn
-         tF0H7YK7Re29vLwQ+NXzDYFNDCF0/SfaBPQlvhXYmPoFNoIGPpDHko1xw5ojiXnLBZ35
-         cN9Qr6YFHd9ZZqF6ioKBjKZzP0wsfBdMWMgeUt9pqyu2bFgM0iFzrxY5PNH+6Ryox3qH
-         SNIeYdMqAK0yqucO/7cCKsJCChD3sLxhzIQau99+a0FmpvjTgpY7wIQ1tugAbUWRCPr3
-         dzEg==
+        bh=N48TJvmdh/Y4TlGVjzLHWIp+ix5BlHPty8FNkZ2jyGU=;
+        b=QGX8RsYoWV2lbS0+dRPRUPeX3F7/sp0475iEfethV67+LXSi5rs60Ri8P67Kkgaq34
+         GC1C6Jbcp983sPCebc4469qfx19oVcqwCdWvVHZUR/WbCPV2c/FzMXHe7YRd+LJPhcWE
+         sWKi9m0p3CLfyz7vXbVj4/BzAF6T4Xa/S7+2iAF8i+vyHAvTWbOSg0e8KHp+0DvWsCXW
+         7Unp9qSYlyEBcG4fpGaiMJCRdVe4k+OF47YUI9eksvGx59g1rVLYP7Dz89+kzwGypcL6
+         9keQSnLkM6RWe/tFYD0RplPK44Rf49CBcgDWTrYyVhD+vlAIlmsEmUwHpcwTuBhk9Dii
+         F0PQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=apLaTEZZEAwI37R7bAYRVPalHy5HX+eTKkaH6HP8kI0=;
-        b=qYXpQIJB1SvC4ksKyYl0gkCiR1I1jgR9Z9ZxrAI6INU4bHhVEk6LqZaRdDrw6IdqT0
-         hGWb2BtRpORdg7O8n9pnd6EqC2VFiTn/FmAK7UTCwT7+2IuefPwojQhmvq5UJl2ycbTz
-         3GC6dUH0uJiGIe4loR7DT1Gcb1Jg+HaedmO/yRwHHTPCKuCV0M87hs++5IeRn43JfX8u
-         l6IJLxQhimDFX4kn562yPYBDqQmE50X/Tw3LPcrwHEGuKCdPLXgyDKj2xPEWFzc0Ew5f
-         Y5KWUCUoaEuHGg4Q8vqPk6qh+0fkp1/HsC0HdxOkC/s7dVE87d+O3//oubQyAlmL0sxJ
-         /u+Q==
-X-Gm-Message-State: AOAM532zcWz/WA0E/zIgpxtKDJzBsNIvGHtEajD0zN3xn9+5QVGb3vjY
-	3o04f42yRHWg9RivP6JVg3w=
-X-Google-Smtp-Source: ABdhPJw1+H8kRqOZ+tS+Y5HtU/db6BLD4N/0hBMASzP/e70ankwuor1R9rVIX+DSV9XQprmGQeSFQQ==
-X-Received: by 2002:a1c:a181:0:b0:392:8f7e:d2f8 with SMTP id k123-20020a1ca181000000b003928f7ed2f8mr13696018wme.30.1650379049841;
-        Tue, 19 Apr 2022 07:37:29 -0700 (PDT)
+        bh=N48TJvmdh/Y4TlGVjzLHWIp+ix5BlHPty8FNkZ2jyGU=;
+        b=AGIrDnU00wS1qOThUQiwpX39GRFs7ELTEnfxoHGboBwT9b5jxVk5HkXpKZL/leCs09
+         eG4f5jw/vIt27s6GTXLBfCzG2PQsb8S1OSY6YyCZomfiKd++KAWDDGIEFWOmLZp4oWmJ
+         uvo7RfYtREBy4wxrZ1YiUy2Fr24b0NhAy2/ls/Gx+sVUxRdufeOzzHCYAoSbu8R9oJGd
+         X/v06Un77b12OZXK7QAMbI4tjrdnxR75NoeFqEOxyGdZ2uz0h7Svo42SrBFBDFTNZ0o9
+         5mVI7e8+70rZ+ngmQVnWvkuqm1H4sTVwmm11EIlDRr5UdDQeK8JSH88/VupBTsJOTwgI
+         Jqfw==
+X-Gm-Message-State: AOAM533nePveiBcLCUXf5rxIucNQNR8zN9nfzNlyyX7+3zQY9OWVxnSP
+	RSMpYAtQY4LskqHjdjMZkJU=
+X-Google-Smtp-Source: ABdhPJwFmZEGVV6kftf1hPg1ct4cFd5013y2olZXUSuPpHy8RVQoOM/dIVuQpAX3tOxY7SIvZXDXbA==
+X-Received: by 2002:a5d:4ec1:0:b0:207:b1c0:a417 with SMTP id s1-20020a5d4ec1000000b00207b1c0a417mr11620959wrv.561.1650379051339;
+        Tue, 19 Apr 2022 07:37:31 -0700 (PDT)
 Received: from alaa-emad ([102.41.109.205])
-        by smtp.gmail.com with ESMTPSA id i74-20020adf90d0000000b0020373ba7beesm15196863wri.0.2022.04.19.07.37.29
+        by smtp.gmail.com with ESMTPSA id r21-20020a05600c35d500b0039295759a55sm6773905wmq.12.2022.04.19.07.37.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 19 Apr 2022 07:37:29 -0700 (PDT)
+        Tue, 19 Apr 2022 07:37:30 -0700 (PDT)
 From: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
 To: netdev@vger.kernel.org
 Cc: outreachy@lists.linux.dev,
@@ -44,9 +44,9 @@ Cc: outreachy@lists.linux.dev,
 	jdenham@redhat.com,
 	sbrivio@redhat.com,
 	eng.alaamohamedsoliman.am@gmail.com
-Subject: [PATCH net-next 1/2] rtnetlink: add extack support in fdb del handlers
-Date: Tue, 19 Apr 2022 16:37:17 +0200
-Message-Id: <0d0a044357731a534f111a77783d35d2e4cf6474.1650377624.git.eng.alaamohamedsoliman.am@gmail.com>
+Subject: [PATCH net-next 2/2] net: vxlan: vxlan_core.c: Add extack support to vxlan_fdb_delet
+Date: Tue, 19 Apr 2022 16:37:18 +0200
+Message-Id: <c6765ff1f66cf74ba6f25ba9b1c91dfe410abcfd.1650377624.git.eng.alaamohamedsoliman.am@gmail.com>
 X-Mailer: git-send-email 2.35.2
 In-Reply-To: <cover.1650377624.git.eng.alaamohamedsoliman.am@gmail.com>
 References: <cover.1650377624.git.eng.alaamohamedsoliman.am@gmail.com>
@@ -58,154 +58,93 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-Add extack support to .ndo_fdb_del in netdevice.h and
-all related methods.
+Add extack to vxlan_fdb_delet and vxlan_fdb_parse
 
 Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
 ---
- drivers/net/ethernet/intel/ice/ice_main.c        | 2 +-
- drivers/net/ethernet/mscc/ocelot_net.c           | 4 ++--
- drivers/net/ethernet/qlogic/qlcnic/qlcnic_main.c | 2 +-
- drivers/net/macvlan.c                            | 2 +-
- drivers/net/vxlan/vxlan_core.c                   | 2 +-
- include/linux/netdevice.h                        | 2 +-
- net/bridge/br_fdb.c                              | 2 +-
- net/bridge/br_private.h                          | 2 +-
- net/core/rtnetlink.c                             | 4 ++--
- 9 files changed, 11 insertions(+), 11 deletions(-)
+ drivers/net/vxlan/vxlan_core.c | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index d768925785ca..4fd32163729e 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -5678,7 +5678,7 @@ ice_fdb_add(struct ndmsg *ndm, struct nlattr __always_unused *tb[],
- static int
- ice_fdb_del(struct ndmsg *ndm, __always_unused struct nlattr *tb[],
- 	    struct net_device *dev, const unsigned char *addr,
--	    __always_unused u16 vid)
-+	    __always_unused u16 vid, struct netlink_ext_ack *extack)
- {
-	int err;
-diff --git a/drivers/net/ethernet/mscc/ocelot_net.c b/drivers/net/ethernet/mscc/ocelot_net.c
-index 247bc105bdd2..e07c64e3159c 100644
---- a/drivers/net/ethernet/mscc/ocelot_net.c
-+++ b/drivers/net/ethernet/mscc/ocelot_net.c
-@@ -774,14 +774,14 @@ static int ocelot_port_fdb_add(struct ndmsg *ndm, struct nlattr *tb[],
-
- static int ocelot_port_fdb_del(struct ndmsg *ndm, struct nlattr *tb[],
- 			       struct net_device *dev,
--			       const unsigned char *addr, u16 vid)
-+			       const unsigned char *addr, u16 vid, struct netlink_ext_ack *extack)
- {
- 	struct ocelot_port_private *priv = netdev_priv(dev);
- 	struct ocelot_port *ocelot_port = &priv->port;
- 	struct ocelot *ocelot = ocelot_port->ocelot;
- 	int port = priv->chip_port;
-
--	return ocelot_fdb_del(ocelot, port, addr, vid, ocelot_port->bridge);
-+	return ocelot_fdb_del(ocelot, port, addr, vid, ocelot_port->bridge, extack);
- }
-
- static int ocelot_port_fdb_dump(struct sk_buff *skb,
-diff --git a/drivers/net/ethernet/qlogic/qlcnic/qlcnic_main.c b/drivers/net/ethernet/qlogic/qlcnic/qlcnic_main.c
-index d320567b2cca..51fa23418f6a 100644
---- a/drivers/net/ethernet/qlogic/qlcnic/qlcnic_main.c
-+++ b/drivers/net/ethernet/qlogic/qlcnic/qlcnic_main.c
-@@ -368,7 +368,7 @@ static int qlcnic_set_mac(struct net_device *netdev, void *p)
-
- static int qlcnic_fdb_del(struct ndmsg *ndm, struct nlattr *tb[],
- 			struct net_device *netdev,
--			const unsigned char *addr, u16 vid)
-+			const unsigned char *addr, u16 vid, struct netlink_ext_ack *extack)
- {
- 	struct qlcnic_adapter *adapter = netdev_priv(netdev);
- 	int err = -EOPNOTSUPP;
-diff --git a/drivers/net/macvlan.c b/drivers/net/macvlan.c
-index 069e8824c264..ffd34d9f7049 100644
---- a/drivers/net/macvlan.c
-+++ b/drivers/net/macvlan.c
-@@ -1017,7 +1017,7 @@ static int macvlan_fdb_add(struct ndmsg *ndm, struct nlattr *tb[],
-
- static int macvlan_fdb_del(struct ndmsg *ndm, struct nlattr *tb[],
- 			   struct net_device *dev,
--			   const unsigned char *addr, u16 vid)
-+			   const unsigned char *addr, u16 vid, struct netlink_ext_ack *extack)
- {
- 	struct macvlan_dev *vlan = netdev_priv(dev);
- 	int err = -EINVAL;
 diff --git a/drivers/net/vxlan/vxlan_core.c b/drivers/net/vxlan/vxlan_core.c
-index de97ff98d36e..cf2f60037340 100644
+index cf2f60037340..4ecbb5878fe2 100644
 --- a/drivers/net/vxlan/vxlan_core.c
 +++ b/drivers/net/vxlan/vxlan_core.c
-@@ -1280,7 +1280,7 @@ int __vxlan_fdb_delete(struct vxlan_dev *vxlan,
- /* Delete entry (via netlink) */
- static int vxlan_fdb_delete(struct ndmsg *ndm, struct nlattr *tb[],
- 			    struct net_device *dev,
--			    const unsigned char *addr, u16 vid)
-+			    const unsigned char *addr, u16 vid, struct netlink_ext_ack *extack)
+@@ -1129,18 +1129,20 @@ static void vxlan_fdb_dst_destroy(struct vxlan_dev *vxlan, struct vxlan_fdb *f,
+
+ static int vxlan_fdb_parse(struct nlattr *tb[], struct vxlan_dev *vxlan,
+ 			   union vxlan_addr *ip, __be16 *port, __be32 *src_vni,
+-			   __be32 *vni, u32 *ifindex, u32 *nhid)
++			   __be32 *vni, u32 *ifindex, u32 *nhid, struct netlink_ext_ack *extack)
  {
- 	struct vxlan_dev *vxlan = netdev_priv(dev);
- 	union vxlan_addr ip;
-diff --git a/include/linux/netdevice.h b/include/linux/netdevice.h
-index 28ea4f8269d4..d0d2a8f33c73 100644
---- a/include/linux/netdevice.h
-+++ b/include/linux/netdevice.h
-@@ -1509,7 +1509,7 @@ struct net_device_ops {
- 					       struct nlattr *tb[],
- 					       struct net_device *dev,
- 					       const unsigned char *addr,
--					       u16 vid);
-+					       u16 vid, struct netlink_ext_ack *extack);
- 	int			(*ndo_fdb_dump)(struct sk_buff *skb,
- 						struct netlink_callback *cb,
- 						struct net_device *dev,
-diff --git a/net/bridge/br_fdb.c b/net/bridge/br_fdb.c
-index 6ccda68bd473..5bfce2e9a553 100644
---- a/net/bridge/br_fdb.c
-+++ b/net/bridge/br_fdb.c
-@@ -1110,7 +1110,7 @@ static int __br_fdb_delete(struct net_bridge *br,
- /* Remove neighbor entry with RTM_DELNEIGH */
- int br_fdb_delete(struct ndmsg *ndm, struct nlattr *tb[],
- 		  struct net_device *dev,
--		  const unsigned char *addr, u16 vid)
-+		  const unsigned char *addr, u16 vid, struct netlink_ext_ack *extack)
- {
- 	struct net_bridge_vlan_group *vg;
- 	struct net_bridge_port *p = NULL;
-diff --git a/net/bridge/br_private.h b/net/bridge/br_private.h
-index 18ccc3d5d296..95348c1c9ce5 100644
---- a/net/bridge/br_private.h
-+++ b/net/bridge/br_private.h
-@@ -780,7 +780,7 @@ void br_fdb_update(struct net_bridge *br, struct net_bridge_port *source,
- 		   const unsigned char *addr, u16 vid, unsigned long flags);
+ 	struct net *net = dev_net(vxlan->dev);
+ 	int err;
 
- int br_fdb_delete(struct ndmsg *ndm, struct nlattr *tb[],
--		  struct net_device *dev, const unsigned char *addr, u16 vid);
-+		  struct net_device *dev, const unsigned char *addr, u16 vid, struct netlink_ext_ack *extack);
- int br_fdb_add(struct ndmsg *nlh, struct nlattr *tb[], struct net_device *dev,
- 	       const unsigned char *addr, u16 vid, u16 nlh_flags,
- 	       struct netlink_ext_ack *extack);
-diff --git a/net/core/rtnetlink.c b/net/core/rtnetlink.c
-index 4041b3e2e8ec..99b30ae58a47 100644
---- a/net/core/rtnetlink.c
-+++ b/net/core/rtnetlink.c
-@@ -4223,7 +4223,7 @@ static int rtnl_fdb_del(struct sk_buff *skb, struct nlmsghdr *nlh,
- 		const struct net_device_ops *ops = br_dev->netdev_ops;
+ 	if (tb[NDA_NH_ID] && (tb[NDA_DST] || tb[NDA_VNI] || tb[NDA_IFINDEX] ||
+ 	    tb[NDA_PORT]))
++		NL_SET_ERR_MSG(extack, "Missing required arguments");
+ 		return -EINVAL;
 
- 		if (ops->ndo_fdb_del)
--			err = ops->ndo_fdb_del(ndm, tb, dev, addr, vid);
-+			err = ops->ndo_fdb_del(ndm, tb, dev, addr, vid, extack);
-
+ 	if (tb[NDA_DST]) {
+ 		err = vxlan_nla_get_addr(ip, tb[NDA_DST]);
  		if (err)
- 			goto out;
-@@ -4235,7 +4235,7 @@ static int rtnl_fdb_del(struct sk_buff *skb, struct nlmsghdr *nlh,
- 	if (ndm->ndm_flags & NTF_SELF) {
- 		if (dev->netdev_ops->ndo_fdb_del)
- 			err = dev->netdev_ops->ndo_fdb_del(ndm, tb, dev, addr,
--							   vid);
-+							   vid, extack);
- 		else
- 			err = ndo_dflt_fdb_del(ndm, tb, dev, addr, vid);
++			NL_SET_ERR_MSG(extack, "Unsupported address family");
+ 			return err;
+ 	} else {
+ 		union vxlan_addr *remote = &vxlan->default_dst.remote_ip;
+@@ -1158,6 +1160,7 @@ static int vxlan_fdb_parse(struct nlattr *tb[], struct vxlan_dev *vxlan,
+
+ 	if (tb[NDA_PORT]) {
+ 		if (nla_len(tb[NDA_PORT]) != sizeof(__be16))
++			NL_SET_ERR_MSG(extack, "Invalid vxlan port");
+ 			return -EINVAL;
+ 		*port = nla_get_be16(tb[NDA_PORT]);
+ 	} else {
+@@ -1166,6 +1169,7 @@ static int vxlan_fdb_parse(struct nlattr *tb[], struct vxlan_dev *vxlan,
+
+ 	if (tb[NDA_VNI]) {
+ 		if (nla_len(tb[NDA_VNI]) != sizeof(u32))
++			NL_SET_ERR_MSG(extack, "Invalid vni");
+ 			return -EINVAL;
+ 		*vni = cpu_to_be32(nla_get_u32(tb[NDA_VNI]));
+ 	} else {
+@@ -1174,6 +1178,7 @@ static int vxlan_fdb_parse(struct nlattr *tb[], struct vxlan_dev *vxlan,
+
+ 	if (tb[NDA_SRC_VNI]) {
+ 		if (nla_len(tb[NDA_SRC_VNI]) != sizeof(u32))
++			NL_SET_ERR_MSG(extack, "Invalid src vni");
+ 			return -EINVAL;
+ 		*src_vni = cpu_to_be32(nla_get_u32(tb[NDA_SRC_VNI]));
+ 	} else {
+@@ -1184,10 +1189,12 @@ static int vxlan_fdb_parse(struct nlattr *tb[], struct vxlan_dev *vxlan,
+ 		struct net_device *tdev;
+
+ 		if (nla_len(tb[NDA_IFINDEX]) != sizeof(u32))
++			NL_SET_ERR_MSG(extack, "Invalid ifindex");
+ 			return -EINVAL;
+ 		*ifindex = nla_get_u32(tb[NDA_IFINDEX]);
+ 		tdev = __dev_get_by_index(net, *ifindex);
+ 		if (!tdev)
++			NL_SET_ERR_MSG(extack,"Device not found");
+ 			return -EADDRNOTAVAIL;
+ 	} else {
+ 		*ifindex = 0;
+@@ -1226,7 +1233,7 @@ static int vxlan_fdb_add(struct ndmsg *ndm, struct nlattr *tb[],
+ 		return -EINVAL;
+
+ 	err = vxlan_fdb_parse(tb, vxlan, &ip, &port, &src_vni, &vni, &ifindex,
+-			      &nhid);
++			      &nhid, extack);
+ 	if (err)
+ 		return err;
+
+@@ -1291,7 +1298,7 @@ static int vxlan_fdb_delete(struct ndmsg *ndm, struct nlattr *tb[],
+ 	int err;
+
+ 	err = vxlan_fdb_parse(tb, vxlan, &ip, &port, &src_vni, &vni, &ifindex,
+-			      &nhid);
++			      &nhid, extack);
+ 	if (err)
+ 		return err;
 
 --
 2.35.2
