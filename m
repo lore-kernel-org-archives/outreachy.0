@@ -1,67 +1,90 @@
-Received: from casper.infradead.org (casper.infradead.org [90.155.50.34])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ej1-f47.google.com (mail-ej1-f47.google.com [209.85.218.47])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 00FA07A
-	for <outreachy@lists.linux.dev>; Tue, 19 Apr 2022 12:44:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=1j/CBqe+Y/QZrJKL+PC6OKI6vmJNLB3SpUMrJYCq/34=; b=iPrTwgNzgZcIXPc/UyK08mQwPe
-	qlcPRG1U6xmh34hgBZFu3OrcnELUOOfpU0L/FEo9cSAI6AyhbUN4le7ojqgfEYDh2iHDdF3MiytVS
-	VbABNPpMEt2+sICQlc9vEYaRjj9HpoT7rxbdz4ktMr0mPOX8DI5phJBKiUXmAxeAemZw8I5uh5Qb1
-	c3cRHFf8o1AllvX3TVACZC2I/rPxEUr0MVdbQuf2MKDdvutfjfJVYwaDVCy16VwpLj/ayQH09h+Hd
-	7iaWFueGPhNrY6f0Jb8gmissQJGpVpa0l+K32HpzgcmGgfT293+AtHzJjUtPT13SHmvELsj+wi7vD
-	vIilWGng==;
-Received: from willy by casper.infradead.org with local (Exim 4.94.2 #2 (Red Hat Linux))
-	id 1ngnDK-0035rz-Qc; Tue, 19 Apr 2022 12:44:14 +0000
-Date: Tue, 19 Apr 2022 13:44:14 +0100
-From: Matthew Wilcox <willy@infradead.org>
-To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Cc: Ira Weiny <ira.weiny@intel.com>,
-	Andrew Morton <akpm@linux-foundation.org>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	Will Deacon <will@kernel.org>, Peter Collingbourne <pcc@google.com>,
-	Vlastimil Babka <vbabka@suse.cz>,
-	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
-	Mike Rapoport <rppt@linux.ibm.com>, linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev
-Subject: Re: [PATCH v2] mm/highmem: Fix kernel-doc warnings in highmem*.h
-Message-ID: <Yl6unkluUEeRZBbB@casper.infradead.org>
-References: <20220418175638.30018-1-fmdefrancesco@gmail.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D17BA7A
+	for <outreachy@lists.linux.dev>; Tue, 19 Apr 2022 12:50:25 +0000 (UTC)
+Received: by mail-ej1-f47.google.com with SMTP id y10so15271896ejw.8
+        for <outreachy@lists.linux.dev>; Tue, 19 Apr 2022 05:50:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=8TaSxjlVtMxfrBSAFxIIxTLP3pV3qUvExBA7cAdK7g4=;
+        b=gFpTPHQKAtv7h762kYs7iOhwTyoVOlBR3l4RHUHoLdtPa98NZ/YOTS5NEOVgQQ2vzH
+         RDl8904I+mO8neZP270zpPhBm0AK6tBODKnBK83ncK6sp1290c3EyD2SYUu4tsvJNe1z
+         FPJBbSFW3nFJvcxlUojuqRxVGcja6Um7UiD+w2Nh2NvMEVnQ5D0V27HU99HUmUG7XHJH
+         Moq+kETGzHHpGr70/GRb5Eu2mF2HzpVU1//7Luof18Sw19xKY0R4xzCw+y1sJVAXSw/8
+         Hdr8DjZqpwRt20KUC6eK1229UTW2T51XprJepXRwfwRCH1/S18U+i28lQQ6Sw4uEm7pU
+         Ct5w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=8TaSxjlVtMxfrBSAFxIIxTLP3pV3qUvExBA7cAdK7g4=;
+        b=byMWhwMbYEArET2osFzahyJlq1vgYlEaTqZkranopu3dA8MZba6I32kDB03p+zxzgn
+         UDRty6mpPUYDH3SL7IRU0EBpNdDtBX1XhDlimOSXdob/7myhCwI2UReyydfxxyOCgKFp
+         xYbE//uvEiA6RY5OtHzEYNuBEv0ZAAmLh2hhpFhTPI0kJPBaLQbdsQ2LcfDPaDcUfizL
+         E7EK8nd4pSFTc4buhw4Kr0ODq2YeXQQeyMkOLe7r6W5WFc4RrGSNATH9pKV9EtTT4u5Z
+         +f304BrPhDPlSlYoiG059hq97eqJYmSPvmPGqfWvaO2+wzt64T6ApkYgv3JVklQ6GF4d
+         J+QQ==
+X-Gm-Message-State: AOAM531kXrBcNdZMqPVAdobYakeFb4eORjD0DW3DeC+dtnUtWumf+ulo
+	sJBVSjvJPvNrG0H4sxgVlRA=
+X-Google-Smtp-Source: ABdhPJwGijLtqVacwGVLRF2+SD3NllVwkuZBm8vUY4hFNa9e8e3fz1MYnswhjUZ4U/29P//i0Cbyng==
+X-Received: by 2002:a17:907:eaa:b0:6e8:9105:b3c7 with SMTP id ho42-20020a1709070eaa00b006e89105b3c7mr13076200ejc.26.1650372624183;
+        Tue, 19 Apr 2022 05:50:24 -0700 (PDT)
+Received: from leap.localnet (host-79-50-86-254.retail.telecomitalia.it. [79.50.86.254])
+        by smtp.gmail.com with ESMTPSA id bm6-20020a170906c04600b006e89a5f5b8fsm5697377ejb.153.2022.04.19.05.50.22
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 19 Apr 2022 05:50:22 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: Ira Weiny <ira.weiny@intel.com>
+Cc: outreachy@lists.linux.dev
+Subject: Re: [PATCH] Documentation/vm: Include kernel-doc from highmem-internal.h
+Date: Tue, 19 Apr 2022 14:50:22 +0200
+Message-ID: <7371421.EvYhyI6sBW@leap>
+In-Reply-To: <2824835.e9J7NaK4W3@leap>
+References: <20220418081740.21001-1-fmdefrancesco@gmail.com> <Yl3Z8Qll+zGo4v/D@iweiny-desk3> <2824835.e9J7NaK4W3@leap>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220418175638.30018-1-fmdefrancesco@gmail.com>
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
 
-On Mon, Apr 18, 2022 at 07:56:38PM +0200, Fabio M. De Francesco wrote:
-> +/**
-> + * kunmap_atomic - Unmap the virtual address mapped by kmap_atomic()
-> + * @__addr:       Virtual address to be unmapped
-> + *
-> + * Counterpart to kmap_atomic().
+On marted=C3=AC 19 aprile 2022 14:35:48 CEST Fabio M. De Francesco wrote:
+> On luned=C3=AC 18 aprile 2022 23:36:49 CEST Ira Weiny wrote:
+> > I thought I saw a patch fly by which changed the comment of=20
+> kunmap_atomic() in
+> > include/linux/highmem-internal.h?  Did I miss that somewhere?
+>=20
+> Sorry, in my other email I responded after misunderstanding your question=
+=20
+> because I had just noticed a typo so that I had something else in my=20
+mind.
+>=20
+> It looks that you are talking about the following patch and, if so, you=20
+saw=20
+> it correctly:
+>=20
+> "[PATCH v2] mm/highmem: Fix kernel-doc warnings in highmem*.h" at=20
+> https://lore.kernel.org/lkml/20220418175638.30018-1-fmdefrancesco@gmail.c=
+om/
+>=20
+> I forgot to send it to the Outreachy list.=20
 
-I don't think this is a terribly useful paragraph?
+No, I'm a bit distracted and I remembered it badly :(
 
-> + * Effectively a wrapper around kunmap_local() which additionally undoes
-> + * the side effects of kmap_atomic(), i.e. reenabling pagefaults and
-> + * preemption. Prevent people trying to call kunmap_atomic() as if it
-> + * were kunmap() because kunmap_atomic() should get the return value of
-> + * kmap_atomic(), not its argument which is a pointer to struct page.
+This patch is already here at=20
+https://lore.kernel.org/outreachy/20220418175638.30018-1-fmdefrancesco@gmai=
+l.com/
 
-I'd rather this were useful advice to the caller than documentation of
-how it works.  How about:
+=46abio
 
- * Unmap an address previously mapped by kmap_atomic().  Mappings
- * should be unmapped in the reverse order that they were mapped.
- * See kmap_local_page() for details.  @__addr can be any address within
- * the mapped page, so there is no need to subtract any offset that has
- * been added.  In contrast to kunmap(), this function takes the address
- * returned from kmap_atomic(), not the page passed to kmap_atomic().
- * The compiler will warn you if you pass the page.
+> I'm about to resend it only to=20
+> this list in order to make Outreachy's organizers to know about it.=20
+> For v1 already had an "Acked-by:" tag from Mike Rapoport.
+
+
 
