@@ -1,125 +1,164 @@
-Received: from mail-qk1-f169.google.com (mail-qk1-f169.google.com [209.85.222.169])
+Received: from smtp-out1.suse.de (smtp-out1.suse.de [195.135.220.28])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6AD9AEA1
-	for <outreachy@lists.linux.dev>; Tue, 19 Apr 2022 05:57:45 +0000 (UTC)
-Received: by mail-qk1-f169.google.com with SMTP id s4so12797334qkh.0
-        for <outreachy@lists.linux.dev>; Mon, 18 Apr 2022 22:57:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=date:from:to:subject:message-id:mime-version:content-disposition;
-        bh=td2JNOMwQpyYXjUzJhpKGT5Igt5kRga8IIR8g/Mo7oQ=;
-        b=JifJMYm1Prrd0UTr6QEHzcNK7Iv+a8jg2lSehT0y7odVvMVsbQoUanVng+eMHZnbOI
-         KwjnhfM68zFhwQuILlHLetMiFQpAVEonP6Gl7oUox/JrodwSTx32G1iehMHIv2IlEyGU
-         bKZh8ZIDMkRkiO00rss+Jeh6a9HJwWxAO/XlkqWVPjf27ZklcZRbP23C3ETiOpmAP/YR
-         afmFX1EvLSMgJcIl7oKyiiy/tNkwBTLGjv5xONE8yCOaqpKEoNfABkwwFlffgyObaMNP
-         LCZRFj1PXOzu/avyTZvLB5Jmt8ilDCkiTPFthYFjyMij6RDjoZjw1p7X9n4himNPVl4y
-         TZ9g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition;
-        bh=td2JNOMwQpyYXjUzJhpKGT5Igt5kRga8IIR8g/Mo7oQ=;
-        b=zekaz+/PvRFHfUMmlbrHyrutWBFRpZ03xLC6I4xIRfHsVLxScoWywyeh0z3qSFxt0t
-         acFcnPcWvuCB4d723XVFP7F5piiPf4KrPKe0h1kQoT9XEhD1AGQJ5uhQTzkh0jwH1esU
-         BU4VY3AlGJryqzJ+HehsGonpGCPzIqrislHL/A1eMalzUgL1Jy+CoZgPxz8DvSyFVtjF
-         kToe/3Ej8JEsDvb94iY51SzoyqaEryOmfMkAjAMet/ETT+L1bQQvFx0R60NZvr6oAA8s
-         Lh6gxokE8Vo80EyS6xjPOVvaV6vPgSXieMIAFWAE3zq6o1pc7U9hBe1hMVzxxRWJ0ux6
-         /8Bw==
-X-Gm-Message-State: AOAM533N8R2f+pgeyq6nCw/TMjKuY5xihnSbaJEqpzN5NbmwvS3a996s
-	nu5WLl0E+BRyDxWeh2bDxG74hpOR8tf1OP7G
-X-Google-Smtp-Source: ABdhPJxQ7ybPCfBtlsBhPPbAz0wwgyd75nCdFiFmCvOifwBcs++vTv3uH21NlbI/V91z7K7FpEPXgw==
-X-Received: by 2002:a05:620a:198f:b0:69e:953c:1843 with SMTP id bm15-20020a05620a198f00b0069e953c1843mr5377475qkb.209.1650347863965;
-        Mon, 18 Apr 2022 22:57:43 -0700 (PDT)
-Received: from jaehee-ThinkPad-X1-Extreme ([2607:fb90:5340:b783:8249:2b03:efc4:2ba6])
-        by smtp.gmail.com with ESMTPSA id 9-20020a05620a070900b0069e60da45aasm5493578qkc.60.2022.04.18.22.57.42
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 18 Apr 2022 22:57:43 -0700 (PDT)
-Date: Tue, 19 Apr 2022 01:57:40 -0400
-From: Jaehee Park <jhpark1013@gmail.com>
-To: outreachy@lists.linux.dev, Stefano Brivio <sbrivio@redhat.com>,
-	Julia Denham <jdenham@redhat.com>,
-	Roopa Prabhu <roopa.prabhu@gmail.com>
-Subject: linux kernel networking project notes
-Message-ID: <20220419055740.GC413931@jaehee-ThinkPad-X1-Extreme>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B9B1CECA
+	for <outreachy@lists.linux.dev>; Tue, 19 Apr 2022 09:16:39 +0000 (UTC)
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 62195210F4;
+	Tue, 19 Apr 2022 09:16:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=susede1;
+	t=1650359792; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=tpJbvqgQUJ8X2kcphBh+0uKSEVkbF9cJfYcLIzuVqyA=;
+	b=hDul1sqy58qB9kficlyggAc8SgDIhrlLzjE3rX0oWjFD3BfL86cuE2+5KgFADUhxG6N5kE
+	LtpS9EKc1f++W5n8u6/Sa40utnibS+JQp5R89n2G8EDE8Z31J1cTygmNq2sSepwFMjUHwS
+	IxOdiDE5F1FUdQ0gCSSmLrM5OIgOydA=
+Received: from imap2.suse-dmz.suse.de (imap2.suse-dmz.suse.de [192.168.254.74])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (P-521) server-digest SHA512)
+	(No client certificate requested)
+	by imap2.suse-dmz.suse.de (Postfix) with ESMTPS id 28E9B132E7;
+	Tue, 19 Apr 2022 09:16:32 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([192.168.254.65])
+	by imap2.suse-dmz.suse.de with ESMTPSA
+	id Y8iOCPB9XmKaCgAAMHmgww
+	(envelope-from <jgross@suse.com>); Tue, 19 Apr 2022 09:16:32 +0000
+Message-ID: <cc7e517a-b1e7-95f1-d230-a635f7d84ef5@suse.com>
+Date: Tue, 19 Apr 2022 11:16:31 +0200
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.0
+Subject: Re: [PATCH] xen: gntalloc.c: Convert kmap() to kmap_local_page()
+Content-Language: en-US
+To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>,
+ outreachy@lists.linux.dev
+Cc: boris.ostrovsky@oracle.com, sstabellini@kernel.org,
+ xen-devel@lists.xenproject.org, linux-kernel@vger.kernel.org,
+ ira.weiny@intel.com
+References: <20220418061927.6833-1-eng.alaamohamedsoliman.am@gmail.com>
+From: Juergen Gross <jgross@suse.com>
+In-Reply-To: <20220418061927.6833-1-eng.alaamohamedsoliman.am@gmail.com>
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature";
+ boundary="------------9vkSMHlYMu8moakU4AvthWPm"
 
-Hi, I'm trying to get comfortable with the tooling around the net-next 
-tests and have been writing down some notes. Let me know if I'm 
-misunderstanding things! 
+This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
+--------------9vkSMHlYMu8moakU4AvthWPm
+Content-Type: multipart/mixed; boundary="------------S5XLYnp6xrs0fDIWycnnF3TJ";
+ protected-headers="v1"
+From: Juergen Gross <jgross@suse.com>
+To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>,
+ outreachy@lists.linux.dev
+Cc: boris.ostrovsky@oracle.com, sstabellini@kernel.org,
+ xen-devel@lists.xenproject.org, linux-kernel@vger.kernel.org,
+ ira.weiny@intel.com
+Message-ID: <cc7e517a-b1e7-95f1-d230-a635f7d84ef5@suse.com>
+Subject: Re: [PATCH] xen: gntalloc.c: Convert kmap() to kmap_local_page()
+References: <20220418061927.6833-1-eng.alaamohamedsoliman.am@gmail.com>
+In-Reply-To: <20220418061927.6833-1-eng.alaamohamedsoliman.am@gmail.com>
 
-Some notes:
+--------------S5XLYnp6xrs0fDIWycnnF3TJ
+Content-Type: multipart/mixed; boundary="------------QEG3IN2lZzp121HpNvmVs0ze"
 
-mbuto
-- builds linux images for VM environments
-- add tests collections from net-next to run on the image
+--------------QEG3IN2lZzp121HpNvmVs0ze
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: base64
 
-net-next
-- tree that contains tests
-- tests are in net-next/tools/testing/selftest/net
+T24gMTguMDQuMjIgMDg6MTksIEFsYWEgTW9oYW1lZCB3cm90ZToNCj4gVGhlIHVzZSBvZiBr
+bWFwKCkgaXMgYmVpbmcgZGVwcmVjYXRlZCBpbiBmYXZvciBvZiBrbWFwX2xvY2FsX3BhZ2Uo
+KQ0KPiB3aGVyZSBpdCBpcyBmZWFzaWJsZS4NCj4gDQo+IFdpdGgga21hcF9sb2NhbF9wYWdl
+KCksIHRoZSBtYXBwaW5nIGlzIHBlciB0aHJlYWQsIENQVSBsb2NhbCBhbmQgbm90DQo+IGds
+b2JhbGx5IHZpc2libGUuIFRoZXJlZm9yZSBfX2RlbF9ncmVmKCkgaXMgYSBmdW5jdGlvbg0K
+PiB3aGVyZSB0aGUgdXNlIG9mIGttYXBfbG9jYWxfcGFnZSgpIGluIHBsYWNlIG9mIGttYXAo
+KSBpcyBjb3JyZWN0bHkNCj4gc3VpdGVkLg0KPiANCj4gU2lnbmVkLW9mZi1ieTogQWxhYSBN
+b2hhbWVkIDxlbmcuYWxhYW1vaGFtZWRzb2xpbWFuLmFtQGdtYWlsLmNvbT4NCg0KUmV2aWV3
+ZWQtYnk6IEp1ZXJnZW4gR3Jvc3MgPGpncm9zc0BzdXNlLmNvbT4NCg0KDQpKdWVyZ2VuDQo=
 
-pasta
-- socket transport without needing to create interfaces on the host.
-- elevated CAP_NET_ADMIN privilege doesn't need to be granted becase 
-  network interfaces are not created on the host.  
-- instead, connect to qemu over UNIX domain socket to send and receive 
-  data (no network interfaces and ip packets). 
-- use namespaces (don't need NAT)
-- no need for layer 2 translations 
+--------------QEG3IN2lZzp121HpNvmVs0ze
+Content-Type: application/pgp-keys; name="OpenPGP_0xB0DE9DD628BF132F.asc"
+Content-Disposition: attachment; filename="OpenPGP_0xB0DE9DD628BF132F.asc"
+Content-Description: OpenPGP public key
+Content-Transfer-Encoding: quoted-printable
 
-linux network stack diagram
-- https://docs.google.com/presentation/d/1I3b-M8FCmWZCF286ve8mVZ_8bwyl1fdHdSxTKQhwbyM/edit?usp=sharing
-- with net-next tests, we're operating only in layer 4 (directsly 
-  between layer 4 sockets) -- ipv4 block in the diagram above.
+-----BEGIN PGP PUBLIC KEY BLOCK-----
 
-arp
-- known networks are networks that have been through the arp 
-  request-reply protocol. unknown networks are ones that just announces 
-  its presence (gratuitous). 
+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
+jR/i1DG86lem3iBDXzXsZDn8R38=3D
+=3D2wuH
+-----END PGP PUBLIC KEY BLOCK-----
 
------
+--------------QEG3IN2lZzp121HpNvmVs0ze--
 
-I thought a bit about testing for the new knob for arp.
-The structure for tests would look like:
-1. setup namespaces and a veth tunnel across them
-2. run test
-3. delete the namespaces
+--------------S5XLYnp6xrs0fDIWycnnF3TJ--
 
-where the test would look something like:
-- setup 2 host namespaces (bob and alice), and a router
-- We could insert a sentinel after bob's response so that we know can 
-  filter whatever comes next.  
+--------------9vkSMHlYMu8moakU4AvthWPm
+Content-Type: application/pgp-signature; name="OpenPGP_signature.asc"
+Content-Description: OpenPGP digital signature
+Content-Disposition: attachment; filename="OpenPGP_signature"
 
-case 1: alice captures pcap, bob broadcasts a gratuitous arp
-- in the case of gratuitous arp, if a new knob that only allow learning 
-  from known networks is inplace, pcap should not capture bob's 
-  broadcasts
-- assert that the table is not updated with entries, pcap should see no 
-  sentinel
+-----BEGIN PGP SIGNATURE-----
 
-case 2: alice captures pcap, alice sends arp request, bob replies
-- this is a normal arp request-reply protocol. pcap should capture 
-  bob's unicast
-- assert that the table is updated, pcap should see sentinel and then 
-  bob's reply
+wsB5BAABCAAjFiEEhRJncuj2BJSl0Jf3sN6d1ii/Ey8FAmJefe8FAwAAAAAACgkQsN6d1ii/Ey8S
+wgf/YdYBK3TJNqEFYhYzob4kXXTI/Q7kjJSzXiu5Nag8Sl8TC9nVthn7m35+2s7/l5oNDp6j4sn4
+HhEdNvmsWptIfy95yxQdCbzoTkD2Vz6NXFi1lbTJvmpUp6y2yTtoE4mOhCsqNCcdCKKw0+gWbqbD
+cH7sRAiGNlj4RCUR4TaTqbhJIvZUgzTfLwVbOVZDiK9x76Ua58DAh44qm4G+A7s53woIljMcD7Y/
+vDYurOJJeQ+TPro4K7ass7aIQQfisdg7mMqnUsdtZ0fljdqss0ufJSK4Wyx7pdZj40YDyJL0Da7+
+Ft/Kd38C4ddUurRyQqNJ3hkk8WztoR6OGAVD66Kgcg==
+=vt7X
+-----END PGP SIGNATURE-----
 
-The terminology that I'm familiar with is client and host. Upon reading 
-some rfc's and other documentation, the mapping seems to be:
-terminology: host (client), router (ap)
-
-Sorry to be loading so much information here. 
-To summarize, I've thought about the arp testing a little and wanted to 
-write down my understanding. I going through starter tasks now to try 
-to think of more features for mbuto and the net-next tree. I just got 
-roopa's email of the tasks that are free -- thank you, i'll work on 
-them next!
-
-Thanks!
-Jaehee
+--------------9vkSMHlYMu8moakU4AvthWPm--
