@@ -1,71 +1,107 @@
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-lf1-f54.google.com (mail-lf1-f54.google.com [209.85.167.54])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 727071385
-	for <outreachy@lists.linux.dev>; Tue, 19 Apr 2022 19:08:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1650395317; x=1681931317;
-  h=date:from:to:subject:message-id:mime-version;
-  bh=yjTXxRuIxHULOmZiZXdIY1wpDQq6dpQK2rY/7qeZVZ0=;
-  b=AMiKb1rp4qY4DktwFjRzF//nMa3Iki65l2jv74RYGcDmKifmhkZ8uUUZ
-   2vsMgRWyoJEnBiDTz0qAN1ZSPw4e6m2YQkVL7Mf8iYrPelVWoOirSMHxn
-   AIRV8ceRFp+HEMHtYYW/bgh1dNDlXs5HJOr0xdirnJmb2GRH8MkoBnAgU
-   U/kLTJx86+5YqlYW8j4jX8fpVC1voQz0MgPALBp77/iWMQ0bQo6J7r9LW
-   FSGcWIyL9vVMhWrK5v2xK92wT2nRgRum10m3+Q3BStynoNkjK0BJ20HIf
-   8kPwc8GJib8jeJCx6h2hr/z/UGZbsjPf8dPiEJKMvD+6yXFr66t/bkl8A
-   w==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10322"; a="263312977"
-X-IronPort-AV: E=Sophos;i="5.90,273,1643702400"; 
-   d="scan'208";a="263312977"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
-  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Apr 2022 12:08:36 -0700
-X-IronPort-AV: E=Sophos;i="5.90,273,1643702400"; 
-   d="scan'208";a="614117467"
-Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
-  by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Apr 2022 12:08:36 -0700
-Date: Tue, 19 Apr 2022 12:10:18 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: Outreachy Linux Kernel <outreachy@lists.linux.dev>
-Subject: [FWD:  wait for GregKH & staging-testing]
-Message-ID: <20220419191018.GB1270760@alison-desk>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 048171385;
+	Tue, 19 Apr 2022 19:27:08 +0000 (UTC)
+Received: by mail-lf1-f54.google.com with SMTP id p10so31134646lfa.12;
+        Tue, 19 Apr 2022 12:27:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :cc:references:from:in-reply-to:content-transfer-encoding;
+        bh=lhlyNCLzJ6McMJUtv9VTMDlhizwAjxEKxLhqW8mvjg8=;
+        b=SopT+69Xn63wAziS3TcdW2Qm1lTV+/qLNJX3k3gPKVzHHiPEPyBrlUJcsL+bA+c1kt
+         +X52z/O9bMTR/wrFsHi1gakrNsfORvZFFVYzzFcmoEPRug0VXEl2Iw8brkytl+TztN05
+         tmjiv0+uf6fLiAM7PYkTvVpDwNbDg2fVhEl4ieEJJLeRubz2bBDExDRiFTYGmYJyCsEh
+         P3gvAnAjPZezZFMTzgrV1esWyBP6px8Q9GgtgYzfdRca0+Rm9CStqIh5OxQZBP8+cEVd
+         BoGf+eiHXvbLTk9URBuN1FjP2mlpyAXVKO5niQ/MKiYuPhbSbgdYFg+j+wH5w23s2Bdg
+         Gpfw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=lhlyNCLzJ6McMJUtv9VTMDlhizwAjxEKxLhqW8mvjg8=;
+        b=8QOUALdJAHYX7elI3ODS9wKi/44l/8oSyU2btpD24bW5YXG/q8C5bjZjqPSKZO4yI/
+         xJw8PlK74jFFkg2dfeX8YsCB40M/AD2lbsmVGfudZeyMMekQ51UbECkxPynACZoBnZJz
+         /Q6QVl7TA1mr8jMNfxUHrviFFQOEvsmP1ASoTAwyYJdED60FYes4wN/lDYTxGOH4c/1I
+         RoE2F2Y+mu7caiwJNB7V0FYmBS282mjge9Gvd/qvQUB4vkOqBMP+C6vIbbIzPhVM7GOO
+         NkoNrcsv4cirjsDkphqnhiij8g3438yLOw3tmc2XlNtJP0GzYpI6DqjLcqHp1+41iQhr
+         vryw==
+X-Gm-Message-State: AOAM5306AZMNfoPmZ6+Y1Qd1OjkYWXjugC7qIa+ehRRk9G958SIH115J
+	UaRswvKB0+pKmpJyGAWBSAI=
+X-Google-Smtp-Source: ABdhPJyG6Y2wM2dlef5vHBfqM+j2lOpiyejc/Vlsh69n+HFv187qrGImjua7LcKfLwi08QZ069kY0w==
+X-Received: by 2002:a05:6512:318a:b0:471:8f3b:e2bd with SMTP id i10-20020a056512318a00b004718f3be2bdmr8179411lfe.129.1650396426859;
+        Tue, 19 Apr 2022 12:27:06 -0700 (PDT)
+Received: from [192.168.1.11] ([94.103.225.17])
+        by smtp.gmail.com with ESMTPSA id s14-20020a2e2c0e000000b0024db3275cd4sm1034812ljs.12.2022.04.19.12.27.05
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 19 Apr 2022 12:27:06 -0700 (PDT)
+Message-ID: <32587233-0ff6-ed0f-b873-cd4f797005a9@gmail.com>
+Date: Tue, 19 Apr 2022 22:27:05 +0300
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-
-+outreachy
-Seems more folks are probably waiting on Greg.
-
------ Forwarded message from Alison Schofield <alison.schofield@intel.com> -----
-
-Date: Tue, 19 Apr 2022 11:57:37 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: jhpark1013@gmail.com
-Subject: wait for GregKH & staging-testing
-
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.7.0
+Subject: Re: [PATCH v3 1/7] staging: r8188eu: remove unused member
+ free_bss_buf
+Content-Language: en-US
+To: Jaehee Park <jhpark1013@gmail.com>, Larry.Finger@lwfinger.net
+Cc: phil@philpotter.co.uk, gregkh@linuxfoundation.org,
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+ outreachy@lists.linux.dev
+References: <cover.1650392020.git.jhpark1013@gmail.com>
+ <3c5a510938ac395a13bb09c0de1868cce8ca3dd8.1650392020.git.jhpark1013@gmail.com>
+From: Pavel Skripkin <paskripkin@gmail.com>
+In-Reply-To: <3c5a510938ac395a13bb09c0de1868cce8ca3dd8.1650392020.git.jhpark1013@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 
 Hi Jaehee,
 
-I want to suggest you hold off on further revs to your latest patchset.
+On 4/19/22 21:19, Jaehee Park wrote:
+> The free_bss_buf member of pmlmepriv is unused. Remove all related
+> lines.
+> 
+> Suggested-by: Pavel Skripkin <paskripkin@gmail.com>
+> Signed-off-by: Jaehee Park <jhpark1013@gmail.com>
+> ---
 
-I can see GregKH hasn't taken any patches in 5 days. I hate to see you
-rev'ing when GregKH might take some, or all, of your patches, as is.
+[code snip]
 
-Sometimes he takes pieces of a patchset, which leaves you with a 
-smaller set to refine.
+> @@ -55,16 +54,6 @@ static int _rtw_init_mlme_priv(struct adapter *padapter)
+>   
+>   	memset(&pmlmepriv->assoc_ssid, 0, sizeof(struct ndis_802_11_ssid));
+>   
+> -	pbuf = vzalloc(MAX_BSS_CNT * (sizeof(struct wlan_network)));
+> -
+> -	if (!pbuf) {
+> -		res = _FAIL;
+> -		goto exit;
+> -	}
+> -	pmlmepriv->free_bss_buf = pbuf;
+> -
+> -	pnetwork = (struct wlan_network *)pbuf;
+> -
+>   	for (i = 0; i < MAX_BSS_CNT; i++) {
+>   		INIT_LIST_HEAD(&pnetwork->list);
+>   
 
-Watch for email from GregKH, and/or watch this space.
-https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/log/?h=staging-testing
+And now kernel will just boom here :)
 
-I think it's worth the wait. Perhaps you can focus on something project
-specific while you wait.
+I am sorry for not noticing that from the beginning, that's my fault. 
+This pointer is used in very weird way, so let's come back to initial 
+patch: just remove 'if' before vfree().
 
-Alison
+Refactoring that place is the separate task
 
------ End forwarded message -----
+
+I am again sorry for wrong suggestion,
+
+
+With regards,
+Pavel Skripkin
