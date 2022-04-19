@@ -1,90 +1,73 @@
-Received: from mail-ej1-f47.google.com (mail-ej1-f47.google.com [209.85.218.47])
+Received: from m228-62.mailgun.net (m228-62.mailgun.net [159.135.228.62])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D17BA7A
-	for <outreachy@lists.linux.dev>; Tue, 19 Apr 2022 12:50:25 +0000 (UTC)
-Received: by mail-ej1-f47.google.com with SMTP id y10so15271896ejw.8
-        for <outreachy@lists.linux.dev>; Tue, 19 Apr 2022 05:50:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=8TaSxjlVtMxfrBSAFxIIxTLP3pV3qUvExBA7cAdK7g4=;
-        b=gFpTPHQKAtv7h762kYs7iOhwTyoVOlBR3l4RHUHoLdtPa98NZ/YOTS5NEOVgQQ2vzH
-         RDl8904I+mO8neZP270zpPhBm0AK6tBODKnBK83ncK6sp1290c3EyD2SYUu4tsvJNe1z
-         FPJBbSFW3nFJvcxlUojuqRxVGcja6Um7UiD+w2Nh2NvMEVnQ5D0V27HU99HUmUG7XHJH
-         Moq+kETGzHHpGr70/GRb5Eu2mF2HzpVU1//7Luof18Sw19xKY0R4xzCw+y1sJVAXSw/8
-         Hdr8DjZqpwRt20KUC6eK1229UTW2T51XprJepXRwfwRCH1/S18U+i28lQQ6Sw4uEm7pU
-         Ct5w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=8TaSxjlVtMxfrBSAFxIIxTLP3pV3qUvExBA7cAdK7g4=;
-        b=byMWhwMbYEArET2osFzahyJlq1vgYlEaTqZkranopu3dA8MZba6I32kDB03p+zxzgn
-         UDRty6mpPUYDH3SL7IRU0EBpNdDtBX1XhDlimOSXdob/7myhCwI2UReyydfxxyOCgKFp
-         xYbE//uvEiA6RY5OtHzEYNuBEv0ZAAmLh2hhpFhTPI0kJPBaLQbdsQ2LcfDPaDcUfizL
-         E7EK8nd4pSFTc4buhw4Kr0ODq2YeXQQeyMkOLe7r6W5WFc4RrGSNATH9pKV9EtTT4u5Z
-         +f304BrPhDPlSlYoiG059hq97eqJYmSPvmPGqfWvaO2+wzt64T6ApkYgv3JVklQ6GF4d
-         J+QQ==
-X-Gm-Message-State: AOAM531kXrBcNdZMqPVAdobYakeFb4eORjD0DW3DeC+dtnUtWumf+ulo
-	sJBVSjvJPvNrG0H4sxgVlRA=
-X-Google-Smtp-Source: ABdhPJwGijLtqVacwGVLRF2+SD3NllVwkuZBm8vUY4hFNa9e8e3fz1MYnswhjUZ4U/29P//i0Cbyng==
-X-Received: by 2002:a17:907:eaa:b0:6e8:9105:b3c7 with SMTP id ho42-20020a1709070eaa00b006e89105b3c7mr13076200ejc.26.1650372624183;
-        Tue, 19 Apr 2022 05:50:24 -0700 (PDT)
-Received: from leap.localnet (host-79-50-86-254.retail.telecomitalia.it. [79.50.86.254])
-        by smtp.gmail.com with ESMTPSA id bm6-20020a170906c04600b006e89a5f5b8fsm5697377ejb.153.2022.04.19.05.50.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 19 Apr 2022 05:50:22 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Ira Weiny <ira.weiny@intel.com>
-Cc: outreachy@lists.linux.dev
-Subject: Re: [PATCH] Documentation/vm: Include kernel-doc from highmem-internal.h
-Date: Tue, 19 Apr 2022 14:50:22 +0200
-Message-ID: <7371421.EvYhyI6sBW@leap>
-In-Reply-To: <2824835.e9J7NaK4W3@leap>
-References: <20220418081740.21001-1-fmdefrancesco@gmail.com> <Yl3Z8Qll+zGo4v/D@iweiny-desk3> <2824835.e9J7NaK4W3@leap>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BB5A47A
+	for <outreachy@lists.linux.dev>; Tue, 19 Apr 2022 12:53:15 +0000 (UTC)
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=codeagain.dev; q=dns/txt;
+ s=smtp; t=1650372795; h=In-Reply-To: Content-Type: MIME-Version:
+ References: Message-ID: Subject: Subject: Cc: To: To: From: From: Date:
+ Sender: Sender; bh=0tzc7HF03IuRlUrqpWf7hbtsECy1+vKsvv33tnnOGHo=; b=Jt39QrJSChyVoj2kqUNiNvaKWvr+fvduKRzW+BywhRodgjmmqcaLm4lrxnA8fhDFKcqP+WpS
+ 3JMbkQr31OffsOw0IkuAe3B3rL+5YDl+B9PSYCZo0VGBiRYkQopbPB7HshbwFVH7KfPJJ0d3
+ YI2P0uh7LczitxozOobMMBPOwg302PVdmCK4gAuCwxKn0kCBXxzhdakFKt5i0eg18MPQNMvb
+ l5IxeU37/9v1wwPdwxG3bw7I15/b4i1IzmPz2VXJDMSPrYo//QEGf1u6w9cCWQjHvUnRMpMF
+ lcrGl3ffVlQSavjVLrgAjcJbpoJFfYNtAOUiOt3CQ0aYaF9M+TJy3A==
+X-Mailgun-Sending-Ip: 159.135.228.62
+X-Mailgun-Sid: WyI2Y2ZlNyIsICJvdXRyZWFjaHlAbGlzdHMubGludXguZGV2IiwgImJlOWM2ZCJd
+Received: from AN5Bruno (186-250-90-1.mhnet.com.br [186.250.90.1]) by
+ smtp-out-n04.prod.us-east-1.postgun.com with SMTP id
+ 625eb0ba38a4f8e57d9f4df4 (version=TLS1.3, cipher=TLS_AES_128_GCM_SHA256);
+ Tue, 19 Apr 2022 12:53:14 GMT
+Sender: codeagain@codeagain.dev
+Date: Tue, 19 Apr 2022 09:53:10 -0300
+From: Bruno Moreira-Guedes <codeagain@codeagain.dev>
+To: Matthew Wilcox <willy@infradead.org>
+Cc: Jonathan Corbet <corbet@lwn.net>, linux-doc@vger.kernel.org,
+	linux-kernel@vger.kernel.org, outreachy@lists.linux.dev,
+	Bruno's Patch Watchbox <patch-reply@codeagain.dev>
+Subject: Re: [PATCH 2/2] Docs: Update kernel series in changes.rst
+Message-ID: <20220419125310.fss5634pxzujwkfg@AN5Bruno>
+References: <cover.1650336366.git.codeagain@codeagain.dev>
+ <a124c3c34e627c124673640aed177c10e401b052.1650336366.git.codeagain@codeagain.dev>
+ <Yl4nOBlKnWIcGcYS@casper.infradead.org>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="pvgwtzpde4w23vmq"
+Content-Disposition: inline
+In-Reply-To: <Yl4nOBlKnWIcGcYS@casper.infradead.org>
+
+
+--pvgwtzpde4w23vmq
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="utf-8"
 
-On marted=C3=AC 19 aprile 2022 14:35:48 CEST Fabio M. De Francesco wrote:
-> On luned=C3=AC 18 aprile 2022 23:36:49 CEST Ira Weiny wrote:
-> > I thought I saw a patch fly by which changed the comment of=20
-> kunmap_atomic() in
-> > include/linux/highmem-internal.h?  Did I miss that somewhere?
+On Tue, Apr 19, 2022 at 04:06:32AM +0100, Matthew Wilcox wrote:
+> On Mon, Apr 18, 2022 at 11:58:35PM -0300, Bruno Moreira-Guedes wrote:
+> >  This document is designed to provide a list of the minimum levels of
+> > -software necessary to run the 4.x kernels.
+> > +software necessary to run the 5.x kernels.
 >=20
-> Sorry, in my other email I responded after misunderstanding your question=
-=20
-> because I had just noticed a typo so that I had something else in my=20
-mind.
+> We don't change the major version when we update the minimum required
+> tooling ... why not change this once and for all to say:
 >=20
-> It looks that you are talking about the following patch and, if so, you=20
-saw=20
-> it correctly:
->=20
-> "[PATCH v2] mm/highmem: Fix kernel-doc warnings in highmem*.h" at=20
-> https://lore.kernel.org/lkml/20220418175638.30018-1-fmdefrancesco@gmail.c=
-om/
->=20
-> I forgot to send it to the Outreachy list.=20
+> +software necessary to build the current kernel.
 
-No, I'm a bit distracted and I remembered it badly :(
+Indeed it makes much more sense, I'm making a v2 soon!
 
-This patch is already here at=20
-https://lore.kernel.org/outreachy/20220418175638.30018-1-fmdefrancesco@gmai=
-l.com/
+--pvgwtzpde4w23vmq
+Content-Type: application/pgp-signature; name="signature.asc"
 
-=46abio
+-----BEGIN PGP SIGNATURE-----
 
-> I'm about to resend it only to=20
-> this list in order to make Outreachy's organizers to know about it.=20
-> For v1 already had an "Acked-by:" tag from Mike Rapoport.
+iHUEABYIAB0WIQQTUrsHCxGmQ5vyKRAZtd3tyEY2kgUCYl6wtgAKCRAZtd3tyEY2
+kn2pAQDATYppYpRY5w19hEu8qoCUpJcMbjKRvDY5b8f8RHxijgD+M7PeDtA3vB63
++STn8RAzLCUQD6cIFWh3pZhl7S2gMgA=
+=VNQ+
+-----END PGP SIGNATURE-----
 
-
-
+--pvgwtzpde4w23vmq--
