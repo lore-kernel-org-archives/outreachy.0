@@ -1,169 +1,59 @@
-Received: from mail-ed1-f42.google.com (mail-ed1-f42.google.com [209.85.208.42])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 50BD1185B;
-	Wed, 20 Apr 2022 14:52:40 +0000 (UTC)
-Received: by mail-ed1-f42.google.com with SMTP id z99so2629953ede.5;
-        Wed, 20 Apr 2022 07:52:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:subject:date:message-id:in-reply-to:references:mime-version
-         :content-transfer-encoding;
-        bh=J17I7k1DFIqdIF/nQAjV+GrkyCMr24/svVDXLbOChlw=;
-        b=JBbWsEgOEa3GzjofmvOYyn+vCd97m5ObSyLdlSx0foS7fqFoPNa+6SVFauM0aD8VQG
-         ZSkZln+EXn10Uy0PFc1DvXI0mJ774skLlTkSQfmX8qUTSBTfT0izN9GWBg/4mN7owrRx
-         EOwUrr+vgc/soUSGSI/g6pQLR2mtSTF7WwmKIfCmHrligUM7YCu2NUK+5ggefv5ph31s
-         t+mmWJ4zbOMOsBNxJTSA2MNpwYhl3be54FHmu3aeWYbS3sq7rHHx1b6B2nc0EnAXTyH7
-         iFKhLvci/5DueD9EJOdVFOftEbybMLhnZ4QC+YlAwy2OGQUN4KQpUyyhRpMOqFh8+/0a
-         zTQA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=J17I7k1DFIqdIF/nQAjV+GrkyCMr24/svVDXLbOChlw=;
-        b=n+qK8AoS8zxznuZ3K8t1ZixqYuKThaIqY0zq8cnLjXddEnjUgOj+HAWldQoCRYzVcM
-         mNxSd0+drbt8WurXjlLiJ/fkE+oxVOnBtAB7C6LL1JqC4UTM6Ifv7HZSSN6gicN7D57g
-         DnC7DhGmFqbLb9BGXx8AWewp+Eppevcyb0rke3q8wxzB2HYF/xkwhTlX7UGDjkM0QW1a
-         K7db4Llv0PV8XhVNKd4Mj11ie5vWAe1VkJ7B4ZSDwLADVpL9XYTJTCdK0ffIIQ5qVDfh
-         7V5cFC93FTNP0X+xy5+HJ60TOQMK1AJH1tx4EKzKFINOVrrRATSfKj4B/iPeW6sx/udY
-         oeIw==
-X-Gm-Message-State: AOAM531rRxxAWoKuvg5ILHXM+p3oikEsEa+RByLb38GSndGYWp5/jexw
-	G8M4TB32Cb66F4FPB9n/Gqw=
-X-Google-Smtp-Source: ABdhPJx2ZxgmXp985oW9D/tZe4ZqroM4HtirxNo5Df1BZbnJnyqyDBb/QXHmtBPvc/0fWHsstt+qIw==
-X-Received: by 2002:a05:6402:1ac4:b0:41d:83d1:9da7 with SMTP id ba4-20020a0564021ac400b0041d83d19da7mr23708711edb.272.1650466358430;
-        Wed, 20 Apr 2022 07:52:38 -0700 (PDT)
-Received: from leap.localnet (host-79-50-86-254.retail.telecomitalia.it. [79.50.86.254])
-        by smtp.gmail.com with ESMTPSA id b23-20020a05640202d700b00422da9b980esm7945020edx.22.2022.04.20.07.52.36
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 20 Apr 2022 07:52:37 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, outreachy@lists.linux.dev, Rebecca Mckeever <remckee0@gmail.com>
-Subject: Re: [PATCH] staging: rtl8192u: change get_key functions to return 0 instead of -1
-Date: Wed, 20 Apr 2022 16:52:36 +0200
-Message-ID: <3183776.G96rZvMJ2N@leap>
-In-Reply-To: <Yl/7QPKXer7YtXOs@bertie>
-References: <Yl/7QPKXer7YtXOs@bertie>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 963CA185B;
+	Wed, 20 Apr 2022 15:15:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8AD58C385A1;
+	Wed, 20 Apr 2022 15:15:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1650467738;
+	bh=s7kJbmHO4oxkSYmU5fDmutKf8GGc1BWHsk8DFVUqsDI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=CRJXGImARYU+HNAm1q0eaA8GkeFhjY2BSnH+foEDcFW9Yyais53+e+7qXju5J55DQ
+	 c7V+G0UDQ89k0bBaMxyECji33PIijivPSB30G668zaqFUyu0B9tbuAHPwIRdGhYY9w
+	 Hb1NHqdD7rCQdzUFkph4cQLXHV/gCo48lxg3C6rc=
+Date: Wed, 20 Apr 2022 17:15:34 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Jaehee Park <jhpark1013@gmail.com>
+Cc: Alex Elder <elder@ieee.org>, johan@kernel.org, elder@kernel.org,
+	greybus-dev@lists.linaro.org, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org, outreachy@lists.linux.dev,
+	Dan Carpenter <dan.carpenter@oracle.com>
+Subject: Re: [PATCH v3 2/2] staging: greybus: remove empty callback function
+Message-ID: <YmAjliv4DdTY+JvZ@kroah.com>
+References: <cover.1649824370.git.jhpark1013@gmail.com>
+ <12037ae2502ad7d0311bcdf2178c3d2156293236.1649824370.git.jhpark1013@gmail.com>
+ <a4e5c567-63dd-f7de-114b-a357075444a2@ieee.org>
+ <20220414200932.GA4147124@jaehee-ThinkPad-X1-Extreme>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220414200932.GA4147124@jaehee-ThinkPad-X1-Extreme>
 
-On mercoled=C3=AC 20 aprile 2022 14:23:28 CEST Rebecca Mckeever wrote:
-> Currently, these three get_key functions return -1 when the provided len
-> value is less a specific key length value, which can result in buffer
-> overflow depending on how the returned value is used. These functions are
-> used in three places in ieee80211/ieee80211_wx.c:
->=20
->   ieee80211_wx_get_encode() :
->     The behavior of this function will be unchanged.
->=20
->   ieee80211_wx_get_encode_ext() :
->     The result of the get_key function is written to ext->key_len,
->     resulting in a buffer overflow if the result is negative.
->=20
->   ieee80211_wx_set_encode() :
->     The behavior of this function will change. When len is less than the
->     key length value, it will set a default key of all 0.
->=20
-> Suggested-by: Dan Carpenter <dan.carpenter@oracle.com>
-> Signed-off-by: Rebecca Mckeever <remckee0@gmail.com>
-> ---
->  drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c | 2 +-
->  drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_tkip.c | 2 +-
->  drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_wep.c  | 2 +-
->  3 files changed, 3 insertions(+), 3 deletions(-)
+On Thu, Apr 14, 2022 at 04:09:32PM -0400, Jaehee Park wrote:
+> On Wed, Apr 13, 2022 at 07:48:03AM -0500, Alex Elder wrote:
+> > On 4/12/22 11:38 PM, Jaehee Park wrote:
+> > > Remove the optional remove callback for the soc_codec_dev_gbaudio
+> > > structure. The only place it is referenced is
+> > > snd_soc_component_remove() which is only called if the sound_component
+> > > pointer is non-null. The null function pointers here can be optionally
+> > > ommitted. When a sound component is registered this way, the remove
+> > > callback is optional. We can safely remove the whole gbcodec_remove
+> > > function, which used to be an empty function with a void return type.
+> > 
+> > Now I think your description is a little long...  But that's OK.
+> > 
+> > This looks good to me.  Thank you for responding to all our
+> > feedback.
+> > 
+> > Reviewed-by: Alex Elder <elder@linaro.org>
+> 
+> hi Greg, I saw that this was past on to staging-next already. Is it too 
+> late to add Alex to the reviewed by? 
 
-I was not able to find the message where Dan suggested this solution.=20
-However it looks that we actually have problems in those callers when they=
-=20
-get '-1' as the return code.
-
-I didn't look at the code with much attention but I think that returning=20
-'0' to signal errors is not so good.
-
-If I'm not missing something from the context, I'd rather return '-EINVAL'=
-=20
-and change the callers to check for this specific error that would signal=20
-we have "len less than a specific len value". If so, act in accordance to=20
-the returned -EINVAL.
-
-=46or example, in a caller you may test:
-
-if (ext->key_len =3D=3D -EINVAL || <some other test, if required>)
-        <error path>
-<success path>
-
-Just my thoughts, but, as I said, I haven't checked carefully neither the=20
-callers nor the called functions. Maybe that returning '0' is the better=20
-solution, but it usually means that we have no errors.=20
-
-However, I'm 100% sure that, if Dan suggested this specific solution, there=
-=20
-must be good reasons behind. If so, your changes are good :)
-
-Thanks,
-
-=46abio M. De Francesco
-
->=20
-> diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c b/
-drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c
-> index 101c28265e91..f17d07dad56d 100644
-> --- a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c
-> +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_ccmp.c
-> @@ -362,7 +362,7 @@ static int ieee80211_ccmp_get_key(void *key, int len,=
-=20
-u8 *seq, void *priv)
->  	struct ieee80211_ccmp_data *data =3D priv;
-> =20
->  	if (len < CCMP_TK_LEN)
-> -		return -1;
-> +		return 0;
-> =20
->  	if (!data->key_set)
->  		return 0;
-> diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_tkip.c b/
-drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_tkip.c
-> index 689d8843f538..7b120b8cb982 100644
-> --- a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_tkip.c
-> +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_tkip.c
-> @@ -637,7 +637,7 @@ static int ieee80211_tkip_get_key(void *key, int len,=
-=20
-u8 *seq, void *priv)
->  	struct ieee80211_tkip_data *tkey =3D priv;
-> =20
->  	if (len < TKIP_KEY_LEN)
-> -		return -1;
-> +		return 0;
-> =20
->  	if (!tkey->key_set)
->  		return 0;
-> diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_wep.c b/
-drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_wep.c
-> index 8a51ea1dd6e5..a2cdf3bfd1a4 100644
-> --- a/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_wep.c
-> +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_wep.c
-> @@ -201,7 +201,7 @@ static int prism2_wep_get_key(void *key, int len, u8=
-=20
-*seq, void *priv)
->  	struct prism2_wep_data *wep =3D priv;
-> =20
->  	if (len < wep->key_len)
-> -		return -1;
-> +		return 0;
-> =20
->  	memcpy(key, wep->key, wep->key_len);
-> =20
-> --=20
-> 2.32.0
->=20
->=20
->=20
-
-
-
-
+Yes, sorry.
