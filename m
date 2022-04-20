@@ -1,98 +1,80 @@
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-pl1-f171.google.com (mail-pl1-f171.google.com [209.85.214.171])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6E4837A
-	for <outreachy@lists.linux.dev>; Wed, 20 Apr 2022 06:03:14 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 60ED67A
+	for <outreachy@lists.linux.dev>; Wed, 20 Apr 2022 06:07:32 +0000 (UTC)
+Received: by mail-pl1-f171.google.com with SMTP id be5so864885plb.13
+        for <outreachy@lists.linux.dev>; Tue, 19 Apr 2022 23:07:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=AOOcnU+E44vIs+pheMoJXhmNTxpxQArBK8PCjZDPu1k=;
-  b=JeAqI8DLZD09zSdr45+0R8EO5Cgdby5+SpBtSnfHFkLwVpvLlmM/8hJ9
-   wfe3mkqS1RL5WtqKsk7VTWq8kMEy8kh2kMthaDBOjZovZNbHjvj+M86gZ
-   koeT8tRdLUdXrJXhjOnVGaG2G2dAAAAGX9BQtqO3MLoqF5FQ2TTUjsuDn
-   A=;
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="5.90,274,1643670000"; 
-   d="scan'208";a="32427415"
-Received: from 203.107.68.85.rev.sfr.net (HELO hadrien) ([85.68.107.203])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Apr 2022 08:03:05 +0200
-Date: Wed, 20 Apr 2022 08:03:05 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-cc: outreachy@lists.linux.dev, boris.ostrovsky@oracle.com, jgross@suse.com, 
-    sstabellini@kernel.org, xen-devel@lists.xenproject.org, 
-    linux-kernel@vger.kernel.org, ira.weiny@intel.com
-Subject: Re: [PATCH v2] xen:  Convert kmap() to kmap_local_page()
-In-Reply-To: <20220419234328.10346-1-eng.alaamohamedsoliman.am@gmail.com>
-Message-ID: <alpine.DEB.2.22.394.2204200759080.2937@hadrien>
-References: <20220419234328.10346-1-eng.alaamohamedsoliman.am@gmail.com>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+        d=gmail.com; s=20210112;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :references:from:in-reply-to:content-transfer-encoding;
+        bh=PXXhsO1cc1k6eZQ5kkAXBV1Y4UG2/t7OyhqoqVFc0/0=;
+        b=hjM6lhGGix++5j1Y/+1HN1ghogA1Y4nC19JC71fazQEZUloVUcgJNT8YNm9hy3Yx6u
+         7/UDemR1x5lCD/VpqPymNHOijLaYOTmTKyhrhmHzyqwTUS+C2EyFBvrxI8yfJvInGwvB
+         vy1f7P9503qmEgZ59NMZt2GOjjJ5a410fuYlg/XN4fNAkHIozn/OulIyKXWCqhKagWut
+         xKnsa5RtBEpwz0VFMD+KSnXj1P6HeUc3RVprgrj+48fCPDpGC20AxrwLf3BTZTqV/y5/
+         GR0cdDqg/HMgFUMOhUOdMub9MQPQQbp56TffYIZiqVyAIOZ8r4QVgb1HsA963cR9/+ZC
+         22ZQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=PXXhsO1cc1k6eZQ5kkAXBV1Y4UG2/t7OyhqoqVFc0/0=;
+        b=c1rn2eBmIzpu88Hiqury57Ek9Ris5CPodn4aeffhGm3VzpagpIdJzMHlFohDRKx+zX
+         v5kA3L1jsxDqOnosX5qsHpHIAa5AVU4WiqwzV8f4j+jB8g94Xb6LCWG3qQK7CQ9nrcQm
+         BWxZORz0DOJ8lXTQxZWDhJIrYfpcpio3fgAsHq7+UY0QLFPP0dWs7OIsMq24WGUCohpP
+         kYnYN87Mm4rHzyabkWOmDJnDQJF8U0Aqh68NhuuTh9sApg0rCOXPSJM/BCfJR/7Pw63v
+         nC8MkEQbPxvXNgxKrIw2FCXRNopEF/eSn/ytHGhKNT/KkMPkBP0e2Q6Q2ksUI8jFYRLT
+         e8hw==
+X-Gm-Message-State: AOAM532ZCqEWUIJHQbBxTh/FcbdXaAsIq/4dUoxAkrChFcUC46otwIRA
+	ogR0DGaM9o9CGK/4jci60UE=
+X-Google-Smtp-Source: ABdhPJw67KSTWTy6zq1YDwYpHlmWRiDx+KPSRNuwV/9DFLL7ufUyIcqLEjJRXTiZRPsX8alr7tepqA==
+X-Received: by 2002:a17:90b:388f:b0:1d2:7381:3b41 with SMTP id mu15-20020a17090b388f00b001d273813b41mr2612722pjb.72.1650434851734;
+        Tue, 19 Apr 2022 23:07:31 -0700 (PDT)
+Received: from [192.168.43.80] (subs03-180-214-233-69.three.co.id. [180.214.233.69])
+        by smtp.gmail.com with ESMTPSA id b184-20020a62cfc1000000b0050600ab6e26sm18346135pfg.187.2022.04.19.23.07.29
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 19 Apr 2022 23:07:30 -0700 (PDT)
+Message-ID: <ed6cd79c-6a1d-8299-c90a-5f00064f18e5@gmail.com>
+Date: Wed, 20 Apr 2022 13:07:27 +0700
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.8.0
+Subject: Re: [PATCH v2 1/2] Docs: Add cpio requirement to changes.rst
+Content-Language: en-US
+To: Bruno Moreira-Guedes <codeagain@codeagain.dev>,
+ Jonathan Corbet <corbet@lwn.net>, linux-doc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, outreachy@lists.linux.dev,
+ Bruno's Patch Watchbox <patch-reply@codeagain.dev>
+References: <cover.1650376049.git.codeagain@codeagain.dev>
+ <16abd8eb6a5c8398a030ae5d8919d5c8e92e2af1.1650376049.git.codeagain@codeagain.dev>
+From: Bagas Sanjaya <bagasdotme@gmail.com>
+In-Reply-To: <16abd8eb6a5c8398a030ae5d8919d5c8e92e2af1.1650376049.git.codeagain@codeagain.dev>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
+On 4/19/22 21:48, Bruno Moreira-Guedes wrote:
+> diff --git a/Documentation/process/changes.rst b/Documentation/process/changes.rst
+> index a337e8eabfe1..41a44e5f47e6 100644
+> --- a/Documentation/process/changes.rst
+> +++ b/Documentation/process/changes.rst
+> @@ -56,6 +56,7 @@ iptables               1.4.2            iptables -V
+>  openssl & libcrypto    1.0.0            openssl version
+>  bc                     1.06.95          bc --version
+>  Sphinx\ [#f1]_         1.7              sphinx-build --version
+> +cpio                   any              cpio --version
+>  ====================== ===============  ========================================
+>  
 
+You mentioned that **any** version of cpio will work, right?
+Or is there a specific minimum version?
 
-On Wed, 20 Apr 2022, Alaa Mohamed wrote:
-
-> kmap() is being deprecated and these usages are all local to the thread
-> so there is no reason kmap_local_page() can't be used.
->
-> Replace kmap() calls with kmap_local_page().
-
-OK, so from a Coccinelle point of view, could we do
-
-@@
-expression e1,e2,x,f;
-@@
-
-e1 =
-- kmap
-+ kmap_local_page
-    (e2)
-... when != x = e1 // not stored in any location and not passed to another function
-    when != f(...,e1,...)
-    when != x = e2
-    when != f(...,e2,...)
--kunmap(e2)
-+kunmap_local(e1)
-
-julia
-
->
-> Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-> ---
-> changes in V2:
-> 	-edit commit subject
-> 	-edit commit message
-> ---
->  drivers/xen/gntalloc.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/xen/gntalloc.c b/drivers/xen/gntalloc.c
-> index 4849f94372a4..55acb32842a3 100644
-> --- a/drivers/xen/gntalloc.c
-> +++ b/drivers/xen/gntalloc.c
-> @@ -178,9 +178,9 @@ static void __del_gref(struct gntalloc_gref *gref)
->  	unsigned long addr;
->
->  	if (gref->notify.flags & UNMAP_NOTIFY_CLEAR_BYTE) {
-> -		uint8_t *tmp = kmap(gref->page);
-> +		uint8_t *tmp = kmap_local_page(gref->page);
->  		tmp[gref->notify.pgoff] = 0;
-> -		kunmap(gref->page);
-> +		kunmap_local(tmp);
->  	}
->  	if (gref->notify.flags & UNMAP_NOTIFY_SEND_EVENT) {
->  		notify_remote_via_evtchn(gref->notify.event);
-> --
-> 2.35.2
->
->
->
+-- 
+An old man doll... just what I always wanted! - Clara
