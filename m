@@ -1,108 +1,63 @@
-Received: from m228-13.mailgun.net (m228-13.mailgun.net [159.135.228.13])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from ms.lwn.net (ms.lwn.net [45.79.88.28])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 774447A
-	for <outreachy@lists.linux.dev>; Wed, 20 Apr 2022 21:13:09 +0000 (UTC)
-DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=codeagain.dev; q=dns/txt;
- s=smtp; t=1650489189; h=In-Reply-To: Content-Type: MIME-Version:
- References: Message-ID: Subject: Subject: Cc: To: To: From: From: Date:
- Sender: Sender; bh=zRjGTGnzaVlx+b81ByZmjRuO5gTu2rGruPsHyj6hw9o=; b=CmBbwSpCOLmzoUW0uF+M/ieUfO4lTvy+Sh44pR9RjpfLn6pWJAWcDPPDBWAgGoZkKF7J2eLo
- jM12jTX+yiYuv7k9gwPf5zyU8aKYBK0m64ZIJbWDRPOYIwMeXZA7EtCJVaNLezRo1fwF2Ky+
- 5RZnzIIXnAsS+Up73OZBjgoGpX3bWtgCzBfA6KVb66RRQKy1QgT6FVpWzOb1FXUCI91/t3ys
- i7XdEQYlpfWAyzXw5A28UfnQbKfm4127U4iR5aUpJzh6sT6Uyi5qtCF8HzokMrW9cCimRwyy
- ABO/biLPWgMpF01ZVMUmgnc8LW/KEyobRQOl95pwOOD68gIaw6DmWw==
-X-Mailgun-Sending-Ip: 159.135.228.13
-X-Mailgun-Sid: WyI2Y2ZlNyIsICJvdXRyZWFjaHlAbGlzdHMubGludXguZGV2IiwgImJlOWM2ZCJd
-Received: from AN5Bruno (dynamic-user.170.84.57.33.mhnet.com.br
- [170.84.57.33]) by smtp-out-n04.prod.us-west-2.postgun.com with SMTP id
- 62607764b77b16c56e5b6d3f (version=TLS1.3, cipher=TLS_AES_128_GCM_SHA256);
- Wed, 20 Apr 2022 21:13:08 GMT
-Sender: codeagain@codeagain.dev
-Date: Wed, 20 Apr 2022 18:12:58 -0300
-From: Bruno Moreira-Guedes <codeagain@codeagain.dev>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Martyn Welch <martyn@welchs.me.uk>,
-	Manohar Vanga <manohar.vanga@gmail.com>,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev,
-	Bruno's Patch Watchbox <patch-reply@codeagain.dev>
-Subject: Re: [PATCH v2 2/3] staging: vme: Add VME_BUS dependency to Kconfig
-Message-ID: <20220420211258.j23biocryjkuz3qo@AN5Bruno>
-References: <cover.1650321310.git.codeagain@codeagain.dev>
- <00de5644d7c2f8c8878eccf86b761e0602732080.1650321310.git.codeagain@codeagain.dev>
- <20220418233929.zz32dil4u6hbwtqv@AN5Bruno>
- <YmA4ILK5Gv/Gdaso@kroah.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 89D437A
+	for <outreachy@lists.linux.dev>; Wed, 20 Apr 2022 21:34:31 +0000 (UTC)
+Received: from localhost (mdns.lwn.net [45.79.72.68])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ms.lwn.net (Postfix) with ESMTPSA id DCB90536;
+	Wed, 20 Apr 2022 21:34:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 ms.lwn.net DCB90536
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lwn.net; s=20201203;
+	t=1650490470; bh=6T0lvX8RNX9xGYkNbu6K5mxfaWl3HxhoGMIgYH6RZgk=;
+	h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
+	b=EQpMNXKGIxm38WSQDxnU2OdP/4CzkhHcofv0U0qShswpXUT1Hkk9mmRTNoIfYP7YN
+	 yd7D6NQU2ueg5+AjSzzYWO0YAs3ortCaoNy048kqLPG+qR7KUWMRE7oBBldiOwEbHG
+	 6QPzRlP8bjEAPdGBzvP1d3cj3IgVmxiEezT/GofTarisxddOGNc0uTyrGkE7eyAKaV
+	 xZdO6L0SfWQkgv4rla7xsCk0Wk7jLC/vbX/wzTw/C9+PKc4Fhyc3USGVAHFRu4lKBM
+	 SExjDE70Y7pDHa8oXj/tn1s94SQxyY0T1GS0gdbWrDPOSxwbWn6VnWCvtY832M07Lw
+	 UgolFy9dY8XQg==
+From: Jonathan Corbet <corbet@lwn.net>
+To: Bruno Moreira-Guedes <codeagain@codeagain.dev>
+Cc: linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ outreachy@lists.linux.dev, Bruno's Patch Watchbox
+ <patch-reply@codeagain.dev>
+Subject: Re: [PATCH v2 0/2] Docs: Update information at changes.rst
+In-Reply-To: <20220420172731.ru7kfrdkmprybtu7@AN5Bruno>
+References: <cover.1650376049.git.codeagain@codeagain.dev>
+ <8735i83xo1.fsf@meer.lwn.net> <20220420172731.ru7kfrdkmprybtu7@AN5Bruno>
+Date: Wed, 20 Apr 2022 15:34:26 -0600
+Message-ID: <878rrz30d9.fsf@meer.lwn.net>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="entcbfx2eyqninee"
-Content-Disposition: inline
-In-Reply-To: <YmA4ILK5Gv/Gdaso@kroah.com>
+Content-Type: text/plain
 
+Bruno Moreira-Guedes <codeagain@codeagain.dev> writes:
 
---entcbfx2eyqninee
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+> On Wed, Apr 20, 2022 at 03:35:10AM -0600, Jonathan Corbet wrote:
+>> Bruno Moreira-Guedes <codeagain@codeagain.dev> writes:
+>> >
+>> > The PATCH 1/2 fixes the missing cpio requirement, while PATCH 2/2 fixes
+>> > the kernel version reference.
+>> >
+>> > Signed-off-by: Bruno Moreira-Guedes <codeagain@codeagain.dev>
+>> 
+>> Patches applied, thanks.
+> Thanks, Jon! I have also been thinking whether this filename
+> ('changes.rst') is a good description of the file contents. Do you think
+> renaming it to something like 'requirements.rst' and updating its
+> references would be a good patch?
 
-On Wed, Apr 20, 2022 at 06:43:12PM +0200, Greg Kroah-Hartman wrote:
-> On Mon, Apr 18, 2022 at 08:39:29PM -0300, Bruno Moreira-Guedes wrote:
-> > Please, disregard the following message as there's a typo in the prefix.
-> >=20
-> > On Mon, Apr 18, 2022 at 08:31:09PM -0300, Bruno Moreira-Guedes wrote:
-> > > The KConfig file for VME_USER ('drivers/staging/vme/devices/Kconfig')
-> > > sourced at "drivers/vme/boards/KConfig" misses a `depends on` line for
-> > > VME_BUS, which is unnoticeable for menuconfig users who aren't be able
-> > > to select it through this interface without setting the CONFIG_VME_BUS
-> > > option because it's nested on VME_BUS menu entry.
-> > ...
-> > >  	  VME windows in a manner at least semi-compatible with the interfa=
-ce
-> > > --=20
-> > > 2.35.3
-> > >=20
-> >=20
-> > It's already sent a new copy with the proper version number. Nothing's
-> > changed except for the message ID and the v2 typo.
->=20
-> I can't handle 2 v2 of this same commit, our tools get very confused (as
-> do people.)  Would you be able to unwind this if you were in my
-> position?
-I really apologize for this confusion, I really did some mistakes on my
-local branch and had to edit the patches manually to reapply them. While
-working on that I accidentally missed to change the 'v2' to 'v3'. My
-mistake.
+It's best not to rename things unnecessarily, especially relatively
+well-known files that a lot of people expect to find in a specific
+place.  We've done a lot of renaming over the last few years, but this
+is one I might let slide for now.
 
-Though, there's no 2 v2s, the new one I sent is a v3 as is the rest of
-this thread. So, would it be necessary to unwind anything anyway?=20
+Thanks,
 
-If this question happens to beb a bad one, my apologies again, I'll soon
-do some effort to learn more about how things work from a maintainer's
-perspective so next time I make a mistake I'll be able to take the best
-curse of action straight away.
-
->=20
-> Please resubmit a v3 of this series with everything fixed up.
-Did you mean a v4 in this case? Or just post the same patch again?
-
->=20
-> thanks,
->=20
-> greg k-h
-
---entcbfx2eyqninee
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYIAB0WIQQTUrsHCxGmQ5vyKRAZtd3tyEY2kgUCYmB3WgAKCRAZtd3tyEY2
-ksbKAPwPgITi8i0KAigk8iXE96aF+Bz80tV57D5e9sQtk1HRJgEA3pxLFm5GRTwv
-aHAulqmNfDatFnWis1wjkqpiUhuJPwk=
-=yp+5
------END PGP SIGNATURE-----
-
---entcbfx2eyqninee--
+jon
