@@ -1,113 +1,114 @@
-Received: from mail-ej1-f43.google.com (mail-ej1-f43.google.com [209.85.218.43])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C2919184A
-	for <outreachy@lists.linux.dev>; Wed, 20 Apr 2022 13:22:14 +0000 (UTC)
-Received: by mail-ej1-f43.google.com with SMTP id l7so3559497ejn.2
-        for <outreachy@lists.linux.dev>; Wed, 20 Apr 2022 06:22:14 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 18FB7184A
+	for <outreachy@lists.linux.dev>; Wed, 20 Apr 2022 13:28:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=ng4rT6I4vcHmv4/7ezO3PQ9fpnN0wzaNSUcZ6IscV4k=;
-        b=hisOYUiR4cenD1rp5qPKSBG+WAk64wKCLuwUm8RftXBLSnJNAj+b10FaYqJQ3H8Y9I
-         Ll8ySPsAvRZBbFLxQqCxiKgJ0Raz+OKxSEH123P/ID9N4IMOW/8S2ZkWhDmPtn4DAB/m
-         CJXmIRJgEXBZ86KiTOsgJKbzAQqulyO6SC+rF1OBjPNBAOlcac+iA0cVT2Zag6WtfN5n
-         hByBi+9SfZHZRP99RvjAjR8Z+1Dv2JwgaaEJBwfKpHlGXP9Cqug0aiqIne7waUJcKbUf
-         gdKJgXh+ank2b2a3ZSQAavn0rdJK8My3fLILeOefKuQTSWeoq0kT/7SmppbOo6yXDD9L
-         H7QA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=ng4rT6I4vcHmv4/7ezO3PQ9fpnN0wzaNSUcZ6IscV4k=;
-        b=dwqSlFdQRPNmfCXVwDN6z/ttQ4T1Mgs87dzLJSrWKabUkB+XoL23Wruxb3Ph2ZhjXs
-         zgyAZAARzl8oYytLR6jqx2JWm7/7C7FTopQWYQ0xs/ZCQSGd4pb+miIk8sJLigqzjmL2
-         3xj0fD8HCzBFrhiCTSymaOkj/22MYw/3RODSCrFB9rBX5COdHASzkxV55s4F8Yk1hwog
-         QX8OCtzzyUrHg42by3ftEF5idgD6Fanuwjy0VElMqWH76lzxuarku5zHq3jgd8p0pQBs
-         0PvW+TWmIQN9FvqEu34Zd4q6zApa39Z0poBPd52qdPNJF7e1A53ZEIXuz5B+J5UGA+6s
-         T4xQ==
-X-Gm-Message-State: AOAM530+LvXXvXusvsdIbJo/ejRtoGfo4a8/Q7HOoakAYMw1OT///QA/
-	cMAyxh998f6rThXMsEiyDX0=
-X-Google-Smtp-Source: ABdhPJwU9wCOFteWozSkt5bu3lmUNtDTL6NNULRKJcKJoaUjbAjkFKxtS6lDaecx+VwibuEjcyEeBQ==
-X-Received: by 2002:a17:906:60c2:b0:6e7:681e:b4b7 with SMTP id f2-20020a17090660c200b006e7681eb4b7mr18667712ejk.130.1650460932892;
-        Wed, 20 Apr 2022 06:22:12 -0700 (PDT)
-Received: from leap.localnet (host-79-50-86-254.retail.telecomitalia.it. [79.50.86.254])
-        by smtp.gmail.com with ESMTPSA id w7-20020a1709061f0700b006ec8197e8a4sm6255708ejj.97.2022.04.20.06.22.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 20 Apr 2022 06:22:11 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Julia Lawall <julia.lawall@inria.fr>, ira.weiny@intel.com
-Cc: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>, outreachy@lists.linux.dev, boris.ostrovsky@oracle.com, jgross@suse.com, sstabellini@kernel.org, xen-devel@lists.xenproject.org, linux-kernel@vger.kernel.org
+  d=inria.fr; s=dc;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=+CoeG1wGEI8/gfMyxtQ5JH5NSEVqNFUDQuUEB1szdvM=;
+  b=AEhXO2mE1hpaKTTPfhCAJm2kDZDm+IKMhPsQCDZfeqrnUOkvF3XHJSft
+   0uWekxsBgStNaOhDaWn4f9+SepJ845Q0i8JhNvEvztlACkGEvBkg8DZoe
+   C2rKv55OG3gHEVEv077nOIw/KnN63OT80cFE6q4+X6CqIIdcGj2M3SCl5
+   U=;
+Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="5.90,275,1643670000"; 
+   d="scan'208";a="32524915"
+Received: from 203.107.68.85.rev.sfr.net (HELO hadrien) ([85.68.107.203])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Apr 2022 15:28:03 +0200
+Date: Wed, 20 Apr 2022 15:28:03 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+cc: Julia Lawall <julia.lawall@inria.fr>, ira.weiny@intel.com, 
+    Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>, 
+    outreachy@lists.linux.dev, boris.ostrovsky@oracle.com, jgross@suse.com, 
+    sstabellini@kernel.org, xen-devel@lists.xenproject.org, 
+    linux-kernel@vger.kernel.org
 Subject: Re: [PATCH v2] xen:  Convert kmap() to kmap_local_page()
-Date: Wed, 20 Apr 2022 15:22:10 +0200
-Message-ID: <2940450.687JKscXgg@leap>
-In-Reply-To: <alpine.DEB.2.22.394.2204200759080.2937@hadrien>
-References: <20220419234328.10346-1-eng.alaamohamedsoliman.am@gmail.com> <alpine.DEB.2.22.394.2204200759080.2937@hadrien>
+In-Reply-To: <2940450.687JKscXgg@leap>
+Message-ID: <alpine.DEB.2.22.394.2204201525080.2937@hadrien>
+References: <20220419234328.10346-1-eng.alaamohamedsoliman.am@gmail.com> <alpine.DEB.2.22.394.2204200759080.2937@hadrien> <2940450.687JKscXgg@leap>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="utf-8"
+Content-Type: multipart/mixed; boundary="8323329-65486685-1650461283=:2937"
 
-On mercoled=C3=AC 20 aprile 2022 08:03:05 CEST Julia Lawall wrote:
->=20
-> On Wed, 20 Apr 2022, Alaa Mohamed wrote:
->=20
-> > kmap() is being deprecated and these usages are all local to the thread
-> > so there is no reason kmap_local_page() can't be used.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
+
+--8323329-65486685-1650461283=:2937
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8BIT
+
+
+
+On Wed, 20 Apr 2022, Fabio M. De Francesco wrote:
+
+> On mercoledì 20 aprile 2022 08:03:05 CEST Julia Lawall wrote:
 > >
-> > Replace kmap() calls with kmap_local_page().
->=20
-> OK, so from a Coccinelle point of view, could we do
->=20
-> @@
-> expression e1,e2,x,f;
-> @@
->=20
-> e1 =3D
-> - kmap
-> + kmap_local_page
->     (e2)
-> ... when !=3D x =3D e1 // not stored in any location and not passed to=20
-another function
->     when !=3D f(...,e1,...)
->     when !=3D x =3D e2
->     when !=3D f(...,e2,...)
-> -kunmap(e2)
-> +kunmap_local(e1)
->=20
-> julia
->=20
+> > On Wed, 20 Apr 2022, Alaa Mohamed wrote:
+> >
+> > > kmap() is being deprecated and these usages are all local to the thread
+> > > so there is no reason kmap_local_page() can't be used.
+> > >
+> > > Replace kmap() calls with kmap_local_page().
+> >
+> > OK, so from a Coccinelle point of view, could we do
+> >
+> > @@
+> > expression e1,e2,x,f;
+> > @@
+> >
+> > e1 =
+> > - kmap
+> > + kmap_local_page
+> >     (e2)
+> > ... when != x = e1 // not stored in any location and not passed to
+> another function
+> >     when != f(...,e1,...)
+> >     when != x = e2
+> >     when != f(...,e2,...)
+> > -kunmap(e2)
+> > +kunmap_local(e1)
+> >
+> > julia
+> >
+>
+> I've never spent sufficient time to understand properly the syntax and
+> semantics of expressions of Coccinelle. However, thanks Julia, this code
+> looks good and can be very helpful.
+>
+> Only a minor objection... it doesn't tell when 'e2' has been allocated
+> within the same function where the kmap() call is.
 
-I've never spent sufficient time to understand properly the syntax and=20
-semantics of expressions of Coccinelle. However, thanks Julia, this code=20
-looks good and can be very helpful.
+OK, thanks for pointing that out.  That seems like a key point that should
+be mentioned in log messages.  It's not even visible in the context lines
+around the patch.
 
-Only a minor objection... it doesn't tell when 'e2' has been allocated=20
-within the same function where the kmap() call is.
+>
+> In the particular case that I cite above, I'd prefer to remove the
+> allocation of the page (say with alloc_page()) and convert kmap() /kunmap()
+> to use kmalloc() / kfree().
+>
+> Fox example, this is done in the following patch:
+>
+> commit 633b0616cfe0 ("x86/sgx: Remove unnecessary kmap() from
+> sgx_ioc_enclave_init()") from Ira Weiny.
+>
+> Can Coccinelle catch also those special cases where a page that is passed
+> to kmap() is allocated within that same function (vs. being passed as
+> argument to this function) and, if so, propose a replacement with
+> kmalloc()?
 
-In the particular case that I cite above, I'd prefer to remove the=20
-allocation of the page (say with alloc_page()) and convert kmap() /kunmap()=
-=20
-to use kmalloc() / kfree().=20
+Sure.  I'll take a look at the precise example Alaa started with and see
+if I can come up with something.
 
-=46ox example, this is done in the following patch:
-
-commit 633b0616cfe0 ("x86/sgx: Remove unnecessary kmap() from=20
-sgx_ioc_enclave_init()") from Ira Weiny.
-
-Can Coccinelle catch also those special cases where a page that is passed=20
-to kmap() is allocated within that same function (vs. being passed as=20
-argument to this function) and, if so, propose a replacement with=20
-kmalloc()?
-
-Thanks,
-
-=46abio
-
-
-
+thanks,
+julia
+--8323329-65486685-1650461283=:2937--
