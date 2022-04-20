@@ -1,35 +1,33 @@
 Received: from ms.lwn.net (ms.lwn.net [45.79.88.28])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 12ECF7A
-	for <outreachy@lists.linux.dev>; Wed, 20 Apr 2022 06:26:57 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 50F911365
+	for <outreachy@lists.linux.dev>; Wed, 20 Apr 2022 09:35:16 +0000 (UTC)
 Received: from localhost (mdns.lwn.net [45.79.72.68])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ms.lwn.net (Postfix) with ESMTPSA id 6232A536;
-	Wed, 20 Apr 2022 06:26:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 ms.lwn.net 6232A536
+	by ms.lwn.net (Postfix) with ESMTPSA id 71CAF378;
+	Wed, 20 Apr 2022 09:35:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 ms.lwn.net 71CAF378
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lwn.net; s=20201203;
-	t=1650436017; bh=f7Uz8K4B/b1GK8UbEUnANcsx3qekjRh4X7oJMY2FYTY=;
+	t=1650447315; bh=/drfVWlpA5rvL+Fx11EF7dxixc4TXy05BiVzmO3nX6Q=;
 	h=From:To:Subject:In-Reply-To:References:Date:From;
-	b=hmOAiIvMG0pAzSpQ4R/b4/b/pqbv9PllqJr9zhonE/4A7JX5F6DOdXYH5DwLL561S
-	 hFYODhanOqWQxA18wVy0ScYuD5zxUd1LU6LOG+nqV0+FkT9iS3hDkcwFotACIYssKz
-	 clfTOhltAGqisMAN0p0bRbmIXpLbhg7pPvS8b4IH8J96mnu7F9d+Ll6ZVcF4Qp7Kpa
-	 KnYor61TZw2Xy61gk4OuOPEOAAYI9sVT3NHV2hfyU5dYiKucibFhXXLrG6vXI4D2G8
-	 lEFjTLyXnUFFUEWVsR3KtQpYcO7jAgrW/Ex86dKgQ/hK/hXMvNlPNwDkzibdbmcUf7
-	 iFWexVBflvq6Q==
+	b=BNoyTCusYisehvH1uDCtgaTeCCwQWpDmKVC5M5AMsgEulgiLPO3HfoSUlZZyOlM8h
+	 JC/7h0TpOjDpNBtOn+17ID99REjcprINr4UaklTLdHHhSkFGmW44wcyj19aOklrdpY
+	 a/PrFfnGKYQik4i9hgbdLNWSsTgjFk4sx9ok4XsrwjFxGUtkUsKB8mxsBQ/djWlG+4
+	 FQFR0exYECfzMKfLJfJZ8CTjeAtmzD73fk+AbqexelSkUxfEBk1Y1cV/EVOugeSM1S
+	 CXloiBRrDBRdlr7UhOne2BlDGxIbP4eLlAh6EkbupWuZPydIiTncKvcUrNvQx3DjBZ
+	 NFSAbM5MAfeVQ==
 From: Jonathan Corbet <corbet@lwn.net>
-To: Bagas Sanjaya <bagasdotme@gmail.com>, Bruno Moreira-Guedes
- <codeagain@codeagain.dev>, linux-doc@vger.kernel.org,
- linux-kernel@vger.kernel.org, outreachy@lists.linux.dev, Bruno's Patch
- Watchbox <patch-reply@codeagain.dev>
-Subject: Re: [PATCH v2 1/2] Docs: Add cpio requirement to changes.rst
-In-Reply-To: <ed6cd79c-6a1d-8299-c90a-5f00064f18e5@gmail.com>
+To: Bruno Moreira-Guedes <codeagain@codeagain.dev>,
+ linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ outreachy@lists.linux.dev, Bruno's Patch Watchbox
+ <patch-reply@codeagain.dev>
+Subject: Re: [PATCH v2 0/2] Docs: Update information at changes.rst
+In-Reply-To: <cover.1650376049.git.codeagain@codeagain.dev>
 References: <cover.1650376049.git.codeagain@codeagain.dev>
- <16abd8eb6a5c8398a030ae5d8919d5c8e92e2af1.1650376049.git.codeagain@codeagain.dev>
- <ed6cd79c-6a1d-8299-c90a-5f00064f18e5@gmail.com>
-Date: Wed, 20 Apr 2022 00:26:53 -0600
-Message-ID: <87o80w46du.fsf@meer.lwn.net>
+Date: Wed, 20 Apr 2022 03:35:10 -0600
+Message-ID: <8735i83xo1.fsf@meer.lwn.net>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -38,27 +36,18 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain
 
-Bagas Sanjaya <bagasdotme@gmail.com> writes:
+Bruno Moreira-Guedes <codeagain@codeagain.dev> writes:
 
-> On 4/19/22 21:48, Bruno Moreira-Guedes wrote:
->> diff --git a/Documentation/process/changes.rst b/Documentation/process/changes.rst
->> index a337e8eabfe1..41a44e5f47e6 100644
->> --- a/Documentation/process/changes.rst
->> +++ b/Documentation/process/changes.rst
->> @@ -56,6 +56,7 @@ iptables               1.4.2            iptables -V
->>  openssl & libcrypto    1.0.0            openssl version
->>  bc                     1.06.95          bc --version
->>  Sphinx\ [#f1]_         1.7              sphinx-build --version
->> +cpio                   any              cpio --version
->>  ====================== ===============  ========================================
->>  
+> Add and update information at 'Documentation/process/changes.rst'. The
+> text has outdated kernel version and misses the 'cpio' build
+> requirement, necessary for the `kernel/gen_kheaders.sh` script called by
+> the install target.
 >
-> You mentioned that **any** version of cpio will work, right?
-> Or is there a specific minimum version?
+> The PATCH 1/2 fixes the missing cpio requirement, while PATCH 2/2 fixes
+> the kernel version reference.
+>
+> Signed-off-by: Bruno Moreira-Guedes <codeagain@codeagain.dev>
 
-The statement of "any" seems fairly explicit to me.  It has been a few
-... decades ... since cpio has seen any sort of rapid development; do
-you have any reason to think there might be a version in the wild that
-would not work?
+Patches applied, thanks.
 
 jon
