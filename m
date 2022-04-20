@@ -1,216 +1,111 @@
-Received: from mail-ej1-f46.google.com (mail-ej1-f46.google.com [209.85.218.46])
+Received: from mail-qk1-f181.google.com (mail-qk1-f181.google.com [209.85.222.181])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 945E1185B
-	for <outreachy@lists.linux.dev>; Wed, 20 Apr 2022 14:07:40 +0000 (UTC)
-Received: by mail-ej1-f46.google.com with SMTP id u15so3747744ejf.11
-        for <outreachy@lists.linux.dev>; Wed, 20 Apr 2022 07:07:40 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 292D7185B;
+	Wed, 20 Apr 2022 14:48:40 +0000 (UTC)
+Received: by mail-qk1-f181.google.com with SMTP id y129so1364598qkb.2;
+        Wed, 20 Apr 2022 07:48:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=axtU0b8TtpVbp0s/mbZjWqvA94Dr9I508ZNrAg+bBn0=;
-        b=h3ip9pqn1Te/4FB3H+4SHiAbA6baF/wjith2bzY2njubpPrbXH4SFJAnu8cJNj6/UK
-         9HFHH3DpzxOPKbG+JhKptMmqnimupMF5acHMST/auHETQ7IXtI8oLiXzopiADk6Xvj+G
-         C+uMkITomXf82mlJjY28A1Qwx4BudvCvgJ1RrHhCiHyBwvdNwBsktj2N82QxuHlJ2qY6
-         A5ppVf0HcXwng/AJ50Z3JkMX+BIyeJSclRVNNIxSeuhV0kmicV+m33kBimktN/XAZHu0
-         lnksAl27sz/nFPLLWRtLinxEZQwto3wwwhH8Z8jHyQEWM7nZtP1hdljsDO9Keod1r5az
-         5AEg==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=tkh8J2lKGPT+L0yWvNsS4Conro8aEFkfjN82mbeQ8Dk=;
+        b=e6jldbqIFDukpdn3OA8ix6XZVlZaE6MpIhoZFApQQxRp0ZZ3qC3uL0fbApVXgkI28H
+         5zJBU+17KnWrSNaPWVTaOQIxUGs/Y7s3tfCMnpLtHzUC/66qXOoQbUPp3f+OMYFeDMfA
+         vIiAdPUyyX5jHQ08epts3UIJsoEmBSVJR9Cd8ZzRyO80K+PvmY/FwG4ke78ypWttVJmK
+         jn+t80tH70XLZzplpNt0mxKPCP8RPvuTfm+LSu193TyVU0rniSOI+fzInL9nxJHb0mlf
+         zYmTESTeKRdaDedk+HM4Op9goGzR6E0ARrmyhvgJckNQikMNNPIz8FjrvKoxy2GUdlIt
+         Sv2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=axtU0b8TtpVbp0s/mbZjWqvA94Dr9I508ZNrAg+bBn0=;
-        b=gcJm2eiooPa9vAodA+X7iJXJgxzwEgFPufEd0ISRA5DuLkpu2/wY4tgTomQFP530eB
-         7qFqliSUnUHgpeLoaDkeNOWRw8/6YnR8kqvtk8iR+ifwID1zWGnanDxmU+l9neOsKbXN
-         OKRynIhAk61W6j699ZnVRBQjB5BhA1l10URVdBqmGO+35h1Umve/0DVF0jDqfAkvn1KI
-         CVOBJJZwTRk+zLJLEWQaCnAZtElcuYhAuucbSXSA1V4hkl0fBMf8V0/QIT3T7yLRwjmG
-         5GnUf04esbIw/gAVB40ztvIgMqycbWSHHkpJ3/5Aay7hlBjNDJGNSsggxwm0m263If+Y
-         UqKg==
-X-Gm-Message-State: AOAM532pvPWIOTQIkm7nWBaFihHSFjYfA4yja2zv2OFnWL2njOLChO9r
-	n2y6yVXvNwR04I9MntOJ9/9t2OF+JZM=
-X-Google-Smtp-Source: ABdhPJzx++INwh/binOtJF6UHoLInnaW20QfquRf+Me/PgiY/eme4g+R8VUQweTxq86X6SxppLyFcQ==
-X-Received: by 2002:a17:906:2e8d:b0:6e4:b5fc:e8e6 with SMTP id o13-20020a1709062e8d00b006e4b5fce8e6mr6678249eji.215.1650463658445;
-        Wed, 20 Apr 2022 07:07:38 -0700 (PDT)
-Received: from leap.localnet (host-79-50-86-254.retail.telecomitalia.it. [79.50.86.254])
-        by smtp.gmail.com with ESMTPSA id au9-20020a170907092900b006e8985cc68asm6703151ejc.1.2022.04.20.07.07.36
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=tkh8J2lKGPT+L0yWvNsS4Conro8aEFkfjN82mbeQ8Dk=;
+        b=OXNAvkKhKvMs8MGrG90Kladedad0fB4H1Q2V7EtjNkE4yLeR/w+ACHRa3F5UiCF0or
+         wCzO6bdWck5iQURltVA7x1AoH/8/eVFz8Nml4RGosl+b2fOW0LpNLjH9LVYPBU7igGpU
+         PKMFSkwrvB8RhRoM9wLUiuckwIhjvr2RrS1zqTgd/dvwJUqMm0XE5UNWi9ckSq9VHncf
+         HnFeuJsG2iniYvEg12B/kTfVTtez0nAGlqU4EbSdEWsAA8w7PQDNnlkwLo7v3QDwRNlb
+         EloPIOoO6bD6lIqEHxFE61UYLcIohldx4RUCC/NbRcXT8OCbW6LwXkhsf6/XounBNyLd
+         gb6Q==
+X-Gm-Message-State: AOAM533mN5QztDoJycwuM3xO80R03FWm0pt0NfBDLDfv5Do/gh0a3jJS
+	aIRBEte5yeTJ3BsMxEki5Tc=
+X-Google-Smtp-Source: ABdhPJxxfYZulP7IF/wJCusWEypd1WbmQMAJ786C+J9Lvl3khU2wHW7JGB/a48jCRLC4GYj7QZVRXA==
+X-Received: by 2002:a05:620a:3193:b0:69e:cbbe:d285 with SMTP id bi19-20020a05620a319300b0069ecbbed285mr4206821qkb.408.1650466118909;
+        Wed, 20 Apr 2022 07:48:38 -0700 (PDT)
+Received: from jaehee-ThinkPad-X1-Extreme ([2607:fb90:50e7:2813:48a4:4906:b926:9eef])
+        by smtp.gmail.com with ESMTPSA id l13-20020a05622a050d00b002f205ba53efsm1818254qtx.25.2022.04.20.07.48.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 20 Apr 2022 07:07:37 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: Julia Lawall <julia.lawall@inria.fr>, ira.weiny@intel.com, Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>, outreachy@lists.linux.dev, boris.ostrovsky@oracle.com, jgross@suse.com, sstabellini@kernel.org, xen-devel@lists.xenproject.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2] xen:  Convert kmap() to kmap_local_page()
-Date: Wed, 20 Apr 2022 16:07:36 +0200
-Message-ID: <2538961.9Mp67QZiUf@leap>
-In-Reply-To: <alpine.DEB.2.22.394.2204201556330.2937@hadrien>
-References: <20220419234328.10346-1-eng.alaamohamedsoliman.am@gmail.com> <3990312.6PsWsQAL7t@leap> <alpine.DEB.2.22.394.2204201556330.2937@hadrien>
+        Wed, 20 Apr 2022 07:48:38 -0700 (PDT)
+Date: Wed, 20 Apr 2022 10:48:34 -0400
+From: Jaehee Park <jhpark1013@gmail.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Cc: Pavel Skripkin <paskripkin@gmail.com>, Larry.Finger@lwfinger.net,
+	phil@philpotter.co.uk, gregkh@linuxfoundation.org,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy@lists.linux.dev
+Subject: Re: [PATCH v3 1/7] staging: r8188eu: remove unused member
+ free_bss_buf
+Message-ID: <20220420144834.GA1313590@jaehee-ThinkPad-X1-Extreme>
+References: <cover.1650392020.git.jhpark1013@gmail.com>
+ <3c5a510938ac395a13bb09c0de1868cce8ca3dd8.1650392020.git.jhpark1013@gmail.com>
+ <32587233-0ff6-ed0f-b873-cd4f797005a9@gmail.com>
+ <20220420115534.GF2951@kadam>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220420115534.GF2951@kadam>
 
-On mercoled=C3=AC 20 aprile 2022 15:57:14 CEST Julia Lawall wrote:
->=20
-> On Wed, 20 Apr 2022, Fabio M. De Francesco wrote:
->=20
-> > On mercoled=C3=AC 20 aprile 2022 15:40:10 CEST Julia Lawall wrote:
-> > >
-> > > On Wed, 20 Apr 2022, Fabio M. De Francesco wrote:
-> > >
-> > > > On mercoled=C3=AC 20 aprile 2022 08:03:05 CEST Julia Lawall wrote:
-> > > > >
-> > > > > On Wed, 20 Apr 2022, Alaa Mohamed wrote:
-> > > > >
-> > > > > > kmap() is being deprecated and these usages are all local to=20
-the
-> > thread
-> > > > > > so there is no reason kmap_local_page() can't be used.
-> > > > > >
-> > > > > > Replace kmap() calls with kmap_local_page().
-> > > > >
-> > > > > OK, so from a Coccinelle point of view, could we do
-> > > > >
-> > > > > @@
-> > > > > expression e1,e2,x,f;
-> > > > > @@
-> > > > >
-> > > > > e1 =3D
-> > > > > - kmap
-> > > > > + kmap_local_page
-> > > > >     (e2)
-> > > > > ... when !=3D x =3D e1 // not stored in any location and not pass=
-ed=20
-to
-> > > > another function
-> > > > >     when !=3D f(...,e1,...)
-> > > > >     when !=3D x =3D e2
-> > > > >     when !=3D f(...,e2,...)
-> > > > > -kunmap(e2)
-> > > > > +kunmap_local(e1)
-> > > > >
-> > > > > julia
-> > > > >
-> > > >
-> > > > I've never spent sufficient time to understand properly the syntax=
-=20
-and
-> > > > semantics of expressions of Coccinelle. However, thanks Julia, this
-> > code
-> > > > looks good and can be very helpful.
-> > > >
-> > > > Only a minor objection... it doesn't tell when 'e2' has been=20
-allocated
-> > > > within the same function where the kmap() call is.
-> > > >
-> > > > In the particular case that I cite above, I'd prefer to remove the
-> > > > allocation of the page (say with alloc_page()) and convert kmap() /
-> > kunmap()
-> > > > to use kmalloc() / kfree().
-> > > >
-> > > > Fox example, this is done in the following patch:
-> > > >
-> > > > commit 633b0616cfe0 ("x86/sgx: Remove unnecessary kmap() from
-> > > > sgx_ioc_enclave_init()") from Ira Weiny.
-> > > >
-> > > > Can Coccinelle catch also those special cases where a page that is
-> > passed
-> > > > to kmap() is allocated within that same function (vs. being passed=
-=20
-as
-> > > > argument to this function) and, if so, propose a replacement with
-> > > > kmalloc()?
-> > >
-> > > It looks complex in this case, because the allocation is in another
-> > > function, and it is passed to another function.
-> >
-> > This is not the special case I was talking about. In this case your=20
-code
-> > for Coccinelle tells the right proposal and it is exactly what Alaa did=
-=20
-in
-> > her patch (which is good!).
-> >
-> > I'm talking about other special cases like the one I pointed to with=20
-the
-> > link I provided. I'm sorry if my bad English made you think that Alaa's
-> > patch was one of those cases where the page is allocated within the=20
-same
-> > function where kmap() is.
-> >
-> > I hope that now I've been clearer :)
->=20
-> Ah, sorry for the misunderstanding.  If you have an example, I can take a
-> look and propose something for this special case.
->=20
-> julia
+On Wed, Apr 20, 2022 at 02:55:34PM +0300, Dan Carpenter wrote:
+> As a kernel community, I don't think we are pro-active enough about
+> preventing bugs.  One of my co-workers and I have started a bi weekly
+> phone call to look at CVEs from the previous week and discuss how they
+> could have been prevented or detected earlier.  Of course, my solutions
+> are always centered around static analysis because that's my deal but
+> some bugs are caused by process issues, or could be detected with better
+> testing.
+> 
+> In this case there were two bugs proposed bugs.
+> 
+> 1) The memory leak that Fabio noticed.  Smatch is bad at detecting
+>    memory leaks.  It's a hard problem, because in this case it's
+>    across function boundaries.
+> 
+> Fabio caught the leak.  I don't know if I would have.
+> 
+> 2) The NULL dereference.
+> 
+>    The "&pnetwork->list" expression is not a dereference so this is also
+>    a cross function thing.  I thought I used to have an unpublished check
+>    for bogus addresses like that where pnetwork is NULL.
+> 
+>    Another is idea is that when you have pnetwork++ and it's a NULL
+>    pointer then print an error message.  Or even potentially NULL.
+>    There are various heuristics to use which mean that "A reasonable
+>    person would think this could be NULL".
+> 
+>    Or another idea would be that we could test patches.  Right now we
+>    don't really have a way to test these.  But, of course, we wish we
+>    did.
+> 
+> It's not super likely that we would have committed the NULL deref
+> patch.  I would have caught that one if you didn't and Fabio likely
+> would have as well.  But I like to remove the human error whenever I
+> can.
+> 
+> regards,
+> dan carpenter
 
-Yes, I have the example that you are asking for. It's that commit=20
-633b0616cfe0 from Ira Weiny.
-
-Let me copy and paste it here for your convenience...
-
-diff --git a/arch/x86/kernel/cpu/sgx/ioctl.c b/arch/x86/kernel/cpu/sgx/
-ioctl.c
-index 90a5caf76939..2e10367ea66c 100644
-=2D-- a/arch/x86/kernel/cpu/sgx/ioctl.c
-+++ b/arch/x86/kernel/cpu/sgx/ioctl.c
-@@ -604,7 +604,6 @@ static long sgx_ioc_enclave_init(struct sgx_encl *encl,=
-=20
-void __user *arg)
- {
-        struct sgx_sigstruct *sigstruct;
-        struct sgx_enclave_init init_arg;
-=2D       struct page *initp_page;
-        void *token;
-        int ret;
-=20
-@@ -615,11 +614,15 @@ static long sgx_ioc_enclave_init(struct sgx_encl=20
-*encl, void __user *arg)
-        if (copy_from_user(&init_arg, arg, sizeof(init_arg)))
-                return -EFAULT;
-=20
-=2D       initp_page =3D alloc_page(GFP_KERNEL);
-=2D       if (!initp_page)
-+       /*
-+        * 'sigstruct' must be on a page boundary and 'token' on a 512 byte
-+        * boundary.  kmalloc() will give this alignment when allocating
-+        * PAGE_SIZE bytes.
-+        */
-+       sigstruct =3D kmalloc(PAGE_SIZE, GFP_KERNEL);
-+       if (!sigstruct)
-                return -ENOMEM;
-=20
-=2D       sigstruct =3D kmap(initp_page);
-        token =3D (void *)((unsigned long)sigstruct + PAGE_SIZE / 2);
-        memset(token, 0, SGX_LAUNCH_TOKEN_SIZE);
-=20
-@@ -645,8 +648,7 @@ static long sgx_ioc_enclave_init(struct sgx_encl *encl,=
-=20
-void __user *arg)
-        ret =3D sgx_encl_init(encl, sigstruct, token);
-=20
- out:
-=2D       kunmap(initp_page);
-=2D       __free_page(initp_page);
-+       kfree(sigstruct);
-        return ret;
- }
-
-I think that Coccinelle might understand that "initp_page" is allocated in=
-=20
-the same function where later it is kmap()'ed. But I'm not able to write a=
-=20
-Coccinelle check to find out these kinds of special cases. In these cases=20
-the correct solution is not to use kmap_local_page(). Instead delete the=20
-alloc_page() and use kmalloc().
+I'm sorry about the NULL dereference. I wasn't sure about pnetwork
+and I should've asked. I wanted to ask why pbuf should be removed
+when it was being used for pnetwork but ended up not asking and
+sent a faulty patch. Sorry again and thank you for explaining the
+errors. I will be more careful about memory leaks and dereferencing
+errors. Are there checks that I can run to detect these?
 
 Thanks,
-
-=46abio
-
-
-
+Jaehee
