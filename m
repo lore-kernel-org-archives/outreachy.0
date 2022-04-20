@@ -1,63 +1,171 @@
-Received: from ms.lwn.net (ms.lwn.net [45.79.88.28])
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 89D437A
-	for <outreachy@lists.linux.dev>; Wed, 20 Apr 2022 21:34:31 +0000 (UTC)
-Received: from localhost (mdns.lwn.net [45.79.72.68])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ms.lwn.net (Postfix) with ESMTPSA id DCB90536;
-	Wed, 20 Apr 2022 21:34:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 ms.lwn.net DCB90536
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lwn.net; s=20201203;
-	t=1650490470; bh=6T0lvX8RNX9xGYkNbu6K5mxfaWl3HxhoGMIgYH6RZgk=;
-	h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
-	b=EQpMNXKGIxm38WSQDxnU2OdP/4CzkhHcofv0U0qShswpXUT1Hkk9mmRTNoIfYP7YN
-	 yd7D6NQU2ueg5+AjSzzYWO0YAs3ortCaoNy048kqLPG+qR7KUWMRE7oBBldiOwEbHG
-	 6QPzRlP8bjEAPdGBzvP1d3cj3IgVmxiEezT/GofTarisxddOGNc0uTyrGkE7eyAKaV
-	 xZdO6L0SfWQkgv4rla7xsCk0Wk7jLC/vbX/wzTw/C9+PKc4Fhyc3USGVAHFRu4lKBM
-	 SExjDE70Y7pDHa8oXj/tn1s94SQxyY0T1GS0gdbWrDPOSxwbWn6VnWCvtY832M07Lw
-	 UgolFy9dY8XQg==
-From: Jonathan Corbet <corbet@lwn.net>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 656EA185A;
+	Wed, 20 Apr 2022 22:33:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1650494029; x=1682030029;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=h7ss3pq1fGb/RJBq21Rmn3EWxFU3sDjJBWnaWblVCGI=;
+  b=GwYDyDpjB7nrMhbA5xhMC7Q6tlbCX8mTqXTPWoIu8vk/6HblTODiijuK
+   YQfTJv+G1JUDK53jP2dKd2IOif8RApVefuevyiKScH7Z2sYyHo95Ue0eC
+   TXQyEmGEvzcpWFInJuCnLD5iZeT9lQsKgbpblrrYjVN9+yjunsr4ZUgZK
+   XCO/EkXhUnE60T4zublLSqWZU+KpGXtT1bkmKlaCPw0TfGnXmiRZN0mYO
+   8IbQEuYQmaasUk4cQ1+GZLCQ5M0kKon6AN8E5SV4BBKEpRBjgVW27HVi7
+   luLsqJHOxYgnAxNckdf/nx4obOgWnnHzMJFEBE3lvPhS6engOPj6TL3wZ
+   g==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10323"; a="246056025"
+X-IronPort-AV: E=Sophos;i="5.90,276,1643702400"; 
+   d="scan'208";a="246056025"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Apr 2022 15:33:48 -0700
+X-IronPort-AV: E=Sophos;i="5.90,276,1643702400"; 
+   d="scan'208";a="576833471"
+Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
+  by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Apr 2022 15:33:48 -0700
+Date: Wed, 20 Apr 2022 15:35:28 -0700
+From: Alison Schofield <alison.schofield@intel.com>
 To: Bruno Moreira-Guedes <codeagain@codeagain.dev>
-Cc: linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- outreachy@lists.linux.dev, Bruno's Patch Watchbox
- <patch-reply@codeagain.dev>
-Subject: Re: [PATCH v2 0/2] Docs: Update information at changes.rst
-In-Reply-To: <20220420172731.ru7kfrdkmprybtu7@AN5Bruno>
-References: <cover.1650376049.git.codeagain@codeagain.dev>
- <8735i83xo1.fsf@meer.lwn.net> <20220420172731.ru7kfrdkmprybtu7@AN5Bruno>
-Date: Wed, 20 Apr 2022 15:34:26 -0600
-Message-ID: <878rrz30d9.fsf@meer.lwn.net>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Martyn Welch <martyn@welchs.me.uk>,
+	Manohar Vanga <manohar.vanga@gmail.com>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy@lists.linux.dev,
+	Bruno's Patch Watchbox <patch-reply@codeagain.dev>
+Subject: Re: [PATCH v3 0/3] staging: vme: Cleanup driver tree old structures
+Message-ID: <20220420223528.GA1279659@alison-desk>
+References: <cover.1650321310.git.codeagain@codeagain.dev>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1650321310.git.codeagain@codeagain.dev>
 
-Bruno Moreira-Guedes <codeagain@codeagain.dev> writes:
+On Mon, Apr 18, 2022 at 08:29:49PM -0300, Bruno Moreira-Guedes wrote:
+> This patch series modify the vme_user driver's place in
+> menuconfig (1/3), fixes a missing `depends on` line in a Kconfig file
+> (2/3), and rearrages the directory tree for the driver allowing a more
+> straightforward comprehension of its contents (3/3).
+> 
+> The 'vme_user/' driver is the only remaining vme-family driver in the
+> 'staging/' tree, but its structure, entry in menuconfig and building
+> routines are still attached to the 'vme/' subtree now outside
+> 'staging/'. The present patchset fixes it.
+> 
+> Signed-off-by: Bruno Moreira-Guedes <codeagain@codeagain.dev>
 
-> On Wed, Apr 20, 2022 at 03:35:10AM -0600, Jonathan Corbet wrote:
->> Bruno Moreira-Guedes <codeagain@codeagain.dev> writes:
->> >
->> > The PATCH 1/2 fixes the missing cpio requirement, while PATCH 2/2 fixes
->> > the kernel version reference.
->> >
->> > Signed-off-by: Bruno Moreira-Guedes <codeagain@codeagain.dev>
->> 
->> Patches applied, thanks.
-> Thanks, Jon! I have also been thinking whether this filename
-> ('changes.rst') is a good description of the file contents. Do you think
-> renaming it to something like 'requirements.rst' and updating its
-> references would be a good patch?
+Hi Bruno,
 
-It's best not to rename things unnecessarily, especially relatively
-well-known files that a lot of people expect to find in a specific
-place.  We've done a lot of renaming over the last few years, but this
-is one I might let slide for now.
+I see your follow-on questions to GregKH about the 2 v2's and rolling
+this set. I imagine you are going to work with many maintainers across
+the kernel, so although understanding their processes is interesting and
+useful, at some point just keeping your submittals clean, simple, and
+straightforward is the more efficient path forward. If it were me, I think
+I could get a v4 in GregKHs mailbox quicker than going around with him
+on why his tools don't understand my oddities. (I admire your curiosity,
+seriously! I'm just in a get it done and move on mood.)
 
-Thanks,
+In this case - you can see that this set is confusing because of the
+v2, then v3 of a single patch. I suggest cleaning it up while GregKH is
+sleeping ;) and get a clean v4 in his mbox. 
 
-jon
+Not sure your process - but if you are using git send-email, the 
+--dry-run option is how I do the final eye-balling of what I'm 
+about to send. Try that out.
+
+The changelog below can be more succinct. I made a suggestion below.
+
+> ---
+> CHANGE SUMMARY
+> 
+>   Version:  v1  v2  v3
+> [PATCH 1/3] *   -   *
+> [PATCH 2/3] -   *   *
+> [PATCH 3/3] -   *   *
+> 
+> CHANGELOG
+> [PATCH 0/3] staging: vme: Restructuring menuconfig and tree
+> v1:
+>   Created PATCH 1/3 as a single patch
+> v2:
+>   Added PATCH 2/3 and 3/3, turning it into a patchset
+> v3:
+>   Fixed and improved commit messages according to previous comments by
+>   Greg and Alison (to whom I'm indebted for their kind reviews). The
+>   commit titles got changed to be more specific and use the present
+>   imperative tense as for Alison's suggestions. The message body got
+>   fixed according to Greg formatting comments. The changelogs were moved
+>   to the cover letter as per another suggestion by Alison, and I added
+>   missing details (like the update in the MAINTAINERS I failed to
+>   mention in v2) and made textual improvements for clarity that I also
+>   noticed.
+> 
+> [PATCH 1/3] staging: vme: Move vme_user to staging KConfig
+> v1:
+>  - Sourced "drivers/staging/vme/devices/Kconfig" in
+>    "drivers/staging/Kconfig" and unsourced in "drivers/vme/Kconfig".
+> v3:
+>  - Modified the commit subject and text body.
+> 
+> [PATCH 2/3] staging: vme: Add VME_BUS dependency to Kconfig
+> v2:
+>  - Added this patch to the patchset.
+> v3:
+>  - Modified the commit subject and text body.
+> 
+> [PATCH 3/3] staging: vme: Move 'vme/devices' to 'vme_user/'
+> v2:
+>  - Added this patch to the patchset
+> v3
+>  - Modified the commit subject and text body.
+
+Changes in v4:
+- Remove extraneous patch from set
+
+Changes in v3:
+- Move changelog to cover letter (Alison)
+- Update commit messages and logs (Greg, Alison)
+
+Changes in v2:
+- Add new patch to set: Move 'vme/devices' to 'vme_user/'
+- Add new patch to set: Add VME_BUS dependency to Kconfig
+
+
+**I really want you to get this accepted before the next patch
+comes along and removes the driver entirely :(.
+
+Alison
+
+> 
+> Bruno Moreira-Guedes (3):
+>   staging: vme: Adjusted VME_USER in Kconfig
+>   staging: vme: Fix missing `depends on` at KConfig
+>   staging: vme: "drivers/staging/vme" tree cleanup
+> 
+>  MAINTAINERS                                          | 2 +-
+>  drivers/staging/Kconfig                              | 1 +
+>  drivers/staging/Makefile                             | 2 +-
+>  drivers/staging/vme/Makefile                         | 2 --
+>  drivers/staging/{vme/devices => vme_user}/Kconfig    | 2 +-
+>  drivers/staging/{vme/devices => vme_user}/Makefile   | 0
+>  drivers/staging/{vme/devices => vme_user}/vme_user.c | 0
+>  drivers/staging/{vme/devices => vme_user}/vme_user.h | 0
+>  drivers/vme/Kconfig                                  | 2 --
+>  9 files changed, 4 insertions(+), 7 deletions(-)
+>  delete mode 100644 drivers/staging/vme/Makefile
+>  rename drivers/staging/{vme/devices => vme_user}/Kconfig (93%)
+>  rename drivers/staging/{vme/devices => vme_user}/Makefile (100%)
+>  rename drivers/staging/{vme/devices => vme_user}/vme_user.c (100%)
+>  rename drivers/staging/{vme/devices => vme_user}/vme_user.h (100%)
+> 
+> -- 
+> 2.35.3
+> 
+
+
