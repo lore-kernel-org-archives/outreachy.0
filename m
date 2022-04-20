@@ -1,23 +1,23 @@
 Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 18FB7184A
-	for <outreachy@lists.linux.dev>; Wed, 20 Apr 2022 13:28:05 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D2AC2184A
+	for <outreachy@lists.linux.dev>; Wed, 20 Apr 2022 13:40:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
   d=inria.fr; s=dc;
   h=date:from:to:cc:subject:in-reply-to:message-id:
    references:mime-version;
-  bh=+CoeG1wGEI8/gfMyxtQ5JH5NSEVqNFUDQuUEB1szdvM=;
-  b=AEhXO2mE1hpaKTTPfhCAJm2kDZDm+IKMhPsQCDZfeqrnUOkvF3XHJSft
-   0uWekxsBgStNaOhDaWn4f9+SepJ845Q0i8JhNvEvztlACkGEvBkg8DZoe
-   C2rKv55OG3gHEVEv077nOIw/KnN63OT80cFE6q4+X6CqIIdcGj2M3SCl5
-   U=;
+  bh=9I3bT6dcN2vCZLdK2K7miTQFQ1CYOstV5pWjpPiUb+Y=;
+  b=WNZyopOqnJxaQ0EhlQcHhCW6rNA0BpnSUqA0bIJDlbTQEM3Rt2Cdovry
+   Tutni1e+2r9GTbhxHgPRi8GoQGNbn11m+/rdD/n/BRa1s4Wzw9FP785jj
+   ys0FAO5f9ksBA0jBF9qSnnCdQEI6Fv4lliFLxxLcUZLBl5iqvKjU2Yv+0
+   I=;
 Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
 X-IronPort-AV: E=Sophos;i="5.90,275,1643670000"; 
-   d="scan'208";a="32524915"
+   d="scan'208";a="32527674"
 Received: from 203.107.68.85.rev.sfr.net (HELO hadrien) ([85.68.107.203])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Apr 2022 15:28:03 +0200
-Date: Wed, 20 Apr 2022 15:28:03 +0200 (CEST)
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Apr 2022 15:40:10 +0200
+Date: Wed, 20 Apr 2022 15:40:10 +0200 (CEST)
 From: Julia Lawall <julia.lawall@inria.fr>
 X-X-Sender: jll@hadrien
 To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
@@ -28,7 +28,7 @@ cc: Julia Lawall <julia.lawall@inria.fr>, ira.weiny@intel.com,
     linux-kernel@vger.kernel.org
 Subject: Re: [PATCH v2] xen:  Convert kmap() to kmap_local_page()
 In-Reply-To: <2940450.687JKscXgg@leap>
-Message-ID: <alpine.DEB.2.22.394.2204201525080.2937@hadrien>
+Message-ID: <alpine.DEB.2.22.394.2204201538560.2937@hadrien>
 References: <20220419234328.10346-1-eng.alaamohamedsoliman.am@gmail.com> <alpine.DEB.2.22.394.2204200759080.2937@hadrien> <2940450.687JKscXgg@leap>
 User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 Precedence: bulk
@@ -37,12 +37,12 @@ List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-65486685-1650461283=:2937"
+Content-Type: multipart/mixed; boundary="8323329-1715972237-1650462010=:2937"
 
   This message is in MIME format.  The first part should be readable text,
   while the remaining parts are likely unreadable without MIME-aware tools.
 
---8323329-65486685-1650461283=:2937
+--8323329-1715972237-1650462010=:2937
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8BIT
 
@@ -86,11 +86,6 @@ On Wed, 20 Apr 2022, Fabio M. De Francesco wrote:
 >
 > Only a minor objection... it doesn't tell when 'e2' has been allocated
 > within the same function where the kmap() call is.
-
-OK, thanks for pointing that out.  That seems like a key point that should
-be mentioned in log messages.  It's not even visible in the context lines
-around the patch.
-
 >
 > In the particular case that I cite above, I'd prefer to remove the
 > allocation of the page (say with alloc_page()) and convert kmap() /kunmap()
@@ -106,9 +101,18 @@ around the patch.
 > argument to this function) and, if so, propose a replacement with
 > kmalloc()?
 
-Sure.  I'll take a look at the precise example Alaa started with and see
-if I can come up with something.
+It looks complex in this case, because the allocation is in another
+function, and it is passed to another function.
 
-thanks,
 julia
---8323329-65486685-1650461283=:2937--
+
+
+>
+> Thanks,
+>
+> Fabio
+>
+>
+>
+>
+--8323329-1715972237-1650462010=:2937--
