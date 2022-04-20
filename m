@@ -1,92 +1,98 @@
-Received: from mail-wr1-f54.google.com (mail-wr1-f54.google.com [209.85.221.54])
+Received: from mail-qk1-f182.google.com (mail-qk1-f182.google.com [209.85.222.182])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5DE35184E
-	for <outreachy@lists.linux.dev>; Tue, 19 Apr 2022 23:43:33 +0000 (UTC)
-Received: by mail-wr1-f54.google.com with SMTP id m14so24442226wrb.6
-        for <outreachy@lists.linux.dev>; Tue, 19 Apr 2022 16:43:33 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6B1967A
+	for <outreachy@lists.linux.dev>; Wed, 20 Apr 2022 04:46:52 +0000 (UTC)
+Received: by mail-qk1-f182.google.com with SMTP id b68so473457qkc.4
+        for <outreachy@lists.linux.dev>; Tue, 19 Apr 2022 21:46:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=HKQLOdPaQ3Mw3cBSPXtTxWv22p46uaNKqi/2UnH+TaU=;
-        b=W+DL2plQDmeF6M+8AnbzgopnqINjz5xpZNqMbikOKgoHFPRR+2r5EWaHfQkEeeyh8Y
-         4x3B0Cqy4qQjSieeCV93kllUXHcH1UEDOyJ4H3wi3nGkncyyG69gMCxdhJrYyUgoMASs
-         byoRivqsbbPGEE5WgsXzZwjw4W9tp8cTrS2PGq8BAEhXE767YJOJn1HZSX0oG6fO7+gi
-         xLn3V8FkF2M8NwqWPNExwEjR/LxGIsYI7oaOyzgmVo32APXgz+OmYl1Y48HnpBXCupPQ
-         yXxgbu5sru6YT/MpEjkix0vIoBcBKYwhlN6gKA5aSrgKRu9UJZxn3uW2VAIeWPPrevdr
-         3hHg==
+        h=date:from:to:subject:message-id:mime-version:content-disposition;
+        bh=1ylqEqxzb9r+YeMoJNAalBpdnk8Al8y9yQpbE6jYWN8=;
+        b=ePQtUR0CT/pXx6sb2HBbfZFx3TyruHPu1U/fHrtcjobRnqdpSw9NZYm7B0uhmGJJZp
+         IM4T0mFJwQxroQgOl55UY+rnSD71PJPd54SFICQe0uDW2E2MtGigv3agCYkGDJZgOTsN
+         wugqfPLu0axe1YENOfrYtUzxGV0HJjTTZpWDpQ85/VdwM0RcMJ0x+WiP+LH4Z5zM3GPu
+         kytAFF9wq9wdhYAulcnFv24lsrLqEBxuk/cvDzTUXZp6IvAP50YlG+rXtFwUD2EU26S9
+         kiyeFeyF1GXs1G7GVxAD4eSapPJx1Q45QwRi+KO/H/zh3nWERgX6/iOW0iDQEPp7fO8p
+         G86Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=HKQLOdPaQ3Mw3cBSPXtTxWv22p46uaNKqi/2UnH+TaU=;
-        b=PJZ6xFqiTSu7+HON90mHpxtCar1iTtyBKqaB6LTRe94GGnJ3SoYCEO9NbgSrkQYt7H
-         Gy8NHgKJnA+4R8zd+AoVV4jwY9GmWtW3BNKCgHtO//he07CGVAswVub/TDuI0FYvx43q
-         p20MvVNZjOokhQSM7BIX+Hng8AlRFj9DvLBZzA66cdRdZaXEbwkwTGp4jiQLUSmcZ7wT
-         UZeZVWddAf8Na7e0nK0ZO8vxGpxOnpn4gIiXbgFDjFwDRkCoIyg3sITsgHNXaAR2epE+
-         1eYZcnpGLZjiwyLWpxo3o0ys8MNyskGG9xJAW9JUKZTMV+NnykqUfGTk1qY0To0yk9Xs
-         oowQ==
-X-Gm-Message-State: AOAM530z4LnCbAfXbqHI+OiCcpkliKV2OsnPRIwSTht3rp7hixZj3a59
-	pDmAznTbzoQetL3u62z0bWk=
-X-Google-Smtp-Source: ABdhPJwAIcFXMCqod1EDSxcxDLBq3kQdWuUNKRazc7JRrvo6vjc1W5NvWFPzXoUkm5DwO/gOBUTKUg==
-X-Received: by 2002:a5d:45ce:0:b0:207:9e7e:9a4b with SMTP id b14-20020a5d45ce000000b002079e7e9a4bmr13248177wrs.559.1650411811661;
-        Tue, 19 Apr 2022 16:43:31 -0700 (PDT)
-Received: from alaa-emad ([102.41.109.205])
-        by smtp.gmail.com with ESMTPSA id x4-20020adfdd84000000b00207b60ed68esm13255849wrl.100.2022.04.19.16.43.31
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition;
+        bh=1ylqEqxzb9r+YeMoJNAalBpdnk8Al8y9yQpbE6jYWN8=;
+        b=M79C2sl9qlcZeOh3m+KwDaKuxr/K1tbNkZo0E4WjwssB4yf10GIC+t+3XDPmqu+uYr
+         gS1S9ZGBqJExoXwDTULd5J/fp1WT0/gLDLXwBSJAYleBr3n2ydMfNWHZVVvrgzcs9bcb
+         5HAEhgvEEM2WKS6asXzcj3iF3ntH6jKRwCrB/iChqh5vZgh98sQXM3eLbzbkyKU/TTTG
+         0WQ8EX9QT/uEzZWzHhMHCxRcppk7PRaSjmCsyg8DXDD8m2768MClJK42qVftri6cxCcp
+         XWTnd63jdo6pm4C0TKPEvX1Zh2xVB2eIwxR3365YoacfNlldZNC7cgdLCkgNd/h9VGtM
+         QrHA==
+X-Gm-Message-State: AOAM532Uc+ql21k7U6KaEtX+zoAYgpj0yH8ViUZKHbhsQQ547MSz+c/0
+	qa2KPh5JiEIyK1HmGy4TsmmA9i+QCOY5W1c/
+X-Google-Smtp-Source: ABdhPJwBdEI+HlfQ3U4jcPWiC4cWilA2sEUfPfvPJFZ44Qb6cJ/Q5f6ItzIb8ocTORISD7hybvhY5g==
+X-Received: by 2002:a05:620a:6ce:b0:69c:c0b4:ed2b with SMTP id 14-20020a05620a06ce00b0069cc0b4ed2bmr11647512qky.718.1650430011072;
+        Tue, 19 Apr 2022 21:46:51 -0700 (PDT)
+Received: from jaehee-ThinkPad-X1-Extreme ([2607:fb90:50e7:2813:787e:11ec:44cf:aee6])
+        by smtp.gmail.com with ESMTPSA id c10-20020ac87dca000000b002f2067229bcsm1184223qte.77.2022.04.19.21.46.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 19 Apr 2022 16:43:31 -0700 (PDT)
-From: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-To: outreachy@lists.linux.dev
-Cc: boris.ostrovsky@oracle.com,
-	jgross@suse.com,
-	sstabellini@kernel.org,
-	xen-devel@lists.xenproject.org,
-	linux-kernel@vger.kernel.org,
-	ira.weiny@intel.com,
-	eng.alaamohamedsoliman.am@gmail.com
-Subject: [PATCH v2] xen:  Convert kmap() to kmap_local_page()
-Date: Wed, 20 Apr 2022 01:43:28 +0200
-Message-Id: <20220419234328.10346-1-eng.alaamohamedsoliman.am@gmail.com>
-X-Mailer: git-send-email 2.35.2
+        Tue, 19 Apr 2022 21:46:50 -0700 (PDT)
+Date: Wed, 20 Apr 2022 00:46:47 -0400
+From: Jaehee Park <jhpark1013@gmail.com>
+To: outreachy@lists.linux.dev, Julia Denham <jdenham@redhat.com>,
+	Roopa Prabhu <roopa.prabhu@gmail.com>,
+	Stefano Brivio <sbrivio@redhat.com>, netdev@vger.kernel.org,
+	jhpark1013@gmail.com
+Subject: [PATCH] [net-next] selftests: net: vrf_strict_mode_test: add support
+ to select a test to run
+Message-ID: <20220420044647.GA1288137@jaehee-ThinkPad-X1-Extreme>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-kmap() is being deprecated and these usages are all local to the thread
-so there is no reason kmap_local_page() can't be used.
+Add a boilerplate test loop to run all tests in
+vrf_strict_mode_test.sh.
 
-Replace kmap() calls with kmap_local_page().
-
-Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+Signed-off-by: Jaehee Park <jhpark1013@gmail.com>
 ---
-changes in V2:
-	-edit commit subject
-	-edit commit message
----
- drivers/xen/gntalloc.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ .../testing/selftests/net/vrf_strict_mode_test.sh  | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/xen/gntalloc.c b/drivers/xen/gntalloc.c
-index 4849f94372a4..55acb32842a3 100644
---- a/drivers/xen/gntalloc.c
-+++ b/drivers/xen/gntalloc.c
-@@ -178,9 +178,9 @@ static void __del_gref(struct gntalloc_gref *gref)
- 	unsigned long addr;
+diff --git a/tools/testing/selftests/net/vrf_strict_mode_test.sh b/tools/testing/selftests/net/vrf_strict_mode_test.sh
+index 865d53c1781c..116ca43381b5 100755
+--- a/tools/testing/selftests/net/vrf_strict_mode_test.sh
++++ b/tools/testing/selftests/net/vrf_strict_mode_test.sh
+@@ -14,6 +14,8 @@ INIT_NETNS_NAME="init"
  
- 	if (gref->notify.flags & UNMAP_NOTIFY_CLEAR_BYTE) {
--		uint8_t *tmp = kmap(gref->page);
-+		uint8_t *tmp = kmap_local_page(gref->page);
- 		tmp[gref->notify.pgoff] = 0;
--		kunmap(gref->page);
-+		kunmap_local(tmp);
- 	}
- 	if (gref->notify.flags & UNMAP_NOTIFY_SEND_EVENT) {
- 		notify_remote_via_evtchn(gref->notify.event);
+ PAUSE_ON_FAIL=${PAUSE_ON_FAIL:=no}
+ 
++TESTS="vrf_strict_mode_tests_init vrf_strict_mode_tests_testns vrf_strict_mode_tests_mix"
++
+ log_test()
+ {
+ 	local rc=$1
+@@ -391,7 +393,17 @@ fi
+ cleanup &> /dev/null
+ 
+ setup
+-vrf_strict_mode_tests
++for t in $TESTS
++do
++	case $t in
++	vrf_strict_mode_tests_init|vrf_strict_mode_init) vrf_strict_mode_tests_init;;
++	vrf_strict_mode_tests_testns|vrf_strict_mode_testns) vrf_strict_mode_tests_testns;;
++	vrf_strict_mode_tests_mix|vrf_strict_mode_mix) vrf_strict_mode_tests_mix;;
++
++	help) echo "Test names: $TESTS"; exit 0;;
++
++	esac
++done
+ cleanup
+ 
+ print_log_test_results
 -- 
-2.35.2
+2.25.1
 
