@@ -1,30 +1,28 @@
 Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 963CA185B;
-	Wed, 20 Apr 2022 15:15:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8AD58C385A1;
-	Wed, 20 Apr 2022 15:15:37 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B398C1867;
+	Wed, 20 Apr 2022 16:33:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0B218C385A1;
+	Wed, 20 Apr 2022 16:33:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1650467738;
-	bh=s7kJbmHO4oxkSYmU5fDmutKf8GGc1BWHsk8DFVUqsDI=;
+	s=korg; t=1650472412;
+	bh=3gwS24bB34KTAmVZROiegu+rn3qGs5bkKsOicKSeKh4=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=CRJXGImARYU+HNAm1q0eaA8GkeFhjY2BSnH+foEDcFW9Yyais53+e+7qXju5J55DQ
-	 c7V+G0UDQ89k0bBaMxyECji33PIijivPSB30G668zaqFUyu0B9tbuAHPwIRdGhYY9w
-	 Hb1NHqdD7rCQdzUFkph4cQLXHV/gCo48lxg3C6rc=
-Date: Wed, 20 Apr 2022 17:15:34 +0200
+	b=i6piH7xtk3s1u5xbdcgvgatfLteKpA9aG0lQenXdczXqlblSBY1h5DpkS7EJHwuzi
+	 9EoGKtzLb5ifOdLj/XGFALrKpGVD96byHKTStXnaN2DAbS32fYqV/HFlJAjZZeDnWw
+	 mSyo1xq5pJxz9gXlohDikrpK67osDQ6d+fjG67Ww=
+Date: Wed, 20 Apr 2022 18:33:29 +0200
 From: Greg KH <gregkh@linuxfoundation.org>
 To: Jaehee Park <jhpark1013@gmail.com>
-Cc: Alex Elder <elder@ieee.org>, johan@kernel.org, elder@kernel.org,
-	greybus-dev@lists.linaro.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy@lists.linux.dev,
-	Dan Carpenter <dan.carpenter@oracle.com>
-Subject: Re: [PATCH v3 2/2] staging: greybus: remove empty callback function
-Message-ID: <YmAjliv4DdTY+JvZ@kroah.com>
-References: <cover.1649824370.git.jhpark1013@gmail.com>
- <12037ae2502ad7d0311bcdf2178c3d2156293236.1649824370.git.jhpark1013@gmail.com>
- <a4e5c567-63dd-f7de-114b-a357075444a2@ieee.org>
- <20220414200932.GA4147124@jaehee-ThinkPad-X1-Extreme>
+Cc: Larry.Finger@lwfinger.net, phil@philpotter.co.uk,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy@lists.linux.dev, Pavel Skripkin <paskripkin@gmail.com>
+Subject: Re: [PATCH v3 1/7] staging: r8188eu: remove unused member
+ free_bss_buf
+Message-ID: <YmA12QUKhueVTOfC@kroah.com>
+References: <cover.1650392020.git.jhpark1013@gmail.com>
+ <3c5a510938ac395a13bb09c0de1868cce8ca3dd8.1650392020.git.jhpark1013@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -33,27 +31,43 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220414200932.GA4147124@jaehee-ThinkPad-X1-Extreme>
+In-Reply-To: <3c5a510938ac395a13bb09c0de1868cce8ca3dd8.1650392020.git.jhpark1013@gmail.com>
 
-On Thu, Apr 14, 2022 at 04:09:32PM -0400, Jaehee Park wrote:
-> On Wed, Apr 13, 2022 at 07:48:03AM -0500, Alex Elder wrote:
-> > On 4/12/22 11:38 PM, Jaehee Park wrote:
-> > > Remove the optional remove callback for the soc_codec_dev_gbaudio
-> > > structure. The only place it is referenced is
-> > > snd_soc_component_remove() which is only called if the sound_component
-> > > pointer is non-null. The null function pointers here can be optionally
-> > > ommitted. When a sound component is registered this way, the remove
-> > > callback is optional. We can safely remove the whole gbcodec_remove
-> > > function, which used to be an empty function with a void return type.
-> > 
-> > Now I think your description is a little long...  But that's OK.
-> > 
-> > This looks good to me.  Thank you for responding to all our
-> > feedback.
-> > 
-> > Reviewed-by: Alex Elder <elder@linaro.org>
+On Tue, Apr 19, 2022 at 02:19:32PM -0400, Jaehee Park wrote:
+> The free_bss_buf member of pmlmepriv is unused. Remove all related
+> lines.
 > 
-> hi Greg, I saw that this was past on to staging-next already. Is it too 
-> late to add Alex to the reviewed by? 
+> Suggested-by: Pavel Skripkin <paskripkin@gmail.com>
+> Signed-off-by: Jaehee Park <jhpark1013@gmail.com>
+> ---
+>  drivers/staging/r8188eu/include/rtw_mlme.h |  1 -
+>  drivers/staging/r8188eu/core/rtw_mlme.c    | 21 +--------------------
+>  2 files changed, 1 insertion(+), 21 deletions(-)
+> 
+> diff --git a/drivers/staging/r8188eu/include/rtw_mlme.h b/drivers/staging/r8188eu/include/rtw_mlme.h
+> index 1dc1fbf049af..0f03ac43079c 100644
+> --- a/drivers/staging/r8188eu/include/rtw_mlme.h
+> +++ b/drivers/staging/r8188eu/include/rtw_mlme.h
+> @@ -319,7 +319,6 @@ struct mlme_priv {
+>  	struct list_head *pscanned;
+>  	struct __queue free_bss_pool;
+>  	struct __queue scanned_queue;
+> -	u8 *free_bss_buf;
+>  	u8	key_mask; /* use to restore wep key after hal_init */
+>  	u32	num_of_scanned;
+>  
+> diff --git a/drivers/staging/r8188eu/core/rtw_mlme.c b/drivers/staging/r8188eu/core/rtw_mlme.c
+> index 3e9882f89f76..8af11626a3e7 100644
+> --- a/drivers/staging/r8188eu/core/rtw_mlme.c
+> +++ b/drivers/staging/r8188eu/core/rtw_mlme.c
+> @@ -33,8 +33,7 @@ u8 rtw_to_roaming(struct adapter *adapter)
+>  static int _rtw_init_mlme_priv(struct adapter *padapter)
+>  {
+>  	int	i;
+> -	u8	*pbuf;
+> -	struct wlan_network	*pnetwork;
+> +	struct wlan_network	*pnetwork = NULL;
 
-Yes, sorry.
+Why did you add this line?  It caused the real error to be ignored that
+the compiler was trying to tell you :(
+
