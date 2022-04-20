@@ -1,100 +1,98 @@
-Received: from mail-ej1-f45.google.com (mail-ej1-f45.google.com [209.85.218.45])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E4ED37A
-	for <outreachy@lists.linux.dev>; Wed, 20 Apr 2022 05:01:29 +0000 (UTC)
-Received: by mail-ej1-f45.google.com with SMTP id lc2so1046165ejb.12
-        for <outreachy@lists.linux.dev>; Tue, 19 Apr 2022 22:01:29 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6E4837A
+	for <outreachy@lists.linux.dev>; Wed, 20 Apr 2022 06:03:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
-        bh=NpFVcX/rQ4/pDaNkozRjOJ0rrg5LCyeh7gZ9ZrDTO40=;
-        b=d3nWhttd5RRkY9ZRXXFek2pXWjALd/FZbysGHwVWyAPSLQsiopcIonJW2Cr+QkIYmS
-         tXf8InTOePvpULLpqWk9NvSdrjZXkVGLUTEiJupK+DBUp1E/AfjgJo3hym3kzuFy2ckX
-         RrsVBhK7NAdvJWCWZj6yzR9sVU5tAtAKRoFEHKM35cXOvXzsQY+7HZLfJ3QHkOqx52vv
-         Ml024GGF6BPU6PQ+AwljljbBBWs06bCzqITbmT76GWIqDt5UWtcBR7hTA7gsLTfEUsZR
-         hgLLDRt4C+FOuf/wBrvbHfnPyiCUo04xSjD1KK5G+4nuMKyHhiCcdHWr4i35fSqnCvAj
-         hmIw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to;
-        bh=NpFVcX/rQ4/pDaNkozRjOJ0rrg5LCyeh7gZ9ZrDTO40=;
-        b=LdruOTGnvYipBaSyoQpvyhoDaZPZYV1FtLTE0+N9e62EQoAt3YdoRWfFxutBjQHTCQ
-         goUR0NbdqyDv8MUiJElMXvWlp5sX8u0IN0V1GDyC/V+Ljzv83KcSE4BFLvhtzSU7qp5+
-         Ghsg9JuVkbIYQ5WXytETOOlOsszJqoRXWQrvjuWxLynjGBOJ6q5KYEAtypjyOCsXISGb
-         2FiJcwi3yZP/LvSDe367HSY1Fby/n0FzgpO4MA3xmBC6CuRAI3XdZvciyLCS88iKMIQ8
-         rmpq0/cV5xQP98sGs2vhxmx7Ha+iZZaEUSInM3/QJVvyDjBw+rd8WmQeybHU61sV6f+X
-         04aQ==
-X-Gm-Message-State: AOAM530L27AKk/BhShDH/IgSkBPoWel1Z6l5Ism0owOh0kQkJ3v1Inq+
-	NafmfngN2xcowYZkDEGIA8kColb/yumnJt94fBlSNyKgJjtP8A==
-X-Google-Smtp-Source: ABdhPJxo5z09Cj7K/MMsHAxFatlz6zMbXHmRmLITft3p/H0sNoakLV9p3Agenl0JkbOZmKKUmIlyU7ePDG5OKuoEVYU=
-X-Received: by 2002:a17:906:36c8:b0:6e7:a66f:766e with SMTP id
- b8-20020a17090636c800b006e7a66f766emr16884096ejc.354.1650430887741; Tue, 19
- Apr 2022 22:01:27 -0700 (PDT)
+  d=inria.fr; s=dc;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=AOOcnU+E44vIs+pheMoJXhmNTxpxQArBK8PCjZDPu1k=;
+  b=JeAqI8DLZD09zSdr45+0R8EO5Cgdby5+SpBtSnfHFkLwVpvLlmM/8hJ9
+   wfe3mkqS1RL5WtqKsk7VTWq8kMEy8kh2kMthaDBOjZovZNbHjvj+M86gZ
+   koeT8tRdLUdXrJXhjOnVGaG2G2dAAAAGX9BQtqO3MLoqF5FQ2TTUjsuDn
+   A=;
+Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="5.90,274,1643670000"; 
+   d="scan'208";a="32427415"
+Received: from 203.107.68.85.rev.sfr.net (HELO hadrien) ([85.68.107.203])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Apr 2022 08:03:05 +0200
+Date: Wed, 20 Apr 2022 08:03:05 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+cc: outreachy@lists.linux.dev, boris.ostrovsky@oracle.com, jgross@suse.com, 
+    sstabellini@kernel.org, xen-devel@lists.xenproject.org, 
+    linux-kernel@vger.kernel.org, ira.weiny@intel.com
+Subject: Re: [PATCH v2] xen:  Convert kmap() to kmap_local_page()
+In-Reply-To: <20220419234328.10346-1-eng.alaamohamedsoliman.am@gmail.com>
+Message-ID: <alpine.DEB.2.22.394.2204200759080.2937@hadrien>
+References: <20220419234328.10346-1-eng.alaamohamedsoliman.am@gmail.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-References: <20220420045512.GA1289782@jaehee-ThinkPad-X1-Extreme>
-In-Reply-To: <20220420045512.GA1289782@jaehee-ThinkPad-X1-Extreme>
-From: Jaehee <jhpark1013@gmail.com>
-Date: Wed, 20 Apr 2022 01:01:16 -0400
-Message-ID: <CAA1TwFDXYFm4HaTuka_0ZcdD0BENwbCAGDKF44=_wpP3nTiWpg@mail.gmail.com>
-Subject: Re: [PATCH net-next] selftests: net: vrf_strict_mode_test: add
- support to select a test to run
-To: Outreachy Linux Kernel <outreachy@lists.linux.dev>, Julia Denham <jdenham@redhat.com>, 
-	Roopa Prabhu <roopa.prabhu@gmail.com>, Stefano Brivio <sbrivio@redhat.com>, netdev@vger.kernel.org, 
-	Jaehee Park <jhpark1013@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-
-Sorry, I sent two of the same patch by accident. Please ignore this one.
+Content-Type: text/plain; charset=US-ASCII
 
 
-On Wed, Apr 20, 2022 at 12:55 AM Jaehee Park <jhpark1013@gmail.com> wrote:
+
+On Wed, 20 Apr 2022, Alaa Mohamed wrote:
+
+> kmap() is being deprecated and these usages are all local to the thread
+> so there is no reason kmap_local_page() can't be used.
 >
-> Add a boilerplate test loop to run all tests in
-> vrf_strict_mode_test.sh.
+> Replace kmap() calls with kmap_local_page().
+
+OK, so from a Coccinelle point of view, could we do
+
+@@
+expression e1,e2,x,f;
+@@
+
+e1 =
+- kmap
++ kmap_local_page
+    (e2)
+... when != x = e1 // not stored in any location and not passed to another function
+    when != f(...,e1,...)
+    when != x = e2
+    when != f(...,e2,...)
+-kunmap(e2)
++kunmap_local(e1)
+
+julia
+
 >
-> Signed-off-by: Jaehee Park <jhpark1013@gmail.com>
+> Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
 > ---
->  .../testing/selftests/net/vrf_strict_mode_test.sh  | 14 +++++++++++++-
->  1 file changed, 13 insertions(+), 1 deletion(-)
+> changes in V2:
+> 	-edit commit subject
+> 	-edit commit message
+> ---
+>  drivers/xen/gntalloc.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 >
-> diff --git a/tools/testing/selftests/net/vrf_strict_mode_test.sh b/tools/testing/selftests/net/vrf_strict_mode_test.sh
-> index 865d53c1781c..116ca43381b5 100755
-> --- a/tools/testing/selftests/net/vrf_strict_mode_test.sh
-> +++ b/tools/testing/selftests/net/vrf_strict_mode_test.sh
-> @@ -14,6 +14,8 @@ INIT_NETNS_NAME="init"
+> diff --git a/drivers/xen/gntalloc.c b/drivers/xen/gntalloc.c
+> index 4849f94372a4..55acb32842a3 100644
+> --- a/drivers/xen/gntalloc.c
+> +++ b/drivers/xen/gntalloc.c
+> @@ -178,9 +178,9 @@ static void __del_gref(struct gntalloc_gref *gref)
+>  	unsigned long addr;
 >
->  PAUSE_ON_FAIL=${PAUSE_ON_FAIL:=no}
->
-> +TESTS="vrf_strict_mode_tests_init vrf_strict_mode_tests_testns vrf_strict_mode_tests_mix"
-> +
->  log_test()
->  {
->         local rc=$1
-> @@ -391,7 +393,17 @@ fi
->  cleanup &> /dev/null
->
->  setup
-> -vrf_strict_mode_tests
-> +for t in $TESTS
-> +do
-> +       case $t in
-> +       vrf_strict_mode_tests_init|vrf_strict_mode_init) vrf_strict_mode_tests_init;;
-> +       vrf_strict_mode_tests_testns|vrf_strict_mode_testns) vrf_strict_mode_tests_testns;;
-> +       vrf_strict_mode_tests_mix|vrf_strict_mode_mix) vrf_strict_mode_tests_mix;;
-> +
-> +       help) echo "Test names: $TESTS"; exit 0;;
-> +
-> +       esac
-> +done
->  cleanup
->
->  print_log_test_results
+>  	if (gref->notify.flags & UNMAP_NOTIFY_CLEAR_BYTE) {
+> -		uint8_t *tmp = kmap(gref->page);
+> +		uint8_t *tmp = kmap_local_page(gref->page);
+>  		tmp[gref->notify.pgoff] = 0;
+> -		kunmap(gref->page);
+> +		kunmap_local(tmp);
+>  	}
+>  	if (gref->notify.flags & UNMAP_NOTIFY_SEND_EVENT) {
+>  		notify_remote_via_evtchn(gref->notify.event);
 > --
-> 2.25.1
+> 2.35.2
+>
+>
 >
