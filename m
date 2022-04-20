@@ -1,118 +1,134 @@
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ej1-f51.google.com (mail-ej1-f51.google.com [209.85.218.51])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D2AC2184A
-	for <outreachy@lists.linux.dev>; Wed, 20 Apr 2022 13:40:12 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9C3BB184A
+	for <outreachy@lists.linux.dev>; Wed, 20 Apr 2022 13:55:38 +0000 (UTC)
+Received: by mail-ej1-f51.google.com with SMTP id r13so3720522ejd.5
+        for <outreachy@lists.linux.dev>; Wed, 20 Apr 2022 06:55:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=9I3bT6dcN2vCZLdK2K7miTQFQ1CYOstV5pWjpPiUb+Y=;
-  b=WNZyopOqnJxaQ0EhlQcHhCW6rNA0BpnSUqA0bIJDlbTQEM3Rt2Cdovry
-   Tutni1e+2r9GTbhxHgPRi8GoQGNbn11m+/rdD/n/BRa1s4Wzw9FP785jj
-   ys0FAO5f9ksBA0jBF9qSnnCdQEI6Fv4lliFLxxLcUZLBl5iqvKjU2Yv+0
-   I=;
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="5.90,275,1643670000"; 
-   d="scan'208";a="32527674"
-Received: from 203.107.68.85.rev.sfr.net (HELO hadrien) ([85.68.107.203])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Apr 2022 15:40:10 +0200
-Date: Wed, 20 Apr 2022 15:40:10 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-cc: Julia Lawall <julia.lawall@inria.fr>, ira.weiny@intel.com, 
-    Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>, 
-    outreachy@lists.linux.dev, boris.ostrovsky@oracle.com, jgross@suse.com, 
-    sstabellini@kernel.org, xen-devel@lists.xenproject.org, 
-    linux-kernel@vger.kernel.org
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=lWkDf0wNceWcaf4i2M1FdHierloyPBoW31t9T2JLGrs=;
+        b=MMLAf5NoGw56Pzvcxrd5pY9+RhqwItSeA0OHHxL1ivLiEGGdjUaxH+oPSJccQLbtkn
+         jqSvrv0+NgCPeCx1Tq8ErwuVVY+ZEe431Iz58dHu7LSBisKz0idcCiHGFmTSZ0KXHI5S
+         zsSQrw9kn5p8BtVCZe7iVkRyOUB+/9/e4nx9Cd2mH6A6kKMpXdkONZKiEhcx/kanQ/Zb
+         7/WKktk6Mxp4M53vfXEfzUFgnxt5gi5ePPpqMQjIYdY3uOf5q9+5sWqb0a3adab0WOQu
+         5iswm3+ZIIUtQqotZWENSzvIV1k4O52iky9KWA24KAdVQlCwa+33sDpfS990ze9syLqL
+         cTqw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=lWkDf0wNceWcaf4i2M1FdHierloyPBoW31t9T2JLGrs=;
+        b=RFAV8j1K0wokzJxs5G1KB4YbNTYYuYv9pFFw8icHqNXrV/sR1pYCcBmdYvhdLVaFue
+         yto5FxeV1nWnUa1tjblzL47s1NfDqP+KU9GlVox3gwtuGghd09zro8g4XvFgJ/DNzesZ
+         RwtfxRFD7M64g3/pJlIgJlkIKt8JlseEOkwdOredyD42X1tOhMhHmDoRgeIVBEdfj2/G
+         mXYbKZrlnhqpLOULe4PDOzw0SypDjC39aaN9G9lh/WqG1hqa4Foq7OrgIikDe5Uk1fk/
+         21qPQUxYumUVhETE1stExAdn7ky2wHCZPKh7hy+wUq9u4l7gOBeeFKayBOiPunyNbjb0
+         bFiw==
+X-Gm-Message-State: AOAM531eKi5HdpQG8aPCukJTfrnKJnHsoCjFcJd/PRX2LJOf3PnQmb5C
+	wSLLS9c3u5j/5ScV9xZcxKY=
+X-Google-Smtp-Source: ABdhPJz0c2WM3jXMhp3SbAHw3bgGqgx8hp0cdYVR6eNckJU3LJwiBiMvAH6WyMFGZfERJkze9g8T4Q==
+X-Received: by 2002:a17:907:6d23:b0:6d9:ac9d:222 with SMTP id sa35-20020a1709076d2300b006d9ac9d0222mr18765799ejc.595.1650462936798;
+        Wed, 20 Apr 2022 06:55:36 -0700 (PDT)
+Received: from leap.localnet (host-79-50-86-254.retail.telecomitalia.it. [79.50.86.254])
+        by smtp.gmail.com with ESMTPSA id x19-20020a05640226d300b004228faf83desm8275806edd.12.2022.04.20.06.55.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 20 Apr 2022 06:55:35 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: Julia Lawall <julia.lawall@inria.fr>, ira.weiny@intel.com
+Cc: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>, outreachy@lists.linux.dev, boris.ostrovsky@oracle.com, jgross@suse.com, sstabellini@kernel.org, xen-devel@lists.xenproject.org, linux-kernel@vger.kernel.org
 Subject: Re: [PATCH v2] xen:  Convert kmap() to kmap_local_page()
-In-Reply-To: <2940450.687JKscXgg@leap>
-Message-ID: <alpine.DEB.2.22.394.2204201538560.2937@hadrien>
-References: <20220419234328.10346-1-eng.alaamohamedsoliman.am@gmail.com> <alpine.DEB.2.22.394.2204200759080.2937@hadrien> <2940450.687JKscXgg@leap>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+Date: Wed, 20 Apr 2022 15:55:34 +0200
+Message-ID: <3990312.6PsWsQAL7t@leap>
+In-Reply-To: <alpine.DEB.2.22.394.2204201538560.2937@hadrien>
+References: <20220419234328.10346-1-eng.alaamohamedsoliman.am@gmail.com> <2940450.687JKscXgg@leap> <alpine.DEB.2.22.394.2204201538560.2937@hadrien>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-1715972237-1650462010=:2937"
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
-
---8323329-1715972237-1650462010=:2937
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8BIT
-
-
-
-On Wed, 20 Apr 2022, Fabio M. De Francesco wrote:
-
-> On mercoledì 20 aprile 2022 08:03:05 CEST Julia Lawall wrote:
-> >
-> > On Wed, 20 Apr 2022, Alaa Mohamed wrote:
-> >
-> > > kmap() is being deprecated and these usages are all local to the thread
-> > > so there is no reason kmap_local_page() can't be used.
+On mercoled=C3=AC 20 aprile 2022 15:40:10 CEST Julia Lawall wrote:
+>=20
+> On Wed, 20 Apr 2022, Fabio M. De Francesco wrote:
+>=20
+> > On mercoled=C3=AC 20 aprile 2022 08:03:05 CEST Julia Lawall wrote:
 > > >
-> > > Replace kmap() calls with kmap_local_page().
+> > > On Wed, 20 Apr 2022, Alaa Mohamed wrote:
+> > >
+> > > > kmap() is being deprecated and these usages are all local to the=20
+thread
+> > > > so there is no reason kmap_local_page() can't be used.
+> > > >
+> > > > Replace kmap() calls with kmap_local_page().
+> > >
+> > > OK, so from a Coccinelle point of view, could we do
+> > >
+> > > @@
+> > > expression e1,e2,x,f;
+> > > @@
+> > >
+> > > e1 =3D
+> > > - kmap
+> > > + kmap_local_page
+> > >     (e2)
+> > > ... when !=3D x =3D e1 // not stored in any location and not passed to
+> > another function
+> > >     when !=3D f(...,e1,...)
+> > >     when !=3D x =3D e2
+> > >     when !=3D f(...,e2,...)
+> > > -kunmap(e2)
+> > > +kunmap_local(e1)
+> > >
+> > > julia
+> > >
 > >
-> > OK, so from a Coccinelle point of view, could we do
+> > I've never spent sufficient time to understand properly the syntax and
+> > semantics of expressions of Coccinelle. However, thanks Julia, this=20
+code
+> > looks good and can be very helpful.
 > >
-> > @@
-> > expression e1,e2,x,f;
-> > @@
+> > Only a minor objection... it doesn't tell when 'e2' has been allocated
+> > within the same function where the kmap() call is.
 > >
-> > e1 =
-> > - kmap
-> > + kmap_local_page
-> >     (e2)
-> > ... when != x = e1 // not stored in any location and not passed to
-> another function
-> >     when != f(...,e1,...)
-> >     when != x = e2
-> >     when != f(...,e2,...)
-> > -kunmap(e2)
-> > +kunmap_local(e1)
+> > In the particular case that I cite above, I'd prefer to remove the
+> > allocation of the page (say with alloc_page()) and convert kmap() /
+kunmap()
+> > to use kmalloc() / kfree().
 > >
-> > julia
+> > Fox example, this is done in the following patch:
 > >
->
-> I've never spent sufficient time to understand properly the syntax and
-> semantics of expressions of Coccinelle. However, thanks Julia, this code
-> looks good and can be very helpful.
->
-> Only a minor objection... it doesn't tell when 'e2' has been allocated
-> within the same function where the kmap() call is.
->
-> In the particular case that I cite above, I'd prefer to remove the
-> allocation of the page (say with alloc_page()) and convert kmap() /kunmap()
-> to use kmalloc() / kfree().
->
-> Fox example, this is done in the following patch:
->
-> commit 633b0616cfe0 ("x86/sgx: Remove unnecessary kmap() from
-> sgx_ioc_enclave_init()") from Ira Weiny.
->
-> Can Coccinelle catch also those special cases where a page that is passed
-> to kmap() is allocated within that same function (vs. being passed as
-> argument to this function) and, if so, propose a replacement with
-> kmalloc()?
+> > commit 633b0616cfe0 ("x86/sgx: Remove unnecessary kmap() from
+> > sgx_ioc_enclave_init()") from Ira Weiny.
+> >
+> > Can Coccinelle catch also those special cases where a page that is=20
+passed
+> > to kmap() is allocated within that same function (vs. being passed as
+> > argument to this function) and, if so, propose a replacement with
+> > kmalloc()?
+>=20
+> It looks complex in this case, because the allocation is in another
+> function, and it is passed to another function.
 
-It looks complex in this case, because the allocation is in another
-function, and it is passed to another function.
+This is not the special case I was talking about. In this case your code=20
+for Coccinelle tells the right proposal and it is exactly what Alaa did in=
+=20
+her patch (which is good!).
 
-julia
+I'm talking about other special cases like the one I pointed to with the=20
+link I provided. I'm sorry if my bad English made you think that Alaa's=20
+patch was one of those cases where the page is allocated within the same=20
+function where kmap() is.
+
+I hope that now I've been clearer :)
+
+Thanks,
+
+=46abio
 
 
->
-> Thanks,
->
-> Fabio
->
->
->
->
---8323329-1715972237-1650462010=:2937--
