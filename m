@@ -1,80 +1,64 @@
-Received: from mail-pl1-f171.google.com (mail-pl1-f171.google.com [209.85.214.171])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from ms.lwn.net (ms.lwn.net [45.79.88.28])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 60ED67A
-	for <outreachy@lists.linux.dev>; Wed, 20 Apr 2022 06:07:32 +0000 (UTC)
-Received: by mail-pl1-f171.google.com with SMTP id be5so864885plb.13
-        for <outreachy@lists.linux.dev>; Tue, 19 Apr 2022 23:07:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :references:from:in-reply-to:content-transfer-encoding;
-        bh=PXXhsO1cc1k6eZQ5kkAXBV1Y4UG2/t7OyhqoqVFc0/0=;
-        b=hjM6lhGGix++5j1Y/+1HN1ghogA1Y4nC19JC71fazQEZUloVUcgJNT8YNm9hy3Yx6u
-         7/UDemR1x5lCD/VpqPymNHOijLaYOTmTKyhrhmHzyqwTUS+C2EyFBvrxI8yfJvInGwvB
-         vy1f7P9503qmEgZ59NMZt2GOjjJ5a410fuYlg/XN4fNAkHIozn/OulIyKXWCqhKagWut
-         xKnsa5RtBEpwz0VFMD+KSnXj1P6HeUc3RVprgrj+48fCPDpGC20AxrwLf3BTZTqV/y5/
-         GR0cdDqg/HMgFUMOhUOdMub9MQPQQbp56TffYIZiqVyAIOZ8r4QVgb1HsA963cR9/+ZC
-         22ZQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=PXXhsO1cc1k6eZQ5kkAXBV1Y4UG2/t7OyhqoqVFc0/0=;
-        b=c1rn2eBmIzpu88Hiqury57Ek9Ris5CPodn4aeffhGm3VzpagpIdJzMHlFohDRKx+zX
-         v5kA3L1jsxDqOnosX5qsHpHIAa5AVU4WiqwzV8f4j+jB8g94Xb6LCWG3qQK7CQ9nrcQm
-         BWxZORz0DOJ8lXTQxZWDhJIrYfpcpio3fgAsHq7+UY0QLFPP0dWs7OIsMq24WGUCohpP
-         kYnYN87Mm4rHzyabkWOmDJnDQJF8U0Aqh68NhuuTh9sApg0rCOXPSJM/BCfJR/7Pw63v
-         nC8MkEQbPxvXNgxKrIw2FCXRNopEF/eSn/ytHGhKNT/KkMPkBP0e2Q6Q2ksUI8jFYRLT
-         e8hw==
-X-Gm-Message-State: AOAM532ZCqEWUIJHQbBxTh/FcbdXaAsIq/4dUoxAkrChFcUC46otwIRA
-	ogR0DGaM9o9CGK/4jci60UE=
-X-Google-Smtp-Source: ABdhPJw67KSTWTy6zq1YDwYpHlmWRiDx+KPSRNuwV/9DFLL7ufUyIcqLEjJRXTiZRPsX8alr7tepqA==
-X-Received: by 2002:a17:90b:388f:b0:1d2:7381:3b41 with SMTP id mu15-20020a17090b388f00b001d273813b41mr2612722pjb.72.1650434851734;
-        Tue, 19 Apr 2022 23:07:31 -0700 (PDT)
-Received: from [192.168.43.80] (subs03-180-214-233-69.three.co.id. [180.214.233.69])
-        by smtp.gmail.com with ESMTPSA id b184-20020a62cfc1000000b0050600ab6e26sm18346135pfg.187.2022.04.19.23.07.29
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 19 Apr 2022 23:07:30 -0700 (PDT)
-Message-ID: <ed6cd79c-6a1d-8299-c90a-5f00064f18e5@gmail.com>
-Date: Wed, 20 Apr 2022 13:07:27 +0700
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 12ECF7A
+	for <outreachy@lists.linux.dev>; Wed, 20 Apr 2022 06:26:57 +0000 (UTC)
+Received: from localhost (mdns.lwn.net [45.79.72.68])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ms.lwn.net (Postfix) with ESMTPSA id 6232A536;
+	Wed, 20 Apr 2022 06:26:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 ms.lwn.net 6232A536
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lwn.net; s=20201203;
+	t=1650436017; bh=f7Uz8K4B/b1GK8UbEUnANcsx3qekjRh4X7oJMY2FYTY=;
+	h=From:To:Subject:In-Reply-To:References:Date:From;
+	b=hmOAiIvMG0pAzSpQ4R/b4/b/pqbv9PllqJr9zhonE/4A7JX5F6DOdXYH5DwLL561S
+	 hFYODhanOqWQxA18wVy0ScYuD5zxUd1LU6LOG+nqV0+FkT9iS3hDkcwFotACIYssKz
+	 clfTOhltAGqisMAN0p0bRbmIXpLbhg7pPvS8b4IH8J96mnu7F9d+Ll6ZVcF4Qp7Kpa
+	 KnYor61TZw2Xy61gk4OuOPEOAAYI9sVT3NHV2hfyU5dYiKucibFhXXLrG6vXI4D2G8
+	 lEFjTLyXnUFFUEWVsR3KtQpYcO7jAgrW/Ex86dKgQ/hK/hXMvNlPNwDkzibdbmcUf7
+	 iFWexVBflvq6Q==
+From: Jonathan Corbet <corbet@lwn.net>
+To: Bagas Sanjaya <bagasdotme@gmail.com>, Bruno Moreira-Guedes
+ <codeagain@codeagain.dev>, linux-doc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, outreachy@lists.linux.dev, Bruno's Patch
+ Watchbox <patch-reply@codeagain.dev>
+Subject: Re: [PATCH v2 1/2] Docs: Add cpio requirement to changes.rst
+In-Reply-To: <ed6cd79c-6a1d-8299-c90a-5f00064f18e5@gmail.com>
+References: <cover.1650376049.git.codeagain@codeagain.dev>
+ <16abd8eb6a5c8398a030ae5d8919d5c8e92e2af1.1650376049.git.codeagain@codeagain.dev>
+ <ed6cd79c-6a1d-8299-c90a-5f00064f18e5@gmail.com>
+Date: Wed, 20 Apr 2022 00:26:53 -0600
+Message-ID: <87o80w46du.fsf@meer.lwn.net>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.0
-Subject: Re: [PATCH v2 1/2] Docs: Add cpio requirement to changes.rst
-Content-Language: en-US
-To: Bruno Moreira-Guedes <codeagain@codeagain.dev>,
- Jonathan Corbet <corbet@lwn.net>, linux-doc@vger.kernel.org,
- linux-kernel@vger.kernel.org, outreachy@lists.linux.dev,
- Bruno's Patch Watchbox <patch-reply@codeagain.dev>
-References: <cover.1650376049.git.codeagain@codeagain.dev>
- <16abd8eb6a5c8398a030ae5d8919d5c8e92e2af1.1650376049.git.codeagain@codeagain.dev>
-From: Bagas Sanjaya <bagasdotme@gmail.com>
-In-Reply-To: <16abd8eb6a5c8398a030ae5d8919d5c8e92e2af1.1650376049.git.codeagain@codeagain.dev>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 
-On 4/19/22 21:48, Bruno Moreira-Guedes wrote:
-> diff --git a/Documentation/process/changes.rst b/Documentation/process/changes.rst
-> index a337e8eabfe1..41a44e5f47e6 100644
-> --- a/Documentation/process/changes.rst
-> +++ b/Documentation/process/changes.rst
-> @@ -56,6 +56,7 @@ iptables               1.4.2            iptables -V
->  openssl & libcrypto    1.0.0            openssl version
->  bc                     1.06.95          bc --version
->  Sphinx\ [#f1]_         1.7              sphinx-build --version
-> +cpio                   any              cpio --version
->  ====================== ===============  ========================================
->  
+Bagas Sanjaya <bagasdotme@gmail.com> writes:
 
-You mentioned that **any** version of cpio will work, right?
-Or is there a specific minimum version?
+> On 4/19/22 21:48, Bruno Moreira-Guedes wrote:
+>> diff --git a/Documentation/process/changes.rst b/Documentation/process/changes.rst
+>> index a337e8eabfe1..41a44e5f47e6 100644
+>> --- a/Documentation/process/changes.rst
+>> +++ b/Documentation/process/changes.rst
+>> @@ -56,6 +56,7 @@ iptables               1.4.2            iptables -V
+>>  openssl & libcrypto    1.0.0            openssl version
+>>  bc                     1.06.95          bc --version
+>>  Sphinx\ [#f1]_         1.7              sphinx-build --version
+>> +cpio                   any              cpio --version
+>>  ====================== ===============  ========================================
+>>  
+>
+> You mentioned that **any** version of cpio will work, right?
+> Or is there a specific minimum version?
 
--- 
-An old man doll... just what I always wanted! - Clara
+The statement of "any" seems fairly explicit to me.  It has been a few
+... decades ... since cpio has seen any sort of rapid development; do
+you have any reason to think there might be a version in the wild that
+would not work?
+
+jon
