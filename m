@@ -1,100 +1,74 @@
-Received: from mail-ej1-f53.google.com (mail-ej1-f53.google.com [209.85.218.53])
+Received: from m228-62.mailgun.net (m228-62.mailgun.net [159.135.228.62])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9631E1867;
-	Wed, 20 Apr 2022 16:53:43 +0000 (UTC)
-Received: by mail-ej1-f53.google.com with SMTP id r13so4790230ejd.5;
-        Wed, 20 Apr 2022 09:53:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=Rfm74VEUMWZeXlpuLUyC+UQS6WldzCAHTX0ZUV4DSls=;
-        b=blpgcPwCTkxucUu2qZrWjwcq7sstE9xLRf5AbMMlxE8YZrJ0K0DNZxOq4mCHEiyIyZ
-         XdoMlOsuUf/eyx3g2tt7V7BIGpKZARWCyw1YovPsqhkocExAa58e2kNc0dv0QBaUvZTa
-         ObRRFqQ4FyNMmEiFGHCCqZyPP+x7gzFpMJbnyt2QOVwKfhkFb3cu+p9W2jcva0Vxo2JL
-         lO9F9NUmdDYZfFpt3wm6+UBs1MD6omwNrsa9yUtpOxuAmZ8f7zy3kfQpG3afpx91hIaT
-         XBh/sjnCyaTmpslP6liNlZldDuaPtD9AyVqE2rsH4dciA+m8PBxfVU+bGhG2acy4lRXn
-         OzIQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=Rfm74VEUMWZeXlpuLUyC+UQS6WldzCAHTX0ZUV4DSls=;
-        b=5w64N4Dou1vm9ycDo6mcdmTkdf2UZuqOS8RfBEInya1P5VzVEQnkD8OTQ0NR2yOGdM
-         eNyAo/6v/ewsRkEEcTjpKLJVphDOaBc5zan6ztC+l7fmwS5zJW0iFAzkGJZGpJXbfF6G
-         cMFbBBWslI1sEr2CFq8BGbaDYCtdmgZKRyuqZeOxLkMpTtLIRCLaQ4gQTPLFs7DkuJEq
-         2GRX+Fy87AVdPzeZg8+KAezpq3YtPUvkOSRpYwy97kwcORVaCN7K0Jw4eL8UQezfOzkL
-         OHRTHAIcrkHBRlnZEr3d6WWGOMYmY0Kv/APclLtvX0vRIXjYSUXM3rUBY3zvFAxd92QE
-         7PoQ==
-X-Gm-Message-State: AOAM530nVBke09lD8KEJ0Cyr1HVOXVEb/8UzemKYnAarhB38WeJQbjVj
-	XP/nzi/YmnXsQ699OKeqoFM=
-X-Google-Smtp-Source: ABdhPJxQ3uQH39NmcFzDqchDbenZC7Dj2C9W1dhPLDuReZA2QBfhi5bpkVEuZLM9fty7klo1viKK2g==
-X-Received: by 2002:a17:907:6d96:b0:6e8:d7d9:d573 with SMTP id sb22-20020a1709076d9600b006e8d7d9d573mr19276189ejc.90.1650473621788;
-        Wed, 20 Apr 2022 09:53:41 -0700 (PDT)
-Received: from leap.localnet (host-79-50-86-254.retail.telecomitalia.it. [79.50.86.254])
-        by smtp.gmail.com with ESMTPSA id ee17-20020a056402291100b0041fe1e4e342sm10006539edb.27.2022.04.20.09.53.39
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 20 Apr 2022 09:53:40 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Jaehee Park <jhpark1013@gmail.com>, Kalle Valo <kvalo@kernel.org>
-Cc: =?ISO-8859-1?Q?J=E9r=F4me?= Pouiller <jerome.pouiller@silabs.com>, "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev, outreachy@lists.linux.dev, Stefano Brivio <sbrivio@redhat.com>
-Subject: Re: [PATCH] wfx: use container_of() to get vif
-Date: Wed, 20 Apr 2022 18:53:39 +0200
-Message-ID: <2258432.bcXerOTE6V@leap>
-In-Reply-To: <87y200nf0a.fsf@kernel.org>
-References: <20220418035110.GA937332@jaehee-ThinkPad-X1-Extreme> <87y200nf0a.fsf@kernel.org>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 034AC1867
+	for <outreachy@lists.linux.dev>; Wed, 20 Apr 2022 17:27:42 +0000 (UTC)
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=codeagain.dev; q=dns/txt;
+ s=smtp; t=1650475662; h=In-Reply-To: Content-Type: MIME-Version:
+ References: Message-ID: Subject: Subject: Cc: To: To: From: From: Date:
+ Sender: Sender; bh=WXXXW89y+QcFXfQJ6sbWfqbkXidxsm82Hd4VQkHn9TM=; b=MH2yDC/P4AsUghtrtK0UNDnryctwYAqvvQzJr4KXeuYl7InE1fawxxeixggslg5RfZpM6fY8
+ 7Jb3SIp7spy0wAY6C33A5XSY4snRsuFlNUK3xk+gIdul1LfAoCqP990JoHrcuCq7XWT7gVoJ
+ 2Y4AqFaWhoxC0SGiCDxp0a42y4266ICVHzPdkzKUcVuDimiDCAXAPJG405+dENz/PGbp6dCB
+ 9A+1F8Y5LJThrfDnJ7MGzq5lTJxizJG4pCPGPT8658itIudGGas3IoAWeepuQQ9CZUrI81Yk
+ JjeZDlR/oPo8XHQtQl7BvXSRfvBDJ4jLuDnG4S/JYd0khpG3RVuJDw==
+X-Mailgun-Sending-Ip: 159.135.228.62
+X-Mailgun-Sid: WyI2Y2ZlNyIsICJvdXRyZWFjaHlAbGlzdHMubGludXguZGV2IiwgImJlOWM2ZCJd
+Received: from AN5Bruno (dynamic-user.170.84.57.33.mhnet.com.br
+ [170.84.57.33]) by smtp-out-n06.prod.us-east-1.postgun.com with SMTP id
+ 6260428d514839a8197fb291 (version=TLS1.3, cipher=TLS_AES_128_GCM_SHA256);
+ Wed, 20 Apr 2022 17:27:41 GMT
+Sender: codeagain@codeagain.dev
+Date: Wed, 20 Apr 2022 14:27:31 -0300
+From: Bruno Moreira-Guedes <codeagain@codeagain.dev>
+To: Jonathan Corbet <corbet@lwn.net>
+Cc: linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
+	outreachy@lists.linux.dev,
+	Bruno's Patch Watchbox <patch-reply@codeagain.dev>
+Subject: Re: [PATCH v2 0/2] Docs: Update information at changes.rst
+Message-ID: <20220420172731.ru7kfrdkmprybtu7@AN5Bruno>
+References: <cover.1650376049.git.codeagain@codeagain.dev>
+ <8735i83xo1.fsf@meer.lwn.net>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="7gc4pk3xhyxkzqh5"
+Content-Disposition: inline
+In-Reply-To: <8735i83xo1.fsf@meer.lwn.net>
+
+
+--7gc4pk3xhyxkzqh5
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="utf-8"
 
-On mercoled=C3=AC 20 aprile 2022 13:57:57 CEST Kalle Valo wrote:
-> Jaehee Park <jhpark1013@gmail.com> writes:
->=20
-> > Currently, upon virtual interface creation, wfx_add_interface() stores
-> > a reference to the corresponding struct ieee80211_vif in private data,
-> > for later usage. This is not needed when using the container_of
-> > construct. This construct already has all the info it needs to retrieve
-> > the reference to the corresponding struct from the offset that is
-> > already available, inherent in container_of(), between its type and
-> > member inputs (struct ieee80211_vif and drv_priv, respectively).
-> > Remove vif (which was previously storing the reference to the struct
-> > ieee80211_vif) from the struct wfx_vif, define a function
-> > wvif_to_vif(wvif) for container_of(), and replace all wvif->vif with
-> > the newly defined container_of construct.
+On Wed, Apr 20, 2022 at 03:35:10AM -0600, Jonathan Corbet wrote:
+> Bruno Moreira-Guedes <codeagain@codeagain.dev> writes:
 > >
-> > Signed-off-by: Jaehee Park <jhpark1013@gmail.com>
+> > The PATCH 1/2 fixes the missing cpio requirement, while PATCH 2/2 fixes
+> > the kernel version reference.
+> >
+> > Signed-off-by: Bruno Moreira-Guedes <codeagain@codeagain.dev>
 >=20
-> [...]
->=20
-> > +static inline struct ieee80211_vif *wvif_to_vif(struct wfx_vif *wvif)
-> > +{
-> > +	return container_of((void *)wvif, struct ieee80211_vif,=20
-drv_priv);
-> > +}
->=20
-> Why the void pointer cast? Avoid casts as much possible.
-
-In a previous email Jaehee wrote that she could compile her changes only by=
-=20
-using that "(void *)" cast.
-
-I replied that probably this is a hint that something is broken, although=20
-my argument is not necessarily a "proof". Might very well be that this cast=
-=20
-was needed in this particular situation but I cannot see why.
-
-@Jaehee, please try to explain why this "(void *)" cast is actually=20
-necessary and why your changes cannot avoid it.
-
-Thanks,
-
-=46abio M. De Francesco
+> Patches applied, thanks.
+Thanks, Jon! I have also been thinking whether this filename
+('changes.rst') is a good description of the file contents. Do you think
+renaming it to something like 'requirements.rst' and updating its
+references would be a good patch?
 
 
+--7gc4pk3xhyxkzqh5
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQQTUrsHCxGmQ5vyKRAZtd3tyEY2kgUCYmBCgwAKCRAZtd3tyEY2
+kuLWAP0dXCyqGEKvy9lN8fHENyzVin2V+xVzNahalr1kWHsangEAhBgOwZx6wbuj
+85Xnz6TZqI6h6E9MUUAtaezbbS+j3QY=
+=bzsu
+-----END PGP SIGNATURE-----
+
+--7gc4pk3xhyxkzqh5--
