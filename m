@@ -1,112 +1,145 @@
-Received: from mail-qt1-f182.google.com (mail-qt1-f182.google.com [209.85.160.182])
+Received: from mail-lj1-f170.google.com (mail-lj1-f170.google.com [209.85.208.170])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 72DA71FCD
-	for <outreachy@lists.linux.dev>; Thu, 21 Apr 2022 16:47:37 +0000 (UTC)
-Received: by mail-qt1-f182.google.com with SMTP id bz24so3708984qtb.2
-        for <outreachy@lists.linux.dev>; Thu, 21 Apr 2022 09:47:37 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0769F1FCD
+	for <outreachy@lists.linux.dev>; Thu, 21 Apr 2022 16:49:18 +0000 (UTC)
+Received: by mail-lj1-f170.google.com with SMTP id q22so6465969ljh.10
+        for <outreachy@lists.linux.dev>; Thu, 21 Apr 2022 09:49:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=G5SKEdGOaIvfBQJSpHuJhVtB76TixYdqOy3GhFLhSCI=;
-        b=iq91iNJMVttXcdpXrr+XHPWB6kmqqiyKEa4gAGrR42RnnX4fKXop4+0lZMODXP1zTX
-         kaxLFLpc67MqD3U/UOMLaHv78A4lumTAyew/jObqEuIlN53rCcSeNzG2f2G/DX4RjIPH
-         46G03V0Jpi+K1I1Y+oketj0FCYJHq8n7jixJAGJO24+LIWYYigA3US7NAlART7REqcff
-         47nv6DE9U2vqEuEBuxCgyvTzD6xRG/XDAeq+62Q6FTJcIQ32nN2jaGRm2otdYB9uitrf
-         sIpWlMHJty1YQ/0itXkoMseuDDV17fVEezE4X3f+1A7XRXR+HdyYSSHu3A0tj7KkihrK
-         3d9Q==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=CtyJRceC8mDyQR0u2QPd0NEHhNvA+ZjcEcRY3kUCwKQ=;
+        b=OPkWwjaiuEmxlbEDYHKtt7eb/mRb2/mJxihDgMTzZLH/2HmNSuQ0Hwx3cw1iZGtsqG
+         9Qyu93BSmuSNHFKdsUNLpMxPd3phP/fbLqQ70O4Ox5PHbhutOTZvoae43IsNqW4ccygD
+         X19ov5xHLhPLG96WRLP6cDb8YVl0V/dHgS1kfxw0hzElie7F9geaj6dsuFuGIDdehtg6
+         qrcMoMzjl8dn/vqAyeTQQOv25EP8eE39NhNoyKCfjDkSvkf7g7p+G7Q0bVxGk57W7K7P
+         F6jTyifatN0NujsCI6i5RWUtcDwgYDFlFVbwrdx1724T7On/xl9tJ/EsiIkgeMf7VPmh
+         18xg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=G5SKEdGOaIvfBQJSpHuJhVtB76TixYdqOy3GhFLhSCI=;
-        b=36aUIU8O67bqKXM8v561+Qqz+y72OH3ndMEcmeioT5YWXhXfQ7yKgAepKxwtecorbx
-         xONeS5O8YNhY9/jQ9OamzZpBX8n4Rr45k/IbojgIkuzdCzAEiBVtOiy4U7PePtLxC8pc
-         80FSPt7jO1OphwUjy8gXzmOSaYhwyrHuMA0SSUT2Xq7DFxwfGSCYkQvv3uvLVVT0EhAP
-         fz9gTo+PRL4/4XpfP0DTYkyLinJlgytZhx2Fjvri7fQFPC1PAHnYoJ9erNEm4GtjPZYs
-         AsFu6e39QRC2RCJD/c8d/kHciu8UzCl5PpNw0YXYqf4iB9ljGRch34g3btfQMC+7Z4Lb
-         qHFg==
-X-Gm-Message-State: AOAM530FLZe0rkIwmDAthakazGkf9njN/ZxfbasSEC9xFJiTk1UJXD3J
-	hh3lmhSd3Bh99e3gnD+zImo=
-X-Google-Smtp-Source: ABdhPJywgbZ4z65uj2wmxLheHMk9axyMGU3bKRCMtfyY/HwTMX3ZJmcojZ77NU2zSMPkgp0ueyOaNg==
-X-Received: by 2002:a05:622a:1990:b0:2f3:3eb7:33e9 with SMTP id u16-20020a05622a199000b002f33eb733e9mr275676qtc.13.1650559656314;
-        Thu, 21 Apr 2022 09:47:36 -0700 (PDT)
-Received: from jaehee-ThinkPad-X1-Extreme ([4.34.18.218])
-        by smtp.gmail.com with ESMTPSA id d17-20020ac85d91000000b002f3359b32c2sm3975173qtx.78.2022.04.21.09.47.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 21 Apr 2022 09:47:35 -0700 (PDT)
-Date: Thu, 21 Apr 2022 12:47:31 -0400
-From: Jaehee Park <jhpark1013@gmail.com>
-To: Roopa Prabhu <roopa@nvidia.com>
-Cc: outreachy@lists.linux.dev, Julia Denham <jdenham@redhat.com>,
-	Roopa Prabhu <roopa.prabhu@gmail.com>,
-	Stefano Brivio <sbrivio@redhat.com>, netdev@vger.kernel.org
-Subject: Re: [PATCH net-next] selftests: net: vrf_strict_mode_test: add
- support to select a test to run
-Message-ID: <20220421164731.GA3485444@jaehee-ThinkPad-X1-Extreme>
-References: <20220420045512.GA1289782@jaehee-ThinkPad-X1-Extreme>
- <41a48002-817b-4366-d316-9d94e8d81a79@nvidia.com>
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=CtyJRceC8mDyQR0u2QPd0NEHhNvA+ZjcEcRY3kUCwKQ=;
+        b=JW5m0czdD6bSVUF1URIeOChcmpKP0ipWcfTYPf9O0ElYitk1E8T1v+nnSGwrFngYc3
+         GZayrsfGfGW+pec4AqDKk+SqUh53C9gndyR31CsOXyJbT1+LAb+a+z7NuiyPHoQpqLyf
+         0KGW1YYE5LK0Hlx6I1z8kHfFQvZLcOD73UzKuO4bvo7Iq4HKo/Tyqw7472jFIaeQToN7
+         fgqK+J6C02sS5/vzhLoUPPRDy0Obo0I+o0K/Va3HKGTuHrw2I9rcH19oiRPlVTY71SnZ
+         KAyJhgL4uDiBo+hCEbCUJyDifsz27d3TZueHDQOz3DswqkRUvewsfnFSKuEKFLCVfbYX
+         02/w==
+X-Gm-Message-State: AOAM532p+UbY6zPLVZspojmaIp2o281/EJZgVjfuwiLb+lQB7qSJ6Igp
+	cefMNyHoVe0k6ekqhNSCVxUtzZWbGpNRcUueSA8=
+X-Google-Smtp-Source: ABdhPJz1kqhFLSivtESjXb4p4YfZX1M+c+QI7Sc3ByCN80hg8LRewxiNEHr5oFLkncabDhSpHznH9vlYfl5aYfVUqdo=
+X-Received: by 2002:a2e:b532:0:b0:24d:b593:5db with SMTP id
+ z18-20020a2eb532000000b0024db59305dbmr353446ljm.38.1650559756770; Thu, 21 Apr
+ 2022 09:49:16 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <41a48002-817b-4366-d316-9d94e8d81a79@nvidia.com>
+References: <20220418165519.GA54466@euclid> <20220421175648.13570c38@elisabeth>
+In-Reply-To: <20220421175648.13570c38@elisabeth>
+From: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
+Date: Thu, 21 Apr 2022 12:49:05 -0400
+Message-ID: <CAMWRUK77nq0Z-6okpT18h=5HPxuiLRYETSjdy6G+umOpBeQnfA@mail.gmail.com>
+Subject: Re: [PATCH v2] mbuto: always display help message
+To: Stefano Brivio <sbrivio@redhat.com>
+Cc: outreachy linux kernel <outreachy@lists.linux.dev>
+Content-Type: text/plain; charset="UTF-8"
 
-On Thu, Apr 21, 2022 at 07:52:45AM -0700, Roopa Prabhu wrote:
-> 
-> On 4/19/22 21:55, Jaehee Park wrote:
-> > Add a boilerplate test loop to run all tests in
-> > vrf_strict_mode_test.sh.
-> > 
-> > Signed-off-by: Jaehee Park <jhpark1013@gmail.com>
-> > ---
-> 
-> Jaehee, this needs more work. The idea is to be able to run individual tests
-> with -t option.
-> 
-> An example is drop_monitor_tests.sh, see the usage and getopts arg parsing
-> at the beginning of the test
-> 
-> eg ./drop_monitor_tests.sh -t <testname>
-> 
-> 
-
-Thanks Roopa, I've sent version 2 for your review. 
-
-
-> >   .../testing/selftests/net/vrf_strict_mode_test.sh  | 14 +++++++++++++-
-> >   1 file changed, 13 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/tools/testing/selftests/net/vrf_strict_mode_test.sh b/tools/testing/selftests/net/vrf_strict_mode_test.sh
-> > index 865d53c1781c..116ca43381b5 100755
-> > --- a/tools/testing/selftests/net/vrf_strict_mode_test.sh
-> > +++ b/tools/testing/selftests/net/vrf_strict_mode_test.sh
-> > @@ -14,6 +14,8 @@ INIT_NETNS_NAME="init"
-> >   PAUSE_ON_FAIL=${PAUSE_ON_FAIL:=no}
-> > +TESTS="vrf_strict_mode_tests_init vrf_strict_mode_tests_testns vrf_strict_mode_tests_mix"
+On Thu, Apr 21, 2022 at 11:57 AM Stefano Brivio <sbrivio@redhat.com> wrote:
+>
+> Hi Sevinj,
+>
+> Sorry for the delay, I'm finally testing this and updating the demos
+> around it.
+>
+> The previous series looks fine (I'm hitting some issues with
+> grep, still checking). However, this:
+>
+> On Mon, 18 Apr 2022 12:55:19 -0400
+> Sevinj Aghayeva <sevinj.aghayeva@gmail.com> wrote:
+>
+> > [...]
+> >
+> >  # If we're not running as root, re-run with fakeroot
+> > -if [ "${LD_PRELOAD}" != "libfakeroot-sysv.so" ] && [ "$(id -u)" -ne 0 ]; then
+> > -     if ! FAKEROOT="$(command -v fakeroot)"; then
+> > -             err "Not root and no fakeroot available, exiting"
+> > -     fi
+> > -     PATH="${PATH}:/sbin:/usr/sbin" "${FAKEROOT}" "${0}" "${@}"
+>
+> ...breaks everything, that is, options are not passed anymore, the
+> "base" profile is always selected, because:
+>
+> > -     exit ${?}
+> > +__not_root_and_missing_fakeroot=0
+> > +if [ "${LD_PRELOAD}" != "libfakeroot-sysv.so" ] && [ "$(id -u)" -ne 0 ] && \
+> > +             ! FAKEROOT="$(command -v fakeroot)"; then
+> > +     __not_root_and_missing_fakeroot=1
+> >  fi
+> >
+> >  # Parse options
+> > @@ -1204,6 +1202,14 @@ while getopts :c:df:k:m:p:s:vh __opt; do
+> >       esac
+> >  done
+> >  shift $((OPTIND - 1))
 > > +
-> >   log_test()
-> >   {
-> >   	local rc=$1
-> > @@ -391,7 +393,17 @@ fi
-> >   cleanup &> /dev/null
-> >   setup
-> > -vrf_strict_mode_tests
-> > +for t in $TESTS
-> > +do
-> > +	case $t in
-> > +	vrf_strict_mode_tests_init|vrf_strict_mode_init) vrf_strict_mode_tests_init;;
-> > +	vrf_strict_mode_tests_testns|vrf_strict_mode_testns) vrf_strict_mode_tests_testns;;
-> > +	vrf_strict_mode_tests_mix|vrf_strict_mode_mix) vrf_strict_mode_tests_mix;;
-> > +
-> > +	help) echo "Test names: $TESTS"; exit 0;;
-> > +
-> > +	esac
-> > +done
-> >   cleanup
-> >   print_log_test_results
+> > +if [ ${__not_root_and_missing_fakeroot} -eq 1 ]; then
+> > +     err "Not root and no fakeroot available, exiting"
+> > +elif [ "${LD_PRELOAD}" != "libfakeroot-sysv.so" ]; then
+> > +     PATH="${PATH}:/sbin:/usr/sbin" "${FAKEROOT}" "${0}" "${@}"
+>
+> $@ here doesn't contain options anymore, being that it comes after
+> shift $((OPTIND - 1)), which renumbers (shifts) positional parameters
+> in a way that $1, at this point, is the first non-option argument.
+>
+> And $@ follows the same pattern: the first token in it will be $1 now.
+>
+> I'm replacing this with something like:
+>
+> diff --git a/mbuto b/mbuto
+> index 49b8139..6918415 100755
+> --- a/mbuto
+> +++ b/mbuto
+> @@ -1179,10 +1179,11 @@ usage() {
+>  # If we're not running as root, re-run with fakeroot
+>  if [ "${LD_PRELOAD}" != "libfakeroot-sysv.so" ] && [ "$(id -u)" -ne 0 ]; then
+>         if ! FAKEROOT="$(command -v fakeroot)"; then
+> -               err "Not root and no fakeroot available, exiting"
+> +               __fakeroot_missing="y"
+> +       else
+> +               PATH="${PATH}:/sbin:/usr/sbin" "${FAKEROOT}" "${0}" "${@}"
+> +               exit ${?}
+>         fi
+> -       PATH="${PATH}:/sbin:/usr/sbin" "${FAKEROOT}" "${0}" "${@}"
+> -       exit ${?}
+>  fi
+>
+>  # Parse options
+> @@ -1206,6 +1207,11 @@ done
+>  shift $((OPTIND - 1))
+>  [ -z "${PROFILE}" ] && PROFILE="base"
+>
+> +if [ "${__fakeroot_missing}" = "y" ]; then
+> +       err "Not root and no fakeroot available, exiting"
+> +       exit 1
+> +fi
+> +
+>
+> and I would push it (please have a look, first!) together with your series as
+> soon as I get the demo to work with test collections.
+
+Looks good, thanks for catching this. I didn't test it properly.
+
+>
+> --
+> Stefano
+>
+
+
+-- 
+
+Sevinj.Aghayeva
