@@ -1,42 +1,51 @@
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-qv1-f67.google.com (mail-qv1-f67.google.com [209.85.219.67])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 656EA185A;
-	Wed, 20 Apr 2022 22:33:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1650494029; x=1682030029;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=h7ss3pq1fGb/RJBq21Rmn3EWxFU3sDjJBWnaWblVCGI=;
-  b=GwYDyDpjB7nrMhbA5xhMC7Q6tlbCX8mTqXTPWoIu8vk/6HblTODiijuK
-   YQfTJv+G1JUDK53jP2dKd2IOif8RApVefuevyiKScH7Z2sYyHo95Ue0eC
-   TXQyEmGEvzcpWFInJuCnLD5iZeT9lQsKgbpblrrYjVN9+yjunsr4ZUgZK
-   XCO/EkXhUnE60T4zublLSqWZU+KpGXtT1bkmKlaCPw0TfGnXmiRZN0mYO
-   8IbQEuYQmaasUk4cQ1+GZLCQ5M0kKon6AN8E5SV4BBKEpRBjgVW27HVi7
-   luLsqJHOxYgnAxNckdf/nx4obOgWnnHzMJFEBE3lvPhS6engOPj6TL3wZ
-   g==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10323"; a="246056025"
-X-IronPort-AV: E=Sophos;i="5.90,276,1643702400"; 
-   d="scan'208";a="246056025"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
-  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Apr 2022 15:33:48 -0700
-X-IronPort-AV: E=Sophos;i="5.90,276,1643702400"; 
-   d="scan'208";a="576833471"
-Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
-  by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Apr 2022 15:33:48 -0700
-Date: Wed, 20 Apr 2022 15:35:28 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: Bruno Moreira-Guedes <codeagain@codeagain.dev>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Martyn Welch <martyn@welchs.me.uk>,
-	Manohar Vanga <manohar.vanga@gmail.com>,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev,
-	Bruno's Patch Watchbox <patch-reply@codeagain.dev>
-Subject: Re: [PATCH v3 0/3] staging: vme: Cleanup driver tree old structures
-Message-ID: <20220420223528.GA1279659@alison-desk>
-References: <cover.1650321310.git.codeagain@codeagain.dev>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 96ACC468B;
+	Thu, 21 Apr 2022 01:16:17 +0000 (UTC)
+Received: by mail-qv1-f67.google.com with SMTP id a10so2643197qvm.8;
+        Wed, 20 Apr 2022 18:16:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to;
+        bh=F77C2q47pYS+RE/OwYeFXyxS3AjhQn7/SR6GHq78D9o=;
+        b=gRwMUG+QIEI2kyRZlqfd4xYQieTFYWtCclx9IVQil7D/l/KhfqL9eHTcDQZrW85RRZ
+         NCOS/gGcvu7QSxwl7bXTd/fMNv/SJ6YSZZHc4vNpFMyZ4lCbneeTQ4EOCXVUANLWiVTG
+         ChFnwtlCYvS0zP6wd1SHhvBGPJ06Uc8pkDDZNAQ6TMubSEtJnZcoFO0+XkWmJh15tqau
+         26iUTw3y+zlXyvVuZ3EMyomS4rDSfkh7ZsD+BDhf1lroX2MYNcVInXnmf26Qn8AiYtn7
+         Dh95FMyps+w05SIvJp1Mxx5/9IQOm85L+lw6L1L5JwINhviclttqhCYxbYMMRDbUvgiZ
+         /zCA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :mime-version:content-disposition:in-reply-to;
+        bh=F77C2q47pYS+RE/OwYeFXyxS3AjhQn7/SR6GHq78D9o=;
+        b=qgx7mYcRWU2UFPwdz5RbdfLQUzrdpKnZitSFCkTaYRfKSyNo1UUDpgIzzAdJRzHNzs
+         qdpalko3wcnjb9C+wj4FE+7mQI7kDPnauhpc8aXUCIwPv4aVajSt9wgyqbacM4nxa958
+         OHenSgUDWzDrgwdeFkYwae+rLmz3i+x/1pR7m7wErHoHEvBcmTSYV4xA2fNiBEBJ2f/Q
+         /YAIyzVTfjHOUDwYPFyNe2YSSztB3Mwv38mcNDpyVDLMf9wTvjodKes0HJ2c6zBNrsFn
+         WV9YwSkfQTum9HmMqzQXzpCgbWMw3ogdbe1NUHs7XFG5DtgktVlW2fC6gtM3y5XaLnTO
+         N4Ug==
+X-Gm-Message-State: AOAM532/IavwwJ5zJztedMH2dHb+fQ6gIpromCHtjdmnEXldMx92MfTZ
+	sh506/yy/6+/3YCd3leMGAk=
+X-Google-Smtp-Source: ABdhPJyWFnCPc/QcD8yZDwf04BFpBVFoEELlmPqp8FSOw6wNgqpdGMgMv9RczvWhkI6FT4lzgZduxg==
+X-Received: by 2002:ad4:5bef:0:b0:446:7727:efac with SMTP id k15-20020ad45bef000000b004467727efacmr7778139qvc.44.1650503776396;
+        Wed, 20 Apr 2022 18:16:16 -0700 (PDT)
+Received: from sophie ([45.134.140.168])
+        by smtp.gmail.com with ESMTPSA id s195-20020a37a9cc000000b0069ca29ab6f4sm2403427qke.26.2022.04.20.18.16.15
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 20 Apr 2022 18:16:15 -0700 (PDT)
+Date: Wed, 20 Apr 2022 20:16:14 -0500
+From: Rebecca Mckeever <remckee0@gmail.com>
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Cc: outreachy@lists.linux.dev,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] staging: rtl8192u: compare strcmp result to zero
+Message-ID: <20220421011614.GA5118@sophie>
+References: <20220416102434.97567-1-remckee0@gmail.com>
+ <20220420094220.GD2951@kadam>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -45,127 +54,71 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1650321310.git.codeagain@codeagain.dev>
+In-Reply-To: <20220420094220.GD2951@kadam>
 
-On Mon, Apr 18, 2022 at 08:29:49PM -0300, Bruno Moreira-Guedes wrote:
-> This patch series modify the vme_user driver's place in
-> menuconfig (1/3), fixes a missing `depends on` line in a Kconfig file
-> (2/3), and rearrages the directory tree for the driver allowing a more
-> straightforward comprehension of its contents (3/3).
+Hi Dan,
+
+On Wed, Apr 20, 2022 at 12:42:20PM +0300, Dan Carpenter wrote:
+> On Sat, Apr 16, 2022 at 05:24:34AM -0500, Rebecca Mckeever wrote:
+> > Add " == 0" to the condition in both else if branches to address a
+> > possible bug. strcmp returns 0 when its arguments are equal, which
+> > evaluates to false, often leading to errors when used in if statements.
+> > 
+> > Currently, the statement in the first else if branch does not execute
+> > when its arguments are equal, but it does execute when crypt->ops->name
+> > equals any string other than "WEP" or "TKIP".
+> > 
+> > Similarly, the second else if branch does not execute when its arguments
+> > are equal, and it only executes when crypt->ops->name equals "TKIP".
+> > The else branch never executes.
+> > 
+> > It is unlikely that this is working as intended.
+> > 
+> > Signed-off-by: Rebecca Mckeever <remckee0@gmail.com>
+> > ---
 > 
-> The 'vme_user/' driver is the only remaining vme-family driver in the
-> 'staging/' tree, but its structure, entry in menuconfig and building
-> routines are still attached to the 'vme/' subtree now outside
-> 'staging/'. The present patchset fixes it.
-> 
-> Signed-off-by: Bruno Moreira-Guedes <codeagain@codeagain.dev>
+> Looks good.  How did you find this bug?
 
-Hi Bruno,
-
-I see your follow-on questions to GregKH about the 2 v2's and rolling
-this set. I imagine you are going to work with many maintainers across
-the kernel, so although understanding their processes is interesting and
-useful, at some point just keeping your submittals clean, simple, and
-straightforward is the more efficient path forward. If it were me, I think
-I could get a v4 in GregKHs mailbox quicker than going around with him
-on why his tools don't understand my oddities. (I admire your curiosity,
-seriously! I'm just in a get it done and move on mood.)
-
-In this case - you can see that this set is confusing because of the
-v2, then v3 of a single patch. I suggest cleaning it up while GregKH is
-sleeping ;) and get a clean v4 in his mbox. 
-
-Not sure your process - but if you are using git send-email, the 
---dry-run option is how I do the final eye-balling of what I'm 
-about to send. Try that out.
-
-The changelog below can be more succinct. I made a suggestion below.
-
-> ---
-> CHANGE SUMMARY
-> 
->   Version:  v1  v2  v3
-> [PATCH 1/3] *   -   *
-> [PATCH 2/3] -   *   *
-> [PATCH 3/3] -   *   *
-> 
-> CHANGELOG
-> [PATCH 0/3] staging: vme: Restructuring menuconfig and tree
-> v1:
->   Created PATCH 1/3 as a single patch
-> v2:
->   Added PATCH 2/3 and 3/3, turning it into a patchset
-> v3:
->   Fixed and improved commit messages according to previous comments by
->   Greg and Alison (to whom I'm indebted for their kind reviews). The
->   commit titles got changed to be more specific and use the present
->   imperative tense as for Alison's suggestions. The message body got
->   fixed according to Greg formatting comments. The changelogs were moved
->   to the cover letter as per another suggestion by Alison, and I added
->   missing details (like the update in the MAINTAINERS I failed to
->   mention in v2) and made textual improvements for clarity that I also
->   noticed.
-> 
-> [PATCH 1/3] staging: vme: Move vme_user to staging KConfig
-> v1:
->  - Sourced "drivers/staging/vme/devices/Kconfig" in
->    "drivers/staging/Kconfig" and unsourced in "drivers/vme/Kconfig".
-> v3:
->  - Modified the commit subject and text body.
-> 
-> [PATCH 2/3] staging: vme: Add VME_BUS dependency to Kconfig
-> v2:
->  - Added this patch to the patchset.
-> v3:
->  - Modified the commit subject and text body.
-> 
-> [PATCH 3/3] staging: vme: Move 'vme/devices' to 'vme_user/'
-> v2:
->  - Added this patch to the patchset
-> v3
->  - Modified the commit subject and text body.
-
-Changes in v4:
-- Remove extraneous patch from set
-
-Changes in v3:
-- Move changelog to cover letter (Alison)
-- Update commit messages and logs (Greg, Alison)
-
-Changes in v2:
-- Add new patch to set: Move 'vme/devices' to 'vme_user/'
-- Add new patch to set: Add VME_BUS dependency to Kconfig
-
-
-**I really want you to get this accepted before the next patch
-comes along and removes the driver entirely :(.
-
-Alison
+I noticed it when I was trying to understand the surrounding code when
+preparing another patch.
 
 > 
-> Bruno Moreira-Guedes (3):
->   staging: vme: Adjusted VME_USER in Kconfig
->   staging: vme: Fix missing `depends on` at KConfig
->   staging: vme: "drivers/staging/vme" tree cleanup
+> Reviewed-by: Dan Carpenter <dan.carpenter@oracle.com>
 > 
->  MAINTAINERS                                          | 2 +-
->  drivers/staging/Kconfig                              | 1 +
->  drivers/staging/Makefile                             | 2 +-
->  drivers/staging/vme/Makefile                         | 2 --
->  drivers/staging/{vme/devices => vme_user}/Kconfig    | 2 +-
->  drivers/staging/{vme/devices => vme_user}/Makefile   | 0
->  drivers/staging/{vme/devices => vme_user}/vme_user.c | 0
->  drivers/staging/{vme/devices => vme_user}/vme_user.h | 0
->  drivers/vme/Kconfig                                  | 2 --
->  9 files changed, 4 insertions(+), 7 deletions(-)
->  delete mode 100644 drivers/staging/vme/Makefile
->  rename drivers/staging/{vme/devices => vme_user}/Kconfig (93%)
->  rename drivers/staging/{vme/devices => vme_user}/Makefile (100%)
->  rename drivers/staging/{vme/devices => vme_user}/vme_user.c (100%)
->  rename drivers/staging/{vme/devices => vme_user}/vme_user.h (100%)
+> > There is a similiar issue in
+> > drivers/staging/rtl8192u/ieee80211/ieee80211_softmac.c
+> > but I'm not sure if it's incorrect. The strcmp on line 2847 isn't
+> > negated, but the ones on lines 2851, 2853, and 2855 are.
+> > 
+> > 2845         /* IPW HW cannot build TKIP MIC, host decryption still needed. */
+> > 2846         if (!(ieee->host_encrypt || ieee->host_decrypt) &&
+> > 2847             strcmp(param->u.crypt.alg, "TKIP"))
+> > 2848                 goto skip_host_crypt;
 > 
-> -- 
-> 2.35.3
+> You're right, but also I suspect this whole if statement is wrong.
 > 
+> The if statement is only triggered if both ->host_encrypt and
+> ->host_decrypt are disabled.  (Too many negatives).  I think both are
+> set in alloc_ieee80211() and rtl8192_init_priv_variable() so both are
+> always true and the if statement is dead code.
+> 
+> How does the code match with the comment?
+> 
+> Fixing this probably requires testing.  Maybe we could add this to the
+> TODO list or maybe add a comment?
 
+There isn't currently a TODO file for this driver. Adding a TODO file
+would probably be more effective than a comment?
 
+> 
+> regards,
+> dan carpenter
+> 
+> Ps:  When you have a !(foo || bar) then it's often more readable to
+> write it as !foo && !bar, but in this case it doesn't really answer any
+> of the core questions so don't bother.
+ 
+Yeah, I think you're right, !foo && !bar makes more sense to me.
+
+Thanks,
+Rebecca
