@@ -1,135 +1,123 @@
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-qt1-f170.google.com (mail-qt1-f170.google.com [209.85.160.170])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 71B761FC0
-	for <outreachy@lists.linux.dev>; Thu, 21 Apr 2022 15:57:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1650556627;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=svhKzRTLqLpmiZywq8SDtPk7c6bfFRgn1gYT5giDONM=;
-	b=E/0YCFMvZj1zp9H+3rsy+McHbf85zywKDgOPFmcGZXdMFKiVM2FJVmmTPWjNNn/Ty90y1P
-	TdtsRjS6HP5Tgofyp+R3ldv5jqFW+nzpF1U+K/cuajVpJ7DCX9sRcAxAHwXbuFxEvdl4Dk
-	LQD/Cns3BYl+XXkg/q+06YOC5iMABRw=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-301-k_WgOOX_OA2VUZubQoootg-1; Thu, 21 Apr 2022 11:57:03 -0400
-X-MC-Unique: k_WgOOX_OA2VUZubQoootg-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com [10.11.54.10])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 49A7B281AF06;
-	Thu, 21 Apr 2022 15:57:03 +0000 (UTC)
-Received: from maya.cloud.tilaa.com (unknown [10.40.208.6])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 1A0F9415F56;
-	Thu, 21 Apr 2022 15:57:03 +0000 (UTC)
-Date: Thu, 21 Apr 2022 17:56:48 +0200
-From: Stefano Brivio <sbrivio@redhat.com>
-To: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
-Cc: outreachy@lists.linux.dev
-Subject: Re: [PATCH v2] mbuto: always display help message
-Message-ID: <20220421175648.13570c38@elisabeth>
-In-Reply-To: <20220418165519.GA54466@euclid>
-References: <20220418165519.GA54466@euclid>
-Organization: Red Hat
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6D5A046B5
+	for <outreachy@lists.linux.dev>; Thu, 21 Apr 2022 16:40:28 +0000 (UTC)
+Received: by mail-qt1-f170.google.com with SMTP id x12so3666282qtp.9
+        for <outreachy@lists.linux.dev>; Thu, 21 Apr 2022 09:40:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=date:from:to:subject:message-id:mime-version:content-disposition;
+        bh=NK5AvJGH8CU9PHacyyajo0HKWC+ZEk6dfV4Zh9zjrRA=;
+        b=Om9mwG8hMYPViAnILKqcJ/woUp9oHlzR29y/gHeacvnj3oDjwebWfmy+LjPcdbiJhg
+         t8hSSlLZ8EmW9j4fk0JkWG9+L9ObhKRGqq/bCtlfv9HuBZLwBgGuN5VG0jjiIHrlBIl3
+         i1z/DmlCEPsvMxqB7HjLL/wqxr7kO5xj99DkGwywA+ovnN9qfiGkn4V7PgFEj0/YgnpG
+         nwIyuHJbW6OCDsWQLLe8poZLS8AG5KxyM5csD4lHIBdIsOUA/kWhQN3VxFPLxY/Mvkjr
+         JNFqQhvKTTAE5jg+FHLDQ2w0+Pe95cLXdBR+Y0cvB3wUK0/eDUeRX0MV1A2pIRBtBuhu
+         CAWQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition;
+        bh=NK5AvJGH8CU9PHacyyajo0HKWC+ZEk6dfV4Zh9zjrRA=;
+        b=7nuIP36KWh+rwh/KQ9Zm7XK4tobZ3suV6xt6Zu52hijtWm3s1mqpQsl1K1LPkEzkQO
+         J0zKxBG/48xPo3D/+yEqzLg5Xa3UeHOm+8vnR/rlwytUDc2tAo4v1tp1PbXukw0SqvDY
+         wRacGOS/BexNKwhqHMp/9HhaQGk75xcQ4vfYEHH8TZPu4Pn4SKotVDZLB3DWJzYewwUC
+         SLyJML+mDB1l21jNbUzKZrUUznJ12u1lLXjTSgVD1t6TCx+9BbXqDsu9uZwtWJup2Jsv
+         BMA/g4E8Pt/ZFP1qwnCcg6pFeyD8dOagyXyGRSyXYfWb8CqsbhuzrRNQ1k8xnhmP4n0D
+         30Vg==
+X-Gm-Message-State: AOAM531+oyKHsSBMT7bOA861uFr34csvTsiljVMWm83jkygSgYeSKfNI
+	vyxpX851r2RS3RY/aLdJ82qRZ0uPhIfd0zQI
+X-Google-Smtp-Source: ABdhPJz8jzEks7vWpmxYpuH5St7u0pzx660Ji9GyOUd2FkgsuWt61Wql4HWZvSO1IEAokqlTAcgQkA==
+X-Received: by 2002:ac8:110a:0:b0:2f1:ea84:b84 with SMTP id c10-20020ac8110a000000b002f1ea840b84mr234574qtj.463.1650559227033;
+        Thu, 21 Apr 2022 09:40:27 -0700 (PDT)
+Received: from jaehee-ThinkPad-X1-Extreme ([4.34.18.218])
+        by smtp.gmail.com with ESMTPSA id 19-20020a05620a079300b0069eb4c4e007sm3002275qka.29.2022.04.21.09.40.25
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 21 Apr 2022 09:40:26 -0700 (PDT)
+Date: Thu, 21 Apr 2022 12:40:22 -0400
+From: Jaehee Park <jhpark1013@gmail.com>
+To: outreachy@lists.linux.dev, Julia Denham <jdenham@redhat.com>,
+	Roopa Prabhu <roopa.prabhu@gmail.com>,
+	Stefano Brivio <sbrivio@redhat.com>, netdev@vger.kernel.org,
+	jhpark1013@gmail.com, Roopa Prabhu <roopa@nvidia.com>
+Subject: [PATCH net-next v2] selftests: net: vrf_strict_mode_test: add
+ support to select a test to run
+Message-ID: <20220421164022.GA3485225@jaehee-ThinkPad-X1-Extreme>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.85 on 10.11.54.10
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=sbrivio@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Hi Sevinj,
+Add a boilerplate test loop to run all tests in
+vrf_strict_mode_test.sh. Add a -t flag that allows a selected test to
+run.
 
-Sorry for the delay, I'm finally testing this and updating the demos
-around it.
+Signed-off-by: Jaehee Park <jhpark1013@gmail.com>
+---
+ .../selftests/net/vrf_strict_mode_test.sh     | 31 ++++++++++++++++++-
+ 1 file changed, 30 insertions(+), 1 deletion(-)
 
-The previous series looks fine (I'm hitting some issues with
-grep, still checking). However, this:
-
-On Mon, 18 Apr 2022 12:55:19 -0400
-Sevinj Aghayeva <sevinj.aghayeva@gmail.com> wrote:
-
-> [...]
->
->  # If we're not running as root, re-run with fakeroot
-> -if [ "${LD_PRELOAD}" != "libfakeroot-sysv.so" ] && [ "$(id -u)" -ne 0 ]; then
-> -	if ! FAKEROOT="$(command -v fakeroot)"; then
-> -		err "Not root and no fakeroot available, exiting"
-> -	fi
-> -	PATH="${PATH}:/sbin:/usr/sbin" "${FAKEROOT}" "${0}" "${@}"
-
-...breaks everything, that is, options are not passed anymore, the
-"base" profile is always selected, because:
-
-> -	exit ${?}
-> +__not_root_and_missing_fakeroot=0
-> +if [ "${LD_PRELOAD}" != "libfakeroot-sysv.so" ] && [ "$(id -u)" -ne 0 ] && \
-> +		! FAKEROOT="$(command -v fakeroot)"; then
-> +	__not_root_and_missing_fakeroot=1
->  fi
->  
->  # Parse options
-> @@ -1204,6 +1202,14 @@ while getopts :c:df:k:m:p:s:vh __opt; do
->  	esac
->  done
->  shift $((OPTIND - 1))
-> +
-> +if [ ${__not_root_and_missing_fakeroot} -eq 1 ]; then
-> +	err "Not root and no fakeroot available, exiting"
-> +elif [ "${LD_PRELOAD}" != "libfakeroot-sysv.so" ]; then
-> +	PATH="${PATH}:/sbin:/usr/sbin" "${FAKEROOT}" "${0}" "${@}"
-
-$@ here doesn't contain options anymore, being that it comes after
-shift $((OPTIND - 1)), which renumbers (shifts) positional parameters
-in a way that $1, at this point, is the first non-option argument.
-
-And $@ follows the same pattern: the first token in it will be $1 now.
-
-I'm replacing this with something like:
-
-diff --git a/mbuto b/mbuto
-index 49b8139..6918415 100755
---- a/mbuto
-+++ b/mbuto
-@@ -1179,10 +1179,11 @@ usage() {
- # If we're not running as root, re-run with fakeroot
- if [ "${LD_PRELOAD}" != "libfakeroot-sysv.so" ] && [ "$(id -u)" -ne 0 ]; then
-        if ! FAKEROOT="$(command -v fakeroot)"; then
--               err "Not root and no fakeroot available, exiting"
-+               __fakeroot_missing="y"
-+       else
-+               PATH="${PATH}:/sbin:/usr/sbin" "${FAKEROOT}" "${0}" "${@}"
-+               exit ${?}
-        fi
--       PATH="${PATH}:/sbin:/usr/sbin" "${FAKEROOT}" "${0}" "${@}"
--       exit ${?}
- fi
+diff --git a/tools/testing/selftests/net/vrf_strict_mode_test.sh b/tools/testing/selftests/net/vrf_strict_mode_test.sh
+index 865d53c1781c..ca4379265706 100755
+--- a/tools/testing/selftests/net/vrf_strict_mode_test.sh
++++ b/tools/testing/selftests/net/vrf_strict_mode_test.sh
+@@ -14,6 +14,8 @@ INIT_NETNS_NAME="init"
  
- # Parse options
-@@ -1206,6 +1207,11 @@ done
- shift $((OPTIND - 1))
- [ -z "${PROFILE}" ] && PROFILE="base"
+ PAUSE_ON_FAIL=${PAUSE_ON_FAIL:=no}
  
-+if [ "${__fakeroot_missing}" = "y" ]; then
-+       err "Not root and no fakeroot available, exiting"
-+       exit 1
-+fi
++TESTS="init testns mix"
 +
-
-and I would push it (please have a look, first!) together with your series as
-soon as I get the demo to work with test collections.
-
+ log_test()
+ {
+ 	local rc=$1
+@@ -353,6 +355,23 @@ vrf_strict_mode_tests()
+ 	vrf_strict_mode_tests_mix
+ }
+ 
++usage()
++{
++	cat <<EOF
++usage: ${0##*/} OPTS
++
++	-t <test> Test(s) to run (default: all)
++		  (options: $TESTS)
++EOF
++}
++while getopts ":t:h" opt; do
++	case $opt in
++		t) TESTS=$OPTARG;;
++		h) usage; exit 0;;
++		*) usage; exit 1;;
++	esac
++done
++
+ vrf_strict_mode_check_support()
+ {
+ 	local nsname=$1
+@@ -391,7 +410,17 @@ fi
+ cleanup &> /dev/null
+ 
+ setup
+-vrf_strict_mode_tests
++for t in $TESTS
++do
++	case $t in
++	vrf_strict_mode_tests_init|init) vrf_strict_mode_tests_init;;
++	vrf_strict_mode_tests_testns|testns) vrf_strict_mode_tests_testns;;
++	vrf_strict_mode_tests_mix|mix) vrf_strict_mode_tests_mix;;
++
++	help) echo "Test names: $TESTS"; exit 0;;
++
++	esac
++done
+ cleanup
+ 
+ print_log_test_results
 -- 
-Stefano
+2.25.1
 
