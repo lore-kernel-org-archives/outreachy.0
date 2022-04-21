@@ -1,31 +1,31 @@
 Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5BF2146AD
-	for <outreachy@lists.linux.dev>; Thu, 21 Apr 2022 14:34:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 32156C385A8;
-	Thu, 21 Apr 2022 14:34:10 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D8B701FC0
+	for <outreachy@lists.linux.dev>; Thu, 21 Apr 2022 14:42:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 74F5DC385A5;
+	Thu, 21 Apr 2022 14:42:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1650551653;
-	bh=bnxq7xY6hJG0vnk6nNy70/Pfu3qfybGU0cw7vx4Vjn4=;
+	s=k20201202; t=1650552167;
+	bh=faSSihUeKhEgOMFaEeqtYEPXOtu+2j1tbYQhSIYwjKI=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=MeEJHHPsGHAvWel1AYF953PR0H5gqulQaCXN/FnzXdgWyNdR7lRAtJSuXiFgKg3H1
-	 Vlqqxdrb4kWRmH93DGO8lq2CdCLyM2ezXYk+8wOYqrUFcYNZ0LJKiqLaiv30jKfAdQ
-	 krRXez5nqEyjtzw96GJdog4UEGZFg5qWH83SqOysdVZkQDabovoN6xEA0Ba8jstEer
-	 CWEuYbYVsxLxPCAArbdpDyVFkHnMH9w+D6KPPIF2QeQe1Bcau3dijuzxIuAbk55YvS
-	 EZSF6lszNcJDkfi/KMPQXNkg8eB+gTSl89RfdNyp9m5JgbkF6RfYKhjCEtUDHjquZD
-	 UFGmA37ZAvUHA==
-Date: Thu, 21 Apr 2022 17:34:05 +0300
+	b=tmxnEZe//McI2jrtHQ1WKUam5+59DxYfZH8iiXgGkeee97pJqIEP+rFcV8DAt6Qzl
+	 yz3NuZQ+0xtBLq5Y/lnl2ONiFT5cRbrk+1H56LpABvJR4AA71a6MWz4FCtaEaZRjgH
+	 fxmAwJ1AZWtQFLEx3aUGyA+XnQrr93o+tdJHwoiOFTR41fvxBvtCiYs44/ORq+Giji
+	 r8CeVosEeNLjj7kFi5sIRkwCviM3YpupmRCgNOQNjMUTRLGoYTMfbTMtJG8BBWI67m
+	 wBodIke1jnufbZZYoN6s3x2Y9gRVASOCoVXa02uF4vfuSCyZuPH80wGWEodBcmmb9x
+	 gaA8N/RVW99ag==
+Date: Thu, 21 Apr 2022 17:42:40 +0300
 From: Mike Rapoport <rppt@kernel.org>
 To: David Hildenbrand <david@redhat.com>
 Cc: Rebecca Mckeever <remckee0@gmail.com>, outreachy@lists.linux.dev,
 	linux-mm@kvack.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/3] memblock tests: update style of comments for
- memblock_add_*() functions
-Message-ID: <YmFrXaBvhJy2auYK@kernel.org>
+Subject: Re: [PATCH 3/3] memblock tests: remove extra column of spaces in
+ block comment
+Message-ID: <YmFtYPlrJtv7iKh3@kernel.org>
 References: <cover.1650452552.git.remckee0@gmail.com>
- <0004a1a720c5c15ba16cb9f2fb226f57276de2c0.1650452552.git.remckee0@gmail.com>
- <436b1fd0-16a6-0f77-7ff4-a68252d6b117@redhat.com>
+ <663c930475c3c0a32965024c1094d3288629a3af.1650452552.git.remckee0@gmail.com>
+ <d46accec-28f7-d678-b475-c4402bba8211@redhat.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -34,95 +34,52 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <436b1fd0-16a6-0f77-7ff4-a68252d6b117@redhat.com>
+In-Reply-To: <d46accec-28f7-d678-b475-c4402bba8211@redhat.com>
 
-On Thu, Apr 21, 2022 at 09:12:02AM +0200, David Hildenbrand wrote:
+On Thu, Apr 21, 2022 at 09:09:58AM +0200, David Hildenbrand wrote:
 > On 20.04.22 13:19, Rebecca Mckeever wrote:
-> > Update comments in memblock_add_*() functions to match the style used
-> > in tests/alloc_*.c by rewording to make the expected outcome more apparent
-> > and, if more than one memblock is involved, adding a visual of the
-> > memory blocks.
+> > Remove extra space at the beginning of each line in block comment
+> > for consistency and to conform to Linux kernel coding style.
 > > 
 > > Signed-off-by: Rebecca Mckeever <remckee0@gmail.com>
 > > ---
-> >  tools/testing/memblock/tests/basic_api.c | 75 +++++++++++++++++-------
-> >  1 file changed, 54 insertions(+), 21 deletions(-)
+> >  tools/testing/memblock/tests/basic_api.c | 12 ++++++------
+> >  1 file changed, 6 insertions(+), 6 deletions(-)
 > > 
 > > diff --git a/tools/testing/memblock/tests/basic_api.c b/tools/testing/memblock/tests/basic_api.c
-> > index fbc1ce160303..cdf112d25343 100644
+> > index 834d8705ff8a..05448a25f1f9 100644
 > > --- a/tools/testing/memblock/tests/basic_api.c
 > > +++ b/tools/testing/memblock/tests/basic_api.c
-> > @@ -26,8 +26,8 @@ static int memblock_initialization_check(void)
-> >  /*
-> >   * A simple test that adds a memory block of a specified base address
-> >   * and size to the collection of available memory regions (memblock.memory).
-> > - * It checks if a new entry was created and if region counter and total memory
-> > - * were correctly updated.
-> > + * Expect to create a new entry. The region counter and total memory get
-> > + * updated.
-> >   */
-> >  static int memblock_add_simple_check(void)
-> >  {
-> > @@ -55,8 +55,8 @@ static int memblock_add_simple_check(void)
-> >  /*
-> >   * A simple test that adds a memory block of a specified base address, size
-
-Can you please add coma after size  ...                                        ^
-
-> >   * NUMA node and memory flags to the collection of available memory regions.
-> > - * It checks if the new entry, region counter and total memory size have
-> > - * expected values.
-> > + * Expect to create a new entry. The region counter and total memory get
-> > + * updated.
-> >   */
-> >  static int memblock_add_node_simple_check(void)
-> >  {
-
-...
-
-> > @@ -125,10 +131,20 @@ static int memblock_add_disjoint_check(void)
+> > @@ -303,12 +303,12 @@ static int memblock_add_checks(void)
+> >  	return 0;
+> >  }
 > >  
-> >  /*
-> >   * A test that tries to add two memory blocks, where the second one overlaps
-> > - * with the beginning of the first entry (that is r1.base < r2.base + r2.size).
-> > - * After this, it checks if two entries are merged into one region that starts
-> > - * at r2.base and has size of two regions minus their intersection. It also
-> > - * verifies the reported total size of the available memory and region counter.
-> > + * with the beginning of the first entry (that is r1.base < r2.base + r2.size):
-> > + *
-> > + *  |    +----+----+------------+          |
-> > + *  |    |   r|2   |   r1       |          |
-> > + *  +----+----+----+------------+----------+
-
-I'd move | separator outside the block name, e.g
-
-	*  |    +----+----+------------+          |
-	*  |    |   | r2  |   r1       |          |
-	*  +----+----+----+------------+----------+
-
-but no strong feelings about this :)
-
-> > + *       ^    ^
-> > + *       |    |
-> > + *       |    r1.base
-> > + *       |
-> > + *       r2.base
-> > + *
-> > + * Expect to merge the two entries into one region that starts at r2.base
-> > + * and has size of two regions minus their intersection. The total size of
-> > + * the available memory is updated, and the region counter stays the same.
-> >   */
-> >  static int memblock_add_overlap_top_check(void)
-
-...
- 
-> Reviewed-by: David Hildenbrand <david@redhat.com>
+> > - /*
+> > -  * A simple test that marks a memory block of a specified base address
+> > -  * and size as reserved and to the collection of reserved memory regions
+> > -  * (memblock.reserved). Expect to create a new entry. The region counter
+> > -  * and total memory size are updated.
+> > -  */
+> > +/*
+> > + * A simple test that marks a memory block of a specified base address
+> > + * and size as reserved and to the collection of reserved memory regions
+> > + * (memblock.reserved). Expect to create a new entry. The region counter
+> > + * and total memory size are updated.
+> > + */
+> >  static int memblock_reserve_simple_check(void)
+> >  {
+> >  	struct memblock_region *rgn;
 > 
+> I'd pull this patch to the front, so you don't end up modifying a wrong
+> style in patch #2. You could also just squash this patch into patch #2
+> and mention it in the patch description.
+
+Let's squash this into patch 2.
+
 > -- 
 > Thanks,
 > 
 > David / dhildenb
-> 
 > 
 
 -- 
