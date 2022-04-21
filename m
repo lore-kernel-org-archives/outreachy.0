@@ -1,165 +1,126 @@
-Received: from NAM04-DM6-obe.outbound.protection.outlook.com (mail-dm6nam08on2041.outbound.protection.outlook.com [40.107.102.41])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from m228-13.mailgun.net (m228-13.mailgun.net [159.135.228.13])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B11031FC0
-	for <outreachy@lists.linux.dev>; Thu, 21 Apr 2022 14:53:17 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Wyl96KAPtkw1lE9ARaC1oy2cK7CTQyB7vyS86NxhWI4HsDZ5Jnq5wF5CmCCFqRjV1T+6uJpyk4Yx6pt37+oX4BeHmHLrXOT8lJEnqw5sTLV7Qj0f2j2n3fXxuxVjYSFOzF2tthRlRYAyMJLFGcRoZy6E+D5IpigUx9sbInOZCzZhqqUd3vW+MMCrM8MWXDFXrvj5UTp28WGJm/Uayx/Prny0NjvAMefVp+3ElTEuOPTgh77VFd7ypK//XBqI0n3ZxFc6WE9+I2EtMligcukEiBbW2vQR00CbxmEI2atL0ph53dRT6nz2my+pkpMldmcyzqwJ0FG+8cz33DV+P9oo6A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=H7htWBNFQev1Ud+JTBALrqv3GprWbxT+xUy0wZgTlKQ=;
- b=Pi2bg2wfG4GS1jezBCgxZ5Fm/op0ROQsdAIKW9Ki8gmQK97deNao02ANDv5ORUcd8MhAqyr+pIAJvnQ9VryODrgYTlgGcUpQe7Yonpy0Y8Aotjb5cyu0xLGccOxf0ZiEGFtuwDglYBG1DnjQZCiyqURwPT+b5pDj3CffAhS1UqnYXdguucla86cBhtic6CylZBhL1L9+0p6SLeM9iS2833sX0I46304ykfJllgzYOgu3L/zAqcdGHcf8UFhuinA+u8FG6tG5Kv2nvePDOjDJUMZhCo/l5X5+nzrpnPccjf0NSrv8GWQb4N3dNJz1r7jvDAy7J6luBLpp+GIFEByaBg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=H7htWBNFQev1Ud+JTBALrqv3GprWbxT+xUy0wZgTlKQ=;
- b=bulzQFlfLrf0a8aMSrP+1ojw04kzDHz+nItYdJqMfIf8aM6uajufv5Tpv8bNg3WisdImS5E5IphYEFSKGd0jZWYCcXpDNkUowm30bs1aYv6WBVNFSbWUnmDsMC+UgDP2XP45foqVV6X4FU9c0b0njccmtI9YVNlA/n9H6mncSdnOVao/uLho+xmnLV8YGFNx/sH7ERTpXF6A2z6PyPUNgn04TDwUqkxOF3Mo6zo3/IKXMdgUBvB5LnDQNIampcU42TzOZha/YwWN8X98UmOXN+3NgpWy2yKhUtpo+kleuhe2u+NIwPFtq8xKzwi2qgfAgmivJDi/oTD/aO5vfJ7JrA==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from SJ0PR12MB5504.namprd12.prod.outlook.com (2603:10b6:a03:3ad::24)
- by DS7PR12MB5936.namprd12.prod.outlook.com (2603:10b6:8:7f::8) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.5164.20; Thu, 21 Apr 2022 14:53:15 +0000
-Received: from SJ0PR12MB5504.namprd12.prod.outlook.com
- ([fe80::3887:c9c8:b2de:fe5f]) by SJ0PR12MB5504.namprd12.prod.outlook.com
- ([fe80::3887:c9c8:b2de:fe5f%8]) with mapi id 15.20.5186.015; Thu, 21 Apr 2022
- 14:53:15 +0000
-Message-ID: <48a8fdde-edf7-4d6e-de61-9a2a9c88299c@nvidia.com>
-Date: Thu, 21 Apr 2022 07:53:12 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH] [net-next] selftests: net: vrf_strict_mode_test: add
- support to select a test to run
-Content-Language: en-US
-To: Jaehee Park <jhpark1013@gmail.com>, outreachy@lists.linux.dev,
- Julia Denham <jdenham@redhat.com>, Roopa Prabhu <roopa.prabhu@gmail.com>,
- Stefano Brivio <sbrivio@redhat.com>, netdev@vger.kernel.org
-References: <20220420044647.GA1288137@jaehee-ThinkPad-X1-Extreme>
-From: Roopa Prabhu <roopa@nvidia.com>
-In-Reply-To: <20220420044647.GA1288137@jaehee-ThinkPad-X1-Extreme>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: BYAPR02CA0004.namprd02.prod.outlook.com
- (2603:10b6:a02:ee::17) To SJ0PR12MB5504.namprd12.prod.outlook.com
- (2603:10b6:a03:3ad::24)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 17CEB1FC0
+	for <outreachy@lists.linux.dev>; Thu, 21 Apr 2022 14:57:40 +0000 (UTC)
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=codeagain.dev; q=dns/txt;
+ s=smtp; t=1650553060; h=Content-Type: MIME-Version: Message-ID:
+ Subject: Subject: To: To: From: From: Date: Sender: Sender;
+ bh=IxYl4DcXb9pJAGg4/VecgEAwiR+sMI4uj3Y/4g9SOKI=; b=OCRJyggBb0ktgcpToY/oV04EtCVqgtdPWBxzRbVUVTaTcNfoYM+4K3p4XK/7H+weNXkSGC0t
+ ahITI6xH0+h4SK0JhlOpwJppsPxpO1lLTin+9gBUBrc5QM3CIgkg4igFN7MWgK4OMIFXRXvx
+ riaS1Tgawt/2w3oZrhVQ8/BMTjyBhBg7IbUmG4puJCQqJPJiYV/aYMIatTYQhmDCq5bkoCsA
+ Tnzea+gjvc7KL0BqZEFLmxZRS/ylIgqxHc3BWnK4OZ7x7QKmDsPTTitnDn1IJZTXwYrSeOW6
+ 8s59bBUYS0JZvTUhG5fhGGLIJViH5g9AvQrdBFbjRgNRVo8riSxV/w==
+X-Mailgun-Sending-Ip: 159.135.228.13
+X-Mailgun-Sid: WyI2Y2ZlNyIsICJvdXRyZWFjaHlAbGlzdHMubGludXguZGV2IiwgImJlOWM2ZCJd
+Received: from AN5Bruno (dynamic-user.170.84.57.33.mhnet.com.br
+ [170.84.57.33]) by smtp-out-n04.prod.us-west-2.postgun.com with SMTP id
+ 626170e3b77b16c56e3b9bb6 (version=TLS1.3, cipher=TLS_AES_128_GCM_SHA256);
+ Thu, 21 Apr 2022 14:57:39 GMT
+Sender: codeagain@codeagain.dev
+Date: Thu, 21 Apr 2022 11:57:34 -0300
+From: Bruno Moreira-Guedes <codeagain@codeagain.dev>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Martyn Welch <martyn@welchs.me.uk>,
+	Manohar Vanga <manohar.vanga@gmail.com>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy@lists.linux.dev,
+	Bruno's Patch Watchbox <patch-reply@codeagain.dev>
+Subject: [PATCH v4 0/3] staging: vme: Cleanup driver tree old structures
+Message-ID: <cover.1650544175.git.codeagain@codeagain.dev>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: debd9d38-ebcf-4f4b-0ede-08da23a6aa60
-X-MS-TrafficTypeDiagnostic: DS7PR12MB5936:EE_
-X-Microsoft-Antispam-PRVS:
-	<DS7PR12MB593630CE65493FCA9A3B7980CBF49@DS7PR12MB5936.namprd12.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info:
-	9HyQdGHSR/T2MKg97qzVo/wAP3BfBrO8u2ZJQHbhLr20HyhXF+l4LbabounEAxoSTWTr6hHi6bc7xVWWd4A1K7rKbFGd32EqouqUjlHDsxsiZWcUnEketzSiZGb08riSd1GyGIk10hNwBEL/40eBA6mUhh2LF5QdkxXkOsfAWzQ3wLR9QLWrF47LPca+JRHny88381N/iI0S9Zd2nyPfZKsWkezuWkVjVmMQX/B/2fum97biB0qQYUlvq0qdjhXle1PVX6aNBfslmGrpRd1nNyLMTKRfG0ihMW3SUJCNx4q/gY2VCA7BUjeTNDhIPAW0GQGsHmGXILznJqwALFdWbG5hnr9RmxrxAgCuC11oiM/vMQglGyQYVM8Wae8Wyao+nCsIYsOjL3kQzCJsDDZR3tioNHRsF0jpgdJq4+Qbyzxs09y7+1EqE+2gtyyi/u6E8xvhiS8pvZCof09nPm04rVT93iZN9t2bE2AkZuSWzDNhMRCUqWDz6r0HzOgsDqO2ZkzTFE7+CRn/kLq60kN9sVkVWlW+MprCR8HpJPO42nG5VEBJncxXhg5Oce4t0Zsd7QMZS2BwMZ8wAx04PXw8viNs6B2n8mbepVnlgO4YXOl9m+TTmJKzKETIknh4DuMh1Ml4Y7VZHoBgKOD+pXaJY5afI1YcwXBElLsXVNpIiyYF1qYUrGJrwkaMrlJhPHyNZ6UPfTi1qujCgYE1+FnTj7/NSmdH2pvpTA14utDQxj4=
-X-Forefront-Antispam-Report:
-	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SJ0PR12MB5504.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230001)(4636009)(366004)(2906002)(508600001)(2616005)(6512007)(186003)(26005)(6666004)(53546011)(31696002)(110136005)(36756003)(8936002)(86362001)(38100700002)(83380400001)(31686004)(6506007)(5660300002)(66476007)(66946007)(66556008)(8676002)(6486002)(316002)(45980500001)(43740500002);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0:
-	=?utf-8?B?RStDcE9xVW82UFh6RVNMUVg0YVNlbmQwYUdYQS8zMjBaWUdKVWkrTnYrakZt?=
- =?utf-8?B?SjlmVGN0VXZvK25WL2hxS1B5UXRTVllpZzhiMkh4aGxrM2xMZVhZQldTOEdG?=
- =?utf-8?B?aVFqUmpPeW1JOFFuYjBaZVo2TVVHUGxSL281VTdMNlBqSEdwLzhxdldSWDlz?=
- =?utf-8?B?UVZjejJpTmZCOUdGZHpsb3NBYUN4MCsvbGI2Sk5hTTdsUU5ZQ3NWN21tcWhH?=
- =?utf-8?B?RTlpTERmOEIvR3oyRDM4MlQweVNFZ3J6dERScW0rVjczMGpTWXNkandSbDdU?=
- =?utf-8?B?ZXRHTUI4d1ZLL3VBcVVFQitDZzh6djBBd3RUbG54L2N5R1diNnZUc1BSeGlN?=
- =?utf-8?B?a3NkbDZaeVN0dUFEUnQzSVR1MDY1bE9GQmowYVZuRkRiMTRYN1RZTmlRT25N?=
- =?utf-8?B?TDJrbGJXcU1GN0dEQURPVXRGWFQ5ZHBBa1o3TEd1LzVRUmQyc0FFWXBQdU93?=
- =?utf-8?B?LzFlU2IyRi9XOWI5Q3NLL3FhUkZremVtaXQvRXR4NUowQTVEV0J1dVcrOERK?=
- =?utf-8?B?ejRORkxJOVFaSTZtRUZXZnFPRjl1WUNhUm1FYWkwVWhBVkFINVA2UXNFdWlv?=
- =?utf-8?B?bW1JcU1iU2lrSGcvc1Zza1Z4QmQ5YkR5SEttc20rdGV2L0ZDeFd2V2w2WURB?=
- =?utf-8?B?OUNCd3hndGpzbDF2d3B5K0grUkd6ZXVGalFPQU8wUlAybDBmUnJDY1FNdDhU?=
- =?utf-8?B?QUFSU25Ec204dG5WdGZtNVlORmQrSGloYnJFd1FVVWh5Z0NTU3h6YjhlNjlX?=
- =?utf-8?B?VllCUk5ITjlycFZRczhJeDBDZjhVMVpNNERlbkptbDA3UHF6cG84dXpiektj?=
- =?utf-8?B?ZXpURnlobHFTWjdyOTBraEkzK2hvMzRidHd1OTVITDdtYWt1WnVFTzN6azVj?=
- =?utf-8?B?SlZIc1JsbFIxdlEzLzJONzl6SFlvOTd0L1hRYWZtbk1aVHFNaXJwVUNkNGNJ?=
- =?utf-8?B?WkVmSktUZW1sMGpzTHd2MTVVSWtqSnF1aC9ldkxRc3JvOXBkL0pLN2dGOTlT?=
- =?utf-8?B?OGNrb3FkNkgvd29HSUpETFQrMjVzVnBkQ1BmY2xZQkdJT0lyNUR1djIzOHBX?=
- =?utf-8?B?WU85ak5sbERXQ3RSVElzZ1k0V3V3dHhIcURhWG13YkdONERobkRRbGN4ZVha?=
- =?utf-8?B?Y2o3RE10YUxjWE1aeFdDM3JicGw2bHBYRFpFeXdpc21CVEMxM3JFK3Vteldm?=
- =?utf-8?B?Y0h0bWUzbU5TZFpHNSs2WEN0aWpRcGJlKzQweUpaOGlHeHp3dmRzL2gyei9C?=
- =?utf-8?B?UllaOUFLeFh4MXJPUFJHaElLMjR4R25JRlVIQTVpVnUyODcvQTlPZU14bDVa?=
- =?utf-8?B?OXlnN3pSQnN3WDk4aE9ybk9Ha3JNN2pYc1NGQUFpTklnWXJEclEvcmpnTU95?=
- =?utf-8?B?U1VWRE9zalNab21SMWhVbThDa1grRUtaZVZsTTVWSTJ1SEpDOFVtRGRPNFY0?=
- =?utf-8?B?UHEyUDdtNWxpSnZLQi9jRW5vNWRuanYwanpwYWN5VVViUDZScm5NQ2k0aFNw?=
- =?utf-8?B?MC9JbUV5TWlpNlcvV0RxWTNLMW1vYk0rZVBZYlNHdjdSeGRpZ2gvMXp2SHJE?=
- =?utf-8?B?T3k4L2o1RWxoNEV4dDN3WVo3LzYwUW5yRVMwcTJsNlRLS0xzNk5oc2pvRG9l?=
- =?utf-8?B?THpxQXBVYnRKTUI5UlRPdmNwcTlmTUVSUkxFNis3OXd1cVFleCtWRUxBVWdC?=
- =?utf-8?B?dDE2SWszUXRrSFZpSE5RNFRQalF1dFpSUHlwRHVFckdGQ01VTkpEVGMwWTFM?=
- =?utf-8?B?eDRkeS96TGRHSkl6aGs5dS9TUWIyVFVUbUd3VDB1Z3ZySCtJRTRQT3RUdnFo?=
- =?utf-8?B?SHJHaXU3NDE4RTI3aFUzSW9HN01KTk9KZGFuTytHbmhtdGVrNzFHUlFVdDNH?=
- =?utf-8?B?TGpzZmhjZnMwNEMyQUpMeUVZelNUM2E2QkF4a3ZWcmp3OGVQUWlodFJxVk5D?=
- =?utf-8?B?dElXcldVRVRpWTJSeDdnU1orQ1ZuWUV5ZDlVeW8xV3FQYmJVSkNSS0h1Wk5m?=
- =?utf-8?B?TDdyTklQTmhPTjlOaDFlYmU1bWVhV24ybW9UeEV0RGVUQ2JlZXg5K25aTisz?=
- =?utf-8?B?QmRaU2RHM1hTVy9Kc25tSDloRW1hSzhQdUpiVHlYQ3hFZTZzZkFsWXFKYWhm?=
- =?utf-8?B?VDNBVDNiRkNPOGlsWjNsNVV5TTRabEpNOU1EMENaTitXUlhsa0dYWHVmaW9z?=
- =?utf-8?B?WHZIU0dYZ0dCU05VRElqcnAyVlZyWGRSN2pwbzhJOWk3OWMzR24vNEk1MnJB?=
- =?utf-8?B?WkJxTHdyYlNVY0JYd21lZGlrYVphWTlpVlgra0huTlpEaHhNaVdKWFFQM3Uw?=
- =?utf-8?B?UVA0Vm82dzZVa1R4VW80aEFWOE1CcFJnU3liVmdKcTd0T1U1em9tQT09?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: debd9d38-ebcf-4f4b-0ede-08da23a6aa60
-X-MS-Exchange-CrossTenant-AuthSource: SJ0PR12MB5504.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Apr 2022 14:53:15.7717
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: BbZKMeo+VWtQUauu1JAh6QXCHZnqu8QsREcgzMAFDXWbVaXq6xwMg9mJiAfCO3tMcm7CRGTKvYnLoHuJX5kzuA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR12MB5936
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="k7aonxtqs75wcypj"
+Content-Disposition: inline
 
 
-On 4/19/22 21:46, Jaehee Park wrote:
-> Add a boilerplate test loop to run all tests in
-> vrf_strict_mode_test.sh.
->
-> Signed-off-by: Jaehee Park <jhpark1013@gmail.com>
-> ---
+--k7aonxtqs75wcypj
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-pls ignore this, duplicate patch
+This patch series modify the vme_user driver's place in
+menuconfig (1/3), fixes a missing `depends on` line in a Kconfig file
+(2/3), and rearrages the directory tree for the driver allowing a more
+straightforward comprehension of its contents (3/3).
+
+The 'vme_user/' driver is the only remaining vme-family driver in the
+'staging/' tree, but its structure, entry in menuconfig and building
+routines are still attached to the 'vme/' subtree now outside
+'staging/'. The present patchset fixes it.
+
+Signed-off-by: Bruno Moreira-Guedes <codeagain@codeagain.dev>
+---
+CHANGE SUMMARY
+
+  Version:  v1  v2  v3  v4
+[PATCH 1/3] *   -   *   -
+[PATCH 2/3] -   *   *   -
+[PATCH 3/3] -   *   *   *
+
+CHANGELOG
+v4:
+  * Remove extraneous patch from set (Greg)
+  * Improve changelog format (Alison)
+  * Update commit message in PATCH 3/3
+
+v3:
+  * Update Changelog to cover letter (Alison)
+  * Update commit messages and logs (Alison, Greg)
+  * Rename patches 2/3 and 3/3
+
+v2:
+  * Add new patch to set: 2/3
+  * Add new patch to set: 3/3
+
+OBSERVATIONS
+As Martyn confirmed the devices are still being manufactured I'll keep
+going on with this patch meanwhile.
+
+PATCHES
+[PATCH 1/3] staging: vme: Move vme_user to staging KConfig
+[PATCH 2/3] staging: vme: Add VME_BUS dependency to Kconfig
+[PATCH 3/3] staging: vme: Move 'vme/devices/' to 'vme_user/'
+---
+Bruno Moreira-Guedes (3):
+  staging: vme: Move vme_user to staging KConfig
+  staging: vme: Add VME_BUS dependency to Kconfig
+  staging: vme: Move 'vme/devices/' to 'vme_user/'
+
+ MAINTAINERS                                          | 2 +-
+ drivers/staging/Kconfig                              | 1 +
+ drivers/staging/Makefile                             | 2 +-
+ drivers/staging/vme/Makefile                         | 2 --
+ drivers/staging/{vme/devices =3D> vme_user}/Kconfig    | 2 +-
+ drivers/staging/{vme/devices =3D> vme_user}/Makefile   | 0
+ drivers/staging/{vme/devices =3D> vme_user}/vme_user.c | 0
+ drivers/staging/{vme/devices =3D> vme_user}/vme_user.h | 0
+ drivers/vme/Kconfig                                  | 2 --
+ 9 files changed, 4 insertions(+), 7 deletions(-)
+ delete mode 100644 drivers/staging/vme/Makefile
+ rename drivers/staging/{vme/devices =3D> vme_user}/Kconfig (93%)
+ rename drivers/staging/{vme/devices =3D> vme_user}/Makefile (100%)
+ rename drivers/staging/{vme/devices =3D> vme_user}/vme_user.c (100%)
+ rename drivers/staging/{vme/devices =3D> vme_user}/vme_user.h (100%)
+
+--=20
+2.35.3
 
 
->   .../testing/selftests/net/vrf_strict_mode_test.sh  | 14 +++++++++++++-
->   1 file changed, 13 insertions(+), 1 deletion(-)
->
-> diff --git a/tools/testing/selftests/net/vrf_strict_mode_test.sh b/tools/testing/selftests/net/vrf_strict_mode_test.sh
-> index 865d53c1781c..116ca43381b5 100755
-> --- a/tools/testing/selftests/net/vrf_strict_mode_test.sh
-> +++ b/tools/testing/selftests/net/vrf_strict_mode_test.sh
-> @@ -14,6 +14,8 @@ INIT_NETNS_NAME="init"
->   
->   PAUSE_ON_FAIL=${PAUSE_ON_FAIL:=no}
->   
-> +TESTS="vrf_strict_mode_tests_init vrf_strict_mode_tests_testns vrf_strict_mode_tests_mix"
-> +
->   log_test()
->   {
->   	local rc=$1
-> @@ -391,7 +393,17 @@ fi
->   cleanup &> /dev/null
->   
->   setup
-> -vrf_strict_mode_tests
-> +for t in $TESTS
-> +do
-> +	case $t in
-> +	vrf_strict_mode_tests_init|vrf_strict_mode_init) vrf_strict_mode_tests_init;;
-> +	vrf_strict_mode_tests_testns|vrf_strict_mode_testns) vrf_strict_mode_tests_testns;;
-> +	vrf_strict_mode_tests_mix|vrf_strict_mode_mix) vrf_strict_mode_tests_mix;;
-> +
-> +	help) echo "Test names: $TESTS"; exit 0;;
-> +
-> +	esac
-> +done
->   cleanup
->   
->   print_log_test_results
+--k7aonxtqs75wcypj
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYIAB0WIQQTUrsHCxGmQ5vyKRAZtd3tyEY2kgUCYmFw3gAKCRAZtd3tyEY2
+kiVkAQDcKXdUoLot3+kaFYzScp207pt5Zls7kUn0r7OqAc1jzAEAgiTLF1mmMFXy
+PiN7xerBl6bKMe0MfXDelwxdLOUpPQ8=
+=Y80d
+-----END PGP SIGNATURE-----
+
+--k7aonxtqs75wcypj--
