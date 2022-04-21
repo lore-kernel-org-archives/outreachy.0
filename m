@@ -1,186 +1,86 @@
-Received: from mail-ej1-f51.google.com (mail-ej1-f51.google.com [209.85.218.51])
+Received: from mail-wr1-f43.google.com (mail-wr1-f43.google.com [209.85.221.43])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B22D81FCD
-	for <outreachy@lists.linux.dev>; Thu, 21 Apr 2022 18:02:21 +0000 (UTC)
-Received: by mail-ej1-f51.google.com with SMTP id g13so11651684ejb.4
-        for <outreachy@lists.linux.dev>; Thu, 21 Apr 2022 11:02:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=a6ZmwFanJZuh7hQqz3LVbwr1p4KwEMnE7IqhDHbu+tA=;
-        b=WQkj196SEjCOm5X1GFd5opNyYrB5ISoL5QCp3zcZ4yG0SHgB7UKcBFt7pk76U2OtPU
-         +Ve58ZPZqJmVLzICA+f/cnKOvcfY/w5tV4ffzw3Qja6gBgVs/y+RzREkPUa4Y3xsmFbA
-         3Je4Dkv/zCVMsTbR4+e2pYNkLBajXcdoM/FMM5Q+mt5Ts7Yfs2LoBBwxQbeaYSlUO+o2
-         L/EGCoZIiqV+yiIOC3doM2oX8GC93aQ1io1l7PE3rqtxJd6HIp0xaT7N257ByOGQ5b07
-         T6b1k8onjIXT3G9OxRiw0g3fI5pr8KMPaleq644o0uSnCkBIAdvXXVt5hGGGBzx7VcXK
-         0u6Q==
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3062923A0;
+	Thu, 21 Apr 2022 19:16:08 +0000 (UTC)
+Received: by mail-wr1-f43.google.com with SMTP id v12so1202671wrv.10;
+        Thu, 21 Apr 2022 12:16:07 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=a6ZmwFanJZuh7hQqz3LVbwr1p4KwEMnE7IqhDHbu+tA=;
-        b=xqLg7grPSDP2VDngj4bWbwPPCWPj8KQbg4RydJa70C4p+fa3RSW6YRI+wynMXADHeQ
-         OOVYK5xtKiTFNuLuNYVtBN04ZVrHnDLsKTzLAB4FWH2PCfhqRFalVlOUuMfe5XsxTdNv
-         fgdzKd+33ley2esR793QjwzRKPT1fGFepc54FwwrFCdL0RDNuch1Q3z+N2gwNaZcnKlO
-         5PISlwcNrE+/ay8uxTIR/87/lWXg3wvr+IKUNsBwQamQyDJQNkXghu6Ci33JUIheCZ5h
-         LLKPL49EYtDAFXz8n5Lg77NnshCW3q6dEuS7sa8nGVxo3r/mb/R7NJ/uphPu+zFMs0E8
-         HzBA==
-X-Gm-Message-State: AOAM530KCgOWmiZI+QM7bq9QXjRhKAPCIV6pZG5qhiAwB2jitscm8ZOy
-	NGTUrUCKMah1dHy8+v6fJvA=
-X-Google-Smtp-Source: ABdhPJyLVNzKlRNdicrjeKkwsfZkoOjRLHIkNCSVnaOxJCJcfpFsnLT/eGP2v0fC33Y/ojSFUEB1Pg==
-X-Received: by 2002:a17:907:7d88:b0:6f0:29ea:cbfe with SMTP id oz8-20020a1709077d8800b006f029eacbfemr640244ejc.704.1650564140059;
-        Thu, 21 Apr 2022 11:02:20 -0700 (PDT)
-Received: from localhost.localdomain (host-79-50-86-254.retail.telecomitalia.it. [79.50.86.254])
-        by smtp.gmail.com with ESMTPSA id l17-20020a056402231100b0041d98ed7ad8sm11836204eda.46.2022.04.21.11.02.18
+        h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+         :references:content-transfer-encoding:user-agent:mime-version;
+        bh=AHLP1NJzIhUuorzbDM3B2ohS7cALSRAeCoZR22VkiWU=;
+        b=BGGcjrCH4/ov0aL+uEO21oW2+L3dQ/2MVWbPExa3hZ4lyx5x5eNzPjSEHalM2VEDdc
+         ikvrayV+K2gcbpU2F3ZEtzbZ0qtxk1pPBGoGxSbjKuYyLTvjYIP5ogFusnilWZShbvo9
+         CJ+i7J2C5Zzw8bYpfIyTuokOUNucrtcfOBt+nyNEZwlsRghL+tyNXKFyqQDWi8NOk7Lx
+         7CG49LR/eNsCUWebAA5e8TququcZcIQn1WYLEVX6i8Lpl16qDzPrAmB/7Ol9X93FpZVO
+         +8SseEDt3y4pu4FQuoKwXnqJJMk9BbxQ14SdFZs7PU0MGMLb419Gok0sdvNCSXoBoV3i
+         srkg==
+X-Gm-Message-State: AOAM5326ZYST9HjNwQQhofJgTnzd9kyX7/iO1xBVmyTWuXf9kBz1D1uS
+	ikZJD44HXlLtZbn8TfALSUg=
+X-Google-Smtp-Source: ABdhPJwVWTrbptQ5HgW724jwGeCexvjlAE4JqlG/I3za3EqRCW4VVzxlGFXoXbiaA5dFfugGM/yAoQ==
+X-Received: by 2002:adf:f508:0:b0:207:a8fe:c8bd with SMTP id q8-20020adff508000000b00207a8fec8bdmr857908wro.313.1650568566220;
+        Thu, 21 Apr 2022 12:16:06 -0700 (PDT)
+Received: from ?IPv6:2a00:23c6:c31a:b300:7e32:69f8:29ae:884a? ([2a00:23c6:c31a:b300:7e32:69f8:29ae:884a])
+        by smtp.gmail.com with ESMTPSA id n42-20020a05600c3baa00b0038ffadd6e4asm2864364wms.30.2022.04.21.12.16.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 21 Apr 2022 11:02:18 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Ira Weiny <ira.weiny@intel.com>,
-	Andrew Morton <akpm@linux-foundation.org>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	"Matthew Wilcox (Oracle)" <willy@infradead.org>,
-	Will Deacon <will@kernel.org>,
-	Peter Collingbourne <pcc@google.com>,
-	Vlastimil Babka <vbabka@suse.cz>,
-	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
-	linux-kernel@vger.kernel.org,
-	Jonathan Corbet <corbet@lwn.net>,
-	linux-doc@vger.kernel.org,
-	outreachy@lists.linux.dev
-Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>,
-	Thomas Gleixner <tglx@linutronix.de>,
-	Peter Zijlstra <peterz@infradead.org>
-Subject: [PATCH 4/4] Documentation/vm: Rework "Temporary Virtual Mappings"
-Date: Thu, 21 Apr 2022 20:02:00 +0200
-Message-Id: <20220421180200.16901-5-fmdefrancesco@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220421180200.16901-1-fmdefrancesco@gmail.com>
-References: <20220421180200.16901-1-fmdefrancesco@gmail.com>
+        Thu, 21 Apr 2022 12:16:05 -0700 (PDT)
+Message-ID: <3e91b72a86294b542acf460657d0fd94adeb252e.camel@welchs.me.uk>
+Subject: Re: [PATCH v3 0/3] staging: vme: Cleanup driver tree old structures
+From: Martyn Welch <martyn@welchs.me.uk>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Bruno Moreira-Guedes
+	 <codeagain@codeagain.dev>
+Cc: Manohar Vanga <manohar.vanga@gmail.com>, linux-staging@lists.linux.dev, 
+ linux-kernel@vger.kernel.org, outreachy@lists.linux.dev, Bruno's Patch
+ Watchbox <patch-reply@codeagain.dev>
+Date: Thu, 21 Apr 2022 20:16:05 +0100
+In-Reply-To: <YmA4QIRfx2QPhEJi@kroah.com>
+References: <cover.1650321310.git.codeagain@codeagain.dev>
+	 <YmA4QIRfx2QPhEJi@kroah.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.44.0-1 
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
 
-Extend and rework the "Temporary Virtual Mappings" section of the highmem.rst
-documentation.
+On Wed, 2022-04-20 at 18:43 +0200, Greg Kroah-Hartman wrote:
+> On Mon, Apr 18, 2022 at 08:29:49PM -0300, Bruno Moreira-Guedes wrote:
+> > This patch series modify the vme_user driver's place in
+> > menuconfig (1/3), fixes a missing `depends on` line in a Kconfig
+> > file
+> > (2/3), and rearrages the directory tree for the driver allowing a
+> > more
+> > straightforward comprehension of its contents (3/3).
+> >=20
+> > The 'vme_user/' driver is the only remaining vme-family driver in
+> > the
+> > 'staging/' tree, but its structure, entry in menuconfig and
+> > building
+> > routines are still attached to the 'vme/' subtree now outside
+> > 'staging/'. The present patchset fixes it.
+> >=20
+> > Signed-off-by: Bruno Moreira-Guedes <codeagain@codeagain.dev>
+>=20
+> What about deleting the vme drivers entirely?
 
-Despite the local kmaps were introduced by Thomas Gleixner in October 2020,
-documentation was still missing information about them. These additions rely
-largely on Gleixner's patches, Jonathan Corbet's LWN articles, comments by
-Ira Weiny and Matthew Wilcox, and in-code comments from
-./include/linux/highmem.h.
+I assume you're suggesting deleting the "vme_user" driver from the
+staging directory?
 
-1) Add a paragraph to document kmap_local_page().
-2) Reorder the list of functions by decreasing order of preference of
-use.
-3) Rework part of the kmap() entry in list.
+> Martyn, anyone still using these?
+>=20
 
-Cc: Jonathan Corbet <corbet@lwn.net>
-Cc: Thomas Gleixner <tglx@linutronix.de>
-Cc: Ira Weiny <ira.weiny@intel.com>
-Cc: Matthew Wilcox <willy@infradead.org>
-Cc: Peter Zijlstra <peterz@infradead.org>
-Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
----
- Documentation/vm/highmem.rst | 71 ++++++++++++++++++++++++++++++------
- 1 file changed, 60 insertions(+), 11 deletions(-)
+I'm fairly sure that the actual VME drivers for the hardware bridges
+(the bits not in staging) are still being used based on the
+conversations I've had today. I'm just trying to find out whether the
+vme_user bit is actively being used.
 
-diff --git a/Documentation/vm/highmem.rst b/Documentation/vm/highmem.rst
-index e05bf5524174..960f61e7a552 100644
---- a/Documentation/vm/highmem.rst
-+++ b/Documentation/vm/highmem.rst
-@@ -50,26 +50,75 @@ space when they use mm context tags.
- Temporary Virtual Mappings
- ==========================
- 
--The kernel contains several ways of creating temporary mappings:
-+The kernel contains several ways of creating temporary mappings. The following
-+list shows them in order of preference of use.
- 
--* vmap().  This can be used to make a long duration mapping of multiple
--  physical pages into a contiguous virtual space.  It needs global
--  synchronization to unmap.
-+* kmap_local_page().  This function is used to require short term mappings.
-+  It can be invoked from any context (including interrupts) but the mappings
-+  can only be used in the context which acquired them.
-+
-+  This function should be preferred, where feasible, over all the others.
- 
--* kmap().  This permits a short duration mapping of a single page.  It needs
--  global synchronization, but is amortized somewhat.  It is also prone to
--  deadlocks when using in a nested fashion, and so it is not recommended for
--  new code.
-+  These mappings are per thread, CPU local (i.e., migration from one CPU to
-+  another is disabled - this is why they are called "local"), but they don't
-+  disable preemption. It's valid to take pagefaults in a local kmap region,
-+  unless the context in which the local mapping is acquired does not allow
-+  it for other reasons.
-+
-+  It is assumed that kmap_local_page() always returns the virtual address
-+  of the mapping, therefore they won't ever fail.
-+
-+  If a task holding local kmaps is preempted, the maps are removed on context
-+  switch and restored when the task comes back on the CPU. As the maps are
-+  strictly CPU local, it is guaranteed that the task stays on the CPU and
-+  that the CPU cannot be unplugged until the local kmaps are released.
-+
-+  Nesting kmap_local_page() and kmap_atomic() mappings is allowed to a certain
-+  extent (up to KMAP_TYPE_NR) but their invocations have to be strictly ordered
-+  because the map implementation is stack based.
- 
- * kmap_atomic().  This permits a very short duration mapping of a single
-   page.  Since the mapping is restricted to the CPU that issued it, it
-   performs well, but the issuing task is therefore required to stay on that
-   CPU until it has finished, lest some other task displace its mappings.
- 
--  kmap_atomic() may also be used by interrupt contexts, since it is does not
--  sleep and the caller may not sleep until after kunmap_atomic() is called.
-+  kmap_atomic() may also be used by interrupt contexts, since it does not
-+  sleep and the callers too may not sleep until after kunmap_atomic() is
-+  called.
-+
-+  Each call of kmap_atomic() in the kernel creates a non-preemptible section
-+  and disable pagefaults. This could be a source of unwanted latency, so it
-+  should be only used if it is absolutely required, otherwise kmap_local_page()
-+  should be used where it is feasible.
- 
--  It may be assumed that k[un]map_atomic() won't fail.
-+  It is assumed that k[un]map_atomic() won't fail.
-+
-+* kmap().  This should be used to make short duration mapping of a single
-+  page with no restrictions on preemption or migration. It comes with an
-+  overhead as mapping space is restricted and protected by a global lock
-+  for synchronization. When mapping is no more needed, the address that
-+  the page was mapped to must be released with kunmap().
-+
-+  Mapping changes must be propagated across all the CPUs. kmap() also
-+  requires global TLB invalidation when the kmap's pool wraps and it might
-+  block when the mapping space is fully utilized until a slot becomes
-+  available. Therefore, kmap() is only callable from preemptible context.
-+
-+  All the above work is necessary if a mapping must last for a relatively
-+  long time but the bulk of high-memory mappings in the kernel are
-+  short-lived and only used in one place. This means that the cost of
-+  kmap() is mostly wasted in such cases. kmap() was not intended for long
-+  term mappings but it has morphed in that direction and its use is
-+  strongly discouraged in newer code and the set of the preceding functions
-+  should be preferred.
-+
-+  On 64-bit systems, calls to kmap_local_page(), kmap_atomic() and kmap() have
-+  no real work to do because a 64-bit address space is more than sufficient to
-+  address all the physical memory whose pages are permanently mapped.
-+
-+* vmap().  This can be used to make a long duration mapping of multiple
-+  physical pages into a contiguous virtual space.  It needs global
-+  synchronization to unmap.
- 
- 
- Cost of Temporary Mappings
--- 
-2.34.1
+Martyn
+
+> thanks,
+>=20
+> greg k-h
 
