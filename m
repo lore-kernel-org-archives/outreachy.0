@@ -1,61 +1,130 @@
-Received: from ms.lwn.net (ms.lwn.net [45.79.88.28])
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0A9A91FA1
-	for <outreachy@lists.linux.dev>; Thu, 21 Apr 2022 08:09:37 +0000 (UTC)
-Received: from localhost (mdns.lwn.net [45.79.72.68])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ms.lwn.net (Postfix) with ESMTPSA id 5FC582D7;
-	Thu, 21 Apr 2022 08:09:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 ms.lwn.net 5FC582D7
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lwn.net; s=20201203;
-	t=1650528575; bh=5Pv2XFkNCv+/OrUz+c2muD9XTwPx9utQOZAWaseH+80=;
-	h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
-	b=TMn8Tq9xsV+ljsIBhf7BQ+NBRvgL96yjrOVlobZT4/LWrrUZJiyEXG3USj/QIGnjx
-	 iqoQvfX1sZS1dsNpG1KwamXCU9JQMiSrHEV9gjNAbK8NmXu//f6BBTetEkTU+ynExk
-	 SEzYGtpY4rWMYFX+RYxHUNmV/j++stHxAvcENIhwd/paOOBlZSzCw4VDyW7789NYv9
-	 TSW6y6OM7sXKzc+tTfvF7J+IjS0F8oq00I6h+rwN0hhHoSPfen6o8dMkyudIYlfRNs
-	 pPg2S+wJbx+RwPkTjspn4YMjcZArUNx6Cv8fV6EMrPktrVrmA/pFLwFhxY3VQ+72pW
-	 8aBzWSNVwKWOg==
-From: Jonathan Corbet <corbet@lwn.net>
-To: Bagas Sanjaya <bagasdotme@gmail.com>, Bruno Moreira-Guedes
- <codeagain@codeagain.dev>
-Cc: linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
- outreachy@lists.linux.dev, Bruno's Patch Watchbox
- <patch-reply@codeagain.dev>
-Subject: Re: [PATCH v2 0/2] Docs: Update information at changes.rst
-In-Reply-To: <2f4c72d2-4669-4217-f322-9d4f34c3053e@gmail.com>
-References: <cover.1650376049.git.codeagain@codeagain.dev>
- <8735i83xo1.fsf@meer.lwn.net> <20220420172731.ru7kfrdkmprybtu7@AN5Bruno>
- <878rrz30d9.fsf@meer.lwn.net>
- <2f4c72d2-4669-4217-f322-9d4f34c3053e@gmail.com>
-Date: Thu, 21 Apr 2022 02:09:31 -0600
-Message-ID: <874k2m3lj8.fsf@meer.lwn.net>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5BF2146AD
+	for <outreachy@lists.linux.dev>; Thu, 21 Apr 2022 14:34:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 32156C385A8;
+	Thu, 21 Apr 2022 14:34:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1650551653;
+	bh=bnxq7xY6hJG0vnk6nNy70/Pfu3qfybGU0cw7vx4Vjn4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=MeEJHHPsGHAvWel1AYF953PR0H5gqulQaCXN/FnzXdgWyNdR7lRAtJSuXiFgKg3H1
+	 Vlqqxdrb4kWRmH93DGO8lq2CdCLyM2ezXYk+8wOYqrUFcYNZ0LJKiqLaiv30jKfAdQ
+	 krRXez5nqEyjtzw96GJdog4UEGZFg5qWH83SqOysdVZkQDabovoN6xEA0Ba8jstEer
+	 CWEuYbYVsxLxPCAArbdpDyVFkHnMH9w+D6KPPIF2QeQe1Bcau3dijuzxIuAbk55YvS
+	 EZSF6lszNcJDkfi/KMPQXNkg8eB+gTSl89RfdNyp9m5JgbkF6RfYKhjCEtUDHjquZD
+	 UFGmA37ZAvUHA==
+Date: Thu, 21 Apr 2022 17:34:05 +0300
+From: Mike Rapoport <rppt@kernel.org>
+To: David Hildenbrand <david@redhat.com>
+Cc: Rebecca Mckeever <remckee0@gmail.com>, outreachy@lists.linux.dev,
+	linux-mm@kvack.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/3] memblock tests: update style of comments for
+ memblock_add_*() functions
+Message-ID: <YmFrXaBvhJy2auYK@kernel.org>
+References: <cover.1650452552.git.remckee0@gmail.com>
+ <0004a1a720c5c15ba16cb9f2fb226f57276de2c0.1650452552.git.remckee0@gmail.com>
+ <436b1fd0-16a6-0f77-7ff4-a68252d6b117@redhat.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <436b1fd0-16a6-0f77-7ff4-a68252d6b117@redhat.com>
 
-Bagas Sanjaya <bagasdotme@gmail.com> writes:
+On Thu, Apr 21, 2022 at 09:12:02AM +0200, David Hildenbrand wrote:
+> On 20.04.22 13:19, Rebecca Mckeever wrote:
+> > Update comments in memblock_add_*() functions to match the style used
+> > in tests/alloc_*.c by rewording to make the expected outcome more apparent
+> > and, if more than one memblock is involved, adding a visual of the
+> > memory blocks.
+> > 
+> > Signed-off-by: Rebecca Mckeever <remckee0@gmail.com>
+> > ---
+> >  tools/testing/memblock/tests/basic_api.c | 75 +++++++++++++++++-------
+> >  1 file changed, 54 insertions(+), 21 deletions(-)
+> > 
+> > diff --git a/tools/testing/memblock/tests/basic_api.c b/tools/testing/memblock/tests/basic_api.c
+> > index fbc1ce160303..cdf112d25343 100644
+> > --- a/tools/testing/memblock/tests/basic_api.c
+> > +++ b/tools/testing/memblock/tests/basic_api.c
+> > @@ -26,8 +26,8 @@ static int memblock_initialization_check(void)
+> >  /*
+> >   * A simple test that adds a memory block of a specified base address
+> >   * and size to the collection of available memory regions (memblock.memory).
+> > - * It checks if a new entry was created and if region counter and total memory
+> > - * were correctly updated.
+> > + * Expect to create a new entry. The region counter and total memory get
+> > + * updated.
+> >   */
+> >  static int memblock_add_simple_check(void)
+> >  {
+> > @@ -55,8 +55,8 @@ static int memblock_add_simple_check(void)
+> >  /*
+> >   * A simple test that adds a memory block of a specified base address, size
 
-> On 4/21/22 04:34, Jonathan Corbet wrote:
->>> Thanks, Jon! I have also been thinking whether this filename
->>> ('changes.rst') is a good description of the file contents. Do you think
->>> renaming it to something like 'requirements.rst' and updating its
->>> references would be a good patch?
->> 
->> It's best not to rename things unnecessarily, especially relatively
->> well-known files that a lot of people expect to find in a specific
->> place.  We've done a lot of renaming over the last few years, but this
->> is one I might let slide for now.
->> 
->
-> Did you mean the rename will be benefical?
+Can you please add coma after size  ...                                        ^
 
-No, I would not do the rename at this time.
+> >   * NUMA node and memory flags to the collection of available memory regions.
+> > - * It checks if the new entry, region counter and total memory size have
+> > - * expected values.
+> > + * Expect to create a new entry. The region counter and total memory get
+> > + * updated.
+> >   */
+> >  static int memblock_add_node_simple_check(void)
+> >  {
 
-jon
+...
+
+> > @@ -125,10 +131,20 @@ static int memblock_add_disjoint_check(void)
+> >  
+> >  /*
+> >   * A test that tries to add two memory blocks, where the second one overlaps
+> > - * with the beginning of the first entry (that is r1.base < r2.base + r2.size).
+> > - * After this, it checks if two entries are merged into one region that starts
+> > - * at r2.base and has size of two regions minus their intersection. It also
+> > - * verifies the reported total size of the available memory and region counter.
+> > + * with the beginning of the first entry (that is r1.base < r2.base + r2.size):
+> > + *
+> > + *  |    +----+----+------------+          |
+> > + *  |    |   r|2   |   r1       |          |
+> > + *  +----+----+----+------------+----------+
+
+I'd move | separator outside the block name, e.g
+
+	*  |    +----+----+------------+          |
+	*  |    |   | r2  |   r1       |          |
+	*  +----+----+----+------------+----------+
+
+but no strong feelings about this :)
+
+> > + *       ^    ^
+> > + *       |    |
+> > + *       |    r1.base
+> > + *       |
+> > + *       r2.base
+> > + *
+> > + * Expect to merge the two entries into one region that starts at r2.base
+> > + * and has size of two regions minus their intersection. The total size of
+> > + * the available memory is updated, and the region counter stays the same.
+> >   */
+> >  static int memblock_add_overlap_top_check(void)
+
+...
+ 
+> Reviewed-by: David Hildenbrand <david@redhat.com>
+> 
+> -- 
+> Thanks,
+> 
+> David / dhildenb
+> 
+> 
+
+-- 
+Sincerely yours,
+Mike.
