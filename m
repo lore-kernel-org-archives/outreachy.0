@@ -1,51 +1,51 @@
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DF91346A6
-	for <outreachy@lists.linux.dev>; Thu, 21 Apr 2022 07:12:08 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 79A531876
+	for <outreachy@lists.linux.dev>; Thu, 21 Apr 2022 07:14:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1650525127;
+	s=mimecast20190719; t=1650525271;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=BlhjlslVFi77Wl+CHcuoCUnkjOxb+lqiVmEFLuwRx6E=;
-	b=QGYXMS9TXVC8Lx2N2Xuk0h6fmltrzIJWE1hU+8jrtW3KIYq2a4m5PySmSPnASgQSrUKlgi
-	A7tazBgP7fFLSbH4Oe4P3kBimKsMSKm7sP3IKcZqiSFRA6I9QS73VyPlcQZjbXHIRvYcd7
-	cMqdBS4l+vL5D4eo6ECNV99B9RStMoU=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=FTKdRZp+dCYF2kvJ3QkbPTv+NjUqYK/0QAd8tz4f2u8=;
+	b=CLYy6i+ZfkzU+JZQqfTwe6o/e85kCrsUiBVrnReBaE/AeREl7uGyUlQsPvQObey6H80O6+
+	FDt7KxAqj1gWsnt0AUATK3afeD3NX2b6XhZCkAR0oTnwfnF6+UDKU8XIzlx6uOzn3wnZpy
+	13IiKYUVMe7DUX8JeZeMz0QtgbeVG4Q=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-661-So7XyW0JPPipwqM0B1ljaw-1; Thu, 21 Apr 2022 03:12:05 -0400
-X-MC-Unique: So7XyW0JPPipwqM0B1ljaw-1
-Received: by mail-wr1-f72.google.com with SMTP id p18-20020adf9592000000b00207bc12decbso825381wrp.21
-        for <outreachy@lists.linux.dev>; Thu, 21 Apr 2022 00:12:05 -0700 (PDT)
+ us-mta-158-ZuJ5jlDYN5S4Vunfzm5kCA-1; Thu, 21 Apr 2022 03:14:29 -0400
+X-MC-Unique: ZuJ5jlDYN5S4Vunfzm5kCA-1
+Received: by mail-wr1-f71.google.com with SMTP id 46-20020adf8031000000b00207ad3febaeso830177wrk.6
+        for <outreachy@lists.linux.dev>; Thu, 21 Apr 2022 00:14:28 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
          :content-language:to:cc:references:from:organization:in-reply-to
          :content-transfer-encoding;
-        bh=BlhjlslVFi77Wl+CHcuoCUnkjOxb+lqiVmEFLuwRx6E=;
-        b=j5BeptJQ7SATnAT6ARv1oktoW33maIDoqzjv4x4XbrxILhThRJW5kBHNejbhgO8fpa
-         q8jfYyxJuEfhVt1UsaRQPvX8bBBitbh0J3qmLYVuHcj+GDD6MW5gT1aPAQpx0buzhqe6
-         fVrmkNYjj1msX1x6icBxtaRJDp+zJjYUVwffqTEaDBHtSfBOLfb+76hyt+mR3t/Wn1Rf
-         2/2Xc6a8MHp+KeWxdEVoyvaLHpkeTsIxtttqomKxkU9/HOxIiD9doYHDoXswPNhyxaH7
-         jWqZgt6vegJHPo/uTE3WLMSOxvOIkhEesbKqL5upQ6Iw3k74JJZ6BpSxCbTsdr46LxRa
-         sgvg==
-X-Gm-Message-State: AOAM5330XYf7V5DxxHsYjsk/nlDvf67eD1W6v35V/110MEZObrrDRV5V
-	qDyErMIiQVHqnyUfpj61tVe17qeKiRzAspW3iMOm4Oal/axAGHshE/K9+f7gAt3LdbX0xSolzJD
-	TxmdodOSGbdtaxGvsc2Ao
-X-Received: by 2002:a7b:c844:0:b0:38e:7c92:a9e3 with SMTP id c4-20020a7bc844000000b0038e7c92a9e3mr6989433wml.140.1650525124645;
-        Thu, 21 Apr 2022 00:12:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzVz/JO9dKqLMzH3gy16bSB1ht5ndgDDU51K5hj3E+i5/NAaixgHvKDLeexRrqvs7GX3Odxog==
-X-Received: by 2002:a7b:c844:0:b0:38e:7c92:a9e3 with SMTP id c4-20020a7bc844000000b0038e7c92a9e3mr6989397wml.140.1650525124310;
-        Thu, 21 Apr 2022 00:12:04 -0700 (PDT)
+        bh=FTKdRZp+dCYF2kvJ3QkbPTv+NjUqYK/0QAd8tz4f2u8=;
+        b=hdY5Ogpduzx57YNIFT7omdjeW01OnaXj52Ux5K8kpmknXLdisTbBRBSP4NtyXPm1TI
+         u9Dy3l94IGpbw+gxG/vF+Y2fa+FI4Q/lPfEUBsbWP4rR8/9T288zXOeWZGEalA16G2+L
+         gTW2ptDiWuGWHscfPCaMdiqiRrb0I26wTy44L3wsUM4AiHIVN6lU3TrEysuBgZDE6ydi
+         /DQD3O0bZqPTQX6S2icOCJdD0Zi9MuzGNk0Fu8WY22YjWotu96Bny0eF7YmJuESTPwyE
+         Un2CC2WYEL2hfMRX0qr/MyuN59AGlC+kUH+EknjPBvEeA3Nn7yekjZCkRKAlsvcxC02Q
+         iYVw==
+X-Gm-Message-State: AOAM531XfaPRqUFJS4NFhq7RRZuoVieXDjH8Yaf16B9qN+mXL7pq/OGU
+	sVLDrTmcaxkK0IU/HzE0vYQGfZIib5jIWICi/Ew4J0YJuEOcfiNYxt5vjKhDq5c6lh/mcKY3FAy
+	ARLos9cKqmEsqJbwL9OjW
+X-Received: by 2002:adf:f244:0:b0:20a:c3ab:d009 with SMTP id b4-20020adff244000000b0020ac3abd009mr175576wrp.10.1650525267856;
+        Thu, 21 Apr 2022 00:14:27 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJywysQg8deQDrJHLZkyZ0rGqd8PFDbr2+HfodlCIi36M8eMOx80bbK9Gp7P+kUPy4LdLLRgEA==
+X-Received: by 2002:adf:f244:0:b0:20a:c3ab:d009 with SMTP id b4-20020adff244000000b0020ac3abd009mr175558wrp.10.1650525267563;
+        Thu, 21 Apr 2022 00:14:27 -0700 (PDT)
 Received: from ?IPV6:2003:cb:c702:de00:711b:76af:b335:9b70? (p200300cbc702de00711b76afb3359b70.dip0.t-ipconnect.de. [2003:cb:c702:de00:711b:76af:b335:9b70])
-        by smtp.gmail.com with ESMTPSA id o10-20020a5d47ca000000b0020a992ce36esm1710046wrc.1.2022.04.21.00.12.03
+        by smtp.gmail.com with ESMTPSA id r9-20020a05600c320900b0038f0894d80csm1282777wmp.7.2022.04.21.00.14.26
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 21 Apr 2022 00:12:03 -0700 (PDT)
-Message-ID: <436b1fd0-16a6-0f77-7ff4-a68252d6b117@redhat.com>
-Date: Thu, 21 Apr 2022 09:12:02 +0200
+        Thu, 21 Apr 2022 00:14:26 -0700 (PDT)
+Message-ID: <02765252-2a86-f1aa-a7a1-b00e015e68a1@redhat.com>
+Date: Thu, 21 Apr 2022 09:14:25 +0200
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -54,16 +54,16 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
  Thunderbird/91.6.2
-Subject: Re: [PATCH 1/3] memblock tests: update style of comments for
- memblock_add_*() functions
+Subject: Re: [PATCH 2/3] memblock tests: update style of comments for
+ memblock_reserve_*() functions
 To: Rebecca Mckeever <remckee0@gmail.com>, outreachy@lists.linux.dev
 Cc: Mike Rapoport <rppt@kernel.org>, linux-mm@kvack.org,
  linux-kernel@vger.kernel.org
 References: <cover.1650452552.git.remckee0@gmail.com>
- <0004a1a720c5c15ba16cb9f2fb226f57276de2c0.1650452552.git.remckee0@gmail.com>
+ <6f385ad37eeb81331f9556fdddeced80ae32bded.1650452552.git.remckee0@gmail.com>
 From: David Hildenbrand <david@redhat.com>
 Organization: Red Hat
-In-Reply-To: <0004a1a720c5c15ba16cb9f2fb226f57276de2c0.1650452552.git.remckee0@gmail.com>
+In-Reply-To: <6f385ad37eeb81331f9556fdddeced80ae32bded.1650452552.git.remckee0@gmail.com>
 Authentication-Results: relay.mimecast.com;
 	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=david@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -73,144 +73,139 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 
 On 20.04.22 13:19, Rebecca Mckeever wrote:
-> Update comments in memblock_add_*() functions to match the style used
+> Update comments in memblock_reserve_*() functions to match the style used
 > in tests/alloc_*.c by rewording to make the expected outcome more apparent
 > and, if more than one memblock is involved, adding a visual of the
 > memory blocks.
 > 
 > Signed-off-by: Rebecca Mckeever <remckee0@gmail.com>
 > ---
->  tools/testing/memblock/tests/basic_api.c | 75 +++++++++++++++++-------
->  1 file changed, 54 insertions(+), 21 deletions(-)
+>  tools/testing/memblock/tests/basic_api.c | 70 +++++++++++++++++-------
+>  1 file changed, 51 insertions(+), 19 deletions(-)
 > 
 > diff --git a/tools/testing/memblock/tests/basic_api.c b/tools/testing/memblock/tests/basic_api.c
-> index fbc1ce160303..cdf112d25343 100644
+> index cdf112d25343..834d8705ff8a 100644
 > --- a/tools/testing/memblock/tests/basic_api.c
 > +++ b/tools/testing/memblock/tests/basic_api.c
-> @@ -26,8 +26,8 @@ static int memblock_initialization_check(void)
->  /*
->   * A simple test that adds a memory block of a specified base address
->   * and size to the collection of available memory regions (memblock.memory).
-> - * It checks if a new entry was created and if region counter and total memory
-> - * were correctly updated.
-> + * Expect to create a new entry. The region counter and total memory get
-> + * updated.
->   */
->  static int memblock_add_simple_check(void)
+> @@ -306,8 +306,8 @@ static int memblock_add_checks(void)
+>   /*
+>    * A simple test that marks a memory block of a specified base address
+>    * and size as reserved and to the collection of reserved memory regions
+> -  * (memblock.reserved). It checks if a new entry was created and if region
+> -  * counter and total memory size were correctly updated.
+> +  * (memblock.reserved). Expect to create a new entry. The region counter
+> +  * and total memory size are updated.
+>    */
+
+As mentioned in reply to patch #3, we try avoiding introducing "more
+wrong style" and cleanup afterwards. Cleanup first or along the way.
+
+>  static int memblock_reserve_simple_check(void)
 >  {
-> @@ -55,8 +55,8 @@ static int memblock_add_simple_check(void)
->  /*
->   * A simple test that adds a memory block of a specified base address, size
->   * NUMA node and memory flags to the collection of available memory regions.
-> - * It checks if the new entry, region counter and total memory size have
-> - * expected values.
-> + * Expect to create a new entry. The region counter and total memory get
-> + * updated.
->   */
->  static int memblock_add_node_simple_check(void)
->  {
-> @@ -87,9 +87,15 @@ static int memblock_add_node_simple_check(void)
->  
->  /*
->   * A test that tries to add two memory blocks that don't overlap with one
-> - * another. It checks if two correctly initialized entries were added to the
-> - * collection of available memory regions (memblock.memory) and if this
-> - * change was reflected in memblock.memory's total size and region counter.
-> + * another:
-> + *
-> + *  |        +--------+        +--------+  |
-> + *  |        |   r1   |        |   r2   |  |
-> + *  +--------+--------+--------+--------+--+
-> + *
-> + * Expect to add two correctly initialized entries to the collection of
-> + * available memory regions (memblock.memory). The total size and
-> + * region counter fields get updated.
->   */
->  static int memblock_add_disjoint_check(void)
->  {
-> @@ -125,10 +131,20 @@ static int memblock_add_disjoint_check(void)
->  
->  /*
->   * A test that tries to add two memory blocks, where the second one overlaps
-> - * with the beginning of the first entry (that is r1.base < r2.base + r2.size).
-> - * After this, it checks if two entries are merged into one region that starts
-> - * at r2.base and has size of two regions minus their intersection. It also
-> - * verifies the reported total size of the available memory and region counter.
-> + * with the beginning of the first entry (that is r1.base < r2.base + r2.size):
-> + *
-> + *  |    +----+----+------------+          |
-> + *  |    |   r|2   |   r1       |          |
-> + *  +----+----+----+------------+----------+
-> + *       ^    ^
-> + *       |    |
-> + *       |    r1.base
-> + *       |
-> + *       r2.base
-> + *
-> + * Expect to merge the two entries into one region that starts at r2.base
-> + * and has size of two regions minus their intersection. The total size of
-> + * the available memory is updated, and the region counter stays the same.
->   */
->  static int memblock_add_overlap_top_check(void)
->  {
-> @@ -163,11 +179,20 @@ static int memblock_add_overlap_top_check(void)
->  
->  /*
->   * A test that tries to add two memory blocks, where the second one overlaps
-> - * with the end of the first entry (that is r2.base < r1.base + r1.size).
-> - * After this, it checks if two entries are merged into one region that starts
-> - * at r1.base and has size of two regions minus their intersection. It verifies
-> - * that memblock can still see only one entry and has a correct total size of
-> - * the available memory.
-> + * with the end of the first entry (that is r2.base < r1.base + r1.size):
-> + *
-> + *  |  +--+------+----------+              |
-> + *  |  |  | r1   | r2       |              |
-> + *  +--+--+------+----------+--------------+
-> + *     ^  ^
-> + *     |  |
-> + *     |  r2.base
-> + *     |
-> + *     r1.base
-> + *
-> + * Expect to merge the two entries into one region that starts at r1.base
-> + * and has size of two regions minus their intersection. The total size of
-> + * the available memory is updated, and the region counter stays the same.
->   */
->  static int memblock_add_overlap_bottom_check(void)
->  {
-> @@ -203,9 +228,17 @@ static int memblock_add_overlap_bottom_check(void)
->  /*
->   * A test that tries to add two memory blocks, where the second one is
->   * within the range of the first entry (that is r1.base < r2.base &&
-> - * r2.base + r2.size < r1.base + r1.size). It checks if two entries are merged
-> - * into one region that stays the same. The counter and total size of available
-> - * memory are expected to not be updated.
-> + * r2.base + r2.size < r1.base + r1.size).
-> + *
-> + *  |   +-------+--+-----------------------+
-> + *  |   |       |r2|      r1               |
-> + *  +---+-------+--+-----------------------+
-> + *      ^
-> + *      |
-> + *      r1.base
-> + *
-> + * Expect to merge two entries into one region that stays the same.
-> + * The counter and total size of available memory are not updated.
->   */
->  static int memblock_add_within_check(void)
->  {
-> @@ -236,8 +269,8 @@ static int memblock_add_within_check(void)
+> @@ -330,10 +330,15 @@ static int memblock_reserve_simple_check(void)
 >  }
 >  
 >  /*
-> - * A simple test that tries to add the same memory block twice. The counter
-> - * and total size of available memory are expected to not be updated.
-> + * A simple test that tries to add the same memory block twice. Expect
-> + * the counter and total size of available memory to not be updated.
+> - * A test that tries to mark two memory blocks that don't overlap as reserved
+> - * and checks if two entries were correctly added to the collection of reserved
+> - * memory regions (memblock.reserved) and if this change was reflected in
+> - * memblock.reserved's total size and region counter.
+> + * A test that tries to mark two memory blocks that don't overlap as reserved:
+> + *
+> + *  |        +--+      +----------------+  |
+> + *  |        |r1|      |       r2       |  |
+> + *  +--------+--+------+----------------+--+
+> + *
+> + * Expect to add two entries to the collection of reserved memory regions
+> + * (memblock.reserved). The total size and region counter for
+> + * memblock.reserved are updated.
 >   */
->  static int memblock_add_twice_check(void)
+>  static int memblock_reserve_disjoint_check(void)
 >  {
+> @@ -370,11 +375,20 @@ static int memblock_reserve_disjoint_check(void)
+>  /*
+>   * A test that tries to mark two memory blocks as reserved, where the
+>   * second one overlaps with the beginning of the first (that is
+> - * r1.base < r2.base + r2.size).
+> - * It checks if two entries are merged into one region that starts at r2.base
+> - * and has size of two regions minus their intersection. The test also verifies
+> - * that memblock can still see only one entry and has a correct total size of
+> - * the reserved memory.
+> + * r1.base < r2.base + r2.size):
+> + *
+> + *  |  +--------------+--+--------------+  |
+> + *  |  |       r2     |  |     r1       |  |
+> + *  +--+--------------+--+--------------+--+
+> + *     ^              ^
+> + *     |              |
+> + *     |              r1.base
+> + *     |
+> + *     r2.base
+> + *
+> + * Expect to merge two entries into one region that starts at r2.base and
+> + * has size of two regions minus their intersection. The total size of the
+> + * reserved memory is updated, and the region counter is not updated.
+>   */
+>  static int memblock_reserve_overlap_top_check(void)
+>  {
+> @@ -411,10 +425,19 @@ static int memblock_reserve_overlap_top_check(void)
+>   * A test that tries to mark two memory blocks as reserved, where the
+>   * second one overlaps with the end of the first entry (that is
+>   * r2.base < r1.base + r1.size).
+> - * It checks if two entries are merged into one region that starts at r1.base
+> - * and has size of two regions minus their intersection. It verifies that
+> - * memblock can still see only one entry and has a correct total size of the
+> - * reserved memory.
+> + *
+> + *  |  +--------------+--+--------------+  |
+> + *  |  |       r1     |  |     r2       |  |
+> + *  +--+--------------+--+--------------+--+
+> + *     ^              ^
+> + *     |              |
+> + *     |              r2.base
+> + *     |
+> + *     r1.base
+> + *
+> + * Expect to merge two entries into one region that starts at r1.base and
+> + * has size of two regions minus their intersection. The total size of the
+> + * reserved memory is updated, and the region counter is not updated.
+>   */
+>  static int memblock_reserve_overlap_bottom_check(void)
+>  {
+> @@ -451,9 +474,18 @@ static int memblock_reserve_overlap_bottom_check(void)
+>   * A test that tries to mark two memory blocks as reserved, where the second
+>   * one is within the range of the first entry (that is
+>   * (r1.base < r2.base) && (r2.base + r2.size < r1.base + r1.size)).
+> - * It checks if two entries are merged into one region that stays the
+> - * same. The counter and total size of available memory are expected to not be
+> - * updated.
+> + *
+> + *  | +-----+--+---------------------------|
+> + *  | |     |r2|          r1               |
+> + *  +-+-----+--+---------------------------+
+> + *    ^     ^
+> + *    |     |
+> + *    |     r2.base
+> + *    |
+> + *    r1.base
+> + *
+> + * Expect to merge two entries into one region that stays the same. The
+> + * counter and total size of available memory are not updated.
+>   */
+>  static int memblock_reserve_within_check(void)
+>  {
+> @@ -485,7 +517,7 @@ static int memblock_reserve_within_check(void)
+>  
+>  /*
+>   * A simple test that tries to reserve the same memory block twice.
+> - * The region counter and total size of reserved memory are expected to not
+> + * Expect the region counter and total size of reserved memory to not
+>   * be updated.
+>   */
+>  static int memblock_reserve_twice_check(void)
+
+
+Apart from that
 
 Reviewed-by: David Hildenbrand <david@redhat.com>
 
