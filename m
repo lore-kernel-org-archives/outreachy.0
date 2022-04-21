@@ -1,145 +1,98 @@
-Received: from mail-lj1-f170.google.com (mail-lj1-f170.google.com [209.85.208.170])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0769F1FCD
-	for <outreachy@lists.linux.dev>; Thu, 21 Apr 2022 16:49:18 +0000 (UTC)
-Received: by mail-lj1-f170.google.com with SMTP id q22so6465969ljh.10
-        for <outreachy@lists.linux.dev>; Thu, 21 Apr 2022 09:49:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=CtyJRceC8mDyQR0u2QPd0NEHhNvA+ZjcEcRY3kUCwKQ=;
-        b=OPkWwjaiuEmxlbEDYHKtt7eb/mRb2/mJxihDgMTzZLH/2HmNSuQ0Hwx3cw1iZGtsqG
-         9Qyu93BSmuSNHFKdsUNLpMxPd3phP/fbLqQ70O4Ox5PHbhutOTZvoae43IsNqW4ccygD
-         X19ov5xHLhPLG96WRLP6cDb8YVl0V/dHgS1kfxw0hzElie7F9geaj6dsuFuGIDdehtg6
-         qrcMoMzjl8dn/vqAyeTQQOv25EP8eE39NhNoyKCfjDkSvkf7g7p+G7Q0bVxGk57W7K7P
-         F6jTyifatN0NujsCI6i5RWUtcDwgYDFlFVbwrdx1724T7On/xl9tJ/EsiIkgeMf7VPmh
-         18xg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=CtyJRceC8mDyQR0u2QPd0NEHhNvA+ZjcEcRY3kUCwKQ=;
-        b=JW5m0czdD6bSVUF1URIeOChcmpKP0ipWcfTYPf9O0ElYitk1E8T1v+nnSGwrFngYc3
-         GZayrsfGfGW+pec4AqDKk+SqUh53C9gndyR31CsOXyJbT1+LAb+a+z7NuiyPHoQpqLyf
-         0KGW1YYE5LK0Hlx6I1z8kHfFQvZLcOD73UzKuO4bvo7Iq4HKo/Tyqw7472jFIaeQToN7
-         fgqK+J6C02sS5/vzhLoUPPRDy0Obo0I+o0K/Va3HKGTuHrw2I9rcH19oiRPlVTY71SnZ
-         KAyJhgL4uDiBo+hCEbCUJyDifsz27d3TZueHDQOz3DswqkRUvewsfnFSKuEKFLCVfbYX
-         02/w==
-X-Gm-Message-State: AOAM532p+UbY6zPLVZspojmaIp2o281/EJZgVjfuwiLb+lQB7qSJ6Igp
-	cefMNyHoVe0k6ekqhNSCVxUtzZWbGpNRcUueSA8=
-X-Google-Smtp-Source: ABdhPJz1kqhFLSivtESjXb4p4YfZX1M+c+QI7Sc3ByCN80hg8LRewxiNEHr5oFLkncabDhSpHznH9vlYfl5aYfVUqdo=
-X-Received: by 2002:a2e:b532:0:b0:24d:b593:5db with SMTP id
- z18-20020a2eb532000000b0024db59305dbmr353446ljm.38.1650559756770; Thu, 21 Apr
- 2022 09:49:16 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D85BC1FCD
+	for <outreachy@lists.linux.dev>; Thu, 21 Apr 2022 17:49:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1650563350; x=1682099350;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=mA55YQhjLIsfXwlrMTErhiZKJ7+sd5wb1DTEqU6nP0c=;
+  b=Tp0j6QYRcdOMOxxYkkvo9nleMLUru6vo1WDTH9wTD3DnU57VDlNZfepP
+   qK6AkQHMBRpfmbKCTQZ61yKLESAT+/Fj+nnSxUOf/BJ4sZAqmpXb41G94
+   Y2RK9oCGT7sBR825yjGeXpN8vq4r5BflVL8LB1i31CVHnDECk4XprG6DO
+   ONTdH8uNzw75DvQENcgTPHj3C6SfAJW0k/t112UhaValt1K2mjJFKuo/Q
+   YoJhnsR9aBtWFGenWu6xiVDcknON76OvhTORLw/uW842DgXMYL0LK4QIX
+   6iH/DkJ8N++ir5RAyvEXaI+VUiUmohZQfVaG8iE4YkGfvMhXBfI0yPi+u
+   g==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10324"; a="289547872"
+X-IronPort-AV: E=Sophos;i="5.90,279,1643702400"; 
+   d="scan'208";a="289547872"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Apr 2022 10:49:10 -0700
+X-IronPort-AV: E=Sophos;i="5.90,279,1643702400"; 
+   d="scan'208";a="562674802"
+Received: from ssaladi-mobl1.amr.corp.intel.com (HELO localhost) ([10.213.165.163])
+  by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Apr 2022 10:49:09 -0700
+Date: Thu, 21 Apr 2022 10:49:09 -0700
+From: Ira Weiny <ira.weiny@intel.com>
+To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+Cc: outreachy@lists.linux.dev, jesse.brandeburg@intel.com,
+	anthony.l.nguyen@intel.com, davem@davemloft.net, kuba@kernel.org,
+	pabeni@redhat.com, intel-wired-lan@lists.osuosl.org,
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v5] igb: Convert kmap() to kmap_local_page()
+Message-ID: <YmGZFfcY/Yz6Iv1Y@iweiny-desk3>
+References: <20220419234313.10324-1-eng.alaamohamedsoliman.am@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-References: <20220418165519.GA54466@euclid> <20220421175648.13570c38@elisabeth>
-In-Reply-To: <20220421175648.13570c38@elisabeth>
-From: Sevinj Aghayeva <sevinj.aghayeva@gmail.com>
-Date: Thu, 21 Apr 2022 12:49:05 -0400
-Message-ID: <CAMWRUK77nq0Z-6okpT18h=5HPxuiLRYETSjdy6G+umOpBeQnfA@mail.gmail.com>
-Subject: Re: [PATCH v2] mbuto: always display help message
-To: Stefano Brivio <sbrivio@redhat.com>
-Cc: outreachy linux kernel <outreachy@lists.linux.dev>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20220419234313.10324-1-eng.alaamohamedsoliman.am@gmail.com>
 
-On Thu, Apr 21, 2022 at 11:57 AM Stefano Brivio <sbrivio@redhat.com> wrote:
->
-> Hi Sevinj,
->
-> Sorry for the delay, I'm finally testing this and updating the demos
-> around it.
->
-> The previous series looks fine (I'm hitting some issues with
-> grep, still checking). However, this:
->
-> On Mon, 18 Apr 2022 12:55:19 -0400
-> Sevinj Aghayeva <sevinj.aghayeva@gmail.com> wrote:
->
-> > [...]
-> >
-> >  # If we're not running as root, re-run with fakeroot
-> > -if [ "${LD_PRELOAD}" != "libfakeroot-sysv.so" ] && [ "$(id -u)" -ne 0 ]; then
-> > -     if ! FAKEROOT="$(command -v fakeroot)"; then
-> > -             err "Not root and no fakeroot available, exiting"
-> > -     fi
-> > -     PATH="${PATH}:/sbin:/usr/sbin" "${FAKEROOT}" "${0}" "${@}"
->
-> ...breaks everything, that is, options are not passed anymore, the
-> "base" profile is always selected, because:
->
-> > -     exit ${?}
-> > +__not_root_and_missing_fakeroot=0
-> > +if [ "${LD_PRELOAD}" != "libfakeroot-sysv.so" ] && [ "$(id -u)" -ne 0 ] && \
-> > +             ! FAKEROOT="$(command -v fakeroot)"; then
-> > +     __not_root_and_missing_fakeroot=1
-> >  fi
-> >
-> >  # Parse options
-> > @@ -1204,6 +1202,14 @@ while getopts :c:df:k:m:p:s:vh __opt; do
-> >       esac
-> >  done
-> >  shift $((OPTIND - 1))
-> > +
-> > +if [ ${__not_root_and_missing_fakeroot} -eq 1 ]; then
-> > +     err "Not root and no fakeroot available, exiting"
-> > +elif [ "${LD_PRELOAD}" != "libfakeroot-sysv.so" ]; then
-> > +     PATH="${PATH}:/sbin:/usr/sbin" "${FAKEROOT}" "${0}" "${@}"
->
-> $@ here doesn't contain options anymore, being that it comes after
-> shift $((OPTIND - 1)), which renumbers (shifts) positional parameters
-> in a way that $1, at this point, is the first non-option argument.
->
-> And $@ follows the same pattern: the first token in it will be $1 now.
->
-> I'm replacing this with something like:
->
-> diff --git a/mbuto b/mbuto
-> index 49b8139..6918415 100755
-> --- a/mbuto
-> +++ b/mbuto
-> @@ -1179,10 +1179,11 @@ usage() {
->  # If we're not running as root, re-run with fakeroot
->  if [ "${LD_PRELOAD}" != "libfakeroot-sysv.so" ] && [ "$(id -u)" -ne 0 ]; then
->         if ! FAKEROOT="$(command -v fakeroot)"; then
-> -               err "Not root and no fakeroot available, exiting"
-> +               __fakeroot_missing="y"
-> +       else
-> +               PATH="${PATH}:/sbin:/usr/sbin" "${FAKEROOT}" "${0}" "${@}"
-> +               exit ${?}
->         fi
-> -       PATH="${PATH}:/sbin:/usr/sbin" "${FAKEROOT}" "${0}" "${@}"
-> -       exit ${?}
->  fi
->
->  # Parse options
-> @@ -1206,6 +1207,11 @@ done
->  shift $((OPTIND - 1))
->  [ -z "${PROFILE}" ] && PROFILE="base"
->
-> +if [ "${__fakeroot_missing}" = "y" ]; then
-> +       err "Not root and no fakeroot available, exiting"
-> +       exit 1
-> +fi
-> +
->
-> and I would push it (please have a look, first!) together with your series as
-> soon as I get the demo to work with test collections.
+On Wed, Apr 20, 2022 at 01:43:13AM +0200, Alaa Mohamed wrote:
+> kmap() is being deprecated and these usages are all local to the thread
+> so there is no reason kmap_local_page() can't be used.
+> 
+> Replace kmap() calls with kmap_local_page().
+> 
+> Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
 
-Looks good, thanks for catching this. I didn't test it properly.
+Reviewed-by: Ira Weiny <ira.weiny@intel.com>
 
->
-> --
-> Stefano
->
-
-
--- 
-
-Sevinj.Aghayeva
+> ---
+> changes in V2:
+> 	fix kunmap_local path value to take address of the mapped page.
+> ---
+> changes in V3:
+> 	edit commit message to be clearer
+> ---
+> changes in V4:
+> 	edit the commit message
+> ---
+> changes in V5:
+> 	-edit commit subject
+> 	-edit commit message
+> ---
+>  drivers/net/ethernet/intel/igb/igb_ethtool.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c b/drivers/net/ethernet/intel/igb/igb_ethtool.c
+> index 2a5782063f4c..c14fc871dd41 100644
+> --- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
+> +++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
+> @@ -1798,14 +1798,14 @@ static int igb_check_lbtest_frame(struct igb_rx_buffer *rx_buffer,
+>  
+>  	frame_size >>= 1;
+>  
+> -	data = kmap(rx_buffer->page);
+> +	data = kmap_local_page(rx_buffer->page);
+>  
+>  	if (data[3] != 0xFF ||
+>  	    data[frame_size + 10] != 0xBE ||
+>  	    data[frame_size + 12] != 0xAF)
+>  		match = false;
+>  
+> -	kunmap(rx_buffer->page);
+> +	kunmap_local(data);
+>  
+>  	return match;
+>  }
+> -- 
+> 2.35.2
+> 
