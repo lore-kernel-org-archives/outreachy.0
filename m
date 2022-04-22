@@ -1,30 +1,48 @@
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 20ED928E4
-	for <outreachy@lists.linux.dev>; Fri, 22 Apr 2022 18:37:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8ACAEC385A4;
-	Fri, 22 Apr 2022 18:37:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1650652624;
-	bh=mfy0/nIY3uSrXgPd/GSoGgYzgDkfynbQTkywpeFjUL8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=LPpnyA05mHWBeWQojmYTvZVPbYePSaDuvRsmHGbwAOrOL9LGftzGHv0sKfD4nA7P2
-	 xjTBfiJ0zlE5l8mqq+7A48Yxbp0n/5MED1XpH5RZ16riUZTUFjBfp4BzfAg765oS/6
-	 uSIkrn/00Zwubi5qqcpgiOGd7BhM9k9A1OmMxJ3PT+X2vxDsegeuuvm343V8V1yD2A
-	 50+047pMAfUME8opTeVDQOhtxjbkyF9NdsswQ+vcym65xmyNJUKSzyL48fQzwXjE0b
-	 FUW/7IOo8LJNhDxRoNbKMj/NKjxVGg7egeRpjzn+/DYpkYbiYSCX4EFGk0STCOodRV
-	 uqoCVsZzlKN1Q==
-Date: Fri, 22 Apr 2022 12:37:01 -0600
-From: David Ahern <dsahern@kernel.org>
-To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-Cc: netdev@vger.kernel.org, outreachy@lists.linux.dev, roopa@nvidia.com,
-	roopa.prabhu@gmail.com, jdenham@redhat.com, sbrivio@redhat.com
-Subject: Re: [PATCH net-next 2/2] net: vxlan: vxlan_core.c: Add extack
- support to vxlan_fdb_delet
-Message-ID: <20220422183701.GA27661@u2004-local>
-References: <cover.1650377624.git.eng.alaamohamedsoliman.am@gmail.com>
- <c6765ff1f66cf74ba6f25ba9b1c91dfe410abcfd.1650377624.git.eng.alaamohamedsoliman.am@gmail.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8AE7428E4
+	for <outreachy@lists.linux.dev>; Fri, 22 Apr 2022 18:38:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1650652690; x=1682188690;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=3ykNKyTeK2OUg9JXBqIirdWxYu+LgsMf1w5bMSCs968=;
+  b=Qt9vUTwurOr/R8GJwqeFx8WUJHv/aU28zVRHn9kLp5n5iRSvdNZcu54s
+   mCRho87sxt4+C8NYqOsdOvqLD/ida8HQOIyQIh2BvWOhIKhrLt621JUKl
+   eHx8Sbuojc58lZiODIT4mzn6vuFbMXR4LX4lNH+v5zUi1cA6FNOEZE6Zb
+   PVFhIs4j2kETYSMBZje/wfrzTwOzdj6TvQFfFfBS65J2i5Rm0zgepg+6E
+   5fj4RgmnJhU83DLte93UVJfaR2wDmANECR2ZEmX2K5MVUrYjzmPO+ZIuO
+   idvxg3g9yespRN380dt2jbl3RwImH5SQSyWUDyfgjk3SiyuVBlreKCbE0
+   g==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10324"; a="252084601"
+X-IronPort-AV: E=Sophos;i="5.90,282,1643702400"; 
+   d="scan'208";a="252084601"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Apr 2022 11:38:10 -0700
+X-IronPort-AV: E=Sophos;i="5.90,282,1643702400"; 
+   d="scan'208";a="703659339"
+Received: from hltravis-mobl1.amr.corp.intel.com (HELO localhost) ([10.213.166.215])
+  by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Apr 2022 11:38:09 -0700
+Date: Fri, 22 Apr 2022 11:38:09 -0700
+From: Ira Weiny <ira.weiny@intel.com>
+To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+Cc: Andrew Morton <akpm@linux-foundation.org>,
+	Catalin Marinas <catalin.marinas@arm.com>,
+	"Matthew Wilcox (Oracle)" <willy@infradead.org>,
+	Will Deacon <will@kernel.org>, Peter Collingbourne <pcc@google.com>,
+	Vlastimil Babka <vbabka@suse.cz>,
+	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+	linux-kernel@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>,
+	linux-doc@vger.kernel.org, outreachy@lists.linux.dev,
+	Thomas Gleixner <tglx@linutronix.de>,
+	Peter Zijlstra <peterz@infradead.org>
+Subject: Re: [PATCH 3/4] Documentation/vm: Remove "Using kmap-atomic" from
+ highmem.rst.
+Message-ID: <YmL2EQhfQLMoU1WV@iweiny-desk3>
+References: <20220421180200.16901-1-fmdefrancesco@gmail.com>
+ <20220421180200.16901-4-fmdefrancesco@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -33,36 +51,89 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <c6765ff1f66cf74ba6f25ba9b1c91dfe410abcfd.1650377624.git.eng.alaamohamedsoliman.am@gmail.com>
+In-Reply-To: <20220421180200.16901-4-fmdefrancesco@gmail.com>
 
-On Tue, Apr 19, 2022 at 04:37:18PM +0200, Alaa Mohamed wrote:
-> diff --git a/drivers/net/vxlan/vxlan_core.c b/drivers/net/vxlan/vxlan_core.c
-> index cf2f60037340..4ecbb5878fe2 100644
-> --- a/drivers/net/vxlan/vxlan_core.c
-> +++ b/drivers/net/vxlan/vxlan_core.c
-> @@ -1129,18 +1129,20 @@ static void vxlan_fdb_dst_destroy(struct vxlan_dev *vxlan, struct vxlan_fdb *f,
-> 
->  static int vxlan_fdb_parse(struct nlattr *tb[], struct vxlan_dev *vxlan,
->  			   union vxlan_addr *ip, __be16 *port, __be32 *src_vni,
-> -			   __be32 *vni, u32 *ifindex, u32 *nhid)
-> +			   __be32 *vni, u32 *ifindex, u32 *nhid, struct netlink_ext_ack *extack)
->  {
->  	struct net *net = dev_net(vxlan->dev);
->  	int err;
-> 
->  	if (tb[NDA_NH_ID] && (tb[NDA_DST] || tb[NDA_VNI] || tb[NDA_IFINDEX] ||
->  	    tb[NDA_PORT]))
-> +		NL_SET_ERR_MSG(extack, "Missing required arguments");
+On Thu, Apr 21, 2022 at 08:01:59PM +0200, Fabio M. De Francesco wrote:
+> The use of kmap_atomic() is deprecated in favor of kmap_local_page().
 
-That's a misleading error message; I think it should be something like:
-		NL_SET_ERR_MSG(extack, "DST, VNI, ifindex and port are mutually exclusive with NH_ID");
+I'm not sure deprecated is the right word.  And I think the fact that this
+documentation is stale is a better reason for the patch as is.
 
->  		return -EINVAL;
+This series should end up indicating the desire to stop growing kmap() and
+kmap_atomic() call sites and that their deprecation is on the horizon.  I've
+not read the text in patch 4/4 yet.
+
+> For
+> this reason the "Using kmap_atomic" section in highmem.rst is obsolete and
+> unnecessary.
+
+A lot of the text is obsolete (and redundant) but the example code might be
+useful.
+
+Why not move the example and relevant bits into the kdoc for kmap_atomic()
+which is then automatically picked up via patch 2/4.
+
+Ira
+
 > 
->  	if (tb[NDA_DST]) {
->  		err = vxlan_nla_get_addr(ip, tb[NDA_DST]);
->  		if (err)
-> +			NL_SET_ERR_MSG(extack, "Unsupported address family");
->  			return err;
->  	} else {
->  		union vxlan_addr *remote = &vxlan->default_dst.remote_ip;
+> Therefore, just remove it.
+> 
+> Cc: Jonathan Corbet <corbet@lwn.net>
+> Cc: Thomas Gleixner <tglx@linutronix.de>
+> Cc: Ira Weiny <ira.weiny@intel.com>
+> Cc: Matthew Wilcox <willy@infradead.org>
+> Cc: Peter Zijlstra <peterz@infradead.org>
+> Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+> ---
+>  Documentation/vm/highmem.rst | 35 -----------------------------------
+>  1 file changed, 35 deletions(-)
+> 
+> diff --git a/Documentation/vm/highmem.rst b/Documentation/vm/highmem.rst
+> index ccff08a8211d..e05bf5524174 100644
+> --- a/Documentation/vm/highmem.rst
+> +++ b/Documentation/vm/highmem.rst
+> @@ -72,41 +72,6 @@ The kernel contains several ways of creating temporary mappings:
+>    It may be assumed that k[un]map_atomic() won't fail.
+>  
+>  
+> -Using kmap_atomic
+> -=================
+> -
+> -When and where to use kmap_atomic() is straightforward.  It is used when code
+> -wants to access the contents of a page that might be allocated from high memory
+> -(see __GFP_HIGHMEM), for example a page in the pagecache.  The API has two
+> -functions, and they can be used in a manner similar to the following::
+> -
+> -	/* Find the page of interest. */
+> -	struct page *page = find_get_page(mapping, offset);
+> -
+> -	/* Gain access to the contents of that page. */
+> -	void *vaddr = kmap_atomic(page);
+> -
+> -	/* Do something to the contents of that page. */
+> -	memset(vaddr, 0, PAGE_SIZE);
+> -
+> -	/* Unmap that page. */
+> -	kunmap_atomic(vaddr);
+> -
+> -Note that the kunmap_atomic() call takes the result of the kmap_atomic() call
+> -not the argument.
+> -
+> -If you need to map two pages because you want to copy from one page to
+> -another you need to keep the kmap_atomic calls strictly nested, like::
+> -
+> -	vaddr1 = kmap_atomic(page1);
+> -	vaddr2 = kmap_atomic(page2);
+> -
+> -	memcpy(vaddr1, vaddr2, PAGE_SIZE);
+> -
+> -	kunmap_atomic(vaddr2);
+> -	kunmap_atomic(vaddr1);
+> -
+> -
+>  Cost of Temporary Mappings
+>  ==========================
+>  
+> -- 
+> 2.34.1
+> 
