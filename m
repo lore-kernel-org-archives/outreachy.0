@@ -1,49 +1,49 @@
-Received: from mail-wr1-f49.google.com (mail-wr1-f49.google.com [209.85.221.49])
+Received: from mail-ej1-f47.google.com (mail-ej1-f47.google.com [209.85.218.47])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9C8972F25
-	for <outreachy@lists.linux.dev>; Fri, 22 Apr 2022 20:09:08 +0000 (UTC)
-Received: by mail-wr1-f49.google.com with SMTP id bv16so12508024wrb.9
-        for <outreachy@lists.linux.dev>; Fri, 22 Apr 2022 13:09:08 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4F02F7A
+	for <outreachy@lists.linux.dev>; Fri, 22 Apr 2022 20:42:38 +0000 (UTC)
+Received: by mail-ej1-f47.google.com with SMTP id g13so18586200ejb.4
+        for <outreachy@lists.linux.dev>; Fri, 22 Apr 2022 13:42:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=w+utQDHmts9UPP01phPwUuY21AVZWcPb7bollwyH9Mk=;
-        b=IJNFyE5jk2bGLMjfXZKstoGottY1Ii5MZIiMzWUVd1UhLlu53iiHJ3Ux4NgiXfru1a
-         F7NmldnfmJPUHsQa1MiW0PyQLS8G0ByeNBf1qDkLfO5Din9W5/w5R6sebe9eSPlFNByD
-         2KmzRVWIqsg1ZfpbFCE/aXmmPgLdAPMeBJ/mbUVznC7Bqhu+Zqet0NJhTjqFo5uf5QRM
-         zGgkb7XhSiwkqVLbOscW5t2Rjoiy/ulogBKcZRxQkTGqYug8mZQVi4o5Bh1uyc9+KBj9
-         Xj94IFfEYGLh1R9YjcrgHnEXC5FS+UlGyzVT0Vl4G09OYJsClXBe7oiPUQcPKeYyUy9Y
-         SMTA==
+        bh=fZ2/OuEbTtlP/zbEoj+78SvWtB9uWMF+zESvUfUCBO4=;
+        b=B7Hd84UyG0YttbYUhgQvL4d1pq3mxusUKlQRLFIQZs3auNE3kOIsG7+9OSj4DdysBG
+         mqLQlVWTTHgeNKQi5dyXhHS0YYG7368eNfxkjYfKi+Qg36lYyXF+J/csTJvBGRfE2Umo
+         V8fpyB9AaDpuEysiJ6ZtkspZ57PUfLgdtksqR1HIqwqt+EsGJOxQgnjt/xFVvbKxjHvh
+         TXAYORwq9QCqRe3qJFlMsszhArFqyGW9e2AD9h/XFzEg16uXNgZqB1UQEyyWBZEjTD/n
+         GwHLepHX0VOVcJaXF8zEazZVX0aDDC9paxe2rpLen6sUdcIKvwpKKzn4FTI+zLUC3HKm
+         MGEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=w+utQDHmts9UPP01phPwUuY21AVZWcPb7bollwyH9Mk=;
-        b=EKH+EEHZrLmfjalBQHABhk9ZhZzk5zzO5dJqE0KrqFD+mqcMoUJKi8B0Vsv0Z29I9v
-         np0yNtB6P1LRvaIYDZNXz1tsioHkvHYtxQ5Gn00gxzVVahgrfKcilY7+eX4qGubD/ydB
-         DrzLoaqik0lXqN5pHKwTtmIbkECDPUuG24OpyMheIsJdfuElw0W0Iia4K2mFzHrc2NHY
-         /enS5iK9uCGCjBW2e1Ltp0SctRvUMdnxmCkyNHGaijpa7Mfzs7v1BD0Uqm5R5cyzCCgl
-         co0+GV5wfqiKY8dId3IByyh6AaBB52b4tvcgADns/3KzucUpxu2pl41ewCcJqa9K0hte
-         Y9lA==
-X-Gm-Message-State: AOAM5313TzaU5ced7dcdpc0tgWc9gJO3E+LDM08fK7iTZeEywkFbxsyL
-	qUE5pBF5ZzM1zzWEsOPD2ag=
-X-Google-Smtp-Source: ABdhPJyjcqBTW7qhlMx8HaQwl43iu5uwxc77fSl7v1wiuG0PZdzEPLENOOiyb9VCz3c5euNoqhh2LA==
-X-Received: by 2002:a05:6000:1f83:b0:207:a4d8:5173 with SMTP id bw3-20020a0560001f8300b00207a4d85173mr5020266wrb.556.1650658146852;
-        Fri, 22 Apr 2022 13:09:06 -0700 (PDT)
+        bh=fZ2/OuEbTtlP/zbEoj+78SvWtB9uWMF+zESvUfUCBO4=;
+        b=BFHtU8z0P4Y/vtt7tyudV+vmlwdk/A/jH4p3uPhlqaH2vRifQT6Q5V/GAH/iC1Mabs
+         slqaiIU5+XYKNiERuLHmwiZ+Vt8njUW4kK6DGcxE5jOlRavt3KTy9391qbt+YX/DnmeQ
+         qhpLViDK+mpvEfE4xyDRoriAsckxQgnfzRPqvNlZQB3UAiJSwjWZF9yRk1yRCCHPNt9P
+         lIUQ1ByZO7bP+F2/NiompL2CtSbDIDZ1Xr/iYEt0sbY7GHWr1SIdraUc75m0BChzT7A5
+         UiwfVr+s8gGLFHJLhEBjlbvtLEl59ceIeLkk0gUN3r+Wok5EEM595gqEOs2H9vKKIGx4
+         jzng==
+X-Gm-Message-State: AOAM533KB64K9M5e0ZTKknSTgHV3KKeDPr0KfoP7758s3gq98yP0s3K3
+	xIP+nF2q4vzeGfYAu6WDiko=
+X-Google-Smtp-Source: ABdhPJx/sfbtZ0jZujbDr2K9gG27fiJ4Fj+BmJWojKiTW9YVnhEQi2DSVh9qIj34dyoZy+4/g81Cgg==
+X-Received: by 2002:a17:907:7246:b0:6ef:828d:4b49 with SMTP id ds6-20020a170907724600b006ef828d4b49mr6055932ejc.172.1650660156563;
+        Fri, 22 Apr 2022 13:42:36 -0700 (PDT)
 Received: from leap.localnet (host-79-50-86-254.retail.telecomitalia.it. [79.50.86.254])
-        by smtp.gmail.com with ESMTPSA id c12-20020a05600c0a4c00b00381141f4967sm2901272wmq.35.2022.04.22.13.09.04
+        by smtp.gmail.com with ESMTPSA id fq6-20020a1709069d8600b006e891c0b7e0sm1072601ejc.129.2022.04.22.13.42.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 22 Apr 2022 13:09:05 -0700 (PDT)
+        Fri, 22 Apr 2022 13:42:35 -0700 (PDT)
 From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
 To: Ira Weiny <ira.weiny@intel.com>
-Cc: Andrew Morton <akpm@linux-foundation.org>, Catalin Marinas <catalin.marinas@arm.com>, "Matthew Wilcox (Oracle)" <willy@infradead.org>, Will Deacon <will@kernel.org>, Peter Collingbourne <pcc@google.com>, Vlastimil Babka <vbabka@suse.cz>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, linux-kernel@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>, linux-doc@vger.kernel.org, outreachy@lists.linux.dev, Thomas Gleixner <tglx@linutronix.de>, Peter Zijlstra <peterz@infradead.org>
-Subject: Re: [PATCH 3/4] Documentation/vm: Remove "Using kmap-atomic" from highmem.rst.
-Date: Fri, 22 Apr 2022 22:09:03 +0200
-Message-ID: <2370538.jE0xQCEvom@leap>
-In-Reply-To: <YmL2EQhfQLMoU1WV@iweiny-desk3>
-References: <20220421180200.16901-1-fmdefrancesco@gmail.com> <20220421180200.16901-4-fmdefrancesco@gmail.com> <YmL2EQhfQLMoU1WV@iweiny-desk3>
+Cc: Andrew Morton <akpm@linux-foundation.org>, Catalin Marinas <catalin.marinas@arm.com>, "Matthew Wilcox (Oracle)" <willy@infradead.org>, Will Deacon <will@kernel.org>, Peter Collingbourne <pcc@google.com>, Vlastimil Babka <vbabka@suse.cz>, Sebastian Andrzej Siewior <bigeasy@linutronix.de>, linux-kernel@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>, linux-doc@vger.kernel.org, outreachy@lists.linux.dev, Mike Rapoport <rppt@linux.ibm.com>
+Subject: Re: [PATCH 1/4] mm/highmem: Fix kernel-doc warnings in highmem*.h
+Date: Fri, 22 Apr 2022 22:42:34 +0200
+Message-ID: <2185371.iZASKD2KPV@leap>
+In-Reply-To: <YmLvLvnZm0DJs0r4@iweiny-desk3>
+References: <20220421180200.16901-1-fmdefrancesco@gmail.com> <20220421180200.16901-2-fmdefrancesco@gmail.com> <YmLvLvnZm0DJs0r4@iweiny-desk3>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -53,65 +53,46 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 Content-Type: text/plain; charset="utf-8"
 
-On venerd=C3=AC 22 aprile 2022 20:38:09 CEST Ira Weiny wrote:
-> On Thu, Apr 21, 2022 at 08:01:59PM +0200, Fabio M. De Francesco wrote:
-> > The use of kmap_atomic() is deprecated in favor of kmap_local_page().
->=20
-> I'm not sure deprecated is the right word.
-
-OK, in v2 I won't use "deprecated". Instead I'll say something about a=20
-strong preference to avoid its use. The reason why developers should avoid=
+(I don't know why it looks like my previous reply has not been sent and it=
 =20
-kmap_atomic() are explained in 4/4 (I've copy-pasted some lines here for=20
-your convenience):
+also disappeared from drafts. I apologize if for whatever reason you=20
+receive this message twice)
 
-+  Each call of kmap_atomic() in the kernel creates a non-preemptible=20
-section
-+  and disable pagefaults. This could be a source of unwanted latency, so=20
-it
-+  should be only used if it is absolutely required, otherwise=20
-kmap_local_page()
-+  should be used where it is feasible.
-
-> And I think the fact that this
-> documentation is stale is a better reason for the patch as is.
+On venerd=C3=AC 22 aprile 2022 20:08:46 CEST Ira Weiny wrote:
+> On Thu, Apr 21, 2022 at 08:01:57PM +0200, Fabio M. De Francesco wrote:
+>
+> [snip]
+>
+> > diff --git a/include/linux/highmem.h b/include/linux/highmem.h
+> > index 39bb9b47fa9c..c3d562b5f0c1 100644
+> > --- a/include/linux/highmem.h
+> > +++ b/include/linux/highmem.h
+> > @@ -37,7 +37,7 @@ static inline void *kmap(struct page *page);
+> > =20
+> >  /**
+> >   * kunmap - Unmap the virtual address mapped by kmap()
+> > - * @addr:	Virtual address to be unmapped
+> > + * @page:	Virtual address to be unmapped
+>                 ^^^^^^^^^^^^^^^
+> 		Page
 >=20
-> This series should end up indicating the desire to stop growing kmap()=20
-and
-> kmap_atomic() call sites and that their deprecation is on the horizon. =20
-I've
-> not read the text in patch 4/4 yet.
+> Not only was the name wrong but the description of an address is wrong.
 
-I'll wait for your review of 4/4 before sending v2.
+Yes, correct. I'll rewrite this line the following way and send a v2 of=20
+this series while addressing also what it is required by your review of 3/4=
+  =20
+(unless you have better suited suggestions):
 
+=2D * @addr:	 	Virtual address to be unmapped=20
++ * @page:	 	Pointer to the page which was mapped by kmap()
+
+> Other than that LGTM:
 >=20
-> > For
-> > this reason the "Using kmap_atomic" section in highmem.rst is obsolete=
-=20
-and
-> > unnecessary.
->=20
-> A lot of the text is obsolete (and redundant) but the example code might=
-=20
-be
-> useful.
->=20
-> Why not move the example and relevant bits into the kdoc for=20
-kmap_atomic()
-> which is then automatically picked up via patch 2/4.
+> Reviewed-by: Ira Weiny <ira.weiny@intel.com>
 
-Yes, I agree with you. I'll take into account your suggestion for v2.
+Thanks!
 
-However, as I said above, I'll hold v2 until you have time to review 4/4=20
-for the purpose to not miss any changes that you might require for that=20
-patch too.
+=46abio
 
-=46urthermore, while working on v2, I think that I'll extend this series wi=
-th=20
-one or two patch more, in order to address other issues I noticed.=20
-
-Thanks,
-
-=46abio=20
 
 
