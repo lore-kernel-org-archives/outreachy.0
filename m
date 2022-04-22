@@ -1,48 +1,30 @@
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 761C7290F
-	for <outreachy@lists.linux.dev>; Fri, 22 Apr 2022 18:09:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1650650969; x=1682186969;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=bf6kesfiGQW5FTsQbo0yY/hK5dAOEbAhAQZQcC1Uv1E=;
-  b=ELSX83rY3mpSmLTvFRiyMMKenSkJjpfzfdakTgrxDcav2zdpK63KS0Mi
-   PuNfVROWZCt1soclSziB0ixEslXiqEtOvCXkUb5YvaZmOnVkb/r46f+Qk
-   2rwdzr6sUs/lKci+lNbkvdcsNAqi7hfQqzymdEnP6Hk7Fnq80Riv1Zuvs
-   3uv5i//Q+cjLgpkA5jDmHjkkHQCXEyoazEL9dzdCpQHBqAdPzrhoPD6Jy
-   EZ6Vvvh94y1YsiKd0fPNXVhaBJDzSzqMRFbq8Q9fircqxx1GrYs14/JDF
-   fruGiS6GQcqB18AOG1zlSsh8fFHTY+Fr2STqFuPilM4zHga+QIJV5pvGt
-   w==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10324"; a="252077313"
-X-IronPort-AV: E=Sophos;i="5.90,282,1643702400"; 
-   d="scan'208";a="252077313"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
-  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Apr 2022 11:09:28 -0700
-X-IronPort-AV: E=Sophos;i="5.90,282,1643702400"; 
-   d="scan'208";a="867993856"
-Received: from hltravis-mobl1.amr.corp.intel.com (HELO localhost) ([10.213.166.215])
-  by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Apr 2022 11:09:28 -0700
-Date: Fri, 22 Apr 2022 11:09:28 -0700
-From: Ira Weiny <ira.weiny@intel.com>
-To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Cc: Andrew Morton <akpm@linux-foundation.org>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	"Matthew Wilcox (Oracle)" <willy@infradead.org>,
-	Will Deacon <will@kernel.org>, Peter Collingbourne <pcc@google.com>,
-	Vlastimil Babka <vbabka@suse.cz>,
-	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
-	linux-kernel@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>,
-	linux-doc@vger.kernel.org, outreachy@lists.linux.dev,
-	Thomas Gleixner <tglx@linutronix.de>,
-	Peter Zijlstra <peterz@infradead.org>
-Subject: Re: [PATCH 2/4] Documentation/vm: Include kdocs from highmem*.h into
- highmem.rst
-Message-ID: <YmLvWE7vUduaXZVY@iweiny-desk3>
-References: <20220421180200.16901-1-fmdefrancesco@gmail.com>
- <20220421180200.16901-3-fmdefrancesco@gmail.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 20ED928E4
+	for <outreachy@lists.linux.dev>; Fri, 22 Apr 2022 18:37:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8ACAEC385A4;
+	Fri, 22 Apr 2022 18:37:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1650652624;
+	bh=mfy0/nIY3uSrXgPd/GSoGgYzgDkfynbQTkywpeFjUL8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=LPpnyA05mHWBeWQojmYTvZVPbYePSaDuvRsmHGbwAOrOL9LGftzGHv0sKfD4nA7P2
+	 xjTBfiJ0zlE5l8mqq+7A48Yxbp0n/5MED1XpH5RZ16riUZTUFjBfp4BzfAg765oS/6
+	 uSIkrn/00Zwubi5qqcpgiOGd7BhM9k9A1OmMxJ3PT+X2vxDsegeuuvm343V8V1yD2A
+	 50+047pMAfUME8opTeVDQOhtxjbkyF9NdsswQ+vcym65xmyNJUKSzyL48fQzwXjE0b
+	 FUW/7IOo8LJNhDxRoNbKMj/NKjxVGg7egeRpjzn+/DYpkYbiYSCX4EFGk0STCOodRV
+	 uqoCVsZzlKN1Q==
+Date: Fri, 22 Apr 2022 12:37:01 -0600
+From: David Ahern <dsahern@kernel.org>
+To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+Cc: netdev@vger.kernel.org, outreachy@lists.linux.dev, roopa@nvidia.com,
+	roopa.prabhu@gmail.com, jdenham@redhat.com, sbrivio@redhat.com
+Subject: Re: [PATCH net-next 2/2] net: vxlan: vxlan_core.c: Add extack
+ support to vxlan_fdb_delet
+Message-ID: <20220422183701.GA27661@u2004-local>
+References: <cover.1650377624.git.eng.alaamohamedsoliman.am@gmail.com>
+ <c6765ff1f66cf74ba6f25ba9b1c91dfe410abcfd.1650377624.git.eng.alaamohamedsoliman.am@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -51,43 +33,36 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220421180200.16901-3-fmdefrancesco@gmail.com>
+In-Reply-To: <c6765ff1f66cf74ba6f25ba9b1c91dfe410abcfd.1650377624.git.eng.alaamohamedsoliman.am@gmail.com>
 
-On Thu, Apr 21, 2022 at 08:01:58PM +0200, Fabio M. De Francesco wrote:
-> kernel-docs that are in include/linux/highmem.h and in
-> include/linux/highmem-internal.h should be included in highmem.rst.
+On Tue, Apr 19, 2022 at 04:37:18PM +0200, Alaa Mohamed wrote:
+> diff --git a/drivers/net/vxlan/vxlan_core.c b/drivers/net/vxlan/vxlan_core.c
+> index cf2f60037340..4ecbb5878fe2 100644
+> --- a/drivers/net/vxlan/vxlan_core.c
+> +++ b/drivers/net/vxlan/vxlan_core.c
+> @@ -1129,18 +1129,20 @@ static void vxlan_fdb_dst_destroy(struct vxlan_dev *vxlan, struct vxlan_fdb *f,
 > 
-> Use kdocs directives to include the above-mentioned comments into
-> highmem.rst.
+>  static int vxlan_fdb_parse(struct nlattr *tb[], struct vxlan_dev *vxlan,
+>  			   union vxlan_addr *ip, __be16 *port, __be32 *src_vni,
+> -			   __be32 *vni, u32 *ifindex, u32 *nhid)
+> +			   __be32 *vni, u32 *ifindex, u32 *nhid, struct netlink_ext_ack *extack)
+>  {
+>  	struct net *net = dev_net(vxlan->dev);
+>  	int err;
 > 
-> Cc: Jonathan Corbet <corbet@lwn.net>
-> Cc: Thomas Gleixner <tglx@linutronix.de>
-> Cc: Ira Weiny <ira.weiny@intel.com>
-> Cc: Matthew Wilcox <willy@infradead.org>
-> Cc: Peter Zijlstra <peterz@infradead.org>
-> Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+>  	if (tb[NDA_NH_ID] && (tb[NDA_DST] || tb[NDA_VNI] || tb[NDA_IFINDEX] ||
+>  	    tb[NDA_PORT]))
+> +		NL_SET_ERR_MSG(extack, "Missing required arguments");
 
-Reviewed-by: Ira Weiny <ira.weiny@intel.com>
+That's a misleading error message; I think it should be something like:
+		NL_SET_ERR_MSG(extack, "DST, VNI, ifindex and port are mutually exclusive with NH_ID");
 
-> ---
->  Documentation/vm/highmem.rst | 7 +++++++
->  1 file changed, 7 insertions(+)
+>  		return -EINVAL;
 > 
-> diff --git a/Documentation/vm/highmem.rst b/Documentation/vm/highmem.rst
-> index 0f69a9fec34d..ccff08a8211d 100644
-> --- a/Documentation/vm/highmem.rst
-> +++ b/Documentation/vm/highmem.rst
-> @@ -145,3 +145,10 @@ The general recommendation is that you don't use more than 8GiB on a 32-bit
->  machine - although more might work for you and your workload, you're pretty
->  much on your own - don't expect kernel developers to really care much if things
->  come apart.
-> +
-> +
-> +Functions
-> +=========
-> +
-> +.. kernel-doc:: include/linux/highmem.h
-> +.. kernel-doc:: include/linux/highmem-internal.h
-> -- 
-> 2.34.1
-> 
+>  	if (tb[NDA_DST]) {
+>  		err = vxlan_nla_get_addr(ip, tb[NDA_DST]);
+>  		if (err)
+> +			NL_SET_ERR_MSG(extack, "Unsupported address family");
+>  			return err;
+>  	} else {
+>  		union vxlan_addr *remote = &vxlan->default_dst.remote_ip;
