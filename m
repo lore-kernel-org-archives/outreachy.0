@@ -1,101 +1,79 @@
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ot1-f68.google.com (mail-ot1-f68.google.com [209.85.210.68])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 416CB28E6;
-	Fri, 22 Apr 2022 12:11:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 61A49C385A4;
-	Fri, 22 Apr 2022 12:11:34 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1650629494;
-	bh=H3Qej2YHR+TlaLMizz7+0fGPZ3Mtnj1GowHYNjqgcNQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=YA0QT/RZtRQe3Fz37wzFITM8RhMzmyY0o4QKfeFMYl/dMhe2o5ULX1sqm2E3DWM34
-	 vkp633FqTdwW+cyxW8qJ5gld7X0nyy2LTpJP3AErBnC33NJnNKf16z7ReeEDEabr2+
-	 Ecx5Ph4AWW4epwvoZTQUIZA+dmXGgbVP6sDJUZzI=
-Date: Fri, 22 Apr 2022 14:11:31 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Lungash <denizlungash@gmail.com>
-Cc: Manish Chopra <manishc@marvell.com>, GR-Linux-NIC-Dev@marvell.com,
-	Coiby Xu <coiby.xu@gmail.com>, netdev@vger.kernel.org,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev
-Subject: Re: [PATCH] staging: qlge: Fix line wrapping
-Message-ID: <YmKbc9Ib9vXgDnBg@kroah.com>
-References: <YmJseHLyoAJWOGpc@kali-h6>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 56AD67A
+	for <outreachy@lists.linux.dev>; Fri, 22 Apr 2022 12:55:44 +0000 (UTC)
+Received: by mail-ot1-f68.google.com with SMTP id i11-20020a9d4a8b000000b005cda3b9754aso5387117otf.12
+        for <outreachy@lists.linux.dev>; Fri, 22 Apr 2022 05:55:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=zm9GfdANLktexLnSc2t2HLTF4hneluEodUT1P1kDEsM=;
+        b=hqpExlYNzkwIX37Hy7SHOLnExYYUGG8vNf/6n9iAKjl5YQzWvYMgOOIuE2PmHkVlId
+         8p2hIYnz2HLmhSYdOwsAzjY/APN2BXnUw/+SINDligXdzFGG3E1vx0GomViz5E701Hu5
+         +YXaVWJpR0D9lTq8jjEGNXIAYwlJNJ0x0VaJxyrxdsa7mWwQTsd1yMHq/havwPdPp8lH
+         gE6GLCQsPBCZFgC0GGJHYFfoFUfQ8JMLuORrLRTgNl2GvXnwkUPpoTK9WNCU9xaO6yCF
+         AN4YMsRpo4Ng/fPi9zygy3b0diFDQQtg3fmBU5p3mJJNKSkssyLATjOAy6FeI8xFj4wc
+         ctLg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=zm9GfdANLktexLnSc2t2HLTF4hneluEodUT1P1kDEsM=;
+        b=5LCPKyJwvMzJImNGUxZ/JpT3n10PyYwWA7uyyG+YqpN3snE6yNT4y8qV9kaNilGrFt
+         vh51FKHF0csa6amAT0mA50hzwzZv3r9SuoMUWxCNTixhJBiAH0ifNXmCVWQWZ2GLg1eK
+         nNXKrEyIyrYQgwXPvOESnYHzJA76nQdx/+C2AEFqJD6ZXlfcLI1pk84dMd1BXWKieLSt
+         LXrIyNugWb6rp1aDZ3pz58lJf+y+iBmeJfjzF8sUq4PkjaGxqjmc8mi5IXtZptUThDA0
+         gCQaRMLPhYv1Z8AICGJG9DmC5iKpT7a1Hz0DSlJ78z53aqBMUXM6bBmwhm0th+9EwpHp
+         E3Ew==
+X-Gm-Message-State: AOAM532dLXBP0WYC8+bxEQoXmmNYxwuuPw+IRbP+F4CjhbCy24zCPOeN
+	kb9jmpFpf6OFCTnrUvV10tU=
+X-Google-Smtp-Source: ABdhPJyNyko5expXH8i0LaM0d82/FWE6LtI1dFtVxCQad4UDosaAE16fqf3aYknTT7loeHX6IM4g8Q==
+X-Received: by 2002:a9d:7608:0:b0:5e9:5b29:bef8 with SMTP id k8-20020a9d7608000000b005e95b29bef8mr1628062otl.368.1650632143462;
+        Fri, 22 Apr 2022 05:55:43 -0700 (PDT)
+Received: from bertie (072-190-140-117.res.spectrum.com. [72.190.140.117])
+        by smtp.gmail.com with ESMTPSA id b5-20020a9d7545000000b006054e5f6703sm691686otl.31.2022.04.22.05.55.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 22 Apr 2022 05:55:42 -0700 (PDT)
+From: Rebecca Mckeever <remckee0@gmail.com>
+To: outreachy@lists.linux.dev
+Cc: Mike Rapoport <rppt@kernel.org>,
+	linux-mm@kvack.org,
+	linux-kernel@vger.kernel.org,
+	David Hildenbrand <david@redhat.com>,
+	Rebecca Mckeever <remckee0@gmail.com>
+Subject: [PATCH v2 0/4] memblock tests: update style of comments
+Date: Fri, 22 Apr 2022 07:55:34 -0500
+Message-Id: <cover.1650631746.git.remckee0@gmail.com>
+X-Mailer: git-send-email 2.32.0
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <YmJseHLyoAJWOGpc@kali-h6>
+Content-Transfer-Encoding: 8bit
 
-On Fri, Apr 22, 2022 at 11:51:04AM +0300, Lungash wrote:
-> This patch fixes line wrapping following kernel coding style.
-> 
-> Task on TODO list
-> 
-> * fix weird line wrapping (all over, ex. the ql_set_routing_reg() calls in
->   qlge_set_multicast_list()).
-> 
-> Signed-off-by: Lungash <denzlungash@gmail.com>
+These patches update the style of comments for memblock_add_*(),
+memblock_reserve_*(), memblock_remove_*(), and memblock_free_*() 
+functions to match the style of comments in tests/alloc_*.c and 
+remove extra spaces in those comments to conform to Linux kernel
+coding style.
 
-We need a "full" name here, whatever you sign legal documents with.
+Rebecca Mckeever (4):
+  memblock tests: update style of comments for memblock_add_*()
+    functions
+  memblock tests: update style of comments for memblock_reserve_*()
+    functions
+  memblock tests: update style of comments for memblock_remove_*()
+    functions
+  memblock tests: update style of comments for memblock_free_*()
+    functions
 
-> ---
->  drivers/staging/qlge/qlge_main.c | 235 ++++++++++++++-----------------
->  1 file changed, 107 insertions(+), 128 deletions(-)
-> 
-> diff --git a/drivers/staging/qlge/qlge_main.c b/drivers/staging/qlge/qlge_main.c
-> index 113a3efd12e9..309db00e0b22 100644
-> --- a/drivers/staging/qlge/qlge_main.c
-> +++ b/drivers/staging/qlge/qlge_main.c
-> @@ -499,77 +499,57 @@ static int qlge_set_routing_reg(struct qlge_adapter *qdev, u32 index, u32 mask,
->  
->  	switch (mask) {
->  	case RT_IDX_CAM_HIT:
-> -		{
-> -			value = RT_IDX_DST_CAM_Q |	/* dest */
-> -			    RT_IDX_TYPE_NICQ |	/* type */
-> -			    (RT_IDX_CAM_HIT_SLOT << RT_IDX_IDX_SHIFT);/* index */
-> -			break;
-> -		}
-> +		value = RT_IDX_DST_CAM_Q |	/* dest */
-> +			RT_IDX_TYPE_NICQ |	/* type */
-> +			(RT_IDX_CAM_HIT_SLOT << RT_IDX_IDX_SHIFT);/* index */
-> +		break;
+ tools/testing/memblock/tests/basic_api.c | 350 +++++++++++++++++------
+ 1 file changed, 256 insertions(+), 94 deletions(-)
 
-The original was fine, but yes, the {} can be removed, but that does not
-have to do with the TODO item here.  Please only do one type of fixup at
-a time.
+-- 
+2.32.0
 
->  
-> -static int qlge_validate_flash(struct qlge_adapter *qdev, u32 size, const char *str)
-> +static int qlge_validate_flash(struct qlge_adapter *qdev, u32 size,
-> +			       const char *str)
-
-You just made this look worse, why?
-
-> -static int qlge_read_flash_word(struct qlge_adapter *qdev, int offset, __le32 *data)
-> +static int qlge_read_flash_word(struct qlge_adapter *qdev, int offset,
-> +				__le32 *data)
-
-Same here, why change the original?
-
-> @@ -2952,8 +2936,8 @@ static int qlge_start_rx_ring(struct qlge_adapter *qdev, struct rx_ring *rx_ring
->  		(rx_ring->cq_id * RX_RING_SHADOW_SPACE);
->  	u64 shadow_reg_dma = qdev->rx_ring_shadow_reg_dma +
->  		(rx_ring->cq_id * RX_RING_SHADOW_SPACE);
-> -	void __iomem *doorbell_area =
-> -		qdev->doorbell_area + (DB_PAGE_SIZE * (128 + rx_ring->cq_id));
-> +	void __iomem *doorbell_area = qdev->doorbell_area +
-> +		(DB_PAGE_SIZE * (128 + rx_ring->cq_id));
-
-This does not look better, why not put it all on one line?
-
-
-thanks,
-
-greg k-h
