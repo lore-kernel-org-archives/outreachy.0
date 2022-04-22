@@ -1,30 +1,37 @@
 Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 12E2C1FBA;
-	Fri, 22 Apr 2022 06:39:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 619B2C385A0;
-	Fri, 22 Apr 2022 06:39:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1650609578;
-	bh=9yNligLg42qTGCwDgsfnc18X93RVA0YWjVpK6l85LYg=;
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4D19823CD
+	for <outreachy@lists.linux.dev>; Fri, 22 Apr 2022 08:24:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B304BC385A4;
+	Fri, 22 Apr 2022 08:24:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1650615862;
+	bh=VZe04wi9Ke1WpooTFqZ15tO/MjgK1FO8qd/uJToj3Wc=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Du/D+WacTmgccwMBXa1I0QgQNaTWCbTMAg/IYkHY6EUmKHShaHzA1J5pdnQJlFuII
-	 DBeRKXKEnoCbCczrKk2Dv1lriuLFRNYA8p0y6Rbr1vki1vkVZGgpOpP+nmz9OTgkL7
-	 HdnKm/TSe6AGVfKLqx+dNDNEj1MNvwn4j/Sib8ao=
-Date: Fri, 22 Apr 2022 08:39:36 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Martyn Welch <martyn@welchs.me.uk>
-Cc: Bruno Moreira-Guedes <codeagain@codeagain.dev>,
-	Manohar Vanga <manohar.vanga@gmail.com>,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev,
-	Bruno's Patch Watchbox <patch-reply@codeagain.dev>
-Subject: Re: [PATCH v3 0/3] staging: vme: Cleanup driver tree old structures
-Message-ID: <YmJNqMjXEc4KGrJ8@kroah.com>
-References: <cover.1650321310.git.codeagain@codeagain.dev>
- <YmA4QIRfx2QPhEJi@kroah.com>
- <3e91b72a86294b542acf460657d0fd94adeb252e.camel@welchs.me.uk>
+	b=jwwEHEHm2Ma97jStCDyTuowW/EJpEo2brMRPLwYkscX+vZ0y40ShSuC0xXJrlMZLa
+	 xGdHODv60Vr4GH4JG7nMd9bk3D1pTOlXGyEvTFDf1QYD4qL/WAMD9sIc8FN1r+zneJ
+	 mrXlAHE4xs7kzBye6xymR8SqS8XyXO8Wz0ZUUBgdHDNFdd8X2BcJu6DJRA9RuuKCnT
+	 Nt94O5Y2oHiNFmXK1Ws+cejfKO9o2Hoii14u/I8Rs5nMU0nivYbc5jXXV0F2NZD6RE
+	 xth+GpJBj1+wprn5x/k1gZHn0AzWiPa8vx7UAjg39037MaOd+BogTDYYtPD7hPcr3Z
+	 1tPd+eydP2kOQ==
+Date: Fri, 22 Apr 2022 11:24:14 +0300
+From: Mike Rapoport <rppt@kernel.org>
+To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+Cc: Ira Weiny <ira.weiny@intel.com>,
+	Andrew Morton <akpm@linux-foundation.org>,
+	Catalin Marinas <catalin.marinas@arm.com>,
+	"Matthew Wilcox (Oracle)" <willy@infradead.org>,
+	Will Deacon <will@kernel.org>, Peter Collingbourne <pcc@google.com>,
+	Vlastimil Babka <vbabka@suse.cz>,
+	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+	linux-kernel@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>,
+	linux-doc@vger.kernel.org, outreachy@lists.linux.dev,
+	Mike Rapoport <rppt@linux.ibm.com>
+Subject: Re: [PATCH 1/4] mm/highmem: Fix kernel-doc warnings in highmem*.h
+Message-ID: <YmJmLrS3hPR6gOaw@kernel.org>
+References: <20220421180200.16901-1-fmdefrancesco@gmail.com>
+ <20220421180200.16901-2-fmdefrancesco@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -33,46 +40,112 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <3e91b72a86294b542acf460657d0fd94adeb252e.camel@welchs.me.uk>
+In-Reply-To: <20220421180200.16901-2-fmdefrancesco@gmail.com>
 
-On Thu, Apr 21, 2022 at 08:16:05PM +0100, Martyn Welch wrote:
-> On Wed, 2022-04-20 at 18:43 +0200, Greg Kroah-Hartman wrote:
-> > On Mon, Apr 18, 2022 at 08:29:49PM -0300, Bruno Moreira-Guedes wrote:
-> > > This patch series modify the vme_user driver's place in
-> > > menuconfig (1/3), fixes a missing `depends on` line in a Kconfig
-> > > file
-> > > (2/3), and rearrages the directory tree for the driver allowing a
-> > > more
-> > > straightforward comprehension of its contents (3/3).
-> > > 
-> > > The 'vme_user/' driver is the only remaining vme-family driver in
-> > > the
-> > > 'staging/' tree, but its structure, entry in menuconfig and
-> > > building
-> > > routines are still attached to the 'vme/' subtree now outside
-> > > 'staging/'. The present patchset fixes it.
-> > > 
-> > > Signed-off-by: Bruno Moreira-Guedes <codeagain@codeagain.dev>
-> > 
-> > What about deleting the vme drivers entirely?
+On Thu, Apr 21, 2022 at 08:01:57PM +0200, Fabio M. De Francesco wrote:
+> `scripts/kernel-doc -v -none include/linux/highmem*` reports the following
+> warnings:
 > 
-> I assume you're suggesting deleting the "vme_user" driver from the
-> staging directory?
-
-Yes, at the very least given that no one has tried to fix it up and get
-it out of staging in many years.
-
-> > Martyn, anyone still using these?
-> > 
+> include/linux/highmem.h:160: warning: expecting prototype for kunmap_atomic(). Prototype was for nr_free_highpages() instead
+> include/linux/highmem.h:204: warning: No description found for return value of 'alloc_zeroed_user_highpage_movable'
+> include/linux/highmem-internal.h:256: warning: Function parameter or member '__addr' not described in 'kunmap_atomic'
+> include/linux/highmem-internal.h:256: warning: Excess function parameter 'addr' description in 'kunmap_atomic'
 > 
-> I'm fairly sure that the actual VME drivers for the hardware bridges
-> (the bits not in staging) are still being used based on the
-> conversations I've had today. I'm just trying to find out whether the
-> vme_user bit is actively being used.
+> Fix these warnings by (1) moving the kernel-doc comments from highmem.h to
+> highmem-internal.h (which is the file were the kunmap_atomic() macro is
+> actually defined), (2) extending and merging it with the comment which was
+> already in highmem-internal.h, and (3) using correct parameter names.
+> 
+> Cc: Mike Rapoport <rppt@linux.ibm.com>
+> Cc: Ira Weiny <ira.weiny@intel.com>
+> Suggested-by: Matthew Wilcox <willy@infradead.org>
+> Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
+> ---
+>  include/linux/highmem-internal.h | 14 +++++++++++---
+>  include/linux/highmem.h          | 15 +++------------
+>  2 files changed, 14 insertions(+), 15 deletions(-)
+> 
+> diff --git a/include/linux/highmem-internal.h b/include/linux/highmem-internal.h
+> index a77be5630209..b099a08e29d3 100644
+> --- a/include/linux/highmem-internal.h
+> +++ b/include/linux/highmem-internal.h
+> @@ -236,9 +236,17 @@ static inline unsigned long totalhigh_pages(void) { return 0UL; }
+>  
+>  #endif /* CONFIG_HIGHMEM */
+>  
+> -/*
+> - * Prevent people trying to call kunmap_atomic() as if it were kunmap()
+> - * kunmap_atomic() should get the return value of kmap_atomic, not the page.
+> +/**
+> + * kunmap_atomic - Unmap the virtual address mapped by kmap_atomic()
+> + * @__addr:       Virtual address to be unmapped
+> + *
+> + * Unmap an address previously mapped by kmap_atomic() and re-enables
 
-If the non-staging vme drivers are still being used, that's great.  But
-if not, those too should be dropped.
+Unmap ... and re-enable
 
-thanks,
+or 
 
-greg k-h
+Unmaps ... and re-enables
+
+Other than that
+
+Acked-by: Mike Rapoport <rppt@linux.ibm.com>
+
+> + * pagefaults and preemption. Mappings should be unmapped in the reverse
+> + * order that they were mapped. See kmap_local_page() for details.
+> + * @__addr can be any address within the mapped page, so there is no need
+> + * to subtract any offset that has been added. In contrast to kunmap(),
+> + * this function takes the address returned from kmap_atomic(), not the
+> + * page passed to it. The compiler will warn you if you pass the page.
+>   */
+>  #define kunmap_atomic(__addr)					\
+>  do {								\
+> diff --git a/include/linux/highmem.h b/include/linux/highmem.h
+> index 39bb9b47fa9c..c3d562b5f0c1 100644
+> --- a/include/linux/highmem.h
+> +++ b/include/linux/highmem.h
+> @@ -37,7 +37,7 @@ static inline void *kmap(struct page *page);
+>  
+>  /**
+>   * kunmap - Unmap the virtual address mapped by kmap()
+> - * @addr:	Virtual address to be unmapped
+> + * @page:	Virtual address to be unmapped
+>   *
+>   * Counterpart to kmap(). A NOOP for CONFIG_HIGHMEM=n and for mappings of
+>   * pages in the low memory area.
+> @@ -145,17 +145,6 @@ static inline void *kmap_local_folio(struct folio *folio, size_t offset);
+>   */
+>  static inline void *kmap_atomic(struct page *page);
+>  
+> -/**
+> - * kunmap_atomic - Unmap the virtual address mapped by kmap_atomic()
+> - * @addr:	Virtual address to be unmapped
+> - *
+> - * Counterpart to kmap_atomic().
+> - *
+> - * Effectively a wrapper around kunmap_local() which additionally undoes
+> - * the side effects of kmap_atomic(), i.e. reenabling pagefaults and
+> - * preemption.
+> - */
+> -
+>  /* Highmem related interfaces for management code */
+>  static inline unsigned int nr_free_highpages(void);
+>  static inline unsigned long totalhigh_pages(void);
+> @@ -191,6 +180,8 @@ static inline void clear_user_highpage(struct page *page, unsigned long vaddr)
+>   * @vma: The VMA the page is to be allocated for
+>   * @vaddr: The virtual address the page will be inserted into
+>   *
+> + * Returns: The allocated and zeroed HIGHMEM page
+> + *
+>   * This function will allocate a page for a VMA that the caller knows will
+>   * be able to migrate in the future using move_pages() or reclaimed
+>   *
+> -- 
+> 2.34.1
+> 
+> 
+
+-- 
+Sincerely yours,
+Mike.
