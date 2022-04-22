@@ -1,21 +1,21 @@
 Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4D19823CD
-	for <outreachy@lists.linux.dev>; Fri, 22 Apr 2022 08:24:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B304BC385A4;
-	Fri, 22 Apr 2022 08:24:18 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 764CB23A4
+	for <outreachy@lists.linux.dev>; Fri, 22 Apr 2022 08:33:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5F946C385A0;
+	Fri, 22 Apr 2022 08:33:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1650615862;
-	bh=VZe04wi9Ke1WpooTFqZ15tO/MjgK1FO8qd/uJToj3Wc=;
+	s=k20201202; t=1650616414;
+	bh=yNlnwq4VGj4ovbztu0mv7SuTxiT88c0qHz3zb371ldg=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=jwwEHEHm2Ma97jStCDyTuowW/EJpEo2brMRPLwYkscX+vZ0y40ShSuC0xXJrlMZLa
-	 xGdHODv60Vr4GH4JG7nMd9bk3D1pTOlXGyEvTFDf1QYD4qL/WAMD9sIc8FN1r+zneJ
-	 mrXlAHE4xs7kzBye6xymR8SqS8XyXO8Wz0ZUUBgdHDNFdd8X2BcJu6DJRA9RuuKCnT
-	 Nt94O5Y2oHiNFmXK1Ws+cejfKO9o2Hoii14u/I8Rs5nMU0nivYbc5jXXV0F2NZD6RE
-	 xth+GpJBj1+wprn5x/k1gZHn0AzWiPa8vx7UAjg39037MaOd+BogTDYYtPD7hPcr3Z
-	 1tPd+eydP2kOQ==
-Date: Fri, 22 Apr 2022 11:24:14 +0300
+	b=oYlf8x/mdnucvGuXZN6ArR7FFewm8gzrqGZ3JDxqlCqQJtPS1mpykFR4dmK6ItsAY
+	 Jc2tdnimggR3AdqupLSKFcT+NgwAe+vmh3erSJhIrdkPzoTRiQdcKpALXmJPc69ZoW
+	 QywltPs9XOTZEKZXRy7eVMqlCiM/bHvOfhVA6P/A4o2ZQllCSojRqxg8gIpGdZTAAK
+	 oB7tzaVIp6pRiHTApINlPZKjyvr43EiI59ftJ+HQKdNKG+Fe757oonvJ2EbIrPzY1N
+	 2KZccrGvHLHVAxse/DjmA0xQjGtZuNgw0JFsbjU2ykg2grQK8lN/XytNAjjs4PR7fW
+	 uLkiUIZlo+iAQ==
+Date: Fri, 22 Apr 2022 11:33:25 +0300
 From: Mike Rapoport <rppt@kernel.org>
 To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
 Cc: Ira Weiny <ira.weiny@intel.com>,
@@ -27,11 +27,13 @@ Cc: Ira Weiny <ira.weiny@intel.com>,
 	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
 	linux-kernel@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>,
 	linux-doc@vger.kernel.org, outreachy@lists.linux.dev,
-	Mike Rapoport <rppt@linux.ibm.com>
-Subject: Re: [PATCH 1/4] mm/highmem: Fix kernel-doc warnings in highmem*.h
-Message-ID: <YmJmLrS3hPR6gOaw@kernel.org>
+	Thomas Gleixner <tglx@linutronix.de>,
+	Peter Zijlstra <peterz@infradead.org>
+Subject: Re: [PATCH 2/4] Documentation/vm: Include kdocs from highmem*.h into
+ highmem.rst
+Message-ID: <YmJoVeGdJxVedUnQ@kernel.org>
 References: <20220421180200.16901-1-fmdefrancesco@gmail.com>
- <20220421180200.16901-2-fmdefrancesco@gmail.com>
+ <20220421180200.16901-3-fmdefrancesco@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -40,107 +42,43 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20220421180200.16901-2-fmdefrancesco@gmail.com>
+In-Reply-To: <20220421180200.16901-3-fmdefrancesco@gmail.com>
 
-On Thu, Apr 21, 2022 at 08:01:57PM +0200, Fabio M. De Francesco wrote:
-> `scripts/kernel-doc -v -none include/linux/highmem*` reports the following
-> warnings:
+On Thu, Apr 21, 2022 at 08:01:58PM +0200, Fabio M. De Francesco wrote:
+> kernel-docs that are in include/linux/highmem.h and in
+> include/linux/highmem-internal.h should be included in highmem.rst.
 > 
-> include/linux/highmem.h:160: warning: expecting prototype for kunmap_atomic(). Prototype was for nr_free_highpages() instead
-> include/linux/highmem.h:204: warning: No description found for return value of 'alloc_zeroed_user_highpage_movable'
-> include/linux/highmem-internal.h:256: warning: Function parameter or member '__addr' not described in 'kunmap_atomic'
-> include/linux/highmem-internal.h:256: warning: Excess function parameter 'addr' description in 'kunmap_atomic'
+> Use kdocs directives to include the above-mentioned comments into
+> highmem.rst.
 > 
-> Fix these warnings by (1) moving the kernel-doc comments from highmem.h to
-> highmem-internal.h (which is the file were the kunmap_atomic() macro is
-> actually defined), (2) extending and merging it with the comment which was
-> already in highmem-internal.h, and (3) using correct parameter names.
-> 
-> Cc: Mike Rapoport <rppt@linux.ibm.com>
+> Cc: Jonathan Corbet <corbet@lwn.net>
+> Cc: Thomas Gleixner <tglx@linutronix.de>
 > Cc: Ira Weiny <ira.weiny@intel.com>
-> Suggested-by: Matthew Wilcox <willy@infradead.org>
+> Cc: Matthew Wilcox <willy@infradead.org>
+> Cc: Peter Zijlstra <peterz@infradead.org>
 > Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
-> ---
->  include/linux/highmem-internal.h | 14 +++++++++++---
->  include/linux/highmem.h          | 15 +++------------
->  2 files changed, 14 insertions(+), 15 deletions(-)
-> 
-> diff --git a/include/linux/highmem-internal.h b/include/linux/highmem-internal.h
-> index a77be5630209..b099a08e29d3 100644
-> --- a/include/linux/highmem-internal.h
-> +++ b/include/linux/highmem-internal.h
-> @@ -236,9 +236,17 @@ static inline unsigned long totalhigh_pages(void) { return 0UL; }
->  
->  #endif /* CONFIG_HIGHMEM */
->  
-> -/*
-> - * Prevent people trying to call kunmap_atomic() as if it were kunmap()
-> - * kunmap_atomic() should get the return value of kmap_atomic, not the page.
-> +/**
-> + * kunmap_atomic - Unmap the virtual address mapped by kmap_atomic()
-> + * @__addr:       Virtual address to be unmapped
-> + *
-> + * Unmap an address previously mapped by kmap_atomic() and re-enables
-
-Unmap ... and re-enable
-
-or 
-
-Unmaps ... and re-enables
-
-Other than that
 
 Acked-by: Mike Rapoport <rppt@linux.ibm.com>
 
-> + * pagefaults and preemption. Mappings should be unmapped in the reverse
-> + * order that they were mapped. See kmap_local_page() for details.
-> + * @__addr can be any address within the mapped page, so there is no need
-> + * to subtract any offset that has been added. In contrast to kunmap(),
-> + * this function takes the address returned from kmap_atomic(), not the
-> + * page passed to it. The compiler will warn you if you pass the page.
->   */
->  #define kunmap_atomic(__addr)					\
->  do {								\
-> diff --git a/include/linux/highmem.h b/include/linux/highmem.h
-> index 39bb9b47fa9c..c3d562b5f0c1 100644
-> --- a/include/linux/highmem.h
-> +++ b/include/linux/highmem.h
-> @@ -37,7 +37,7 @@ static inline void *kmap(struct page *page);
->  
->  /**
->   * kunmap - Unmap the virtual address mapped by kmap()
-> - * @addr:	Virtual address to be unmapped
-> + * @page:	Virtual address to be unmapped
->   *
->   * Counterpart to kmap(). A NOOP for CONFIG_HIGHMEM=n and for mappings of
->   * pages in the low memory area.
-> @@ -145,17 +145,6 @@ static inline void *kmap_local_folio(struct folio *folio, size_t offset);
->   */
->  static inline void *kmap_atomic(struct page *page);
->  
-> -/**
-> - * kunmap_atomic - Unmap the virtual address mapped by kmap_atomic()
-> - * @addr:	Virtual address to be unmapped
-> - *
-> - * Counterpart to kmap_atomic().
-> - *
-> - * Effectively a wrapper around kunmap_local() which additionally undoes
-> - * the side effects of kmap_atomic(), i.e. reenabling pagefaults and
-> - * preemption.
-> - */
-> -
->  /* Highmem related interfaces for management code */
->  static inline unsigned int nr_free_highpages(void);
->  static inline unsigned long totalhigh_pages(void);
-> @@ -191,6 +180,8 @@ static inline void clear_user_highpage(struct page *page, unsigned long vaddr)
->   * @vma: The VMA the page is to be allocated for
->   * @vaddr: The virtual address the page will be inserted into
->   *
-> + * Returns: The allocated and zeroed HIGHMEM page
-> + *
->   * This function will allocate a page for a VMA that the caller knows will
->   * be able to migrate in the future using move_pages() or reclaimed
->   *
+> ---
+>  Documentation/vm/highmem.rst | 7 +++++++
+>  1 file changed, 7 insertions(+)
+> 
+> diff --git a/Documentation/vm/highmem.rst b/Documentation/vm/highmem.rst
+> index 0f69a9fec34d..ccff08a8211d 100644
+> --- a/Documentation/vm/highmem.rst
+> +++ b/Documentation/vm/highmem.rst
+> @@ -145,3 +145,10 @@ The general recommendation is that you don't use more than 8GiB on a 32-bit
+>  machine - although more might work for you and your workload, you're pretty
+>  much on your own - don't expect kernel developers to really care much if things
+>  come apart.
+> +
+> +
+> +Functions
+> +=========
+> +
+> +.. kernel-doc:: include/linux/highmem.h
+> +.. kernel-doc:: include/linux/highmem-internal.h
 > -- 
 > 2.34.1
 > 
