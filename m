@@ -1,101 +1,201 @@
-Received: from mail-ej1-f45.google.com (mail-ej1-f45.google.com [209.85.218.45])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (mail-dm6nam11on2083.outbound.protection.outlook.com [40.107.223.83])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B858F3236
-	for <outreachy@lists.linux.dev>; Sat, 23 Apr 2022 23:00:17 +0000 (UTC)
-Received: by mail-ej1-f45.google.com with SMTP id g6so40645ejw.1
-        for <outreachy@lists.linux.dev>; Sat, 23 Apr 2022 16:00:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=blackwall-org.20210112.gappssmtp.com; s=20210112;
-        h=message-id:date:mime-version:user-agent:subject:content-language:to
-         :cc:references:from:in-reply-to:content-transfer-encoding;
-        bh=3QBd2G2aZjvPIlQVfUzMKqliUmMW6oCJslRCFwoaxhI=;
-        b=Eqm+jTY3bs4ULYM0nOB03k10+Svn4xVtLKpFDd5SWUqcchNFjgq7KsG7lWlFnNqIQD
-         j9XggUsvD9cQtLuC+DnTYWVASpPtq+y9R+7ssAQkN4k0AGSZyqpDXL9VnvDjq+RNL4r9
-         lLEZv8DC4yXRKazGRD7QiSKVNxWAKRa8PO6kO0oaGLtayij+rCnJT5wqgn27JD2wTIk0
-         6WY0Vgai3P8bk3dluV1y5vh0+uIyoLD3OX7svnNb9xJYBzmx6VUhUCH2ly520IzTPqUW
-         +j1C2JTPH0GcPnG6B4KyBG8osRH5FJN2A3zb3mQV0v3BKlbzfBDArWWCbp76KJ1jSQCI
-         JPNA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :content-transfer-encoding;
-        bh=3QBd2G2aZjvPIlQVfUzMKqliUmMW6oCJslRCFwoaxhI=;
-        b=fVzk8OX+kUfBrwavo3PK3rfdIGK2Aeg1//clLg2Hj7Cn1Sls3dKExNeUcER4sQP1HJ
-         2XJEs25h+1NyPeH3rhXGJQhscYMPowhYfv/CTdwcYjRuMAAuP5vF1Och/iGDuO4yunsl
-         AUbJjgqLM0ck7psIQIRznr7J6bkOnWLQgkB9+dvs3MzTVe8FsnVZIQC6k4eZzHdT1cjK
-         j1sfH0fiFGuNyeoER30B8Hi3g4UznH39dO04KnFF/csudVYaAkDMXVZn0s88SmoVtEIh
-         K6CQDvrgn1l8B5d+Zz4vpMv/2Gq44La+lMBQ5Y1hKNSYJY+v2Pt2K1sbZQpfrwCoL76L
-         +6Lg==
-X-Gm-Message-State: AOAM533IISpsNusIJGBmPrvL7CqOP4RO1bS2JXJFqqPLPnhE7GzlizZL
-	wPR4Qk3kjk3vijzyv7Ah466QtA==
-X-Google-Smtp-Source: ABdhPJzpB3Vf2L4wPFGrVsJfpBQ2OLcpKxuPQCSeeVgK1GHdiRzef5uzC4teMJQgd6OJS3bM0GfNKg==
-X-Received: by 2002:a17:907:c29:b0:6f3:8d26:c330 with SMTP id ga41-20020a1709070c2900b006f38d26c330mr27075ejc.215.1650754815797;
-        Sat, 23 Apr 2022 16:00:15 -0700 (PDT)
-Received: from [192.168.0.117] (87-243-81-1.ip.btc-net.bg. [87.243.81.1])
-        by smtp.gmail.com with ESMTPSA id fy29-20020a1709069f1d00b006e8d248fc2csm2047005ejc.108.2022.04.23.16.00.14
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 23 Apr 2022 16:00:15 -0700 (PDT)
-Message-ID: <0d3b9da5-3f26-a1a1-1bde-9b6332e6e8f2@blackwall.org>
-Date: Sun, 24 Apr 2022 02:00:13 +0300
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D1EB07C
+	for <outreachy@lists.linux.dev>; Sun, 24 Apr 2022 03:48:53 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=djNqnQZj0XVWSx8+1J3gDg3pn7TmOadssHG2Ur60DbDdhZdtthos829x8DmiRG4T5kmoNBywTdhyU3o28eumn/BIgyojY3I+XJAUxFK+ouwNkI2YNSGt5/1zyuJDTh4dN11IZ8HZ+fyCOPowP+m5e4CiWGFyI3zZ5GC362rf17XXDZ1pVeqLBa3kttyf4dC3whfWxHhyFJmFBIciqlNJOMeSRgqKo4cVpv5SJjSizdDsAzH0/OeOEG3bigOdKt9MprCBxp9zwDAWXrnpFQWIzZyGW4/BiJQ+MYCrkqdaqQ4puft3F6Gc//1YcqBha+3lwVI3vSZ6FlHFksKW51D49A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=GujJPAcOn1VB01oBPTUAZHhg5zrvLbChsvyxDFITroQ=;
+ b=cLrAmT7zGo3T3lre71fOeLswn4Lc4tPxXTIIbaHdE0DBKbfWYwXzxB7e3+ij32Arj3jLm//IIy/xdwEd0arpct4UixQi8iwU7s6bSR6TDxSI3HbdZawGqpvo0gg7T7R0IHSolnwjoKywWJU8iHwBKu0j9E3RB6mg34hhvfsWVwmCiEYQ9KxJhVOmtdYTAA/uap65ptb9dzaaJITlUu20rxxYFwtZ08TJo1kEU20n7q9tSy7x02DoLtPJnZEk+KmxaeBGwJWN+AA6DHg8uNCotpRYwtLrb9LO6zaUFdNb4zKuPhZaQs0svbOoGx/XzAtXy0k3tXzW3kO4yzVwTd+RjA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=GujJPAcOn1VB01oBPTUAZHhg5zrvLbChsvyxDFITroQ=;
+ b=iO5N63GdXeui9Xs8iY3/s7MApAs/jSSuSdSR8qQBWdAWrVL1/FqAS3EBYAP+C1Yx5jWX3iSzqDYiLfxklnkx3vIwDv2lIHRi/4ldX5i8mVUIjLxIZ32omSRZzL4IvLS7dV0m5L9oPZs8mtPUtXXuIMuAvTYahZyYoAYALBsxAAMN5JMgZP7Fi2KwQ89oCTry7vTmnOYKpE8oxnMksEyFk0/C14bCU1GCIfAgLJHtcXkgLc9cjmnyyrPow2d1Q+9/9ARAd3frHiGudSmf1yiXYbMk08UISdf6wjXOmi0wprKVqhHwDw9Etd88YaPN/fyGdJMQNLr/iMYGrge6V+zyQw==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from SJ0PR12MB5504.namprd12.prod.outlook.com (2603:10b6:a03:3ad::24)
+ by DM6PR12MB2825.namprd12.prod.outlook.com (2603:10b6:5:75::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5164.20; Sun, 24 Apr
+ 2022 03:48:35 +0000
+Received: from SJ0PR12MB5504.namprd12.prod.outlook.com
+ ([fe80::3887:c9c8:b2de:fe5f]) by SJ0PR12MB5504.namprd12.prod.outlook.com
+ ([fe80::3887:c9c8:b2de:fe5f%8]) with mapi id 15.20.5186.020; Sun, 24 Apr 2022
+ 03:48:35 +0000
+Message-ID: <c2eb6a8a-531e-7a6e-267c-23577f2e95e8@nvidia.com>
+Date: Sat, 23 Apr 2022 20:48:29 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.5.0
+Subject: Re: [PATCH net-next v2] selftests: net: vrf_strict_mode_test: add
+ support to select a test to run
+Content-Language: en-US
+To: Jaehee Park <jhpark1013@gmail.com>, outreachy@lists.linux.dev,
+ Julia Denham <jdenham@redhat.com>, Roopa Prabhu <roopa.prabhu@gmail.com>,
+ Stefano Brivio <sbrivio@redhat.com>, netdev@vger.kernel.org,
+ David Ahern <dsahern@gmail.com>
+References: <20220421164022.GA3485225@jaehee-ThinkPad-X1-Extreme>
+From: Roopa Prabhu <roopa@nvidia.com>
+In-Reply-To: <20220421164022.GA3485225@jaehee-ThinkPad-X1-Extreme>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: BY5PR17CA0058.namprd17.prod.outlook.com
+ (2603:10b6:a03:167::35) To SJ0PR12MB5504.namprd12.prod.outlook.com
+ (2603:10b6:a03:3ad::24)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.6.2
-Subject: Re: [PATCH net-next v2 1/2] rtnetlink: add extack support in fdb del
- handlers
-Content-Language: en-US
-To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>, netdev@vger.kernel.org
-Cc: outreachy@lists.linux.dev, roopa@nvidia.com, roopa.prabhu@gmail.com,
- jdenham@redhat.com, sbrivio@redhat.com
-References: <cover.1650754228.git.eng.alaamohamedsoliman.am@gmail.com>
- <6a77eca533b7048b85bf0ffe0c3904d36045c320.1650754231.git.eng.alaamohamedsoliman.am@gmail.com>
-From: Nikolay Aleksandrov <razor@blackwall.org>
-In-Reply-To: <6a77eca533b7048b85bf0ffe0c3904d36045c320.1650754231.git.eng.alaamohamedsoliman.am@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: f209c058-e950-4be5-4703-08da25a54f15
+X-MS-TrafficTypeDiagnostic: DM6PR12MB2825:EE_
+X-Microsoft-Antispam-PRVS:
+	<DM6PR12MB2825483469C4FF8D4A24E666CBF99@DM6PR12MB2825.namprd12.prod.outlook.com>
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info:
+	FUKxFLMr3MojTOydkW4sVObxHkzGaq6ePFJZ1wG24ZxtFqTVKmE85dUOYUYZZbOWtBM4lJOlLRaqvQV/gbajxgszF55b3iCGkG+L0rHdIfkL/GORD0Q+aJzL71WkA8/ZjECou1B0pN9ZQoRlYNtC0hNplnm5Ih+q2I2ERvjeQhuMTQNCze1+uM1LBl8dCCZ082cSra8R3STaO0VyA5Yk4WjvtFbdt4/6McT3oWmPgPaHr4bYDjx76i2KCJsXwavd46KT7rR8Wmot0Dcy9LOSIwQSH9//ghe6rpqaXQx06jfCJo8Sp1n48es3FNZf2R0vndhZlnUeKNSx15B6JZ7CyjmRkzoA6QMhbGHTTJw0FCxgoCu1CN04sDqxolPkkoFAxDi+yZKd7c+kZh6ict+D3wqNApwes1U9WUb1Xk2scrCZtXwF6jTDV0ZLveEm5S2RM37KXOLsPIOuyHu2sw6j8buEFxEqdkufyiUTq51cyPF1nEnQH1gG6CzU5jsbABEaCR5/7i58Q0/wi3gaykhfGLIhYvbd0u7g4EKcejVLlTW4iYjT+O8YkGbozc5KlVBwm0ZjoKFhRjrUVOULUvhu3Z3BNdY7q4LUe2poW6E+lgF2K36EQfg0dK6Ted4+o0c+ah9IJDzh5pFG5iGMcLCQluAzIKJCYjCLvC9X6yjrry/ZyWGN8Kr4lgfFB2zUzXWN4gcaqlbx168CqpfSHSNCp0YzrYZVUEIX2RHiu9Ts+mo=
+X-Forefront-Antispam-Report:
+	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SJ0PR12MB5504.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230001)(4636009)(366004)(66946007)(508600001)(53546011)(66556008)(8936002)(2906002)(66476007)(83380400001)(5660300002)(31696002)(38100700002)(316002)(110136005)(86362001)(6486002)(31686004)(8676002)(186003)(2616005)(36756003)(26005)(6666004)(6506007)(6512007)(45980500001)(43740500002);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0:
+	=?utf-8?B?bE1XQnZwcFp5ZVJMY0tMMEhuSDhJRXoxQXB0dVZFRzRRUGdGSTlyWURUMmpm?=
+ =?utf-8?B?ZGkxdW9pcW9PZG1DTGh3YVhYaU5BdzZHUGlGT1YxaU82TVFVb1VKRHM4WnVY?=
+ =?utf-8?B?SXNGcllxa2hUUWhwOVhmdGxuK09jV2t6azA2dVNZaElRSVY5Z2hSaE0vUHox?=
+ =?utf-8?B?Q09yb0haZ2I5MTRuRVpsanhML1BUZHFoMzZHVnBtZzZqVDNzTVZqbGxneWth?=
+ =?utf-8?B?R3ljNndxTWU2Y0l2R1IwZTZDN1pGWVVZcE1uVitGSEtsS2p1U0FTT3kvTGFM?=
+ =?utf-8?B?a0RSbWRIYzRWdXFIRGFuK0s0STM2VENDYTVJUXhGbmRuUVVnK3N0U3VqK0VK?=
+ =?utf-8?B?NmNOOXJVSG9Ga0V1cGx2bEZwaTZPRUdpVnpzTTR0Q0s0WTZCSER4Tzl4NDVs?=
+ =?utf-8?B?c1YvWVZHK3hMZUNXaXlvT3lSV1Z1ZVZVY25vUXR4bFdyZ1orY3BQSXdXWVRP?=
+ =?utf-8?B?YWlmU3M2c3JLU0lIK0NleHM0eVlhbUtKRC9qWVczVk15aTJ4YXo4dSs0T204?=
+ =?utf-8?B?Vy95a29uUmprb1FTQkFqNDVIc3dzb2xET3JrNU5KdTVpdS8vVUxIZWF6dlR4?=
+ =?utf-8?B?REY3dnYzM2RDTGZJeFh2dS9qYVc3bzE3MVUzSnBNSXNCZWN2OTJEWU1YR3B4?=
+ =?utf-8?B?NFlldUkySTFMaFFEZW80TEcvS3plbjJ5MG4wd0FOT3J3SlA5T0M3R3lKRmdx?=
+ =?utf-8?B?amdRcHZPS2E0WmhjT1BmVFNSZXRzaEM1K3NacGpuQzJtYnJLTlJGZkVrZ2lE?=
+ =?utf-8?B?ZU5tTDFFZW95d2YxWlhrUWhRNUE0NC9TUTl1bWF5RFhRbW9QSGsrdE44d3lW?=
+ =?utf-8?B?dTk3eEdBc0JMT3AxRENDVk9JTEh3cTlvZE9Vclo0ejBWdWR1TzlzY1BralRk?=
+ =?utf-8?B?U3dzZTkyYUhTTHlFZnZJT2hMd243MnhGQlE4dy9SdXVtd2dyeWN1UCtMdkQ5?=
+ =?utf-8?B?S3dmcnVzTFRGYmFRQklCeEFHMjRlYUQ0OC8yeHhPUndlV0FicEQ1R20xN0JY?=
+ =?utf-8?B?dFZXWWw5enhyLzVLVGhET2pQNVVFMTZVd0hrU3RpbEJia0ZaSEwrWTdpalNy?=
+ =?utf-8?B?Mk1EZUdmU25MRUo4bGZBTlQ3Rmhhb2pXWmVzSWRHRXl1cFZrQkJWQlN2anpy?=
+ =?utf-8?B?MGxxcEJJaXFiS2JIYTlZQ1R2cnU2WDNiaExxWm5sRy9SRi8yTVdkbzNIamNw?=
+ =?utf-8?B?c1JDZ1o4VmxFUGRqSlpkRjdPTU02ak1KZk4yKy9wVkVpUEVITWx2VmFSWjh5?=
+ =?utf-8?B?WUcxY3NFV3JZVjh1RTVJRHplRnExZlhKSWdHNkt4QzdWRVprR1dlY1VZS0dU?=
+ =?utf-8?B?Q2FuRjd3ZmxRa3NaZ05FdEZ2UG0xVVYwNGF4SXBIalJGbUFRUmsyd0lkcGJR?=
+ =?utf-8?B?b1JpLzZ2MHpqTk16amd6M0srYnNvcjdKL2VrS2pKS09Xc2NiOS9zZG05SGpB?=
+ =?utf-8?B?TmlXUENsT0h3VThtblpxdnYzVVpIVUFXSDdqcUlkRG9TZ25UQXF0bnBUWXcy?=
+ =?utf-8?B?TWUwKy9ZeVNpZlhVSWJkYWJERjkvdjNacUpGM3QzRXNMdC9Da21DQ3BwVjhj?=
+ =?utf-8?B?a1VrNHRmZ1lkTWtycDlnRW9jd0RFOTFXQWNKaVFtaU4zUGM0Zi9ZaFhwQmdm?=
+ =?utf-8?B?bFJkMVFaaWZnZWIrd2llVGt2eGtjcklDb3lUazl4OWFxZDZQTkRsZDR4dU40?=
+ =?utf-8?B?ZUZuSFM4b2RzelNicHpjc3pMcE5POVpEdFZJTTNyV2plVWRyOHRybnE3QWtD?=
+ =?utf-8?B?UHJvUHR2N21vMExLQjlVNDdNSnJJbkN5UEVnME9tYU5nYklLdVYvQ1l4Y0s2?=
+ =?utf-8?B?cElGVHh2YmlyUnhZNmZsZGhQeVl0SDcrRXpaQSthaTZBeFFsOXc4T2JYb21O?=
+ =?utf-8?B?VEIwaEEwRld5SmxUeTkwbk1xNmpKNWdQYUhwbUpFYlNVZzhiSzh1dnh1Mzk1?=
+ =?utf-8?B?bEZQMjZLczBXQ0UzaWFFMDRPSTdQWW1BZi9Xd285ZGZnWDdRQ0srM0NUcHd0?=
+ =?utf-8?B?UFp4U21idkZvS0szbHhmV05pOE9qVmV5K2F3ajRJWHF6N3hrL1pZUFhSVmNQ?=
+ =?utf-8?B?MGlJVDRJR0V0UHBrelpRVzVwUnhydzBzMnh0OSs4VXFNaDZoTzJ4cjNITHk4?=
+ =?utf-8?B?V2FNYXBacUFmcmFBZmtORGorR01IZ0luWVAxTXVFd0ZhWXB4eCtyejEyalBq?=
+ =?utf-8?B?VDJsdVk2ZlVMeStjRExDMUhocWVzOXZkcUY1a0I0R2pNcGhpWUIweFJCY2lZ?=
+ =?utf-8?B?cnQ2SEtLekh3dUdMWklhblhtSzVqZDcwdSs2R1EySjBoQWE4Wnp0OFY1WUw0?=
+ =?utf-8?B?UFgrbWFMSFRPbnNOM3pvK29Gb1pxbm1aL09WeUp1L0duaXJnZ3JxUT09?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f209c058-e950-4be5-4703-08da25a54f15
+X-MS-Exchange-CrossTenant-AuthSource: SJ0PR12MB5504.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Apr 2022 03:48:35.5940
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: YHZ6hUIO+FHK65fgyHpwkDRwX5uP9jBHfuoz4jeYbUwEv9kZL4rAN1jowaeLpnF95nycai3xgfQkIcK7DiomcQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR12MB2825
 
-On 4/24/22 01:54, Alaa Mohamed wrote:
-> Add extack support to .ndo_fdb_del in netdevice.h and
-> all related methods.
-> 
-> Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+
+On 4/21/22 09:40, Jaehee Park wrote:
+> Add a boilerplate test loop to run all tests in
+> vrf_strict_mode_test.sh. Add a -t flag that allows a selected test to
+> run.
+>
+> Signed-off-by: Jaehee Park <jhpark1013@gmail.com>
 > ---
 
-Please CC all patch-related maintainers next time. One comment below.
+Thanks Jaehee.
 
->   drivers/net/ethernet/intel/ice/ice_main.c        | 3 +--
->   drivers/net/ethernet/mscc/ocelot_net.c           | 4 ++--
->   drivers/net/ethernet/qlogic/qlcnic/qlcnic_main.c | 2 +-
->   drivers/net/macvlan.c                            | 2 +-
->   drivers/net/vxlan/vxlan_core.c                   | 2 +-
->   include/linux/netdevice.h                        | 2 +-
->   net/bridge/br_fdb.c                              | 2 +-
->   net/bridge/br_private.h                          | 2 +-
->   net/core/rtnetlink.c                             | 4 ++--
->   9 files changed, 11 insertions(+), 12 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-> index d768925785ca..5f9cb4830956 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_main.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
-> @@ -5678,10 +5678,9 @@ ice_fdb_add(struct ndmsg *ndm, struct nlattr __always_unused *tb[],
->   static int
->   ice_fdb_del(struct ndmsg *ndm, __always_unused struct nlattr *tb[],
->   	    struct net_device *dev, const unsigned char *addr,
-> -	    __always_unused u16 vid)
-> +	    __always_unused u16 vid, struct netlink_ext_ack *extack)
+CC, David Ahern
+
+David, this might be an overkill for this test. But nonetheless a step 
+towards bringing some uniformity in the tests.
+
+next step is to ideally move this to a library to remove repeating this 
+boilerplate loop in every test.
+
+
+.../selftests/net/vrf_strict_mode_test.sh | 31 ++++++++++++++++++-
+
+>   1 file changed, 30 insertions(+), 1 deletion(-)
+>
+> diff --git a/tools/testing/selftests/net/vrf_strict_mode_test.sh b/tools/testing/selftests/net/vrf_strict_mode_test.sh
+> index 865d53c1781c..ca4379265706 100755
+> --- a/tools/testing/selftests/net/vrf_strict_mode_test.sh
+> +++ b/tools/testing/selftests/net/vrf_strict_mode_test.sh
+> @@ -14,6 +14,8 @@ INIT_NETNS_NAME="init"
+>   
+>   PAUSE_ON_FAIL=${PAUSE_ON_FAIL:=no}
+>   
+> +TESTS="init testns mix"
+> +
+>   log_test()
 >   {
->   	int err;
-> -
-
-I don't think you should remove this new line.
-
->   	if (ndm->ndm_state & NUD_PERMANENT) {
->   		netdev_err(dev, "FDB only supports static addresses\n");
->   		return -EINVAL;
+>   	local rc=$1
+> @@ -353,6 +355,23 @@ vrf_strict_mode_tests()
+>   	vrf_strict_mode_tests_mix
+>   }
+>   
+> +usage()
+> +{
+> +	cat <<EOF
+> +usage: ${0##*/} OPTS
+> +
+> +	-t <test> Test(s) to run (default: all)
+> +		  (options: $TESTS)
+> +EOF
+> +}
+> +while getopts ":t:h" opt; do
+> +	case $opt in
+> +		t) TESTS=$OPTARG;;
+> +		h) usage; exit 0;;
+> +		*) usage; exit 1;;
+> +	esac
+> +done
+> +
+>   vrf_strict_mode_check_support()
+>   {
+>   	local nsname=$1
+> @@ -391,7 +410,17 @@ fi
+>   cleanup &> /dev/null
+>   
+>   setup
+> -vrf_strict_mode_tests
+> +for t in $TESTS
+> +do
+> +	case $t in
+> +	vrf_strict_mode_tests_init|init) vrf_strict_mode_tests_init;;
+> +	vrf_strict_mode_tests_testns|testns) vrf_strict_mode_tests_testns;;
+> +	vrf_strict_mode_tests_mix|mix) vrf_strict_mode_tests_mix;;
+> +
+> +	help) echo "Test names: $TESTS"; exit 0;;
+> +
+> +	esac
+> +done
+>   cleanup
+>   
+>   print_log_test_results
