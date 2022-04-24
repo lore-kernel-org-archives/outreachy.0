@@ -1,201 +1,269 @@
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (mail-dm6nam11on2083.outbound.protection.outlook.com [40.107.223.83])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-pl1-f170.google.com (mail-pl1-f170.google.com [209.85.214.170])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D1EB07C
-	for <outreachy@lists.linux.dev>; Sun, 24 Apr 2022 03:48:53 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=djNqnQZj0XVWSx8+1J3gDg3pn7TmOadssHG2Ur60DbDdhZdtthos829x8DmiRG4T5kmoNBywTdhyU3o28eumn/BIgyojY3I+XJAUxFK+ouwNkI2YNSGt5/1zyuJDTh4dN11IZ8HZ+fyCOPowP+m5e4CiWGFyI3zZ5GC362rf17XXDZ1pVeqLBa3kttyf4dC3whfWxHhyFJmFBIciqlNJOMeSRgqKo4cVpv5SJjSizdDsAzH0/OeOEG3bigOdKt9MprCBxp9zwDAWXrnpFQWIzZyGW4/BiJQ+MYCrkqdaqQ4puft3F6Gc//1YcqBha+3lwVI3vSZ6FlHFksKW51D49A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=GujJPAcOn1VB01oBPTUAZHhg5zrvLbChsvyxDFITroQ=;
- b=cLrAmT7zGo3T3lre71fOeLswn4Lc4tPxXTIIbaHdE0DBKbfWYwXzxB7e3+ij32Arj3jLm//IIy/xdwEd0arpct4UixQi8iwU7s6bSR6TDxSI3HbdZawGqpvo0gg7T7R0IHSolnwjoKywWJU8iHwBKu0j9E3RB6mg34hhvfsWVwmCiEYQ9KxJhVOmtdYTAA/uap65ptb9dzaaJITlUu20rxxYFwtZ08TJo1kEU20n7q9tSy7x02DoLtPJnZEk+KmxaeBGwJWN+AA6DHg8uNCotpRYwtLrb9LO6zaUFdNb4zKuPhZaQs0svbOoGx/XzAtXy0k3tXzW3kO4yzVwTd+RjA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=GujJPAcOn1VB01oBPTUAZHhg5zrvLbChsvyxDFITroQ=;
- b=iO5N63GdXeui9Xs8iY3/s7MApAs/jSSuSdSR8qQBWdAWrVL1/FqAS3EBYAP+C1Yx5jWX3iSzqDYiLfxklnkx3vIwDv2lIHRi/4ldX5i8mVUIjLxIZ32omSRZzL4IvLS7dV0m5L9oPZs8mtPUtXXuIMuAvTYahZyYoAYALBsxAAMN5JMgZP7Fi2KwQ89oCTry7vTmnOYKpE8oxnMksEyFk0/C14bCU1GCIfAgLJHtcXkgLc9cjmnyyrPow2d1Q+9/9ARAd3frHiGudSmf1yiXYbMk08UISdf6wjXOmi0wprKVqhHwDw9Etd88YaPN/fyGdJMQNLr/iMYGrge6V+zyQw==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from SJ0PR12MB5504.namprd12.prod.outlook.com (2603:10b6:a03:3ad::24)
- by DM6PR12MB2825.namprd12.prod.outlook.com (2603:10b6:5:75::11) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5164.20; Sun, 24 Apr
- 2022 03:48:35 +0000
-Received: from SJ0PR12MB5504.namprd12.prod.outlook.com
- ([fe80::3887:c9c8:b2de:fe5f]) by SJ0PR12MB5504.namprd12.prod.outlook.com
- ([fe80::3887:c9c8:b2de:fe5f%8]) with mapi id 15.20.5186.020; Sun, 24 Apr 2022
- 03:48:35 +0000
-Message-ID: <c2eb6a8a-531e-7a6e-267c-23577f2e95e8@nvidia.com>
-Date: Sat, 23 Apr 2022 20:48:29 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.5.0
-Subject: Re: [PATCH net-next v2] selftests: net: vrf_strict_mode_test: add
- support to select a test to run
-Content-Language: en-US
-To: Jaehee Park <jhpark1013@gmail.com>, outreachy@lists.linux.dev,
- Julia Denham <jdenham@redhat.com>, Roopa Prabhu <roopa.prabhu@gmail.com>,
- Stefano Brivio <sbrivio@redhat.com>, netdev@vger.kernel.org,
- David Ahern <dsahern@gmail.com>
-References: <20220421164022.GA3485225@jaehee-ThinkPad-X1-Extreme>
-From: Roopa Prabhu <roopa@nvidia.com>
-In-Reply-To: <20220421164022.GA3485225@jaehee-ThinkPad-X1-Extreme>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: BY5PR17CA0058.namprd17.prod.outlook.com
- (2603:10b6:a03:167::35) To SJ0PR12MB5504.namprd12.prod.outlook.com
- (2603:10b6:a03:3ad::24)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EED4417D1
+	for <outreachy@lists.linux.dev>; Sun, 24 Apr 2022 04:59:11 +0000 (UTC)
+Received: by mail-pl1-f170.google.com with SMTP id n8so19931561plh.1
+        for <outreachy@lists.linux.dev>; Sat, 23 Apr 2022 21:59:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=QISw0tUJ2+sxeo9MygOLt8EtYXIezX/B8ip8FqYFaR4=;
+        b=kA2i4XhivBFhHrqnaIvVYty6z787VSoS2nr8qdjK7JzYjCx1NMdUNZY+erGZ6Tbu/D
+         Z46PfHe1YDWRcvOkxHKwqn67nHSZtt4a9ekRSZY1J7b/DTnNuL6/V9TCmtlB8QHGuSB1
+         Ap4/rXjZKhayxb0YpsE+BHMfev6lxcuW9wCrRD74Ig7fPyF78gZaJNGInCxww2qLWmV4
+         /DRkVmflbaW9XZejxU1Roe9jjJlQNt3uAb7NpMkJSu+QJmlFc68B/WOp3O/5f07tpXqb
+         XjxmFz4D+aYKNxPNWsLDeTZAwGhxie+LSzUVawFR0VlnM+gCPsPXlN067Ngjy5PduA5W
+         h1Xg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=QISw0tUJ2+sxeo9MygOLt8EtYXIezX/B8ip8FqYFaR4=;
+        b=oAa64tPLviX5ODw8ajIoUJG3JMij5znup3yE65z4OEHbBQyzNvHqcSk2Pk0KCCG16v
+         bAu01GzZvSUGPmyyMi8OTueqJjJLfrIfUDE+uvOYJb3RQz/kDH1hDxtjz1IJlHyQNr8z
+         PmfLtpnpWWXUWfxPGR8iQjJz0OniDrHRUKwrfRYxNvuKImXWMKDgG6KrHIk3h7ShQ0fa
+         YW9bYl1jq6mpYM4eCET7LT9QOxUP8fYnjur/tRrPgpuhLvWX+8TQKEyF3IUalUp2rIbp
+         +nxu7YvRvUfxZKBpQkoo1/JutlA7he9E8kBpCHC1sFCruldbLSReEPtC60IouxArLwTu
+         F5Lg==
+X-Gm-Message-State: AOAM533qPzZ8thiCNgEq/Ivke61SMhdhCtOkwHgpNEhM+ECAFIIZFg6c
+	kc9tF8OqsoltMMku/8Gb5x/5UPjH5SX+xRUeC+A=
+X-Google-Smtp-Source: ABdhPJx8JfTVG/JrXNTVTSEtjMld3ia1ITNIqRD/i5NGoC7hXYNVrPRizl3LPKJ9EBFnbIIn1GusKpy/AZBG3Zfo5FQ=
+X-Received: by 2002:a17:903:1212:b0:156:3ddc:84bd with SMTP id
+ l18-20020a170903121200b001563ddc84bdmr11950560plh.70.1650776351190; Sat, 23
+ Apr 2022 21:59:11 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: f209c058-e950-4be5-4703-08da25a54f15
-X-MS-TrafficTypeDiagnostic: DM6PR12MB2825:EE_
-X-Microsoft-Antispam-PRVS:
-	<DM6PR12MB2825483469C4FF8D4A24E666CBF99@DM6PR12MB2825.namprd12.prod.outlook.com>
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info:
-	FUKxFLMr3MojTOydkW4sVObxHkzGaq6ePFJZ1wG24ZxtFqTVKmE85dUOYUYZZbOWtBM4lJOlLRaqvQV/gbajxgszF55b3iCGkG+L0rHdIfkL/GORD0Q+aJzL71WkA8/ZjECou1B0pN9ZQoRlYNtC0hNplnm5Ih+q2I2ERvjeQhuMTQNCze1+uM1LBl8dCCZ082cSra8R3STaO0VyA5Yk4WjvtFbdt4/6McT3oWmPgPaHr4bYDjx76i2KCJsXwavd46KT7rR8Wmot0Dcy9LOSIwQSH9//ghe6rpqaXQx06jfCJo8Sp1n48es3FNZf2R0vndhZlnUeKNSx15B6JZ7CyjmRkzoA6QMhbGHTTJw0FCxgoCu1CN04sDqxolPkkoFAxDi+yZKd7c+kZh6ict+D3wqNApwes1U9WUb1Xk2scrCZtXwF6jTDV0ZLveEm5S2RM37KXOLsPIOuyHu2sw6j8buEFxEqdkufyiUTq51cyPF1nEnQH1gG6CzU5jsbABEaCR5/7i58Q0/wi3gaykhfGLIhYvbd0u7g4EKcejVLlTW4iYjT+O8YkGbozc5KlVBwm0ZjoKFhRjrUVOULUvhu3Z3BNdY7q4LUe2poW6E+lgF2K36EQfg0dK6Ted4+o0c+ah9IJDzh5pFG5iGMcLCQluAzIKJCYjCLvC9X6yjrry/ZyWGN8Kr4lgfFB2zUzXWN4gcaqlbx168CqpfSHSNCp0YzrYZVUEIX2RHiu9Ts+mo=
-X-Forefront-Antispam-Report:
-	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SJ0PR12MB5504.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230001)(4636009)(366004)(66946007)(508600001)(53546011)(66556008)(8936002)(2906002)(66476007)(83380400001)(5660300002)(31696002)(38100700002)(316002)(110136005)(86362001)(6486002)(31686004)(8676002)(186003)(2616005)(36756003)(26005)(6666004)(6506007)(6512007)(45980500001)(43740500002);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0:
-	=?utf-8?B?bE1XQnZwcFp5ZVJMY0tMMEhuSDhJRXoxQXB0dVZFRzRRUGdGSTlyWURUMmpm?=
- =?utf-8?B?ZGkxdW9pcW9PZG1DTGh3YVhYaU5BdzZHUGlGT1YxaU82TVFVb1VKRHM4WnVY?=
- =?utf-8?B?SXNGcllxa2hUUWhwOVhmdGxuK09jV2t6azA2dVNZaElRSVY5Z2hSaE0vUHox?=
- =?utf-8?B?Q09yb0haZ2I5MTRuRVpsanhML1BUZHFoMzZHVnBtZzZqVDNzTVZqbGxneWth?=
- =?utf-8?B?R3ljNndxTWU2Y0l2R1IwZTZDN1pGWVVZcE1uVitGSEtsS2p1U0FTT3kvTGFM?=
- =?utf-8?B?a0RSbWRIYzRWdXFIRGFuK0s0STM2VENDYTVJUXhGbmRuUVVnK3N0U3VqK0VK?=
- =?utf-8?B?NmNOOXJVSG9Ga0V1cGx2bEZwaTZPRUdpVnpzTTR0Q0s0WTZCSER4Tzl4NDVs?=
- =?utf-8?B?c1YvWVZHK3hMZUNXaXlvT3lSV1Z1ZVZVY25vUXR4bFdyZ1orY3BQSXdXWVRP?=
- =?utf-8?B?YWlmU3M2c3JLU0lIK0NleHM0eVlhbUtKRC9qWVczVk15aTJ4YXo4dSs0T204?=
- =?utf-8?B?Vy95a29uUmprb1FTQkFqNDVIc3dzb2xET3JrNU5KdTVpdS8vVUxIZWF6dlR4?=
- =?utf-8?B?REY3dnYzM2RDTGZJeFh2dS9qYVc3bzE3MVUzSnBNSXNCZWN2OTJEWU1YR3B4?=
- =?utf-8?B?NFlldUkySTFMaFFEZW80TEcvS3plbjJ5MG4wd0FOT3J3SlA5T0M3R3lKRmdx?=
- =?utf-8?B?amdRcHZPS2E0WmhjT1BmVFNSZXRzaEM1K3NacGpuQzJtYnJLTlJGZkVrZ2lE?=
- =?utf-8?B?ZU5tTDFFZW95d2YxWlhrUWhRNUE0NC9TUTl1bWF5RFhRbW9QSGsrdE44d3lW?=
- =?utf-8?B?dTk3eEdBc0JMT3AxRENDVk9JTEh3cTlvZE9Vclo0ejBWdWR1TzlzY1BralRk?=
- =?utf-8?B?U3dzZTkyYUhTTHlFZnZJT2hMd243MnhGQlE4dy9SdXVtd2dyeWN1UCtMdkQ5?=
- =?utf-8?B?S3dmcnVzTFRGYmFRQklCeEFHMjRlYUQ0OC8yeHhPUndlV0FicEQ1R20xN0JY?=
- =?utf-8?B?dFZXWWw5enhyLzVLVGhET2pQNVVFMTZVd0hrU3RpbEJia0ZaSEwrWTdpalNy?=
- =?utf-8?B?Mk1EZUdmU25MRUo4bGZBTlQ3Rmhhb2pXWmVzSWRHRXl1cFZrQkJWQlN2anpy?=
- =?utf-8?B?MGxxcEJJaXFiS2JIYTlZQ1R2cnU2WDNiaExxWm5sRy9SRi8yTVdkbzNIamNw?=
- =?utf-8?B?c1JDZ1o4VmxFUGRqSlpkRjdPTU02ak1KZk4yKy9wVkVpUEVITWx2VmFSWjh5?=
- =?utf-8?B?WUcxY3NFV3JZVjh1RTVJRHplRnExZlhKSWdHNkt4QzdWRVprR1dlY1VZS0dU?=
- =?utf-8?B?Q2FuRjd3ZmxRa3NaZ05FdEZ2UG0xVVYwNGF4SXBIalJGbUFRUmsyd0lkcGJR?=
- =?utf-8?B?b1JpLzZ2MHpqTk16amd6M0srYnNvcjdKL2VrS2pKS09Xc2NiOS9zZG05SGpB?=
- =?utf-8?B?TmlXUENsT0h3VThtblpxdnYzVVpIVUFXSDdqcUlkRG9TZ25UQXF0bnBUWXcy?=
- =?utf-8?B?TWUwKy9ZeVNpZlhVSWJkYWJERjkvdjNacUpGM3QzRXNMdC9Da21DQ3BwVjhj?=
- =?utf-8?B?a1VrNHRmZ1lkTWtycDlnRW9jd0RFOTFXQWNKaVFtaU4zUGM0Zi9ZaFhwQmdm?=
- =?utf-8?B?bFJkMVFaaWZnZWIrd2llVGt2eGtjcklDb3lUazl4OWFxZDZQTkRsZDR4dU40?=
- =?utf-8?B?ZUZuSFM4b2RzelNicHpjc3pMcE5POVpEdFZJTTNyV2plVWRyOHRybnE3QWtD?=
- =?utf-8?B?UHJvUHR2N21vMExLQjlVNDdNSnJJbkN5UEVnME9tYU5nYklLdVYvQ1l4Y0s2?=
- =?utf-8?B?cElGVHh2YmlyUnhZNmZsZGhQeVl0SDcrRXpaQSthaTZBeFFsOXc4T2JYb21O?=
- =?utf-8?B?VEIwaEEwRld5SmxUeTkwbk1xNmpKNWdQYUhwbUpFYlNVZzhiSzh1dnh1Mzk1?=
- =?utf-8?B?bEZQMjZLczBXQ0UzaWFFMDRPSTdQWW1BZi9Xd285ZGZnWDdRQ0srM0NUcHd0?=
- =?utf-8?B?UFp4U21idkZvS0szbHhmV05pOE9qVmV5K2F3ajRJWHF6N3hrL1pZUFhSVmNQ?=
- =?utf-8?B?MGlJVDRJR0V0UHBrelpRVzVwUnhydzBzMnh0OSs4VXFNaDZoTzJ4cjNITHk4?=
- =?utf-8?B?V2FNYXBacUFmcmFBZmtORGorR01IZ0luWVAxTXVFd0ZhWXB4eCtyejEyalBq?=
- =?utf-8?B?VDJsdVk2ZlVMeStjRExDMUhocWVzOXZkcUY1a0I0R2pNcGhpWUIweFJCY2lZ?=
- =?utf-8?B?cnQ2SEtLekh3dUdMWklhblhtSzVqZDcwdSs2R1EySjBoQWE4Wnp0OFY1WUw0?=
- =?utf-8?B?UFgrbWFMSFRPbnNOM3pvK29Gb1pxbm1aL09WeUp1L0duaXJnZ3JxUT09?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f209c058-e950-4be5-4703-08da25a54f15
-X-MS-Exchange-CrossTenant-AuthSource: SJ0PR12MB5504.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Apr 2022 03:48:35.5940
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: YHZ6hUIO+FHK65fgyHpwkDRwX5uP9jBHfuoz4jeYbUwEv9kZL4rAN1jowaeLpnF95nycai3xgfQkIcK7DiomcQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR12MB2825
+References: <20220419055740.GC413931@jaehee-ThinkPad-X1-Extreme>
+ <20220419162351.4fcb547d@elisabeth> <20220422041038.GA160760@jaehee-ThinkPad-X1-Extreme>
+In-Reply-To: <20220422041038.GA160760@jaehee-ThinkPad-X1-Extreme>
+From: Roopa Prabhu <roopa.prabhu@gmail.com>
+Date: Sat, 23 Apr 2022 21:58:57 -0700
+Message-ID: <CAGe6so88qYBcgtC6dgx6rkFrJo5d3uAYpSCvzH9BSma6i5H1eg@mail.gmail.com>
+Subject: Re: linux kernel networking project notes
+To: Jaehee Park <jhpark1013@gmail.com>
+Cc: Stefano Brivio <sbrivio@redhat.com>, outreachy linux kernel <outreachy@lists.linux.dev>, 
+	Julia Denham <jdenham@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 
+Jaehee, all great questions, some answers to your last few questions
+inline below..
 
-On 4/21/22 09:40, Jaehee Park wrote:
-> Add a boilerplate test loop to run all tests in
-> vrf_strict_mode_test.sh. Add a -t flag that allows a selected test to
-> run.
+On Thu, Apr 21, 2022 at 9:10 PM Jaehee Park <jhpark1013@gmail.com> wrote:
 >
-> Signed-off-by: Jaehee Park <jhpark1013@gmail.com>
-> ---
-
-Thanks Jaehee.
-
-CC, David Ahern
-
-David, this might be an overkill for this test. But nonetheless a step 
-towards bringing some uniformity in the tests.
-
-next step is to ideally move this to a library to remove repeating this 
-boilerplate loop in every test.
-
-
-.../selftests/net/vrf_strict_mode_test.sh | 31 ++++++++++++++++++-
-
->   1 file changed, 30 insertions(+), 1 deletion(-)
+> On Tue, Apr 19, 2022 at 04:23:51PM +0200, Stefano Brivio wrote:
+> > Jaehee,
+> >
+> > On Tue, 19 Apr 2022 01:57:40 -0400
+> > Jaehee Park <jhpark1013@gmail.com> wrote:
+> >
+> > > Hi, I'm trying to get comfortable with the tooling around the net-next
+> > > tests and have been writing down some notes. Let me know if I'm
+> > > misunderstanding things!
+> > >
+> > > Some notes:
+> > >
+> > > mbuto
+> > > - builds linux images for VM environments
+> > > - add tests collections from net-next to run on the image
+> >
+> > ...or any kernel tree, really. Work in progress (mostly by Sevinj at
+> > this point), you could try it out to test your own changes, if
+> > something doesn't work please bother me and Sevinj.
+> >
 >
-> diff --git a/tools/testing/selftests/net/vrf_strict_mode_test.sh b/tools/testing/selftests/net/vrf_strict_mode_test.sh
-> index 865d53c1781c..ca4379265706 100755
-> --- a/tools/testing/selftests/net/vrf_strict_mode_test.sh
-> +++ b/tools/testing/selftests/net/vrf_strict_mode_test.sh
-> @@ -14,6 +14,8 @@ INIT_NETNS_NAME="init"
->   
->   PAUSE_ON_FAIL=${PAUSE_ON_FAIL:=no}
->   
-> +TESTS="init testns mix"
-> +
->   log_test()
->   {
->   	local rc=$1
-> @@ -353,6 +355,23 @@ vrf_strict_mode_tests()
->   	vrf_strict_mode_tests_mix
->   }
->   
-> +usage()
-> +{
-> +	cat <<EOF
-> +usage: ${0##*/} OPTS
-> +
-> +	-t <test> Test(s) to run (default: all)
-> +		  (options: $TESTS)
-> +EOF
-> +}
-> +while getopts ":t:h" opt; do
-> +	case $opt in
-> +		t) TESTS=$OPTARG;;
-> +		h) usage; exit 0;;
-> +		*) usage; exit 1;;
-> +	esac
-> +done
-> +
->   vrf_strict_mode_check_support()
->   {
->   	local nsname=$1
-> @@ -391,7 +410,17 @@ fi
->   cleanup &> /dev/null
->   
->   setup
-> -vrf_strict_mode_tests
-> +for t in $TESTS
-> +do
-> +	case $t in
-> +	vrf_strict_mode_tests_init|init) vrf_strict_mode_tests_init;;
-> +	vrf_strict_mode_tests_testns|testns) vrf_strict_mode_tests_testns;;
-> +	vrf_strict_mode_tests_mix|mix) vrf_strict_mode_tests_mix;;
-> +
-> +	help) echo "Test names: $TESTS"; exit 0;;
-> +
-> +	esac
-> +done
->   cleanup
->   
->   print_log_test_results
+> Thank you both for helping!
+> I wonder if it matters if the tests are always performed in the same
+> order? Sometimes in hardware you'd randomize tests but it's probably
+> irrelevant here.
+>
+> > > net-next
+> > > - tree that contains tests
+> >
+> > ...most kernel trees (https://git.kernel.org/) include the same tests,
+> > actually -- net-next is simply where new networking features (and
+> > usually tests) are introduced first.
+> >
+> > > - tests are in net-next/tools/testing/selftest/net
+> > >
+> > > pasta
+> >
+> > This is rather out of scope for the current projects.
+> >
+> > That is, I'm happy if you find it useful or want to contribute to it,
+> > but that doesn't count toward Outreachy contributions, because it has
+> > little to do with the kernel. I actually wonder how you even found
+> > about it :)
+> >
+>
+> Ha! yes I saw it being mentioned in conversations and in the
+> mbuto code. I think it's really interesting and will try to learn more
+>
+> > > - socket transport without needing to create interfaces on the host.
+> > > - elevated CAP_NET_ADMIN privilege doesn't need to be granted becase
+> > >   network interfaces are not created on the host.
+> > > - instead, connect to qemu over UNIX domain socket to send and receive
+> > >   data (no network interfaces and ip packets).
+> >
+> > ...by the way, that would be "passt", "pasta" uses a tap interface to a
+> > network namespace (not a VM).
+> >
+> > > - use namespaces (don't need NAT)
+> > > - no need for layer 2 translations
+> > >
+> > > linux network stack diagram
+> > > - https://docs.google.com/presentation/d/1I3b-M8FCmWZCF286ve8mVZ_8bwyl1fdHdSxTKQhwbyM/edit?usp=sharing
+> > > - with net-next tests, we're operating only in layer 4 (directsly
+> > >   between layer 4 sockets) -- ipv4 block in the diagram above.
+> >
+> > That's rather specific for ath10k (a wireless adapter driver).
+> > Unfortunately I don't have a better suggestion right now.
+> >
+>
+> yea I made this as I was looking over the ath code base
+> it's not very generalized
+>
+> > IPv4 is a Layer-3 protocol (https://en.wikipedia.org/wiki/OSI_model).
+> > The tests are not necessarily operating at Layer 4 (TCP, UDP, etc.),
+> > but also at Layer 3 (IP, IPv6).
+> >
+> > > arp
+> > > - known networks are networks that have been through the arp
+> > >   request-reply protocol. unknown networks are ones that just announces
+> > >   its presence (gratuitous).
+> >
+> > Hosts, rather than networks. Gratuitous ARP requests, see:
+> >       https://en.wikipedia.org/wiki/Address_Resolution_Protocol#ARP_announcements
+> >
+> > if you're referring to the task idea from the project description: the
+> > network is intended to be "known" (a bit ambiguous, actually) if we
+> > already asked hosts for their addresses and if that's the reason why we
+> > have entries in the ARP table.
+> >
+> > If hosts are just announcing themselves, and had no corresponding
+> > entries in the ARP table, then they weren't previously "known".
+> >
+>
+> Following your response a few more questions came to mind:
+>
+> Are ARP tables frequently cleared?
+
+yes, arp entries do go through garbage collection. arp timers are configurable.
+https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt
+(the ones starting with neigh)
+(note that neighbour subsystem is an abstraction under which you have
+per protocol ipv4 arp and ipv6 ndisc subsystems)
+
+> If the ARP table was cleared, how does it fill it back up again if the
+> learning of neighbors only happens for known networks only?
+
+the 'known network' here is basically networks the interface is
+already participating in.
+Its similar to arp_filter (also listed in the link above). We need
+arp_filter like filtering for learning from garp entries which does
+not exist today.
+learning from garp is binary today :
+https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git/tree/net/ipv4/arp.c#n875
+learn or not learn.
+eg arp filter https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git/tree/net/ipv4/arp.c#n431
+
+If the table is flushed, It will get repopulated only when the host
+tries to speak or send out garp requests again.
+switches or network devices are also capable of probing hosts by
+sending arp requests.
+
+
+>
+> > > -----
+> > >
+> > > I thought a bit about testing for the new knob for arp.
+> > > The structure for tests would look like:
+> > > 1. setup namespaces and a veth tunnel across them
+> > > 2. run test
+> > > 3. delete the namespaces
+> > >
+> > > where the test would look something like:
+> > > - setup 2 host namespaces (bob and alice), and a router
+> >
+> > You don't actually need a router because you're not interested in
+> > creating two separate networks.
+>
+> Thanks for the clarification!
+>
+> >
+> > > - We could insert a sentinel after bob's response so that we know can
+> > >   filter whatever comes next.
+> >
+> > Hmm, sorry, I couldn't make sense of this part, but the rest seems to
+> > make sense:
+> >
+> > > case 1: alice captures pcap, bob broadcasts a gratuitous arp
+> > > - in the case of gratuitous arp, if a new knob that only allow learning
+> > >   from known networks is inplace, pcap should not capture bob's
+> > >   broadcasts
+> > > - assert that the table is not updated with entries, pcap should see no
+> > >   sentinel
+> > >
+> > > case 2: alice captures pcap, alice sends arp request, bob replies
+> > > - this is a normal arp request-reply protocol. pcap should capture
+> > >   bob's unicast
+> > > - assert that the table is updated, pcap should see sentinel and then
+> > >   bob's reply
+> >
+> > ...until here.
+> >
+> > > The terminology that I'm familiar with is client and host. Upon reading
+> > > some rfc's and other documentation, the mapping seems to be:
+> > > terminology: host (client), router (ap)
+> >
+> > Forget about WiFi for a moment. :) All hosts are just hosts. No client,
+> > no server.
+> >
+> > > Sorry to be loading so much information here.
+> > > To summarize, I've thought about the arp testing a little and wanted to
+> > > write down my understanding. I going through starter tasks now to try
+> > > to think of more features for mbuto and the net-next tree. I just got
+> > > roopa's email of the tasks that are free -- thank you, i'll work on
+> > > them next!
+> >
+> > Yes, I think you should rather start from that one.
+> >
+> > --
+> > Stefano
+> >
+>
+> It's interesting to look at the selftests.
+> When we say "network topology," are we referring to setting up
+> namespaces and policy routing between them? -- and these topologies are
+> often reused in scenarios that have same setups?
+
+yes, correct. policy routing or simply routing.
+policy routing adds another layer of indirection to regular routing
+(it can be used to override regular routing).
+Not all tests use policy routing
+
+>
+> I am in the process of understanding the modularized setups in the
+> pmtu.sh script. I'd like to try to extract out the common topologies in
+> pmtu.sh so that they can be reused in multiple functions. For example,
+> in test_pmtu_ipv4_dscp_icmp_exception and
+> test_pmtu_ipv4_dscp_udp_exception, the setup of namespaces and policy
+> routing, and setting initial MTU values look the same. So they can
+> possibly be extracted and reused. I'm not sure if this is the right way
+> of thinking about it. I'll need to research this a bit more.
+>
+you are thinking in  the right direction. But , for the project we
+need to start thinking of beyond this single test.
+There is overlap between topologies used across tests. every new test
+copies an existing test and starts from it
+and so there are groups of tests and their topologies that look
+similar today :). There are a handful of topologies that can serve all
+tests.
+
+
+We can certainly brainstorm around this (stefano has some great ideas here)
