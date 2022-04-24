@@ -1,182 +1,159 @@
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-oi1-f176.google.com (mail-oi1-f176.google.com [209.85.167.176])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E209C2F2F
-	for <outreachy@lists.linux.dev>; Sun, 24 Apr 2022 16:15:16 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ADD0D2F2F
+	for <outreachy@lists.linux.dev>; Sun, 24 Apr 2022 16:29:27 +0000 (UTC)
+Received: by mail-oi1-f176.google.com with SMTP id e189so14645337oia.8
+        for <outreachy@lists.linux.dev>; Sun, 24 Apr 2022 09:29:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=dFgs9qbEcOWsSo2xl3UGtyLPP/Q/SV+0PLsA8mb0eTY=;
-  b=dJdcRpTbIo2wX6tp1wmNIOoT4XSB97unPa6eLJxbBD6cK9oSQsZf2NAh
-   MPSl5DWl6R2F4p+F2aI8TURJAZys3mHpOrWHoITR7itSnGDiz/bCLVsMs
-   OP24VAz6XesPAIVv9yPxq5MeXovM/OmjTg5Ku7Nbv+sBksL1F+kW45Qcr
-   M=;
-Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="5.90,286,1643670000"; 
-   d="scan'208";a="12281397"
-Received: from ip-214.net-89-2-7.rev.numericable.fr (HELO hadrien) ([89.2.7.214])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Apr 2022 18:15:08 +0200
-Date: Sun, 24 Apr 2022 18:15:06 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-cc: netdev@vger.kernel.org, outreachy@lists.linux.dev, roopa@nvidia.com, 
-    jdenham@redhat.com, sbrivio@redhat.com, jesse.brandeburg@intel.com, 
-    anthony.l.nguyen@intel.com, davem@davemloft.net, kuba@kernel.org, 
-    pabeni@redhat.com, vladimir.oltean@nxp.com, claudiu.manoil@nxp.com, 
-    alexandre.belloni@bootlin.com, shshaikh@marvell.com, manishc@marvell.com, 
-    razor@blackwall.org, intel-wired-lan@lists.osuosl.org, 
-    linux-kernel@vger.kernel.org, UNGLinuxDriver@microchip.com, 
-    GR-Linux-NIC-Dev@marvell.com, bridge@lists.linux-foundation.org
-Subject: Re: [PATCH net-next v3 2/2] net: vxlan: vxlan_core.c: Add extack
- support to vxlan_fdb_delete
-In-Reply-To: <0d09ad611bb78b9113491007955f2211f3a06e82.1650800975.git.eng.alaamohamedsoliman.am@gmail.com>
-Message-ID: <alpine.DEB.2.22.394.2204241813210.7691@hadrien>
-References: <cover.1650800975.git.eng.alaamohamedsoliman.am@gmail.com> <0d09ad611bb78b9113491007955f2211f3a06e82.1650800975.git.eng.alaamohamedsoliman.am@gmail.com>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+        d=gmail.com; s=20210112;
+        h=message-id:date:mime-version:user-agent:subject:content-language:to
+         :references:from:in-reply-to:content-transfer-encoding;
+        bh=7h9/OR15Kl1bK9q+KTH2JZSi7u8Zbhe9edJ//3rox5c=;
+        b=QIA/o4DcNOaI8rqVNLOdYju6DuTIa1Pt7X1v8SsDeeoIOIeIX244ZN08in/2Ioegye
+         xg1yAHVcESGqNjNFxGjzFoez2vCyncEdBDXsyu1X1tb5rNdFgT0yY4UB+/G+IeCTdW2K
+         T6187u/mLWMSJL+o2MFEbOew03TpC7gqGUP3PnC9K41uSdFgplCzrbzsc1kHKTf3axIV
+         IImp/JF4cy3yCh+WIe3SbryCLGGe3eUCi+ksOSBML9XiLFT3/q4btzU64hAuTB9+q70o
+         rbChtDInVp3j8/XDAm3bzB3uDB8MpLc54lGfgd6aMii5zsXVh2Rtw4v2fWYcrhXF93GE
+         rFBQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:message-id:date:mime-version:user-agent:subject
+         :content-language:to:references:from:in-reply-to
+         :content-transfer-encoding;
+        bh=7h9/OR15Kl1bK9q+KTH2JZSi7u8Zbhe9edJ//3rox5c=;
+        b=HHWjnQ9lNbuVdmJh+KqypUN7vMnHoU7NW+vlbPdRa49lJkEQDgHay4fWMejWnW/1Ud
+         0aqziOdPX0AHS1C+XsNiweRySzy2CJ6rIBVnXOm2FEeE7WonTKP45dMxM7Q9wqMm3uUU
+         knEGPi6FMTOwmZoaNgxmbaygortfoCeG64f7orHsD7nnKPuhwQouKQuAqA7riV8YOmAc
+         dA2doEcPN5bdZxB9ENzNDW+MLcSIaSI3Lk+n0SZmDkyBzx5xx79mzGAQPW/mmtI+2bLz
+         9D2Ze//vEjnAtVOEuvQrOSJZxZulu1imDNPLqxwSx6mnWwULRNzj4MacJBkXeXrtHGfh
+         4whA==
+X-Gm-Message-State: AOAM530D1ILG6kDQhT1jdJ3/wkaHfoN9FqOL4xptYCkZsLOSD/pjkc5P
+	6fXaaOPQd1hKzfY6ucMdAho=
+X-Google-Smtp-Source: ABdhPJxBBbxZB2bwF+TKrbnhVPSMbhPUsZI8Ka+OGH/vVqB2q9NQMb0+VrHe/o1EeBsVlZ1urtcF+w==
+X-Received: by 2002:aca:180b:0:b0:2f7:23ae:8cd1 with SMTP id h11-20020aca180b000000b002f723ae8cd1mr10797730oih.146.1650817766682;
+        Sun, 24 Apr 2022 09:29:26 -0700 (PDT)
+Received: from [172.16.0.2] ([8.48.134.69])
+        by smtp.googlemail.com with ESMTPSA id h21-20020a056808015500b00323c43663e2sm2819581oie.32.2022.04.24.09.29.25
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 24 Apr 2022 09:29:26 -0700 (PDT)
+Message-ID: <07614827-2527-fc9d-43da-d8a30d987494@gmail.com>
+Date: Sun, 24 Apr 2022 10:29:24 -0600
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:91.0)
+ Gecko/20100101 Thunderbird/91.8.0
+Subject: Re: [PATCH net-next v2] selftests: net: vrf_strict_mode_test: add
+ support to select a test to run
+Content-Language: en-US
+To: Roopa Prabhu <roopa@nvidia.com>, Jaehee Park <jhpark1013@gmail.com>,
+ outreachy@lists.linux.dev, Julia Denham <jdenham@redhat.com>,
+ Roopa Prabhu <roopa.prabhu@gmail.com>, Stefano Brivio <sbrivio@redhat.com>,
+ netdev@vger.kernel.org
+References: <20220421164022.GA3485225@jaehee-ThinkPad-X1-Extreme>
+ <c2eb6a8a-531e-7a6e-267c-23577f2e95e8@nvidia.com>
+From: David Ahern <dsahern@gmail.com>
+In-Reply-To: <c2eb6a8a-531e-7a6e-267c-23577f2e95e8@nvidia.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
+On 4/23/22 9:48 PM, Roopa Prabhu wrote:
+> 
+> On 4/21/22 09:40, Jaehee Park wrote:
+>> Add a boilerplate test loop to run all tests in
+>> vrf_strict_mode_test.sh. Add a -t flag that allows a selected test to
+>> run.
+>>
+>> Signed-off-by: Jaehee Park <jhpark1013@gmail.com>
+>> ---
+> 
+> Thanks Jaehee.
+> 
+> CC, David Ahern
+> 
+> David, this might be an overkill for this test. But nonetheless a step
+> towards bringing some uniformity in the tests.
+> 
+> next step is to ideally move this to a library to remove repeating this
+> boilerplate loop in every test.
+> 
+> 
+> .../selftests/net/vrf_strict_mode_test.sh | 31 ++++++++++++++++++-
+> 
+>>   1 file changed, 30 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/tools/testing/selftests/net/vrf_strict_mode_test.sh
+>> b/tools/testing/selftests/net/vrf_strict_mode_test.sh
+>> index 865d53c1781c..ca4379265706 100755
+>> --- a/tools/testing/selftests/net/vrf_strict_mode_test.sh
+>> +++ b/tools/testing/selftests/net/vrf_strict_mode_test.sh
+>> @@ -14,6 +14,8 @@ INIT_NETNS_NAME="init"
+>>     PAUSE_ON_FAIL=${PAUSE_ON_FAIL:=no}
+>>   +TESTS="init testns mix"
+>> +
+>>   log_test()
+>>   {
+>>       local rc=$1
+>> @@ -353,6 +355,23 @@ vrf_strict_mode_tests()
+>>       vrf_strict_mode_tests_mix
+>>   }
 
+Add:
 
-On Sun, 24 Apr 2022, Alaa Mohamed wrote:
+################################################################################
+# usage
 
-> Add extack to vxlan_fdb_delete and vxlan_fdb_parse
+>>   +usage()
+>> +{
+>> +    cat <<EOF
+>> +usage: ${0##*/} OPTS
+>> +
+>> +    -t <test> Test(s) to run (default: all)
+>> +          (options: $TESTS)
+>> +EOF
+>> +}
 
-It could be helpful to say more about what adding extack support involves.
+Add:
 
->
-> Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-> ---
-> changes in V2:
-> 	- fix spelling vxlan_fdb_delete
-> 	- add missing braces
-> 	- edit error message
-> ---
-> changes in V3:
-> 	fix errors reported by checkpatch.pl
+################################################################################
+# main
 
-But your changes would seem to also be introducing more checkpatch errors,
-because the Linux kernel coding style puts a space before an { at the
-start of an if branch.
+>> +while getopts ":t:h" opt; do
+>> +    case $opt in
+>> +        t) TESTS=$OPTARG;;
+>> +        h) usage; exit 0;;
+>> +        *) usage; exit 1;;
+>> +    esac
+>> +done
+>> +
+>>   vrf_strict_mode_check_support()
+>>   {
+>>       local nsname=$1
+>> @@ -391,7 +410,17 @@ fi
+>>   cleanup &> /dev/null
+>>     setup
+>> -vrf_strict_mode_tests
+>> +for t in $TESTS
+>> +do
+>> +    case $t in
+>> +    vrf_strict_mode_tests_init|init) vrf_strict_mode_tests_init;;
+>> +    vrf_strict_mode_tests_testns|testns) vrf_strict_mode_tests_testns;;
+>> +    vrf_strict_mode_tests_mix|mix) vrf_strict_mode_tests_mix;;
+>> +
+>> +    help) echo "Test names: $TESTS"; exit 0;;
+>> +
+>> +    esac
+>> +done
+>>   cleanup
+>>     print_log_test_results
 
-julia
+This change makes vrf_strict_mode_tests unused. Move the log_section
+before the tests in that function to the function handling the test.
+e.g., move 'log_section "VRF strict_mode test on init network
+namespace"' to vrf_strict_mode_tests_init.
 
-> ---
->  drivers/net/vxlan/vxlan_core.c | 36 +++++++++++++++++++++++-----------
->  1 file changed, 25 insertions(+), 11 deletions(-)
->
-> diff --git a/drivers/net/vxlan/vxlan_core.c b/drivers/net/vxlan/vxlan_core.c
-> index cf2f60037340..4e1886655101 100644
-> --- a/drivers/net/vxlan/vxlan_core.c
-> +++ b/drivers/net/vxlan/vxlan_core.c
-> @@ -1129,19 +1129,23 @@ static void vxlan_fdb_dst_destroy(struct vxlan_dev *vxlan, struct vxlan_fdb *f,
->
->  static int vxlan_fdb_parse(struct nlattr *tb[], struct vxlan_dev *vxlan,
->  			   union vxlan_addr *ip, __be16 *port, __be32 *src_vni,
-> -			   __be32 *vni, u32 *ifindex, u32 *nhid)
-> +			   __be32 *vni, u32 *ifindex, u32 *nhid, struct netlink_ext_ack *extack)
->  {
->  	struct net *net = dev_net(vxlan->dev);
->  	int err;
->
->  	if (tb[NDA_NH_ID] && (tb[NDA_DST] || tb[NDA_VNI] || tb[NDA_IFINDEX] ||
-> -	    tb[NDA_PORT]))
-> -		return -EINVAL;
-> +	    tb[NDA_PORT])){
-> +			NL_SET_ERR_MSG(extack, "DST, VNI, ifindex and port are mutually exclusive with NH_ID");
-> +			return -EINVAL;
-> +		}
->
->  	if (tb[NDA_DST]) {
->  		err = vxlan_nla_get_addr(ip, tb[NDA_DST]);
-> -		if (err)
-> +		if (err){
-> +			NL_SET_ERR_MSG(extack, "Unsupported address family");
->  			return err;
-> +		}
->  	} else {
->  		union vxlan_addr *remote = &vxlan->default_dst.remote_ip;
->
-> @@ -1157,24 +1161,30 @@ static int vxlan_fdb_parse(struct nlattr *tb[], struct vxlan_dev *vxlan,
->  	}
->
->  	if (tb[NDA_PORT]) {
-> -		if (nla_len(tb[NDA_PORT]) != sizeof(__be16))
-> +		if (nla_len(tb[NDA_PORT]) != sizeof(__be16)){
-> +			NL_SET_ERR_MSG(extack, "Invalid vxlan port");
->  			return -EINVAL;
-> +		}
->  		*port = nla_get_be16(tb[NDA_PORT]);
->  	} else {
->  		*port = vxlan->cfg.dst_port;
->  	}
->
->  	if (tb[NDA_VNI]) {
-> -		if (nla_len(tb[NDA_VNI]) != sizeof(u32))
-> +		if (nla_len(tb[NDA_VNI]) != sizeof(u32)){
-> +			NL_SET_ERR_MSG(extack, "Invalid vni");
->  			return -EINVAL;
-> +		}
->  		*vni = cpu_to_be32(nla_get_u32(tb[NDA_VNI]));
->  	} else {
->  		*vni = vxlan->default_dst.remote_vni;
->  	}
->
->  	if (tb[NDA_SRC_VNI]) {
-> -		if (nla_len(tb[NDA_SRC_VNI]) != sizeof(u32))
-> +		if (nla_len(tb[NDA_SRC_VNI]) != sizeof(u32)){
-> +			NL_SET_ERR_MSG(extack, "Invalid src vni");
->  			return -EINVAL;
-> +		}
->  		*src_vni = cpu_to_be32(nla_get_u32(tb[NDA_SRC_VNI]));
->  	} else {
->  		*src_vni = vxlan->default_dst.remote_vni;
-> @@ -1183,12 +1193,16 @@ static int vxlan_fdb_parse(struct nlattr *tb[], struct vxlan_dev *vxlan,
->  	if (tb[NDA_IFINDEX]) {
->  		struct net_device *tdev;
->
-> -		if (nla_len(tb[NDA_IFINDEX]) != sizeof(u32))
-> +		if (nla_len(tb[NDA_IFINDEX]) != sizeof(u32)){
-> +			NL_SET_ERR_MSG(extack, "Invalid ifindex");
->  			return -EINVAL;
-> +		}
->  		*ifindex = nla_get_u32(tb[NDA_IFINDEX]);
->  		tdev = __dev_get_by_index(net, *ifindex);
-> -		if (!tdev)
-> +		if (!tdev){
-> +			NL_SET_ERR_MSG(extack,"Device not found");
->  			return -EADDRNOTAVAIL;
-> +		}
->  	} else {
->  		*ifindex = 0;
->  	}
-> @@ -1226,7 +1240,7 @@ static int vxlan_fdb_add(struct ndmsg *ndm, struct nlattr *tb[],
->  		return -EINVAL;
->
->  	err = vxlan_fdb_parse(tb, vxlan, &ip, &port, &src_vni, &vni, &ifindex,
-> -			      &nhid);
-> +			      &nhid, extack);
->  	if (err)
->  		return err;
->
-> @@ -1291,7 +1305,7 @@ static int vxlan_fdb_delete(struct ndmsg *ndm, struct nlattr *tb[],
->  	int err;
->
->  	err = vxlan_fdb_parse(tb, vxlan, &ip, &port, &src_vni, &vni, &ifindex,
-> -			      &nhid);
-> +			      &nhid, extack);
->  	if (err)
->  		return err;
->
-> --
-> 2.36.0
->
->
->
+Alsom, make sure you are using tabs for indentation vs spaces.
