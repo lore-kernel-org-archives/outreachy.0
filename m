@@ -1,203 +1,244 @@
-Received: from mail-wm1-f43.google.com (mail-wm1-f43.google.com [209.85.128.43])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E87EF2571
-	for <outreachy@lists.linux.dev>; Mon, 25 Apr 2022 14:25:24 +0000 (UTC)
-Received: by mail-wm1-f43.google.com with SMTP id r187-20020a1c44c4000000b0038ccb70e239so12606205wma.3
-        for <outreachy@lists.linux.dev>; Mon, 25 Apr 2022 07:25:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=KYRLxtWUoxgDscOvKvmLE9kQsS+KE+dJRTrR6t8FDR8=;
-        b=WuafkhyX7Fx9at098OuChlVigGPd1iHClFHiuDAVRJeQ03c9Wb1wDEJtnTecQaNYwB
-         F+QTzW9dj1bLKpzzJDlAMEkVoL+aYZSouz/zeFXitzzpfSP0A0r2KqAafjhCcWJD16/E
-         IDL6RkMQpbHT6su/QOBuVk3eZ5VH29ni7Oj2YvFU5EaL4j1m+HsjhaOlSSjlEuOicVSp
-         6PB631/7lQQCjFIb75ceY96erzQOorqmsQt66/YOalU1GA24rjSVy/s82GmmDFFt74Yo
-         +rL7V7Y9ozJ45ksMVVoM7loCEPmK0kOSyoWzM5u6C5U3Bpq9dWtdiKIsqJKJ/V0Ai2kM
-         cOcw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=KYRLxtWUoxgDscOvKvmLE9kQsS+KE+dJRTrR6t8FDR8=;
-        b=s5b0koFICTu0EuK/ccXxX+thrqnqwxpRDcDom4XinLpE0VPsxGwNie4UKToKJw7J9A
-         gIMcEVpGzCAwN0nF6kNE66mT7CenqUKSboUrPC0t/w2ZIOTfshdiAztykKyEMXkHmIO9
-         Tu5ECfppki5c/fcrrr6xOZ+gModqC6c999MJA0jJmrmRCXdk3UkYC/ALxkggIZlSpdQf
-         M7eBAHJ0SGRmuNYs1qGn1X/P3+rvAZ7wYSsbO1L9iyduHPW47H97kD1NL4I5pwL+GzPr
-         t0IwJ1+yLeNBvVVZ1WaE4ZoWMTl+M2Gsyk2NKy7CehmD67tOrxBq7jodNuJr4IW9nZqS
-         Jipg==
-X-Gm-Message-State: AOAM531wn32cA5NpKGaKIOjLi3nsU5U8z5AXbHdSk4Z1f/YUb5DxmYoF
-	jwWFusHlXAGOhBl2+Q03xF0=
-X-Google-Smtp-Source: ABdhPJyGKMUuEPLqmssTF7rRhMHFCQgerExqOcCfS0wOFKXnNsPt8f23J/FpZzUNhz93QJfhCBq+zA==
-X-Received: by 2002:a05:600c:c9:b0:392:af6f:734a with SMTP id u9-20020a05600c00c900b00392af6f734amr22986997wmm.61.1650896723300;
-        Mon, 25 Apr 2022 07:25:23 -0700 (PDT)
-Received: from alaa-emad ([197.57.226.213])
-        by smtp.gmail.com with ESMTPSA id l6-20020a1c2506000000b0038e6fe8e8d8sm10996601wml.5.2022.04.25.07.25.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 Apr 2022 07:25:23 -0700 (PDT)
-From: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-To: netdev@vger.kernel.org
-Cc: outreachy@lists.linux.dev,
-	roopa@nvidia.com,
-	jdenham@redhat.com,
-	sbrivio@redhat.com,
-	jesse.brandeburg@intel.com,
-	anthony.l.nguyen@intel.com,
-	davem@davemloft.net,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	vladimir.oltean@nxp.com,
-	claudiu.manoil@nxp.com,
-	alexandre.belloni@bootlin.com,
-	shshaikh@marvell.com,
-	manishc@marvell.com,
-	razor@blackwall.org,
-	intel-wired-lan@lists.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	UNGLinuxDriver@microchip.com,
-	GR-Linux-NIC-Dev@marvell.com,
-	bridge@lists.linux-foundation.org,
-	eng.alaamohamedsoliman.am@gmail.com
-Subject: [PATCH net-next v4 2/2] net: vxlan: vxlan_core.c: Add extack support to vxlan_fdb_delete
-Date: Mon, 25 Apr 2022 16:25:07 +0200
-Message-Id: <a99bfeb371857968a3fa734c00bd9b0e122719c1.1650896000.git.eng.alaamohamedsoliman.am@gmail.com>
-X-Mailer: git-send-email 2.36.0
-In-Reply-To: <cover.1650896000.git.eng.alaamohamedsoliman.am@gmail.com>
-References: <cover.1650896000.git.eng.alaamohamedsoliman.am@gmail.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2D0382562
+	for <outreachy@lists.linux.dev>; Mon, 25 Apr 2022 15:29:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1650900561; x=1682436561;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=0GDQj58/ILWl4MZTREe62fOIDZzmstbJgN8ixfUIGG8=;
+  b=MKe8ZJIBVWVT/phAm8hr+NubZzhKY+TFtbG0onyxgLm8DRkjWYirEicV
+   P4tcUAWPtfpaWF+CPr8Fej8QGM9QZTC0vahn5FZQG0RdsqLrLF0D7tOTS
+   9kjDNSIbDqLy610evBzzYXYcnw54kPpYUiQcgbirkERpGDKaXlk2Y2KEO
+   ihVb715w+pfexdpENcr9ysMc6zKDW+DZkLx8yJtVdnBciTj3g1tA/+ymE
+   5dnGbheUumUE4Kg6j9oWPOOBVXYjy9Jyr+rgfismKzMqR+2CpGRP2pyIf
+   Bp3TkXjwc8E0B3Jz5r8Jww5fh6pcIQV8kcYenO8VPPKKew8GFYMwXRt7I
+   A==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10328"; a="351725564"
+X-IronPort-AV: E=Sophos;i="5.90,288,1643702400"; 
+   d="scan'208";a="351725564"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Apr 2022 08:29:20 -0700
+X-IronPort-AV: E=Sophos;i="5.90,288,1643702400"; 
+   d="scan'208";a="677259037"
+Received: from kruparel-mobl1.amr.corp.intel.com (HELO localhost) ([10.213.188.223])
+  by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Apr 2022 08:29:19 -0700
+Date: Mon, 25 Apr 2022 08:29:19 -0700
+From: Ira Weiny <ira.weiny@intel.com>
+To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+Cc: Julia Lawall <julia.lawall@inria.fr>,
+	Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>,
+	outreachy@lists.linux.dev, boris.ostrovsky@oracle.com,
+	jgross@suse.com, sstabellini@kernel.org,
+	xen-devel@lists.xenproject.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2] xen:  Convert kmap() to kmap_local_page()
+Message-ID: <Yma9zvvuZGyAeRBG@iweiny-desk3>
+References: <20220419234328.10346-1-eng.alaamohamedsoliman.am@gmail.com>
+ <3990312.6PsWsQAL7t@leap>
+ <alpine.DEB.2.22.394.2204201556330.2937@hadrien>
+ <2538961.9Mp67QZiUf@leap>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <2538961.9Mp67QZiUf@leap>
 
-This patch adds extack msg support to vxlan_fdb_delete and vxlan_fdb_parse.
-extack is used to propagate meaningful error msgs to the user of vxlan
-fdb netlink api
+On Wed, Apr 20, 2022 at 04:07:36PM +0200, Fabio M. De Francesco wrote:
+> On mercoledì 20 aprile 2022 15:57:14 CEST Julia Lawall wrote:
+> > 
+> > On Wed, 20 Apr 2022, Fabio M. De Francesco wrote:
+> > 
+> > > On mercoledì 20 aprile 2022 15:40:10 CEST Julia Lawall wrote:
+> > > >
+> > > > On Wed, 20 Apr 2022, Fabio M. De Francesco wrote:
+> > > >
+> > > > > On mercoledì 20 aprile 2022 08:03:05 CEST Julia Lawall wrote:
+> > > > > >
+> > > > > > On Wed, 20 Apr 2022, Alaa Mohamed wrote:
+> > > > > >
+> > > > > > > kmap() is being deprecated and these usages are all local to 
+> the
+> > > thread
+> > > > > > > so there is no reason kmap_local_page() can't be used.
+> > > > > > >
+> > > > > > > Replace kmap() calls with kmap_local_page().
+> > > > > >
+> > > > > > OK, so from a Coccinelle point of view, could we do
+> > > > > >
+> > > > > > @@
+> > > > > > expression e1,e2,x,f;
+> > > > > > @@
+> > > > > >
+> > > > > > e1 =
+> > > > > > - kmap
+> > > > > > + kmap_local_page
+> > > > > >     (e2)
+> > > > > > ... when != x = e1 // not stored in any location and not passed 
+> to
+> > > > > another function
+> > > > > >     when != f(...,e1,...)
+> > > > > >     when != x = e2
+> > > > > >     when != f(...,e2,...)
+> > > > > > -kunmap(e2)
+> > > > > > +kunmap_local(e1)
+> > > > > >
+> > > > > > julia
+> > > > > >
+> > > > >
+> > > > > I've never spent sufficient time to understand properly the syntax 
+> and
+> > > > > semantics of expressions of Coccinelle. However, thanks Julia, this
+> > > code
+> > > > > looks good and can be very helpful.
+> > > > >
+> > > > > Only a minor objection... it doesn't tell when 'e2' has been 
+> allocated
+> > > > > within the same function where the kmap() call is.
+> > > > >
+> > > > > In the particular case that I cite above, I'd prefer to remove the
+> > > > > allocation of the page (say with alloc_page()) and convert kmap() /
+> > > kunmap()
+> > > > > to use kmalloc() / kfree().
+> > > > >
+> > > > > Fox example, this is done in the following patch:
+> > > > >
+> > > > > commit 633b0616cfe0 ("x86/sgx: Remove unnecessary kmap() from
+> > > > > sgx_ioc_enclave_init()") from Ira Weiny.
+> > > > >
+> > > > > Can Coccinelle catch also those special cases where a page that is
+> > > passed
+> > > > > to kmap() is allocated within that same function (vs. being passed 
+> as
+> > > > > argument to this function) and, if so, propose a replacement with
+> > > > > kmalloc()?
+> > > >
+> > > > It looks complex in this case, because the allocation is in another
+> > > > function, and it is passed to another function.
+> > >
+> > > This is not the special case I was talking about. In this case your 
+> code
+> > > for Coccinelle tells the right proposal and it is exactly what Alaa did 
+> in
+> > > her patch (which is good!).
+> > >
+> > > I'm talking about other special cases like the one I pointed to with 
+> the
+> > > link I provided. I'm sorry if my bad English made you think that Alaa's
+> > > patch was one of those cases where the page is allocated within the 
+> same
+> > > function where kmap() is.
+> > >
+> > > I hope that now I've been clearer :)
+> > 
+> > Ah, sorry for the misunderstanding.  If you have an example, I can take a
+> > look and propose something for this special case.
+> > 
+> > julia
+> 
+> Yes, I have the example that you are asking for. It's that commit 
+> 633b0616cfe0 from Ira Weiny.
+> 
+> Let me copy and paste it here for your convenience...
+> 
+> diff --git a/arch/x86/kernel/cpu/sgx/ioctl.c b/arch/x86/kernel/cpu/sgx/
+> ioctl.c
+> index 90a5caf76939..2e10367ea66c 100644
+> --- a/arch/x86/kernel/cpu/sgx/ioctl.c
+> +++ b/arch/x86/kernel/cpu/sgx/ioctl.c
+> @@ -604,7 +604,6 @@ static long sgx_ioc_enclave_init(struct sgx_encl *encl, 
+> void __user *arg)
+>  {
+>         struct sgx_sigstruct *sigstruct;
+>         struct sgx_enclave_init init_arg;
+> -       struct page *initp_page;
+>         void *token;
+>         int ret;
+>  
+> @@ -615,11 +614,15 @@ static long sgx_ioc_enclave_init(struct sgx_encl 
+> *encl, void __user *arg)
+>         if (copy_from_user(&init_arg, arg, sizeof(init_arg)))
+>                 return -EFAULT;
+>  
+> -       initp_page = alloc_page(GFP_KERNEL);
+> -       if (!initp_page)
+> +       /*
+> +        * 'sigstruct' must be on a page boundary and 'token' on a 512 byte
+> +        * boundary.  kmalloc() will give this alignment when allocating
+> +        * PAGE_SIZE bytes.
+> +        */
+> +       sigstruct = kmalloc(PAGE_SIZE, GFP_KERNEL);
+> +       if (!sigstruct)
+>                 return -ENOMEM;
+>  
+> -       sigstruct = kmap(initp_page);
+>         token = (void *)((unsigned long)sigstruct + PAGE_SIZE / 2);
+>         memset(token, 0, SGX_LAUNCH_TOKEN_SIZE);
+>  
+> @@ -645,8 +648,7 @@ static long sgx_ioc_enclave_init(struct sgx_encl *encl, 
+> void __user *arg)
+>         ret = sgx_encl_init(encl, sigstruct, token);
+>  
+>  out:
+> -       kunmap(initp_page);
+> -       __free_page(initp_page);
+> +       kfree(sigstruct);
+>         return ret;
+>  }
+> 
+> I think that Coccinelle might understand that "initp_page" is allocated in 
+> the same function where later it is kmap()'ed. But I'm not able to write a 
+> Coccinelle check to find out these kinds of special cases. In these cases 
+> the correct solution is not to use kmap_local_page(). Instead delete the 
+> alloc_page() and use kmalloc().
+>
 
-Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
----
-changes in V2:
-	- fix spelling vxlan_fdb_delete
-	- add missing braces
-	- edit error message
----
-changes in V3:
-	fix errors reported by checkpatch.pl
----
-changes in V4:
-	- fix errors reported by checkpatch.pl
-	- edit commit message.
----
- drivers/net/vxlan/vxlan_core.c | 37 ++++++++++++++++++++++++----------
- 1 file changed, 26 insertions(+), 11 deletions(-)
+Sorry about missing this thread last week...
 
-diff --git a/drivers/net/vxlan/vxlan_core.c b/drivers/net/vxlan/vxlan_core.c
-index cf2f60037340..ef69aeb058b8 100644
---- a/drivers/net/vxlan/vxlan_core.c
-+++ b/drivers/net/vxlan/vxlan_core.c
-@@ -1129,19 +1129,24 @@ static void vxlan_fdb_dst_destroy(struct vxlan_dev *vxlan, struct vxlan_fdb *f,
+I've lost the Coccinelle scripts I wrote before but the ones which helped were
+documented in patches I submitted when Coccinelle was used.
 
- static int vxlan_fdb_parse(struct nlattr *tb[], struct vxlan_dev *vxlan,
- 			   union vxlan_addr *ip, __be16 *port, __be32 *src_vni,
--			   __be32 *vni, u32 *ifindex, u32 *nhid)
-+			   __be32 *vni, u32 *ifindex, u32 *nhid, struct netlink_ext_ack *extack)
- {
- 	struct net *net = dev_net(vxlan->dev);
- 	int err;
+I think Coccinelle can help a lot.  And probably a lot more than I know since
+I'm not an expert in the language either.
 
- 	if (tb[NDA_NH_ID] && (tb[NDA_DST] || tb[NDA_VNI] || tb[NDA_IFINDEX] ||
--	    tb[NDA_PORT]))
--		return -EINVAL;
-+	    tb[NDA_PORT])) {
-+			NL_SET_ERR_MSG(extack,
-+						   "DST, VNI, ifindex and port are mutually exclusive with NH_ID");
-+			return -EINVAL;
-+		}
+However, In addition to the example Fabio shows above here are a few other
+things to look out for when writing Coccinelle scripts.
 
- 	if (tb[NDA_DST]) {
- 		err = vxlan_nla_get_addr(ip, tb[NDA_DST]);
--		if (err)
-+		if (err) {
-+			NL_SET_ERR_MSG(extack, "Unsupported address family");
- 			return err;
-+		}
- 	} else {
- 		union vxlan_addr *remote = &vxlan->default_dst.remote_ip;
+1) The addition of mem*_page() functions means sometimes the entire kmap/kunmap
+   can be removed.  Check out the Coccinelle script for that.[1]
 
-@@ -1157,24 +1162,30 @@ static int vxlan_fdb_parse(struct nlattr *tb[], struct vxlan_dev *vxlan,
- 	}
+2) kunmap_local() has ordering rules which often requires some manual
+   review.[2]
 
- 	if (tb[NDA_PORT]) {
--		if (nla_len(tb[NDA_PORT]) != sizeof(__be16))
-+		if (nla_len(tb[NDA_PORT]) != sizeof(__be16)) {
-+			NL_SET_ERR_MSG(extack, "Invalid vxlan port");
- 			return -EINVAL;
-+		}
- 		*port = nla_get_be16(tb[NDA_PORT]);
- 	} else {
- 		*port = vxlan->cfg.dst_port;
- 	}
+3) kmap/kunmap is often wrapped in other subsystem helper functions.  I was not
+   sure how to deal with that in Coccinelle.  Julia is this easy in
+   Coccinelle?[3]
 
- 	if (tb[NDA_VNI]) {
--		if (nla_len(tb[NDA_VNI]) != sizeof(u32))
-+		if (nla_len(tb[NDA_VNI]) != sizeof(u32)) {
-+			NL_SET_ERR_MSG(extack, "Invalid vni");
- 			return -EINVAL;
-+		}
- 		*vni = cpu_to_be32(nla_get_u32(tb[NDA_VNI]));
- 	} else {
- 		*vni = vxlan->default_dst.remote_vni;
- 	}
 
- 	if (tb[NDA_SRC_VNI]) {
--		if (nla_len(tb[NDA_SRC_VNI]) != sizeof(u32))
-+		if (nla_len(tb[NDA_SRC_VNI]) != sizeof(u32)) {
-+			NL_SET_ERR_MSG(extack, "Invalid src vni");
- 			return -EINVAL;
-+		}
- 		*src_vni = cpu_to_be32(nla_get_u32(tb[NDA_SRC_VNI]));
- 	} else {
- 		*src_vni = vxlan->default_dst.remote_vni;
-@@ -1183,12 +1194,16 @@ static int vxlan_fdb_parse(struct nlattr *tb[], struct vxlan_dev *vxlan,
- 	if (tb[NDA_IFINDEX]) {
- 		struct net_device *tdev;
+Ira
 
--		if (nla_len(tb[NDA_IFINDEX]) != sizeof(u32))
-+		if (nla_len(tb[NDA_IFINDEX]) != sizeof(u32)) {
-+			NL_SET_ERR_MSG(extack, "Invalid ifindex");
- 			return -EINVAL;
-+		}
- 		*ifindex = nla_get_u32(tb[NDA_IFINDEX]);
- 		tdev = __dev_get_by_index(net, *ifindex);
--		if (!tdev)
-+		if (!tdev) {
-+			NL_SET_ERR_MSG(extack, "Device not found");
- 			return -EADDRNOTAVAIL;
-+		}
- 	} else {
- 		*ifindex = 0;
- 	}
-@@ -1226,7 +1241,7 @@ static int vxlan_fdb_add(struct ndmsg *ndm, struct nlattr *tb[],
- 		return -EINVAL;
 
- 	err = vxlan_fdb_parse(tb, vxlan, &ip, &port, &src_vni, &vni, &ifindex,
--			      &nhid);
-+			      &nhid, extack);
- 	if (err)
- 		return err;
+[1]
+https://lore.kernel.org/lkml/20210205232304.1670522-3-ira.weiny@intel.com/
+https://lore.kernel.org/lkml/20210205232304.1670522-5-ira.weiny@intel.com/
 
-@@ -1291,7 +1306,7 @@ static int vxlan_fdb_delete(struct ndmsg *ndm, struct nlattr *tb[],
- 	int err;
+[2]
+https://lore.kernel.org/lkml/20210217024826.3466046-3-ira.weiny@intel.com/
+https://lore.kernel.org/lkml/20210217024826.3466046-4-ira.weiny@intel.com/
 
- 	err = vxlan_fdb_parse(tb, vxlan, &ip, &port, &src_vni, &vni, &ifindex,
--			      &nhid);
-+			      &nhid, extack);
- 	if (err)
- 		return err;
+[3]
+https://lore.kernel.org/lkml/20210217024826.3466046-5-ira.weiny@intel.com/
 
---
-2.36.0
-
+> 
+> Thanks,
+> 
+> Fabio
+> 
+> 
+> 
