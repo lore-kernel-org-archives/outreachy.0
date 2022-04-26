@@ -1,144 +1,122 @@
-Received: from mail-ej1-f52.google.com (mail-ej1-f52.google.com [209.85.218.52])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 33B61625
-	for <outreachy@lists.linux.dev>; Tue, 26 Apr 2022 09:43:08 +0000 (UTC)
-Received: by mail-ej1-f52.google.com with SMTP id r13so34888592ejd.5
-        for <outreachy@lists.linux.dev>; Tue, 26 Apr 2022 02:43:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=UXpWaaRmGnZjQpqeRY15jGRgaTNc7B1+ySXCFXyXBRI=;
-        b=pybP3w/+N+OcgwzWtmwntk3lxR6h9mQ391PMJx2VTma/UT4L7sQGvKIgZ25XhHZEwH
-         b+xKL6/wkW1eUkxtmMTtIs34tCpl/fZW6F/DVwZzi/X7gza46AZJUovBvXttWt/jiB9l
-         IKm1CUAyKOJjyeNJ/N8PUuNGfBdRVn0dSAojBCCfZVlqccAPwPF+aJ3siKwpdNLG4Dsb
-         bYy1OTRf9rcQj17LbRxxrAqd5hV5DNuDRq/MSj3xSkDg9G0+VH0ckcqa8iggTlTnMVPn
-         kR3JFwfjeknjMqA9nkkNcDLywIPOnuJyHeDmLDTbPsFh2nQDTMXrMXJ4+Nj7Y5BRQJYq
-         xARQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=UXpWaaRmGnZjQpqeRY15jGRgaTNc7B1+ySXCFXyXBRI=;
-        b=jIrt869TsgqUhxd3riRjq7JKoq5roVTC2sRKdLhmZgfZN/Yrm3U45cRDFNxdfGbd+Z
-         vuxxqi7dbo2AvfmlFtWeJC2ahvQPiR3wpdNvwNIZGllTQxYY5uoWYfHD0QY/ChiQ+0SB
-         G6eftcybmhp6VYSDKmHagwsZosBtz9ffo/Z+WHLsTHU5JakndALThohpKO++rT9rwqrb
-         phcnq2iFDNCYaGrpnKMAzMdc00G7kZhFu7br0cVw2oI0HqOOjPl5k9gXxGwSHGGl7EGk
-         CueNgzL3sk9bqa2jXgd+Dz1F2R9gWBTc2dnpyY9WsK2waEm+V0XuYQprMyb3Nzuk8YUk
-         Ef+g==
-X-Gm-Message-State: AOAM532Rh2k/Kp3/69HuHk1UbglQxH+EFizpy0sH6IdWEr/lbRVOW9G2
-	nb8QW/NINcfZsUAnScT/HJQ=
-X-Google-Smtp-Source: ABdhPJzjhE45gRePoeCjG0ZCGd5Mc7TMOr1O1ulUhWi+DgC4crSwYQkmHDFmKQQ5PqihkhjIduvqHQ==
-X-Received: by 2002:a17:906:5d04:b0:6db:7262:570e with SMTP id g4-20020a1709065d0400b006db7262570emr20578793ejt.8.1650966186345;
-        Tue, 26 Apr 2022 02:43:06 -0700 (PDT)
-Received: from leap.localnet (host-79-50-86-254.retail.telecomitalia.it. [79.50.86.254])
-        by smtp.gmail.com with ESMTPSA id g16-20020a170906521000b006d58773e992sm4630221ejm.188.2022.04.26.02.43.04
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 26 Apr 2022 02:43:05 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
-Cc: Ira Weiny <ira.weiny@intel.com>, Andrew Morton <akpm@linux-foundation.org>, Catalin Marinas <catalin.marinas@arm.com>, "Matthew Wilcox (Oracle)" <willy@infradead.org>, Will Deacon <will@kernel.org>, Peter Collingbourne <pcc@google.com>, Vlastimil Babka <vbabka@suse.cz>, linux-kernel@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>, linux-doc@vger.kernel.org, outreachy@lists.linux.dev, "Acked-by : Mike Rapoport" <rppt@linux.ibm.com>
-Subject: Re: [PATCH v2 1/4] mm/highmem: Fix kernel-doc warnings in highmem*.h
-Date: Tue, 26 Apr 2022 11:43:03 +0200
-Message-ID: <4396926.LvFx2qVVIh@leap>
-In-Reply-To: <YmeYzKT8Ikq5SfdE@linutronix.de>
-References: <20220425162400.11334-1-fmdefrancesco@gmail.com> <20220425162400.11334-2-fmdefrancesco@gmail.com> <YmeYzKT8Ikq5SfdE@linutronix.de>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B98E9625;
+	Tue, 26 Apr 2022 10:24:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1650968642; x=1682504642;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=SUcHxR2at58PVF1YYffGQMoKoxwX9Qu0SIOQdjmPd80=;
+  b=NUv6YnlmVAdvjFz7iKDNfgg4X6S+0a/xNE4wciMLWrWXmKNMoi3dVnXE
+   OOpSoEBb3xsiE37ZNyR62s1gu7oUtPpStlfz+nT/TVI939fJNdQhPYarf
+   EFW4J3V0O9drfQa36QdMsjkGISbTYS2JTX5hHcFrz5ZJ2CZX/5EBJzl5T
+   f7GqP6hHth5QGhonaHMfQ8VSkTtTxIOMTrqcacPWf/KIQfl8yADu+8GXp
+   Exf8ODWsPPrG8KAZVUfQcohkwNJ9hKvbSD+Y38WR9B1ZEDYcVhuA1kvAy
+   /dJSI930XhAeQOWORhEoP6cDbPBociJhGlg80FNborE+t/iUqf6B2r7rM
+   g==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10328"; a="247463396"
+X-IronPort-AV: E=Sophos;i="5.90,290,1643702400"; 
+   d="scan'208";a="247463396"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Apr 2022 03:24:02 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.90,290,1643702400"; 
+   d="scan'208";a="558238295"
+Received: from lkp-server01.sh.intel.com (HELO 5056e131ad90) ([10.239.97.150])
+  by orsmga007.jf.intel.com with ESMTP; 26 Apr 2022 03:23:56 -0700
+Received: from kbuild by 5056e131ad90 with local (Exim 4.95)
+	(envelope-from <lkp@intel.com>)
+	id 1njIMO-0003QK-3z;
+	Tue, 26 Apr 2022 10:23:56 +0000
+Date: Tue, 26 Apr 2022 18:23:14 +0800
+From: kernel test robot <lkp@intel.com>
+To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>,
+	netdev@vger.kernel.org
+Cc: llvm@lists.linux.dev, kbuild-all@lists.01.org,
+	outreachy@lists.linux.dev, roopa@nvidia.com, jdenham@redhat.com,
+	sbrivio@redhat.com, jesse.brandeburg@intel.com,
+	anthony.l.nguyen@intel.com, davem@davemloft.net, kuba@kernel.org,
+	pabeni@redhat.com, vladimir.oltean@nxp.com, claudiu.manoil@nxp.com,
+	alexandre.belloni@bootlin.com, shshaikh@marvell.com,
+	manishc@marvell.com, razor@blackwall.org,
+	intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
+	UNGLinuxDriver@microchip.com, GR-Linux-NIC-Dev@marvell.com,
+	bridge@lists.linux-foundation.org,
+	eng.alaamohamedsoliman.am@gmail.com
+Subject: Re: [PATCH net-next v4 1/2] rtnetlink: add extack support in fdb del
+ handlers
+Message-ID: <202204261831.S6mBmtgP-lkp@intel.com>
+References: <8847c5d670c7ee11890d75f58a4922c5cb542f20.1650896000.git.eng.alaamohamedsoliman.am@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <8847c5d670c7ee11890d75f58a4922c5cb542f20.1650896000.git.eng.alaamohamedsoliman.am@gmail.com>
 
-On marted=C3=AC 26 aprile 2022 09:01:32 CEST Sebastian Andrzej Siewior wrot=
-e:
-> On 2022-04-25 18:23:57 [+0200], Fabio M. De Francesco wrote:
-> > index a77be5630209..aa22daeed617 100644
-> > --- a/include/linux/highmem-internal.h
-> > +++ b/include/linux/highmem-internal.h
-> > @@ -236,9 +236,17 @@ static inline unsigned long totalhigh_pages(void)=
-=20
-{ return 0UL; }
-> > =20
-> >  #endif /* CONFIG_HIGHMEM */
-> > =20
-> > -/*
-> > - * Prevent people trying to call kunmap_atomic() as if it were=20
-kunmap()
-> > - * kunmap_atomic() should get the return value of kmap_atomic, not the=
-=20
-page.
-> > +/**
-> > + * kunmap_atomic - Unmap the virtual address mapped by kmap_atomic()
-> > + * @__addr:       Virtual address to be unmapped
-> > + *
-> > + * Unmaps an address previously mapped by kmap_atomic() and re-enables
-> > + * pagefaults and preemption. Mappings should be unmapped in the=20
-reverse
->=20
-> You mind adding "Deprecated!" like kmap_atomic() has?=20
+Hi Alaa,
 
-I might add "Deprecated!", however Ira Weiny asked me to rephrase an=20
-earlier version of one of the patch which is is this series. I wrote that=20
-"The use of kmap_atomic() is deprecated in favor of kmap_local_page()." and=
-=20
-Ira replied "I'm not sure deprecated is the right word. [] This series=20
-should end up indicating the desire to stop growing kmap() and
-kmap_atomic() call sites and that their deprecation is on the horizon.".
+Thank you for the patch! Yet something to improve:
 
-What Ira suggested is exactly what I'm doing in v2.=20
+[auto build test ERROR on horms-ipvs/master]
+[also build test ERROR on net/master linus/master v5.18-rc4]
+[cannot apply to net-next/master next-20220422]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch]
 
-@Ira: what about adding "Deprecated!" for consistency with kmap_atomic()=20
-kdoc?
+url:    https://github.com/intel-lab-lkp/linux/commits/Alaa-Mohamed/propagate-extack-to-vxlan_fdb_delete/20220425-222644
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/horms/ipvs.git master
+config: riscv-randconfig-r002-20220425 (https://download.01.org/0day-ci/archive/20220426/202204261831.S6mBmtgP-lkp@intel.com/config)
+compiler: clang version 15.0.0 (https://github.com/llvm/llvm-project 1cddcfdc3c683b393df1a5c9063252eb60e52818)
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # install riscv cross compiling tool for clang build
+        # apt-get install binutils-riscv64-linux-gnu
+        # https://github.com/intel-lab-lkp/linux/commit/5e9c3e146040a4e37b45ca18c3b42c3dfd6d0a0e
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Alaa-Mohamed/propagate-extack-to-vxlan_fdb_delete/20220425-222644
+        git checkout 5e9c3e146040a4e37b45ca18c3b42c3dfd6d0a0e
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=riscv SHELL=/bin/bash drivers/net/ethernet/mscc/
 
-> The part about
-> disabling/ enabling preemption is true for !PREEMPT_RT.
+If you fix the issue, kindly add following tag as appropriate
+Reported-by: kernel test robot <lkp@intel.com>
 
-To me it looks that this is not what Thomas Gleixner wrote in the cover=20
-letter of his series ("[patch V2 00/18] mm/highmem: Preemptible variant of=
-=20
-kmap_atomic & friends") at=20
-https://lore.kernel.org/lkml/20201029221806.189523375@linutronix.de/
+All errors (new ones prefixed by >>):
 
-=46or your convenience:
-
-"[] there is not a real reason anymore to confine migration disabling to=20
-RT. [] Removing the RT dependency from migrate_disable/enable()".
-
-Is there anything I'm still missing?
-
-> The part that
-> worries me is that people use it and rely on disabled preemption like
-> some did in the past.=20
-
-This is something I'd prefer to hear also from other developers who are=20
-CC'ed for this patch :)=20
-
-> I've been told this API is about to be removed (or so I have been told)
-> so I hope that it will be gone soon ;)
->=20
-> > + * order that they were mapped. See kmap_local_page() for details.
-> > + * @__addr can be any address within the mapped page, so there is no=20
-need
-> > + * to subtract any offset that has been added. In contrast to=20
-kunmap(),
-> > + * this function takes the address returned from kmap_atomic(), not=20
-the
-> > + * page passed to it. The compiler will warn you if you pass the page.
-> >   */
-> >  #define kunmap_atomic(__addr)				=09
-\
-> >  do {							=09
-\
->=20
-> Sebastian
->=20
-
-Thanks for your review,
-
-=46abio
+>> drivers/net/ethernet/mscc/ocelot_net.c:784:70: error: too many arguments to function call, expected 5, have 6
+           return ocelot_fdb_del(ocelot, port, addr, vid, ocelot_port->bridge, extack);
+                  ~~~~~~~~~~~~~~                                               ^~~~~~
+   include/soc/mscc/ocelot.h:893:5: note: 'ocelot_fdb_del' declared here
+   int ocelot_fdb_del(struct ocelot *ocelot, int port, const unsigned char *addr,
+       ^
+   1 error generated.
 
 
+vim +784 drivers/net/ethernet/mscc/ocelot_net.c
+
+   774	
+   775	static int ocelot_port_fdb_del(struct ndmsg *ndm, struct nlattr *tb[],
+   776				       struct net_device *dev,
+   777				       const unsigned char *addr, u16 vid, struct netlink_ext_ack *extack)
+   778	{
+   779		struct ocelot_port_private *priv = netdev_priv(dev);
+   780		struct ocelot_port *ocelot_port = &priv->port;
+   781		struct ocelot *ocelot = ocelot_port->ocelot;
+   782		int port = priv->chip_port;
+   783	
+ > 784		return ocelot_fdb_del(ocelot, port, addr, vid, ocelot_port->bridge, extack);
+   785	}
+   786	
+
+-- 
+0-DAY CI Kernel Test Service
+https://01.org/lkp
