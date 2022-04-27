@@ -1,97 +1,115 @@
-Received: from mail-ed1-f50.google.com (mail-ed1-f50.google.com [209.85.208.50])
+Received: from m228-13.mailgun.net (m228-13.mailgun.net [159.135.228.13])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A41F87E3
-	for <outreachy@lists.linux.dev>; Wed, 27 Apr 2022 05:28:18 +0000 (UTC)
-Received: by mail-ed1-f50.google.com with SMTP id g20so645193edw.6
-        for <outreachy@lists.linux.dev>; Tue, 26 Apr 2022 22:28:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=OmFfBKBvjXjBUi32eJz6KqWWe+VBykXhnFIMt6kZrPA=;
-        b=VKF80W9fKkrHobaNWG6+jlexuZpjlYTkta79tRkZgiz1nVADhCqsm6FKiL6csRUdjz
-         JSkotuedZJyK80hxkRz9g63COsSodweG1uLO9NBvJlBVZZvkud49fD2IUtgBaESQRGF/
-         GW3u6yFsUXuvtNhpA5kIUtMvDEwu5eb4ZWHyqbdAms6KhRq4lfyCL5eFipL/NsHa+W0R
-         LWdEwrJwdWLNRRtTAhjzcgtLHa1dShCnCPIWZZUWg7gvzxHMcFALsVjUPFNfd8qoqq0W
-         ODeXIzrSIPU55JfZ19Mmx73lEKEs2ui+Fn9JwJ7ME0NrHJbkijJV+4ujLrVLj/HqUMyQ
-         MTIg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=OmFfBKBvjXjBUi32eJz6KqWWe+VBykXhnFIMt6kZrPA=;
-        b=gY2TzDOFn0WTGMunM5mYnk07AbLdCfG2oTe8AoFMTvTy+gSvdx3gD7MC8/nMwVXqZB
-         7Va91hvODteJiFGNq3sVAeXs1kmc/TecrmciPYrIzDXhfsE9yqTVkKRbbw3lIdYZHk06
-         3YImmfq1+r2wjC/ox/eo2sE4YBrG2SBcqMv9+d7gmmoLHu3PyPtvoRkyW3eqjh938CFn
-         +H4IivOKCxEh45zIewREBkKdq85X6oYFF2ix58w4j5Z69nJWvUB2KZINWNzao3bQ15wf
-         VuuNuKTGmCbiVR2vy3W5BoLEJRRtwZcRDT2jlq1YZX9z3sy9aVW/AJeG0NZ90QX4/gJk
-         zemw==
-X-Gm-Message-State: AOAM530HRYWPmDvSH8ythhrDl4SJm0+z97mkOMvIbgKdZCMmW0W+Nsno
-	1ggmXekfaZGZY3zBWnMf+ok=
-X-Google-Smtp-Source: ABdhPJxlWhm6y16PcnsGfzyfaskCHjeUFOul0gTxv+QCvWXYqmPxQGE4L6lNMH+wgHmtutAMMai44g==
-X-Received: by 2002:aa7:de93:0:b0:418:d700:662a with SMTP id j19-20020aa7de93000000b00418d700662amr28175416edv.107.1651037296832;
-        Tue, 26 Apr 2022 22:28:16 -0700 (PDT)
-Received: from leap.localnet (host-79-50-86-254.retail.telecomitalia.it. [79.50.86.254])
-        by smtp.gmail.com with ESMTPSA id n13-20020a170906724d00b006cedd6d7e24sm6037171ejk.119.2022.04.26.22.28.14
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 26 Apr 2022 22:28:15 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
-Cc: Ira Weiny <ira.weiny@intel.com>, Andrew Morton <akpm@linux-foundation.org>, Catalin Marinas <catalin.marinas@arm.com>, "Matthew Wilcox (Oracle)" <willy@infradead.org>, Will Deacon <will@kernel.org>, Peter Collingbourne <pcc@google.com>, Vlastimil Babka <vbabka@suse.cz>, linux-kernel@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>, linux-doc@vger.kernel.org, outreachy@lists.linux.dev, "Acked-by : Mike Rapoport" <rppt@linux.ibm.com>
-Subject: Re: [PATCH v2 1/4] mm/highmem: Fix kernel-doc warnings in highmem*.h
-Date: Wed, 27 Apr 2022 07:28:13 +0200
-Message-ID: <2383038.jE0xQCEvom@leap>
-In-Reply-To: <YmfRynAhuSWz9H+e@linutronix.de>
-References: <20220425162400.11334-1-fmdefrancesco@gmail.com> <4396926.LvFx2qVVIh@leap> <YmfRynAhuSWz9H+e@linutronix.de>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C430481A
+	for <outreachy@lists.linux.dev>; Wed, 27 Apr 2022 12:18:59 +0000 (UTC)
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=codeagain.dev; q=dns/txt;
+ s=smtp; t=1651061939; h=In-Reply-To: Content-Type: MIME-Version:
+ References: Message-ID: Subject: Subject: Cc: To: To: From: From: Date:
+ Sender: Sender; bh=lDHZNe0nT4irW3eTAgNGDWgdYeKIe/kVZL3tOBWwFRU=; b=i0Lu8tBOiFAEOhfOz+FIPH3d20HoDheJXWHDjKtTnwKjBtt87N5TrdfqHud+Ih7RVfnxlP1v
+ 6HuaQ6VGuRcME+joZ3/0tLI/cPp0qyw4yJ7inS/jegNu5Eq35kve6B/UC0T5NY+eavLV8Cqg
+ bxrq9mGY0uwDDh88oMt6i5XilOwZ60UjWt3Gzp1F4wmaeR9YKDTrl6Hqfl/HJjXD4xWyCGXV
+ yNr2xkKa5b7FhTTDECkRPiuPz7TeL7A99gSdeGS7oEVOwS5McmhcVpQlBUUkvZXOJc6R7avM
+ 6vjlFw32sizLISIiCtybRlXgIN6e5IEFDR4UeblhVReYd+MWQTtl/g==
+X-Mailgun-Sending-Ip: 159.135.228.13
+X-Mailgun-Sid: WyI2Y2ZlNyIsICJvdXRyZWFjaHlAbGlzdHMubGludXguZGV2IiwgImJlOWM2ZCJd
+Received: from AN5Bruno (dynamic-user.170.84.57.140.mhnet.com.br
+ [170.84.57.140]) by smtp-out-n02.prod.us-east-1.postgun.com with SMTP id
+ 626934b2e2ec060808280997 (version=TLS1.3, cipher=TLS_AES_128_GCM_SHA256);
+ Wed, 27 Apr 2022 12:18:58 GMT
+Sender: codeagain@codeagain.dev
+Date: Wed, 27 Apr 2022 09:18:51 -0300
+From: Bruno Moreira-Guedes <codeagain@codeagain.dev>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Martyn Welch <martyn@welchs.me.uk>,
+	Manohar Vanga <manohar.vanga@gmail.com>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy@lists.linux.dev,
+	Bruno's Patch Watchbox <patch-reply@codeagain.dev>
+Subject: Re: [PATCH v3 0/3] staging: vme: Cleanup driver tree old structures
+Message-ID: <20220427121851.4e2rjbbabw5sh3lk@AN5Bruno>
+References: <cover.1650321310.git.codeagain@codeagain.dev>
+ <YmA4QIRfx2QPhEJi@kroah.com>
+ <3e91b72a86294b542acf460657d0fd94adeb252e.camel@welchs.me.uk>
+ <YmJNqMjXEc4KGrJ8@kroah.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="ozx2ugy2xoiesmr2"
+Content-Disposition: inline
+In-Reply-To: <YmJNqMjXEc4KGrJ8@kroah.com>
+
+
+--ozx2ugy2xoiesmr2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="utf-8"
 
-On marted=C3=AC 26 aprile 2022 13:04:42 CEST Sebastian Andrzej Siewior wrot=
-e:
-> On 2022-04-26 11:43:03 [+0200], Fabio M. De Francesco wrote:
+Hello,
+
+On Fri, Apr 22, 2022 at 08:39:36AM +0200, Greg Kroah-Hartman wrote:
+> On Thu, Apr 21, 2022 at 08:16:05PM +0100, Martyn Welch wrote:
+> > On Wed, 2022-04-20 at 18:43 +0200, Greg Kroah-Hartman wrote:
+> > > On Mon, Apr 18, 2022 at 08:29:49PM -0300, Bruno Moreira-Guedes wrote:
+> > > > This patch series modify the vme_user driver's place in
+> > > > menuconfig (1/3), fixes a missing `depends on` line in a Kconfig
+> > > > file
+> > > > (2/3), and rearrages the directory tree for the driver allowing a
+> > > > more
+> > > > straightforward comprehension of its contents (3/3).
+> > > >=20
+> > > > The 'vme_user/' driver is the only remaining vme-family driver in
+> > > > the
+> > > > 'staging/' tree, but its structure, entry in menuconfig and
+> > > > building
+> > > > routines are still attached to the 'vme/' subtree now outside
+> > > > 'staging/'. The present patchset fixes it.
+> > > >=20
+> > > > Signed-off-by: Bruno Moreira-Guedes <codeagain@codeagain.dev>
+> > >=20
+> > > What about deleting the vme drivers entirely?
+> >=20
+> > I assume you're suggesting deleting the "vme_user" driver from the
+> > staging directory?
 >=20
-> Either way, according to the code kmap_atomic() does not always disable
-> preemption=20
+> Yes, at the very least given that no one has tried to fix it up and get
+> it out of staging in many years.
 
-Hi Sebastian,
+While I cannot comment anything on that regard, I imagine the v4 I sent
+a couple of days ago will wait for that decision, right?
 
-In my last email (for patch 4/4) I wrote that I would add a deprecation=20
-notice to kunmap_local() and would talk about thread locality in=20
-kmap_local_page(). I want to confirm that I'll do these changes in v3.
+Should I prepare a patch removing them and also submit so when it's
+decided you can just pick one patch or the other?
 
-Then I closed that email asking if I was still overlooking something.=20
-Consider that I'm relatively new to kernel development and that it's just=20
-something I do in my spare time. So I was pretty sure I was still missing=20
-something :)
+>=20
+> > > Martyn, anyone still using these?
+> > >=20
+> >=20
+> > I'm fairly sure that the actual VME drivers for the hardware bridges
+> > (the bits not in staging) are still being used based on the
+> > conversations I've had today. I'm just trying to find out whether the
+> > vme_user bit is actively being used.
+>=20
+> If the non-staging vme drivers are still being used, that's great.  But
+> if not, those too should be dropped.
+>=20
+> thanks,
+>=20
+> greg k-h
 
-After reading again the code of kmap_atomic() (as you suggested - thanks!)=
-=20
-I noted that you correctly say that kmap_atomic() does not always disables=
-=20
-preemption (i.e., preemption is disabled only for !PREEMPT_RT kernel's =20
-configurations).
+--ozx2ugy2xoiesmr2
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Therefore I'll also change the first sentence of kunmap_local() to the=20
-following:
+-----BEGIN PGP SIGNATURE-----
 
-"[It] Unmaps an address previously mapped by kmap_atomic() and re-enables=20
-pagefaults and preemption (the latter disabled only for !PREEMP_RT=20
-configurations).".
+iHUEABYIAB0WIQQTUrsHCxGmQ5vyKRAZtd3tyEY2kgUCYmk0qwAKCRAZtd3tyEY2
+kpwYAQCrlryNZKRr4pjYMNYiw16wCWeN/FdxcwJ91tpjk1knhQD/USmN0/PzLk72
+ZMTB2vAScMsQQzm7elD4Ag3eBLrmqQU=
+=RKaF
+-----END PGP SIGNATURE-----
 
-I will also be making this change in v3.
-
-Can you please say if I'm still missing something?
-
-Thanks,
-
-=46abio
-
-
-
+--ozx2ugy2xoiesmr2--
