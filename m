@@ -1,109 +1,120 @@
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ej1-f48.google.com (mail-ej1-f48.google.com [209.85.218.48])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AA6A97B;
-	Wed, 27 Apr 2022 16:24:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1651076671; x=1682612671;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=xbVkhqUprSffI6k9578RyOtKLKT5PDGpfnHI0RkdbJg=;
-  b=TA0/ftZoB/ez/G1Tt5STYHdZczL9VAOTHnWcnLWPUHPPVSf7m3rPWRKR
-   fu3G8BiQHDT5jt6g/uaPP7FuP0Dmnyi0v38KEg6qtIGmM2gNA+/FcVHmH
-   8Ttl7VxwjSaAWLOmtKScPC9eSZ/qb3IVADXZNzZgQaPgYvIvbm9DnLcUt
-   OOBC7DlsjWBZkQ3zFFeu8t65q2ZMCAwde6NS+2XpzQ3A1BRa1H99xJ7vj
-   HuRTCkdH16NG9XheL2ndBwudCf0PW0ewgBaf5rsx4mjxRRIkz05fJlryY
-   i4+MpaexPYiNu/MsytyryVv+ECmZkCbqlamzqJMD7wllwibfqi7orsniw
-   A==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10330"; a="266151257"
-X-IronPort-AV: E=Sophos;i="5.90,293,1643702400"; 
-   d="scan'208";a="266151257"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
-  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Apr 2022 09:15:06 -0700
-X-IronPort-AV: E=Sophos;i="5.90,293,1643702400"; 
-   d="scan'208";a="533293590"
-Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
-  by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Apr 2022 09:15:06 -0700
-Date: Wed, 27 Apr 2022 09:16:33 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Bruno Moreira-Guedes <codeagain@codeagain.dev>,
-	Martyn Welch <martyn@welchs.me.uk>,
-	Manohar Vanga <manohar.vanga@gmail.com>,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev,
-	Bruno's Patch Watchbox <patch-reply@codeagain.dev>
-Subject: Re: [PATCH v3 0/3] staging: vme: Cleanup driver tree old structures
-Message-ID: <20220427161633.GA1314857@alison-desk>
-References: <cover.1650321310.git.codeagain@codeagain.dev>
- <YmA4QIRfx2QPhEJi@kroah.com>
- <3e91b72a86294b542acf460657d0fd94adeb252e.camel@welchs.me.uk>
- <YmJNqMjXEc4KGrJ8@kroah.com>
- <20220427121851.4e2rjbbabw5sh3lk@AN5Bruno>
- <Ymk3qimGl1tTjpSL@kroah.com>
- <20220427124114.woiiuxr6pnxvadwg@AN5Bruno>
- <YmlA1w124Ws2z/RV@kroah.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D050D7F5
+	for <outreachy@lists.linux.dev>; Wed, 27 Apr 2022 18:38:27 +0000 (UTC)
+Received: by mail-ej1-f48.google.com with SMTP id dk23so5126519ejb.8
+        for <outreachy@lists.linux.dev>; Wed, 27 Apr 2022 11:38:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=Jf9i3ztTNjfWPutrOO+p/55EBe7ejBl7ElvzXmHGQEg=;
+        b=X2Wrw6aGSdtD6osErIZoyheLcvMUX8NAYUDuh9B4v8dSyZZoDLP601yJkl5p94uFnU
+         5Ubb9b8EMYHGAcI5U44jJCxVgx+RD1VwFmHUdyD5P7xlBN87TredFXCsIbeLg9ULH4hy
+         QaRH63Crb0DyI1GApXZDihx/uU0BG4rIdnvz+EYoc3+UAW7d4LpS44swBX6qmC8y7h/S
+         O1YnCBF0RnDKYI1OBIf9L4RBD6zeOcjMUXcxjnR4ZS4pSimK43YIIDodIy9zWc/TXV7z
+         UHdigbdNTV0YYN6+rESapEtYvmFruijwAMEkgjY+m0NzxqMfETrmSaftKX0A4EUVE3wu
+         WWxA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=Jf9i3ztTNjfWPutrOO+p/55EBe7ejBl7ElvzXmHGQEg=;
+        b=A0tzZ7Q4YqHlfl4e686Q/oKPL9E8I5aQJwMsAUWkTb3w/ODN1SkODLYZWZOzoZlByY
+         80wJpWtSxEqY6gHjvWBsI1rKrIa5k5OptPVi+yGRDg8AnOstbGxAnUEO243hIxBOtRYY
+         gxQHXUqbMoAmSreGne2KnqbSRaPg166t4NFWw/C761wkx8Ks66oeiYthys8MzkYgCiww
+         JZ9mfc04xbtmyx8lsQrP7hU/HnfBCJRgml/iffwtk3Inc9wstrR/SrI2l95QtTD98Lpj
+         2NqXd3rfSA1g295JBlu1tFUfXbgEmuVhgfBeXDmD3QOlZc0N35QZ2wmsE6KpD3Wi90ia
+         pzuA==
+X-Gm-Message-State: AOAM533dtLBpEs5zWTv5kqAUaZel4+KeK6lmBtkPTlV583DOoMSu4P6H
+	CA8BTfZspsJk1qrO0+NhH98=
+X-Google-Smtp-Source: ABdhPJxYmulAe68OxOgM9m3Ff9OqMHejTV4BuNDsrsdH/lnJG7g4ZBSf8iATJgr6HWV37aVYAGJZZA==
+X-Received: by 2002:a17:906:3104:b0:6ce:6b85:ecc9 with SMTP id 4-20020a170906310400b006ce6b85ecc9mr27247261ejx.339.1651084705994;
+        Wed, 27 Apr 2022 11:38:25 -0700 (PDT)
+Received: from localhost.localdomain (host-79-50-86-254.retail.telecomitalia.it. [79.50.86.254])
+        by smtp.gmail.com with ESMTPSA id ig8-20020a1709072e0800b006f38f2e9ebesm4691667ejc.64.2022.04.27.11.38.23
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 27 Apr 2022 11:38:24 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: Ira Weiny <ira.weiny@intel.com>,
+	Andrew Morton <akpm@linux-foundation.org>,
+	Catalin Marinas <catalin.marinas@arm.com>,
+	"Matthew Wilcox (Oracle)" <willy@infradead.org>,
+	Will Deacon <will@kernel.org>,
+	Peter Collingbourne <pcc@google.com>,
+	Vlastimil Babka <vbabka@suse.cz>,
+	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+	linux-kernel@vger.kernel.org,
+	linux-doc@vger.kernel.org,
+	outreachy@lists.linux.dev
+Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+Subject: [PATCH v3 0/4] Extend and reorganize Highmem's documentation 
+Date: Wed, 27 Apr 2022 20:38:17 +0200
+Message-Id: <20220427183821.1979-1-fmdefrancesco@gmail.com>
+X-Mailer: git-send-email 2.34.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <YmlA1w124Ws2z/RV@kroah.com>
+Content-Transfer-Encoding: 8bit
 
-On Wed, Apr 27, 2022 at 03:10:47PM +0200, Greg Kroah-Hartman wrote:
-> On Wed, Apr 27, 2022 at 09:41:14AM -0300, Bruno Moreira-Guedes wrote:
-> > On Wed, Apr 27, 2022 at 02:31:38PM +0200, Greg Kroah-Hartman wrote:
-> > > On Wed, Apr 27, 2022 at 09:18:51AM -0300, Bruno Moreira-Guedes wrote:
-> > > > Hello,
-> > > > 
-> > > > On Fri, Apr 22, 2022 at 08:39:36AM +0200, Greg Kroah-Hartman wrote:
-> > > > > On Thu, Apr 21, 2022 at 08:16:05PM +0100, Martyn Welch wrote:
-> > > > > > On Wed, 2022-04-20 at 18:43 +0200, Greg Kroah-Hartman wrote:
-> > > > > > > On Mon, Apr 18, 2022 at 08:29:49PM -0300, Bruno Moreira-Guedes wrote:
-> > > > > > > > This patch series modify the vme_user driver's place in
-> > > > > > > > menuconfig (1/3), fixes a missing `depends on` line in a Kconfig
-> > > > > > > > file
-> > > > > > > > (2/3), and rearrages the directory tree for the driver allowing a
-> > > > > > > > more
-> > > > > > > > straightforward comprehension of its contents (3/3).
-> > > > > > > > 
-> > > > > > > > The 'vme_user/' driver is the only remaining vme-family driver in
-> > > > > > > > the
-> > > > > > > > 'staging/' tree, but its structure, entry in menuconfig and
-> > > > > > > > building
-> > > > > > > > routines are still attached to the 'vme/' subtree now outside
-> > > > > > > > 'staging/'. The present patchset fixes it.
-> > > > > > > > 
-> > > > > > > > Signed-off-by: Bruno Moreira-Guedes <codeagain@codeagain.dev>
-> > > > > > > 
-> > > > > > > What about deleting the vme drivers entirely?
-> > > > > > 
-> > > > > > I assume you're suggesting deleting the "vme_user" driver from the
-> > > > > > staging directory?
-> > > > > 
-> > > > > Yes, at the very least given that no one has tried to fix it up and get
-> > > > > it out of staging in many years.
-> > > > 
-> > > > While I cannot comment anything on that regard, I imagine the v4 I sent
-> > > > a couple of days ago will wait for that decision, right?
-> > > 
-> > > I do not know what you are referring to, sorry.  My staging patch queue
-> > > is empty right now.
-> > Ohhh, okay, no problem, I have sent a v4 around 6 days ago and thought
-> > you were waiting on this definition.
+This series has the purpose to extend and reorganize Highmem's
+documentation.
 
-Bruno - I see your patches was applied to staging-testing
-https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/log/?h=staging-testing
+This is still a work in progress, because some information should still be
+moved from highmem.rst to highmem.h and highmem-internal.h. Specifically
+I'm talking about moving the "how to" information to the relevant headers,
+as it as been suggested by Ira Weiny (Intel).
 
+This series is composed by four patches gathered from a previous series
+made of two, plus two more single patches. The subject of this cover has
+changed and the layout of the changes across the four patches has
+changed too. For this reason it is very hard to show a valid versions'
+log. Therefore, I decided to start over and drop versions (Maintainers
+of the previous patch have been told to drop them).
 
-> 
-> If I did not take it, please resend.
-> 
-> thanks,
-> 
-> greg k-h
-> 
+Changes from v1 to v2:
+
+        1/4 - Fix typos (Mike Rapoport); re-write the description of @page
+              because the original was wrong (Ira Weiny); add Ira's and
+              Mike's tags in the commit message.
+        2/4 - Add Ira's and Mike's tags in the commit message.
+        3/4 - Rework the subject to better summarize what this patch
+              changes; merge the section which was removed from highmem.rst
+              with the kdocs of highmem.h (suggested by Ira Weiny); add
+              Ira's tag in the commit message.
+        4/4 - Reformulate a sentence that was incomprehensible due to my
+              own mistakes in copying and pasting the text of another
+              paragraph (problem noted by Ira Weiny); refer to the kdocs
+              of kmap_local_page () to show how nested mappings should be
+              handled; fix grammar error; add Ira's tag in the commit
+              message.
+
+Changes from v2 to v3:
+
+	1/4 - Add a deprecation notice to kunmap_atomic() for consistency
+	      with the same notice in kmap_atomic() (Sebastian Andrzej
+	      Siewior); shorten subject and extend commit message.
+	2/4 - No changes.
+	3/4 - No changes.
+	4/4 - Correct a technical inaccuracy about preemption disabling / 
+	      re-enabling in kmap_atomic() / kunmap_atomic() (Sebastian
+	      Andrzej Siewior).
+
+Fabio M. De Francesco (4):
+  mm/highmem: Fix kernel-doc warnings in highmem*.h
+  Documentation/vm: Include kdocs from highmem*.h into highmem.rst
+  Documentation/vm: Move "Using kmap-atomic" to highmem.h
+  Documentation/vm: Rework "Temporary Virtual Mappings" section
+
+ Documentation/vm/highmem.rst     | 104 +++++++++++++++++++------------
+ include/linux/highmem-internal.h |  15 ++++-
+ include/linux/highmem.h          |  49 +++++++++++----
+ 3 files changed, 112 insertions(+), 56 deletions(-)
+
+-- 
+2.34.1
+
