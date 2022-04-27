@@ -1,49 +1,49 @@
-Received: from mail-ed1-f52.google.com (mail-ed1-f52.google.com [209.85.208.52])
+Received: from mail-ed1-f50.google.com (mail-ed1-f50.google.com [209.85.208.50])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 264747E
-	for <outreachy@lists.linux.dev>; Tue, 26 Apr 2022 18:31:18 +0000 (UTC)
-Received: by mail-ed1-f52.google.com with SMTP id d6so18327950ede.8
-        for <outreachy@lists.linux.dev>; Tue, 26 Apr 2022 11:31:18 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A41F87E3
+	for <outreachy@lists.linux.dev>; Wed, 27 Apr 2022 05:28:18 +0000 (UTC)
+Received: by mail-ed1-f50.google.com with SMTP id g20so645193edw.6
+        for <outreachy@lists.linux.dev>; Tue, 26 Apr 2022 22:28:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=CtivK/lbjkFn6fCJitHMAm73ZL6+X5IagBxOgsbgoFw=;
-        b=ah1fX5YhJKRbkl+xlw+Gun6kLxP6FBDciSqczj3fapwkuEbS7nsMr7mlTDVtKJ1EUl
-         CvYuRt7OKaa2x4WC3Ov4dKXFA91FO0RGO2RCrJhnO9TZa0V9JmgcNWreiw0dpFxJiEto
-         oCU5egWOMJr9SFwZhP8ZpezrzNDQLbQkflTlcFhzqz7y6XdzaH5LqWR4edEyGlnishXZ
-         5ymYVmGlemkREtdQoT/iYs08oFnqCVoD/t5MrcqZfyK/u129VbxWppE5lb1+bwf1RWK6
-         L9UpILm7HT1PkQXpP/8IPzwCfNBUBwE10QWwativi/VOGN0tn4iUIRYc400hEhugKVey
-         tHHg==
+        bh=OmFfBKBvjXjBUi32eJz6KqWWe+VBykXhnFIMt6kZrPA=;
+        b=VKF80W9fKkrHobaNWG6+jlexuZpjlYTkta79tRkZgiz1nVADhCqsm6FKiL6csRUdjz
+         JSkotuedZJyK80hxkRz9g63COsSodweG1uLO9NBvJlBVZZvkud49fD2IUtgBaESQRGF/
+         GW3u6yFsUXuvtNhpA5kIUtMvDEwu5eb4ZWHyqbdAms6KhRq4lfyCL5eFipL/NsHa+W0R
+         LWdEwrJwdWLNRRtTAhjzcgtLHa1dShCnCPIWZZUWg7gvzxHMcFALsVjUPFNfd8qoqq0W
+         ODeXIzrSIPU55JfZ19Mmx73lEKEs2ui+Fn9JwJ7ME0NrHJbkijJV+4ujLrVLj/HqUMyQ
+         MTIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=CtivK/lbjkFn6fCJitHMAm73ZL6+X5IagBxOgsbgoFw=;
-        b=nX2heIekaNG0YWMt8T0cYq/0jNeWWpvHDKw4kow5Wv41G7aKuCgvzdxH3wz3euutK+
-         SNga8wZxHiLhzLoNXigJxh1U9GFJM9Jd8AuGgh0X+7e1mOi7xXiSvaWXFa2o3C2DJ1ts
-         Y/AHna3DRXivfz7vdK+q3QApXDy3snKYOKJBkUHwmceKyWm5Gf3NhvgVTivrFkNADAC/
-         626iit8nUpM52X0pjtQDash11WBpH19I4gJ3FkXggKWmQpe4sdCruvBxODK0TZsefYJp
-         Rbqy7HAVgCOTp5W615Oi+yfhHvht4ciSIBhR6R5pdoROfJROn28tLrrVvJSakjk6HdNh
-         j9Qg==
-X-Gm-Message-State: AOAM530kQPpSUMMi8IyMZG4tn6V/VKVTBEqBrmFyzE15oZ1QkDitAnSS
-	9p0w8P2rk1wyLpYEsRj+nJA=
-X-Google-Smtp-Source: ABdhPJy5U8SX/X1DAwEV03AhVM1LZD7u+G9Vyhc7qZDg06eobpf3P/8ZRCfEaMn2oPl979RDTw6Swg==
-X-Received: by 2002:a05:6402:2318:b0:413:7645:fa51 with SMTP id l24-20020a056402231800b004137645fa51mr26535565eda.201.1650997876370;
-        Tue, 26 Apr 2022 11:31:16 -0700 (PDT)
+        bh=OmFfBKBvjXjBUi32eJz6KqWWe+VBykXhnFIMt6kZrPA=;
+        b=gY2TzDOFn0WTGMunM5mYnk07AbLdCfG2oTe8AoFMTvTy+gSvdx3gD7MC8/nMwVXqZB
+         7Va91hvODteJiFGNq3sVAeXs1kmc/TecrmciPYrIzDXhfsE9yqTVkKRbbw3lIdYZHk06
+         3YImmfq1+r2wjC/ox/eo2sE4YBrG2SBcqMv9+d7gmmoLHu3PyPtvoRkyW3eqjh938CFn
+         +H4IivOKCxEh45zIewREBkKdq85X6oYFF2ix58w4j5Z69nJWvUB2KZINWNzao3bQ15wf
+         VuuNuKTGmCbiVR2vy3W5BoLEJRRtwZcRDT2jlq1YZX9z3sy9aVW/AJeG0NZ90QX4/gJk
+         zemw==
+X-Gm-Message-State: AOAM530HRYWPmDvSH8ythhrDl4SJm0+z97mkOMvIbgKdZCMmW0W+Nsno
+	1ggmXekfaZGZY3zBWnMf+ok=
+X-Google-Smtp-Source: ABdhPJxlWhm6y16PcnsGfzyfaskCHjeUFOul0gTxv+QCvWXYqmPxQGE4L6lNMH+wgHmtutAMMai44g==
+X-Received: by 2002:aa7:de93:0:b0:418:d700:662a with SMTP id j19-20020aa7de93000000b00418d700662amr28175416edv.107.1651037296832;
+        Tue, 26 Apr 2022 22:28:16 -0700 (PDT)
 Received: from leap.localnet (host-79-50-86-254.retail.telecomitalia.it. [79.50.86.254])
-        by smtp.gmail.com with ESMTPSA id d11-20020a1709067f0b00b006f395247b5esm2817517ejr.84.2022.04.26.11.31.14
+        by smtp.gmail.com with ESMTPSA id n13-20020a170906724d00b006cedd6d7e24sm6037171ejk.119.2022.04.26.22.28.14
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 26 Apr 2022 11:31:15 -0700 (PDT)
+        Tue, 26 Apr 2022 22:28:15 -0700 (PDT)
 From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
 To: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
-Cc: Ira Weiny <ira.weiny@intel.com>, Andrew Morton <akpm@linux-foundation.org>, Catalin Marinas <catalin.marinas@arm.com>, "Matthew Wilcox (Oracle)" <willy@infradead.org>, Will Deacon <will@kernel.org>, Peter Collingbourne <pcc@google.com>, Vlastimil Babka <vbabka@suse.cz>, linux-kernel@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>, linux-doc@vger.kernel.org, outreachy@lists.linux.dev, Thomas Gleixner <tglx@linutronix.de>, Peter Zijlstra <peterz@infradead.org>
-Subject: Re: [PATCH v2 4/4] Documentation/vm: Rework "Temporary Virtual Mappings" section
-Date: Tue, 26 Apr 2022 20:31:12 +0200
-Message-ID: <3429395.iIbC2pHGDl@leap>
-In-Reply-To: <Ymfb1saaHVuq4IUl@linutronix.de>
-References: <20220425162400.11334-1-fmdefrancesco@gmail.com> <3610796.MHq7AAxBmi@leap> <Ymfb1saaHVuq4IUl@linutronix.de>
+Cc: Ira Weiny <ira.weiny@intel.com>, Andrew Morton <akpm@linux-foundation.org>, Catalin Marinas <catalin.marinas@arm.com>, "Matthew Wilcox (Oracle)" <willy@infradead.org>, Will Deacon <will@kernel.org>, Peter Collingbourne <pcc@google.com>, Vlastimil Babka <vbabka@suse.cz>, linux-kernel@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>, linux-doc@vger.kernel.org, outreachy@lists.linux.dev, "Acked-by : Mike Rapoport" <rppt@linux.ibm.com>
+Subject: Re: [PATCH v2 1/4] mm/highmem: Fix kernel-doc warnings in highmem*.h
+Date: Wed, 27 Apr 2022 07:28:13 +0200
+Message-ID: <2383038.jE0xQCEvom@leap>
+In-Reply-To: <YmfRynAhuSWz9H+e@linutronix.de>
+References: <20220425162400.11334-1-fmdefrancesco@gmail.com> <4396926.LvFx2qVVIh@leap> <YmfRynAhuSWz9H+e@linutronix.de>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -53,51 +53,45 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 Content-Type: text/plain; charset="utf-8"
 
-On marted=C3=AC 26 aprile 2022 13:47:34 CEST Sebastian Andrzej Siewior wrot=
+On marted=C3=AC 26 aprile 2022 13:04:42 CEST Sebastian Andrzej Siewior wrot=
 e:
+> On 2022-04-26 11:43:03 [+0200], Fabio M. De Francesco wrote:
 >=20
-> Hmm. It is thread-local in the end. There are slots 0 =E2=80=A6 KM_MAX_ID=
-X for
-> the mappings. Slot 0 for task A can be different from slot 0 for task B
-> while both run on CPU0. So the same address, that is returned from
-> kmap_local(), will point to a different page for both tasks. Both tasks
-> can't be migrated to another CPU while the mapping is active.
-> "CPU local" sounds like something that is same to everyone on the same
-> CPU which is what this_cpu_read() for instance does.
->=20
+> Either way, according to the code kmap_atomic() does not always disable
+> preemption=20
 
-OK, I agree with you :)=20
+Hi Sebastian,
 
-I just got three notices from Greg K-H stating that he has applied three of=
+In my last email (for patch 4/4) I wrote that I would add a deprecation=20
+notice to kunmap_local() and would talk about thread locality in=20
+kmap_local_page(). I want to confirm that I'll do these changes in v3.
+
+Then I closed that email asking if I was still overlooking something.=20
+Consider that I'm relatively new to kernel development and that it's just=20
+something I do in my spare time. So I was pretty sure I was still missing=20
+something :)
+
+After reading again the code of kmap_atomic() (as you suggested - thanks!)=
 =20
-my driver / Android patches. The patches are some conversions from kmap()=20
-and / or kmap_atomic() to kmap_local_page() (or wrappers around it):
-
-https://lore.kernel.org/lkml/20220425175754.8180-4-fmdefrancesco@gmail.com/
-https://lore.kernel.org/lkml/20220425175754.8180-3-fmdefrancesco@gmail.com/
-https://lore.kernel.org/lkml/20220425175754.8180-2-fmdefrancesco@gmail.com/
-
-I had forgotten that I wrote the following sentence in all three commit=20
-messages: "[] With kmap_local_page(), the mapping is per thread, CPU local=
+I noted that you correctly say that kmap_atomic() does not always disables=
 =20
-and not globally visible. []"
+preemption (i.e., preemption is disabled only for !PREEMPT_RT kernel's =20
+configurations).
 
-Therefore, I'll add "thread-local" or "per thread". I probably like your=20
-wording more than mine: "thread-local" is more suitable.
+Therefore I'll also change the first sentence of kunmap_local() to the=20
+following:
 
-=46or consistency (again) I like the other change you proposed, which is to=
-=20
-add "deprecated!" also in kunmap_atomic(), exactly as it is already in=20
-kmap_atomic() kernel-docs.
+"[It] Unmaps an address previously mapped by kmap_atomic() and re-enables=20
+pagefaults and preemption (the latter disabled only for !PREEMP_RT=20
+configurations).".
 
-However, I will wait one more day before sending v3, in case there are=20
-other people who want to suggest further changes.
+I will also be making this change in v3.
 
-If I remember correctly, I'm overlooking nothing else. Do I overlook=20
-something?
+Can you please say if I'm still missing something?
 
-Thanks for your help,
+Thanks,
 
 =46abio
+
 
 
