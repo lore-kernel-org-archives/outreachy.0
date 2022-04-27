@@ -1,41 +1,41 @@
-Received: from mail-ej1-f50.google.com (mail-ej1-f50.google.com [209.85.218.50])
+Received: from mail-ej1-f53.google.com (mail-ej1-f53.google.com [209.85.218.53])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AC4517F5
-	for <outreachy@lists.linux.dev>; Wed, 27 Apr 2022 18:38:32 +0000 (UTC)
-Received: by mail-ej1-f50.google.com with SMTP id m20so5097012ejj.10
-        for <outreachy@lists.linux.dev>; Wed, 27 Apr 2022 11:38:32 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7BB297F5
+	for <outreachy@lists.linux.dev>; Wed, 27 Apr 2022 18:38:35 +0000 (UTC)
+Received: by mail-ej1-f53.google.com with SMTP id i27so5113927ejd.9
+        for <outreachy@lists.linux.dev>; Wed, 27 Apr 2022 11:38:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=k75/spXS+k5a5+DVquVFeCXg9KobdD3U49dRA56k3UQ=;
-        b=JLJR2+S/v6It9gJr/TiqMLTTFSv6DyRzzADGLWON1JCaOTnKzH1+VU8NynzjGGEipx
-         IlwiMQmQSKbsYYZe2TAFZgbSeO1Iq2WRI84k2hkmS2IpVtJszMvFtZQSWdoaIZ17hVOw
-         WmGVbkfKSC2S3Xgkjxyk6XF2dvpCFcHT9541Hr4aYXwUXRLvUaYcRBxuC7jVD5OwGJDj
-         z4YbZyRk26qXUV04MGxMJaonQm8WpIderszxaLStgxJxo5mM147I4snLrhdjIx1Zi0RV
-         VQah7SZoLbHghWu1MBCQsIcP2UYYt7X/ORDcNTIXwlk0qdjmhnxNnLmlUB4eKqNAB2vu
-         KcMw==
+        bh=Og01PFU5EZe5B0bBCu0F7erpiwis4vadvQ4RVspA5Fo=;
+        b=SntM5HDOwIGePMHzM/EfZTAhbrz7ckZ4p9NyGG4x3OSE/dbxyn70Q3EhHR3ygKzW5I
+         kcW88k/EYG4S4Y3mmysxcGIpqI71WboengmOm95wO05I0S2E4E/FEx1JP5+l0E9x9wUv
+         vcXil4U7biijyBk1Jm85LLyjEdhgroQlCphFFLda5167dYmB/EDh7ghlCmlnieJY8xg0
+         fvN2hmw458gg5trRdsn3dFe8ytLIWo3Tr+0LrQdoqgOleP/j5bO2/+P5kV3pG5BtBL/B
+         uEJXUEEUxJiE22KQNChwj7jyiGkWZqygQlDWDBeluT0PjfPSt04Ie3jfBhN7N1UHoehq
+         Byjg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=k75/spXS+k5a5+DVquVFeCXg9KobdD3U49dRA56k3UQ=;
-        b=BYSdy4B4btzrjrgLsx0E71PrPxW0Pw6uVp9BMDUJBvcJucmY1qBsRiTgY4gd0pio6w
-         5H+RoaXDySUbjjEq/YihX1Wg1tkD1/gFqLJRfsQmegi3h7s0IpEWzEZM3tAQFeuoKYRs
-         O2YYtsnPEg00nsCsQRKSNbjZBblbIFuEa7gf9WNoVVhIBJPPSOEMmCtb8pGlLBULry8b
-         /LgSLCO0g1yRqXi4moLnwZSCLxG1VGb9GoRX8hQx5D44ZPikbRkY53mZ3GRW+pYMV7bP
-         pBUEG5Lz46jhHD7DOiSzxX/Pw1PVT0ELvZ9fdp4cv1YWooj6aPwmjGcM81JW8Y8AgbKs
-         6fwQ==
-X-Gm-Message-State: AOAM532nA4eFHMquSQCE7JVAeNElm0bBRZxCYtAhsValgeJLtmm4+IPP
-	lb8oiqy4kNhZhHJ6Jz9BU9o=
-X-Google-Smtp-Source: ABdhPJyqxAnZeuQdR1Pu7yQd2w8qzvmFZ+4CsZFyBpbjMJsQDuf9u3iTk+0FzzF16gNHyfq2yp+3/A==
-X-Received: by 2002:a17:907:8a0d:b0:6f3:a595:6136 with SMTP id sc13-20020a1709078a0d00b006f3a5956136mr12551715ejc.54.1651084710853;
-        Wed, 27 Apr 2022 11:38:30 -0700 (PDT)
+        bh=Og01PFU5EZe5B0bBCu0F7erpiwis4vadvQ4RVspA5Fo=;
+        b=QfPQPjF2XHujYUDMa2S9w6BiHszR1gMwDRzAYBgZjVV9wgI6naCrVhh70BI1VEPlkL
+         jzKfcV/X/G1x9B6Fb7v2LZcQXbXqPiV0VXdLxK5jPUdpiHYt0UkVVyuGFwaR3J9FjFa+
+         jCav6bDVWZIlMpAMPEq9vgTW6AAc14nciaadoJ6LEY+RFDc0SjCNVvq/9upVvJu+7gGb
+         oYNkWbZ2JAA7v76PZ4Uit7KRT9vC7CirSwSCDu92hwTKA2pGDLTkzy4a6noP3DBBK1Oj
+         +OktkV+ZoqDi78QLTBL5LKsMg7sMlWPdGLpvfgKQscZeymY2vw/oghvXPjBibz07xQ7Q
+         2RZQ==
+X-Gm-Message-State: AOAM530QrWm56AcA3xPSWpNEGLH+h+NuzhYjvrt3FSBXjuDRk/E9+3I1
+	SBjtdSGfQ+/UQlck8OSrj0Y=
+X-Google-Smtp-Source: ABdhPJxSqgxF0sunXBvQPcd7EMxD0GNBqflpYY2ga2IkDu1yXDb35IfTimGHpeVMmtZs0AC1cq/pgA==
+X-Received: by 2002:a17:907:7745:b0:6f3:674a:339 with SMTP id kx5-20020a170907774500b006f3674a0339mr24302043ejc.207.1651084713819;
+        Wed, 27 Apr 2022 11:38:33 -0700 (PDT)
 Received: from localhost.localdomain (host-79-50-86-254.retail.telecomitalia.it. [79.50.86.254])
-        by smtp.gmail.com with ESMTPSA id ig8-20020a1709072e0800b006f38f2e9ebesm4691667ejc.64.2022.04.27.11.38.28
+        by smtp.gmail.com with ESMTPSA id ig8-20020a1709072e0800b006f38f2e9ebesm4691667ejc.64.2022.04.27.11.38.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 27 Apr 2022 11:38:29 -0700 (PDT)
+        Wed, 27 Apr 2022 11:38:32 -0700 (PDT)
 From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
 To: Ira Weiny <ira.weiny@intel.com>,
 	Andrew Morton <akpm@linux-foundation.org>,
@@ -51,11 +51,10 @@ To: Ira Weiny <ira.weiny@intel.com>,
 Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>,
 	Jonathan Corbet <corbet@lwn.net>,
 	Thomas Gleixner <tglx@linutronix.de>,
-	Peter Zijlstra <peterz@infradead.org>,
-	Mike Rapoport <rppt@linux.ibm.com>
-Subject: [PATCH v3 2/4] Documentation/vm: Include kdocs from highmem*.h into highmem.rst
-Date: Wed, 27 Apr 2022 20:38:19 +0200
-Message-Id: <20220427183821.1979-3-fmdefrancesco@gmail.com>
+	Peter Zijlstra <peterz@infradead.org>
+Subject: [PATCH v3 3/4] Documentation/vm: Move "Using kmap-atomic" to highmem.h
+Date: Wed, 27 Apr 2022 20:38:20 +0200
+Message-Id: <20220427183821.1979-4-fmdefrancesco@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20220427183821.1979-1-fmdefrancesco@gmail.com>
 References: <20220427183821.1979-1-fmdefrancesco@gmail.com>
@@ -67,39 +66,113 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-kernel-docs that are in include/linux/highmem.h and in
-include/linux/highmem-internal.h should be included in highmem.rst.
+The use of kmap_atomic() is new code is being deprecated in favor of
+kmap_local_page(). For this reason the "Using kmap_atomic" section in
+highmem.rst is obsolete and unnecessary, but it can still help developers
+if it were moved to kdocs in highmem.h.
 
-Use kdocs directives to include the above-mentioned comments into
-highmem.rst.
+Therefore, move the relevant parts of this section from highmem.rst and
+merge them with the kdocs in highmem.h.
 
 Cc: Jonathan Corbet <corbet@lwn.net>
 Cc: Thomas Gleixner <tglx@linutronix.de>
 Cc: Matthew Wilcox <willy@infradead.org>
 Cc: Peter Zijlstra <peterz@infradead.org>
 Suggested-by: Ira Weiny <ira.weiny@intel.com>
-Acked-by: Mike Rapoport <rppt@linux.ibm.com>
-Reviewed-by: Ira Weiny <ira.weiny@intel.com>
 Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
 ---
- Documentation/vm/highmem.rst | 7 +++++++
- 1 file changed, 7 insertions(+)
+ Documentation/vm/highmem.rst | 35 -----------------------------------
+ include/linux/highmem.h      | 31 +++++++++++++++++++++++++++++++
+ 2 files changed, 31 insertions(+), 35 deletions(-)
 
 diff --git a/Documentation/vm/highmem.rst b/Documentation/vm/highmem.rst
-index 0f69a9fec34d..ccff08a8211d 100644
+index ccff08a8211d..e05bf5524174 100644
 --- a/Documentation/vm/highmem.rst
 +++ b/Documentation/vm/highmem.rst
-@@ -145,3 +145,10 @@ The general recommendation is that you don't use more than 8GiB on a 32-bit
- machine - although more might work for you and your workload, you're pretty
- much on your own - don't expect kernel developers to really care much if things
- come apart.
-+
-+
-+Functions
-+=========
-+
-+.. kernel-doc:: include/linux/highmem.h
-+.. kernel-doc:: include/linux/highmem-internal.h
+@@ -72,41 +72,6 @@ The kernel contains several ways of creating temporary mappings:
+   It may be assumed that k[un]map_atomic() won't fail.
+ 
+ 
+-Using kmap_atomic
+-=================
+-
+-When and where to use kmap_atomic() is straightforward.  It is used when code
+-wants to access the contents of a page that might be allocated from high memory
+-(see __GFP_HIGHMEM), for example a page in the pagecache.  The API has two
+-functions, and they can be used in a manner similar to the following::
+-
+-	/* Find the page of interest. */
+-	struct page *page = find_get_page(mapping, offset);
+-
+-	/* Gain access to the contents of that page. */
+-	void *vaddr = kmap_atomic(page);
+-
+-	/* Do something to the contents of that page. */
+-	memset(vaddr, 0, PAGE_SIZE);
+-
+-	/* Unmap that page. */
+-	kunmap_atomic(vaddr);
+-
+-Note that the kunmap_atomic() call takes the result of the kmap_atomic() call
+-not the argument.
+-
+-If you need to map two pages because you want to copy from one page to
+-another you need to keep the kmap_atomic calls strictly nested, like::
+-
+-	vaddr1 = kmap_atomic(page1);
+-	vaddr2 = kmap_atomic(page2);
+-
+-	memcpy(vaddr1, vaddr2, PAGE_SIZE);
+-
+-	kunmap_atomic(vaddr2);
+-	kunmap_atomic(vaddr1);
+-
+-
+ Cost of Temporary Mappings
+ ==========================
+ 
+diff --git a/include/linux/highmem.h b/include/linux/highmem.h
+index 3623319a659d..d1f9b298415e 100644
+--- a/include/linux/highmem.h
++++ b/include/linux/highmem.h
+@@ -143,6 +143,37 @@ static inline void *kmap_local_folio(struct folio *folio, size_t offset);
+  * configurations).
+  *
+  * Do not use in new code. Use kmap_local_page() instead.
++ *
++ * It is used in atomic context when code wants to access the contents of a
++ * page that might be allocated from high memory (see __GFP_HIGHMEM), for
++ * example a page in the pagecache.  The API has two functions, and they
++ * can be used in a manner similar to the following:
++ *
++ * -- Find the page of interest. --
++ * struct page *page = find_get_page(mapping, offset);
++ *
++ * -- Gain access to the contents of that page. --
++ * void *vaddr = kmap_atomic(page);
++ *
++ * -- Do something to the contents of that page. --
++ * memset(vaddr, 0, PAGE_SIZE);
++ *
++ * -- Unmap that page. --
++ * kunmap_atomic(vaddr);
++ *
++ * Note that the kunmap_atomic() call takes the result of the kmap_atomic()
++ * call, not the argument.
++ *
++ * If you need to map two pages because you want to copy from one page to
++ * another you need to keep the kmap_atomic calls strictly nested, like:
++ *
++ * vaddr1 = kmap_atomic(page1);
++ * vaddr2 = kmap_atomic(page2);
++ *
++ * memcpy(vaddr1, vaddr2, PAGE_SIZE);
++ *
++ * kunmap_atomic(vaddr2);
++ * kunmap_atomic(vaddr1);
+  */
+ static inline void *kmap_atomic(struct page *page);
+ 
 -- 
 2.34.1
 
