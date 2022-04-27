@@ -1,72 +1,109 @@
-Received: from mail-ej1-f53.google.com (mail-ej1-f53.google.com [209.85.218.53])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C0A167B;
-	Wed, 27 Apr 2022 15:37:32 +0000 (UTC)
-Received: by mail-ej1-f53.google.com with SMTP id r13so4197552ejd.5;
-        Wed, 27 Apr 2022 08:37:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=dNqxfkqFclQA7PXgOfrmIV8J2NtUqFWiqkPpYcES2h0=;
-        b=gZUesZ+UkvRyTGGiwlhLhgiwcgfhcr6YnGD75pwQU7IODUksKldYQkWR/QX21VRjMX
-         iOMydL3N6dCsZQbDLndyHb6qBjexcHR9uoLJG8kouc6sTc8n9E3++meWL26y95Au6kMH
-         aUY3Q6crgZq1bhA2L4u3fwvUPlXw0qu5Rxdh6O8HkDc9kczVraSiOib7Shnvu8krL87V
-         pEjfo0am84dDiaP1h4TZ6kb6wnIWEUjTURI1BKLVNxQVfGn02p40JB3F0ZJixoUXUAar
-         xMdf/TSItRI49Z4sOlqtDiHjVAE/QYz0iY3GPnMRvI91i2N2ri1fNoohLHAKfM8op1yy
-         22Qw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=dNqxfkqFclQA7PXgOfrmIV8J2NtUqFWiqkPpYcES2h0=;
-        b=5YVHU0CwIUkm/m6IbwEZh+Xzd9xVy8Z8TMQ3tP6BmYMpM83u6GhHvo75me09Pt3zya
-         rLUF58A35/wcqi+yVeVHXiZoKZzyZt5Ha/PvMS8bxqp0DlyIRv+uiMfruHjrtGb7PLw6
-         R3V1k9C5MVUNH5pAsKOsj6NUQUJ32olbk1stKr2q2i6SGoYVn0weWGcMyho+w62h2nQZ
-         Sgc7zKMN7IZHd6M+RagN2mMo07ZfccHNqATBerFKbX4yhheYYYdYoKk5UnMzpAy88wXL
-         9riQi1ndnZ2KGwLC5TZ7eq9Et3ZMP3Q4bAytM8N3pd9I5GvEA0fWPIHBgQq0lDKQ9fgK
-         ZBCw==
-X-Gm-Message-State: AOAM5304OOh7cPeiuPd6ZfNpkGNJzMXI4TKIzt/jfw46ktHPTHz8n6rv
-	uee85qSKN15Wy976oo8muw6FA8n7IPENJLVuV3c=
-X-Google-Smtp-Source: ABdhPJyxcoedA4AG/7v0zbg4RNRy8/x3P6pyVM4SPXZfJAD1qDqx5sgN+MwOIPT6a+8l0hVZBNgIbWNsGAbBamGB6oc=
-X-Received: by 2002:a17:907:7b83:b0:6e8:c2c8:1f14 with SMTP id
- ne3-20020a1709077b8300b006e8c2c81f14mr27432948ejc.356.1651073851032; Wed, 27
- Apr 2022 08:37:31 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AA6A97B;
+	Wed, 27 Apr 2022 16:24:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1651076671; x=1682612671;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=xbVkhqUprSffI6k9578RyOtKLKT5PDGpfnHI0RkdbJg=;
+  b=TA0/ftZoB/ez/G1Tt5STYHdZczL9VAOTHnWcnLWPUHPPVSf7m3rPWRKR
+   fu3G8BiQHDT5jt6g/uaPP7FuP0Dmnyi0v38KEg6qtIGmM2gNA+/FcVHmH
+   8Ttl7VxwjSaAWLOmtKScPC9eSZ/qb3IVADXZNzZgQaPgYvIvbm9DnLcUt
+   OOBC7DlsjWBZkQ3zFFeu8t65q2ZMCAwde6NS+2XpzQ3A1BRa1H99xJ7vj
+   HuRTCkdH16NG9XheL2ndBwudCf0PW0ewgBaf5rsx4mjxRRIkz05fJlryY
+   i4+MpaexPYiNu/MsytyryVv+ECmZkCbqlamzqJMD7wllwibfqi7orsniw
+   A==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10330"; a="266151257"
+X-IronPort-AV: E=Sophos;i="5.90,293,1643702400"; 
+   d="scan'208";a="266151257"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Apr 2022 09:15:06 -0700
+X-IronPort-AV: E=Sophos;i="5.90,293,1643702400"; 
+   d="scan'208";a="533293590"
+Received: from alison-desk.jf.intel.com (HELO alison-desk) ([10.54.74.41])
+  by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Apr 2022 09:15:06 -0700
+Date: Wed, 27 Apr 2022 09:16:33 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Bruno Moreira-Guedes <codeagain@codeagain.dev>,
+	Martyn Welch <martyn@welchs.me.uk>,
+	Manohar Vanga <manohar.vanga@gmail.com>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy@lists.linux.dev,
+	Bruno's Patch Watchbox <patch-reply@codeagain.dev>
+Subject: Re: [PATCH v3 0/3] staging: vme: Cleanup driver tree old structures
+Message-ID: <20220427161633.GA1314857@alison-desk>
+References: <cover.1650321310.git.codeagain@codeagain.dev>
+ <YmA4QIRfx2QPhEJi@kroah.com>
+ <3e91b72a86294b542acf460657d0fd94adeb252e.camel@welchs.me.uk>
+ <YmJNqMjXEc4KGrJ8@kroah.com>
+ <20220427121851.4e2rjbbabw5sh3lk@AN5Bruno>
+ <Ymk3qimGl1tTjpSL@kroah.com>
+ <20220427124114.woiiuxr6pnxvadwg@AN5Bruno>
+ <YmlA1w124Ws2z/RV@kroah.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-References: <cover.1650568579.git.jhpark1013@gmail.com> <bba338ae5f9992dbf2a64b388f7702e6b287d8c2.1650568579.git.jhpark1013@gmail.com>
- <YmK/o23YIeXwKlep@kroah.com>
-In-Reply-To: <YmK/o23YIeXwKlep@kroah.com>
-From: Jaehee <jhpark1013@gmail.com>
-Date: Wed, 27 Apr 2022 11:37:19 -0400
-Message-ID: <CAA1TwFDMpNuWjKDBW2L0q31FHHUcQ8RyrYBpVDAOmQCHV+qxTw@mail.gmail.com>
-Subject: Re: [PATCH v4 7/7] staging: r8188eu: remove unused else condition
-To: Greg KH <gregkh@linuxfoundation.org>
-Cc: Larry Finger <Larry.Finger@lwfinger.net>, Phillip Potter <phil@philpotter.co.uk>, 
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, 
-	Outreachy Linux Kernel <outreachy@lists.linux.dev>, Pavel Skripkin <paskripkin@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <YmlA1w124Ws2z/RV@kroah.com>
 
-On Fri, Apr 22, 2022 at 10:45 AM Greg KH <gregkh@linuxfoundation.org> wrote:
->
-> On Thu, Apr 21, 2022 at 03:20:32PM -0400, Jaehee Park wrote:
-> > s_ret cannot return '2' so this else condition is unused. Remove this
-> > unnecessary else statement.
->
-> s_ret is not a function, it is a value.
-> rtw_select_and_join_from_scanned_queue() is the function here.
->
-> Can you fix up the wording in this changelog text and resubmit?
->
+On Wed, Apr 27, 2022 at 03:10:47PM +0200, Greg Kroah-Hartman wrote:
+> On Wed, Apr 27, 2022 at 09:41:14AM -0300, Bruno Moreira-Guedes wrote:
+> > On Wed, Apr 27, 2022 at 02:31:38PM +0200, Greg Kroah-Hartman wrote:
+> > > On Wed, Apr 27, 2022 at 09:18:51AM -0300, Bruno Moreira-Guedes wrote:
+> > > > Hello,
+> > > > 
+> > > > On Fri, Apr 22, 2022 at 08:39:36AM +0200, Greg Kroah-Hartman wrote:
+> > > > > On Thu, Apr 21, 2022 at 08:16:05PM +0100, Martyn Welch wrote:
+> > > > > > On Wed, 2022-04-20 at 18:43 +0200, Greg Kroah-Hartman wrote:
+> > > > > > > On Mon, Apr 18, 2022 at 08:29:49PM -0300, Bruno Moreira-Guedes wrote:
+> > > > > > > > This patch series modify the vme_user driver's place in
+> > > > > > > > menuconfig (1/3), fixes a missing `depends on` line in a Kconfig
+> > > > > > > > file
+> > > > > > > > (2/3), and rearrages the directory tree for the driver allowing a
+> > > > > > > > more
+> > > > > > > > straightforward comprehension of its contents (3/3).
+> > > > > > > > 
+> > > > > > > > The 'vme_user/' driver is the only remaining vme-family driver in
+> > > > > > > > the
+> > > > > > > > 'staging/' tree, but its structure, entry in menuconfig and
+> > > > > > > > building
+> > > > > > > > routines are still attached to the 'vme/' subtree now outside
+> > > > > > > > 'staging/'. The present patchset fixes it.
+> > > > > > > > 
+> > > > > > > > Signed-off-by: Bruno Moreira-Guedes <codeagain@codeagain.dev>
+> > > > > > > 
+> > > > > > > What about deleting the vme drivers entirely?
+> > > > > > 
+> > > > > > I assume you're suggesting deleting the "vme_user" driver from the
+> > > > > > staging directory?
+> > > > > 
+> > > > > Yes, at the very least given that no one has tried to fix it up and get
+> > > > > it out of staging in many years.
+> > > > 
+> > > > While I cannot comment anything on that regard, I imagine the v4 I sent
+> > > > a couple of days ago will wait for that decision, right?
+> > > 
+> > > I do not know what you are referring to, sorry.  My staging patch queue
+> > > is empty right now.
+> > Ohhh, okay, no problem, I have sent a v4 around 6 days ago and thought
+> > you were waiting on this definition.
+
+Bruno - I see your patches was applied to staging-testing
+https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/log/?h=staging-testing
+
+
+> 
+> If I did not take it, please resend.
+> 
 > thanks,
->
+> 
 > greg k-h
-
-Sorry about the delay! I've sent the revised patch just now.
-Thanks,
-Jaehee
+> 
