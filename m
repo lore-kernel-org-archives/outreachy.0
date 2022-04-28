@@ -1,175 +1,161 @@
-Received: from mail-qk1-f181.google.com (mail-qk1-f181.google.com [209.85.222.181])
+Received: from mail-ed1-f42.google.com (mail-ed1-f42.google.com [209.85.208.42])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2A03110E4
-	for <outreachy@lists.linux.dev>; Thu, 28 Apr 2022 16:48:37 +0000 (UTC)
-Received: by mail-qk1-f181.google.com with SMTP id j6so4043949qkp.9
-        for <outreachy@lists.linux.dev>; Thu, 28 Apr 2022 09:48:37 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 20222136B
+	for <outreachy@lists.linux.dev>; Thu, 28 Apr 2022 16:50:16 +0000 (UTC)
+Received: by mail-ed1-f42.google.com with SMTP id g20so6202033edw.6
+        for <outreachy@lists.linux.dev>; Thu, 28 Apr 2022 09:50:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=date:from:to:subject:message-id:mime-version:content-disposition;
-        bh=jIsF3rtsv3dyUOQ/FdznlMAXrqwzsrDR2DOibUIzDjk=;
-        b=fygncZzLsSXOIjgmndzq6gFHu5FVcSIXjY/5VfO5Ml+kfVO2NSFjbKnKQhcj+lLBMr
-         f7Ht2rWB0MJjT3tijmBhWbaZvBIylennOHxMTd0sgve/QzD51NQkB/yfVFj2/ZJJIENQ
-         UqY5l1w7QyT/x3NwSuPo5J1ACcO8FwOT3kx6ZYmfvZIeYeMywAVOMTWxP0jCWijjNQOM
-         qL6poXSywzG0MLhSJYfBOy244ZMZoYBB/hOecJiRGgvXDBwvMZ+UDTckiO/+05IqOUZD
-         Czlxs9kydBib5JbE2xz0je2aeqgl7Nd8e1YhlCH0Ew+6klAR2vCAWmp7jKt3tIkjkKdK
-         aXdg==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=lBCi16HS8lt1DUU2ZqCqxNzFXhSbfL3w7CctSXMZjg0=;
+        b=Md+UgvZ8cxffEMcXxUHhUqKs9BRiH0Bfg1FUoO2mxXCZ4GpyoIi68NZ2SCkFvrBDK8
+         l0EVD9SELo1n7N/0IF0PxTIL8MRc5pmMb59rRV/LgHsgmotLggRxxwIk48GdcS8UejxX
+         LG2V6doq9zhilGofyUW4KNx3hx1ee7IGwBlRwuG9LHkexnpNg42RCJnX++/M58iCnEr4
+         U/8LJOQ+lTY/oB4eZbZs/Nup/22ZqzLtn8kZ6f0T4MNpibCTdCbEgFhqowrKHAQmaMab
+         Qun/+yCJg9cB6rcFTZLWrlg6L7KeOGFbHQ+keHpkY1A7qJJrlqPRPjxOF8WutfYEOaS2
+         Ex8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
-         :content-disposition;
-        bh=jIsF3rtsv3dyUOQ/FdznlMAXrqwzsrDR2DOibUIzDjk=;
-        b=g33BFFjLOmEAEbT4GHTxoF3I30kcNQgXBzzffrA/cTb2X77G1JvlNVFIBb+OdTnlST
-         PmHu4JaAklgdXSRuTUNkyD7cM4WwFdHL4ag5xfvItCpRf8I5hrTZjnHflecd22XbFYbk
-         +OFKS2916VZYiV+zwAniM+4/N5Zfd/FnR3sVVE42ybvveHVheu69GhNVLvDP/HcFJrvP
-         xZh6mNu4zj6Aa9adpA3jJrPD1LKIKmnS9x0y36od4Np4ugC28Vg2/laF1qcK2A4qWGsC
-         BKnJFhmj0qhXRDsZ+ibEZASNeNn0kp0l75n+70OIKswciLm/7CYzPzA6FLh+zfxONlpp
-         PW3g==
-X-Gm-Message-State: AOAM5320r3XiZ59vfqcEmcs+G3s6QTTONSQ/s2XrEsEHhUfK2SMTVeGD
-	13fG7Psxjog63MGmokeLWqSksMrT6zajQw==
-X-Google-Smtp-Source: ABdhPJyTgs6wVjajO/KKaxckAlLrkI9QsItKrEQqXeaY3UrkJ3Ttegn4SEE7JTNw8EC0rMhN8wFvrQ==
-X-Received: by 2002:a37:6b07:0:b0:69f:6115:3c9e with SMTP id g7-20020a376b07000000b0069f61153c9emr12125327qkc.508.1651164515689;
-        Thu, 28 Apr 2022 09:48:35 -0700 (PDT)
-Received: from jaehee-ThinkPad-X1-Extreme ([4.34.18.218])
-        by smtp.gmail.com with ESMTPSA id t125-20020a372d83000000b0069c1df12422sm195423qkh.84.2022.04.28.09.48.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 28 Apr 2022 09:48:34 -0700 (PDT)
-Date: Thu, 28 Apr 2022 12:48:31 -0400
-From: Jaehee Park <jhpark1013@gmail.com>
-To: outreachy@lists.linux.dev, Julia Denham <jdenham@redhat.com>,
-	Roopa Prabhu <roopa.prabhu@gmail.com>,
-	Stefano Brivio <sbrivio@redhat.com>, netdev@vger.kernel.org,
-	jhpark1013@gmail.com, Roopa Prabhu <roopa@nvidia.com>,
-	David Ahern <dsahern@gmail.com>
-Subject: [PATCH net-next v3] selftests: net: vrf_strict_mode_test: add
- support to select a test to run
-Message-ID: <20220428164831.GA577338@jaehee-ThinkPad-X1-Extreme>
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=lBCi16HS8lt1DUU2ZqCqxNzFXhSbfL3w7CctSXMZjg0=;
+        b=bj1HW5TRBTvMzQDaJQVVUJ9IaMhkYVhC71GBdG9pgbMsHUWvDuA3olaXERqB2cLRoS
+         rgku9J3kA6zhimD9219zY1HIj8jRdeDMxcbyL4du2VhA55IFN3thFxbUy27KiEfu9DDE
+         ohc8YK7dg8Cabk+9UYolbmM5MLYJ7V8wm9fkMhk9LE5qlI/O4s4EjySY3khUDb3LyZJ8
+         aHTw2q6h5bN4vJI3yLOaOEuU0h3o8u96fkFiTumboVoGKLje7MJAw5+SD6JwBJ3yQvPF
+         7LRZ9j7FKLi5h9ex0l0r4UMo3kKp2PKtEsnTEMnpHIbBEjTFq4qWs974uML04jjCiV3D
+         Ro+w==
+X-Gm-Message-State: AOAM531RsIkrfpC7Vhk0FSaLigvmqBDDPGDQO1ua4dS3iInc1L1LWmS+
+	SY8+iKTMn5YajyTr6Q0+YrG9FIH9/czOkXVJ0WA=
+X-Google-Smtp-Source: ABdhPJwAR1SAV4Q5qt330RNg2nZFevbCIv6bpXDMPAYO1gySiVqzMc61mfXVcpPUCC3TSSltk0xcD911rHrza5CToaQ=
+X-Received: by 2002:a05:6402:d51:b0:425:d5e1:e9f0 with SMTP id
+ ec17-20020a0564020d5100b00425d5e1e9f0mr28299266edb.125.1651164614226; Thu, 28
+ Apr 2022 09:50:14 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+References: <20220421164022.GA3485225@jaehee-ThinkPad-X1-Extreme>
+ <c2eb6a8a-531e-7a6e-267c-23577f2e95e8@nvidia.com> <07614827-2527-fc9d-43da-d8a30d987494@gmail.com>
+In-Reply-To: <07614827-2527-fc9d-43da-d8a30d987494@gmail.com>
+From: Jaehee <jhpark1013@gmail.com>
+Date: Thu, 28 Apr 2022 12:50:02 -0400
+Message-ID: <CAA1TwFD5wfA9oXT1PrbLsootEO_C=PAeytbeQFwj=Go8+gc1CQ@mail.gmail.com>
+Subject: Re: [PATCH net-next v2] selftests: net: vrf_strict_mode_test: add
+ support to select a test to run
+To: David Ahern <dsahern@gmail.com>
+Cc: Roopa Prabhu <roopa@nvidia.com>, Outreachy Linux Kernel <outreachy@lists.linux.dev>, 
+	Julia Denham <jdenham@redhat.com>, Roopa Prabhu <roopa.prabhu@gmail.com>, 
+	Stefano Brivio <sbrivio@redhat.com>, netdev@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 
-Add a boilerplate test loop to run all tests in
-vrf_strict_mode_test.sh. Add a -t flag that allows a selected test to
-run.
+On Sun, Apr 24, 2022 at 12:29 PM David Ahern <dsahern@gmail.com> wrote:
+>
+> On 4/23/22 9:48 PM, Roopa Prabhu wrote:
+> >
+> > On 4/21/22 09:40, Jaehee Park wrote:
+> >> Add a boilerplate test loop to run all tests in
+> >> vrf_strict_mode_test.sh. Add a -t flag that allows a selected test to
+> >> run.
+> >>
+> >> Signed-off-by: Jaehee Park <jhpark1013@gmail.com>
+> >> ---
+> >
+> > Thanks Jaehee.
+> >
+> > CC, David Ahern
+> >
+> > David, this might be an overkill for this test. But nonetheless a step
+> > towards bringing some uniformity in the tests.
+> >
+> > next step is to ideally move this to a library to remove repeating this
+> > boilerplate loop in every test.
+> >
+> >
+> > .../selftests/net/vrf_strict_mode_test.sh | 31 ++++++++++++++++++-
+> >
+> >>   1 file changed, 30 insertions(+), 1 deletion(-)
+> >>
+> >> diff --git a/tools/testing/selftests/net/vrf_strict_mode_test.sh
+> >> b/tools/testing/selftests/net/vrf_strict_mode_test.sh
+> >> index 865d53c1781c..ca4379265706 100755
+> >> --- a/tools/testing/selftests/net/vrf_strict_mode_test.sh
+> >> +++ b/tools/testing/selftests/net/vrf_strict_mode_test.sh
+> >> @@ -14,6 +14,8 @@ INIT_NETNS_NAME="init"
+> >>     PAUSE_ON_FAIL=${PAUSE_ON_FAIL:=no}
+> >>   +TESTS="init testns mix"
+> >> +
+> >>   log_test()
+> >>   {
+> >>       local rc=$1
+> >> @@ -353,6 +355,23 @@ vrf_strict_mode_tests()
+> >>       vrf_strict_mode_tests_mix
+> >>   }
+>
+> Add:
+>
+> ################################################################################
+> # usage
+>
+> >>   +usage()
+> >> +{
+> >> +    cat <<EOF
+> >> +usage: ${0##*/} OPTS
+> >> +
+> >> +    -t <test> Test(s) to run (default: all)
+> >> +          (options: $TESTS)
+> >> +EOF
+> >> +}
+>
+> Add:
+>
+> ################################################################################
+> # main
+>
+> >> +while getopts ":t:h" opt; do
+> >> +    case $opt in
+> >> +        t) TESTS=$OPTARG;;
+> >> +        h) usage; exit 0;;
+> >> +        *) usage; exit 1;;
+> >> +    esac
+> >> +done
+> >> +
+> >>   vrf_strict_mode_check_support()
+> >>   {
+> >>       local nsname=$1
+> >> @@ -391,7 +410,17 @@ fi
+> >>   cleanup &> /dev/null
+> >>     setup
+> >> -vrf_strict_mode_tests
+> >> +for t in $TESTS
+> >> +do
+> >> +    case $t in
+> >> +    vrf_strict_mode_tests_init|init) vrf_strict_mode_tests_init;;
+> >> +    vrf_strict_mode_tests_testns|testns) vrf_strict_mode_tests_testns;;
+> >> +    vrf_strict_mode_tests_mix|mix) vrf_strict_mode_tests_mix;;
+> >> +
+> >> +    help) echo "Test names: $TESTS"; exit 0;;
+> >> +
+> >> +    esac
+> >> +done
+> >>   cleanup
+> >>     print_log_test_results
+>
+> This change makes vrf_strict_mode_tests unused. Move the log_section
+> before the tests in that function to the function handling the test.
+> e.g., move 'log_section "VRF strict_mode test on init network
+> namespace"' to vrf_strict_mode_tests_init.
+>
+> Alsom, make sure you are using tabs for indentation vs spaces.
 
-Signed-off-by: Jaehee Park <jhpark1013@gmail.com>
----
-version 3:
-- Added commented delineators to section the code for improved 
-readability.
-- Moved the log_section() call into the functions handling the tests.
-- Removed unnecessary spaces.
+Hi David,
 
+Sorry about the delay in getting these fixes to you and thank you for
+your review and comments! I've sent the revised patch just now.
 
- .../selftests/net/vrf_strict_mode_test.sh     | 47 +++++++++++++++++--
- 1 file changed, 43 insertions(+), 4 deletions(-)
-
-diff --git a/tools/testing/selftests/net/vrf_strict_mode_test.sh b/tools/testing/selftests/net/vrf_strict_mode_test.sh
-index 865d53c1781c..423da8e08510 100755
---- a/tools/testing/selftests/net/vrf_strict_mode_test.sh
-+++ b/tools/testing/selftests/net/vrf_strict_mode_test.sh
-@@ -14,6 +14,8 @@ INIT_NETNS_NAME="init"
- 
- PAUSE_ON_FAIL=${PAUSE_ON_FAIL:=no}
- 
-+TESTS="init testns mix"
-+
- log_test()
- {
- 	local rc=$1
-@@ -262,6 +264,8 @@ cleanup()
- 
- vrf_strict_mode_tests_init()
- {
-+	log_section "VRF strict_mode test on init network namespace"
-+
- 	vrf_strict_mode_check_support init
- 
- 	strict_mode_check_default init
-@@ -292,6 +296,8 @@ vrf_strict_mode_tests_init()
- 
- vrf_strict_mode_tests_testns()
- {
-+	log_section "VRF strict_mode test on testns network namespace"
-+
- 	vrf_strict_mode_check_support testns
- 
- 	strict_mode_check_default testns
-@@ -318,6 +324,8 @@ vrf_strict_mode_tests_testns()
- 
- vrf_strict_mode_tests_mix()
- {
-+	log_section "VRF strict_mode test mixing init and testns network namespaces"
-+
- 	read_strict_mode_compare_and_check init 1
- 
- 	read_strict_mode_compare_and_check testns 0
-@@ -343,16 +351,37 @@ vrf_strict_mode_tests_mix()
- 
- vrf_strict_mode_tests()
- {
--	log_section "VRF strict_mode test on init network namespace"
- 	vrf_strict_mode_tests_init
- 
--	log_section "VRF strict_mode test on testns network namespace"
- 	vrf_strict_mode_tests_testns
- 
--	log_section "VRF strict_mode test mixing init and testns network namespaces"
- 	vrf_strict_mode_tests_mix
- }
- 
-+################################################################################
-+# usage
-+
-+usage()
-+{
-+	cat <<EOF
-+usage: ${0##*/} OPTS
-+
-+	-t <test>	Test(s) to run (default: all)
-+			(options: $TESTS)
-+EOF
-+}
-+
-+################################################################################
-+# main
-+
-+while getopts ":t:h" opt; do
-+	case $opt in
-+		t) TESTS=$OPTARG;;
-+		h) usage; exit 0;;
-+		*) usage; exit 1;;
-+	esac
-+done
-+
- vrf_strict_mode_check_support()
- {
- 	local nsname=$1
-@@ -391,7 +420,17 @@ fi
- cleanup &> /dev/null
- 
- setup
--vrf_strict_mode_tests
-+for t in $TESTS
-+do
-+	case $t in
-+	vrf_strict_mode_tests_init|init) vrf_strict_mode_tests_init;;
-+	vrf_strict_mode_tests_testns|testns) vrf_strict_mode_tests_testns;;
-+	vrf_strict_mode_tests_mix|mix) vrf_strict_mode_tests_mix;;
-+
-+	help) echo "Test names: $TESTS"; exit 0;;
-+
-+	esac
-+done
- cleanup
- 
- print_log_test_results
--- 
-2.25.1
-
+Thanks,
+Jaehee
