@@ -1,83 +1,175 @@
-Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-qk1-f181.google.com (mail-qk1-f181.google.com [209.85.222.181])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 162CAEB8
-	for <outreachy@lists.linux.dev>; Thu, 28 Apr 2022 16:34:53 +0000 (UTC)
-Date: Thu, 28 Apr 2022 18:34:50 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020; t=1651163691;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=D4IYzK4skMcshvqsyuOfqpCXfosOxqx0uW/iv4Scnbo=;
-	b=We0NfvK3dDgo1MmaO1oe+HaQNGlP+RYJTdR/JDmYFAQAfc5W65605nC5vH/9Z/XGUGBQAL
-	foI+vP4bIwUDV+p1wk2f26qbnMYvoGiAMOS0edDSdpMb0S4HV8nZUA2a0wEG82aUZ0LVlI
-	nbwE5WiFeKIXRgDwDGQ7Zjzdt8I5zT5yer39IKwRSFzTd5VS3foN45pvIqRA6rgdQjajbN
-	nnyOPxGwhWlDWUjUTgNTQ/q/H2L6JkiaCOK0Tx5ZIs6Wb2e2KsBnJhxj6EEPd3tVFJF693
-	GSbIRee2Nve7KFCMU1UBGfFT4/v8L+3vWHyNqehXPpT+kqkPTkfTB3bubDS+BQ==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020e; t=1651163691;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=D4IYzK4skMcshvqsyuOfqpCXfosOxqx0uW/iv4Scnbo=;
-	b=eIJZCZ63DW+C5rUkw5LE1bT7Hm+mj2yYHcNJ9MaXuuBEwcCHruY1kdLsPbgIvrUunFaazH
-	0eABWJMEqSif0SDw==
-From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
-To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Cc: Ira Weiny <ira.weiny@intel.com>,
-	Andrew Morton <akpm@linux-foundation.org>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	"Matthew Wilcox (Oracle)" <willy@infradead.org>,
-	Will Deacon <will@kernel.org>, Peter Collingbourne <pcc@google.com>,
-	Vlastimil Babka <vbabka@suse.cz>, linux-kernel@vger.kernel.org,
-	linux-doc@vger.kernel.org, outreachy@lists.linux.dev,
-	Jonathan Corbet <corbet@lwn.net>,
-	Thomas Gleixner <tglx@linutronix.de>,
-	Peter Zijlstra <peterz@infradead.org>
-Subject: Re: [PATCH v3 4/4] Documentation/vm: Rework "Temporary Virtual
- Mappings" section
-Message-ID: <YmrCKtGaCbD5SQtY@linutronix.de>
-References: <20220427183821.1979-1-fmdefrancesco@gmail.com>
- <20220427183821.1979-5-fmdefrancesco@gmail.com>
- <YmpYEkvbJX2JBPvW@linutronix.de>
- <6442788.4vTCxPXJkl@leap>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2A03110E4
+	for <outreachy@lists.linux.dev>; Thu, 28 Apr 2022 16:48:37 +0000 (UTC)
+Received: by mail-qk1-f181.google.com with SMTP id j6so4043949qkp.9
+        for <outreachy@lists.linux.dev>; Thu, 28 Apr 2022 09:48:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=date:from:to:subject:message-id:mime-version:content-disposition;
+        bh=jIsF3rtsv3dyUOQ/FdznlMAXrqwzsrDR2DOibUIzDjk=;
+        b=fygncZzLsSXOIjgmndzq6gFHu5FVcSIXjY/5VfO5Ml+kfVO2NSFjbKnKQhcj+lLBMr
+         f7Ht2rWB0MJjT3tijmBhWbaZvBIylennOHxMTd0sgve/QzD51NQkB/yfVFj2/ZJJIENQ
+         UqY5l1w7QyT/x3NwSuPo5J1ACcO8FwOT3kx6ZYmfvZIeYeMywAVOMTWxP0jCWijjNQOM
+         qL6poXSywzG0MLhSJYfBOy244ZMZoYBB/hOecJiRGgvXDBwvMZ+UDTckiO/+05IqOUZD
+         Czlxs9kydBib5JbE2xz0je2aeqgl7Nd8e1YhlCH0Ew+6klAR2vCAWmp7jKt3tIkjkKdK
+         aXdg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:date:from:to:subject:message-id:mime-version
+         :content-disposition;
+        bh=jIsF3rtsv3dyUOQ/FdznlMAXrqwzsrDR2DOibUIzDjk=;
+        b=g33BFFjLOmEAEbT4GHTxoF3I30kcNQgXBzzffrA/cTb2X77G1JvlNVFIBb+OdTnlST
+         PmHu4JaAklgdXSRuTUNkyD7cM4WwFdHL4ag5xfvItCpRf8I5hrTZjnHflecd22XbFYbk
+         +OFKS2916VZYiV+zwAniM+4/N5Zfd/FnR3sVVE42ybvveHVheu69GhNVLvDP/HcFJrvP
+         xZh6mNu4zj6Aa9adpA3jJrPD1LKIKmnS9x0y36od4Np4ugC28Vg2/laF1qcK2A4qWGsC
+         BKnJFhmj0qhXRDsZ+ibEZASNeNn0kp0l75n+70OIKswciLm/7CYzPzA6FLh+zfxONlpp
+         PW3g==
+X-Gm-Message-State: AOAM5320r3XiZ59vfqcEmcs+G3s6QTTONSQ/s2XrEsEHhUfK2SMTVeGD
+	13fG7Psxjog63MGmokeLWqSksMrT6zajQw==
+X-Google-Smtp-Source: ABdhPJyTgs6wVjajO/KKaxckAlLrkI9QsItKrEQqXeaY3UrkJ3Ttegn4SEE7JTNw8EC0rMhN8wFvrQ==
+X-Received: by 2002:a37:6b07:0:b0:69f:6115:3c9e with SMTP id g7-20020a376b07000000b0069f61153c9emr12125327qkc.508.1651164515689;
+        Thu, 28 Apr 2022 09:48:35 -0700 (PDT)
+Received: from jaehee-ThinkPad-X1-Extreme ([4.34.18.218])
+        by smtp.gmail.com with ESMTPSA id t125-20020a372d83000000b0069c1df12422sm195423qkh.84.2022.04.28.09.48.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 28 Apr 2022 09:48:34 -0700 (PDT)
+Date: Thu, 28 Apr 2022 12:48:31 -0400
+From: Jaehee Park <jhpark1013@gmail.com>
+To: outreachy@lists.linux.dev, Julia Denham <jdenham@redhat.com>,
+	Roopa Prabhu <roopa.prabhu@gmail.com>,
+	Stefano Brivio <sbrivio@redhat.com>, netdev@vger.kernel.org,
+	jhpark1013@gmail.com, Roopa Prabhu <roopa@nvidia.com>,
+	David Ahern <dsahern@gmail.com>
+Subject: [PATCH net-next v3] selftests: net: vrf_strict_mode_test: add
+ support to select a test to run
+Message-ID: <20220428164831.GA577338@jaehee-ThinkPad-X1-Extreme>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <6442788.4vTCxPXJkl@leap>
 
-On 2022-04-28 13:14:30 [+0200], Fabio M. De Francesco wrote:
-> > > +  should be only used if it is absolutely required, otherwise 
-> kmap_local_page()
-> > > +  should be used where it is feasible.
-> > 
-> > I'm not keen about the "absolutely required" wording and "feasible".
-> > That said, the other pieces look good, thank you for the work.
-> 
-> I'll rewrite the last part of this sentence as it follows:
-> 
-> + should be only used if it is required, otherwise kmap_local_page()
-> + should be preferred.
+Add a boilerplate test loop to run all tests in
+vrf_strict_mode_test.sh. Add a -t flag that allows a selected test to
+run.
 
-Yeah, my point is that it shouldn't be required. Using a kmap_atomic()
-mapping only because it is not limited to a thread/ CPU sounds wrong.
-This shouldn't be a valid requirement. Therefore kmap_local() should
-always be the way to go.
+Signed-off-by: Jaehee Park <jhpark1013@gmail.com>
+---
+version 3:
+- Added commented delineators to section the code for improved 
+readability.
+- Moved the log_section() call into the functions handling the tests.
+- Removed unnecessary spaces.
 
-Anyway, I can live with that and hopefully that interface will removed
-soon :) You yourself, as you pointed out, removed a user or two so I'm
-confident that it will happen at some point ;)
 
-> Thank you so much for the time you have spent for reviewing and helping,
+ .../selftests/net/vrf_strict_mode_test.sh     | 47 +++++++++++++++++--
+ 1 file changed, 43 insertions(+), 4 deletions(-)
 
-You are welcome.
+diff --git a/tools/testing/selftests/net/vrf_strict_mode_test.sh b/tools/testing/selftests/net/vrf_strict_mode_test.sh
+index 865d53c1781c..423da8e08510 100755
+--- a/tools/testing/selftests/net/vrf_strict_mode_test.sh
++++ b/tools/testing/selftests/net/vrf_strict_mode_test.sh
+@@ -14,6 +14,8 @@ INIT_NETNS_NAME="init"
+ 
+ PAUSE_ON_FAIL=${PAUSE_ON_FAIL:=no}
+ 
++TESTS="init testns mix"
++
+ log_test()
+ {
+ 	local rc=$1
+@@ -262,6 +264,8 @@ cleanup()
+ 
+ vrf_strict_mode_tests_init()
+ {
++	log_section "VRF strict_mode test on init network namespace"
++
+ 	vrf_strict_mode_check_support init
+ 
+ 	strict_mode_check_default init
+@@ -292,6 +296,8 @@ vrf_strict_mode_tests_init()
+ 
+ vrf_strict_mode_tests_testns()
+ {
++	log_section "VRF strict_mode test on testns network namespace"
++
+ 	vrf_strict_mode_check_support testns
+ 
+ 	strict_mode_check_default testns
+@@ -318,6 +324,8 @@ vrf_strict_mode_tests_testns()
+ 
+ vrf_strict_mode_tests_mix()
+ {
++	log_section "VRF strict_mode test mixing init and testns network namespaces"
++
+ 	read_strict_mode_compare_and_check init 1
+ 
+ 	read_strict_mode_compare_and_check testns 0
+@@ -343,16 +351,37 @@ vrf_strict_mode_tests_mix()
+ 
+ vrf_strict_mode_tests()
+ {
+-	log_section "VRF strict_mode test on init network namespace"
+ 	vrf_strict_mode_tests_init
+ 
+-	log_section "VRF strict_mode test on testns network namespace"
+ 	vrf_strict_mode_tests_testns
+ 
+-	log_section "VRF strict_mode test mixing init and testns network namespaces"
+ 	vrf_strict_mode_tests_mix
+ }
+ 
++################################################################################
++# usage
++
++usage()
++{
++	cat <<EOF
++usage: ${0##*/} OPTS
++
++	-t <test>	Test(s) to run (default: all)
++			(options: $TESTS)
++EOF
++}
++
++################################################################################
++# main
++
++while getopts ":t:h" opt; do
++	case $opt in
++		t) TESTS=$OPTARG;;
++		h) usage; exit 0;;
++		*) usage; exit 1;;
++	esac
++done
++
+ vrf_strict_mode_check_support()
+ {
+ 	local nsname=$1
+@@ -391,7 +420,17 @@ fi
+ cleanup &> /dev/null
+ 
+ setup
+-vrf_strict_mode_tests
++for t in $TESTS
++do
++	case $t in
++	vrf_strict_mode_tests_init|init) vrf_strict_mode_tests_init;;
++	vrf_strict_mode_tests_testns|testns) vrf_strict_mode_tests_testns;;
++	vrf_strict_mode_tests_mix|mix) vrf_strict_mode_tests_mix;;
++
++	help) echo "Test names: $TESTS"; exit 0;;
++
++	esac
++done
+ cleanup
+ 
+ print_log_test_results
+-- 
+2.25.1
 
-> Fabio
-
-Sebastian
