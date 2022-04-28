@@ -1,189 +1,149 @@
-Received: from mail-ej1-f44.google.com (mail-ej1-f44.google.com [209.85.218.44])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 004387F5
-	for <outreachy@lists.linux.dev>; Wed, 27 Apr 2022 18:38:37 +0000 (UTC)
-Received: by mail-ej1-f44.google.com with SMTP id gh6so5221178ejb.0
-        for <outreachy@lists.linux.dev>; Wed, 27 Apr 2022 11:38:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=jOs08eZRk6ExS199wzRva9ul3oRppHhYhG8H+SRVTNs=;
-        b=AMCnfbxGjjdKlTzyhbozRm+aS3brrBzQsgur9pRnfMnqBvu/SuIbid8Crrkl+UpJ2A
-         3vqPNbLrcej51RTvsy/6grOFJ2gpJvYXxUhJoioSGBxUpZVmn9LWKugWlsUoVUyLb9PN
-         SeI78ZtISIfEOKQbRTMJolDxr7IeTuYjWX7SOfMU4sTFchUkfO156gbilKnrvXtDOFZC
-         bKWawtwNT4XqEnuQc7pJBNQjP3ZO303Nv2Ox4a51AmYwU27kQzAF/oC8t4y5WtTm4F2t
-         Mlusn2zDvW1bCViW3PJGgln2upWw+xF0B1Y3j+uoV9viNLa0i/7zunE/6Yp0xtOcZI1P
-         Mvmg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=jOs08eZRk6ExS199wzRva9ul3oRppHhYhG8H+SRVTNs=;
-        b=MZQYmdma7hiWXW4ABBb5KLxdlsWhnrWOGy5W7ElD8uHz6AdU9ZmJuTeWsh/BJCbH5T
-         5PPyNluxNGQvJipmrDhu/2XDxHiwxfPOmdy14rrcW6d2fdaloCcfNOFUfIECFp2fOybV
-         3IyxJ6topVOI8RPfXyVJlVhOI8aln+M5gnO/Tr7AsBkn7YpW4vPQ2LWkqApxjGSi6PDb
-         OhHnfE91jLHTeN+qUYIgdYeWE4X0T9ZJ/rJktB6De0b6OLiHR6SY/0I5u1UrgPkmDLQE
-         qOMrcWlcHR35TH4c8Oa2tFf62upn1d72ntQlyCyI5+3SA6VjVmN9xNsiE2SAyegJSBQm
-         vAuA==
-X-Gm-Message-State: AOAM531815rfp7dLlVHQSqvONiMCM7AFIKXBPCpXGCX7FvN5p9VnGRZC
-	V/G013doYRiI4/ka0TAKbuE=
-X-Google-Smtp-Source: ABdhPJwWDatxEfRatj8lLwPfJQ47Zd8rjxiQLgCmNfAWGsGt89ymZa2VnfWy1gE6hzBSiMls3Z9HOw==
-X-Received: by 2002:a17:907:3e2a:b0:6f3:aa0c:ab94 with SMTP id hp42-20020a1709073e2a00b006f3aa0cab94mr11398613ejc.23.1651084716314;
-        Wed, 27 Apr 2022 11:38:36 -0700 (PDT)
-Received: from localhost.localdomain (host-79-50-86-254.retail.telecomitalia.it. [79.50.86.254])
-        by smtp.gmail.com with ESMTPSA id ig8-20020a1709072e0800b006f38f2e9ebesm4691667ejc.64.2022.04.27.11.38.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 27 Apr 2022 11:38:34 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Ira Weiny <ira.weiny@intel.com>,
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7B934EC2
+	for <outreachy@lists.linux.dev>; Thu, 28 Apr 2022 09:02:20 +0000 (UTC)
+Date: Thu, 28 Apr 2022 11:02:10 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020; t=1651136532;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=nj4PDORr37hCPcQ8/+P0dvD7HEbFV5wfOgr3H/Ce7qI=;
+	b=a7A1T8XdWfmHscqJZvPDsuiFPxordnba0GoU6IPgxTszKIUo1tIyjV2tW1D/YB53bTphka
+	EyaH+4b6DYCMJgMkmWdF3sGqZ8DNtPK1zE6eFvVajreZqyV5d1i8sTA3A/hLJ9oYTYYv8g
+	/shcYpZKPEKHdCmqROSWAJquuR1b47ExK8SXTgMcL6QypazELHM9CBZaLV1C63LswnN/Fh
+	MFJlJAnCxgiB2oPhgC1pQ+jsHHAKZhEdCYwpfipD5q1k4x9jnnuAWR8CibZ1ydtDIFmqCd
+	oZYLP3jEfMnzVq6Pro38JYhZwg+ywPSLVoH6y1I5Foi/wcJPeQsGFxxKzzwjgQ==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020e; t=1651136532;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=nj4PDORr37hCPcQ8/+P0dvD7HEbFV5wfOgr3H/Ce7qI=;
+	b=i3+W1bxrqBvRtYliqtDeQplIH/hcjqWnqVqz/OlPBc+Ipf+7rF/UzoseuOHFZcwZ4e+uH5
+	SkVnFxZLoW0CB3Bg==
+From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+Cc: Ira Weiny <ira.weiny@intel.com>,
 	Andrew Morton <akpm@linux-foundation.org>,
 	Catalin Marinas <catalin.marinas@arm.com>,
 	"Matthew Wilcox (Oracle)" <willy@infradead.org>,
-	Will Deacon <will@kernel.org>,
-	Peter Collingbourne <pcc@google.com>,
-	Vlastimil Babka <vbabka@suse.cz>,
-	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
-	linux-kernel@vger.kernel.org,
-	linux-doc@vger.kernel.org,
-	outreachy@lists.linux.dev
-Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>,
+	Will Deacon <will@kernel.org>, Peter Collingbourne <pcc@google.com>,
+	Vlastimil Babka <vbabka@suse.cz>, linux-kernel@vger.kernel.org,
+	linux-doc@vger.kernel.org, outreachy@lists.linux.dev,
 	Jonathan Corbet <corbet@lwn.net>,
 	Thomas Gleixner <tglx@linutronix.de>,
 	Peter Zijlstra <peterz@infradead.org>
-Subject: [PATCH v3 4/4] Documentation/vm: Rework "Temporary Virtual Mappings" section
-Date: Wed, 27 Apr 2022 20:38:21 +0200
-Message-Id: <20220427183821.1979-5-fmdefrancesco@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20220427183821.1979-1-fmdefrancesco@gmail.com>
+Subject: Re: [PATCH v3 4/4] Documentation/vm: Rework "Temporary Virtual
+ Mappings" section
+Message-ID: <YmpYEkvbJX2JBPvW@linutronix.de>
 References: <20220427183821.1979-1-fmdefrancesco@gmail.com>
+ <20220427183821.1979-5-fmdefrancesco@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20220427183821.1979-5-fmdefrancesco@gmail.com>
 
-Extend and rework the "Temporary Virtual Mappings" section of the highmem.rst
-documentation.
+On 2022-04-27 20:38:21 [+0200], Fabio M. De Francesco wrote:
+> index e05bf5524174..c8aff448612b 100644
+> --- a/Documentation/vm/highmem.rst
+> +++ b/Documentation/vm/highmem.rst
+> @@ -50,26 +50,78 @@ space when they use mm context tags.
+=E2=80=A6
+> =20
+> -* kmap().  This permits a short duration mapping of a single page.  It n=
+eeds
+> -  global synchronization, but is amortized somewhat.  It is also prone to
+> -  deadlocks when using in a nested fashion, and so it is not recommended=
+ for
+> -  new code.
+> +  These mappings are thread-local and CPU-local (i.e., migration from on=
+e CPU
+> +  to another is disabled - this is why they are called "local"), but the=
+y don't
+> +  disable preemption.=20
 
-Despite the local kmaps were introduced by Thomas Gleixner in October 2020,
-documentation was still missing information about them. These additions rely
-largely on Gleixner's patches, Jonathan Corbet's LWN articles, comments by
-Ira Weiny and Matthew Wilcox, and in-code comments from highmem.h.
+So if you replace this block with
 
-1) Add a paragraph to document kmap_local_page().
-2) Reorder the list of functions by decreasing order of preference of
-use.
-3) Rework part of the kmap() entry in list.
+   These mappings are thread-local and CPU-local meaning that the mapping
+   can only be accessed from within this thread and the thread is bound the
+   CPU while the mapping is active. Even if the thread is preempted (since
+   preemption is never disabled by the function) the CPU can not be
+   unplugged from the system via CPU-hotplug until the mapping is disposed.
 
-Cc: Jonathan Corbet <corbet@lwn.net>
-Cc: Thomas Gleixner <tglx@linutronix.de>
-Cc: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
-Cc: Matthew Wilcox <willy@infradead.org>
-Cc: Peter Zijlstra <peterz@infradead.org>
-Suggested-by: Ira Weiny <ira.weiny@intel.com>
-Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
----
- Documentation/vm/highmem.rst | 74 ++++++++++++++++++++++++++++++------
- 1 file changed, 63 insertions(+), 11 deletions(-)
+The you could drop the latter block
 
-diff --git a/Documentation/vm/highmem.rst b/Documentation/vm/highmem.rst
-index e05bf5524174..c8aff448612b 100644
---- a/Documentation/vm/highmem.rst
-+++ b/Documentation/vm/highmem.rst
-@@ -50,26 +50,78 @@ space when they use mm context tags.
- Temporary Virtual Mappings
- ==========================
- 
--The kernel contains several ways of creating temporary mappings:
-+The kernel contains several ways of creating temporary mappings. The following
-+list shows them in order of preference of use.
- 
--* vmap().  This can be used to make a long duration mapping of multiple
--  physical pages into a contiguous virtual space.  It needs global
--  synchronization to unmap.
-+* kmap_local_page().  This function is used to require short term mappings.
-+  It can be invoked from any context (including interrupts) but the mappings
-+  can only be used in the context which acquired them.
-+
-+  This function should be preferred, where feasible, over all the others.
- 
--* kmap().  This permits a short duration mapping of a single page.  It needs
--  global synchronization, but is amortized somewhat.  It is also prone to
--  deadlocks when using in a nested fashion, and so it is not recommended for
--  new code.
-+  These mappings are thread-local and CPU-local (i.e., migration from one CPU
-+  to another is disabled - this is why they are called "local"), but they don't
-+  disable preemption. It's valid to take pagefaults in a local kmap region,
-+  unless the context in which the local mapping is acquired does not allow it
-+  for other reasons.
-+
-+  kmap_local_page() always returns a valid virtual address and it is assumed
-+  that kunmap_local() will never fail.
-+
-+  If a task holding local kmaps is preempted, the maps are removed on context
-+  switch and restored when the task comes back on the CPU. The maps are
-+  strictly thread-local and CPU-local, therefore it is guaranteed that the
-+  task stays on the CPU and the CPU cannot be unplugged until the local kmaps
-+  are released.
-+
-+  Nesting kmap_local_page() and kmap_atomic() mappings is allowed to a certain
-+  extent (up to KMAP_TYPE_NR) but their invocations have to be strictly ordered
-+  because the map implementation is stack based. See kmap_local_page () kdocs
-+  (included in the "Functions" section) for details on how to manage nested
-+  mappings.
- 
- * kmap_atomic().  This permits a very short duration mapping of a single
-   page.  Since the mapping is restricted to the CPU that issued it, it
-   performs well, but the issuing task is therefore required to stay on that
-   CPU until it has finished, lest some other task displace its mappings.
- 
--  kmap_atomic() may also be used by interrupt contexts, since it is does not
--  sleep and the caller may not sleep until after kunmap_atomic() is called.
-+  kmap_atomic() may also be used by interrupt contexts, since it does not
-+  sleep and the callers too may not sleep until after kunmap_atomic() is
-+  called.
-+
-+  Each call of kmap_atomic() in the kernel creates a non-preemptible section
-+  and disable pagefaults. This could be a source of unwanted latency, so it
-+  should be only used if it is absolutely required, otherwise kmap_local_page()
-+  should be used where it is feasible.
- 
--  It may be assumed that k[un]map_atomic() won't fail.
-+  It is assumed that k[un]map_atomic() won't fail.
-+
-+* kmap().  This should be used to make short duration mapping of a single
-+  page with no restrictions on preemption or migration. It comes with an
-+  overhead as mapping space is restricted and protected by a global lock
-+  for synchronization. When mapping is no longer needed, the address that
-+  the page was mapped to must be released with kunmap().
-+
-+  Mapping changes must be propagated across all the CPUs. kmap() also
-+  requires global TLB invalidation when the kmap's pool wraps and it might
-+  block when the mapping space is fully utilized until a slot becomes
-+  available. Therefore, kmap() is only callable from preemptible context.
-+
-+  All the above work is necessary if a mapping must last for a relatively
-+  long time but the bulk of high-memory mappings in the kernel are
-+  short-lived and only used in one place. This means that the cost of
-+  kmap() is mostly wasted in such cases. kmap() was not intended for long
-+  term mappings but it has morphed in that direction and its use is
-+  strongly discouraged in newer code and the set of the preceding functions
-+  should be preferred.
-+
-+  On 64-bit systems, calls to kmap_local_page(), kmap_atomic() and kmap() have
-+  no real work to do because a 64-bit address space is more than sufficient to
-+  address all the physical memory whose pages are permanently mapped.
-+
-+* vmap().  This can be used to make a long duration mapping of multiple
-+  physical pages into a contiguous virtual space.  It needs global
-+  synchronization to unmap.
- 
- 
- Cost of Temporary Mappings
--- 
-2.34.1
+>                          It's valid to take pagefaults in a local kmap re=
+gion,
+> +  unless the context in which the local mapping is acquired does not all=
+ow it
+> +  for other reasons.
 
+> +  kmap_local_page() always returns a valid virtual address and it is ass=
+umed
+> +  that kunmap_local() will never fail.
+
+=66rom here
+
+> +  If a task holding local kmaps is preempted, the maps are removed on co=
+ntext
+> +  switch and restored when the task comes back on the CPU. The maps are
+> +  strictly thread-local and CPU-local, therefore it is guaranteed that t=
+he
+> +  task stays on the CPU and the CPU cannot be unplugged until the local =
+kmaps
+> +  are released.
+
+to here since it mostly the same thing.
+
+> +  Nesting kmap_local_page() and kmap_atomic() mappings is allowed to a c=
+ertain
+> +  extent (up to KMAP_TYPE_NR) but their invocations have to be strictly =
+ordered
+> +  because the map implementation is stack based. See kmap_local_page () =
+kdocs
+
+kmap_local_page () =3D> kmap_local_page()
+
+> +  (included in the "Functions" section) for details on how to manage nes=
+ted
+> +  mappings.
+> =20
+>  * kmap_atomic().  This permits a very short duration mapping of a single
+>    page.  Since the mapping is restricted to the CPU that issued it, it
+>    performs well, but the issuing task is therefore required to stay on t=
+hat
+>    CPU until it has finished, lest some other task displace its mappings.
+> =20
+> -  kmap_atomic() may also be used by interrupt contexts, since it is does=
+ not
+> -  sleep and the caller may not sleep until after kunmap_atomic() is call=
+ed.
+> +  kmap_atomic() may also be used by interrupt contexts, since it does not
+> +  sleep and the callers too may not sleep until after kunmap_atomic() is
+> +  called.
+> +
+> +  Each call of kmap_atomic() in the kernel creates a non-preemptible sec=
+tion
+> +  and disable pagefaults. This could be a source of unwanted latency, so=
+ it
+> +  should be only used if it is absolutely required, otherwise kmap_local=
+_page()
+> +  should be used where it is feasible.
+
+I'm not keen about the "absolutely required" wording and "feasible".
+That said, the other pieces look good, thank you for the work.
+
+> -  It may be assumed that k[un]map_atomic() won't fail.
+> +  It is assumed that k[un]map_atomic() won't fail.
+
+Sebastian
