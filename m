@@ -1,100 +1,142 @@
-Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-wm1-f52.google.com (mail-wm1-f52.google.com [209.85.128.52])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4ADB5EC2
-	for <outreachy@lists.linux.dev>; Thu, 28 Apr 2022 09:11:50 +0000 (UTC)
-Date: Thu, 28 Apr 2022 11:11:46 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020; t=1651137108;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=nNOLzMN4GCAqBBfW+r8eqm5hDs3n5cjsSXnK/5QFPds=;
-	b=q9fWvipxeyuuIhq4+NB4f0zZUeNRO9fKzRYos5WIhZ2FTHy8dYPMHVGR9bzNa3ITWgsq2J
-	GqMGra6y+XiQ2aQl1i6HqvOofzVtblPQQe/dj5SbfpGTubLf0kTNg2rqcXkHFtoGFjfYah
-	FOdw4duodfVpezANBfBJdprbLmZSXtsN77r9ambMrOqTOOcDrN/PBd8qGZjPyFsYKWU+Lu
-	F9otqnAOa3RCZUVVm+f7geBY8fqswq1YvvsEZv0EipvwvgCwnY9ASCte0o0X80KAVIYABr
-	u3P705AiBQ9FpbhbcZLHkPoiHWPDp5q61rGw597YAjo3wgVEOMtpqIwweRWW6A==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020e; t=1651137108;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=nNOLzMN4GCAqBBfW+r8eqm5hDs3n5cjsSXnK/5QFPds=;
-	b=7dCD8xWto1maJxrNTxYG+xqLePiWvXHnBLrZmkaeDiRqei49ZmGnJxR9LO7zRcSbHpPRjy
-	ep9UlPjhOTH1ebCQ==
-From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
-To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Cc: Ira Weiny <ira.weiny@intel.com>,
-	Andrew Morton <akpm@linux-foundation.org>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	"Matthew Wilcox (Oracle)" <willy@infradead.org>,
-	Will Deacon <will@kernel.org>, Peter Collingbourne <pcc@google.com>,
-	Vlastimil Babka <vbabka@suse.cz>, linux-kernel@vger.kernel.org,
-	linux-doc@vger.kernel.org, outreachy@lists.linux.dev,
-	Mike Rapoport <rppt@linux.ibm.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 807F3ED1
+	for <outreachy@lists.linux.dev>; Thu, 28 Apr 2022 10:54:20 +0000 (UTC)
+Received: by mail-wm1-f52.google.com with SMTP id r11-20020a05600c35cb00b0039409c1111bso1846730wmq.3
+        for <outreachy@lists.linux.dev>; Thu, 28 Apr 2022 03:54:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=2a3Yf1Hu8S97WI8BsrGLjJJZAS+lKcHyHQQaVfbvW5s=;
+        b=IYyFkwap8Lntoz9LtpjkKdzCRGsyHrrG6guoDqDA05V31Ugdfz9VIAIKRjtmF2Dd9e
+         Llgf1gT22Mt/yuk6YioAavU65MMROxLLekLAoq/tKOCREtrdGMUF4hTiotObbQehy3d3
+         CrK7OL5H+crrhGoo92swyh8gcwIoJXFKzau0ZeH329STtC61tTnGYcN/26/clO7ZrSYv
+         FIpXZ2TB+VoZ7dtqNHczJDUMqkB5yKpik/62GrU5XqjcHmO6pwyA5aYuYDLwa4qFInrC
+         Hatpukcbq2Yj25ycNPgmPRGWCGR7IRlxZDuBq80p6rXQ/tPYJpnvrjjVQUypRBnxR4pD
+         lBfw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=2a3Yf1Hu8S97WI8BsrGLjJJZAS+lKcHyHQQaVfbvW5s=;
+        b=lvcYSKxFNtO5Vvm0HGeqqDnAW5RIZT9Vq0K+/851omKJn2nE7lIUJMMsPft5qBAwcC
+         xHp2+4U1dwaEG12gMMF5awmNhROzYGBgYU6tME6ljhWNrd4eGtJdnQlxhy76PdSnCJVI
+         SRcY3ycZ1K+Uf0LJjzUxjP69iv3BPF8IaAfnp+Nn9+ncX3uv7oG9pjNFqwZtZiG36+iQ
+         rAjfdxynGBPB4mF8MOGH5TbmHRXuyG3P8lASjbJ8ytWKRxG8OVBXJv5+ZpMXMYAYlr1x
+         a3Ma9937nO0s0lNkGDw25DamcnLpvDmGxT4DOO/ygYxZdxe4AscgQx+vX7zCyyMbTHbJ
+         rrbg==
+X-Gm-Message-State: AOAM530MyjCWCU7bSrYI+XmHeL8FUtjwf1+lV8NjV/FdjcL8+cLKwJu9
+	Qrk/gezgnDRpd3vX71O5dQI=
+X-Google-Smtp-Source: ABdhPJw41un5LKHXNzYrBNA8kFLgrj/BfvnZbzXwv3WIlOC0XxIym/mK8mEI5YvoKDTe+v5h12tROg==
+X-Received: by 2002:a7b:cb98:0:b0:393:f18c:8fae with SMTP id m24-20020a7bcb98000000b00393f18c8faemr13323631wmi.8.1651143258744;
+        Thu, 28 Apr 2022 03:54:18 -0700 (PDT)
+Received: from leap.localnet (host-79-50-86-254.retail.telecomitalia.it. [79.50.86.254])
+        by smtp.gmail.com with ESMTPSA id r5-20020adfa145000000b0020acc9de8c4sm15032619wrr.38.2022.04.28.03.54.15
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 28 Apr 2022 03:54:16 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+Cc: Ira Weiny <ira.weiny@intel.com>, Andrew Morton <akpm@linux-foundation.org>, Catalin Marinas <catalin.marinas@arm.com>, "Matthew Wilcox (Oracle)" <willy@infradead.org>, Will Deacon <will@kernel.org>, Peter Collingbourne <pcc@google.com>, Vlastimil Babka <vbabka@suse.cz>, linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org, outreachy@lists.linux.dev, Mike Rapoport <rppt@linux.ibm.com>
 Subject: Re: [PATCH v3 1/4] mm/highmem: Fix kernel-doc warnings in highmem*.h
-Message-ID: <YmpaUgxIk0rrwt2G@linutronix.de>
-References: <20220427183821.1979-1-fmdefrancesco@gmail.com>
- <20220427183821.1979-2-fmdefrancesco@gmail.com>
+Date: Thu, 28 Apr 2022 12:54:14 +0200
+Message-ID: <2598013.X9hSmTKtgW@leap>
+In-Reply-To: <YmpaUgxIk0rrwt2G@linutronix.de>
+References: <20220427183821.1979-1-fmdefrancesco@gmail.com> <20220427183821.1979-2-fmdefrancesco@gmail.com> <YmpaUgxIk0rrwt2G@linutronix.de>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20220427183821.1979-2-fmdefrancesco@gmail.com>
+Content-Type: text/plain; charset="utf-8"
 
-On 2022-04-27 20:38:18 [+0200], Fabio M. De Francesco wrote:
-> --- a/include/linux/highmem-internal.h
-> +++ b/include/linux/highmem-internal.h
-> @@ -236,9 +236,18 @@ static inline unsigned long totalhigh_pages(void) { =
-return 0UL; }
-> =20
->  #endif /* CONFIG_HIGHMEM */
-> =20
-> -/*
-> - * Prevent people trying to call kunmap_atomic() as if it were kunmap()
-> - * kunmap_atomic() should get the return value of kmap_atomic, not the p=
-age.
-> +/**
-> + * kunmap_atomic - Unmap the virtual address mapped by kmap_atomic() - d=
-eprecated!
-> + * @__addr:       Virtual address to be unmapped
-> + *
-> + * Unmaps an address previously mapped by kmap_atomic() and re-enables
-> + * pagefaults, migration, preemption (the latter was disabled only for
-> + * !PREEMP_RT configurations). Mappings should be unmapped in the reverse
+On gioved=C3=AC 28 aprile 2022 11:11:46 CEST Sebastian Andrzej Siewior wrot=
+e:
+> On 2022-04-27 20:38:18 [+0200], Fabio M. De Francesco wrote:
+> > --- a/include/linux/highmem-internal.h
+> > +++ b/include/linux/highmem-internal.h
+> > @@ -236,9 +236,18 @@ static inline unsigned long totalhigh_pages(void)=
+=20
+{ return 0UL; }
+> > =20
+> >  #endif /* CONFIG_HIGHMEM */
+> > =20
+> > -/*
+> > - * Prevent people trying to call kunmap_atomic() as if it were=20
+kunmap()
+> > - * kunmap_atomic() should get the return value of kmap_atomic, not the=
+=20
+page.
+> > +/**
+> > + * kunmap_atomic - Unmap the virtual address mapped by kmap_atomic() -=
+=20
+deprecated!
+> > + * @__addr:       Virtual address to be unmapped
+> > + *
+> > + * Unmaps an address previously mapped by kmap_atomic() and re-enables
+> > + * pagefaults, migration, preemption (the latter was disabled only for
+> > + * !PREEMP_RT configurations). Mappings should be unmapped in the=20
+reverse
+>=20
+> Not sure how detailed you want to put it here as "reverses kmap_atomic()
+> doing." might be okay ;)
 
-Not sure how detailed you want to put it here as "reverses kmap_atomic()
-doing." might be okay ;) This indicates the "migration" is disabled for
-!PREEMPT_RT which is not the case. So maybe something like
+No, it's not sufficient because Matthew Wilcox said that something like "It=
+=20
+is the counterpart of kmap_atomic() for unmapping" (or anything similar) is=
+=20
+_not_ what he wants to see.=20
 
- * Unmaps an address previously mapped by kmap_atomic() and re-enables
- * pagefaults, CPU migration (CONFIG_PREEMPT_RT) or preemption
- * (!CONFIG_PREEMPT_RT). Mappings should be unmapped in the reverse
+=46urthermore, a large part of this text has been written by him (I'm talki=
+ng=20
+of a couple of weeks ago, when this patch was not part of this series - it=
+=20
+was on its own until Ira Weiny asked me to gather 4 patches in one only=20
+series).
 
-will make it clear.
-=E2=80=A6
-> --- a/include/linux/highmem.h
-> +++ b/include/linux/highmem.h
-> @@ -138,24 +138,14 @@ static inline void *kmap_local_folio(struct folio *=
-folio, size_t offset);
->   *
->   * Returns: The virtual address of the mapping
->   *
-> - * Effectively a wrapper around kmap_local_page() which disables pagefau=
-lts
-> - * and preemption.
-> + * In fact a wrapper around kmap_local_page() which disables pagefaults,
-> + * migration, preemption (the latter disabled only for !PREEMP_RT
-> + * configurations).
+> This indicates the "migration" is disabled for
+> !PREEMPT_RT which is not the case.
 
-and here.
+I read again how kmap_atomic() is defined. There are lots of 'if'=20
+statements. Only if the code gets to __kmap_local_pfn_prot(), users can be=
+=20
+assured that it unconditionally calls both migrate_disable() and=20
+preempt_disable().=20
 
-Sebastian
+> So maybe something like
+>=20
+>  * Unmaps an address previously mapped by kmap_atomic() and re-enables
+>  * pagefaults, CPU migration (CONFIG_PREEMPT_RT) or preemption
+>  * (!CONFIG_PREEMPT_RT). Mappings should be unmapped in the reverse
+>=20
+> will make it clear.
+
+I'm starting to think that this level of detail is too much for users who=20
+just need to understand how to use this function as well as =20
+kmap_local_page().
+
+I prefer something like the following:
+
++ * Unmaps an address previously mapped by kmap_atomic() and re-enables
++ * pagefaults and possibly also CPU migration and/or preemption. However,=
+=20
++ * users should not count on disable of migration and/or preemption as a=20
++ * side effect of calling kmap_atomic(). Mappings must be unmapped in the=
+=20
++ * reverse [...]
+
+I'd also like to write the same paragraph for kmap_local_page().
+
+What do you think of being less detailed and instead using the text I wrote=
+=20
+above?=20
+
+Thanks,
+
+=46abio
+
+
+
