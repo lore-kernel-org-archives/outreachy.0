@@ -1,175 +1,136 @@
-Received: from mail-qt1-f177.google.com (mail-qt1-f177.google.com [209.85.160.177])
+Received: from mail-wr1-f49.google.com (mail-wr1-f49.google.com [209.85.221.49])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 28B2E7B
-	for <outreachy@lists.linux.dev>; Fri, 29 Apr 2022 13:34:11 +0000 (UTC)
-Received: by mail-qt1-f177.google.com with SMTP id y3so5743290qtn.8
-        for <outreachy@lists.linux.dev>; Fri, 29 Apr 2022 06:34:11 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 222807B;
+	Fri, 29 Apr 2022 13:46:52 +0000 (UTC)
+Received: by mail-wr1-f49.google.com with SMTP id w4so10837344wrg.12;
+        Fri, 29 Apr 2022 06:46:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=ipC9V82PFie+nvLtXqZTiVELTpXRF2kluOqV2ATDd/o=;
-        b=RpvdKuYYL82ArlGfHeY0e2JeUZRnEjWcJt6ga8q+uF0hsXkBfN6g7EeyyfOmRZo2lk
-         T+dDqpdRPHDCIcUpPbIduLnAShr44NgLPMJGR84bA2ZooaPufQXtx+pfdziaaClUh7+C
-         fdZ3cD6MOuP5l9Nb5zoV3kcVNRwD4y/7KWyGEDUuPvS1urLQjVlUGFDbiFI5vPI5h0Bt
-         sEM/kpMwJELVULgU03lmXGI+hVQn7OSy1Ki/VjrAKGM4PKquuf/XqBtwx8TyLkQviV18
-         LsEUrEynABnIOLNkg/ZzrzZuWxvEA5Gpwr5Zts5PEkI7b8waxEVx75Ah/2bFI65L1aty
-         a3Fg==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=9pEwUBKjRBpllrJk5qaKlRO87d8MdZtCNEWbpI2fUcw=;
+        b=RHg27f73kpzQwZCijceWAxtRf7NJ/MfOEliQkAcG6IKKEG3bJ2iJ72vuKT23LtPKgp
+         W39omxgefKec1a3gWl7NItN8E1BWvGvrXckVmWHfOkBmoRUseHw0Xb43g2I7Pbg08vmg
+         JIc0JqeBoIFIRU8LKe/iWJW4iZA4YcCXFUZ+uESPmBjFEnagrO6ArqnGbiGmsdsoCRxq
+         o/GRbaoEsQpxaDbUUkUIazJwUAFGTa+JqTLseu/IKoy1hDA7qdHqMyKWoPY+HAvxtn6a
+         o4ZrmUK+ojeSa68029GNCGe8HU0iqoIJyqAJM44zYf1xGbMk9ETtlQw9d2oArBB6bhFf
+         6I6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=ipC9V82PFie+nvLtXqZTiVELTpXRF2kluOqV2ATDd/o=;
-        b=2KalGh+CpaJPpsUDyF5Ziea+iCsJQgiqlncOKtO+OO5kbZgOx5k/VDkunLAOh9i6E9
-         iXRVo3qpCn3Kqj+eQvKSfAFSD0WUsKMy8sYhPMEKQ6Kx4NWsqU2OgrA4KEazjdpv7+ho
-         BJcj4+w9tCHXbSRm4Qwwlg9nfZVQtL47JWp72usdHHHT5sr93xdk4Xm9VE8uUtAfUGbX
-         fmnovrckU1Mjk9MuOmoCzsKZ06TXHHTSR+MKjzxnQxU0PpEEbl9PXR3jSSWYFp7KW1GY
-         mkF0sKFV1xGWwwnOkw0tKsZEZIvI12ROGg30tSAX71HxUSwQxg8bEulFsCZl6EBRyq+Q
-         DEGg==
-X-Gm-Message-State: AOAM530bpOl52tcSbHmTFbkG3jRMIWfn0IKFcFMyJIf1VbhIeev+rKwi
-	DPvuZ6n4m/yGqUkpGNCUWxs=
-X-Google-Smtp-Source: ABdhPJx3iweKB+MlPQk3JOc/lfPOKyByYoSeXHHWVKhSOQ2tQjWHKPpe5DWEudu1hEVP4bbobpcbPw==
-X-Received: by 2002:a05:622a:38a:b0:2e2:2fdf:246e with SMTP id j10-20020a05622a038a00b002e22fdf246emr27435314qtx.482.1651239249773;
-        Fri, 29 Apr 2022 06:34:09 -0700 (PDT)
-Received: from jaehee-ThinkPad-X1-Extreme ([4.34.18.218])
-        by smtp.gmail.com with ESMTPSA id h23-20020ac85697000000b002f387e4000dsm1626104qta.11.2022.04.29.06.34.08
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=9pEwUBKjRBpllrJk5qaKlRO87d8MdZtCNEWbpI2fUcw=;
+        b=5jEwJVFzTETLtZc5owKtJXA1oGKUIMPyMlxgetJ+YFe6s/0d83f2Qe5I4a2yYcYW7P
+         UYtWw38Ro8z5om2vt4NmBzp82ieG8AD9dxrca8Q7o9SpEZS8/wE415YuJlSwAPUR3t5u
+         95TZGgmyurPYpVDm1xv8zwBJzx+PCwYDqn+rCeo6IUkZUoMYAGDwf92N6+UAQvVaR2iL
+         Y3Hrss3qYZ56XsI7bWvUZE2oUDCY3DU5JIWnhc6APQcnCs1IOEJebstgAkBFrNH7MrrN
+         QoyuBKmMU/UcFaxNtx1kAKca6ioFyXaX3izDkvCKJHTpJerdmEYrppQYTGasoP0wBnx5
+         Zb1A==
+X-Gm-Message-State: AOAM530TkjFmGd38vTmyaKETL12EHBNCFxIhrWg+6kvKfaalh5ydhFaH
+	JraFc+zMuTJ1IMf1E8CBy20=
+X-Google-Smtp-Source: ABdhPJxa6pGhZpFL51hmMw5AI1Jzp/w/JJRYmnitE4sEb0pj0428bQOYutQJOfW3tIM0R+gCvJn32A==
+X-Received: by 2002:a05:6000:1f03:b0:20c:4d9e:7400 with SMTP id bv3-20020a0560001f0300b0020c4d9e7400mr1133227wrb.257.1651240010362;
+        Fri, 29 Apr 2022 06:46:50 -0700 (PDT)
+Received: from leap.localnet (host-79-50-86-254.retail.telecomitalia.it. [79.50.86.254])
+        by smtp.gmail.com with ESMTPSA id n2-20020a1ca402000000b003942429cd1esm853641wme.10.2022.04.29.06.46.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 29 Apr 2022 06:34:09 -0700 (PDT)
-Date: Fri, 29 Apr 2022 09:34:05 -0400
-From: Jaehee Park <jhpark1013@gmail.com>
-To: Roopa Prabhu <roopa@nvidia.com>
-Cc: outreachy@lists.linux.dev, Julia Denham <jdenham@redhat.com>,
-	Roopa Prabhu <roopa.prabhu@gmail.com>,
-	Stefano Brivio <sbrivio@redhat.com>, netdev@vger.kernel.org,
-	David Ahern <dsahern@gmail.com>
-Subject: Re: [PATCH net-next v3] selftests: net: vrf_strict_mode_test: add
- support to select a test to run
-Message-ID: <20220429133405.GA631146@jaehee-ThinkPad-X1-Extreme>
-References: <20220428164831.GA577338@jaehee-ThinkPad-X1-Extreme>
- <cf8ae870-8208-b4eb-fbaa-c81be95df05d@nvidia.com>
+        Fri, 29 Apr 2022 06:46:49 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Tsuchiya Yuto <kitakar@gmail.com>
+Cc: Sakari Ailus <sakari.ailus@linux.intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Martiros Shakhzadyan <vrzh@vrzh.net>, Hans de Goede <hdegoede@redhat.com>, linux-media@vger.kernel.org, linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, Ira Weiny <ira.weiny@intel.com>, outreachy@lists.linux.dev
+Subject: Re: [PATCH] staging: media: atomisp: Use kmap_local_page() in hmm_store()
+Date: Fri, 29 Apr 2022 15:46:47 +0200
+Message-ID: <3664993.kQq0lBPeGt@leap>
+In-Reply-To: <2181693.iZASKD2KPV@leap>
+References: <20220413225531.9425-1-fmdefrancesco@gmail.com> <2181693.iZASKD2KPV@leap>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cf8ae870-8208-b4eb-fbaa-c81be95df05d@nvidia.com>
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
 
-On Thu, Apr 28, 2022 at 04:02:51PM -0700, Roopa Prabhu wrote:
-> 
-> On 4/28/22 09:48, Jaehee Park wrote:
-> > Add a boilerplate test loop to run all tests in
-> > vrf_strict_mode_test.sh. Add a -t flag that allows a selected test to
-> > run.
-> > 
-> > Signed-off-by: Jaehee Park <jhpark1013@gmail.com>
+On luned=C3=AC 25 aprile 2022 20:29:03 CEST Fabio M. De Francesco wrote:
+> On gioved=C3=AC 14 aprile 2022 00:55:31 CEST Fabio M. De Francesco wrote:
+> > The use of kmap() is being deprecated in favor of kmap_local_page()
+> > where it is feasible. The same is true for kmap_atomic().
+> >=20
+> > In file pci/hmm/hmm.c, function hmm_store() test if we are in atomic
+> > context and, if so, it calls kmap_atomic(), if not, it calls kmap().
+> >=20
+> > First of all, in_atomic() shouldn't be used in drivers. This macro
+> > cannot always detect atomic context; in particular, it cannot know
+> > about held spinlocks in non-preemptible kernels.
+> >=20
+> > Notwithstanding what it is said above, this code doesn't need to care
+> > whether or not it is executing in atomic context. It can simply use
+> > kmap_local_page() / kunmap_local() that can instead do the mapping /
+> > unmapping regardless of the context.
+> >=20
+> > With kmap_local_page(), the mapping is per thread, CPU local and not
+> > globally visible. Therefore, hmm_store()() is a function where the use
+> > of kmap_local_page() in place of both kmap() and kmap_atomic() is
+> > correctly suited.
+> >=20
+> > Convert the calls of kmap() / kunmap() and kmap_atomic() /
+> > kunmap_atomic() to kmap_local_page() / kunmap_local() and drop the
+> > unnecessary tests which test if the code is in atomic context.
+> >=20
+> > Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
 > > ---
-> > version 3:
-> > - Added commented delineators to section the code for improved
-> > readability.
-> > - Moved the log_section() call into the functions handling the tests.
-> > - Removed unnecessary spaces.
-> > 
-> > 
-> >   .../selftests/net/vrf_strict_mode_test.sh     | 47 +++++++++++++++++--
-> >   1 file changed, 43 insertions(+), 4 deletions(-)
-> > 
-> > diff --git a/tools/testing/selftests/net/vrf_strict_mode_test.sh b/tools/testing/selftests/net/vrf_strict_mode_test.sh
-> > index 865d53c1781c..423da8e08510 100755
-> > --- a/tools/testing/selftests/net/vrf_strict_mode_test.sh
-> > +++ b/tools/testing/selftests/net/vrf_strict_mode_test.sh
-> > @@ -14,6 +14,8 @@ INIT_NETNS_NAME="init"
-> >   PAUSE_ON_FAIL=${PAUSE_ON_FAIL:=no}
-> > +TESTS="init testns mix"
-> > +
-> >   log_test()
-> >   {
-> >   	local rc=$1
-> > @@ -262,6 +264,8 @@ cleanup()
-> >   vrf_strict_mode_tests_init()
-> >   {
-> > +	log_section "VRF strict_mode test on init network namespace"
-> > +
-> >   	vrf_strict_mode_check_support init
-> >   	strict_mode_check_default init
-> > @@ -292,6 +296,8 @@ vrf_strict_mode_tests_init()
-> >   vrf_strict_mode_tests_testns()
-> >   {
-> > +	log_section "VRF strict_mode test on testns network namespace"
-> > +
-> >   	vrf_strict_mode_check_support testns
-> >   	strict_mode_check_default testns
-> > @@ -318,6 +324,8 @@ vrf_strict_mode_tests_testns()
-> >   vrf_strict_mode_tests_mix()
-> >   {
-> > +	log_section "VRF strict_mode test mixing init and testns network namespaces"
-> > +
-> >   	read_strict_mode_compare_and_check init 1
-> >   	read_strict_mode_compare_and_check testns 0
-> > @@ -343,16 +351,37 @@ vrf_strict_mode_tests_mix()
-> >   vrf_strict_mode_tests()
-> 
-> this func is no longer used correct ?, you can remove the function (that was
-> one of the comment from david too IIRC)
-> 
+> >  drivers/staging/media/atomisp/pci/hmm/hmm.c | 14 ++------------
+> >  1 file changed, 2 insertions(+), 12 deletions(-)
+>=20
+> Hi Mauro,
+>=20
+> I'm writing for just a gentle ping for this and two other staging/
+atomisp/=20
+> patches that still seem to be waiting to be applied.
+>=20
+> In the meantime I would like to remind you that Hans de Goede has=20
+> successfully tested this patch and the other two on both the front and=20
+back=20
+> cams of a chuwi hi8 tablet.
 
-Yes! thank you for catching this -- the vrf_Strict_mode_tests is unused 
-so we can remove this function. I will make that change and send in 
-patch v4 soon. 
+Hi Mauro,
 
-> 
-> >   {
-> > -	log_section "VRF strict_mode test on init network namespace"
-> >   	vrf_strict_mode_tests_init
-> > -	log_section "VRF strict_mode test on testns network namespace"
-> >   	vrf_strict_mode_tests_testns
-> > -	log_section "VRF strict_mode test mixing init and testns network namespaces"
-> >   	vrf_strict_mode_tests_mix
-> >   }
-> > +################################################################################
-> > +# usage
-> > +
-> > +usage()
-> > +{
-> > +	cat <<EOF
-> > +usage: ${0##*/} OPTS
-> > +
-> > +	-t <test>	Test(s) to run (default: all)
-> > +			(options: $TESTS)
-> > +EOF
-> > +}
-> > +
-> > +################################################################################
-> > +# main
-> > +
-> > +while getopts ":t:h" opt; do
-> > +	case $opt in
-> > +		t) TESTS=$OPTARG;;
-> > +		h) usage; exit 0;;
-> > +		*) usage; exit 1;;
-> > +	esac
-> > +done
-> > +
-> >   vrf_strict_mode_check_support()
-> >   {
-> >   	local nsname=$1
-> > @@ -391,7 +420,17 @@ fi
-> >   cleanup &> /dev/null
-> >   setup
-> > -vrf_strict_mode_tests
-> > +for t in $TESTS
-> > +do
-> > +	case $t in
-> > +	vrf_strict_mode_tests_init|init) vrf_strict_mode_tests_init;;
-> > +	vrf_strict_mode_tests_testns|testns) vrf_strict_mode_tests_testns;;
-> > +	vrf_strict_mode_tests_mix|mix) vrf_strict_mode_tests_mix;;
-> > +
-> > +	help) echo "Test names: $TESTS"; exit 0;;
-> > +
-> > +	esac
-> > +done
-> >   cleanup
-> >   print_log_test_results
+In my previous message I forgot to remind you that two of these three=20
+patches have also been reviewed by Ira Weiny (Intel).
+
+I'd like to ask you again if there is still something left which prevents=20
+these three patches from being accepted. The first of the three patches was=
+=20
+submitted on April 9, 2022.
+
+=46or you convenience here are the links to the patches, the "Reviewed-by:"=
+=20
+and "Tested-by:" tags:
+
+[PATCH] staging: media: atomisp: Use kmap_local_page() in hmm_store()
+https://lore.kernel.org/lkml/20220413225531.9425-1-fmdefrancesco@gmail.com/
+https://lore.kernel.org/lkml/Yli+R7iLZKqO8kVP@iweiny-desk3/
+https://lore.kernel.org/lkml/2d096f20-dbaa-1d49-96e9-a7ae6c19f7fe@redhat.co=
+m/
+
+[PATCH] staging: media: atomisp: Use kmap_local_page() in hmm_set()
+https://lore.kernel.org/lkml/20220413212210.18494-1-fmdefrancesco@gmail.com/
+https://lore.kernel.org/lkml/YldNhErgt53RqYp7@iweiny-desk3/
+https://lore.kernel.org/lkml/0b04ad1a-e442-1728-ef2c-bab386a4c64c@redhat.co=
+m/
+
+[PATCH] staging: media: atomisp: Convert kmap() to kmap_local_page()
+https://lore.kernel.org/lkml/20220408223129.3844-1-fmdefrancesco@gmail.com/
+https://lore.kernel.org/lkml/b0aed731-b56f-4378-b50e-fc0cbccbdb84@redhat.co=
+m/
+
+Thanks,
+
+=46abio M. De Francesco
+
+P.S.: Do you want me to resend them all and add the above-mentioned tags?
+
+
+
