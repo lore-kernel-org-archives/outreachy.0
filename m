@@ -1,136 +1,116 @@
-Received: from mail-wr1-f49.google.com (mail-wr1-f49.google.com [209.85.221.49])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 222807B;
-	Fri, 29 Apr 2022 13:46:52 +0000 (UTC)
-Received: by mail-wr1-f49.google.com with SMTP id w4so10837344wrg.12;
-        Fri, 29 Apr 2022 06:46:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=9pEwUBKjRBpllrJk5qaKlRO87d8MdZtCNEWbpI2fUcw=;
-        b=RHg27f73kpzQwZCijceWAxtRf7NJ/MfOEliQkAcG6IKKEG3bJ2iJ72vuKT23LtPKgp
-         W39omxgefKec1a3gWl7NItN8E1BWvGvrXckVmWHfOkBmoRUseHw0Xb43g2I7Pbg08vmg
-         JIc0JqeBoIFIRU8LKe/iWJW4iZA4YcCXFUZ+uESPmBjFEnagrO6ArqnGbiGmsdsoCRxq
-         o/GRbaoEsQpxaDbUUkUIazJwUAFGTa+JqTLseu/IKoy1hDA7qdHqMyKWoPY+HAvxtn6a
-         o4ZrmUK+ojeSa68029GNCGe8HU0iqoIJyqAJM44zYf1xGbMk9ETtlQw9d2oArBB6bhFf
-         6I6Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=9pEwUBKjRBpllrJk5qaKlRO87d8MdZtCNEWbpI2fUcw=;
-        b=5jEwJVFzTETLtZc5owKtJXA1oGKUIMPyMlxgetJ+YFe6s/0d83f2Qe5I4a2yYcYW7P
-         UYtWw38Ro8z5om2vt4NmBzp82ieG8AD9dxrca8Q7o9SpEZS8/wE415YuJlSwAPUR3t5u
-         95TZGgmyurPYpVDm1xv8zwBJzx+PCwYDqn+rCeo6IUkZUoMYAGDwf92N6+UAQvVaR2iL
-         Y3Hrss3qYZ56XsI7bWvUZE2oUDCY3DU5JIWnhc6APQcnCs1IOEJebstgAkBFrNH7MrrN
-         QoyuBKmMU/UcFaxNtx1kAKca6ioFyXaX3izDkvCKJHTpJerdmEYrppQYTGasoP0wBnx5
-         Zb1A==
-X-Gm-Message-State: AOAM530TkjFmGd38vTmyaKETL12EHBNCFxIhrWg+6kvKfaalh5ydhFaH
-	JraFc+zMuTJ1IMf1E8CBy20=
-X-Google-Smtp-Source: ABdhPJxa6pGhZpFL51hmMw5AI1Jzp/w/JJRYmnitE4sEb0pj0428bQOYutQJOfW3tIM0R+gCvJn32A==
-X-Received: by 2002:a05:6000:1f03:b0:20c:4d9e:7400 with SMTP id bv3-20020a0560001f0300b0020c4d9e7400mr1133227wrb.257.1651240010362;
-        Fri, 29 Apr 2022 06:46:50 -0700 (PDT)
-Received: from leap.localnet (host-79-50-86-254.retail.telecomitalia.it. [79.50.86.254])
-        by smtp.gmail.com with ESMTPSA id n2-20020a1ca402000000b003942429cd1esm853641wme.10.2022.04.29.06.46.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 29 Apr 2022 06:46:49 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, Tsuchiya Yuto <kitakar@gmail.com>
-Cc: Sakari Ailus <sakari.ailus@linux.intel.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Martiros Shakhzadyan <vrzh@vrzh.net>, Hans de Goede <hdegoede@redhat.com>, linux-media@vger.kernel.org, linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, Ira Weiny <ira.weiny@intel.com>, outreachy@lists.linux.dev
-Subject: Re: [PATCH] staging: media: atomisp: Use kmap_local_page() in hmm_store()
-Date: Fri, 29 Apr 2022 15:46:47 +0200
-Message-ID: <3664993.kQq0lBPeGt@leap>
-In-Reply-To: <2181693.iZASKD2KPV@leap>
-References: <20220413225531.9425-1-fmdefrancesco@gmail.com> <2181693.iZASKD2KPV@leap>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3984F1852
+	for <outreachy@lists.linux.dev>; Fri, 29 Apr 2022 15:59:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1651247968; x=1682783968;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=LunjCm+37B3707gwlaCjwsukup9zTufYxEeYOdMcWLQ=;
+  b=HCYzI6rAQfxHC5IwWlIkn6zhf9f3mNwWTZ3CRA79DVR76k1+gm9uMC8+
+   x9ACwikcMG1kiK6LBpnLQTeYYSRZcRWqo0yI7l0p2A9JX+XsR7/KLVq0h
+   oI9Ogkp47s0gn3AcQ9dG1vP2SL9jNF6QHTFn0/8rUzK3QDMvtxtla81qz
+   77f+J/hSrmfpqaCy/VdlTmEQ0zPEsMeE5Nlh8YkwtIN+SPJKzCAiLzhLp
+   oIdzpXS1NJ2RAi4K94vDyBSDt7pw0V/NOZx/qtQ8OEKTRcXshL73Mg5bn
+   l39rqhPj5UBWpqyDGlpq1CqX9I9EmUXY//Y2mKqiCEfrqBA/cZ4Xd0W0m
+   g==;
+X-IronPort-AV: E=McAfee;i="6400,9594,10332"; a="248611542"
+X-IronPort-AV: E=Sophos;i="5.91,185,1647327600"; 
+   d="scan'208";a="248611542"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Apr 2022 08:59:27 -0700
+X-IronPort-AV: E=Sophos;i="5.91,185,1647327600"; 
+   d="scan'208";a="582206894"
+Received: from nadelgad-mobl.amr.corp.intel.com (HELO localhost) ([10.212.108.243])
+  by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Apr 2022 08:59:27 -0700
+Date: Fri, 29 Apr 2022 08:59:26 -0700
+From: Ira Weiny <ira.weiny@intel.com>
+To: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>,
+	Andrew Morton <akpm@linux-foundation.org>,
+	Catalin Marinas <catalin.marinas@arm.com>,
+	"Matthew Wilcox (Oracle)" <willy@infradead.org>,
+	Will Deacon <will@kernel.org>, Peter Collingbourne <pcc@google.com>,
+	Vlastimil Babka <vbabka@suse.cz>, linux-kernel@vger.kernel.org,
+	Jonathan Corbet <corbet@lwn.net>, linux-doc@vger.kernel.org,
+	outreachy@lists.linux.dev,
+	"Acked-by : Mike Rapoport" <rppt@linux.ibm.com>
+Subject: Re: [PATCH v2 1/4] mm/highmem: Fix kernel-doc warnings in highmem*.h
+Message-ID: <YmwLXvtSgl2BA2mC@iweiny-desk3>
+References: <20220425162400.11334-1-fmdefrancesco@gmail.com>
+ <20220425162400.11334-2-fmdefrancesco@gmail.com>
+ <YmeYzKT8Ikq5SfdE@linutronix.de>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <YmeYzKT8Ikq5SfdE@linutronix.de>
 
-On luned=C3=AC 25 aprile 2022 20:29:03 CEST Fabio M. De Francesco wrote:
-> On gioved=C3=AC 14 aprile 2022 00:55:31 CEST Fabio M. De Francesco wrote:
-> > The use of kmap() is being deprecated in favor of kmap_local_page()
-> > where it is feasible. The same is true for kmap_atomic().
-> >=20
-> > In file pci/hmm/hmm.c, function hmm_store() test if we are in atomic
-> > context and, if so, it calls kmap_atomic(), if not, it calls kmap().
-> >=20
-> > First of all, in_atomic() shouldn't be used in drivers. This macro
-> > cannot always detect atomic context; in particular, it cannot know
-> > about held spinlocks in non-preemptible kernels.
-> >=20
-> > Notwithstanding what it is said above, this code doesn't need to care
-> > whether or not it is executing in atomic context. It can simply use
-> > kmap_local_page() / kunmap_local() that can instead do the mapping /
-> > unmapping regardless of the context.
-> >=20
-> > With kmap_local_page(), the mapping is per thread, CPU local and not
-> > globally visible. Therefore, hmm_store()() is a function where the use
-> > of kmap_local_page() in place of both kmap() and kmap_atomic() is
-> > correctly suited.
-> >=20
-> > Convert the calls of kmap() / kunmap() and kmap_atomic() /
-> > kunmap_atomic() to kmap_local_page() / kunmap_local() and drop the
-> > unnecessary tests which test if the code is in atomic context.
-> >=20
-> > Signed-off-by: Fabio M. De Francesco <fmdefrancesco@gmail.com>
-> > ---
-> >  drivers/staging/media/atomisp/pci/hmm/hmm.c | 14 ++------------
-> >  1 file changed, 2 insertions(+), 12 deletions(-)
->=20
-> Hi Mauro,
->=20
-> I'm writing for just a gentle ping for this and two other staging/
-atomisp/=20
-> patches that still seem to be waiting to be applied.
->=20
-> In the meantime I would like to remind you that Hans de Goede has=20
-> successfully tested this patch and the other two on both the front and=20
-back=20
-> cams of a chuwi hi8 tablet.
+On Tue, Apr 26, 2022 at 09:01:32AM +0200, Sebastian Andrzej Siewior wrote:
+> On 2022-04-25 18:23:57 [+0200], Fabio M. De Francesco wrote:
+> > index a77be5630209..aa22daeed617 100644
+> > --- a/include/linux/highmem-internal.h
+> > +++ b/include/linux/highmem-internal.h
+> > @@ -236,9 +236,17 @@ static inline unsigned long totalhigh_pages(void) { return 0UL; }
+> >  
+> >  #endif /* CONFIG_HIGHMEM */
+> >  
+> > -/*
+> > - * Prevent people trying to call kunmap_atomic() as if it were kunmap()
+> > - * kunmap_atomic() should get the return value of kmap_atomic, not the page.
+> > +/**
+> > + * kunmap_atomic - Unmap the virtual address mapped by kmap_atomic()
+> > + * @__addr:       Virtual address to be unmapped
+> > + *
+> > + * Unmaps an address previously mapped by kmap_atomic() and re-enables
+> > + * pagefaults and preemption. Mappings should be unmapped in the reverse
+> 
+> You mind adding "Deprecated!" like kmap_atomic() has? The part about
+> disabling/ enabling preemption is true for !PREEMPT_RT. The part that
+> worries me is that people use it and rely on disabled preemption like
+> some did in the past. 
+> I've been told this API is about to be removed (or so I have been told)
+> so I hope that it will be gone soon ;)
 
-Hi Mauro,
+I think some discussion needs to happen around this API.
 
-In my previous message I forgot to remind you that two of these three=20
-patches have also been reviewed by Ira Weiny (Intel).
+Highmem has little use.  I don't think anyone disagrees with Linus there.
+(Although I think there are still a few users out there.)
 
-I'd like to ask you again if there is still something left which prevents=20
-these three patches from being accepted. The first of the three patches was=
-=20
-submitted on April 9, 2022.
+kmap may be a poor name for an API without the highmem functionality.  But
+perhaps not.  One could interpret it to mean simply getting the kernel mapping
+of the page rather than creating one.  After all that is what 64bit has done
+all along.
 
-=46or you convenience here are the links to the patches, the "Reviewed-by:"=
-=20
-and "Tested-by:" tags:
+This interpretation helps when you consider features which attempt to layer the
+direct map with additional protections like PKS.[1]  Those protections mean
+that a simple page_address() is insufficient to access the direct map.
 
-[PATCH] staging: media: atomisp: Use kmap_local_page() in hmm_store()
-https://lore.kernel.org/lkml/20220413225531.9425-1-fmdefrancesco@gmail.com/
-https://lore.kernel.org/lkml/Yli+R7iLZKqO8kVP@iweiny-desk3/
-https://lore.kernel.org/lkml/2d096f20-dbaa-1d49-96e9-a7ae6c19f7fe@redhat.co=
-m/
+As far as calling kmap() and kmap_atomic() deprecated I'm ok with that if the
+community is.
 
-[PATCH] staging: media: atomisp: Use kmap_local_page() in hmm_set()
-https://lore.kernel.org/lkml/20220413212210.18494-1-fmdefrancesco@gmail.com/
-https://lore.kernel.org/lkml/YldNhErgt53RqYp7@iweiny-desk3/
-https://lore.kernel.org/lkml/0b04ad1a-e442-1728-ef2c-bab386a4c64c@redhat.co=
-m/
+The current kmap() call sites need work and Fabio's work on auditing them is
+extremely helpful.  That said, if we officially deprecate kmap_atomic() then
+those sites could be added to the list for rework.
 
-[PATCH] staging: media: atomisp: Convert kmap() to kmap_local_page()
-https://lore.kernel.org/lkml/20220408223129.3844-1-fmdefrancesco@gmail.com/
-https://lore.kernel.org/lkml/b0aed731-b56f-4378-b50e-fc0cbccbdb84@redhat.co=
-m/
+Ira
 
-Thanks,
+[1] https://lore.kernel.org/lkml/20220419170649.1022246-1-ira.weiny@intel.com/
 
-=46abio M. De Francesco
-
-P.S.: Do you want me to resend them all and add the above-mentioned tags?
-
-
-
+> 
+> > + * order that they were mapped. See kmap_local_page() for details.
+> > + * @__addr can be any address within the mapped page, so there is no need
+> > + * to subtract any offset that has been added. In contrast to kunmap(),
+> > + * this function takes the address returned from kmap_atomic(), not the
+> > + * page passed to it. The compiler will warn you if you pass the page.
+> >   */
+> >  #define kunmap_atomic(__addr)					\
+> >  do {								\
+> 
+> Sebastian
