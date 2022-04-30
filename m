@@ -1,41 +1,41 @@
-Received: from mail-ot1-f68.google.com (mail-ot1-f68.google.com [209.85.210.68])
+Received: from mail-oa1-f66.google.com (mail-oa1-f66.google.com [209.85.160.66])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 61C622F35
-	for <outreachy@lists.linux.dev>; Sat, 30 Apr 2022 22:50:01 +0000 (UTC)
-Received: by mail-ot1-f68.google.com with SMTP id y14-20020a9d460e000000b00605ee347da1so4975681ote.8
-        for <outreachy@lists.linux.dev>; Sat, 30 Apr 2022 15:50:01 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5AFA52F35
+	for <outreachy@lists.linux.dev>; Sat, 30 Apr 2022 22:50:04 +0000 (UTC)
+Received: by mail-oa1-f66.google.com with SMTP id 586e51a60fabf-ed9ac77cbbso800763fac.1
+        for <outreachy@lists.linux.dev>; Sat, 30 Apr 2022 15:50:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=9HLWFM+tx2KwN5HOVNTRmgPm5n3Gwj/LoS/zXb/aBvk=;
-        b=L/t3SMdiq0R8WE60sg4aJiN6cEG5iQI0zdwEZsZsT0FYi8peSasDMq0FnerMLj0Tnj
-         /xJKAGrj6rANvcm3TVT7OVUmw5tiuZCUbhjMI+P6DK8DImEdR8M9/w6A1PFnVsBiFRRX
-         KvkMBzmx2TK6Q7A5JBHd7t/qwh3oElxb18USZAenH/sUV5Gl4Sgut4W55nntSXx5tpVM
-         lKTMV+/oGDy4adkTteeixwPHJQO+cojcDLBpb13BgRmgz/TY64ct3hVxsF/9rR6ir4Nx
-         hosgnaOpvVM5L+c6Yjdo9JMZ4jXYSlyR9FMbgbJmthkSP9xasiybesp1UssF0Qv0gBMu
-         6KsA==
+        bh=de5cYv9udGhvYDO7mNwHuK98M+en+qgo8AFwYs9167Y=;
+        b=SlZXS31/hv1yey3GZfbcR/cwUXkVaB/SG7lf/EOgofrXGn3aOXrj4eosMWiBiwwCUY
+         mznrGQh0r5NPWXckqu7j7ukJaE5unMRyKuU8rXDZgqsrMP40qLL9LtniPNnb9on35Bw0
+         6iJtkpvDJjmEsv5Wz6la6lTKm09UI9mHSKawMuh2zxdw5Z5jM0l7JGcPv8LhfR53/lT8
+         0rzh4+1kCWGGQbwNGSRuRTRTaEI4tdjCVPiuLpuOM5/YD1Hx6TiJsI72cltrqZgX2H2P
+         5+gInEQ0oCdAsPlq76ChSeBKjvOdZOyMn+lpb9bNWG/sXpyieutTOIIS5TdnvO/MXGAm
+         yeMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=9HLWFM+tx2KwN5HOVNTRmgPm5n3Gwj/LoS/zXb/aBvk=;
-        b=DBlDQnY9BFyp5BTZKXR8UCPlmByor/fQPzs7sKL/rbeVoRuPgcSIUrO/NYDQCoTl4V
-         jhopTiv60dK86fMARXbBfCKxcDCgfABJgLBcaAVGSiZqM1WXdLfRxWyq4iQbQa+Gcs1G
-         v8mVdOfunfcNdy9mz9r+Z+v5i6nC9GAXYJTtO+aJteLzFtiA/Y8jnvowcqxmyqA0dnRl
-         uPaW1AV7Pwm5Do0CxU330Y9TY7rCFYm/Nqmk+k8BtOQcD9u37qMenwNI/tfXHLKpVSxw
-         gXErtvK6yIeyD326S2xPvFWg+2ZITihhPeHe/6+muKtHwTa61vnw/1UPJuoaL4skJoDl
-         O3+g==
-X-Gm-Message-State: AOAM531UWQqi4i1NLABERePJjudAX4EOca7aQCpQtT6FP9iL/tBEngRZ
-	fAK4/560pBkt2rO2xJ4UjA4=
-X-Google-Smtp-Source: ABdhPJzz4ZyfwMqmDCjlmro6vvBy4B59tHcAdE+lyX61Oxu7SxwE0PSIYZaFk7+JfwZJOrIbl5wyyQ==
-X-Received: by 2002:a9d:5a19:0:b0:5cd:9ca0:898b with SMTP id v25-20020a9d5a19000000b005cd9ca0898bmr2073134oth.318.1651359000508;
-        Sat, 30 Apr 2022 15:50:00 -0700 (PDT)
+        bh=de5cYv9udGhvYDO7mNwHuK98M+en+qgo8AFwYs9167Y=;
+        b=S3oSU2ln4nDvLDBTCy7nIuWYSE2wg0/pnIAdNut3TScI8yDNiQEnfKp/A1/PYaLxJW
+         h+gLIHpPv+0JeS6l6kWjlu+DHPEyxQyrlnZNGyXsEfo/iYu7/US9reV4xEnxXbdN03Er
+         Bc9XdR9uzjsmshER7BRlHKM6FLHmyzPguKB2H7k+Z9rrcmXykUGj0qVQRYra3MoGlO/v
+         OkcmX3gqS1BJL1oeWUYn98Z5IEnXiBhI9SqY5SEGX1p5TZenXSelwZOsnGNMpt+hwCyF
+         iPc1Gt4wgVcAzsmgDNSR52q18l8h5//KrME8WWeUzmY7bPVlQlqqOomjkDWj5eiMDgw9
+         kH9Q==
+X-Gm-Message-State: AOAM533o0bQI7uL7qMfdAG6fFKIIp7/Q/Nboul69Qwt4sjKBZR0jRVR7
+	B5U9L0vePFBXgPt9IbRIZ3IXF1zsATE=
+X-Google-Smtp-Source: ABdhPJzVHCIx4JQceoZTOZI8SmdwY54K7u6kmktJ1v22KmjV+AYTOclHcyF8HKkTDM3w4T8yGVgwfA==
+X-Received: by 2002:a05:6870:2186:b0:ed:97c0:e334 with SMTP id l6-20020a056870218600b000ed97c0e334mr940677oae.205.1651359003607;
+        Sat, 30 Apr 2022 15:50:03 -0700 (PDT)
 Received: from bertie (072-190-140-117.res.spectrum.com. [72.190.140.117])
-        by smtp.gmail.com with ESMTPSA id q4-20020a056870028400b000e5aa7f2cadsm4418993oaf.3.2022.04.30.15.50.00
+        by smtp.gmail.com with ESMTPSA id i1-20020a056870a68100b000e686d138a0sm4430318oam.58.2022.04.30.15.50.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 30 Apr 2022 15:50:00 -0700 (PDT)
+        Sat, 30 Apr 2022 15:50:03 -0700 (PDT)
 From: Rebecca Mckeever <remckee0@gmail.com>
 To: outreachy@lists.linux.dev
 Cc: Mike Rapoport <rppt@kernel.org>,
@@ -43,9 +43,9 @@ Cc: Mike Rapoport <rppt@kernel.org>,
 	linux-kernel@vger.kernel.org,
 	David Hildenbrand <david@redhat.com>,
 	Rebecca Mckeever <remckee0@gmail.com>
-Subject: [PATCH v4 4/5] memblock tests: update style of comments for memblock_free_*() functions
-Date: Sat, 30 Apr 2022 17:49:39 -0500
-Message-Id: <9256c86a6be96e5270670b3cd8a17ec2593646c9.1651357434.git.remckee0@gmail.com>
+Subject: [PATCH v4 5/5] memblock tests: remove completed TODO item
+Date: Sat, 30 Apr 2022 17:49:40 -0500
+Message-Id: <f20acebf95681cde611d578e255b467d1fd2c958.1651357434.git.remckee0@gmail.com>
 X-Mailer: git-send-email 2.32.0
 In-Reply-To: <cover.1651357434.git.remckee0@gmail.com>
 References: <cover.1651357434.git.remckee0@gmail.com>
@@ -57,161 +57,24 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-Update comments in memblock_free_*() functions to match the style used
-in tests/alloc_*.c by rewording to make the expected outcome more apparent
-and, if more than one memblock is involved, adding a visual of the
-memory blocks.
-
-If the comment has an extra column of spaces, remove the extra space at
-the beginning of each line for consistency and to conform to Linux kernel
-coding style.
+Remove completed item from TODO list.
 
 Signed-off-by: Rebecca Mckeever <remckee0@gmail.com>
 ---
- tools/testing/memblock/tests/basic_api.c | 102 +++++++++++++++++------
- 1 file changed, 75 insertions(+), 27 deletions(-)
+ tools/testing/memblock/TODO | 3 ---
+ 1 file changed, 3 deletions(-)
 
-diff --git a/tools/testing/memblock/tests/basic_api.c b/tools/testing/memblock/tests/basic_api.c
-index 37b7cc075b0f..a7bc180316d6 100644
---- a/tools/testing/memblock/tests/basic_api.c
-+++ b/tools/testing/memblock/tests/basic_api.c
-@@ -806,12 +806,19 @@ static int memblock_remove_checks(void)
- }
+diff --git a/tools/testing/memblock/TODO b/tools/testing/memblock/TODO
+index c25b2fdec45e..cd1a30d5acc9 100644
+--- a/tools/testing/memblock/TODO
++++ b/tools/testing/memblock/TODO
+@@ -23,6 +23,3 @@ TODO
  
- /*
-- * A simple test that tries to free a memory block that was marked earlier
-- * as reserved. By "freeing" a region we mean overwriting it with the next
-- * entry in memblock.reserved. To check this is the case, the test reserves
-- * two memory regions and verifies that the value of the latter was used to
-- * erase r1 region.
-- * The test also checks if the region counter and total size were updated.
-+ * A simple test that tries to free a memory block r1 that was marked
-+ * earlier as reserved. By "freeing" a region we mean overwriting it with
-+ * the next entry r2 in memblock.reserved:
-+ *
-+ *  |              ......           +----+ |
-+ *  |              : r1 :           | r2 | |
-+ *  +--------------+----+-----------+----+-+
-+ *                                  ^
-+ *                                  |
-+ *                                  rgn.base
-+ *
-+ * Expect to reserve two memory regions and then erase r1 region with the
-+ * value of r2. The region counter and total size are updated.
-  */
- static int memblock_free_simple_check(void)
- {
-@@ -842,11 +849,22 @@ static int memblock_free_simple_check(void)
- 	return 0;
- }
- 
-- /*
--  * A test that tries to free a region that was not marked as reserved
--  * (i.e. has no corresponding entry in memblock.reserved). It verifies
--  * that array, regions counter and total size were not modified.
--  */
-+/*
-+ * A test that tries to free a region r2 that was not marked as reserved
-+ * (i.e. has no corresponding entry in memblock.reserved):
-+ *
-+ *                     +----------------+
-+ *                     |       r2       |
-+ *                     +----------------+
-+ *  |  +----+                              |
-+ *  |  | r1 |                              |
-+ *  +--+----+------------------------------+
-+ *     ^
-+ *     |
-+ *     rgn.base
-+ *
-+ * The array, regions counter and total size are not modified.
-+ */
- static int memblock_free_absent_check(void)
- {
- 	struct memblock_region *rgn;
-@@ -876,11 +894,23 @@ static int memblock_free_absent_check(void)
- }
- 
- /*
-- * A test that tries to free a region which overlaps with the beginning of
-- * the already existing entry r1 (that is r1.base < r2.base + r2.size). It
-- * checks if only the intersection of both regions is freed. The test also
-- * checks if the regions counter and total size are updated to expected
-- * values.
-+ * A test that tries to free a region r2 that overlaps with the beginning
-+ * of the already existing entry r1 (that is r1.base < r2.base + r2.size):
-+ *
-+ *     +----+
-+ *     | r2 |
-+ *     +----+
-+ *  |    ...+--------------+               |
-+ *  |    :  |    r1        |               |
-+ *  +----+--+--------------+---------------+
-+ *       ^  ^
-+ *       |  |
-+ *       |  rgn.base
-+ *       |
-+ *       r1.base
-+ *
-+ * Expect that only the intersection of both regions is freed. The
-+ * regions counter and total size are updated.
-  */
- static int memblock_free_overlap_top_check(void)
- {
-@@ -914,10 +944,18 @@ static int memblock_free_overlap_top_check(void)
- }
- 
- /*
-- * A test that tries to free a region which overlaps with the end of the
-- * first entry (that is r2.base < r1.base + r1.size). It checks if only the
-- * intersection of both regions is freed. The test also checks if the
-- * regions counter and total size are updated to expected values.
-+ * A test that tries to free a region r2 that overlaps with the end of
-+ * the already existing entry r1 (that is r2.base < r1.base + r1.size):
-+ *
-+ *                   +----------------+
-+ *                   |       r2       |
-+ *                   +----------------+
-+ *  |    +-----------+.....                |
-+ *  |    |       r1  |    :                |
-+ *  +----+-----------+----+----------------+
-+ *
-+ * Expect that only the intersection of both regions is freed. The
-+ * regions counter and total size are updated.
-  */
- static int memblock_free_overlap_bottom_check(void)
- {
-@@ -951,13 +989,23 @@ static int memblock_free_overlap_bottom_check(void)
- }
- 
- /*
-- * A test that tries to free a region which is within the range of the
-- * already existing entry (that is
-- * (r1.base < r2.base) && (r2.base + r2.size < r1.base + r1.size)).
-- * It checks if the region is split into two - one that ends at r2.base and
-- * second that starts at r2.base + size, with appropriate sizes. It is
-- * expected that the region counter and total size fields were updated t
-- * reflect that change.
-+ * A test that tries to free a region r2 that is within the range of the
-+ * already existing entry r1 (that is
-+ * (r1.base < r2.base) && (r2.base + r2.size < r1.base + r1.size)):
-+ *
-+ *                    +----+
-+ *                    | r2 |
-+ *                    +----+
-+ *  |    +------------+....+---------------+
-+ *  |    |    rgn1    | r1 |     rgn2      |
-+ *  +----+------------+----+---------------+
-+ *       ^
-+ *       |
-+ *       r1.base
-+ *
-+ * Expect that the region is split into two - one that ends at r2.base and
-+ * another that starts at r2.base + r2.size, with appropriate sizes. The
-+ * region counter and total size fields are updated.
-  */
- static int memblock_free_within_check(void)
- {
+ 5. Add tests for memblock_alloc_node() to check if the correct NUMA node is set
+    for the new region
+-
+-6. Update comments in tests/basic_api.c to match the style used in
+-   tests/alloc_*.c
 -- 
 2.32.0
 
