@@ -1,127 +1,69 @@
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CFC9C23BE
-	for <outreachy@lists.linux.dev>; Sun,  1 May 2022 05:11:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1651381904; x=1682917904;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=JKmlc2N07ImkrRm9eM53sgRdX9aGwES/lKiUIH8s89E=;
-  b=Z+fh6qMqWJk7JPLVgtxSdnDWJSbZlgflc0oiH4iixon1wp5mUBzeQrdy
-   cw4sZ11dujimuPUmI7ICbU9qPxbF+yGpPUeDN01grEaS3arcQEDVMRA70
-   TYWR68CGojMJpqZlcoFETgDjxPeDMZOU5+ktHlDa4k0kuB83foOaqx8mP
-   k9AV3KQOVB6YJfejFF/KQVNKA9FQqSNfUwNL3Tuuz2IriL038VuZM/QxG
-   +zeP9H9GxK2isw2PDhzEYpz1Ty+1AnM8LWDPytXDpoIYWb9l8+RfV2Ksa
-   DO2PYvjslwZC5YtKOXujqUaf3/6mZW+4/XdKGjKSt2bNvGoufWmjYDU2L
-   A==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10333"; a="266818562"
-X-IronPort-AV: E=Sophos;i="5.91,189,1647327600"; 
-   d="scan'208";a="266818562"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
-  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Apr 2022 22:11:43 -0700
-X-IronPort-AV: E=Sophos;i="5.91,189,1647327600"; 
-   d="scan'208";a="732846343"
-Received: from iweiny-server.sc.intel.com (HELO localhost) ([172.25.222.75])
-  by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Apr 2022 22:11:43 -0700
-Date: Sat, 30 Apr 2022 22:11:43 -0700
-From: ira.weiny@intel.com
-To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Cc: Andrew Morton <akpm@linux-foundation.org>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	"Matthew Wilcox (Oracle)" <willy@infradead.org>,
-	Will Deacon <will@kernel.org>, Peter Collingbourne <pcc@google.com>,
-	Vlastimil Babka <vbabka@suse.cz>,
-	Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
-	linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org,
-	outreachy@lists.linux.dev
-Subject: Re: [PATCH v4 0/4] Extend and reorganize Highmem's documentation
-Message-ID: <Ym4WSstEQI7yYU0n@iweiny-server>
-References: <20220428212455.892-1-fmdefrancesco@gmail.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ABE8915A5
+	for <outreachy@lists.linux.dev>; Mon,  2 May 2022 09:00:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 4F68EC385AF;
+	Mon,  2 May 2022 09:00:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1651482012;
+	bh=Q4Lxg3mYgoJYtOkMy5TJ48zQgqq/TolfcfdH1Pp05fI=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=WXZjgr4AbWmu2g1YM0Fe6uRTqG2Ty6Xm6wQD8EVZ+fLOTg3wWcTvhrq1OMxFCCZhd
+	 oTkdqZqt7796gR9YZrDdD9vvh1+iZgi/ct478A+PFu/bfKHZdkLvynoqeuAml2pkJL
+	 xqS9WArqnEyAxaoAUwTsMGURjQ2UdcHvdABBTud874IW8E8KSJL92etXa0cwD9JI1b
+	 iPBytOW3Sh7V9ZqiFCC6ERXeNFLxpdzkYKFq1SeFO+0yqFhyCIxOQ+Fs/eqD4VSnmz
+	 UzHovGMoSrP7D7gYsStBxR+SsFmCtZpty+NEoGQsRoxkyIqayrl9MvA/XYRkf8umWx
+	 8Z+ra10AbImZQ==
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 33E7DE8DBDA;
+	Mon,  2 May 2022 09:00:12 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20220428212455.892-1-fmdefrancesco@gmail.com>
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next v4] selftests: net: vrf_strict_mode_test: add
+ support to select a test to run
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: 
+ <165148201220.20737.6374754994100891007.git-patchwork-notify@kernel.org>
+Date: Mon, 02 May 2022 09:00:12 +0000
+References: <20220429164658.GA656707@jaehee-ThinkPad-X1-Extreme>
+In-Reply-To: <20220429164658.GA656707@jaehee-ThinkPad-X1-Extreme>
+To: Jaehee Park <jhpark1013@gmail.com>
+Cc: outreachy@lists.linux.dev, jdenham@redhat.com, roopa.prabhu@gmail.com,
+ sbrivio@redhat.com, netdev@vger.kernel.org, roopa@nvidia.com,
+ dsahern@gmail.com
 
-On Thu, Apr 28, 2022 at 11:24:51PM +0200, Fabio M. De Francesco wrote:
-> This series has the purpose to extend and reorganize Highmem's
-> documentation.
-> 
-> This is a work in progress because some information should still be moved
-> from highmem.rst to highmem.h and highmem-internal.h. Specifically I'm
-> talking about moving the "how to" information to the relevant headers, as
-> it as been suggested by Ira Weiny (Intel).
-> 
-> Also, this is a work in progress because some kdocs in highmem.h and
-> highmem-internal.h should be improved.
-> 
-> However, I think (and hope that my thoughts are also shared by Maintainers
-> and Reviewers) that this series constitues a sensible step forward
-> improving Highmem's documentation, despite some important issues are not
-> yet addressed.
+Hello:
 
-For the series:
+This patch was applied to netdev/net-next.git (master)
+by Paolo Abeni <pabeni@redhat.com>:
 
-Reviewed-by: Ira Weiny <ira.weiny@intel.com>
+On Fri, 29 Apr 2022 12:46:58 -0400 you wrote:
+> Add a boilerplate test loop to run all tests in
+> vrf_strict_mode_test.sh. Add a -t flag that allows a selected test to
+> run. Remove the vrf_strict_mode_tests function which is now unused.
+> 
+> Signed-off-by: Jaehee Park <jhpark1013@gmail.com>
+> ---
+> v2
+> - Add a -t flag that allows a selected test to
+> run.
+> 
+> [...]
 
-> 
-> Changes from v1 to v2:
-> 
->         1/4 - Fix typos (Mike Rapoport); re-write the description of @page
->               because the original was wrong (Ira Weiny); add Ira's and
->               Mike's tags in the commit message.
->         2/4 - Add Ira's and Mike's tags in the commit message.
->         3/4 - Rework the subject to better summarize what this patch
->               changes; merge the section which was removed from highmem.rst
->               with the kdocs of highmem.h (suggested by Ira Weiny); add
->               Ira's tag in the commit message.
->         4/4 - Reformulate a sentence that was incomprehensible due to my
->               own mistakes in copying and pasting the text of another
->               paragraph (problem noted by Ira Weiny); refer to the kdocs
->               of kmap_local_page () to show how nested mappings should be
->               handled; fix grammar error; add Ira's tag in the commit
->               message.
-> 
-> Changes from v2 to v3:
-> 
->         1/4 - Add a deprecation notice to kunmap_atomic() for consistency
->               with the same notice in kmap_atomic() (Sebastian Andrzej
->               Siewior); shorten subject and extend commit message.
->         2/4 - No changes.
->         3/4 - No changes.
->         4/4 - Correct a technical inaccuracy about preemption disabling /
->               re-enabling in kmap_atomic() / kunmap_atomic() (Sebastian
->               Andrzej Siewior).
-> 
-> Changes from v3 to v4:
-> 
-> 	1/4 - Correct some techinal inaccuracies about the side effects
-> 	      of calling kmap_atomic() and kmap_local_page() (Sebastian
-> 	      Andrzej Siewior); drop "Acked-by:" and "Reviewed-by:" tags
-> 	      because relevant parts of this patch have changed.
-> 	2/4 - No changes.
-> 	3/4 - No changes.
-> 	4/4 - Shorten a couple of paragraphs by removing redundant
-> 	      information (Sebastian Andrzej Siewior).
-> 
-> Fabio M. De Francesco (4):
->   mm/highmem: Fix kernel-doc warnings in highmem*.h
->   Documentation/vm: Include kdocs from highmem*.h into highmem.rst
->   Documentation/vm: Move "Using kmap-atomic" from highmem.rst to
->     highmem.h
->   Documentation/vm: Rework "Temporary Virtual Mappings" section
-> 
->  Documentation/vm/highmem.rst     | 100 ++++++++++++++++++-------------
->  include/linux/highmem-internal.h |  18 +++++-
->  include/linux/highmem.h          |  51 ++++++++++++----
->  3 files changed, 113 insertions(+), 56 deletions(-)
-> 
-> -- 
-> 2.34.1
-> 
+Here is the summary with links:
+  - [net-next,v4] selftests: net: vrf_strict_mode_test: add support to select a test to run
+    https://git.kernel.org/netdev/net-next/c/a313f858ed36
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
