@@ -1,178 +1,191 @@
-Received: from mail-qt1-f182.google.com (mail-qt1-f182.google.com [209.85.160.182])
+Received: from mail-qk1-f180.google.com (mail-qk1-f180.google.com [209.85.222.180])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D2EBC2F32;
-	Mon,  2 May 2022 18:34:09 +0000 (UTC)
-Received: by mail-qt1-f182.google.com with SMTP id t16so11732414qtr.9;
-        Mon, 02 May 2022 11:34:09 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 87A217F;
+	Tue,  3 May 2022 18:18:59 +0000 (UTC)
+Received: by mail-qk1-f180.google.com with SMTP id b20so11814935qkc.6;
+        Tue, 03 May 2022 11:18:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=4pWl4qpJf3TJEYYU3tzVCW+qGQ3DSAzsFResAB6bdFY=;
-        b=hljZ054dngOMdWddIV70DVGtwCcA0eE7eauXelWgVRkyjbo8qvg1QfZ0ACZak4cSXb
-         mhLtdisGjhZL4DupQ8BV4OopRmeGYqUa8AKYsYC1WvsK4R/RG79bN518MEH6dDL9X3eN
-         9x3dDg2IjHmp2ddAhKE4irB+CjeQz6ToDkv2IIIOzMj0epQ4jF97HgdKxPYzMpxJ5J+N
-         Ku/GLJvpiK3+1S7rOJgg52MTk3AHV5B0Pryexo1v6IxHo+rJN/UVnAqENm5tr+XwupKc
-         IrT+7L4qhDqTCkw8sVJ4PxSr09gEt2tMC0o5BEZThyilstGQv7wa0dc2NlBtWYPBokmN
-         3x6g==
+         :content-disposition:content-transfer-encoding:in-reply-to;
+        bh=spnn+q8TrCXO+IkFYKXUusDYogbgo9s6L1zJCpp5TCU=;
+        b=PNLMlGltCnL18Npgw9YraobHTN/rKVDLZuJyqL85R8HLKuf8oqHSBnfX8dQHOPmZiP
+         aarS9uVpVGxzYOfxFA3Gw70jW91DD54EXyBHYJ69Vh6R8rTtijhUg8CPY7BXamu29zJ0
+         FUvfTLhvlIXT+XGIvS4f/TBbaefYEfndO/tg6eLNcg/BdW18Pc9RhVMz39DMPaM9STQi
+         cPX8Jqi80F+MrGski65Dgjsp7Y9fdw3dQVMLjC5XgMZtLT/OQTQIkupdfXvIvKO0jdqu
+         m+HnLFxlWvq53WlyBtHBbDbOHXmy4TSg/jNNe3W7j3HTwl/IO7CIaI6/sLph5oxg5Dxi
+         P6fA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=4pWl4qpJf3TJEYYU3tzVCW+qGQ3DSAzsFResAB6bdFY=;
-        b=12mAxBgIYhqu+ZbRSmie0EHR5QXbLbpNbpaBh+C7Fow8RH0Gdacrl5+7CA4m9JyskK
-         jF9mXscMX3AVkeEQGMkkXt71WI39GTmXtuH/XUurZ5jWmPpQyYlTBQ6lYWAJiwvWldaX
-         eE17m3ue314BYT1gENwn6bPeXX8KSAy4buzUPwIN+vP7WRm59idJMNypT1yaRUgt8ExC
-         N+h/eAOPWtda9qIOhWsKwYVr1dxA2vxD/nS3+TIHPNBz7A/cQPdXlKIe/+1wY0kcshI0
-         Qw476+TT+dYRWAHShUfWC0fnpDp4I4LC3rGLe9+hjawlzxfaxDwZS5CVqO9nQ8TSbcuU
-         sk6w==
-X-Gm-Message-State: AOAM530XCCKeaVokBjQoUwb33s8zsUOlfntNtLt23MF3ocfrgV1nDwZz
-	o3JsB31Kg+j7mhKnECJKcIM=
-X-Google-Smtp-Source: ABdhPJxEHbQthHynKn6InPI8iEFvDKDeokgE1dGsJguX910oVK6dcW4hmvOXKaRtlN+Uk5JTgcWtoA==
-X-Received: by 2002:a05:622a:1352:b0:2f3:9afb:5ab8 with SMTP id w18-20020a05622a135200b002f39afb5ab8mr11572008qtk.451.1651516448617;
-        Mon, 02 May 2022 11:34:08 -0700 (PDT)
+         :mime-version:content-disposition:content-transfer-encoding
+         :in-reply-to;
+        bh=spnn+q8TrCXO+IkFYKXUusDYogbgo9s6L1zJCpp5TCU=;
+        b=4FUnLPPjfaWGjctvD9Lz6HKV1olSQDvifNUwREN6MSFltH4/ZtvKT57L/jnrEFRh3Q
+         lOkUd4pYPcgh00e7RK5P6caFN9UPVx+BhgGYl+geWcWLAeOC3aDYnVr70p/nslgErrOQ
+         xhStkaJXhY3uyyJjxdIP/lwnMFlYuAwQ9qVIx2u/LALD+B4nnFdUdtmD+iWWycosuo+Y
+         LM46QwKki/RDm39sMNj2AGWfVtDJ0jGBoNLFO9cqvI1Gv+drGavYHLsy6NZcqD7tU+Mp
+         rpEbejwk6ZwY2jDm6pEXCk1mRp53yvU0CZ22QdLxDCLZo99Akt/ZDfSrn+/tyVyaGPRl
+         VCzw==
+X-Gm-Message-State: AOAM532RKs/otjnEnIWRj0LUMKyGPUyUZneL35+bNM4pDcrhX6sOwH5h
+	y5+4jsfXw8AS6BDjDBPQMWo=
+X-Google-Smtp-Source: ABdhPJwBrg7LhR7U5VoEkeRrAZ3cCPybGO2VL1rpu95WON/xwJVhqheWdJsp4TmZt4hKVD/qJIjL5Q==
+X-Received: by 2002:a05:620a:e01:b0:69f:6042:7fa3 with SMTP id y1-20020a05620a0e0100b0069f60427fa3mr12383818qkm.524.1651601938329;
+        Tue, 03 May 2022 11:18:58 -0700 (PDT)
 Received: from jaehee-ThinkPad-X1-Extreme ([4.34.18.218])
-        by smtp.gmail.com with ESMTPSA id bj33-20020a05620a192100b0069fc13ce1dcsm4688245qkb.13.2022.05.02.11.34.07
+        by smtp.gmail.com with ESMTPSA id b25-20020a05620a127900b0069fc13ce1f6sm6194868qkl.39.2022.05.03.11.18.56
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 02 May 2022 11:34:07 -0700 (PDT)
-Date: Mon, 2 May 2022 14:34:03 -0400
+        Tue, 03 May 2022 11:18:57 -0700 (PDT)
+Date: Tue, 3 May 2022 14:18:53 -0400
 From: Jaehee Park <jhpark1013@gmail.com>
-To: Kalle Valo <kvalo@kernel.org>
-Cc: =?iso-8859-1?B?Suly9G1l?= Pouiller <jerome.pouiller@silabs.com>,
-	"David S. Miller" <davem@davemloft.net>,
+To: =?iso-8859-1?B?Suly9G1l?= Pouiller <jerome.pouiller@silabs.com>
+Cc: Kalle Valo <kvalo@kernel.org>, "David S. Miller" <davem@davemloft.net>,
 	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
 	linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev,
-	Outreachy Linux Kernel <outreachy@lists.linux.dev>,
-	Stefano Brivio <sbrivio@redhat.com>
+	outreachy@lists.linux.dev, Stefano Brivio <sbrivio@redhat.com>
 Subject: Re: [PATCH] wfx: use container_of() to get vif
-Message-ID: <20220502183403.GA812540@jaehee-ThinkPad-X1-Extreme>
+Message-ID: <20220503181853.GA886315@jaehee-ThinkPad-X1-Extreme>
 References: <20220418035110.GA937332@jaehee-ThinkPad-X1-Extreme>
- <87y200nf0a.fsf@kernel.org>
- <CAA1TwFCOEEwnayexnJin8T=Fc2HEgHC9jyfj5HxfiWybjUi9GA@mail.gmail.com>
+ <22643645.6Emhk5qWAg@pc-42>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <CAA1TwFCOEEwnayexnJin8T=Fc2HEgHC9jyfj5HxfiWybjUi9GA@mail.gmail.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <22643645.6Emhk5qWAg@pc-42>
 
-On Mon, May 02, 2022 at 02:10:07PM -0400, Jaehee wrote:
-> On Wed, Apr 20, 2022 at 7:58 AM Kalle Valo <kvalo@kernel.org> wrote:
-> >
-> > Jaehee Park <jhpark1013@gmail.com> writes:
-> >
-> > > Currently, upon virtual interface creation, wfx_add_interface() stores
-> > > a reference to the corresponding struct ieee80211_vif in private data,
-> > > for later usage. This is not needed when using the container_of
-> > > construct. This construct already has all the info it needs to retrieve
-> > > the reference to the corresponding struct from the offset that is
-> > > already available, inherent in container_of(), between its type and
-> > > member inputs (struct ieee80211_vif and drv_priv, respectively).
-> > > Remove vif (which was previously storing the reference to the struct
-> > > ieee80211_vif) from the struct wfx_vif, define a function
-> > > wvif_to_vif(wvif) for container_of(), and replace all wvif->vif with
-> > > the newly defined container_of construct.
-> > >
-> > > Signed-off-by: Jaehee Park <jhpark1013@gmail.com>
-> >
-> > [...]
-> >
-> > > +static inline struct ieee80211_vif *wvif_to_vif(struct wfx_vif *wvif)
-> > > +{
-> > > +     return container_of((void *)wvif, struct ieee80211_vif, drv_priv);
-> > > +}
-> >
-> > Why the void pointer cast? Avoid casts as much possible.
-> >
+On Tue, Apr 19, 2022 at 03:39:19PM +0200, Jérôme Pouiller wrote:
+> On Monday 18 April 2022 05:51:10 CEST Jaehee Park wrote:
+> > 
+> > Currently, upon virtual interface creation, wfx_add_interface() stores
+> > a reference to the corresponding struct ieee80211_vif in private data,
+> > for later usage. This is not needed when using the container_of
+> > construct. This construct already has all the info it needs to retrieve
+> > the reference to the corresponding struct from the offset that is
+> > already available, inherent in container_of(), between its type and
+> > member inputs (struct ieee80211_vif and drv_priv, respectively).
+> > Remove vif (which was previously storing the reference to the struct
+> > ieee80211_vif) from the struct wfx_vif, define a function
+> > wvif_to_vif(wvif) for container_of(), and replace all wvif->vif with
+> > the newly defined container_of construct.
+> > 
+> > Signed-off-by: Jaehee Park <jhpark1013@gmail.com>
+> > ---
+> > 
+> > Changes from staging to wireless-next tree
+> > - changed macro into function and named it back to wvif_to_vif
+> > - fit all lines in patch to 80 columns
+> > - decared a reference to vif at the beginning of the functions
+> > 
+> > NOTE: Jérôme is going to be testing this patch on his hardware
 > 
-> Hi Kalle,
+> Don't forget to increment the version number of your submission (option
+> -v of git send-email).
 > 
-> Sorry for the delay in getting back to you about why the void pointer
-> cast was used.
+> >  drivers/net/wireless/silabs/wfx/wfx.h     |  6 +-
+> >  drivers/net/wireless/silabs/wfx/data_rx.c |  5 +-
+> >  drivers/net/wireless/silabs/wfx/data_tx.c |  3 +-
+> >  drivers/net/wireless/silabs/wfx/key.c     |  4 +-
+> >  drivers/net/wireless/silabs/wfx/queue.c   |  3 +-
+> >  drivers/net/wireless/silabs/wfx/scan.c    |  9 ++-
+> >  drivers/net/wireless/silabs/wfx/sta.c     | 69 ++++++++++++++---------
+> >  7 files changed, 63 insertions(+), 36 deletions(-)
+> > 
+> > diff --git a/drivers/net/wireless/silabs/wfx/wfx.h b/drivers/net/wireless/silabs/wfx/wfx.h
+> > index 6594cc647c2f..718693a4273d 100644
+> > --- a/drivers/net/wireless/silabs/wfx/wfx.h
+> > +++ b/drivers/net/wireless/silabs/wfx/wfx.h
+> > @@ -61,7 +61,6 @@ struct wfx_dev {
+> > 
+> >  struct wfx_vif {
+> >         struct wfx_dev             *wdev;
+> > -       struct ieee80211_vif       *vif;
+> >         struct ieee80211_channel   *channel;
+> >         int                        id;
+> > 
+> > @@ -91,6 +90,11 @@ struct wfx_vif {
+> >         struct completion          set_pm_mode_complete;
+> >  };
+> > 
+> > +static inline struct ieee80211_vif *wvif_to_vif(struct wfx_vif *wvif)
+> > +{
+> > +       return container_of((void *)wvif, struct ieee80211_vif, drv_priv);
+> > +}
+> > +
+> >  static inline struct wfx_vif *wdev_to_wvif(struct wfx_dev *wdev, int vif_id)
+> >  {
+> >         if (vif_id >= ARRAY_SIZE(wdev->vif)) {
+> > diff --git a/drivers/net/wireless/silabs/wfx/data_rx.c b/drivers/net/wireless/silabs/wfx/data_rx.c
+> > index a4b5ffe158e4..342b9cd0e74c 100644
+> > --- a/drivers/net/wireless/silabs/wfx/data_rx.c
+> > +++ b/drivers/net/wireless/silabs/wfx/data_rx.c
+> > @@ -16,6 +16,7 @@
+> >  static void wfx_rx_handle_ba(struct wfx_vif *wvif, struct ieee80211_mgmt *mgmt)
+> >  {
+> >         int params, tid;
+> > +       struct ieee80211_vif *vif = wvif_to_vif(wvif);
 > 
-> In essence, I'm taking private data with a driver-specific pointer
-> and that needs to be resolved back to a generic pointer.
+> When you can, try to place the longest declaration first ("reverse
+> Christmas tree order").
+
+Thanks Jerome, I have a new version of the patch I'm going to send today
+with this edit.
+
 > 
-> The private data (drv_priv) is declared as a generic u8 array in struct
-> ieee80211_vif, but wvif is a more specific type.
+> [...]
+> > diff --git a/drivers/net/wireless/silabs/wfx/sta.c b/drivers/net/wireless/silabs/wfx/sta.c
+> > index 3297d73c327a..97fcbad23c94 100644
+> > --- a/drivers/net/wireless/silabs/wfx/sta.c
+> > +++ b/drivers/net/wireless/silabs/wfx/sta.c
+> [...]
+> > @@ -152,19 +153,28 @@ static int wfx_get_ps_timeout(struct wfx_vif *wvif, bool *enable_ps)
+> >  {
+> >         struct ieee80211_channel *chan0 = NULL, *chan1 = NULL;
+> >         struct ieee80211_conf *conf = &wvif->wdev->hw->conf;
+> > +       struct ieee80211_vif *vif = wvif_to_vif(wvif);
+> > 
+> > -       WARN(!wvif->vif->bss_conf.assoc && enable_ps,
+> > +       WARN(!vif->bss_conf.assoc && enable_ps,
+> >              "enable_ps is reliable only if associated");
+> > -       if (wdev_to_wvif(wvif->wdev, 0))
+> > -               chan0 = wdev_to_wvif(wvif->wdev, 0)->vif->bss_conf.chandef.chan;
+> > -       if (wdev_to_wvif(wvif->wdev, 1))
+> > -               chan1 = wdev_to_wvif(wvif->wdev, 1)->vif->bss_conf.chandef.chan;
+> > -       if (chan0 && chan1 && wvif->vif->type != NL80211_IFTYPE_AP) {
+> > +       if (wdev_to_wvif(wvif->wdev, 0)) {
+> > +               struct wfx_vif *wvif_ch0 = wdev_to_wvif(wvif->wdev, 0);
+> > +               struct ieee80211_vif *vif_ch0 = wvif_to_vif(wvif_ch0);
+> > +
+> > +               chan0 = vif_ch0->bss_conf.chandef.chan;
+> > +       }
+> > +       if (wdev_to_wvif(wvif->wdev, 1)) {
+> > +               struct wfx_vif *wvif_ch1 = wdev_to_wvif(wvif->wdev, 1);
+> > +               struct ieee80211_vif *vif_ch1 = wvif_to_vif(wvif_ch1);
+> > +
+> > +               chan1 = vif_ch1->bss_conf.chandef.chan;
+> > +       }
 > 
-> I wanted to also point to existing, reasonable examples such as:
-> static void iwl_mvm_tcm_uapsd_nonagg_detected_wk(struct work_struct *wk)
-> {
->         struct iwl_mvm *mvm;
->         struct iwl_mvm_vif *mvmvif;
->         struct ieee80211_vif *vif;
+> I think this code could be simplified into:
 > 
->         mvmvif = container_of(wk, struct iwl_mvm_vif,
->                               uapsd_nonagg_detected_wk.work);
->         vif = container_of((void *)mvmvif, struct ieee80211_vif, drv_priv);
+>        if (wvif->wdev->vif[1])
+>                chan1 = wvif->wdev->vif[1]->bss_conf.chandef.chan;
 > 
-> in drivers/net/wireless$ less intel/iwlwifi/mvm/utils.c, which does the
-> same thing.
-> 
-> There are fifteen of them throughout:
-> wireless-next/drivers/net/wireless$ grep -rn "container_of(.* ieee80211_vif"
-> intel/iwlwifi/mvm/utils.c:794:  vif = container_of((void *)mvmvif,
-> struct ieee80211_vif, drv_priv);
-> intel/iwlwifi/mvm/mac80211.c:1347:      vif = container_of((void
-> *)mvmvif, struct ieee80211_vif, drv_priv);
-> mediatek/mt76/mt76x02_mmio.c:415:               vif =
-> container_of(priv, struct ieee80211_vif, drv_priv);
-> mediatek/mt76/mt7615/mac.c:275: vif = container_of((void *)msta->vif,
-> struct ieee80211_vif, drv_priv);
-> mediatek/mt76/mt7915/mac.c:416: vif = container_of((void *)msta->vif,
-> struct ieee80211_vif, drv_priv);
-> mediatek/mt76/mt7915/mac.c:2327:                vif =
-> container_of((void *)msta->vif, struct ieee80211_vif, drv_priv);
-> mediatek/mt76/mt7915/debugfs.c:1026:    vif = container_of((void
-> *)msta->vif, struct ieee80211_vif, drv_priv);
-> mediatek/mt76/mt7921/mac.c:425: vif = container_of((void *)msta->vif,
-> struct ieee80211_vif, drv_priv);
-> ti/wlcore/wlcore_i.h:502:       return container_of((void *)wlvif,
-> struct ieee80211_vif, drv_priv);
-> realtek/rtl818x/rtl8187/dev.c:1068:             container_of((void
-> *)vif_priv, struct ieee80211_vif, drv_priv);
-> realtek/rtl818x/rtl8180/dev.c:1293:             container_of((void
-> *)vif_priv, struct ieee80211_vif, drv_priv);
-> realtek/rtw88/main.h:2075:      return container_of(p, struct
-> ieee80211_vif, drv_priv);
-> realtek/rtw89/core.h:3440:      return container_of(p, struct
-> ieee80211_vif, drv_priv);
-> ath/carl9170/carl9170.h:641:    return container_of((void *)priv,
-> struct ieee80211_vif, drv_priv);
-> ath/wcn36xx/wcn36xx.h:329:      return container_of((void *) vif_priv,
-> struct ieee80211_vif, drv_priv);
+> (If you choose this way, I suggest to place this change in a separate
+> patch)
 > 
 
-Sorry -- here's the last portion of the email without wrapping.
+Ok I'll send your suggested edit in a separate patch after this patch
+gets through.
 
-wireless-next/drivers/net/wireless$ grep -rn "container_of(.* ieee80211_vif"
-intel/iwlwifi/mvm/utils.c:794:  vif = container_of((void *)mvmvif, struct ieee80211_vif, drv_priv);
-intel/iwlwifi/mvm/mac80211.c:1347:      vif = container_of((void *)mvmvif, struct ieee80211_vif, drv_priv);
-mediatek/mt76/mt76x02_mmio.c:415:               vif = container_of(priv, struct ieee80211_vif, drv_priv);
-mediatek/mt76/mt7615/mac.c:275: vif = container_of((void *)msta->vif, struct ieee80211_vif, drv_priv);
-mediatek/mt76/mt7915/mac.c:416: vif = container_of((void *)msta->vif, struct ieee80211_vif, drv_priv);
-mediatek/mt76/mt7915/mac.c:2327:                vif = container_of((void *)msta->vif, struct ieee80211_vif, drv_priv);
-mediatek/mt76/mt7915/debugfs.c:1026:    vif = container_of((void *)msta->vif, struct ieee80211_vif, drv_priv);
-mediatek/mt76/mt7921/mac.c:425: vif = container_of((void *)msta->vif, struct ieee80211_vif, drv_priv);
-ti/wlcore/wlcore_i.h:502:       return container_of((void *)wlvif, struct ieee80211_vif, drv_priv);
-realtek/rtl818x/rtl8187/dev.c:1068:             container_of((void *)vif_priv, struct ieee80211_vif, drv_priv);
-realtek/rtl818x/rtl8180/dev.c:1293:             container_of((void *)vif_priv, struct ieee80211_vif, drv_priv);
-realtek/rtw88/main.h:2075:      return container_of(p, struct ieee80211_vif, drv_priv);
-realtek/rtw89/core.h:3440:      return container_of(p, struct ieee80211_vif, drv_priv);
-ath/carl9170/carl9170.h:641:    return container_of((void *)priv, struct ieee80211_vif, drv_priv);
-ath/wcn36xx/wcn36xx.h:329:      return container_of((void *) vif_priv, struct ieee80211_vif, drv_priv);
-
-> Thanks,
-> Jaehee
+> [...]
+> 
+> -- 
+> Jérôme Pouiller
 > 
 > 
-> > --
-> > https://patchwork.kernel.org/project/linux-wireless/list/
-> >
-> > https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
