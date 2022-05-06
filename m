@@ -1,207 +1,145 @@
-Received: from mail-wr1-f54.google.com (mail-wr1-f54.google.com [209.85.221.54])
+Received: from mail-ej1-f46.google.com (mail-ej1-f46.google.com [209.85.218.46])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A0E042568
-	for <outreachy@lists.linux.dev>; Thu,  5 May 2022 15:10:13 +0000 (UTC)
-Received: by mail-wr1-f54.google.com with SMTP id k2so6515904wrd.5
-        for <outreachy@lists.linux.dev>; Thu, 05 May 2022 08:10:13 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9AD84A5B;
+	Fri,  6 May 2022 16:50:43 +0000 (UTC)
+Received: by mail-ej1-f46.google.com with SMTP id gh6so15603836ejb.0;
+        Fri, 06 May 2022 09:50:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=m2VDhVRQPjsV1IPycPT/Y4TlTx8jaZtNzcIfdQQLUOE=;
-        b=FFAziO4TJTHw3bMRuvzzhIrejv1YFi9kr+TvLjW7GH03D/Ms9GHVRb1qHk7xSkSRbh
-         GvMrgZMhsdYjPOhZYy4728AKW1+YecbVpH26/5sPMvodoh8znUPVwIaI2wutBIoVS3id
-         V3Q41qlgLA7wJ/1dKXp2jStShtULGJGPdIsH9P84DHXPzRSdX5kmeTdmbO9WPqM1ffop
-         IyAnwBJwiXbCsYAGoORTH9/WeQHWkQqXtUWP0kWHWP9csb2E1yLcNsTDW2jlYDYEpICg
-         qOYRXPsYrWAAkXYhyDF85cizqBuwsLLGTf+I/NervEbk5N0KYG0lmK2Ud1qeJE8t81t6
-         5HxA==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=kUvr4fMP2elRfDyGqxMyfJTTNp+E8ksaw8Lx5Viwtkc=;
+        b=HF/DeaGJK5NSYoN64s/08h6x8B2rWgCMQQ+RA6RbZGQQmXGGQMSlunQ3xqaAdCYb7X
+         pr/wPiGO9jDBXZhNQQG2dwtDUQUUhCwZ/FxADiY5usIK9V7FromCFGIuRt7ZVlMSgVgN
+         vDYkAb7zu0JlfkxHRGxA3FBwNFf+vFaz2VLeLVdSjS0uEfSHiVdHYAOaIGf5ZQ9i/4d/
+         crqkVJ27Wi5yI33qMjQ5wIswLFfPiVqVDn5sWN6s4AAlkhOPB17Aqq3H7z3ng/OuurS8
+         eC9g0xOMt5S6r7BsBOP5gBc8+WFQQ8rBaeTewH7DWla3dgwGLsyVxjPeNvpij2qLdiGd
+         4SlQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=m2VDhVRQPjsV1IPycPT/Y4TlTx8jaZtNzcIfdQQLUOE=;
-        b=vtJa0chPJOfUkwVLWHhDj5lrIE9PVei2Yu8S1v0Bp9v3h/3Wz13HeXqlxGFKrYtg/6
-         1Gs4dAwQPtHmTpNa7iDB0crLjcylmwq/dagx6HXnuG8CydPcTySCENs0BtmI6qrpR7md
-         4sSUS5uYBo+Hv4/l8ZAMLIh3oauk9LbS4rE/hAooCT8EjTddxaCi6xtU3tvF/Emh/liy
-         USuUTz3LruBZ94E8CmJtCbQYeXYsCKcIJMq/Ca30o8bGhgTAFJQvQYzuHG2o0z/4RAqu
-         5004K2uZhfLKyRCaykIEIvchOhb/V3FQdoKS0b8Odr1cGvXfHeDgd4SJrthpPocSyKTY
-         ykJA==
-X-Gm-Message-State: AOAM530bfHUTlGUdY3GGV8tC24jKFACmC79uBjtZCx/6FMnFzM6WVCai
-	VGRO1kSFXg6dksWzYj6Ot5A=
-X-Google-Smtp-Source: ABdhPJwqfM73K8adtgjCuTsQ1ipScmTZxb+Itq8+sQiiM3H9l56+FpM2fMwHfTDdKGvr4/YnWoJOlA==
-X-Received: by 2002:a5d:5547:0:b0:20c:7a44:d8e7 with SMTP id g7-20020a5d5547000000b0020c7a44d8e7mr9963872wrw.349.1651763411909;
-        Thu, 05 May 2022 08:10:11 -0700 (PDT)
-Received: from alaa-emad ([197.57.200.226])
-        by smtp.gmail.com with ESMTPSA id m65-20020a1c2644000000b003942a244ecesm1624120wmm.19.2022.05.05.08.10.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 05 May 2022 08:10:11 -0700 (PDT)
-From: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-To: netdev@vger.kernel.org
-Cc: outreachy@lists.linux.dev,
-	roopa@nvidia.com,
-	jdenham@redhat.com,
-	sbrivio@redhat.com,
-	jesse.brandeburg@intel.com,
-	anthony.l.nguyen@intel.com,
-	davem@davemloft.net,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	vladimir.oltean@nxp.com,
-	claudiu.manoil@nxp.com,
-	alexandre.belloni@bootlin.com,
-	shshaikh@marvell.com,
-	manishc@marvell.com,
-	razor@blackwall.org,
-	intel-wired-lan@lists.osuosl.org,
-	linux-kernel@vger.kernel.org,
-	UNGLinuxDriver@microchip.com,
-	GR-Linux-NIC-Dev@marvell.com,
-	bridge@lists.linux-foundation.org,
-	eng.alaamohamedsoliman.am@gmail.com
-Subject: [PATCH net-next v6 2/2] net: vxlan: Add extack support to vxlan_fdb_delete
-Date: Thu,  5 May 2022 17:09:58 +0200
-Message-Id: <ac4b6c650b6519cc56baa32ef20415460a5aa8ee.1651762830.git.eng.alaamohamedsoliman.am@gmail.com>
-X-Mailer: git-send-email 2.36.0
-In-Reply-To: <cover.1651762829.git.eng.alaamohamedsoliman.am@gmail.com>
-References: <cover.1651762829.git.eng.alaamohamedsoliman.am@gmail.com>
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=kUvr4fMP2elRfDyGqxMyfJTTNp+E8ksaw8Lx5Viwtkc=;
+        b=aT+N1qm+shZgJz840SR8lbWjHyOM2EYdGVLpscOErgsIMkuCzwWG6+QTOx/nss61Lk
+         DudCCN/nsN2xQqAqAhzh+iyNtf/lOciFkrmvUzS7RIJby1cOve0Na7qszfdyxpZElTY7
+         xVjC/pEYNAgvQLeenRpNfJjuJgy/3xi1x/y+IPL2PWVOrvEO9n3tgE+bxA4xAfW0K1i6
+         KeiT7EGPM2saWtn7NafwqaxifQNa2vfo1l3+aNuiqfCV5xgsdHt7siprC8aIVarHtYBF
+         HnzYrwfEdr0P/Kdg8Q03PJybFcC1rgUEY+iudcR9WWPEV/sD14YCxJCVUhCFVMfo4sZn
+         vziQ==
+X-Gm-Message-State: AOAM531R7JHxe3axMgXk9/EMc4N0MC9YhKnT8zPZc72+XMcYUlKYvPL3
+	UR20qse9IzUdJFDG6YrHjxZXQEdsG1vPtgjP/Mg=
+X-Google-Smtp-Source: ABdhPJx7dHmK9oHkI0ldCdTpG8JoA202u7A6O8PxK+0IKd3axIqD/BvP9TCwb5gbbinYDuTCGCQ7kW6WouY2cQdEOEs=
+X-Received: by 2002:a17:907:86a7:b0:6f7:ea6:1acb with SMTP id
+ qa39-20020a17090786a700b006f70ea61acbmr698109ejc.413.1651855841749; Fri, 06
+ May 2022 09:50:41 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20220503182146.GA886740@jaehee-ThinkPad-X1-Extreme>
+ <16415431.geO5KgaWL5@pc-42> <20220504170816.GB970146@jaehee-ThinkPad-X1-Extreme>
+In-Reply-To: <20220504170816.GB970146@jaehee-ThinkPad-X1-Extreme>
+From: Jaehee <jhpark1013@gmail.com>
+Date: Fri, 6 May 2022 12:50:30 -0400
+Message-ID: <CAA1TwFBr=6P=ydfqr3hqcO-gLuSYreOME-yUkSL6==pLuzastw@mail.gmail.com>
+Subject: Re: [PATCH v5] wfx: use container_of() to get vif
+To: =?UTF-8?B?SsOpcsO0bWUgUG91aWxsZXI=?= <jerome.pouiller@silabs.com>
+Cc: Kalle Valo <kvalo@kernel.org>, "David S. Miller" <davem@davemloft.net>, 
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, linux-wireless@vger.kernel.org, 
+	netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-staging@lists.linux.dev, 
+	Outreachy Linux Kernel <outreachy@lists.linux.dev>, Stefano Brivio <sbrivio@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-This patch adds extack msg support to vxlan_fdb_delete and vxlan_fdb_parse.
-extack is used to propagate meaningful error msgs to the user of vxlan
-fdb netlink api
-
-Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
----
-changes in V2:
-        - fix spelling vxlan_fdb_delete
-        - add missing braces
-        - edit error message
----
-changes in V3:
-        fix errors reported by checkpatch.pl
----
-changes in V4:
-        - fix errors reported by checkpatch.pl
-        - edit commit message.
----
-changes in V5:
-	- edit commit message
----
- drivers/net/vxlan/vxlan_core.c | 38 ++++++++++++++++++++++++----------
- 1 file changed, 27 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/net/vxlan/vxlan_core.c b/drivers/net/vxlan/vxlan_core.c
-index ad0f2150cfdb..429ce2168971 100644
---- a/drivers/net/vxlan/vxlan_core.c
-+++ b/drivers/net/vxlan/vxlan_core.c
-@@ -1129,19 +1129,25 @@ static void vxlan_fdb_dst_destroy(struct vxlan_dev *vxlan, struct vxlan_fdb *f,
-
- static int vxlan_fdb_parse(struct nlattr *tb[], struct vxlan_dev *vxlan,
- 			   union vxlan_addr *ip, __be16 *port, __be32 *src_vni,
--			   __be32 *vni, u32 *ifindex, u32 *nhid)
-+			   __be32 *vni, u32 *ifindex, u32 *nhid,
-+			   struct netlink_ext_ack *extack)
- {
- 	struct net *net = dev_net(vxlan->dev);
- 	int err;
-
- 	if (tb[NDA_NH_ID] && (tb[NDA_DST] || tb[NDA_VNI] || tb[NDA_IFINDEX] ||
--	    tb[NDA_PORT]))
--		return -EINVAL;
-+	    tb[NDA_PORT])) {
-+			NL_SET_ERR_MSG(extack,
-+						  "DST, VNI, ifindex and port are mutually exclusive with NH_ID");
-+			return -EINVAL;
-+		}
-
- 	if (tb[NDA_DST]) {
- 		err = vxlan_nla_get_addr(ip, tb[NDA_DST]);
--		if (err)
-+		if (err) {
-+			NL_SET_ERR_MSG(extack, "Unsupported address family");
- 			return err;
-+		}
- 	} else {
- 		union vxlan_addr *remote = &vxlan->default_dst.remote_ip;
-
-@@ -1157,24 +1163,30 @@ static int vxlan_fdb_parse(struct nlattr *tb[], struct vxlan_dev *vxlan,
- 	}
-
- 	if (tb[NDA_PORT]) {
--		if (nla_len(tb[NDA_PORT]) != sizeof(__be16))
-+		if (nla_len(tb[NDA_PORT]) != sizeof(__be16)) {
-+			NL_SET_ERR_MSG(extack, "Invalid vxlan port");
- 			return -EINVAL;
-+		}
- 		*port = nla_get_be16(tb[NDA_PORT]);
- 	} else {
- 		*port = vxlan->cfg.dst_port;
- 	}
-
- 	if (tb[NDA_VNI]) {
--		if (nla_len(tb[NDA_VNI]) != sizeof(u32))
-+		if (nla_len(tb[NDA_VNI]) != sizeof(u32)) {
-+			NL_SET_ERR_MSG(extack, "Invalid vni");
- 			return -EINVAL;
-+		}
- 		*vni = cpu_to_be32(nla_get_u32(tb[NDA_VNI]));
- 	} else {
- 		*vni = vxlan->default_dst.remote_vni;
- 	}
-
- 	if (tb[NDA_SRC_VNI]) {
--		if (nla_len(tb[NDA_SRC_VNI]) != sizeof(u32))
-+		if (nla_len(tb[NDA_SRC_VNI]) != sizeof(u32)) {
-+			NL_SET_ERR_MSG(extack, "Invalid src vni");
- 			return -EINVAL;
-+		}
- 		*src_vni = cpu_to_be32(nla_get_u32(tb[NDA_SRC_VNI]));
- 	} else {
- 		*src_vni = vxlan->default_dst.remote_vni;
-@@ -1183,12 +1195,16 @@ static int vxlan_fdb_parse(struct nlattr *tb[], struct vxlan_dev *vxlan,
- 	if (tb[NDA_IFINDEX]) {
- 		struct net_device *tdev;
-
--		if (nla_len(tb[NDA_IFINDEX]) != sizeof(u32))
-+		if (nla_len(tb[NDA_IFINDEX]) != sizeof(u32)) {
-+			NL_SET_ERR_MSG(extack, "Invalid ifindex");
- 			return -EINVAL;
-+		}
- 		*ifindex = nla_get_u32(tb[NDA_IFINDEX]);
- 		tdev = __dev_get_by_index(net, *ifindex);
--		if (!tdev)
-+		if (!tdev) {
-+			NL_SET_ERR_MSG(extack, "Device not found");
- 			return -EADDRNOTAVAIL;
-+		}
- 	} else {
- 		*ifindex = 0;
- 	}
-@@ -1226,7 +1242,7 @@ static int vxlan_fdb_add(struct ndmsg *ndm, struct nlattr *tb[],
- 		return -EINVAL;
-
- 	err = vxlan_fdb_parse(tb, vxlan, &ip, &port, &src_vni, &vni, &ifindex,
--			      &nhid);
-+			      &nhid, extack);
- 	if (err)
- 		return err;
-
-@@ -1292,7 +1308,7 @@ static int vxlan_fdb_delete(struct ndmsg *ndm, struct nlattr *tb[],
- 	int err;
-
- 	err = vxlan_fdb_parse(tb, vxlan, &ip, &port, &src_vni, &vni, &ifindex,
--			      &nhid);
-+			      &nhid, extack);
- 	if (err)
- 		return err;
-
+On Wed, May 4, 2022 at 1:08 PM Jaehee Park <jhpark1013@gmail.com> wrote:
+>
+> On Wed, May 04, 2022 at 09:21:21AM +0200, J=C3=A9r=C3=B4me Pouiller wrote=
+:
+> > On Tuesday 3 May 2022 20:21:46 CEST Jaehee Park wrote:
+> > > Currently, upon virtual interface creation, wfx_add_interface() store=
+s
+> > > a reference to the corresponding struct ieee80211_vif in private data=
+,
+> > > for later usage. This is not needed when using the container_of
+> > > construct. This construct already has all the info it needs to retrie=
+ve
+> > > the reference to the corresponding struct from the offset that is
+> > > already available, inherent in container_of(), between its type and
+> > > member inputs (struct ieee80211_vif and drv_priv, respectively).
+> > > Remove vif (which was previously storing the reference to the struct
+> > > ieee80211_vif) from the struct wfx_vif, define a function
+> > > wvif_to_vif(wvif) for container_of(), and replace all wvif->vif with
+> > > the newly defined container_of construct.
+> > >
+> > > Signed-off-by: Jaehee Park <jhpark1013@gmail.com>
+> > > ---
+> > > v2
+> > > - Sequenced the wfx.h file (with the new defines) to show up first on
+> > > the diff, which makes the ordering of the diff more logical.
+> > >
+> > > v3
+> > > - Made edits to the commit message.
+> > > - Shortened the macro name from wvif_to_vif to to_vif.
+> > > - For functions that had more than one instance of vif, defined one
+> > > reference vif at the beginning of the function and used that instead.
+> > > - Broke the if-statements that ran long into two lines.
+> > >
+> > > v4
+> > > - Changed macro into function and named it back to wvif_to_vif
+> > > - Fit all lines in patch to 80 columns
+> > > - Decared a reference to vif at the beginning of all the functions
+> > > where it's being used
+> > >
+> > > v5
+> > > - Placed longest declarations first
+> > >
+> > >
+> > >  drivers/net/wireless/silabs/wfx/wfx.h     |  6 +-
+> > >  drivers/net/wireless/silabs/wfx/data_rx.c |  5 +-
+> > >  drivers/net/wireless/silabs/wfx/data_tx.c |  3 +-
+> > >  drivers/net/wireless/silabs/wfx/key.c     |  4 +-
+> > >  drivers/net/wireless/silabs/wfx/queue.c   |  3 +-
+> > >  drivers/net/wireless/silabs/wfx/scan.c    | 11 ++--
+> > >  drivers/net/wireless/silabs/wfx/sta.c     | 71 ++++++++++++++-------=
 --
-2.36.0
+> > >  7 files changed, 65 insertions(+), 38 deletions(-)
+> > >
+> > [...]
+> > > diff --git a/drivers/net/wireless/silabs/wfx/sta.c b/drivers/net/wire=
+less/silabs/wfx/sta.c
+> > > index 3297d73c327a..040d1f9fb03a 100644
+> > > --- a/drivers/net/wireless/silabs/wfx/sta.c
+> > > +++ b/drivers/net/wireless/silabs/wfx/sta.c
+> > > @@ -101,6 +101,7 @@ void wfx_configure_filter(struct ieee80211_hw *hw=
+, unsigned int changed_flags,
+> > >         struct wfx_vif *wvif =3D NULL;
+> > >         struct wfx_dev *wdev =3D hw->priv;
+> > >         bool filter_bssid, filter_prbreq, filter_beacon;
+> > > +       struct ieee80211_vif *vif =3D wvif_to_vif(wvif);
+> >
+> > wvif is modified later in the function, so this one is not correct.
+> >
+>
+> Hi Jerome, I'm so sorry about this. I'll check more carefully and
+> correct for any other occurrences.
+>
 
+Hi Jerome,
+
+Thank you for catching the mistake! I think this is the only place
+where vif was set prematurely, but I could have missed something.
+
+I will send a revised patch (now v6) with this edit today.
+
+Thanks,
+Jaehee
+
+> >
+> > --
+> > J=C3=A9r=C3=B4me Pouiller
+> >
+> >
