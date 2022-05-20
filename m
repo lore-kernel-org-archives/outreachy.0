@@ -1,41 +1,41 @@
-Received: from mail-wr1-f48.google.com (mail-wr1-f48.google.com [209.85.221.48])
+Received: from mail-wm1-f53.google.com (mail-wm1-f53.google.com [209.85.128.53])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7490C23BE
-	for <outreachy@lists.linux.dev>; Thu, 19 May 2022 16:40:01 +0000 (UTC)
-Received: by mail-wr1-f48.google.com with SMTP id t6so8000317wra.4
-        for <outreachy@lists.linux.dev>; Thu, 19 May 2022 09:40:01 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D6A6915A2
+	for <outreachy@lists.linux.dev>; Fri, 20 May 2022 00:14:39 +0000 (UTC)
+Received: by mail-wm1-f53.google.com with SMTP id bd25-20020a05600c1f1900b0039485220e16so4394879wmb.0
+        for <outreachy@lists.linux.dev>; Thu, 19 May 2022 17:14:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=g94V+007bcGCjAyasUfYbZusStl21uCfYeR0vKeXVf0=;
-        b=Hin01e1la6QOK00QfgmMbrXlXFaf2VdjroqEbWbljSiLZ/qJBOP17F6LoXPDizcJpZ
-         nZpsxfXUSsogmY/6Ko4uMdE2PF1dv2OWvx/JdVqO18PV05vmaIOyhRBVBwoiUZQMCt7Z
-         /iV+4wUIHNG65yq12SFY9yV6L0woB2stMcLfq+i85QHWqE8ImMOKw6ewUac//hleytOW
-         +Whp4OemtZ8s6UIYz9CdMx9O7tueLWyHLuqJCXxSjRQAzHbcsUFXhou0IZfcr8LXXOyO
-         rWW1aDrgjreerko2wsBokIIVKoQkO4qa9mai19ya98tQuoSke+bekMxZKdcOhLIEX0fZ
-         0ReA==
+        bh=20g10QH4u/3O0tBO6ofFWhrt9ZuFgao8sbSN8hXJynU=;
+        b=fSzaKDSuxGbJn3oZ4Dcgv0dfPaVgY9xf5z/dOJ3Q5t6vVm2jdVoYG+t+44lASq8NV0
+         tuVkPZx0nnnGMLuq2A5YprVvmQRNqBsjlkSZ3G+CnpRMZiDxaYGPxRUmXXrJeZdn7PsA
+         ESF+Emm21o38av3mUTFVEB4ExGGmEq5rbmG1UfFjfzmgHpGkWc8Bd7ehdhXQ1THt/uF4
+         yQkuQjx/R2jFPehno5Dn4osbKk2mF/9ZHAVaxhDpuVu2mymrc0shN4WsSq6pNKINXPC3
+         lVwZL2Rt9mpQwT8Ui9aldv1thEwsCkEzL8b6W/pHBbrmVl7vSuTN1y/uLv+8xlnAidE5
+         iThw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=g94V+007bcGCjAyasUfYbZusStl21uCfYeR0vKeXVf0=;
-        b=c4R0iZiXVSkPmFbTvzItbGDUI2J3I7bxPmksESnGb//R/+YdWKFSCK/IqEsHtYrPvn
-         v4LZxji9SSxFCCFQgtKDiZNXWFplbKohRsKLlsVOc8maXxpHViO5rFQitVgM/VdoxcOF
-         G1XigjgWuUoauJOYCFDyejxObZWlRduDavuMZUNgIfrC3sh0VIVtI+Hk4OiMn5EMWdKy
-         Be7sU38Vl+gaSYNoO1hxmV4aA5RNZXzchD5MTsnlSMSg0Id5/fkgG9/vGTdn6LJkjTRr
-         rMSpnEjktwqMOom2D0xPto5jAlA/S13hTG1EUN/yJCyYCqJytBbLGXg5ywFPfObYz3V8
-         NuKw==
-X-Gm-Message-State: AOAM532HPCkBwlrIBidt2qKHCtP7OXSE95xT7R1hh5IFROqAdTAeUfcx
-	ujUzPzTxOpJfHRDtGBddA9A=
-X-Google-Smtp-Source: ABdhPJzQB6LAwzzqPBlOe+HRAwwCoxmApZLwaN/+L8lDFNt/Clf6eLSVXo62V8B8ieF3j345piND/Q==
-X-Received: by 2002:a5d:6701:0:b0:20c:dc44:f7e7 with SMTP id o1-20020a5d6701000000b0020cdc44f7e7mr4795391wru.484.1652978399576;
-        Thu, 19 May 2022 09:39:59 -0700 (PDT)
+        bh=20g10QH4u/3O0tBO6ofFWhrt9ZuFgao8sbSN8hXJynU=;
+        b=fsG0JPf/QgdvSvmoltlrbxkrZtkxt5XBgHdlFW+qZE3ZiIhJYlNVSAaKvE9Q9Vv56/
+         NyUhk3RVA0Nnswr/tDEU4J3dbDbPWti8W71DpFCBpBO4lACbXZFJ8mHkzRoGb3i0l2nx
+         BqA7RMwjtjdtLdSSTI+5tEQ4SalMRMNsh4lRl/2k8ZPx+OfG9OXX2u/NsU2BNLZgXEIa
+         cp73ivIaN3PbliCjh+uC73s8VrtBgJv3ZIL5q3Sc26yc9T5W8m8URoUd+75b4lWMXQ1Q
+         zuD3kUWv8BRDbKi9ompxG32fD3+CXKmIO29OmY87NchQhJbzQDtiumuuJJUMbD/e+l2O
+         9ITQ==
+X-Gm-Message-State: AOAM5301luJD1eR7d8qvJXzsWzktSxHTb9N1mAQySijFc0dib2t4IDL1
+	bsbd4tPmF6CtYk0BLBvwvJk=
+X-Google-Smtp-Source: ABdhPJzUXnkFWi9Di8i8FqYL8i+jJ3zn/03w+hUEibCPfQt4uKi6wYhIhvw4K8d4+QYrU19Dgw2IQQ==
+X-Received: by 2002:a05:600c:5105:b0:394:7d22:aa93 with SMTP id o5-20020a05600c510500b003947d22aa93mr5877560wms.107.1653005678095;
+        Thu, 19 May 2022 17:14:38 -0700 (PDT)
 Received: from localhost.localdomain ([41.232.195.220])
-        by smtp.gmail.com with ESMTPSA id u6-20020adfc646000000b0020d0c48d135sm104873wrg.15.2022.05.19.09.39.58
+        by smtp.gmail.com with ESMTPSA id b9-20020a05600c150900b003942a244ed2sm818111wmg.23.2022.05.19.17.14.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 May 2022 09:39:59 -0700 (PDT)
+        Thu, 19 May 2022 17:14:37 -0700 (PDT)
 From: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
 To: netdev@vger.kernel.org
 Cc: outreachy@lists.linux.dev,
@@ -46,9 +46,9 @@ Cc: outreachy@lists.linux.dev,
 	pabeni@redhat.com,
 	linux-kernel@vger.kernel.org,
 	eng.alaamohamedsoliman.am@gmail.com
-Subject: [PATCH net-next] net: vxlan: Fix kernel coding style
-Date: Thu, 19 May 2022 18:39:39 +0200
-Message-Id: <20220519163939.10347-1-eng.alaamohamedsoliman.am@gmail.com>
+Subject: [PATCH net-next v2] net: vxlan: Fix kernel coding style
+Date: Fri, 20 May 2022 02:14:33 +0200
+Message-Id: <20220520001433.4140-1-eng.alaamohamedsoliman.am@gmail.com>
 X-Mailer: git-send-email 2.25.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
@@ -63,11 +63,15 @@ and this patch fix it.
 
 Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
 ---
+changes in v2:
+	fix the alignment of the "DST, VNI, ifindex and port are mutually exclusive with NH_ID"
+  string to the open parenthesis of the NL_SET_ERR_MSG macro in vxlan_fdb_parse().
+---
  drivers/net/vxlan/vxlan_core.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/net/vxlan/vxlan_core.c b/drivers/net/vxlan/vxlan_core.c
-index 293082c32a78..fb7a09baeeb5 100644
+index 293082c32a78..29db08f15e38 100644
 --- a/drivers/net/vxlan/vxlan_core.c
 +++ b/drivers/net/vxlan/vxlan_core.c
 @@ -1138,7 +1138,7 @@ static int vxlan_fdb_parse(struct nlattr *tb[], struct vxlan_dev *vxlan,
@@ -75,7 +79,7 @@ index 293082c32a78..fb7a09baeeb5 100644
  	    tb[NDA_PORT])) {
  			NL_SET_ERR_MSG(extack,
 -						  "DST, VNI, ifindex and port are mutually exclusive with NH_ID");
-+				       "DST, VNI, ifindex and port are mutually exclusive with NH_ID");
++					"DST, VNI, ifindex and port are mutually exclusive with NH_ID");
  			return -EINVAL;
  		}
  
