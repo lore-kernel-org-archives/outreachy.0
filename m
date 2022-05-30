@@ -1,119 +1,105 @@
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-wm1-f45.google.com (mail-wm1-f45.google.com [209.85.128.45])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B74391360
-	for <outreachy@lists.linux.dev>; Wed, 25 May 2022 16:05:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1653494725; x=1685030725;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=Qtq8NsRkQ5MXSb0vyxgaVhO2wTrtOk/ncJF+4DTDLd0=;
-  b=D1cpNTsw+GxS5m50hzZZ3NcGU/FF1u4OgUucqIrC5DCZkoXHUIF+4gkp
-   yUrK+s1WNQPsOZBOvmmsPA1+O91T8mJ6FYn8hrCCVj3kdWKThLFRacBAI
-   dX3G+jKGa4dvTto5VsJ8wykRRZwaw1dRfpbzDKCFF29Yayf93tpzq/DqL
-   AIfV0ZPBj8A/ZCZ9Z6RMVCMprt2bSQTYzRsXU6jjczu3XS+MmUyrh24wd
-   T3ZVi3Mqr63soAz1XY4cS9b0kuoI2DRkivnf6Z8cZkFd/p+OPEjiQph+n
-   koyH+UMmnHOStZILINLrVtRHiXg48H2FByTRyYSZ+O6neB4oUvQY+VCiB
-   w==;
-X-IronPort-AV: E=McAfee;i="6400,9594,10358"; a="261464712"
-X-IronPort-AV: E=Sophos;i="5.91,250,1647327600"; 
-   d="scan'208";a="261464712"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
-  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 May 2022 09:03:13 -0700
-X-IronPort-AV: E=Sophos;i="5.91,250,1647327600"; 
-   d="scan'208";a="601970811"
-Received: from vlpathak-mobl.amr.corp.intel.com (HELO localhost) ([10.212.116.219])
-  by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 May 2022 09:03:12 -0700
-Date: Wed, 25 May 2022 09:03:12 -0700
-From: Ira Weiny <ira.weiny@intel.com>
-To: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
-Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>,
-	Andrew Morton <akpm@linux-foundation.org>,
-	Catalin Marinas <catalin.marinas@arm.com>,
-	"Matthew Wilcox (Oracle)" <willy@infradead.org>,
-	Will Deacon <will@kernel.org>, Peter Collingbourne <pcc@google.com>,
-	Vlastimil Babka <vbabka@suse.cz>, linux-kernel@vger.kernel.org,
-	Jonathan Corbet <corbet@lwn.net>, linux-doc@vger.kernel.org,
-	outreachy@lists.linux.dev,
-	"Acked-by : Mike Rapoport" <rppt@linux.ibm.com>
-Subject: Re: [PATCH v2 1/4] mm/highmem: Fix kernel-doc warnings in highmem*.h
-Message-ID: <Yo5TQOByKbMbvE8m@iweiny-desk3>
-References: <20220425162400.11334-1-fmdefrancesco@gmail.com>
- <20220425162400.11334-2-fmdefrancesco@gmail.com>
- <YmeYzKT8Ikq5SfdE@linutronix.de>
- <YmwLXvtSgl2BA2mC@iweiny-desk3>
- <Yo34GGK62yVkPzZy@linutronix.de>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 36D67321B
+	for <outreachy@lists.linux.dev>; Mon, 30 May 2022 18:12:49 +0000 (UTC)
+Received: by mail-wm1-f45.google.com with SMTP id bg25so6843406wmb.4
+        for <outreachy@lists.linux.dev>; Mon, 30 May 2022 11:12:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=0pUje48kNAVORkKjnoiyIbQ0POCG7FBl2HRz+ZCcTSE=;
+        b=JslR4EqeMQRV4MpQktqt0UrzATodjCoU6sTsjQYIZdSv2SeQOj0Sp0LK4NFsApUm0W
+         ZPXrtNjiNyxt+VIjeK5d6DTpnQvX3NVMrfX3AfGqmFmLIAMV4dBKAGhc+yeJ/QX1cJjf
+         +1svctAb1TXKCB6XODikwz9xhYfeqc1ol7c9tEV20vRpwTWlsla8IdeE6zveCrX7+e2a
+         eKeA0m9Sy6yvdu6wcLckL5wLFbA0LB9FlfJ6grcUgE8YaiJ8tnZxJskAORn+i18z2FGa
+         NEbS3tVh5rE+lVLJD6mLeJhrBi/CWXSQsQPqYoM8CYm7ty/cshVuFJ+oCS3mGRvfjTq1
+         lQAQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=0pUje48kNAVORkKjnoiyIbQ0POCG7FBl2HRz+ZCcTSE=;
+        b=ddOfws+1CCxWz4tzipm03WlXehjti4ysmAiZfWx335gV1LCcCDumtk8dmzRs7xaOFB
+         NnU0kzh/vGS+NB3obaaBCobOlKK+Vi40Y3WypZvZoqp6D6HRcHWB2OrCc1xfctSWgc5g
+         o9hkpspNPeaTRvg7WcAtgboKg9BLhwbNuBAS8puNfSNeo/PxatN+V1hXRVtc1CjEli6V
+         vkwfr4XBYRhvoUquoKKEdRgcFhDvGN0em+dubs3e02ih1bML6/FEjHQxrlSG6b0n4CuC
+         uoW5Gtsja3pTtU8Y2612fpZSvEuImtgQJT1tDuybPJ8N7fZ/3jA0Qf9X7xuX7nzAW5nX
+         LApg==
+X-Gm-Message-State: AOAM532/Q0vq1PzCbC5/a4QuTfjj/64IZN2BGHYyMTfzhljZ+dGbNK31
+	bEoFIJa7wjlccXSDpQxZy2s=
+X-Google-Smtp-Source: ABdhPJwbepOZafGsplfAk54QBJH5lVhBie4HZYgf6Rtg16shBd21j256GkZn5OLGclBzZNDGWbKwBA==
+X-Received: by 2002:a05:600c:3b8f:b0:397:5dc7:6066 with SMTP id n15-20020a05600c3b8f00b003975dc76066mr20076930wms.35.1653934367517;
+        Mon, 30 May 2022 11:12:47 -0700 (PDT)
+Received: from localhost.localdomain ([197.57.63.83])
+        by smtp.gmail.com with ESMTPSA id 9-20020a1c0209000000b00397550b387bsm16958wmc.23.2022.05.30.11.12.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 30 May 2022 11:12:46 -0700 (PDT)
+From: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+To: netdev@vger.kernel.org
+Cc: outreachy@lists.linux.dev,
+	roopa@nvidia.com,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	linux-kselftest@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	eng.alaamohamedsoliman.am@gmail.com
+Subject: [PATCH net-next] selftests: net: fib_rule_tests: add support to run individual tests
+Date: Mon, 30 May 2022 20:12:42 +0200
+Message-Id: <20220530181242.8487-1-eng.alaamohamedsoliman.am@gmail.com>
+X-Mailer: git-send-email 2.25.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Yo34GGK62yVkPzZy@linutronix.de>
+Content-Transfer-Encoding: 8bit
 
-On Wed, May 25, 2022 at 11:34:16AM +0200, Sebastian Andrzej Siewior wrote:
-> On 2022-04-29 08:59:26 [-0700], Ira Weiny wrote:
-> > I think some discussion needs to happen around this API.
-> > 
-> > Highmem has little use.  I don't think anyone disagrees with Linus there.
-> > (Although I think there are still a few users out there.)
-> 
-> arm32 is still built and they have sometimes 1 - 2 GiB of memory.
+add -t option to run individual tests in the test with -t option
 
-Yep :-) I was thinking of arm when I said this.
+Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
+---
+ tools/testing/selftests/net/fib_rule_tests.sh | 23 +++++++++++++++++++
+ 1 file changed, 23 insertions(+)
 
-> 
-> > kmap may be a poor name for an API without the highmem functionality.  But
-> > perhaps not.  One could interpret it to mean simply getting the kernel mapping
-> > of the page rather than creating one.  After all that is what 64bit has done
-> > all along.
-> > 
-> > This interpretation helps when you consider features which attempt to layer the
-> > direct map with additional protections like PKS.[1]  Those protections mean
-> > that a simple page_address() is insufficient to access the direct map.
-> > 
-> > As far as calling kmap() and kmap_atomic() deprecated I'm ok with that if the
-> > community is.
-> > 
-> > The current kmap() call sites need work and Fabio's work on auditing them is
-> > extremely helpful.  That said, if we officially deprecate kmap_atomic() then
-> > those sites could be added to the list for rework.
-> 
-> Maybe I oversee something obvious but there is no problem with removing
-> kmap_atomic*() and keeping only kmap_local*() around, is there?
+diff --git a/tools/testing/selftests/net/fib_rule_tests.sh b/tools/testing/selftests/net/fib_rule_tests.sh
+index bbe3b379927a..c245476fa29d 100755
+--- a/tools/testing/selftests/net/fib_rule_tests.sh
++++ b/tools/testing/selftests/net/fib_rule_tests.sh
+@@ -303,6 +303,29 @@ run_fibrule_tests()
+ 	log_section "IPv6 fib rule"
+ 	fib_rule6_test
+ }
++################################################################################
++# usage
++
++usage()
++{
++	cat <<EOF
++usage: ${0##*/} OPTS
++
++        -t <test>   Test(s) to run (default: all)
++                    (options: $TESTS)
++EOF
++}
++
++################################################################################
++# main
++
++while getopts ":t:h" opt; do
++	case $opt in
++		t) TESTS=$OPTARG;;
++		h) usage; exit 0;;
++		*) usage; exit 1;;
++	esac
++done
+ 
+ if [ "$(id -u)" -ne 0 ];then
+ 	echo "SKIP: Need root privileges"
+-- 
+2.25.1
 
-No there is not.  But some kmap_atomic() sites may have to open code the
-preempt_disable() while others may not.
-
-I have not done a full audit of the kmap_atomic() sites but I suspect most
-don't really need the preempt_disable() but many may need to.  I just don't
-know.
-
-Regardless marking it deprecated can stop the growth of kmap_atomic() calls.
-
-> I never intended to deprecated kmap(), only kmap_atomic*() in favour of
-> kmap_local*().
-
-Ok.  But I do want to see kmap() use removed.  The PKS code can't work with
-kmap() and in general we are seeing more and more restrictions on the direct
-map which may or may not be compatible with kmap().  What I presented at LSFmm
-was to turn the kmap* interfaces into a more generic 'get me a temp kernel
-address' interface instead of a highmem interface.
-
-Any user who needs a long term address will need something other than kmap().
-To that end there was some discussion on making vmap() more efficient or other
-alternatives.
-
-First we need to focus on reducing the kmap() call sites.  This documentation
-change, making kmap() deprecated, will help ensure the kernel does not grow
-more of them.
-
-Ira
-
-> 
-> > Ira
-> 
-> Sebastian
