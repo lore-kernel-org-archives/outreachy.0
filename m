@@ -1,66 +1,50 @@
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ej1-f47.google.com (mail-ej1-f47.google.com [209.85.218.47])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 93B89187A
-	for <outreachy@lists.linux.dev>; Fri,  1 Jul 2022 12:40:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 40A69C341CD;
-	Fri,  1 Jul 2022 12:40:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1656679215;
-	bh=g+knEIBM432F9SVSaNtXXaSap2XC9pzxcHkVyHXHJvM=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=hSJ13hcn3uio/BwIHTDFLDVR5cCwY+gkQM1kJQ+JKZOn7fWmNu9rmQnPAUaDRBcaU
-	 VS/Kn2OxDn1IQ1aBNq2L8Zw0v7KS2mMycGqK19W1K7WfpRw8hdySa84/Btsojh5T/y
-	 A3zrbbLqlhWm7CXA5VwL6JP5Hm6/jseAs/7m4BfIOHIo1xeu6554TepiGPXxkX7av1
-	 sQC0AsSlvkYc76CMbb4RfN2eFeur39ODaGsTUi6SrFX6OdHLzMJszmP8BEu1uv3vks
-	 Z5z6F6eKmKhBBwi7kyrd//yytHL4HXgPgCgy9Mto2woC2ObaWiK45zBScdkg4BaKqw
-	 DlgBqYvje6yIw==
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id 25294E49F61;
-	Fri,  1 Jul 2022 12:40:15 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8D341746C
+	for <outreachy@lists.linux.dev>; Wed, 20 Jul 2022 19:45:29 +0000 (UTC)
+Received: by mail-ej1-f47.google.com with SMTP id va17so35007157ejb.0
+        for <outreachy@lists.linux.dev>; Wed, 20 Jul 2022 12:45:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=mime-version:from:date:message-id:subject:to;
+        bh=CKKYMJ5XSHujpN9ItiZcFl1pdKhzAgI4IVgWSyERFzs=;
+        b=plScEvUTjiCnwAUT/jblmFqIMs5eEXrIYDEo7siVNev/tFq1MHWasLbTnlVCQrmwBu
+         TgHSQx4DZ/exSqh1DVagOSDl2fVDOfpCZ3/Pc5RRD0YJhDtyMG3DQee9BclgB0aHv5Ij
+         wp7Lk9PheeJ3u9DHRa4hCYmeYxhrqXOaOqq8KasVt2nL6YN/+aIEKPJ8vmQgbW5Qbp9x
+         HpGj76cHsasj6itkZYZ5E9+41FMs8F599keG5lnCG3tMVPqTKiOlOkmcmZGUDqTs88yn
+         et/GkJstZ29EGm7me8krsNPqxsc5Ar8oW5npFl8h/YoTAlKZ3UaMuif0egeuepjzU/u4
+         wFxg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+        bh=CKKYMJ5XSHujpN9ItiZcFl1pdKhzAgI4IVgWSyERFzs=;
+        b=0aopcgJj6Tne313m0wWfbQymajCWt+ViPLTc27z9FkcYjZLg2uW0wXiewGhZkQEPnW
+         vAcH7Mo11q5sV9tlbddXutxaGF6eyqq5citX1h+z5GgGz1dR9kLY8VE0DX3531Zyl7Qy
+         uENxBOCqytoVCT0e5aPdZd/np5kDyn74sI5q3hHFLkb3zrS+F5sKKbZiXs3yKVAs++ro
+         tgJDdvWlvsMhGo0AgHkHKo8iBj30eV3XlHOez/jJ+5/PLEnHimKeOUSQfdd+j5zB7ePd
+         iwAEc3RruX4TgV2y94UROFFjnbzWfOMi/4lEm74PnIM+lvubP9lL7QyJF/31L2aHGlB7
+         MElA==
+X-Gm-Message-State: AJIora+I8JdJjWbprbFS1jCeF9RtiUdMQH0ZtA/jX2q19xN+JL6jrIXo
+	HQY3/e2rdc12Qrp3cKmOXsgy6k4ZB6XQDxRhRF5/qtdjvicNlg==
+X-Google-Smtp-Source: AGRyM1t0Q/rh7MvjzCwossIN1JXa7BB7RbpR26ops8tkr/O2BkSBMaKJjZGL8IOSUN9jwpxIgDd+DRLhJ8JXXUZm2OM=
+X-Received: by 2002:a17:906:9c82:b0:6e1:2c94:1616 with SMTP id
+ fj2-20020a1709069c8200b006e12c941616mr37822107ejc.64.1658346327690; Wed, 20
+ Jul 2022 12:45:27 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next v3] selftests: net: fib_rule_tests: fix support for
- running individual tests
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: 
- <165667921513.18764.12586274346511205612.git-patchwork-notify@kernel.org>
-Date: Fri, 01 Jul 2022 12:40:15 +0000
-References: <20220630102449.9539-1-eng.alaamohamedsoliman.am@gmail.com>
-In-Reply-To: <20220630102449.9539-1-eng.alaamohamedsoliman.am@gmail.com>
-To: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-Cc: netdev@vger.kernel.org, outreachy@lists.linux.dev, roopa@nvidia.com,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- linux-kselftest@vger.kernel.org, linux-kernel@vger.kernel.org
+From: Jaehee <jhpark1013@gmail.com>
+Date: Wed, 20 Jul 2022 15:45:31 -0400
+Message-ID: <CAA1TwFCPoGQVydJhdrBC6Z1deF=jN0J7s=NUREfxZFcN7xfD4g@mail.gmail.com>
+Subject: [KERNEL NEWBIES ACCESS] JaeheePark
+To: Outreachy Linux Kernel <outreachy@lists.linux.dev>
+Content-Type: text/plain; charset="UTF-8"
 
-Hello:
-
-This patch was applied to netdev/net-next.git (master)
-by David S. Miller <davem@davemloft.net>:
-
-On Thu, 30 Jun 2022 12:24:49 +0200 you wrote:
-> parsing and usage of -t got missed in the previous patch.
-> this patch fixes it
-> 
-> Fixes: 816cda9ae531 ("selftests: net: fib_rule_tests: add support to
-> select a test to run")
-> Signed-off-by: Alaa Mohamed <eng.alaamohamedsoliman.am@gmail.com>
-> 
-> [...]
-
-Here is the summary with links:
-  - [net-next,v3] selftests: net: fib_rule_tests: fix support for running individual tests
-    https://git.kernel.org/netdev/net-next/c/9c154ab47f5e
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+Hi,
+I'd like to add info to the wiki.
+Thanks!
+Jaehee
