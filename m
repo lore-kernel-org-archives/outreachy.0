@@ -1,50 +1,100 @@
-Received: from mail-ej1-f47.google.com (mail-ej1-f47.google.com [209.85.218.47])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8D341746C
-	for <outreachy@lists.linux.dev>; Wed, 20 Jul 2022 19:45:29 +0000 (UTC)
-Received: by mail-ej1-f47.google.com with SMTP id va17so35007157ejb.0
-        for <outreachy@lists.linux.dev>; Wed, 20 Jul 2022 12:45:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:from:date:message-id:subject:to;
-        bh=CKKYMJ5XSHujpN9ItiZcFl1pdKhzAgI4IVgWSyERFzs=;
-        b=plScEvUTjiCnwAUT/jblmFqIMs5eEXrIYDEo7siVNev/tFq1MHWasLbTnlVCQrmwBu
-         TgHSQx4DZ/exSqh1DVagOSDl2fVDOfpCZ3/Pc5RRD0YJhDtyMG3DQee9BclgB0aHv5Ij
-         wp7Lk9PheeJ3u9DHRa4hCYmeYxhrqXOaOqq8KasVt2nL6YN/+aIEKPJ8vmQgbW5Qbp9x
-         HpGj76cHsasj6itkZYZ5E9+41FMs8F599keG5lnCG3tMVPqTKiOlOkmcmZGUDqTs88yn
-         et/GkJstZ29EGm7me8krsNPqxsc5Ar8oW5npFl8h/YoTAlKZ3UaMuif0egeuepjzU/u4
-         wFxg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
-        bh=CKKYMJ5XSHujpN9ItiZcFl1pdKhzAgI4IVgWSyERFzs=;
-        b=0aopcgJj6Tne313m0wWfbQymajCWt+ViPLTc27z9FkcYjZLg2uW0wXiewGhZkQEPnW
-         vAcH7Mo11q5sV9tlbddXutxaGF6eyqq5citX1h+z5GgGz1dR9kLY8VE0DX3531Zyl7Qy
-         uENxBOCqytoVCT0e5aPdZd/np5kDyn74sI5q3hHFLkb3zrS+F5sKKbZiXs3yKVAs++ro
-         tgJDdvWlvsMhGo0AgHkHKo8iBj30eV3XlHOez/jJ+5/PLEnHimKeOUSQfdd+j5zB7ePd
-         iwAEc3RruX4TgV2y94UROFFjnbzWfOMi/4lEm74PnIM+lvubP9lL7QyJF/31L2aHGlB7
-         MElA==
-X-Gm-Message-State: AJIora+I8JdJjWbprbFS1jCeF9RtiUdMQH0ZtA/jX2q19xN+JL6jrIXo
-	HQY3/e2rdc12Qrp3cKmOXsgy6k4ZB6XQDxRhRF5/qtdjvicNlg==
-X-Google-Smtp-Source: AGRyM1t0Q/rh7MvjzCwossIN1JXa7BB7RbpR26ops8tkr/O2BkSBMaKJjZGL8IOSUN9jwpxIgDd+DRLhJ8JXXUZm2OM=
-X-Received: by 2002:a17:906:9c82:b0:6e1:2c94:1616 with SMTP id
- fj2-20020a1709069c8200b006e12c941616mr37822107ejc.64.1658346327690; Wed, 20
- Jul 2022 12:45:27 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B4036A28
+	for <outreachy@lists.linux.dev>; Sat,  8 Oct 2022 04:37:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1665203833; x=1696739833;
+  h=date:from:to:subject:message-id:mime-version;
+  bh=bIotgH3GEPQiEwsCWCia4cDOb0cPPICfg2FBq161wqY=;
+  b=XUVtUkXiWSTOS79ScWIf1GeDQCOPJjRtUv8kwP51V/TzRSCxmGFfG37O
+   i9Q+wzItGq5vLMO9pOxyxjKrWlgh9BL2Xcbc+vx9NKLz+5vPvkmJ9jW6s
+   cxUn4TIUmz0PifNGAQdCo55absv7N0Mos6aQm/NUX/xuU8TeH0+GF3n4A
+   CvmCm2ozPdJqTM4QkMRk6B8cD6ulqX/TPP2ZDkKWYO4/OJAQV8va/AOe8
+   TcornhMGn2CEyFfcz0x274+L96sJ3LGptd/Stn2kS3HtSyicsOpF2FhjW
+   ft6TiqjUVA6Uci4vAgHs9tGqpyHx6CgGgIhd7+OGIKobn1Gcyb++cEdmg
+   Q==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10493"; a="305480809"
+X-IronPort-AV: E=Sophos;i="5.95,168,1661842800"; 
+   d="scan'208";a="305480809"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Oct 2022 21:37:13 -0700
+X-IronPort-AV: E=McAfee;i="6500,9779,10493"; a="620474055"
+X-IronPort-AV: E=Sophos;i="5.95,168,1661842800"; 
+   d="scan'208";a="620474055"
+Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.209.64.97])
+  by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Oct 2022 21:37:13 -0700
+Date: Fri, 7 Oct 2022 21:37:11 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: Outreachy Linux Kernel <outreachy@lists.linux.dev>
+Subject: [ANNOUNCE] Contribution Period is Open!
+Message-ID: <Y0D+dzbjRtuc0KT4@aschofie-mobl2>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-From: Jaehee <jhpark1013@gmail.com>
-Date: Wed, 20 Jul 2022 15:45:31 -0400
-Message-ID: <CAA1TwFCPoGQVydJhdrBC6Z1deF=jN0J7s=NUREfxZFcN7xfD4g@mail.gmail.com>
-Subject: [KERNEL NEWBIES ACCESS] JaeheePark
-To: Outreachy Linux Kernel <outreachy@lists.linux.dev>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Hi,
-I'd like to add info to the wiki.
-Thanks!
-Jaehee
+Welcome Applicants,
+
+Thank you for your interest in the Linux Kernel Community!
+
+The 'Contribution Period' for the December 2022 Cohort runs 
+October 8 through November 4.
+
+Our contribution period process works entirely via this mailing
+list. Make sure that you read over the emails on this list daily.
+Mentors and I will be posting updates here. Most importantly, it
+is where you will learn from each other, by following the questions
+asked/answered, the patches submitted and the reviewer feedback
+offered.
+
+You found this email, now make sure you are personally subscribed
+to this list: 
+
+Subscribe: outreachy+subscribe@lists.linux.dev
+More subscriber options: https://subspace.kernel.org/lists.linux.dev.html
+View the archive: https://lore.kernel.org/outreachy/
+
+Ask your questions in this mailing list. That way you'll be able get
+quick answers with the issues you're facing. Please help other applicants
+who face issues that you've addressed.
+
+Support may also be found on IRC. Join the #outreachy IRC channel on
+irc.gnome.org, and the #kernel-outreachy channel on irc.oftc.net.
+
+Your first task is to walk through our First Patch Tutorial:
+http://kernelnewbies.org/Outreachyfirstpatch
+
+The tutorial leads you through submitting your first patch. Please
+do not submit your second patch until your first patch is accepted.
+Key point is that it is really helpful and efficient (for both you
+and patch reviewers) to refine your patch sending skills one patch
+at a time, rather than having multiple patches in flight that require
+similar rework.
+
+You MUST send all patches to this mailing list AND to the appropriate
+mailing lists and maintainers in get_maintainer.pl. The tutorial walks
+you through how to use get_maintainer.pl.
+
+Once that first patch is accepted, please record that contribution
+on the Outreachy website. This will close the loop on that first patch!
+It will also force you to double check your eligibility. Only eligible
+applicants will be able to log contributions on the Outreachy web site.
+
+Congratulations on getting your first patch accepted into the Linux
+Kernel! Celebrate, then do more!
+
+Once you have ~10 cleanup patches accepted into drivers/staging by
+GregKH, we encourage applicants to move on to complete some small tasks
+outlined by the mentors here:
+https://www.outreachy.org/apply/project-selection/#linux-kernel
+
+
+All the best and thank-you for contribution to the Linux Kernel,
+Alison Schofield
+Kernel Community Coordinator
