@@ -1,35 +1,24 @@
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+Received: from msg-2.mailo.com (msg-2.mailo.com [213.182.54.12])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B4036A28
-	for <outreachy@lists.linux.dev>; Sat,  8 Oct 2022 04:37:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1665203833; x=1696739833;
-  h=date:from:to:subject:message-id:mime-version;
-  bh=bIotgH3GEPQiEwsCWCia4cDOb0cPPICfg2FBq161wqY=;
-  b=XUVtUkXiWSTOS79ScWIf1GeDQCOPJjRtUv8kwP51V/TzRSCxmGFfG37O
-   i9Q+wzItGq5vLMO9pOxyxjKrWlgh9BL2Xcbc+vx9NKLz+5vPvkmJ9jW6s
-   cxUn4TIUmz0PifNGAQdCo55absv7N0Mos6aQm/NUX/xuU8TeH0+GF3n4A
-   CvmCm2ozPdJqTM4QkMRk6B8cD6ulqX/TPP2ZDkKWYO4/OJAQV8va/AOe8
-   TcornhMGn2CEyFfcz0x274+L96sJ3LGptd/Stn2kS3HtSyicsOpF2FhjW
-   ft6TiqjUVA6Uci4vAgHs9tGqpyHx6CgGgIhd7+OGIKobn1Gcyb++cEdmg
-   Q==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10493"; a="305480809"
-X-IronPort-AV: E=Sophos;i="5.95,168,1661842800"; 
-   d="scan'208";a="305480809"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
-  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Oct 2022 21:37:13 -0700
-X-IronPort-AV: E=McAfee;i="6500,9779,10493"; a="620474055"
-X-IronPort-AV: E=Sophos;i="5.95,168,1661842800"; 
-   d="scan'208";a="620474055"
-Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.209.64.97])
-  by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Oct 2022 21:37:13 -0700
-Date: Fri, 7 Oct 2022 21:37:11 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: Outreachy Linux Kernel <outreachy@lists.linux.dev>
-Subject: [ANNOUNCE] Contribution Period is Open!
-Message-ID: <Y0D+dzbjRtuc0KT4@aschofie-mobl2>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B21E71876
+	for <outreachy@lists.linux.dev>; Sun,  9 Oct 2022 17:51:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
+	t=1665337893; bh=kzXTZ2ck6xTYOnKTQNDLb5bGJugzyfyDM03Tee8jQ8M=;
+	h=X-EA-Auth:Date:From:To:Subject:Message-ID:MIME-Version:
+	 Content-Type;
+	b=HM42Clf7VBh7Pg5Dj2PRNt9kH0HMT+OMfbMQSakPAF8Hh/xiujy8PR92fnrJDNTY7
+	 0DvVZ4bqMH0w3RvmnmsYChh4ngyWIIdtQTPwNa+xyxb+F32ZXVQ67PzcoWmUK0j/RT
+	 tBSJt3ArrfCFFGXiMhiLeYuIF63Urb8cpyJkwmZo=
+Received: by b-6.in.mailobj.net [192.168.90.16] with ESMTP
+	via [213.182.55.206]
+	Sun,  9 Oct 2022 19:51:32 +0200 (CEST)
+X-EA-Auth: YDR8sHZ+3/CQVUotYua2C3kkz+rIknJzpdM8JcBoxAI0bonv5uvLmWUD/1dCiUIVEZd5nItc7SKz6Hx0/+b7Oxh9lu7pkW/3
+Date: Sun, 9 Oct 2022 23:21:25 +0530
+From: Deepak R Varma <drv@mailo.com>
+To: outreachy@lists.linux.dev
+Subject: trouble booting into staging kernel
+Message-ID: <Y0MKHfWsqsh4S9ld@lion>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -39,62 +28,35 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
-Welcome Applicants,
+Hello,
+I am natively running 5.15.0-48-generic on my HP Laptop with Secure boot on. I
+tried to follow the Kernel First patch tutorial steps and managed to build
+Kernel release 6.0.0rc4. There were issues during the module building associated
+with the certificates / signing of the modules. I got those supressed by
+emptying the following two config parameters as copied over from the native
+config file:
 
-Thank you for your interest in the Linux Kernel Community!
+CONFIG_SYSTEM_TRUSTED_KEYS="debian/canonical-certs.pem"
+CONFIG_SYSTEM_REVOCATION_KEYS="debian/canonical-revoked-certs.pem"
 
-The 'Contribution Period' for the December 2022 Cohort runs 
-October 8 through November 4.
+set to new value
 
-Our contribution period process works entirely via this mailing
-list. Make sure that you read over the emails on this list daily.
-Mentors and I will be posting updates here. Most importantly, it
-is where you will learn from each other, by following the questions
-asked/answered, the patches submitted and the reviewer feedback
-offered.
+CONFIG_SYSTEM_TRUSTED_KEYS=""
+CONFIG_SYSTEM_REVOCATION_KEYS=""
 
-You found this email, now make sure you are personally subscribed
-to this list: 
+The build was successful, however, I am unable to boot into my new kernel and
+have received following errors:
 
-Subscribe: outreachy+subscribe@lists.linux.dev
-More subscriber options: https://subspace.kernel.org/lists.linux.dev.html
-View the archive: https://lore.kernel.org/outreachy/
+error: bad shim signature
+Loading initial ramdisk
+error: you need to load the kernel first
 
-Ask your questions in this mailing list. That way you'll be able get
-quick answers with the issues you're facing. Please help other applicants
-who face issues that you've addressed.
+I tried to seek from net, but did not find any workable resolution. Can you
+please suggested how can I correct this error or if I missed any steps?
 
-Support may also be found on IRC. Join the #outreachy IRC channel on
-irc.gnome.org, and the #kernel-outreachy channel on irc.oftc.net.
-
-Your first task is to walk through our First Patch Tutorial:
-http://kernelnewbies.org/Outreachyfirstpatch
-
-The tutorial leads you through submitting your first patch. Please
-do not submit your second patch until your first patch is accepted.
-Key point is that it is really helpful and efficient (for both you
-and patch reviewers) to refine your patch sending skills one patch
-at a time, rather than having multiple patches in flight that require
-similar rework.
-
-You MUST send all patches to this mailing list AND to the appropriate
-mailing lists and maintainers in get_maintainer.pl. The tutorial walks
-you through how to use get_maintainer.pl.
-
-Once that first patch is accepted, please record that contribution
-on the Outreachy website. This will close the loop on that first patch!
-It will also force you to double check your eligibility. Only eligible
-applicants will be able to log contributions on the Outreachy web site.
-
-Congratulations on getting your first patch accepted into the Linux
-Kernel! Celebrate, then do more!
-
-Once you have ~10 cleanup patches accepted into drivers/staging by
-GregKH, we encourage applicants to move on to complete some small tasks
-outlined by the mentors here:
-https://www.outreachy.org/apply/project-selection/#linux-kernel
+Thank you,
+Deepak.
 
 
-All the best and thank-you for contribution to the Linux Kernel,
-Alison Schofield
-Kernel Community Coordinator
+
+
