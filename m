@@ -1,391 +1,106 @@
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+Received: from msg-1.mailo.com (msg-1.mailo.com [213.182.54.11])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9D596323B
-	for <outreachy@lists.linux.dev>; Mon, 10 Oct 2022 16:54:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1665420876; x=1696956876;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=yndA8KNrkkW3KVoh4rIHkqFPEYY7XzVLAP4wl3//JlA=;
-  b=BRRoQoOOBRgM+DaMiZxcdvufEUcAm4duo25leUNmWSzxegJBlhYAl1nV
-   BS/49y8ECufF8dROPPde+zS0Xc0u77n+RtbRFvGlu2FSJfV3jI8qq2O39
-   HhMDd8Q3cLU/E69X4TeI2tg1SFk8ro5nZzSCfKlUAsgf+LXqln6Hdi1FB
-   4OYujJURmdNAVFLD0NL/OZoK5tw3B/zIS+3rnBqLErJDFJGfay81o+Nqp
-   AKHEo/FETsnik2fwLUmmRc/+TF+k+b8QzAYtd9DAOovTfGxq4KbEdjjs5
-   P1D2Z4j7PE1GNEv6ni8OZ65pjSTSJ9z8nCEAevSLlfnKjVjc2dkyEdxGK
-   w==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10496"; a="291568552"
-X-IronPort-AV: E=Sophos;i="5.95,173,1661842800"; 
-   d="scan'208";a="291568552"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
-  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Oct 2022 09:54:35 -0700
-X-IronPort-AV: E=McAfee;i="6500,9779,10496"; a="626034514"
-X-IronPort-AV: E=Sophos;i="5.95,173,1661842800"; 
-   d="scan'208";a="626034514"
-Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.255.228.180])
-  by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Oct 2022 09:54:35 -0700
-Date: Mon, 10 Oct 2022 09:54:33 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: Hunter Chasens <hunter.chasens18@ncf.edu>
-Cc: Julia Lawall <julia.lawall@inria.fr>, outreachy@lists.linux.dev
-Subject: Re: [PATCH] Staging: greybus: Fixed whitespace style issues
-Message-ID: <Y0ROSX0ZxGQwmMLT@aschofie-mobl2>
-References: <20221010155736.117492-1-hunter.chasens18@ncf.edu>
- <6a157246-b4af-273b-8f6a-352c82aa5a2c@inria.fr>
- <CAFJe6O0ADLWOcem3-=EHdKKUHozVP-M1M7VQVY1PCkHr=nMMWg@mail.gmail.com>
- <cb9ed48e-3b83-8a4-773a-39e25483bfb5@inria.fr>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1E2603209
+	for <outreachy@lists.linux.dev>; Mon, 10 Oct 2022 17:03:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
+	t=1665421378; bh=U9vPpaZrhiA4Hb2SbbBNiG8vs9vYsrv8vt28FuYVOr4=;
+	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
+	 MIME-Version:Content-Type:In-Reply-To;
+	b=O5Af8CWu6AoHUnpTkNZj16Rf7Pf6Ogjchoh7/T1YN7D5Ekj6Rpr2oo0B5OjhIKhl9
+	 tE5mRUDXJ7BJKJ6EXg0jWkzBx2hBbkkKxfyce5GVD+O5mZiu7TkH0ZeS0dXeJwYUCz
+	 AxyjHUylno/S7FXxmWkLhs+oTVY0aSr8fhIlg51E=
+Received: by b-5.in.mailobj.net [192.168.90.15] with ESMTP
+	via [213.182.55.206]
+	Mon, 10 Oct 2022 19:02:58 +0200 (CEST)
+X-EA-Auth: xIHlu8mDL7m+b4hRjRoJf0/YJR1EdJ1VcvFJ1zGyn8+1AWAklCy6gwN/s3oQ51fCwsXcD2FvHx6pR1I2ydy02llgSpGALpjz
+Date: Mon, 10 Oct 2022 22:32:52 +0530
+From: Deepak R Varma <drv@mailo.com>
+To: Stefano Brivio <sbrivio@redhat.com>
+Cc: outreachy@lists.linux.dev, Julia Lawall <julia.lawall@inria.fr>,
+	Sevinj Aghayeva <sevinj.aghayeva@gmail.com>,
+	Roopa Prabhu <roopa@nvidia.com>
+Subject: Re: trouble booting into staging kernel
+Message-ID: <Y0RQPHU7fXhDf6kA@lion>
+References: <Y0MKHfWsqsh4S9ld@lion>
+ <20221010125427.52d5a103@elisabeth>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <cb9ed48e-3b83-8a4-773a-39e25483bfb5@inria.fr>
+In-Reply-To: <20221010125427.52d5a103@elisabeth>
 
-On Mon, Oct 10, 2022 at 06:25:22PM +0200, Julia Lawall wrote:
-> 
-> 
-> On Mon, 10 Oct 2022, Hunter Chasens wrote:
-> 
-> > Thanks for the feedback! How would you recommend I deliminate this? Maybe separating patches by file, or perhaps type of styling error? Thank you so much for your help! 
-> 
-> On the one hand, you have whitespace problems.  They can all go together.
-> 
-> On the other hand, you have a semantic error, which is the extra int.  So
-> that change should be in a separate patch from the others.
-> 
-> julia
-> 
-Hunter,
+On Mon, Oct 10, 2022 at 12:54:27PM +0200, Stefano Brivio wrote:
+> Hi Deepak,
+>
+> On Sun, 9 Oct 2022 23:21:25 +0530
+> Deepak R Varma <drv@mailo.com> wrote:
+>
+> > Hello,
+> > I am natively running 5.15.0-48-generic on my HP Laptop with Secure boot on. I
+> > tried to follow the Kernel First patch tutorial steps and managed to build
+> > Kernel release 6.0.0rc4.
+>
+> Somewhat unrelated: in a past Outreachy round, we did a bit of work on
+> a tool with the idea of making these steps easier. It's not mentioned
+> in the tutorial, as we didn't have time to polish it up completely, but
+> maybe you want to give it a try. Basic usage demo and source at:
+>
+>   https://mbuto.sh
 
-Just wanted to chime in that the Ourteachy mailing list archive is
-an additional resource (in addition to the First Patch Tutorial).
-You don't have to search far into the archive to find sets of cleanup
-patches. Follow a couple of those through and see what worked well,
-and what revisions were requested.
+Hello Stefano,
+I will definitely explore this tool and attempt to utilize it if I can. Thank
+you very much for sharing the details.
 
-For example, here I just searched on "0/5" to find some examples of
-patchsets. https://lore.kernel.org/outreachy/?q=0%2F5
+>
+> I'm not mentoring for this round, so I'm just throwing this around
+> without claiming any responsibility. :)
 
-Welcome to Outreachy Hunter!
-Alison
+No problem. I am sure the tool will be a new learning.
 
+>
+> About the specific issue you're hitting, I don't have any pointer other
+> than what Julia already shared.
+Okay. I am working on the link shared by Julia and would share the outcome soon.
+
+Thank you all.
+
+./drv
+
+>
+> > There were issues during the module building associated
+> > with the certificates / signing of the modules. I got those supressed by
+> > emptying the following two config parameters as copied over from the native
+> > config file:
 > >
+> > CONFIG_SYSTEM_TRUSTED_KEYS="debian/canonical-certs.pem"
+> > CONFIG_SYSTEM_REVOCATION_KEYS="debian/canonical-revoked-certs.pem"
 > >
-> > From, Hunter Reed Chasens
-> > 4th Year Computer Science / Software Engineering AOC
-> > • Github • LinkedIn • TryHackMe (0x8 Hacker) • HackTheBox •
-> > www.hunterchasens.com
-> > hchasens@gmail.com
-> > chasensh@acm.org
-> > hunter.chasens18@ncf.edu   
-> > hchas003@fiu.edu
-> > Mobile: +1(305)-978-5465
-> > Pronouns: He/Him
+> > set to new value
 > >
+> > CONFIG_SYSTEM_TRUSTED_KEYS=""
+> > CONFIG_SYSTEM_REVOCATION_KEYS=""
 > >
-> > On Mon, Oct 10, 2022 at 12:14 PM Julia Lawall <julia.lawall@inria.fr> wrote:
-> >       On Mon, 10 Oct 2022, Hunter Chasens wrote:
+> > The build was successful, however, I am unable to boot into my new kernel and
+> > have received following errors:
 > >
-> >       > Fixed multiple whitespace and alignment code style issues.
-> >       > Changed "unsigned long long int" to "unsigned long long" as 'int' was redundent in file 'greybus/Documentation/firmware/authenticate.c'.
+> > error: bad shim signature
+> > Loading initial ramdisk
+> > error: you need to load the kernel first
 > >
-> >       Thanks for submitting the first patch of this round!
+> > I tried to seek from net, but did not find any workable resolution. Can you
+> > please suggested how can I correct this error or if I missed any steps?
 > >
-> >       However, it seems not to satisfy the rule that a patch should only do one
-> >       thing.  You could send a series.
-> >
-> >       julia
-> >
-> >       > Signed-off-by: Hunter Chasens <hunter.chasens18@ncf.edu>
-> >       > ---
-> >       >  .../Documentation/firmware/authenticate.c     |  4 +--
-> >       >  .../greybus/Documentation/firmware/firmware.c | 34 +++++++++----------
-> >       >  drivers/staging/greybus/arche-platform.c      |  2 +-
-> >       >  .../staging/greybus/greybus_authentication.h  |  1 -
-> >       >  drivers/staging/greybus/loopback.c            |  3 +-
-> >       >  drivers/staging/greybus/tools/loopback_test.c | 16 +--------
-> >       >  6 files changed, 22 insertions(+), 38 deletions(-)
-> >       >
-> >       > diff --git a/drivers/staging/greybus/Documentation/firmware/authenticate.c b/drivers/staging/greybus/Documentation/firmware/authenticate.c
-> >       > index 3d2c6f88a138..ba4b16b04557 100644
-> >       > --- a/drivers/staging/greybus/Documentation/firmware/authenticate.c
-> >       > +++ b/drivers/staging/greybus/Documentation/firmware/authenticate.c
-> >       > @@ -58,7 +58,7 @@ int main(int argc, char *argv[])
-> >       >               goto close_fd;
-> >       >       }
-> >       >
-> >       > -     printf("UID received: 0x%llx\n", *(unsigned long long int *)(uid.uid));
-> >       > +     printf("UID received: 0x%llx\n", *(unsigned long long *)(uid.uid));
-> >       >
-> >       >       /* Get certificate */
-> >       >       printf("Get IMS certificate\n");
-> >       > @@ -85,7 +85,7 @@ int main(int argc, char *argv[])
-> >       >       }
-> >       >
-> >       >       printf("Authenticated, result (%02x), sig-size (%02x)\n",
-> >       > -             authenticate.result_code, authenticate.signature_size);
-> >       > +            authenticate.result_code, authenticate.signature_size);
-> >       >
-> >       >  close_fd:
-> >       >       close(fd);
-> >       > diff --git a/drivers/staging/greybus/Documentation/firmware/firmware.c b/drivers/staging/greybus/Documentation/firmware/firmware.c
-> >       > index 765d69faa9cc..1955a97fc7c4 100644
-> >       > --- a/drivers/staging/greybus/Documentation/firmware/firmware.c
-> >       > +++ b/drivers/staging/greybus/Documentation/firmware/firmware.c
-> >       > @@ -47,13 +47,13 @@ static int update_intf_firmware(int fd)
-> >       >       ret = ioctl(fd, FW_MGMT_IOC_GET_INTF_FW, &intf_fw_info);
-> >       >       if (ret < 0) {
-> >       >               printf("Failed to get interface firmware version: %s (%d)\n",
-> >       > -                     fwdev, ret);
-> >       > +                    fwdev, ret);
-> >       >               return -1;
-> >       >       }
-> >       >
-> >       >       printf("Interface Firmware tag (%s), major (%d), minor (%d)\n",
-> >       > -             intf_fw_info.firmware_tag, intf_fw_info.major,
-> >       > -             intf_fw_info.minor);
-> >       > +            intf_fw_info.firmware_tag, intf_fw_info.major,
-> >       > +            intf_fw_info.minor);
-> >       >
-> >       >       /* Try Interface Firmware load over Unipro */
-> >       >       printf("Loading Interface Firmware\n");
-> >       > @@ -69,20 +69,20 @@ static int update_intf_firmware(int fd)
-> >       >       ret = ioctl(fd, FW_MGMT_IOC_INTF_LOAD_AND_VALIDATE, &intf_load);
-> >       >       if (ret < 0) {
-> >       >               printf("Failed to load interface firmware: %s (%d)\n", fwdev,
-> >       > -                     ret);
-> >       > +                    ret);
-> >       >               return -1;
-> >       >       }
-> >       >
-> >       >       if (intf_load.status != GB_FW_U_LOAD_STATUS_VALIDATED &&
-> >       >           intf_load.status != GB_FW_U_LOAD_STATUS_UNVALIDATED) {
-> >       >               printf("Load status says loading failed: %d\n",
-> >       > -                     intf_load.status);
-> >       > +                    intf_load.status);
-> >       >               return -1;
-> >       >       }
-> >       >
-> >       >       printf("Interface Firmware (%s) Load done: major: %d, minor: %d, status: %d\n",
-> >       > -             firmware_tag, intf_load.major, intf_load.minor,
-> >       > -             intf_load.status);
-> >       > +            firmware_tag, intf_load.major, intf_load.minor,
-> >       > +            intf_load.status);
-> >       >
-> >       >       /* Initiate Mode-switch to the newly loaded firmware */
-> >       >       printf("Initiate Mode switch\n");
-> >       > @@ -108,21 +108,21 @@ static int update_backend_firmware(int fd)
-> >       >       ret = ioctl(fd, FW_MGMT_IOC_GET_BACKEND_FW, &backend_fw_info);
-> >       >       if (ret < 0) {
-> >       >               printf("Failed to get backend firmware version: %s (%d)\n",
-> >       > -                     fwdev, ret);
-> >       > +                    fwdev, ret);
-> >       >               return -1;
-> >       >       }
-> >       >
-> >       >       printf("Backend Firmware tag (%s), major (%d), minor (%d), status (%d)\n",
-> >       > -             backend_fw_info.firmware_tag, backend_fw_info.major,
-> >       > -             backend_fw_info.minor, backend_fw_info.status);
-> >       > +            backend_fw_info.firmware_tag, backend_fw_info.major,
-> >       > +            backend_fw_info.minor, backend_fw_info.status);
-> >       >
-> >       >       if (backend_fw_info.status == GB_FW_U_BACKEND_VERSION_STATUS_RETRY)
-> >       >               goto retry_fw_version;
-> >       >
-> >       > -     if ((backend_fw_info.status != GB_FW_U_BACKEND_VERSION_STATUS_SUCCESS)
-> >       > -         && (backend_fw_info.status != GB_FW_U_BACKEND_VERSION_STATUS_NOT_AVAILABLE)) {
-> >       > +     if ((backend_fw_info.status != GB_FW_U_BACKEND_VERSION_STATUS_SUCCESS) &&
-> >       > +         (backend_fw_info.status != GB_FW_U_BACKEND_VERSION_STATUS_NOT_AVAILABLE)) {
-> >       >               printf("Failed to get backend firmware version: %s (%d)\n",
-> >       > -                     fwdev, backend_fw_info.status);
-> >       > +                    fwdev, backend_fw_info.status);
-> >       >               return -1;
-> >       >       }
-> >       >
-> >       > @@ -148,10 +148,10 @@ static int update_backend_firmware(int fd)
-> >       >
-> >       >       if (backend_update.status != GB_FW_U_BACKEND_FW_STATUS_SUCCESS) {
-> >       >               printf("Load status says loading failed: %d\n",
-> >       > -                     backend_update.status);
-> >       > +                    backend_update.status);
-> >       >       } else {
-> >       >               printf("Backend Firmware (%s) Load done: status: %d\n",
-> >       > -                             firmware_tag, backend_update.status);
-> >       > +                    firmware_tag, backend_update.status);
-> >       >       }
-> >       >
-> >       >       return 0;
-> >       > @@ -185,8 +185,8 @@ int main(int argc, char *argv[])
-> >       >               fw_timeout = strtoul(argv[4], &endptr, 10);
-> >       >
-> >       >       printf("Trying Firmware update: fwdev: %s, type: %s, tag: %s, timeout: %u\n",
-> >       > -             fwdev, fw_update_type == 0 ? "interface" : "backend",
-> >       > -             firmware_tag, fw_timeout);
-> >       > +            fwdev, fw_update_type == 0 ? "interface" : "backend",
-> >       > +            firmware_tag, fw_timeout);
-> >       >
-> >       >       printf("Opening %s firmware management device\n", fwdev);
-> >       >
-> >       > diff --git a/drivers/staging/greybus/arche-platform.c b/drivers/staging/greybus/arche-platform.c
-> >       > index fcbd5f71eff2..6f86b0141853 100644
-> >       > --- a/drivers/staging/greybus/arche-platform.c
-> >       > +++ b/drivers/staging/greybus/arche-platform.c
-> >       > @@ -179,7 +179,7 @@ static irqreturn_t arche_platform_wd_irq(int irq, void *devid)
-> >       >                               if (arche_pdata->wake_detect_state !=
-> >       >                                               WD_STATE_COLDBOOT_START) {
-> >       >                                       arche_platform_set_wake_detect_state(arche_pdata,
-> >       > -                                                                          WD_STATE_COLDBOOT_TRIG);
-> >       > +                                                                         WD_STATE_COLDBOOT_TRIG);
-> >       >                                       spin_unlock_irqrestore(&arche_pdata->wake_lock,
-> >       >                                                              flags);
-> >       >                                       return IRQ_WAKE_THREAD;
-> >       > diff --git a/drivers/staging/greybus/greybus_authentication.h b/drivers/staging/greybus/greybus_authentication.h
-> >       > index 7edc7295b7ab..48b4a9794d3c 100644
-> >       > --- a/drivers/staging/greybus/greybus_authentication.h
-> >       > +++ b/drivers/staging/greybus/greybus_authentication.h
-> >       > @@ -41,7 +41,6 @@
-> >       >  #define CAP_AUTH_RESULT_CR_NO_KEY    0x03
-> >       >  #define CAP_AUTH_RESULT_CR_SIG_FAIL  0x04
-> >       >
-> >       > -
-> >       >  /* IOCTL support */
-> >       >  struct cap_ioc_get_endpoint_uid {
-> >       >       __u8                    uid[8];
-> >       > diff --git a/drivers/staging/greybus/loopback.c b/drivers/staging/greybus/loopback.c
-> >       > index 1a61fce98056..a6a975a442ad 100644
-> >       > --- a/drivers/staging/greybus/loopback.c
-> >       > +++ b/drivers/staging/greybus/loopback.c
-> >       > @@ -588,8 +588,7 @@ static int gb_loopback_async_sink(struct gb_loopback *gb, u32 len)
-> >       >       return retval;
-> >       >  }
-> >       >
-> >       > -static int gb_loopback_async_transfer_complete(
-> >       > -                             struct gb_loopback_async_operation *op_async)
-> >       > +static int gb_loopback_async_transfer_complete(struct gb_loopback_async_operation *op_async)
-> >       >  {
-> >       >       struct gb_loopback *gb;
-> >       >       struct gb_operation *operation;
-> >       > diff --git a/drivers/staging/greybus/tools/loopback_test.c b/drivers/staging/greybus/tools/loopback_test.c
-> >       > index 4c42e393cd3d..539c7030ffec 100644
-> >       > --- a/drivers/staging/greybus/tools/loopback_test.c
-> >       > +++ b/drivers/staging/greybus/tools/loopback_test.c
-> >       > @@ -240,8 +240,6 @@ static void show_loopback_devices(struct loopback_test *t)
-> >       >       for (i = 0; i < t->device_count; i++)
-> >       >               printf("device[%d] = %s\n", i, t->devices[i].name);
-> >       >
-> >       > -}
-> >       > -
-> >       >  int open_sysfs(const char *sys_pfx, const char *node, int flags)
-> >       >  {
-> >       >       int fd;
-> >       > @@ -274,7 +272,6 @@ float read_sysfs_float_fd(int fd, const char *sys_pfx, const char *node)
-> >       >       char buf[SYSFS_MAX_INT];
-> >       >
-> >       >       if (read(fd, buf, sizeof(buf)) < 0) {
-> >       > -
-> >       >               fprintf(stderr, "unable to read from %s%s %s\n", sys_pfx, node,
-> >       >                       strerror(errno));
-> >       >               close(fd);
-> >       > @@ -367,7 +364,6 @@ static int get_results(struct loopback_test *t)
-> >       >                       r->apbridge_unipro_latency_max - r->apbridge_unipro_latency_min;
-> >       >               r->gbphy_firmware_latency_jitter =
-> >       >                       r->gbphy_firmware_latency_max - r->gbphy_firmware_latency_min;
-> >       > -
-> >       >       }
-> >       >
-> >       >       /*calculate the aggregate results of all enabled devices */
-> >       > @@ -407,9 +403,7 @@ static int get_results(struct loopback_test *t)
-> >       >                       r->apbridge_unipro_latency_max - r->apbridge_unipro_latency_min;
-> >       >               r->gbphy_firmware_latency_jitter =
-> >       >                       r->gbphy_firmware_latency_max - r->gbphy_firmware_latency_min;
-> >       > -
-> >       >       }
-> >       > -
-> >       >       return 0;
-> >       >  }
-> >       >
-> >       > @@ -537,7 +531,6 @@ static int log_results(struct loopback_test *t)
-> >       >                       abort();
-> >       >               }
-> >       >
-> >       > -     }
-> >       >       for (i = 0; i < t->device_count; i++) {
-> >       >               if (!device_enabled(t, i))
-> >       >                       continue;
-> >       > @@ -550,10 +543,8 @@ static int log_results(struct loopback_test *t)
-> >       >                       if (ret == -1)
-> >       >                               fprintf(stderr, "unable to write %d bytes to csv.\n", len);
-> >       >               }
-> >       > -
-> >       >       }
-> >       >
-> >       > -
-> >       >       if (t->aggregate_output) {
-> >       >               len = format_output(t, &t->aggregate_results, "aggregate",
-> >       >                                   data, sizeof(data), &tm);
-> >       > @@ -680,6 +671,7 @@ static int close_poll_files(struct loopback_test *t)
-> >       >
-> >       >       return 0;
-> >       >  }
-> >       > +
-> >       >  static int is_complete(struct loopback_test *t)
-> >       >  {
-> >       >       int iteration_count;
-> >       > @@ -740,7 +732,6 @@ static int wait_for_complete(struct loopback_test *t)
-> >       >               ts = &t->poll_timeout;
-> >       >
-> >       >       while (1) {
-> >       > -
-> >       >               ret = ppoll(t->fds, t->poll_count, ts, &mask_old);
-> >       >               if (ret <= 0) {
-> >       >                       stop_tests(t);
-> >       > @@ -780,7 +771,6 @@ static void prepare_devices(struct loopback_test *t)
-> >       >               if (t->stop_all || device_enabled(t, i))
-> >       >                       write_sysfs_val(t->devices[i].sysfs_entry, "type", 0);
-> >       >
-> >       > -
-> >       >       for (i = 0; i < t->device_count; i++) {
-> >       >               if (!device_enabled(t, i))
-> >       >                       continue;
-> >       > @@ -823,7 +813,6 @@ static int start(struct loopback_test *t)
-> >       >       return 0;
-> >       >  }
-> >       >
-> >       > -
-> >       >  void loopback_run(struct loopback_test *t)
-> >       >  {
-> >       >       int i;
-> >       > @@ -852,7 +841,6 @@ void loopback_run(struct loopback_test *t)
-> >       >       if (ret)
-> >       >               goto err;
-> >       >
-> >       > -
-> >       >       get_results(t);
-> >       >
-> >       >       log_results(t);
-> >       > @@ -881,10 +869,8 @@ static int sanity_check(struct loopback_test *t)
-> >       >                       fprintf(stderr, "Bad device mask %x\n", (1 << i));
-> >       >                       return -1;
-> >       >               }
-> >       > -
-> >       >       }
-> >       >
-> >       > -
-> >       >       return 0;
-> >       >  }
-> >       >
-> >       > --
-> >       > 2.37.3
-> >       >
-> >       >
-> >       >
-> >
-> >
-> >
+> > Thank you,
+> > Deepak.
+>
+> --
+> Stefano
+>
+>
+
 
