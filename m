@@ -1,29 +1,53 @@
-Received: from msg-1.mailo.com (msg-1.mailo.com [213.182.54.11])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-vs1-f49.google.com (mail-vs1-f49.google.com [209.85.217.49])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1E2603209
-	for <outreachy@lists.linux.dev>; Mon, 10 Oct 2022 17:03:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
-	t=1665421378; bh=U9vPpaZrhiA4Hb2SbbBNiG8vs9vYsrv8vt28FuYVOr4=;
-	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
-	 MIME-Version:Content-Type:In-Reply-To;
-	b=O5Af8CWu6AoHUnpTkNZj16Rf7Pf6Ogjchoh7/T1YN7D5Ekj6Rpr2oo0B5OjhIKhl9
-	 tE5mRUDXJ7BJKJ6EXg0jWkzBx2hBbkkKxfyce5GVD+O5mZiu7TkH0ZeS0dXeJwYUCz
-	 AxyjHUylno/S7FXxmWkLhs+oTVY0aSr8fhIlg51E=
-Received: by b-5.in.mailobj.net [192.168.90.15] with ESMTP
-	via [213.182.55.206]
-	Mon, 10 Oct 2022 19:02:58 +0200 (CEST)
-X-EA-Auth: xIHlu8mDL7m+b4hRjRoJf0/YJR1EdJ1VcvFJ1zGyn8+1AWAklCy6gwN/s3oQ51fCwsXcD2FvHx6pR1I2ydy02llgSpGALpjz
-Date: Mon, 10 Oct 2022 22:32:52 +0530
-From: Deepak R Varma <drv@mailo.com>
-To: Stefano Brivio <sbrivio@redhat.com>
-Cc: outreachy@lists.linux.dev, Julia Lawall <julia.lawall@inria.fr>,
-	Sevinj Aghayeva <sevinj.aghayeva@gmail.com>,
-	Roopa Prabhu <roopa@nvidia.com>
-Subject: Re: trouble booting into staging kernel
-Message-ID: <Y0RQPHU7fXhDf6kA@lion>
-References: <Y0MKHfWsqsh4S9ld@lion>
- <20221010125427.52d5a103@elisabeth>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 90F6B2F56
+	for <outreachy@lists.linux.dev>; Mon, 10 Oct 2022 18:45:36 +0000 (UTC)
+Received: by mail-vs1-f49.google.com with SMTP id d187so12085368vsd.6
+        for <outreachy@lists.linux.dev>; Mon, 10 Oct 2022 11:45:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ncf.edu; s=google;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=3ZWYhbzQ02ugnKxovvl6opezTNqoIUX1GQCD7ssGck4=;
+        b=UiA6KSYparVbNARhhZ0knMfkuGd/b9MtE1+xinIjlvGYLpFd1yk3l+JvVkscvKdOoM
+         NpSmVWXsPWGU/b/6NQhz+CxhiX4GUY6EwCJUF/DabI724ESYbPUqZ8TtStB9uOifJ6cf
+         cNcqn6/I+8dOQTYipIsD7i8hpuNt5cnCg1yvDYPKCIOHjC5Z1Ad7E2PvdS8gqCsETeJw
+         l9z3cQNIZiEKSzc68eNne/Q7qfnDRGGm7SqV/JgIeFRtRnP42SWIJ4DaKnVrcWxFya60
+         EyIDbpZpBHwV0DRzSlwUPdDDuOpHs/jfnY2k9NQKc3Tx9sxfogZ1THzR9BcYAZ/1X2NZ
+         REqA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=3ZWYhbzQ02ugnKxovvl6opezTNqoIUX1GQCD7ssGck4=;
+        b=adcFONUz2J0UoLsoof8WvwD7CCb8Mhyo/PMO0mKPJPCARNg1S2REZvIx9o94dnjR3M
+         Jo8nuXwJ/oiJ3inCU/KOpqfhtNl1jl4iSbab+k7GVHvlDiELcTIiQdzvlsfyR6HkUpEv
+         mwN5wwPIp+sGHBmqr3Q+CCtqdujvPHog5qdYq4u+bc9O8UwzSVek7HxqirWXrasbmidx
+         1QYOkXeEGpUcJqOmA65IDkf/yWy7OkZWpLZM+XI3EMDYHN8vd8BzK2AC50lJsHPm512s
+         L7oidNZ7N/FOdPvOEexi/9T19SX4KbLPTjWWG9aLDEi7B4P5QQkmTUVvp6v9P9xHSmzQ
+         mOYQ==
+X-Gm-Message-State: ACrzQf1YItONyp0HFskFyNMVQM8Yb9xl3bsNt7tehLJVuCpTcUJG5Xr2
+	q1+6FxJrJkvWPDqjvePoPeUL9MziL+BAag==
+X-Google-Smtp-Source: AMsMyM6KT8xBOShAPmgIdEWhv6VT92YEduWyQQi8/0RTafa+n5nmavBuEFL51GHHA4s4E0ByNKaCIQ==
+X-Received: by 2002:a05:6102:2453:b0:3a6:5309:af88 with SMTP id g19-20020a056102245300b003a65309af88mr9835875vss.74.1665427535493;
+        Mon, 10 Oct 2022 11:45:35 -0700 (PDT)
+Received: from zeda ([47.195.251.56])
+        by smtp.gmail.com with ESMTPSA id h10-20020ab02a8a000000b003d22af4f306sm2219405uar.28.2022.10.10.11.45.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 10 Oct 2022 11:45:34 -0700 (PDT)
+Date: Mon, 10 Oct 2022 14:45:33 -0400
+From: Hunter Chasens <hunter.chasens18@ncf.edu>
+To: Alison Schofield <alison.schofield@intel.com>
+Cc: Julia Lawall <julia.lawall@inria.fr>, outreachy@lists.linux.dev
+Subject: Re: [PATCH] Staging: greybus: Fixed whitespace style issues
+Message-ID: <Y0RoTagEGMQhoXFM@zeda>
+References: <20221010155736.117492-1-hunter.chasens18@ncf.edu>
+ <6a157246-b4af-273b-8f6a-352c82aa5a2c@inria.fr>
+ <CAFJe6O0ADLWOcem3-=EHdKKUHozVP-M1M7VQVY1PCkHr=nMMWg@mail.gmail.com>
+ <cb9ed48e-3b83-8a4-773a-39e25483bfb5@inria.fr>
+ <Y0ROSX0ZxGQwmMLT@aschofie-mobl2>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -32,75 +56,6 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20221010125427.52d5a103@elisabeth>
+In-Reply-To: <Y0ROSX0ZxGQwmMLT@aschofie-mobl2>
 
-On Mon, Oct 10, 2022 at 12:54:27PM +0200, Stefano Brivio wrote:
-> Hi Deepak,
->
-> On Sun, 9 Oct 2022 23:21:25 +0530
-> Deepak R Varma <drv@mailo.com> wrote:
->
-> > Hello,
-> > I am natively running 5.15.0-48-generic on my HP Laptop with Secure boot on. I
-> > tried to follow the Kernel First patch tutorial steps and managed to build
-> > Kernel release 6.0.0rc4.
->
-> Somewhat unrelated: in a past Outreachy round, we did a bit of work on
-> a tool with the idea of making these steps easier. It's not mentioned
-> in the tutorial, as we didn't have time to polish it up completely, but
-> maybe you want to give it a try. Basic usage demo and source at:
->
->   https://mbuto.sh
-
-Hello Stefano,
-I will definitely explore this tool and attempt to utilize it if I can. Thank
-you very much for sharing the details.
-
->
-> I'm not mentoring for this round, so I'm just throwing this around
-> without claiming any responsibility. :)
-
-No problem. I am sure the tool will be a new learning.
-
->
-> About the specific issue you're hitting, I don't have any pointer other
-> than what Julia already shared.
-Okay. I am working on the link shared by Julia and would share the outcome soon.
-
-Thank you all.
-
-./drv
-
->
-> > There were issues during the module building associated
-> > with the certificates / signing of the modules. I got those supressed by
-> > emptying the following two config parameters as copied over from the native
-> > config file:
-> >
-> > CONFIG_SYSTEM_TRUSTED_KEYS="debian/canonical-certs.pem"
-> > CONFIG_SYSTEM_REVOCATION_KEYS="debian/canonical-revoked-certs.pem"
-> >
-> > set to new value
-> >
-> > CONFIG_SYSTEM_TRUSTED_KEYS=""
-> > CONFIG_SYSTEM_REVOCATION_KEYS=""
-> >
-> > The build was successful, however, I am unable to boot into my new kernel and
-> > have received following errors:
-> >
-> > error: bad shim signature
-> > Loading initial ramdisk
-> > error: you need to load the kernel first
-> >
-> > I tried to seek from net, but did not find any workable resolution. Can you
-> > please suggested how can I correct this error or if I missed any steps?
-> >
-> > Thank you,
-> > Deepak.
->
-> --
-> Stefano
->
->
-
-
+Thank you. I only learned about outreach yesterday so I've not had a chance to look through the archives. I'll be sure to do so however! I was very excited to learn about it!
