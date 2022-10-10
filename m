@@ -1,113 +1,102 @@
-Received: from msg-1.mailo.com (msg-1.mailo.com [213.182.54.11])
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0D2085C91
-	for <outreachy@lists.linux.dev>; Sun,  9 Oct 2022 19:56:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
-	t=1665345359; bh=yKIUiH44ic9D8SygeTauotu+d4jyIpzmeg/dz9Nmq3o=;
-	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
-	 MIME-Version:Content-Type:In-Reply-To;
-	b=I0z6k0ddbO/G++IHj/du0hr0und9OHbWXGtuX8+w79PZVaSHdY+VHagm2b0yPAkgk
-	 gDjpPK0ce6aIxL4i+cP6B5Nh8siqyrjYvkLGAGAEKa3XKH/2qeOf78bAl2XIsXeoxm
-	 0eLWYCZ+yNI5crpKaYcB0WubQYFg8+NtRn3Jt8KU=
-Received: by b-1.in.mailobj.net [192.168.90.11] with ESMTP
-	via [213.182.55.206]
-	Sun,  9 Oct 2022 21:55:59 +0200 (CEST)
-X-EA-Auth: 9M108QzAZkdYyZ2esOYxtxMISec+zzfGKU7KKgApVf1a1AExiy3IPQ8HAeAzvSToivGi0Um25O8aZNFGbR6zxV0j7XsEuKyQ
-Date: Mon, 10 Oct 2022 01:25:56 +0530
-From: Deepak R Varma <drv@mailo.com>
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: outreachy@lists.linux.dev
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 87A3E7E
+	for <outreachy@lists.linux.dev>; Mon, 10 Oct 2022 10:54:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1665399276;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Sg5quTI+XLe6NMz5zXmPXpxMHK2CNGI+8AGMmTy6V4A=;
+	b=JEkzdCEyU32j6zSewrbwBg8cMsNZAq3om2UXfHvlt9wIuYLuTdjnRfkaSfgKCiPS4jjkl6
+	eGTImcvIpx1eTm76GemSko7zfF6fvPcvDdD/gr0DbbBOYCr7cuJxuXkp9AxeCx/rg83xSW
+	xOfxZcPtYimlZadI21oxxSbQSqEIOXk=
+Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
+ [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-639-m1eirqjuPEebfkLVgONwKQ-1; Mon, 10 Oct 2022 06:54:33 -0400
+X-MC-Unique: m1eirqjuPEebfkLVgONwKQ-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com [10.11.54.6])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C0E8829AA39C;
+	Mon, 10 Oct 2022 10:54:32 +0000 (UTC)
+Received: from maya.cloud.tilaa.com (unknown [10.40.208.3])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 2177A215CDC3;
+	Mon, 10 Oct 2022 10:54:32 +0000 (UTC)
+Date: Mon, 10 Oct 2022 12:54:27 +0200
+From: Stefano Brivio <sbrivio@redhat.com>
+To: Deepak R Varma <drv@mailo.com>
+Cc: outreachy@lists.linux.dev, Julia Lawall <julia.lawall@inria.fr>, Sevinj
+ Aghayeva <sevinj.aghayeva@gmail.com>, Roopa Prabhu <roopa@nvidia.com>
 Subject: Re: trouble booting into staging kernel
-Message-ID: <Y0MnTOcGeoVeVIXg@lion>
+Message-ID: <20221010125427.52d5a103@elisabeth>
+In-Reply-To: <Y0MKHfWsqsh4S9ld@lion>
 References: <Y0MKHfWsqsh4S9ld@lion>
- <alpine.DEB.2.22.394.2210091955410.21609@hadrien>
- <Y0Mao9czSNX+WrHh@lion>
- <alpine.DEB.2.22.394.2210092112170.21609@hadrien>
+Organization: Red Hat
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.22.394.2210092112170.21609@hadrien>
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-On Sun, Oct 09, 2022 at 09:12:37PM +0200, Julia Lawall wrote:
->
->
-> On Mon, 10 Oct 2022, Deepak R Varma wrote:
->
-> > On Sun, Oct 09, 2022 at 07:56:51PM +0200, Julia Lawall wrote:
-> > >
-> > >
-> > > On Sun, 9 Oct 2022, Deepak R Varma wrote:
-> > >
-> > > > Hello,
-> > > > I am natively running 5.15.0-48-generic on my HP Laptop with Secure boot on. I
-> > > > tried to follow the Kernel First patch tutorial steps and managed to build
-> > > > Kernel release 6.0.0rc4. There were issues during the module building associated
-> > > > with the certificates / signing of the modules. I got those supressed by
-> > > > emptying the following two config parameters as copied over from the native
-> > > > config file:
-> > > >
-> > > > CONFIG_SYSTEM_TRUSTED_KEYS="debian/canonical-certs.pem"
-> > > > CONFIG_SYSTEM_REVOCATION_KEYS="debian/canonical-revoked-certs.pem"
-> > > >
-> > > > set to new value
-> > > >
-> > > > CONFIG_SYSTEM_TRUSTED_KEYS=""
-> > > > CONFIG_SYSTEM_REVOCATION_KEYS=""
-> > > >
-> > > > The build was successful, however, I am unable to boot into my new kernel and
-> > > > have received following errors:
-> > > >
-> > > > error: bad shim signature
-> > > > Loading initial ramdisk
-> > > > error: you need to load the kernel first
-> > > >
-> > > > I tried to seek from net, but did not find any workable resolution. Can you
-> > > > please suggested how can I correct this error or if I missed any steps?
-> > >
-> > > Maybe you have to remove secure boot?  I have the impression that I did
-> > > that on one of my machines, but I don't have that machine in front of me.
-> >
-> > Thank you for the quick response. I did try disabling the secure boot option and
-> > also cleared the certificate DB. Tried a few combinations of these options.
-> > Unfortunately, nothing helped so far.
->
-> Did you try what is described here?
->
-> https://unix.stackexchange.com/questions/701612/cant-load-self-signed-kernel-with-secure-boot-on-bad-shim-signature
+Hi Deepak,
 
-I am planning to do the following from this link next. I will let you know how
-it goes.
+On Sun, 9 Oct 2022 23:21:25 +0530
+Deepak R Varma <drv@mailo.com> wrote:
 
-Create your own secureboot signing certificate without such an EKU, enroll it into either mok or db, and use it for signing.
+> Hello,
+> I am natively running 5.15.0-48-generic on my HP Laptop with Secure boot on. I
+> tried to follow the Kernel First patch tutorial steps and managed to build
+> Kernel release 6.0.0rc4.
 
-Thank you,
-./drv
+Somewhat unrelated: in a past Outreachy round, we did a bit of work on
+a tool with the idea of making these steps easier. It's not mentioned
+in the tutorial, as we didn't have time to polish it up completely, but
+maybe you want to give it a try. Basic usage demo and source at:
 
->
-> julia
->
-> >
-> > Let me know if I should share any of the files / logs from my system for your
-> > review.
-> >
-> > >
-> > > Welcome, by the way :)
-> >
-> > Thank you Julia. Pleased to be part of this internship challenge.
-> >
-> > ./drv
-> >
-> > >
-> > > julia
-> >
-> >
-> >
->
+  https://mbuto.sh
 
+I'm not mentoring for this round, so I'm just throwing this around
+without claiming any responsibility. :)
+
+About the specific issue you're hitting, I don't have any pointer other
+than what Julia already shared.
+
+> There were issues during the module building associated
+> with the certificates / signing of the modules. I got those supressed by
+> emptying the following two config parameters as copied over from the native
+> config file:
+> 
+> CONFIG_SYSTEM_TRUSTED_KEYS="debian/canonical-certs.pem"
+> CONFIG_SYSTEM_REVOCATION_KEYS="debian/canonical-revoked-certs.pem"
+> 
+> set to new value
+> 
+> CONFIG_SYSTEM_TRUSTED_KEYS=""
+> CONFIG_SYSTEM_REVOCATION_KEYS=""
+> 
+> The build was successful, however, I am unable to boot into my new kernel and
+> have received following errors:
+> 
+> error: bad shim signature
+> Loading initial ramdisk
+> error: you need to load the kernel first
+> 
+> I tried to seek from net, but did not find any workable resolution. Can you
+> please suggested how can I correct this error or if I missed any steps?
+> 
+> Thank you,
+> Deepak.
+
+-- 
+Stefano
 
