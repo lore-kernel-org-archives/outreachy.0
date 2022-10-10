@@ -1,39 +1,43 @@
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A568E23A3
-	for <outreachy@lists.linux.dev>; Mon, 10 Oct 2022 20:31:52 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4EE3B5CAE
+	for <outreachy@lists.linux.dev>; Mon, 10 Oct 2022 20:37:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1665433912; x=1696969912;
+  t=1665434259; x=1696970259;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=g5U2X/6HSub7yyHk682Pi0TZBlLwzABxWfLMH4Tu+2M=;
-  b=bAZ74s7RlCeXyHA3N31JUys/XpUKFJZRhV9XT1+50kNjP00WmUVnx1sC
-   hd6OfAntXjVInL+plMgCn030Uj1Sxwl5fCS6bpdce9Po3AoeuUFKlcXoI
-   ceOwwZ0OJU2oJDCKpUsmhxdrjrbM26dUdSay32kg50ClkHzSaH50D3Tbq
-   TNGWfKvK0flWiFPhc8AGQNNNyfVAf17kVbCLCJz7rLIULdSydXy6CP44s
-   C21nUeyFkOxqfMopBp0nyPcct3QF6j+2mXpiXKkpmRmfbITkHjBTiX1rU
-   pvi/lZwMlgLOu+XhWsYxKOr5zca+vYANCtM+b9xWFcreO/U4/KGZulelc
-   g==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10496"; a="305952652"
+  bh=qxi4R+D6cRcuneEHTiBsJXbiFAlYufDzOeYs8VCBmdY=;
+  b=Y60Z07Zk7DY4Hu3Z06h05WmBIGJJ9lq2Rq9lEQPdz7Zbx337/nyCKkWZ
+   dNLql4DIUp6i2nrsHZ/VJxCMZJ+429bhYq/lxs2QFKA396o4Lm5q6V+4V
+   b05/eDctRk/Ju9Oyquq1b+2q+Fbu/CH0a0bgKt9JKlf6OxGsTXuiiERpb
+   GVXG/W6/x3jy9QLCb13tN65fBAF/ltp8c2dx0FJrKfqMHQ8UyA1IXwzeH
+   8pBEY4HULy8aTXLaeo3DM8MfzQvLQ51MoM2H5g1i3tgXHnnmUCejbG2MI
+   XGf3UUF+EKVCXYhCBeNKpxYiyz8qIqkKrB+FQFlgJ8VbSgXdwS0nxJGvW
+   Q==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10496"; a="284710871"
 X-IronPort-AV: E=Sophos;i="5.95,173,1661842800"; 
-   d="scan'208";a="305952652"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
-  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Oct 2022 13:31:52 -0700
-X-IronPort-AV: E=McAfee;i="6500,9779,10496"; a="628428381"
+   d="scan'208";a="284710871"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Oct 2022 13:37:38 -0700
+X-IronPort-AV: E=McAfee;i="6500,9779,10496"; a="715246134"
 X-IronPort-AV: E=Sophos;i="5.95,173,1661842800"; 
-   d="scan'208";a="628428381"
+   d="scan'208";a="715246134"
 Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.255.228.180])
-  by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Oct 2022 13:31:51 -0700
-Date: Mon, 10 Oct 2022 13:31:49 -0700
+  by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Oct 2022 13:37:38 -0700
+Date: Mon, 10 Oct 2022 13:37:37 -0700
 From: Alison Schofield <alison.schofield@intel.com>
 To: Hunter Chasens <hunter.chasens18@ncf.edu>
-Cc: outreachy@lists.linux.dev
-Subject: Re: [PATCH v2 1/2] Staging: greybus: Fixed whitespace style issues
-Message-ID: <Y0SBNeoQDfWmJcZi@aschofie-mobl2>
-References: <cover.1665430030.git.hunter.chasens18@ncf.edu>
- <78af8ab0297e0af46835937d73dee23f187650a1.1665430031.git.hunter.chasens18@ncf.edu>
+Cc: Julia Lawall <julia.lawall@inria.fr>, outreachy@lists.linux.dev
+Subject: Re: [PATCH] Staging: greybus: Fixed whitespace style issues
+Message-ID: <Y0SCkStgeGN3z282@aschofie-mobl2>
+References: <20221010155736.117492-1-hunter.chasens18@ncf.edu>
+ <6a157246-b4af-273b-8f6a-352c82aa5a2c@inria.fr>
+ <CAFJe6O0ADLWOcem3-=EHdKKUHozVP-M1M7VQVY1PCkHr=nMMWg@mail.gmail.com>
+ <cb9ed48e-3b83-8a4-773a-39e25483bfb5@inria.fr>
+ <Y0ROSX0ZxGQwmMLT@aschofie-mobl2>
+ <Y0RoTagEGMQhoXFM@zeda>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -42,34 +46,19 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <78af8ab0297e0af46835937d73dee23f187650a1.1665430031.git.hunter.chasens18@ncf.edu>
+In-Reply-To: <Y0RoTagEGMQhoXFM@zeda>
 
-On Mon, Oct 10, 2022 at 03:51:58PM -0400, Hunter Chasens wrote:
-> Fixed multiple whitespace and alignment code style issues.
-> 
-> Signed-off-by: Hunter Chasens <hunter.chasens18@ncf.edu>
+On Mon, Oct 10, 2022 at 02:45:33PM -0400, Hunter Chasens wrote:
+> Thank you. I only learned about outreach yesterday so I've not had a chance to look through the archives. I'll be sure to do so however! I was very excited to learn about it!
+
 
 Hi Hunter,
 
-Checkpatch CHECK complained about this patch. It's not something you added,
-but since you touched the line, it's going to show up when checkpatch
-is run on your completed patch. 
+If you only learned about Outreachy 'yesterday' I'm wondering if you
+are an approved applicant. You are welcome to work in our sandbox here
+during this month long contribution period but only approved applicants
+can apply for the actual internships.
 
-Correcting this would be another patch in your set, since it's a
-different type of cleanup - removing useless parenthesis.
+See: https://www.outreachy.org/
 
-CHECK: Unnecessary parentheses around 'backend_fw_info.status != GB_FW_U_BACKEND_VERSION_STATUS_SUCCESS'
-#92: FILE: drivers/staging/greybus/Documentation/firmware/firmware.c:122:
-+	if ((backend_fw_info.status != GB_FW_U_BACKEND_VERSION_STATUS_SUCCESS) &&
-+	    (backend_fw_info.status != GB_FW_U_BACKEND_VERSION_STATUS_NOT_AVAILABLE)) {
-
-CHECK: Unnecessary parentheses around 'backend_fw_info.status != GB_FW_U_BACKEND_VERSION_STATUS_NOT_AVAILABLE'
-#92: FILE: drivers/staging/greybus/Documentation/firmware/firmware.c:122:
-+	if ((backend_fw_info.status != GB_FW_U_BACKEND_VERSION_STATUS_SUCCESS) &&
-+	    (backend_fw_info.status != GB_FW_U_BACKEND_VERSION_STATUS_NOT_AVAILABLE)) {
-
---snip
-
-Thanks,
-Alison
-
+Alison 
