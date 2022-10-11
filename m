@@ -1,54 +1,77 @@
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
+Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2801D8F40
-	for <outreachy@lists.linux.dev>; Tue, 11 Oct 2022 05:07:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=Enzp2ROIgZi0GNm2J9kbZYYYdwDV9UA1ybuINTWHWvc=;
-  b=cVEc16uaEouRq783vquilUrDY7Cttv+zzACg36Fy8WjeiGz7bC5uCJpt
-   AsDkaNj6uH7CSyuesfnSp7I+oA9fbzcW9JRC4U1xtWb+4hMV+3zDpIkto
-   lVpUNyrQKVvOFx3szK+lEu+uX4B87K0acQ2/0i/a7k2z/vd9irV86Nd7h
-   E=;
-Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="5.95,175,1661810400"; 
-   d="scan'208";a="26814738"
-Received: from 51.123.68.85.rev.sfr.net (HELO hadrien) ([85.68.123.51])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Oct 2022 07:07:07 +0200
-Date: Tue, 11 Oct 2022 07:07:07 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 69E243C14
+	for <outreachy@lists.linux.dev>; Tue, 11 Oct 2022 15:32:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1665502329; x=1697038329;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=hhkv0ubEmlIQpQEb3vTv49eE3tWG/W7aPV74ZwnipMw=;
+  b=h8WemGjWNtBPiSNCNMS9eozBQxpoP/gnpK7x4H64A5hSI7ubDHQZCG7i
+   64eOYyujdl/RHR71BHAuDjfM6KYRAaAvX926nPhSOv0slqVPEjH2TwsF0
+   7vHbm/9rBi+8NjNz0tNXHKjmCyeZ77c7CfRI6ag1jIt/K0WZlkAgpfDYD
+   iMtQ5X4HL0+QAWoHx7caHPcLRBEl40lt77KvEciodfU6z4IMLdd80VRcs
+   XvlQ+Ked3FFzWs4VWmtsGvIM2r1Gg/wzShhNRRgOufLMM0MNT/qvagBT0
+   bSlp8Qg8tM/mE28WzoPFgnewJZYAA2bUut1VBWVMos67sx36M4E5qTyiE
+   g==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10497"; a="366526937"
+X-IronPort-AV: E=Sophos;i="5.95,176,1661842800"; 
+   d="scan'208";a="366526937"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Oct 2022 08:32:08 -0700
+X-IronPort-AV: E=McAfee;i="6500,9779,10497"; a="801491290"
+X-IronPort-AV: E=Sophos;i="5.95,176,1661842800"; 
+   d="scan'208";a="801491290"
+Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.209.98.149])
+  by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Oct 2022 08:32:08 -0700
+Date: Tue, 11 Oct 2022 08:32:07 -0700
+From: Alison Schofield <alison.schofield@intel.com>
 To: Hunter Chasens <hunter.chasens18@ncf.edu>
-cc: Alison Schofield <alison.schofield@intel.com>, outreachy@lists.linux.dev
-Subject: Re: [PATCH v2 0/2] Staging: greybus: Fixed whitespace/syntax style
- issues
-In-Reply-To: <Y0TNVMn1KBYjppFP@zeda>
-Message-ID: <alpine.DEB.2.22.394.2210110706230.2912@hadrien>
-References: <cover.1665430030.git.hunter.chasens18@ncf.edu> <Y0R/uscIGcUENEWx@aschofie-mobl2> <Y0SaG/h9IoCfB3tI@zeda> <Y0SwhNMLk9xh4v1H@aschofie-mobl2> <Y0THY2LgeHYZSaVt@aschofie-mobl2> <Y0TNVMn1KBYjppFP@zeda>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+Cc: Julia Lawall <julia.lawall@inria.fr>, outreachy@lists.linux.dev
+Subject: Re: [PATCH] Staging: greybus: Fixed whitespace style issues
+Message-ID: <Y0WMd211TqBPQN4G@aschofie-mobl2>
+References: <20221010155736.117492-1-hunter.chasens18@ncf.edu>
+ <6a157246-b4af-273b-8f6a-352c82aa5a2c@inria.fr>
+ <CAFJe6O0ADLWOcem3-=EHdKKUHozVP-M1M7VQVY1PCkHr=nMMWg@mail.gmail.com>
+ <cb9ed48e-3b83-8a4-773a-39e25483bfb5@inria.fr>
+ <Y0ROSX0ZxGQwmMLT@aschofie-mobl2>
+ <Y0RoTagEGMQhoXFM@zeda>
+ <Y0SCkStgeGN3z282@aschofie-mobl2>
+ <Y0SXQTthB30lOAUV@zeda>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <Y0SXQTthB30lOAUV@zeda>
 
+On Mon, Oct 10, 2022 at 06:05:53PM -0400, Hunter Chasens wrote:
+> I've been independently following the instruction posted at https://kernelnewbies.org/. Two days ago the website was updated and the Outreachfirstpatch was listed as the first link. I can't seem to navigate to a lot of the old content. I started reading the page about outreachy[1]. It seemed to cover much of the same material the old pages did. I figured it was an upgrade to the old documentation. Maybe a rebranding of the site. I can't seem to get my email address registered with the old Kernel Newbies mailing list and the IRC seems pretty dead so I thought this was an initiative by KernelNewbies to repark the community. The instructions on the Outreachy page told me to subscribe to your list and email my patches to you guys for review. 
+> 
+> At the bottom of the page, there's some information about being an intern. While I have an interest in that I just wanted to find a community to get feedback on my prospective patches. I have an interest in contributing to the kernel but I've been pursuing it on my own. 
+> 
+> I'm sorry if I've joined a private mailing list or if it's exclusive to those who want to apply. I've just been following the documentation I can find. I was very excited to see the documentation updated since a lot of the KernelNewbies site is outdated. :(
 
+Hi Hunter,
 
-On Mon, 10 Oct 2022, Hunter Chasens wrote:
+It's your choice to send patches to Outreachy list. If you choose to 
+'CC patches to Outreachy list, we're going to ask you to follow
+the Outreachy guidelines, and you'll get some extra support in the
+next month. (We only have the list open during the contribution
+periods.)
 
-> I didn't know the 80-character limit applied to email as well! Thank you
-> for telling me. I'm so used to auto-wrapping that it never occurred to me.
-> I'm still getting used to mutt as well.
->
-> It is a bit overwhelming but it all seems very learnable with persistence and
-> time. Sometimes it does feel like a game of whack-a-mole though. The moment I squash
-> one issue is the moment my attention leaves another. :)
+This tutorial you found...
+> 
+> [1] https://kernelnewbies.org/Outreachyfirstpatch
 
-That's the purpose of sending the staging patches.  So you learn to do the
-right thing without thinking.
+does point to the mailing list. Please join the mailing list, review
+what you've missed, and follow along there. Some things won't apply
+to you because you are not an actual applicant, but most will.
 
-julia
+Alison
+
