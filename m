@@ -1,31 +1,31 @@
 Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 721C720E3
-	for <outreachy@lists.linux.dev>; Thu, 13 Oct 2022 05:20:17 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E1E2E20E3
+	for <outreachy@lists.linux.dev>; Thu, 13 Oct 2022 05:21:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
   d=inria.fr; s=dc;
   h=date:from:to:cc:subject:in-reply-to:message-id:
    references:mime-version;
-  bh=cvL+oqPsnEnHg/dDOCME8fDnFaaZfYNNend9fWrdHNo=;
-  b=RTFZ4gY2To5EXMGdDCNB05gK4QxIHlMYdYLdbvOyVoGmKFnfWyJ5NB35
-   NMpp4Spgju94W5VUBfZ73LnqSxBjflAntXe4+HzA5y2G8nBz4u12NSPeS
-   99q1hLKjlLmqf7sIg0xxK+nn3okyXGBMmzLH0Yu5tFAMEQ7FcdJ3y/o9S
-   s=;
+  bh=XyZueHESlzE35SNy/+CBjz2y+sAPqqDHJmZ3G4r8yyM=;
+  b=prBz4fv5EVSkeBJtc1GoxgWHCCb/fHdkgtdAJFlBtYU7hFERBmsYJU0u
+   nUjgyUFmQ4WFB2M5P3mk9lfR2pY81HuWMvVU4tzrg5KOqc7ufXSrfWZAD
+   hcIqF8RFz1m/zItmm8TFfBrtTo69lDbOSsLTQoKGW/nYsfwyNLHFgWNH1
+   8=;
 Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
 X-IronPort-AV: E=Sophos;i="5.95,180,1661810400"; 
-   d="scan'208";a="29361559"
+   d="scan'208";a="29364975"
 Received: from 51.123.68.85.rev.sfr.net (HELO hadrien) ([85.68.123.51])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Oct 2022 07:20:09 +0200
-Date: Thu, 13 Oct 2022 07:20:08 +0200 (CEST)
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Oct 2022 07:21:56 +0200
+Date: Thu, 13 Oct 2022 07:21:55 +0200 (CEST)
 From: Julia Lawall <julia.lawall@inria.fr>
 X-X-Sender: jll@hadrien
-To: Emily Peri <eperi1024@gmail.com>
+To: Deepak R Varma <drv@mailo.com>
 cc: outreachy@lists.linux.dev
-Subject: Re: Hi from Outreachy Intern
-In-Reply-To: <Y0dCQ91kKpe2t9CG@emily-beep-beep-boop>
-Message-ID: <alpine.DEB.2.22.394.2210130717530.2822@hadrien>
-References: <Y0dCQ91kKpe2t9CG@emily-beep-beep-boop>
+Subject: Re: trouble booting into staging kernel
+In-Reply-To: <Y0ch7rDCJoTKgMac@vivasvan>
+Message-ID: <alpine.DEB.2.22.394.2210130721240.2822@hadrien>
+References: <Y0MKHfWsqsh4S9ld@lion> <alpine.DEB.2.22.394.2210091955410.21609@hadrien> <Y0Mao9czSNX+WrHh@lion> <alpine.DEB.2.22.394.2210092112170.21609@hadrien> <Y0MnTOcGeoVeVIXg@lion> <Y0ch7rDCJoTKgMac@vivasvan>
 User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
@@ -37,46 +37,107 @@ Content-Type: text/plain; charset=US-ASCII
 
 
 
-On Wed, 12 Oct 2022, Emily Peri wrote:
+On Thu, 13 Oct 2022, Deepak R Varma wrote:
 
-> Hi everyone,
+> On Mon, Oct 10, 2022 at 01:25:56AM +0530, Deepak R Varma wrote:
+> > On Sun, Oct 09, 2022 at 09:12:37PM +0200, Julia Lawall wrote:
+> > >
+> > >
+> > > On Mon, 10 Oct 2022, Deepak R Varma wrote:
+> > >
+> > > > On Sun, Oct 09, 2022 at 07:56:51PM +0200, Julia Lawall wrote:
+> > > > >
+> > > > >
+> > > > > On Sun, 9 Oct 2022, Deepak R Varma wrote:
+> > > > >
+> > > > > > Hello,
+> > > > > > I am natively running 5.15.0-48-generic on my HP Laptop with Secure boot on. I
+> > > > > > tried to follow the Kernel First patch tutorial steps and managed to build
+> > > > > > Kernel release 6.0.0rc4. There were issues during the module building associated
+> > > > > > with the certificates / signing of the modules. I got those supressed by
+> > > > > > emptying the following two config parameters as copied over from the native
+> > > > > > config file:
+> > > > > >
+> > > > > > CONFIG_SYSTEM_TRUSTED_KEYS="debian/canonical-certs.pem"
+> > > > > > CONFIG_SYSTEM_REVOCATION_KEYS="debian/canonical-revoked-certs.pem"
+> > > > > >
+> > > > > > set to new value
+> > > > > >
+> > > > > > CONFIG_SYSTEM_TRUSTED_KEYS=""
+> > > > > > CONFIG_SYSTEM_REVOCATION_KEYS=""
+> > > > > >
+> > > > > > The build was successful, however, I am unable to boot into my new kernel and
+> > > > > > have received following errors:
+> > > > > >
+> > > > > > error: bad shim signature
+> > > > > > Loading initial ramdisk
+> > > > > > error: you need to load the kernel first
+> > > > > >
+> > > > > > I tried to seek from net, but did not find any workable resolution. Can you
+> > > > > > please suggested how can I correct this error or if I missed any steps?
+> > > > >
+> > > > > Maybe you have to remove secure boot?  I have the impression that I did
+> > > > > that on one of my machines, but I don't have that machine in front of me.
+> > > >
+> > > > Thank you for the quick response. I did try disabling the secure boot option and
+> > > > also cleared the certificate DB. Tried a few combinations of these options.
+> > > > Unfortunately, nothing helped so far.
+> > >
+> > > Did you try what is described here?
+> > >
+> > > https://unix.stackexchange.com/questions/701612/cant-load-self-signed-kernel-with-secure-boot-on-bad-shim-signature
+> >
+> > I am planning to do the following from this link next. I will let you know how
+> > it goes.
 >
-> My name is Emily and I'm a new Outreachy intern for the upcoming phase.
-> I'm looking for projects to get involved in and I'm really intersted in
-> working on Coccinelle!
+> Hi Julia,
+> I realized that working with the certificates is very complex. I also encountered
+> additional issues during module building step. It's looking good now. I was able
+> to get past the module singing issues during the installation steps using this [1]
+> link. However, I am now unable to load the kernel image since it is not signed.
+> I am going to attempt to sign the image and also add the certificate to the db.
+> Hopefully that will be the last step before I can proceed to sharing my first
+> patch.
 >
-> I started the first patch tutorial, but ran into an issue. I'm currently
-> using a dual operating system setup-- I have Ubuntu and Windows on the
-> same machine. The thing is, I have my Ubuntu filesystem on an external
-> ssd. The boot parition is on the internal disk. Following the tutorial, after compiling and installing the kernel,
-> I tried to reboot with it, which caused a kernel panic. The exact error
-> was (along with the call trace):
-> Kernel panic -- not syncing: VFS: Unable to mount root fs on unknown-block(0,0)
->
-> From what I read online, one of the problems that may be going on is that the kernel wasn't compiled with the necessary drivers to interact
-> with the external ssd and filesystem. Am I understanding this correctly?
-> Can this be solved by recompiling with the necessary settings in
-> .config?
+> [1]: https://github.com/andikleen/simple-pt/issues/8
 
-Hello and welcome.
-
-Since you already have Linux running on your machine, did you use the same
-.config as was being used on your machine?  You can find it in the /boot
-directory.  make oldconfig should take this .config file automatically.
+Maybe it would be worth retrying the option of disabling secure boot?
 
 julia
 
 >
-> Another thing I'm seeing is that I need to create an initramfs for the new kernel. Do I need to do both? If the kernel can access the root filesystem on the external ssd, would it still need a temporary filesystem for the boot process?
+> Thank you,
+> ./drv
 >
-> Finally, I'm wondering if I need to set the "root" variable for grub when it loads the kernel. Such as, GRUB_CMDLINE_LINUX_DEFAULT="root=/dev/sb3" where sb3
-> is the filesystem partition. I'm just not sure if this is necessary
-> because grub doesn't have trouble loading my current kernel.
+> >
+> > Create your own secureboot signing certificate without such an EKU, enroll it into either mok or db, and use it for signing.
+> >
+> > Thank you,
+> > ./drv
+> >
+> > >
+> > > julia
+> > >
+> > > >
+> > > > Let me know if I should share any of the files / logs from my system for your
+> > > > review.
+> > > >
+> > > > >
+> > > > > Welcome, by the way :)
+> > > >
+> > > > Thank you Julia. Pleased to be part of this internship challenge.
+> > > >
+> > > > ./drv
+> > > >
+> > > > >
+> > > > > julia
+> > > >
+> > > >
+> > > >
+> > >
+> >
+> >
+> >
 >
-> Sorry for so many questions! Hopefully I can figure this out, but any
-> help is greatly appreciated!
->
-> Best,
-> Emily
 >
 >
