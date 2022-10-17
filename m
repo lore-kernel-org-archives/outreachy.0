@@ -1,31 +1,29 @@
-Received: from msg-4.mailo.com (msg-4.mailo.com [213.182.54.15])
+Received: from msg-1.mailo.com (msg-1.mailo.com [213.182.54.11])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B039223A1;
-	Sun, 16 Oct 2022 16:14:49 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DBA9310EA;
+	Mon, 17 Oct 2022 07:02:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
-	t=1665936886; bh=k7eZsNlGVlvO2VDbpSBucEFrK36MwH154duVUBvK8x0=;
-	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
-	 MIME-Version:Content-Type:In-Reply-To;
-	b=HQjdOqqeaFuCEca083gHOlSrEW/lyCsdmVL/tgUpcvdPjmv7DVp6i9ChfPMPfPaPU
-	 UdNIguLV8k2I+pi9ZiHRaQJP/tTjLURfzVGX2RexDOOmpAjI17T+cS9kDnAw5cHN5k
-	 4Gz/VnP2iLIMA8TbTB0hJnjY400B/4F4Pc4GTuK4=
+	t=1665990123; bh=v1WmIdGEdjb/NRA9IbpdRDnvrh6PU598P+2FFcf0eoI=;
+	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:MIME-Version:
+	 Content-Type;
+	b=GXEOablkpD9tab0iyR+Nqti3uRljRoWtutJWpTPoK5n3UP8pzswBj/GHpOns/gmy9
+	 y7rJFEl2rGNl0q7iOKJbZJyVzy/XuVyX+23ajS0sOzqVDtUFzX4QbFCEqG1bENXcWn
+	 KrsQvARRQrnFoXikbJl3nlSqaEroCpePbIzaVibY=
 Received: by b-5.in.mailobj.net [192.168.90.15] with ESMTP
 	via [213.182.55.206]
-	Sun, 16 Oct 2022 18:14:46 +0200 (CEST)
-X-EA-Auth: sNU6v2HgPd/0Fcsr21SK5atgGpH3OBohSAR6FjYO9KVWIVf+/Sfsxa0j1XwEmheIBaRPDpjFLRch5JIAFRveCQRtOdm60T8H
-Date: Sun, 16 Oct 2022 12:14:42 -0400
+	Mon, 17 Oct 2022 09:02:03 +0200 (CEST)
+X-EA-Auth: PgaBZF2EQagjeQgatbitFuEP2vpDjYeqY00rZfLXzUDuULgmxrv3GX32xIOsdaW/FUVjM2UB0rTenzLna3v6qSx8wD8sNT2m
+Date: Mon, 17 Oct 2022 12:02:30 +0530
 From: Deepak R Varma <drv@mailo.com>
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: outreachy@lists.linux.dev, pure.logic@nexus-software.ie,
-	johan@kernel.org, elder@kernel.org, gregkh@linuxfoundation.org,
-	greybus-dev@lists.linaro.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] staging: greybus: loopback: enclose macro statements in
- do-while loop
-Message-ID: <Y0wt8pa0CI+Y9BzR@debian-BULLSEYE-live-builder-AMD64>
-References: <Y0wS4HQo9m/W/TrQ@debian-BULLSEYE-live-builder-AMD64>
- <alpine.DEB.2.22.394.2210161649400.2876@hadrien>
+To: outreachy@lists.linux.dev, lars@metafoo.de,
+	Michael.Hennerich@analog.com, jic23@kernel.org,
+	gregkh@linuxfoundation.org, linux-iio@vger.kernel.org,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Cc: kumarpraveen@linux.microsoft.com, saurabh.truth@gmail.com
+Subject: [PATCH] staging: iio: frequency: ad9834: merge unnecessary split
+ lines
+Message-ID: <Y0z2/qFe3kW96MTs@debian-BULLSEYE-live-builder-AMD64>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -34,74 +32,35 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.22.394.2210161649400.2876@hadrien>
 
-On Sun, Oct 16, 2022 at 04:51:09PM +0200, Julia Lawall wrote:
->
->
-> On Sun, 16 Oct 2022, Deepak R Varma wrote:
->
-> > Include multiple statements of macro definition inside do-while{0} loop
-> > to avoid possible partial program execution. Issue reported by
-> > checkpatch script:
-> >
-> > ERROR: Macros with multiple statements should be enclosed in a do - while loop
->
-> I don't think this change will compile.  See if you can figure out why
-> not.
+Improve code readability by merging unnecessary split lines that are
+well within the code-style guidelines post merge.
 
-After trying a direct compile of the loopback.c file, it did not compile. The
-kernel build ran did not compile the loopback.c file due to missing
-configuration.
+Signed-off-by: Deepak R Varma <drv@mailo.com>
+---
+ drivers/staging/iio/frequency/ad9834.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-About this change, the macro expands to function declarations at compile time
-and those can't be enclosed in do/while loop as these are not logical execution
-instructions. So it won't compile.
+diff --git a/drivers/staging/iio/frequency/ad9834.c b/drivers/staging/iio/frequency/ad9834.c
+index 2b4267a87e65..285df0e489a6 100644
+--- a/drivers/staging/iio/frequency/ad9834.c
++++ b/drivers/staging/iio/frequency/ad9834.c
+@@ -331,11 +331,9 @@ static IIO_DEV_ATTR_PHASE(0, 1, 0200, NULL, ad9834_write, AD9834_REG_PHASE1);
+ static IIO_DEV_ATTR_PHASESYMBOL(0, 0200, NULL, ad9834_write, AD9834_PSEL);
+ static IIO_CONST_ATTR_PHASE_SCALE(0, "0.0015339808"); /* 2PI/2^12 rad*/
 
-I initially looked for "greybus driver" under the "main menu > drivers >
-staging drivers" path, but not find any configurations for the driver. While
-retuning back, I found "greybus support" config under "menu-menu > device
-drivers" itself. I set it to "M" and build the module. I did not realise that
-setting this parameter to "M" actually results in adding several configurations
-under "staging drivers" path. I now understand that.
+-static IIO_DEV_ATTR_PINCONTROL_EN(0, 0200, NULL,
+-	ad9834_write, AD9834_PIN_SW);
++static IIO_DEV_ATTR_PINCONTROL_EN(0, 0200, NULL, ad9834_write, AD9834_PIN_SW);
+ static IIO_DEV_ATTR_OUT_ENABLE(0, 0200, NULL, ad9834_write, AD9834_RESET);
+-static IIO_DEV_ATTR_OUTY_ENABLE(0, 1, 0200, NULL,
+-	ad9834_write, AD9834_OPBITEN);
++static IIO_DEV_ATTR_OUTY_ENABLE(0, 1, 0200, NULL, ad9834_write, AD9834_OPBITEN);
+ static IIO_DEV_ATTR_OUT_WAVETYPE(0, 0, ad9834_store_wavetype, 0);
+ static IIO_DEV_ATTR_OUT_WAVETYPE(0, 1, ad9834_store_wavetype, 1);
 
-Thank you for your help. I will look for another sensible change and send my new
-first patch.
+--
+2.30.2
 
-./drv
-
->
-> julia
->
-> >
-> > Signed-off-by: Deepak R Varma <drv@mailo.com>
-> > ---
-> >  drivers/staging/greybus/loopback.c | 4 +++-
-> >  1 file changed, 3 insertions(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/staging/greybus/loopback.c b/drivers/staging/greybus/loopback.c
-> > index 1a61fce98056..37214cb43937 100644
-> > --- a/drivers/staging/greybus/loopback.c
-> > +++ b/drivers/staging/greybus/loopback.c
-> > @@ -163,9 +163,11 @@ static ssize_t name##_avg_show(struct device *dev,		\
-> >  static DEVICE_ATTR_RO(name##_avg)
-> >
-> >  #define gb_loopback_stats_attrs(field)				\
-> > +do {								\
-> >  	gb_loopback_ro_stats_attr(field, min, u);		\
-> >  	gb_loopback_ro_stats_attr(field, max, u);		\
-> > -	gb_loopback_ro_avg_attr(field)
-> > +	gb_loopback_ro_avg_attr(field);				\
-> > +} while (0)
-> >
-> >  #define gb_loopback_attr(field, type)					\
-> >  static ssize_t field##_show(struct device *dev,				\
-> > --
-> > 2.30.2
-> >
-> >
-> >
-> >
-> >
 
 
