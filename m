@@ -1,39 +1,48 @@
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-lj1-f177.google.com (mail-lj1-f177.google.com [209.85.208.177])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6A80B4C8A
-	for <outreachy@lists.linux.dev>; Tue, 18 Oct 2022 15:55:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1666108535; x=1697644535;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=XDk7zPqx262Mmz6GnRZXCGLd3mQknVv/t0jre0yLSo0=;
-  b=A9X2gG9PjuyhXS+HjO41kR7NykA4xDtVuhMNGoZ0kTG/aOGl5XxRZVDJ
-   MJXzgr/wwRJg3OCXiXlOOHCrtLqxMYEOUm7b0bZPkqpjQR8Vn9IDcLcEL
-   JY123I6tksU0XPEcmbyvTZ7Vl/3j4Em0knPX7Z5YfFDCYtHqD9Rrl+JrM
-   JgIEnzKhsRFYIW2KlDDBzEgZ9vt+LUDxZS4r2tc/IFOqvReJjDMP5GZWV
-   Bx/wKHzqSi/mjZ4yxrOjHv28NoxHCZHcx91LolFHBgCVYwuQXRnY6VbnZ
-   ZAIp35UdfuZhtffRP6Yak7vMwn8dY4yYQpdogXATCLtzAD/F4w76w2B2S
-   g==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10504"; a="392454170"
-X-IronPort-AV: E=Sophos;i="5.95,193,1661842800"; 
-   d="scan'208";a="392454170"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
-  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Oct 2022 08:55:31 -0700
-X-IronPort-AV: E=McAfee;i="6500,9779,10504"; a="697566232"
-X-IronPort-AV: E=Sophos;i="5.95,193,1661842800"; 
-   d="scan'208";a="697566232"
-Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.251.6.93])
-  by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Oct 2022 08:55:29 -0700
-Date: Tue, 18 Oct 2022 08:55:28 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: Deepak R Varma <drv@mailo.com>
-Cc: Outreachy Linux Kernel <outreachy@lists.linux.dev>
-Subject: Re: patch recipients
-Message-ID: <Y07McBJ9aTHiI87/@aschofie-mobl2>
-References: <Y040PanpB2Xu7Juo@aschofie-mobl2>
- <Y05AFCN5w/Y2+yeb@debian-BULLSEYE-live-builder-AMD64>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AD9434C8A;
+	Tue, 18 Oct 2022 16:04:05 +0000 (UTC)
+Received: by mail-lj1-f177.google.com with SMTP id r22so18526112ljn.10;
+        Tue, 18 Oct 2022 09:04:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-disposition:mime-version:message-id:subject:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=APq/4ao2w3wM3w7dcXNTLMlvNyes52nnBtuQjcx7EAg=;
+        b=mAYUdBVX9g0h7NVEsuArwdO+JSkTYINBI9eZ9SZP/HN1C28OzOzJFvyKJ7HWDvfuR+
+         ncjq9cqJiYAoowUdIMYtYwgu2CBQnKus2tJAPA8Wbv25BnCyqru7+yMa0n1Wc/g/b+tJ
+         LYDVxVxEyeXNaZclFdXvci+Bn8Hd2IlqxBU+6QRev104SvVpDc5r8rI7mjqlJ8z57vKa
+         T+d9YFon6GhU0JC5SBnQt1DQRpBiVFGkOizCTTxQePe274xFh4s+7Paymc8y/UsfZn1k
+         m7syJJNF9ptZ8MZHEKbEkunJ+svNoDlC+HXUM0w2et72jP1HztzI+RkLlC7QPZI/PtHI
+         Eo1A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-disposition:mime-version:message-id:subject:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=APq/4ao2w3wM3w7dcXNTLMlvNyes52nnBtuQjcx7EAg=;
+        b=RSeL2cwpaRSn2uqKu2VmIr+K99/xuWfeHD0lplajHSnbepY5f4QLl7XtQWs70u/YJu
+         dHXqRZyHz1rlcqPo25XIe/us2vX6NEs7KvYO7TeRonzeuyKm1d5HHOjlszBcA1XnJQap
+         5xUyk3F3cQAq18N5nbSuKUA0wRILiTdEbD8aaTwYdWSmm/btwYK+p45MMIg/5xEs8wp9
+         Yk0lraC/X1cjIfid90AUwzAUU/aCm7AKCSMmjp4Tbn0M0HFuOsv4vWWuoZtNE4b70qZV
+         1ppfC5KnQVvwR+HrYHI9g3gOcKvGz1c1DWxwBpOIgXNTdVR3lYigqDN1EG2xWtGDBwwi
+         tJ7A==
+X-Gm-Message-State: ACrzQf1L1CND5JJsbi72POQQFsIN9LPuFH9v0vil3oSoXwLGBb2QwBex
+	A8zlU632onBnCOll2aQGYI07YAYHvI7M8rv0
+X-Google-Smtp-Source: AMsMyM78/En+eyLIgaDhn666Ec/5nqOrgtZGxs9ntdlCa6Pxh2z0qVC5KTLlHL1Li9Y18RJ5qV4wZQ==
+X-Received: by 2002:a05:651c:194a:b0:26f:decf:a6b5 with SMTP id bs10-20020a05651c194a00b0026fdecfa6b5mr1392362ljb.240.1666109043367;
+        Tue, 18 Oct 2022 09:04:03 -0700 (PDT)
+Received: from elroy-temp-vm ([20.240.130.248])
+        by smtp.gmail.com with ESMTPSA id v8-20020a056512348800b004a25468d86asm1905039lfr.68.2022.10.18.09.04.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 18 Oct 2022 09:04:02 -0700 (PDT)
+Date: Tue, 18 Oct 2022 16:04:02 +0000
+From: Tanjuate Brunostar <tanjubrunostar0@gmail.com>
+To: gregkh@linuxfoundation.org, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org, outreachy@lists.linux.dev
+Subject: [PATCH v2] staging: rts5208: Replace instances of udelay by
+ usleep_range
+Message-ID: <Y07OcqPNjSihOByt@elroy-temp-vm.gaiao0uenmiufjlowqgp5yxwdh.gvxx.internal.cloudapp.net>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -42,63 +51,46 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <Y05AFCN5w/Y2+yeb@debian-BULLSEYE-live-builder-AMD64>
 
-On Tue, Oct 18, 2022 at 11:26:36AM +0530, Deepak R Varma wrote:
-> On Mon, Oct 17, 2022 at 10:06:05PM -0700, Alison Schofield wrote:
-> > Hi Deepak,
-> 
-> Hello Alison,
-> 
-> >
-> > I notice that you started CC'ing mentors directly on your patches.
-> That is correct. Actually there is a section "Send your patch to your mentors"
-> on the following link. Hence I did that.
-> 
-> https://kernelnewbies.org/Outreachyfirstpatch?action=show&redirect=OPWfirstpatch#kernel-setup-done
+Replace the use of udelay by usleep_range as suggested by checkpatch:
 
-Thanks for pointing it out. The content of that section is correct,
-but the title of it is wrong. Perhaps a better header would simply
-be 'Send your patch' and the detail in the body of that section is
-correct.
+CHECK: usleep_range is preferred over udelay; see Documentation/timers/timers-howto.rst
++               udelay(30);
 
-See my recent email to the list about how to update the First Patch
-Tutorial.
+CHECK: usleep_range is preferred over udelay; see Documentation/timers/timers-howto.rst
++               udelay(50);
 
-> 
-> >
-> > I want to redirect you to the directions in the First Patch Tutorial
-> > and the Welcome Announcement on the mailing list. Both talk about patch
-> > recipients.
-> Sure. I will follow the instructions from here.
-> 
-> >
-> > Given that you've started it, you cannot drop them from the current
-> > set, because we never trim the recipient list once a set is in flight.
-> > Sometimes we grow it.
-> That must have been a mistake. I tried to copy them on all my patches. I will
-> check which one I missed and ensure I am not missing any recipients going
-> forward.
-> 
-> >
-> > Also, I'm guessing there is a chance that the mentors privately told
-> > you to 'CC them.  NAK!  That should not be done. Mentors should be
-> > subscribed to this list. Let's keep the patch recipient list clean.
-> NO, they have not. It was my own assumption based on how I understood the link
-> mentioned above. The mentors have not communicated to me anything so far.
+Signed-off-by: Tanjuate Brunostar <tanjubrunostar0@gmail.com>
+---
 
-When the cleanup patch requirement is complete, then the contact
-with the mentors about small tasks for projects begins.
+v2: changed the max values of the usleep_rage instances as they cannot
+be equal to the min values as suggested by checkpatch
 
-Thanks for your help making the tutorial clearer,
-Alison
+ drivers/staging/rts5208/ms.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-> 
-> Thank you,
-> ./drv
-> 
-> >
-> > Thanks,
-> > Alison
-> 
-> 
+diff --git a/drivers/staging/rts5208/ms.c b/drivers/staging/rts5208/ms.c
+index 14449f8afad5..a9724ca5eccf 100644
+--- a/drivers/staging/rts5208/ms.c
++++ b/drivers/staging/rts5208/ms.c
+@@ -3235,7 +3235,7 @@ static int ms_write_multiple_pages(struct rtsx_chip *chip, u16 old_blk,
+ 			return STATUS_FAIL;
+ 		}
+ 
+-		udelay(30);
++		usleep_range(30, 31);
+ 
+ 		rtsx_init_cmd(chip);
+ 
+@@ -4157,7 +4157,7 @@ int mg_set_ICV(struct scsi_cmnd *srb, struct rtsx_chip *chip)
+ 
+ #ifdef MG_SET_ICV_SLOW
+ 	for (i = 0; i < 2; i++) {
+-		udelay(50);
++		usleep_range(50, 51);
+ 
+ 		rtsx_init_cmd(chip);
+ 
+-- 
+2.34.1
+
