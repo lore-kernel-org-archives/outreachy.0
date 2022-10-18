@@ -1,31 +1,36 @@
-Received: from msg-2.mailo.com (msg-2.mailo.com [213.182.54.12])
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F2E787F;
-	Mon, 17 Oct 2022 21:27:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
-	t=1666042044; bh=b9ULDUrojjL+uZiL3TYIu4hGVxgJh3rS+Pz8e6u/JQw=;
-	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
-	 MIME-Version:Content-Type:In-Reply-To;
-	b=U/c+7btF2DhN8jAnp81xiHmRRHvYuQrPc+X9bjD1cHVR0d6FBF79OQne+Fxprl2u/
-	 bdY6z4Xy1AGRe91f0nOW18JeoZ7mo8PFvAkxb3Fi2B8YMbqO+0IMaqAxDN+2YW0IZ/
-	 hlgY7583ZVeYyh4mkkNvSl1s17bwQCoE7w123URk=
-Received: by b-5.in.mailobj.net [192.168.90.15] with ESMTP
-	via [213.182.55.206]
-	Mon, 17 Oct 2022 23:27:24 +0200 (CEST)
-X-EA-Auth: S0Z0h4mr5xFE7csjHWF9ygvAyNgZrjehOT6h9Zf7qZaeNUCqLayC5HU6eUsRBw55jnaOxjrH+O5aX02I7npqFrCauzNqwIzF
-Date: Tue, 18 Oct 2022 02:57:17 +0530
-From: Deepak R Varma <drv@mailo.com>
-To: Philipp Hortmann <philipp.g.hortmann@gmail.com>
-Cc: outreachy@lists.linux.dev, Larry.Finger@lwfinger.net,
-	phil@philpotter.co.uk, paskripkin@gmail.com,
-	gregkh@linuxfoundation.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, kumarpraveen@linux.microsoft.com,
-	saurabh.truth@gmail.com
-Subject: Re: [PATCH v1 0/4] staging: r8188eu: trivial code cleanup patches
-Message-ID: <Y03ItcNzH6FBUF8N@lion2204>
-References: <cover.1666021212.git.drv@mailo.com>
- <da0daaa7-8e2c-103e-0261-8685739e297d@gmail.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 639277F
+	for <outreachy@lists.linux.dev>; Tue, 18 Oct 2022 05:06:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1666069568; x=1697605568;
+  h=date:from:to:cc:subject:message-id:mime-version;
+  bh=bxJck4NOBRp1XUXi+ZCldK0qWBg6CBUQLUO2eYES0u4=;
+  b=PylVdfTVORths2jUzsxVAW/Yv4iTsSwXm1ld4pKJws0wMQCBzifyvsAJ
+   iFzuxpDgGkOy7Yc22UJFhbcd4gHv6VwYvmsVtQsIwx9cbfIa/5Hwxqz2x
+   ubiglkzDJ48iA3nSGVYQ5QQs4T26ZkDO06wwk0OAMbj6ppOyLbTqKC6Gr
+   RS05DwwWw6iSeyJmAZ4nkPgUa+qgbrQQKaA1zrdJo2zgP8l+PcLHawD1l
+   Q0rDwRBofZ6+yTRK/jMYHiC3UBNIHhC22BC48u8FRKk+j9Drb78kbyUoY
+   5kW2wLbQ+Pd2b6jG8rYNBKRADqLIsopKR32HfXAbDfd4phM4VBKm2xQLe
+   g==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10503"; a="286388955"
+X-IronPort-AV: E=Sophos;i="5.95,193,1661842800"; 
+   d="scan'208";a="286388955"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Oct 2022 22:06:07 -0700
+X-IronPort-AV: E=McAfee;i="6500,9779,10503"; a="957613475"
+X-IronPort-AV: E=Sophos;i="5.95,193,1661842800"; 
+   d="scan'208";a="957613475"
+Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.255.230.132])
+  by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Oct 2022 22:06:07 -0700
+Date: Mon, 17 Oct 2022 22:06:05 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: Deepak R Varma <drv@mailo.com>
+Cc: Outreachy Linux Kernel <outreachy@lists.linux.dev>
+Subject: patch recipients
+Message-ID: <Y040PanpB2Xu7Juo@aschofie-mobl2>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -34,88 +39,22 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <da0daaa7-8e2c-103e-0261-8685739e297d@gmail.com>
 
-On Mon, Oct 17, 2022 at 11:06:19PM +0200, Philipp Hortmann wrote:
-> On 10/17/22 17:56, Deepak R Varma wrote:
-> > Address different kinds of checkpatch complains for the staging/r8188eu module.
-> > The patches are required to be applied in sequence.
-> >
-> > Changes in v1:
-> >     1. Improve language / grammar for the patch descriptions
-> >     2. Further improve code reformatting
-> >
-> > Deepak R Varma (4):
-> >    staging: r8188eu: use Linux kernel variable naming convention
-> >    staging: r8188eu: reformat long computation lines
-> >    staging: r8188eu: remove {} for single statement blocks
-> >    staging: r8188eu: use htons macro instead of __constant_htons
-> >
-> >   drivers/staging/r8188eu/core/rtw_br_ext.c | 122 +++++++++++-----------
-> >   1 file changed, 62 insertions(+), 60 deletions(-)
-> >
-> > --
-> > 2.30.2
-> >
-> >
-> >
-> >
+Hi Deepak,
 
-Hello Philipp,
-Thank you for testing the patch set and the following feedback. Much appreciate.
+I notice that you started CC'ing mentors directly on your patches.
 
->
-> I think this patch series should be v2 as the first one was a v1. The next
-> one should be the v3.
+I want to redirect you to the directions in the First Patch Tutorial
+and the Welcome Announcement on the mailing list. Both talk about patch
+recipients.
 
-Okay. I will switch it to v3 if there is opportunity for another revision of
-this patch set.
+Given that you've started it, you cannot drop them from the current
+set, because we never trim the recipient list once a set is in flight.
+Sometimes we grow it.
 
->
-> Please do variable changes driver wide and not only limited to a file.
-> Example:
-> This line contains the old variable:
-> void *scdb_findEntry(struct adapter *priv, unsigned char *ipAddr);
->
-> But in this line you have already changed ip_addr.
-> void *scdb_findEntry(struct adapter *priv, unsigned char *ip_addr)
-> {
-> 	unsigned char network_addr[MAX_NETWORK_ADDR_LEN];
-> 	struct nat25_network_db_entry *db;
-> 	int hash;
-> ...
+Also, I'm guessing there is a chance that the mentors privately told
+you to 'CC them.  NAK!  That should not be done. Mentors should be
+subscribed to this list. Let's keep the patch recipient list clean.
 
-Since this is my first patch set, I wanted to be small and manageable. I also
-made changes only to function parameters and local variable. I am now
-comfortable to make similar change for the other files and symbols such as
-functions and structures. I will send in a separate patch set for the remaining
-files of this driver.
-
->
->
-> Please change all networkAddr and not only some.
-
-For this file, I changed all networkAddr definitions except those that are part
-of global structure definition. I will include those changes in the next patch
-set.
-
->
-> Is it possible to changing __constant_htons as well in the entire driver?
-
-Sure, in the next patch set.
-
->
-> Driver can be applied and compiled.
-> Tested device.
-Thank you again.
-
-./drv
-
->
-> Thanks
->
-> Bye Philipp
->
->
-
-
+Thanks,
+Alison
