@@ -1,125 +1,128 @@
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-pl1-f173.google.com (mail-pl1-f173.google.com [209.85.214.173])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3EB547F;
-	Tue, 18 Oct 2022 05:35:31 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F0C857F
+	for <outreachy@lists.linux.dev>; Tue, 18 Oct 2022 05:44:20 +0000 (UTC)
+Received: by mail-pl1-f173.google.com with SMTP id l1so12797957pld.13
+        for <outreachy@lists.linux.dev>; Mon, 17 Oct 2022 22:44:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=WGHCb8AIms3d2souoSL3bwIlmxeeKPQhnaBM5CbNDV0=;
-  b=bNhjvKjCd3c3h7qxU85bvJ8uoaX5ATWLQD7BT0kpOjeB7G9TqpB119Jv
-   +h2I3W5tz3GrpvfBsjHKBMySx24Cn+AecEd58YIVSZu/Vc1ut0HKWaw2+
-   8X03yWH1S+BMw+YR65nlsD9o/XSL2/67rksT970bVUfLWnY+wQfotyWQE
-   k=;
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="5.95,193,1661810400"; 
-   d="scan'208";a="65619245"
-Received: from 51.123.68.85.rev.sfr.net (HELO hadrien) ([85.68.123.51])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Oct 2022 07:35:29 +0200
-Date: Tue, 18 Oct 2022 07:35:29 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Deepak R Varma <drv@mailo.com>
-cc: outreachy@lists.linux.dev, gregkh@linuxfoundation.org, 
-    linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, 
-    kumarpraveen@linux.microsoft.com, saurabh.truth@gmail.com
-Subject: Re: [PATCH] staging: most: dim2: read done_buffers count locally
- from HDM channel
-In-Reply-To: <Y03DpMMiOsedm6Dl@lion2204>
-Message-ID: <alpine.DEB.2.22.394.2210180733330.2938@hadrien>
-References: <Y022wjdPGYwyx7lB@debian-BULLSEYE-live-builder-AMD64> <alpine.DEB.2.22.394.2210172255250.16433@hadrien> <Y03DpMMiOsedm6Dl@lion2204>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+        d=gmail.com; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=5ulGzSgGBWG1NsnVYHOKZhbpdcpP2nlFv3TigxHS+po=;
+        b=UfNIUyroJpP8XjeKlEwKMH5wtdIVzUHpxsZfD2LsuFADNTJQyzNvr9AvO1/WG9Wkhj
+         xAsZfy3aAfHP/LqRopxQR6Dg/FxXcNBZCAYMxWH1FNe3Z2CXYz8XX+dKjxm+QYplIJP7
+         LD40v+lGsR8iUJGX9fsFocmjdAz6WW6zOoqorGEL0rmmvNh6BLoFGHcePs6IUQ2rVi2a
+         TXIOojly6AUm+iIrWVnUSIyI1jplXD1YijQ2k3JtMAZqneQ+scsAYEfYRRlNJHq/Sra/
+         VvzS3BFPIEK7brtJL82I0U3y98O7Q/51J+K5i+i3pbR5og94r45scDUrZxoC7VDYhNTt
+         ZvWA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=5ulGzSgGBWG1NsnVYHOKZhbpdcpP2nlFv3TigxHS+po=;
+        b=I6Z/vqqlDKhUKDTVW6E4m9IdEyNmDN1MmxEL9ygSVk8XkhqbkRTWPrO8U9SUFI6DZK
+         qO4BOeAzXjkj8pz06I6JO6M7Ceifm8RqAbDVf6A7Xu9MwmpObVV/SqKydOPlPyQ2yWrk
+         B2PmpwiA61yZIEShfvXPauxRPE8Q12lTYy191evJVY+BJD8eUyoG8Dg7erGkQK6cVf1g
+         hfVWyl/piyucuWrFQN42VGhK3eEgs2WFphc68LfLGKlhSXypr3mhe3T5wOR0iNt+34rE
+         LbfKxG2SFpkGhj5ZrC0NGIjN4F8GlD4WBgU5V9khoenJdfcLXr9uTiPc1rZlDTOHq/qe
+         4faA==
+X-Gm-Message-State: ACrzQf0ZMk6DvV7mx4wQxDsrr12lbnTPyeDhHVezKZPDsSBpAdRM2Mim
+	queQLKt9L/Mag0YtAhl6BjQigxurOTM7jA==
+X-Google-Smtp-Source: AMsMyM5vY8AL4QR4ZX4pJ8+rqE5kPp4QdILBq+lZjDg69KrLWihIUX4Dqz+HfrnVYX4gTR8mokzpJQ==
+X-Received: by 2002:a17:902:efc9:b0:183:88ed:d15e with SMTP id ja9-20020a170902efc900b0018388edd15emr1386612plb.139.1666071860321;
+        Mon, 17 Oct 2022 22:44:20 -0700 (PDT)
+Received: from emily-beep-beep-boop (192-184-163-51.fiber.dynamic.sonic.net. [192.184.163.51])
+        by smtp.gmail.com with ESMTPSA id o66-20020a625a45000000b00551d9fab742sm8148258pfb.218.2022.10.17.22.44.19
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 17 Oct 2022 22:44:20 -0700 (PDT)
+Date: Mon, 17 Oct 2022 22:44:18 -0700
+From: Emily Peri <eperi1024@gmail.com>
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: outreachy@lists.linux.dev
+Subject: Re: Hi from Outreachy Intern
+Message-ID: <Y049MpN3jQE/WtTV@emily-beep-beep-boop>
+References: <Y0dCQ91kKpe2t9CG@emily-beep-beep-boop>
+ <alpine.DEB.2.22.394.2210130717530.2822@hadrien>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.22.394.2210130717530.2822@hadrien>
+
+Thanks Julia for your reply!
+I recompiled the kernel following your advice, but am still running into the same kernel panic.
+After loading the kernel with grub, the following lines are printed:
+        Loading Linux 6.0.0+ ...
+        Loading inital ramdisk ...
+        error: can't allocate initrd.
+
+        Press any key to continue...
+
+After I enter a key to continue, I get the same kernel panic as before.
+
+I should mention that after running 'make olddefconfig', I did actually make two changes to the .config,
+CONFIG_SYSTEM_TRUSTED_KEYS="debian/canonical-certs.pem" -> CONFIG_SYSTEM_TRUSTED_KEYS=""
+CONFIG_SYSTEM_REVOCATION_KEYS="debian/canonical-revoked-certs.pem" -> CONFIG_SYSTEM_REVOCATION_KEYS=""
+I changed these options because the kernel wasn't compiling otherwise,
+and I saw this had been discussed a previous email thread.
+
+Is there a way to get a debug output when grub runs initrd /boot/initrd.img? 
+Is there any explanation about why the "error: can't allocate initrd" might happen? 
+Any help is appreciated!
+
+Best,
+Emily
 
 
-
-On Tue, 18 Oct 2022, Deepak R Varma wrote:
-
-> On Mon, Oct 17, 2022 at 10:56:03PM +0200, Julia Lawall wrote:
+On Thu, Oct 13, 2022 at 07:20:08AM +0200, Julia Lawall wrote:
+> 
+> 
+> On Wed, 12 Oct 2022, Emily Peri wrote:
+> 
+> > Hi everyone,
+> >
+> > My name is Emily and I'm a new Outreachy intern for the upcoming phase.
+> > I'm looking for projects to get involved in and I'm really intersted in
+> > working on Coccinelle!
+> >
+> > I started the first patch tutorial, but ran into an issue. I'm currently
+> > using a dual operating system setup-- I have Ubuntu and Windows on the
+> > same machine. The thing is, I have my Ubuntu filesystem on an external
+> > ssd. The boot parition is on the internal disk. Following the tutorial, after compiling and installing the kernel,
+> > I tried to reboot with it, which caused a kernel panic. The exact error
+> > was (along with the call trace):
+> > Kernel panic -- not syncing: VFS: Unable to mount root fs on unknown-block(0,0)
+> >
+> > From what I read online, one of the problems that may be going on is that the kernel wasn't compiled with the necessary drivers to interact
+> > with the external ssd and filesystem. Am I understanding this correctly?
+> > Can this be solved by recompiling with the necessary settings in
+> > .config?
+> 
+> Hello and welcome.
+> 
+> Since you already have Linux running on your machine, did you use the same
+> .config as was being used on your machine?  You can find it in the /boot
+> directory.  make oldconfig should take this .config file automatically.
+> 
+> julia
+> 
+> >
+> > Another thing I'm seeing is that I need to create an initramfs for the new kernel. Do I need to do both? If the kernel can access the root filesystem on the external ssd, would it still need a temporary filesystem for the boot process?
+> >
+> > Finally, I'm wondering if I need to set the "root" variable for grub when it loads the kernel. Such as, GRUB_CMDLINE_LINUX_DEFAULT="root=/dev/sb3" where sb3
+> > is the filesystem partition. I'm just not sure if this is necessary
+> > because grub doesn't have trouble loading my current kernel.
+> >
+> > Sorry for so many questions! Hopefully I can figure this out, but any
+> > help is greatly appreciated!
+> >
+> > Best,
+> > Emily
 > >
 > >
-> > On Tue, 18 Oct 2022, Deepak R Varma wrote:
-> >
-> > > The done_buffer count can be directly read from HDM channel instead of
-> > > calling the dim_get_channel_state function. This change also results in
-> > > obsoleting the dim_channel_state local structure variable.
-> > >
-> > > Signed-off-by: Deepak R Varma <drv@mailo.com>
-> > > ---
-> > >
-> > > PLEASE NOTE: I have only built the module on my machine, but have not tested it.
-> > > I am not sure how to test this change. I am willing to test it with appropriate
-> > > guidance provided I have the necessary hardware.
-> >
-> > For non experts, maybe it would be helpful to explain what motivated you
-> > to do this?
->
-> I was actually trying to understand the implementation of this module to
-> determine if I can replace BUG_ON calls by WARN_ON_ONCE. A "ctrl+]" navigation
-> took me to this function and I started wondering about why the function call
-> would be necessary. Hence the change.
-
-OK, I agree with you that this story might not be super interesting.
-
-But the log message still seems too concise.  You have acquired some
-knowledge about why this changeis correct, but that knowledge is not at
-all reflected in the log message.  Try to explain in more detail why the
-function call is not necessary.
-
-julia
-
->
-> While reading the Documentation under dim2 directory, I realised this module may
-> need a specialised hardware for testing [automotive???]. Hence I was not sure
-> how to test the same.
->
-> Are you suggesting I mention this in the patch description (the motivation)?
->
-> Thank you,
-> ./drv
->
-> >
-> > julia
-> >
-> > >
-> > >  drivers/staging/most/dim2/dim2.c | 3 +--
-> > >  1 file changed, 1 insertion(+), 2 deletions(-)
-> > >
-> > > diff --git a/drivers/staging/most/dim2/dim2.c b/drivers/staging/most/dim2/dim2.c
-> > > index ab72e11ac5ab..4c1f27898a29 100644
-> > > --- a/drivers/staging/most/dim2/dim2.c
-> > > +++ b/drivers/staging/most/dim2/dim2.c
-> > > @@ -259,7 +259,6 @@ static void retrieve_netinfo(struct dim2_hdm *dev, struct mbo *mbo)
-> > >  static void service_done_flag(struct dim2_hdm *dev, int ch_idx)
-> > >  {
-> > >  	struct hdm_channel *hdm_ch = dev->hch + ch_idx;
-> > > -	struct dim_ch_state_t st;
-> > >  	struct list_head *head;
-> > >  	struct mbo *mbo;
-> > >  	int done_buffers;
-> > > @@ -271,7 +270,7 @@ static void service_done_flag(struct dim2_hdm *dev, int ch_idx)
-> > >
-> > >  	spin_lock_irqsave(&dim_lock, flags);
-> > >
-> > > -	done_buffers = dim_get_channel_state(&hdm_ch->ch, &st)->done_buffers;
-> > > +	done_buffers = hdm_ch->ch.done_sw_buffers_number;
-> > >  	if (!done_buffers) {
-> > >  		spin_unlock_irqrestore(&dim_lock, flags);
-> > >  		return;
-> > > --
-> > > 2.30.2
-> > >
-> > >
-> > >
-> > >
-> > >
->
->
->
