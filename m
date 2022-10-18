@@ -1,121 +1,79 @@
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-lf1-f51.google.com (mail-lf1-f51.google.com [209.85.167.51])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 29B181FAF;
-	Tue, 18 Oct 2022 07:39:15 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3AE317B;
+	Tue, 18 Oct 2022 10:03:01 +0000 (UTC)
+Received: by mail-lf1-f51.google.com with SMTP id s20so21649137lfi.11;
+        Tue, 18 Oct 2022 03:03:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=iW9dXL6VFX/U4TvJJVvpq8/X1w2S20KxSchfam1Hs/I=;
-  b=sANx5wj9qEbJsr5P67y520bH84o3V6fM0LNWliWh59HmK6/+6EJcekLY
-   ONuwfn0XYvq/neCzp0nTSfZJtH8YgwlIYiO814SjZ/wachGPzKzIFRT6K
-   T58yYGewXbGhC51ytYXcw1wKDjyWDN0D5aq2fx6TmJmsaLXIUN6pwgtF8
-   o=;
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="5.95,193,1661810400"; 
-   d="scan'208";a="65642959"
-Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Oct 2022 09:39:08 +0200
-Date: Tue, 18 Oct 2022 09:39:08 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-To: Deepak R Varma <drv@mailo.com>
-cc: outreachy@lists.linux.dev, gregkh@linuxfoundation.org, 
-    linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, 
-    kumarpraveen@linux.microsoft.com, saurabh.truth@gmail.com
-Subject: Re: [PATCH v2] staging: most: dim2: read done_buffers count locally
- from HDM channel
-In-Reply-To: <Y05TNQBXLMJMgQ2r@debian-BULLSEYE-live-builder-AMD64>
-Message-ID: <1e2a71a9-4ac5-96f3-b875-a063ff62f3ad@inria.fr>
-References: <Y05TNQBXLMJMgQ2r@debian-BULLSEYE-live-builder-AMD64>
+        d=gmail.com; s=20210112;
+        h=content-disposition:mime-version:message-id:subject:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=poXckQpsmoxwNoGHA5Pmt8l8Bzt77xEo7VBtN46YHYQ=;
+        b=p7utgJyKryujBfOPEjv6vh8HH+AWAsC6LMzl8ki2a10z+rnLThEJcuJISSoritjCUh
+         DfF078C190eRQSRgoF8aSWQjaxGm+b+EhPjVt8eBY57aPbdVpvnypKqGEmRGMjDozG0L
+         vLgngsclSMyY67BYvfVGWkzOORHr2rkNkY5o25x9D/gzzkRtqv5UZsPbokoREXeGF4oT
+         tuFH8qdrEuMZYippqqqs3jNTgTuikjg/mb0Q56AZpJJg3Tzm7cYvqptO1fmmKE7ult6F
+         dWLQC+khsl8P+AF3RhtEwSwzzGplYjlY7O0Rq7dvcsQcLyqNdHjJzobHFV7tPxjZDRJX
+         L71A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-disposition:mime-version:message-id:subject:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=poXckQpsmoxwNoGHA5Pmt8l8Bzt77xEo7VBtN46YHYQ=;
+        b=G3r7nbKHPsBblJsWWPHJYNHb9xZJGAAJ3/oKVFgodHXHkIunLfN7PpAUktl2dmOm2N
+         w/pfYevIAldg8jwPidMUrU1fBu/2vcmff/WtcVSlOd37mTJX1+y1FfQFvg3lj14Yot3d
+         URlJYDNUvBBulC3T1nefyE/c+f+VRmT5wVluKAyOAGX7zBY7+9J/QA1yy2PGNr5DDVDM
+         g+rpVQ1ySw3d6n6S22VxOHfuE+TO/vM7fuJuOmE7A/NGXqQRKL4FEXkTgYMePArrwhBI
+         qTt0QuY01Ju5Z6vj5sE7vy7qyZYHhJDuOQ4k+LaLfnOPN++jNK26En+Qn6OIjiAWfnNi
+         utmQ==
+X-Gm-Message-State: ACrzQf07YkDwUIUg23mIEOur0qJIMXDZYfSDaeLJPIgiHz4eeRUTOESL
+	nO+STnfCIoLmzjnYC5yIB90QMzxKCQ7Q9Xip
+X-Google-Smtp-Source: AMsMyM56LVd0XFwiHiLjZI0E1QuNElsebCjqLZm/47q+GyjX2qlYoDQAkmI7lzrQdVoCKJEtiFcCrQ==
+X-Received: by 2002:ac2:4c03:0:b0:4a2:2273:89c6 with SMTP id t3-20020ac24c03000000b004a2227389c6mr650293lfq.245.1666087378946;
+        Tue, 18 Oct 2022 03:02:58 -0700 (PDT)
+Received: from elroy-temp-vm ([20.240.130.248])
+        by smtp.gmail.com with ESMTPSA id a11-20020a19f80b000000b004a45ed1ae21sm1789261lff.224.2022.10.18.03.02.58
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 18 Oct 2022 03:02:58 -0700 (PDT)
+Date: Tue, 18 Oct 2022 10:02:57 +0000
+From: Tanjuate Brunostar <tanjubrunostar0@gmail.com>
+To: gregkh@linuxfoundation.org, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org, outreachy@lists.linux.dev
+Subject: [PATCH] [PATCH] staging: rts5208: merge unnecessary split line
+Message-ID: <Y0550VcHI8NzFzzf@elroy-temp-vm.gaiao0uenmiufjlowqgp5yxwdh.gvxx.internal.cloudapp.net>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
+Fix checkpatch warning by merging unnecessary split line in order to
+avoid ending a line of code with a "(". The resulting code does
+not affect readability and is well within the code-style guidelines
 
-
-On Tue, 18 Oct 2022, Deepak R Varma wrote:
-
-> The done_buffer count is already available in the hdm_channel struct.
-> Calling dim_get_channel_state function to source this value out of
-> the same structure is unnecessary.
-> Further, the second parameter struct dim_ch_state_t to this function
-> is filled by using the hdm_channel inside the function. This filled in
-> variable is never used in the caller and can be altogether removed.
-> So, a call to dim_get_channel_state function in this context also
-> deems expensive.
-
-Thanks for the rewrite.
-
-I find "source this value out of" hard to understand.
-
-I would have written something like the following:
-
-The function dim_get_channel_state only serves to initialize the ready and
-done_buffers fields of the structure passed as its second argument.  In
-service_done_flag, this structure is never used again and the only purpose
-of the call is to get the value that is put in the done_buffers field.
-But that value is just the done_sw_buffers_number field of the call's
-first argument.  So the whole call is useless, and we can just replace it
-with an access to this field.
-
-This change implies that the variable st is no longer used, so drop it as
-well.
-
+Signed-off-by: Tanjuate Brunostar <tanjubrunostar0@gmail.com>
 ---
+ drivers/staging/rts5208/sd.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-If you want to work some more in this code, the name of the type
-dim_ch_state_t should not have an _t at the end of it.  It looks like it
-used to be a typedef and someone eliminated the typedef but didn't drop
-the _t.
+diff --git a/drivers/staging/rts5208/sd.c b/drivers/staging/rts5208/sd.c
+index d1fafd530c80..4643127a87ca 100644
+--- a/drivers/staging/rts5208/sd.c
++++ b/drivers/staging/rts5208/sd.c
+@@ -4501,8 +4501,7 @@ int sd_execute_write_data(struct scsi_cmnd *srb, struct rtsx_chip *chip)
+ 			sd_card->sd_lock_notify = 1;
+ 			if (sd_lock_state &&
+ 			    (sd_card->sd_lock_status & SD_LOCK_1BIT_MODE)) {
+-				sd_card->sd_lock_status |= (
+-					SD_UNLOCK_POW_ON | SD_SDR_RST);
++				sd_card->sd_lock_status |= (SD_UNLOCK_POW_ON | SD_SDR_RST);
+ 				if (CHK_SD(sd_card)) {
+ 					retval = reset_sd(chip);
+ 					if (retval != STATUS_SUCCESS) {
+-- 
+2.34.1
 
-julia
-
-
->
-> Signed-off-by: Deepak R Varma <drv@mailo.com>
-> ---
-> Changes in v2:
->    1. Update patch log message to be more descriptive about the reason for change.
->       Feedback provided by julia.lawall@inria.fr
->
-> PLEASE NOTE: I have only built the module on my machine, but have not tested it.
-> I am not sure how to test this change. I am willing to test it with appropriate
-> guidance provided I have the necessary hardware.
->
->
->  drivers/staging/most/dim2/dim2.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
->
-> diff --git a/drivers/staging/most/dim2/dim2.c b/drivers/staging/most/dim2/dim2.c
-> index ab72e11ac5ab..4c1f27898a29 100644
-> --- a/drivers/staging/most/dim2/dim2.c
-> +++ b/drivers/staging/most/dim2/dim2.c
-> @@ -259,7 +259,6 @@ static void retrieve_netinfo(struct dim2_hdm *dev, struct mbo *mbo)
->  static void service_done_flag(struct dim2_hdm *dev, int ch_idx)
->  {
->  	struct hdm_channel *hdm_ch = dev->hch + ch_idx;
-> -	struct dim_ch_state_t st;
->  	struct list_head *head;
->  	struct mbo *mbo;
->  	int done_buffers;
-> @@ -271,7 +270,7 @@ static void service_done_flag(struct dim2_hdm *dev, int ch_idx)
->
->  	spin_lock_irqsave(&dim_lock, flags);
->
-> -	done_buffers = dim_get_channel_state(&hdm_ch->ch, &st)->done_buffers;
-> +	done_buffers = hdm_ch->ch.done_sw_buffers_number;
->  	if (!done_buffers) {
->  		spin_unlock_irqrestore(&dim_lock, flags);
->  		return;
-> --
-> 2.30.2
->
->
->
->
->
