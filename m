@@ -1,93 +1,66 @@
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B188C4C64;
-	Tue, 18 Oct 2022 14:19:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=cCRaxklUvxnSi60g8voGB/anaEKMC6SfCcBfXnQB/rE=;
-  b=mvxdlhCbE3VbDXGUFqT+XRrcpxeUAluwLRih+ewFnnEshC7f/aDgYwrr
-   UUTlkvczyX8q0irI73Hs/F0/FPc6MJk/UBavmi1Iok6C3m+/keLQ4z3d7
-   yhZeBhPn6RgZdxrFitvGQazUy9VEocoJ/mzmLSRqhGDw8rNoEGGPvFnpu
-   A=;
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="5.95,193,1661810400"; 
-   d="scan'208";a="65773550"
-Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Oct 2022 16:19:30 +0200
-Date: Tue, 18 Oct 2022 16:19:30 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-To: Deepak R Varma <drv@mailo.com>
-cc: outreachy@lists.linux.dev, gregkh@linuxfoundation.org, 
-    linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, 
-    kumarpraveen@linux.microsoft.com, saurabh.truth@gmail.com
-Subject: Re: [PATCH v2] staging: most: dim2: read done_buffers count locally
- from HDM channel
-In-Reply-To: <Y06uqcQmtJATZ6YH@debian-BULLSEYE-live-builder-AMD64>
-Message-ID: <3791d7e3-177-d8a1-ed22-3767786b19fc@inria.fr>
-References: <Y05TNQBXLMJMgQ2r@debian-BULLSEYE-live-builder-AMD64> <1e2a71a9-4ac5-96f3-b875-a063ff62f3ad@inria.fr> <Y06g2llpa5S/025M@debian-BULLSEYE-live-builder-AMD64> <80696861-c73f-cdb9-b4e1-36c29ece78bb@inria.fr>
- <Y06uqcQmtJATZ6YH@debian-BULLSEYE-live-builder-AMD64>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 04B434C8A
+	for <outreachy@lists.linux.dev>; Tue, 18 Oct 2022 15:49:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1666108156; x=1697644156;
+  h=date:from:to:subject:message-id:mime-version;
+  bh=JIqDBp91E2x0pj5SOK89SPjWOogxMFC+47cxQpMvfno=;
+  b=i0Bv/z2nDTE/ATmTtU+7j26ZxX+k0R9TXOe9i3ESqt9fpPcP7ByIfbOh
+   NfCZsHFk1jCRpLeU0RY3MrigVVLXttSAvRw373YLBFIUxT0J9EpijfTsS
+   /Je91gwUCsRhehC1E70A/Pkx9o7ChKKFdNK+KpPhRSVWyQ1Sra2gdZ1qO
+   18e8WIgh7kuRwZlruS8G7hxgS6KGEGafRQshNcTmGaJGonXPxZlSwltli
+   iFd2gThQPflLdovNKGHrKZ2o1P7x6dZA01mPZXoxJzrouyOxSFPfsU0Jl
+   T/QdELH16ZcXuXqCevKE5RqE8qdgWOEguub/vAXmgObKBOwhTflJMETOX
+   g==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10504"; a="307230875"
+X-IronPort-AV: E=Sophos;i="5.95,193,1661842800"; 
+   d="scan'208";a="307230875"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Oct 2022 08:49:15 -0700
+X-IronPort-AV: E=McAfee;i="6500,9779,10504"; a="771271315"
+X-IronPort-AV: E=Sophos;i="5.95,193,1661842800"; 
+   d="scan'208";a="771271315"
+Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.251.6.93])
+  by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Oct 2022 08:49:15 -0700
+Date: Tue, 18 Oct 2022 08:49:13 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: Outreachy Linux Kernel <outreachy@lists.linux.dev>
+Subject: [Outreachy Info] How to update the First Patch Tutorial
+Message-ID: <Y07K+awYX+9wLq9q@aschofie-mobl2>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
 
+We encourage updates to the First Patch Tutorial.
 
-On Tue, 18 Oct 2022, Deepak R Varma wrote:
+If you update the doc, please post a message to the Outreachy
+mailing list showing the update you made. If you want your
+potential update reviewed first, ask on this list too.
 
-> On Tue, Oct 18, 2022 at 02:52:21PM +0200, Julia Lawall wrote:
-> >
-> >
-> > On Tue, 18 Oct 2022, Deepak R Varma wrote:
-> >
-> > > On Tue, Oct 18, 2022 at 09:39:08AM +0200, Julia Lawall wrote:
-> > > >
-> > > >
-> > > > On Tue, 18 Oct 2022, Deepak R Varma wrote:
-> > > >
-> > > > > The done_buffer count is already available in the hdm_channel struct.
-> > > > > Calling dim_get_channel_state function to source this value out of
-> > > > > the same structure is unnecessary.
-> > > > > Further, the second parameter struct dim_ch_state_t to this function
-> > > > > is filled by using the hdm_channel inside the function. This filled in
-> > > > > variable is never used in the caller and can be altogether removed.
-> > > > > So, a call to dim_get_channel_state function in this context also
-> > > > > deems expensive.
-> > > >
-> > > > Thanks for the rewrite.
-> > > >
-> > > > I find "source this value out of" hard to understand.
-> > > >
-> > > > I would have written something like the following:
-> > > >
-> > > > The function dim_get_channel_state only serves to initialize the ready and
-> > > > done_buffers fields of the structure passed as its second argument.  In
-> > > > service_done_flag, this structure is never used again and the only purpose
-> > > > of the call is to get the value that is put in the done_buffers field.
-> > > > But that value is just the done_sw_buffers_number field of the call's
-> > > > first argument.  So the whole call is useless, and we can just replace it
-> > > > with an access to this field.
-> > > >
-> > > > This change implies that the variable st is no longer used, so drop it as
-> > > > well.
-> > >
-> > > This is really well written. Sounds much structured. Now my own log message
-> > > sounds a little random :)
-> > >
-> > > Is it okay for me to use your verbiage as is in my patch log?
-> >
-> > Yes.
->
-> Thank you. Can I convert this into a patch set and include the other suggestion
-> from you to correct the dim_ch_state_t struct name? Or should these be separate
-> patches now?
+I am a 'watcher' of the page, so I will be notified and 
+review the edits to the tutorial automatically.
 
-You can make a patch set.
+The directions for contributing to the First Patch Tutorial,
+is a bit buried in the wiki, so I'll point it out here:
 
-julia
+See section: Tips for Applying to be an Outreachy Kernel intern
+"Bonus points if you make a kernelnewbies account and correct or add
+knowledge to this wiki. To edit the wiki, create an account, and then
+send an email to the outreachy@lists.linux.dev with the subject
+"[KERNEL NEWBIES ACCESS] username", where username is your kernel
+newbies username."
+
+One update I would suggest is creating a sub-section about updating
+the wiki - to make it more obvious.
+
+Thanks,
+Alison
