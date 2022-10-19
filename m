@@ -1,93 +1,79 @@
-Received: from relay.hostedemail.com (smtprelay0014.hostedemail.com [216.40.44.14])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-pj1-f46.google.com (mail-pj1-f46.google.com [209.85.216.46])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 39B4E7E;
-	Wed, 19 Oct 2022 06:47:46 +0000 (UTC)
-Received: from omf20.hostedemail.com (a10.router.float.18 [10.200.18.1])
-	by unirelay03.hostedemail.com (Postfix) with ESMTP id B05CFA054E;
-	Wed, 19 Oct 2022 06:08:11 +0000 (UTC)
-Received: from [HIDDEN] (Authenticated sender: joe@perches.com) by omf20.hostedemail.com (Postfix) with ESMTPA id E84DB2002D;
-	Wed, 19 Oct 2022 06:07:54 +0000 (UTC)
-Message-ID: <49002a284dd29b8f784b52cb1527e687183ca175.camel@perches.com>
-Subject: Re: [PATCH 4/4] staging: r8188eu: use htons macro instead of
- __constant_htons
-From: Joe Perches <joe@perches.com>
-To: Deepak R Varma <drv@mailo.com>, outreachy@lists.linux.dev, 
-	Larry.Finger@lwfinger.net, phil@philpotter.co.uk, paskripkin@gmail.com, 
-	gregkh@linuxfoundation.org, linux-staging@lists.linux.dev, 
-	linux-kernel@vger.kernel.org
-Cc: kumarpraveen@linux.microsoft.com, saurabh.truth@gmail.com
-Date: Tue, 18 Oct 2022 23:08:06 -0700
-In-Reply-To: <595559852924cc1b58778659d2dbca8e263ee9d8.1666011479.git.drv@mailo.com>
-References: <cover.1666011479.git.drv@mailo.com>
-	 <595559852924cc1b58778659d2dbca8e263ee9d8.1666011479.git.drv@mailo.com>
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.44.4 (3.44.4-2.fc36) 
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9FAE17E
+	for <outreachy@lists.linux.dev>; Wed, 19 Oct 2022 08:05:26 +0000 (UTC)
+Received: by mail-pj1-f46.google.com with SMTP id t10-20020a17090a4e4a00b0020af4bcae10so16286290pjl.3
+        for <outreachy@lists.linux.dev>; Wed, 19 Oct 2022 01:05:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-disposition:mime-version:message-id:subject:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=C9QGWNDhP5ZPrngUIybZG2Mptl6+RhC40eM72ycmeDI=;
+        b=FN8tYj3bOuEZZJcXCtACT9iwnnlNVfNUrZevur4Ejr3LFDKAC07y7kyeX7F1Pew/BV
+         o2mzHwUfpgVRpuk5oVWTjysw2vqEu9lG1lvcoCqEOgS37+4dlqPhINY731Q//VmXSXLK
+         rjjUW9xXFf7+4PFop9tyrXbOcaEoX34NG79D4oaX1hNvjI9WXWolmq5+s1f0U1daVUAq
+         8lGGkI0jLrKiVNT6WhoU6i2gqzESTS2q795R1QjZguzUYTNvEKuUZH/xlFMnT2y5/3nw
+         5AxqHAG4v09nNWuDT+XyKMflRmTJAtfGo5Ti/fJbLxDIZWiPYn1me++jAAU8EIhy1Np+
+         y7dQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-disposition:mime-version:message-id:subject:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=C9QGWNDhP5ZPrngUIybZG2Mptl6+RhC40eM72ycmeDI=;
+        b=I46Mp/yxLIIyI+Xy3cV9JSKnvw8mrs7tyww0LfOm1x8aYjkCm1tWgrd0KgeWNDYqnp
+         MgQ6xyL9TlANS2poF/csXJp0Pqt9Dd2Hotw5ed/GMwb71Y5rBpG3dJkkWmYAQRncMwew
+         ndwQS9ileZINFy/brlCpIJAyyOOkYDbh8sEvfd/VJgdtA+Iel7RftGGnYeYmLhC2W/E/
+         idTTuQGy6Ecc/AaeNJr+JZ2v+IKb/6n9HkmlBAeCI8zPWTeDfHzKd+1IIN7Muy1nyCwK
+         03k9FnLOZ5pkGxbRABNyOPunNI5QDHPPK/HsXv0BVJB+BsMGyY+IQjwJF7ai2bErO26Q
+         HipA==
+X-Gm-Message-State: ACrzQf1HNbRS/doH5Y1IkuD8lnPAob/rA9w4IM6KMYyBcwiKS666Pvw7
+	ixK7Z5rzCwYrWcgRbPo+tlrpUk8JSnJejg==
+X-Google-Smtp-Source: AMsMyM5+4RdKCok3zVISIa8piaeKkwIzYQ6LEKM2UPRA+x1iJWoY50P/kVNCKL+DMT/vSugEGd4jfQ==
+X-Received: by 2002:a17:90a:f3ca:b0:20a:d4ee:3859 with SMTP id ha10-20020a17090af3ca00b0020ad4ee3859mr8469955pjb.70.1666166725942;
+        Wed, 19 Oct 2022 01:05:25 -0700 (PDT)
+Received: from marshmallow (192-184-163-51.fiber.dynamic.sonic.net. [192.184.163.51])
+        by smtp.gmail.com with ESMTPSA id q9-20020a638c49000000b0041cd5ddde6fsm9685814pgn.76.2022.10.19.01.05.25
+        for <outreachy@lists.linux.dev>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 19 Oct 2022 01:05:25 -0700 (PDT)
+Date: Wed, 19 Oct 2022 01:05:23 -0700
+From: Emily Peri <eperi1024@gmail.com>
+To: outreachy@lists.linux.dev
+Subject: [PATCH] staging: rts5208: Move open parenthesis to next line
+Message-ID: <Y0+vw2SZ74AoUPIV@marshmallow>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-X-Spam-Status: No, score=-0.35
-X-Stat-Signature: i8uc1r887uq5cmy39ehk47npqnomphsr
-X-Rspamd-Server: rspamout03
-X-Rspamd-Queue-Id: E84DB2002D
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Session-ID: U2FsdGVkX1/kSBruECZdtofFGtexfl+pATe3DPBkCf0=
-X-HE-Tag: 1666159674-263680
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-On Mon, 2022-10-17 at 18:54 +0530, Deepak R Varma wrote:
-> Macro "htons" is more efficiant and clearer. It should be used for
-> constants instead of the __contast_htons macro. Resolves following
+Changed breakpoint for long line in sd.c to comply with checkpatch
+style warning that lines should not end with '('.
 
-typo: __constant_htons
+Signed-off-by: Emily Peri <eperi1024@gmail.com>
+---
+ drivers/staging/rts5208/sd.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-> checkpatch script complaint:
-> 	WARNING: __constant_htons should be htons
-[]
-> diff --git a/drivers/staging/r8188eu/core/rtw_br_ext.c b/drivers/staging/=
-r8188eu/core/rtw_br_ext.c
-[]
-> @@ -612,14 +612,14 @@ void dhcp_flag_bcast(struct adapter *priv, struct s=
-k_buff *skb)
->  	if (!priv->ethBrExtInfo.dhcp_bcst_disable) {
->  		__be16 protocol =3D *((__be16 *)(skb->data + 2 * ETH_ALEN));
->=20
-> -		if (protocol =3D=3D __constant_htons(ETH_P_IP)) { /*  IP */
-> +		if (protocol =3D=3D htons(ETH_P_IP)) { /*  IP */
->  			struct iphdr *iph =3D (struct iphdr *)(skb->data + ETH_HLEN);
->=20
->  			if (iph->protocol =3D=3D IPPROTO_UDP) { /*  UDP */
->  				struct udphdr *udph =3D (struct udphdr *)((size_t)iph + (iph->ihl <<=
- 2));
->=20
-> -				if ((udph->source =3D=3D __constant_htons(CLIENT_PORT)) &&
-> -				    (udph->dest =3D=3D __constant_htons(SERVER_PORT))) { /*  DHCP re=
-quest */
-> +				if ((udph->source =3D=3D htons(CLIENT_PORT)) &&
-> +				    (udph->dest =3D=3D htons(SERVER_PORT))) { /*  DHCP request */
-
-OK, this bit seems fine
-
->  					struct dhcpMessage *dhcph =3D
->  						(struct dhcpMessage *)((size_t)udph + sizeof(struct udphdr));
-
-IMO: this existing code however is ugly.
-     Casting a pointer to a size_t isn't great.
-
-Perhaps:
-
-				struct dhcpMessage *dhcp;
-
-				dhcp =3D (void *)udhp + sizeof(struct udphdr);
-
-in a separate patch.
-
-> 					u32 cookie =3D be32_to_cpu((__be32)dhcph->cookie);
-
-And dhcph->cookie already is a __be32 so the cast is pointless.
-
-drivers/staging/r8188eu/core/rtw_br_ext.c-598-  __be32 cookie;
+diff --git a/drivers/staging/rts5208/sd.c b/drivers/staging/rts5208/sd.c
+index d1fafd530c80..99e951be2802 100644
+--- a/drivers/staging/rts5208/sd.c
++++ b/drivers/staging/rts5208/sd.c
+@@ -4501,8 +4501,8 @@ int sd_execute_write_data(struct scsi_cmnd *srb, struct rtsx_chip *chip)
+ 			sd_card->sd_lock_notify = 1;
+ 			if (sd_lock_state &&
+ 			    (sd_card->sd_lock_status & SD_LOCK_1BIT_MODE)) {
+-				sd_card->sd_lock_status |= (
+-					SD_UNLOCK_POW_ON | SD_SDR_RST);
++				sd_card->sd_lock_status |=
++					(SD_UNLOCK_POW_ON | SD_SDR_RST);
+ 				if (CHK_SD(sd_card)) {
+ 					retval = reset_sd(chip);
+ 					if (retval != STATUS_SUCCESS) {
+-- 
+2.34.1
 
