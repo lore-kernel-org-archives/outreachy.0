@@ -1,127 +1,87 @@
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-pg1-f181.google.com (mail-pg1-f181.google.com [209.85.215.181])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C94F353A3;
-	Wed, 19 Oct 2022 20:08:55 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1601A53A3
+	for <outreachy@lists.linux.dev>; Wed, 19 Oct 2022 20:21:21 +0000 (UTC)
+Received: by mail-pg1-f181.google.com with SMTP id l6so17285102pgu.7
+        for <outreachy@lists.linux.dev>; Wed, 19 Oct 2022 13:21:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=xLUOFYSzTwcdJD1bSDpGV62OSIArCZrsREk8+4s+Uec=;
-  b=ETfFsSnSDw1qGno5kvmuyV/L8zLQmEPEcks43pQSSS7rE4PmxtXT6lrB
-   CdBFamHn890jRyrqDvoJ+x9lXf6nKYTnoI223vgDSvOT/iE00zYnG1L/j
-   y//Vsbim6f+8y1s+C5YGS7ZJOn/O8v/+JJBgmHzv2iaO/vmprmVCtEqLh
-   U=;
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="5.95,196,1661810400"; 
-   d="scan'208";a="66044576"
-Received: from 51.123.68.85.rev.sfr.net (HELO hadrien) ([85.68.123.51])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Oct 2022 22:08:54 +0200
-Date: Wed, 19 Oct 2022 22:08:53 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Deepak R Varma <drv@mailo.com>
-cc: outreachy@lists.linux.dev, gregkh@linuxfoundation.org, 
-    linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, 
-    kumarpraveen@linux.microsoft.com, saurabh.truth@gmail.com
-Subject: Re: [PATCH v4 2/2] staging: most: dim2: correct misleading struct
- type name
-In-Reply-To: <6b772a1ac06ae3b0d63e198e7238c1590b14703a.1666208065.git.drv@mailo.com>
-Message-ID: <alpine.DEB.2.22.394.2210192208290.3068@hadrien>
-References: <cover.1666208065.git.drv@mailo.com> <6b772a1ac06ae3b0d63e198e7238c1590b14703a.1666208065.git.drv@mailo.com>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+        d=gmail.com; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=e9fLqpp9WQDFgJm4MYXeuE5iwRMExE2URZLEEllFTEE=;
+        b=izEjP7tLogCTgtd86Of4SgoN0tjjTFBpJF82y9SBOUg7ueiRV3OXHX1YsRBWb4o8EO
+         a6lNHdGjzyh3pmBX2H4hdGWC+2Fbrqpq5OquxEyZdLa3S8a4X0cd9RZpy99QnHukPQQS
+         PzMP6g864cWAHarpA8jLj2OAzh5xd+wiWbV2Kut8/TqPZ5HMLJBx7Vzd4vucjQ44nqYN
+         n3pdixEIabGlqWjjdH5ic6ku29f6tGZbBdDrVBLrMEVpdk73YVatkGAdjlDAU69rwEQ1
+         o+bME4IW/4F9gZpZkntq5DVL3cWmmT7DQVb970V5+RPpyrRXODxpWFuqMHaYU7q5iv3s
+         hOLQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=e9fLqpp9WQDFgJm4MYXeuE5iwRMExE2URZLEEllFTEE=;
+        b=LC8Ptb347NPD3B71kuYGmTtmUyndyKOoDDWrajn9GUn5fVj7PD5f2YTaXUdGlsUOEo
+         jJB5sjqoLrxPqmADwKQf2B1g8sZPXKQmKpN3ziNcq/mA5XslcKofkK2getefVAvJ6Los
+         ZWJYAlRxLu7gTq7remtVQVRxD0tZdLhnOxKK7jKATfwUb9pRyaur6vs0XVFVz+kVySWn
+         pRL8K//QVU9c+JKyz1Ad6jddqciZn5Kt5Q2nhyQCGbrqWGCHJEYTQwKlz0w9WIHoclnV
+         5ar/9hJepo5I1guE4jws+jeWk/JxF/k8vSZhUVZFyslcHw79Z2P3wXy3Yi0AfW8J8vr7
+         PSrA==
+X-Gm-Message-State: ACrzQf1GoFGS02BrlLJu+ADpvQ6SHU3YOpiKrM4VEd/9ESV6tI8nJRFJ
+	+KNoDi94SFBSasA0b/bFXiV78NLc3s3dWA==
+X-Google-Smtp-Source: AMsMyM6jTHGjGdu686YPK638UWoAobW8JyawmPUzS8oGNpo8mQRKcLKjEBTHv1H+b74S2FVwOcJCBA==
+X-Received: by 2002:a63:6a85:0:b0:43b:dac2:ff0b with SMTP id f127-20020a636a85000000b0043bdac2ff0bmr8969926pgc.234.1666210880668;
+        Wed, 19 Oct 2022 13:21:20 -0700 (PDT)
+Received: from marshmallow (192-184-163-51.fiber.dynamic.sonic.net. [192.184.163.51])
+        by smtp.gmail.com with ESMTPSA id b16-20020a170902e95000b0017b264a2d4asm11196761pll.44.2022.10.19.13.21.19
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 19 Oct 2022 13:21:20 -0700 (PDT)
+Date: Wed, 19 Oct 2022 13:21:18 -0700
+From: Emily Peri <eperi1024@gmail.com>
+To: Tanju Brunostar <tanjubrunostar0@gmail.com>
+Cc: Julia Lawall <julia.lawall@inria.fr>, outreachy@lists.linux.dev
+Subject: Re: Patch email not showing up in inbox
+Message-ID: <Y1BcPq5K5dU7kis+@marshmallow>
+References: <Y1BSP5ZT+yju8gLf@marshmallow>
+ <alpine.DEB.2.22.394.2210192151210.3068@hadrien>
+ <CAHJEyKUDSLFQnALj9Lv4cvheDfhO=kCY-JonFdASu_=d-gJO-Q@mail.gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAHJEyKUDSLFQnALj9Lv4cvheDfhO=kCY-JonFdASu_=d-gJO-Q@mail.gmail.com>
 
+On Wed, Oct 19, 2022 at 09:05:03PM +0100, Tanju Brunostar wrote:
+> On Wed, Oct 19, 2022, 8:51 PM Julia Lawall <julia.lawall@inria.fr> wrote:
+> 
+> >
+> >
+> > On Wed, 19 Oct 2022, Emily Peri wrote:
+> >
+> > > Hi all,
+> > > I sent a patch (staging: rtl8723bs) email to the list serv and ccd the
+> > maintainers, but didn't
+> > > see the email show up in my inbox. Is there usually a delay with this?
+> > > Did anyone else get it? I'm new to mutt so I just want to make sure I
+> > > sent it correctly. Thanks!
+> >
+> > I received it twice.
 
+Thanks for letting me know!
 
-On Thu, 20 Oct 2022, Deepak R Varma wrote:
+> > julia
+> > >
+> 
+> Always check your sent box instead of your inbox for emails you send to the
+> mailing list
 
-> Correct misleading struct type name dim_ch_state_t to dim_ch_state
-> since this not a typedef but a normal structure declaration.
->
-> Suggested-by: Julia Lawall <julia.lawall@inria.fr>
-> Signed-off-by: Deepak R Varma <drv@mailo.com>
-> ---
->
-> Changes in v4:
->    1. Correct patch subject and log message. Use struct type name instead of
->       variable name for the change description. Feedback from julia.lawall@inria.fr
->
-> Changes in v3:
->    1. Patch introduced in the patch set
->
->  drivers/staging/most/dim2/dim2.c | 2 +-
->  drivers/staging/most/dim2/hal.c  | 4 ++--
->  drivers/staging/most/dim2/hal.h  | 6 +++---
->  3 files changed, 6 insertions(+), 6 deletions(-)
->
-> diff --git a/drivers/staging/most/dim2/dim2.c b/drivers/staging/most/dim2/dim2.c
-> index 4c1f27898a29..a69a61a69283 100644
-> --- a/drivers/staging/most/dim2/dim2.c
-> +++ b/drivers/staging/most/dim2/dim2.c
-> @@ -161,7 +161,7 @@ static int try_start_dim_transfer(struct hdm_channel *hdm_ch)
->  	struct list_head *head = &hdm_ch->pending_list;
->  	struct mbo *mbo;
->  	unsigned long flags;
-> -	struct dim_ch_state_t st;
-> +	struct dim_ch_state st;
+Thanks for the tip! I did check my sent, but thought I would also see it in
+the inbox since I receive mail sent to the mailing list. Good to know it
+doesn't work like that.
 
-Is there another use in service_done_flag?
-
-julia
-
->
->  	BUG_ON(!hdm_ch);
->  	BUG_ON(!hdm_ch->is_initialized);
-> diff --git a/drivers/staging/most/dim2/hal.c b/drivers/staging/most/dim2/hal.c
-> index 65282c276862..a5d40b5b138a 100644
-> --- a/drivers/staging/most/dim2/hal.c
-> +++ b/drivers/staging/most/dim2/hal.c
-> @@ -943,8 +943,8 @@ u8 dim_service_channel(struct dim_channel *ch)
->  	return channel_service(ch);
->  }
->
-> -struct dim_ch_state_t *dim_get_channel_state(struct dim_channel *ch,
-> -					     struct dim_ch_state_t *state_ptr)
-> +struct dim_ch_state *dim_get_channel_state(struct dim_channel *ch,
-> +					   struct dim_ch_state *state_ptr)
->  {
->  	if (!ch || !state_ptr)
->  		return NULL;
-> diff --git a/drivers/staging/most/dim2/hal.h b/drivers/staging/most/dim2/hal.h
-> index 20531449acab..ef10a8741c10 100644
-> --- a/drivers/staging/most/dim2/hal.h
-> +++ b/drivers/staging/most/dim2/hal.h
-> @@ -27,7 +27,7 @@ enum mlb_clk_speed {
->  	CLK_8192FS = 7,
->  };
->
-> -struct dim_ch_state_t {
-> +struct dim_ch_state {
->  	bool ready; /* Shows readiness to enqueue next buffer */
->  	u16 done_buffers; /* Number of completed buffers */
->  };
-> @@ -87,8 +87,8 @@ void dim_service_ahb_int_irq(struct dim_channel *const *channels);
->
->  u8 dim_service_channel(struct dim_channel *ch);
->
-> -struct dim_ch_state_t *dim_get_channel_state(struct dim_channel *ch,
-> -					     struct dim_ch_state_t *state_ptr);
-> +struct dim_ch_state *dim_get_channel_state(struct dim_channel *ch,
-> +					   struct dim_ch_state *state_ptr);
->
->  u16 dim_dbr_space(struct dim_channel *ch);
->
-> --
-> 2.30.2
->
->
->
->
->
+> >
