@@ -1,39 +1,51 @@
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ej1-f41.google.com (mail-ej1-f41.google.com [209.85.218.41])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E24142F33
-	for <outreachy@lists.linux.dev>; Wed, 19 Oct 2022 20:42:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1666212176; x=1697748176;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=MMFpS4fKyCaz1l8hvD0J70wlmHfbsvASpnRU29lYYIM=;
-  b=fGLo8xqufzrBHqEdZTnUvMzfmZZ90L4dsBqYS40re+biIOHBbEnVroI/
-   RJAtkASmWofhg6yH1qMebjTBLedrTuZOo3woOtxOMyhZ0ROreaE0sPM2u
-   YQHzGSvbTUr9wHBYBrtfHrIR+bBv97VahLO6emXCbTx7jZCWNRLP+uGmA
-   JlsmrP62k4W4yzgIK6CaK9JL4TDXeGjiUOaYpSxjqU3RbMm37bH/xS8TH
-   3N3ePu+xLVZQ6YAkY5ir4KVu2UQEHq5zGxknuksGSEal3UxD7XMGUzZ/T
-   ZuSk/MdgAAJKJzjapbsJfWktYgN0FQZ2sAQkZ88dhNBSihlq2jmmpjwPY
-   g==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10505"; a="306516160"
-X-IronPort-AV: E=Sophos;i="5.95,196,1661842800"; 
-   d="scan'208";a="306516160"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
-  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Oct 2022 13:42:51 -0700
-X-IronPort-AV: E=McAfee;i="6500,9779,10505"; a="692573479"
-X-IronPort-AV: E=Sophos;i="5.95,196,1661842800"; 
-   d="scan'208";a="692573479"
-Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.212.214.128])
-  by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Oct 2022 13:42:51 -0700
-Date: Wed, 19 Oct 2022 13:42:49 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: Deepak R Varma <drv@mailo.com>
-Cc: outreachy@lists.linux.dev
-Subject: Re: [KERNEL NEWBIES ACCESS] deepakrvarma
-Message-ID: <Y1BhSXT+4rOcL89O@aschofie-mobl2>
-References: <Y1BJrtzi5gk2lzXn@debian-BULLSEYE-live-builder-AMD64>
- <Y1BLWeccWuqI4u3h@debian-BULLSEYE-live-builder-AMD64>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A89E123A0;
+	Wed, 19 Oct 2022 22:35:14 +0000 (UTC)
+Received: by mail-ej1-f41.google.com with SMTP id q9so43344990ejd.0;
+        Wed, 19 Oct 2022 15:35:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=4g2WGpfHQynp+rFhcmOPjXRA2g+YdubJZg4hG2W5kJo=;
+        b=YK6Mp9KoAJifBMVTBpjdQPsWsAQ+MADcn7Tbk17EFljc6WYgMP2Jhw87Gmds1miK1Q
+         6C04jfiteJq24pgwyhPmwPRbId6Ms+FEMLhywKu1rYai+6hKJmQH00l5/W19emHa/UrK
+         fWwqr206553/f8QhAEpW/HVZJ/LeJcxJSiu8qSCHk68QPtGAqC9OK0ww0nzyo14NzeFH
+         v15rZ9CHDxW1AtvS+96WurNXaiAnupvUC/AmzryZ8OwJBgWiJzMvEFNo4fH4+8BtaDLl
+         H1svU5GlzK8qjMfR5zjtQlK2B7fzkt2UvARjd/GwW1v5xSxya/MQzQ5UZ6tjy5lssbsR
+         DRPA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=4g2WGpfHQynp+rFhcmOPjXRA2g+YdubJZg4hG2W5kJo=;
+        b=gHl9b0mxdqGS056mcpS7ow2essnGZrAwTzHv7CTtBgRj/4excI/WezVz/OwY0GbECr
+         sllN9MytQPmudfADapgcPscpDnGlZ+32mkLW15K8C6e2s1edsLSJSipF6TqJgGzUuTn3
+         zR89F/RJYQFU4oRXBuCbtTv6WnfA5iaZBX7b8xnc3+E5EJcOA+ibUzC6BMoz1XhJa5wk
+         Ubg5hMF+7T8IJXzHXm7swc3VFrJNZ4y+K31Kz5gPABJciP0cP0waguAaKELLe8dCuLk7
+         YAUfPOStj+Oz1LmWxOLz+xREPe17TrOLeeO63Yu18kQIeFQ6uel424+H8hpwKkq2MZVa
+         3FuQ==
+X-Gm-Message-State: ACrzQf1S+BDXf1T3kHtoYZ1XmvmXIuE/STVgjMwU/IBtLVfkAnT3jJLC
+	XYRi9uEAZZiKPvozFhc/kQ4=
+X-Google-Smtp-Source: AMsMyM4inb7j1xMefkrU37SzXhA3wgqBpTCz8Yjzn+mE3QBReAkA4sTQspgmI8/MI8T4Q5u8nFpdvg==
+X-Received: by 2002:a17:907:6d29:b0:78d:d12d:15af with SMTP id sa41-20020a1709076d2900b0078dd12d15afmr8633082ejc.53.1666218912806;
+        Wed, 19 Oct 2022 15:35:12 -0700 (PDT)
+Received: from nam-dell (ip-217-105-46-158.ip.prioritytelecom.net. [217.105.46.158])
+        by smtp.gmail.com with ESMTPSA id h28-20020a1709070b1c00b00780f6071b5dsm9264413ejl.188.2022.10.19.15.35.11
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 19 Oct 2022 15:35:12 -0700 (PDT)
+Date: Thu, 20 Oct 2022 00:34:46 +0200
+From: Nam Cao <namcaov@gmail.com>
+To: Tanjuate Brunostar <tanjubrunostar0@gmail.com>
+Cc: greg@kroah.com, forest@alittletooquiet.net,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy@lists.linux.dev
+Subject: Re: [PATCH v2] staging: vt6655: Fix Lines should not end with a '('
+Message-ID: <20221019223446.GA154747@nam-dell>
+References: <Y1BN6wPMrpxPB3qP@elroy-temp-vm.gaiao0uenmiufjlowqgp5yxwdh.gvxx.internal.cloudapp.net>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -42,28 +54,26 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <Y1BLWeccWuqI4u3h@debian-BULLSEYE-live-builder-AMD64>
+In-Reply-To: <Y1BN6wPMrpxPB3qP@elroy-temp-vm.gaiao0uenmiufjlowqgp5yxwdh.gvxx.internal.cloudapp.net>
 
-On Thu, Oct 20, 2022 at 12:39:13AM +0530, Deepak R Varma wrote:
-> On Thu, Oct 20, 2022 at 12:32:06AM +0530, Deepak R Varma wrote:
-> > Hello,
-> > I intend to contribute to the kernelnewbies wiki. Kindly allow me access to the
-> > wiki edit capability.
+On Wed, Oct 19, 2022 at 07:20:11PM +0000, Tanjuate Brunostar wrote:
+> Code style warnings reported by checkpatch.
+> Improve the layout of a function header:
+> Put the first parameter immediately after the '(' and align the other
+> parameters underneath it.
 > 
-> Added user name in the subject line instead of email.
+> Signed-off-by: Tanjuate Brunostar <tanjubrunostar0@gmail.com>
+> 
+> ---
+> v2: put static and void on the same line and adjusted the indentation as
+> suggested by Greg KH
 
-Added deepakrvarma to Editors list.
+I think he meant putting "static" and "void" and also function name on
+the same line.
 
-Thanks for the help maintaining the wiki!
-Alison
+Additionally, I think your patch introduces new checkpatch problems. Did
+you run checkpatch.pl on your patch?
 
-> 
-> >
-> > Thank you,
-> > ./drv
-> >
-> >
-> >
-> 
-> 
-> 
+Best regards,
+Nam
+
