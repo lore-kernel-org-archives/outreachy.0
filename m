@@ -1,50 +1,43 @@
-Received: from mail-pg1-f173.google.com (mail-pg1-f173.google.com [209.85.215.173])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from msg-2.mailo.com (msg-2.mailo.com [213.182.54.12])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7A6CE187F
-	for <outreachy@lists.linux.dev>; Wed, 19 Oct 2022 08:35:16 +0000 (UTC)
-Received: by mail-pg1-f173.google.com with SMTP id 128so15638642pga.1
-        for <outreachy@lists.linux.dev>; Wed, 19 Oct 2022 01:35:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=CGu10GvLiApsjG4l4tqtJG2lN9kazKANIAC1jUbd6vk=;
-        b=fUgmMkAU3unspEXm+QFuzViGBzmAaV12XJ9MYc9AgCLnMIS+o0rDCCj2tSLAhd/q4i
-         HPDTmerRHBv0njm0TRRvvYD/dn/bdLq0GJY9BDvbDXLFJmxFiahsqkmZ+Fu/4PeT1xie
-         b90/eYxsCDRwOylxCpiSL2O/wPYmQM+zyWkZlIAcz+l4UW5OKUCseLTWlRthxOg3S0Xf
-         vId74aOBjEl9cwhV4nj+XGWmqk0D3vAdxd646mY8WtygUh0ah6mBOaiIWUSvVGGYsY/r
-         Lo+8Eyf+tq1a7VQwviTlb5/pqI1s1CnSS5UJBEUv0pkCSn/rWJeE1I3ZDpVJe2ugKyyj
-         1Hbw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=CGu10GvLiApsjG4l4tqtJG2lN9kazKANIAC1jUbd6vk=;
-        b=ZGLYF5XP72EzxtGKA1t3ChmwGbJs0Ab3fJkQMbdlnvg/loM9L37VRrUsgo039jnWJU
-         onieEyjmeI5Y1BYKO0qh+4H9ywj5cAPdHPW9RSHNn/mEElWjeZbBk4+Qpzbx7qk2JuOX
-         I4a5AeO75qpOsYbX6q1542CdQWsYZe7ZneYZdKfkzRHyYYNWIajXAY+90H3L8X5XI8vO
-         W5Eei0fBp8XFNkLZsqGhZ4pXzzWOrKw/PIvTZr7vAjW6jJ4tgDVei1DbVEfr3wI5dmPZ
-         SiCwK9a5MjYgdRjxaFssTnogAePinnwTqSCYXf/28JFJVB0DOLqLEnkqwXo3O1JfrBW1
-         0RdA==
-X-Gm-Message-State: ACrzQf2Pkch5rBX8byuSLtIxQZPYbV527kn7cgdU8hvPjY/bXNyts8Rh
-	rcBR6cho3wQkzWMjBC3j95I=
-X-Google-Smtp-Source: AMsMyM4BSitFOaDuRGiOufCbdnHw6JUe97OnSnMJcqDKDgcqbJ2IkLqd4uQ9KfgEU2aQNXfCMidozg==
-X-Received: by 2002:a63:f47:0:b0:46a:e00c:24c7 with SMTP id 7-20020a630f47000000b0046ae00c24c7mr6376046pgp.239.1666168516016;
-        Wed, 19 Oct 2022 01:35:16 -0700 (PDT)
-Received: from marshmallow (192-184-163-51.fiber.dynamic.sonic.net. [192.184.163.51])
-        by smtp.gmail.com with ESMTPSA id d13-20020aa797ad000000b00553d573222fsm10752226pfq.199.2022.10.19.01.35.15
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 19 Oct 2022 01:35:15 -0700 (PDT)
-Date: Wed, 19 Oct 2022 01:35:13 -0700
-From: Emily Peri <eperi1024@gmail.com>
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: outreachy@lists.linux.dev
-Subject: Re: [PATCH] staging: rts5208: Move open parenthesis to next line
-Message-ID: <Y0+2wU60C/a9Sd/s@marshmallow>
-References: <Y0+vw2SZ74AoUPIV@marshmallow>
- <b5834eb5-4d4c-2e89-5814-64cf881636f5@inria.fr>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 875D22577;
+	Wed, 19 Oct 2022 09:04:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
+	t=1666170260; bh=hEVfT2JbyLs5Gr5UpL/k8FYzC2YYLPYBL7rsr8QE1os=;
+	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
+	 MIME-Version:Content-Type:In-Reply-To;
+	b=nqqOY52fDhvUSk9GiQxEkfA9Oj3Qiu/TopzlkVhfNh9+GeKN7Lt1+1hxM6nSm1xGE
+	 OZNKtxw7Y1+32wmcJ3/2i/vFv8WTq8qB6gbqvzNTimXmCaQ6ftm5uVaYSwsf51uCbc
+	 /cEULRGCC85GCYKtB3gxBn3K9xVK4IVKOiHXEvqc=
+Received: by b-6.in.mailobj.net [192.168.90.16] with ESMTP
+	via [213.182.55.206]
+	Wed, 19 Oct 2022 11:04:20 +0200 (CEST)
+X-EA-Auth: ntGaQGQ20LqP0d8FsaYBfrxaYSUSvESEasrQC7tE5rHoBo+C5kGzTortDq30IQ2mEasGIL6FWEqyBr/71xPweCOfjDC8gYQr
+Date: Wed, 19 Oct 2022 14:32:59 +0530
+From: Deepak R Varma <drv@mailo.com>
+To: Joe Perches <joe@perches.com>
+Cc: David Laight <David.Laight@aculab.com>,
+	'Greg KH' <gregkh@linuxfoundation.org>,
+	"outreachy@lists.linux.dev" <outreachy@lists.linux.dev>,
+	"Larry.Finger@lwfinger.net" <Larry.Finger@lwfinger.net>,
+	"phil@philpotter.co.uk" <phil@philpotter.co.uk>,
+	"paskripkin@gmail.com" <paskripkin@gmail.com>,
+	"linux-staging@lists.linux.dev" <linux-staging@lists.linux.dev>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"kumarpraveen@linux.microsoft.com" <kumarpraveen@linux.microsoft.com>,
+	"saurabh.truth@gmail.com" <saurabh.truth@gmail.com>
+Subject: Re: [PATCH 2/4] staging: r8188eu: reformat long computation lines
+Message-ID: <Y0+9Q6hIde3Y3tNC@debian-BULLSEYE-live-builder-AMD64>
+References: <cover.1666011479.git.drv@mailo.com>
+ <2dd27eff9aab5ffe31e61086c0584982794507cf.1666011479.git.drv@mailo.com>
+ <Y01iLXp20G0FSJFG@kroah.com>
+ <a0bef75b959f4ca6a7bbfaacd531f8ae@AcuMS.aculab.com>
+ <Y06fKv7U0/GhZfSZ@debian-BULLSEYE-live-builder-AMD64>
+ <e2675698427ed987dd88ed5f9996fe86e5315dbb.camel@perches.com>
+ <Y0+WYIVTugrs6khA@debian-BULLSEYE-live-builder-AMD64>
+ <3ce9206fc3b756e72ee4dcfbbad6cefae5fedada.camel@perches.com>
+ <Y0+c1ljPcD+Qr4Gd@debian-BULLSEYE-live-builder-AMD64>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -53,50 +46,98 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <b5834eb5-4d4c-2e89-5814-64cf881636f5@inria.fr>
+In-Reply-To: <Y0+c1ljPcD+Qr4Gd@debian-BULLSEYE-live-builder-AMD64>
 
-On Wed, Oct 19, 2022 at 10:16:28AM +0200, Julia Lawall wrote:
-> 
-> 
-> On Wed, 19 Oct 2022, Emily Peri wrote:
-> 
-> > Changed breakpoint for long line in sd.c to comply with checkpatch
-> > style warning that lines should not end with '('.
-> 
-> I think that someone else already did this?  Or at least something very
-> similar.  Check the list archives.
-Yep, you're right, its the patch "merge unnecessary split lines". Back
-to square one...
-> Also, the patch should also go to all of the maintainers of the code.  The
-> first patch tutorial should show you how to use get_maintainers.pl to get
-> the list of recipients.
-Okay, got it!
-> 
-> julia
-> 
+On Wed, Oct 19, 2022 at 12:14:38PM +0530, Deepak R Varma wrote:
+> On Tue, Oct 18, 2022 at 11:38:22PM -0700, Joe Perches wrote:
+> > On Wed, 2022-10-19 at 11:47 +0530, Deepak R Varma wrote:
+> > > On Tue, Oct 18, 2022 at 10:43:07PM -0700, Joe Perches wrote:
+> > > > On Tue, 2022-10-18 at 18:12 +0530, Deepak R Varma wrote:
+> > > > > On Tue, Oct 18, 2022 at 11:21:26AM +0000, David Laight wrote:
+> > > > > > From: Greg KH
+> > > > > > > Sent: 17 October 2022 15:10
+> > > > > > >
+> > > > > > > On Mon, Oct 17, 2022 at 06:52:50PM +0530, Deepak R Varma wrote:
+> > > > > > > > Reformat long running computation instructions to improve code readability.
+> > > > > > > > Address following checkpatch script complaints:
+> > > > > > > > 	CHECK: line length of 171 exceeds 100 columns
+> > > > > > > > 	CHECK: line length of 113 exceeds 100 columns
+> > > > []
+> > > > > > > > diff --git a/drivers/staging/r8188eu/core/rtw_br_ext.c b/drivers/staging/r8188eu/core/rtw_br_ext.c
+> > > > []
+> > > > > > > > @@ -211,8 +211,10 @@ static int __nat25_network_hash(unsigned char *network_addr)
+> > > > > > > >  	} else if (network_addr[0] == NAT25_IPX) {
+> > > > > > > >  		unsigned long x;
+> > > > > > > >
+> > > > > > > > -		x = network_addr[1] ^ network_addr[2] ^ network_addr[3] ^ network_addr[4] ^
+> > > > > > > network_addr[5] ^
+> > > > > > > > -			network_addr[6] ^ network_addr[7] ^ network_addr[8] ^ network_addr[9] ^
+> > > > > > > network_addr[10];
+> > > > > > > > +		x = network_addr[1] ^ network_addr[2] ^ network_addr[3] ^
+> > > > > > >
+> > > > > > > Why not go out to [4] here and then you are one line shorter?
+> > > > > >
+> > > > > > and/or use a shorter variable name....
+> > > > > Hi David,
+> > > > > I have already re-submitted the patch set with 4 in line arrangement. Do you
+> > > > > still suggest using shorter variable names?
+> > > >
+> > > > Assuming this code is not performance sensitive, I suggest not just
+> > > > molifying checkpatch but perhaps improving the code by adding a helper
+> > > > function something like:
+> > > >
+> > > > u8 xor_array_u8(u8 *x, size_t len)
+> > > > {
+> > > > 	size_t i;
+> > > > 	u8 xor = x[0];
+> > > >
+> > > > 	for (i = 1; i < len; i++)
+> > > > 		xor ^= x[i];
+> > > >
+> > > > 	return xor;
+> > > > }
+> > > >
+> > > > so for instance this could be:
+> > > >
+> > > > 		x = xor_array_u8(&network_addr[1], 10);
+> > > >
+> > >
+> > > Hi Joe,
+> > > Great suggestion. Thank you.
+> > > Is there a way to confirm that this improvement won't impact performance? Will I
+> > > need any specific hardware / device to run tests?
 > >
-> > Signed-off-by: Emily Peri <eperi1024@gmail.com>
-> > ---
-> >  drivers/staging/rts5208/sd.c | 4 ++--
-> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > I suggest reading the code to see if the uses are in some fast path.
+>
+> Sounds good. Thank you for your guidance.
+
+Hi Joe,
+based on the code review so far, I am unable to determine if the chain of
+function calls are part of any fast path. There is not enough code comments or
+documentation available with this code.
+
+Considering my Outreachy patch submission targets and timelines, I am unable to
+spend much time on this research right now; unless an expert can confirm it is
+okay to add the routine you outlined. Else, I will put this in on my TODO list
+and revisit when I have time.
+
+R8188EU maintainers / experts,
+Can you confirm if it is sensible to implement the helper function suggested by
+Joe? If yes, I will include the improvement in my current patch set and resubmit
+the set for review.
+
+Thank you,
+./drv
+
+
+
+
+
+
+>
 > >
-> > diff --git a/drivers/staging/rts5208/sd.c b/drivers/staging/rts5208/sd.c
-> > index d1fafd530c80..99e951be2802 100644
-> > --- a/drivers/staging/rts5208/sd.c
-> > +++ b/drivers/staging/rts5208/sd.c
-> > @@ -4501,8 +4501,8 @@ int sd_execute_write_data(struct scsi_cmnd *srb, struct rtsx_chip *chip)
-> >  			sd_card->sd_lock_notify = 1;
-> >  			if (sd_lock_state &&
-> >  			    (sd_card->sd_lock_status & SD_LOCK_1BIT_MODE)) {
-> > -				sd_card->sd_lock_status |= (
-> > -					SD_UNLOCK_POW_ON | SD_SDR_RST);
-> > +				sd_card->sd_lock_status |=
-> > +					(SD_UNLOCK_POW_ON | SD_SDR_RST);
-> >  				if (CHK_SD(sd_card)) {
-> >  					retval = reset_sd(chip);
-> >  					if (retval != STATUS_SUCCESS) {
-> > --
-> > 2.34.1
-> >
-> >
-> >
+>
+>
+>
+
+
