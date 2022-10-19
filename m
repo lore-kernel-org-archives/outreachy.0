@@ -1,47 +1,24 @@
-Received: from mail-pl1-f177.google.com (mail-pl1-f177.google.com [209.85.214.177])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from msg-2.mailo.com (msg-2.mailo.com [213.182.54.12])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1AD2928ED
-	for <outreachy@lists.linux.dev>; Wed, 19 Oct 2022 19:02:03 +0000 (UTC)
-Received: by mail-pl1-f177.google.com with SMTP id h2so10796377plb.2
-        for <outreachy@lists.linux.dev>; Wed, 19 Oct 2022 12:02:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-disposition:mime-version:message-id:subject:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=+QM1RVijKOjtLzd+GJ+CVT6xe047a5u1xhBsLiuogqI=;
-        b=b9ZRzDdxWSoXGqw23ygGkH/cpbJVUqA3zOgB8e+5dCAmF9ChpayqtslfgvU3HGxufd
-         1cNPTD8t4PjSP+L1JA+6nHEksHkGqJOHIcJWaVSBE6tAZpWZDzOKKSy8HyClmV13tg/o
-         DR/SNSX+SRNcq/XMVCaGFqZd8Z8dGTTbzMC+52GWhhshjzkOi8+BInJPkLoHD4IT+GSh
-         uFyQ4dr9U1b+t3OmG+994uCdOZFApb5/5sI+2pV+xMxvLQWQg0Zz2Ws0orLK9cDX63zB
-         /xDmm6KYY3c8V9d0nfiT4A6g0Ai+toTcPZAlmSYbJ/VPv3UfkyQhUftghZB3MgfZ8onc
-         wtzw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-disposition:mime-version:message-id:subject:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=+QM1RVijKOjtLzd+GJ+CVT6xe047a5u1xhBsLiuogqI=;
-        b=Aqa0mQAWpX3+qHmh2+pyhZnE65W8+cfes9ruRlqhqehTaFDaUy1XzKKTbtdoC0mqbm
-         upE7bSflenr2GeZQ7JG64RwPjtKiHKuTHkbW8vUTGL+JPK7u6tH9jwtRLM4uprsc2OHj
-         pIybwMfqDqpiYW9ypZoInHGUCvxTozrvkCASGUiovo1ARzyXLBMN5fjq6kIF7aQPBjMk
-         5XQtVCp/ixzPWCt8ZCwZNKS22NbvFXqxhKM81evxUBiLYm+5arCWzSqWhYzoPMdr10L1
-         AyxgkVApAS5tQCA06tcIy0iRF0yeXD3EHNPVnf2zFGD+CbzpsXCO7CbTvQ77fWK66F0H
-         IQ3A==
-X-Gm-Message-State: ACrzQf0KUQxyFeeeUpleOWkUgbRXVp6yFnQDSkbn/0yOI0qhBOZwVmgK
-	9IWWahXBdlrpdbDS9BHhJ1SwOvV3NVgcRg==
-X-Google-Smtp-Source: AMsMyM5P/BwasGrsg4+AFFXYynCE7mHXSRI6SNWf2HE/ujcvikCJ5XzYoqrR/BQdGfmNOAIGKrrVHA==
-X-Received: by 2002:a17:90b:1c8b:b0:203:dcf1:128a with SMTP id oo11-20020a17090b1c8b00b00203dcf1128amr45359268pjb.182.1666206122319;
-        Wed, 19 Oct 2022 12:02:02 -0700 (PDT)
-Received: from marshmallow (192-184-163-51.fiber.dynamic.sonic.net. [192.184.163.51])
-        by smtp.gmail.com with ESMTPSA id p9-20020a1709027ec900b00176ab6a0d5fsm11085695plb.54.2022.10.19.12.02.01
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 19 Oct 2022 12:02:01 -0700 (PDT)
-Date: Wed, 19 Oct 2022 12:01:59 -0700
-From: Emily Peri <eperi1024@gmail.com>
-To: outreachy@lists.linux.dev, gregkh@linuxfoundation.org
-Subject: [PATCH] staging: rtl8723bs: Removed extra tabs in conditional
- statements
-Message-ID: <Y1BJpyISNFXK+RQ6@marshmallow>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5ED9D28ED
+	for <outreachy@lists.linux.dev>; Wed, 19 Oct 2022 19:02:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
+	t=1666206130; bh=nDA0l49JHURFiQR1YiDmGkZNQ0Xro2Qf+ne+S2hhaH0=;
+	h=X-EA-Auth:Date:From:To:Subject:Message-ID:MIME-Version:
+	 Content-Type;
+	b=UHFyi88e+h0CbA16RHzoCXAi7qLi0o7ZSENtNghQapeMh/Mr5906UEoipHqT0/zeE
+	 Jk+zmXSYK8tdDDEh0IUFMDDDeTwYcvH+3mybo/UL617Xc3+iwjLfzprqnSciiSynCP
+	 nHGHmcqh7CGXe4q1ST+TsouXI5BEBb2UHlWOvc40=
+Received: by b-2.in.mailobj.net [192.168.90.12] with ESMTP
+	via [213.182.55.206]
+	Wed, 19 Oct 2022 21:02:10 +0200 (CEST)
+X-EA-Auth: o7vM44MnXvt2ySHxjbOYnI//20YVRDNTfe6Vl+K7GKv76Yh10JFZDnVwXounJOLzmXW4JjwAj8TdzUlQNYd9qEzK50zH8/gf
+Date: Thu, 20 Oct 2022 00:32:06 +0530
+From: Deepak R Varma <drv@mailo.com>
+To: outreachy@lists.linux.dev
+Subject: [KERNEL NEWBIES ACCESS] drv@mailo.com
+Message-ID: <Y1BJrtzi5gk2lzXn@debian-BULLSEYE-live-builder-AMD64>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -51,43 +28,11 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
-checkpatch found extra tabs in two conditional statements in
-rtw_ieee80211.c. Should be one tab instead of two.
+Hello,
+I intend to contribute to the kernelnewbies wiki. Kindly allow me access to the
+wiki edit capability.
 
-Signed-off-by: Emily Peri <eperi1024@gmail.com>
----
- drivers/staging/rtl8723bs/core/rtw_ieee80211.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+Thank you,
+./drv
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_ieee80211.c b/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
-index 3d8a64f69448..30e7457a9c31 100644
---- a/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
-@@ -1063,18 +1063,18 @@ void rtw_get_bcn_info(struct wlan_network *pnetwork)
- 	/* parsing HT_CAP_IE */
- 	p = rtw_get_ie(pnetwork->network.ies + _FIXED_IE_LENGTH_, WLAN_EID_HT_CAPABILITY, &len, pnetwork->network.ie_length - _FIXED_IE_LENGTH_);
- 	if (p && len > 0) {
--			pht_cap = (struct ieee80211_ht_cap *)(p + 2);
--			pnetwork->bcn_info.ht_cap_info = le16_to_cpu(pht_cap->cap_info);
-+		pht_cap = (struct ieee80211_ht_cap *)(p + 2);
-+		pnetwork->bcn_info.ht_cap_info = le16_to_cpu(pht_cap->cap_info);
- 	} else {
--			pnetwork->bcn_info.ht_cap_info = 0;
-+		pnetwork->bcn_info.ht_cap_info = 0;
- 	}
- 	/* parsing HT_INFO_IE */
- 	p = rtw_get_ie(pnetwork->network.ies + _FIXED_IE_LENGTH_, WLAN_EID_HT_OPERATION, &len, pnetwork->network.ie_length - _FIXED_IE_LENGTH_);
- 	if (p && len > 0) {
--			pht_info = (struct HT_info_element *)(p + 2);
--			pnetwork->bcn_info.ht_info_infos_0 = pht_info->infos[0];
-+		pht_info = (struct HT_info_element *)(p + 2);
-+		pnetwork->bcn_info.ht_info_infos_0 = pht_info->infos[0];
- 	} else {
--			pnetwork->bcn_info.ht_info_infos_0 = 0;
-+		pnetwork->bcn_info.ht_info_infos_0 = 0;
- 	}
- }
- 
--- 
-2.34.1
 
