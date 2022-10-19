@@ -1,36 +1,48 @@
-Received: from msg-1.mailo.com (msg-1.mailo.com [213.182.54.11])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-lj1-f172.google.com (mail-lj1-f172.google.com [209.85.208.172])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A56A37E;
-	Wed, 19 Oct 2022 15:29:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
-	t=1666193377; bh=UiL1Iaru5FKLDfW2TZHa5bXJhCrCD//G7RrOecKut5I=;
-	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
-	 MIME-Version:Content-Type:In-Reply-To;
-	b=eVK/VWD3QaPqu9Yi/knaOPGldppHJNKZq+7xtQuYprb7jaczWL3lpd0oEKO//miK5
-	 nhR7S4DetL37Wq6u9wiyur8IPbLFSFw7RgMakjrMGytrF+l7Ia+ae7sc1fi8ncq2F4
-	 3KfPokfrzs0G+KogAlMT6zBNb7Ec4oiPwWgtQt6g=
-Received: by b-1.in.mailobj.net [192.168.90.11] with ESMTP
-	via [213.182.55.206]
-	Wed, 19 Oct 2022 17:29:37 +0200 (CEST)
-X-EA-Auth: 4uPeXEa/J4DtPm7TM+egQMdxr22kESKAjQNFaV7UP99mI+kxoWn7oBgRZlc06D0p+tDi1BiLSB0f58DyqCB/VhohnfwyXCXC
-Date: Wed, 19 Oct 2022 20:58:17 +0530
-From: Deepak R Varma <drv@mailo.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Cc: Julia Lawall <julia.lawall@inria.fr>, outreachy@lists.linux.dev,
-	pure.logic@nexus-software.ie, johan@kernel.org, elder@kernel.org,
-	greybus-dev@lists.linaro.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] staging: greybus: loopback: enclose macro statements in
- do-while loop
-Message-ID: <Y1AXkRJRtmnEom5T@debian-BULLSEYE-live-builder-AMD64>
-References: <Y0wS4HQo9m/W/TrQ@debian-BULLSEYE-live-builder-AMD64>
- <alpine.DEB.2.22.394.2210161649400.2876@hadrien>
- <Y0wdDTUBrUT/cr9w@lion2204>
- <alpine.DEB.2.22.394.2210161709440.2876@hadrien>
- <Y0wi4itS3d8aExFc@debian-BULLSEYE-live-builder-AMD64>
- <Y0wmC2oi0TOpvpPM@kroah.com>
- <Y0woVSgGfUuvJUzY@debian-BULLSEYE-live-builder-AMD64>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B1A8F7E;
+	Wed, 19 Oct 2022 16:05:09 +0000 (UTC)
+Received: by mail-lj1-f172.google.com with SMTP id h8so22785834lja.11;
+        Wed, 19 Oct 2022 09:05:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-disposition:mime-version:message-id:subject:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=2YCDHsYWcIY96mUtSqodHKe31qpMLaWDuKz478pSr00=;
+        b=KHhsVmAmNGZintp/YIDAd4pSn0E5e4hSFuGvoY3fG+1VV7PhE59oWENJD8FG30TEEr
+         0ilGqC28Ik/psjVonwjvg6NUDSasG8ZN0rYkQepcXQrRdA1IfXqweE6Oc9Z7ZlD2s4WS
+         XNZUohjsBfohMb9ulzAdIq+6ukXKwPMby4m5bpGY43zRnf7RSCvK3lrX4U3Gcj+2I2bw
+         V+heCQ3Huv6aFh6iRdVogsawozkdU0dKgJh9KhUgVsoLAr5P0oO7CzHtUiMS8aT7NDmR
+         5GSfkUadveG1N/RNPalqsJPUwO9rI4cetSRu7q+suD6YvwYLCPSRdlxEjkmEda/Tl2ZG
+         IRBA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-disposition:mime-version:message-id:subject:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=2YCDHsYWcIY96mUtSqodHKe31qpMLaWDuKz478pSr00=;
+        b=k/taKLqlWwlEEJCMF/WF+4pBOdB5aXdlsHyJ1GYTpqk0qJV3h03F9I/6NCf7zi+P0M
+         hFlDMqvTKNHmj/2QsU7bDTFgOL8cDUW9r0XsYJyY5YXe9hp9tG+7QPuAV7cBs5itHH1D
+         3P7MFuS+evmBiDeJ4oqyx8l7W9i04Py2dcrdny4IyHvEdKhgGlbhQxL8Z7vitBfl89Ul
+         XDIa5jPc8vn4ewPqcwtJLut44xTsAsoImM9W+N89Qt8FTT6XDb+r3PtIJRB+NaWarz6N
+         4i+t7Y8hBM8Xz6nRMExvpWzo7Mx5kLZKNQOFkxJ7P4QjDj80IFc3G4TPAO5yU7otPuF7
+         F40Q==
+X-Gm-Message-State: ACrzQf0CJ+E8C3vB2Bk4L54h+6JINBOgHaxsmRUWQwzrUxLFsP6Eyky/
+	WIGR81R4L2STk1CyV04wFF3y4vkTjjpntQ==
+X-Google-Smtp-Source: AMsMyM6fO5UYQBYujCKvc6CqltqY94UNh41cSyMFXrGhpAbyftVmOEivr9+vv8IHfUrxjlCqIyuwKA==
+X-Received: by 2002:a05:651c:88e:b0:26d:dd92:73e7 with SMTP id d14-20020a05651c088e00b0026ddd9273e7mr3094859ljq.503.1666195507195;
+        Wed, 19 Oct 2022 09:05:07 -0700 (PDT)
+Received: from elroy-temp-vm ([20.240.130.248])
+        by smtp.gmail.com with ESMTPSA id g3-20020a056512118300b0049876c1bb24sm2337411lfr.225.2022.10.19.09.05.06
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 19 Oct 2022 09:05:06 -0700 (PDT)
+Date: Wed, 19 Oct 2022 16:05:06 +0000
+From: Tanjuate Brunostar <tanjubrunostar0@gmail.com>
+To: greg@kroah.com, forest@alittletooquiet.net,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy@lists.linux.dev
+Subject: [PATCH] staging: vt6655: Fix Lines should not end with a '('
+Message-ID: <Y1AgMjTsmy3C5qcK@elroy-temp-vm.gaiao0uenmiufjlowqgp5yxwdh.gvxx.internal.cloudapp.net>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -39,71 +51,75 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <Y0woVSgGfUuvJUzY@debian-BULLSEYE-live-builder-AMD64>
 
-On Sun, Oct 16, 2022 at 11:50:45AM -0400, Deepak R Varma wrote:
-> On Sun, Oct 16, 2022 at 05:40:59PM +0200, Greg KH wrote:
-> > On Sun, Oct 16, 2022 at 11:27:30AM -0400, Deepak R Varma wrote:
-> > > On Sun, Oct 16, 2022 at 05:10:17PM +0200, Julia Lawall wrote:
-> > > >
-> > > >
-> > > > On Sun, 16 Oct 2022, Deepak R Varma wrote:
-> > > >
-> > > > > On Sun, Oct 16, 2022 at 04:51:09PM +0200, Julia Lawall wrote:
-> > > > > >
-> > > > > >
-> > > > > > On Sun, 16 Oct 2022, Deepak R Varma wrote:
-> > > > > >
-> > > > > > > Include multiple statements of macro definition inside do-while{0} loop
-> > > > > > > to avoid possible partial program execution. Issue reported by
-> > > > > > > checkpatch script:
-> > > > > > >
-> > > > > > > ERROR: Macros with multiple statements should be enclosed in a do - while loop
-> > > > > >
-> > > > > > I don't think this change will compile.  See if you can figure out why
-> > > > > > not.
-> > > > >
-> > > > > It did compile. I built the greybus driver and loaded it as well with the
-> > > > > modinfo tool. Can you please tell why you think it won't compile?
-> > > >
-> > > > Do you have a .o file for the .c file that you changed?
-> > >
-> > > I see many .o files and a greybus.ko as well, but not the loopback.o
-> > > Am I missing anything with my configuration? I did set Greybus Support to (M) in
-> > > the menuconfig.
-> >
-> > CONFIG_GREYBUS_LOOPBACK has to be enabled in order to build the
-> > drivers/staging/greybus/loopback.c file.
-> >
-> > A simple check would be to do:
-> > 	make drivers/staging/greybus/loopback.o
-> >
-> > does that work with your change?
->
-> No, it did not. I understand why it did not. My apologies for not looking into
-> the build of loopback.o file when the greybus module was rebuilt.
->
-> Please ignore my patch.
+Code style warnings reported by checkpatch.
+Improve the layout of a function header:
+Put the first parameter immediately after the '(' and align the other
+parameters underneath it.
 
-I just received a message from Kernel Test Robot that this patch failed to
-compile. I had requested to drop/ignore this patch. However, looks like it
-included in the staging-testing tree????
+Signed-off-by: Tanjuate Brunostar <tanjubrunostar0@gmail.com>
+---
+ drivers/staging/vt6655/rxtx.c | 44 ++++++++++++++++-------------------
+ 1 file changed, 20 insertions(+), 24 deletions(-)
 
-Let me know anything required from me to fix the bot complaint. Thank you.
-
->
-> Thank you Julia and Greg for the feedback.
-> ./drv
->
->
->
-> >
-> > thanks,
-> >
-> > greg k-h
-> >
->
->
->
-
+diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
+index 5bdb5176772c..ff855def0bd5 100644
+--- a/drivers/staging/vt6655/rxtx.c
++++ b/drivers/staging/vt6655/rxtx.c
+@@ -87,33 +87,29 @@ static const unsigned short wFB_Opt1[2][5] = {
+ /*---------------------  Static Functions  --------------------------*/
+ static
+ void
+-s_vFillRTSHead(
+-	struct vnt_private *pDevice,
+-	unsigned char byPktType,
+-	void *pvRTS,
+-	unsigned int	cbFrameLength,
+-	bool bNeedAck,
+-	bool bDisCRC,
+-	struct ieee80211_hdr *hdr,
+-	unsigned short wCurrentRate,
+-	unsigned char byFBOption
+-);
++s_vFillRTSHead(struct vnt_private *pDevice,
++		unsigned char byPktType,
++		void *pvRTS,
++		unsigned int	cbFrameLength,
++		bool bNeedAck,
++		bool bDisCRC,
++		struct ieee80211_hdr *hdr,
++		unsigned short wCurrentRate,
++		unsigned char byFBOption);
+ 
+ static
+ void
+-s_vGenerateTxParameter(
+-	struct vnt_private *pDevice,
+-	unsigned char byPktType,
+-	struct vnt_tx_fifo_head *,
+-	void *pvRrvTime,
+-	void *pvRTS,
+-	void *pvCTS,
+-	unsigned int	cbFrameSize,
+-	bool bNeedACK,
+-	unsigned int	uDMAIdx,
+-	void *psEthHeader,
+-	unsigned short wCurrentRate
+-);
++s_vGenerateTxParameter(struct vnt_private *pDevice,
++		unsigned char byPktType,
++		struct vnt_tx_fifo_head *,
++		void *pvRrvTime,
++		void *pvRTS,
++		void *pvCTS,
++		unsigned int	cbFrameSize,
++		bool bNeedACK,
++		unsigned int	uDMAIdx,
++		void *psEthHeader,
++		unsigned short wCurrentRate);
+ 
+ static unsigned int
+ s_cbFillTxBufHead(struct vnt_private *pDevice, unsigned char byPktType,
+-- 
+2.34.1
 
