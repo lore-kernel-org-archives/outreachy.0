@@ -1,34 +1,38 @@
-Received: from msg-2.mailo.com (msg-2.mailo.com [213.182.54.12])
+Received: from outgoing.mit.edu (outgoing-auth-1.mit.edu [18.9.28.11])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2F3333C20;
-	Thu, 20 Oct 2022 12:56:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
-	t=1666270576; bh=duRMsrf/gJ7eie8q7NwBQZsK46u4dqLgK9IzhR286ik=;
-	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
-	 MIME-Version:Content-Type:In-Reply-To;
-	b=k1ZMMcqFHwn/r84X+NBia1cQtwpT+tc8fizY1FbI3tyBftJBUExjd6/z2LEehkaQo
-	 mumawSv6tN0xfUN6J1gxnbPlDfYp7amUZnw8+TOyDSVsvKuyocaf0gxijr8qWLnV5c
-	 2rpSDNk6PVusk/kLfGATqNVIizzch93J0ZuTv9/0=
-Received: by b-1.in.mailobj.net [192.168.90.11] with ESMTP
-	via [213.182.55.206]
-	Thu, 20 Oct 2022 14:56:16 +0200 (CEST)
-X-EA-Auth: AlTAwPZszBxM1uQBnXrH9iLqAFvpsaWg3rmVNN9Wnhue8gs3W50bHpDCKoKsIAiY6x1b92R8GsmPP7c7aY0iGD4rRILIiyZc
-Date: Thu, 20 Oct 2022 18:26:12 +0530
-From: Deepak R Varma <drv@mailo.com>
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: outreachy@lists.linux.dev, gregkh@linuxfoundation.org,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	kumarpraveen@linux.microsoft.com, saurabh.truth@gmail.com
-Subject: Re: [PATCH v4 2/2] staging: most: dim2: correct misleading struct
- type name
-Message-ID: <Y1FFbB8BWi1IHYgB@debian-BULLSEYE-live-builder-AMD64>
-References: <cover.1666208065.git.drv@mailo.com>
- <6b772a1ac06ae3b0d63e198e7238c1590b14703a.1666208065.git.drv@mailo.com>
- <alpine.DEB.2.22.394.2210192208290.3068@hadrien>
- <Y1BeZYBf/xsW8F4O@debian-BULLSEYE-live-builder-AMD64>
- <Y1E1kv6YSmxVzjkf@debian-BULLSEYE-live-builder-AMD64>
- <404cc67c-efd6-4a70-c3ca-7958db21bcb@inria.fr>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8E6C133DC;
+	Thu, 20 Oct 2022 14:43:08 +0000 (UTC)
+Received: from cwcc.thunk.org (pool-173-48-120-46.bstnma.fios.verizon.net [173.48.120.46])
+	(authenticated bits=0)
+        (User authenticated as tytso@ATHENA.MIT.EDU)
+	by outgoing.mit.edu (8.14.7/8.12.4) with ESMTP id 29KEdmUl009069
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 20 Oct 2022 10:39:48 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mit.edu; s=outgoing;
+	t=1666276789; bh=kG1ree45kEImwHBAJ1rz5gdQQphkhdtRHQIe70Qv3bQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=Bt6zkpa0llmvbW8hygwCb6IzIQFAarbADX+6SD4I9Gf9VczYrRa/22Q23QAkXffRt
+	 A1LoTxldWA6YQeUhMp35reOCWxzjy3QPvUsJhPyedjV2C2bPF7WvpkfDQ3UCtPHLrk
+	 9JjzmiZHA86Nn9jpNWSPdo6lP7WisDjFZPEJqnff/TVYCE9a53uqF+VNpSHurf83mj
+	 uGgliJsNUMLzktOo/XCGx3KU5P4nybYfAO5EDUWhU3JGkAEbORx0l0qH9h+TGQ+mV2
+	 yBMNpOfUNw/djKpwE1DkuO8Y83pm+smQHATBeZGaXEmDgTQsnvy4fN6OLB5vPKpSg6
+	 fzyeFCHnSvyLg==
+Received: by cwcc.thunk.org (Postfix, from userid 15806)
+	id DEEA415C3AD1; Thu, 20 Oct 2022 10:39:47 -0400 (EDT)
+Date: Thu, 20 Oct 2022 10:39:47 -0400
+From: "Theodore Ts'o" <tytso@mit.edu>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: Tanju Brunostar <tanjubrunostar0@gmail.com>,
+        Bhaskar Chowdhury <unixbhaskar@gmail.com>,
+        linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev,
+        outreachy@lists.linux.dev
+Subject: Re: Request for assistance
+Message-ID: <Y1Fds7BJjY/OcwU0@mit.edu>
+References: <Y1Eqa7uKB+Wk+Mb+@elroy-temp-vm.gaiao0uenmiufjlowqgp5yxwdh.gvxx.internal.cloudapp.net>
+ <CAOkYk0iU0B98JsH77avky--AS19V=GhQox2f_b4PAG3ZBB+SVQ@mail.gmail.com>
+ <CAHJEyKX=yyuyYFajs880CuPdc019dBOm_LCkgXHzjFaA-Jgt2A@mail.gmail.com>
+ <Y1E6qYkzkRxlloNp@kroah.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -37,90 +41,26 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <404cc67c-efd6-4a70-c3ca-7958db21bcb@inria.fr>
+In-Reply-To: <Y1E6qYkzkRxlloNp@kroah.com>
 
-On Thu, Oct 20, 2022 at 02:06:41PM +0200, Julia Lawall wrote:
->
->
-> On Thu, 20 Oct 2022, Deepak R Varma wrote:
->
-> > On Thu, Oct 20, 2022 at 02:00:29AM +0530, Deepak R Varma wrote:
-> > > On Wed, Oct 19, 2022 at 10:08:53PM +0200, Julia Lawall wrote:
-> > > >
-> > > >
-> > > > On Thu, 20 Oct 2022, Deepak R Varma wrote:
-> > > >
-> > > > > Correct misleading struct type name dim_ch_state_t to dim_ch_state
-> > > > > since this not a typedef but a normal structure declaration.
-> > > > >
-> > > > > Suggested-by: Julia Lawall <julia.lawall@inria.fr>
-> > > > > Signed-off-by: Deepak R Varma <drv@mailo.com>
-> > > > > ---
-> > > > >
-> > > > > Changes in v4:
-> > > > >    1. Correct patch subject and log message. Use struct type name instead of
-> > > > >       variable name for the change description. Feedback from julia.lawall@inria.fr
-> > > > >
-> > > > > Changes in v3:
-> > > > >    1. Patch introduced in the patch set
-> > > > >
-> > > > >  drivers/staging/most/dim2/dim2.c | 2 +-
-> > > > >  drivers/staging/most/dim2/hal.c  | 4 ++--
-> > > > >  drivers/staging/most/dim2/hal.h  | 6 +++---
-> > > > >  3 files changed, 6 insertions(+), 6 deletions(-)
-> > > > >
-> > > > > diff --git a/drivers/staging/most/dim2/dim2.c b/drivers/staging/most/dim2/dim2.c
-> > > > > index 4c1f27898a29..a69a61a69283 100644
-> > > > > --- a/drivers/staging/most/dim2/dim2.c
-> > > > > +++ b/drivers/staging/most/dim2/dim2.c
-> > > > > @@ -161,7 +161,7 @@ static int try_start_dim_transfer(struct hdm_channel *hdm_ch)
-> > > > >  	struct list_head *head = &hdm_ch->pending_list;
-> > > > >  	struct mbo *mbo;
-> > > > >  	unsigned long flags;
-> > > > > -	struct dim_ch_state_t st;
-> > > > > +	struct dim_ch_state st;
-> > > >
-> > > > Is there another use in service_done_flag?
-> > >
-> > > Hi,
-> > > I did not understand your question fully. This is from a different function
-> > > try_start_dim_transfer where the variable st is used down the line in the
-> > > execution. This time the channel state is retrieved by calling
-> > > dim_get_channel_state function. The state is simply computed and set. Should I
-> > > improve this as well?
-> > >
-> > > If you are asking something different, could you please elaborate?
-> >
-> > Hi Julia,
-> > Can you please review and comment on my response?
->
-> In my kernel there is an occurrence of the type name in service_done_flag.
-> But I have the mainline, not Greg's staging tree, so there could be some
-> differences.
->
-> When I do git grep dim_ch_state_t, I get two occurrences in
-> drivers/staging/most/dim2/dim2.c
+Tanju, some additional hints.  First of all, please don't send cleanup
+patches to address checkpatch --file complaints about overly long
+lines.  It's generally not worth the code churn.
 
-Okay. Still unclear. Following snip is what I see in my local staging-testing branch.
+Secondly for code that *you* are writing, think about why you have
+lines which are exceeding the line width in the first place.  Is it
+because code is being nested too deeply, and perhaps some judicious
+function refactoring with good function names might make the code
+clearer?  Would adding some temporary variables that are judiciously
+named make the code look clearer?
 
-<snip>
-	drv@debian:~/git/kernels/staging$ git grep dim_ch_state_t
-	drivers/staging/most/dim2/dim2.c:       struct dim_ch_state_t st;
-	drivers/staging/most/dim2/dim2.c:       struct dim_ch_state_t st;
-	drivers/staging/most/dim2/hal.c:struct dim_ch_state_t *dim_get_channel_state(struct dim_channel *ch,
-	drivers/staging/most/dim2/hal.c:                                             struct dim_ch_state_t *state_ptr)
-	drivers/staging/most/dim2/hal.h:struct dim_ch_state_t {
-	drivers/staging/most/dim2/hal.h:struct dim_ch_state_t *dim_get_channel_state(struct dim_channel *ch,
-	drivers/staging/most/dim2/hal.h:                                             struct dim_ch_state_t *state_ptr);
-	drv@debian:~/git/kernels/staging$
-</snip>
+The rules about "thou shalt never have lines which exceed 78
+characters" are rules of thumb.  The high level goal is to make the
+code more readable and easier to understand, since good code is
+maintainable code.  And sometimes it's not just about where to split
+lines of code but whether there is a better way to structure the code
+so that long lines aren't needed in the first place.
 
-Does that help?
+Cheers,
 
-./drv
-
-
->
-> julia
-
-
+					- Ted
