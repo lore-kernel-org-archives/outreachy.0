@@ -1,19 +1,19 @@
 Received: from linux.microsoft.com (linux.microsoft.com [13.77.154.182])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id ECB797B
-	for <outreachy@lists.linux.dev>; Thu, 20 Oct 2022 04:01:43 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 2F6E67B;
+	Thu, 20 Oct 2022 04:04:11 +0000 (UTC)
 Received: from [192.168.1.139] (unknown [122.171.21.142])
-	by linux.microsoft.com (Postfix) with ESMTPSA id 3E5A120FCF6F;
-	Wed, 19 Oct 2022 21:01:36 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 3E5A120FCF6F
+	by linux.microsoft.com (Postfix) with ESMTPSA id 94EE920FCF6F;
+	Wed, 19 Oct 2022 21:04:09 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 94EE920FCF6F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
-	s=default; t=1666238496;
-	bh=pAtU82z6sk1IgG8jekMJ8Us+ebFeZlSAbwHUaXuJKw0=;
+	s=default; t=1666238650;
+	bh=ZxKeui9DDYM5zMtc/eLYUVIUvOOnKSjXi5ZjbM8qn5I=;
 	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=FxHX9bGQqeZhb2EswUfq2y9TKLPzK9+pH3u1cVqjdPVcAB6bVKuOLRzHk1wwiS+uo
-	 6YAZ1DGK88c7ccLI5nsnZE4ZkiU96dGdaK5Luz8AJmjGaTDgyQkp/p+ZeKBSCDqzAA
-	 cx/Gsbh2MiyIlmqc1ATFRQhW1DUXAdL4ef+ffPHw=
-Message-ID: <0a6a6853-5720-28d2-13de-c5e7334ff7ba@linux.microsoft.com>
-Date: Thu, 20 Oct 2022 09:31:33 +0530
+	b=OPycTYoDbKI+GsVsg6X01LXGyMsdDUarjXCdiWfCt4VuuWqIVTrHG67P+R1iRnq4N
+	 UI7GyxokT/PUe4jm+59sFIpjJlxqnfBh+iykKy4083rytW/mLBjZYHPeKAmbpNoRPr
+	 AX5mo7cNmkXzfQ23baAylUsznIOCxOw0O0ohOMlo=
+Message-ID: <7025b8d8-e23a-0148-75b5-a06c18c6dbcb@linux.microsoft.com>
+Date: Thu, 20 Oct 2022 09:34:07 +0530
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -22,42 +22,62 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
  Thunderbird/102.3.3
-Subject: Re: Weird formatting in rtl8723bs driver code?
-To: Emily Peri <eperi1024@gmail.com>, outreachy@lists.linux.dev
-References: <Y1C179JmHDc3eI9G@marshmallow>
+Subject: Re: [PATCH 1/3] staging: rtl8723bs: fix white space warnings
 Content-Language: en-US
+To: Emily Peri <eperi1024@gmail.com>, gregkh@linuxfoundation.org,
+ outreachy@lists.linux.dev, linux-staging@lists.linux.dev,
+ linux-kernel@vger.kernel.org
+References: <cover.1666230736.git.eperi1024@gmail.com>
+ <45558673b486808e7978e2e4838c6ce5a2485b8b.1666230736.git.eperi1024@gmail.com>
 From: Praveen Kumar <kumarpraveen@linux.microsoft.com>
-In-Reply-To: <Y1C179JmHDc3eI9G@marshmallow>
+In-Reply-To: <45558673b486808e7978e2e4838c6ce5a2485b8b.1666230736.git.eperi1024@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 
-On 20-10-2022 08:13, Emily Peri wrote:
-> I'm working on cleaning up the rtl8723bs driver with checkpatch, but I
-> noticed that some of the variable declarations have differnt amounts of
-> whitespace, like this:
+On 20-10-2022 07:40, Emily Peri wrote:
+> Fix the following checkpatch warnings in rtw_ioctl_set:
+> 1) Add missing blankline after declaration
+> 2) Replace spaces used for indent with tab
+> 3) Remove space before tab
 > 
->         struct cmd_obj  *ph2c;
->         struct sitesurvey_parm  *psurveyPara;
-
-Addition to white-spaces you can also rework on making variable names to Linux standards, something like "psurveyPara" to "psurvey_para".
-
-
->         struct cmd_priv                                 *pcmdpriv = &padapter->cmdpriv;
-
-This needs some formatting in my understanding. 
-
->         struct mlme_ext_priv    *pmlmeext = &padapter->mlmeextpriv;
+> Signed-off-by: Emily Peri <eperi1024@gmail.com>
+> ---
+>  drivers/staging/rtl8723bs/core/rtw_ioctl_set.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
 > 
-> At first I thought this was intentional, but now I'm wondering if this
-> is an accident. It's normal to just use one space between the type and
-> the variable name, right?
-> 
+> diff --git a/drivers/staging/rtl8723bs/core/rtw_ioctl_set.c b/drivers/staging/rtl8723bs/core/rtw_ioctl_set.c
+> index 8c11daff2d59..354e61a8f2bd 100644
+> --- a/drivers/staging/rtl8723bs/core/rtw_ioctl_set.c
+> +++ b/drivers/staging/rtl8723bs/core/rtw_ioctl_set.c
+> @@ -78,6 +78,7 @@ u8 rtw_do_join(struct adapter *padapter)
+>  		goto exit;
+>  	} else {
+>  		int select_ret;
+> +
+>  		spin_unlock_bh(&(pmlmepriv->scanned_queue.lock));
+>  		select_ret = rtw_select_and_join_from_scanned_queue(pmlmepriv);
+>  		if (select_ret == _SUCCESS) {
+> @@ -311,7 +312,7 @@ u8 rtw_set_802_11_infrastructure_mode(struct adapter *padapter,
+>  		if ((*pold_state == Ndis802_11Infrastructure) || (*pold_state == Ndis802_11IBSS)) {
+>  			if (check_fwstate(pmlmepriv, _FW_LINKED) == true)
+>  				rtw_indicate_disconnect(padapter); /* will clr Linked_state; before this function, we must have checked whether issue dis-assoc_cmd or not */
+> -	       }
+> +		}
 
-In my understanding and what I've observed we use one space between the data type and variable name, but would let others to comment on this. Thanks.
+I think indentation is wrong here, it should be only 1 tab instead of 2 tabs ?
 
-> 
-> --Emily
-
+>  
+>  		*pold_state = networktype;
+>  
+> @@ -367,7 +368,7 @@ u8 rtw_set_802_11_disassociate(struct adapter *padapter)
+>  
+>  u8 rtw_set_802_11_bssid_list_scan(struct adapter *padapter, struct ndis_802_11_ssid *pssid, int ssid_max_num)
+>  {
+> -	struct	mlme_priv 	*pmlmepriv = &padapter->mlmepriv;
+> +	struct	mlme_priv	*pmlmepriv = &padapter->mlmepriv;
+>  	u8 res = true;
+>  
+>  	if (!padapter) {
 
 Regards,
 
