@@ -1,35 +1,35 @@
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B75375C96
-	for <outreachy@lists.linux.dev>; Thu, 20 Oct 2022 17:27:09 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A44555C96
+	for <outreachy@lists.linux.dev>; Thu, 20 Oct 2022 17:33:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1666286829; x=1697822829;
+  t=1666287235; x=1697823235;
   h=date:from:to:subject:message-id:mime-version;
-  bh=46u4QZ1bT1g3HXeKU6+AgyUtr//z4xnXVKDfgaC9GHI=;
-  b=iX6Qb6Vsf3sRwiTYFdB0wgx2j84IVfSU9nmq3VYDVp1oThcmgosvn97X
-   LJtQGTcel3868Y0FPEZ1u9YwfRNL00jm4pqdqvluHm5pHHyuMw8CaHpKn
-   6mg9Dly/db5EjKfc4q+rzq79lEx1fYCWjOOsIrm64rtO1DAjRPEreBJBO
-   X9XJannoxHVljAIkaSKPRxAAsdp/k2Qw3DASl7c6zL4AitPV3VNKCVK86
-   1RRx5tLnnyKKPVkiFcT4ajWU2pJkGnMBS9zp0Sryyn+/wmOGewGw+TlmP
-   ErCuE6eWW50pMSJZuEVj85V+lRMPxiiRk2HIPtZh3Wttz8k9yOBFlCiC+
-   w==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10506"; a="304396734"
+  bh=kn0z8uiT1Xi2vwwo8HnZhd7+60FtheSC3zmmMZrowUQ=;
+  b=L93iocBl9CeQxV9ufrRVoVNEectYELNF+SRlul5DV2CSXeXbkkkVn36e
+   3Xlt0s420eRPt9XrN/NjflTrPaijbkdL93ODdzVglwkaQ/pDLH1B/3Gfv
+   83ECCEOoN1fbGFMYod4xkcIjYsJ9qkaxVkGp+qMPLW1kMeCZuUPSxjt/y
+   ANYA7BcqVGGKmI2gWyPS2T/Lv8Yfpuwt+6bp7uY9VtI0DjVqIGWWB+RnD
+   PmkwV14AyBEiAom131Tej+PdQlVFeGXlBn1QSmBVDT/PxXJMcVtO7ObhS
+   cXG8v/fXqSAVyyaxrlmxfdNUcyeqWHGaYRp9UtNV2SAb5XNmi1qOh9wdZ
+   Q==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10506"; a="306778252"
 X-IronPort-AV: E=Sophos;i="5.95,199,1661842800"; 
-   d="scan'208";a="304396734"
+   d="scan'208";a="306778252"
 Received: from fmsmga007.fm.intel.com ([10.253.24.52])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Oct 2022 10:27:07 -0700
-X-IronPort-AV: E=McAfee;i="6500,9779,10506"; a="632387036"
+  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Oct 2022 10:33:32 -0700
+X-IronPort-AV: E=McAfee;i="6500,9779,10506"; a="632391420"
 X-IronPort-AV: E=Sophos;i="5.95,199,1661842800"; 
-   d="scan'208";a="632387036"
+   d="scan'208";a="632391420"
 Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.209.41.40])
-  by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Oct 2022 10:27:07 -0700
-Date: Thu, 20 Oct 2022 10:27:04 -0700
+  by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Oct 2022 10:33:32 -0700
+Date: Thu, 20 Oct 2022 10:33:30 -0700
 From: Alison Schofield <alison.schofield@intel.com>
 To: Outreachy Linux Kernel <outreachy@lists.linux.dev>
-Subject: [Outreachy Info] Track patches in staging tree
-Message-ID: <Y1GE6ImSoBuYCTjT@aschofie-mobl2>
+Subject: [Outreachy Info] Recording Contributions
+Message-ID: <Y1GGasJ+q86FZqW2@aschofie-mobl2>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -40,28 +40,22 @@ Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
 
-In case you are wondering the status of your patches -
+Hi Applicants,
 
-When GregKH accepts your patch you get an acknowledgment email directly.
-If he specifically rejects it, you also get feedback from him on what
-to improve. He won't accept a patch where another reviewer has already
-requested an update. So, once you get any feedback, revise and send the
-new version.
+Thanks for starting your applications and recording your contributions
+in your Outreachy Dashboard.
 
-You can follow the staging-testing tree [1] and see if Greg has 
-merged patches since your submittal. Those *are* accepted patches
-and should be recorded as contributions in your Outreachy dashboard.
+Rather than adding an entry for every cleanup patch, you may add one
+link to all your patches.
 
-Occasionally a patch gets missed in a flurry of patches. That might
-make you think about RESENDing. See the tutorial directions about
-resending.
+For example, Emily can do this:
+https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/log/?h=staging-testing&qt=grep&q=Emily+Peri
 
-For example, at this moment I can see that Tanjuate, Deepak, and
-Emily (sorry if I'm not recognizing another name yet) had patches
-accepted in the last couple of hours.
+That'll group your cleanup patches into one contribution.
 
-Hope that's useful,
+As you have other contributions, like project specific tasks for
+Coccinelle, or perhaps updates to the First Patch Tutorial, record
+each as a separate contribution.
+
+Thanks,
 Alison
-
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/log/?h=staging-testing
-
