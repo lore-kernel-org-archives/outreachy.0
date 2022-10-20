@@ -1,26 +1,35 @@
-Received: from msg-2.mailo.com (msg-2.mailo.com [213.182.54.12])
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6FDCC5C96;
-	Thu, 20 Oct 2022 17:20:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
-	t=1666286405; bh=y6f5yuwFB+7dnXtKXxkno+O53LHKdZ313hR7lgO+0+8=;
-	h=X-EA-Auth:Date:From:To:Subject:Message-ID:MIME-Version:
-	 Content-Type;
-	b=FbODB1m/snmKR53dyym2wqd6Gay0C6rLOo+K86CJCJCk4Xf+yEhg3vnvY5bJbwB2v
-	 3hHER9fH5oznV88TxzD99EsxH9V0wMjFE47PIWRQi3oKZ8xEjno9fOZReDSNEvYkGA
-	 dpDOraP8vkHzshmUcQ4jnOWV84Y3L0twWyK0YT00=
-Received: by b-5.in.mailobj.net [192.168.90.15] with ESMTP
-	via [213.182.55.206]
-	Thu, 20 Oct 2022 19:20:04 +0200 (CEST)
-X-EA-Auth: wpa2NRXTxRpbcD6NcHXdGUXpqYLgRLwpFui68DnSAbKr31OTGDY/COyXD9aKaffAbelAvE0GWuk1GAAiWY9OcUfuTBr7wkDw
-Date: Thu, 20 Oct 2022 22:50:00 +0530
-From: Deepak R Varma <drv@mailo.com>
-To: outreachy@lists.linux.dev, gregkh@linuxfoundation.org,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	kumarpraveen@linux.microsoft.com, saurabh.truth@gmail.com
-Subject: [PATCH v5] staging: most: dim2: correct misleading struct type name
-Message-ID: <Y1GDQO+06fD24Pf/@debian-BULLSEYE-live-builder-AMD64>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B75375C96
+	for <outreachy@lists.linux.dev>; Thu, 20 Oct 2022 17:27:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1666286829; x=1697822829;
+  h=date:from:to:subject:message-id:mime-version;
+  bh=46u4QZ1bT1g3HXeKU6+AgyUtr//z4xnXVKDfgaC9GHI=;
+  b=iX6Qb6Vsf3sRwiTYFdB0wgx2j84IVfSU9nmq3VYDVp1oThcmgosvn97X
+   LJtQGTcel3868Y0FPEZ1u9YwfRNL00jm4pqdqvluHm5pHHyuMw8CaHpKn
+   6mg9Dly/db5EjKfc4q+rzq79lEx1fYCWjOOsIrm64rtO1DAjRPEreBJBO
+   X9XJannoxHVljAIkaSKPRxAAsdp/k2Qw3DASl7c6zL4AitPV3VNKCVK86
+   1RRx5tLnnyKKPVkiFcT4ajWU2pJkGnMBS9zp0Sryyn+/wmOGewGw+TlmP
+   ErCuE6eWW50pMSJZuEVj85V+lRMPxiiRk2HIPtZh3Wttz8k9yOBFlCiC+
+   w==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10506"; a="304396734"
+X-IronPort-AV: E=Sophos;i="5.95,199,1661842800"; 
+   d="scan'208";a="304396734"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Oct 2022 10:27:07 -0700
+X-IronPort-AV: E=McAfee;i="6500,9779,10506"; a="632387036"
+X-IronPort-AV: E=Sophos;i="5.95,199,1661842800"; 
+   d="scan'208";a="632387036"
+Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.209.41.40])
+  by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Oct 2022 10:27:07 -0700
+Date: Thu, 20 Oct 2022 10:27:04 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: Outreachy Linux Kernel <outreachy@lists.linux.dev>
+Subject: [Outreachy Info] Track patches in staging tree
+Message-ID: <Y1GE6ImSoBuYCTjT@aschofie-mobl2>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -30,93 +39,29 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
-Correct the misleading struct type name dim_ch_state_t to dim_ch_state
-since this not a typedef but a normal structure declaration.
 
-Suggested-by: Julia Lawall <julia.lawall@inria.fr>
-Signed-off-by: Deepak R Varma <drv@mailo.com>
----
+In case you are wondering the status of your patches -
 
-Changes in v5:
-   This patch was part of a patch set earlier. Since the only other patch of the
-   set is to be handled separately, the patch set is no more applicable. Hence
-   this now becomes a standalone patch in v5. Feedback from gregkh@linuxfoundation.org
+When GregKH accepts your patch you get an acknowledgment email directly.
+If he specifically rejects it, you also get feedback from him on what
+to improve. He won't accept a patch where another reviewer has already
+requested an update. So, once you get any feedback, revise and send the
+new version.
 
-Changes in v4:
-   1. Correct patch subject and log message. Use struct type name instead of
-      variable name for the change description. Feedback from julia.lawall@inria.fr
+You can follow the staging-testing tree [1] and see if Greg has 
+merged patches since your submittal. Those *are* accepted patches
+and should be recorded as contributions in your Outreachy dashboard.
 
-Changes in v3:
-   1. Patch introduced in the patch set
+Occasionally a patch gets missed in a flurry of patches. That might
+make you think about RESENDing. See the tutorial directions about
+resending.
 
- drivers/staging/most/dim2/dim2.c | 4 ++--
- drivers/staging/most/dim2/hal.c  | 4 ++--
- drivers/staging/most/dim2/hal.h  | 6 +++---
- 3 files changed, 7 insertions(+), 7 deletions(-)
+For example, at this moment I can see that Tanjuate, Deepak, and
+Emily (sorry if I'm not recognizing another name yet) had patches
+accepted in the last couple of hours.
 
-diff --git a/drivers/staging/most/dim2/dim2.c b/drivers/staging/most/dim2/dim2.c
-index ab72e11ac5ab..5547b69b31a4 100644
---- a/drivers/staging/most/dim2/dim2.c
-+++ b/drivers/staging/most/dim2/dim2.c
-@@ -161,7 +161,7 @@ static int try_start_dim_transfer(struct hdm_channel *hdm_ch)
- 	struct list_head *head = &hdm_ch->pending_list;
- 	struct mbo *mbo;
- 	unsigned long flags;
--	struct dim_ch_state_t st;
-+	struct dim_ch_state st;
+Hope that's useful,
+Alison
 
- 	BUG_ON(!hdm_ch);
- 	BUG_ON(!hdm_ch->is_initialized);
-@@ -259,7 +259,7 @@ static void retrieve_netinfo(struct dim2_hdm *dev, struct mbo *mbo)
- static void service_done_flag(struct dim2_hdm *dev, int ch_idx)
- {
- 	struct hdm_channel *hdm_ch = dev->hch + ch_idx;
--	struct dim_ch_state_t st;
-+	struct dim_ch_state st;
- 	struct list_head *head;
- 	struct mbo *mbo;
- 	int done_buffers;
-diff --git a/drivers/staging/most/dim2/hal.c b/drivers/staging/most/dim2/hal.c
-index 65282c276862..a5d40b5b138a 100644
---- a/drivers/staging/most/dim2/hal.c
-+++ b/drivers/staging/most/dim2/hal.c
-@@ -943,8 +943,8 @@ u8 dim_service_channel(struct dim_channel *ch)
- 	return channel_service(ch);
- }
-
--struct dim_ch_state_t *dim_get_channel_state(struct dim_channel *ch,
--					     struct dim_ch_state_t *state_ptr)
-+struct dim_ch_state *dim_get_channel_state(struct dim_channel *ch,
-+					   struct dim_ch_state *state_ptr)
- {
- 	if (!ch || !state_ptr)
- 		return NULL;
-diff --git a/drivers/staging/most/dim2/hal.h b/drivers/staging/most/dim2/hal.h
-index 20531449acab..ef10a8741c10 100644
---- a/drivers/staging/most/dim2/hal.h
-+++ b/drivers/staging/most/dim2/hal.h
-@@ -27,7 +27,7 @@ enum mlb_clk_speed {
- 	CLK_8192FS = 7,
- };
-
--struct dim_ch_state_t {
-+struct dim_ch_state {
- 	bool ready; /* Shows readiness to enqueue next buffer */
- 	u16 done_buffers; /* Number of completed buffers */
- };
-@@ -87,8 +87,8 @@ void dim_service_ahb_int_irq(struct dim_channel *const *channels);
-
- u8 dim_service_channel(struct dim_channel *ch);
-
--struct dim_ch_state_t *dim_get_channel_state(struct dim_channel *ch,
--					     struct dim_ch_state_t *state_ptr);
-+struct dim_ch_state *dim_get_channel_state(struct dim_channel *ch,
-+					   struct dim_ch_state *state_ptr);
-
- u16 dim_dbr_space(struct dim_channel *ch);
-
---
-2.30.2
-
-
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/log/?h=staging-testing
 
