@@ -1,92 +1,171 @@
-Received: from mail-qk1-f182.google.com (mail-qk1-f182.google.com [209.85.222.182])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AE0B88F4D;
-	Fri, 21 Oct 2022 06:11:16 +0000 (UTC)
-Received: by mail-qk1-f182.google.com with SMTP id 8so1461266qka.1;
-        Thu, 20 Oct 2022 23:11:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=4TDVEecvJ/SyUgNeYkrUsV7GwIq/acYXERijSp1ev9I=;
-        b=af+XHWpH2wFmLESBvoDa53/Ahgt8ffIl6QGSwnrtokuIRg/3jRps7FrEa4rWTzzk6O
-         hdg3enDxjfSk0bsJWevvglz+TrZHs4tHrW0cFUDPrr41FAlyt203JnzvIGZ9p2K8KZX8
-         AbMZsczY4IsDZHUgoHwvDMC7vMC94CDGQbwcMh4h2XqngsAdWdZ/pa2UzxU5nzJysEkW
-         Bw00aouawlA5J5rNTMTFQS9Jl0qc18SR6tgSQwxVaiIdZQ7Axmn0ZygbslzsNpB+EZIE
-         lURoYnIoE3c5QrwkN/s+dVQvtNvHjvMGsXfqUR8IAdA8PKNa6G8S0wALt3Sssq+/TDJa
-         AjQA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=4TDVEecvJ/SyUgNeYkrUsV7GwIq/acYXERijSp1ev9I=;
-        b=iexUR+oq0lfHqqAFoBrnGSgHSAoZqVa2cuGjBr9I82TXeEUgU4JH+96mAyRH0Gg+AA
-         as+MjOMBGRHoAMCLq1gVDoj81/wc0C7iz/SJ8vKVsDDzirklsWARBjnzucE/ziGaS1uR
-         KV9Kg62R9uO8Yv3+GD1k7SSqHlQwARL3LluGtLCIMNGI3JYPioy9jJLtoLrmKcXe/8ZY
-         i4tY2pQwTJOE85WL4FLn3KlGOoM9RRF9xr0loNBroZlen7WcL6z3oOSXALltDbojWvyR
-         Qj/8nnuPCRj7mKEIZWE5BubwOurQrC5I0OSKMtzSME06r+cTNwN4VIZjoz+OU4AnNuBF
-         Ix6g==
-X-Gm-Message-State: ACrzQf0aiQth9d1Py4p14WMm1kTTXbE/SG3B44QayJ+RdGfIU84xiCt2
-	xaYJ6+QyClRTdeK4aqWGKBGge7CwQh/ZnHOgmXM=
-X-Google-Smtp-Source: AMsMyM4KFK7vhngr/End276m/Ke1VLWd6CSQzc7IjKQg45J57OCw0TjBWsZmBaJPhSDIeAUpkVh9FKOvIY97lUZRkSs=
-X-Received: by 2002:a05:620a:2699:b0:6cf:3a7f:5fe6 with SMTP id
- c25-20020a05620a269900b006cf3a7f5fe6mr12797372qkp.103.1666332675621; Thu, 20
- Oct 2022 23:11:15 -0700 (PDT)
+Received: from linux.microsoft.com (linux.microsoft.com [13.77.154.182])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id E9A628F54;
+	Fri, 21 Oct 2022 07:11:00 +0000 (UTC)
+Received: from [192.168.1.139] (unknown [122.171.21.142])
+	by linux.microsoft.com (Postfix) with ESMTPSA id EE77520FEB27;
+	Fri, 21 Oct 2022 00:10:58 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com EE77520FEB27
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
+	s=default; t=1666336260;
+	bh=xnzg67LV5knxCeMRSPiloqnhL559eU/+outHuXMHcFo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=STzw7rTsacbxk11XQu4oqwXxr3MIndYUfRTNZoZ0K/7tAX6+ckOehjHLbP60HWIhT
+	 iWZellbClmbf4Br8CmqLNhiwtmYYCAkW8qO5elScASJpCrhCOz7TiBPNpKw5l2gl59
+	 tk6dFgdtiAxlI06ad5Lg8hyoKiG2rb2FC4KIBghU=
+Message-ID: <605ec34c-202f-dcba-20f8-a0f2653b59dc@linux.microsoft.com>
+Date: Fri, 21 Oct 2022 12:40:53 +0530
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-References: <Y1Eqa7uKB+Wk+Mb+@elroy-temp-vm.gaiao0uenmiufjlowqgp5yxwdh.gvxx.internal.cloudapp.net>
- <CAOkYk0iU0B98JsH77avky--AS19V=GhQox2f_b4PAG3ZBB+SVQ@mail.gmail.com>
- <CAHJEyKX=yyuyYFajs880CuPdc019dBOm_LCkgXHzjFaA-Jgt2A@mail.gmail.com>
- <Y1E6qYkzkRxlloNp@kroah.com> <Y1Fds7BJjY/OcwU0@mit.edu> <Y1Hby38PE/QVlRhF@Slackware>
-In-Reply-To: <Y1Hby38PE/QVlRhF@Slackware>
-From: Tanju Brunostar <tanjubrunostar0@gmail.com>
-Date: Fri, 21 Oct 2022 07:11:01 +0100
-Message-ID: <CAHJEyKU7dH6HQW4rrd3gq5pnYUxOA0MGRUqtnC_yExt3PBok1g@mail.gmail.com>
-Subject: Re: Request for assistance
-To: Bhaskar Chowdhury <unixbhaskar@gmail.com>, "Theodore Ts'o" <tytso@mit.edu>, 
-	Greg KH <gregkh@linuxfoundation.org>, Tanju Brunostar <tanjubrunostar0@gmail.com>, 
-	linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev, 
-	outreachy@lists.linux.dev
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.3.3
+Subject: Re: [PATCH 4/6] staging: vt6655: refactor long lines of code in
+ s_vGenerateTxParameter
+Content-Language: en-US
+To: Tanjuate Brunostar <tanjubrunostar0@gmail.com>, forest@alittletooquiet.net
+Cc: greg@kroah.com, linux-staging@lists.linux.dev,
+ linux-kernel@vger.kernel.org, outreachy@lists.linux.dev
+References: <cover.1666288416.git.tanjubrunostar0@gmail.com>
+ <03dd39114b1e5c029cd8022245403a079ff03ae7.1666288416.git.tanjubrunostar0@gmail.com>
+From: Praveen Kumar <kumarpraveen@linux.microsoft.com>
+In-Reply-To: <03dd39114b1e5c029cd8022245403a079ff03ae7.1666288416.git.tanjubrunostar0@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-On Fri, Oct 21, 2022 at 12:38 AM Bhaskar Chowdhury
-<unixbhaskar@gmail.com> wrote:
->
-> On 10:39 Thu 20 Oct 2022, Theodore Ts'o wrote:
-> >Tanju, some additional hints.  First of all, please don't send cleanup
-> >patches to address checkpatch --file complaints about overly long
-> >lines.  It's generally not worth the code churn.
-> >
-> >Secondly for code that *you* are writing, think about why you have
-> >lines which are exceeding the line width in the first place.  Is it
-> >because code is being nested too deeply, and perhaps some judicious
-> >function refactoring with good function names might make the code
-> >clearer?  Would adding some temporary variables that are judiciously
-> >named make the code look clearer?
-> >
-> >The rules about "thou shalt never have lines which exceed 78
-> >characters" are rules of thumb.  The high level goal is to make the
-> >code more readable and easier to understand, since good code is
-> >maintainable code.  And sometimes it's not just about where to split
-> >lines of code but whether there is a better way to structure the code
-> >so that long lines aren't needed in the first place.
-> >
-> >Cheers,
-> >
-> >                                       - Ted
-> Righto!! I failed to miss it my replies. That an editor can be trained or
-> customized to that way. Especially , vim and emacs.
-> --
-> Thanks,
-> Bhaskar
->
-> "Here's looking at you kid"-- Casablanca
-> https://about.me/unixbhaskar
-I appreciate all your replies. They have been quite helpful. I will
-try to apply them as I continue on my journey of contributing to the
-kernel
+On 20-10-2022 23:57, Tanjuate Brunostar wrote:
+> fix checkpatch errors by refactoring long lines of code in the function: s_vGenerateTxParameter
+> 
+> Signed-off-by: Tanjuate Brunostar <tanjubrunostar0@gmail.com>
+> ---
+>  drivers/staging/vt6655/rxtx.c | 70 ++++++++++++++++++++++++-----------
+>  1 file changed, 48 insertions(+), 22 deletions(-)
+> 
+> diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
+> index dc853b83459b..42f4261293ba 100644
+> --- a/drivers/staging/vt6655/rxtx.c
+> +++ b/drivers/staging/vt6655/rxtx.c
+> @@ -839,7 +839,8 @@ s_vFillCTSHead(struct vnt_private *pDevice,
+>  	}
+>  
+>  	if (byPktType == PK_TYPE_11GB || byPktType == PK_TYPE_11GA) {
+> -		if (byFBOption != AUTO_FB_NONE && uDMAIdx != TYPE_ATIMDMA && uDMAIdx != TYPE_BEACONDMA) {
+> +		if (byFBOption != AUTO_FB_NONE && uDMAIdx !=
+> +		    TYPE_ATIMDMA && uDMAIdx != TYPE_BEACONDMA) {
+>  			/* Auto Fall back */
+>  			struct vnt_cts_fb *buf = pvCTS;
+>  			/* Get SignalField, ServiceField & Length */
+> @@ -878,7 +879,10 @@ s_vFillCTSHead(struct vnt_private *pDevice,
+>  
+>  			ether_addr_copy(buf->data.ra,
+>  					pDevice->abyCurrentNetAddr);
+> -		} else { /* if (byFBOption != AUTO_FB_NONE && uDMAIdx != TYPE_ATIMDMA && uDMAIdx != TYPE_BEACONDMA) */
+> +		} else {
+> +			/* if (byFBOption != AUTO_FB_NONE && uDMAIdx != TYPE_ATIMDMA &&
+> +			 * uDMAIdx != TYPE_BEACONDMA)
+> +			 */
+>  			struct vnt_cts *buf = pvCTS;
+>  			/* Get SignalField, ServiceField & Length */
+>  			vnt_get_phy_field(pDevice, uCTSFrameLen,
+> @@ -964,50 +968,72 @@ static void s_vGenerateTxParameter(struct vnt_private *pDevice,
+>  			/* Fill RsvTime */
+>  			struct vnt_rrv_time_rts *buf = pvRrvTime;
+>  
+> -			buf->rts_rrv_time_aa = get_rtscts_time(pDevice, 2, byPktType, cbFrameSize, wCurrentRate);
+> -			buf->rts_rrv_time_ba = get_rtscts_time(pDevice, 1, byPktType, cbFrameSize, wCurrentRate);
+> -			buf->rts_rrv_time_bb = get_rtscts_time(pDevice, 0, byPktType, cbFrameSize, wCurrentRate);
+> -			buf->rrv_time_a = vnt_rxtx_rsvtime_le16(pDevice, byPktType, cbFrameSize, wCurrentRate, bNeedACK);
+> -			buf->rrv_time_b = vnt_rxtx_rsvtime_le16(pDevice, PK_TYPE_11B, cbFrameSize, pDevice->byTopCCKBasicRate, bNeedACK);
+> -
+> -			s_vFillRTSHead(pDevice, byPktType, pvRTS, cbFrameSize, bNeedACK, bDisCRC, psEthHeader, wCurrentRate, byFBOption);
+> +			buf->rts_rrv_time_aa = get_rtscts_time(pDevice, 2, byPktType, cbFrameSize,
+> +							       wCurrentRate);
+> +			buf->rts_rrv_time_ba = get_rtscts_time(pDevice, 1, byPktType, cbFrameSize,
+> +							       wCurrentRate);
+> +			buf->rts_rrv_time_bb = get_rtscts_time(pDevice, 0, byPktType, cbFrameSize,
+> +							       wCurrentRate);
+> +			buf->rrv_time_a = vnt_rxtx_rsvtime_le16(pDevice, byPktType, cbFrameSize,
+> +								wCurrentRate, bNeedACK);
+> +			buf->rrv_time_b =
+> +				vnt_rxtx_rsvtime_le16(pDevice, PK_TYPE_11B, cbFrameSize,
+> +						      pDevice->byTopCCKBasicRate, bNeedACK);
+> +
+> +			s_vFillRTSHead(pDevice, byPktType, pvRTS, cbFrameSize, bNeedACK, bDisCRC,
+> +				       psEthHeader, wCurrentRate, byFBOption);
+>  		} else {/* RTS_needless, PCF mode */
+>  			struct vnt_rrv_time_cts *buf = pvRrvTime;
+>  
+> -			buf->rrv_time_a = vnt_rxtx_rsvtime_le16(pDevice, byPktType, cbFrameSize, wCurrentRate, bNeedACK);
+> -			buf->rrv_time_b = vnt_rxtx_rsvtime_le16(pDevice, PK_TYPE_11B, cbFrameSize, pDevice->byTopCCKBasicRate, bNeedACK);
+> -			buf->cts_rrv_time_ba = get_rtscts_time(pDevice, 3, byPktType, cbFrameSize, wCurrentRate);
+> +			buf->rrv_time_a = vnt_rxtx_rsvtime_le16(pDevice, byPktType, cbFrameSize,
+> +								wCurrentRate, bNeedACK);
+> +			buf->rrv_time_b =
+> +				vnt_rxtx_rsvtime_le16(pDevice, PK_TYPE_11B, cbFrameSize,
+> +						      pDevice->byTopCCKBasicRate, bNeedACK);
+> +			buf->cts_rrv_time_ba = get_rtscts_time(pDevice, 3, byPktType, cbFrameSize,
+> +							       wCurrentRate);
+>  
+>  			/* Fill CTS */
+> -			s_vFillCTSHead(pDevice, uDMAIdx, byPktType, pvCTS, cbFrameSize, bNeedACK, bDisCRC, wCurrentRate, byFBOption);
+> +			s_vFillCTSHead(pDevice, uDMAIdx, byPktType, pvCTS, cbFrameSize, bNeedACK,
+> +				       bDisCRC, wCurrentRate, byFBOption);
+>  		}
+>  	} else if (byPktType == PK_TYPE_11A) {
+>  		if (pvRTS) {/* RTS_need, non PCF mode */
+> -			struct vnt_rrv_time_ab *buf = pvRrvTime;
+> +			struct vnt_rrv_time_ab *buf = pvRrvT
+> +				ime;
+
+I'm not sure if this patch is compiled ? In my understanding the recommendation is have the patch compiled and if possible basic sanity done (can discuss with respective maintainers if they can help / guide) before sending here. Please do the needful. Thanks.
+
+>  
+> -			buf->rts_rrv_time = get_rtscts_time(pDevice, 2, byPktType, cbFrameSize, wCurrentRate);
+> -			buf->rrv_time = vnt_rxtx_rsvtime_le16(pDevice, byPktType, cbFrameSize, wCurrentRate, bNeedACK);
+> +			buf->rts_rrv_time = get_rtscts_time(pDevice, 2, byPktType, cbFrameSize,
+> +							    wCurrentRate);
+> +			buf->rrv_time = vnt_rxtx_rsvtime_le16(pDevice, byPktType, cbFrameSize,
+> +							      wCurrentRate, bNeedACK);
+>  
+>  			/* Fill RTS */
+> -			s_vFillRTSHead(pDevice, byPktType, pvRTS, cbFrameSize, bNeedACK, bDisCRC, psEthHeader, wCurrentRate, byFBOption);
+> +			s_vFillRTSHead(pDevice, byPktType, pvRTS, cbFrameSize, bNeedACK, bDisCRC,
+> +				       psEthHeader, wCurrentRate, byFBOption);
+>  		} else if (!pvRTS) {/* RTS_needless, non PCF mode */
+>  			struct vnt_rrv_time_ab *buf = pvRrvTime;
+>  
+> -			buf->rrv_time = vnt_rxtx_rsvtime_le16(pDevice, PK_TYPE_11A, cbFrameSize, wCurrentRate, bNeedACK);
+> +			buf->rrv_time =
+> +				vnt_rxtx_rsvtime_le16(pDevice, PK_TYPE_11A, cbFrameSize,
+> +						      wCurrentRate, bNeedACK);
+>  		}
+>  	} else if (byPktType == PK_TYPE_11B) {
+>  		if (pvRTS) {/* RTS_need, non PCF mode */
+>  			struct vnt_rrv_time_ab *buf = pvRrvTime;
+>  
+> -			buf->rts_rrv_time = get_rtscts_time(pDevice, 0, byPktType, cbFrameSize, wCurrentRate);
+> -			buf->rrv_time = vnt_rxtx_rsvtime_le16(pDevice, PK_TYPE_11B, cbFrameSize, wCurrentRate, bNeedACK);
+> +			buf->rts_rrv_time = get_rtscts_time(pDevice, 0, byPktType, cbFrameSize,
+> +							    wCurrentRate);
+> +			buf->rrv_time = vnt_rxtx_rsvtime_le16(pDevice, PK_TYPE_11B, cbFrameSize,
+> +							      wCurrentRate, bNeedACK);
+>  
+>  			/* Fill RTS */
+> -			s_vFillRTSHead(pDevice, byPktType, pvRTS, cbFrameSize, bNeedACK, bDisCRC, psEthHeader, wCurrentRate, byFBOption);
+> +			s_vFillRTSHead(pDevice, byPktType, pvRTS, cbFrameSize, bNeedACK, bDisCRC,
+> +				       psEthHeader, wCurrentRate, byFBOption);
+>  		} else { /* RTS_needless, non PCF mode */
+>  			struct vnt_rrv_time_ab *buf = pvRrvTime;
+>  
+> -			buf->rrv_time = vnt_rxtx_rsvtime_le16(pDevice, PK_TYPE_11B, cbFrameSize, wCurrentRate, bNeedACK);
+> +			buf->rrv_time = vnt_rxtx_rsvtime_le16(pDevice, PK_TYPE_11B, cbFrameSize,
+> +							      wCurrentRate, bNeedACK);
+>  		}
+>  	}
+>  }
+
+Regards,
+
+~Praveen.
