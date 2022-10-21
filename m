@@ -1,47 +1,38 @@
-Received: from mail-pg1-f169.google.com (mail-pg1-f169.google.com [209.85.215.169])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B6D6F7B
-	for <outreachy@lists.linux.dev>; Fri, 21 Oct 2022 21:56:31 +0000 (UTC)
-Received: by mail-pg1-f169.google.com with SMTP id 78so3669471pgb.13
-        for <outreachy@lists.linux.dev>; Fri, 21 Oct 2022 14:56:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-disposition:mime-version:message-id:subject:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=T+0L0cRPlCkG7Rs2ttlpgmhSPku3dhNcCI+wr/JLTAg=;
-        b=pQTyIYGO92TuJfFZGqotZL0W1wNgWw93TTy4fEukUntoRDiENpGr1VvLYSzblSEZFY
-         p283jwmNczivFKTiT/HPYqDfw5uJmiCAb9/0/TvSOFC0h1GOFLL73+dRyJUJP5y6/svp
-         QMgVpP4AeEPdcygQqXHB0+OOihvGveSkUNwuBdpRt7C+r/MOpQ+tB7YJ+xl1pdiPVNxs
-         PCDqPa1c/2gNdZT1WVXuf+bWL+8QhHdTvp4i15eM3wSOEbqjVMyJAoshAgl9e7C3Z1OU
-         bKF+7lHoSlRPRAhyRZppKrqTi0aDp6uIGomGW01JZjezR9TJsgIp2Y/BDktsNYIfaG8T
-         uKiA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-disposition:mime-version:message-id:subject:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=T+0L0cRPlCkG7Rs2ttlpgmhSPku3dhNcCI+wr/JLTAg=;
-        b=FgUABhrkuB49lf+w324BND5q5VZaK5XTa6WlEPmk8k0W5OciHJ/mjT1g1hrh9ahq3A
-         B8g63WiUkAQPvYlFfcVWH2Ym3YG2UYNTDVRd5Mu5Bffl8M0SQ0WkU1YNMzMnr99544XJ
-         mrG498N2KqPfOxcEuliLaSrCDRNGT4oKs5TO2LRBlVmNO3coafRg+VgLZZFEBd1W9j66
-         vkEj8Z2tCUYqEljr8S8fsi0WbD9FytkoH5r932sGA9eGbSGyZEh9ALIXb7vC6t/Lk42O
-         P5DpIN+V9S7BEPX66LDynnKLtqFabXxceluvXkwvYtjT4jcvY8S+RM+74C1V1Wj43P/t
-         ArSA==
-X-Gm-Message-State: ACrzQf3mZUyZ84ap4zHm4l6eCZ2mnAyfOj8nQtoZjYyeghi29WYedtKD
-	tvPuzSUb0Hg0O5HiR3MpzDpjeMSUZCbhlw==
-X-Google-Smtp-Source: AMsMyM4EiwaEBmL1HIeVuzIFIVb5+L+MjEQ/M7DgAFDROKtIKhLWk8hhQ0zJC7H2b+2yM4Eb5iQusw==
-X-Received: by 2002:a63:1861:0:b0:462:4961:9a8f with SMTP id 33-20020a631861000000b0046249619a8fmr18182802pgy.372.1666389391009;
-        Fri, 21 Oct 2022 14:56:31 -0700 (PDT)
-Received: from marshmallow (192-184-163-51.fiber.dynamic.sonic.net. [192.184.163.51])
-        by smtp.gmail.com with ESMTPSA id r24-20020aa79638000000b00562eff85594sm15710985pfg.121.2022.10.21.14.56.30
-        for <outreachy@lists.linux.dev>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 21 Oct 2022 14:56:30 -0700 (PDT)
-Date: Fri, 21 Oct 2022 14:56:28 -0700
-From: Emily Peri <eperi1024@gmail.com>
-To: outreachy@lists.linux.dev
-Subject: [KERNEL NEWBIES ACCESS] eperi
-Message-ID: <Y1MVjARgRcJl9xR1@marshmallow>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A9E9D7B
+	for <outreachy@lists.linux.dev>; Fri, 21 Oct 2022 22:05:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1666389902; x=1697925902;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=K9j+irjWTXF0Pu6HZRHEPdn2wG1d+vMt2sO2daOrqtc=;
+  b=nqpt2Wn6bRFQpiissOKI99g66k4pDOrzwahZd5oQTY31h+kqFa6ri7pG
+   uGOHILozqq7Y1+AQC5AzcVDj+oCfFRH/PiowXKGaMiluZOXcONbPCk+ZE
+   Yh44qwpCTYI7HVMMVYAUBjuGE7z5oYecprxf0U8TAy9OyNLiBdbk4dNis
+   GyrV0Q+iA+KUfUbfbMoI7uayoX1RwHWJhq2ifv0VV5fLaeE6n6lvt5886
+   gH9rxyoh7cuPxrc3v+HpLdMAOW+levuZJ63KsA7p2JlBLYKMGw2WgOYAw
+   JjFOL0JqRouN65ZLwGQsrWlfAhRco3WP6gFsc4H3i//g1DQ0MjufzIgdD
+   A==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10507"; a="333691688"
+X-IronPort-AV: E=Sophos;i="5.95,203,1661842800"; 
+   d="scan'208";a="333691688"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Oct 2022 15:05:02 -0700
+X-IronPort-AV: E=McAfee;i="6500,9779,10507"; a="773218608"
+X-IronPort-AV: E=Sophos;i="5.95,203,1661842800"; 
+   d="scan'208";a="773218608"
+Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.212.252.17])
+  by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Oct 2022 15:05:01 -0700
+Date: Fri, 21 Oct 2022 15:05:00 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: Tanju Brunostar <tanjubrunostar0@gmail.com>
+Cc: outreachy@lists.linux.dev
+Subject: Re: KERNEL NEWBIE ACCESS TanjuBrunostar
+Message-ID: <Y1MXjLnjfJa9NIZ8@aschofie-mobl2>
+References: <CAHJEyKVqaanNV4AWxnqBe0mg6=mT+-yBo+Y3UbQDfVjp46kvqw@mail.gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -50,11 +41,9 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <CAHJEyKVqaanNV4AWxnqBe0mg6=mT+-yBo+Y3UbQDfVjp46kvqw@mail.gmail.com>
 
-Hi,
-
-I'd like to contribute to the Kernel Newbies Wiki.
-Thanks!
-
-Best,
-Emily
+On Fri, Oct 21, 2022 at 06:34:19PM +0100, Tanju Brunostar wrote:
+> Please grant me access to edit the first patch tutorial wiki
+>
+Done
