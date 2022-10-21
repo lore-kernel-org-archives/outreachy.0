@@ -1,58 +1,91 @@
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-pl1-f182.google.com (mail-pl1-f182.google.com [209.85.214.182])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BF2953C05
-	for <outreachy@lists.linux.dev>; Fri, 21 Oct 2022 16:13:42 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 76EFE7E
+	for <outreachy@lists.linux.dev>; Fri, 21 Oct 2022 16:39:53 +0000 (UTC)
+Received: by mail-pl1-f182.google.com with SMTP id f23so2841016plr.6
+        for <outreachy@lists.linux.dev>; Fri, 21 Oct 2022 09:39:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=2QxqCrAIjtRiUWVYJDSnhb5199EikVGhcArsuETkgTw=;
-  b=OWiDqo8RtKn7GG29cgkhHgcIITw20dUBtsArDhUP3E7qyepvzSYHUtOJ
-   mmt2X70iowytYsti08Ww/n8MwvgoK2RxnEZ4q9JjEqD3S8R+xtVxteQ2Z
-   vmX8/GKYpSZD3+MWqoBxWahOV+s7WRXejSFiQxp3lB8P7IQhzFntU+jSL
-   I=;
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="5.95,202,1661810400"; 
-   d="scan'208";a="66462554"
-Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Oct 2022 18:13:35 +0200
-Date: Fri, 21 Oct 2022 18:13:34 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-To: Deepak R Varma <drv@mailo.com>
-cc: outreachy@lists.linux.dev
-Subject: Re: query on need for the function
-In-Reply-To: <Y1K7cei/TW0xkLCd@debian-BULLSEYE-live-builder-AMD64>
-Message-ID: <3760b388-679f-cd28-1664-89f7eed521d7@inria.fr>
-References: <Y1K7cei/TW0xkLCd@debian-BULLSEYE-live-builder-AMD64>
+        d=gmail.com; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=+p99n1YJ/Ef45HkmXnEcmb1UMPqa0keOM3Qde1Ep8P8=;
+        b=TRxeV4iVPxozDJIo3BLVmmVWzanRq2i3VEm7nXFuLhLFC+iHcBAlXzs9qxBGH+qDVl
+         P4LNyTKH7O4vjHDaXICuGqzFS+W8s1FFpHdgfYO8X8LBin9iFkbn5c8XyrMPW4jn6yjg
+         IbycxJ/f6Qq+/P98yld10ae0Vcbk2dAa0yLL35SazlAmsmWYhHRfYxYz6lrnao19IqwW
+         zPLlVdOir+rCsbK/dBubQwaEuHiIM6/pfP/5Agms6WA2ivkc2f4h/94Rp1rjR1jtVxFx
+         XmOePGmxZ+nUeCfQ+wR8AV17PeXYwtJfb8kkG7GgeFF6DLsk0dCMb9HWMqgDSTmf6QMK
+         FP8Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=+p99n1YJ/Ef45HkmXnEcmb1UMPqa0keOM3Qde1Ep8P8=;
+        b=nF3wf6fz1emhz8aTXRngQEJU/Dy0eWJpSUaVb4WIFlCgkOWRZubyep/tlKry5oKU5R
+         DXG2iiNVSv5W2X9VRZIzQymDpnHLcQr3RHDRtOYl12P+j/v2hblDj8DPhsGlJ4/Gg3Oq
+         subiw28+mli0P52zbNqIGTulzTIyl/7Xi0fGkQhP/xKWew3lUf8uWV7zbUyP1ZqB/Isl
+         vrVFx2hP+h9SHQJjhSBjJGYVOaYmZoDvTMwwA1g1JIC2+9oyJZA7v8tLMm13iUks0Gaj
+         s1lPOQgaU4wxucOHYe6eKZaKbtDSUYNtwuTDP2uOTfNynfPzzYBR+BIvzifiBOhAq/k5
+         SPjg==
+X-Gm-Message-State: ACrzQf1DpLSlCqdxeQz+sXxQfM0QDozmgTcpcBmzPjwqqwbt5VkmnPUL
+	hURWbtShnrKArL/e4Zc7hC9sCJwuXkpxcQ==
+X-Google-Smtp-Source: AMsMyM5v7Y6mFx1pzO9VQR5qWUnIH2+5xGUdQN/XLU2RZpxVz3mupYh1Cd0DW66knjDMgWqaae0ayA==
+X-Received: by 2002:a17:90a:d397:b0:20c:7a28:8834 with SMTP id q23-20020a17090ad39700b0020c7a288834mr58857321pju.153.1666370392849;
+        Fri, 21 Oct 2022 09:39:52 -0700 (PDT)
+Received: from marshmallow (192-184-163-51.fiber.dynamic.sonic.net. [192.184.163.51])
+        by smtp.gmail.com with ESMTPSA id ik17-20020a170902ab1100b00178957d17a4sm14833443plb.286.2022.10.21.09.39.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 21 Oct 2022 09:39:52 -0700 (PDT)
+Date: Fri, 21 Oct 2022 09:39:49 -0700
+From: Emily Peri <eperi1024@gmail.com>
+To: Alison Schofield <alison.schofield@intel.com>
+Cc: Outreachy Linux Kernel <outreachy@lists.linux.dev>
+Subject: Re: [Outreachy Info] Track patches in staging tree
+Message-ID: <Y1LLVSNEwewWntrF@marshmallow>
+References: <Y1GE6ImSoBuYCTjT@aschofie-mobl2>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <Y1GE6ImSoBuYCTjT@aschofie-mobl2>
 
+On Thu, Oct 20, 2022 at 10:27:04AM -0700, Alison Schofield wrote:
+> 
+> In case you are wondering the status of your patches -
+> 
+> When GregKH accepts your patch you get an acknowledgment email directly.
+> If he specifically rejects it, you also get feedback from him on what
+> to improve. He won't accept a patch where another reviewer has already
+> requested an update. So, once you get any feedback, revise and send the
+> new version.
 
+Thanks for the clarification! One lingering question I have-- I sent in
+a patchset and got feedback on one of the patches in the set, so I'm
+planning to revise it today. I noticed though that Greg accepted the
+other patches in the patchset and I got a notification that those will
+be merged. Is that how it usually works with patchsets? Can the other
+patches in the set be merged is one of them needs revision?
 
-On Fri, 21 Oct 2022, Deepak R Varma wrote:
-
-> Hello,
-> I was looking at removal of commented code when I came across this function
-> ieee80211_tkip_null from the
-> drivers/staging/rtl8192u/ieee80211/ieee80211_crypt_tkip.c file. I do not think
-> the function is doing anything useful as it (simply returns back to the caller).
-> I would like t confirm that I am understanding it right or if there is more to
-> it that what I could analyze.
->
-> I tried posting this question on the IRC channel, but I am unsure if my messages
-> are even hitting the IRC server.
->
-> What is the best way to clarify my query? Can I get a feedback from the mentors
-> or Should I consult the mentors or simply send the patch with the function
-> being removed?
-
-You can find the definitions and the uses and see if they seem to serve
-any purpose (I can't see any...).
-
-julia
+> You can follow the staging-testing tree [1] and see if Greg has 
+> merged patches since your submittal. Those *are* accepted patches
+> and should be recorded as contributions in your Outreachy dashboard.
+> 
+> Occasionally a patch gets missed in a flurry of patches. That might
+> make you think about RESENDing. See the tutorial directions about
+> resending.
+> 
+> For example, at this moment I can see that Tanjuate, Deepak, and
+> Emily (sorry if I'm not recognizing another name yet) had patches
+> accepted in the last couple of hours.
+> 
+> Hope that's useful,
+> Alison
+> 
+> [1] https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/log/?h=staging-testing
+> 
+> 
