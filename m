@@ -1,37 +1,37 @@
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+Received: from mga12.intel.com (mga12.intel.com [192.55.52.136])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C0ED37B
-	for <outreachy@lists.linux.dev>; Fri, 21 Oct 2022 22:18:21 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 364AA7B
+	for <outreachy@lists.linux.dev>; Sat, 22 Oct 2022 03:43:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1666390701; x=1697926701;
+  t=1666410198; x=1697946198;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=LLU10OgytXfVBh8IX/07OTvLl/321qpB+SvhdHiU5Xo=;
-  b=fh4y+a+NexNKIKZEfZd/d0ihYX4n2TPaCJ3pGYa/XK6Me/YNMYbZy6b1
-   8DbZtO6mWxLQ/yl+GlWXqtf9tUu89WufR0P57EamUMMRx7aYXikc/7CpK
-   JYBZIXZrPagetoodWkRbBnzLqanPpTA+Wr7o/CECBHmtsdT4yNe+AKKky
-   qncVesWYC/r3He4GJHN5HsSdT0XEcCEJ4LTHxHGX7n3v+pmionQ18MlAE
-   BnV0u1K7HUeshX10Loo1xuqUoMLFWcy5l74mxcpjnv4LrByhqLkjd+quF
-   xgqClqy3nZbB+JfjJDQDMu1SQ8TCILvw4m4RjGr4thpUJgnQh70sa8bl+
-   A==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10507"; a="307106529"
-X-IronPort-AV: E=Sophos;i="5.95,203,1661842800"; 
-   d="scan'208";a="307106529"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
-  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Oct 2022 15:18:21 -0700
-X-IronPort-AV: E=McAfee;i="6500,9779,10507"; a="959808381"
-X-IronPort-AV: E=Sophos;i="5.95,203,1661842800"; 
-   d="scan'208";a="959808381"
-Received: from abeach-mobl.amr.corp.intel.com (HELO aschofie-mobl2) ([10.209.80.85])
-  by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Oct 2022 15:18:20 -0700
-Date: Fri, 21 Oct 2022 15:18:19 -0700
+  bh=0TJ3PKZiy4weiF/LGavqZu1gnE6NyzhbYh3NiydOre4=;
+  b=jBLRCtRWqUeIBboxM2J+KEylKMZegqX+DH68xIqG/9TWxkquK/Ws3+bF
+   RxIuFCcxaG1P07GCaosZsIZDUwrWc6egkR9GkxsO7mXNah5jdCziNu7IX
+   ib+qoiqcZNZ+iENuETGmyuYFZVmBoVzwFlda3DFhTvv/YpgFVJwNWQXaK
+   V1EouPANs8SyAmMl9Op98+SHbDs7noeFeJ8WjyUjgJ4UdroNp/cJnRtZv
+   1IbNnatzOF/1KX9FRM3zokj55UiVhM27aksFp6w8pi2/XgyT5754QgvXj
+   IS/NutBXYBLNx8Tra+UHvb9jdKBq3LQErsVPATHfl2DEvLmBTlgKGdt1Y
+   w==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10507"; a="286869754"
+X-IronPort-AV: E=Sophos;i="5.95,204,1661842800"; 
+   d="scan'208";a="286869754"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Oct 2022 20:43:17 -0700
+X-IronPort-AV: E=McAfee;i="6500,9779,10507"; a="633167306"
+X-IronPort-AV: E=Sophos;i="5.95,204,1661842800"; 
+   d="scan'208";a="633167306"
+Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.209.80.85])
+  by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Oct 2022 20:43:17 -0700
+Date: Fri, 21 Oct 2022 20:43:15 -0700
 From: Alison Schofield <alison.schofield@intel.com>
 To: Emily Peri <eperi1024@gmail.com>
 Cc: outreachy@lists.linux.dev
 Subject: Re: [KERNEL NEWBIES ACCESS] eperi
-Message-ID: <Y1Maq/jQllZKBxhF@aschofie-mobl2>
+Message-ID: <Y1Nm05C00xBPIx3d@aschofie-mobl2>
 References: <Y1MVjARgRcJl9xR1@marshmallow>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
@@ -48,12 +48,8 @@ On Fri, Oct 21, 2022 at 02:56:28PM -0700, Emily Peri wrote:
 > 
 > I'd like to contribute to the Kernel Newbies Wiki.
 > Thanks!
-
-Just wanted to let you know that I'm not ignoring your request :)
-kernelnewbies.org is not behaving for me at the moment.
-I'll try again later.
-
 > 
 > Best,
 > Emily
-> 
+>
+Done!
