@@ -1,56 +1,83 @@
-Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-pl1-f169.google.com (mail-pl1-f169.google.com [209.85.214.169])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 18422620
-	for <outreachy@lists.linux.dev>; Mon, 24 Oct 2022 01:51:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1666576274; x=1698112274;
-  h=date:from:to:subject:message-id:mime-version;
-  bh=vsKfZRnV0fNBamtJMBE3KA+Ybn1Z45UKyuWmEpUu0CM=;
-  b=bux9XGttTBL7o7FWzFX9hTKJ750HL6I1dGlsJmn4+IefrqI80Jp53IRZ
-   +4Nw4xs9SL+PcHKqs9eFN2exQnwGh5rDLFrcP7LonMhZZB1pC7AO6mZM8
-   bLXBPO5joSpnE6yS2FoO1ZduytfWIuJmsDjcb6uFEeTb6GK9vzaQODH3U
-   hMGBkd/deb7Ggn49bJzxwybg2UVLv/m/X6mstSUyJ3Jfb+0CRFR3h+tNY
-   vyDh12b0EBlc95jxj/4tGPDs/83PpdsJaHUMCbJse39I5TkMargj68Oxu
-   2g9s8YOj6KCoLDZeb78R8rrsadxfU+M/IH4UMZjx42kQi3d98K7l/cLrn
-   A==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10509"; a="369387797"
-X-IronPort-AV: E=Sophos;i="5.95,207,1661842800"; 
-   d="scan'208";a="369387797"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
-  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Oct 2022 18:51:13 -0700
-X-IronPort-AV: E=McAfee;i="6500,9779,10509"; a="694389865"
-X-IronPort-AV: E=Sophos;i="5.95,207,1661842800"; 
-   d="scan'208";a="694389865"
-Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.251.5.7])
-  by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Oct 2022 18:51:13 -0700
-Date: Sun, 23 Oct 2022 18:51:11 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: Outreachy Linux Kernel <outreachy@lists.linux.dev>
-Subject: [Outreachy] Wiki updated needed - Patchset Subject
-Message-ID: <Y1XvjytS2GaafmyJ@aschofie-mobl2>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 89308369;
+	Mon, 24 Oct 2022 03:08:04 +0000 (UTC)
+Received: by mail-pl1-f169.google.com with SMTP id p3so6469488pld.10;
+        Sun, 23 Oct 2022 20:08:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=BlsZmEBE21p9J1jMFwhL5ri5TBwNvQhqBK5ytJSYJNk=;
+        b=axB0IjFEDVR6dbNTgYOFuzAyK/SNlsxQEu6r8aXiVSPhG7mHWUm9Gl18SqT83cmBgs
+         oGTd1DGHMUG2SZscDAOLWD98jyKfPI3w0jK35w0XABYCs7+6LMKEeCMFDQUPYfGptJ8S
+         94UTc+O/r97wmrrzbyOljP+Tpt7XpIgjveO16L5sU9m/Bm3j6lXvMJ7dX4R+wCyg9xuC
+         QCOJ9Tip/yCON7pJo9l7oCBLZCMmTZyjewH8e1scav4avMCZlWEEk8zt4MaIhmcAyadL
+         OQmSp62FRDDNLh7Re+NQ4A13BJN094L9V7hESFhDfmqF3Xj2fEGGoGFHfbqramJsCZJf
+         XQug==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=BlsZmEBE21p9J1jMFwhL5ri5TBwNvQhqBK5ytJSYJNk=;
+        b=Vhsb8NDXXqjlAft/ggkm5ZREaHP8s4dTs5Jr7/BO0At4w0HbdJSOefLqMsngpEuIm5
+         fFKmOh9XWbzGOcu9m6ZxSkJOWRMmMCqtkxw4HhX38ewRxHi/ZKjOuj2flzOWRE8BrdWt
+         zrIx94oFVIzNAkl9CnSovCbt94NRS89a/wD7WMpvzJDlF7JDqqXodhiAWM47KkDtk1xS
+         K/C+APhyHbOF4zUHau6WcY/GBoRd6goZaWtOVSve5/UH88OK/0bGI4ZhIy1zO9EBUIQJ
+         02kgaSLs7XD31CNGad9amk2MvZ+8ZCDr93DSn2iRk3yEMQ23YbofkXHszvnvjulAOc0D
+         IACw==
+X-Gm-Message-State: ACrzQf3QX9vo7rMfhbfEDZIC8DH2HuJ6v9MwFc/M7AqehXfLqWs2Q67V
+	nPyDCRyTlYCFQva9kKEKfSA=
+X-Google-Smtp-Source: AMsMyM5cfElJsXwV17L8hG7UuzpLA7oOodxswudFsdwqyxQdh7SWr46WyfoAtbliaewFPhzl02V3fw==
+X-Received: by 2002:a17:902:e94f:b0:17f:6df3:1a99 with SMTP id b15-20020a170902e94f00b0017f6df31a99mr31495772pll.20.1666580884016;
+        Sun, 23 Oct 2022 20:08:04 -0700 (PDT)
+Received: from [192.168.43.80] (subs02-180-214-232-9.three.co.id. [180.214.232.9])
+        by smtp.gmail.com with ESMTPSA id z7-20020a170903018700b00172e19c2fa9sm18771163plg.9.2022.10.23.20.08.02
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 23 Oct 2022 20:08:03 -0700 (PDT)
+Message-ID: <4863c6d7-ffdd-1304-981b-9b0644a87f4e@gmail.com>
+Date: Mon, 24 Oct 2022 10:08:00 +0700
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.4.0
+Subject: Re: [PATCH v2] staging: wlan-ng: remove commented debug printk
+ messages
+Content-Language: en-US
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: Deepak R Varma <drv@mailo.com>, outreachy@lists.linux.dev,
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+References: <Y1L0FiKvrM9jjZG9@debian-BULLSEYE-live-builder-AMD64>
+ <Y1VDM2kWIi1I5dqI@debian.me> <Y1VL/wITM64U6qLi@kroah.com>
+From: Bagas Sanjaya <bagasdotme@gmail.com>
+In-Reply-To: <Y1VL/wITM64U6qLi@kroah.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-Greg KH has mentioned this a couple of times lately -
+On 10/23/22 21:13, Greg KH wrote:
+>>> @@ -1007,7 +986,6 @@ static int p80211_rx_typedrop(struct wlandevice *wlandev, u16 fc)
+>>>  			wlandev->rx.cfack_cfpoll++;
+>>>  			break;
+>>>  		default:
+>>> -			/* printk("unknown"); */
+>>>  			wlandev->rx.data_unknown++;
+>>>  			break;
+>>>  		}
+>>
+>> Shouldn't these printks be guarded under CONFIG_DEBUG_KERNEL instead?
+> 
+> No, they should just be removed as was done here.
+> 
 
->> Any reason you do not have "staging: vt6655:" as the prefix for
->> this 0/X email subject line?
->> 
->> thanks,
->> 
->> greg k-h
+What if in case of debugging without these printks?
 
-A quick peek in the tutorial tells me it could be made clearer.
-It needs to explicitly say the prefix is required, and then
-make sure any examples do it.
+-- 
+An old man doll... just what I always wanted! - Clara
 
-Thanks,
-Alison
