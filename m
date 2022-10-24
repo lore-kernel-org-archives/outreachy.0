@@ -1,27 +1,39 @@
-Received: from linux.microsoft.com (linux.microsoft.com [13.77.154.182])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 3A4B2440E
-	for <outreachy@lists.linux.dev>; Mon, 24 Oct 2022 18:56:52 +0000 (UTC)
-Received: by linux.microsoft.com (Postfix, from userid 1127)
-	id AA18820FFC9E; Mon, 24 Oct 2022 11:56:51 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com AA18820FFC9E
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
-	s=default; t=1666637811;
-	bh=RR5rN+e+W5g4hAHuUd84Veeg+X10oGCG4Juc8mFV54E=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=gZcKbX47V7A3hRMDH9FUhcZ/YY/eUNU+rXKxEC8EEI9UF3wNn35g6SwOkulkl/2Fo
-	 KaCm3xRI65X7JZXaro2yHj1TFRedTZKc6jIyt1xjr4uLl8O8d19kILhIJw1zGsWKAg
-	 l2qjqGpX+P539yiNmpURnwGPnhlarDH7/Ooz+KHc=
-Date: Mon, 24 Oct 2022 11:56:51 -0700
-From: Saurabh Singh Sengar <ssengar@linux.microsoft.com>
+Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C7A766AD5
+	for <outreachy@lists.linux.dev>; Mon, 24 Oct 2022 21:12:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1666645968; x=1698181968;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=k+n5fyZagBsok9RrnWlToJQDkxbfEnSyiEJwJ0JW2vw=;
+  b=Rx4WSRBK2B7M3eybbKvNadcn/TwmSySCnrANFHrMM/fbdznOVcqKv/HU
+   x/VMhEiAiGwIbp7zAiuNP29JErmtZRuEZczqjFCbXgZCxCOGRPclUC7Ve
+   SRfr1rcXV+oTqwaFdC4PVRw/rJgDq2f+q+jCNNOVTJHhrIQ4zKZT+UNzs
+   YCyHwxBT3NniwZpLWV7z10gI+IixcQZtesQJ0XhS3uVwBiGcFyADPTIHq
+   pxXyFCRjDH5Gp7ws+rtsl8thWDNv8oxyKAFoJ6ysTgneEaWDrsOSdVlsC
+   I0dpg5ctF/8b/2duyvU0kUWCWU5A52tkRJkponGVu+jmGTPwF6WWXQcrh
+   A==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10510"; a="369592193"
+X-IronPort-AV: E=Sophos;i="5.95,210,1661842800"; 
+   d="scan'208";a="369592193"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Oct 2022 14:12:48 -0700
+X-IronPort-AV: E=McAfee;i="6500,9779,10510"; a="756708543"
+X-IronPort-AV: E=Sophos;i="5.95,210,1661842800"; 
+   d="scan'208";a="756708543"
+Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.251.31.116])
+  by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Oct 2022 14:12:48 -0700
+Date: Mon, 24 Oct 2022 14:12:46 -0700
+From: Alison Schofield <alison.schofield@intel.com>
 To: Deepak R Varma <drv@mailo.com>
-Cc: Alison Schofield <alison.schofield@intel.com>, dvarma04@hotmail.com,
-	Outreachy Linux Kernel <outreachy@lists.linux.dev>,
-	Praveen Kumar <kumarpraveen@linux.microsoft.com>
-Subject: Re: [Outreachy - To Deeva]
-Message-ID: <20221024185651.GA4377@linuxonhyperv3.guj3yctzbm1etfxqx2vob5hsef.xx.internal.cloudapp.net>
-References: <Y1MTJTKdG2fiUT0N@aschofie-mobl2>
- <Y1LMP/iEnzvXPBFS@debian-BULLSEYE-live-builder-AMD64>
- <Y1OAwaHKxueoCdyL@debian-BULLSEYE-live-builder-AMD64>
+Cc: Outreachy Linux Kernel <outreachy@lists.linux.dev>
+Subject: Re: [Outreachy] Wiki updated needed - Patchset Subject
+Message-ID: <Y1b/zhLlbI/NmdFR@aschofie-mobl2>
+References: <Y1XvjytS2GaafmyJ@aschofie-mobl2>
+ <Y1N/wsr+Wd6sEaDf@debian-BULLSEYE-live-builder-AMD64>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -30,61 +42,62 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <Y1OAwaHKxueoCdyL@debian-BULLSEYE-live-builder-AMD64>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+In-Reply-To: <Y1N/wsr+Wd6sEaDf@debian-BULLSEYE-live-builder-AMD64>
 
-On Sat, Oct 22, 2022 at 11:03:53AM +0530, Deepak R Varma wrote:
-> On Fri, Oct 21, 2022 at 10:13:48PM +0530, Deepak R Varma wrote:
-> > On Fri, Oct 21, 2022 at 02:46:13PM -0700, Alison Schofield wrote:
-> > > Hi Deeva,
-> > >
-> > > I saw your Outreachy Dashboard update that noted your past contributions:
-> > > https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/log/?h=staging-testing&qt=grep&q=Deepak+R+Varma
-> > >
-> > > You have plenty of cleanup patches in total and it would be great if you
-> > > could move on to try out some small tasks for the Coccinelle project.
+On Sat, Oct 22, 2022 at 10:59:38AM +0530, Deepak R Varma wrote:
+> On Sun, Oct 23, 2022 at 06:51:11PM -0700, Alison Schofield wrote:
+> > Greg KH has mentioned this a couple of times lately -
 > >
-> > Hello Alison,
-> > First, sorry for the delay in responding. I was travelling most part of the day
-> > today and just checking my emails now.
+> > >> Any reason you do not have "staging: vt6655:" as the prefix for
+> > >> this 0/X email subject line?
+> > >>
+> > >> thanks,
+> > >>
+> > >> greg k-h
 > >
-> > Thank you for looking at my first-patch contribution record. Your message is
-> > encouraging. I will starting working on the Coccinelle project tasks outlined
-> > in the project description.
+> > A quick peek in the tutorial tells me it could be made clearer.
+> > It needs to explicitly say the prefix is required, and then
+> > make sure any examples do it.
 > 
-> Hello,
-> I am reading through the Coccinelle.org link mentioned on the project
-> description page and following through. Is that the right approach to accomplish
-> the project tasks? Any additional guidance will be helpful.
-
-Hi Deepak,
-
-Yes you are on right track, look for how to use coccinelle/coccicheck and try to
-find some issues in staging directory. Please feel free to reach out to me and 
-Praveen if you face any difficulty in accomplishing it.
-
-Regards,
-Saurabh
-
+> Hello Alison,
+> There already is a section named "Patch Subject formatting" on this link [1]
+> with enough description to determine the patch subject prefix. Can you please
+> review and confirm where we should improve further to make it clearer??
+> 
+> 	[1] https://kernelnewbies.org/PatchPhilosophy
 > 
 > Thank you,
 > ./drv
+
+
+In https://kernelnewbies.org/Outreachyfirstpatch
+
+The example cover letter in 'Submitting a Patchset' has the
+subject "[RFC 0/7] Update REPORTING-BUGS", with no subsys.
+It is also confusing because the cover letter is an RFC and
+the patches are a mix of RFC and PATCH. Very atypical.
+
+Let's replace this example with one that was actually submitted
+and accepted by an Outreachy Intern.  No slight intended to the
+existing set as it contains an interesting set of changes. However,
+an example for newbies might better come from newbies.
+
+How about a patchset off this list? 
+
+Would you mind using this one of yours:
+[PATCH v4 00/11] staging: r8188eu: trivial code cleanup patches
+but trim it to 3-4 patches plus the cover.
+
+It's not a trivial edit, because you need to replace all the
+example steps with the new patchset content.
+
+Thanks,
+Alison
+
 > 
 > >
-> > >
-> > > There are notes on how to get started in the project description, including
-> > > how to contact the mentors.
-> > >
-> > > Please try to keep your applicant/mentor communications CC'd to this
-> > > list.
+> > Thanks,
+> > Alison
 > >
-> > Sounds good. Will follow your guidance.
-> >
-> > Thanks again!
-> > ./drv
-> >
-> > >
-> > > Thanks,
-> > > Alison
-> > >
+> 
 > 
