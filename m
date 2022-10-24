@@ -1,55 +1,64 @@
-Received: from mail-lf1-f41.google.com (mail-lf1-f41.google.com [209.85.167.41])
+Received: from mail-oa1-f52.google.com (mail-oa1-f52.google.com [209.85.160.52])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1D6857ED;
-	Mon, 24 Oct 2022 10:02:34 +0000 (UTC)
-Received: by mail-lf1-f41.google.com with SMTP id j4so15957192lfk.0;
-        Mon, 24 Oct 2022 03:02:33 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8A8E93C0F;
+	Mon, 24 Oct 2022 15:08:26 +0000 (UTC)
+Received: by mail-oa1-f52.google.com with SMTP id 586e51a60fabf-13bd19c3b68so1481420fac.7;
+        Mon, 24 Oct 2022 08:08:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=qUjB/LIeIaF8ms/g2Nbld44QrRlq9IWMpRhgl/Fq6KI=;
-        b=nq1Q11H5du7gVhunvJWLyKQeRvhmbS4Uz2eP0nz++8feNXQN2mIkyEwEYVGnee7+/6
-         3VpVwaBT2Cz4zam03P55KzT/dT1dH03pBYnxAxq/dNZdf4glEPr3uZdPR1Bo7iZjaznR
-         Huag/Lr81tqDMleuaKqknAAe64Ieyv4AHKS8o9FR1Ozm/12+A3iLOWHuEPsbajyck4Jd
-         LqotuWd1t4g3eW9E5Q22C/kzonAMXOLtWXze5oCw20ZqAcfukUnymG0dkRdIZWB+n7PV
-         qCIHscHCngi/YTt+WIEFpC9frMTWgqjXSBcwPimf2rrP8IOhHyLhXriBBMZm5Kkf5RQD
-         G4JQ==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Xf1QpnlooM/EzBO71nDJaALY4Af30m+RUToV/sEcQc0=;
+        b=YWb/8dOxbdWFi4W7XwLCdMiy/5vsnQT8eIL9iFMK1j1zGHbcH8zlhIrf2maHvqZxWd
+         oXNooHcb+yWL1U45waazeowROIGQd7Opoztx9JkTr5CXm7YXwfkNq9uZxy19vgCpYoZc
+         +D6jAY30f5t9XUbRvHErE3uyr92pqndnuW3B+graI/nmQAZZzZtKSSo5ZeBdMEdJjnZa
+         IkqKtQ9YM2lhnJpZcwB6vcZpn0138OfBhnxoj9zBFEcnowyJ1GIHob6C7oUe8PAzCUOV
+         shDXtPOYUIy8/3fp5UcXXxnQbWXJhO81EVz0OLw9904X5s1+AQvgnFws0JLZjCJXOJD/
+         +FLg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=qUjB/LIeIaF8ms/g2Nbld44QrRlq9IWMpRhgl/Fq6KI=;
-        b=VOYWCJ5Sxw+2NYilsu6CRYdb0+jIdNb4FF5H4F+Lgaps71r/CdJ4j256NtL8tuEJ11
-         F1OO4fPH5kQWQrHOY7KA1XiOyEcmbeaIeRvgO9UMQPHabS1wMX8wnrEDVP0Q8CLKy0lY
-         ckTrS/bupVYeGC/yb9bkC4XbmCBtYJGWsu8lwlJPQftrdd4G0XL5B5p1MQeB6VCV+JEP
-         m8rUtjDLs3z6j7ZhHqaAa+vloYWSaXs48zh+IhjJ6gAWsfy7cY+sVa7WvFLfYBDAQXua
-         A4AldiA+VJgZt1wqhNlzFzST+OKl9C/+n6hKtbHAU5pYPddGoQy8nN+61QGCE5xLerVn
-         B6Qg==
-X-Gm-Message-State: ACrzQf1oEf34MR3vfJhX1m2RVWV4J/03UsNIniWuOOSKO8oz9x5ubD2l
-	0PdlDU6EuJrqjf42ZNSnk6U=
-X-Google-Smtp-Source: AMsMyM5ocewgUwZ4FqsY3ThKJ9oXuzldPMVB0iB4wvhmkYKgNq0LB7MdEO0L8TBltMOc1SaxEYilTg==
-X-Received: by 2002:ac2:5dc5:0:b0:4a6:3193:582 with SMTP id x5-20020ac25dc5000000b004a631930582mr8585481lfq.236.1666605752278;
-        Mon, 24 Oct 2022 03:02:32 -0700 (PDT)
-Received: from elroy-temp-vm.gaiao0uenmiufjlowqgp5yxwdh.gvxx.internal.cloudapp.net ([20.240.130.248])
-        by smtp.googlemail.com with ESMTPSA id s9-20020a2eb629000000b0026dfbdfc1ddsm4896832ljn.11.2022.10.24.03.02.31
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Xf1QpnlooM/EzBO71nDJaALY4Af30m+RUToV/sEcQc0=;
+        b=1WB2TtFRPuzd4UzY0N79uXDTsYI/KmYZD6b6usQZaG436AaQIfc8CAy7yvE78OQkg7
+         9AbAaM7fwuBmP/rrdyllGJwQQFtEE+ZGiQsLED76RPPMn7N/rE5MQxhcP6UWX+Fgz/Fl
+         18WNLaEoJNYtLcPsg6bywzqvTtChq/Ipb5SjkRIfCuot15AugJXcrYkziNIBr7oJUu6E
+         pxJWslSMu4tWj3yWPTCI0zdVlvCqCbjcc+ft1bzwHJ+ahgidla4ks1dhhyyz6nnzqFi7
+         3jLbu7wG7ux7pJ0nhk7LTCC+qCSSbqhHsonMHjd1LpC8beIQKU+/nkjUOmfD+Vq9dLRL
+         Xs+w==
+X-Gm-Message-State: ACrzQf16+lwRgxTGyVyncNOV7JM7mkLcatlh0KqQkxwWwTSDqZPOBHzC
+	RScSJUJQ8lZ9r06b3Ms+EY4=
+X-Google-Smtp-Source: AMsMyM5RpJNF3gJeZ9+k4mWvaTefhcNVEdR3otp/3VizCshKQP+5vqFHs/wyK0UugSqNcNfbJ+mZvg==
+X-Received: by 2002:a05:6871:112:b0:13b:99e0:2be3 with SMTP id y18-20020a056871011200b0013b99e02be3mr4297213oab.299.1666624105441;
+        Mon, 24 Oct 2022 08:08:25 -0700 (PDT)
+Received: from gabriel-Nitro-AN515-54.. (201-27-204-68.dsl.telesp.net.br. [201.27.204.68])
+        by smtp.gmail.com with ESMTPSA id e18-20020a056830201200b00661ad8741b4sm4532583otp.24.2022.10.24.08.08.17
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 24 Oct 2022 03:02:31 -0700 (PDT)
-From: Tanjuate Brunostar <tanjubrunostar0@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: linux-staging@lists.linux.dev,
+        Mon, 24 Oct 2022 08:08:24 -0700 (PDT)
+From: Gabriel Lima Luz <lima.gabriel.luz@gmail.com>
+To: Rui Miguel Silva <rmfrfs@gmail.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Steve Longerbeam <slongerbeam@gmail.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Shawn Guo <shawnguo@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	NXP Linux Team <linux-imx@nxp.com>,
+	linux-media@vger.kernel.org,
+	linux-staging@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev,
-	Tanjuate Brunostar <tanjubrunostar0@gmail.com>
-Subject: [PATCH v4 6/6] staging: vt6655: refactor code to avoid a line ending in '('
-Date: Mon, 24 Oct 2022 10:01:52 +0000
-Message-Id: <43693eef6afe24973ed28f8b26e2d5117f5d35f1.1666605225.git.tanjubrunostar0@gmail.com>
+	outreachy@lists.linux.dev
+Cc: Gabriel Lima Luz <lima.gabriel.luz@gmail.com>
+Subject: [PATCH] staging: media: imx: imx7-media-csi: Fix parenthesis alignment
+Date: Mon, 24 Oct 2022 12:07:44 -0300
+Message-Id: <20221024150744.72641-1-lima.gabriel.luz@gmail.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <cover.1666605225.git.tanjubrunostar0@gmail.com>
-References: <cover.1666605225.git.tanjubrunostar0@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -58,65 +67,30 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-join unnecessary split lines to avoid them ending in '('
+Adhere to Linux kernel coding style.
 
-Signed-off-by: Tanjuate Brunostar <tanjubrunostar0@gmail.com>
+Reported by checkpatch:
+
+CHECK: Alignment should match open parenthesis
+
+Signed-off-by: Gabriel Lima Luz <lima.gabriel.luz@gmail.com>
 ---
- drivers/staging/vt6655/rxtx.c | 20 +++++++++-----------
- 1 file changed, 9 insertions(+), 11 deletions(-)
+ drivers/staging/media/imx/imx7-media-csi.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
-index 6a4fcb16b674..d585435520b3 100644
---- a/drivers/staging/vt6655/rxtx.c
-+++ b/drivers/staging/vt6655/rxtx.c
-@@ -1118,7 +1118,7 @@ static unsigned int s_cbFillTxBufHead(struct vnt_private *pDevice,
- 				pMICHDR = (struct vnt_mic_hdr *)(pbyTxBufferAddr + wTxBufSize +
- 								 sizeof(struct vnt_rrv_time_cts));
- 				pvRTS = NULL;
--				pvCTS = (void *) (pbyTxBufferAddr + wTxBufSize +
-+				pvCTS = (void *)(pbyTxBufferAddr + wTxBufSize +
- 						  sizeof(struct vnt_rrv_time_cts) + cbMICHDR);
- 				pvTxDataHd = (void *)(pbyTxBufferAddr + wTxBufSize +
- 						      sizeof(struct vnt_rrv_time_cts) + cbMICHDR +
-@@ -1296,10 +1296,8 @@ static void vnt_fill_txkey(struct ieee80211_hdr *hdr, u8 *key_buffer,
- 		ether_addr_copy(mic_hdr->addr2, hdr->addr2);
- 		ether_addr_copy(mic_hdr->addr3, hdr->addr3);
+diff --git a/drivers/staging/media/imx/imx7-media-csi.c b/drivers/staging/media/imx/imx7-media-csi.c
+index cbc66ef0eda8..9ad7205a3f2f 100644
+--- a/drivers/staging/media/imx/imx7-media-csi.c
++++ b/drivers/staging/media/imx/imx7-media-csi.c
+@@ -1704,7 +1704,7 @@ static int imx7_csi_init_cfg(struct v4l2_subdev *sd,
+ 		mf->xfer_func = V4L2_MAP_XFER_FUNC_DEFAULT(mf->colorspace);
+ 		mf->ycbcr_enc = V4L2_MAP_YCBCR_ENC_DEFAULT(mf->colorspace);
+ 		mf->quantization = V4L2_MAP_QUANTIZATION_DEFAULT(!cc->yuv,
+-					mf->colorspace, mf->ycbcr_enc);
++								 mf->colorspace, mf->ycbcr_enc);
  
--		mic_hdr->frame_control = cpu_to_le16(
--			le16_to_cpu(hdr->frame_control) & 0xc78f);
--		mic_hdr->seq_ctrl = cpu_to_le16(
--				le16_to_cpu(hdr->seq_ctrl) & 0xf);
-+		mic_hdr->frame_control = cpu_to_le16(le16_to_cpu(hdr->frame_control) & 0xc78f);
-+		mic_hdr->seq_ctrl = cpu_to_le16(le16_to_cpu(hdr->seq_ctrl) & 0xf);
- 
- 		if (ieee80211_has_a4(hdr->frame_control))
- 			ether_addr_copy(mic_hdr->addr4, hdr->addr4);
-@@ -1470,9 +1468,9 @@ static int vnt_beacon_xmit(struct vnt_private *priv,
- 
- 		/* Get Duration and TimeStampOff */
- 		short_head->duration =
--			cpu_to_le16((u16)s_uGetDataDuration(priv, DATADUR_B,
--				    frame_size, PK_TYPE_11A, current_rate,
--				    false, 0, 0, 1, AUTO_FB_NONE));
-+			cpu_to_le16((u16)s_uGetDataDuration(priv, DATADUR_B, frame_size,
-+							    PK_TYPE_11A, current_rate, false,
-+							    0, 0, 1, AUTO_FB_NONE));
- 
- 		short_head->time_stamp_off =
- 				vnt_time_stamp_off(priv, current_rate);
-@@ -1486,9 +1484,9 @@ static int vnt_beacon_xmit(struct vnt_private *priv,
- 
- 		/* Get Duration and TimeStampOff */
- 		short_head->duration =
--			cpu_to_le16((u16)s_uGetDataDuration(priv, DATADUR_B,
--				    frame_size, PK_TYPE_11B, current_rate,
--				    false, 0, 0, 1, AUTO_FB_NONE));
-+			cpu_to_le16((u16)s_uGetDataDuration(priv, DATADUR_B, frame_size,
-+							    PK_TYPE_11B, current_rate, false,
-+							    0, 0, 1, AUTO_FB_NONE));
- 
- 		short_head->time_stamp_off =
- 			vnt_time_stamp_off(priv, current_rate);
+ 		csi->cc[i] = cc;
+ 	}
 -- 
 2.34.1
 
