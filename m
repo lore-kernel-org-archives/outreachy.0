@@ -1,52 +1,88 @@
-Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ed1-f45.google.com (mail-ed1-f45.google.com [209.85.208.45])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 58E523D8A
-	for <outreachy@lists.linux.dev>; Mon, 24 Oct 2022 16:42:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1666629756; x=1698165756;
-  h=date:from:to:cc:subject:message-id:mime-version;
-  bh=+WnNB0hwgIXSEGAfG416XcujDhFilwPkvrhXdvlXxzA=;
-  b=lZyH/C8YCQ9+o3Zng8lGuF8b4dyVTDXtQ5HhCMrY7S0dlRZEfmvD8Glk
-   ipuMmUN04r6Iq6e1yZsYdqvMfcf5ZiUf7LXWNCJqflMUyc/f06rJBKkma
-   9zBO5gt5bvUe2OxqyoF/Hj2f0nWmvwFHrSSgmPIl09nEbmBx6GVfkdYqT
-   S8AIfnQlzdcSxfdlwdmDLPMK0rUpg+pdfgESQk32XreqfNSmAVKcEQzcM
-   RDu9cI/9tFRDR5TdbCEuY39mubpKiE62Vf17/NhS1OeRyneD5JKV0v3kr
-   LHxdAEuwmw2WDJP8ZSqruMwr4VM9QUPJw58llA6ccaAvsBSrmB/ALx3Ee
-   w==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10510"; a="309155490"
-X-IronPort-AV: E=Sophos;i="5.95,209,1661842800"; 
-   d="scan'208";a="309155490"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
-  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Oct 2022 09:42:36 -0700
-X-IronPort-AV: E=McAfee;i="6500,9779,10510"; a="609259215"
-X-IronPort-AV: E=Sophos;i="5.95,209,1661842800"; 
-   d="scan'208";a="609259215"
-Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.251.31.116])
-  by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Oct 2022 09:42:35 -0700
-Date: Mon, 24 Oct 2022 09:42:34 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: Gabriel Lima Luz <lima.gabriel.luz@gmail.com>
-Cc: Outreachy Linux Kernel <outreachy@lists.linux.dev>
-Subject: [Outreachy Info] No staging/media patches
-Message-ID: <Y1bAenbEigs4EVqg@aschofie-mobl2>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 40B0A4680;
+	Mon, 24 Oct 2022 18:09:42 +0000 (UTC)
+Received: by mail-ed1-f45.google.com with SMTP id a67so32909047edf.12;
+        Mon, 24 Oct 2022 11:09:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=ahDO7+rUj1KXOd/Qkfsy2Fp1z/mH76ebAnI74jzaPs4=;
+        b=LnldIeh4COUB4K6NTLWMbN9T1BKIZhqJMCVV1Vr0XxNk35yxYSXurE22kT5qZJtSyV
+         odbacRNIZXrLZFoFOLaICe8RzYYkMGtGsHRVchDvCCGb1Eg0LlK+wdK+jq48+fgYbUPG
+         PN9277CKeKzt1NQKYZE3YYVgvAkO13SQrGOhDib+F/6r8DCGdkkwVrjugKnGfGMOKwGu
+         tHedAd31ldjmSVIy0DdN+8MXjdjU0WbgfQnPyQZVJIHL81Yg77HitkSvMluVydeKZDfH
+         8qGI6cQlGhbx+vSDMtxm05V1W7iRHr7S0V1Gj/WizMZVSLDVbwG3WbIy27gLreeUmtuy
+         X2Ug==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=ahDO7+rUj1KXOd/Qkfsy2Fp1z/mH76ebAnI74jzaPs4=;
+        b=bhz46EV/JkDwKTEBdTCnqo1CZ2DzMi3kuZxQbeg8Qoe3GyX5AZ0WxAEzPTewURIPGv
+         qaWe0q0PphGHGPnooXbpX0drySYwTXLLAV+eaosFtyIkLPeJW470pXzcQS1+FZoOlFeH
+         di0Nbiz5B24zpxET04ZExoqtsc+dp0kARx/sgiImjBaZa5ZkWJgVBxbHRy+XLtg4sbe4
+         sWLioYAsUsEcKxK7jDH//wvjLyjw0aj9Q2p+V3Zk0pX2IIfsVi7GgenPjaC6SSoLvAws
+         3w6I28StFP2+g2+7c9NnZI3r1xd5aKkJ+bMPSZK1Ci7BXjK8zfwKcp8nnrVVbdN2lj62
+         Vimw==
+X-Gm-Message-State: ACrzQf0Y8L7nUFM7D/ZzVdmAJISjlUJNt60xhGihqGXHarDP2U1545vw
+	uYcJQmHY3M6GESZjXh4Q2jKOolqa7+Y=
+X-Google-Smtp-Source: AMsMyM7Mvxlj6NJz6pm21NqKYDWEZwgw+iQrvIy7iAf3DzniCXJ30NWJaERW7GbIg1ATHY77DsCWoQ==
+X-Received: by 2002:a05:6402:298b:b0:44f:20a:2db2 with SMTP id eq11-20020a056402298b00b0044f020a2db2mr32005255edb.138.1666634980611;
+        Mon, 24 Oct 2022 11:09:40 -0700 (PDT)
+Received: from [192.168.1.104] (p57ba2cf5.dip0.t-ipconnect.de. [87.186.44.245])
+        by smtp.gmail.com with ESMTPSA id q21-20020a17090676d500b007a6c25819f1sm199683ejn.145.2022.10.24.11.09.39
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 24 Oct 2022 11:09:40 -0700 (PDT)
+Message-ID: <64d0f316-3e72-877d-0f6b-3db1d67877ac@gmail.com>
+Date: Mon, 24 Oct 2022 20:09:34 +0200
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v4 0/6] staging: vt6655: a series of checkpatch fixes on
+ the file: rxtx.c
+Content-Language: en-US
+To: Tanjuate Brunostar <tanjubrunostar0@gmail.com>, gregkh@linuxfoundation.org
+Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+ outreachy@lists.linux.dev
+References: <cover.1666605225.git.tanjubrunostar0@gmail.com>
+From: Philipp Hortmann <philipp.g.hortmann@gmail.com>
+In-Reply-To: <cover.1666605225.git.tanjubrunostar0@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 
-Hi Gabriel,
+On 10/24/22 12:01, Tanjuate Brunostar wrote:
+> The fixes are similar, mostly long lines splitting. I had to make
+> serveral patches to ease the work of inspectors
+> 
+> v2: fixed a compilation error found by the kernel test robot and
+> recompiled the code
+> 
+> v3: tends out the error persisted in the second version. this version is
+> a correction of that
+> 
+> v4: did some corrections as recommended by Greg KH
+> 
+> Tanjuate Brunostar (6):
+>    staging: vt6655: fix lines ending in a '('
+>    staging: vt6655: refactor long lines of code in s_uGetRTSCTSDuration
+>    staging: vt6655: refactor long lines of code in s_uFillDataHead
+>    staging: vt6655: refactor long lines of code in s_vGenerateTxParamete
+>    staging: vt6655: refactor long lines of code in the rest of the file
+>    staging: vt6655: refactor code to avoid a line ending in '('
+> 
+>   drivers/staging/vt6655/rxtx.c | 542 ++++++++++++++++++++--------------
+>   1 file changed, 324 insertions(+), 218 deletions(-)
+> 
 
-Welcome to Outreachy!
 
-Media drivers are excluded from Outreachy, due to reviewer
-bandwidth. See the note in the First Patch Tutorial. If it
-is not clear, please update the Wiki to make it clearer.
-
-Thanks,
-Alison
+Tested-by: Philipp Hortmann <philipp.g.hortmann@gmail.com>
