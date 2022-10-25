@@ -1,23 +1,23 @@
-Received: from mail2-smtp-roc.national.inria.fr (mail2-smtp-roc.national.inria.fr [192.134.164.81])
+Received: from mail3-smtp-sop.national.inria.fr (mail3-smtp-sop.national.inria.fr [192.134.164.98])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F12FC7B
-	for <outreachy@lists.linux.dev>; Tue, 25 Oct 2022 15:19:30 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E66567B
+	for <outreachy@lists.linux.dev>; Tue, 25 Oct 2022 15:19:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
   d=inria.fr; s=dc;
   h=date:from:to:cc:subject:in-reply-to:message-id:
    references:mime-version;
-  bh=rIs0M/F8F2I+kIqt3qLrAw6Oq/DyoAt3Y+0SRT3YLxo=;
-  b=Ii80trikBidXUPvoodXUqUErrNZ9frUm5QDL76XHwH1m77ALgiY5bxKz
-   sCvd14RSKULmuJ8ayu1ks4yp54/XcpMp6SRW/TIKf+S8yu4nznoIPkeN2
-   JavEA8G3BcUQv2Um2sCjbC9yEX00GJo0IvRojuY50ZMhRPtj2opwg3uun
-   E=;
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+  bh=ClU2thZg4NK1LJ4FJg/DiO8b1JNpsshSojMj7VHWyf0=;
+  b=ROJrHcE3jRxJGhGR+4Yi3mKquuMi7hxQGd2GZUu139RzV41W47+CS9lc
+   ezPCgnh1+v3wcUXDNxoK2pCyVs/r5VN42pCxlT74QLSWH06WQvF+gTyv1
+   8c/W30rt9FWqfi8ryGUAvC+2hLcdMBzOnD9Td9U794YYKcVePZP9KyJiX
+   M=;
+Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
 X-IronPort-AV: E=Sophos;i="5.95,212,1661810400"; 
-   d="scan'208";a="71190468"
+   d="scan'208";a="35329953"
 Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Oct 2022 17:18:21 +0200
-Date: Tue, 25 Oct 2022 17:18:21 +0200 (CEST)
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Oct 2022 17:19:54 +0200
+Date: Tue, 25 Oct 2022 17:19:53 +0200 (CEST)
 From: Julia Lawall <julia.lawall@inria.fr>
 To: Deepak R Varma <drv@mailo.com>
 cc: Saurabh Singh Sengar <ssengar@linux.microsoft.com>, 
@@ -26,7 +26,7 @@ cc: Saurabh Singh Sengar <ssengar@linux.microsoft.com>,
     Praveen Kumar <kumarpraveen@linux.microsoft.com>
 Subject: Re: [Outreachy - To Deeva]
 In-Reply-To: <Y1cTOKRcFuLerpt+@debian-BULLSEYE-live-builder-AMD64>
-Message-ID: <30dcb5c4-9554-495e-bb86-cd761f9d4a@inria.fr>
+Message-ID: <c13189ca-ed53-8127-1712-57f3c71b881b@inria.fr>
 References: <Y1MTJTKdG2fiUT0N@aschofie-mobl2> <Y1LMP/iEnzvXPBFS@debian-BULLSEYE-live-builder-AMD64> <Y1OAwaHKxueoCdyL@debian-BULLSEYE-live-builder-AMD64> <20221024185651.GA4377@linuxonhyperv3.guj3yctzbm1etfxqx2vob5hsef.xx.internal.cloudapp.net>
  <Y1cQ2WUOZ0m7QKSA@debian-BULLSEYE-live-builder-AMD64> <673dae52-f013-90d3-362d-1fa9c05832fe@inria.fr> <Y1cTOKRcFuLerpt+@debian-BULLSEYE-live-builder-AMD64>
 Precedence: bulk
@@ -96,7 +96,11 @@ On Tue, 25 Oct 2022, Deepak R Varma wrote:
 > update???
 > https://coccinelle.gitlabpages.inria.fr/website/distrib/coccicheck-0.2.4.tgz
 
-Yes, surely, thanks.
+Sorry, maybe it needs an update, but it''s also not relevant to you if you
+want to use Coccinelle on kernel code.  Coccicheck is a standalone tool
+for running Coccinelle on other software.  In the kernel, coccicheck is
+integrated with the kernel makefile.  You can read about it in the kernel
+documentation.
 
 julia
 
