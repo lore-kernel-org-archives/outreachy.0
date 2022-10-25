@@ -1,62 +1,1374 @@
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
+Received: from msg-2.mailo.com (msg-2.mailo.com [213.182.54.12])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6073D748E
-	for <outreachy@lists.linux.dev>; Tue, 25 Oct 2022 17:44:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=RkNyTAuPUAIuBWgXOg1jn3LkEbkZPs3ElUUQu0B8ID0=;
-  b=ezqhkTdSgmmlDgFwGHAF/KbuC1kaCsnlHyGJHcBDYrIwP/9OlYkBlHze
-   KcwOgGAjELU27cVM4BSdncbzDwsXw/k5hClyRnLnxGjtYLllrgWHB3ViB
-   d4rBG+PLTlHiIBVRwtI+3JfbjtTIs//OmIqVgQKpwVwloa3EM5co7PEun
-   4=;
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="5.95,212,1661810400"; 
-   d="scan'208";a="71464500"
-Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Oct 2022 19:44:35 +0200
-Date: Tue, 25 Oct 2022 19:44:35 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-To: Deepak R Varma <drv@mailo.com>
-cc: ssengar@linux.microsoft.com, kumarpraveen@linux.microsoft.com, 
-    alison.schofield@intel.com, outreachy@lists.linux.dev
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 75053748E
+	for <outreachy@lists.linux.dev>; Tue, 25 Oct 2022 17:52:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
+	t=1666720295; bh=zZ990kbMVVzEoXZy6m37zL2KC4rKvk5pt1zmudW13pE=;
+	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
+	 MIME-Version:Content-Type:In-Reply-To;
+	b=ncROLl2V5wbGh0chgc5FKL/nnleYgvKXVyK9FNmWG7lQajpZG5kmPem45IfJeCPuL
+	 HcRAUwyqB3IkQpaB46uKwh54s7UaR1uGTcvBNoByT9EF0KnFNp9nvul65T7wq7cExO
+	 Hvu9/aaPm0Ni7Sunm1QjuXsGleI5EHS/9I1NbH7g=
+Received: by b-1.in.mailobj.net [192.168.90.11] with ESMTP
+	via [213.182.55.206]
+	Tue, 25 Oct 2022 19:51:35 +0200 (CEST)
+X-EA-Auth: 1xI4ylc1zZwVGsH46jssGnyuH2lPne3heRr8wkjxWB6s16duyM+7I7njHFsWPhtnHrhkPVASmz5o0pJzoW8GjGdX7gkhLEZ5
+Date: Tue, 25 Oct 2022 06:43:17 +0530
+From: Deepak R Varma <drv@mailo.com>
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: ssengar@linux.microsoft.com, kumarpraveen@linux.microsoft.com,
+	alison.schofield@intel.com, outreachy@lists.linux.dev
 Subject: Re: Coccinelle make error
-In-Reply-To: <Y1cz1Vqe+hpAssz7@debian-BULLSEYE-live-builder-AMD64>
-Message-ID: <29c7fa5-3036-1a6-1bde-4a7ecb6b83ce@inria.fr>
+Message-ID: <Y1c4LdO38qKdFP/7@debian-BULLSEYE-live-builder-AMD64>
 References: <Y1cz1Vqe+hpAssz7@debian-BULLSEYE-live-builder-AMD64>
+ <29c7fa5-3036-1a6-1bde-4a7ecb6b83ce@inria.fr>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: multipart/mixed; boundary="Ms9Ah6GyVd1JsAZB"
+Content-Disposition: inline
+In-Reply-To: <29c7fa5-3036-1a6-1bde-4a7ecb6b83ce@inria.fr>
 
 
+--Ms9Ah6GyVd1JsAZB
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-On Tue, 25 Oct 2022, Deepak R Varma wrote:
-
-> Hello,
-> I received following error while running make step on the Coccinelle repo. Looks
-> like there may be some version mismatch with the compiler??? Do you know how to
-> resolve it?
+On Tue, Oct 25, 2022 at 07:44:35PM +0200, Julia Lawall wrote:
 >
->         make -C bundles/pyml all
->         make[1]: Entering directory '/home/drv/git/kernels/coccinelle/bundles/pyml'
->         make depend-rec
->         make[2]: Entering directory '/home/drv/git/kernels/coccinelle/bundles/pyml'
->         cd pyml-current && LD_LIBRARY_PATH=/home/drv/git/kernels/coccinelle/bundles/stdcompat: ./generate
->         Fatal error: unknown C primitive `caml_sys_mkdir'
->         Aborted
->         make[2]: *** [Makefile:61: pyml-current/pywrappers.ml] Error 134
->         make[2]: Leaving directory '/home/drv/git/kernels/coccinelle/bundles/pyml'
->         make[1]: *** [../Makefile.bundles:100: .depend] Error 2
->         make[1]: Leaving directory '/home/drv/git/kernels/coccinelle/bundles/pyml'
->         make: *** [Makefile:489: /home/drv/git/kernels/coccinelle/bundles/pyml/pyml.cmxa] Error 2
+>
+> On Tue, 25 Oct 2022, Deepak R Varma wrote:
+>
+> > Hello,
+> > I received following error while running make step on the Coccinelle repo. Looks
+> > like there may be some version mismatch with the compiler??? Do you know how to
+> > resolve it?
+> >
+> >         make -C bundles/pyml all
+> >         make[1]: Entering directory '/home/drv/git/kernels/coccinelle/bundles/pyml'
+> >         make depend-rec
+> >         make[2]: Entering directory '/home/drv/git/kernels/coccinelle/bundles/pyml'
+> >         cd pyml-current && LD_LIBRARY_PATH=/home/drv/git/kernels/coccinelle/bundles/stdcompat: ./generate
+> >         Fatal error: unknown C primitive `caml_sys_mkdir'
+> >         Aborted
+> >         make[2]: *** [Makefile:61: pyml-current/pywrappers.ml] Error 134
+> >         make[2]: Leaving directory '/home/drv/git/kernels/coccinelle/bundles/pyml'
+> >         make[1]: *** [../Makefile.bundles:100: .depend] Error 2
+> >         make[1]: Leaving directory '/home/drv/git/kernels/coccinelle/bundles/pyml'
+> >         make: *** [Makefile:489: /home/drv/git/kernels/coccinelle/bundles/pyml/pyml.cmxa] Error 2
+>
+> I tried compiling the latest version from scratch and all was fine, but it
+> may depend on your configuration.  Could you send your configuration file?
 
-I tried compiling the latest version from scratch and all was fine, but it
-may depend on your configuration.  Could you send your configuration file?
+I assume you are asking for the Coccinelle config file config.status, atatched
+here. Let me know if you were expecting something else.
 
-julia
+>
+> julia
+>
+
+--Ms9Ah6GyVd1JsAZB
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: attachment; filename="config.status"
+Content-Transfer-Encoding: quoted-printable
+
+#! /bin/bash
+# Generated by configure.
+# Run this file to recreate the current configuration.
+# Compiler output produced by configure, useful for debugging
+# configure, is in config.log if it exists.
+
+debug=3Dfalse
+ac_cs_recheck=3Dfalse
+ac_cs_silent=3Dfalse
+
+SHELL=3D${CONFIG_SHELL-/bin/bash}
+export SHELL
+## -------------------- ##
+## M4sh Initialization. ##
+## -------------------- ##
+
+# Be more Bourne compatible
+DUALCASE=3D1; export DUALCASE # for MKS sh
+if test -n "${ZSH_VERSION+set}" && (emulate sh) >/dev/null 2>&1; then :
+  emulate sh
+  NULLCMD=3D:
+  # Pre-4.2 versions of Zsh do word splitting on ${1+"$@"}, which
+  # is contrary to our usage.  Disable this feature.
+  alias -g '${1+"$@"}'=3D'"$@"'
+  setopt NO_GLOB_SUBST
+else
+  case `(set -o) 2>/dev/null` in #(
+  *posix*) :
+    set -o posix ;; #(
+  *) :
+     ;;
+esac
+fi
+
+
+as_nl=3D'
+'
+export as_nl
+# Printing a long string crashes Solaris 7 /usr/bin/printf.
+as_echo=3D'\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\=
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\'
+as_echo=3D$as_echo$as_echo$as_echo$as_echo$as_echo
+as_echo=3D$as_echo$as_echo$as_echo$as_echo$as_echo$as_echo
+# Prefer a ksh shell builtin over an external printf program on Solaris,
+# but without wasting forks for bash or zsh.
+if test -z "$BASH_VERSION$ZSH_VERSION" \
+    && (test "X`print -r -- $as_echo`" =3D "X$as_echo") 2>/dev/null; then
+  as_echo=3D'print -r --'
+  as_echo_n=3D'print -rn --'
+elif (test "X`printf %s $as_echo`" =3D "X$as_echo") 2>/dev/null; then
+  as_echo=3D'printf %s\n'
+  as_echo_n=3D'printf %s'
+else
+  if test "X`(/usr/ucb/echo -n -n $as_echo) 2>/dev/null`" =3D "X-n $as_echo=
+"; then
+    as_echo_body=3D'eval /usr/ucb/echo -n "$1$as_nl"'
+    as_echo_n=3D'/usr/ucb/echo -n'
+  else
+    as_echo_body=3D'eval expr "X$1" : "X\\(.*\\)"'
+    as_echo_n_body=3D'eval
+      arg=3D$1;
+      case $arg in #(
+      *"$as_nl"*)
+	expr "X$arg" : "X\\(.*\\)$as_nl";
+	arg=3D`expr "X$arg" : ".*$as_nl\\(.*\\)"`;;
+      esac;
+      expr "X$arg" : "X\\(.*\\)" | tr -d "$as_nl"
+    '
+    export as_echo_n_body
+    as_echo_n=3D'sh -c $as_echo_n_body as_echo'
+  fi
+  export as_echo_body
+  as_echo=3D'sh -c $as_echo_body as_echo'
+fi
+
+# The user is always right.
+if test "${PATH_SEPARATOR+set}" !=3D set; then
+  PATH_SEPARATOR=3D:
+  (PATH=3D'/bin;/bin'; FPATH=3D$PATH; sh -c :) >/dev/null 2>&1 && {
+    (PATH=3D'/bin:/bin'; FPATH=3D$PATH; sh -c :) >/dev/null 2>&1 ||
+      PATH_SEPARATOR=3D';'
+  }
+fi
+
+
+# IFS
+# We need space, tab and new line, in precisely that order.  Quoting is
+# there to prevent editors from complaining about space-tab.
+# (If _AS_PATH_WALK were called with IFS unset, it would disable word
+# splitting by setting IFS to empty value.)
+IFS=3D" ""	$as_nl"
+
+# Find who we are.  Look in the path if we contain no directory separator.
+as_myself=3D
+case $0 in #((
+  *[\\/]* ) as_myself=3D$0 ;;
+  *) as_save_IFS=3D$IFS; IFS=3D$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=3D$as_save_IFS
+  test -z "$as_dir" && as_dir=3D.
+    test -r "$as_dir/$0" && as_myself=3D$as_dir/$0 && break
+  done
+IFS=3D$as_save_IFS
+
+     ;;
+esac
+# We did not find ourselves, most probably we were run as `sh COMMAND'
+# in which case we are not to be found in the path.
+if test "x$as_myself" =3D x; then
+  as_myself=3D$0
+fi
+if test ! -f "$as_myself"; then
+  $as_echo "$as_myself: error: cannot find myself; rerun with an absolute f=
+ile name" >&2
+  exit 1
+fi
+
+# Unset variables that we do not need and which cause bugs (e.g. in
+# pre-3.0 UWIN ksh).  But do not cause bugs in bash 2.01; the "|| exit 1"
+# suppresses any "Segmentation fault" message there.  '((' could
+# trigger a bug in pdksh 5.2.14.
+for as_var in BASH_ENV ENV MAIL MAILPATH
+do eval test x\${$as_var+set} =3D xset \
+  && ( (unset $as_var) || exit 1) >/dev/null 2>&1 && unset $as_var || :
+done
+PS1=3D'$ '
+PS2=3D'> '
+PS4=3D'+ '
+
+# NLS nuisances.
+LC_ALL=3DC
+export LC_ALL
+LANGUAGE=3DC
+export LANGUAGE
+
+# CDPATH.
+(unset CDPATH) >/dev/null 2>&1 && unset CDPATH
+
+
+# as_fn_error STATUS ERROR [LINENO LOG_FD]
+# ----------------------------------------
+# Output "`basename $0`: error: ERROR" to stderr. If LINENO and LOG_FD are
+# provided, also output the error to LOG_FD, referencing LINENO. Then exit =
+the
+# script with STATUS, using 1 if that was 0.
+as_fn_error ()
+{
+  as_status=3D$1; test $as_status -eq 0 && as_status=3D1
+  if test "$4"; then
+    as_lineno=3D${as_lineno-"$3"} as_lineno_stack=3Das_lineno_stack=3D$as_l=
+ineno_stack
+    $as_echo "$as_me:${as_lineno-$LINENO}: error: $2" >&$4
+  fi
+  $as_echo "$as_me: error: $2" >&2
+  as_fn_exit $as_status
+} # as_fn_error
+
+
+# as_fn_set_status STATUS
+# -----------------------
+# Set $? to STATUS, without forking.
+as_fn_set_status ()
+{
+  return $1
+} # as_fn_set_status
+
+# as_fn_exit STATUS
+# -----------------
+# Exit the shell with STATUS, even in a "trap 0" or "set -e" context.
+as_fn_exit ()
+{
+  set +e
+  as_fn_set_status $1
+  exit $1
+} # as_fn_exit
+
+# as_fn_unset VAR
+# ---------------
+# Portably unset VAR.
+as_fn_unset ()
+{
+  { eval $1=3D; unset $1;}
+}
+as_unset=3Das_fn_unset
+# as_fn_append VAR VALUE
+# ----------------------
+# Append the text in VALUE to the end of the definition contained in VAR. T=
+ake
+# advantage of any shell optimizations that allow amortized linear growth o=
+ver
+# repeated appends, instead of the typical quadratic growth present in naive
+# implementations.
+if (eval "as_var=3D1; as_var+=3D2; test x\$as_var =3D x12") 2>/dev/null; th=
+en :
+  eval 'as_fn_append ()
+  {
+    eval $1+=3D\$2
+  }'
+else
+  as_fn_append ()
+  {
+    eval $1=3D\$$1\$2
+  }
+fi # as_fn_append
+
+# as_fn_arith ARG...
+# ------------------
+# Perform arithmetic evaluation on the ARGs, and store the result in the
+# global $as_val. Take advantage of shells that can avoid forks. The argume=
+nts
+# must be portable across $(()) and expr.
+if (eval "test \$(( 1 + 1 )) =3D 2") 2>/dev/null; then :
+  eval 'as_fn_arith ()
+  {
+    as_val=3D$(( $* ))
+  }'
+else
+  as_fn_arith ()
+  {
+    as_val=3D`expr "$@" || test $? -eq 1`
+  }
+fi # as_fn_arith
+
+
+if expr a : '\(a\)' >/dev/null 2>&1 &&
+   test "X`expr 00001 : '.*\(...\)'`" =3D X001; then
+  as_expr=3Dexpr
+else
+  as_expr=3Dfalse
+fi
+
+if (basename -- /) >/dev/null 2>&1 && test "X`basename -- / 2>&1`" =3D "X/"=
+; then
+  as_basename=3Dbasename
+else
+  as_basename=3Dfalse
+fi
+
+if (as_dir=3D`dirname -- /` && test "X$as_dir" =3D X/) >/dev/null 2>&1; then
+  as_dirname=3Ddirname
+else
+  as_dirname=3Dfalse
+fi
+
+as_me=3D`$as_basename -- "$0" ||
+$as_expr X/"$0" : '.*/\([^/][^/]*\)/*$' \| \
+	 X"$0" : 'X\(//\)$' \| \
+	 X"$0" : 'X\(/\)' \| . 2>/dev/null ||
+$as_echo X/"$0" |
+    sed '/^.*\/\([^/][^/]*\)\/*$/{
+	    s//\1/
+	    q
+	  }
+	  /^X\/\(\/\/\)$/{
+	    s//\1/
+	    q
+	  }
+	  /^X\/\(\/\).*/{
+	    s//\1/
+	    q
+	  }
+	  s/.*/./; q'`
+
+# Avoid depending upon Character Ranges.
+as_cr_letters=3D'abcdefghijklmnopqrstuvwxyz'
+as_cr_LETTERS=3D'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+as_cr_Letters=3D$as_cr_letters$as_cr_LETTERS
+as_cr_digits=3D'0123456789'
+as_cr_alnum=3D$as_cr_Letters$as_cr_digits
+
+ECHO_C=3D ECHO_N=3D ECHO_T=3D
+case `echo -n x` in #(((((
+-n*)
+  case `echo 'xy\c'` in
+  *c*) ECHO_T=3D'	';;	# ECHO_T is single tab character.
+  xy)  ECHO_C=3D'\c';;
+  *)   echo `echo ksh88 bug on AIX 6.1` > /dev/null
+       ECHO_T=3D'	';;
+  esac;;
+*)
+  ECHO_N=3D'-n';;
+esac
+
+rm -f conf$$ conf$$.exe conf$$.file
+if test -d conf$$.dir; then
+  rm -f conf$$.dir/conf$$.file
+else
+  rm -f conf$$.dir
+  mkdir conf$$.dir 2>/dev/null
+fi
+if (echo >conf$$.file) 2>/dev/null; then
+  if ln -s conf$$.file conf$$ 2>/dev/null; then
+    as_ln_s=3D'ln -s'
+    # ... but there are two gotchas:
+    # 1) On MSYS, both `ln -s file dir' and `ln file dir' fail.
+    # 2) DJGPP < 2.04 has no symlinks; `ln -s' creates a wrapper executable.
+    # In both cases, we have to default to `cp -pR'.
+    ln -s conf$$.file conf$$.dir 2>/dev/null && test ! -f conf$$.exe ||
+      as_ln_s=3D'cp -pR'
+  elif ln conf$$.file conf$$ 2>/dev/null; then
+    as_ln_s=3Dln
+  else
+    as_ln_s=3D'cp -pR'
+  fi
+else
+  as_ln_s=3D'cp -pR'
+fi
+rm -f conf$$ conf$$.exe conf$$.dir/conf$$.file conf$$.file
+rmdir conf$$.dir 2>/dev/null
+
+
+# as_fn_mkdir_p
+# -------------
+# Create "$as_dir" as a directory, including parents if necessary.
+as_fn_mkdir_p ()
+{
+
+  case $as_dir in #(
+  -*) as_dir=3D./$as_dir;;
+  esac
+  test -d "$as_dir" || eval $as_mkdir_p || {
+    as_dirs=3D
+    while :; do
+      case $as_dir in #(
+      *\'*) as_qdir=3D`$as_echo "$as_dir" | sed "s/'/'\\\\\\\\''/g"`;; #'(
+      *) as_qdir=3D$as_dir;;
+      esac
+      as_dirs=3D"'$as_qdir' $as_dirs"
+      as_dir=3D`$as_dirname -- "$as_dir" ||
+$as_expr X"$as_dir" : 'X\(.*[^/]\)//*[^/][^/]*/*$' \| \
+	 X"$as_dir" : 'X\(//\)[^/]' \| \
+	 X"$as_dir" : 'X\(//\)$' \| \
+	 X"$as_dir" : 'X\(/\)' \| . 2>/dev/null ||
+$as_echo X"$as_dir" |
+    sed '/^X\(.*[^/]\)\/\/*[^/][^/]*\/*$/{
+	    s//\1/
+	    q
+	  }
+	  /^X\(\/\/\)[^/].*/{
+	    s//\1/
+	    q
+	  }
+	  /^X\(\/\/\)$/{
+	    s//\1/
+	    q
+	  }
+	  /^X\(\/\).*/{
+	    s//\1/
+	    q
+	  }
+	  s/.*/./; q'`
+      test -d "$as_dir" && break
+    done
+    test -z "$as_dirs" || eval "mkdir $as_dirs"
+  } || test -d "$as_dir" || as_fn_error $? "cannot create directory $as_dir"
+
+
+} # as_fn_mkdir_p
+if mkdir -p . 2>/dev/null; then
+  as_mkdir_p=3D'mkdir -p "$as_dir"'
+else
+  test -d ./-p && rmdir ./-p
+  as_mkdir_p=3Dfalse
+fi
+
+
+# as_fn_executable_p FILE
+# -----------------------
+# Test if FILE is an executable regular file.
+as_fn_executable_p ()
+{
+  test -f "$1" && test -x "$1"
+} # as_fn_executable_p
+as_test_x=3D'test -x'
+as_executable_p=3Das_fn_executable_p
+
+# Sed expression to map a string onto a valid CPP name.
+as_tr_cpp=3D"eval sed 'y%*$as_cr_letters%P$as_cr_LETTERS%;s%[^_$as_cr_alnum=
+]%_%g'"
+
+# Sed expression to map a string onto a valid variable name.
+as_tr_sh=3D"eval sed 'y%*+%pp%;s%[^_$as_cr_alnum]%_%g'"
+
+
+exec 6>&1
+## ----------------------------------- ##
+## Main body of $CONFIG_STATUS script. ##
+## ----------------------------------- ##
+# Save the log message, to keep $0 and so on meaningful, and to
+# report actual input values of CONFIG_FILES etc. instead of their
+# values after options handling.
+ac_log=3D"
+This file was extended by coccinelle $as_me 1.1.1-00194-g3dd4726d, which was
+generated by GNU Autoconf 2.69.  Invocation command line was
+
+  CONFIG_FILES    =3D $CONFIG_FILES
+  CONFIG_HEADERS  =3D $CONFIG_HEADERS
+  CONFIG_LINKS    =3D $CONFIG_LINKS
+  CONFIG_COMMANDS =3D $CONFIG_COMMANDS
+  $ $0 $@
+
+on `(hostname || uname -n) 2>/dev/null | sed 1q`
+"
+
+# Files that config.status was made for.
+config_files=3D" Makefile.config version.ml commons/commands.ml globals/con=
+fig.ml globals/regexp.ml python/pycocci.ml ocaml/prepare_ocamlcocci.ml scri=
+pts/spatch.sh tools/spgen/scripts/spgen.sh docs/spatch.1 setup/Makefile"
+config_commands=3D" depfiles"
+
+ac_cs_usage=3D"\
+\`$as_me' instantiates files and other configuration actions
+=66rom templates according to the current configuration.  Unless the files
+and actions are specified as TAGs, all are instantiated by default.
+
+Usage: $0 [OPTION]... [TAG]...
+
+  -h, --help       print this help, then exit
+  -V, --version    print version number and configuration settings, then ex=
+it
+      --config     print configuration, then exit
+  -q, --quiet, --silent
+                   do not print progress messages
+  -d, --debug      don't remove temporary files
+      --recheck    update $as_me by reconfiguring in the same conditions
+      --file=3DFILE[:TEMPLATE]
+                   instantiate the configuration file FILE
+
+Configuration files:
+$config_files
+
+Configuration commands:
+$config_commands
+
+Report bugs to <cocci@systeme.lip6.fr>.
+coccinelle home page: <http://coccinelle.lip6.fr/>."
+
+ac_cs_config=3D""
+ac_cs_version=3D"\
+coccinelle config.status 1.1.1-00194-g3dd4726d
+configured by ./configure, generated by GNU Autoconf 2.69,
+  with options \"$ac_cs_config\"
+
+Copyright (C) 2012 Free Software Foundation, Inc.
+This config.status script is free software; the Free Software Foundation
+gives unlimited permission to copy, distribute and modify it."
+
+ac_pwd=3D'/home/drv/git/kernels/coccinelle'
+srcdir=3D'.'
+INSTALL=3D'/usr/bin/install -c'
+MKDIR_P=3D'/usr/bin/mkdir -p'
+AWK=3D'mawk'
+test -n "$AWK" || AWK=3Dawk
+# The default lists apply if the user does not specify any file.
+ac_need_defaults=3D:
+while test $# !=3D 0
+do
+  case $1 in
+  --*=3D?*)
+    ac_option=3D`expr "X$1" : 'X\([^=3D]*\)=3D'`
+    ac_optarg=3D`expr "X$1" : 'X[^=3D]*=3D\(.*\)'`
+    ac_shift=3D:
+    ;;
+  --*=3D)
+    ac_option=3D`expr "X$1" : 'X\([^=3D]*\)=3D'`
+    ac_optarg=3D
+    ac_shift=3D:
+    ;;
+  *)
+    ac_option=3D$1
+    ac_optarg=3D$2
+    ac_shift=3Dshift
+    ;;
+  esac
+
+  case $ac_option in
+  # Handling of the options.
+  -recheck | --recheck | --rechec | --reche | --rech | --rec | --re | --r)
+    ac_cs_recheck=3D: ;;
+  --version | --versio | --versi | --vers | --ver | --ve | --v | -V )
+    $as_echo "$ac_cs_version"; exit ;;
+  --config | --confi | --conf | --con | --co | --c )
+    $as_echo "$ac_cs_config"; exit ;;
+  --debug | --debu | --deb | --de | --d | -d )
+    debug=3D: ;;
+  --file | --fil | --fi | --f )
+    $ac_shift
+    case $ac_optarg in
+    *\'*) ac_optarg=3D`$as_echo "$ac_optarg" | sed "s/'/'\\\\\\\\''/g"` ;;
+    '') as_fn_error $? "missing file argument" ;;
+    esac
+    as_fn_append CONFIG_FILES " '$ac_optarg'"
+    ac_need_defaults=3Dfalse;;
+  --he | --h |  --help | --hel | -h )
+    $as_echo "$ac_cs_usage"; exit ;;
+  -q | -quiet | --quiet | --quie | --qui | --qu | --q \
+  | -silent | --silent | --silen | --sile | --sil | --si | --s)
+    ac_cs_silent=3D: ;;
+
+  # This is an error.
+  -*) as_fn_error $? "unrecognized option: \`$1'
+Try \`$0 --help' for more information." ;;
+
+  *) as_fn_append ac_config_targets " $1"
+     ac_need_defaults=3Dfalse ;;
+
+  esac
+  shift
+done
+
+ac_configure_extra_args=3D
+
+if $ac_cs_silent; then
+  exec 6>/dev/null
+  ac_configure_extra_args=3D"$ac_configure_extra_args --silent"
+fi
+
+if $ac_cs_recheck; then
+  set X /bin/bash './configure'  $ac_configure_extra_args --no-create --no-=
+recursion
+  shift
+  $as_echo "running CONFIG_SHELL=3D/bin/bash $*" >&6
+  CONFIG_SHELL=3D'/bin/bash'
+  export CONFIG_SHELL
+  exec "$@"
+fi
+
+exec 5>>config.log
+{
+  echo
+  sed 'h;s/./-/g;s/^.../## /;s/...$/ ##/;p;x;p;x' <<_ASBOX
+## Running $as_me. ##
+_ASBOX
+  $as_echo "$ac_log"
+} >&5
+
+#
+# INIT-COMMANDS
+#
+AMDEP_TRUE=3D"" MAKE=3D"make"
+
+
+# Handling of arguments.
+for ac_config_target in $ac_config_targets
+do
+  case $ac_config_target in
+    "depfiles") CONFIG_COMMANDS=3D"$CONFIG_COMMANDS depfiles" ;;
+    "bundles/pcre/pcre-ocaml/src/pcre.ml") CONFIG_FILES=3D"$CONFIG_FILES bu=
+ndles/pcre/pcre-ocaml/src/pcre.ml" ;;
+    "bundles/pcre/pcre-ocaml/src/pcre_stubs.c") CONFIG_FILES=3D"$CONFIG_FIL=
+ES bundles/pcre/pcre-ocaml/src/pcre_stubs.c" ;;
+    "Makefile.config") CONFIG_FILES=3D"$CONFIG_FILES Makefile.config" ;;
+    "version.ml") CONFIG_FILES=3D"$CONFIG_FILES version.ml" ;;
+    "commons/commands.ml") CONFIG_FILES=3D"$CONFIG_FILES commons/commands.m=
+l" ;;
+    "globals/config.ml") CONFIG_FILES=3D"$CONFIG_FILES globals/config.ml" ;;
+    "globals/regexp.ml") CONFIG_FILES=3D"$CONFIG_FILES globals/regexp.ml" ;;
+    "python/pycocci.ml") CONFIG_FILES=3D"$CONFIG_FILES python/pycocci.ml" ;;
+    "ocaml/prepare_ocamlcocci.ml") CONFIG_FILES=3D"$CONFIG_FILES ocaml/prep=
+are_ocamlcocci.ml" ;;
+    "scripts/spatch.sh") CONFIG_FILES=3D"$CONFIG_FILES scripts/spatch.sh" ;;
+    "tools/spgen/scripts/spgen.sh") CONFIG_FILES=3D"$CONFIG_FILES tools/spg=
+en/scripts/spgen.sh" ;;
+    "docs/spatch.1") CONFIG_FILES=3D"$CONFIG_FILES docs/spatch.1" ;;
+    "setup/Makefile") CONFIG_FILES=3D"$CONFIG_FILES setup/Makefile" ;;
+
+  *) as_fn_error $? "invalid argument: \`$ac_config_target'" "$LINENO" 5;;
+  esac
+done
+
+
+# If the user did not use the arguments to specify the items to instantiate,
+# then the envvar interface is used.  Set only those that are not.
+# We use the long form for the default assignment because of an extremely
+# bizarre bug on SunOS 4.1.3.
+if $ac_need_defaults; then
+  test "${CONFIG_FILES+set}" =3D set || CONFIG_FILES=3D$config_files
+  test "${CONFIG_COMMANDS+set}" =3D set || CONFIG_COMMANDS=3D$config_comman=
+ds
+fi
+
+# Have a temporary directory for convenience.  Make it in the build tree
+# simply because there is no reason against having it here, and in addition,
+# creating and moving files from /tmp can sometimes cause problems.
+# Hook for its removal unless debugging.
+# Note that there is a small window in which the directory will not be clea=
+ned:
+# after its creation but before its name has been assigned to `$tmp'.
+$debug ||
+{
+  tmp=3D ac_tmp=3D
+  trap 'exit_status=3D$?
+  : "${ac_tmp:=3D$tmp}"
+  { test ! -d "$ac_tmp" || rm -fr "$ac_tmp"; } && exit $exit_status
+' 0
+  trap 'as_fn_exit 1' 1 2 13 15
+}
+# Create a (secure) tmp directory for tmp files.
+
+{
+  tmp=3D`(umask 077 && mktemp -d "./confXXXXXX") 2>/dev/null` &&
+  test -d "$tmp"
+}  ||
+{
+  tmp=3D./conf$$-$RANDOM
+  (umask 077 && mkdir "$tmp")
+} || as_fn_error $? "cannot create a temporary directory in ." "$LINENO" 5
+ac_tmp=3D$tmp
+
+# Set up the scripts for CONFIG_FILES section.
+# No need to generate them if there are no CONFIG_FILES.
+# This happens for instance with `./config.status config.h'.
+if test -n "$CONFIG_FILES"; then
+
+
+ac_cr=3D`echo X | tr X '\015'`
+# On cygwin, bash can eat \r inside `` if the user requested igncr.
+# But we know of no other shell where ac_cr would be empty at this
+# point, so we can use a bashism as a fallback.
+if test "x$ac_cr" =3D x; then
+  eval ac_cr=3D\$\'\\r\'
+fi
+ac_cs_awk_cr=3D`$AWK 'BEGIN { print "a\rb" }' </dev/null 2>/dev/null`
+if test "$ac_cs_awk_cr" =3D "a${ac_cr}b"; then
+  ac_cs_awk_cr=3D'\\r'
+else
+  ac_cs_awk_cr=3D$ac_cr
+fi
+
+echo 'BEGIN {' >"$ac_tmp/subs1.awk" &&
+cat >>"$ac_tmp/subs1.awk" <<\_ACAWK &&
+S["am__EXEEXT_FALSE"]=3D""
+S["am__EXEEXT_TRUE"]=3D"#"
+S["LTLIBOBJS"]=3D""
+S["LIBOBJS"]=3D""
+S["untagged"]=3D""
+S["noalloc"]=3D""
+S["Int_val_val"]=3D""
+S["Int_val"]=3D""
+S["Val_Val_int"]=3D""
+S["Val_int"]=3D""
+S["intnat"]=3D""
+S["CAMLnoreturn_end"]=3D""
+S["CAMLnoreturn_start"]=3D""
+S["subdirs"]=3D" bundles/stdcompat/stdcompat-current"
+S["BASH_COMPLETION_DIR"]=3D"/usr/share/bash-completion/completions"
+S["BASH_COMPLETION_LIBS"]=3D""
+S["BASH_COMPLETION_CFLAGS"]=3D""
+S["with_bash_completion"]=3D"yes"
+S["MAKETARGET_SPATCH"]=3D"opt-only"
+S["SPATCHNAME"]=3D"spatch.opt"
+S["enable_opt"]=3D"yes"
+S["SUBSTITUTED_PDFLATEX"]=3D""
+S["with_PDFLATEX"]=3D""
+S["PDFLATEX"]=3D"/usr/bin/pdflatex"
+S["GET_TEMP_DIR_NAME_EXPR"]=3D"(Filename.get_temp_dir_name ())"
+S["DYNLINK_IS_NATIVE"]=3D"Dynlink.is_native"
+S["FEATURE_OCAML"]=3D"1"
+S["FEATURE_PYTHON"]=3D"1"
+S["LIBDIR"]=3D"${exec_prefix}/lib/coccinelle"
+S["REGEXP_FILE"]=3D"regexp_pcre.ml"
+S["REGEXP_MODULE"]=3D"Regexp_pcre"
+S["MAKE_bytes"]=3D""
+S["OPTFLAGS_bytes"]=3D""
+S["enable_bytes"]=3D""
+S["GLOBAL_bytes"]=3D""
+S["OCAML_PKG_bytes"]=3D""
+S["MAKE_pcre"]=3D""
+S["OPTFLAGS_pcre"]=3D"$(OPTFLAGS_pcre)"
+S["enable_pcre"]=3D"yes"
+S["GLOBAL_pcre"]=3D"pcre"
+S["OCAML_PKG_pcre"]=3D"pcre"
+S["enable_pcre_syntax"]=3D""
+S["HAVE_PCRE"]=3D"yes"
+S["PCRE_LIBS"]=3D"-lpcre"
+S["PCRE_CFLAGS"]=3D""
+S["PYCOCCI_FILE"]=3D"yes_pycocci.ml"
+S["PYCOCCI_MODULE"]=3D"Yes_pycocci"
+S["enable_python"]=3D"yes"
+S["MAKE_pyml"]=3D"/home/drv/git/kernels/coccinelle/bundles/pyml"
+S["OPTFLAGS_pyml"]=3D"$(OPTFLAGS_pyml)"
+S["enable_pyml"]=3D"local"
+S["GLOBAL_pyml"]=3D"pyml"
+S["OCAML_PKG_pyml"]=3D"pyml"
+S["PYTHON"]=3D"python"
+S["OCAMLCOCCI_FILE"]=3D"yes_prepare_ocamlcocci.ml"
+S["OCAMLCOCCI_MODULE"]=3D"Yes_prepare_ocamlcocci"
+S["enable_ocaml"]=3D"yes"
+S["DEFAULT_MENHIR_FLAGS"]=3D""
+S["MODULESOPT_menhirLib"]=3D""
+S["MODULES_menhirLib"]=3D""
+S["OPTFLAGS_menhirLib"]=3D""
+S["FLAGS_menhirLib"]=3D""
+S["FEATURE_menhirLib"]=3D"1"
+S["PATH_menhirLib"]=3D"/usr/lib/ocaml/menhirLib"
+S["MAKE_menhirLib"]=3D""
+S["SUBSTITUTED_MENHIR"]=3D""
+S["with_MENHIR"]=3D""
+S["MENHIR"]=3D"/usr/bin/menhir"
+S["PATH_menhir_bundle"]=3D"/home/drv/git/kernels/coccinelle/bundles/menhirL=
+ib/menhir"
+S["PATH_menhirLib_bundle"]=3D"/home/drv/git/kernels/coccinelle/bundles/menh=
+irLib"
+S["OPTIMIZED_dynlink"]=3D"yes"
+S["MAKE_stdcompat"]=3D"/home/drv/git/kernels/coccinelle/bundles/stdcompat"
+S["OPTFLAGS_stdcompat"]=3D"$(OPTFLAGS_stdcompat)"
+S["enable_stdcompat"]=3D"local"
+S["GLOBAL_stdcompat"]=3D"stdcompat"
+S["OCAML_PKG_stdcompat"]=3D"stdcompat"
+S["MAKE_parmap"]=3D""
+S["OPTFLAGS_parmap"]=3D"$(OPTFLAGS_parmap)"
+S["enable_parmap"]=3D"yes"
+S["GLOBAL_parmap"]=3D"parmap"
+S["OCAML_PKG_parmap"]=3D"parmap"
+S["MAKE_dynlink"]=3D""
+S["OPTFLAGS_dynlink"]=3D"$(OPTFLAGS_dynlink)"
+S["enable_dynlink"]=3D"yes"
+S["GLOBAL_dynlink"]=3D"dynlink"
+S["OCAML_PKG_dynlink"]=3D"dynlink"
+S["PATH_str"]=3D"/usr/lib/ocaml"
+S["OCAML_PKG_str"]=3D"str"
+S["PATH_bigarray"]=3D"/usr/lib/ocaml"
+S["OCAML_PKG_bigarray"]=3D"bigarray"
+S["PATH_unix"]=3D"/usr/lib/ocaml"
+S["OCAML_PKG_unix"]=3D"unix"
+S["PATH_parmap"]=3D"/usr/lib/ocaml/parmap"
+S["MODULESOPT_parmap"]=3D"$(GLOBALOPT_parmap)"
+S["MODULES_parmap"]=3D"$(GLOBAL_parmap)"
+S["FLAGS_parmap"]=3D"$(FLAGS_parmap)"
+S["LOCALLIB_parmap"]=3D"0"
+S["FEATURE_parmap"]=3D"1"
+S["PATH_stdcompat"]=3D"/home/drv/git/kernels/coccinelle/bundles/stdcompat"
+S["MODULESOPT_stdcompat"]=3D"$(GLOBALOPT_stdcompat)"
+S["MODULES_stdcompat"]=3D"$(GLOBAL_stdcompat)"
+S["FLAGS_stdcompat"]=3D"$(FLAGS_stdcompat)"
+S["LOCALLIB_stdcompat"]=3D"0"
+S["FEATURE_stdcompat"]=3D"1"
+S["PATH_pyml"]=3D"/home/drv/git/kernels/coccinelle/bundles/pyml"
+S["MODULESOPT_pyml"]=3D"$(GLOBALOPT_pyml)"
+S["MODULES_pyml"]=3D"/home/drv/git/kernels/coccinelle/bundles/pyml/pyml.cma"
+S["FLAGS_pyml"]=3D"$(FLAGS_pyml)"
+S["LOCALLIB_pyml"]=3D"0"
+S["FEATURE_pyml"]=3D"1"
+S["PATH_bytes"]=3D""
+S["MODULESOPT_bytes"]=3D""
+S["MODULES_bytes"]=3D""
+S["FLAGS_bytes"]=3D""
+S["LOCALLIB_bytes"]=3D"0"
+S["FEATURE_bytes"]=3D"0"
+S["PATH_pcre"]=3D"/usr/lib/ocaml/pcre"
+S["MODULESOPT_pcre"]=3D"$(GLOBALOPT_pcre)"
+S["MODULES_pcre"]=3D"$(GLOBAL_pcre)"
+S["FLAGS_pcre"]=3D"$(FLAGS_pcre)"
+S["LOCALLIB_pcre"]=3D"0"
+S["FEATURE_pcre"]=3D"1"
+S["PATH_dynlink"]=3D"/usr/lib/ocaml"
+S["MODULESOPT_dynlink"]=3D"$(GLOBALOPT_dynlink)"
+S["MODULES_dynlink"]=3D"$(GLOBAL_dynlink)"
+S["FLAGS_dynlink"]=3D"$(FLAGS_dynlink)"
+S["LOCALLIB_dynlink"]=3D"0"
+S["FEATURE_dynlink"]=3D"1"
+S["COCCI_OCAML_EXTERNAL"]=3D"/home/drv/git/kernels/coccinelle/bundles"
+S["RUNTIME_OCAMLDEP_CMD"]=3D"ocamldep"
+S["RUNTIME_OCAMLOPT_CMD"]=3D"ocamlopt"
+S["RUNTIME_OCAMLC_CMD"]=3D"ocamlc"
+S["RUNTIME_OCAMLFIND_CMD"]=3D"ocamlfind"
+S["SUBSTITUTED_OCAMLPROF"]=3D""
+S["with_OCAMLPROF"]=3D""
+S["OCAMLPROF"]=3D"/usr/bin/ocamlprof"
+S["SUBSTITUTED_OCAMLFIND"]=3D""
+S["with_OCAMLFIND"]=3D""
+S["OCAMLFIND"]=3D"/usr/bin/ocamlfind"
+S["SUBSTITUTED_OCAMLYACC"]=3D""
+S["with_OCAMLYACC"]=3D""
+S["SUBSTITUTED_OCAMLLEX"]=3D""
+S["with_OCAMLLEX"]=3D""
+S["OCAMLCORIG"]=3D"/usr/bin/ocamlc.opt"
+S["OCAMLATLEAST50"]=3D"no"
+S["OCAMLATLEAST4030"]=3D"yes"
+S["OCAMLATLEAST4020"]=3D"yes"
+S["OCAMLATLEAST312"]=3D"yes"
+S["OCAMLDOC"]=3D"/usr/bin/ocamldoc"
+S["OCAMLMKLIB"]=3D"/usr/bin/ocamlmklib"
+S["OCAMLMKTOP"]=3D"/usr/bin/ocamlmktop"
+S["OCAMLDEP"]=3D"/usr/bin/ocamldep"
+S["OCAML"]=3D"/usr/bin/ocaml"
+S["OCAMLOPTDOTOPT"]=3D"/usr/bin/ocamlopt.opt"
+S["OCAMLCDOTOPT"]=3D"/usr/bin/ocamlc.opt"
+S["OCAMLBEST"]=3D"opt"
+S["OCAMLOPT"]=3D"/usr/bin/ocamlopt.opt"
+S["OCAMLLIB"]=3D"/usr/lib/ocaml"
+S["OCAMLVERSION"]=3D"4.11.1"
+S["OCAMLC"]=3D"/usr/bin/ocamlc.opt"
+S["PKG_CONFIG_ORIG"]=3D"/usr/bin/pkg-config"
+S["SUBSTITUTED_PKG_CONFIG"]=3D""
+S["OCAMLYACC"]=3D"/usr/bin/ocamlyacc"
+S["OCAMLLEXDOTOPT"]=3D"/usr/bin/ocamllex.opt"
+S["OCAMLLEX"]=3D"/usr/bin/ocamllex.opt"
+S["PKG_CONFIG_LIBDIR"]=3D""
+S["PKG_CONFIG_PATH"]=3D""
+S["with_PKG_CONFIG"]=3D""
+S["PKG_CONFIG"]=3D"/home/drv/git/kernels/coccinelle/setup/fake-subst.sh /us=
+r/bin/pkg-config"
+S["PATCHELF"]=3D""
+S["INSTALL"]=3D"/usr/bin/install -c"
+S["ECHO"]=3D"/usr/bin/echo"
+S["PATCH"]=3D"/usr/bin/patch"
+S["TAR"]=3D"/usr/bin/tar"
+S["BASH"]=3D"/bin/bash"
+S["CPP"]=3D"gcc -E"
+S["am__fastdepCC_FALSE"]=3D""
+S["am__fastdepCC_TRUE"]=3D"#"
+S["CCDEPMODE"]=3D"depmode=3Dnone"
+S["am__nodep"]=3D"_no"
+S["AMDEPBACKSLASH"]=3D"\\"
+S["AMDEP_FALSE"]=3D"#"
+S["AMDEP_TRUE"]=3D""
+S["am__include"]=3D"include"
+S["DEPDIR"]=3D".deps"
+S["OBJEXT"]=3D"o"
+S["EXEEXT"]=3D""
+S["ac_ct_CC"]=3D"gcc"
+S["CPPFLAGS"]=3D""
+S["LDFLAGS"]=3D""
+S["CFLAGS"]=3D"-g -O2"
+S["CC"]=3D"gcc"
+S["DATE"]=3D""
+S["GIT"]=3D"/usr/bin/git"
+S["CONFVERSION"]=3D"Tue, 25 Oct 2022 14:40:29 +0000"
+S["AM_BACKSLASH"]=3D"\\"
+S["AM_DEFAULT_VERBOSITY"]=3D"1"
+S["AM_DEFAULT_V"]=3D"$(AM_DEFAULT_VERBOSITY)"
+S["AM_V"]=3D"$(V)"
+S["am__untar"]=3D"$${TAR-tar} xf -"
+S["am__tar"]=3D"$${TAR-tar} chof - \"$$tardir\""
+S["AMTAR"]=3D"$${TAR-tar}"
+S["am__leading_dot"]=3D"."
+S["SET_MAKE"]=3D""
+S["AWK"]=3D"mawk"
+S["mkdir_p"]=3D"$(MKDIR_P)"
+S["MKDIR_P"]=3D"/usr/bin/mkdir -p"
+S["INSTALL_STRIP_PROGRAM"]=3D"$(install_sh) -c -s"
+S["STRIP"]=3D""
+S["install_sh"]=3D"${SHELL} /home/drv/git/kernels/coccinelle/setup/install-=
+sh"
+S["MAKEINFO"]=3D"${SHELL} '/home/drv/git/kernels/coccinelle/setup/missing' =
+makeinfo"
+S["AUTOHEADER"]=3D"${SHELL} '/home/drv/git/kernels/coccinelle/setup/missing=
+' autoheader"
+S["AUTOMAKE"]=3D"${SHELL} '/home/drv/git/kernels/coccinelle/setup/missing' =
+automake-1.16"
+S["AUTOCONF"]=3D"${SHELL} '/home/drv/git/kernels/coccinelle/setup/missing' =
+autoconf"
+S["ACLOCAL"]=3D"${SHELL} '/home/drv/git/kernels/coccinelle/setup/missing' a=
+clocal-1.16"
+S["VERSION"]=3D"1.1.1-00194-g3dd4726d"
+S["PACKAGE"]=3D"coccinelle"
+S["CYGPATH_W"]=3D"echo"
+S["am__isrc"]=3D""
+S["INSTALL_DATA"]=3D"${INSTALL} -m 644"
+S["INSTALL_SCRIPT"]=3D"${INSTALL}"
+S["INSTALL_PROGRAM"]=3D"${INSTALL}"
+S["COCCI_SRCDIR"]=3D"/home/drv/git/kernels/coccinelle"
+S["COCCI_VERSION"]=3D"1.1.1-00194-g3dd4726d"
+S["CONFIGURE_FLAGS"]=3D""
+S["target_alias"]=3D""
+S["host_alias"]=3D""
+S["build_alias"]=3D""
+S["LIBS"]=3D""
+S["ECHO_T"]=3D""
+S["ECHO_N"]=3D"-n"
+S["ECHO_C"]=3D""
+S["DEFS"]=3D"-DPACKAGE_NAME=3D\\\"coccinelle\\\" -DPACKAGE_TARNAME=3D\\\"co=
+ccinelle\\\" -DPACKAGE_VERSION=3D\\\"1.1.1-00194-g3dd4726d\\\" -DPACKAGE_ST=
+RING=3D\\\"coccinelle\\ 1.1.1-0019"\
+"4-g3dd4726d\\\" -DPACKAGE_BUGREPORT=3D\\\"cocci@systeme.lip6.fr\\\" -DPACK=
+AGE_URL=3D\\\"http://coccinelle.lip6.fr/\\\" -DPACKAGE=3D\\\"coccinelle\\\"=
+ -DVERSION=3D\\\"1.1.1-"\
+"00194-g3dd4726d\\\""
+S["mandir"]=3D"${datarootdir}/man"
+S["localedir"]=3D"${datarootdir}/locale"
+S["libdir"]=3D"${exec_prefix}/lib"
+S["psdir"]=3D"${docdir}"
+S["pdfdir"]=3D"${docdir}"
+S["dvidir"]=3D"${docdir}"
+S["htmldir"]=3D"${docdir}"
+S["infodir"]=3D"${datarootdir}/info"
+S["docdir"]=3D"${datarootdir}/doc/${PACKAGE_TARNAME}"
+S["oldincludedir"]=3D"/usr/include"
+S["includedir"]=3D"${prefix}/include"
+S["runstatedir"]=3D"${localstatedir}/run"
+S["localstatedir"]=3D"${prefix}/var"
+S["sharedstatedir"]=3D"${prefix}/com"
+S["sysconfdir"]=3D"${prefix}/etc"
+S["datadir"]=3D"${datarootdir}"
+S["datarootdir"]=3D"${prefix}/share"
+S["libexecdir"]=3D"${exec_prefix}/libexec"
+S["sbindir"]=3D"${exec_prefix}/sbin"
+S["bindir"]=3D"${exec_prefix}/bin"
+S["program_transform_name"]=3D"s,x,x,"
+S["prefix"]=3D"/usr/local"
+S["exec_prefix"]=3D"${prefix}"
+S["PACKAGE_URL"]=3D"http://coccinelle.lip6.fr/"
+S["PACKAGE_BUGREPORT"]=3D"cocci@systeme.lip6.fr"
+S["PACKAGE_STRING"]=3D"coccinelle 1.1.1-00194-g3dd4726d"
+S["PACKAGE_VERSION"]=3D"1.1.1-00194-g3dd4726d"
+S["PACKAGE_TARNAME"]=3D"coccinelle"
+S["PACKAGE_NAME"]=3D"coccinelle"
+S["PATH_SEPARATOR"]=3D":"
+S["SHELL"]=3D"/bin/bash"
+S["PYVER"]=3D""
+S["am__quote"]=3D""
+_ACAWK
+cat >>"$ac_tmp/subs1.awk" <<_ACAWK &&
+  for (key in S) S_is_set[key] =3D 1
+  FS =3D "=07"
+
+}
+{
+  line =3D $ 0
+  nfields =3D split(line, field, "@")
+  substed =3D 0
+  len =3D length(field[1])
+  for (i =3D 2; i < nfields; i++) {
+    key =3D field[i]
+    keylen =3D length(key)
+    if (S_is_set[key]) {
+      value =3D S[key]
+      line =3D substr(line, 1, len) "" value "" substr(line, len + keylen +=
+ 3)
+      len +=3D length(value) + length(field[++i])
+      substed =3D 1
+    } else
+      len +=3D 1 + keylen
+  }
+
+  print line
+}
+
+_ACAWK
+if sed "s/$ac_cr//" < /dev/null > /dev/null 2>&1; then
+  sed "s/$ac_cr\$//; s/$ac_cr/$ac_cs_awk_cr/g"
+else
+  cat
+fi < "$ac_tmp/subs1.awk" > "$ac_tmp/subs.awk" \
+  || as_fn_error $? "could not setup config files machinery" "$LINENO" 5
+fi # test -n "$CONFIG_FILES"
+
+
+eval set X "  :F $CONFIG_FILES      :C $CONFIG_COMMANDS"
+shift
+for ac_tag
+do
+  case $ac_tag in
+  :[FHLC]) ac_mode=3D$ac_tag; continue;;
+  esac
+  case $ac_mode$ac_tag in
+  :[FHL]*:*);;
+  :L* | :C*:*) as_fn_error $? "invalid tag \`$ac_tag'" "$LINENO" 5;;
+  :[FH]-) ac_tag=3D-:-;;
+  :[FH]*) ac_tag=3D$ac_tag:$ac_tag.in;;
+  esac
+  ac_save_IFS=3D$IFS
+  IFS=3D:
+  set x $ac_tag
+  IFS=3D$ac_save_IFS
+  shift
+  ac_file=3D$1
+  shift
+
+  case $ac_mode in
+  :L) ac_source=3D$1;;
+  :[FH])
+    ac_file_inputs=3D
+    for ac_f
+    do
+      case $ac_f in
+      -) ac_f=3D"$ac_tmp/stdin";;
+      *) # Look for the file first in the build tree, then in the source tr=
+ee
+	 # (if the path is not absolute).  The absolute path cannot be DOS-style,
+	 # because $ac_f cannot contain `:'.
+	 test -f "$ac_f" ||
+	   case $ac_f in
+	   [\\/$]*) false;;
+	   *) test -f "$srcdir/$ac_f" && ac_f=3D"$srcdir/$ac_f";;
+	   esac ||
+	   as_fn_error 1 "cannot find input file: \`$ac_f'" "$LINENO" 5;;
+      esac
+      case $ac_f in *\'*) ac_f=3D`$as_echo "$ac_f" | sed "s/'/'\\\\\\\\''/g=
+"`;; esac
+      as_fn_append ac_file_inputs " '$ac_f'"
+    done
+
+    # Let's still pretend it is `configure' which instantiates (i.e., don't
+    # use $as_me), people would be surprised to read:
+    #    /* config.h.  Generated by config.status.  */
+    configure_input=3D'Generated from '`
+	  $as_echo "$*" | sed 's|^[^:]*/||;s|:[^:]*/|, |g'
+	`' by configure.'
+    if test x"$ac_file" !=3D x-; then
+      configure_input=3D"$ac_file.  $configure_input"
+      { $as_echo "$as_me:${as_lineno-$LINENO}: creating $ac_file" >&5
+$as_echo "$as_me: creating $ac_file" >&6;}
+    fi
+    # Neutralize special characters interpreted by sed in replacement strin=
+gs.
+    case $configure_input in #(
+    *\&* | *\|* | *\\* )
+       ac_sed_conf_input=3D`$as_echo "$configure_input" |
+       sed 's/[\\\\&|]/\\\\&/g'`;; #(
+    *) ac_sed_conf_input=3D$configure_input;;
+    esac
+
+    case $ac_tag in
+    *:-:* | *:-) cat >"$ac_tmp/stdin" \
+      || as_fn_error $? "could not create $ac_file" "$LINENO" 5 ;;
+    esac
+    ;;
+  esac
+
+  ac_dir=3D`$as_dirname -- "$ac_file" ||
+$as_expr X"$ac_file" : 'X\(.*[^/]\)//*[^/][^/]*/*$' \| \
+	 X"$ac_file" : 'X\(//\)[^/]' \| \
+	 X"$ac_file" : 'X\(//\)$' \| \
+	 X"$ac_file" : 'X\(/\)' \| . 2>/dev/null ||
+$as_echo X"$ac_file" |
+    sed '/^X\(.*[^/]\)\/\/*[^/][^/]*\/*$/{
+	    s//\1/
+	    q
+	  }
+	  /^X\(\/\/\)[^/].*/{
+	    s//\1/
+	    q
+	  }
+	  /^X\(\/\/\)$/{
+	    s//\1/
+	    q
+	  }
+	  /^X\(\/\).*/{
+	    s//\1/
+	    q
+	  }
+	  s/.*/./; q'`
+  as_dir=3D"$ac_dir"; as_fn_mkdir_p
+  ac_builddir=3D.
+
+case "$ac_dir" in
+=2E) ac_dir_suffix=3D ac_top_builddir_sub=3D. ac_top_build_prefix=3D ;;
+*)
+  ac_dir_suffix=3D/`$as_echo "$ac_dir" | sed 's|^\.[\\/]||'`
+  # A ".." for each directory in $ac_dir_suffix.
+  ac_top_builddir_sub=3D`$as_echo "$ac_dir_suffix" | sed 's|/[^\\/]*|/..|g;=
+s|/||'`
+  case $ac_top_builddir_sub in
+  "") ac_top_builddir_sub=3D. ac_top_build_prefix=3D ;;
+  *)  ac_top_build_prefix=3D$ac_top_builddir_sub/ ;;
+  esac ;;
+esac
+ac_abs_top_builddir=3D$ac_pwd
+ac_abs_builddir=3D$ac_pwd$ac_dir_suffix
+# for backward compatibility:
+ac_top_builddir=3D$ac_top_build_prefix
+
+case $srcdir in
+  .)  # We are building in place.
+    ac_srcdir=3D.
+    ac_top_srcdir=3D$ac_top_builddir_sub
+    ac_abs_top_srcdir=3D$ac_pwd ;;
+  [\\/]* | ?:[\\/]* )  # Absolute name.
+    ac_srcdir=3D$srcdir$ac_dir_suffix;
+    ac_top_srcdir=3D$srcdir
+    ac_abs_top_srcdir=3D$srcdir ;;
+  *) # Relative name.
+    ac_srcdir=3D$ac_top_build_prefix$srcdir$ac_dir_suffix
+    ac_top_srcdir=3D$ac_top_build_prefix$srcdir
+    ac_abs_top_srcdir=3D$ac_pwd/$srcdir ;;
+esac
+ac_abs_srcdir=3D$ac_abs_top_srcdir$ac_dir_suffix
+
+
+  case $ac_mode in
+  :F)
+  #
+  # CONFIG_FILE
+  #
+
+  case $INSTALL in
+  [\\/$]* | ?:[\\/]* ) ac_INSTALL=3D$INSTALL ;;
+  *) ac_INSTALL=3D$ac_top_build_prefix$INSTALL ;;
+  esac
+  ac_MKDIR_P=3D$MKDIR_P
+  case $MKDIR_P in
+  [\\/$]* | ?:[\\/]* ) ;;
+  */*) ac_MKDIR_P=3D$ac_top_build_prefix$MKDIR_P ;;
+  esac
+# If the template does not know about datarootdir, expand it.
+# FIXME: This hack should be removed a few years after 2.60.
+ac_datarootdir_hack=3D; ac_datarootdir_seen=3D
+ac_sed_dataroot=3D'
+/datarootdir/ {
+  p
+  q
+}
+/@datadir@/p
+/@docdir@/p
+/@infodir@/p
+/@localedir@/p
+/@mandir@/p'
+case `eval "sed -n \"\$ac_sed_dataroot\" $ac_file_inputs"` in
+*datarootdir*) ac_datarootdir_seen=3Dyes;;
+*@datadir@*|*@docdir@*|*@infodir@*|*@localedir@*|*@mandir@*)
+  { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: $ac_file_inputs seems t=
+o ignore the --datarootdir setting" >&5
+$as_echo "$as_me: WARNING: $ac_file_inputs seems to ignore the --datarootdi=
+r setting" >&2;}
+  ac_datarootdir_hack=3D'
+  s&@datadir@&${datarootdir}&g
+  s&@docdir@&${datarootdir}/doc/${PACKAGE_TARNAME}&g
+  s&@infodir@&${datarootdir}/info&g
+  s&@localedir@&${datarootdir}/locale&g
+  s&@mandir@&${datarootdir}/man&g
+  s&\${datarootdir}&${prefix}/share&g' ;;
+esac
+ac_sed_extra=3D"/^[	 ]*VPATH[	 ]*=3D[	 ]*/{
+h
+s///
+s/^/:/
+s/[	 ]*$/:/
+s/:\$(srcdir):/:/g
+s/:\${srcdir}:/:/g
+s/:@srcdir@:/:/g
+s/^:*//
+s/:*$//
+x
+s/\(=3D[	 ]*\).*/\1/
+G
+s/\n//
+s/^[^=3D]*=3D[	 ]*$//
+}
+
+:t
+/@[a-zA-Z_][a-zA-Z_0-9]*@/!b
+s|@configure_input@|$ac_sed_conf_input|;t t
+s&@top_builddir@&$ac_top_builddir_sub&;t t
+s&@top_build_prefix@&$ac_top_build_prefix&;t t
+s&@srcdir@&$ac_srcdir&;t t
+s&@abs_srcdir@&$ac_abs_srcdir&;t t
+s&@top_srcdir@&$ac_top_srcdir&;t t
+s&@abs_top_srcdir@&$ac_abs_top_srcdir&;t t
+s&@builddir@&$ac_builddir&;t t
+s&@abs_builddir@&$ac_abs_builddir&;t t
+s&@abs_top_builddir@&$ac_abs_top_builddir&;t t
+s&@INSTALL@&$ac_INSTALL&;t t
+s&@MKDIR_P@&$ac_MKDIR_P&;t t
+$ac_datarootdir_hack
+"
+eval sed \"\$ac_sed_extra\" "$ac_file_inputs" | $AWK -f "$ac_tmp/subs.awk" \
+  >$ac_tmp/out || as_fn_error $? "could not create $ac_file" "$LINENO" 5
+
+test -z "$ac_datarootdir_hack$ac_datarootdir_seen" &&
+  { ac_out=3D`sed -n '/\${datarootdir}/p' "$ac_tmp/out"`; test -n "$ac_out"=
+; } &&
+  { ac_out=3D`sed -n '/^[	 ]*datarootdir[	 ]*:*=3D/p' \
+      "$ac_tmp/out"`; test -z "$ac_out"; } &&
+  { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: $ac_file contains a ref=
+erence to the variable \`datarootdir'
+which seems to be undefined.  Please make sure it is defined" >&5
+$as_echo "$as_me: WARNING: $ac_file contains a reference to the variable \`=
+datarootdir'
+which seems to be undefined.  Please make sure it is defined" >&2;}
+
+  rm -f "$ac_tmp/stdin"
+  case $ac_file in
+  -) cat "$ac_tmp/out" && rm -f "$ac_tmp/out";;
+  *) rm -f "$ac_file" && mv "$ac_tmp/out" "$ac_file";;
+  esac \
+  || as_fn_error $? "could not create $ac_file" "$LINENO" 5
+ ;;
+
+
+  :C)  { $as_echo "$as_me:${as_lineno-$LINENO}: executing $ac_file commands=
+" >&5
+$as_echo "$as_me: executing $ac_file commands" >&6;}
+ ;;
+  esac
+
+
+  case $ac_file$ac_mode in
+    "depfiles":C) test x"$AMDEP_TRUE" !=3D x"" || {
+  # Older Autoconf quotes --file arguments for eval, but not when files
+  # are listed without --file.  Let's play safe and only enable the eval
+  # if we detect the quoting.
+  # TODO: see whether this extra hack can be removed once we start
+  # requiring Autoconf 2.70 or later.
+  case $CONFIG_FILES in #(
+  *\'*) :
+    eval set x "$CONFIG_FILES" ;; #(
+  *) :
+    set x $CONFIG_FILES ;; #(
+  *) :
+     ;;
+esac
+  shift
+  # Used to flag and report bootstrapping failures.
+  am_rc=3D0
+  for am_mf
+  do
+    # Strip MF so we end up with the name of the file.
+    am_mf=3D`$as_echo "$am_mf" | sed -e 's/:.*$//'`
+    # Check whether this is an Automake generated Makefile which includes
+    # dependency-tracking related rules and includes.
+    # Grep'ing the whole file directly is not great: AIX grep has a line
+    # limit of 2048, but all sed's we know have understand at least 4000.
+    sed -n 's,^am--depfiles:.*,X,p' "$am_mf" | grep X >/dev/null 2>&1 \
+      || continue
+    am_dirpart=3D`$as_dirname -- "$am_mf" ||
+$as_expr X"$am_mf" : 'X\(.*[^/]\)//*[^/][^/]*/*$' \| \
+	 X"$am_mf" : 'X\(//\)[^/]' \| \
+	 X"$am_mf" : 'X\(//\)$' \| \
+	 X"$am_mf" : 'X\(/\)' \| . 2>/dev/null ||
+$as_echo X"$am_mf" |
+    sed '/^X\(.*[^/]\)\/\/*[^/][^/]*\/*$/{
+	    s//\1/
+	    q
+	  }
+	  /^X\(\/\/\)[^/].*/{
+	    s//\1/
+	    q
+	  }
+	  /^X\(\/\/\)$/{
+	    s//\1/
+	    q
+	  }
+	  /^X\(\/\).*/{
+	    s//\1/
+	    q
+	  }
+	  s/.*/./; q'`
+    am_filepart=3D`$as_basename -- "$am_mf" ||
+$as_expr X/"$am_mf" : '.*/\([^/][^/]*\)/*$' \| \
+	 X"$am_mf" : 'X\(//\)$' \| \
+	 X"$am_mf" : 'X\(/\)' \| . 2>/dev/null ||
+$as_echo X/"$am_mf" |
+    sed '/^.*\/\([^/][^/]*\)\/*$/{
+	    s//\1/
+	    q
+	  }
+	  /^X\/\(\/\/\)$/{
+	    s//\1/
+	    q
+	  }
+	  /^X\/\(\/\).*/{
+	    s//\1/
+	    q
+	  }
+	  s/.*/./; q'`
+    { echo "$as_me:$LINENO: cd "$am_dirpart" \
+      && sed -e '/# am--include-marker/d' "$am_filepart" \
+        | $MAKE -f - am--depfiles" >&5
+   (cd "$am_dirpart" \
+      && sed -e '/# am--include-marker/d' "$am_filepart" \
+        | $MAKE -f - am--depfiles) >&5 2>&5
+   ac_status=3D$?
+   echo "$as_me:$LINENO: \$? =3D $ac_status" >&5
+   (exit $ac_status); } || am_rc=3D$?
+  done
+  if test $am_rc -ne 0; then
+    { { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
+$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
+as_fn_error $? "Something went wrong bootstrapping makefile fragments
+    for automatic dependency tracking.  If GNU make was not used, consider
+    re-running the configure script with MAKE=3D\"gmake\" (or whatever is
+    necessary).  You can also try re-running configure with the
+    '--disable-dependency-tracking' option to at least be able to build
+    the package (albeit without support for automatic dependency tracking).
+See \`config.log' for more details" "$LINENO" 5; }
+  fi
+  { am_dirpart=3D; unset am_dirpart;}
+  { am_filepart=3D; unset am_filepart;}
+  { am_mf=3D; unset am_mf;}
+  { am_rc=3D; unset am_rc;}
+  rm -f conftest-deps.mk
+}
+ ;;
+
+  esac
+done # for ac_tag
+
+
+as_fn_exit 0
+
+--Ms9Ah6GyVd1JsAZB--
+
+
