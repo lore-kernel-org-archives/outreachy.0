@@ -1,28 +1,26 @@
-Received: from msg-4.mailo.com (msg-4.mailo.com [213.182.54.15])
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 31F5B1374
-	for <outreachy@lists.linux.dev>; Wed, 26 Oct 2022 12:48:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
-	t=1666788534; bh=XLMn9D8GkfeLlIxygOkimF5nMIuD9Vqmi4J2Sk/nhWU=;
-	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
-	 MIME-Version:Content-Type:In-Reply-To;
-	b=NmcW96nbRG1FDyofCzTACUX2dwhyJewx+GRzxw8S6lSfQIQspcAc/dWUvQp5U9DiK
-	 yG+AsPMIH5+SXPJGrnFM+9UqwKHERE8/8LjJivkXWOiruPC+0vM0r2FC0NJHwXS+IY
-	 EiHutJsOAamqVeFxFJt8R5zZFMbIM/gJ/3mMuaPs=
-Received: by b-1.in.mailobj.net [192.168.90.11] with ESMTP
-	via [213.182.55.206]
-	Wed, 26 Oct 2022 14:48:53 +0200 (CEST)
-X-EA-Auth: V6jJ+Yt4kA5Qg1lBjzPncR/JNDn2mM3ilzSXNP/syub2DH0ghW6w2XRaCR2M5XS8ZYSfx6dOSPaXzya5Y1H3o8UIxlNrvJfb
-Date: Wed, 26 Oct 2022 18:18:54 +0530
-From: Deepak R Varma <drv@mailo.com>
-To: Julia Lawall <Julia.Lawall@inria.fr>
-Cc: Outreachy Linux <outreachy@lists.linux.dev>
-Subject: Re: coccinelle compilation issue
-Message-ID: <Y1kstnWW9SJNNxWc@debian-BULLSEYE-live-builder-AMD64>
-References: <Y1iNq2zGQ/2NSGdQ@debian-BULLSEYE-live-builder-AMD64>
- <1E55E1C2-527A-4814-A8D4-9D66A636E6E0@inria.fr>
- <Y1imvBLdIyTB1hQs@debian-BULLSEYE-live-builder-AMD64>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4E6491374;
+	Wed, 26 Oct 2022 13:13:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8FEDEC433C1;
+	Wed, 26 Oct 2022 13:13:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1666790010;
+	bh=Ah8J7PoQlRB6jZMoHEqS9VaV9N1dUhinY5gk6j9XEas=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=jv/sSbzLau11B3W0jeIeI45SCwvt8IhDb03Oi+qaaEHDRug0e9XLBA6677Sa86dwd
+	 HGiAR6viXjlxcIh8oeh4BLQ3ffgvp35ah7X5UX/R7+5YgO5BBsx6AOR14oHY/QN93x
+	 Ub7iFNoTZ2Oh7GZAgupJc4bmZccwITC5jdu1sfGE=
+Date: Wed, 26 Oct 2022 15:14:23 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Deepak R Varma <drv@mailo.com>
+Cc: outreachy@lists.linux.dev, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 2/2] staging: rtl8192u: remove unused macro definition
+Message-ID: <Y1kyr/hWqbKCzaaR@kroah.com>
+References: <cover.1666754500.git.drv@mailo.com>
+ <b7053d8737c048d6a878609f0ec24d66b18c5abd.1666754500.git.drv@mailo.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -31,35 +29,33 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <Y1imvBLdIyTB1hQs@debian-BULLSEYE-live-builder-AMD64>
+In-Reply-To: <b7053d8737c048d6a878609f0ec24d66b18c5abd.1666754500.git.drv@mailo.com>
 
-On Wed, Oct 26, 2022 at 08:47:21AM +0530, Deepak Varma wrote:
-> On Wed, Oct 26, 2022 at 12:07:10PM +0200, Julia Lawall wrote:
-> > Try typing spatchcock on the command line. Maybe you have a path problem. Did you do the unit env thing that open suggests?
->
-> No, I have not done uint env you mentioned. I will look for that now.
-> spatchcock is not recognised as a known command.
+On Wed, Oct 26, 2022 at 08:58:44AM +0530, Deepak R Varma wrote:
+> Pre-processor macros that are defined but are never used should be
+> cleaned up to avoid unexpected usage.
+> 
+> Signed-off-by: Deepak R Varma <drv@mailo.com>
+> ---
+>  drivers/staging/rtl8192u/ieee80211/ieee80211.h | 2 --
+>  1 file changed, 2 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211.h b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
+> index 00c07455cbb3..0b3dda59d7c0 100644
+> --- a/drivers/staging/rtl8192u/ieee80211/ieee80211.h
+> +++ b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
+> @@ -230,8 +230,6 @@ struct cb_desc {
+>  #define ieee80211_unregister_crypto_ops ieee80211_unregister_crypto_ops_rsl
+>  #define ieee80211_get_crypto_ops	ieee80211_get_crypto_ops_rsl
+> 
+> -#define ieee80211_ccmp_null		ieee80211_ccmp_null_rsl
+> -
+>  #define free_ieee80211			free_ieee80211_rsl
+>  #define alloc_ieee80211			alloc_ieee80211_rsl
 
-Hi Julia,
-I tried doing "source env,sh" inside the coccinelle repo but that did not help.
-It mostly looks like an environment / configuration issue.
+These #defines are a mess, please look into unwinding them as they
+should not be needed at all.
 
-I also tried a fresh rebuild by following the install.txt file instructions, but
-still receiving the same error.
+thanks,
 
-Can you please suggest the next steps? Is there an IRC channel for Coccinelle
-that I join and seek help from the group?
-
-./drv
-
-
->
-> >
-> > Sent from my iPhone
-> >
-> > > On 26 Oct 2022, at 10:38, Deepak R Varma <drv@mailo.com> wrote:
-> > >
-> > > Coccinelle
-> >
-
-
+greg k-h
