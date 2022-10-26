@@ -1,61 +1,55 @@
-Received: from msg-4.mailo.com (msg-4.mailo.com [213.182.54.15])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ua1-f52.google.com (mail-ua1-f52.google.com [209.85.222.52])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8C99CEBF
-	for <outreachy@lists.linux.dev>; Wed, 26 Oct 2022 08:39:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
-	t=1666773535; bh=kmxeEq7ZCIzAUKrlvyvAkim5rJ1n1ndQpbeIIh7RAug=;
-	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
-	 MIME-Version:Content-Type:In-Reply-To;
-	b=BwKltoTiNhPBE/e246UFvK/HGiX9UujKQeXx11pSAyN6lkJhOhkMCrH+YinSWCoHV
-	 Fk5WPVyNfFEpMkrK+DYHQc2MNGoBYDSyOuQx3/0SRG80Rn90MWGxF/sS9yuncfrWye
-	 3ZM+z/ISzSWWWoYi5KoPXF7VEgsNjf1eFMAi/M+o=
-Received: by b-5.in.mailobj.net [192.168.90.15] with ESMTP
-	via [213.182.55.206]
-	Wed, 26 Oct 2022 10:38:55 +0200 (CEST)
-X-EA-Auth: tave1AASlJsH/esnfGLM71QyeCCGgCBD1NhHqibgATq6Tc+dyr6yJlr8LMWS7Qo2rRY2I6iNQ6blH0YFZKyEJ7N3IJ8/3fD2
-Date: Wed, 26 Oct 2022 07:00:19 +0530
-From: Deepak R Varma <drv@mailo.com>
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: outreachy@lists.linux.dev
-Subject: Re: coccinelle compilation issue
-Message-ID: <Y1iNq2zGQ/2NSGdQ@debian-BULLSEYE-live-builder-AMD64>
-References: <alpine.DEB.2.22.394.2210260808100.3523@hadrien>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7019910FB
+	for <outreachy@lists.linux.dev>; Wed, 26 Oct 2022 10:09:07 +0000 (UTC)
+Received: by mail-ua1-f52.google.com with SMTP id c31so2595526uae.10
+        for <outreachy@lists.linux.dev>; Wed, 26 Oct 2022 03:09:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=m9Xlm7ksNehQMCZ/ffNzUC+KW9kXIJZcRlu7bxLTlXs=;
+        b=BMh0mfTqxPGm23E6nSUtxr33OpGBZVjvjGBa/aGFWlzyI1dntGZ+s+ZLzR60YoGM6F
+         7Q/I/M0otb3iMT4lwZs+YElf+rN7Wt6BMD7iNqFToAsbznw9omgETEddmieUkuVL0uJz
+         1G/cY+ogYwo9vyBkALj3YRr9ulNZaBTD41QABRkZYRJE+O1jZJt8DfgjxTcW74VeoQY8
+         UC1EOE+Uz5GrrQ0mIyNGH2yGv+OAhsW4lMWPBy2PLE7qrEzZI9T12pNWQU0qkANU1oTk
+         n+us4qy1xlARzpzn/a5mhbqP3l2typZiGzN95mwOVqvOBxig5vmD8fJpIzQTTecBesHD
+         X+Cw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=m9Xlm7ksNehQMCZ/ffNzUC+KW9kXIJZcRlu7bxLTlXs=;
+        b=OLqUNsDxLHI2dBCLjMLpjA1+hlGxuebuCRpRp7Yx7xWO90X8L4ArZYIK6TturEvZ5x
+         XINJ+rsK+UYkDr3cUnRvvea9YnTO09PRBo2aUwvZEdNvACIdPryQThMBQqJ1GzGybpF+
+         FM4I/acnu2fW+JU913xJtBQrfv9pPAQMHwOfe5QMORgdIs9LJIze0IKQpBut9URPyS16
+         B69dL4f+qJc98RHJU4guk02XjlRiEWZchEZhmWcH4SZLZxd1cmQgm4LJEjcONfzPe/eG
+         dWqH1EEu2m/Vgd8puzpnaeEjTcfVhh8R7kcIHXZ+VZ1fgVdVJ8qsfRqTN9Rr+o1PcV9R
+         aiZQ==
+X-Gm-Message-State: ACrzQf3or2dTI43khcEVrhxbw7pNps1rB+hh1RRChicc/WPCSYJ7B0wP
+	o89O1LgXB+haP0ICxgtQdd9fxkn0TC371f8mQWdYqlVUynJpmpFu
+X-Google-Smtp-Source: AMsMyM5DTIj9deh5KT/3y/GuNkkeZQrICbcv4dAHN+GAffIqhYbkYKlb+MIsKDXeif8xWzXW8eSCophP6lqCgX0cdbM=
+X-Received: by 2002:ab0:4715:0:b0:3ea:d249:de4c with SMTP id
+ h21-20020ab04715000000b003ead249de4cmr25208914uac.80.1666778946266; Wed, 26
+ Oct 2022 03:09:06 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.22.394.2210260808100.3523@hadrien>
+From: jovial umwari <umwarijovial@gmail.com>
+Date: Wed, 26 Oct 2022 13:08:55 +0300
+Message-ID: <CAMk1CBOTuZzKc2eG7CSOukLkd0tPe2LZHuYBJYN4aLBesswBtA@mail.gmail.com>
+Subject: Submitting a Patch
+To: outreachy@lists.linux.dev
+Content-Type: text/plain; charset="UTF-8"
 
-On Wed, Oct 26, 2022 at 08:09:51AM +0200, Julia Lawall wrote:
-> If you are not able to compile the code from github, you can install opam
-> (the OCaml package manager) and then get Coccinelle from there.
->
-> Information about installing opam is available here:
->
-> https://opam.ocaml.org/doc/Install.html
->
-> Once you have done that, I guess you can run
->
-> opam install coccinelle
+Hello
+i am facing an error while i  i am trying to Sending my patch with mutt
+  i did some configurations  but still there is one error i am facing
+<<<SASL authentication failed >>>
 
-Coccinelle version 1.1.1 is installed successfully, but still not able to find
-spatch. Geeting following error now:
-
-	drv@debian:~/git/kernels/staging$ opam install coccinelle
-	[NOTE] Package coccinelle is already installed (current version is 1.1.1).
-	drv@debian:~/git/kernels/staging$ make coccicheck MODE=report
-	spatch is part of the Coccinelle project and is available at http://coccinelle.lip6.fr/
-	make: *** [Makefile:2074: coccicheck] Error 1
-
-Is there something I am missing while the install/configuration?
-
->
-> julia
->
-
-
+i will appreciate some help on this
+Thank you
