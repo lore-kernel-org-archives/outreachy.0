@@ -1,106 +1,45 @@
-Received: from msg-2.mailo.com (msg-2.mailo.com [213.182.54.12])
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D450810E0
-	for <outreachy@lists.linux.dev>; Wed, 26 Oct 2022 05:39:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
-	t=1666762769; bh=W20ngiY3ukAGJwEUU1hSjpYMlUhFcooFnGTD3jG3r0k=;
-	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
-	 MIME-Version:Content-Type:In-Reply-To;
-	b=oUb+napqDeEm8PLE4CHC7HX5miu47B07CteRC1FcFXqabpXUoqzvdoLJnbi19u9OM
-	 bjgE9lFu+Iw4c+uQ/zSwO8VhiKzL6NKlgiK63vyaoJYP1ceFneYWu+9QACXbUQEsDU
-	 Pvz+cviZpaeFkwY5MjPryVWlHFuH0D5Z4xuO0LKw=
-Received: by b-4.in.mailobj.net [192.168.90.14] with ESMTP
-	via [213.182.55.206]
-	Wed, 26 Oct 2022 07:39:29 +0200 (CEST)
-X-EA-Auth: upDVmtcckvKloc5yHYA9cr8RaTKLC695lmh5ytfNuyXlp3saoWV0wcL906Ofc4af7DOqofAJ6kxktStEITXH0irD3MP89ut2
-Date: Wed, 26 Oct 2022 04:00:53 +0530
-From: Deepak R Varma <drv@mailo.com>
-To: Alison Schofield <alison.schofield@intel.com>
-Cc: Outreachy Linux Kernel <outreachy@lists.linux.dev>
-Subject: Re: [Outreachy] Wiki updated needed - Patchset Subject
-Message-ID: <Y1hjnQE8pF2rwPHV@debian-BULLSEYE-live-builder-AMD64>
-References: <Y1XvjytS2GaafmyJ@aschofie-mobl2>
- <Y1N/wsr+Wd6sEaDf@debian-BULLSEYE-live-builder-AMD64>
- <Y1b/zhLlbI/NmdFR@aschofie-mobl2>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 26410EDF
+	for <outreachy@lists.linux.dev>; Wed, 26 Oct 2022 06:09:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+  d=inria.fr; s=dc;
+  h=date:from:to:subject:message-id:mime-version;
+  bh=C5cF6wbCDhXp3j3cBIxGASpzlbGz1E0wNc+HEW0eCXY=;
+  b=KyphW5qBhoHlbvwx4FvILOSney7s4uvBjF5rwfLFjv1XKHApxu52U841
+   0SG1bkD1Vi5wf72mPDTfJNJl/mjt2E4oKLJTjmVDuTbRfLLd6N0kXAeJR
+   O3mmakLGardRRILOtQhjVFv6SJEZmUzIy6UG3ehd+gWZRJj2xhuRIwDJD
+   c=;
+Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="5.95,213,1661810400"; 
+   d="scan'208";a="71561521"
+Received: from 51.123.68.85.rev.sfr.net (HELO hadrien) ([85.68.123.51])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Oct 2022 08:09:51 +0200
+Date: Wed, 26 Oct 2022 08:09:51 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: outreachy@lists.linux.dev
+Subject: coccinelle compilation issue
+Message-ID: <alpine.DEB.2.22.394.2210260808100.3523@hadrien>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Y1b/zhLlbI/NmdFR@aschofie-mobl2>
+Content-Type: text/plain; charset=US-ASCII
 
-On Mon, Oct 24, 2022 at 02:12:46PM -0700, Alison Schofield wrote:
-> On Sat, Oct 22, 2022 at 10:59:38AM +0530, Deepak R Varma wrote:
-> > On Sun, Oct 23, 2022 at 06:51:11PM -0700, Alison Schofield wrote:
-> > > Greg KH has mentioned this a couple of times lately -
-> > >
-> > > >> Any reason you do not have "staging: vt6655:" as the prefix for
-> > > >> this 0/X email subject line?
-> > > >>
-> > > >> thanks,
-> > > >>
-> > > >> greg k-h
-> > >
-> > > A quick peek in the tutorial tells me it could be made clearer.
-> > > It needs to explicitly say the prefix is required, and then
-> > > make sure any examples do it.
-> >
-> > Hello Alison,
-> > There already is a section named "Patch Subject formatting" on this link [1]
-> > with enough description to determine the patch subject prefix. Can you please
-> > review and confirm where we should improve further to make it clearer??
-> >
-> > 	[1] https://kernelnewbies.org/PatchPhilosophy
-> >
-> > Thank you,
-> > ./drv
->
->
-> In https://kernelnewbies.org/Outreachyfirstpatch
->
-> The example cover letter in 'Submitting a Patchset' has the
-> subject "[RFC 0/7] Update REPORTING-BUGS", with no subsys.
-> It is also confusing because the cover letter is an RFC and
-> the patches are a mix of RFC and PATCH. Very atypical.
->
-> Let's replace this example with one that was actually submitted
-> and accepted by an Outreachy Intern.  No slight intended to the
-> existing set as it contains an interesting set of changes. However,
-> an example for newbies might better come from newbies.
->
-> How about a patchset off this list?
->
-> Would you mind using this one of yours:
-> [PATCH v4 00/11] staging: r8188eu: trivial code cleanup patches
-> but trim it to 3-4 patches plus the cover.
->
-> It's not a trivial edit, because you need to replace all the
-> example steps with the new patchset content.
+If you are not able to compile the code from github, you can install opam
+(the OCaml package manager) and then get Coccinelle from there.
 
-Hello Alison,
-I made the changes as suggested and saved those. Looks like they might have
-already gone to production. Sorry about that. I was thinking they will be
-submitted to a moderator for review before releasing,
+Information about installing opam is available here:
 
-Could you please review and let me know if any edits are required.
+https://opam.ocaml.org/doc/Install.html
 
-Thank you,
-./drv
+Once you have done that, I guess you can run
 
->
-> Thanks,
-> Alison
->
-> >
-> > >
-> > > Thanks,
-> > > Alison
-> > >
-> >
-> >
+opam install coccinelle
 
-
+julia
