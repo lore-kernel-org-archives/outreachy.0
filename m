@@ -1,25 +1,26 @@
-Received: from msg-1.mailo.com (msg-1.mailo.com [213.182.54.11])
+Received: from msg-4.mailo.com (msg-4.mailo.com [213.182.54.15])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CB9C110E8
-	for <outreachy@lists.linux.dev>; Wed, 26 Oct 2022 06:12:38 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8C99CEBF
+	for <outreachy@lists.linux.dev>; Wed, 26 Oct 2022 08:39:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
-	t=1666764749; bh=I/oMLJjygACohiyeEvM9jBDLCE/TLzJGPEbv8XxaXUk=;
-	h=X-EA-Auth:Date:From:To:Subject:Message-ID:MIME-Version:
-	 Content-Type;
-	b=B7o0j8xhNOTHKXgy0ZHy8dHSKMbptuxThB1le1trlPNt1NqbuLg+9SaGJ+qRm4Qt5
-	 o8VBXwrgdbrDN68UQVvQi7fLyyAQ36Bl5J1O5N2SfyiVsVD41sXOiNJ6NTm6IdesUO
-	 04lQ34/ZRNqo8kO5KYO5y0k9NkQ0e5KzUXOkznEA=
-Received: by b-3.in.mailobj.net [192.168.90.13] with ESMTP
+	t=1666773535; bh=kmxeEq7ZCIzAUKrlvyvAkim5rJ1n1ndQpbeIIh7RAug=;
+	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
+	 MIME-Version:Content-Type:In-Reply-To;
+	b=BwKltoTiNhPBE/e246UFvK/HGiX9UujKQeXx11pSAyN6lkJhOhkMCrH+YinSWCoHV
+	 Fk5WPVyNfFEpMkrK+DYHQc2MNGoBYDSyOuQx3/0SRG80Rn90MWGxF/sS9yuncfrWye
+	 3ZM+z/ISzSWWWoYi5KoPXF7VEgsNjf1eFMAi/M+o=
+Received: by b-5.in.mailobj.net [192.168.90.15] with ESMTP
 	via [213.182.55.206]
-	Wed, 26 Oct 2022 08:12:29 +0200 (CEST)
-X-EA-Auth: Lb9GgEdm54jeTFmkMnkmmHtNSoqUYqA+irdns+jCOPjJCAfAXxcLujtrEQpaxtnHir+aaL99xjXckKgEC1vzTHNCIOh0TuzZ
-Date: Wed, 26 Oct 2022 04:33:53 +0530
+	Wed, 26 Oct 2022 10:38:55 +0200 (CEST)
+X-EA-Auth: tave1AASlJsH/esnfGLM71QyeCCGgCBD1NhHqibgATq6Tc+dyr6yJlr8LMWS7Qo2rRY2I6iNQ6blH0YFZKyEJ7N3IJ8/3fD2
+Date: Wed, 26 Oct 2022 07:00:19 +0530
 From: Deepak R Varma <drv@mailo.com>
-To: Outreachy Linux <outreachy@lists.linux.dev>
-Subject: [outreachy+owner@lists.linux.dev: Bouncing messages from
- outreachy@lists.linux.dev]
-Message-ID: <Y1hrWYru4mDuscI1@debian-BULLSEYE-live-builder-AMD64>
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: outreachy@lists.linux.dev
+Subject: Re: coccinelle compilation issue
+Message-ID: <Y1iNq2zGQ/2NSGdQ@debian-BULLSEYE-live-builder-AMD64>
+References: <alpine.DEB.2.22.394.2210260808100.3523@hadrien>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -28,44 +29,33 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.22.394.2210260808100.3523@hadrien>
 
------ Forwarded message from outreachy+owner@lists.linux.dev -----
+On Wed, Oct 26, 2022 at 08:09:51AM +0200, Julia Lawall wrote:
+> If you are not able to compile the code from github, you can install opam
+> (the OCaml package manager) and then get Coccinelle from there.
+>
+> Information about installing opam is available here:
+>
+> https://opam.ocaml.org/doc/Install.html
+>
+> Once you have done that, I guess you can run
+>
+> opam install coccinelle
 
-Hello,
-Looks like I am unable to receive my own email from the Outreachy mailbox. I am
-not sure if this is related to the DKIM issue mentioned by Greg before. If it is
-not, can you please suggest how to get this resolved?
+Coccinelle version 1.1.1 is installed successfully, but still not able to find
+spatch. Geeting following error now:
 
-Please note, I am still working with my email service provider to resolve the
-DKIM issue.
+	drv@debian:~/git/kernels/staging$ opam install coccinelle
+	[NOTE] Package coccinelle is already installed (current version is 1.1.1).
+	drv@debian:~/git/kernels/staging$ make coccicheck MODE=report
+	spatch is part of the Coccinelle project and is available at http://coccinelle.lip6.fr/
+	make: *** [Makefile:2074: coccicheck] Error 1
 
-Thank you,
-./drv
+Is there something I am missing while the install/configuration?
 
-Date: Tue, 25 Oct 2022 16:30:01 +0000
-From: outreachy+owner@lists.linux.dev
-To: drv@mailo.com
-Subject: Bouncing messages from outreachy@lists.linux.dev
-
-Greetings!
-
-This is the mlmmj program managing the <outreachy@lists.linux.dev> mailing
-list.
-
-Some messages to you could not be delivered. This usually happens if we
-have accepted a spam message that is being rejected by your mail host when
-we try to deliver it, but may also be due to other reasons. Please review
-the public list archives to check if you are missing any legitimate mail.
-
-If you're seeing this message it usually means that things are back to
-normal and no further action is required from you.
-
-For internal tracking purposes, here is the list of bounced messages:
-- 1263
-- 1265
-- 1268
-
-
------ End forwarded message -----
+>
+> julia
+>
 
 
