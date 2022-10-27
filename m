@@ -1,174 +1,85 @@
-Received: from mx0a-00069f02.pphosted.com (mx0a-00069f02.pphosted.com [205.220.165.32])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-lf1-f52.google.com (mail-lf1-f52.google.com [209.85.167.52])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A0F581860;
-	Thu, 27 Oct 2022 07:56:37 +0000 (UTC)
-Received: from pps.filterd (m0246617.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.17.1.5/8.17.1.5) with ESMTP id 29R4DDsb022179;
-	Thu, 27 Oct 2022 07:56:29 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=date : from : to : cc
- : subject : message-id : references : content-type : in-reply-to :
- mime-version; s=corp-2022-7-12;
- bh=907s8o88iJc+of+k2bj26zqn5aVM9rysNI+6tl+FlzQ=;
- b=LMC23ToREcspkp67qD6Pnzo0jCF7EsfadaHyt/y9f6RfexNXDEtg0KolGmDWCNdxSR0G
- BGUV/l7O3a2Q9WzypmNAi5HIDsHvSLdGV7a4PLl3j8yjtq9oNuId4UREaI9lMfnE8e1g
- /Hmy6Ct4+62gr4TkTxpZakYE1QdOQptYRVlY5vNuBmrDK/Jv7n1kYeZe4cWrR2ay2G1E
- kFlSOe7SkzK9XWE/N5dd2riEkwKx37HzJPCCyERUm2G1lE7r3DeyBl5B7gr1nG8iM4WH
- OxgFG25Q7Nruti4AlZG8OyzaCIV+HH/ZUZcDAlogqikRd3uFWIjuN+IuuJMsHCgzHG8R JA== 
-Received: from phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta02.appoci.oracle.com [147.154.114.232])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 3kfahe9byh-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Thu, 27 Oct 2022 07:56:29 +0000
-Received: from pps.filterd (phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (8.17.1.5/8.17.1.5) with ESMTP id 29R7PV95017521;
-	Thu, 27 Oct 2022 07:56:28 GMT
-Received: from nam10-bn7-obe.outbound.protection.outlook.com (mail-bn7nam10lp2108.outbound.protection.outlook.com [104.47.70.108])
-	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 3kfagg76un-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Thu, 27 Oct 2022 07:56:28 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=K1opdI+M/XeJ4XD5ZjLNm6keJSjwoOLyz4WFQtuFDIm3omfNd1zjhpYdnN65jSs0K9+DFr1X21J4GDrcEaAdod5dWDbtGbjoOtneQhaQuGwKVpPF1e0knAVkmObNwnjqeZgEcL3OTDukTnQ0uzAI2hkwEhKJvQO8sFql/kS3tBsZTicc7xN1FY4kruY8OUehbaqknJVb5Fvu+HCuvCg/rhHnkqP3sQxw2kKF3ucoz6r3+RV0DI4nEidENZE+0olqAZrayL+soMSvHwM3EFe93PPU/olr1Fy8a32OC6S4CTSpxv+mRyW7lD9v6NychAbdtHFij7jvwDtPvmVzA+/2wg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=907s8o88iJc+of+k2bj26zqn5aVM9rysNI+6tl+FlzQ=;
- b=ZGyxiLEbgIUwwZ6/zWRFJDTX81jVTff5QV2qSl55/VKW1xIo9EkgL3ru/hIiT/k6Yz/b1SbwuojZIKd9DUwiBv4zESlTmOS8+XdNpsoqTFZLnt1fvHWYeaTqHLVOcMVE1T1mLKE4rxHPYr3foWq/MHxqX6JK2ykekMvgeM+8hdQoKdvGubjFYEbQz7q6S8s/WiLCbwiG2Es22JzxQBwDrhnxuD6V5zaVOTSi/W7bNSZoY6wxfaF7whkzbG/Cwr+HyMXunUHZwMjcgZpVcMTFqEZr0oREPcbYOKQ//uDu9+UxZeOxhAUdNZ1FycmQCs7Kc0w2KwP6b/9qP4prxifCFA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C1D2CBA4E;
+	Thu, 27 Oct 2022 08:59:31 +0000 (UTC)
+Received: by mail-lf1-f52.google.com with SMTP id p8so1384759lfu.11;
+        Thu, 27 Oct 2022 01:59:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=907s8o88iJc+of+k2bj26zqn5aVM9rysNI+6tl+FlzQ=;
- b=WlqMUarERWox+QNrjM8FJwkm17lBugi/dm4leZ2DvLeSZmrnZYjr+pto4WoFwR/+n6ZDUjH4gWjJPeAiD13+nAZTSdFDxFKzMl2MuvZpiVJ1KR9hLR218nPLlVx1iKO91XuLAq3NN1dl05a6zXUiJtPYwWe7EwtxP8QNNo58oSM=
-Received: from CY4PR1001MB2358.namprd10.prod.outlook.com
- (2603:10b6:910:4a::32) by CO1PR10MB4564.namprd10.prod.outlook.com
- (2603:10b6:303:6f::15) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5746.28; Thu, 27 Oct
- 2022 07:56:26 +0000
-Received: from CY4PR1001MB2358.namprd10.prod.outlook.com
- ([fe80::7dee:dce8:921f:d623]) by CY4PR1001MB2358.namprd10.prod.outlook.com
- ([fe80::7dee:dce8:921f:d623%6]) with mapi id 15.20.5746.028; Thu, 27 Oct 2022
- 07:56:26 +0000
-Date: Thu, 27 Oct 2022 10:56:10 +0300
-From: Dan Carpenter <dan.carpenter@oracle.com>
-To: Nam Cao <namcaov@gmail.com>
-Cc: UMWARI JOVIAL <umwarijovial@gmail.com>, gregkh@linuxfoundation.org,
-        linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-        outreachy@lists.linux.dev
-Subject: Re: [PATCH] Fixed[ERROR:trailing whitespace and braces around scalar
- initializer]
-Message-ID: <Y1o5mktrnE5rbtCO@kadam>
-References: <20221026132838.GA44037@rdm>
- <20221026171430.GA5592@nam-dell>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20221026171430.GA5592@nam-dell>
-X-ClientProxiedBy: JNAP275CA0021.ZAFP275.PROD.OUTLOOK.COM (2603:1086:0:4d::12)
- To CY4PR1001MB2358.namprd10.prod.outlook.com (2603:10b6:910:4a::32)
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=pb7xGr5fuIL0NtgblTv6xk3hHUrL7glkJIQ1IQxfKe0=;
+        b=enich8yCz31jib5vDHT9by/WtYR4B4iKdU6w4TTVNlj49RLa8wr/6n3Pjn7SUjk0oo
+         IVT6UtzWHHOl/kT+zmyYgftGd4nCa9G5XxjodwnRsoaRxQm5OT02MA+YxsxO+00x7kqa
+         cRwV5noqPv0o3KF6pH/avpDQrVdbCyzjYsIUL+/gVbqOthl1YT/Aj4UIsmbhshfngltc
+         O98j77Kfo65lHchFeAeo/cMmt3HuLmo0EmsKa6CX1TRZnBhpTVSoT7kdK/2Vh9LPwHQ2
+         5x+l6ymRVyrMiyEri8OX1/I0M/4ZxyZVSTPwUaLFV87Ba+bqbmvbX1Z6ZCUQKjzYgWiI
+         pdBA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=pb7xGr5fuIL0NtgblTv6xk3hHUrL7glkJIQ1IQxfKe0=;
+        b=rHheDJN92QIC5Z3T7n0/o2VWn6tSleeWxLBVMh0LYQ6HUo3uXu0896PNCiOLraeBm6
+         5BIEnKvvGdUSRkRltF+96KDEaJ3RXHq2F9Btk/rM2+om0LgcN/K8KfIToHOKkjk66rk9
+         qy/VHQGUjPUC7C86Jpn3es4BV/TDno0mKLKu6XPnI9lz9+5X++uquvUDHfcajLRcEEz0
+         GObkJdhNyCHEBTEFvs0p8VnV4L/Htt91SmFg091KSwLyzGptpTcy5pqRD016n3Qeptdk
+         N+sby//pDIo4uyWB2VONBx6SlqxY4S/jit0VfnRhqLp9sCI0v+oZA0LM/JfZcijAnNz6
+         mtRQ==
+X-Gm-Message-State: ACrzQf1+ypVHof4UZQkoivXR2baU7KwrNW3DaUXJO5vevU66upEMC20v
+	JnV1tIHFVoLwr8Fysrj7zC4=
+X-Google-Smtp-Source: AMsMyM5zyPFvWw0yWMbDDHUcS6QNUOYuNPKchL/VrnkY4IrnMTJnHGz7Sv3s30wQDPGNxBcBqfX4gg==
+X-Received: by 2002:ac2:4839:0:b0:4a4:4f4c:116 with SMTP id 25-20020ac24839000000b004a44f4c0116mr18204807lft.51.1666861169593;
+        Thu, 27 Oct 2022 01:59:29 -0700 (PDT)
+Received: from elroy-temp-vm.gaiao0uenmiufjlowqgp5yxwdh.gvxx.internal.cloudapp.net ([20.240.130.248])
+        by smtp.googlemail.com with ESMTPSA id m3-20020a056512114300b004a050ddc4ecsm109892lfg.125.2022.10.27.01.59.28
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 27 Oct 2022 01:59:29 -0700 (PDT)
+From: Tanjuate Brunostar <tanjubrunostar0@gmail.com>
+To: linux-kernel@vger.kernel.org
+Cc: gregkh@linuxfoundation.org,
+	linux-staging@lists.linux.dev,
+	outreachy@lists.linux.dev,
+	Tanjuate Brunostar <tanjubrunostar0@gmail.com>
+Subject: [PATCH v5 0/6] staging: vt6655: a series of checkpatch fixes on the file: rxtx.c
+Date: Thu, 27 Oct 2022 08:59:02 +0000
+Message-ID: <cover.1666849707.git.tanjubrunostar0@gmail.com>
+X-Mailer: git-send-email 2.34.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CY4PR1001MB2358:EE_|CO1PR10MB4564:EE_
-X-MS-Office365-Filtering-Correlation-Id: 7a409e01-4c9e-4928-077c-08dab7f0bfcd
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 
-	fH/BxbQI0nNdwhf9MD/XPMSVPGnVZF63BDXLJa7PTXPndfeF/HMwJ2GL7wM11VKTYgaqxOKKzssKhqUIR8r0U4TbW+TU4NJHWucqDBnimU0dG1eh3uvxbf2aM6NhjOb0pR3OJjDtnbhz8Ap8kziDlBPaGpu3PF//IOFG6iwxe3TAZFuvm+C9AhjkH/up+quDTykC7npjXdvjtnCK/AjIKBz1/Ap5s3+YgvqEPmV9w04X1h1yvokUTTHpGiatMp+X1+cEGRZpU/bfKtUNNIdv3fOiWqxsLHXaSdTZshDsyXxUKpHUtvciBPOl7Y7ExsyEwtM/y6WJI/8ja5nvseFJ6tv30/lGX4c6HDzaIDp/UYJ7V4t3eJTHrrFpAx9InqzTFe+4WB2qSh0pOSM8PR7WE7kxLr765STZYKkeBUMUHey0OLrzKPinuxP3y/SEqRmUewd5XATHKqITZQilXoN5l9VVAeZ1KNdXqehlEbcltY4ai5it7UoRjKeNVL+6R/8d0UJdvdMt2KMv8ME/3yAJzloJgEccV54waQu2GP1Tx4Ge1apQ+fh2VjGXyTWkLNTirqCChcSDz//sMW+IEFgctA+OWCHSlvPq5QcPTxWQucBNE50vJg2kyeu1uhv7SZtmdJ+081uaXejqK87TTkeMN4kIovY9ZSA6q4S8aLgriJMTuwXlFvsnQeqn2SxjpfuY0HVHgjIgMX+GMZPzrWGdKw==
-X-Forefront-Antispam-Report: 
-	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CY4PR1001MB2358.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(7916004)(39860400002)(136003)(396003)(366004)(346002)(376002)(451199015)(86362001)(8936002)(44832011)(5660300002)(41300700001)(38100700002)(9686003)(6512007)(26005)(33716001)(186003)(2906002)(83380400001)(6486002)(66476007)(478600001)(6916009)(66556008)(8676002)(4326008)(66946007)(6666004)(316002)(6506007);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 
-	=?us-ascii?Q?8DQ3D2vyfssrUrU2rS7ke6Ihvc8mOVnMkJNmV0MxcjLB7LPDPaMAZBrT8r2v?=
- =?us-ascii?Q?UqtgUegLO9k7Gze6ZRmGa6+QXjcXQ7JFjATsi2TT4jN+pIJu1QLAa9W/x+na?=
- =?us-ascii?Q?p9mW+65aLlh0Q5r+LgdotExS++7AX7iYK5xjqQzCzHeVZ6WezvqlsNbACAXW?=
- =?us-ascii?Q?aWLBnkTAHWa5W4yO50HcxoDrEyVTFBFR7hCS6PkPKeb83hFl8F3FnAi92id9?=
- =?us-ascii?Q?D7pImT8RLjOlEX/SHEqAw1iuLrRZudO24OKnybOSn0HOT5qkXCdtWsHwx8Cf?=
- =?us-ascii?Q?Ze74xdT+S4Z1EfPCH40S2xiQi3HAQQdzbp9Po83szoOfhsrRavEY8JBJ1/2Q?=
- =?us-ascii?Q?sSGGjdssBC9vM15dyiOh3tV2kcQSidODTFDy60yxI5JnR2Iiul+ruvEo4iQl?=
- =?us-ascii?Q?jdDMG82tsF4i07CApGSUb2jAuUDhcSrnFZXrUfmzHtRCf8o+kI7yBqR0Pb4o?=
- =?us-ascii?Q?6eR4g1rNWajCJ9uhJ+8Ur/yJEy30QBu3niOg3TVRp99RF57QSHgENOuR9fFE?=
- =?us-ascii?Q?JqHlEyrNMFQI0RAhwe0abecriaqp7oQKD+Q/We62apZyk031Q5AkNjLdkDNO?=
- =?us-ascii?Q?JmSZs9ZbCueZfvhDzkxRAfuc51bwWfXizWyhOeA0in3vHDw20MbaNrxrbd/6?=
- =?us-ascii?Q?VaC5vko7wNhQq+M4MYjy7JFG3skRjC73v28Nx+jxqvUDpbNsAoOuY8PfcfJe?=
- =?us-ascii?Q?fkw6tXu0YSnJpLzpvR/X3qpvvkRBdjsOHhGZVvZLrF0p/eWSCxENCai4DAgw?=
- =?us-ascii?Q?aVMWzIMp6TQmH4n34bsyQ8Je+cIMNgb5LF9FWKmJQslEINXoVzVtvzQXX0os?=
- =?us-ascii?Q?1kYMesgB3yGCqUioY+u7rpSfr4nHvvdH1eNagQAOEelIYSBRIM5HWvevoOdS?=
- =?us-ascii?Q?Wu5cFIqgltDXc7IvORgkIXpPAmjjo4868jXixfzPtard1GVZSpkBmSjny5Q3?=
- =?us-ascii?Q?hmJdWkU1oalofh/A0hQlEKvMXxfTCzkvo+kbOt5lgHmV63bQhTQfnOJbgRxW?=
- =?us-ascii?Q?omerGBVZW2z30TB+nukOFahKa6BnMnhPBfYkIqgj1vjrJvkyX6/hjglv8vTy?=
- =?us-ascii?Q?nSEW7JwQ0/8JZiRhvbTw3X87BCfbHuJ/NPL9SRm6whySypwxW1pJx7AQDw47?=
- =?us-ascii?Q?1d2d/bQnZJL52QkiswUa7YWcskW5iUjsr5kWFrL3H8qJ+rym7yOaRzo3Ck5c?=
- =?us-ascii?Q?LlX0bWrdNCUggJ4uJIzEIvmwXbz1cgbxDTv9wrzK89RQUM27bJ/GNckYzJD+?=
- =?us-ascii?Q?yvxldYpva5cUbbAf0px16Sg1spzzqNDWrQ/VqlANtVCymabi5koworI07Bua?=
- =?us-ascii?Q?1a2QocvZ2cpaO/rXsuNgV40/1ze5qu3nETcAH/FgPVT0pF7Iod7iE3kVHJcN?=
- =?us-ascii?Q?QX0Hj4niZ0SdV6Tc3W6RcnRYFQ6XbqCg+R5gSIen8RrcrwYvRcPD+Zu9ftyV?=
- =?us-ascii?Q?ncbzCkjt61rrmHDK+vBVmIvlbUiXuQl1oVMWd/zsBF8rXBBAOK/Lkdl3f01X?=
- =?us-ascii?Q?BuF+xFb22UA3wN0nd9LdrD1e4ySugQgs/QSyQ5NDCi1GGTTKApiB73ad8Y0N?=
- =?us-ascii?Q?x9RphD5vuj5N83oDIwcRjrUpBsll3W04K1+spD1M37xqnQWV40Jmh63YGxge?=
- =?us-ascii?Q?lw=3D=3D?=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7a409e01-4c9e-4928-077c-08dab7f0bfcd
-X-MS-Exchange-CrossTenant-AuthSource: CY4PR1001MB2358.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Oct 2022 07:56:26.6296
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: K9GADk89mT1so5/gE+rNWQprZ1RgsL/9gXImqRwyulEM1M0LjS5FftHA5d0mMcvRCYbGUEL4e6KJLvWwUUxy9bGcodAopoeKizCPsLFKwZU=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO1PR10MB4564
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.895,Hydra:6.0.545,FMLib:17.11.122.1
- definitions=2022-10-27_03,2022-10-26_01,2022-06-22_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0 bulkscore=0 malwarescore=0
- phishscore=0 mlxlogscore=999 mlxscore=0 spamscore=0 suspectscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2210170000
- definitions=main-2210270044
-X-Proofpoint-GUID: JzvFobdXena6jzMAC9GHPmLfiaoF_zPP
-X-Proofpoint-ORIG-GUID: JzvFobdXena6jzMAC9GHPmLfiaoF_zPP
+Content-Transfer-Encoding: 8bit
+Message-ID: <20221027085902.HvhgJ4TfSo95yj5ha-KyczUoC2I-3DKqBQIDwd4uDmg@z>
 
-On Wed, Oct 26, 2022 at 07:14:34PM +0200, Nam Cao wrote:
-> On Wed, Oct 26, 2022 at 04:28:38PM +0300, UMWARI JOVIAL wrote:
-> > Using the checkpatch.pl script, found the below errors and  fixed
-> > ERROR: trailing whitespace
-> > CHECK: Please don't use multiple blank lines
-> > warning: braces around scalar initializer
-> > 
-> > Signed-off-by: UMWARI JOVIAL <umwarijovial@gmail.com>
-> > ---
-> >  drivers/staging/most/dim2/dim2.c | 2 --
-> >  1 file changed, 2 deletions(-)
-> > 
-> > diff --git a/drivers/staging/most/dim2/dim2.c b/drivers/staging/most/dim2/dim2.c
-> > index 7a5f80e637a0..28259ce05024 100644
-> > --- a/drivers/staging/most/dim2/dim2.c
-> > +++ b/drivers/staging/most/dim2/dim2.c
-> > @@ -987,7 +987,6 @@ static int rcar_gen2_enable(struct platform_device *pdev)
-> >  		writel(0x04, dev->io_base + 0x600);
-> >  	}
-> >  
-> > -
-> >  	/* BBCR = 0b11 */
-> >  	writel(0x03, dev->io_base + 0x500);
-> >  	writel(0x0002FF02, dev->io_base + 0x508);
-> > @@ -1084,7 +1083,6 @@ static const struct of_device_id dim2_of_match[] = {
-> >  	{
-> >  		.compatible = "xlnx,axi4-os62420_6pin-1.00.a",
-> >  	},
-> > -	{},
-> 
-> I'm no expert, but this looks like a null terminator and probably
-> should not be removed.
+The fixes are similar, mostly long lines splitting. I had to make
+serveral patches to ease the work of inspectors
 
-You're absolutely correct.  Also I tried to see why checkpatch.pl was
-printing an error for this but it doesn't print an error for me.
+v2: fixed a compilation error found by the kernel test robot and
+recompiled the code
 
-regards,
-dan carpenter
+v3: tends out the error persisted in the second version. this version is
+a correction of that
+
+v4: did some corrections as recommended by Greg KH
+
+v5: shortend changelog comments as recommended by Greg KH
+
+Tanjuate Brunostar (6):
+  staging: vt6655: fix lines ending in a '('
+  staging: vt6655: refactor code in s_uGetRTSCTSDuration
+  staging: vt6655: refactor code in s_uFillDataHead
+  staging: vt6655: refactor code in s_vGenerateTxParamete
+  staging: vt6655: refactor code in the rest of the file
+  staging: vt6655: refactor code to avoid a line ending in '('
+
+ drivers/staging/vt6655/rxtx.c | 542 ++++++++++++++++++++--------------
+ 1 file changed, 324 insertions(+), 218 deletions(-)
+
+-- 
+2.34.1
 
