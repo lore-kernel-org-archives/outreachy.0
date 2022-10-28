@@ -1,94 +1,87 @@
-Received: from mail-qv1-f48.google.com (mail-qv1-f48.google.com [209.85.219.48])
+Received: from mail-lf1-f50.google.com (mail-lf1-f50.google.com [209.85.167.50])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DB03C122A9
-	for <outreachy@lists.linux.dev>; Fri, 28 Oct 2022 20:49:25 +0000 (UTC)
-Received: by mail-qv1-f48.google.com with SMTP id o8so4852614qvw.5
-        for <outreachy@lists.linux.dev>; Fri, 28 Oct 2022 13:49:25 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AFBAF15C81;
+	Fri, 28 Oct 2022 23:25:45 +0000 (UTC)
+Received: by mail-lf1-f50.google.com with SMTP id o12so10607038lfq.9;
+        Fri, 28 Oct 2022 16:25:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=p2jn1vXHHPMOyjmnIWlW/6FBOICpi1+moG55esSlyBY=;
-        b=TobIVY2UUof+T0s/GJrPR2OEmz9Wkx/FXZvw27Z7B7J4Ir+CpkD0VglTdX5/zyaBN/
-         ElQjYn71azJXnG56Dhz0SW5m5JuoaHe+8EY0HdPcPBqev+bv0z5P3Kcrxqx9rJbi6Cvy
-         6g4fmgvkFVIGAHw5ZkHo3HPR4cnWIfU/+AKCs88T873rbkxS9mitSofGoOrBUO5nlRq0
-         MXRWLR4XsIk1dKdTqpWPeXlnEmUwNzNYFfo+kBZOvzR/ybg2uhYFI9WhYRzT1yBKdQy1
-         uSjfsKNQPUh4XreK5KSFYQB5V/W/qF8SYzY9STwahqtLs5s4o48ja046ZlI1jU/ea2mS
-         V4AA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=ObN85DLQdgZMO86MzqaZ/TqagrT3Q9Ju5tvegmgHI0I=;
+        b=hGXCSOI43CSIV//bKpLKBDXd0TEwH9iARtXBHF08sb/OcR1WyJB5RnsRo3JwH932Ol
+         FjRRT8JuQq3/QebUDKWrKdjbrawXXp2b/NwpqUu0z4oW4Wzkn5beSAZA0HU+KFv83alC
+         14Y038mtq8XFwZZ1MmxTFGT2BIA9HEzx9g4cZ8RklCMsBBTuCq1F2o15fWB3w42G1Txz
+         9UVMLE1FrdpItFBdWADGHQ51oaaAu3bLTRko3oWODBlhM8yfWIJbcSCi05VLFo+HEWGu
+         sLhfnkP9pGUHFKqQE+30CbriZPTzTqHUL6gUT1zFufPp62BZpestSZ5eBSsNqokh4g4J
+         OvGA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=p2jn1vXHHPMOyjmnIWlW/6FBOICpi1+moG55esSlyBY=;
-        b=HwIxyDCc7E4g8zW1MVETWibJqgvM/+jXq4PY5z9hYSV/HkfbwxSdPEiMRsM4yUOTdX
-         2lwyFXRK1Lw7R6YtFc7Jekwdn7UqYXEczLywaixiWUbBPVsW+7H+AD9LRFBJV6r4XluP
-         hVqbPcu1lbWkQVvYT4yr3bAewD0p/3jjxkVAAdVXqIxN1CLVOVvcEmhm5X7+jVfPyjPf
-         BqR3fJjV+9mxnHQ3NXfhzuNFO1cCjVb3EqrGG+sJxF113YtxWPnZZ6v1FRXIEvR+33Gj
-         BeVcB0hrqAmkg5juq/ykrjoza5NdouLs34onvWcqdkHdxWpoQXRuqk0EhjbzzLfKlhUU
-         SXog==
-X-Gm-Message-State: ACrzQf0WgbgD9EYhKzcF1/koROSeFjoZ4d7yneQ2liC/+Q6PycjP3U88
-	+vpitc4zdYKtOLKJHSBiRdhHSn3no0rmY/K53yEf13llIn0X4rm4
-X-Google-Smtp-Source: AMsMyM5pU2rMg65gb2tOqG0toERMSSrpQBLEqF5WKPOSYwU0x/CDzghELCkML6smsnRFG5GgxxvOnhnpEk6w6mAw3T0=
-X-Received: by 2002:a0c:e547:0:b0:4bb:66d2:2d58 with SMTP id
- n7-20020a0ce547000000b004bb66d22d58mr1321056qvm.69.1666990164684; Fri, 28 Oct
- 2022 13:49:24 -0700 (PDT)
+        bh=ObN85DLQdgZMO86MzqaZ/TqagrT3Q9Ju5tvegmgHI0I=;
+        b=InET2L/CAvvuQPTYwORTKyqSuCV2JZDpvQFDBNT0Ze/XsgRm904gYtBQnX0Q/7TnME
+         X+dx1G4sHKnR6Xa56IoslTcrvtuK34U3kO3O5EE0h4AyYwVYkl2wYlLhS3GBDDSpgVpD
+         vHSKxDrE81fKYZLtj6Ln7e0OCcVRSxPWS7eggf/iHBelJYmkZa8roi4nTTxrZg29+Cn8
+         Qu/kaL9tj1MGr+thF8CUbDTlYstRD+mIp89shEsX0WMaRwwxlL+RPPAuN/WPnRvclQSW
+         SMzJ2ko+VPcz8EvpOc6XrZEERY/x/y22m++oXmBrlEbysUm/4jwE62Slm6C0R8dS00Po
+         7S9Q==
+X-Gm-Message-State: ACrzQf1bk8MKtwuyGwxO/WfhUvkpSChkow7DMpktJgbMw5kL4qzRkLbJ
+	PLf/P01KAfpY3kfHbEgP6u4=
+X-Google-Smtp-Source: AMsMyM4Cj8vBAkl20Tai+tm54e/GLpR4218t0++Xzv2afKKVlEFG0QkeeHHpUKDKGs+4qJxTybh1xw==
+X-Received: by 2002:a05:6512:3a8e:b0:4a2:f42:148 with SMTP id q14-20020a0565123a8e00b004a20f420148mr589700lfu.343.1666999543760;
+        Fri, 28 Oct 2022 16:25:43 -0700 (PDT)
+Received: from elroy-temp-vm.gaiao0uenmiufjlowqgp5yxwdh.gvxx.internal.cloudapp.net ([20.240.130.248])
+        by smtp.googlemail.com with ESMTPSA id s2-20020a056512202200b0049aa20af00fsm7064lfs.21.2022.10.28.16.25.43
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 28 Oct 2022 16:25:43 -0700 (PDT)
+From: Tanjuate Brunostar <tanjubrunostar0@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	outreachy@lists.linux.dev,
+	Tanjuate Brunostar <tanjubrunostar0@gmail.com>
+Subject: [PATCH v9 0/6] Checkpatch cleanup in rxtx.c
+Date: Fri, 28 Oct 2022 23:23:21 +0000
+Message-Id: <cover.1666995639.git.tanjubrunostar0@gmail.com>
+X-Mailer: git-send-email 2.34.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-References: <CAHJEyKWCVPLYvGB=oeDoZWz+uaBMrn2JhGgjN6pvdhjggOmAiA@mail.gmail.com>
- <Y1wiBgPE7sFSVQTG@aschofie-mobl2> <CAHJEyKWwg-9Aca5MEpp2+R7xt1C9Je5ooodr4Ca=2xuN4_EkgA@mail.gmail.com>
- <CAHJEyKVyQUedZwhem+1XsGy=h1JOYgn0_74jk8V2YH5V7zLVaQ@mail.gmail.com> <Y1w++T3KudppVNkK@aschofie-mobl2>
-In-Reply-To: <Y1w++T3KudppVNkK@aschofie-mobl2>
-From: Tanju Brunostar <tanjubrunostar0@gmail.com>
-Date: Fri, 28 Oct 2022 21:49:12 +0100
-Message-ID: <CAHJEyKXCLyGqYVY5QMyOfsiOpDujMqfgvc5oCtrCRwpBCu=+hg@mail.gmail.com>
-Subject: Re: Outreachy first patch wiki modification proposal
-To: Alison Schofield <alison.schofield@intel.com>
-Cc: outreachy@lists.linux.dev
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 
-On Fri, Oct 28, 2022 at 9:43 PM Alison Schofield
-<alison.schofield@intel.com> wrote:
->
-> On Fri, Oct 28, 2022 at 08:25:38PM +0100, Tanju Brunostar wrote:
-> > On Fri, Oct 28, 2022 at 8:10 PM Tanju Brunostar
-> > <tanjubrunostar0@gmail.com> wrote:
-> > >
-> > > On Fri, Oct 28, 2022 at 7:40 PM Alison Schofield
-> > > <alison.schofield@intel.com> wrote:
-> > > >
-> > > > On Fri, Oct 28, 2022 at 07:23:47PM +0100, Tanju Brunostar wrote:
-> > > > > After setting up my mutt with Gmail, I tested it by sending an email
-> > > > > but it did not go through. After some research, I realized that Gmail
-> > > > > no longer allows less secure apps. The way around this is to set up
-> > > > > two step verification, then generate and use "App password". I would
-> > > > > like to add this to the wiki, as this will save others from the
-> > > > > additional work. Please let me know if I can proceed.
-> > > >
-> > > > Helpful tips are always appreciated.
-> > > > Please post the actual edit here for review.
-> > > >
-> > > > Alison
-> > > >
-> > >
-> > > My changes
-> > > original: If your gmail account uses two-step verification, then you
-> > > will need to generate and use App Password.
-> > > modified: Next make sure two-step verification is enabled on your
-> > > gmail account, then generate and use App Password.
-> > >
-> > > Tanju
-> > link to the page: https://kernelnewbies.org/Outreachyfirstpatch#preview
->
-> Sounds good. I expect you are going to go back in and delete
-> the 'original' line.
->
-> Thanks!
-> >
->
-done
+v9: reorganized the changelog messages on this patch
+
+v8: made commit messages clearer, unsuccessfuly
+
+v7: made log messages less confusing
+
+v6: fixed some errors on commit messages
+
+v5: shortend changelog comments
+
+v4: made some changes on the code
+
+v3: fixed compilation errors
+
+v2: tried fixing compilation erros unsuccessfuly
+
+Tanjuate Brunostar (6):
+  staging: vt6655: fix lines of code ending in a '('
+  staging: vt6655: split long lines of code in s_uGetRTSCTSDuration
+  staging: vt6655: split long lines of code in s_uFillDataHead
+  staging: vt6655: split long lines of code in s_vGenerateTxParamete
+  staging: vt6655: split long lines of code in some functions
+  staging: vt6655: fix lines of code ending in a '('
+
+ drivers/staging/vt6655/rxtx.c | 542 ++++++++++++++++++++--------------
+ 1 file changed, 324 insertions(+), 218 deletions(-)
+
+-- 
+2.34.1
+
