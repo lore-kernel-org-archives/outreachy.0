@@ -1,105 +1,59 @@
-Received: from mail-vs1-f42.google.com (mail-vs1-f42.google.com [209.85.217.42])
+Received: from mail-qk1-f181.google.com (mail-qk1-f181.google.com [209.85.222.181])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 57BFA1FAD;
-	Fri, 28 Oct 2022 07:43:04 +0000 (UTC)
-Received: by mail-vs1-f42.google.com with SMTP id l190so3859852vsc.10;
-        Fri, 28 Oct 2022 00:43:04 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1BD1A1FAE;
+	Fri, 28 Oct 2022 08:36:11 +0000 (UTC)
+Received: by mail-qk1-f181.google.com with SMTP id t25so2997241qkm.2;
+        Fri, 28 Oct 2022 01:36:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=KFL9adKihekM8F4k25d98PC2Ll0xHE9L3wfiEmdcsI8=;
-        b=ja4yWZKyRolktBga8ujdVEg5//IwG7IHFxFwFCKwBbuCsZT82D3fGh8l4z1YaRu2rc
-         FtlLWEr09PyYdtIl/Jk+RlGoSFX7PvvRO8VomL0QYmFiB9/Trv6nuXbLLJgsX1qlWoll
-         6YIfEplsbqikpMStY8KLTY8hFfouX6VMvRIPpGt4VHcYxEawlZ79ddo4uEJSXtOLOUHV
-         b2sDEJztYSA304XkegQ90g5MbHvhohx3cqIbT8nCl4qR+7qFDw4SJri4Es57Yx9mT8r8
-         H6KrPjhQOVetwenmhL1Kg486RH7YIYSORaKvMroM3Sfq+2aVDHkNIbeSusOxV1P1oEG8
-         v3tQ==
+        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=9Y1p+qlCnBvED9zzTgvEOAvn502VsmGTh3U1RRB9d4M=;
+        b=Ih3yYh9FIJXwEuCshZuNKX/cwFfmlEZRmef7ihrBclwuNPvkIm50GzcGBi+SXi3CNi
+         j9A7byZVlFMtYx6LiOMrEukdU26TWj5WzQXnQb5H1PX5DUBVRS0wk7y6YzZlQnGNhnKt
+         u5B8kNiUGFrHurNUMWeU6F++3LOA0BNNzP+FR/ymOd8CJKKyhChg+QAGYjeF1qyK5eun
+         woqKcvlEe5Dcm4cDQrEDYQJUxeR0pg0U9bBzAPVDMYxdW+BSq3sHzkQwwN7VtDL1fCng
+         bRRqp3rJJ1nwruNszDvZjSHCQA9vT53UcgHMozpztEb+bOz50XwPk/77mn6orkT8lip4
+         MeYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=KFL9adKihekM8F4k25d98PC2Ll0xHE9L3wfiEmdcsI8=;
-        b=4lLNyQ2Jv3lYwk1vQjIdlxQsaj1XJmK6W6QASqFsoWDZUsESWq6tLn1Z+YY8GAWTaE
-         ZXsemUQ6B7Nzeq7jAzzHqao0InQpaHzu5yHczyfpANMIN/em6us4Cfwe6fPiIumjPuiG
-         lY8dLw6IZT1VQSoKSzhe40YVgW6fgmuNae/9+88wIkKdeHvz4FUUNZUrG4X1V9ENFfWg
-         4N5XCgDBy3rFdOhe7QPC6dQkmydqIBVuy3I7MGk89oL0QIKM8uRoheqQXmWTw9u0AWQI
-         WdiWWLcAEcsIagp6sw6FhzSlyI0EnQjyTKARiHAhBtYt+h5MA8/49TAWTWL5/QnCt0N7
-         VYPA==
-X-Gm-Message-State: ACrzQf3hoiIPPqqlz1MjxFtt85E4lT0XRuDvWDOaf17p0VRX/Wm7V6m5
-	eHTLpIK/AQMcseKNCCEUyMNyOhhA08+sDlMwqhg=
-X-Google-Smtp-Source: AMsMyM7tXiJc82o76JD4AaikiR4k2fSve2dBxpFxJoHlHd2ppquul8tY7yZ3tXhlK8qHYge4JwfGKS3I0TlFU7uvpYg=
-X-Received: by 2002:a67:1902:0:b0:3aa:3c4c:72c4 with SMTP id
- 2-20020a671902000000b003aa3c4c72c4mr8457483vsz.67.1666942983231; Fri, 28 Oct
- 2022 00:43:03 -0700 (PDT)
+        h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=9Y1p+qlCnBvED9zzTgvEOAvn502VsmGTh3U1RRB9d4M=;
+        b=G/K8w9TQfDPWMjnJvlbfeIsjzCnUKB1+et9gj/y2z7eQuSy3oO+rIy2GTzU0Y5BGJi
+         ninDJFBguU5Haf99qQkdFaLFwVJiIB1KK0IUe2RvHa3kN5klYYYPNSDmKnvF3tlGgV/C
+         EI0wG3XoXdan9j4g6p0Wedl/LPwTd55zcMJgOytu/R6RV8A3nn2vlD7vdzWSiqwxIluw
+         GxTC/XJKvYposfOw1981U6ZjgT+lIVInxXvd1MXNvMlcClVKce+xaF8w7L8bDDDPn+F1
+         sqrzTC4rGVvJ/+xmfB6p1Zf5XnaHcSCl6GQj/IWibvNtuwDCXSPUSR3wzcego7DAVOX2
+         ZOCw==
+X-Gm-Message-State: ACrzQf3D/Qt3dTABF59y9xpB8Zm11Oni2PSuoV9SdVtYvdRw5XxQxRGr
+	djuGpinXfrJ6zXtpp3AJBM9mYSmt54CkXnxepNRz4NxIoZTfcCDc
+X-Google-Smtp-Source: AMsMyM4v8P3eh9JcJMr/U6H9IOtksx0ADf18qvqW7OJhHTf4xyBA1TEwmH2d/EJyqYcj4+SLfNk9iUprf9VUwVrtYtM=
+X-Received: by 2002:a05:622a:147:b0:39c:dc0d:7d0f with SMTP id
+ v7-20020a05622a014700b0039cdc0d7d0fmr43237667qtw.281.1666946159569; Fri, 28
+ Oct 2022 01:35:59 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-References: <20221028063711.GA35659@rdm> <alpine.DEB.2.22.394.2210280918550.2845@hadrien>
-In-Reply-To: <alpine.DEB.2.22.394.2210280918550.2845@hadrien>
-From: jovial umwari <umwarijovial@gmail.com>
-Date: Fri, 28 Oct 2022 10:42:52 +0300
-Message-ID: <CAMk1CBN2Vf7XLw-J_XLTyZwASg3WHNXdnv7NxKSJDGszvu2kwQ@mail.gmail.com>
-Subject: Re: [PATCH] Remove Unnecessary typecast of c90 int constant
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: gregkh@linuxfoundation.org, linux-staging@lists.linux.dev, 
-	linux-kernel@vger.kernel.org, outreachy@lists.linux.dev
+From: Tanju Brunostar <tanjubrunostar0@gmail.com>
+Date: Fri, 28 Oct 2022 09:35:48 +0100
+Message-ID: <CAHJEyKU8YhVLg2k4c6H_B9YJo=Va=V8ea+vkgDKH8aUZBou0wA@mail.gmail.com>
+Subject: Outreachy first patch wiki modification proposal
+To: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, 
+	outreachy@lists.linux.dev, Julia Lawall <julia.lawall@inria.fr>
 Content-Type: text/plain; charset="UTF-8"
 
-let me again look in deep into it and see why
-Thank you for the comment
+After setting up my mutt with Gmail, I tested it by sending an email
+but it did not go through. After some research, I realized that Gmail
+no longer allows less secure apps. The way around this is to set up
+two step verification, then generate and use "App password". I would
+like to add this to the wiki, as this will save others from the
+additional work. Please let me know if I can proceed.
 
-On Fri, 28 Oct 2022 at 10:22, Julia Lawall <julia.lawall@inria.fr> wrote:
->
->
->
-> On Fri, 28 Oct 2022, UMWARI JOVIAL wrote:
->
-> > According to Linux kernel coding style.
-> >
-> > Reported by checkpatch:
-> > WARNING: Unnecessary typecast of c90 int constant - '(int)2.412e8' could be '2.412e8'
-> > WARNING: Unnecessary typecast of c90 int constant - '(int)2.487e8' could be '2.487e8'
->
-> It's not ideal to just include the checkpatch messges verbatim in your log
-> message.  It woudl be better to say what you are doing and why, in
-> complete sentences ("According to the Linux coding style" is not a
-> complete sentence).
->
-> I also suspect that the checkpatch message is wrong.  Floating point
-> numbers cannot be used in the kernel, and the case of the constant ensures
-> that the value will be converted to an integer at compile time.
->
-> julia
->
-> >
-> > Signed-off-by: UMWARI JOVIAL <umwarijovial@gmail.com>
-> > ---
-> >  drivers/staging/rtl8192e/rtllib_softmac_wx.c | 4 ++--
-> >  1 file changed, 2 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/drivers/staging/rtl8192e/rtllib_softmac_wx.c b/drivers/staging/rtl8192e/rtllib_softmac_wx.c
-> > index fdf867a5dd7a..4fc4fb25d8d6 100644
-> > --- a/drivers/staging/rtl8192e/rtllib_softmac_wx.c
-> > +++ b/drivers/staging/rtl8192e/rtllib_softmac_wx.c
-> > @@ -41,8 +41,8 @@ int rtllib_wx_set_freq(struct rtllib_device *ieee, struct iw_request_info *a,
-> >
-> >       /* if setting by freq convert to channel */
-> >       if (fwrq->e == 1) {
-> > -             if ((fwrq->m >= (int)2.412e8 &&
-> > -                  fwrq->m <= (int)2.487e8)) {
-> > +             if ((fwrq->m >= 2.412e8 &&
-> > +                  fwrq->m <= 2.487e8)) {
-> >                       int f = fwrq->m / 100000;
-> >                       int c = 0;
-> >
-> > --
-> > 2.25.1
-> >
-> >
-> >
+Thanks,
+
+Tanju
