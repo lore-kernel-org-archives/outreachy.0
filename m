@@ -1,92 +1,301 @@
-Received: from linux.microsoft.com (linux.microsoft.com [13.77.154.182])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id C5E5128E8
-	for <outreachy@lists.linux.dev>; Fri, 28 Oct 2022 15:21:11 +0000 (UTC)
-Received: by linux.microsoft.com (Postfix, from userid 1127)
-	id 6390C210DD4C; Fri, 28 Oct 2022 08:21:11 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 6390C210DD4C
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
-	s=default; t=1666970471;
-	bh=aGYsuql/JopP+GYNyz+uu86CsvhNu/g4C7EIlYa9Z1c=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=SU3US4alYA7R0JRNwsWUwo0c/a2t8wy87U2yaUztxfJ8f5pUW05JyVccEzC/c35XX
-	 eMKamkhXqI9kCQTAtO6FPjVAYergXJrEk+fRsi0wD5dAAjrzfp/Oxn/JMyja0Y85Bo
-	 XVuAPAhAFQg4XCAVbePdsvqSMIp6F/q42MLhAMCM=
-Date: Fri, 28 Oct 2022 08:21:11 -0700
-From: Saurabh Singh Sengar <ssengar@linux.microsoft.com>
-To: Deepak R Varma <drv@mailo.com>
-Cc: outreachy@lists.linux.dev
-Subject: Re: understanding metavariable
-Message-ID: <20221028152111.GA2195@linuxonhyperv3.guj3yctzbm1etfxqx2vob5hsef.xx.internal.cloudapp.net>
-References: <Y1vfuDzb3yu2CkzN@ubunlion>
- <20221028142616.GA25857@linuxonhyperv3.guj3yctzbm1etfxqx2vob5hsef.xx.internal.cloudapp.net>
- <Y1vvreWJ+aBaAkI9@ubunlion>
+Received: from mail-qt1-f177.google.com (mail-qt1-f177.google.com [209.85.160.177])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 83765E829;
+	Fri, 28 Oct 2022 16:42:39 +0000 (UTC)
+Received: by mail-qt1-f177.google.com with SMTP id ay12so3147721qtb.12;
+        Fri, 28 Oct 2022 09:42:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=x/62OrwGclpDYBooag3XtISZVZF7tfAvwgkcx6ffsI8=;
+        b=Wp0hf7+sC54waOQ3PL2hLEIzXBDZdqOZY8g4zuTlyBC5Zxgh9IiBWEmeCsC4lXNHEZ
+         Eap6bp8EQZfKKKsu4Y6fRNl1PG/ZwFKpeyPFOq4z0iBnECRg1mYHjdrCfTMNi/JaEWxi
+         6SarMM9eO4S6PIrpns/IsF4aB6SyFshU3uKsybAOnOAESca13KrdAh6Qv4V7BIOmp3bF
+         gvgl17j+0WqXBTBbFH6Hyb7BgKVxfrs3FT89lvfvRnwRWL4R+6uPvUi+A6oVQYag2FBz
+         TqLdf7xU8t5vJJah1jnB8gVUHBnEUnZR7f0H8bKIi/Cblj7c0eK4cSTU7QBR6ObmSIMh
+         uPwg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=x/62OrwGclpDYBooag3XtISZVZF7tfAvwgkcx6ffsI8=;
+        b=NbjTzDUSy3sXGIu01WRuzz/PumFdYGwXIpmZvg9ZWnz0jAf3lzP9JI2t/FDj8IKzgx
+         79OZwmnHI2uj29Ks1A10PVT7RKb+XlWkOIn5uSCZjzYnOUVsAICfw5eo2bmo32hfVLqH
+         bRv81gs+xKlQmStcpW1FoHEH111t8R77e9j/2KBJ8btrQvj19MOkcMsoFtwQfBH/jOzW
+         GIgB9zL181N0o3zpr0CPo/uET4r0ZpKm7DHtByNl7SSJztww5j32VykWMCK8h+8bpvmR
+         5YW2t3Sl1n4mMJZo0H83IgFi3FbMxzljLzKJZW1z9Pkv5Hw3+FbX1GEgr9VW4pRCDdBl
+         yoxw==
+X-Gm-Message-State: ACrzQf3883ko8pA2Gz3jdGo3vuzA3+M2tk/Rb0mHSEDLe6da9QubFWId
+	YJ08yxJVIeCVgHKJ2LwnYKak+VqthwGy0tbZpBA=
+X-Google-Smtp-Source: AMsMyM57xcefN3dQlJW2OkVRTwQskQNiOF2dtnHshowbcuNAl2hSdGBJG90wJwf9IyVMJKksUlV3nSw5wLCxsg9b+Y4=
+X-Received: by 2002:ac8:5902:0:b0:39c:e440:6adb with SMTP id
+ 2-20020ac85902000000b0039ce4406adbmr353148qty.18.1666975358343; Fri, 28 Oct
+ 2022 09:42:38 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Y1vvreWJ+aBaAkI9@ubunlion>
-User-Agent: Mutt/1.5.21 (2010-09-15)
+References: <cover.1666849707.git.tanjubrunostar0@gmail.com>
+ <6742e42999e05ddf09318a0a3bda9ce23b6ae562.1666849707.git.tanjubrunostar0@gmail.com>
+ <647b1d2d-f25a-c088-6a0e-0c2a39904150@gmail.com>
+In-Reply-To: <647b1d2d-f25a-c088-6a0e-0c2a39904150@gmail.com>
+From: Tanju Brunostar <tanjubrunostar0@gmail.com>
+Date: Fri, 28 Oct 2022 17:42:26 +0100
+Message-ID: <CAHJEyKVruckpK2mrc3uET2nP0yNtdBY335UVvXjWudCd-cijbw@mail.gmail.com>
+Subject: Re: [PATCH v7 1/6] staging: vt6655: fix lines of code ending in a '('
+To: Philipp Hortmann <philipp.g.hortmann@gmail.com>
+Cc: gregkh@linuxfoundation.org, linux-staging@lists.linux.dev, 
+	linux-kernel@vger.kernel.org, outreachy@lists.linux.dev
+Content-Type: text/plain; charset="UTF-8"
 
-On Fri, Oct 28, 2022 at 08:35:17PM +0530, Deepak R Varma wrote:
-> On Fri, Oct 28, 2022 at 07:26:16AM -0700, Saurabh Sengar wrote:
-> > On Fri, Oct 28, 2022 at 07:27:12PM +0530, Deepak R Varma wrote:
-> > > Hello,
-> > > I am seeing a few warnings reported by coccicheck where it is suggested to use a
-> > > metavariable. See this example warning:
-> > >
-> > > warning: line 223: should nonseekable_open be a metavariable?
+On Fri, Oct 28, 2022 at 3:57 PM Philipp Hortmann
+<philipp.g.hortmann@gmail.com> wrote:
+>
+> On 10/28/22 08:39, Tanjuate Brunostar wrote:
+> > fix several checkpatch errors related to lines ending with a '(' by
+> > joining splitted lines of code and indenting properly to increase
+> > visibility
 > >
-> > Can you share full more log along with the command you are trying to run.
-> > Also, please let me know the kernel version you are trying this on.
-> 
-> Hello Saurabh,
-> My Kernel version is: 6.1.0-rc1-DVK
-> 
-> I am using following coccicheck command to list the warnings:
-> drv@ubunlion:~/git/kernels/staging$ make coccicheck M=drivers/staging/ | grep -i warning
-> 
-This appear to be a warning in script itself, not the WARNING from the report. I tried applying
-this patch and it appear to fix the problem.
-https://www.spinics.net/lists/kernel/msg4306085.html . Julia can add more about this issue or
-the patch status.
-
-I can suggest you a different command which will avoid showing you any scripts warning. You can
-give it a try :
-make coccicheck DEBUG_FILE=debug.txt M=drivers/staging/
-
-Make sure you don't have debug.txt in you local folder where you run this cmd.
-
-- Saurabh
-
-> A snip of the log is attached with this email for your quick reference. Let me
-> know if you need to know anything further.
-> 
-> Thank you,
-> ./drv
-> 
+> > Signed-off-by: Tanjuate Brunostar <tanjubrunostar0@gmail.com>
+> > ---
+> >   drivers/staging/vt6655/rxtx.c | 165 ++++++++++++++--------------------
+> >   1 file changed, 69 insertions(+), 96 deletions(-)
 > >
-> > - Saurabh
+> > diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
+> > index 1e5036121665..7eb7c6eb5cf0 100644
+> > --- a/drivers/staging/vt6655/rxtx.c
+> > +++ b/drivers/staging/vt6655/rxtx.c
+> > @@ -139,15 +139,11 @@ static __le16 vnt_time_stamp_off(struct vnt_private *priv, u16 rate)
+> >    * PK_TYPE_11GB    2
+> >    * PK_TYPE_11GA    3
+> >    */
+> > -static
+> > -unsigned int
+> > -s_uGetTxRsvTime(
+> > -     struct vnt_private *pDevice,
+> > -     unsigned char byPktType,
+> > -     unsigned int cbFrameLength,
+> > -     unsigned short wRate,
+> > -     bool bNeedAck
+> > -)
+> > +static unsigned int s_uGetTxRsvTime(struct vnt_private *pDevice,
+> > +                                 unsigned char byPktType,
+> > +                                 unsigned int cbFrameLength,
+> > +                                 unsigned short wRate,
+> > +                                 bool bNeedAck)
+> >   {
+> >       unsigned int uDataTime, uAckTime;
 > >
-> > >
-> > > I tried to understand about metavariable and how to address this coccicheck
-> > > warning, but did not fully conclude on my next steps.
-> > >
-> > > Could you provide some details on this concept of metavariables please?
-> > >
-> > >
+> > @@ -214,20 +210,16 @@ static __le16 get_rtscts_time(struct vnt_private *priv,
+> >   }
 > >
+> >   /* byFreqType 0: 5GHz, 1:2.4Ghz */
+> > -static
+> > -unsigned int
+> > -s_uGetDataDuration(
+> > -     struct vnt_private *pDevice,
+> > -     unsigned char byDurType,
+> > -     unsigned int cbFrameLength,
+> > -     unsigned char byPktType,
+> > -     unsigned short wRate,
+> > -     bool bNeedAck,
+> > -     unsigned int uFragIdx,
+> > -     unsigned int cbLastFragmentSize,
+> > -     unsigned int uMACfragNum,
+> > -     unsigned char byFBOption
+> > -)
+> > +static unsigned int s_uGetDataDuration(struct vnt_private *pDevice,
+> > +                                    unsigned char byDurType,
+> > +                                    unsigned int cbFrameLength,
+> > +                                    unsigned char byPktType,
+> > +                                    unsigned short wRate,
+> > +                                    bool bNeedAck,
+> > +                                    unsigned int uFragIdx,
+> > +                                    unsigned int cbLastFragmentSize,
+> > +                                    unsigned int uMACfragNum,
+> > +                                    unsigned char byFBOption)
+> >   {
+> >       bool bLastFrag = false;
+> >       unsigned int uAckTime = 0, uNextPktTime = 0, len;
+> > @@ -316,17 +308,13 @@ s_uGetDataDuration(
+> >   }
+> >
+> >   /* byFreqType: 0=>5GHZ 1=>2.4GHZ */
+> > -static
+> > -__le16
+> > -s_uGetRTSCTSDuration(
+> > -     struct vnt_private *pDevice,
+> > -     unsigned char byDurType,
+> > -     unsigned int cbFrameLength,
+> > -     unsigned char byPktType,
+> > -     unsigned short wRate,
+> > -     bool bNeedAck,
+> > -     unsigned char byFBOption
+> > -)
+> > +static __le16 s_uGetRTSCTSDuration(struct vnt_private *pDevice,
+> > +                                unsigned char byDurType,
+> > +                                unsigned int cbFrameLength,
+> > +                                unsigned char byPktType,
+> > +                                unsigned short wRate,
+> > +                                bool bNeedAck,
+> > +                                unsigned char byFBOption)
+> >   {
+> >       unsigned int uCTSTime = 0, uDurTime = 0;
+> >
+> > @@ -409,22 +397,18 @@ s_uGetRTSCTSDuration(
+> >       return cpu_to_le16((u16)uDurTime);
+> >   }
+> >
+> > -static
+> > -__le16
+> > -s_uFillDataHead(
+> > -     struct vnt_private *pDevice,
+> > -     unsigned char byPktType,
+> > -     void *pTxDataHead,
+> > -     unsigned int cbFrameLength,
+> > -     unsigned int uDMAIdx,
+> > -     bool bNeedAck,
+> > -     unsigned int uFragIdx,
+> > -     unsigned int cbLastFragmentSize,
+> > -     unsigned int uMACfragNum,
+> > -     unsigned char byFBOption,
+> > -     unsigned short wCurrentRate,
+> > -     bool is_pspoll
+> > -)
+> > +static __le16 s_uFillDataHead(struct vnt_private *pDevice,
+> > +                           unsigned char byPktType,
+> > +                           void *pTxDataHead,
+> > +                           unsigned int cbFrameLength,
+> > +                           unsigned int uDMAIdx,
+> > +                           bool bNeedAck,
+> > +                           unsigned int uFragIdx,
+> > +                           unsigned int cbLastFragmentSize,
+> > +                           unsigned int uMACfragNum,
+> > +                           unsigned char byFBOption,
+> > +                           unsigned short wCurrentRate,
+> > +                           bool is_pspoll)
+> >   {
+> >       struct vnt_tx_datahead_ab *buf = pTxDataHead;
+> >
+> > @@ -555,19 +539,15 @@ s_uFillDataHead(
+> >       return buf->duration;
+> >   }
+> >
+> > -static
+> > -void
+> > -s_vFillRTSHead(
+> > -     struct vnt_private *pDevice,
+> > -     unsigned char byPktType,
+> > -     void *pvRTS,
+> > -     unsigned int cbFrameLength,
+> > -     bool bNeedAck,
+> > -     bool bDisCRC,
+> > -     struct ieee80211_hdr *hdr,
+> > -     unsigned short wCurrentRate,
+> > -     unsigned char byFBOption
+> > -)
+> > +static void s_vFillRTSHead(struct vnt_private *pDevice,
+> > +                        unsigned char byPktType,
+> > +                        void *pvRTS,
+> > +                        unsigned int cbFrameLength,
+> > +                        bool bNeedAck,
+> > +                        bool bDisCRC,
+> > +                        struct ieee80211_hdr *hdr,
+> > +                        unsigned short wCurrentRate,
+> > +                        unsigned char byFBOption)
+> >   {
+> >       unsigned int uRTSFrameLen = 20;
+> >
+> > @@ -750,19 +730,15 @@ s_vFillRTSHead(
+> >       }
+> >   }
+> >
+> > -static
+> > -void
+> > -s_vFillCTSHead(
+> > -     struct vnt_private *pDevice,
+> > -     unsigned int uDMAIdx,
+> > -     unsigned char byPktType,
+> > -     void *pvCTS,
+> > -     unsigned int cbFrameLength,
+> > -     bool bNeedAck,
+> > -     bool bDisCRC,
+> > -     unsigned short wCurrentRate,
+> > -     unsigned char byFBOption
+> > -)
+> > +static void s_vFillCTSHead(struct vnt_private *pDevice,
+> > +                        unsigned int uDMAIdx,
+> > +                        unsigned char byPktType,
+> > +                        void *pvCTS,
+> > +                        unsigned int cbFrameLength,
+> > +                        bool bNeedAck,
+> > +                        bool bDisCRC,
+> > +                        unsigned short wCurrentRate,
+> > +                        unsigned char byFBOption)
+> >   {
+> >       unsigned int uCTSFrameLen = 14;
+> >
+> > @@ -868,21 +844,17 @@ s_vFillCTSHead(
+> >    -
+> >    * unsigned int cbFrameSize, Hdr+Payload+FCS
+> >    */
+> > -static
+> > -void
+> > -s_vGenerateTxParameter(
+> > -     struct vnt_private *pDevice,
+> > -     unsigned char byPktType,
+> > -     struct vnt_tx_fifo_head *tx_buffer_head,
+> > -     void *pvRrvTime,
+> > -     void *pvRTS,
+> > -     void *pvCTS,
+> > -     unsigned int cbFrameSize,
+> > -     bool bNeedACK,
+> > -     unsigned int uDMAIdx,
+> > -     void *psEthHeader,
+> > -     unsigned short wCurrentRate
+> > -)
+> > +static void s_vGenerateTxParameter(struct vnt_private *pDevice,
+> > +                                unsigned char byPktType,
+> > +                                struct vnt_tx_fifo_head *tx_buffer_head,
+> > +                                void *pvRrvTime,
+> > +                                void *pvRTS,
+> > +                                void *pvCTS,
+> > +                                unsigned int cbFrameSize,
+> > +                                bool bNeedACK,
+> > +                                unsigned int uDMAIdx,
+> > +                                void *psEthHeader,
+> > +                                unsigned short wCurrentRate)
+> >   {
+> >       u16 fifo_ctl = le16_to_cpu(tx_buffer_head->fifo_ctl);
+> >       bool bDisCRC = false;
+> > @@ -954,11 +926,12 @@ s_vGenerateTxParameter(
+> >       }
+> >   }
+> >
+> > -static unsigned int
+> > -s_cbFillTxBufHead(struct vnt_private *pDevice, unsigned char byPktType,
+> > -               unsigned char *pbyTxBufferAddr,
+> > -               unsigned int uDMAIdx, struct vnt_tx_desc *pHeadTD,
+> > -               unsigned int is_pspoll)
+> > +static unsigned int s_cbFillTxBufHead(struct vnt_private *pDevice,
+> > +                                   unsigned char byPktType,
+> > +                                   unsigned char *pbyTxBufferAddr,
+> > +                                   unsigned int uDMAIdx,
+> > +                                   struct vnt_tx_desc *pHeadTD,
+> > +                                   unsigned int is_pspoll)
+> >   {
+> >       struct vnt_td_info *td_info = pHeadTD->td_info;
+> >       struct sk_buff *skb = td_info->skb;
+>
+> Patch series coverletter is missing or the wrong one was send.
+>
+> Changelog is also missing.
+>
+oh the wrong cover letter was sent.
 
-> drv@ubunlion:~/git/kernels/staging$ make coccicheck M=drivers/staging/ -j4
-> /home/drv/.opam/default/bin/spatch -D report --no-show-diff --very-quiet --cocci-file ./scripts/coccinelle/api/stream_open.cocci --patch . --dir drivers/staging -I ./arch/x86/include -I ./arch/x86/include/generated -I ./include -I ./arch/x86/include/uapi -I ./arch/x86/include/generated/uapi -I ./include/uapi -I ./include/generated/uapi --include ./include/linux/compiler-version.h --include ./include/linux/kconfig.h --jobs 4 --chunksize 1
-> warning: line 134: should no_llseek be a metavariable?
-> warning: line 141: should noop_llseek be a metavariable?
-> warning: line 223: should nonseekable_open be a metavariable?
-> warning: line 290: should nonseekable_open be a metavariable?
-> warning: line 338: should nonseekable_open be a metavariable?
-> 10 files match
-> 
-
+thanks for pointing it out
