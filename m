@@ -1,83 +1,90 @@
-Received: from msg-1.mailo.com (msg-1.mailo.com [213.182.54.11])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-lj1-f174.google.com (mail-lj1-f174.google.com [209.85.208.174])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0FE3E2F44
-	for <outreachy@lists.linux.dev>; Fri, 28 Oct 2022 17:24:12 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
-	t=1666977845; bh=o201Dfu+NdMgtKVaCAIbxxXvndwf9gkbhDnBLN+yUP8=;
-	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
-	 MIME-Version:Content-Type:In-Reply-To;
-	b=kyYiG3mqcdmfVCcLsjcyq+EKQKsUo0wcD/okC0WVfl4YORW5OYONWq9Z8TRqtNPiK
-	 jaOLrW96Gm8xoDYqHf2b9nYnV/XrzEEjxt3aJH8W8C3tHM4EPFWZPbJRCv8DRsOBxX
-	 2b2flBdYCLEH2dQUAyRA/VO7+XwNe3gT4ll291wQ=
-Received: by b-6.in.mailobj.net [192.168.90.16] with ESMTP
-	via [213.182.55.206]
-	Fri, 28 Oct 2022 19:24:05 +0200 (CEST)
-X-EA-Auth: YT+Mt2XyRKPvNEN+5h5whNMZilCFPe9XlZfJMn+PfpllYXa4249+GxZQos+QyuXU8QZejJrHBCc/r69ldEOtLsdPcu3ROR35
-Date: Fri, 28 Oct 2022 22:53:59 +0530
-From: Deepak R Varma <drv@mailo.com>
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: Saurabh Singh Sengar <ssengar@linux.microsoft.com>,
-	outreachy@lists.linux.dev
-Subject: Re: understanding metavariable
-Message-ID: <Y1wQL78suiYdyt0S@ubunlion>
-References: <Y1vfuDzb3yu2CkzN@ubunlion>
- <20221028142616.GA25857@linuxonhyperv3.guj3yctzbm1etfxqx2vob5hsef.xx.internal.cloudapp.net>
- <alpine.DEB.2.22.394.2210281851440.2993@hadrien>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E6D3A2F44;
+	Fri, 28 Oct 2022 17:41:10 +0000 (UTC)
+Received: by mail-lj1-f174.google.com with SMTP id z24so9258949ljn.4;
+        Fri, 28 Oct 2022 10:41:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=LgIFkJpodLhQ5UNB8CnN3tOTm9odgIidnDRK4X3byAg=;
+        b=WA90H9fRil7olR1Vlx/1sOEtZ0T3JsGEo/zahhOQwFUmffec42jXK67bQZGEdVJZ0b
+         PYwyVYcokv5NPLfkNsVbXmyXYVR9YLMFNmi7vs9nbz5JgD9VKC+53jP7g/gRZ1JDGVnS
+         lPvldw9IbWef9my0YLqiicSNaq6pP14bPdQmhtlOE8M39NmP2qkFpq5LZW2bvOuZXlgs
+         FJuJlV3ME0cnhFQpYb8shJ8a49kWaPha38YsKJt5QZD8CqX1kMlX0jFxxpsk2w2jm+jS
+         T74nIkCZBAQOf7oX1ItpdaqEDMjPJ4uxp3LxlEaHVO2KSqmva8PqV9VW8ECg0ESXmhia
+         DT7A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=LgIFkJpodLhQ5UNB8CnN3tOTm9odgIidnDRK4X3byAg=;
+        b=JZ1dnJCJZrtnUl+fI6Khv0UaiGMBbHZDedgYCKndQjApEqY03/XKyJwj8FDyeAytL1
+         fwLdvdtlTKey+IZl0orViyLqFf9HyhSr7+b9QJiuh5F7HuA613BMj15+G6zZiNxQUbnA
+         1i/XWahTxPghfEJm6RQHHTWGZiaTz9naKEcB6MCZX4T/i4G8DxObzK86Ld64HZ0o9x7d
+         VXJI0fpf42VYkvaWVP9Iq+h78Tt02pGmLYaVQOefBhmKej8T/D/R581HS4eCqMyvH6+i
+         Le5N+xZLPhAlkVtbd/4nXSc3VAel0uotcOfi7YATPgapTX8/rvtQ18yy7lq4fpiXsk45
+         gRdA==
+X-Gm-Message-State: ACrzQf0IjYzjSXRVvGFtrLCLrH6FN7oC32PWbwFY4UyW3STE+wdxV+qi
+	Jx5z8tZoOah4FUTUDto+KjU=
+X-Google-Smtp-Source: AMsMyM64brzYPgM+s1MBqIb04al8rRJrwRpHxsRYZxtpixVfUpmsR7RdEF2c8Q9Bz7kscIa7No5C4Q==
+X-Received: by 2002:a05:651c:2212:b0:26c:2baf:652e with SMTP id y18-20020a05651c221200b0026c2baf652emr295510ljq.84.1666978868819;
+        Fri, 28 Oct 2022 10:41:08 -0700 (PDT)
+Received: from elroy-temp-vm.gaiao0uenmiufjlowqgp5yxwdh.gvxx.internal.cloudapp.net ([20.240.130.248])
+        by smtp.googlemail.com with ESMTPSA id s2-20020a2eb622000000b0026dfdcbccdasm725322ljn.14.2022.10.28.10.41.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 28 Oct 2022 10:41:08 -0700 (PDT)
+From: Tanjuate Brunostar <tanjubrunostar0@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	outreachy@lists.linux.dev,
+	Tanjuate Brunostar <tanjubrunostar0@gmail.com>
+Subject: [PATCH v8 0/6] staging: vt6655: a series of checkpatch fixes on the file: rxtx.c
+Date: Fri, 28 Oct 2022 17:40:52 +0000
+Message-Id: <cover.1666978292.git.tanjubrunostar0@gmail.com>
+X-Mailer: git-send-email 2.34.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.22.394.2210281851440.2993@hadrien>
+Content-Transfer-Encoding: 8bit
 
-On Fri, Oct 28, 2022 at 06:52:54PM +0200, Julia Lawall wrote:
->
->
-> On Fri, 28 Oct 2022, Saurabh Singh Sengar wrote:
->
-> > On Fri, Oct 28, 2022 at 07:27:12PM +0530, Deepak R Varma wrote:
-> > > Hello,
-> > > I am seeing a few warnings reported by coccicheck where it is suggested to use a
-> > > metavariable. See this example warning:
-> > >
-> > > warning: line 223: should nonseekable_open be a metavariable?
-> >
-> > Can you share full more log along with the command you are trying to run.
-> > Also, please let me know the kernel version you are trying this on.
->
-> The semantic patch could be improved by adding
->
-> symbol nonseekable_open;
->
-> in the metavariable list, to make clear that it is intended to match
-> exactly.  But it is probably better to focus on finding things to change
-> in the Linux kernel .c files.
+The fixes are similar, mostly long lines splitting. I had to make
+serveral patches to ease the work of inspectors
 
-Thank you Julia and Saurabh. I was not aware of the source of these warnings. I will
-continue to focus on looking at items from the Kernel .c files as suggested.
+v2: fixed a compilation error found by the kernel test robot and
+recompiled the code
 
-Thank you,
-./drv
+v3: tends out the error persisted in the second version. this version is
+a correction of that
 
->
-> julia
->
-> >
-> > - Saurabh
-> >
-> > >
-> > > I tried to understand about metavariable and how to address this coccicheck
-> > > warning, but did not fully conclude on my next steps.
-> > >
-> > > Could you provide some details on this concept of metavariables please?
-> > >
-> > >
-> >
-> >
->
+v4: did some corrections as recommended by Greg KH
 
+v5: shortend changelog comments as recommended by Greg KH
+
+v6: did some corrections as recommended by Greg KH
+
+v7: fixed some errors on my changelog comments
+
+v8: fixed some errors pointed out by Philipp Hortmann
+
+Tanjuate Brunostar (6):
+  staging: vt6655: fix lines ending in a '('
+  staging: vt6655: fix long lines of code in s_uGetRTSCTSDuration
+  staging: vt6655: fix long lines of code in s_uFillDataHead
+  staging: vt6655: fix long lines of code in s_vGenerateTxParamete
+  staging: vt6655: fix long lines of code in the rest of the file
+  staging: vt6655: fix lines of code ending in a '('
+
+ drivers/staging/vt6655/rxtx.c | 542 ++++++++++++++++++++--------------
+ 1 file changed, 324 insertions(+), 218 deletions(-)
+
+-- 
+2.34.1
 
