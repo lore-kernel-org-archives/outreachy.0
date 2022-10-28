@@ -1,201 +1,99 @@
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ua1-f45.google.com (mail-ua1-f45.google.com [209.85.222.45])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C4405E813
-	for <outreachy@lists.linux.dev>; Fri, 28 Oct 2022 02:33:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1666924411; x=1698460411;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=BK+crq5GpbCAqkVtZs1nr3clU5OZSvKZH8EtI31/RlI=;
-  b=jGGjhfI4Jbq+FW4E5is6vi7TYXHDybNQ9IDt2jO5szSwf2ojjPF/wak9
-   ZW1trGvKJaehjmC6lXENULnN+7oCa//OM1irAuPZjFQsSi1ZB+gHgCxFs
-   0P6jI5nsgo7F5BFJMOtNU50v/yyh68VBFRYwoRzUG3ttQnqm8a962n6HF
-   zUrCWnfj4+34iA8IcjOay/Kdgtf6MZtIJQp+DIy3nPh7e1dYmyjnnOeug
-   yYdqxTjCwYH9FbbuYmwPPMI645qoaWT5srhiLDy26/UuBWmnEFIsPMX/m
-   wPQlRgZpLX7UOhokNKMA8UuWQq+V6Jh1g3vIDFGz39uZN7bKSMAQ1va1i
-   Q==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10513"; a="372607051"
-X-IronPort-AV: E=Sophos;i="5.95,219,1661842800"; 
-   d="scan'208";a="372607051"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
-  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Oct 2022 19:33:21 -0700
-X-IronPort-AV: E=McAfee;i="6500,9779,10513"; a="877805760"
-X-IronPort-AV: E=Sophos;i="5.95,219,1661842800"; 
-   d="scan'208";a="877805760"
-Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.251.31.127])
-  by fmsmga006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Oct 2022 19:33:21 -0700
-Date: Thu, 27 Oct 2022 19:33:19 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: Deepak R Varma <drv@mailo.com>
-Cc: Outreachy Linux Kernel <outreachy@lists.linux.dev>
-Subject: Re: [Outreachy] Wiki updated needed - Patchset Subject
-Message-ID: <Y1s/b8LMPP6qL4Zj@aschofie-mobl2>
-References: <Y1XvjytS2GaafmyJ@aschofie-mobl2>
- <Y1N/wsr+Wd6sEaDf@debian-BULLSEYE-live-builder-AMD64>
- <Y1b/zhLlbI/NmdFR@aschofie-mobl2>
- <Y1hjnQE8pF2rwPHV@debian-BULLSEYE-live-builder-AMD64>
- <Y1sAz3YdtAK+88VS@ubunlion>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 465557B;
+	Fri, 28 Oct 2022 04:56:59 +0000 (UTC)
+Received: by mail-ua1-f45.google.com with SMTP id y25so1435107ual.2;
+        Thu, 27 Oct 2022 21:56:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=HwmBRA+APmiXYQZg1tBoj+t+gqf2adSus7ddCo9oLb8=;
+        b=aqK2XIPjlDLtOlNEGgLWQWnUPiTd1vIjnrR0nXxR8DN8msOgby2Ts6ShJhtqDf5IST
+         TCGVfCOZhmOK2GoyJ0HnhVDqi1xOrmvWs/GeM6mMORLjIGgsst45LAdZr2rhJ4Bmb6XH
+         s1Ka+rF7jG6DpxMrzH4ZL3lzP5k5PWSr8FlTlCCDb+lL0lA2agVyiT8bN1/dvXN9J+yz
+         eT2tP3RO8XRggB9xUK6wm7wRyJ6dpCAm5E9VYvzNR9ZZpgRr2vJ0Y51jsuQqeiIdp0kF
+         e60t5JJXEKqYYIW2tfAdk5kx/yv+gFaKzOD6XiPLGhjV9gZuYC68a9GnT5FgOOzqczZU
+         lzXg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=HwmBRA+APmiXYQZg1tBoj+t+gqf2adSus7ddCo9oLb8=;
+        b=3Fh0+mrclivmGhsLXbFTDZVtKJqGRiQCKsWAGaJUspQCZ9FbAsZioTdMU9CoIRdK8V
+         CzZMaLvUfwEGRjBdBlRaW+BV7tI+Vt10gl1tH8KgTWj658qTVLGnahyeEB2zLJX3qtz5
+         o6ivtg+fjfMOPqpNl+QO1v9QgtVc0XzM3ilxxppGIVquoxW0OFVU+N2pUjlkoisU1D1P
+         fGF80xmSq3q8cCZVI/yp+FetJVHsyaktAG/56sf2zTfM7RwNI9vKBW+7p9u/L7SuUI1s
+         p7uuxPJL9LLIN1jdq0jeK26ntfp2DK6v0Fhpzh6XGj2Dw6e67Ym24xxgGjPGXYHY/lMb
+         HbwA==
+X-Gm-Message-State: ACrzQf0KdPbSLU4oZaiz6QNxoZefSFEb3qe+vOSKTIcj8X8Ti6C6aPPR
+	Yi3bwYVWNLxUy30Uxw8ZkG1aWVDR/iOUMFu1Juo=
+X-Google-Smtp-Source: AMsMyM4qFN7TWztijVLg7jQodkESQRKvJCa/EbYFVcPPPR4p6coV5T8DX8gRYojFd2IWHg751skQF85nzYEKQjun/u0=
+X-Received: by 2002:ab0:25d4:0:b0:3c1:c353:31cb with SMTP id
+ y20-20020ab025d4000000b003c1c35331cbmr30171453uan.63.1666933018093; Thu, 27
+ Oct 2022 21:56:58 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Y1sAz3YdtAK+88VS@ubunlion>
+References: <20221026132838.GA44037@rdm> <20221026171430.GA5592@nam-dell> <Y1o5mktrnE5rbtCO@kadam>
+In-Reply-To: <Y1o5mktrnE5rbtCO@kadam>
+From: jovial umwari <umwarijovial@gmail.com>
+Date: Fri, 28 Oct 2022 07:56:46 +0300
+Message-ID: <CAMk1CBNwM3XFPyHVfBnE0K4XWmGX_ZwzBV-sns6Nj7Yutb4YtA@mail.gmail.com>
+Subject: Re: [PATCH] Fixed[ERROR:trailing whitespace and braces around scalar initializer]
+To: Dan Carpenter <dan.carpenter@oracle.com>
+Cc: Nam Cao <namcaov@gmail.com>, gregkh@linuxfoundation.org, 
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, 
+	outreachy@lists.linux.dev
+Content-Type: text/plain; charset="UTF-8"
 
-On Fri, Oct 28, 2022 at 03:36:07AM +0530, Deepak R Varma wrote:
-> On Wed, Oct 26, 2022 at 04:00:58AM +0530, Deepak Varma wrote:
-> > On Mon, Oct 24, 2022 at 02:12:46PM -0700, Alison Schofield wrote:
-> > > On Sat, Oct 22, 2022 at 10:59:38AM +0530, Deepak R Varma wrote:
-> > > > On Sun, Oct 23, 2022 at 06:51:11PM -0700, Alison Schofield wrote:
-> > > > > Greg KH has mentioned this a couple of times lately -
-> > > > >
-> > > > > >> Any reason you do not have "staging: vt6655:" as the prefix for
-> > > > > >> this 0/X email subject line?
-> > > > > >>
-> > > > > >> thanks,
-> > > > > >>
-> > > > > >> greg k-h
-> > > > >
-> > > > > A quick peek in the tutorial tells me it could be made clearer.
-> > > > > It needs to explicitly say the prefix is required, and then
-> > > > > make sure any examples do it.
-> > > >
-> > > > Hello Alison,
-> > > > There already is a section named "Patch Subject formatting" on this link [1]
-> > > > with enough description to determine the patch subject prefix. Can you please
-> > > > review and confirm where we should improve further to make it clearer??
-> > > >
-> > > > 	[1] https://kernelnewbies.org/PatchPhilosophy
-> > > >
-> > > > Thank you,
-> > > > ./drv
+well for the start it was not giving an error but after  fixing blank
+lines  that is when i saw that
+Thank you for the hint i  fixed  it
+
+On Thu, 27 Oct 2022 at 10:56, Dan Carpenter <dan.carpenter@oracle.com> wrote:
+>
+> On Wed, Oct 26, 2022 at 07:14:34PM +0200, Nam Cao wrote:
+> > On Wed, Oct 26, 2022 at 04:28:38PM +0300, UMWARI JOVIAL wrote:
+> > > Using the checkpatch.pl script, found the below errors and  fixed
+> > > ERROR: trailing whitespace
+> > > CHECK: Please don't use multiple blank lines
+> > > warning: braces around scalar initializer
 > > >
+> > > Signed-off-by: UMWARI JOVIAL <umwarijovial@gmail.com>
+> > > ---
+> > >  drivers/staging/most/dim2/dim2.c | 2 --
+> > >  1 file changed, 2 deletions(-)
 > > >
-> > > In https://kernelnewbies.org/Outreachyfirstpatch
+> > > diff --git a/drivers/staging/most/dim2/dim2.c b/drivers/staging/most/dim2/dim2.c
+> > > index 7a5f80e637a0..28259ce05024 100644
+> > > --- a/drivers/staging/most/dim2/dim2.c
+> > > +++ b/drivers/staging/most/dim2/dim2.c
+> > > @@ -987,7 +987,6 @@ static int rcar_gen2_enable(struct platform_device *pdev)
+> > >             writel(0x04, dev->io_base + 0x600);
+> > >     }
 > > >
-> > > The example cover letter in 'Submitting a Patchset' has the
-> > > subject "[RFC 0/7] Update REPORTING-BUGS", with no subsys.
-> > > It is also confusing because the cover letter is an RFC and
-> > > the patches are a mix of RFC and PATCH. Very atypical.
-> > >
-> > > Let's replace this example with one that was actually submitted
-> > > and accepted by an Outreachy Intern.  No slight intended to the
-> > > existing set as it contains an interesting set of changes. However,
-> > > an example for newbies might better come from newbies.
-> > >
-> > > How about a patchset off this list?
-> > >
-> > > Would you mind using this one of yours:
-> > > [PATCH v4 00/11] staging: r8188eu: trivial code cleanup patches
-> > > but trim it to 3-4 patches plus the cover.
-> > >
-> > > It's not a trivial edit, because you need to replace all the
-> > > example steps with the new patchset content.
+> > > -
+> > >     /* BBCR = 0b11 */
+> > >     writel(0x03, dev->io_base + 0x500);
+> > >     writel(0x0002FF02, dev->io_base + 0x508);
+> > > @@ -1084,7 +1083,6 @@ static const struct of_device_id dim2_of_match[] = {
+> > >     {
+> > >             .compatible = "xlnx,axi4-os62420_6pin-1.00.a",
+> > >     },
+> > > -   {},
 > >
-> > Hello Alison,
-> > I made the changes as suggested and saved those. Looks like they might have
-> > already gone to production. Sorry about that. I was thinking they will be
-> > submitted to a moderator for review before releasing,
-> >
-> > Could you please review and let me know if any edits are required.
-> 
-> Hello Alison,
-> Did you get a chance to review the edits I made? Please share your feedback so
-> that I can proceed with the next changes to the tutorial page.
-> 
-> Thank you,
-> ./drv
-
-Thanks for doing that! I see you were very thorough :)
-
-A couple of thoughts and then a long suggestion:
-
-- Can you trim it to a smaller patchset?  
-It's OK if you just edit it. It does not need to reflect reality.
-The reason I ask is because a ten patch set is not the example we
-want to set for newbies. It's the stretch goal, not the norm.
-
-- Your commit messages would be better if they were consistent,
-either starting with upper or lower case, but not mixed.
-Usually there is a pattern set in the files, but alas, when I
-look at the pretty oneline of rtw_br_ext.c, there is no pattern.
-(and it's messy)
-
-Seque to another tutorial improvement - explaining the point
-of pretty oneline, and examples would help.
-
-The point, is to make it easy on the eyes of the developer.
-When developers scan through the history of work on a file,
-it is easier to do when the appearance is consistent. 
-
-It may not seem important to the task at hand for a newbie,
-but the consistency pays off when you are staring at these
-patches day in and day out.
-
-You'll want to alias it because you'll use it often:
-alias gitpretty='git log --pretty=oneline --abbrev-commit'
-
-In 'Viewing your commit' it says 'You'll also want to make sure
-your commit looks fine when you run these two commands:"
-
-Let's put some more detail around 'looks fine':
-- prefix is correct
-- line does not wrap on 80 Column screen
-- styling matches other commits in that file with respect to use
-  of punctuation, upper/lower case. Subsystems and files have
-  different styles (see examples below). The point it to respect
-  the style.
-
-This is fine:
-drivers/staging/iio/adc$ gitpretty ad7816.c  (edited for fineness)
-
-f1b753a0f866 staging: iio: ad7816: Drop unnecessary initialization of variables
-c24a4173f6bb staging: iio: ad7816: Add device tree table
-72e3a5248da9 staging: iio: ad7816: Set RD/WR pin and CONVST pin as outputs
-06c77f564ddb staging: iio: ad7816: Do not use busy_pin in case of AD7818
-073a391ca035 staging: iio: ad7816: Switch to the gpio descriptor interface
-
-This is *not* fine:
-(line wrap, prefixes and upper/lower case are inconsistent
-/staging/most/video$ gitpretty video.c  (trimmed to illustrate)
-
-d6ef48e59582 staging: most: video: Make use of the helper macro LIST_HEAD()
-fa8db3989362 staging/most: Remove all strcpy() uses in favor of strscpy()
-6367dee9e3db staging: most: Switch from strlcpy to strscpy
-b27652753918 staging: most: move core files out of the staging area
-e653614ee183 media: staging/most: rename VFL_TYPE_GRABBER to _VIDEO
-08283d307444 staging: most: block module removal while having active configfs items
-a20eefaee646 staging: most: Use DEFINE_SPINLOCK() instead of struct spinlock
-338d9637361c staging/most/video: set device_caps in struct video_device
-
-This info is not focused patchsets. Every patch that comes across this
-list should make best effort to be 'gitpretty'.
-
-If you are out of time Deeva, perhaps percolate this up on the
-list for someone else to pick up.
-
-Thanks,
-Alison
-> 
-> >
-> > Thank you,
-> > ./drv
-> >
-> > >
-> > > Thanks,
-> > > Alison
-> > >
-> > > >
-> > > > >
-> > > > > Thanks,
-> > > > > Alison
-> > > > >
-> > > >
-> > > >
-> 
-> 
+> > I'm no expert, but this looks like a null terminator and probably
+> > should not be removed.
+>
+> You're absolutely correct.  Also I tried to see why checkpatch.pl was
+> printing an error for this but it doesn't print an error for me.
+>
+> regards,
+> dan carpenter
+>
