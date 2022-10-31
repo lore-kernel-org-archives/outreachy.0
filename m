@@ -1,45 +1,46 @@
-Received: from msg-1.mailo.com (msg-1.mailo.com [213.182.54.11])
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E61968F52
-	for <outreachy@lists.linux.dev>; Mon, 31 Oct 2022 21:25:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
-	t=1667251517; bh=vcXZYlNQaVse0CPV30mb48rGHGGNKrPlV2DaTqjPSnI=;
-	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
-	 MIME-Version:Content-Type:In-Reply-To;
-	b=bi5jdCWa+1HxQAv4dSTEa0RsWO3ikwCyViq89tVAm2VDYNFIe0p1VvfxhlW5xSs8b
-	 6hjJkhRfPlifyw6C3C5WULAmdv98/eVhnaV+mKrb2AcrLD9TguLfhn6415DsPfEouF
-	 Wg5AqESkZR337OKgfos8fOTe3Dpu2IZTi4Sd/SXM=
-Received: by b-6.in.mailobj.net [192.168.90.16] with ESMTP
-	via [213.182.55.206]
-	Mon, 31 Oct 2022 22:25:17 +0100 (CET)
-X-EA-Auth: qVMwEyJhxkz2DQwiHJrKTQkjJVn6i9YCFKXvpmFspnKSr7+Ryq7FXu9hCJd+ZzYUhcI8Jtvdv5DakoLKy8d8Q/pZL+VMT8pn
-Date: Tue, 1 Nov 2022 02:55:14 +0530
-From: Deepak R Varma <drv@mailo.com>
-To: Alison Schofield <alison.schofield@intel.com>
-Cc: Outreachy Linux Kernel <outreachy@lists.linux.dev>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 98CC18F52
+	for <outreachy@lists.linux.dev>; Mon, 31 Oct 2022 21:33:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+  d=inria.fr; s=dc;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=uio7mPvq4tnQnJlhgl2AAgS8/bqBH38o/aMYTpeiS3w=;
+  b=NEJDoJQ9P759uCqAfDtk0BWnZEil/OVhqlXxZFQ4EQM+6nJA7/dasZHT
+   zPFSYhNf3sbWlByJHClAbjYj9L24MYahzqWFC7iZx/Y/aaD7cgilgMYbt
+   MzzoKVBRs6KLCLDQU/u4CQJb4y1t1Oktib2IlQjOVUDVjGxq8490jF3lK
+   c=;
+Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="5.95,228,1661810400"; 
+   d="scan'208";a="36131489"
+Received: from 51.123.68.85.rev.sfr.net (HELO hadrien) ([85.68.123.51])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Oct 2022 22:33:12 +0100
+Date: Mon, 31 Oct 2022 22:33:10 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Deepak R Varma <drv@mailo.com>
+cc: Alison Schofield <alison.schofield@intel.com>, 
+    Outreachy Linux Kernel <outreachy@lists.linux.dev>
 Subject: Re: [Outreachy] Wiki updated needed - Patchset Subject
-Message-ID: <Y2A9Or/BtRZHHnhA@ubunlion>
-References: <Y1XvjytS2GaafmyJ@aschofie-mobl2>
- <Y1N/wsr+Wd6sEaDf@debian-BULLSEYE-live-builder-AMD64>
- <Y1b/zhLlbI/NmdFR@aschofie-mobl2>
- <Y1hjnQE8pF2rwPHV@debian-BULLSEYE-live-builder-AMD64>
- <Y1sAz3YdtAK+88VS@ubunlion>
- <Y1s/b8LMPP6qL4Zj@aschofie-mobl2>
- <Y1wmm+FmD+cn6BPe@ubunlion>
- <Y1w8aWlfpJx3fI4m@aschofie-mobl2>
- <Y2A6/fuXwSAZtKkx@ubunlion>
+In-Reply-To: <Y2A6/fuXwSAZtKkx@ubunlion>
+Message-ID: <alpine.DEB.2.22.394.2210312224230.3960@hadrien>
+References: <Y1XvjytS2GaafmyJ@aschofie-mobl2> <Y1N/wsr+Wd6sEaDf@debian-BULLSEYE-live-builder-AMD64> <Y1b/zhLlbI/NmdFR@aschofie-mobl2> <Y1hjnQE8pF2rwPHV@debian-BULLSEYE-live-builder-AMD64> <Y1sAz3YdtAK+88VS@ubunlion> <Y1s/b8LMPP6qL4Zj@aschofie-mobl2>
+ <Y1wmm+FmD+cn6BPe@ubunlion> <Y1w8aWlfpJx3fI4m@aschofie-mobl2> <Y2A6/fuXwSAZtKkx@ubunlion>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Y2A6/fuXwSAZtKkx@ubunlion>
+Content-Type: text/plain; charset=US-ASCII
 
-On Tue, Nov 01, 2022 at 02:45:41AM +0530, Deepak Varma wrote:
+
+
+On Tue, 1 Nov 2022, Deepak R Varma wrote:
+
 > On Fri, Oct 28, 2022 at 01:32:41PM -0700, Alison Schofield wrote:
 > > On Sat, Oct 29, 2022 at 12:29:39AM +0530, Deepak R Varma wrote:
 > > > On Thu, Oct 27, 2022 at 07:33:19PM -0700, Alison Schofield wrote:
@@ -181,45 +182,47 @@ On Tue, Nov 01, 2022 at 02:45:41AM +0530, Deepak Varma wrote:
 >
 > New section: "Following the Driver commit style"
 
-Also requesting others, specifically the Outreachy Program participants to
-review this new section and share your feedback. Your comments on making this
-most useful for the participants will be helpful.
+reduces confusion/errors and easy on eyes. ->
+reduces confusion/errors and is easy on eyes.
 
->
-> Thank you,
-> ./drv
->
-> >
-> > Thanks!
-> >
-> > > > ./drv >
-> > > >
-> > > > Thanks,
-> > > > Alison
-> > > > >
-> > > > > >
-> > > > > > Thank you,
-> > > > > > ./drv
-> > > > > >
-> > > > > > >
-> > > > > > > Thanks,
-> > > > > > > Alison
-> > > > > > >
-> > > > > > > >
-> > > > > > > > >
-> > > > > > > > > Thanks,
-> > > > > > > > > Alison
-> > > > > > > > >
-> > > > > > > >
-> > > > > > > >
-> > > > >
-> > > > >
-> > > >
-> > >
-> > >
-> >
->
->
->
+Use `git log <<file.c>>` command to review ->
+Use the `git log <<file.c>>` command to review
 
+patch log message -> the patch log message
 
+Later in the same sentence, I odn't know what you ean by credentials.
+
+Additionally, following git command provides ->
+Additionally, the following git command provides
+
+The output for:
+
+git log --pretty=oneline --abbrev-commit
+
+looks the same as
+
+git log --oneline
+
+The latter should already be suggested somewhere in the documentation.
+Maybe this place is better, and it should be removed from wher it was
+before?
+
+"Since this is one of the most frequently used git commands, you should
+add this command to your shell profile using the following bashrc alias:"
+"you should" seems excessive.  git log --oneline is pretty easy to type
+already.
+
+Use consistent patch prefix as available from the history ->
+Use a consistent patch prefix as available from the history
+
+small case -> lower case
+
+capitalized case -> upper case
+
+Put best effort to keep -> Try to keep
+
+The example of inconsistent commits is clearly not great, but one can end
+up with inconsistent commits when some patches cover only one file and
+some patches cover multiple files.
+
+julia
