@@ -1,82 +1,177 @@
-Received: from mail-qt1-f182.google.com (mail-qt1-f182.google.com [209.85.160.182])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from msg-1.mailo.com (msg-1.mailo.com [213.182.54.11])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1C5147E;
-	Tue,  1 Nov 2022 18:35:08 +0000 (UTC)
-Received: by mail-qt1-f182.google.com with SMTP id j9so4613311qtv.4;
-        Tue, 01 Nov 2022 11:35:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=Yp/5zmqM/RRSJ5KnMbkLWKzmrtWigi1LkGGYrFbPaTM=;
-        b=lxPCP9+nJSjdQo6Cqjh3U+VVEYZCf36lwRLzVrnii1J0qX8AjtVnp1GhYk9fHuLo9N
-         pQicVNcZpOzHvXErSZ5wbIkWAAoPCn0qXsEJsJ/EXr9vvdm0iMAfD4H7Ri9xT55OpE88
-         3oLbIaD8tVpkb5rI7AcBE8NhB/gjgQ9ghGR3Q36Xfm0vSh7Lo/U5Dj87H6vrqhuOSta5
-         baQEkkhi1b4KI2eNyc+sCvEjv3C+jTdB+hJGL56e8bMJ62dn87HK0Dc6tAqXmp2mXsVn
-         ngCAipTmduycuO72KZ538lIUebALfLpxndTznamUTITFyqcyqQMis5RT1/pUZ2+76Quj
-         xFyw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Yp/5zmqM/RRSJ5KnMbkLWKzmrtWigi1LkGGYrFbPaTM=;
-        b=2qXiUD7tJd1ZmwjOBp9iJSGeWKC/O7s8lI2UqfaRv5dOso91ffQYigiVYiku78ak2z
-         nmS7hqQ4wmoI1/8s7H2cHAlcVh/HAx8HBjX0FrrPGFRvSy+u5gJNaTUY/j+rEA0PUNHJ
-         YMlYwyOouWSAkb3mS8NMldEuweKJ304Blw3dv7Xt0/1yYJA8sFiG1uWEvbKDeYxTtNxt
-         kvocGoPcHv3PgNygha6Xw67ui3cBR/JwgTZmKEYf5Lu4GmHbIPvTMknDzUhmKetpy9xx
-         2YdBJ3lDcMq8YdmjhXEceQK0VDaRYXKYBQc/sUrDnnIkD4m6q/KzYHE38/vpoeGlfZ35
-         vLlA==
-X-Gm-Message-State: ACrzQf3kr1c0gMSx7PNR/ujvJj1yCr/TSs0vT+RiTTWCTG0U5AbS+HHX
-	LLTyhznX+wBUg06//uTfy/7NKZU2MdhapEGax6E=
-X-Google-Smtp-Source: AMsMyM5nJwkXIV9Yq3G5AGu4VggIq65hvmlUkP2Q2uokcZtgpBbuQ4JE7I3Pa1+EPgNxTowyIJ4IHcCpxV2ucpqR5UI=
-X-Received: by 2002:a05:622a:147:b0:39c:dc0d:7d0f with SMTP id
- v7-20020a05622a014700b0039cdc0d7d0fmr15920035qtw.281.1667327706975; Tue, 01
- Nov 2022 11:35:06 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C0DC11EA18;
+	Tue,  1 Nov 2022 20:18:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
+	t=1667333908; bh=BkjXWlc0++dK5F1VA40ezcKdiL7mFatw/lwsnE+mg4s=;
+	h=X-EA-Auth:Date:From:To:Subject:Message-ID:MIME-Version:
+	 Content-Type;
+	b=eGfm3e/sYf70VLDsRKajG3/d/YCHdHb2Xqm1M/Codp0Ng5AhowJ2W8YMLeOGtBTH4
+	 tE4fsfHyo/c4yqbzHJCn/DKhUkP0/iKzZEjIT4CNNhnlf2H88badFLvrXfCcL8Ryfl
+	 vBDtfLPYd+3efLyvNMRD9o2++E+HRUjzhTMf5tPI=
+Received: by b-3.in.mailobj.net [192.168.90.13] with ESMTP
+	via [213.182.55.206]
+	Tue,  1 Nov 2022 21:18:27 +0100 (CET)
+X-EA-Auth: bOEGrmhbXJNbPaPsvafkiw4ZtMkF0un82yihd8dwy1jDnv9hcDq9II9y30NwBBnDyW5QN4KpKF18JalbmAvTap9g85tSDmIz
+Date: Wed, 2 Nov 2022 01:48:18 +0530
+From: Deepak R Varma <drv@mailo.com>
+To: outreachy@lists.linux.dev, Larry Finger <Larry.Finger@lwfinger.net>,
+	Phillip Potter <phil@philpotter.co.uk>,
+	Pavel Skripkin <paskripkin@gmail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: [PATCH v2] staging: r8188eu: remove unwanted variable implementation
+Message-ID: <Y2F/CtEnjWlHgw9f@ubunlion>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-References: <cover.1667305446.git.tanjubrunostar0@gmail.com> <Y2FjuHeVzY5VYG97@kroah.com>
-In-Reply-To: <Y2FjuHeVzY5VYG97@kroah.com>
-From: Tanju Brunostar <tanjubrunostar0@gmail.com>
-Date: Tue, 1 Nov 2022 19:34:55 +0100
-Message-ID: <CAHJEyKV98M5P2N7qvdwdP8R_=wEmc+_TpTk+RFSo5a+sCO15Yg@mail.gmail.com>
-Subject: Re: [PATCH v2 0/2] some checkpatch fixes in the file rxtx.c
-To: Greg KH <gregkh@linuxfoundation.org>
-Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, 
-	outreachy@lists.linux.dev
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-On Tue, Nov 1, 2022 at 7:20 PM Greg KH <gregkh@linuxfoundation.org> wrote:
->
-> On Tue, Nov 01, 2022 at 12:37:58PM +0000, Tanjuate Brunostar wrote:
-> > These fixes are focused on the function s_vFillRTSHead
-> >
-> > v2: changed confusing changelog messages
-> >
-> > Tanjuate Brunostar (2):
-> >   change the function name s_vFillRTSHead
-> >   Join some lines of code to avoid code lines ending in (
-> >
-> >  drivers/staging/vt6655/rxtx.c | 48 ++++++++++++++++-------------------
-> >  1 file changed, 22 insertions(+), 26 deletions(-)
->
-> Please look at your subject lines you are using here, and look at the
-> mailing list for previous patch submissions, and at the git log for this
-> file, and fix them up to have the proper prefixes on them.
->
-> As is, I can't take these.
->
-> thanks,
->
-> greg k-h
+Local variables intended as the function return value are
+initialized but their value does not change during function
+execution. The initial value assigned to the variable is simply
+returned to the caller. This makes the variable declaration
+unnecessary and the initial value can be directly returned.
 
-There is a version 3 of this. Please review it instead
+Following table lists the initial commits when the variables were first
+introduced but have not been used since inception:
 
-thanks
+Variable  Function	File			     Inception Commit
+ret	  rtw_sta_flush	r8188eu/core/rtw_ap.c	     [1]
+ret	  amsdu_to_msdu r8188eu/core/rtw_recv.c	     [2]
+ret	  rtw_p2p_set	r8188eu/os_dep/ioctl_linux.c [3]
 
-Tanju
+[1] 'commit 9a7fe54ddc3a ("staging: r8188eu: Add source files for new driver - part 1")'
+[2] 'commit 1cc18a22b96b ("staging: r8188eu: Add files for new driver - part 5")'
+[3] 'commit a2c60d42d97c ("staging: r8188eu: Add files for new driver - part 16")'
+
+However, local variable pull of the function update_txdesc from file
+r8188eu/hal/rtl8188eu_xmit.c was in use prior to introduction of
+commit ID [4] 7bdedfef085bb65. The clean-up associated with this
+commit left the variable pull redundant.
+
+[4] 'commit 7bdedfef085b ("staging: r8188eu: Remove mp, a.k.a. manufacturing process, code")'
+
+The patch is produced using the following coccicheck options:
+   COCCI=./scripts/coccinelle/misc/returnvar.cocci
+   M=driver/staging/r8188eu/
+   MODE=patch
+
+Signed-off-by: Deepak R Varma <drv@mailo.com>
+---
+
+Changes in v2:
+   1. Include reason for why the variable declarations are not useful. Suggested
+      by Julia Lawall <julia.lawall@inria.fr>
+
+
+ drivers/staging/r8188eu/core/rtw_ap.c        | 5 ++---
+ drivers/staging/r8188eu/core/rtw_recv.c      | 3 +--
+ drivers/staging/r8188eu/hal/rtl8188eu_xmit.c | 3 +--
+ drivers/staging/r8188eu/os_dep/ioctl_linux.c | 4 +---
+ 4 files changed, 5 insertions(+), 10 deletions(-)
+
+diff --git a/drivers/staging/r8188eu/core/rtw_ap.c b/drivers/staging/r8188eu/core/rtw_ap.c
+index 24eb8dce9bfe..9eaf345e6a00 100644
+--- a/drivers/staging/r8188eu/core/rtw_ap.c
++++ b/drivers/staging/r8188eu/core/rtw_ap.c
+@@ -1020,7 +1020,6 @@ u8 ap_free_sta(struct adapter *padapter, struct sta_info *psta,
+ int rtw_sta_flush(struct adapter *padapter)
+ {
+ 	struct list_head *phead, *plist;
+-	int ret = 0;
+ 	struct sta_info *psta = NULL;
+ 	struct sta_priv *pstapriv = &padapter->stapriv;
+ 	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
+@@ -1028,7 +1027,7 @@ int rtw_sta_flush(struct adapter *padapter)
+ 	u8 bc_addr[ETH_ALEN] = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
+
+ 	if ((pmlmeinfo->state & 0x03) != WIFI_FW_AP_STATE)
+-		return ret;
++		return 0;
+
+ 	spin_lock_bh(&pstapriv->asoc_list_lock);
+ 	phead = &pstapriv->asoc_list;
+@@ -1051,7 +1050,7 @@ int rtw_sta_flush(struct adapter *padapter)
+
+ 	associated_clients_update(padapter, true);
+
+-	return ret;
++	return 0;
+ }
+
+ /* called > TSR LEVEL for USB or SDIO Interface*/
+diff --git a/drivers/staging/r8188eu/core/rtw_recv.c b/drivers/staging/r8188eu/core/rtw_recv.c
+index 4b68a543f68b..94f85cd7038d 100644
+--- a/drivers/staging/r8188eu/core/rtw_recv.c
++++ b/drivers/staging/r8188eu/core/rtw_recv.c
+@@ -1415,7 +1415,6 @@ static int amsdu_to_msdu(struct adapter *padapter, struct recv_frame *prframe)
+
+ 	struct recv_priv *precvpriv = &padapter->recvpriv;
+ 	struct __queue *pfree_recv_queue = &precvpriv->free_recv_queue;
+-	int	ret = _SUCCESS;
+
+ 	nr_subframes = 0;
+
+@@ -1513,7 +1512,7 @@ static int amsdu_to_msdu(struct adapter *padapter, struct recv_frame *prframe)
+ 	prframe->len = 0;
+ 	rtw_free_recvframe(prframe, pfree_recv_queue);/* free this recv_frame */
+
+-	return ret;
++	return _SUCCESS;
+ }
+
+ static bool check_indicate_seq(struct recv_reorder_ctrl *preorder_ctrl, u16 seq_num)
+diff --git a/drivers/staging/r8188eu/hal/rtl8188eu_xmit.c b/drivers/staging/r8188eu/hal/rtl8188eu_xmit.c
+index 8e4a5acc0b18..6d1f56d1f9d7 100644
+--- a/drivers/staging/r8188eu/hal/rtl8188eu_xmit.c
++++ b/drivers/staging/r8188eu/hal/rtl8188eu_xmit.c
+@@ -149,7 +149,6 @@ static void fill_txdesc_phy(struct pkt_attrib *pattrib, __le32 *pdw)
+
+ static s32 update_txdesc(struct xmit_frame *pxmitframe, u8 *pmem, s32 sz, u8 bagg_pkt)
+ {
+-	int	pull = 0;
+ 	uint	qsel;
+ 	u8 data_rate, pwr_status, offset;
+ 	struct adapter		*adapt = pxmitframe->padapter;
+@@ -295,7 +294,7 @@ static s32 update_txdesc(struct xmit_frame *pxmitframe, u8 *pmem, s32 sz, u8 bag
+ 	ODM_SetTxAntByTxInfo_88E(&haldata->odmpriv, pmem, pattrib->mac_id);
+
+ 	rtl8188eu_cal_txdesc_chksum(ptxdesc);
+-	return pull;
++	return 0;
+ }
+
+ /* for non-agg data frame or  management frame */
+diff --git a/drivers/staging/r8188eu/os_dep/ioctl_linux.c b/drivers/staging/r8188eu/os_dep/ioctl_linux.c
+index 8516e253bb03..59a97c5fb80c 100644
+--- a/drivers/staging/r8188eu/os_dep/ioctl_linux.c
++++ b/drivers/staging/r8188eu/os_dep/ioctl_linux.c
+@@ -2979,8 +2979,6 @@ static int rtw_p2p_set(struct net_device *dev,
+ 			       struct iw_request_info *info,
+ 			       union iwreq_data *wrqu, char *extra)
+ {
+-	int ret = 0;
+-
+ 	if (!memcmp(extra, "enable =", 7)) {
+ 		rtw_wext_p2p_enable(dev, info, wrqu, &extra[7]);
+ 	} else if (!memcmp(extra, "setDN =", 6)) {
+@@ -3027,7 +3025,7 @@ static int rtw_p2p_set(struct net_device *dev,
+ 		rtw_p2p_set_persistent(dev, info, wrqu, &extra[11]);
+ 	}
+
+-	return ret;
++	return 0;
+ }
+
+ static int rtw_p2p_get2(struct net_device *dev,
+--
+2.34.1
+
+
+
