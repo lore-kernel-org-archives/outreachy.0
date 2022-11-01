@@ -1,105 +1,126 @@
-Received: from mail-lf1-f54.google.com (mail-lf1-f54.google.com [209.85.167.54])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C35357E;
-	Tue,  1 Nov 2022 11:14:49 +0000 (UTC)
-Received: by mail-lf1-f54.google.com with SMTP id d25so22678153lfb.7;
-        Tue, 01 Nov 2022 04:14:49 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2491C1843;
+	Tue,  1 Nov 2022 11:32:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Et0dLu8NcqFUEiFUqF09J+RIhc7UoMo0suIjCPp+COE=;
-        b=Q2PtqRY6KrwP3n9DeLyFElWkTzB87jb7VOfbmqYF6zUGhNijk0IPeJ8TzNKBQuq1F9
-         5UlQdtvRnaa6lhyLRHphzhkTQ1K4VjmL6NJ/taHrsvKQaZayYFmiA7YjS7DcTGup/8+v
-         okq5l1ps1vTd1KP1wMYGMv43RfKXjWdelFUXgTHgg4WBQzpUVl7diPrXdtsH5zOKkK5i
-         9n9WEcLn/LOyXmQafS0bqlKM59MMrRC5tizDeboWNSUN0nRFLZrgwifeVyHOg5L4xUZr
-         GI9HWnPKEzUs0YTGLd7rR2jHQMx/vLjkg2+kDGjgzFvCqXi/JwmGgzf9kO8/Gypi9BZg
-         PQXA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Et0dLu8NcqFUEiFUqF09J+RIhc7UoMo0suIjCPp+COE=;
-        b=BhgwHJZ40r58XQZVnIg04YJjgY/8uWAF8M4FWcXFpHvpGeMS6dSCot3ST0i0/fvmM/
-         i25vSkv+kDlDkw6rSoEo5CMUJLX6q1zX6TSVspf2UQ7/b8hlpl13q8jZx/NzhWfzx5UT
-         DJ1wvNmLiMQ1oGAio8fNDSwDEZxMTt7wAVtdH26hamphkIxwJ/W0we2vGuekilJinoat
-         HvSj7Pzcl412/6zpttehS14lSPKgDlWpCujkFTClYLXFzt3HpuSTSiqBDW6LsIhaPQJZ
-         XqgaXzVp/wuxbCFg1fYtGtW8vSKYkDmW1FqWBpXfRO1tEQQx1ts8gev4LPlNjQjywQDB
-         3xQQ==
-X-Gm-Message-State: ACrzQf2pgCsYxKfDIV42bi7ZzwtKlZC8WU6AKzwbH+gE6gfbh9FQti33
-	q9KafZB3KC9bJuC3BWgyZAQTotiWRVfy6w==
-X-Google-Smtp-Source: AMsMyM6aGUKbqF8nu2opQO8Hniz97PYjbfRKBgkjR7bJJweSp6d8uOuPN9u/iraFIINPAmdpG60aiA==
-X-Received: by 2002:a19:ad03:0:b0:4a0:56ab:7148 with SMTP id t3-20020a19ad03000000b004a056ab7148mr7796171lfc.430.1667301287906;
-        Tue, 01 Nov 2022 04:14:47 -0700 (PDT)
-Received: from elroy-temp-vm.gaiao0uenmiufjlowqgp5yxwdh.gvxx.internal.cloudapp.net ([20.240.130.248])
-        by smtp.googlemail.com with ESMTPSA id e17-20020a05651236d100b0048af3c090f8sm1629472lfs.13.2022.11.01.04.14.47
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 01 Nov 2022 04:14:47 -0700 (PDT)
-From: Tanjuate Brunostar <tanjubrunostar0@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev,
-	Tanjuate Brunostar <tanjubrunostar0@gmail.com>
-Subject: [PATCH 2/2] Join some lines of code to avoid a line ending in a (
-Date: Tue,  1 Nov 2022 11:13:29 +0000
-Message-Id: <1da74119d5a50ef97e68f26c82c9c9e429f8d0ec.1667300134.git.tanjubrunostar0@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <cover.1667300134.git.tanjubrunostar0@gmail.com>
-References: <cover.1667300134.git.tanjubrunostar0@gmail.com>
+  d=inria.fr; s=dc;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=V6n2MWOOY0pZymd4oI7C3sh0yOHwVS9t/O1/Ve2U86c=;
+  b=iJhovUMRxnlYU7s9ovRxCni5GeoF71yAaxNNqL1NVoxvHC/+Fwgioc7d
+   Upt8+wJ4uLADBi+txphErOkCuGqpKjJtSGwOXrv9PhJmUuOA55aQ8+Zar
+   77uUwzxk/5IbfNtiDdPeM7cPGYYAa3Vml3Cy14tiFnzA5ANi9lsCUn+bD
+   A=;
+Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="5.95,230,1661810400"; 
+   d="scan'208";a="36170295"
+Received: from 51.123.68.85.rev.sfr.net (HELO hadrien) ([85.68.123.51])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Nov 2022 12:32:49 +0100
+Date: Tue, 1 Nov 2022 12:32:48 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Tanjuate Brunostar <tanjubrunostar0@gmail.com>
+cc: gregkh@linuxfoundation.org, linux-staging@lists.linux.dev, 
+    linux-kernel@vger.kernel.org, outreachy@lists.linux.dev
+Subject: Re: [PATCH 1/2] change the function name s_vFillRTSHead
+In-Reply-To: <16e1033e32dd5a82e058c7c69ea2ec93800a30b7.1667300134.git.tanjubrunostar0@gmail.com>
+Message-ID: <alpine.DEB.2.22.394.2211011232260.2834@hadrien>
+References: <cover.1667300134.git.tanjubrunostar0@gmail.com> <16e1033e32dd5a82e058c7c69ea2ec93800a30b7.1667300134.git.tanjubrunostar0@gmail.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
 
-The code line ends with a '(' which is not allowed in
-Linux kernel coding. Joining the lines and indenting
-correctly improves visibility
 
-Signed-off-by: Tanjuate Brunostar <tanjubrunostar0@gmail.com>
----
- drivers/staging/vt6655/rxtx.c | 22 +++++++++-------------
- 1 file changed, 9 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
-index d7e439cd8675..df7473155704 100644
---- a/drivers/staging/vt6655/rxtx.c
-+++ b/drivers/staging/vt6655/rxtx.c
-@@ -555,19 +555,15 @@ s_uFillDataHead(
- 	return buf->duration;
- }
- 
--static
--void
--s_vFillRTSHead(
--	struct vnt_private *pDevice,
--	unsigned char byPktType,
--	void *pvRTS,
--	unsigned int cbFrameLength,
--	bool bNeedAck,
--	bool bDisCRC,
--	struct ieee80211_hdr *hdr,
--	unsigned short wCurrentRate,
--	unsigned char byFBOption
--)
-+static void fill_rts_head(struct vnt_private *pDevice,
-+			  unsigned char byPktType,
-+			  void *pvRTS,
-+			  unsigned int cbFrameLength,
-+			  bool bNeedAck,
-+			  bool bDisCRC,
-+			  struct ieee80211_hdr *hdr,
-+			  unsigned short wCurrentRate,
-+			  unsigned char byFBOption)
- {
- 	unsigned int uRTSFrameLen = 20;
- 
--- 
-2.34.1
+On Tue, 1 Nov 2022, Tanjuate Brunostar wrote:
 
+> Remove the use of Hungarian notation, which is not used in the Linux
+> kernel
+
+Period at the end of the sentence.  It woudl still be good to acknowledge
+checkpatch.
+
+julia
+
+>
+> Signed-off-by: Tanjuate Brunostar <tanjubrunostar0@gmail.com>
+> ---
+>  drivers/staging/vt6655/rxtx.c | 26 +++++++++++++-------------
+>  1 file changed, 13 insertions(+), 13 deletions(-)
+>
+> diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
+> index 31ae99b3cb35..d7e439cd8675 100644
+> --- a/drivers/staging/vt6655/rxtx.c
+> +++ b/drivers/staging/vt6655/rxtx.c
+> @@ -23,7 +23,7 @@
+>   *      s_uGetTxRsvTime- get frame reserved time
+>   *      s_vFillCTSHead- fulfill CTS ctl header
+>   *      s_vFillFragParameter- Set fragment ctl parameter.
+> - *      s_vFillRTSHead- fulfill RTS ctl header
+> + *      fill_rts_head- fulfill RTS ctl header
+>   *      s_vFillTxKey- fulfill tx encrypt key
+>   *      s_vSWencryption- Software encrypt header
+>   *      vDMA0_tx_80211- tx 802.11 frame via dma0
+> @@ -85,15 +85,15 @@ static const unsigned short fb_opt1[2][5] = {
+>  #define DATADUR_A_F1    13
+>
+>  /*---------------------  Static Functions  --------------------------*/
+> -static void s_vFillRTSHead(struct vnt_private *pDevice,
+> -			   unsigned char byPktType,
+> -			   void *pvRTS,
+> -			   unsigned int	cbFrameLength,
+> -			   bool bNeedAck,
+> -			   bool bDisCRC,
+> -			   struct ieee80211_hdr *hdr,
+> -			   unsigned short wCurrentRate,
+> -			   unsigned char byFBOption);
+> +static void fill_rts_head(struct vnt_private *pDevice,
+> +			  unsigned char byPktType,
+> +			  void *pvRTS,
+> +			  unsigned int	cbFrameLength,
+> +			  bool bNeedAck,
+> +			  bool bDisCRC,
+> +			  struct ieee80211_hdr *hdr,
+> +			  unsigned short wCurrentRate,
+> +			  unsigned char byFBOption);
+>
+>  static void s_vGenerateTxParameter(struct vnt_private *pDevice,
+>  				   unsigned char byPktType,
+> @@ -912,7 +912,7 @@ s_vGenerateTxParameter(
+>  			buf->rrv_time_a = vnt_rxtx_rsvtime_le16(pDevice, byPktType, cbFrameSize, wCurrentRate, bNeedACK);
+>  			buf->rrv_time_b = vnt_rxtx_rsvtime_le16(pDevice, PK_TYPE_11B, cbFrameSize, pDevice->byTopCCKBasicRate, bNeedACK);
+>
+> -			s_vFillRTSHead(pDevice, byPktType, pvRTS, cbFrameSize, bNeedACK, bDisCRC, psEthHeader, wCurrentRate, byFBOption);
+> +			fill_rts_head(pDevice, byPktType, pvRTS, cbFrameSize, bNeedACK, bDisCRC, psEthHeader, wCurrentRate, byFBOption);
+>  		} else {/* RTS_needless, PCF mode */
+>  			struct vnt_rrv_time_cts *buf = pvRrvTime;
+>
+> @@ -931,7 +931,7 @@ s_vGenerateTxParameter(
+>  			buf->rrv_time = vnt_rxtx_rsvtime_le16(pDevice, byPktType, cbFrameSize, wCurrentRate, bNeedACK);
+>
+>  			/* Fill RTS */
+> -			s_vFillRTSHead(pDevice, byPktType, pvRTS, cbFrameSize, bNeedACK, bDisCRC, psEthHeader, wCurrentRate, byFBOption);
+> +			fill_rts_head(pDevice, byPktType, pvRTS, cbFrameSize, bNeedACK, bDisCRC, psEthHeader, wCurrentRate, byFBOption);
+>  		} else if (!pvRTS) {/* RTS_needless, non PCF mode */
+>  			struct vnt_rrv_time_ab *buf = pvRrvTime;
+>
+> @@ -945,7 +945,7 @@ s_vGenerateTxParameter(
+>  			buf->rrv_time = vnt_rxtx_rsvtime_le16(pDevice, PK_TYPE_11B, cbFrameSize, wCurrentRate, bNeedACK);
+>
+>  			/* Fill RTS */
+> -			s_vFillRTSHead(pDevice, byPktType, pvRTS, cbFrameSize, bNeedACK, bDisCRC, psEthHeader, wCurrentRate, byFBOption);
+> +			fill_rts_head(pDevice, byPktType, pvRTS, cbFrameSize, bNeedACK, bDisCRC, psEthHeader, wCurrentRate, byFBOption);
+>  		} else { /* RTS_needless, non PCF mode */
+>  			struct vnt_rrv_time_ab *buf = pvRrvTime;
+>
+> --
+> 2.34.1
+>
+>
+>
