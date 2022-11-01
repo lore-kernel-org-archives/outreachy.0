@@ -1,199 +1,101 @@
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ej1-f41.google.com (mail-ej1-f41.google.com [209.85.218.41])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E07F77B;
-	Tue,  1 Nov 2022 20:45:34 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 653D67B;
+	Tue,  1 Nov 2022 22:15:40 +0000 (UTC)
+Received: by mail-ej1-f41.google.com with SMTP id k2so40703760ejr.2;
+        Tue, 01 Nov 2022 15:15:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=+J1NDqzKFTtTNi/LQ/3Qk9QZTbg+z6wDJhxfKc3qUJk=;
-  b=Guqfk8EQbUlAwPROkSCvZwlMtZ9meuH9Llcv1WggyJhdxhgV+pwz4Qid
-   trCrArIRpCPbLvEPQAc0s5d+g4aW0Tbuin8qKahqKaJuAfSWax5BPhZIR
-   M3yROY5UbG+7eHVlar10YG8grKUrffYhGyVUSmDKWWoRGHVINl0EiZk3C
-   c=;
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="5.95,232,1661810400"; 
-   d="scan'208";a="72537135"
-Received: from 51.123.68.85.rev.sfr.net (HELO hadrien) ([85.68.123.51])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Nov 2022 21:45:30 +0100
-Date: Tue, 1 Nov 2022 21:45:30 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Deepak R Varma <drv@mailo.com>
-cc: outreachy@lists.linux.dev, Larry Finger <Larry.Finger@lwfinger.net>, 
-    Phillip Potter <phil@philpotter.co.uk>, 
-    Pavel Skripkin <paskripkin@gmail.com>, 
-    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-    linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] staging: r8188eu: remove unwanted variable
- implementation
-In-Reply-To: <Y2GBzcnG+bT/dEcG@ubunlion>
-Message-ID: <alpine.DEB.2.22.394.2211012144290.2834@hadrien>
-References: <Y2FPOON3UcqqAQFy@ubunlion> <alpine.DEB.2.22.394.2211011811400.2834@hadrien> <Y2GBzcnG+bT/dEcG@ubunlion>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=+Tj6LMlid1xqeP/OugEx6eshEoLxwhpJ2MaPH/4J8sc=;
+        b=HTFJBL9J0F7Z1cd/8Hjsp3KSPVYnmAiSIdeEF+dtoljPVhoG5SMj9H8jzOvl/1ur2b
+         INV80sxQYR6xrhtKoMgnQI8qr+moluapFVh0T1sGH+k+oTlVt7CzdEzhLmSpfMfCTEMz
+         Mu/uX7n+gyVhBQASGIOpfy+OmRrgQHvseyi5eDbcLrqm5AoKI+hsZPfXIWOkgmJK4CPd
+         LL9gCZS8ptzuhukIUo8s51ZwGvvmAfMT0Os816kLJYxWsjUCUUAVb+aIXgYClDB82h8J
+         XRhihvbP1Mivm2jnjFuB+8KkIxrwluOUZs4YeisAirTZzli6odoGA5JrkhKAJf7ECoW8
+         j/DA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=+Tj6LMlid1xqeP/OugEx6eshEoLxwhpJ2MaPH/4J8sc=;
+        b=Vk2vA1TDOpVquaj7B2UztfZHNF8duAiwTe1bZDDOWl2A3CHZscDnn6saFgumkG+coX
+         QGsU7phPu7cZBkl6x2fWb/CF+rkGnFXIkGwCGJF+igvQiAF7fgw7bpiCEIlJEH04ZClv
+         0zWLikF9cHKEqr3kqSCo7Zs6WCu29FXBG02udCpF4Jhyt2TKY0+N/LESIONqs0O7MQEc
+         2TdKLpYZDOsuSN2Vpm0AY1ACtaxwSp0KsIdm0sUu7cW2mnLVTvTaDNs71hHPUjvZYmSP
+         KkgF8ycZMH4ZU9cScMyecQraOlCClrFM0XF2nZmGpZXDB5kjYrD3Zquc4wuYgVle7HAb
+         0RHw==
+X-Gm-Message-State: ACrzQf098Z5KoDgZXhLF9f68G+oxSsCWUkjHkuBOPlyPxds5fBkJybaB
+	mV1oMiAvEnYWPFLkOY4acUU=
+X-Google-Smtp-Source: AMsMyM61egOW8fwD1jxTVRXlrrlYoJderSJOPSy+elRTByUuddOZPISb2AArbAAKex/5lgo5BZLTrw==
+X-Received: by 2002:a17:907:971f:b0:7ad:e232:f115 with SMTP id jg31-20020a170907971f00b007ade232f115mr8922207ejc.754.1667340938658;
+        Tue, 01 Nov 2022 15:15:38 -0700 (PDT)
+Received: from ?IPV6:2003:c7:8f2a:b885:c7c8:ee47:4872:331d? (p200300c78f2ab885c7c8ee474872331d.dip0.t-ipconnect.de. [2003:c7:8f2a:b885:c7c8:ee47:4872:331d])
+        by smtp.gmail.com with ESMTPSA id d25-20020aa7c1d9000000b00456c6b4b777sm4874818edp.69.2022.11.01.15.15.37
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 01 Nov 2022 15:15:38 -0700 (PDT)
+Message-ID: <f67a1a02-addf-3197-e423-7c66ab97f6df@gmail.com>
+Date: Tue, 1 Nov 2022 23:15:37 +0100
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH v3 0/2] staging: vt6655: some checkpatch fixes in the file
+ rxtx.c
+Content-Language: en-US
+To: Tanjuate Brunostar <tanjubrunostar0@gmail.com>, gregkh@linuxfoundation.org
+Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+ outreachy@lists.linux.dev
+References: <cover.1667326000.git.tanjubrunostar0@gmail.com>
+From: Philipp Hortmann <philipp.g.hortmann@gmail.com>
+In-Reply-To: <cover.1667326000.git.tanjubrunostar0@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+
+On 11/1/22 19:17, Tanjuate Brunostar wrote:
+> These fixes are focused on the function s_vFillRTSHead
+> 
+> v3: changed the function name from fill_rts_head to fill_rts_header as
+> head is conventionally used in lists
+> 
+> v2: changed confusing changelog messages
+> 
+> Tanjuate Brunostar (2):
+>    staging: vt6655: change the function name s_vFillRTSHead
+>    staging: vt6655: Join some lines of code to avoid code lines ending in
+>      (
+> 
+>   drivers/staging/vt6655/rxtx.c | 48 ++++++++++++++++-------------------
+>   1 file changed, 22 insertions(+), 26 deletions(-)
+> 
+
+Patch failed at 0001 staging: vt6655: change the function name 
+s_vFillRTSHead
 
 
+WARNING: line length of 138 exceeds 100 columns
+#58: FILE: drivers/staging/vt6655/rxtx.c:915:
++			fill_rts_header(pDevice, byPktType, pvRTS, cbFrameSize, bNeedACK, 
+bDisCRC, psEthHeader, wCurrentRate, byFBOption);
 
-On Wed, 2 Nov 2022, Deepak R Varma wrote:
+WARNING: line length of 138 exceeds 100 columns
+#67: FILE: drivers/staging/vt6655/rxtx.c:934:
++			fill_rts_header(pDevice, byPktType, pvRTS, cbFrameSize, bNeedACK, 
+bDisCRC, psEthHeader, wCurrentRate, byFBOption);
 
-> On Tue, Nov 01, 2022 at 06:14:01PM +0100, Julia Lawall wrote:
-> >
-> >
-> > On Tue, 1 Nov 2022, Deepak R Varma wrote:
-> >
-> > > Local variables intended as the function return value are
-> > > initialized but their value does not change during function
-> > > execution. The initial value assigned to the variable is simply
-> > > returned to the caller. This makes the variable declaration
-> > > unnecessary and the initial value can be directly returned.
-> >
-> > I think it would be better to make an argument for each case as to why the
-> > change is correct, and no more interesting return value is needed.  For
-> > example, looking at the code in
-> > drivers/staging/r8188eu/hal/rtl8188eu_xmit.c, it seems that the variable
-> > pull was used in a more interesting way previously, but some previous
-> > patches removed the relevant code.
->
-> Thank you Julia for the hints. I learned that git blame will not show commits
-> associated with deleted/replaced lines. Used pickaxe tool to identify the old
-> commits. It was good learning. Thank you. v2 is submitted for review and feedback.
+WARNING: line length of 138 exceeds 100 columns
+#76: FILE: drivers/staging/vt6655/rxtx.c:948:
++			fill_rts_header(pDevice, byPktType, pvRTS, cbFrameSize, bNeedACK, 
+bDisCRC, psEthHeader, wCurrentRate, byFBOption);
 
-OK, I just did git log -p and looked through the commits.
+May be you need to consider to break this lines.
 
-You can also use the argument eg -G pull to find commits that change the
-number of occurrences of pull.
-
-julia
-
-
->
-> >
-> > julia
-> >
-> > >
-> > > The patch is produced using the following coccicheck options:
-> > >    COCCI=./scripts/coccinelle/misc/returnvar.cocci
-> > >    M=driver/staging/r8188eu/
-> > >    MODE=patch
-> > >
-> > > Signed-off-by: Deepak R Varma <drv@mailo.com>
-> > > ---
-> > >  drivers/staging/r8188eu/core/rtw_ap.c        | 5 ++---
-> > >  drivers/staging/r8188eu/core/rtw_recv.c      | 3 +--
-> > >  drivers/staging/r8188eu/hal/rtl8188eu_xmit.c | 3 +--
-> > >  drivers/staging/r8188eu/os_dep/ioctl_linux.c | 4 +---
-> > >  4 files changed, 5 insertions(+), 10 deletions(-)
-> > >
-> > > diff --git a/drivers/staging/r8188eu/core/rtw_ap.c b/drivers/staging/r8188eu/core/rtw_ap.c
-> > > index 24eb8dce9bfe..9eaf345e6a00 100644
-> > > --- a/drivers/staging/r8188eu/core/rtw_ap.c
-> > > +++ b/drivers/staging/r8188eu/core/rtw_ap.c
-> > > @@ -1020,7 +1020,6 @@ u8 ap_free_sta(struct adapter *padapter, struct sta_info *psta,
-> > >  int rtw_sta_flush(struct adapter *padapter)
-> > >  {
-> > >  	struct list_head *phead, *plist;
-> > > -	int ret = 0;
-> > >  	struct sta_info *psta = NULL;
-> > >  	struct sta_priv *pstapriv = &padapter->stapriv;
-> > >  	struct mlme_ext_priv *pmlmeext = &padapter->mlmeextpriv;
-> > > @@ -1028,7 +1027,7 @@ int rtw_sta_flush(struct adapter *padapter)
-> > >  	u8 bc_addr[ETH_ALEN] = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
-> > >
-> > >  	if ((pmlmeinfo->state & 0x03) != WIFI_FW_AP_STATE)
-> > > -		return ret;
-> > > +		return 0;
-> > >
-> > >  	spin_lock_bh(&pstapriv->asoc_list_lock);
-> > >  	phead = &pstapriv->asoc_list;
-> > > @@ -1051,7 +1050,7 @@ int rtw_sta_flush(struct adapter *padapter)
-> > >
-> > >  	associated_clients_update(padapter, true);
-> > >
-> > > -	return ret;
-> > > +	return 0;
-> > >  }
-> > >
-> > >  /* called > TSR LEVEL for USB or SDIO Interface*/
-> > > diff --git a/drivers/staging/r8188eu/core/rtw_recv.c b/drivers/staging/r8188eu/core/rtw_recv.c
-> > > index 4b68a543f68b..94f85cd7038d 100644
-> > > --- a/drivers/staging/r8188eu/core/rtw_recv.c
-> > > +++ b/drivers/staging/r8188eu/core/rtw_recv.c
-> > > @@ -1415,7 +1415,6 @@ static int amsdu_to_msdu(struct adapter *padapter, struct recv_frame *prframe)
-> > >
-> > >  	struct recv_priv *precvpriv = &padapter->recvpriv;
-> > >  	struct __queue *pfree_recv_queue = &precvpriv->free_recv_queue;
-> > > -	int	ret = _SUCCESS;
-> > >
-> > >  	nr_subframes = 0;
-> > >
-> > > @@ -1513,7 +1512,7 @@ static int amsdu_to_msdu(struct adapter *padapter, struct recv_frame *prframe)
-> > >  	prframe->len = 0;
-> > >  	rtw_free_recvframe(prframe, pfree_recv_queue);/* free this recv_frame */
-> > >
-> > > -	return ret;
-> > > +	return _SUCCESS;
-> > >  }
-> > >
-> > >  static bool check_indicate_seq(struct recv_reorder_ctrl *preorder_ctrl, u16 seq_num)
-> > > diff --git a/drivers/staging/r8188eu/hal/rtl8188eu_xmit.c b/drivers/staging/r8188eu/hal/rtl8188eu_xmit.c
-> > > index 8e4a5acc0b18..6d1f56d1f9d7 100644
-> > > --- a/drivers/staging/r8188eu/hal/rtl8188eu_xmit.c
-> > > +++ b/drivers/staging/r8188eu/hal/rtl8188eu_xmit.c
-> > > @@ -149,7 +149,6 @@ static void fill_txdesc_phy(struct pkt_attrib *pattrib, __le32 *pdw)
-> > >
-> > >  static s32 update_txdesc(struct xmit_frame *pxmitframe, u8 *pmem, s32 sz, u8 bagg_pkt)
-> > >  {
-> > > -	int	pull = 0;
-> > >  	uint	qsel;
-> > >  	u8 data_rate, pwr_status, offset;
-> > >  	struct adapter		*adapt = pxmitframe->padapter;
-> > > @@ -295,7 +294,7 @@ static s32 update_txdesc(struct xmit_frame *pxmitframe, u8 *pmem, s32 sz, u8 bag
-> > >  	ODM_SetTxAntByTxInfo_88E(&haldata->odmpriv, pmem, pattrib->mac_id);
-> > >
-> > >  	rtl8188eu_cal_txdesc_chksum(ptxdesc);
-> > > -	return pull;
-> > > +	return 0;
-> > >  }
-> > >
-> > >  /* for non-agg data frame or  management frame */
-> > > diff --git a/drivers/staging/r8188eu/os_dep/ioctl_linux.c b/drivers/staging/r8188eu/os_dep/ioctl_linux.c
-> > > index 8516e253bb03..59a97c5fb80c 100644
-> > > --- a/drivers/staging/r8188eu/os_dep/ioctl_linux.c
-> > > +++ b/drivers/staging/r8188eu/os_dep/ioctl_linux.c
-> > > @@ -2979,8 +2979,6 @@ static int rtw_p2p_set(struct net_device *dev,
-> > >  			       struct iw_request_info *info,
-> > >  			       union iwreq_data *wrqu, char *extra)
-> > >  {
-> > > -	int ret = 0;
-> > > -
-> > >  	if (!memcmp(extra, "enable =", 7)) {
-> > >  		rtw_wext_p2p_enable(dev, info, wrqu, &extra[7]);
-> > >  	} else if (!memcmp(extra, "setDN =", 6)) {
-> > > @@ -3027,7 +3025,7 @@ static int rtw_p2p_set(struct net_device *dev,
-> > >  		rtw_p2p_set_persistent(dev, info, wrqu, &extra[11]);
-> > >  	}
-> > >
-> > > -	return ret;
-> > > +	return 0;
-> > >  }
-> > >
-> > >  static int rtw_p2p_get2(struct net_device *dev,
-> > > --
-> > > 2.34.1
-> > >
-> > >
-> > >
-> > >
-> > >
-> >
->
->
->
+Bye Philipp
