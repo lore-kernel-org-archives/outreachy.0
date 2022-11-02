@@ -1,129 +1,56 @@
-Received: from mail-lf1-f54.google.com (mail-lf1-f54.google.com [209.85.167.54])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3CA492582;
-	Wed,  2 Nov 2022 14:09:18 +0000 (UTC)
-Received: by mail-lf1-f54.google.com with SMTP id o12so28410500lfq.9;
-        Wed, 02 Nov 2022 07:09:18 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4D59B2582
+	for <outreachy@lists.linux.dev>; Wed,  2 Nov 2022 14:11:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=xGATexOV6vnPuB2p8dA7jNyMLlzx3cNJwqnDQnqy0Lw=;
-        b=QWREUQ+MIJRrxRHUnzmPUZtlJTHGq5/FaclL+DWpDyQxxqT/i5uu7XBDF76Uu6ajEe
-         mf70HZLIapmkvb4+0bHS/y5X4Kt5QNaT90iNT8cn28CK+wWYVDGLODeERdzPjDn6nH8B
-         xUYbtJoJPPwm6imgVr85phnsbZZk3C8HA9iC4Nj7zscE/OmRpEpJanP2ikBDWsnw9hZs
-         YEQt4G3pLPP444oE9TZgGXFi9iTY9WDNZryx2RPXh52I3SsiCVBOpRoLHitQyCK2DOon
-         OtjJeEIAEk7eCAw3CVyFjTKe9Rm2NWBIbH0HI5ovY68pGGKOF9QZPBgikz9KAmh1lOum
-         iDsA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=xGATexOV6vnPuB2p8dA7jNyMLlzx3cNJwqnDQnqy0Lw=;
-        b=y3AwBfzsu+7ap1i7E2EUl/MEv/+islQ/pDJQa08MgPeQbt6oBArpHw5DrJ2LfqIJLs
-         FfrhwuegtF0lLmzTgaN5R4cH27tyb/6Nn+mJhrfNAQYXB+4xMRg+N9o3b2ftukjW+iMQ
-         oo5S4uQy/F5/X3tK+7HucAyUn/oBHJOY8H/RD9Rb63FJyd0GDi5JCVdGl6CPC/oNalKW
-         +auOA45yPZPtNZha/JTJQIaZ1K+k4bZJySTJMgvnIakkX698WM7m6/+Q0phheu4I1/BF
-         m/e5rfMhGgtFEJa9aUhC4xfISa0Ky5g4ORMiwU9NRfMWdjgNGerc3ckPDsl5W3XvQqKY
-         J/lg==
-X-Gm-Message-State: ACrzQf1gsKkoxLfzEnH3ZwrTNT/5Yx+5+TC2QuKFpCqZCacgjah4DdrV
-	9yAByGfzGbPxHGVqh/I+DWM=
-X-Google-Smtp-Source: AMsMyM7xppK3b50AM2XFDO4L4Ca+NPGXo1QFwfnB5fOVrd6kV2dssjPBwKExCJZN7sIZMIelaoy6bQ==
-X-Received: by 2002:ac2:446b:0:b0:4a2:7e14:933d with SMTP id y11-20020ac2446b000000b004a27e14933dmr9134935lfl.338.1667398156338;
-        Wed, 02 Nov 2022 07:09:16 -0700 (PDT)
-Received: from elroy-temp-vm.gaiao0uenmiufjlowqgp5yxwdh.gvxx.internal.cloudapp.net ([20.240.130.248])
-        by smtp.googlemail.com with ESMTPSA id bj12-20020a2eaa8c000000b0026e0434eb1esm119503ljb.67.2022.11.02.07.09.15
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 02 Nov 2022 07:09:16 -0700 (PDT)
-From: Tanjuate Brunostar <tanjubrunostar0@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev,
-	Tanjuate Brunostar <tanjubrunostar0@gmail.com>
-Subject: [PATCH V4 2/2] staging: vt6655: Join some lines of code to avoid code lines ending in (
-Date: Wed,  2 Nov 2022 14:08:48 +0000
-Message-Id: <1026afe9c4c358b7b8a9fac62833ee62d2f4f9b5.1667397591.git.tanjubrunostar0@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <cover.1667397591.git.tanjubrunostar0@gmail.com>
-References: <cover.1667397591.git.tanjubrunostar0@gmail.com>
+  d=inria.fr; s=dc;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=wbonFraSAG68N2mLVkrkcmUjK+tBvSQmln7LrFwwhtg=;
+  b=si5VWHJTJe1RUqs8FV0nCgUXxA0bh/achSScTtqjF2qdeOlHVtJ4+Jg8
+   SldIHWkbc8/hKBcs4B/V5BXLJGV4P50RZn5dyl784CIZaBrUBT5BDxWmS
+   CxX1o15OVUDdMB15TCrvec/+YNwgFf6mkpqi+SnSiAJHe5Ys2taGBCgWp
+   c=;
+Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="5.95,234,1661810400"; 
+   d="scan'208";a="36271447"
+Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Nov 2022 15:11:52 +0100
+Date: Wed, 2 Nov 2022 15:11:51 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+To: Deepak R Varma <drv@mailo.com>
+cc: Outreachy Linux <outreachy@lists.linux.dev>
+Subject: Re: patch set resubmission
+In-Reply-To: <Y2JqfFXB8AciDKRB@debian-BULLSEYE-live-builder-AMD64>
+Message-ID: <f34efd4b-fa7d-ff2c-7095-8a675a2919da@inria.fr>
+References: <Y2JqfFXB8AciDKRB@debian-BULLSEYE-live-builder-AMD64>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
 
-Fix checkpatch error related to code line ends with a '(', by joining
-some lines and indenting correctly. This improves visibility
 
-Signed-off-by: Tanjuate Brunostar <tanjubrunostar0@gmail.com>
----
- drivers/staging/vt6655/rxtx.c | 40 ++++++++++++++++-------------------
- 1 file changed, 18 insertions(+), 22 deletions(-)
 
-diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
-index c01fc1a593f3..debc5d5daede 100644
---- a/drivers/staging/vt6655/rxtx.c
-+++ b/drivers/staging/vt6655/rxtx.c
-@@ -85,15 +85,15 @@ static const unsigned short fb_opt1[2][5] = {
- #define DATADUR_A_F1    13
- 
- /*---------------------  Static Functions  --------------------------*/
--static void fill_rts_head(struct vnt_private *pDevice,
--			  unsigned char byPktType,
--			  void *pvRTS,
--			  unsigned int	cbFrameLength,
--			  bool bNeedAck,
--			  bool bDisCRC,
--			  struct ieee80211_hdr *hdr,
--			  unsigned short wCurrentRate,
--			  unsigned char byFBOption);
-+static void fill_rts_header(struct vnt_private *pDevice,
-+			    unsigned char byPktType,
-+			    void *pvRTS,
-+			    unsigned int	cbFrameLength,
-+			    bool bNeedAck,
-+			    bool bDisCRC,
-+			    struct ieee80211_hdr *hdr,
-+			    unsigned short wCurrentRate,
-+			    unsigned char byFBOption);
- 
- static void s_vGenerateTxParameter(struct vnt_private *pDevice,
- 				   unsigned char byPktType,
-@@ -555,19 +555,15 @@ s_uFillDataHead(
- 	return buf->duration;
- }
- 
--static
--void
--s_vFillRTSHead(
--	struct vnt_private *pDevice,
--	unsigned char byPktType,
--	void *pvRTS,
--	unsigned int cbFrameLength,
--	bool bNeedAck,
--	bool bDisCRC,
--	struct ieee80211_hdr *hdr,
--	unsigned short wCurrentRate,
--	unsigned char byFBOption
--)
-+static void fill_rts_header(struct vnt_private *pDevice,
-+			    unsigned char byPktType,
-+			    void *pvRTS,
-+			    unsigned int cbFrameLength,
-+			    bool bNeedAck,
-+			    bool bDisCRC,
-+			    struct ieee80211_hdr *hdr,
-+			    unsigned short wCurrentRate,
-+			    unsigned char byFBOption)
- {
- 	unsigned int uRTSFrameLen = 20;
- 
--- 
-2.34.1
+On Wed, 2 Nov 2022, Deepak R Varma wrote:
 
+> Hello,
+> I had a patch set with 2 patches. One of the two was accepted and applied to the
+> staging tree, whereas the other patch needs correction and a revision.
+>
+> I did refresh my local branch to match the staging-testing tree commit level.
+> Now, my patch-1 from the set is 9 commits down the patch-2 commit. Patch-2
+> commit is the top commit in my local branch.
+>
+> In this case, do I still need to send the patch set with both the patches? If
+> yes, How can I format a patch set from two distant commits?
+
+You don't need to resend what was already accepted.
+
+It shouldn't be necessary in this case, but you can use git rebase -i
+HEAD~N to reorganize patches in the last N commits.
+
+julia
