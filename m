@@ -1,34 +1,28 @@
-Received: from msg-1.mailo.com (msg-1.mailo.com [213.182.54.11])
+Received: from msg-4.mailo.com (msg-4.mailo.com [213.182.54.15])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6312E29A0;
-	Wed,  2 Nov 2022 19:19:49 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C20DA27702;
+	Wed,  2 Nov 2022 20:53:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
-	t=1667416783; bh=02jfJdHjiuApcBPXp0F07fIvSINqtaBx9AWZYbB7XE8=;
-	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
-	 MIME-Version:Content-Type:In-Reply-To;
-	b=hgEzR+29U19ai+qxHZoDTmRRc7b1ODBfV4A4/hFv7l9dMgXy3kGNjK2C657uRZex8
-	 axpGTU1rZY0T1EHYO5kgVyxMFub72dxCBVtp51wWlA+lZoLM0V3E4jkW18ouzC1TeL
-	 iZVFiRVmKb61QsFMobcefCnMNrmFPVR8c89fxXsU=
-Received: by b-5.in.mailobj.net [192.168.90.15] with ESMTP
+	t=1667422403; bh=ErI90by0HaqztfHJ1f4QhDxXIDPNR+OgRqtS9KaMhGY=;
+	h=X-EA-Auth:Date:From:To:Subject:Message-ID:MIME-Version:
+	 Content-Type;
+	b=Z+spEJBzMVi5xKT7d/GwOuRCDppU2VG8/klxJ3GlwSg6QNuK+Dx/tsUnv1wDwlDBz
+	 ZxyoM1pKg3fwc1LCDN3r18jkY7dG2QY6HCHtQNZkEZPlhXyKhe+j7wtc7xrL3BhCrF
+	 BfDQyAv1c7PDMvQj2e/1RUkP6iUg/ND7BVa9a0aY=
+Received: by b-3.in.mailobj.net [192.168.90.13] with ESMTP
 	via [213.182.55.206]
-	Wed,  2 Nov 2022 20:19:43 +0100 (CET)
-X-EA-Auth: KVRuk3vVw19iYkSAVFc2EHPsG3glS/xo9WfyoQLIUERx8jv4MXF3Cfcu5PkopOHEwCrhZYgrlx3dpuktkDgScAEXRJ4DUjst
-Date: Thu, 3 Nov 2022 00:49:38 +0530
+	Wed,  2 Nov 2022 21:53:23 +0100 (CET)
+X-EA-Auth: LajOJuXyvXTUK3TXRm9ZGJ+afNBNj9R0X2uGkBJY7ohaa+hZqXsqAMEV8G34qM/KM2uQ69ONy5JEI2kOjTS9Yr4+pu9o4qKv
+Date: Thu, 3 Nov 2022 02:23:18 +0530
 From: Deepak R Varma <drv@mailo.com>
-To: Dan Carpenter <dan.carpenter@oracle.com>,
-	Pavel Skripkin <paskripkin@gmail.com>
-Cc: outreachy@lists.linux.dev, Larry Finger <Larry.Finger@lwfinger.net>,
+To: outreachy@lists.linux.dev, Larry Finger <Larry.Finger@lwfinger.net>,
 	Phillip Potter <phil@philpotter.co.uk>,
+	Pavel Skripkin <paskripkin@gmail.com>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] staging: r8188eu: Use flexible-array for one length
- array member
-Message-ID: <Y2LCykj5Ntx7yHxu@qemulion>
-References: <Y1vRivFfRD6VoBt/@ubunlion>
- <642519a2-664d-d837-983a-1d5bbc72a25e@gmail.com>
- <Y1vjKtM9druO2bSN@ubunlion>
- <Y1vqd/ij5WqcL3Qe@kadam>
+Subject: [PATCH] staging: r8188eu: remove unused struct declarations
+Message-ID: <Y2LYvhr74ng+xFbz@qemulion>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -37,88 +31,80 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <Y1vqd/ij5WqcL3Qe@kadam>
 
-On Fri, Oct 28, 2022 at 05:43:03PM +0300, Dan Carpenter wrote:
-> On Fri, Oct 28, 2022 at 07:41:54PM +0530, Deepak R Varma wrote:
-> > On Fri, Oct 28, 2022 at 05:03:25PM +0300, Pavel Skripkin wrote:
-> > > Hi Deepak R,
-> > >
-> > > Deepak R Varma <drv@mailo.com> says:
-> > > > Flexible-array member should be used instead of one or zero member to
-> > > > meet the need for having a dynamically sized trailing elements in a
-> > > > structure. Refer to links [1] and [2] for detailed guidance on this
-> > > > suggestion.
-> > > >
-> > > > [1] https://en.wikipedia.org/wiki/Flexible_array_member
-> > > > [2] https://www.kernel.org/doc/html/v5.16/process/deprecated.html#zero-length-and-one-element-arrays
-> > > >
-> > > > Issue identified using coccicheck.
-> > > >
-> > > > Signed-off-by: Deepak R Varma <drv@mailo.com>
-> > > > ---
-> > > >   drivers/staging/r8188eu/include/odm.h         | 2 +-
-> > > >   drivers/staging/r8188eu/include/wlan_bssdef.h | 6 +++---
-> > > >   2 files changed, 4 insertions(+), 4 deletions(-)
-> > > >
-> > > > diff --git a/drivers/staging/r8188eu/include/odm.h b/drivers/staging/r8188eu/include/odm.h
-> > > > index 89b01dd614ba..e2a9de5b9323 100644
-> > > > --- a/drivers/staging/r8188eu/include/odm.h
-> > > > +++ b/drivers/staging/r8188eu/include/odm.h
-> > > > @@ -166,7 +166,7 @@ struct odm_ra_info {
-> > > >
-> > > >   struct ijk_matrix_regs_set {
-> > > >   	bool	bIQKDone;
-> > > > -	s32	Value[1][IQK_Matrix_REG_NUM];
-> > > > +	s32	Value[][IQK_Matrix_REG_NUM];
-> > > >   };
-> > > >
-> > >
-> > > you are changing the actual size of the struct. Wondering if you have tested
-> > > this patch somehow
-> >
-> > Hello Pavel,
-> > Thank you for reviewing the patch. I build the module post making the changes an
-> > ensured that the build is successful. However, I am not sure how to check the
-> > changes I am proposing. Could you please direct me to some information on how to
-> > test patches? Is there some documentation generic/driver-specific that I can
-> > refer to?
->
-> You just have to look at every place where it is used and especially
-> look at where it is allocated.  It is only used in one place:
->
-> 	struct ijk_matrix_regs_set IQKMatrixRegSetting;
->
-> But that is in the middle of a struct and generally it doesn't make
-> sense to have a flex array in the middle of a struct.  So investigating
-> further, we see that it really is a one element array:
->
-> Do a grep:
->
-> 	pDM_Odm->RFCalibrateInfo.IQKMatrixRegSetting[ChannelMappedIndex].Value[0][1]);
->
-> The first element is always zero.  So this patch introduces memory
-> corruption.
->
-> The code is messy and should be cleaned up, of course.
-
-Hello Pavel and Dan,
-I looked at the surround code and places where the proposed patch will have an
-impact. As you rightly pointed out this array can't be treated as a flexible
-array since it fits right in the middle of another struct.
-
-I am wondering if ijk_matrix_regs_set (or IQKMatrixRegSetting) is a one element
-array, why is it declared as a two dimensional array? Can this be a simple one
-dimensional array instead? Is this the cleanup you are referring to when you say
-"code is messy and should be cleaned up"?
+Some structures are only declared but have not been used anywhere
+in the code. Remove such unused structs. Issue identified as part
+of coccicheck report driven code investigation.
 
 
-Thank you,
-./drv
+Suggested-by: Pavel Skripkin <paskripkin@gmail.com>
+Signed-off-by: Deepak R Varma <drv@mailo.com>
+---
+ drivers/staging/r8188eu/include/wlan_bssdef.h | 42 -------------------
+ 1 file changed, 42 deletions(-)
 
->
-> regards,
-> dan carpenter
->
+diff --git a/drivers/staging/r8188eu/include/wlan_bssdef.h b/drivers/staging/r8188eu/include/wlan_bssdef.h
+index 831c465df500..ffeafa19ef26 100644
+--- a/drivers/staging/r8188eu/include/wlan_bssdef.h
++++ b/drivers/staging/r8188eu/include/wlan_bssdef.h
+@@ -177,20 +177,6 @@ struct ndis_802_11_status_ind {
+ /*  MIC check time, 60 seconds. */
+ #define MIC_CHECK_TIME	60000000
+
+-struct ndis_802_11_auth_evt {
+-	struct ndis_802_11_status_ind       Status;
+-	struct ndis_802_11_auth_req  Request[1];
+-};
+-
+-struct ndis_802_11_test {
+-	u32 Length;
+-	u32 Type;
+-	union {
+-		struct ndis_802_11_auth_evt AuthenticationEvent;
+-		NDIS_802_11_RSSI RssiTrigger;
+-	} tt;
+-};
+-
+ #ifndef Ndis802_11APMode
+ #define Ndis802_11APMode (Ndis802_11InfrastructureMax+1)
+ #endif
+@@ -279,34 +265,6 @@ enum UAPSD_MAX_SP {
+ #define NUM_PRE_AUTH_KEY 16
+ #define NUM_PMKID_CACHE NUM_PRE_AUTH_KEY
+
+-/*
+-*	WPA2
+-*/
+-
+-struct pmkid_candidate {
+-	unsigned char BSSID[ETH_ALEN];
+-	u32 Flags;
+-};
+-
+-struct ndis_802_11_pmkid_list {
+-	u32 Version;       /*  Version of the structure */
+-	u32 NumCandidates; /*  No. of pmkid candidates */
+-	struct pmkid_candidate CandidateList[1];
+-};
+-
+-struct ndis_802_11_auth_encrypt {
+-	enum ndis_802_11_auth_mode AuthModeSupported;
+-	enum ndis_802_11_wep_status EncryptStatusSupported;
+-};
+-
+-struct ndis_802_11_cap {
+-	u32  Length;
+-	u32  Version;
+-	u32  NoOfPMKIDs;
+-	u32  NoOfAuthEncryptPairsSupported;
+-	struct ndis_802_11_auth_encrypt AuthenticationEncryptionSupported[1];
+-};
+-
+ u8 key_2char2num(u8 hch, u8 lch);
+ u8 key_char2num(u8 ch);
+ u8 str_2char2num(u8 hch, u8 lch);
+--
+2.34.1
+
 
 
