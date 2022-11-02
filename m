@@ -1,27 +1,28 @@
-Received: from msg-4.mailo.com (msg-4.mailo.com [213.182.54.15])
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DCB6C7C
-	for <outreachy@lists.linux.dev>; Wed,  2 Nov 2022 06:44:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
-	t=1667371470; bh=TuGs2wZIV0Jm3adqmSsyMaLjowE04rvWCqbC2KRNNyo=;
-	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
-	 MIME-Version:Content-Type:In-Reply-To;
-	b=bmAFnFYMpZjFfHrBVZjLs7Ymb8VeNdhOYg4GeVrYXKYHTD19B98rO1UenEJM2HZ1o
-	 Lt+hk3sRVeIjMaEEfgQvwiB7TL7fIgOpC51iG2fqimjnoqjAjt2exxbdula2EQuLKR
-	 rMLKCczRYO3w0uxGCWx/2FAMjB+AENpfiHBDvBes=
-Received: by b-2.in.mailobj.net [192.168.90.12] with ESMTP
-	via [213.182.55.206]
-	Wed,  2 Nov 2022 07:44:29 +0100 (CET)
-X-EA-Auth: vcYfDdZ155QMkV/rL07Ez2836I0J9spK5UIC/VUlboy6ofV7WgrzJY9h0kK9h669bYpGdbdG7UN1Vwp0tYbNVRV9s4O2R8Un
-Date: Wed, 2 Nov 2022 12:14:25 +0530
-From: Deepak R Varma <drv@mailo.com>
-To: Alison Schofield <alison.schofield@intel.com>
-Cc: outreachy@lists.linux.dev
-Subject: Re: in-progress patches
-Message-ID: <Y2IRydHt1s21xpag@ubunlion>
-References: <Y2ANlqpqCgnt4xtY@debian-BULLSEYE-live-builder-AMD64>
- <Y2At2RNzdNYzPxXd@aschofie-mobl2>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 259027C;
+	Wed,  2 Nov 2022 07:18:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E85B7C433C1;
+	Wed,  2 Nov 2022 07:18:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1667373487;
+	bh=SfRKT+s1U0JAWcutw2ffQATmHJsVUpEc24ue7Xu2sRA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=rPMzo/IuIvACXMYS/WFe3l7Zk2VDNHDIChNhJWcedKWRf2ALoZL8lvrAS+ka4faOj
+	 5LYj819PpZmkhfdXdxkenOzUK3GO0BIVAhQgybhcbfZTxl7ebNKMghPg3cdXgxXb4g
+	 rnGg4bEqnAIugupYLox8NzMnShGQDXOVydqgDPNc=
+Date: Wed, 2 Nov 2022 08:19:00 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Philipp Hortmann <philipp.g.hortmann@gmail.com>
+Cc: Tanjuate Brunostar <tanjubrunostar0@gmail.com>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy@lists.linux.dev
+Subject: Re: [PATCH v3 0/2] staging: vt6655: some checkpatch fixes in the
+ file rxtx.c
+Message-ID: <Y2IZ5NRxma00gCtD@kroah.com>
+References: <cover.1667326000.git.tanjubrunostar0@gmail.com>
+ <f67a1a02-addf-3197-e423-7c66ab97f6df@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -30,56 +31,51 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <Y2At2RNzdNYzPxXd@aschofie-mobl2>
+In-Reply-To: <f67a1a02-addf-3197-e423-7c66ab97f6df@gmail.com>
 
-On Mon, Oct 31, 2022 at 01:19:37PM -0700, Alison Schofield wrote:
-> On Mon, Oct 31, 2022 at 11:31:58PM +0530, Deepak R Varma wrote:
-> > Hello Alison,
-> > Thank you for the heads-up about the up coming deadline. I am still in the
-> > middle of closing the patches and they are being actively worked upon. Can such
-> > in-progress effort be included in as a contribution?
->
-> Sure. Just state where you are at with those.
->
-> Regarding in flight patches as of Nov 4th, we still hope that folks
-> follow thru with their in flight patches after Nov 4th. Actually,
-> we hope folks keep contributing to the clean up efforts in the
-> Linux Kernel.
->
-> I'll post more about this list quiescing on Nov 4th.
+On Tue, Nov 01, 2022 at 11:15:37PM +0100, Philipp Hortmann wrote:
+> On 11/1/22 19:17, Tanjuate Brunostar wrote:
+> > These fixes are focused on the function s_vFillRTSHead
+> > 
+> > v3: changed the function name from fill_rts_head to fill_rts_header as
+> > head is conventionally used in lists
+> > 
+> > v2: changed confusing changelog messages
+> > 
+> > Tanjuate Brunostar (2):
+> >    staging: vt6655: change the function name s_vFillRTSHead
+> >    staging: vt6655: Join some lines of code to avoid code lines ending in
+> >      (
+> > 
+> >   drivers/staging/vt6655/rxtx.c | 48 ++++++++++++++++-------------------
+> >   1 file changed, 22 insertions(+), 26 deletions(-)
+> > 
+> 
+> Patch failed at 0001 staging: vt6655: change the function name
+> s_vFillRTSHead
+> 
+> 
+> WARNING: line length of 138 exceeds 100 columns
+> #58: FILE: drivers/staging/vt6655/rxtx.c:915:
+> +			fill_rts_header(pDevice, byPktType, pvRTS, cbFrameSize, bNeedACK,
+> bDisCRC, psEthHeader, wCurrentRate, byFBOption);
+> 
+> WARNING: line length of 138 exceeds 100 columns
+> #67: FILE: drivers/staging/vt6655/rxtx.c:934:
+> +			fill_rts_header(pDevice, byPktType, pvRTS, cbFrameSize, bNeedACK,
+> bDisCRC, psEthHeader, wCurrentRate, byFBOption);
+> 
+> WARNING: line length of 138 exceeds 100 columns
+> #76: FILE: drivers/staging/vt6655/rxtx.c:948:
+> +			fill_rts_header(pDevice, byPktType, pvRTS, cbFrameSize, bNeedACK,
+> bDisCRC, psEthHeader, wCurrentRate, byFBOption);
+> 
+> May be you need to consider to break this lines.
 
-Hello Mentors,
-I have a few Coccinelle based patches currently in flight. Following patch [1]
-that was submitted on Nov 1s, I personally feel, to be less time consuming for
-review and comment by the maintainers.
+Not in this commit, just stick to doing one thing per patch.  This line
+is already "too long" so it is not a new problem being introduced with
+this change.  It is fine as-is.
 
-Could you please help/suggest how to request the maintainers for a priority
-review since the deadline for applying to the project with an accepted
-contribution is very close.
+thanks,
 
-[1]: [PATCH v2] staging: r8188eu: remove unwanted variable implementation
-
-Thank you for all your support, mentoring and patience with out queries. It was
-a great opportunity to contribute to the Linux Kernel code. I wish to continue
-to work on my open patches beyond the contribution period.
-
-Alison,
-I am looking forward to your next update on 4th :)
-
-Thank you once again!!!
-
-./drv
-
->
-> Thanks for asking,
-> Alison
->
-> >
-> > Thank you,
-> > ./drv
-> >
-> >
-> >
->
-
-
+greg k-h
