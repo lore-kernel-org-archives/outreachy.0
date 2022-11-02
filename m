@@ -1,86 +1,62 @@
-Received: from relay.hostedemail.com (smtprelay0016.hostedemail.com [216.40.44.16])
+Received: from msg-1.mailo.com (msg-1.mailo.com [213.182.54.11])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 094351E9F9;
-	Wed,  2 Nov 2022 16:42:55 +0000 (UTC)
-Received: from omf15.hostedemail.com (a10.router.float.18 [10.200.18.1])
-	by unirelay02.hostedemail.com (Postfix) with ESMTP id 240C612048C;
-	Wed,  2 Nov 2022 16:42:49 +0000 (UTC)
-Received: from [HIDDEN] (Authenticated sender: joe@perches.com) by omf15.hostedemail.com (Postfix) with ESMTPA id 0960E1A;
-	Wed,  2 Nov 2022 16:42:26 +0000 (UTC)
-Message-ID: <bfc8e714fbe80a16428a447768def5764083526d.camel@perches.com>
-Subject: Re: [PATCH V4 1/2] staging: vt6655: change the function name
- s_vFillRTSHead
-From: Joe Perches <joe@perches.com>
-To: Tanjuate Brunostar <tanjubrunostar0@gmail.com>, 
-	gregkh@linuxfoundation.org
-Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, 
-	outreachy@lists.linux.dev
-Date: Wed, 02 Nov 2022 09:42:44 -0700
-In-Reply-To: <5a0649c6019f1717cb2e2e8fc4e262f3747d73a5.1667397591.git.tanjubrunostar0@gmail.com>
-References: <cover.1667397591.git.tanjubrunostar0@gmail.com>
-	 <5a0649c6019f1717cb2e2e8fc4e262f3747d73a5.1667397591.git.tanjubrunostar0@gmail.com>
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.44.4 (3.44.4-2.fc36) 
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2A8E424F21;
+	Wed,  2 Nov 2022 18:25:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
+	t=1667413556; bh=3rsRCttLKAT5Ls6ZOU7vfsBpZ4yDty9OCgC/PPt1JXE=;
+	h=X-EA-Auth:Date:From:To:Subject:Message-ID:MIME-Version:
+	 Content-Type;
+	b=VHo226tcGq6UkmmWik3FzNW7FW9WJbOzLQlCk+VAlngP8Tp64JJ/2aRF5H2+92d0c
+	 3NfJCVoiHE1iinESUU0q9/f3HcypAD0ZcinH7TFqLvgbiC3XK+VNySHBO8uCPCWXzv
+	 gReUxirIfkWPIkSNGWmXHEAhksERW8UqilzYzVGk=
+Received: by b-6.in.mailobj.net [192.168.90.16] with ESMTP
+	via [213.182.55.206]
+	Wed,  2 Nov 2022 19:25:56 +0100 (CET)
+X-EA-Auth: 7Y3vbvCxeKCXYF2dtoftR5y3E0Kq3g1f7d/kmFDKtPxssrWWzjpYDtCX9eq9wTBkViFvAUaJC4feBDOKJPlqNt2PoPHZRaRK
+Date: Wed, 2 Nov 2022 23:55:52 +0530
+From: Deepak R Varma <drv@mailo.com>
+To: outreachy@lists.linux.dev, Sven Van Asbroeck <TheSven73@gmail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: [PATCH] staging: fieldbus: convert snprintf to scnprintf
+Message-ID: <Y2K2MD7+WBu4QouU@qemulion>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-X-Stat-Signature: txy8sj8bu5swc3afcnas4766rwkdzdge
-X-Rspamd-Server: rspamout06
-X-Rspamd-Queue-Id: 0960E1A
-X-Spam-Status: No, score=-1.31
-X-Session-Marker: 6A6F6540706572636865732E636F6D
-X-Session-ID: U2FsdGVkX1/mxU+0uLylN+8cO5mkEBniTdxtqfnLOpM=
-X-HE-Tag: 1667407346-556323
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-On Wed, 2022-11-02 at 14:08 +0000, Tanjuate Brunostar wrote:
-> Remove the use of Hungarian notation, which is not used in the Linux
-> kernel. Reported by checkpatch
-[]
-> diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.=
-c
-[]
-> @@ -23,7 +23,7 @@
->   *      s_uGetTxRsvTime- get frame reserved time
->   *      s_vFillCTSHead- fulfill CTS ctl header
->   *      s_vFillFragParameter- Set fragment ctl parameter.
-> - *      s_vFillRTSHead- fulfill RTS ctl header
-> + *      fill_rts_header- fulfill RTS ctl header
->   *      s_vFillTxKey- fulfill tx encrypt key
->   *      s_vSWencryption- Software encrypt header
->   *      vDMA0_tx_80211- tx 802.11 frame via dma0
-> @@ -85,15 +85,15 @@ static const unsigned short fb_opt1[2][5] =3D {
->  #define DATADUR_A_F1    13
-> =20
->  /*---------------------  Static Functions  --------------------------*/
-> -static void s_vFillRTSHead(struct vnt_private *pDevice,
-> -			   unsigned char byPktType,
-> -			   void *pvRTS,
-> -			   unsigned int	cbFrameLength,
-> -			   bool bNeedAck,
-> -			   bool bDisCRC,
-> -			   struct ieee80211_hdr *hdr,
-> -			   unsigned short wCurrentRate,
-> -			   unsigned char byFBOption);
-> +static void fill_rts_head(struct vnt_private *pDevice,
-> +			  unsigned char byPktType,
-> +			  void *pvRTS,
-> +			  unsigned int	cbFrameLength,
-> +			  bool bNeedAck,
-> +			  bool bDisCRC,
-> +			  struct ieee80211_hdr *hdr,
-> +			  unsigned short wCurrentRate,
-> +			  unsigned char byFBOption);
+It is recommended to use scnprintf instead of snprintf to accurately
+return the size of the encoded data. Following article [1] has details
+on the reason for this kernel level migration. This issue was identified
+using coccicheck.
 
-Please compile the files modified by your patches _before_ submitting them.
+[1] https://lwn.net/Articles/69419/
 
-Note the mismatch in your naming for this function prototype and the
-actual function.
+Signed-off-by: Deepak R Varma <drv@mailo.com>
+---
+ drivers/staging/fieldbus/dev_core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-fill_rts_head vs fill_rts_header.
+diff --git a/drivers/staging/fieldbus/dev_core.c b/drivers/staging/fieldbus/dev_core.c
+index 5aab734606ea..d51f2b02d5e6 100644
+--- a/drivers/staging/fieldbus/dev_core.c
++++ b/drivers/staging/fieldbus/dev_core.c
+@@ -70,7 +70,7 @@ static ssize_t card_name_show(struct device *dev, struct device_attribute *attr,
+ 	 * card_name was provided by child driver, could potentially be long.
+ 	 * protect against buffer overrun.
+ 	 */
+-	return snprintf(buf, PAGE_SIZE, "%s\n", fb->card_name);
++	return scnprintf(buf, PAGE_SIZE, "%s\n", fb->card_name);
+ }
+ static DEVICE_ATTR_RO(card_name);
 
-I believe this was already pointed out to you by the kernel robot.
+--
+2.34.1
+
+
+
