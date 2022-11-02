@@ -1,73 +1,86 @@
-Received: from msg-1.mailo.com (msg-1.mailo.com [213.182.54.11])
+Received: from relay.hostedemail.com (smtprelay0016.hostedemail.com [216.40.44.16])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8D9572C9D
-	for <outreachy@lists.linux.dev>; Wed,  2 Nov 2022 14:49:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
-	t=1667400559; bh=5Wp2vSCFfbKq8qIrKKXlCVhX1u/Nh/x10JJ80y9cx84=;
-	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
-	 MIME-Version:Content-Type:In-Reply-To;
-	b=CidY6QF/4/GzvVHeKv46SZ1HA0GB0JfW/FPrQxvDaZb3OvFHJHYgM/rPw/TdDHJrm
-	 pBZTNIw6HJiSWcGVpIIb/jbPcKViJNjYXTduKvWRhNxmBTUqMst6McWzHGLMWK8Ce7
-	 brFXVjCUogEhzp4jdAbD+drwiLw5vYY0DAAKuHP8=
-Received: by b-5.in.mailobj.net [192.168.90.15] with ESMTP
-	via [213.182.55.206]
-	Wed,  2 Nov 2022 15:49:19 +0100 (CET)
-X-EA-Auth: hzsKL9lL1BWie/4xGZiem1sxDHbSZX2XGse/zjJiz0pt1DmEn5DQCoseluzWOTwu/IXur5mhDUSxEvZK9Nt3S0dM0HW0ZqOV
-Date: Wed, 2 Nov 2022 20:19:18 +0530
-From: Deepak R Varma <drv@mailo.com>
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: Outreachy Linux <outreachy@lists.linux.dev>
-Subject: Re: patch set resubmission
-Message-ID: <Y2KDbhXo1drmGpKS@debian-BULLSEYE-live-builder-AMD64>
-References: <Y2JqfFXB8AciDKRB@debian-BULLSEYE-live-builder-AMD64>
- <f34efd4b-fa7d-ff2c-7095-8a675a2919da@inria.fr>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 094351E9F9;
+	Wed,  2 Nov 2022 16:42:55 +0000 (UTC)
+Received: from omf15.hostedemail.com (a10.router.float.18 [10.200.18.1])
+	by unirelay02.hostedemail.com (Postfix) with ESMTP id 240C612048C;
+	Wed,  2 Nov 2022 16:42:49 +0000 (UTC)
+Received: from [HIDDEN] (Authenticated sender: joe@perches.com) by omf15.hostedemail.com (Postfix) with ESMTPA id 0960E1A;
+	Wed,  2 Nov 2022 16:42:26 +0000 (UTC)
+Message-ID: <bfc8e714fbe80a16428a447768def5764083526d.camel@perches.com>
+Subject: Re: [PATCH V4 1/2] staging: vt6655: change the function name
+ s_vFillRTSHead
+From: Joe Perches <joe@perches.com>
+To: Tanjuate Brunostar <tanjubrunostar0@gmail.com>, 
+	gregkh@linuxfoundation.org
+Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, 
+	outreachy@lists.linux.dev
+Date: Wed, 02 Nov 2022 09:42:44 -0700
+In-Reply-To: <5a0649c6019f1717cb2e2e8fc4e262f3747d73a5.1667397591.git.tanjubrunostar0@gmail.com>
+References: <cover.1667397591.git.tanjubrunostar0@gmail.com>
+	 <5a0649c6019f1717cb2e2e8fc4e262f3747d73a5.1667397591.git.tanjubrunostar0@gmail.com>
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.44.4 (3.44.4-2.fc36) 
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <f34efd4b-fa7d-ff2c-7095-8a675a2919da@inria.fr>
+X-Stat-Signature: txy8sj8bu5swc3afcnas4766rwkdzdge
+X-Rspamd-Server: rspamout06
+X-Rspamd-Queue-Id: 0960E1A
+X-Spam-Status: No, score=-1.31
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Session-ID: U2FsdGVkX1/mxU+0uLylN+8cO5mkEBniTdxtqfnLOpM=
+X-HE-Tag: 1667407346-556323
 
-On Wed, Nov 02, 2022 at 03:11:51PM +0100, Julia Lawall wrote:
->
->
-> On Wed, 2 Nov 2022, Deepak R Varma wrote:
->
-> > Hello,
-> > I had a patch set with 2 patches. One of the two was accepted and applied to the
-> > staging tree, whereas the other patch needs correction and a revision.
-> >
-> > I did refresh my local branch to match the staging-testing tree commit level.
-> > Now, my patch-1 from the set is 9 commits down the patch-2 commit. Patch-2
-> > commit is the top commit in my local branch.
-> >
-> > In this case, do I still need to send the patch set with both the patches? If
-> > yes, How can I format a patch set from two distant commits?
->
-> You don't need to resend what was already accepted.
->
-> It shouldn't be necessary in this case, but you can use git rebase -i
-> HEAD~N to reorganize patches in the last N commits.
+On Wed, 2022-11-02 at 14:08 +0000, Tanjuate Brunostar wrote:
+> Remove the use of Hungarian notation, which is not used in the Linux
+> kernel. Reported by checkpatch
+[]
+> diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.=
+c
+[]
+> @@ -23,7 +23,7 @@
+>   *      s_uGetTxRsvTime- get frame reserved time
+>   *      s_vFillCTSHead- fulfill CTS ctl header
+>   *      s_vFillFragParameter- Set fragment ctl parameter.
+> - *      s_vFillRTSHead- fulfill RTS ctl header
+> + *      fill_rts_header- fulfill RTS ctl header
+>   *      s_vFillTxKey- fulfill tx encrypt key
+>   *      s_vSWencryption- Software encrypt header
+>   *      vDMA0_tx_80211- tx 802.11 frame via dma0
+> @@ -85,15 +85,15 @@ static const unsigned short fb_opt1[2][5] =3D {
+>  #define DATADUR_A_F1    13
+> =20
+>  /*---------------------  Static Functions  --------------------------*/
+> -static void s_vFillRTSHead(struct vnt_private *pDevice,
+> -			   unsigned char byPktType,
+> -			   void *pvRTS,
+> -			   unsigned int	cbFrameLength,
+> -			   bool bNeedAck,
+> -			   bool bDisCRC,
+> -			   struct ieee80211_hdr *hdr,
+> -			   unsigned short wCurrentRate,
+> -			   unsigned char byFBOption);
+> +static void fill_rts_head(struct vnt_private *pDevice,
+> +			  unsigned char byPktType,
+> +			  void *pvRTS,
+> +			  unsigned int	cbFrameLength,
+> +			  bool bNeedAck,
+> +			  bool bDisCRC,
+> +			  struct ieee80211_hdr *hdr,
+> +			  unsigned short wCurrentRate,
+> +			  unsigned char byFBOption);
 
-Hi Julia,
-Thank you for responding to my question. I have submitted the revised patch set
-per the guideline you provided.
+Please compile the files modified by your patches _before_ submitting them.
 
-Extended question (not urgent):
-Agree that "git rebase -i" can be used to reorganize commits; however, I am not
-sure how this can help with "git format-patch -n --thread=shallow
-commit#D^..commit#A"??? Won't we include everything in between commit D and A
-here? I wanted to know if there is a way to only include commit D and A in
-format-patch when they are separated by a few intermediate commits.
+Note the mismatch in your naming for this function prototype and the
+actual function.
 
-./drv
+fill_rts_head vs fill_rts_header.
 
->
-> julia
->
-
-
+I believe this was already pointed out to you by the kernel robot.
