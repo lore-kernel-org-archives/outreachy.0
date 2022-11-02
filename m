@@ -1,28 +1,24 @@
 Received: from msg-2.mailo.com (msg-2.mailo.com [213.182.54.12])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 842B3801;
-	Wed,  2 Nov 2022 10:55:08 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 019DE2108
+	for <outreachy@lists.linux.dev>; Wed,  2 Nov 2022 13:02:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
-	t=1667386501; bh=4H2YZFcQCuh1V5EtkYNJDyoz6e2tddNTkXLefVjinf4=;
-	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
-	 MIME-Version:Content-Type:In-Reply-To;
-	b=MyrR87fQ4sUtSoTF4ZQdrqKXQE7wszWdOK7Wm6fpMJl0j+CGsvF88XEYH/VD5Nn0n
-	 HRyu+k+ep+IgZuj4+rUsiAeT6l4nVaaTKpypfOFMmDtJ6vY5bl9B3RgBB8E3EvKMz+
-	 mLQf0bqLd2Kc9sghvRPtlabDmNp2ipKXKo39Hi+A=
-Received: by b-3.in.mailobj.net [192.168.90.13] with ESMTP
+	t=1667394172; bh=unrWr73dS6ANOJJjCBVf7KGS9teCKrF+Iv890yvl7OE=;
+	h=X-EA-Auth:Date:From:To:Subject:Message-ID:MIME-Version:
+	 Content-Type;
+	b=aBHI791/fl+cA0Dm6FZi4+ROLK8bwXshoYzeu8kB+T1oWX5cKEi22JuErrFMeHXRs
+	 bVbSec6p1d87lsEKBQEhn65FZ7IEgNANDllqH6nFVD/I2DiGkbbCQo4WlxtaUgd0Qj
+	 rwQv/vWuDbqNvLjgPLk/AjzzRTC4n85U1Dg1wQ0Y=
+Received: by b-2.in.mailobj.net [192.168.90.12] with ESMTP
 	via [213.182.55.206]
-	Wed,  2 Nov 2022 11:55:01 +0100 (CET)
-X-EA-Auth: 7JRskj5N/SPhHbQd4gvDUdxv6rhPeoIA2ZLYHn2/h8Hk/nOOlvQw6py10lNwy4gm+6nxuzA8tqmOyhR6qAIbcjU9K2T7X7HR
-Date: Wed, 2 Nov 2022 16:24:57 +0530
+	Wed,  2 Nov 2022 14:02:52 +0100 (CET)
+X-EA-Auth: rrP0mBfHe/tpmy/2P+z+Dj9/vOU44GlIgZKYjxBf1DaPmFQxTuHp0zORVPfMuBq7myGwE+pbbKtQ9PjrgNFbu0E0TsaNFp5F
+Date: Wed, 2 Nov 2022 18:32:52 +0530
 From: Deepak R Varma <drv@mailo.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Cc: outreachy@lists.linux.dev, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 0/2] staging: rtl8192u: unused code cleanup
-Message-ID: <Y2JMgdAzOS25qQuA@lion2204>
-References: <cover.1667237959.git.drv@mailo.com>
- <Y2Ib7FjwfqbcZ77h@kroah.com>
+To: Outreachy Linux <outreachy@lists.linux.dev>
+Subject: patch set resubmission
+Message-ID: <Y2JqfFXB8AciDKRB@debian-BULLSEYE-live-builder-AMD64>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -31,56 +27,19 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <Y2Ib7FjwfqbcZ77h@kroah.com>
 
-On Wed, Nov 02, 2022 at 08:27:40AM +0100, Greg KH wrote:
-> On Mon, Oct 31, 2022 at 11:25:14PM +0530, Deepak R Varma wrote:
-> > Remove unnecessary or unused code.
-> >
-> > Changes in v2:
-> >    Patch1:
-> >       1. Revise patch log to explain impact of the patch
-> >          Suggested by gregkh@linuxfoundation.org
-> >    Patch2:
-> >       1. Review other similar macro defines and clean those up as well.
-> >          Suggested by gregkh@linuxfoundation.org
-> >       2. Revise patch log to explain impact of the patch
-> >          Suggested by julia.lawall@inria.fr
-> >
-> > Deepak R Varma (2):
-> >   staging: rtl8192u: remove unnecessary function implementation
-> >   staging: rtl8192u: remove redundant macro definition
-> >
-> >  .../staging/rtl8192u/ieee80211/ieee80211.h    | 67 -------------------
-> >  .../rtl8192u/ieee80211/ieee80211_crypt_tkip.c |  6 --
-> >  .../rtl8192u/ieee80211/ieee80211_module.c     |  3 -
-> >  3 files changed, 76 deletions(-)
->
-> This series causes a build breakage:
->
->   MODPOST Module.symvers
-> ../ERROR: modpost: net/mac80211/mac80211: 'ieee80211_wake_queue' exported twice. Previous export was in drivers/staging/rtl8192u/r8192u_usb.ko
-> ERROR: modpost: net/mac80211/mac80211: 'ieee80211_stop_queue' exported twice. Previous export was in drivers/staging/rtl8192u/r8192u_usb.ko
-> make[1]: *** [scripts/Makefile.modpost:126: Module.symvers] Error 1
-> make: *** [Makefile:1944: modpost] Error 2
->
-> Always test build your changes.
+Hello,
+I had a patch set with 2 patches. One of the two was accepted and applied to the
+staging tree, whereas the other patch needs correction and a revision.
 
-My apologies. I did a limited driver specific build but did not run a full make.
-I understand that the EXPORT_SYMBOL is across the kernel and I should have run a
-full build.
+I did refresh my local branch to match the staging-testing tree commit level.
+Now, my patch-1 from the set is 9 commits down the patch-2 commit. Patch-2
+commit is the top commit in my local branch.
 
-I have made the corrections and now running a full build. I will send a revision
-shortly.
+In this case, do I still need to send the patch set with both the patches? If
+yes, How can I format a patch set from two distant commits?
 
-Sorry for the trouble.
-
+Thank you,
 ./drv
-
-
-
->
-> greg k-h
->
 
 
