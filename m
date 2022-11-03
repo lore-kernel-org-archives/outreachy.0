@@ -1,111 +1,76 @@
-Received: from mail-ed1-f53.google.com (mail-ed1-f53.google.com [209.85.208.53])
+Received: from mail-wr1-f50.google.com (mail-wr1-f50.google.com [209.85.221.50])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0E5058F76;
-	Wed,  2 Nov 2022 22:56:28 +0000 (UTC)
-Received: by mail-ed1-f53.google.com with SMTP id l11so581955edb.4;
-        Wed, 02 Nov 2022 15:56:28 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E36507E2;
+	Thu,  3 Nov 2022 05:22:18 +0000 (UTC)
+Received: by mail-wr1-f50.google.com with SMTP id z14so1031051wrn.7;
+        Wed, 02 Nov 2022 22:22:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=GvHltcSmK4KB84UjgoRavJNl81LE4r8A3c+x/iev4MA=;
-        b=GGAex3CI7HG5F0f46SDhbIa74JgV50de0+Qc8WZMJHFXAt//qMhC7JCLq9iHR2Hg9T
-         fno+KA0jY6Jft4HLv53ZdqOyImOjFBRal2NEFMuXXF9JsNzfmWSJSLb+b6iZa2uBEelf
-         NyE7K66vR5r7QGFagRa99NXTK/1yxR+OTK+MgdFNe0p8bWU0xxVlDqg7MA31GdAOfPe/
-         lN9AfRIz1ESKJ8pWmdXdbJ/S0xMkri7MC6UxKcGPw7ITo+uOG/UaDYrqb9okfSAn8w46
-         42U6UgzltIqKu+Xtig1R1BzNiHo+pCErmAh3QYM9c3bh4XMeHIZTIOs3mE43+04JNaWY
-         6P4A==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=YHeYRtbQ3BOR9DbNBl//b/ECiZLyzDKiq1z7LfU80Ro=;
+        b=cLRHFFC/4i0kC25woN7rBisVFZbJAi5O+WO3FpKztDcZ6Sih+MKjwVgaMCk7b1ZlmK
+         6AwoRT0fsSAqWkmu1bypc3oogAZ3Fcc0WkUSA0hslBJ34GxfhcIVScg64Qa5m0aw8YqR
+         I09X2XBzK+uMJCx9zJuN1uy+FtlIyQebL3/UDviODhjjTpR2vOqFnXWOghkYllr17/QL
+         x537E4VG3qPA0aR6uwh20FQIsTewE5tgZSoVqKIwfzQwvtSUkKB4pcfFPs36m6vSr20v
+         jtXxlKqxd269Wc1hV+2zqd4zj8DrttsBMAi5xoXwGbgubL7uaXrQ402EpBYPHwDQPwRF
+         ReTQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=GvHltcSmK4KB84UjgoRavJNl81LE4r8A3c+x/iev4MA=;
-        b=DD46cyRRXXhGzlYr8VU/QjB+DXlfLUU8PYMxsHcce1YWfP8T338YStmVS+vByRxYpq
-         04TcYGYoK7DNNrX+R2K3cO1Uc8lEI0JJEbLKBxlkBsBr4as2RbzkUXiqVa4aKunjfj+Y
-         3+4VBsiIYXYGrNBy5SRrkRVRMrqaLEr5Y/LVmeSV19k0Ztqd3WbzGgOht+ENjrBc4PBe
-         DJ54CEJwVU96MrKan4MptItO4qRTCpPh7soMUV7vVSQMiYfgb1nVmX+6I6Vc9mL1+SI2
-         ZW5ncF+hi1toT3d1VuCVi7sVH4S8P3yK2QwPJggmXDh6cE37+zJj4p/zIaUJ0m2gmnPQ
-         0yxQ==
-X-Gm-Message-State: ACrzQf1EEBifDA0Ocdt1wTMKGQG4LsRHbgt8PQAusiodWj+fOJmL4Lnz
-	3S5rbWplktrbuiiwnyHlJmI=
-X-Google-Smtp-Source: AMsMyM7AsyW0ijpFauuTaWekHGQ3xgTxJ1jYaN1OW6eR4n2or7ItpJKxllFbvFndEIAa6d3qAHX0AQ==
-X-Received: by 2002:a50:d0c4:0:b0:464:14ed:834 with SMTP id g4-20020a50d0c4000000b0046414ed0834mr3871229edf.174.1667429787244;
-        Wed, 02 Nov 2022 15:56:27 -0700 (PDT)
-Received: from [192.168.1.100] (p57935738.dip0.t-ipconnect.de. [87.147.87.56])
-        by smtp.gmail.com with ESMTPSA id ee13-20020a056402290d00b0046267f8150csm6284073edb.19.2022.11.02.15.56.26
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 02 Nov 2022 15:56:26 -0700 (PDT)
-Message-ID: <4c2497a4-cf86-af1a-5a0b-0d980f02f152@gmail.com>
-Date: Wed, 2 Nov 2022 23:56:25 +0100
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=YHeYRtbQ3BOR9DbNBl//b/ECiZLyzDKiq1z7LfU80Ro=;
+        b=Hrs0u+iT0U/8pYSXz8fd+Bdw8xs2cmqABcn2ZUCwEB4O/+tiM9LAHcpp3EIzYXQAoE
+         Tr1UOvPKvPaD59aPdlAwGRLGUYByEX0F0OVb/31qLhPp7THPGZT0iIo4TG/mv/ifyNfl
+         VPCZsz5wHb50cSFL4d62VRzPDAf4+SxQw6hL0c6xlaYG/bfGDBUDMHZYsonuYDPQ+sto
+         yP4d4IDJWFi0ZBpJ5uMgjamLxee5FDR4nk3Kc/1qG9WzVovLY6eIPCFT57UVVqKEeE8m
+         YZFt/WPFx1ZlriMXjzvfaeHB+YJw8ozZV2OB/LCrvf2fLmFmvJtEafiWMSLKO0ugYviV
+         iG1A==
+X-Gm-Message-State: ACrzQf2pVYxF3Vn1Uw5mJTWCEi8ga1894OVImkiFIzuS9sm0ohUNjQNa
+	eUFpS5+NrZTqlWIh+xUKYn0=
+X-Google-Smtp-Source: AMsMyM7pvkJpMNweAPAMF6FegnUvSD//sJCqTd+gnDmriuq/ro/yXz1HEH0nR09Za+uaQvmBFQOsdQ==
+X-Received: by 2002:a5d:4410:0:b0:236:a8f9:268f with SMTP id z16-20020a5d4410000000b00236a8f9268fmr17515507wrq.405.1667452937156;
+        Wed, 02 Nov 2022 22:22:17 -0700 (PDT)
+Received: from localhost ([102.36.222.112])
+        by smtp.gmail.com with ESMTPSA id n124-20020a1ca482000000b003b4a68645e9sm4019487wme.34.2022.11.02.22.22.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 02 Nov 2022 22:22:16 -0700 (PDT)
+Date: Thu, 3 Nov 2022 08:22:14 +0300
+From: Dan Carpenter <error27@gmail.com>
+To: Deepak R Varma <drv@mailo.com>
+Cc: Pavel Skripkin <paskripkin@gmail.com>, outreachy@lists.linux.dev,
+	Larry Finger <Larry.Finger@lwfinger.net>,
+	Phillip Potter <phil@philpotter.co.uk>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] staging: r8188eu: Use flexible-array for one length
+ array member
+Message-ID: <Y2NQBgUdNPB7g0Tf@kadam>
+References: <Y1vRivFfRD6VoBt/@ubunlion>
+ <642519a2-664d-d837-983a-1d5bbc72a25e@gmail.com>
+ <Y1vjKtM9druO2bSN@ubunlion>
+ <Y1vqd/ij5WqcL3Qe@kadam>
+ <Y2LCykj5Ntx7yHxu@qemulion>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.11.0
-Subject: Re: [PATCH] staging: rtl8192e: Use min_t/max_t macros for variable
- comparison
-Content-Language: en-US
-To: Deepak R Varma <drv@mailo.com>, outreachy@lists.linux.dev,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-References: <Y2LxC2kziM1TznhO@qemulion>
-From: Philipp Hortmann <philipp.g.hortmann@gmail.com>
-In-Reply-To: <Y2LxC2kziM1TznhO@qemulion>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <Y2LCykj5Ntx7yHxu@qemulion>
 
-On 11/2/22 23:36, Deepak R Varma wrote:
-> Simplify code by using min_t and max_t helper macros in place of lengthy
-> if/else block oriented logical evaluation and value assignment. This
-> issue is identified by coccicheck using the minmax.cocci file.
-> 
-> Use the *_t variants of min/max macros to avoid compiler warnings about
-> data typecast.
-> Also, use u32 as type for min_t macro to avoid any truncation of data
-> associated with enum constant HT_AGG_SIZE_32K.
-> 
-> Signed-off-by: Deepak R Varma <drv@mailo.com>
-> ---
->   drivers/staging/rtl8192e/rtl819x_HTProc.c | 13 ++++---------
->   1 file changed, 4 insertions(+), 9 deletions(-)
-> 
-> diff --git a/drivers/staging/rtl8192e/rtl819x_HTProc.c b/drivers/staging/rtl8192e/rtl819x_HTProc.c
-> index 62aa8e893c34..ccb86660ab48 100644
-> --- a/drivers/staging/rtl8192e/rtl819x_HTProc.c
-> +++ b/drivers/staging/rtl8192e/rtl819x_HTProc.c
-> @@ -587,17 +587,12 @@ void HTOnAssocRsp(struct rtllib_device *ieee)
->   			else
->   				pHTInfo->CurrentAMPDUFactor = HT_AGG_SIZE_64K;
->   		} else {
-> -			if (pPeerHTCap->MaxRxAMPDUFactor < HT_AGG_SIZE_32K)
-> -				pHTInfo->CurrentAMPDUFactor =
-> -						 pPeerHTCap->MaxRxAMPDUFactor;
-> -			else
-> -				pHTInfo->CurrentAMPDUFactor = HT_AGG_SIZE_32K;
-> +			pHTInfo->CurrentAMPDUFactor = min_t(u32, pPeerHTCap->MaxRxAMPDUFactor,
-> +							    HT_AGG_SIZE_32K);
->   		}
->   	}
-> -	if (pHTInfo->MPDU_Density > pPeerHTCap->MPDUDensity)
-> -		pHTInfo->current_mpdu_density = pHTInfo->MPDU_Density;
-> -	else
-> -		pHTInfo->current_mpdu_density = pPeerHTCap->MPDUDensity;
-> +	pHTInfo->current_mpdu_density = max_t(u8, pHTInfo->MPDU_Density,
-> +					      pPeerHTCap->MPDUDensity);
->   	if (pHTInfo->iot_action & HT_IOT_ACT_TX_USE_AMSDU_8K) {
->   		pHTInfo->bCurrentAMPDUEnable = false;
->   		pHTInfo->ForcedAMSDUMode = HT_AGG_FORCE_ENABLE;
-> --
-> 2.34.1
-> 
-> 
-> 
-> 
+On Thu, Nov 03, 2022 at 12:49:38AM +0530, Deepak R Varma wrote:
+> I am wondering if ijk_matrix_regs_set (or IQKMatrixRegSetting) is a one element
+> array, why is it declared as a two dimensional array? Can this be a simple one
+> dimensional array instead? Is this the cleanup you are referring to when you say
+> "code is messy and should be cleaned up"?
 
-Tested-by: Philipp Hortmann <philipp.g.hortmann@gmail.com>
+Yes.  You have interpreted that correctly.
+
+regards,
+dan carpenter
+
