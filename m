@@ -1,77 +1,99 @@
-Received: from mga04.intel.com (mga04.intel.com [192.55.52.120])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ej1-f53.google.com (mail-ej1-f53.google.com [209.85.218.53])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8D76563D3
-	for <outreachy@lists.linux.dev>; Thu,  3 Nov 2022 20:13:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1667506410; x=1699042410;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=k1ylmtSFpCKHqOHSOkSC2Q9esBtNq5hKust+bwD5VTg=;
-  b=UpnAfh+Ngi3oMH8eezNKlUrdpIUO14LYJhI230cUKylwJr1mITf8dEDW
-   W3aEW/TArvhs8JcqP5lkIAOfqQBPThcnYYtA0NzNSaS4xxTQtxPNQ6VkP
-   peEY3oMxQFAWgwSU7fpe7Jh4by5QsvCm8rVm44NgdbRVonFPA4mhpdIZr
-   t5/+GJjhAl7ZVXZ8TVuSXgKXTiUbsMt4M42i385CHMkCbMYYFeFPrIGkE
-   DwBi137XREw7j+i6/R0p0hB1NY8hHy3/1SaXFxOUOxX4qEgNQRqVKSWo4
-   1vhzcDLTM7es9Z2nyCIfpd87B5keD0lVQKBVdL9XLff1T9yxkzcbuGRTJ
-   w==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10520"; a="308509013"
-X-IronPort-AV: E=Sophos;i="5.96,135,1665471600"; 
-   d="scan'208";a="308509013"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
-  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Nov 2022 13:13:18 -0700
-X-IronPort-AV: E=McAfee;i="6500,9779,10520"; a="629472715"
-X-IronPort-AV: E=Sophos;i="5.96,135,1665471600"; 
-   d="scan'208";a="629472715"
-Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.212.164.233])
-  by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Nov 2022 13:13:17 -0700
-Date: Thu, 3 Nov 2022 13:13:16 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: Outreachy Linux Kernel <outreachy@lists.linux.dev>
-Cc: Saurabh Singh Sengar <ssengar@linux.microsoft.com>,
-	Praveen Kumar <kumarpraveen@linux.microsoft.com>
-Subject: Re: Outreachy Info: Final application questions
-Message-ID: <Y2Qg3NuDvygS6Abr@aschofie-mobl2>
-References: <Y2Qd4Ez42Hm9DYSw@aschofie-mobl2>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ADCE279C1;
+	Thu,  3 Nov 2022 21:19:08 +0000 (UTC)
+Received: by mail-ej1-f53.google.com with SMTP id t25so8657688ejb.8;
+        Thu, 03 Nov 2022 14:19:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=ImDG//sNXg/oy5XZPOuBFIhl7k6YK/gX5hImljVQwNU=;
+        b=i7qVVi6QJzHOHsEyF2H3U4f5BeR1vqQ/kDwBUG+qLwh2CKBdbxFvjlU1NDRlZWCCpv
+         of5a1WNQfehJN8bsNpyjehVNs9eSgIztGtu/hL+pmDwe1CTX6Co8eJvifN63coVyARjd
+         SvBBi6iH8toGKC6+4APYxAACJDaW316sIqWQbSQPa7XWYx8xgXYXzzH2RpjY8zu0WEPU
+         TMdY43lbQ8a1wJBk1yHYHzPpIYe+c/DnyU+nVSH/su1e/aAEsZ4miSYLzLffNjRTAqNe
+         m3xv4eVf22zWK86RAjEKJfL8/v9GtOInlGlmel9QLoO0pjS1mpub40YrpTl2TmfuBkvu
+         azpQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=ImDG//sNXg/oy5XZPOuBFIhl7k6YK/gX5hImljVQwNU=;
+        b=tn9weWuTUvhrx7C5eiMIJxJUtlyuxew/0mw4CiCpkKQCdTs5BDQvViOB1FW7CJJkpI
+         fJoC3gYhm4/kZPXrBEUxJlroFzgS33TKOtdm0gWmcnOt5Z9froP64i9dCZ1zjea4xzmu
+         PTnoKecye5bVolM2aHjUazajXa64Mi+02HGSjmLfEdu1JjeYUmvESH2PR54uM3H7Ek8m
+         g6HP+as+s4v+RH5g+WlYAEze8RwV8Nv9WtPgsUx9/yJDUbw4MJ2/5+iCsn0v4jeY0B9G
+         rQBOZYmCK+3pZfDpTRxUkiF++24OBktKahMDBquGJk01mLJR6sRqVq1YVAc5qUXoSvN/
+         w5xQ==
+X-Gm-Message-State: ACrzQf2jcvcFi+HT1MsieXftfF1La1qWwytojUQyoQlQtmmOxhTZ01TA
+	IPN55PWiJ0M2bKMnb7AvMqI=
+X-Google-Smtp-Source: AMsMyM7Kh4e60noIwDR139plI/hWSD9OSNgFT8xfKVvgoTo9o2S/R19CkOOAEcIyeni3GZNwo9ShVA==
+X-Received: by 2002:a17:906:6a17:b0:794:f0e8:1918 with SMTP id qw23-20020a1709066a1700b00794f0e81918mr31466676ejc.474.1667510346827;
+        Thu, 03 Nov 2022 14:19:06 -0700 (PDT)
+Received: from ?IPV6:2003:c7:8f2a:b895:1d95:7d32:5509:657e? (p200300c78f2ab8951d957d325509657e.dip0.t-ipconnect.de. [2003:c7:8f2a:b895:1d95:7d32:5509:657e])
+        by smtp.gmail.com with ESMTPSA id td11-20020a1709078c8b00b00773f3ccd989sm964617ejc.68.2022.11.03.14.19.05
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 03 Nov 2022 14:19:06 -0700 (PDT)
+Message-ID: <2aeb10bc-178f-836e-eecd-c77f3eb2f0b5@gmail.com>
+Date: Thu, 3 Nov 2022 22:19:05 +0100
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Y2Qd4Ez42Hm9DYSw@aschofie-mobl2>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
+ Thunderbird/91.11.0
+Subject: Re: [PATCH] staging: r8188eu: remove unused struct declarations
+Content-Language: en-US
+To: Deepak R Varma <drv@mailo.com>
+Cc: outreachy@lists.linux.dev, Larry Finger <Larry.Finger@lwfinger.net>,
+ Phillip Potter <phil@philpotter.co.uk>, Pavel Skripkin
+ <paskripkin@gmail.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+References: <Y2LYvhr74ng+xFbz@qemulion>
+ <e76c5fd4-442b-0f0e-73e8-c17acf11b471@gmail.com> <Y2OOM8g0Qj1o6dRI@qemulion>
+From: Philipp Hortmann <philipp.g.hortmann@gmail.com>
+In-Reply-To: <Y2OOM8g0Qj1o6dRI@qemulion>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 
-On Thu, Nov 03, 2022 at 01:00:32PM -0700, Alison Schofield wrote:
-> Hi Applicants,
+On 11/3/22 10:47, Deepak R Varma wrote:
+> Hello Philipp,
+> Thank you for testing the changes.
 > 
-> As you complete your final application, here are a couple of aread
-> that you may have questions about.
+> Request (not urgent):
+> Can you please help me understand how do you
+> test such changes? Do we need specific hardware for functional tests? Is there a
+> documentation available to know more about the testing? I am interested in
+> attaching a physical device to my machine and be able to debug and test the
+> changes. Can you please provide details when you have time?
 > 
-> Community-specific questions:
-> The Linux Kernel Community does not have any additional questions.
-> (You can write that in the box, or leave it blank.)
-> 
-> Internship project timeline:
-> The internship will be mapped out between mentors and interns during
-> the first week of the internship. It is customized to each intern.
-> (You can write that in the box too.)
-> 
-> Thanks & any questions, please ask. Deadline Nov 4 4pm UTC
-> 
-> Alison
- 
-Another thing you may not be aware of:
+> Thank you in advance!
+> ./drv
 
-Neither the mentors, nor I, see your original application to Outreachy,
-so be sure to answer the first 3 question on the final app fully:
+Hi Deepak,
 
-- Past experience with this free software community
-- Past experience with other free software communities
-- Relevant personal or class projects
+I do have one device for the following drivers:
 
-Alison
+vt6656
+vt6655
+r8188eu
+r8192e_pci
+r8712u
 
+Minimum test is to measure the transfer speed and see if that is as 
+expected.
 
+When I doubt that the changed code is used I use ftrace to see if the 
+code is used. But of course I do not test every possibility.
+
+I hope you have the money to be able to buy hardware. Without it is not fun.
+
+I would choose r8188eu (USB) or r8192e_pci.
+
+Bye Philipp
