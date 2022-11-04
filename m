@@ -1,113 +1,145 @@
 Received: from msg-2.mailo.com (msg-2.mailo.com [213.182.54.12])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AF87610EB;
-	Fri,  4 Nov 2022 08:01:37 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DFC5D7C;
+	Fri,  4 Nov 2022 12:01:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
-	t=1667548891; bh=ZXbEFO3vszBBy6fk5O/FA9iq9h+aX2yhtD8lxQvGyyY=;
+	t=1667563290; bh=YPtVAYdEXx8i1IqVFxOaEx4OHXULptxJaVd+6m0sNS4=;
 	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
 	 MIME-Version:Content-Type:In-Reply-To;
-	b=GW/j562SKvbtefjP1da8C0bPUhXMdhSu+WiSuZqa0eGV0Rxv9CgfM/sSN45a+dsWr
-	 ghPCXresOipC1pAgzV+xRAUfOaevRNjMDNEXAe5cSdojbvpcVCMpUfJQFQvZEFU4/i
-	 1cX8raOMQ3wTTj9WvW7RKoxEtvsvW887NKQcERRQ=
-Received: by b-4.in.mailobj.net [192.168.90.14] with ESMTP
+	b=Ae8o+1mGNoQo+M811F7prUxM7U7ewnLmNUUgif7ucBtmoK37UdYs1sQASWogMSpk5
+	 BU2Q/pFhMFHfrEpTpmdR1oSqDgno4eJH3sT+3Mvwf21HIPeAax/kxoiTPXGjIhfLFj
+	 sh19qspZ4whb6OoeGWPwIZ3qlgiFmmbDRE+eje38=
+Received: by b-6.in.mailobj.net [192.168.90.16] with ESMTP
 	via ip-206.mailobj.net [213.182.55.206]
-	Fri,  4 Nov 2022 09:01:31 +0100 (CET)
-X-EA-Auth: TUR8vkepu6ByoPiTb+uNlOvt9qpGRr7QafjQ7F7kzVZlMHyVldXK0bfWPOhHlnqBQIWdY5EGAPyjjPVaNYhh/eEZ9L3B/oI5
-Date: Fri, 4 Nov 2022 13:31:21 +0530
+	Fri,  4 Nov 2022 13:01:30 +0100 (CET)
+X-EA-Auth: RKOMhKgnDYEkcwR2C1jUfpukTrMkM9CT5k93jTVD2RfACxrD4GmkzSXe/I44EP5fTeY2OAgi5F7UPu1DPCFQvjMSblKoagZy
+Date: Fri, 4 Nov 2022 17:31:24 +0530
 From: Deepak R Varma <drv@mailo.com>
-To: Dan Carpenter <error27@gmail.com>
-Cc: David Laight <David.Laight@aculab.com>,
-	"outreachy@lists.linux.dev" <outreachy@lists.linux.dev>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	"linux-staging@lists.linux.dev" <linux-staging@lists.linux.dev>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH] staging: rtl8192e: Use min_t/max_t macros for variable
- comparison
-Message-ID: <Y2TG0ain2dzfq76V@qemulion>
-References: <Y2LxC2kziM1TznhO@qemulion>
- <d8fa86bf71694f23b8f175245722e86f@AcuMS.aculab.com>
- <Y2OBmWIwhRMOk6V/@kadam>
- <Y2OHVoXD82CIHL8R@qemulion>
- <Y2OTUAo1OliSFCJh@kadam>
+To: Julia Lawall <julia.lawall@inria.fr>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy@lists.linux.dev, dri-devel@lists.freedesktop.org,
+	linux-fbdev@vger.kernel.org, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] staging: fbtft: Use ARRAY_SIZE() to get argument count
+Message-ID: <Y2T/FA0Ws9ExS+uz@qemulion>
+References: <Y1vZXUi0Bjiub8HZ@ubunlion>
+ <Y1zXIjCe3LGwApWD@kroah.com>
+ <Y11b0oCmle2pbRel@ubunlion>
+ <alpine.DEB.2.22.394.2210291931590.2917@hadrien>
+ <Y191LI7zKVRA5LEb@ubunlion>
+ <Y1+YC5OuycA5hLFx@ubunlion>
+ <7dc9b4d2-413-3f65-1381-b164d810c3ee@inria.fr>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="OeYwv3HN8BVedkYl"
+Content-Disposition: inline
+In-Reply-To: <7dc9b4d2-413-3f65-1381-b164d810c3ee@inria.fr>
+
+
+--OeYwv3HN8BVedkYl
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <Y2OTUAo1OliSFCJh@kadam>
 
-On Thu, Nov 03, 2022 at 01:09:20PM +0300, Dan Carpenter wrote:
-> On Thu, Nov 03, 2022 at 02:48:35PM +0530, Deepak R Varma wrote:
-> > On Thu, Nov 03, 2022 at 11:53:45AM +0300, Dan Carpenter wrote:
-> > > On Thu, Nov 03, 2022 at 08:24:15AM +0000, David Laight wrote:
-> > > > > --- a/drivers/staging/rtl8192e/rtl819x_HTProc.c
-> > > > > +++ b/drivers/staging/rtl8192e/rtl819x_HTProc.c
-> > > > > @@ -587,17 +587,12 @@ void HTOnAssocRsp(struct rtllib_device *ieee)
-> > > > >  			else
-> > > > >  				pHTInfo->CurrentAMPDUFactor = HT_AGG_SIZE_64K;
-> > > > >  		} else {
-> > > > > -			if (pPeerHTCap->MaxRxAMPDUFactor < HT_AGG_SIZE_32K)
-> > > > > -				pHTInfo->CurrentAMPDUFactor =
-> > > > > -						 pPeerHTCap->MaxRxAMPDUFactor;
-> > > > > -			else
-> > > > > -				pHTInfo->CurrentAMPDUFactor = HT_AGG_SIZE_32K;
-> > > > > +			pHTInfo->CurrentAMPDUFactor = min_t(u32, pPeerHTCap->MaxRxAMPDUFactor,
-> > > > > +							    HT_AGG_SIZE_32K);
-> > > >
-> > > > For min() to fail there must be a signed v unsigned mismatch.
-> > > > Maybe that ought to be fixed.
-> > > >
-> > >
-> > > u32 is the right choice here.
-> > >
-> > > I'm having a hard time understanding your email.  You might be saying
-> > > we could declare HT_AGG_SIZE_32K as a u32 so then we could use min()
-> > > instead of min_t()?  HT_AGG_SIZE_32K is an enum.
-> > >
-> > > pPeerHTCap->MaxRxAMPDUFactor is a bitfield.
-> > >
-> > > 	u8 MaxRxAMPDUFactor:2;
-> > >
-> > > We will never be able to use min().
-> >
-> > I think we could do min((u32)a, (u32)b), but it is just unwrapped min_t
-> > if I understand David's comment.
-> >
+On Mon, Oct 31, 2022 at 01:05:32PM +0100, Julia Lawall wrote:
 >
-> No.  Do not do that.  I think it's a checkpatch warning.  What you have
-> is fine.
 >
-> > >
-> > > > >  		}
-> > > > >  	}
-> > > > > -	if (pHTInfo->MPDU_Density > pPeerHTCap->MPDUDensity)
-> > > > > -		pHTInfo->current_mpdu_density = pHTInfo->MPDU_Density;
-> > > > > -	else
-> > > > > -		pHTInfo->current_mpdu_density = pPeerHTCap->MPDUDensity;
-> > > > > +	pHTInfo->current_mpdu_density = max_t(u8, pHTInfo->MPDU_Density,
-> > > > > +					      pPeerHTCap->MPDUDensity);
-> > > >
-> > > > Using u8 with max_t() really doesn't make any sense.
-> > >
-> > > Using u8 looks wrong because you would worry that one of the types is
-> > > larger than U8_MAX.  But it's actually fine.  The types are u8 vs another
-> > > bitfield.  I would probably have gone with u32 here as well.
-> > I will take your advise and upgrade the type to u32 as a revision.
+> I took a look, but it's pretty complex.  You could take the code and
+> reorganize it so that it is more readable, and then take the definition of
+> the ARRAY_SIZE macro, to better see what is going on.
 >
-> Sounds good.  It's not something I would have asked you to redo the
-> patch over, but it would have been my personal preference.
+> julia
+>
 
-That is no problem. I am waiting on David to elaborate on his feedback and
-accordingly plan a consolidated revision.
+Hello Greg, Julia,
+I was able to successfully build the fbtft object file for arm architecture as
+well. I used gcc 6.5.0 and 9.5.0 tool chains. It was successful using both. I
+have attached the build log from my machine for your reference.
 
->
-> regards,
-> dan carpenter
->
->
+I am also looking at the .i file and rearrange the expanded macro to understand
+it. However, since it is built successfully, I am not sure if that is truly the
+problem area.
+
+Should I resend the patch and check if it still errors the kernel build bot?
+Anything else I can try?
+
+Thank you,
+./drv
+
+--OeYwv3HN8BVedkYl
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: attachment; filename="fbtft_build.log"
+
+drv@qemulion:~/git/kernels/staging$ git status
+On branch patches-11022022
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   drivers/staging/fbtft/fbtft.h
+
+no changes added to commit (use "git add" and/or "git commit -a")
+drv@qemulion:~/git/kernels/staging$ git diff
+diff --git a/drivers/staging/fbtft/fbtft.h b/drivers/staging/fbtft/fbtft.h
+index 2c2b5f1c1df3..f2ed23123849 100644
+--- a/drivers/staging/fbtft/fbtft.h
++++ b/drivers/staging/fbtft/fbtft.h
+@@ -231,7 +231,7 @@ struct fbtft_par {
+        bool polarity;
+ };
+
+-#define NUMARGS(...)  (sizeof((int[]){__VA_ARGS__}) / sizeof(int))
++#define NUMARGS(...)   ARRAY_SIZE(((int[]){ __VA_ARGS__ }))
+
+ #define write_reg(par, ...)                                            \
+        ((par)->fbtftops.write_register(par, NUMARGS(__VA_ARGS__), __VA_ARGS__))
+drv@qemulion:~/git/kernels/staging$ make CROSS_COMPILE=/opt/gcc-9.5.0-nolibc/arm-linux-gnueabi/bin/arm-linux-gnueabi- --jobs=8 ARCH=arm drivers/staging/fbtft/fbtft-core.o
+  CALL    scripts/checksyscalls.sh
+  CC      drivers/staging/fbtft/fbtft-core.o
+drv@qemulion:~/git/kernels/staging$ make CROSS_COMPILE=/opt/gcc-9.5.0-nolibc/arm-linux-gnueabi/bin/arm-linux-gnueabi- --jobs=8 ARCH=arm drivers/staging/fbtft/
+  CALL    scripts/checksyscalls.sh
+  CC      drivers/staging/fbtft/fbtft-sysfs.o
+  CC      drivers/staging/fbtft/fbtft-bus.o
+  CC      drivers/staging/fbtft/fbtft-io.o
+  CC      drivers/staging/fbtft/fb_agm1264k-fl.o
+  CC      drivers/staging/fbtft/fb_bd663474.o
+  CC      drivers/staging/fbtft/fb_hx8340bn.o
+  CC      drivers/staging/fbtft/fb_hx8347d.o
+  CC      drivers/staging/fbtft/fb_hx8353d.o
+  CC      drivers/staging/fbtft/fb_hx8357d.o
+  CC      drivers/staging/fbtft/fb_ili9163.o
+  CC      drivers/staging/fbtft/fb_ili9320.o
+  CC      drivers/staging/fbtft/fb_ili9325.o
+  CC      drivers/staging/fbtft/fb_ili9340.o
+  CC      drivers/staging/fbtft/fb_ili9341.o
+  CC      drivers/staging/fbtft/fb_ili9481.o
+  CC      drivers/staging/fbtft/fb_ili9486.o
+  CC      drivers/staging/fbtft/fb_pcd8544.o
+  CC      drivers/staging/fbtft/fb_ra8875.o
+  CC      drivers/staging/fbtft/fb_s6d02a1.o
+  CC      drivers/staging/fbtft/fb_s6d1121.o
+  CC      drivers/staging/fbtft/fb_seps525.o
+  CC      drivers/staging/fbtft/fb_sh1106.o
+  CC      drivers/staging/fbtft/fb_ssd1289.o
+  CC      drivers/staging/fbtft/fb_ssd1305.o
+  CC      drivers/staging/fbtft/fb_ssd1306.o
+  CC      drivers/staging/fbtft/fb_ssd1325.o
+  CC      drivers/staging/fbtft/fb_ssd1331.o
+  CC      drivers/staging/fbtft/fb_ssd1351.o
+  CC      drivers/staging/fbtft/fb_st7735r.o
+  CC      drivers/staging/fbtft/fb_st7789v.o
+  CC      drivers/staging/fbtft/fb_tinylcd.o
+  CC      drivers/staging/fbtft/fb_tls8204.o
+  CC      drivers/staging/fbtft/fb_uc1611.o
+  CC      drivers/staging/fbtft/fb_uc1701.o
+  CC      drivers/staging/fbtft/fb_upd161704.o
+  AR      drivers/staging/fbtft/built-in.a
+drv@qemulion:~/git/kernels/staging$
+
+
+--OeYwv3HN8BVedkYl--
 
 
