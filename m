@@ -1,59 +1,103 @@
-Received: from msg-1.mailo.com (msg-1.mailo.com [213.182.54.11])
+Received: from msg-2.mailo.com (msg-2.mailo.com [213.182.54.12])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E8D288497;
-	Fri,  4 Nov 2022 18:35:30 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CA4058498;
+	Fri,  4 Nov 2022 18:47:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
-	t=1667586928; bh=0B53dwmxeG45YNVJ4Hk+8mn0kfMKjj9deNa9hc7yTfs=;
-	h=X-EA-Auth:Date:From:To:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:In-Reply-To;
-	b=Q2NuLmL/hfSwbeyuFz+iWBAaq68nrgoC1bD2s6wpXsRE64OVFSoLXo1VSpbdtg6ay
-	 Ol7ViECLDn7J3NnGNkf9essCyBDaGwU4VN3jxtmijoWSmaECaJxjyrLfrVFT5j7/34
-	 lDLsscIdjFmUNldKQaDsMVH+9QLu6wuLt2HN/aDY=
-Received: by b-3.in.mailobj.net [192.168.90.13] with ESMTP
+	t=1667587667; bh=qE5ym1opJyH1PNJ1hV7aXZmTv5qh7+ufkF7+tQ0SLhk=;
+	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
+	 MIME-Version:Content-Type:Content-Transfer-Encoding:In-Reply-To;
+	b=G6Tjjeri/M4V+ersaBajryieEc2mRd3uMTpRrqFQaLAOOGJdLbJ8ecm8rPEAOJQ8P
+	 4wCEj8oZp9Tgth6bwS3I34f5Bd0BJxPfvmx97xqjCkGoAtN+oy6fTcKir89BCSUZhW
+	 eKcatSn1vCWf+aV9Q5sAqVxikI+wSwueFjPXucKo=
+Received: by b-2.in.mailobj.net [192.168.90.12] with ESMTP
 	via ip-206.mailobj.net [213.182.55.206]
-	Fri,  4 Nov 2022 19:35:28 +0100 (CET)
-X-EA-Auth: mgpYO5K4+REdUFPKKUYsnK0F2jW6dgwbxmTkgKC0MXpQOKCap7NNTWay5++oa438urRr3fiiYiRIkOADL6v0DdsQbIFDB4u5
-Date: Sat, 5 Nov 2022 00:05:23 +0530
+	Fri,  4 Nov 2022 19:47:47 +0100 (CET)
+X-EA-Auth: pMehuuPrIcJnoivIYphP0EkQOW37Pfr1TslTm/dWkmny4O42PS+BcrVQ/qfnAAaTtT0GQf2c5ZwF5h7AAUC9g2wFcFQvL+zl
+Date: Sat, 5 Nov 2022 00:17:39 +0530
 From: Deepak R Varma <drv@mailo.com>
-To: outreachy@lists.linux.dev,
+To: David Laight <David.Laight@aculab.com>
+Cc: "'Sa, Nuno'" <Nuno.Sa@analog.com>,
+	"outreachy@lists.linux.dev" <outreachy@lists.linux.dev>,
+	Lars-Peter Clausen <lars@metafoo.de>,
+	"Hennerich, Michael" <Michael.Hennerich@analog.com>,
+	Jonathan Cameron <jic23@kernel.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: [PATCH 2/2] staging: rtl8723bs: Remove unused member variable
-Message-ID: <1b22e45254f7b8cafbf5b78d1e02380295b9ab02.1667586648.git.drv@mailo.com>
-References: <cover.1667586648.git.drv@mailo.com>
+	"linux-iio@vger.kernel.org" <linux-iio@vger.kernel.org>,
+	"linux-staging@lists.linux.dev" <linux-staging@lists.linux.dev>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH] staging: iio: ad5933: Use div64_ul instead of do_div
+Message-ID: <Y2VeS8NgPhrr8pYR@qemulion>
+References: <Y1r4EaDvEipzhaaf@ubunlion>
+ <SJ0PR03MB6778EAAB4132374270E96FFB99329@SJ0PR03MB6778.namprd03.prod.outlook.com>
+ <5740bcb3490d4c17bd9bc731e79b174b@AcuMS.aculab.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <cover.1667586648.git.drv@mailo.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <5740bcb3490d4c17bd9bc731e79b174b@AcuMS.aculab.com>
 
-Member variable bBWIqkResultSaved of struct iqk_matrix_regs_setting is
-declared but never used. Remove it.
+On Sat, Oct 29, 2022 at 11:23:06AM +0000, David Laight wrote:
+> > > -----Original Message-----
+> > > From: Deepak R Varma <drv@mailo.com>
+> > >
+> > > [External]
+> > >
+> > > do_div() does a 64-by-32 division. Here the divisor is an unsigned long
+> > > which on some platforms is 64 bit wide. So use div64_ul instead of do_div
+> > > to avoid a possible truncation. Issue was identified using the
+> > > coccicheck tool.
+>
+> These changes should all get nacked unless the domain of the values
+> can be shown to be out of range.
 
-Signed-off-by: Deepak R Varma <drv@mailo.com>
----
- drivers/staging/rtl8723bs/hal/odm.h | 1 -
- 1 file changed, 1 deletion(-)
+Hello David,
+I looked through the data sheets for these hardware [ad983*] and believe the
+divisor max can attain 75MHz which fits well in a 32 bit size. Hence the
+proposed changes for these drivers to switch to div64_ul may actually slowdown
+the division. Please correct if I said something incorrect.
 
-diff --git a/drivers/staging/rtl8723bs/hal/odm.h b/drivers/staging/rtl8723bs/hal/odm.h
-index e16a769850c5..6891fa30c7f4 100644
---- a/drivers/staging/rtl8723bs/hal/odm.h
-+++ b/drivers/staging/rtl8723bs/hal/odm.h
-@@ -482,7 +482,6 @@ enum odm_type_alna_e { /* tag_ODM_TYPE_ALNA_Definition */
- struct iqk_matrix_regs_setting { /* _IQK_MATRIX_REGS_SETTING */
- 	bool bIQKDone;
- 	s32 Value[IQK_Matrix_REG_NUM];
--	bool bBWIqkResultSaved[3];
- };
+Requesting to kindly ignore my proposed changes.
 
- /* Remove PATHDIV_PARA struct to odm_PathDiv.h */
---
-2.34.1
+>
+> The entire point of do_div() is that because division is expensive
+> using a limited range division is significantly faster.
+>
+> Even on Intel 64 bit cpu the 64 by 32 divide is significantly
+> faster then a full 64 bit divide for the same input values.
+>
+> One might also question why the divisor is actually 'unsigned long'
+> at all. The code is almost certainly expected to compile for 32bit
+> so the domain of the value should fit in 32 bits.
+> So either the type could be unsigned int, or it really doesn't matter
+> that the value is truncated to 32bit because it can never be larger.
 
+Thank you for the detailed explanation. This is very helpful.
+
+
+
+Thank you for the detailed explanation. This is very helpful.
+
+./drv
+
+>
+> 	David
+>
+>
+> > >
+> > > Signed-off-by: Deepak R Varma <drv@mailo.com>
+> > > ---
+> >
+> > Reviewed-by: Nuno Sá <nuno.sa@analog.com>
+>
+> -
+> Registered Address Lakeside, Bramley Road, Mount Farm, Milton Keynes, MK1 1PT, UK
+> Registration No: 1397386 (Wales)
+>
 
 
