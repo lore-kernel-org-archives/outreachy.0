@@ -1,26 +1,27 @@
-Received: from msg-2.mailo.com (msg-2.mailo.com [213.182.54.12])
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5A408185B
-	for <outreachy@lists.linux.dev>; Sat,  5 Nov 2022 06:18:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
-	t=1667629109; bh=qAjW7tSgInn96o/BaLIaUaa2Oz4hYq4+rOT3b3ECgQ4=;
-	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
-	 MIME-Version:Content-Type:In-Reply-To;
-	b=Y2A25hQht9uPGH9I8Pd2Vfrw4fTHSkZmpGLU/0othkTVsXjY2UNr6LagaGoNe38HE
-	 XNYvk8gSaXWgeqjrtHi12o49sznWx5gCZ/OhdydQbJeHuqOFtmeYy85db3W/pLtBEW
-	 xyCCLSvNI+3u+NMAaz9ZpJh3TzBVXCULXfcpfmu8=
-Received: by b-6.in.mailobj.net [192.168.90.16] with ESMTP
-	via ip-206.mailobj.net [213.182.55.206]
-	Sat,  5 Nov 2022 07:18:29 +0100 (CET)
-X-EA-Auth: iloRdAj7GXvyUC3y8tjxqcm63hz/mi5I8giZFuMd7O05E52NjoBeET7jmYJRCjPzIJGkBnlJd8/o5R7bmWOSu/PjkCCJZ9kq
-Date: Sat, 5 Nov 2022 11:48:25 +0530
-From: Deepak R Varma <drv@mailo.com>
-To: Alison Schofield <alison.schofield@intel.com>
-Cc: Outreachy Linux Kernel <outreachy@lists.linux.dev>
-Subject: Re: [Outreachy Info] How to update the First Patch Tutorial
-Message-ID: <Y2YAMRWzu1CRGe7a@qemulion>
-References: <Y07K+awYX+9wLq9q@aschofie-mobl2>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D68FB10F5;
+	Sat,  5 Nov 2022 08:36:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2F454C433D6;
+	Sat,  5 Nov 2022 08:36:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1667637384;
+	bh=+850kjFp9/O373m9G/UkYuxlhudvMpxu6Y0oTFuWEMo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=VInH5uzv45/xcOetIrVxQf/PvMLxgebHLQAMGi4f87Vb7tGy0HmYhACfZLSxn05Eh
+	 CP9vSSnqBX3NXKDZkSG088lJRSc8l5/NIAJsl/r+nTQVxv0+iAOhZqjNJ+j4+Yw9CH
+	 u9Se7gJtwNWCl9/LKJdFPol88NzFT0LLkvzPBBV4=
+Date: Sat, 5 Nov 2022 09:36:21 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Deepak R Varma <drv@mailo.com>
+Cc: outreachy@lists.linux.dev, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/2] staging: rtl8723bs: Simplify underutilized 2D array
+ to 1D array
+Message-ID: <Y2YghalNBdtaAQdr@kroah.com>
+References: <cover.1667586648.git.drv@mailo.com>
+ <4fb8d9783553d15a58e774d7137519d46e58ee3a.1667586648.git.drv@mailo.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -29,42 +30,92 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <Y07K+awYX+9wLq9q@aschofie-mobl2>
+In-Reply-To: <4fb8d9783553d15a58e774d7137519d46e58ee3a.1667586648.git.drv@mailo.com>
 
-On Tue, Oct 18, 2022 at 08:49:13AM -0700, Alison Schofield wrote:
->
-> We encourage updates to the First Patch Tutorial.
->
-> If you update the doc, please post a message to the Outreachy
-> mailing list showing the update you made. If you want your
-> potential update reviewed first, ask on this list too.
->
-> I am a 'watcher' of the page, so I will be notified and
-> review the edits to the tutorial automatically.
->
-> The directions for contributing to the First Patch Tutorial,
-> is a bit buried in the wiki, so I'll point it out here:
->
-> See section: Tips for Applying to be an Outreachy Kernel intern
-> "Bonus points if you make a kernelnewbies account and correct or add
-> knowledge to this wiki. To edit the wiki, create an account, and then
-> send an email to the outreachy@lists.linux.dev with the subject
-> "[KERNEL NEWBIES ACCESS] username", where username is your kernel
-> newbies username."
->
-> One update I would suggest is creating a sub-section about updating
-> the wiki - to make it more obvious.
+On Sat, Nov 05, 2022 at 12:04:56AM +0530, Deepak R Varma wrote:
+> Member variable "Value" of structure iqk_matrix_regs_setting is
+> declared to be a 2D array of [3][IQK_Matrix_REG_NUM] grid. However
+> the primary index of this array is only used for index 0, the other
+> two elements are never used. Simplify this array to a one dimension
+> degree. The resultant code is simpler and is easy to maintain.
+> 
+> Suggested-by: Dan Carpenter <error27@gmail.com>
+> Signed-off-by: Deepak R Varma <drv@mailo.com>
+> ---
+>  drivers/staging/rtl8723bs/hal/HalPhyRf_8723B.c | 18 +++++++++---------
+>  drivers/staging/rtl8723bs/hal/odm.h            |  2 +-
+>  2 files changed, 10 insertions(+), 10 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8723bs/hal/HalPhyRf_8723B.c b/drivers/staging/rtl8723bs/hal/HalPhyRf_8723B.c
+> index a52748f7b56e..9317a4462c02 100644
+> --- a/drivers/staging/rtl8723bs/hal/HalPhyRf_8723B.c
+> +++ b/drivers/staging/rtl8723bs/hal/HalPhyRf_8723B.c
+> @@ -244,8 +244,8 @@ void ODM_TxPwrTrackSetPwr_8723B(
+>  			Final_CCK_Swing_Index = 0;
+> 
+>  		setIqkMatrix_8723B(pDM_Odm, Final_OFDM_Swing_Index, RFPath,
+> -			pDM_Odm->RFCalibrateInfo.IQKMatrixRegSetting[ChannelMappedIndex].Value[0][0],
+> -			pDM_Odm->RFCalibrateInfo.IQKMatrixRegSetting[ChannelMappedIndex].Value[0][1]);
+> +			pDM_Odm->RFCalibrateInfo.IQKMatrixRegSetting[ChannelMappedIndex].Value[0],
+> +			pDM_Odm->RFCalibrateInfo.IQKMatrixRegSetting[ChannelMappedIndex].Value[1]);
+> 
+>  		setCCKFilterCoefficient(pDM_Odm, Final_CCK_Swing_Index);
+> 
+> @@ -257,8 +257,8 @@ void ODM_TxPwrTrackSetPwr_8723B(
+>  			pDM_Odm->Remnant_OFDMSwingIdx[RFPath] = Final_OFDM_Swing_Index - PwrTrackingLimit_OFDM;
+> 
+>  			setIqkMatrix_8723B(pDM_Odm, PwrTrackingLimit_OFDM, RFPath,
+> -				pDM_Odm->RFCalibrateInfo.IQKMatrixRegSetting[ChannelMappedIndex].Value[0][0],
+> -				pDM_Odm->RFCalibrateInfo.IQKMatrixRegSetting[ChannelMappedIndex].Value[0][1]);
+> +				pDM_Odm->RFCalibrateInfo.IQKMatrixRegSetting[ChannelMappedIndex].Value[0],
+> +				pDM_Odm->RFCalibrateInfo.IQKMatrixRegSetting[ChannelMappedIndex].Value[1]);
+> 
+>  			pDM_Odm->Modify_TxAGC_Flag_PathA = true;
+>  			PHY_SetTxPowerIndexByRateSection(Adapter, RFPath, pHalData->CurrentChannel, OFDM);
+> @@ -267,16 +267,16 @@ void ODM_TxPwrTrackSetPwr_8723B(
+>  			pDM_Odm->Remnant_OFDMSwingIdx[RFPath] = Final_OFDM_Swing_Index;
+> 
+>  			setIqkMatrix_8723B(pDM_Odm, 0, RFPath,
+> -				pDM_Odm->RFCalibrateInfo.IQKMatrixRegSetting[ChannelMappedIndex].Value[0][0],
+> -				pDM_Odm->RFCalibrateInfo.IQKMatrixRegSetting[ChannelMappedIndex].Value[0][1]);
+> +				pDM_Odm->RFCalibrateInfo.IQKMatrixRegSetting[ChannelMappedIndex].Value[0],
+> +				pDM_Odm->RFCalibrateInfo.IQKMatrixRegSetting[ChannelMappedIndex].Value[1]);
+> 
+>  			pDM_Odm->Modify_TxAGC_Flag_PathA = true;
+>  			PHY_SetTxPowerIndexByRateSection(Adapter, RFPath, pHalData->CurrentChannel, OFDM);
+>  			PHY_SetTxPowerIndexByRateSection(Adapter, RFPath, pHalData->CurrentChannel, HT_MCS0_MCS7);
+>  		} else {
+>  			setIqkMatrix_8723B(pDM_Odm, Final_OFDM_Swing_Index, RFPath,
+> -				pDM_Odm->RFCalibrateInfo.IQKMatrixRegSetting[ChannelMappedIndex].Value[0][0],
+> -				pDM_Odm->RFCalibrateInfo.IQKMatrixRegSetting[ChannelMappedIndex].Value[0][1]);
+> +				pDM_Odm->RFCalibrateInfo.IQKMatrixRegSetting[ChannelMappedIndex].Value[0],
+> +				pDM_Odm->RFCalibrateInfo.IQKMatrixRegSetting[ChannelMappedIndex].Value[1]);
+> 
+>  			if (pDM_Odm->Modify_TxAGC_Flag_PathA) { /* If TxAGC has changed, reset TxAGC again */
+>  				pDM_Odm->Remnant_OFDMSwingIdx[RFPath] = 0;
+> @@ -1760,7 +1760,7 @@ void PHY_IQCalibrate_8723B(
+>  /* by sherry 20120321 */
+>  	if (final_candidate < 4) {
+>  		for (i = 0; i < IQK_Matrix_REG_NUM; i++)
+> -			pDM_Odm->RFCalibrateInfo.IQKMatrixRegSetting[0].Value[0][i] = result[final_candidate][i];
+> +			pDM_Odm->RFCalibrateInfo.IQKMatrixRegSetting[0].Value[i] = result[final_candidate][i];
+>  		pDM_Odm->RFCalibrateInfo.IQKMatrixRegSetting[0].bIQKDone = true;
+>  	}
+> 
+> diff --git a/drivers/staging/rtl8723bs/hal/odm.h b/drivers/staging/rtl8723bs/hal/odm.h
+> index fe9782d2d4fd..e16a769850c5 100644
+> --- a/drivers/staging/rtl8723bs/hal/odm.h
+> +++ b/drivers/staging/rtl8723bs/hal/odm.h
+> @@ -481,7 +481,7 @@ enum odm_type_alna_e { /* tag_ODM_TYPE_ALNA_Definition */
+> 
+>  struct iqk_matrix_regs_setting { /* _IQK_MATRIX_REGS_SETTING */
+>  	bool bIQKDone;
+> -	s32 Value[3][IQK_Matrix_REG_NUM];
+> +	s32 Value[IQK_Matrix_REG_NUM];
 
-Hello Alison,
-Can I add this "Updating Newbies Wiki" suggested section to the wiki pagexi
-now? If yes, who should I share my updates with?
+This field is used to store values (as your above patch shows), but
+where is it actually used?  Are you sure it is needed at all?
 
-Thank you,
-./drv
+thanks,
 
->
-> Thanks,
-> Alison
->
-
-
+greg k-h
