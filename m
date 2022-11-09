@@ -1,29 +1,29 @@
 Received: from msg-4.mailo.com (msg-4.mailo.com [213.182.54.15])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 548D0257B;
-	Wed,  9 Nov 2022 07:46:15 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AF80828F4
+	for <outreachy@lists.linux.dev>; Wed,  9 Nov 2022 08:12:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
-	t=1667979968; bh=4y+p6G+6Eyrf3pYDyQ3PW7+HxDBRFvP76sfcfvr405o=;
+	t=1667981482; bh=Fivre+mgv/LVpsJcy50CbmMYzc5Is80ORdQPgaIdI9A=;
 	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
 	 MIME-Version:Content-Type:In-Reply-To;
-	b=Tx3A3hiw1+wUw/GGd3EY1Vy10Eu0OfaNks4pN6IpVUGYN0NPsu7J6GTniwOdr2OS+
-	 OrFvVOtSWLzW4iqDe6C5CaMXmc4BPWWE27bCpCW3421zQSqM+JUCn+00wnXvZ1pijO
-	 sPkMmsgjE5CZvrPAxec1kwNX0kFus2Tg3CMOiXIE=
-Received: by b-1.in.mailobj.net [192.168.90.11] with ESMTP
+	b=K6ZTSDURoJ03LGs+P4DGPMwLqqLoCpyFZWq7UdGnsSYmZfesDzhjcP7HFR+DTD2XA
+	 4xUsVqZYvVjUPOACID4F5CeUNEtZmtQckHSGqygcAGQFA1FJNx6MExBSMdSld4jXz5
+	 iTcWnntxqSMDEbJj+Jk6GRa4H1EbGnsnrUY1aAoQ=
+Received: by b-4.in.mailobj.net [192.168.90.14] with ESMTP
 	via ip-206.mailobj.net [213.182.55.206]
-	Wed,  9 Nov 2022 08:46:08 +0100 (CET)
-X-EA-Auth: 5WhwHM9XqEWUpElfHoVsyiSNRigbkBV1oekffDsZQS3OO3TMni5CBDdtyn7IdurPP3ccJ3dnRKFudoW0pY8qUOwkWzy7vJiN
-Date: Wed, 9 Nov 2022 13:16:02 +0530
+	Wed,  9 Nov 2022 09:11:22 +0100 (CET)
+X-EA-Auth: VNmHrm2M5xncxv4B4UBUi3GiUu+JgTFUEph/je5J24szAgmcmC6pvfmHAvVreHtnVYE/aXErA5/hBH0kS/F4Ox2RoAk0K/wI
+Date: Wed, 9 Nov 2022 13:41:17 +0530
 From: Deepak R Varma <drv@mailo.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy@lists.linux.dev, Sven Van Asbroeck <TheSven73@gmail.com>,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2] staging: fieldbus: replace snprintf in show functions
- with sysfs_emit
-Message-ID: <Y2taurqOvGiPo3jB@qemulion>
-References: <Y2tBJFSsyUzdb+eO@qemulion>
- <Y2tXEibm2QxH37FK@kroah.com>
+To: Alison Schofield <alison.schofield@intel.com>
+Cc: Outreachy Linux Kernel <outreachy@lists.linux.dev>
+Subject: Re: [Outreachy Info] How to update the First Patch Tutorial
+Message-ID: <Y2tgpfnESq0aCuy6@qemulion>
+References: <Y07K+awYX+9wLq9q@aschofie-mobl2>
+ <Y2YAMRWzu1CRGe7a@qemulion>
+ <Y2r85DJfNMshwg1R@aschofie-mobl2>
+ <Y2snIKWiYerNPLGf@qemulion>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -32,40 +32,56 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <Y2tXEibm2QxH37FK@kroah.com>
+In-Reply-To: <Y2snIKWiYerNPLGf@qemulion>
 
-On Wed, Nov 09, 2022 at 08:30:26AM +0100, Greg Kroah-Hartman wrote:
-> On Wed, Nov 09, 2022 at 11:26:52AM +0530, Deepak R Varma wrote:
-> > The show() methods should only use sysfs_emit() when formatting values
-> > to be returned to the user space.
-> > Ref: Documentation/filesystems/sysfs.rst
-> > Issue identified by coccicheck.
+On Wed, Nov 09, 2022 at 09:35:52AM +0530, Deepak R Varma wrote:
+> On Tue, Nov 08, 2022 at 05:05:40PM -0800, Alison Schofield wrote:
+> > > Hello Alison,
+> > > Can I add this "Updating Newbies Wiki" suggested section to the wiki pagexi
+> > > now? If yes, who should I share my updates with?
+> > >
+> > > Thank you,
+> > > ./drv
 > >
-> > Signed-off-by: Deepak R Varma <drv@mailo.com>
-> >  	/*
-> > -	 * card_name was provided by child driver, could potentially be long.
-> > -	 * protect against buffer overrun.
-> > +	 * sysfs provides PAGE_SIZE long buffer to take care of potentially
+> > Hi Deeva,
+> > If you haven't already done so, go ahead and update the Wiki directly.
+> > I will look for and review the changes in the wiki.
 >
-> No need to ever mention PAGE_SIZE at all, this comment should just be:
-> 	/* card_name was provided by child driver */
+> Okay. I will get to it once I finish working on a patch feedback from yesterday.
 
-Sure. I will update the comment in the revision.
+Hello,
+I have added a new section titled "Updating the Firstpatch Tutorial" and
+is ready for your review. Let me know if you have any comments.
 
->
-> But the larger question is, why did you only convert one of the sysfs
-> show functions in this file?  Why not do them all?
-
-I was limiting it to what is reported by coccicheck. I will review other such
-show functions and send a consolidated patch.
+Any new updates will be shared with you on separate email as review
+request/reminder.
 
 Thank you,
 ./drv
 
 >
-> thanks,
+> >
+> > If you think of other changes going forward, make them and send me
+> > an email reminder to look.
 >
-> greg k-h
+> Sounds good. Will follow the instructions.
+>
+> >
+> > That goes for anyone updating the wiki with learnings from this round.
+> >
+> > Thanks,
+> > Alison
+> >
+> >
+> > >
+> > > >
+> > > > Thanks,
+> > > > Alison
+> > > >
+> > >
+> > >
+>
+>
 >
 
 
