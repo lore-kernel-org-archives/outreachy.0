@@ -1,28 +1,27 @@
-Received: from msg-2.mailo.com (msg-2.mailo.com [213.182.54.12])
+Received: from msg-1.mailo.com (msg-1.mailo.com [213.182.54.11])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 39EB117C2
-	for <outreachy@lists.linux.dev>; Wed,  9 Nov 2022 04:06:13 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4652E1844;
+	Wed,  9 Nov 2022 05:56:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
-	t=1667966757; bh=DWAhaoeKZI6iDTQfNK6GqZ3SCu5sg3I6sdsYEFIz4QI=;
-	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
-	 MIME-Version:Content-Type:In-Reply-To;
-	b=LcGLbB56kEgEAQ+NzEKjSnLZMOFJpBn/dBbxC22XGVX1ihGR5ko/9AVFvUHuc2K/H
-	 Sjb3kh+YTgD06rAgEA14gX4am7kRp9cNLsZZG7SNI6vsz0cYSID6IfAGcY4kwhpDVW
-	 tSQEDQyicyyGMnKuOgN0h1nnOJ3KlhnqKweGVNVQ=
+	t=1667973417; bh=q5LxJ2lKJ6N/n72Brdpysb7xQ8lsJn/yyuOCTpd/wjI=;
+	h=X-EA-Auth:Date:From:To:Subject:Message-ID:MIME-Version:
+	 Content-Type;
+	b=aZX328bEJ7+VoD3Qbz3zEa4BvMAeWz4Xa8c/Rxf0FMWW9fOi4nrTPMWV+J2Fg7iRN
+	 BpEHKBjCHuBulj02AQxHFLla41eE0xqx6rM9+4G5kYmFzNVvzEhv8DOssetRavkKFQ
+	 l0NBsbU6hXFUsjRM1JOTpkpVBjEWU+XSr+6gbPYU=
 Received: by b-4.in.mailobj.net [192.168.90.14] with ESMTP
 	via ip-206.mailobj.net [213.182.55.206]
-	Wed,  9 Nov 2022 05:05:57 +0100 (CET)
-X-EA-Auth: pwIHQchnN6pB4d/qVhpZGfH6mnKbsrV9FqpkqXgun+DyC3PrSUyWMZMiP9RNsv8XZT/qGRNW2oIy6y99Bij50KAJaT1t4HVb
-Date: Wed, 9 Nov 2022 09:35:52 +0530
+	Wed,  9 Nov 2022 06:56:57 +0100 (CET)
+X-EA-Auth: YV79CcZLIeAn9jjsZtRh2oSpwDk5kRO9LG7IYES5/OgiMa4wOBUW99yiN6t5mz0/kjEs5sY2H4luHN189iul5p2wYX63Iouf
+Date: Wed, 9 Nov 2022 11:26:52 +0530
 From: Deepak R Varma <drv@mailo.com>
-To: Alison Schofield <alison.schofield@intel.com>
-Cc: Outreachy Linux Kernel <outreachy@lists.linux.dev>
-Subject: Re: [Outreachy Info] How to update the First Patch Tutorial
-Message-ID: <Y2snIKWiYerNPLGf@qemulion>
-References: <Y07K+awYX+9wLq9q@aschofie-mobl2>
- <Y2YAMRWzu1CRGe7a@qemulion>
- <Y2r85DJfNMshwg1R@aschofie-mobl2>
+To: outreachy@lists.linux.dev, Sven Van Asbroeck <TheSven73@gmail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: [PATCH v2] staging: fieldbus: replace snprintf in show functions
+ with sysfs_emit
+Message-ID: <Y2tBJFSsyUzdb+eO@qemulion>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -31,66 +30,44 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <Y2r85DJfNMshwg1R@aschofie-mobl2>
 
-On Tue, Nov 08, 2022 at 05:05:40PM -0800, Alison Schofield wrote:
-> On Sat, Nov 05, 2022 at 11:48:25AM +0530, Deepak R Varma wrote:
-> > On Tue, Oct 18, 2022 at 08:49:13AM -0700, Alison Schofield wrote:
-> > >
-> > > We encourage updates to the First Patch Tutorial.
-> > >
-> > > If you update the doc, please post a message to the Outreachy
-> > > mailing list showing the update you made. If you want your
-> > > potential update reviewed first, ask on this list too.
-> > >
-> > > I am a 'watcher' of the page, so I will be notified and
-> > > review the edits to the tutorial automatically.
-> > >
-> > > The directions for contributing to the First Patch Tutorial,
-> > > is a bit buried in the wiki, so I'll point it out here:
-> > >
-> > > See section: Tips for Applying to be an Outreachy Kernel intern
-> > > "Bonus points if you make a kernelnewbies account and correct or add
-> > > knowledge to this wiki. To edit the wiki, create an account, and then
-> > > send an email to the outreachy@lists.linux.dev with the subject
-> > > "[KERNEL NEWBIES ACCESS] username", where username is your kernel
-> > > newbies username."
-> > >
-> > > One update I would suggest is creating a sub-section about updating
-> > > the wiki - to make it more obvious.
-> >
-> > Hello Alison,
-> > Can I add this "Updating Newbies Wiki" suggested section to the wiki pagexi
-> > now? If yes, who should I share my updates with?
-> >
-> > Thank you,
-> > ./drv
->
-> Hi Deeva,
-> If you haven't already done so, go ahead and update the Wiki directly.
-> I will look for and review the changes in the wiki.
+The show() methods should only use sysfs_emit() when formatting values
+to be returned to the user space.
+Ref: Documentation/filesystems/sysfs.rst
+Issue identified by coccicheck.
 
-Okay. I will get to it once I finish working on a patch feedback from yesterday.
+Signed-off-by: Deepak R Varma <drv@mailo.com>
+---
 
->
-> If you think of other changes going forward, make them and send me
-> an email reminder to look.
+Changes in v2:
+   1. Switch to using sysfs_emit instead of scnprintf
+   2. Update patch subject and log accordingly
+      Feedback from gregkh@linuxfoundation.org
 
-Sounds good. Will follow the instructions.
 
->
-> That goes for anyone updating the wiki with learnings from this round.
->
-> Thanks,
-> Alison
->
->
-> >
-> > >
-> > > Thanks,
-> > > Alison
-> > >
-> >
-> >
+ drivers/staging/fieldbus/dev_core.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/staging/fieldbus/dev_core.c b/drivers/staging/fieldbus/dev_core.c
+index 5aab734606ea..d32599f4eb44 100644
+--- a/drivers/staging/fieldbus/dev_core.c
++++ b/drivers/staging/fieldbus/dev_core.c
+@@ -67,10 +67,10 @@ static ssize_t card_name_show(struct device *dev, struct device_attribute *attr,
+ 	struct fieldbus_dev *fb = dev_get_drvdata(dev);
+
+ 	/*
+-	 * card_name was provided by child driver, could potentially be long.
+-	 * protect against buffer overrun.
++	 * sysfs provides PAGE_SIZE long buffer to take care of potentially
++	 * long card_name provided by child driver.
+ 	 */
+-	return snprintf(buf, PAGE_SIZE, "%s\n", fb->card_name);
++	return sysfs_emit(buf, "%s\n", fb->card_name);
+ }
+ static DEVICE_ATTR_RO(card_name);
+
+--
+2.34.1
+
 
 
