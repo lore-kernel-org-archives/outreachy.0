@@ -1,26 +1,39 @@
-Received: from msg-1.mailo.com (msg-1.mailo.com [213.182.54.11])
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 60F736119;
-	Tue,  8 Nov 2022 18:10:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
-	t=1667931037; bh=oGtExssGV7LHMlhkrkJ4t/rQVhHQzwTERr7TlBc+xv0=;
-	h=X-EA-Auth:Date:From:To:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:In-Reply-To;
-	b=O+a0JuJdi9TOLCDEQGKCsdnfX+q9sYWV6JgBpgeil5tkR+FJIoJ2VnNF0DOmscaG7
-	 aPmFsqmAh4niq1cwVroz5ZIeapHKZTv8h2lVrunZD3L0c0yT3dZC7/pWj+YSElF9I0
-	 5C8MoUpi8pSGEM+didiU1oKM0whfAcMCf1bXSay4=
-Received: by b-6.in.mailobj.net [192.168.90.16] with ESMTP
-	via ip-206.mailobj.net [213.182.55.206]
-	Tue,  8 Nov 2022 19:10:36 +0100 (CET)
-X-EA-Auth: jRsr2yFHIAty5Q1EnNGuaHmLSfrZgKKr4kToJcOFecmtUnzTvIRX4KbwOskOW0oQ1rEqgEenenbxTHP4gBxXMY3WJr3+JRfw
-Date: Tue, 8 Nov 2022 23:39:56 +0530
-From: Deepak R Varma <drv@mailo.com>
-To: outreachy@lists.linux.dev, gregkh@linuxfoundation.org,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: [PATCH v5 1/1] staging: rtl8192u: remove redundant macro definitions
-Message-ID: <17f69a042e215c484931a0327fdf7775eea5f918.1667930292.git.drv@mailo.com>
-References: <cover.1667930291.git.drv@mailo.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1C1FE17C2
+	for <outreachy@lists.linux.dev>; Wed,  9 Nov 2022 01:05:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1667955943; x=1699491943;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=8IYi8lHFtb0zJVUI+/jqxNYvjPoEIA0kHvKwtlkIXH8=;
+  b=R3XyMq1WpBb43wkcYiHsj9BUGyTv/csMIUgKzGg/2RNZCrJQmZ1fDozw
+   A0lOus0l8L24WDYh0UWIkedNrmhGvsJi84/dfUAIdCYoptfr6Z6q9e+2h
+   YNWROYc7/l5Nlh3R70ISXpx4xCGMqECtQDXXozmKCigfThXXv6Dv8kcbr
+   z5yAkzZdjxlrFiI7/w1eZxAHKZbRF+B6qxSzmFoGr9LI7Ick1yc6Vf1NH
+   Y88wk6aaklDB6MoY5+Cy6+Wq5rgZyc46XgRLrWO8z9gqNvm7ZqjFfv0iK
+   8BwpgvveK4B9M3MMnCLwHemmI/tsDtam6iyNVq5ybfxQWohqQtMuykiRs
+   A==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10525"; a="308473503"
+X-IronPort-AV: E=Sophos;i="5.96,149,1665471600"; 
+   d="scan'208";a="308473503"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Nov 2022 17:05:42 -0800
+X-IronPort-AV: E=McAfee;i="6500,9779,10525"; a="587581283"
+X-IronPort-AV: E=Sophos;i="5.96,149,1665471600"; 
+   d="scan'208";a="587581283"
+Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.251.11.119])
+  by orsmga003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Nov 2022 17:05:42 -0800
+Date: Tue, 8 Nov 2022 17:05:40 -0800
+From: Alison Schofield <alison.schofield@intel.com>
+To: Deepak R Varma <drv@mailo.com>
+Cc: Outreachy Linux Kernel <outreachy@lists.linux.dev>
+Subject: Re: [Outreachy Info] How to update the First Patch Tutorial
+Message-ID: <Y2r85DJfNMshwg1R@aschofie-mobl2>
+References: <Y07K+awYX+9wLq9q@aschofie-mobl2>
+ <Y2YAMRWzu1CRGe7a@qemulion>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -29,122 +42,57 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1667930291.git.drv@mailo.com>
+In-Reply-To: <Y2YAMRWzu1CRGe7a@qemulion>
 
-Several ieee80211_* symbol names are extended with _rsl tag using
-macros. This is done to avoid a conflict when a similar symbol is
-already in use in another part of kernel and may lead to conflicts.
-However, most of these base symbol names are not found to being used
-anywhere in the code and hence are not useful today. These symbols
-are not used outside of the module and hence can be safely removed.
-The code continues to use the original symbol names.
+On Sat, Nov 05, 2022 at 11:48:25AM +0530, Deepak R Varma wrote:
+> On Tue, Oct 18, 2022 at 08:49:13AM -0700, Alison Schofield wrote:
+> >
+> > We encourage updates to the First Patch Tutorial.
+> >
+> > If you update the doc, please post a message to the Outreachy
+> > mailing list showing the update you made. If you want your
+> > potential update reviewed first, ask on this list too.
+> >
+> > I am a 'watcher' of the page, so I will be notified and
+> > review the edits to the tutorial automatically.
+> >
+> > The directions for contributing to the First Patch Tutorial,
+> > is a bit buried in the wiki, so I'll point it out here:
+> >
+> > See section: Tips for Applying to be an Outreachy Kernel intern
+> > "Bonus points if you make a kernelnewbies account and correct or add
+> > knowledge to this wiki. To edit the wiki, create an account, and then
+> > send an email to the outreachy@lists.linux.dev with the subject
+> > "[KERNEL NEWBIES ACCESS] username", where username is your kernel
+> > newbies username."
+> >
+> > One update I would suggest is creating a sub-section about updating
+> > the wiki - to make it more obvious.
+> 
+> Hello Alison,
+> Can I add this "Updating Newbies Wiki" suggested section to the wiki pagexi
+> now? If yes, who should I share my updates with?
+> 
+> Thank you,
+> ./drv
 
-Suggested-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Signed-off-by: Deepak R Varma <drv@mailo.com>
----
+Hi Deeva,
+If you haven't already done so, go ahead and update the Wiki directly.
+I will look for and review the changes in the wiki.
 
-Changes in v5:
-   1. None. Resubmitting as the mail threading had issues.
+If you think of other changes going forward, make them and send me
+an email reminder to look.
 
-Changes in v4:
-   1. Resubmit patch set with the remaining only patch. Update patch subject,
-      version and patch sequence number to avoid confusion.
-      Suggested by gregkh@linuxfoundation.org.
+That goes for anyone updating the wiki with learnings from this round.
 
-Changes in v3:
-   1. The patch caused a build failure due to EXPORT_SYMBOL conflict across
-      modules. Retain macro defines for ieee80211_wake_queue and ieee80211_stop_queue
-      to avoid EXPORT_SYMBOL conflict caused by similar function names from
-      net/mac80211 module.
-      Correction and resubmission asked by gregkh@linuxfoundation.org
-
-Changes in v2:
-   1. Review other similar macro defines and clean those up as well.
-      Suggested by gregkh@linuxfoundation.org
-   2. Revise patch log to explain impact of the patch
-      Suggested by julia.lawall@inria.fr
-
- .../staging/rtl8192u/ieee80211/ieee80211.h    | 61 -------------------
- 1 file changed, 61 deletions(-)
-
-diff --git a/drivers/staging/rtl8192u/ieee80211/ieee80211.h b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
-index 00c07455cbb3..c5c43d2fb93e 100644
---- a/drivers/staging/rtl8192u/ieee80211/ieee80211.h
-+++ b/drivers/staging/rtl8192u/ieee80211/ieee80211.h
-@@ -223,71 +223,10 @@ struct cb_desc {
- #define MAX_IE_LEN  0xff
-
- // added for kernel conflict
--#define ieee80211_crypt_deinit_entries	ieee80211_crypt_deinit_entries_rsl
--#define ieee80211_crypt_deinit_handler	ieee80211_crypt_deinit_handler_rsl
--#define ieee80211_crypt_delayed_deinit	ieee80211_crypt_delayed_deinit_rsl
--#define ieee80211_register_crypto_ops	ieee80211_register_crypto_ops_rsl
--#define ieee80211_unregister_crypto_ops ieee80211_unregister_crypto_ops_rsl
--#define ieee80211_get_crypto_ops	ieee80211_get_crypto_ops_rsl
--
--#define ieee80211_ccmp_null		ieee80211_ccmp_null_rsl
--
--#define free_ieee80211			free_ieee80211_rsl
--#define alloc_ieee80211			alloc_ieee80211_rsl
--
--#define ieee80211_rx			ieee80211_rx_rsl
--#define ieee80211_rx_mgt		ieee80211_rx_mgt_rsl
--
--#define ieee80211_get_beacon		ieee80211_get_beacon_rsl
- #define ieee80211_wake_queue		ieee80211_wake_queue_rsl
- #define ieee80211_stop_queue		ieee80211_stop_queue_rsl
--#define ieee80211_reset_queue		ieee80211_reset_queue_rsl
--#define ieee80211_softmac_stop_protocol	ieee80211_softmac_stop_protocol_rsl
--#define ieee80211_softmac_start_protocol ieee80211_softmac_start_protocol_rsl
--#define ieee80211_is_shortslot		ieee80211_is_shortslot_rsl
--#define ieee80211_is_54g		ieee80211_is_54g_rsl
--#define ieee80211_wpa_supplicant_ioctl	ieee80211_wpa_supplicant_ioctl_rsl
--#define ieee80211_ps_tx_ack		ieee80211_ps_tx_ack_rsl
--#define ieee80211_softmac_xmit		ieee80211_softmac_xmit_rsl
--#define ieee80211_stop_send_beacons	ieee80211_stop_send_beacons_rsl
- #define notify_wx_assoc_event		notify_wx_assoc_event_rsl
- #define SendDisassociation		SendDisassociation_rsl
--#define ieee80211_disassociate		ieee80211_disassociate_rsl
--#define ieee80211_start_send_beacons	ieee80211_start_send_beacons_rsl
--#define ieee80211_stop_scan		ieee80211_stop_scan_rsl
--#define ieee80211_send_probe_requests	ieee80211_send_probe_requests_rsl
--#define ieee80211_softmac_scan_syncro	ieee80211_softmac_scan_syncro_rsl
--#define ieee80211_start_scan_syncro	ieee80211_start_scan_syncro_rsl
--
--#define ieee80211_wx_get_essid		ieee80211_wx_get_essid_rsl
--#define ieee80211_wx_set_essid		ieee80211_wx_set_essid_rsl
--#define ieee80211_wx_set_rate		ieee80211_wx_set_rate_rsl
--#define ieee80211_wx_get_rate		ieee80211_wx_get_rate_rsl
--#define ieee80211_wx_set_wap		ieee80211_wx_set_wap_rsl
--#define ieee80211_wx_get_wap		ieee80211_wx_get_wap_rsl
--#define ieee80211_wx_set_mode		ieee80211_wx_set_mode_rsl
--#define ieee80211_wx_get_mode		ieee80211_wx_get_mode_rsl
--#define ieee80211_wx_set_scan		ieee80211_wx_set_scan_rsl
--#define ieee80211_wx_get_freq		ieee80211_wx_get_freq_rsl
--#define ieee80211_wx_set_freq		ieee80211_wx_set_freq_rsl
--#define ieee80211_wx_set_rawtx		ieee80211_wx_set_rawtx_rsl
--#define ieee80211_wx_get_name		ieee80211_wx_get_name_rsl
--#define ieee80211_wx_set_power		ieee80211_wx_set_power_rsl
--#define ieee80211_wx_get_power		ieee80211_wx_get_power_rsl
--#define ieee80211_wlan_frequencies	ieee80211_wlan_frequencies_rsl
--#define ieee80211_wx_set_rts		ieee80211_wx_set_rts_rsl
--#define ieee80211_wx_get_rts		ieee80211_wx_get_rts_rsl
--
--#define ieee80211_txb_free		ieee80211_txb_free_rsl
--
--#define ieee80211_wx_set_gen_ie		ieee80211_wx_set_gen_ie_rsl
--#define ieee80211_wx_get_scan		ieee80211_wx_get_scan_rsl
--#define ieee80211_wx_set_encode		ieee80211_wx_set_encode_rsl
--#define ieee80211_wx_get_encode		ieee80211_wx_get_encode_rsl
--#define ieee80211_wx_set_mlme		ieee80211_wx_set_mlme_rsl
--#define ieee80211_wx_set_auth		ieee80211_wx_set_auth_rsl
--#define ieee80211_wx_set_encode_ext	ieee80211_wx_set_encode_ext_rsl
--#define ieee80211_wx_get_encode_ext	ieee80211_wx_get_encode_ext_rsl
+Thanks,
+Alison
 
 
- struct ieee_param {
---
-2.34.1
-
-
-
+> 
+> >
+> > Thanks,
+> > Alison
+> >
+> 
+> 
