@@ -1,50 +1,25 @@
-Received: from mail-pf1-f179.google.com (mail-pf1-f179.google.com [209.85.210.179])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4224B1113
-	for <outreachy@lists.linux.dev>; Mon, 14 Nov 2022 03:37:23 +0000 (UTC)
-Received: by mail-pf1-f179.google.com with SMTP id m6so9909511pfb.0
-        for <outreachy@lists.linux.dev>; Sun, 13 Nov 2022 19:37:23 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=huQaLPlF3z6pX+8i8yYBtm/h88Hf3C5+moxTFK5eGA8=;
-        b=OUicdBJx1vduAvAwyd6jPOQHqC1LWfO8cTcJeUbbZmeoZkaTOm7/8zwzbHqRUTXxm8
-         jZI/4rBjL6HryZYwmQddi9NICHPWjMqISjxuVOp79xQ/CSKacXSvKQ5iTkOChzUG1VEm
-         P4ES6LGlfHWZvh7Nq6aj1Y6JhSOkUnaBwF+a13DDcH8K0RjzktXsgMYxJbzSh4fcpJtJ
-         AZq9lShbJwRQ2b7r4wV+nuX4hdbkFZozVtadUxDJ7+3EbSRXTXWbWF3y3IcSi6I9TZqP
-         VlDgS084htDOwpJ/BN9cqDCxccMFilruV3zmvzmlUs2ifXgy8wI0dnneG3GnGZzUWOFe
-         vbSw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=huQaLPlF3z6pX+8i8yYBtm/h88Hf3C5+moxTFK5eGA8=;
-        b=2eVBKi2Ll3+kmK68G/NN+1UNZaMhHCz1MWj+4L3Oa3Kvs+2TnpHmXx3ydPCs5hv2FU
-         3yby6wJ+qEvV7WMO32lBEPoWPo8KPYb2pmkzYv17nBMtnmdfZyupB4pGKmDqg/PP9+d4
-         LEekdpmfHXprzLAUKupep1bcdVrZOXRRdatKBtlDV786nBB1D/94akV8se2YpDm6BFFi
-         ikOLgkVKtbfGv48rsCZ0XR3U5ILYFD6rhxYj2ulrCXoznpVGpZ8wdCPJOhqYGym7H70m
-         AqhKVrwLfgKbUYeqYUmnobo4ymJPWo4P0nB0ITrsK9/Lk4Ip6hABmOPiXGDSWEQ6ICZe
-         fUmA==
-X-Gm-Message-State: ANoB5pk0Kl5m2/tI/pEtZ+6x0ULpBeKNMAcJ3lWSLfXLmGxX76NbdPCF
-	S1Lxo0EHrNQZmcKZ91K3nQ9zeQ==
-X-Google-Smtp-Source: AA0mqf5LqfwX34Nz78yClbqLWMd4qcYdYdtwGjDVGvRJzMaokohc5KP1ILzUGMQLPAT2aYVcrEhYYQ==
-X-Received: by 2002:a62:1757:0:b0:557:ef5e:6db3 with SMTP id 84-20020a621757000000b00557ef5e6db3mr12375662pfx.13.1668397042544;
-        Sun, 13 Nov 2022 19:37:22 -0800 (PST)
-Received: from localhost ([122.172.85.60])
-        by smtp.gmail.com with ESMTPSA id e6-20020a17090a818600b00212daa6f41dsm5389610pjn.28.2022.11.13.19.37.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 13 Nov 2022 19:37:21 -0800 (PST)
-Date: Mon, 14 Nov 2022 09:07:20 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 251191C13
+	for <outreachy@lists.linux.dev>; Mon, 14 Nov 2022 07:20:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3D24BC433D7;
+	Mon, 14 Nov 2022 07:20:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1668410451;
+	bh=fHrinGUzKS/Ct4ZTB+WHQ0B+J+JANG6qd0CbipbkXgE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=lGTk4VXVRyvq0xQYMXtieI9QHlBDDnY6Gb2zLFxlUiEFUTRGRZZKC53bKoS+ti1D3
+	 G1YT7D4naoZcIT2UzIzJ8Gb9uwni4FEKN3ZqoQAwQIGDzbWveMNgkCXPMeAek/0ZN4
+	 VFfqceK6XDMk1uqU7MlJNn8IVw/H/2vyph0fsftM=
+Date: Mon, 14 Nov 2022 08:20:48 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
 To: Hunter Chasens <hunter.chasens18@ncf.edu>
 Cc: outreachy@lists.linux.dev, johan@kernel.org, elder@kernel.org,
-	gregkh@linuxfoundation.org, hvaibhav.linux@gmail.com,
-	vireshk@kernel.org, pure.logic@nexus-software.ie
+	hvaibhav.linux@gmail.com, vireshk@kernel.org,
+	pure.logic@nexus-software.ie
 Subject: Re: [PATCH v3 1/2] Staging: greybus: Whitespace cleanup
-Message-ID: <20221114033720.ixm7fhauvdkdhg7m@vireshk-i7>
+Message-ID: <Y3HsUB/f69IJdFrz@kroah.com>
 References: <cover.1668395762.git.hunter.chasens18@ncf.edu>
  <35ee8be5f3737350b5324bfb2b6fd6b74fd02c58.1668395762.git.hunter.chasens18@ncf.edu>
 Precedence: bulk
@@ -57,56 +32,57 @@ Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <35ee8be5f3737350b5324bfb2b6fd6b74fd02c58.1668395762.git.hunter.chasens18@ncf.edu>
 
-On 13-11-22, 22:26, Hunter Chasens wrote:
-> diff --git a/drivers/staging/greybus/arche-platform.c b/drivers/staging/greybus/arche-platform.c
-> index fcbd5f71eff2..6f86b0141853 100644
-> --- a/drivers/staging/greybus/arche-platform.c
-> +++ b/drivers/staging/greybus/arche-platform.c
-> @@ -179,7 +179,7 @@ static irqreturn_t arche_platform_wd_irq(int irq, void *devid)
->  				if (arche_pdata->wake_detect_state !=
->  						WD_STATE_COLDBOOT_START) {
->  					arche_platform_set_wake_detect_state(arche_pdata,
-> -									     WD_STATE_COLDBOOT_TRIG);
-> +									    WD_STATE_COLDBOOT_TRIG);
+On Sun, Nov 13, 2022 at 10:26:45PM -0500, Hunter Chasens wrote:
+> Modifies whitespace to better come into compliance with the kernel's coding style.
+> 
+> Signed-off-by: Hunter Chasens <hunter.chasens18@ncf.edu>
+> ---
+>  .../Documentation/firmware/authenticate.c     |  2 +-
+>  .../greybus/Documentation/firmware/firmware.c | 34 +++++++++----------
+>  drivers/staging/greybus/arche-platform.c      |  2 +-
+>  .../staging/greybus/greybus_authentication.h  |  1 -
+>  drivers/staging/greybus/loopback.c            |  3 +-
+>  drivers/staging/greybus/tools/loopback_test.c | 16 +--------
+>  6 files changed, 21 insertions(+), 37 deletions(-)
+> 
+Hi,
 
-This looks incorrect, 'W' should be right below 'a' here, isn't it ?
+This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
+a patch that has triggered this response.  He used to manually respond
+to these common problems, but in order to save his sanity (he kept
+writing the same thing over and over, yet to different people), I was
+created.  Hopefully you will not take offence and will fix the problem
+in your patch and resubmit it so that it can be accepted into the Linux
+kernel tree.
 
->  					spin_unlock_irqrestore(&arche_pdata->wake_lock,
->  							       flags);
->  					return IRQ_WAKE_THREAD;
-> diff --git a/drivers/staging/greybus/greybus_authentication.h b/drivers/staging/greybus/greybus_authentication.h
-> index 7edc7295b7ab..48b4a9794d3c 100644
-> --- a/drivers/staging/greybus/greybus_authentication.h
-> +++ b/drivers/staging/greybus/greybus_authentication.h
-> @@ -41,7 +41,6 @@
->  #define CAP_AUTH_RESULT_CR_NO_KEY	0x03
->  #define CAP_AUTH_RESULT_CR_SIG_FAIL	0x04
->  
-> -
+You are receiving this message because of the following common error(s)
+as indicated below:
 
-This was intentionally left here I believe.
+- Your patch did many different things all at once, making it difficult
+  to review.  All Linux kernel patches need to only do one thing at a
+  time.  If you need to do multiple things (such as clean up all coding
+  style issues in a file/driver), do it in a sequence of patches, each
+  one doing only one thing.  This will make it easier to review the
+  patches to ensure that they are correct, and to help alleviate any
+  merge issues that larger patches can cause.
 
->  /* IOCTL support */
-> diff --git a/drivers/staging/greybus/tools/loopback_test.c b/drivers/staging/greybus/tools/loopback_test.c
-> index 4c42e393cd3d..539c7030ffec 100644
-> --- a/drivers/staging/greybus/tools/loopback_test.c
-> +++ b/drivers/staging/greybus/tools/loopback_test.c
-> @@ -240,8 +240,6 @@ static void show_loopback_devices(struct loopback_test *t)
->  	for (i = 0; i < t->device_count; i++)
->  		printf("device[%d] = %s\n", i, t->devices[i].name);
->  
-> -}
-> -
+- You did not specify a description of why the patch is needed, or
+  possibly, any description at all, in the email body.  Please read the
+  section entitled "The canonical patch format" in the kernel file,
+  Documentation/SubmittingPatches for what is needed in order to
+  properly describe the change.
 
-This looks strange.
+- You did not write a descriptive Subject: for the patch, allowing Greg,
+  and everyone else, to know what this patch is all about.  Please read
+  the section entitled "The canonical patch format" in the kernel file,
+  Documentation/SubmittingPatches for what a proper Subject: line should
+  look like.
 
-> @@ -537,7 +531,6 @@ static int log_results(struct loopback_test *t)
->  			abort();
->  		}
->  
-> -	}
+If you wish to discuss this problem further, or you have questions about
+how to resolve this issue, please feel free to respond to this email and
+Greg will reply once he has dug out from the pending patches received
+from other developers.
 
-This too..
+thanks,
 
--- 
-viresh
+greg k-h's patch email bot
