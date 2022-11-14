@@ -1,88 +1,112 @@
-Received: from mail-vs1-f44.google.com (mail-vs1-f44.google.com [209.85.217.44])
+Received: from mail-pf1-f179.google.com (mail-pf1-f179.google.com [209.85.210.179])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 08F251113
-	for <outreachy@lists.linux.dev>; Mon, 14 Nov 2022 03:27:18 +0000 (UTC)
-Received: by mail-vs1-f44.google.com with SMTP id p4so10216746vsa.11
-        for <outreachy@lists.linux.dev>; Sun, 13 Nov 2022 19:27:18 -0800 (PST)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4224B1113
+	for <outreachy@lists.linux.dev>; Mon, 14 Nov 2022 03:37:23 +0000 (UTC)
+Received: by mail-pf1-f179.google.com with SMTP id m6so9909511pfb.0
+        for <outreachy@lists.linux.dev>; Sun, 13 Nov 2022 19:37:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ncf.edu; s=google;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=O+6lUbTFZDUdRnPC7DVEU1qVyw6/2Qd+XvfShvhHG0A=;
-        b=WOIAAwycJH6RpBcerWips3530S5uPJNvdbK3EUd9yQ1K9e2wZUTgA/1tUq2sECgX2p
-         S7MXXYIaaZJf8/nOAQCmJJpRkuxqBLYTv+BkSkB123Ax/6WMkkVdg5PDY3iXwdQtrotl
-         3JDfdrByjs7151h6h/T5XrRUVsyS5TncLQ3ZOhMEJfQSisXw802dkPatUu7FUkpaZdQY
-         C4HPLeyipD9ieTCz8VPk3NOculkqWlABqi7nc6b+g6/pi9+pAsMrOm8SvsbEq54YsFZR
-         kzxGlcsgW2uFHKVVPu60UCY39KWTT/6WaEJuv4y41ON6wgRNkaIMrNp/hfNkCQljdtbs
-         ElTA==
+        d=linaro.org; s=google;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=huQaLPlF3z6pX+8i8yYBtm/h88Hf3C5+moxTFK5eGA8=;
+        b=OUicdBJx1vduAvAwyd6jPOQHqC1LWfO8cTcJeUbbZmeoZkaTOm7/8zwzbHqRUTXxm8
+         jZI/4rBjL6HryZYwmQddi9NICHPWjMqISjxuVOp79xQ/CSKacXSvKQ5iTkOChzUG1VEm
+         P4ES6LGlfHWZvh7Nq6aj1Y6JhSOkUnaBwF+a13DDcH8K0RjzktXsgMYxJbzSh4fcpJtJ
+         AZq9lShbJwRQ2b7r4wV+nuX4hdbkFZozVtadUxDJ7+3EbSRXTXWbWF3y3IcSi6I9TZqP
+         VlDgS084htDOwpJ/BN9cqDCxccMFilruV3zmvzmlUs2ifXgy8wI0dnneG3GnGZzUWOFe
+         vbSw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=O+6lUbTFZDUdRnPC7DVEU1qVyw6/2Qd+XvfShvhHG0A=;
-        b=H/1miG5KFXA2ES92XNHOAZb7NtqbjwIYECm1vcHv3iVPBk+npWGV11hknPnafLItJ3
-         Cr6CLtOh9eSbqKeXoSYj+mef+qyIrtnkJ3gJ6JxUp0+N9J+jHl5Jcpqq/R8qV0f+vICr
-         hLXfEhKXxIcZPIdXlUu5M0zwCikVg6bBecZmltG1RaR0H3okT0moW7OFYH7cZQmI3MOn
-         8P6VZZ7ClehbGporhlufQj/Wbw2Zi7F9x3w735QO+7ZekHGCR+MqNRnGWlKFvZf5zqLP
-         mZVk9QFxkMdyxTVlCXrgvWm5gdj2dFjiY9nB1xoQCDFO77hUixunfuTf4ybWZHKJEaRK
-         rvmw==
-X-Gm-Message-State: ANoB5pmQQ1sRPsGcSUYIGt2gINzwURisk7OO7pdFlvPZAat+aMHB1kTt
-	Hx4eh2fadsP19TzGW7nwOs052suyKThof34SdXXCrtFNeAjJ29JEDnjzHlflcjhJ/YkhdB5ffSU
-	95wzygzNMQvBHDiZ6gW7hok9LnA5k/nzouKjhXP9U081+0QuH0Bqq8U3C2CJ8X8BttMXojxB5Hn
-	TuS6wJhg==
-X-Google-Smtp-Source: AA0mqf7TKgy/Pz0+aBvTr0B/oW9mdcOwmFlYWsVE9Cj5/wUOaVnwthJx25ECrBKhiaDaGzBPv2GBcQ==
-X-Received: by 2002:a67:fa16:0:b0:3aa:5ef7:bc48 with SMTP id i22-20020a67fa16000000b003aa5ef7bc48mr5166773vsq.12.1668396437813;
-        Sun, 13 Nov 2022 19:27:17 -0800 (PST)
-Received: from zeda.home ([47.195.251.56])
-        by smtp.gmail.com with ESMTPSA id h2-20020a1f9e02000000b003bbd05d3370sm1206897vke.47.2022.11.13.19.27.16
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=huQaLPlF3z6pX+8i8yYBtm/h88Hf3C5+moxTFK5eGA8=;
+        b=2eVBKi2Ll3+kmK68G/NN+1UNZaMhHCz1MWj+4L3Oa3Kvs+2TnpHmXx3ydPCs5hv2FU
+         3yby6wJ+qEvV7WMO32lBEPoWPo8KPYb2pmkzYv17nBMtnmdfZyupB4pGKmDqg/PP9+d4
+         LEekdpmfHXprzLAUKupep1bcdVrZOXRRdatKBtlDV786nBB1D/94akV8se2YpDm6BFFi
+         ikOLgkVKtbfGv48rsCZ0XR3U5ILYFD6rhxYj2ulrCXoznpVGpZ8wdCPJOhqYGym7H70m
+         AqhKVrwLfgKbUYeqYUmnobo4ymJPWo4P0nB0ITrsK9/Lk4Ip6hABmOPiXGDSWEQ6ICZe
+         fUmA==
+X-Gm-Message-State: ANoB5pk0Kl5m2/tI/pEtZ+6x0ULpBeKNMAcJ3lWSLfXLmGxX76NbdPCF
+	S1Lxo0EHrNQZmcKZ91K3nQ9zeQ==
+X-Google-Smtp-Source: AA0mqf5LqfwX34Nz78yClbqLWMd4qcYdYdtwGjDVGvRJzMaokohc5KP1ILzUGMQLPAT2aYVcrEhYYQ==
+X-Received: by 2002:a62:1757:0:b0:557:ef5e:6db3 with SMTP id 84-20020a621757000000b00557ef5e6db3mr12375662pfx.13.1668397042544;
+        Sun, 13 Nov 2022 19:37:22 -0800 (PST)
+Received: from localhost ([122.172.85.60])
+        by smtp.gmail.com with ESMTPSA id e6-20020a17090a818600b00212daa6f41dsm5389610pjn.28.2022.11.13.19.37.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 13 Nov 2022 19:27:17 -0800 (PST)
-From: Hunter Chasens <hunter.chasens18@ncf.edu>
-To: outreachy@lists.linux.dev
-Cc: johan@kernel.org,
-	elder@kernel.org,
-	gregkh@linuxfoundation.org,
-	hvaibhav.linux@gmail.com,
-	vireshk@kernel.org,
-	pure.logic@nexus-software.ie,
-	Hunter Chasens <hunter.chasens18@ncf.edu>
-Subject: [PATCH v3 2/2] Staging: greybus: Removes redundant 'int'
-Date: Sun, 13 Nov 2022 22:26:46 -0500
-Message-Id: <ba94cc91fd452319a198e55884a1e4a18518bb75.1668395762.git.hunter.chasens18@ncf.edu>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <cover.1668395762.git.hunter.chasens18@ncf.edu>
+        Sun, 13 Nov 2022 19:37:21 -0800 (PST)
+Date: Mon, 14 Nov 2022 09:07:20 +0530
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: Hunter Chasens <hunter.chasens18@ncf.edu>
+Cc: outreachy@lists.linux.dev, johan@kernel.org, elder@kernel.org,
+	gregkh@linuxfoundation.org, hvaibhav.linux@gmail.com,
+	vireshk@kernel.org, pure.logic@nexus-software.ie
+Subject: Re: [PATCH v3 1/2] Staging: greybus: Whitespace cleanup
+Message-ID: <20221114033720.ixm7fhauvdkdhg7m@vireshk-i7>
 References: <cover.1668395762.git.hunter.chasens18@ncf.edu>
+ <35ee8be5f3737350b5324bfb2b6fd6b74fd02c58.1668395762.git.hunter.chasens18@ncf.edu>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <35ee8be5f3737350b5324bfb2b6fd6b74fd02c58.1668395762.git.hunter.chasens18@ncf.edu>
 
-Removes redundant 'int' from phrase `unsigned long long int`.
+On 13-11-22, 22:26, Hunter Chasens wrote:
+> diff --git a/drivers/staging/greybus/arche-platform.c b/drivers/staging/greybus/arche-platform.c
+> index fcbd5f71eff2..6f86b0141853 100644
+> --- a/drivers/staging/greybus/arche-platform.c
+> +++ b/drivers/staging/greybus/arche-platform.c
+> @@ -179,7 +179,7 @@ static irqreturn_t arche_platform_wd_irq(int irq, void *devid)
+>  				if (arche_pdata->wake_detect_state !=
+>  						WD_STATE_COLDBOOT_START) {
+>  					arche_platform_set_wake_detect_state(arche_pdata,
+> -									     WD_STATE_COLDBOOT_TRIG);
+> +									    WD_STATE_COLDBOOT_TRIG);
 
-Signed-off-by: Hunter Chasens <hunter.chasens18@ncf.edu>
----
- drivers/staging/greybus/Documentation/firmware/authenticate.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+This looks incorrect, 'W' should be right below 'a' here, isn't it ?
 
-diff --git a/drivers/staging/greybus/Documentation/firmware/authenticate.c b/drivers/staging/greybus/Documentation/firmware/authenticate.c
-index 80f30c907905..ba4b16b04557 100644
---- a/drivers/staging/greybus/Documentation/firmware/authenticate.c
-+++ b/drivers/staging/greybus/Documentation/firmware/authenticate.c
-@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
- 		goto close_fd;
- 	}
- 
--	printf("UID received: 0x%llx\n", *(unsigned long long int *)(uid.uid));
-+	printf("UID received: 0x%llx\n", *(unsigned long long *)(uid.uid));
- 
- 	/* Get certificate */
- 	printf("Get IMS certificate\n");
+>  					spin_unlock_irqrestore(&arche_pdata->wake_lock,
+>  							       flags);
+>  					return IRQ_WAKE_THREAD;
+> diff --git a/drivers/staging/greybus/greybus_authentication.h b/drivers/staging/greybus/greybus_authentication.h
+> index 7edc7295b7ab..48b4a9794d3c 100644
+> --- a/drivers/staging/greybus/greybus_authentication.h
+> +++ b/drivers/staging/greybus/greybus_authentication.h
+> @@ -41,7 +41,6 @@
+>  #define CAP_AUTH_RESULT_CR_NO_KEY	0x03
+>  #define CAP_AUTH_RESULT_CR_SIG_FAIL	0x04
+>  
+> -
+
+This was intentionally left here I believe.
+
+>  /* IOCTL support */
+> diff --git a/drivers/staging/greybus/tools/loopback_test.c b/drivers/staging/greybus/tools/loopback_test.c
+> index 4c42e393cd3d..539c7030ffec 100644
+> --- a/drivers/staging/greybus/tools/loopback_test.c
+> +++ b/drivers/staging/greybus/tools/loopback_test.c
+> @@ -240,8 +240,6 @@ static void show_loopback_devices(struct loopback_test *t)
+>  	for (i = 0; i < t->device_count; i++)
+>  		printf("device[%d] = %s\n", i, t->devices[i].name);
+>  
+> -}
+> -
+
+This looks strange.
+
+> @@ -537,7 +531,6 @@ static int log_results(struct loopback_test *t)
+>  			abort();
+>  		}
+>  
+> -	}
+
+This too..
+
 -- 
-2.38.1
-
+viresh
