@@ -1,118 +1,63 @@
-Received: from mail-lj1-f173.google.com (mail-lj1-f173.google.com [209.85.208.173])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 13A8D3C2D;
-	Tue, 15 Nov 2022 12:40:51 +0000 (UTC)
-Received: by mail-lj1-f173.google.com with SMTP id d20so17298441ljc.12;
-        Tue, 15 Nov 2022 04:40:51 -0800 (PST)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 86A36AD47
+	for <outreachy@lists.linux.dev>; Tue, 15 Nov 2022 14:01:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=9K7OHdISQ9ndYJcM7FeOopDqicN3TnOW0AKBc0hd7r4=;
-        b=EVuGADnY9FOdegDv7u0W/l+DAgxjrGyqM1nvo/0V8YD48lTvchKrzuP2BgRcg3tDPJ
-         VTWFGGJ+O2+qzQQmKcehwOqfck9Ko+M7mEXMZ+po+CfyuC2AiDE6LEoH7T2i+BcNLzOv
-         vd2wqOughcTVA4qpAdm2s09ax7/ayxh+CvjNp+MjGUOjuk3h+5B3pAeB+WmesJJmzczQ
-         druyVSwW5blhk1WfLwcnfBoTGcD0mDTYDvfY26njwbp1eXFC9py7fIZTmoHmJ7J6UG9w
-         i9D0UovTO6iCe4qUvwlgs/yq6gNIdSRlmxIr9x41MI9Z3nki6BIPmTX8VbKxA3RVMgzm
-         Zv+A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=9K7OHdISQ9ndYJcM7FeOopDqicN3TnOW0AKBc0hd7r4=;
-        b=e8gUDYDdnaOYn2p6H5utpfNAJWlAtS2ns+WQuGD5TYweBoUN/7HKpPGSF3gNzo9gkT
-         O4KzI8AIfa4qocg4WzslT0szZOdWZwzFyrBkxxtG5WKM2Ogbx0gJMG+dV3SyiYNuaSJg
-         aP79U8GbLGg6rEDlCftQfQqBll8wrwCVaTOgfczHHsQLqmLsXntOCif7CA0xhCm9KSKo
-         vgc2ey0L8iAxAtDNq5lox8M/C4cS5jboS809UPSnZTdSoRDqj/zJqgw/4Lirqx3IpsmK
-         P0gVjeHwzW05oVjyejOKW/nLck672U53OxL4vEFjnLJCrsJqXVMsWvFklZV4eR0r20h5
-         eJOA==
-X-Gm-Message-State: ANoB5pkcxaXzCILTVeFubDiEydW4ae3vm6rWMIxvR18JhWOwQ5kJePyd
-	2omkJRMq30Zb8Ug/jXET4m6LPibfub1dWQ==
-X-Google-Smtp-Source: AA0mqf63kRve2WrOP8O0jvw0gQ3MiYYKl3f+DbyQEsGsomyVUGztVQISw5/2YzfQkk0nH/qPGRziAg==
-X-Received: by 2002:a2e:a814:0:b0:277:40f:4c1c with SMTP id l20-20020a2ea814000000b00277040f4c1cmr5301342ljq.410.1668516049622;
-        Tue, 15 Nov 2022 04:40:49 -0800 (PST)
-Received: from elroy-temp-vm ([20.240.130.248])
-        by smtp.gmail.com with ESMTPSA id a3-20020a05651c030300b002772414817esm2495208ljp.1.2022.11.15.04.40.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 15 Nov 2022 04:40:49 -0800 (PST)
-Date: Tue, 15 Nov 2022 12:40:48 +0000
-From: Tanjuate Brunostar <tanjubrunostar0@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev
-Subject: [PATCH] staging: vt6655: change the function name s_vFillCTSHead
-Message-ID: <Y3OI0Brhp90/tbBh@elroy-temp-vm.gaiao0uenmiufjlowqgp5yxwdh.gvxx.internal.cloudapp.net>
+  d=inria.fr; s=dc;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=VoDAUh+WlO5PFR7i+kzWZcdKnjNc3+EhgETNHs0Bb8Q=;
+  b=SjXIu7jmuCVxhR1gqamexZybZRPiuafc8ThUB2od2VHY+d1fRQ81HyF2
+   UsUncasPh8xwBdvimiYYyIoMlkzYnZnOfaPoyfFzHXPZvKnc0PqaU0J60
+   XKBisihoHPmHpD5NERu/MEWq8+WqK3ZmWa2Ch6epIoVRV91zIcupAKn/a
+   s=;
+Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="5.96,166,1665439200"; 
+   d="scan'208";a="78302593"
+Received: from unknown (HELO hadrien) ([203.116.172.26])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Nov 2022 14:59:50 +0100
+Date: Tue, 15 Nov 2022 21:59:47 +0800 (+08)
+From: Julia Lawall <julia.lawall@inria.fr>
+To: jovial umwari <umwarijovial@gmail.com>
+cc: Alison Schofield <alison.schofield@intel.com>, 
+    Outreachy Linux <outreachy@lists.linux.dev>, 
+    kumarpraveen@linux.microsoft.com, Saurabh Sengar <saurabh.truth@gmail.com>
+Subject: Re: Help
+In-Reply-To: <CAMk1CBNq41M0Kq_LMZ2o2ixCnWofHknKsUaoHUwriGV5oesbSQ@mail.gmail.com>
+Message-ID: <908f246-8ab1-c5e3-cd47-1eebcdcdc150@inria.fr>
+References: <CAMk1CBNq41M0Kq_LMZ2o2ixCnWofHknKsUaoHUwriGV5oesbSQ@mail.gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Type: text/plain; charset=US-ASCII
 
-Remove the use of Hungarian notation, which is not used in the Linux
-kernel. Reported by checkpatch
-Add indentation to the affected function to follow the Linux kernel
-coding style. This improves visibility
 
-Signed-off-by: Tanjuate Brunostar <tanjubrunostar0@gmail.com>
----
- drivers/staging/vt6655/rxtx.c | 26 +++++++++++---------------
- 1 file changed, 11 insertions(+), 15 deletions(-)
 
-diff --git a/drivers/staging/vt6655/rxtx.c b/drivers/staging/vt6655/rxtx.c
-index 341e23054817..869685d27abe 100644
---- a/drivers/staging/vt6655/rxtx.c
-+++ b/drivers/staging/vt6655/rxtx.c
-@@ -21,7 +21,7 @@
-  *      s_uGetRTSCTSDuration- get rtx/cts required duration
-  *      get_rtscts_time- get rts/cts reserved time
-  *      s_uGetTxRsvTime- get frame reserved time
-- *      s_vFillCTSHead- fulfill CTS ctl header
-+ *      fill_cts_header- fulfill CTS ctl header
-  *      s_vFillFragParameter- Set fragment ctl parameter.
-  *      fill_rts_header- fulfill RTS ctl header
-  *      s_vFillTxKey- fulfill tx encrypt key
-@@ -724,19 +724,15 @@ static void fill_rts_header(struct vnt_private *pDevice,
- 	}
- }
- 
--static
--void
--s_vFillCTSHead(
--	struct vnt_private *pDevice,
--	unsigned int uDMAIdx,
--	unsigned char byPktType,
--	void *pvCTS,
--	unsigned int cbFrameLength,
--	bool bNeedAck,
--	bool bDisCRC,
--	unsigned short wCurrentRate,
--	unsigned char byFBOption
--)
-+static void fill_cts_header(struct vnt_private *pDevice,
-+			    unsigned int uDMAIdx,
-+			    unsigned char byPktType,
-+			    void *pvCTS,
-+			    unsigned int cbFrameLength,
-+			    bool bNeedAck,
-+			    bool bDisCRC,
-+			    unsigned short wCurrentRate,
-+			    unsigned char byFBOption)
- {
- 	unsigned int uCTSFrameLen = 14;
- 
-@@ -891,7 +887,7 @@ static void generate_tx_parameter(struct vnt_private *pDevice,
- 			buf->cts_rrv_time_ba = get_rtscts_time(pDevice, 3, byPktType, cbFrameSize, wCurrentRate);
- 
- 			/* Fill CTS */
--			s_vFillCTSHead(pDevice, uDMAIdx, byPktType, pvCTS, cbFrameSize, bNeedACK, bDisCRC, wCurrentRate, byFBOption);
-+			fill_cts_header(pDevice, uDMAIdx, byPktType, pvCTS, cbFrameSize, bNeedACK, bDisCRC, wCurrentRate, byFBOption);
- 		}
- 	} else if (byPktType == PK_TYPE_11A) {
- 		if (pvRTS) {/* RTS_need, non PCF mode */
--- 
-2.34.1
+On Tue, 15 Nov 2022, jovial umwari wrote:
 
+> Greetings to everyone
+> Hope you are doing well
+> i  am Umwari jovial  an outreach applicant
+> in these past days i faced  a challenge  when i was configuring the kernel
+> i went ahead and changed the kernel version in .config  then i had to
+> do make j4(i have 4 cores) and all was well but when i restarted the
+> computer  i was not able to access my normal  operating system and i
+> had to use  the recovery mode to access it  up to now  i am not able
+> Note: i am using Ubuntu ,
+> Running  Linux natively on my own machine.
+> other setups are working well
+>
+> Seeking for help on to resolve the issue any advice or help i will appreciate
+
+Hello,
+
+There is not really enough information for me to understand the problem.
+But I have noticed that sometimes there is an error or more probably a
+warning in the kernel compilation process, and then it will not reboot.
+Perhaps that is your problem.
+
+julia
