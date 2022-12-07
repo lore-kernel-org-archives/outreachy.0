@@ -1,115 +1,269 @@
-Received: from mx0a-00128a01.pphosted.com (mx0a-00128a01.pphosted.com [148.163.135.77])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-lf1-f53.google.com (mail-lf1-f53.google.com [209.85.167.53])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 33982138C
-	for <outreachy@lists.linux.dev>; Wed,  7 Dec 2022 09:43:35 +0000 (UTC)
-Received: from pps.filterd (m0167088.ppops.net [127.0.0.1])
-	by mx0a-00128a01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id 2B77Sbq3003982;
-	Wed, 7 Dec 2022 04:09:54 -0500
-Received: from nwd2mta4.analog.com ([137.71.173.58])
-	by mx0a-00128a01.pphosted.com (PPS) with ESMTPS id 3m816bfjmn-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 07 Dec 2022 04:09:54 -0500
-Received: from ASHBMBX8.ad.analog.com (ASHBMBX8.ad.analog.com [10.64.17.5])
-	by nwd2mta4.analog.com (8.14.7/8.14.7) with ESMTP id 2B799q5w009949
-	(version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Wed, 7 Dec 2022 04:09:52 -0500
-Received: from ASHBCASHYB5.ad.analog.com (10.64.17.133) by
- ASHBMBX8.ad.analog.com (10.64.17.5) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.14; Wed, 7 Dec 2022 04:09:51 -0500
-Received: from ASHBMBX8.ad.analog.com (10.64.17.5) by
- ASHBCASHYB5.ad.analog.com (10.64.17.133) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.14; Wed, 7 Dec 2022 04:09:51 -0500
-Received: from zeus.spd.analog.com (10.66.68.11) by ashbmbx8.ad.analog.com
- (10.64.17.5) with Microsoft SMTP Server id 15.2.986.14 via Frontend
- Transport; Wed, 7 Dec 2022 04:09:51 -0500
-Received: from okan.localdomain ([10.158.19.61])
-	by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 2B799G9U029801;
-	Wed, 7 Dec 2022 04:09:19 -0500
-From: Okan Sahin <okan.sahin@analog.com>
-To: <outreachy@lists.linux.dev>
-CC: Okan Sahin <okan.sahin@analog.com>, Lee Jones <lee@kernel.org>,
-        "Rob
- Herring" <robh+dt@kernel.org>,
-        Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>,
-        Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
-        Jonathan Cameron <jic23@kernel.org>,
-        Lars-Peter Clausen <lars@metafoo.de>,
-        Andy Shevchenko
-	<andriy.shevchenko@linux.intel.com>,
-        Caleb Connolly
-	<caleb.connolly@linaro.org>,
-        Ramona Bolboaca <ramona.bolboaca@analog.com>,
-        Geert Uytterhoeven <geert+renesas@glider.be>,
-        Lad Prabhakar
-	<prabhakar.mahadev-lad.rj@bp.renesas.com>,
-        ChiYuan Huang
-	<cy_huang@richtek.com>,
-        Anand Ashok Dumbre <anand.ashok.dumbre@xilinx.com>,
-        William Breathitt Gray <william.gray@linaro.org>,
-        Manish Narani
-	<manish.narani@xilinx.com>,
-        <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
-        <linux-iio@vger.kernel.org>
-Subject: [PATCH 0/5] staging: drivers: mfd: Add MAX77541 MFD and related device drivers
-Date: Wed, 7 Dec 2022 12:08:39 +0300
-Message-ID: <20221207090906.5896-1-okan.sahin@analog.com>
-X-Mailer: git-send-email 2.30.2
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BB645138C
+	for <outreachy@lists.linux.dev>; Wed,  7 Dec 2022 10:05:37 +0000 (UTC)
+Received: by mail-lf1-f53.google.com with SMTP id p8so27873648lfu.11
+        for <outreachy@lists.linux.dev>; Wed, 07 Dec 2022 02:05:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=DpHjjkWBrFWRiuz7Mk0spdGCtOSkBPp4W0Exn6CPYEg=;
+        b=RaL2APKN9cTXuETvRIe3OCMqPWldGnqETHkNwl0aOQGEKV4qlst4tgJdOXqe8llOOU
+         K96M0wshlPdRlVvifKVtNNiUthkRjc2HdmjhwfiCyGN/mNB0oRF+rsm0DFTl4mUx0FR1
+         inzhaVdi54nqS/RyzXBOl5PB/Rfq2KqgImcjYHTNE1TIxAsN+Bpmh79f92H5VT5+2zna
+         zoRrNkznl/tTehMdh9B4pA99pBm6iYHwjVdhSCw04sOoLT8PA0LWcNkZWBSgIRJELF5g
+         DACW+6vrR1YmCRIuJVKlKqdSHeyR1+tlBbFtq/aZBF0xvM//dX4ATS/zrRy4dOxstLLF
+         +Ktg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=DpHjjkWBrFWRiuz7Mk0spdGCtOSkBPp4W0Exn6CPYEg=;
+        b=uS4DtF8gZ7DYpE2dWi7hiuwvlPKlzBk4V83n3xnPXJi5hZANFx4mrp3CckQr3rh0go
+         X9Z6+VrMkkzD/DrtHZB0+KfvCd8zmuutb0R+gkYSdB0agL0TXBBLSDmigKO7fMLAVdif
+         vdZ2Yyic1jvGzYQ2BV7a/dTyGeUN/ygTaGlVSAzqO469hbTdy2kTQ0tczaCiPORGUJlk
+         TRsysXgleFS8yqvh2P1xiiXRrmWyt8DDtgzP4vlk9uj/af2q581D+dVvRCSH+SfsBWw+
+         H4aUHFnHRu5I5PyIZaC1Ccp8+MyHilbBDUJ2qh8UcWN7uABStKdigjTdf/xlj9wKwK6l
+         iD9w==
+X-Gm-Message-State: ANoB5pl4OXla8YVabsz6UWEgNAVIrzfDKizQsVgM23vTTnfWVG8iyrS/
+	Hmh9rzrHVm4Nspgtj6y/PIJqCQ==
+X-Google-Smtp-Source: AA0mqf4uYDpZazDOatn5v5ERm6hu2aHyPoDOMnOzspbjmNwgh4nNhc+0dqfy6arwv/HFRl6RuYsXvw==
+X-Received: by 2002:ac2:4acc:0:b0:4b4:10ca:5240 with SMTP id m12-20020ac24acc000000b004b410ca5240mr33061634lfp.482.1670407533711;
+        Wed, 07 Dec 2022 02:05:33 -0800 (PST)
+Received: from [192.168.0.20] (088156142067.dynamic-2-waw-k-3-2-0.vectranet.pl. [88.156.142.67])
+        by smtp.gmail.com with ESMTPSA id u23-20020a2e2e17000000b00278e9c0d3a2sm1914034lju.33.2022.12.07.02.05.32
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 07 Dec 2022 02:05:33 -0800 (PST)
+Message-ID: <5d430795-f8c4-bb5c-ebe9-f3c3fdf4985d@linaro.org>
+Date: Wed, 7 Dec 2022 11:05:31 +0100
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ADIRuleOP-NewSCL: Rule Triggered
-X-Proofpoint-GUID: iLWjwKtHCyEyKOhgXzJyPOcECl-mTrR1
-X-Proofpoint-ORIG-GUID: iLWjwKtHCyEyKOhgXzJyPOcECl-mTrR1
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.205,Aquarius:18.0.923,Hydra:6.0.545,FMLib:17.11.122.1
- definitions=2022-12-07_04,2022-12-06_01,2022-06-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 impostorscore=0
- lowpriorityscore=0 spamscore=0 adultscore=0 clxscore=1011 mlxscore=0
- mlxlogscore=731 priorityscore=1501 suspectscore=0 bulkscore=0 phishscore=0
- malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2210170000 definitions=main-2212070076
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.5.1
+Subject: Re: [PATCH 2/5] staging: dt-bindings: mfd: adi,max77541.yaml Add
+ MAX77541 bindings
+Content-Language: en-US
+To: Okan Sahin <okan.sahin@analog.com>, outreachy@lists.linux.dev
+Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Jonathan Cameron <jic23@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Manish Narani <manish.narani@xilinx.com>,
+ Marcelo Schmitt <marcelo.schmitt1@gmail.com>,
+ Caleb Connolly <caleb.connolly@linaro.org>,
+ Marcus Folkesson <marcus.folkesson@gmail.com>,
+ ChiYuan Huang <cy_huang@richtek.com>,
+ Anand Ashok Dumbre <anand.ashok.dumbre@xilinx.com>,
+ Ramona Bolboaca <ramona.bolboaca@analog.com>,
+ William Breathitt Gray <william.gray@linaro.org>,
+ linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-iio@vger.kernel.org
+References: <20221207090906.5896-1-okan.sahin@analog.com>
+ <20221207090906.5896-3-okan.sahin@analog.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+In-Reply-To: <20221207090906.5896-3-okan.sahin@analog.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-This patchset adds mfd, regulator and adc driver and related bindings.The patches 
-are required to be applied in sequence.
+On 07/12/2022 10:08, Okan Sahin wrote:
+> This patch adds document the bindings for MAX77541 MFD driver. It also
 
-Okan Sahin (5):
-  staging: drivers: mfd: Add MAX77541/MAX77540 PMIC Support
-  staging: dt-bindings: mfd: adi,max77541.yaml Add MAX77541 bindings
-  staging: drivers: regulator: Add MAX77541 Regulator Support
-  staging: dt-bindings: regulator: adi,max77541.yaml Add MAX77541
-    Regulator bindings
-  staging: drivers: iio: adc: Adc MAX77541 ADC Support
+Do not use "This commit/patch".
+https://elixir.bootlin.com/linux/v5.17.1/source/Documentation/process/submitting-patches.rst#L95
 
- .../devicetree/bindings/mfd/adi,max77541.yaml | 134 ++++++++++
- .../bindings/regulator/adi,max77541.yaml      |  44 ++++
- MAINTAINERS                                   |  11 +
- drivers/iio/adc/Kconfig                       |  11 +
- drivers/iio/adc/Makefile                      |   1 +
- drivers/iio/adc/max77541-adc.c                | 224 +++++++++++++++++
- drivers/mfd/Kconfig                           |  13 +
- drivers/mfd/Makefile                          |   1 +
- drivers/mfd/max77541.c                        | 236 ++++++++++++++++++
- drivers/regulator/Kconfig                     |   9 +
- drivers/regulator/Makefile                    |   1 +
- drivers/regulator/max77541-regulator.c        | 181 ++++++++++++++
- include/linux/mfd/max77541.h                  | 150 +++++++++++
- 13 files changed, 1016 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/mfd/adi,max77541.yaml
- create mode 100644 Documentation/devicetree/bindings/regulator/adi,max77541.yaml
- create mode 100644 drivers/iio/adc/max77541-adc.c
- create mode 100644 drivers/mfd/max77541.c
- create mode 100644 drivers/regulator/max77541-regulator.c
- create mode 100644 include/linux/mfd/max77541.h
+> includes MAX77540 driver whose regmap is covered by MAX77541.
+> 
+> Signed-off-by: Okan Sahin <okan.sahin@analog.com>
+> ---
+>  .../devicetree/bindings/mfd/adi,max77541.yaml | 134 ++++++++++++++++++
+>  MAINTAINERS                                   |   1 +
+>  2 files changed, 135 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/mfd/adi,max77541.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/mfd/adi,max77541.yaml b/Documentation/devicetree/bindings/mfd/adi,max77541.yaml
+> new file mode 100644
+> index 000000000000..205953e6dd15
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/mfd/adi,max77541.yaml
+> @@ -0,0 +1,134 @@
+> +# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/mfd/adi,max77541.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MAX77540/MAX77541 PMIC from ADI.
 
--- 
-2.30.2
+Drop trailing space.
+
+> +
+> +maintainers:
+> +  - Okan Sahin <okan.sahin@analog.com>
+> +
+> +description: |
+> +  MAX77540 is a Power Management IC with 2 buck regulators.
+> +
+> +  MAX77541 is a Power Management IC with 2 buck regulators and 1 ADC.
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - adi,max77540
+> +      - adi,max77541
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  regulators:
+> +    $ref: /schemas/regulator/adi,max77541.yaml#
+
+I don't think you tested this patch. There is no such file.
+
+> +
+> +  adc:
+> +    type: object
+> +    additionalProperties: false
+> +    properties:
+> +      compatible:
+> +        const: adi,max77541-adc
+
+Why having a child without any resources? It does not look like needed
+and instead your parent driver should instantiate the child device.
+
+> +    required:
+> +      -compatible
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +
+> +allOf:
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            const: adi,max77540
+> +    then:
+> +      properties:
+> +        regulator:
+> +          properties:
+> +            compatible:
+> +              const: adi,max77540-regulator
+> +    else:
+> +      properties:
+> +        regulator:
+> +          properties:
+> +            compatible:
+> +              const: adi,max77541-regulator
+> +        adc:
+> +          properties:
+> +            compatible:
+> +              const: adi,max77541-adc
+
+The adc part is not needed anyway - duplicating what's in top-level
+properties.
+
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +
+> +    i2c {
+> +        #address-cells = <1>;
+> +        #size-cells = <0>;
+> +
+> +        pmic@69 {
+> +            compatible = "adi,max77540";
+> +            reg = <0x69>;
+> +            interrupt-parent = <&gpio>;
+> +            interrupts = <16 IRQ_TYPE_EDGE_FALLING>;
+> +
+> +            regulators {
+> +                buck1 {
+> +                    regulator-min-microvolt = <500000>;
+> +                    regulator-max-microvolt = <5200000>;
+> +                    regulator-boot-on;
+> +                    regulator-always-on;
+> +                };
+> +                buck2 {
+> +                    regulator-min-microvolt = <500000>;
+> +                    regulator-max-microvolt = <5200000>;
+> +                    regulator-boot-on;
+> +                    regulator-always-on;
+> +                };
+> +            };
+> +        };
+> +    };
+> +
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +
+> +    i2c {
+> +        #address-cells = <1>;
+> +        #size-cells = <0>;
+> +
+> +        pmic@69 {
+> +            compatible = "adi,max77541";
+
+Keep only one example (more complex one) - they are almost the same.
+
+> +            reg = <0x63>;
+> +            interrupt-parent = <&gpio>;
+> +            interrupts = <16 IRQ_TYPE_EDGE_FALLING>;
+> +
+> +            regulators {
+> +                buck1 {
+> +                    regulator-min-microvolt = <500000>;
+> +                    regulator-max-microvolt = <5200000>;
+> +                    regulator-boot-on;
+> +                    regulator-always-on;
+> +                };
+> +                buck2 {
+> +                    regulator-min-microvolt = <500000>;
+> +                    regulator-max-microvolt = <5200000>;
+> +                    regulator-boot-on;
+> +                    regulator-always-on;
+> +                };
+> +            };
+> +
+> +            adc {
+> +                compatible = "adi,max77541-adc";
+> +            }
+> +        };
+> +    };
+> \ No newline at end of file
+
+Error here.
+
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index af94d06bb9f0..22f5a9c490e3 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -12501,6 +12501,7 @@ MAXIM MAX77541 PMIC MFD DRIVER
+>  M:	Okan Sahin <okan.sahin@analog.com>
+>  L:	linux-kernel@vger.kernel.org
+>  S:	Maintained
+> +F:	Documentation/devicetree/bindings/mfd/adi,max77541.yaml
+>  F:	drivers/mfd/max77541.c
+>  F:	include/linux/mfd/max77541.h
+>  
+
+Best regards,
+Krzysztof
 
