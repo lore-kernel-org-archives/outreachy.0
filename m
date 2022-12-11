@@ -1,88 +1,76 @@
-Received: from mail-oa1-f46.google.com (mail-oa1-f46.google.com [209.85.160.46])
+Received: from mail-wr1-f47.google.com (mail-wr1-f47.google.com [209.85.221.47])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D3F722102
-	for <outreachy@lists.linux.dev>; Wed,  7 Dec 2022 14:20:02 +0000 (UTC)
-Received: by mail-oa1-f46.google.com with SMTP id 586e51a60fabf-1322d768ba7so21446605fac.5
-        for <outreachy@lists.linux.dev>; Wed, 07 Dec 2022 06:20:02 -0800 (PST)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BE7A3186F;
+	Sun, 11 Dec 2022 10:56:53 +0000 (UTC)
+Received: by mail-wr1-f47.google.com with SMTP id w15so9260930wrl.9;
+        Sun, 11 Dec 2022 02:56:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=lAvGt3vLdbPiY+2Of1sNsoY/Xfkar684+8jXtNIqH/o=;
+        b=olfa3spiHiwdBT4E0YPycmSCjFe+kp3ZbHrQPbsQmCqGxibWDc8qV4Cz+GMaAg5VrV
+         BzxYFgRm30SHRXMekG2Y+n/dNSrDUBP3mmi80lzChaXL99dUyYlG/cuQEhzo8zyZjtMR
+         qxWv49uCs4ip8zaJUbclokn8H9YjUAaQ9rC+soeBppNF2TwXGZ3i2lCc9InDHa3G3w3Z
+         +QP5le2wL94RYD5WQEKe80IIFZQHJbBgN4uvZEZ6iQrgGivWQSjPWAK/b9DYR+3AoTk2
+         onOFyAIFAudQBNZkkNMJa8pEJY4HcUQIFhm2X7CzIpd/88ifNl2FPeGeJQkpVGo+kr7X
+         AuMQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=date:subject:message-id:references:in-reply-to:cc:to:from
-         :mime-version:content-transfer-encoding:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=RhBLk8VcFaz/v/fMZe1KFzL357JI5UetuESxzLIfjRI=;
-        b=DxU9c3gpIbl4tgZBlh0Nm0XO0wuERwd8mOuGexoXWhqxvyecL4xO3YPZQ9VI6E5u6n
-         nnKoG2xB7kv6ZW3oWa2tN4yXuMp+Wv0qOZ6Y+SPzbXaKwfRqMmhy0w1Q+IP3uiUcwPY2
-         rt4NlP+6Fky+l7rWD5bNlQFBqOQa7CJD1wKMnv44gZgr5qJV1aQ/1OtGGEBG5F/Uwold
-         57+wedkVddVkWBZVdiEvxu8EkHQo5c/8ESR1VEVUpt3kyHJYf7WK4W6qXUnhU8xPfWD2
-         hGOqdHiZGKz8wEVQwmJwGCdixPh+j8F0NY+kVCuaVNZRm59QV2bEcjopIDm4caqDGQlD
-         EMCQ==
-X-Gm-Message-State: ANoB5pkObvmrsIPCRUeMmq+v8A4wDj0EY29Z6UVv6ggu15DxOJ+WIiLC
-	S/epI14eg2dI0a2MNsTtYA==
-X-Google-Smtp-Source: AA0mqf5Ces9tvVXcwYUIowwHdMMYUnDLEQYpabQuJIpvVLOqIoD7NUUxHhH9Fbamf0mmXpL6Z9I0lQ==
-X-Received: by 2002:a05:6870:be9b:b0:144:a46f:e355 with SMTP id nx27-20020a056870be9b00b00144a46fe355mr7016254oab.95.1670422801747;
-        Wed, 07 Dec 2022 06:20:01 -0800 (PST)
-Received: from robh_at_kernel.org (66-90-144-107.dyn.grandenetworks.net. [66.90.144.107])
-        by smtp.gmail.com with ESMTPSA id w64-20020aca6243000000b0035ba52d0efasm9484993oib.52.2022.12.07.06.20.00
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=lAvGt3vLdbPiY+2Of1sNsoY/Xfkar684+8jXtNIqH/o=;
+        b=UyaMCew2tySFzdDkaFLie7RF6hLFNRQJyiBTaui//PIVdW+al1TckYzOfewnNu6JAC
+         v+vuqj/FvaDI/EV+ntr6QMFkzUzcQ504b8uduvWpRbJDQdnZ7Bm8LFwSMl0OXQhWBJkz
+         yURozD3XxKdLbK4zzWR1bgZNRrqCP7juQaA6R4/j8a3hmjWgBE+1CiBKIVsVrGVqXmLt
+         9GGlKzkAd0doer8ivLapdddTijzGjYjelJ4MHEiimly/6waxCtlbU3ILGdgSYaBHMFI6
+         Jv+Fgq8y435tvZFQB83RQlEyxTdWqp3y1X2WeVetSFbgYSxUWG1Rg6CZ7+E4H8/G29iH
+         D6bw==
+X-Gm-Message-State: ANoB5plYnnY3CFdASvUxMKHtFSUlgH6x2O2sRJX8O1fxjGCBE3pxcM/a
+	+aKVCDe6huqZlZ2MdaUJrw==
+X-Google-Smtp-Source: AA0mqf7zKuKHJILouCKRvL3z3BO4PlGpMm7J84X65Ob+k1s7jKSRMTqf9I/8n9TZCQ3eRFCbyf7EKg==
+X-Received: by 2002:adf:f88c:0:b0:242:5563:c3b with SMTP id u12-20020adff88c000000b0024255630c3bmr7406248wrp.59.1670756211870;
+        Sun, 11 Dec 2022 02:56:51 -0800 (PST)
+Received: from koolguy (dslb-094-217-227-056.094.217.pools.vodafone-ip.de. [94.217.227.56])
+        by smtp.gmail.com with ESMTPSA id h17-20020a5d4fd1000000b0024246991121sm5821908wrw.116.2022.12.11.02.56.50
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 07 Dec 2022 06:20:01 -0800 (PST)
-Received: (nullmailer pid 2124809 invoked by uid 1000);
-	Wed, 07 Dec 2022 14:19:49 -0000
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+        Sun, 11 Dec 2022 02:56:51 -0800 (PST)
+Date: Sun, 11 Dec 2022 11:56:49 +0100
+From: Dalvin Aiguobas <pharcodra@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy@lists.linux.dev
+Subject: [PATCH] staging: wlan-ng: fix checkpatch error for spinlock
+Message-ID: <20221211105649.GA4683@koolguy>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-From: Rob Herring <robh@kernel.org>
-To: Okan Sahin <okan.sahin@analog.com>
-Cc: linux-kernel@vger.kernel.org, Jonathan Cameron <jic23@kernel.org>, Anand Ashok Dumbre <anand.ashok.dumbre@xilinx.com>, Marcelo Schmitt <marcelo.schmitt1@gmail.com>, Liam Girdwood <lgirdwood@gmail.com>, ChiYuan Huang <cy_huang@richtek.com>, Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>, Lee Jones <lee@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, outreachy@lists.linux.dev, Mark Brown <broonie@kernel.org>, Ramona Bolboaca <ramona.bolboaca@analog.com>, linux-iio@vger.kernel.org, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Marcus Folkesson <marcus.folkesson@gmail.com>, William Breathitt Gray <william.gray@linaro.org>, devicetree@vger.kernel.org, Rob Herring <robh+dt@kernel.org>, Caleb Connolly <caleb.connolly@linaro.org>
-In-Reply-To: <20221207090906.5896-5-okan.sahin@analog.com>
-References: <20221207090906.5896-1-okan.sahin@analog.com>
- <20221207090906.5896-5-okan.sahin@analog.com>
-Message-Id: <167042222369.2111889.8418799302512280680.robh@kernel.org>
-Subject: Re: [PATCH 4/5] staging: dt-bindings: regulator: adi,max77541.yaml
- Add MAX77541 Regulator bindings
-Date: Wed, 07 Dec 2022 08:19:49 -0600
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
+Checkpatch Styleproblem fixed by adding comment.
 
-On Wed, 07 Dec 2022 12:08:43 +0300, Okan Sahin wrote:
-> This patch adds document the bindings for MAX77541 and MAX77540
-> regulator drivers.
-> 
-> Signed-off-by: Okan Sahin <okan.sahin@analog.com>
-> ---
->  .../bindings/regulator/adi,max77541.yaml      | 44 +++++++++++++++++++
->  MAINTAINERS                                   |  1 +
->  2 files changed, 45 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/regulator/adi,max77541.yaml
-> 
+Signed-off-by: Dalvin <pharcodra@gmail.com>
+---
+ drivers/staging/wlan-ng/hfa384x.h | 1 +
+ 1 file changed, 1 insertion(+)
 
-My bot found errors running 'make DT_CHECKER_FLAGS=-m dt_binding_check'
-on your patch (DT_CHECKER_FLAGS is new in v5.13):
-
-yamllint warnings/errors:
-./Documentation/devicetree/bindings/regulator/adi,max77541.yaml:44:28: [error] no new line character at the end of file (new-line-at-end-of-file)
-
-dtschema/dtc warnings/errors:
-
-doc reference errors (make refcheckdocs):
-Documentation/devicetree/bindings/regulator/adi,max77541.yaml: Documentation/devicetree/bindings/mfd/adi,max77541.yaml
-
-See https://patchwork.ozlabs.org/project/devicetree-bindings/patch/20221207090906.5896-5-okan.sahin@analog.com
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
+diff --git a/drivers/staging/wlan-ng/hfa384x.h b/drivers/staging/wlan-ng/hfa384x.h
+index 0611e37df6ac..ad117d570bb6 100644
+--- a/drivers/staging/wlan-ng/hfa384x.h
++++ b/drivers/staging/wlan-ng/hfa384x.h
+@@ -1171,6 +1171,7 @@ struct hfa384x_usbctlx {
+ };
+ 
+ struct hfa384x_usbctlxq {
++	/* lock: Protect structure fields */
+ 	spinlock_t lock;
+ 	struct list_head pending;
+ 	struct list_head active;
+-- 
+2.25.1
 
