@@ -1,354 +1,95 @@
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 804DC1C29
-	for <outreachy@lists.linux.dev>; Sun, 11 Dec 2022 12:48:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E9766C433F0;
-	Sun, 11 Dec 2022 12:48:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1670762904;
-	bh=YqGHAeUtjkvb2+3w36MvdEkbN9v5NOQfnXnXcP1UOzA=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=AkU834MglZrcwwSoXK9m6zJeMUXkYsFb0IZQSdcM0ZKFd2qQnJhFId5sUpCByCuTT
-	 y4NDGgQ+v/a8dSdCQYck2RL6NoFknhQJyB4kCinAGlxo1TZy8DovYi6rni6oHGmNmd
-	 V99Im/oXLMPPACiw8SQKiTgtpy8O499qCFMqZxnPMFaCWaJ+kusxwHgvY16U6O0PH3
-	 3o2SMuj3KiX2o7QDj6FC+JqjLpQxwZv2vlEaNHVVTklfrZQmdasEyFIszU4MuWLG28
-	 oSSuqC+u6tEjeQZuI75x/4mjizYxFGlQEviRXAObeMO0nUImKSPTgpQoPb5g38M/br
-	 0orqsjMfl7xew==
-Date: Sun, 11 Dec 2022 13:01:16 +0000
-From: Jonathan Cameron <jic23@kernel.org>
-To: Okan Sahin <okan.sahin@analog.com>
-Cc: <outreachy@lists.linux.dev>, Lee Jones <lee@kernel.org>, "Rob Herring"
- <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Liam Girdwood <lgirdwood@gmail.com>,
- Mark Brown <broonie@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>, Andy
- Shevchenko <andriy.shevchenko@linux.intel.com>, ChiYuan Huang
- <cy_huang@richtek.com>, Lad Prabhakar
- <prabhakar.mahadev-lad.rj@bp.renesas.com>, Caleb Connolly
- <caleb.connolly@linaro.org>, Anand Ashok Dumbre
- <anand.ashok.dumbre@xilinx.com>, Ramona Bolboaca
- <ramona.bolboaca@analog.com>, William Breathitt Gray
- <william.gray@linaro.org>, <linux-kernel@vger.kernel.org>,
- <devicetree@vger.kernel.org>, <linux-iio@vger.kernel.org>
-Subject: Re: [PATCH 5/5] staging: drivers: iio: adc: Adc MAX77541 ADC
- Support
-Message-ID: <20221211130116.6469e390@jic23-huawei>
-In-Reply-To: <20221207090906.5896-6-okan.sahin@analog.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B60061C16
+	for <outreachy@lists.linux.dev>; Sun, 11 Dec 2022 13:34:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1670765658; x=1702301658;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=MwllUDJ4axGeJynb2FjYv02NOCKfwgtmyrW5PnmJ0S0=;
+  b=Gl3YrCZvjnXsa/GqOEGgYoD67OckBXKnz/qvxt2xdF6CrfeaQjGDi0pM
+   sStUoEnprdQkYDCGS7+aJ48I4kxBYrerJPOI+qCX0MYn2Wcg1FEojdlRp
+   Gz7kklY57PepQN8yuA0AL4ID8NfT8t01F9f/T58nsfsKiz2SlV48WushY
+   pQoBoKvK4aY2ux7TbpZlkLfFnueP2SqGjYgMgkk9i5qEgLkYBQnhjSlSD
+   cCHYX6tiy9eNIoEZhLMbDN0SXVTA+EG8lJjQu3aBJ6A0ma58vPtdtW7Ht
+   TIvhUgfe685RIWlY6T/aExCceO6fswSyYgH2fEx66bbq6K9f3MskYpLB5
+   g==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10558"; a="382006500"
+X-IronPort-AV: E=Sophos;i="5.96,236,1665471600"; 
+   d="scan'208";a="382006500"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Dec 2022 05:34:17 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10558"; a="711390779"
+X-IronPort-AV: E=Sophos;i="5.96,236,1665471600"; 
+   d="scan'208";a="711390779"
+Received: from smile.fi.intel.com ([10.237.72.54])
+  by fmsmga008.fm.intel.com with ESMTP; 11 Dec 2022 05:34:13 -0800
+Received: from andy by smile.fi.intel.com with local (Exim 4.96)
+	(envelope-from <andriy.shevchenko@linux.intel.com>)
+	id 1p4MT5-0080RS-0M;
+	Sun, 11 Dec 2022 15:34:11 +0200
+Date: Sun, 11 Dec 2022 15:34:10 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Jonathan Cameron <jic23@kernel.org>
+Cc: Okan Sahin <okan.sahin@analog.com>, outreachy@lists.linux.dev,
+	Lee Jones <lee@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Lars-Peter Clausen <lars@metafoo.de>,
+	Caleb Connolly <caleb.connolly@linaro.org>,
+	Ramona Bolboaca <ramona.bolboaca@analog.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
+	ChiYuan Huang <cy_huang@richtek.com>,
+	Anand Ashok Dumbre <anand.ashok.dumbre@xilinx.com>,
+	William Breathitt Gray <william.gray@linaro.org>,
+	Manish Narani <manish.narani@xilinx.com>,
+	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-iio@vger.kernel.org
+Subject: Re: [PATCH 0/5] staging: drivers: mfd: Add MAX77541 MFD and related
+ device drivers
+Message-ID: <Y5XcUtNInUJl98JP@smile.fi.intel.com>
 References: <20221207090906.5896-1-okan.sahin@analog.com>
-	<20221207090906.5896-6-okan.sahin@analog.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-pc-linux-gnu)
+ <Y5B0btPjY6nHhYRm@smile.fi.intel.com>
+ <20221211122043.424e095d@jic23-huawei>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20221211122043.424e095d@jic23-huawei>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 
-On Wed, 7 Dec 2022 12:08:44 +0300
-Okan Sahin <okan.sahin@analog.com> wrote:
-
-> This patch add adc support for MAX77541.
+On Sun, Dec 11, 2022 at 12:20:43PM +0000, Jonathan Cameron wrote:
+> On Wed, 7 Dec 2022 13:09:34 +0200
+> Andy Shevchenko <andriy.shevchenko@linux.intel.com> wrote:
+> > On Wed, Dec 07, 2022 at 12:08:39PM +0300, Okan Sahin wrote:
+> > > This patchset adds mfd, regulator and adc driver and related bindings.The patches 
+> > > are required to be applied in sequence.  
+> > 
+> > You have an indentation / wrapping issues in the above text.
+> > 
+> > Nevertheless, why staging? What does it mean?
 > 
-> The MAX77541 has an 8-bit Successive Approximation Register (SAR) ADC
-> with four multiplexers for supporting the telemetry feature
+> The main reason to go via staging is because a driver is sitting out
+> of tree and it is useful to bring it in on the basis that it can then be
+> cleaned up in tree before moving out of staging.
 
-Good to add a little detail on what features the driver currently supports.
+But files are not in staging. Me being confused.
 
-> 
-> Signed-off-by: Okan Sahin <okan.sahin@analog.com>
+> For a relatively small driver like this, that's hard to argue.  Just
+> clean it up in response to review feedback and then we can take it
+> directly into relevant subsystems in the main tree.
 
-...
+-- 
+With Best Regards,
+Andy Shevchenko
 
-> diff --git a/drivers/iio/adc/Kconfig b/drivers/iio/adc/Kconfig
-> index 791612ca6012..2e7833b33f12 100644
-> --- a/drivers/iio/adc/Kconfig
-> +++ b/drivers/iio/adc/Kconfig
-> @@ -696,6 +696,17 @@ config MAX1363
->  	  To compile this driver as a module, choose M here: the module will be
->  	  called max1363.
->  
-> +config MAX77541_ADC
-> +	tristate "Analog Devices MAX77541 ADC driver"
-> +	depends on MFD_MAX77541
-> +	help
-> +	  This driver controls a Analog Devices MAX77541 adc
-ADC
-
-> +	  via I2C bus. This device has one adc. Say yes here to build
-> +	  support for Analog Devices MAX77541 ADC interface.
-> +
-> +	  To compile this driver as a module, choose M here: the module will be
-> +	  called max77541-adc.
-> +
-
-...
-
-> diff --git a/drivers/iio/adc/max77541-adc.c b/drivers/iio/adc/max77541-adc.c
-> new file mode 100644
-> index 000000000000..7ca8576bd4e1
-> --- /dev/null
-> +++ b/drivers/iio/adc/max77541-adc.c
-> @@ -0,0 +1,224 @@
-> +// SPDX-License-Identifier: GPL-2.0-or-later
-> +/*
-> + * Copyright (c) 2022 Analog Devices, Inc.
-> + * ADI MAX77541 ADC Driver with IIO interface
-> + */
-> +
-> +#include <linux/bitfield.h>
-> +#include <linux/iio/iio.h>
-> +#include <include/linux/mfd/max77541.h>
-
-Move this driver specific header include to below the main
-block. We want to make it clear it is special.
-
-> +#include <linux/platform_device.h>
-> +#include <linux/regmap.h>
-> +#include <linux/regulator/driver.h>
-> +#include <linux/regulator/of_regulator.h>
-
-Would be very very surprised to see off_regulator.h correctly included
-in an IIO driver.  Check all of these for whether they are necessary
-(rather than cut and paste from another driver).
-
-> +
-> +#define MAX77541_ADC_CHANNEL(_channel, _name, _type, _reg) \
-> +	{							\
-> +		.type = _type,					\
-> +		.indexed = 1,					\
-> +		.channel = _channel,				\
-> +		.address = _reg,				\
-> +		.info_mask_separate = BIT(IIO_CHAN_INFO_RAW) |	\
-> +				      BIT(IIO_CHAN_INFO_SCALE) |\
-> +				      BIT(IIO_CHAN_INFO_OFFSET),\
-> +		.datasheet_name = _name,			\
-> +	}
-> +
-> +enum {
-> +	MAX77541_ADC_CH1_I = 0,
-> +	MAX77541_ADC_CH2_I,
-> +	MAX77541_ADC_CH3_I,
-> +	MAX77541_ADC_CH6_I,
-> +
-> +	MAX77541_ADC_IRQMAX_I,
-> +};
-> +
-> +struct max77541_adc_iio {
-> +	struct regmap	*regmap;
-> +	int irq;
-> +	int irq_arr[MAX77541_ADC_IRQMAX_I];
-
-Clear out unused elements until the follow up patch that actually makes
-us of them. For now they are just distracting noise.
-
-> +};
-> +
-> +enum max77541_adc_channel {
-> +	MAX77541_ADC_VSYS_V = 0,
-> +	MAX77541_ADC_VOUT1_V,
-> +	MAX77541_ADC_VOUT2_V,
-> +	MAX77541_ADC_TEMP,
-> +};
-> +
-> +static int max77541_adc_offset(struct iio_dev *indio_dev,
-> +			       struct iio_chan_spec const *chan,
-> +			       int *val, int *val2)
-> +{
-> +	switch (chan->channel) {
-> +	case MAX77541_ADC_VSYS_V:
-> +	case MAX77541_ADC_VOUT1_V:
-> +	case MAX77541_ADC_VOUT2_V:
-> +		*val = 0;
-> +		*val2 = 0;
-> +		return IIO_VAL_INT_PLUS_MICRO;
-
-If the offset is zero, then don't have the interface.  Default
-assumption if OFFSET is not provided is that the offset is 0.
-
-
-> +	case MAX77541_ADC_TEMP:
-> +		*val = -273;
-> +		*val2 = 0;
-> +		return IIO_VAL_INT_PLUS_MICRO;
-> +	default:
-> +		return -EINVAL;
-> +	}
-> +}
-> +
-> +static int max77541_adc_scale(struct iio_dev *indio_dev,
-> +			      struct iio_chan_spec const *chan,
-> +			      int *val, int *val2)
-> +{
-> +	struct max77541_adc_iio *info = iio_priv(indio_dev);
-> +	unsigned int reg_val;
-> +	int ret;
-> +
-> +	switch (chan->channel) {
-> +	case MAX77541_ADC_VSYS_V:
-> +		*val = 0;
-> +		*val2 = 25000;
-> +		return IIO_VAL_INT_PLUS_MICRO;
-> +	case MAX77541_ADC_VOUT1_V:
-> +		ret = regmap_read(info->regmap, MAX77541_REG_M2_CFG1, &reg_val);
-> +		if (ret)
-> +			return ret;
-> +
-> +		reg_val = FIELD_GET(MAX77541_BITS_MX_CFG1_RNG, reg_val);
-> +
-> +		*val = 0;
-> +
-> +		if (reg_val == LOW_RANGE)
-
-Ah. Here is the mysterious macro from patch 1.  Bring that definition forwards
-to this patch.  Also switch statement would be more readable here.
-
-> +			*val2 = 6250;
-> +		else if (reg_val == MID_RANGE)
-> +			*val2 = 12500;
-> +		else if (reg_val == HIGH_RANGE)
-> +			*val2 = 25000;
-> +		else
-> +			return -EINVAL;
-> +
-> +		return IIO_VAL_INT_PLUS_MICRO;
-> +	case MAX77541_ADC_VOUT2_V:
-> +		ret = regmap_read(info->regmap, MAX77541_REG_M2_CFG1, &reg_val);
-
-Umm. Is this identical to the above case?  If so, just have one block for
-both.
-  
-> +		if (ret)
-> +			return ret;
-> +		reg_val = FIELD_GET(MAX77541_BITS_MX_CFG1_RNG, reg_val);
-> +
-> +		*val = 0;
-> +
-> +		if (reg_val == LOW_RANGE)
-> +			*val2 = 6250;
-> +		else if (reg_val == MID_RANGE)
-> +			*val2 = 12500;
-> +		else if (reg_val == HIGH_RANGE)
-> +			*val2 = 25000;
-> +		else
-> +			return -EINVAL;
-> +
-> +		return IIO_VAL_INT_PLUS_MICRO;
-> +	case MAX77541_ADC_TEMP:
-> +		*val = 1;
-> +		*val2 = 725000;
-> +		return IIO_VAL_INT_PLUS_MICRO;
-> +	default:
-> +		return -EINVAL;
-> +	}
-> +}
-> +
-
-> +
-> +static const struct iio_chan_spec max77541_adc_channels[] = {
-
-Bring the macro definition down to just above this array. That will
-make it easier to review as we can see the right parameters are being
-passed in.   For 4 channels, I'm not sure I'd bother wrapping it in
-a macro at all (particularly as that macro needs to be more
-complex - see above), but I don't mind if you want to keep it that way.
-
-
-I would also move this down below the iio_info definition because
-that will keep all the code relevant to that in one place rather
-than throwing this in the middle.
-
-> +	MAX77541_ADC_CHANNEL(MAX77541_ADC_VSYS_V, "vsys_v", IIO_VOLTAGE,
-> +			     MAX77541_REG_ADC_DATA_CH1),
-> +	MAX77541_ADC_CHANNEL(MAX77541_ADC_VOUT1_V, "vout1_v", IIO_VOLTAGE,
-> +			     MAX77541_REG_ADC_DATA_CH2),
-> +	MAX77541_ADC_CHANNEL(MAX77541_ADC_VOUT2_V, "vout2_v", IIO_VOLTAGE,
-> +			     MAX77541_REG_ADC_DATA_CH3),
-> +	MAX77541_ADC_CHANNEL(MAX77541_ADC_TEMP, "temp", IIO_TEMP,
-> +			     MAX77541_REG_ADC_DATA_CH6),
-> +};
-> +
-> +static int max77541_adc_read_raw(struct iio_dev *indio_dev,
-> +				 struct iio_chan_spec const *chan,
-> +				 int *val, int *val2, long mask)
-> +{
-> +	switch (mask) {
-> +	case IIO_CHAN_INFO_OFFSET:
-> +		return max77541_adc_offset(indio_dev, chan, val, val2);
-> +	case IIO_CHAN_INFO_SCALE:
-> +		return max77541_adc_scale(indio_dev, chan, val, val2);
-> +	case IIO_CHAN_INFO_RAW:
-> +		return max77541_adc_raw(indio_dev, chan, val);
-> +	default:
-> +		return -EINVAL;
-> +	}
-> +}
-> +
-> +static const struct iio_info max77541_adc_info = {
-> +	.read_raw = max77541_adc_read_raw,
-> +};
-> +
-> +static int max77541_adc_probe(struct platform_device *pdev)
-> +{
-> +	struct max77541_dev *max77541;
-> +	struct max77541_adc_iio *info;
-> +	struct iio_dev *indio_dev;
-> +
-> +	indio_dev = devm_iio_device_alloc(&pdev->dev, sizeof(*info));
-> +	if (!indio_dev)
-> +		return -ENOMEM;
-> +
-> +	info = iio_priv(indio_dev);
-> +
-> +	info->regmap = max77541->regmap;
-> +	indio_dev->modes = INDIO_DIRECT_MODE;
-> +
-> +	indio_dev->name = platform_get_device_id(pdev)->name;
-> +	indio_dev->info = &max77541_adc_info;
-> +	indio_dev->channels = max77541_adc_channels;
-> +	indio_dev->num_channels = ARRAY_SIZE(max77541_adc_channels);
-> +
-> +	return devm_iio_device_register(&pdev->dev, indio_dev);
-> +}
-> +
-> +static const struct platform_device_id max77541_adc_platform_id[] = {
-> +	{ "max77541-adc", MAX77541, },
-
-Better to introduce the complexity given by the type only when it is needed.
-So for now drop the .data values here and below.
-
-If / when that does happen I'll be asking you to use a chip_info structure
-anyway - right now that structure would be empty so no point in adding it
-yet.
-
-> +	{  /* sentinel */  }
-> +};
-> +MODULE_DEVICE_TABLE(platform, max77541_adc_platform_id);
-> +
-> +static const struct of_device_id max77541_adc_of_id[] = {
-> +	{
-> +		.compatible = "adi,max77541-adc",
-> +		.data = (void *)MAX77541,
-> +	},
-> +	{  /* sentinel */  }
-> +};
-> +MODULE_DEVICE_TABLE(of, max77541_adc_of_id);
-> +
-> +static struct platform_driver max77541_adc_driver = {
-> +	.driver = {
-> +		.name = "max77541-adc",
-> +		.of_match_table = max77541_adc_of_id,
-> +	},
-> +	.probe = max77541_adc_probe,
-> +	.id_table = max77541_adc_platform_id,
-> +};
-> +
-Drop blank line.  Macro and structure are very closely associated
-so it's good to make that obvious by not separating them.
-> +module_platform_driver(max77541_adc_driver);
-> +
-> +MODULE_AUTHOR("Okan Sahin <Okan.Sahin@analog.com>");
-> +MODULE_DESCRIPTION("MAX77541 ADC driver");
-> +MODULE_LICENSE("GPL");
 
