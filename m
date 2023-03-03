@@ -1,42 +1,37 @@
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 092848F42
-	for <outreachy@lists.linux.dev>; Fri,  3 Mar 2023 18:52:59 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 250C68F42
+	for <outreachy@lists.linux.dev>; Fri,  3 Mar 2023 19:09:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1677869580; x=1709405580;
+  t=1677870590; x=1709406590;
   h=date:from:to:cc:subject:message-id:mime-version;
-  bh=dQCOa8uwUCrqm/FvCNKAcAEnuAOVNN+NG620Jdyt70Y=;
-  b=HdzAE4fi66N+SUmJiPW2R2gonWn9q4smhfS1BO+ouTKaN1giUhhK16Qk
-   yb5XxAG8T4L2AxGAB9fACZGmgtD/TqQ2v5mA98JptVG/MIY67VHIgD+xi
-   0YlduN6URSaqvDMiO7jCBZtj0b8+hSGHHwjCgM+A+PuhR5GI1nQZBP30Z
-   uX1M7DfkdqCaElMIIsVQRbyn6ZeJX0SGn/mhaWLZoiWVKvQyw+r/cDZb8
-   d5qcHokD5DVlFbW86PrPl7M5NAaTHUDFbTOCOaPNv6YVpm7vxNp6uGCB7
-   1Iske6vR0DdCVN0r2Ha5vyMDqVK3u344XmTmPsjo/8YVLjKBQZ6opvStj
+  bh=lTsyhKuJqhj4bHpaGHZijuM1auAlIq0d2D874HOIj6o=;
+  b=hCV/X5Qmz1K6yFBNABFqC+ELM90mVh7WaBx2/AGUqbegWhAc8z8cMPny
+   YmUEQ2zs/ggDyuu/iScbk7++AWhNL3SbIK85ez6zvnU5B0J7uN7O60tPY
+   /FO6Onk6LeE7dms+IzzxnwSJB4tosM5eMG/ky9c/qIiKTjR10I8sb7p7z
+   5uTGJqAusFm8aznCpln0f9ZDlttX5qA/f9n4FBHkXAW7x9Y9xNbKQFLzp
+   h0q6SBRyRwu40ckGmQJ/rnDL3CppNcVLshO/hNBNCBSAMGU/oT6F/mt8I
+   MHJG18/GwwAA5gUTT1aLIUIH2FFZMx1q8jgQQhrfNiF82ffbVb8B3PwYh
    A==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10638"; a="336644516"
+X-IronPort-AV: E=McAfee;i="6500,9779,10638"; a="335157835"
 X-IronPort-AV: E=Sophos;i="5.98,231,1673942400"; 
-   d="scan'208";a="336644516"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
-  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Mar 2023 10:52:20 -0800
+   d="scan'208";a="335157835"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Mar 2023 11:09:26 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10638"; a="744331941"
+X-IronPort-AV: E=McAfee;i="6500,9779,10638"; a="675462907"
 X-IronPort-AV: E=Sophos;i="5.98,231,1673942400"; 
-   d="scan'208";a="744331941"
+   d="scan'208";a="675462907"
 Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.212.155.56])
-  by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Mar 2023 10:52:19 -0800
-Date: Fri, 3 Mar 2023 10:52:17 -0800
+  by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Mar 2023 11:09:25 -0800
+Date: Fri, 3 Mar 2023 11:09:24 -0800
 From: Alison Schofield <alison.schofield@intel.com>
-To: Ira Weiny <ira.weiny@intel.com>, Deepak R Varma <drv@mailo.com>,
-	Fabio <fmdefrancesco@gmail.com>, Paul Moore <paul@paul-moore.com>,
-	Anna Trikalinou <atrikalinou@microsoft.com>,
-	Zahra Tarkhani <ztarkhani@microsoft.com>,
-	=?iso-8859-1?Q?Micka=EBl_Sala=FCn?= <mic@digikod.net>,
-	James Morris <JAMORRIS@microsoft.com>
-Cc: Outreachy Linux Kernel <outreachy@lists.linux.dev>
-Subject: [Outreachy Mentors] Starter Tasks
-Message-ID: <ZAJB4b4MSKIdSyDL@aschofie-mobl2>
+To: gregkh@linuxfoundation.org
+Cc: Outreachy Linux Kernel <outreachy@lists.linux.dev>, hverkuil@xs4all.nl
+Subject: [Outreachy Info] staging/ patch restrictions
+Message-ID: <ZAJF5E+1HVkN294U@aschofie-mobl2>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -46,45 +41,14 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
-This message is for Project Mentors.
+Hi Greg,
 
-It's almost here! March 6th begins the contribution period for your
-projects. Please check on your projects 'Starter Tasks'.
+We are about to kick off the next contribution period for Outreachy Interns.
+(March 6 - April 3)
 
-The "Starter Tasks" allow you to get to know and select a good fit
-applicant. It also lets the applicants get to know your project, and
-you all, as mentors. Please check your project view [1] and define a
-couple of starter tasks as needed.
+We'll run with this restriction: No patches to drivers/staging/media.
 
-It may be helpful to toggle between editing your project forms, and
-then view the result here. [1] This allows you to see how the community
-info flows into the project info in the final view. FYI: I recently
-updated the community info.
+Is there anything else you'd like us to avoid, or perhaps focus on?
 
-It is perfectly fine to update the starter tasks during the contribution
-period. You might change tasks based on how they are working out. Note
-that applicants will likely be busy with their community-wide contributions
-for the first 2 weeks and not give projects much attention.
-
-In the 'Define-a-project' page [2] it says: "You should have around 10-20
-small newcomer tasks and 5-10 medium-sized tasks." You are not responsible
-for defining that much, because the Linux Kernel community, has already
-defined starter tasks called "Cleanup Patches" as a community-wide
-contribution.
-
-Samples of past project tasks: setup/run a project specific tool and share
-output; review a topic area and write a blog post; and sometimes actually
-submit a patch to the project.
-
-Mentors are welcome to include a pointer to a personal page where
-tasks are defined. Please don't make the first starter task 'email me
-for starter tasks'.
-
-Application Period == Contribution Period
-
-[1] https://www.outreachy.org/outreachy-may-2023-internship-cohort/communities/linux-kernel/
-[2] https://www.outreachy.org/mentor/mentor-faq/
-
-Questions, please ask. Thanks for volunteering!
-
+Thanks for your support, 
 Alison
