@@ -1,80 +1,90 @@
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BDDFF1C16
-	for <outreachy@lists.linux.dev>; Sun, 11 Dec 2022 13:54:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9C501C433EF;
-	Sun, 11 Dec 2022 13:54:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1670766875;
-	bh=/oIhWuCh+Q64jTqco5ZfqZoA6e/lvC0GYIS0yDoT6ZM=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=eFNwL5RwB8XGTG4cBuwpt3kfB2nz60+JwzxTCaOp8jJilPt76GTPDVN9zLHlJwh1x
-	 kAnK5IBilxYsWtr8ZREk6CrtgQMTj/kVq3h/qSnZlk6e5nldB/NRrMzOypzW/aSfc5
-	 6BDuR/dljq+YRQy3Bg4hAp4dbVeFklh/vNbkceqfx88Lgs5w2VMhBa7zQpFyMmBTFE
-	 kkQ9BVHjLFO//0CJkmRNvqHKnuHZttZUK7aVD+aHXDczXNffyFZuZd7ptUcUKDGgim
-	 YqKlV7j7QDlZFPum+qfYR8WeP4nJuxwL0k62ONaZgR54ZnSPn/GV0MyYXTWjq6D2T0
-	 St0THZGHm/TyA==
-Date: Sun, 11 Dec 2022 14:07:27 +0000
-From: Jonathan Cameron <jic23@kernel.org>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Okan Sahin <okan.sahin@analog.com>, outreachy@lists.linux.dev, Lee Jones
- <lee@kernel.org>, Rob Herring <robh+dt@kernel.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski+dt@linaro.org>, Liam Girdwood <lgirdwood@gmail.com>,
- Mark Brown <broonie@kernel.org>, Lars-Peter Clausen <lars@metafoo.de>,
- Caleb Connolly <caleb.connolly@linaro.org>, Ramona Bolboaca
- <ramona.bolboaca@analog.com>, Geert Uytterhoeven <geert+renesas@glider.be>,
- Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, ChiYuan Huang
- <cy_huang@richtek.com>, Anand Ashok Dumbre <anand.ashok.dumbre@xilinx.com>,
- William Breathitt Gray <william.gray@linaro.org>, Manish Narani
- <manish.narani@xilinx.com>, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-iio@vger.kernel.org
-Subject: Re: [PATCH 0/5] staging: drivers: mfd: Add MAX77541 MFD and related
- device drivers
-Message-ID: <20221211140727.6da705ac@jic23-huawei>
-In-Reply-To: <Y5XcUtNInUJl98JP@smile.fi.intel.com>
-References: <20221207090906.5896-1-okan.sahin@analog.com>
-	<Y5B0btPjY6nHhYRm@smile.fi.intel.com>
-	<20221211122043.424e095d@jic23-huawei>
-	<Y5XcUtNInUJl98JP@smile.fi.intel.com>
-X-Mailer: Claws Mail 4.1.1 (GTK 3.24.35; x86_64-pc-linux-gnu)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 092848F42
+	for <outreachy@lists.linux.dev>; Fri,  3 Mar 2023 18:52:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1677869580; x=1709405580;
+  h=date:from:to:cc:subject:message-id:mime-version;
+  bh=dQCOa8uwUCrqm/FvCNKAcAEnuAOVNN+NG620Jdyt70Y=;
+  b=HdzAE4fi66N+SUmJiPW2R2gonWn9q4smhfS1BO+ouTKaN1giUhhK16Qk
+   yb5XxAG8T4L2AxGAB9fACZGmgtD/TqQ2v5mA98JptVG/MIY67VHIgD+xi
+   0YlduN6URSaqvDMiO7jCBZtj0b8+hSGHHwjCgM+A+PuhR5GI1nQZBP30Z
+   uX1M7DfkdqCaElMIIsVQRbyn6ZeJX0SGn/mhaWLZoiWVKvQyw+r/cDZb8
+   d5qcHokD5DVlFbW86PrPl7M5NAaTHUDFbTOCOaPNv6YVpm7vxNp6uGCB7
+   1Iske6vR0DdCVN0r2Ha5vyMDqVK3u344XmTmPsjo/8YVLjKBQZ6opvStj
+   A==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10638"; a="336644516"
+X-IronPort-AV: E=Sophos;i="5.98,231,1673942400"; 
+   d="scan'208";a="336644516"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Mar 2023 10:52:20 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10638"; a="744331941"
+X-IronPort-AV: E=Sophos;i="5.98,231,1673942400"; 
+   d="scan'208";a="744331941"
+Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.212.155.56])
+  by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Mar 2023 10:52:19 -0800
+Date: Fri, 3 Mar 2023 10:52:17 -0800
+From: Alison Schofield <alison.schofield@intel.com>
+To: Ira Weiny <ira.weiny@intel.com>, Deepak R Varma <drv@mailo.com>,
+	Fabio <fmdefrancesco@gmail.com>, Paul Moore <paul@paul-moore.com>,
+	Anna Trikalinou <atrikalinou@microsoft.com>,
+	Zahra Tarkhani <ztarkhani@microsoft.com>,
+	=?iso-8859-1?Q?Micka=EBl_Sala=FCn?= <mic@digikod.net>,
+	James Morris <JAMORRIS@microsoft.com>
+Cc: Outreachy Linux Kernel <outreachy@lists.linux.dev>
+Subject: [Outreachy Mentors] Starter Tasks
+Message-ID: <ZAJB4b4MSKIdSyDL@aschofie-mobl2>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-On Sun, 11 Dec 2022 15:34:10 +0200
-Andy Shevchenko <andriy.shevchenko@linux.intel.com> wrote:
+This message is for Project Mentors.
 
-> On Sun, Dec 11, 2022 at 12:20:43PM +0000, Jonathan Cameron wrote:
-> > On Wed, 7 Dec 2022 13:09:34 +0200
-> > Andy Shevchenko <andriy.shevchenko@linux.intel.com> wrote:  
-> > > On Wed, Dec 07, 2022 at 12:08:39PM +0300, Okan Sahin wrote:  
-> > > > This patchset adds mfd, regulator and adc driver and related bindings.The patches 
-> > > > are required to be applied in sequence.    
-> > > 
-> > > You have an indentation / wrapping issues in the above text.
-> > > 
-> > > Nevertheless, why staging? What does it mean?  
-> > 
-> > The main reason to go via staging is because a driver is sitting out
-> > of tree and it is useful to bring it in on the basis that it can then be
-> > cleaned up in tree before moving out of staging.  
-> 
-> But files are not in staging. Me being confused.
+It's almost here! March 6th begins the contribution period for your
+projects. Please check on your projects 'Starter Tasks'.
 
-I noticed that when I got to the patches :)
-Odd indeed - I'm guessing some cut and paste gone wrong.
+The "Starter Tasks" allow you to get to know and select a good fit
+applicant. It also lets the applicants get to know your project, and
+you all, as mentors. Please check your project view [1] and define a
+couple of starter tasks as needed.
 
-Jonathan
+It may be helpful to toggle between editing your project forms, and
+then view the result here. [1] This allows you to see how the community
+info flows into the project info in the final view. FYI: I recently
+updated the community info.
 
-> 
-> > For a relatively small driver like this, that's hard to argue.  Just
-> > clean it up in response to review feedback and then we can take it
-> > directly into relevant subsystems in the main tree.  
-> 
+It is perfectly fine to update the starter tasks during the contribution
+period. You might change tasks based on how they are working out. Note
+that applicants will likely be busy with their community-wide contributions
+for the first 2 weeks and not give projects much attention.
 
+In the 'Define-a-project' page [2] it says: "You should have around 10-20
+small newcomer tasks and 5-10 medium-sized tasks." You are not responsible
+for defining that much, because the Linux Kernel community, has already
+defined starter tasks called "Cleanup Patches" as a community-wide
+contribution.
+
+Samples of past project tasks: setup/run a project specific tool and share
+output; review a topic area and write a blog post; and sometimes actually
+submit a patch to the project.
+
+Mentors are welcome to include a pointer to a personal page where
+tasks are defined. Please don't make the first starter task 'email me
+for starter tasks'.
+
+Application Period == Contribution Period
+
+[1] https://www.outreachy.org/outreachy-may-2023-internship-cohort/communities/linux-kernel/
+[2] https://www.outreachy.org/mentor/mentor-faq/
+
+Questions, please ask. Thanks for volunteering!
+
+Alison
