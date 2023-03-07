@@ -1,91 +1,138 @@
-Received: from mail-ed1-f50.google.com (mail-ed1-f50.google.com [209.85.208.50])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 736E020EE;
-	Tue,  7 Mar 2023 07:13:11 +0000 (UTC)
-Received: by mail-ed1-f50.google.com with SMTP id da10so48538252edb.3;
-        Mon, 06 Mar 2023 23:13:11 -0800 (PST)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F2B2A20EE;
+	Tue,  7 Mar 2023 07:49:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678173189;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=/Zm7VLfvc/LZ8fV8dJrpBs77JoX+4gvTkNsNk9slxrA=;
-        b=f4ifeYFN1uE/+TmGqxxuUenoNBn9IeERD8SLLTgBAF/C+jQH3ykMn/4cgpuvXEH8sJ
-         bkVWamV8aUqpDS6poCRCpCariL99xSw2hs9mz9uPwsjetAF6CqoODdivbykNXmYN8OsY
-         TJCbVKCpHJGUdqSmNCdAB3uB7/Q2PmrDU9TdEwmUTEXLmrwNMNFqF3RFhGpYv2pW1LVC
-         MErp6U7lFAsAcaVGjUuhUgIwDHw6l4diT6v6hk9f0P2VmN1JD4PUbrqDNj0OWdOr4r40
-         jRsMQy822hJlCx+rPcIVEECYJS5TJNuuTK14qBL4pRzGfNVs7d2vi7tvXKehhU11Fxku
-         d9Mg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678173189;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=/Zm7VLfvc/LZ8fV8dJrpBs77JoX+4gvTkNsNk9slxrA=;
-        b=x/E3+hoRPWRIyUMnodTUDQsSk4JLutrG0nYetlfDs8EXL44+61xYN3qi9+eIv1pMHj
-         YqewNYM2jSWDfib7BYY8fYe2dvz6RRQJE/LBzs0cgRUtlbmtJ9O8ZIcSTFTy3DpQc8/u
-         GMpatAspKSFdPjl2OHceJv1uW9StcRxojlM8Z4F4nSsk5pGtePLIbExLDFTJo+RA7b+a
-         xCwn56Uh8glOM4yl+tiO83GzViAUnGlM2e0yXXHm3Na/ZiERhA23kzWsSME38PwI6ZGw
-         SHxgnVvSXv3hHdNFg7fSGsXQ8BvCm0Iad+0Z3Ubh3wT9Mee9X8pL4JJ29jy0xlxmn/sD
-         AAFw==
-X-Gm-Message-State: AO0yUKXwuuMwIXG/sybNfpzaxiHaJ/+zxqADrq7knjrcHQrgrxpPbflQ
-	DqCwpIXSwlYqS5NYONahXLE=
-X-Google-Smtp-Source: AK7set/ZkaXxcAzXMmAJWtfYqKGZ2dGkYPmnrtMIvCs5sfPgVAkTtx7KDiXFMPFHCsiv0tf+PB6eyA==
-X-Received: by 2002:a17:906:6a1e:b0:8b1:fc58:a4ad with SMTP id qw30-20020a1709066a1e00b008b1fc58a4admr18342715ejc.11.1678173189660;
-        Mon, 06 Mar 2023 23:13:09 -0800 (PST)
-Received: from localhost ([102.36.222.112])
-        by smtp.gmail.com with ESMTPSA id ot18-20020a170906ccd200b008e40853a712sm5626807ejb.97.2023.03.06.23.13.08
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 06 Mar 2023 23:13:09 -0800 (PST)
-Date: Tue, 7 Mar 2023 10:13:05 +0300
-From: Dan Carpenter <error27@gmail.com>
-To: Khadija Kamran <kamrankhadijadj@gmail.com>
-Cc: outreachy@lists.linux.dev, linux-staging@lists.linux.dev,
-	gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org
+  d=inria.fr; s=dc;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=VwKFzaPAhb21yGNMRNg/WNeNXMmPB5JmgKh/nfRZDe8=;
+  b=vRRBy8D4qUntCtN98rmxHdjWrHPCY+qOiFQeVbzmkU/QUu0xqST9eJNO
+   gB0AXMEj8k57/2fOtd75l6bw3hKm7wcKUCYRA4Po22DrFmCx3+Qgp0rmM
+   tqaQQMMvSL1A7RNQqz3P1FL4fdAAz+ANgpO6GQ28yRSjMsIfUgddVY387
+   k=;
+Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="5.98,240,1673910000"; 
+   d="scan'208";a="49410178"
+Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Mar 2023 08:49:56 +0100
+Date: Tue, 7 Mar 2023 08:49:55 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+To: Khadija <kamrankhadijadj@gmail.com>
+cc: outreachy@lists.linux.dev, linux-staging@lists.linux.dev, 
+    gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org
 Subject: Re: [PATCH] staging: axis-fifo: alignment should match opening
  parenthesis in axis-fifo.c
-Message-ID: <9543f943-759f-4e87-8f88-4eba7c1e4785@kili.mountain>
-References: <ZAZSmPpB6fcozGa4@khadija-virtual-machine>
+In-Reply-To: <CACcTnM5GR0ZM5WBaL+BDEK_0QJGr6h2t4tnsnjerHta_nq6Tmg@mail.gmail.com>
+Message-ID: <ab0fd80-22c-d982-2f4-6fa5f43f858@inria.fr>
+References: <ZAZSmPpB6fcozGa4@khadija-virtual-machine> <alpine.DEB.2.22.394.2303062202500.3050@hadrien> <CACcTnM5GR0ZM5WBaL+BDEK_0QJGr6h2t4tnsnjerHta_nq6Tmg@mail.gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZAZSmPpB6fcozGa4@khadija-virtual-machine>
+Content-Type: multipart/mixed; boundary="8323329-1184433621-1678175395=:3785"
 
-On Tue, Mar 07, 2023 at 01:52:40AM +0500, Khadija Kamran wrote:
-> In file drivers/staging/axis-fifo/axis-fifo.c the alignment did not match the opening parenthesis. So, a few tabs were added to match the alignment to exactly where the parenthesis started.
-> 
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Run checkpatch on your patches.  ;)
+--8323329-1184433621-1678175395=:3785
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-> Signed-off-by: Khadija Kamran <kamrankhadijadj@gmail.com>
-> ---
->  drivers/staging/axis-fifo/axis-fifo.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/axis-fifo/axis-fifo.c b/drivers/staging/axis-fifo/axis-fifo.c
-> index dfd2b357f484..6e959224add0 100644
-> --- a/drivers/staging/axis-fifo/axis-fifo.c
-> +++ b/drivers/staging/axis-fifo/axis-fifo.c
-> @@ -383,7 +383,7 @@ static ssize_t axis_fifo_read(struct file *f, char __user *buf,
->  		 */
->  		mutex_lock(&fifo->read_lock);
->  		ret = wait_event_interruptible_timeout(fifo->read_queue,
-> -			ioread32(fifo->base_addr + XLLF_RDFO_OFFSET),
-> +						       ioread32(fifo->base_addr + XLLF_RDFO_OFFSET),
->  				 (read_timeout >= 0) ?
->  				  msecs_to_jiffies(read_timeout) :
->  				  MAX_SCHEDULE_TIMEOUT);
 
-Checkpatch is just guidelines not rules.  wait_event_interruptible_timeout()
-is a very long name so sometimes aligning it up with the parentheses
-doesn't work very well.  The most important thing is not checkpatch but
-how the code looks to humans.
 
-regards,
-dan carpenter
+On Tue, 7 Mar 2023, Khadija wrote:
 
+> Hey Julia! Thank you for the feedback. I will make the following changes and
+> resend the patch:
+> 1. Correct the patch description that is right under the subject line (make
+> it precise and imperative) and make sure that it does not have more than 70
+> characters per line.
+> 2. Adjust all the arguments of wait_event_interruptible_timeout so that they
+> are lined up. All of them should begin right under ( .
+
+The problem here is that the ( is really far to the right.  My opinion is
+that the position of the second argument (ie the first one that is on a
+line of its own) is ok in this case.  So you can leave that one where it
+is and line up the other one.
+
+julia
+
+> Kindly let me know if I have understood it
+> right.[EIu7f6EdNusD0UITKM3h?rid=EIu7f6EdNusD0UITKM3h]
+>
+> On Tue, Mar 7, 2023 at 2:08 AM Julia Lawall <julia.lawall@inria.fr> wrote:
+>
+>
+>       On Tue, 7 Mar 2023, Khadija Kamran wrote:
+>
+>       > In file drivers/staging/axis-fifo/axis-fifo.c the alignment
+>       did not match the opening parenthesis. So, a few tabs were added
+>       to match the alignment to exactly where the parenthesis started.
+>
+>       Hello Khadija,
+>
+>       Thanks for plunging in and being the first participant!
+>
+>       However, there are a number of issues with the proposed patch.
+>
+>       1.  The log message should be at most around 70 characters
+>       wide.  You have
+>       one long line.
+>
+>       2.  The log message should be written in the imperative. 
+>       Instead of "a
+>       few tabs were added", ay "add a few tabs".
+>
+>       3.  I'm not sure that it is worth creating a very long line to
+>       respect the
+>       rule about (.  On the other hand, the way the code is written at
+>       the
+>       moment seems to be very misleading, because the third argument
+>       to
+>       wait_event_interruptible_timeout is written as though it is the
+>       second
+>       argument to ioread32.  So you can adjust the argument list of
+>       wait_event_interruptible_timeout so that at least all of the
+>       arguments
+>       that are not on the same line as the function call are lined up.
+>
+>       julia
+>
+>       >
+>       > Signed-off-by: Khadija Kamran <kamrankhadijadj@gmail.com>
+>       > ---
+>       >  drivers/staging/axis-fifo/axis-fifo.c | 2 +-
+>       >  1 file changed, 1 insertion(+), 1 deletion(-)
+>       >
+>       > diff --git a/drivers/staging/axis-fifo/axis-fifo.c
+>       b/drivers/staging/axis-fifo/axis-fifo.c
+>       > index dfd2b357f484..6e959224add0 100644
+>       > --- a/drivers/staging/axis-fifo/axis-fifo.c
+>       > +++ b/drivers/staging/axis-fifo/axis-fifo.c
+>       > @@ -383,7 +383,7 @@ static ssize_t axis_fifo_read(struct file
+>       *f, char __user *buf,
+>       >                */
+>       >               mutex_lock(&fifo->read_lock);
+>       >               ret =
+>       wait_event_interruptible_timeout(fifo->read_queue,
+>       > -                     ioread32(fifo->base_addr +
+>       XLLF_RDFO_OFFSET),
+>       > +                                                   
+>       ioread32(fifo->base_addr + XLLF_RDFO_OFFSET),
+>       >                                (read_timeout >= 0) ?
+>       >                                 msecs_to_jiffies(read_timeout)
+>       :
+>       >                                 MAX_SCHEDULE_TIMEOUT);
+>       > --
+>       > 2.34.1
+>       >
+>       >
+>       >
+>
+>
+>
+--8323329-1184433621-1678175395=:3785--
