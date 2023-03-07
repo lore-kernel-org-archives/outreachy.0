@@ -1,64 +1,59 @@
-Received: from mail-wr1-f54.google.com (mail-wr1-f54.google.com [209.85.221.54])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B39DF6135
-	for <outreachy@lists.linux.dev>; Tue,  7 Mar 2023 12:25:33 +0000 (UTC)
-Received: by mail-wr1-f54.google.com with SMTP id l1so11879541wry.12
-        for <outreachy@lists.linux.dev>; Tue, 07 Mar 2023 04:25:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678191931;
-        h=content-transfer-encoding:subject:from:content-language:to
-         :user-agent:mime-version:date:message-id:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ObT8KfCfO6lokBSdXOT0yGZ6flD6zNTHnl5Aoi1ltwY=;
-        b=Sdn/8E1kOs4qznT6CEOzWq65w4JNZj1AxtDECHsHxkC8BD4S20OUBI8d97kKa7m8Y1
-         1OVoLu+TaLkAk73O3D357iJEIN8icTUTgxoyX62TuENKBvAULbwCvGnzjyRoXwip7yE0
-         4eoe6ZqyPKgMcT6Zzg3b3J/CDzZMD+JYiiy+ZB0aWhQQHGs+GOXl9PE2aVt+YSFJraxR
-         eHcjNlMoyfV5H086EcRJlNOCKCkiLjwp2+wmSXO3/DPZMH0mIHycQr1gIDp6VRF/k7Sd
-         HhDFYykDtqDP5EqdqrpNQKH8alQ0C6948WpoVG0uDpXFi417MHnIyvFuKb2A3V8XtMcP
-         5y/A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678191931;
-        h=content-transfer-encoding:subject:from:content-language:to
-         :user-agent:mime-version:date:message-id:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=ObT8KfCfO6lokBSdXOT0yGZ6flD6zNTHnl5Aoi1ltwY=;
-        b=yTEICVcMwgGBT5Z9y2pIApTJbukrbXOE3wefbogMQ0XUuugHBgMTR2hVBNIz50QXnj
-         ghU5eoF4kftKiD7KNeCRhJfo4hoYl8kzaZwYSEkUV2mbDkHnMEs9gHFJC7wEXJBhS8q5
-         9/YzD/U62fzJQfdRPgsWA4JZccibzFjXWmVdrDODNTZSk4+V5GVliXJg+KhyWS2Dl8YV
-         Tv1lPfK+4JNsHiKnch/YNPp4OYUvLE4JcrM5huoLKhPrYwiq465NK79vpadEzypaFLCM
-         NKCO6UPTYnf7kCyK9YFvkifvTBYeRdbuniPKhMkBCOK9D2ZEigVz0QO6yLlcFzSPrlD8
-         2GHQ==
-X-Gm-Message-State: AO0yUKXNvmzZi2jOPZpxXrTk4u1+u3jaM1B/OwT6DNcJ2VIGlHS8VHDn
-	pRxfigzcSDm3iK02TDIuQTVepx4ksS6HzA==
-X-Google-Smtp-Source: AK7set+2ti8fmj8C4Y96ansIw2HuYCaWZXoDGUz4UBzy64SdaYSFFHUCfklbu1MQScC2xnCNTLNa6Q==
-X-Received: by 2002:a5d:65cb:0:b0:2c5:5ec7:43bc with SMTP id e11-20020a5d65cb000000b002c55ec743bcmr12707538wrw.18.1678191931685;
-        Tue, 07 Mar 2023 04:25:31 -0800 (PST)
-Received: from [192.168.1.16] ([41.42.191.171])
-        by smtp.gmail.com with ESMTPSA id n8-20020a05600c304800b003e21f01c426sm12716021wmh.9.2023.03.07.04.25.30
-        for <outreachy@lists.linux.dev>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 07 Mar 2023 04:25:31 -0800 (PST)
-Message-ID: <8bbe81c1-a5c3-f481-580a-7f80f9e57dd5@gmail.com>
-Date: Tue, 7 Mar 2023 14:25:29 +0200
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E2680AD49
+	for <outreachy@lists.linux.dev>; Tue,  7 Mar 2023 16:06:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1678205163; x=1709741163;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=+7yZkpPLnrFJpAGE4ZDu4Om6kauvZBh/RX3VPutbmAU=;
+  b=GMex2icy2AsFyPezIGLfVXrqpxnWBUOBGCrN3iepevk3srgbk833juIt
+   q6rFPI2zeXnvLZrAqKIsrJKsTSJ0OUrvHf2dBdCLm1k5gCJI+TUIa9E3Y
+   1KkjHQ+D6Se3TqUPQFWlWXfzfvmj71k53ggtvgssVMxJ7+wqUKCsRb9IJ
+   vY2QnML8UFUp46AJbyAfP4wQvXWDdsVlvg4WjqDN2STSdhRoqIjOznX0E
+   xnKRRh1ZlFuFkw5Hv0Zfs7RDTa08Hv1p1nMj3f747gUxvtm6HHDYBetIn
+   LDJD38xlGlf3CUaSVYDWn+tcAslXWnV2bLGrq8FXNqrGAiSc7jzmAOdJl
+   w==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10642"; a="333360044"
+X-IronPort-AV: E=Sophos;i="5.98,241,1673942400"; 
+   d="scan'208";a="333360044"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Mar 2023 08:04:39 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10642"; a="669935993"
+X-IronPort-AV: E=Sophos;i="5.98,241,1673942400"; 
+   d="scan'208";a="669935993"
+Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.252.142.120])
+  by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Mar 2023 08:04:39 -0800
+Date: Tue, 7 Mar 2023 08:04:37 -0800
+From: Alison Schofield <alison.schofield@intel.com>
+To: agabaderrick18@gmail.com
+Cc: outreachy@lists.linux.dev
+Subject: Re: Introductory Message
+Message-ID: <ZAdgleCLZ08h503b@aschofie-mobl2>
+References: <ce2f4841a169f9e944184f8b58775ed28936142f.camel@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.4.2
-To: outreachy@lists.linux.dev
-Content-Language: en-US
-From: Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>
-Subject: Outreachy
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ce2f4841a169f9e944184f8b58775ed28936142f.camel@gmail.com>
 
-Hi there am Menna an Outreachy applicant,right now am working on my first patch. happy to be part of this community.
+On Tue, Mar 07, 2023 at 12:47:45PM +0300, agabaderrick18@gmail.com wrote:
+> Hi there am  Derrick an Outreachy applicant,I'm happy to be here.Been
+> reading through the archives and learning alot and right now am working
+> on my first patch welcome any correction and direction as a way
+> forward.
+>    I. Thanks
+> 
+>
+Hi Derrick,
 
-Thanks,
+Welcome to the Linux Kernel Community!
 
-Menna
-
+Alison
