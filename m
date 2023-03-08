@@ -1,55 +1,54 @@
-Received: from mail-wm1-f47.google.com (mail-wm1-f47.google.com [209.85.128.47])
+Received: from mail-wm1-f41.google.com (mail-wm1-f41.google.com [209.85.128.41])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 519648BED
-	for <outreachy@lists.linux.dev>; Wed,  8 Mar 2023 18:40:34 +0000 (UTC)
-Received: by mail-wm1-f47.google.com with SMTP id l7-20020a05600c4f0700b003e79fa98ce1so1736707wmq.2
-        for <outreachy@lists.linux.dev>; Wed, 08 Mar 2023 10:40:34 -0800 (PST)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E75448BF3
+	for <outreachy@lists.linux.dev>; Wed,  8 Mar 2023 19:00:59 +0000 (UTC)
+Received: by mail-wm1-f41.google.com with SMTP id p23-20020a05600c1d9700b003ead4835046so2616539wms.0
+        for <outreachy@lists.linux.dev>; Wed, 08 Mar 2023 11:00:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678300832;
+        d=gmail.com; s=20210112; t=1678302058;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=pHBLKfyNDf7v5atB/zk7idS+Ac+6dUm1VyIS86e0HUM=;
-        b=QEbP5GGR2GbpC012XZs5DJixrTlP5VXeoh2nYUhkeBkChpeuHIP4s2aTtHkuUTKZZK
-         UeiB888AXZKx0L1fCd/DB5ZHGYP2nLdTrcPx+2zyKn9vK2k9qQE/TKJM5EYCRRv/PxP8
-         irHcGnrbNRNpWiQy/4OCA7Q52rhg787jUCFyV+zBElJ29WO5+2CcIXZfYSj9nsBljWJp
-         w9+q3ctgWksRHHBmgKdz1DHmXKK1KNQyelSW62gVRylBqYi25GEnUvZn1vXSSjTiuUPq
-         13t0oehDpi13YJg6dGJIEalEwqWtFPDRGUy4TopTCx335I3MgzYbJrHrPOj9gYBJaPMZ
-         x29Q==
+        bh=Nvk0sO+cajeS6LoeyFcSPYPHDIKCM/2x8damNQYOFBk=;
+        b=Ii/DBX2JxTTZX+WA/QBAN6rir29NVBXiL9WrbpUI8qXsJ1BaL6G3+DT4VMRD0K1/2R
+         k2hq+iN4wNQpa1GSLAQqejsAIJiCoq2gLK11q5WKuHueml08o6csfPoDpSbEI5dex++k
+         lQGF5Vc9XqzrSlbaAcpUO/uPNifS66OugMUNwlC1xZrdWbW/utDOw9n2wxvP0xanqa+h
+         QAlofN9upnWWCCU4YYTb4cL6Pzh+0WqQwSfmHrDJUWuXorAjD5818Ue7O5HgaL9CNadQ
+         3XAkouhrawbhp07VBibobEQ2df1b+669ELjlle/CQZ/JVZ/0OLl8urI6w5F0UebnOCNC
+         PDDg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678300832;
+        d=1e100.net; s=20210112; t=1678302058;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=pHBLKfyNDf7v5atB/zk7idS+Ac+6dUm1VyIS86e0HUM=;
-        b=pvCfUnR2k5zrtDpqm1IElFdsBxVqumiH4gs1OrjmKH14ViSstNnTMHdiFtdV+Elwgy
-         ax3wFrwrjx/cNudEIMa1+8VxC1JbIga0xsVFnqV7P8lXt0J11dgQNK4M3FXTL1Tu2PAH
-         TN2SsvH34mUNjA2zsNS2o2GIyCwwNLuh8R4uYWWPTeSHq95+hzZNvEZXKPdtNZaxBgEb
-         7btE5yNX2JK0Y6zIHimjGnMwfTJvtiujyfzWuUHbH/mVYfyytaYKNiR//dutchTzRrFs
-         1FiCSMXpj0XUrH3yBNHQDL2aXhMmL3JFYeAq23wSyWKjnGrMvCS+aMDkkoDvJMYxJlVl
-         +YiA==
-X-Gm-Message-State: AO0yUKXfm9qlnTPksNvBxMnaHQsxGiXJv2brOkNgw6caW2wlGzv0LEDw
-	Ye/D87IA2+3zNW8aRUM+MNk=
-X-Google-Smtp-Source: AK7set9NhED+nyR3cG13Jyca6texBE6ElQa/EriGUqd18IWhKdOHidL7TDS9Fxk3sjeF1J/Bh2mPDQ==
-X-Received: by 2002:a05:600c:4591:b0:3da:2a78:d7a4 with SMTP id r17-20020a05600c459100b003da2a78d7a4mr16615512wmo.21.1678300832256;
-        Wed, 08 Mar 2023 10:40:32 -0800 (PST)
+        bh=Nvk0sO+cajeS6LoeyFcSPYPHDIKCM/2x8damNQYOFBk=;
+        b=CoUudtJlSiZa0zyofRwjCaBZF/QeTeu9PMNjvcvJMZRHcKKXsaeMB012mSeyVx4EqP
+         5RwXpZ/4xgmWAOIJw2dSfVD1eb5KJFIX5LZYmqN+4VJwINvm0IJY78Fg3DpUCTAS0mxJ
+         nfXsTCsdPWT12nuevg+d960fQeGqj65k7x4y2HJ3clojVSdPbxBSDTNOB/vUr0qDDf8D
+         +5eSibLoyXynLqlwIiVa+g29b2tWM7mpnoEz8j0B3Ui6KBa9AJ0AGSaCO6RvDgOwAXUt
+         LYzilR2VtRyB/dPzmuus+CkhBwBYfjWS06C6A4aZamlnrLdzeVkTMXP+hN6Q4/OH8jy9
+         pFdg==
+X-Gm-Message-State: AO0yUKUlGjryg9pEDbIel9EDaERBX9DW8wBNSmMNAQSe0azrEWJ8F5ca
+	3nZ4R/cKdqCOaUxgVWfBmn8=
+X-Google-Smtp-Source: AK7set8/r4fIJW2HiucSn/OD4uMh9UrOXsW7XV3LmtRBY1y6ewPQdR5zsB2f56Niyrf6nqS9UqAq+Q==
+X-Received: by 2002:a05:600c:4ecb:b0:3eb:3148:a1b7 with SMTP id g11-20020a05600c4ecb00b003eb3148a1b7mr16963645wmq.12.1678302058000;
+        Wed, 08 Mar 2023 11:00:58 -0800 (PST)
 Received: from suse.localnet (host-95-252-162-80.retail.telecomitalia.it. [95.252.162.80])
-        by smtp.gmail.com with ESMTPSA id o13-20020a5d670d000000b002c8476dde7asm15951190wru.114.2023.03.08.10.40.30
+        by smtp.gmail.com with ESMTPSA id l5-20020a05600c4f0500b003e00c453447sm228441wmq.48.2023.03.08.11.00.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Mar 2023 10:40:31 -0800 (PST)
+        Wed, 08 Mar 2023 11:00:57 -0800 (PST)
 From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
 To: Sumitra Sharma <sumitraartsy@gmail.com>
-Cc: Julia Lawall <julia.lawall@inria.fr>, Ira Weiny <ira.weiny@intel.com>,
- outreachy@lists.linux.dev
-Subject: Re: Introductory message
-Date: Wed, 08 Mar 2023 19:40:30 +0100
-Message-ID: <6882066.18pcnM708K@suse>
-In-Reply-To: <6408c23d58ec5_f3f4a294e1@iweiny-mobl.notmuch>
+Cc: Julia Lawall <julia.lawall@inria.fr>, outreachy@lists.linux.dev,
+ Deepak R Varma <drv@mailo.com>
+Subject: Re: Help to setup enviornment
+Date: Wed, 08 Mar 2023 20:00:55 +0100
+Message-ID: <5365771.29KlJPOoH8@suse>
+In-Reply-To: <dd924cf4-ddd6-45aa-292d-5762b769ca22@inria.fr>
 References:
- <20230308114122.GA312977@ubuntu>
- <12ef38a-fd4c-947c-4ea3-a641ef5b1310@inria.fr>
- <6408c23d58ec5_f3f4a294e1@iweiny-mobl.notmuch>
+ <20230308171509.GA4056@ubuntu>
+ <dd924cf4-ddd6-45aa-292d-5762b769ca22@inria.fr>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -59,57 +58,56 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 Content-Type: text/plain; charset="iso-8859-1"
 
-On mercoled=EC 8 marzo 2023 18:13:33 CET Ira Weiny wrote:
-> Julia Lawall wrote:
-> > On Wed, 8 Mar 2023, Sumitra Sharma wrote:
-> > > Hi I am Sumitra Sharma, an outreachy applicant. This is my first time
-> > > applying to outreachy and linux-kernel. I am currently working on
-> > > setting up the environment. I observed that building the kernel i.e.
-> > > running "make -j2" command itself is taking a lot of time. I would
-> > > appreciate some suggestions on it.
-> >=20
-> > I think it would take a lot of time...
+On mercoled=EC 8 marzo 2023 18:27:39 CET Julia Lawall wrote:
+> On Wed, 8 Mar 2023, Sumitra Sharma wrote:
+> > Thank you Julia for your response. I followed your instructions and  ge=
+t=20
+rid
+> > of the earlier mentioned error. But on running the command "make -j2" it
+> > shows the error: ##
+> > Killed
+> > make[1]: *** [scripts/Makefile.vmlinux_o:61: vmlinux.o] Error 137
+> > make[1]: *** Deleting file 'vmlinux.o'
+> > make: *** [Makefile:1231: vmlinux_o] Error 2
+> > ##
+> > As per the system logs, the process is killed due to insufficient memor=
+y.
+> > I am running the linux on windows machine in VMPlayer and I have provid=
+ed
+> > 4.6 GB of RAM to this machine. My systems RAM has a limit of 8 GB. I wo=
+uld
+> > appreciate some more help in it. Thank you.
+> Maybe just add more memory?  6 instead of 4?
 >=20
-> Also:
->=20
-> -j is an option which chooses how many threads to build in parallel.
->=20
-> If you have enough cores on your machine you could increase '2' to
-> something larger.
->=20
+> julia
 
-Sumitra,
+I'm pretty sure that Windows 10/11 won't run with less than 4GB left in the=
+=20
+host.
 
-That "something larger" can be calculated with a rule of thumb and then=20
-adapted to your necessities...
+Anyway, it's not clear whether we are talking about the lack of RAM (and wh=
+ere=20
+Sumitra sees too few memory... in the Linux VM or in the Windows host?) or=
+=20
+about Storage?
 
-Look at /proc/cpuinfo if you don't know how many cores you have in your=20
-system...
+@Sumitra, I wasn't aware of you running Linux in a VM, so my previous messa=
+ge=20
+may have confused you. I was assuming that you build in a Linux host and ru=
+n=20
+(at least a Linux VM for tests.
 
-# cat /proc/cpuinfo | grep processor
-processor: 0
-processor: 1
-processor: 2
-processor: 3
-processor: 4
-processor: 5
-processor: 6
-processor: 7
-processor: 8
-processor: 9
-processor: 10
-processor: 11
+Now your set-up is clear: Linux on Windows.
 
-The output shows that I'm using a 12 core SMT system (https://
-en.wikipedia.org/wiki/Simultaneous_multithreading).
-
-So "-j12" is my usual choice for building a kernel in the host, minus the=20
-number of SMT cores reserved for running VMs.
+Can you please run `df -h` on your Linux VM and post the output? In the=20
+meantime post your `cat /proc/meminfo`. As said I am not sure about what ki=
+nd=20
+of memory you are talking about. Let us see the output.
 
 Thanks,
 
 =46abio
-=20
+
 
 
 
