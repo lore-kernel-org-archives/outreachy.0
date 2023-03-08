@@ -1,113 +1,71 @@
-Received: from mail-wm1-f41.google.com (mail-wm1-f41.google.com [209.85.128.41])
+Received: from mail-pl1-f181.google.com (mail-pl1-f181.google.com [209.85.214.181])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E75448BF3
-	for <outreachy@lists.linux.dev>; Wed,  8 Mar 2023 19:00:59 +0000 (UTC)
-Received: by mail-wm1-f41.google.com with SMTP id p23-20020a05600c1d9700b003ead4835046so2616539wms.0
-        for <outreachy@lists.linux.dev>; Wed, 08 Mar 2023 11:00:59 -0800 (PST)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 44146107B9
+	for <outreachy@lists.linux.dev>; Wed,  8 Mar 2023 20:18:07 +0000 (UTC)
+Received: by mail-pl1-f181.google.com with SMTP id a2so18841173plm.4
+        for <outreachy@lists.linux.dev>; Wed, 08 Mar 2023 12:18:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678302058;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Nvk0sO+cajeS6LoeyFcSPYPHDIKCM/2x8damNQYOFBk=;
-        b=Ii/DBX2JxTTZX+WA/QBAN6rir29NVBXiL9WrbpUI8qXsJ1BaL6G3+DT4VMRD0K1/2R
-         k2hq+iN4wNQpa1GSLAQqejsAIJiCoq2gLK11q5WKuHueml08o6csfPoDpSbEI5dex++k
-         lQGF5Vc9XqzrSlbaAcpUO/uPNifS66OugMUNwlC1xZrdWbW/utDOw9n2wxvP0xanqa+h
-         QAlofN9upnWWCCU4YYTb4cL6Pzh+0WqQwSfmHrDJUWuXorAjD5818Ue7O5HgaL9CNadQ
-         3XAkouhrawbhp07VBibobEQ2df1b+669ELjlle/CQZ/JVZ/0OLl8urI6w5F0UebnOCNC
-         PDDg==
+        d=gmail.com; s=20210112; t=1678306686;
+        h=content-disposition:mime-version:message-id:subject:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Rau3eSxuzw5iKeUWq4JfR6dP0ne0F3Hir4f6acA8AVk=;
+        b=Y6pliLAEu0qrW7x1j4I9vTBgbrp8bI0lXTm5s65pJGOSSxU3A2PPNbYZK6xBFePPxI
+         EwmV0X7Zfau+E7VUsKZXSTL6BsrMwoxqSI12GS7UOXqj2ENdq5jxEO2TIytRQTM/CtKG
+         PMDrv3hetvtE7yrPtQEdo8JsgwROBd+OliR2oWfGXhg3oj4uIOrWO6/+pcoc/pLOuq8b
+         Fyyh3P9B/vvED95kS8Feqcqun7Fpxy5alvkJG0sPbS4yi94kszjg1A1iQ59jL3683UU8
+         /2lXjAIfuxGnUkP79xdHjWp34sNbVDVV4m/4teRJlAo3NxGf6rqweOnaa72OUHuzvCOh
+         HwEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678302058;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Nvk0sO+cajeS6LoeyFcSPYPHDIKCM/2x8damNQYOFBk=;
-        b=CoUudtJlSiZa0zyofRwjCaBZF/QeTeu9PMNjvcvJMZRHcKKXsaeMB012mSeyVx4EqP
-         5RwXpZ/4xgmWAOIJw2dSfVD1eb5KJFIX5LZYmqN+4VJwINvm0IJY78Fg3DpUCTAS0mxJ
-         nfXsTCsdPWT12nuevg+d960fQeGqj65k7x4y2HJ3clojVSdPbxBSDTNOB/vUr0qDDf8D
-         +5eSibLoyXynLqlwIiVa+g29b2tWM7mpnoEz8j0B3Ui6KBa9AJ0AGSaCO6RvDgOwAXUt
-         LYzilR2VtRyB/dPzmuus+CkhBwBYfjWS06C6A4aZamlnrLdzeVkTMXP+hN6Q4/OH8jy9
-         pFdg==
-X-Gm-Message-State: AO0yUKUlGjryg9pEDbIel9EDaERBX9DW8wBNSmMNAQSe0azrEWJ8F5ca
-	3nZ4R/cKdqCOaUxgVWfBmn8=
-X-Google-Smtp-Source: AK7set8/r4fIJW2HiucSn/OD4uMh9UrOXsW7XV3LmtRBY1y6ewPQdR5zsB2f56Niyrf6nqS9UqAq+Q==
-X-Received: by 2002:a05:600c:4ecb:b0:3eb:3148:a1b7 with SMTP id g11-20020a05600c4ecb00b003eb3148a1b7mr16963645wmq.12.1678302058000;
-        Wed, 08 Mar 2023 11:00:58 -0800 (PST)
-Received: from suse.localnet (host-95-252-162-80.retail.telecomitalia.it. [95.252.162.80])
-        by smtp.gmail.com with ESMTPSA id l5-20020a05600c4f0500b003e00c453447sm228441wmq.48.2023.03.08.11.00.57
+        d=1e100.net; s=20210112; t=1678306686;
+        h=content-disposition:mime-version:message-id:subject:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Rau3eSxuzw5iKeUWq4JfR6dP0ne0F3Hir4f6acA8AVk=;
+        b=PmxUufnHF1bcDUSrzC0TgWM4e9DAtwjRu6sLX+1wk178VkFlzjFCnSHw9O45lW7Jv8
+         cqReb6WcAgYtsnAZBZXGop1xT7npkOKQ//TLCiuniksrswgJulHKilQt5HTd5lq6EJFn
+         NrQlc8zkdubTh6O3nStqbgVB4gvKOGlFqhypWVw4OPCHb9Pw7AOXQ2zGmHNrarClnLWp
+         OyxjGtK/72VH7zesg42L7o8YCXWhIR/NevcM6D12gfLG805xRcyvKV4rupwhcBx3YGQt
+         aiZYqWn1Sw+eJQRE0NL9dsZiVecDyRHqjuYOagSmF4ecje4vR4CdWSQj6Kts+Xk9PCHN
+         K6RA==
+X-Gm-Message-State: AO0yUKVazLzCsCVmi+mRfzxvseIDBzyrEgYJ0NT6sYfnv1ziHceQ2EhB
+	4D1wyHKTQ5Jz5AAQDPzqAZFF/lTaiD2wyjG+
+X-Google-Smtp-Source: AK7set9sneZDDyEN9ND8h/TTaDmT5TEVeofNkytmAAJJSiAcGzyLJKVFc7NYnKCwz/22+x02zxFPbw==
+X-Received: by 2002:a17:90a:194a:b0:237:50b6:9838 with SMTP id 10-20020a17090a194a00b0023750b69838mr21533679pjh.45.1678306686612;
+        Wed, 08 Mar 2023 12:18:06 -0800 (PST)
+Received: from CloudiRingWorld ([122.231.69.163])
+        by smtp.gmail.com with ESMTPSA id y21-20020a17090ad71500b002369d39672asm149972pju.33.2023.03.08.12.18.05
+        for <outreachy@lists.linux.dev>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Mar 2023 11:00:57 -0800 (PST)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Sumitra Sharma <sumitraartsy@gmail.com>
-Cc: Julia Lawall <julia.lawall@inria.fr>, outreachy@lists.linux.dev,
- Deepak R Varma <drv@mailo.com>
-Subject: Re: Help to setup enviornment
-Date: Wed, 08 Mar 2023 20:00:55 +0100
-Message-ID: <5365771.29KlJPOoH8@suse>
-In-Reply-To: <dd924cf4-ddd6-45aa-292d-5762b769ca22@inria.fr>
-References:
- <20230308171509.GA4056@ubuntu>
- <dd924cf4-ddd6-45aa-292d-5762b769ca22@inria.fr>
+        Wed, 08 Mar 2023 12:18:06 -0800 (PST)
+Date: Thu, 9 Mar 2023 04:18:03 +0800
+From: Kloudifold <cloudifold.3125@gmail.com>
+To: outreachy@lists.linux.dev
+Subject: [KERNEL NEWBIES ACESS] Kloudifold
+Message-ID: <ZAjteyeSt2rfa+El@CloudiRingWorld>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="iso-8859-1"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-On mercoled=EC 8 marzo 2023 18:27:39 CET Julia Lawall wrote:
-> On Wed, 8 Mar 2023, Sumitra Sharma wrote:
-> > Thank you Julia for your response. I followed your instructions and  ge=
-t=20
-rid
-> > of the earlier mentioned error. But on running the command "make -j2" it
-> > shows the error: ##
-> > Killed
-> > make[1]: *** [scripts/Makefile.vmlinux_o:61: vmlinux.o] Error 137
-> > make[1]: *** Deleting file 'vmlinux.o'
-> > make: *** [Makefile:1231: vmlinux_o] Error 2
-> > ##
-> > As per the system logs, the process is killed due to insufficient memor=
-y.
-> > I am running the linux on windows machine in VMPlayer and I have provid=
-ed
-> > 4.6 GB of RAM to this machine. My systems RAM has a limit of 8 GB. I wo=
-uld
-> > appreciate some more help in it. Thank you.
-> Maybe just add more memory?  6 instead of 4?
->=20
-> julia
+Dear Outreachy team,
 
-I'm pretty sure that Windows 10/11 won't run with less than 4GB left in the=
-=20
-host.
+I am an Outreachy applicant who recently followed the tutorial for the Kernel Firstpatch on your website. During the process, I encountered a couple of issues that I believe could benefit from an update to the tutorial.
 
-Anyway, it's not clear whether we are talking about the lack of RAM (and wh=
-ere=20
-Sumitra sees too few memory... in the Linux VM or in the Windows host?) or=
-=20
-about Storage?
+Firstly, the tutorial assumes that the .config file used to compile the distribution kernel is stored in the /boot/ directory. However, some distributions, including the one I use, do not follow this convention. Instead, the .config file is stored in the /proc/ directory as a compressed file. To address this issue, I propose updating the tutorial with the command "zcat /proc/config.gz > .config" to extract the .config file from /proc/ and use it for compiling the kernel.
 
-@Sumitra, I wasn't aware of you running Linux in a VM, so my previous messa=
-ge=20
-may have confused you. I was assuming that you build in a Linux host and ru=
-n=20
-(at least a Linux VM for tests.
+Secondly, the tutorial instructs users to install the kernel using LILO as the boot manager. However, many modern distributions, including the one I use, use GRUB as the default boot manager. This results in an error when executing "sudo make modules_install install" as the system cannot find LILO. To resolve this issue, I suggest adding instructions for manually installing the kernel and initramfs and configure GRUB.
 
-Now your set-up is clear: Linux on Windows.
+In summary, my proposed updates to the Kernel Firstpatch tutorial include:
 
-Can you please run `df -h` on your Linux VM and post the output? In the=20
-meantime post your `cat /proc/meminfo`. As said I am not sure about what ki=
-nd=20
-of memory you are talking about. Let us see the output.
+    Adding a command to extract the .config file from /proc/ using "zcat /proc/config.gz > .config"
+    Updating the instructions for installing the kernel and initramfs manually and configuring GRUB
 
-Thanks,
+I believe that these updates will improve the usability of the tutorial for users who encounter similar issues. Thank you for your consideration, and please let me know if you have any questions or concerns.
 
-=46abio
-
-
-
+Best regards,
+Kloudifold.
 
