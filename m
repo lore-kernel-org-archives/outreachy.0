@@ -1,47 +1,47 @@
-Received: from mail-pl1-f181.google.com (mail-pl1-f181.google.com [209.85.214.181])
+Received: from mail-ed1-f41.google.com (mail-ed1-f41.google.com [209.85.208.41])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 44146107B9
-	for <outreachy@lists.linux.dev>; Wed,  8 Mar 2023 20:18:07 +0000 (UTC)
-Received: by mail-pl1-f181.google.com with SMTP id a2so18841173plm.4
-        for <outreachy@lists.linux.dev>; Wed, 08 Mar 2023 12:18:07 -0800 (PST)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EE88B657
+	for <outreachy@lists.linux.dev>; Wed,  8 Mar 2023 21:08:36 +0000 (UTC)
+Received: by mail-ed1-f41.google.com with SMTP id cw28so71083692edb.5
+        for <outreachy@lists.linux.dev>; Wed, 08 Mar 2023 13:08:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678306686;
+        d=gmail.com; s=20210112; t=1678309715;
         h=content-disposition:mime-version:message-id:subject:to:from:date
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=Rau3eSxuzw5iKeUWq4JfR6dP0ne0F3Hir4f6acA8AVk=;
-        b=Y6pliLAEu0qrW7x1j4I9vTBgbrp8bI0lXTm5s65pJGOSSxU3A2PPNbYZK6xBFePPxI
-         EwmV0X7Zfau+E7VUsKZXSTL6BsrMwoxqSI12GS7UOXqj2ENdq5jxEO2TIytRQTM/CtKG
-         PMDrv3hetvtE7yrPtQEdo8JsgwROBd+OliR2oWfGXhg3oj4uIOrWO6/+pcoc/pLOuq8b
-         Fyyh3P9B/vvED95kS8Feqcqun7Fpxy5alvkJG0sPbS4yi94kszjg1A1iQ59jL3683UU8
-         /2lXjAIfuxGnUkP79xdHjWp34sNbVDVV4m/4teRJlAo3NxGf6rqweOnaa72OUHuzvCOh
-         HwEA==
+        bh=J8ULCdCgoQsgwlp/FxKZfLMZvv/CNb8AdeKrdaNx/W8=;
+        b=lvaOdb1lxY7Um3J5mdbT3hBA/AfnklikSrX/+dN+CtUahwJJJF91SamjthpkmwjVRQ
+         Xee/KSBm1IFGZHY6kGXYGe0nglsbyCtGVHtB5RsA7XYklv/398pu6swZ/Gg2RE3LhLj3
+         39vkL9R4fT8f22Vdbrh3CcczVCZO0+s3bBHsgWmgtXigi79Yxw8hwa21PJzxEPeWXdvj
+         mnClmgPgiWViLxw9iyCar5vcyUdxGTQYtdOuXyX9s+3RrJFIZyzymnjjEdEIZ1SiYtvc
+         dPEa/Z1c99DEolkahawUfUoQzYqcNqRfq4jKi0XQ5MK2VUKznK8ZoEl3AXyBHMZjXdyF
+         p8sA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678306686;
+        d=1e100.net; s=20210112; t=1678309715;
         h=content-disposition:mime-version:message-id:subject:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Rau3eSxuzw5iKeUWq4JfR6dP0ne0F3Hir4f6acA8AVk=;
-        b=PmxUufnHF1bcDUSrzC0TgWM4e9DAtwjRu6sLX+1wk178VkFlzjFCnSHw9O45lW7Jv8
-         cqReb6WcAgYtsnAZBZXGop1xT7npkOKQ//TLCiuniksrswgJulHKilQt5HTd5lq6EJFn
-         NrQlc8zkdubTh6O3nStqbgVB4gvKOGlFqhypWVw4OPCHb9Pw7AOXQ2zGmHNrarClnLWp
-         OyxjGtK/72VH7zesg42L7o8YCXWhIR/NevcM6D12gfLG805xRcyvKV4rupwhcBx3YGQt
-         aiZYqWn1Sw+eJQRE0NL9dsZiVecDyRHqjuYOagSmF4ecje4vR4CdWSQj6Kts+Xk9PCHN
-         K6RA==
-X-Gm-Message-State: AO0yUKVazLzCsCVmi+mRfzxvseIDBzyrEgYJ0NT6sYfnv1ziHceQ2EhB
-	4D1wyHKTQ5Jz5AAQDPzqAZFF/lTaiD2wyjG+
-X-Google-Smtp-Source: AK7set9sneZDDyEN9ND8h/TTaDmT5TEVeofNkytmAAJJSiAcGzyLJKVFc7NYnKCwz/22+x02zxFPbw==
-X-Received: by 2002:a17:90a:194a:b0:237:50b6:9838 with SMTP id 10-20020a17090a194a00b0023750b69838mr21533679pjh.45.1678306686612;
-        Wed, 08 Mar 2023 12:18:06 -0800 (PST)
-Received: from CloudiRingWorld ([122.231.69.163])
-        by smtp.gmail.com with ESMTPSA id y21-20020a17090ad71500b002369d39672asm149972pju.33.2023.03.08.12.18.05
+        bh=J8ULCdCgoQsgwlp/FxKZfLMZvv/CNb8AdeKrdaNx/W8=;
+        b=q3E7HVWPfGjkt6sjVVVVszfksagI9O4SmNquLsilR5a5paOchCHJM3qCo4i/yLdACH
+         3u8usUg2XfpdzjxNgz9C3QYfs66gPFv+I9g7YSTF9wVvIKrJyJUfo1nbhNMwwuAxzNYc
+         7fW3lNK2U0J2CSDfYTfiVdcSWYs8awHb2Po7xVm4X7cPf3YNaKoxf90/c24SbY9Kf26X
+         UqYnaRax6FPUnvA4O0NOjJ9sekUleHpCfD+TofWn8QBWnmbrwUOkKwnxc5dOj2L9eebi
+         5fTHh/iT9ehdgQtkGf26IPMD8j+sZ64xYTwQXrFV2TutPAkl6R4UgwQsF/ov/j1I10o+
+         lvcg==
+X-Gm-Message-State: AO0yUKWk3boJMLhVBvlQmTQvCnb3ojZDslHvA6UwFdq0zPWixlUBMJqX
+	Kn37HD2vP2SSZE3TgcegBrakgvq394FKJw==
+X-Google-Smtp-Source: AK7set8LjlLnpm9HeCxjP/BJEMRfJjepNpwEvKCwpMTtuOTK8KNDo2HOrUzSabMphdsKp7PUO06WRQ==
+X-Received: by 2002:aa7:dd06:0:b0:4ac:b31c:83d3 with SMTP id i6-20020aa7dd06000000b004acb31c83d3mr17289345edv.14.1678309714943;
+        Wed, 08 Mar 2023 13:08:34 -0800 (PST)
+Received: from khadija-virtual-machine ([39.41.45.115])
+        by smtp.gmail.com with ESMTPSA id jy14-20020a170907762e00b008c405ebc32esm7908198ejc.28.2023.03.08.13.08.34
         for <outreachy@lists.linux.dev>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Mar 2023 12:18:06 -0800 (PST)
-Date: Thu, 9 Mar 2023 04:18:03 +0800
-From: Kloudifold <cloudifold.3125@gmail.com>
+        Wed, 08 Mar 2023 13:08:34 -0800 (PST)
+Date: Thu, 9 Mar 2023 02:08:32 +0500
+From: Khadija Kamran <kamrankhadijadj@gmail.com>
 To: outreachy@lists.linux.dev
-Subject: [KERNEL NEWBIES ACESS] Kloudifold
-Message-ID: <ZAjteyeSt2rfa+El@CloudiRingWorld>
+Subject: Set up email client mutt
+Message-ID: <ZAj5UL8HJO7FSez0@khadija-virtual-machine>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -51,21 +51,53 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
-Dear Outreachy team,
+Hi everyone!
+I am an Outreachy applicant. Gladly, I am sending this email from mutt
+after spending some time on its setup and understanding. I am quite new
+to text based email clients.
 
-I am an Outreachy applicant who recently followed the tutorial for the Kernel Firstpatch on your website. During the process, I encountered a couple of issues that I believe could benefit from an update to the tutorial.
+Here is a list of steps I have understood:
 
-Firstly, the tutorial assumes that the .config file used to compile the distribution kernel is stored in the /boot/ directory. However, some distributions, including the one I use, do not follow this convention. Instead, the .config file is stored in the /proc/ directory as a compressed file. To address this issue, I propose updating the tutorial with the command "zcat /proc/config.gz > .config" to extract the .config file from /proc/ and use it for compiling the kernel.
+1. Set up vim as mentioned in first patch tutorial.
+This is what my .vimrc file looks like:
+filetype plugin indent on
+syntax on
+set title
+set tabstop=8
+set softtabstop=8
+set shiftwidth=8
+set noexpandtab
 
-Secondly, the tutorial instructs users to install the kernel using LILO as the boot manager. However, many modern distributions, including the one I use, use GRUB as the default boot manager. This results in an error when executing "sudo make modules_install install" as the system cannot find LILO. To resolve this issue, I suggest adding instructions for manually installing the kernel and initramfs and configure GRUB.
+2. Learn some vim basics, since we set it as default mutt editor.
 
-In summary, my proposed updates to the Kernel Firstpatch tutorial include:
+3. Create and edit .esmtprc and .muttrc files as mentioned in the First
+Patch tutorial.
 
-    Adding a command to extract the .config file from /proc/ using "zcat /proc/config.gz > .config"
-    Updating the instructions for installing the kernel and initramfs manually and configuring GRUB
+This is what my .esmtp file looks like:
+identity "username@gmail.com"
+hostname smtp.gmail.com:587
+username "username@gmail.com"
+password "not_my_password"
+starttls required
 
-I believe that these updates will improve the usability of the tutorial for users who encounter similar issues. Thank you for your consideration, and please let me know if you have any questions or concerns.
+This is what my .muttrc file looks like:
+set sendmail="/usr/bin/esmtp"
+set envelope_from=yes
+set from="Full Name <username@gmail.com>"
+set use_from=yes
+set edit_headers=yes
+set sort_aux = last-date-received
+set sort = reverse-threads
+set folder = "imaps://username@gmail.com@imap.gmail.com:993"
+set imap_pass = "not_my_password"
+set spoolfile = "+INBOX"
+set record = "+Sent"
+set trash = "+Trash"
+set postponed = "+Drafts"
+mailboxes =INBOX =Sent =Trash =Drafts =Junk =Other
 
-Best regards,
-Kloudifold.
+4. Finally run mutt from your command prompt and start working.
 
+Kindly, let me know if something is still missing or is incorrect. 
+
+Thank you :)
