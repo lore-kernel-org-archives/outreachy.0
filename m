@@ -1,39 +1,47 @@
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-pl1-f173.google.com (mail-pl1-f173.google.com [209.85.214.173])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 80AA6AD49
-	for <outreachy@lists.linux.dev>; Tue,  7 Mar 2023 16:06:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1678205205; x=1709741205;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=h8CCIAzzfcEZMntk6ylYwkmDaqw4xqSG8Wt1j/bDAXI=;
-  b=YsgH2roGGEAP6FTh8XTO1svrWlRTsEZ7Q+94G6wnOOehBta1mBs5R+AI
-   EpeHUUrmN6dVxpWpVSWiI6OQrWVEeUvYPSJF4lxp/sGGE8EqjCJIIeDlF
-   0Dx3yhBmX4yYIONbWb3eWQl/h7kgZFmvr69csuauPmzuKPVhwCBlsXJRv
-   ODZNBWCAe2Po6AQLPukwDU8KkT0vPt1IVu8Na+XtnnwFsmI3uBn/EN031
-   3jDCO/vl0NfJHFIUrB7r3HYooc5j/fxMbZVYlFJTU6JntZk4qldHj9pdX
-   KCuOeAhIkamh+gKFJw1Pdc2DG9cbLwDGPutFqCS3G2Qxa0Ikqg6y2ahpt
-   Q==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10642"; a="333360485"
-X-IronPort-AV: E=Sophos;i="5.98,241,1673942400"; 
-   d="scan'208";a="333360485"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Mar 2023 08:05:09 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10642"; a="669936141"
-X-IronPort-AV: E=Sophos;i="5.98,241,1673942400"; 
-   d="scan'208";a="669936141"
-Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.252.142.120])
-  by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Mar 2023 08:05:08 -0800
-Date: Tue, 7 Mar 2023 08:05:07 -0800
-From: Alison Schofield <alison.schofield@intel.com>
-To: Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>
-Cc: outreachy@lists.linux.dev
-Subject: Re: Outreachy
-Message-ID: <ZAdgs0vWev4Y3A5+@aschofie-mobl2>
-References: <8bbe81c1-a5c3-f481-580a-7f80f9e57dd5@gmail.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 19F6C33DE
+	for <outreachy@lists.linux.dev>; Wed,  8 Mar 2023 11:41:28 +0000 (UTC)
+Received: by mail-pl1-f173.google.com with SMTP id i3so17374585plg.6
+        for <outreachy@lists.linux.dev>; Wed, 08 Mar 2023 03:41:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1678275687;
+        h=content-disposition:mime-version:message-id:subject:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Ho+opMvVRse5Zsq5arb39ucRebDfPe9zHVtO0aml4YQ=;
+        b=GOtLxgrBvLTyk199vCFJ8yhAid/47d/JK9YeiC3/S7ShyiCg2frmGl4R6chyMp1CTf
+         KCqvoHRpeiVHghKJfEB/1rgcV8F1hu3MguhvbykglcVZloCx23KBj97MvnByk/ebE+lC
+         Qs9hRBDBSHv7slLH++kHAptOcECJB9bHnIC/EAHIohxW3moVMavEOAAXQdibgHllj8yd
+         fKMYdp8KjFu6blVnzX28PdGv2cuZZPy+VE21Sxfqiv6khUtKzOXkR0bVBNT1aWiKltHT
+         5MZxoDW/l8RzHcqw/hlCxYA9zCw4IuCsDda0CaMG9VPF/7Ajg5QF2n08z6xg4FaQuBa4
+         Jgmw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678275687;
+        h=content-disposition:mime-version:message-id:subject:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Ho+opMvVRse5Zsq5arb39ucRebDfPe9zHVtO0aml4YQ=;
+        b=qdN8tvcM/EaYqqJPvvJkDu5MWMTLgLHBH395ZQJmAMDq1Ewnimvpgp/qXertOut9n5
+         XYkpcSRoEXBgmRPI6IEIQFlRbWmMnndBgN1+z6ZYNkOpGi77gAeMAn/URalHCoBKKrje
+         cMzSZdkFfNh3lz4BSbJBKV2VE31XIW5DfwiaJtAgwcU+7APEqfgd71x2vz+7cDISOr54
+         o+NnY+IURLKJmIzYh7gb17n5QJxDoDq3m+9N2sLZu6xLTD48q9o5fEgAgV7MRgAHKn7n
+         nK1hzBqtQs4G+7Hovm0WbP8TziN9qL0Hyf78vIHZ+SJonWuF7qQmlNwBWY9jqw6637RD
+         oQDg==
+X-Gm-Message-State: AO0yUKWmaUqwRShMmM/K/5P7nU+cTmRKWXtzQ8IU2EMkEE+9zl/Zq+QL
+	3WA4XzS70bbkEbkeD8P5sEfx61vLnUE=
+X-Google-Smtp-Source: AK7set/wnZH8ZErapB9kJRUgPmhzxy25FJioy2KKXE2cBlkkj9jQg7IeiUDVWAek61ASsnfh21XOLg==
+X-Received: by 2002:a17:902:9f8e:b0:19d:7c2:3a47 with SMTP id g14-20020a1709029f8e00b0019d07c23a47mr16681804plq.67.1678275687096;
+        Wed, 08 Mar 2023 03:41:27 -0800 (PST)
+Received: from ubuntu ([59.95.155.108])
+        by smtp.gmail.com with ESMTPSA id ka3-20020a170903334300b0019e21d2ed2esm9791303plb.88.2023.03.08.03.41.25
+        for <outreachy@lists.linux.dev>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 08 Mar 2023 03:41:26 -0800 (PST)
+Date: Wed, 8 Mar 2023 03:41:22 -0800
+From: Sumitra Sharma <sumitraartsy@gmail.com>
+To: outreachy@lists.linux.dev
+Subject: Introductory message
+Message-ID: <20230308114122.GA312977@ubuntu>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -42,19 +50,29 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <8bbe81c1-a5c3-f481-580a-7f80f9e57dd5@gmail.com>
 
-On Tue, Mar 07, 2023 at 02:25:29PM +0200, Menna Mahmoud wrote:
-> Hi there am Menna an Outreachy applicant,right now am working on my first patch. happy to be part of this community.
-> 
-> Thanks,
-> 
-> Menna
-> 
->
-Hi Menna,
-
-Welcome to the Linux Kernel Community!
-
-Alison
-
+Hi I am Sumitra Sharma, an outreachy applicant. This is my first time
+applying to outreachy and linux-kernel. I am currently working on
+setting up the enviornment. I observed that building the kernel i.e.
+running "make -j2" command itself is taking a lot of time. I would
+appreciate some suggestions on it.
+Also I recieved an error stating "make[2]: *** No rule to make target
+'debian/canonical-certs.pem', needed by 'certs/x509_certificate_list'.
+Stop." to which I edited the .config file as below
+#
+# Certificates for signature checking
+#
+CONFIG_MODULE_SIG_KEY="certs/signing_key.pem"
+CONFIG_MODULE_SIG_KEY_TYPE_RSA=y
+# CONFIG_MODULE_SIG_KEY_TYPE_ECDSA is not set
+CONFIG_SYSTEM_TRUSTED_KEYRING=y
+CONFIG_SYSTEM_TRUSTED_KEYS=""
+CONFIG_SYSTEM_EXTRA_CERTIFICATE=y
+CONFIG_SYSTEM_EXTRA_CERTIFICATE_SIZE=4096
+CONFIG_SECONDARY_TRUSTED_KEYRING=y
+CONFIG_SYSTEM_BLACKLIST_KEYRING=y
+CONFIG_SYSTEM_BLACKLIST_HASH_LIST=""
+CONFIG_SYSTEM_REVOCATION_LIST=y
+CONFIG_SYSTEM_REVOCATION_KEYS=""
+# CONFIG_SYSTEM_BLACKLIST_AUTH_UPDATE is not set
+# end of Certificates for signature checking
