@@ -1,39 +1,40 @@
 Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 42C4736D
-	for <outreachy@lists.linux.dev>; Wed,  8 Mar 2023 23:53:55 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6E39F36D
+	for <outreachy@lists.linux.dev>; Wed,  8 Mar 2023 23:59:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1678319635; x=1709855635;
+  t=1678319958; x=1709855958;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=xACOBXQ0yw2ujTtO9XiM2UWVqzUc9HlR5uwBkAPuuHc=;
-  b=ne7CnK71MKpIyuynNXlz1SQGpV8gJfRBOBkhAI/x/SF5EUhChSg547zb
-   mQGKjfT+Gd0dvOtbl1CqSDOpz1e7Arn1fZ+FrDkBf2m8CH3ptYzjI98n1
-   w4vDQuaU3yGuMuavr0OGno/yP3gAj9WqjxDCw5h7r4CNQyuO7k6t02b3N
-   hEW0SZ8yWLxDJA3qNKVWjmcYQve+vB9XLNmy0oKoQmGeKYIdiOsURCB9j
-   uNyoBLWWflDmKl110jYJnl9IenhU/O/eSWslL13SpQ1cj6RFmTgSyUVan
-   gTXB+S1SwA3TxXfJSJIFD+AKNSgJSvRKx+kCBOpOFx7sFdznAwpF8nDZx
+  bh=KF8uQOhcT3Q0hkWFKEICJiVLrYe0Fvd/yuvdJDhQBv8=;
+  b=KDNSL0/zouQuJV8V1MK3QN9AH1cx7M4SGs53NtSw9F1KOHWY0qNY1ovn
+   zZbleMM1K2o5euuqhG3sulrCFNHpjjgGhUJPIb6M/lPPPNyx0mttitNbk
+   FQ42IjmmyZgp3TH5ZjxvS9Ad2dZ9O3CEJShvlRR7Wp+WJBkGJdJ3Y2wSO
+   92c9at9+zacr81UhU/OKnSI4GdKQYKxcSDxWhfxscZPdHQdi5iHlZaPHq
+   jP1UJKcROwkjSZxf85xqUrbFJ8++yG5D3rLmsKAZYFJ5dPhQJKrR0hikL
+   tOOq0i/NYpOxsQj2oD/fEoO1GbzfjIN9bc/KQLeCF+8NEd7K1TbEz7ReU
    Q==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10643"; a="401140229"
+X-IronPort-AV: E=McAfee;i="6500,9779,10643"; a="401141363"
 X-IronPort-AV: E=Sophos;i="5.98,244,1673942400"; 
-   d="scan'208";a="401140229"
+   d="scan'208";a="401141363"
 Received: from orsmga002.jf.intel.com ([10.7.209.21])
-  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Mar 2023 15:53:53 -0800
+  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Mar 2023 15:59:17 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10643"; a="677185594"
+X-IronPort-AV: E=McAfee;i="6500,9779,10643"; a="677186290"
 X-IronPort-AV: E=Sophos;i="5.98,244,1673942400"; 
-   d="scan'208";a="677185594"
+   d="scan'208";a="677186290"
 Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.212.215.12])
-  by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Mar 2023 15:53:52 -0800
-Date: Wed, 8 Mar 2023 15:53:51 -0800
+  by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Mar 2023 15:59:17 -0800
+Date: Wed, 8 Mar 2023 15:59:16 -0800
 From: Alison Schofield <alison.schofield@intel.com>
-To: Khadija Kamran <kamrankhadijadj@gmail.com>
+To: Kloudifold <cloudifold.3125@gmail.com>
 Cc: outreachy@lists.linux.dev
-Subject: Re: Set up email client mutt
-Message-ID: <ZAkgD5OU8xkffOpt@aschofie-mobl2>
-References: <ZAj5UL8HJO7FSez0@khadija-virtual-machine>
+Subject: Re: Problem in "Pick a warning, and try to fix it": Don't have a
+ warning to pick
+Message-ID: <ZAkhVJfWLk5mcyON@aschofie-mobl2>
+References: <ZAkE4w/T389R2+Er@CloudiRingWorld>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -42,62 +43,26 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ZAj5UL8HJO7FSez0@khadija-virtual-machine>
+In-Reply-To: <ZAkE4w/T389R2+Er@CloudiRingWorld>
 
-On Thu, Mar 09, 2023 at 02:08:32AM +0500, Khadija Kamran wrote:
-> Hi everyone!
-> I am an Outreachy applicant. Gladly, I am sending this email from mutt
-> after spending some time on its setup and understanding. I am quite new
-> to text based email clients.
+On Thu, Mar 09, 2023 at 05:57:55AM +0800, Kloudifold wrote:
+> Hello, I am Kloudifold, an Outreachy applicant.
 > 
-> Here is a list of steps I have understood:
+> I'm reading https://kernelnewbies.org/Outreachyfirstpatch and trying to make my first patch. It says, "Pick a warning, and try to fix it. For your first patch, only pick one warning.", but when I used the command:
 > 
-> 1. Set up vim as mentioned in first patch tutorial.
-> This is what my .vimrc file looks like:
-> filetype plugin indent on
-> syntax on
-> set title
-> set tabstop=8
-> set softtabstop=8
-> set shiftwidth=8
-> set noexpandtab
-> 
-> 2. Learn some vim basics, since we set it as default mutt editor.
-> 
-> 3. Create and edit .esmtprc and .muttrc files as mentioned in the First
-> Patch tutorial.
-> 
-> This is what my .esmtp file looks like:
-> identity "username@gmail.com"
-> hostname smtp.gmail.com:587
-> username "username@gmail.com"
-> password "not_my_password"
-> starttls required
-> 
-> This is what my .muttrc file looks like:
-> set sendmail="/usr/bin/esmtp"
-> set envelope_from=yes
-> set from="Full Name <username@gmail.com>"
-> set use_from=yes
-> set edit_headers=yes
-> set sort_aux = last-date-received
-> set sort = reverse-threads
-> set folder = "imaps://username@gmail.com@imap.gmail.com:993"
-> set imap_pass = "not_my_password"
-> set spoolfile = "+INBOX"
-> set record = "+Sent"
-> set trash = "+Trash"
-> set postponed = "+Drafts"
-> mailboxes =INBOX =Sent =Trash =Drafts =Junk =Other
-> 
-> 4. Finally run mutt from your command prompt and start working.
-> 
-> Kindly, let me know if something is still missing or is incorrect. 
+> > perl scripts/checkpatch.pl -f drivers/staging/*/* | grep "[1-9] warnings" -B 10 -A 2
 
-Well, I got the mail, and it's plain text.
-Let's make sure you are getting the replies now.
+Hi Kloudifold,
+
+Your script is quitting after operating on the first dir. 
+
+There are more WARNINGs and CHECKs 
+Look up the --strict option to checkpatch to get those CHECKs.
+
+Reminder: don't include drivers/staging/media in your searches.
+
 Alison
-
 > 
-> Thank you :)
+> I can only find warnings for drivers/staging/axis-fifo/axis-fifo.c, a file that is already being submitted to the mailing list, which means I don't have a warning to pick.
+> How should I finish my first patch in this case? Should I look for something more difficult than changing the coding style?
 > 
