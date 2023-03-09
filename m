@@ -1,38 +1,50 @@
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-wr1-f45.google.com (mail-wr1-f45.google.com [209.85.221.45])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4A0FB367
-	for <outreachy@lists.linux.dev>; Thu,  9 Mar 2023 00:12:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1678320775; x=1709856775;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=YiTQZsbH1ndr5NNlvIe+VueruhrIerwnjw15WDny4ww=;
-  b=B579M+UJYwgjTu/KMim2GaSQ/3eP0iccrcJHDEOX25qsYMGXgnRZUnoW
-   4zH4nnAklxDp8hii7gbZIOEIjtM5B+VBuSlnfab6nA5CwL4TLCqluibRd
-   JrCwI7tgNwv5nmBtJyIBo5zmm55op5nywwvf3s9YnboDkAtVnlMPzMh63
-   43NGkNkoaIQgOLSSg9gzN1ODXwe1dIfyY2Fa4D2sCxq5mkCO7h3vD2IOy
-   IfhW7Q+tT3PSxg73T88klPZ0C3AM54SMeY1/jIbsAEIrvNNThPKvLGRBB
-   qFzdDRtAM2Gwg4howx54Dhsv3PwPO6jp5HXE4jkdG0nt7c7NkRMAOQl1r
-   A==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10643"; a="320141797"
-X-IronPort-AV: E=Sophos;i="5.98,244,1673942400"; 
-   d="scan'208";a="320141797"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
-  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Mar 2023 16:12:54 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10643"; a="707393159"
-X-IronPort-AV: E=Sophos;i="5.98,244,1673942400"; 
-   d="scan'208";a="707393159"
-Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.212.215.12])
-  by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Mar 2023 16:12:54 -0800
-Date: Wed, 8 Mar 2023 16:12:53 -0800
-From: Alison Schofield <alison.schofield@intel.com>
-To: Kloudifold <cloudifold.3125@gmail.com>
-Cc: outreachy@lists.linux.dev
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B2830628
+	for <outreachy@lists.linux.dev>; Thu,  9 Mar 2023 01:39:05 +0000 (UTC)
+Received: by mail-wr1-f45.google.com with SMTP id f11so395456wrv.8
+        for <outreachy@lists.linux.dev>; Wed, 08 Mar 2023 17:39:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1678325943;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=gjR6Nj8EQhF/X+hQIrfIA/xajiWxmkhoKDpJh8V5UZw=;
+        b=NtJ70h1kiQPGvWKjmHGa9ucVx61M2H3j+Fq6XQCg5klnMhSgHSirXHyk+SYLvQiLcM
+         Dga2nLGPx8Rsh43Q/gjMWzY+gP69YIIZjHC+qX1ocuYKuCCDtd4zqcwGFb/2m5WjBI9l
+         InmSjvXYrl9u1cKvbmf4grPFQ1w/mnuwPkK5WcqW8Zcrq+WmW1VANMXZJImCzvu4c2Wb
+         xx8cf0W2vGZXMA/kYJ0tVS5SnEcXTjV1RI+m5vgl7GyCIRWYFCaYzyS76tsyOJlcHVgz
+         F+SSRSyx9qH5LvJCjv9OJn3mcHoMOAazrkB+Idh6kTFDxGWbB4LdrkqrEmKtCBYE98CN
+         /QnQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678325943;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=gjR6Nj8EQhF/X+hQIrfIA/xajiWxmkhoKDpJh8V5UZw=;
+        b=FQME9F1/YRoW2/isTYZLlGAzdJzF56F9tqaAWHgwJLhrHjBtrf/et/QLEfVv/rg9KM
+         1EirqP1BOr8PDSSTXRBlUf3ubUvIPSMNWk5z0ItMH83qu6LogB6SIwfxdwFCqbLZE2F0
+         uVsAZfznkFYifgbaGdHKqSFdqumFHroqmopYc/M3jR58GzUah3i99nTNtPaqwH4wmL1e
+         ABWc1uHOCJIMlpdkVZCAitAOU1fgmMnyKe887sXgkK2HISyj6gtah58xiBe9bMef8ykE
+         C2UjI+KFM/n32TOAwdo1p+VvwNhOJ1TS6DgMQbZy1vCDQzoVnPdQFdrBKlA4D+e2v9ge
+         7YGA==
+X-Gm-Message-State: AO0yUKWORi8lLff7WiYRMUkuHIT904ZhaxS8Fw2VvnnInenE3NSYKLNO
+	kdfiBUJfcyyMMpdDRbXDMnIX2tGg82eHwA==
+X-Google-Smtp-Source: AK7set9iPh1D57SIbR95cC2E4CCP/CWfm670IXuF4tpHnems7tU6q3IxUiC25WUzfhXfufQ0bI5sSA==
+X-Received: by 2002:a5d:4452:0:b0:2ca:ab68:eff3 with SMTP id x18-20020a5d4452000000b002caab68eff3mr12527476wrr.67.1678325943003;
+        Wed, 08 Mar 2023 17:39:03 -0800 (PST)
+Received: from suse.localnet (host-95-252-162-80.retail.telecomitalia.it. [95.252.162.80])
+        by smtp.gmail.com with ESMTPSA id c12-20020a5d63cc000000b002c5801aa9b0sm16614065wrw.40.2023.03.08.17.39.01
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 08 Mar 2023 17:39:02 -0800 (PST)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: outreachy@lists.linux.dev, Kloudifold <cloudifold.3125@gmail.com>
+Cc: alison.schofield@intel.com
 Subject: Re: [KERNEL NEWBIES ACESS] Kloudifold
-Message-ID: <ZAkkhfpPwEfA8Rx/@aschofie-mobl2>
+Date: Thu, 09 Mar 2023 02:39:00 +0100
+Message-ID: <8190776.T7Z3S40VBb@suse>
+In-Reply-To: <ZAjteyeSt2rfa+El@CloudiRingWorld>
 References: <ZAjteyeSt2rfa+El@CloudiRingWorld>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
@@ -40,50 +52,83 @@ List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZAjteyeSt2rfa+El@CloudiRingWorld>
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="iso-8859-1"
 
-On Thu, Mar 09, 2023 at 04:18:03AM +0800, Kloudifold wrote:
-> Dear Outreachy team,
-> 
-> I am an Outreachy applicant who recently followed the tutorial for the Kernel Firstpatch on your website. During the process, I encountered a couple of issues that I believe could benefit from an update to the tutorial.
+On mercoled=EC 8 marzo 2023 21:18:03 CET Kloudifold wrote:
 
-Hi Kloudifold,
+[...]
 
-These sound like very helpful additions! 
+> Secondly, the tutorial instructs users to install the kernel using LILO a=
+s=20
+the
+> boot manager. However, many modern distributions, including the one I use,
+> use GRUB as the default boot manager. This results in an error when=20
+executing
+> "sudo make modules_install install" as the system cannot find LILO. To
+> resolve this issue, I suggest adding instructions for manually installing=
+=20
+the
+> kernel and initramfs and configure GRUB.
+>=20
 
-I was about to add you to the Editors list for the wiki, but want
-to check on the name. Have you looked at this yet:
-https://www.kernel.org/doc/html/latest/process/submitting-patches.html?highlight=signed%20off#sign-your-work-the-developer-s-certificate-of-origin
+I'm not sure if the solution to your problem is to install everything=20
+manually. I have no problems getting `make modules_install install` to work=
+=20
+properly and find GRUB2 because openSUSE provides the "dracut" package for =
+the=20
+sysadmins/developers to automate the above.=20
 
-My question is if you go by 'Kloudifold' as your full legal name.
-ie. will your SOB be:
-Signed-off-by: Kloudifold <cloudifold.3125@gmail.com>
+It's perfectly fine to teach how to install manually, even if just for peop=
+le=20
+to learn what one needs to boot a custom kernel. But kernel developers don'=
+t=20
+have time to manually do routine tasks that can be easily automated.=20
 
-Whatever you put as your name there, will be how your work is
-discovered in the kernel from here forward. So, let's be sure
-to get the name correct.
+I use to compile and install the kernel image, the modules, init, System.ma=
+p,=20
+config, and grub.conf at least two or three times a day and often more time=
+s=20
+(you'll understand when you find yourself doing a bisect with git-bisect an=
+d=20
+maybe you have to compile and install a dozen times in a row in one day).=20
 
-And, I want to use that same name in the Editors file of the wiki.
+In my opinion you need to make sure you understand and explain how to insta=
+ll=20
+"dracut" if your distro provides it. Otherwise, search and read the=20
+documentation of your distribution and try to figure out how to make the `m=
+ake=20
+modules_install install` command to work properly in your system...
 
-Let me know & thanks!
-Alison
+suse:~ # zypper info dracut
+Loading repository data...
+Reading installed packages...
+
+Information for package dracut:
+=2D------------------------------
+Repository     : Main Repository (OSS)
+Name           : dracut
+Version        : 059+suse.366.gf45bc67a-1.1
+Arch           : x86_64
+Vendor         : openSUSE
+Installed Size : 1.9 MiB
+Installed      : Yes (automatically)
+Status         : up-to-date
+Source package : dracut-059+suse.366.gf45bc67a-1.1.src
+Upstream URL   : https://github.com/dracutdevs/dracut/wiki
+Summary        : Event driven initramfs infrastructure
+Description    :=20
+    Dracut contains tools to create a bootable initramfs for Linux kernels =
+>=3D=20
+2.6.
+    Dracut contains various modules which are driven by the event-based udev
+    and systemd. Having root on MD, DM, LVM2, LUKS is supported as well as
+    NFS, iSCSI, NBD, FCoE.
+
+[...]
+
+Thanks,
+
+=46abio
 
 
-> 
-> Firstly, the tutorial assumes that the .config file used to compile the distribution kernel is stored in the /boot/ directory. However, some distributions, including the one I use, do not follow this convention. Instead, the .config file is stored in the /proc/ directory as a compressed file. To address this issue, I propose updating the tutorial with the command "zcat /proc/config.gz > .config" to extract the .config file from /proc/ and use it for compiling the kernel.
-> 
-> Secondly, the tutorial instructs users to install the kernel using LILO as the boot manager. However, many modern distributions, including the one I use, use GRUB as the default boot manager. This results in an error when executing "sudo make modules_install install" as the system cannot find LILO. To resolve this issue, I suggest adding instructions for manually installing the kernel and initramfs and configure GRUB.
-> 
-> In summary, my proposed updates to the Kernel Firstpatch tutorial include:
-> 
->     Adding a command to extract the .config file from /proc/ using "zcat /proc/config.gz > .config"
->     Updating the instructions for installing the kernel and initramfs manually and configuring GRUB
-> 
-> I believe that these updates will improve the usability of the tutorial for users who encounter similar issues. Thank you for your consideration, and please let me know if you have any questions or concerns.
-> 
-> Best regards,
-> Kloudifold.
-> 
-> 
