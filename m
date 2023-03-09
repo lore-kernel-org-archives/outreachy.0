@@ -1,117 +1,129 @@
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 59931D50B
-	for <outreachy@lists.linux.dev>; Thu,  9 Mar 2023 16:20:20 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C3720A29
+	for <outreachy@lists.linux.dev>; Thu,  9 Mar 2023 16:43:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1678378820; x=1709914820;
-  h=message-id:date:mime-version:subject:to:cc:references:
-   from:in-reply-to:content-transfer-encoding;
-  bh=uwId2jbKpj/SVrANbpvZ87ROYOJDquAd7cEPtdoDpr0=;
-  b=BZ3sdpxX+i5hUOmcXo37NZ8mskguJnHWoKPWjlvdtADnMpakMz5o+/kZ
-   pXzatrtF0Lj+tgY1DoyDYc9D43h8WvaZR531S2GUi03sr4Q+j193xfN+V
-   6El/0pFvYYnx7TczOXnVLXIxf6Wt6c7EKcC9riFbgKdx8UXVmC8yiFO16
-   2rotPEV/8sj09LwZazCTFyX+O6GyLStXkJJbTCVVdV8bf/RGmv6RUYtTt
-   Gf/dROnzh4kM9kkR/KMdadeGuebMKQgcbRyb0x7Qooq2Xj93gr/ivUeRa
-   jRL9oetmFlIHmQSRrtRpIUZxKFW6gTsn7mTQAr33QpnxLNshUmEcftfyC
-   w==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10644"; a="422758409"
-X-IronPort-AV: E=Sophos;i="5.98,246,1673942400"; 
-   d="scan'208";a="422758409"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
-  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Mar 2023 08:20:19 -0800
+  t=1678380232; x=1709916232;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=BHukIsyU9tVs+RXFLDzspqupFFy6+T8n3Axr8/UMwWk=;
+  b=MzFn2BTdZs9QF8SZSwapDbhtqpyFQLewGCyv9RtDWuLl9yh1UvsybYOO
+   XovMDDMREYsNPLQiq/v5sdqy6Q/l1gtGr8vJP/1xtrNfII9YHl1oaSeSh
+   TfgE5fJmFcCCOck1wB5yxkRBveFMWnJlcdinWmwsw0L30f5ENUl4bMvcM
+   mnchuR1d4XMoaLM8ylAKCx9IT7W33iwwbbAY/I3PgRCpPm0k72TY9fcvl
+   xmj88/vgRTPoUn7QTrSX3w52qZrmx//WO1GF0c5louPanuN835TutmyMK
+   DL6AD2L8MqA2yCznXYDiIeyYetokTMWqEyGf6tFOHMU8Pc4RgNkiXqkqw
+   Q==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10644"; a="324836184"
+X-IronPort-AV: E=Sophos;i="5.98,247,1673942400"; 
+   d="scan'208";a="324836184"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Mar 2023 08:43:51 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10644"; a="670793874"
-X-IronPort-AV: E=Sophos;i="5.98,246,1673942400"; 
-   d="scan'208";a="670793874"
-Received: from djiang5-mobl3.amr.corp.intel.com (HELO [10.209.151.251]) ([10.209.151.251])
-  by orsmga007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Mar 2023 08:20:17 -0800
-Message-ID: <55807112-8907-9541-9042-6c508ef11f1e@intel.com>
-Date: Thu, 9 Mar 2023 09:20:16 -0700
+X-IronPort-AV: E=McAfee;i="6500,9779,10644"; a="766501379"
+X-IronPort-AV: E=Sophos;i="5.98,247,1673942400"; 
+   d="scan'208";a="766501379"
+Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.251.16.84])
+  by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Mar 2023 08:43:51 -0800
+Date: Thu, 9 Mar 2023 08:43:49 -0800
+From: Alison Schofield <alison.schofield@intel.com>
+To: Kloudifold <cloudifold.3125@gmail.com>
+Cc: outreachy@lists.linux.dev
+Subject: Re: Questions on legal name/pseudyonym
+Message-ID: <ZAoMxSPKNLoLg7Wl@aschofie-mobl2>
+References: <ZAmUcfHfMUqxu67D@CloudiRingWorld>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Firefox/102.0 Thunderbird/102.6.0
-Subject: Re: Introductory message
-Content-Language: en-US
-To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>,
- Sumitra Sharma <sumitraartsy@gmail.com>
-Cc: Julia Lawall <julia.lawall@inria.fr>, Ira Weiny <ira.weiny@intel.com>,
- outreachy@lists.linux.dev
-References: <20230308114122.GA312977@ubuntu>
- <12ef38a-fd4c-947c-4ea3-a641ef5b1310@inria.fr>
- <6408c23d58ec5_f3f4a294e1@iweiny-mobl.notmuch> <6882066.18pcnM708K@suse>
-From: Dave Jiang <dave.jiang@intel.com>
-In-Reply-To: <6882066.18pcnM708K@suse>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ZAmUcfHfMUqxu67D@CloudiRingWorld>
+
+On Thu, Mar 09, 2023 at 04:10:25PM +0800, Kloudifold wrote:
+> Thanks for your advice in thread "Problem in 'Pick a warning, and try to fix it'", I should use "drivers/staging/**/*.*" instead of "drivers/staging/*/*".
+> 
+> My legal name may change in the next few years, and the Outreachy Community Member Information page said
+> "You may use a pseudonym or abbreviate your given or family names if you have concerns about privacy.",
+> so I use "Kloudifold" as my Outreachy name and intend to use it as signed-off name when making kernel contributions.
+> 
+> I would now like to ask if my contribution will be considered by Outreachy if I use a pseudonym?
+> If not, I will use my legal name instead.
+> If it is OK, I intend to keep contributing under the name "Kloudifold".
+
+Hi Kloudifold,
+
+I'm glad this came up because I needed to learn the latest on this
+topic. My prior knowledge was 'no pseudonyms', but I see the kernel
+has recently changed that:
+
+d4563201f33a0 Documentation/process/submitting-patches.rst (Linus Torvalds        2023-02-26 11:25:04 -0800 410) using a known identity (sorry, no anonymous contributions.)
+
+diff --git a/Documentation/process/submitting-patches.rst b/Documentation/process/submitting-patches.rst
+index 7dc94555417d..fab44ae732e3 100644
+--- a/Documentation/process/submitting-patches.rst
++++ b/Documentation/process/submitting-patches.rst
+@@ -407,7 +407,7 @@ then you just add a line saying::
+
+        Signed-off-by: Random J Developer <random@developer.example.org>
+
+-using your real name (sorry, no pseudonyms or anonymous contributions.)
++using a known identity (sorry, no anonymous contributions.)
+ This will be done for you automatically if you use ``git commit -s``.
+ Reverts should also include "Signed-off-by". ``git revert -s`` does that
+ for you.
+
+Alison
 
 
-
-On 3/8/23 11:40 AM, Fabio M. De Francesco wrote:
-> On mercoledì 8 marzo 2023 18:13:33 CET Ira Weiny wrote:
->> Julia Lawall wrote:
->>> On Wed, 8 Mar 2023, Sumitra Sharma wrote:
->>>> Hi I am Sumitra Sharma, an outreachy applicant. This is my first time
->>>> applying to outreachy and linux-kernel. I am currently working on
->>>> setting up the environment. I observed that building the kernel i.e.
->>>> running "make -j2" command itself is taking a lot of time. I would
->>>> appreciate some suggestions on it.
->>>
->>> I think it would take a lot of time...
->>
->> Also:
->>
->> -j is an option which chooses how many threads to build in parallel.
->>
->> If you have enough cores on your machine you could increase '2' to
->> something larger.
->>
 > 
-> Sumitra,
-> 
-> That "something larger" can be calculated with a rule of thumb and then
-> adapted to your necessities...
-> 
-> Look at /proc/cpuinfo if you don't know how many cores you have in your
-> system...
-> 
-> # cat /proc/cpuinfo | grep processor
-> processor: 0
-> processor: 1
-> processor: 2
-> processor: 3
-> processor: 4
-> processor: 5
-> processor: 6
-> processor: 7
-> processor: 8
-> processor: 9
-> processor: 10
-> processor: 11
-> 
-> The output shows that I'm using a 12 core SMT system (https://
-> en.wikipedia.org/wiki/Simultaneous_multithreading).
-> 
-> So "-j12" is my usual choice for building a kernel in the host, minus the
-> number of SMT cores reserved for running VMs.
-
-or just run 'make -j`nproc`'. Notice it's not single quote "'" but "`" 
-around nproc to execute the command. The return value of nproc is fed to 
-make. That what it just picks the max threads on whatever system you are 
-on.
-
-> 
-> Thanks,
-> 
-> Fabio
->   
-> 
-> 
-> 
+> On Thu, 9 Mar 2023 at 08:12, Alison Schofield <alison.schofield@intel.com> wrote:
+> >
+> > On Thu, Mar 09, 2023 at 04:18:03AM +0800, Kloudifold wrote:
+> > > Dear Outreachy team,
+> > >
+> > > I am an Outreachy applicant who recently followed the tutorial for the Kernel Firstpatch on your website. During the process, I encountered a couple of issues that I believe could benefit from an update to the tutorial.
+> >
+> > Hi Kloudifold,
+> >
+> > These sound like very helpful additions!
+> >
+> > I was about to add you to the Editors list for the wiki, but want
+> > to check on the name. Have you looked at this yet:
+> > https://www.kernel.org/doc/html/latest/process/submitting-patches.html?highlight=signed%20off#sign-your-work-the-developer-s-certificate-of-origin
+> >
+> > My question is if you go by 'Kloudifold' as your full legal name.
+> > ie. will your SOB be:
+> > Signed-off-by: Kloudifold <cloudifold.3125@gmail.com>
+> >
+> > Whatever you put as your name there, will be how your work is
+> > discovered in the kernel from here forward. So, let's be sure
+> > to get the name correct.
+> >
+> > And, I want to use that same name in the Editors file of the wiki.
+> >
+> > Let me know & thanks!
+> > Alison
+> >
+> >
+> > >
+> > > Firstly, the tutorial assumes that the .config file used to compile the distribution kernel is stored in the /boot/ directory. However, some distributions, including the one I use, do not follow this convention. Instead, the .config file is stored in the /proc/ directory as a compressed file. To address this issue, I propose updating the tutorial with the command "zcat /proc/config.gz > .config" to extract the .config file from /proc/ and use it for compiling the kernel.
+> > >
+> > > Secondly, the tutorial instructs users to install the kernel using LILO as the boot manager. However, many modern distributions, including the one I use, use GRUB as the default boot manager. This results in an error when executing "sudo make modules_install install" as the system cannot find LILO. To resolve this issue, I suggest adding instructions for manually installing the kernel and initramfs and configure GRUB.
+> > >
+> > > In summary, my proposed updates to the Kernel Firstpatch tutorial include:
+> > >
+> > >     Adding a command to extract the .config file from /proc/ using "zcat /proc/config.gz > .config"
+> > >     Updating the instructions for installing the kernel and initramfs manually and configuring GRUB
+> > >
+> > > I believe that these updates will improve the usability of the tutorial for users who encounter similar issues. Thank you for your consideration, and please let me know if you have any questions or concerns.
+> > >
+> > > Best regards,
+> > > Kloudifold.
+> > >
+> > >
 > 
