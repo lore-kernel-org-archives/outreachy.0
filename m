@@ -1,134 +1,104 @@
-Received: from mail-wr1-f45.google.com (mail-wr1-f45.google.com [209.85.221.45])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B2830628
-	for <outreachy@lists.linux.dev>; Thu,  9 Mar 2023 01:39:05 +0000 (UTC)
-Received: by mail-wr1-f45.google.com with SMTP id f11so395456wrv.8
-        for <outreachy@lists.linux.dev>; Wed, 08 Mar 2023 17:39:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678325943;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=gjR6Nj8EQhF/X+hQIrfIA/xajiWxmkhoKDpJh8V5UZw=;
-        b=NtJ70h1kiQPGvWKjmHGa9ucVx61M2H3j+Fq6XQCg5klnMhSgHSirXHyk+SYLvQiLcM
-         Dga2nLGPx8Rsh43Q/gjMWzY+gP69YIIZjHC+qX1ocuYKuCCDtd4zqcwGFb/2m5WjBI9l
-         InmSjvXYrl9u1cKvbmf4grPFQ1w/mnuwPkK5WcqW8Zcrq+WmW1VANMXZJImCzvu4c2Wb
-         xx8cf0W2vGZXMA/kYJ0tVS5SnEcXTjV1RI+m5vgl7GyCIRWYFCaYzyS76tsyOJlcHVgz
-         F+SSRSyx9qH5LvJCjv9OJn3mcHoMOAazrkB+Idh6kTFDxGWbB4LdrkqrEmKtCBYE98CN
-         /QnQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678325943;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=gjR6Nj8EQhF/X+hQIrfIA/xajiWxmkhoKDpJh8V5UZw=;
-        b=FQME9F1/YRoW2/isTYZLlGAzdJzF56F9tqaAWHgwJLhrHjBtrf/et/QLEfVv/rg9KM
-         1EirqP1BOr8PDSSTXRBlUf3ubUvIPSMNWk5z0ItMH83qu6LogB6SIwfxdwFCqbLZE2F0
-         uVsAZfznkFYifgbaGdHKqSFdqumFHroqmopYc/M3jR58GzUah3i99nTNtPaqwH4wmL1e
-         ABWc1uHOCJIMlpdkVZCAitAOU1fgmMnyKe887sXgkK2HISyj6gtah58xiBe9bMef8ykE
-         C2UjI+KFM/n32TOAwdo1p+VvwNhOJ1TS6DgMQbZy1vCDQzoVnPdQFdrBKlA4D+e2v9ge
-         7YGA==
-X-Gm-Message-State: AO0yUKWORi8lLff7WiYRMUkuHIT904ZhaxS8Fw2VvnnInenE3NSYKLNO
-	kdfiBUJfcyyMMpdDRbXDMnIX2tGg82eHwA==
-X-Google-Smtp-Source: AK7set9iPh1D57SIbR95cC2E4CCP/CWfm670IXuF4tpHnems7tU6q3IxUiC25WUzfhXfufQ0bI5sSA==
-X-Received: by 2002:a5d:4452:0:b0:2ca:ab68:eff3 with SMTP id x18-20020a5d4452000000b002caab68eff3mr12527476wrr.67.1678325943003;
-        Wed, 08 Mar 2023 17:39:03 -0800 (PST)
-Received: from suse.localnet (host-95-252-162-80.retail.telecomitalia.it. [95.252.162.80])
-        by smtp.gmail.com with ESMTPSA id c12-20020a5d63cc000000b002c5801aa9b0sm16614065wrw.40.2023.03.08.17.39.01
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Mar 2023 17:39:02 -0800 (PST)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: outreachy@lists.linux.dev, Kloudifold <cloudifold.3125@gmail.com>
-Cc: alison.schofield@intel.com
-Subject: Re: [KERNEL NEWBIES ACESS] Kloudifold
-Date: Thu, 09 Mar 2023 02:39:00 +0100
-Message-ID: <8190776.T7Z3S40VBb@suse>
-In-Reply-To: <ZAjteyeSt2rfa+El@CloudiRingWorld>
-References: <ZAjteyeSt2rfa+El@CloudiRingWorld>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 52E9A7B
+	for <outreachy@lists.linux.dev>; Thu,  9 Mar 2023 02:53:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1678330397; x=1709866397;
+  h=date:from:to:subject:message-id:mime-version;
+  bh=TJfh4j4nDUlXCufRK/arnO0PS1N/O8CQmmM5IJ+zd4Q=;
+  b=DKLResz4l5GnKs36DJDDPdvtMsE0pVnMfIFP4yXwRkt6h7O8oLC8gSaj
+   11XeM3vnczeLuHj8uxmQXVQgh+9x7s1bqYz6DCLW4sa73eOdmUJYux6qe
+   nEgtvIICJ2i9Xkz1BfVq/iyRCcVGQiHsno1bbwg5uMkyrWntf49ojH31/
+   L79dvUDipQNz7ZOlDa42yQNvd2QBsopszyihhAcjpQxwls4zyUFCeUfHK
+   CV70aiMcqM+ANkWmyXW2Keq45GD3GiwDJLNunEIWN0zIXb9M9ijmbHqDn
+   U9E8uUswi5uGqfD9J1Y/3MjOhl+PpZjRcOPmd0OePG2vSGA/+6ODeu493
+   w==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10643"; a="337864831"
+X-IronPort-AV: E=Sophos;i="5.98,245,1673942400"; 
+   d="scan'208";a="337864831"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Mar 2023 18:53:16 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10643"; a="851360948"
+X-IronPort-AV: E=Sophos;i="5.98,245,1673942400"; 
+   d="scan'208";a="851360948"
+Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.212.215.12])
+  by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Mar 2023 18:53:16 -0800
+Date: Wed, 8 Mar 2023 18:53:15 -0800
+From: Alison Schofield <alison.schofield@intel.com>
+To: Outreachy Linux Kernel <outreachy@lists.linux.dev>
+Subject: [Outreachy Info] Finding cleanups in staging
+Message-ID: <ZAlKG1mN0m4NXEyU@aschofie-mobl2>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="iso-8859-1"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-On mercoled=EC 8 marzo 2023 21:18:03 CET Kloudifold wrote:
+Finding drivers/staging clean-ups:::
 
-[...]
+In Linux Kernel Community we know that it takes a bit of time
+and effort to get traction on the cleanup patches.
 
-> Secondly, the tutorial instructs users to install the kernel using LILO a=
-s=20
-the
-> boot manager. However, many modern distributions, including the one I use,
-> use GRUB as the default boot manager. This results in an error when=20
-executing
-> "sudo make modules_install install" as the system cannot find LILO. To
-> resolve this issue, I suggest adding instructions for manually installing=
-=20
-the
-> kernel and initramfs and configure GRUB.
->=20
+Please ask for support on this list or irc.
 
-I'm not sure if the solution to your problem is to install everything=20
-manually. I have no problems getting `make modules_install install` to work=
-=20
-properly and find GRUB2 because openSUSE provides the "dracut" package for =
-the=20
-sysadmins/developers to automate the above.=20
+Here are some notes thoughts to get you started. Please chime in
+with your current experiences. It helps other applicants and helps
+us improve the program.
 
-It's perfectly fine to teach how to install manually, even if just for peop=
-le=20
-to learn what one needs to boot a custom kernel. But kernel developers don'=
-t=20
-have time to manually do routine tasks that can be easily automated.=20
+Finding the first patch:
+------------------------
+It's fine to submit patches for checkpatch "CHECK" reports.
+Get these by using the --strict option to checkpatch.
 
-I use to compile and install the kernel image, the modules, init, System.ma=
-p,=20
-config, and grub.conf at least two or three times a day and often more time=
-s=20
-(you'll understand when you find yourself doing a bisect with git-bisect an=
-d=20
-maybe you have to compile and install a dozen times in a row in one day).=20
+Here's what works for me:
 
-In my opinion you need to make sure you understand and explain how to insta=
-ll=20
-"dracut" if your distro provides it. Otherwise, search and read the=20
-documentation of your distribution and try to figure out how to make the `m=
-ake=20
-modules_install install` command to work properly in your system...
+$ rm -r drivers/staging/media 		# do not work in staging/media
 
-suse:~ # zypper info dracut
-Loading repository data...
-Reading installed packages...
+$ git ls-files drivers/staging/*.[ch] | xargs ./scripts/checkpatch.pl --strict --codespellfile=/usr/bin/codespell -f
 
-Information for package dracut:
-=2D------------------------------
-Repository     : Main Repository (OSS)
-Name           : dracut
-Version        : 059+suse.366.gf45bc67a-1.1
-Arch           : x86_64
-Vendor         : openSUSE
-Installed Size : 1.9 MiB
-Installed      : Yes (automatically)
-Status         : up-to-date
-Source package : dracut-059+suse.366.gf45bc67a-1.1.src
-Upstream URL   : https://github.com/dracutdevs/dracut/wiki
-Summary        : Event driven initramfs infrastructure
-Description    :=20
-    Dracut contains tools to create a bootable initramfs for Linux kernels =
->=3D=20
-2.6.
-    Dracut contains various modules which are driven by the event-based udev
-    and systemd. Having root on MD, DM, LVM2, LUKS is supported as well as
-    NFS, iSCSI, NBD, FCoE.
+There seem to be plenty of checkpatch cleanups in staging/drivers,
+and TODO files w beginner level suggestions.
 
-[...]
+Another method for finding cleanups is *this* list. Scroll
+the list of PATCH Subject lines, some will catch your eye as
+not looking like a checkpatch patch. Look at it. See what they
+did, how they found it.
 
-Thanks,
+Confidence to send the patch:
+-----------------------------
+Go ahead and search on this mailing list for the checkpatch
+string. You should find many examples of patches that went
+well, and patches that needed rework, that match what you
+are about to do.
 
-=46abio
+If you have a patch AND a question, you can send the patch
+and put your question below the scissors line. For example,
+you might see multiple instance of something but are not sure
+the patch will be well-received. Fix one instance - and below
+the scissor line ask you question: "There are 10 more of these
+in this file, just want to sanity check that my approach here
+is wanted."
+
+Snowballing:
+------------
+I can see on this list that a few folks already have patches
+accepted that are 'snowballing'. This is when a reviewer says
+'Thanks - and how about fixing this [other thing] too?!' This
+is great. One patch, spawns more improvements.
+
+For perspective, try this on this list:
+------------------------------------
+Search for v2, then search for v14. (You can search all the
+way in-between also). Point is, we revision patches a lot!
+And, it's not unique to the Outreachy list. Go to any kernel.org
+list if you are feeling glum about getting to v5, 6, or 7.
 
 
+Reach out if you get stuck or need some camaraderie,
+Alison
