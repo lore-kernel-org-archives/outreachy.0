@@ -1,127 +1,108 @@
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-pj1-f47.google.com (mail-pj1-f47.google.com [209.85.216.47])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D9B66818
-	for <outreachy@lists.linux.dev>; Thu,  9 Mar 2023 07:58:17 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F1A0B259D
+	for <outreachy@lists.linux.dev>; Thu,  9 Mar 2023 08:10:28 +0000 (UTC)
+Received: by mail-pj1-f47.google.com with SMTP id cp7-20020a17090afb8700b0023756229427so5255300pjb.1
+        for <outreachy@lists.linux.dev>; Thu, 09 Mar 2023 00:10:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=TOyRnWMuSlWE6KzXoNKX37Lj5xYVRB8SN0XvzP0Q1yI=;
-  b=Z4a4vsex5WM6Y3Hl3cVTGqa+9ScVhfP6I2iEMXAidGPQAH21PoZFPwq9
-   ttA+b4HBtdSLFypGVFtSnQsDzqN+GFCd/i8Mz8MC/9NdUEURoVEvd/QkQ
-   Npz7KOB5QhZ4riobd6S0HSrLyqt/RgkG18xnWgIPU4QyWCGaChscUQBck
-   I=;
-Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="5.98,245,1673910000"; 
-   d="scan'208";a="49642797"
-Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Mar 2023 08:58:16 +0100
-Date: Thu, 9 Mar 2023 08:58:14 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-To: 5365771.29KlJPOoH8@suse
-cc: fmdefrancesco@gmail.com, drv@mailo.com, outreachy@lists.linux.dev, 
-    sumitraartsy@gmail.com
-Subject: Re: Help to setup enviornment
-In-Reply-To: <20230309071628.GA2115@ubuntu>
-Message-ID: <e143f8ac-5bd3-ec1a-e452-8f4cb757ed7a@inria.fr>
-References: <20230309071628.GA2115@ubuntu>
+        d=gmail.com; s=20210112; t=1678349428;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=+Xpe7ByeZBwY/zMtLpmIAUKc0tzjuVuavjNhe0LfNvw=;
+        b=YbQ54fQ1UVCkrSK+H9cdNPW1lkeB67P2eEvZ7v+ExrfXKbxSboh6XJeUIuFsdXfvsU
+         +AvKcxRzQTZ2d4cXO/dz5Lr9P9uug8iR2q1t1O0BTsOfRlpsyRmFj2a0xlMJDKz04ZYo
+         j3eg+jmq+xxYrlA2HOVtKo8H9q05zueuPgQ5QdHtHGhFzC2F6IYEPuOzDhVKBERi1EKo
+         XPsDQhbvvHqdTQWYye/6pC6fbo978gII55Qghys9Lt0RTF1CFnIma7fT0ApgRfzs9vxX
+         PkiVbbBpW1G2B+xIuGPdWBmDqkXEzBwYmFo5J0SLyb5RGLee4lds/XHQo6JF7xwdz37P
+         EBsQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678349428;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=+Xpe7ByeZBwY/zMtLpmIAUKc0tzjuVuavjNhe0LfNvw=;
+        b=3wNyt214eOAyhSzFwBPP6Xsd/Yz85QrFzELJbWQsL1zMdD1CTlLX50yuq20sBryv7V
+         3yxcX4e+DaTxuv37u3fXQRi779tMdsV1BFZUDb2Uhj+5LzhPMcQ6eRCC7XOEJsA4lZDg
+         PQn9+NNyqT0YG0TDyMUKYRQ4YGa6RbHGwHfSGDd8PQ+3HtCaGDMM2vFwF1qqhSTttfqs
+         rneUN1m37GMTY8SRwI7fcT5bzkVOKERKdp6XXyPUlv0jqp/DSgM1bWJNGMnNM7+2sHFr
+         qCrADp1rRORjZUCsI8WUlym+VFRlUZQw3jFNOjnj6hIGqte+ZgXNf5uY0wata9ZKxP7A
+         6qqg==
+X-Gm-Message-State: AO0yUKUXWHxF5NeOf9Zjp0Zm9JkjyuXvAwYKLwlf46ynluKBaDzMcgE5
+	a3/qEqzmKJPLTziYy6jCt7atlbF14CYsj39n
+X-Google-Smtp-Source: AK7set/GyVSbQ/awS3M4YE3dvZVBzJMOxWSBLx2Reb4HZRDWuoL8PjNCBQOhNU7egL9x0gE0ZgSHYQ==
+X-Received: by 2002:a17:90a:1a48:b0:234:35bb:6190 with SMTP id 8-20020a17090a1a4800b0023435bb6190mr21665217pjl.27.1678349428329;
+        Thu, 09 Mar 2023 00:10:28 -0800 (PST)
+Received: from CloudiRingWorld ([122.231.69.163])
+        by smtp.gmail.com with ESMTPSA id k6-20020a17090ac50600b00233d6547000sm1005197pjt.54.2023.03.09.00.10.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 09 Mar 2023 00:10:27 -0800 (PST)
+Date: Thu, 9 Mar 2023 16:10:25 +0800
+From: Kloudifold <cloudifold.3125@gmail.com>
+To: alison.schofield@intel.com
+Cc: outreachy@lists.linux.dev
+Subject: Questions on legal name/pseudyonym
+Message-ID: <ZAmUcfHfMUqxu67D@CloudiRingWorld>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
+Thanks for your advice in thread "Problem in 'Pick a warning, and try to fix it'", I should use "drivers/staging/**/*.*" instead of "drivers/staging/*/*".
 
+My legal name may change in the next few years, and the Outreachy Community Member Information page said
+"You may use a pseudonym or abbreviate your given or family names if you have concerns about privacy.",
+so I use "Kloudifold" as my Outreachy name and intend to use it as signed-off name when making kernel contributions.
 
-On Wed, 8 Mar 2023, Sumitra Sharma wrote:
+I would now like to ask if my contribution will be considered by Outreachy if I use a pseudonym?
+If not, I will use my legal name instead.
+If it is OK, I intend to keep contributing under the name "Kloudifold".
 
-> Hi Fabio, this is the below output:
-> ##
-> sumitra@ubuntu:~$ df -h
-> ##
-> Filesystem      Size  Used Avail Use% Mounted on
-> udev            2.2G     0  2.2G   0% /dev
-> tmpfs           449M  1.8M  447M   1% /run
-> /dev/sda5        39G   26G   12G  70% /
-> tmpfs           2.2G     0  2.2G   0% /dev/shm
-> tmpfs           5.0M  4.0K  5.0M   1% /run/lock
-> tmpfs           2.2G     0  2.2G   0% /sys/fs/cgroup
-> /dev/loop0      128K  128K     0 100% /snap/bare/5
-> /dev/loop1      249M  249M     0 100% /snap/gnome-3-38-2004/99
-> /dev/loop2       66M   66M     0 100% /snap/gtk-common-themes/1519
-> /dev/loop3       64M   64M     0 100% /snap/core20/1828
-> /dev/loop4       62M   62M     0 100% /snap/core20/1328
-> /dev/loop5      347M  347M     0 100% /snap/gnome-3-38-2004/119
-> /dev/loop6       92M   92M     0 100% /snap/gtk-common-themes/1535
-> /dev/loop7       55M   55M     0 100% /snap/snap-store/558
-> /dev/loop8       46M   46M     0 100% /snap/snap-store/638
-> /dev/loop9       50M   50M     0 100% /snap/snapd/18357
-> /dev/sda1       511M  4.0K  511M   1% /boot/efi
-> tmpfs           449M   28K  449M   1% /run/user/1000
-> ##
+On Thu, 9 Mar 2023 at 08:12, Alison Schofield <alison.schofield@intel.com> wrote:
 >
-> ##
-> sumitra@ubuntu:~$ cat /proc/meminfo
-> ##
-> MemTotal:        4593512 kB
-> MemFree:          128644 kB
-> MemAvailable:    2020080 kB
-> Buffers:           75072 kB
-> Cached:          1914592 kB
-> SwapCached:        55292 kB
-> Active:           352904 kB
-> Inactive:        3504468 kB
-> Active(anon):      14532 kB
-> Inactive(anon):  1853924 kB
-> Active(file):     338372 kB
-> Inactive(file):  1650544 kB
-> Unevictable:           0 kB
-> Mlocked:               0 kB
-> SwapTotal:       1918356 kB
-> SwapFree:        1594028 kB
-> Dirty:            198312 kB
-> Writeback:          2700 kB
-> AnonPages:       1845196 kB
-> Mapped:           112436 kB
-> Shmem:               604 kB
-> KReclaimable:     193728 kB
-> Slab:             276024 kB
-> SReclaimable:     193728 kB
-> SUnreclaim:        82296 kB
-> KernelStack:       10080 kB
-> PageTables:        15768 kB
-> NFS_Unstable:          0 kB
-> Bounce:                0 kB
-> WritebackTmp:          0 kB
-> CommitLimit:     4215112 kB
-> Committed_AS:    4901348 kB
-> VmallocTotal:   34359738367 kB
-> VmallocUsed:       58952 kB
-> VmallocChunk:          0 kB
-> Percpu:            94720 kB
-> HardwareCorrupted:     0 kB
-> AnonHugePages:         0 kB
-> ShmemHugePages:        0 kB
-> ShmemPmdMapped:        0 kB
-> FileHugePages:         0 kB
-> FilePmdMapped:         0 kB
-> HugePages_Total:       0
-> HugePages_Free:        0
-> HugePages_Rsvd:        0
-> HugePages_Surp:        0
-> Hugepagesize:       2048 kB
-> Hugetlb:               0 kB
-> DirectMap4k:      229184 kB
-> DirectMap2M:     3543040 kB
-> DirectMap1G:     1048576 kB
-> ##
+> On Thu, Mar 09, 2023 at 04:18:03AM +0800, Kloudifold wrote:
+> > Dear Outreachy team,
+> >
+> > I am an Outreachy applicant who recently followed the tutorial for the Kernel Firstpatch on your website. During the process, I encountered a couple of issues that I believe could benefit from an update to the tutorial.
 >
-> Apart from this, I was talking about the RAM and I have provided the hard disk space of 40GB to my VM machine. And I see a lack of RAM in the VM machine.
-
-Did you try with a smaller configuration?  One might guess that the
-problem is at link time, and having less to link could be helpful.
-
-julia
+> Hi Kloudifold,
+>
+> These sound like very helpful additions!
+>
+> I was about to add you to the Editors list for the wiki, but want
+> to check on the name. Have you looked at this yet:
+> https://www.kernel.org/doc/html/latest/process/submitting-patches.html?highlight=signed%20off#sign-your-work-the-developer-s-certificate-of-origin
+>
+> My question is if you go by 'Kloudifold' as your full legal name.
+> ie. will your SOB be:
+> Signed-off-by: Kloudifold <cloudifold.3125@gmail.com>
+>
+> Whatever you put as your name there, will be how your work is
+> discovered in the kernel from here forward. So, let's be sure
+> to get the name correct.
+>
+> And, I want to use that same name in the Editors file of the wiki.
+>
+> Let me know & thanks!
+> Alison
+>
+>
+> >
+> > Firstly, the tutorial assumes that the .config file used to compile the distribution kernel is stored in the /boot/ directory. However, some distributions, including the one I use, do not follow this convention. Instead, the .config file is stored in the /proc/ directory as a compressed file. To address this issue, I propose updating the tutorial with the command "zcat /proc/config.gz > .config" to extract the .config file from /proc/ and use it for compiling the kernel.
+> >
+> > Secondly, the tutorial instructs users to install the kernel using LILO as the boot manager. However, many modern distributions, including the one I use, use GRUB as the default boot manager. This results in an error when executing "sudo make modules_install install" as the system cannot find LILO. To resolve this issue, I suggest adding instructions for manually installing the kernel and initramfs and configure GRUB.
+> >
+> > In summary, my proposed updates to the Kernel Firstpatch tutorial include:
+> >
+> >     Adding a command to extract the .config file from /proc/ using "zcat /proc/config.gz > .config"
+> >     Updating the instructions for installing the kernel and initramfs manually and configuring GRUB
+> >
+> > I believe that these updates will improve the usability of the tutorial for users who encounter similar issues. Thank you for your consideration, and please let me know if you have any questions or concerns.
+> >
+> > Best regards,
+> > Kloudifold.
+> >
+> >
