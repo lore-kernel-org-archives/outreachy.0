@@ -1,106 +1,134 @@
-Received: from mail-wm1-f46.google.com (mail-wm1-f46.google.com [209.85.128.46])
+Received: from mail-pl1-f172.google.com (mail-pl1-f172.google.com [209.85.214.172])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0EA2063B5;
-	Fri, 10 Mar 2023 12:25:53 +0000 (UTC)
-Received: by mail-wm1-f46.google.com with SMTP id m25-20020a7bcb99000000b003e7842b75f2so3290558wmi.3;
-        Fri, 10 Mar 2023 04:25:53 -0800 (PST)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1EA398481
+	for <outreachy@lists.linux.dev>; Fri, 10 Mar 2023 14:01:23 +0000 (UTC)
+Received: by mail-pl1-f172.google.com with SMTP id h8so5613947plf.10
+        for <outreachy@lists.linux.dev>; Fri, 10 Mar 2023 06:01:23 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678451152;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=MHl+AGoIadXu/jEHuWQbNUD1NdGyTe9l6pWhk1p94DQ=;
-        b=H44JNO2BWh725FN2ZYYZRSQV7Yga5fxC4w/R7S2Wv4lGP/0V/zYen8/3i2IYXlx/ky
-         1Q2jlTpNDVekWV7+C2H/qaIkldkRi/8C4uX3W00XtPiFPqNP9Yu0LdlvSquxqnIit4iZ
-         dihwuNmSf4e2mBc0HJyMz4f1v67gCnZ8s3ecfJgRYhsMyNivL3iG/+hdrHiOt/H4zYfM
-         Lp7K2Tv01C/xlAEvgdmEXD88c66i1oDr2p4L+7chfCgJtMt9wJP1ML2JY+0K3zw5datk
-         XWQcGp+5Ri261+VlrsKne0QQiZiby+QzENFPP/zHNDbxPq68xEjke7yiQO4jaf1CmiWz
-         1p6Q==
+        d=gmail.com; s=20210112; t=1678456882;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=1E1H01G5yHTefNIXDYDwx8BnHam3cp9im/vl/s0zSJg=;
+        b=paKTama3iHQUROKjuwszpwKu1vGrHb0C8kTFWk/OFl5k4xxjcPUQg3QwKohLz2Seva
+         duc++0cFytkwWflXtPn99raoCbKXCbI+usvcgFDNWr8s3g34NPvLDYNJHUoCknWtNbov
+         Mn+duwew2vbd4E2St/NsZ8go+P5EoxCFJSibkgrTPaqsKvcMVe8Lt4z/ERLyQqWhKCHV
+         HV9sAJQX6BLcJnXcqH9qrmPLdbmChYsrXUNlPalBe9S18F556lyJY/ydflReQrNrtk1A
+         W3axWXi56lbL+wQtT/BhwMAJBpVuwkmAw9kl2B6sXZSJyrlGEnrg1Yov4+O4YXYPxHEA
+         XEog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678451152;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=MHl+AGoIadXu/jEHuWQbNUD1NdGyTe9l6pWhk1p94DQ=;
-        b=0xpQ8qEMVduccxBKhPauRTvT4vduQKcEcxYzcmADoeMsKTdFBN7YoP4E4SDEp1JYit
-         YhdcAqJbN3Ve/TWT6E00B5eO8H7NE5dxxKUQZfACEHKkeC5Q/9who6XnlxNLDSeHjuaS
-         w96M7Lwg1R9/yPt5ha/OjL8FajXj9dO9oZA7/DAvxUvdyTDpbvYPOueAI+20yYDv7oam
-         O3HlX1OVN/buPy7U9nuRK6t3BQR6qmCGOu+orl2XGU2g6J7P9ky+/PinpL3ZNJUyEEfg
-         4/NKfV1nCfr2VNWN0bw+D8iIyUDDZ/nSIIRPG0OH0V9qDgKtksHXf3PWzJngxcUbg0PA
-         IQhA==
-X-Gm-Message-State: AO0yUKWkYbwAzRDFURjdVLc+oReqndW1Wh0CpmmHh951Kp/kQhU0D3NQ
-	r46DI7S2CyOmV6RW3t6ZFr91Q9PhVox3UA==
-X-Google-Smtp-Source: AK7set/kEV7hq38ykRFtbYi+1WWB5H9MDXeg/UhyAGEyIAm7diXnIw8C0IrGGDzPPbDoMLxUZ0Iv7A==
-X-Received: by 2002:a05:600c:a11:b0:3dc:433a:e952 with SMTP id z17-20020a05600c0a1100b003dc433ae952mr2451081wmp.33.1678451152189;
-        Fri, 10 Mar 2023 04:25:52 -0800 (PST)
-Received: from suse.localnet (host-95-235-93-126.retail.telecomitalia.it. [95.235.93.126])
-        by smtp.gmail.com with ESMTPSA id t15-20020a05600c198f00b003e21dcccf9fsm3078157wmq.16.2023.03.10.04.25.50
+        d=1e100.net; s=20210112; t=1678456882;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=1E1H01G5yHTefNIXDYDwx8BnHam3cp9im/vl/s0zSJg=;
+        b=Be++DouhRNkGPOPjJjxWerunz74CZg4pQw7YleKkX8p+JH87AVvRjVBmyYeJzDhEXg
+         6xDuhh601EA7/WVTH9iOcMVfy1ac6gQMNNOQqa0F5a5WzoVKYU2jPqP4knaJlUs7mfce
+         AnQ9XmVPSe6RxVBE/uoeAQkn4ZrVlHt464jTgWQUe4agnNagJ3y6v53opk/izF3ZsPi7
+         iLAWUBb/f6Ah9ND70CABR2oyuV91wUhGH/L+oOHviEkqzZGx+QkU/eWc24cGH8HY5Fxf
+         GQS35Be1YCYMKNldvQtYjWwRQrwUlBERbzouUo7a2eJyFKno3t5YW/RdDcxtYMo82JRG
+         bkNQ==
+X-Gm-Message-State: AO0yUKUkf7hotTZ9hE1Ir0n+O4fVdcE0vtfgHK+ycL3yJ/jETx/x7fr/
+	LQKWg2KugW5JRkHuFixyRzk=
+X-Google-Smtp-Source: AK7set979+teWvE1FEu6RfhEUebp9t15CkaDEwF0V5DUouuImINlNm7Z+d+ZXPcWXwFfFUIbSmJjBw==
+X-Received: by 2002:a17:902:e74d:b0:19a:a520:b1fc with SMTP id p13-20020a170902e74d00b0019aa520b1fcmr2087123plf.14.1678456882061;
+        Fri, 10 Mar 2023 06:01:22 -0800 (PST)
+Received: from ubuntu ([117.245.164.94])
+        by smtp.gmail.com with ESMTPSA id km13-20020a17090327cd00b00194c2f78581sm47239plb.199.2023.03.10.06.01.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 10 Mar 2023 04:25:51 -0800 (PST)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Dan Carpenter <error27@gmail.com>
-Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
- Khadija Kamran <kamrankhadijadj@gmail.com>, Larry.Finger@lwfinger.net,
- phil@philpotter.co.uk, paskripkin@gmail.com, gregkh@linuxfoundation.org,
- outreachy@lists.linux.dev
-Subject: Re: [PATCH] Staging: r8188eu: Fixed block comment
-Date: Fri, 10 Mar 2023 13:25:50 +0100
-Message-ID: <3436236.som1txNFv6@suse>
-In-Reply-To: <bb4e7ac8-5ddf-46c7-8c5a-08839794c5d0@kili.mountain>
-References:
- <Y+8p7Hyaf4LhO/Sw@khadija-virtual-machine> <10238267.qUNvkh4Gvn@suse>
- <bb4e7ac8-5ddf-46c7-8c5a-08839794c5d0@kili.mountain>
+        Fri, 10 Mar 2023 06:01:21 -0800 (PST)
+Date: Fri, 10 Mar 2023 06:01:19 -0800
+From: Sumitra Sharma <sumitraartsy@gmail.com>
+To: abbotti@mev.co.uk, hsweeten@visionengravers.com,
+	outreachy@lists.linux.dev
+Cc: linux-kernel@vger.kernel.org
+Subject: [PATCH] comedi: drivers: ni_pcimio: Remove the code enclosed by #if
+ 0 and its #endif
+Message-ID: <20230310140119.GA12544@ubuntu>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="iso-8859-1"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-On venerd=EC 10 marzo 2023 13:09:54 CET Dan Carpenter wrote:
-> On Fri, Mar 10, 2023 at 12:52:55PM +0100, Fabio M. De Francesco wrote:
-> > On venerd=EC 17 febbraio 2023 08:17:00 CET Khadija Kamran wrote:
-> > > Fixed block comment by adding '*' in each line. The Check message was
-> > > shown by using checkpatch.pl script.
-> > >=20
-> > > Signed-off-by: Khadija Kamran <kamrankhadijadj@gmail.com>
-> > > ---
-> > >=20
-> > >  drivers/staging/r8188eu/core/rtw_br_ext.c | 19 ++++++++++---------
-> > >  1 file changed, 10 insertions(+), 9 deletions(-)
-> >=20
-> > Hi Khadija,
-> >=20
-> > As Greg said this driver is not here any longer. This makes me think th=
-at
-> > you
-> > forgot at least two things...
-> >=20
-> > 1) Please pull and rebase the staging tree every day while working on
-> > patches
-> > during this period of the Outreachy project. If you had done so, you wo=
-uld
-> > have noticed that your patch cannot any more be applied.
->=20
-> This patch was sent long before the driver was deleted...  The patch was
-> fine and would have been applied if the driver hadn't been removed.
->=20
-> regards,
-> dan carpenter
+Reported by checkpatch.pl:
 
-I'm sorry I did not look at the day of the submission.
-I took for granted that this patch had been sent after the contribution per=
-iod=20
-start date, March 6th 2023.
+WARNING: Consider removing the code enclosd by this #if 0 and its #endif
+at line 482, 501, 570.
 
-Thanks Dan for making me notice this mistake.
+Signed-off-by: Sumitra Sharma <sumitraartsy@gmail.com>
+---
+ drivers/comedi/drivers/ni_pcimio.c | 48 ------------------------------
+ 1 file changed, 48 deletions(-)
 
-Regards,
-
-=46abio
-
-
+diff --git a/drivers/comedi/drivers/ni_pcimio.c b/drivers/comedi/drivers/ni_pcimio.c
+index 0b055321023d..1603095f2ed9 100644
+--- a/drivers/comedi/drivers/ni_pcimio.c
++++ b/drivers/comedi/drivers/ni_pcimio.c
+@@ -479,43 +479,6 @@ static const struct ni_board_struct ni_boards[] = {
+ 		.ao_speed	= 250,
+ 		.caldac		= { ad8804, ad8804 },
+ 	},
+-#if 0
+-	/* The 6115 boards probably need their own driver */
+-	[BOARD_PCI6115] = {	/* .device_id = 0x2ed0, */
+-		.name		= "pci-6115",
+-		.n_adchan	= 4,
+-		.ai_maxdata	= 0x0fff,
+-		.ai_fifo_depth	= 8192,
+-		.gainlkup	= ai_gain_611x,
+-		.ai_speed	= 100,
+-		.n_aochan	= 2,
+-		.ao_maxdata	= 0xffff,
+-		.ao_671x	= 1,
+-		.ao_fifo_depth	= 2048,
+-		.ao_speed	= 250,
+-		.reg_611x	= 1,
+-		/* XXX */
+-		.caldac		= { ad8804_debug, ad8804_debug, ad8804_debug },
+-	},
+-#endif
+-#if 0
+-	[BOARD_PXI6115] = {	/* .device_id = ????, */
+-		.name		= "pxi-6115",
+-		.n_adchan	= 4,
+-		.ai_maxdata	= 0x0fff,
+-		.ai_fifo_depth	= 8192,
+-		.gainlkup	= ai_gain_611x,
+-		.ai_speed	= 100,
+-		.n_aochan	= 2,
+-		.ao_maxdata	= 0xffff,
+-		.ao_671x	= 1,
+-		.ao_fifo_depth	= 2048,
+-		.ao_speed	= 250,
+-		.reg_611x	= 1,
+-		/* XXX */
+-		.caldac		= { ad8804_debug, ad8804_debug, ad8804_debug },
+-	},
+-#endif
+ 	[BOARD_PCI6711] = {
+ 		.name = "pci-6711",
+ 		.n_aochan	= 4,
+@@ -567,17 +530,6 @@ static const struct ni_board_struct ni_boards[] = {
+ 		.reg_type	= ni_reg_6711,
+ 		.caldac		= { ad8804_debug },
+ 	},
+-#if 0
+-	[BOARD_PXI6731] = {	/* .device_id = ????, */
+-		.name		= "pxi-6731",
+-		.n_aochan	= 4,
+-		.ao_maxdata	= 0xffff,
+-		.ao_fifo_depth	= 8192,
+-		.ao_range_table	= &range_bipolar10,
+-		.reg_type	= ni_reg_6711,
+-		.caldac		= { ad8804_debug },
+-	},
+-#endif
+ 	[BOARD_PCI6733] = {
+ 		.name		= "pci-6733",
+ 		.n_aochan	= 8,
+-- 
+2.25.1
 
