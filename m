@@ -1,114 +1,105 @@
-Received: from mail-pg1-f177.google.com (mail-pg1-f177.google.com [209.85.215.177])
+Received: from mail-wm1-f54.google.com (mail-wm1-f54.google.com [209.85.128.54])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4C10323AF
-	for <outreachy@lists.linux.dev>; Fri, 10 Mar 2023 09:34:29 +0000 (UTC)
-Received: by mail-pg1-f177.google.com with SMTP id q189so2686516pga.9
-        for <outreachy@lists.linux.dev>; Fri, 10 Mar 2023 01:34:29 -0800 (PST)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B29372F49;
+	Fri, 10 Mar 2023 11:52:59 +0000 (UTC)
+Received: by mail-wm1-f54.google.com with SMTP id r19-20020a05600c459300b003eb3e2a5e7bso3265253wmo.0;
+        Fri, 10 Mar 2023 03:52:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678440868;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=o6MKmEwg8mhj9rBs2GOB7qCv1XlrGpEj8TbytyS2hYU=;
-        b=It3ANbZ8opXN5gxHdDjlezUugPZ4fJ7mjQEOGFPyL4s478QokRmo+CMgqPYTrAP5Zf
-         fuW+0OIpXvjtIJd4YTNNK+YP2s7uY/DTMhWXG/hpHebmyoLUjMQngKxW/wwh38RC4ZZy
-         6ZKeTnPko1pFYGraO31R4mOG4xUH/FMt808epEFGdYaFTq/JX7jN6DAdWcSOzWs6XBfQ
-         TcwexxQoRw6mywhA8JDRStO80OKEsTdH8T4heC/FHQPEEduoSQwztPF3gmZpL+80BUtU
-         IsfmoMujQ8piLVpRiLljgHj0duoE7xFrKo5abZokAtFOI1Wy3DRH+mU23o8059ygzgE1
-         tYuw==
+        d=gmail.com; s=20210112; t=1678449177;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=vnnitKm8ItU8z8UrLfELFTzSkVG2XnAG/fMiiC7+9Kw=;
+        b=Wz0mqDYqd17E6Wn7L3/29NOx03d1Pqhz9S3gEmC6srrIH0w/inGiKDVH3OW99iGsp1
+         idNHqx0KLHxiXvRmEHMzkKoqLslBjgBc10bciShO7DJkyKrlPGB2Q9Gh5bX+vGXWPRCi
+         aW8Ol13JUNUlH26E+f7SobZSoMAFRunTcTLBwucLlY7NJXC4+qDa0k3k/e/eUdiNA3mN
+         twyMAjC2MZCdO2GX173ex6jxe6/RmfdOCDL/oNlOWScn2AGbL0m2/Ex8hbDs+UrHyVXe
+         955auGgApdlM29wm439j7ukwW5qlz6PqnPxvtj2IuRPoGy5lDpK5gSVGN74xdVv2odCK
+         XUzw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678440868;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=o6MKmEwg8mhj9rBs2GOB7qCv1XlrGpEj8TbytyS2hYU=;
-        b=2bGvkcjxP+IwfiW31Cb59zPfC1vj0Fcsd2LCS4wAWhjTIsETgjuNc0jUzdDp8OpCti
-         ie6x+llIe89fxi4Q8uphw9/ov9IVZcQEit4ziSXiedlAibiL8FR/EEVWBtrFaB1uCasO
-         QqDeX3v1672Z/rxN+XV0N/nw83bzxNqAYcT/q9cfG1OlBDJ/5+zfeeFjeIc00L9oQd4M
-         lWphlC9957Smf9DVs3s8+6HLF+wgaWTiY7aiCS3TCvLls6jJBegLzVrBoHZoNBf6CuVA
-         +uhiUOcaFw3xRbZ6NX89FNgRQmL0AUNnGWLeq6vRHgwBrmlfFkKK5IQfuEyiGMcUkN/J
-         j6yg==
-X-Gm-Message-State: AO0yUKUxxtz5tFB0N7g151+abNcreHlD6LeOEZydmQZ1H3I9O4B9h/wU
-	fxJZ+CgEjgdRGBfMFBexsJJRwGuq+I95e3NK0B4=
-X-Google-Smtp-Source: AK7set+0jG5XRSiT+2rsZzZ/4yXRgpec8OB2Ap5ooaYxBd7T4QV9RAzIfpzZmeWwIdpM6+SmvtWWuA==
-X-Received: by 2002:a62:1e05:0:b0:5a0:c4b6:edd6 with SMTP id e5-20020a621e05000000b005a0c4b6edd6mr21282911pfe.0.1678440868597;
-        Fri, 10 Mar 2023 01:34:28 -0800 (PST)
-Received: from CloudiRingWorld ([122.231.69.163])
-        by smtp.gmail.com with ESMTPSA id e18-20020a62aa12000000b005809d382016sm985146pff.74.2023.03.10.01.34.27
+        d=1e100.net; s=20210112; t=1678449177;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=vnnitKm8ItU8z8UrLfELFTzSkVG2XnAG/fMiiC7+9Kw=;
+        b=myEdHU2Gr4KGJq5ifccYLX2NMKQA7bHYqlCaHNb8eik5FOCce/1mMDX1VYolIUw9y2
+         nf/NZcmnu/J1I09axLhlOpFxSPz0KrB+P/oKepJSh6uR8eQKlvBHonUdvxTTlW9q0dIj
+         vsB/QpUHSdwStq0pbeZc/gw0Pnxa4cctsBunr0R3JUdKXxQ+HEAUzwy6s4bunEg0MEOU
+         7PoFktGXTRi+ijJuYeuXJ6p34zL0ptRyzSwZavMapAmIiRLHa6r0Trmu7lklioi8afkM
+         xHRkP6zHDYLFTG4pPZfRkV0ebLCOW9CyXlPA12H1pxbJIz1QPHfwS0EksiHze0EyuKM5
+         mZmQ==
+X-Gm-Message-State: AO0yUKX9N3FEjDakd1YM8wH7X90vc8TgvPa6u4HH6Z2FujX+gd47i+kx
+	Hug+HwaZmuvxJkOnbCZjtJGo7NJotjp7MA==
+X-Google-Smtp-Source: AK7set8E+XSGSa2CFpzjmVNdJGqPvK4JPcy5i1Xt68mjbNUB8UxMiBGww5GdmStnIKmwkCL2gZQ7KA==
+X-Received: by 2002:a05:600c:5104:b0:3ea:dbdd:66df with SMTP id o4-20020a05600c510400b003eadbdd66dfmr2458024wms.2.1678449177369;
+        Fri, 10 Mar 2023 03:52:57 -0800 (PST)
+Received: from suse.localnet (host-95-235-93-126.retail.telecomitalia.it. [95.235.93.126])
+        by smtp.gmail.com with ESMTPSA id r26-20020a05600c2f1a00b003e11f280b8bsm2801519wmn.44.2023.03.10.03.52.56
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 10 Mar 2023 01:34:28 -0800 (PST)
-Date: Fri, 10 Mar 2023 17:34:25 +0800
-From: Kloudifold <cloudifold.3125@gmail.com>
-To: ira.weiny@intel.com, alison.schofield@intel.com,
-	fmdefrancesco@gmail.com
-Cc: outreachy@lists.linux.dev
-Subject: Re: [KERNEL NEWBIES ACCESS] Kloudifold
-Message-ID: <ZArujKESoFGmTRnL@CloudiRingWorld>
+        Fri, 10 Mar 2023 03:52:56 -0800 (PST)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+ Khadija Kamran <kamrankhadijadj@gmail.com>
+Cc: Larry.Finger@lwfinger.net, phil@philpotter.co.uk, paskripkin@gmail.com,
+ gregkh@linuxfoundation.org, outreachy@lists.linux.dev
+Subject: Re: [PATCH] Staging: r8188eu: Fixed block comment
+Date: Fri, 10 Mar 2023 12:52:55 +0100
+Message-ID: <10238267.qUNvkh4Gvn@suse>
+In-Reply-To: <Y+8p7Hyaf4LhO/Sw@khadija-virtual-machine>
+References: <Y+8p7Hyaf4LhO/Sw@khadija-virtual-machine>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="iso-8859-1"
 
-My distro is Arch Linux.
-Install manually is not complicated, and it can be easily automated.
-I just followed the archwiki: https://wiki.archlinux.org/title/Kernel/Traditional_compilation
+On venerd=EC 17 febbraio 2023 08:17:00 CET Khadija Kamran wrote:
+> Fixed block comment by adding '*' in each line. The Check message was
+> shown by using checkpatch.pl script.
+>=20
+> Signed-off-by: Khadija Kamran <kamrankhadijadj@gmail.com>
+> ---
+>  drivers/staging/r8188eu/core/rtw_br_ext.c | 19 ++++++++++---------
+>  1 file changed, 10 insertions(+), 9 deletions(-)
+>=20
 
-Thank you for your advice about the "dracut" package.
-I used "mkinitcpio" to generate initramfs.
+Hi Khadija,
 
-On Thu, 9 Mar 2023 at 09:39, Fabio M. De Francesco <fmdefrancesco@gmail.com> wrote:
->
->
-> I'm not sure if the solution to your problem is to install everything
-> manually. I have no problems getting `make modules_install install` to work
-> properly and find GRUB2 because openSUSE provides the "dracut" package for the
-> sysadmins/developers to automate the above.
->
-> It's perfectly fine to teach how to install manually, even if just for people
-> to learn what one needs to boot a custom kernel. But kernel developers don't
-> have time to manually do routine tasks that can be easily automated.
->
-> I use to compile and install the kernel image, the modules, init, System.map,
-> config, and grub.conf at least two or three times a day and often more times
-> (you'll understand when you find yourself doing a bisect with git-bisect and
-> maybe you have to compile and install a dozen times in a row in one day).
->
-> In my opinion you need to make sure you understand and explain how to install
-> "dracut" if your distro provides it. Otherwise, search and read the
-> documentation of your distribution and try to figure out how to make the `make
-> modules_install install` command to work properly in your system...
->
-> suse:~ # zypper info dracut
-> Loading repository data...
-> Reading installed packages...
->
-> Information for package dracut:
-> -------------------------------
-> Repository     : Main Repository (OSS)
-> Name           : dracut
-> Version        : 059+suse.366.gf45bc67a-1.1
-> Arch           : x86_64
-> Vendor         : openSUSE
-> Installed Size : 1.9 MiB
-> Installed      : Yes (automatically)
-> Status         : up-to-date
-> Source package : dracut-059+suse.366.gf45bc67a-1.1.src
-> Upstream URL   : https://github.com/dracutdevs/dracut/wiki
-> Summary        : Event driven initramfs infrastructure
-> Description    :
->     Dracut contains tools to create a bootable initramfs for Linux kernels >=
-> 2.6.
->     Dracut contains various modules which are driven by the event-based udev
->     and systemd. Having root on MD, DM, LVM2, LUKS is supported as well as
->     NFS, iSCSI, NBD, FCoE.
->
-> [...]
->
-> Thanks,
->
-> Fabio
->
->
+As Greg said this driver is not here any longer. This makes me think that y=
+ou=20
+forgot at least two things...
+
+1) Please pull and rebase the staging tree every day while working on patch=
+es=20
+during this period of the Outreachy project. If you had done so, you would=
+=20
+have noticed that your patch cannot any more be applied.
+
+2) I saw this patch by pure luck because you forgot to Cc the Outreachy lis=
+t.=20
+Therefore, please don't ever forget to Cc that list. Most mentors don't=20
+subscribe the linux-staging list.
+
+Thanks,
+
+=46abio
+
+P.S.: Please use an imperative tone, both in the subject and in the commit=
+=20
+message. For example this patch could have been written the following way:
+
+staging: axis-fifo: Add "*" to multi-line comment
+
+Add asterisks to each line of a multi-line comment to conform to the Linux=
+=20
+development guidelines. Warning reported by checkpatch.pl.
+
+Signed-off-by: [...]
+
+
+
+
