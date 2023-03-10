@@ -1,131 +1,85 @@
-Received: from msg-1.mailo.com (msg-1.mailo.com [213.182.54.11])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-wr1-f42.google.com (mail-wr1-f42.google.com [209.85.221.42])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 844A1882C
-	for <outreachy@lists.linux.dev>; Fri, 10 Mar 2023 15:49:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
-	t=1678463347; bh=KUWMx4xTtQ2NV8s0yXAq68XeDXgRcHLK7NX2DqJUdEw=;
-	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
-	 MIME-Version:Content-Type:In-Reply-To;
-	b=OmKncEQIA2d37NsPi0ZIa+hBXeLWs0A8pCUHXbl0tt8v8ShLcWcwvscxA6Xfyfs7S
-	 jGExYDndlwAKTX1vdlGnMKb6Dhpcgk9APzuCW2v6dS/1Y4kftuLxm+fqGDEKTsN5Rd
-	 7LsQJRC8DEYlG4nz+m377h8vUMptM0H+F4BJEYOk=
-Received: by b221-1.in.mailobj.net [192.168.90.21] with ESMTP
-	via ip-20.mailobj.net [213.182.54.20]
-	Fri, 10 Mar 2023 16:49:07 +0100 (CET)
-X-EA-Auth: P1Jwh5XT4/s4Cxxa0/bBk9Cr0nuDmUWCczMFH0RTWzzfcXux+9EDP4p9sHlC7NDe8Wocegms03J6L9ZBxBYkzN94YT9fPEi1
-Date: Fri, 10 Mar 2023 21:19:00 +0530
-From: Deepak R Varma <drv@mailo.com>
-To: Sumitra Sharma <sumitraartsy@gmail.com>
-Cc: abbotti@mev.co.uk, hsweeten@visionengravers.com,
-	outreachy@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] comedi: drivers: ni_pcimio: Remove the code enclosed by
- #if 0 and its #endif
-Message-ID: <ZAtRbDYxNbFxQdI9@ubun2204.myguest.virtualbox.org>
-References: <20230310140119.GA12544@ubuntu>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 42EB2882C;
+	Fri, 10 Mar 2023 15:51:37 +0000 (UTC)
+Received: by mail-wr1-f42.google.com with SMTP id bx12so5452751wrb.11;
+        Fri, 10 Mar 2023 07:51:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1678463495;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=7rAHD7fKN+d5LXJmYh701SPQypdto2hSUjcoVGtRUMU=;
+        b=cYjWkG0i0JfbUWP2Y+8Ik/AMlSn1huUyNXYTvDdE6RHDKFhVt2nokYIRF0DWg4dLF/
+         9R0+rGx7j0+MavmlFqN6xyYU+e+9B+KBLBQefEMLgrpo393qK+XoMmBhipvHVfaXaR9G
+         u6VmWiqKMHxd67/ALrTg3GwhF8m8BI1hEU11L7YDtWCO2c+TQECZrH6TPg5FG7Mue8Yl
+         bg4cpxSAbUnTkRMYHZtPwoGfQeOgKsFx2YArU8B1yW4VHbuafP6jUc2qZH4+SCIO5deR
+         hcwtgHYNCKewkThTCjYS88drnP/JOSrqX+/AKm5ML6Z6aiyGT6RdO8oxgkzefYE2179v
+         m5Yw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678463495;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=7rAHD7fKN+d5LXJmYh701SPQypdto2hSUjcoVGtRUMU=;
+        b=o9AWi/HywiAXrnraeQYBC3UqTIor0di1QCkNBtrBd/oR4RTzHW/zPuHOFl0pp0Qa9l
+         dA1XTT58iOcNbOEWOH52UOqsFp49p6jmEEQk0HfSMM1nUj2Kc4hLzcNEeHgLnJ6yU0d0
+         idOGsD7/EArgNHg2pQnmWpyqCvOEDRa0GvbxhOMzvs9dJ2CKgOgLVedH79UWPyaTNOla
+         rjt6KkxDDu1HLkrF7XLNlemPceTN8roLfjSdlpiFLV8ttarN6gs/jIISNl5ZcY+Zb0e1
+         uG7aJS6hj31ukdoIAeqGnTXgc8bk2rDmnzJesbMFmnuer7wtwtpsNA8exTxZ9m/4LJy0
+         +sAA==
+X-Gm-Message-State: AO0yUKVstWxjV6WGNuciCfP9kcjd/CQk7nbB1iSbJl4fwCSB/icGu6O9
+	emQ6VsimC2Mv3oUpAH1ZKuXIj5PpupO3N1Zj
+X-Google-Smtp-Source: AK7set+d7Q+0h2RUYMfZYXj6ucr0U0beV4MqE4yhacgerLbbG6Q064+eN+N6+rJ+eBQA10OxLrmbjA==
+X-Received: by 2002:adf:cc8f:0:b0:2c9:23c4:8f93 with SMTP id p15-20020adfcc8f000000b002c923c48f93mr16353992wrj.57.1678463495023;
+        Fri, 10 Mar 2023 07:51:35 -0800 (PST)
+Received: from alaa-emad.. ([41.42.191.171])
+        by smtp.gmail.com with ESMTPSA id t8-20020a05600001c800b002c7e1a39adcsm140139wrx.23.2023.03.10.07.51.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 10 Mar 2023 07:51:34 -0800 (PST)
+From: Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>
+To: outreachy@lists.linux.dev
+Cc: vireshk@kernel.org,
+	johan@kernel.org,
+	elder@kernel.org,
+	gregkh@linuxfoundation.org,
+	greybus-dev@lists.linaro.org,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	eng.mennamahmoud.mm@gmail.com
+Subject: [PATCH 1/2] staging: greybus: Fix Alignment with parenthesis
+Date: Fri, 10 Mar 2023 17:51:24 +0200
+Message-Id: <b6521b9a75a4088d621246b436c7ec5d35365690.1678462486.git.eng.mennamahmoud.mm@gmail.com>
+X-Mailer: git-send-email 2.34.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230310140119.GA12544@ubuntu>
+Content-Transfer-Encoding: 8bit
 
-On Fri, Mar 10, 2023 at 06:01:19AM -0800, Sumitra Sharma wrote:
-> Reported by checkpatch.pl:
-> 
-> WARNING: Consider removing the code enclosd by this #if 0 and its #endif
-> at line 482, 501, 570.
-> 
-> Signed-off-by: Sumitra Sharma <sumitraartsy@gmail.com>
-> ---
->  drivers/comedi/drivers/ni_pcimio.c | 48 ------------------------------
->  1 file changed, 48 deletions(-)
+Fix " CHECK: Alignment should match open parenthesis "
+Reported by checkpath
 
-Hi Sumitra,
-Nice first attempt. However, you should be working in the drivers/staging
-directory for now.
+Signed-off-by: Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>
+---
+ drivers/staging/greybus/fw-core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Also, specific to the following change, the device definitions may be useful to
-people who have those devices and can be added to the driver by simply removing
-the #if 0 condition. Hence, these commented blocks are likely retained due to
-same reason.
-
-Thank you,
-Deepak.
-
-> 
-> diff --git a/drivers/comedi/drivers/ni_pcimio.c b/drivers/comedi/drivers/ni_pcimio.c
-> index 0b055321023d..1603095f2ed9 100644
-> --- a/drivers/comedi/drivers/ni_pcimio.c
-> +++ b/drivers/comedi/drivers/ni_pcimio.c
-> @@ -479,43 +479,6 @@ static const struct ni_board_struct ni_boards[] = {
->  		.ao_speed	= 250,
->  		.caldac		= { ad8804, ad8804 },
->  	},
-> -#if 0
-> -	/* The 6115 boards probably need their own driver */
-> -	[BOARD_PCI6115] = {	/* .device_id = 0x2ed0, */
-> -		.name		= "pci-6115",
-> -		.n_adchan	= 4,
-> -		.ai_maxdata	= 0x0fff,
-> -		.ai_fifo_depth	= 8192,
-> -		.gainlkup	= ai_gain_611x,
-> -		.ai_speed	= 100,
-> -		.n_aochan	= 2,
-> -		.ao_maxdata	= 0xffff,
-> -		.ao_671x	= 1,
-> -		.ao_fifo_depth	= 2048,
-> -		.ao_speed	= 250,
-> -		.reg_611x	= 1,
-> -		/* XXX */
-> -		.caldac		= { ad8804_debug, ad8804_debug, ad8804_debug },
-> -	},
-> -#endif
-> -#if 0
-> -	[BOARD_PXI6115] = {	/* .device_id = ????, */
-> -		.name		= "pxi-6115",
-> -		.n_adchan	= 4,
-> -		.ai_maxdata	= 0x0fff,
-> -		.ai_fifo_depth	= 8192,
-> -		.gainlkup	= ai_gain_611x,
-> -		.ai_speed	= 100,
-> -		.n_aochan	= 2,
-> -		.ao_maxdata	= 0xffff,
-> -		.ao_671x	= 1,
-> -		.ao_fifo_depth	= 2048,
-> -		.ao_speed	= 250,
-> -		.reg_611x	= 1,
-> -		/* XXX */
-> -		.caldac		= { ad8804_debug, ad8804_debug, ad8804_debug },
-> -	},
-> -#endif
->  	[BOARD_PCI6711] = {
->  		.name = "pci-6711",
->  		.n_aochan	= 4,
-> @@ -567,17 +530,6 @@ static const struct ni_board_struct ni_boards[] = {
->  		.reg_type	= ni_reg_6711,
->  		.caldac		= { ad8804_debug },
->  	},
-> -#if 0
-> -	[BOARD_PXI6731] = {	/* .device_id = ????, */
-> -		.name		= "pxi-6731",
-> -		.n_aochan	= 4,
-> -		.ao_maxdata	= 0xffff,
-> -		.ao_fifo_depth	= 8192,
-> -		.ao_range_table	= &range_bipolar10,
-> -		.reg_type	= ni_reg_6711,
-> -		.caldac		= { ad8804_debug },
-> -	},
-> -#endif
->  	[BOARD_PCI6733] = {
->  		.name		= "pci-6733",
->  		.n_aochan	= 8,
-> -- 
-> 2.25.1
-> 
-> 
-
+diff --git a/drivers/staging/greybus/fw-core.c b/drivers/staging/greybus/fw-core.c
+index 57bebf24636b..f562cb12d5ad 100644
+--- a/drivers/staging/greybus/fw-core.c
++++ b/drivers/staging/greybus/fw-core.c
+@@ -89,7 +89,7 @@ static int gb_fw_core_probe(struct gb_bundle *bundle,
+ 			}
+ 
+ 			connection = gb_connection_create(bundle, cport_id,
+-						gb_fw_mgmt_request_handler);
++							  gb_fw_mgmt_request_handler);
+ 			if (IS_ERR(connection)) {
+ 				ret = PTR_ERR(connection);
+ 				dev_err(&bundle->dev,
+-- 
+2.34.1
 
