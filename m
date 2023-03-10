@@ -1,51 +1,48 @@
-Received: from mail-wr1-f46.google.com (mail-wr1-f46.google.com [209.85.221.46])
+Received: from mail-pg1-f177.google.com (mail-pg1-f177.google.com [209.85.215.177])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6CE6E7B;
-	Fri, 10 Mar 2023 04:07:52 +0000 (UTC)
-Received: by mail-wr1-f46.google.com with SMTP id l25so3859132wrb.3;
-        Thu, 09 Mar 2023 20:07:52 -0800 (PST)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4C10323AF
+	for <outreachy@lists.linux.dev>; Fri, 10 Mar 2023 09:34:29 +0000 (UTC)
+Received: by mail-pg1-f177.google.com with SMTP id q189so2686516pga.9
+        for <outreachy@lists.linux.dev>; Fri, 10 Mar 2023 01:34:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678421270;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=6qoxD73xYpg5xt33PC4c+C04eewyFCfIAb6qdXDdS5o=;
-        b=Z3PBhObeqzKlcIdwD0Ep7KeEkGc2w5v4bvt+AxKBWb/ApLgQ7AphG1LukcJFaRAzJN
-         arjynRyxq/97KDktL4N8jfbw948/eLx3pL0nNqQsOAkJMdRpcGjfaioX/NsyGbMEy7yg
-         n7Cy77P/oJNgCAKchioq4ve1aczTOjhy4mUe27lAxrMyKMfgN04hon/hFNhTl8gj7PjX
-         oh1YqqkbdMmsL20f9Q5GvbT8lPv1+PxEITBeXkw+P07vUxe6Bklcso4RhXO5tN38Xs9P
-         lhB4UEC/286MyOffv7rjCUvE96BBL6EnFoO+v3Phnynu+iZs68nmU7rUai51pf6JB1XZ
-         1vzA==
+        d=gmail.com; s=20210112; t=1678440868;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=o6MKmEwg8mhj9rBs2GOB7qCv1XlrGpEj8TbytyS2hYU=;
+        b=It3ANbZ8opXN5gxHdDjlezUugPZ4fJ7mjQEOGFPyL4s478QokRmo+CMgqPYTrAP5Zf
+         fuW+0OIpXvjtIJd4YTNNK+YP2s7uY/DTMhWXG/hpHebmyoLUjMQngKxW/wwh38RC4ZZy
+         6ZKeTnPko1pFYGraO31R4mOG4xUH/FMt808epEFGdYaFTq/JX7jN6DAdWcSOzWs6XBfQ
+         TcwexxQoRw6mywhA8JDRStO80OKEsTdH8T4heC/FHQPEEduoSQwztPF3gmZpL+80BUtU
+         IsfmoMujQ8piLVpRiLljgHj0duoE7xFrKo5abZokAtFOI1Wy3DRH+mU23o8059ygzgE1
+         tYuw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678421270;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=6qoxD73xYpg5xt33PC4c+C04eewyFCfIAb6qdXDdS5o=;
-        b=e5xp+Xs2Q6taUZCmW3oTRSHxXxPuue+QfRJVfbXiPVu4OUkTkHw3ESkc7+gEVhYU3s
-         VaNrdXSv7q3/owUDp/KVHOcJd4m9pam2381bnuWQKff+2+qCHzT1dvXgRVMQ7nlf+6DE
-         pQ0L+Zg2CapzgfPeQuBCQ7b2jlQywHB/rDIA2zbxkz2FagCpBPVWdeRN8PbRLp8+6f4B
-         8Xbu8mvBVPM4zk1cJK4cb22zZLl2bqn2F2k19OMiSt7OGpApc1BB0iEJxHFt4q2h+wE7
-         fnOMry8Qd6y54FiAUnmFG+6SbCAgHTZYirqmMAN9pmJ4RMS/FnjtZoDfpVOnaQxp9Upm
-         32/g==
-X-Gm-Message-State: AO0yUKUXVWvZrZfgiuB2WsLn+O2AdsL61bsnpfG08Qtj1B6p+GpxlBdI
-	bfaLNOeM+J7/oU+ivlLDSCBsQGXqT38=
-X-Google-Smtp-Source: AK7set9Cj4berzzp6cYQ3zlYMopGLoPWkkWQrMKdtIA2bykvF59yHvX5EmIDBVqCS3VS6+i2s2o2hA==
-X-Received: by 2002:a05:6000:1043:b0:2bf:d937:3589 with SMTP id c3-20020a056000104300b002bfd9373589mr781767wrx.14.1678421270408;
-        Thu, 09 Mar 2023 20:07:50 -0800 (PST)
-Received: from localhost ([102.36.222.112])
-        by smtp.gmail.com with ESMTPSA id q14-20020adff94e000000b002c559626a50sm955261wrr.13.2023.03.09.20.07.49
+        d=1e100.net; s=20210112; t=1678440868;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=o6MKmEwg8mhj9rBs2GOB7qCv1XlrGpEj8TbytyS2hYU=;
+        b=2bGvkcjxP+IwfiW31Cb59zPfC1vj0Fcsd2LCS4wAWhjTIsETgjuNc0jUzdDp8OpCti
+         ie6x+llIe89fxi4Q8uphw9/ov9IVZcQEit4ziSXiedlAibiL8FR/EEVWBtrFaB1uCasO
+         QqDeX3v1672Z/rxN+XV0N/nw83bzxNqAYcT/q9cfG1OlBDJ/5+zfeeFjeIc00L9oQd4M
+         lWphlC9957Smf9DVs3s8+6HLF+wgaWTiY7aiCS3TCvLls6jJBegLzVrBoHZoNBf6CuVA
+         +uhiUOcaFw3xRbZ6NX89FNgRQmL0AUNnGWLeq6vRHgwBrmlfFkKK5IQfuEyiGMcUkN/J
+         j6yg==
+X-Gm-Message-State: AO0yUKUxxtz5tFB0N7g151+abNcreHlD6LeOEZydmQZ1H3I9O4B9h/wU
+	fxJZ+CgEjgdRGBfMFBexsJJRwGuq+I95e3NK0B4=
+X-Google-Smtp-Source: AK7set+0jG5XRSiT+2rsZzZ/4yXRgpec8OB2Ap5ooaYxBd7T4QV9RAzIfpzZmeWwIdpM6+SmvtWWuA==
+X-Received: by 2002:a62:1e05:0:b0:5a0:c4b6:edd6 with SMTP id e5-20020a621e05000000b005a0c4b6edd6mr21282911pfe.0.1678440868597;
+        Fri, 10 Mar 2023 01:34:28 -0800 (PST)
+Received: from CloudiRingWorld ([122.231.69.163])
+        by smtp.gmail.com with ESMTPSA id e18-20020a62aa12000000b005809d382016sm985146pff.74.2023.03.10.01.34.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 09 Mar 2023 20:07:49 -0800 (PST)
-Date: Fri, 10 Mar 2023 07:07:45 +0300
-From: Dan Carpenter <error27@gmail.com>
-To: Kloudifold <cloudifold.3125@gmail.com>
-Cc: gregkh@linuxfoundation.org, outreachy@lists.linux.dev,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] staging: fbtft: fixes alignment should match open
- parenthesis
-Message-ID: <e9022276-9dbc-497b-8803-7ec7bf87414f@kili.mountain>
-References: <ZAqrkWn22Q1eXjCL@CloudiRingWorld>
+        Fri, 10 Mar 2023 01:34:28 -0800 (PST)
+Date: Fri, 10 Mar 2023 17:34:25 +0800
+From: Kloudifold <cloudifold.3125@gmail.com>
+To: ira.weiny@intel.com, alison.schofield@intel.com,
+	fmdefrancesco@gmail.com
+Cc: outreachy@lists.linux.dev
+Subject: Re: [KERNEL NEWBIES ACCESS] Kloudifold
+Message-ID: <ZArujKESoFGmTRnL@CloudiRingWorld>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -54,34 +51,64 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ZAqrkWn22Q1eXjCL@CloudiRingWorld>
 
-On Fri, Mar 10, 2023 at 12:01:21PM +0800, Kloudifold wrote:
-> This patch fixes the checks reported by checkpatch.pl
-> for alignment should match open parenthesis
-> 
-> Signed-off-by: Kloudifold <cloudifold.3125@gmail.com>
-> ---
->  drivers/staging/fbtft/fb_tinylcd.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/fbtft/fb_tinylcd.c b/drivers/staging/fbtft/fb_tinylcd.c
-> index 9469248f2..7d4741c47 100644
-> --- a/drivers/staging/fbtft/fb_tinylcd.c
-> +++ b/drivers/staging/fbtft/fb_tinylcd.c
-> @@ -37,8 +37,8 @@ static int init_display(struct fbtft_par *par)
->  	write_reg(par, 0xB3, 0x00);
->  	write_reg(par, 0xE5, 0x00);
->  	write_reg(par, 0xF0, 0x36, 0xA5, 0x53);
-> -	write_reg(par, 0xE0, 0x00, 0x35, 0x33, 0x00, 0x00, 0x00,
-> -		       0x00, 0x35, 0x33, 0x00, 0x00, 0x00);
-> +	write_reg(par, 0xE0, 0x00, 0x35, 0x33, 0x00, 0x00,
-> +		  0x00, 0x00, 0x35, 0x33, 0x00, 0x00, 0x00);
->  	write_reg(par, MIPI_DCS_SET_PIXEL_FORMAT, 0x55);
+My distro is Arch Linux.
+Install manually is not complicated, and it can be easily automated.
+I just followed the archwiki: https://wiki.archlinux.org/title/Kernel/Traditional_compilation
 
-The original was obviously deliberate.  Just leave it as-is.  Checkpatch
-is not the king of the world.
+Thank you for your advice about the "dracut" package.
+I used "mkinitcpio" to generate initramfs.
 
-regards,
-dan carpenter
-
+On Thu, 9 Mar 2023 at 09:39, Fabio M. De Francesco <fmdefrancesco@gmail.com> wrote:
+>
+>
+> I'm not sure if the solution to your problem is to install everything
+> manually. I have no problems getting `make modules_install install` to work
+> properly and find GRUB2 because openSUSE provides the "dracut" package for the
+> sysadmins/developers to automate the above.
+>
+> It's perfectly fine to teach how to install manually, even if just for people
+> to learn what one needs to boot a custom kernel. But kernel developers don't
+> have time to manually do routine tasks that can be easily automated.
+>
+> I use to compile and install the kernel image, the modules, init, System.map,
+> config, and grub.conf at least two or three times a day and often more times
+> (you'll understand when you find yourself doing a bisect with git-bisect and
+> maybe you have to compile and install a dozen times in a row in one day).
+>
+> In my opinion you need to make sure you understand and explain how to install
+> "dracut" if your distro provides it. Otherwise, search and read the
+> documentation of your distribution and try to figure out how to make the `make
+> modules_install install` command to work properly in your system...
+>
+> suse:~ # zypper info dracut
+> Loading repository data...
+> Reading installed packages...
+>
+> Information for package dracut:
+> -------------------------------
+> Repository     : Main Repository (OSS)
+> Name           : dracut
+> Version        : 059+suse.366.gf45bc67a-1.1
+> Arch           : x86_64
+> Vendor         : openSUSE
+> Installed Size : 1.9 MiB
+> Installed      : Yes (automatically)
+> Status         : up-to-date
+> Source package : dracut-059+suse.366.gf45bc67a-1.1.src
+> Upstream URL   : https://github.com/dracutdevs/dracut/wiki
+> Summary        : Event driven initramfs infrastructure
+> Description    :
+>     Dracut contains tools to create a bootable initramfs for Linux kernels >=
+> 2.6.
+>     Dracut contains various modules which are driven by the event-based udev
+>     and systemd. Having root on MD, DM, LVM2, LUKS is supported as well as
+>     NFS, iSCSI, NBD, FCoE.
+>
+> [...]
+>
+> Thanks,
+>
+> Fabio
+>
+>
