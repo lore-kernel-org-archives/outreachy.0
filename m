@@ -1,71 +1,100 @@
-Received: from mail-wr1-f52.google.com (mail-wr1-f52.google.com [209.85.221.52])
+Received: from mail-wm1-f47.google.com (mail-wm1-f47.google.com [209.85.128.47])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 831D77B;
-	Sat, 11 Mar 2023 12:39:34 +0000 (UTC)
-Received: by mail-wr1-f52.google.com with SMTP id j2so7395384wrh.9;
-        Sat, 11 Mar 2023 04:39:34 -0800 (PST)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BA1037B;
+	Sat, 11 Mar 2023 12:50:44 +0000 (UTC)
+Received: by mail-wm1-f47.google.com with SMTP id l7-20020a05600c4f0700b003e79fa98ce1so5098744wmq.2;
+        Sat, 11 Mar 2023 04:50:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678538373;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=X5ymF9kHOMLefiz12Rv98z0NE1tYU6jJ7RUypvP5at8=;
-        b=hzC9H8UxblqYsyDYYldUy71UHauWYeyuts9a8n4EThQhv5UC9NU8Qtz1oiLRy+sDRZ
-         4g0KEk59TObxpk+ZRf1jhAzazA/X7abc6oRFbwdrzGOGqsBNpJdutw8wk1KWe0hSV8DT
-         Em6unX0jZwpsjdmZ8dxCbxs6iP+jORwrXGGjD7UfJwO5mHcqYLTyda8Ti/lpntuXFKxj
-         j4iUNJD5B8pcE6li8tnjuoHBJ5SFaF1UK7GTVhNQiVqczODwq/lYP+PbdTjRzLoi1Dpb
-         W/4zNed8Z0io9MZXrtwgb3gk+3u3eGEw+Zgl43xamtofMx79BeqHxKQ2krIwalSLdrFN
-         74dg==
+        d=gmail.com; s=20210112; t=1678539043;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=F2VdX4B2dld6wqCG5ZYqlFsLHmtCsviZq3SzvbHDBPs=;
+        b=ZfYzmvLpq056KSe0wR6z4s3lzk4PhtaVkXSEToFZYVD2Yj760N7KNPhkJgqfv4m18L
+         Xu0lAVTfbJt35TthbdG6zWvBUT5p1F1EzO7WsYmS7TgHvZmtKjjKkHVT2dw4u45+92ej
+         Gm9RjAkkPRK6RtlDqgr/MOxUB+0lWAyWyRwS3yy7n+l5dpxSe2ODI3XF2q1PV4Agab26
+         UWcALghrZIYngj6OKxgNp7l4+fN0Dm0douW7eN//mOY6KOHwQPwH9l5dhKU9ndfsK/Ha
+         +5whzgXkAUaI49XXG+Xl1f4OwCZ2LQMylEkpDCM+VIHoF+ebqcsBvWV5dFqcGV0ttOZC
+         yi7g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678538373;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=X5ymF9kHOMLefiz12Rv98z0NE1tYU6jJ7RUypvP5at8=;
-        b=o/FQOkQfwxAPPgmLqC7E9xGy3+sVgdK+TTkUycFA06Ch3KW0d3CwLHzhOLgduCIZcV
-         4lP4N/zGg9TbbfMiB/owtciIMd5tHoEg5tA9/MSeJIHHq3CowCJgZq4GcEeg0ZXmWu01
-         fquT9/BeLKOkLlCgO4Yr4RLOTP/diFNVchEuqGH2ukZUvm+pEGlNz1LZyFlbOuhsVCHc
-         RcX5CZcKcd7HDuSe13elml4np/CTa8kWvGm2JMxRtGhWHhMCxYxKeNKZVkLPKn7zFx8D
-         BOY5t5HuRXVbsb8xWXYZcI7H2s4NtN2Ywy/I7NbJVKTnMsKJJ39E2Js8ON9TTJfhiEbO
-         DErg==
-X-Gm-Message-State: AO0yUKUu1NYY75e2USOn+zU5vlhpgeNYfqZiI2cyfymWvhWViw22xBLa
-	l7xHDcueDAHQazOE06UvFPHg0xoQA85GGpsi
-X-Google-Smtp-Source: AK7set95Bp+Ah6AoER0cNsasdr8Hl3ZBhIu0SL0nSrVtjCEuu7Dd8p4QxUaM3MdHn2HgezDdd9QawA==
-X-Received: by 2002:a5d:4a51:0:b0:2c7:778:5da6 with SMTP id v17-20020a5d4a51000000b002c707785da6mr18782112wrs.42.1678538372768;
-        Sat, 11 Mar 2023 04:39:32 -0800 (PST)
-Received: from localhost ([102.36.222.112])
-        by smtp.gmail.com with ESMTPSA id s6-20020a5d6a86000000b002c3f03d8851sm2448270wru.16.2023.03.11.04.39.30
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 11 Mar 2023 04:39:32 -0800 (PST)
-Date: Sat, 11 Mar 2023 15:39:28 +0300
-From: Dan Carpenter <error27@gmail.com>
-To: Sumitra Sharma <sumitraartsy@gmail.com>
-Cc: outreachy@lists.linux.dev, gregkh@linuxfoundation.org,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] Staging: pi433: Change bit_rate type from u16 to u32
-Message-ID: <b9d62635-b968-4dfd-aa10-e34e38a114a5@kili.mountain>
-References: <20230311122346.GA21752@ubuntu>
+        d=1e100.net; s=20210112; t=1678539043;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=F2VdX4B2dld6wqCG5ZYqlFsLHmtCsviZq3SzvbHDBPs=;
+        b=Q12SMVo7PwL6e5aB+3B1TxHj9aIvn5PQwfb7EK1N4pmJi99ZOnTWAE37lW1WaUkrPr
+         xiZ5u1SDf/ighSdECnltyIvajMtdCwRizz2FPAHs7rDtekryKBPl9ibu3zs0tOPgEWEG
+         EtHEpc8MvsjG4bi+bB8JhnXVhDVENaSH7UgjZ5iJJmE+agaJXADwS8pULqOMQh5mO5pV
+         FVB0FzcDsDHXgvNH8q0TyR1faNDwvmpNpcGFSnkrUV1WoUZRzlxE8Xe2TKlSY4eZdDXb
+         tir2yzsBa8GqD1F01XiFbG9fVMAENbV7aJphYf6qq5tAC61n1kN0B6qUZN7SDIrVLCLs
+         UfsA==
+X-Gm-Message-State: AO0yUKVCb+FoyfsI2m0O0Jz+1Inx7OPD7VV2BIXezy0H/yFzAooqOVC3
+	1Kgl3wpPKe/dbJ7Qy9rvwKpw7rwWCSNlnQ==
+X-Google-Smtp-Source: AK7set+DiHVrKM3fDR7GG4dpN6xZ67nadAC84Vqy3UVBeouj5FR1ozUtQTmdo+/DFkAKzt4C0RHmhQ==
+X-Received: by 2002:a05:600c:5009:b0:3eb:39c9:ecb0 with SMTP id n9-20020a05600c500900b003eb39c9ecb0mr5630622wmr.8.1678539042876;
+        Sat, 11 Mar 2023 04:50:42 -0800 (PST)
+Received: from [192.168.1.16] ([41.42.191.171])
+        by smtp.gmail.com with ESMTPSA id d21-20020a1c7315000000b003dc521f336esm2771887wmb.14.2023.03.11.04.50.41
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 11 Mar 2023 04:50:42 -0800 (PST)
+Message-ID: <7590a38f-4be2-b237-71db-6b5bc620d9de@gmail.com>
+Date: Sat, 11 Mar 2023 14:50:40 +0200
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230311122346.GA21752@ubuntu>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.7.1
+Subject: Re: [PATCH 2/2] staging: greybus: Fix Alignment with parenthesis
+Content-Language: en-US
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: outreachy@lists.linux.dev, vireshk@kernel.org, johan@kernel.org,
+ elder@kernel.org, gregkh@linuxfoundation.org, greybus-dev@lists.linaro.org,
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+References: <b6521b9a75a4088d621246b436c7ec5d35365690.1678462486.git.eng.mennamahmoud.mm@gmail.com>
+ <ccd27442c1ad9a33b0b7564176fa68f7b153fa20.1678462486.git.eng.mennamahmoud.mm@gmail.com>
+ <alpine.DEB.2.22.394.2303110956591.2802@hadrien>
+From: Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>
+In-Reply-To: <alpine.DEB.2.22.394.2303110956591.2802@hadrien>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 
-On Sat, Mar 11, 2023 at 04:23:46AM -0800, Sumitra Sharma wrote:
-> Change bit_rate type from u16 to u32 inside struct pi433_tx_cfg to
-> support bit rates up to 300kbps as per the spec.
-> 
-> Signed-off-by: Sumitra Sharma <sumitraartsy@gmail.com>
-> ---
 
-That's not right.  Read this for more information:
-
-https://lore.kernel.org/all/?q=pi433_tx_cfg%20bit_rate
-
-regards,
-dan carpenter
-
+On ١١‏/٣‏/٢٠٢٣ ١٠:٥٧, Julia Lawall wrote:
+>
+> On Fri, 10 Mar 2023, Menna Mahmoud wrote:
+>
+>> Fix " CHECK: Alignment should match open parenthesis "
+>> Reported by checkpath
+> The log message could be better, to explain what you have done and why.
+> The word "fix" doesn't express any of that, and should be avoided if
+> possible.
+>
+> julia
+got it, thank you
+>> Signed-off-by: Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>
+>> ---
+>>   drivers/staging/greybus/fw-core.c | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/staging/greybus/fw-core.c b/drivers/staging/greybus/fw-core.c
+>> index f562cb12d5ad..0fb15a60412f 100644
+>> --- a/drivers/staging/greybus/fw-core.c
+>> +++ b/drivers/staging/greybus/fw-core.c
+>> @@ -110,7 +110,7 @@ static int gb_fw_core_probe(struct gb_bundle *bundle,
+>>   			}
+>>
+>>   			connection = gb_connection_create(bundle, cport_id,
+>> -						gb_fw_download_request_handler);
+>> +							  gb_fw_download_request_handler);
+>>   			if (IS_ERR(connection)) {
+>>   				dev_err(&bundle->dev, "failed to create download connection (%ld)\n",
+>>   					PTR_ERR(connection));
+>> --
+>> 2.34.1
+>>
+>>
+>>
