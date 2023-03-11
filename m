@@ -1,51 +1,48 @@
-Received: from mail-wm1-f45.google.com (mail-wm1-f45.google.com [209.85.128.45])
+Received: from mail-pj1-f43.google.com (mail-pj1-f43.google.com [209.85.216.43])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7D3537B;
-	Sat, 11 Mar 2023 17:31:38 +0000 (UTC)
-Received: by mail-wm1-f45.google.com with SMTP id m25-20020a7bcb99000000b003e7842b75f2so5341918wmi.3;
-        Sat, 11 Mar 2023 09:31:38 -0800 (PST)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 128947B
+	for <outreachy@lists.linux.dev>; Sat, 11 Mar 2023 17:36:12 +0000 (UTC)
+Received: by mail-pj1-f43.google.com with SMTP id l1so8233817pjt.2
+        for <outreachy@lists.linux.dev>; Sat, 11 Mar 2023 09:36:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678555896;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=eZIJBRNDRL8HZvT697SFUbM2Eibrf8gkSu7pHfkfmkE=;
-        b=B7DKn1liTn6wJaaCvi/8wFSDUGKfv+hzlvsKEHKGodQa8NRAohVRRe0cWaafeqAjzv
-         xyUPMCBCpOKPdFndoKneWamVeY7UxTtHs4m4uKkzMagBf/NjzW0HpXf9TIBv95QAMRkM
-         d2hMRGo5Co0Pjv2rUll7h010nb0EyuUPxohM5G2sPxhrjaOdp07+aTNVE8CYqquLmU6f
-         jzthzbcPhhlWIycQ3/uKOG5C0Qlyzs4Ut/24+9vu2uDJDC7DBocfOsb5xcz9+1F834Ea
-         ghZ1Oae18NNTXLxJdHFzp7XgrphSbKuWT9TcgmxXxd+X67/po2TxjxfJhFejW90JAwaJ
-         v0Jw==
+        d=gmail.com; s=20210112; t=1678556172;
+        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=CVqMUKvRvTonrVjTdTmTHAQN1Hq9IhIt7e8TcVfN4Xg=;
+        b=qRcjiBpaIGLTjcL+G0JJzpZF6svxxbkDpU2jmxPgfr1mLyq115kATF4d7fJrSUVRYF
+         2ZWEKoFVPk+xbbf42MUmYHLsdWwH6dZAyQosUkI0+4rN6z8lpzQb+6Zvx8iF640e/qnX
+         HgO24PS1A+NFUlgDTo2ollrznaGn9cB+4Lq4dAa1k72ihYk8R2ejXDlNRZ955pZwT1hJ
+         2Xv9f6M65Twx8dKIl6T75H2yEBYLetwRxZP+s/TOI0jQt3PFUMmHISQLU5UTs6zkHsCv
+         Xw32/vx+P0BZ4py8tc0UCVKRfQnh3MCQ/L8oeefn7gOr5OFY2sQOG3pdJB6mC+NbNUv9
+         wI2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678555896;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=eZIJBRNDRL8HZvT697SFUbM2Eibrf8gkSu7pHfkfmkE=;
-        b=0UqA38/HvMGlYb2etEFYDSz6zPJvfCZpYZsi2keIFdLfaIDHaFcFqEvFztZAypxs4M
-         11KjzX2G8wOkDx0BkgXtM6SJwe4YFOVlJpWb+SJNZHJwbJ3u4FfWVfoyVJiFEbo+fRY7
-         W+yh+w++oaUzJfrFItJ0GsrWxYHsiftG/N02tg7Ku4kGx2+zxurz/2AH7VZOUCwRqYuL
-         V8CYBYzU71PaptAwSk+kmdAMszmjIKC151Htr6zaaIfuAtnzfPTURrZ7W32pGR4VFSZO
-         AQ2xXO1yq689OWDoQpHvId/C8Up4HeXF6f0ChMl6XbFICdJg2N+2JExu7Z93f6ZyEYcf
-         L5iQ==
-X-Gm-Message-State: AO0yUKXBamzYZ/0iV/XIhjLdSbYVTq7SAeD4/uVRqxFNji0vwbWrOE+z
-	r16MGTk8BwOW+SUzzGXtY/LVCwTxJaXdvt1H
-X-Google-Smtp-Source: AK7set8AEI4G00E78uxadPBqecqF59b6nejd6JlyaM6SA9R+1ru2UD7dyei97ETUVkpvdYKDarT3xg==
-X-Received: by 2002:a05:600c:538b:b0:3eb:2b88:5af2 with SMTP id hg11-20020a05600c538b00b003eb2b885af2mr6180515wmb.20.1678555896582;
-        Sat, 11 Mar 2023 09:31:36 -0800 (PST)
-Received: from khadija-virtual-machine ([39.41.45.115])
-        by smtp.gmail.com with ESMTPSA id 4-20020a05600c024400b003e91b9a92c9sm3386837wmj.24.2023.03.11.09.31.35
+        d=1e100.net; s=20210112; t=1678556172;
+        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=CVqMUKvRvTonrVjTdTmTHAQN1Hq9IhIt7e8TcVfN4Xg=;
+        b=ZxutR4vmHWfXM2TCvFjJHfmBp1e06tfxX31w4Rh7Y6GIfn43ejxcUl0BQnWYLNeu48
+         Z0MPB8n969jyjP059UI8NSkdnKOyDXgAgf17j1espffZ250oHIp39xke73FjUVSXCKFx
+         DuD4U8KNnUFTKDcshZniVZOguTaxQQQugBFsFDXY+HkFnz70x26cZc6u5GzBkVloDmYz
+         /WeWZplf9XZbhkU3PLu6YVIywU6oeUu4qDk9bka0kM0MbCk8YYRQ40VLzRAfLp2HZ6Hn
+         le/AHQ5qEY6IgxAkIT7JC/1DHPjBF02Xky1twrVq0btYV4QXLVWRdBa87N3e5OcYJaX4
+         PrnA==
+X-Gm-Message-State: AO0yUKWIXqDEKrL4LTLpqu89hOP4JAt7UsfNy7H9dS4PNSIbH5yLGM6V
+	bvLaa/0rzNulQoOgo0qLZB3PkvusQbll9g==
+X-Google-Smtp-Source: AK7set+kFZkO3sN9IQg5agl/sdeQcpt1BWLFryAhW8xhZbVPz7YHsXDKT3tdC0FEBF53/TdpIC/9bA==
+X-Received: by 2002:a17:902:bc49:b0:19c:ec6c:4b36 with SMTP id t9-20020a170902bc4900b0019cec6c4b36mr25645146plz.66.1678556172166;
+        Sat, 11 Mar 2023 09:36:12 -0800 (PST)
+Received: from ubuntu ([117.199.152.23])
+        by smtp.gmail.com with ESMTPSA id lb8-20020a170902fa4800b0019f3b3531b8sm27612plb.65.2023.03.11.09.36.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 11 Mar 2023 09:31:36 -0800 (PST)
-Date: Sat, 11 Mar 2023 22:31:33 +0500
-From: Khadija Kamran <kamrankhadijadj@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy@lists.linux.dev, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3] staging: axis-fifo: remove tabs to align arguments
-Message-ID: <ZAy69T5sYZiyL4TJ@khadija-virtual-machine>
-References: <ZAxsyX8n7G92nlJh@khadija-virtual-machine>
- <ZAxzfiOoW0SfW5qD@kroah.com>
+        Sat, 11 Mar 2023 09:36:11 -0800 (PST)
+Date: Sat, 11 Mar 2023 09:36:06 -0800
+From: Sumitra Sharma <sumitraartsy@gmail.com>
+To: error27@gmail.com
+Cc: outreachy@lists.linux.dev
+Subject: Re: [PATCH] Staging: qlge: Remove parenthesis around single condition
+Message-ID: <20230311173606.GF14247@ubuntu>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -54,72 +51,11 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ZAxzfiOoW0SfW5qD@kroah.com>
+In-Reply-To: <20838efc-e8ef-4696-9a27-958bc5aab19e@kili.mountain>
 
-On Sat, Mar 11, 2023 at 01:26:38PM +0100, Greg Kroah-Hartman wrote:
-> On Sat, Mar 11, 2023 at 04:58:01PM +0500, Khadija Kamran wrote:
-> > In file drivers/staging/axis-fifo/axis-fifo.c, in line 386 and 529, the
-> > last argument is indented as if it were an argument of the second
-> > argument. Remove tabs to align the arguments.
-> > 
-> > Signed-off-by: Khadija Kamran <kamrankhadijadj@gmail.com>
-> > ---
-> > Changes in v3:
-> >  - Do not align the line 530 since it is not part of the last argument.
-> > 
-> >  drivers/staging/axis-fifo/axis-fifo.c | 12 ++++++------
-> >  1 file changed, 6 insertions(+), 6 deletions(-)
-> > 
-> > diff --git a/drivers/staging/axis-fifo/axis-fifo.c b/drivers/staging/axis-fifo/axis-fifo.c
-> > index dfd2b357f484..b119cec25a60 100644
-> > --- a/drivers/staging/axis-fifo/axis-fifo.c
-> > +++ b/drivers/staging/axis-fifo/axis-fifo.c
-> > @@ -384,9 +384,9 @@ static ssize_t axis_fifo_read(struct file *f, char __user *buf,
-> >  		mutex_lock(&fifo->read_lock);
-> >  		ret = wait_event_interruptible_timeout(fifo->read_queue,
-> >  			ioread32(fifo->base_addr + XLLF_RDFO_OFFSET),
-> > -				 (read_timeout >= 0) ?
-> > -				  msecs_to_jiffies(read_timeout) :
-> > -				  MAX_SCHEDULE_TIMEOUT);
-> > +			(read_timeout >= 0) ?
-> > +			msecs_to_jiffies(read_timeout) :
-> > +			MAX_SCHEDULE_TIMEOUT);
-> 
-> People have been trying to "polish" this mess for a long time, and I
-> think it's better to step back and see what is really needed here.
-> 
-> There is a module parameter, read_timeout, that can only be set at
-> loading time.  As it can only be modified once, why are we doing an if
-> statement each and every time it is read from?
-> 
-> Instead, in the module probe function, how about doing something like:
-> 	if (read_timeout >= 0)
-> 		read_timeout = msecs_to_jiffies(read_timeout);
-> 	else
-> 		read_timeout = MAX_SCHEDULE_TIMEOUT;
->
+Since we do not have as such specific mentors and  rather this mailing list is our mentor and guide. I was thinking of updating/fixing this document under KERNEL NEWBIES ACCESS as the coding-style document is many a times referred in the firstpatch document.
 
+Regards,
 
-Hi Greg! 
-Thank you for the reply. Before sending the patch I just wanted to
-confirm if I have understood this right. Should I write the above
-mentioned code before the wait_event_interruptible_timeout() call, and
-pass read_timeout as the last argument to wait_event_interruptible()?
-And same for write_timeout.
+Sumitra
 
-
-> and then only ever use "read_timeout" here in the
-> wait_event_interruptiable() call?  That should simplify this much more
-> overall, and hopefully allow us to just get rid of the module parameter
-> eventually as that's not how drivers should be working at all anymore.
-> 
-> Same goes for write_timeout.
-> 
-> Overall the code should be much simpler and easier to understand, which
-> is the end goal here.
-> 
-> Can you try doing that instead?
-> 
-> thanks,
-> 
-> greg k-h
