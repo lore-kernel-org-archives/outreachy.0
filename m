@@ -1,137 +1,62 @@
-Received: from mail-wr1-f45.google.com (mail-wr1-f45.google.com [209.85.221.45])
+Received: from mail-pl1-f182.google.com (mail-pl1-f182.google.com [209.85.214.182])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 63CEA7B;
-	Sat, 11 Mar 2023 20:35:45 +0000 (UTC)
-Received: by mail-wr1-f45.google.com with SMTP id r18so8034274wrx.1;
-        Sat, 11 Mar 2023 12:35:45 -0800 (PST)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E1B0910FF
+	for <outreachy@lists.linux.dev>; Sun, 12 Mar 2023 06:48:25 +0000 (UTC)
+Received: by mail-pl1-f182.google.com with SMTP id ja10so131221plb.5
+        for <outreachy@lists.linux.dev>; Sat, 11 Mar 2023 22:48:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678566943;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=B9SEaDPKriAiDKyfkIslt2zjnxJG5SwQ9dwP0X6YQpw=;
-        b=P17DKkJxPQ9l1ObzWD8RqtwNAAyx5Jclhvbf4ojZYLSUAqy6tM/Xb0kUCIUhD3eGCw
-         u9kl6JCvWwxH5iWTMz4K0UaUzqMmfb+A7wtdWVP7d9vJnSCx8nqd43IADJsRgcmITOK9
-         tIKibCilEyhns2bFJsilp+KpLRYhIboYUWBPVyd27Wu0pyBBMQ/Q60clpTp8g/CVxo+Y
-         dXcgALHFby7wR0mM7oj8kvSODHZodutjTBxhMYDRyI6zxBdACNEe5JCT+gpuBHg/Iw4i
-         zXHlTnoAtQjDizFQ51DvlYU7+PbhONhzpUuB9hTZfgXVh0klDjMMQi6dN8NTsFKvg5Va
-         LByg==
+        d=gmail.com; s=20210112; t=1678603705;
+        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=YLJo6J4bJ/TdX5tiIbSW4vuwj1jhdDwg+g2bVAtDyvM=;
+        b=M+pa+4iC56CsLfUTlP7W9QPcEzsHolK8Zt3nU/M6uORFgytsihBsyYVuycYaPYifZ2
+         vh7Gxz6Yw1TWsWyGg7Vjn4+CqYVL9I3iwMHNeN9CvWD16lONhLgblFMDIWxbc74hRBXl
+         zHqdwtBZIyUypXvEzi08pGNL+YyB8CDH72DKqSlby+qGbl9uUpemij1wxC7CewqOq4Vf
+         FXs3koxrRAOoPTUWooAjAFIBl9Yut0ljgNvfc+ouROafbl5ae++E7aYAtDnFoeggca42
+         qCjK9wjzpv1DtdTFCkyTfg/Pq21xJWrPaoXJaqGQcbwuCJ/E5JXnaBt4PclYNx6dQGfh
+         Z1/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678566943;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=B9SEaDPKriAiDKyfkIslt2zjnxJG5SwQ9dwP0X6YQpw=;
-        b=VzzBpoy22AM93ltBPKHPe/ixRv2fnBo9+Zvxwgu6ubd3ChjPji+5Ww1OXtRtwzs1yi
-         i0v95JwX6xrs+pWEdgaQb0Y9AteoxgJweBA8Jrkzk9HtilrD/Um6BfwfTZ+ntVVssVk0
-         ava77WcweCyNsvr7mq29udnUESsAf6U9Hpz1c/n4RZ3A9bdClwOAN6Sg92dPM6BjmIf1
-         3dW8lEfc0STQqZXxhxM0fmxrdNQu2ZZvoZf8XO4SqznA5QU07/JXYMBhFGQA616racvy
-         jm2eeCAvnN9m9jAnVukfMCm21FxFGZ7syGrHisQodA95nxJcahznqPD5EFhbsr8VzLop
-         6d0w==
-X-Gm-Message-State: AO0yUKVkMsl9uWDFUz9PAqMSx+6pC1GyPPAT6Xmcw+DztUqdKUN5rWCs
-	VP83jHucy7GbSxPUOGQa5QM=
-X-Google-Smtp-Source: AK7set99MMxWgK/IQCvaGY4dgmRdox1pfzG2vmBzGe7HwmF6uoQMjL09Ni97QHEGy55MDtsIiuk9ow==
-X-Received: by 2002:adf:edc8:0:b0:2c7:adb:db9 with SMTP id v8-20020adfedc8000000b002c70adb0db9mr18668917wro.63.1678566943294;
-        Sat, 11 Mar 2023 12:35:43 -0800 (PST)
-Received: from suse.localnet (host-79-35-102-94.retail.telecomitalia.it. [79.35.102.94])
-        by smtp.gmail.com with ESMTPSA id z17-20020a5d44d1000000b002c5691f13eesm3232321wrr.50.2023.03.11.12.35.41
+        d=1e100.net; s=20210112; t=1678603705;
+        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=YLJo6J4bJ/TdX5tiIbSW4vuwj1jhdDwg+g2bVAtDyvM=;
+        b=Fs+T6f/NOGbGBm16isJU64+/RcTyr+QHa8KprAB95or7skkUAcyLDFO5ArX/em1QrD
+         dkBWfEd1/cIzAWHyfEznIS/+vbWvLFrOTJC0g/ZxtywBvDh/ZAQDGR1bgViRD48sKL4Y
+         aj2wif6XIWJR0r6PNVMKlPuqMe13KYMVm3tIfmOmYJvFBGi2b/xEvG/b0jFo3OdvhJNX
+         FvuK8WbjF2/qEvX98fQlftQoI/DZ0Nw/i5jzzjUsDJo6gQI1aF/8ob9MJy0/gvz+BPY0
+         zOlGA2Mp456BPPSHz1ou/wg1Nyo5VIZpGddi8TnEqDbhU1ThSXl/Sd+GYbxR4LUDqCaV
+         B9uQ==
+X-Gm-Message-State: AO0yUKURvbaK11ljFxradcvpccg1HNaHXDWOA1KNN4Pyl9uH5hffmpd4
+	pgscPw0L4eEt+L1OHkevx8UbPhyxOW7aFg==
+X-Google-Smtp-Source: AK7set9MSJhLsEmM2mrez9fZyox2CinC5GGrJJLxq6gkV679vq+c9i0LOnIoprKVS1UxeetpEXPaRA==
+X-Received: by 2002:a05:6a21:7888:b0:c7:5d84:d6e0 with SMTP id bf8-20020a056a21788800b000c75d84d6e0mr34964673pzc.31.1678603704822;
+        Sat, 11 Mar 2023 22:48:24 -0800 (PST)
+Received: from ubuntu ([59.89.166.125])
+        by smtp.gmail.com with ESMTPSA id i26-20020aa78d9a000000b005dd98927cc5sm2301972pfr.76.2023.03.11.22.48.23
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 11 Mar 2023 12:35:42 -0800 (PST)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: error27@gmail.com, Sumitra Sharma <sumitraartsy@gmail.com>
-Cc: GR-Linux-NIC-Dev@marvell.com, coiby.xu@gmail.com,
- gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
- linux-staging@lists.linux.dev, manishc@marvell.com, netdev@vger.kernel.org,
- outreachy@lists.linux.dev
-Subject: Re: [PATCH] Staging: qlge: Remove parenthesis around single condition
-Date: Sat, 11 Mar 2023 21:35:41 +0100
-Message-ID: <1713523.QkHrqEjB74@suse>
-In-Reply-To: <20230311144318.GC14247@ubuntu>
-References: <20230311144318.GC14247@ubuntu>
+        Sat, 11 Mar 2023 22:48:24 -0800 (PST)
+Date: Sat, 11 Mar 2023 22:48:21 -0800
+From: Sumitra Sharma <sumitraartsy@gmail.com>
+To: julia.lawall@inria.fr
+Cc: outreachy@lists.linux.dev
+Subject: Re: [PATCH] Staging: qlge: Fix indentation in conditional statement
+Message-ID: <20230312064821.GG14247@ubuntu>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.22.394.2303111911510.2802@hadrien>
 
-On sabato 11 marzo 2023 15:43:18 CET Sumitra Sharma wrote:
-> Hi Dan,
-> 
-> Your suggestion for correcting the indentation to
-> "[tab][tab][space][space][space][space](i ==." conflicts with the
-> statement "Outside of comments, documentation and except in Kconfig,
-> spaces are never used for indentation" written in
-> https://elixir.bootlin.com/linux/latest/source/Documentation/process/coding-style.rst
->
+Hi julia
 
-I just saw that you use to read .rst files. Attention!
-These are source files from which human readable documentation is made.
+I will take care of it next time.
 
-They may contain directives which don't show a large part of the content you 
-are interested in, which is only included when you run "make html", "make pdf" 
-and similar commands.
+Regards,
 
-Obviously, I'm talking about something that is _not_ related to your patch or 
-this thread. I'm just concerned that candidates won't be able to find the 
-information they're looking for and thus miss out on important information 
-that Ira and I have asked candidates to study (if they're interested in 
-applying to our project). 
-
-In any case, the study of a certain number of pages of the Kernel 
-documentation is always necessary, whatever project one wishes to undertake.
-
-To better understand what I'm talking about, take the Highmem documentation as 
-an example and compare the .rst file and the .html file. You will understand 
-why I am strongly encouraging you and all other applicants not to use 
-elixir.bootlin.com for study.
-
-Please compare the content (or at least the number of sections and lines) of 
-following .rst file at
-
-https://elixir.bootlin.com/linux/v6.3-rc1/source/Documentation/mm/highmem.rst
-
-with the human readable counterpart at 
-
-https://docs.kernel.org/mm/highmem.html
-
-Can you see how many information you may miss by reading an .rst file without 
-any knowledge of its syntax?
-
-Thanks,
-
-Fabio
-
-PS: I don't know why you went to the documentation source files. I see no 
-reason other than the need to work on patches for the source document.
-
-I'd like to invite you to patch the style guide that Dan suggested to you in 
-this same thread.
-
-But I'm not asking you to spend time on that patch during this contribution 
-period because you still have a lot to do before the period expires.
-
-If you want, you could take care of that patch after the contribution period 
-has ended and while you are waiting for the outcome of the selection. If so, 
-study the syntax of the .rst format carefully.
-
-In the "real" kernel (I mean anywhere outside of drivers/staging), you might 
-not always get the custom help of the same kind you can count on here. 
-However, those who intend to go further, regardless of the current project, 
-sooner or later will have to face the world outside :-)
-
->
-> However, If you still recommend to correct the indentation in the manner
-> "[tab][tab][space][space][space][space](i ==." Should I create a
-> patch for the same?
-> 
-> Regards,
-> 
-> Sumitra
-
-
-
-
+Sumitra
