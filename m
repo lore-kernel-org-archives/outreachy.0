@@ -1,132 +1,83 @@
-Received: from mail-wm1-f43.google.com (mail-wm1-f43.google.com [209.85.128.43])
+Received: from mail-pl1-f182.google.com (mail-pl1-f182.google.com [209.85.214.182])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8D3AB1FA3;
-	Sun, 12 Mar 2023 10:39:21 +0000 (UTC)
-Received: by mail-wm1-f43.google.com with SMTP id o5-20020a05600c510500b003ec0e4ec6deso2921323wms.3;
-        Sun, 12 Mar 2023 03:39:21 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9AAD41FA3
+	for <outreachy@lists.linux.dev>; Sun, 12 Mar 2023 12:29:33 +0000 (UTC)
+Received: by mail-pl1-f182.google.com with SMTP id x11so10108541pln.12
+        for <outreachy@lists.linux.dev>; Sun, 12 Mar 2023 05:29:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678617560;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=BMdTgmpU8RaTXA//vhJdqgYfI33DbAxolT01iaaMnF8=;
-        b=pCGswXdFmHJH+dr8+szeLEHwQNYX8ET2a3OHSS/G8oF/8qbP8mKwzsgnsxtBayCsjc
-         BBZOIoyTvqp5gi/IypPEhxQ9OGZZtEa/K7cJuHQNI7PAPgW55TUWGXAlqjJOARvN+Z6z
-         tt3A8VKAgHTTDynuN+3iA90bXpIeymj3WhXsm/+anVfXbAM7ygr8iMfcg87Syw/ctlRe
-         08IhRSREHuYU9Qg25DKm4Jh0j9mkmrLa0jUbnHMtzEbwc/qpDDzUJcJe5YlvHHyzUKvh
-         1otXzINKim+g1sGZwIK5jnZcgpj/KGNNAS/vGSs0CySNZoDUAJVS7jE8IW4FBe+YV20x
-         HfCA==
+        d=gmail.com; s=20210112; t=1678624173;
+        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=+HJAKwxa0LTIxf/jS5qz7I0wr7v3E9TmkJGVNqOdnH8=;
+        b=IaGALuLD0ftMp3ooa36/y3f2ayNf5Fy2Q/Jfs5pSDpp1wJ8vp4UE8evBDAWkA5ylzI
+         ozTRh8VOLVRfUKM+8Nno/GO74/cXIIaqGtXZRoFIatJSGoC5YmitMEDbmGVJ3YrueW8g
+         OEIvrgqOrd5aBDz0CjHI7QoTyjy08gtSb8KoOvnWzCvSkn/H00wQ1S3Xi5hpG2HxgqiW
+         JhsOqsxgREDzb9zmNabl9sZhf4egnsxXNLkET1mAixUt9zmWXl7Ypi+GCEPd0BE02UGs
+         mzNeOKAiaYkkyf1/I99sgg92wIAnVWISazs/jresysvn/acCf9Vdyrehhny4WBbByTd3
+         tXdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678617560;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=BMdTgmpU8RaTXA//vhJdqgYfI33DbAxolT01iaaMnF8=;
-        b=RyR4WOkPx66rYXKrlIvwy+fXnHK9Nt8PPnH68Jeb/G0K2N1FspwguXR27Je5KqN3d0
-         GJlZTdg30ZGtVqckOup/SZu3rvZeDrtxrEYZ6TogtAnfPCCDbiD1UejdsrtrfxKGFoPS
-         yMfy7XAmfmJmJTUzB6M6nq4OR0XmreqJf87t7exHtgViS+8ETEU+YRq1jzuu2G2sIyop
-         MgIaXdypzdAgB/zSTrVV2VA+lAFsOuK6hpGhXsjCOB0aHvQ2ACVwg5i9q435Cp5xbN6O
-         mJZmMh1qTmdqB5T/lnkB5VfvMRcydECP0joPLuWNw1hGT2TIozsKy9fE9liXYxQgvJGY
-         9MPA==
-X-Gm-Message-State: AO0yUKWuSq6jmxwtZFmQLSHDnf/+PQPmVK9SjYcjZb6fVyA8aacuyLwt
-	vFU+WKpqkfn7Z0yAnKZW6Hg=
-X-Google-Smtp-Source: AK7set9IoxJPNhRQ5r3XdnH3a/Nu6R/fpnkyVf5q9ZINBmzJZV10lkgST376i0Rd/NNGLPb0pFnBGw==
-X-Received: by 2002:a05:600c:4e4f:b0:3eb:2de8:b74e with SMTP id e15-20020a05600c4e4f00b003eb2de8b74emr7751723wmq.27.1678617559501;
-        Sun, 12 Mar 2023 03:39:19 -0700 (PDT)
-Received: from suse.localnet (host-79-35-102-94.retail.telecomitalia.it. [79.35.102.94])
-        by smtp.gmail.com with ESMTPSA id h6-20020a1ccc06000000b003e22508a343sm5757893wmb.12.2023.03.12.03.39.17
+        d=1e100.net; s=20210112; t=1678624173;
+        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=+HJAKwxa0LTIxf/jS5qz7I0wr7v3E9TmkJGVNqOdnH8=;
+        b=5Ga6esxmcRzrJaVn+uQyrzmv65oVjvaAvUUTqSDHUysXx91WqzmQuOzDi5xhhOzWF6
+         uty2jOAko/pejQB8WGKiWXj60cvm4zD1mdo4q98COm2vhv7MU7CR64vpnK7h5vXkDSz3
+         fFFFUchoFnxfrxboAe4nW/DedcSFo2pwe1EIaDMkiKIZCZ3L5wjhugyZT1yxkx3i9AGb
+         Xa6BVainhxeZaZDVLX4TM813QjzEHIWH9vjx8d6efiyvZeHQP9f4ra2LGna8oB3oKcGr
+         PGkYOvXYpfgyMwTcNLuL9OHSsFommfknt5fbdTdrGqgj55XSpTs86yRJ0Aw78G/ibFOq
+         UopA==
+X-Gm-Message-State: AO0yUKW5arOslcCDv7VeDpxCGfbatQtkNsxP6/xMcwRbqZhgmLMzjR83
+	6f/BcFibgUaZMUlZo9cb1XO7Fvfyg663bQ==
+X-Google-Smtp-Source: AK7set8w561X3If5EV+1KAJvc1mf0rEUgcV9hWtU7xKjML9VDC7N9m10DD/yHKOIteXp2ZrsH7JuzA==
+X-Received: by 2002:a05:6a20:4f89:b0:c0:c905:7b09 with SMTP id gh9-20020a056a204f8900b000c0c9057b09mr25876594pzb.44.1678624172667;
+        Sun, 12 Mar 2023 05:29:32 -0700 (PDT)
+Received: from ubuntu ([59.89.166.125])
+        by smtp.gmail.com with ESMTPSA id v184-20020a632fc1000000b005030113f46dsm2827633pgv.37.2023.03.12.05.29.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 12 Mar 2023 03:39:18 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Sumitra Sharma <sumitraartsy@gmail.com>
-Cc: GR-Linux-NIC-Dev@marvell.com, coiby.xu@gmail.com, error27@gmail.com,
- gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
- linux-staging@lists.linux.dev, manishc@marvell.com, netdev@vger.kernel.org,
- outreachy@lists.linux.dev, julia.lawall@inria.fr
-Subject: Re: [PATCH] Staging: qlge: Remove parenthesis around single condition
-Date: Sun, 12 Mar 2023 11:39:17 +0100
-Message-ID: <5367184.29KlJPOoH8@suse>
-In-Reply-To: <20230312071700.GH14247@ubuntu>
-References: <20230312071700.GH14247@ubuntu>
+        Sun, 12 Mar 2023 05:29:32 -0700 (PDT)
+Date: Sun, 12 Mar 2023 05:29:28 -0700
+From: Sumitra Sharma <sumitraartsy@gmail.com>
+To: julia.lawall@inria.fr
+Cc: outreachy@lists.linux.dev
+Subject: Re: [PATCH] Staging: qlge: Fix indentation in conditional statement
+Message-ID: <20230312122928.GL14247@ubuntu>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.22.394.2303120843420.2865@hadrien>
 
-On domenica 12 marzo 2023 08:17:00 CET Sumitra Sharma wrote:
-> Hi Fabio,
-> 
-> Thank you for the insights.
+Hi julia,
 
-Hi Sumitra,
+>> Hi julia
+>>
+>> I was referring to the reply you sent in this thread and asking to quote
+>> the most relevant information in the mails so that people on the list
+>> can know what is being discussed. And I will take care of this in my
+>> upcoming mails.
+>>
+>
+> Sorry to press the point, but you should be doing it now, not promising to
+> do it in the future.
+>
 
-Please pay attention to the suggestions that Julia kindly provides to you.
+I am sorry for repeating my mistake again and again and may be this time
+too. But, I am trying to correct it.
 
-A moment ago I read these other words from her to you: "Sorry to press the 
-point, but you should be doing it now, not promising to do it in the future.".
+>
+> If there is some challenge in doing this, please let us know, and perhaps someone can offer some advice.
+>
 
-She is sorry to press because of her special attitudes. I've been helped 
-uncountable times by Julia who, despite her major role and commitments, is so 
-kind to spend time here in a Sunday morning. 
+To be honest I am struggling responding inline. Right now I did it
+maually by pasting your message into mutt and putting the ">" things. I
+know this is not the correct way to do. Please guide me to the correct method of responding inline.
 
-I think that it's you who should be sorry for pushing her that way... 
+Regards,
 
-You are doing it again and again: in your last message you did not provide the 
-necessary context. You are asking me to recall which "insights" you are 
-talking about. I know for sure that here there is someone who read hundreds of 
-emails per day.
-
-> I went to the .rst files because they are directly
-> linked in the first-patch document. I also noticed the difference between a
-> ".rst" file and its counter human readable ".html" file. You were right that
-> many information is being missed when anyone will read the .rst instead of
-> .html/.pdf.
-
-Don't summarize my own words in order to make me understand what question you 
-are answering. Just put my question/objection/comment inline while replying.
-
-Most mentors here read several tens of emails per day. You should not expect 
-them to skim the whole thread. Just reply inline, so they find all the 
-necessary context in one place and so there is no need to traverse the thread 
-to understand what you are referring to. 
-
-You have been told so several times. You risk that someone starts to ignore 
-your messages in order to save time for other applicants.
-
-> I would like to suggest that the links that redirect to the .rst
-> source files in the first-patch document must be changed to the links that
-> redirect to there corresponding human readable format. Let me know if I 
-could
-> do it under the [KERNEL NEWBIEs ACCESS].
-
-This is a great idea and I fully agree with you.
-Please ask Alison to grant access to change that documentation (it's not 
-something I can do myself).
-
-> Apart from this I will be happy to patch the style guide after this
-> contribution period.
-
-Best applicants go on with further contributions after the end of these 
-period. This fact has been observed several times in the other rounds.
-I'd like to see more people who are seriously willing to be part of this 
-Community, regardless of the Outreachy project's deadlines. 
-
-> Regards,
-> 
-> Sumitra
-
-Thanks,
-
-Fabio
-
-P.S.: I probably went a bit too far in the first part of this email. I am 
-sorry about it. However, please demonstrate that you finally got it, not with 
-further promises but with actual changes in the way you communicate :-)
-
-
-
+Sumitra
