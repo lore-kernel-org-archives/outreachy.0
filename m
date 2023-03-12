@@ -1,140 +1,117 @@
-Received: from mail-wm1-f43.google.com (mail-wm1-f43.google.com [209.85.128.43])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7EDC01FC5;
-	Sun, 12 Mar 2023 13:43:53 +0000 (UTC)
-Received: by mail-wm1-f43.google.com with SMTP id o5-20020a05600c510500b003ec0e4ec6deso3102301wms.3;
-        Sun, 12 Mar 2023 06:43:53 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 85CBE1FC5;
+	Sun, 12 Mar 2023 14:12:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678628632;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=jdTS0oXcqOPShopOCv9dsbnq2ZuDXh8kuvCrXKP9vNg=;
-        b=PwlIKtLggba+ofgRaiD/18TchGLzFtem23w7SepKAbL9dwz7sZIiu1CpcK1k0f8RyO
-         RxlVw2boDEGQUljuvYbVlw8AOkjoJp6BoqI2ztd5YBojuDTnhHlUu8XcMbTgejUZt3xc
-         p6fnB/1B63Fri+hrMd2h0Iy9xVRk7PRlZ6OK3/LGVh+PLmST/T8Cn29YDUQRymgtOeSL
-         EG+RgaPUE6G7zUrrNOeR+ktAqBG3k/7SORL8W/LIfgtn1A20E+UmY7Avg8ltWCOoWspW
-         6xnKsxxF0Op4iv941dSFEJt2tcyf0d8t9L+MpK4oxWiooMDclBtVPqkcW58aXrFPEkql
-         szUg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678628632;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=jdTS0oXcqOPShopOCv9dsbnq2ZuDXh8kuvCrXKP9vNg=;
-        b=dQiXDY55pEQVEZ8WGDdoZsp8PDPCSV7c/ieYqwsuwImKBOfT4v4sFPYkNjiWXPG7Xo
-         7jwMmBs5ny1jYtNX14t4/9hfC9Mdw1BvxxbDzGL3yguEbfuspYlEvgi+Xp25IFqeqiHN
-         lMP4ZWQvKv8lC19eLynDXp6YLokFTR9LlqueI1Ae+Df7qdsGtBWQVursj2x+eGYDV9xc
-         RiEgh9zRfnieq+wy8Vjf2xIEXWV3bZcXjrzdb+ikus5Oo9NBj/bBtqpT1RQTRGIg+v7o
-         hgCuv2uKYCHPqR6j552gxu6vRBGPhVqkKozsx6GLCrhKmGguqxG8rbQSRV+ogBFUS2gv
-         +rVA==
-X-Gm-Message-State: AO0yUKVjLAAWmzgh6HFBgunfcO1m1jMDs4QORG0U86uhAI9B4zzTjzQ2
-	v4vY7XVYAduuj0iq0JPjFb8=
-X-Google-Smtp-Source: AK7set/kMMY5aSTbCT8WnZwJTg7gtojOqzvxlmr7YrgwkOG0dQTnJA13ODG3EYY1AHeDmJPKSbYQXA==
-X-Received: by 2002:a05:600c:4e90:b0:3df:fcbd:3159 with SMTP id f16-20020a05600c4e9000b003dffcbd3159mr6059972wmq.3.1678628631752;
-        Sun, 12 Mar 2023 06:43:51 -0700 (PDT)
-Received: from [192.168.1.16] ([41.42.177.251])
-        by smtp.gmail.com with ESMTPSA id o1-20020a05600c4fc100b003e2096da239sm6615732wmq.7.2023.03.12.06.43.50
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 12 Mar 2023 06:43:51 -0700 (PDT)
-Message-ID: <f6e87327-856d-7bfe-bbc8-65ac490a2868@gmail.com>
-Date: Sun, 12 Mar 2023 15:43:49 +0200
+  d=inria.fr; s=dc;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=Sh+uFbFcoNlwdgGV/4sI5udPXzj2znbd+ERSzswWHME=;
+  b=pduNCQ/z+hOAQR+D7AlHkgsFHO97hTPfr7Ok8EgXV3dyLZnnJ/UaM+1s
+   pekDkGCmTI+9DdcsTIjuqEYZs4uczZ6ZtozLDGuQyzlcn5garnOFjfaOf
+   c6okVnz1RIpVJ0iwXsXQXnC73w16QPGwzY9ZPHbvlXJ9GVepv8g6+Vy9N
+   k=;
+Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="5.98,254,1673910000"; 
+   d="scan'208";a="49927439"
+Received: from 231.85.89.92.rev.sfr.net (HELO hadrien) ([92.89.85.231])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Mar 2023 15:12:48 +0100
+Date: Sun, 12 Mar 2023 15:12:47 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>
+cc: outreachy@lists.linux.dev, lars@metafoo.de, Michael.Hennerich@analog.com, 
+    jic23@kernel.org, gregkh@linuxfoundation.org, linux-iio@vger.kernel.org, 
+    linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] staging: iio: meter: enclose Macros with complex values
+ in parentheses
+In-Reply-To: <20230312133347.120944-1-eng.mennamahmoud.mm@gmail.com>
+Message-ID: <alpine.DEB.2.22.394.2303121507450.2865@hadrien>
+References: <20230312133347.120944-1-eng.mennamahmoud.mm@gmail.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH] staging: greybus: eclose macro in a do - while loop
-Content-Language: en-US
-To: Alex Elder <elder@ieee.org>, outreachy@lists.linux.dev
-Cc: pure.logic@nexus-software.ie, johan@kernel.org, elder@kernel.org,
- gregkh@linuxfoundation.org, greybus-dev@lists.linaro.org,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-References: <20230311135919.9129-1-eng.mennamahmoud.mm@gmail.com>
- <e34f96c7-eee0-6dd6-7662-ffbf04034e27@ieee.org>
-From: Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>
-In-Reply-To: <e34f96c7-eee0-6dd6-7662-ffbf04034e27@ieee.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/mixed; boundary="8323329-1354038481-1678630367=:2865"
+
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
+
+--8323329-1354038481-1678630367=:2865
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
 
-On ١١‏/٣‏/٢٠٢٣ ٢١:١٠, Alex Elder wrote:
-> On 3/11/23 7:59 AM, Menna Mahmoud wrote:
->> " ERROR: Macros with multiple statements should be enclosed in a do -
->> while loop"
->>
->> Reported by checkpath.
->
-> This is also not an issue that should be "fixed."
->
-> If you look at where that macro is expanded, you see
-> that its purpose is simply to reduce the possibility
-> of some errors by enclosing some much-duplicated code
-> in this macro.  The expansion is at the top level of
-> the source file, so a "do...while" loop ends up being
-> an error.
->
-> When looking at the output of checkpatch, assume it's
-> giving you clues about problems that one *might* like to
-> fix.  Its suggestions are most often reasonable, but in
-> some cases (like this one) it's just not smart enough
-> to recognize the problem that comes from following its
-> advice.
->
-> Make sure you understand exactly what happens when
-> you make a change.  That means understanding the
-> code, and then it means ensuring that the fix passes
-> at least a compile test, and if possible an actual
-> execution test.
->
->                     -Alex
 
+On Sun, 12 Mar 2023, Menna Mahmoud wrote:
 
-I see, Thanks Alex for explaining. I will check the code before making 
-any change.
+> enclose Macros with complex values in parentheses is especially useful
+> in making macro definitions “safe” (so that they
+> evaluate each operand exactly once).
 
-Menna
+enclose -> Enclose, and Macros -> macros
 
+I don't understand the above comment though.  How does adding parentheses
+around the body of a macro cause the operands to be evaluated only once?
+And the macros that you have changed don't have any operands.
+
+The value of adding parentheses is normally to ensure that the body of the
+macro doesn't interact with the context in a weird way.  For example, you
+could have
+
+#define ADD 3 + 4
+
+Then if you use your macro as 6 * ADD, you will end up evaluating
+6 * 3 + 4, ie 18 + 4, when you might have expected 6 * 7.  The issue is
+that * has higher precedence than +.
+
+But I don't think that such a problem can arise with a cast expression, so
+parentheses around it should not be necessary.
+
+> this error reported by chechpatch.pl
+
+this error is reported by checkpatch.
 
 >
->>
->> do loop with the conditional expression set to a constant
->> value of zero (0).This creates a loop that
->> will execute exactly one time.This is a coding idiom that
->> allows a multi-line macro to be used anywhere
->> that a single statement can be used.
->>
->> So, enclose `gb_loopback_stats_attrs` macro in do - while (0) to
->> fix checkpath error
->>
->> Signed-off-by: Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>
->> ---
->>   drivers/staging/greybus/loopback.c | 10 ++++++----
->>   1 file changed, 6 insertions(+), 4 deletions(-)
->>
->> diff --git a/drivers/staging/greybus/loopback.c 
->> b/drivers/staging/greybus/loopback.c
->> index 1a61fce98056..e86d50638cb5 100644
->> --- a/drivers/staging/greybus/loopback.c
->> +++ b/drivers/staging/greybus/loopback.c
->> @@ -162,10 +162,12 @@ static ssize_t name##_avg_show(struct device 
->> *dev,        \
->>   }                                    \
->>   static DEVICE_ATTR_RO(name##_avg)
->>   -#define gb_loopback_stats_attrs(field)                \
->> -    gb_loopback_ro_stats_attr(field, min, u);        \
->> -    gb_loopback_ro_stats_attr(field, max, u);        \
->> -    gb_loopback_ro_avg_attr(field)
->> +#define gb_loopback_stats_attrs(field)                    \
->> +    do { \
->> +        gb_loopback_ro_stats_attr(field, min, u);        \
->> +        gb_loopback_ro_stats_attr(field, max, u);        \
->> +        gb_loopback_ro_avg_attr(field);                \
->> +    } while (0)
->>     #define gb_loopback_attr(field, type)                    \
->>   static ssize_t field##_show(struct device *dev, \
+> "ERROR: Macros with complex values should be enclosed in parentheses"
 >
+> for ADE7854_SPI_SLOW, ADE7854_SPI_BURST and ADE7854_SPI_FAST
+> macros and this error fixed by enclose these macros in parentheses.
+
+The last two lines aren't needed.  One can easily see that from looking at
+the patch.
+
+julia
+
+> Signed-off-by: Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>
+> ---
+>  drivers/staging/iio/meter/ade7854.h | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+>
+> diff --git a/drivers/staging/iio/meter/ade7854.h b/drivers/staging/iio/meter/ade7854.h
+> index 7a49f8f1016f..41eeedef569b 100644
+> --- a/drivers/staging/iio/meter/ade7854.h
+> +++ b/drivers/staging/iio/meter/ade7854.h
+> @@ -139,9 +139,9 @@
+>  #define ADE7854_MAX_RX    7
+>  #define ADE7854_STARTUP_DELAY 1000
+>
+> -#define ADE7854_SPI_SLOW	(u32)(300 * 1000)
+> -#define ADE7854_SPI_BURST	(u32)(1000 * 1000)
+> -#define ADE7854_SPI_FAST	(u32)(2000 * 1000)
+> +#define ADE7854_SPI_SLOW	((u32)(300 * 1000))
+> +#define ADE7854_SPI_BURST	((u32)(1000 * 1000))
+> +#define ADE7854_SPI_FAST	((u32)(2000 * 1000))
+>
+>  /**
+>   * struct ade7854_state - device instance specific data
+> --
+> 2.34.1
+>
+>
+>
+--8323329-1354038481-1678630367=:2865--
