@@ -1,53 +1,49 @@
-Received: from mail-pg1-f171.google.com (mail-pg1-f171.google.com [209.85.215.171])
+Received: from mail-wm1-f43.google.com (mail-wm1-f43.google.com [209.85.128.43])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7E412538A
-	for <outreachy@lists.linux.dev>; Sun, 12 Mar 2023 17:31:17 +0000 (UTC)
-Received: by mail-pg1-f171.google.com with SMTP id x37so1227338pga.1
-        for <outreachy@lists.linux.dev>; Sun, 12 Mar 2023 10:31:17 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D70E4538A;
+	Sun, 12 Mar 2023 17:33:23 +0000 (UTC)
+Received: by mail-wm1-f43.google.com with SMTP id j19-20020a05600c1c1300b003e9b564fae9so9412181wms.2;
+        Sun, 12 Mar 2023 10:33:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678642277;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=DxpgGbx9OVZztPTKTgW5ToYAJmJkiLZmKUOSkeclo0I=;
-        b=OQ8/AW9cYYmuaU8KCwHtGySs0x40rS/eYmQtssx02/tqePTVHGRlYWgvhzAiF7AxEt
-         /fSm/u3vhLh+EBYgOnPRrFAmBvZyE5UD8jkA8yEtDHFQrH/Mfv/HAtEML0dLtE+APRXK
-         BgH6QH9plIW5PQzgE8f7HAuXSs7mPgVJbbr60+lxmtr6cXFM9gvzaVYYEkAGEfK21BGa
-         jKYM8jF45dK1ANSuecF0h3OLhumE45nCPXejSxYiY2eo3pouepwcrV+gO1kW6aq5f0+u
-         c7tTBByytv7U2wZzO1NMiWVpwItT48+VVfQH7qsHJgb8+QnaZrgfqOrQVvLsf2pPBGXB
-         /3Cg==
+        d=gmail.com; s=20210112; t=1678642402;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=SYkkS+oZSSfD9zGRsvgAy1sxi0/N+dGDM4TdmGz9U18=;
+        b=HW+MTca27uXJN+ak1iLSRAeq6brTVBups1xzLy7LB6cenwEBkLZPJATE81gKsCehmG
+         nVHpyWtEHl7ob/WDwjY81BC1Oyl5TUg323NewaOmGEURAP0p8vdcvPosLdtxGPJMZX6z
+         Yq8doMZKqbIOnXwadY/tlO+09l88MR/tNLmTyk1ptkpSN3El3xQ4O4Y/gbReIh4h9hIB
+         xTlbS+zj6nUEjXgbA6eFpAjRG0oTgjlBF6JsoBGfWSoAY1Bf68Kb1gZHA4rs0Sw4+yCa
+         /vi3VQvktpIVEgK5Oa9GT7fioq2D7NOnvrXnkPfxQc+yE5wMs+YITdxtYruUZLlVvYwb
+         4Dlw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678642277;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=DxpgGbx9OVZztPTKTgW5ToYAJmJkiLZmKUOSkeclo0I=;
-        b=xDBwfC7R5OfsqTkSKPYDWgVGJaaGjTFigf3XCP7fPNB5UAwQjK2kJH1n/bf5rxHjGC
-         y/j57MsCImruIxEY5EFV5PYPzV06cZIdzmpHNR1qTs77mnqXo1PisV3l9bew52/sAWXl
-         dOGm257IvhzxBdaqUbFo7+X60bNkn9J06U+JAsghG1BsJxASVrgnEabcChCi6AtCwAdB
-         WXh0dtrs9/EDr+Jn0Umvji3tgRwNZPj9XWRgPD4aQJ9QEEIVyy5DEA11ZYfjBAiAb43p
-         Pk8rCHQ4SIipBt7QTwqOif1A9qqbdNadmeqIYRUVx5LXkrDKx1V1XG1d5zNEVOG3UPfS
-         eJqw==
-X-Gm-Message-State: AO0yUKVhKT2uoMAkzr+OTwblDRTrxh01mr1FUb/odGOEdSCpBYRQ/nfn
-	iRCwpevnk/L6aoebw5cIWIk=
-X-Google-Smtp-Source: AK7set8ZVh203ZnwT8P/MoyKFxsiW01qi5rhslphAZezTMyjN6FZBsvsULeyQgYFUSASUTHF6gswJQ==
-X-Received: by 2002:a62:8458:0:b0:622:feed:c36d with SMTP id k85-20020a628458000000b00622feedc36dmr3576624pfd.31.1678642276765;
-        Sun, 12 Mar 2023 10:31:16 -0700 (PDT)
-Received: from ubuntu ([59.89.166.125])
-        by smtp.gmail.com with ESMTPSA id a1-20020aa78641000000b00622a8bdf2absm2438111pfo.145.2023.03.12.10.31.14
+        d=1e100.net; s=20210112; t=1678642402;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=SYkkS+oZSSfD9zGRsvgAy1sxi0/N+dGDM4TdmGz9U18=;
+        b=1CwC2PcKGhw7fD81oTL0/i7LAY/9DU/l0Z/HyVKoeN/pr+BTmy/odAk00+Pg8/rbKo
+         i8NiNJoRR7rd6hxMbX2MOTLhQXj5S/75VGRRtwV+XDqfaVNzaGU2ALH9tVcWMu3qM10O
+         ZNb7eOAmKPBxTcGbaK1OHs/hSGFlkujru9H4VkcuMSqchk6oO4ezRUXTIsqkw75SEh5B
+         8iNYa2TlDdq1AARs+c/hRak9mPVx4WdaxwC4l5EEBXGAoLHrOw9An1KByUU13eole8+0
+         pHmG1bFNUL6+37cDa1oo6Va1KLH2OiY3XiS6ITSknO5WqVlZ7Kpq01sNWgJEDuT0sBiK
+         mvcA==
+X-Gm-Message-State: AO0yUKVwoDF1vEC2N4P+gv2HU4DkBzx2EIDVVbkNkOs7XBBcG9wK5ceU
+	DnQqff0UZGPt+SlCPE7+9gJubO2qgg+xYWHl
+X-Google-Smtp-Source: AK7set8soss/y1o1J91swWqCXh1d4gLr/l28MxM+9gqizZwNxPUiFxGus8uZNNCu04oXMRtdZ/vK0g==
+X-Received: by 2002:a05:600c:4751:b0:3ea:f73e:9d8a with SMTP id w17-20020a05600c475100b003eaf73e9d8amr8551875wmo.30.1678642401806;
+        Sun, 12 Mar 2023 10:33:21 -0700 (PDT)
+Received: from khadija-virtual-machine ([39.41.45.115])
+        by smtp.gmail.com with ESMTPSA id 17-20020a05600c021100b003ed2002fa6dsm2937890wmi.17.2023.03.12.10.33.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 12 Mar 2023 10:31:16 -0700 (PDT)
-Date: Sun, 12 Mar 2023 10:31:12 -0700
-From: Sumitra Sharma <sumitraartsy@gmail.com>
-To: Khadija Kamran <kamrankhadijadj@gmail.com>
-Cc: outreachy@lists.linux.dev
-Subject: Re: [PATCH] Staging: qlge: Fix indentation in conditional statement
-Message-ID: <20230312173112.GA28679@ubuntu>
-References: <20230312122928.GL14247@ubuntu>
- <alpine.DEB.2.22.394.2303121412090.2865@hadrien>
- <20230312152701.GA28100@ubuntu>
- <alpine.DEB.2.22.394.2303121631170.2865@hadrien>
- <ZA32KCmxGEM8jVwl@khadija-virtual-machine>
+        Sun, 12 Mar 2023 10:33:21 -0700 (PDT)
+Date: Sun, 12 Mar 2023 22:33:19 +0500
+From: Khadija Kamran <kamrankhadijadj@gmail.com>
+To: outreachy@lists.linux.dev
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: [PATCH v4] staging: axis-fifo: initialize read_timeout and
+ write_timeout once in probe function
+Message-ID: <ZA4M3+ZeB1Rl2fbs@khadija-virtual-machine>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -56,78 +52,63 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ZA32KCmxGEM8jVwl@khadija-virtual-machine>
 
-On Sun, Mar 12, 2023 at 08:56:24PM +0500, Khadija Kamran wrote:
-> On Sun, Mar 12, 2023 at 04:31:48PM +0100, Julia Lawall wrote:
-> > OK.  Was the information in the outrechy tutorial sufficient?  If not, it
-> > could be good to extend it.
-> > 
-> > julia
-> >
-> 
-> Hey Julia!
-> 
-> I thought I should reply here too. I hope that is not a problem.
-> 
-> I had a hard time configuring mutt, from the information in the
-> outreachy tutorial. I could send my patches but I had no idea how to
-> respond to mails from INBOX and how to send inline replies.
-> 
+Module parameter, read_timeout, can only be set at loading time. As it
+can only be modified once, initialize read_timeout once in the probe
+function.
+As a result, only use read_timeout as the last argument in
+wait_event_interruptible_timeout() call.
 
-- After installing mutt and esmtprc, create two files "esmtprc" and "muttrc" in home directory.
-	
-	touch ~/.esmtprc
-	chmod g-rwx ~/.esmtprc
-	chmod o-rwx ~/.esmtprc
-	touch ~/.muttrc
-        chmod g-rwx ~/.muttrc
-        chmod o-rwx ~/.muttrc
+Same goes for write_timeout.
 
-- Edit .esmtprc
-	
-	identity "my.email@gmail.com"
-	hostname smtp.gmail.com:587
-	username "my.email@gmail.com"
-	password "<mailbox password>"
-	starttls required 
+Signed-off-by: Khadija Kamran <kamrankhadijadj@gmail.com>
+---
+ drivers/staging/axis-fifo/axis-fifo.c | 18 ++++++++++++------
+ 1 file changed, 12 insertions(+), 6 deletions(-)
 
-- Open the ~/.muttrc
-        - Add the information
+diff --git a/drivers/staging/axis-fifo/axis-fifo.c b/drivers/staging/axis-fifo/axis-fifo.c
+index b119cec25a60..7ec8722cef7d 100644
+--- a/drivers/staging/axis-fifo/axis-fifo.c
++++ b/drivers/staging/axis-fifo/axis-fifo.c
+@@ -384,9 +384,7 @@ static ssize_t axis_fifo_read(struct file *f, char __user *buf,
+ 		mutex_lock(&fifo->read_lock);
+ 		ret = wait_event_interruptible_timeout(fifo->read_queue,
+ 			ioread32(fifo->base_addr + XLLF_RDFO_OFFSET),
+-			(read_timeout >= 0) ?
+-			msecs_to_jiffies(read_timeout) :
+-			MAX_SCHEDULE_TIMEOUT);
++			read_timeout);
+ 
+ 		if (ret <= 0) {
+ 			if (ret == 0) {
+@@ -528,9 +526,7 @@ static ssize_t axis_fifo_write(struct file *f, const char __user *buf,
+ 		ret = wait_event_interruptible_timeout(fifo->write_queue,
+ 			ioread32(fifo->base_addr + XLLF_TDFV_OFFSET)
+ 				 >= words_to_write,
+-			(write_timeout >= 0) ?
+-			msecs_to_jiffies(write_timeout) :
+-			MAX_SCHEDULE_TIMEOUT);
++			write_timeout);
+ 
+ 		if (ret <= 0) {
+ 			if (ret == 0) {
+@@ -814,6 +810,16 @@ static int axis_fifo_probe(struct platform_device *pdev)
+ 	struct axis_fifo *fifo = NULL;
+ 	char *device_name;
+ 	int rc = 0; /* error return value */
++	
++	if (read_timeout >= 0)
++		read_timeout = msecs_to_jiffies(read_timeout);
++	else
++		read_timeout = MAX_SCHEDULE_TIMEOUT;
++	
++	if (write_timeout >= 0)
++		write_timeout = msecs_to_jiffies(write_timeout);
++	else
++		write_timeout = MAX_SCHEDULE_TIMEOUT;
+ 
+ 	/* ----------------------------
+ 	 *     init wrapper device
+-- 
+2.34.1
 
-                set sendmail="/usr/bin/esmtp"
-                set envelope_from=yes
-                set from="Your Name <my.email@gmail.com>"
-                set use_from=yes
-                set edit_headers=yes
-
-                # IMAP settings
-                set imap_user = "username@gmail.com"
-                set imap_pass = "<mailbox password>"
-
-                # SMTP settings
-                set smtp_url = "smtps://username@smtp.gmail.com"
-                set smtp_pass = "<mailbox password>"
-
-                # Remote Gmail folders
-                set folder = "imaps://imap.gmail.com/"
-                set spoolfile = "+INBOX"
-                set postponed = "+[Gmail]/Drafts"
-                set record = "+[Gmail]/Sent Mail"
-                set trash = "+[Gmail]/Trash"
-
-        - Where the imap_pass, smtp_pass would be the App password or
-          the mailbox password.
-
-- To get the App password refer https://support.google.com/accounts/answer/185833?hl=en
-
-
-Regards,
-
-Sumitra
-
-
-
-> Regards,
-> Khadija
-> 
