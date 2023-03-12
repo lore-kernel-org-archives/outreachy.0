@@ -1,83 +1,98 @@
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-wr1-f53.google.com (mail-wr1-f53.google.com [209.85.221.53])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5FCCC1FC5
-	for <outreachy@lists.linux.dev>; Sun, 12 Mar 2023 13:22:04 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6E2171FC5;
+	Sun, 12 Mar 2023 13:34:00 +0000 (UTC)
+Received: by mail-wr1-f53.google.com with SMTP id p4so2815211wre.11;
+        Sun, 12 Mar 2023 06:34:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=XejGeO+qG7gpoTdf7ae2LmhMBn6QV1r5d0Cb0nYonJA=;
-  b=j3KKv3kVaWG1mmPAC2qq2tzlay7C52STQcg0+PtyMgUxzIsTCESgMUmZ
-   zGddNcLNz6KX7bkmKE2INUXwc7lzocYXqlAoO9cjv/SGv3goDX+5fLCqb
-   R1gWxhhKCaoVpGMlPrHTNZxOKzXcmQ1pxl5lmFhDIWTz0klx4n7J/v19A
-   0=;
-Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="5.98,254,1673910000"; 
-   d="scan'208";a="49925917"
-Received: from 231.85.89.92.rev.sfr.net (HELO hadrien) ([92.89.85.231])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Mar 2023 14:21:57 +0100
-Date: Sun, 12 Mar 2023 14:21:56 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Sumitra Sharma <sumitraartsy@gmail.com>
-cc: outreachy@lists.linux.dev
-Subject: Re: [PATCH] Staging: qlge: Fix indentation in conditional
- statement
-In-Reply-To: <20230312122928.GL14247@ubuntu>
-Message-ID: <alpine.DEB.2.22.394.2303121412090.2865@hadrien>
-References: <20230312122928.GL14247@ubuntu>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+        d=gmail.com; s=20210112; t=1678628038;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=eiPifvN1XyvobUmqZyfiK5INxKhDqGlZtgkMioL3vMo=;
+        b=GD6j0vNGy5Lk6teLi7snFXICeRLvcvAeHQgKz0wMKKq51ZXiBSetiG1myusJCpWqVe
+         MCbUrIEUent2OpbRaxrwkbESipcSRMf0O54/mi2vOxROjfEbdnMdZhOiWn3RvMY7H1s8
+         RmkgPL6SsjyEdNMajkghtLSIz5+I1ObSj5m/cfnSaLwlT3Lvqej8N0secVKSpfU1Ei4V
+         /jJM9HTgGarrtGxNwo1RWQgHcnB+qkeJXQhQ6z6h+MxUtyVICwYD9VTZPrw5SoNFt+Js
+         zIjJ0qTAykb4W5c0GPQS/MKs17RVVFfND2owpMimAUJMdQdNFmhVZ9PXrEwBX9hLn2eq
+         zpqg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678628038;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=eiPifvN1XyvobUmqZyfiK5INxKhDqGlZtgkMioL3vMo=;
+        b=WbC+vkhyovjy2WI4jHev7S266obxaSdeKZLYzBKtS9rn19kGxtC+D/evInTWIvKGJ9
+         hdIDsZvFYNPbll/1640uXB/7d+hAagHB2GwDJSmSIQUbxBZWu+cfgv8tjIK0pSusT5X8
+         ImhA37flGngLNzU7mlT5Nq4jnDsSrB4UNM9BjStNPHFrX0zAwVpx8lLY+NH4mRMtBchs
+         kZXwoxE3jjeNWeXGL9nxYGg6qqGW5t1IC3g3CY581zaHEqPzFxRdyoxjaOwjHBM5FzpO
+         iQUwyhy72CCaq6U8M5Dkxbpap4Ag1Yc0PRVyIzDkITE+3bhhraLrMAOgOLEHMwJnygpg
+         g3Bw==
+X-Gm-Message-State: AO0yUKU9cw/qodSnMYrDbOHLJpE3FitsxOxl5tK0gX/RtOP1x7JztLan
+	Zz2okT6beti9m/B/8ehUnCTOMP+FABw=
+X-Google-Smtp-Source: AK7set/puNB5iYM3sVYz/qm/8L3NnuFuYKU862+lC/uC5s4YoS4lGRh4xVvFdbe9kTag0BdON6cycA==
+X-Received: by 2002:adf:df8f:0:b0:2ce:a758:d6fb with SMTP id z15-20020adfdf8f000000b002cea758d6fbmr3149122wrl.1.1678628038167;
+        Sun, 12 Mar 2023 06:33:58 -0700 (PDT)
+Received: from alaa-emad.. ([41.42.177.251])
+        by smtp.gmail.com with ESMTPSA id x3-20020a5d6503000000b002c55306f6edsm5144594wru.54.2023.03.12.06.33.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 12 Mar 2023 06:33:57 -0700 (PDT)
+From: Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>
+To: outreachy@lists.linux.dev
+Cc: lars@metafoo.de,
+	Michael.Hennerich@analog.com,
+	jic23@kernel.org,
+	gregkh@linuxfoundation.org,
+	linux-iio@vger.kernel.org,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	eng.mennamahmoud.mm@gmail.com
+Subject: [PATCH] staging: iio: meter: enclose Macros with complex values in parentheses
+Date: Sun, 12 Mar 2023 15:33:47 +0200
+Message-Id: <20230312133347.120944-1-eng.mennamahmoud.mm@gmail.com>
+X-Mailer: git-send-email 2.34.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
+enclose Macros with complex values in parentheses is especially useful
+in making macro definitions “safe” (so that they
+evaluate each operand exactly once).
 
+this error reported by chechpatch.pl
 
-On Sun, 12 Mar 2023, Sumitra Sharma wrote:
+"ERROR: Macros with complex values should be enclosed in parentheses"
 
-> Hi julia,
->
-> >> Hi julia
-> >>
-> >> I was referring to the reply you sent in this thread and asking to quote
-> >> the most relevant information in the mails so that people on the list
-> >> can know what is being discussed. And I will take care of this in my
-> >> upcoming mails.
-> >>
-> >
-> > Sorry to press the point, but you should be doing it now, not promising to
-> > do it in the future.
-> >
->
-> I am sorry for repeating my mistake again and again and may be this time
-> too. But, I am trying to correct it.
->
-> >
-> > If there is some challenge in doing this, please let us know, and perhaps someone can offer some advice.
-> >
->
-> To be honest I am struggling responding inline. Right now I did it
-> maually by pasting your message into mutt and putting the ">" things. I
-> know this is not the correct way to do. Please guide me to the correct method of responding inline.
+for ADE7854_SPI_SLOW, ADE7854_SPI_BURST and ADE7854_SPI_FAST
+macros and this error fixed by enclose these macros in parentheses.
 
-I don't use either gmail or mutt, so I'm not an expert.  But to interact
-with others about your patches, you will have to solve this problem.
+Signed-off-by: Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>
+---
+ drivers/staging/iio/meter/ade7854.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-You should be able to receive messages in mutt.  There is some information
-in the Outreachy first patch tutorial:
+diff --git a/drivers/staging/iio/meter/ade7854.h b/drivers/staging/iio/meter/ade7854.h
+index 7a49f8f1016f..41eeedef569b 100644
+--- a/drivers/staging/iio/meter/ade7854.h
++++ b/drivers/staging/iio/meter/ade7854.h
+@@ -139,9 +139,9 @@
+ #define ADE7854_MAX_RX    7
+ #define ADE7854_STARTUP_DELAY 1000
+ 
+-#define ADE7854_SPI_SLOW	(u32)(300 * 1000)
+-#define ADE7854_SPI_BURST	(u32)(1000 * 1000)
+-#define ADE7854_SPI_FAST	(u32)(2000 * 1000)
++#define ADE7854_SPI_SLOW	((u32)(300 * 1000))
++#define ADE7854_SPI_BURST	((u32)(1000 * 1000))
++#define ADE7854_SPI_FAST	((u32)(2000 * 1000))
+ 
+ /**
+  * struct ade7854_state - device instance specific data
+-- 
+2.34.1
 
-https://kernelnewbies.org/Outreachyfirstpatch
-
-The following link may be useful:
-
-https://www.makeuseof.com/install-configure-mutt-with-gmail-on-linux/
-
-Once your mail arrives in mutt, you should just be able to respond to
-other people and have the >s in front of what they said directly.
-
-julia
