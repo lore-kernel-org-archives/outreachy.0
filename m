@@ -1,124 +1,127 @@
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-pl1-f171.google.com (mail-pl1-f171.google.com [209.85.214.171])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7A6E31FAE;
-	Mon, 13 Mar 2023 06:37:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BDCF4C433D2;
-	Mon, 13 Mar 2023 06:37:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1678689451;
-	bh=r9kW8lFttxXP+IM+CgVFDPUgdBtmyVi6pNxZ7oi2iEs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=WDW3NWDXx+DN3mgyjqzm3PvnsVKTvI8/hkt/KAQ8mcFBRYanq9Zv67BPCkYB0RNaD
-	 C8Kk0EGbyviugjrJyvp0jEAIcGDRfq3fR64XRpHczTZxDnCaN80MSQUbIMQ49Evffn
-	 1yMXwiClL/P+YHQvFrM111bu4YBm/paZoOLn3HLg=
-Date: Mon, 13 Mar 2023 07:37:28 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Khadija Kamran <kamrankhadijadj@gmail.com>
-Cc: outreachy@lists.linux.dev, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v4] staging: axis-fifo: initialize read_timeout and
- write_timeout once in probe function
-Message-ID: <ZA7EqO0XQ5L8fZej@kroah.com>
-References: <ZA4M3+ZeB1Rl2fbs@khadija-virtual-machine>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 79B1023A7
+	for <outreachy@lists.linux.dev>; Mon, 13 Mar 2023 09:09:41 +0000 (UTC)
+Received: by mail-pl1-f171.google.com with SMTP id u5so12159138plq.7
+        for <outreachy@lists.linux.dev>; Mon, 13 Mar 2023 02:09:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1678698581;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=ZldElwuo4oBrQVbh8vFiz5IRsvk0wB+FSB07QGWqF8M=;
+        b=Ty++Q01r+LdVfo/m2iDvvk5QYAtaRIqgYehYd9cXftk2NN8M3z1wz3il/1LOK/AW0c
+         4PmCr7XwjINrTQyUYXtAP6rCwogJRpCLxXqYGimBnoFDz9/6j0c4KKTrEQ9CK8f5dwVy
+         BB6WCN7WFAjxGerZ1RuPPOdM5aBPEnJnFN7aQpMLG3g89uGqlKp/PKqtv6D9FErYLktr
+         +rAEpYrwsa0gG3pwk9CrbIKE+CD6+iRP/GkOUhP7AEghpgTVEH5Ye/9XTa2cpmG/7DH4
+         l4BY3rnDo5kbtLzz/9PLxhIINAFPmS8OOY8WI4kvjOiJTK4GrKqRlYulY5pwybxWIZVD
+         XPPw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678698581;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ZldElwuo4oBrQVbh8vFiz5IRsvk0wB+FSB07QGWqF8M=;
+        b=KHSx/NZ7zP0b4zRWsNPj3XzCJmgBgRNzHnX1+KKpV5xx61R2qmfmCuo8VzTyFaVhWV
+         v2oQjAPFn/CPfxoosIzuiK0R+xLv7aNg4rg2Qfc0S1TucB8Rt2juUjXhhPHshm9XMvpv
+         znNqoHvEhVYg4y8fIr8r07gcrWfX3k63HQSB0nTlNNC0MNoFj5fh65cWvqRt+bq0/cu0
+         YC62Dsmn0Z2j6KTO6x+MbPITn4Y+PeyyXe+iahxvUrvblrJaq9XjBpI/7ynjzOwCEjP5
+         RhhE5x2blvBddoMNfz0iHuplV87lEpljNEdrG3m5G2LUtWWkq+lZv3rJ+HPHqtLjAOhX
+         y7Iw==
+X-Gm-Message-State: AO0yUKVYIkPvYpFbZwC4UPs8F1uPGfc6zupRY6R3aD9CkZZ2YAWG+pk7
+	3uKO35BPoGxslhSNb1mISa3xiVYsNkQ=
+X-Google-Smtp-Source: AK7set8NDrnUUXO/sULumJOhcMENMmp8U8YtI6YDDycSxM8NahGjHmuf9DPYsw2izfpHo1UokR3BEg==
+X-Received: by 2002:a05:6a20:bc9d:b0:d4:3b96:b549 with SMTP id fx29-20020a056a20bc9d00b000d43b96b549mr2959370pzb.27.1678698580759;
+        Mon, 13 Mar 2023 02:09:40 -0700 (PDT)
+Received: from debian.me (subs28-116-206-12-36.three.co.id. [116.206.12.36])
+        by smtp.gmail.com with ESMTPSA id h3-20020aa786c3000000b005a8bc11d259sm4061503pfo.141.2023.03.13.02.09.39
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 13 Mar 2023 02:09:40 -0700 (PDT)
+Received: by debian.me (Postfix, from userid 1000)
+	id 2291B105FA8; Mon, 13 Mar 2023 16:09:34 +0700 (WIB)
+Date: Mon, 13 Mar 2023 16:09:34 +0700
+From: Bagas Sanjaya <bagasdotme@gmail.com>
+To: Sumitra Sharma <sumitraartsy@gmail.com>, outreachy@lists.linux.dev
+Subject: Re: [KERNEL NEWBIES ACCESS] Sumitra Sharma
+Message-ID: <ZA7oTq4LwuatjaI4@debian.me>
+References: <20230312170757.GE28100@ubuntu>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="X9apdx458wT9WMk4"
 Content-Disposition: inline
-In-Reply-To: <ZA4M3+ZeB1Rl2fbs@khadija-virtual-machine>
+In-Reply-To: <20230312170757.GE28100@ubuntu>
 
-On Sun, Mar 12, 2023 at 10:33:19PM +0500, Khadija Kamran wrote:
-> Module parameter, read_timeout, can only be set at loading time. As it
-> can only be modified once, initialize read_timeout once in the probe
-> function.
-> As a result, only use read_timeout as the last argument in
-> wait_event_interruptible_timeout() call.
-> 
-> Same goes for write_timeout.
-> 
-> Signed-off-by: Khadija Kamran <kamrankhadijadj@gmail.com>
-> ---
->  drivers/staging/axis-fifo/axis-fifo.c | 18 ++++++++++++------
->  1 file changed, 12 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/staging/axis-fifo/axis-fifo.c b/drivers/staging/axis-fifo/axis-fifo.c
-> index b119cec25a60..7ec8722cef7d 100644
-> --- a/drivers/staging/axis-fifo/axis-fifo.c
-> +++ b/drivers/staging/axis-fifo/axis-fifo.c
-> @@ -384,9 +384,7 @@ static ssize_t axis_fifo_read(struct file *f, char __user *buf,
->  		mutex_lock(&fifo->read_lock);
->  		ret = wait_event_interruptible_timeout(fifo->read_queue,
->  			ioread32(fifo->base_addr + XLLF_RDFO_OFFSET),
-> -			(read_timeout >= 0) ?
-> -			msecs_to_jiffies(read_timeout) :
-> -			MAX_SCHEDULE_TIMEOUT);
-> +			read_timeout);
->  
->  		if (ret <= 0) {
->  			if (ret == 0) {
-> @@ -528,9 +526,7 @@ static ssize_t axis_fifo_write(struct file *f, const char __user *buf,
->  		ret = wait_event_interruptible_timeout(fifo->write_queue,
->  			ioread32(fifo->base_addr + XLLF_TDFV_OFFSET)
->  				 >= words_to_write,
-> -			(write_timeout >= 0) ?
-> -			msecs_to_jiffies(write_timeout) :
-> -			MAX_SCHEDULE_TIMEOUT);
-> +			write_timeout);
->  
->  		if (ret <= 0) {
->  			if (ret == 0) {
-> @@ -814,6 +810,16 @@ static int axis_fifo_probe(struct platform_device *pdev)
->  	struct axis_fifo *fifo = NULL;
->  	char *device_name;
->  	int rc = 0; /* error return value */
-> +	
-> +	if (read_timeout >= 0)
-> +		read_timeout = msecs_to_jiffies(read_timeout);
-> +	else
-> +		read_timeout = MAX_SCHEDULE_TIMEOUT;
-> +	
-> +	if (write_timeout >= 0)
-> +		write_timeout = msecs_to_jiffies(write_timeout);
-> +	else
-> +		write_timeout = MAX_SCHEDULE_TIMEOUT;
->  
->  	/* ----------------------------
->  	 *     init wrapper device
-> -- 
-> 2.34.1
-> 
+
+--X9apdx458wT9WMk4
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Sun, Mar 12, 2023 at 10:07:57AM -0700, Sumitra Sharma wrote:
+> 1. The outreachy document does not include the steps to make the inbox wi=
+th mutt. The steps below can be added to configure mutt with gmail.
+>=20
+> 	- Open the ~/.muttrc
+> 	- Add the information=20
+> 	=09
+> 		set sendmail=3D"/usr/bin/esmtp"
+> 		set envelope_from=3Dyes
+> 		set from=3D"Your Name <my.email@gmail.com>"
+> 		set use_from=3Dyes
+> 		set edit_headers=3Dyes
+> 	=09
+> 		# IMAP settings
+> 		set imap_user =3D "username@gmail.com"
+> 		set imap_pass =3D "<mailbox password>"
+>=20
+> 		# SMTP settings
+> 		set smtp_url =3D "smtps://username@smtp.gmail.com"
+> 		set smtp_pass =3D "<mailbox password>"
+>=20
+> 		# Remote Gmail folders
+> 		set folder =3D "imaps://imap.gmail.com/"
+> 		set spoolfile =3D "+INBOX"
+> 		set postponed =3D "+[Gmail]/Drafts"
+> 		set record =3D "+[Gmail]/Sent Mail"
+> 		set trash =3D "+[Gmail]/Trash"
+> =09
+> 	- Where the imap_pass, smtp_pass would be the App password or
+> 	  the mailbox password.
 
 Hi,
 
-This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
-a patch that has triggered this response.  He used to manually respond
-to these common problems, but in order to save his sanity (he kept
-writing the same thing over and over, yet to different people), I was
-created.  Hopefully you will not take offence and will fix the problem
-in your patch and resubmit it so that it can be accepted into the Linux
-kernel tree.
+You may also consider updating OutreachyfirstpatchAlt.
 
-You are receiving this message because of the following common error(s)
-as indicated below:
+For MTA, replace the now abandoned esmtp with Postfix. Configure the MTA as
+null client (see [1]). For system-generated emails sent to root and postmas=
+ter,
+you will also need to canonicalize these recipient addresses to your email
+address (see [2]).
 
-- Your patch contains warnings and/or errors noticed by the
-  scripts/checkpatch.pl tool.
+For mutt config, set sendmail to "/usr/sbin/sendmail"/
 
-- This looks like a new version of a previously submitted patch, but you
-  did not list below the --- line any changes from the previous version.
-  Please read the section entitled "The canonical patch format" in the
-  kernel file, Documentation/process/submitting-patches.rst for what
-  needs to be done here to properly describe this.
+Thanks.
 
-If you wish to discuss this problem further, or you have questions about
-how to resolve this issue, please feel free to respond to this email and
-Greg will reply once he has dug out from the pending patches received
-from other developers.
+[1]: https://www.thegeeksearch.com/how-to-configure-postfix-null-client/
+[2]: https://askubuntu.com/a/599513
 
-thanks,
+--=20
+An old man doll... just what I always wanted! - Clara
 
-greg k-h's patch email bot
+--X9apdx458wT9WMk4
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQSSYQ6Cy7oyFNCHrUH2uYlJVVFOowUCZA7oSAAKCRD2uYlJVVFO
+o29QAP95axC6GJFiVS8vh5Zr00CS0TGbXHaqzHgdueRHxALpnwEA+xgsTbIlq/ZV
+mbA+mTGOmX0iPDW8hZl2ulq4ZkcWVQg=
+=me7K
+-----END PGP SIGNATURE-----
+
+--X9apdx458wT9WMk4--
