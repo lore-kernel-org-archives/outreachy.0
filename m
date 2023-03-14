@@ -1,200 +1,91 @@
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ed1-f46.google.com (mail-ed1-f46.google.com [209.85.208.46])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4141C8C17;
-	Mon, 13 Mar 2023 20:54:47 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8B77D180;
+	Tue, 14 Mar 2023 00:08:02 +0000 (UTC)
+Received: by mail-ed1-f46.google.com with SMTP id j11so55510090edq.4;
+        Mon, 13 Mar 2023 17:08:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=xMd74+/ONdTCuz+2e1f+Q/89W414OVApGi6FFyFngXQ=;
-  b=n4UNjjea45ekjrnjO+t2nw4q9LWnyCWLOGhTkISmCz4CSl3AxhadYSMM
-   4nhiMOcTOiKXjmDeSXRWwJAGNs+HsZ7u777QS9nekyUbXHMs1FA43Bnqz
-   SwotloN1fzBwWJ0LR9/ZUtTGQzwBiyhzxrUPnbrrFwg/xcwwvJLE5kvew
-   s=;
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="5.98,257,1673910000"; 
-   d="scan'208";a="96962919"
-Received: from 231.85.89.92.rev.sfr.net (HELO hadrien) ([92.89.85.231])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Mar 2023 21:54:39 +0100
-Date: Mon, 13 Mar 2023 21:54:39 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Kloudifold <cloudifold.3125@gmail.com>
-cc: teddy.wang@siliconmotion.com, sudipm.mukherjee@gmail.com, 
-    gregkh@linuxfoundation.org, linux-staging@lists.linux.dev, 
-    outreachy@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2] staging: sm750: Rename function to avoid CamelCase
-In-Reply-To: <ZA+K6OdPe21k8F2k@CloudiRingWorld>
-Message-ID: <alpine.DEB.2.22.394.2303132149440.3007@hadrien>
-References: <ZA+K6OdPe21k8F2k@CloudiRingWorld>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+        d=gmail.com; s=20210112; t=1678752481;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=A2ukH6WAZ8EttWg0OswBTEdX1j9zDdqS5u5M40aGmp0=;
+        b=Cs9Of024cqf9TlHnAmq+MlNmaZdAuCMQBfmvSXd/aDPKlzbAsdx3WuTfnmLa3rthFl
+         Jc8kCmzE7+8jXd7qYo1BzlM3P1gBRWaR6+Rvomc9EbpgoP1xFENtPOhVgqS7GOTYwPyt
+         RGRd1KskLclkuwnU/YQ5DoyAUTujpwinNMMlX5lJz21OJasErqh5Dq/s9ctc4bQhOvtu
+         nWax6M/MXri3etbTS5QvpL5f67NHi98nunD0c8+QNbSd3Xa6jUPZql7EqEs9SfF/pUUq
+         Ic8/Ovn/SfCrHWP1ZihszXcF+omWxJgjKDJ+wGEXWNhEH2DyXUxHyYhQHjwUNBmNp2TX
+         flDg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678752481;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=A2ukH6WAZ8EttWg0OswBTEdX1j9zDdqS5u5M40aGmp0=;
+        b=1ThfjvzTTf4ZI25LAbqFhJ1Jyy5IWeml5gGsGunPzBD70tvcC0LgDpxM5hQhl4Yusw
+         RE8C5kmCwB3K3h2J785lD8YS1wBhBkDHrRadx4MvGbKeutapPCgeQoPz2kQsGfmioPE7
+         nf/zL8dhEzGMIPuF/+6bms5FgU9JB5wQpclStRBc6E0Rrhjtl2R6ZuUP6ezAeXVbmpK6
+         YEZLMbYbWQG8gu7Rg0UNijesM5hjfmAJq0e1F52euv/vpK/deUQKAUeCQ0HZrIiFOPN7
+         pTl7uRIVbtqvJmMGIVj7JnRAfQmFDwWD2zUkz+YzRk0QILjDyBgmv6r8wK0qEWwDshuv
+         n6Hg==
+X-Gm-Message-State: AO0yUKUCfQWryrlPC+/EhlzmaBqvodS652F35JHA45pSYuzVnTnfAv9Z
+	i7br8ClXxmT0tv+wQY7F56GKzFJMgrs=
+X-Google-Smtp-Source: AK7set9CotDXNOtvrT9WBiu6WzHL5SzfydYWqI8zVpwQyv4iOdBiMbKAW0gqEe9Ltdx9LQpoG1aHAA==
+X-Received: by 2002:a17:906:739e:b0:91d:9b07:94c3 with SMTP id f30-20020a170906739e00b0091d9b0794c3mr10493385ejl.0.1678752480654;
+        Mon, 13 Mar 2023 17:08:00 -0700 (PDT)
+Received: from [192.168.0.104] (p57935146.dip0.t-ipconnect.de. [87.147.81.70])
+        by smtp.gmail.com with ESMTPSA id cb17-20020a170906a45100b008deba75e89csm369673ejb.66.2023.03.13.17.07.59
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 13 Mar 2023 17:08:00 -0700 (PDT)
+Message-ID: <64f9d3ca-268e-71ae-4a6d-b71315a8406e@gmail.com>
+Date: Tue, 14 Mar 2023 01:07:59 +0100
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: [PATCH v2] staging: sm750: Rename function to avoid CamelCase
+To: Kloudifold <cloudifold.3125@gmail.com>, teddy.wang@siliconmotion.com,
+ sudipm.mukherjee@gmail.com, gregkh@linuxfoundation.org,
+ linux-staging@lists.linux.dev, outreachy@lists.linux.dev
+Cc: linux-kernel@vger.kernel.org
+References: <ZA+K6OdPe21k8F2k@CloudiRingWorld>
+Content-Language: en-US
+From: Philipp Hortmann <philipp.g.hortmann@gmail.com>
+In-Reply-To: <ZA+K6OdPe21k8F2k@CloudiRingWorld>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 
-
-
-On Tue, 14 Mar 2023, Kloudifold wrote:
-
+On 3/13/23 21:43, Kloudifold wrote:
 > The sm750 driver had some functions named in CamelCase,
 > which violates the kernel's naming convention.
 > In this patch, I rename these functions to snake case,
 > which is the expected style.
 
-Please go back and read the Outreachy tutorial, specifically the Patch
-Philosophy page:
+Hi,
+please make the Subject more unique. Many patches could have this name.
+Look for examples in:
+https://lore.kernel.org/linux-staging/
 
-https://kernelnewbies.org/PatchPhilosophy
-
-The log message should be in the imperative.  You should try to avoid the
-use of "I".  "In this patch" is not necessary.  Mentioning the name of the
-driver is not necessary, since it appears in the subject line and in the
-list of changed files below.
+Please use your full name consisting of a given name and a family name 
+in front of your email. Or is this not possible and "Kloudifold" is both?
 
 > This v2 patch was prompted by an error reported by the
 > Linux test robot, which detected the compile error.
-
-This is not easy to understand.  What do you mean by a compile error.
-Normally the use or non use of Camel case would be a coding style
-violation, but would not provoke a compiler error.
-
-julia
-
 > | Reported-by: kernel test robot <lkp@intel.com>
 > | Link: https://lore.kernel.org/oe-kbuild-all/202303110849.X24WnHnM-lkp@intel.com/
->
+> 
 > Signed-off-by: Kloudifold <cloudifold.3125@gmail.com>
-> ---
->  drivers/staging/sm750fb/sm750.c        | 22 +++++++++++-----------
->  drivers/staging/sm750fb/sm750_cursor.c | 14 +++++++-------
->  drivers/staging/sm750fb/sm750_cursor.h | 12 ++++++------
->  3 files changed, 24 insertions(+), 24 deletions(-)
->
-> diff --git a/drivers/staging/sm750fb/sm750.c b/drivers/staging/sm750fb/sm750.c
-> index effc7fcc3..9ddcd7b7d 100644
-> --- a/drivers/staging/sm750fb/sm750.c
-> +++ b/drivers/staging/sm750fb/sm750.c
-> @@ -121,14 +121,14 @@ static int lynxfb_ops_cursor(struct fb_info *info, struct fb_cursor *fbcursor)
->
->  	sm750_hw_cursor_disable(cursor);
->  	if (fbcursor->set & FB_CUR_SETSIZE)
-> -		sm750_hw_cursor_setSize(cursor,
-> -					fbcursor->image.width,
-> -					fbcursor->image.height);
-> +		sm750_hw_cursor_set_size(cursor,
-> +					 fbcursor->image.width,
-> +					 fbcursor->image.height);
->
->  	if (fbcursor->set & FB_CUR_SETPOS)
-> -		sm750_hw_cursor_setPos(cursor,
-> -				       fbcursor->image.dx - info->var.xoffset,
-> -				       fbcursor->image.dy - info->var.yoffset);
-> +		sm750_hw_cursor_set_pos(cursor,
-> +				        fbcursor->image.dx - info->var.xoffset,
-> +				        fbcursor->image.dy - info->var.yoffset);
->
->  	if (fbcursor->set & FB_CUR_SETCMAP) {
->  		/* get the 16bit color of kernel means */
-> @@ -142,14 +142,14 @@ static int lynxfb_ops_cursor(struct fb_info *info, struct fb_cursor *fbcursor)
->  		     ((info->cmap.green[fbcursor->image.bg_color] & 0xfc00) >> 5) |
->  		     ((info->cmap.blue[fbcursor->image.bg_color] & 0xf800) >> 11);
->
-> -		sm750_hw_cursor_setColor(cursor, fg, bg);
-> +		sm750_hw_cursor_set_color(cursor, fg, bg);
->  	}
->
->  	if (fbcursor->set & (FB_CUR_SETSHAPE | FB_CUR_SETIMAGE)) {
-> -		sm750_hw_cursor_setData(cursor,
-> -					fbcursor->rop,
-> -					fbcursor->image.data,
-> -					fbcursor->mask);
-> +		sm750_hw_cursor_set_data(cursor,
-> +					 fbcursor->rop,
-> +					 fbcursor->image.data,
-> +					 fbcursor->mask);
->  	}
->
->  	if (fbcursor->enable)
-> diff --git a/drivers/staging/sm750fb/sm750_cursor.c b/drivers/staging/sm750fb/sm750_cursor.c
-> index 43e6f52c2..ff643e33f 100644
-> --- a/drivers/staging/sm750fb/sm750_cursor.c
-> +++ b/drivers/staging/sm750fb/sm750_cursor.c
-> @@ -58,13 +58,13 @@ void sm750_hw_cursor_disable(struct lynx_cursor *cursor)
->  	poke32(HWC_ADDRESS, 0);
->  }
->
-> -void sm750_hw_cursor_setSize(struct lynx_cursor *cursor, int w, int h)
-> +void sm750_hw_cursor_set_size(struct lynx_cursor *cursor, int w, int h)
->  {
->  	cursor->w = w;
->  	cursor->h = h;
->  }
->
-> -void sm750_hw_cursor_setPos(struct lynx_cursor *cursor, int x, int y)
-> +void sm750_hw_cursor_set_pos(struct lynx_cursor *cursor, int x, int y)
->  {
->  	u32 reg;
->
-> @@ -73,7 +73,7 @@ void sm750_hw_cursor_setPos(struct lynx_cursor *cursor, int x, int y)
->  	poke32(HWC_LOCATION, reg);
->  }
->
-> -void sm750_hw_cursor_setColor(struct lynx_cursor *cursor, u32 fg, u32 bg)
-> +void sm750_hw_cursor_set_color(struct lynx_cursor *cursor, u32 fg, u32 bg)
->  {
->  	u32 reg = (fg << HWC_COLOR_12_2_RGB565_SHIFT) &
->  		HWC_COLOR_12_2_RGB565_MASK;
-> @@ -82,8 +82,8 @@ void sm750_hw_cursor_setColor(struct lynx_cursor *cursor, u32 fg, u32 bg)
->  	poke32(HWC_COLOR_3, 0xffe0);
->  }
->
-> -void sm750_hw_cursor_setData(struct lynx_cursor *cursor, u16 rop,
-> -			     const u8 *pcol, const u8 *pmsk)
-> +void sm750_hw_cursor_set_data(struct lynx_cursor *cursor, u16 rop,
-> +			      const u8 *pcol, const u8 *pmsk)
->  {
->  	int i, j, count, pitch, offset;
->  	u8 color, mask, opr;
-> @@ -132,8 +132,8 @@ void sm750_hw_cursor_setData(struct lynx_cursor *cursor, u16 rop,
->  	}
->  }
->
-> -void sm750_hw_cursor_setData2(struct lynx_cursor *cursor, u16 rop,
-> -			      const u8 *pcol, const u8 *pmsk)
-> +void sm750_hw_cursor_set_data2(struct lynx_cursor *cursor, u16 rop,
-> +			       const u8 *pcol, const u8 *pmsk)
->  {
->  	int i, j, count, pitch, offset;
->  	u8 color, mask;
-> diff --git a/drivers/staging/sm750fb/sm750_cursor.h b/drivers/staging/sm750fb/sm750_cursor.h
-> index b59643dd6..88fa02f63 100644
-> --- a/drivers/staging/sm750fb/sm750_cursor.h
-> +++ b/drivers/staging/sm750fb/sm750_cursor.h
-> @@ -5,11 +5,11 @@
->  /* hw_cursor_xxx works for voyager,718 and 750 */
->  void sm750_hw_cursor_enable(struct lynx_cursor *cursor);
->  void sm750_hw_cursor_disable(struct lynx_cursor *cursor);
-> -void sm750_hw_cursor_setSize(struct lynx_cursor *cursor, int w, int h);
-> -void sm750_hw_cursor_setPos(struct lynx_cursor *cursor, int x, int y);
-> -void sm750_hw_cursor_setColor(struct lynx_cursor *cursor, u32 fg, u32 bg);
-> -void sm750_hw_cursor_setData(struct lynx_cursor *cursor, u16 rop,
-> -			     const u8 *data, const u8 *mask);
-> -void sm750_hw_cursor_setData2(struct lynx_cursor *cursor, u16 rop,
-> +void sm750_hw_cursor_set_size(struct lynx_cursor *cursor, int w, int h);
-> +void sm750_hw_cursor_set_pos(struct lynx_cursor *cursor, int x, int y);
-> +void sm750_hw_cursor_set_color(struct lynx_cursor *cursor, u32 fg, u32 bg);
-> +void sm750_hw_cursor_set_data(struct lynx_cursor *cursor, u16 rop,
->  			      const u8 *data, const u8 *mask);
-> +void sm750_hw_cursor_set_data2(struct lynx_cursor *cursor, u16 rop,
-> +			       const u8 *data, const u8 *mask);
->  #endif
-> --
-> 2.39.2
->
->
->
+
+The explanation what has changed needs to be below the ---
+but your Signed-off-by: is not allowed to be below this ---
+Look for examples of v2 in:
+https://lore.kernel.org/linux-staging/
+
+Thanks
+
+Bye Philipp
