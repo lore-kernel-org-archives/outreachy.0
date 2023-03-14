@@ -1,234 +1,99 @@
-Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-pj1-f43.google.com (mail-pj1-f43.google.com [209.85.216.43])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AD02617C6;
-	Tue, 14 Mar 2023 03:46:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1678765587; x=1710301587;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=4ZQkvLBzEIFEJyZVe/6vqIMB8LLap8uGfbB1iaKfi+0=;
-  b=cmEZyFwauN2DqHtGo02SX2HyCAbiL6ajZhV0UDOaKtDX+fl3tzaSsQbg
-   ezQ0iERJz4+jdUtJ91Tqf4Qa2nIsJaAy7xywMSlJfV6oMwhXlUVoJtEQJ
-   7v49Hb381ryUg1/A7bd10i/mVB6Fw5z1cSlUOiqtSUat+EmkW36kJro5m
-   ChdYN1SiykbzycPWzDmbAMY6BNe1OmvTpwakZmvSW4VbILedJRS4zQ7An
-   MHbNsuVSQ7wK0pPhw3x96GcYqbXW+XVu2/+P1hSK4iVDHdu8FuMwOG2G+
-   GIsPE6pP1YA9XQCdv1u6YwYzlmvNdvNSMOFYLX9jVvXHPGyduKSZIOh4o
-   A==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10648"; a="334800584"
-X-IronPort-AV: E=Sophos;i="5.98,258,1673942400"; 
-   d="scan'208";a="334800584"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
-  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Mar 2023 20:46:13 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10648"; a="747849509"
-X-IronPort-AV: E=Sophos;i="5.98,258,1673942400"; 
-   d="scan'208";a="747849509"
-Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
-  by fmsmga004.fm.intel.com with ESMTP; 13 Mar 2023 20:46:12 -0700
-Received: from kbuild by b613635ddfff with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1pbvc3-0006Tk-1J;
-	Tue, 14 Mar 2023 03:46:11 +0000
-Date: Tue, 14 Mar 2023 11:45:51 +0800
-From: kernel test robot <lkp@intel.com>
-To: Khadija Kamran <kamrankhadijadj@gmail.com>, outreachy@lists.linux.dev
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] staging: axis-fifo: initialize timeouts in probe only
-Message-ID: <202303141159.6wN9HNP9-lkp@intel.com>
-References: <ZA9mThZ7NyRrQAMX@khadija-virtual-machine>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1C9621FD9
+	for <outreachy@lists.linux.dev>; Tue, 14 Mar 2023 04:40:09 +0000 (UTC)
+Received: by mail-pj1-f43.google.com with SMTP id e15-20020a17090ac20f00b0023d1b009f52so3820335pjt.2
+        for <outreachy@lists.linux.dev>; Mon, 13 Mar 2023 21:40:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1678768809;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=TDr6065VBcoyunemgesYIRaNeVt2k2NlbwTlbkU0PRk=;
+        b=ab/B1DlEviI3lrNwnMkTs/tLThchmZ6QMOBDizOfTVZv7fMtzew0iFGpY6HGUH6Ujk
+         v1/altAYZpCvT5Btx2jBARC3yelrlSMWHSSndYfjJvOLW9J/sz0eaSfv03pSEl1Jc9Ml
+         zjfJUcZRhDSxbI3l1ITfLspeag57/xX5dHaRkoBTrEvYYD/dyh4ndsq6TXSQsz+8vo3K
+         r/v3Q8mH3a62tTJRkC2Z1wNtLodAyI3v8mTg8UYhj1MM+CzfcBLagE1riQY6vfGs3Cko
+         Gs/rvpfvU2DFOmpJvs6fKYRULtFLH4ZTJeqXyBdP7zVzqEA0Sb7De/aAF4Gqz/6niL4q
+         ccSg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678768809;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=TDr6065VBcoyunemgesYIRaNeVt2k2NlbwTlbkU0PRk=;
+        b=Wa82bWwCe28k44XgWMzI2hLtegAg2pzmOsSIYY61QDtg/6xkcL3dQFnHHQ2VxQdUgv
+         VYtladkIHpDJer04jGRz6RF68DQv4NzlbSN8eDsAYnQIOYtCJiax4CXtqutJiqZxhvD/
+         maVWqgh1gy46Nar3rezA6K1ZLFa7Xz8Zj7LQlicEEo2/ZlARuqXj730nTNOkUgaHemcO
+         RFhoxgSTkZ6r8kq+gU309eHuFhyS4EF+nI4mIbj+Z1iR/hrg60kewROnTntetp1FDXTF
+         WCSyG+OM37pdDshNSJDwsrl7R94DyNrkDH+H6PBbaH4PDy5Y/4OkSJzECIeHzPeQ4YoH
+         16TA==
+X-Gm-Message-State: AO0yUKVNCJj+EgYAGHh4CgspM+cHgNljQMap1tZiR/eNV/WeMVcTnOqR
+	IVIM8ClUAUu3Ns+ws6fhmPM=
+X-Google-Smtp-Source: AK7set8daNHuTh0pS/LKU7K8L8Xfwc6Gj0Vdhsc2auQ7QfSU964zKl8OjCglOgZLuZPXaI662L4HgA==
+X-Received: by 2002:a17:902:720b:b0:19c:171a:d346 with SMTP id ba11-20020a170902720b00b0019c171ad346mr30984458plb.44.1678768809225;
+        Mon, 13 Mar 2023 21:40:09 -0700 (PDT)
+Received: from debian.me (subs02-180-214-232-88.three.co.id. [180.214.232.88])
+        by smtp.gmail.com with ESMTPSA id c17-20020a170903235100b00198fb25d09bsm627608plh.237.2023.03.13.21.40.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 13 Mar 2023 21:40:08 -0700 (PDT)
+Received: by debian.me (Postfix, from userid 1000)
+	id 4B1D11066DA; Tue, 14 Mar 2023 11:40:04 +0700 (WIB)
+Date: Tue, 14 Mar 2023 11:40:04 +0700
+From: Bagas Sanjaya <bagasdotme@gmail.com>
+To: Kloudifold <cloudifold.3125@gmail.com>, alison.schofield@intel.com
+Cc: outreachy@lists.linux.dev
+Subject: Re: Help in patch message
+Message-ID: <ZA/6pIGQuENzyxo2@debian.me>
+References: <ZA/Tql5l6dfNaMZ7@CloudiRingWorld>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="V46utTShU3kj7MWO"
 Content-Disposition: inline
-In-Reply-To: <ZA9mThZ7NyRrQAMX@khadija-virtual-machine>
-
-Hi Khadija,
-
-Thank you for the patch! Perhaps something to improve:
-
-[auto build test WARNING on staging/staging-testing]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Khadija-Kamran/staging-axis-fifo-initialize-timeouts-in-probe-only/20230314-020827
-patch link:    https://lore.kernel.org/r/ZA9mThZ7NyRrQAMX%40khadija-virtual-machine
-patch subject: [PATCH] staging: axis-fifo: initialize timeouts in probe only
-config: arm64-randconfig-r012-20230313 (https://download.01.org/0day-ci/archive/20230314/202303141159.6wN9HNP9-lkp@intel.com/config)
-compiler: clang version 17.0.0 (https://github.com/llvm/llvm-project 67409911353323ca5edf2049ef0df54132fa1ca7)
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # install arm64 cross compiling tool for clang build
-        # apt-get install binutils-aarch64-linux-gnu
-        # https://github.com/intel-lab-lkp/linux/commit/9d186f6c9f9bf467b48da3e28b0e9aa31fc3faf3
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Khadija-Kamran/staging-axis-fifo-initialize-timeouts-in-probe-only/20230314-020827
-        git checkout 9d186f6c9f9bf467b48da3e28b0e9aa31fc3faf3
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm64 olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm64 SHELL=/bin/bash drivers/staging/axis-fifo/
-
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
-| Link: https://lore.kernel.org/oe-kbuild-all/202303141159.6wN9HNP9-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
->> drivers/staging/axis-fifo/axis-fifo.c:817:18: warning: implicit conversion from 'long' to 'int' changes value from 9223372036854775807 to -1 [-Wconstant-conversion]
-                   read_timeout = MAX_SCHEDULE_TIMEOUT;
-                                ~ ^~~~~~~~~~~~~~~~~~~~
-   include/linux/sched.h:296:31: note: expanded from macro 'MAX_SCHEDULE_TIMEOUT'
-   #define MAX_SCHEDULE_TIMEOUT            LONG_MAX
-                                           ^~~~~~~~
-   include/vdso/limits.h:11:19: note: expanded from macro 'LONG_MAX'
-   #define LONG_MAX        ((long)(~0UL >> 1))
-                            ^~~~~~~~~~~~~~~~~
-   drivers/staging/axis-fifo/axis-fifo.c:822:19: warning: implicit conversion from 'long' to 'int' changes value from 9223372036854775807 to -1 [-Wconstant-conversion]
-                   write_timeout = MAX_SCHEDULE_TIMEOUT;
-                                 ~ ^~~~~~~~~~~~~~~~~~~~
-   include/linux/sched.h:296:31: note: expanded from macro 'MAX_SCHEDULE_TIMEOUT'
-   #define MAX_SCHEDULE_TIMEOUT            LONG_MAX
-                                           ^~~~~~~~
-   include/vdso/limits.h:11:19: note: expanded from macro 'LONG_MAX'
-   #define LONG_MAX        ((long)(~0UL >> 1))
-                            ^~~~~~~~~~~~~~~~~
-   2 warnings generated.
+In-Reply-To: <ZA/Tql5l6dfNaMZ7@CloudiRingWorld>
 
 
-vim +817 drivers/staging/axis-fifo/axis-fifo.c
+--V46utTShU3kj7MWO
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-   805	
-   806	static int axis_fifo_probe(struct platform_device *pdev)
-   807	{
-   808		struct resource *r_mem; /* IO mem resources */
-   809		struct device *dev = &pdev->dev; /* OS device (from device tree) */
-   810		struct axis_fifo *fifo = NULL;
-   811		char *device_name;
-   812		int rc = 0; /* error return value */
-   813	
-   814		if (read_timeout >= 0)
-   815			read_timeout = msecs_to_jiffies(read_timeout);
-   816		else
- > 817			read_timeout = MAX_SCHEDULE_TIMEOUT;
-   818	
-   819		if (write_timeout >= 0)
-   820			write_timeout = msecs_to_jiffies(write_timeout);
-   821		else
-   822			write_timeout = MAX_SCHEDULE_TIMEOUT;
-   823	
-   824		/* ----------------------------
-   825		 *     init wrapper device
-   826		 * ----------------------------
-   827		 */
-   828	
-   829		device_name = devm_kzalloc(dev, 32, GFP_KERNEL);
-   830		if (!device_name)
-   831			return -ENOMEM;
-   832	
-   833		/* allocate device wrapper memory */
-   834		fifo = devm_kzalloc(dev, sizeof(*fifo), GFP_KERNEL);
-   835		if (!fifo)
-   836			return -ENOMEM;
-   837	
-   838		dev_set_drvdata(dev, fifo);
-   839		fifo->dt_device = dev;
-   840	
-   841		init_waitqueue_head(&fifo->read_queue);
-   842		init_waitqueue_head(&fifo->write_queue);
-   843	
-   844		mutex_init(&fifo->read_lock);
-   845		mutex_init(&fifo->write_lock);
-   846	
-   847		/* ----------------------------
-   848		 *   init device memory space
-   849		 * ----------------------------
-   850		 */
-   851	
-   852		/* get iospace for the device */
-   853		r_mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-   854		if (!r_mem) {
-   855			dev_err(fifo->dt_device, "invalid address\n");
-   856			rc = -ENODEV;
-   857			goto err_initial;
-   858		}
-   859	
-   860		/* request physical memory */
-   861		fifo->base_addr = devm_ioremap_resource(fifo->dt_device, r_mem);
-   862		if (IS_ERR(fifo->base_addr)) {
-   863			rc = PTR_ERR(fifo->base_addr);
-   864			goto err_initial;
-   865		}
-   866	
-   867		dev_dbg(fifo->dt_device, "remapped memory to 0x%p\n", fifo->base_addr);
-   868	
-   869		/* create unique device name */
-   870		snprintf(device_name, 32, "%s_%pa", DRIVER_NAME, &r_mem->start);
-   871		dev_dbg(fifo->dt_device, "device name [%s]\n", device_name);
-   872	
-   873		/* ----------------------------
-   874		 *          init IP
-   875		 * ----------------------------
-   876		 */
-   877	
-   878		rc = axis_fifo_parse_dt(fifo);
-   879		if (rc)
-   880			goto err_initial;
-   881	
-   882		reset_ip_core(fifo);
-   883	
-   884		/* ----------------------------
-   885		 *    init device interrupts
-   886		 * ----------------------------
-   887		 */
-   888	
-   889		/* get IRQ resource */
-   890		rc = platform_get_irq(pdev, 0);
-   891		if (rc < 0)
-   892			goto err_initial;
-   893	
-   894		/* request IRQ */
-   895		fifo->irq = rc;
-   896		rc = devm_request_irq(fifo->dt_device, fifo->irq, &axis_fifo_irq, 0,
-   897				      DRIVER_NAME, fifo);
-   898		if (rc) {
-   899			dev_err(fifo->dt_device, "couldn't allocate interrupt %i\n",
-   900				fifo->irq);
-   901			goto err_initial;
-   902		}
-   903	
-   904		/* ----------------------------
-   905		 *      init char device
-   906		 * ----------------------------
-   907		 */
-   908	
-   909		/* create character device */
-   910		fifo->miscdev.fops = &fops;
-   911		fifo->miscdev.minor = MISC_DYNAMIC_MINOR;
-   912		fifo->miscdev.name = device_name;
-   913		fifo->miscdev.groups = axis_fifo_attrs_groups;
-   914		fifo->miscdev.parent = dev;
-   915		rc = misc_register(&fifo->miscdev);
-   916		if (rc < 0)
-   917			goto err_initial;
-   918	
-   919		dev_info(fifo->dt_device, "axis-fifo created at %pa mapped to 0x%pa, irq=%i\n",
-   920			 &r_mem->start, &fifo->base_addr, fifo->irq);
-   921	
-   922		return 0;
-   923	
-   924	err_initial:
-   925		dev_set_drvdata(dev, NULL);
-   926		return rc;
-   927	}
-   928	
+On Tue, Mar 14, 2023 at 09:53:46AM +0800, Kloudifold wrote:
+> Recently, I submitted a patch that has been rejected, and I am not
+> sure whether to go ahead and fix it or create a new one.
+> I would greatly appreciate your guidance on how to proceed
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+I think you refer to [1].
+
+First and foremost, read Documentation/process/submittingpatches.rst.
+Specifically, you need to address review changes requested by reviewers
+who reply to your patch.
+
+Then, send v3 with all requests addressed. Don't forget to build test
+your patch. Don't forget to git pull latest staging tree and rebase
+your patch on top of it.
+
+Thanks.
+
+[1]: https://lore.kernel.org/all/ZA+K6OdPe21k8F2k@CloudiRingWorld/=20
+
+--=20
+An old man doll... just what I always wanted! - Clara
+
+--V46utTShU3kj7MWO
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQSSYQ6Cy7oyFNCHrUH2uYlJVVFOowUCZA/6oAAKCRD2uYlJVVFO
+oyC5AP42qby6JKmRG9F9Ifzy4RwWNleJ51Vw6j+Cf0jz0gKj1AD/Xy5lLyMRFAKP
+WZpxwjNtqp5ToK4TRFlPdObD5dk1wg0=
+=RhIv
+-----END PGP SIGNATURE-----
+
+--V46utTShU3kj7MWO--
