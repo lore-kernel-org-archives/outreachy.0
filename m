@@ -1,37 +1,36 @@
-Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DD2EB197
-	for <outreachy@lists.linux.dev>; Tue, 14 Mar 2023 22:58:35 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DE4BBD2F6
+	for <outreachy@lists.linux.dev>; Tue, 14 Mar 2023 23:49:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1678834715; x=1710370715;
-  h=date:from:to:cc:subject:message-id:mime-version;
-  bh=9717lGyRkWFS5GsjjEjKJ7OV/w4O96LSIj2o26Qzx7Q=;
-  b=iFz6QAl/x91rUkjrmwgOnEKTYrgNudd56dV8a4pcPeXE8bb5fdmt9pb5
-   XK3pZsHp5te4UYqcy5T9BM4TkV294iLp1zRLJthCqOb8XLPNRBzzWnngo
-   DDcbYrX9z2+q+3Xg+r5ufeGl/Rt008v48qaiwIJv+Pm103MTAN9Ls8DPW
-   YP7kiYXkImViYQUpY8yw3OIZZPX7/IMJY7eXPhljnxxmsb1/W+l8qNiwo
-   dBGbq0IkIynvVok9lDfZd82G1XRPzNc5/uUeVsouyNF+aUFjuIDXbPKIK
-   7I2iAiR53ni86XuaQoH6VV6jYdb0gQ1Lr24vmH/4ZptFYbXb2sIq2+MXZ
-   g==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10649"; a="402430432"
+  t=1678837763; x=1710373763;
+  h=date:from:to:subject:message-id:mime-version;
+  bh=8+aoNiunVvDmJs7wu1u25lYk84gHnVlpuVOkFTHLQ+w=;
+  b=NoGP9q5y86W/nstzEABBD0FwbOfr2CPshtAkBdwhNgLyywL+PVIzCj1+
+   Vf4oFSaB4vt2fuYeixy3fetE3Bv8O1mETv1gsJWpF/OeaUs2+dZ3B44ZB
+   GAOpMTQK0gi/IRuirMd036843RmOqpaZiJAaAyIsAod+CZJG3EAG+iiSI
+   lDyAyUOEUxOyL7giXXKXF0LT6n0rR8G08WdNMQydgdtEoWGtA4rhcTBm2
+   odfQ8QtTiMriBXAwW0tKNthtArcbuR2vjDZEFuQtPiXYaIhq1KHf4ow+A
+   wQ0w4ecoL3eiheEqc5GldinYAlg142Xy7iJlxxtZrqCO6+UzITWmXp0To
+   Q==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10649"; a="339934659"
 X-IronPort-AV: E=Sophos;i="5.98,261,1673942400"; 
-   d="scan'208";a="402430432"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
-  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Mar 2023 15:58:23 -0700
+   d="scan'208";a="339934659"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Mar 2023 16:49:23 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10649"; a="822559329"
+X-IronPort-AV: E=McAfee;i="6500,9779,10649"; a="925123401"
 X-IronPort-AV: E=Sophos;i="5.98,261,1673942400"; 
-   d="scan'208";a="822559329"
+   d="scan'208";a="925123401"
 Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.212.140.184])
-  by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Mar 2023 15:58:22 -0700
-Date: Tue, 14 Mar 2023 15:58:21 -0700
+  by fmsmga006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Mar 2023 16:49:22 -0700
+Date: Tue, 14 Mar 2023 16:49:20 -0700
 From: Alison Schofield <alison.schofield@intel.com>
-To: Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>
-Cc: Outreachy Linux Kernel <outreachy@lists.linux.dev>
-Subject: Outreachy - for Menna M.
-Message-ID: <ZBD8Db61WVPsNVmO@aschofie-mobl2>
+To: Outreachy Linux Kernel <outreachy@lists.linux.dev>
+Subject: [Outreachy Info] Ask for help finding cleanups
+Message-ID: <ZBEIAKymniRkamjr@aschofie-mobl2>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -41,22 +40,29 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
-Hi Menna,
+Hi Applicants,
 
-It seems like you may be looking for some first patch material.
+We want to support you finding cleanups. Today I spent some time
+looking through staging and am working up a small todo list that
+may be useful.
 
-How about trying this one?  
+I posted one such cleanup to Menna because I saw them submit a
+couple of attempts at a first patches.
 
-Refactor arche_platform_wd_irq() to improve readability.
-It has excessive indentation. A side effect will be
-eliminating this checkpatch CHECK. 
+I think that Kloudifold, Khadija, and Sumitra are busy iterating on
+their first patches. Keep going! Ask for help finding your second
+patch if needed.
 
-drivers/staging/greybus/arche-platform.c
-----------------------------------------
-CHECK: line length of 101 exceeds 100 columns
-#182: FILE: drivers/staging/greybus/arche-platform.c:182:
+Anyone else who wants help in finding their first patch, please reach
+out. I imagine their are some folks exploring here, that I haven't
+met on the list yet. 
 
-No warranties or guarantees on acceptance but I'll support you
-in giving it a shot!
+Finally, it seems we won't be holding to the traditional 10 cleanup
+patch requirement this round! Please continue your efforts and I'll
+redirect you towards projects after a 'few' cleanup patches are
+accepted into staging.
 
+Thanks,
 Alison
+
+
