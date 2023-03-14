@@ -1,47 +1,45 @@
-Received: from mail-pg1-f178.google.com (mail-pg1-f178.google.com [209.85.215.178])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mga11.intel.com (mga11.intel.com [192.55.52.93])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DF9C215AE
-	for <outreachy@lists.linux.dev>; Tue, 14 Mar 2023 01:53:49 +0000 (UTC)
-Received: by mail-pg1-f178.google.com with SMTP id s17so8051116pgv.4
-        for <outreachy@lists.linux.dev>; Mon, 13 Mar 2023 18:53:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678758829;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=pWu7ldioQZyJ2iIlK2I3/QOCPqeIApYJ08ZpgCLDhPk=;
-        b=isY/2XDn7wgNpXA/zTgbVVOq2SD+WvckGirGw2TW1zrpIn5d3Rb/hm80wGayu1VAJr
-         1owZfggGsmx5HlXXJvUTP0H/CUnVh/r+6VQpAnV5G8cw2noGQu56D5UEDMktuFU0RQY2
-         6m2uXhmEEhk+8ZLE3vNiRwnvMdswP7q1a3dzCwdCu0nL0Bx2Y/8EsM6K7ovQmwxLvgdo
-         b0CMmM3Sevp/UFzO1OszOuHy0Wf/Irramroz6HaWMSXlQ/3DY4Y4pjWRu20g9UBT1svK
-         8U+KXU4n2RaVSrx9wL5N4bhxSruMI1ECj5j6h0iQKrVuoIWmT+mp0A94GLxXPNqv3oh3
-         thKA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678758829;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=pWu7ldioQZyJ2iIlK2I3/QOCPqeIApYJ08ZpgCLDhPk=;
-        b=bPFZJ1AW9UNaL21Xk7MAoyugsRSm5NWrX6FTej5IT1o9aAWCom/1dRNMU+39Mcn9L5
-         HyIeKHXNrm/RI4R0mJKvmsRNRwraOVPL/pQhQIQukTQBzkJ/wACVtzu2/1BtJra+Q5dC
-         sFMsW33cWunCdQZJKuzvFKemcLRSLVTXoHJCoYPyEIdP/gT3nW9u4V+QnL7PQLrPV40m
-         rnIluObapzQ02pGOP29K0bYtbZkZ/2tlYoUcaSvhtqM+XL1jk2dzGdpZcZ90rSr+cMA1
-         c9+/xLHW6hdIRWCHAWAsDOvmtDdrZVUucXvhOQff0MhhUp0ExXVkSOHmNZs3cnTZU7Bu
-         ofpA==
-X-Gm-Message-State: AO0yUKU/tY73ynacs6z3SMKEYYeNKrDvOjel44DceQcBZJmHzfmOTEW1
-	dWQZABSZ+WFE/HgZRMoqDXDZ2qMkVRj3Cxs5
-X-Google-Smtp-Source: AK7set9z6eDylBhX+K4UMTAiIrXM2V7zETL97qm7ncnMyPu3CT0NnoQhqrxvNibjP4U5EFjbWkuZwQ==
-X-Received: by 2002:aa7:98c3:0:b0:625:6d5b:c019 with SMTP id e3-20020aa798c3000000b006256d5bc019mr107198pfm.11.1678758829197;
-        Mon, 13 Mar 2023 18:53:49 -0700 (PDT)
-Received: from CloudiRingWorld ([115.227.138.102])
-        by smtp.gmail.com with ESMTPSA id v2-20020aa78502000000b005dd65169628sm346059pfn.144.2023.03.13.18.53.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Mar 2023 18:53:48 -0700 (PDT)
-Date: Tue, 14 Mar 2023 09:53:46 +0800
-From: Kloudifold <cloudifold.3125@gmail.com>
-To: alison.schofield@intel.com
-Cc: outreachy@lists.linux.dev
-Subject: Help in patch message
-Message-ID: <ZA/Tql5l6dfNaMZ7@CloudiRingWorld>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AD02617C6;
+	Tue, 14 Mar 2023 03:46:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1678765587; x=1710301587;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=4ZQkvLBzEIFEJyZVe/6vqIMB8LLap8uGfbB1iaKfi+0=;
+  b=cmEZyFwauN2DqHtGo02SX2HyCAbiL6ajZhV0UDOaKtDX+fl3tzaSsQbg
+   ezQ0iERJz4+jdUtJ91Tqf4Qa2nIsJaAy7xywMSlJfV6oMwhXlUVoJtEQJ
+   7v49Hb381ryUg1/A7bd10i/mVB6Fw5z1cSlUOiqtSUat+EmkW36kJro5m
+   ChdYN1SiykbzycPWzDmbAMY6BNe1OmvTpwakZmvSW4VbILedJRS4zQ7An
+   MHbNsuVSQ7wK0pPhw3x96GcYqbXW+XVu2/+P1hSK4iVDHdu8FuMwOG2G+
+   GIsPE6pP1YA9XQCdv1u6YwYzlmvNdvNSMOFYLX9jVvXHPGyduKSZIOh4o
+   A==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10648"; a="334800584"
+X-IronPort-AV: E=Sophos;i="5.98,258,1673942400"; 
+   d="scan'208";a="334800584"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Mar 2023 20:46:13 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10648"; a="747849509"
+X-IronPort-AV: E=Sophos;i="5.98,258,1673942400"; 
+   d="scan'208";a="747849509"
+Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
+  by fmsmga004.fm.intel.com with ESMTP; 13 Mar 2023 20:46:12 -0700
+Received: from kbuild by b613635ddfff with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1pbvc3-0006Tk-1J;
+	Tue, 14 Mar 2023 03:46:11 +0000
+Date: Tue, 14 Mar 2023 11:45:51 +0800
+From: kernel test robot <lkp@intel.com>
+To: Khadija Kamran <kamrankhadijadj@gmail.com>, outreachy@lists.linux.dev
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] staging: axis-fifo: initialize timeouts in probe only
+Message-ID: <202303141159.6wN9HNP9-lkp@intel.com>
+References: <ZA9mThZ7NyRrQAMX@khadija-virtual-machine>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -50,26 +48,187 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <ZA9mThZ7NyRrQAMX@khadija-virtual-machine>
 
-Dear Outreachy Mentors,
+Hi Khadija,
 
-I hope this email finds you well. As an Outreachy applicant,
-I have been working on submitting patches to the kernel, but
-I seem to be having trouble getting them accepted. I have
-read the Outreachy tutorials and tried to follow the best practices,
-but my patch messages keep getting rejected.
+Thank you for the patch! Perhaps something to improve:
 
-I really wonder if I have some kind of language problem, I don't
-actually know how to say something?
+[auto build test WARNING on staging/staging-testing]
 
-Recently, I submitted a patch that has been rejected, and I am not
-sure whether to go ahead and fix it or create a new one.
-I would greatly appreciate your guidance on how to proceed
+url:    https://github.com/intel-lab-lkp/linux/commits/Khadija-Kamran/staging-axis-fifo-initialize-timeouts-in-probe-only/20230314-020827
+patch link:    https://lore.kernel.org/r/ZA9mThZ7NyRrQAMX%40khadija-virtual-machine
+patch subject: [PATCH] staging: axis-fifo: initialize timeouts in probe only
+config: arm64-randconfig-r012-20230313 (https://download.01.org/0day-ci/archive/20230314/202303141159.6wN9HNP9-lkp@intel.com/config)
+compiler: clang version 17.0.0 (https://github.com/llvm/llvm-project 67409911353323ca5edf2049ef0df54132fa1ca7)
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # install arm64 cross compiling tool for clang build
+        # apt-get install binutils-aarch64-linux-gnu
+        # https://github.com/intel-lab-lkp/linux/commit/9d186f6c9f9bf467b48da3e28b0e9aa31fc3faf3
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Khadija-Kamran/staging-axis-fifo-initialize-timeouts-in-probe-only/20230314-020827
+        git checkout 9d186f6c9f9bf467b48da3e28b0e9aa31fc3faf3
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm64 olddefconfig
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm64 SHELL=/bin/bash drivers/staging/axis-fifo/
 
-Thank you for your help and guidance throughout this process.
-I look forward to your response.
+If you fix the issue, kindly add following tag where applicable
+| Reported-by: kernel test robot <lkp@intel.com>
+| Link: https://lore.kernel.org/oe-kbuild-all/202303141159.6wN9HNP9-lkp@intel.com/
 
-Best regards,
+All warnings (new ones prefixed by >>):
 
-Kloudifold
+>> drivers/staging/axis-fifo/axis-fifo.c:817:18: warning: implicit conversion from 'long' to 'int' changes value from 9223372036854775807 to -1 [-Wconstant-conversion]
+                   read_timeout = MAX_SCHEDULE_TIMEOUT;
+                                ~ ^~~~~~~~~~~~~~~~~~~~
+   include/linux/sched.h:296:31: note: expanded from macro 'MAX_SCHEDULE_TIMEOUT'
+   #define MAX_SCHEDULE_TIMEOUT            LONG_MAX
+                                           ^~~~~~~~
+   include/vdso/limits.h:11:19: note: expanded from macro 'LONG_MAX'
+   #define LONG_MAX        ((long)(~0UL >> 1))
+                            ^~~~~~~~~~~~~~~~~
+   drivers/staging/axis-fifo/axis-fifo.c:822:19: warning: implicit conversion from 'long' to 'int' changes value from 9223372036854775807 to -1 [-Wconstant-conversion]
+                   write_timeout = MAX_SCHEDULE_TIMEOUT;
+                                 ~ ^~~~~~~~~~~~~~~~~~~~
+   include/linux/sched.h:296:31: note: expanded from macro 'MAX_SCHEDULE_TIMEOUT'
+   #define MAX_SCHEDULE_TIMEOUT            LONG_MAX
+                                           ^~~~~~~~
+   include/vdso/limits.h:11:19: note: expanded from macro 'LONG_MAX'
+   #define LONG_MAX        ((long)(~0UL >> 1))
+                            ^~~~~~~~~~~~~~~~~
+   2 warnings generated.
 
+
+vim +817 drivers/staging/axis-fifo/axis-fifo.c
+
+   805	
+   806	static int axis_fifo_probe(struct platform_device *pdev)
+   807	{
+   808		struct resource *r_mem; /* IO mem resources */
+   809		struct device *dev = &pdev->dev; /* OS device (from device tree) */
+   810		struct axis_fifo *fifo = NULL;
+   811		char *device_name;
+   812		int rc = 0; /* error return value */
+   813	
+   814		if (read_timeout >= 0)
+   815			read_timeout = msecs_to_jiffies(read_timeout);
+   816		else
+ > 817			read_timeout = MAX_SCHEDULE_TIMEOUT;
+   818	
+   819		if (write_timeout >= 0)
+   820			write_timeout = msecs_to_jiffies(write_timeout);
+   821		else
+   822			write_timeout = MAX_SCHEDULE_TIMEOUT;
+   823	
+   824		/* ----------------------------
+   825		 *     init wrapper device
+   826		 * ----------------------------
+   827		 */
+   828	
+   829		device_name = devm_kzalloc(dev, 32, GFP_KERNEL);
+   830		if (!device_name)
+   831			return -ENOMEM;
+   832	
+   833		/* allocate device wrapper memory */
+   834		fifo = devm_kzalloc(dev, sizeof(*fifo), GFP_KERNEL);
+   835		if (!fifo)
+   836			return -ENOMEM;
+   837	
+   838		dev_set_drvdata(dev, fifo);
+   839		fifo->dt_device = dev;
+   840	
+   841		init_waitqueue_head(&fifo->read_queue);
+   842		init_waitqueue_head(&fifo->write_queue);
+   843	
+   844		mutex_init(&fifo->read_lock);
+   845		mutex_init(&fifo->write_lock);
+   846	
+   847		/* ----------------------------
+   848		 *   init device memory space
+   849		 * ----------------------------
+   850		 */
+   851	
+   852		/* get iospace for the device */
+   853		r_mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+   854		if (!r_mem) {
+   855			dev_err(fifo->dt_device, "invalid address\n");
+   856			rc = -ENODEV;
+   857			goto err_initial;
+   858		}
+   859	
+   860		/* request physical memory */
+   861		fifo->base_addr = devm_ioremap_resource(fifo->dt_device, r_mem);
+   862		if (IS_ERR(fifo->base_addr)) {
+   863			rc = PTR_ERR(fifo->base_addr);
+   864			goto err_initial;
+   865		}
+   866	
+   867		dev_dbg(fifo->dt_device, "remapped memory to 0x%p\n", fifo->base_addr);
+   868	
+   869		/* create unique device name */
+   870		snprintf(device_name, 32, "%s_%pa", DRIVER_NAME, &r_mem->start);
+   871		dev_dbg(fifo->dt_device, "device name [%s]\n", device_name);
+   872	
+   873		/* ----------------------------
+   874		 *          init IP
+   875		 * ----------------------------
+   876		 */
+   877	
+   878		rc = axis_fifo_parse_dt(fifo);
+   879		if (rc)
+   880			goto err_initial;
+   881	
+   882		reset_ip_core(fifo);
+   883	
+   884		/* ----------------------------
+   885		 *    init device interrupts
+   886		 * ----------------------------
+   887		 */
+   888	
+   889		/* get IRQ resource */
+   890		rc = platform_get_irq(pdev, 0);
+   891		if (rc < 0)
+   892			goto err_initial;
+   893	
+   894		/* request IRQ */
+   895		fifo->irq = rc;
+   896		rc = devm_request_irq(fifo->dt_device, fifo->irq, &axis_fifo_irq, 0,
+   897				      DRIVER_NAME, fifo);
+   898		if (rc) {
+   899			dev_err(fifo->dt_device, "couldn't allocate interrupt %i\n",
+   900				fifo->irq);
+   901			goto err_initial;
+   902		}
+   903	
+   904		/* ----------------------------
+   905		 *      init char device
+   906		 * ----------------------------
+   907		 */
+   908	
+   909		/* create character device */
+   910		fifo->miscdev.fops = &fops;
+   911		fifo->miscdev.minor = MISC_DYNAMIC_MINOR;
+   912		fifo->miscdev.name = device_name;
+   913		fifo->miscdev.groups = axis_fifo_attrs_groups;
+   914		fifo->miscdev.parent = dev;
+   915		rc = misc_register(&fifo->miscdev);
+   916		if (rc < 0)
+   917			goto err_initial;
+   918	
+   919		dev_info(fifo->dt_device, "axis-fifo created at %pa mapped to 0x%pa, irq=%i\n",
+   920			 &r_mem->start, &fifo->base_addr, fifo->irq);
+   921	
+   922		return 0;
+   923	
+   924	err_initial:
+   925		dev_set_drvdata(dev, NULL);
+   926		return rc;
+   927	}
+   928	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
