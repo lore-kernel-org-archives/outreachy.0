@@ -1,36 +1,39 @@
-Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 70FD615AE
-	for <outreachy@lists.linux.dev>; Tue, 14 Mar 2023 01:08:51 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C5A1315AE
+	for <Outreachy@lists.linux.dev>; Tue, 14 Mar 2023 01:19:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1678756131; x=1710292131;
-  h=date:from:to:subject:message-id:mime-version;
-  bh=/Ci4GV45+jmjRD5CiERnp4VDhzfbeAJ8ZOqAUXog2lQ=;
-  b=RWQYJ/p/e/YlXtsAyfb5jDoTSB5+rRjhPHO/j0tK4R0dwsYQVMU4MACI
-   CEPXsWnISCrk/7T6mD29xI9/waP0KJoyw8TbkKSOEuiOFOI3EZoenSess
-   YfGMDPGnLLB2Y6UVO4kjcnyeGClk5iAaRQ3ASGtdDwuK/eJxXKBNLp2nl
-   lURRr4i1yt6CGFyjoDbQJSc586K2aknBXEl16+NhHKxmwpQh+IUmMP1EX
-   1kcQ/5yMh1p6IOa0suSgs0Lrofsge1kbswgqpwstFY8ZUzk+BbB9hEzw0
-   y0v8yNzs7C+rGllD2rKzk990ND5n4k6SejFim87r4BATkffrwzgLcTIyd
-   w==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10648"; a="325664109"
+  t=1678756754; x=1710292754;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=c8upvc5a5bDPLCDWAy+P3Y5GRnchzryYxP11o9DLKww=;
+  b=DWclb9YyY4QhJoHA15cF9EDTEbhWSKXuOt4cMvLzHAqFSN2DpXJDA7qc
+   8Hl2UBfsYoBvwGe3LzHjtm10UmZt+WB5FsM3X88bOT7h2gwwv9Pi2PeC4
+   cMmktTaFv0wh+g+Uo+eBRKYMkjOcDElqSrsPYazv9gO774CvMEuVr+Zsn
+   UxyG1mIFudQKx6LT/e24MsD4kvnDw0asfcYCIJD2tkVAuIABH6+SyA4SR
+   I95FaqTpxJ4i56sBUYbUUJGBBhHHiTlSIVv5G/N8OldXJUO6RIHygsXez
+   wRDJVbmvLyZrZMxs+YUNQHBAITmu2m0NKXetaO6ty70i0PPxy3ZGHiVb1
+   Q==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10648"; a="317686426"
 X-IronPort-AV: E=Sophos;i="5.98,258,1673942400"; 
-   d="scan'208";a="325664109"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
-  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Mar 2023 18:08:40 -0700
+   d="scan'208";a="317686426"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Mar 2023 18:19:13 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10648"; a="747810678"
+X-IronPort-AV: E=McAfee;i="6500,9779,10648"; a="711321580"
 X-IronPort-AV: E=Sophos;i="5.98,258,1673942400"; 
-   d="scan'208";a="747810678"
+   d="scan'208";a="711321580"
 Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.209.44.112])
-  by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Mar 2023 18:08:40 -0700
-Date: Mon, 13 Mar 2023 18:08:38 -0700
+  by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Mar 2023 18:19:13 -0700
+Date: Mon, 13 Mar 2023 18:19:12 -0700
 From: Alison Schofield <alison.schofield@intel.com>
-To: Outreachy Linux Kernel <outreachy@lists.linux.dev>
-Subject: [Outreachy Info] Watch staging/testing
-Message-ID: <ZA/JFpMXzZvkiwQf@aschofie-mobl2>
+To: Khadija Kamran <kamrankhadijadj@gmail.com>
+Cc: Outreachy@lists.linux.dev
+Subject: Re: Record Contributions for Outreachy
+Message-ID: <ZA/LkFq1w6jf6YAR@aschofie-mobl2>
+References: <ZA+JZ7TTMmm3K0Y5@khadija-virtual-machine>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -39,25 +42,48 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <ZA+JZ7TTMmm3K0Y5@khadija-virtual-machine>
 
-In case you are wondering the status of your patches -
+On Tue, Mar 14, 2023 at 01:36:55AM +0500, Khadija Kamran wrote:
+> Hi everyone!
+> 
+> I am an Outreachy applicant and I have so far been part of this
+> contribution journey under the guidance of mentors. 
+> As you all know that we are done with the first week of contribution
+> period, should I start recording my contributions to the Outreachy
+> website, or is it too early for that?
+> If I should, then kindly help me with the following questions: 
+>  - what urls should I use in order to record the contribution?
+>  - should I only record the merged contributions?
 
-When GregKH accepts your patch you get an acknowledgment email directly.
-If he specifically rejects it, you also get feedback from him on what
-to improve. He won't accept a patch where another reviewer has already
-requested an update. So, once you get any feedback, revise and send the
-new version.
+Hi Khadija,
 
-You can follow the staging-testing tree [1] and see if Greg has 
-merged patches since your submittal. Those *are* accepted patches
-and should be recorded as contributions in your Outreachy dashboard.
+When a patch has been accepted into staging/testing it will be visible
+here: 
+https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/log/?h=staging-testing
 
-Occasionally a patch gets missed in a flurry of patches. That might
-make you think about RESENDing. See the tutorial directions about
-resending.
+Once you see a patch in staging/testing, then add it to your dashboard,
+with a link to the patch. Mentors will be able to click through and
+see the patch, but may not have followed its entire journey to getting
+merged. So, take a moment, and share a note in your dashboard explaining
+what you learned from that patch. 
 
-Hope that's useful,
+We expect learnings at this point to be about patch mechanics like
+'I learned what imperative mode is', 'I learned how to revise and
+resend a patchset', 'I learned how to keep my staging/testing branch up
+to date so I don't send patches for things already fixed'. 
+
+First Patch Tutorial updates are also contributions. Please record
+those on the dashboard also. For those, you can send a link to the
+email on this list where you proposed your update.
+
+Thanks,
 Alison
 
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git/log/?h=staging-testing
-
+> 
+> Thank you! :)
+> 
+> Regards,
+> Khadija
+> 
+> 
