@@ -1,43 +1,39 @@
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+Received: from mga06.intel.com (mga06b.intel.com [134.134.136.31])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 26EF08F69;
-	Tue, 14 Mar 2023 16:10:34 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C4C9E8F69
+	for <outreachy@lists.linux.dev>; Tue, 14 Mar 2023 16:15:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1678810234; x=1710346234;
+  t=1678810540; x=1710346540;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=ZZ1GkwZzOOfbuECIVG//M3pZbtjDLpfRYC2hiYAiNVI=;
-  b=S/KrdScpBB3y9CzuS+n8frjLI9Ez670KZR3+Vk3hcVuBY09fpcimlhQa
-   qo7tEEC2iusSimgygjGgMNrTP/xCi6B89RJmL1zr0Fu24iGqrtqqgamh1
-   yUvZ1Gw04n/SIH4CWHmX/j6hug6M2ufrD9GjkInf7bVwgxtYU1aUnR4ct
-   yW6pQJeC8hCn2D7nG+xbvRJSca49hAf8TpqQQlEYCGLgRlGvQPK8YN7Cj
-   65mvkVEFdSH3uug93TgENmJl8qUldVI5pBQkcdYsVqCc7rXcWB95DYgQz
-   IZagqT7EAGh61VCB4VFdC4G2P+BLiBEzymqLMXHb/anKeVPUjb7ClRxBw
+  bh=ytXgvxh+vLqfyiV587d65fSwkExIf0+YV1ERhaeAWR4=;
+  b=aJ+nZOW5Py+zMrVdMZin3t4UYmJmV/0oKvMadi8hoRcMgeYUYflbZmUd
+   IKiwqA/1nPKSlfKq9SdIZv02TneUDG2YwjgYB7RVb0Vqo+a+edW6nMRff
+   LfWGiNLfyfaXwaCvvG59xaFXKD6+ijGi51J2IutzEYdRwZZLaZqkbSbUq
+   crg3BodllgZ/nDHj6+4BL/VL4/Hh9maK+FkFaLsXIy2SMZlsQXoxzAg/a
+   II92HwIO5RPLfWM6YuHJPTOVopZU919iGkJ9QQoxsPL1RsbJxhvxXT4fv
+   LLY6arnOdLRJqcIDpB7FRRG5ugmauI6Hhhf3ijaH3uQMix1LIp3fOsGSy
    w==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10649"; a="337496402"
+X-IronPort-AV: E=McAfee;i="6500,9779,10649"; a="400057636"
 X-IronPort-AV: E=Sophos;i="5.98,260,1673942400"; 
-   d="scan'208";a="337496402"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
-  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Mar 2023 09:04:55 -0700
+   d="scan'208";a="400057636"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Mar 2023 09:15:22 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10649"; a="629085030"
+X-IronPort-AV: E=McAfee;i="6500,9779,10649"; a="681488833"
 X-IronPort-AV: E=Sophos;i="5.98,260,1673942400"; 
-   d="scan'208";a="629085030"
+   d="scan'208";a="681488833"
 Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.212.140.184])
-  by orsmga003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Mar 2023 09:04:54 -0700
-Date: Tue, 14 Mar 2023 09:04:53 -0700
+  by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Mar 2023 09:15:10 -0700
+Date: Tue, 14 Mar 2023 09:15:08 -0700
 From: Alison Schofield <alison.schofield@intel.com>
-To: Philipp Hortmann <philipp.g.hortmann@gmail.com>
-Cc: Kloudifold <cloudifold.3125@gmail.com>, teddy.wang@siliconmotion.com,
-	sudipm.mukherjee@gmail.com, gregkh@linuxfoundation.org,
-	linux-staging@lists.linux.dev, outreachy@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2] staging: sm750: Rename function to avoid CamelCase
-Message-ID: <ZBCbJR2RVzc7Wr4g@aschofie-mobl2>
-References: <ZA+K6OdPe21k8F2k@CloudiRingWorld>
- <64f9d3ca-268e-71ae-4a6d-b71315a8406e@gmail.com>
+To: Kloudifold <cloudifold.3125@gmail.com>
+Cc: outreachy@lists.linux.dev
+Subject: Re: Help in patch message
+Message-ID: <ZBCdjKrfu/qe71bK@aschofie-mobl2>
+References: <ZA/Tql5l6dfNaMZ7@CloudiRingWorld>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -46,51 +42,53 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <64f9d3ca-268e-71ae-4a6d-b71315a8406e@gmail.com>
+In-Reply-To: <ZA/Tql5l6dfNaMZ7@CloudiRingWorld>
 
-On Tue, Mar 14, 2023 at 01:07:59AM +0100, Philipp Hortmann wrote:
-> On 3/13/23 21:43, Kloudifold wrote:
-> > The sm750 driver had some functions named in CamelCase,
-> > which violates the kernel's naming convention.
-> > In this patch, I rename these functions to snake case,
-> > which is the expected style.
+On Tue, Mar 14, 2023 at 09:53:46AM +0800, Kloudifold wrote:
+> Dear Outreachy Mentors,
 > 
-> Hi,
-> please make the Subject more unique. Many patches could have this name.
-> Look for examples in:
-> https://lore.kernel.org/linux-staging/
+> I hope this email finds you well. As an Outreachy applicant,
+> I have been working on submitting patches to the kernel, but
+> I seem to be having trouble getting them accepted. I have
+> read the Outreachy tutorials and tried to follow the best practices,
+> but my patch messages keep getting rejected.
 > 
-> Please use your full name consisting of a given name and a family name in
-> front of your email. Or is this not possible and "Kloudifold" is both?
+> I really wonder if I have some kind of language problem, I don't
+> actually know how to say something?
+> 
+> Recently, I submitted a patch that has been rejected, and I am not
+> sure whether to go ahead and fix it or create a new one.
+> I would greatly appreciate your guidance on how to proceed
+> 
+> Thank you for your help and guidance throughout this process.
+> I look forward to your response.
 
-Kloudifold,
+Hi Kloudifold,
 
-It'll probably take a bit for the change, allowing pseudonyms, to become
-common knowledge. When the question comes up, you can just point to the
-latest update to Documentation/process/submitting-patches.rst as I've
-done below.
+I echo the other responses here. 
+Before you press 'send' on v3, walk thru the tutorial again. There will
+be parts that make more sense now that you are doing revisions and 
+that you have comments.
 
-Phillip,
-I commented similar to you, and then discovered this:
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d4563201f33a022fc0353033d9dfeb1606a88330
+It looks like you will be preparing and sending v3 of your camelcase patch.
 
-Pseudonyms now allowed.
+The biggest thing I see recently is compile errors on your patch, and
+others patches. Sometimes lkp finds compile errors in build environments
+that are less common, and that is less of a concern. They need to be fixed,
+but I don't expect you all to run all build environments. That is what lkp does.
 
+That said, be sure to check for new .o's each time you think you are 
+compiling the driver.
+
+Kudos to you for driving one patch to completion before sending out
+another!
+
+Keep at it!
 Alison
 
-> > This v2 patch was prompted by an error reported by the
-> > Linux test robot, which detected the compile error.
-> > | Reported-by: kernel test robot <lkp@intel.com>
-> > | Link: https://lore.kernel.org/oe-kbuild-all/202303110849.X24WnHnM-lkp@intel.com/
-> > 
-> > Signed-off-by: Kloudifold <cloudifold.3125@gmail.com>
 > 
-> The explanation what has changed needs to be below the ---
-> but your Signed-off-by: is not allowed to be below this ---
-> Look for examples of v2 in:
-> https://lore.kernel.org/linux-staging/
+> Best regards,
 > 
-> Thanks
+> Kloudifold
 > 
-> Bye Philipp
 > 
