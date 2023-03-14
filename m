@@ -1,49 +1,52 @@
-Received: from mail-pf1-f172.google.com (mail-pf1-f172.google.com [209.85.210.172])
+Received: from mail-ed1-f47.google.com (mail-ed1-f47.google.com [209.85.208.47])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A0E633C10;
-	Tue, 14 Mar 2023 12:11:58 +0000 (UTC)
-Received: by mail-pf1-f172.google.com with SMTP id ay18so9575313pfb.2;
-        Tue, 14 Mar 2023 05:11:58 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C824F3D8C;
+	Tue, 14 Mar 2023 14:08:36 +0000 (UTC)
+Received: by mail-ed1-f47.google.com with SMTP id eg48so3315296edb.13;
+        Tue, 14 Mar 2023 07:08:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678795918;
-        h=content-disposition:mime-version:message-id:subject:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=fLOiANFqOi3wCdM3FGbLFB9AhuDgThqUdwTy4yeXIF0=;
-        b=jhyQ3METWoCznCYzEZEf3dooJ/wr5dURSHCk2a/blSO/+4qFYrNBc94DTB1Aj8xO+u
-         6JqjjTFz+YH6HfWGY9ACeOPMJVguSlhAROm9Z1swZWZ1TJhl8ghwaSQGUKmvgxXt6KCA
-         93JE3Cg11EXN3fK1vJnYYpNd0vidJUZ3Cpd6Soh1S3ceO/SvbJAVkpn0WY1Wmo81hvaJ
-         mc61i9cfVtoxOYGgDgpDUYNEfE5JfdqNBQ9cSczTCTf4SB7QY561pTzgCCdcpwks8q2x
-         Cu+RdjKkTf5dlpDfZZ8tFjiW5zAMu6AdMa+ftMAHEb9bOnTYw/dVIwEhf7Boo/x2WPh6
-         S7YQ==
+        d=gmail.com; s=20210112; t=1678802915;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=2fh50q0+/HEalk1h1oQC2pXaNeew6AKaitkp7RgML7Q=;
+        b=J1G5R1YnRKN2hzDDJInJdLGi2sJjFHgYNB/uDk3DMY1eqELgKvyT78qq1VUN3anRAY
+         7bQSxtcGc/J2RWnxz9XLdnE6L2mMC+St1n4XEuYo5fqdTxQqDTgiG32m1SHSOkSyf2Fx
+         N2tQmCPw42aVW6+WXa6j4dzCYdEFvXA/s0bwrCWY/vbjBJzILEPQU4YckdkJ1kc7zVpo
+         FOrPmSS5JHhOD0ddM3fuhoJHzS3RdXzs89cFbifyy/8R/Ah3f/Sf9HO99/WwuM0dSMPh
+         ucVk8oMa4kZ2wxA+wDl00F0MiojdNoiQlAa4SfM1Hg9a//XOuUbXMSIyGxdJCDCho1ZA
+         Ts2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678795918;
-        h=content-disposition:mime-version:message-id:subject:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=fLOiANFqOi3wCdM3FGbLFB9AhuDgThqUdwTy4yeXIF0=;
-        b=GDOXwItakON5QbUkGEc3ypVclEgNhzoKAkNzHhjb/5r4BDeny8lpyyCoCEyTgKa4am
-         Jdij683i0HrykhGkdGVOJD8xuhks4/v9f3oIVrqr1wGutomnMvulcYo34IVZYZ927+tV
-         dWFF5L462TQxmPZf8msBzetA/Yn0e93OGC/ZONl5Z5Gs78Ph070A9SZTfKGz7wp35bOo
-         I3lhvl3N90v2ex36W8IEaG6XRORqXBoE7aC/JWkcTgfv9wnmHQegnMjBpW4k+2wuPEn0
-         5snu+gptPdixJfDK92Yn514GnVgeSJQ50y+7vCKsEes4VlBcP5qOp4O/HqAO12KfMOXN
-         zIVQ==
-X-Gm-Message-State: AO0yUKV8VftyY76d3/sC361P+xxablTDA2mUqjITkpaCf0x6HfI+Hz5j
-	PZrx+FRBSf2xGmMdWZY3WVkU1mqvSQHSWA==
-X-Google-Smtp-Source: AK7set9kndnwILN2cfyKlOfZpDCZ4z63OhVoikttIm/+N1sMW7D5K+2f2M2Gul6Wh+L4jKMyfLf5TA==
-X-Received: by 2002:aa7:9508:0:b0:5e0:3038:2300 with SMTP id b8-20020aa79508000000b005e030382300mr36080931pfp.20.1678795917706;
-        Tue, 14 Mar 2023 05:11:57 -0700 (PDT)
-Received: from sumitra.com ([59.89.170.99])
-        by smtp.gmail.com with ESMTPSA id r3-20020a654983000000b004f27761a9e7sm1440786pgs.12.2023.03.14.05.11.54
+        d=1e100.net; s=20210112; t=1678802915;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=2fh50q0+/HEalk1h1oQC2pXaNeew6AKaitkp7RgML7Q=;
+        b=AKLduPtYFXIE0n7A6Rvs/lXmAwiKSDAyWZMla3ynllPI6fyrHy/C0yKr9MQvqk8ZYE
+         rpayoavfY29vfJgMUxIwPtgU974HLIl9lZqUJ2DUvuLUNychzSZSSCIPtfv4posSFrbe
+         PIoCpwOb20S72XB4tJHZ/cHKZVGmuqRduayXZbq8KstDrN2oDOjeq+0hoSMiCfh7gfaW
+         qzunDNGni959Hg4y/PBm/+nI4ZmTKcA558xQkiuIdPuAv3MupdfZl3bPVlzo6bzFT6QG
+         zmOcpCt+PQtK039Vk13eHicgKinKUE8fatULnzIzgb+bKk6MaD8nh7bAxIUsgaGdteIB
+         Y5+A==
+X-Gm-Message-State: AO0yUKWX6dLIV0WrAFhyJtfMrLL01C0W0zZPNwmd/OYnf9IRczlILnob
+	FQUQT7Tt3+U85ZcBtJQW/z4=
+X-Google-Smtp-Source: AK7set86cuDzNUeHz96tiWnCTlYRXr331XXgSySDYske0mghcxOZyatZQSOnYpKOjpb3zG7dWQVokw==
+X-Received: by 2002:a05:6402:516a:b0:4fc:c7c8:e78d with SMTP id d10-20020a056402516a00b004fcc7c8e78dmr6730921ede.31.1678802914820;
+        Tue, 14 Mar 2023 07:08:34 -0700 (PDT)
+Received: from khadija-virtual-machine ([39.41.111.116])
+        by smtp.gmail.com with ESMTPSA id kk1-20020a170907766100b0092b8c1f41ebsm1198352ejc.24.2023.03.14.07.08.33
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 14 Mar 2023 05:11:57 -0700 (PDT)
-Date: Tue, 14 Mar 2023 05:11:52 -0700
-From: Sumitra Sharma <sumitraartsy@gmail.com>
-To: outreachy@lists.linux.dev, manishc@marvell.com,
-	GR-Linux-NIC-Dev@marvell.com, coiby.xu@gmail.com,
-	gregkh@linuxfoundation.org, netdev@vger.kernel.org,
+        Tue, 14 Mar 2023 07:08:34 -0700 (PDT)
+Date: Tue, 14 Mar 2023 19:08:31 +0500
+From: Khadija Kamran <kamrankhadijadj@gmail.com>
+To: outreachy@lists.linux.dev
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: [PATCH v3] Staging: qlge: Fix indentation in conditional statement
-Message-ID: <20230314121152.GA38979@sumitra.com>
+Subject: Re: [PATCH] staging: axis-fifo: initialize timeouts in probe only
+Message-ID: <ZBB/30ZBW9EU1QfK@khadija-virtual-machine>
+References: <ZA9mThZ7NyRrQAMX@khadija-virtual-machine>
+ <202303141159.6wN9HNP9-lkp@intel.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -52,68 +55,197 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <202303141159.6wN9HNP9-lkp@intel.com>
 
-Add tabs/spaces in conditional statements in to fix the
-indentation.
+On Tue, Mar 14, 2023 at 11:45:51AM +0800, kernel test robot wrote:
+> Hi Khadija,
+> 
+> Thank you for the patch! Perhaps something to improve:
+> 
+> [auto build test WARNING on staging/staging-testing]
+> 
+> url:    https://github.com/intel-lab-lkp/linux/commits/Khadija-Kamran/staging-axis-fifo-initialize-timeouts-in-probe-only/20230314-020827
+> patch link:    https://lore.kernel.org/r/ZA9mThZ7NyRrQAMX%40khadija-virtual-machine
+> patch subject: [PATCH] staging: axis-fifo: initialize timeouts in probe only
+> config: arm64-randconfig-r012-20230313 (https://download.01.org/0day-ci/archive/20230314/202303141159.6wN9HNP9-lkp@intel.com/config)
+> compiler: clang version 17.0.0 (https://github.com/llvm/llvm-project 67409911353323ca5edf2049ef0df54132fa1ca7)
+> reproduce (this is a W=1 build):
+>         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+>         chmod +x ~/bin/make.cross
+>         # install arm64 cross compiling tool for clang build
+>         # apt-get install binutils-aarch64-linux-gnu
+>         # https://github.com/intel-lab-lkp/linux/commit/9d186f6c9f9bf467b48da3e28b0e9aa31fc3faf3
+>         git remote add linux-review https://github.com/intel-lab-lkp/linux
+>         git fetch --no-tags linux-review Khadija-Kamran/staging-axis-fifo-initialize-timeouts-in-probe-only/20230314-020827
+>         git checkout 9d186f6c9f9bf467b48da3e28b0e9aa31fc3faf3
+>         # save the config file
+>         mkdir build_dir && cp config build_dir/.config
+>         COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm64 olddefconfig
+>         COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm64 SHELL=/bin/bash drivers/staging/axis-fifo/
+> 
+> If you fix the issue, kindly add following tag where applicable
+> | Reported-by: kernel test robot <lkp@intel.com>
+> | Link: https://lore.kernel.org/oe-kbuild-all/202303141159.6wN9HNP9-lkp@intel.com/
+> 
+> All warnings (new ones prefixed by >>):
+> 
+> >> drivers/staging/axis-fifo/axis-fifo.c:817:18: warning: implicit conversion from 'long' to 'int' changes value from 9223372036854775807 to -1 [-Wconstant-conversion]
+>                    read_timeout = MAX_SCHEDULE_TIMEOUT;
+>                                 ~ ^~~~~~~~~~~~~~~~~~~~
+>    include/linux/sched.h:296:31: note: expanded from macro 'MAX_SCHEDULE_TIMEOUT'
+>    #define MAX_SCHEDULE_TIMEOUT            LONG_MAX
+>                                            ^~~~~~~~
+>    include/vdso/limits.h:11:19: note: expanded from macro 'LONG_MAX'
+>    #define LONG_MAX        ((long)(~0UL >> 1))
+>                             ^~~~~~~~~~~~~~~~~
+>    drivers/staging/axis-fifo/axis-fifo.c:822:19: warning: implicit conversion from 'long' to 'int' changes value from 9223372036854775807 to -1 [-Wconstant-conversion]
+>                    write_timeout = MAX_SCHEDULE_TIMEOUT;
+>                                  ~ ^~~~~~~~~~~~~~~~~~~~
+>    include/linux/sched.h:296:31: note: expanded from macro 'MAX_SCHEDULE_TIMEOUT'
+>    #define MAX_SCHEDULE_TIMEOUT            LONG_MAX
+>                                            ^~~~~~~~
+>    include/vdso/limits.h:11:19: note: expanded from macro 'LONG_MAX'
+>    #define LONG_MAX        ((long)(~0UL >> 1))
+>                             ^~~~~~~~~~~~~~~~~
+>    2 warnings generated.
+>
 
-Signed-off-by: Sumitra Sharma <sumitraartsy@gmail.com>
+Hi everyone!
+Kindly let me know if I should look into these warnings.
+Thank you!
 
----
-v2: Fix indentation in conditional statement, noted by Dan Carpenter
- <error27@gmail.com>
-v3: Apply changes to fresh git tree
+Regards,
+Khadija
 
 
- drivers/staging/qlge/qlge_dbg.c | 35 +++++++++++++++------------------
- 1 file changed, 16 insertions(+), 19 deletions(-)
-
-diff --git a/drivers/staging/qlge/qlge_dbg.c b/drivers/staging/qlge/qlge_dbg.c
-index 66d28358342f..c7e865f515cf 100644
---- a/drivers/staging/qlge/qlge_dbg.c
-+++ b/drivers/staging/qlge/qlge_dbg.c
-@@ -351,26 +351,23 @@ static int qlge_get_xgmac_regs(struct qlge_adapter *qdev, u32 *buf,
- 		/* We're reading 400 xgmac registers, but we filter out
- 		 * several locations that are non-responsive to reads.
- 		 */
--		if ((i == 0x00000114) ||
--		    (i == 0x00000118) ||
--			(i == 0x0000013c) ||
--			(i == 0x00000140) ||
--			(i > 0x00000150 && i < 0x000001fc) ||
--			(i > 0x00000278 && i < 0x000002a0) ||
--			(i > 0x000002c0 && i < 0x000002cf) ||
--			(i > 0x000002dc && i < 0x000002f0) ||
--			(i > 0x000003c8 && i < 0x00000400) ||
--			(i > 0x00000400 && i < 0x00000410) ||
--			(i > 0x00000410 && i < 0x00000420) ||
--			(i > 0x00000420 && i < 0x00000430) ||
--			(i > 0x00000430 && i < 0x00000440) ||
--			(i > 0x00000440 && i < 0x00000450) ||
--			(i > 0x00000450 && i < 0x00000500) ||
--			(i > 0x0000054c && i < 0x00000568) ||
--			(i > 0x000005c8 && i < 0x00000600)) {
-+		if ((i == 0x00000114) || (i == 0x00000118) ||
-+		    (i == 0x0000013c) || (i == 0x00000140) ||
-+		    (i > 0x00000150 && i < 0x000001fc) ||
-+		    (i > 0x00000278 && i < 0x000002a0) ||
-+		    (i > 0x000002c0 && i < 0x000002cf) ||
-+		    (i > 0x000002dc && i < 0x000002f0) ||
-+		    (i > 0x000003c8 && i < 0x00000400) ||
-+		    (i > 0x00000400 && i < 0x00000410) ||
-+		    (i > 0x00000410 && i < 0x00000420) ||
-+		    (i > 0x00000420 && i < 0x00000430) ||
-+		    (i > 0x00000430 && i < 0x00000440) ||
-+		    (i > 0x00000440 && i < 0x00000450) ||
-+		    (i > 0x00000450 && i < 0x00000500) ||
-+		    (i > 0x0000054c && i < 0x00000568) ||
-+		    (i > 0x000005c8 && i < 0x00000600)) {
- 			if (other_function)
--				status =
--				qlge_read_other_func_xgmac_reg(qdev, i, buf);
-+				status = qlge_read_other_func_xgmac_reg(qdev, i, buf);
- 			else
- 				status = qlge_read_xgmac_reg(qdev, i, buf);
- 
--- 
-2.25.1
-
+> 
+> vim +817 drivers/staging/axis-fifo/axis-fifo.c
+> 
+>    805	
+>    806	static int axis_fifo_probe(struct platform_device *pdev)
+>    807	{
+>    808		struct resource *r_mem; /* IO mem resources */
+>    809		struct device *dev = &pdev->dev; /* OS device (from device tree) */
+>    810		struct axis_fifo *fifo = NULL;
+>    811		char *device_name;
+>    812		int rc = 0; /* error return value */
+>    813	
+>    814		if (read_timeout >= 0)
+>    815			read_timeout = msecs_to_jiffies(read_timeout);
+>    816		else
+>  > 817			read_timeout = MAX_SCHEDULE_TIMEOUT;
+>    818	
+>    819		if (write_timeout >= 0)
+>    820			write_timeout = msecs_to_jiffies(write_timeout);
+>    821		else
+>    822			write_timeout = MAX_SCHEDULE_TIMEOUT;
+>    823	
+>    824		/* ----------------------------
+>    825		 *     init wrapper device
+>    826		 * ----------------------------
+>    827		 */
+>    828	
+>    829		device_name = devm_kzalloc(dev, 32, GFP_KERNEL);
+>    830		if (!device_name)
+>    831			return -ENOMEM;
+>    832	
+>    833		/* allocate device wrapper memory */
+>    834		fifo = devm_kzalloc(dev, sizeof(*fifo), GFP_KERNEL);
+>    835		if (!fifo)
+>    836			return -ENOMEM;
+>    837	
+>    838		dev_set_drvdata(dev, fifo);
+>    839		fifo->dt_device = dev;
+>    840	
+>    841		init_waitqueue_head(&fifo->read_queue);
+>    842		init_waitqueue_head(&fifo->write_queue);
+>    843	
+>    844		mutex_init(&fifo->read_lock);
+>    845		mutex_init(&fifo->write_lock);
+>    846	
+>    847		/* ----------------------------
+>    848		 *   init device memory space
+>    849		 * ----------------------------
+>    850		 */
+>    851	
+>    852		/* get iospace for the device */
+>    853		r_mem = platform_get_resource(pdev, IORESOURCE_MEM, 0);
+>    854		if (!r_mem) {
+>    855			dev_err(fifo->dt_device, "invalid address\n");
+>    856			rc = -ENODEV;
+>    857			goto err_initial;
+>    858		}
+>    859	
+>    860		/* request physical memory */
+>    861		fifo->base_addr = devm_ioremap_resource(fifo->dt_device, r_mem);
+>    862		if (IS_ERR(fifo->base_addr)) {
+>    863			rc = PTR_ERR(fifo->base_addr);
+>    864			goto err_initial;
+>    865		}
+>    866	
+>    867		dev_dbg(fifo->dt_device, "remapped memory to 0x%p\n", fifo->base_addr);
+>    868	
+>    869		/* create unique device name */
+>    870		snprintf(device_name, 32, "%s_%pa", DRIVER_NAME, &r_mem->start);
+>    871		dev_dbg(fifo->dt_device, "device name [%s]\n", device_name);
+>    872	
+>    873		/* ----------------------------
+>    874		 *          init IP
+>    875		 * ----------------------------
+>    876		 */
+>    877	
+>    878		rc = axis_fifo_parse_dt(fifo);
+>    879		if (rc)
+>    880			goto err_initial;
+>    881	
+>    882		reset_ip_core(fifo);
+>    883	
+>    884		/* ----------------------------
+>    885		 *    init device interrupts
+>    886		 * ----------------------------
+>    887		 */
+>    888	
+>    889		/* get IRQ resource */
+>    890		rc = platform_get_irq(pdev, 0);
+>    891		if (rc < 0)
+>    892			goto err_initial;
+>    893	
+>    894		/* request IRQ */
+>    895		fifo->irq = rc;
+>    896		rc = devm_request_irq(fifo->dt_device, fifo->irq, &axis_fifo_irq, 0,
+>    897				      DRIVER_NAME, fifo);
+>    898		if (rc) {
+>    899			dev_err(fifo->dt_device, "couldn't allocate interrupt %i\n",
+>    900				fifo->irq);
+>    901			goto err_initial;
+>    902		}
+>    903	
+>    904		/* ----------------------------
+>    905		 *      init char device
+>    906		 * ----------------------------
+>    907		 */
+>    908	
+>    909		/* create character device */
+>    910		fifo->miscdev.fops = &fops;
+>    911		fifo->miscdev.minor = MISC_DYNAMIC_MINOR;
+>    912		fifo->miscdev.name = device_name;
+>    913		fifo->miscdev.groups = axis_fifo_attrs_groups;
+>    914		fifo->miscdev.parent = dev;
+>    915		rc = misc_register(&fifo->miscdev);
+>    916		if (rc < 0)
+>    917			goto err_initial;
+>    918	
+>    919		dev_info(fifo->dt_device, "axis-fifo created at %pa mapped to 0x%pa, irq=%i\n",
+>    920			 &r_mem->start, &fifo->base_addr, fifo->irq);
+>    921	
+>    922		return 0;
+>    923	
+>    924	err_initial:
+>    925		dev_set_drvdata(dev, NULL);
+>    926		return rc;
+>    927	}
+>    928	
+> 
+> -- 
+> 0-DAY CI Kernel Test Service
+> https://github.com/intel/lkp-tests
