@@ -1,102 +1,62 @@
-Received: from mail-wm1-f47.google.com (mail-wm1-f47.google.com [209.85.128.47])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mga07.intel.com (mga07.intel.com [134.134.136.100])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4C15B2CA6;
-	Tue, 14 Mar 2023 21:31:25 +0000 (UTC)
-Received: by mail-wm1-f47.google.com with SMTP id r19-20020a05600c459300b003eb3e2a5e7bso11137137wmo.0;
-        Tue, 14 Mar 2023 14:31:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678829483;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=3kosGJCuIsihwp7ZxBszW88vqGjIeKCLRbMuquEChy4=;
-        b=HUOEJ5wA0yJ5PRwx0qukCBhFgKN2xGPawh/iC/MFtyTHMcrBq/Ekxa4mWByyM71mFd
-         GquEWoz0UpyAwyDay9Jxm6qAnoSvkyWQLY4g5DkCxzx4jsQns9O7u1jmHnksoQa2rBgu
-         JNEJQjMUhvdHgdKw9GYvWFWoYluzM6HPtLuJZqtItuqHgnuU74mjoOHM3PZnOzaf6Ubb
-         zSUMyRu8BzgKsesW8hhKylsYfkA9+KJPlVPSu0HeWXeZFjMeuIg2PCRxf4gy/YpAfZBI
-         MggcplOCWEYU+Ji3Gl6sukiPqUQ0RKyDmHftnVjqyAxHf85+fzmrOto6741Ezo2C73V/
-         MtqA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678829483;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=3kosGJCuIsihwp7ZxBszW88vqGjIeKCLRbMuquEChy4=;
-        b=CeEm33OSVbxIrMCU4Hj9LNHatUgPK5hS2RsV2bpkWZt/IDM9UIzyhD4UNIuM9bK9eS
-         HkKnaamc5ADR1CibGPgCpkH73MxfXHoWPv3FS/OBVpvYOyvDJpBA6i9IMxi1G0HPITP7
-         LLimCIX5BgQsejTwYEIWVPRnUPzfR2aJ+g4MhalURIi32CHWYYG8ZKRaLJwLZhR7LfJC
-         N5kgqFEOjeq8+aQ/wCHQ/e7HJ6N0E2IcDoqZsL0+CBkIoIoNe83NcwpTds2Yh4bnElPj
-         59BAet8m7Nf2Cag7bNfBUiijVuIUqqjEOElLTIzI2vegCu1j3nbdCvpzVeyVYgVHVRvE
-         xbSQ==
-X-Gm-Message-State: AO0yUKW4YN7/AJPCOlLZ5ih3NkgEXtdrb/A+kipZqkzwAnnv9tFaSwU5
-	mEWdFSb7usICPmufkosDCgQ=
-X-Google-Smtp-Source: AK7set9BMJIZWSpt2LeZg/JqmFIeOdAsbFqIMnDbl2gMHqQiodypTbMJRPuoI3GhGhoBCBi6tCGY6w==
-X-Received: by 2002:a05:600c:4f91:b0:3ed:2c92:9f4f with SMTP id n17-20020a05600c4f9100b003ed2c929f4fmr3277198wmq.10.1678829483291;
-        Tue, 14 Mar 2023 14:31:23 -0700 (PDT)
-Received: from suse.localnet (host-79-35-102-94.retail.telecomitalia.it. [79.35.102.94])
-        by smtp.gmail.com with ESMTPSA id z4-20020adff744000000b002c55de1c72bsm3058708wrp.62.2023.03.14.14.31.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 14 Mar 2023 14:31:22 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Khadija Kamran <kamrankhadijadj@gmail.com>,
- Alison Schofield <alison.schofield@intel.com>
-Cc: outreachy@lists.linux.dev,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] staging: axis-fifo: initialize timeouts in probe only
-Date: Tue, 14 Mar 2023 22:31:21 +0100
-Message-ID: <3376017.mWHT0XuiSF@suse>
-In-Reply-To: <ZBDcfNOXmGeN2tlb@aschofie-mobl2>
-References:
- <ZA9mThZ7NyRrQAMX@khadija-virtual-machine> <ZBDcfNOXmGeN2tlb@aschofie-mobl2>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DD2EB197
+	for <outreachy@lists.linux.dev>; Tue, 14 Mar 2023 22:58:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1678834715; x=1710370715;
+  h=date:from:to:cc:subject:message-id:mime-version;
+  bh=9717lGyRkWFS5GsjjEjKJ7OV/w4O96LSIj2o26Qzx7Q=;
+  b=iFz6QAl/x91rUkjrmwgOnEKTYrgNudd56dV8a4pcPeXE8bb5fdmt9pb5
+   XK3pZsHp5te4UYqcy5T9BM4TkV294iLp1zRLJthCqOb8XLPNRBzzWnngo
+   DDcbYrX9z2+q+3Xg+r5ufeGl/Rt008v48qaiwIJv+Pm103MTAN9Ls8DPW
+   YP7kiYXkImViYQUpY8yw3OIZZPX7/IMJY7eXPhljnxxmsb1/W+l8qNiwo
+   dBGbq0IkIynvVok9lDfZd82G1XRPzNc5/uUeVsouyNF+aUFjuIDXbPKIK
+   7I2iAiR53ni86XuaQoH6VV6jYdb0gQ1Lr24vmH/4ZptFYbXb2sIq2+MXZ
+   g==;
+X-IronPort-AV: E=McAfee;i="6500,9779,10649"; a="402430432"
+X-IronPort-AV: E=Sophos;i="5.98,261,1673942400"; 
+   d="scan'208";a="402430432"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Mar 2023 15:58:23 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6500,9779,10649"; a="822559329"
+X-IronPort-AV: E=Sophos;i="5.98,261,1673942400"; 
+   d="scan'208";a="822559329"
+Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.212.140.184])
+  by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Mar 2023 15:58:22 -0700
+Date: Tue, 14 Mar 2023 15:58:21 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>
+Cc: Outreachy Linux Kernel <outreachy@lists.linux.dev>
+Subject: Outreachy - for Menna M.
+Message-ID: <ZBD8Db61WVPsNVmO@aschofie-mobl2>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="iso-8859-1"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-On marted=EC 14 marzo 2023 21:43:40 CET Alison Schofield wrote:
-> On Mon, Mar 13, 2023 at 11:07:10PM +0500, Khadija Kamran wrote:
-> > Module parameter, read_timeout, can only be set at the loading time. As
-> > it can only be modified once, initialize read_timeout once in the probe
-> > function.
-> > As a result, only use read_timeout as the last argument in
-> > wait_event_interruptible_timeout() call.
-> >=20
-> > Same goes for write_timeout.
-> >=20
-> > Suggested-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-> > Signed-off-by: Khadija Kamran <kamrankhadijadj@gmail.com>
-> > ---
->=20
-> Looks like this is [PATCH v5] and needs a changelog.
->
-Alison,
+Hi Menna,
 
-In fact, this is only the second patch that addresses Greg's suggested=20
-refactoring.=20
+It seems like you may be looking for some first patch material.
 
-Khadija moved from v3 of "staging: axis-fifo: remove tabs to align argument=
-s"=20
-to v4 of this completely independent patch. And then back to v1, because (a=
-t=20
-the time of v4) I pointed out to her that she had started working on a proj=
-ect=20
-that has a completely different purpose than the previous one.
+How about trying this one?  
 
-The best course of action would have been to ask Greg to drop the previous=
-=20
-patches and then reset the numbering of the new job to v1. Unfortunately I =
-did=20
-not pay attention to how she then managed the numbering following my=20
-observation.
+Refactor arche_platform_wd_irq() to improve readability.
+It has excessive indentation. A side effect will be
+eliminating this checkpatch CHECK. 
 
-What would be the best course of action at this point?
+drivers/staging/greybus/arche-platform.c
+----------------------------------------
+CHECK: line length of 101 exceeds 100 columns
+#182: FILE: drivers/staging/greybus/arche-platform.c:182:
 
-=46abio
+No warranties or guarantees on acceptance but I'll support you
+in giving it a shot!
 
-
+Alison
