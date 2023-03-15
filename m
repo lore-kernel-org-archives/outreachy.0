@@ -1,101 +1,130 @@
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-wr1-f51.google.com (mail-wr1-f51.google.com [209.85.221.51])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C3DEB53AB
-	for <outreachy@lists.linux.dev>; Wed, 15 Mar 2023 16:19:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1678897188; x=1710433188;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=IkC1iqd9ntjnL13w1QdA9xOxbE/gtgI/zoQla2/e+XA=;
-  b=hDoHYfOX8bTbF2hjBatq2rZUF32M65uA+IFfZt09ng+h5lFdPHLKeQVM
-   oG2SYs8SHXVoxxoGdqGxvTzVRZbUv2HTd+S3gA0kvPwIC28zaMVgAeSnl
-   metiEEHbTRkY56F4JAIVS/an48KGLalr440gQhDS0hhW4omQnI2wizgnJ
-   Kt/cPC1z+XO/846wrkl6NcS7JiJB7VFrhuLgwxwwZBgMBvLeuTfHL2uXo
-   LxrUd9LxPNcowam00qYQGOsozgoSeEK37aq0ObzwIfTnSt5wMSJh9TqqM
-   W0YtYA0IEDmNGotNDx8OxeNWB21vxbnGasfgpTPCH9BGZ/QqWvngSOQdX
-   A==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10650"; a="321591537"
-X-IronPort-AV: E=Sophos;i="5.98,262,1673942400"; 
-   d="scan'208";a="321591537"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
-  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Mar 2023 09:19:48 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10650"; a="803365156"
-X-IronPort-AV: E=Sophos;i="5.98,262,1673942400"; 
-   d="scan'208";a="803365156"
-Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.209.59.168])
-  by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Mar 2023 09:19:48 -0700
-Date: Wed, 15 Mar 2023 09:19:46 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: Olofu Ojoachubione <olofuchubi@gmail.com>
-Cc: Outreachy Linux Kernel <outreachy@lists.linux.dev>
-Subject: Re: [Outreachy Info] Ask for help finding cleanups
-Message-ID: <ZBHwImUjB739X/1c@aschofie-mobl2>
-References: <ZBEIAKymniRkamjr@aschofie-mobl2>
- <CAOHb_39SAEOwJOCNqsvND5w81MbAHLROf+sRAu0AWi911teidA@mail.gmail.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0FA975665;
+	Wed, 15 Mar 2023 16:24:26 +0000 (UTC)
+Received: by mail-wr1-f51.google.com with SMTP id r29so9822180wra.13;
+        Wed, 15 Mar 2023 09:24:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1678897465;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=mZ7bO5zo+7ogRY2D2YZLjwycpYGtkrGLFqABwsp8vCg=;
+        b=me9JRyyglUG2k3QNr79dMI+MM7rB1ZP4K1urYWj2nIAz9kG7dP64zEKVvl7wNw34gL
+         ryxluYkgmpUmhadfhScWuBvnbxaXiTlOzVA8bQhwwfM933EK0lM9Ia50NDyX+S+6APCH
+         RJZYyjL6ztNrreDmn7WjwJuRGys7FHcSwTX/3dIrphQB7jQ4CQspkw9w3gr+ZfS9CJ29
+         I7iZpjolzcXANf3MVay3m0++dNjWChCDUfdi/0tQ6F6fZVgsantUs2KiBDIx3lICzuVu
+         wqGJ3SfLdG6FZ8Pi1T4t6Qihpkf/bykeYvc5MfWTbJh5KrdiGg0fqML6/MZWCbAX+o8y
+         nLrA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678897465;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=mZ7bO5zo+7ogRY2D2YZLjwycpYGtkrGLFqABwsp8vCg=;
+        b=cTAztAcovRoQBHgapIlYUlVJgOaCHpSeOVHI8aqxDvWCQHYYOdvv1vrP/inv95wfp/
+         XffmFX0hCojpMli8LlBjkGS1W/rEMMMW0aUxvwXLslU44JNCv0zEyH15AWfergf07gkp
+         gGPsURl2iNRQ8xxh/9RWBXVoRjxGdOBkIH3pFanBeUIkDThHEZyRmxn4PJo2SF2o8QPK
+         AwRcc2ZYzXpSPgYQSOhRQdxE3KWLOE6gnfXbewXbH8AmLbbS25AI3y+B7GwHKTy+5veu
+         eM+47pzXCXuQJAe8x1sRkHnQUCl0HxglqFYcxIcBjU5HtLWfbQuttHw1CYTiH42o/6ju
+         LsHg==
+X-Gm-Message-State: AO0yUKWgwhs5nNIEmPpWrPTplP1fOJ3TPeces4wERPte25vroDDNd+4S
+	r+DVLhAUmqrXnRq0+1y432Q=
+X-Google-Smtp-Source: AK7set8wiiOSxf5/NZ2MwOosX7e8X0tNsyjGVPxkgEbtFIp5Ot2D8aVKdhdiCEDnfjnvgN2e8wcPyw==
+X-Received: by 2002:a5d:4dd1:0:b0:2c5:594b:10d6 with SMTP id f17-20020a5d4dd1000000b002c5594b10d6mr2336997wru.29.1678897465061;
+        Wed, 15 Mar 2023 09:24:25 -0700 (PDT)
+Received: from suse.localnet (host-79-35-102-94.retail.telecomitalia.it. [79.35.102.94])
+        by smtp.gmail.com with ESMTPSA id y2-20020adffa42000000b002c7163660a9sm4923812wrr.105.2023.03.15.09.24.23
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 15 Mar 2023 09:24:24 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: Khadija Kamran <kamrankhadijadj@gmail.com>,
+ Nathan Chancellor <nathan@kernel.org>
+Cc: Alison Schofield <alison.schofield@intel.com>, outreachy@lists.linux.dev,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] staging: axis-fifo: initialize timeouts in probe only
+Date: Wed, 15 Mar 2023 17:24:23 +0100
+Message-ID: <279821116.9N5E1g01tA@suse>
+In-Reply-To: <20230315150656.GA2938956@dev-arch.thelio-3990X>
+References:
+ <ZA9mThZ7NyRrQAMX@khadija-virtual-machine>
+ <ZBHUr7bANuhnOnIV@khadija-virtual-machine>
+ <20230315150656.GA2938956@dev-arch.thelio-3990X>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAOHb_39SAEOwJOCNqsvND5w81MbAHLROf+sRAu0AWi911teidA@mail.gmail.com>
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="iso-8859-1"
 
-On Wed, Mar 15, 2023 at 10:15:45AM +0100, Olofu Ojoachubione wrote:
-> Hello Alison,
-> Please where can I text you so you could help me out with the kernel
-> process so I can start making my contributions.
-> 
+On mercoled=EC 15 marzo 2023 16:06:56 CET Nathan Chancellor wrote:
+> Hi Khadija,
+>=20
+> On Wed, Mar 15, 2023 at 07:22:39PM +0500, Khadija Kamran wrote:
+> > On Wed, Mar 15, 2023 at 02:34:31PM +0100, Fabio M. De Francesco wrote:
+> > > Aside from what I said and asked for with the other message of this s=
+ame
+> > > thread, please take note that you can build a specific module if you
+> > > prefer
+> > > not to re-build the whole kernel and other modules at the same time.
+> > >=20
+> > > I'm pretty sure that the instructions to do so are in the
+> > > OutreachyFirstPatch
+> > > tutorial.
+> > >=20
+> > > If they are not there, please let us know.
+> > >=20
+> > > Fabio
+> >=20
+> > Hey Fabio!
+> >=20
+> > In the Outreachy FirstPatchTutorial under the 'Compiling only part of
+> > the kernel' section there are ways to compile only some part of the
+> > kernel.
+> >=20
+> > I have tried using "make W=3D1 drivers/staging/axis-fifo/" and it says
+> > 'nothing to be done for'.
+>=20
+> Is CONFIG_XIL_AXIS_FIFO enabled in your configuration?
 
-Hi Olofu,
+@Khadija:
 
-I'm personally not on any of the Outreachy chat rooms, but you can
-try them out:
+Maybe that you won't find CONFIG_XIL_AXIS_FIFO among the staging drivers=20
+entries while using "make menuconfig" (or the other similar commands for=20
+working with the configuration).=20
 
-Join the #outreachy IRC channel on irc.gnome.org, and the
-#kernel-outreachy channel on irc.oftc.net.
+In that case, first enable the CONFIG_OF option if disabled.=20
+CONFIG_XIL_AXIS_FIFO depends on the former.=20
 
-It looks like you found the mailing list, so scroll back through
-that and find the Welcome message of March 7th.
+=46or "CONFIG_XIL_AXIS_FIFO depends on CONFIG_OF" we mean that you can the=
+=20
+former if and only if the latter is already enabled.=20
 
-You are welcome to email me, and please 'CC the outreachy list.
+Actually, CONFIG_XIL_AXIS_FIFO depends also on two other options. However y=
+ou=20
+shouldn't worry about those others because they are commonly enabled in mor=
+e=20
+than 99% of PC distributions.
 
-Welcome,
-Alison
+> > Should I start with the steps to reproduce? :'(
+>=20
+> I did see a report of this same warning occurring with GCC but the
+> report I commented on cane from clang/LLVM; using that toolchain may
+> make it easier for you to reproduce this issue. The robot's reproduction
+> instructions are fine but I think doing it manually is actually simpler.
+>=20
+> Ubuntu 22.04 should have a pretty modern version of clang/LLVM, which
+> you can install via 'sudo apt install clang lld llvm'.
+> https://apt.llvm.org is another resource.
+
+@Nathan: Congratulations, you now have another clang/LLVM adept!
+(Obviously, I'm just kidding :-))
+
+=46abio
 
 
-> On Wed, 15 Mar 2023 at 00:49, Alison Schofield <alison.schofield@intel.com>
-> wrote:
-> 
-> > Hi Applicants,
-> >
-> > We want to support you finding cleanups. Today I spent some time
-> > looking through staging and am working up a small todo list that
-> > may be useful.
-> >
-> > I posted one such cleanup to Menna because I saw them submit a
-> > couple of attempts at a first patches.
-> >
-> > I think that Kloudifold, Khadija, and Sumitra are busy iterating on
-> > their first patches. Keep going! Ask for help finding your second
-> > patch if needed.
-> >
-> > Anyone else who wants help in finding their first patch, please reach
-> > out. I imagine their are some folks exploring here, that I haven't
-> > met on the list yet.
-> >
-> > Finally, it seems we won't be holding to the traditional 10 cleanup
-> > patch requirement this round! Please continue your efforts and I'll
-> > redirect you towards projects after a 'few' cleanup patches are
-> > accepted into staging.
-> >
-> > Thanks,
-> > Alison
-> >
-> >
-> >
-> >
+
