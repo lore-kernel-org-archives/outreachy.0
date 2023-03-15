@@ -1,47 +1,40 @@
-Received: from mga14.intel.com (mga14.intel.com [192.55.52.115])
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 636EA53AB;
-	Wed, 15 Mar 2023 16:11:09 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C3DEB53AB
+	for <outreachy@lists.linux.dev>; Wed, 15 Mar 2023 16:19:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1678896669; x=1710432669;
+  t=1678897188; x=1710433188;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=jFuhWlXO/qjo6QWUILbvKSvhqgBdyjVOn4Kb+6B5HvQ=;
-  b=ZpSJfmCWQMBo7pCYd28Ysay/hVJoE/TPVYiQpkuBMwfTbi3vyikRJmGw
-   aTNmJmgQPP2aJt2YoiP0K4Ml1a4vTOnKBfWWQLaAgdpa69c0m8faybAS8
-   zje8r7lhPsQ9+Jwd/i/e16Z0/vfN5w6sWaDAHT/0QK4C5SuIxSEgXO/g6
-   AL6Rfq85QpRIkaS4ErtP+NGbZqFgl2/wGTfdagA+SVcK9HSR/MjT6KMeb
-   BRrKsjpcBfg8hh2gxVqS6EDwfRqrn+zjwFoSJ2cqUiDPimDMEfP0KR6Kf
-   t8HAy4Vqk21VXYICQtQnK8qlKYB9jkR7nNWTPdVeHm+lw4QmpXBEfX09t
+  bh=IkC1iqd9ntjnL13w1QdA9xOxbE/gtgI/zoQla2/e+XA=;
+  b=hDoHYfOX8bTbF2hjBatq2rZUF32M65uA+IFfZt09ng+h5lFdPHLKeQVM
+   oG2SYs8SHXVoxxoGdqGxvTzVRZbUv2HTd+S3gA0kvPwIC28zaMVgAeSnl
+   metiEEHbTRkY56F4JAIVS/an48KGLalr440gQhDS0hhW4omQnI2wizgnJ
+   Kt/cPC1z+XO/846wrkl6NcS7JiJB7VFrhuLgwxwwZBgMBvLeuTfHL2uXo
+   LxrUd9LxPNcowam00qYQGOsozgoSeEK37aq0ObzwIfTnSt5wMSJh9TqqM
+   W0YtYA0IEDmNGotNDx8OxeNWB21vxbnGasfgpTPCH9BGZ/QqWvngSOQdX
    A==;
-X-IronPort-AV: E=McAfee;i="6500,9779,10650"; a="337769867"
+X-IronPort-AV: E=McAfee;i="6500,9779,10650"; a="321591537"
 X-IronPort-AV: E=Sophos;i="5.98,262,1673942400"; 
-   d="scan'208";a="337769867"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Mar 2023 09:09:18 -0700
+   d="scan'208";a="321591537"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Mar 2023 09:19:48 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6500,9779,10650"; a="711982160"
+X-IronPort-AV: E=McAfee;i="6500,9779,10650"; a="803365156"
 X-IronPort-AV: E=Sophos;i="5.98,262,1673942400"; 
-   d="scan'208";a="711982160"
+   d="scan'208";a="803365156"
 Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.209.59.168])
-  by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Mar 2023 09:09:17 -0700
-Date: Wed, 15 Mar 2023 09:09:16 -0700
+  by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Mar 2023 09:19:48 -0700
+Date: Wed, 15 Mar 2023 09:19:46 -0700
 From: Alison Schofield <alison.schofield@intel.com>
-To: Khadija Kamran <kamrankhadijadj@gmail.com>
-Cc: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>,
-	outreachy@lists.linux.dev,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	Nathan Chancellor <nathan@kernel.org>
-Subject: Re: [PATCH] staging: axis-fifo: initialize timeouts in probe only
-Message-ID: <ZBHtrGjgKOiVwjSF@aschofie-mobl2>
-References: <ZA9mThZ7NyRrQAMX@khadija-virtual-machine>
- <ZBEJ+8DbhADSBTLr@aschofie-mobl2>
- <ZBG699SriXWy1I2K@khadija-virtual-machine>
- <16148020.1MiD057Pog@suse>
- <ZBHUr7bANuhnOnIV@khadija-virtual-machine>
+To: Olofu Ojoachubione <olofuchubi@gmail.com>
+Cc: Outreachy Linux Kernel <outreachy@lists.linux.dev>
+Subject: Re: [Outreachy Info] Ask for help finding cleanups
+Message-ID: <ZBHwImUjB739X/1c@aschofie-mobl2>
+References: <ZBEIAKymniRkamjr@aschofie-mobl2>
+ <CAOHb_39SAEOwJOCNqsvND5w81MbAHLROf+sRAu0AWi911teidA@mail.gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -50,68 +43,59 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ZBHUr7bANuhnOnIV@khadija-virtual-machine>
+In-Reply-To: <CAOHb_39SAEOwJOCNqsvND5w81MbAHLROf+sRAu0AWi911teidA@mail.gmail.com>
 
-On Wed, Mar 15, 2023 at 07:22:39PM +0500, Khadija Kamran wrote:
-> On Wed, Mar 15, 2023 at 02:34:31PM +0100, Fabio M. De Francesco wrote:
-> > Aside from what I said and asked for with the other message of this same 
-> > thread, please take note that you can build a specific module if you prefer 
-> > not to re-build the whole kernel and other modules at the same time. 
-> > 
-> > I'm pretty sure that the instructions to do so are in the OutreachyFirstPatch 
-> > tutorial.
-> > 
-> > If they are not there, please let us know.
-> > 
-> > Fabio
+On Wed, Mar 15, 2023 at 10:15:45AM +0100, Olofu Ojoachubione wrote:
+> Hello Alison,
+> Please where can I text you so you could help me out with the kernel
+> process so I can start making my contributions.
 > 
-> Hey Fabio!
-> 
-> In the Outreachy FirstPatchTutorial under the 'Compiling only part of
-> the kernel' section there are ways to compile only some part of the
-> kernel.
-> 
-> I have tried using "make W=1 drivers/staging/axis-fifo/" and it says
-> 'nothing to be done for'. 
-> 
-> Should I start with the steps to reproduce? :'(
 
-Khadija,
+Hi Olofu,
 
-I've applied your patch and it fails to compile with the warnings
-that LKP reports.
+I'm personally not on any of the Outreachy chat rooms, but you can
+try them out:
 
-If you are doing: $ make drivers/staging/axis-fifo/
+Join the #outreachy IRC channel on irc.gnome.org, and the
+#kernel-outreachy channel on irc.oftc.net.
 
-and it is saying 'nothing to be done...'
+It looks like you found the mailing list, so scroll back through
+that and find the Welcome message of March 7th.
 
-You either have not changed anything since the last compile, or you
-do not have the module configured.
+You are welcome to email me, and please 'CC the outreachy list.
 
-I suspect it has never compiled for you and you need to look at
-the direction in the tutorial for 'Recompiling the driver' section
-and learn how to use make menuconfig.
-
-This driver has a couple of dependencies described in the Kconfig
-file. You will not even see the 'XIL_AXIS_FIFO' option until you
-turn on 'OF' and HAS_'IOMEM'.
-
-See the drivers/staging/axis-fifo/Kconfig
-
-Please confirm that you have compiled the driver before chasing
-after the build env that lkp reports.
-
-Thanks,
+Welcome,
 Alison
 
 
+> On Wed, 15 Mar 2023 at 00:49, Alison Schofield <alison.schofield@intel.com>
+> wrote:
 > 
-> Thank you!
-> 
-> Regards,
-> Khadija
-> 
-> 
-> > 
-> > 
-> > 
+> > Hi Applicants,
+> >
+> > We want to support you finding cleanups. Today I spent some time
+> > looking through staging and am working up a small todo list that
+> > may be useful.
+> >
+> > I posted one such cleanup to Menna because I saw them submit a
+> > couple of attempts at a first patches.
+> >
+> > I think that Kloudifold, Khadija, and Sumitra are busy iterating on
+> > their first patches. Keep going! Ask for help finding your second
+> > patch if needed.
+> >
+> > Anyone else who wants help in finding their first patch, please reach
+> > out. I imagine their are some folks exploring here, that I haven't
+> > met on the list yet.
+> >
+> > Finally, it seems we won't be holding to the traditional 10 cleanup
+> > patch requirement this round! Please continue your efforts and I'll
+> > redirect you towards projects after a 'few' cleanup patches are
+> > accepted into staging.
+> >
+> > Thanks,
+> > Alison
+> >
+> >
+> >
+> >
