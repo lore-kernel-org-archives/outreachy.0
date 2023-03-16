@@ -1,239 +1,158 @@
-Received: from mail-wm1-f54.google.com (mail-wm1-f54.google.com [209.85.128.54])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5151B2F2A;
-	Thu, 16 Mar 2023 14:38:07 +0000 (UTC)
-Received: by mail-wm1-f54.google.com with SMTP id bg16-20020a05600c3c9000b003eb34e21bdfso3339681wmb.0;
-        Thu, 16 Mar 2023 07:38:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678977485;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=0XI2eVpcSqFKSHDGu+9LYbNws8P+6loDyR+TV4ZvW3A=;
-        b=HKsitrd+G0kWMpEMONYvYJmlCBcc6tJqNN3kBHfa6iI1lyQSHnNWu+Kdm6O64CXU51
-         743AVWmJlGKig4XLFSxsvGy7RD9AlqMK1OPf38nA0cyQhleEIKisKeNkd8WS4fR0gEqe
-         oGAl10oNulEehq55wgL8Vajh1hq21PBoUPHhBf9QoIiZVgUd/f7nPjYHcPEPwMgAPoNY
-         EChQNsc257ua550LS+fMqT+V2WLprGyAsSE6TXFDLHOEQWtmJ9WPD/Ngk/qtnXgy94j8
-         lxFVllLGHGuXpRAjTv3s7MejRnSLm3Sin4uQ1ZxGRUbfA/SF9lLj8UNM0u5mcRcfBa6d
-         y8Xg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678977485;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=0XI2eVpcSqFKSHDGu+9LYbNws8P+6loDyR+TV4ZvW3A=;
-        b=c8ECVnUJ2SxHdUcNzBx+XtnEniPDwJgXNwk9xbei8oGkPUtfO05sigvDcHDB/Y3f5W
-         5ZOV01pUmOLl0YPUESKfCazV8bhXcUIExk9P+uQ/pojm22Bbu1YlHGDOPpEwZH0IWEw5
-         dD9QdGPMDHZ4MK/Eh2I4hzKach41Mvnum7zkV7eiHQ3Jc0uybSfoNhi70GpNpMPSBTPZ
-         YA/tXk7Ao4g/XeLkU6b9gHh6wo7IsRdBOk8TFAveFD1sa/VubZhwvp2f6EYX37jwMRtN
-         7hnZUmeG+Qx0M93VzBlftwgnTrhpBspL/Mwb5I1cwiO46RCf1l88UyGkOxG9eHbvaiX3
-         usmA==
-X-Gm-Message-State: AO0yUKVAoXLOjjmLSnKsH7JL0gQbUykRiGUJjUT8YR2cvDk+/xzUzDyR
-	UmrBDEDiu3BqgMxpaEGV5lRu0s+8oQo=
-X-Google-Smtp-Source: AK7set8cHSx4IMY0EXpFhkBXQ/3jjZmYb/PSePIpVVMnxy7TVy2mMgO4Z7ENQy8sBZg8NwiGX9p0DQ==
-X-Received: by 2002:a05:600c:310e:b0:3e9:f15b:935b with SMTP id g14-20020a05600c310e00b003e9f15b935bmr22624237wmo.32.1678977484994;
-        Thu, 16 Mar 2023 07:38:04 -0700 (PDT)
-Received: from suse.localnet (host-79-35-102-94.retail.telecomitalia.it. [79.35.102.94])
-        by smtp.gmail.com with ESMTPSA id k26-20020a7bc31a000000b003eb596cbc54sm5302340wmj.0.2023.03.16.07.38.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 16 Mar 2023 07:38:04 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: outreachy@lists.linux.dev, Khadija Kamran <kamrankhadijadj@gmail.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v5] staging: axis-fifo: initialize timeouts in probe only
-Date: Thu, 16 Mar 2023 15:38:03 +0100
-Message-ID: <2626731.BddDVKsqQX@suse>
-In-Reply-To: <ZBMR4s8xyHGqMm72@khadija-virtual-machine>
-References: <ZBMR4s8xyHGqMm72@khadija-virtual-machine>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D14703C00
+	for <outreachy@lists.linux.dev>; Thu, 16 Mar 2023 14:53:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1678978415; x=1710514415;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=7uB49a7lo5aWFY1jygrpvep8lZlle8SljF8zI7m2osg=;
+  b=iXFK8CkiCSwmjDU5NRW0UhH9f13RwKDuAVyVapdSnV0BYRhxRFqIYF8i
+   nfQ+dtjOzH9XRm+EvjUA4NMdsM5jIC6SWCtcdqVm3bvy1M5UL/2FV/E36
+   Ra4Q3Jab4wJBO3Je/aM3o8FazrBErUA0UuwwEngZF+V9SQurcPGWTucmJ
+   1wFWGFAqVIJ1MXm8vLyriCHZEOEhzB9R9ovDnXDcjeMRDpDMsrefOZHwL
+   RtGdNcRWZt+bXNnisQ4uYq32QNjUZtUSBIQI3mSGMKxUQDEiknEVTeYx8
+   iiEm7duKh9Qr+HF3NVxlnbt8ZSsc+koMSJDUTVQ5vk3z+NI0aXuE56BwC
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10651"; a="326382449"
+X-IronPort-AV: E=Sophos;i="5.98,265,1673942400"; 
+   d="scan'208";a="326382449"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Mar 2023 07:53:23 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10651"; a="854067264"
+X-IronPort-AV: E=Sophos;i="5.98,265,1673942400"; 
+   d="scan'208";a="854067264"
+Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.209.19.33])
+  by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Mar 2023 07:53:23 -0700
+Date: Thu, 16 Mar 2023 07:53:21 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: Mark Heim <questioneight@gmail.com>
+Cc: outreachy@lists.linux.dev
+Subject: Re: [Outreachy Info] Ask for help finding cleanups
+Message-ID: <ZBMtYXYWkuXusbIf@aschofie-mobl2>
+References: <ZBEIAKymniRkamjr@aschofie-mobl2>
+ <20230315074410.GB224213@gmail.com>
+ <ZBIKm4JB2pAvpHd9@aschofie-mobl2>
+ <CALfc2nhr7fWD33T5000kJt9stcgQ3fJM8YNTQhRgozxFYDxyYw@mail.gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="iso-8859-1"
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CALfc2nhr7fWD33T5000kJt9stcgQ3fJM8YNTQhRgozxFYDxyYw@mail.gmail.com>
 
-Khadija,
+On Wed, Mar 15, 2023 at 11:54:16PM -0600, Mark Heim wrote:
+> Hello all,
+> 
+> I have found a refactoring opportunity that might be a good
+> starting point for me, but it is buried in the code.
+> 
+> It is in the prism2fw.c file under the directory tree
+> kernels/staging/drivers/staging. I'm trying to do a procedure
+> called extract a method (according to a book I have) that provides
+> better modularity for the code and makes further refactorings easier.
+> 
+> I was a little surprised that the rebasing was going through with updates,
+> but I'm probably going to be able to finish this task by tomorrow. I hope
+> I get a shot at this one this time.
 
-Just saw your v5 patch and Greg's two replies.
+Sounds interesting Mark!
 
-=46or v6 you will need to change the subject to "[PATCH v6] staging: axis-f=
-ifo:=20
-initialize timeouts in init only" to indicate that you are doing assignment=
-s=20
-in axis_fifo_init().
+prism2fw.c is a 'utility for downloading prism2 images moved into kernelspace'
+so you'll just be compiling the utility itself, not the PRIMS2_USB
+driver. 
 
-Don't forget to extend the version log with "Changes in v6:" and clarify th=
-at=20
-v5 had a different "Object" (you should probably also add a link to the v5=
-=20
-patch in lore: https://lore.kernel.org/lkml /ZBMR4s8xyHGqMm72@khadija-virtu=
-al-
-machine/). When the "Subject" changes, readers may not find the previous=20
-versions easily.   =20
+At the moment, it doesn't compile, as is, in my environment.
+Let me know if you encounter, and have a solution for this:
 
-On gioved=EC 16 marzo 2023 13:56:02 CET Khadija Kamran wrote:
-> Module parameter, read_timeout, can only be set at the loading time. As
-> it can only be modified once, initialize read_timeout once in the probe
+$ cc prism2fw.c
+prism2fw.c:51:10: fatal error: linux/ihex.h: No such file or directory
+   51 | #include <linux/ihex.h>
+      |          ^~~~~~~~~~~~~~
+compilation terminated.
 
-Substitute "probe" with "init".
+Alison
 
-> function.
->=20
-> As a result, only use read_timeout as the last argument in
-> wait_event_interruptible_timeout() call.
-
-This two sentences are not much clear. I'd merge and rework:
-
-"Initialize the module parameters read_timeout and write_timeout once in=20
-init().
-
-Module parameters can only be set once and cannot be modified later, so we=
-=20
-don't need to evaluate them again when passing the parameters to =20
-wait_event_interruptible_timeout()."  =20
-
->=20
-> Convert datatpe
-
-s/datatpe/type/
-
-> of read_timeout
-
-of {read,write}_timeout
-
-> from 'int' to 'long int' because
-> implicit conversion of 'long int' to 'int' in statement 'read_timeout =3D
-> MAX_SCHEDULE_TIMEOUT' results in an overflow warning.
-
-We don't care too much about the warning themselves: I mean, it overflows a=
-nd=20
-you must avoid it to happen (as you are doing with the changes of types), n=
-ot=20
-merely be interested in avoiding the warning. "[] results in an overflow." =
-is=20
-all we care about.
-
-Add also the previous paragraph in the last part of the commit message.
-=20
-> Perform same steps formodule parameter, write_timeout.
-
-And instead delete the this last phrase.
-
-> Suggested-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-> Signed-off-by: Khadija Kamran <kamrankhadijadj@gmail.com>
-> ---
->=20
-> Changes in v5:
->  - Convert timeout's datatype from int to long.
-> Changes in v4:
->  - Initialize timeouts once as suggested by Greg; this automatically
->    fixes the indentation problems.
->  - Change the subject and description.
-> Changes in v3:
->  - Fix grammatical mistakes
->  - Do not change the second argument's indentation in split lines
-> Changes in v2:
->  - Instead of matching alignment to open parenthesis, align second and
->    the last argument instead.
->  - Change the subject to 'remove tabs to align arguments'.
->  - Use imperative language in subject and description
->=20
->  drivers/staging/axis-fifo/axis-fifo.c | 26 ++++++++++++++++----------
->  1 file changed, 16 insertions(+), 10 deletions(-)
->=20
-> diff --git a/drivers/staging/axis-fifo/axis-fifo.c
-> b/drivers/staging/axis-fifo/axis-fifo.c index dfd2b357f484..d667dc80df47
-> 100644
-> --- a/drivers/staging/axis-fifo/axis-fifo.c
-> +++ b/drivers/staging/axis-fifo/axis-fifo.c
-> @@ -103,17 +103,17 @@
->   *           globals
->   * ----------------------------
->   */
-> -static int read_timeout =3D 1000; /* ms to wait before read() times out =
-*/
-> -static int write_timeout =3D 1000; /* ms to wait before write() times ou=
-t */
-> +static long read_timeout =3D 1000; /* ms to wait before read() times out=
- */
-> +static long write_timeout =3D 1000; /* ms to wait before write() times o=
-ut */
->=20
->  /* ----------------------------
->   * module command-line arguments
->   * ----------------------------
->   */
->=20
-> -module_param(read_timeout, int, 0444);
-> +module_param(read_timeout, long, 0444);
->  MODULE_PARM_DESC(read_timeout, "ms to wait before blocking read() timing=
-=20
-out;
-> set to -1 for no timeout"); -module_param(write_timeout, int, 0444);
-> +module_param(write_timeout, long, 0444);
->  MODULE_PARM_DESC(write_timeout, "ms to wait before blocking write() timi=
-ng
-> out; set to -1 for no timeout");
->=20
->  /* ----------------------------
-> @@ -384,9 +384,7 @@ static ssize_t axis_fifo_read(struct file *f, char=20
-__user
-> *buf, mutex_lock(&fifo->read_lock);
->  		ret =3D wait_event_interruptible_timeout(fifo->read_queue,
->  			ioread32(fifo->base_addr + XLLF_RDFO_OFFSET),
-> -				 (read_timeout >=3D 0) ?
-> -				  msecs_to_jiffies(read_timeout) :
-> -				  MAX_SCHEDULE_TIMEOUT);
-> +			read_timeout);
->=20
->  		if (ret <=3D 0) {
->  			if (ret =3D=3D 0) {
-> @@ -528,9 +526,7 @@ static ssize_t axis_fifo_write(struct file *f, const=
-=20
-char
-> __user *buf, ret =3D wait_event_interruptible_timeout(fifo->write_queue,
->  			ioread32(fifo->base_addr + XLLF_TDFV_OFFSET)
->=20
->  				 >=3D words_to_write,
-
-What is this? You haven't yet compiled your patch.
-Any further problems with enabling axis-fifo as a module?
-
-=46abio
-
->=20
-> -				 (write_timeout >=3D 0) ?
-> -				  msecs_to_jiffies(write_timeout) :
-> -				  MAX_SCHEDULE_TIMEOUT);
-> +			write_timeout);
->=20
->  		if (ret <=3D 0) {
->  			if (ret =3D=3D 0) {
-> @@ -815,6 +811,16 @@ static int axis_fifo_probe(struct platform_device=20
-*pdev)
->  	char *device_name;
->  	int rc =3D 0; /* error return value */
->=20
-> +	if (read_timeout >=3D 0)
-> +		read_timeout =3D msecs_to_jiffies(read_timeout);
-> +	else
-> +		read_timeout =3D MAX_SCHEDULE_TIMEOUT;
-> +
-> +	if (write_timeout >=3D 0)
-> +		write_timeout =3D msecs_to_jiffies(write_timeout);
-> +	else
-> +		write_timeout =3D MAX_SCHEDULE_TIMEOUT;
-> +
->  	/* ----------------------------
->  	 *     init wrapper device
->  	 * ----------------------------
-> --
-> 2.34.1
-
-
-
-
+> 
+> Mark
+> 
+> On Wed, Mar 15, 2023 at 12:12 PM Alison Schofield <
+> alison.schofield@intel.com> wrote:
+> 
+> > On Wed, Mar 15, 2023 at 01:44:10AM -0600, Mark Heim wrote:
+> > > On Tue, Mar 14, 2023 at 04:49:20PM -0700, Alison Schofield wrote:
+> > > > Hi Applicants,
+> > > >
+> > > > We want to support you finding cleanups. Today I spent some time
+> > > > looking through staging and am working up a small todo list that
+> > > > may be useful.
+> > >
+> > > I'm interested in doing the required demo for the kernel. Let
+> > > me know what I should do next presupposing there is a list of tasks.
+> >
+> >
+> >
+> > >
+> > > >
+> > > > I posted one such cleanup to Menna because I saw them submit a
+> > > > couple of attempts at a first patches.
+> > > >
+> > > > I think that Kloudifold, Khadija, and Sumitra are busy iterating on
+> > > > their first patches. Keep going! Ask for help finding your second
+> > > > patch if needed.
+> > > >
+> > > > Anyone else who wants help in finding their first patch, please reach
+> > > > out. I imagine their are some folks exploring here, that I haven't
+> > > > met on the list yet.
+> > >
+> > > Hello, that's me! I was originally working on the Outreachy LLVM
+> > > project but had short term health problems, and that meant I let
+> > > that opportunity get away.
+> > >
+> > > >
+> > > > Finally, it seems we won't be holding to the traditional 10 cleanup
+> > > > patch requirement this round! Please continue your efforts and I'll
+> > > > redirect you towards projects after a 'few' cleanup patches are
+> > > > accepted into staging.
+> > > >
+> > >
+> > > I have some catching up to do. I dug through a little more
+> > > than a page of Linux mailing list messages but was able to
+> > > glean a bunch of things that were helpful. These are things like
+> > > patch creation best practices, posting on code style, joining
+> > > a mailing list, and documentation.
+> > >
+> > > Hope to hear from everyone later.
+> > >
+> > > (here's a question: is it best practice to include 100 percent
+> > > of the message pre-insertion of comments, or can I delete some
+> > > of the original message?)
+> >
+> > To snip or not to snip!  I think not-snipping here was appropriate.
+> >
+> > This is the formal starting point:
+> >
+> > https://www.outreachy.org/outreachy-may-2023-internship-cohort/communities/linux-kernel/
+> >
+> > Each project starts with 'Community-Wide Requirements', so follow that
+> > section.
+> >
+> > Welcome,
+> > Alison
+> >
+> > >
+> > > > Thanks,
+> > > > Alison
+> > > >
+> > > >
+> > > >
+> > >
+> >
+> >
