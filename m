@@ -1,48 +1,45 @@
-Received: from mail-pj1-f52.google.com (mail-pj1-f52.google.com [209.85.216.52])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mga17.intel.com (mga17.intel.com [192.55.52.151])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 75215323E
-	for <outreachy@lists.linux.dev>; Thu, 16 Mar 2023 13:17:01 +0000 (UTC)
-Received: by mail-pj1-f52.google.com with SMTP id o6-20020a17090a9f8600b0023f32869993so1420065pjp.1
-        for <outreachy@lists.linux.dev>; Thu, 16 Mar 2023 06:17:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678972621;
-        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=MATIvmmO+WPsfUp8IQH9WKIDla1yCTE7HLj+feFI5co=;
-        b=l+V7PUTCbclmH4rq7aWUEvX0WQiO2/6Gr2lSGIAz+VbsiG4GZlBbk8e/Ej59tqekOT
-         vBlEWiPru2kWR2QC2Fasd+uTiLBAox4xWQJVMI+Fd5siun4+hZDyVIKJnIXPK/P8ekln
-         GL7XcYS34yXWt9p1WgtEZrkdsv9QNuOQaiEipMvsVXp5fMbrSXuaik2J4xOZcuxEVf1Q
-         MOl7HXtn5VQcb2RXHiy6UK+Vgu5jx8+wiUroG/nx9LopQhx5wel3ZBEOcUBFU3ayg/+s
-         n0s56AAA/UqvBRt3BWUymSTZtkXvhmvYSqSohtbc+cc4EMQHy00JD0KlBcSVuSKKMRWC
-         3fIw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678972621;
-        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=MATIvmmO+WPsfUp8IQH9WKIDla1yCTE7HLj+feFI5co=;
-        b=wIe+kQlAbT5acasvO+xGM4m88DeBQ37dB3Ch+3essj6cX2fOMvvoWITv0bjpHYwrAz
-         WPW2tGPU3/4nL4oS/lN1JRwCS0WaGT3ohR0138IiowrdBx1ry8xAvcdKkmolXYJ/vmtv
-         ePWyY1HCksZGT5krb/sbpu6EirZXu+AnAPp4aCz1YCAobiO3YmqeZq/wvEO6gaydB2MT
-         jEhxHEnXAzzcsnJtXZAMpgcu4LzdeeE+wMLREPwT+kVc12HRdhFmnLWBhLRUix2czMGp
-         dChbOjmIA/oVxSV4hYP2+CsAALK0d11RNgaKt/Z4DEgl56ejnRfssvdIKpHHFSwdZQ7X
-         otkA==
-X-Gm-Message-State: AO0yUKVXlqrt9DJ8bc6c0XPPlXLoq3knBNr6in5wZ1rBQFnhbGhLVgYG
-	Dsj7DIwZ9hysjAML7+7W+VVjZlWYTcv4PA==
-X-Google-Smtp-Source: AK7set9sq6Y9R8vWaSwfJME7rIo7Fy02jgp0sScmEMmD0uhTGT98ibrnyWjVwgN/mD7dYLgshImqgA==
-X-Received: by 2002:a17:903:807:b0:19e:73aa:6cbe with SMTP id kr7-20020a170903080700b0019e73aa6cbemr3118321plb.13.1678972620798;
-        Thu, 16 Mar 2023 06:17:00 -0700 (PDT)
-Received: from sumitra.com ([117.245.254.247])
-        by smtp.gmail.com with ESMTPSA id u3-20020a170903124300b001992fc0a8eesm3311343plh.174.2023.03.16.06.16.58
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 16 Mar 2023 06:17:00 -0700 (PDT)
-Date: Thu, 16 Mar 2023 06:16:56 -0700
-From: Sumitra Sharma <sumitraartsy@gmail.com>
-To: alison.schofield@intel.com
-Cc: outreachy@lists.linux.dev
-Subject: Re: [Outreachy Info] Ask for help finding cleanups
-Message-ID: <20230316131656.GB47401@sumitra.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D2C5933CC;
+	Thu, 16 Mar 2023 14:08:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1678975734; x=1710511734;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=st3XNtfhg5o86Dx/8Z5ncGm7eToP7n/Ee0w0PIniNPA=;
+  b=jdCAoAkdeOyX+jqUnffelLTZJfWgTHfg4w6FmlIjL8dHkd0jsA365B60
+   ci3vr5sd5UkCZOUgCt7KTo3YMgqyXMJcLI13Z6KBeL02U7Lam2RUULFAP
+   1P6MQldA7T7fzaO++DLebutI9gX4SHmZ5GAV6zbbtKDN9XcW39J27Sx3/
+   7ijJxl4r+C4n6r04LP+Hhf2ulRB+k/dZYf4HQXPCvZHd8x849Ypu4t3/p
+   IZ/PLcpbPipiizglGXkV7XdKCrkcv63C9EsjZ2D7oisQYZpkeR37AbTj6
+   egg8LlKLPwyyWnd+/Wpl55IGNkY8SWiIqvJ4Ll8zU5NJnZ3Af0Jma/D8s
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10651"; a="318388080"
+X-IronPort-AV: E=Sophos;i="5.98,265,1673942400"; 
+   d="scan'208";a="318388080"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Mar 2023 07:08:33 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10651"; a="768964342"
+X-IronPort-AV: E=Sophos;i="5.98,265,1673942400"; 
+   d="scan'208";a="768964342"
+Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
+  by FMSMGA003.fm.intel.com with ESMTP; 16 Mar 2023 07:08:32 -0700
+Received: from kbuild by b613635ddfff with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1pcoHP-0008Yg-0d;
+	Thu, 16 Mar 2023 14:08:31 +0000
+Date: Thu, 16 Mar 2023 22:07:43 +0800
+From: kernel test robot <lkp@intel.com>
+To: Khadija Kamran <kamrankhadijadj@gmail.com>, outreachy@lists.linux.dev
+Cc: oe-kbuild-all@lists.linux.dev,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v5] staging: axis-fifo: initialize timeouts in probe only
+Message-ID: <202303162137.a6Y0CjU8-lkp@intel.com>
+References: <ZBMR4s8xyHGqMm72@khadija-virtual-machine>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -51,42 +48,85 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ZBEIAKymniRkamjr@aschofie-mobl2>
+In-Reply-To: <ZBMR4s8xyHGqMm72@khadija-virtual-machine>
 
-On Tue, Mar 14, 2023 at 04:49:20PM -0700, Alison Schofield wrote:
-> Hi Applicants,
-> 
-> We want to support you finding cleanups. Today I spent some time
-> looking through staging and am working up a small todo list that
-> may be useful.
-> 
-> I posted one such cleanup to Menna because I saw them submit a
-> couple of attempts at a first patches.
-> 
-> I think that Kloudifold, Khadija, and Sumitra are busy iterating on
-> their first patches. Keep going! Ask for help finding your second
-> patch if needed.
-> 
+Hi Khadija,
 
-Hi Alison,
+Thank you for the patch! Perhaps something to improve:
 
-My first patch is accepted. I will appreciate if you could help me to find a
-second patch.
- 
-Regards,
+[auto build test WARNING on staging/staging-testing]
 
-Sumitra
+url:    https://github.com/intel-lab-lkp/linux/commits/Khadija-Kamran/staging-axis-fifo-initialize-timeouts-in-probe-only/20230316-205814
+patch link:    https://lore.kernel.org/r/ZBMR4s8xyHGqMm72%40khadija-virtual-machine
+patch subject: [PATCH v5] staging: axis-fifo: initialize timeouts in probe only
+config: m68k-allyesconfig (https://download.01.org/0day-ci/archive/20230316/202303162137.a6Y0CjU8-lkp@intel.com/config)
+compiler: m68k-linux-gcc (GCC) 12.1.0
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://github.com/intel-lab-lkp/linux/commit/7e359baa2318b55e12a0c099b75fbd0d799907cf
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Khadija-Kamran/staging-axis-fifo-initialize-timeouts-in-probe-only/20230316-205814
+        git checkout 7e359baa2318b55e12a0c099b75fbd0d799907cf
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=m68k olddefconfig
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=m68k SHELL=/bin/bash drivers/staging/
 
-> Anyone else who wants help in finding their first patch, please reach
-> out. I imagine their are some folks exploring here, that I haven't
-> met on the list yet. 
-> 
-> Finally, it seems we won't be holding to the traditional 10 cleanup
-> patch requirement this round! Please continue your efforts and I'll
-> redirect you towards projects after a 'few' cleanup patches are
-> accepted into staging.
-> Thanks,
-> Alison
-> 
-> 
-> 
+If you fix the issue, kindly add following tag where applicable
+| Reported-by: kernel test robot <lkp@intel.com>
+| Link: https://lore.kernel.org/oe-kbuild-all/202303162137.a6Y0CjU8-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+   In file included from include/linux/kernel.h:29,
+                    from drivers/staging/axis-fifo/axis-fifo.c:17:
+   drivers/staging/axis-fifo/axis-fifo.c: In function 'axis_fifo_init':
+>> include/linux/kern_levels.h:5:25: warning: format '%i' expects argument of type 'int', but argument 2 has type 'long int' [-Wformat=]
+       5 | #define KERN_SOH        "\001"          /* ASCII Start Of Header */
+         |                         ^~~~~~
+   include/linux/printk.h:427:25: note: in definition of macro 'printk_index_wrap'
+     427 |                 _p_func(_fmt, ##__VA_ARGS__);                           \
+         |                         ^~~~
+   include/linux/printk.h:528:9: note: in expansion of macro 'printk'
+     528 |         printk(KERN_INFO pr_fmt(fmt), ##__VA_ARGS__)
+         |         ^~~~~~
+   include/linux/kern_levels.h:14:25: note: in expansion of macro 'KERN_SOH'
+      14 | #define KERN_INFO       KERN_SOH "6"    /* informational */
+         |                         ^~~~~~~~
+   include/linux/printk.h:528:16: note: in expansion of macro 'KERN_INFO'
+     528 |         printk(KERN_INFO pr_fmt(fmt), ##__VA_ARGS__)
+         |                ^~~~~~~~~
+   drivers/staging/axis-fifo/axis-fifo.c:957:9: note: in expansion of macro 'pr_info'
+     957 |         pr_info("axis-fifo driver loaded with parameters read_timeout = %i, write_timeout = %i\n",
+         |         ^~~~~~~
+   include/linux/kern_levels.h:5:25: warning: format '%i' expects argument of type 'int', but argument 3 has type 'long int' [-Wformat=]
+       5 | #define KERN_SOH        "\001"          /* ASCII Start Of Header */
+         |                         ^~~~~~
+   include/linux/printk.h:427:25: note: in definition of macro 'printk_index_wrap'
+     427 |                 _p_func(_fmt, ##__VA_ARGS__);                           \
+         |                         ^~~~
+   include/linux/printk.h:528:9: note: in expansion of macro 'printk'
+     528 |         printk(KERN_INFO pr_fmt(fmt), ##__VA_ARGS__)
+         |         ^~~~~~
+   include/linux/kern_levels.h:14:25: note: in expansion of macro 'KERN_SOH'
+      14 | #define KERN_INFO       KERN_SOH "6"    /* informational */
+         |                         ^~~~~~~~
+   include/linux/printk.h:528:16: note: in expansion of macro 'KERN_INFO'
+     528 |         printk(KERN_INFO pr_fmt(fmt), ##__VA_ARGS__)
+         |                ^~~~~~~~~
+   drivers/staging/axis-fifo/axis-fifo.c:957:9: note: in expansion of macro 'pr_info'
+     957 |         pr_info("axis-fifo driver loaded with parameters read_timeout = %i, write_timeout = %i\n",
+         |         ^~~~~~~
+
+
+vim +5 include/linux/kern_levels.h
+
+314ba3520e513a Joe Perches 2012-07-30  4  
+04d2c8c83d0e3a Joe Perches 2012-07-30 @5  #define KERN_SOH	"\001"		/* ASCII Start Of Header */
+04d2c8c83d0e3a Joe Perches 2012-07-30  6  #define KERN_SOH_ASCII	'\001'
+04d2c8c83d0e3a Joe Perches 2012-07-30  7  
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
