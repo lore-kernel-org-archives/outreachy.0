@@ -1,94 +1,246 @@
-Received: from mga09.intel.com (mga09.intel.com [134.134.136.24])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ed1-f53.google.com (mail-ed1-f53.google.com [209.85.208.53])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D53023C00
-	for <outreachy@lists.linux.dev>; Thu, 16 Mar 2023 15:07:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1678979259; x=1710515259;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=bwi0X60eGoj2bkkk/b0/R18e/8OgckdKm9C+tbsLI0E=;
-  b=cLLIHJK/nPvzhSnWEc05PQ7+AW7Q4loW2zVNNkzOMhjKRhugbRfzptaQ
-   QB+oSM5ynNrJXCvVfipZFJBuddzAvI1Ai3AoI+jFA3qUnU2HMzZqpky5C
-   lzFg/O/taBYoGBDMyZjLspeMJJ0i4OTikCSBSdgdQWfDdliZzgeDgn6HI
-   mJXQCfX25LydcANd8P1aTOIPVJm9ffklcqDw2yzQJ65RD6UmjqnPKbEXJ
-   EZ7sBYiwI+3SdqvuIqYuPhbY4bAeLEVn8+XAi+SNVKG1ObcEDm9WXDbcV
-   vVRlAiBAWSLhJAlRQldV9L58+bO8T1P3oTNYnsVjk31pML1tIqVABUoho
-   A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10651"; a="339560425"
-X-IronPort-AV: E=Sophos;i="5.98,265,1673942400"; 
-   d="scan'208";a="339560425"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
-  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Mar 2023 08:07:39 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10651"; a="744185037"
-X-IronPort-AV: E=Sophos;i="5.98,265,1673942400"; 
-   d="scan'208";a="744185037"
-Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.209.19.33])
-  by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Mar 2023 08:07:18 -0700
-Date: Thu, 16 Mar 2023 08:07:16 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: Sumitra Sharma <sumitraartsy@gmail.com>
-Cc: outreachy@lists.linux.dev
-Subject: Re: [Outreachy Info] Ask for help finding cleanups
-Message-ID: <ZBMwpDSM3W2IDso4@aschofie-mobl2>
-References: <ZBEIAKymniRkamjr@aschofie-mobl2>
- <20230316131656.GB47401@sumitra.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1223A3C00;
+	Thu, 16 Mar 2023 15:09:12 +0000 (UTC)
+Received: by mail-ed1-f53.google.com with SMTP id o12so8893096edb.9;
+        Thu, 16 Mar 2023 08:09:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1678979351;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=2quNYX+HRyuvEQ3fh4N1hdxu22NmV7ILP9KErjbF4rw=;
+        b=TgSqjm8qtOPoLtnoANBoxGwoDvzwTi623LwQfF1NSttUfbLXjAK8i9vhv081QT7mHh
+         yseJJMcYiQvJxdBuLg0zdAvz6lZGQ0+h62Ay3vqu/4FV4wQIXPU2itq4J7rt/a+Cjrc9
+         f7SggSO5mV+FAOuz6BCzd2xuNZfz9RjwahzsnpMqQ5/4J7qRQHhp8skiwFR6Sa4iU/kz
+         t/Kg6fI9RSchneI+TS8MksRT/YpZ3mH7z225NA8DOv8TviP7mZxYMnkuqTv9Tq9xYXrl
+         v8dvsIQ11xzRP+/8bVkEP5BMV2sBHaJMo6PbiDxHZD1yx6NacGdFAVINScpEOcUryOEV
+         TbPA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678979351;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=2quNYX+HRyuvEQ3fh4N1hdxu22NmV7ILP9KErjbF4rw=;
+        b=0M4nc1iS7LIZLnNThRAY9qzGESLt9Ee2+ECxQlxJ7VbokN26iofMEJ4odTnNJOA2vk
+         KAI3pvGB+wov6slx59mLGdio8QppAiBWKl9Oa6VzedEa8BECoEkD+HBd6pgT8YkbVJKu
+         WXpspRejyJDhttpZadflQT1YrSn6XXHrQVb8dmrWzhqbQiHzX9g2TFijbjrVBUmY/yeZ
+         ac/keICnQLCFAHm9Yo2fpISoYFvSeXezF/nuewPKDUZYgr6waxN28E2mYOFAzqWaV37n
+         +/1bdr7hayRafd7hQJDarM9clAFS8VbTO6T1vne7Nww1UpbfqkQhAuuAB3fblQvQA3ZV
+         cbNw==
+X-Gm-Message-State: AO0yUKUOZPcDWsCDqvnZBsBqT43oEUcSeay0NUvszqHkwEkcSdo9Krn3
+	MpBAV3sryI91anL0mu8OiB8=
+X-Google-Smtp-Source: AK7set+Xtgb/QWxwdF/t3Xc0VwtnHqsydq8nILUkn5Fl7K2cvpbUN8GoIdTdTcT+Uns4xogT/QG1Yw==
+X-Received: by 2002:a17:906:cecb:b0:92f:f2cc:93 with SMTP id si11-20020a170906cecb00b0092ff2cc0093mr4363653ejb.22.1678979351101;
+        Thu, 16 Mar 2023 08:09:11 -0700 (PDT)
+Received: from khadija-virtual-machine ([39.41.209.88])
+        by smtp.gmail.com with ESMTPSA id v11-20020a1709062f0b00b00914fec9f40esm3966932eji.71.2023.03.16.08.09.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 16 Mar 2023 08:09:10 -0700 (PDT)
+Date: Thu, 16 Mar 2023 20:09:08 +0500
+From: Khadija Kamran <kamrankhadijadj@gmail.com>
+To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+Cc: outreachy@lists.linux.dev,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v5] staging: axis-fifo: initialize timeouts in probe only
+Message-ID: <ZBMxFLtW2ekCvm/s@khadija-virtual-machine>
+References: <ZBMR4s8xyHGqMm72@khadija-virtual-machine>
+ <2626731.BddDVKsqQX@suse>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <20230316131656.GB47401@sumitra.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <2626731.BddDVKsqQX@suse>
 
-On Thu, Mar 16, 2023 at 06:16:56AM -0700, Sumitra Sharma wrote:
-> On Tue, Mar 14, 2023 at 04:49:20PM -0700, Alison Schofield wrote:
-> > Hi Applicants,
-> > 
-> > We want to support you finding cleanups. Today I spent some time
-> > looking through staging and am working up a small todo list that
-> > may be useful.
-> > 
-> > I posted one such cleanup to Menna because I saw them submit a
-> > couple of attempts at a first patches.
-> > 
-> > I think that Kloudifold, Khadija, and Sumitra are busy iterating on
-> > their first patches. Keep going! Ask for help finding your second
-> > patch if needed.
-> > 
+On Thu, Mar 16, 2023 at 03:38:03PM +0100, Fabio M. De Francesco wrote:
+> Khadija,
+>
+> Just saw your v5 patch and Greg's two replies.
 > 
-> Hi Alison,
+> For v6 you will need to change the subject to "[PATCH v6] staging: axis-fifo: 
+> initialize timeouts in init only" to indicate that you are doing assignments 
+> in axis_fifo_init().
 > 
-> My first patch is accepted. I will appreciate if you could help me to find a
-> second patch.
+> Don't forget to extend the version log with "Changes in v6:" and clarify that 
+> v5 had a different "Object" (you should probably also add a link to the v5 
+> patch in lore: https://lore.kernel.org/lkml /ZBMR4s8xyHGqMm72@khadija-virtual-
+> machine/). When the "Subject" changes, readers may not find the previous 
+> versions easily.    
+>
+> On giovedì 16 marzo 2023 13:56:02 CET Khadija Kamran wrote:
+> > Module parameter, read_timeout, can only be set at the loading time. As
+> > it can only be modified once, initialize read_timeout once in the probe
+> 
+> Substitute "probe" with "init".
+> 
+> > function.
+> > 
+> > As a result, only use read_timeout as the last argument in
+> > wait_event_interruptible_timeout() call.
+> 
+> This two sentences are not much clear. I'd merge and rework:
+> 
+> "Initialize the module parameters read_timeout and write_timeout once in 
+> init().
+> 
+> Module parameters can only be set once and cannot be modified later, so we 
+> don't need to evaluate them again when passing the parameters to  
+> wait_event_interruptible_timeout()."   
+> 
+> > 
+> > Convert datatpe
+> 
+> s/datatpe/type/
+> 
+> > of read_timeout
+> 
+> of {read,write}_timeout
+> 
+> > from 'int' to 'long int' because
+> > implicit conversion of 'long int' to 'int' in statement 'read_timeout =
+> > MAX_SCHEDULE_TIMEOUT' results in an overflow warning.
+> 
+> We don't care too much about the warning themselves: I mean, it overflows and 
+> you must avoid it to happen (as you are doing with the changes of types), not 
+> merely be interested in avoiding the warning. "[] results in an overflow." is 
+> all we care about.
+>
+
+Hey Fabio!
+Thank you for your feedback. I have undertood it and will make sure to
+send them in the next PATCH v6.
+
+> Add also the previous paragraph in the last part of the commit message.
 >  
-> Regards,
+> > Perform same steps formodule parameter, write_timeout.
 > 
-> Sumitra
-
-Congratulations on getting the patch accepted!
-I do see you sent another patch, and GregKH responded that it needs
-followup. He sent his automatic, problem with commit message and or
-commit log email. Revisit the docs he suggested and the first patch
-tutorial and see if you can come up with a rev 2 where the commit
-message 'says what you did' and the commit log 'says why you did it'.
-
+> And instead delete the this last phrase.
 > 
-> > Anyone else who wants help in finding their first patch, please reach
-> > out. I imagine their are some folks exploring here, that I haven't
-> > met on the list yet. 
+
+Can you please explain the above feedback. I am confused. What should I
+use instead of this last phrase?
+
+> > Suggested-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> > Signed-off-by: Khadija Kamran <kamrankhadijadj@gmail.com>
+> > ---
 > > 
-> > Finally, it seems we won't be holding to the traditional 10 cleanup
-> > patch requirement this round! Please continue your efforts and I'll
-> > redirect you towards projects after a 'few' cleanup patches are
-> > accepted into staging.
-> > Thanks,
-> > Alison
+> > Changes in v5:
+> >  - Convert timeout's datatype from int to long.
+> > Changes in v4:
+> >  - Initialize timeouts once as suggested by Greg; this automatically
+> >    fixes the indentation problems.
+> >  - Change the subject and description.
+> > Changes in v3:
+> >  - Fix grammatical mistakes
+> >  - Do not change the second argument's indentation in split lines
+> > Changes in v2:
+> >  - Instead of matching alignment to open parenthesis, align second and
+> >    the last argument instead.
+> >  - Change the subject to 'remove tabs to align arguments'.
+> >  - Use imperative language in subject and description
 > > 
+> >  drivers/staging/axis-fifo/axis-fifo.c | 26 ++++++++++++++++----------
+> >  1 file changed, 16 insertions(+), 10 deletions(-)
 > > 
+> > diff --git a/drivers/staging/axis-fifo/axis-fifo.c
+> > b/drivers/staging/axis-fifo/axis-fifo.c index dfd2b357f484..d667dc80df47
+> > 100644
+> > --- a/drivers/staging/axis-fifo/axis-fifo.c
+> > +++ b/drivers/staging/axis-fifo/axis-fifo.c
+> > @@ -103,17 +103,17 @@
+> >   *           globals
+> >   * ----------------------------
+> >   */
+> > -static int read_timeout = 1000; /* ms to wait before read() times out */
+> > -static int write_timeout = 1000; /* ms to wait before write() times out */
+> > +static long read_timeout = 1000; /* ms to wait before read() times out */
+> > +static long write_timeout = 1000; /* ms to wait before write() times out */
 > > 
+> >  /* ----------------------------
+> >   * module command-line arguments
+> >   * ----------------------------
+> >   */
+> > 
+> > -module_param(read_timeout, int, 0444);
+> > +module_param(read_timeout, long, 0444);
+> >  MODULE_PARM_DESC(read_timeout, "ms to wait before blocking read() timing 
+> out;
+> > set to -1 for no timeout"); -module_param(write_timeout, int, 0444);
+> > +module_param(write_timeout, long, 0444);
+> >  MODULE_PARM_DESC(write_timeout, "ms to wait before blocking write() timing
+> > out; set to -1 for no timeout");
+> > 
+> >  /* ----------------------------
+> > @@ -384,9 +384,7 @@ static ssize_t axis_fifo_read(struct file *f, char 
+> __user
+> > *buf, mutex_lock(&fifo->read_lock);
+> >  		ret = wait_event_interruptible_timeout(fifo->read_queue,
+> >  			ioread32(fifo->base_addr + XLLF_RDFO_OFFSET),
+> > -				 (read_timeout >= 0) ?
+> > -				  msecs_to_jiffies(read_timeout) :
+> > -				  MAX_SCHEDULE_TIMEOUT);
+> > +			read_timeout);
+> > 
+> >  		if (ret <= 0) {
+> >  			if (ret == 0) {
+> > @@ -528,9 +526,7 @@ static ssize_t axis_fifo_write(struct file *f, const 
+> char
+> > __user *buf, ret = wait_event_interruptible_timeout(fifo->write_queue,
+> >  			ioread32(fifo->base_addr + XLLF_TDFV_OFFSET)
+> > 
+> >  				 >= words_to_write,
+> 
+> What is this? You haven't yet compiled your patch.
+> Any further problems with enabling axis-fifo as a module?
+>
+
+
+Sorry, my bad.  Instead of fixing the menuconfig I used this command to
+remove the warnings: 
+make -j"$(nproc)" ARCH=arm64 LLVM=1 drivers/staging/axis-fifo/
+I thought it is compiling my module correctly.
+But I am working on your feedback. And before sending my next patch I
+will make sure to compile it properly.
+
+
+> Fabio
+> 
+> > 
+> > -				 (write_timeout >= 0) ?
+> > -				  msecs_to_jiffies(write_timeout) :
+> > -				  MAX_SCHEDULE_TIMEOUT);
+> > +			write_timeout);
+> > 
+> >  		if (ret <= 0) {
+> >  			if (ret == 0) {
+> > @@ -815,6 +811,16 @@ static int axis_fifo_probe(struct platform_device 
+> *pdev)
+> >  	char *device_name;
+> >  	int rc = 0; /* error return value */
+> > 
+> > +	if (read_timeout >= 0)
+> > +		read_timeout = msecs_to_jiffies(read_timeout);
+> > +	else
+> > +		read_timeout = MAX_SCHEDULE_TIMEOUT;
+> > +
+> > +	if (write_timeout >= 0)
+> > +		write_timeout = msecs_to_jiffies(write_timeout);
+> > +	else
+> > +		write_timeout = MAX_SCHEDULE_TIMEOUT;
+> > +
+> >  	/* ----------------------------
+> >  	 *     init wrapper device
+> >  	 * ----------------------------
+> > --
+> > 2.34.1
+> 
+> 
+> 
 > 
