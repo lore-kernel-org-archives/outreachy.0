@@ -1,80 +1,73 @@
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-pl1-f179.google.com (mail-pl1-f179.google.com [209.85.214.179])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1B5CE20EE;
-	Thu, 16 Mar 2023 08:27:15 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DF2A0211A
+	for <outreachy@lists.linux.dev>; Thu, 16 Mar 2023 08:31:23 +0000 (UTC)
+Received: by mail-pl1-f179.google.com with SMTP id ix20so936123plb.3
+        for <outreachy@lists.linux.dev>; Thu, 16 Mar 2023 01:31:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=MX9PWOpl+gczMtq6Tm3f+M+4h8XUnDLXB2g0cF3zAzw=;
-  b=ltiDjQzBUYZCsQcR73I8iQnd1u36LMOBnjeOFe36EYS3w9Qp8tyh5iw2
-   NoVLBuUhT0EP3xegaN6w3qzRRW2j8D33kIdqoS6vrs1VGO433CkzP+B0q
-   dzzH7d1FDsdm3X2LZo+K4soiDhTS1F3nTmZPX18NRIoIUTVXlnDtugvL0
-   U=;
-Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="5.98,265,1673910000"; 
-   d="scan'208";a="50339159"
-Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Mar 2023 09:27:13 +0100
-Date: Thu, 16 Mar 2023 09:27:13 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-To: Sumitra Sharma <sumitraartsy@gmail.com>
-cc: Dan Carpenter <error27@gmail.com>, outreachy@lists.linux.dev, 
-    manishc@marvell.com, GR-Linux-NIC-Dev@marvell.com, coiby.xu@gmail.com, 
-    gregkh@linuxfoundation.org, netdev@vger.kernel.org, 
-    linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3] Staging: qlge: Fix indentation in conditional
- statement
-In-Reply-To: <20230316081428.GA47053@sumitra.com>
-Message-ID: <c6cb3428-a785-195b-ffae-d715f3aacee7@inria.fr>
-References: <20230314121152.GA38979@sumitra.com> <6e12c373-2bfd-48d8-b77d-17f710c094f7@kili.mountain> <20230316081428.GA47053@sumitra.com>
+        d=gmail.com; s=20210112; t=1678955483;
+        h=in-reply-to:content-disposition:mime-version:message-id:subject:to
+         :from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=Ccx24liFdpImd3uSuFC5mSCZnDFYDJHzOJ5ZCa9Gcqo=;
+        b=Y9EN/0X7hpkchoQczzqFWjpAAg5S6WjgQLAgBW4GkUUx1Ywppmd3UdOKX6u3uNtrQW
+         7wGKvJSktBVAbD5pR7sUyFxrS+28IOsyOdnSTJiEf3wYSzBEEhl3iH+enDALJgX8H9b3
+         N4HcvYdXhvpE4vDpMajEmS21KQmuvSGLs3uOy25BK8Vt2tfUJvb6YFsLmlQhwtVFvZx3
+         kkouOuEBbmoeMfW/823GhcaUCdoLrskO7yVrvOIAgrcsEzosIspR+UqaP34wGFEAsaCF
+         WAmRPV0WPzZYsIujRRRRpGvT3bxlX7sA12GmLJMtud7QN9rEYtguHopZ7hVaA0L+3xY0
+         xbww==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1678955483;
+        h=in-reply-to:content-disposition:mime-version:message-id:subject:to
+         :from:date:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Ccx24liFdpImd3uSuFC5mSCZnDFYDJHzOJ5ZCa9Gcqo=;
+        b=5BWSxgc1Al37Ib83GHyUyxvoy321rdHFSDK7hcOtaMCGvbv5jv/bKDM9ywVVYj0V45
+         CphD+jmS1BWPh5YAJfz2Apa6Vow6uaVRaevj3v5GFOGW//fep+d1l2hZ6xRKE0FYB6Hc
+         0TpOBQyNOdT7A+tUjDiwYTafcmhp+FWZ9s1vKmBlNX60o818jrznzolKYfUjGef4vsll
+         3ghKaFL/gd97GwtRPr0aa2eQMwlQ813J2AwypRjEK4APjG0krbTgylRE0oGU6V2RY5Jl
+         W4G2UzStDrNB0BHvIJVZi6/JQApZMuqveYIpEJxPhrg7gEF5jYu2WDwZ7F9g7JznWCFk
+         b0lw==
+X-Gm-Message-State: AO0yUKWqo8ya/ldPcGOkrIl/9CfwIfkyPB3TvxL3vxqvr/c6YdBdb6jg
+	TqD+m1QO4MOJeLzuEYYaBSY=
+X-Google-Smtp-Source: AK7set+qdQNfyZrQgIJVt2byyqP9kfcsrI/KtQGws+UIO5fchI/jTVOE1bFT95B6RtWiOCBvFPKKKQ==
+X-Received: by 2002:a17:903:70e:b0:19e:b6b0:697 with SMTP id kk14-20020a170903070e00b0019eb6b00697mr2020672plb.52.1678955483292;
+        Thu, 16 Mar 2023 01:31:23 -0700 (PDT)
+Received: from sumitra.com ([117.209.126.134])
+        by smtp.gmail.com with ESMTPSA id h5-20020a170902b94500b001a1936e875asm768320pls.272.2023.03.16.01.31.21
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 16 Mar 2023 01:31:22 -0700 (PDT)
+Date: Thu, 16 Mar 2023 01:31:16 -0700
+From: Sumitra Sharma <sumitraartsy@gmail.com>
+To: sumitraartsy@gmail.com, outreachy@lists.linux.dev
+Subject: Re: [KERNEL NEWBIES ACCESS] Sumitra Sharma
+Message-ID: <20230316083116.GB47053@sumitra.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20230312170757.GE28100@ubuntu>
 
+On Sun, Mar 12, 2023 at 10:07:57AM -0700, Sumitra Sharma wrote:
+> 2. The outreachy document directly links the ".rst" file
+> https://elixir.bootlin.com/linux/latest/source/Documentation/process/coding-style.rst
+> at many places under different sections. And as noted by fabio there is a difference between the
+> .rst source files content and its corresponding .html file which can lead to confusions and missing
+> important information. I would like to suggest to change the links to the .html/.pdf files rather than the > .rst source files.
 
+Hi mentors
 
-On Thu, 16 Mar 2023, Sumitra Sharma wrote:
+I would like to have some update on this. 
 
-> On Wed, Mar 15, 2023 at 10:47:21AM +0300, Dan Carpenter wrote:
-> > On Tue, Mar 14, 2023 at 05:11:52AM -0700, Sumitra Sharma wrote:
-> > > Add tabs/spaces in conditional statements in to fix the
-> > > indentation.
-> > >
-> > > Signed-off-by: Sumitra Sharma <sumitraartsy@gmail.com>
-> > >
-> > > ---
-> > > v2: Fix indentation in conditional statement, noted by Dan Carpenter
-> > >  <error27@gmail.com>
-> > > v3: Apply changes to fresh git tree
-> > >
-> >
-> > Thanks!
-> >
-> > Reviewed-by: Dan Carpenter <error27@gmail.com>
-> >
->
-> Hi dan,
->
-> Will this be considered as my first accepted patch? :)
+Regards,
 
+Sumitra
 
-I think it is accepted only when Greg takes it into his tree and you can
-have a link for it.
+> Regards
 
-julia
-
->
-> Regards,
->
 > Sumitra
-> > regards,
-> > dan carpenter
-> >
->
->
+
