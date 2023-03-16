@@ -1,56 +1,56 @@
-Received: from mail-wm1-f43.google.com (mail-wm1-f43.google.com [209.85.128.43])
+Received: from mail-wm1-f46.google.com (mail-wm1-f46.google.com [209.85.128.46])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7B88329A5;
-	Thu, 16 Mar 2023 11:13:27 +0000 (UTC)
-Received: by mail-wm1-f43.google.com with SMTP id bi20so958139wmb.2;
-        Thu, 16 Mar 2023 04:13:27 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1D6D52C9C;
+	Thu, 16 Mar 2023 11:39:35 +0000 (UTC)
+Received: by mail-wm1-f46.google.com with SMTP id m18-20020a05600c3b1200b003ed2a3d635eso879420wms.4;
+        Thu, 16 Mar 2023 04:39:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678965205;
+        d=gmail.com; s=20210112; t=1678966773;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=tTuzaEtkdad3SduDOVpM+9N/ZmAnSzF8vvyumGkuLF4=;
-        b=Cpa+nq0CzvtmFmE69T/iPZ6OVlFndUFiNVmjbOV8xzoiqyyv4EDfSiA+BLlOvoj5S3
-         +EhTvIksk5X8Sn10oPxNv+2SnceF3dF9YEIKuCTSM3QMECCWZYE6FsWu1x1FJuOdQfeb
-         ARNndVdNW7q42AkZ53SPzMAGQom4REgbSdKUOZBQI05yOoq7c0cy0imO8vTbU0esn0O2
-         TSKDYPunkV1UlvLBxH/RC27ICvbHgD85Xi4oj5DZUaQEiRwAjPUSo4nZrt4O2/opP0ex
-         3bXjc9Bejdfr5wNVmhwOR4ZP/RQh9oFvywc58EWlJzSiWNI3GZ6+bRebkgZWekBgUmKP
-         20mg==
+        bh=Kc+TKhkWgBxkIa6rZa0UbU5xS8M4xJrUEtCCPts6psA=;
+        b=B+5HKVjQ8mqaMShUiMvGvciIUQfBmk2sKuXFiO0jRY7B4pN81pcvxjrp3CGPMA+DWW
+         ABYjfzkZkx+Rkzl6tcq+vU8cykbsE+C+SXugvPo+yaMkomHf0k05lr/PG9g0JTmnAf5q
+         NtvVb7ZQ4ImBbaCUwogqfDWYshoR/mvjQxWIpV95EFXQlVy+tF4mm47XtGLAT5CH8UKS
+         AwY3rD10Jtuj4w+knkTcShcDwzBDypoPy9nz7EDHJ2eK9twKH1pe6vVztC3vjZvchXEp
+         aJ0Ymx0RrtjhzuZieo8OVp540TaHoProQLVSDvlVV4xU+oETu5J0ku92y7IE0uUq6Azb
+         uLZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678965205;
+        d=1e100.net; s=20210112; t=1678966773;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=tTuzaEtkdad3SduDOVpM+9N/ZmAnSzF8vvyumGkuLF4=;
-        b=SZDE1McPXSwlZeqx5qkzot6l8YLRPo7HhA95GXZB1EtRrWFTvSuA3H7zpbxeHpWaiF
-         GMKRr4MilpaqKQ6kdWrb2bbT4H8qXQJYyPnXkIIFNQr6NjaQ+HOWKkd55ROlelmCbrVW
-         pE+jSWAIQJef9V4kneES85m7JVQ1lFGS7Dwn1Ap6c77YylzAnGneiSu6bje+AAr9r4yE
-         JqUo6JcJIkTYqrS5ZhEhjHM8xbYHmJXlSyzqNv+uFwq2BPOqCzeOIkS8npLZ0BqzT4/4
-         0EHaN9QyJ6AmlHCfhGd9/+0f4NNDwfJo0GNjCuupseBvxeBZODWs34wjx/z6pKm4eitY
-         ouKw==
-X-Gm-Message-State: AO0yUKXn7w1bFiRrNSaBiw2xq5D/ZfHwEEQGmTXnsd0xr+Fy08HLVdgG
-	Dx1FYmtoLGcFKh4ypJpb1uM=
-X-Google-Smtp-Source: AK7set/H2duo12KyBsoS0hMmwXxkNb7VuKuY/1BxrCfP7+ga4GEby607n7kYdKjgd04g47RThZEOmw==
-X-Received: by 2002:a05:600c:3113:b0:3e2:24a0:ba26 with SMTP id g19-20020a05600c311300b003e224a0ba26mr21354109wmo.16.1678965205397;
-        Thu, 16 Mar 2023 04:13:25 -0700 (PDT)
+        bh=Kc+TKhkWgBxkIa6rZa0UbU5xS8M4xJrUEtCCPts6psA=;
+        b=6vFPdmWM6sE39qDC04wD+DLyVnmBuLJyb9UQYkZ4FS9G6tLTRcloKhfq1S4gccqRZu
+         ODCx/Xf6Yka9GW/dwZSdD4gDC69OIeQIhZiCfO7k+XCndcpuwOh3x3ifNQ9kHaDANe5x
+         5jdTsinqHSYYUSaghGMCk5dpxbBCyyBs3M/9osxC7To4DjFKztyxsGU9HGPMSYyQJMXx
+         /Ki96hMYWbGixc78lsCNwD4hUJhyrODgIgZxAR97euqeHvPFweaDATXOtJVZHX5NiTcN
+         p9ZGlzeAzaic5xccOKpDy7vQnMD5cCSrEI2q33LG4OfLBmegvw3A9QfNZHAlNTH9VWIt
+         DH8Q==
+X-Gm-Message-State: AO0yUKUtPwI/745KVi+DetnC+5M8YotSSBaMXFu7uEChYuEh2mPDcgmy
+	GdbVICnetTK0iFKGAO9w0qoCDO+W06CNag==
+X-Google-Smtp-Source: AK7set9t7Ni42RcKhVlDgKuW0vQm8VjNXJNze9Kjqr2Zp/LPYHq/TjiqOUEQAFJlJr4eTogJHxcynQ==
+X-Received: by 2002:a05:600c:354d:b0:3ed:340e:afbe with SMTP id i13-20020a05600c354d00b003ed340eafbemr4696790wmq.20.1678966773095;
+        Thu, 16 Mar 2023 04:39:33 -0700 (PDT)
 Received: from suse.localnet (host-79-35-102-94.retail.telecomitalia.it. [79.35.102.94])
-        by smtp.gmail.com with ESMTPSA id u25-20020a7bc059000000b003e21f959453sm4576877wmc.32.2023.03.16.04.13.23
+        by smtp.gmail.com with ESMTPSA id c3-20020a7bc843000000b003db0bb81b6asm4803346wml.1.2023.03.16.04.39.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 16 Mar 2023 04:13:24 -0700 (PDT)
+        Thu, 16 Mar 2023 04:39:32 -0700 (PDT)
 From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
 To: Khadija Kamran <kamrankhadijadj@gmail.com>
-Cc: Alison Schofield <alison.schofield@intel.com>, outreachy@lists.linux.dev,
+Cc: Nathan Chancellor <nathan@kernel.org>,
+ Alison Schofield <alison.schofield@intel.com>, outreachy@lists.linux.dev,
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
- Nathan Chancellor <nathan@kernel.org>
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
 Subject: Re: [PATCH] staging: axis-fifo: initialize timeouts in probe only
-Date: Thu, 16 Mar 2023 12:13:23 +0100
-Message-ID: <1797409.3VsfAaAtOV@suse>
-In-Reply-To: <ZBLmev7BaIhYQXIz@khadija-virtual-machine>
+Date: Thu, 16 Mar 2023 12:39:31 +0100
+Message-ID: <1902746.IobQ9Gjlxr@suse>
+In-Reply-To: <ZBLsoTBeKbuYbhCi@khadija-virtual-machine>
 References:
- <ZA9mThZ7NyRrQAMX@khadija-virtual-machine> <3096768.uvML7RA1vL@suse>
- <ZBLmev7BaIhYQXIz@khadija-virtual-machine>
+ <ZA9mThZ7NyRrQAMX@khadija-virtual-machine> <279821116.9N5E1g01tA@suse>
+ <ZBLsoTBeKbuYbhCi@khadija-virtual-machine>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -60,113 +60,134 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 Content-Type: text/plain; charset="iso-8859-1"
 
-On gioved=EC 16 marzo 2023 10:50:50 CET Khadija Kamran wrote:
-> On Wed, Mar 15, 2023 at 05:44:47PM +0100, Fabio M. De Francesco wrote:
-> > On mercoled=EC 15 marzo 2023 14:56:27 CET Khadija Kamran wrote:
-> > > On Wed, Mar 15, 2023 at 02:13:51PM +0100, Fabio M. De Francesco wrote:
-> > > > On mercoled=EC 15 marzo 2023 13:32:55 CET Khadija Kamran wrote:
-
-[snip]
-
-> > > > I suppose that "w=3D1" is a typo. The option is enabled with "W=3D1"
-> > > > (capital
-> > > > case, Linux and all UNIX-like are case-sensitive).
+On gioved=EC 16 marzo 2023 11:17:05 CET Khadija Kamran wrote:
+> On Wed, Mar 15, 2023 at 05:24:23PM +0100, Fabio M. De Francesco wrote:
+> > On mercoled=EC 15 marzo 2023 16:06:56 CET Nathan Chancellor wrote:
+> > > Hi Khadija,
 > > >=20
-> > > Okay. I should re-run it with "W=3D1".
-> > >=20
-> > > > > But it is taking a lot of time, is there any way of
-> > > > > speeding it up?
+> > > On Wed, Mar 15, 2023 at 07:22:39PM +0500, Khadija Kamran wrote:
+> > > > On Wed, Mar 15, 2023 at 02:34:31PM +0100, Fabio M. De Francesco wro=
+te:
+> > > > > Aside from what I said and asked for with the other message of th=
+is
+> > > > > same
+> > > > > thread, please take note that you can build a specific module if =
+you
+> > > > > prefer
+> > > > > not to re-build the whole kernel and other modules at the same ti=
+me.
+> > > > >=20
+> > > > > I'm pretty sure that the instructions to do so are in the
+> > > > > OutreachyFirstPatch
+> > > > > tutorial.
+> > > > >=20
+> > > > > If they are not there, please let us know.
+> > > > >=20
+> > > > > Fabio
 > > > >=20
-> > > > What is you choice for 'X' in "-jX"?
+> > > > Hey Fabio!
+> > > >=20
+> > > > In the Outreachy FirstPatchTutorial under the 'Compiling only part =
+of
+> > > > the kernel' section there are ways to compile only some part of the
+> > > > kernel.
+> > > >=20
+> > > > I have tried using "make W=3D1 drivers/staging/axis-fifo/" and it s=
+ays
+> > > > 'nothing to be done for'.
 > > >=20
-> > > I used "-j4".
-> > >=20
-> > > > Did you try with the exact number of logical cores?
-> > > > Are you building into a VM with enough logical cores?
-> > > > If you are building into a VM, did you reserve enough RAM?
-> > >=20
-> > > I am using Ubuntu 22.04.01 with the help of VM on VMware.
-> > > My machine has 13GB RAM and 2 processors(4 cores each).
+> > > Is CONFIG_XIL_AXIS_FIFO enabled in your configuration?
 > >=20
-> > Therefore, you are using a Linux guest on a Linux host. This is a wise
-> > choice. However, you didn't say where you are running your builds...
+> > @Khadija:
+> >=20
+> > Maybe that you won't find CONFIG_XIL_AXIS_FIFO among the staging drivers
+> > entries while using "make menuconfig" (or the other similar commands for
+> > working with the configuration).
+> >=20
+> > In that case, first enable the CONFIG_OF option if disabled.
+> > CONFIG_XIL_AXIS_FIFO depends on the former.
+> >=20
+> > For "CONFIG_XIL_AXIS_FIFO depends on CONFIG_OF" we mean that you can the
+> > former if and only if the latter is already enabled.
+> >=20
+> > Actually, CONFIG_XIL_AXIS_FIFO depends also on two other options. Howev=
+er
+> > you
+> > shouldn't worry about those others because they are commonly enabled in=
+=20
+more
+> > than 99% of PC distributions.
 >=20
 > Hey Fabio!
 >=20
-> I am not using a Linux guest on Linux host. Sorry if I did not explain
-> it right. I am using Windows 10 and in order to run Ubuntu, I have
-> created a VM(on VMWare). This VM has 13GB RAM and 2 processors(4 cores
-> each).
-> Thank you!
+> I have checked in my .config file and both options are enabled. The file
+> says,
+> CONFIG_OF=3Dy
+> CONFIG_HAS_IOMEM=3Dy
 >=20
+> The "make menuconfig" shows 'Xilinx AXI-Stream FIFO IP core driver' with
+> built-in selection [*].
+> The problem I am having here is that in the OutreachyFirstPatch
+> tutorial, it asks you to change [*] -> [m], but I cannot change it.
+>=20
+> Kindly help me with this!
+
+Hi Khadija,
+
+Sorry for being here so late.
+
+I just saw also your other messages with further help requests.
+Please do other work while waiting for help on a specific issue.=20
+
+If I understand you correctly, you are saying that you can only build axis-
+fifo in-kernel because you cannot change the '*' to 'm'. Correct?
+
+If so, you have probably touched other configuration options in a way that=
+=20
+forces that driver to work only if compiled in-kernel). Therefore, I'd rest=
+art=20
+from scratch.
+
+Please delete your current .config and make a copy of the one from your=20
+running kernel. Then check the three options Alison and I were talking abou=
+t.=20
+
+Remember that you cannot see the axis-fifo module entry (CONFIG_XIL_AXIS_FI=
+=46O)=20
+in "Device Drivers" -> "Staging Drivers" section if you have not yet enable=
+d =20
+(either with 'm' or 'y') CONFIG_OF and CONFIG_HAS_IOMEM.=20
+
+Now you should end up with a visible CONFIG_XIL_AXIS_FIFO that can be enabl=
+ed=20
+as a module with 'm'.=20
+
+Let me know if this procedure works.
+
+=46abio
+
+> Thank you!
 > Regards,
 > Khadija
-
-Khadija,
-
-I'm not yet sure whether or not you are doing well with reserving 13GB to a=
-=20
-VM. First of all you should better use multiples of 2GB. Furthermore it loo=
-ks=20
-too much memory unless you have a total "real" RAM in your host exceeding=20
-18GB. You must be sure you are leaving enough room for the Windows host to =
-run=20
-smoothly and avoid too much swapping to/from disk.
-
-At the same time I doubt that you can reserve 8 logical cores (2x4) for=20
-running the VM on VMWare.
-
-However, we have time to investigate and adjust your configuration (if it=20
-really needs to be fine tuned). I'll try to reach you on IRC, open a privat=
-e=20
-window, and assist with this task ASAP.
-
-At the moment I'd prefer to see you focusing on getting your first patch=20
-accepted by Greg.
-
-Thanks,
-
-=46abio=20
-=20
-> > I mean, the better things to do are the following steps:
+>=20
+> > > > Should I start with the steps to reproduce? :'(
+> > >=20
+> > > I did see a report of this same warning occurring with GCC but the
+> > > report I commented on cane from clang/LLVM; using that toolchain may
+> > > make it easier for you to reproduce this issue. The robot's reproduct=
+ion
+> > > instructions are fine but I think doing it manually is actually simpl=
+er.
+> > >=20
+> > > Ubuntu 22.04 should have a pretty modern version of clang/LLVM, which
+> > > you can install via 'sudo apt install clang lld llvm'.
+> > > https://apt.llvm.org is another resource.
 > >=20
-> > 1) Your workspace with the staging tree should stay in the host.
-> > 2) Shut down your guest in order to have all RAM and all logical=20
-processors
-> > available for the build.
-> > 3) Run "make -j8" in the host. Since you shutdown your guest VM you can=
-=20
-use
-> > all 8 logical cores and the maximum available RAM (without the VM drain=
-ing
-> > resources while building)
-> > 4) When the build is done, switch on your VM on VMware with at least 4
-> > logical cores and 6GB of reserved RAM.
-> > 5) Mount your cloned base directory as a shared folder between host and
-> > guest. 6) In the guest, 'cd' to the shared folder and then run "make
-> > modules_install install" (in the guest, attention). This will install a=
-nd
-> > configure the kernel, the modules, GRUB2 and everything else in your gu=
-est
-> > VM.
-> > 7) Reboot the VM and test your patches.
-> >=20
-> > This procedure will speed up your next builds.
-> > The fundamental point is that you don't need to partition precious=20
-resources
-> > while building, Do everything without running the VM and switch it on o=
-nly
-> > for install and tests. Since you only build in the host but never insta=
-ll
-> > and boot in it, you don't risk any system's damage.
-> >=20
-> > This is what I do for Kernel development purposes.
-> >=20
-> > I hope it helps to answer your question about how to run fast=20
-recompilation.
+> > @Nathan: Congratulations, you now have another clang/LLVM adept!
+> > (Obviously, I'm just kidding :-))
 > >=20
 > > Fabio
-> >=20
+
 
 
 
