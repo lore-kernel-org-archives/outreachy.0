@@ -1,122 +1,96 @@
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-pl1-f171.google.com (mail-pl1-f171.google.com [209.85.214.171])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 956907475
-	for <outreachy@lists.linux.dev>; Fri, 17 Mar 2023 17:47:30 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8C4B67475
+	for <outreachy@lists.linux.dev>; Fri, 17 Mar 2023 17:50:12 +0000 (UTC)
+Received: by mail-pl1-f171.google.com with SMTP id o11so6130480ple.1
+        for <outreachy@lists.linux.dev>; Fri, 17 Mar 2023 10:50:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=hDNnn/6TueY7VOlHr0XZUBOFDhqSa2EH98aY+Pwriu0=;
-  b=YDLR7AVA++YqUClH418qw7Kyt3/Fv/NmjiM3+BcAJvO6vacKfu1k0Zn3
-   apFibnc3DMaI4SsJZlLJJpoQpwX05Gi4ju9uSGMCgeHIY2TwBtJdOxtgZ
-   +ljmWu17L0FbWqSelaW06Y32OalY8WRiwH8MuW0587MFyxjlUMh4yymSk
-   0=;
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="5.98,268,1673910000"; 
-   d="scan'208";a="97824216"
-Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Mar 2023 18:47:28 +0100
-Date: Fri, 17 Mar 2023 18:47:28 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-To: Mark Heim <questioneight@gmail.com>
-cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, outreachy@lists.linux.dev
-Subject: Re: [PATCH] staging: greybus: extract a fxn to improve clarity
-In-Reply-To: <20230317172542.GB48779@pikachu-Z97-D3H>
-Message-ID: <d24cf0c9-f8e-7436-ff87-5a6fd144a049@inria.fr>
-References: <20230317141756.GA43753@pikachu-Z97-D3H> <ZBR6MZifQBMLV8Ps@kroah.com> <20230317172542.GB48779@pikachu-Z97-D3H>
+        d=gmail.com; s=20210112; t=1679075412;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=hrQpnVltxGaArL9L7YNAmIe/p8pFCnk6labk9GT2yYk=;
+        b=d32mIRhUTD50h6Xs+b1Nq+EVRDqmbeON3I2WfTl3Tk+bZ2K32t/HCij3PIr0xCMXv1
+         Vz938ywDTALQsPNCym8+ku0nCZb7d5nZ02gQRl0TTnfVW9XggOM2qeSPOGwj8BAUOGjW
+         Z4qNXpJ2HJWgKp+HkH1tzXAjHDkGU5nOyt9Dywq/4ivMZMbUgN7Meqq/MZxR40yXUQnX
+         RF5utlcwHrNSPV9yV8tfK4lttfxitjFoYCNkNSbbX5WLE7DR9lRZV/je+iUHRcGy89A5
+         Z5LDddeiZmDgfmG8clLyjl97unsgI8VC/7bSsgZBKn/cuErS9hJkwq/ZRdXg92OcwSDl
+         LwlQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679075412;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=hrQpnVltxGaArL9L7YNAmIe/p8pFCnk6labk9GT2yYk=;
+        b=qHmrCNfJUcLRN+ClcmCi6cIy+eKt4GjZMapdOOt6OAP+SwOpbkz69t3UY0YW6m2h5E
+         0Ivd7HgBBcumK3n8c36Eat9/UdW+p8AMh779NbI09P2vniYvd/PwsDswOJg06EShghXg
+         dfQAL4dzQMOz/jmP2wqbnmcJCU4uTEC1hm0GhXrS5utTKFomv/I0s53OCYu+FI4PJhJd
+         Ftwx47w09eyiw+MuU4sFwP1NEB1LWnv7ggrJo8XuKAVNbHY1jbHoppkUyQkVmKri3nSW
+         JlptxZTOJRKP+Snn7V6lUopeuuVKuZZ4RzXUKH666oLxjYOGcJtIKw0fzKOQ0tXqohv6
+         rB9A==
+X-Gm-Message-State: AO0yUKXgLhntimkC5c/rEIEs+y02wEURgNh0tn+R4dFGnBnqLHmTv9Ug
+	ODefMmQqEN6r1sX3xA6TqEs=
+X-Google-Smtp-Source: AK7set/ZgoJHI7oyJN4vNXZ1+zTQ/ZKVifzCHPVtnP6s/4kg7okAb2NP4wmABU/pSMM/b7k0/C7CtQ==
+X-Received: by 2002:a05:6a20:2451:b0:cc:ac05:88f7 with SMTP id t17-20020a056a20245100b000ccac0588f7mr10292255pzc.34.1679075411797;
+        Fri, 17 Mar 2023 10:50:11 -0700 (PDT)
+Received: from sumitra.com ([117.98.68.136])
+        by smtp.gmail.com with ESMTPSA id c26-20020aa781da000000b0062578514d6fsm1840801pfn.58.2023.03.17.10.50.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 17 Mar 2023 10:50:11 -0700 (PDT)
+Date: Fri, 17 Mar 2023 10:50:07 -0700
+From: Sumitra Sharma <sumitraartsy@gmail.com>
+To: Alison Schofield <alison.schofield@intel.com>
+Cc: outreachy@lists.linux.dev
+Subject: [KERNEL NEBIES ACCESS] Sumitra Sharma
+Message-ID: <20230317175007.GA3275@sumitra.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-> Global function? Do you mean the EXPORT_SYMBOL_GPL makes it global?
-> That's an issue since I was trying to imitate the structure of the
-> functions that were already in the C code, though I am not exactly sure
-> the functionality of that statement. I thought this function should
-> match.
+Hi Alison,
 
-Global means that the function doesn't have static in its declaration.  So
-it is visible to files other than this one.  EXPORT_SYMBOL has to do with
-modules.
+The outreachyfirstpatch document directly links the ".rst" files at many places under different sections. And as Fabio says that .rst files are source files and are only meant to be used for making changes and not to consult. Therefore,  I would like to propose the idea of changing the
+links of the .rst source files to their respective .html/.pdf files.
 
->
-> > And why if it is a global function, are you not using the gb_audio_*
-> > prefix?  Be aware of the global namespace please.
-> >
->
-> I thought namespaces were a C++ specific issue, not C. I think I was
-> ignorant of the C namespace until just now. I have used C++ namespaces
-> and Java packages, but wasn't aware of the C analogue.
+The specific changes are:
 
-The point is the concept of visible names, not a declaration.
+1. approved email client:
 
-julia
+https://elixir.bootlin.com/linux/latest/source/Documentation/process/email-clients.rst
+--------------------------------------------------------------
+https://www.kernel.org/doc/html/latest/process/email-clients.html
 
-> > >  int gb_audio_gb_get_topology(struct gb_connection *connection,
-> > >  			     struct gb_audio_topology **topology);
-> > >  int gb_audio_gb_get_control(struct gb_connection *connection,
-> > > diff --git a/drivers/staging/greybus/audio_gb.c b/drivers/staging/greybus/audio_gb.c
-> > > index 9d8994fdb41a..3c924d13f0e7 100644
-> > > --- a/drivers/staging/greybus/audio_gb.c
-> > > +++ b/drivers/staging/greybus/audio_gb.c
-> > > @@ -8,7 +8,13 @@
-> > >  #include <linux/greybus.h>
-> > >  #include "audio_codec.h"
-> > >
-> > > -/* TODO: Split into separate calls */
-> > > +int fetch_gb_audio_data(struct gb_connection *connection,
-> > > +			int type, void *response, int response_size)
-> > > +{
-> > > +	return gb_operation_sync(connection, type, NULL, 0,
-> > > +				 response, response_size);
-> > > +}
-> > > +
-> > >  int gb_audio_gb_get_topology(struct gb_connection *connection,
-> > >  			     struct gb_audio_topology **topology)
-> > >  {
-> > > @@ -17,28 +23,23 @@ int gb_audio_gb_get_topology(struct gb_connection *connection,
-> > >  	u16 size;
-> > >  	int ret;
-> > >
-> > > -	ret = gb_operation_sync(connection, GB_AUDIO_TYPE_GET_TOPOLOGY_SIZE,
-> > > -				NULL, 0, &size_resp, sizeof(size_resp));
-> > > +	ret = fetch_gb_audio_data(connection, GB_AUDIO_TYPE_GET_TOPOLOGY_SIZE,
-> > > +				  &size_resp, sizeof(size_resp));
-> >
-> > What are you actually changing here besides the name?
-> >
->
-> In an earlier revision, I replaced each gb_operation_sync call with one
-> of two functions: fetch_gb_audio_data_size and fetch_gb_audio_data.
-> Next, I added in comments to explain what all the code was doing. To
-> satisfy the restriction that the computations done by the code were the
-> same as before the refactor, I would pass in 4 parameters into each
-> of the functions, which saves the issue of magic numbers being fed into
-> gb_operation_sync. Then, the two new functions I consolidated down to
-> 1 function because the method bodies were identical. Finally, per the
-> code refactoring guides, I eliminated the comments.
->
-> I thought about adding in a function to encapsulate the code between
-> the two refactored methods, but you run into an issue with needing to
-> return too many values without doing something like defining a struct to
-> return those values. Thus, there's almost no change to the code.
->
-> > How did this fix up the TODO at all?
-> >
->
-> It depends how you interpret the TODO, I suppose. My original intent
-> was to encapsulate code into some function calls with a helpful name, and
-> the end result of this refactor is more or less a U-turn.
->
-> Should I update this patch or start something new? Any other feedback is
-> also welcome.
->
-> > confused,
-> >
-> > greg k-h
->
->
+
+2. coding style:
+
+https://elixir.bootlin.com/linux/latest/source/Documentation/process/coding-style.rst
+--------------------------------------------------------------
+https://www.kernel.org/doc/html/latest/process/coding-style.html
+
+
+3. In https://kernelnewbies.org/PatchPhilosophy under the section "Further Reading":
+
+https://elixir.bootlin.com/linux/latest/source/Documentation/process/coding-style.rst
+-----------------------------------------------------------------
+https://www.kernel.org/doc/html/latest/process/coding-style.html
+
+
+https://elixir.bootlin.com/linux/latest/source/Documentation/process/submitting-patches.rst
+-----------------------------------------------------------------
+https://www.kernel.org/doc/html/latest/process/submitting-patches.html
+
+
+https://elixir.bootlin.com/linux/latest/source/Documentation/process/submit-checklist.rst
+-----------------------------------------------------------------
+https://www.kernel.org/doc/html/latest/process/submit-checklist.html
+
+
+Kindly provide me the write mode access and guidance to the further steps to do the same.
+
+Regards,
+
+Sumitra
