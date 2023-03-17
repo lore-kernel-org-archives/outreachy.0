@@ -1,160 +1,103 @@
-Received: from mail-wr1-f44.google.com (mail-wr1-f44.google.com [209.85.221.44])
+Received: from mail-pj1-f51.google.com (mail-pj1-f51.google.com [209.85.216.51])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3F7A3810;
-	Fri, 17 Mar 2023 08:58:21 +0000 (UTC)
-Received: by mail-wr1-f44.google.com with SMTP id i9so3739482wrp.3;
-        Fri, 17 Mar 2023 01:58:21 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5D1F8810
+	for <outreachy@lists.linux.dev>; Fri, 17 Mar 2023 09:00:03 +0000 (UTC)
+Received: by mail-pj1-f51.google.com with SMTP id 6-20020a17090a190600b00237c5b6ecd7so8406563pjg.4
+        for <outreachy@lists.linux.dev>; Fri, 17 Mar 2023 02:00:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679043499;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=bbO1OvwqFcbiXVIlcPvMmW3Zh+xLTD5sL8X+qjX3Xrg=;
-        b=bePY+FUwUvTFE3lB0uGq2ndT/HW8VHTMhmZPQvKkDLVfKzvW1OpHR8jyqosFFcjKW+
-         ykNDbK2X/rS3T6VkIRRqFCP3z87QndC19iXQOCZAHaj0vQA6o0kAXyjg+ZVKKoKBQnPW
-         eO0WDXLBf8JXr8FODimMyazXxJG3RLfl/dwfxVC1gP6SR0mROYPPjDGuDJWlM3GIYAwu
-         A5NbDoTciURkRY6PBhI9kU90e4kJS6C8AkGJzjXx7dpVOUsxCHvOR+9n9B3yCkmqx74k
-         Y68NdTZq1u44kzEGLd3xoxrK4R5aAwsggzwn0B1c3tktcC0Q0By70BbUmWsHQV2RuyTI
-         qG8A==
+        d=gmail.com; s=20210112; t=1679043603;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=VTjSID+rVIazsGcNeovNdjdKEKGqYhnE2+hPF/m09pU=;
+        b=GicFCcDONRTVdwE8E17HgMptvcYjtK5jobFFYFV4VzDUECX+h0tMlkqqaurOk6uBsV
+         O+TGAw+gt272up5kbtbt/Z9xFnk494cl/QKXfPztdMsVrmombE2ItBvEIHeYFl+jdTn9
+         3XROXVB2VgOSkqlX3nPfhqZIIbnbpweDBaV2MHFgQ+A5CL+VYuzP9nZ3SRHAj/OiJYPp
+         fbeaazHa8GvKZYF1Q93QgO3Lp+hW48Zb2f9XCU6sMjLw3xONa0QnFNSat40GT1q3SpTn
+         w0XnXN6aRlEvt+RX+3vQDd8jM0dtHiHELqneiw+/1qp6OD2UlUEnI4xmd6kquNeFY0Ax
+         AogQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679043499;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=bbO1OvwqFcbiXVIlcPvMmW3Zh+xLTD5sL8X+qjX3Xrg=;
-        b=fOAx2+SctwFj3IWwRnFWX2uQ4nfcsNrgT7iLZyAnINIpREEzSJdIk0+yK+6SF25gVe
-         XcwepMpLMoKiSSJc6ZvCw9iwm9zLMsTsdMXVkGEEktNgaBftiTE5DV3JWHdH876f08YG
-         YM820RR+iojGBmOUmOSuMc8nNhXH6esmKzAM/CHt97o16dNcHIy+YO3TIn0Bgb+Y3jkb
-         qOA3nnc16Yinrg/3GzX+ufo4B7ZDb7jBS8d3JS/ZiKEj2ihSojsLclaQUo2RB+RVBAvE
-         RX4kNAJqgySfIrwi7SJKHKUSKN62oB6lImcLJQTAqryJ02TwB5fA5fGDYxhniuOiv+c4
-         rJ7Q==
-X-Gm-Message-State: AO0yUKXKPLIMZMejDcCPt61BWxdOKc32/5zBGXbdtst6p5nkaiGe9Kla
-	/QeEeh7jp/fSYnGP/cRCHqs=
-X-Google-Smtp-Source: AK7set8HtdMekYq7Bz4xSG+wcGPmXUVFj9XJbevuknbtYfEyMJAvlSBgSwFuibxj1rh7UdZNilVgjQ==
-X-Received: by 2002:a05:6000:142:b0:2d2:59cf:468f with SMTP id r2-20020a056000014200b002d259cf468fmr1768958wrx.15.1679043499172;
-        Fri, 17 Mar 2023 01:58:19 -0700 (PDT)
-Received: from suse.localnet (host-79-35-102-94.retail.telecomitalia.it. [79.35.102.94])
-        by smtp.gmail.com with ESMTPSA id t11-20020a05600001cb00b002c54241b4fesm1422562wrx.80.2023.03.17.01.58.17
+        d=1e100.net; s=20210112; t=1679043603;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=VTjSID+rVIazsGcNeovNdjdKEKGqYhnE2+hPF/m09pU=;
+        b=IMmn/S3yv3vuQiecm0fcDsh0/Tt9N7BYQ0+v1MVCYvoYXgg1qbXpYqyO8USXHPo6lL
+         JQWSvFxvKNpgRZUZ7mkJdY0wn4b5XPBBpw/FqniEKD2Af3uqoqoJ4jzLM9X0x+h8XwES
+         p61JxrgpI3BZdQEGy50xzR56RWkuv8Qr3hGWZRR0KM8bccQwJybwbd2PssE8aF0XeH4Y
+         1JarYzkMWM659sQj4hlM0hCeuEQlF6D47fuHwuhhFaE3c7cC8uqCABtJDemlvV3KtYaZ
+         q0A43gH/uaU76TUNtbf9nLu3zRNwPEDeI+s6ey45aE7bLuoW6NGLsyy+9nAlbyUqp8FV
+         5mUA==
+X-Gm-Message-State: AO0yUKUjsUSFVhFd2ELtnzOy1W5WAwxg5w6PAM8p+aHcdUjJiB3UHkbK
+	F6OUsk7sK+vqMxJ+LihMgs8=
+X-Google-Smtp-Source: AK7set+1AMwqt2uWIekkGaKNmOsVg4l3cQhlz5RYlKFhXa2NssG6BWi0MUT0i6sn+ii5HRLoFo5eQw==
+X-Received: by 2002:a05:6a20:7b11:b0:d7:e073:eecf with SMTP id s17-20020a056a207b1100b000d7e073eecfmr631978pzh.50.1679043602777;
+        Fri, 17 Mar 2023 02:00:02 -0700 (PDT)
+Received: from debian.me (subs02-180-214-232-2.three.co.id. [180.214.232.2])
+        by smtp.gmail.com with ESMTPSA id l19-20020a63f313000000b0050bd71ed66fsm940771pgh.92.2023.03.17.02.00.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 17 Mar 2023 01:58:18 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Khadija Kamran <kamrankhadijadj@gmail.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy@lists.linux.dev, linux-staging@lists.linux.dev,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v8] staging: axis-fifo: initialize timeouts in init only
-Date: Fri, 17 Mar 2023 09:58:17 +0100
-Message-ID: <2499410.4XsnlVU6TS@suse>
-In-Reply-To: <ZBQTIVk0zsgv1hMH@kroah.com>
-References:
- <ZBN3XAsItCiTk7CV@khadija-virtual-machine> <ZBQTIVk0zsgv1hMH@kroah.com>
+        Fri, 17 Mar 2023 02:00:02 -0700 (PDT)
+Received: by debian.me (Postfix, from userid 1000)
+	id 661E1106581; Fri, 17 Mar 2023 15:59:59 +0700 (WIB)
+Date: Fri, 17 Mar 2023 15:59:59 +0700
+From: Bagas Sanjaya <bagasdotme@gmail.com>
+To: Sumitra Sharma <sumitraartsy@gmail.com>, outreachy@lists.linux.dev
+Subject: Re: [KERNEL NEWBIES ACCESS] Sumitra Sharma
+Message-ID: <ZBQsDwvI67iq/Diz@debian.me>
+References: <20230312170757.GE28100@ubuntu>
+ <ZA7oTq4LwuatjaI4@debian.me>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="mzeY5VXjW7goMI/J"
+Content-Disposition: inline
+In-Reply-To: <ZA7oTq4LwuatjaI4@debian.me>
+
+
+--mzeY5VXjW7goMI/J
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="iso-8859-1"
 
-On venerd=EC 17 marzo 2023 08:13:37 CET Greg Kroah-Hartman wrote:
-> On Fri, Mar 17, 2023 at 01:09:00AM +0500, Khadija Kamran wrote:
-> > Initialize the module parameters, read_timeout and write_timeout once in
-> > init().
-> >=20
-> > Module parameters can only be set once and cannot be modified later, so=
- we
-> > don't need to evaluate them again when passing the parameters to
-> > wait_event_interruptible_timeout().
+On Mon, Mar 13, 2023 at 04:09:34PM +0700, Bagas Sanjaya wrote:
+> For MTA, replace the now abandoned esmtp with Postfix. Configure the MTA =
+as
+> null client (see [1]). For system-generated emails sent to root and postm=
+aster,
+> you will also need to canonicalize these recipient addresses to your email
+> address (see [2]).
 >=20
-> I feel like we are being too picky here, but this isn't the correct
-> wording.  It is possible for module parameters to be modified "later",
-> if the permissions on the parameter are set to allow this.  But that's
-> not what this driver does here, so this might be better phrased as:
->=20
->   The module parameters in this driver can not be modified after
->   loading, so they can be evaluated once at module load and set to
->   default values if needed at that time.
->=20
-> > Convert datatype of {read,write}_timeout from 'int' to 'long int' becau=
-se
-> > implicit conversion of 'long int' to 'int' in statement
-> > '{read,write}_timeout =3D MAX_SCHEDULE_TIMEOUT' results in an overflow.
-> >=20
-> > Change format specifier for {read,write}_timeout from %i to %li.
->=20
-> You are listing all of _what_ you do here, not really _why_ you are
-> doing any of this.
->=20
-> Anyway, if I were writing this, here's what I would say as a changelog
-> text:
->=20
->   The module parameters, read_timeout and write_timeout, are only ever
->   evaluated at module load time, so set the default values then if
->   needed so as to not recompute the timeout values every time the driver
->   reads or writes data.
->=20
->=20
-> And that's it, short, concise, and it explains why you are doing this.
->=20
-> Writing changelog comments are almost always harder than actually
-> writing the patch (at least for me.)  So don't feel bad, it take a lot
-> of experience doing it.
 
-Thanks for helping Khadija (and also me, indirectly, because I helped them =
-to=20
-make that commit message). After a little less than 200 commits already=20
-upstream, there is still to learn how to make a good changelog (which I thi=
-nk=20
-it's not less important than the code in the patch). =20
+Hi,
 
-> All that being said, I think we are just polishing something that
-> doesn't need to really be polished anymore,
-> so let me go just apply this
-> patch as-is to the tree now so you can move on to a different change.
+Another thing that I forget to mention is to also configure git to send
+patches with Postfix. You need to set:
 
-Yes, thanks. It's time to move on.
+```
+$ git config sendemail.sendmailcmd "/usr/sbin/sendmail"
+$ git config sendemail.envelopeSender "auto"
+```
 
-> You've put in the effort here, and I don't want you to get bogged down
-> in specifics that really do not matter at all overall (like the memory
-> size of your vm...)
+See git-send-email(1) for explanation of these knobs.
 
-You probably didn't pay attention to the problems Khadija has being=20
-experiencing with memory exhaustion and compilation times.=20
+Thanks.
 
-=46irst time they complained had several crashes while building and message=
-s=20
-saying there was not enough available memory. Then several other problems w=
-ith=20
-builds' time. Finally, yesterday they wrote that "make modules_install=20
-install" took "hours" (literally).
+--=20
+An old man doll... just what I always wanted! - Clara
 
-This is why I think they should also be helped with their VM configuration=
-=20
-(despite it was unrelated to the patch). They won't be able to work on some=
-=20
-projects if they cannot do quick builds and run hundreds of tests in no tim=
-e=20
-(e.g., I'm especially talking about Ira's and my project about the conversi=
-ons=20
-from kmap{,_atomic}() to kmap_local_page()).
+--mzeY5VXjW7goMI/J
+Content-Type: application/pgp-signature; name="signature.asc"
 
-I understand that this is only noise for you, as a maintainer. However I'm=
-=20
-pretty sure that they need help with speeding up builds and installation. T=
-he=20
-projects cannot wait "hours" just for install of modules and kernel images.
+-----BEGIN PGP SIGNATURE-----
 
-Again thanks for your precious suggestions about how to improve commit=20
-messages.
+iHUEABYKAB0WIQSSYQ6Cy7oyFNCHrUH2uYlJVVFOowUCZBQsDwAKCRD2uYlJVVFO
+owvYAQDEfhXWp99SKB9qb9CB84vbpIKkxG9jZsfX/K8c28PB7AD+PpnZgDZdS+ZZ
+x0fvz1LVnfbqE5q7PghrAIxRIVjS0wk=
+=Js9U
+-----END PGP SIGNATURE-----
 
-=46abio=20
-
-> thanks,
->=20
-> greg k-h
-
-
-
-
+--mzeY5VXjW7goMI/J--
