@@ -1,135 +1,127 @@
-Received: from mail-pj1-f53.google.com (mail-pj1-f53.google.com [209.85.216.53])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 900DC65D
-	for <outreachy@lists.linux.dev>; Fri, 17 Mar 2023 07:23:51 +0000 (UTC)
-Received: by mail-pj1-f53.google.com with SMTP id qe8-20020a17090b4f8800b0023f07253a2cso4273032pjb.3
-        for <outreachy@lists.linux.dev>; Fri, 17 Mar 2023 00:23:51 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B08A77F1;
+	Fri, 17 Mar 2023 07:37:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679037831;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=JsYUkGowSnmJ/1uMCvwhqEIEN3OadlFrYmyaf3yFZoQ=;
-        b=J+8p2XO1GOuKuomeoSL6gUjz4ocVuo32iBKvXIFxRaPg9jTcbMzVmIyzq45ywFG34R
-         YTY+o8xG5nV+nuAVML9rfs+lHU/BWsdF6auCB2DgCdwdpUiQnZP7KZt+WBVBm3kVEjmZ
-         mJQUXKxTfnYp6kaHnX2Tp1ouhkSIzC9+4327iGY/NrjiM9i8g3GkXnPWbD5d9JFTfCQ/
-         9a2cwgVP9kLavVloYPLvkbvr7+VMPsjaRWC+/f4jci3Yk/vQb84oXmJvCWRVh/jCMYoJ
-         /UjkcEwezlSvzKHeZrVNkEYi5DhkVX0/kJLAhuM7XjqFXMO1uwLHbrWw9H7EkZj8Lm8K
-         FHxQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679037831;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=JsYUkGowSnmJ/1uMCvwhqEIEN3OadlFrYmyaf3yFZoQ=;
-        b=GVOUxpjOTdwOyBISzBSQrPJsnfE66bc9PiVeSrTpFzgV+vRXYKMObDNni/I0EvRyex
-         nIVEKA4gS8LstYx2UtVh9P1E3MgfpdAQHtIhFKr9HaGqkyBNl5k4UpZwTOXB4WkzEL+p
-         45+nhUeLMtlFpy5LszGEUnEJU3ychHl5T0Hb8j4wnlvpZlGKujoFMhBKMiAF1W3EaWsa
-         CHJegxGbrQGnZYo3FlvIvTUD6knsZJp4BOVIhsoKFziNjOM3cPJkMO5qzPCG4klcoaTz
-         oosvDBzusgR8rbxc25VHvncwBafKvaYirW/IkuZ3krljuZh/PGMuDmYs5XoTzan2ZtLy
-         TlzA==
-X-Gm-Message-State: AO0yUKVIfTFsL8rSmp7e9gzGlsfWrLM+LnteQdT1x8bhul7K/X90Ynwu
-	ewg7ND7Yr/e7PsSn90/EJ78x4HTcJFe0qw==
-X-Google-Smtp-Source: AK7set9xjJnNZF9RTs75IOQMjQebP13pj5A9cetFgBfOL4aqojuQqElcYhZUwsDwWtQTQxMKpPuz8Q==
-X-Received: by 2002:a17:902:c40c:b0:1a0:50bd:31c0 with SMTP id k12-20020a170902c40c00b001a050bd31c0mr7841034plk.24.1679037830933;
-        Fri, 17 Mar 2023 00:23:50 -0700 (PDT)
-Received: from sumitra.com ([14.139.226.12])
-        by smtp.gmail.com with ESMTPSA id t20-20020a1709028c9400b001992fc0a8eesm847817plo.174.2023.03.17.00.23.49
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 17 Mar 2023 00:23:50 -0700 (PDT)
-Date: Fri, 17 Mar 2023 00:23:46 -0700
-From: Sumitra Sharma <sumitraartsy@gmail.com>
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: outreachy@lists.linux.dev
-Subject: Re: Warn on macros with flow control statements
-Message-ID: <20230317072346.GB83845@sumitra.com>
-References: <20230316080834.GA43491@sumitra.com>
- <f1b47a95-7c16-44d3-b9f4-daeba3274d3@inria.fr>
+  d=inria.fr; s=dc;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=zyt1cfw0jYCCk9h4gwhTQKl7e2xx/66T6CVpLRuvcDQ=;
+  b=XoYZKsvA7xdaR+qNoowkvAMiYnJ3UNtqu2dJ8KyBd/F9UObeH3YTEoN7
+   6Dl9flD4+HZ0P7Fm4EIhe7xwwgRmK45KEQVXdF+XyTHWCMbdM71xh8bq0
+   M35q2qceBnvCODC8J/2ochsodSdIfMDxDeaSxnqUUedJzJu8cJ4ZWXjZd
+   o=;
+Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="5.98,268,1673910000"; 
+   d="scan'208";a="97686576"
+Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Mar 2023 08:37:33 +0100
+Date: Fri, 17 Mar 2023 08:37:33 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+To: Sumitra Sharma <sumitraartsy@gmail.com>
+cc: drv@mailo.com, gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, 
+    linux-staging@lists.linux.dev, outreachy@lists.linux.dev
+Subject: Re: [PATCH v4] Staging: octeon: Fix line ending with '('
+In-Reply-To: <20230317071352.GA83845@sumitra.com>
+Message-ID: <5b46f3a3-d12-299b-7223-df46ce90166c@inria.fr>
+References: <20230317052455.GA83442@sumitra.com> <alpine.DEB.2.22.394.2303170700270.3105@hadrien> <20230317071352.GA83845@sumitra.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <f1b47a95-7c16-44d3-b9f4-daeba3274d3@inria.fr>
+Content-Type: text/plain; charset=US-ASCII
 
-On Thu, Mar 16, 2023 at 09:26:31AM +0100, Julia Lawall wrote:
-> 
-> 
-> On Thu, 16 Mar 2023, Sumitra Sharma wrote:
-> 
-> >
-> > Hi
-> >
-> > I am working on the below chechpatch.pl check
-> >
-> > WARNING: Macros with flow control statements should be avoided
-> > #42: FILE: ./drivers/staging/qlge/qlge_devlink.c:42:
-> > +#define FILL_SEG(seg_hdr, seg_regs)                                        \
-> > +       do {                                                                \
-> > +               err = qlge_fill_seg_(fmsg, &dump->seg_hdr, dump->seg_regs); \
-> > +               if (err) {                                                  \
-> > +                       kvfree(dump);                                       \
-> > +                       return err;                                         \
-> > +               }                                                           \
-> > +       } while (0)
+
+
+On Fri, 17 Mar 2023, Sumitra Sharma wrote:
+
+> On Fri, Mar 17, 2023 at 07:03:08AM +0100, Julia Lawall wrote:
 > >
 > >
-> > I was trying to change this macro into an inline function like this
+> > On Thu, 16 Mar 2023, Sumitra Sharma wrote:
 > >
-> > static inline int FILL_SEG(struct devlink_fmsg *fmsg, struct mpi_coredump_segment_header *seg_hdr, u32 *seg_regs)
-> > {
-> >         int err =0;
+> > > Since the coding style limited the code to 80 columns per line which caused
+> > > splitting the function header into two lines resulted in the first line
+> > > ending with a '('. This caused the checkpatch error.
 > >
-> >         err = qlge_fill_seg_(fmsg, &dump->seg_hdr, dump->seg_regs);
-> >         if (err) {
-> >                 kvfree(dump);
-> >                 return err;
-> >         }
-> > }
-> 
-> This is not a promising approach.  The return that you have here will just
-> return from the function that you have defined, while the return in the
-> macro was intended to return from the function that calls the macro.
-> 
-> The problem with the macro is that when you look at the uses, you don't
-> know that a return is possible.  But given that the macro is defined right
-> next to the function that uses it, and that somehow extracting the return
-> from the macro would be hackish and complex, the code is probably ok as it
-> is.
-> 
-> The macro is pretty unpleasant, also because it captures several variables
-> (fmsg and dump).
-> 
-> Maybe a solution would be to replace all the macro calls with:
-> 
-> err = err || qlge_fill_seg_(fmsg, &dump->seg_hdr, dump->seg_regs);
-> 
-> and then test for a non zero err value at the end.  But maybe wait for
-> someone else to weigh in before taking that approach..
+> > The first sentence is still not really grammatical.  Something like:
+> >
+> > The coding style used to limit lines to 80 characters, which led to
+> > splitting this function header into multiple lines, and ending thie first
+> > line with a (.
+> >
+> > For checkpatch, is it an error or a warning?
+> >
 >
+> HI julia,
+>
+> Yes, you are correct, I did the mistake its not the error but a check.
+>
+> How about this...
+>
+> ###
+> The coding style used to limit lines to 80 characters, which led to splitting
+> this function header into multiple lines and ending the first line with a '('.
+> This split causes a check reported by the checkpatch.
+>
+> Place the function parameters immediately after '(' in a single line to
+> align the function header.
+> ###
 
-Hi julia,
+Looks better.
 
-I will wait for some more reviews. And after that, I will try
-implementing your solution.
+thanks,
+julia
 
-Regards,
-
-Sumitra
-
-> julia
-> 
+>
+>
+> Thank you for your reviews.
+>
+> Regards,
+> Sumitra
+>
+> > julia
 > >
-> > But I am not sure whether I am going in the right direction..or how to
-> > move further in it. I am looking for some guidance.
-> >
-> >
-> >
-> > Regards,
-> >
-> > Sumitra
-> >
-> >
+> > >
+> > > Place the function parameters immediately after '(' in a single
+> > > line to align the function header.
+> > >
+> > > Signed-off-by: Sumitra Sharma <sumitraartsy@gmail.com>
+> > > ---
+> > > v2: Change patch subject and description
+> > >
+> > > v3: Change patch description, noted by Deepak R Varma
+> > > <drv@mailo.com>
+> > >
+> > > v4: Correct grammartical mistakes, noted by Julia Lawall
+> > > <julia.lawall@inria.fr>
+> > >
+> > >
+> > >
+> > >  drivers/staging/octeon/octeon-stubs.h | 4 +---
+> > >  1 file changed, 1 insertion(+), 3 deletions(-)
+> > >
+> > > diff --git a/drivers/staging/octeon/octeon-stubs.h b/drivers/staging/octeon/octeon-stubs.h
+> > > index 7a02e59e283f..3e7b92cd2e35 100644
+> > > --- a/drivers/staging/octeon/octeon-stubs.h
+> > > +++ b/drivers/staging/octeon/octeon-stubs.h
+> > > @@ -1372,9 +1372,7 @@ static inline void cvmx_fau_async_fetch_and_add32(uint64_t scraddr,
+> > >  						  int32_t value)
+> > >  { }
+> > >
+> > > -static inline union cvmx_gmxx_rxx_rx_inbnd cvmx_spi4000_check_speed(
+> > > -	int interface,
+> > > -	int port)
+> > > +static inline union cvmx_gmxx_rxx_rx_inbnd cvmx_spi4000_check_speed(int interface, int port)
+> > >  {
+> > >  	union cvmx_gmxx_rxx_rx_inbnd r;
+> > >
+> > > --
+> > > 2.25.1
+> > >
+> > >
+> > >
+>
