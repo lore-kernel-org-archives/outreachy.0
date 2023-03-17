@@ -1,47 +1,47 @@
-Received: from mail-il1-f175.google.com (mail-il1-f175.google.com [209.85.166.175])
+Received: from mail-pj1-f49.google.com (mail-pj1-f49.google.com [209.85.216.49])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2F43462D
-	for <outreachy@lists.linux.dev>; Fri, 17 Mar 2023 04:22:03 +0000 (UTC)
-Received: by mail-il1-f175.google.com with SMTP id r4so2189039ila.2
-        for <outreachy@lists.linux.dev>; Thu, 16 Mar 2023 21:22:03 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 48932641;
+	Fri, 17 Mar 2023 05:25:01 +0000 (UTC)
+Received: by mail-pj1-f49.google.com with SMTP id 6-20020a17090a190600b00237c5b6ecd7so7861364pjg.4;
+        Thu, 16 Mar 2023 22:25:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679026922;
+        d=gmail.com; s=20210112; t=1679030700;
         h=content-disposition:mime-version:message-id:subject:to:from:date
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=Pmd5lQwzwtPIpazZIvp5VbuOsdlAcm4+QEwBTZjm24M=;
-        b=RDfjoz704lgiwm4sz2Ho+dZ5Z1zWrVS64iw/MF7p7Fghu/9D8gnf/HvnXJno9iq36v
-         qOpWFeo8EWxr4EuDLdA8OgRItmGG2RhGAECEj5qLGGcXumvK3Y1CaGq589aneaJY173b
-         CHr4bZjyDzs2XiFBpM0jxicFtu8hP9/Q6LCro17t0dm415ZxXZ59MxJiQZmRKcGr5m7c
-         9iRcmK7w1RKvJCbyYBCQ4vF08VtUoq1D0bNqcCNgeyD/YCwyGBXsrPdBPLjdsWnoQL0q
-         +/MF4aDtoyIcyRTFgPbEmAtMvK1ifvdhnr8UlfP8fVuSbiiTaQLgwbDa+LxGoudlRjHP
-         W1fQ==
+        bh=5OsTv5mWSZFVE+t+Dyd8RSnvy3cQsZjJUc/om6AkPA0=;
+        b=NUWyGYTVEEzFBCnAk9Y1gR61+or/NIRmsqXPVcsOJWE5dlw5IdeK8me71AnxHF5VWf
+         wqNbQaDkQXl0H4/UYLLgPcHWQjTmgrLDCGh1uixA2Yi6BkJBQmva4yHHDNiw7f9q8xT4
+         zWfaBe1jXf6ZK1xNd6Vy4int361bUlC6aUN0oyuVtTX6YfF2x/428WeeHUDbPAB9BJ/m
+         2W1X6WUWXNf8bYn7C1sCXX5C8EUZiaYaSBMGENfyb80EtIpecITTbMkNwarazOtUfv7M
+         ApDA43Iw5+0eSf16PSnfBzUsqv1LT/7Y3QeYy3y5GJr7PMOM6zLr/Y3rY4LtMmt/EQW8
+         OmCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679026922;
+        d=1e100.net; s=20210112; t=1679030700;
         h=content-disposition:mime-version:message-id:subject:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Pmd5lQwzwtPIpazZIvp5VbuOsdlAcm4+QEwBTZjm24M=;
-        b=zDIqylVZfkg7VpzGXSx5Mj+XkZjvkdEIEYwUZxQVVK+LloDcEkUrGFcIChw5/YeUBg
-         pgRd1aeZ110XlSd0iQOwUNsWlsK8srNt8l4Abjxd0EA8HTB1xX+hs6EvqKmKRfPaNP/W
-         j9ATfLmNHgThODIIofU8YiGNqUC+KdwPT/h+Ih03ErvhrZQ1lHZCvkAgWhoSjGOMPbZ4
-         0vsvIO+RMRFmT1K7ac9VyiZLf1wTDNERNWj2e4kE2b0kjEmrpzotvYo5pYNFvBYtATPh
-         nkiV8eSm8IFULBS3URoiHPqv+NRdJLNMU0/gRgw0z/Trzyg85qKrSO31ANmDcQ/cLVXL
-         DEuA==
-X-Gm-Message-State: AO0yUKW3rHiceB9G1O5oWR34MTbUSfDtIlA89rObpBPML+eQUDj/YATt
-	4sGJNIfC9wPJ5e0uBErDta/ApHPcC7i+Cg==
-X-Google-Smtp-Source: AK7set/DRr4Biq6icOmhGzAlUOw984EEigfS6btQVY6NUeAVZuCxd3kVv1OKkrAXaN/IbUdiYT6SBQ==
-X-Received: by 2002:a92:4b12:0:b0:323:cab8:3c12 with SMTP id m18-20020a924b12000000b00323cab83c12mr5191839ilg.25.1679026921703;
-        Thu, 16 Mar 2023 21:22:01 -0700 (PDT)
-Received: from pikachu-Z97-D3H ([76.76.64.93])
-        by smtp.gmail.com with ESMTPSA id a2-20020a029402000000b0040637924a30sm359993jai.31.2023.03.16.21.22.01
-        for <outreachy@lists.linux.dev>
+        bh=5OsTv5mWSZFVE+t+Dyd8RSnvy3cQsZjJUc/om6AkPA0=;
+        b=FMtHs9FZqZa8jr3WJIX1i3Ajbiw6eZ9nc0XlD9eHtl8t+6fU8+H2iwXh/2jQDhy0hr
+         CryvK766I6XETmsEhbsPI53im3q0pwLzstC2j8QgNun3TUd6Do1ZNBKzyBWRYr6oFImL
+         YjkLbd0/iL5kM3b8ZSVXhHXngaAgJIMLxM5WRO22eOrSqeGtRqmB8g4dQoi4AxpJzy6P
+         /Slup8ACw1Yq8yivc5MtNUYKhrLyDjKR4qkvj9d3bgA0PDqY0Magy8unxB8FRLpLMsWq
+         NcXr4+1cCzpuyQExX7+OD8HI5Rdd8mT1Jcd3ceWHm0HFpzyluOhS8vW7YVeExow6vTUI
+         b7cQ==
+X-Gm-Message-State: AO0yUKUaA0r2YCwIaYe90NfUPULnQ6RuM9ED2RICizHkq+4akkxiwmYQ
+	INGVIJiVmkJGanvvAL8bOlg=
+X-Google-Smtp-Source: AK7set9Im1IFpX88ON4gzwTNyE+UVHwYPAYwvbo5KfrpPnrVF0jOFpzHNbtctISclL//JRZN4ysV3A==
+X-Received: by 2002:a17:902:c451:b0:19a:a9d8:e48a with SMTP id m17-20020a170902c45100b0019aa9d8e48amr4983489plm.22.1679030700573;
+        Thu, 16 Mar 2023 22:25:00 -0700 (PDT)
+Received: from sumitra.com ([14.139.226.12])
+        by smtp.gmail.com with ESMTPSA id p6-20020a1709026b8600b0019a97f180fcsm610512plk.37.2023.03.16.22.24.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 16 Mar 2023 21:22:01 -0700 (PDT)
-Date: Thu, 16 Mar 2023 22:21:59 -0600
-From: Mark Heim <questioneight@gmail.com>
-To: outreachy@lists.linux.dev
-Subject: a bit more trouble
-Message-ID: <20230317042159.GA423927@pikachu-Z97-D3H>
+        Thu, 16 Mar 2023 22:24:59 -0700 (PDT)
+Date: Thu, 16 Mar 2023 22:24:55 -0700
+From: Sumitra Sharma <sumitraartsy@gmail.com>
+To: drv@mailo.com, gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
+	linux-staging@lists.linux.dev, outreachy@lists.linux.dev
+Subject: [PATCH v4] Staging: octeon: Fix line ending with '('
+Message-ID: <20230317052455.GA83442@sumitra.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -51,56 +51,43 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
-The original task I was working on is the prism2fw.c file
+Since the coding style limited the code to 80 columns per line which caused
+splitting the function header into two lines resulted in the first line
+ending with a '('. This caused the checkpatch error.
 
-kernels/staging/drivers/staging/wlan-ng
+Place the function parameters immediately after '(' in a single
+line to align the function header.
 
-The above C code is not compiled using the makefile
-and I do not know how to build it successfully. It
-seems at least part of the problem is due to
-include macros not being able to find the right header.
+Signed-off-by: Sumitra Sharma <sumitraartsy@gmail.com>
+---
+v2: Change patch subject and description
 
-This above task looked too difficult for me as a patch
-for now. The README mentions that this code
-is perhaps not ready for public use.
+v3: Change patch description, noted by Deepak R Varma 
+<drv@mailo.com>
 
-I am now looking at this directory
+v4: Correct grammartical mistakes, noted by Julia Lawall
+<julia.lawall@inria.fr>
 
-kernels/staging/drivers/staging/greybus
 
-and more specifically at the top TODO
-item in audio_gb.c. The main Linux build does
-compile this C code to an object but the
-makefile will not generate an object. It appears
-to be another PATH variable issue.
 
-I tried to use gcc on audio_gb.c. It gives
-an include macro error.
+ drivers/staging/octeon/octeon-stubs.h | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-I tried to use the makefile in the relevant
-directory to generate the object but there
-is a similar macro error.
-
-Part of the issue with getting audio_gb.c
-to compile is missing headers. I have done something like
-this:
-
-gcc audio_gb.c -I/path/one -I/path/two -I/path/three
-
-and so forth. Several warnings and errors
-appear with this approach. One of them that is
-repated over and over is atomic64, and
-I tried to use the below line to identify where it had
-been defined, but it gave me what I think is
-the wrong answer.
-
-grep -nr atomic64_t ~ | grep -v Binary | grep typedef
-
-Please let me know if you have suggestions on
-what I could try next.
-
-Thank you,
-
-Mark
-
+diff --git a/drivers/staging/octeon/octeon-stubs.h b/drivers/staging/octeon/octeon-stubs.h
+index 7a02e59e283f..3e7b92cd2e35 100644
+--- a/drivers/staging/octeon/octeon-stubs.h
++++ b/drivers/staging/octeon/octeon-stubs.h
+@@ -1372,9 +1372,7 @@ static inline void cvmx_fau_async_fetch_and_add32(uint64_t scraddr,
+ 						  int32_t value)
+ { }
+ 
+-static inline union cvmx_gmxx_rxx_rx_inbnd cvmx_spi4000_check_speed(
+-	int interface,
+-	int port)
++static inline union cvmx_gmxx_rxx_rx_inbnd cvmx_spi4000_check_speed(int interface, int port)
+ {
+ 	union cvmx_gmxx_rxx_rx_inbnd r;
+ 
+-- 
+2.25.1
 
