@@ -1,145 +1,193 @@
-Received: from mail-pf1-f181.google.com (mail-pf1-f181.google.com [209.85.210.181])
+Received: from mail-pj1-f50.google.com (mail-pj1-f50.google.com [209.85.216.50])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 118D67475
-	for <outreachy@lists.linux.dev>; Fri, 17 Mar 2023 18:01:01 +0000 (UTC)
-Received: by mail-pf1-f181.google.com with SMTP id s8so3505520pfk.5
-        for <outreachy@lists.linux.dev>; Fri, 17 Mar 2023 11:01:01 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6B8B97494
+	for <outreachy@lists.linux.dev>; Fri, 17 Mar 2023 18:17:50 +0000 (UTC)
+Received: by mail-pj1-f50.google.com with SMTP id l9-20020a17090a3f0900b0023d32684e7fso8617872pjc.1
+        for <outreachy@lists.linux.dev>; Fri, 17 Mar 2023 11:17:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679076061;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=usdCaBD56jGEHTwheFjqCvWD9gOJMMsAvrMo7pMvk0c=;
-        b=qWrcPWgEkjmL2oX3y6pdYFEAmqxbAZL0JZxwMoUTAPG1FaIcA0FqUM8RFTXeREdHoP
-         W9dtSWNTtLvi3QSKh7g5FOdYqR4zLQyt4vqdRZ6tGulJdFYRC4/ACikcpUvGNs5JZ9PU
-         rOBk+KmcATE0bwcfynwY3bRKJayZpMUyOnmSj9Kf0WGlWaG3vR/jvSk6t8VRoe6NAt0z
-         FZ6WZWNOdZWmOv/9hkYzwW8SLz5UqkkmzpfuwPQ7iVYtMvwslxIXllGquqFCT/Gzkjvx
-         Jkp+loO/2mWqAIyNpgew3QEkpNL4AV4XfoasplcOYewNqlOG66yQDDgnFaLcGEPmzJSc
-         /dwQ==
+        d=gmail.com; s=20210112; t=1679077070;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=2+MBfAcf3sIGVCHr309Z4akavAO7Re7EcqWL1r4xsSg=;
+        b=Btx8nd6LPwTQ4Jh+kvQwouwJ901xpE/U5aDgvHtqmn34RapSSmgjW1sNlRXLXujDXs
+         ey4z8amlrJyqmvpiYfvkkJYSqGvvKOHr/9FxRWjyKYxoo8yJlTR1/eO+nulD34EWUoBW
+         wtdLqh5ls6bKc1idETr/LORG95GENe8gQURwNrF6BrAUnOkTxUMk6fsjkAeT0SwGZIah
+         gieaZUVOpuwwNwGx1jFC0Fm55/s5BmSO78yoDQjgztKaRGmf7kDu3g6VSy86IWe8iyc5
+         j30rhnVuUwrrJ1AbKEIO8csnScWbhIgKeC2cqYZquMaCfEAcZCJoul/A0WiSYAzJ//hS
+         Druw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679076061;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=usdCaBD56jGEHTwheFjqCvWD9gOJMMsAvrMo7pMvk0c=;
-        b=Z9JRMyajnoM2SHE0MFQbWXxgKIFQsnhy9r1aDQpT9IVPJKOV9/p4mW/7Uu3WbGRZ2Z
-         sXskO0gX+QbSDawcDCl4SsaBcX31Gy7S4BtJIkFnOhxDnoD4pz38RlgGg6me2YyxZEqa
-         LugCeDyeJrlSSItMdibrNixg3CdCYb9Cq8NNZLCreTDLuO4DlF6JUEShNQnBgpM350FE
-         mNaiHy0Vh6zKAUMo+58us9FaE6RSr23LpzRgQbQYNXBbeHi6LNZ8QI4uYbvYN1e9Ypbi
-         EovHDRpKDXhcXWn0bidDpYRU69PAgNK3C2ZZFWyEq9a9i9LpmW3n5wiNlabyYpd7k0Ap
-         0j0Q==
-X-Gm-Message-State: AO0yUKW0muajYotePUZumk/xzm4OfR++GCexGG2VhClzAwDfqriLg7zZ
-	CLgWN9jvSNuakjSyEgO7a8EMd0IW6c/AUA==
-X-Google-Smtp-Source: AK7set+OQouZhve+lA+ZcO9cwA46N9rxVgNhO9S87sb1j4L3EvdpuKvz7BYYzuzQEzufdofUN8ckQQ==
-X-Received: by 2002:aa7:9afc:0:b0:625:c1ca:901f with SMTP id y28-20020aa79afc000000b00625c1ca901fmr7672278pfp.31.1679076059919;
-        Fri, 17 Mar 2023 11:00:59 -0700 (PDT)
+        d=1e100.net; s=20210112; t=1679077070;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=2+MBfAcf3sIGVCHr309Z4akavAO7Re7EcqWL1r4xsSg=;
+        b=5de+deQvRs4/fpOnwuETK8lX/n66RyvNhuMMLERF+RYu8z5eOF8enpgnkL8MUYYQK9
+         DyklkpCjuv23wD9TJkrXgqaL9CLc+KtH4tUk+eJGNK+U1ICmDFOik6NGnMgoqUIzvDx6
+         u0Wk6K/xvZ1mVQuFM+MKipIujc5hVBTROiQ7NEr4VMrZMe5OUkK2TJkC/rfLDEgO4i6U
+         u86MDabo3F2mrwd2v97iLz9OrRHQXXR1330yhxA2YrfaZ8K+CzNlOwD0vgf2Be6Wqqch
+         w+rBW+f1YHck9Rs9gruitMq/Dxvu9WSPIR8eTqwox2Z3zS74527QmHhTtYhZjuvHJNWY
+         re+A==
+X-Gm-Message-State: AO0yUKV7zHSThh/2jO1m5RaDhrgmFH4RbzjZw/XCH/RgvtLUVaAI94tb
+	E6+EcPUrr1FPmDrEAEa42G0=
+X-Google-Smtp-Source: AK7set+uWkV+j0dHggyZZ+4Wv0zzbWKmLrlhrKvingeVh21lrfdLfWwPRFOqwtP6vg/muULCl8gj9Q==
+X-Received: by 2002:a05:6a20:8361:b0:c7:7afa:5016 with SMTP id z33-20020a056a20836100b000c77afa5016mr7038282pzc.9.1679077069704;
+        Fri, 17 Mar 2023 11:17:49 -0700 (PDT)
 Received: from sumitra.com ([117.98.68.136])
-        by smtp.gmail.com with ESMTPSA id 2-20020aa79102000000b00593e5a45ce7sm1891442pfh.173.2023.03.17.11.00.57
+        by smtp.gmail.com with ESMTPSA id j8-20020aa78dc8000000b00571f66721aesm1872372pfr.42.2023.03.17.11.17.47
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 17 Mar 2023 11:00:59 -0700 (PDT)
-Date: Fri, 17 Mar 2023 11:00:55 -0700
+        Fri, 17 Mar 2023 11:17:49 -0700 (PDT)
+Date: Fri, 17 Mar 2023 11:17:45 -0700
 From: Sumitra Sharma <sumitraartsy@gmail.com>
-To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Cc: outreachy@lists.linux.dev, julia.lawall@inria.fr
-Subject: Re: [KERNEL NEWBIES ACCESS] Sumitra Sharma
-Message-ID: <20230317180055.GA3391@sumitra.com>
-References: <20230316083116.GB47053@sumitra.com>
- <10119311.0AQdONaE2F@suse>
- <3190629.0WQXIW03uk@suse>
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: Bagas Sanjaya <bagasdotme@gmail.com>,
+	Linux Outreachy <outreachy@lists.linux.dev>
+Subject: Re: your mail
+Message-ID: <20230317181745.GA3500@sumitra.com>
+References: <20230317163629.GB2392@sumitra.com>
+ <2123df9c-870-3a20-94b-7833bc66ad9@inria.fr>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <3190629.0WQXIW03uk@suse>
+In-Reply-To: <2123df9c-870-3a20-94b-7833bc66ad9@inria.fr>
 
-On Fri, Mar 17, 2023 at 04:15:37PM +0100, Fabio M. De Francesco wrote:
-> On venerdì 17 marzo 2023 12:05:09 CET Fabio M. De Francesco wrote:
-> > On giovedì 16 marzo 2023 09:31:16 CET Sumitra Sharma wrote:
-> > > On Sun, Mar 12, 2023 at 10:07:57AM -0700, Sumitra Sharma wrote:
-> > > > 2. The outreachy document directly links the ".rst" file
-> > > > https://elixir.bootlin.com/linux/latest/source/Documentation/process/
-> > 
-> > coding-
-> > 
-> > > > style.rst at many places under different sections. And as noted by fabio
-> > > > there is a difference between the .rst source files content and its
-> > > > corresponding .html file which can lead to confusions and missing
-> > 
-> > important
-> > 
-> > > > information. I would like to suggest to change the links to the 
-> .html/.pdf
-> > > > files rather than the > .rst source files.
-> > > 
-> > > Hi mentors
-> > > 
-> > > I would like to have some update on this.
-> > > 
-> > > Regards,
-> > > 
-> > > Sumitra
-> > 
-> > Hi Sumitra,
-> > 
-> > As you know I'm for this change.
-> > AFAIK, only Alison can grant you the permission to access that document in
-> > write mode.
-> > If she hasn't granted that access to you yet, please ask her directly with 
-> an
-> > email to her address.
-> > 
-> > Thanks for working on this (important, from my POV) change.
-> > 
-> > Fabio
+On Fri, Mar 17, 2023 at 05:47:23PM +0100, Julia Lawall wrote:
 > 
-> Sumitra,
 > 
-> When doing this change, please skim the whole document and replace _all_ the 
-> links to the .rst files (regardless they point to elixir.bootlin.com or not) 
-> with the corresponding generated .html in kernel.org.
+> On Fri, 17 Mar 2023, Sumitra Sharma wrote:
 > 
-> The document about the Highmem subsystem which I showed you is useless in .rst 
-> format from the point of view of people who needs to learn its content. I'm 
-> not sure whether or not we have the same problem with the Linux kernel 
-> development guidelines, however it does not matter how much it differs from 
-> the human readable counterpart.
+> > , fmdefrancesco@gmail.com
+> > Bcc:
+> > Subject: Re: [KERNEL NEWBIES ACCESS] Sumitra Sharma
+> > Reply-To:
+> > In-Reply-To: <936dcbf3-0bf3-0461-1ea5-d71e0e60fa88@gmail.com>
+> >
+> > On Wed, Mar 15, 2023 at 03:41:40PM +0700, Bagas Sanjaya wrote:
+> > > On 3/14/23 19:33, Sumitra Sharma wrote:
+> > > >> On Outreachyfirstpatch, there is a pointer to Outreachyfirstpatchalt
+> > > >> (which contains instructions on spinning up Ubuntu VM), so you need to
+> > > >> install your tools (including postfix and mutt) there if you want to
+> > > >> contribute through there. So I think the latter doc should be kept as
+> > > >> is.
+> > > >>
+> > > >
+> > > > Hi
+> > > >
+> > > > Can you send me a link to Outreachyfirstpatchalt, I am unable to find
+> > > > it.
+> > > >
+> > >
+> > > For your completeness, see https://kernelnewbies.org/OutreachyfirstpatchAlt.
+> > >
+> > > Again, what I mean that OutreachyfirstpatchAlt is about spinning up
+> > > Linux VM. If you need follow setting up tools in Outreachyfirstpatch,
+> > > you can do that in the VM. So I suggest not to modify OutreachyfirstpatchAlt
+> > > for now. (But I wish the slug could be better named as LinuxVMSetup).
+> > >
+> >
+> > Hi,
+> >
+> > Since we discussed all about the outreachyfirstpatchalt only and you
+> > also suggested not to modify it for now. I want to clarify that whether we are working on these below changes for the "outreachyfirstpatch". I am again mentioning them below.
 > 
-> We should make it clear that the source .rst is never the right document to 
-> consult, unless one want to make changes. The generated documentation from 
-> .rst with "make htmldocs" (or with other similar commands for .pdf and .epub) 
-> should be the only to consult for purposes of study (it does not matter if one 
-> generates them locally or find them in the "documentation" section of the 
-> kernel.org website).
+> In https://kernelnewbies.org/Outreachyfirstpatch, there is a section
+> called Set up email.  This is followed by some sections related to gmail,
+> yahoo, etc.  So you could find the best place around there for the new
+> information.
+> 
+> It could be nice to use some subsections, so that one can easily identify
+> the complete section about email.
+> 
+
+Actually, the only issue I faced was that the outreachyfirstpatch
+document do not contain the informatio of how to set your inbox in mutt.
+Due to which I was facing issues to send and reply mails. This below
+configuration update will enable the inbox at the client side.
+
+How about this...
+
+Under the section "Configure esmtp":
+
+###
+Next, set up the mail client, mutt, with some defaults, by creating a .muttrc file in your homedirectory:
+
+Note: The imap_pass, smtp_pass would be the App password or
+ 	  the mailbox password.
+
+ 		set sendmail="/usr/bin/esmtp"
+ 		set envelope_from=yes
+ 		set from="Your Name <my.email@gmail.com>"
+ 		set use_from=yes
+ 		set edit_headers=yes
+
+ 		# IMAP settings
+ 		set imap_user = "username@gmail.com"
+ 		set imap_pass = "<mailbox password>"
+
+ 		# SMTP settings
+ 		set smtp_url = "smtps://username@smtp.gmail.com"
+ 		set smtp_pass = "<mailbox password>"
+
+ 		# Remote Gmail folders
+ 		set folder = "imaps://imap.gmail.com/"
+ 		set spoolfile = "+INBOX"
+ 		set postponed = "+[Gmail]/Drafts"
+ 		set record = "+[Gmail]/Sent Mail"
+ 		set trash = "+[Gmail]/Trash"
+###
+> I notice also that there seems to be randomly "set up" and "setup".  I
+> have the impression that "set up" is a verb and "setup" is a noun., so it
+> should be "Set up vim as your default editor" (not Setup...) and it should
+> be "Gmail setup" (not Gmail set up).
 >
 
-Hi Fabio
-
-Here it is https://lore.kernel.org/outreachy/20230317175007.GA3275@sumitra.com/T/#u
-
-> Thanks,
-> 
-> Fabio
-> 
-> P.S.: I just saw the last message from Julia (in this same thread) regarding 
-> Mutt configuration. I want to echo her and ask you or other Applicants for 
-> making also those changes. Don't forget that Alison said that they count as 
-> contributions that you can add in your records.        
->
-
-I am also working on the Mutt configuration. Can you tell me how we are
-going to mention these kind of contributions when recording the
-contribution? Also, are we suppose to record the contribution for each
-and every patch separately or we have to compile them together in one go during the last days of contribution period?
+Okay! I will take care of it. Thank you.
 
 Regards,
 
 Sumitra
 
+> thanks,
+> julia
 > 
-
+> >
+> > 1. The outreachy document does not include the steps to make the inbox with mutt. The steps below can be added to configure mutt with gmail.
+> >
+> > 	- Open the ~/.muttrc
+> > 	- Add the information
+> >
+> > 		set sendmail="/usr/bin/esmtp"
+> > 		set envelope_from=yes
+> > 		set from="Your Name <my.email@gmail.com>"
+> > 		set use_from=yes
+> > 		set edit_headers=yes
+> >
+> > 		# IMAP settings
+> > 		set imap_user = "username@gmail.com"
+> > 		set imap_pass = "<mailbox password>"
+> >
+> > 		# SMTP settings
+> > 		set smtp_url = "smtps://username@smtp.gmail.com"
+> > 		set smtp_pass = "<mailbox password>"
+> >
+> > 		# Remote Gmail folders
+> > 		set folder = "imaps://imap.gmail.com/"
+> > 		set spoolfile = "+INBOX"
+> > 		set postponed = "+[Gmail]/Drafts"
+> > 		set record = "+[Gmail]/Sent Mail"
+> > 		set trash = "+[Gmail]/Trash"
+> >
+> > 	- Where the imap_pass, smtp_pass would be the App password or
+> > 	  the mailbox password.
+> >
+> >
+> > Regards,
+> >
+> > Sumitra
+> >
+> >
