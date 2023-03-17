@@ -1,185 +1,106 @@
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-il1-f175.google.com (mail-il1-f175.google.com [209.85.166.175])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 438D1377
-	for <outreachy@lists.linux.dev>; Fri, 17 Mar 2023 01:51:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1679017873; x=1710553873;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=Jj5sejVVtma4JnB6MMKFHQjCbl8wiPC7e4McbzkTe0U=;
-  b=SX3eVodnYimi+3YBje8uJgv3e55g+OqUG8uJvufU+kImjXtRmL7DKE9j
-   FTunbN6avw41RvrVvJeSDS6Mqc0dPTQ9WUHEOlhphPXcYuytA3jV/eJcE
-   BtiEMt0XezQTJtL0N7ScFV4fAaODluxduYd+WleYyifqkT+yVLNpJfRCa
-   3jQ/Z1I3NFL+qqJpNEt3/Zd6gwIlsY/EQBgocgMPM65eZDSxqhRcs89Hj
-   GlVoe8owy38aUAltqifKVU6dCGKHERfuxGy7RF+Rqd3FCogbBKY6TTwDT
-   dheXSJE9jig6ylMGqdF/SW0CdH6s88feVyJTS0qFok5ZSpKjAzQjKUNZe
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10651"; a="322009901"
-X-IronPort-AV: E=Sophos;i="5.98,267,1673942400"; 
-   d="scan'208";a="322009901"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
-  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Mar 2023 18:51:12 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10651"; a="854273456"
-X-IronPort-AV: E=Sophos;i="5.98,267,1673942400"; 
-   d="scan'208";a="854273456"
-Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.209.19.33])
-  by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Mar 2023 18:51:12 -0700
-Date: Thu, 16 Mar 2023 18:51:11 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: Mark Heim <questioneight@gmail.com>
-Cc: Outreachy Linux Kernel <outreachy@lists.linux.dev>
-Subject: Re: [Outreachy Info] Ask for help finding cleanups
-Message-ID: <ZBPHj9LuSE3obEF/@aschofie-mobl2>
-References: <ZBEIAKymniRkamjr@aschofie-mobl2>
- <20230315074410.GB224213@gmail.com>
- <ZBIKm4JB2pAvpHd9@aschofie-mobl2>
- <CALfc2nhr7fWD33T5000kJt9stcgQ3fJM8YNTQhRgozxFYDxyYw@mail.gmail.com>
- <ZBMtYXYWkuXusbIf@aschofie-mobl2>
- <CALfc2nioOy+T7GyV==Akr5WY5gC_awadai77k4tqr-NGNhaR+A@mail.gmail.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2F43462D
+	for <outreachy@lists.linux.dev>; Fri, 17 Mar 2023 04:22:03 +0000 (UTC)
+Received: by mail-il1-f175.google.com with SMTP id r4so2189039ila.2
+        for <outreachy@lists.linux.dev>; Thu, 16 Mar 2023 21:22:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1679026922;
+        h=content-disposition:mime-version:message-id:subject:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Pmd5lQwzwtPIpazZIvp5VbuOsdlAcm4+QEwBTZjm24M=;
+        b=RDfjoz704lgiwm4sz2Ho+dZ5Z1zWrVS64iw/MF7p7Fghu/9D8gnf/HvnXJno9iq36v
+         qOpWFeo8EWxr4EuDLdA8OgRItmGG2RhGAECEj5qLGGcXumvK3Y1CaGq589aneaJY173b
+         CHr4bZjyDzs2XiFBpM0jxicFtu8hP9/Q6LCro17t0dm415ZxXZ59MxJiQZmRKcGr5m7c
+         9iRcmK7w1RKvJCbyYBCQ4vF08VtUoq1D0bNqcCNgeyD/YCwyGBXsrPdBPLjdsWnoQL0q
+         +/MF4aDtoyIcyRTFgPbEmAtMvK1ifvdhnr8UlfP8fVuSbiiTaQLgwbDa+LxGoudlRjHP
+         W1fQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679026922;
+        h=content-disposition:mime-version:message-id:subject:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Pmd5lQwzwtPIpazZIvp5VbuOsdlAcm4+QEwBTZjm24M=;
+        b=zDIqylVZfkg7VpzGXSx5Mj+XkZjvkdEIEYwUZxQVVK+LloDcEkUrGFcIChw5/YeUBg
+         pgRd1aeZ110XlSd0iQOwUNsWlsK8srNt8l4Abjxd0EA8HTB1xX+hs6EvqKmKRfPaNP/W
+         j9ATfLmNHgThODIIofU8YiGNqUC+KdwPT/h+Ih03ErvhrZQ1lHZCvkAgWhoSjGOMPbZ4
+         0vsvIO+RMRFmT1K7ac9VyiZLf1wTDNERNWj2e4kE2b0kjEmrpzotvYo5pYNFvBYtATPh
+         nkiV8eSm8IFULBS3URoiHPqv+NRdJLNMU0/gRgw0z/Trzyg85qKrSO31ANmDcQ/cLVXL
+         DEuA==
+X-Gm-Message-State: AO0yUKW3rHiceB9G1O5oWR34MTbUSfDtIlA89rObpBPML+eQUDj/YATt
+	4sGJNIfC9wPJ5e0uBErDta/ApHPcC7i+Cg==
+X-Google-Smtp-Source: AK7set/DRr4Biq6icOmhGzAlUOw984EEigfS6btQVY6NUeAVZuCxd3kVv1OKkrAXaN/IbUdiYT6SBQ==
+X-Received: by 2002:a92:4b12:0:b0:323:cab8:3c12 with SMTP id m18-20020a924b12000000b00323cab83c12mr5191839ilg.25.1679026921703;
+        Thu, 16 Mar 2023 21:22:01 -0700 (PDT)
+Received: from pikachu-Z97-D3H ([76.76.64.93])
+        by smtp.gmail.com with ESMTPSA id a2-20020a029402000000b0040637924a30sm359993jai.31.2023.03.16.21.22.01
+        for <outreachy@lists.linux.dev>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 16 Mar 2023 21:22:01 -0700 (PDT)
+Date: Thu, 16 Mar 2023 22:21:59 -0600
+From: Mark Heim <questioneight@gmail.com>
+To: outreachy@lists.linux.dev
+Subject: a bit more trouble
+Message-ID: <20230317042159.GA423927@pikachu-Z97-D3H>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CALfc2nioOy+T7GyV==Akr5WY5gC_awadai77k4tqr-NGNhaR+A@mail.gmail.com>
 
-+outreachy
+The original task I was working on is the prism2fw.c file
 
-On Thu, Mar 16, 2023 at 06:36:18PM -0600, Mark Heim wrote:
-> Hello,
-> 
-> It looks like the two headers at the top of prism2fw.c
-> are in the staging/include directory. I didn't notice
-> that the makefile for the build does not compile it.
-> A proper PATH variable upon compiling should fix
-> that issue.
+kernels/staging/drivers/staging/wlan-ng
 
-Thanks Mark!
-Maybe directions to compile it belong at the top of the file.
+The above C code is not compiled using the makefile
+and I do not know how to build it successfully. It
+seems at least part of the problem is due to
+include macros not being able to find the right header.
 
-> 
-> Mark
-> 
-> On Thu, Mar 16, 2023 at 8:53 AM Alison Schofield <alison.schofield@intel.com>
-> wrote:
-> 
-> > On Wed, Mar 15, 2023 at 11:54:16PM -0600, Mark Heim wrote:
-> > > Hello all,
-> > >
-> > > I have found a refactoring opportunity that might be a good
-> > > starting point for me, but it is buried in the code.
-> > >
-> > > It is in the prism2fw.c file under the directory tree
-> > > kernels/staging/drivers/staging. I'm trying to do a procedure
-> > > called extract a method (according to a book I have) that provides
-> > > better modularity for the code and makes further refactorings easier.
-> > >
-> > > I was a little surprised that the rebasing was going through with
-> > updates,
-> > > but I'm probably going to be able to finish this task by tomorrow. I hope
-> > > I get a shot at this one this time.
-> >
-> > Sounds interesting Mark!
-> >
-> > prism2fw.c is a 'utility for downloading prism2 images moved into
-> > kernelspace'
-> > so you'll just be compiling the utility itself, not the PRIMS2_USB
-> > driver.
-> >
-> > At the moment, it doesn't compile, as is, in my environment.
-> > Let me know if you encounter, and have a solution for this:
-> >
-> > $ cc prism2fw.c
-> > prism2fw.c:51:10: fatal error: linux/ihex.h: No such file or directory
-> >    51 | #include <linux/ihex.h>
-> >       |          ^~~~~~~~~~~~~~
-> > compilation terminated.
-> >
-> > Alison
-> >
-> > >
-> > > Mark
-> > >
-> > > On Wed, Mar 15, 2023 at 12:12 PM Alison Schofield <
-> > > alison.schofield@intel.com> wrote:
-> > >
-> > > > On Wed, Mar 15, 2023 at 01:44:10AM -0600, Mark Heim wrote:
-> > > > > On Tue, Mar 14, 2023 at 04:49:20PM -0700, Alison Schofield wrote:
-> > > > > > Hi Applicants,
-> > > > > >
-> > > > > > We want to support you finding cleanups. Today I spent some time
-> > > > > > looking through staging and am working up a small todo list that
-> > > > > > may be useful.
-> > > > >
-> > > > > I'm interested in doing the required demo for the kernel. Let
-> > > > > me know what I should do next presupposing there is a list of tasks.
-> > > >
-> > > >
-> > > >
-> > > > >
-> > > > > >
-> > > > > > I posted one such cleanup to Menna because I saw them submit a
-> > > > > > couple of attempts at a first patches.
-> > > > > >
-> > > > > > I think that Kloudifold, Khadija, and Sumitra are busy iterating on
-> > > > > > their first patches. Keep going! Ask for help finding your second
-> > > > > > patch if needed.
-> > > > > >
-> > > > > > Anyone else who wants help in finding their first patch, please
-> > reach
-> > > > > > out. I imagine their are some folks exploring here, that I haven't
-> > > > > > met on the list yet.
-> > > > >
-> > > > > Hello, that's me! I was originally working on the Outreachy LLVM
-> > > > > project but had short term health problems, and that meant I let
-> > > > > that opportunity get away.
-> > > > >
-> > > > > >
-> > > > > > Finally, it seems we won't be holding to the traditional 10 cleanup
-> > > > > > patch requirement this round! Please continue your efforts and I'll
-> > > > > > redirect you towards projects after a 'few' cleanup patches are
-> > > > > > accepted into staging.
-> > > > > >
-> > > > >
-> > > > > I have some catching up to do. I dug through a little more
-> > > > > than a page of Linux mailing list messages but was able to
-> > > > > glean a bunch of things that were helpful. These are things like
-> > > > > patch creation best practices, posting on code style, joining
-> > > > > a mailing list, and documentation.
-> > > > >
-> > > > > Hope to hear from everyone later.
-> > > > >
-> > > > > (here's a question: is it best practice to include 100 percent
-> > > > > of the message pre-insertion of comments, or can I delete some
-> > > > > of the original message?)
-> > > >
-> > > > To snip or not to snip!  I think not-snipping here was appropriate.
-> > > >
-> > > > This is the formal starting point:
-> > > >
-> > > >
-> > https://www.outreachy.org/outreachy-may-2023-internship-cohort/communities/linux-kernel/
-> > > >
-> > > > Each project starts with 'Community-Wide Requirements', so follow that
-> > > > section.
-> > > >
-> > > > Welcome,
-> > > > Alison
-> > > >
-> > > > >
-> > > > > > Thanks,
-> > > > > > Alison
-> > > > > >
-> > > > > >
-> > > > > >
-> > > > >
-> > > >
-> > > >
-> >
+This above task looked too difficult for me as a patch
+for now. The README mentions that this code
+is perhaps not ready for public use.
+
+I am now looking at this directory
+
+kernels/staging/drivers/staging/greybus
+
+and more specifically at the top TODO
+item in audio_gb.c. The main Linux build does
+compile this C code to an object but the
+makefile will not generate an object. It appears
+to be another PATH variable issue.
+
+I tried to use gcc on audio_gb.c. It gives
+an include macro error.
+
+I tried to use the makefile in the relevant
+directory to generate the object but there
+is a similar macro error.
+
+Part of the issue with getting audio_gb.c
+to compile is missing headers. I have done something like
+this:
+
+gcc audio_gb.c -I/path/one -I/path/two -I/path/three
+
+and so forth. Several warnings and errors
+appear with this approach. One of them that is
+repated over and over is atomic64, and
+I tried to use the below line to identify where it had
+been defined, but it gave me what I think is
+the wrong answer.
+
+grep -nr atomic64_t ~ | grep -v Binary | grep typedef
+
+Please let me know if you have suggestions on
+what I could try next.
+
+Thank you,
+
+Mark
+
+
