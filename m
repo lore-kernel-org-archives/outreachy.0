@@ -1,100 +1,160 @@
-Received: from mail-pj1-f44.google.com (mail-pj1-f44.google.com [209.85.216.44])
+Received: from mail-wr1-f44.google.com (mail-wr1-f44.google.com [209.85.221.44])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1B44A810
-	for <outreachy@lists.linux.dev>; Fri, 17 Mar 2023 08:51:19 +0000 (UTC)
-Received: by mail-pj1-f44.google.com with SMTP id f6-20020a17090ac28600b0023b9bf9eb63so4475794pjt.5
-        for <outreachy@lists.linux.dev>; Fri, 17 Mar 2023 01:51:19 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3F7A3810;
+	Fri, 17 Mar 2023 08:58:21 +0000 (UTC)
+Received: by mail-wr1-f44.google.com with SMTP id i9so3739482wrp.3;
+        Fri, 17 Mar 2023 01:58:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679043078;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=eRcXM0niLh64oJ3vcXqdEyJ0pRLnzl2mKqLhZ0LEy+M=;
-        b=BAlboaxvyaSbbZ6Zj7ag8qEzJF4YaZF5nRN6h/GUE1AEYB9himRW03mC1RXeksuWAv
-         qMOUfvFWcwnNrXQCug2NJzRs5BaUezpOhFrFbgeDhtVySXiQFGR27OIeuqxA8WjDd9EY
-         Ru9N8lOEd3Lj+HqIJLokvdJA9UQebdofDR0qIbRQv1k4Ooh+9AmWzXpGCHk5xKoioihE
-         eVsyOT9LfC5/NkgLW4/gcLEKlQ+4hSYzL6YlAFxbBzd4Ta9BYhQY55g6NloXixypA4cQ
-         AhSPFPmBf05ejjTWw1YzAgWuyvWrrW6Ng+FZaj2zM5bYKhSC57oZyNmowgSiOm836lds
-         1I2w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679043078;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:to:from:date:x-gm-message-state:from:to:cc:subject:date
+        d=gmail.com; s=20210112; t=1679043499;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=eRcXM0niLh64oJ3vcXqdEyJ0pRLnzl2mKqLhZ0LEy+M=;
-        b=iM3VH82LDfVJrMyJetPbN/sI27zXISHr6qGZGLlHIPInhKqPqfCCMZ0eCjIi+qC9aG
-         19/kuEGRhqGShaAPs53DVI9+H37GH3m5rFlSiaVIwXkJs9ostwN7PoZKtJFQdAyrSqEp
-         Dzw5l0WbvRBWg70Df44atk8a3xcm0wQfb71Hd/UQc9aKeO/AyGRm04hE4On8AMbfiiGG
-         FshQbh0heOD1lIoZNS46OGfye+zUGxdGqV/1wn/U1wbUOSQ5W03QOlqncYndVl0REQ68
-         g66guQT82bCV18fbXW6/SIHYovPoW3cBzgb9nUQ40IkeN1V3cOjA9CQTkY1JAh0Nhr+n
-         /vmg==
-X-Gm-Message-State: AO0yUKW/ivLKiJVJIH5eJfNQhPPx1tSRqhNpz45hy9/dvEwhpLgJKTdj
-	D8Le6mfO1K8lGHBETh8bARqq5NPkAp5xug==
-X-Google-Smtp-Source: AK7set/OMW3kFWh388IsGgJdcGgI5PMwr2NaXqTYkWShUzlgNWBOnxPeIpL29BV6tEqkuBiOztV+Gg==
-X-Received: by 2002:a17:902:e852:b0:1a0:549d:399e with SMTP id t18-20020a170902e85200b001a0549d399emr6975206plg.21.1679043078570;
-        Fri, 17 Mar 2023 01:51:18 -0700 (PDT)
-Received: from debian.me (subs02-180-214-232-2.three.co.id. [180.214.232.2])
-        by smtp.gmail.com with ESMTPSA id 30-20020a630c5e000000b00502fd141ffbsm981688pgm.49.2023.03.17.01.51.17
+        bh=bbO1OvwqFcbiXVIlcPvMmW3Zh+xLTD5sL8X+qjX3Xrg=;
+        b=bePY+FUwUvTFE3lB0uGq2ndT/HW8VHTMhmZPQvKkDLVfKzvW1OpHR8jyqosFFcjKW+
+         ykNDbK2X/rS3T6VkIRRqFCP3z87QndC19iXQOCZAHaj0vQA6o0kAXyjg+ZVKKoKBQnPW
+         eO0WDXLBf8JXr8FODimMyazXxJG3RLfl/dwfxVC1gP6SR0mROYPPjDGuDJWlM3GIYAwu
+         A5NbDoTciURkRY6PBhI9kU90e4kJS6C8AkGJzjXx7dpVOUsxCHvOR+9n9B3yCkmqx74k
+         Y68NdTZq1u44kzEGLd3xoxrK4R5aAwsggzwn0B1c3tktcC0Q0By70BbUmWsHQV2RuyTI
+         qG8A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679043499;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=bbO1OvwqFcbiXVIlcPvMmW3Zh+xLTD5sL8X+qjX3Xrg=;
+        b=fOAx2+SctwFj3IWwRnFWX2uQ4nfcsNrgT7iLZyAnINIpREEzSJdIk0+yK+6SF25gVe
+         XcwepMpLMoKiSSJc6ZvCw9iwm9zLMsTsdMXVkGEEktNgaBftiTE5DV3JWHdH876f08YG
+         YM820RR+iojGBmOUmOSuMc8nNhXH6esmKzAM/CHt97o16dNcHIy+YO3TIn0Bgb+Y3jkb
+         qOA3nnc16Yinrg/3GzX+ufo4B7ZDb7jBS8d3JS/ZiKEj2ihSojsLclaQUo2RB+RVBAvE
+         RX4kNAJqgySfIrwi7SJKHKUSKN62oB6lImcLJQTAqryJ02TwB5fA5fGDYxhniuOiv+c4
+         rJ7Q==
+X-Gm-Message-State: AO0yUKXKPLIMZMejDcCPt61BWxdOKc32/5zBGXbdtst6p5nkaiGe9Kla
+	/QeEeh7jp/fSYnGP/cRCHqs=
+X-Google-Smtp-Source: AK7set8HtdMekYq7Bz4xSG+wcGPmXUVFj9XJbevuknbtYfEyMJAvlSBgSwFuibxj1rh7UdZNilVgjQ==
+X-Received: by 2002:a05:6000:142:b0:2d2:59cf:468f with SMTP id r2-20020a056000014200b002d259cf468fmr1768958wrx.15.1679043499172;
+        Fri, 17 Mar 2023 01:58:19 -0700 (PDT)
+Received: from suse.localnet (host-79-35-102-94.retail.telecomitalia.it. [79.35.102.94])
+        by smtp.gmail.com with ESMTPSA id t11-20020a05600001cb00b002c54241b4fesm1422562wrx.80.2023.03.17.01.58.17
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 17 Mar 2023 01:51:18 -0700 (PDT)
-Received: by debian.me (Postfix, from userid 1000)
-	id 04A1A106581; Fri, 17 Mar 2023 15:51:14 +0700 (WIB)
-Date: Fri, 17 Mar 2023 15:51:14 +0700
-From: Bagas Sanjaya <bagasdotme@gmail.com>
-To: Sumitra Sharma <sumitraartsy@gmail.com>, outreachy@lists.linux.dev
-Subject: Re: [KERNEL NEWBIES ACCESS] Sumitra Sharma
-Message-ID: <ZBQqAmT0egOgizg0@debian.me>
-References: <20230312170757.GE28100@ubuntu>
- <20230316083116.GB47053@sumitra.com>
+        Fri, 17 Mar 2023 01:58:18 -0700 (PDT)
+From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
+To: Khadija Kamran <kamrankhadijadj@gmail.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy@lists.linux.dev, linux-staging@lists.linux.dev,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v8] staging: axis-fifo: initialize timeouts in init only
+Date: Fri, 17 Mar 2023 09:58:17 +0100
+Message-ID: <2499410.4XsnlVU6TS@suse>
+In-Reply-To: <ZBQTIVk0zsgv1hMH@kroah.com>
+References:
+ <ZBN3XAsItCiTk7CV@khadija-virtual-machine> <ZBQTIVk0zsgv1hMH@kroah.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="9iOfw9QZJJpuHnKO"
-Content-Disposition: inline
-In-Reply-To: <20230316083116.GB47053@sumitra.com>
-
-
---9iOfw9QZJJpuHnKO
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="iso-8859-1"
 
-On Thu, Mar 16, 2023 at 01:31:16AM -0700, Sumitra Sharma wrote:
-> On Sun, Mar 12, 2023 at 10:07:57AM -0700, Sumitra Sharma wrote:
-> > 2. The outreachy document directly links the ".rst" file
-> > https://elixir.bootlin.com/linux/latest/source/Documentation/process/co=
-ding-style.rst
-> > at many places under different sections. And as noted by fabio there is=
- a difference between the
-> > .rst source files content and its corresponding .html file which can le=
-ad to confusions and missing
-> > important information. I would like to suggest to change the links to t=
-he .html/.pdf files rather than the > .rst source files.
+On venerd=EC 17 marzo 2023 08:13:37 CET Greg Kroah-Hartman wrote:
+> On Fri, Mar 17, 2023 at 01:09:00AM +0500, Khadija Kamran wrote:
+> > Initialize the module parameters, read_timeout and write_timeout once in
+> > init().
+> >=20
+> > Module parameters can only be set once and cannot be modified later, so=
+ we
+> > don't need to evaluate them again when passing the parameters to
+> > wait_event_interruptible_timeout().
 >=20
-> Hi mentors
+> I feel like we are being too picky here, but this isn't the correct
+> wording.  It is possible for module parameters to be modified "later",
+> if the permissions on the parameter are set to allow this.  But that's
+> not what this driver does here, so this might be better phrased as:
 >=20
-> I would like to have some update on this.=20
+>   The module parameters in this driver can not be modified after
+>   loading, so they can be evaluated once at module load and set to
+>   default values if needed at that time.
 >=20
+> > Convert datatype of {read,write}_timeout from 'int' to 'long int' becau=
+se
+> > implicit conversion of 'long int' to 'int' in statement
+> > '{read,write}_timeout =3D MAX_SCHEDULE_TIMEOUT' results in an overflow.
+> >=20
+> > Change format specifier for {read,write}_timeout from %i to %li.
+>=20
+> You are listing all of _what_ you do here, not really _why_ you are
+> doing any of this.
+>=20
+> Anyway, if I were writing this, here's what I would say as a changelog
+> text:
+>=20
+>   The module parameters, read_timeout and write_timeout, are only ever
+>   evaluated at module load time, so set the default values then if
+>   needed so as to not recompute the timeout values every time the driver
+>   reads or writes data.
+>=20
+>=20
+> And that's it, short, concise, and it explains why you are doing this.
+>=20
+> Writing changelog comments are almost always harder than actually
+> writing the patch (at least for me.)  So don't feel bad, it take a lot
+> of experience doing it.
 
-OK, please go ahead. You need to link to
-https://docs.kernel.org/process/coding-style.html.
+Thanks for helping Khadija (and also me, indirectly, because I helped them =
+to=20
+make that commit message). After a little less than 200 commits already=20
+upstream, there is still to learn how to make a good changelog (which I thi=
+nk=20
+it's not less important than the code in the patch). =20
 
---=20
-An old man doll... just what I always wanted! - Clara
+> All that being said, I think we are just polishing something that
+> doesn't need to really be polished anymore,
+> so let me go just apply this
+> patch as-is to the tree now so you can move on to a different change.
 
---9iOfw9QZJJpuHnKO
-Content-Type: application/pgp-signature; name="signature.asc"
+Yes, thanks. It's time to move on.
 
------BEGIN PGP SIGNATURE-----
+> You've put in the effort here, and I don't want you to get bogged down
+> in specifics that really do not matter at all overall (like the memory
+> size of your vm...)
 
-iHUEABYKAB0WIQSSYQ6Cy7oyFNCHrUH2uYlJVVFOowUCZBQp/QAKCRD2uYlJVVFO
-o5ewAQDVjPeuDI2bjqfSkciBPKSlrS9wSI2IWoNLp0HRKdxKuwEA0s4v5LcN8x92
-gVPkevIAP9/bkC8v81sfvYD+X31bXQo=
-=RNcW
------END PGP SIGNATURE-----
+You probably didn't pay attention to the problems Khadija has being=20
+experiencing with memory exhaustion and compilation times.=20
 
---9iOfw9QZJJpuHnKO--
+=46irst time they complained had several crashes while building and message=
+s=20
+saying there was not enough available memory. Then several other problems w=
+ith=20
+builds' time. Finally, yesterday they wrote that "make modules_install=20
+install" took "hours" (literally).
+
+This is why I think they should also be helped with their VM configuration=
+=20
+(despite it was unrelated to the patch). They won't be able to work on some=
+=20
+projects if they cannot do quick builds and run hundreds of tests in no tim=
+e=20
+(e.g., I'm especially talking about Ira's and my project about the conversi=
+ons=20
+from kmap{,_atomic}() to kmap_local_page()).
+
+I understand that this is only noise for you, as a maintainer. However I'm=
+=20
+pretty sure that they need help with speeding up builds and installation. T=
+he=20
+projects cannot wait "hours" just for install of modules and kernel images.
+
+Again thanks for your precious suggestions about how to improve commit=20
+messages.
+
+=46abio=20
+
+> thanks,
+>=20
+> greg k-h
+
+
+
+
