@@ -1,112 +1,103 @@
-Received: from mail-pl1-f182.google.com (mail-pl1-f182.google.com [209.85.214.182])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BFEF8641;
-	Fri, 17 Mar 2023 05:28:38 +0000 (UTC)
-Received: by mail-pl1-f182.google.com with SMTP id v21so4163329ple.9;
-        Thu, 16 Mar 2023 22:28:38 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 11DB6641
+	for <outreachy@lists.linux.dev>; Fri, 17 Mar 2023 05:59:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679030918;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=JypFrOzIO0MXDs6uCiWRo8IysoMLGN4UV2Agh/hsCgI=;
-        b=Qf/pR+EyDe9bkrg2GDKSKAv6isMAEA5jNctyIkNKqRigUg4b+TgCHjBVFh0Z7yDXJN
-         LtAC7l4u0AK2HBBNa44trD0yqz8KGlInXI4YnY1Kv/ybUdHdQ8rBpDvHRdSQim1Ij+Nr
-         FutQB142HH9FbrLO7bNCzZ6AIyqMFfXnuaGuEqKb4wWb5uM7hkmVYZ8OnsA4tqOY4ZYZ
-         85udphYuqWBb6/RkmxgZ1R9/dSapjSyxJ7lNQG+vGZk7CZ0Ec2FkD7mrA7T4uJRrQ3nv
-         SAH1U/nz2EXrt3c/+gKrvUbxPvDhjdaWgcGMAG5dAC/2fTrZAHHfkDh5LlLEaXBGP0NN
-         veIA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679030918;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=JypFrOzIO0MXDs6uCiWRo8IysoMLGN4UV2Agh/hsCgI=;
-        b=kjizEkD8WwrwOawQqxz7ND2muj+DVowaAl2EAexecAPVrI6mLAKgdOdcSuROfkX49j
-         JFwVV0g83S+mKLJMGLWtZUbzI/5U82J5h+RnWNZ3NhKHnHKt0b3OuUvx0sHrT5ZTm74b
-         WlM2bOwgOICiwYmghMUs0wn+vNpigbsSV3e75+wPid7BtW1zd5e3bqDU14blsENkgAi+
-         HiH65A6IOWz2jjQcoj4f9B7pAGSrH4s9rSIqWLO2TsbzW+cxE0syp1o51g2O0EWWiDyd
-         +kMx8lLateYwNEL+5lvgck8kptADRHv4xoEgAtF/qABjW6SZDBEtBBLeFnfBK4/kEmbe
-         v7ag==
-X-Gm-Message-State: AO0yUKUoVjxc5DZqpWIe/W5oCH+Y4x/5J12LfBiL3vf9EsmdtxQ+87j3
-	7YDW9Pg/ajHE0YaJPmi9c3I=
-X-Google-Smtp-Source: AK7set/qV4kZBFHdu3plDFgC2akoAcjWhNM978VMmdTluoccOCbDJz/wAe07qhfhX0Lyqrh7abcD6A==
-X-Received: by 2002:a17:903:1111:b0:19e:6c02:801c with SMTP id n17-20020a170903111100b0019e6c02801cmr6256766plh.14.1679030918122;
-        Thu, 16 Mar 2023 22:28:38 -0700 (PDT)
-Received: from sumitra.com ([14.139.226.12])
-        by smtp.gmail.com with ESMTPSA id m11-20020a170902bb8b00b001a06eb43880sm603185pls.153.2023.03.16.22.28.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 16 Mar 2023 22:28:37 -0700 (PDT)
-Date: Thu, 16 Mar 2023 22:28:32 -0700
-From: Sumitra Sharma <sumitraartsy@gmail.com>
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: drv@mailo.com, gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
-	linux-staging@lists.linux.dev, outreachy@lists.linux.dev
-Subject: Re: [PATCH v3] Staging: octeon: Fix line ending with '('
-Message-ID: <20230317052832.GA83480@sumitra.com>
-References: <20230316171614.GA82631@sumitra.com>
- <92ac2441-aa53-41ad-b5b-a12b465bb826@inria.fr>
+  d=inria.fr; s=dc;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=2myMePV1q6/gVzXbuAwQymTKIhED5cL46qc6e0DbQPY=;
+  b=Lxdw6tChJx4DhBTSppGJEPG6g0Uay6fqBC2bbq2ip6eo52yXWXsCaXZ1
+   aFVrOyMTVVORi9m0mzOLJYnnqbvzUIrdMWUNVUBAPZcq9Fp67F70vPB2/
+   61M2STYmn4s+sNMMJq4e4Lkkf9RdokOAFOxk0Eq7UMBgceI36MzSFevVo
+   8=;
+Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="5.98,268,1673910000"; 
+   d="scan'208";a="97674873"
+Received: from 231.85.89.92.rev.sfr.net (HELO hadrien) ([92.89.85.231])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Mar 2023 06:59:12 +0100
+Date: Fri, 17 Mar 2023 06:59:12 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Mark Heim <questioneight@gmail.com>
+cc: outreachy@lists.linux.dev
+Subject: Re: a bit more trouble
+In-Reply-To: <20230317042159.GA423927@pikachu-Z97-D3H>
+Message-ID: <alpine.DEB.2.22.394.2303170656220.3105@hadrien>
+References: <20230317042159.GA423927@pikachu-Z97-D3H>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <92ac2441-aa53-41ad-b5b-a12b465bb826@inria.fr>
+Content-Type: text/plain; charset=US-ASCII
 
-On Thu, Mar 16, 2023 at 06:37:25PM +0100, Julia Lawall wrote:
-> 
-> 
-> On Thu, 16 Mar 2023, Sumitra Sharma wrote:
-> 
-> > Since, the coding-style limit the code within 80 columns per line. This
-> > causes splitting the function header into two lines and results the
-> > first line ending with a '('. This causes the checkpatch error.
-> 
-> This should all be in the past tense: limited, caused, resulted, etc.
+
+
+On Thu, 16 Mar 2023, Mark Heim wrote:
+
+> The original task I was working on is the prism2fw.c file
 >
+> kernels/staging/drivers/staging/wlan-ng
+>
+> The above C code is not compiled using the makefile
+> and I do not know how to build it successfully. It
+> seems at least part of the problem is due to
+> include macros not being able to find the right header.
+>
+> This above task looked too difficult for me as a patch
+> for now. The README mentions that this code
+> is perhaps not ready for public use.
+>
+> I am now looking at this directory
+>
+> kernels/staging/drivers/staging/greybus
+>
+> and more specifically at the top TODO
+> item in audio_gb.c. The main Linux build does
+> compile this C code to an object but the
+> makefile will not generate an object. It appears
+> to be another PATH variable issue.
+>
+> I tried to use gcc on audio_gb.c. It gives
+> an include macro error.
+>
+> I tried to use the makefile in the relevant
+> directory to generate the object but there
+> is a similar macro error.
+>
+> Part of the issue with getting audio_gb.c
+> to compile is missing headers. I have done something like
+> this:
+>
+> gcc audio_gb.c -I/path/one -I/path/two -I/path/three
+>
+> and so forth. Several warnings and errors
+> appear with this approach. One of them that is
+> repated over and over is atomic64, and
+> I tried to use the below line to identify where it had
+> been defined, but it gave me what I think is
+> the wrong answer.
+>
+> grep -nr atomic64_t ~ | grep -v Binary | grep typedef
+>
+> Please let me know if you have suggestions on
+> what I could try next.
 
-Thank you julia for the help.
+I don't have the impression that you are trying to compile the files in a
+proper manner.
 
-Regards,
+First, please read the complete outreachy tutorial.  If you have read it
+once, then read it again.  Now that you have a concrete problem, you will
+pay more attention when you see the solution.
 
-Sumitra
+In general, with the Linux kernel, you can't compile the files manually
+with gcc.  You have to start at the top level of your Linux tree.  And
+then to compile something you need to say make and then provide the
+complete path.  The tutorial will show different paths that you can use in
+different cases.
 
-> julia
-> 
-> >
-> > Place the function parameters immediately after '(' in a single
-> > line to align the function header.
-> >
-> > Signed-off-by: Sumitra Sharma <sumitraartsy@gmail.com>
-> > ---
-> > v2: Change patch subject and description
-> >
-> > v3: Change patch description, noted by Deepak R Varma <drv@mailo.com>
-> >
-> >
-> > drivers/staging/octeon/octeon-stubs.h | 4 +---
-> >  1 file changed, 1 insertion(+), 3 deletions(-)
-> >
-> > diff --git a/drivers/staging/octeon/octeon-stubs.h b/drivers/staging/octeon/octeon-stubs.h
-> > index 7a02e59e283f..3e7b92cd2e35 100644
-> > --- a/drivers/staging/octeon/octeon-stubs.h
-> > +++ b/drivers/staging/octeon/octeon-stubs.h
-> > @@ -1372,9 +1372,7 @@ static inline void cvmx_fau_async_fetch_and_add32(uint64_t scraddr,
-> >  						  int32_t value)
-> >  { }
-> >
-> > -static inline union cvmx_gmxx_rxx_rx_inbnd cvmx_spi4000_check_speed(
-> > -	int interface,
-> > -	int port)
-> > +static inline union cvmx_gmxx_rxx_rx_inbnd cvmx_spi4000_check_speed(int interface, int port)
-> >  {
-> >  	union cvmx_gmxx_rxx_rx_inbnd r;
-> >
-> > --
-> > 2.25.1
-> >
-> >
-> >
+julia
