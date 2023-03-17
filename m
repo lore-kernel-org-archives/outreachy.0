@@ -1,31 +1,30 @@
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B08A77F1;
-	Fri, 17 Mar 2023 07:37:35 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E02727F1
+	for <outreachy@lists.linux.dev>; Fri, 17 Mar 2023 07:41:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
   d=inria.fr; s=dc;
   h=date:from:to:cc:subject:in-reply-to:message-id:
    references:mime-version;
-  bh=zyt1cfw0jYCCk9h4gwhTQKl7e2xx/66T6CVpLRuvcDQ=;
-  b=XoYZKsvA7xdaR+qNoowkvAMiYnJ3UNtqu2dJ8KyBd/F9UObeH3YTEoN7
-   6Dl9flD4+HZ0P7Fm4EIhe7xwwgRmK45KEQVXdF+XyTHWCMbdM71xh8bq0
-   M35q2qceBnvCODC8J/2ochsodSdIfMDxDeaSxnqUUedJzJu8cJ4ZWXjZd
-   o=;
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+  bh=GxCAudddnASCQT7PVAenv/niQ5lUNdinc2+P//GAjw8=;
+  b=US/sor7fBUVjIiTDB7JgpPbZ1sSztWmuU4ZQ543sCJN8kpsxkfkg32y1
+   XSX8AR3W1PEZAew96g59qAw2iP5cMJ2TuetxHD67b8IsC9t9z7CutwIEs
+   aERNPzSYZVMfTcs0syNG8F30W7q1lND7+HQKjyCh31Mzb8W7GvF+GMSvx
+   c=;
+Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
 X-IronPort-AV: E=Sophos;i="5.98,268,1673910000"; 
-   d="scan'208";a="97686576"
+   d="scan'208";a="50453641"
 Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Mar 2023 08:37:33 +0100
-Date: Fri, 17 Mar 2023 08:37:33 +0100 (CET)
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Mar 2023 08:41:34 +0100
+Date: Fri, 17 Mar 2023 08:41:33 +0100 (CET)
 From: Julia Lawall <julia.lawall@inria.fr>
-To: Sumitra Sharma <sumitraartsy@gmail.com>
-cc: drv@mailo.com, gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, 
-    linux-staging@lists.linux.dev, outreachy@lists.linux.dev
-Subject: Re: [PATCH v4] Staging: octeon: Fix line ending with '('
-In-Reply-To: <20230317071352.GA83845@sumitra.com>
-Message-ID: <5b46f3a3-d12-299b-7223-df46ce90166c@inria.fr>
-References: <20230317052455.GA83442@sumitra.com> <alpine.DEB.2.22.394.2303170700270.3105@hadrien> <20230317071352.GA83845@sumitra.com>
+To: Mark Heim <questioneight@gmail.com>
+cc: outreachy@lists.linux.dev
+Subject: Re: a bit more trouble
+In-Reply-To: <CALfc2niC57eNmN5CMtOmwUmS-nW2jsK2uD_tD3eYZ=A359CK4w@mail.gmail.com>
+Message-ID: <13bd5efb-7c28-6cd7-6e5f-7a7c71a317e3@inria.fr>
+References: <20230317042159.GA423927@pikachu-Z97-D3H> <alpine.DEB.2.22.394.2303170656220.3105@hadrien> <20230317070102.GA433311@pikachu-Z97-D3H> <CALfc2niC57eNmN5CMtOmwUmS-nW2jsK2uD_tD3eYZ=A359CK4w@mail.gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -34,94 +33,15 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 
-
-
-On Fri, 17 Mar 2023, Sumitra Sharma wrote:
-
-> On Fri, Mar 17, 2023 at 07:03:08AM +0100, Julia Lawall wrote:
-> >
-> >
-> > On Thu, 16 Mar 2023, Sumitra Sharma wrote:
-> >
-> > > Since the coding style limited the code to 80 columns per line which caused
-> > > splitting the function header into two lines resulted in the first line
-> > > ending with a '('. This caused the checkpatch error.
-> >
-> > The first sentence is still not really grammatical.  Something like:
-> >
-> > The coding style used to limit lines to 80 characters, which led to
-> > splitting this function header into multiple lines, and ending thie first
-> > line with a (.
-> >
-> > For checkpatch, is it an error or a warning?
-> >
+> I will take another look. Are you referring to these links:
 >
-> HI julia,
->
-> Yes, you are correct, I did the mistake its not the error but a check.
->
-> How about this...
->
-> ###
-> The coding style used to limit lines to 80 characters, which led to splitting
-> this function header into multiple lines and ending the first line with a '('.
-> This split causes a check reported by the checkpatch.
->
-> Place the function parameters immediately after '(' in a single line to
-> align the function header.
-> ###
+> https://kernelnewbies.org/OutreachyfirstpatchSetup
+> https://kernelnewbies.org/Outreachyfirstpatch
 
-Looks better.
+I was referring this one specifically.  If you have access to a printer,
+print it out, go to some peaceful place and read the whole thing.  The
+Linux kernel has many particularities, due eg to history, the large size,
+the widespread set of developers, and anything you do based on your
+intuition, you will do wrong.
 
-thanks,
 julia
-
->
->
-> Thank you for your reviews.
->
-> Regards,
-> Sumitra
->
-> > julia
-> >
-> > >
-> > > Place the function parameters immediately after '(' in a single
-> > > line to align the function header.
-> > >
-> > > Signed-off-by: Sumitra Sharma <sumitraartsy@gmail.com>
-> > > ---
-> > > v2: Change patch subject and description
-> > >
-> > > v3: Change patch description, noted by Deepak R Varma
-> > > <drv@mailo.com>
-> > >
-> > > v4: Correct grammartical mistakes, noted by Julia Lawall
-> > > <julia.lawall@inria.fr>
-> > >
-> > >
-> > >
-> > >  drivers/staging/octeon/octeon-stubs.h | 4 +---
-> > >  1 file changed, 1 insertion(+), 3 deletions(-)
-> > >
-> > > diff --git a/drivers/staging/octeon/octeon-stubs.h b/drivers/staging/octeon/octeon-stubs.h
-> > > index 7a02e59e283f..3e7b92cd2e35 100644
-> > > --- a/drivers/staging/octeon/octeon-stubs.h
-> > > +++ b/drivers/staging/octeon/octeon-stubs.h
-> > > @@ -1372,9 +1372,7 @@ static inline void cvmx_fau_async_fetch_and_add32(uint64_t scraddr,
-> > >  						  int32_t value)
-> > >  { }
-> > >
-> > > -static inline union cvmx_gmxx_rxx_rx_inbnd cvmx_spi4000_check_speed(
-> > > -	int interface,
-> > > -	int port)
-> > > +static inline union cvmx_gmxx_rxx_rx_inbnd cvmx_spi4000_check_speed(int interface, int port)
-> > >  {
-> > >  	union cvmx_gmxx_rxx_rx_inbnd r;
-> > >
-> > > --
-> > > 2.25.1
-> > >
-> > >
-> > >
->
