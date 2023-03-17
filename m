@@ -1,123 +1,185 @@
-Received: from mail-wr1-f51.google.com (mail-wr1-f51.google.com [209.85.221.51])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 138A9AD28;
-	Thu, 16 Mar 2023 20:17:55 +0000 (UTC)
-Received: by mail-wr1-f51.google.com with SMTP id q16so2661502wrw.2;
-        Thu, 16 Mar 2023 13:17:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1678997874;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=qcUGlWscPfoOjQ2/RY+CqDxREFzJPUhNCx1vWMcBYac=;
-        b=ZFCJt4LIFO5SGWn9ik6rwm/ZX4j+oBw2GhsisckUFkKA3eckrfLY3lYSg6cyMii5dg
-         6lJUEGjHHjrCLqRX2gDtUU3w/M5eT/HVcg/2pBB4cwGRpfmoA6dBFLuiehCEtRukKFHU
-         sniWDefQLaAGhUXBF9nQym0G7ob/ik1uU1QXyFrNig3tyZQqVpdMWZzpV6CVFHqkZNZr
-         bvZla/MKSHwL5/cEluhqZhtr79zLfofrxyl+GC8FPyjRxDBJFj2xBZW3iBaeyWKpPmka
-         RIOhisz+cfvytyfGZg+DKWXXawOXySgLqV7gJt48fPv6Wyraj9nLkeN9j0OEXdViFGmz
-         0bSA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1678997874;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=qcUGlWscPfoOjQ2/RY+CqDxREFzJPUhNCx1vWMcBYac=;
-        b=cC0sq+jDrlMUWAzbDOaKcJJXhm4aQU5uS0aA6UvrVQ8s9Khldrz6r2zbB0+NsXheos
-         XECiGSn+HtsFMBqiCj7CcO8zcfz37P8v8bbg0F6Rmt8N9hUNF3VtcxwJZWcaO+WB1gLc
-         rkv2boxl0f6PASKw/wjup6bmDQTXul2YiK7WKnT6yTOKl4vNt7sTphJUfeDy4wfLkptJ
-         4cVOpe3Diss9IyIF3cQpo7GgrsDXcBIbz7hiwb94zNeANHU8opGlPFqP6EXlJiO0JrZZ
-         UJQx2LtctwMezzTrIcbajr46cK3rNeQaZTZToiJ5HGy0HNj0JXFuaVOkZ015lK4Embto
-         XRiQ==
-X-Gm-Message-State: AO0yUKVkv5zBWHdbkXEz/rfzI96pQhDMEhh5l4kg3mt71/0hteo0YS4m
-	DdWPgLii3RE1n3qPouCBVmbdCYlfdt0=
-X-Google-Smtp-Source: AK7set95gtQqKGisnnc9p+bce+T2xGH3fsL5Ivj13Q9P9Pwq3tFiJ+B9qtMDaikhN+ERi6hqOOyREw==
-X-Received: by 2002:a5d:4586:0:b0:2cf:e65a:a5fc with SMTP id p6-20020a5d4586000000b002cfe65aa5fcmr5430408wrq.8.1678997874048;
-        Thu, 16 Mar 2023 13:17:54 -0700 (PDT)
-Received: from suse.localnet (host-79-35-102-94.retail.telecomitalia.it. [79.35.102.94])
-        by smtp.gmail.com with ESMTPSA id u8-20020adfdb88000000b002cff06039d7sm271611wri.39.2023.03.16.13.17.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 16 Mar 2023 13:17:53 -0700 (PDT)
-From: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-To: Khadija Kamran <kamrankhadijadj@gmail.com>
-Cc: outreachy@lists.linux.dev,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v5] staging: axis-fifo: initialize timeouts in probe only
-Date: Thu, 16 Mar 2023 21:17:52 +0100
-Message-ID: <3531852.LM0AJKV5NW@suse>
-In-Reply-To: <ZBNhXc3sVVLdibUF@khadija-virtual-machine>
-References:
- <ZBMR4s8xyHGqMm72@khadija-virtual-machine> <2162728.C4sosBPzcN@suse>
- <ZBNhXc3sVVLdibUF@khadija-virtual-machine>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 438D1377
+	for <outreachy@lists.linux.dev>; Fri, 17 Mar 2023 01:51:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1679017873; x=1710553873;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=Jj5sejVVtma4JnB6MMKFHQjCbl8wiPC7e4McbzkTe0U=;
+  b=SX3eVodnYimi+3YBje8uJgv3e55g+OqUG8uJvufU+kImjXtRmL7DKE9j
+   FTunbN6avw41RvrVvJeSDS6Mqc0dPTQ9WUHEOlhphPXcYuytA3jV/eJcE
+   BtiEMt0XezQTJtL0N7ScFV4fAaODluxduYd+WleYyifqkT+yVLNpJfRCa
+   3jQ/Z1I3NFL+qqJpNEt3/Zd6gwIlsY/EQBgocgMPM65eZDSxqhRcs89Hj
+   GlVoe8owy38aUAltqifKVU6dCGKHERfuxGy7RF+Rqd3FCogbBKY6TTwDT
+   dheXSJE9jig6ylMGqdF/SW0CdH6s88feVyJTS0qFok5ZSpKjAzQjKUNZe
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10651"; a="322009901"
+X-IronPort-AV: E=Sophos;i="5.98,267,1673942400"; 
+   d="scan'208";a="322009901"
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Mar 2023 18:51:12 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10651"; a="854273456"
+X-IronPort-AV: E=Sophos;i="5.98,267,1673942400"; 
+   d="scan'208";a="854273456"
+Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.209.19.33])
+  by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Mar 2023 18:51:12 -0700
+Date: Thu, 16 Mar 2023 18:51:11 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: Mark Heim <questioneight@gmail.com>
+Cc: Outreachy Linux Kernel <outreachy@lists.linux.dev>
+Subject: Re: [Outreachy Info] Ask for help finding cleanups
+Message-ID: <ZBPHj9LuSE3obEF/@aschofie-mobl2>
+References: <ZBEIAKymniRkamjr@aschofie-mobl2>
+ <20230315074410.GB224213@gmail.com>
+ <ZBIKm4JB2pAvpHd9@aschofie-mobl2>
+ <CALfc2nhr7fWD33T5000kJt9stcgQ3fJM8YNTQhRgozxFYDxyYw@mail.gmail.com>
+ <ZBMtYXYWkuXusbIf@aschofie-mobl2>
+ <CALfc2nioOy+T7GyV==Akr5WY5gC_awadai77k4tqr-NGNhaR+A@mail.gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="iso-8859-1"
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CALfc2nioOy+T7GyV==Akr5WY5gC_awadai77k4tqr-NGNhaR+A@mail.gmail.com>
 
-On gioved=EC 16 marzo 2023 19:35:09 CET Khadija Kamran wrote:
-> On Thu, Mar 16, 2023 at 05:17:47PM +0100, Fabio M. De Francesco wrote:
++outreachy
 
-[snip]
+On Thu, Mar 16, 2023 at 06:36:18PM -0600, Mark Heim wrote:
+> Hello,
+> 
+> It looks like the two headers at the top of prism2fw.c
+> are in the staging/include directory. I didn't notice
+> that the makefile for the build does not compile it.
+> A proper PATH variable upon compiling should fix
+> that issue.
 
-> > When you are done with build, install, and final reboot to test if your
-> > module can "modprobe" or "insmod" (i.e. link with the running custom=20
-kernel
-> > you built, installed and boot), try to compare the output of the follow=
-ing
-> > commands:
-> >=20
-> > # uname -a
-> > Linux suse 6.2.2-1-default #1 SMP PREEMPT_DYNAMIC Thu Mar  9 06:06:13 U=
-TC
-> > 2023 (44ca817) x86_64 x86_64 x86_64 GNU/Linux
->=20
-> The above command works
->=20
-> > AND
-> >=20
-> > # modinfo <name of the module you are testing here>
->=20
-> On running 'modinfo axis-fifo' I get error saying module axis-fifo not
-> found.
+Thanks Mark!
+Maybe directions to compile it belong at the top of the file.
 
-I built axis-fifo with your changes and then I ran "make install=20
-modules_install" in a QEMU/KVM x86_32 VM that I use on a Linux host for=20
-testing my patches (Linux on Linux).
-
-tweed32:~ # uname -a
-Linux tweed32 6.3.0-rc2-x86-32-debug+ #32 SMP PREEMPT_DYNAMIC Thu Mar 16=20
-18:09:49 CET 2023 i686 athlon i386 GNU/Linux
-
-tweed32:~ # modinfo axis-fifo=20
-filename:       /lib/modules/6.3.0-rc2-x86-32-debug+/kernel/drivers/staging/
-axis-fifo/axis-fifo.ko
-description:    Xilinx AXI-Stream FIFO v4.1 IP core driver
-author:         Jacob Feder <jacobsfeder@gmail.com>
-license:        GPL
-srcversion:     EBF46AD6851EAAE67D1000B
-alias:          of:N*T*Cxlnx,axi-fifo-mm-s-4.1C*
-alias:          of:N*T*Cxlnx,axi-fifo-mm-s-4.1
-depends:       =20
-staging:        Y
-retpoline:      Y
-intree:         Y
-name:           axis_fifo
-vermagic:       6.3.0-rc2-x86-32-debug+ SMP preempt mod_unload modversions =
-K7=20
-parm:           read_timeout:ms to wait before blocking read() timing out; =
-set=20
-to -1 for no timeout (long)
-parm:           write_timeout:ms to wait before blocking write() timing out=
-;=20
-set to -1 for no timeout (long)
-
-Do you see the "parm" lines? What's the type of read and write_timeout?
-
-=46abio
-
-
+> 
+> Mark
+> 
+> On Thu, Mar 16, 2023 at 8:53 AM Alison Schofield <alison.schofield@intel.com>
+> wrote:
+> 
+> > On Wed, Mar 15, 2023 at 11:54:16PM -0600, Mark Heim wrote:
+> > > Hello all,
+> > >
+> > > I have found a refactoring opportunity that might be a good
+> > > starting point for me, but it is buried in the code.
+> > >
+> > > It is in the prism2fw.c file under the directory tree
+> > > kernels/staging/drivers/staging. I'm trying to do a procedure
+> > > called extract a method (according to a book I have) that provides
+> > > better modularity for the code and makes further refactorings easier.
+> > >
+> > > I was a little surprised that the rebasing was going through with
+> > updates,
+> > > but I'm probably going to be able to finish this task by tomorrow. I hope
+> > > I get a shot at this one this time.
+> >
+> > Sounds interesting Mark!
+> >
+> > prism2fw.c is a 'utility for downloading prism2 images moved into
+> > kernelspace'
+> > so you'll just be compiling the utility itself, not the PRIMS2_USB
+> > driver.
+> >
+> > At the moment, it doesn't compile, as is, in my environment.
+> > Let me know if you encounter, and have a solution for this:
+> >
+> > $ cc prism2fw.c
+> > prism2fw.c:51:10: fatal error: linux/ihex.h: No such file or directory
+> >    51 | #include <linux/ihex.h>
+> >       |          ^~~~~~~~~~~~~~
+> > compilation terminated.
+> >
+> > Alison
+> >
+> > >
+> > > Mark
+> > >
+> > > On Wed, Mar 15, 2023 at 12:12 PM Alison Schofield <
+> > > alison.schofield@intel.com> wrote:
+> > >
+> > > > On Wed, Mar 15, 2023 at 01:44:10AM -0600, Mark Heim wrote:
+> > > > > On Tue, Mar 14, 2023 at 04:49:20PM -0700, Alison Schofield wrote:
+> > > > > > Hi Applicants,
+> > > > > >
+> > > > > > We want to support you finding cleanups. Today I spent some time
+> > > > > > looking through staging and am working up a small todo list that
+> > > > > > may be useful.
+> > > > >
+> > > > > I'm interested in doing the required demo for the kernel. Let
+> > > > > me know what I should do next presupposing there is a list of tasks.
+> > > >
+> > > >
+> > > >
+> > > > >
+> > > > > >
+> > > > > > I posted one such cleanup to Menna because I saw them submit a
+> > > > > > couple of attempts at a first patches.
+> > > > > >
+> > > > > > I think that Kloudifold, Khadija, and Sumitra are busy iterating on
+> > > > > > their first patches. Keep going! Ask for help finding your second
+> > > > > > patch if needed.
+> > > > > >
+> > > > > > Anyone else who wants help in finding their first patch, please
+> > reach
+> > > > > > out. I imagine their are some folks exploring here, that I haven't
+> > > > > > met on the list yet.
+> > > > >
+> > > > > Hello, that's me! I was originally working on the Outreachy LLVM
+> > > > > project but had short term health problems, and that meant I let
+> > > > > that opportunity get away.
+> > > > >
+> > > > > >
+> > > > > > Finally, it seems we won't be holding to the traditional 10 cleanup
+> > > > > > patch requirement this round! Please continue your efforts and I'll
+> > > > > > redirect you towards projects after a 'few' cleanup patches are
+> > > > > > accepted into staging.
+> > > > > >
+> > > > >
+> > > > > I have some catching up to do. I dug through a little more
+> > > > > than a page of Linux mailing list messages but was able to
+> > > > > glean a bunch of things that were helpful. These are things like
+> > > > > patch creation best practices, posting on code style, joining
+> > > > > a mailing list, and documentation.
+> > > > >
+> > > > > Hope to hear from everyone later.
+> > > > >
+> > > > > (here's a question: is it best practice to include 100 percent
+> > > > > of the message pre-insertion of comments, or can I delete some
+> > > > > of the original message?)
+> > > >
+> > > > To snip or not to snip!  I think not-snipping here was appropriate.
+> > > >
+> > > > This is the formal starting point:
+> > > >
+> > > >
+> > https://www.outreachy.org/outreachy-may-2023-internship-cohort/communities/linux-kernel/
+> > > >
+> > > > Each project starts with 'Community-Wide Requirements', so follow that
+> > > > section.
+> > > >
+> > > > Welcome,
+> > > > Alison
+> > > >
+> > > > >
+> > > > > > Thanks,
+> > > > > > Alison
+> > > > > >
+> > > > > >
+> > > > > >
+> > > > >
+> > > >
+> > > >
+> >
