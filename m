@@ -1,171 +1,163 @@
-Received: from mail-pj1-f50.google.com (mail-pj1-f50.google.com [209.85.216.50])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 80EB57F8
-	for <outreachy@lists.linux.dev>; Sat, 18 Mar 2023 06:54:27 +0000 (UTC)
-Received: by mail-pj1-f50.google.com with SMTP id qe8-20020a17090b4f8800b0023f07253a2cso7444603pjb.3
-        for <outreachy@lists.linux.dev>; Fri, 17 Mar 2023 23:54:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679122467;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=L7H7jsnaS7hh6n9/OSKDeXdo8xmFvxSt1PWI4aw3c54=;
-        b=lDrEHK6sG9IM2D63FRaeoqN94JTwdm+lSiJby7UtczlWB5kLw2Xys3Ld9CHATy8zjW
-         s90/HUdBA1srPSyjl7yHUYZ7Rkq+38XeOX9GvN5G4p6HZUJjm4I9+IS0Syl0pB03Y+yB
-         X4jTjz+l7vxXQviJEnSeJLFCF38/jRL0Q9sPaf3ZhRXcRGXEXDH6LIF8aSgnt5Z7hisJ
-         /V99bsG5PA2ovjKYmC0sUytMfi7kdTN/ch19gu3QJPcePczKlVcPfi8Z7ZR0d8t5nF2y
-         CSNRXbzIzzHDD/bPu1gpeDdek8G9BD2/3M8NG9I4SFoBkvZfu8fydyDXeROf20IaSm1p
-         MpiQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679122467;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=L7H7jsnaS7hh6n9/OSKDeXdo8xmFvxSt1PWI4aw3c54=;
-        b=w+gEC0ob/qUP2l0kmvPvDlZhXH7Ge12rSzdK+HVonKBh4oj3hMr5jzGRjJB3YcjqYF
-         ntQPk3zV2TsgoJ4IEU0cxMF0jfl+P5dVZQrpDlGByhBOeXp12ILR7K5MNfhSbObYstbD
-         A3Br2JpfvjAsxMGJ8GjmGS0jzY/57plCQYkISs9WbGuKT/E2JnPYB9pXIyQlzB56cFrT
-         ozeDtRAmY3qPhl0wMXz4oikaIeD0Mds4c1eTVFp3YJQBOJ5BUyXVeLqroihnqLR0ZlEb
-         28En2EZdseQtQtnKveoW58zj4NKH8apJ5dodZIQq0vkUZ0lnyKqpmeszpONgbEXPLeL3
-         vTCA==
-X-Gm-Message-State: AO0yUKVMn+xymbq3nsLCZlrUOXjlvtHSnsRn+kJxS+Hf8cGOH+1Fby0f
-	G1FBDzMONwgQuMTPtVnau0w=
-X-Google-Smtp-Source: AK7set9Gl1raRSR8oR+sstjQQLUsM3jqiR3tfRmw6kvVIN43DnyBqEkWGBjKrNnRgts57RoGtUcB+g==
-X-Received: by 2002:a17:902:d044:b0:1a0:7655:2155 with SMTP id l4-20020a170902d04400b001a076552155mr7078352pll.25.1679122466769;
-        Fri, 17 Mar 2023 23:54:26 -0700 (PDT)
-Received: from sumitra.com ([117.245.170.249])
-        by smtp.gmail.com with ESMTPSA id q2-20020a170902788200b001a1b808c1d8sm470865pll.245.2023.03.17.23.54.23
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 17 Mar 2023 23:54:26 -0700 (PDT)
-Date: Fri, 17 Mar 2023 23:54:21 -0700
-From: Sumitra Sharma <sumitraartsy@gmail.com>
-To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Cc: outreachy@lists.linux.dev, julia.lawall@inria.fr,
-	alison.schofield@intel.com
-Subject: Re: [KERNEL NEWBIES ACCESS] Sumitra Sharma
-Message-ID: <20230318065421.GB4434@sumitra.com>
-References: <20230316083116.GB47053@sumitra.com>
- <3190629.0WQXIW03uk@suse>
- <20230317180055.GA3391@sumitra.com>
- <4774662.F8r316W7xa@suse>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A99257F8
+	for <outreachy@lists.linux.dev>; Sat, 18 Mar 2023 07:07:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 04BD4C433EF;
+	Sat, 18 Mar 2023 07:07:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1679123269;
+	bh=ccq1oYs994wQVCIXGXYyqLfHJ8ZkTFaMXlI9f1SYAMM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=TlGvBDqyfjakpLAtoF2gwjffEGjJqHamPQjIQO8gnvJ/ZXTbHi76yr0gT53+DQsaq
+	 mqB+ShFN3sJeworBNhObxaXX3BRVMi47425hYnHAd5VPJ4UWQ/KeINmmguVjsJQTi9
+	 psa7yyLUKjg//UGzYIBI+klWVsFmT0HtqXgVzea0=
+Date: Sat, 18 Mar 2023 08:07:46 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Mark Heim <questioneight@gmail.com>
+Cc: outreachy@lists.linux.dev
+Subject: Re: [PATCH] staging: greybus: extract a fxn to improve clarity
+Message-ID: <ZBVjQoayDB3JEoch@kroah.com>
+References: <20230317141756.GA43753@pikachu-Z97-D3H>
+ <ZBR6MZifQBMLV8Ps@kroah.com>
+ <20230317172542.GB48779@pikachu-Z97-D3H>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <4774662.F8r316W7xa@suse>
+In-Reply-To: <20230317172542.GB48779@pikachu-Z97-D3H>
 
-On Fri, Mar 17, 2023 at 08:24:59PM +0100, Fabio M. De Francesco wrote:
-> On venerdì 17 marzo 2023 19:00:55 CET Sumitra Sharma wrote:
-> > On Fri, Mar 17, 2023 at 04:15:37PM +0100, Fabio M. De Francesco wrote:
-> > > On venerdì 17 marzo 2023 12:05:09 CET Fabio M. De Francesco wrote:
-> 
-> [snip]
-> 
-> > > 
-> > > Sumitra,
-> > > 
-> > > When doing this change, please skim the whole document and replace _all_ 
-> the
-> > > links to the .rst files (regardless they point to elixir.bootlin.com or 
-> not)
-> > > with the corresponding generated .html in kernel.org.
-> > > 
-> > > The document about the Highmem subsystem which I showed you is useless in
-> > > .rst format from the point of view of people who needs to learn its
-> > > content. I'm not sure whether or not we have the same problem with the
-> > > Linux kernel development guidelines, however it does not matter how much 
-> it
-> > > differs from the human readable counterpart.
-> > > 
-> > > We should make it clear that the source .rst is never the right document 
-> to
-> > > consult, unless one want to make changes. The generated documentation from
-> > > .rst with "make htmldocs" (or with other similar commands for .pdf and
-> > > .epub)
-> > > should be the only to consult for purposes of study (it does not matter if
-> > > one generates them locally or find them in the "documentation" section of
-> > > the kernel.org website).
+On Fri, Mar 17, 2023 at 11:25:42AM -0600, Mark Heim wrote:
+> On Fri, Mar 17, 2023 at 03:33:21PM +0100, Greg Kroah-Hartman wrote:
+> > And what is "fxn" in the subject line?  Ironic you use an abbreviation
+> > when trying to improve clarity :)
 > > 
-> > Hi Fabio
-> > 
-> > Here it is
-> > https://lore.kernel.org/outreachy/20230317175007.GA3275@sumitra.com/T/#u
 > 
-> I just read the list of the links. You showed pairs of links: the first is the 
-> current one pointing to .rst files, the second points to the output .html 
-> file.
-> 
-> If I'm reading correctly, and you took special care to check that the web 
-> pages you are linking are at the right URL, I'm OK with your list of changes 
-> (I cannot check them one by one). 
->
+> I thought fxn was an acceptable abbreviation that saved me a few characters
+> in the subject line. I thought I was crunched for space.
 
-Yes, you understand it right. Thanks.
+You are, but you still have to make it legible.
 
-
-> > > Thanks,
+> > > Signed-off-by: Mark Thomas Heim <questioneight@gmail.com>
+> > > ---
+> > >  drivers/staging/greybus/audio_codec.h |  2 ++
+> > >  drivers/staging/greybus/audio_gb.c    | 21 +++++++++++----------
+> > >  2 files changed, 13 insertions(+), 10 deletions(-)
 > > > 
-> > > Fabio
-> > > 
-> > > P.S.: I just saw the last message from Julia (in this same thread) 
-> regarding
-> > > Mutt configuration. I want to echo her and ask you or other Applicants for
-> > > making also those changes. 
-> 
-> (Here it looks like you merged your message with mine. OK, don't worry about 
-> it now but be careful next time).
-> 
-
-
-I did it by mistake. I will take care of it.
-
-
-> > > Don't forget that Alison said that they count as
-> > > contributions that you can add in your records.
+> > > diff --git a/drivers/staging/greybus/audio_codec.h b/drivers/staging/greybus/audio_codec.h
+> > > index ce15e800e607..a2e8361952b8 100644
+> > > --- a/drivers/staging/greybus/audio_codec.h
+> > > +++ b/drivers/staging/greybus/audio_codec.h
+> > > @@ -177,6 +177,8 @@ int gbaudio_register_module(struct gbaudio_module_info *module);
+> > >  void gbaudio_unregister_module(struct gbaudio_module_info *module);
+> > >  
+> > >  /* protocol related */
+> > > +int fetch_gb_audio_data(struct gb_connection *connection, int type,
+> > > +			void *response, int response_size);
 > > 
-> > I am also working on the Mutt configuration. Can you tell me how we are
-> > going to mention these kind of contributions when recording the
-> > contribution? 
+> > Why is this a global function?
+> > 
 > 
-> Alison will help you as soon as she can. I don't know how the contributions to 
-> the kernelnewbies website should be recorded, I think that they go to into the 
-> same form you should use for the patches.
->
+> Global function? Do you mean the EXPORT_SYMBOL_GPL makes it global?
 
-If so then what links are we suppose to attach for these wiki updates
-while recording the contribution?
+No, EXPORT_SYMBOL*() is to provide a symbol to a module.
 
-> Please wait for her answers about this subject. 
+The normal C namespace rules still apply here if you were to build this
+code into the kernel not as a module, right?  There is only one
+namespace for a C program, so be aware of that.
+
+> That's an issue since I was trying to imitate the structure of the
+> functions that were already in the C code, though I am not exactly sure
+> the functionality of that statement. I thought this function should
+> match.
+
+For a static function perhaps, but that's not what you did here (also
+you made it global for no apparent reason.)
+
+> > And why if it is a global function, are you not using the gb_audio_*
+> > prefix?  Be aware of the global namespace please.
+> > 
 > 
+> I thought namespaces were a C++ specific issue, not C. I think I was
+> ignorant of the C namespace until just now. I have used C++ namespaces
+> and Java packages, but wasn't aware of the C analogue.
 
-Sure.
+There is only one "namespace" in C programs, so be aware of that.
 
-> > Also, are we suppose to record the contribution for each
-> > and every patch separately or we have to compile them together in one go
-> > during the last days of contribution period?
-> 
-> Contributions can only be registered one at a time using the appropriate form 
-> accessible from the project(s) you wish to work on. I suggest choosing one or 
-> two projects, no more than two. If you prefer to apply for your first choice 
-> and a fallback project you should record each contribution twice. 
-> 
-> The sooner candidates start recording the contributions, the easier our job 
-> will be.
-> 
+We do have the idea of "module namespaces" for symbols that are exported
+for modules to use, but that's not being used here either so I will not
+get into that.  There's documentation in the kernel about that if you
+are curious.
 
-Okay! Thank you.
-
-Regards,
-
-Sumitra
-> Thanks,
+> > >  int gb_audio_gb_get_topology(struct gb_connection *connection,
+> > >  			     struct gb_audio_topology **topology);
+> > >  int gb_audio_gb_get_control(struct gb_connection *connection,
+> > > diff --git a/drivers/staging/greybus/audio_gb.c b/drivers/staging/greybus/audio_gb.c
+> > > index 9d8994fdb41a..3c924d13f0e7 100644
+> > > --- a/drivers/staging/greybus/audio_gb.c
+> > > +++ b/drivers/staging/greybus/audio_gb.c
+> > > @@ -8,7 +8,13 @@
+> > >  #include <linux/greybus.h>
+> > >  #include "audio_codec.h"
+> > >  
+> > > -/* TODO: Split into separate calls */
+> > > +int fetch_gb_audio_data(struct gb_connection *connection,
+> > > +			int type, void *response, int response_size)
+> > > +{
+> > > +	return gb_operation_sync(connection, type, NULL, 0,
+> > > +				 response, response_size);
+> > > +}
+> > > +
+> > >  int gb_audio_gb_get_topology(struct gb_connection *connection,
+> > >  			     struct gb_audio_topology **topology)
+> > >  {
+> > > @@ -17,28 +23,23 @@ int gb_audio_gb_get_topology(struct gb_connection *connection,
+> > >  	u16 size;
+> > >  	int ret;
+> > >  
+> > > -	ret = gb_operation_sync(connection, GB_AUDIO_TYPE_GET_TOPOLOGY_SIZE,
+> > > -				NULL, 0, &size_resp, sizeof(size_resp));
+> > > +	ret = fetch_gb_audio_data(connection, GB_AUDIO_TYPE_GET_TOPOLOGY_SIZE,
+> > > +				  &size_resp, sizeof(size_resp));
+> > 
+> > What are you actually changing here besides the name?
+> > 
 > 
-> Fabio
+> In an earlier revision, I replaced each gb_operation_sync call with one
+> of two functions: fetch_gb_audio_data_size and fetch_gb_audio_data.
+> Next, I added in comments to explain what all the code was doing. To
+> satisfy the restriction that the computations done by the code were the
+> same as before the refactor, I would pass in 4 parameters into each
+> of the functions, which saves the issue of magic numbers being fed into 
+> gb_operation_sync. Then, the two new functions I consolidated down to 
+> 1 function because the method bodies were identical. Finally, per the
+> code refactoring guides, I eliminated the comments.
 > 
- 
+> I thought about adding in a function to encapsulate the code between
+> the two refactored methods, but you run into an issue with needing to
+> return too many values without doing something like defining a struct to
+> return those values. Thus, there's almost no change to the code.
+> 
+> > How did this fix up the TODO at all?
+> > 
+> 
+> It depends how you interpret the TODO, I suppose. My original intent
+> was to encapsulate code into some function calls with a helpful name, and
+> the end result of this refactor is more or less a U-turn. 
+> 
+> Should I update this patch or start something new? Any other feedback is
+> also welcome.
+
+If you want to update the patch to do this correctly, that's up to you,
+but note that your current implementation is not correct.
+
+Perhaps start out with something simple like coding style fixes.  There
+are still loads of them to do in the codebase.
+
+good luck!
+
+greg k-h
