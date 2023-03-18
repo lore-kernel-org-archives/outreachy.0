@@ -1,105 +1,119 @@
-Received: from mail-pj1-f43.google.com (mail-pj1-f43.google.com [209.85.216.43])
+Received: from mail-pg1-f181.google.com (mail-pg1-f181.google.com [209.85.215.181])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 462FDA4D
-	for <outreachy@lists.linux.dev>; Sat, 18 Mar 2023 09:14:11 +0000 (UTC)
-Received: by mail-pj1-f43.google.com with SMTP id j13so7642499pjd.1
-        for <outreachy@lists.linux.dev>; Sat, 18 Mar 2023 02:14:11 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AD21F1FBB
+	for <outreachy@lists.linux.dev>; Sat, 18 Mar 2023 12:15:15 +0000 (UTC)
+Received: by mail-pg1-f181.google.com with SMTP id z10so4268936pgr.8
+        for <outreachy@lists.linux.dev>; Sat, 18 Mar 2023 05:15:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679130850;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=q1HUnBQULdH+yj1WjOyv+pwIZaTFzEd5df7J1coJcws=;
-        b=Cj82a4VjRbIaf8dAdNtPGRtJl2TW2EaYUTPPszSpkbf3EeUNXO22/m2kEGg8K04Mg7
-         ula85t2Xi6eYf2CbWngdzGI2XH/lPVROUfe68L52f3wy7X6lHmxZg7nSNZWAuIT/Z5lC
-         as5CzOYyZ5vEewX0ZB6rVd8BiQhFOZAwOdeIFLKaazPbQuBXkBQ0s9mNpZyo56/9ysnC
-         vX8JJ7AVfIVcH8Trg4MO5bvW5R3Pdjz48d+T7s+5iyyQRj1WuYQLlMZShhQUdfWQiI0W
-         WZrxN8pkFdpn3ocvLY8Qu2lfdsiX1u8MKkJkmMCRDJmq8d4xfhyA6e5KyIlsJVUneUGX
-         ax5g==
+        d=gmail.com; s=20210112; t=1679141715;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=mCaU990LWokdE57jX1tBRL/o3f1FcMOgqm1HXPvoCA0=;
+        b=mcyrf8Zrb6rcaLOdI9ksjANgqJFU8gSBjCj6aeEcItGVWwHpwTcLXVGWm5l1NIZ5RK
+         2fNmatcf/WZ4QeCd+6S9mvqAESEN7FFWz10jTF/gUIuMoqpxS+XVgOaVWzRnu9UOJDyq
+         Q30QbglGUIs3aGp5TGAj28M6WATaNDxhDuEKwS/8Qfeksx8zaKS545qYX9iYe2xqUJII
+         Y+ZwW/ao83xFE5E9q9XrmDf7H1eOpE5rbUCTbpIy5RpXhlCRRMEO9OVp47OsvXAwHvtv
+         /cltiLZPz1KLYkG9Wddqrz9AISqao4zwII7ZGCP1atlGmTty2AA3fRTHFQu2ImCQQzK5
+         tEXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679130850;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=q1HUnBQULdH+yj1WjOyv+pwIZaTFzEd5df7J1coJcws=;
-        b=uHM/4eOT/tWmU899UyqWM8aVNSMuO5F9R9HP6HX1FHiQwoWyn/f6DsPgzl9dLPP1an
-         /SWCrwNppGrT66xHgszvK739ZkZ/UAXWWbqp2hMI1H//Bkm2NCaIExx85keA6TjAk4oy
-         2rVoWFJEW8sw6npuIpPLhowJGrPYCjtTsgUm9g8LepZw0UqdEI0zpd6Rhc/1mFAvBbrl
-         7TOODwV4rwL9spx/mkeDItUSQ5u9PC+DPA9J1SCv9C1Sgp+VUFNi/d3XUN1GeqjQ/RUF
-         HhmuYVGGTTxvTTle/pFOTm4DjHB1NtoZJlCvAq0E1xlRbq+fazLSFhjPM7PfHhz3kBWa
-         Bxeg==
-X-Gm-Message-State: AO0yUKU/Yz1/kIOjaT6WoKHq/UN6dQdaL5eFIkJ/aeIG2lZdY0J7QYvL
-	yit8ir/JoyG/PBJ/i76Tj7bNyOrElxPZ4Q==
-X-Google-Smtp-Source: AK7set8PVOiZnMe+lfPrWm0BgRqXXFqqwuiFarPBSCc3eGmW8K/FSL1ZwDNPcsl+2RVIy+QoIet6aQ==
-X-Received: by 2002:a17:902:ebd2:b0:19b:107b:698e with SMTP id p18-20020a170902ebd200b0019b107b698emr8957684plg.14.1679130850618;
-        Sat, 18 Mar 2023 02:14:10 -0700 (PDT)
-Received: from debian.me (subs02-180-214-232-29.three.co.id. [180.214.232.29])
-        by smtp.gmail.com with ESMTPSA id y14-20020a1709027c8e00b0019f3a28ea29sm2846561pll.160.2023.03.18.02.14.09
+        d=1e100.net; s=20210112; t=1679141715;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=mCaU990LWokdE57jX1tBRL/o3f1FcMOgqm1HXPvoCA0=;
+        b=AYWB0py+e/QJoHCcmFsFoX6mKh0IYR+KxfM0KzfcLLziTmXitvJCDBjaBtUhmAYcAJ
+         HexQMq7gzLdSYr054kIX46NIPHeLUm7YOxVD7eL8pHfGExv9E+PoEp4NDt2fG0NmCT1f
+         Ttz3HoVupmiK8EDUL1gZrc9vyCDcQ6DRoyHLTzG9cz5Uzyk1cv0N9KUMSOqkxccx3WD7
+         Agn/7/9z1X0gI9IuOqn4U7jw466nOMYR7qF8RadYvLLjz2oJlM6glpRQwtal2Mcv8PWr
+         YnRsFYxm9iNYgOjbTbk6Jb/7MZFbVKHD2rmsRZPvZ8rPIDvYVH/WO/SID2mzGoHVc2Zk
+         wF9g==
+X-Gm-Message-State: AO0yUKXH6+FppIKAYSFSmgDCwjqbfyAnPxj8bCgPaNzu0KaKpJmQs0hh
+	0z7IGYjPV30Ib3BbJ71u6w7OITRew9w=
+X-Google-Smtp-Source: AK7set95dpyotILYZZGPmo4o2zZ18ue0yIQ+bmvJYwpo/S+gF9bHeKpMG/VQKu0QL5fo0ePB62aRvg==
+X-Received: by 2002:a62:6443:0:b0:625:f983:3ddd with SMTP id y64-20020a626443000000b00625f9833dddmr8021862pfb.13.1679141714912;
+        Sat, 18 Mar 2023 05:15:14 -0700 (PDT)
+Received: from sumitra.com ([117.199.163.158])
+        by smtp.gmail.com with ESMTPSA id 23-20020aa79117000000b005a8173829d5sm1141628pfh.66.2023.03.18.05.15.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 18 Mar 2023 02:14:10 -0700 (PDT)
-Received: by debian.me (Postfix, from userid 1000)
-	id 6E8DD10665E; Sat, 18 Mar 2023 16:14:06 +0700 (WIB)
-Date: Sat, 18 Mar 2023 16:14:06 +0700
-From: Bagas Sanjaya <bagasdotme@gmail.com>
-To: Sumitra Sharma <sumitraartsy@gmail.com>, outreachy@lists.linux.dev
+        Sat, 18 Mar 2023 05:15:13 -0700 (PDT)
+Date: Sat, 18 Mar 2023 05:15:08 -0700
+From: Sumitra Sharma <sumitraartsy@gmail.com>
+To: Bagas Sanjaya <bagasdotme@gmail.com>
+Cc: outreachy@lists.linux.dev
 Subject: Re: Unable to find module location
-Message-ID: <ZBWA3rb9nVP8ho05@debian.me>
+Message-ID: <20230318121508.GA37278@sumitra.com>
 References: <20230318084048.GC4434@sumitra.com>
+ <ZBWA3rb9nVP8ho05@debian.me>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="KgKuXD8KuL75hQ2o"
-Content-Disposition: inline
-In-Reply-To: <20230318084048.GC4434@sumitra.com>
-
-
---KgKuXD8KuL75hQ2o
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <ZBWA3rb9nVP8ho05@debian.me>
 
-On Sat, Mar 18, 2023 at 01:40:48AM -0700, Sumitra Sharma wrote:
->   =E2=94=82 Symbol: NVEC_PAZ00 [=3Dn]                                    =
-                                                      =E2=94=82
->   =E2=94=82 Type  : tristate                                             =
-                                                    =E2=94=82
->   =E2=94=82 Defined at drivers/staging/nvec/Kconfig:45                   =
-                                                    =E2=94=82
->   =E2=94=82   Prompt: Support for OEM specific functions on Compal PAZ00 =
-based devices                                       =E2=94=82
->   =E2=94=82   Depends on: STAGING [=3Dy] && MFD_NVEC [=3Dn] && LEDS_CLASS=
- [=3Dy]                                                   =E2=94=82
+On Sat, Mar 18, 2023 at 04:14:06PM +0700, Bagas Sanjaya wrote:
+> On Sat, Mar 18, 2023 at 01:40:48AM -0700, Sumitra Sharma wrote:
+> >   │ Symbol: NVEC_PAZ00 [=n]                                                                                          │
+> >   │ Type  : tristate                                                                                                 │
+> >   │ Defined at drivers/staging/nvec/Kconfig:45                                                                       │
+> >   │   Prompt: Support for OEM specific functions on Compal PAZ00 based devices                                       │
+> >   │   Depends on: STAGING [=y] && MFD_NVEC [=n] && LEDS_CLASS [=y]                                                   │
+> 
+> Hi,
+> 
+> MFD_NVEC depends on ARCH_TEGRA, which requires arm64
+> (aarch64-*-linux-gnu) cross-compiler. If don't have it yet, you can
+> build one with crosstool-NG. When the cross-compiler have been successfully
+> built and installed, add <cross-compiler prefix>/bin to PATH.
+> 
+> Now in order to cross-compile the kernel (to arm64 in this case),
+> you need to pass `ARCH=arm64 and CROSS_COMPILE=aarch64-<vendor>-linux-gnu-`
+> to each invocation of `make`.
+>
 
-Hi,
+HI,
 
-MFD_NVEC depends on ARCH_TEGRA, which requires arm64
-(aarch64-*-linux-gnu) cross-compiler. If don't have it yet, you can
-build one with crosstool-NG. When the cross-compiler have been successfully
-built and installed, add <cross-compiler prefix>/bin to PATH.
+I tried your way. Build and Install aarch64-linux-gnu-gcc, added the
+path and run the command 'make -j2 ARCH=arm
+CROSS_COMPILE=aarch64-linux-gnu-'
 
-Now in order to cross-compile the kernel (to arm64 in this case),
-you need to pass `ARCH=3Darm64 and CROSS_COMPILE=3Daarch64-<vendor>-linux-g=
-nu-`
-to each invocation of `make`.
+But receiving these errors.
 
-Thanks.
+aarch64-linux-gnu-gcc: error: unrecognized argument in option ‘-mabi=aapcs-linux’
+aarch64-linux-gnu-gcc: note: valid arguments to ‘-mabi=’ are: ilp32 lp64
+  CC      scripts/mod/devicetable-offsets.s
+aarch64-linux-gnu-gcc: error: unrecognized command line option ‘-mapcs’
+aarch64-linux-gnu-gcc: error: unrecognized argument in option ‘-mabi=aapcs-linux’
+aarch64-linux-gnu-gcc: note: valid arguments to ‘-mabi=’ are: ilp32 lp64
+aarch64-linux-gnu-gcc: error: unrecognized command line option ‘-mno-sched-prolog’
+aarch64-linux-gnu-gcc: error: unrecognized command line option ‘-mtp=cp15’
+aarch64-linux-gnu-gcc: error: unrecognized command line option ‘-mfpu=vfp’
+aarch64-linux-gnu-gcc: error: unrecognized command line option ‘-msoft-float’
+make[1]: *** [scripts/Makefile.build:252: scripts/mod/empty.o] Error 1
+make[1]: *** Waiting for unfinished jobs....
+aarch64-linux-gnu-gcc: error: unrecognized command line option ‘-mapcs’
+aarch64-linux-gnu-gcc: error: unrecognized command line option ‘-mno-sched-prolog’
+aarch64-linux-gnu-gcc: error: unrecognized command line option ‘-mtp=cp15’
+aarch64-linux-gnu-gcc: error: unrecognized command line option ‘-mfpu=vfp’
+aarch64-linux-gnu-gcc: error: unrecognized command line option ‘-msoft-float’
+make[1]: *** [scripts/Makefile.build:114: scripts/mod/devicetable-offsets.s] Error 1
+make: *** [Makefile:1286: prepare0] Error 2
 
---=20
-An old man doll... just what I always wanted! - Clara
 
---KgKuXD8KuL75hQ2o
-Content-Type: application/pgp-signature; name="signature.asc"
+Regards,
 
------BEGIN PGP SIGNATURE-----
+Sumitra
 
-iHUEABYKAB0WIQSSYQ6Cy7oyFNCHrUH2uYlJVVFOowUCZBWA2gAKCRD2uYlJVVFO
-o0KVAP9aJLjQA7EWGMsS4fG/aj1jMa4X1Vbp5dw73h8iw3ncrwD+JRZM1IdWFnzD
-yjB+rwyffIIgVOzbRM1lLeaqF+4jzAw=
-=WuDx
------END PGP SIGNATURE-----
 
---KgKuXD8KuL75hQ2o--
+> Thanks.
+> 
+> -- 
+> An old man doll... just what I always wanted! - Clara
+
+
