@@ -1,55 +1,54 @@
-Received: from mail-pl1-f169.google.com (mail-pl1-f169.google.com [209.85.214.169])
+Received: from mail-pl1-f182.google.com (mail-pl1-f182.google.com [209.85.214.182])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C6BCA33D9;
-	Sat, 18 Mar 2023 17:55:41 +0000 (UTC)
-Received: by mail-pl1-f169.google.com with SMTP id bc12so7832398plb.0;
-        Sat, 18 Mar 2023 10:55:41 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E2CF133D9
+	for <outreachy@lists.linux.dev>; Sat, 18 Mar 2023 17:57:52 +0000 (UTC)
+Received: by mail-pl1-f182.google.com with SMTP id h8so8419447plf.10
+        for <outreachy@lists.linux.dev>; Sat, 18 Mar 2023 10:57:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679162141;
+        d=gmail.com; s=20210112; t=1679162272;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=81qaQdBcBEP2jHfYRJB7eE244mJTlBVviRI7USBuECw=;
-        b=AK7708FUtr5f/inCfiB0yMc0/h3V8fqEYmQnW0dtGVhFsTxuLGkAXuxMFjDK3z3PSh
-         SFbLz2DmNOczUkpncbTl8uftF4cQ7yThClmt3P/70TNVlcG2XF+SW+/gv49pnuDbecE8
-         sGgk6zihg2H2Oh4BdHDi436izZltHaRKiOrN1ta9V2h5aYoa1pcmCfG6XPE28VhuIg0P
-         7AeG2IkR24bqU+uG3Qk4tBO2nIUlO3VYmdovXyKpbZae5w2ur7BA3pjNG+mb9yv6PhBT
-         3dxAULCVXyXEM6lTAQI+e2YvTIX1RtF5gQH4K22JQE2dNClQkdXE9Oy9kLok/olDMb9d
-         6ORg==
+        bh=Jc3c7rj/cyWXTndrw6PwlngKYzvQEtb5CV1uZO28U4c=;
+        b=eHZZ4eVp+L5r2Ep9fvvFw/crYV87PRlCtsJnoHRbglZZBZ/z6jq98vztqMRgffcefZ
+         Lfl8UjvFK2up71v0GhESuRGYs2OSL3RnjZCyoktDRj3ePhEkwd1zhlaQs8HjfXsffdjT
+         eRwW0djd/QOAhjWXiPcESsXZqrqPXVDySDQPq5toqoXylhoY0ZWUO9t/UBnm3iBJ5w38
+         c5bnzoE5RKueL4FsNppd5x1NzTsOap1dLsyyceAXivfmW/sJ7ZAwzuPsYXsSAZzcYziK
+         24PHdRFDcTbLr4DGxa5JymwHE02GvDqVMLZNJDGEmG51e27eTTLgIym3IDXddmltskVg
+         YO7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679162141;
+        d=1e100.net; s=20210112; t=1679162272;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=81qaQdBcBEP2jHfYRJB7eE244mJTlBVviRI7USBuECw=;
-        b=ta20253Gy7Fdh7aBrNnO6F5fzi92R0d/5HUwEF0ZHU0XTzW+xaOMvtZ5LFlw6Kuouy
-         g8HqQB7TO+YXpIv47DtcxIZtFF8UW4w8PI3+6TL1E7hG2yY+0HK6ckEXtjfCXgiZrbpJ
-         9uQVvvDufMIzvSK4H/ysv9BOxm7VvADwyXH8SlW1TqSOn2RVZYwAvZ03+kOf/NmLf6Xv
-         JYij2Mm2Kblu4APuS4tzTare1utHACs4Y8NS5EMhnMoY1WTafNtV2z3XXNNvr2t6MiZQ
-         EsrV6OigSINkf35Adr2RJGtrfdqDOslRcrhp8fEr5a71VaiM9jjMkySV8m0tL3M3Bthy
-         iJIw==
-X-Gm-Message-State: AO0yUKVUk9MIjzF2fS/P0oFaPaZGPrpI/gWvwSy1BxQF1jHNZKyMo//Y
-	i1QWevS5wMSyoksD27d7ByagiSbhfB6Fgg==
-X-Google-Smtp-Source: AK7set/hbzhTcYbmFLhKb0SHtB97paH+z56ao+FfTyjpzr2In6PrTz9qj8HLnFeT69UAeY0frWIJkw==
-X-Received: by 2002:a17:90a:1903:b0:23b:2963:ec94 with SMTP id 3-20020a17090a190300b0023b2963ec94mr12832199pjg.29.1679162141142;
-        Sat, 18 Mar 2023 10:55:41 -0700 (PDT)
+        bh=Jc3c7rj/cyWXTndrw6PwlngKYzvQEtb5CV1uZO28U4c=;
+        b=02o2pAP7PXAuQPWGoqqI5zyXPFq576ciot2SKw6MqJ59u41V/SLKuJaKp171thnPV5
+         qMEnmwjKdfjx5fC5tzMPFHjP0vOCfNtIR2UZMoXFotEp+8rZPw3X9yAtL7KOwsTWPnma
+         tEarLOaZRNX06H+aJB16yJqZaFUYJHtt+VCzXB0NzC77bf7PfMDO4xe2KlkfmK8fmVoM
+         KEAGM9/wY02AayAsMuZB8sXi+QW6L+WgU3kZ6sH/x4KbypBloK+e8qu2rTl263diETev
+         Gh+AZLaO+xDT/FlvxUeNMkr96zSFd3cziSm7QfhJvmOsKXY+M+OhoqS8v3KbiWnoaiys
+         N7Cw==
+X-Gm-Message-State: AO0yUKXCNidDA6N9mTCfteDOZ/Xk6oDMARvVl0Jz65rHvhr9MAcbe052
+	JwsigY6dq0HvshAotFie1RY=
+X-Google-Smtp-Source: AK7set8wn2Re8dTeXs0mENQtFri2FUK6A2i8rIKS8UsYq9rtp5LQ+p3fKtEpuRpJymRFMTT8rtthTw==
+X-Received: by 2002:a17:902:dccb:b0:1a1:b440:3773 with SMTP id t11-20020a170902dccb00b001a1b4403773mr3049553pll.27.1679162272384;
+        Sat, 18 Mar 2023 10:57:52 -0700 (PDT)
 Received: from sumitra.com ([117.199.163.158])
-        by smtp.gmail.com with ESMTPSA id b17-20020a631b51000000b004e28be19d1csm3439677pgm.32.2023.03.18.10.55.36
+        by smtp.gmail.com with ESMTPSA id v9-20020a1709028d8900b001964c8164aasm3563810plo.129.2023.03.18.10.57.50
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 18 Mar 2023 10:55:40 -0700 (PDT)
-Date: Sat, 18 Mar 2023 10:55:32 -0700
+        Sat, 18 Mar 2023 10:57:51 -0700 (PDT)
+Date: Sat, 18 Mar 2023 10:57:46 -0700
 From: Sumitra Sharma <sumitraartsy@gmail.com>
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: Marc Dietrich <marvin24@gmx.de>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	ac100@lists.launchpad.net, linux-tegra@vger.kernel.org,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev
-Subject: Re: [PATCH] Staging: nvec: Change container_of macro to an inline
- function.
-Message-ID: <20230318175532.GA49651@sumitra.com>
-References: <20230318170514.GA49181@sumitra.com>
- <alpine.DEB.2.22.394.2303181811260.2914@hadrien>
+To: Bagas Sanjaya <bagasdotme@gmail.com>
+Cc: outreachy@lists.linux.dev
+Subject: Re: Unable to find module location
+Message-ID: <20230318175746.GB49651@sumitra.com>
+References: <20230318084048.GC4434@sumitra.com>
+ <ZBWA3rb9nVP8ho05@debian.me>
+ <20230318121508.GA37278@sumitra.com>
+ <64997a6c-24f1-d551-1b87-735a699e4a8e@gmail.com>
+ <20230318124937.GA39892@sumitra.com>
+ <21c2da25-22cb-cbe7-153e-067377de4723@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -58,72 +57,29 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.22.394.2303181811260.2914@hadrien>
+In-Reply-To: <21c2da25-22cb-cbe7-153e-067377de4723@gmail.com>
 
-On Sat, Mar 18, 2023 at 06:14:50PM +0100, Julia Lawall wrote:
+On Sat, Mar 18, 2023 at 08:01:33PM +0700, Bagas Sanjaya wrote:
+> On 3/18/23 19:49, Sumitra Sharma wrote:
+> > Sorry, for such a silly mistake.
+> > 
+> > However I run the command "make -j2 ./drARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu-" and got 
+> > make[3]: Nothing to be done for 'drivers/staging/nvec/'.
+> > 
+> > I think  this is because it is not yet created as a module.
+> > 
 > 
-> 
-> On Sat, 18 Mar 2023, Sumitra Sharma wrote:
-> 
-> > The macro has the drawback that one cannot determine
-> > what type it applies to by looking at the definition.
-> > Hence this macro definition is not type-safe.
-> >
-> > The inline function gives the same benefits as the
-> > macro and only accepts the specific type of arguments.
-> > Use static because the definition only requires it to be
-> > visible in the current file.
-> 
-> Sumitra,
-> 
-> The subject line and log message could be a little less generic.  For the
-> subject line, one has the impression that you are changing the definition
-> of container_of itself.
-> 
-> The log message is also a bit wordy.  Something like the following would
-> be more concise and still present the issue:
+> Have you tried cleaning the build first with `mrproper` target? Also,
+> is NVEC_PAZ00 enabled?
 >
 
-Okay. I will focus more on writing better patch subject and description.
+Cleaning the build worked for me. Thanks.
+What do you mean by enabling the NVEC_PAZ00?
 
-Thanks.
-
-Regards,
+Regards
 
 Sumitra
 
-> Convert to_nvec_led from a macro to an inline function, to make the
-> relevant types apparent in the definition and to benefit from the type
-> checking performed by the compiler at call sites.
+> -- 
+> An old man doll... just what I always wanted! - Clara
 > 
-> julia
-> 
-> 
-> >
-> > Signed-off-by: Sumitra Sharma <sumitraartsy@gmail.com>
-> > ---
-> >  drivers/staging/nvec/nvec_paz00.c | 6 ++++--
-> >  1 file changed, 4 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/drivers/staging/nvec/nvec_paz00.c b/drivers/staging/nvec/nvec_paz00.c
-> > index 8b4da95081c8..9573ba762cdd 100644
-> > --- a/drivers/staging/nvec/nvec_paz00.c
-> > +++ b/drivers/staging/nvec/nvec_paz00.c
-> > @@ -14,8 +14,10 @@
-> >  #include <linux/platform_device.h>
-> >  #include "nvec.h"
-> >
-> > -#define to_nvec_led(led_cdev) \
-> > -	container_of(led_cdev, struct nvec_led, cdev)
-> > +static inline struct nvec_led *to_nvec_led(struct led_classdev *led_cdev)
-> > +{
-> > +	return container_of(led_cdev, struct nvec_led, cdev);
-> > +}
-> >
-> >  #define NVEC_LED_REQ {'\x0d', '\x10', '\x45', '\x10', '\x00'}
-> >
-> > --
-> > 2.25.1
-> >
-> >
-> >
