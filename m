@@ -1,78 +1,130 @@
-Received: from mail-pj1-f51.google.com (mail-pj1-f51.google.com [209.85.216.51])
+Received: from mail-pl1-f179.google.com (mail-pl1-f179.google.com [209.85.214.179])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5EBAD2560
-	for <outreachy@lists.linux.dev>; Sat, 18 Mar 2023 13:01:47 +0000 (UTC)
-Received: by mail-pj1-f51.google.com with SMTP id h12-20020a17090aea8c00b0023d1311fab3so7929882pjz.1
-        for <outreachy@lists.linux.dev>; Sat, 18 Mar 2023 06:01:47 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AE0F92560
+	for <outreachy@lists.linux.dev>; Sat, 18 Mar 2023 13:02:17 +0000 (UTC)
+Received: by mail-pl1-f179.google.com with SMTP id ix20so7963649plb.3
+        for <outreachy@lists.linux.dev>; Sat, 18 Mar 2023 06:02:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679144507;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=TfySlKYhQEVZSARGI3TG2Kv36jXcdhllH6qsQkjCHk4=;
-        b=dLhNbLfhtd4CDimYcQRA79dyyvjLXmtOVEwxfNineYCBmZyfmD2O6LDrwCf1sQ6Sn4
-         QDQ3ZFeWr0sF9XEwCg7biFAWYf0hJubqZc72ZJqdQRgaY0Dli5YcUjAdQDdDExIC85kf
-         eh/czaE4SXAv31IOTgLwmDVlJaxDIXHkbSvwiFZnapO9yL+KfN1850ZJZzd0J3o2+1rk
-         ULFc0uP+RixLV5ZpkljCmM28oF9aArJ/tqE6/MSKRZkxFC0Dl1EWjVvcsetQH0wAaOh1
-         07fz5g6OuzhKah/sL9J1lmk+7xP+/vJzdR+Qq7vbO9raWjgtqkN+osu2cqToKYsJTZIc
-         Y4ng==
+        d=gmail.com; s=20210112; t=1679144537;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=dK0H3Sf3gWSALxj2X6HplxtT/WOWbNDyFb/2lk0SFKU=;
+        b=QTS+PfZ57oDNAI2/0QeDt0BbUEFMTWiDr+gCiDRciv/M8haq1wrbssQODY/Lp0j4TF
+         qY5FxLXDUVLNdE3SSFjp/j5ry1ivUjgB4z5hO5KzZbsUbKpFuEoWrngzWw0UdtGdWLWc
+         n/e14B5Wq3ZXMQStUt673ZrzX0/8+Ubl2L2HuYh9masBy+JqpfIiVFt6FsrCwatUyZpH
+         qEXqmDVP5OHd3WM6mJgnnMDvch76r4AgzgbyKSz0iQHRqz1/pxpZQa0XPD9Yg7KijK8t
+         AVaKgFo85zBjOQAZ7+AGvPqWMdkhOzprwfQXiSo0nEff3tmVzSpcm7HVresqX8RGLkRL
+         nV7g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679144507;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        d=1e100.net; s=20210112; t=1679144537;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=TfySlKYhQEVZSARGI3TG2Kv36jXcdhllH6qsQkjCHk4=;
-        b=4ES9CGU6hQBrQsDRkDXjTTgkl1b4cJgxiCnBHpmltqCnRfo+U7Zgn3uL+oRE5xDMd5
-         nfq7nsfg2umue0DkzEwSFp03CiMlkpiL93htCdYSbuJhN9EkaTxex/5c30LmaHofij16
-         BITIXHpFOe1VoxbS2Purxbu7AiOuZ4mkt4EwK6JOgGlRNhkRqwQKcNkH/DoHVlVd8ncq
-         Nu5p1BWpDS3bJ6aDe6JDl17LjMdg9As86vi6nv/UwhpY5a7IUt/mMJ2wtAJviHJytnue
-         YTm5+qSA08fiouP4ZKKVw/MqopQ55Pz7pmX4Tv4+lGTYr1YjxRXuVza9gBBTOb7SeTKT
-         DXzw==
-X-Gm-Message-State: AO0yUKXreACPrwougrlRMvwZwlQzax9rhUlSq3yCKQ274yBTys2AWnCz
-	d8M974aKASJzbiZ+wrkGpb2tAqBYp+A=
-X-Google-Smtp-Source: AK7set9EoRBaVeLgSMlfTw7WoQmyIqTNv1slYxuvKEcLowVLNbAnvGtSoW0oINT+CjdZ2Lbd5UHDvg==
-X-Received: by 2002:a17:902:f315:b0:19f:35de:c17e with SMTP id c21-20020a170902f31500b0019f35dec17emr8278840ple.52.1679144506852;
-        Sat, 18 Mar 2023 06:01:46 -0700 (PDT)
-Received: from [192.168.43.80] (subs03-180-214-233-11.three.co.id. [180.214.233.11])
-        by smtp.gmail.com with ESMTPSA id s12-20020a632c0c000000b004fadb547d0csm3097392pgs.61.2023.03.18.06.01.44
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 18 Mar 2023 06:01:46 -0700 (PDT)
-Message-ID: <21c2da25-22cb-cbe7-153e-067377de4723@gmail.com>
-Date: Sat, 18 Mar 2023 20:01:33 +0700
+        bh=dK0H3Sf3gWSALxj2X6HplxtT/WOWbNDyFb/2lk0SFKU=;
+        b=mOxtUS9UkLEm0Bw0qFspJ7SLyp/h0fEf3lWKkOX8095Tk8P8jrKtxzusfP69Ko6AiD
+         /aS0RyIv4hXHY6IDMYyvQ1su5PLa45s9rb8AIewzqNVtFK9Wgeyf4GigqiRYbz6lg9vi
+         nXiC+bZZTsnjK3zloj0W/yQBB+kObub5gkjFa+LyiWI2KulDGiDo8xSCgDQqYwIsRK0/
+         vkXBMh+NAtIvdL18lmAorlVgA5f4FfEW0d2xMbwB83L3MFWpHGxaTL1Q/Gme7fK8jLtG
+         8b4xwJsgEz+K/fV8pO8BiFbRRNEc0FRhYPQuRxPEWWnaUiOB8Gw1dKWGKTOrKy52IV64
+         spRA==
+X-Gm-Message-State: AO0yUKW2K51BRrY3eHLHBrAPDK0S6uzoA8iY7T5DU5U2vFotGvtUnMYV
+	xuKrDgga4EbaxgqAThE+i04=
+X-Google-Smtp-Source: AK7set9NEBt/Tm9NTJAQaIdKcdakCykYNhgPB5kH7hq+Gt3N30AjmDQ9l6plXLAALW43E44TJzWHrg==
+X-Received: by 2002:a17:902:e54d:b0:19a:70f9:affb with SMTP id n13-20020a170902e54d00b0019a70f9affbmr13145254plf.2.1679144536937;
+        Sat, 18 Mar 2023 06:02:16 -0700 (PDT)
+Received: from sumitra.com ([117.199.163.158])
+        by smtp.gmail.com with ESMTPSA id p8-20020a1709026b8800b001a19bac463fsm3257211plk.42.2023.03.18.06.02.15
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 18 Mar 2023 06:02:16 -0700 (PDT)
+Date: Sat, 18 Mar 2023 06:02:11 -0700
+From: Sumitra Sharma <sumitraartsy@gmail.com>
+To: Deepak R Varma <drv@mailo.com>
+Cc: outreachy@lists.linux.dev
+Subject: Re: Unable to find module location
+Message-ID: <20230318130211.GB39892@sumitra.com>
+References: <20230318084048.GC4434@sumitra.com>
+ <ZBWAsdC5UOEkbedF@ubun2204.myguest.virtualbox.org>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: Unable to find module location
-Content-Language: en-US
-To: Sumitra Sharma <sumitraartsy@gmail.com>
-Cc: outreachy@lists.linux.dev
-References: <20230318084048.GC4434@sumitra.com> <ZBWA3rb9nVP8ho05@debian.me>
- <20230318121508.GA37278@sumitra.com>
- <64997a6c-24f1-d551-1b87-735a699e4a8e@gmail.com>
- <20230318124937.GA39892@sumitra.com>
-From: Bagas Sanjaya <bagasdotme@gmail.com>
-In-Reply-To: <20230318124937.GA39892@sumitra.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <ZBWAsdC5UOEkbedF@ubun2204.myguest.virtualbox.org>
 
-On 3/18/23 19:49, Sumitra Sharma wrote:
-> Sorry, for such a silly mistake.
+On Sat, Mar 18, 2023 at 02:43:21PM +0530, Deepak R Varma wrote:
+> On Sat, Mar 18, 2023 at 01:40:48AM -0700, Sumitra Sharma wrote:
+> > Hi,
+> > 
+> > I was trying to recopmile the driver using the command "make menuconfig".
+> > This opens the text-based UI and I wanted to locate and make NVEC_PAZ00
+> > as a module whose location is as follows:
+> > 
+> >   │                                                                                                                  │
+> >   │ Symbol: NVEC_PAZ00 [=n]                                                                                          │
+> >   │ Type  : tristate                                                                                                 │
+> >   │ Defined at drivers/staging/nvec/Kconfig:45                                                                       │
+> >   │   Prompt: Support for OEM specific functions on Compal PAZ00 based devices                                       │
+> >   │   Depends on: STAGING [=y] && MFD_NVEC [=n] && LEDS_CLASS [=y]                                                   │
+> >   │   Location:                                                                                                      │
+> >   │     -> Device Drivers                                                                                            │
+> >   │ (3)   -> Staging drivers (STAGING [=y])                                                                          │
+> >   │         -> NV Tegra Embedded Controller SMBus Interface (MFD_NVEC [=n])                                          │
+> >   │           -> Support for OEM specific functions on Compal PAZ00 based devices (NVEC_PAZ00 [=n])
+> > 
+> >   But under "Staging drivers" there is no such thing called "NV Tegra Embedded Controller SMBus Interface (MFD_NVEC [=n])".
+> > 
+> >   --- Staging drivers                                                                       │ │
+> >   │ │                    < >   RealTek RTL8192U Wireless LAN NIC driver                                            │ │
+> >   │ │                    < >   Support for rtllib wireless devices                                                 │ │
+> >   │ │                    < >   Realtek PCI-E Card Reader RTS5208/5288 support                                      │ │
+> >   │ │                    < >   Silicon Motion SM750 framebuffer support                                            │ │
+> >   │ │                    [*]   Media staging drivers  ----                                                         │ │
+> >   │ │                    < >   GCT GDM724x LTE support                                                             │ │
+> >   │ │                    < >   Support for small TFT LCD display modules  ----                                     │ │
+> >   │ │                    < >   KeyStream KS7010 SDIO support                                                       │ │
+> >   │ │                    <M>   Pi433 - a 433MHz radio module for Raspberry Pi                                      │ │
+> >   │ │                    < >   Fieldbus Device Support  ----                                                       │ │
+> >   │ │                    <M>   QLogic QLGE 10Gb Ethernet Driver Support                                            │ │
+> >   │ │                    [*]   VME bridge support  --->
+> >   
+> > 
+> >   Kindly guide me through this.
 > 
-> However I run the command "make -j2 ./drARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu-" and got 
-> make[3]: Nothing to be done for 'drivers/staging/nvec/'.
+> Hi Sumitra,
+> You will need to use a arch specific config file and cross compile to configure
+> and build this driver module.
+> I just tried it with arch/arm64/configs/defconfig file and the
+> aarch64-linux-gnu- compiler for my host system and was able to configure the
+> driver for build.
+>
+
+Hi deepak,
+
+Can you tell me command you are using because when adding the
+arch/arm64/configs/defconfig file. I am receiving the invalid options
+error.
+
+It will be of much help. Thank you.
+
+Regards,
+
+Sumitra
+
+> Deepak.
 > 
-> I think  this is because it is not yet created as a module.
 > 
-
-Have you tried cleaning the build first with `mrproper` target? Also,
-is NVEC_PAZ00 enabled?
-
--- 
-An old man doll... just what I always wanted! - Clara
-
+> 
+> > 
+> >   Regards,
+> >   
+> >   Sumitra
+> > 
+> > 
+> 
+> 
