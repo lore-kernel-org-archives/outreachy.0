@@ -1,87 +1,91 @@
-Received: from mail-pl1-f174.google.com (mail-pl1-f174.google.com [209.85.214.174])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from msg-1.mailo.com (msg-1.mailo.com [213.182.54.11])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4F9EDA4D;
-	Sat, 18 Mar 2023 08:51:04 +0000 (UTC)
-Received: by mail-pl1-f174.google.com with SMTP id u5so7626667plq.7;
-        Sat, 18 Mar 2023 01:51:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679129464;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=bovk15UMlVAcSGthg5cURoe0MyXmWN6RteeHHI98a0g=;
-        b=NZyo/rLE1N+4/FGAgnjQyf6xm8QYgK+ThSJcyP1JopEM+phGvM3QgFkuukBP9z/k8/
-         zVg6ZF+JC5nc3theQSIgJFuJx+Ys4WirYs8vlKPQvHUyw3EeYM/mOEPTgfDcq8NTaksY
-         5ddA/bk3DkOGSLA+oHbDY5al0darJYTrzUOn4k6FbIWGwNdc/N6+ojP53OqQDqs1nsaK
-         wFOUjd2ebqrxfqXswGmh/gIP+F3DTMvbUk3oudOBEtSvWJOYiPV8lH06iCqj3Ws9yPJQ
-         53/88VCD1evt50DUiZeBmZYY7yEvWc6lpek3ahL8CU2nWgBc8BBlSk0HbnyoB2TahxtR
-         LZEQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679129464;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=bovk15UMlVAcSGthg5cURoe0MyXmWN6RteeHHI98a0g=;
-        b=JmgRbNsfG1LhoaGKMEovuzTLAoL2PU+oIR93CaNmwc2+UFNvC63rylwWcfsrCIishZ
-         78d8J/tB8qfSp4p5T03NJhaxZIoVfRVP2jrVqyBkDggXeRBbZ/NhgELzrrRlbX6TDMAK
-         kFSOXfNaw10tN9xcQoMkwot5JTzZYD1ATefK8S8GfuFxB9Bo/5V8PPGAkDmLmMojOAaT
-         xAMhMfJIpwjyZrcSbdnE1pEKABCNcT5lu4LuiqKsM48UKgYEkFCwHSt5u0zNsiQZyudf
-         dcAEGkDPmYtylH5vcR9uKxiYjityCC1mhw1Mg5p29gwmh0Cd5gbkD1PpmKUoELldijNl
-         LVSw==
-X-Gm-Message-State: AO0yUKVe8vjZuBLyPB1HCuCWv+k2eiDW7skZoO+Kid8JV5/gVSEyo8+t
-	K3LSLBzRjF3bdKpW6HlHuVw=
-X-Google-Smtp-Source: AK7set9aZI4dMxgz6zsPDQe+IXpHSm0HhwbdMcTyjBAzqeWeW3T/xhkqCcw7IgVkhmuMXCAQKqSrKQ==
-X-Received: by 2002:a17:90b:3908:b0:237:9cc7:28a6 with SMTP id ob8-20020a17090b390800b002379cc728a6mr11502934pjb.26.1679129463718;
-        Sat, 18 Mar 2023 01:51:03 -0700 (PDT)
-Received: from [192.168.43.80] (subs02-180-214-232-29.three.co.id. [180.214.232.29])
-        by smtp.gmail.com with ESMTPSA id ay16-20020a17090b031000b0023c8a23005asm2345368pjb.49.2023.03.18.01.51.00
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 18 Mar 2023 01:51:03 -0700 (PDT)
-Message-ID: <adb3e640-752a-0b93-f91b-d9198b270fe4@gmail.com>
-Date: Sat, 18 Mar 2023 15:50:57 +0700
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 85245A4D
+	for <outreachy@lists.linux.dev>; Sat, 18 Mar 2023 09:13:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
+	t=1679130807; bh=Pifl1ecPxP5V+CszhZr4KtzkDhwr5Zwi5ry4Oy+cslA=;
+	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
+	 MIME-Version:Content-Type:Content-Transfer-Encoding:In-Reply-To;
+	b=mkZAubZXpGRBREWFkWwvUX26/xD3HegVtYzG1USFlqGkoxLN5TweE44OXf+ua8aCV
+	 RjpB5Sm+i0hQoVEykxoRK4thWFG5i4dSx1WaXn6xjLBtS8YMISjeh5ak+E5/HrAiIF
+	 Hiu1OjWJ8KtCu+/jK3uL89HsiToeRt3q/tH/+bko=
+Received: by b221-1.in.mailobj.net [192.168.90.21] with ESMTP
+	via ip-20.mailobj.net [213.182.54.20]
+	Sat, 18 Mar 2023 10:13:27 +0100 (CET)
+X-EA-Auth: F5Q9mfWeHRCndkHti32tvpC43kHv/2YeKNqtFI1lK5R3gNSByu5lbcRUS11GFQc2oZQNvVp8EzCS7HW9NeNqcryhp5DK9QGX
+Date: Sat, 18 Mar 2023 14:43:21 +0530
+From: Deepak R Varma <drv@mailo.com>
+To: Sumitra Sharma <sumitraartsy@gmail.com>
+Cc: outreachy@lists.linux.dev
+Subject: Re: Unable to find module location
+Message-ID: <ZBWAsdC5UOEkbedF@ubun2204.myguest.virtualbox.org>
+References: <20230318084048.GC4434@sumitra.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH v2] staging: sm750: Rename function to avoid CamelCase
-To: Ira Weiny <ira.weiny@intel.com>, Kloudifold <cloudifold.3125@gmail.com>,
- Alison Schofield <alison.schofield@intel.com>
-Cc: teddy.wang@siliconmotion.com, sudipm.mukherjee@gmail.com,
- gregkh@linuxfoundation.org, linux-staging@lists.linux.dev,
- outreachy@lists.linux.dev, linux-kernel@vger.kernel.org
-References: <ZBHlycBoZ0JRwHZm@CloudiRingWorld> <ZBKDddHeKlWohA0T@debian.me>
- <641548b142559_28ae5229425@iweiny-mobl.notmuch>
-Content-Language: en-US
-From: Bagas Sanjaya <bagasdotme@gmail.com>
-In-Reply-To: <641548b142559_28ae5229425@iweiny-mobl.notmuch>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230318084048.GC4434@sumitra.com>
 
-On 3/18/23 12:14, Ira Weiny wrote:
-> Bagas Sanjaya wrote:
->> On Wed, Mar 15, 2023 at 11:35:37PM +0800, Kloudifold wrote:
->>> Subject: [PATCH v2] staging: sm750: Rename functions from CamelCase to snake case
->>
->> If I only see the subject above, which functions are renamed? I have
->> to see the actual diff if the patch description doesn't answer that.
->> In this case, I think the proper subject would be `[PATCH v3] staging:
->> sm750: Rename sm750_hw_cursor_* functions to snake_case`.
+On Sat, Mar 18, 2023 at 01:40:48AM -0700, Sumitra Sharma wrote:
+> Hi,
 > 
-> No.  The oneliner is a brief overview.
+> I was trying to recopmile the driver using the command "make menuconfig".
+> This opens the text-based UI and I wanted to locate and make NVEC_PAZ00
+> as a module whose location is as follows:
 > 
-> It is perfectly appropriate to have to look at the diff to see what was
-> done.  The commit message is to state what the problem was and how it was
-> fixed.
+>   │                                                                                                                  │
+>   │ Symbol: NVEC_PAZ00 [=n]                                                                                          │
+>   │ Type  : tristate                                                                                                 │
+>   │ Defined at drivers/staging/nvec/Kconfig:45                                                                       │
+>   │   Prompt: Support for OEM specific functions on Compal PAZ00 based devices                                       │
+>   │   Depends on: STAGING [=y] && MFD_NVEC [=n] && LEDS_CLASS [=y]                                                   │
+>   │   Location:                                                                                                      │
+>   │     -> Device Drivers                                                                                            │
+>   │ (3)   -> Staging drivers (STAGING [=y])                                                                          │
+>   │         -> NV Tegra Embedded Controller SMBus Interface (MFD_NVEC [=n])                                          │
+>   │           -> Support for OEM specific functions on Compal PAZ00 based devices (NVEC_PAZ00 [=n])
+> 
+>   But under "Staging drivers" there is no such thing called "NV Tegra Embedded Controller SMBus Interface (MFD_NVEC [=n])".
+> 
+>   --- Staging drivers                                                                       │ │
+>   │ │                    < >   RealTek RTL8192U Wireless LAN NIC driver                                            │ │
+>   │ │                    < >   Support for rtllib wireless devices                                                 │ │
+>   │ │                    < >   Realtek PCI-E Card Reader RTS5208/5288 support                                      │ │
+>   │ │                    < >   Silicon Motion SM750 framebuffer support                                            │ │
+>   │ │                    [*]   Media staging drivers  ----                                                         │ │
+>   │ │                    < >   GCT GDM724x LTE support                                                             │ │
+>   │ │                    < >   Support for small TFT LCD display modules  ----                                     │ │
+>   │ │                    < >   KeyStream KS7010 SDIO support                                                       │ │
+>   │ │                    <M>   Pi433 - a 433MHz radio module for Raspberry Pi                                      │ │
+>   │ │                    < >   Fieldbus Device Support  ----                                                       │ │
+>   │ │                    <M>   QLogic QLGE 10Gb Ethernet Driver Support                                            │ │
+>   │ │                    [*]   VME bridge support  --->
+>   
+> 
+>   Kindly guide me through this.
+
+Hi Sumitra,
+You will need to use a arch specific config file and cross compile to configure
+and build this driver module.
+I just tried it with arch/arm64/configs/defconfig file and the
+aarch64-linux-gnu- compiler for my host system and was able to configure the
+driver for build.
+
+Deepak.
+
+
+
+> 
+>   Regards,
+>   
+>   Sumitra
+> 
 > 
 
-OK but I prefer to be more explicit in the subject and the description
-so that I don't have to guess :)
-
--- 
-An old man doll... just what I always wanted! - Clara
 
