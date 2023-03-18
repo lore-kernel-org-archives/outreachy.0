@@ -1,54 +1,49 @@
-Received: from mail-pl1-f182.google.com (mail-pl1-f182.google.com [209.85.214.182])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mga02.intel.com (mga02.intel.com [134.134.136.20])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E2CF133D9
-	for <outreachy@lists.linux.dev>; Sat, 18 Mar 2023 17:57:52 +0000 (UTC)
-Received: by mail-pl1-f182.google.com with SMTP id h8so8419447plf.10
-        for <outreachy@lists.linux.dev>; Sat, 18 Mar 2023 10:57:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679162272;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=Jc3c7rj/cyWXTndrw6PwlngKYzvQEtb5CV1uZO28U4c=;
-        b=eHZZ4eVp+L5r2Ep9fvvFw/crYV87PRlCtsJnoHRbglZZBZ/z6jq98vztqMRgffcefZ
-         Lfl8UjvFK2up71v0GhESuRGYs2OSL3RnjZCyoktDRj3ePhEkwd1zhlaQs8HjfXsffdjT
-         eRwW0djd/QOAhjWXiPcESsXZqrqPXVDySDQPq5toqoXylhoY0ZWUO9t/UBnm3iBJ5w38
-         c5bnzoE5RKueL4FsNppd5x1NzTsOap1dLsyyceAXivfmW/sJ7ZAwzuPsYXsSAZzcYziK
-         24PHdRFDcTbLr4DGxa5JymwHE02GvDqVMLZNJDGEmG51e27eTTLgIym3IDXddmltskVg
-         YO7w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679162272;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Jc3c7rj/cyWXTndrw6PwlngKYzvQEtb5CV1uZO28U4c=;
-        b=02o2pAP7PXAuQPWGoqqI5zyXPFq576ciot2SKw6MqJ59u41V/SLKuJaKp171thnPV5
-         qMEnmwjKdfjx5fC5tzMPFHjP0vOCfNtIR2UZMoXFotEp+8rZPw3X9yAtL7KOwsTWPnma
-         tEarLOaZRNX06H+aJB16yJqZaFUYJHtt+VCzXB0NzC77bf7PfMDO4xe2KlkfmK8fmVoM
-         KEAGM9/wY02AayAsMuZB8sXi+QW6L+WgU3kZ6sH/x4KbypBloK+e8qu2rTl263diETev
-         Gh+AZLaO+xDT/FlvxUeNMkr96zSFd3cziSm7QfhJvmOsKXY+M+OhoqS8v3KbiWnoaiys
-         N7Cw==
-X-Gm-Message-State: AO0yUKXCNidDA6N9mTCfteDOZ/Xk6oDMARvVl0Jz65rHvhr9MAcbe052
-	JwsigY6dq0HvshAotFie1RY=
-X-Google-Smtp-Source: AK7set8wn2Re8dTeXs0mENQtFri2FUK6A2i8rIKS8UsYq9rtp5LQ+p3fKtEpuRpJymRFMTT8rtthTw==
-X-Received: by 2002:a17:902:dccb:b0:1a1:b440:3773 with SMTP id t11-20020a170902dccb00b001a1b4403773mr3049553pll.27.1679162272384;
-        Sat, 18 Mar 2023 10:57:52 -0700 (PDT)
-Received: from sumitra.com ([117.199.163.158])
-        by smtp.gmail.com with ESMTPSA id v9-20020a1709028d8900b001964c8164aasm3563810plo.129.2023.03.18.10.57.50
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 18 Mar 2023 10:57:51 -0700 (PDT)
-Date: Sat, 18 Mar 2023 10:57:46 -0700
-From: Sumitra Sharma <sumitraartsy@gmail.com>
-To: Bagas Sanjaya <bagasdotme@gmail.com>
-Cc: outreachy@lists.linux.dev
-Subject: Re: Unable to find module location
-Message-ID: <20230318175746.GB49651@sumitra.com>
-References: <20230318084048.GC4434@sumitra.com>
- <ZBWA3rb9nVP8ho05@debian.me>
- <20230318121508.GA37278@sumitra.com>
- <64997a6c-24f1-d551-1b87-735a699e4a8e@gmail.com>
- <20230318124937.GA39892@sumitra.com>
- <21c2da25-22cb-cbe7-153e-067377de4723@gmail.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7A40A33C0;
+	Sat, 18 Mar 2023 18:55:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1679165756; x=1710701756;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=UQeD0VGWp/2m7vB76CpmPBDiMvvWfCbuAHZTBTn2+IE=;
+  b=m8Xyn2am8K8bmfj81PuSkqLC3lqDqreErCC24F8wKmztQ/OjLQHcQR0O
+   4nuogF7aERSd1QudKMg1JvsujLCx3svU+Hy/bDw/xg+DinhS8e9x7LLsF
+   G49EwV5Sk4j7Ba43T09Jt0AuN5YC5c5oC4T58TkB33+bSpOJ5HTBQcbjf
+   suHbtjKHY+w3rhUy5h4vGqWxGdVzvffI3ImyLuOgojKD+MW3UwzI50W+V
+   6T0NdmUbEdxLN9sqslTHrIbWlraQeFafESNb3+4UDhmitU69nkMkuB4yj
+   TwCcSpwVH/Vww0NOcYHeQbk+ceKF2fmkFKK76V2kVlnleZXmyhFM1s9qn
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10653"; a="326820078"
+X-IronPort-AV: E=Sophos;i="5.98,272,1673942400"; 
+   d="scan'208";a="326820078"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Mar 2023 11:55:55 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10653"; a="630627711"
+X-IronPort-AV: E=Sophos;i="5.98,272,1673942400"; 
+   d="scan'208";a="630627711"
+Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
+  by orsmga003.jf.intel.com with ESMTP; 18 Mar 2023 11:55:53 -0700
+Received: from kbuild by b613635ddfff with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1pdbiZ-000ADq-2P;
+	Sat, 18 Mar 2023 18:55:51 +0000
+Date: Sun, 19 Mar 2023 02:55:33 +0800
+From: kernel test robot <lkp@intel.com>
+To: Sumitra Sharma <sumitraartsy@gmail.com>,
+	Marc Dietrich <marvin24@gmx.de>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	ac100@lists.launchpad.net, linux-tegra@vger.kernel.org,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy@lists.linux.dev
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev
+Subject: Re: [PATCH] Staging: nvec: Change container_of macro to an inline
+ function.
+Message-ID: <202303190233.v2KJFmIG-lkp@intel.com>
+References: <20230318170514.GA49181@sumitra.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -57,29 +52,87 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <21c2da25-22cb-cbe7-153e-067377de4723@gmail.com>
+In-Reply-To: <20230318170514.GA49181@sumitra.com>
 
-On Sat, Mar 18, 2023 at 08:01:33PM +0700, Bagas Sanjaya wrote:
-> On 3/18/23 19:49, Sumitra Sharma wrote:
-> > Sorry, for such a silly mistake.
-> > 
-> > However I run the command "make -j2 ./drARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu-" and got 
-> > make[3]: Nothing to be done for 'drivers/staging/nvec/'.
-> > 
-> > I think  this is because it is not yet created as a module.
-> > 
-> 
-> Have you tried cleaning the build first with `mrproper` target? Also,
-> is NVEC_PAZ00 enabled?
->
+Hi Sumitra,
 
-Cleaning the build worked for me. Thanks.
-What do you mean by enabling the NVEC_PAZ00?
+Thank you for the patch! Yet something to improve:
 
-Regards
+[auto build test ERROR on staging/staging-testing]
 
-Sumitra
+url:    https://github.com/intel-lab-lkp/linux/commits/Sumitra-Sharma/Staging-nvec-Change-container_of-macro-to-an-inline-function/20230319-010628
+patch link:    https://lore.kernel.org/r/20230318170514.GA49181%40sumitra.com
+patch subject: [PATCH] Staging: nvec: Change container_of macro to an inline function.
+config: arm64-randconfig-r014-20230319 (https://download.01.org/0day-ci/archive/20230319/202303190233.v2KJFmIG-lkp@intel.com/config)
+compiler: clang version 17.0.0 (https://github.com/llvm/llvm-project 67409911353323ca5edf2049ef0df54132fa1ca7)
+reproduce (this is a W=1 build):
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # install arm64 cross compiling tool for clang build
+        # apt-get install binutils-aarch64-linux-gnu
+        # https://github.com/intel-lab-lkp/linux/commit/e58807d27f0ba705144bce72751f5cb0a75b9682
+        git remote add linux-review https://github.com/intel-lab-lkp/linux
+        git fetch --no-tags linux-review Sumitra-Sharma/Staging-nvec-Change-container_of-macro-to-an-inline-function/20230319-010628
+        git checkout e58807d27f0ba705144bce72751f5cb0a75b9682
+        # save the config file
+        mkdir build_dir && cp config build_dir/.config
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm64 olddefconfig
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=clang make.cross W=1 O=build_dir ARCH=arm64 SHELL=/bin/bash drivers/staging/nvec/
 
-> -- 
-> An old man doll... just what I always wanted! - Clara
-> 
+If you fix the issue, kindly add following tag where applicable
+| Reported-by: kernel test robot <lkp@intel.com>
+| Link: https://lore.kernel.org/oe-kbuild-all/202303190233.v2KJFmIG-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+>> drivers/staging/nvec/nvec_paz00.c:19:9: error: incomplete definition of type 'struct nvec_led'
+           return container_of(led_cdev, struct nvec_led, cdev);
+                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   include/linux/container_of.h:20:47: note: expanded from macro 'container_of'
+           static_assert(__same_type(*(ptr), ((type *)0)->member) ||       \
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+   include/linux/compiler_types.h:338:74: note: expanded from macro '__same_type'
+   #define __same_type(a, b) __builtin_types_compatible_p(typeof(a), typeof(b))
+                                                                            ^
+   include/linux/build_bug.h:77:50: note: expanded from macro 'static_assert'
+   #define static_assert(expr, ...) __static_assert(expr, ##__VA_ARGS__, #expr)
+                                    ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+   include/linux/build_bug.h:78:56: note: expanded from macro '__static_assert'
+   #define __static_assert(expr, msg, ...) _Static_assert(expr, msg)
+                                                          ^~~~
+   drivers/staging/nvec/nvec_paz00.c:17:22: note: forward declaration of 'struct nvec_led'
+   static inline struct nvec_led *to_nvec_led(struct led_classdev *led_cdev)
+                        ^
+>> drivers/staging/nvec/nvec_paz00.c:19:9: error: offsetof of incomplete type 'struct nvec_led'
+           return container_of(led_cdev, struct nvec_led, cdev);
+                  ^                      ~~~~~~
+   include/linux/container_of.h:23:21: note: expanded from macro 'container_of'
+           ((type *)(__mptr - offsetof(type, member))); })
+                              ^        ~~~~
+   include/linux/stddef.h:16:32: note: expanded from macro 'offsetof'
+   #define offsetof(TYPE, MEMBER)  __builtin_offsetof(TYPE, MEMBER)
+                                   ^                  ~~~~
+   drivers/staging/nvec/nvec_paz00.c:17:22: note: forward declaration of 'struct nvec_led'
+   static inline struct nvec_led *to_nvec_led(struct led_classdev *led_cdev)
+                        ^
+>> drivers/staging/nvec/nvec_paz00.c:19:9: error: returning 'void' from a function with incompatible result type 'struct nvec_led *'
+           return container_of(led_cdev, struct nvec_led, cdev);
+                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   include/linux/container_of.h:18:41: note: expanded from macro 'container_of'
+   #define container_of(ptr, type, member) ({                              \
+                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   3 errors generated.
+
+
+vim +19 drivers/staging/nvec/nvec_paz00.c
+
+    16	
+    17	static inline struct nvec_led *to_nvec_led(struct led_classdev *led_cdev)
+    18	{
+  > 19		return container_of(led_cdev, struct nvec_led, cdev);
+    20	}
+    21	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests
