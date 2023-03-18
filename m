@@ -1,97 +1,87 @@
-Received: from mail-pg1-f176.google.com (mail-pg1-f176.google.com [209.85.215.176])
+Received: from mail-pl1-f174.google.com (mail-pl1-f174.google.com [209.85.214.174])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D7926A4D
-	for <outreachy@lists.linux.dev>; Sat, 18 Mar 2023 08:40:55 +0000 (UTC)
-Received: by mail-pg1-f176.google.com with SMTP id d10so4118247pgt.12
-        for <outreachy@lists.linux.dev>; Sat, 18 Mar 2023 01:40:55 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4F9EDA4D;
+	Sat, 18 Mar 2023 08:51:04 +0000 (UTC)
+Received: by mail-pl1-f174.google.com with SMTP id u5so7626667plq.7;
+        Sat, 18 Mar 2023 01:51:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679128855;
-        h=content-transfer-encoding:content-disposition:mime-version
-         :message-id:subject:to:from:date:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ENnFpNb9urNf5JawW57fevrFKLRmM2ohwbBGcVN/z6s=;
-        b=kaQ4gsGTGdRAyHogo5ZmdEyCrpSYZ6Vm8ZzK9yoXnhFb8BuwcwOJZOqaprL1Q/9TqH
-         C5TIjKilh0GAcV1RoDdpVUHTl6q+MUo8mpXUTtj+tpp2U0IDIQIpP3gsjGdCs9CbKVjt
-         tdk4zS6e/dGX0YDOyFAv6ZuN+anAD07kA9pJmfI0Bl8hwGpg1JuzEMgb5ysnoXqqX5CP
-         gp5bUHjttO82jubV/GQuEi9fPn6RXqvJSQRwAyuC5ejThI5zXM31mO80k1XEJRVc7NHO
-         uowYAFO3iAFxtAg0wMUIKJlmjnkW5BslZxyDpmCN0QmXOJLCDNnpErxvUqgmw336tHMZ
-         ImTg==
+        d=gmail.com; s=20210112; t=1679129464;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=bovk15UMlVAcSGthg5cURoe0MyXmWN6RteeHHI98a0g=;
+        b=NZyo/rLE1N+4/FGAgnjQyf6xm8QYgK+ThSJcyP1JopEM+phGvM3QgFkuukBP9z/k8/
+         zVg6ZF+JC5nc3theQSIgJFuJx+Ys4WirYs8vlKPQvHUyw3EeYM/mOEPTgfDcq8NTaksY
+         5ddA/bk3DkOGSLA+oHbDY5al0darJYTrzUOn4k6FbIWGwNdc/N6+ojP53OqQDqs1nsaK
+         wFOUjd2ebqrxfqXswGmh/gIP+F3DTMvbUk3oudOBEtSvWJOYiPV8lH06iCqj3Ws9yPJQ
+         53/88VCD1evt50DUiZeBmZYY7yEvWc6lpek3ahL8CU2nWgBc8BBlSk0HbnyoB2TahxtR
+         LZEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679128855;
-        h=content-transfer-encoding:content-disposition:mime-version
-         :message-id:subject:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ENnFpNb9urNf5JawW57fevrFKLRmM2ohwbBGcVN/z6s=;
-        b=Tlii4mp4YSEf1Yo4IjhWm6NJlOqCE9Wvg7MGXhGuyf4eyzM5m872SynMrOhqW6Xbdq
-         S+spuvXf8cGRBm4FGcK0MhCIl3SjMZEwFB9QK9gMtbtVjlI6Qt978oi3M1NHfEDayATv
-         0SLibKXyqGoLPJT+kQEEqxImxplCPMlLcsjgCLaiaTzQp0bn7mjCY3vFKANjJ3UKzGjv
-         jkvDhw6R1M1OUNI3Az2FQxoiUrJGmC/7A3/qTXDPwhBSuhDHEhP0C0u2NBEHPl/HDrUJ
-         bxmeZa7AuR1WI/xz7/JiCyw5ObglaGic+G1kDyIMPJR/6qnS0D/lBVzDnE4Nuc6cwWg0
-         7fmQ==
-X-Gm-Message-State: AO0yUKU+8i3gPdvFiYRIZVXyyOkLgQIEGZtm8IywzzSoWguWrVfyioak
-	a4hVIjmXwKztlFeaEOOAEHeiodU0S5Y=
-X-Google-Smtp-Source: AK7set92NShtAPd/j+a9/9nLz9ae8b45zmYaNIvdDV67d5BrvN+Wvlk8vLRZzRvJ4C0DN+vXuiAY3g==
-X-Received: by 2002:a62:5c4:0:b0:623:6131:66ca with SMTP id 187-20020a6205c4000000b00623613166camr8216671pff.32.1679128854868;
-        Sat, 18 Mar 2023 01:40:54 -0700 (PDT)
-Received: from sumitra.com ([117.245.170.249])
-        by smtp.gmail.com with ESMTPSA id a7-20020a62bd07000000b006222a261188sm2780429pff.62.2023.03.18.01.40.51
-        for <outreachy@lists.linux.dev>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 18 Mar 2023 01:40:54 -0700 (PDT)
-Date: Sat, 18 Mar 2023 01:40:48 -0700
-From: Sumitra Sharma <sumitraartsy@gmail.com>
-To: outreachy@lists.linux.dev
-Subject: Unable to find module location
-Message-ID: <20230318084048.GC4434@sumitra.com>
+        d=1e100.net; s=20210112; t=1679129464;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=bovk15UMlVAcSGthg5cURoe0MyXmWN6RteeHHI98a0g=;
+        b=JmgRbNsfG1LhoaGKMEovuzTLAoL2PU+oIR93CaNmwc2+UFNvC63rylwWcfsrCIishZ
+         78d8J/tB8qfSp4p5T03NJhaxZIoVfRVP2jrVqyBkDggXeRBbZ/NhgELzrrRlbX6TDMAK
+         kFSOXfNaw10tN9xcQoMkwot5JTzZYD1ATefK8S8GfuFxB9Bo/5V8PPGAkDmLmMojOAaT
+         xAMhMfJIpwjyZrcSbdnE1pEKABCNcT5lu4LuiqKsM48UKgYEkFCwHSt5u0zNsiQZyudf
+         dcAEGkDPmYtylH5vcR9uKxiYjityCC1mhw1Mg5p29gwmh0Cd5gbkD1PpmKUoELldijNl
+         LVSw==
+X-Gm-Message-State: AO0yUKVe8vjZuBLyPB1HCuCWv+k2eiDW7skZoO+Kid8JV5/gVSEyo8+t
+	K3LSLBzRjF3bdKpW6HlHuVw=
+X-Google-Smtp-Source: AK7set9aZI4dMxgz6zsPDQe+IXpHSm0HhwbdMcTyjBAzqeWeW3T/xhkqCcw7IgVkhmuMXCAQKqSrKQ==
+X-Received: by 2002:a17:90b:3908:b0:237:9cc7:28a6 with SMTP id ob8-20020a17090b390800b002379cc728a6mr11502934pjb.26.1679129463718;
+        Sat, 18 Mar 2023 01:51:03 -0700 (PDT)
+Received: from [192.168.43.80] (subs02-180-214-232-29.three.co.id. [180.214.232.29])
+        by smtp.gmail.com with ESMTPSA id ay16-20020a17090b031000b0023c8a23005asm2345368pjb.49.2023.03.18.01.51.00
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 18 Mar 2023 01:51:03 -0700 (PDT)
+Message-ID: <adb3e640-752a-0b93-f91b-d9198b270fe4@gmail.com>
+Date: Sat, 18 Mar 2023 15:50:57 +0700
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH v2] staging: sm750: Rename function to avoid CamelCase
+To: Ira Weiny <ira.weiny@intel.com>, Kloudifold <cloudifold.3125@gmail.com>,
+ Alison Schofield <alison.schofield@intel.com>
+Cc: teddy.wang@siliconmotion.com, sudipm.mukherjee@gmail.com,
+ gregkh@linuxfoundation.org, linux-staging@lists.linux.dev,
+ outreachy@lists.linux.dev, linux-kernel@vger.kernel.org
+References: <ZBHlycBoZ0JRwHZm@CloudiRingWorld> <ZBKDddHeKlWohA0T@debian.me>
+ <641548b142559_28ae5229425@iweiny-mobl.notmuch>
+Content-Language: en-US
+From: Bagas Sanjaya <bagasdotme@gmail.com>
+In-Reply-To: <641548b142559_28ae5229425@iweiny-mobl.notmuch>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-Hi,
+On 3/18/23 12:14, Ira Weiny wrote:
+> Bagas Sanjaya wrote:
+>> On Wed, Mar 15, 2023 at 11:35:37PM +0800, Kloudifold wrote:
+>>> Subject: [PATCH v2] staging: sm750: Rename functions from CamelCase to snake case
+>>
+>> If I only see the subject above, which functions are renamed? I have
+>> to see the actual diff if the patch description doesn't answer that.
+>> In this case, I think the proper subject would be `[PATCH v3] staging:
+>> sm750: Rename sm750_hw_cursor_* functions to snake_case`.
+> 
+> No.  The oneliner is a brief overview.
+> 
+> It is perfectly appropriate to have to look at the diff to see what was
+> done.  The commit message is to state what the problem was and how it was
+> fixed.
+> 
 
-I was trying to recopmile the driver using the command "make menuconfig".
-This opens the text-based UI and I wanted to locate and make NVEC_PAZ00
-as a module whose location is as follows:
+OK but I prefer to be more explicit in the subject and the description
+so that I don't have to guess :)
 
-  │                                                                                                                  │
-  │ Symbol: NVEC_PAZ00 [=n]                                                                                          │
-  │ Type  : tristate                                                                                                 │
-  │ Defined at drivers/staging/nvec/Kconfig:45                                                                       │
-  │   Prompt: Support for OEM specific functions on Compal PAZ00 based devices                                       │
-  │   Depends on: STAGING [=y] && MFD_NVEC [=n] && LEDS_CLASS [=y]                                                   │
-  │   Location:                                                                                                      │
-  │     -> Device Drivers                                                                                            │
-  │ (3)   -> Staging drivers (STAGING [=y])                                                                          │
-  │         -> NV Tegra Embedded Controller SMBus Interface (MFD_NVEC [=n])                                          │
-  │           -> Support for OEM specific functions on Compal PAZ00 based devices (NVEC_PAZ00 [=n])
-
-  But under "Staging drivers" there is no such thing called "NV Tegra Embedded Controller SMBus Interface (MFD_NVEC [=n])".
-
-  --- Staging drivers                                                                       │ │
-  │ │                    < >   RealTek RTL8192U Wireless LAN NIC driver                                            │ │
-  │ │                    < >   Support for rtllib wireless devices                                                 │ │
-  │ │                    < >   Realtek PCI-E Card Reader RTS5208/5288 support                                      │ │
-  │ │                    < >   Silicon Motion SM750 framebuffer support                                            │ │
-  │ │                    [*]   Media staging drivers  ----                                                         │ │
-  │ │                    < >   GCT GDM724x LTE support                                                             │ │
-  │ │                    < >   Support for small TFT LCD display modules  ----                                     │ │
-  │ │                    < >   KeyStream KS7010 SDIO support                                                       │ │
-  │ │                    <M>   Pi433 - a 433MHz radio module for Raspberry Pi                                      │ │
-  │ │                    < >   Fieldbus Device Support  ----                                                       │ │
-  │ │                    <M>   QLogic QLGE 10Gb Ethernet Driver Support                                            │ │
-  │ │                    [*]   VME bridge support  --->
-  
-
-  Kindly guide me through this.
-
-  Regards,
-  
-  Sumitra
+-- 
+An old man doll... just what I always wanted! - Clara
 
