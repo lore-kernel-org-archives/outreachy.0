@@ -1,165 +1,75 @@
-Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-pl1-f175.google.com (mail-pl1-f175.google.com [209.85.214.175])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5F7127494;
-	Sat, 18 Mar 2023 20:49:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1679172599; x=1710708599;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=o8z2PeaN3WAvssy4e3LxOy8ukDZJheMvUjBaqQOXlSI=;
-  b=lK1vVmk7aYj/OVacwuFUNF4wxnBod0tdYfG5kTf3HrPwIm9D1a7+zAQC
-   7gHxodejOY+6QZZSfG3o8jpA0ZEBiPZsqsw+qcosqqNTNuHjttiog29nW
-   zPLyBa7JZTQX5OYWy99np6/l7DXj+a564E2z42gJ5XmoP80GtHrieqeZ2
-   E5Q7OPIjzjn4LqPmGyeatBTpY+3kHrIL1sLSIK7DPBxqfePOYWFiFwhUk
-   MnUPwTzCe8P8MWi6A4TILSoDYAY9Y0BounLZ5W7h7vfrgopzoS+mUsuHQ
-   QhPUMLSAo1K/5z5FyXsAD7bx8bwskh+vwXSA1hzI99TTbLmu30N/DClic
-   A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10653"; a="322307185"
-X-IronPort-AV: E=Sophos;i="5.98,272,1673942400"; 
-   d="scan'208";a="322307185"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
-  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Mar 2023 13:49:57 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10653"; a="657923988"
-X-IronPort-AV: E=Sophos;i="5.98,272,1673942400"; 
-   d="scan'208";a="657923988"
-Received: from lkp-server01.sh.intel.com (HELO b613635ddfff) ([10.239.97.150])
-  by orsmga006.jf.intel.com with ESMTP; 18 Mar 2023 13:49:54 -0700
-Received: from kbuild by b613635ddfff with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1pddUv-000AGa-25;
-	Sat, 18 Mar 2023 20:49:53 +0000
-Date: Sun, 19 Mar 2023 04:48:56 +0800
-From: kernel test robot <lkp@intel.com>
-To: Sumitra Sharma <sumitraartsy@gmail.com>,
-	Marc Dietrich <marvin24@gmx.de>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	ac100@lists.launchpad.net, linux-tegra@vger.kernel.org,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev
-Cc: oe-kbuild-all@lists.linux.dev
-Subject: Re: [PATCH] Staging: nvec: Change container_of macro to an inline
- function.
-Message-ID: <202303190432.kRoDGmiE-lkp@intel.com>
-References: <20230318170514.GA49181@sumitra.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 79EBF7C
+	for <outreachy@lists.linux.dev>; Sun, 19 Mar 2023 02:08:06 +0000 (UTC)
+Received: by mail-pl1-f175.google.com with SMTP id u5so8985169plq.7
+        for <outreachy@lists.linux.dev>; Sat, 18 Mar 2023 19:08:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1679191686;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=mEL/HlOawDoZERrNqBf6oPHRgazi5KdZ+xUvmJJYTYs=;
+        b=FifFt/IobbladoHnNR4dzU1xfx8F6w5f4epyciI2Dzpxhvo5OEktWGPffl9H8Sm3rK
+         CO/UMjp0s5E4pQX9zpBvLpJSOmsURKtk6eK3DVb0msN4fn8knB6s0ilkpRyL6jMlClga
+         Bs7IqWDiINagEIN3NlrXNeWDzbNM1IW0bPO3t8YwE3hcdYOtdHbPX3Sct3OJVg0vknTj
+         w616dASCaYdMgZTtoLbg45nYIqWFYz4eZTYYUIasWE85Ngr9SouzAUHUiGyA+DKYcetF
+         b0T4cj1ulBsaNXpKyGlDLb2vcUt2pkXcWIV/TZkKP7BEnOYRw4Pem/pOvY2YuTza5Z5O
+         j9PQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679191686;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=mEL/HlOawDoZERrNqBf6oPHRgazi5KdZ+xUvmJJYTYs=;
+        b=l55Pev0cyxMSJdgNqi4YPmDoDbylNXrNOx5c1RQq+i3xUNVZNckwzsbR/JV0KwPO0K
+         FUqgy2ZtwUpWP+JX8mnM4SBW0yEwCCOm2ShQVjNtEh3Df5EMn9YrPbVOwyoHgd/bgp7E
+         EZ01X7LzHeOEsK3L5dLVGwAN/nQCH2vMwQoMMulFYnquPl+rWdoGorv+W6AyKrFl9C4/
+         ukiRvZ7/ObOumgFDzNaFYtDmJSfB6l55EIiZvTzYZVbGihRhwh9TmGKHCWmNn5i7LnMG
+         K5g7JvyxLbQsyG4aON8creA5OmdLB+d77hhAhdSnOl/S4MsDfobDfQ7/QEy26DrIVsKm
+         MMkg==
+X-Gm-Message-State: AO0yUKUTKRvxS1pPat9z1x3RKyorGgttc/doCgmdVYH9QyH+xO42/cmW
+	9xFF2BtBWf56FgAjDkm1gZA=
+X-Google-Smtp-Source: AK7set8e7AODa0WmjYKoaoyrRTUYXgNVRsqiHABUV7hijin4ty3yy9+MmkXIQri5CuowZYGhK9aCUA==
+X-Received: by 2002:a17:902:ce8e:b0:19c:f698:8564 with SMTP id f14-20020a170902ce8e00b0019cf6988564mr14737092plg.17.1679191685963;
+        Sat, 18 Mar 2023 19:08:05 -0700 (PDT)
+Received: from [192.168.43.80] (subs03-180-214-233-28.three.co.id. [180.214.233.28])
+        by smtp.gmail.com with ESMTPSA id jn15-20020a170903050f00b0019a837be977sm3880186plb.271.2023.03.18.19.08.04
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 18 Mar 2023 19:08:05 -0700 (PDT)
+Message-ID: <ee140dee-6db9-6d7e-0b84-b69f3c36cc13@gmail.com>
+Date: Sun, 19 Mar 2023 09:08:01 +0700
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230318170514.GA49181@sumitra.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: Unable to find module location
+To: Sumitra Sharma <sumitraartsy@gmail.com>
+Cc: outreachy@lists.linux.dev
+References: <20230318084048.GC4434@sumitra.com> <ZBWA3rb9nVP8ho05@debian.me>
+ <20230318121508.GA37278@sumitra.com>
+ <64997a6c-24f1-d551-1b87-735a699e4a8e@gmail.com>
+ <20230318124937.GA39892@sumitra.com>
+ <21c2da25-22cb-cbe7-153e-067377de4723@gmail.com>
+ <20230318175746.GB49651@sumitra.com>
+Content-Language: en-US
+From: Bagas Sanjaya <bagasdotme@gmail.com>
+In-Reply-To: <20230318175746.GB49651@sumitra.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-Hi Sumitra,
+On 3/19/23 00:57, Sumitra Sharma wrote:
+> Cleaning the build worked for me. Thanks.
+> What do you mean by enabling the NVEC_PAZ00?
+> 
 
-Thank you for the patch! Yet something to improve:
-
-[auto build test ERROR on staging/staging-testing]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Sumitra-Sharma/Staging-nvec-Change-container_of-macro-to-an-inline-function/20230319-010628
-patch link:    https://lore.kernel.org/r/20230318170514.GA49181%40sumitra.com
-patch subject: [PATCH] Staging: nvec: Change container_of macro to an inline function.
-config: arm-allyesconfig (https://download.01.org/0day-ci/archive/20230319/202303190432.kRoDGmiE-lkp@intel.com/config)
-compiler: arm-linux-gnueabi-gcc (GCC) 12.1.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/intel-lab-lkp/linux/commit/e58807d27f0ba705144bce72751f5cb0a75b9682
-        git remote add linux-review https://github.com/intel-lab-lkp/linux
-        git fetch --no-tags linux-review Sumitra-Sharma/Staging-nvec-Change-container_of-macro-to-an-inline-function/20230319-010628
-        git checkout e58807d27f0ba705144bce72751f5cb0a75b9682
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=arm olddefconfig
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=arm SHELL=/bin/bash drivers/staging/
-
-If you fix the issue, kindly add following tag where applicable
-| Reported-by: kernel test robot <lkp@intel.com>
-| Link: https://lore.kernel.org/oe-kbuild-all/202303190432.kRoDGmiE-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
-   In file included from include/linux/container_of.h:5,
-                    from include/linux/list.h:5,
-                    from include/linux/module.h:12,
-                    from drivers/staging/nvec/nvec_paz00.c:10:
-   drivers/staging/nvec/nvec_paz00.c: In function 'to_nvec_led':
->> include/linux/container_of.h:20:54: error: invalid use of undefined type 'struct nvec_led'
-      20 |         static_assert(__same_type(*(ptr), ((type *)0)->member) ||       \
-         |                                                      ^~
-   include/linux/build_bug.h:78:56: note: in definition of macro '__static_assert'
-      78 | #define __static_assert(expr, msg, ...) _Static_assert(expr, msg)
-         |                                                        ^~~~
-   include/linux/container_of.h:20:9: note: in expansion of macro 'static_assert'
-      20 |         static_assert(__same_type(*(ptr), ((type *)0)->member) ||       \
-         |         ^~~~~~~~~~~~~
-   include/linux/container_of.h:20:23: note: in expansion of macro '__same_type'
-      20 |         static_assert(__same_type(*(ptr), ((type *)0)->member) ||       \
-         |                       ^~~~~~~~~~~
-   drivers/staging/nvec/nvec_paz00.c:19:16: note: in expansion of macro 'container_of'
-      19 |         return container_of(led_cdev, struct nvec_led, cdev);
-         |                ^~~~~~~~~~~~
-   include/linux/compiler_types.h:338:27: error: expression in static assertion is not an integer
-     338 | #define __same_type(a, b) __builtin_types_compatible_p(typeof(a), typeof(b))
-         |                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   include/linux/build_bug.h:78:56: note: in definition of macro '__static_assert'
-      78 | #define __static_assert(expr, msg, ...) _Static_assert(expr, msg)
-         |                                                        ^~~~
-   include/linux/container_of.h:20:9: note: in expansion of macro 'static_assert'
-      20 |         static_assert(__same_type(*(ptr), ((type *)0)->member) ||       \
-         |         ^~~~~~~~~~~~~
-   include/linux/container_of.h:20:23: note: in expansion of macro '__same_type'
-      20 |         static_assert(__same_type(*(ptr), ((type *)0)->member) ||       \
-         |                       ^~~~~~~~~~~
-   drivers/staging/nvec/nvec_paz00.c:19:16: note: in expansion of macro 'container_of'
-      19 |         return container_of(led_cdev, struct nvec_led, cdev);
-         |                ^~~~~~~~~~~~
-   In file included from include/uapi/linux/posix_types.h:5,
-                    from include/uapi/linux/types.h:14,
-                    from include/linux/types.h:6,
-                    from include/linux/kasan-checks.h:5,
-                    from include/asm-generic/rwonce.h:26,
-                    from ./arch/arm/include/generated/asm/rwonce.h:1,
-                    from include/linux/compiler.h:247,
-                    from include/linux/build_bug.h:5:
->> include/linux/stddef.h:16:33: error: invalid use of undefined type 'struct nvec_led'
-      16 | #define offsetof(TYPE, MEMBER)  __builtin_offsetof(TYPE, MEMBER)
-         |                                 ^~~~~~~~~~~~~~~~~~
-   include/linux/container_of.h:23:28: note: in expansion of macro 'offsetof'
-      23 |         ((type *)(__mptr - offsetof(type, member))); })
-         |                            ^~~~~~~~
-   drivers/staging/nvec/nvec_paz00.c:19:16: note: in expansion of macro 'container_of'
-      19 |         return container_of(led_cdev, struct nvec_led, cdev);
-         |                ^~~~~~~~~~~~
-   drivers/staging/nvec/nvec_paz00.c:20:1: error: control reaches end of non-void function [-Werror=return-type]
-      20 | }
-         | ^
-   cc1: some warnings being treated as errors
-
-
-vim +20 include/linux/container_of.h
-
-d2a8ebbf8192b8 Andy Shevchenko  2021-11-08   9  
-d2a8ebbf8192b8 Andy Shevchenko  2021-11-08  10  /**
-d2a8ebbf8192b8 Andy Shevchenko  2021-11-08  11   * container_of - cast a member of a structure out to the containing structure
-d2a8ebbf8192b8 Andy Shevchenko  2021-11-08  12   * @ptr:	the pointer to the member.
-d2a8ebbf8192b8 Andy Shevchenko  2021-11-08  13   * @type:	the type of the container struct this is embedded in.
-d2a8ebbf8192b8 Andy Shevchenko  2021-11-08  14   * @member:	the name of the member within the struct.
-d2a8ebbf8192b8 Andy Shevchenko  2021-11-08  15   *
-7376e561fd2e01 Sakari Ailus     2022-10-24  16   * WARNING: any const qualifier of @ptr is lost.
-d2a8ebbf8192b8 Andy Shevchenko  2021-11-08  17   */
-d2a8ebbf8192b8 Andy Shevchenko  2021-11-08  18  #define container_of(ptr, type, member) ({				\
-d2a8ebbf8192b8 Andy Shevchenko  2021-11-08  19  	void *__mptr = (void *)(ptr);					\
-e1edc277e6f6df Rasmus Villemoes 2021-11-08 @20  	static_assert(__same_type(*(ptr), ((type *)0)->member) ||	\
-e1edc277e6f6df Rasmus Villemoes 2021-11-08  21  		      __same_type(*(ptr), void),			\
-d2a8ebbf8192b8 Andy Shevchenko  2021-11-08  22  		      "pointer type mismatch in container_of()");	\
-d2a8ebbf8192b8 Andy Shevchenko  2021-11-08  23  	((type *)(__mptr - offsetof(type, member))); })
-d2a8ebbf8192b8 Andy Shevchenko  2021-11-08  24  
+I mean you should set the config as Y or M (if permitted).
 
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests
+An old man doll... just what I always wanted! - Clara
+
