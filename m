@@ -1,88 +1,213 @@
-Received: from mail-ed1-f51.google.com (mail-ed1-f51.google.com [209.85.208.51])
+Received: from mail-pj1-f42.google.com (mail-pj1-f42.google.com [209.85.216.42])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1CB07E4DB;
-	Sun, 19 Mar 2023 15:29:24 +0000 (UTC)
-Received: by mail-ed1-f51.google.com with SMTP id ek18so37849450edb.6;
-        Sun, 19 Mar 2023 08:29:23 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A793B1846
+	for <outreachy@lists.linux.dev>; Sun, 19 Mar 2023 15:32:40 +0000 (UTC)
+Received: by mail-pj1-f42.google.com with SMTP id j3-20020a17090adc8300b0023d09aea4a6so13950867pjv.5;
+        Sun, 19 Mar 2023 08:32:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679239762;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=hHi5+GWz44QI22N2lgNwAXCVNfgTvzls3W9uzDI9R7I=;
-        b=A1K3LhmqfNVSEcgbGX/WGPLi+QBohjU8Z5DHP0patvexQ8cftYKkbJ0n6EBImk5HW6
-         UG3Od9lWQz+pdUobR1WT79K1Vth47r61AMt5plC/fO7k98OkymeUkG/FFpi3yruiXLLe
-         ek6/f+cxrtMdNf5pnqpcJsWYFXATIQYRAncu/xu52HpXK9FuAAQXTfnHVp1sVshk39/y
-         SPzLTA2qgsb1aGWZcI4ESPkW/aT5UpUj3upvbNV4IbukUgevuZXKWukaWhAtA1KxT2sx
-         +a4++/3MBnpA0HcQAhqoI8jBEeOWvRnAORLhu2VmIvl2V6VnzNEL2TjKv5Djdq5OfNfZ
-         HQcw==
+        d=gmail.com; s=20210112; t=1679239960;
+        h=content-disposition:mime-version:message-id:subject:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=MPrWJir7lxNPo+Fx2Bwr880Bubqv8L6flAF9k6fJd4s=;
+        b=JR5EXuUCKQItR1YgBAGzSG/l/jQh7mhlZN0DRz/nCgUpJyvZS6AAe69X9yTdatrVsF
+         RKvroR6zbRbAaaP8OzUZfzhfiJAgvPo9ru/zIXJ1XBbzbTl9ma1rJqCdW41kf+UrVTCi
+         /yltmugG82mSiJTUm2J233weQ8N4107zDCdIP+XZYUa6Kc8xGwVC/lL79ch7Q+IGAcRK
+         y0884sVEy2bXZgnO9AMK8lJqx6LUPFnG+wEQGa9uwyEUpKMgXiw5niNP1eYqUNnJH4Vm
+         CASRZC8qEO/Y/LBTEQdWWa1zxxXVE1G1NbyFSI6yeoMB8yj7s7CVpcO8UdFTQhLdwTe+
+         LTVA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679239762;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=hHi5+GWz44QI22N2lgNwAXCVNfgTvzls3W9uzDI9R7I=;
-        b=YGKr8QJ2KZc2kXzG9oSIPeF9aorewo4HNVo8eGZp+5cGCbvgveb6GYruG+q/wrsgvE
-         /zltYDDQhllQgHdzOtmINU8pquzF36aY8Zw7u/2DwQMtRvSE5mmshhqayLRX1fsV8qYi
-         QAZM6FjkXUrtAwDgdUG2Jax7S1LaHLwzWKY6sEVXMR319GEEHZ9t/RZ/L/YoRUoN3XbQ
-         g2Z6rgZ8Y5fXPTaAeyeSYm9M3pegENXHt6CEwGsJRCh0QZyRJA8aAMgQYnwlFHU2iCNW
-         IffvBq7NxigIXBGUOd3TCnMIQxFind7vkgQ56FueN7kymcTtMnfHYZ+OsbFYYtCflmtC
-         l39w==
-X-Gm-Message-State: AO0yUKXvcLBlqE9kpfxeIRrd9XJlOfqNDHUa08oPRUUmkLpwntCIsEyx
-	5wsQIJIkuQ7WGV08Y1wwU6w/qhNKLb4=
-X-Google-Smtp-Source: AK7set/E0e+CI78tJzcFXyh5kyZx43f/wgftRrGinMc5pR7pChEra9ob+MPRBBpdNINOjJ8OqOz06g==
-X-Received: by 2002:a17:906:8415:b0:930:3916:df19 with SMTP id n21-20020a170906841500b009303916df19mr5737952ejx.5.1679239762248;
-        Sun, 19 Mar 2023 08:29:22 -0700 (PDT)
-Received: from alaa-emad.. ([41.42.177.251])
-        by smtp.gmail.com with ESMTPSA id ia9-20020a170907a06900b00932b3e2c015sm2425429ejc.51.2023.03.19.08.29.20
+        d=1e100.net; s=20210112; t=1679239960;
+        h=content-disposition:mime-version:message-id:subject:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=MPrWJir7lxNPo+Fx2Bwr880Bubqv8L6flAF9k6fJd4s=;
+        b=wAK42QrVseWwfLv/03K88gD2+6aXRY38D5fbc7m3IffpDSAMux1sDppJI8BhpMS7fr
+         pMrVTopWDyLSrPI45zrpgSvZPhPllRGO3/JuJJJvqfSihW2M3zHL0hghb7n7Piav70vi
+         ELma6Wk0+ElEUdtpEWRkRjJ7JH48VJJTITPNFVcnns3nj6FgoyyX67W8QX54GCGZfD1A
+         kNkr+ylTlp9ZWqxU38qTeo/IKAtSuBcxQZvQkn4mjtKXf4ss8XJwx+HHeOiLMwrBSbot
+         gwz8dnevyub28D4qfSGy8o45zmiwdxvnb5IKws/9/q4j1Yh/++zKJ3+F4fa0isxcbaP6
+         o0kw==
+X-Gm-Message-State: AO0yUKXAR+duVyHmTQ8sJDtxnoSEjX6sQKa/gwXfK2fsEQBUxJ9Dd6w1
+	Pm1OfaHLfTLUZ0n+Fs59Yno=
+X-Google-Smtp-Source: AK7set/Oun619ZWobZxKdLezyu401eeSrUW0DdyE5832Z2L+3Rm2VJuPD2k38QY/ub73P5BABVDh7A==
+X-Received: by 2002:a17:903:245:b0:199:2b9f:f369 with SMTP id j5-20020a170903024500b001992b9ff369mr18309309plh.32.1679239959976;
+        Sun, 19 Mar 2023 08:32:39 -0700 (PDT)
+Received: from CloudiRingWorld ([125.121.39.5])
+        by smtp.gmail.com with ESMTPSA id y3-20020a170902700300b0019908d2c85dsm4878009plk.52.2023.03.19.08.32.38
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 19 Mar 2023 08:29:21 -0700 (PDT)
-From: Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy@lists.linux.dev,
-	johan@kernel.org,
-	elder@kernel.org,
-	thierry.reding@gmail.com,
-	u.kleine-koenig@pengutronix.de,
-	greybus-dev@lists.linaro.org,
-	linux-pwm@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-staging@lists.linux.dev,
-	eng.mennamahmoud.mm@gmail.com
-Subject: [PATCH] staging: greybus: remove unnecessary blank line
-Date: Sun, 19 Mar 2023 17:29:09 +0200
-Message-Id: <20230319152909.163598-1-eng.mennamahmoud.mm@gmail.com>
-X-Mailer: git-send-email 2.34.1
+        Sun, 19 Mar 2023 08:32:39 -0700 (PDT)
+Date: Sun, 19 Mar 2023 23:32:34 +0800
+From: Kloudifold <cloudifold.3125@gmail.com>
+To: outreachy@lists.linux.dev, teddy.wang@siliconmotion.com,
+	sudipm.mukherjee@gmail.com, gregkh@linuxfoundation.org,
+	linuxstaging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	alison.schofield@intel.com
+Subject: [PATCH v4] staging: sm750: Rename sm750_hw_cursor_* functions to
+ snake_case
+Message-ID: <ZBcrEp+VssZDxAnC@CloudiRingWorld>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Remove unnecessary blank line before struct as reported
-by checkpatch:
+sm750 driver has sm750_hw_cursor_* functions, which are named in
+camelcase. Rename them to snake case to follow the function naming
+convention.
 
-" CHECK: Please don't use multiple blank lines "
+- sm750_hw_cursor_setSize  => sm750_hw_cursor_set_size
+- sm750_hw_cursor_setPos   => sm750_hw_cursor_set_pos
+- sm750_hw_cursor_setColor => sm750_hw_cursor_set_color
+- sm750_hw_cursor_setData  => sm750_hw_cursor_set_data
+- sm750_hw_cursor_setData2 => sm750_hw_cursor_set_data2
 
-Signed-off-by: Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>
+Reported-by: kernel test robot <lkp@intel.com>
+Link: https://lore.kernel.org/oe-kbuild-all/202303110849.X24WnHnM-lkp@intel.com/
+Signed-off-by: Kloudifold <cloudifold.3125@gmail.com>
+
 ---
- drivers/staging/greybus/pwm.c | 1 -
- 1 file changed, 1 deletion(-)
+Changes in v4:
+- Update the commit msg (Deepak)
+- Use tabs replace 8 spaces
 
-diff --git a/drivers/staging/greybus/pwm.c b/drivers/staging/greybus/pwm.c
-index 3fda172239d2..26d39e08c3b6 100644
---- a/drivers/staging/greybus/pwm.c
-+++ b/drivers/staging/greybus/pwm.c
-@@ -24,7 +24,6 @@ struct gb_pwm_chip {
- #define pwm_chip_to_gb_pwm_chip(chip) \
- 	container_of(chip, struct gb_pwm_chip, chip)
+This v4 patch was prompted by 2 errors, 2 warnings and 1 checks reported
+by the scripts/checkpatch.pl, which detected the style problem.
+
+Changes in v3:
+- Add this changelog (Philipp)
+- Move lkp tags and link to the correct location in commit log (Alison)
+- Update the commit msg (Philip)
+- Update the commit log (Bagas, Julia)
+
+Changes in v2:
+- Use new function names in call sites (LKP)
+
+ drivers/staging/sm750fb/sm750.c        | 22 +++++++++++-----------
+ drivers/staging/sm750fb/sm750_cursor.c | 14 +++++++-------
+ drivers/staging/sm750fb/sm750_cursor.h | 12 ++++++------
+ 3 files changed, 24 insertions(+), 24 deletions(-)
+
+diff --git a/drivers/staging/sm750fb/sm750.c b/drivers/staging/sm750fb/sm750.c
+index effc7fcc3..5d7249e82 100644
+--- a/drivers/staging/sm750fb/sm750.c
++++ b/drivers/staging/sm750fb/sm750.c
+@@ -121,14 +121,14 @@ static int lynxfb_ops_cursor(struct fb_info *info, struct fb_cursor *fbcursor)
  
--
- static int gb_pwm_count_operation(struct gb_pwm_chip *pwmc)
+ 	sm750_hw_cursor_disable(cursor);
+ 	if (fbcursor->set & FB_CUR_SETSIZE)
+-		sm750_hw_cursor_setSize(cursor,
+-					fbcursor->image.width,
+-					fbcursor->image.height);
++		sm750_hw_cursor_set_size(cursor,
++					 fbcursor->image.width,
++					 fbcursor->image.height);
+ 
+ 	if (fbcursor->set & FB_CUR_SETPOS)
+-		sm750_hw_cursor_setPos(cursor,
+-				       fbcursor->image.dx - info->var.xoffset,
+-				       fbcursor->image.dy - info->var.yoffset);
++		sm750_hw_cursor_set_pos(cursor,
++					fbcursor->image.dx - info->var.xoffset,
++					fbcursor->image.dy - info->var.yoffset);
+ 
+ 	if (fbcursor->set & FB_CUR_SETCMAP) {
+ 		/* get the 16bit color of kernel means */
+@@ -142,14 +142,14 @@ static int lynxfb_ops_cursor(struct fb_info *info, struct fb_cursor *fbcursor)
+ 		     ((info->cmap.green[fbcursor->image.bg_color] & 0xfc00) >> 5) |
+ 		     ((info->cmap.blue[fbcursor->image.bg_color] & 0xf800) >> 11);
+ 
+-		sm750_hw_cursor_setColor(cursor, fg, bg);
++		sm750_hw_cursor_set_color(cursor, fg, bg);
+ 	}
+ 
+ 	if (fbcursor->set & (FB_CUR_SETSHAPE | FB_CUR_SETIMAGE)) {
+-		sm750_hw_cursor_setData(cursor,
+-					fbcursor->rop,
+-					fbcursor->image.data,
+-					fbcursor->mask);
++		sm750_hw_cursor_set_data(cursor,
++					 fbcursor->rop,
++					 fbcursor->image.data,
++					 fbcursor->mask);
+ 	}
+ 
+ 	if (fbcursor->enable)
+diff --git a/drivers/staging/sm750fb/sm750_cursor.c b/drivers/staging/sm750fb/sm750_cursor.c
+index 43e6f52c2..ff643e33f 100644
+--- a/drivers/staging/sm750fb/sm750_cursor.c
++++ b/drivers/staging/sm750fb/sm750_cursor.c
+@@ -58,13 +58,13 @@ void sm750_hw_cursor_disable(struct lynx_cursor *cursor)
+ 	poke32(HWC_ADDRESS, 0);
+ }
+ 
+-void sm750_hw_cursor_setSize(struct lynx_cursor *cursor, int w, int h)
++void sm750_hw_cursor_set_size(struct lynx_cursor *cursor, int w, int h)
  {
- 	struct gb_pwm_count_response response;
+ 	cursor->w = w;
+ 	cursor->h = h;
+ }
+ 
+-void sm750_hw_cursor_setPos(struct lynx_cursor *cursor, int x, int y)
++void sm750_hw_cursor_set_pos(struct lynx_cursor *cursor, int x, int y)
+ {
+ 	u32 reg;
+ 
+@@ -73,7 +73,7 @@ void sm750_hw_cursor_setPos(struct lynx_cursor *cursor, int x, int y)
+ 	poke32(HWC_LOCATION, reg);
+ }
+ 
+-void sm750_hw_cursor_setColor(struct lynx_cursor *cursor, u32 fg, u32 bg)
++void sm750_hw_cursor_set_color(struct lynx_cursor *cursor, u32 fg, u32 bg)
+ {
+ 	u32 reg = (fg << HWC_COLOR_12_2_RGB565_SHIFT) &
+ 		HWC_COLOR_12_2_RGB565_MASK;
+@@ -82,8 +82,8 @@ void sm750_hw_cursor_setColor(struct lynx_cursor *cursor, u32 fg, u32 bg)
+ 	poke32(HWC_COLOR_3, 0xffe0);
+ }
+ 
+-void sm750_hw_cursor_setData(struct lynx_cursor *cursor, u16 rop,
+-			     const u8 *pcol, const u8 *pmsk)
++void sm750_hw_cursor_set_data(struct lynx_cursor *cursor, u16 rop,
++			      const u8 *pcol, const u8 *pmsk)
+ {
+ 	int i, j, count, pitch, offset;
+ 	u8 color, mask, opr;
+@@ -132,8 +132,8 @@ void sm750_hw_cursor_setData(struct lynx_cursor *cursor, u16 rop,
+ 	}
+ }
+ 
+-void sm750_hw_cursor_setData2(struct lynx_cursor *cursor, u16 rop,
+-			      const u8 *pcol, const u8 *pmsk)
++void sm750_hw_cursor_set_data2(struct lynx_cursor *cursor, u16 rop,
++			       const u8 *pcol, const u8 *pmsk)
+ {
+ 	int i, j, count, pitch, offset;
+ 	u8 color, mask;
+diff --git a/drivers/staging/sm750fb/sm750_cursor.h b/drivers/staging/sm750fb/sm750_cursor.h
+index b59643dd6..88fa02f63 100644
+--- a/drivers/staging/sm750fb/sm750_cursor.h
++++ b/drivers/staging/sm750fb/sm750_cursor.h
+@@ -5,11 +5,11 @@
+ /* hw_cursor_xxx works for voyager,718 and 750 */
+ void sm750_hw_cursor_enable(struct lynx_cursor *cursor);
+ void sm750_hw_cursor_disable(struct lynx_cursor *cursor);
+-void sm750_hw_cursor_setSize(struct lynx_cursor *cursor, int w, int h);
+-void sm750_hw_cursor_setPos(struct lynx_cursor *cursor, int x, int y);
+-void sm750_hw_cursor_setColor(struct lynx_cursor *cursor, u32 fg, u32 bg);
+-void sm750_hw_cursor_setData(struct lynx_cursor *cursor, u16 rop,
+-			     const u8 *data, const u8 *mask);
+-void sm750_hw_cursor_setData2(struct lynx_cursor *cursor, u16 rop,
++void sm750_hw_cursor_set_size(struct lynx_cursor *cursor, int w, int h);
++void sm750_hw_cursor_set_pos(struct lynx_cursor *cursor, int x, int y);
++void sm750_hw_cursor_set_color(struct lynx_cursor *cursor, u32 fg, u32 bg);
++void sm750_hw_cursor_set_data(struct lynx_cursor *cursor, u16 rop,
+ 			      const u8 *data, const u8 *mask);
++void sm750_hw_cursor_set_data2(struct lynx_cursor *cursor, u16 rop,
++			       const u8 *data, const u8 *mask);
+ #endif
 -- 
-2.34.1
+2.40.0
 
