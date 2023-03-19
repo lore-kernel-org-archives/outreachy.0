@@ -1,167 +1,117 @@
-Received: from mail-pl1-f181.google.com (mail-pl1-f181.google.com [209.85.214.181])
+Received: from mail-ed1-f46.google.com (mail-ed1-f46.google.com [209.85.208.46])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 05B9CE4E3;
-	Sun, 19 Mar 2023 16:45:29 +0000 (UTC)
-Received: by mail-pl1-f181.google.com with SMTP id iw3so10153854plb.6;
-        Sun, 19 Mar 2023 09:45:29 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6FD311872
+	for <outreachy@lists.linux.dev>; Sun, 19 Mar 2023 18:58:31 +0000 (UTC)
+Received: by mail-ed1-f46.google.com with SMTP id w9so38994657edc.3
+        for <outreachy@lists.linux.dev>; Sun, 19 Mar 2023 11:58:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679244329;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+        d=gmail.com; s=20210112; t=1679252309;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=wmtLzAp7TAfFzU4Wal3aHOCAS9vHX2uOg0KnFqhgfOg=;
-        b=LXs9nIjHeLGc4vvNlmA23A/cSABl8I0XqAC1aUqw4CUby9pvLsTuK+E/TA3D3Bz5a9
-         3iBf1J/ArqNespEhEmmrBwb444AgD9APc8yDQD/YiU/+E7/9CqeSgSIpE2bb/pZPTp7B
-         wOOh6SiAnC7qlePvsPYEk7H6nmZqnYJy/3vtJhd31RFDVkHgXhAptaQhgsLadb+W5IhE
-         A8MNpfPa1HdDhAHNTK6BN6qKHHBc/L3qWrLpK8BVbtWJov/xFFcxWOihgu44cA736mo1
-         5LeUWymaryZOHNVb6weW14aeEn+feYT7V4VMYlavnQB/0pEGMJ5jXxx6P6VpsU0zt3oo
-         Lcbg==
+        bh=v/oiSa51DAY23j1NSplIKasgX63QWO9tQJogzTkMKAA=;
+        b=bV+booNrjpj7y+lPXGKRptU8wIXqg55gcyQf+/MoWciWDF4Uby1a7uJpbTTzNlLryT
+         IYpt0jk3ZvSmSwBrNtGoOaOCk9yZGub0UmGCamL8AXfvZW/zUzRhHmh98ojcvVCeqfjU
+         XR/8KyS6lc55MrldxioO88s27Gfwmw1x/gfDc7tMtBCZlePJzpaM74YgQGJsatS5y1j8
+         cTi7/ie4ZO1YTUUV/uLn1z1p8i8morFsQ6pz3JvMKDRj6qb7TM6zrIZlGoQ4o7y39SYM
+         aeq622cREhxe9RdQtxg9luXyj4jfxEPmlaryrS+PUJ5lpNa3iHx9YUK3vCfimawYv15j
+         EElQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679244329;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+        d=1e100.net; s=20210112; t=1679252309;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=wmtLzAp7TAfFzU4Wal3aHOCAS9vHX2uOg0KnFqhgfOg=;
-        b=4ujs9iIxqs3YBwxGMZK+0NbCBUHXDZ1xSL4dduYu6WSe3XPXjlhtRkrsMtgmS0jVgT
-         wJ9Qb2/9BwUZkDzNzfJI2JmKNtNt9OQIJeFboVRdv+k6yDvDrfTXAQQBZwG3SJV2sCD1
-         qxw2eINSVmCLlpybX0fys0Hz9hL9JtEzhilcrpRP96Yvy4IdfcZqacp1MNlt1OdLUrLG
-         Cwnm5EtgvbdoM8hVCNqxb8AfRWk3qb56WvTMk1Fegjw9OVfIPsREnWD5MIap6ZxJbT14
-         X44ukSCeuNL3YBa7rywL9SVCiKpawdoVQa7nD2Aij4Qm3Pp7iq1JJIbbDBgDmPK/M+dw
-         cdxQ==
-X-Gm-Message-State: AO0yUKWDlSktK7ycXKNOzFNZJ0UJH5Axh/tPa5pSXJasQSDi5Uyxrjv6
-	rB/tRI8ZS5kONdQ7u/Y0QXk=
-X-Google-Smtp-Source: AK7set89cJ4rq6OJEYq0Uljx9YEOr8CfmsGk8+Y5TyoZookPRhjaGAooHa6/vi5uZaiShmz6OVcAzQ==
-X-Received: by 2002:a05:6a20:7aa2:b0:d9:1ec8:e9bb with SMTP id u34-20020a056a207aa200b000d91ec8e9bbmr2242327pzh.28.1679244329269;
-        Sun, 19 Mar 2023 09:45:29 -0700 (PDT)
-Received: from sumitra.com ([117.209.117.91])
-        by smtp.gmail.com with ESMTPSA id m5-20020aa79005000000b00627f1efd470sm1091128pfo.135.2023.03.19.09.45.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 19 Mar 2023 09:45:28 -0700 (PDT)
-Date: Sun, 19 Mar 2023 09:45:20 -0700
-From: Sumitra Sharma <sumitraartsy@gmail.com>
-To: Vaibhav Agarwal <vaibhav.sr@gmail.com>,
-	Mark Greer <mgreer@animalcreek.com>,
-	Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	greybus-dev@lists.linaro.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Cc: outreachy@lists.linux.dev
-Subject: [PATCH] Staging: greybus: Fix lines ending with '('
-Message-ID: <20230319164520.GA125117@sumitra.com>
+        bh=v/oiSa51DAY23j1NSplIKasgX63QWO9tQJogzTkMKAA=;
+        b=HIhaQbRYQ+WZlMbFbTnY6jIz+vpdG+W9suHQFTuC0dw39wG5igATHcHDCLepd+tjtW
+         r8R01iT1TNbBR+JJYma57TOTI1LDUDy/oHCpFnB6HokbZSohHa72rsFPiCCfiYrRUdo6
+         8+N7zS4ExMq71pr9oIkuRxLaqiqeafxLSIUypd20h6QInznEDcSpQzu3l7f3Utmx1PBX
+         wLng4HFLaTVaebYVmLeIn5xvowK94ulSUT9Tf5HHXcjBs9I2TVvqs2c67AK7BsDRMS2+
+         F5LOzkGuTpOtQIPiiq8UZVNO9c7zFSl3JAQuketq5H9CLLHopvRs5sbecFaaiVyl7XNB
+         jnSA==
+X-Gm-Message-State: AO0yUKV4lwXEFP7UHMMarsEidQzSZmlv3My0JKnv3+Z2N5f96vVj0263
+	wmILHcObzjM9c4Np2R/V3vg=
+X-Google-Smtp-Source: AK7set+3LRjI3oHHAjQAh7qE6/OpolGWHBEeK4KPO1CEUuo0gYQcaJJ7TThzRKcNHEI5KRyqss4iHA==
+X-Received: by 2002:a17:906:9c96:b0:930:d17b:959b with SMTP id fj22-20020a1709069c9600b00930d17b959bmr7394019ejc.22.1679252309509;
+        Sun, 19 Mar 2023 11:58:29 -0700 (PDT)
+Received: from [192.168.1.16] ([41.42.177.251])
+        by smtp.gmail.com with ESMTPSA id z69-20020a509e4b000000b004af71e8cc3dsm931318ede.60.2023.03.19.11.58.28
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 19 Mar 2023 11:58:29 -0700 (PDT)
+Message-ID: <9799a686-e460-212f-f3c4-4e911de5ccec@gmail.com>
+Date: Sun, 19 Mar 2023 20:58:27 +0200
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.8.0
+Subject: Re: warning when converting `to_gbphy_dev` into inline function
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: Outreachy Linux Kernel <outreachy@lists.linux.dev>
+References: <16c61a62-c149-bf0e-0dd7-21e4ba9c6d1d@gmail.com>
+ <alpine.DEB.2.22.394.2303191625290.2867@hadrien>
+ <8132a849-49f1-d280-5ce0-9d1904c8b2ec@gmail.com>
+ <alpine.DEB.2.22.394.2303191719200.2867@hadrien>
+Content-Language: en-US
+From: Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>
+In-Reply-To: <alpine.DEB.2.22.394.2303191719200.2867@hadrien>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 
-The coding style used to limit lines to 80 characters,
-which led to splitting of these function headers into multiple
-lines and ends the first line with a '('.
-Such splits causes checks reported by the checkpatch.
 
-Place the function parameters of each function immediately after
-'(' in a single line to align the function headers.
+On ١٩‏/٣‏/٢٠٢٣ ١٨:٢٠, Julia Lawall wrote:
+>
+> On Sun, 19 Mar 2023, Menna Mahmoud wrote:
+>
+>> On ١٩/٣/٢٠٢٣ ١٧:٣٣, Julia Lawall wrote:
+>>> On Sun, 19 Mar 2023, Menna Mahmoud wrote:
+>>>
+>>>> Hi Julia,
+>>>>
+>>>> I tried to convert to_gbphy_dev to inline function but got these warnings
+>>>> while building:
+>>>>
+>>>>
+>>>> ```
+>>>>
+>>>> drivers/staging/greybus/gbphy.c: In function ‘gbphy_dev_uevent’:
+>>>> drivers/staging/greybus/gbphy.c:76:61: warning: passing argument 1 of
+>>>> ‘to_gbphy_dev’ discards ‘const’ qualifier from pointer target type
+>>>> [-Wdiscarded-qualifiers]
+>>>>      76 |         const struct gbphy_device *gbphy_dev = to_gbphy_dev(dev);
+>>> If you look at the code it is complaining about, the context is:
+>>>
+>>> static int gbphy_dev_uevent(const struct device *dev, struct
+>>> kobj_uevent_env *env)
+>>> {
+>>>           const struct gbphy_device *gbphy_dev = to_gbphy_dev(dev);
+>>>
+>>>
+>>> So dev has been declared to be const, meaning that the current function
+>>> should not modify its contents.  But dev is passed to your function
+>>> to_gbphy_dev that does not declare that its parameter is const.  So the
+>>> compiler is concerned that your function may modify its contents.
+>>>
+>>> There are other calls to to_gbphy_dev where the argument is not declared
+>>> as const.  So one could be concerned that a function is not possible,
+>>> because some calls have an argument with a const type and other calls have
+>>> an argument that does not have a const type.  But this is not a problem.
+>>> You cannot pass a const value to a non-const parameter, but you can pass a
+>>> non-const value to a const parameter.  And to_gbphy_dev doesn't actually
+>>> modify its argument in any way, so changing the parameter type to const
+>>> struct device * makes the code compile.
+>>
+>> understood, so, no problem to keep the inline function as it is, right?
+> No, the function has to be changed so that it compiles.  Read the above
+> again and look at the code to understand why.
 
-Signed-off-by: Sumitra Sharma <sumitraartsy@gmail.com>
----
- .../staging/greybus/audio_manager_module.c    | 40 +++++++++----------
- 1 file changed, 18 insertions(+), 22 deletions(-)
 
-diff --git a/drivers/staging/greybus/audio_manager_module.c b/drivers/staging/greybus/audio_manager_module.c
-index 0a0f0a394c84..81b4ba607a0e 100644
---- a/drivers/staging/greybus/audio_manager_module.c
-+++ b/drivers/staging/greybus/audio_manager_module.c
-@@ -70,9 +70,8 @@ static void gb_audio_module_release(struct kobject *kobj)
- 	kfree(module);
- }
- 
--static ssize_t gb_audio_module_name_show(
--	struct gb_audio_manager_module *module,
--	struct gb_audio_manager_module_attribute *attr, char *buf)
-+static ssize_t gb_audio_module_name_show(struct gb_audio_manager_module *module,
-+					 struct gb_audio_manager_module_attribute *attr, char *buf)
- {
- 	return sprintf(buf, "%s", module->desc.name);
- }
-@@ -80,9 +79,8 @@ static ssize_t gb_audio_module_name_show(
- static struct gb_audio_manager_module_attribute gb_audio_module_name_attribute =
- 	__ATTR(name, 0664, gb_audio_module_name_show, NULL);
- 
--static ssize_t gb_audio_module_vid_show(
--	struct gb_audio_manager_module *module,
--	struct gb_audio_manager_module_attribute *attr, char *buf)
-+static ssize_t gb_audio_module_vid_show(struct gb_audio_manager_module *module,
-+					struct gb_audio_manager_module_attribute *attr, char *buf)
- {
- 	return sprintf(buf, "%d", module->desc.vid);
- }
-@@ -90,9 +88,8 @@ static ssize_t gb_audio_module_vid_show(
- static struct gb_audio_manager_module_attribute gb_audio_module_vid_attribute =
- 	__ATTR(vid, 0664, gb_audio_module_vid_show, NULL);
- 
--static ssize_t gb_audio_module_pid_show(
--	struct gb_audio_manager_module *module,
--	struct gb_audio_manager_module_attribute *attr, char *buf)
-+static ssize_t gb_audio_module_pid_show(struct gb_audio_manager_module *module,
-+					struct gb_audio_manager_module_attribute *attr, char *buf)
- {
- 	return sprintf(buf, "%d", module->desc.pid);
- }
-@@ -100,9 +97,9 @@ static ssize_t gb_audio_module_pid_show(
- static struct gb_audio_manager_module_attribute gb_audio_module_pid_attribute =
- 	__ATTR(pid, 0664, gb_audio_module_pid_show, NULL);
- 
--static ssize_t gb_audio_module_intf_id_show(
--	struct gb_audio_manager_module *module,
--	struct gb_audio_manager_module_attribute *attr, char *buf)
-+static ssize_t gb_audio_module_intf_id_show(struct gb_audio_manager_module *module,
-+					    struct gb_audio_manager_module_attribute *attr,
-+					    char *buf)
- {
- 	return sprintf(buf, "%d", module->desc.intf_id);
- }
-@@ -111,9 +108,9 @@ static struct gb_audio_manager_module_attribute
- 					gb_audio_module_intf_id_attribute =
- 	__ATTR(intf_id, 0664, gb_audio_module_intf_id_show, NULL);
- 
--static ssize_t gb_audio_module_ip_devices_show(
--	struct gb_audio_manager_module *module,
--	struct gb_audio_manager_module_attribute *attr, char *buf)
-+static ssize_t gb_audio_module_ip_devices_show(struct gb_audio_manager_module *module,
-+					       struct gb_audio_manager_module_attribute *attr,
-+					       char *buf)
- {
- 	return sprintf(buf, "0x%X", module->desc.ip_devices);
- }
-@@ -122,9 +119,9 @@ static struct gb_audio_manager_module_attribute
- 					gb_audio_module_ip_devices_attribute =
- 	__ATTR(ip_devices, 0664, gb_audio_module_ip_devices_show, NULL);
- 
--static ssize_t gb_audio_module_op_devices_show(
--	struct gb_audio_manager_module *module,
--	struct gb_audio_manager_module_attribute *attr, char *buf)
-+static ssize_t gb_audio_module_op_devices_show(struct gb_audio_manager_module *module,
-+					       struct gb_audio_manager_module_attribute *attr,
-+					       char *buf)
- {
- 	return sprintf(buf, "0x%X", module->desc.op_devices);
- }
-@@ -181,10 +178,9 @@ static void send_add_uevent(struct gb_audio_manager_module *module)
- 	kobject_uevent_env(&module->kobj, KOBJ_ADD, envp);
- }
- 
--int gb_audio_manager_module_create(
--	struct gb_audio_manager_module **module,
--	struct kset *manager_kset,
--	int id, struct gb_audio_manager_module_descriptor *desc)
-+int gb_audio_manager_module_create(struct gb_audio_manager_module **module,
-+				   struct kset *manager_kset,
-+				   int id, struct gb_audio_manager_module_descriptor *desc)
- {
- 	int err;
- 	struct gb_audio_manager_module *m;
--- 
-2.25.1
+yes, I misunderstood, but fixed now.
 
+
+Menna
+
+> julia
