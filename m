@@ -1,65 +1,96 @@
-Received: from mail-pj1-f47.google.com (mail-pj1-f47.google.com [209.85.216.47])
+Received: from mail-ed1-f54.google.com (mail-ed1-f54.google.com [209.85.208.54])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4CD671846
-	for <outreachy@lists.linux.dev>; Sun, 19 Mar 2023 13:10:25 +0000 (UTC)
-Received: by mail-pj1-f47.google.com with SMTP id fy10-20020a17090b020a00b0023b4bcf0727so9810322pjb.0
-        for <outreachy@lists.linux.dev>; Sun, 19 Mar 2023 06:10:25 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A17F81846;
+	Sun, 19 Mar 2023 13:11:30 +0000 (UTC)
+Received: by mail-ed1-f54.google.com with SMTP id eh3so37051462edb.11;
+        Sun, 19 Mar 2023 06:11:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679231424;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=UKX7CZXUD7mV6GYnOSHpsg35PZOfh7g/+aCFA0t6V88=;
-        b=CcQbVvXsBQU4H/9cOVeWpS+/ZDT7TZQ0WKjkVSf1uoazDt4SVToMqZqzDomrRQyNqL
-         5T2xKTRt5s+IO18VIJsPidYkziX2vYpo4iU0BUhdt+Z8YNqn7jh1hgtrC+7hlvlky1cI
-         pFOYhziNf4In8Wv9s3xq9ZI9NlJuUdoM6CtwzO2x9Ro66jvk3KaLi1mXMU5pxVQlj0qO
-         0LCqnUmC3trEn38coJDCZlzTV/ph2QQfDmShWEN1pd615O+dKAGsXPZQYsSQrKapHmpF
-         GsA/yKyjgDTjUh2eJGxJuZJsr06SKRHGkUsmHgn0UrTJdkttiXF4IegDnXuZZl8NDdwi
-         DzOA==
+        d=gmail.com; s=20210112; t=1679231489;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=NDHj4DvxjjAkmG31dhlk4CsUuKafohdFgFwjCU3khL8=;
+        b=SpupAaCobj8+gF0IB38Y8jJXFWQpYJHi6h8rsvEHgRv9jc0yQCSGes9EzeHfkZmGLH
+         lSmiO2eAe43u9x+2WkGIsgmYP+F/tXpiZ5eJxB+Gq01YaoqRvGRpAtyObMTvSGvFwQuI
+         dOaCgP7pyz16CYK8kFvXtkUbnahZyk2Iwzj2rRyE6WrWrE+ug92Ez0hCL1WAB1/QmDqP
+         skdyJ15G+eXiDuyXHFP1/9Xt0Iywk11PmNlw26JPOz2SNLrRm708c3cXedF9/zy7GfVN
+         812EaDXXOFW3mfq2tRr83Ld1SMWPk0XWzl/CfI/oPUpGesUSFMKNN5ABCGYrJi9hCfP8
+         TbVw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679231424;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=UKX7CZXUD7mV6GYnOSHpsg35PZOfh7g/+aCFA0t6V88=;
-        b=n8Da6p1E+tlAbg5quYsJfc1JXd9I8LGZ/8xPiNqQBP1LjFjSkaloTvfFXAPNmhgVQy
-         awBqC4AuBqUn4km1rMH12Ah16BrtamWs5207Sp2w0HSqa7xiKLkou9i7+/qqBbDqnDy8
-         ZiKwXjtDwSrwWAdcGtU8uk31A0BoQFqDBtH0BB0QJ9pwJ50GGkWUutYckoA2Xcf3UTpa
-         AgA0OrvC/WkK3fn6WlyaXp5R3/PS4Htnc0qO2WOkPLeMD+E65HPwumTm3T5M4obice58
-         N97bNXNiOI9rY1j8TesjeNBtZcyM7zEGAmCpis2i9CBCyy/8nz87iuRIRlaqMgmhGcAC
-         jOKg==
-X-Gm-Message-State: AO0yUKUgP/545x3uMWBw8SC8tyGIoctSmAcwfDc8CVYW/eUmx4NWFPNb
-	RWCRjYOJaDnG07fnofPQ7Z9RCnBGPqmbYg==
-X-Google-Smtp-Source: AK7set9UYNr+fA3kcOC8lfSOj9I/v7Gl9vl+tT6jG3+AL5/GpKQEK7yCLXJZaTL+V0iQ/hr332tmow==
-X-Received: by 2002:a17:903:22cd:b0:1a1:a0b7:7254 with SMTP id y13-20020a17090322cd00b001a1a0b77254mr12848741plg.62.1679231424346;
-        Sun, 19 Mar 2023 06:10:24 -0700 (PDT)
-Received: from sumitra.com ([117.209.117.91])
-        by smtp.gmail.com with ESMTPSA id t20-20020a1709028c9400b001992fc0a8eesm4710547plo.174.2023.03.19.06.10.20
+        d=1e100.net; s=20210112; t=1679231489;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=NDHj4DvxjjAkmG31dhlk4CsUuKafohdFgFwjCU3khL8=;
+        b=iJmXHeh5PQR0+Jsuc7ca1bQSFT7Sccc7b0fkp69nU0kY6Noqoyoi0SPH9D2Xx0eKWf
+         ad8Vp5cD6S4d4KneFAwqkt/LYGtad0WzYLw6rIxLbpckHfUhdXUmjp+zBlrBfu1QgChi
+         eQ67o92Fu1KcTqWe+Ef+Ux7GSX+MpbyIvZVaqzjB/J+XJzOQN3/aK2hFWEG4tR0k3nKA
+         EzjQ8lj8FZHQ1M0ydHb/JHFZIVsKN2BMP1ZY8vir9RKSwuRjJoYND9/8+9O1iUGgyetK
+         qFNj90aBTNcHGN5JI748NPIrcl8ylBA/J6dOyqWR8uZUeEVwMxyo7LSx/JIW5WIFUrc9
+         w+pg==
+X-Gm-Message-State: AO0yUKUug8PbO30GPoqKpLD3v1S1TaXwdwnl53La7b4R/o6hTBpOkGv6
+	6RymYMikY9OV7PSoa+qCfFk=
+X-Google-Smtp-Source: AK7set/nr96keMgLA/H/r8hXyMIVmxQUuqdUMsdY+x/AB+4XhEY9KeBsPx3GVRDwdUluz9L/4hBoAw==
+X-Received: by 2002:aa7:d782:0:b0:4fd:1cf1:b7b0 with SMTP id s2-20020aa7d782000000b004fd1cf1b7b0mr8581529edq.7.1679231488796;
+        Sun, 19 Mar 2023 06:11:28 -0700 (PDT)
+Received: from alaa-emad.. ([41.42.177.251])
+        by smtp.gmail.com with ESMTPSA id i23-20020a508717000000b004af6c5f1805sm3497671edb.52.2023.03.19.06.11.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 19 Mar 2023 06:10:23 -0700 (PDT)
-Date: Sun, 19 Mar 2023 06:10:16 -0700
-From: Sumitra Sharma <sumitraartsy@gmail.com>
-To: outreachy@lists.linux.dev
-Cc: alison.schofield@intel.com
-Subject: Outreachy firstpatch tutorial Wiki updates - SumitraSharma
-Message-ID: <20230319131016.GA61225@sumitra.com>
+        Sun, 19 Mar 2023 06:11:28 -0700 (PDT)
+From: Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy@lists.linux.dev,
+	namcaov@gmail.com,
+	straube.linux@gmail.com,
+	hdegoede@redhat.com,
+	julia.lawall@inria.fr,
+	linux-kernel@vger.kernel.org,
+	linux-staging@lists.linux.dev,
+	eng.mennamahmoud.mm@gmail.com
+Subject: [PATCH] staging: rtl8723bs: include: use inline functions for dvobj_to_dev
+Date: Sun, 19 Mar 2023 15:10:30 +0200
+Message-Id: <20230319131030.151170-3-eng.mennamahmoud.mm@gmail.com>
+X-Mailer: git-send-email 2.34.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
 
-Hi mentors,
+Convert `dvobj_to_dev` macro into static inline function,
+because it is not great to have macro that use `container_of` macro,
+because from looking at the definition one cannot tell what type it applies to.
 
-The changes has been applied to the kernel first patch tutorial as
-mentioned in https://lore.kernel.org/outreachy/ZBYYxMfFgTej3DqB@aschofie-mobl2/T/#t
+One can get the same benefit from an efficiency point of view by making an
+inline function (concretely, typically a static inline function, because
+the definition only needs to be visible in the current file, or in the
+case of a header file in the file that includes the header file).
 
+Suggested-by: Julia Lawall <julia.lawall@inria.fr>
+Signed-off-by: Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>
+---
+ drivers/staging/rtl8723bs/include/drv_types.h | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-Thanks.
-
-Regards,
-
-Sumitra
+diff --git a/drivers/staging/rtl8723bs/include/drv_types.h b/drivers/staging/rtl8723bs/include/drv_types.h
+index 82159e1c7f9b..ea6bb44c5e1d 100644
+--- a/drivers/staging/rtl8723bs/include/drv_types.h
++++ b/drivers/staging/rtl8723bs/include/drv_types.h
+@@ -305,7 +305,11 @@ struct sdio_data intf_data;
+ };
+ 
+ #define dvobj_to_pwrctl(dvobj) (&(dvobj->pwrctl_priv))
+-#define pwrctl_to_dvobj(pwrctl) container_of(pwrctl, struct dvobj_priv, pwrctl_priv)
++
++static inline struct dvobj_priv *pwrctl_to_dvobj(struct pwrctrl_priv *pwrctl_priv)
++{
++	return container_of(pwrctl_priv, struct dvobj_priv, pwrctl_priv);
++}
+ 
+ static inline struct device *dvobj_to_dev(struct dvobj_priv *dvobj)
+ {
+-- 
+2.34.1
 
