@@ -1,197 +1,94 @@
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ed1-f50.google.com (mail-ed1-f50.google.com [209.85.208.50])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C2E5E10EC
-	for <outreachy@lists.linux.dev>; Sun, 19 Mar 2023 10:02:55 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 35288111A;
+	Sun, 19 Mar 2023 11:08:38 +0000 (UTC)
+Received: by mail-ed1-f50.google.com with SMTP id h8so36451100ede.8;
+        Sun, 19 Mar 2023 04:08:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:message-id:mime-version;
-  bh=dw456rjrnw0J0lZzbqQqvuUqAjBz6dPmdT3+buc/eB8=;
-  b=iTPbBAXEIEhtMw8m5soCKyJlRAi3XV1kwLETYdd83OVWPQlvOK23NkUp
-   CIqEnJkdZs0nsXFXjhT+n5oAXt+d02eYq9gy0wnpxDdyc/z3uL9mo8CSb
-   YeLAxGNzIha05ARHtkuYj9G4sd4UqgmZjX/wc5ITyeh43xavmGVfWZMdl
-   A=;
-Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="5.98,273,1673910000"; 
-   d="scan'208";a="50601984"
-Received: from 231.85.89.92.rev.sfr.net (HELO hadrien) ([92.89.85.231])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Mar 2023 11:02:54 +0100
-Date: Sun, 19 Mar 2023 11:02:52 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Sumitra Sharma <sumitraartsy@gmail.com>
-cc: bagasdotme@gmail.com, outreachy@lists.linux.dev
-Subject: email configuration for the outreachy documentation
-Message-ID: <alpine.DEB.2.22.394.2303191059470.2867@hadrien>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+        d=gmail.com; s=20210112; t=1679224116;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=KvKtR1SyAlL8ZclsQUDCqvyh4Wf6MUHzliuNE/yYx4s=;
+        b=EWqzApqKGHadxWZtuIft3/9k1Z/U4tnCN8u/aqfrNv6utosGaFw523fJ6leRaqEll4
+         EQ28CbfFXGQMNlxErCoLR+Qk5RC/HUMST2x7w6ufa6xR/Xo1z0LJM3VfO/JgBUrCEvso
+         FTyn+GRt1ath2vas19mi3uVsa9U11EzxEPdR/ZwUw/WaQaV1mELNtTGWjT4q0euhB9i/
+         rC36xSR3eVmaTVjGyeUUfk0Aja3WyroUNB+dVS8kdiMfVjFOkL6GqeN1gef7vJO9Dd2E
+         qnCkh9xFyemZ1n+yg03sgw0m633doI8TJyS3h1BdE+4u7pnuI4oRPMKDyEIBe3twjMSf
+         yU5A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679224116;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=KvKtR1SyAlL8ZclsQUDCqvyh4Wf6MUHzliuNE/yYx4s=;
+        b=NHixiF+HzaELC8o+5EN25wo/uzpCLfC9sXB0i0CI6K2W2qY4ZbznALquY6HrG4VNLi
+         cuMQIlbCDtawIWU2kay49aelYxrhiaDjtAOx0hOt6MBI7c/WTnd6cV5JWguTf7DxXOq9
+         F+rFZ7mkGuCdJqNFcot3ipjJ4KWNPVnR3jQy9KhWSynq+EUwrN3FBksIz6iajpq8bxF/
+         AvXkMEgC4w7XyTecPQrK3wWc3NlGKxECNynUN9jpPNb4UqCOcgfznAeF3KiIuPIiMXJI
+         /4Go1+vSd9iA1DC4piqhG/blkvkGSoLe18R/wO+P5dG9ZovtQvJo8iQqWUfMZA1ybY7T
+         yMhA==
+X-Gm-Message-State: AO0yUKVN5ZqYZwfB4INCykz9DbK1UfHUSvieXQEZFwYXSnSYMp7d+L4d
+	E/yz/cBGD/sFERrSGtmdcTA=
+X-Google-Smtp-Source: AK7set+M2KsLZ2J+fCSTK7GAzj2ZqhFqHG2PxlB63b1Ee3POlZ7DfjOfSQV70skSwAKtdTXkkftrew==
+X-Received: by 2002:a17:906:1991:b0:92e:c4c9:7a43 with SMTP id g17-20020a170906199100b0092ec4c97a43mr5679412ejd.25.1679224116271;
+        Sun, 19 Mar 2023 04:08:36 -0700 (PDT)
+Received: from alaa-emad.. ([41.42.177.251])
+        by smtp.gmail.com with ESMTPSA id m20-20020a170906259400b0092b8c1f41ebsm3122889ejb.24.2023.03.19.04.08.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 19 Mar 2023 04:08:35 -0700 (PDT)
+From: Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>
+To: gregkh@linuxfoundation.org
+Cc: outreachy@lists.linux.dev,
+	johan@kernel.org,
+	elder@kernel.org,
+	greybus-dev@lists.linaro.org,
+	linux-kernel@vger.kernel.org,
+	linux-staging@lists.linux.dev,
+	eng.mennamahmoud.mm@gmail.com
+Subject: [PATCH] staging: greybus: add blank line after struct
+Date: Sun, 19 Mar 2023 13:08:31 +0200
+Message-Id: <20230319110831.39931-1-eng.mennamahmoud.mm@gmail.com>
+X-Mailer: git-send-email 2.34.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 8bit
 
-[changed subject to something more meaningful]
+add blank line after struct for readability as
+reported by checkpatch script
 
+" CHECK: Please use a blank line after function/struct/union/enum
+declarations"
 
-On Sun, 19 Mar 2023, Sumitra Sharma wrote:
+Signed-off-by: Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>
+---
+ drivers/staging/greybus/gbphy.h | 2 ++
+ 1 file changed, 2 insertions(+)
 
-> On Sun, Mar 19, 2023 at 10:02:46AM +0100, Julia Lawall wrote:
-> >
-> >
-> > On Sun, 19 Mar 2023, Sumitra Sharma wrote:
-> >
-> > > On Sun, Mar 19, 2023 at 09:35:50AM +0100, Julia Lawall wrote:
-> > > > > Actually, the only issue I faced was that the outreachyfirstpatch
-> > > > > document does not contain the information of how one can set their inbox in mutt.
-> > > > > Due to which I had problems to send and reply mails. This below
-> > > > > configuration update will enable the inbox at the client side.
-> > > > >
-> > > > > How about this...
-> > > > >
-> > > > > Under the section "Configure esmtp":
-> > > > >
-> > > > > ###
-> > > > > Next, set up the mail client, mutt, with some defaults, by creating a .muttrc file in your homedirectory:
-> > > > >
-> > > > > Note: The imap_pass, smtp_pass would be the App password or
-> > > > >  	  the mailbox password.
-> > > > >
-> > > > >  		set sendmail="/usr/bin/esmtp"
-> > > > >  		set envelope_from=yes
-> > > > >  		set from="Your Name <my.email@gmail.com>"
-> > > > >  		set use_from=yes
-> > > > >  		set edit_headers=yes
-> > > > >
-> > > > >  		# IMAP settings
-> > > > >  		set imap_user = "username@gmail.com"
-> > > > >  		set imap_pass = "<mailbox password>"
-> > > > >
-> > > > >  		# SMTP settings
-> > > > >  		set smtp_url = "smtps://username@smtp.gmail.com"
-> > > > >  		set smtp_pass = "<mailbox password>"
-> > > > >
-> > > > >  		# Remote Gmail folders
-> > > > >  		set folder = "imaps://imap.gmail.com/"
-> > > > >  		set spoolfile = "+INBOX"
-> > > > >  		set postponed = "+[Gmail]/Drafts"
-> > > > >  		set record = "+[Gmail]/Sent Mail"
-> > > > >  		set trash = "+[Gmail]/Trash"
-> > > > > ###
-> > > >
-> > > > Does this have anything to do with esmpt?
-> > > >
-> > >
-> > > In the current version of the outreachy firstpatch document the configuration
-> > > steps for .esmtp and .muttrc are written under the heading
-> > > "Configure esmtp" and also to configure esmtp we are creating the muttrc
-> > > file. So, both are linked in a way.
-> >
-> > I don't think so.  Comfiguring esmtp requires adding some information to
-> > the .muttrc, but people who don't want to configure esmtp may also want to
-> > add information to the .muttrc.
-> >
->
-> Then, why dont we rename the section as "Configure MTA"
+diff --git a/drivers/staging/greybus/gbphy.h b/drivers/staging/greybus/gbphy.h
+index d4a225b76338..1de510499480 100644
+--- a/drivers/staging/greybus/gbphy.h
++++ b/drivers/staging/greybus/gbphy.h
+@@ -15,6 +15,7 @@ struct gbphy_device {
+ 	struct list_head list;
+ 	struct device dev;
+ };
++
+ #define to_gbphy_dev(d) container_of(d, struct gbphy_device, dev)
+ 
+ static inline void *gb_gbphy_get_data(struct gbphy_device *gdev)
+@@ -43,6 +44,7 @@ struct gbphy_driver {
+ 
+ 	struct device_driver driver;
+ };
++
+ #define to_gbphy_driver(d) container_of(d, struct gbphy_driver, driver)
+ 
+ int gb_gbphy_register_driver(struct gbphy_driver *driver,
+-- 
+2.34.1
 
-I don't think that the configuration of IMAP is related to the concept of
-an MTA.
-
-https://serverfault.com/questions/173116/whats-the-different-between-mail-servers-mta-and-pop3-imap
-
->
-> then it will go as follows:
->
-> > >
-> > > > Does "<mailbox password>" mean that you have to put your password in plain
-> > > > text?
-> > > >
-> > >
-> > > Yes, but it is always prefered to use the app password for better security.
-> >
-> > The existing text about sending mesages with mutt says:
-> >
-> > identity "my.email@gmail.com"
-> > hostname smtp.gmail.com:587
-> > username "my.email@gmail.com"
-> > password "ThisIsNotARealPassWord"
-> > starttls required
-> >
-> > Why not put "ThisIsNotARealPassWord" in your text as well, if that is
-> > what you expect people to do?
-> >
-> > That is, when you put something in quotes, the reader doedn't know whether
-> > they are supposed to put exactly the thing that you have put in the quotes
-> > or something else.  I guess that for eg "smtps://username@smtp.gmail.com"
-> > they should fill in their real username.  But for "<mailbox password>" it
-> > is not clear what is expected.
-> >
->
-> ###
-> Configure MTA
->
-> Note: These instructions assume you're using esmtp, but if you already have another mail transfer agent (MTA) installed, you do not need to install esmtp. Instead, change the .muttrc file "sendmail" line to be the path to your MTA. Mutt uses ssmtp by default, so if your MTA is ssmtp, you can leave that line out entirely.
->
-> First, create a .esmtprc file with the right permissions:
->
->
-> 			touch ~/.esmtprc
-> 			chmod g-rwx ~/.esmtprc
-> 			chmod o-rwx ~/.esmtprc
->
-> Edit the .esmtprc in your home directory, and add lines like this:
->
-> 			identity "my.email@gmail.com"
-> 			hostname smtp.gmail.com:587
-> 			username "my.email@gmail.com"
-> 			password "ThisIsNotARealPassWord"
-> 			starttls required
->
-> (For Yahoo mail, replace hostname line with:
->
-> 			hostname smtp.mail.yahoo.com:587
->
-> Next, set up the mail client, mutt, with some defaults, by creating a .muttrc file in your homedirectory:
->  Note: The imap_pass, smtp_pass would be the App password or the mailbox password.
->
->
-> 	           set sendmail="/usr/bin/esmtp"
-> 	           set envelope_from=yes
-> 	           set from="Your Name <my.email@gmail.com>"
-> 	           set use_from=yes
-> 		     set edit_headers=yes
->
->                  # IMAP settings
->                  set imap_user = "username@gmail.com"
->                  set imap_pass = "<ThisIsNotARealPassWord>"
-
-Why do you have <> around ThisIsNotARealPassWord.  It was not done
-previously.
-
->                  # SMTP settings
->                  set smtp_url = "smtps://username@smtp.gmail.com"
-
-Is username different than my.email?
-
-julia
-
->                  set smtp_pass = "<ThisIsNotARealPassWord>"
->
->                  # Remote Gmail folders
->                  set folder = "imaps://imap.gmail.com/"
->                  set spoolfile = "+INBOX"
->                  set postponed = "+[Gmail]/Drafts"
->                  set record = "+[Gmail]/Sent Mail"
->                  set trash = "+[Gmail]/Trash"
->
->
-> ###
->
->
-> Regards,
->
-> Sumitra
->
-> > julia
->
