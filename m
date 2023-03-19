@@ -1,45 +1,45 @@
-Received: from mail-ed1-f43.google.com (mail-ed1-f43.google.com [209.85.208.43])
+Received: from mail-ed1-f47.google.com (mail-ed1-f47.google.com [209.85.208.47])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7DE127E4;
-	Sun, 19 Mar 2023 14:34:56 +0000 (UTC)
-Received: by mail-ed1-f43.google.com with SMTP id z21so37595226edb.4;
-        Sun, 19 Mar 2023 07:34:56 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C32101846
+	for <outreachy@lists.linux.dev>; Sun, 19 Mar 2023 14:49:43 +0000 (UTC)
+Received: by mail-ed1-f47.google.com with SMTP id w9so37680678edc.3
+        for <outreachy@lists.linux.dev>; Sun, 19 Mar 2023 07:49:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679236494;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=13RptpPwU9CeIgu972ZARQHg4l6hn6RYakrP4lUSAIE=;
-        b=jhidRbbQnrEJ7yOVgGoL3BUqzLX6xT2MlTC3071eYARrvKpnEGBHbcz8PYAkVPQ+8h
-         QyqIC20VPp49BjMuxWMVOafio5J1yVwKC1bGist5t/s0/u8jUSJCrEi28nmugNocClJ7
-         7WjzsCx/HhfIgELuP5q3mXDsP/crTubf6RjJEs0DSg8eBeitR8zeymfVf536NwlAXPhk
-         3NnVCTpNxMJOsnAly1DM2JeG/7gsgyh2qtKIOMvvvLdFTyw1973agxDXLOCMhSTG2nUY
-         HDbrz+iCo1Ka5L6KlOKEKQaY1qJAcnUoTvPo+S1AXFzLoniKnT3r9iZAo+HJht+3E2q6
-         KalA==
+        d=gmail.com; s=20210112; t=1679237382;
+        h=subject:cc:from:to:content-language:user-agent:mime-version:date
+         :message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=x7Ullj2jneQE6yCdANSA6gHIiBeOSTC9RnKDy+w7B3U=;
+        b=jjU1wQS8t6PbCdJmksmwPb502XJMG2iC0WYgr808NldSHz3TaVfNnJr30DMAds9TAo
+         KsqhfYuOs0C6h5QVKwqkpG5+Cdohc92QUnZf92rVkgLSCYBKtHKTagN9w0zJgfqGdoDG
+         oBAodc4jjRoGmnqnh5yz4rijvNHUQJxvWM9iFlr2VMBzFhlajJF70wkZoJ9G5RT+FhoQ
+         gC/1tlM4xLliRIa6lXhsOTC1wmDpraJ6hShHPoo6BD0NOskiukTz1CwjLW4jn6rjzabm
+         mOmB/cRNBwW5W0gtbOGY3TLYaTGScuBUyr3xNwfu2t0WjCySxSyITl59XIeUebuolWwQ
+         cbBA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679236494;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=13RptpPwU9CeIgu972ZARQHg4l6hn6RYakrP4lUSAIE=;
-        b=nAiJYhDZrUvhoW6paGPVLZ+m5ntCy2WrMuVG6fM5M0qyEq+sQVQ+rswoLgzU2ifYSc
-         qh3DPLZ5Q5iKdkwDtyTV6ajRyDcjM2ytSeSgtldX5cHh2R21LtBUvqai3AC2lvi/f12h
-         PT8vT2RNDLiA45Vnhzt91awUBvskvXhsaYqideUqOXuai89260XPD7+bPuGm14M0RPrK
-         Ab6WZQT5D4BUEGn4m7VnGI6r0nQi3D3/qPWVdAOkrqjkjhP0SK3ACxVjibAdvhEYcy4K
-         5wHecVvaNIUrIKjCGNn58HQjXwRJo/UhTJlwWc92BeeJEFs0KSXJTUzeVLszilmqdxjL
-         Jn6w==
-X-Gm-Message-State: AO0yUKXgJ5HJPMVyOyJpiFQiqmYg/2M6H4hx4cbf1lGi/o1LpEO1q+4I
-	m9zTbPFyrafGeOAsc/P42Wc=
-X-Google-Smtp-Source: AK7set+oNEI5AB+Y6WRuVS4gibvoEWkUa8W7ULuy6tVY+CD196jC9edB8c62cUbgWPEN8DM8ylUDJA==
-X-Received: by 2002:a17:907:2da5:b0:92b:eefb:b966 with SMTP id gt37-20020a1709072da500b0092beefbb966mr7966700ejc.0.1679236494588;
-        Sun, 19 Mar 2023 07:34:54 -0700 (PDT)
+        d=1e100.net; s=20210112; t=1679237382;
+        h=subject:cc:from:to:content-language:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=x7Ullj2jneQE6yCdANSA6gHIiBeOSTC9RnKDy+w7B3U=;
+        b=vR5f9V/OEmRjf2XWdvRNtKQ5HMF408GihqX3liiG1VrVoj5920rU0ipefQmyOugfqh
+         SXAp2DB54hPJIkJUbk5DKZnWKH8nMdOd7w36re7V0Npdm9mMjKefz+S4bVn5lDrwjBWH
+         1oMvyaBhha9whgjhgnh90HkuFfbmvKdmlNxhX2o2+JH1YX2PwswVeMEXVzbz77WQlPQC
+         TFqm49d4UjYoHj1vZ2ZkPFzBzr5nHxObBJ8PRbhHXh972o5ykqGKBhZ8Yj/dzVVl4TO5
+         yd9L6DBxzeAirxl4AhlbZAA3wUuxK1GybB/qsDlnJbjtRMI5TT0NW4+XLR5ZO0FukpF1
+         CZ1A==
+X-Gm-Message-State: AO0yUKVycnSe2rjbE6FwGcpRHOXLL6dbqECpHNL/VDGkCAwQBMSA0NYK
+	f0ESFg2O83cvZ7hyYrKE33FRPh+BKMo=
+X-Google-Smtp-Source: AK7set93sTNBRn/A4bp1Ccy6qayQWpEg19kPgF7JAfclQifVTgRmqTM23LqpcKLkRF4WZvZk9KX2DQ==
+X-Received: by 2002:aa7:cc09:0:b0:4fb:59bb:ce6f with SMTP id q9-20020aa7cc09000000b004fb59bbce6fmr10231158edt.35.1679237381948;
+        Sun, 19 Mar 2023 07:49:41 -0700 (PDT)
 Received: from [192.168.1.16] ([41.42.177.251])
-        by smtp.gmail.com with ESMTPSA id w11-20020a1709067c8b00b009231714b3d4sm3242978ejo.151.2023.03.19.07.34.53
+        by smtp.gmail.com with ESMTPSA id s15-20020a1709060c0f00b00928e0ea53e5sm3290216ejf.84.2023.03.19.07.49.40
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 19 Mar 2023 07:34:54 -0700 (PDT)
-Message-ID: <54840613-5382-2aaa-acdc-2e28470913c4@gmail.com>
-Date: Sun, 19 Mar 2023 16:34:50 +0200
+        Sun, 19 Mar 2023 07:49:41 -0700 (PDT)
+Content-Type: multipart/mixed; boundary="------------0Hd6Bh40EZeEOMy0fVPB014m"
+Message-ID: <16c61a62-c149-bf0e-0dd7-21e4ba9c6d1d@gmail.com>
+Date: Sun, 19 Mar 2023 16:49:40 +0200
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -48,79 +48,77 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.8.0
-Subject: Re: [PATCH] staging: rtl8723bs: include: use inline functions for
- dvobj_to_dev
 Content-Language: en-US
 To: Julia Lawall <julia.lawall@inria.fr>
-Cc: gregkh@linuxfoundation.org, outreachy@lists.linux.dev, namcaov@gmail.com,
- straube.linux@gmail.com, hdegoede@redhat.com, linux-kernel@vger.kernel.org,
- linux-staging@lists.linux.dev
-References: <20230319131030.151170-3-eng.mennamahmoud.mm@gmail.com>
- <alpine.DEB.2.22.394.2303191509330.2867@hadrien>
 From: Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>
-In-Reply-To: <alpine.DEB.2.22.394.2303191509330.2867@hadrien>
+Cc: Outreachy Linux Kernel <outreachy@lists.linux.dev>
+Subject: warning when converting `to_gbphy_dev` into inline function
+
+This is a multi-part message in MIME format.
+--------------0Hd6Bh40EZeEOMy0fVPB014m
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 
+Hi Julia,
 
-On ١٩‏/٣‏/٢٠٢٣ ١٦:١٣, Julia Lawall wrote:
-> How have you chosen the names at the beginning of the subject line?  The
-> other patches on this file don't have the word "include:" in the subject.
-> Please see the section "Following the Driver commit style" of the tutorial
-> to see what to do.
-Okay, I will check it.
->
-> On Sun, 19 Mar 2023, Menna Mahmoud wrote:
->
->> Convert `dvobj_to_dev` macro into static inline function,
-> "into a static inline function"
-
-I will fix it.
-
->
-> But the message is a bit too verbose.  Please see my suggestion on another
-> similar patch that was recently proposed.
->
-> julia
+I tried to convert to_gbphy_dev to inline function but got these 
+warnings while building:
 
 
-I will to rework on it, thanks Julia appreciate your help.
+```
 
+drivers/staging/greybus/gbphy.c: In function ‘gbphy_dev_uevent’:
+drivers/staging/greybus/gbphy.c:76:61: warning: passing argument 1 of 
+‘to_gbphy_dev’ discards ‘const’ qualifier from pointer target type 
+[-Wdiscarded-qualifiers]
+    76 |         const struct gbphy_device *gbphy_dev = to_gbphy_dev(dev);
+|                                                             ^~~
+In file included from drivers/staging/greybus/gbphy.c:18:
+drivers/staging/greybus/gbphy.h:22:64: note: expected ‘struct device *’ 
+but argument is of type ‘const struct device *’
+    22 | static inline struct gbphy_device *to_gbphy_dev(struct device *dev)
+       | ~~~~~~~~~~~~~~~^~~
+```
+
+I tried to figure out the issue but don't know how to solve it, I 
+attached the patch. Could you please check it?
+
+
+Thanks in advance,
 
 Menna
 
->> because it is not great to have macro that use `container_of` macro,
->> because from looking at the definition one cannot tell what type it applies to.
->>
->> One can get the same benefit from an efficiency point of view by making an
->> inline function (concretely, typically a static inline function, because
->> the definition only needs to be visible in the current file, or in the
->> case of a header file in the file that includes the header file).
->>
->> Suggested-by: Julia Lawall <julia.lawall@inria.fr>
->> Signed-off-by: Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>
->> ---
->>   drivers/staging/rtl8723bs/include/drv_types.h | 6 +++++-
->>   1 file changed, 5 insertions(+), 1 deletion(-)
->>
->> diff --git a/drivers/staging/rtl8723bs/include/drv_types.h b/drivers/staging/rtl8723bs/include/drv_types.h
->> index 82159e1c7f9b..ea6bb44c5e1d 100644
->> --- a/drivers/staging/rtl8723bs/include/drv_types.h
->> +++ b/drivers/staging/rtl8723bs/include/drv_types.h
->> @@ -305,7 +305,11 @@ struct sdio_data intf_data;
->>   };
->>
->>   #define dvobj_to_pwrctl(dvobj) (&(dvobj->pwrctl_priv))
->> -#define pwrctl_to_dvobj(pwrctl) container_of(pwrctl, struct dvobj_priv, pwrctl_priv)
->> +
->> +static inline struct dvobj_priv *pwrctl_to_dvobj(struct pwrctrl_priv *pwrctl_priv)
->> +{
->> +	return container_of(pwrctl_priv, struct dvobj_priv, pwrctl_priv);
->> +}
->>
->>   static inline struct device *dvobj_to_dev(struct dvobj_priv *dvobj)
->>   {
->> --
->> 2.34.1
->>
->>
+--------------0Hd6Bh40EZeEOMy0fVPB014m
+Content-Type: text/x-patch; charset=UTF-8;
+ name="0001-staging-greybus-use-inline-function-for-to_gbphy_dev.patch"
+Content-Disposition: attachment;
+ filename*0="0001-staging-greybus-use-inline-function-for-to_gbphy_dev.pa";
+ filename*1="tch"
+Content-Transfer-Encoding: base64
+
+RnJvbSBkMzEyNWEyN2ZhNjA5ODdkNDk2MTBlZGRhZTRkZDFhY2UwZWM0MjRiIE1vbiBTZXAg
+MTcgMDA6MDA6MDAgMjAwMQpGcm9tOiBNZW5uYSBNYWhtb3VkIDxlbmcubWVubmFtYWhtb3Vk
+Lm1tQGdtYWlsLmNvbT4KRGF0ZTogU3VuLCAxOSBNYXIgMjAyMyAxNjozODozMSArMDIwMApT
+dWJqZWN0OiBbUEFUQ0hdIHN0YWdpbmc6IGdyZXlidXM6IHVzZSBpbmxpbmUgZnVuY3Rpb24g
+Zm9yIHRvX2dicGh5X2RldgoKQ29udmVydCB0b19nYnBoeV9kZXYgbWFjcm8gaW50byBpbmxp
+bmUgZnVuY3Rpb24KClN1Z2dlc3RlZC1ieTogSnVsaWEgTGF3YWxsIDxqdWxpYS5sYXdhbGxA
+aW5yaWEuZnI+ClNpZ25lZC1vZmYtYnk6IE1lbm5hIE1haG1vdWQgPGVuZy5tZW5uYW1haG1v
+dWQubW1AZ21haWwuY29tPgotLS0KIGRyaXZlcnMvc3RhZ2luZy9ncmV5YnVzL2dicGh5Lmgg
+fCA5ICsrKysrKystLQogMSBmaWxlIGNoYW5nZWQsIDcgaW5zZXJ0aW9ucygrKSwgMiBkZWxl
+dGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL3N0YWdpbmcvZ3JleWJ1cy9nYnBoeS5o
+IGIvZHJpdmVycy9zdGFnaW5nL2dyZXlidXMvZ2JwaHkuaAppbmRleCAxZGU1MTA0OTk0ODAu
+LjBhNzcyYjkwY2RlMyAxMDA2NDQKLS0tIGEvZHJpdmVycy9zdGFnaW5nL2dyZXlidXMvZ2Jw
+aHkuaAorKysgYi9kcml2ZXJzL3N0YWdpbmcvZ3JleWJ1cy9nYnBoeS5oCkBAIC0xNSw4ICsx
+NSwxNCBAQCBzdHJ1Y3QgZ2JwaHlfZGV2aWNlIHsKIAlzdHJ1Y3QgbGlzdF9oZWFkIGxpc3Q7
+CiAJc3RydWN0IGRldmljZSBkZXY7CiB9OwotCisvKgogI2RlZmluZSB0b19nYnBoeV9kZXYo
+ZCkgY29udGFpbmVyX29mKGQsIHN0cnVjdCBnYnBoeV9kZXZpY2UsIGRldikKKyovCisKK3N0
+YXRpYyBpbmxpbmUgc3RydWN0IGdicGh5X2RldmljZSAqdG9fZ2JwaHlfZGV2KHN0cnVjdCBk
+ZXZpY2UgKmRldikKK3sKKwlyZXR1cm4gY29udGFpbmVyX29mKGRldiwgc3RydWN0IGdicGh5
+X2RldmljZSwgZGV2KTsKK30KIAogc3RhdGljIGlubGluZSB2b2lkICpnYl9nYnBoeV9nZXRf
+ZGF0YShzdHJ1Y3QgZ2JwaHlfZGV2aWNlICpnZGV2KQogewpAQCAtNDQsNyArNTAsNiBAQCBz
+dHJ1Y3QgZ2JwaHlfZHJpdmVyIHsKIAogCXN0cnVjdCBkZXZpY2VfZHJpdmVyIGRyaXZlcjsK
+IH07Ci0KICNkZWZpbmUgdG9fZ2JwaHlfZHJpdmVyKGQpIGNvbnRhaW5lcl9vZihkLCBzdHJ1
+Y3QgZ2JwaHlfZHJpdmVyLCBkcml2ZXIpCiAKIGludCBnYl9nYnBoeV9yZWdpc3Rlcl9kcml2
+ZXIoc3RydWN0IGdicGh5X2RyaXZlciAqZHJpdmVyLAotLSAKMi4zNC4xCgo=
+
+--------------0Hd6Bh40EZeEOMy0fVPB014m--
