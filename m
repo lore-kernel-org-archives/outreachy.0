@@ -1,153 +1,50 @@
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
+Received: from mga18.intel.com (mga18.intel.com [134.134.136.126])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AAEEB7C;
-	Sun, 19 Mar 2023 21:27:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=bHkK5UpAZVkY+gcKkmir9zpMkeQ6gmLHJ5QWOlgDrs0=;
-  b=DX/U08CL1QHKWrI/6256ttDq9yKPnt+j3lDlcRxV7lo05afZvxGxmrne
-   1glFA9a2GVR74MzchG4Tw/HkMA0JQTlHCpA6mVW60kCDLgS/LAKFwpZZW
-   1QMdlQEowac11xFJxyNLMEUqmSZXtgDUKSD0MVvnBf4YEEKkbUjmRHYGt
-   g=;
-Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="5.98,274,1673910000"; 
-   d="scan'208";a="50622383"
-Received: from 231.85.89.92.rev.sfr.net (HELO hadrien) ([92.89.85.231])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Mar 2023 22:26:59 +0100
-Date: Sun, 19 Mar 2023 22:26:58 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>
-cc: gregkh@linuxfoundation.org, outreachy@lists.linux.dev, johan@kernel.org, 
-    elder@kernel.org, linux-kernel@vger.kernel.org, 
-    linux-staging@lists.linux.dev
-Subject: Re: [PATCH] staging: greybus: use inline function for macros
-In-Reply-To: <402ffcbe-bb29-7035-68f4-2741532a6d67@gmail.com>
-Message-ID: <alpine.DEB.2.22.394.2303192225590.2867@hadrien>
-References: <20230319201324.253874-1-eng.mennamahmoud.mm@gmail.com> <alpine.DEB.2.22.394.2303192121170.2867@hadrien> <0f02a3ff-801b-1e1f-5c03-009a05708709@gmail.com> <alpine.DEB.2.22.394.2303192151330.2867@hadrien>
- <402ffcbe-bb29-7035-68f4-2741532a6d67@gmail.com>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0F6C17C
+	for <outreachy@lists.linux.dev>; Sun, 19 Mar 2023 21:45:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1679262348; x=1710798348;
+  h=date:from:to:subject:message-id:mime-version;
+  bh=SmjcJb/4dhSQ8FRmYMLgrFtgfwPzIwZ8GXhQFd7EihM=;
+  b=DGsxx1eFhFd1y10zxLcrYCu3k9gIx1nLdTxOUZM35k9ArJfVFIVDFBV9
+   sTh6GDpN4dUEgBTLk1UDtJBcZ7P73XTcHiRpKNicfOm9QSCB/aEP0oTUZ
+   /ekkVnqm//qzP8zUJDg26yM8IYXOHgqJLBhnqSwF63wb+AKQcT/kqu2TX
+   UWSdkKvGu2c7WYQUgy5Ylgyl8aDg4c2XvcJEZuPsDYWJcHwIyrD0nAh6j
+   dq9mAUZhOno9NNhzBTYvoknqDBbFXtcRjVTp3O6QCUJar9KXihUrd2PIF
+   74J8DFSPlId+T0g9xPKh9Okty9Roj1WORzQVJMyGPVoDxbEn7bf922tFg
+   A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10654"; a="322384223"
+X-IronPort-AV: E=Sophos;i="5.98,274,1673942400"; 
+   d="scan'208";a="322384223"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+  by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Mar 2023 14:45:47 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10654"; a="745147531"
+X-IronPort-AV: E=Sophos;i="5.98,274,1673942400"; 
+   d="scan'208";a="745147531"
+Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.209.14.183])
+  by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Mar 2023 14:45:47 -0700
+Date: Sun, 19 Mar 2023 14:45:45 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: Outreachy Linux Kernel <outreachy@lists.linux.dev>
+Subject: [Outreachy Info] Cleanup simple switches
+Message-ID: <ZBeCiRYXyFyhTtGP@aschofie-mobl2>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-1603913763-1679261219=:2867"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+drivers/staging$ git log --oneline | grep -i replace | grep switch
 
---8323329-1603913763-1679261219=:2867
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
+You'll see example patches where folks replaced simple switches with
+if statements.
 
+If a switch only has one case, or more than one case but all result
+in the same action, it may be simplified to an if statement.
 
-
-On Sun, 19 Mar 2023, Menna Mahmoud wrote:
-
->
-> On ١٩/٣/٢٠٢٣ ٢٢:٥٥, Julia Lawall wrote:
-> >
-> > On Sun, 19 Mar 2023, Menna Mahmoud wrote:
-> >
-> > > On ١٩/٣/٢٠٢٣ ٢٢:٢١, Julia Lawall wrote:
-> > > > On Sun, 19 Mar 2023, Menna Mahmoud wrote:
-> > > >
-> > > > > Convert `to_gbphy_dev` and `to_gbphy_driver` macros into a
-> > > > > static inline functions.
-> > > > >
-> > > > > it is not great to have macro that use `container_of` macro,
-> > > > > because from looking at the definition one cannot tell what type
-> > > > > it applies to.
-> > > > >
-> > > > > One can get the same benefit from an efficiency point of view
-> > > > > by making an inline function.
-> > > > >
-> > > > > Suggested-by: Julia Lawall <julia.lawall@inria.fr>
-> > > > > Signed-off-by: Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>
-> > > > > ---
-> > > > >    drivers/staging/greybus/gbphy.h | 10 ++++++++--
-> > > > >    1 file changed, 8 insertions(+), 2 deletions(-)
-> > > > >
-> > > > > diff --git a/drivers/staging/greybus/gbphy.h
-> > > > > b/drivers/staging/greybus/gbphy.h
-> > > > > index 1de510499480..42c4e3fe307c 100644
-> > > > > --- a/drivers/staging/greybus/gbphy.h
-> > > > > +++ b/drivers/staging/greybus/gbphy.h
-> > > > > @@ -16,7 +16,10 @@ struct gbphy_device {
-> > > > >    	struct device dev;
-> > > > >    };
-> > > > >
-> > > > You have made the patch against your previous patch that added a newline
-> > > > here.  It should be against Greg's tree.
-> > > >
-> > > > julia
-> > > you mean I should remove this newline, right?
-> > You should apply your change to the state of Greg's tree, not the state
-> > after your patch.
-> >
-> > Assuming that you have committed both the patch adding the new line and
-> > the patch changing the macro to a function, and have made no other
-> > changes, you can do git rebase -i HEAD~2 and the put a d at the beginning
-> > of the line related to the patch adding the newline.
->
->
-> you mean drop this patch "staging: greybus: remove unnecessary blank line"?
-
-No, the one that removes the blank line looks fine.
-
-At some point, you added a blank line below the two structure definitions.
-That blank line is not in Greg's tree, so you shoulsn't send a patch that
-assumes that it is there.
-
-julia
-
->
-> Menna
->
->
-> > If you have made
-> > more changes, you can adapt the HEAD~ part accordingly.
-> >
-> > julia
-> >
-> >
-> > >
-> > > Menna
-> > >
-> > > > > -#define to_gbphy_dev(d) container_of(d, struct gbphy_device, dev)
-> > > > > +static inline struct gbphy_device *to_gbphy_dev(const struct device
-> > > > > *d)
-> > > > > +{
-> > > > > +	return container_of(d, struct gbphy_device, dev);
-> > > > > +}
-> > > > >
-> > > > >    static inline void *gb_gbphy_get_data(struct gbphy_device *gdev)
-> > > > >    {
-> > > > > @@ -45,7 +48,10 @@ struct gbphy_driver {
-> > > > >    	struct device_driver driver;
-> > > > >    };
-> > > > >
-> > > > > -#define to_gbphy_driver(d) container_of(d, struct gbphy_driver,
-> > > > > driver)
-> > > > > +static inline struct gbphy_driver *to_gbphy_driver(struct
-> > > > > device_driver
-> > > > > *d)
-> > > > > +{
-> > > > > +	return container_of(d, struct gbphy_driver, driver);
-> > > > > +}
-> > > > >
-> > > > >    int gb_gbphy_register_driver(struct gbphy_driver *driver,
-> > > > >    			     struct module *owner, const char
-> > > > > *mod_name);
-> > > > > --
-> > > > > 2.34.1
-> > > > >
-> > > > >
-> > >
->
---8323329-1603913763-1679261219=:2867--
