@@ -1,65 +1,88 @@
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-pg1-f178.google.com (mail-pg1-f178.google.com [209.85.215.178])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F1F0B7E6
-	for <outreachy@lists.linux.dev>; Sun, 19 Mar 2023 12:36:53 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B623D138F
+	for <outreachy@lists.linux.dev>; Sun, 19 Mar 2023 12:50:10 +0000 (UTC)
+Received: by mail-pg1-f178.google.com with SMTP id x37so5206690pga.1
+        for <outreachy@lists.linux.dev>; Sun, 19 Mar 2023 05:50:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=sKxWzxxPpqHcGIKk/6tohsfSldQncki3ufcsADByoTM=;
-  b=QduDNy8sSkzI+CokHBHgjcgzqNCVVJipwU0HG6D1YHFP7372d6PZsn46
-   IBOO9dlUiaa4oovlqIr6SNBIqfJ+kDJrHy/tYxgadnhE2tANC6UGeQ0JJ
-   9MZW859Rk3HVyYYiZrn70Ae5ZUwroQUMKpi9FI5x7Kyc/zm8DL/FXB1Tu
-   E=;
-Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="5.98,273,1673910000"; 
-   d="scan'208";a="50607288"
-Received: from 231.85.89.92.rev.sfr.net (HELO hadrien) ([92.89.85.231])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Mar 2023 13:36:51 +0100
-Date: Sun, 19 Mar 2023 13:36:51 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Sumitra Sharma <sumitraartsy@gmail.com>
-cc: Bagas Sanjaya <bagasdotme@gmail.com>, outreachy@lists.linux.dev
-Subject: Re: Unable to find module location
-In-Reply-To: <20230319121026.GA53959@sumitra.com>
-Message-ID: <alpine.DEB.2.22.394.2303191336090.2867@hadrien>
-References: <ZBWA3rb9nVP8ho05@debian.me> <20230318121508.GA37278@sumitra.com> <64997a6c-24f1-d551-1b87-735a699e4a8e@gmail.com> <20230318124937.GA39892@sumitra.com> <21c2da25-22cb-cbe7-153e-067377de4723@gmail.com> <20230318175746.GB49651@sumitra.com>
- <ee140dee-6db9-6d7e-0b84-b69f3c36cc13@gmail.com> <20230319083256.GB50179@sumitra.com> <alpine.DEB.2.22.394.2303190938080.2867@hadrien> <alpine.DEB.2.22.394.2303190956120.2867@hadrien> <20230319121026.GA53959@sumitra.com>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+        d=gmail.com; s=20210112; t=1679230210;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=brsH2RbXE1CFT0V1MdX7PglJSQBxUoCC+FifxvO9G/w=;
+        b=DpbcLvFfB435os0hmIm6l53KIR4kLXlq8Qnjz0kua2+8Q+IV9dvdgRe+9szBwXvBIT
+         J1KtPoAtn39wMaBHr6dan17oDUXrZ6MfU5wS5JYi3rMornMb0VLGDBplRldTMnea7C8F
+         9TGSLRyy/m3kyN6A1MS6r6ubdEfURgVtUy3x5s04BRUGKB02RDBGc5CPujTPnIgxqSaZ
+         zWFLEmaBAAi1ehWFBud5OGoZcpyacSEC+QvPbg0i+Xn/gsCnFq4mWka3NRftuaWgyX0y
+         uIpn6JNf9l17j7yrK1qjETe+LNTSp28vIIPPUyNpVBvOMQANbindmqHgtDJgOd09dEtu
+         Kurw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679230210;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=brsH2RbXE1CFT0V1MdX7PglJSQBxUoCC+FifxvO9G/w=;
+        b=ces2Di8CAzTzQG5QYs+BaxFUyxVm0g8Wv4/93Q7RaCuqT37fPanniusk6fP6Ix7bEF
+         T2tkCvoSpwwOcSD/8STs26i8CRbeuJT2jNIaXlo2iIGYTMbIzEGmyYSex4W4HNZ3aetO
+         p/OIlV8cml1pNscPQIXwjnm635pwiUhhqeFokgNlbOg6RZAuxdW/pTyoieBdz+oHISrB
+         O6dLRoIBjWKOeBlC2twslRgJKwHioFzY3BVU9iwR5etCy0jOtKtp+G9S5Zof+JTUNty7
+         yGbfTDt5WBEtI7G1ShBqPgImgHok7i+In0rEzQbCo2B8GF33jZrnZleNfjVX+aGRgLGA
+         EQ2w==
+X-Gm-Message-State: AO0yUKXYxG2baRNGS7xBMcypHg4pOyLCJ0bWkHaH40cvORdhb+p38U1Z
+	To0CjXxbYIux3J2brCyO0K0=
+X-Google-Smtp-Source: AK7set/KWBYfk241dHuIZ9hrVem5YFtgfmGUPt+f2t8FiPALRT7RPvBSH/ImPNhU2Lm1mxRLdkvdlQ==
+X-Received: by 2002:aa7:96cc:0:b0:627:de2e:f1a5 with SMTP id h12-20020aa796cc000000b00627de2ef1a5mr4531140pfq.4.1679230210041;
+        Sun, 19 Mar 2023 05:50:10 -0700 (PDT)
+Received: from [192.168.43.80] (subs32-116-206-28-58.three.co.id. [116.206.28.58])
+        by smtp.gmail.com with ESMTPSA id e25-20020aa78c59000000b0058837da69edsm4557539pfd.128.2023.03.19.05.50.08
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 19 Mar 2023 05:50:09 -0700 (PDT)
+Message-ID: <ef6cc9d8-4064-6422-f427-1c3ef13a0119@gmail.com>
+Date: Sun, 19 Mar 2023 19:50:04 +0700
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: email configuration for the outreachy documentation
+To: Sumitra Sharma <sumitraartsy@gmail.com>,
+ Julia Lawall <julia.lawall@inria.fr>
+Cc: outreachy@lists.linux.dev
+References: <alpine.DEB.2.22.394.2303191059470.2867@hadrien>
+ <20230319112114.GF50179@sumitra.com>
+Content-Language: en-US
+From: Bagas Sanjaya <bagasdotme@gmail.com>
+In-Reply-To: <20230319112114.GF50179@sumitra.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
+On 3/19/23 18:21, Sumitra Sharma wrote:
+> A question What are the alternatives to esmtp?
+> 
+> I am unable to find a solution for this: 
+> 
+> "Comfiguring esmtp requires adding some information to
+> the .muttrc, but people who don't want to configure esmtp may also want to
+> add information to the .muttrc."
+> 
+> So either postfix will we used which will relay through the local machine...I am unable to answer this.
+> What are your views?
+> 
 
+As stated in earlier reply [1], yes - we need to move away from
+unmaintained cruft like esmtp. See my replies ([2] & [3]) for the
+configuration I shared to you.
 
-On Sun, 19 Mar 2023, Sumitra Sharma wrote:
+Thanks.
 
-> On Sun, Mar 19, 2023 at 09:56:33AM +0100, Julia Lawall wrote:
-> > Maybe try make tegra_defconfig
-> >
->
-> Hi,
->
-> Error: Can't find default configuration "arch/x86/configs/tegra_defconfig"!
+[1]: https://lore.kernel.org/outreachy/ZA7oTq4LwuatjaI4@debian.me/
+[2]: https://lore.kernel.org/outreachy/ZBA+AtHMFwwkwifW@debian.me/
+[3]: https://lore.kernel.org/outreachy/ZBQsDwvI67iq%2FDiz@debian.me/
 
-make ARCH=arm tegra_defconfig
+-- 
+An old man doll... just what I always wanted! - Clara
 
-You can see that because find . -name tegra_defconfig gives:
-
-./arch/arm/configs/tegra_defconfig
-
-julia
-
-
->
-> REgards,
-> SUmitra
->
-> > julia
->
