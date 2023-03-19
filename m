@@ -1,48 +1,56 @@
-Received: from mail-pl1-f176.google.com (mail-pl1-f176.google.com [209.85.214.176])
+Received: from mail-pl1-f173.google.com (mail-pl1-f173.google.com [209.85.214.173])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 06BEEEC6
-	for <outreachy@lists.linux.dev>; Sun, 19 Mar 2023 08:10:03 +0000 (UTC)
-Received: by mail-pl1-f176.google.com with SMTP id i5so9530388pla.2
-        for <outreachy@lists.linux.dev>; Sun, 19 Mar 2023 01:10:03 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5CF70A44
+	for <outreachy@lists.linux.dev>; Sun, 19 Mar 2023 08:33:03 +0000 (UTC)
+Received: by mail-pl1-f173.google.com with SMTP id le6so9520404plb.12
+        for <outreachy@lists.linux.dev>; Sun, 19 Mar 2023 01:33:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679213403;
-        h=in-reply-to:content-disposition:mime-version:message-id:subject:to
-         :from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=0AIg6djfD3Z8OLbEjaJ/Dktvn8yVMGHT+GXUl6YhXpc=;
-        b=EwHsQk6Wny+JUiJmEsemEPvZ7AuQvuOk8vZo2hCiwQPR/tJfpDUTK2p9ZHm/wznYXP
-         Gc6MUa2fG6cNWnbKtfaQ4urCdBZy3y55C/5+bLHLYtb40EnELwnh6j8dlFuzYxNq+ijw
-         Qn8QKYBUtMhFDXu6fZ5VpjqWpAvRbwlytLollrztLJYeDCzoXEdj7CKS/kc5gInA1vKY
-         0pKjAuuTbLhEyObqrQAtXQDVdbZvCe9vOA7dscf3RXQSqBU+21rbNXRiLzZ57KLl4GFx
-         qPP/CJmdiyqf18Xz+W6yUAar/UO+QIB/LmS/AGLzMBfs+i5pjfjdEhyIHnJGl0JTwU6p
-         4sAg==
+        d=gmail.com; s=20210112; t=1679214783;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=oQJtI21/SFR0sO0YChZwJzev4KVTVmLvkdFRygIudxg=;
+        b=nm6Tm5OK+TTEgo3s1zc71PSqVgs55D++Vkd1eBSMgM1OAVbs+OxkKes84KLRqo8XmG
+         5SDoxKY+dmLIm1TT2UVHmccrfPkrllNqA++t8Xas4NrKl3iaddL+y8dur5BO/j31KZS6
+         6xEvjEwi2Oh+6miUwqO0wWOLDTHDKrWb6E1xuvGHLJ/Z9xsVsfl01ZDp8adOykC1lgOO
+         skTBMw+DkBbyxPZRv/BBgXE1z7W6ZqS+htOBYgOu/T6euCrmK+cxh2N33AnwEZ+nznRy
+         7yFuDuzzsnZHKiaQQBxFCU0auQcIEQDnXKl5SI+JBHL1wwxVSkV9lql73ok874HXUBrc
+         PHEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679213403;
-        h=in-reply-to:content-disposition:mime-version:message-id:subject:to
-         :from:date:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=0AIg6djfD3Z8OLbEjaJ/Dktvn8yVMGHT+GXUl6YhXpc=;
-        b=LG6YwBRCn5c2HUOwfpffXRXEzVAEPZAYHaL0Q2Di+3Rggz9c81OhzNjTv3IR4S/akU
-         HBtdqenxHnhfnkXPaWrrHm7ROV5IFc6UqAc0IHKrkr9Nr7f+xlYySh3VrzgTusqtTAuu
-         RwE72o1TwdWZW3iL4uB/OSG+t7kzXMm02iS/D8++MDYYG29JaeNqqqQX7lCPyDn7kVM8
-         7ogGJJ5jy26UhnHD5qc2AnU8IWHJFBkR3F65o4K2z3JdTgdN0WkNhCwNXB3+unPBopr6
-         BL0f0H75oQBjNGdjviFbBHwjsCsFaxC/UshNG+h0kOtV5LkzaMMGTY+F/XE0QCEMa+4u
-         L7uQ==
-X-Gm-Message-State: AO0yUKWXDUjU7voW2IrR3/b7anZi1ycHTWIgNpk0fX+wrMH7AkC/2642
-	Y+aQ6eiugxpqqzYoF6uHAWY=
-X-Google-Smtp-Source: AK7set+16arltiftvfnV6BCmhAIkIEjIEDRUv+f7OoB0YUlTH+6h1Z0Z30okJuJMLxdoxhjKCGcTnQ==
-X-Received: by 2002:a17:902:f685:b0:1a1:a727:a802 with SMTP id l5-20020a170902f68500b001a1a727a802mr8802172plg.19.1679213403275;
-        Sun, 19 Mar 2023 01:10:03 -0700 (PDT)
+        d=1e100.net; s=20210112; t=1679214783;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=oQJtI21/SFR0sO0YChZwJzev4KVTVmLvkdFRygIudxg=;
+        b=ILoJY+GEkp1rAiylutgLpH83V6Qv06qmx0HO6ThuqhUHbduYP+hPBPsP96YOYsEVqg
+         VU4UyZ0D7YP4p3OJ2lNPLOhMaQPFVXLiBQGcX8Vmtjum2Nr34c5m4qTnio9TR1jQVtdP
+         di7waxI/ROMDs2XBDcw1Q0YMrF6mODydVZ8GN7PrOC9L6e+u2hBQkyJzPaGY54gBWW0Y
+         hq2lcj8bisoot0FDgieaqUJZaE64wihGL1mIF09ITRBWKmM6Q2w1U0DxisS3U3p+pYEH
+         PMO2bGVgk2r3wrLMcICkPpfwCvli5DRrCQiWy22NBL1xdBzCfq3vJCkRJEi2oiqsicHM
+         cWXQ==
+X-Gm-Message-State: AO0yUKW9t7bSepxNFWxrpLSZsUgsivx3UmtKTwO3v/2TdKzOA4Jc6V/+
+	lQxRKW70w5Ja1cyYmkpNx9k+n4301nASpg==
+X-Google-Smtp-Source: AK7set+uTuKPk6Wjs0yzI8mJRvXDc5kJSzS7qsXJEQHzli0Yq2sdnyGzFIZGYVyeVKDfpvU2EzcGIQ==
+X-Received: by 2002:a17:902:d2c7:b0:19e:65db:7ac3 with SMTP id n7-20020a170902d2c700b0019e65db7ac3mr14149854plc.68.1679214782664;
+        Sun, 19 Mar 2023 01:33:02 -0700 (PDT)
 Received: from sumitra.com ([117.212.94.33])
-        by smtp.gmail.com with ESMTPSA id u6-20020a170902b28600b00194d14d8e54sm4340137plr.96.2023.03.19.01.09.59
+        by smtp.gmail.com with ESMTPSA id l9-20020a170902d34900b001a064282b11sm4372652plk.151.2023.03.19.01.33.00
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 19 Mar 2023 01:10:01 -0700 (PDT)
-Date: Sun, 19 Mar 2023 01:09:55 -0700
+        Sun, 19 Mar 2023 01:33:01 -0700 (PDT)
+Date: Sun, 19 Mar 2023 01:32:56 -0700
 From: Sumitra Sharma <sumitraartsy@gmail.com>
-To: sumitraartsy@gmail.com, bagasdotme@gmail.com, julia.lawall@inria.fr,
-	outreachy@lists.linux.dev
-Subject: Re: your mail
-Message-ID: <20230319080955.GA50179@sumitra.com>
+To: Bagas Sanjaya <bagasdotme@gmail.com>
+Cc: outreachy@lists.linux.dev
+Subject: Re: Unable to find module location
+Message-ID: <20230319083256.GB50179@sumitra.com>
+References: <20230318084048.GC4434@sumitra.com>
+ <ZBWA3rb9nVP8ho05@debian.me>
+ <20230318121508.GA37278@sumitra.com>
+ <64997a6c-24f1-d551-1b87-735a699e4a8e@gmail.com>
+ <20230318124937.GA39892@sumitra.com>
+ <21c2da25-22cb-cbe7-153e-067377de4723@gmail.com>
+ <20230318175746.GB49651@sumitra.com>
+ <ee140dee-6db9-6d7e-0b84-b69f3c36cc13@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -51,117 +59,24 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <2123df9c-870-3a20-94b-7833bc66ad9@inria.fr>
+In-Reply-To: <ee140dee-6db9-6d7e-0b84-b69f3c36cc13@gmail.com>
 
-On Fri, Mar 17, 2023 at 05:47:23PM +0100, Julia Lawall wrote:
+On Sun, Mar 19, 2023 at 09:08:01AM +0700, Bagas Sanjaya wrote:
+> On 3/19/23 00:57, Sumitra Sharma wrote:
+> > Cleaning the build worked for me. Thanks.
+> > What do you mean by enabling the NVEC_PAZ00?
+> > 
 > 
-> 
-> On Fri, 17 Mar 2023, Sumitra Sharma wrote:
-> 
-> > , fmdefrancesco@gmail.com
-> > Bcc:
-> > Subject: Re: [KERNEL NEWBIES ACCESS] Sumitra Sharma
-> > Reply-To:
-> > In-Reply-To: <936dcbf3-0bf3-0461-1ea5-d71e0e60fa88@gmail.com>
-> >
-> > On Wed, Mar 15, 2023 at 03:41:40PM +0700, Bagas Sanjaya wrote:
-> > > On 3/14/23 19:33, Sumitra Sharma wrote:
-> > > >> On Outreachyfirstpatch, there is a pointer to Outreachyfirstpatchalt
-> > > >> (which contains instructions on spinning up Ubuntu VM), so you need to
-> > > >> install your tools (including postfix and mutt) there if you want to
-> > > >> contribute through there. So I think the latter doc should be kept as
-> > > >> is.
-> > > >>
-> > > >
-> > > > Hi
-> > > >
-> > > > Can you send me a link to Outreachyfirstpatchalt, I am unable to find
-> > > > it.
-> > > >
-> > >
-> > > For your completeness, see https://kernelnewbies.org/OutreachyfirstpatchAlt.
-> > >
-> > > Again, what I mean that OutreachyfirstpatchAlt is about spinning up
-> > > Linux VM. If you need follow setting up tools in Outreachyfirstpatch,
-> > > you can do that in the VM. So I suggest not to modify OutreachyfirstpatchAlt
-> > > for now. (But I wish the slug could be better named as LinuxVMSetup).
-> > >
-> >
-> > Hi,
-> >
-> > Since we discussed all about the outreachyfirstpatchalt only and you
-> > also suggested not to modify it for now. I want to clarify that whether we are working on these below changes for the "outreachyfirstpatch". I am again mentioning them below.
-> 
-> In https://kernelnewbies.org/Outreachyfirstpatch, there is a section
-> called Set up email.  This is followed by some sections related to gmail,
-> yahoo, etc.  So you could find the best place around there for the new
-> information.
-> 
-> It could be nice to use some subsections, so that one can easily identify
-> the complete section about email.
-> 
-
-Actually, the only issue I faced was that the outreachyfirstpatch
-document does not contain the information of how one can set their inbox in mutt.
-Due to which I had problems to send and reply mails. This below
-configuration update will enable the inbox at the client side.
-
-How about this...
-
-Under the section "Configure esmtp":
-
-###
-Next, set up the mail client, mutt, with some defaults, by creating a .muttrc file in your homedirectory:
-
-Note: The imap_pass, smtp_pass would be the App password or
- 	  the mailbox password.
-
- 		set sendmail="/usr/bin/esmtp"
- 		set envelope_from=yes
- 		set from="Your Name <my.email@gmail.com>"
- 		set use_from=yes
- 		set edit_headers=yes
-
- 		# IMAP settings
- 		set imap_user = "username@gmail.com"
- 		set imap_pass = "<mailbox password>"
-
- 		# SMTP settings
- 		set smtp_url = "smtps://username@smtp.gmail.com"
- 		set smtp_pass = "<mailbox password>"
-
- 		# Remote Gmail folders
- 		set folder = "imaps://imap.gmail.com/"
- 		set spoolfile = "+INBOX"
- 		set postponed = "+[Gmail]/Drafts"
- 		set record = "+[Gmail]/Sent Mail"
- 		set trash = "+[Gmail]/Trash"
-###
-> I notice also that there seems to be randomly "set up" and "setup".  I
-> have the impression that "set up" is a verb and "setup" is a noun., so it
-> should be "Set up vim as your default editor" (not Setup...) and it should
-> be "Gmail setup" (not Gmail set up).
+> I mean you should set the config as Y or M (if permitted).
 >
 
-Okay! I will take care of it. Thank you.
-
-In addition to this, I would like to bring to your notice that a hyperlink
-in outrachyfirstpatch document, under the section "Git post-commit
-hooks" does not work and it must be changed.
-
-under Git post-commit hooks; checkpatch.pl:
-http://lxr.free-electrons.com/source/scripts/checkpatch.pl
-------------------------------------------------------------------
-https://elixir.bootlin.com/linux/latest/source/scripts/checkpatch.pl
-
-
+Hi I am still not able to locate the driver when I am running the
+command 'make menuconfig'. Hence not able to configure it as 'M'.
 
 
 Regards,
 
 Sumitra
-
-> thanks,
-> julia
-> 
+> -- 
+> An old man doll... just what I always wanted! - Clara
 > 
