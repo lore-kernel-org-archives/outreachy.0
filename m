@@ -1,121 +1,167 @@
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-pl1-f176.google.com (mail-pl1-f176.google.com [209.85.214.176])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 02EB87ED
-	for <outreachy@lists.linux.dev>; Sun, 19 Mar 2023 06:30:22 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 06BEEEC6
+	for <outreachy@lists.linux.dev>; Sun, 19 Mar 2023 08:10:03 +0000 (UTC)
+Received: by mail-pl1-f176.google.com with SMTP id i5so9530388pla.2
+        for <outreachy@lists.linux.dev>; Sun, 19 Mar 2023 01:10:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=Fq6hyV8uaJmvlGaei5MD2XyBkwfpn7VwlIReM+BwwvE=;
-  b=H0ObmtmVKFghTo0D+UiX82hFWOzXursmkWbqyRdX9UnphaRp0iSKBc5a
-   maXrzHwFNMCc75sey1BIEjmmneUAQ4Vssx2o+Xc5DefnvUXpCgDSBBBXe
-   F4RYJ/72IvQXc1uWoMDJEn3WZtpjautn/g4g+YuqpG2BZ3EWT+Jjb6KtR
-   U=;
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="5.98,273,1673910000"; 
-   d="scan'208";a="97913493"
-Received: from 231.85.89.92.rev.sfr.net (HELO hadrien) ([92.89.85.231])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Mar 2023 07:30:20 +0100
-Date: Sun, 19 Mar 2023 07:30:20 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Mark Heim <questioneight@gmail.com>
-cc: Ira Weiny <ira.weiny@intel.com>, outreachy@lists.linux.dev
-Subject: Re: Patching spelling errors
-In-Reply-To: <CALfc2ngYvgWE_Km89zZeUp+xx0cXXsrz5iyC=NnhXcAFK0reOg@mail.gmail.com>
-Message-ID: <alpine.DEB.2.22.394.2303190729390.2867@hadrien>
-References: <20230317191154.GA57413@pikachu-Z97-D3H> <alpine.DEB.2.22.394.2303172116300.4097@hadrien> <20230317205743.GA78907@pikachu-Z97-D3H> <alpine.DEB.2.22.394.2303172201370.4097@hadrien> <20230317215000.GA86759@pikachu-Z97-D3H>
- <6415591d3f258_28dc5f294c7@iweiny-mobl.notmuch> <CALfc2ngYvgWE_Km89zZeUp+xx0cXXsrz5iyC=NnhXcAFK0reOg@mail.gmail.com>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+        d=gmail.com; s=20210112; t=1679213403;
+        h=in-reply-to:content-disposition:mime-version:message-id:subject:to
+         :from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=0AIg6djfD3Z8OLbEjaJ/Dktvn8yVMGHT+GXUl6YhXpc=;
+        b=EwHsQk6Wny+JUiJmEsemEPvZ7AuQvuOk8vZo2hCiwQPR/tJfpDUTK2p9ZHm/wznYXP
+         Gc6MUa2fG6cNWnbKtfaQ4urCdBZy3y55C/5+bLHLYtb40EnELwnh6j8dlFuzYxNq+ijw
+         Qn8QKYBUtMhFDXu6fZ5VpjqWpAvRbwlytLollrztLJYeDCzoXEdj7CKS/kc5gInA1vKY
+         0pKjAuuTbLhEyObqrQAtXQDVdbZvCe9vOA7dscf3RXQSqBU+21rbNXRiLzZ57KLl4GFx
+         qPP/CJmdiyqf18Xz+W6yUAar/UO+QIB/LmS/AGLzMBfs+i5pjfjdEhyIHnJGl0JTwU6p
+         4sAg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679213403;
+        h=in-reply-to:content-disposition:mime-version:message-id:subject:to
+         :from:date:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=0AIg6djfD3Z8OLbEjaJ/Dktvn8yVMGHT+GXUl6YhXpc=;
+        b=LG6YwBRCn5c2HUOwfpffXRXEzVAEPZAYHaL0Q2Di+3Rggz9c81OhzNjTv3IR4S/akU
+         HBtdqenxHnhfnkXPaWrrHm7ROV5IFc6UqAc0IHKrkr9Nr7f+xlYySh3VrzgTusqtTAuu
+         RwE72o1TwdWZW3iL4uB/OSG+t7kzXMm02iS/D8++MDYYG29JaeNqqqQX7lCPyDn7kVM8
+         7ogGJJ5jy26UhnHD5qc2AnU8IWHJFBkR3F65o4K2z3JdTgdN0WkNhCwNXB3+unPBopr6
+         BL0f0H75oQBjNGdjviFbBHwjsCsFaxC/UshNG+h0kOtV5LkzaMMGTY+F/XE0QCEMa+4u
+         L7uQ==
+X-Gm-Message-State: AO0yUKWXDUjU7voW2IrR3/b7anZi1ycHTWIgNpk0fX+wrMH7AkC/2642
+	Y+aQ6eiugxpqqzYoF6uHAWY=
+X-Google-Smtp-Source: AK7set+16arltiftvfnV6BCmhAIkIEjIEDRUv+f7OoB0YUlTH+6h1Z0Z30okJuJMLxdoxhjKCGcTnQ==
+X-Received: by 2002:a17:902:f685:b0:1a1:a727:a802 with SMTP id l5-20020a170902f68500b001a1a727a802mr8802172plg.19.1679213403275;
+        Sun, 19 Mar 2023 01:10:03 -0700 (PDT)
+Received: from sumitra.com ([117.212.94.33])
+        by smtp.gmail.com with ESMTPSA id u6-20020a170902b28600b00194d14d8e54sm4340137plr.96.2023.03.19.01.09.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 19 Mar 2023 01:10:01 -0700 (PDT)
+Date: Sun, 19 Mar 2023 01:09:55 -0700
+From: Sumitra Sharma <sumitraartsy@gmail.com>
+To: sumitraartsy@gmail.com, bagasdotme@gmail.com, julia.lawall@inria.fr,
+	outreachy@lists.linux.dev
+Subject: Re: your mail
+Message-ID: <20230319080955.GA50179@sumitra.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-1748914340-1679207420=:2867"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <2123df9c-870-3a20-94b-7833bc66ad9@inria.fr>
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+On Fri, Mar 17, 2023 at 05:47:23PM +0100, Julia Lawall wrote:
+> 
+> 
+> On Fri, 17 Mar 2023, Sumitra Sharma wrote:
+> 
+> > , fmdefrancesco@gmail.com
+> > Bcc:
+> > Subject: Re: [KERNEL NEWBIES ACCESS] Sumitra Sharma
+> > Reply-To:
+> > In-Reply-To: <936dcbf3-0bf3-0461-1ea5-d71e0e60fa88@gmail.com>
+> >
+> > On Wed, Mar 15, 2023 at 03:41:40PM +0700, Bagas Sanjaya wrote:
+> > > On 3/14/23 19:33, Sumitra Sharma wrote:
+> > > >> On Outreachyfirstpatch, there is a pointer to Outreachyfirstpatchalt
+> > > >> (which contains instructions on spinning up Ubuntu VM), so you need to
+> > > >> install your tools (including postfix and mutt) there if you want to
+> > > >> contribute through there. So I think the latter doc should be kept as
+> > > >> is.
+> > > >>
+> > > >
+> > > > Hi
+> > > >
+> > > > Can you send me a link to Outreachyfirstpatchalt, I am unable to find
+> > > > it.
+> > > >
+> > >
+> > > For your completeness, see https://kernelnewbies.org/OutreachyfirstpatchAlt.
+> > >
+> > > Again, what I mean that OutreachyfirstpatchAlt is about spinning up
+> > > Linux VM. If you need follow setting up tools in Outreachyfirstpatch,
+> > > you can do that in the VM. So I suggest not to modify OutreachyfirstpatchAlt
+> > > for now. (But I wish the slug could be better named as LinuxVMSetup).
+> > >
+> >
+> > Hi,
+> >
+> > Since we discussed all about the outreachyfirstpatchalt only and you
+> > also suggested not to modify it for now. I want to clarify that whether we are working on these below changes for the "outreachyfirstpatch". I am again mentioning them below.
+> 
+> In https://kernelnewbies.org/Outreachyfirstpatch, there is a section
+> called Set up email.  This is followed by some sections related to gmail,
+> yahoo, etc.  So you could find the best place around there for the new
+> information.
+> 
+> It could be nice to use some subsections, so that one can easily identify
+> the complete section about email.
+> 
 
---8323329-1748914340-1679207420=:2867
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
+Actually, the only issue I faced was that the outreachyfirstpatch
+document does not contain the information of how one can set their inbox in mutt.
+Due to which I had problems to send and reply mails. This below
+configuration update will enable the inbox at the client side.
+
+How about this...
+
+Under the section "Configure esmtp":
+
+###
+Next, set up the mail client, mutt, with some defaults, by creating a .muttrc file in your homedirectory:
+
+Note: The imap_pass, smtp_pass would be the App password or
+ 	  the mailbox password.
+
+ 		set sendmail="/usr/bin/esmtp"
+ 		set envelope_from=yes
+ 		set from="Your Name <my.email@gmail.com>"
+ 		set use_from=yes
+ 		set edit_headers=yes
+
+ 		# IMAP settings
+ 		set imap_user = "username@gmail.com"
+ 		set imap_pass = "<mailbox password>"
+
+ 		# SMTP settings
+ 		set smtp_url = "smtps://username@smtp.gmail.com"
+ 		set smtp_pass = "<mailbox password>"
+
+ 		# Remote Gmail folders
+ 		set folder = "imaps://imap.gmail.com/"
+ 		set spoolfile = "+INBOX"
+ 		set postponed = "+[Gmail]/Drafts"
+ 		set record = "+[Gmail]/Sent Mail"
+ 		set trash = "+[Gmail]/Trash"
+###
+> I notice also that there seems to be randomly "set up" and "setup".  I
+> have the impression that "set up" is a verb and "setup" is a noun., so it
+> should be "Set up vim as your default editor" (not Setup...) and it should
+> be "Gmail setup" (not Gmail set up).
+>
+
+Okay! I will take care of it. Thank you.
+
+In addition to this, I would like to bring to your notice that a hyperlink
+in outrachyfirstpatch document, under the section "Git post-commit
+hooks" does not work and it must be changed.
+
+under Git post-commit hooks; checkpatch.pl:
+http://lxr.free-electrons.com/source/scripts/checkpatch.pl
+------------------------------------------------------------------
+https://elixir.bootlin.com/linux/latest/source/scripts/checkpatch.pl
 
 
 
-On Sat, 18 Mar 2023, Mark Heim wrote:
 
-> Yes, that is approximately what I see. The root is ~/git/kernels/staging, but it is confusing that there is a subdirectory called ~/git/kernels/staging/drivers/staging
+Regards,
 
-Don't top post.  Please read the tutorial.
+Sumitra
 
-julia
-
-
->
-> Mark
->
-> On Sat, Mar 18, 2023 at 12:24 AM Ira Weiny <ira.weiny@intel.com> wrote:
->       Mark Heim wrote:
->       > On Fri, Mar 17, 2023 at 10:07:05PM +0100, Julia Lawall wrote:
->       > > > There is a quirk with how my directories are set up due to the commands
->       > > > I used to check out.
->       > >
->       > > It's not at all clear to me what you mean by this.  The one and only
->       > > proper way to get the code is to clone the complete repository.  YOu can
->       > > use
->       > >
->       > > git clone https://kernel.googlesource.com/pub/scm/linux/kernel/git/gregkh/staging.git
->       > >
->       >
->       > Consider the greybus directory that I attempted to commit my patch. On my machine, the path is:
->       >
->       > ~/git/kernels/staging/drivers/staging/greybus
->       >
->       > I'm getting confused because I did a checkout of the repository inside a
->       > folder named staging, correct?
->       >
->       > > (I can't access the tutorial at the moment, so I don't know what it
->       > > recommends).
->       > >
->       >
->       > The command is:
->       >
->       > git clone -b staging-testing git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
->       >
->
->       I'm confused when you ran this what was the current directory?
->
->       ~/git/kernels?
->
->       That would make the kernel root ~/git/kernels/staging
->
->       Which is fine.
->
->       $ git clone -b staging-testing https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
->       Cloning into 'staging'...
->       remote: Enumerating objects: 517, done.
->       remote: Counting objects: 100% (517/517), done.
->       remote: Compressing objects: 100% (155/155), done.
->       remote: Total 9354360 (delta 414), reused 396 (delta 362), pack-reused 9353843
->       Receiving objects: 100% (9354360/9354360), 2.54 GiB | 2.48 MiB/s, done.
->       Resolving deltas: 100% (7672184/7672184), done.
->       Updating files: 100% (79608/79608), done.
->       $ ls staging/
->       arch/   certs/   CREDITS  Documentation/  fs/       init/      ipc/    Kconfig  lib/       MAINTAINERS  mm/   README  samples/  security/  tools/  virt/
->       block/  COPYING  crypto/  drivers/        include/  io_uring/  Kbuild  kernel/  LICENSES/  Makefile     net/  rust/   scripts/  sound/     usr/
->
->       That is what you see correct?
->
->       Julia is referring to the 'staging' subsystem not the staging repo from Greg.
->       The clone is of his 'staging' repo.
->
->       Does that make things more clear?
->
->       Ira
->
->
->
---8323329-1748914340-1679207420=:2867--
+> thanks,
+> julia
+> 
+> 
