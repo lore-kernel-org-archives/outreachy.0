@@ -1,30 +1,52 @@
-Received: from msg-4.mailo.com (msg-4.mailo.com [213.182.54.15])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ed1-f52.google.com (mail-ed1-f52.google.com [209.85.208.52])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 695131FBF
-	for <outreachy@lists.linux.dev>; Mon, 20 Mar 2023 16:07:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
-	t=1679328415; bh=O67ao0Oy7wP9xI4IxmB0ue6JItOwndhkWDyhIp3t+vQ=;
-	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
-	 MIME-Version:Content-Type:In-Reply-To;
-	b=QqcKE+SCuOuN5qB6mWbeko1HVereGKteBsEg6dSEkC4JIjiNlScoWki0vI5ecRBpU
-	 LhqykIVcILhiHv6AXd8x/XKCSzDsUsVHwe49UkyRSV56+TlNABK+ywwNla22HxyOAP
-	 WZdv+L1PJIY+zBqa1Up/D+olX9TQta/qhrICS0Cg=
-Received: by b221-1.in.mailobj.net [192.168.90.21] with ESMTP
-	via ip-20.mailobj.net [213.182.54.20]
-	Mon, 20 Mar 2023 17:06:55 +0100 (CET)
-X-EA-Auth: DqU0nT0ObZ9iJHDwQdPoZqCl5oeyWo7iOxYqDuG5s+QUyiFjtiWW1AOfUeFb8WlllASNh5ZCD9Vgzi/hdLLTmztVp9gAASxc
-Date: Mon, 20 Mar 2023 21:36:52 +0530
-From: Deepak R Varma <drv@mailo.com>
-To: Kloudifold <cloudifold.3125@gmail.com>
-Cc: outreachy@lists.linux.dev, teddy.wang@siliconmotion.com,
-	sudipm.mukherjee@gmail.com, gregkh@linuxfoundation.org,
-	alison.schofield@intel.com, linuxstaging@lists.linux.dev,
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 12D0F7C;
+	Mon, 20 Mar 2023 16:53:48 +0000 (UTC)
+Received: by mail-ed1-f52.google.com with SMTP id b20so16389613edd.1;
+        Mon, 20 Mar 2023 09:53:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1679331227;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=zQaiq3c8AErj46+nAd9bRzysZn6Nit9oKxFF/uzA6ZY=;
+        b=XLXGznIWTse4g72jBalGTVuO4XVQHWbXpsblQKs5+TIPDlg66QC7IA+FW7z/BsiMUF
+         nXkeXODui8DUaAlVk8ZOJWP0AHvcta+yZA0dYhh+6JWP7gicCghZQe7qnppFrZfNz+OA
+         CsWNtaK24mf6ksmuXrPI0/V4uzRzNa4Psze6iwqwR38CFv2WPxE+YsLPFhNKUfwMQt70
+         F46u7xXqjebCBg92KHY3WpSgWgIiWZVfzJnj0rr1XIimaSPkoLX4v3MTyEKI3FZBun9J
+         KtHlAze8/Qf1q3vzFLHI61mxcRcQ7ed99phZ/gUXKvqCdUnUK7cwYRcysw5uT/mVlcYn
+         TIwQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679331227;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=zQaiq3c8AErj46+nAd9bRzysZn6Nit9oKxFF/uzA6ZY=;
+        b=AJ1maLUmmJ8UkndFGvYuwmDM6CQPFLFmUz3R9f8BnvNOPFwFFXuILHAfYjOIOpOaA8
+         byYIXPtSSRIyEGbFQLDNwxPxNjpcdRmpqSWSIQlPFQ4i1u5yRWxxKuO1M373lyc3IDbc
+         hpzLypV2s0syXZkWeTueEcN5Z5Wy6nqg4lC+qssnv8HEA3rv4q+UxrlpnQ7fQ4tbxxnm
+         8SmTFPn6/bVTIeNKKH8xHWhY2EWseODbD+CMgEOgwG3SnLesUtaNZFn7E1/eww0EqlNh
+         X2V45k/RhJU9tcGrAb2x752NIU0YZKJzuyFKaSFlEkoCZ5QpXzMVRTQUiW9XMnoPBhTB
+         046Q==
+X-Gm-Message-State: AO0yUKUeHtVRrqSwDIiMiwCGeSaeffaAXFdNbUvH+/VmSPHGUT/Zs7Ls
+	S8mfYYhNhfYcG97T0kcd/OM=
+X-Google-Smtp-Source: AK7set/ZrOQcudlVdkbdkFSyZG3bMOhCixbmhOUTO0k0dkNKA+rdjkOjyMHtmLOpNKXmX/lJg/HElQ==
+X-Received: by 2002:a17:906:5915:b0:931:99b5:5a23 with SMTP id h21-20020a170906591500b0093199b55a23mr12109184ejq.44.1679331226796;
+        Mon, 20 Mar 2023 09:53:46 -0700 (PDT)
+Received: from khadija-virtual-machine ([39.41.111.78])
+        by smtp.gmail.com with ESMTPSA id o23-20020a170906289700b00922547486f9sm4735417ejd.146.2023.03.20.09.53.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 20 Mar 2023 09:53:46 -0700 (PDT)
+Date: Mon, 20 Mar 2023 21:53:42 +0500
+From: Khadija Kamran <kamrankhadijadj@gmail.com>
+To: outreachy@lists.linux.dev
+Cc: Lars-Peter Clausen <lars@metafoo.de>,
+	Michael Hennerich <Michael.Hennerich@analog.com>,
+	Jonathan Cameron <jic23@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-iio@vger.kernel.org, linux-staging@lists.linux.dev,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v4] staging: sm750: Rename sm750_hw_cursor_* functions to
- snake_case
-Message-ID: <ZBiEnFxlHb/OES0B@ubun2204.myguest.virtualbox.org>
-References: <ZBfpbgvYguJnzIOx@CloudiRingWorld>
+Subject: [PATCH] staging: greybus: remove camel case
+Message-ID: <ZBiPlhkqHUegMRAb@khadija-virtual-machine>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -33,174 +55,203 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ZBfpbgvYguJnzIOx@CloudiRingWorld>
 
-On Mon, Mar 20, 2023 at 01:07:31PM +0800, Kloudifold wrote:
-> sm750 driver has sm750_hw_cursor_* functions, which are named in
-> camelcase. Rename them to snake case to follow the function naming
-> convention.
-> 
-> - sm750_hw_cursor_setSize  => sm750_hw_cursor_set_size
-> - sm750_hw_cursor_setPos   => sm750_hw_cursor_set_pos
-> - sm750_hw_cursor_setColor => sm750_hw_cursor_set_color
-> - sm750_hw_cursor_setData  => sm750_hw_cursor_set_data
-> - sm750_hw_cursor_setData2 => sm750_hw_cursor_set_data2
-> 
-> Reported-by: kernel test robot <lkp@intel.com>
-> Link: https://lore.kernel.org/oe-kbuild-all/202303110849.X24WnHnM-lkp@intel.com/
-> Signed-off-by: Kloudifold <cloudifold.3125@gmail.com>
+Several variables and functions were named Camel Case. This resulted in
+checks pointed by checkpatch.pl
 
-Hello,
-Looks like you missed some maintainer list recipients in your to/cc of this
-patch. How are you extracting the maintainer list?
+Avoid camel case by changing names.
 
-> 
-> ---
-> Changes in v4:
-> - Update the commit msg (Deepak)
-> - Use tabs replace 8 spaces
+Signed-off-by: Khadija Kamran <kamrankhadijadj@gmail.com>
+---
+ drivers/staging/iio/addac/adt7316.c | 64 ++++++++++++++---------------
+ 1 file changed, 32 insertions(+), 32 deletions(-)
 
-How did you achieve this (replacing spaces by tabs)?
+diff --git a/drivers/staging/iio/addac/adt7316.c b/drivers/staging/iio/addac/adt7316.c
+index 79467f056a05..49702beeac30 100644
+--- a/drivers/staging/iio/addac/adt7316.c
++++ b/drivers/staging/iio/addac/adt7316.c
+@@ -672,7 +672,7 @@ static IIO_DEVICE_ATTR(da_high_resolution, 0644,
+ 		adt7316_store_da_high_resolution,
+ 		0);
 
-> 
-> This v4 patch was prompted by 2 errors, 2 warnings and 1 checks reported
-> by the scripts/checkpatch.pl, which detected the style problem.
-> 
-> Changes in v3:
-> - Add this changelog (Philipp)
-> - Move lkp tags and link to the correct location in commit log (Alison)
-> - Update the commit msg (Philip)
-> - Update the commit log (Bagas, Julia)
-> 
-> Changes in v2:
-> - Use new function names in call sites (LKP)
-> 
->  drivers/staging/sm750fb/sm750.c        | 22 +++++++++++-----------
->  drivers/staging/sm750fb/sm750_cursor.c | 14 +++++++-------
->  drivers/staging/sm750fb/sm750_cursor.h | 12 ++++++------
->  3 files changed, 24 insertions(+), 24 deletions(-)
-> 
-> diff --git a/drivers/staging/sm750fb/sm750.c b/drivers/staging/sm750fb/sm750.c
-> index effc7fcc3..5d7249e82 100644
-> --- a/drivers/staging/sm750fb/sm750.c
-> +++ b/drivers/staging/sm750fb/sm750.c
-> @@ -121,14 +121,14 @@ static int lynxfb_ops_cursor(struct fb_info *info, struct fb_cursor *fbcursor)
->  
->  	sm750_hw_cursor_disable(cursor);
->  	if (fbcursor->set & FB_CUR_SETSIZE)
-> -		sm750_hw_cursor_setSize(cursor,
-> -					fbcursor->image.width,
-> -					fbcursor->image.height);
-> +		sm750_hw_cursor_set_size(cursor,
-> +					 fbcursor->image.width,
-> +					 fbcursor->image.height);
->  
->  	if (fbcursor->set & FB_CUR_SETPOS)
-> -		sm750_hw_cursor_setPos(cursor,
-> -				       fbcursor->image.dx - info->var.xoffset,
-> -				       fbcursor->image.dy - info->var.yoffset);
-> +		sm750_hw_cursor_set_pos(cursor,
-> +					fbcursor->image.dx - info->var.xoffset,
-> +					fbcursor->image.dy - info->var.yoffset);
->  
->  	if (fbcursor->set & FB_CUR_SETCMAP) {
->  		/* get the 16bit color of kernel means */
-> @@ -142,14 +142,14 @@ static int lynxfb_ops_cursor(struct fb_info *info, struct fb_cursor *fbcursor)
->  		     ((info->cmap.green[fbcursor->image.bg_color] & 0xfc00) >> 5) |
->  		     ((info->cmap.blue[fbcursor->image.bg_color] & 0xf800) >> 11);
->  
-> -		sm750_hw_cursor_setColor(cursor, fg, bg);
-> +		sm750_hw_cursor_set_color(cursor, fg, bg);
->  	}
->  
->  	if (fbcursor->set & (FB_CUR_SETSHAPE | FB_CUR_SETIMAGE)) {
-> -		sm750_hw_cursor_setData(cursor,
-> -					fbcursor->rop,
-> -					fbcursor->image.data,
-> -					fbcursor->mask);
-> +		sm750_hw_cursor_set_data(cursor,
-> +					 fbcursor->rop,
-> +					 fbcursor->image.data,
-> +					 fbcursor->mask);
->  	}
->  
->  	if (fbcursor->enable)
-> diff --git a/drivers/staging/sm750fb/sm750_cursor.c b/drivers/staging/sm750fb/sm750_cursor.c
-> index 43e6f52c2..ff643e33f 100644
-> --- a/drivers/staging/sm750fb/sm750_cursor.c
-> +++ b/drivers/staging/sm750fb/sm750_cursor.c
-> @@ -58,13 +58,13 @@ void sm750_hw_cursor_disable(struct lynx_cursor *cursor)
->  	poke32(HWC_ADDRESS, 0);
->  }
->  
-> -void sm750_hw_cursor_setSize(struct lynx_cursor *cursor, int w, int h)
-> +void sm750_hw_cursor_set_size(struct lynx_cursor *cursor, int w, int h)
->  {
->  	cursor->w = w;
->  	cursor->h = h;
->  }
->  
-> -void sm750_hw_cursor_setPos(struct lynx_cursor *cursor, int x, int y)
-> +void sm750_hw_cursor_set_pos(struct lynx_cursor *cursor, int x, int y)
->  {
->  	u32 reg;
->  
-> @@ -73,7 +73,7 @@ void sm750_hw_cursor_setPos(struct lynx_cursor *cursor, int x, int y)
->  	poke32(HWC_LOCATION, reg);
->  }
->  
-> -void sm750_hw_cursor_setColor(struct lynx_cursor *cursor, u32 fg, u32 bg)
-> +void sm750_hw_cursor_set_color(struct lynx_cursor *cursor, u32 fg, u32 bg)
->  {
->  	u32 reg = (fg << HWC_COLOR_12_2_RGB565_SHIFT) &
->  		HWC_COLOR_12_2_RGB565_MASK;
-> @@ -82,8 +82,8 @@ void sm750_hw_cursor_setColor(struct lynx_cursor *cursor, u32 fg, u32 bg)
->  	poke32(HWC_COLOR_3, 0xffe0);
->  }
->  
-> -void sm750_hw_cursor_setData(struct lynx_cursor *cursor, u16 rop,
-> -			     const u8 *pcol, const u8 *pmsk)
-> +void sm750_hw_cursor_set_data(struct lynx_cursor *cursor, u16 rop,
-> +			      const u8 *pcol, const u8 *pmsk)
->  {
->  	int i, j, count, pitch, offset;
->  	u8 color, mask, opr;
-> @@ -132,8 +132,8 @@ void sm750_hw_cursor_setData(struct lynx_cursor *cursor, u16 rop,
->  	}
->  }
->  
-> -void sm750_hw_cursor_setData2(struct lynx_cursor *cursor, u16 rop,
-> -			      const u8 *pcol, const u8 *pmsk)
-> +void sm750_hw_cursor_set_data2(struct lynx_cursor *cursor, u16 rop,
-> +			       const u8 *pcol, const u8 *pmsk)
->  {
->  	int i, j, count, pitch, offset;
->  	u8 color, mask;
-> diff --git a/drivers/staging/sm750fb/sm750_cursor.h b/drivers/staging/sm750fb/sm750_cursor.h
-> index b59643dd6..88fa02f63 100644
-> --- a/drivers/staging/sm750fb/sm750_cursor.h
-> +++ b/drivers/staging/sm750fb/sm750_cursor.h
-> @@ -5,11 +5,11 @@
->  /* hw_cursor_xxx works for voyager,718 and 750 */
->  void sm750_hw_cursor_enable(struct lynx_cursor *cursor);
->  void sm750_hw_cursor_disable(struct lynx_cursor *cursor);
-> -void sm750_hw_cursor_setSize(struct lynx_cursor *cursor, int w, int h);
-> -void sm750_hw_cursor_setPos(struct lynx_cursor *cursor, int x, int y);
-> -void sm750_hw_cursor_setColor(struct lynx_cursor *cursor, u32 fg, u32 bg);
-> -void sm750_hw_cursor_setData(struct lynx_cursor *cursor, u16 rop,
-> -			     const u8 *data, const u8 *mask);
-> -void sm750_hw_cursor_setData2(struct lynx_cursor *cursor, u16 rop,
-> +void sm750_hw_cursor_set_size(struct lynx_cursor *cursor, int w, int h);
-> +void sm750_hw_cursor_set_pos(struct lynx_cursor *cursor, int x, int y);
-> +void sm750_hw_cursor_set_color(struct lynx_cursor *cursor, u32 fg, u32 bg);
-> +void sm750_hw_cursor_set_data(struct lynx_cursor *cursor, u16 rop,
->  			      const u8 *data, const u8 *mask);
-> +void sm750_hw_cursor_set_data2(struct lynx_cursor *cursor, u16 rop,
-> +			       const u8 *data, const u8 *mask);
->  #endif
-> -- 
-> 2.40.0
-> 
-> 
+-static ssize_t adt7316_show_AIN_internal_Vref(struct device *dev,
++static ssize_t adt7316_show_AIN_internal_vref(struct device *dev,
+ 					      struct device_attribute *attr,
+ 					      char *buf)
+ {
+@@ -686,7 +686,7 @@ static ssize_t adt7316_show_AIN_internal_Vref(struct device *dev,
+ 		!!(chip->config3 & ADT7516_AIN_IN_VREF));
+ }
 
+-static ssize_t adt7316_store_AIN_internal_Vref(struct device *dev,
++static ssize_t adt7316_store_AIN_internal_vref(struct device *dev,
+ 					       struct device_attribute *attr,
+ 					       const char *buf,
+ 					       size_t len)
+@@ -713,9 +713,9 @@ static ssize_t adt7316_store_AIN_internal_Vref(struct device *dev,
+ 	return len;
+ }
+
+-static IIO_DEVICE_ATTR(AIN_internal_Vref, 0644,
+-		adt7316_show_AIN_internal_Vref,
+-		adt7316_store_AIN_internal_Vref,
++static IIO_DEVICE_ATTR(AIN_internal_vref, 0644,
++		adt7316_show_AIN_internal_vref,
++		adt7316_store_AIN_internal_vref,
+ 		0);
+
+ static ssize_t adt7316_show_enable_prop_DACA(struct device *dev,
+@@ -796,7 +796,7 @@ static IIO_DEVICE_ATTR(enable_proportion_DACB, 0644,
+ 		       adt7316_store_enable_prop_DACB,
+ 		       0);
+
+-static ssize_t adt7316_show_DAC_2Vref_ch_mask(struct device *dev,
++static ssize_t adt7316_show_DAC_2vref_ch_mask(struct device *dev,
+ 					      struct device_attribute *attr,
+ 					      char *buf)
+ {
+@@ -807,7 +807,7 @@ static ssize_t adt7316_show_DAC_2Vref_ch_mask(struct device *dev,
+ 		chip->dac_config & ADT7316_DA_2VREF_CH_MASK);
+ }
+
+-static ssize_t adt7316_store_DAC_2Vref_ch_mask(struct device *dev,
++static ssize_t adt7316_store_DAC_2vref_ch_mask(struct device *dev,
+ 					       struct device_attribute *attr,
+ 					       const char *buf,
+ 					       size_t len)
+@@ -834,9 +834,9 @@ static ssize_t adt7316_store_DAC_2Vref_ch_mask(struct device *dev,
+ 	return len;
+ }
+
+-static IIO_DEVICE_ATTR(DAC_2Vref_channels_mask, 0644,
+-		       adt7316_show_DAC_2Vref_ch_mask,
+-		       adt7316_store_DAC_2Vref_ch_mask,
++static IIO_DEVICE_ATTR(DAC_2vref_channels_mask, 0644,
++		       adt7316_show_DAC_2vref_ch_mask,
++		       adt7316_store_DAC_2vref_ch_mask,
+ 		       0);
+
+ static ssize_t adt7316_show_DAC_update_mode(struct device *dev,
+@@ -957,7 +957,7 @@ static IIO_DEVICE_ATTR(update_DAC, 0644,
+ 		       adt7316_store_update_DAC,
+ 		       0);
+
+-static ssize_t adt7316_show_DA_AB_Vref_bypass(struct device *dev,
++static ssize_t adt7316_show_DA_AB_vref_bypass(struct device *dev,
+ 					      struct device_attribute *attr,
+ 					      char *buf)
+ {
+@@ -968,7 +968,7 @@ static ssize_t adt7316_show_DA_AB_Vref_bypass(struct device *dev,
+ 		!!(chip->dac_config & ADT7316_VREF_BYPASS_DAC_AB));
+ }
+
+-static ssize_t adt7316_store_DA_AB_Vref_bypass(struct device *dev,
++static ssize_t adt7316_store_DA_AB_vref_bypass(struct device *dev,
+ 					       struct device_attribute *attr,
+ 					       const char *buf,
+ 					       size_t len)
+@@ -991,12 +991,12 @@ static ssize_t adt7316_store_DA_AB_Vref_bypass(struct device *dev,
+ 	return len;
+ }
+
+-static IIO_DEVICE_ATTR(DA_AB_Vref_bypass, 0644,
+-		       adt7316_show_DA_AB_Vref_bypass,
+-		       adt7316_store_DA_AB_Vref_bypass,
++static IIO_DEVICE_ATTR(DA_AB_vref_bypass, 0644,
++		       adt7316_show_DA_AB_vref_bypass,
++		       adt7316_store_DA_AB_vref_bypass,
+ 		       0);
+
+-static ssize_t adt7316_show_DA_CD_Vref_bypass(struct device *dev,
++static ssize_t adt7316_show_DA_CD_vref_bypass(struct device *dev,
+ 					      struct device_attribute *attr,
+ 					      char *buf)
+ {
+@@ -1007,7 +1007,7 @@ static ssize_t adt7316_show_DA_CD_Vref_bypass(struct device *dev,
+ 		!!(chip->dac_config & ADT7316_VREF_BYPASS_DAC_CD));
+ }
+
+-static ssize_t adt7316_store_DA_CD_Vref_bypass(struct device *dev,
++static ssize_t adt7316_store_DA_CD_vref_bypass(struct device *dev,
+ 					       struct device_attribute *attr,
+ 					       const char *buf,
+ 					       size_t len)
+@@ -1030,12 +1030,12 @@ static ssize_t adt7316_store_DA_CD_Vref_bypass(struct device *dev,
+ 	return len;
+ }
+
+-static IIO_DEVICE_ATTR(DA_CD_Vref_bypass, 0644,
+-		       adt7316_show_DA_CD_Vref_bypass,
+-		       adt7316_store_DA_CD_Vref_bypass,
++static IIO_DEVICE_ATTR(DA_CD_vref_bypass, 0644,
++		       adt7316_show_DA_CD_vref_bypass,
++		       adt7316_store_DA_CD_vref_bypass,
+ 		       0);
+
+-static ssize_t adt7316_show_DAC_internal_Vref(struct device *dev,
++static ssize_t adt7316_show_DAC_internal_vref(struct device *dev,
+ 					      struct device_attribute *attr,
+ 					      char *buf)
+ {
+@@ -1050,7 +1050,7 @@ static ssize_t adt7316_show_DAC_internal_Vref(struct device *dev,
+ 		       !!(chip->ldac_config & ADT7316_DAC_IN_VREF));
+ }
+
+-static ssize_t adt7316_store_DAC_internal_Vref(struct device *dev,
++static ssize_t adt7316_store_DAC_internal_vref(struct device *dev,
+ 					       struct device_attribute *attr,
+ 					       const char *buf,
+ 					       size_t len)
+@@ -1091,9 +1091,9 @@ static ssize_t adt7316_store_DAC_internal_Vref(struct device *dev,
+ 	return len;
+ }
+
+-static IIO_DEVICE_ATTR(DAC_internal_Vref, 0644,
+-		       adt7316_show_DAC_internal_Vref,
+-		       adt7316_store_DAC_internal_Vref,
++static IIO_DEVICE_ATTR(DAC_internal_vref, 0644,
++		       adt7316_show_DAC_internal_vref,
++		       adt7316_store_DAC_internal_vref,
+ 		       0);
+
+ static ssize_t adt7316_show_ad(struct adt7316_chip_info *chip,
+@@ -1653,13 +1653,13 @@ static struct attribute *adt7316_attributes[] = {
+ 	&iio_dev_attr_da_high_resolution.dev_attr.attr,
+ 	&iio_dev_attr_enable_proportion_DACA.dev_attr.attr,
+ 	&iio_dev_attr_enable_proportion_DACB.dev_attr.attr,
+-	&iio_dev_attr_DAC_2Vref_channels_mask.dev_attr.attr,
++	&iio_dev_attr_DAC_2vref_channels_mask.dev_attr.attr,
+ 	&iio_dev_attr_DAC_update_mode.dev_attr.attr,
+ 	&iio_dev_attr_all_DAC_update_modes.dev_attr.attr,
+ 	&iio_dev_attr_update_DAC.dev_attr.attr,
+-	&iio_dev_attr_DA_AB_Vref_bypass.dev_attr.attr,
+-	&iio_dev_attr_DA_CD_Vref_bypass.dev_attr.attr,
+-	&iio_dev_attr_DAC_internal_Vref.dev_attr.attr,
++	&iio_dev_attr_DA_AB_vref_bypass.dev_attr.attr,
++	&iio_dev_attr_DA_CD_vref_bypass.dev_attr.attr,
++	&iio_dev_attr_DAC_internal_vref.dev_attr.attr,
+ 	&iio_dev_attr_VDD.dev_attr.attr,
+ 	&iio_dev_attr_in_temp.dev_attr.attr,
+ 	&iio_dev_attr_ex_temp.dev_attr.attr,
+@@ -1693,15 +1693,15 @@ static struct attribute *adt7516_attributes[] = {
+ 	&iio_dev_attr_enable_smbus_timeout.dev_attr.attr,
+ 	&iio_dev_attr_powerdown.dev_attr.attr,
+ 	&iio_dev_attr_fast_ad_clock.dev_attr.attr,
+-	&iio_dev_attr_AIN_internal_Vref.dev_attr.attr,
++	&iio_dev_attr_AIN_internal_vref.dev_attr.attr,
+ 	&iio_dev_attr_da_high_resolution.dev_attr.attr,
+ 	&iio_dev_attr_enable_proportion_DACA.dev_attr.attr,
+ 	&iio_dev_attr_enable_proportion_DACB.dev_attr.attr,
+-	&iio_dev_attr_DAC_2Vref_channels_mask.dev_attr.attr,
++	&iio_dev_attr_DAC_2vref_channels_mask.dev_attr.attr,
+ 	&iio_dev_attr_DAC_update_mode.dev_attr.attr,
+ 	&iio_dev_attr_all_DAC_update_modes.dev_attr.attr,
+ 	&iio_dev_attr_update_DAC.dev_attr.attr,
+-	&iio_dev_attr_DAC_internal_Vref.dev_attr.attr,
++	&iio_dev_attr_DAC_internal_vref.dev_attr.attr,
+ 	&iio_dev_attr_VDD.dev_attr.attr,
+ 	&iio_dev_attr_in_temp.dev_attr.attr,
+ 	&iio_dev_attr_ex_temp_AIN1.dev_attr.attr,
+--
+2.34.1
 
