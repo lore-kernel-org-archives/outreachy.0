@@ -1,175 +1,92 @@
-Received: from mail-ed1-f41.google.com (mail-ed1-f41.google.com [209.85.208.41])
+Received: from mail-ed1-f46.google.com (mail-ed1-f46.google.com [209.85.208.46])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3D6A1A23;
-	Mon, 20 Mar 2023 06:37:51 +0000 (UTC)
-Received: by mail-ed1-f41.google.com with SMTP id er8so30740602edb.0;
-        Sun, 19 Mar 2023 23:37:51 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9662D1104
+	for <Outreachy@lists.linux.dev>; Mon, 20 Mar 2023 07:14:05 +0000 (UTC)
+Received: by mail-ed1-f46.google.com with SMTP id y4so42810839edo.2
+        for <Outreachy@lists.linux.dev>; Mon, 20 Mar 2023 00:14:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679294269;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=043cJL8M7bmhja0804XphdavMgq23OL+4hcE4H+oIJA=;
-        b=RlpKESwHE3eu8MkwEeNa/I+o0GrPq17cPNTpkDCW8pO25wB5GkuFfZguuIuqqu7W+2
-         gp/ya3dM8CTaO/o9Xw1ivg63pEaKV8kKGrmU/eQ9uHblr9TWOJn3urlWsHpxQu9dB/W+
-         Fl03xdyYZRQgBMNs8xThVa7P1sa79uwKd5BycLm8l7w+Rk2sAKG2G4kg4i9OfzruFkYh
-         MLFdqO5RQfMlDEgi2jvFDE253red7ydcAbZ9RBfyynPDUpkUINUQ6qBgwidycel0n9Bp
-         cdX3QLrBg/b/dvkigQPd4C7uTvypshpvS1Jc86//QDSNyf6qJjac+HTjKPtuTm9quAFj
-         bOjg==
+        d=gmail.com; s=20210112; t=1679296443;
+        h=content-disposition:mime-version:message-id:subject:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=KWzkgsuiZKMfIYW9O1eDTH1YQdvWXROtj/vUGJBZ2K4=;
+        b=nVOe8cQheystZKP0F5vloPJfWmeTz4lV/RuUENGsst6FAKXgOpeFyDX+UiCw43C2Xi
+         owidj8qQNSDlzD/fnj33Pxg3yWOzlSiKoOJwOYK3b+8b+YeKC75msM3CGWFfU+7blnd4
+         H0xSXR44n2LwJAsPnVa5bHBHSwoHjdUePYNSrQJzNhGtNF9on2xqGvSUMEYhXj+qNE+p
+         cNy+OEFFThbHFCJlii3dfbxSecXUVZa6uCHybbFWmX2XP2V6TkmYZIkbsVFm2Pgb/R7t
+         8hE3BPkBn0d8a+7KgxfxZ+6KAG7P8PfkAQN3hg37CwxpoUeb3raeIczTAPtONBQ2Wm4Q
+         wxYA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679294269;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
+        d=1e100.net; s=20210112; t=1679296443;
+        h=content-disposition:mime-version:message-id:subject:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=043cJL8M7bmhja0804XphdavMgq23OL+4hcE4H+oIJA=;
-        b=dfiuBZ5keVEkMv4ZfjWseZdd6mAvM22jitmv3Efn8UYumk2gIFTf9rPRdmo0/IKSVd
-         h+4wpx9C3hn0UEFH6WepLIvgXdYtm6xfev6z4ROKxAr2qsHJ8qmkXldMM3h7P20cDeBH
-         BmmvBsF9zSqxhO4wrjZ0hyzTAzRd4qq19cBghsSc4T5Nm+IgSQoEpx4TvzqBxIoWfQmA
-         I/1EB7+kMBjFSb/3/zUB7SlzJKzENbVQeE2rhAzLg4Z3jf4Qt9I4sDWTw0fApCMbvfxX
-         L4ryRAIw7OcZqgequlYarUl0DWFtyTeIkSD3kXKASyTFGYl7BE7VOX0bbJ4bEkl2G5rC
-         B/4w==
-X-Gm-Message-State: AO0yUKVVqKYkzTfA9JOz0N5wl+fek8nlhv07nbXmuaVMh6/wSD6GcuGC
-	EIRq8YtVfKChv1nvOuOPBYk=
-X-Google-Smtp-Source: AK7set87I0UPLQeLtuvVamN9YVClfZk/eJRdtJC6LAJX7LFhk7VmTloSaJI8JdCbscvOSwQf7usdvg==
-X-Received: by 2002:aa7:c650:0:b0:4fd:14d5:bb47 with SMTP id z16-20020aa7c650000000b004fd14d5bb47mr9992523edr.38.1679294269298;
-        Sun, 19 Mar 2023 23:37:49 -0700 (PDT)
+        bh=KWzkgsuiZKMfIYW9O1eDTH1YQdvWXROtj/vUGJBZ2K4=;
+        b=hp0oTg0AjDt6T1J4oMr1WXFjy4gtRcMYLoZG2WJceqFmfPTUMnU033yfqvxPzR0Fp+
+         L25qJgwUbVQCkrIJv/Akwec4xkgrcs9cyLsbUGCmI2R5thsDoNNYXRz0Yc8ZRBizxKPE
+         NHrGHHk2s1WR9g7VI4m7Qh86V2rD7U2Y8VOi4dxHghlrdUPf74ZSIcNpfwg5zO3ubC7F
+         MTswAzfLM2KdruuamXBiyiCFOpppH/RhDGSW9NGJ7KMJ3659kiExzPnJ9iLx/qw2yl4L
+         YT8KAFzjmwH5LsCVaLtd7BBvCnKh85tL5vsKXb0ks9U2Kd6hbT2lRiaEPj1u+lQAQKpR
+         B3RQ==
+X-Gm-Message-State: AO0yUKUfe23V2YIavpcHjX5fpmEsoAJ5r4sPDG4JPGOblA5OIU4kF5ZB
+	h+qJ7DsWUGlOIDk34mCdZeDyAcH1K/UKk6SI
+X-Google-Smtp-Source: AK7set/GtO0tiZ/HFZ6lm2jrSADPKRRukynpVho5WDLHwzieUoOdVRvWuDAMV/KE9Czg1q1s1NYs/A==
+X-Received: by 2002:a17:906:26c1:b0:932:b790:932c with SMTP id u1-20020a17090626c100b00932b790932cmr8217138ejc.44.1679296443465;
+        Mon, 20 Mar 2023 00:14:03 -0700 (PDT)
 Received: from khadija-virtual-machine ([39.41.14.14])
-        by smtp.gmail.com with ESMTPSA id f23-20020a1709064dd700b00931536d461fsm3983267ejw.20.2023.03.19.23.37.48
+        by smtp.gmail.com with ESMTPSA id z9-20020a1709067e4900b0092be390b51asm4014210ejr.113.2023.03.20.00.14.02
+        for <Outreachy@lists.linux.dev>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 19 Mar 2023 23:37:48 -0700 (PDT)
-Date: Mon, 20 Mar 2023 11:37:46 +0500
+        Mon, 20 Mar 2023 00:14:03 -0700 (PDT)
+Date: Mon, 20 Mar 2023 12:14:00 +0500
 From: Khadija Kamran <kamrankhadijadj@gmail.com>
-To: "Fabio M. De Francesco" <fmdefrancesco@gmail.com>
-Cc: outreachy@lists.linux.dev,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v5] staging: axis-fifo: initialize timeouts in probe only
-Message-ID: <ZBf/OuuUUeharrXp@khadija-virtual-machine>
-References: <ZBMR4s8xyHGqMm72@khadija-virtual-machine>
- <2162728.C4sosBPzcN@suse>
- <ZBNhXc3sVVLdibUF@khadija-virtual-machine>
- <2599595.k3LOHGUjKi@suse>
+To: Outreachy@lists.linux.dev
+Subject: Help with Ubuntu Virtual Machine
+Message-ID: <ZBgHuKm52X3tpQKh@khadija-virtual-machine>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <2599595.k3LOHGUjKi@suse>
 
-On Thu, Mar 16, 2023 at 09:07:09PM +0100, Fabio M. De Francesco wrote:
-> On giovedì 16 marzo 2023 19:35:09 CET Khadija Kamran wrote:
-> > On Thu, Mar 16, 2023 at 05:17:47PM +0100, Fabio M. De Francesco wrote:
-> > > On giovedì 16 marzo 2023 16:09:08 CET Khadija Kamran wrote:
-> 
-> [snip]
-> 
-> > Hey Fabio!
-> > 
-> > Hope you are doing well. After  spending a lot of time on this I am
-> > stuck now. Kindly help me resolve this issue or understand it better.
-> > 
-> > Following your instructions I deleted my config file and copied one from
-> > the /boot/ directory. After that I enabled the dependencies(CONFIG_OF=y
-> > and CONFIG_HAS_IOMEM=y). I was successfully able to enable axis-fifo as
-> > a module.
-> > 
-> > I then ran the following commands:
-> >  - make drivers/staging/axis-fifo/
-> 
-> No, this is not the right command... you are not invoking the linker to make 
-> the .ko object.
-> 
-> Use "make M=drivers/staging/axis-fifo/"
-> or "make M=drivers/staging/axis-fifo/ W=1 -j8" (the latter to enable level '1' 
-> warning and run on your 2 * 4 logical cores).
-> 
-> >  - sudo make modules_install install(this command took hours) :'(
-> 
-> This is odd, it shouldn't :-/
-> 
-> As I said in another message, I'll set aside some time to help you check if 
-> you need to fine tune your VM and Hypervisor configuration. 
-> 
-> I'm returning on the same subject we have been talked about because you said 
-> at least twice that your builds and install are too slow. We'll try to 
-> diagnose it in an IRC session on #kernel-outreachy (I'm pretty sure for the 
-> first days of next week - I'll send an invite).
-> 
-> > > When you are done with build, install, and final reboot to test if your
-> > > module can "modprobe" or "insmod" (i.e. link with the running custom 
-> kernel
-> > > you built, installed and boot), try to compare the output of the following
-> > > commands:
-> > > 
-> > > # uname -a
-> > > Linux suse 6.2.2-1-default #1 SMP PREEMPT_DYNAMIC Thu Mar  9 06:06:13 UTC
-> > > 2023 (44ca817) x86_64 x86_64 x86_64 GNU/Linux
-> > 
-> > The above command works
-> > 
-> > > AND
-> > > 
-> > > # modinfo <name of the module you are testing here>
-> > 
-> > On running 'modinfo axis-fifo' I get error saying module axis-fifo not
-> > found.
-> 
-> Try again after building with "M=drivers/staging" (as said above). Don't 
-> forget to run "make modules_install install" and then reboot into your custom 
-> built Kernel, not the distribution's kernel.
-> 
-> While you are there, run "lsmod" to see all loaded modules. Pick one randomly 
-> from the output list and run "modinfo name_of_the_module_you_want_info_about".
->  
-> > > I'm running "modinfo kvm" (but showing only two of many lines):
-> > > 
-> > > # modinfo kvm
-> > > filename:       /lib/modules/6.2.2-1-default/kernel/arch/x86/kvm/
-> kvm.ko.zst
-> > > vermagic:       6.2.2-1-default SMP preempt mod_unload modversions
-> > > 
-> > > Can you see that the kernel in "uname -a" and the filename and vermagic 
-> have
-> > > the same "6.2.2-1-default"? Well, so I'm sure I'm running the right Kernel
-> > > and inserted the appropriate "kvm" module.
-> > > 
-> > > Furthermore, before rebooting your custom kernel, you may also look at the
-> > > directory in the Kernel where you compiled your module and search for 
-> "*.o"
-> > > "*mod*" and "*.ko" files. If you have them, you built your module 
-> properly.
-> > 
-> > There is a "*.o" file and "*.mod" file but there is no "*.ko" file in
-> > the axis-fifo directory.
-> > 
-> > Kindly help me with this.
-> > 
-> > Regards,
-> > Khadija
-> > 
-> > > Thanks,
-> > > 
-> > > Fabio
-> 
-> Let me know if this time it works.
-> 
-> Fabio
-> 
-> P.S.: Have you had time to read that "Linux Kernel Module Programming" guide I 
-> sent you the link of? You can find a lot of information about modules there. 
-> I'd strongly recommend you to read it. 
->
+Hi Outreachy Mentors!
 
-Fabio,
+I am an Outreachy applicant and I am part of this community since the
+communication period. While I was working on my Virtual Machine, it
+accidentally shut down and it has been stuck on boot since then.
 
-I have not read it yet. But it is in my mind and as soon as I get some
-free time I will start reading it :)
+This mail is to ask for help with this problem. I have been stuck for
+two days and I have tried several slutions but the problem still
+remains.
 
-Thank you!
+I have windows10 installes and I am using Ubuntu 22.04.1 0n VMWare
+Virtual Machine(13GB RAM and 2x4 cores). Here is the error:
+-----------------------------------
+Gave up waiting for root device. Common problems:
+-Boot args (cat /proc/cmdline)
+  -Check rootdelay= (did the system wait long enough?)
+-Missing modules (cat /proc/modules; ls /dev)
+ALERT! UUID=718ed077-947d-4018-80ad-59825678e81d does not exist. 
+Dropping to a shell!
 
-> 
+BusyBox v1.27.2 (Ubuntu 1:1.27.2-2ubuntu3.2) built-in shell (ash)
+Enter 'help' for a list of built-in commands.
+
+(initramfs)_
+------------------------------------
+
+I have tried adding rootdelay and I have also tried chaning UUID to
+/dev/sda3 (where kernel is installed). I have used the older versions to
+run some commands, 'sudo apt-get clean' and 
+'sudo update-initramfs -k 6.3.0-rc2+ -u' command, but the problem
+remains.
+
+Kindly help me with this problem.
+
+Thank you.
+
+Regards,
+Khadija
+
