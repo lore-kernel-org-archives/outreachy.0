@@ -1,108 +1,92 @@
-Received: from mail-wr1-f52.google.com (mail-wr1-f52.google.com [209.85.221.52])
+Received: from mail-pj1-f41.google.com (mail-pj1-f41.google.com [209.85.216.41])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A6ED81383;
-	Mon, 20 Mar 2023 08:58:22 +0000 (UTC)
-Received: by mail-wr1-f52.google.com with SMTP id o7so9548001wrg.5;
-        Mon, 20 Mar 2023 01:58:22 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 28BD11383
+	for <outreachy@lists.linux.dev>; Mon, 20 Mar 2023 08:59:45 +0000 (UTC)
+Received: by mail-pj1-f41.google.com with SMTP id h12-20020a17090aea8c00b0023d1311fab3so11635960pjz.1
+        for <outreachy@lists.linux.dev>; Mon, 20 Mar 2023 01:59:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679302701;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=DzJeoTbKWKmIBwgQA0Y6y/DCv+ZaiOaeERybU2fweUE=;
-        b=QDRO/di0+W4wO0US7hLYQPt0JtqrXuz+l1/4iXt4x4pSqH1+Up7aPBXLgzauOOdr4t
-         R4aV7r0anl4+aiGVdthztkDvMh13STej0atvbniaW+ZYi1AuLxQT5WD3x3pVlG7yVf4e
-         dL9R2uq6DQsa2EfgQZg4XciDUjCT9prIVtNyNDpH16tFUnnVVIxox7ieHMFD1iRNu159
-         wcjrALUHtCKlnPBrU5mZrtSyc1sfF5Jb+rXHsJDZYnytWbso+d/DnRzzr7cZ5I/dLNCk
-         00u8YFwtqnSwRObn4iDBzgVlb/VBTi5k99cT2a4XC7oGphqujkc1lFpZ37nqP/ubyIgi
-         MxBA==
+        d=gmail.com; s=20210112; t=1679302784;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=lQRpt3cW3NIG768y8UGXLQ+jlO4UY3e2amI/L0mQT8k=;
+        b=TxeGMT6BdEGa13d+71yJe5CkxzWWzwXBNq00XTeUrWkW00Fo3pOl1IyBME9C7phvvd
+         c0Ph09YtZ7/5T70gdu6tUnY5uCnJzmlBjZzXaaKarWUdJgE/lx8DAkg6hTx7qA2QVR2X
+         Lp5Wf9m46N9Q9fMC80korTcUYAT2g5sHB7zDd7+doHu9hLVT8i6e4KkkSpvPMjJS/F4Q
+         RCuz9Lu7bCaOoKIh8sj0xUXGWqzlAPdP0nNRzb38dWU1Uwp1EYqEOkxtVQ3uX/AM+xBc
+         +44a7iUE4oemRjq3q5dh+7agP2+R8DJ/Igjsjss0/jeovz0VOZVHCtXoSfpeLchYuSt2
+         vJgg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679302701;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=DzJeoTbKWKmIBwgQA0Y6y/DCv+ZaiOaeERybU2fweUE=;
-        b=njgrfCPQcvhNNXeJeO6+F2V3ZzzwD9tQNH4Ki0+/5ZilObB9Wcm82vMFkaE633UfTA
-         CUCmmXWZQx55SD+WnJMpHaATdh1x4OmUbqmToXzqcWpv4WgpMyPV1H4wFTP29TizAVE1
-         zGhRoznmEAHHt1O2QmthtKZxm8Fw1/Lzd45CfN/PPB2JHCGkl+fkTAQduXSH1zTkLuLf
-         YB/yJL5pSvwGL3yBjDMnrCKX3ao7vWtFdsbGeWjMXBRbFYy6W7QB4+uVg0aEYaK/nNRS
-         JPx3EAoBbFAsbDolWl5gF640Qd/W1hmTR6WBNBrIXKzAVbcMTj23yNyqoR+j6Rom8gTz
-         AWmQ==
-X-Gm-Message-State: AO0yUKVzFf7ZQcUPPGx3fcj+PLIQo9fk7jxs6sUzOrnpAkTOCJfaBhgU
-	xVdqbV/8U0tTcu/2H551rbV58RnESF4=
-X-Google-Smtp-Source: AK7set+KLxobAAO+fehPbXx6zZ9HiCLEkSn44tcxAykkKqp8FeNPy5vK22tOMa9HFICZsPo+2mWv2A==
-X-Received: by 2002:a5d:6512:0:b0:2ce:9c6b:4fc5 with SMTP id x18-20020a5d6512000000b002ce9c6b4fc5mr8838497wru.16.1679302700800;
-        Mon, 20 Mar 2023 01:58:20 -0700 (PDT)
-Received: from localhost ([102.36.222.112])
-        by smtp.gmail.com with ESMTPSA id m23-20020a056000181700b002c5694aef92sm8312838wrh.21.2023.03.20.01.58.19
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 20 Mar 2023 01:58:20 -0700 (PDT)
-Date: Mon, 20 Mar 2023 11:58:16 +0300
-From: Dan Carpenter <error27@gmail.com>
-To: Sumitra Sharma <sumitraartsy@gmail.com>
-Cc: Marc Dietrich <marvin24@gmx.de>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	ac100@lists.launchpad.net, linux-tegra@vger.kernel.org,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev
-Subject: Re: [PATCH v2] Staging: nvec: Convert to_nvec_led from a macro to an
- inline function
-Message-ID: <256ee298-e34e-4ff4-94ba-e4a0102ef2ac@kili.mountain>
-References: <20230318175250.GA49618@sumitra.com>
- <417e944c-4653-43ef-b492-c82c536e4d87@kili.mountain>
- <20230320084422.GA126429@sumitra.com>
+        d=1e100.net; s=20210112; t=1679302784;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=lQRpt3cW3NIG768y8UGXLQ+jlO4UY3e2amI/L0mQT8k=;
+        b=5ZgMttingZ+P8R1kD33SjOFKLIApMzu8fdzMu/sQBptkEjEvELTbtT7T8ZAbUibwQS
+         87NrVzojqdMHkdwS/RoMd6EJVZnpFNU/RgBlK/2hcsXt3WQMFT7kzBU5ytT/m/6nb5mx
+         UwaeOGZ3BdhqMH7EQZdPLIjTTl7ZrJ84WPI2H8JPrFkGDjcOnztxbgpv7GTPiJqZ+a2P
+         QdW4CLmmiU4d2s6n+5XW+K3f8JzPVsU+izB9bpK7XUVbLBXZ99hLCurTYae0Xw8WHNPG
+         D2YOVbGJOk7s9kyToS46iMnctaufGePMw0eYciq8MSqT3qssjiPLIET0Hupj+wDUDRSp
+         zVaQ==
+X-Gm-Message-State: AO0yUKXpreK68CE444RhEazRcpjC8yWYsBDlnNpLFkx7XGMAfRzFJU6j
+	b8R+CKPymEZYXkShfqUYvA4=
+X-Google-Smtp-Source: AK7set9z0JSd0EGeoIbIN03l93K5BiOa0DVxdiDkmhMvSDBuYzVyMzdvPcRylPej8w9w1xANZtRqJg==
+X-Received: by 2002:a17:90a:1987:b0:23d:870:5244 with SMTP id 7-20020a17090a198700b0023d08705244mr12583551pji.13.1679302784558;
+        Mon, 20 Mar 2023 01:59:44 -0700 (PDT)
+Received: from [192.168.43.80] (subs09a-223-255-225-69.three.co.id. [223.255.225.69])
+        by smtp.gmail.com with ESMTPSA id w23-20020a17090a15d700b00233b5d6b4b5sm8997077pjd.16.2023.03.20.01.59.43
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 20 Mar 2023 01:59:44 -0700 (PDT)
+Message-ID: <a81b11ef-f77a-6c26-09bd-63214a1df5b7@gmail.com>
+Date: Mon, 20 Mar 2023 15:59:41 +0700
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20230320084422.GA126429@sumitra.com>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: Unable to find module location
+To: Sumitra Sharma <sumitraartsy@gmail.com>,
+ Julia Lawall <julia.lawall@inria.fr>
+Cc: outreachy@lists.linux.dev
+References: <64997a6c-24f1-d551-1b87-735a699e4a8e@gmail.com>
+ <20230318124937.GA39892@sumitra.com>
+ <21c2da25-22cb-cbe7-153e-067377de4723@gmail.com>
+ <20230318175746.GB49651@sumitra.com>
+ <ee140dee-6db9-6d7e-0b84-b69f3c36cc13@gmail.com>
+ <20230319083256.GB50179@sumitra.com>
+ <alpine.DEB.2.22.394.2303190938080.2867@hadrien>
+ <alpine.DEB.2.22.394.2303190956120.2867@hadrien>
+ <20230319121026.GA53959@sumitra.com>
+ <alpine.DEB.2.22.394.2303191336090.2867@hadrien>
+ <20230320084630.GB126429@sumitra.com>
+Content-Language: en-US
+From: Bagas Sanjaya <bagasdotme@gmail.com>
+In-Reply-To: <20230320084630.GB126429@sumitra.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-On Mon, Mar 20, 2023 at 01:44:22AM -0700, Sumitra Sharma wrote:
-> On Mon, Mar 20, 2023 at 08:39:49AM +0300, Dan Carpenter wrote:
-> > On Sat, Mar 18, 2023 at 10:52:50AM -0700, Sumitra Sharma wrote:
-> > > Convert to_nvec_led from a macro to a static inline function, to make the
-> > > relevant types apparent in the definition and to benefit from the type
-> > > checking performed by the compiler at call sites.
-> > > 
-> > > Signed-off-by: Sumitra Sharma <sumitraartsy@gmail.com>
-> > > ---
-> > 
-> > You need to compile test your changes.
-> >
+On 3/20/23 15:46, Sumitra Sharma wrote:
+> Hi julia,
 > 
-> Hi dan,
+> This did worked.
 > 
-> I am facing problems in creating modules and in compiling them.
+> But the main issue of creating NVEC_PAZ00 a module using make menuconfig still persist.
 > 
-> Any help in this would be appreciated. Here is the link to the thread
-> https://lore.kernel.org/outreachy/alpine.DEB.2.22.394.2303191336090.2867@hadrien/T/#t
 
-If you're editing a .h file then you need to compile all the stuff which
-includes it.  It's slightly complicated.  But if you're just editing a
-.c file like here then what I do is I have use my Smatch script to try
-compile it.
+Oh dear, you don't know how to use menuconfig...
 
-In Debian run:
-apt-get install gcc make sqlite3 libsqlite3-dev libdbd-sqlite3-perl libssl-dev libtry-tiny-perl
-Or in Fedora run:
-yum install gcc make sqlite3 sqlite-devel sqlite perl-DBD-SQLite openssl-devel perl-Try-Tiny
+When you execute `make menuconfig`, you'll be presented with menu when
+you can choose what config you want to enable. To find the desired config
+(NVEC_PAZ00 in this case), press `/` and type in the config name. If
+found, you will see menu location for config symbols that match. Then
+follow the shown path.
 
-git clone https://github.com/error27/smatch.git
-cd smatch
-make
+Thanks.
 
-cd /path/to/kernel_src/
-~/smatch/smatch_scripts/kchecker drivers/staging/nvec/nvec_paz00.c
+-- 
+An old man doll... just what I always wanted! - Clara
 
-Also I run Sparse on the file.
-~/smatch/smatch_scripts/kchecker --sparse drivers/staging/nvec/nvec_paz00.c
-
-When I'm patching a file, then I like to look at any other issues I
-might want to fix and deal with that as well.
-
-regards,
-dan carpenter
