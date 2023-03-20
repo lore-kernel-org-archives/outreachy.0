@@ -1,138 +1,86 @@
-Received: from mail-ed1-f41.google.com (mail-ed1-f41.google.com [209.85.208.41])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D6CF11383;
-	Mon, 20 Mar 2023 08:53:22 +0000 (UTC)
-Received: by mail-ed1-f41.google.com with SMTP id er8so31903979edb.0;
-        Mon, 20 Mar 2023 01:53:22 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3620A1383
+	for <outreachy@lists.linux.dev>; Mon, 20 Mar 2023 08:56:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679302401;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=CSur2724Mrb+t2O165F/BN6jWN51XTSV+JAwdxRyZN0=;
-        b=HtN7OaOaVn8D25XKoV7oyiJWUZl790qSN5SbGGws1TIykkdNweRUTVRhIB1VmtUHbG
-         X3rrND9fEoKsd/V7KKgqV6RcENuMAsQr73/zK/LBj8GIm4HoXflUn23Ai61cybHckB+w
-         0qr5VHUA9vmZt8PzmV6iprXrXFKSAcLdec1MYeMZ48JmItqa6MgoXhf3zULptmQ1Cw54
-         7l7Q6KISU3yCkbwMJ9yt1yDP2uAx0zK+1gCnuH8dN1gdXsB7Votre8aOzJb9O51w4iPg
-         03GR5VaLw1HMmHyS+EtWTfGV2aCDLonOuX57risk7aoDMYJVomfhlwgMdaMt6AV8SEM+
-         F0Lw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679302401;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=CSur2724Mrb+t2O165F/BN6jWN51XTSV+JAwdxRyZN0=;
-        b=1m4tb68BlUkDuKhU7rbkea70q7zOXdpVUezN0+hzVvEQzcFROZzSNhs/lxbqieCVa3
-         TkbFgKF+11fhtoqf2iJ0/jmGjHe1OXidcO1wB0pcKhhQ1sxZmCI69lf83WzQACMIipdK
-         +gcmM7pZ/Wy/EharfFdtD48sY5D9mRQ/ZYxJtyyCdIPz87HZkttPVL7ijy0ppqp9jKRi
-         rYKAtO+wv0kHka5UpWlCorjKfx6CounTdaBXEe9N4Bm21uJECidfUnAfhf/zcrQIvXC9
-         V3ZkOXRGnC8I8WKf6ZLL+H4mEtw052Eg+nuH62ovIc9shMBP5wCmXAIqSeu+2lUY8leA
-         /S6w==
-X-Gm-Message-State: AO0yUKUUfIHrkZr9nn79tDiBZmHYEoK74n2XSKT9KcKf8kLhWsfZ20VI
-	ycgYXAQF8b4cZLAR6WmX+ok=
-X-Google-Smtp-Source: AK7set9pXllFdkoHzA8sdpIZJzcBcpJTv8PFDi87umJRA+YksZIIVd0ezRSV46JAJnTPD1fWINCqjQ==
-X-Received: by 2002:aa7:c049:0:b0:4fd:21a6:a649 with SMTP id k9-20020aa7c049000000b004fd21a6a649mr11200682edo.40.1679302400922;
-        Mon, 20 Mar 2023 01:53:20 -0700 (PDT)
-Received: from khadija-virtual-machine ([39.41.14.14])
-        by smtp.gmail.com with ESMTPSA id j30-20020a508a9e000000b004af5968cb3bsm4474230edj.17.2023.03.20.01.53.19
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 20 Mar 2023 01:53:20 -0700 (PDT)
-Date: Mon, 20 Mar 2023 13:53:18 +0500
-From: Khadija Kamran <kamrankhadijadj@gmail.com>
-To: Ira Weiny <ira.weiny@intel.com>
-Cc: outreachy@lists.linux.dev, Vaibhav Hiremath <hvaibhav.linux@gmail.com>,
-	Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	greybus-dev@lists.linaro.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2] staging: greybus: remove tabs to fix line length and
- merge lines
-Message-ID: <ZBge/v/K/BOVkl2V@khadija-virtual-machine>
-References: <ZAusnKYVTGvO5zoi@khadija-virtual-machine>
- <640e75cfd8fc_229a89294a3@iweiny-mobl.notmuch>
+  d=inria.fr; s=dc;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=aEkDVsF8ipLAliUdxEYVybj9a5HwBNlFWQDlcLhYRtg=;
+  b=IT5gvElmUtTGtbKOqMsomqZHjy5Lp4J4rUj/rhD5QzEBVsM/TkmCR5qs
+   o29AjrvbFcGM+03XaMLY+UJPqFb8kpy+jzpzgfLZTwyGVDJ3iDbkyNcX/
+   +JxbxIXVOlFq4dC7RiJcQqKXEEjgpR7qCJqyuEwReaiaYPw+b1HeJlfoF
+   E=;
+Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="5.98,274,1673910000"; 
+   d="scan'208";a="50654105"
+Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Mar 2023 09:56:07 +0100
+Date: Mon, 20 Mar 2023 09:56:06 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+To: Sumitra Sharma <sumitraartsy@gmail.com>
+cc: Bagas Sanjaya <bagasdotme@gmail.com>, outreachy@lists.linux.dev
+Subject: Re: Unable to find module location
+In-Reply-To: <20230320084630.GB126429@sumitra.com>
+Message-ID: <56598f6c-8532-e9d9-b371-dec8c8236483@inria.fr>
+References: <64997a6c-24f1-d551-1b87-735a699e4a8e@gmail.com> <20230318124937.GA39892@sumitra.com> <21c2da25-22cb-cbe7-153e-067377de4723@gmail.com> <20230318175746.GB49651@sumitra.com> <ee140dee-6db9-6d7e-0b84-b69f3c36cc13@gmail.com> <20230319083256.GB50179@sumitra.com>
+ <alpine.DEB.2.22.394.2303190938080.2867@hadrien> <alpine.DEB.2.22.394.2303190956120.2867@hadrien> <20230319121026.GA53959@sumitra.com> <alpine.DEB.2.22.394.2303191336090.2867@hadrien> <20230320084630.GB126429@sumitra.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <640e75cfd8fc_229a89294a3@iweiny-mobl.notmuch>
-
-On Sun, Mar 12, 2023 at 06:01:03PM -0700, Ira Weiny wrote:
-> Khadija Kamran wrote:
-> > In file drivers/staging/greybus/arche-platform.c,
-> > - Length of line 181 exceeds 100 columns, fix by removing tabs from the
-> >   line.
-> > - If condition and spin_unlock_...() call is split into two lines, join
-> > them to form a single line.
-> > 
-> > Signed-off-by: Khadija Kamran <kamrankhadijadj@gmail.com>
-> 
-> Fundamentally the problem with arche_platform_wd_irq() is that the
-> indentation is too great.
-> 
-> "... if you need more than 3 levels of indentation, you’re screwed anyway,
-> and should fix your program."
-> 
-> 	-- https://www.kernel.org/doc/html/v4.10/process/coding-style.html#indentation
-> 
-> I think a better solution would be to refactor the entire function.  This
-> would make the logic of the function more clear as well IMHO.
-> 
-> Here is another tip to help:
-> 
-> https://www.kernel.org/doc/html/v4.10/process/coding-style.html#centralized-exiting-of-functions
-> 
-> Do you think you could try that?
-
-Hey Ira!
-
-Sorry about the late reply. Thank you for your feedback. I have looked
-into the above link. Are you referring to the use of goto statements in
-arche_platform_wd_irq() call?
-
-Thank you!
-
-Regards,
-Khadija
+Content-Type: text/plain; charset=US-ASCII
 
 
-> Ira
-> 
-> > ---
-> > Changes in v2:
-> >  - Change the subject and log message
-> >  - Merge if condition and spin_unlock...() from two lines to one 
-> >  drivers/staging/greybus/arche-platform.c | 8 +++-----
-> >  1 file changed, 3 insertions(+), 5 deletions(-)
-> > 
-> > diff --git a/drivers/staging/greybus/arche-platform.c b/drivers/staging/greybus/arche-platform.c
-> > index fcbd5f71eff2..00ed5dfd7915 100644
-> > --- a/drivers/staging/greybus/arche-platform.c
-> > +++ b/drivers/staging/greybus/arche-platform.c
-> > @@ -176,12 +176,10 @@ static irqreturn_t arche_platform_wd_irq(int irq, void *devid)
-> >  				 * Check we are not in middle of irq thread
-> >  				 * already
-> >  				 */
-> > -				if (arche_pdata->wake_detect_state !=
-> > -						WD_STATE_COLDBOOT_START) {
-> > +				if (arche_pdata->wake_detect_state != WD_STATE_COLDBOOT_START) {
-> >  					arche_platform_set_wake_detect_state(arche_pdata,
-> > -									     WD_STATE_COLDBOOT_TRIG);
-> > -					spin_unlock_irqrestore(&arche_pdata->wake_lock,
-> > -							       flags);
-> > +						WD_STATE_COLDBOOT_TRIG);
-> > +					spin_unlock_irqrestore(&arche_pdata->wake_lock, flags);
-> >  					return IRQ_WAKE_THREAD;
-> >  				}
-> >  			}
-> > -- 
-> > 2.34.1
-> > 
-> > 
-> 
-> 
+
+On Mon, 20 Mar 2023, Sumitra Sharma wrote:
+
+> On Sun, Mar 19, 2023 at 01:36:51PM +0100, Julia Lawall wrote:
+> >
+> >
+> > On Sun, 19 Mar 2023, Sumitra Sharma wrote:
+> >
+> > > On Sun, Mar 19, 2023 at 09:56:33AM +0100, Julia Lawall wrote:
+> > > > Maybe try make tegra_defconfig
+> > > >
+> > >
+> > > Hi,
+> > >
+> > > Error: Can't find default configuration "arch/x86/configs/tegra_defconfig"!
+> >
+> > make ARCH=arm tegra_defconfig
+> >
+> > You can see that because find . -name tegra_defconfig gives:
+> >
+> > ./arch/arm/configs/tegra_defconfig
+> >
+>
+> Hi julia,
+>
+> This did worked.
+>
+> But the main issue of creating NVEC_PAZ00 a module using make menuconfig still persist.
+
+You're not able to select the things indicated when you use / to search
+for NVEC_PAZ00 ?
+
+julia
+
+>
+> Regards,
+>
+> Sumitra
+>
+> > julia
+> >
+> >
+> > >
+> > > REgards,
+> > > SUmitra
+> > >
+> > > > julia
+> > >
+>
