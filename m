@@ -1,120 +1,95 @@
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-pl1-f180.google.com (mail-pl1-f180.google.com [209.85.214.180])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B56E61849
-	for <outreachy@lists.linux.dev>; Mon, 20 Mar 2023 09:50:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1679305837;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ss6kVDpqjW5IIsm4uryKZ88uo+KrVDW16y6KeLjlJYk=;
-	b=O1fHbx/GjsUCJUp+j9dcYDc93nGWZOgTyTpyAe0g1+GDPUwco63wFTE56NjEjq/kTCroBW
-	4k2YlBJTTKzKzrmi9OAuKYTjjG9dZSouZIgdDWLOTEZOkZxpd/oC4VvE0+e6Ukc+O6eypl
-	kEvfyOX2VApiEx+HpmM+4Y4gYBUqNNA=
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-295-PDu1S9AHOr6s8plKORys4w-1; Mon, 20 Mar 2023 05:50:36 -0400
-X-MC-Unique: PDu1S9AHOr6s8plKORys4w-1
-Received: by mail-ed1-f72.google.com with SMTP id r19-20020a50aad3000000b005002e950cd3so16811294edc.11
-        for <outreachy@lists.linux.dev>; Mon, 20 Mar 2023 02:50:36 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A83B91846
+	for <outreachy@lists.linux.dev>; Mon, 20 Mar 2023 09:53:20 +0000 (UTC)
+Received: by mail-pl1-f180.google.com with SMTP id p20so11794766plw.13
+        for <outreachy@lists.linux.dev>; Mon, 20 Mar 2023 02:53:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1679306000;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=xUbChdCpGg5Ez7sKErWOXkeqVyoRDWt4WzYgw+OTa8I=;
+        b=COgnPmIQWzwhrSoxSvpzUnrp7Bv0tj4JotK9xat/Zaenp6RNynwHg7v4zkc1oZkPbm
+         3NcKjhxiiMP2Kb1owtHqhmp7jwI0YPwYNf4iQ9Mz9O9ef6IaqV4tqqe+6IYMtwvmLM+l
+         Uq6jO3sMmEEWUA5YksSfdnRUf5E04k4RRrLAEyIPhyQawOEGULQ14KnL+/fymdjOh2Mp
+         dDh/ZWRaq3uOuq3pmyNjIrylZ2KGM977MNmBBHA51uDdF6GXEQzdTs3aMwMY6+AZuyo0
+         wYZu75H5IY26gcUFTZR3guogFA5ZtZ8K6Fa5KtJ7W5mbivzB1kEfIyZlZ5XefQ2yru/r
+         JvOA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679305835;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ss6kVDpqjW5IIsm4uryKZ88uo+KrVDW16y6KeLjlJYk=;
-        b=ae5riWblnPmuQvvYNo1xdj+KpvYReH8rM6zzAQmqv/E31dl4+H8ZCizHmoT+eIAWDy
-         sXtlaP3s0gy8eHVr3LrDiJ7e4g49oSEKq6dN271i5tBOTHUvYwB1NZ6T18++MXR9kuaJ
-         EQKmVgSByxvkvnGoE7SUDsirfMR8RTMcLRfCdZ38KwR6F4HvQgLmVcjVdRqfj2eSVb8i
-         XuY+PBVPhLcvb9MZ0jMMOHZBhmdqje3HMivjIcCCLUAvtu1ZWr1vdWDtKdxoE15vClv4
-         Hy0YxWUBTETRX9nqDozC44CWXarFDuOsnIaUVeUcNqUFAzXEg/j6ISRKzciJOx8J63P9
-         wC7Q==
-X-Gm-Message-State: AO0yUKWmGINtZwt8gYNW103aCt5szY267gZip7V0jnacbmoNV3k1MpSH
-	d1dAZhz5qW82TRHorqme4Acxn8PuEaSzQYIAUAhDfpG0dsA7UtUeoLK4wgWmUPHftarkCy0QXV0
-	1TxYUryqP1WoxOB3xJL5+F/2y2NcN
-X-Received: by 2002:a17:906:fe4c:b0:92f:22b1:57f9 with SMTP id wz12-20020a170906fe4c00b0092f22b157f9mr9854313ejb.2.1679305835066;
-        Mon, 20 Mar 2023 02:50:35 -0700 (PDT)
-X-Google-Smtp-Source: AK7set/47JPtGexk0TSuJX1KiZr+LwW7LBb1OTu2U07PVmduBtikRfn1f3Orewm9RB9+y1JlZkjZQQ==
-X-Received: by 2002:a17:906:fe4c:b0:92f:22b1:57f9 with SMTP id wz12-20020a170906fe4c00b0092f22b157f9mr9854299ejb.2.1679305834816;
-        Mon, 20 Mar 2023 02:50:34 -0700 (PDT)
-Received: from [10.40.98.142] ([78.108.130.194])
-        by smtp.gmail.com with ESMTPSA id s26-20020a170906169a00b009200601ea12sm4127757ejd.208.2023.03.20.02.50.33
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 20 Mar 2023 02:50:34 -0700 (PDT)
-Message-ID: <9b8bc631-435d-7c4d-d605-be10092242c8@redhat.com>
-Date: Mon, 20 Mar 2023 10:50:33 +0100
+        d=1e100.net; s=20210112; t=1679306000;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=xUbChdCpGg5Ez7sKErWOXkeqVyoRDWt4WzYgw+OTa8I=;
+        b=TrZPfEh+QdIjjJTckdGLzaQx8goYoXONE5LA/SEGRhAeuCdeikkrA9V7ju2I8bnhoF
+         Y/K5ZvrbRjYrIh8CP0WkUmADqeP3APSr43F7ah+PWiNqKEiR7QgeQdDzAz8xB74AQBwg
+         UOH1G2TAdqpuZxqzJFpb+2I1FcQUyDcnNhQCzbJ/EjIl2sVJYK289otmvZhuP+HjfiyA
+         N5HHVr/PKKowG1b/lJfra1quE0J9yizngvJ+8WiF/eP3709EfXacNM5cDC5qEIRDloBu
+         uf+kMEhOYy1SMvRvt/Eh1utN1reYHO1HSdfMrdngnn9RUxcnYsvViZykEOm/kEg3NM9Z
+         EhqA==
+X-Gm-Message-State: AO0yUKWqM+3TvvIbQq5Sp1Ake1zjMvD9BInu7Cf5Az5NPdzKrrkge+Dx
+	23Xna6dyL6w6Mx0kJ1Eu0uw=
+X-Google-Smtp-Source: AK7set+oEWjXLeWKNMFgGfwcxNx18bAOpJ9W+kHudQrMCzEv0gsEb3JxvvajuRvjZp1Mu+MbjLo4Fg==
+X-Received: by 2002:a17:902:d507:b0:19a:96ea:3850 with SMTP id b7-20020a170902d50700b0019a96ea3850mr11968761plg.17.1679305999991;
+        Mon, 20 Mar 2023 02:53:19 -0700 (PDT)
+Received: from sumitra.com ([210.212.97.176])
+        by smtp.gmail.com with ESMTPSA id f9-20020a17090274c900b001a1b245f8b4sm4665533plt.236.2023.03.20.02.53.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 20 Mar 2023 02:53:19 -0700 (PDT)
+Date: Mon, 20 Mar 2023 02:53:14 -0700
+From: Sumitra Sharma <sumitraartsy@gmail.com>
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: Bagas Sanjaya <bagasdotme@gmail.com>, outreachy@lists.linux.dev
+Subject: Re: Unable to find module location
+Message-ID: <20230320095314.GC126429@sumitra.com>
+References: <21c2da25-22cb-cbe7-153e-067377de4723@gmail.com>
+ <20230318175746.GB49651@sumitra.com>
+ <ee140dee-6db9-6d7e-0b84-b69f3c36cc13@gmail.com>
+ <20230319083256.GB50179@sumitra.com>
+ <alpine.DEB.2.22.394.2303190938080.2867@hadrien>
+ <alpine.DEB.2.22.394.2303190956120.2867@hadrien>
+ <20230319121026.GA53959@sumitra.com>
+ <alpine.DEB.2.22.394.2303191336090.2867@hadrien>
+ <20230320084630.GB126429@sumitra.com>
+ <da5bf7f-b8b5-143-8e58-9c1dc4214fad@inria.fr>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.7.1
-Subject: Re: [PATCH v2] staging: rtl8723bs: use inline functions for
- dvobj_to_dev
-To: Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>, gregkh@linuxfoundation.org
-Cc: outreachy@lists.linux.dev, namcaov@gmail.com, straube.linux@gmail.com,
- linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev,
- Julia Lawall <julia.lawall@inria.fr>
-References: <20230319201134.253839-1-eng.mennamahmoud.mm@gmail.com>
-From: Hans de Goede <hdegoede@redhat.com>
-In-Reply-To: <20230319201134.253839-1-eng.mennamahmoud.mm@gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <da5bf7f-b8b5-143-8e58-9c1dc4214fad@inria.fr>
 
-Hi,
+>>On Mon, 20 Mar 2023, Bagas Sanjaya wrote:
 
-On 3/19/23 21:11, Menna Mahmoud wrote:
-> Convert `dvobj_to_dev` macro into a static inline function.
-> it is not great to have macro that use `container_of` macro,
-> because from looking at the definition one cannot tell
-> what type it applies to.
-> 
-> One can get the same benefit from an efficiency point of view
-> by making an inline function.
-> 
-> Suggested-by: Julia Lawall <julia.lawall@inria.fr>
-> Signed-off-by: Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>
-> ---
-> change in v2:
-> 	edit commit message.
+> On 3/20/23 15:46, Sumitra Sharma wrote:
+> > Hi julia,
+> >
+> > This did worked.
+> >
+> > But the main issue of creating NVEC_PAZ00 a module using make menuconfig still persist.
+> >
+>
+>> Oh dear, you don't know how to use menuconfig...
+>>
+>> When you execute `make menuconfig`, you'll be presented with menu when
+>> you can choose what config you want to enable. To find the desired config
+>> (NVEC_PAZ00 in this case), press `/` and type in the config name. If
+>> found, you will see menu location for config symbols that match. Then
+>> follow the shown path.
 
+> Actually, this isn't the issue.  You have to have the ARCH=arm as well.
+> Otherwise, / provides instructions, but there is no way to follow them.
 
-Thanks, patch looks good to me:
+Yes you are correct locating the mocule in menuconfig is my issue. Do you mean 'make menuconfig ARCH=arm'.
 
-Reviewed-by: Hans de Goede <hdegoede@redhat.com>
+Sorry for such a long thread. :(
 
 Regards,
+Sumitra
 
-Hans
 
-
-> ---
->  drivers/staging/rtl8723bs/include/drv_types.h | 6 +++++-
->  1 file changed, 5 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/rtl8723bs/include/drv_types.h b/drivers/staging/rtl8723bs/include/drv_types.h
-> index 82159e1c7f9b..ea6bb44c5e1d 100644
-> --- a/drivers/staging/rtl8723bs/include/drv_types.h
-> +++ b/drivers/staging/rtl8723bs/include/drv_types.h
-> @@ -305,7 +305,11 @@ struct sdio_data intf_data;
->  };
->  
->  #define dvobj_to_pwrctl(dvobj) (&(dvobj->pwrctl_priv))
-> -#define pwrctl_to_dvobj(pwrctl) container_of(pwrctl, struct dvobj_priv, pwrctl_priv)
-> +
-> +static inline struct dvobj_priv *pwrctl_to_dvobj(struct pwrctrl_priv *pwrctl_priv)
-> +{
-> +	return container_of(pwrctl_priv, struct dvobj_priv, pwrctl_priv);
-> +}
->  
->  static inline struct device *dvobj_to_dev(struct dvobj_priv *dvobj)
->  {
 
