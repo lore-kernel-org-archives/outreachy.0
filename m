@@ -1,111 +1,182 @@
-Received: from msg-2.mailo.com (msg-2.mailo.com [213.182.54.12])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ed1-f44.google.com (mail-ed1-f44.google.com [209.85.208.44])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D04331846
-	for <outreachy@lists.linux.dev>; Mon, 20 Mar 2023 09:19:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
-	t=1679303955; bh=tBi6td1jmhY5HFtfBbuZyYeZdK6VzE/3ivIp7HjVKWM=;
-	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
-	 MIME-Version:Content-Type:Content-Transfer-Encoding:In-Reply-To;
-	b=jv76no2J5NJO41HVNv3PyucKQ5XaiQOgGGnaSRf0Hgkj/ymS6umf2ro4tuBRMRgI9
-	 NPOIcLbemh4XV2VuyB4JKmp2hJ458SuXmrKhim71pHbLdGAtQm316OXFZQAdVceGTa
-	 cXVkrGzHUxdbCrmcHpXVAbUZU7FSTc2Uao2xAEM4=
-Received: by b221-3.in.mailobj.net [192.168.90.23] with ESMTP
-	via ip-20.mailobj.net [213.182.54.20]
-	Mon, 20 Mar 2023 10:19:15 +0100 (CET)
-X-EA-Auth: /T5EcYVxlQ+8GpOy9IRYe6kLnJyk3MyXW2H5Hzp5JnZplzhZgSudm+iExAiRRMb5OGD5QrhVp8DugwI3jT0/ynp7iAlp06ry
-Date: Mon, 20 Mar 2023 14:49:11 +0530
-From: Deepak R Varma <drv@mailo.com>
-To: Sumitra Sharma <sumitraartsy@gmail.com>
-Cc: Julia Lawall <julia.lawall@inria.fr>, outreachy@lists.linux.dev
-Subject: Re: Unable to find module location
-Message-ID: <ZBglD5yEm2Qb40qf@ubun2204.myguest.virtualbox.org>
-References: <20230318084048.GC4434@sumitra.com>
- <ZBWAsdC5UOEkbedF@ubun2204.myguest.virtualbox.org>
- <20230318130211.GB39892@sumitra.com>
- <ZBXh98I11pj38Jy2@ubun2204.myguest.virtualbox.org>
- <20230319084520.GC50179@sumitra.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AD60C1846;
+	Mon, 20 Mar 2023 09:33:47 +0000 (UTC)
+Received: by mail-ed1-f44.google.com with SMTP id ek18so44055591edb.6;
+        Mon, 20 Mar 2023 02:33:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1679304826;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=e3QdF0wMkBTmtVBS8ynp8ovaXMshD0DpAnNchV77vtY=;
+        b=UesMPWRFpR2JX5vPVbvxYR1zQ+M+IhSMpWZH2lIpwZ0WZoIufebUX5DzgeExhxsh7f
+         2ANido3DAEPiekrASioV8YH/Jgcw3esOfddOi4zUrFGfwZH+R7TNm67sArqs/cA7Zz5F
+         A7AyqxWgJjo8G9/PU64k17rMzERIA8qXy56VI5gym42uXNTsm/mpiul0NW5VkB4AhCiI
+         4Kyo+ano9ElnW2faIL27Uj7bGtTQbDO4kn+9y4GHB2ELbwX5BjABnNaG0vWTvrEkjcu1
+         q/HiAokTchc8jfj0QCgB/f8Zcm/suqr7eLzE29iRGb5WnLKftKTj1VuEUDJ0dBI48GyS
+         cozg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679304826;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=e3QdF0wMkBTmtVBS8ynp8ovaXMshD0DpAnNchV77vtY=;
+        b=jnX9Jag5w4PlrCWNIiQKQDxVCZytINK01YOgFfVs3YI5CKlXIHT9isuMXQhZI5g15O
+         zw8jZSzVbrF2jeFMJCVmOLITTLl7WbPqZDYfPVJSMNyTenw0bH31KPiXn6qrpuOr8df+
+         vaZo1ZQqeg+xiWq8ryMbiZUl0QNmZd4B592vdidQfM9ThAIhNVYYdLNN7X6EnNRyAjJA
+         MHcbwdCp82WbHLC1b41wdLyzB6p9x94kERoMbHEkaXsVt5Pj5lOMVrZuJYHyCPlaZMai
+         Q+ut7p84aRIaCHw6R99z2KZJpD3GpaO7fS/cOiKMgsPnuGVe1s1y/J4OliSlomnksvxe
+         dPTw==
+X-Gm-Message-State: AO0yUKXwBsHs9cqJ1wWJbgMZfqgJiraq/Z54ofVQj8vtsauCGRo/5FHu
+	d/8FTjFs5rMEXbzupdCgnEQHkAkzF2kyaad4TSA=
+X-Google-Smtp-Source: AK7set8Qn657Y7DA+BYuCWXB4qfbuxFmPEcongWcCbMjvnz5MP4Uux0KQPqqqU1zWuDfyZSENqbyDw==
+X-Received: by 2002:a17:906:f193:b0:933:868:413a with SMTP id gs19-20020a170906f19300b009330868413amr8046651ejb.15.1679304825710;
+        Mon, 20 Mar 2023 02:33:45 -0700 (PDT)
+Received: from khadija-virtual-machine ([39.41.14.14])
+        by smtp.gmail.com with ESMTPSA id p25-20020a17090653d900b009333b82f061sm2492372ejo.80.2023.03.20.02.33.44
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 20 Mar 2023 02:33:45 -0700 (PDT)
+Date: Mon, 20 Mar 2023 14:33:43 +0500
+From: Khadija Kamran <kamrankhadijadj@gmail.com>
+To: outreachy@lists.linux.dev
+Cc: Vaibhav Agarwal <vaibhav.sr@gmail.com>,
+	Mark Greer <mgreer@animalcreek.com>,
+	Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	greybus-dev@lists.linaro.org, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	Sumitra Sharma <sumitraartsy@gmail.com>
+Subject: Re: [PATCH] Staging: greybus: Fix lines ending with '('
+Message-ID: <ZBgod938/PJX1xsE@khadija-virtual-machine>
+References: <20230319164520.GA125117@sumitra.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20230319084520.GC50179@sumitra.com>
+In-Reply-To: <20230319164520.GA125117@sumitra.com>
 
-On Sun, Mar 19, 2023 at 01:45:20AM -0700, Sumitra Sharma wrote:
-> On Sat, Mar 18, 2023 at 09:38:23PM +0530, Deepak R Varma wrote:
-> > On Sat, Mar 18, 2023 at 06:02:11AM -0700, Sumitra Sharma wrote:
-> > > On Sat, Mar 18, 2023 at 02:43:21PM +0530, Deepak R Varma wrote:
-> > > > On Sat, Mar 18, 2023 at 01:40:48AM -0700, Sumitra Sharma wrote:
-> > > > You will need to use a arch specific config file and cross compile to configure
-> > > > and build this driver module.
-> > > > I just tried it with arch/arm64/configs/defconfig file and the
-> > > > aarch64-linux-gnu- compiler for my host system and was able to configure the
-> > > > driver for build.
-> > > >
-> > > 
-> > > Hi deepak,
-> > > 
-> > > Can you tell me command you are using because when adding the
-> > > arch/arm64/configs/defconfig file. I am receiving the invalid options
-> > > error.
-> > 
-> > Did you follow Sanjaya's instruction on cleaning your source directory? Once
-> > that is done, I suggest enabling necessary configurations using the arch
-> > specific config file and then run a full build. Make sure the build is all
-> > successful and the module's .ko file is generated.
-> >
+On Sun, Mar 19, 2023 at 09:45:20AM -0700, Sumitra Sharma wrote:
+> The coding style used to limit lines to 80 characters,
+> which led to splitting of these function headers into multiple
+> lines and ends the first line with a '('.
+> Such splits causes checks reported by the checkpatch.
 > 
-> Hi deepak,
+> Place the function parameters of each function immediately after
+> '(' in a single line to align the function headers.
 > 
-> Yes I did the cleanup. But I am unable to enable the below driver as
-> module 'M' when running the command 'make menuconfig' or 'make
-> menuconfig ~/git/kernels/staging/arch/arm64/configs/defconfig'. It is
-> because I am not able to locate it under staging drivers.
+> Signed-off-by: Sumitra Sharma <sumitraartsy@gmail.com>
+> ---
+>  .../staging/greybus/audio_manager_module.c    | 40 +++++++++----------
+>  1 file changed, 18 insertions(+), 22 deletions(-)
+> 
+> diff --git a/drivers/staging/greybus/audio_manager_module.c b/drivers/staging/greybus/audio_manager_module.c
+> index 0a0f0a394c84..81b4ba607a0e 100644
+> --- a/drivers/staging/greybus/audio_manager_module.c
+> +++ b/drivers/staging/greybus/audio_manager_module.c
+> @@ -70,9 +70,8 @@ static void gb_audio_module_release(struct kobject *kobj)
+>  	kfree(module);
+>  }
+>  
+> -static ssize_t gb_audio_module_name_show(
+> -	struct gb_audio_manager_module *module,
+> -	struct gb_audio_manager_module_attribute *attr, char *buf)
+> +static ssize_t gb_audio_module_name_show(struct gb_audio_manager_module *module,
+> +					 struct gb_audio_manager_module_attribute *attr, char *buf)
+>  {
+>  	return sprintf(buf, "%s", module->desc.name);
+>  }
+> @@ -80,9 +79,8 @@ static ssize_t gb_audio_module_name_show(
+>  static struct gb_audio_manager_module_attribute gb_audio_module_name_attribute =
+>  	__ATTR(name, 0664, gb_audio_module_name_show, NULL);
+>  
+> -static ssize_t gb_audio_module_vid_show(
+> -	struct gb_audio_manager_module *module,
+> -	struct gb_audio_manager_module_attribute *attr, char *buf)
+> +static ssize_t gb_audio_module_vid_show(struct gb_audio_manager_module *module,
+> +					struct gb_audio_manager_module_attribute *attr, char *buf)
+>  {
+>  	return sprintf(buf, "%d", module->desc.vid);
+>  }
+> @@ -90,9 +88,8 @@ static ssize_t gb_audio_module_vid_show(
+>  static struct gb_audio_manager_module_attribute gb_audio_module_vid_attribute =
+>  	__ATTR(vid, 0664, gb_audio_module_vid_show, NULL);
+>  
+> -static ssize_t gb_audio_module_pid_show(
+> -	struct gb_audio_manager_module *module,
+> -	struct gb_audio_manager_module_attribute *attr, char *buf)
+> +static ssize_t gb_audio_module_pid_show(struct gb_audio_manager_module *module,
+> +					struct gb_audio_manager_module_attribute *attr, char *buf)
+>  {
+>  	return sprintf(buf, "%d", module->desc.pid);
+>  }
+> @@ -100,9 +97,9 @@ static ssize_t gb_audio_module_pid_show(
+>  static struct gb_audio_manager_module_attribute gb_audio_module_pid_attribute =
+>  	__ATTR(pid, 0664, gb_audio_module_pid_show, NULL);
+>  
+> -static ssize_t gb_audio_module_intf_id_show(
+> -	struct gb_audio_manager_module *module,
+> -	struct gb_audio_manager_module_attribute *attr, char *buf)
+> +static ssize_t gb_audio_module_intf_id_show(struct gb_audio_manager_module *module,
+> +					    struct gb_audio_manager_module_attribute *attr,
+> +					    char *buf)
+>  {
+>  	return sprintf(buf, "%d", module->desc.intf_id);
+>  }
+> @@ -111,9 +108,9 @@ static struct gb_audio_manager_module_attribute
+>  					gb_audio_module_intf_id_attribute =
+>  	__ATTR(intf_id, 0664, gb_audio_module_intf_id_show, NULL);
+>  
+> -static ssize_t gb_audio_module_ip_devices_show(
+> -	struct gb_audio_manager_module *module,
+> -	struct gb_audio_manager_module_attribute *attr, char *buf)
+> +static ssize_t gb_audio_module_ip_devices_show(struct gb_audio_manager_module *module,
+> +					       struct gb_audio_manager_module_attribute *attr,
+> +					       char *buf)
+>  {
+>  	return sprintf(buf, "0x%X", module->desc.ip_devices);
+>  }
+> @@ -122,9 +119,9 @@ static struct gb_audio_manager_module_attribute
+>  					gb_audio_module_ip_devices_attribute =
+>  	__ATTR(ip_devices, 0664, gb_audio_module_ip_devices_show, NULL);
+>  
+> -static ssize_t gb_audio_module_op_devices_show(
+> -	struct gb_audio_manager_module *module,
+> -	struct gb_audio_manager_module_attribute *attr, char *buf)
+> +static ssize_t gb_audio_module_op_devices_show(struct gb_audio_manager_module *module,
+> +					       struct gb_audio_manager_module_attribute *attr,
+> +					       char *buf)
+>  {
+>  	return sprintf(buf, "0x%X", module->desc.op_devices);
+>  }
+> @@ -181,10 +178,9 @@ static void send_add_uevent(struct gb_audio_manager_module *module)
+>  	kobject_uevent_env(&module->kobj, KOBJ_ADD, envp);
+>  }
+>  
+> -int gb_audio_manager_module_create(
+> -	struct gb_audio_manager_module **module,
+> -	struct kset *manager_kset,
+> -	int id, struct gb_audio_manager_module_descriptor *desc)
+> +int gb_audio_manager_module_create(struct gb_audio_manager_module **module,
+> +				   struct kset *manager_kset,
+> +				   int id, struct gb_audio_manager_module_descriptor *desc)
+>  {
+>  	int err;
+>  	struct gb_audio_manager_module *m;
+> -- 
+> 2.25.1
+> 
+>
 
-what is your Linux distro and host architecture?
+Hi Mentors,
 
-> 
->   │                                                                                                                  │
->   │ Symbol: NVEC_PAZ00 [=n]                                                                                          │
->   │ Type  : tristate                                                                                                 │
->   │ Defined at drivers/staging/nvec/Kconfig:45                                                                       │
->   │   Prompt: Support for OEM specific functions on Compal PAZ00 based devices                                       │
->   │   Depends on: STAGING [=y] && MFD_NVEC [=n] && LEDS_CLASS [=y]                                                   │
->   │   Location:                                                                                                      │
->   │     -> Device Drivers                                                                                            │
->   │ (3)   -> Staging drivers (STAGING [=y])                                                                          │
->   │         -> NV Tegra Embedded Controller SMBus Interface (MFD_NVEC [=n])                                          │
->   │           -> Support for OEM specific functions on Compal PAZ00 based devices (NVEC_PAZ00 [=n])
-> 
-> > Deepak.
-> > 
-> > > 
-> > > It will be of much help. Thank you.
-> > > 
-> > > Regards,
-> > > 
-> > > Sumitra
-> > > 
-> > > > Deepak.
-> > > > 
-> > > > 
-> > > > 
-> > > > > 
-> > > > >   Regards,
-> > > > >   
-> > > > >   Sumitra
-> > > > > 
-> > > > > 
-> > > > 
-> > > > 
-> > > 
-> > 
-> > 
-> 
+I came across a same check error in greybus/audio_topology file.
+Would it be okay to send a patch similar to this one?
 
+Regards,
+Khadija
 
