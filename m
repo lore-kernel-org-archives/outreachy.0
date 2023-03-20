@@ -1,183 +1,80 @@
 Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4EFFB1861
-	for <outreachy@lists.linux.dev>; Mon, 20 Mar 2023 13:01:55 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9995B1861
+	for <outreachy@lists.linux.dev>; Mon, 20 Mar 2023 13:04:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
   d=inria.fr; s=dc;
   h=date:from:to:cc:subject:in-reply-to:message-id:
    references:mime-version;
-  bh=JTvhCv2ja0P154HgzM/URThQbRpNTcYOsWTb+nfNz0E=;
-  b=O7KhG9Nk74v0QBEoL/l5ridEpLOn0qhtnQZcVmkG7oC6mwCJFOp3UsC5
-   oTGiRYxHVgisFKI4hDEjIioy/YGOn+NQnPkKef+4Qwr+lrMm91t4Xtb0B
-   5WOVgVPs/fqZDD+YtPfjNQX8StQxABLlOaDReu3lbLfgteAtjj1UHYLK/
+  bh=Bpart64AamyKZaPVj6bZYYb6lFFEptqJxgSVXjNxIgI=;
+  b=S4rPrBmd497jql1T35DflvKOwbdPg3dSlUiAbf9ycZ2mXcnjsCSbhl7u
+   WU9b/vmojwByPp38DcHfhINZo0uoTgT8WtQnPhcKWzcIZ5XD9EWTLDWmj
+   458xQyHeLmx/BwrXJmzCRD48Evr0jxO3HIOFrtVp6aKADm9cnPFmJGS+p
    A=;
 Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
 X-IronPort-AV: E=Sophos;i="5.98,274,1673910000"; 
-   d="scan'208";a="98085252"
+   d="scan'208";a="98085762"
 Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Mar 2023 14:01:53 +0100
-Date: Mon, 20 Mar 2023 14:01:53 +0100 (CET)
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Mar 2023 14:04:30 +0100
+Date: Mon, 20 Mar 2023 14:04:30 +0100 (CET)
 From: Julia Lawall <julia.lawall@inria.fr>
 To: Sumitra Sharma <sumitraartsy@gmail.com>
-cc: outreachy@lists.linux.dev
-Subject: Re: Help in setting module NVEC_PAZ00
-In-Reply-To: <20230320120259.GA128219@sumitra.com>
-Message-ID: <3e273f2-a86c-ab9-c791-b9ee5f447be3@inria.fr>
-References: <20230320120259.GA128219@sumitra.com>
+cc: Bagas Sanjaya <bagasdotme@gmail.com>, outreachy@lists.linux.dev
+Subject: Re: Unable to find module location
+In-Reply-To: <20230320095314.GC126429@sumitra.com>
+Message-ID: <e13532cc-d9da-5090-7731-5d3945d7564c@inria.fr>
+References: <21c2da25-22cb-cbe7-153e-067377de4723@gmail.com> <20230318175746.GB49651@sumitra.com> <ee140dee-6db9-6d7e-0b84-b69f3c36cc13@gmail.com> <20230319083256.GB50179@sumitra.com> <alpine.DEB.2.22.394.2303190938080.2867@hadrien>
+ <alpine.DEB.2.22.394.2303190956120.2867@hadrien> <20230319121026.GA53959@sumitra.com> <alpine.DEB.2.22.394.2303191336090.2867@hadrien> <20230320084630.GB126429@sumitra.com> <da5bf7f-b8b5-143-8e58-9c1dc4214fad@inria.fr>
+ <20230320095314.GC126429@sumitra.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-932276213-1679317313=:4121"
-
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
-
---8323329-932276213-1679317313=:4121
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8BIT
+Content-Type: text/plain; charset=US-ASCII
 
 
 
 On Mon, 20 Mar 2023, Sumitra Sharma wrote:
 
-> Since, the thread - https://lore.kernel.org/outreachy/20230320095314.GC126429@sumitra.com/T/#t
-> got very long so I thought of posting the issue here for better reach to get guidance.
+> >>On Mon, 20 Mar 2023, Bagas Sanjaya wrote:
 >
-> I want to configure NVEC_PAZ00 as 'm' and its dependencies are STAGING [=y] && MFD_NVEC [=n] && LEDS_CLASS [=y],
-> Therefore, I tried to set MFD_NVEC as 'y', which depends on  STAGING [=y] && I2C [=y] && GPIOLIB [=y] && ARCH_TEGRA.
-> Here ARCH_TEGRA is confusing. How can we set this in menuconfig . The following options appears:
+> > On 3/20/23 15:46, Sumitra Sharma wrote:
+> > > Hi julia,
+> > >
+> > > This did worked.
+> > >
+> > > But the main issue of creating NVEC_PAZ00 a module using make menuconfig still persist.
+> > >
+> >
+> >> Oh dear, you don't know how to use menuconfig...
+> >>
+> >> When you execute `make menuconfig`, you'll be presented with menu when
+> >> you can choose what config you want to enable. To find the desired config
+> >> (NVEC_PAZ00 in this case), press `/` and type in the config name. If
+> >> found, you will see menu location for config symbols that match. Then
+> >> follow the shown path.
 >
-> PS: I am sticking to resolve this issue and trying my best for it. I am very grateful to all of you for your kind help.
+> > Actually, this isn't the issue.  You have to have the ARCH=arm as well.
+> > Otherwise, / provides instructions, but there is no way to follow them.
+>
+> Yes you are correct locating the mocule in menuconfig is my issue. Do you mean 'make menuconfig ARCH=arm'.
 
-Did you try make ARCH=arm tegra_defconfig menuconfig
-
-If you do that, more things will be y and you can select what is needed.
+I have never tried that order.  make ARCH=arm tegra_defconfig menuconfig
+should work.  Maybe other options work also.  Arm has a lot of specific
+configurations.
 
 julia
 
 >
+> Sorry for such a long thread. :(
 >
-> Symbol: ARCH_TEGRA [=ARCH_TEGRA]                                                                                 │
->   │ Type  : unknown                                                                                                  │
->   │                                                                                                                  │
->   │                                                                                                                  │
->   │ Symbol: ARCH_TEGRA_114_SOC [=n]                                                                                  │
->   │ Type  : bool                                                                                                     │
->   │ Defined at drivers/soc/tegra/Kconfig:38                                                                          │
->   │   Prompt: Enable support for Tegra114 family                                                                     │
->   │   Depends on: ARCH_TEGRA && ARM                                                                                  │
->   │   Location:                                                                                                      │
->   │     -> Device Drivers
->  (1)   -> SOC (System On Chip) specific Drivers                                                                   │
->   │         -> Enable support for Tegra114 family (ARCH_TEGRA_114_SOC [=n])                                          │
->   │ Selects: ARM_ERRATA_798181 && HAVE_ARM_ARCH_TIMER && PINCTRL_TEGRA114 [=n] && SOC_TEGRA_FLOWCTRL [=n] && SOC_TEG │
->   │                                                                                                                  │
->   │                                                                                                                  │
->   │ Symbol: ARCH_TEGRA_124_SOC [=n]                                                                                  │
->   │ Type  : bool                                                                                                     │
->   │ Defined at drivers/soc/tegra/Kconfig:50                                                                          │
->   │   Prompt: Enable support for Tegra124 family                                                                     │
->   │   Depends on: ARCH_TEGRA && ARM                                                                                  │
->   │   Location:                                                                                                      │
->   │     -> Device Drivers                                                                                            │
->   │ (2)   -> SOC (System On Chip) specific Drivers                                                                   │
->   │         -> Enable support for Tegra124 family (ARCH_TEGRA_124_SOC [=n])                                          │
->   │ Selects: HAVE_ARM_ARCH_TIMER && PINCTRL_TEGRA124 [=n] && SOC_TEGRA_FLOWCTRL [=n] && SOC_TEGRA_PMC [=n] && TEGRA_ │
->   │                                                                                                                  │
->   │                                                                                                                  │
->   │ Symbol: ARCH_TEGRA_132_SOC [=n]                                                                                  │
->   │ Type  : bool                                                                                                     │
->   │ Defined at drivers/soc/tegra/Kconfig:66                                                                          │
->   │   Prompt: NVIDIA Tegra132 SoC                                                                                    │
->   │   Depends on: ARCH_TEGRA && ARM64                                                                                │
->   │   Location:                                                                                                      │
->   │     -> Device Drivers
-> (3)   -> SOC (System On Chip) specific Drivers                                                                   │
->   │         -> NVIDIA Tegra132 SoC (ARCH_TEGRA_132_SOC [=n])                                                         │
->   │ Selects: PINCTRL_TEGRA124 [=n] && SOC_TEGRA_FLOWCTRL [=n] && SOC_TEGRA_PMC [=n]                                  │
->   │                                                                                                                  │
->   │                                                                                                                  │
->   │ Symbol: ARCH_TEGRA_186_SOC [=n]                                                                                  │
->   │ Type  : bool                                                                                                     │
->   │ Defined at drivers/soc/tegra/Kconfig:96                                                                          │
->   │   Prompt: NVIDIA Tegra186 SoC                                                                                    │
->   │   Depends on: ARCH_TEGRA && ARM64 && !CPU_BIG_ENDIAN                                                             │
->   │   Location:                                                                                                      │
->   │     -> Device Drivers                                                                                            │
->   │ (4)   -> SOC (System On Chip) specific Drivers                                                                   │
->   │         -> NVIDIA Tegra186 SoC (ARCH_TEGRA_186_SOC [=n])                                                         │
->   │ Selects: MAILBOX [=y] && TEGRA_BPMP [=n] && TEGRA_HSP_MBOX [=n] && TEGRA_IVC [=n] && SOC_TEGRA_PMC [=n]          │
->   │                                                                                                                  │
->   │                                                                                                                  │
->   │ Symbol: ARCH_TEGRA_194_SOC [=n]                                                                                  │
->   │ Type  : bool                                                                                                     │
->   │ Defined at drivers/soc/tegra/Kconfig:112                                                                         │
->   │   Prompt: NVIDIA Tegra194 SoC                                                                                    │
->   │   Depends on: ARCH_TEGRA && ARM64 && !CPU_BIG_ENDIAN                                                             │
->   │   Location:                                                                                                      │
->   │     -> Device Drivers
->
-> (5)   -> SOC (System On Chip) specific Drivers                                                                   │
->   │         -> NVIDIA Tegra194 SoC (ARCH_TEGRA_194_SOC [=n])                                                         │
->   │ Selects: MAILBOX [=y] && PINCTRL_TEGRA194 [=n] && TEGRA_BPMP [=n] && TEGRA_HSP_MBOX [=n] && TEGRA_IVC [=n] && SO │
->   │                                                                                                                  │
->   │                                                                                                                  │
->   │ Symbol: ARCH_TEGRA_210_SOC [=n]                                                                                  │
->   │ Type  : bool                                                                                                     │
->   │ Defined at drivers/soc/tegra/Kconfig:77                                                                          │
->   │   Prompt: NVIDIA Tegra210 SoC                                                                                    │
->   │   Depends on: ARCH_TEGRA && ARM64                                                                                │
->   │   Location:                                                                                                      │
->   │     -> Device Drivers                                                                                            │
->   │ (6)   -> SOC (System On Chip) specific Drivers                                                                   │
->   │         -> NVIDIA Tegra210 SoC (ARCH_TEGRA_210_SOC [=n])                                                         │
->   │ Selects: PINCTRL_TEGRA210 [=n] && SOC_TEGRA_FLOWCTRL [=n] && SOC_TEGRA_PMC [=n] && TEGRA_TIMER [=n]              │
->   │                                                                                                                  │
->   │                                                                                                                  │
->   │ Symbol: ARCH_TEGRA_234_SOC [=n]                                                                                  │
->   │ Type  : bool                                                                                                     │
->   │ Defined at drivers/soc/tegra/Kconfig:124                                                                         │
->   │   Prompt: NVIDIA Tegra234 SoC                                                                                    │
->   │   Depends on: ARCH_TEGRA && ARM64 && !CPU_BIG_ENDIAN                                                             │
->   │   Location:                                                                                                      │
->   │     -> Device Drivers
->
->  (7)   -> SOC (System On Chip) specific Drivers                                                                   │
->   │         -> NVIDIA Tegra234 SoC (ARCH_TEGRA_234_SOC [=n])                                                         │
->   │ Selects: MAILBOX [=y] && TEGRA_BPMP [=n] && TEGRA_HSP_MBOX [=n] && TEGRA_IVC [=n] && SOC_TEGRA_PMC [=n]          │
->   │                                                                                                                  │
->   │                                                                                                                  │
->   │ Symbol: ARCH_TEGRA_2x_SOC [=n]                                                                                   │
->   │ Type  : bool                                                                                                     │
->   │ Defined at drivers/soc/tegra/Kconfig:7                                                                           │
->   │   Prompt: Enable support for Tegra20 family                                                                      │
->   │   Depends on: ARCH_TEGRA && ARM                                                                                  │
->   │   Location:                                                                                                      │
->   │     -> Device Drivers                                                                                            │
->   │ (8)   -> SOC (System On Chip) specific Drivers                                                                   │
->   │         -> Enable support for Tegra20 family (ARCH_TEGRA_2x_SOC [=n])                                            │
->   │ Selects: ARCH_NEEDS_CPU_IDLE_COUPLED [=n] && ARM_ERRATA_720789 && ARM_ERRATA_754327 && ARM_ERRATA_764369 && PINC │
->   │                                                                                                                  │
->   │                                                                                                                  │
->   │ Symbol: ARCH_TEGRA_3x_SOC [=n]                                                                                   │
->   │ Type  : bool                                                                                                     │
->   │ Defined at drivers/soc/tegra/Kconfig:24                                                                          │
->   │   Prompt: Enable support for Tegra30 family                                                                      │
->   │   Depends on: ARCH_TEGRA && ARM                                                                                  │
->   │   Location:                                                                                                      │
->   │     -> Device Drivers                                                                                            │
->   │ (9)   -> SOC (System On Chip) specific Drivers                                                                   │
->   │         -> Enable support for Tegra30 family (ARCH_TEGRA_3x_SOC [=n])                                            │
->   │ Selects: ARM_ERRATA_754322 && ARM_ERRATA_764369 && PINCTRL_TEGRA30 [=n] && PL310_ERRATA_769419 && SOC_TEGRA_FLOW
+> Regards,
+> Sumitra
 >
 >
 >
->   Regards,
->   Sumitra
 >
 >
---8323329-932276213-1679317313=:4121--
