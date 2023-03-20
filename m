@@ -1,55 +1,58 @@
-Received: from mail-pj1-f50.google.com (mail-pj1-f50.google.com [209.85.216.50])
+Received: from mail-pl1-f176.google.com (mail-pl1-f176.google.com [209.85.214.176])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9C17E1383;
-	Mon, 20 Mar 2023 08:44:29 +0000 (UTC)
-Received: by mail-pj1-f50.google.com with SMTP id l9-20020a17090a3f0900b0023d32684e7fso12964239pjc.1;
-        Mon, 20 Mar 2023 01:44:29 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D2D5B1383
+	for <outreachy@lists.linux.dev>; Mon, 20 Mar 2023 08:46:36 +0000 (UTC)
+Received: by mail-pl1-f176.google.com with SMTP id p20so11640969plw.13
+        for <outreachy@lists.linux.dev>; Mon, 20 Mar 2023 01:46:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679301869;
+        d=gmail.com; s=20210112; t=1679301996;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=gs8rcm/d7d5rUf8zE5Zuo/A8IdhoZtRoqNxyEktI7DU=;
-        b=D1Zmcz+v1MK/aSof4oDyzd7q1lx9K9HTk27r+LV6Lh1C3y/VPTkYrWUQMA/OMPpcKU
-         we08QnxWPTFCyvkjbDwhE3gvfDeg2Jn0RzBP4V+/2fH0eNEg36YInV9OONtM4o6Dh3x5
-         qXABGpInu9pkf6OBcanjeGCD6sMY50g9QkfUk2RT3Igek5ixe3O75VESxkXnrq00JXyr
-         9Cs6qlykNDGCbrYqav6bfOyJ82b9huN0+x0ahdhTu3wnkJNC2whpCfZf6e0MOZHAtgBi
-         VO8GxL4tZ1h9YYEM6GnojpOykTBVhIcWmpVO+SHsjNgsnvFU+NBzkK4GWrBATqH6zCwk
-         gUzg==
+        bh=yDwU53DYtPY2PRmOpVdEd/oKY0Ye+ukysbl1+5X/Ebc=;
+        b=nxoG03Hpo+nKFQYdzy3xeOM6pX/XF6F36b/UJx5tp5WrVx/PD86yUokvWd3EKPHpDE
+         o67EE3ht47AuL2ba3LUkW//utr8IT/n83we/gGh+jxjDAgDGZAiGFI7AQUd5/HJ87vHO
+         7mSHFz2IAYjmRnWzvJVl1NXDgzRlJNvZJHhF6Knbtl9QwlKzdE5LX4LFHkh4GB043NGZ
+         q2fIBITTQK8fbkGoIJYdba9XP+FuxOKmru6/aWdhCnKHodZlKtW738crX+w2daGN7lTx
+         BNC/wGtq5RmbIUgDKM+Wnrs4xzw5izi57Yrz6Z10v2Txz8pDRMcMwvHWHg+FL8aDBZ0a
+         jPow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679301869;
+        d=1e100.net; s=20210112; t=1679301996;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=gs8rcm/d7d5rUf8zE5Zuo/A8IdhoZtRoqNxyEktI7DU=;
-        b=uyF/ouiu2TBNKsfEso78pw6P3CPhbnkPJlPoo5jaNi0ZwNkPehikDmgvrGSghu9oed
-         X18ztQm+vtLYcTwgKOBiCVegb7bAGVjqnZYoeyMi2+nkztN5v1j47BT9OkMtcPU8wcPQ
-         wg7UjeROifAH2h86M2qnW9MvvX51TR1/QODlRNqpj74nxbjxLfCjEqaF7FwQS0Obz2QQ
-         qaJiBKJHwnaw+n+FrkVgkqHvVtK5u0GXwPQshJSyGtCv6DrFe1W6GFp1h0lu1vYwzlQH
-         /5kTschXCJ5+9ZXIy/pLoC9n2AnH/GO65/JmBWXjUm26slLFglNyjnLiqh4eOF/9huO+
-         HmZw==
-X-Gm-Message-State: AO0yUKV7/yq51sn5zioHAZNyCm0mXZJbKE0C8CP5X3jol0Y0A8lANZ7H
-	1ESB74t833E1XSoNOEIt980=
-X-Google-Smtp-Source: AK7set/c7pstRRWuhurf3gUuxnXwtKb1375FG/fOeRr1dGCOpfdeRb7/xUqrWb2ye0HQRVT8Xbwv3w==
-X-Received: by 2002:a17:902:e742:b0:19f:7977:c9d6 with SMTP id p2-20020a170902e74200b0019f7977c9d6mr18905610plf.28.1679301869033;
-        Mon, 20 Mar 2023 01:44:29 -0700 (PDT)
+        bh=yDwU53DYtPY2PRmOpVdEd/oKY0Ye+ukysbl1+5X/Ebc=;
+        b=bNtCnHEDvpstvDm+gX8PnyT3I2tNJUUmT6Mtle6ChJNwXUC+q9maidV9psOF+iZiBc
+         l9qSc3wXOxGxnsIRYGYekbNMVKRqJ4Zs6KMI7bDIBCblmdjxR+wyOOYaXIPNZZ7nv9TS
+         aPTnhmt4/lpg7QB80YrYAhmQAuAsiQWLKZu5zEaiDOT9KOZxIYPT7820+dZFmiJHfNuu
+         sU56X9KeCeKHDHF/AZORuEOfRlFhG03htSOO0BdqZaXl89sJOZOjCmqENXrC0T/INEbm
+         Ob2YoBHMXmJous+x2vgTDLCW4RHy3Qo5DHH5ALjEdIvEinzW/N9TZYo75lyreyU5JFnd
+         JiAA==
+X-Gm-Message-State: AO0yUKV77E5wlyacWcy5SRIgtfO4KHZIubBR6O6TSbW4+fgGmTNVR+KZ
+	2ASRcnmpSzkvokw50STl0mvBdOO0OUIZeQ==
+X-Google-Smtp-Source: AK7set+v25r3M+v+J8uR61gp01QZesE6ickX4yAUOrd63WKpwUwxDWDgirjYiXXoB2esr9IepLKDdQ==
+X-Received: by 2002:a17:902:f552:b0:1a1:cf70:33d5 with SMTP id h18-20020a170902f55200b001a1cf7033d5mr2949264plf.56.1679301996130;
+        Mon, 20 Mar 2023 01:46:36 -0700 (PDT)
 Received: from sumitra.com ([210.212.97.176])
-        by smtp.gmail.com with ESMTPSA id d4-20020a170902b70400b001a1c2eb3950sm2847455pls.22.2023.03.20.01.44.24
+        by smtp.gmail.com with ESMTPSA id w1-20020a1709027b8100b00199536fbc6fsm6075148pll.280.2023.03.20.01.46.33
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 20 Mar 2023 01:44:27 -0700 (PDT)
-Date: Mon, 20 Mar 2023 01:44:22 -0700
+        Mon, 20 Mar 2023 01:46:35 -0700 (PDT)
+Date: Mon, 20 Mar 2023 01:46:30 -0700
 From: Sumitra Sharma <sumitraartsy@gmail.com>
-To: Dan Carpenter <error27@gmail.com>
-Cc: Marc Dietrich <marvin24@gmx.de>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	ac100@lists.launchpad.net, linux-tegra@vger.kernel.org,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev
-Subject: Re: [PATCH v2] Staging: nvec: Convert to_nvec_led from a macro to an
- inline function
-Message-ID: <20230320084422.GA126429@sumitra.com>
-References: <20230318175250.GA49618@sumitra.com>
- <417e944c-4653-43ef-b492-c82c536e4d87@kili.mountain>
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: Bagas Sanjaya <bagasdotme@gmail.com>, outreachy@lists.linux.dev
+Subject: Re: Unable to find module location
+Message-ID: <20230320084630.GB126429@sumitra.com>
+References: <64997a6c-24f1-d551-1b87-735a699e4a8e@gmail.com>
+ <20230318124937.GA39892@sumitra.com>
+ <21c2da25-22cb-cbe7-153e-067377de4723@gmail.com>
+ <20230318175746.GB49651@sumitra.com>
+ <ee140dee-6db9-6d7e-0b84-b69f3c36cc13@gmail.com>
+ <20230319083256.GB50179@sumitra.com>
+ <alpine.DEB.2.22.394.2303190938080.2867@hadrien>
+ <alpine.DEB.2.22.394.2303190956120.2867@hadrien>
+ <20230319121026.GA53959@sumitra.com>
+ <alpine.DEB.2.22.394.2303191336090.2867@hadrien>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -58,30 +61,44 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <417e944c-4653-43ef-b492-c82c536e4d87@kili.mountain>
+In-Reply-To: <alpine.DEB.2.22.394.2303191336090.2867@hadrien>
 
-On Mon, Mar 20, 2023 at 08:39:49AM +0300, Dan Carpenter wrote:
-> On Sat, Mar 18, 2023 at 10:52:50AM -0700, Sumitra Sharma wrote:
-> > Convert to_nvec_led from a macro to a static inline function, to make the
-> > relevant types apparent in the definition and to benefit from the type
-> > checking performed by the compiler at call sites.
-> > 
-> > Signed-off-by: Sumitra Sharma <sumitraartsy@gmail.com>
-> > ---
+On Sun, Mar 19, 2023 at 01:36:51PM +0100, Julia Lawall wrote:
 > 
-> You need to compile test your changes.
+> 
+> On Sun, 19 Mar 2023, Sumitra Sharma wrote:
+> 
+> > On Sun, Mar 19, 2023 at 09:56:33AM +0100, Julia Lawall wrote:
+> > > Maybe try make tegra_defconfig
+> > >
+> >
+> > Hi,
+> >
+> > Error: Can't find default configuration "arch/x86/configs/tegra_defconfig"!
+> 
+> make ARCH=arm tegra_defconfig
+> 
+> You can see that because find . -name tegra_defconfig gives:
+> 
+> ./arch/arm/configs/tegra_defconfig
 >
 
-Hi dan,
+Hi julia,
 
-I am facing problems in creating modules and in compiling them.
+This did worked.
 
-Any help in this would be appreciated. Here is the link to the thread https://lore.kernel.org/outreachy/alpine.DEB.2.22.394.2303191336090.2867@hadrien/T/#t
+But the main issue of creating NVEC_PAZ00 a module using make menuconfig still persist.
 
 Regards,
 
 Sumitra
 
-> regards,
-> dan carpenter
+> julia
 > 
+> 
+> >
+> > REgards,
+> > SUmitra
+> >
+> > > julia
+> >
