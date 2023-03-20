@@ -1,95 +1,144 @@
-Received: from mail-pl1-f180.google.com (mail-pl1-f180.google.com [209.85.214.180])
+Received: from mail-pl1-f173.google.com (mail-pl1-f173.google.com [209.85.214.173])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A83B91846
-	for <outreachy@lists.linux.dev>; Mon, 20 Mar 2023 09:53:20 +0000 (UTC)
-Received: by mail-pl1-f180.google.com with SMTP id p20so11794766plw.13
-        for <outreachy@lists.linux.dev>; Mon, 20 Mar 2023 02:53:20 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 190FF1850
+	for <outreachy@lists.linux.dev>; Mon, 20 Mar 2023 10:02:22 +0000 (UTC)
+Received: by mail-pl1-f173.google.com with SMTP id ix20so11851781plb.3
+        for <outreachy@lists.linux.dev>; Mon, 20 Mar 2023 03:02:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679306000;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=xUbChdCpGg5Ez7sKErWOXkeqVyoRDWt4WzYgw+OTa8I=;
-        b=COgnPmIQWzwhrSoxSvpzUnrp7Bv0tj4JotK9xat/Zaenp6RNynwHg7v4zkc1oZkPbm
-         3NcKjhxiiMP2Kb1owtHqhmp7jwI0YPwYNf4iQ9Mz9O9ef6IaqV4tqqe+6IYMtwvmLM+l
-         Uq6jO3sMmEEWUA5YksSfdnRUf5E04k4RRrLAEyIPhyQawOEGULQ14KnL+/fymdjOh2Mp
-         dDh/ZWRaq3uOuq3pmyNjIrylZ2KGM977MNmBBHA51uDdF6GXEQzdTs3aMwMY6+AZuyo0
-         wYZu75H5IY26gcUFTZR3guogFA5ZtZ8K6Fa5KtJ7W5mbivzB1kEfIyZlZ5XefQ2yru/r
-         JvOA==
+        d=gmail.com; s=20210112; t=1679306541;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=fm3Rgspjp7iidIGpGufBUf5RfpQoGxneODWCVi+Zy7Y=;
+        b=ePwslZ6/Y7upZgbE3WQlymUUnBN7PdqttQ+ew5JAqT5pdyG3UW1Ubcj6KZ8QeqE5uX
+         h+GwSr2SYB9Usq8g096vEcR5xsyBzl40EAdauJtVjfvu925B5TMe1T8RNypV9XTRBB53
+         bBFNbp9aXwvhqnpOMAuuLK+2cPUrmHvaVbIf8m4t/+FDtwHxeJyl4iZYjtS2ubvzcwZc
+         +VPyHUB6350f9W4bSHwaBBJNltYQQGqTxLKBHy0AU5A/JKNWJCmY+F98tDRhIJhdFtkP
+         OEVFJiFIWwbLBflOCZ/2+ojChgwDiNQryOOTjpvavWnmicKmEDW0Y6aZlttYhk5tOxqD
+         piSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679306000;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=xUbChdCpGg5Ez7sKErWOXkeqVyoRDWt4WzYgw+OTa8I=;
-        b=TrZPfEh+QdIjjJTckdGLzaQx8goYoXONE5LA/SEGRhAeuCdeikkrA9V7ju2I8bnhoF
-         Y/K5ZvrbRjYrIh8CP0WkUmADqeP3APSr43F7ah+PWiNqKEiR7QgeQdDzAz8xB74AQBwg
-         UOH1G2TAdqpuZxqzJFpb+2I1FcQUyDcnNhQCzbJ/EjIl2sVJYK289otmvZhuP+HjfiyA
-         N5HHVr/PKKowG1b/lJfra1quE0J9yizngvJ+8WiF/eP3709EfXacNM5cDC5qEIRDloBu
-         uf+kMEhOYy1SMvRvt/Eh1utN1reYHO1HSdfMrdngnn9RUxcnYsvViZykEOm/kEg3NM9Z
-         EhqA==
-X-Gm-Message-State: AO0yUKWqM+3TvvIbQq5Sp1Ake1zjMvD9BInu7Cf5Az5NPdzKrrkge+Dx
-	23Xna6dyL6w6Mx0kJ1Eu0uw=
-X-Google-Smtp-Source: AK7set+oEWjXLeWKNMFgGfwcxNx18bAOpJ9W+kHudQrMCzEv0gsEb3JxvvajuRvjZp1Mu+MbjLo4Fg==
-X-Received: by 2002:a17:902:d507:b0:19a:96ea:3850 with SMTP id b7-20020a170902d50700b0019a96ea3850mr11968761plg.17.1679305999991;
-        Mon, 20 Mar 2023 02:53:19 -0700 (PDT)
+        d=1e100.net; s=20210112; t=1679306541;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=fm3Rgspjp7iidIGpGufBUf5RfpQoGxneODWCVi+Zy7Y=;
+        b=lA2wO15IwcLw1261Yl27xa1ofVhU6RaofNwhoA5JZaniPGvfG5IOAMCPoVHJ2FjpRM
+         D0FwkgmMNb9+JA2mb8NBmEK1HicWj0RfKaD+eeFhHtHQxctxBLtRsfP15lhOWbfg+T41
+         Cg6lqAnP3TzjcdXQzU3SWEzm2PzgNiGGwq1cFrIptx0LICVreg59FU+10v00bemCribq
+         p0hv7ChqIx2wsgFaV7O5vFw6DLFA2MOkKneS+oxJrd4XFJGh4cHyKmJdNeg4HXgpVvRy
+         Y9lX67Yq1N1BPR5XwfqRRQ/SYk1CFZfuGEuY5Ui7hkfEjw0JnXbZgSWQGwXlkhq0V3jL
+         uUQA==
+X-Gm-Message-State: AO0yUKWKI9e0N5mVMh0jkUcE0jxaiwv9vz4IqPAF/CjBbDjvnG03PR0s
+	DlQ7peHIDTlDbdhA6GrsgVeemwgIeSKD3A==
+X-Google-Smtp-Source: AK7set+WIwFUzd1hAmQlZExxQYvEXaxcnkgiGc9ZRR7WUA0nCHVdAGz6hc52SELL7ZteAQtOJ1m/aA==
+X-Received: by 2002:a17:902:d505:b0:19d:16e4:ac0f with SMTP id b5-20020a170902d50500b0019d16e4ac0fmr21658674plg.5.1679306541430;
+        Mon, 20 Mar 2023 03:02:21 -0700 (PDT)
 Received: from sumitra.com ([210.212.97.176])
-        by smtp.gmail.com with ESMTPSA id f9-20020a17090274c900b001a1b245f8b4sm4665533plt.236.2023.03.20.02.53.17
+        by smtp.gmail.com with ESMTPSA id k20-20020a170902ba9400b00198fb25d09bsm6283366pls.237.2023.03.20.03.02.18
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 20 Mar 2023 02:53:19 -0700 (PDT)
-Date: Mon, 20 Mar 2023 02:53:14 -0700
+        Mon, 20 Mar 2023 03:02:20 -0700 (PDT)
+Date: Mon, 20 Mar 2023 03:02:16 -0700
 From: Sumitra Sharma <sumitraartsy@gmail.com>
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: Bagas Sanjaya <bagasdotme@gmail.com>, outreachy@lists.linux.dev
+To: Deepak R Varma <drv@mailo.com>
+Cc: Julia Lawall <julia.lawall@inria.fr>, outreachy@lists.linux.dev
 Subject: Re: Unable to find module location
-Message-ID: <20230320095314.GC126429@sumitra.com>
-References: <21c2da25-22cb-cbe7-153e-067377de4723@gmail.com>
- <20230318175746.GB49651@sumitra.com>
- <ee140dee-6db9-6d7e-0b84-b69f3c36cc13@gmail.com>
- <20230319083256.GB50179@sumitra.com>
- <alpine.DEB.2.22.394.2303190938080.2867@hadrien>
- <alpine.DEB.2.22.394.2303190956120.2867@hadrien>
- <20230319121026.GA53959@sumitra.com>
- <alpine.DEB.2.22.394.2303191336090.2867@hadrien>
- <20230320084630.GB126429@sumitra.com>
- <da5bf7f-b8b5-143-8e58-9c1dc4214fad@inria.fr>
+Message-ID: <20230320100216.GD126429@sumitra.com>
+References: <20230318084048.GC4434@sumitra.com>
+ <ZBWAsdC5UOEkbedF@ubun2204.myguest.virtualbox.org>
+ <20230318130211.GB39892@sumitra.com>
+ <ZBXh98I11pj38Jy2@ubun2204.myguest.virtualbox.org>
+ <20230319084520.GC50179@sumitra.com>
+ <ZBglD5yEm2Qb40qf@ubun2204.myguest.virtualbox.org>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <da5bf7f-b8b5-143-8e58-9c1dc4214fad@inria.fr>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <ZBglD5yEm2Qb40qf@ubun2204.myguest.virtualbox.org>
 
->>On Mon, 20 Mar 2023, Bagas Sanjaya wrote:
-
-> On 3/20/23 15:46, Sumitra Sharma wrote:
-> > Hi julia,
-> >
-> > This did worked.
-> >
-> > But the main issue of creating NVEC_PAZ00 a module using make menuconfig still persist.
-> >
+On Mon, Mar 20, 2023 at 02:49:11PM +0530, Deepak R Varma wrote:
+> On Sun, Mar 19, 2023 at 01:45:20AM -0700, Sumitra Sharma wrote:
+> > On Sat, Mar 18, 2023 at 09:38:23PM +0530, Deepak R Varma wrote:
+> > > On Sat, Mar 18, 2023 at 06:02:11AM -0700, Sumitra Sharma wrote:
+> > > > On Sat, Mar 18, 2023 at 02:43:21PM +0530, Deepak R Varma wrote:
+> > > > > On Sat, Mar 18, 2023 at 01:40:48AM -0700, Sumitra Sharma wrote:
+> > > > > You will need to use a arch specific config file and cross compile to configure
+> > > > > and build this driver module.
+> > > > > I just tried it with arch/arm64/configs/defconfig file and the
+> > > > > aarch64-linux-gnu- compiler for my host system and was able to configure the
+> > > > > driver for build.
+> > > > >
+> > > > 
+> > > > Hi deepak,
+> > > > 
+> > > > Can you tell me command you are using because when adding the
+> > > > arch/arm64/configs/defconfig file. I am receiving the invalid options
+> > > > error.
+> > > 
+> > > Did you follow Sanjaya's instruction on cleaning your source directory? Once
+> > > that is done, I suggest enabling necessary configurations using the arch
+> > > specific config file and then run a full build. Make sure the build is all
+> > > successful and the module's .ko file is generated.
+> > >
+> > 
+> > Hi deepak,
+> > 
+> > Yes I did the cleanup. But I am unable to enable the below driver as
+> > module 'M' when running the command 'make menuconfig' or 'make
+> > menuconfig ~/git/kernels/staging/arch/arm64/configs/defconfig'. It is
+> > because I am not able to locate it under staging drivers.
+> 
+> what is your Linux distro and host architecture?
 >
->> Oh dear, you don't know how to use menuconfig...
->>
->> When you execute `make menuconfig`, you'll be presented with menu when
->> you can choose what config you want to enable. To find the desired config
->> (NVEC_PAZ00 in this case), press `/` and type in the config name. If
->> found, you will see menu location for config symbols that match. Then
->> follow the shown path.
 
-> Actually, this isn't the issue.  You have to have the ARCH=arm as well.
-> Otherwise, / provides instructions, but there is no way to follow them.
+VM linux distro = Ubuntu 20.04 64-bit version
+Host architecture = windows 11 x64
 
-Yes you are correct locating the mocule in menuconfig is my issue. Do you mean 'make menuconfig ARCH=arm'.
+REgards,
+SUmitra
 
-Sorry for such a long thread. :(
-
-Regards,
-Sumitra
-
-
-
+> > 
+> >   │                                                                                                                  │
+> >   │ Symbol: NVEC_PAZ00 [=n]                                                                                          │
+> >   │ Type  : tristate                                                                                                 │
+> >   │ Defined at drivers/staging/nvec/Kconfig:45                                                                       │
+> >   │   Prompt: Support for OEM specific functions on Compal PAZ00 based devices                                       │
+> >   │   Depends on: STAGING [=y] && MFD_NVEC [=n] && LEDS_CLASS [=y]                                                   │
+> >   │   Location:                                                                                                      │
+> >   │     -> Device Drivers                                                                                            │
+> >   │ (3)   -> Staging drivers (STAGING [=y])                                                                          │
+> >   │         -> NV Tegra Embedded Controller SMBus Interface (MFD_NVEC [=n])                                          │
+> >   │           -> Support for OEM specific functions on Compal PAZ00 based devices (NVEC_PAZ00 [=n])
+> > 
+> > > Deepak.
+> > > 
+> > > > 
+> > > > It will be of much help. Thank you.
+> > > > 
+> > > > Regards,
+> > > > 
+> > > > Sumitra
+> > > > 
+> > > > > Deepak.
+> > > > > 
+> > > > > 
+> > > > > 
+> > > > > > 
+> > > > > >   Regards,
+> > > > > >   
+> > > > > >   Sumitra
+> > > > > > 
+> > > > > > 
+> > > > > 
+> > > > > 
+> > > > 
+> > > 
+> > > 
+> > 
+> 
+> 
