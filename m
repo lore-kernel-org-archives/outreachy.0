@@ -1,78 +1,111 @@
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
+Received: from msg-2.mailo.com (msg-2.mailo.com [213.182.54.12])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EA74F1383;
-	Mon, 20 Mar 2023 09:07:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=GBv7ohh4eAd8VZ4Smlvg1i1r1lXvCYRK2nqEANMOmNk=;
-  b=igZsDkb1a3gPK3dUvg2b1a69grlfkLqTQJ80JcWVMscQzDUnxVvG0hf7
-   8N2mDx6uVcZWKUtLOg2VYevsjRB1D8bvOFZSkuQLS9n8mg7el+aKfac50
-   rB3hGltj07KQIwWgb9muDmqcPFeHJVSD3m/DIRl8ZjUrI6yqWey9kgwOQ
-   s=;
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="5.98,274,1673910000"; 
-   d="scan'208";a="98018589"
-Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Mar 2023 10:07:03 +0100
-Date: Mon, 20 Mar 2023 10:07:04 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D04331846
+	for <outreachy@lists.linux.dev>; Mon, 20 Mar 2023 09:19:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
+	t=1679303955; bh=tBi6td1jmhY5HFtfBbuZyYeZdK6VzE/3ivIp7HjVKWM=;
+	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
+	 MIME-Version:Content-Type:Content-Transfer-Encoding:In-Reply-To;
+	b=jv76no2J5NJO41HVNv3PyucKQ5XaiQOgGGnaSRf0Hgkj/ymS6umf2ro4tuBRMRgI9
+	 NPOIcLbemh4XV2VuyB4JKmp2hJ458SuXmrKhim71pHbLdGAtQm316OXFZQAdVceGTa
+	 cXVkrGzHUxdbCrmcHpXVAbUZU7FSTc2Uao2xAEM4=
+Received: by b221-3.in.mailobj.net [192.168.90.23] with ESMTP
+	via ip-20.mailobj.net [213.182.54.20]
+	Mon, 20 Mar 2023 10:19:15 +0100 (CET)
+X-EA-Auth: /T5EcYVxlQ+8GpOy9IRYe6kLnJyk3MyXW2H5Hzp5JnZplzhZgSudm+iExAiRRMb5OGD5QrhVp8DugwI3jT0/ynp7iAlp06ry
+Date: Mon, 20 Mar 2023 14:49:11 +0530
+From: Deepak R Varma <drv@mailo.com>
 To: Sumitra Sharma <sumitraartsy@gmail.com>
-cc: Dan Carpenter <error27@gmail.com>, Marc Dietrich <marvin24@gmx.de>, 
-    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, ac100@lists.launchpad.net, 
-    linux-tegra@vger.kernel.org, linux-staging@lists.linux.dev, 
-    linux-kernel@vger.kernel.org, outreachy@lists.linux.dev
-Subject: Re: [PATCH v2] Staging: nvec: Convert to_nvec_led from a macro to
- an inline function
-In-Reply-To: <20230320084422.GA126429@sumitra.com>
-Message-ID: <f9274ae0-2279-4a5b-5350-12ea5da3872a@inria.fr>
-References: <20230318175250.GA49618@sumitra.com> <417e944c-4653-43ef-b492-c82c536e4d87@kili.mountain> <20230320084422.GA126429@sumitra.com>
+Cc: Julia Lawall <julia.lawall@inria.fr>, outreachy@lists.linux.dev
+Subject: Re: Unable to find module location
+Message-ID: <ZBglD5yEm2Qb40qf@ubun2204.myguest.virtualbox.org>
+References: <20230318084048.GC4434@sumitra.com>
+ <ZBWAsdC5UOEkbedF@ubun2204.myguest.virtualbox.org>
+ <20230318130211.GB39892@sumitra.com>
+ <ZBXh98I11pj38Jy2@ubun2204.myguest.virtualbox.org>
+ <20230319084520.GC50179@sumitra.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20230319084520.GC50179@sumitra.com>
 
-
-
-On Mon, 20 Mar 2023, Sumitra Sharma wrote:
-
-> On Mon, Mar 20, 2023 at 08:39:49AM +0300, Dan Carpenter wrote:
-> > On Sat, Mar 18, 2023 at 10:52:50AM -0700, Sumitra Sharma wrote:
-> > > Convert to_nvec_led from a macro to a static inline function, to make the
-> > > relevant types apparent in the definition and to benefit from the type
-> > > checking performed by the compiler at call sites.
-> > >
-> > > Signed-off-by: Sumitra Sharma <sumitraartsy@gmail.com>
-> > > ---
+On Sun, Mar 19, 2023 at 01:45:20AM -0700, Sumitra Sharma wrote:
+> On Sat, Mar 18, 2023 at 09:38:23PM +0530, Deepak R Varma wrote:
+> > On Sat, Mar 18, 2023 at 06:02:11AM -0700, Sumitra Sharma wrote:
+> > > On Sat, Mar 18, 2023 at 02:43:21PM +0530, Deepak R Varma wrote:
+> > > > On Sat, Mar 18, 2023 at 01:40:48AM -0700, Sumitra Sharma wrote:
+> > > > You will need to use a arch specific config file and cross compile to configure
+> > > > and build this driver module.
+> > > > I just tried it with arch/arm64/configs/defconfig file and the
+> > > > aarch64-linux-gnu- compiler for my host system and was able to configure the
+> > > > driver for build.
+> > > >
+> > > 
+> > > Hi deepak,
+> > > 
+> > > Can you tell me command you are using because when adding the
+> > > arch/arm64/configs/defconfig file. I am receiving the invalid options
+> > > error.
+> > 
+> > Did you follow Sanjaya's instruction on cleaning your source directory? Once
+> > that is done, I suggest enabling necessary configurations using the arch
+> > specific config file and then run a full build. Make sure the build is all
+> > successful and the module's .ko file is generated.
 > >
-> > You need to compile test your changes.
-> >
->
-> Hi dan,
->
-> I am facing problems in creating modules and in compiling them.
+> 
+> Hi deepak,
+> 
+> Yes I did the cleanup. But I am unable to enable the below driver as
+> module 'M' when running the command 'make menuconfig' or 'make
+> menuconfig ~/git/kernels/staging/arch/arm64/configs/defconfig'. It is
+> because I am not able to locate it under staging drivers.
 
-Note that unless the code is under an ifdef for a module, you don't
-specifically need the driver to be configured as for a module either.
-Since you don't have the device, you aren't going to be able to test it
-anyway.  So 'y' is fine.
+what is your Linux distro and host architecture?
 
-julia
+> 
+>   │                                                                                                                  │
+>   │ Symbol: NVEC_PAZ00 [=n]                                                                                          │
+>   │ Type  : tristate                                                                                                 │
+>   │ Defined at drivers/staging/nvec/Kconfig:45                                                                       │
+>   │   Prompt: Support for OEM specific functions on Compal PAZ00 based devices                                       │
+>   │   Depends on: STAGING [=y] && MFD_NVEC [=n] && LEDS_CLASS [=y]                                                   │
+>   │   Location:                                                                                                      │
+>   │     -> Device Drivers                                                                                            │
+>   │ (3)   -> Staging drivers (STAGING [=y])                                                                          │
+>   │         -> NV Tegra Embedded Controller SMBus Interface (MFD_NVEC [=n])                                          │
+>   │           -> Support for OEM specific functions on Compal PAZ00 based devices (NVEC_PAZ00 [=n])
+> 
+> > Deepak.
+> > 
+> > > 
+> > > It will be of much help. Thank you.
+> > > 
+> > > Regards,
+> > > 
+> > > Sumitra
+> > > 
+> > > > Deepak.
+> > > > 
+> > > > 
+> > > > 
+> > > > > 
+> > > > >   Regards,
+> > > > >   
+> > > > >   Sumitra
+> > > > > 
+> > > > > 
+> > > > 
+> > > > 
+> > > 
+> > 
+> > 
+> 
 
->
-> Any help in this would be appreciated. Here is the link to the thread https://lore.kernel.org/outreachy/alpine.DEB.2.22.394.2303191336090.2867@hadrien/T/#t
->
-> Regards,
->
-> Sumitra
->
-> > regards,
-> > dan carpenter
-> >
->
->
+
