@@ -1,124 +1,119 @@
-Received: from mail-ed1-f49.google.com (mail-ed1-f49.google.com [209.85.208.49])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B83B8D2EB
-	for <outreachy@lists.linux.dev>; Tue, 21 Mar 2023 16:36:34 +0000 (UTC)
-Received: by mail-ed1-f49.google.com with SMTP id cn12so16438363edb.4
-        for <outreachy@lists.linux.dev>; Tue, 21 Mar 2023 09:36:34 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5797E2FB6;
+	Tue, 21 Mar 2023 16:39:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679416592;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=hHcx+O6gk8sKnFku5NpY7pQNaOqtLHhaJKgroxcvdGo=;
-        b=gfQzUJ5ZP2NYOBEaNjko8oxy/O58C3Zyj3sV1n4yxlePKkRcRVx3g8/Q45eLXFydWd
-         PboihoCmqpdGg9JEBQNWa6cmfMvuzmBK839n0rMqAbjeWvoBCV4zOzPK26Zou92drse/
-         alhZDQwudPihncYF6FJo28hQY75VzdcHk/F0g/e0Dro3rs+fynQiScSmeYXn+/RR45Bm
-         drJQauIJGtHKFwz2uaTNK5S4tK9Ks6a4ZSmlFjEzbNybQqo5xL34VPHpoohJ4fdeqAB1
-         2OxxVkwDHuk0VMXGM+cq1DeolaturrYHUjfMtZwSDaR2fi+cojpq+ueFbaYcbHORwO0P
-         9Y0Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679416592;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=hHcx+O6gk8sKnFku5NpY7pQNaOqtLHhaJKgroxcvdGo=;
-        b=Q152PtEsmPsi7+SL+GFZsOWI30fREI/QsvJE1PO0nShmYQm2XdLa3uE0bH03cvNNiv
-         Ae3nj6GAIMIDuVciwYNF9neSxv9/meXgZqUOvE4Kl9hDmCWztZgsDwdOpGgbREew0LIS
-         p7AqLtJO707cA9NxdwNTwsAveRaGJ9zd90A9m+yLYJdLWy+PUf1lHaJ9JurtkT75BXwL
-         X+iA4Hkqg4sdwC9r2HiLRqvmqz8jbiaJIffY3GcUmXsuh7eihEWxpyiceA1JsKulrL1V
-         alsYbnS2a7isJ96GU3n4jeY8QTBcdrfO8+6Jirs3+Hpk5uCwYtMVyCKnh7dBXHahKKi1
-         gCnA==
-X-Gm-Message-State: AO0yUKX4vx1NPeNl8NBE5RQd6+/eAtgA2v5qHdPUhe44fAAjV2okQbW2
-	bLJq8Z2fjDkFSjhxCEGDtnX9GN9gpiUTa3Pd
-X-Google-Smtp-Source: AK7set8eYp8qISNwWrxf4i8gqq1zFxM5BrrLNNfhFP1ySQaUbsucbTIX0gpmyvP/kJo32Oj5nhbBIA==
-X-Received: by 2002:aa7:d7d4:0:b0:501:d43e:d1dd with SMTP id e20-20020aa7d7d4000000b00501d43ed1ddmr3649011eds.33.1679416592387;
-        Tue, 21 Mar 2023 09:36:32 -0700 (PDT)
-Received: from khadija-virtual-machine ([39.41.14.14])
-        by smtp.gmail.com with ESMTPSA id s29-20020a50d49d000000b004fc2a75c6b3sm6508303edi.23.2023.03.21.09.36.31
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 Mar 2023 09:36:31 -0700 (PDT)
-Date: Tue, 21 Mar 2023 21:36:29 +0500
-From: Khadija Kamran <kamrankhadijadj@gmail.com>
-To: Ira Weiny <ira.weiny@intel.com>
-Cc: outreachy@lists.linux.dev
-Subject: Re: Code cleanups are not always simple.
-Message-ID: <ZBndDYO5pFSOI1m2@khadija-virtual-machine>
-References: <6418f59a8b3c1_2c274e2942e@iweiny-mobl.notmuch>
+  d=inria.fr; s=dc;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=PzFbeSMMbS4CC7XY2NIBhcKqrJEORtC8j3V9n4WJKHA=;
+  b=mK6kLhXLytGD1zE70XoQ6WcMB+mJyZieWcb6GqWmQMfOVpN0GBdaE4fg
+   1oU3+eZXBLvCLchaYuZFATS8et4Q+7qxQ7ZV1p29S1a4Art/+eDSPeeo+
+   8HfOFnSJUZZMC/ekg0lpUiwC/tW/C9oBktNSKwlOlb1b1qOWJEJWKMl27
+   c=;
+Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="5.98,279,1673910000"; 
+   d="scan'208";a="98353568"
+Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Mar 2023 17:39:55 +0100
+Date: Tue, 21 Mar 2023 17:39:55 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+To: Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>
+cc: gregkh@linuxfoundation.org, outreachy@lists.linux.dev, johan@kernel.org, 
+    elder@kernel.org, vireshk@kernel.org, thierry.reding@gmail.com, 
+    u.kleine-koenig@pengutronix.de, greybus-dev@lists.linaro.org, 
+    linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev, 
+    linux-pwm@vger.kernel.org
+Subject: Re: [PATCH 0/3] edits in greybus driver
+In-Reply-To: <196b5d53-701f-e2dd-596c-9fdb6a59f5cd@gmail.com>
+Message-ID: <8020f263-158d-db6e-f34-425b72983bb@inria.fr>
+References: <cover.1679352669.git.eng.mennamahmoud.mm@gmail.com> <ee77a227-13bd-70ad-1d8e-f9719970e0f8@inria.fr> <196b5d53-701f-e2dd-596c-9fdb6a59f5cd@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <6418f59a8b3c1_2c274e2942e@iweiny-mobl.notmuch>
+Content-Type: multipart/mixed; boundary="8323329-1428913748-1679416795=:10740"
 
-On Mon, Mar 20, 2023 at 05:08:58PM -0700, Ira Weiny wrote:
-> Cleaning up code is not always easy.  Yes there are various rules, coding
-> styles and tools which can automate the process.  But we should all remember to
-> think about the problem being reported and determine if a simple search/replace
-> is the proper thing to do.  I think this is becoming more apparent as the
-> number of things checkpatch reports on is dwindling to these more complicated
-> issues.
-> 
-> So I'd like to call attention to a couple of problems which have required a bit
-> more attention.  Hopefully by highlighting these problems folks will be more
-> aware when looking at future issues.
-> 
-> The first problem was a week or so back when Khadija was trying to fix line
-> length formatting.[1]  The repeated attempts were causing circular problems
-> with checkpatch failing on different checks.  The core issue was that
-> checkpatch was only checking the symptoms of the issue, not the issue itself.
-> Checkpatch and the kernel coding style are in place not to enforce random rules
-> on how folks write code.  They are there to make the code cleaner, less buggy,
-> and easier to maintain.
-> 
-> Today I saw a similar situation.  Julia called out the need to make macro
-> definitions safer by turning them into inline functions.[2]
-> 
-> But Sumitra took that a bit too literally.[3]  The container_of() macro is
-> useful on it's own.  The only reason to create additional helper functions is
-> when the conversion is either more complicated or used so much that the bulk of
-> the code becomes much much cleaner.
-> 
-> I'll end this with a recent example which is part of the kmap() project.
-> 
-> I was looking at the call to kmap_atomic() in memcpy_page_flushcache() inside
-> the x86 code.  At first it looks like a simple substitute and replace from
-> kmap_atmoic() to kmap_local_page().  But I took the time to understand the
-> context of where memcpy_page_flushcache() was called.  Doing so made me realize
-> it was not called at all!!!  The proper fix was to simply remove the call
-> entirely from the kernel.
-> 
-> I know you are all excited to get your first patches into the kernel.  But even
-> simple patches take time.  After removing these calls I needed to ensure that
-> x86, powerpc, and arm all compiled without issues.  I used both 'git grep' and
-> cscope to ensure I removed the header file declarations.  Even then there was
-> discussion because I accidentally submitted as a series which made a bit more
-> work for the maintainers.[5]
-> 
-> So in summary take your time.  Try to understand why checkpatch or other tools
-> are flagging errors.
-> 
-> Most importantly, don't be afraid to take your time when submitting patches.
-> 
-> Ira
-> 
-> [1] https://lore.kernel.org/all/640e75cfd8fc_229a89294a3@iweiny-mobl.notmuch/
-> [2] https://lore.kernel.org/all/124d2ef9-6f1d-2652-c88d-161f1bc06443@inria.fr/
-> [3] https://lore.kernel.org/all/ZBh%2Fs5lyONaF37gs@kroah.com/
-> [4] https://lore.kernel.org/all/20221230-kmap-x86-v1-0-15f1ecccab50@intel.com/
-> [5] https://lore.kernel.org/all/3523ddf9-03f5-3179-9f39-cec09f79aa97@intel.com/
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
+
+--8323329-1428913748-1679416795=:10740
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
+
+
+
+On Tue, 21 Mar 2023, Menna Mahmoud wrote:
+
 >
+> On ٢١/٣/٢٠٢٣ ١٣:٤٦, Julia Lawall wrote:
+> >
+> > On Tue, 21 Mar 2023, Menna Mahmoud wrote:
+> >
+> > > This patchset includes change happened in greybus driver in three
+> > > different files two of them patch one and three related to
+> > > checkpatch issue and in second patch convert two
+> > > `container_of` macros into inline functions.
+> > >
+> > > Menna Mahmoud (3):
+> > >    staging: greybus: remove unnecessary blank line
+> > >    staging: greybus: use inline function for macros
+> > >    staging: greybus: remove unnecessary blank line
+> > Different patches should have different subject lines.
+> But I have already the same edit in both file, so should I re-write the
+> subject for one of them?
+> >    You need to either
+> > be more specific about the file affected or merge the two patches with the
+> > same subject into one.
+>
+> each patch related to different file. So, Can I to merge two commits for
+> different files but have the same edit in one patch?
 
-Hey Ira,
+They are both for greybus, which is what you advertise in the subject
+line.  And the sense of the changes is the same, and the changes are quite
+simple.  So I think you could just put them in one patch.  If you find
+other occurrences of the problem in greybus you could make one patch that
+fixes all of them.
 
-Thank you for the mail. I will make sure to keep your instructions in
-mind while working on the upcoming patches.
+> but in this case no need to create patchset for all changes in `greybus`
+> driver, right?
 
-Thank you,
-Regards,
-Khadija
+A patchset is needed if the changes affect the same file, because there
+might be complications if the patches are applied in the wrong order.
 
-Thank you
+>
+> If okay with that, should I versioning the patches to resend them again, or
+> should add "RESEND" subject prefix?
+
+RESEND would be if you send exactly the same thing, because some time has
+passed and you are worried that the patch has been lost.  Now that you
+have put these in a series, it is perhaps best to leave them in a series
+and increase the version number, to avoid confusion on the part of people
+reading the patches.
+
+julia
+
+> please tell me the best way to resend these patches, appreciate your help.
+>
+>
+> Menna
+>
+>
+> >
+> > julia
+> >
+> > >   drivers/staging/greybus/gbphy.h                  | 10 ++++++++--
+> > >   drivers/staging/greybus/greybus_authentication.h |  1 -
+> > >   drivers/staging/greybus/pwm.c                    |  1 -
+> > >   3 files changed, 8 insertions(+), 4 deletions(-)
+> > >
+> > > --
+> > > 2.34.1
+> > >
+> > >
+> > >
+>
+--8323329-1428913748-1679416795=:10740--
