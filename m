@@ -1,35 +1,34 @@
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0087C8BE1
-	for <outreachy@lists.linux.dev>; Tue, 21 Mar 2023 09:55:31 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E7D899440;
+	Tue, 21 Mar 2023 11:46:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
   d=inria.fr; s=dc;
   h=date:from:to:cc:subject:in-reply-to:message-id:
    references:mime-version;
-  bh=TLkPoEW3xbL/AvfHyfQMFwLNXlunH/Yalpug/Q4is8c=;
-  b=TBnk1jDoYc/2U9X2FNzUPh4uDN6fpYgvZXpECm3HZjfZdWoeG+SA/kRg
-   zFEA04tXCeaomMhqfc8WViAMlllNjaPOKZwLbqmHYvKf79mVl5487O/1I
-   Y2nOsiwmq4elzZT1m+w+j+jFTMuckc1tdWIMEvyqIJhV3qb6s6R2wiIM3
-   g=;
-Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+  bh=BaVu1ranY6IZPO5w8T3/AsoEgjpGKi9wefT7ScLRJzA=;
+  b=o4qCyQ4rHz0HLQOMuw4m39RYMAtYSRZb8iuaciFdXgRTUtZTdFHRfgS/
+   i1VstiE4iqZZPpF4+iWQv7brhOTXObHvgxd8eZNKJJraZz5wQugsVzKgC
+   8vLlcs2rIq7PDZl7Tq+YBKgjG7I891md9gtQXBqkwIG+wJqGMgt0U7hpd
+   8=;
+Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
 X-IronPort-AV: E=Sophos;i="5.98,278,1673910000"; 
-   d="scan'208";a="50784837"
+   d="scan'208";a="98275290"
 Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Mar 2023 10:55:24 +0100
-Date: Tue, 21 Mar 2023 10:55:23 +0100 (CET)
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Mar 2023 12:46:01 +0100
+Date: Tue, 21 Mar 2023 12:46:01 +0100 (CET)
 From: Julia Lawall <julia.lawall@inria.fr>
-To: Bagas Sanjaya <bagasdotme@gmail.com>
-cc: Deepak R Varma <drv@mailo.com>, Kloudifold <cloudifold.3125@gmail.com>, 
-    outreachy@lists.linux.dev, teddy.wang@siliconmotion.com, 
-    sudipm.mukherjee@gmail.com, gregkh@linuxfoundation.org, 
-    alison.schofield@intel.com, linuxstaging@lists.linux.dev, 
-    linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v4] staging: sm750: Rename sm750_hw_cursor_* functions
- to snake_case
-In-Reply-To: <ZBlnrWywCfDftf0+@debian.me>
-Message-ID: <5fcfed41-6cef-405b-775-66a5cbfbd15@inria.fr>
-References: <ZBfpbgvYguJnzIOx@CloudiRingWorld> <ZBiEnFxlHb/OES0B@ubun2204.myguest.virtualbox.org> <ZBlnrWywCfDftf0+@debian.me>
+To: Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>
+cc: gregkh@linuxfoundation.org, outreachy@lists.linux.dev, johan@kernel.org, 
+    elder@kernel.org, vireshk@kernel.org, thierry.reding@gmail.com, 
+    u.kleine-koenig@pengutronix.de, greybus-dev@lists.linaro.org, 
+    linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev, 
+    linux-pwm@vger.kernel.org
+Subject: Re: [PATCH 0/3] edits in greybus driver
+In-Reply-To: <cover.1679352669.git.eng.mennamahmoud.mm@gmail.com>
+Message-ID: <ee77a227-13bd-70ad-1d8e-f9719970e0f8@inria.fr>
+References: <cover.1679352669.git.eng.mennamahmoud.mm@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -40,21 +39,32 @@ Content-Type: text/plain; charset=US-ASCII
 
 
 
-On Tue, 21 Mar 2023, Bagas Sanjaya wrote:
+On Tue, 21 Mar 2023, Menna Mahmoud wrote:
 
-> On Mon, Mar 20, 2023 at 09:36:52PM +0530, Deepak R Varma wrote:
-> > Hello,
-> > Looks like you missed some maintainer list recipients in your to/cc of this
-> > patch. How are you extracting the maintainer list?
+> This patchset includes change happened in greybus driver in three
+> different files two of them patch one and three related to
+> checkpatch issue and in second patch convert two
+> `container_of` macros into inline functions.
 >
-> The easiest way to copy the list is by passing `--norolestats
-> --separator , ` to get_maintainer.pl.
+> Menna Mahmoud (3):
+>   staging: greybus: remove unnecessary blank line
+>   staging: greybus: use inline function for macros
+>   staging: greybus: remove unnecessary blank line
 
-There should be a suggested command line in th tutorial.
+Different patches should have different subject lines.  You need to either
+be more specific about the file affected or merge the two patches with the
+same subject into one.
 
 julia
 
 >
+>  drivers/staging/greybus/gbphy.h                  | 10 ++++++++--
+>  drivers/staging/greybus/greybus_authentication.h |  1 -
+>  drivers/staging/greybus/pwm.c                    |  1 -
+>  3 files changed, 8 insertions(+), 4 deletions(-)
+>
 > --
-> An old man doll... just what I always wanted! - Clara
+> 2.34.1
+>
+>
 >
