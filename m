@@ -1,49 +1,94 @@
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-pj1-f45.google.com (mail-pj1-f45.google.com [209.85.216.45])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0302A1FB8
-	for <outreachy@lists.linux.dev>; Tue, 21 Mar 2023 06:47:31 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C06E02F2B
+	for <outreachy@lists.linux.dev>; Tue, 21 Mar 2023 08:15:54 +0000 (UTC)
+Received: by mail-pj1-f45.google.com with SMTP id qe8-20020a17090b4f8800b0023f07253a2cso15132214pjb.3;
+        Tue, 21 Mar 2023 01:15:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=ijY5JR++hfQkinmD8vFPMnOB34Bb08O0s0fFYOu8TXg=;
-  b=Z9UMSLrfGBLyk2Lrp1NvJSQyL7pWLiiGfmMVVFLEC84n/42vEePvBuGp
-   ZTKXS3m7g7J9BOGpmmC0IqtZOqFntPs4vRlYwZ5r/0JZIEPWtmxPRRirg
-   rrRIKihYUxg4fU7/V6nqlR+8CyI6Xz6MDK8qAuOAAV7PmFeH9NiTQg9/I
-   0=;
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="5.98,278,1673910000"; 
-   d="scan'208";a="98200335"
-Received: from 231.85.89.92.rev.sfr.net (HELO hadrien) ([92.89.85.231])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Mar 2023 07:47:30 +0100
-Date: Tue, 21 Mar 2023 07:47:29 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Ira Weiny <ira.weiny@intel.com>
-cc: outreachy@lists.linux.dev
-Subject: Re: Code cleanups are not always simple.
-In-Reply-To: <6418f59a8b3c1_2c274e2942e@iweiny-mobl.notmuch>
-Message-ID: <alpine.DEB.2.22.394.2303210744321.2866@hadrien>
-References: <6418f59a8b3c1_2c274e2942e@iweiny-mobl.notmuch>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+        d=gmail.com; s=20210112; t=1679386554;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=qc+ig8kLY6tOXJD14pTktQqDfjz/ghEuvLqsjQLjDjw=;
+        b=mjo02WB1eE5KxpQPswIHH8hkXspC3KhxJ+HejaV6PT7gmEiRPKVrcnWrBXPJ01xReM
+         rnFZZSrvHJm5U7zOI0mLjlzk718BXJAR5uK6Ux31mwxFWpxs+fHGov9G8QZRVeusMwV/
+         UKihSgzDTa2CKiYhYZs39R/qSWNtCJyn8onpkclbVbcaRkFiGbpQueaJgesTF39iGm5n
+         Yp7eiEPQMG+rCWG12c/j6lgxKn7dnBh6W5EVWtEF2BCNQfAvvPj0/wq2iFxcSLfAWcJB
+         HH4vDBxYOiOGUWy//099ZbiMp5H3+QSUWu7rVTjRaZk0xhZmLCEblIv+Raqiaajn34Ls
+         1MEQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679386554;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=qc+ig8kLY6tOXJD14pTktQqDfjz/ghEuvLqsjQLjDjw=;
+        b=RigscszbpW3gG222nHDjPZkbc2GVjz0bvjGjKXBjBEztHh4T9i+GLB4t4OnJdt4AJZ
+         YwApvAEw9ZrqBaJTlTEAxt5rpP7+NS0jcJMyraSyOCBNIc11Mz8FEUTGZENEMYXY+vk9
+         T5lqzwlc5rUnDC/h+Z75FDdfYrFlhXHuD+D0OTZ3TC4mjRAvkttWQOqF/9Ijl8doMhqc
+         rp3UnljMf6TqzzxcjdZ3/O5QZcLy95ZqeJbmQJADoFQoAf4jjfUdA4z9gJ4jaYUpzVVR
+         b8M5kAt+YuSSYzcDVNJe4bUY/CRntqHZllI7E/2vj4s4kWkQyDcFveziJhzBgkhnRt0K
+         oZgA==
+X-Gm-Message-State: AO0yUKVjH1CnK8uo0FyfDTsmO55ssgG36x0D6Cukip92W74z5ZxCT98E
+	0CqRRcMGuyu53PX0dSiuSxqJfnZ86Yg=
+X-Google-Smtp-Source: AK7set9Fq22KfLKmE8rFcPm5t+HaG7isbKh9iUsCvJF6fQjzxw3oEhvaPt3nlUt6UiyYXsAAHNU1pA==
+X-Received: by 2002:a17:902:d10b:b0:1a1:b9e6:28a8 with SMTP id w11-20020a170902d10b00b001a1b9e628a8mr1122837plw.45.1679386553962;
+        Tue, 21 Mar 2023 01:15:53 -0700 (PDT)
+Received: from debian.me (subs03-180-214-233-83.three.co.id. [180.214.233.83])
+        by smtp.gmail.com with ESMTPSA id x13-20020a1709027c0d00b001a06677948dsm8038469pll.293.2023.03.21.01.15.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 21 Mar 2023 01:15:53 -0700 (PDT)
+Received: by debian.me (Postfix, from userid 1000)
+	id 5967B106646; Tue, 21 Mar 2023 15:15:42 +0700 (WIB)
+Date: Tue, 21 Mar 2023 15:15:41 +0700
+From: Bagas Sanjaya <bagasdotme@gmail.com>
+To: Deepak R Varma <drv@mailo.com>, Kloudifold <cloudifold.3125@gmail.com>
+Cc: outreachy@lists.linux.dev, teddy.wang@siliconmotion.com,
+	sudipm.mukherjee@gmail.com, gregkh@linuxfoundation.org,
+	alison.schofield@intel.com, linuxstaging@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v4] staging: sm750: Rename sm750_hw_cursor_* functions to
+ snake_case
+Message-ID: <ZBlnrWywCfDftf0+@debian.me>
+References: <ZBfpbgvYguJnzIOx@CloudiRingWorld>
+ <ZBiEnFxlHb/OES0B@ubun2204.myguest.virtualbox.org>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="65kqxN6J33eatIsv"
+Content-Disposition: inline
+In-Reply-To: <ZBiEnFxlHb/OES0B@ubun2204.myguest.virtualbox.org>
 
-> Most importantly, don't be afraid to take your time when submitting patches.
 
-Thanks Ira.
+--65kqxN6J33eatIsv
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-But don't be afraid to mess up either :)  We're here to help correct
-mistakes and help you (and everyone else) learn. There are a lot of little
-details, and it is hard to think of everything in advance.  This point of
-the application period is that thinking of all of these issues become
-second nature, so that you can interact with the community during your
-project in a productive way.
+On Mon, Mar 20, 2023 at 09:36:52PM +0530, Deepak R Varma wrote:
+> Hello,
+> Looks like you missed some maintainer list recipients in your to/cc of th=
+is
+> patch. How are you extracting the maintainer list?
 
-julia
+The easiest way to copy the list is by passing `--norolestats
+--separator , ` to get_maintainer.pl.
+
+--=20
+An old man doll... just what I always wanted! - Clara
+
+--65kqxN6J33eatIsv
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQSSYQ6Cy7oyFNCHrUH2uYlJVVFOowUCZBlnmQAKCRD2uYlJVVFO
+oxaOAP9AN60wajhBoFfVPevHYzRMIx3MBX/Xypuk1FDBeNIbGwEA2iVt9xG2+wrL
+wsPxfAT3wzZHBWY7x2b378Rm7eXYGwo=
+=cCg8
+-----END PGP SIGNATURE-----
+
+--65kqxN6J33eatIsv--
