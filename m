@@ -1,48 +1,53 @@
-Received: from mail-pj1-f48.google.com (mail-pj1-f48.google.com [209.85.216.48])
+Received: from mail-wm1-f42.google.com (mail-wm1-f42.google.com [209.85.128.42])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7E82A79C7
-	for <outreachy@lists.linux.dev>; Tue, 21 Mar 2023 09:01:51 +0000 (UTC)
-Received: by mail-pj1-f48.google.com with SMTP id j13so14938799pjd.1
-        for <outreachy@lists.linux.dev>; Tue, 21 Mar 2023 02:01:51 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9DFBB79C7;
+	Tue, 21 Mar 2023 09:29:28 +0000 (UTC)
+Received: by mail-wm1-f42.google.com with SMTP id i5-20020a05600c354500b003edd24054e0so3921016wmq.4;
+        Tue, 21 Mar 2023 02:29:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679389311;
-        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=vghuqXMkFVFNTB0pPARMrs1cE2JrLOrTO0PI0iyk9Ho=;
-        b=N+6NmiKJNJo+zQee/w5OTkT8RrQax8a55r7JxP/OYiSPWjgXLTz7C59W1QVAFmIzaJ
-         J7wD5Hl7F1PnoFKZr/FJthEBcBjA8svOp0/pYc7Oix+QOEalwyy8O9Z/0Vzk2rGi0w/7
-         bi9vAim7OFHHrTU3p52yVyTA+nzGCGILwfbUnh1Ljy5as3PVO7OKJvAUDwLnxoqx59bm
-         6jspsu4+Z9aQntZyJho5kYP+8GymSi7IsaG1/tMfJ2cu3riRcTtNa4hmDTx/bc2xV28g
-         F6sNP2PhcLV0SweRwuE3uDspstsYBTELyzTAi/hBFNhP8xdbCJGibqlr0Y2idmdr2Mla
-         sczg==
+        d=gmail.com; s=20210112; t=1679390967;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=7V4YovgUrJnyS5jGoDPlqc+Up4efo2jPaQdP4esL6/4=;
+        b=dzkh4NaVpXobT1dncaCScU+b53LnyrnIem3yeQcfkJE5wcNPPwbD/66xaSet9fpVwm
+         aEhSlY0Xw8wN6Ga+UauOPM4iRwqLoLio9oVK4tYNANdm/B6psi3wxk9hZXNZ7MI9xljH
+         y1tdyMwUih90dGue6fwdjYJawL64KxTVf1lZcdT4OwurVVfh4jl5zjax/S7VuNa4tCiQ
+         4mDjteaFXJ+z/MdwCBWhzOCR2E9EYWiU8esueEqLTLhoFoRSD2ZLRl/uppLKZqI11iVb
+         Tt95AEkxqJk4iH6RYv/gxjhO0C3CSNxvksNfrDtOC+JgBwB+ANWeZe2AU+r2Z1V8Cw6W
+         3mwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679389311;
-        h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=vghuqXMkFVFNTB0pPARMrs1cE2JrLOrTO0PI0iyk9Ho=;
-        b=hEZxtINZYOQ6aYj3949bIRXwPtFkTed6cYoPka25HDaRTRAuvZZAKB4OfzyoQ6TrMf
-         6zi7RKO1KnJcHqIPUYKlUCdrUsSanxPZpo71FkRLV2wEoWKLOWu/HH23NNtrXJmyVy/m
-         BwztZxPQz3u1XoDcoh33fqO9Q2GTsakgWg6pNu64z2fT293Md8vrn7NQ2/YwstSP207x
-         P4vasWwBQHrJK+ipXz2+l+NfY/pwKu5bXYlVL/5CLYGgyLTIGpdYAF4Fg8qpR04/OKc5
-         yatQCV/Bi5Rhyr5TpCMEDvPeICrZFQSaUe+RI8hqtQsXseWgesbmwLnmTCzkasSrQlll
-         RGlw==
-X-Gm-Message-State: AO0yUKVzgJHbN+O/fl2kXCBol8suk2yl9zPMilfBqlJRwlJJ35LAKWZA
-	vSkomrBlovWeqa5/IlZOtdZdiEQjF+9nOQ==
-X-Google-Smtp-Source: AK7set9QzK4k7il8JDRXUCkPValIhFD3oKWFKM4zMvQcOzjH4d1lr7G36CgQh3sSQ8imlYL9FKmbpQ==
-X-Received: by 2002:a05:6a20:33a7:b0:d9:825a:1410 with SMTP id f39-20020a056a2033a700b000d9825a1410mr1282939pzd.54.1679389310441;
-        Tue, 21 Mar 2023 02:01:50 -0700 (PDT)
-Received: from sumitra.com ([210.212.97.176])
-        by smtp.gmail.com with ESMTPSA id c26-20020aa781da000000b0058173c4b3d1sm7694595pfn.80.2023.03.21.02.01.48
+        d=1e100.net; s=20210112; t=1679390967;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=7V4YovgUrJnyS5jGoDPlqc+Up4efo2jPaQdP4esL6/4=;
+        b=VFgSt/w+jWcX63GEdhS+qI/zd95mOdcPirBXrGFq2RMunEpQE+VTLCSF9HzKOS71SJ
+         +SxN2jwBa1ew5ceYWd+XbFTSPDmD1YcC/JotJWk0Mfg+r1NVpS+AceJ38vcJDrOnXf4E
+         /uAE2f9pR4vGDN/JU30IjXb0iV7ufGBRIOg91fGwpk2FEFCxboaaBAKQv3vKAnXlXunO
+         lINh3Z4HvZbifVVJH2m35pYjMNiuJGVd4hZtOw1Brfvo7CrZp1oo4TM9CE/nGJXd1A2w
+         gJDMBiqrXaAHrJYD+ZB8ZbASHPkrnY6UYKZjOpoWgm5ivVs66fGAQibmRPUZxWsxoMM/
+         Jp+g==
+X-Gm-Message-State: AO0yUKUvVbIMvqlSLIdjUa9Wb8vL2skPTrUSB6uQDIbkLpBG43tk2Q+M
+	O0q9qbXI5AL5iibBubYqJ6O39S6yWrRWJw==
+X-Google-Smtp-Source: AK7set9nxVCClOMAhcmwP8gqhalKLS/ur/Euy/AJPvWmtQdLC/8ERdbphzmCApTadQF54MXrG/1hgw==
+X-Received: by 2002:a7b:c314:0:b0:3ee:3b7b:73c1 with SMTP id k20-20020a7bc314000000b003ee3b7b73c1mr700827wmj.28.1679390966741;
+        Tue, 21 Mar 2023 02:29:26 -0700 (PDT)
+Received: from localhost ([102.36.222.112])
+        by smtp.gmail.com with ESMTPSA id ip24-20020a05600ca69800b003ede2c4701dsm6721744wmb.14.2023.03.21.02.29.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 Mar 2023 02:01:50 -0700 (PDT)
-Date: Tue, 21 Mar 2023 02:01:46 -0700
-From: Sumitra Sharma <sumitraartsy@gmail.com>
-To: ira.weiny@intel.com
-Cc: outreachy@lists.linux.dev
-Subject: Re: Code cleanups are not always simple.
-Message-ID: <20230321090146.GA134679@sumitra.com>
+        Tue, 21 Mar 2023 02:29:26 -0700 (PDT)
+Date: Tue, 21 Mar 2023 11:37:33 +0300
+From: Dan Carpenter <error27@gmail.com>
+To: Bagas Sanjaya <bagasdotme@gmail.com>
+Cc: Kloudifold <cloudifold.3125@gmail.com>, teddy.wang@siliconmotion.com,
+	sudipm.mukherjee@gmail.com, gregkh@linuxfoundation.org,
+	linux-staging@lists.linux.dev, outreachy@lists.linux.dev
+Subject: Re: [PATCH v4] staging: sm750: Rename sm750_hw_cursor_* functions to
+ snake_case
+Message-ID: <c561746c-6061-4c8e-8961-114a507d72e9@kili.mountain>
+References: <ZBfro5U4s0lWA6tl@CloudiRingWorld>
+ <ZBlov9bVs4pAJIlA@debian.me>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -51,11 +56,23 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <6418f59a8b3c1_2c274e2942e@iweiny-mobl.notmuch>
+In-Reply-To: <ZBlov9bVs4pAJIlA@debian.me>
 
-Hi Ira,
+On Tue, Mar 21, 2023 at 03:20:15PM +0700, Bagas Sanjaya wrote:
+> > 
+> > - sm750_hw_cursor_setSize  => sm750_hw_cursor_set_size
+> > - sm750_hw_cursor_setPos   => sm750_hw_cursor_set_pos
+> > - sm750_hw_cursor_setColor => sm750_hw_cursor_set_color
+> > - sm750_hw_cursor_setData  => sm750_hw_cursor_set_data
+> > - sm750_hw_cursor_setData2 => sm750_hw_cursor_set_data2
+> 
+> I think from the diff below people can see which exactly functions that
+> are renamed, so the list above is redundant.
+> 
 
-I will surely going to take care of the things you mentioned here. Thank you.
+I like these lists.  They don't hurt anything.
 
-Regards,
-Sumitra
+regards,
+dan carpenter
+
+
