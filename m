@@ -1,64 +1,49 @@
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D0F4C1FA0;
-	Tue, 21 Mar 2023 06:11:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 271B9C433EF;
-	Tue, 21 Mar 2023 06:11:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1679379085;
-	bh=e4KeP0Jj7jEFEhtwLwBd8yfk3eg3gh5xp+hcXYcRwSM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=eoUwQhhZKlSolub/ogaCXgnXRBYiwRRznkjZeFV+CMShgY434FPdOLIJL30DEZGS9
-	 h9FMmZDHa/l/vyxc4u+VSzWDfORy3nZCwEJ8e7T+Cr8b0o6HNMHRfpHLWbm5pC8PSG
-	 a+IsN7Qvt8ugJc+B7PAWGDw/v/Bx19omvTsKXLf4=
-Date: Tue, 21 Mar 2023 07:11:22 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Khadija Kamran <kamrankhadijadj@gmail.com>
-Cc: outreachy@lists.linux.dev, Lars-Peter Clausen <lars@metafoo.de>,
-	Michael Hennerich <Michael.Hennerich@analog.com>,
-	Jonathan Cameron <jic23@kernel.org>, linux-iio@vger.kernel.org,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] staging: greybus: remove camel case
-Message-ID: <ZBlKijo6zLsE8jUx@kroah.com>
-References: <ZBiPlhkqHUegMRAb@khadija-virtual-machine>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0302A1FB8
+	for <outreachy@lists.linux.dev>; Tue, 21 Mar 2023 06:47:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+  d=inria.fr; s=dc;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=ijY5JR++hfQkinmD8vFPMnOB34Bb08O0s0fFYOu8TXg=;
+  b=Z9UMSLrfGBLyk2Lrp1NvJSQyL7pWLiiGfmMVVFLEC84n/42vEePvBuGp
+   ZTKXS3m7g7J9BOGpmmC0IqtZOqFntPs4vRlYwZ5r/0JZIEPWtmxPRRirg
+   rrRIKihYUxg4fU7/V6nqlR+8CyI6Xz6MDK8qAuOAAV7PmFeH9NiTQg9/I
+   0=;
+Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="5.98,278,1673910000"; 
+   d="scan'208";a="98200335"
+Received: from 231.85.89.92.rev.sfr.net (HELO hadrien) ([92.89.85.231])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Mar 2023 07:47:30 +0100
+Date: Tue, 21 Mar 2023 07:47:29 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Ira Weiny <ira.weiny@intel.com>
+cc: outreachy@lists.linux.dev
+Subject: Re: Code cleanups are not always simple.
+In-Reply-To: <6418f59a8b3c1_2c274e2942e@iweiny-mobl.notmuch>
+Message-ID: <alpine.DEB.2.22.394.2303210744321.2866@hadrien>
+References: <6418f59a8b3c1_2c274e2942e@iweiny-mobl.notmuch>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZBiPlhkqHUegMRAb@khadija-virtual-machine>
+Content-Type: text/plain; charset=US-ASCII
 
-On Mon, Mar 20, 2023 at 09:53:42PM +0500, Khadija Kamran wrote:
-> Several variables and functions were named Camel Case. This resulted in
-> checks pointed by checkpatch.pl
-> 
-> Avoid camel case by changing names.
-> 
-> Signed-off-by: Khadija Kamran <kamrankhadijadj@gmail.com>
-> ---
->  drivers/staging/iio/addac/adt7316.c | 64 ++++++++++++++---------------
+> Most importantly, don't be afraid to take your time when submitting patches.
 
-This has nothing to do with "greybus" :(
+Thanks Ira.
 
->  1 file changed, 32 insertions(+), 32 deletions(-)
-> 
-> diff --git a/drivers/staging/iio/addac/adt7316.c b/drivers/staging/iio/addac/adt7316.c
-> index 79467f056a05..49702beeac30 100644
-> --- a/drivers/staging/iio/addac/adt7316.c
-> +++ b/drivers/staging/iio/addac/adt7316.c
-> @@ -672,7 +672,7 @@ static IIO_DEVICE_ATTR(da_high_resolution, 0644,
->  		adt7316_store_da_high_resolution,
->  		0);
-> 
-> -static ssize_t adt7316_show_AIN_internal_Vref(struct device *dev,
-> +static ssize_t adt7316_show_AIN_internal_vref(struct device *dev,
+But don't be afraid to mess up either :)  We're here to help correct
+mistakes and help you (and everyone else) learn. There are a lot of little
+details, and it is hard to think of everything in advance.  This point of
+the application period is that thinking of all of these issues become
+second nature, so that you can interact with the community during your
+project in a productive way.
 
-"Vref" is correct, please keep it as is.
-
-thanks,
-
-greg k-h
+julia
