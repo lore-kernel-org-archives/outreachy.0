@@ -1,41 +1,52 @@
-Received: from mga05.intel.com (mga05.intel.com [192.55.52.43])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ed1-f42.google.com (mail-ed1-f42.google.com [209.85.208.42])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 47D06C97D
-	for <outreachy@lists.linux.dev>; Tue, 21 Mar 2023 16:28:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1679416106; x=1710952106;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=Hr322DxSeC3lPm1zZU/EnPvzCUYoZyrRiYM+rG/RZBA=;
-  b=ggv7B6L9IdRy41GBxYHgc6xl7tEDlPYUS9hejNOukW7uRX6Yy6pdWkGD
-   AZ5YPSmg923tNOkCMT0M98hkSBEn9BF3stQRraa32xKenFN6FC4rRAOue
-   qX4lxWfiZTOvNexJo7m2S7taDvcuXiYk+z6pCamV9qVn5Jf9I7dJGc8lM
-   ce2YvoO0NyNeOKtcbMFt757aWTAwklT5f4l3DpIQgYwOT9tD2QWIco/ex
-   O3l+dTOEkqSqTlAQOZYNmnbQKjq42dqbDPJzgiQgOTQsnV+gTpIl+NU4a
-   RjIRUf95zF0eQyGwaQZzCQuTZdhpUUTsTP+Z5fJAWjcPqqIEhAHOGiSdg
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10656"; a="425275003"
-X-IronPort-AV: E=Sophos;i="5.98,279,1673942400"; 
-   d="scan'208";a="425275003"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
-  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Mar 2023 09:28:25 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10656"; a="711855647"
-X-IronPort-AV: E=Sophos;i="5.98,279,1673942400"; 
-   d="scan'208";a="711855647"
-Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.251.21.85])
-  by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Mar 2023 09:28:25 -0700
-Date: Tue, 21 Mar 2023 09:28:23 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: Bru Moreira-Guedes <codeagain@codeagain.dev>
-Cc: Kloudifold <cloudifold.3125@gmail.com>, outreachy@lists.linux.dev
-Subject: Re: Questions on legal name/pseudyonym
-Message-ID: <ZBnbJ+bj0vZbNTFu@aschofie-mobl2>
-References: <ZAmUcfHfMUqxu67D@CloudiRingWorld>
- <ZAoMxSPKNLoLg7Wl@aschofie-mobl2>
- <20230321142919.igug3wlouaxuwrwv@guidai>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 889DCC97D;
+	Tue, 21 Mar 2023 16:28:37 +0000 (UTC)
+Received: by mail-ed1-f42.google.com with SMTP id i5so15081291eda.0;
+        Tue, 21 Mar 2023 09:28:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1679416116;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=qRUXMjw1yqtizFMO9hhf0y6intRqN77LQ8iMEXFSQeU=;
+        b=IVfOxzk8m1QldR3hACl0mrlKEk/3Mpgb19D3F14wwyGcDk89LmFr8cuGJREN/viaRy
+         Z2z1xAeEALG5HOZkNqX9P/arLTn0gqJ7OIjVOkbU24b2SgFm4aY8VZo3cTXPt+EC4ymP
+         sWKwg6sLlpkuqpqSos4LLaGG6Ua4IV8O/ip+Qisdjw9xzbW7CsOx5on5C8MoGcFmjKnW
+         cDMB8eZxwtUw7dgXVaQEuk4xQiO9A2GOyRWQiaPDKuxkaKBK7mCTWlwj1AoqZYbixqv1
+         qCrwijAhes24rXjbU0Z7eDNYMQCm+dqyTxRrzFdlVj1VHV+jlNQpmGftzv4K38C9n0jb
+         Y/dA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679416116;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=qRUXMjw1yqtizFMO9hhf0y6intRqN77LQ8iMEXFSQeU=;
+        b=vcOSRk/fGUCnhVUW4m0gpfvNHI2kRcPcSmg7bDrTCBLT7GiBZuuEMVncWPqTkEwE52
+         L7IqgQhGz6rBdeS7hoB8Y3w5tzrEN5Ne/lsKpxwlLWCMOp6GsSpGHo+fy7vTM8lbgyvv
+         mdTLXnqw69m3WcK/O3EKU/rxqnEkwzRaP7WmwLoDWYLvbN3KE9g1ghPGnPFTReekImgA
+         UPeV455zSZJ0B5YhwCY+9+NaRlnCWRiWmTakZDjlEb1du23U1ATM2qYbNkQ/oNPzHdce
+         lQ/pQOTjf1vRQeFA9014fnJfW55j1TeiGo2s+8UlmGkVAjYyiqDxBHCetyET0sNYrJq2
+         dAAg==
+X-Gm-Message-State: AO0yUKXHF6VBaKaLGl+5J242URwGeAEbKcMrQ2u6Jlv7L28V3c21w9R5
+	i6fdgWVv7ZlgJykDcYp+79c=
+X-Google-Smtp-Source: AK7set9J9hxl4uXIJrgVRbkzC7YMBJZZcmmKgSQPLvjIZ1YSEcv9LYFHdmAhpM3rIq9prmlmfnFaDw==
+X-Received: by 2002:a05:6402:38a:b0:4fc:d277:a6d5 with SMTP id o10-20020a056402038a00b004fcd277a6d5mr3838658edv.19.1679416115750;
+        Tue, 21 Mar 2023 09:28:35 -0700 (PDT)
+Received: from khadija-virtual-machine ([39.41.14.14])
+        by smtp.gmail.com with ESMTPSA id x23-20020a50d617000000b004fa268da13esm6623696edi.56.2023.03.21.09.28.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 21 Mar 2023 09:28:35 -0700 (PDT)
+Date: Tue, 21 Mar 2023 21:28:32 +0500
+From: Khadija Kamran <kamrankhadijadj@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: outreachy@lists.linux.dev, Forest Bond <forest@alittletooquiet.net>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] staging: greybus: fix line ending with '('
+Message-ID: <ZBnbMEJS6q+NWNiT@khadija-virtual-machine>
+References: <ZBhNOkQbG4ygNF98@khadija-virtual-machine>
+ <ZBnZD5alylOgjhYd@khadija-virtual-machine>
+ <ZBnZ+xM0+59Lmvhi@kroah.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -44,75 +55,36 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20230321142919.igug3wlouaxuwrwv@guidai>
+In-Reply-To: <ZBnZ+xM0+59Lmvhi@kroah.com>
 
-On Tue, Mar 21, 2023 at 11:29:19AM -0300, Bru Moreira-Guedes wrote:
-> Hello Alison,
+On Tue, Mar 21, 2023 at 05:23:23PM +0100, Greg Kroah-Hartman wrote:
+> On Tue, Mar 21, 2023 at 09:19:27PM +0500, Khadija Kamran wrote:
 > 
-> I'm glad I caught this discussion.
+> <snip>
 > 
-> On Thu, Mar 09, 2023 at 08:43:49AM -0800, Alison Schofield wrote:
-> > On Thu, Mar 09, 2023 at 04:10:25PM +0800, Kloudifold wrote:
-> > > My legal name may change in the next few years, and the Outreachy Community Member Information page said
-> > > "You may use a pseudonym or abbreviate your given or family names if you have concerns about privacy.",
-> > > so I use "Kloudifold" as my Outreachy name and intend to use it as signed-off name when making kernel contributions.
-> > > 
-> > > I would now like to ask if my contribution will be considered by Outreachy if I use a pseudonym?
-> > > If not, I will use my legal name instead.
-> > > If it is OK, I intend to keep contributing under the name "Kloudifold".
+> > Hey Outreachy Mentors,
 > > 
-> > Hi Kloudifold,
-> > 
-> > I'm glad this came up because I needed to learn the latest on this
-> > topic. My prior knowledge was 'no pseudonyms', but I see the kernel
-> > has recently changed that:
-> > 
-> > d4563201f33a0 Documentation/process/submitting-patches.rst (Linus Torvalds        2023-02-26 11:25:04 -0800 410) using a known identity (sorry, no anonymous contributions.)
-> > 
-> > diff --git a/Documentation/process/submitting-patches.rst b/Documentation/process/submitting-patches.rst
-> > index 7dc94555417d..fab44ae732e3 100644
-> > --- a/Documentation/process/submitting-patches.rst
-> > +++ b/Documentation/process/submitting-patches.rst
-> > @@ -407,7 +407,7 @@ then you just add a line saying::
-> > 
-> >         Signed-off-by: Random J Developer <random@developer.example.org>
-> > 
-> > -using your real name (sorry, no pseudonyms or anonymous contributions.)
-> > +using a known identity (sorry, no anonymous contributions.)
-> >  This will be done for you automatically if you use ``git commit -s``.
-> >  Reverts should also include "Signed-off-by". ``git revert -s`` does that
-> >  for you.
+> > Kindly take a look at this patch and let me know if I should wait for
+> > the response on this patch or submit another patch.
 > 
-> Do you think it could also be applied to social names? I'm not sure this
-> is a known term in english-speaking culture, but in my country a social
-> name is a name differing from the legal one to which trans people (like
-> me) are entitled to be referred to. At least for public and some private
-> services.
+> Less than 1 day later?
 > 
-> I have recently decided to use 'Bru' rather than my gender-marked legal
-> name 'Bruno', and I am in doubt on whether this fits into the concept of
-> 'known identity' (since, well, this had been a very recent change and
-> it's not exactly 'known').
+> Please relax and always keep working on new things, don't let my
+> response time be the gateway for you doing work, otherwise you are not
+> going to get very much done at all.
 > 
-> I have been thinking about that a couple of weeks ago.
-
-Hi Bru,
-
-You can read the full text of the DCO guideline and the kernel patch:
-
-https://github.com/cncf/foundation/blob/659fd32c86dc/dco-guidelines.md
-
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d4563201f33a022fc0353033d9dfeb1606a88330
-
-It sounds like your name change situation is within the guidelines.
-(But I'm not a lawyer and I don't play one on TV ;))
-
-Alison
-
+> You normally have to wait about 2 weeks to get a patch reviewed,
+> sometimes I go much faster, sometimes slower.  Either way, it's
+> uncertian...
 > 
-> Best,
-> Bru Moreira-Guedes
-> Autistic & Proud
-> They/them
+> thanks,
+> 
+> greg k-h
 
+Okay understood.
+
+Really sorry about this message.
+
+Regards,
+Khadija
 
