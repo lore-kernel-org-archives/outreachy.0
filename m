@@ -1,88 +1,85 @@
-Received: from mail-io1-f41.google.com (mail-io1-f41.google.com [209.85.166.41])
+Received: from mail-wr1-f48.google.com (mail-wr1-f48.google.com [209.85.221.48])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 21DE52592
-	for <outreachy@lists.linux.dev>; Wed, 22 Mar 2023 12:39:56 +0000 (UTC)
-Received: by mail-io1-f41.google.com with SMTP id e13so317219ioc.0
-        for <outreachy@lists.linux.dev>; Wed, 22 Mar 2023 05:39:56 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E963A28FC;
+	Wed, 22 Mar 2023 13:36:07 +0000 (UTC)
+Received: by mail-wr1-f48.google.com with SMTP id r29so17083645wra.13;
+        Wed, 22 Mar 2023 06:36:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ieee.org; s=google; t=1679488795;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        d=gmail.com; s=20210112; t=1679492166;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=NsXIYR1MPYOgLhgbK7yRoUKgF3p75hv84JR40qJjkL8=;
-        b=St9TR1J8Ta0zC3p+s7hBN1vhvdI1VQ6ESMoIXwhlYPYOse7neLnQHcowzvaP3rJGiR
-         F0AiZaLghrvT/GnDUv+Ck1f39sBWf79WQgtwsCyV8p8TUM8ZoNYhGj3CTvkVoHjUg2B9
-         j1VnJsTTauzuxOBRbc7Px7GUIpOxcDIZy3ZF0=
+        bh=7Qcc01bThYgNN4EDH3PH3xQ8u1QU4sH2s8PABfTDu6Y=;
+        b=J34H1SdbC/nCg/E/QjATqJYym9ALDDptxGYZd1j1eb0dYOENa62tJWHy9WD6GFbdO1
+         bnrock3LLiOZy4DRZg3i2M9AmUktSR99PWNLoZJ0XXAiunQCDRso+N5YtRu4C8JrcwYF
+         DLc0j3k3HipvC8V5BbNiRFL9zOu5kRf250ncc/BlscmMShbhb/PBZpileUDfRz18A7fy
+         4OJJS6ItiZXXIdVdIS5mDwrYRYRsFBsKhABy9yCaTupX7Lm2Ch2YeihLrRYTWFAwY7Ee
+         NWX/6etoOz0QcmRhvDjFRXpEj4TsltoTVhjSLV1C5Igt95lyUxR5TztF5eAbuAzUtnwV
+         sXLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679488795;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        d=1e100.net; s=20210112; t=1679492166;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=NsXIYR1MPYOgLhgbK7yRoUKgF3p75hv84JR40qJjkL8=;
-        b=Fnjq3CwFU41fzfv2mx8Z2wKadHc/jEovyKbugpxPkoH/n9XSPli/DDzLkDFPGUHhIP
-         XD2CAQ5VLssJJHayMfuHeXZSDaEQwb0K2199gLPEqSPHdd/rThlIh4BLlkM867XB+2kX
-         6tV2tZa/azqfTrZymasF14kDVaPRoa1A3yZ3Mbn047zIJkVHXwlfMAn259zOEfitDekf
-         PT8zzKUNtSYgvzPkRFdIS8oHR6bTe1DMhDs7SN78QpRjnS24pn/N+PJifmId3rvLkuTN
-         JlMqeANARzpbf3oE5OBqZBnTmpvGDqnHd36yx6E/09YB52N9DPLPPltHUz3E+kUeM+Xx
-         GhTg==
-X-Gm-Message-State: AO0yUKWOTKDbkPpCSVWRC62+s5LfvhwHfE0xZx1FPLcgOIJjDlRyh/0N
-	edWZ+TVm71Tnas91xyqi824E/w==
-X-Google-Smtp-Source: AK7set8N+UE/kMHzN6AgpMFOxmDiirXuWiUOOXCMBaWrIsMOL8tS1r5FYkFwyoIiwZOe2WNFF71VMQ==
-X-Received: by 2002:a6b:4406:0:b0:758:b4eb:cec9 with SMTP id r6-20020a6b4406000000b00758b4ebcec9mr773044ioa.2.1679488795164;
-        Wed, 22 Mar 2023 05:39:55 -0700 (PDT)
-Received: from [172.22.22.4] ([98.61.227.136])
-        by smtp.googlemail.com with ESMTPSA id c22-20020a5ea916000000b0074c80aa17f0sm4470973iod.0.2023.03.22.05.39.54
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 22 Mar 2023 05:39:54 -0700 (PDT)
-Message-ID: <b1427fb9-1ec1-a5b7-8f1d-9751d4d13b77@ieee.org>
-Date: Wed, 22 Mar 2023 07:39:53 -0500
+        bh=7Qcc01bThYgNN4EDH3PH3xQ8u1QU4sH2s8PABfTDu6Y=;
+        b=LcKLEWYQAaizLnYRbdwDBm6oBgI3NMdga43W/c1Uqtkdxxl1Xsli7VOUd4midJ0esE
+         RvW83uh/ahd8OqKuWHNOkBdKm1SaP3Lnqy2dhyi0NJg+ci4JpDzOA7ck1SQcMssF14kh
+         XLBKYmo/Wl7WgAEngl/h8o/XHJ3Lx/F07XAaosnCp++6hoJ97MOmPeWHtMLUrgc4gAoR
+         AI+rk8eYSdAHNSERpEUzr6bCiwF8fQ2FRwrHZ96PIy86qGbfWmUyomJDGuSIfqmLjkvz
+         /kh19csTJ3d8tnIU5kkP1SfH6oA3EBDWT4aqvgJKRjIY4TaAT4EylsVqB5IDRzLS8GDy
+         iQ2A==
+X-Gm-Message-State: AO0yUKU7PHi3/j6sxS5culxuWF+mNI7uj46amg8zi7gsvtjOweaoDjhx
+	Ly3u972HcdTFnTCielfFg2Q=
+X-Google-Smtp-Source: AK7set8KIMT38ukGDMClhbdqjX5z9iqnZpWLMZU/Q0vufQSV+5lMMAXT0J35nXLEOWiTQ5oIJ0gL1Q==
+X-Received: by 2002:adf:f5ca:0:b0:2d0:cf21:a40d with SMTP id k10-20020adff5ca000000b002d0cf21a40dmr4814231wrp.10.1679492165965;
+        Wed, 22 Mar 2023 06:36:05 -0700 (PDT)
+Received: from khadija-virtual-machine ([39.41.14.14])
+        by smtp.gmail.com with ESMTPSA id c9-20020a5d4cc9000000b002d21379bcabsm13831630wrt.110.2023.03.22.06.36.04
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 22 Mar 2023 06:36:05 -0700 (PDT)
+Date: Wed, 22 Mar 2023 18:36:03 +0500
+From: Khadija Kamran <kamrankhadijadj@gmail.com>
+To: outreachy@lists.linux.dev
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: [PATCH] staging: ks7010: fix line ending with '('
+Message-ID: <ZBsEQzL3Oidsmg/L@khadija-virtual-machine>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH v2] staging: greybus: use inline function for macros
-Content-Language: en-US
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>,
- gregkh@linuxfoundation.org, outreachy@lists.linux.dev, johan@kernel.org,
- elder@kernel.org, linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev
-References: <20230321183456.10385-1-eng.mennamahmoud.mm@gmail.com>
- <2e869677-2693-6419-ea25-f0cc2efcf3dd@ieee.org>
- <alpine.DEB.2.22.394.2303212140480.2919@hadrien>
- <5efa6e6d-8573-31de-639a-d15b2e9deca0@ieee.org>
- <alpine.DEB.2.22.394.2303212218500.2919@hadrien>
- <48674d8f-9753-780c-f37c-f83ea2855ae6@ieee.org>
- <eabacc6f-c7fb-ff33-26d1-271537fb4760@inria.fr>
-From: Alex Elder <elder@ieee.org>
-In-Reply-To: <eabacc6f-c7fb-ff33-26d1-271537fb4760@inria.fr>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-On 3/22/23 5:00 AM, Julia Lawall wrote:
-> 
-> Both seem to access the memory directly.  Maybe the example is too simple,
-> and the compiler is more likely to optimize aggressively?
+Splitting function header to multiple lines because of 80 characters per
+line limit, results in ending the function call line with '('.
+This leads to CHECK reported by checkpatch.pl
 
-Yes I think so.  This is a little unrelated but the
-"inline" keyword isn't very useful because the compiler
-(at least when optimizing) already takes liberties of
-inlining code that it "knows" will be better done that
-way.  Same thing here.  This function is so trivial
-that it's almost certainly going to be inlined.
+Move the first parameter right after the '(' in the function call line.
+Align the rest of the parameters to the opening parenthesis.
 
-So the benefit of a little helper function like this over
-a macro is that its types are specified explicitly, and
-there is no chance of macro arguments be duplicated or
-improperly used in the right hand side.  If it's not
-inlined it also would normally generate stuff on the stack.
+Signed-off-by: Khadija Kamran <kamrankhadijadj@gmail.com>
+---
+ drivers/staging/ks7010/ks_hostif.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-The benefit of the macro is you can do things with the
-arguments because they're pass-by-name.  But you can't
-expect there to be any efficiency benefit.
+diff --git a/drivers/staging/ks7010/ks_hostif.c b/drivers/staging/ks7010/ks_hostif.c
+index 9429ee155910..af3825578d85 100644
+--- a/drivers/staging/ks7010/ks_hostif.c
++++ b/drivers/staging/ks7010/ks_hostif.c
+@@ -75,9 +75,8 @@ static void ks_wlan_hw_wakeup_task(struct work_struct *work)
 
-					-Alex
+ 	if (ps_status == PS_SNOOZE) {
+ 		ks_wlan_hw_wakeup_request(priv);
+-		time_left = wait_for_completion_interruptible_timeout(
+-				&priv->psstatus.wakeup_wait,
+-				msecs_to_jiffies(20));
++		time_left = wait_for_completion_interruptible_timeout(&priv->psstatus.wakeup_wait,
++								      msecs_to_jiffies(20));
+ 		if (time_left <= 0) {
+ 			netdev_dbg(priv->net_dev, "wake up timeout or interrupted !!!\n");
+ 			schedule_work(&priv->wakeup_work);
+--
+2.34.1
+
