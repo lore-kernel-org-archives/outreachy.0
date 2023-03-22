@@ -1,58 +1,57 @@
-Received: from mail-pj1-f44.google.com (mail-pj1-f44.google.com [209.85.216.44])
+Received: from mail-pj1-f50.google.com (mail-pj1-f50.google.com [209.85.216.50])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 221E215BA
-	for <outreachy@lists.linux.dev>; Wed, 22 Mar 2023 04:10:09 +0000 (UTC)
-Received: by mail-pj1-f44.google.com with SMTP id x15so7074157pjk.2
-        for <outreachy@lists.linux.dev>; Tue, 21 Mar 2023 21:10:09 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 925F515BA
+	for <outreachy@lists.linux.dev>; Wed, 22 Mar 2023 04:12:53 +0000 (UTC)
+Received: by mail-pj1-f50.google.com with SMTP id l9-20020a17090a3f0900b0023d32684e7fso203292pjc.1
+        for <outreachy@lists.linux.dev>; Tue, 21 Mar 2023 21:12:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679458208;
+        d=gmail.com; s=20210112; t=1679458373;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=NV1Z57AHY4KeJql3suCcAiMBaAS6BKxbUUJYih1DFiI=;
-        b=F9OL3vz5AOi9J/sky4Az3yzO1/llhi+aqheaYj8hHszpdyjds6EQiqer2pOroSMsNh
-         z4nvf+GSg8iXLRbu8TV6/OQ3Lraz8RJat0qGtyI0yA9b2McJyoXvaKgXDSFCD81+SGoE
-         g+gPTt0xPYkmgPR3tfE2084ocIlegNFDhgqwIQBnF+gUq8XBoW8QxscBt60hOIERK5vU
-         WhR8nuGaS78ToqsG6L5aIaC4qQEj7jAZwyERPol1WEbrqoVn0y/8EW+rXVIUBEy/ZTod
-         jfBX+UdDfRE5fm0kvl7eGFH1lJ7cPzAU1aEhMvR89fY1i1IDrl7xpcmJoSlvlT7wjoj0
-         7MYw==
+        bh=uErmRxuZr1VNHcKP9rsZt3Z5PTm2O9OHbtuvXXez5lM=;
+        b=KQc83fYW4U1hDKRjXlxyds3gYZGstPVKzZxLyPF1rGWxIU1bvS32S8wmNedPs7QTD9
+         +4GyRRfNtlv8lQhgnv3ssQMi2P4Ngaa+97E1sT4TPgnJmq1em6+ru+NTflueSUHuLimT
+         ncLWhW+q2hN/MwVZCDFHcuIDsh5Pv4JZY/Us3WS1Zx+t6bMLJvOi/VVGdPfojAs+e4FZ
+         ztHJaIbir+Mn3Lzmi1cF7y8siaqzTl+Z7UOBcS7UphQ9uSk/upsYaTVOSjbtGheUXa99
+         n3mV0QL4TQOUqG/QX2XH4TpyF7yA0qanmqE84xhC8n8iSLKt/Z+UAi+k6HvyYS24aXW8
+         kSyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679458208;
+        d=1e100.net; s=20210112; t=1679458373;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=NV1Z57AHY4KeJql3suCcAiMBaAS6BKxbUUJYih1DFiI=;
-        b=Abt3pyRLFICnQvSEiU/fD21M1uEiHAichGZyPqP95RpqduZUG74/usSut1HZZcTAzZ
-         p0+hpc57TsBMYwpnjKpDFzk9M8PN3v0M+opI/hPyRRXE6hEpIXUlYTxpwYBdzcnarhQ6
-         RAOHqzwQH0o/uV7Iz4VYKDSLXQWXjYjqQNLxj2pAZn7mhqeJMbx7vEnGUzlmOPdadlxr
-         spq9krXe4b4n2tCR9wadgdGoaEgYKIW7NkJDhrNrWxD8aVdXU0tywmhokJGgO0jaMpUE
-         oEO7pUtyH57oXR2Qz9wR31mnvWUP5KWlPIVBMscAnz6hE/vR7gMHEia5X1U0i/6EaZ0n
-         9U4w==
-X-Gm-Message-State: AO0yUKVX6quJbaBgNn7wYaAnD3Wz/F4XBZKeX9fODDGkqNqFPIDHBuVx
-	eQEgYoSoBm3PUU+ELViMTHFyo4+w/CRAyw==
-X-Google-Smtp-Source: AK7set+j/w0G5vuF7RigZrH4rYPJl8dd20hz+zzscNn/Ai4qRTNyD3krVrZC9apyr8Sd73Np1BUCRw==
-X-Received: by 2002:a17:902:fb47:b0:19e:6700:174 with SMTP id lf7-20020a170902fb4700b0019e67000174mr1388578plb.25.1679458208359;
-        Tue, 21 Mar 2023 21:10:08 -0700 (PDT)
+        bh=uErmRxuZr1VNHcKP9rsZt3Z5PTm2O9OHbtuvXXez5lM=;
+        b=jIXaw6tcZABG65NArrdVmJoU7k3kZCRhuOECE9AOre1nq1IBMmN43Lm72zzq8nc+Gb
+         J72/mqMwOgxPX+9GDWD3J2189dhWh3J+L4MIN/LPsMuMrhOV9VGnTbJ/XxfkH2+Y2epZ
+         qjfwgmM/EHQvY2bULVFP5n2QPFaqDV0V0o1hgY8kmQooRAoa67QSi6PejBAogVDRWwK4
+         QGobzPxQrvdzT3iRCEubgOmQ8eG+VW0dW5fS2pn2rz0odEirkzRQhpUjS/FsPOUZw5A7
+         /sZFqoUOwBsMFcz8ijn2lSdl+lSCnE5xatqCqXz6ksd10fshtRT2cVOfZ6CbpViRts7y
+         6G6A==
+X-Gm-Message-State: AO0yUKVoERjc/cD5tZxLCCR0GmwIO36y4/DErIx5UQm5us+Xhk0YsCog
+	vzIMdPaG5sH9aYAO9HW5I2lGvhU+9n5MCQ==
+X-Google-Smtp-Source: AK7set8Hi8Sh9YmTBD0SEKw0nmnWjU9+lZ4fp/EY0m1gYDnz8fX+fQ2d7YeeIYvPO1OgXyZAyt2xxw==
+X-Received: by 2002:a17:902:ce81:b0:1a1:a8eb:d34d with SMTP id f1-20020a170902ce8100b001a1a8ebd34dmr1704000plg.46.1679458372645;
+        Tue, 21 Mar 2023 21:12:52 -0700 (PDT)
 Received: from sumitra.com ([117.245.171.219])
-        by smtp.gmail.com with ESMTPSA id s18-20020a170902a51200b001a1d5d47105sm4339406plq.53.2023.03.21.21.10.05
+        by smtp.gmail.com with ESMTPSA id k23-20020a170902ba9700b0019a95baaaa6sm9510273pls.222.2023.03.21.21.12.50
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 Mar 2023 21:10:07 -0700 (PDT)
-Date: Tue, 21 Mar 2023 21:10:03 -0700
+        Tue, 21 Mar 2023 21:12:52 -0700 (PDT)
+Date: Tue, 21 Mar 2023 21:12:48 -0700
 From: Sumitra Sharma <sumitraartsy@gmail.com>
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: Bagas Sanjaya <bagasdotme@gmail.com>, outreachy@lists.linux.dev
+To: Deepak R Varma <drv@mailo.com>
+Cc: Julia Lawall <julia.lawall@inria.fr>, outreachy@lists.linux.dev
 Subject: Re: Unable to find module location
-Message-ID: <20230322041003.GA149888@sumitra.com>
-References: <ee140dee-6db9-6d7e-0b84-b69f3c36cc13@gmail.com>
- <20230319083256.GB50179@sumitra.com>
- <alpine.DEB.2.22.394.2303190938080.2867@hadrien>
- <alpine.DEB.2.22.394.2303190956120.2867@hadrien>
- <20230319121026.GA53959@sumitra.com>
- <alpine.DEB.2.22.394.2303191336090.2867@hadrien>
- <20230320084630.GB126429@sumitra.com>
- <da5bf7f-b8b5-143-8e58-9c1dc4214fad@inria.fr>
- <20230320095314.GC126429@sumitra.com>
- <e13532cc-d9da-5090-7731-5d3945d7564c@inria.fr>
+Message-ID: <20230322041248.GB149888@sumitra.com>
+References: <20230318084048.GC4434@sumitra.com>
+ <ZBWAsdC5UOEkbedF@ubun2204.myguest.virtualbox.org>
+ <20230318130211.GB39892@sumitra.com>
+ <ZBXh98I11pj38Jy2@ubun2204.myguest.virtualbox.org>
+ <20230319084520.GC50179@sumitra.com>
+ <ZBglD5yEm2Qb40qf@ubun2204.myguest.virtualbox.org>
+ <20230320100216.GD126429@sumitra.com>
+ <ZBgyZz0c70QQAQax@ubun2204.myguest.virtualbox.org>
+ <ZBgzl2/RuwlWOJQ/@ubun2204.myguest.virtualbox.org>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -61,58 +60,48 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <e13532cc-d9da-5090-7731-5d3945d7564c@inria.fr>
+In-Reply-To: <ZBgzl2/RuwlWOJQ/@ubun2204.myguest.virtualbox.org>
 
-On Mon, Mar 20, 2023 at 02:04:30PM +0100, Julia Lawall wrote:
+On Mon, Mar 20, 2023 at 03:51:11PM +0530, Deepak R Varma wrote:
+> On Mon, Mar 20, 2023 at 03:46:07PM +0530, Deepak R Varma wrote:
+> > On Mon, Mar 20, 2023 at 03:02:16AM -0700, Sumitra Sharma wrote:
+> > > On Mon, Mar 20, 2023 at 02:49:11PM +0530, Deepak R Varma wrote:
+> > > 
+> > > VM linux distro = Ubuntu 20.04 64-bit version
+> > > Host architecture = windows 11 x64
+> > 
+> > Try the following steps and let me know if you are able to select and configure
+> > the dependencies and the driver you wish to build:
+> > 
+> >    cd /path/to/linux/source/
+> >    cp .config .config_x86_64
+> >    cp arch/arm64/configs/defconfig .config
+> >    make ARCH=arm64 CROSS_COMPILE=<<arm64 gcc compiler binary path>> menuconfig
+> > 
+> > Note: you first need to resolve the dependencies and then you will be presented
+> > the selection option for your driver.
+> > 
+> > Once you configure the driver, run following to build the Kernel image and
+> > should include your driver as well:
+> >    make ARCH=arm64 CROSS_COMPILE=<<arm64 gcc compiler binary path>> 
 > 
-> 
-> On Mon, 20 Mar 2023, Sumitra Sharma wrote:
-> 
-> > >>On Mon, 20 Mar 2023, Bagas Sanjaya wrote:
-> >
-> > > On 3/20/23 15:46, Sumitra Sharma wrote:
-> > > > Hi julia,
-> > > >
-> > > > This did worked.
-> > > >
-> > > > But the main issue of creating NVEC_PAZ00 a module using make menuconfig still persist.
-> > > >
-> > >
-> > >> Oh dear, you don't know how to use menuconfig...
-> > >>
-> > >> When you execute `make menuconfig`, you'll be presented with menu when
-> > >> you can choose what config you want to enable. To find the desired config
-> > >> (NVEC_PAZ00 in this case), press `/` and type in the config name. If
-> > >> found, you will see menu location for config symbols that match. Then
-> > >> follow the shown path.
-> >
-> > > Actually, this isn't the issue.  You have to have the ARCH=arm as well.
-> > > Otherwise, / provides instructions, but there is no way to follow them.
-> >
-> > Yes you are correct locating the mocule in menuconfig is my issue. Do you mean 'make menuconfig ARCH=arm'.
-> 
-> I have never tried that order.  make ARCH=arm tegra_defconfig menuconfig
-> should work.  Maybe other options work also.  Arm has a lot of specific
-> configurations.
+> If you have already progressed with the guidance from other mentors, please
+> continue to follow those instructions.
 >
 
-Hi julia,
+HI deepak,
 
-This did work. Now everything is working fine.  This thread can be closed.
-Thank you very much.
+Your views were of great help. Things are now working properly.  Thank you for your help. 
 
-Regards,
-Sumitra
+REgards,
+SUmitra
 
-> julia
+
+> > 
+> > 
+> > Deepak.
+> > 
+> > 
+> > 
 > 
-> >
-> > Sorry for such a long thread. :(
-> >
-> > Regards,
-> > Sumitra
-> >
-> >
-> >
-> >
-> >
+> 
