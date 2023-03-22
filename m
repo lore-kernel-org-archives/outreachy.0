@@ -1,106 +1,102 @@
-Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-wm1-f52.google.com (mail-wm1-f52.google.com [209.85.128.52])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C1EBF8C01;
-	Wed, 22 Mar 2023 15:12:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=bombadil.20210309; h=Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Sender:Reply-To:Content-ID:Content-Description;
-	bh=H46fc+UgiTMX/b3f90naW56UKVe5bC0EWkSvGxwamfc=; b=SzmrgpUGjbjY5PMen3uKU5eSl7
-	d9BtkM6J+BCtpzt+oH/2ezC8psZmFRK1pPy2v35PezUYniRXN0rWJGFkSDnj7HXu4xQsdE0eSWBAW
-	/M+v+VYKSgW1zHySIEpZsk8JqWW8709151PPsC/6YAVULxvBEsIuBHtkQfE9a+QHal9+a9INukIIk
-	oTkgL+Ix0RsKeQW3w1c1nOg6iiUlfh8DRIOXweIlTZH6LNtTKW58kx0/PATjjvfSPbdtA7zhd8Mjr
-	TsYx1sQ4spamdnsXwWiyXVWAaz8RQ/PneCvnq+IXa0fH7lqF99zf7omYpcfa8VmtRHICZvrxuVP75
-	3POSEVHg==;
-Received: from [2601:1c2:980:9ec0::21b4]
-	by bombadil.infradead.org with esmtpsa (Exim 4.96 #2 (Red Hat Linux))
-	id 1pf08Y-00GSWY-0K;
-	Wed, 22 Mar 2023 15:12:26 +0000
-Message-ID: <061a2fea-b3da-551d-f6d2-0da30b0ac879@infradead.org>
-Date: Wed, 22 Mar 2023 08:12:23 -0700
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 25E8E8F58;
+	Wed, 22 Mar 2023 18:06:12 +0000 (UTC)
+Received: by mail-wm1-f52.google.com with SMTP id n19so1824912wms.0;
+        Wed, 22 Mar 2023 11:06:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1679508370;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=lQlkTrDUMyIzoKUTa4EB/7B9v75JQsqp1RH/FF8jnII=;
+        b=Jv/yvvCIK9N/w4adbeYydlyMQukdDjPsjhHiWZML0YgwHCbjb3oWOXkMDFxGyqMis8
+         Y9heDgxww1MEfpFHUHbwP0+f5jLcaW+lya3SGPkHXFDVCkSUmtPUWislMayCeqMO30XH
+         lhtp92ZYe8zWEcMgnIa7he4GgyY0BNZlnTviZo+Mx/QgMI5nOlfPk3RQ5+Krm1+xz2p5
+         KNChmEF2+Z2rtzSv1qxpfsv1gjGaZN+4SRWEJG/Tjqy54RjC5lPCIbFdaVrhhFyWn8Jz
+         Seel55pLxPkZwgva2ld/t+h7CzF9tf24k1sfrvuLA+0jSGj16Z0X6bhLzfzOkV8PvCW1
+         VxTw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679508370;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=lQlkTrDUMyIzoKUTa4EB/7B9v75JQsqp1RH/FF8jnII=;
+        b=EEtuo0pwvS4cnDfMvLR5xWSxnWQdmXDN+dzdpz+GmAEdGMw5DH59uRBigoWSouc8Mt
+         oy/LbvlIt0gmGz8TnZGkkTkNkxYCZGlv77qh6nEcHWr95z6ft5bRM1c3YY0XTc9GP338
+         EdJG1P2oH3KWWOTzYGWrvVlJiLwaW0Dsw2cjS0oddG8O+LjEEbR2Elj981+94OYXHwjE
+         UjVSOSuF0G9n7YZaWXiKUoAuzlsEr21LKsJcRI6ANNOqlRph5VhEhq4BKm6g1JybPB4B
+         pIpzyUzvBpCaQbuo+6GaNlj6cIPOzumpeNQacpmn2EIUYMpYv9/2LmRI9j6DEi5Jsoiv
+         I+Zw==
+X-Gm-Message-State: AO0yUKURuMMexSsfzYG+fAyW2HWZmOktj8hhEU3hzb1KXN7E0pTaVu30
+	6d57d88j4IjeTpmVgomAIL0=
+X-Google-Smtp-Source: AK7set9PvLALfTOZlyrn4wUsytwFilchVUKkUSnU6OXEoe2fBm9qiDZfKWrdnLEWV8TmcajiZO9Urw==
+X-Received: by 2002:a7b:c3d9:0:b0:3ee:42fd:7768 with SMTP id t25-20020a7bc3d9000000b003ee42fd7768mr372051wmj.1.1679508370151;
+        Wed, 22 Mar 2023 11:06:10 -0700 (PDT)
+Received: from khadija-virtual-machine ([39.41.14.14])
+        by smtp.gmail.com with ESMTPSA id j10-20020a5d464a000000b002cea8f07813sm14452324wrs.81.2023.03.22.11.06.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 22 Mar 2023 11:06:09 -0700 (PDT)
+Date: Wed, 22 Mar 2023 23:06:07 +0500
+From: Khadija Kamran <kamrankhadijadj@gmail.com>
+To: Dan Carpenter <error27@gmail.com>
+Cc: outreachy@lists.linux.dev,
+	Parthiban Veerasooran <parthiban.veerasooran@microchip.com>,
+	Christian Gromm <christian.gromm@microchip.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2] staging: most: fix line ending with '('
+Message-ID: <ZBtDj/sRJCiOhsRD@khadija-virtual-machine>
+References: <ZBsYYAc1Ue/JnUAm@khadija-virtual-machine>
+ <8064a4ee-665b-417e-a1e2-7e7dd32ec1f0@kili.mountain>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH v2] staging: most: fix line ending with '('
-Content-Language: en-US
-To: Khadija Kamran <kamrankhadijadj@gmail.com>, outreachy@lists.linux.dev
-Cc: Parthiban Veerasooran <parthiban.veerasooran@microchip.com>,
- Christian Gromm <christian.gromm@microchip.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-References: <ZBsYYAc1Ue/JnUAm@khadija-virtual-machine>
-From: Randy Dunlap <rdunlap@infradead.org>
-In-Reply-To: <ZBsYYAc1Ue/JnUAm@khadija-virtual-machine>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <8064a4ee-665b-417e-a1e2-7e7dd32ec1f0@kili.mountain>
 
-Hi--
-
-On 3/22/23 08:01, Khadija Kamran wrote:
-> Splitting function header to multiple lines because of 80 characters per
-> line limit, results in ending the function call line with '('.
-> This leads to CHECK reported by checkpatch.pl
-
-Note that checkpatch is not always correct. It's a simple advisor.
-
-> Move the function parameters right after the '(' in the function call
-> line. Align the rest of the parameters to the opening parenthesis.
-
-coding-style.rst does indeed say:
-
-  A very commonly used style
-  is to align descendants to a function open parenthesis.
-
-That may be poorly worded. What it is trying to say is to align
-the rest of the parameters to the first parameter immediately after
-the open parenthesis, like this example from kernel/fork.c:
-
-	stack = __vmalloc_node_range(THREAD_SIZE, THREAD_ALIGN,
-				     VMALLOC_START, VMALLOC_END,
-				     THREADINFO_GFP & ~__GFP_ACCOUNT,
-				     PAGE_KERNEL,
-				     0, node, __builtin_return_address(0));
-
-
-And FTR, I still haven't found anything in coding-style.rst that says that
-lines should not end with an open parenthesis.  Did I overlook it?
-
-Thanks.
-
-> Signed-off-by: Khadija Kamran <kamrankhadijadj@gmail.com>
-> ---
+On Wed, Mar 22, 2023 at 06:09:50PM +0300, Dan Carpenter wrote:
+> On Wed, Mar 22, 2023 at 08:01:52PM +0500, Khadija Kamran wrote:
+> > Splitting function header to multiple lines because of 80 characters per
+> > line limit, results in ending the function call line with '('.
+> > This leads to CHECK reported by checkpatch.pl
+> > 
+> > Move the function parameters right after the '(' in the function call
+> > line. Align the rest of the parameters to the opening parenthesis.
+> > 
+> > Signed-off-by: Khadija Kamran <kamrankhadijadj@gmail.com>
+> > ---
+> > 
+> > Changes in v2:
+> >  - Changed the description
+> > 
 > 
-> Changes in v2:
->  - Changed the description
-> 
->  drivers/staging/most/dim2/hal.c | 5 ++---
->  1 file changed, 2 insertions(+), 3 deletions(-)
-> 
-> diff --git a/drivers/staging/most/dim2/hal.c b/drivers/staging/most/dim2/hal.c
-> index a5d40b5b138a..6abe3ab2b2cf 100644
-> --- a/drivers/staging/most/dim2/hal.c
-> +++ b/drivers/staging/most/dim2/hal.c
-> @@ -346,9 +346,8 @@ static void dim2_clear_ctram(void)
->  		dim2_clear_ctr(ctr_addr);
->  }
-> 
-> -static void dim2_configure_channel(
-> -	u8 ch_addr, u8 type, u8 is_tx, u16 dbr_address, u16 hw_buffer_size,
-> -	u16 packet_length)
-> +static void dim2_configure_channel(u8 ch_addr, u8 type, u8 is_tx, u16 dbr_address,
-> +				   u16 hw_buffer_size, u16 packet_length)
->  {
->  	dim2_configure_cdt(ch_addr, dbr_address, hw_buffer_size, packet_length);
->  	dim2_configure_cat(MLB_CAT, ch_addr, type, is_tx ? 1 : 0);
-> --
-> 2.34.1
-> 
+> No one replied to the v1 of this patch so it's not clear which of the
+> patches should be ignored.
+>
 
--- 
-~Randy
+Hey Dan!
+
+I created a patch revision without any feedback. My bad. I thought the
+description in the previous patch was misleading, so I wanted to change
+it.
+
+> Also you have a couple patches with the same subject and that's against
+> the rules.
+>
+
+I am sorry about that. Kindly guide me here. 
+Both patches are for same driver i.e. staging/most, but for different
+files. Would it be fine to add file names in the subject to
+differentiate them?
+
+Regards,
+Khadija
+
+> regards,
+> dan carpenter
+> 
