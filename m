@@ -1,81 +1,118 @@
-Received: from mail-io1-f49.google.com (mail-io1-f49.google.com [209.85.166.49])
+Received: from mail-pj1-f44.google.com (mail-pj1-f44.google.com [209.85.216.44])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 18F7310E7
-	for <outreachy@lists.linux.dev>; Tue, 21 Mar 2023 22:42:12 +0000 (UTC)
-Received: by mail-io1-f49.google.com with SMTP id bf15so7665313iob.7
-        for <outreachy@lists.linux.dev>; Tue, 21 Mar 2023 15:42:11 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 221E215BA
+	for <outreachy@lists.linux.dev>; Wed, 22 Mar 2023 04:10:09 +0000 (UTC)
+Received: by mail-pj1-f44.google.com with SMTP id x15so7074157pjk.2
+        for <outreachy@lists.linux.dev>; Tue, 21 Mar 2023 21:10:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ieee.org; s=google; t=1679438531;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=6jDzsttz/Z1eHYKj405pV9Blev59eyzoaBzMYfjRtNs=;
-        b=FbuEPLzjGcUCi2cFfW7+KLrqrWm95kIC11bt4fzbF/b61kskPlMJluOllYVw1m0h6A
-         wjtYOFhDA9Fwh/wB2xK96Ao7cb0XoGBINiTpnnfE8nTFlhkeZaF0oJ37B6Dm1zkZQ/6I
-         2Bw+XaNr4Si9JrMDXDNLAqQh3VFCWoWLBsdEA=
+        d=gmail.com; s=20210112; t=1679458208;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=NV1Z57AHY4KeJql3suCcAiMBaAS6BKxbUUJYih1DFiI=;
+        b=F9OL3vz5AOi9J/sky4Az3yzO1/llhi+aqheaYj8hHszpdyjds6EQiqer2pOroSMsNh
+         z4nvf+GSg8iXLRbu8TV6/OQ3Lraz8RJat0qGtyI0yA9b2McJyoXvaKgXDSFCD81+SGoE
+         g+gPTt0xPYkmgPR3tfE2084ocIlegNFDhgqwIQBnF+gUq8XBoW8QxscBt60hOIERK5vU
+         WhR8nuGaS78ToqsG6L5aIaC4qQEj7jAZwyERPol1WEbrqoVn0y/8EW+rXVIUBEy/ZTod
+         jfBX+UdDfRE5fm0kvl7eGFH1lJ7cPzAU1aEhMvR89fY1i1IDrl7xpcmJoSlvlT7wjoj0
+         7MYw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679438531;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=6jDzsttz/Z1eHYKj405pV9Blev59eyzoaBzMYfjRtNs=;
-        b=YNJWYQe7su43CwwlPV3nh9B4mTrslM/uCFEe65x4ncXdz2cHpDHyMhMm9PS9bSVlbX
-         1MiqNxNJsLmcBr+vuc2OfkEbSwvW8LlyWdYOTxSx3aK2g6j/pgAHa39yG8zoukMwy9aB
-         w+JZ9zLjZR7D42At6QyXJXwLah0djhU+C6bmcZmIHu9S49n3u9gp5s0LjtPrHuoNIN/s
-         OSEDKPKcJTJsXojEBMcj/IzyNNkQXtJM8ttqrfDYO2BmB/bmrmNr1oteuV4Tzop4qSfM
-         gMJ9eOQT9IZdSD2WPMtLxPO86cioun3lyLy9xlOblaLkW0Y2o2IixmlhMrGZZCAz7lFo
-         kcZg==
-X-Gm-Message-State: AO0yUKXN7fimCvKE3qSkNaOUPW72hrn5XTQ73W58cbktgStSdswqhzu2
-	/5hmdyN/lruaRicVCWGukbKs5g==
-X-Google-Smtp-Source: AK7set9UDQnyyrcCtYn7eXxYQZekjyMc7aOmhQHbXeN5LP4f214+4CiDgvD4W08V+UsjisQ1AgvMWw==
-X-Received: by 2002:a5d:8406:0:b0:74c:8801:af4b with SMTP id i6-20020a5d8406000000b0074c8801af4bmr177109ion.1.1679438531124;
-        Tue, 21 Mar 2023 15:42:11 -0700 (PDT)
-Received: from [172.22.22.4] ([98.61.227.136])
-        by smtp.googlemail.com with ESMTPSA id p13-20020a6b630d000000b0074c8a021d4csm3905352iog.44.2023.03.21.15.42.10
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 21 Mar 2023 15:42:10 -0700 (PDT)
-Message-ID: <48674d8f-9753-780c-f37c-f83ea2855ae6@ieee.org>
-Date: Tue, 21 Mar 2023 17:42:09 -0500
+        d=1e100.net; s=20210112; t=1679458208;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=NV1Z57AHY4KeJql3suCcAiMBaAS6BKxbUUJYih1DFiI=;
+        b=Abt3pyRLFICnQvSEiU/fD21M1uEiHAichGZyPqP95RpqduZUG74/usSut1HZZcTAzZ
+         p0+hpc57TsBMYwpnjKpDFzk9M8PN3v0M+opI/hPyRRXE6hEpIXUlYTxpwYBdzcnarhQ6
+         RAOHqzwQH0o/uV7Iz4VYKDSLXQWXjYjqQNLxj2pAZn7mhqeJMbx7vEnGUzlmOPdadlxr
+         spq9krXe4b4n2tCR9wadgdGoaEgYKIW7NkJDhrNrWxD8aVdXU0tywmhokJGgO0jaMpUE
+         oEO7pUtyH57oXR2Qz9wR31mnvWUP5KWlPIVBMscAnz6hE/vR7gMHEia5X1U0i/6EaZ0n
+         9U4w==
+X-Gm-Message-State: AO0yUKVX6quJbaBgNn7wYaAnD3Wz/F4XBZKeX9fODDGkqNqFPIDHBuVx
+	eQEgYoSoBm3PUU+ELViMTHFyo4+w/CRAyw==
+X-Google-Smtp-Source: AK7set+j/w0G5vuF7RigZrH4rYPJl8dd20hz+zzscNn/Ai4qRTNyD3krVrZC9apyr8Sd73Np1BUCRw==
+X-Received: by 2002:a17:902:fb47:b0:19e:6700:174 with SMTP id lf7-20020a170902fb4700b0019e67000174mr1388578plb.25.1679458208359;
+        Tue, 21 Mar 2023 21:10:08 -0700 (PDT)
+Received: from sumitra.com ([117.245.171.219])
+        by smtp.gmail.com with ESMTPSA id s18-20020a170902a51200b001a1d5d47105sm4339406plq.53.2023.03.21.21.10.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 21 Mar 2023 21:10:07 -0700 (PDT)
+Date: Tue, 21 Mar 2023 21:10:03 -0700
+From: Sumitra Sharma <sumitraartsy@gmail.com>
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: Bagas Sanjaya <bagasdotme@gmail.com>, outreachy@lists.linux.dev
+Subject: Re: Unable to find module location
+Message-ID: <20230322041003.GA149888@sumitra.com>
+References: <ee140dee-6db9-6d7e-0b84-b69f3c36cc13@gmail.com>
+ <20230319083256.GB50179@sumitra.com>
+ <alpine.DEB.2.22.394.2303190938080.2867@hadrien>
+ <alpine.DEB.2.22.394.2303190956120.2867@hadrien>
+ <20230319121026.GA53959@sumitra.com>
+ <alpine.DEB.2.22.394.2303191336090.2867@hadrien>
+ <20230320084630.GB126429@sumitra.com>
+ <da5bf7f-b8b5-143-8e58-9c1dc4214fad@inria.fr>
+ <20230320095314.GC126429@sumitra.com>
+ <e13532cc-d9da-5090-7731-5d3945d7564c@inria.fr>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.8.0
-Subject: Re: [PATCH v2] staging: greybus: use inline function for macros
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>,
- gregkh@linuxfoundation.org, outreachy@lists.linux.dev, johan@kernel.org,
- elder@kernel.org, linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev
-References: <20230321183456.10385-1-eng.mennamahmoud.mm@gmail.com>
- <2e869677-2693-6419-ea25-f0cc2efcf3dd@ieee.org>
- <alpine.DEB.2.22.394.2303212140480.2919@hadrien>
- <5efa6e6d-8573-31de-639a-d15b2e9deca0@ieee.org>
- <alpine.DEB.2.22.394.2303212218500.2919@hadrien>
-Content-Language: en-US
-From: Alex Elder <elder@ieee.org>
-In-Reply-To: <alpine.DEB.2.22.394.2303212218500.2919@hadrien>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <e13532cc-d9da-5090-7731-5d3945d7564c@inria.fr>
 
-On 3/21/23 4:29 PM, Julia Lawall wrote:
-> There do seem to be more than 100 definitions like:
+On Mon, Mar 20, 2023 at 02:04:30PM +0100, Julia Lawall wrote:
 > 
-> #define to_dove_clk(hw) container_of(hw, struct dove_clk, hw)
 > 
-> where we have to hope that at all of the usage sites the argument is
-> called hw.  Probably anything else would cause a compiler error, but still
-> it looks strange.
+> On Mon, 20 Mar 2023, Sumitra Sharma wrote:
 > 
+> > >>On Mon, 20 Mar 2023, Bagas Sanjaya wrote:
+> >
+> > > On 3/20/23 15:46, Sumitra Sharma wrote:
+> > > > Hi julia,
+> > > >
+> > > > This did worked.
+> > > >
+> > > > But the main issue of creating NVEC_PAZ00 a module using make menuconfig still persist.
+> > > >
+> > >
+> > >> Oh dear, you don't know how to use menuconfig...
+> > >>
+> > >> When you execute `make menuconfig`, you'll be presented with menu when
+> > >> you can choose what config you want to enable. To find the desired config
+> > >> (NVEC_PAZ00 in this case), press `/` and type in the config name. If
+> > >> found, you will see menu location for config symbols that match. Then
+> > >> follow the shown path.
+> >
+> > > Actually, this isn't the issue.  You have to have the ARCH=arm as well.
+> > > Otherwise, / provides instructions, but there is no way to follow them.
+> >
+> > Yes you are correct locating the mocule in menuconfig is my issue. Do you mean 'make menuconfig ARCH=arm'.
+> 
+> I have never tried that order.  make ARCH=arm tegra_defconfig menuconfig
+> should work.  Maybe other options work also.  Arm has a lot of specific
+> configurations.
+>
+
+Hi julia,
+
+This did work. Now everything is working fine.  This thread can be closed.
+Thank you very much.
+
+Regards,
+Sumitra
+
 > julia
-
-Yeah, that's poorly done and unfortunate.  The argument to
-the parameter should be named something different.  I didn't
-understand what you meant before but yes, this isn't good.
-These should be fixed first.
-
-					-Alex
-
+> 
+> >
+> > Sorry for such a long thread. :(
+> >
+> > Regards,
+> > Sumitra
+> >
+> >
+> >
+> >
+> >
