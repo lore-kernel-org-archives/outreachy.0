@@ -1,119 +1,228 @@
-Received: from mail-ed1-f53.google.com (mail-ed1-f53.google.com [209.85.208.53])
+Received: from mail-yb1-f177.google.com (mail-yb1-f177.google.com [209.85.219.177])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6F15CD2E2;
-	Thu, 23 Mar 2023 21:11:10 +0000 (UTC)
-Received: by mail-ed1-f53.google.com with SMTP id h8so362715ede.8;
-        Thu, 23 Mar 2023 14:11:10 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7852AD2E2
+	for <outreachy@lists.linux.dev>; Thu, 23 Mar 2023 21:46:05 +0000 (UTC)
+Received: by mail-yb1-f177.google.com with SMTP id e65so35872ybh.10
+        for <outreachy@lists.linux.dev>; Thu, 23 Mar 2023 14:46:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679605868;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=KmmCdw9M5+J5Kmm/BSbt7uI0C9wsx89ZvFPHESAbpkI=;
-        b=odP/JZc1gb5UHyOibWoevm2Bp4y1bvD670zN20xP9umqA0IJ1VyIajOHH8kfaWxtK7
-         9R7RE+DnxJgmuEQeXsMWSAgUVM5MMoPGCUu1+4Qijy+DQPcvRv8PNuw/CCxe21ijrzr/
-         Yb77TqRaKLOdfDXVgHOGo/lG+RBnIH8fHzKFi8LZEfy107cUHAaGy9R4IBJNu/NIuGYC
-         cp0hws6URqI6DoxuqK4hIa1w2Y+vzy1y8s+AT+m5ur1c1voCaluxMudrLYZZ13vcqInJ
-         AyYfdNJDTsm/eNConQMprgOJRlZrQruuRUaCdRd1ILQcpKNFh9uCrLPZA9oi2p/vXloy
-         SOSw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679605868;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+        d=paul-moore.com; s=google; t=1679607964;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=KmmCdw9M5+J5Kmm/BSbt7uI0C9wsx89ZvFPHESAbpkI=;
-        b=QD7WiII9omgU0da7Nif9exeDa5vJHG9eg/+vWzuvehOr9aMz6sh0MMqOTn8zPK04yI
-         PInwzMOyc0ckQAuCUbfNNudeufpg7HDrVBSlChwv52bskXaWYv0Z/MHkzzoHfghi4WTm
-         hffuM0kGCiyJcKDYtl169oS97lxCRiDDClsds6v//Er3f8geWbrTcpsekkXzCuwaY0m6
-         szzda/g7ORhbmLGYp2KbnN94hxfGODW8HBQ7nlC9aDbMxl3iwS0J5GlBZVNnPjvAb5nQ
-         GBaoW5UGYaXU8AwbyjunITjwwcBgwNpAfLD09+9LvnnUhb6gx38elXRHO5S7AxkcT2o4
-         Tsfw==
-X-Gm-Message-State: AAQBX9eEQPDd2MTmOiLog9vlbKuqzxmE++s9zw1yLyUDY0jOZqutdWdh
-	C9p8e3n+K20Ih4nbgPtZKHU=
-X-Google-Smtp-Source: AKy350YQv0wuqUMzATOVUccjZo3qStRSuukNFSLKJqvpXgB8KjlL66ralMqUgXf/4qgv1nbqs1asDQ==
-X-Received: by 2002:a17:906:9f0b:b0:8f3:9ee9:f1bc with SMTP id fy11-20020a1709069f0b00b008f39ee9f1bcmr485751ejc.13.1679605868465;
-        Thu, 23 Mar 2023 14:11:08 -0700 (PDT)
-Received: from khadija-virtual-machine ([39.41.14.14])
-        by smtp.gmail.com with ESMTPSA id lc5-20020a170906dfe500b0092973e209f2sm9122019ejc.109.2023.03.23.14.11.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 23 Mar 2023 14:11:08 -0700 (PDT)
-Date: Fri, 24 Mar 2023 02:11:05 +0500
-From: Khadija Kamran <kamrankhadijadj@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy@lists.linux.dev,
-	Parthiban Veerasooran <parthiban.veerasooran@microchip.com>,
-	Christian Gromm <christian.gromm@microchip.com>,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] staging: most: fix line ending with '('
-Message-ID: <ZBzAaZTOZrL4BTsM@khadija-virtual-machine>
-References: <ZBsSOlPbaGZcAaSY@khadija-virtual-machine>
- <ZBvbP8ugDFjSoVp/@kroah.com>
- <ZBxtpyT8she++602@khadija-virtual-machine>
- <ZBxwKQdl8CDPqD2L@kroah.com>
+        bh=2hFMFaxnRPAAeL4ZHAZcNtlTUAqV9UnYeS9tD9OiP2Y=;
+        b=BeN0m7JSNIrZ7KaCd9X+iyFR1nkwzYIYsWcV/54YVRakI7Jaluuks0Od7fqyY5jw2+
+         xAcA8Q/+yBfnDabiVfPeS775HpVJxmy6dQHEI2voKFaqjjRIeNn60PkXCGdixl+Imnxr
+         2T3iaf8kfYlDazDmQdzTBPrODGicTzIE5+ZjtJOZgH1gdfiDFM2tlpdWc2Yp79+QuteE
+         p+7wnXPRpFyqnVoEdCwK/4bQRb5E2NeLrcycS5DgNcN1bENfpAID/PQ8M2fI3RKwXMGW
+         UP0qFZwrPKY+Rz4iVbjBtW0wMHiv9Dz9XV8jU03J2w1BiGIB0zAEP5i20fEeCQUPzXIK
+         o17Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679607964;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=2hFMFaxnRPAAeL4ZHAZcNtlTUAqV9UnYeS9tD9OiP2Y=;
+        b=V7hly2PqXQh8+P6XW65fZC3HV3CPFyX47ow7Scug0jMX7aqvkzNAyUQUsxO5C8sK0F
+         XXHsLmqSoSssUKucRIBK7JWrFPVZcIf5rVayUo7u82v9l2E+ovbOhiC6XrNPh4yJkMJa
+         iq6WwqA4ZbqoM9U0w+Pg5zLMw0mngT+R5TxiIpyPLSTYul8tV/kFXoCqrj8DnBITcUyi
+         4Z60yFqQOWM65W2GuOHv4pDMTl4G9cLOyZNNZNlzPryQpK28jq7BeJeGA3ZhgfPIBlZa
+         dcutBmOgXe8CbaNU1/i6opGgE6j5QQE77VXZMhFEFN4Rnr0Cqy3H0v878fjQkiUsJBoi
+         CFSw==
+X-Gm-Message-State: AAQBX9eCURSthNZ4yz2/EoQrT3nEyzGQympSjoKroGiV292INymmpCjH
+	wJ7jVIOedu72X42gszdzWCbjN4nmEPfm2m0zU89NFSOiFyeRtdk9Tw==
+X-Google-Smtp-Source: AKy350YoHpaIeb42W3za9Ci+loisKPqAnxDI0d4xqMZRal10EdwGSfRBCQL2z8RhLCrUADHed7rdForHAXnQyYgbRqI=
+X-Received: by 2002:a05:6902:1889:b0:b69:bf76:2243 with SMTP id
+ cj9-20020a056902188900b00b69bf762243mr61611ybb.3.1679607964187; Thu, 23 Mar
+ 2023 14:46:04 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZBxwKQdl8CDPqD2L@kroah.com>
+References: <ZBy95LDjVu8e0uNi@khadija-virtual-machine>
+In-Reply-To: <ZBy95LDjVu8e0uNi@khadija-virtual-machine>
+From: Paul Moore <paul@paul-moore.com>
+Date: Thu, 23 Mar 2023 17:45:53 -0400
+Message-ID: <CAHC9VhT714u7e5-E6zyWDX-b6jvJbpDefAZQ_bq4-RQ8aLa=KA@mail.gmail.com>
+Subject: Re: CHECK: Macro argument reuse
+To: Khadija Kamran <kamrankhadijadj@gmail.com>
+Cc: outreachy@lists.linux.dev
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-On Thu, Mar 23, 2023 at 04:28:41PM +0100, Greg Kroah-Hartman wrote:
-> On Thu, Mar 23, 2023 at 08:17:59PM +0500, Khadija Kamran wrote:
-> > On Thu, Mar 23, 2023 at 05:53:19AM +0100, Greg Kroah-Hartman wrote:
-> > > On Wed, Mar 22, 2023 at 07:35:38PM +0500, Khadija Kamran wrote:
-> > > > Splitting function header to multiple lines because of 80 characters per
-> > > > line limit, results in ending the function call line with '('.
-> > > > This leads to CHECK reported by checkpatch.pl
-> > > > 
-> > > > Move the first parameter right after the '(' in the function call line.
-> > > > Align the rest of the parameters to the opening parenthesis.
-> > > > 
-> > > > Signed-off-by: Khadija Kamran <kamrankhadijadj@gmail.com>
-> > > > ---
-> > > >  drivers/staging/most/dim2/hal.c | 5 ++---
-> > > >  1 file changed, 2 insertions(+), 3 deletions(-)
-> > > 
-> > > You have 2 patches here with identical subject lines, yet they do
-> > > different things :(
-> > >
-> > > I've dropped all of your pending patches now for the most driver as I'm
-> > > totally confused.  Please resend them all as a proper patch series with
-> > > updated subject lines.
-> > >
-> > 
-> > Hey Greg!
-> > 
-> > I took your message literally and sent a RESEND PATCH. I should've sent
-> > a new version of the patch instead.
-> 
-> What message?
-> 
-> Remember, we get hundreds of patches a day to review and have a short
-> term memory of a squirrel..  make it obvious what is happening when
-> resending or sending a new version, otherwise we are confused.
+On Thu, Mar 23, 2023 at 5:00=E2=80=AFPM Khadija Kamran
+<kamrankhadijadj@gmail.com> wrote:
+> Hey Outreachy Mentors,
 >
+> I am working on the folowing check reported by checkpatch.pl:
+>
+> CHECK: Macro argument reuse 'dir' - possible side-effects?
+> #11: FILE: drivers/staging/greybus/audio_helper.c:11:
+> +#define gbaudio_dapm_for_each_direction(dir) \
+> +       for ((dir) =3D SND_SOC_DAPM_DIR_IN; (dir) <=3D SND_SOC_DAPM_DIR_O=
+UT; \
+> +               (dir)++)
+>
+>
+> I understand that the macro definition has input argument dir and this
+> argument is being used inside the definition. This can cause problems if
+> dir is an expression with side effect.
+>
+> I am trying to re-write this macro as following:
+>
+> #define gbaudio_dapm_for_each_direction(dir) \
+>         do { \
+>                 snd_soc_dapm_direction dir_ =3D (dir); \
+>                 for (; (dir_) <=3D SND_SOC_DAPM_DIR_OUT; \
+>                         (dir_)++) \
+>         } while (0)
+>
+> This causes a new warning saying,
+> WARNING: suspect code indent for conditional statements
+> I am uncertain about whether I am going in the right direction, and I
+> need some guidance to continue.
 
-Okay noted. I apologize for my mistakes.
+Hi Khadija,
 
-Thank you for your time.
+There are a few things worth discussing here, let's start with an easy
+one: line length.  Normally a for-loop has a first line that follows
+this pattern:
 
-> > Would it be okay if I send patch revisions with changed subjects now?
-> 
-> What would you want to see if you were on the recieving end of this
-> patch to know what to do with it?
-> 
+ for (<INIT>; <CONDITIONAL>; <INCREMENT>)
 
-I have sent revisions with an explanation about why the patches are
-being sent again and what changes are made.
+... and while it is sometimes necessary to split a long for-loop line
+across multiple lines, you should split the line as you did, along the
+semi-colons between the INIT, CONDITIONAL, and INCREMENT blocks.
+However, if you can fit everything on one 80 characters-or-less[1]
+line you shouldn't split the for-loop.  If one were to choose a single
+character macro parameter, e.g. 'X', it should be possible to write
+this in a single line, here is a quick untested example:
 
-I hope I am not making any mistakes.
+>>>
+diff --git a/drivers/staging/greybus/audio_helper.c b/drivers/staging/greyb=
+us/au
+dio_helper.c
+index 223987616e07..16860d451285 100644
+--- a/drivers/staging/greybus/audio_helper.c
++++ b/drivers/staging/greybus/audio_helper.c
+@@ -8,9 +8,8 @@
+#include <sound/soc-dapm.h>
+#include "audio_helper.h"
 
-Regards,
-Khadija
+-#define gbaudio_dapm_for_each_direction(dir) \
+-       for ((dir) =3D SND_SOC_DAPM_DIR_IN; (dir) <=3D SND_SOC_DAPM_DIR_OUT=
+; \
+-               (dir)++)
++#define gbaudio_dapm_for_each_direction(X) \
++       for ((X) =3D SND_SOC_DAPM_DIR_IN; (X) <=3D SND_SOC_DAPM_DIR_OUT; (X=
+)++)
 
-> thanks,
-> 
-> greg k-h
+static void gbaudio_dapm_link_dai_widget(struct snd_soc_dapm_widget *dai_w,
+                                        struct snd_soc_card *card)
+>>>
+
+However, line length isn't what likely caused you to start working on
+this macro; the "Macro reuse" warning from scripts/checkpatch.pl was
+the problem.  Looking at the original macro code, I didn't see
+anything obviously wrong so I took a look at the checkpatch.pl tool
+itself to see what it was looking for that caused this warning/check
+notice.  Searching for the "Macro argument reuse" string I saw the
+following code snippet:
+
+>>>
+  my $use_cnt =3D () =3D $tmp_stmt =3D~ /\b$arg\b/g;
+  if ($use_cnt > 1) {
+  CHK("MACRO_ARG_REUSE",
+      "Macro argument reuse '$arg' - possible side-effects?\n" . "$herectx"=
+);
+  }
+>>>
+
+... which basically means that anytime a macro parameter is used
+multiple times in the macro it will cause checkpatch.pl to emit this
+notice.  As long as we carefully review the macro to ensure it is
+correct, we can ignore this checkpatch.pl warning.  While
+checkpatch.pl can be used as a source of code improvement suggestions,
+it is important to note that in many cases checkpatch.pl can, and
+should, be ignored after verifying the code is correct and valid;
+checkpatch.pl is not a perfect tool.
+
+Finally, and perhaps most importantly, the code snippet you shared
+while trying to fix this checkpatch.pl warning has a serious bug which
+I think is worth discussing.  I'm going to copy-and-paste it here for
+easier reference:
+
+> #define gbaudio_dapm_for_each_direction(dir) \
+>         do { \
+>                 snd_soc_dapm_direction dir_ =3D (dir); \
+>                 for (; (dir_) <=3D SND_SOC_DAPM_DIR_OUT; \
+>                         (dir_)++) \
+>         } while (0)
+
+While you are correct in that it is normally considered a good
+practice to wrap preprocessor macros in a do-while loop, especially if
+adding a local variable to the macro, in this particular case it
+breaks the macro.  If we look at the original macro we see that it is
+a single line, the first line of a for-loop:
+
+> #define gbaudio_dapm_for_each_direction(dir) \
+>        for ((dir) =3D SND_SOC_DAPM_DIR_IN; (dir) <=3D SND_SOC_DAPM_DIR_OU=
+T; \
+>                (dir)++)
+
+... and if we look at how it is used in gbaudio_dapm_free_widget() we
+can see how the macro is used as a shortcut, or template, for writing
+a for-loop:
+
+>>>
+static void gbaudio_dapm_free_widget(struct snd_soc_dapm_widget *w)
+{
+
+  /* ... snip ... */
+
+  gbaudio_dapm_for_each_direction(dir) {
+    snd_soc_dapm_widget_for_each_path_safe(w, dir, p, next_p)
+    gbaudio_dapm_free_path(p);
+  }
+
+  /* ... snip ... */
+
+}
+>>>
+
+If we expand this macro we can see how it would behave as a normal for-loop=
+:
+
+>>>
+  for (dir =3D SND_SOC_DAPM_DIR_IN; dir <=3D SND_SOC_DAPM_DIR_OUT; dir++) {
+    snd_soc_dapm_widget_for_each_path_safe(w, dir, p, next_p)
+    gbaudio_dapm_free_path(p);
+  }
+>>>
+
+However, if we wrap the macro in a do-while loop this
+shortcut/template falls apart as the for-loop no longer works.  As an
+exercise, you can do the substitution manually in the code and see
+what it looks like; this is exactly what the preprocessor does, so
+when in doubt you can always do this to double check your macro code.
+While looking at the expanded macro, I think you'll also find that the
+for-loop's initializer block is not handled properly; it's not as
+serious a bug in that it likely won't be flagged by checkpatch.pl or
+the compiler, but it might result in bad behaviors when running and
+will likely be difficult to debug!
+
+I hope this was helpful, but if you have any questions about what I've
+written above don't hesitate to ask.  Good luck!
+
+-Paul
+
+[1] Not too long ago the 80 character line limit was relaxed to 100
+characters, but there are still some subsystem maintainers that still
+enforce an 80 character limit (full disclosure: I'm one of them).
+When in doubt, stick to 80 characters unless you have previous
+experience with the subsystem.
+
+--=20
+paul-moore.com
