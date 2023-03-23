@@ -1,34 +1,25 @@
 Received: from msg-2.mailo.com (msg-2.mailo.com [213.182.54.12])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1656B17CE;
-	Thu, 23 Mar 2023 04:15:39 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 906DB17CE
+	for <outreachy@lists.linux.dev>; Thu, 23 Mar 2023 04:23:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
-	t=1679544921; bh=amePZAswCZxnH0HeDHnJFI+gYZgT7zu0jXMkYntGVqE=;
-	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
-	 MIME-Version:Content-Type:In-Reply-To;
-	b=I23woQEI4sc/sCfZ4ELvool5T+tNHo0ty69z/W+kUdjfs/7NROrQIAC4fMANAAlv+
-	 2X6eXvju2xkd2PtUC/ZLwYJkqNw5TgyDJXXZLfbZJRH40vu+pvjQOb1gOpis/Rvh/i
-	 BdOtEOuPlzxq1wY8WO772T0Wx+Lq5FUAuu4QYHjU=
-Received: by b221-3.in.mailobj.net [192.168.90.23] with ESMTP
+	t=1679545382; bh=6fbHHsBeBc2DQibIRb94fW/s3x2w8vf/h/zav2omqis=;
+	h=X-EA-Auth:Date:From:To:Subject:Message-ID:MIME-Version:
+	 Content-Type;
+	b=gcpW6xDy9Cfjz/fjCDW5iceoRx3Wf14j8NpMxq9TPcjZyrilBPK8+/lmLq2nZmwde
+	 VItPasU+sEddQC4diCXgfxKuwnWjiJbkqKnCUS9jgxsWT6a5bckJLiUuGPJ9mUtvXs
+	 vL0bCgzBUShVNCEwil4V14+NEU9KPhXyU1XX49kk=
+Received: by b221-5.in.mailobj.net [192.168.90.25] with ESMTP
 	via ip-20.mailobj.net [213.182.54.20]
-	Thu, 23 Mar 2023 05:15:21 +0100 (CET)
-X-EA-Auth: MqpSBc+VIot+UUjG5z9STlJgrWHjIBGzlEqbIKY79KgmtCwouDOtNFJrNhCxglWEJd+gf/ccKY2TkkvhxmO0sXsACRkL8WTt
-Date: Thu, 23 Mar 2023 09:44:59 +0530
+	Thu, 23 Mar 2023 05:23:02 +0100 (CET)
+X-EA-Auth: WeroWiXPuX5J2zC1rCrSv8jKCUeeraywSBdGz3wOSySEa9cniMbzda2l80GL6K1krxvBxoNEa73MYHvEU5OVjV5PX4lkcvhl
+Date: Thu, 23 Mar 2023 09:52:43 +0530
 From: Deepak R Varma <drv@mailo.com>
-To: Randy Dunlap <rdunlap@infradead.org>
-Cc: Khadija Kamran <kamrankhadijadj@gmail.com>, outreachy@lists.linux.dev,
-	Parthiban Veerasooran <parthiban.veerasooran@microchip.com>,
-	Christian Gromm <christian.gromm@microchip.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	Andy Whitcroft <apw@canonical.com>, Joe Perches <joe@perches.com>,
-	Dwaipayan Ray <dwaipayanray1@gmail.com>,
-	Lukas Bulwahn <lukas.bulwahn@gmail.com>
-Subject: Re: [PATCH v2] staging: most: fix line ending with '('
-Message-ID: <ZBvSQxgiFffWsoef@ubun2204.myguest.virtualbox.org>
-References: <ZBsYYAc1Ue/JnUAm@khadija-virtual-machine>
- <061a2fea-b3da-551d-f6d2-0da30b0ac879@infradead.org>
+To: outreachy@lists.linux.dev
+Subject: [julia.lawall@inria.fr: [PATCH] xen: remove unnecessary (void*)
+ conversions (fwd)]
+Message-ID: <ZBvUE/js1l0c0gSu@ubun2204.myguest.virtualbox.org>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -37,25 +28,96 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <061a2fea-b3da-551d-f6d2-0da30b0ac879@infradead.org>
 
-On Wed, Mar 22, 2023 at 08:12:23AM -0700, Randy Dunlap wrote:
-> Hi--
-> 
-> And FTR, I still haven't found anything in coding-style.rst that says that
-> lines should not end with an open parenthesis.  Did I overlook it?
+Hi All,
+Just wanted to re-run this useful advise from Julia earlier on some useful
+improvement opportunities.
 
-Hi Randy,
-You are correct. I did not find anything clear or obvious that calls out not
-ending the lines with a '(' symbol. 
-I think the other guideline from the coding style is to align the overrunning
-argument list in the next lines such that they match the arg1 after '('. So, I
-think that may be the reason why checkpatch is coded to catch such lines.
+Thank you Julia for the initial recommendation.
 
-Regards,
 Deepak.
 
-> 
-> Thanks.
+----- Forwarded message from Julia Lawall <julia.lawall@inria.fr> -----
+
+Date: Thu, 16 Mar 2023 09:48:02 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+To: outreachy@lists.linux.dev
+Subject: [PATCH] xen: remove unnecessary (void*) conversions (fwd)
+
+There may be some opportunities for this kind of change in staging.
+
+julia
+
+---------- Forwarded message ----------
+Date: Thu, 16 Mar 2023 16:39:54 +0800
+From: Yu Zhe <yuzhe@nfschina.com>
+To: jgross@suse.com, sstabellini@kernel.org, oleksandr_tyshchenko@epam.com
+Cc: xen-devel@lists.xenproject.org, linux-kernel@vger.kernel.org,
+    kernel-janitors@vger.kernel.org, liqiong@nfschina.com,
+    Yu Zhe <yuzhe@nfschina.com>
+Subject: [PATCH] xen: remove unnecessary (void*) conversions
+
+Pointer variables of void * type do not require type cast.
+
+Signed-off-by: Yu Zhe <yuzhe@nfschina.com>
+---
+ drivers/xen/xenfs/xensyms.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/xen/xenfs/xensyms.c b/drivers/xen/xenfs/xensyms.c
+index c6c73a33c44d..b799bc759c15 100644
+--- a/drivers/xen/xenfs/xensyms.c
++++ b/drivers/xen/xenfs/xensyms.c
+@@ -64,7 +64,7 @@ static int xensyms_next_sym(struct xensyms *xs)
+
+ static void *xensyms_start(struct seq_file *m, loff_t *pos)
+ {
+-	struct xensyms *xs = (struct xensyms *)m->private;
++	struct xensyms *xs = m->private;
+
+ 	xs->op.u.symdata.symnum = *pos;
+
+@@ -76,7 +76,7 @@ static void *xensyms_start(struct seq_file *m, loff_t *pos)
+
+ static void *xensyms_next(struct seq_file *m, void *p, loff_t *pos)
+ {
+-	struct xensyms *xs = (struct xensyms *)m->private;
++	struct xensyms *xs = m->private;
+
+ 	xs->op.u.symdata.symnum = ++(*pos);
+
+@@ -88,7 +88,7 @@ static void *xensyms_next(struct seq_file *m, void *p, loff_t *pos)
+
+ static int xensyms_show(struct seq_file *m, void *p)
+ {
+-	struct xensyms *xs = (struct xensyms *)m->private;
++	struct xensyms *xs = m->private;
+ 	struct xenpf_symdata *symdata = &xs->op.u.symdata;
+
+ 	seq_printf(m, "%016llx %c %s\n", symdata->address,
+@@ -120,7 +120,7 @@ static int xensyms_open(struct inode *inode, struct file *file)
+ 		return ret;
+
+ 	m = file->private_data;
+-	xs = (struct xensyms *)m->private;
++	xs = m->private;
+
+ 	xs->namelen = XEN_KSYM_NAME_LEN + 1;
+ 	xs->name = kzalloc(xs->namelen, GFP_KERNEL);
+@@ -138,7 +138,7 @@ static int xensyms_open(struct inode *inode, struct file *file)
+ static int xensyms_release(struct inode *inode, struct file *file)
+ {
+ 	struct seq_file *m = file->private_data;
+-	struct xensyms *xs = (struct xensyms *)m->private;
++	struct xensyms *xs = m->private;
+
+ 	kfree(xs->name);
+ 	return seq_release_private(inode, file);
+-- 
+2.11.0
+
+
+
+----- End forwarded message -----
 
 
