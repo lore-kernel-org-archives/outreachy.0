@@ -1,85 +1,64 @@
-Received: from mail-ed1-f44.google.com (mail-ed1-f44.google.com [209.85.208.44])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 209EE8F6D;
-	Thu, 23 Mar 2023 12:54:28 +0000 (UTC)
-Received: by mail-ed1-f44.google.com with SMTP id i5so39202268eda.0;
-        Thu, 23 Mar 2023 05:54:27 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 992068F6D;
+	Thu, 23 Mar 2023 13:08:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679576066;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=pX52XM0zRvUzVxvJJ0vn8RkPlcGXAVjIMg1ZZMuVw6A=;
-        b=JNckdacg1naHJJkl0VIq14SjtKjI4d63MZ+jHy+9Ys+WdpkJUXqTaqoNNydpBpFhEI
-         Xlod7+U6dj7DELQWKUnQ2N+WkwmkRpqDybX9hJBYNVi0DwHRjARahW0xHBf8OU2x5Tig
-         SlD4sRcQIIhDGhuRVGY+9cH88H9ZL6j5OdozW6P2eC7YoMo4L7ldxQBneWTrHC42XONL
-         S6hnmIg9+yLDICpPDZfKzISHlpHktiPeV1f/+P21cCgtQgFjXuiKhR8235ZeKVMYFA4H
-         wZcUOgqMwT5ASlVIO0gx7p2V27Fv6bLDYPfsux+iVDqBiW4wGpODd05s+eE7W+mrotGE
-         gydg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679576066;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=pX52XM0zRvUzVxvJJ0vn8RkPlcGXAVjIMg1ZZMuVw6A=;
-        b=KMgE081VgkjqhYaBmWqgyqtlVZLLxQGViiSuGU1jLvDzgjhoKCj/iRZ9H1vFMRmytR
-         4LU6leP1VAZ2bnUFTWwV+flHMJOyy6vcbZPM0evU5+gCBXBQWn/B0+0ROVfCQmu/KqJk
-         9boCGKl5/58RQTAdHuLGIAbSdFrZXx63PdfBrNpE9/fldFSrXYNKbwqPhpsKk+gZT4D4
-         sALq41RMwuKmcjJ0KgTyW43BSH4dq8+klXygw3ZSh3AUmC6eEhElLu3te2nMsgOGnro3
-         /p85W6/Gmq+J5NQ+LgufTfiW+KZq5cY3rChjTiqoW2MEq98El3TnGVNTqeUNBySr3G8U
-         rGYw==
-X-Gm-Message-State: AO0yUKVHO5ibpK3HQpNlftf9+9TB9Ezv1eSnmxXCReTchY7FMggHKnZN
-	br4+c9K55X4kaVYNVrhzTvQ=
-X-Google-Smtp-Source: AK7set9LMVxJwJZSdfFoOY40GVCE/+x+i218n9wj38CKV1SocCzpXyDCtOnuUKGr2eFBVVftW6Cytw==
-X-Received: by 2002:a17:906:a855:b0:931:8e8c:2db5 with SMTP id dx21-20020a170906a85500b009318e8c2db5mr10764233ejb.69.1679576066318;
-        Thu, 23 Mar 2023 05:54:26 -0700 (PDT)
-Received: from khadija-virtual-machine ([39.41.14.14])
-        by smtp.gmail.com with ESMTPSA id z3-20020a170906434300b008d427df3245sm8664896ejm.58.2023.03.23.05.54.25
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 23 Mar 2023 05:54:25 -0700 (PDT)
-Date: Thu, 23 Mar 2023 17:54:23 +0500
-From: Khadija Kamran <kamrankhadijadj@gmail.com>
-To: outreachy@lists.linux.dev
-Cc: Parthiban Veerasooran <parthiban.veerasooran@microchip.com>,
-	Christian Gromm <christian.gromm@microchip.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: [RESEND PATCH] staging: most: fix line ending with '(' in video
-Message-ID: <ZBxL/yqLU1dEQlta@khadija-virtual-machine>
+  d=inria.fr; s=dc;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=asBlhq5zp6DekDtJ5FFTj70qbdpKfhFcBMWsoiFAi2c=;
+  b=IdcJK1YPBpsVbqlvvTt65Dq+cTU+GQPCFYPyHWuv4jVHL8COehNwe3su
+   VEqs5aM3huiK2kyVvsLFB1wdxlcyZSyxCnAPaW19HD9ARKyusSZS3c0fi
+   9FLWrTz+U8bGh7YlTLxJQYEAW0Asps+NXFGA87CeufywS1ktR40jPR9b1
+   k=;
+Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="5.98,283,1673910000"; 
+   d="scan'208";a="51038134"
+Received: from 231.85.89.92.rev.sfr.net (HELO hadrien) ([92.89.85.231])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Mar 2023 14:08:15 +0100
+Date: Thu, 23 Mar 2023 14:08:14 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Khadija Kamran <kamrankhadijadj@gmail.com>
+cc: outreachy@lists.linux.dev, gregkh@linuxfoundation.org, 
+    linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [RESEND PATCH 0/4] staging: rtl8192e: code cleanup patches
+In-Reply-To: <cover.1679573474.git.kamrankhadijadj@gmail.com>
+Message-ID: <alpine.DEB.2.22.394.2303231408000.2866@hadrien>
+References: <cover.1679573474.git.kamrankhadijadj@gmail.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Type: text/plain; charset=US-ASCII
 
-Splitting function header to multiple lines because of 80 characters per
-line limit, results in ending the function call line with '('.
-This leads to CHECK reported by checkpatch.pl
 
-Move the function parameters right after the '(' in the function call
-line.
 
-Signed-off-by: Khadija Kamran <kamrankhadijadj@gmail.com>
----
- drivers/staging/most/video/video.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+On Thu, 23 Mar 2023, Khadija Kamran wrote:
 
-diff --git a/drivers/staging/most/video/video.c b/drivers/staging/most/video/video.c
-index ffa97ef21ea5..6254a5df2502 100644
---- a/drivers/staging/most/video/video.c
-+++ b/drivers/staging/most/video/video.c
-@@ -365,8 +365,7 @@ static const struct video_device comp_videodev_template = {
- 
- /**************************************************************************/
- 
--static struct most_video_dev *get_comp_dev(
--	struct most_interface *iface, int channel_idx)
-+static struct most_video_dev *get_comp_dev(struct most_interface *iface, int channel_idx)
- {
- 	struct most_video_dev *mdev;
- 	unsigned long flags;
--- 
-2.34.1
+> Fix several cleanup issues reported by checkpatch.pl in module
+> staging/rtl8192e in file rtllib_rx.c
 
+Why is it resent?
+
+julia
+
+>
+> Khadija Kamran (4):
+>   staging: rtl8192e: remove extra blank lines
+>   staging: rtl8192e: add blank lines after declarations
+>   staging: rtl8192e: add spaces around binary operators
+>   staging: rtl8192e: remove blank lines after '{'
+>
+>  drivers/staging/rtl8192e/rtllib_rx.c | 73 +++++++++++-----------------
+>  1 file changed, 29 insertions(+), 44 deletions(-)
+>
+> --
+> 2.34.1
+>
+>
+>
