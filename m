@@ -1,127 +1,107 @@
-Received: from mail-yb1-f170.google.com (mail-yb1-f170.google.com [209.85.219.170])
+Received: from mail-pl1-f178.google.com (mail-pl1-f178.google.com [209.85.214.178])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A8E2A5662
-	for <outreachy@lists.linux.dev>; Fri, 24 Mar 2023 13:23:17 +0000 (UTC)
-Received: by mail-yb1-f170.google.com with SMTP id y5so2119541ybu.3
-        for <outreachy@lists.linux.dev>; Fri, 24 Mar 2023 06:23:17 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 660B45688;
+	Fri, 24 Mar 2023 13:50:37 +0000 (UTC)
+Received: by mail-pl1-f178.google.com with SMTP id ix20so1870512plb.3;
+        Fri, 24 Mar 2023 06:50:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=paul-moore.com; s=google; t=1679664196;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=5qGaFfyK0iml9cPtq2KmQMYG/b0CHCZASBDtpll/rWs=;
-        b=dOBylf3grI6q8HTv1BZBY7mVSPVoiIs8jGrriF7/VLVwu70bOmjOAwfPpDWOx0KuFE
-         hGhXJyLNA+mJQDf+seakfLgov4fqLH5S5wm/g+06x2DfvEfWFqhBBt76wFxMlL4cCpIG
-         sLJxF7NcxVqTDKIbi9sL6/wjTR0L6k8iPL7qqhPwygOIA/LnnshgzChpUJnKcWEyRkdF
-         NO8f1ODLlzq2wN9eyOdWEUjlOuGDaApbKZisATzzQKEbmmt/0s80zrHkiqsxsN/OFlJB
-         0ZZ+qZOKj8wvkhFQYldX0vwcR470SRPyib35/W1EuoF2twcUgsV6ifA6NfsQqM3iYBrt
-         4SaA==
+        d=gmail.com; s=20210112; t=1679665837;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=VvvSi+5iA/5tlxMT+sJ3fTetfG9Rc3EXeqwc0N6JACY=;
+        b=HGU+Mr5iduwcW0LXBuS3eQEkIO5IJQSwVMvcdJ/WaosQKCZ3oSqTClH9mss1KtyTYd
+         aYX+8rnsld/vT93zMB7J5un9LvNViWez6IJHSrOFgUrzmYWMYOzTP4Ecv2O/8aDm3Who
+         S5QtlX6e8HCpJZHcHEznl2Tdr5FdwkGemcvlv4GpQLoO4VB6hR+eHtd8jOijahtomA8L
+         4gVaN0eZWNvU31VEc59iYsEBEE8RqzZz16l2aX+Ck2YwyrD8ME40hJgzPaMGB04RUFGh
+         OnZYWR89vcQAKSp2XXzyGtmvDrvDLbt511mhDc/ren0XsWqOueNBHbaySjLynTdvG3Qt
+         jCDQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679664196;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=5qGaFfyK0iml9cPtq2KmQMYG/b0CHCZASBDtpll/rWs=;
-        b=MbSFAkBued4e7Ri0BCnStF3KXHmCyPciBi0MCphXwbkmBXBwNeGX8ktSjBFcE3Jtvm
-         L5qz4emM7hdgXxHqnseJ7kCewqzcRXGMSmeXSgJlsvsACPswS12Ar0JsrVdUuj/LtkTW
-         B20BIxcLapN7lq6rMkXQwxqS8Rtc/gN1bGV1/Q+ZHYjohyLZsK3P6VpJeVW7MqeXiLih
-         3DJaIPb73+I27ZyrjZsafjKnJTCT0ByZu4zBLlh/6y/GRUshTczsInKz4mRpnnUX/GlA
-         l6u+1xPA8QSZUcqw/5chWNgEUgqdSfpQNBJSd8wkKApz/s7YdfzDCqh0ptULYq5RP3fd
-         dcaQ==
-X-Gm-Message-State: AAQBX9f3kNXckRWhtsWdPjQpSIKt5AhzP9ak0PJ+J5yvKUHs4aCoeenm
-	VB/N4GtgmjDuRaUgNfY60YwZgZeNk5FmR1ZlV27Jk4XOq5Y5k45a0A==
-X-Google-Smtp-Source: AKy350YDqXwivEgRrLagICLgUxTWoHL7yJ+aB12p2JtAbyoxabcDlXvcQQj8qEy6vgpzt+bvrMW3JFksKowiWGszSx8=
-X-Received: by 2002:a05:6902:102a:b0:b71:f49f:8d22 with SMTP id
- x10-20020a056902102a00b00b71f49f8d22mr1090061ybt.3.1679664196455; Fri, 24 Mar
- 2023 06:23:16 -0700 (PDT)
+        d=1e100.net; s=20210112; t=1679665837;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=VvvSi+5iA/5tlxMT+sJ3fTetfG9Rc3EXeqwc0N6JACY=;
+        b=sRW4yNNzmGlNjMygPI9cp4SgZZA/ts9n4sy4pG56B5smfzA/w+I5w433Wo+gSeuTD9
+         SNdVhCChrK816JnsXSgZS1Ipj9Sq+K2NIfNut+Pu1USIyNLzFgsP1cBwfOU1ghH9Ay/6
+         5dLz8AWx225g9j/wgHK2A2sIaR39bkcOK/zhUPoQrCI1LiFXCd8TZ8hcZmNj+Y4hSILY
+         DWtEZxTMYh70F+N7Rp5wb9eQyJ+FMBThWG6Cem4olkj4mUZnQOVEdIUys6ucDyWrfNdx
+         IRG+jCOBrQ/lyfNGoSTAh+dT28B1f8bNMRsaiDYAm51Y+AVaOtHMC2eAdLLFkYgXvSe9
+         Aueg==
+X-Gm-Message-State: AAQBX9fp4lHgZE+CXxRBaV6jFy+4vPIT0EqI0jBNcz9xGQDlMXKpVaXJ
+	rHTBhvgECcar/sRaThhNhFQ=
+X-Google-Smtp-Source: AKy350b6pccE3wDumL/D98ou7EvPQyfzKdFleAxUumzuVcfFOxXkHnfFOSwqcBj6zVAhRR8voTlIWQ==
+X-Received: by 2002:a17:902:ecc2:b0:1a1:f95a:2505 with SMTP id a2-20020a170902ecc200b001a1f95a2505mr7886315plh.29.1679665836741;
+        Fri, 24 Mar 2023 06:50:36 -0700 (PDT)
+Received: from debian.me (subs02-180-214-232-20.three.co.id. [180.214.232.20])
+        by smtp.gmail.com with ESMTPSA id iz4-20020a170902ef8400b0019f9fd5c24asm14181006plb.207.2023.03.24.06.50.36
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 24 Mar 2023 06:50:36 -0700 (PDT)
+Received: by debian.me (Postfix, from userid 1000)
+	id 0E7AB106544; Fri, 24 Mar 2023 20:50:32 +0700 (WIB)
+Date: Fri, 24 Mar 2023 20:50:32 +0700
+From: Bagas Sanjaya <bagasdotme@gmail.com>
+To: Khadija Kamran <kamrankhadijadj@gmail.com>, outreachy@lists.linux.dev
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] staging rtl8192u: fix block comments
+Message-ID: <ZB2qqKCHiYwNr5la@debian.me>
+References: <ZB2a5zwYpBZ/6qwU@khadija-virtual-machine>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-References: <ZBy95LDjVu8e0uNi@khadija-virtual-machine> <CAHC9VhT714u7e5-E6zyWDX-b6jvJbpDefAZQ_bq4-RQ8aLa=KA@mail.gmail.com>
- <ZB1o1yCg6voDWDEE@khadija-virtual-machine>
-In-Reply-To: <ZB1o1yCg6voDWDEE@khadija-virtual-machine>
-From: Paul Moore <paul@paul-moore.com>
-Date: Fri, 24 Mar 2023 09:23:05 -0400
-Message-ID: <CAHC9VhQ+tRobVuOn6Pa+N0JLwOX2TAM=zV8MvRcv==sfBcqixA@mail.gmail.com>
-Subject: Re: CHECK: Macro argument reuse
-To: Khadija Kamran <kamrankhadijadj@gmail.com>
-Cc: outreachy@lists.linux.dev
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="BLg0yowj9UD64YiR"
+Content-Disposition: inline
+In-Reply-To: <ZB2a5zwYpBZ/6qwU@khadija-virtual-machine>
+
+
+--BLg0yowj9UD64YiR
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Fri, Mar 24, 2023 at 5:09=E2=80=AFAM Khadija Kamran
-<kamrankhadijadj@gmail.com> wrote:
-> On Thu, Mar 23, 2023 at 05:45:53PM -0400, Paul Moore wrote:
-> > On Thu, Mar 23, 2023 at 5:00=E2=80=AFPM Khadija Kamran
-> > <kamrankhadijadj@gmail.com> wrote:
+On Fri, Mar 24, 2023 at 05:43:19PM +0500, Khadija Kamran wrote:
+> ---*/
+> + * Copyright-c Realtek Semiconductor Corp. All rights reserved.
+> + *
+> + * Module Name:
+> + *	r8192U_dm.c
+> + *
+> + * Abstract:
+> + *	HW dynamic mechanism.
+> + *
+> + * Major Change History:
+> + *	When		Who				What
+> + *	----------	--------------- -------------------------------
+> + *	2008-05-14	amy                     create version 0 porting from wind=
+ows code.
+> + *
 
-...
+Hi,
 
-> > However, line length isn't what likely caused you to start working on
-> > this macro; the "Macro reuse" warning from scripts/checkpatch.pl was
-> > the problem.  Looking at the original macro code, I didn't see
-> > anything obviously wrong so I took a look at the checkpatch.pl tool
-> > itself to see what it was looking for that caused this warning/check
-> > notice.  Searching for the "Macro argument reuse" string I saw the
-> > following code snippet:
-> >
-> > >>>
-> >   my $use_cnt =3D () =3D $tmp_stmt =3D~ /\b$arg\b/g;
-> >   if ($use_cnt > 1) {
-> >   CHK("MACRO_ARG_REUSE",
-> >       "Macro argument reuse '$arg' - possible side-effects?\n" . "$here=
-ctx");
-> >   }
-> > >>>
-> >
-> > ... which basically means that anytime a macro parameter is used
-> > multiple times in the macro it will cause checkpatch.pl to emit this
-> > notice.  As long as we carefully review the macro to ensure it is
-> > correct, we can ignore this checkpatch.pl warning.
->
-> Paul,
-> How can I ensure it is correct? Won't it still cause a problem if we use
-> any argument with side-effect.
+The revision history can also be trimmed (since most developers use git
+to browse file history, leaving the copyright alone and abstract alone.
 
-Julia provided a more thorough explanation, if you haven't read her
-email in this thread, please do.  My advice above was to review the
-macro carefully, and careful review includes examining where and how
-the macro is used, as that can have a significant impact.  If you are
-ever in doubt, do the macro substitution manually and I believe you
-will find the problems much easier to identify.
+For the abstract, what about "Hardware dynamic mechanism for rtl8192u"?
 
-> > While looking at the expanded macro, I think you'll also find that the
-> > for-loop's initializer block is not handled properly; it's not as
-> > serious a bug in that it likely won't be flagged by checkpatch.pl or
-> > the compiler, but it might result in bad behaviors when running and
-> > will likely be difficult to debug!
-> >
->
-> I am sorry, just wanted to confirm, are you talking about this:
->
-> > >                 for (; (dir_) <=3D SND_SOC_DAPM_DIR_OUT; \
-> > >                         (dir_)++) \
-
-Yes, that's correct.  The original macro would have set 'dir_' to
-'SND_SOC_DAPM_DIR_IN' at the start of the for-loop.
-
-> > I hope this was helpful, but if you have any questions about what I've
-> > written above don't hesitate to ask.  Good luck!
-> >
->
-> Thank you for taking your time out to write a detailed explanation.
-> This is great help. :)
-
-I'm happy to hear that.  I think all of us here are able to do what we
-do because people took the time to explain things so we could
-understand; please remember that when you are an experienced developer
-and someone asks you for help ;)
-
-Good luck!
+Thanks.
 
 --=20
-paul-moore.com
+An old man doll... just what I always wanted! - Clara
+
+--BLg0yowj9UD64YiR
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQSSYQ6Cy7oyFNCHrUH2uYlJVVFOowUCZB2qpQAKCRD2uYlJVVFO
+o7mbAQDvkJXMStCNksJ9+t9Mbb0cjKw2rbfqe+ArEHPyV53khwEAkTKJ+b104ZX0
+Fz3KBg7gi+LDhi7dDYNzK6UI/MJ5MQY=
+=Ns+6
+-----END PGP SIGNATURE-----
+
+--BLg0yowj9UD64YiR--
