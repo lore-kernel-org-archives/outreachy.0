@@ -1,258 +1,373 @@
-Received: from mail-wr1-f51.google.com (mail-wr1-f51.google.com [209.85.221.51])
+Received: from mail-wm1-f46.google.com (mail-wm1-f46.google.com [209.85.128.46])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B32CF3C24
-	for <outreachy@lists.linux.dev>; Fri, 24 Mar 2023 09:15:53 +0000 (UTC)
-Received: by mail-wr1-f51.google.com with SMTP id j24so1058123wrd.0
-        for <outreachy@lists.linux.dev>; Fri, 24 Mar 2023 02:15:53 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 504B053BA;
+	Fri, 24 Mar 2023 12:43:24 +0000 (UTC)
+Received: by mail-wm1-f46.google.com with SMTP id v20-20020a05600c471400b003ed8826253aso2934044wmo.0;
+        Fri, 24 Mar 2023 05:43:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679649351;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=br7JlhHi20f7YSj5Yv8t7+oWp5AvHE0vhuN5qArQnIA=;
-        b=El61eoAwoQV0uhCSQkuf4v74cihWB67r998G2HTvBCRgpsvoAPO6ajfxg/gurkaVq2
-         snPWXWH126diXAoLFF+AtX4KnjPqAUSyNSL1Cu/xLKgYTxcx6/yWt+5wnaQT2xwEKEH8
-         FhcPEyJu7qlKdLDD1W9FICXl3+s3a0IoKSXS76XASDMNJOJLnRJoVZheeNX2vFsAwhlT
-         T2fgolYMthwiDN/wmrKtXFNFlJc7yq0n2UniN0aBtW5eGTm1cmw0qB28XHms7cGbm4h3
-         +D1Z4ca4mTPvJgIwY7AHLud00wNhfCbXyjhvnA8i4Cc+L3z40n/WNvNlWwVhaUinRQ2y
-         42cA==
+        d=gmail.com; s=20210112; t=1679661802;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=jx+R4cSW7y9UURB+CoB+AwTATFZegUBRSyHGO9SfPWY=;
+        b=R5ddpEtnFlirjXA+hO6SCY+EHbqcFdy7LtjLBs5y8AgnvedkqhyUpjkW2uZ57wF0vx
+         +5OswKlSslDkE9EPuXl5ynZn+CAV8LTYSnsSmvML1o6RkDrl8/+pNyjlQp1uql4ovmiQ
+         LONyQFkTeZJNAVeO9NEcYtgSJTjCrFWBwDZABUU4qwjrCeduH0m+5XlAUezL6SbuGVu9
+         jm2ftNEcnRhNXerZzv2PByU+4l5iuBgINOyxzdb3oRW2oI++d2XY/e1HbNV/r6X/JIBg
+         g1/JMLSl8Oo88LdtqLz646SRqfMSGMZWRg+bXDO9Y1rPQglMz2up7wTG1Bl5RrBKb7aK
+         YvCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679649351;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
+        d=1e100.net; s=20210112; t=1679661802;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=br7JlhHi20f7YSj5Yv8t7+oWp5AvHE0vhuN5qArQnIA=;
-        b=VOh0npfYhCb8X449Ka/+WSgtNM66SzkeLkrKPeE+i0xZAq91RReLZ9Or7KjpumBTIk
-         HQnXchkLeP1mZa6xV7k3mwi40RnF/ZB44SNQsCybWxLeFOmL0oEfKCpWD1YnjfHYuhVI
-         wiRnBZyyqFpgqLLNYGj/vaEUa4+hd2Orx3OExYgCyPFNIQmFCiPd/a2jLoHmOvyR5Sgu
-         Fx+30mnpTPs7eMCtQfWduJYrE5nOGsz9Qmwr0JLjwY4rJrd3ZqsoUYY0+iYx5v65wYQW
-         6tAbtA+MZE9Tcf/+qyb4qfqA4Ckw12bsiC9KPVeq9t19XNEXKg74TxtTmnJV0iEJSOCx
-         Nhgg==
-X-Gm-Message-State: AAQBX9cB+fh49W5Paq0OMqWyoXc2etXUBsyzTJgVN+XCyCFXRllzeOnc
-	BkZNJ27kkrs+G7DoaYVnmLQSvUwoqK96vMJa
-X-Google-Smtp-Source: AKy350YtNSYsCjQ1EuUedU2R5NnSp87wvTOIZMCa7gwRGSZD8oTBl8B92LNDbIQN60cgjVrq3XV4+w==
-X-Received: by 2002:adf:ed43:0:b0:2d1:ac83:d94f with SMTP id u3-20020adfed43000000b002d1ac83d94fmr1593375wro.55.1679649351635;
-        Fri, 24 Mar 2023 02:15:51 -0700 (PDT)
+        bh=jx+R4cSW7y9UURB+CoB+AwTATFZegUBRSyHGO9SfPWY=;
+        b=IZ5QQrNP36HVrPpcVMmf5nfBf6LBhtkuVTxvhqu4aJMYIGUYkikZBa6egoJkLUp8tM
+         XuKgph0S5JZdDG7kmTCAXRu8zuxoYz7FZQxi/DIZhcUCcnjBKcYXsXB6nBK2lFO62vm3
+         EQAZrWZr7IL06XwCDZqyk9jO8/z17y23cDSFPSn+SoYmGpCMkVBS3Nnupom81qyONQhU
+         jtrylZq2uC1IUKPE91ryQNASVzpyy+HicBLuhMzH+jX6BrwRb3hX91Wftdq2jp0Psw5p
+         vQBDG+tMfSnF+AB3ljaEFvrGGUx3rflOXL00SdaRZmgdXt92S6PjCh+98iTFQRO9CT8V
+         7YOw==
+X-Gm-Message-State: AO0yUKVhwNud5FETw0r8x6fAdpVUf0ogWPnWdq0rXsJVLzGcevJoYp+f
+	VmRBEsdh8S5dtTszRfQqCps=
+X-Google-Smtp-Source: AK7set+lJWlJuj0RAKZS/+SXz/+/CLrX36wfEkvCIoJIHg6J/OiWz6c60aIHEYZOHgJP6rmyuUam8Q==
+X-Received: by 2002:a05:600c:280e:b0:3ed:551b:b78f with SMTP id m14-20020a05600c280e00b003ed551bb78fmr2299989wmb.4.1679661802192;
+        Fri, 24 Mar 2023 05:43:22 -0700 (PDT)
 Received: from khadija-virtual-machine ([39.41.14.14])
-        by smtp.gmail.com with ESMTPSA id v7-20020a5d4b07000000b002c56af32e8csm17872169wrq.35.2023.03.24.02.15.50
+        by smtp.gmail.com with ESMTPSA id p4-20020a05600c204400b003ee4e99a8f6sm4771446wmg.33.2023.03.24.05.43.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 24 Mar 2023 02:15:51 -0700 (PDT)
-Date: Fri, 24 Mar 2023 14:15:48 +0500
+        Fri, 24 Mar 2023 05:43:21 -0700 (PDT)
+Date: Fri, 24 Mar 2023 17:43:19 +0500
 From: Khadija Kamran <kamrankhadijadj@gmail.com>
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: Paul Moore <paul@paul-moore.com>, outreachy@lists.linux.dev
-Subject: Re: CHECK: Macro argument reuse
-Message-ID: <ZB1qRMbsRoqeqsih@khadija-virtual-machine>
-References: <ZBy95LDjVu8e0uNi@khadija-virtual-machine>
- <CAHC9VhT714u7e5-E6zyWDX-b6jvJbpDefAZQ_bq4-RQ8aLa=KA@mail.gmail.com>
- <edd8ca3e-43bf-473e-9496-9f94771f3568@inria.fr>
+To: outreachy@lists.linux.dev
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: [PATCH] staging rtl8192u: fix block comments
+Message-ID: <ZB2a5zwYpBZ/6qwU@khadija-virtual-machine>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <edd8ca3e-43bf-473e-9496-9f94771f3568@inria.fr>
 
-On Fri, Mar 24, 2023 at 09:26:56AM +0100, Julia Lawall wrote:
-> 
-> 
-> On Thu, 23 Mar 2023, Paul Moore wrote:
-> 
-> > On Thu, Mar 23, 2023 at 5:00 PM Khadija Kamran
-> > <kamrankhadijadj@gmail.com> wrote:
-> > > Hey Outreachy Mentors,
-> > >
-> > > I am working on the folowing check reported by checkpatch.pl:
-> > >
-> > > CHECK: Macro argument reuse 'dir' - possible side-effects?
-> > > #11: FILE: drivers/staging/greybus/audio_helper.c:11:
-> > > +#define gbaudio_dapm_for_each_direction(dir) \
-> > > +       for ((dir) = SND_SOC_DAPM_DIR_IN; (dir) <= SND_SOC_DAPM_DIR_OUT; \
-> > > +               (dir)++)
-> > >
-> > >
-> > > I understand that the macro definition has input argument dir and this
-> > > argument is being used inside the definition. This can cause problems if
-> > > dir is an expression with side effect.
-> > >
-> > > I am trying to re-write this macro as following:
-> > >
-> > > #define gbaudio_dapm_for_each_direction(dir) \
-> > >         do { \
-> > >                 snd_soc_dapm_direction dir_ = (dir); \
-> > >                 for (; (dir_) <= SND_SOC_DAPM_DIR_OUT; \
-> > >                         (dir_)++) \
-> > >         } while (0)
-> > >
-> > > This causes a new warning saying,
-> > > WARNING: suspect code indent for conditional statements
-> > > I am uncertain about whether I am going in the right direction, and I
-> > > need some guidance to continue.
-> >
-> > Hi Khadija,
-> >
-> > There are a few things worth discussing here, let's start with an easy
-> > one: line length.  Normally a for-loop has a first line that follows
-> > this pattern:
-> >
-> >  for (<INIT>; <CONDITIONAL>; <INCREMENT>)
-> >
-> > ... and while it is sometimes necessary to split a long for-loop line
-> > across multiple lines, you should split the line as you did, along the
-> > semi-colons between the INIT, CONDITIONAL, and INCREMENT blocks.
-> > However, if you can fit everything on one 80 characters-or-less[1]
-> > line you shouldn't split the for-loop.  If one were to choose a single
-> > character macro parameter, e.g. 'X', it should be possible to write
-> > this in a single line, here is a quick untested example:
-> >
-> > >>>
-> > diff --git a/drivers/staging/greybus/audio_helper.c b/drivers/staging/greybus/au
-> > dio_helper.c
-> > index 223987616e07..16860d451285 100644
-> > --- a/drivers/staging/greybus/audio_helper.c
-> > +++ b/drivers/staging/greybus/audio_helper.c
-> > @@ -8,9 +8,8 @@
-> > #include <sound/soc-dapm.h>
-> > #include "audio_helper.h"
-> >
-> > -#define gbaudio_dapm_for_each_direction(dir) \
-> > -       for ((dir) = SND_SOC_DAPM_DIR_IN; (dir) <= SND_SOC_DAPM_DIR_OUT; \
-> > -               (dir)++)
-> > +#define gbaudio_dapm_for_each_direction(X) \
-> > +       for ((X) = SND_SOC_DAPM_DIR_IN; (X) <= SND_SOC_DAPM_DIR_OUT; (X)++)
-> >
-> > static void gbaudio_dapm_link_dai_widget(struct snd_soc_dapm_widget *dai_w,
-> >                                         struct snd_soc_card *card)
-> > >>>
-> >
-> > However, line length isn't what likely caused you to start working on
-> > this macro; the "Macro reuse" warning from scripts/checkpatch.pl was
-> > the problem.  Looking at the original macro code, I didn't see
-> > anything obviously wrong so I took a look at the checkpatch.pl tool
-> > itself to see what it was looking for that caused this warning/check
-> > notice.  Searching for the "Macro argument reuse" string I saw the
-> > following code snippet:
-> >
-> > >>>
-> >   my $use_cnt = () = $tmp_stmt =~ /\b$arg\b/g;
-> >   if ($use_cnt > 1) {
-> >   CHK("MACRO_ARG_REUSE",
-> >       "Macro argument reuse '$arg' - possible side-effects?\n" . "$herectx");
-> >   }
-> > >>>
-> >
-> > ... which basically means that anytime a macro parameter is used
-> > multiple times in the macro it will cause checkpatch.pl to emit this
-> > notice.  As long as we carefully review the macro to ensure it is
-> > correct, we can ignore this checkpatch.pl warning.  While
-> > checkpatch.pl can be used as a source of code improvement suggestions,
-> > it is important to note that in many cases checkpatch.pl can, and
-> > should, be ignored after verifying the code is correct and valid;
-> > checkpatch.pl is not a perfect tool.
-> 
-> The explanation seems not completely clear.  The point is that the
-> parameter of the macro is used as the left side of an assignment.  Often
-> the left side of an assignment is just a variable that would not have any
-> side effects, like x in x = 3.  But there is nothing that forces that.  For
-> example the left side of an assignment could be a[foo()] where each call to
-> foo() would have some side effects (print something, update some variables,
-> etc).  To check for such concerns, you would have to look at the places
-> where the macro is used, not the definition.
-> 
-> julia
->
+Linux kernel coding style for block comments uses a column of '*' on the
+left side and ends the comment with '*/' on a separate line.
 
-Hey Julia,
+Fix block comments by adding '*' on subsequent lines and moving '*/' at
+the end of block comments on a separate line. These issues in block
+comments are reported by checkpatch.pl script.
 
-So everytime this CHECK is reported, instead of changing the macro
-definition, it is better to check that wherever the macro is used, it
-should not be passed an argument with side-effects?
+Signed-off-by: Khadija Kamran <kamrankhadijadj@gmail.com>
+---
+ drivers/staging/rtl8192u/r8192U_dm.c | 162 ++++++++++++++-------------
+ 1 file changed, 86 insertions(+), 76 deletions(-)
 
-Regards,
-Khadija
-
-> 
-> >
-> > Finally, and perhaps most importantly, the code snippet you shared
-> > while trying to fix this checkpatch.pl warning has a serious bug which
-> > I think is worth discussing.  I'm going to copy-and-paste it here for
-> > easier reference:
-> >
-> > > #define gbaudio_dapm_for_each_direction(dir) \
-> > >         do { \
-> > >                 snd_soc_dapm_direction dir_ = (dir); \
-> > >                 for (; (dir_) <= SND_SOC_DAPM_DIR_OUT; \
-> > >                         (dir_)++) \
-> > >         } while (0)
-> >
-> > While you are correct in that it is normally considered a good
-> > practice to wrap preprocessor macros in a do-while loop, especially if
-> > adding a local variable to the macro, in this particular case it
-> > breaks the macro.  If we look at the original macro we see that it is
-> > a single line, the first line of a for-loop:
-> >
-> > > #define gbaudio_dapm_for_each_direction(dir) \
-> > >        for ((dir) = SND_SOC_DAPM_DIR_IN; (dir) <= SND_SOC_DAPM_DIR_OUT; \
-> > >                (dir)++)
-> >
-> > ... and if we look at how it is used in gbaudio_dapm_free_widget() we
-> > can see how the macro is used as a shortcut, or template, for writing
-> > a for-loop:
-> >
-> > >>>
-> > static void gbaudio_dapm_free_widget(struct snd_soc_dapm_widget *w)
-> > {
-> >
-> >   /* ... snip ... */
-> >
-> >   gbaudio_dapm_for_each_direction(dir) {
-> >     snd_soc_dapm_widget_for_each_path_safe(w, dir, p, next_p)
-> >     gbaudio_dapm_free_path(p);
-> >   }
-> >
-> >   /* ... snip ... */
-> >
-> > }
-> > >>>
-> >
-> > If we expand this macro we can see how it would behave as a normal for-loop:
-> >
-> > >>>
-> >   for (dir = SND_SOC_DAPM_DIR_IN; dir <= SND_SOC_DAPM_DIR_OUT; dir++) {
-> >     snd_soc_dapm_widget_for_each_path_safe(w, dir, p, next_p)
-> >     gbaudio_dapm_free_path(p);
-> >   }
-> > >>>
-> >
-> > However, if we wrap the macro in a do-while loop this
-> > shortcut/template falls apart as the for-loop no longer works.  As an
-> > exercise, you can do the substitution manually in the code and see
-> > what it looks like; this is exactly what the preprocessor does, so
-> > when in doubt you can always do this to double check your macro code.
-> > While looking at the expanded macro, I think you'll also find that the
-> > for-loop's initializer block is not handled properly; it's not as
-> > serious a bug in that it likely won't be flagged by checkpatch.pl or
-> > the compiler, but it might result in bad behaviors when running and
-> > will likely be difficult to debug!
-> >
-> > I hope this was helpful, but if you have any questions about what I've
-> > written above don't hesitate to ask.  Good luck!
-> >
-> > -Paul
-> >
-> > [1] Not too long ago the 80 character line limit was relaxed to 100
-> > characters, but there are still some subsystem maintainers that still
-> > enforce an 80 character limit (full disclosure: I'm one of them).
-> > When in doubt, stick to 80 characters unless you have previous
-> > experience with the subsystem.
-> >
-> > --
-> > paul-moore.com
-> >
-> >
+diff --git a/drivers/staging/rtl8192u/r8192U_dm.c b/drivers/staging/rtl8192u/r8192U_dm.c
+index 6a33ca02c3dc..a88686be3523 100644
+--- a/drivers/staging/rtl8192u/r8192U_dm.c
++++ b/drivers/staging/rtl8192u/r8192U_dm.c
+@@ -1,19 +1,20 @@
+ // SPDX-License-Identifier: GPL-2.0
+ /*++
+-Copyright-c Realtek Semiconductor Corp. All rights reserved.
+-
+-Module Name:
+-	r8192U_dm.c
+-
+-Abstract:
+-	HW dynamic mechanism.
+-
+-Major Change History:
+-	When		Who				What
+-	----------	--------------- -------------------------------
+-	2008-05-14	amy                     create version 0 porting from windows code.
+-
+---*/
++ * Copyright-c Realtek Semiconductor Corp. All rights reserved.
++ *
++ * Module Name:
++ *	r8192U_dm.c
++ *
++ * Abstract:
++ *	HW dynamic mechanism.
++ *
++ * Major Change History:
++ *	When		Who				What
++ *	----------	--------------- -------------------------------
++ *	2008-05-14	amy                     create version 0 porting from windows code.
++ *
++ *--
++ */
+ #include "r8192U.h"
+ #include "r8192U_dm.h"
+ #include "r8192U_hw.h"
+@@ -147,20 +148,20 @@ void dm_CheckRxAggregation(struct net_device *dev)
+ 	unsigned long		curRxOkCnt = 0;
+ 
+ /*
+-	if (pHalData->bForcedUsbRxAggr) {
+-		if (pHalData->ForcedUsbRxAggrInfo == 0) {
+-			if (pHalData->bCurrentRxAggrEnable) {
+-				Adapter->HalFunc.HalUsbRxAggrHandler(Adapter, FALSE);
+-			}
+-		} else {
+-			if (!pHalData->bCurrentRxAggrEnable || (pHalData->ForcedUsbRxAggrInfo != pHalData->LastUsbRxAggrInfoSetting)) {
+-				Adapter->HalFunc.HalUsbRxAggrHandler(Adapter, TRUE);
+-			}
+-		}
+-		return;
+-	}
+-
+-*/
++ *	if (pHalData->bForcedUsbRxAggr) {
++ *		if (pHalData->ForcedUsbRxAggrInfo == 0) {
++ *			if (pHalData->bCurrentRxAggrEnable) {
++ *				Adapter->HalFunc.HalUsbRxAggrHandler(Adapter, FALSE);
++ *			}
++ *		} else {
++ *			if (!pHalData->bCurrentRxAggrEnable || (pHalData->ForcedUsbRxAggrInfo != pHalData->LastUsbRxAggrInfoSetting)) {
++ *				Adapter->HalFunc.HalUsbRxAggrHandler(Adapter, TRUE);
++ *			}
++ *		}
++ *		return;
++ *	}
++ *
++ */
+ 	curTxOkCnt = priv->stats.txbytesunicast - lastTxOkCnt;
+ 	curRxOkCnt = priv->stats.rxbytesunicast - lastRxOkCnt;
+ 
+@@ -279,7 +280,8 @@ void init_rate_adaptive(struct net_device *dev)
+  *	When		Who		Remark
+  *	05/26/08	amy	Create version 0 porting from windows code.
+  *
+- *---------------------------------------------------------------------------*/
++ *---------------------------------------------------------------------------
++ */
+ static void dm_check_rate_adaptive(struct net_device *dev)
+ {
+ 	struct r8192_priv *priv = ieee80211_priv(dev);
+@@ -377,8 +379,9 @@ static void dm_check_rate_adaptive(struct net_device *dev)
+ 					targetRATR = pra->ping_rssi_ratr;
+ 					ping_rssi_state = 1;
+ 				}
+-				/*else
+-					DbgPrint("TestRSSI is between the range.\n");*/
++				/* else
++				 *	DbgPrint("TestRSSI is between the range.\n");
++				 */
+ 			} else {
+ 				/*DbgPrint("TestRSSI Recover to 0x%x\n", targetRATR);*/
+ 				ping_rssi_state = 0;
+@@ -719,9 +722,10 @@ static void dm_TXPowerTrackingCallback_ThermalMeter(struct net_device *dev)
+ 		}
+ 		tmpCCK40Mindex = 0;
+ 	}
+-	/*DbgPrint("%ddb, tmpOFDMindex = %d, tmpCCK20Mindex = %d, tmpCCK40Mindex = %d",
+-		((u1Byte)tmpRegA - pHalData->ThermalMeter[0]),
+-		tmpOFDMindex, tmpCCK20Mindex, tmpCCK40Mindex);*/
++	/* DbgPrint("%ddb, tmpOFDMindex = %d, tmpCCK20Mindex = %d, tmpCCK40Mindex = %d",
++	 *	((u1Byte)tmpRegA - pHalData->ThermalMeter[0]),
++	 *	tmpOFDMindex, tmpCCK20Mindex, tmpCCK40Mindex);
++	 */
+ 	if (priv->CurrentChannelBW != HT_CHANNEL_WIDTH_20)	/* 40M */
+ 		tmpCCKindex = tmpCCK40Mindex;
+ 	else
+@@ -1594,7 +1598,8 @@ static void dm_bb_initialgain_backup(struct net_device *dev)
+  *	When		Who		Remark
+  *	05/15/2008	amy		Create Version 0 porting from windows code.
+  *
+- *---------------------------------------------------------------------------*/
++ *---------------------------------------------------------------------------
++ */
+ static void dm_dig_init(struct net_device *dev)
+ {
+ 	struct r8192_priv *priv = ieee80211_priv(dev);
+@@ -1638,7 +1643,8 @@ static void dm_dig_init(struct net_device *dev)
+  * Revised History:
+  *	When		Who		Remark
+  *	05/27/2008	amy		Create Version 0 porting from windows code.
+- *---------------------------------------------------------------------------*/
++ *---------------------------------------------------------------------------
++ */
+ static void dm_ctrl_initgain_byrssi(struct net_device *dev)
+ {
+ 	if (!dm_digtable.dig_enable_flag)
+@@ -1680,8 +1686,9 @@ static void dm_ctrl_initgain_byrssi_by_driverrssi(
+ 	else
+ 		dm_digtable.cur_connect_state = DIG_DISCONNECT;
+ 
+-	/*DbgPrint("DM_DigTable.PreConnectState = %d, DM_DigTable.CurConnectState = %d\n",
+-		DM_DigTable.PreConnectState, DM_DigTable.CurConnectState);*/
++	/* DbgPrint("DM_DigTable.PreConnectState = %d, DM_DigTable.CurConnectState = %d\n",
++	 *	DM_DigTable.PreConnectState, DM_DigTable.CurConnectState);
++	 */
+ 
+ 	dm_digtable.rssi_val = priv->undecorated_smoothed_pwdb;
+ 	/*DbgPrint("DM_DigTable.Rssi_val = %d\n", DM_DigTable.Rssi_val);*/
+@@ -1720,12 +1727,12 @@ static void dm_ctrl_initgain_byrssi_by_fwfalse_alarm(
+ 	    (priv->undecorated_smoothed_pwdb < dm_digtable.rssi_high_thresh))
+ 		return;
+ 
+-	/*DbgPrint("Dig by Fw False Alarm\n");*/
+-	/*if (DM_DigTable.Dig_State == DM_STA_DIG_OFF)*/
+-	/*DbgPrint("DIG Check\n\r RSSI=%d LOW=%d HIGH=%d STATE=%d",
+-	pHalData->UndecoratedSmoothedPWDB, DM_DigTable.RssiLowThresh,
+-	DM_DigTable.RssiHighThresh, DM_DigTable.Dig_State);*/
+-	/* 1. When RSSI decrease, We have to judge if it is smaller than a threshold
++	/* DbgPrint("Dig by Fw False Alarm\n");
++	 * if (DM_DigTable.Dig_State == DM_STA_DIG_OFF)
++	 * DbgPrint("DIG Check\n\r RSSI=%d LOW=%d HIGH=%d STATE=%d",
++	 * pHalData->UndecoratedSmoothedPWDB, DM_DigTable.RssiLowThresh,
++	 * DM_DigTable.RssiHighThresh, DM_DigTable.Dig_State);
++	 * 1. When RSSI decrease, We have to judge if it is smaller than a threshold
+ 	 * and then execute the step below.
+ 	 */
+ 	if (priv->undecorated_smoothed_pwdb <= dm_digtable.rssi_low_thresh) {
+@@ -1757,12 +1764,12 @@ static void dm_ctrl_initgain_byrssi_by_fwfalse_alarm(
+ 			 * 2008/02/05 MH SD3-Jerry 92U/92E PD_TH are the same.
+ 			 */
+ 			write_nic_byte(dev, (rOFDM0_XATxAFE+3), 0x00);
+-			/*else if (priv->card_8192 == HARDWARE_TYPE_RTL8190P)
+-				write_nic_byte(pAdapter, rOFDM0_RxDetector1, 0x40);
+-			else if (pAdapter->HardwareType == HARDWARE_TYPE_RTL8192E)
+-			else
+-				PlatformEFIOWrite1Byte(pAdapter, rOFDM0_RxDetector1, 0x40);
+-			*/
++			/* else if (priv->card_8192 == HARDWARE_TYPE_RTL8190P)
++			 *	write_nic_byte(pAdapter, rOFDM0_RxDetector1, 0x40);
++			 * else if (pAdapter->HardwareType == HARDWARE_TYPE_RTL8192E)
++			 * else
++			 *	PlatformEFIOWrite1Byte(pAdapter, rOFDM0_RxDetector1, 0x40);
++			 */
+ 		} else
+ 			write_nic_byte(dev, rOFDM0_RxDetector1, 0x42);
+ 
+@@ -1814,13 +1821,12 @@ static void dm_ctrl_initgain_byrssi_by_fwfalse_alarm(
+ 			 * 2008/02/05 MH SD3-Jerry 92U/92E PD_TH are the same.
+ 			 */
+ 			write_nic_byte(dev, (rOFDM0_XATxAFE+3), 0x20);
+-			/*
+-			else if (priv->card_8192 == HARDWARE_TYPE_RTL8190P)
+-				write_nic_byte(dev, rOFDM0_RxDetector1, 0x42);
+-			else if (pAdapter->HardwareType == HARDWARE_TYPE_RTL8192E)
+-			else
+-				PlatformEFIOWrite1Byte(pAdapter, rOFDM0_RxDetector1, 0x42);
+-			*/
++			/* else if (priv->card_8192 == HARDWARE_TYPE_RTL8190P)
++			 *	write_nic_byte(dev, rOFDM0_RxDetector1, 0x42);
++			 * else if (pAdapter->HardwareType == HARDWARE_TYPE_RTL8192E)
++			 * else
++			 *	PlatformEFIOWrite1Byte(pAdapter, rOFDM0_RxDetector1, 0x42);
++			 */
+ 		} else
+ 			write_nic_byte(dev, rOFDM0_RxDetector1, 0x44);
+ 
+@@ -1855,7 +1861,8 @@ static void dm_ctrl_initgain_byrssi_by_fwfalse_alarm(
+  *	When		Who		Remark
+  *	05/28/2008	amy		Create Version 0 porting from windows code.
+  *
+- *---------------------------------------------------------------------------*/
++ *---------------------------------------------------------------------------
++ */
+ static void dm_ctrl_initgain_byrssi_highpwr(
+ 	struct net_device *dev)
+ {
+@@ -1882,9 +1889,9 @@ static void dm_ctrl_initgain_byrssi_highpwr(
+ 		if (priv->CurrentChannelBW != HT_CHANNEL_WIDTH_20) {
+ 			write_nic_byte(dev, (rOFDM0_XATxAFE+3), 0x10);
+ 
+-			/*else if (priv->card_8192 == HARDWARE_TYPE_RTL8190P)
+-				write_nic_byte(dev, rOFDM0_RxDetector1, 0x41);
+-			*/
++			/* else if (priv->card_8192 == HARDWARE_TYPE_RTL8190P)
++			 *	write_nic_byte(dev, rOFDM0_RxDetector1, 0x41);
++			 */
+ 
+ 		} else
+ 			write_nic_byte(dev, rOFDM0_RxDetector1, 0x43);
+@@ -1899,9 +1906,9 @@ static void dm_ctrl_initgain_byrssi_highpwr(
+ 			/*  3.2 Recover PD_TH for OFDM for normal power region. */
+ 			if (priv->CurrentChannelBW != HT_CHANNEL_WIDTH_20) {
+ 				write_nic_byte(dev, (rOFDM0_XATxAFE+3), 0x20);
+-				/*else if (priv->card_8192 == HARDWARE_TYPE_RTL8190P)
+-					write_nic_byte(dev, rOFDM0_RxDetector1, 0x42);
+-				*/
++				/* else if (priv->card_8192 == HARDWARE_TYPE_RTL8190P)
++				 *	write_nic_byte(dev, rOFDM0_RxDetector1, 0x42);
++				 */
+ 
+ 			} else
+ 				write_nic_byte(dev, rOFDM0_RxDetector1, 0x44);
+@@ -2020,9 +2027,9 @@ static void dm_pd_th(
+ 					 * 2008/02/05 MH SD3-Jerry 92U/92E PD_TH are the same.
+ 					 */
+ 					write_nic_byte(dev, (rOFDM0_XATxAFE+3), 0x00);
+-					/*else if (priv->card_8192 == HARDWARE_TYPE_RTL8190P)
+-						write_nic_byte(dev, rOFDM0_RxDetector1, 0x40);
+-					*/
++					/* else if (priv->card_8192 == HARDWARE_TYPE_RTL8190P)
++					 *	write_nic_byte(dev, rOFDM0_RxDetector1, 0x40);
++					 */
+ 				} else
+ 					write_nic_byte(dev, rOFDM0_RxDetector1, 0x42);
+ 			} else if (dm_digtable.curpd_thstate == DIG_PD_AT_NORMAL_POWER) {
+@@ -2032,18 +2039,18 @@ static void dm_pd_th(
+ 					 * 2008/02/05 MH SD3-Jerry 92U/92E PD_TH are the same.
+ 					 */
+ 					write_nic_byte(dev, (rOFDM0_XATxAFE+3), 0x20);
+-					/*else if (priv->card_8192 == HARDWARE_TYPE_RTL8190P)
+-						write_nic_byte(dev, rOFDM0_RxDetector1, 0x42);
+-					*/
++					/* else if (priv->card_8192 == HARDWARE_TYPE_RTL8190P)
++					 *	write_nic_byte(dev, rOFDM0_RxDetector1, 0x42);
++					 */
+ 				} else
+ 					write_nic_byte(dev, rOFDM0_RxDetector1, 0x44);
+ 			} else if (dm_digtable.curpd_thstate == DIG_PD_AT_HIGH_POWER) {
+ 				/* Higher PD_TH for OFDM for high power state. */
+ 				if (priv->CurrentChannelBW != HT_CHANNEL_WIDTH_20) {
+ 					write_nic_byte(dev, (rOFDM0_XATxAFE+3), 0x10);
+-					/*else if (priv->card_8192 == HARDWARE_TYPE_RTL8190P)
+-						write_nic_byte(dev, rOFDM0_RxDetector1, 0x41);
+-					*/
++					/* else if (priv->card_8192 == HARDWARE_TYPE_RTL8190P)
++					 *	write_nic_byte(dev, rOFDM0_RxDetector1, 0x41);
++					 */
+ 				} else
+ 					write_nic_byte(dev, rOFDM0_RxDetector1, 0x43);
+ 			}
+@@ -2274,7 +2281,8 @@ static void dm_ctstoself(struct net_device *dev)
+  *	When		Who		Remark
+  *	05/28/2008	amy	Create Version 0 porting from windows code.
+  *
+- *---------------------------------------------------------------------------*/
++ *---------------------------------------------------------------------------
++ */
+ static	void	dm_check_pbc_gpio(struct net_device *dev)
+ {
+ 	struct r8192_priv *priv = ieee80211_priv(dev);
+@@ -2308,7 +2316,8 @@ static	void	dm_check_pbc_gpio(struct net_device *dev)
+  *	When		Who		Remark
+  *	01/30/2008	MHC		Create Version 0.
+  *
+- *---------------------------------------------------------------------------*/
++ *---------------------------------------------------------------------------
++ */
+ void dm_rf_pathcheck_workitemcallback(struct work_struct *work)
+ {
+ 	struct delayed_work *dwork = to_delayed_work(work);
+@@ -2557,7 +2566,8 @@ static void dm_rxpath_sel_byrssi(struct net_device *dev)
+  *	When		Who		Remark
+  *	05/28/2008	amy		Create Version 0 porting from windows code.
+  *
+- *---------------------------------------------------------------------------*/
++ *---------------------------------------------------------------------------
++ */
+ static void dm_check_rx_path_selection(struct net_device *dev)
+ {
+ 	struct r8192_priv *priv = ieee80211_priv(dev);
+-- 
+2.34.1
 
