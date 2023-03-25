@@ -1,150 +1,74 @@
-Received: from mail-wr1-f50.google.com (mail-wr1-f50.google.com [209.85.221.50])
+Received: from mail-wr1-f44.google.com (mail-wr1-f44.google.com [209.85.221.44])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DE4D920EE
-	for <outreachy@lists.linux.dev>; Sat, 25 Mar 2023 09:47:33 +0000 (UTC)
-Received: by mail-wr1-f50.google.com with SMTP id i9so3984189wrp.3
-        for <outreachy@lists.linux.dev>; Sat, 25 Mar 2023 02:47:33 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 328BA2574;
+	Sat, 25 Mar 2023 12:13:24 +0000 (UTC)
+Received: by mail-wr1-f44.google.com with SMTP id e18so4182879wra.9;
+        Sat, 25 Mar 2023 05:13:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679737652;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=PwiCL9QONnS/YaXgobfUfJBdvKub8srt8FVkgOT+P5M=;
-        b=DO4uekY4dXSFwUrKuHP4zUEhQjRAObhuEEqhLBletNzxhHtD0q0yuYMWw5Z2uoIh51
-         P256V4d57xbKtAOF4+hg6Ks4dPEEQv2G5FRVYGXnOwr69o8GJEvBK4jnksG5LNwRF2vl
-         RJgZOAUSzuG1oGe33uk8vzglNL78LzL78PCPYY1ZEMIfecHZwWpvuaiuzLssZXIMEXg1
-         gLbObb97uYhnt/riRb1P6qjVwX/omZNqRoOE2ag4J6MBmez3rfrAfCbH+Rr51LOXONB2
-         fvxa6nlFSAHOkifzggUwUsQDQTw0r2ikVK0zFU9CcHVbhTdh8SCmWRNJMPPK9abjR9NC
-         1n/Q==
+        d=gmail.com; s=20210112; t=1679746402;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=ioX1KgKROFiDWyqlsJs6XqlB2RrAlll5N2zukuaEs8k=;
+        b=XJPwToHJkrPaj0nwPt2SyRVtFB7FXDH/Z3auEPO+Khwe0rEKQcCueB+nayuCztsgCA
+         +KQuHvXruHkxtxhVBDozej0ZHpELqK81gVgsSCTFmkU4jHPDtz43nsx3LDeVy945pG3/
+         q5zt0E+RDieYgCgvsXMKcB3QdKrDgGlH33J54m7L/g2SfPAi572ZdhDue23MgGeWlH4P
+         rImFNc0OHQ3mr28VGhm0TCkcH1jOdof2rP9kQzP8MrIQVS9Gv99JMhEYDTS84OoNrdUl
+         yG487ffsbhBWK8HBiYQO+kJnieLpcl3owxnLSSm7n0IDDsyg9GKibN4habR4uhEjAYDw
+         IgmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679737652;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=PwiCL9QONnS/YaXgobfUfJBdvKub8srt8FVkgOT+P5M=;
-        b=mlcdcwmcg+FWpJBoeQSavLadwpM5Nv1fqVxXmxjugb7wn/wyBFzuTFVW/L36bIex1g
-         CQ986x63+kdai6272FT1pGxDAFVyymwB7VYacJkL6lePTY6d2PcQ9jTW4TbAbJMApiQr
-         HwqQu7lavcYnIj1O9uemSS42qy6LkiHLZo9TuFDC33oYXaeo+mV+BUbwUYCdwacCjmAQ
-         3aUD59JYdhyhD37cIDSCc/OcL4DSML8Yc2yyE3urGkCvoQhYiOv3TzsSsPzB579vfthj
-         1NXoIVTZ7JfxHIF8W2wheGwZu3Y95M07ysgGB1/AGwec3XuQLGIALdMT0j3enHJOmsGj
-         3tFA==
-X-Gm-Message-State: AAQBX9cIr4hLB3TLvKXwPkxHpO3WCuwsE+wrCgPP8DQc/o8daycTJYOF
-	6USH/ytXXDqGE1HIBgAUIsRHuDObmJOMQw==
-X-Google-Smtp-Source: AKy350adNd02/OnMr5B+IFS3LL39XnGVp6uLrxUoOmb81fbMrE0LhnVfrQsCJ5Cvu+o2g3gW/tqRNg==
-X-Received: by 2002:a5d:4dcd:0:b0:2bf:f735:1310 with SMTP id f13-20020a5d4dcd000000b002bff7351310mr4705723wru.2.1679737651675;
-        Sat, 25 Mar 2023 02:47:31 -0700 (PDT)
-Received: from khadija-virtual-machine ([39.41.14.14])
-        by smtp.gmail.com with ESMTPSA id e15-20020a5d65cf000000b002de9a0b0a20sm750910wrw.113.2023.03.25.02.47.30
+        d=1e100.net; s=20210112; t=1679746402;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=ioX1KgKROFiDWyqlsJs6XqlB2RrAlll5N2zukuaEs8k=;
+        b=igbM63UDKSwJjGMA1i+aUbr5upsQCymMEfymfBEi4PSh+RZkn5fz1PgQljvKmlIBJN
+         v6hQFI9jXPhUf/G1ylAb6gTFPYOjMW+Gwsqi0TxKxIk2Ngz4IHIT4+H0e0XyTy7Ijwog
+         mQumbY+SdjHESNOysY1oMA/SrblckrEz/3NMWihvLi0aa1hPYEpDojOMh9wAtkA/urFH
+         Q1lm0q/88eO28s+Iz5SfLPLhZPN68RZKBrM+VKuVHCsKmbTLKb0kKTFgBnQzQ5dKdP6J
+         jCTCXCkUOh3sqAL9FTHqcy0TXo5518SqQ8eyh4BJIe08EeCd41FBidj1naJVt4IlX+P/
+         pT1Q==
+X-Gm-Message-State: AAQBX9fs4KpssF01Q5EFwx8rye8M0baIP4/0qAUhsmax4rhnpZfhjlpH
+	IUNTsU43M7IKx/1LcNVISEEaYc5RP8UTFA==
+X-Google-Smtp-Source: AKy350a2jpGdQ3Z51auHp3Gn/TpH4pAwCSuQc9o1Km/85xtDChsyfUsE2XLnWZKHa4h7BAMCM/Od1A==
+X-Received: by 2002:a05:6000:1206:b0:2ce:a8e9:bb3d with SMTP id e6-20020a056000120600b002cea8e9bb3dmr5177954wrx.4.1679746401969;
+        Sat, 25 Mar 2023 05:13:21 -0700 (PDT)
+Received: from khadija-virtual-machine.localdomain ([39.41.14.14])
+        by smtp.gmail.com with ESMTPSA id c10-20020adffb0a000000b002c70c99db74sm20504791wrr.86.2023.03.25.05.13.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 25 Mar 2023 02:47:31 -0700 (PDT)
-Date: Sat, 25 Mar 2023 14:47:29 +0500
+        Sat, 25 Mar 2023 05:13:21 -0700 (PDT)
 From: Khadija Kamran <kamrankhadijadj@gmail.com>
-To: Paul Moore <paul@paul-moore.com>
-Cc: outreachy@lists.linux.dev
-Subject: Re: CHECK: Macro argument reuse
-Message-ID: <ZB7DMa9zTOGfyI7B@khadija-virtual-machine>
-References: <ZBy95LDjVu8e0uNi@khadija-virtual-machine>
- <CAHC9VhT714u7e5-E6zyWDX-b6jvJbpDefAZQ_bq4-RQ8aLa=KA@mail.gmail.com>
- <ZB1o1yCg6voDWDEE@khadija-virtual-machine>
- <CAHC9VhQ+tRobVuOn6Pa+N0JLwOX2TAM=zV8MvRcv==sfBcqixA@mail.gmail.com>
+To: outreachy@lists.linux.dev
+Cc: gregkh@linuxfoundation.org,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH 0/3] staging: rtl8192u: clean up comments in r8192U_dm.c
+Date: Sat, 25 Mar 2023 17:13:15 +0500
+Message-Id: <cover.1679744684.git.kamrankhadijadj@gmail.com>
+X-Mailer: git-send-email 2.34.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAHC9VhQ+tRobVuOn6Pa+N0JLwOX2TAM=zV8MvRcv==sfBcqixA@mail.gmail.com>
 
-On Fri, Mar 24, 2023 at 09:23:05AM -0400, Paul Moore wrote:
-> On Fri, Mar 24, 2023 at 5:09 AM Khadija Kamran
-> <kamrankhadijadj@gmail.com> wrote:
-> > On Thu, Mar 23, 2023 at 05:45:53PM -0400, Paul Moore wrote:
-> > > On Thu, Mar 23, 2023 at 5:00 PM Khadija Kamran
-> > > <kamrankhadijadj@gmail.com> wrote:
-> 
-> ...
-> 
-> > > However, line length isn't what likely caused you to start working on
-> > > this macro; the "Macro reuse" warning from scripts/checkpatch.pl was
-> > > the problem.  Looking at the original macro code, I didn't see
-> > > anything obviously wrong so I took a look at the checkpatch.pl tool
-> > > itself to see what it was looking for that caused this warning/check
-> > > notice.  Searching for the "Macro argument reuse" string I saw the
-> > > following code snippet:
-> > >
-> > > >>>
-> > >   my $use_cnt = () = $tmp_stmt =~ /\b$arg\b/g;
-> > >   if ($use_cnt > 1) {
-> > >   CHK("MACRO_ARG_REUSE",
-> > >       "Macro argument reuse '$arg' - possible side-effects?\n" . "$herectx");
-> > >   }
-> > > >>>
-> > >
-> > > ... which basically means that anytime a macro parameter is used
-> > > multiple times in the macro it will cause checkpatch.pl to emit this
-> > > notice.  As long as we carefully review the macro to ensure it is
-> > > correct, we can ignore this checkpatch.pl warning.
-> >
-> > Paul,
-> > How can I ensure it is correct? Won't it still cause a problem if we use
-> > any argument with side-effect.
-> 
-> Julia provided a more thorough explanation, if you haven't read her
-> email in this thread, please do.  My advice above was to review the
-> macro carefully, and careful review includes examining where and how
-> the macro is used, as that can have a significant impact.  If you are
-> ever in doubt, do the macro substitution manually and I believe you
-> will find the problems much easier to identify.
->
+Clean up several comments in file r8192U_dm.c
 
-Hey Paul,
+Reviewer feedback on a previous patch suggested additional cleanup
+comments. Link to the previous patch:
+https://lore.kernel.org/outreachy/ZB2a5zwYpBZ%2F6qwU@khadija-virtual-machine/
 
-Okay, I understand.
-Thank you.
 
-> > > While looking at the expanded macro, I think you'll also find that the
-> > > for-loop's initializer block is not handled properly; it's not as
-> > > serious a bug in that it likely won't be flagged by checkpatch.pl or
-> > > the compiler, but it might result in bad behaviors when running and
-> > > will likely be difficult to debug!
-> > >
-> >
-> > I am sorry, just wanted to confirm, are you talking about this:
-> >
-> > > >                 for (; (dir_) <= SND_SOC_DAPM_DIR_OUT; \
-> > > >                         (dir_)++) \
-> 
-> Yes, that's correct.  The original macro would have set 'dir_' to
-> 'SND_SOC_DAPM_DIR_IN' at the start of the for-loop.
-> 
+Khadija Kamran (3):
+  staging: rtl8192u: reformat block comments
+  staging: rtl8192u: remove change history from comments
+  staging: rtl8192u: remove code from comments
 
-Okay understood.
+ drivers/staging/rtl8192u/r8192U_dm.c | 199 ++++-----------------------
+ 1 file changed, 25 insertions(+), 174 deletions(-)
 
-> > > I hope this was helpful, but if you have any questions about what I've
-> > > written above don't hesitate to ask.  Good luck!
-> > >
-> >
-> > Thank you for taking your time out to write a detailed explanation.
-> > This is great help. :)
-> 
-> I'm happy to hear that.  I think all of us here are able to do what we
-> do because people took the time to explain things so we could
-> understand; please remember that when you are an experienced developer
-> and someone asks you for help ;)
->
+-- 
+2.34.1
 
-I will always keep it in mind. :")
-
-Thank you Paul :)
-
-Regards,
-Khadija
-
-> Good luck!
-> 
-> -- 
-> paul-moore.com
