@@ -1,242 +1,150 @@
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-wr1-f50.google.com (mail-wr1-f50.google.com [209.85.221.50])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 639D71FA4;
-	Sat, 25 Mar 2023 09:29:07 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DE4D920EE
+	for <outreachy@lists.linux.dev>; Sat, 25 Mar 2023 09:47:33 +0000 (UTC)
+Received: by mail-wr1-f50.google.com with SMTP id i9so3984189wrp.3
+        for <outreachy@lists.linux.dev>; Sat, 25 Mar 2023 02:47:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=yRk/ApQWm/ArcYvgFX2+C9zNPXO/rwgU6YDyXi/+Frs=;
-  b=c/Mpa9+u7LZgntI+gaA0py9BhDZqeIKC6OzTKuwUb1jM2dV+/MDtkfyZ
-   bH+41G7ByuU93uhOEAkAsLtYhOVSli0gX5pZlqWKf/9yN2G4hvwEwNzWW
-   orxSIQ1dYgeu34kJ99WFtbXwAIuGZvw/Sb+sJ9Gr1BHkhwnKP7aemBYRK
-   c=;
-Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="5.98,290,1673910000"; 
-   d="scan'208";a="51220213"
-Received: from 231.85.89.92.rev.sfr.net (HELO hadrien) ([92.89.85.231])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Mar 2023 10:28:58 +0100
-Date: Sat, 25 Mar 2023 10:28:58 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Greg KH <gregkh@linuxfoundation.org>
-cc: Alex Elder <elder@ieee.org>, Menna Mahmoud <eng.mennamahmoud.mm@gmail.com>, 
-    outreachy@lists.linux.dev, johan@kernel.org, elder@kernel.org, 
-    linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev
-Subject: Re: [PATCH v2] staging: greybus: use inline function for macros
-In-Reply-To: <ZB61rbl68LfGCosV@kroah.com>
-Message-ID: <alpine.DEB.2.22.394.2303251025330.2833@hadrien>
-References: <20230321183456.10385-1-eng.mennamahmoud.mm@gmail.com> <2e869677-2693-6419-ea25-f0cc2efcf3dd@ieee.org> <alpine.DEB.2.22.394.2303212140480.2919@hadrien> <5efa6e6d-8573-31de-639a-d15b2e9deca0@ieee.org> <alpine.DEB.2.22.394.2303212218500.2919@hadrien>
- <48674d8f-9753-780c-f37c-f83ea2855ae6@ieee.org> <eabacc6f-c7fb-ff33-26d1-271537fb4760@inria.fr> <ZBvcWkpMJnxea78L@kroah.com> <alpine.DEB.2.22.394.2303230807130.2866@hadrien> <ZB61rbl68LfGCosV@kroah.com>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+        d=gmail.com; s=20210112; t=1679737652;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=PwiCL9QONnS/YaXgobfUfJBdvKub8srt8FVkgOT+P5M=;
+        b=DO4uekY4dXSFwUrKuHP4zUEhQjRAObhuEEqhLBletNzxhHtD0q0yuYMWw5Z2uoIh51
+         P256V4d57xbKtAOF4+hg6Ks4dPEEQv2G5FRVYGXnOwr69o8GJEvBK4jnksG5LNwRF2vl
+         RJgZOAUSzuG1oGe33uk8vzglNL78LzL78PCPYY1ZEMIfecHZwWpvuaiuzLssZXIMEXg1
+         gLbObb97uYhnt/riRb1P6qjVwX/omZNqRoOE2ag4J6MBmez3rfrAfCbH+Rr51LOXONB2
+         fvxa6nlFSAHOkifzggUwUsQDQTw0r2ikVK0zFU9CcHVbhTdh8SCmWRNJMPPK9abjR9NC
+         1n/Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1679737652;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=PwiCL9QONnS/YaXgobfUfJBdvKub8srt8FVkgOT+P5M=;
+        b=mlcdcwmcg+FWpJBoeQSavLadwpM5Nv1fqVxXmxjugb7wn/wyBFzuTFVW/L36bIex1g
+         CQ986x63+kdai6272FT1pGxDAFVyymwB7VYacJkL6lePTY6d2PcQ9jTW4TbAbJMApiQr
+         HwqQu7lavcYnIj1O9uemSS42qy6LkiHLZo9TuFDC33oYXaeo+mV+BUbwUYCdwacCjmAQ
+         3aUD59JYdhyhD37cIDSCc/OcL4DSML8Yc2yyE3urGkCvoQhYiOv3TzsSsPzB579vfthj
+         1NXoIVTZ7JfxHIF8W2wheGwZu3Y95M07ysgGB1/AGwec3XuQLGIALdMT0j3enHJOmsGj
+         3tFA==
+X-Gm-Message-State: AAQBX9cIr4hLB3TLvKXwPkxHpO3WCuwsE+wrCgPP8DQc/o8daycTJYOF
+	6USH/ytXXDqGE1HIBgAUIsRHuDObmJOMQw==
+X-Google-Smtp-Source: AKy350adNd02/OnMr5B+IFS3LL39XnGVp6uLrxUoOmb81fbMrE0LhnVfrQsCJ5Cvu+o2g3gW/tqRNg==
+X-Received: by 2002:a5d:4dcd:0:b0:2bf:f735:1310 with SMTP id f13-20020a5d4dcd000000b002bff7351310mr4705723wru.2.1679737651675;
+        Sat, 25 Mar 2023 02:47:31 -0700 (PDT)
+Received: from khadija-virtual-machine ([39.41.14.14])
+        by smtp.gmail.com with ESMTPSA id e15-20020a5d65cf000000b002de9a0b0a20sm750910wrw.113.2023.03.25.02.47.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 25 Mar 2023 02:47:31 -0700 (PDT)
+Date: Sat, 25 Mar 2023 14:47:29 +0500
+From: Khadija Kamran <kamrankhadijadj@gmail.com>
+To: Paul Moore <paul@paul-moore.com>
+Cc: outreachy@lists.linux.dev
+Subject: Re: CHECK: Macro argument reuse
+Message-ID: <ZB7DMa9zTOGfyI7B@khadija-virtual-machine>
+References: <ZBy95LDjVu8e0uNi@khadija-virtual-machine>
+ <CAHC9VhT714u7e5-E6zyWDX-b6jvJbpDefAZQ_bq4-RQ8aLa=KA@mail.gmail.com>
+ <ZB1o1yCg6voDWDEE@khadija-virtual-machine>
+ <CAHC9VhQ+tRobVuOn6Pa+N0JLwOX2TAM=zV8MvRcv==sfBcqixA@mail.gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAHC9VhQ+tRobVuOn6Pa+N0JLwOX2TAM=zV8MvRcv==sfBcqixA@mail.gmail.com>
 
-
-
-On Sat, 25 Mar 2023, Greg KH wrote:
-
-> On Thu, Mar 23, 2023 at 10:52:35AM +0100, Julia Lawall wrote:
-> >
-> >
-> > On Thu, 23 Mar 2023, Greg KH wrote:
-> >
-> > > On Wed, Mar 22, 2023 at 11:00:41AM +0100, Julia Lawall wrote:
-> > > > Greg raised the question of whether the inline function is really as
-> > > > efficient as a macro.
-> > > >
-> > > > I tried the following definitions:
-> > > >
-> > > > #define to_gbphy_dev(d) container_of(d, struct gbphy_device, dev)
-> > > >
-> > > > static inline struct gbphy_device *extra_to_gbphy_dev(const struct device *_dev)
-> > > > {
-> > > >        return container_of(_dev, struct gbphy_device, dev);
-> > > > }
-> > > >
-> > > > And the following uses:
-> > > >
-> > > > ssize_t macro_protocol_id_show(struct device *dev,
-> > > >                                 struct device_attribute *attr, char *buf)
-> > > > {
-> > > >         struct gbphy_device *gbphy_dev = to_gbphy_dev(dev);
-> > > >
-> > > >         return sprintf(buf, "%c macro 0x%02x\n", *buf, gbphy_dev->cport_desc->protocol_id);
-> > > > }
-> > > > ssize_t extra_protocol_id_show(struct device *dev,
-> > > > 				struct device_attribute *attr, char *buf)
-> > > > {
-> > > >         struct gbphy_device *gbphy_dev = extra_to_gbphy_dev(dev);
-> > > >
-> > > >         return sprintf(buf, "extra 0x%02x %c\n", gbphy_dev->cport_desc->protocol_id, *buf);
-> > > > }
-> > > >
-> > > > They are a little bit different to avoid too much compiler optimization.
-> > > >
-> > > > After doing make drivers/staging/greybus/gbphy.s, I get similar looking
-> > > > code in both cases:
-> > > >
-> > > > Macro version:
-> > > >
-> > > >         .type   macro_protocol_id_show, @function
-> > > > macro_protocol_id_show:
-> > > >         endbr64
-> > > > 1:      call    __fentry__
-> > > >         .section __mcount_loc, "a",@progbits
-> > > >         .quad 1b
-> > > >         .previous
-> > > >         pushq   %rbp    #
-> > > >         movq    %rdx, %rbp      # tmp96, buf
-> > > >         pushq   %rbx    #
-> > > > # drivers/staging/greybus/gbphy.c:40: {
-> > > >         movq    %rdi, %rbx      # tmp95, dev
-> > > > # drivers/staging/greybus/gbphy.c:43:   return sprintf(buf, "%c macro 0x%02x\n", *buf, gbphy_dev->cport_desc->protocol_id);
-> > > >         call    __sanitizer_cov_trace_pc        #
-> > > > # drivers/staging/greybus/gbphy.c:43:   return sprintf(buf, "%c macro 0x%02x\n", *buf, gbphy_dev->cport_desc->protocol_id);
-> > > >         movq    -32(%rbx), %rax # MEM[(struct gbphy_device *)dev_7(D) + -40B].cport_desc, MEM[(struct gbphy_device *)dev_7(D) + -40B].cport_desc
-> > > > # drivers/staging/greybus/gbphy.c:43:   return sprintf(buf, "%c macro 0x%02x\n", *buf, gbphy_dev->cport_desc->protocol_id);
-> > > >         movzbl  0(%rbp), %edx   # *buf_9(D), *buf_9(D)
-> > > >         movq    %rbp, %rdi      # buf,
-> > > >         movq    $.LC18, %rsi    #,
-> > > >         movzbl  3(%rax), %ecx   # _1->protocol_id, _1->protocol_id
-> > > >         call    sprintf #
-> > > > # drivers/staging/greybus/gbphy.c:44: }
-> > > >         movl    $13, %eax       #,
-> > > >         popq    %rbx    #
-> > > >         popq    %rbp    #
-> > > >         jmp     __x86_return_thunk
-> > > >         .size   macro_protocol_id_show, .-macro_protocol_id_show
-> > > >
-> > > > Function version:
-> > > >
-> > > >         .type   extra_protocol_id_show, @function
-> > > > extra_protocol_id_show:
-> > > >         endbr64
-> > > > 1:      call    __fentry__
-> > > >         .section __mcount_loc, "a",@progbits
-> > > >         .quad 1b
-> > > >         .previous
-> > > >         pushq   %rbp    #
-> > > >         movq    %rdx, %rbp      # tmp96, buf
-> > > >         pushq   %rbx    #
-> > > > # drivers/staging/greybus/gbphy.c:47: {
-> > > >         movq    %rdi, %rbx      # tmp95, dev
-> > > > # drivers/staging/greybus/gbphy.c:50:   return sprintf(buf, "extra 0x%02x %c\n", gbphy_dev->cport_desc->protocol_id, *buf);
-> > > >         call    __sanitizer_cov_trace_pc        #
-> > > > # drivers/staging/greybus/gbphy.c:50:   return sprintf(buf, "extra 0x%02x %c\n", gbphy_dev->cport_desc->protocol_id, *buf);
-> > > >         movq    -32(%rbx), %rax # MEM[(struct gbphy_device *)dev_8(D) + -40B].cport_desc, MEM[(struct gbphy_device *)dev_8(D) + -40B].cport_desc
-> > > > # drivers/staging/greybus/gbphy.c:50:   return sprintf(buf, "extra 0x%02x %c\n", gbphy_dev->cport_desc->protocol_id, *buf);
-> > > >         movzbl  0(%rbp), %ecx   # *buf_9(D), *buf_9(D)
-> > > >         movq    %rbp, %rdi      # buf,
-> > > >         movq    $.LC19, %rsi    #,
-> > > >         movzbl  3(%rax), %edx   # _3->protocol_id, _3->protocol_id
-> > > >         call    sprintf #
-> > > > # drivers/staging/greybus/gbphy.c:51: }
-> > > >         movl    $13, %eax       #,
-> > > >         popq    %rbx    #
-> > > >         popq    %rbp    #
-> > > >         jmp     __x86_return_thunk
-> > > >         .size   extra_protocol_id_show, .-extra_protocol_id_show
-> > > >
-> > > > Both seem to access the memory directly.  Maybe the example is too simple,
-> > > > and the compiler is more likely to optimize aggressively?
+On Fri, Mar 24, 2023 at 09:23:05AM -0400, Paul Moore wrote:
+> On Fri, Mar 24, 2023 at 5:09 AM Khadija Kamran
+> <kamrankhadijadj@gmail.com> wrote:
+> > On Thu, Mar 23, 2023 at 05:45:53PM -0400, Paul Moore wrote:
+> > > On Thu, Mar 23, 2023 at 5:00 PM Khadija Kamran
+> > > <kamrankhadijadj@gmail.com> wrote:
+> 
+> ...
+> 
+> > > However, line length isn't what likely caused you to start working on
+> > > this macro; the "Macro reuse" warning from scripts/checkpatch.pl was
+> > > the problem.  Looking at the original macro code, I didn't see
+> > > anything obviously wrong so I took a look at the checkpatch.pl tool
+> > > itself to see what it was looking for that caused this warning/check
+> > > notice.  Searching for the "Macro argument reuse" string I saw the
+> > > following code snippet:
 > > >
-> > > Nice, that shows that it is the same both ways as the compiler version
-> > > you are using is smart enough
+> > > >>>
+> > >   my $use_cnt = () = $tmp_stmt =~ /\b$arg\b/g;
+> > >   if ($use_cnt > 1) {
+> > >   CHK("MACRO_ARG_REUSE",
+> > >       "Macro argument reuse '$arg' - possible side-effects?\n" . "$herectx");
+> > >   }
+> > > >>>
 > > >
-> > > Which compiler and version is this?  Does it work the same for all of
-> > > the supported versions we have to support (i.e. really old gcc?)
+> > > ... which basically means that anytime a macro parameter is used
+> > > multiple times in the macro it will cause checkpatch.pl to emit this
+> > > notice.  As long as we carefully review the macro to ensure it is
+> > > correct, we can ignore this checkpatch.pl warning.
 > >
-> > gcc (Ubuntu 9.4.0-1ubuntu1~20.04.1) 9.4.0
+> > Paul,
+> > How can I ensure it is correct? Won't it still cause a problem if we use
+> > any argument with side-effect.
+> 
+> Julia provided a more thorough explanation, if you haven't read her
+> email in this thread, please do.  My advice above was to review the
+> macro carefully, and careful review includes examining where and how
+> the macro is used, as that can have a significant impact.  If you are
+> ever in doubt, do the macro substitution manually and I believe you
+> will find the problems much easier to identify.
+>
+
+Hey Paul,
+
+Okay, I understand.
+Thank you.
+
+> > > While looking at the expanded macro, I think you'll also find that the
+> > > for-loop's initializer block is not handled properly; it's not as
+> > > serious a bug in that it likely won't be flagged by checkpatch.pl or
+> > > the compiler, but it might result in bad behaviors when running and
+> > > will likely be difficult to debug!
+> > >
 > >
-> > I got a similar result for gcc-5:
+> > I am sorry, just wanted to confirm, are you talking about this:
 > >
-> > macro_protocol_id_show:
-> > 1:      call    __fentry__
-> >         .section __mcount_loc, "a",@progbits
-> >         .quad 1b
-> >         .previous
-> >         movq    %rdx, %rax      # buf, buf
-> >         movq    -32(%rdi), %rdx # MEM[(struct gbphy_device *)dev_1(D) + -40B].cport_desc, MEM[(struct gbphy_device *)dev_1(D) + -40B].cport_desc
-> >         movq    $.LC19, %rsi    #,
-> >         movq    %rax, %rdi      # buf,
-> >         movzbl  3(%rdx), %ecx   # _3->protocol_id, D.44996
-> >         movzbl  (%rax), %edx    # *buf_6(D), D.44996
-> >         call    sprintf #
-> >         cltq
-> >         jmp     __x86_return_thunk
-> >         .size   macro_protocol_id_show, .-macro_protocol_id_show
-> >         .section        .text.unlikely
-> > .LCOLDE20:
-> >         .text
-> > .LHOTE20:
-> >         .section        .rodata.str1.1
-> > .LC21:
-> >         .string "extra 0x%02x %c\n"
-> >         .section        .text.unlikely
-> > .LCOLDB22:
-> >         .text
-> > .LHOTB22:
-> >         .p2align 6,,63
-> >         .globl  extra_protocol_id_show
-> >         .type   extra_protocol_id_show, @function
-> > extra_protocol_id_show:
-> > 1:      call    __fentry__
-> >         .section __mcount_loc, "a",@progbits
-> >         .quad 1b
-> >         .previous
-> >         movq    %rdx, %rax      # buf, buf
-> >         movzbl  (%rdx), %ecx    # *buf_3(D), D.45003
-> >         movq    -32(%rdi), %rdx # MEM[(struct gbphy_device *)dev_2(D) + -40B].cport_desc, MEM[(struct gbphy_device *)dev_2(D) + -40B].cport_desc
-> >         movq    $.LC21, %rsi    #,
-> >         movq    %rax, %rdi      # buf,
-> >         movzbl  3(%rdx), %edx   # _6->protocol_id, D.45003
-> >         call    sprintf #
-> >         cltq
-> >         jmp     __x86_return_thunk
-> >         .size   extra_protocol_id_show, .-extra_protocol_id_show
-> >         .section        .text.unlikely
->
-> Ah nice!  Thanks for checking.
->
-> Ok, so it's not a performance issue at all either way, compilers are
-> smarter than we think :)
+> > > >                 for (; (dir_) <= SND_SOC_DAPM_DIR_OUT; \
+> > > >                         (dir_)++) \
+> 
+> Yes, that's correct.  The original macro would have set 'dir_' to
+> 'SND_SOC_DAPM_DIR_IN' at the start of the for-loop.
+> 
 
-I would imagine that the inline would happen first, and then all of the
-normal optimizations would apply.  Given that the function has an inline
-keyword and is very simple, there is no reason for the inlining not to
-happen.  Naive inlining might introduce new variables for the parameters,
-but though should be easy for the compiler to get rid of in such a simple
-case.
+Okay understood.
 
-So intuitively it should be ok.
-
-julia
-
-
-
->
-> > > For the most part, sysfs files are not on any sort of "fast path" so a
-> > > function call is fine, but as I mentioned before, sometimes we are
-> > > forced to move calls to container_of() to container_of_const() and that
-> > > can not be an inline function, but must remain a macro :(
+> > > I hope this was helpful, but if you have any questions about what I've
+> > > written above don't hesitate to ask.  Good luck!
+> > >
 > >
-> > It seems that this is because there is not a unique return type, but not a
-> > performance issue?
+> > Thank you for taking your time out to write a detailed explanation.
+> > This is great help. :)
+> 
+> I'm happy to hear that.  I think all of us here are able to do what we
+> do because people took the time to explain things so we could
+> understand; please remember that when you are an experienced developer
+> and someone asks you for help ;)
 >
-> Yes, container_of_const() will return a different type (const or not)
-> depending on what is passed into it.  This allows the "const-ness" of a
-> pointer to be kept across the call, while as container_of() will always
-> cast away the const which can be dangerous if you don't know what you
-> are doing.
->
-> thanks,
->
-> greg k-h
->
+
+I will always keep it in mind. :")
+
+Thank you Paul :)
+
+Regards,
+Khadija
+
+> Good luck!
+> 
+> -- 
+> paul-moore.com
