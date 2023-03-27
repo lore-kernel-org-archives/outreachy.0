@@ -1,51 +1,55 @@
-Received: from mail-wr1-f49.google.com (mail-wr1-f49.google.com [209.85.221.49])
+Received: from mail-wr1-f52.google.com (mail-wr1-f52.google.com [209.85.221.52])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B3A9A620;
-	Mon, 27 Mar 2023 05:03:20 +0000 (UTC)
-Received: by mail-wr1-f49.google.com with SMTP id l12so7254727wrm.10;
-        Sun, 26 Mar 2023 22:03:20 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2B2B5EA3;
+	Mon, 27 Mar 2023 10:26:27 +0000 (UTC)
+Received: by mail-wr1-f52.google.com with SMTP id e18so8167164wra.9;
+        Mon, 27 Mar 2023 03:26:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679893399;
+        d=gmail.com; s=20210112; t=1679912785;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=y7YZc7+GXIQDusVUYqDOj5P6rOU9cQWWbR2WAwt/ZP8=;
-        b=Au31X4bAiYNikzyau9Yfhg61ao8BTyae3kBdmWF7+w8cKS6x5kPmT6nu82vEZ0040a
-         jvugcn6hzLwKsx3Dd1gMYUfYl38cfjFf8DbCugPyv6EMG8e/tu5l3FR29XUU3lKVHnr4
-         wMy8rWT09dTWjJMvUtZy/Ka2MleRCb7igF8l3wfhwX4YhgMw1h8sNrI0del/xnLidaY4
-         ljMQv2rRc9pX+hX4MU5kqFxEGSR2b/rSuffaK6xWXrQXlJlHgmrrtRPuxBd7Ru8vf9Jv
-         056OoNcnN38e37ZrG4olglwyhHz9iM84vIqDU3OO9tKr5JFwng+jv0OzIhNoqzIxGN9m
-         EtDA==
+        bh=VqQ8VSOs059u+930ZGWsVqFbCaxhg+pQW8jwX08LpsM=;
+        b=S8WB0pxBxVtKoOvG7yA//KBUCV3K15P8YcaHzE/nENaLtnYQBWHa+1DWNdEcKrcFDY
+         10CbT3XJb5haW6E0XD1dE1+CV2qjYEJA+YwvtP5IW7V6F/YpA7IfxOcrLbCmeoD85EEN
+         DM8EmbaCo1wu6MVRs5xqmrABoSOC0khpXfaMa12kPiJLeExc4dDBRs2B2t6hwnk398k2
+         KVRJBVnITd3Tn/VJG6CvZtbAwAWvu7OXsQXCuSLbin9gwjmHBGYJgVD/x1ED0G8SE18H
+         obgbK5CzG9rXVHeAEm9+lbuxCZDhUl/7Jl2BN/5NlLJ1BSTrpV1EP3ShPn/J8haAW/cM
+         vyOA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679893399;
+        d=1e100.net; s=20210112; t=1679912785;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=y7YZc7+GXIQDusVUYqDOj5P6rOU9cQWWbR2WAwt/ZP8=;
-        b=Dw5FIVb35XKnqnO9NVOQGPAr/Dc3Os8J8JN/2aacCC9aYHzVtdSDhIHkU9K7XAhT7T
-         g8Mu9pTjOtYFsxcWAbopvbdvZLNCFGQAJguEtfNRFauYm9T5+fIK1fYErw4aqUStKBx1
-         TrmvX2rvWZ78qCY84F264xojXPwLwj5WoJQPUruEcVsCO7ZmYOmMTsVSImKeuu3lHAan
-         QdAi2NdDOelt3RoXgokwejiDX5//PGkRc8szUkXArACt5M8KIwf2Eak+/DUqAWDSLtAv
-         cj9hugp70p6hRqcKA9iQ4sjziXy46QEbVziz1khuoZFgPW+pTPuVKPRDOoKg2crSCiq6
-         A+1g==
-X-Gm-Message-State: AAQBX9cOo0suTLPzuKtVQ5csWIpvaMvObH+cb+tUsWL2sQWD+4iPzLfC
-	LA7SwXGa1eyo7rS6nHC8zr4=
-X-Google-Smtp-Source: AKy350aLBQR2xPYxawU6Rc6qi8vaKa9Q3oJfOb9xD9r02p7cdkbEIZyhOWFb6S3aQUxQIGPy8D0zAQ==
-X-Received: by 2002:adf:ea09:0:b0:2d1:f705:a602 with SMTP id q9-20020adfea09000000b002d1f705a602mr7986169wrm.22.1679893398684;
-        Sun, 26 Mar 2023 22:03:18 -0700 (PDT)
-Received: from localhost ([102.36.222.112])
-        by smtp.gmail.com with ESMTPSA id n17-20020adff091000000b002c5534db60bsm24065337wro.71.2023.03.26.22.03.17
+        bh=VqQ8VSOs059u+930ZGWsVqFbCaxhg+pQW8jwX08LpsM=;
+        b=eqwNNGxbj1swiF5tQyIVWYxnsgb/a5Vfk5SiADc5PHatcuftIvXOuuwRWtDnoUj1Yw
+         DL+YHtx1Fvp1h2cukPgvbxfNpTh0/7G2ND519M4G8v5iopwMeXwnKkfPQNo/J1cAMkGX
+         uMJgUsUZyrFsRePhUZDyMRmWaZ7nWvKGRt0PB2ZjKv4RMKDFdrJ4EqxgMARSC3MlQPHG
+         84HtBR19VhVKl071jIVD1Afr4R7VaoVAdmDJMVy846bhUKNkSGOXEX6G1ZL1TNdItbi8
+         yrw6FoTRQb2RvyFCQGtqLqvNTWg0zS9lQc1BHoS++Mv6gYFosuKBUKED/x3uYyBXmNnt
+         qTRA==
+X-Gm-Message-State: AAQBX9cY2af7VKHpZFOQFIjg8p/4UunadBLyCVbb83Wzh4czRi6aVSH3
+	4lkwiGmpzEcNahVlvkfSKk3ONQlrm9TaUC09vVg=
+X-Google-Smtp-Source: AKy350agmst9PQwKSSj2jTRGjh3L7qPTS+8HAKN36g2fy/qR5PY3rI0dQZlHFRZfiEEgpuQ+1vlKxA==
+X-Received: by 2002:adf:db0a:0:b0:2df:7c0a:df33 with SMTP id s10-20020adfdb0a000000b002df7c0adf33mr3605545wri.30.1679912785146;
+        Mon, 27 Mar 2023 03:26:25 -0700 (PDT)
+Received: from khadija-virtual-machine ([39.41.14.14])
+        by smtp.gmail.com with ESMTPSA id n6-20020a5d4c46000000b002c55ec7f661sm24764603wrt.5.2023.03.27.03.26.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 26 Mar 2023 22:03:18 -0700 (PDT)
-Date: Mon, 27 Mar 2023 08:03:14 +0300
-From: Dan Carpenter <error27@gmail.com>
-To: Khadija Kamran <kamrankhadijadj@gmail.com>
-Cc: outreachy@lists.linux.dev, gregkh@linuxfoundation.org,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 3/3] staging: rtl8192u: reformat block comments
-Message-ID: <32819686-cce9-40d2-8707-547bdb1a72f8@kili.mountain>
-References: <cover.1679831899.git.kamrankhadijadj@gmail.com>
- <d49d15e620aa9239f3d68df1a5f8b600de77b536.1679831899.git.kamrankhadijadj@gmail.com>
+        Mon, 27 Mar 2023 03:26:24 -0700 (PDT)
+Date: Mon, 27 Mar 2023 15:26:22 +0500
+From: Khadija Kamran <kamrankhadijadj@gmail.com>
+To: Alison Schofield <alison.schofield@intel.com>
+Cc: outreachy@lists.linux.dev, Vaibhav Hiremath <hvaibhav.linux@gmail.com>,
+	Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	greybus-dev@lists.linaro.org, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3] staging: greybus: merge split lines
+Message-ID: <ZCFvTndYXmPvQunt@khadija-virtual-machine>
+References: <ZBgYsqkpdYpGQniB@khadija-virtual-machine>
+ <ZBnZj3JbTOsplHvw@khadija-virtual-machine>
+ <ZBnc3qWTSeWw0Ulo@aschofie-mobl2>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -54,71 +58,97 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <d49d15e620aa9239f3d68df1a5f8b600de77b536.1679831899.git.kamrankhadijadj@gmail.com>
+In-Reply-To: <ZBnc3qWTSeWw0Ulo@aschofie-mobl2>
 
-On Sun, Mar 26, 2023 at 05:18:27PM +0500, Khadija Kamran wrote:
-> Linux kernel coding style for block comments uses a column of '*' on the
-> left side and  uses '*/' on a separate line.
+On Tue, Mar 21, 2023 at 09:35:42AM -0700, Alison Schofield wrote:
+> On Tue, Mar 21, 2023 at 09:21:35PM +0500, Khadija Kamran wrote:
+> > On Mon, Mar 20, 2023 at 01:26:33PM +0500, Khadija Kamran wrote:
+> > > If condition and spin_unlock_...() call is split into two lines, merge
+> > > them to form a single line.
+> > > 
+> > > Suggested-by: Deepak R Varma drv@mailo.com
+> > > Signed-off-by: Khadija Kamran <kamrankhadijadj@gmail.com>
+> > > ---
+> > > 
+> > > Changes in v3:
+> > >  - Removing tab to fix line length results in a new checkpatch warning,
+> > >    so let the fix length be as it is.
+> > > Changes in v2:
+> > >  - Rephrased he subject and description
+> > >  - Merged if_condition() and spin_unlock...() into one line
+> > >  - Link to patch:
+> > >  https://lore.kernel.org/outreachy/ZAusnKYVTGvO5zoi@khadija-virtual-machine/
+> > > 
+> > > Link to first patch:
+> > > https://lore.kernel.org/outreachy/ZAtkW6g6DwPg%2FpDp@khadija-virtual-machine/
+> > > 
+> > >  drivers/staging/greybus/arche-platform.c | 6 ++----
+> > >  1 file changed, 2 insertions(+), 4 deletions(-)
+> > > 
+> > > diff --git a/drivers/staging/greybus/arche-platform.c b/drivers/staging/greybus/arche-platform.c
+> > > index fcbd5f71eff2..6890710afdfc 100644
+> > > --- a/drivers/staging/greybus/arche-platform.c
+> > > +++ b/drivers/staging/greybus/arche-platform.c
+> > > @@ -176,12 +176,10 @@ static irqreturn_t arche_platform_wd_irq(int irq, void *devid)
+> > >  				 * Check we are not in middle of irq thread
+> > >  				 * already
+> > >  				 */
+> > > -				if (arche_pdata->wake_detect_state !=
+> > > -						WD_STATE_COLDBOOT_START) {
+> > > +				if (arche_pdata->wake_detect_state != WD_STATE_COLDBOOT_START) {
+> > >  					arche_platform_set_wake_detect_state(arche_pdata,
+> > >  									     WD_STATE_COLDBOOT_TRIG);
+> > > -					spin_unlock_irqrestore(&arche_pdata->wake_lock,
+> > > -							       flags);
+> > > +					spin_unlock_irqrestore(&arche_pdata->wake_lock, flags);
+> > >  					return IRQ_WAKE_THREAD;
+> > >  				}
+> > >  			}
+> > > --
+> > > 2.34.1
+> > >
+> > 
+> > Hey Outreachy Mentors,
+> > 
+> > Kindly take a look at this patch and let me know if it is okay to work
+> > on this file or should I look for other cleanup patches.
 > 
-> Fix block comments by adding '*' on subsequent lines and moving '*/' at
-> the end of block comments on a separate line. These issues in block
-> comments are reported by checkpatch.pl script.
+> Hi Khadija,
 > 
-> Signed-off-by: Khadija Kamran <kamrankhadijadj@gmail.com>
-> ---
->  drivers/staging/rtl8192u/r8192U_dm.c | 38 +++++++++++++++++-----------
->  1 file changed, 23 insertions(+), 15 deletions(-)
+> I thought you were abandoning *this* patch, and doing a refactor on
+> the function.  I'd expect that would be a new patch, probably a
+> patchset. One where you align the work based on the 'rising' and
+> 'falling' detection, 
+
+Hey Alison,
+
+Can you please elaborate that what do you mean by aligning on the basis
+of rising and falling detection. Are you perhaps saying that I should
+group the rising detection and group the falling detection separately?
+
+> and perhaps a second patch that centralizes
+> the unlock and return.
+
+To do this I should make the use of goto statement, right?
+
+So the next patchset should be:
+Patch 1: merge split lines
+Patch 2: align on the basis of rising and falling detection
+Patch 3: use goto statement to centralize unlock and return
+
+Kindly guide me.
+
+Regards,
+Khadija
+
 > 
-> diff --git a/drivers/staging/rtl8192u/r8192U_dm.c b/drivers/staging/rtl8192u/r8192U_dm.c
-> index e5c0bece4bb4..99c38a4cf54c 100644
-> --- a/drivers/staging/rtl8192u/r8192U_dm.c
-> +++ b/drivers/staging/rtl8192u/r8192U_dm.c
-> @@ -1,13 +1,14 @@
->  // SPDX-License-Identifier: GPL-2.0
->  /*++
-> -Copyright-c Realtek Semiconductor Corp. All rights reserved.
-> -
-> -Module Name:
-> -	r8192U_dm.c
-> -
-> -Abstract:
-> -	HW dynamic mechanism.
-> ---*/
-> + *Copyright-c Realtek Semiconductor Corp. All rights reserved.
-
-You need spaces after the '*' char.
-
-/*
- * Copyright-c Realtek Semiconductor Corp. All rights reserved.
- *
- * Module Name:
-
-> + *
-> + *Module Name:
-> + *	r8192U_dm.c
-> + *
-> + *Abstract:
-> + *	HW dynamic mechanism.
-> + *--
-> + */
->  #include "r8192U.h"
->  #include "r8192U_dm.h"
->  #include "r8192U_hw.h"
-> @@ -243,7 +244,8 @@ void init_rate_adaptive(struct net_device *dev)
->   * Output:		NONE
->   *
->   * Return:		NONE
-> - *---------------------------------------------------------------------------*/
-> + *---------------------------------------------------------------------------
-> + */
->  static void dm_check_rate_adaptive(struct net_device *dev)
-
-There is a proper kernel doc format for comment formats.  The format is
-described in Documentation/doc-guide/kernel-doc.rst
-
-(Change the function comments as a separate patch from the top of the
-file changes).
-
-regards,
-dan carpenter
-
+> Is there some other concern with working on this file?
+> 
+> Alison
+> 
+> > 
+> > Thank you for your time.
+> > Regards,
+> > Khadija
+> > 
+> > 
