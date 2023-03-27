@@ -1,57 +1,47 @@
-Received: from mail-wm1-f51.google.com (mail-wm1-f51.google.com [209.85.128.51])
+Received: from mail-wr1-f51.google.com (mail-wr1-f51.google.com [209.85.221.51])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4DAF579CE;
-	Mon, 27 Mar 2023 21:00:33 +0000 (UTC)
-Received: by mail-wm1-f51.google.com with SMTP id m6-20020a05600c3b0600b003ee6e324b19so6163989wms.1;
-        Mon, 27 Mar 2023 14:00:33 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DEAA579CE
+	for <outreachy@lists.linux.dev>; Mon, 27 Mar 2023 21:47:22 +0000 (UTC)
+Received: by mail-wr1-f51.google.com with SMTP id v1so10238367wrv.1
+        for <outreachy@lists.linux.dev>; Mon, 27 Mar 2023 14:47:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679950831;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=UxHAeSRmvmOJM7L4xuCcGB4JYeN7eUOth0obgJagveg=;
-        b=OFxDCJ00sKrXWuZpBpo1/2sLI8XscM7kjI7zfuUzce86Ua2/IJPxdxon8Ade68rDUu
-         QWCCDYf0er65HRXHKmqc+pDQkJXonuy0P3Ha7zfq2AChR7jiMX9zliTN6OcqqvF1qg/e
-         r/eEsvLDxK4Lsbc3OwdNIQz3ARG1CnaBGDRoCtw3QjyUk6PETEBstRKk3eyww7i30pZj
-         UnE/nRwK858ImDsi90jc13KJ4Xs57u670YLMFbx6NErvyR8A/2nISp7/UYZW9cIBm5ew
-         9BAgxUbLcDzuCbE1LYmdTOSpJNEW8qF1zDADRqnRvNOswp/Wq8NCufcXvG0cxWJJPMEH
-         R2DQ==
+        d=gmail.com; s=20210112; t=1679953641;
+        h=content-disposition:mime-version:message-id:subject:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=9bUfrvzKb/m/6bQ32UQ5w4f5f/RyILJQwjZAH9mQs7I=;
+        b=fabwhxWKgGXlXbgyKKWXkJCjw0tFGD8fm6VJemL9WdPEmVxmENfNoBaJnzTGWyz/fi
+         5IwuOsUXV3a8U/cxV3/NTcVHN3tJ4QQcg4yD+bc0Om1cQjHlTzSj29zA+ZIIhzRt0o15
+         KB7ukYSXS3XMNH70SODpRgmgNxcSXIXo10Uc6O1O2AZ5xFpk8QuKa3Rmq9rOqPnadtf4
+         2yCMw7ZscDRowErQ+D4MGcMYRnHhEl16Gp05HVtDxNglmZT0cyk3R4vimdp7Iva0I5iW
+         iOZdwfCMe70f97y8Z99NHSunhmpWSlRmRgFwly9lLefhnM7NjeUB5bhSJQ5fQLu3IliT
+         I11w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679950831;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=UxHAeSRmvmOJM7L4xuCcGB4JYeN7eUOth0obgJagveg=;
-        b=xcRk0sqTZFjMFRjVdnAQrZdWhau/GelTaWQP93LI13UHStxHZHjG3nl9HGtBCD9WmX
-         P6ACGycauK4ouMZEFH8dTTgRDVuUQWGSHk/PQ4959ymisfiHBu6V/xQBkL0NP3z7o7Ai
-         MIU9n5oZlfFs+Xx1QDEIupDNjnU+qyyH9AP9aDwS5ORGKVXEYAI/uW6SXwN/hjyYwusT
-         T7h1IkjI8GY3Lxk4Ga8up0YR6l2EEuKJj/rTXTbqqo8/pIvFxPmxu1WuySW3cIXA+2aI
-         noWj7HcezQkbnLss5BIKdABL2mPIK7+i8jSO64MBS07saJncKOU0FyHm39us3SLcn3L/
-         m4DA==
-X-Gm-Message-State: AO0yUKXgTBV6yV43tGjTr6jafPMLVYjh+un7txcH5fbFLDaAk1si0lOU
-	heevlHM5+h8zEYg6ZzZDfFM=
-X-Google-Smtp-Source: AK7set+aO3K1IkWIVR3WucMal2t2FuelYtWE7IhhNpxFyGBukHpajR9/zQQZsR0pHGHyefvQt8fgcQ==
-X-Received: by 2002:a7b:c44f:0:b0:3ed:d3a7:7077 with SMTP id l15-20020a7bc44f000000b003edd3a77077mr9782042wmi.40.1679950831480;
-        Mon, 27 Mar 2023 14:00:31 -0700 (PDT)
+        d=1e100.net; s=20210112; t=1679953641;
+        h=content-disposition:mime-version:message-id:subject:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=9bUfrvzKb/m/6bQ32UQ5w4f5f/RyILJQwjZAH9mQs7I=;
+        b=vucF+sO4c0cZ1Ha6LyTcOO8bjpQWgdQMrSq/vVXD2MF94mZBzCPmgBqBXEiGmyft6B
+         SgNVVSMhNMvwOz4XkA1PaHvFGzdCuDBUZHm01Ev7m+WMKU5AJF/DlZv1Ds8votjkquPZ
+         2UkCIqlVpCsnmSYM6Zu2Mc20QkJDdTAFxyO+f1IRZuoGD0cAbwMQP6+NIYr3VHuwqtzI
+         W6UsrkBO7+WjUhpjsHW6KzDrnQ6+mhuULqx2/Te4rT2mE/3M1IvpEkriCtALEvPGVdac
+         FeMvf32AsoiDe9ep/R611A1T2lSbsvsgRNeCy8E/YgrxbJCzMrweZ3ZgYK3Tackx7rGO
+         FapA==
+X-Gm-Message-State: AAQBX9cmQWBxBMrs8HIRVc3aXE7ghBHR1rGHJh4m5srEAXPNB2FljaqJ
+	/0iLpXPOmdEedlJVabs66n34rmX+XUflilOk
+X-Google-Smtp-Source: AKy350ZWZRJbVT6qcwwsj1Xd30c0nV6UI+IBldOH6oYWH7z2nLwaoreuzte5VNtAizhiQ+NpQWZaPQ==
+X-Received: by 2002:adf:fc8c:0:b0:2c8:9cfe:9e29 with SMTP id g12-20020adffc8c000000b002c89cfe9e29mr10138376wrr.38.1679953640651;
+        Mon, 27 Mar 2023 14:47:20 -0700 (PDT)
 Received: from khadija-virtual-machine ([39.41.14.14])
-        by smtp.gmail.com with ESMTPSA id g8-20020a05600c310800b003ee610d1ce9sm10115062wmo.34.2023.03.27.14.00.30
+        by smtp.gmail.com with ESMTPSA id w2-20020a5d6082000000b002c6d0462163sm25880183wrt.100.2023.03.27.14.47.19
+        for <outreachy@lists.linux.dev>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 Mar 2023 14:00:31 -0700 (PDT)
-Date: Tue, 28 Mar 2023 02:00:28 +0500
+        Mon, 27 Mar 2023 14:47:20 -0700 (PDT)
+Date: Tue, 28 Mar 2023 02:47:18 +0500
 From: Khadija Kamran <kamrankhadijadj@gmail.com>
-To: Alison Schofield <alison.schofield@intel.com>
-Cc: outreachy@lists.linux.dev, Vaibhav Hiremath <hvaibhav.linux@gmail.com>,
-	Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	greybus-dev@lists.linaro.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3] staging: greybus: merge split lines
-Message-ID: <ZCID7MUrIHy8+qb4@khadija-virtual-machine>
-References: <ZBgYsqkpdYpGQniB@khadija-virtual-machine>
- <ZBnZj3JbTOsplHvw@khadija-virtual-machine>
- <ZBnc3qWTSeWw0Ulo@aschofie-mobl2>
- <ZCFvTndYXmPvQunt@khadija-virtual-machine>
- <ZCHPokeiKV37uOmr@aschofie-mobl2>
+To: outreachy@lists.linux.dev
+Subject: Suggestions on CHECK avoiding camel case
+Message-ID: <ZCIO5nBdYVEwdTpB@khadija-virtual-machine>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -60,158 +50,28 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ZCHPokeiKV37uOmr@aschofie-mobl2>
 
-On Mon, Mar 27, 2023 at 10:17:22AM -0700, Alison Schofield wrote:
-> On Mon, Mar 27, 2023 at 03:26:22PM +0500, Khadija Kamran wrote:
-> > On Tue, Mar 21, 2023 at 09:35:42AM -0700, Alison Schofield wrote:
-> > > On Tue, Mar 21, 2023 at 09:21:35PM +0500, Khadija Kamran wrote:
-> > > > On Mon, Mar 20, 2023 at 01:26:33PM +0500, Khadija Kamran wrote:
-> > > > > If condition and spin_unlock_...() call is split into two lines, merge
-> > > > > them to form a single line.
-> > > > > 
-> > > > > Suggested-by: Deepak R Varma drv@mailo.com
-> > > > > Signed-off-by: Khadija Kamran <kamrankhadijadj@gmail.com>
-> > > > > ---
-> > > > > 
-> > > > > Changes in v3:
-> > > > >  - Removing tab to fix line length results in a new checkpatch warning,
-> > > > >    so let the fix length be as it is.
-> > > > > Changes in v2:
-> > > > >  - Rephrased he subject and description
-> > > > >  - Merged if_condition() and spin_unlock...() into one line
-> > > > >  - Link to patch:
-> > > > >  https://lore.kernel.org/outreachy/ZAusnKYVTGvO5zoi@khadija-virtual-machine/
-> > > > > 
-> > > > > Link to first patch:
-> > > > > https://lore.kernel.org/outreachy/ZAtkW6g6DwPg%2FpDp@khadija-virtual-machine/
-> > > > > 
-> > > > >  drivers/staging/greybus/arche-platform.c | 6 ++----
-> > > > >  1 file changed, 2 insertions(+), 4 deletions(-)
-> > > > > 
-> > > > > diff --git a/drivers/staging/greybus/arche-platform.c b/drivers/staging/greybus/arche-platform.c
-> > > > > index fcbd5f71eff2..6890710afdfc 100644
-> > > > > --- a/drivers/staging/greybus/arche-platform.c
-> > > > > +++ b/drivers/staging/greybus/arche-platform.c
-> > > > > @@ -176,12 +176,10 @@ static irqreturn_t arche_platform_wd_irq(int irq, void *devid)
-> > > > >  				 * Check we are not in middle of irq thread
-> > > > >  				 * already
-> > > > >  				 */
-> > > > > -				if (arche_pdata->wake_detect_state !=
-> > > > > -						WD_STATE_COLDBOOT_START) {
-> > > > > +				if (arche_pdata->wake_detect_state != WD_STATE_COLDBOOT_START) {
-> > > > >  					arche_platform_set_wake_detect_state(arche_pdata,
-> > > > >  									     WD_STATE_COLDBOOT_TRIG);
-> > > > > -					spin_unlock_irqrestore(&arche_pdata->wake_lock,
-> > > > > -							       flags);
-> > > > > +					spin_unlock_irqrestore(&arche_pdata->wake_lock, flags);
-> > > > >  					return IRQ_WAKE_THREAD;
-> > > > >  				}
-> > > > >  			}
-> > > > > --
-> > > > > 2.34.1
-> > > > >
-> > > > 
-> > > > Hey Outreachy Mentors,
-> > > > 
-> > > > Kindly take a look at this patch and let me know if it is okay to work
-> > > > on this file or should I look for other cleanup patches.
-> > > 
-> > > Hi Khadija,
-> > > 
-> > > I thought you were abandoning *this* patch, and doing a refactor on
-> > > the function.  I'd expect that would be a new patch, probably a
-> > > patchset. One where you align the work based on the 'rising' and
-> > > 'falling' detection, 
-> > 
-> > Hey Alison,
-> > 
-> > Can you please elaborate that what do you mean by aligning on the basis
-> > of rising and falling detection. Are you perhaps saying that I should
-> > group the rising detection and group the falling detection separately?
-> > 
-> > > and perhaps a second patch that centralizes
-> > > the unlock and return.
-> > 
-> > To do this I should make the use of goto statement, right?
-> > 
-> > So the next patchset should be:
-> > Patch 1: merge split lines
-> > Patch 2: align on the basis of rising and falling detection
-> > Patch 3: use goto statement to centralize unlock and return
-> > 
-> > Kindly guide me.
-> > 
-> > Regards,
-> > Khadija
-> 
-> Hi,
-> 
-> Glad you are picking this back up!
-> I know Ira sent you some links to refactoring info. Go back and
-> look at those.
-> 
-> When we submit patches that refactor a function, we try to make
-> the patches obviously correct and easy to review.
-> 
-> I'll tell you how I approached this one, and you can see how
-> it works for you:
-> 
-> 1. Edit the function until it is just how you'd like it. Hint:
->    no lines over 80, minimal indentation.
-> 
-> {
-> 	--snip--
-> 
-> 	if (!gpiod_get_value(arche_pdata->wake_detect))
->                 goto falling;
-> 
->         /* wake/detect rising */
-> 
-> 	
-> 
-> falling:
-> 	/* wake/detect falling */
-> 
-> 
-> out:
-> 	spin_unlock_irqrestore(&arche_pdata->wake_lock, flags);
-> 
->         return rc;
-> }
-> 
-> 
-> 2. Figure out how you can present that in patches. This function
->    is just long enough that I think you have to split it up into
->    two or more obvious steps, rather than throwing it into one
->    patch.
-> 
-> How about you do Step 1, and send the diff to the Outreachy mailing
-> list (only) for review. Please start a new thread. 
->
+Dear Outreachy Mentors,
 
-Hey Alison,
+I am working on the folowing check reported by checkpatch.pl:
 
-I am sorry about sending a new patch instead of sending a diff for
-discussion. I realize that I did not read your message carefully and
-misunderstood its contents. 
+CHECK: Avoid CamelCase: <dot11RSNAStatsCCMPFormatErrors>
+#37: FILE: drivers/staging/rtl8192e/rtllib_crypt_ccmp.c:37:
++       u32 dot11RSNAStatsCCMPFormatErrors;
 
-Let me start a new thread. Sorry for the inconvenience.
+CHECK: Avoid CamelCase: <dot11RSNAStatsCCMPReplays>
+#38: FILE: drivers/staging/rtl8192e/rtllib_crypt_ccmp.c:38:
++       u32 dot11RSNAStatsCCMPReplays;
+
+Such issues are reported by checkpatch in other files in
+drivers/staging/ modules as well.
+
+Should I change the varible names here or should I leave it as is?
+
+Kindly guide me with this.
+
+Thank you for your time.
 
 Regards,
-Khadija 
+Khadija
 
-> Alison
-> 
-> > 
-> > > 
-> > > Is there some other concern with working on this file?
-> > > 
-> > > Alison
-> > > 
-> > > > 
-> > > > Thank you for your time.
-> > > > Regards,
-> > > > Khadija
-> > > > 
-> > > > 
