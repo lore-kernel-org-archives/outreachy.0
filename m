@@ -1,53 +1,36 @@
-Received: from mail-wr1-f53.google.com (mail-wr1-f53.google.com [209.85.221.53])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mga03.intel.com (mga03.intel.com [134.134.136.65])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C1A9EECF;
-	Mon, 27 Mar 2023 12:46:08 +0000 (UTC)
-Received: by mail-wr1-f53.google.com with SMTP id l27so8670957wrb.2;
-        Mon, 27 Mar 2023 05:46:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679921167;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=fYIGAgh3bNQtQ2hkLhWzVHkkyMwA2A5wfdDvnocQpCQ=;
-        b=OtF5U5GeGMC1joLpFhdjkzQSJl2EpNpTlz9dgob+XXltcZTyEVsyud07oqsVyyE8Ni
-         3pfq20RG85/LXrAr2IlkhLLtWEnjMXIg60PPNouvkfSP4eb29R/uqFHyO71VrX8qeZr9
-         o1X1wRpoo3JjbY5A6DeNnr5kph4BKPzJdKXRE7z0TkFqLErrcezfd5RJbQmaTDn00AzF
-         XmTBYQ5cu17kcjsKEkcHJHrhPZUo9YYeHBnz1UBvbdnqPBLvs4uCEO8XHv/ryysm+hjl
-         fOeVSFU5iq3wP/sOYdVwPp44td+VgKKMfZrQIiQhXhmi7/xz8b/KAWz1YEh2GFmu9jy2
-         gp5A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679921167;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=fYIGAgh3bNQtQ2hkLhWzVHkkyMwA2A5wfdDvnocQpCQ=;
-        b=xe4NrbeuMfVrYmVemhns4n+4Mgt1H2ub3DOcG6wt3BBW4aNPaLfWPaIjLiYT7h5sQN
-         aQprefRhdb/2AIAZFEi93XFf9DA9iHzLrzW3R2XPQznXFk81JOsGGq87zMyWWSgLn4wh
-         1LX75Jfnz4HXgKKquleZOSdDG1noliHCqYYn2+BLIwwBjWA7X7xWrt3stskRmt2CrFfH
-         JWDZsmKPgLq6fR8Z3YsYqbOlinFf5jn31lYxFqSKpgEgBCitsltqCLs/8SUiabTLWoEl
-         aYkt3lc8huToNLBimz/Gs+wHJ7rcUypXfZpoMX77zN6Hlzk9XMhYRhGoOPte4XzUzr+6
-         f/ww==
-X-Gm-Message-State: AAQBX9d4PZkoeolDOhRLjJKZiYQlQZ1XLjdDlGF7DpP4HR2VOyfsQqe2
-	r/GuPMlwnRy18QSqKzjcPQc=
-X-Google-Smtp-Source: AKy350Yb6KtmVuwqs6rupocORTaQKhgvxpira9yWvAE63AxgWO2SnPEYWy1Lgar60+D+9m7kWGbbUw==
-X-Received: by 2002:adf:eace:0:b0:2cf:e3d0:2a43 with SMTP id o14-20020adfeace000000b002cfe3d02a43mr11015922wrn.4.1679921167038;
-        Mon, 27 Mar 2023 05:46:07 -0700 (PDT)
-Received: from khadija-virtual-machine ([39.41.14.14])
-        by smtp.gmail.com with ESMTPSA id x4-20020a1c7c04000000b003ee0d191539sm13662716wmc.10.2023.03.27.05.46.06
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 27 Mar 2023 05:46:06 -0700 (PDT)
-Date: Mon, 27 Mar 2023 17:46:04 +0500
-From: Khadija Kamran <kamrankhadijadj@gmail.com>
-To: Dan Carpenter <error27@gmail.com>
-Cc: outreachy@lists.linux.dev, Marc Dietrich <marvin24@gmx.de>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	ac100@lists.launchpad.net, linux-tegra@vger.kernel.org,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] staging: nvec: replace udelay() with usleep_range()
-Message-ID: <ZCGQDLEsCr6dY6/e@khadija-virtual-machine>
-References: <ZCGK4+zUDT1lLz6s@khadija-virtual-machine>
- <453453f4-1496-4735-8fab-efb7e4240e05@kili.mountain>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A2F3A63B6
+	for <outreachy@lists.linux.dev>; Mon, 27 Mar 2023 16:53:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1679935993; x=1711471993;
+  h=date:from:to:subject:message-id:mime-version;
+  bh=6OmCguPXeKlOkhT/D5OjZKNwB9h2ZALVYCcHWVkgToo=;
+  b=jX5nw8k1zLlLUf0e1J9xZjTsk1QQqeAfABcAkVDA3UVBDuAvwH1wjsRI
+   8Q629WpO04mavkkOr3dws24SMPNi/vUB23Ov4UyEQQ483khEdCNua3c1e
+   HdP46YXIkT9Pfsyvl4KdeepsHtGpjImDC4fB9N/V5UxJ0zmBJ+fsGkUjY
+   FCny43S8/++9Or90DlV6h9kOcNVutZ0CaJmoHen/OWyNvQc6X2GqyotKk
+   eVQpjQ8+kd0dxsHNNQSazYRhhoHsP4jLBZUa26hQQAnLA35bFQe+BPlx8
+   mfd/MRolnKaa5hcnxRppkEY8h1OUWC3cuggU9aQ5gXDLPcBpXKLDM0x9t
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10662"; a="342727870"
+X-IronPort-AV: E=Sophos;i="5.98,295,1673942400"; 
+   d="scan'208";a="342727870"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Mar 2023 09:53:13 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10662"; a="686037846"
+X-IronPort-AV: E=Sophos;i="5.98,295,1673942400"; 
+   d="scan'208";a="686037846"
+Received: from srikarja-mobl1.amr.corp.intel.com (HELO aschofie-mobl2) ([10.255.229.96])
+  by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Mar 2023 09:53:12 -0700
+Date: Mon, 27 Mar 2023 09:53:10 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: Outreachy Linux Kernel <outreachy@lists.linux.dev>
+Subject: [Outreachy Info] April 3 App Deadline
+Message-ID: <ZCHJ9pkwPhtfC9PR@aschofie-mobl2>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -56,29 +39,56 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <453453f4-1496-4735-8fab-efb7e4240e05@kili.mountain>
 
-On Mon, Mar 27, 2023 at 03:25:43PM +0300, Dan Carpenter wrote:
-> On Mon, Mar 27, 2023 at 05:24:03PM +0500, Khadija Kamran wrote:
-> > Replace 'udelay()' with 'usleep_range()' with 1000us as upper limit.
-> > This issue is reported by checkpatch.pl script.
-> > 
-> > CHECK: usleep_range is preferred over udelay; see
-> > Documentation/timers/timers-howto.rst
-> > 
-> > Signed-off-by: Khadija Kamran <kamrankhadijadj@gmail.com>
-> > ---
-> 
-> This kind of change requires you to test on the hardware and have
-> slightly in depth knowledge of the spec.
+Hi Outreachy Applicants,
 
-Okay, thank you!
+Thank you for diving into the Linux Kernel community and for 
+helping to clean up the Linux Kernel during this contribution
+period.
 
-Regards,
-Khadija
+Contribution Period Ends: April 3 at 4pm UTC.
+Application Deadline:	  April 3 at 4pm UTC
 
+Hopefully you've been recording your contributions along the way
+in your Outreachy Dashboard. Now, it is time to submit a final
+application. You can 'edit' it through the deadline, but you 
+cannot 'submit' it after the deadline.
 
-> 
-> regards,
-> dan carpenter
-> 
+A few application notes:
+
+When applying to multiple projects, it is OK to submit all the 
+details of your contributions under one project, and in each
+of the other projects, add a note 'See my contributions recorded
+under Project-X'. Mentors can see all project applications.
+
+If you do cut/paste and complete each project form separately, be
+sure to include all your contributions. For example, if you did a
+starter task for Project-A, list it under Project-B also - even 
+though it wasn't special to Project-B.
+
+Community-specific questions:
+The Linux Kernel Community does not have any additional questions.
+(You can write that in the box, or leave it blank.)
+ 
+Internship project timeline:
+The internship will be mapped out between mentors and interns during
+the first week of the internship. It is customized to each intern.
+(You can write that in the box too.)
+ 
+Neither the mentors, nor I, see your original application to Outreachy,
+so be sure to answer the first 3 question on the final app fully:
+- Past experience with this free software community
+- Past experience with other free software communities
+- Relevant personal or class projects
+
+You are welcome to apply to any and all projects that you would
+accept an internship with. If the form forces you to assign unique
+project preferences, do the best you can, and add a note as needed.
+ie. "Hey, I'd love to do any of these projects, but the form forced
+me to rank them.", or maybe, "Project-X is my first choice, and
+Projects-Y&Z are my second choices."
+
+Questions, please ask on the list, email your mentors or me.
+
+Thanks,
+Alison
