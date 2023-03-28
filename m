@@ -1,118 +1,82 @@
-Received: from mail-wr1-f53.google.com (mail-wr1-f53.google.com [209.85.221.53])
+Received: from mail-pj1-f51.google.com (mail-pj1-f51.google.com [209.85.216.51])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 625DAEBB;
-	Tue, 28 Mar 2023 07:33:30 +0000 (UTC)
-Received: by mail-wr1-f53.google.com with SMTP id j24so11136371wrd.0;
-        Tue, 28 Mar 2023 00:33:30 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 281FF1C36;
+	Tue, 28 Mar 2023 08:48:46 +0000 (UTC)
+Received: by mail-pj1-f51.google.com with SMTP id q102so10163026pjq.3;
+        Tue, 28 Mar 2023 01:48:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679988808;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=pEALrOXc52gKsTn2OncrXyRPIgHxMGfS3XCj7g7S3bM=;
-        b=FT1w0kRA2s5NiRw3V1gbTmpedbwG7mGzbgKKFn6qwNEataJGR/ZnyqxEqiFGsOf30i
-         ML6F4XWW+Z7XpC31p3drbfyLZ51oau2ZlTz2nyF4iA47Txf3RvNExXlR8EkOvnNBj+UT
-         SSsX+DBcogeqgimGK1GCrTXmKXnJgWMurj+9TyQG1NV5clg010f711tzm/gjQLUsJQO9
-         s+K2eoP2rzo7Yg38G1bU2lXzzKTfZsEDdL9UbFtthDRPBf+j3Wx5bOTaCA/1M21TaY6X
-         sd3qGnNJuQA6klpkwB+CPDfiZtzFrZSeg9xaXKJ3pRhf+3lSZipBPA9ztVC+1Oj1RP8b
-         tIxA==
+        d=gmail.com; s=20210112; t=1679993325;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=2EU0PyNq3O8MZWQ5fwe8D0KcNrdW4uSY2h1xR6nDBTY=;
+        b=O1fseohERVPEn6YJLD9y3VUPQsGzrgbrkJIfTSl9xCaOo75kgq43d8pjF3GzYx1/6U
+         yrsneVKGZgNYNlkK8W3ssCUSLyiL06l/cv/406aMcxLZcUb/wZW1p4UrpEVGjQN68eIh
+         gazN69EOPahWQzBm/EqOqHY+EQqq5hotUOMbDXwQaCoz/cV1/J0mCA0N2XH//2bf75Ki
+         aKmelLIj0QBq9QgbMH29g5T0vXYAeDbp302OKg3AoanOIZNnCSldqtBtsB8SU3mljY+k
+         I8na3S2TETg/RGb+lMridKvA+cxRuS/VApvOMVuEHhS1DrWG3Z/4HaRU5p6wl/p8zuQ1
+         XOAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679988808;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=pEALrOXc52gKsTn2OncrXyRPIgHxMGfS3XCj7g7S3bM=;
-        b=bldq5n0YGsBkqcqHLnIeXXofzHjuVq/Luikv8tqpEJXwLAZ1SnWc5iGTRJFZmJ+TVh
-         pilE0TkRUJ5NBjGq3woKyrJfhrBqbMxu8WEu4AYH+kF4I3qoHGS/hXD+e2jSshUz2HO3
-         +dY6oCMezQOKijFUruGbrkiWOPtv0m7wcIwwTNSFJjCaNaDtllKE+Df7b0y/MJmC60zF
-         bbMMneS85Hr+8C1GhOrmZv0rjfPea5L9n2tiYmQCw8ncZbG2YbRYACGr6nXyZS4UP4Wr
-         fmVw6zNIkzqNPDq2S0RUN6x8Wi0p0w4t8MV8PNWxGVm51S86qMoyoFP+4fqyEQzlrVG7
-         eU2Q==
-X-Gm-Message-State: AAQBX9fcBLvfuCZhbgGhvaQyUMUvSJaC5bjw+wFEv1gUxO0aUNhXfDEA
-	aAVB3/uY/jMGECQVl8ysKKY=
-X-Google-Smtp-Source: AKy350YCxr8JWSgxneY2UBQmYVK9P66v8ig5AVKhAHuMCqd5ytkA/+R4VcOWodKAgyKfJWfSS57Xjg==
-X-Received: by 2002:a5d:6744:0:b0:2d0:d739:e37e with SMTP id l4-20020a5d6744000000b002d0d739e37emr12493068wrw.40.1679988808484;
-        Tue, 28 Mar 2023 00:33:28 -0700 (PDT)
-Received: from localhost ([102.36.222.112])
-        by smtp.gmail.com with ESMTPSA id a10-20020a056000050a00b002d78a96cf5fsm19812481wrf.70.2023.03.28.00.33.27
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 28 Mar 2023 00:33:28 -0700 (PDT)
-Date: Tue, 28 Mar 2023 10:33:23 +0300
-From: Dan Carpenter <error27@gmail.com>
-To: Khadija Kamran <kamrankhadijadj@gmail.com>
-Cc: outreachy@lists.linux.dev, Vaibhav Hiremath <hvaibhav.linux@gmail.com>,
-	Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	greybus-dev@lists.linaro.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] staging: greybus: refactor arche_platform_wd_irq()
- function
-Message-ID: <a64ad550-9991-4f54-8e09-735133422291@kili.mountain>
-References: <ZCH6LV5XU0FBlW7Y@khadija-virtual-machine>
+        d=1e100.net; s=20210112; t=1679993325;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=2EU0PyNq3O8MZWQ5fwe8D0KcNrdW4uSY2h1xR6nDBTY=;
+        b=aUc3Mq4Y/O1Ve9u/7Tqr8+lIIJwLIzy1Q0s8U5LkVFOhjLmTrxgcGvZJzUpPV6NUb7
+         9acxS2WS5W7zvIihwTt8MG0ojlXxFXo9QT7c1XtuZOHSSm8dE4TCVwtUpFPcfdpVpQLa
+         VI1eI1EWS1RJMuLiAG3B8Uv1yaJK7Ka27fjEqSxo2LhZAsT7YiijZ3CbsNDx7MPvaOX2
+         Subpej+Hm9BoXDgXJG2WY7o1Qu/tMvB157HmAPErAu1gMDgfFO07UlaQ7pM0Yu0xzn6l
+         G9nEmH9HKAgbQ64ZaOfTj13i8tsrUHuzhLYvkW6BEdm5ZBeEPYTkvnliZH3Y9XsxCNC9
+         bx0Q==
+X-Gm-Message-State: AAQBX9fKpSIsNxTlvU2Hvsu16b4nGUMEW7gY9mtMcG1H+1k3yuoBUjc/
+	wi5epZs+kncJPxAO4YLMwwI=
+X-Google-Smtp-Source: AKy350bDFGo2uIQNJg8uJdqaz7Tcc+lLE2OM3k8eagzfuLp08YrhaAwCSltX2PHBSqX3FPQ+08YONA==
+X-Received: by 2002:a17:90b:4f89:b0:23c:fb54:95d5 with SMTP id qe9-20020a17090b4f8900b0023cfb5495d5mr16211336pjb.41.1679993325434;
+        Tue, 28 Mar 2023 01:48:45 -0700 (PDT)
+Received: from [192.168.43.80] (subs32-116-206-28-54.three.co.id. [116.206.28.54])
+        by smtp.gmail.com with ESMTPSA id n8-20020a6563c8000000b0050f9b7e64fasm13366907pgv.77.2023.03.28.01.48.43
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 28 Mar 2023 01:48:45 -0700 (PDT)
+Message-ID: <fb1352ba-69a8-c1cc-7d72-43836f412e3d@gmail.com>
+Date: Tue, 28 Mar 2023 15:48:42 +0700
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZCH6LV5XU0FBlW7Y@khadija-virtual-machine>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH v3 4/4] staging: rtl8192u: add '*/' on separate line in
+ block comments
+Content-Language: en-US
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: Khadija Kamran <kamrankhadijadj@gmail.com>, outreachy@lists.linux.dev,
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+ Jerry Chuang <jerry-chuang@realtek.com>
+References: <cover.1679945728.git.kamrankhadijadj@gmail.com>
+ <140e0928531e61dc7396271a5b16a6be17514c76.1679945728.git.kamrankhadijadj@gmail.com>
+ <ZCJepCj9JcOQqp0Z@debian.me> <ZCJ2_PuvCUBvlwaL@kroah.com>
+From: Bagas Sanjaya <bagasdotme@gmail.com>
+In-Reply-To: <ZCJ2_PuvCUBvlwaL@kroah.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-On Tue, Mar 28, 2023 at 01:18:53AM +0500, Khadija Kamran wrote:
-> Refactor function by adding goto statement. This reduces the
-> indentation and fixes the issue reported by checkpatch.pl script.
+On 3/28/23 12:11, Greg KH wrote:
+>> While at above can you please turn these comments above into kernel-doc
+>> comments (see Documentation/doc-guide/kernel-doc.rst for how to write
+>> one)? This requires a placeholder doc where you can write e.g. overview
+>> of the driver and how it is used. The doc should be in
+>> Documentation/driver-api/staging/ (since this is staging driver).
 > 
-> "CHECK: line length of 101 exceeds 100 columns"
+> No, these are static functions, or just normal internal-to-the-driver
+> functions, they do not need kerneldoc or any Documentation/* entries,
+> sorry.
 > 
-> Signed-off-by: Khadija Kamran <kamrankhadijadj@gmail.com>
-> ---
->  drivers/staging/greybus/arche-platform.c | 11 ++++++-----
->  1 file changed, 6 insertions(+), 5 deletions(-)
-> 
-> diff --git a/drivers/staging/greybus/arche-platform.c b/drivers/staging/greybus/arche-platform.c
-> index fcbd5f71eff2..c7d3b6f7368f 100644
-> --- a/drivers/staging/greybus/arche-platform.c
-> +++ b/drivers/staging/greybus/arche-platform.c
-> @@ -178,11 +178,7 @@ static irqreturn_t arche_platform_wd_irq(int irq, void *devid)
->  				 */
->  				if (arche_pdata->wake_detect_state !=
->  						WD_STATE_COLDBOOT_START) {
-> -					arche_platform_set_wake_detect_state(arche_pdata,
-> -									     WD_STATE_COLDBOOT_TRIG);
-> -					spin_unlock_irqrestore(&arche_pdata->wake_lock,
-> -							       flags);
-> -					return IRQ_WAKE_THREAD;
-> +					goto out;
 
-I don't like this goto.
+Ah! I don't see the context behind the comments, thanks anyway!
 
-It suggests that calling arche_platform_set_wake_detect_state(arche_pdata, WD_STATE_COLDBOOT_TRIG);
-is a part of a shared exit path when that is not true so it is sort of
-lying to the reader and making things harder to understand.
+-- 
+An old man doll... just what I always wanted! - Clara
 
-Unlocking is shared.  goto unlock is fine.  But that doesn't help with
-the very long lines.  (I am not saying that goto unlock is a worthwhile
-patch to send but I would definitely have found it tolerable).
-
-regards,
-dan carpenter
-
->  				}
->  			}
->  		}
-> @@ -205,6 +201,11 @@ static irqreturn_t arche_platform_wd_irq(int irq, void *devid)
->  	spin_unlock_irqrestore(&arche_pdata->wake_lock, flags);
->  
->  	return IRQ_HANDLED;
-> +
-> +out:
-> +	arche_platform_set_wake_detect_state(arche_pdata, WD_STATE_COLDBOOT_TRIG);
-> +	spin_unlock_irqrestore(&arche_pdata->wake_lock, flags);
-> +	return IRQ_WAKE_THREAD;
->  }
->  
->  /*
-> -- 
-> 2.34.1
-> 
