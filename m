@@ -1,82 +1,172 @@
-Received: from mail-pj1-f51.google.com (mail-pj1-f51.google.com [209.85.216.51])
+Received: from mail-wr1-f53.google.com (mail-wr1-f53.google.com [209.85.221.53])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 281FF1C36;
-	Tue, 28 Mar 2023 08:48:46 +0000 (UTC)
-Received: by mail-pj1-f51.google.com with SMTP id q102so10163026pjq.3;
-        Tue, 28 Mar 2023 01:48:46 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7CC61210F
+	for <outreachy@lists.linux.dev>; Tue, 28 Mar 2023 10:45:07 +0000 (UTC)
+Received: by mail-wr1-f53.google.com with SMTP id t4so6442292wra.7
+        for <outreachy@lists.linux.dev>; Tue, 28 Mar 2023 03:45:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1679993325;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        d=gmail.com; s=20210112; t=1680000305;
+        h=content-disposition:mime-version:message-id:subject:to:from:date
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=2EU0PyNq3O8MZWQ5fwe8D0KcNrdW4uSY2h1xR6nDBTY=;
-        b=O1fseohERVPEn6YJLD9y3VUPQsGzrgbrkJIfTSl9xCaOo75kgq43d8pjF3GzYx1/6U
-         yrsneVKGZgNYNlkK8W3ssCUSLyiL06l/cv/406aMcxLZcUb/wZW1p4UrpEVGjQN68eIh
-         gazN69EOPahWQzBm/EqOqHY+EQqq5hotUOMbDXwQaCoz/cV1/J0mCA0N2XH//2bf75Ki
-         aKmelLIj0QBq9QgbMH29g5T0vXYAeDbp302OKg3AoanOIZNnCSldqtBtsB8SU3mljY+k
-         I8na3S2TETg/RGb+lMridKvA+cxRuS/VApvOMVuEHhS1DrWG3Z/4HaRU5p6wl/p8zuQ1
-         XOAw==
+        bh=2K5gujEeaUuHifd0LjlH8VHsP+YjUeV3J8Cf4x3S1ss=;
+        b=orlo1WZ7maQ/pE6kTok8KbaU184gDnqI9ZVV8b2QIflLUceP3f1DpFMOGbYg+hZ+dR
+         fjIu06UPqvDHzjjxxZQettrLkTAz62bn/AMTzmJo/1hiN0WJNEu1KNotpcp2Df7Gcf2P
+         adg8SC7w9gRyya98kQwUIG8Fxy9mMFdYfpwBtAGsouJr8zVRbjH9P6zN30pEUPu5muYs
+         2vsq8cwMqllWa5NPuS1ZE9NYZw0XUxayvsyf7S3OILuI3mElhge0DDMBckprRAfnPvOw
+         qSsXCoAlNtsrwxqexsCrgl4X2ll31dfmTbduooft8WI6oym2aeXk/BA9K4jCHF8R6o3Z
+         66Uw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1679993325;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        d=1e100.net; s=20210112; t=1680000305;
+        h=content-disposition:mime-version:message-id:subject:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=2EU0PyNq3O8MZWQ5fwe8D0KcNrdW4uSY2h1xR6nDBTY=;
-        b=aUc3Mq4Y/O1Ve9u/7Tqr8+lIIJwLIzy1Q0s8U5LkVFOhjLmTrxgcGvZJzUpPV6NUb7
-         9acxS2WS5W7zvIihwTt8MG0ojlXxFXo9QT7c1XtuZOHSSm8dE4TCVwtUpFPcfdpVpQLa
-         VI1eI1EWS1RJMuLiAG3B8Uv1yaJK7Ka27fjEqSxo2LhZAsT7YiijZ3CbsNDx7MPvaOX2
-         Subpej+Hm9BoXDgXJG2WY7o1Qu/tMvB157HmAPErAu1gMDgfFO07UlaQ7pM0Yu0xzn6l
-         G9nEmH9HKAgbQ64ZaOfTj13i8tsrUHuzhLYvkW6BEdm5ZBeEPYTkvnliZH3Y9XsxCNC9
-         bx0Q==
-X-Gm-Message-State: AAQBX9fKpSIsNxTlvU2Hvsu16b4nGUMEW7gY9mtMcG1H+1k3yuoBUjc/
-	wi5epZs+kncJPxAO4YLMwwI=
-X-Google-Smtp-Source: AKy350bDFGo2uIQNJg8uJdqaz7Tcc+lLE2OM3k8eagzfuLp08YrhaAwCSltX2PHBSqX3FPQ+08YONA==
-X-Received: by 2002:a17:90b:4f89:b0:23c:fb54:95d5 with SMTP id qe9-20020a17090b4f8900b0023cfb5495d5mr16211336pjb.41.1679993325434;
-        Tue, 28 Mar 2023 01:48:45 -0700 (PDT)
-Received: from [192.168.43.80] (subs32-116-206-28-54.three.co.id. [116.206.28.54])
-        by smtp.gmail.com with ESMTPSA id n8-20020a6563c8000000b0050f9b7e64fasm13366907pgv.77.2023.03.28.01.48.43
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 28 Mar 2023 01:48:45 -0700 (PDT)
-Message-ID: <fb1352ba-69a8-c1cc-7d72-43836f412e3d@gmail.com>
-Date: Tue, 28 Mar 2023 15:48:42 +0700
+        bh=2K5gujEeaUuHifd0LjlH8VHsP+YjUeV3J8Cf4x3S1ss=;
+        b=Q4x0QFR1z9lCRmCUjAWCyu33oWLjAmZNFWkucyM8K5qeI5whp/zNMSX+kzU3KIGtIS
+         Q2aVsBRWuZ67ZabghcmLWykY8zZtPxedcbHWotyCwashtaPhob/ZYRY8yjAdMf2bOB05
+         KD9GnruWqomIClfsWW7qxq97HN4sUgXdspUbLXZhauD/P3qzEfeIizXtBLGGdvmL+SUr
+         rJvc58szQCAcvoAcH3qMuPNnmFIMtLuAHxmSSoI9v0FX2IQYIQvzF2VphDpC1dgxMUqt
+         qmCR46GgEwmhPxFO6UJ5XRVokVTn6q6gQCbJrCBCma/4/ILHO0rWrrDUa1PFUF0NtzvH
+         k9og==
+X-Gm-Message-State: AAQBX9fk5+cbCruLuTMnoJb0kTgyTbQGT65L5+qIvBcwnjXOqYScc7ez
+	tkRNdOIURjqlIqe03zRNBqklpFsXMB+2ew==
+X-Google-Smtp-Source: AKy350ZhLSbTO+wO/PoMe313I2jm7u1jVNeErX6k4/nFT/hDPifQWDyOq9yWLcy5iY8v3Sn3dDLLVA==
+X-Received: by 2002:adf:dc12:0:b0:2d1:6104:76af with SMTP id t18-20020adfdc12000000b002d1610476afmr12010610wri.28.1680000305401;
+        Tue, 28 Mar 2023 03:45:05 -0700 (PDT)
+Received: from khadija-virtual-machine ([39.41.14.14])
+        by smtp.gmail.com with ESMTPSA id y16-20020a5d4ad0000000b002d51d10a3fasm24033430wrs.55.2023.03.28.03.45.04
+        for <outreachy@lists.linux.dev>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 28 Mar 2023 03:45:04 -0700 (PDT)
+Date: Tue, 28 Mar 2023 15:45:02 +0500
+From: Khadija Kamran <kamrankhadijadj@gmail.com>
+To: outreachy@lists.linux.dev
+Subject: Suggestions on refactoring arche_platform_wd_irq() function
+Message-ID: <ZCLFLqNjNawO2KnO@khadija-virtual-machine>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH v3 4/4] staging: rtl8192u: add '*/' on separate line in
- block comments
-Content-Language: en-US
-To: Greg KH <gregkh@linuxfoundation.org>
-Cc: Khadija Kamran <kamrankhadijadj@gmail.com>, outreachy@lists.linux.dev,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
- Jerry Chuang <jerry-chuang@realtek.com>
-References: <cover.1679945728.git.kamrankhadijadj@gmail.com>
- <140e0928531e61dc7396271a5b16a6be17514c76.1679945728.git.kamrankhadijadj@gmail.com>
- <ZCJepCj9JcOQqp0Z@debian.me> <ZCJ2_PuvCUBvlwaL@kroah.com>
-From: Bagas Sanjaya <bagasdotme@gmail.com>
-In-Reply-To: <ZCJ2_PuvCUBvlwaL@kroah.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-On 3/28/23 12:11, Greg KH wrote:
->> While at above can you please turn these comments above into kernel-doc
->> comments (see Documentation/doc-guide/kernel-doc.rst for how to write
->> one)? This requires a placeholder doc where you can write e.g. overview
->> of the driver and how it is used. The doc should be in
->> Documentation/driver-api/staging/ (since this is staging driver).
-> 
-> No, these are static functions, or just normal internal-to-the-driver
-> functions, they do not need kerneldoc or any Documentation/* entries,
-> sorry.
-> 
+Hey Outreachy Mentors,
+I am working on a check reported by checkpatch.pl saying,
 
-Ah! I don't see the context behind the comments, thanks anyway!
+CHECK: line length of 101 exceeds 100 columns
+#182: FILE: drivers/staging/greybus/arche-platform.c:182:
++                                                                            WD_STATE_COLDBOOT_TRIG);
 
--- 
-An old man doll... just what I always wanted! - Clara
+
+To refactor the function Ira sent me a link and suggested the use of
+goto statement.
+
+Alison guided me with this problem and asked to share the diff and start
+a thread for discussion. Link to Alison's mail:
+https://lore.kernel.org/outreachy/ZCHPokeiKV37uOmr@aschofie-mobl2/
+
+Kindly review the following diff:
+
+static irqreturn_t arche_platform_wd_irq(int irq, void *devid)
+
+        spin_lock_irqsave(&arche_pdata->wake_lock, flags);
+
+-       if (gpiod_get_value(arche_pdata->wake_detect)) {
+-               /* wake/detect rising */
+-
+-               /*
+-                * If wake/detect line goes high after low, within less than
+-                * 30msec, then standby boot sequence is initiated, which is not
+-                * supported/implemented as of now. So ignore it.
+-                */
+-               if (arche_pdata->wake_detect_state == WD_STATE_BOOT_INIT) {
+-                       if (time_before(jiffies,
+-                                       arche_pdata->wake_detect_start +
+-                                       msecs_to_jiffies(WD_COLDBOOT_PULSE_WIDTH_MS))) {
+-                               arche_platform_set_wake_detect_state(arche_pdata,
+-                                                                    WD_STATE_IDLE);
+-                       } else {
+-                               /*
+-                                * Check we are not in middle of irq thread
+-                                * already
+-                                */
+-                               if (arche_pdata->wake_detect_state !=
+-                                               WD_STATE_COLDBOOT_START) {
+-                                       arche_platform_set_wake_detect_state(arche_pdata,
+-                                                                            WD_STATE_COLDBOOT_TRIG);
+-                                       spin_unlock_irqrestore(&arche_pdata->wake_lock,
+-                                                              flags);
+-                                       return IRQ_WAKE_THREAD;
+-                               }
+-                       }
+-               }
+-       } else {
++       if (!gpiod_get_value(arche_pdata->wake_detect)) {
+                /* wake/detect falling */
+-               if (arche_pdata->wake_detect_state == WD_STATE_IDLE) {
+-                       arche_pdata->wake_detect_start = jiffies;
++               goto falling;
++       }
++
++       /* wake/detect rising */
++
++       /*
++        * If wake/detect line goes high after low, within less than
++        * 30msec, then standby boot sequence is initiated, which is not
++        * supported/implemented as of now. So ignore it.
++        */
++       if (arche_pdata->wake_detect_state == WD_STATE_BOOT_INIT) {
++               if (time_before(jiffies,
++                               arche_pdata->wake_detect_start +
++                               msecs_to_jiffies(WD_COLDBOOT_PULSE_WIDTH_MS))) {
++                       arche_platform_set_wake_detect_state(arche_pdata,
++                                                            WD_STATE_IDLE);
++               } else {
+                        /*
+-                        * In the beginning, when wake/detect goes low
+-                        * (first time), we assume it is meant for coldboot
+-                        * and set the flag. If wake/detect line stays low
+-                        * beyond 30msec, then it is coldboot else fallback
+-                        * to standby boot.
++                        * Check we are not in middle of irq thread
++                        * already
+                         */
+-                       arche_platform_set_wake_detect_state(arche_pdata,
+-                                                            WD_STATE_BOOT_INIT);
++                       if (arche_pdata->wake_detect_state !=
++                                       WD_STATE_COLDBOOT_START) {
++                               arche_platform_set_wake_detect_state(arche_pdata,
++                                                                    WD_STATE_COLDBOOT_TRIG);
++                               spin_unlock_irqrestore(&arche_pdata->wake_lock,
++                                                      flags);
++                               return IRQ_WAKE_THREAD;
++                       }
+                }
++               goto out;
+        }
+
++falling:
++       if (arche_pdata->wake_detect_state == WD_STATE_IDLE) {
++               arche_pdata->wake_detect_start = jiffies;
++               /*
++                * In the beginning, when wake/detect goes low
++                * (first time), we assume it is meant for coldboot
++                * and set the flag. If wake/detect line stays low
++                * beyond 30msec, then it is coldboot else fallback
++                * to standby boot.
++                */
++               arche_platform_set_wake_detect_state(arche_pdata,
++                                                    WD_STATE_BOOT_INIT);
++
++out:
+        spin_unlock_irqrestore(&arche_pdata->wake_lock, flags);
+
+        return IRQ_HANDLED;
+
+Thank you!
+
+Regards,
+Khadija
+
 
