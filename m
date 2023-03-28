@@ -1,50 +1,46 @@
-Received: from mail-wm1-f52.google.com (mail-wm1-f52.google.com [209.85.128.52])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6102D8473
-	for <outreachy@lists.linux.dev>; Tue, 28 Mar 2023 19:34:19 +0000 (UTC)
-Received: by mail-wm1-f52.google.com with SMTP id d11-20020a05600c3acb00b003ef6e6754c5so4673876wms.5
-        for <outreachy@lists.linux.dev>; Tue, 28 Mar 2023 12:34:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1680032057;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=C3mcUEzh4xTCxNi36SBK8a0Q3R5FtEvJD7rcd4RDurc=;
-        b=WcoAhAADhFFUJQOIyImxj8HUheOMz2gHQGj0axibzsZPquh9vS8JmpKaRsNy5kEdcG
-         1dYeNuiTLkAnn+/punUosKHMcAsLDjENkyIgQ69pBly4bFFZqYVjGLnXIcp1H2FP0PuF
-         fqo42cFUTKjQlXJDeBRSXh5jC54RRdyFIuoBXeSpFzEWBON3Qx6g3jF6Y6BE9RWMh7NV
-         teXYkvxiw9bmytbhppGq+Q6jq7hlFNllEZt5S4ef8HRRll5QPtRB6mWPk2dWcoWPxjTG
-         Gv3rGynHDE9iZyGrrP4YVgeeC97g7t2NP98lMnYOZ+3ubxH4gL5I4VSu+onShCjikk6M
-         TllQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680032057;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=C3mcUEzh4xTCxNi36SBK8a0Q3R5FtEvJD7rcd4RDurc=;
-        b=Na/Yh0G5P0H/seKdfsz2aGDIVYOHjmKRMnHvUtUPIuRvM88ZFb11i7cAgCLgX0gkhV
-         WvJOzTwjecC6II6PN2Zk0mweQ4EC5RLXB3NLBurINMvvrht1Lp1RcJVLGKpX2eztd2E9
-         hAMVx+F+9uhcwr9kbxfPWDC8x7Z+5d2jKL5ohhInPimOUzqgZvEUr61Hpa3Q0nW9nAN1
-         rP4YS9b8GP+YaN3XqJ/O+VoTQKJyqoEKTn+JVxOdQaUgcVIDaGK9WMo5aO18AzdX3FjI
-         IVt06qHQL/qI8FIufx7FnIkHH1sgWuA/wPu23WDUmWnR5tWPVEQGO1ii+sUP8CeNbCpt
-         fCmg==
-X-Gm-Message-State: AO0yUKVpFYVVQk9gdEYYV+SRtcN13OL3tSblJq3T/Ay7V8UXI/i2mLtv
-	VJLgoM3vX8VZ8tWAi5QYMr1NFO0yCrej7g==
-X-Google-Smtp-Source: AK7set+T6c4kI7J+PzE5MDAqvPwdzpi8zhQxZW855c6SL8F5CcPo8tpEn+BxidSATI/Egta+u69YRw==
-X-Received: by 2002:a1c:7c19:0:b0:3ed:a583:192a with SMTP id x25-20020a1c7c19000000b003eda583192amr12862201wmc.9.1680032057175;
-        Tue, 28 Mar 2023 12:34:17 -0700 (PDT)
-Received: from khadija-virtual-machine ([39.41.14.14])
-        by smtp.gmail.com with ESMTPSA id he14-20020a05600c540e00b003ef7795e5a3sm3421885wmb.20.2023.03.28.12.34.16
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 28 Mar 2023 12:34:16 -0700 (PDT)
-Date: Wed, 29 Mar 2023 00:34:14 +0500
-From: Khadija Kamran <kamrankhadijadj@gmail.com>
-To: Deepak R Varma <drv@mailo.com>
-Cc: outreachy@lists.linux.dev
-Subject: Re: Suggestions on CHECK avoiding camel case
-Message-ID: <ZCNBNjlQZEA0wiSk@khadija-virtual-machine>
-References: <ZCIO5nBdYVEwdTpB@khadija-virtual-machine>
- <ZCMrmDaudxSMsPwt@ubun2204.myguest.virtualbox.org>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 601D9AFC1;
+	Tue, 28 Mar 2023 23:04:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1680044676; x=1711580676;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=Pezn8xNxurkZBFxsQdb+ZWL+d/jfpSEsRx1iVibRi7M=;
+  b=SeIpoXZ8GGzXPCbXXXDsGTU8sFlFFhqAILgQMyQmmoM/k1FT2QlCwB72
+   DCT/v/sIIuVnloaQaipqoeQ8iqgj3aCbrXnPPoyohtV3jqOOLc0miqvA1
+   lxk6pKEuUpZI3W5a7W3QhLRXLSXEvy1wjhVeuUf4u5Swv+co3Cec2Ck4d
+   4let9r/UKl3qCjilZIzWCVyjoyt0OvKOyuJZJUG+t4Qcbs3Hvtxcfs68o
+   Js1d8bj/8EkQvajyVKHZvfDsCYTG6nRyTngiiPuRvlzJDPXXTzgbbRWZ1
+   5Uuh19p/XjASSAeRSM4ZelblVop7527RHmfE7A8VSP5x00gh2K6wSuLxM
+   w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10663"; a="368486621"
+X-IronPort-AV: E=Sophos;i="5.98,297,1673942400"; 
+   d="scan'208";a="368486621"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Mar 2023 16:04:35 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10663"; a="686603765"
+X-IronPort-AV: E=Sophos;i="5.98,297,1673942400"; 
+   d="scan'208";a="686603765"
+Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.209.62.61])
+  by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Mar 2023 16:04:34 -0700
+Date: Tue, 28 Mar 2023 16:04:33 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: Khadija Kamran <kamrankhadijadj@gmail.com>,
+	Dan Carpenter <error27@gmail.com>
+Cc: outreachy@lists.linux.dev, Vaibhav Hiremath <hvaibhav.linux@gmail.com>,
+	Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	greybus-dev@lists.linaro.org, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] staging: greybus: refactor arche_platform_wd_irq()
+ function
+Message-ID: <ZCNygZ8aPsElfTK6@aschofie-mobl2>
+References: <ZCH6LV5XU0FBlW7Y@khadija-virtual-machine>
+ <a64ad550-9991-4f54-8e09-735133422291@kili.mountain>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -53,67 +49,73 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ZCMrmDaudxSMsPwt@ubun2204.myguest.virtualbox.org>
+In-Reply-To: <a64ad550-9991-4f54-8e09-735133422291@kili.mountain>
 
-On Tue, Mar 28, 2023 at 11:32:00PM +0530, Deepak R Varma wrote:
-> On Tue, Mar 28, 2023 at 02:47:18AM +0500, Khadija Kamran wrote:
-> > Dear Outreachy Mentors,
+On Tue, Mar 28, 2023 at 10:33:23AM +0300, Dan Carpenter wrote:
+> On Tue, Mar 28, 2023 at 01:18:53AM +0500, Khadija Kamran wrote:
+> > Refactor function by adding goto statement. This reduces the
+> > indentation and fixes the issue reported by checkpatch.pl script.
 > > 
-> > I am working on the folowing check reported by checkpatch.pl:
+> > "CHECK: line length of 101 exceeds 100 columns"
 > > 
-> > CHECK: Avoid CamelCase: <dot11RSNAStatsCCMPFormatErrors>
-> > #37: FILE: drivers/staging/rtl8192e/rtllib_crypt_ccmp.c:37:
-> > +       u32 dot11RSNAStatsCCMPFormatErrors;
+> > Signed-off-by: Khadija Kamran <kamrankhadijadj@gmail.com>
+> > ---
+> >  drivers/staging/greybus/arche-platform.c | 11 ++++++-----
+> >  1 file changed, 6 insertions(+), 5 deletions(-)
 > > 
-> > CHECK: Avoid CamelCase: <dot11RSNAStatsCCMPReplays>
-> > #38: FILE: drivers/staging/rtl8192e/rtllib_crypt_ccmp.c:38:
-> > +       u32 dot11RSNAStatsCCMPReplays;
-> > 
-> > Such issues are reported by checkpatch in other files in
-> > drivers/staging/ modules as well.
-> > 
-> > Should I change the varible names here or should I leave it as is?
+> > diff --git a/drivers/staging/greybus/arche-platform.c b/drivers/staging/greybus/arche-platform.c
+> > index fcbd5f71eff2..c7d3b6f7368f 100644
+> > --- a/drivers/staging/greybus/arche-platform.c
+> > +++ b/drivers/staging/greybus/arche-platform.c
+> > @@ -178,11 +178,7 @@ static irqreturn_t arche_platform_wd_irq(int irq, void *devid)
+> >  				 */
+> >  				if (arche_pdata->wake_detect_state !=
+> >  						WD_STATE_COLDBOOT_START) {
+> > -					arche_platform_set_wake_detect_state(arche_pdata,
+> > -									     WD_STATE_COLDBOOT_TRIG);
+> > -					spin_unlock_irqrestore(&arche_pdata->wake_lock,
+> > -							       flags);
+> > -					return IRQ_WAKE_THREAD;
+> > +					goto out;
 > 
-> Hi Khadija,
-> The variable names appear relatively odd to me. You can propose to alter these
-> as per the Linux Kernel coding-style. One thing I would suggest additionally
-> would be to add a comment at the beginning of the variable declaration that
-> would read something like:
-> 	/* .11 RSNA stats for CCMP */
-> 	u32 ccmp_format_errors;
-> 	u32 ccmp_replays
-> 	u32 ccmp_decrypt_errors;
+> I don't like this goto.
 > 
-> Send these as 3 patches with the comment and variable change in patch 1 and the
-> other two variables in two separate patches. Make sure you are able to build the
-> full driver [.ko] after each patch.
+> It suggests that calling arche_platform_set_wake_detect_state(arche_pdata, WD_STATE_COLDBOOT_TRIG);
+> is a part of a shared exit path when that is not true so it is sort of
+> lying to the reader and making things harder to understand.
 > 
-> I _think_ the change is good, however, it will depend upon the maintainers if
-> they too like it.
+> Unlocking is shared.  goto unlock is fine.  But that doesn't help with
+> the very long lines.  (I am not saying that goto unlock is a worthwhile
+> patch to send but I would definitely have found it tolerable).
 > 
-> Please allow a few hours for any other mentors to comment before you start
-> making the changes.
->
+> regards,
+> dan carpenter
 
-Hey Deepak,
 
-Thank you for the suggestion. Okay, I will wait for more feedback before
-starting any work on this. :)
+Khadija,
+While you are reworking this, just wanted to note that, once 'out:'
+becomes the single exit path for the function, it won't be a lie
+any more. So you will have addressed Dan's concern.
+Alison
 
-Regards,
-Khadija
 
-> Thanks,
-> Deepak.
 > 
+> >  				}
+> >  			}
+> >  		}
+> > @@ -205,6 +201,11 @@ static irqreturn_t arche_platform_wd_irq(int irq, void *devid)
+> >  	spin_unlock_irqrestore(&arche_pdata->wake_lock, flags);
+> >  
+> >  	return IRQ_HANDLED;
+> > +
+> > +out:
+> > +	arche_platform_set_wake_detect_state(arche_pdata, WD_STATE_COLDBOOT_TRIG);
+> > +	spin_unlock_irqrestore(&arche_pdata->wake_lock, flags);
+> > +	return IRQ_WAKE_THREAD;
+> >  }
+> >  
+> >  /*
+> > -- 
+> > 2.34.1
 > > 
-> > Kindly guide me with this.
-> > 
-> > Thank you for your time.
-> > 
-> > Regards,
-> > Khadija
-> > 
-> > 
-> 
 > 
