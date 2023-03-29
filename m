@@ -1,39 +1,52 @@
-Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-pl1-f177.google.com (mail-pl1-f177.google.com [209.85.214.177])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 74F943D8A
-	for <outreachy@lists.linux.dev>; Tue, 28 Mar 2023 23:29:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1680046140; x=1711582140;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=RyQibLFYIzZxEFkMWH0nJrV8NJ6FFyPZ8a/UKndzJsU=;
-  b=GTeOQ2Kg0rk0ZWPka9YOqE2bbSL1eo6MwxpMNlaktu5u9mM8aIEJ8whF
-   C7sqoLIIndkEVv3swgiBWzFYlh5JBGiThCYWsTYlntkHzJaqN7rELNveE
-   nyD9uq3dSt0ZEPRU2DNRKw21vhqU/NVPcpVQrFq8XclPABpl23ejlECUX
-   zAyuIZXbLSBK4ZHjgJ6HZQC1JjVUZPN51BqqEvGWkVfg6lQeLeNyllhuw
-   Ig7lTdUL+8VFbKn2TCKjkMsD+WTC+0vPb3177RCxIgWlR41h/Ov6vEpLY
-   VGrntDtZ57+IKeSFn+b2sPKucJfdsoS+nq49s7uNkjpYNmKtHEKJ0f+jv
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10663"; a="368491294"
-X-IronPort-AV: E=Sophos;i="5.98,299,1673942400"; 
-   d="scan'208";a="368491294"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
-  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Mar 2023 16:28:39 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10663"; a="684062052"
-X-IronPort-AV: E=Sophos;i="5.98,299,1673942400"; 
-   d="scan'208";a="684062052"
-Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.209.62.61])
-  by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Mar 2023 16:28:39 -0700
-Date: Tue, 28 Mar 2023 16:28:37 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: Khadija Kamran <kamrankhadijadj@gmail.com>
-Cc: outreachy@lists.linux.dev
-Subject: Re: Suggestions on refactoring arche_platform_wd_irq() function
-Message-ID: <ZCN4JePPsLRqP0sQ@aschofie-mobl2>
-References: <ZCLFLqNjNawO2KnO@khadija-virtual-machine>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BE1A67B;
+	Wed, 29 Mar 2023 11:27:07 +0000 (UTC)
+Received: by mail-pl1-f177.google.com with SMTP id k2so14576391pll.8;
+        Wed, 29 Mar 2023 04:27:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112; t=1680089227;
+        h=content-disposition:mime-version:message-id:subject:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=+TJ7G4hDq7xlIKwrJ26zDgbgCqK0df5mOLaISK4RvPQ=;
+        b=E/GNLde/fMrKMo4evZ443LzqX0eL2H6xJ3nuu3lKPpNyJ1FN6hY7yVVgE8Ogd2DABU
+         8hZkvqBsBn7gNPUWe69BBhz3XPn24VxOdONNMYzhhEWCzAqEfXb3+KrMNhQY8hIrfF2p
+         USfJobgzAsQ9Ys+ao7JrDZQ/4QKZyrfEjdZrlWOAXALmVkcZrSUrPnKdzAxxM2IF62QX
+         Qni6MaPHGw2glKCDwg/8MBpfrpd/rgX9qptROvGiMkqSTo9adO0KEX+mkgf9isGKVW+n
+         Udf0h72r9m9/EGkqvT3d1OvYNhHL0aYIzP8T2A2OPT2F5gsetCKZ6It3rYKeltc9Hj8m
+         TWyQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112; t=1680089227;
+        h=content-disposition:mime-version:message-id:subject:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=+TJ7G4hDq7xlIKwrJ26zDgbgCqK0df5mOLaISK4RvPQ=;
+        b=vfgG09RHBTnAVzzHdpIlGURrp1/fosxWYgKWWQ8opNgfPBFeytiqfE5IVQBugJNxYs
+         ZxEABCB94DW8KM2ve8VjjTERC9aPVNlBn6hwbq/+ROVehAwdQBV/cqybCc+6u4/AytYA
+         f4J4oHh9+TJLCFHo2QZG1InxMaV5wFiRvIMROSqO+UA0FitxKOc0DIwBg4ZpBl48QsDq
+         mtSJZp4HxfSpVTYAjsB8e8iG8xTsuqgsZZ95nf3vP10rnvZj8+tYOBGMtRGMLxqzuVr3
+         lBpA8GTbg7zQ/LOdlBN0viKvuDEQFuKIF0iXMNmvf3BZ8MAd8JsdXOiL0bW72u4sl00M
+         3qKg==
+X-Gm-Message-State: AAQBX9fJp8lRk46yskvzC2+iz8a4P2Aajwym3kDkIzTVm5aZVcYbSloH
+	MPYWnuI9/UkHSP5kXaY9E5e6k1hde8GSO6Pk
+X-Google-Smtp-Source: AKy350ZhS4ZCfAYnVovoXsl7zcwpyMZ+lKrgxSrjdByHbi+fNZT4F8FLvooQN9mN9oefzIHGOAXAwA==
+X-Received: by 2002:a17:90a:18e:b0:23b:2c51:6e7 with SMTP id 14-20020a17090a018e00b0023b2c5106e7mr20068281pjc.21.1680089227092;
+        Wed, 29 Mar 2023 04:27:07 -0700 (PDT)
+Received: from CloudiRingWorld ([60.186.165.89])
+        by smtp.gmail.com with ESMTPSA id pj7-20020a17090b4f4700b00231227781d5sm1240666pjb.2.2023.03.29.04.27.06
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 29 Mar 2023 04:27:06 -0700 (PDT)
+Date: Wed, 29 Mar 2023 19:27:04 +0800
+From: Kloudifold <cloudifold.3125@gmail.com>
+To: Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
+	Teddy Wang <teddy.wang@siliconmotion.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-fbdev@vger.kernel.org, devel@driverdev.osuosl.org,
+	linux-kernel@vger.kernel.org, outreachy@lists.linux.dev,
+	linux-staging@lists.linux.dev, alison.schofield@intel.com
+Subject: [PATCH v6] staging: sm750: Rename sm750_hw_cursor_* functions to
+ snake_case
+Message-ID: <ZCQeyWW3+d7+qT+b@CloudiRingWorld>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -42,168 +55,167 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ZCLFLqNjNawO2KnO@khadija-virtual-machine>
 
-On Tue, Mar 28, 2023 at 03:45:02PM +0500, Khadija Kamran wrote:
-> Hey Outreachy Mentors,
-> I am working on a check reported by checkpatch.pl saying,
-> 
-> CHECK: line length of 101 exceeds 100 columns
-> #182: FILE: drivers/staging/greybus/arche-platform.c:182:
-> +                                                                            WD_STATE_COLDBOOT_TRIG);
-> 
-> 
-> To refactor the function Ira sent me a link and suggested the use of
-> goto statement.
-> 
-> Alison guided me with this problem and asked to share the diff and start
-> a thread for discussion. Link to Alison's mail:
-> https://lore.kernel.org/outreachy/ZCHPokeiKV37uOmr@aschofie-mobl2/
-> 
-> Kindly review the following diff:
+sm750 driver has sm750_hw_cursor_* functions, which are named in
+camelcase. Rename them to snake case to follow the function naming
+convention.
 
-Khadaji,
+- sm750_hw_cursor_setSize  => sm750_hw_cursor_set_size
+- sm750_hw_cursor_setPos   => sm750_hw_cursor_set_pos
+- sm750_hw_cursor_setColor => sm750_hw_cursor_set_color
+- sm750_hw_cursor_setData  => sm750_hw_cursor_set_data
+- sm750_hw_cursor_setData2 => sm750_hw_cursor_set_data2
 
-When you share a diff via email, it's useful to use 'git diff' and
-send that.  $ git diff arche-platform.c > mychanges.diff
+Reported-by: kernel test robot <lkp@intel.com>
+Link: https://lore.kernel.org/oe-kbuild-all/202303110849.X24WnHnM-lkp@intel.com/
+Signed-off-by: Kloudifold <cloudifold.3125@gmail.com>
 
-This diff does tuck the code in. I think it can be tucked in further
-by addng that single shared exit. That allows re-ordering of the work
-in the 'rising' case.
+---
+Changes in v6:
+- Include missed recipients in v5, no functional change to the code
 
-More comments inline below...
+Changes in v5:
+- Include missed recipients in v4, no functional change to the code
 
-We can work that more in the chat.
+Changes in v4:
+- Update the commit msg (Deepak)
+- Use tabs replace 8 spaces
 
-Alison
+This v4 patch was prompted by 2 errors, 2 warnings and 1 checks reported
+by the scripts/checkpatch.pl, which detected the style problem.
 
-> 
-> static irqreturn_t arche_platform_wd_irq(int irq, void *devid)
-> 
-	irqreturn_t rc = IRQ_HANDLED;
+Changes in v3:
+- Add this changelog (Philipp)
+- Move lkp tags and link to the correct location in commit log (Alison)
+- Update the commit msg (Philip)
+- Update the commit log (Bagas, Julia)
 
-Above will help you make a single exit path. Default to IRQ_HANDLED,
-and only change where needed.
+Changes in v2:
+- Use new function names in call sites (LKP)
 
->         spin_lock_irqsave(&arche_pdata->wake_lock, flags);
-> 
-> -       if (gpiod_get_value(arche_pdata->wake_detect)) {
-> -               /* wake/detect rising */
-> -
-> -               /*
-> -                * If wake/detect line goes high after low, within less than
-> -                * 30msec, then standby boot sequence is initiated, which is not
-> -                * supported/implemented as of now. So ignore it.
-> -                */
-> -               if (arche_pdata->wake_detect_state == WD_STATE_BOOT_INIT) {
-> -                       if (time_before(jiffies,
-> -                                       arche_pdata->wake_detect_start +
-> -                                       msecs_to_jiffies(WD_COLDBOOT_PULSE_WIDTH_MS))) {
-> -                               arche_platform_set_wake_detect_state(arche_pdata,
-> -                                                                    WD_STATE_IDLE);
-> -                       }
-			else {
-> -                               /*
-> -                                * Check we are not in middle of irq thread
-> -                                * already
-> -                                */
-> -                               if (arche_pdata->wake_detect_state !=
-> -                                               WD_STATE_COLDBOOT_START) {
-> -                                       arche_platform_set_wake_detect_state(arche_pdata,
-> -                                                                            WD_STATE_COLDBOOT_TRIG);
-> -                                       spin_unlock_irqrestore(&arche_pdata->wake_lock,
-> -                                                              flags);
-> -                                       return IRQ_WAKE_THREAD;
-> -                               }
-> -                       }
-> -               }
-> -       } else {
-> +       if (!gpiod_get_value(arche_pdata->wake_detect)) {
->                 /* wake/detect falling */
-> -               if (arche_pdata->wake_detect_state == WD_STATE_IDLE) {
-> -                       arche_pdata->wake_detect_start = jiffies;
-> +               goto falling;
-> +       }
-> +
-> +       /* wake/detect rising */
-> +
-> +       /*
-> +        * If wake/detect line goes high after low, within less than
-> +        * 30msec, then standby boot sequence is initiated, which is not
-> +        * supported/implemented as of now. So ignore it.
-> +        */
-> +       if (arche_pdata->wake_detect_state == WD_STATE_BOOT_INIT) {
+ drivers/staging/sm750fb/sm750.c        | 22 +++++++++++-----------
+ drivers/staging/sm750fb/sm750_cursor.c | 14 +++++++-------
+ drivers/staging/sm750fb/sm750_cursor.h | 12 ++++++------
+ 3 files changed, 24 insertions(+), 24 deletions(-)
 
-Notice that when (arche_pdata->wake_detect_state != WD_STATE_BOOT_INIT),
-work is done! So, perhaps flip the check, and make a quick escape here.
+diff --git a/drivers/staging/sm750fb/sm750.c b/drivers/staging/sm750fb/sm750.c
+index effc7fcc3..5d7249e82 100644
+--- a/drivers/staging/sm750fb/sm750.c
++++ b/drivers/staging/sm750fb/sm750.c
+@@ -121,14 +121,14 @@ static int lynxfb_ops_cursor(struct fb_info *info, struct fb_cursor *fbcursor)
+ 
+ 	sm750_hw_cursor_disable(cursor);
+ 	if (fbcursor->set & FB_CUR_SETSIZE)
+-		sm750_hw_cursor_setSize(cursor,
+-					fbcursor->image.width,
+-					fbcursor->image.height);
++		sm750_hw_cursor_set_size(cursor,
++					 fbcursor->image.width,
++					 fbcursor->image.height);
+ 
+ 	if (fbcursor->set & FB_CUR_SETPOS)
+-		sm750_hw_cursor_setPos(cursor,
+-				       fbcursor->image.dx - info->var.xoffset,
+-				       fbcursor->image.dy - info->var.yoffset);
++		sm750_hw_cursor_set_pos(cursor,
++					fbcursor->image.dx - info->var.xoffset,
++					fbcursor->image.dy - info->var.yoffset);
+ 
+ 	if (fbcursor->set & FB_CUR_SETCMAP) {
+ 		/* get the 16bit color of kernel means */
+@@ -142,14 +142,14 @@ static int lynxfb_ops_cursor(struct fb_info *info, struct fb_cursor *fbcursor)
+ 		     ((info->cmap.green[fbcursor->image.bg_color] & 0xfc00) >> 5) |
+ 		     ((info->cmap.blue[fbcursor->image.bg_color] & 0xf800) >> 11);
+ 
+-		sm750_hw_cursor_setColor(cursor, fg, bg);
++		sm750_hw_cursor_set_color(cursor, fg, bg);
+ 	}
+ 
+ 	if (fbcursor->set & (FB_CUR_SETSHAPE | FB_CUR_SETIMAGE)) {
+-		sm750_hw_cursor_setData(cursor,
+-					fbcursor->rop,
+-					fbcursor->image.data,
+-					fbcursor->mask);
++		sm750_hw_cursor_set_data(cursor,
++					 fbcursor->rop,
++					 fbcursor->image.data,
++					 fbcursor->mask);
+ 	}
+ 
+ 	if (fbcursor->enable)
+diff --git a/drivers/staging/sm750fb/sm750_cursor.c b/drivers/staging/sm750fb/sm750_cursor.c
+index 43e6f52c2..ff643e33f 100644
+--- a/drivers/staging/sm750fb/sm750_cursor.c
++++ b/drivers/staging/sm750fb/sm750_cursor.c
+@@ -58,13 +58,13 @@ void sm750_hw_cursor_disable(struct lynx_cursor *cursor)
+ 	poke32(HWC_ADDRESS, 0);
+ }
+ 
+-void sm750_hw_cursor_setSize(struct lynx_cursor *cursor, int w, int h)
++void sm750_hw_cursor_set_size(struct lynx_cursor *cursor, int w, int h)
+ {
+ 	cursor->w = w;
+ 	cursor->h = h;
+ }
+ 
+-void sm750_hw_cursor_setPos(struct lynx_cursor *cursor, int x, int y)
++void sm750_hw_cursor_set_pos(struct lynx_cursor *cursor, int x, int y)
+ {
+ 	u32 reg;
+ 
+@@ -73,7 +73,7 @@ void sm750_hw_cursor_setPos(struct lynx_cursor *cursor, int x, int y)
+ 	poke32(HWC_LOCATION, reg);
+ }
+ 
+-void sm750_hw_cursor_setColor(struct lynx_cursor *cursor, u32 fg, u32 bg)
++void sm750_hw_cursor_set_color(struct lynx_cursor *cursor, u32 fg, u32 bg)
+ {
+ 	u32 reg = (fg << HWC_COLOR_12_2_RGB565_SHIFT) &
+ 		HWC_COLOR_12_2_RGB565_MASK;
+@@ -82,8 +82,8 @@ void sm750_hw_cursor_setColor(struct lynx_cursor *cursor, u32 fg, u32 bg)
+ 	poke32(HWC_COLOR_3, 0xffe0);
+ }
+ 
+-void sm750_hw_cursor_setData(struct lynx_cursor *cursor, u16 rop,
+-			     const u8 *pcol, const u8 *pmsk)
++void sm750_hw_cursor_set_data(struct lynx_cursor *cursor, u16 rop,
++			      const u8 *pcol, const u8 *pmsk)
+ {
+ 	int i, j, count, pitch, offset;
+ 	u8 color, mask, opr;
+@@ -132,8 +132,8 @@ void sm750_hw_cursor_setData(struct lynx_cursor *cursor, u16 rop,
+ 	}
+ }
+ 
+-void sm750_hw_cursor_setData2(struct lynx_cursor *cursor, u16 rop,
+-			      const u8 *pcol, const u8 *pmsk)
++void sm750_hw_cursor_set_data2(struct lynx_cursor *cursor, u16 rop,
++			       const u8 *pcol, const u8 *pmsk)
+ {
+ 	int i, j, count, pitch, offset;
+ 	u8 color, mask;
+diff --git a/drivers/staging/sm750fb/sm750_cursor.h b/drivers/staging/sm750fb/sm750_cursor.h
+index b59643dd6..88fa02f63 100644
+--- a/drivers/staging/sm750fb/sm750_cursor.h
++++ b/drivers/staging/sm750fb/sm750_cursor.h
+@@ -5,11 +5,11 @@
+ /* hw_cursor_xxx works for voyager,718 and 750 */
+ void sm750_hw_cursor_enable(struct lynx_cursor *cursor);
+ void sm750_hw_cursor_disable(struct lynx_cursor *cursor);
+-void sm750_hw_cursor_setSize(struct lynx_cursor *cursor, int w, int h);
+-void sm750_hw_cursor_setPos(struct lynx_cursor *cursor, int x, int y);
+-void sm750_hw_cursor_setColor(struct lynx_cursor *cursor, u32 fg, u32 bg);
+-void sm750_hw_cursor_setData(struct lynx_cursor *cursor, u16 rop,
+-			     const u8 *data, const u8 *mask);
+-void sm750_hw_cursor_setData2(struct lynx_cursor *cursor, u16 rop,
++void sm750_hw_cursor_set_size(struct lynx_cursor *cursor, int w, int h);
++void sm750_hw_cursor_set_pos(struct lynx_cursor *cursor, int x, int y);
++void sm750_hw_cursor_set_color(struct lynx_cursor *cursor, u32 fg, u32 bg);
++void sm750_hw_cursor_set_data(struct lynx_cursor *cursor, u16 rop,
+ 			      const u8 *data, const u8 *mask);
++void sm750_hw_cursor_set_data2(struct lynx_cursor *cursor, u16 rop,
++			       const u8 *data, const u8 *mask);
+ #endif
+-- 
+2.40.0
 
-That allows you to un-indent this next piece:
-
-> +               if (time_before(jiffies,
-> +                               arche_pdata->wake_detect_start +
-> +                               msecs_to_jiffies(WD_COLDBOOT_PULSE_WIDTH_MS))) {
-> +                       arche_platform_set_wake_detect_state(arche_pdata,
-> +                                                            WD_STATE_IDLE);
-
-Another chance for a jump to out. There is no more work after this.
-By jumping to out, rather than if-then-else'ing you are making the
-code stream-lined, hence readable.
-
-> +               } else {
->                         /*
-> -                        * In the beginning, when wake/detect goes low
-> -                        * (first time), we assume it is meant for coldboot
-> -                        * and set the flag. If wake/detect line stays low
-> -                        * beyond 30msec, then it is coldboot else fallback
-> -                        * to standby boot.
-> +                        * Check we are not in middle of irq thread
-> +                        * already
->                          */
-> -                       arche_platform_set_wake_detect_state(arche_pdata,
-> -                                                            WD_STATE_BOOT_INIT);
-> +                       if (arche_pdata->wake_detect_state !=
-> +                                       WD_STATE_COLDBOOT_START) {
-> +                               arche_platform_set_wake_detect_state(arche_pdata,
-> +                                                                    WD_STATE_COLDBOOT_TRIG)
-
-use the single exit path, rather than unlock and exit here.
-> +                               spin_unlock_irqrestore(&arche_pdata->wake_lock,
-> +                                                      flags);
-> +                               return IRQ_WAKE_THREAD;
-
-rc = IRQ_WAKE_THREAD;
-goto out;
-
-> +                       }
->                 }
-> +               goto out;
->         }
-> 
-> +falling:
-> +       if (arche_pdata->wake_detect_state == WD_STATE_IDLE) {
-> +               arche_pdata->wake_detect_start = jiffies;
-> +               /*
-> +                * In the beginning, when wake/detect goes low
-> +                * (first time), we assume it is meant for coldboot
-> +                * and set the flag. If wake/detect line stays low
-> +                * beyond 30msec, then it is coldboot else fallback
-> +                * to standby boot.
-> +                */
-> +               arche_platform_set_wake_detect_state(arche_pdata,
-> +                                                    WD_STATE_BOOT_INIT);
-> +
-> +out:
->         spin_unlock_irqrestore(&arche_pdata->wake_lock, flags);
-> 
->         return IRQ_HANDLED;
-
-now you'll have an 'rc' to return, which is default IRQ_HANDLED.
-
-> 
-> Thank you!
-> 
-> Regards,
-> Khadija
-> 
-> 
-> 
