@@ -1,131 +1,75 @@
-Received: from mail-wr1-f54.google.com (mail-wr1-f54.google.com [209.85.221.54])
+Received: from mail-ed1-f47.google.com (mail-ed1-f47.google.com [209.85.208.47])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 47AAB8F66;
-	Sat,  1 Apr 2023 21:20:40 +0000 (UTC)
-Received: by mail-wr1-f54.google.com with SMTP id t4so20460929wra.7;
-        Sat, 01 Apr 2023 14:20:40 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 31C972F2D;
+	Sun,  2 Apr 2023 14:32:52 +0000 (UTC)
+Received: by mail-ed1-f47.google.com with SMTP id t10so107524191edd.12;
+        Sun, 02 Apr 2023 07:32:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1680384038; x=1682976038;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=ByAoZWXhCyKwFW+7RrBi6qp6VuxHVvsdrIcCs8B1g/A=;
-        b=ltk51KbXub0mj3FrZK4k32vjHzuabJlksHq2z6CjgDmgJb/6/YpHqn4D8ZQhWrp8F0
-         2O0FfoyZDmig+CK7zv0J4ECOK6ZXROEOiBB9z8sDh1sSSQTxtu1GKuo2FySrq6V/SLRK
-         xSxO/PJ+BvSJGX2FrJF/xTEkE+FjyqLg3oMEh1i2oyCM4cgwapZuHt4+vj0SNAbRSGlh
-         0EwyfUI+vSus84icjC5X6xDhdjF6c7ZSg+R7swiH2LtwzKIQA0aP7oWf8Gw2hg8LuagV
-         id6p12HHenbiLUT2IJShoeSOCWNUDMhON3UTe7T2prs/USeBLV2aPX5PTqWEFcCN3qm5
-         OPaw==
+        d=gmail.com; s=20210112; t=1680445970;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=btTikhkSAhCNIjZnkFaaVYNDj8dPGj1R6e13KUaPBKQ=;
+        b=GoKwnVSzTLPQiUQiv4d2EsRl+TJeqJ4ImhxfaM4msiuHVkekw7pKa9OtNb7vtrz1M1
+         vzlouMNmYme95Hr1OZxELt/6G4GWozhmGLW1aaOujotlDdHrvRdA7kzaE5XXiOILsTDl
+         gwqibkZgg1Ya5A/+2xgLdgXEH8UMbFh2Vnj7g8ci1ruRkCKznIrffjzgdBRjzdc6rLT7
+         PJ8bOpZfMfPiK37txnZp679ddQoQakB9i+blSoLy3G9L5sVaci5QCm1LH4lfoCQgdbeU
+         zyIcvM0pstBV0mKsdSp9f+6sS/1GA5bgvudMRCY9IenMmpt2QicqU0OjbojKj2r5Mcv4
+         73ow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680384038; x=1682976038;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ByAoZWXhCyKwFW+7RrBi6qp6VuxHVvsdrIcCs8B1g/A=;
-        b=DFpg9KGJ3yM/Fl4DJqWd3BsMJ05h9kODDyNWs+n8x078M+DaTF6zsjm8GBRJXFrMMl
-         FRQkD76aRAJQSMUCGnnqIFtKfxxyUQNCxPrR7qjsDVbavS3vvMBxWqB3gii7q1rRYi6i
-         +4qo5Sj+oYk80BxmJ16G0fexvwDF+nKBGVPfzjfYqXgiTArEkOi82ljyZGituH+miWex
-         +/PFE/WRkFpn+sGw0NlbgSnKqT8vqeOU3vaw+VkNXnA4V97CydiO7h8byTTMtQJah+vp
-         QHPJcPFF2+v8EskLxSEBbNEoObJBPeR2gGmr5Dl+FkTiuYHF2WdFGZ+XPL3pjmGrna2V
-         AaJg==
-X-Gm-Message-State: AAQBX9cbWZuEzysaO75PDo5ll0tjR9R813XIiaLCspsuN34/62uKuGeE
-	Mfna1a8wEREGI5GKdPVIcXXj8AvHtHo=
-X-Google-Smtp-Source: AKy350YgtkT4Bw1fq4SE5H3x2PpD2KACelr/oOt3B+d32gtlPCdYYDMtO0OFGAQbLGi3Sfk98sknCg==
-X-Received: by 2002:adf:f78b:0:b0:2e4:aa42:7872 with SMTP id q11-20020adff78b000000b002e4aa427872mr5908805wrp.4.1680384038368;
-        Sat, 01 Apr 2023 14:20:38 -0700 (PDT)
-Received: from [192.168.0.103] (p57935146.dip0.t-ipconnect.de. [87.147.81.70])
-        by smtp.gmail.com with ESMTPSA id o15-20020a5d474f000000b002d7a75a2c20sm5752639wrs.80.2023.04.01.14.20.37
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 01 Apr 2023 14:20:37 -0700 (PDT)
-Message-ID: <624a11a3-2461-6c8f-155d-e76e5e3e471e@gmail.com>
-Date: Sat, 1 Apr 2023 23:20:36 +0200
+        d=1e100.net; s=20210112; t=1680445970;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=btTikhkSAhCNIjZnkFaaVYNDj8dPGj1R6e13KUaPBKQ=;
+        b=4oe0MB4SSzhujOn46euMkA1Lx7UQFP+yTh6yAO46+pe1U8Amw6dOmydmoNd+mrNeoV
+         nZeq/BRcXJWuvQk4jgMvWLEe5EIJJPgugMKwwvQciCdCQID2MDvA55SCQNgMkL+p7v2O
+         ELC+D30em81dW6sqF6QQ0PRG+jBeXtlsVF1CNF80lLtqad1I1lsA4s0+colDS2kXUpOM
+         JFK8QrZyAPZmA+9kanRpXjJQbB7erqCVsv/GbWTVAG8ILvyo/nrKCJ9+zyUa2OWVA6yE
+         oZSJya7UGHDWSbnSM8QfF4Bh0Nv8DmvNQ32xIxvm770Xfq2Zd6vYuWkBiM6/x5AjEIs7
+         zR5g==
+X-Gm-Message-State: AAQBX9fvxKS0/dKz12vNuOkQqU2iUp72AzRf670bn7Oxv/Jm5cQsswmo
+	oxrc6l2QCTEN+1Vr7API5crV5v+e1M0aJQ==
+X-Google-Smtp-Source: AKy350aZdFkDoEKRIqv/GHTM30RquYGykcCtD+5cOTSeMjg/39EC+NgfkiSPTUO8+kcKgpFheMsvXQ==
+X-Received: by 2002:aa7:c9d6:0:b0:4f9:db7b:b6b4 with SMTP id i22-20020aa7c9d6000000b004f9db7bb6b4mr26956323edt.40.1680445969959;
+        Sun, 02 Apr 2023 07:32:49 -0700 (PDT)
+Received: from khadija-virtual-machine.localdomain ([39.41.14.14])
+        by smtp.gmail.com with ESMTPSA id p18-20020a170906839200b009476dafa705sm3273292ejx.193.2023.04.02.07.32.48
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 02 Apr 2023 07:32:49 -0700 (PDT)
+From: Khadija Kamran <kamrankhadijadj@gmail.com>
+To: outreachy@lists.linux.dev
+Cc: gregkh@linuxfoundation.org,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2 0/5] staging: rtl8192e: fix checkpatch issues in rtllib_crypt_ccmp.c
+Date: Sun,  2 Apr 2023 19:32:41 +0500
+Message-Id: <cover.1680445545.git.kamrankhadijadj@gmail.com>
+X-Mailer: git-send-email 2.34.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.9.0
-Subject: Re: [PATCH 3/5] staging: rtl8192e: avoid camel-case
- <dot11RSNAStatsCCMPFormatErrors>
-To: Khadija Kamran <kamrankhadijadj@gmail.com>, outreachy@lists.linux.dev
-Cc: gregkh@linuxfoundation.org, linux-staging@lists.linux.dev,
- linux-kernel@vger.kernel.org, Deepak R Varma <drv@mailo.com>
-References: <cover.1680375200.git.kamrankhadijadj@gmail.com>
- <7ed9ed4df19b1ab818fc4b3ec43083e1a051c38e.1680375200.git.kamrankhadijadj@gmail.com>
-Content-Language: en-US
-From: Philipp Hortmann <philipp.g.hortmann@gmail.com>
-In-Reply-To: <7ed9ed4df19b1ab818fc4b3ec43083e1a051c38e.1680375200.git.kamrankhadijadj@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 
-On 4/1/23 20:58, Khadija Kamran wrote:
-> Linux kernel coding-style does not suggest mixed-case names. This issue
-> is reported by checkpatch.
-> 
-> Fix variable name by changing it from camel-case to lower-case. In order
-> to describe the variable name better, add a comment above it.
-> 
+Fix several issues reported by checkpatch in rtllib_crypt_ccmp.c file.
 
-I think you are changing from camel case to snake case.
+Changes in v2:
+ - Update variable_name in PATCH 3, 4 and 5 to dot11rsna_{variable_name} 
+ - Remove comment from PATCH 3
 
-> Suggested-by: Deepak R Varma <drv@mailo.com>
-> Signed-off-by: Khadija Kamran <kamrankhadijadj@gmail.com>
-> ---
->   drivers/staging/rtl8192e/rtllib_crypt_ccmp.c | 9 +++++----
->   1 file changed, 5 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/staging/rtl8192e/rtllib_crypt_ccmp.c b/drivers/staging/rtl8192e/rtllib_crypt_ccmp.c
-> index 8d3067a6ccca..e8a3bc94efdc 100644
-> --- a/drivers/staging/rtl8192e/rtllib_crypt_ccmp.c
-> +++ b/drivers/staging/rtl8192e/rtllib_crypt_ccmp.c
-> @@ -34,7 +34,8 @@ struct rtllib_ccmp_data {
->   	u8 tx_pn[CCMP_PN_LEN];
->   	u8 rx_pn[CCMP_PN_LEN];
->   
-> -	u32 dot11RSNAStatsCCMPFormatErrors;
-> +	/* .11 RSNA stats for CCMP */
-> +	u32 ccmp_format_errors;
->   	u32 dot11RSNAStatsCCMPReplays;
->   	u32 dot11RSNAStatsCCMPDecryptErrors;
+Khadija Kamran (5):
+  staging: rtl8192e: remove extra blank lines in rtllib_crypt_ccmp.c
+  staging: rtl8192e: fix alignment to match open parenthesis
+  staging: rtl8192e: avoid CamelCase <dot11RSNAStatsCCMPFormatErrors>
+  staging: rtl8192e: avoid CamelCase <dot11RSNAStatsCCMPReplays>
+  staging: rtl8192e: avoid CamelCase <dot11RSNAStatsCCMPDecryptErrors>
 
+ drivers/staging/rtl8192e/rtllib_crypt_ccmp.c | 32 +++++++-------------
+ 1 file changed, 11 insertions(+), 21 deletions(-)
 
-Is it obvious that CCMPFormatErrors is a part of dot11RSNAStats? OK. You 
-added a comment. Often for me the issue is that the comment is only 
-valid to one line or to more?
-
-I would prefer something like: dot11rsna_stats_ccmp_format_err
-This is keeping the information the author gave variable and I would 
-understand better and see it in every place.
-
->   
-> @@ -226,7 +227,7 @@ static int rtllib_ccmp_decrypt(struct sk_buff *skb, int hdr_len, void *priv)
->   	u8 pn[6];
->   
->   	if (skb->len < hdr_len + CCMP_HDR_LEN + CCMP_MIC_LEN) {
-> -		key->dot11RSNAStatsCCMPFormatErrors++;
-> +		key->ccmp_format_errors++;
->   		return -1;
->   	}
->   
-> @@ -238,7 +239,7 @@ static int rtllib_ccmp_decrypt(struct sk_buff *skb, int hdr_len, void *priv)
->   			pr_debug("CCMP: received packet without ExtIV flag from %pM\n",
->   				 hdr->addr2);
->   		}
-> -		key->dot11RSNAStatsCCMPFormatErrors++;
-> +		key->ccmp_format_errors++;
->   		return -2;
->   	}
->   	keyidx >>= 6;
-> @@ -374,7 +375,7 @@ static void rtllib_ccmp_print_stats(struct seq_file *m, void *priv)
->   		   "key[%d] alg=CCMP key_set=%d tx_pn=%pM rx_pn=%pM format_errors=%d replays=%d decrypt_errors=%d\n",
->   		   ccmp->key_idx, ccmp->key_set,
->   		   ccmp->tx_pn, ccmp->rx_pn,
-> -		   ccmp->dot11RSNAStatsCCMPFormatErrors,
-> +		   ccmp->ccmp_format_errors,
->   		   ccmp->dot11RSNAStatsCCMPReplays,
->   		   ccmp->dot11RSNAStatsCCMPDecryptErrors);
->   }
+-- 
+2.34.1
 
