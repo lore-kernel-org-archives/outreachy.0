@@ -1,102 +1,80 @@
-Received: from mail-ed1-f44.google.com (mail-ed1-f44.google.com [209.85.208.44])
+Received: from mail-ed1-f54.google.com (mail-ed1-f54.google.com [209.85.208.54])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EAABE442D;
-	Sun,  2 Apr 2023 14:32:59 +0000 (UTC)
-Received: by mail-ed1-f44.google.com with SMTP id x3so107599459edb.10;
-        Sun, 02 Apr 2023 07:32:59 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 71746442D;
+	Sun,  2 Apr 2023 16:00:07 +0000 (UTC)
+Received: by mail-ed1-f54.google.com with SMTP id i5so108344552eda.0;
+        Sun, 02 Apr 2023 09:00:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112; t=1680445978;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=81yzIuoBJY31RIgCNtPXI4MH4MI0Ymz/ovjpa7G5Au8=;
-        b=mz8q8tlTRahr4dUJqiWpfSFk/N5vv6BLwE3qVuiCsEYdc/9lsa0OL2zlXz9KCo/NQQ
-         DiPa3GFA4WkUWpNMJdWWumgcd8swVdzafrOhHnOBNi8qZ3XGv5Na+jxcwGDSDrMvbtC9
-         OzlmQwlz36Gp/gSfyaOFoHgWIX4CfNHJT9T8h6xAjwCTojXywY0/hEfXP1WzmKo1YbCX
-         aIbC1Knr8I+lpuC4YrKpYu+T4YsLIIS9nq8PoYwKi+QnnB9oWlPFmAqqvH8obAWYf2vu
-         lWo8uab5iTo+IFTmSXBygZh4UTRSIF7jNMv2ba7Zh4pcwi1vvc8Uw4vWpCUrZVrF9H54
-         sjMw==
+        d=gmail.com; s=20210112; t=1680451205; x=1683043205;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=j6lbVzylHSD1bkwqF+EEh8vp3rCF+fULXBoCye8hbUI=;
+        b=oT3hW/sIwwMuZlR7SThF3UUX3oUtfKDo9uiBq3hqWEZJ8TBfOfLq4pkxl1obxYQDBI
+         OseLrkQA/pUcaiPM/nwn2FK5a9AxbTkcy63hrcdQa7Kw1AeLpZ0h+RlQtbbnt2b5Tshm
+         WGbIeWLGsu/cI0O9EJ6xM//TLbCcWXFMpMvNBjwiw1rpVk7LEroXiZZX5Ku22aO0Fxcc
+         HBLdPlkuraleN0fC0khsQ+yblRFJqoDaJ0XSwORO4R9zIXSQA5a6YlnLYT+k7dGh9Kd9
+         mgbkZBTw/xJh+nmoPozDal+wl/zqzDY5vAMvRh+O3rUiLjQX0ChfGKWsgcPis8XfzC1L
+         OvAQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20210112; t=1680445978;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=81yzIuoBJY31RIgCNtPXI4MH4MI0Ymz/ovjpa7G5Au8=;
-        b=nSfP+e+lklI/TovFcFbi5VQUUKE17HjkaWstLfZz1cgofcAX6Q+637THF05bBbxiiF
-         2zvUUohfcMOjaFWq10qni2kiWLMsB5aDYl4add70u3KESg10ehRvWEMvuwjKJroFW2gs
-         CObMf1YTi3pX/ujdLvvEUijPBiHcmT4FJhkstqws4ivCFDIzMNh3LWv5mQaosQp2OVWa
-         94rbnx3eTnP77BQFs7VfzOGcOOv5s1wLrwNH3jsS34bj382fjrf3jGVrUAOdyDB7QBEI
-         1sxBVdYWns9mVin4gGDvmLK9Lz+BJ2Kfd6/3bPpDOaa/D0VAgMvZUSrzauRoW7xOtTyX
-         tDww==
-X-Gm-Message-State: AAQBX9c1lv01QRM5lBdz+9swCinAviBABFOBUBsWCzAUOyVqJvcOe3QF
-	Ifq5xBIENZYohnp9AXANDoD30o9DxA13ew==
-X-Google-Smtp-Source: AKy350ZcqOubIDVdPJe9vMrgbtScXlEby33eShAZQfT065MfI3J9DCmnbKS86v+TQomKpq6WDtswyA==
-X-Received: by 2002:a17:906:5d03:b0:92f:495b:bc7c with SMTP id g3-20020a1709065d0300b0092f495bbc7cmr17158572ejt.23.1680445978075;
-        Sun, 02 Apr 2023 07:32:58 -0700 (PDT)
-Received: from khadija-virtual-machine.localdomain ([39.41.14.14])
-        by smtp.gmail.com with ESMTPSA id p18-20020a170906839200b009476dafa705sm3273292ejx.193.2023.04.02.07.32.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 02 Apr 2023 07:32:57 -0700 (PDT)
-From: Khadija Kamran <kamrankhadijadj@gmail.com>
-To: outreachy@lists.linux.dev
-Cc: gregkh@linuxfoundation.org,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 5/5] staging: rtl8192e: avoid CamelCase <dot11RSNAStatsCCMPDecryptErrors>
-Date: Sun,  2 Apr 2023 19:32:46 +0500
-Message-Id: <d29ff5db6f19d79ee762a835db88155bee2aefba.1680445545.git.kamrankhadijadj@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <cover.1680445545.git.kamrankhadijadj@gmail.com>
-References: <cover.1680445545.git.kamrankhadijadj@gmail.com>
+        d=1e100.net; s=20210112; t=1680451205; x=1683043205;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=j6lbVzylHSD1bkwqF+EEh8vp3rCF+fULXBoCye8hbUI=;
+        b=dNXNGgi3fZb3ZWMW0PVG+8ywz2UaUwLk7n+zl/zqUrJJaMvAC5WWMW6o/KlErbRJ3Z
+         DxEYn/DftaWq9+Z24SGTGOuiWN22KDleG8HZgu33Xq8GrU1Xfxi6LYY8FmBiXv+onOOg
+         V8NAYFYLpn0r72E8TWXmsvWVMx0las3L3/CC9S9TWWWONEkuHXmQ1JhZc2ZGTHm3yUGr
+         THLTgWDSXgHO6a9JETuug6qFnsyFvSDFk/EWC//s6sNOBw6wGPYa5iV1e7AVC8JQ23I+
+         AgKgLbnZeGAWsf2LDLqc9V6649WcEgxeIhJ9LOhZVWOGRREfUwFaGD4Ot/KRJBQCZTZt
+         Rr+g==
+X-Gm-Message-State: AAQBX9duWYBUjWuMEzYGaeh0aljEbVztvYKQlUYma8HQz5DgZ+KSZsJH
+	6JnBjayOOUmYtSYB7jf+ak4=
+X-Google-Smtp-Source: AKy350brr9ZcZTZfYr38J1LydLHUvz8vf6PleV3OLbnjTdr5uVSjVgjB/czCAO0bqxm5nTG8iwvmJw==
+X-Received: by 2002:a17:906:1c4:b0:931:5145:c51f with SMTP id 4-20020a17090601c400b009315145c51fmr6452359ejj.4.1680451205506;
+        Sun, 02 Apr 2023 09:00:05 -0700 (PDT)
+Received: from [192.168.0.102] (p57935146.dip0.t-ipconnect.de. [87.147.81.70])
+        by smtp.gmail.com with ESMTPSA id b10-20020a1709065e4a00b0093dbb008281sm3354798eju.130.2023.04.02.09.00.04
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 02 Apr 2023 09:00:04 -0700 (PDT)
+Message-ID: <91cc4474-8991-6762-841e-8936d3bb66d2@gmail.com>
+Date: Sun, 2 Apr 2023 18:00:03 +0200
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.9.0
+Subject: Re: [PATCH v2 0/5] staging: rtl8192e: fix checkpatch issues in
+ rtllib_crypt_ccmp.c
+To: Khadija Kamran <kamrankhadijadj@gmail.com>, outreachy@lists.linux.dev
+Cc: gregkh@linuxfoundation.org, linux-staging@lists.linux.dev,
+ linux-kernel@vger.kernel.org
+References: <cover.1680445545.git.kamrankhadijadj@gmail.com>
+Content-Language: en-US
+From: Philipp Hortmann <philipp.g.hortmann@gmail.com>
+In-Reply-To: <cover.1680445545.git.kamrankhadijadj@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 
-Linux kernel coding-style suggests to not use mixed-case names. Fix
-checkpatch issue by changing the variable name from camel case to snake
-case.
-
-Signed-off-by: Khadija Kamran <kamrankhadijadj@gmail.com>
----
- drivers/staging/rtl8192e/rtllib_crypt_ccmp.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/staging/rtl8192e/rtllib_crypt_ccmp.c b/drivers/staging/rtl8192e/rtllib_crypt_ccmp.c
-index 448c0a931c78..f88096bcb181 100644
---- a/drivers/staging/rtl8192e/rtllib_crypt_ccmp.c
-+++ b/drivers/staging/rtl8192e/rtllib_crypt_ccmp.c
-@@ -36,7 +36,7 @@ struct rtllib_ccmp_data {
- 
- 	u32 dot11rsna_stats_ccmp_format_errors;
- 	u32 dot11rsna_stats_ccmp_replays;
--	u32 dot11RSNAStatsCCMPDecryptErrors;
-+	u32 dot11rsna_stats_ccmp_decrypt_errors;
- 
- 	int key_idx;
- 
-@@ -296,7 +296,7 @@ static int rtllib_ccmp_decrypt(struct sk_buff *skb, int hdr_len, void *priv)
- 				pr_debug("CCMP: decrypt failed: STA= %pM\n",
- 					 hdr->addr2);
- 			}
--			key->dot11RSNAStatsCCMPDecryptErrors++;
-+			key->dot11rsna_stats_ccmp_decrypt_errors++;
- 			return -5;
- 		}
- 
-@@ -376,7 +376,7 @@ static void rtllib_ccmp_print_stats(struct seq_file *m, void *priv)
- 		   ccmp->tx_pn, ccmp->rx_pn,
- 		   ccmp->dot11rsna_stats_ccmp_format_errors,
- 		   ccmp->dot11rsna_stats_ccmp_replays,
--		   ccmp->dot11RSNAStatsCCMPDecryptErrors);
-+		   ccmp->dot11rsna_stats_ccmp_decrypt_errors);
- }
- 
- static struct lib80211_crypto_ops rtllib_crypt_ccmp = {
--- 
-2.34.1
-
+On 4/2/23 16:32, Khadija Kamran wrote:
+> Fix several issues reported by checkpatch in rtllib_crypt_ccmp.c file.
+> 
+> Changes in v2:
+>   - Update variable_name in PATCH 3, 4 and 5 to dot11rsna_{variable_name}
+>   - Remove comment from PATCH 3
+> 
+> Khadija Kamran (5):
+>    staging: rtl8192e: remove extra blank lines in rtllib_crypt_ccmp.c
+>    staging: rtl8192e: fix alignment to match open parenthesis
+>    staging: rtl8192e: avoid CamelCase <dot11RSNAStatsCCMPFormatErrors>
+>    staging: rtl8192e: avoid CamelCase <dot11RSNAStatsCCMPReplays>
+>    staging: rtl8192e: avoid CamelCase <dot11RSNAStatsCCMPDecryptErrors>
+> 
+>   drivers/staging/rtl8192e/rtllib_crypt_ccmp.c | 32 +++++++-------------
+>   1 file changed, 11 insertions(+), 21 deletions(-)
+> 
+Tested-by: Philipp Hortmann <philipp.g.hortmann@gmail.com>
