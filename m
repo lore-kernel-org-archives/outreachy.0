@@ -1,57 +1,47 @@
-Received: from mail-wm1-f45.google.com (mail-wm1-f45.google.com [209.85.128.45])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mga01.intel.com (mga01.intel.com [192.55.52.88])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 584F7C2DD;
-	Thu, 27 Apr 2023 06:27:57 +0000 (UTC)
-Received: by mail-wm1-f45.google.com with SMTP id 5b1f17b1804b1-3f196e8e2c6so61838805e9.1;
-        Wed, 26 Apr 2023 23:27:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1682576875; x=1685168875;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=M+Q6Yeni4/TzbxAxTvVHzNKtVswqKwlCXXDuNOp8S9U=;
-        b=E1burq30fK2jViySXdTDPkln1s3+moVqNN5Yrb/SmseBcmrokfn6+DwK8NSArF0HE2
-         MPpdvVUZQu4RGom+xGVXq2yseM6/zkuQOsZoYxk6tvKeRx8A9s11NgbFM+6n/E8ot/Y4
-         uwL0hkLrDqp6Epbx4U3wUl2tZebOgJaU80oPHHEsT1SYJbfUIDDku7VQ+ilO52x+t6rr
-         NxDl97e7APP5gxyijUAXNremZfibI3RUGCPGDVHeLGcKizG7Rbk2+H9g8NyxejpUnVKl
-         A+38Aj7N6jkTvpB0U74TqmeU3cgKXaomUCMQ9pyZBXevsQQmp+emTlHUegHHE0SyLSKm
-         15Gg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1682576875; x=1685168875;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=M+Q6Yeni4/TzbxAxTvVHzNKtVswqKwlCXXDuNOp8S9U=;
-        b=QFfNvisNCHCHd5OHq0nKWyahqfLGVVYrp2ZDrzAICpSob1gmc4pfzqypcDGAr55wsG
-         D2W0L+XCLA4aoM+GwgKDdhBDUo5zHKncoSiAN3hTwokp84bpEFer7xU8Sq5fXy334Su0
-         jJLmYQeSA9ZEJl9Wf8Xjy71QIFqsoU/l0oDmbtxrxL1XPr92PktNtClGF0W7irlUm+U/
-         CRY0CUaG42yt08PLS7NPZZtW6NCzo0O5qOwdW/ndr0MXJAji5pSfhARS4EO38KslOnDz
-         xhB/bWhGgVmQxLD3KxPU1Ceb21eNyTwBQI3VNSqrWlh0JxI0TJZ3azpqWuYwbqFyS7D0
-         Corw==
-X-Gm-Message-State: AC+VfDxXcrvrpoaOL7/2tHmGnPCA4N4jRtjVdBweU8huBQTdAZC3HoVy
-	PNYE/CcjdnVaMr+mhz+PZrs=
-X-Google-Smtp-Source: ACHHUZ67MU4iq/WyDLqRO35iB0klFuxM2t4I+8VJZbkaravbmfao+YZfKg06zqz4OmEpabV9LldLRA==
-X-Received: by 2002:a7b:cbcb:0:b0:3ee:19b4:a2e6 with SMTP id n11-20020a7bcbcb000000b003ee19b4a2e6mr536563wmi.19.1682576875297;
-        Wed, 26 Apr 2023 23:27:55 -0700 (PDT)
-Received: from khadija-virtual-machine ([124.29.208.67])
-        by smtp.gmail.com with ESMTPSA id 14-20020a05600c028e00b003f18b942338sm19831740wmk.3.2023.04.26.23.27.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 26 Apr 2023 23:27:54 -0700 (PDT)
-Date: Thu, 27 Apr 2023 11:27:51 +0500
-From: Khadija Kamran <kamrankhadijadj@gmail.com>
-To: Dan Carpenter <error27@gmail.com>
-Cc: outreachy@lists.linux.dev, hvaibhav.linux@gmail.com, johan@kernel.org,
-	elder@kernel.org, gregkh@linuxfoundation.org,
-	greybus-dev@lists.linaro.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	Alison Schofield <alison.schofield@intel.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 13F3CFBF0;
+	Wed,  3 May 2023 22:16:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1683152199; x=1714688199;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=U2RkwWDWwvP3/HeZFRjgqWJRs2v9sGGHsRUT5S3DVmk=;
+  b=a16QoXMn1GIzuYGY/Bg+8eIai+9zeYQnzNMW5EciTKv4fUhCaqnDVaL3
+   gMUVR1Bn/CIET2iEHqQ8zEvujrSxhumiInXpELkz32ATioVx0mYZnTgUo
+   Mn7k4FOVXO5pj8fjTHTsc4VKQisyaMX6xT5Dxi++dpOgUu5pcVjp1rjI3
+   vxwKIgxZwRNyGn5CjMNQ6Zz9I/16TKXAlS4gLG5AtMmM//0Lyi8ti5IOr
+   3vkMZHt01hBB+yKUDQRB8PQhxGMtDmp0HD6g06kIQTVv0HfnrIUA3zV+I
+   Kihgj+zGgir/5M7vliOb+pLpXyGaghbt5HpCQuEQXeBWCcp8F0s2uOVdi
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10699"; a="376844632"
+X-IronPort-AV: E=Sophos;i="5.99,248,1677571200"; 
+   d="scan'208";a="376844632"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 May 2023 15:16:23 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10699"; a="786266224"
+X-IronPort-AV: E=Sophos;i="5.99,248,1677571200"; 
+   d="scan'208";a="786266224"
+Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.212.181.38])
+  by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 May 2023 15:16:22 -0700
+Date: Wed, 3 May 2023 15:16:20 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: Khadija Kamran <kamrankhadijadj@gmail.com>
+Cc: Dan Carpenter <error27@gmail.com>, outreachy@lists.linux.dev,
+	hvaibhav.linux@gmail.com, johan@kernel.org, elder@kernel.org,
+	gregkh@linuxfoundation.org, greybus-dev@lists.linaro.org,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
 Subject: Re: [PATCH 2/2] staging: greybus: refactor arche_platform_wd_irq()
-Message-ID: <ZEoV5/S3owfPVil7@khadija-virtual-machine>
+Message-ID: <ZFLdNKJUo3RMbwiU@aschofie-mobl2>
 References: <cover.1680185025.git.kamrankhadijadj@gmail.com>
  <96d04a4ff3d4a46293355f5afae3a8ece65f2c5b.1680185025.git.kamrankhadijadj@gmail.com>
  <6ce8aa34-e600-4d6a-adad-ead8255342e5@kili.mountain>
  <ZChs5jB7DMCUnVzr@khadija-virtual-machine>
  <9688d93f-5ece-4799-898d-98515a98f9be@kili.mountain>
+ <ZEoV5/S3owfPVil7@khadija-virtual-machine>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -60,173 +50,185 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <9688d93f-5ece-4799-898d-98515a98f9be@kili.mountain>
+In-Reply-To: <ZEoV5/S3owfPVil7@khadija-virtual-machine>
 
-On Mon, Apr 03, 2023 at 07:29:36AM +0300, Dan Carpenter wrote:
-> On Sat, Apr 01, 2023 at 10:41:58PM +0500, Khadija Kamran wrote:
-> > On Thu, Mar 30, 2023 at 06:23:19PM +0300, Dan Carpenter wrote:
-> > > On Thu, Mar 30, 2023 at 07:11:25PM +0500, Khadija Kamran wrote:
-> > > > Linux kernel coding-style suggests to fix your program if it needs more
-> > > > than 3 levels of indentation. Due to indentation, line length also
-> > > > exceeds 100 columns, resulting in issues reported by checkpatch.
+On Thu, Apr 27, 2023 at 11:27:51AM +0500, Khadija Kamran wrote:
+> On Mon, Apr 03, 2023 at 07:29:36AM +0300, Dan Carpenter wrote:
+> > On Sat, Apr 01, 2023 at 10:41:58PM +0500, Khadija Kamran wrote:
+> > > On Thu, Mar 30, 2023 at 06:23:19PM +0300, Dan Carpenter wrote:
+> > > > On Thu, Mar 30, 2023 at 07:11:25PM +0500, Khadija Kamran wrote:
+> > > > > Linux kernel coding-style suggests to fix your program if it needs more
+> > > > > than 3 levels of indentation. Due to indentation, line length also
+> > > > > exceeds 100 columns, resulting in issues reported by checkpatch.
+> > > > > 
+> > > > > Refactor the arche_platform_wd_irq() function and reduce the indentation
+> > > > > with the help of goto statement.
+> > > > > 
+> > > > > Suggested-by: Alison Schofield <alison.schofield@intel.com>
+> > > > > Signed-off-by: Khadija Kamran <kamrankhadijadj@gmail.com>
+> > > > > ---
+> > > > >  drivers/staging/greybus/arche-platform.c | 79 ++++++++++++------------
+> > > > >  1 file changed, 41 insertions(+), 38 deletions(-)
+> > > > > 
+> > > > > diff --git a/drivers/staging/greybus/arche-platform.c b/drivers/staging/greybus/arche-platform.c
+> > > > > index a64c1af091b0..dde30c8da1a1 100644
+> > > > > --- a/drivers/staging/greybus/arche-platform.c
+> > > > > +++ b/drivers/staging/greybus/arche-platform.c
+> > > > > @@ -158,49 +158,52 @@ static irqreturn_t arche_platform_wd_irq(int irq, void *devid)
+> > > > >  
+> > > > >  	spin_lock_irqsave(&arche_pdata->wake_lock, flags);
+> > > > >  
+> > > > > -	if (gpiod_get_value(arche_pdata->wake_detect)) {
+> > > > > -		/* wake/detect rising */
+> > > > > +	if (!gpiod_get_value(arche_pdata->wake_detect))
+> > > > > +		goto falling;
+> > > > >  
+> > > > > +	/* wake/detect rising */
+> > > > > +
+> > > > > +	/*
+> > > > > +	 * If wake/detect line goes high after low, within less than
+> > > > > +	 * 30msec, then standby boot sequence is initiated, which is not
+> > > > > +	 * supported/implemented as of now. So ignore it.
+> > > > > +	 */
+> > > > > +	if (arche_pdata->wake_detect_state != WD_STATE_BOOT_INIT)
+> > > > > +		goto out;
 > > > > 
-> > > > Refactor the arche_platform_wd_irq() function and reduce the indentation
-> > > > with the help of goto statement.
+> > > > This checks that we are in WD_STATE_BOOT_INIT state.
 > > > > 
-> > > > Suggested-by: Alison Schofield <alison.schofield@intel.com>
-> > > > Signed-off-by: Khadija Kamran <kamrankhadijadj@gmail.com>
-> > > > ---
-> > > >  drivers/staging/greybus/arche-platform.c | 79 ++++++++++++------------
-> > > >  1 file changed, 41 insertions(+), 38 deletions(-)
+> > > > > +
+> > > > > +	if (time_before(jiffies,
+> > > > > +			arche_pdata->wake_detect_start +
+> > > > > +			msecs_to_jiffies(WD_COLDBOOT_PULSE_WIDTH_MS))) {
+> > > > > +		arche_platform_set_wake_detect_state(arche_pdata,
+> > > > > +						     WD_STATE_IDLE);
+> > > > > +		got out;
+> > > > > +	}
+> > > > > +
+> > > > > +	/* Check we are not in middle of irq thread already */
+> > > > > +	if (arche_pdata->wake_detect_state !=
+> > > > > +			WD_STATE_COLDBOOT_START) {
 > > > > 
-> > > > diff --git a/drivers/staging/greybus/arche-platform.c b/drivers/staging/greybus/arche-platform.c
-> > > > index a64c1af091b0..dde30c8da1a1 100644
-> > > > --- a/drivers/staging/greybus/arche-platform.c
-> > > > +++ b/drivers/staging/greybus/arche-platform.c
-> > > > @@ -158,49 +158,52 @@ static irqreturn_t arche_platform_wd_irq(int irq, void *devid)
-> > > >  
-> > > >  	spin_lock_irqsave(&arche_pdata->wake_lock, flags);
-> > > >  
-> > > > -	if (gpiod_get_value(arche_pdata->wake_detect)) {
-> > > > -		/* wake/detect rising */
-> > > > +	if (!gpiod_get_value(arche_pdata->wake_detect))
-> > > > +		goto falling;
-> > > >  
-> > > > +	/* wake/detect rising */
-> > > > +
-> > > > +	/*
-> > > > +	 * If wake/detect line goes high after low, within less than
-> > > > +	 * 30msec, then standby boot sequence is initiated, which is not
-> > > > +	 * supported/implemented as of now. So ignore it.
-> > > > +	 */
-> > > > +	if (arche_pdata->wake_detect_state != WD_STATE_BOOT_INIT)
-> > > > +		goto out;
-> > > 
-> > > This checks that we are in WD_STATE_BOOT_INIT state.
-> > > 
-> > > > +
-> > > > +	if (time_before(jiffies,
-> > > > +			arche_pdata->wake_detect_start +
-> > > > +			msecs_to_jiffies(WD_COLDBOOT_PULSE_WIDTH_MS))) {
-> > > > +		arche_platform_set_wake_detect_state(arche_pdata,
-> > > > +						     WD_STATE_IDLE);
-> > > > +		got out;
-> > > > +	}
-> > > > +
-> > > > +	/* Check we are not in middle of irq thread already */
-> > > > +	if (arche_pdata->wake_detect_state !=
-> > > > +			WD_STATE_COLDBOOT_START) {
-> > > 
-> > > This checks that we are not in WD_STATE_COLDBOOT_START state.  How are
-> > > we going to be in COLDBOOT if we are in INIT?  Is this changing in the
-> > > background?  Can this check be removed?  This might be took tricky to
-> > > answer but it's important that we understand this before we continue.
-> > > 
-> > > 
-> > > > +		arche_platform_set_wake_detect_state(arche_pdata,
-> > > > +						     WD_STATE_COLDBOOT_TRIG);
-> > > > +		rc = IRQ_WAKE_THREAD;
-> > > > +		goto out;
-> > > > +	}
-> > > 
-> > > Let's assume the above check cannot be removed.
-> > > 
-> > > In the original code if gpiod_get_value(arche_pdata->wake_detect)
-> > > returned true and arche_pdata->wake_detect_state == WD_STATE_IDLE then
-> > > it just returned without doing anything, but now we fall through to the
-> > > falling: label below.
+> > > > This checks that we are not in WD_STATE_COLDBOOT_START state.  How are
+> > > > we going to be in COLDBOOT if we are in INIT?  Is this changing in the
+> > > > background?  Can this check be removed?  This might be took tricky to
+> > > > answer but it's important that we understand this before we continue.
+> > > > 
+> > > > 
+> > > > > +		arche_platform_set_wake_detect_state(arche_pdata,
+> > > > > +						     WD_STATE_COLDBOOT_TRIG);
+> > > > > +		rc = IRQ_WAKE_THREAD;
+> > > > > +		goto out;
+> > > > > +	}
+> > > > 
+> > > > Let's assume the above check cannot be removed.
+> > > > 
+> > > > In the original code if gpiod_get_value(arche_pdata->wake_detect)
+> > > > returned true and arche_pdata->wake_detect_state == WD_STATE_IDLE then
+> > > > it just returned without doing anything, but now we fall through to the
+> > > > falling: label below.
+> > 
+> > Let me show you in the original code:
+> > 
+> > STEP 1:	if (gpiod_get_value(arche_pdata->wake_detect)) {
+> > 
+> > Assume this condition is true.
+> > 
+> > STEP 2:		if (arche_pdata->wake_detect_state == WD_STATE_BOOT_INIT) {
+> > 
+> > Assume this condition is true.
+> > 
+> > STEP 3:		if (time_before(jiffies, ...)
+> > 
+> > Assume that time is up.
+> > 
+> > STEP 4:			if (arche_pdata->wake_detect_state !=
+> > 					WD_STATE_COLDBOOT_START) {
+> > 
+> > Assume that it is equal.  We are done.  return IRQ_HANDLED;
+> > 
+> > Now in the new code:
+> > 
+> > STEP 1:	if (!gpiod_get_value(arche_pdata->wake_detect))
+> > 		goto falling;
+> > 
+> > Assume we don't goto falling.
+> > 
+> > STEP 2:	if (arche_pdata->wake_detect_state != WD_STATE_BOOT_INIT)
+> > 
+> > Assume that it == WD_STATE_BOOT_INIT.
+> > 
+> > STEP 3:	if (time_before(jiffies, ...)
+> > 
+> > Assume that time is up.
+> > 
+> > STEP 4:	if (arche_pdata->wake_detect_state != WD_STATE_COLDBOOT_START) {
+> > 
+> > Assume that it is equal.  Before, in the old code it would return
+> > return IRQ_HANDLED; at this point.  But now it does:
+> > 
+> > STEP 5:	if (arche_pdata->wake_detect_state == WD_STATE_IDLE) {
+> > 
+> > Which seems like it's a contradictory condition with STEP 4 so it's
+> > probably impossible.  But on the other hand, we have already checked
+> > contradictory conditions between STEP 2 and STEP 4 so who knows what's
+> > going on?
 > 
-> Let me show you in the original code:
 > 
-> STEP 1:	if (gpiod_get_value(arche_pdata->wake_detect)) {
+> Hey Dan!
 > 
-> Assume this condition is true.
+> Sorry about the delay in the reply. I want to continue working on the
+> completion of this thread. 
 > 
-> STEP 2:		if (arche_pdata->wake_detect_state == WD_STATE_BOOT_INIT) {
+> Thank you for the above steps, they clearly explain the problem you
+> addressed in the new code. Can't this problem be resolved by "goto out;"
+> right above the 'falling:' label?
 > 
-> Assume this condition is true.
+> I'm copy pasting your mail here,
 > 
-> STEP 3:		if (time_before(jiffies, ...)
+> On Mon, Apr 03, 2023 at 07:29:36AM +0300, Dan Carpenter wrote:
+> > > > This checks that we are not in WD_STATE_COLDBOOT_START state.  How are
+> > > > we going to be in COLDBOOT if we are in INIT?  Is this changing in the
+> > > > background?  Can this check be removed?
 > 
-> Assume that time is up.
+> > It turned out the answer was yes, it can be removed.
 > 
-> STEP 4:			if (arche_pdata->wake_detect_state !=
-> 					WD_STATE_COLDBOOT_START) {
+> > > Also if stuff is changing in the background and there is no way the
+> > > locking is correct.
 > 
-> Assume that it is equal.  We are done.  return IRQ_HANDLED;
+> > The locking is correct.  Take a look at it.
 > 
-> Now in the new code:
+> > We are holding the &arche_pdata->wake_lock in arche_platform_wd_irq()
+> > and every place that calls arche_platform_set_wake_detect_state() takes
+> > that lock first.  So it can't change in the background.
 > 
-> STEP 1:	if (!gpiod_get_value(arche_pdata->wake_detect))
-> 		goto falling;
+> > Delete the check like so.
 > 
-> Assume we don't goto falling.
-> 
-> STEP 2:	if (arche_pdata->wake_detect_state != WD_STATE_BOOT_INIT)
-> 
-> Assume that it == WD_STATE_BOOT_INIT.
-> 
-> STEP 3:	if (time_before(jiffies, ...)
-> 
-> Assume that time is up.
-> 
-> STEP 4:	if (arche_pdata->wake_detect_state != WD_STATE_COLDBOOT_START) {
-> 
-> Assume that it is equal.  Before, in the old code it would return
-> return IRQ_HANDLED; at this point.  But now it does:
-> 
-> STEP 5:	if (arche_pdata->wake_detect_state == WD_STATE_IDLE) {
-> 
-> Which seems like it's a contradictory condition with STEP 4 so it's
-> probably impossible.  But on the other hand, we have already checked
-> contradictory conditions between STEP 2 and STEP 4 so who knows what's
-> going on?
+> If we delete the check then the indentation problem would be
+> automatically addressed. Also, there would be a single exit path to the
+> function. Should I send a patch or is there anything else that should be
+> addressed. 
 
+Hi Khadija,
 
-Hey Dan!
+Thanks for picking this up again. I suggest posting an updated version
+and let folks take a look at it again. It's a bit stale in my mind now,
+but I'm happy to iterate on it with you further.
 
-Sorry about the delay in the reply. I want to continue working on the
-completion of this thread. 
+Thanks,
+Alison
 
-Thank you for the above steps, they clearly explain the problem you
-addressed in the new code. Can't this problem be resolved by "goto out;"
-right above the 'falling:' label?
-
-I'm copy pasting your mail here,
-
-On Mon, Apr 03, 2023 at 07:29:36AM +0300, Dan Carpenter wrote:
-> > > This checks that we are not in WD_STATE_COLDBOOT_START state.  How are
-> > > we going to be in COLDBOOT if we are in INIT?  Is this changing in the
-> > > background?  Can this check be removed?
-
-> It turned out the answer was yes, it can be removed.
-
+> 
+> Thank you!
+> 
+> Regards,
+> Khadija
+> 
+> > 
+> > This function is very hard to understand.
+> > 
 > > Also if stuff is changing in the background and there is no way the
 > > locking is correct.
-
-> The locking is correct.  Take a look at it.
-
-> We are holding the &arche_pdata->wake_lock in arche_platform_wd_irq()
-> and every place that calls arche_platform_set_wake_detect_state() takes
-> that lock first.  So it can't change in the background.
-
-> Delete the check like so.
-
-If we delete the check then the indentation problem would be
-automatically addressed. Also, there would be a single exit path to the
-function. Should I send a patch or is there anything else that should be
-addressed. 
-
-Thank you!
-
-Regards,
-Khadija
-
+> > 
+> > regards,
+> > dan carpenter
 > 
-> This function is very hard to understand.
-> 
-> Also if stuff is changing in the background and there is no way the
-> locking is correct.
-> 
-> regards,
-> dan carpenter
