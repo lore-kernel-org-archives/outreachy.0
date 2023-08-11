@@ -1,50 +1,66 @@
-Received: from mail-oo1-f41.google.com (mail-oo1-f41.google.com [209.85.161.41])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from out4-smtp.messagingengine.com (out4-smtp.messagingengine.com [66.111.4.28])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D8C6F8BE0;
-	Wed,  9 Aug 2023 12:47:28 +0000 (UTC)
-Received: by mail-oo1-f41.google.com with SMTP id 006d021491bc7-56d6dfa8b52so2739865eaf.3;
-        Wed, 09 Aug 2023 05:47:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1691585247; x=1692190047;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=vgLnNTyUqxgdIBRnXZkONE83fOCISV+cZafhjFByJ6s=;
-        b=UgkCM4qxu+uMbk49jGT/byouHYOa4cv4oHh73ITQPbDuXUdoDmlxBEMDj8GE4XxWU5
-         sWqqNVVkYn3vTMSbAgGvUVEMtW1e80xAlbTr72znfkhB7sbdhiOOogTDq7ZYyUYaPNfp
-         JYEPqSAB/Dkf5C6ek+iVp3OhlCkb2ZCCGxpjL8DiOGVeSgcPBOnox1XED6TDreA7jpgl
-         RYwP3ANO53FUuVDzdCsLw3m4DdntADVXHtPU3nW8jyi0bP2JInk6kG+FZWY9EqRGPdYE
-         HMbO1VmckcHWj69SyMxpiY0YpcAa85VCi95nzAOZaX6o7WUCooNk/nLMnjrgRDtaoj2t
-         Dfkw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1691585247; x=1692190047;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=vgLnNTyUqxgdIBRnXZkONE83fOCISV+cZafhjFByJ6s=;
-        b=ZiaOGCioPTwHlIwtt2KfTFC5/7C17bmUt9AZyZTlLkVJHx3acdCQDW4Cxubx8aVJnS
-         SeZYZsc9PRqO0YkXUe+HFC/ENafGBKv7Mz1SfYe6qoSLzG66PdMlskhRvh5YxgkSm+EZ
-         X2UgHVPtcVftTfI50orlOn5PFOvWl8FpGdj2TWcYBaNbRacs+5jtUBCpYC2QfRA6H3MZ
-         M81Oqny0oEvih2brgIY6LN+8PX+fKW622WUr+1WqYmDQ6phC9spUvybCsnmP5G4jtBgk
-         JGt2geoRh4UKUqDXu9KC/xTKN5sS8Wq5wqCbo1ebv5HqUgDDBHQE0a2KqHU03z21A8AI
-         8Bgw==
-X-Gm-Message-State: AOJu0YzBGdSHDZOv9th7PIq8PE4a7tPT/vfLPXxgtuC2tTC7X14k+2fU
-	K7VyA1Rk+WZbK/muXHqrOh4=
-X-Google-Smtp-Source: AGHT+IEJxQd9Oqcd4G67bDzrVNJX78gVSfE3k+NxBSuyqs7fZY5a8noxIH7dI7lmZgLO86KsDGskUA==
-X-Received: by 2002:aca:220b:0:b0:3a7:4cf6:f0cb with SMTP id b11-20020aca220b000000b003a74cf6f0cbmr2540164oic.21.1691585247611;
-        Wed, 09 Aug 2023 05:47:27 -0700 (PDT)
-Received: from ubuntu.myguest.virtualbox.org ([122.173.206.194])
-        by smtp.gmail.com with ESMTPSA id b8-20020a17090a7ac800b0025023726fc4sm1362860pjl.26.2023.08.09.05.47.25
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 09 Aug 2023 05:47:27 -0700 (PDT)
-Date: Wed, 9 Aug 2023 18:17:22 +0530
-From: Pavan Bobba <opensource206@gmail.com>
-To: Forest Bond <forest@alittletooquiet.net>,
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1E0F111700;
+	Fri, 11 Aug 2023 21:27:15 +0000 (UTC)
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+	by mailout.nyi.internal (Postfix) with ESMTP id F28575C00B7;
+	Fri, 11 Aug 2023 17:27:14 -0400 (EDT)
+Received: from mailfrontend2 ([10.202.2.163])
+  by compute5.internal (MEProxy); Fri, 11 Aug 2023 17:27:14 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kroah.com; h=cc
+	:cc:content-type:content-type:date:date:from:from:in-reply-to
+	:in-reply-to:message-id:mime-version:references:reply-to:sender
+	:subject:subject:to:to; s=fm3; t=1691789234; x=1691875634; bh=4V
+	NI7jS/8qVbjFTBRtqsnBUfSpb9eImvRnT47kuj8XY=; b=bk8JtnrMXi5l+pPL/W
+	a1R0q2mHUG0nMd6DTwTeAoE43YrMJmryF8JVjG9srBIr6Bnz1fAi/UZSII8FLZF6
+	JX5CrCf5ZUK/y+wL0e6ZW35h2Vmx+W5hIRSGRkUGDS9jMIa0JBDjGMzMhOZd37OK
+	bL2qCS50IyBThyYQoVx6oVsIUM7e4oLtTDBg9PRxkBtWFEao6KAfGY59D5QzICZR
+	3ePYXsaIGXGtduHyFVZunrDBTD3jCVcuqkdrBqtHk37bPlj85G7Rzw+d3w433zVN
+	Xjdm/HPkPRHm7DDeJOa4lIoaSHNb7YSg9TeA2RRZyD1dNHId1BNJfYQxevbeWm1V
+	dvmw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-type:content-type:date:date
+	:feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+	:message-id:mime-version:references:reply-to:sender:subject
+	:subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+	:x-sasl-enc; s=fm3; t=1691789234; x=1691875634; bh=4VNI7jS/8qVbj
+	FTBRtqsnBUfSpb9eImvRnT47kuj8XY=; b=3g5jyKj6jtmQc6Ft2o+QmxGX289lz
+	gYbHhFWlrTky3jmpeciOatqW6dvgPC5IGERyv6AJnuQXUGShsOAs/8d9oknN0VYa
+	zuMqhSa3aSrNZGi6JD8pXoozIwAPK96S2wHPfntoIP/IJaerwVXfGFt0wJKBzoFL
+	NnbD2bYvABKXiZqfx8xOozjSctBnvBMJ8UXzM0Ey6OWD38GwMqOKnBmm6XdulLAH
+	kFYN2r5Tq2tNCGwZBSo1LhQpY09dg+kIcPt89KVMOy0a2wFMZDe95HMG0t4h91Xu
+	6QlFO3LxpBnTocHEDAupQuquYvoLnGAJaoiWePjjoT/jL2RDDo8qbeaPg==
+X-ME-Sender: <xms:sqfWZPz0HAaXQ40PCIetscvZQODetI5oHf6wKS-8XxzhQdG0uhp9WA>
+    <xme:sqfWZHTTtEZiUd46RTuAmyFyf1qLJxC6oXtLSgcxGvjbYQJUBog9yrRxLZ6AZCvv-
+    QUxY-Vjug1dKw>
+X-ME-Received: <xmr:sqfWZJWYSA8S4WrYuCZe0x2CSX9tZvZ9chd6wXncN7LjfekvbZYigJU9oC5352wYIbjIUFv3UT_QjnzpoxdBOXgOuxiAoToWNxktXg>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedviedrleekgdduheelucetufdoteggodetrfdotf
+    fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+    uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+    cujfgurhepfffhvfevuffkfhggtggujgesthdtredttddtvdenucfhrhhomhepifhrvghg
+    ucfmjfcuoehgrhgvgheskhhrohgrhhdrtghomheqnecuggftrfgrthhtvghrnhepheegvd
+    evvdeljeeugfdtudduhfekledtiefhveejkeejuefhtdeufefhgfehkeetnecuvehluhhs
+    thgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepghhrvghgsehkrhhorg
+    hhrdgtohhm
+X-ME-Proxy: <xmx:sqfWZJhBPt-5ALO6FeyWycEccacHsiUpxeiIsgphLWfwyJsbwf4wrg>
+    <xmx:sqfWZBBC1IA1AJXTBTq0np5K-bIDsION0oYGQ2TaJ16GBfdL4BlEEg>
+    <xmx:sqfWZCIdYdVR4r4GDGHFbvGqPtV_VrNe7zurQzieM9GhOyXMSB1wpw>
+    <xmx:sqfWZF7FEuWwFRetKshEvumw2OjzYxyJzRydAVj1N9tD8-FR1hPdYg>
+Feedback-ID: i787e41f1:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Fri,
+ 11 Aug 2023 17:27:14 -0400 (EDT)
+Date: Fri, 11 Aug 2023 23:27:10 +0200
+From: Greg KH <greg@kroah.com>
+To: Pavan Bobba <opensource206@gmail.com>
+Cc: Forest Bond <forest@alittletooquiet.net>,
 	Michael Straube <straube.linux@gmail.com>,
 	Philipp Hortmann <philipp.g.hortmann@gmail.com>,
-	outreachy@lists.linux.dev
-Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: [PATCH v2] staging: vt6655: replace camel case by snake case
-Message-ID: <ZNOK2u1sJoRAxhIC@ubuntu.myguest.virtualbox.org>
+	outreachy@lists.linux.dev, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2] staging: vt6655: replace camel case by snake case
+Message-ID: <2023081150-hamster-sulfide-4231@gregkh>
+References: <ZNOK2u1sJoRAxhIC@ubuntu.myguest.virtualbox.org>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -53,45 +69,36 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <ZNOK2u1sJoRAxhIC@ubuntu.myguest.virtualbox.org>
 
-Replace array name of camel case by snake case. Issue found
-by checkpatch
+On Wed, Aug 09, 2023 at 06:17:22PM +0530, Pavan Bobba wrote:
+> Replace array name of camel case by snake case. Issue found
+> by checkpatch
+> 
+> Signed-off-by: Pavan Bobba <opensource206@gmail.com>
+> ---
+>  v1 -> v2: 1. array name renamed from byVT3253B0_RFMD to by_vt3253b0_rfmd
+>            2. typo in the subject line "small case" corrected with the
+>               proper word "snake case"
+> 
+> Signed-off-by: Pavan Bobba <opensource206@gmail.com>
+> ---
+>  drivers/staging/vt6655/baseband.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/drivers/staging/vt6655/baseband.c b/drivers/staging/vt6655/baseband.c
+> index 0e135af8316b..cc8793256661 100644
+> --- a/drivers/staging/vt6655/baseband.c
+> +++ b/drivers/staging/vt6655/baseband.c
+> @@ -499,7 +499,7 @@ static const unsigned char by_vt3253_init_tab_rfmd[CB_VT3253_INIT_FOR_RFMD][2] =
+>  };
+>  
+>  #define CB_VT3253B0_INIT_FOR_RFMD 256
+> -static const unsigned char byVT3253B0_RFMD[CB_VT3253B0_INIT_FOR_RFMD][2] = {
+> +static const unsigned char by_vt3253b0_rfmd[CB_VT3253B0_INIT_FOR_RFMD][2] = {
 
-Signed-off-by: Pavan Bobba <opensource206@gmail.com>
----
- v1 -> v2: 1. array name renamed from byVT3253B0_RFMD to by_vt3253b0_rfmd
-           2. typo in the subject line "small case" corrected with the
-              proper word "snake case"
+Again, the "by" needs to just be dropped.
 
-Signed-off-by: Pavan Bobba <opensource206@gmail.com>
----
- drivers/staging/vt6655/baseband.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+thanks,
 
-diff --git a/drivers/staging/vt6655/baseband.c b/drivers/staging/vt6655/baseband.c
-index 0e135af8316b..cc8793256661 100644
---- a/drivers/staging/vt6655/baseband.c
-+++ b/drivers/staging/vt6655/baseband.c
-@@ -499,7 +499,7 @@ static const unsigned char by_vt3253_init_tab_rfmd[CB_VT3253_INIT_FOR_RFMD][2] =
- };
- 
- #define CB_VT3253B0_INIT_FOR_RFMD 256
--static const unsigned char byVT3253B0_RFMD[CB_VT3253B0_INIT_FOR_RFMD][2] = {
-+static const unsigned char by_vt3253b0_rfmd[CB_VT3253B0_INIT_FOR_RFMD][2] = {
- 	{0x00, 0x31},
- 	{0x01, 0x00},
- 	{0x02, 0x00},
-@@ -2005,8 +2005,8 @@ bool bb_vt3253_init(struct vnt_private *priv)
- 		} else {
- 			for (ii = 0; ii < CB_VT3253B0_INIT_FOR_RFMD; ii++)
- 				result &= bb_write_embedded(priv,
--					byVT3253B0_RFMD[ii][0],
--					byVT3253B0_RFMD[ii][1]);
-+					by_vt3253b0_rfmd[ii][0],
-+					by_vt3253b0_rfmd[ii][1]);
- 
- 			for (ii = 0; ii < CB_VT3253B0_AGC_FOR_RFMD2959; ii++)
- 				result &= bb_write_embedded(priv,
--- 
-2.34.1
-
+greg k-h
