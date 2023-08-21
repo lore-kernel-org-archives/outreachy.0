@@ -1,99 +1,149 @@
-Received: from mail-pf1-f171.google.com (mail-pf1-f171.google.com [209.85.210.171])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mx0a-00128a01.pphosted.com (mx0a-00128a01.pphosted.com [148.163.135.77])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1210653AD;
-	Mon, 21 Aug 2023 12:44:00 +0000 (UTC)
-Received: by mail-pf1-f171.google.com with SMTP id d2e1a72fcca58-68a3de5f231so621487b3a.0;
-        Mon, 21 Aug 2023 05:44:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1692621840; x=1693226640;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=mDOcyp7eDilYpxFe5Q1bO3kEe7vayX0PPFX25s4ksUM=;
-        b=GTvWXJ+L/cYlHcXSI3x/PA3hA3cF3ft0F7in0VsVJqSvoWrANU7LoIJhLlb4sjMPn1
-         UFK5rO1Fg2XEeTc4Ey464JHDyfKHrziA1VicQtCuVclZsO9AhsophDjXKAGd0pdI9EJW
-         hwqs81Cn2uJpXYctzBZ6aJ8FyetvQRAeTm/zX8kb2UaBFx9MBNFOK4T4WgmQbaa1aVoN
-         Y7ehGtjR76HZumfAeB9xR/8MNLmxzC66BMWKoDcqKfYkV6peQq4BDiISAXjLAsKDmnKm
-         R53Zkhv75jJljGHKwT0zMeelQAerfCBJ+ptPjixklKn4UijQBOesILG9/L9WrKjvyc/B
-         wf8Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692621840; x=1693226640;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=mDOcyp7eDilYpxFe5Q1bO3kEe7vayX0PPFX25s4ksUM=;
-        b=NOZ44vCw+W5n1OTMRII7Y4A1dre2to0Xy5Etp20ZW+xZc2d4hqG7AVkn4thVReavtm
-         852pZ+mmczcEVkidWO6uPY7OugmXet7mW7bb+BFOINbVmEbD81w/YoZO1ttZEuVmlJWL
-         R9Pd/6hzWG60Vy8WJJyvSONgr2rNKVOCM9zwcRWuLIaHyIS+N6SCxQXKnsmEwhTglcGw
-         +CjoIbtb+TLUJ2qtbARLbFswfFIrXo3HGt3iuTGzJbsHV5CUzYFpkYhfgFGjEyAyYBw2
-         vzEbNWk2QOhiKXRveU2A9iz2UUguCYgc0ITkJGtU57UsrzV1lILMSC05n/Vk0r5UKdoC
-         ++5Q==
-X-Gm-Message-State: AOJu0Yx61jIZyu3ovFt1IHFw/jBJSXctYpS0AbkmN/NB6mDY2Plopnn+
-	n3joBqoWylZsR9lV/M/Gw2I=
-X-Google-Smtp-Source: AGHT+IGTsRcU2Kc+glTJ9NmWfOcf+p4pz82g7fyC6W2t/qHl8rmdDa+/doODgp8x1oiGLeWgPTjEGg==
-X-Received: by 2002:a05:6a21:9999:b0:13c:988c:e885 with SMTP id ve25-20020a056a21999900b0013c988ce885mr5425645pzb.56.1692621840090;
-        Mon, 21 Aug 2023 05:44:00 -0700 (PDT)
-Received: from ubuntu.myguest.virtualbox.org ([122.162.51.13])
-        by smtp.gmail.com with ESMTPSA id m4-20020a170902768400b001b04c2023e3sm6939514pll.218.2023.08.21.05.43.57
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 21 Aug 2023 05:43:59 -0700 (PDT)
-Date: Mon, 21 Aug 2023 18:13:54 +0530
-From: Pavan Bobba <opensource206@gmail.com>
-To: Forest Bond <forest@alittletooquiet.net>,
-	Michael Straube <straube.linux@gmail.com>,
-	Philipp Hortmann <philipp.g.hortmann@gmail.com>,
-	outreachy@lists.linux.dev
-Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: [PATCH v3] staging: vt6655: replace camel case by snake case
-Message-ID: <ZONcClwtt40vTHla@ubuntu.myguest.virtualbox.org>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C4438320F
+	for <outreachy@lists.linux.dev>; Mon, 21 Aug 2023 16:38:27 +0000 (UTC)
+Received: from pps.filterd (m0167088.ppops.net [127.0.0.1])
+	by mx0a-00128a01.pphosted.com (8.17.1.22/8.17.1.22) with ESMTP id 37LEAtoO010730;
+	Mon, 21 Aug 2023 12:28:56 -0400
+Received: from nwd2mta4.analog.com ([137.71.173.58])
+	by mx0a-00128a01.pphosted.com (PPS) with ESMTPS id 3skvcqc7y5-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 21 Aug 2023 12:28:56 -0400 (EDT)
+Received: from ASHBMBX8.ad.analog.com (ASHBMBX8.ad.analog.com [10.64.17.5])
+	by nwd2mta4.analog.com (8.14.7/8.14.7) with ESMTP id 37LGStRR055705
+	(version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+	Mon, 21 Aug 2023 12:28:55 -0400
+Received: from ASHBCASHYB5.ad.analog.com (10.64.17.133) by
+ ASHBMBX8.ad.analog.com (10.64.17.5) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.14; Mon, 21 Aug 2023 12:28:54 -0400
+Received: from ASHBMBX8.ad.analog.com (10.64.17.5) by
+ ASHBCASHYB5.ad.analog.com (10.64.17.133) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.986.14; Mon, 21 Aug 2023 12:28:54 -0400
+Received: from zeus.spd.analog.com (10.66.68.11) by ashbmbx8.ad.analog.com
+ (10.64.17.5) with Microsoft SMTP Server id 15.2.986.14 via Frontend
+ Transport; Mon, 21 Aug 2023 12:28:54 -0400
+Received: from HYB-a2JJhsYKAxD.ad.analog.com (HYB-a2JJhsYKAxD.ad.analog.com [10.25.72.79])
+	by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 37LGSQsq012468;
+	Mon, 21 Aug 2023 12:28:42 -0400
+From: Gokhan Celik <gokhan.celik@analog.com>
+To: <outreachy@lists.linux.dev>
+CC: Gokhan Celik <gokhan.celik@analog.com>,
+        Liam Girdwood
+	<lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+        Rob Herring
+	<robh+dt@kernel.org>,
+        Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>,
+        Conor Dooley <conor+dt@kernel.org>,
+        Gokhan Celik <Gokhan.Celik@analog.com>, <linux-kernel@vger.kernel.org>,
+        <devicetree@vger.kernel.org>
+Subject: [PATCH 2/2] dt-bindings: regulator: Add MAX77503 regulator bindings
+Date: Mon, 21 Aug 2023 19:28:22 +0300
+Message-ID: <50b983f2eb74aab5947cf7721770983b51ffd949.1692634090.git.gokhan.celik@analog.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <cover.1692634090.git.gokhan.celik@analog.com>
+References: <cover.1692634090.git.gokhan.celik@analog.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ADIRuleOP-NewSCL: Rule Triggered
+X-Proofpoint-ORIG-GUID: 4c98y7WqKRxjrQheiDzBQHOjJnzqXdNW
+X-Proofpoint-GUID: 4c98y7WqKRxjrQheiDzBQHOjJnzqXdNW
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
+ definitions=2023-08-21_04,2023-08-18_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 malwarescore=0
+ priorityscore=1501 impostorscore=0 mlxlogscore=999 mlxscore=0
+ suspectscore=0 clxscore=1015 adultscore=0 bulkscore=0 phishscore=0
+ spamscore=0 lowpriorityscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.19.0-2306200000 definitions=main-2308210153
 
-Replace array name of camel case by snake case. Issue found
-by checkpatch
+Add bindings for MAX77503 buck converter.
 
-Signed-off-by: Pavan Bobba <opensource206@gmail.com>
+Signed-off-by: Gokhan Celik <gokhan.celik@analog.com>
 ---
- v1 -> v2: 1. array name renamed from byVT3253B0_RFMD to by_vt3253b0_rfmd
-           2. typo in the subject line "small case" corrected with the
-              proper word "snake case"
- v2 -> v3: word "by_" dropped from array name "by_vt3253b0_rfmd"
-           and became ""vt3253b0_rfmd
+ .../regulator/adi,max77503-regulator.yaml     | 64 +++++++++++++++++++
+ 1 file changed, 64 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/regulator/adi,max77503-regulator.yaml
 
-Signed-off-by: Pavan Bobba <opensource206@gmail.com>
----
- drivers/staging/vt6655/baseband.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/staging/vt6655/baseband.c b/drivers/staging/vt6655/baseband.c
-index 0e135af8316b..696d4dd03aa2 100644
---- a/drivers/staging/vt6655/baseband.c
-+++ b/drivers/staging/vt6655/baseband.c
-@@ -499,7 +499,7 @@ static const unsigned char by_vt3253_init_tab_rfmd[CB_VT3253_INIT_FOR_RFMD][2] =
- };
- 
- #define CB_VT3253B0_INIT_FOR_RFMD 256
--static const unsigned char byVT3253B0_RFMD[CB_VT3253B0_INIT_FOR_RFMD][2] = {
-+static const unsigned char vt3253b0_rfmd[CB_VT3253B0_INIT_FOR_RFMD][2] = {
- 	{0x00, 0x31},
- 	{0x01, 0x00},
- 	{0x02, 0x00},
-@@ -2005,8 +2005,8 @@ bool bb_vt3253_init(struct vnt_private *priv)
- 		} else {
- 			for (ii = 0; ii < CB_VT3253B0_INIT_FOR_RFMD; ii++)
- 				result &= bb_write_embedded(priv,
--					byVT3253B0_RFMD[ii][0],
--					byVT3253B0_RFMD[ii][1]);
-+					vt3253b0_rfmd[ii][0],
-+					vt3253b0_rfmd[ii][1]);
- 
- 			for (ii = 0; ii < CB_VT3253B0_AGC_FOR_RFMD2959; ii++)
- 				result &= bb_write_embedded(priv,
+diff --git a/Documentation/devicetree/bindings/regulator/adi,max77503-regulator.yaml b/Documentation/devicetree/bindings/regulator/adi,max77503-regulator.yaml
+new file mode 100644
+index 000000000000..0d351225e107
+--- /dev/null
++++ b/Documentation/devicetree/bindings/regulator/adi,max77503-regulator.yaml
+@@ -0,0 +1,64 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++# Copyright (c) 2023 Analog Devices, Inc.
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/regulator/adi,max77503-regulator.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Analog Devices MAX77503 Buck Converter
++
++maintainers:
++  - Gokhan Celik <Gokhan.Celik@analog.com>
++
++description: Analog Devices MAX77503 Buck Converter
++
++properties:
++  compatible:
++    enum:
++      - adi,max77503
++
++  reg:
++    description: I2C address of the device
++    items:
++      - enum: [0x1e, 0x24, 0x37]
++
++  regulator:
++    type: object
++    $ref: regulator.yaml#
++    additionalProperties: false
++    description: |
++      Buck regulator
++
++    properties:
++      regulator-name: true
++      regulator-always-on: true
++      regulator-boot-on: true
++      regulator-min-microvolt:
++        minimum: 800000
++      regulator-max-microvolt:
++        maximum: 5000000
++
++additionalProperties: false
++
++required:
++  - compatible
++  - reg
++
++examples:
++  - |
++    i2c {
++        #address-cells = <1>;
++        #size-cells = <0>;
++
++        max77503@1e {
++            compatible = "adi,max77503";
++            reg = <0x1e>;
++            regulator{
++                regulator-name = "max777503-regulator";
++                regulator-min-microvolt = <800000>;
++                regulator-max-microvolt = <5000000>;
++                regulator-boot-on;
++            };
++        };
++    };
++
 -- 
 2.34.1
 
