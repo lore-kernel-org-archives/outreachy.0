@@ -1,84 +1,80 @@
-Received: from mail-ed1-f49.google.com (mail-ed1-f49.google.com [209.85.208.49])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mx0a-00128a01.pphosted.com (mx0a-00128a01.pphosted.com [148.163.135.77])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 42BED746C
-	for <outreachy@lists.linux.dev>; Mon, 21 Aug 2023 18:41:46 +0000 (UTC)
-Received: by mail-ed1-f49.google.com with SMTP id 4fb4d7f45d1cf-52164adea19so4630037a12.1
-        for <outreachy@lists.linux.dev>; Mon, 21 Aug 2023 11:41:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1692643304; x=1693248104;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=O1jfWqRFqEX/V4IMqa029q2gEFfs8XGqFtJjj4sRi5k=;
-        b=dIN00OcATVVmd2DiKb5Ijhm+RlqvjRqX1LuDwa+INNZ5TZ89Kp4x9Tx71ZwbYaDWQY
-         hZQT4bWs0zzwHWQwm4Zh/jcuQaKOqo/0uorJ6iHMOnRgjG3CwOiSUwxwP/YTl4hlOQO8
-         cJ61kuxQ5/9B2WDEbS07TaU6NJcSrVd8+MzQuKwYgRGlU6XOeG+lJ6VAYXtaEbcNdMzK
-         DGvpFUbuhempBFEe/b5ydTYZpDVTsbKHh0eiWOePZJsInK9GlFQNQORLonez8u5XC+tI
-         D7UqC4P5TlCcIz7GGWe54u/8/ag9GUey1knS++AxdgtoYOR0maNB4N38IPK5SaApMOnk
-         8iNg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692643304; x=1693248104;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=O1jfWqRFqEX/V4IMqa029q2gEFfs8XGqFtJjj4sRi5k=;
-        b=N0c8P9pmIBHsQBkUUrvhJbe+VtHAa2FeQBGZcYb89CF+Kgpd9jJpI6yOg8vNbFyR3u
-         d7wqa6/EJEUN7DI0eyulsCyTGz3YrLCKnOzfGX5pzzi1hPucnBvkabBmjaWO09slSPTz
-         7WMiqB72nN2L901p60isfLP/zIw2AEx4mqyvbYNNn7P5glPAq1pnt4oG6DSn8GQtDxhs
-         URiRdpRAJ/QPU/fTmWpUfQrJJjrWLmLJQ3qLX0i2OZ/cQ0voKCxoEOvTJMRvXcmZ0NMg
-         hW+5xAS+DNqceyCyOW3pyTpMJ5YFSBVmJ4LjiJCdnYwSQsJTfWKvW7qAQxdcTXrF5jhs
-         LzDw==
-X-Gm-Message-State: AOJu0YzXOjjqQirvyxGeiWxf8Y2Rz4n7V4gOOrTycRYwPNcC7Bcbaj3W
-	E4r4gf/WfhMJns092myWl3vTCQ==
-X-Google-Smtp-Source: AGHT+IFGAXFhnHGo2FpM5aCmnviNTFRiZ/WCyyzjZnj8MJtw/TSwL8XbhsAY1GaPqh4Dk3AZ7uEsGg==
-X-Received: by 2002:a17:907:2c6b:b0:988:9ec1:a8c5 with SMTP id ib11-20020a1709072c6b00b009889ec1a8c5mr5605427ejc.55.1692643304233;
-        Mon, 21 Aug 2023 11:41:44 -0700 (PDT)
-Received: from [192.168.0.22] ([77.252.47.198])
-        by smtp.gmail.com with ESMTPSA id e16-20020a170906045000b0098dfec235ccsm6855882eja.47.2023.08.21.11.41.43
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 21 Aug 2023 11:41:43 -0700 (PDT)
-Message-ID: <8fd5b5e6-792c-3b7f-0828-5d647993ec7d@linaro.org>
-Date: Mon, 21 Aug 2023 20:41:42 +0200
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 136944A10
+	for <outreachy@lists.linux.dev>; Mon, 21 Aug 2023 19:20:31 +0000 (UTC)
+Received: from pps.filterd (m0167088.ppops.net [127.0.0.1])
+	by mx0a-00128a01.pphosted.com (8.17.1.22/8.17.1.22) with ESMTP id 37LDsiaX009034;
+	Mon, 21 Aug 2023 12:28:49 -0400
+Received: from nwd2mta4.analog.com ([137.71.173.58])
+	by mx0a-00128a01.pphosted.com (PPS) with ESMTPS id 3skvcqc7xa-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 21 Aug 2023 12:28:49 -0400 (EDT)
+Received: from ASHBMBX8.ad.analog.com (ASHBMBX8.ad.analog.com [10.64.17.5])
+	by nwd2mta4.analog.com (8.14.7/8.14.7) with ESMTP id 37LGSlil055699
+	(version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+	Mon, 21 Aug 2023 12:28:47 -0400
+Received: from ASHBMBX9.ad.analog.com (10.64.17.10) by ASHBMBX8.ad.analog.com
+ (10.64.17.5) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.14; Mon, 21 Aug
+ 2023 12:28:46 -0400
+Received: from zeus.spd.analog.com (10.66.68.11) by ashbmbx9.ad.analog.com
+ (10.64.17.10) with Microsoft SMTP Server id 15.2.986.14 via Frontend
+ Transport; Mon, 21 Aug 2023 12:28:46 -0400
+Received: from HYB-a2JJhsYKAxD.ad.analog.com (HYB-a2JJhsYKAxD.ad.analog.com [10.25.72.79])
+	by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 37LGSQso012468;
+	Mon, 21 Aug 2023 12:28:29 -0400
+From: Gokhan Celik <gokhan.celik@analog.com>
+To: <outreachy@lists.linux.dev>
+CC: Gokhan Celik <gokhan.celik@analog.com>,
+        Liam Girdwood
+	<lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+        Rob Herring
+	<robh+dt@kernel.org>,
+        Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>,
+        Conor Dooley <conor+dt@kernel.org>,
+        Gokhan Celik <Gokhan.Celik@analog.com>, <linux-kernel@vger.kernel.org>,
+        <devicetree@vger.kernel.org>
+Subject: [PATCH 0/2] drivers: regulator: Add MAX77503 regulator driver and bindings.
+Date: Mon, 21 Aug 2023 19:28:20 +0300
+Message-ID: <cover.1692634090.git.gokhan.celik@analog.com>
+X-Mailer: git-send-email 2.34.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.14.0
-Subject: Re: [PATCH 1/2] drivers: regulator: Add MAX77503 regulator driver
-Content-Language: en-US
-To: Gokhan Celik <gokhan.celik@analog.com>, outreachy@lists.linux.dev
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Rob Herring <robh+dt@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
- Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org
-References: <cover.1692634090.git.gokhan.celik@analog.com>
- <b45b07c3bdbfac1608b171f96aa0ae4ca5a0dd82.1692634090.git.gokhan.celik@analog.com>
-From: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-In-Reply-To: <b45b07c3bdbfac1608b171f96aa0ae4ca5a0dd82.1692634090.git.gokhan.celik@analog.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ADIRuleOP-NewSCL: Rule Triggered
+X-Proofpoint-ORIG-GUID: aFQpQY1mwAhUhdWEU07IFH-0Cfy4iY_y
+X-Proofpoint-GUID: aFQpQY1mwAhUhdWEU07IFH-0Cfy4iY_y
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
+ definitions=2023-08-21_04,2023-08-18_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 malwarescore=0
+ priorityscore=1501 impostorscore=0 mlxlogscore=552 mlxscore=0
+ suspectscore=0 clxscore=1011 adultscore=0 bulkscore=0 phishscore=0
+ spamscore=0 lowpriorityscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.19.0-2306200000 definitions=main-2308210153
 
-On 21/08/2023 18:28, Gokhan Celik wrote:
-> Add MAX77503 buck converter driver.
-> 
-> Signed-off-by: Gokhan Celik <gokhan.celik@analog.com>
-> ---
+Add MAX77503 buck converter driver and devicetree bindings.
+Apply patches in sequence.
 
-Please use subject prefixes matching the subsystem. You can get them for
-example with `git log --oneline -- DIRECTORY_OR_FILE` on the directory
-your patch is touching.
+Gokhan Celik (2):
+  drivers: regulator: Add MAX77503 regulator driver
+  dt-bindings: regulator: Add MAX77503 regulator bindings
 
->  drivers/regulator/Kconfig              |  10 ++
->  drivers/regulator/Makefile             |   1 +
->  drivers/regulator/max77503-regulator.c | 137 +++++++++++++++++++++++++
->  3 files changed, 148 insertions(+)
+ .../regulator/adi,max77503-regulator.yaml     |  64 ++++++++
+ drivers/regulator/Kconfig                     |  10 ++
+ drivers/regulator/Makefile                    |   1 +
+ drivers/regulator/max77503-regulator.c        | 137 ++++++++++++++++++
+ 4 files changed, 212 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/regulator/adi,max77503-regulator.yaml
+ create mode 100644 drivers/regulator/max77503-regulator.c
 
-
-Best regards,
-Krzysztof
+-- 
+2.34.1
 
