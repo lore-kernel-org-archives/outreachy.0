@@ -1,75 +1,180 @@
-Received: from mail-lf1-f50.google.com (mail-lf1-f50.google.com [209.85.167.50])
+Received: from mail-pg1-f177.google.com (mail-pg1-f177.google.com [209.85.215.177])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1CF7E2B545;
-	Tue, 22 Aug 2023 17:31:24 +0000 (UTC)
-Received: by mail-lf1-f50.google.com with SMTP id 2adb3069b0e04-4ff7ecd0a0dso1387407e87.0;
-        Tue, 22 Aug 2023 10:31:24 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 39D59110B;
+	Wed, 23 Aug 2023 12:53:13 +0000 (UTC)
+Received: by mail-pg1-f177.google.com with SMTP id 41be03b00d2f7-565f86ff4d1so3187310a12.2;
+        Wed, 23 Aug 2023 05:53:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20221208; t=1692725483; x=1693330283;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        d=gmail.com; s=20221208; t=1692795192; x=1693399992;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=QfKHgUSTtafoCDv9qIGxx5rTmDvawh/uB7wOQLfeuKA=;
-        b=Lm7nygwsiSap6Z09Y/8KweIlb6brFubBzcq23SZTWxfuTRXe+8kS4e0IYA410F/OgF
-         qC7nrZ1hp+zP6GtYf68mpBc3B/gyxRikAbFZpeko/66y1kZzTKA5KyjjC7nQMFuzuwae
-         WLcXo0tKqn1TNQabSXTgFYs42Qihic5AYYfkJmJqZ/HnZjan68yxxNvXYryMaK0kCtF5
-         09shWohCJRUizhD28gKpGgjoMSUt+4clMPfBG3l73cDJxLPtpNyIolPJxxdlhExNCX3T
-         rGGmOwXDkUcNt8zJqAxzhfiJPRpWZxopd8Cu8r4CHGqZP2wmSg0uD8yJbRSEotXGuZJ6
-         V1xg==
+        bh=9bhZs1e5q1KWpzONagveUUIWGVxIIkKWBWmcf7t0PXI=;
+        b=lbFGqb76MbHiV3fYCPFXBp/EBcceku/rDW4uSg3/3+oDmJUEvqnUBAqY2Dt4o6hCko
+         7cjJEoznspMnVuspRRnh9lBXAJKK/OfL6jgsFggULNAiZaKSNyy50vAG74f9Pb04NZ6M
+         +4ODoHFqPXVZz2J8uRV/7/ADTTgAz0yfBOIWoDEQR/Ye8km2qij2vbWkdzOuoJdkDo4W
+         /xceDVgim7dfE/2ZDmjJ7qoN1xuxdI10Jh0MZcLbJgwI7vREjrCmrtx/6YMkm/K1rtpQ
+         xnQPiLu1xNO3Nhj2yd1+4lZxYv/+aHa4EbBUPLkU+WYS7xceW9uImh/k6m/I2vpMc0eS
+         TxWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20221208; t=1692725483; x=1693330283;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        d=1e100.net; s=20221208; t=1692795192; x=1693399992;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=QfKHgUSTtafoCDv9qIGxx5rTmDvawh/uB7wOQLfeuKA=;
-        b=J/C3ME0UV76wsPTISy+R1c09DTCUgb/3g9qZ8O3I1papItQxufYN2PKt41yDeZmF13
-         E3gCHPh9sOhZmxZ6McUbUNbtCqPs0ibM1YQBK0Md/0ZO3WlFDADUi+aCHjzJCwO2aYqW
-         GQ6GuAaPhUS+V3Aw+TLL5odei7uvMuL2uxlGnK7cHIIcJTwk/yA4HbtDwe+ZpEbBP4aF
-         AfV/vCTnD1cA1sAQdrorw58PmdzEUHh2P+gqvHsdDpIl+NWW31EUuBR0QV2cLLPtRuQy
-         KjD3mvOcJemK4Gp9U8IDDrjzhg/3XxD+M8NYGPBlssiJft9YMMHcg0NsgfvzQKnRDYJb
-         hU+A==
-X-Gm-Message-State: AOJu0YzbhcEBaYnFlHI75tXPDqSU2eOHyJ4JiD3QdXBcl0gZ3uCxpTGc
-	9bFVgpnInu3oEmi41kx8TdA=
-X-Google-Smtp-Source: AGHT+IFKsA5y+4A45gtr4oOX0jTZC3l4FhZV7lIud8i/1g+uNYS7PKF7EUvH1WKUiZXGy9HenbYx+g==
-X-Received: by 2002:a19:f81a:0:b0:4fb:9477:f713 with SMTP id a26-20020a19f81a000000b004fb9477f713mr5925771lff.6.1692725482596;
-        Tue, 22 Aug 2023 10:31:22 -0700 (PDT)
-Received: from [192.168.0.100] (p579356c7.dip0.t-ipconnect.de. [87.147.86.199])
-        by smtp.gmail.com with ESMTPSA id x20-20020a05600c2a5400b003fef60005b5sm4049810wme.9.2023.08.22.10.31.21
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 22 Aug 2023 10:31:22 -0700 (PDT)
-Message-ID: <e5eb5935-5219-4d43-892b-96a03f8eb755@gmail.com>
-Date: Tue, 22 Aug 2023 19:31:21 +0200
+        bh=9bhZs1e5q1KWpzONagveUUIWGVxIIkKWBWmcf7t0PXI=;
+        b=CXR3IFWTLuAbosjPrz1C8feeiFVoI5ofHookbmLGdBC95EevQULxT+DZS84M4ZnQyC
+         IATvKL1gWRDNFCNddz/g3ZRn67uDQLkqVrFOEUok8VzqDDYkcaEGzdCFgAcGvyILBk9u
+         gwxOXcl09kBPUP0SMSy9H7zFI482USRM1VQF8YKdmUWTK+7Y6rZ01OTPB8gCjPmiAYDP
+         d69GwWe8Ie8Qtv8cyRGpvPs8V/xX4wKvGcQvKDGvxN3lu/oOmhlm77Z4xcbUIBb3lrkB
+         ZAfPBDK0mIVH+d6KJKtw8ixuD3eIXTzXb7V7zSfBjhatuSh/QlclDGeUw6CJCCK4U3Fb
+         XWIw==
+X-Gm-Message-State: AOJu0YzfZ64bJso3laQWQ+L5CZoYqQxkKFYJMTEl2mx7RRKHOZeF77iY
+	6KJ7Qa+H1/wuw8lp+cnI5LY=
+X-Google-Smtp-Source: AGHT+IFk2vhMke3lTfoMgYmxrcS833teoMLDPiChgJfNhJf7lvGeDbLw4sjXmkabTDM7eIzE43o/DQ==
+X-Received: by 2002:a17:90b:287:b0:268:b682:23da with SMTP id az7-20020a17090b028700b00268b68223damr9327465pjb.34.1692795192289;
+        Wed, 23 Aug 2023 05:53:12 -0700 (PDT)
+Received: from ubuntu.myguest.virtualbox.org ([122.162.51.13])
+        by smtp.gmail.com with ESMTPSA id t5-20020a17090a024500b00262e604724dsm12209797pje.50.2023.08.23.05.53.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 23 Aug 2023 05:53:11 -0700 (PDT)
+Date: Wed, 23 Aug 2023 18:23:07 +0530
+From: Pavan Bobba <opensource206@gmail.com>
+To: Forest Bond <forest@alittletooquiet.net>,
+	Michael Straube <straube.linux@gmail.com>,
+	Philipp Hortmann <philipp.g.hortmann@gmail.com>,
+	outreachy@lists.linux.dev
+Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: [PATCH v2] staging: vt6655: replace camel case by snake case
+Message-ID: <ZOYBM9t0agzTKWwz@ubuntu.myguest.virtualbox.org>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH] staging: vt6655: replace camel case by snake case
-Content-Language: en-US
-To: Pavan Bobba <opensource206@gmail.com>,
- Forest Bond <forest@alittletooquiet.net>,
- Michael Straube <straube.linux@gmail.com>, outreachy@lists.linux.dev
-Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-References: <ZOTUCRICU6lSYfdn@ubuntu.myguest.virtualbox.org>
-From: Philipp Hortmann <philipp.g.hortmann@gmail.com>
-In-Reply-To: <ZOTUCRICU6lSYfdn@ubuntu.myguest.virtualbox.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-On 8/22/23 17:28, Pavan Bobba wrote:
-> Replace formal arguments of few functions and local variables of camel case by snake case.
-> Issue found by checkpatch
-> 
-> Signed-off-by: Pavan Bobba<opensource206@gmail.com>
+1.Conversion of formal argument names from camel case to snake case for below functions:
+      a.SROMvReadAllContents
+      b.SROMvReadEtherAddress
 
-Hi,
+2.Conversion of local variable names from camel case to snake case in function SROMvReadEtherAddress
 
-please find a unique subject so that we see it is something new.
+Issue found by checkpatch
 
-Thanks
+Signed-off-by: Pavan Bobba <opensource206@gmail.com>
+---
+ v1 -> v2: encoding of type information in variable names dropped
+ 
+ drivers/staging/vt6655/srom.c | 48 +++++++++++++++++------------------
+ 1 file changed, 24 insertions(+), 24 deletions(-)
 
-Bye Philipp
+diff --git a/drivers/staging/vt6655/srom.c b/drivers/staging/vt6655/srom.c
+index ee5ca4db74dc..9c13ad089d78 100644
+--- a/drivers/staging/vt6655/srom.c
++++ b/drivers/staging/vt6655/srom.c
+@@ -59,36 +59,36 @@
+ unsigned char SROMbyReadEmbedded(void __iomem *iobase,
+ 				 unsigned char byContntOffset)
+ {
+-	unsigned short wDelay, wNoACK;
+-	unsigned char byWait;
+-	unsigned char byData;
+-	unsigned char byOrg;
++	unsigned short delay, noack;
++	unsigned char wait;
++	unsigned char data;
++	unsigned char org;
+ 
+-	byData = 0xFF;
+-	byOrg = ioread8(iobase + MAC_REG_I2MCFG);
++	data = 0xFF;
++	org = ioread8(iobase + MAC_REG_I2MCFG);
+ 	/* turn off hardware retry for getting NACK */
+-	iowrite8(byOrg & (~I2MCFG_NORETRY), iobase + MAC_REG_I2MCFG);
+-	for (wNoACK = 0; wNoACK < W_MAX_I2CRETRY; wNoACK++) {
++	iowrite8(org & (~I2MCFG_NORETRY), iobase + MAC_REG_I2MCFG);
++	for (noack = 0; noack < W_MAX_I2CRETRY; noack++) {
+ 		iowrite8(EEP_I2C_DEV_ID, iobase + MAC_REG_I2MTGID);
+ 		iowrite8(byContntOffset, iobase + MAC_REG_I2MTGAD);
+ 
+ 		/* issue read command */
+ 		iowrite8(I2MCSR_EEMR, iobase + MAC_REG_I2MCSR);
+ 		/* wait DONE be set */
+-		for (wDelay = 0; wDelay < W_MAX_TIMEOUT; wDelay++) {
+-			byWait = ioread8(iobase + MAC_REG_I2MCSR);
+-			if (byWait & (I2MCSR_DONE | I2MCSR_NACK))
++		for (delay = 0; delay < W_MAX_TIMEOUT; delay++) {
++			wait = ioread8(iobase + MAC_REG_I2MCSR);
++			if (wait & (I2MCSR_DONE | I2MCSR_NACK))
+ 				break;
+ 			udelay(CB_DELAY_LOOP_WAIT);
+ 		}
+-		if ((wDelay < W_MAX_TIMEOUT) &&
+-		    (!(byWait & I2MCSR_NACK))) {
++		if ((delay < W_MAX_TIMEOUT) &&
++		    (!(wait & I2MCSR_NACK))) {
+ 			break;
+ 		}
+ 	}
+-	byData = ioread8(iobase + MAC_REG_I2MDIPT);
+-	iowrite8(byOrg, iobase + MAC_REG_I2MCFG);
+-	return byData;
++	data = ioread8(iobase + MAC_REG_I2MDIPT);
++	iowrite8(org, iobase + MAC_REG_I2MCFG);
++	return data;
+ }
+ 
+ /*
+@@ -98,20 +98,20 @@ unsigned char SROMbyReadEmbedded(void __iomem *iobase,
+  *  In:
+  *      iobase          - I/O base address
+  *  Out:
+- *      pbyEepromRegs   - EEPROM content Buffer
++ *      eepromregs   - EEPROM content Buffer
+  *
+  * Return Value: none
+  *
+  */
+-void SROMvReadAllContents(void __iomem *iobase, unsigned char *pbyEepromRegs)
++void SROMvReadAllContents(void __iomem *iobase, unsigned char *eepromregs)
+ {
+ 	int     ii;
+ 
+ 	/* ii = Rom Address */
+ 	for (ii = 0; ii < EEP_MAX_CONTEXT_SIZE; ii++) {
+-		*pbyEepromRegs = SROMbyReadEmbedded(iobase,
++		*eepromregs = SROMbyReadEmbedded(iobase,
+ 						    (unsigned char)ii);
+-		pbyEepromRegs++;
++		eepromregs++;
+ 	}
+ }
+ 
+@@ -122,19 +122,19 @@ void SROMvReadAllContents(void __iomem *iobase, unsigned char *pbyEepromRegs)
+  *  In:
+  *      iobase          - I/O base address
+  *  Out:
+- *      pbyEtherAddress - Ethernet Address buffer
++ *      etheraddress - Ethernet Address buffer
+  *
+  * Return Value: none
+  *
+  */
+ void SROMvReadEtherAddress(void __iomem *iobase,
+-			   unsigned char *pbyEtherAddress)
++			   unsigned char *etheraddress)
+ {
+ 	unsigned char ii;
+ 
+ 	/* ii = Rom Address */
+ 	for (ii = 0; ii < ETH_ALEN; ii++) {
+-		*pbyEtherAddress = SROMbyReadEmbedded(iobase, ii);
+-		pbyEtherAddress++;
++		*etheraddress = SROMbyReadEmbedded(iobase, ii);
++		etheraddress++;
+ 	}
+ }
+-- 
+2.34.1
+
