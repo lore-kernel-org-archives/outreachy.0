@@ -1,70 +1,80 @@
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+Received: from mx0a-00128a01.pphosted.com (mx0a-00128a01.pphosted.com [148.163.135.77])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 652C88831;
-	Tue, 19 Sep 2023 21:04:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 35FCDC433C7;
-	Tue, 19 Sep 2023 21:04:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1695157497;
-	bh=ZBNmlJfPU0ZzG/XbnBXap4CcKHmXF186hxS/a/0HOA8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=hFEL1rL7PwzYmpz7Bcf4B65KtW2RtIIqaw084dpL+sHHgb3+iC2R7EBtp44Y9ZHGv
-	 Xtcfh1STSbtNq5DK8BeJQ1f1J+hga57OPKsn2lyMdYIuXfUvX9KJsYIRJ6GCyaNlQY
-	 9a0cNQCfc9Fb+2IxJVa3vWjKmRwqau2YaAFAHRAoiHllK5xJuSgojdFWE7SvXbyTMH
-	 bGM0hxC9xSUPdubdq7AgKBe0bszcwY03Yb8a8QhgEAAxkh/ywqdSpYSbRfxrdVwJpa
-	 vwkXnPbbv3FYv3mTY2JTenEcSKk6eIIpW/GPKJwfVAf7Xd+D/e/wJMw+VQ4JIOiAzb
-	 yIcr9FXQC3fXg==
-Date: Tue, 19 Sep 2023 22:04:52 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Gokhan Celik <gokhan.celik@analog.com>
-Cc: outreachy@lists.linux.dev, Liam Girdwood <lgirdwood@gmail.com>,
-	Rob Herring <robh+dt@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH v2 1/2] regulator: max77503: Add ADI MAX77503 support
-Message-ID: <ef0ec241-6cfe-4748-b6f1-83252ed75580@sirena.org.uk>
-References: <cover.1695155379.git.gokhan.celik@analog.com>
- <5ee2ac417829b4be0a5eeb8b0593325fd1b1d1e6.1695155379.git.gokhan.celik@analog.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5A383347C7
+	for <outreachy@lists.linux.dev>; Tue, 19 Sep 2023 21:27:22 +0000 (UTC)
+Received: from pps.filterd (m0167089.ppops.net [127.0.0.1])
+	by mx0a-00128a01.pphosted.com (8.17.1.22/8.17.1.22) with ESMTP id 38JH3Cso008779;
+	Tue, 19 Sep 2023 16:45:53 -0400
+Received: from nwd2mta3.analog.com ([137.71.173.56])
+	by mx0a-00128a01.pphosted.com (PPS) with ESMTPS id 3t5s7krdw3-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 19 Sep 2023 16:45:53 -0400 (EDT)
+Received: from ASHBMBX8.ad.analog.com (ASHBMBX8.ad.analog.com [10.64.17.5])
+	by nwd2mta3.analog.com (8.14.7/8.14.7) with ESMTP id 38JKjp6w059510
+	(version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+	Tue, 19 Sep 2023 16:45:51 -0400
+Received: from ASHBMBX9.ad.analog.com (10.64.17.10) by ASHBMBX8.ad.analog.com
+ (10.64.17.5) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.14; Tue, 19 Sep
+ 2023 16:45:50 -0400
+Received: from zeus.spd.analog.com (10.66.68.11) by ashbmbx9.ad.analog.com
+ (10.64.17.10) with Microsoft SMTP Server id 15.2.986.14 via Frontend
+ Transport; Tue, 19 Sep 2023 16:45:50 -0400
+Received: from HYB-a2JJhsYKAxD.ad.analog.com ([10.132.252.38])
+	by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 38JKjWcu032705;
+	Tue, 19 Sep 2023 16:45:35 -0400
+From: Gokhan Celik <gokhan.celik@analog.com>
+To: <outreachy@lists.linux.dev>
+CC: Gokhan Celik <gokhan.celik@analog.com>,
+        Liam Girdwood
+	<lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+        Rob Herring
+	<robh+dt@kernel.org>,
+        Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>,
+        Conor Dooley <conor+dt@kernel.org>,
+        Gokhan Celik <Gokhan.Celik@analog.com>, <linux-kernel@vger.kernel.org>,
+        <devicetree@vger.kernel.org>
+Subject: [PATCH v2 0/2] Add ADI MAX77503 regulator driver and bindings
+Date: Tue, 19 Sep 2023 23:45:20 +0300
+Message-ID: <cover.1695155379.git.gokhan.celik@analog.com>
+X-Mailer: git-send-email 2.34.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="xVK5PIFPVcjFlKlr"
-Content-Disposition: inline
-In-Reply-To: <5ee2ac417829b4be0a5eeb8b0593325fd1b1d1e6.1695155379.git.gokhan.celik@analog.com>
-X-Cookie: You buttered your bread, now lie in it.
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ADIRuleOP-NewSCL: Rule Triggered
+X-Proofpoint-GUID: Xx8bmiCZ3p20YdM6HEfjM6fzTv3mbh0X
+X-Proofpoint-ORIG-GUID: Xx8bmiCZ3p20YdM6HEfjM6fzTv3mbh0X
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.601,FMLib:17.11.176.26
+ definitions=2023-09-19_10,2023-09-19_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 suspectscore=0 malwarescore=0
+ mlxscore=0 clxscore=1011 bulkscore=0 priorityscore=1501 impostorscore=0
+ mlxlogscore=640 spamscore=0 lowpriorityscore=0 adultscore=0 phishscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.19.0-2308100000
+ definitions=main-2309190176
 
+Add MAX77503 buck converter driver and devicetree bindings.
+Apply patches in sequence.
 
---xVK5PIFPVcjFlKlr
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Gokhan Celik (2):
+  regulator: max77503: Add ADI MAX77503 support
+  regulator: dt-bindings: Add ADI MAX77503 support
 
-On Tue, Sep 19, 2023 at 11:45:21PM +0300, Gokhan Celik wrote:
-> Add ADI MAX77503 buck converter driver support.
->=20
-> Signed-off-by: Gokhan Celik <gokhan.celik@analog.com>
+ .../regulator/adi,max77503-regulator.yaml     |  53 +++++++
+ drivers/regulator/Kconfig                     |  10 ++
+ drivers/regulator/Makefile                    |   1 +
+ drivers/regulator/max77503-regulator.c        | 137 ++++++++++++++++++
+ 4 files changed, 201 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/regulator/adi,max77503-regulator.yaml
+ create mode 100644 drivers/regulator/max77503-regulator.c
 
-The driver code itself looks good.
+-- 
+2.34.1
 
---xVK5PIFPVcjFlKlr
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmUKDPMACgkQJNaLcl1U
-h9B+9gf/WLiClu05Mejspfrb0rckc78G5Zn/1ihHKa/mgeh3WSpbF+noKuVkRynn
-uIOGG1bGKXK3pEuKj/9TfGYDsLkdeya5rbNUsHM+QB1a4g3IN4H/jDR9TrQIZ4JT
-28Lv6xH9QgQyJcBe3Ctcd7ueU6so1NqvkRJYu/njbG6orA5BcDJ8Hj2PV8TPAhuB
-0MN/0Glk33AzAyc5ni+wRNF+4DkCM6Smy6fqBAR9Ri2VUCW9I9uSH+PDjlHZPyi8
-VrSjOdxXfmP5uehqEmc5B5rg+QdRMdvRKUEzFsUjinkE4Ywr9NkaIjZgd97tXypn
-QX699nG3vUrJuDvfkQj8Sr/Itwsh8w==
-=gwzq
------END PGP SIGNATURE-----
-
---xVK5PIFPVcjFlKlr--
