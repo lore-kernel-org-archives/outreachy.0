@@ -1,138 +1,76 @@
-Received: from mx0a-00128a01.pphosted.com (mx0a-00128a01.pphosted.com [148.163.135.77])
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 098FD1EA78
-	for <outreachy@lists.linux.dev>; Tue, 19 Sep 2023 20:46:13 +0000 (UTC)
-Received: from pps.filterd (m0167088.ppops.net [127.0.0.1])
-	by mx0a-00128a01.pphosted.com (8.17.1.22/8.17.1.22) with ESMTP id 38JIROAk031116;
-	Tue, 19 Sep 2023 16:46:04 -0400
-Received: from nwd2mta3.analog.com ([137.71.173.56])
-	by mx0a-00128a01.pphosted.com (PPS) with ESMTPS id 3t6gc23s82-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 19 Sep 2023 16:46:04 -0400 (EDT)
-Received: from ASHBMBX8.ad.analog.com (ASHBMBX8.ad.analog.com [10.64.17.5])
-	by nwd2mta3.analog.com (8.14.7/8.14.7) with ESMTP id 38JKk3bR059541
-	(version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Tue, 19 Sep 2023 16:46:03 -0400
-Received: from ASHBCASHYB5.ad.analog.com (10.64.17.133) by
- ASHBMBX8.ad.analog.com (10.64.17.5) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.14; Tue, 19 Sep 2023 16:46:02 -0400
-Received: from ASHBMBX8.ad.analog.com (10.64.17.5) by
- ASHBCASHYB5.ad.analog.com (10.64.17.133) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.14; Tue, 19 Sep 2023 16:46:02 -0400
-Received: from zeus.spd.analog.com (10.66.68.11) by ashbmbx8.ad.analog.com
- (10.64.17.5) with Microsoft SMTP Server id 15.2.986.14 via Frontend
- Transport; Tue, 19 Sep 2023 16:46:02 -0400
-Received: from HYB-a2JJhsYKAxD.ad.analog.com ([10.132.252.38])
-	by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 38JKjWcw032705;
-	Tue, 19 Sep 2023 16:45:47 -0400
-From: Gokhan Celik <gokhan.celik@analog.com>
-To: <outreachy@lists.linux.dev>
-CC: Gokhan Celik <gokhan.celik@analog.com>,
-        Liam Girdwood
-	<lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
-        Rob Herring
-	<robh+dt@kernel.org>,
-        Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>,
-        Conor Dooley <conor+dt@kernel.org>,
-        Gokhan Celik <Gokhan.Celik@analog.com>, <linux-kernel@vger.kernel.org>,
-        <devicetree@vger.kernel.org>
-Subject: [PATCH v2 2/2] regulator: dt-bindings: Add ADI MAX77503 support
-Date: Tue, 19 Sep 2023 23:45:22 +0300
-Message-ID: <5ce9482e53587d9250ecaa07d0908b987081b4e9.1695155379.git.gokhan.celik@analog.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <cover.1695155379.git.gokhan.celik@analog.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AEBA78831;
+	Tue, 19 Sep 2023 21:03:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3BC9EC433C8;
+	Tue, 19 Sep 2023 21:03:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1695157429;
+	bh=jQELY3ed0aSaCGrtR4O8uZ4VBZ0t0mnB+LYkLbV4ppc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=lOCZUvwjqCVGTEeJxFMGoi3GdFpVUr1ctfO8v8hiexPz7Rpzjri86AhYDbTtCXhdF
+	 ZRFwIRQXm8NPTeTJ+daRlMezaJ/FBkG4LxJ5nZT3oKjrphthzUy4OMyGVVOypZ6o7c
+	 BIa56mraLBLegxo2FYqMeaqWT7TTKzmuhwDJnlpqxmLQxHeWOY8pVIWFo2u3EiEroF
+	 CtzOiddTk9Iu3NUG0pn7D2rhDbMJaKhPf5zD9UYLcJcHW+V76w0rZokqdXXatQQ5kO
+	 sF9c8a6wiIfKEUGzn7bi+LFlGchnl2IFeJGvoasDpijUyYzd96h0TvHP/AjglthFWk
+	 3UHwZYcl0gZiA==
+Date: Tue, 19 Sep 2023 22:03:44 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Gokhan Celik <gokhan.celik@analog.com>
+Cc: outreachy@lists.linux.dev, Liam Girdwood <lgirdwood@gmail.com>,
+	Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH v2 2/2] regulator: dt-bindings: Add ADI MAX77503 support
+Message-ID: <612491b7-f303-4ce7-ba41-26a622209f65@sirena.org.uk>
 References: <cover.1695155379.git.gokhan.celik@analog.com>
+ <5ce9482e53587d9250ecaa07d0908b987081b4e9.1695155379.git.gokhan.celik@analog.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ADIRuleOP-NewSCL: Rule Triggered
-X-Proofpoint-GUID: goQT9poUM5z38Phckr8lvcqg8Pge3ip7
-X-Proofpoint-ORIG-GUID: goQT9poUM5z38Phckr8lvcqg8Pge3ip7
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.601,FMLib:17.11.176.26
- definitions=2023-09-19_10,2023-09-19_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxscore=0 mlxlogscore=999
- priorityscore=1501 impostorscore=0 malwarescore=0 adultscore=0
- lowpriorityscore=0 phishscore=0 bulkscore=0 suspectscore=0 clxscore=1015
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2308100000 definitions=main-2309190177
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="U7bugydQvn0mFnR9"
+Content-Disposition: inline
+In-Reply-To: <5ce9482e53587d9250ecaa07d0908b987081b4e9.1695155379.git.gokhan.celik@analog.com>
+X-Cookie: You buttered your bread, now lie in it.
 
-Add ADI MAX77503 buck converter devicetree document.
 
-Signed-off-by: Gokhan Celik <gokhan.celik@analog.com>
----
- .../regulator/adi,max77503-regulator.yaml     | 53 +++++++++++++++++++
- 1 file changed, 53 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/regulator/adi,max77503-regulator.yaml
+--U7bugydQvn0mFnR9
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-diff --git a/Documentation/devicetree/bindings/regulator/adi,max77503-regulator.yaml b/Documentation/devicetree/bindings/regulator/adi,max77503-regulator.yaml
-new file mode 100644
-index 000000000000..128e04ae3f4d
---- /dev/null
-+++ b/Documentation/devicetree/bindings/regulator/adi,max77503-regulator.yaml
-@@ -0,0 +1,53 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+# Copyright (c) 2023 Analog Devices, Inc.
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/regulator/adi,max77503-regulator.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Analog Devices MAX77503 Buck Converter
-+
-+maintainers:
-+  - Gokhan Celik <Gokhan.Celik@analog.com>
-+
-+description: |
-+  The Analog Devices MAX77503 is a single channel 14V input, 1.5A 
-+  high-efficiency buck converter. This converter has 94% efficiency
-+  for 2-Cell/3-Cell battery applications.
-+
-+allOf:
-+  - $ref: regulator.yaml#
-+
-+properties:
-+  compatible:
-+    enum:
-+      - adi,max77503
-+
-+  reg:
-+    description: I2C address of the device
-+    items:
-+      - enum: [0x1e, 0x24, 0x37]
-+
-+required:
-+  - compatible
-+  - reg
-+  - regulator-min-microvolt
-+  - regulator-max-microvolt
-+
-+unevaluatedProperties: false
-+
-+examples:
-+  - |
-+    i2c {
-+        #address-cells = <1>;
-+        #size-cells = <0>;
-+
-+        regulator@1e {
-+            compatible = "adi,max77503";
-+            reg = <0x1e>;
-+
-+            regulator-min-microvolt = <800000>;
-+            regulator-max-microvolt = <5000000>;
-+        };
-+    };
-+
--- 
-2.34.1
+On Tue, Sep 19, 2023 at 11:45:22PM +0300, Gokhan Celik wrote:
 
+> +required:
+> +  - compatible
+> +  - reg
+> +  - regulator-min-microvolt
+> +  - regulator-max-microvolt
+
+There should not normally be a requirement to specify voltage
+constraints, it should be valid for the system to not permit any
+configuration of the voltage at runtime and just use whatever state it
+was left with when the kernel was started (eg, hardware or bootloader
+default).
+
+--U7bugydQvn0mFnR9
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmUKDK8ACgkQJNaLcl1U
+h9AlTwf/VzAnN77CfZ0uBHjrlcyNqnuHpdCoS7AZT9VOMeDyUWNkM+jBz5/Dty5L
+P4amLUiuB4FNCw05Bb6A+InKAJsVAJblH69cBNHkw9TPjb57fPjoZNUGMisCOiOJ
+3O0aXatbaYLlwNEz7564lyTk+t5PTcQvA0YOCzfwOyEuwTCYm6Pw1sU7y1oMwduQ
+8BaWwxRxDocuq7o5PWeatSK+HiAOe3WmVQykD0g+OocpNRJMb4EBhJWIbNG4zAdB
+fo8cKL+eQ21oHT+ATOOdjQD1ZwWCy9QsddHwXUU4/Bd4bLlIipHTxp320nZqJuuQ
+U7J6RuKB5SMNPE0sRIBrVvRqWK/Wig==
+=YCg7
+-----END PGP SIGNATURE-----
+
+--U7bugydQvn0mFnR9--
