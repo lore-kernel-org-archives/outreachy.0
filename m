@@ -1,257 +1,142 @@
-Received: from mx0a-00128a01.pphosted.com (mx0a-00128a01.pphosted.com [148.163.135.77])
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A763F38BBC
-	for <outreachy@lists.linux.dev>; Tue, 19 Sep 2023 23:39:17 +0000 (UTC)
-Received: from pps.filterd (m0167088.ppops.net [127.0.0.1])
-	by mx0a-00128a01.pphosted.com (8.17.1.22/8.17.1.22) with ESMTP id 38JIgdoR031240;
-	Tue, 19 Sep 2023 16:46:00 -0400
-Received: from nwd2mta3.analog.com ([137.71.173.56])
-	by mx0a-00128a01.pphosted.com (PPS) with ESMTPS id 3t6gc23s7q-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 19 Sep 2023 16:46:00 -0400 (EDT)
-Received: from ASHBMBX9.ad.analog.com (ASHBMBX9.ad.analog.com [10.64.17.10])
-	by nwd2mta3.analog.com (8.14.7/8.14.7) with ESMTP id 38JKjxb9059532
-	(version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Tue, 19 Sep 2023 16:45:59 -0400
-Received: from ASHBCASHYB5.ad.analog.com (10.64.17.133) by
- ASHBMBX9.ad.analog.com (10.64.17.10) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.14; Tue, 19 Sep 2023 16:45:58 -0400
-Received: from ASHBMBX9.ad.analog.com (10.64.17.10) by
- ASHBCASHYB5.ad.analog.com (10.64.17.133) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.986.14; Tue, 19 Sep 2023 16:45:58 -0400
-Received: from zeus.spd.analog.com (10.66.68.11) by ashbmbx9.ad.analog.com
- (10.64.17.10) with Microsoft SMTP Server id 15.2.986.14 via Frontend
- Transport; Tue, 19 Sep 2023 16:45:58 -0400
-Received: from HYB-a2JJhsYKAxD.ad.analog.com ([10.132.252.38])
-	by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 38JKjWcv032705;
-	Tue, 19 Sep 2023 16:45:43 -0400
-From: Gokhan Celik <gokhan.celik@analog.com>
-To: <outreachy@lists.linux.dev>
-CC: Gokhan Celik <gokhan.celik@analog.com>,
-        Liam Girdwood
-	<lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
-        Rob Herring
-	<robh+dt@kernel.org>,
-        Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>,
-        Conor Dooley <conor+dt@kernel.org>,
-        Gokhan Celik <Gokhan.Celik@analog.com>, <linux-kernel@vger.kernel.org>,
-        <devicetree@vger.kernel.org>
-Subject: [PATCH v2 1/2] regulator: max77503: Add ADI MAX77503 support
-Date: Tue, 19 Sep 2023 23:45:21 +0300
-Message-ID: <5ee2ac417829b4be0a5eeb8b0593325fd1b1d1e6.1695155379.git.gokhan.celik@analog.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <cover.1695155379.git.gokhan.celik@analog.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4555D3B2A4;
+	Wed, 20 Sep 2023 15:25:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DB690C433C8;
+	Wed, 20 Sep 2023 15:25:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1695223546;
+	bh=84if6Rt9sb+lMTCfxVLo8MgoC3NPhilBQ/XZ/msXQ0Q=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=WRMM6LkbqVxZHgOxKUk6odzdzhWDBIsEkU7VQsMn6HA3FGvfa220uRNNesUZucYyg
+	 Rp17+LhuklSWjjQvITGBawPJOh/+nA9maYOpJQ2HSwo7yTYmiCKzRaMNzxCbwukWK6
+	 qEF7BBCBfHB7dcr83yjRsVHMOd64T+q+DxxmLNyo0Euv5S7Yfp87yIea8PIEsI6XkB
+	 DenQ99cRM30vad1K6qF8tFBFLnba4/IJQ4BbUNqP+a+gEz9PXCzk2NW0T+bAG2oCtn
+	 69ac8Yt8Q740eBMBU1ZQqHRNgz47aF2+G+g62Yd0ZBTmYdNKUBbmShl639QC521TCT
+	 LT8g4oJ4zWkxg==
+Date: Wed, 20 Sep 2023 16:25:42 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Gokhan Celik <gokhan.celik@analog.com>
+Cc: outreachy@lists.linux.dev, Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>, Rob Herring <robh+dt@kernel.org>,
+	Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+	Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH v2 2/2] regulator: dt-bindings: Add ADI MAX77503 support
+Message-ID: <20230920-84ed9120f304012067f0d390@fedora>
 References: <cover.1695155379.git.gokhan.celik@analog.com>
+ <5ce9482e53587d9250ecaa07d0908b987081b4e9.1695155379.git.gokhan.celik@analog.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ADIRuleOP-NewSCL: Rule Triggered
-X-Proofpoint-GUID: B5esy0PsBViruWrgtO1ubq8sT5SFm0_r
-X-Proofpoint-ORIG-GUID: B5esy0PsBViruWrgtO1ubq8sT5SFm0_r
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.601,FMLib:17.11.176.26
- definitions=2023-09-19_10,2023-09-19_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxscore=0 mlxlogscore=999
- priorityscore=1501 impostorscore=0 malwarescore=0 adultscore=0
- lowpriorityscore=0 phishscore=0 bulkscore=0 suspectscore=0 clxscore=1015
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2308100000 definitions=main-2309190177
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="ou1Mt6OWPM9UBPMp"
+Content-Disposition: inline
+In-Reply-To: <5ce9482e53587d9250ecaa07d0908b987081b4e9.1695155379.git.gokhan.celik@analog.com>
 
-Add ADI MAX77503 buck converter driver support.
 
-Signed-off-by: Gokhan Celik <gokhan.celik@analog.com>
----
- drivers/regulator/Kconfig              |  10 ++
- drivers/regulator/Makefile             |   1 +
- drivers/regulator/max77503-regulator.c | 137 +++++++++++++++++++++++++
- 3 files changed, 148 insertions(+)
- create mode 100644 drivers/regulator/max77503-regulator.c
+--ou1Mt6OWPM9UBPMp
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/regulator/Kconfig b/drivers/regulator/Kconfig
-index 823f8e6e4801..dbd2053774e9 100644
---- a/drivers/regulator/Kconfig
-+++ b/drivers/regulator/Kconfig
-@@ -556,6 +556,16 @@ config REGULATOR_MAX597X
- 	  The MAX5970/5978 is a smart switch with no output regulation, but
- 	  fault protection and voltage and current monitoring capabilities.
- 
-+config REGULATOR_MAX77503
-+	tristate "Analog Devices MAX77503 Regulator"
-+	depends on I2C
-+	select REGMAP_I2C
-+	help
-+	  This driver controls a Analog Devices MAX77503 14V input, 1.5A
-+	  high-efficiency buck converter via I2C bus.
-+	  Say M here if you want to include support for the regulator as a
-+	  module.
-+
- config REGULATOR_MAX77541
- 	tristate "Analog Devices MAX77541/77540 Regulator"
- 	depends on MFD_MAX77541
-diff --git a/drivers/regulator/Makefile b/drivers/regulator/Makefile
-index 15e0d614ff66..b5b724699b51 100644
---- a/drivers/regulator/Makefile
-+++ b/drivers/regulator/Makefile
-@@ -68,6 +68,7 @@ obj-$(CONFIG_REGULATOR_LTC3676) += ltc3676.o
- obj-$(CONFIG_REGULATOR_MAX14577) += max14577-regulator.o
- obj-$(CONFIG_REGULATOR_MAX1586) += max1586.o
- obj-$(CONFIG_REGULATOR_MAX597X) += max597x-regulator.o
-+obj-$(CONFIG_REGULATOR_MAX77503) += max77503-regulator.o
- obj-$(CONFIG_REGULATOR_MAX77541) += max77541-regulator.o
- obj-$(CONFIG_REGULATOR_MAX77620) += max77620-regulator.o
- obj-$(CONFIG_REGULATOR_MAX77650) += max77650-regulator.o
-diff --git a/drivers/regulator/max77503-regulator.c b/drivers/regulator/max77503-regulator.c
-new file mode 100644
-index 000000000000..4a6ba4dd2acd
---- /dev/null
-+++ b/drivers/regulator/max77503-regulator.c
-@@ -0,0 +1,137 @@
-+// SPDX-License-Identifier: GPL-2.0-or-later
-+/*
-+ * Copyright (c) 2023 Analog Devices, Inc.
-+ * ADI regulator driver for MAX77503.
-+ */
-+
-+#include <linux/i2c.h>
-+#include <linux/module.h>
-+#include <linux/regmap.h>
-+#include <linux/regulator/driver.h>
-+#include <linux/regulator/machine.h>
-+#include <linux/regulator/of_regulator.h>
-+#include <linux/util_macros.h>
-+
-+#define MAX77503_REG_CFG			0x00
-+#define MAX77503_REG_VOUT			0x01
-+
-+#define MAX77503_BIT_EN				BIT(0)
-+#define MAX77503_BIT_CURR_LIM		BIT(3)
-+#define MAX77503_BIT_ADEN			BIT(6)
-+
-+#define MAX77503_BITS_SOFT_START	GENMASK(5, 4)
-+#define MAX77503_BITS_MX_VOUT		GENMASK(7, 0)
-+
-+#define MAX77503_AD_ENABLED			0x1
-+#define MAX77503_AD_DISABLED		0x0
-+
-+struct max77503_dev {
-+	struct device *dev;
-+	struct device_node *of_node;
-+	struct regulator_desc desc;
-+	struct regulator_dev *rdev;
-+	struct regmap *regmap;
-+};
-+
-+static const struct regmap_config max77503_regmap_config = {
-+	.reg_bits = 8,
-+	.val_bits = 8,
-+	.max_register = 0x2,
-+};
-+
-+static const struct regulator_ops max77503_buck_ops = {
-+	.list_voltage = regulator_list_voltage_linear_range,
-+	.map_voltage = regulator_map_voltage_ascend,
-+	.is_enabled = regulator_is_enabled_regmap,
-+	.enable = regulator_enable_regmap,
-+	.disable = regulator_disable_regmap,
-+	.get_voltage_sel = regulator_get_voltage_sel_regmap,
-+	.set_voltage_sel = regulator_set_voltage_sel_regmap,
-+	.get_current_limit = regulator_get_current_limit_regmap,
-+	.set_current_limit = regulator_set_current_limit_regmap,
-+	.set_active_discharge = regulator_set_active_discharge_regmap,
-+	.set_soft_start = regulator_set_soft_start_regmap,
-+};
-+
-+static const struct linear_range max77503_buck_ranges[] = {
-+	REGULATOR_LINEAR_RANGE(800000, 0x00, 0x54, 50000)
-+};
-+
-+static const unsigned int max77503_current_limit_table[] = {
-+	500000, 2000000
-+};
-+
-+static const struct regulator_desc max77503_regulators_desc = {
-+	.name = "max77503",
-+	.enable_reg = MAX77503_REG_CFG,
-+	.enable_mask = MAX77503_BIT_EN,
-+	.ops = &max77503_buck_ops,
-+	.type = REGULATOR_VOLTAGE,
-+	.linear_ranges = max77503_buck_ranges,
-+	.n_linear_ranges = ARRAY_SIZE(max77503_buck_ranges),
-+	.vsel_reg = MAX77503_REG_VOUT,
-+	.vsel_mask = MAX77503_BITS_MX_VOUT,
-+	.soft_start_reg = MAX77503_REG_CFG,
-+	.soft_start_mask = MAX77503_BITS_SOFT_START,
-+	.active_discharge_reg = MAX77503_REG_CFG,
-+	.active_discharge_mask = MAX77503_BIT_ADEN,
-+	.active_discharge_off = MAX77503_AD_DISABLED,
-+	.active_discharge_on = MAX77503_AD_ENABLED,
-+	.csel_reg = MAX77503_REG_CFG,
-+	.csel_mask = MAX77503_BIT_CURR_LIM,
-+	.curr_table = max77503_current_limit_table,
-+	.n_current_limits = ARRAY_SIZE(max77503_current_limit_table),
-+	.owner = THIS_MODULE,
-+};
-+
-+static int max77503_regulator_probe(struct i2c_client *client)
-+{
-+	struct device *dev = &client->dev;
-+	struct regulator_config config = {};
-+	struct regulator_dev *rdev;
-+
-+	config.dev = dev;
-+	config.of_node = dev->of_node;
-+	config.regmap = devm_regmap_init_i2c(client, &max77503_regmap_config);
-+	if (IS_ERR(config.regmap)) {
-+		dev_err(dev, "Failed to init regmap");
-+		return PTR_ERR(config.regmap);
-+	}
-+
-+	rdev = devm_regulator_register(dev, &max77503_regulators_desc, &config);
-+	if (IS_ERR(rdev)) {
-+		dev_err(dev, "Failed to register regulator MAX77503");
-+		return PTR_ERR(rdev);
-+	}
-+
-+	return 0;
-+}
-+
-+static const struct of_device_id of_max77503_match_tbl[] = {
-+	{ .compatible = "adi,max77503", },
-+	{ }
-+};
-+
-+MODULE_DEVICE_TABLE(of, of_max77503_match_tbl);
-+
-+static const struct i2c_device_id max77503_regulator_id[] = {
-+	{"max77503"},
-+	{ }
-+};
-+
-+MODULE_DEVICE_TABLE(i2c, max77503_regulator_id);
-+
-+static struct i2c_driver max77503_regulator_driver = {
-+	.driver = {
-+		.name = "max77503",
-+		.of_match_table = of_max77503_match_tbl
-+	},
-+	.probe = max77503_regulator_probe,
-+	.id_table = max77503_regulator_id,
-+};
-+
-+module_i2c_driver(max77503_regulator_driver);
-+
-+MODULE_AUTHOR("Gokhan Celik <Gokhan.Celik@analog.com>");
-+MODULE_DESCRIPTION("MAX77503 regulator driver");
-+MODULE_LICENSE("GPL");
--- 
-2.34.1
+On Tue, Sep 19, 2023 at 11:45:22PM +0300, Gokhan Celik wrote:
+> Add ADI MAX77503 buck converter devicetree document.
+>=20
+> Signed-off-by: Gokhan Celik <gokhan.celik@analog.com>
 
+Other than Mark's comment, this seems fine to me. W/ that to his
+satisfaction,=20
+Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
+
+Thanks,
+Conor.
+
+> ---
+>  .../regulator/adi,max77503-regulator.yaml     | 53 +++++++++++++++++++
+>  1 file changed, 53 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/regulator/adi,max77=
+503-regulator.yaml
+>=20
+> diff --git a/Documentation/devicetree/bindings/regulator/adi,max77503-reg=
+ulator.yaml b/Documentation/devicetree/bindings/regulator/adi,max77503-regu=
+lator.yaml
+> new file mode 100644
+> index 000000000000..128e04ae3f4d
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/regulator/adi,max77503-regulator.=
+yaml
+> @@ -0,0 +1,53 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +# Copyright (c) 2023 Analog Devices, Inc.
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/regulator/adi,max77503-regulator.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Analog Devices MAX77503 Buck Converter
+> +
+> +maintainers:
+> +  - Gokhan Celik <Gokhan.Celik@analog.com>
+> +
+> +description: |
+> +  The Analog Devices MAX77503 is a single channel 14V input, 1.5A=20
+> +  high-efficiency buck converter. This converter has 94% efficiency
+> +  for 2-Cell/3-Cell battery applications.
+> +
+> +allOf:
+> +  - $ref: regulator.yaml#
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - adi,max77503
+> +
+> +  reg:
+> +    description: I2C address of the device
+> +    items:
+> +      - enum: [0x1e, 0x24, 0x37]
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - regulator-min-microvolt
+> +  - regulator-max-microvolt
+> +
+> +unevaluatedProperties: false
+> +
+> +examples:
+> +  - |
+> +    i2c {
+> +        #address-cells =3D <1>;
+> +        #size-cells =3D <0>;
+> +
+> +        regulator@1e {
+> +            compatible =3D "adi,max77503";
+> +            reg =3D <0x1e>;
+> +
+> +            regulator-min-microvolt =3D <800000>;
+> +            regulator-max-microvolt =3D <5000000>;
+> +        };
+> +    };
+> +
+> --=20
+> 2.34.1
+>=20
+
+--ou1Mt6OWPM9UBPMp
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEARYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCZQsO8wAKCRB4tDGHoIJi
+0tyYAQCJxMcDy+fikeaoO+6jOx5wjXyy908NVat3LeWdpb/TvAEAmbrmH+5qlBYF
+yWONjlrdSzj+KY+xOXuYPIy/X/Ccxg4=
+=vn73
+-----END PGP SIGNATURE-----
+
+--ou1Mt6OWPM9UBPMp--
