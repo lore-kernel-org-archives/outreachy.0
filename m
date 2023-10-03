@@ -1,59 +1,79 @@
-Received: from mailo.com (msg-1.mailo.com [213.182.54.11])
+Received: from mx0a-00128a01.pphosted.com (mx0a-00128a01.pphosted.com [148.163.135.77])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 71AC438DE6
-	for <outreachy@lists.linux.dev>; Tue,  3 Oct 2023 19:08:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=mailo.com; s=mailo;
-	t=1696358858; bh=vh7x5ZhJNS0GfmKuzwEfBjmsB3xcEr6BwzDO3F4GOSU=;
-	h=X-EA-Auth:Date:From:To:Cc:Subject:Message-ID:References:
-	 MIME-Version:Content-Type:In-Reply-To;
-	b=FKkLPwJCrw88VtuTqEKiT3zhHIEhBrvqiVZcsEHSx2kVna2ZZQRPB7stlqIY6V6dB
-	 vC3RfEhUTIlpCWoWlowLluU497EfFpuvJd8FNIaLLBQSdT7Ndmt6ucVkp28OaKYQcS
-	 oDZXHDMPf4yhzqgHyjvMaIFHNkfVd7xAWMUlNAZ8=
-Received: by b221-2.in.mailobj.net [192.168.90.22] with ESMTP
-	via ip-20.mailobj.net [213.182.54.20]
-	Tue,  3 Oct 2023 20:47:38 +0200 (CEST)
-X-EA-Auth: 5je7cY47BVRXvN5s9aw4B+WqDkIKjIm33xOXSlyYvqoyW835s/qMf/BUD+5dmMuCjO9bJLdO0RppM/yY7dV8EAVtZelvTNsY
-Date: Wed, 4 Oct 2023 00:17:35 +0530
-From: Deepak R Varma <drv@mailo.com>
-To: Isoken Ibizugbe <isokenjune@gmail.com>
-Cc: outreachy@lists.linux.dev
-Subject: Re: [Error]
-Message-ID: <ZRxhx503vMrAjRBj@runicha.com>
-References: <CAJHH8bHfnuwWa-NQOpypQrgWTWuqYGdTuptVOz=9h0uG2mVkEA@mail.gmail.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4BC86D2EB
+	for <outreachy@lists.linux.dev>; Tue,  3 Oct 2023 20:10:01 +0000 (UTC)
+Received: from pps.filterd (m0167089.ppops.net [127.0.0.1])
+	by mx0a-00128a01.pphosted.com (8.17.1.22/8.17.1.22) with ESMTP id 393GYSgk020739;
+	Tue, 3 Oct 2023 12:38:35 -0400
+Received: from nwd2mta4.analog.com ([137.71.173.58])
+	by mx0a-00128a01.pphosted.com (PPS) with ESMTPS id 3tegk42wq0-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 03 Oct 2023 12:38:35 -0400 (EDT)
+Received: from ASHBMBX9.ad.analog.com (ASHBMBX9.ad.analog.com [10.64.17.10])
+	by nwd2mta4.analog.com (8.14.7/8.14.7) with ESMTP id 393GcXNv044217
+	(version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+	Tue, 3 Oct 2023 12:38:33 -0400
+Received: from ASHBMBX9.ad.analog.com (10.64.17.10) by ASHBMBX9.ad.analog.com
+ (10.64.17.10) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.14; Tue, 3 Oct 2023
+ 12:38:32 -0400
+Received: from zeus.spd.analog.com (10.66.68.11) by ashbmbx9.ad.analog.com
+ (10.64.17.10) with Microsoft SMTP Server id 15.2.986.14 via Frontend
+ Transport; Tue, 3 Oct 2023 12:38:32 -0400
+Received: from HYB-a2JJhsYKAxD.ad.analog.com (HYB-a2JJhsYKAxD.ad.analog.com [10.25.73.19])
+	by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 393GcGVS006440;
+	Tue, 3 Oct 2023 12:38:18 -0400
+From: Gokhan Celik <gokhan.celik@analog.com>
+To: <outreachy@lists.linux.dev>
+CC: Gokhan Celik <gokhan.celik@analog.com>,
+        Liam Girdwood
+	<lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+        Rob Herring
+	<robh+dt@kernel.org>,
+        Krzysztof Kozlowski
+	<krzysztof.kozlowski+dt@linaro.org>,
+        Conor Dooley <conor+dt@kernel.org>,
+        Gokhan Celik <Gokhan.Celik@analog.com>
+Subject: [PATCH v3 0/2] Add ADI MAX77503 regulator driver and bindings
+Date: Tue, 3 Oct 2023 19:38:01 +0300
+Message-ID: <cover.1696348543.git.gokhan.celik@analog.com>
+X-Mailer: git-send-email 2.34.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAJHH8bHfnuwWa-NQOpypQrgWTWuqYGdTuptVOz=9h0uG2mVkEA@mail.gmail.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ADIRuleOP-NewSCL: Rule Triggered
+X-Proofpoint-ORIG-GUID: G751w1x_Nc5UUwFA8aJeKvCe4Kq54MZf
+X-Proofpoint-GUID: G751w1x_Nc5UUwFA8aJeKvCe4Kq54MZf
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2023-10-03_13,2023-10-02_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxlogscore=633 clxscore=1011
+ bulkscore=0 impostorscore=0 lowpriorityscore=0 malwarescore=0 spamscore=0
+ priorityscore=1501 mlxscore=0 suspectscore=0 adultscore=0 phishscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.19.0-2309180000
+ definitions=main-2310030126
 
-On Tue, Oct 03, 2023 at 06:50:52PM +0100, Isoken Ibizugbe wrote:
-> while cloning the Linux kernel repo, I had this error, please I need
-> help in resolving it;
-> git clone -b staging-testing
-> git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
-> Cloning into 'staging'...
-> remote: Enumerating objects: 9716192, done.
-> remote: Counting objects: 100% (32/32), done.
-> remote: Compressing objects: 100% (2/2), done.
-> Receiving objects:  26% (2602687/9716192), 1.26 GiB | 452.00 KiB/s
-> 
-> error: index-pack died of signal 9716192), 2.10 GiB | 302.00 KiB/s
-> fatal: index-pack failed
+Add MAX77503 buck converter driver and devicetree bindings.
+Apply patches in sequence.
 
-Hi Isoken,
-This may be related to the directory permission or memory available. Check this
-[0] previous discussion on similar issue:
+Gokhan Celik (2):
+  regulator: max77503: Add ADI MAX77503 support
+  regulator: dt-bindings: Add ADI MAX77503 support
 
-[0] https://forum.linuxfoundation.org/discussion/858596/index-pack-died-of-signal-9
+ .../regulator/adi,max77503-regulator.yaml     |  51 +++++++
+ drivers/regulator/Kconfig                     |  10 ++
+ drivers/regulator/Makefile                    |   1 +
+ drivers/regulator/max77503-regulator.c        | 137 ++++++++++++++++++
+ 4 files changed, 199 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/regulator/adi,max77503-regulator.yaml
+ create mode 100644 drivers/regulator/max77503-regulator.c
 
-regards,
-deepak.
-
-> 
-
+-- 
+2.34.1
 
