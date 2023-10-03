@@ -1,70 +1,74 @@
-Received: from mail-pj1-f50.google.com (mail-pj1-f50.google.com [209.85.216.50])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A7E23266AD
-	for <outreachy@lists.linux.dev>; Tue,  3 Oct 2023 13:44:26 +0000 (UTC)
-Received: by mail-pj1-f50.google.com with SMTP id 98e67ed59e1d1-2774874c3daso673026a91.1
-        for <outreachy@lists.linux.dev>; Tue, 03 Oct 2023 06:44:26 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8519A328BD
+	for <outreachy@lists.linux.dev>; Tue,  3 Oct 2023 14:31:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1696340666; x=1696945466; darn=lists.linux.dev;
-        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=+ChnGRBqJBmpgcxtno4rDT/rRI3KstXsEKhuE2IcYQM=;
-        b=NAHsRINMeI7tBiGDKc2G3aLU3Vzd9vhUn0c4eldzjW6D7qxN2aq9sfC7mS9BkYIKuZ
-         UXHNbrc+JdX0ax+9glOC2mRdK1v2jInTKXIbvKvzFi+jc5mpwt/q7IKLoI0nOCPuaByl
-         eB32KDXwd3S8hYLesq285mUR5jP4Dn93JpTqRnpYNZtSdtETJoZJJ4RamzXmfxt+oWwz
-         4WG5SORBDn0G5zXuZcYVAiC4r3rWEOjz/UqzEZUAjpr2KKhaKCYnlLrOOpMqoESxKkQ9
-         +9tXMsc831IIvXLRbgUSoRTzz+YXJ9Wmw/FpIZicmUsOEk/Rhz2kn9xgIOglhQ/RQvFz
-         6lFw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696340666; x=1696945466;
-        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=+ChnGRBqJBmpgcxtno4rDT/rRI3KstXsEKhuE2IcYQM=;
-        b=v3CYiysvd8b93Roz9+P+/eok4ZzaGWRLvybVasZ5etawWcymFRUwljOi0KsdA4za96
-         siwzmRGTZ7li8MCs2cYmjqtoM80+1Lh/l7a5IJ9rhYCPraARYoAG3/RAvDKelyTNa+l9
-         nNXLIszwFCy58U8bJRrczlTWwFlqh+tH8hoKr/lXr21RIxkLq8lAwtja46EJy7DFWo6O
-         BTgQY6B0janvDBXFQgifAMvL1zgiuwuKyAfSEN3vcXez3B2qf8eTMUibazPtJs7FPtvb
-         g//Th0erRAeQypE9ywrYqPBhZGET47pcg3+Cyiav8wEue3zv4NPSjQbhW4iNZUCF23Ix
-         tmhA==
-X-Gm-Message-State: AOJu0YzlXx79KdX2dveBuati7tCpuoN81cmJFASkagGSxSD7wdv7v430
-	RGZnaoJZpZzag4vuFYyUrc91/53E4YEktO0GfgYslqPuYkzcwhS8
-X-Google-Smtp-Source: AGHT+IF8+5Us/gnB/BKN6u+zTdKmi6SfYoQ0vSIqVAr+EVl/6La25rqXdUDWoZRlSS+iXEPPVPFu2KX/7gZ5miGOPec=
-X-Received: by 2002:a17:90a:8d83:b0:26b:66f7:c9be with SMTP id
- d3-20020a17090a8d8300b0026b66f7c9bemr13404191pjo.10.1696340665572; Tue, 03
- Oct 2023 06:44:25 -0700 (PDT)
+  d=inria.fr; s=dc;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=yEpcvu3SowigaAloE2IArvg5omrIkbhmBABye6lTKu4=;
+  b=tfczM03+Vm702CrwRCi5lZYVK6f30D9gvi6riHyMqCTehDkm/NcMzTvH
+   8QYoEta7hUIBAcXFvzlAg5utIf3Bh85ZcKogmkBC5UxY8cp9uAApN/zFT
+   TsgfGra5cAPwCBda6CC/tt1u/uyhBiW+VpkYypEBG2l3E2QM1hpLrn9Ce
+   g=;
+Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="6.03,197,1694728800"; 
+   d="scan'208";a="67653160"
+Received: from 231.85.89.92.rev.sfr.net (HELO hadrien) ([92.89.85.231])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Oct 2023 16:31:03 +0200
+Date: Tue, 3 Oct 2023 16:31:02 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Isoken Ibizugbe <isokenjune@gmail.com>
+cc: outreachy@lists.linux.dev
+Subject: Re: Fwd: [Newcomer] Introduction and Interest in Contributing to
+ Linux Kernel community
+In-Reply-To: <CAJHH8bG_uay6v+P5Q==ioKOZaNaZv+K3wgNtuJEkoiAAV+dFrQ@mail.gmail.com>
+Message-ID: <alpine.DEB.2.22.394.2310031628190.3220@hadrien>
+References: <CAJHH8bFD0i8eNOW0KObCBx9CnZxjUzXaXL2BYc33EA9u03SmXA@mail.gmail.com> <CAJHH8bG_uay6v+P5Q==ioKOZaNaZv+K3wgNtuJEkoiAAV+dFrQ@mail.gmail.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-References: <CAJHH8bFD0i8eNOW0KObCBx9CnZxjUzXaXL2BYc33EA9u03SmXA@mail.gmail.com>
-In-Reply-To: <CAJHH8bFD0i8eNOW0KObCBx9CnZxjUzXaXL2BYc33EA9u03SmXA@mail.gmail.com>
-From: Isoken Ibizugbe <isokenjune@gmail.com>
-Date: Tue, 3 Oct 2023 14:43:01 +0100
-Message-ID: <CAJHH8bG_uay6v+P5Q==ioKOZaNaZv+K3wgNtuJEkoiAAV+dFrQ@mail.gmail.com>
-Subject: Fwd: [Newcomer] Introduction and Interest in Contributing to Linux
- Kernel community
-To: outreachy@lists.linux.dev
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=US-ASCII
 
-Dear Linux Kernel Community,
 
-My name is Isoken Ibizugbe an outreachy applicant, and I am writing to
-express my keen interest in contributing to the Linux Kernel project,
-specifically regarding the project "Extend the number of devices
-supported by DRM/CI." I am excited about the opportunity to
-collaborate with the community on this important endeavor.
 
-I am eager to learn, contribute, and be part of the Linux Kernel
-community's journey. If there are specific resources, tasks, or
-guidelines I should follow as I get started, please don't hesitate to
-let me know.
+On Tue, 3 Oct 2023, Isoken Ibizugbe wrote:
 
-Thank you for your time and consideration. I look forward to
-contributing to this essential project and being a part of the Linux
-Kernel community's collaborative efforts.
+> Dear Linux Kernel Community,
+>
+> My name is Isoken Ibizugbe an outreachy applicant, and I am writing to
+> express my keen interest in contributing to the Linux Kernel project,
+> specifically regarding the project "Extend the number of devices
+> supported by DRM/CI." I am excited about the opportunity to
+> collaborate with the community on this important endeavor.
+>
+> I am eager to learn, contribute, and be part of the Linux Kernel
+> community's journey. If there are specific resources, tasks, or
+> guidelines I should follow as I get started, please don't hesitate to
+> let me know.
+>
+> Thank you for your time and consideration. I look forward to
+> contributing to this essential project and being a part of the Linux
+> Kernel community's collaborative efforts.
 
-Best regards,
-Isoken
+Hello Isoken,
+
+Thanks for your interest in the Linux kernel!
+
+All of the information that you need is available here:
+
+https://kernelnewbies.org/Outreachyfirstpatch
+
+You can also look at the email list archives (the link is on the above
+page) and look for the message with the subject ANNOUNCE.  That explains
+what you should do and gives some hints for the contribution process.
+
+Please don't hesitate to contact the list if you have any questions.
+
+julia
