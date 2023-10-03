@@ -1,56 +1,70 @@
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.136])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-lj1-f175.google.com (mail-lj1-f175.google.com [209.85.208.175])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 632E729433
-	for <outreachy@lists.linux.dev>; Tue,  3 Oct 2023 22:18:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1696371498; x=1727907498;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=ZU9Qr+iH9fauPZXizbBwamqf2b4D87KAwurPrTA7g00=;
-  b=EWn4khub/1GgGGwmMAbD0k3cgTElfLCNzCOLzXlRPLcORo/usuwHMvny
-   d1mk5I+1aKoM18NTIXZ97fsqM3PtTvXfZ6vvpwP6M8HfOEjeDIzFUbhJA
-   c4gQtdWPbxqhUxZzhGCznNOcW8pjk/Ii0kWjWjKvfZIJWvXYLcV/SzLHF
-   SvOo+8aGaz94e07t1RWIUvduA5tpCkHRf9RQsvZFQMkuEqk8qGdrO2GZe
-   uvqMW+A7HeySc7OQtV8DK2Tz3C08P2nUz+i3Tk0LmpkwxAPdMqHSbFn2G
-   H6pJOmsknAJ+8QfvXqYDkNhKgExzRdJmRcxsbRUXmzjss57qm1k9sMMq8
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10852"; a="362348079"
-X-IronPort-AV: E=Sophos;i="6.03,198,1694761200"; 
-   d="scan'208";a="362348079"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
-  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Oct 2023 15:18:17 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10852"; a="816872134"
-X-IronPort-AV: E=Sophos;i="6.03,198,1694761200"; 
-   d="scan'208";a="816872134"
-Received: from adelynhu-mobl1.gar.corp.intel.com (HELO intel.com) ([10.214.161.181])
-  by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Oct 2023 15:18:15 -0700
-Date: Wed, 4 Oct 2023 00:18:07 +0200
-From: Andi Shyti <andi.shyti@linux.intel.com>
-To: Isoken Ibizugbe <isokenjune@gmail.com>
-Cc: outreachy@lists.linux.dev
-Subject: Re: [Error]
-Message-ID: <ZRyTH0WyHd3JJnNv@ashyti-mobl2.lan>
-References: <CAJHH8bHfnuwWa-NQOpypQrgWTWuqYGdTuptVOz=9h0uG2mVkEA@mail.gmail.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2F7FB3F4D0
+	for <outreachy@lists.linux.dev>; Tue,  3 Oct 2023 23:19:16 +0000 (UTC)
+Received: by mail-lj1-f175.google.com with SMTP id 38308e7fff4ca-2c1854bebf5so17162661fa.1
+        for <outreachy@lists.linux.dev>; Tue, 03 Oct 2023 16:19:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1696375155; x=1696979955; darn=lists.linux.dev;
+        h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=uBQWH3wGClEoc520KxL5fJrsxznLitJh9/NaQHjv008=;
+        b=Rx8qyt2bjGw3HwbcbFFf3NEl8bSWwrcXL6gOe2i6DEyBuOC6j6m5fORQ8k9p4e3lvS
+         KxWDwT2EWtF4dSq1BPYph2gOJ11wmaF3T9zpCtaK2x8z7RlVa8rNniqsNvSDS/RIxfb6
+         Scf/KEpH2S6qoFAm0ej/CZClL9Q6d7fdjbUyPdmyFzBr86DAnBkY2pERMLmYZ1pYYeP3
+         C/gScPcKASQzIszISIWDEYDZB5+K4P4/hxRCYEJ4rkobC+SSX7IAZLctuQrLadmmiAm2
+         A1HTzEE40c8iBNYLd2i6t8L8uMPttZPUCc14/K3iYJ/XnC4o2UQdInEkV2ySXFelYl1i
+         zj2A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1696375155; x=1696979955;
+        h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=uBQWH3wGClEoc520KxL5fJrsxznLitJh9/NaQHjv008=;
+        b=Wp0C70qZbEPupkL0tDTq8eCfhtlLbgDx5+d9j9SSnoWNN9AkCI6IMCT9t9KFigA4Ci
+         Bb8N5guYVFTPFP0p4Y6tkIUn0ByuOme+Ze38YbD1bspw4kUuQ95UMSvXm3xFAvluvX5m
+         kCVeRmoL6+LzoWfsk0e9MTu8vXeIHAGQ+ZU/NBvcp0+Buno+FCSLHihrPlc96iFJPpf8
+         R7XiQQU6uN94GlyafgRdt8bewc5LkYZrukU0yMGm93qwt3fVX2Y/D6V2qLMSGfB2jD91
+         b8l7vbCItHBsv3EAGe1MIHsXMBjiDxNIixIb6jOr7EmDkblAW3SLDCRE9T3bLxFnG95u
+         QmmQ==
+X-Gm-Message-State: AOJu0Yy1S+2e2OBM2d2x2HqGr9qbF8qQmYEBWjseN4CX7kAj2Tpmikqc
+	Vf1cg/6bvfMC9DR52DRYZHZQvibTkqepbOSHkznXsVxfupP0DuDE
+X-Google-Smtp-Source: AGHT+IFuYMsH1tVs3lFM3iVO8A4U4NaiOlNwVZ0DC1aN6JGWG0s7eoGLnICR6JeCnwPrxR3NiJnZCjJdp262ItlXbHI=
+X-Received: by 2002:a2e:7d07:0:b0:2bc:b88c:64ed with SMTP id
+ y7-20020a2e7d07000000b002bcb88c64edmr627254ljc.12.1696375154568; Tue, 03 Oct
+ 2023 16:19:14 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAJHH8bHfnuwWa-NQOpypQrgWTWuqYGdTuptVOz=9h0uG2mVkEA@mail.gmail.com>
+From: Gilbert Adikankwu <gilbertadikankwu@gmail.com>
+Date: Wed, 4 Oct 2023 00:18:37 +0100
+Message-ID: <CAKrXSsZ-1AKg3FLmZj=Kt_7NqHhty0k3ob89LuNUgFBqdjgduw@mail.gmail.com>
+Subject: [Outreachy Applicant] Introduction and Interest in Contributing to
+ Linux Kernel
+To: outreachy@lists.linux.dev
+Cc: Julia.Lawall@inria.fr, andi.shyti@intel.com, karolinadrobnik@gmail.com
+Content-Type: text/plain; charset="UTF-8"
 
-> while cloning the Linux kernel repo, I had this error, please I need
-> help in resolving it;
-> git clone -b staging-testing
-> git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
+Dear Outreachy Linux Kernel Community,
 
-try with https instead of git:
+I am Gilbert Adikankwu, an Outreachy applicant for the December Cohort
+2023. I want to use this medium to introduce myself to the community.
+ As a Linux user,  I appreciate the quality work that has gone into
+making Linux a rewarding experience. On this note, I'm interested in
+contributing to the Linux Kernel. Specifically, I want to contribute
+to the Linux Kernel through the project titled; "Improve i915 sysfs
+interface implementation". I am excited about collaborating with
+community members on this project.
 
-git clone https://kernel.googlesource.com/pub/scm/linux/kernel/git/gregkh/staging.git
+I am eager to learn, contribute, and be part of the Linux Kernel
+community's journey. I'm reading the first patch tutorial to learn how
+to push my first patch. Any help you can offer me to make the process
+easier is welcomed.
 
-Andi
+Thank you for your time and consideration.
+
+Best regards
+Gilbert
