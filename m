@@ -1,79 +1,56 @@
-Received: from mx0a-00128a01.pphosted.com (mx0a-00128a01.pphosted.com [148.163.135.77])
+Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.136])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4BC86D2EB
-	for <outreachy@lists.linux.dev>; Tue,  3 Oct 2023 20:10:01 +0000 (UTC)
-Received: from pps.filterd (m0167089.ppops.net [127.0.0.1])
-	by mx0a-00128a01.pphosted.com (8.17.1.22/8.17.1.22) with ESMTP id 393GYSgk020739;
-	Tue, 3 Oct 2023 12:38:35 -0400
-Received: from nwd2mta4.analog.com ([137.71.173.58])
-	by mx0a-00128a01.pphosted.com (PPS) with ESMTPS id 3tegk42wq0-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 03 Oct 2023 12:38:35 -0400 (EDT)
-Received: from ASHBMBX9.ad.analog.com (ASHBMBX9.ad.analog.com [10.64.17.10])
-	by nwd2mta4.analog.com (8.14.7/8.14.7) with ESMTP id 393GcXNv044217
-	(version=TLSv1/SSLv3 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Tue, 3 Oct 2023 12:38:33 -0400
-Received: from ASHBMBX9.ad.analog.com (10.64.17.10) by ASHBMBX9.ad.analog.com
- (10.64.17.10) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.986.14; Tue, 3 Oct 2023
- 12:38:32 -0400
-Received: from zeus.spd.analog.com (10.66.68.11) by ashbmbx9.ad.analog.com
- (10.64.17.10) with Microsoft SMTP Server id 15.2.986.14 via Frontend
- Transport; Tue, 3 Oct 2023 12:38:32 -0400
-Received: from HYB-a2JJhsYKAxD.ad.analog.com (HYB-a2JJhsYKAxD.ad.analog.com [10.25.73.19])
-	by zeus.spd.analog.com (8.15.1/8.15.1) with ESMTP id 393GcGVS006440;
-	Tue, 3 Oct 2023 12:38:18 -0400
-From: Gokhan Celik <gokhan.celik@analog.com>
-To: <outreachy@lists.linux.dev>
-CC: Gokhan Celik <gokhan.celik@analog.com>,
-        Liam Girdwood
-	<lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
-        Rob Herring
-	<robh+dt@kernel.org>,
-        Krzysztof Kozlowski
-	<krzysztof.kozlowski+dt@linaro.org>,
-        Conor Dooley <conor+dt@kernel.org>,
-        Gokhan Celik <Gokhan.Celik@analog.com>
-Subject: [PATCH v3 0/2] Add ADI MAX77503 regulator driver and bindings
-Date: Tue, 3 Oct 2023 19:38:01 +0300
-Message-ID: <cover.1696348543.git.gokhan.celik@analog.com>
-X-Mailer: git-send-email 2.34.1
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 632E729433
+	for <outreachy@lists.linux.dev>; Tue,  3 Oct 2023 22:18:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1696371498; x=1727907498;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=ZU9Qr+iH9fauPZXizbBwamqf2b4D87KAwurPrTA7g00=;
+  b=EWn4khub/1GgGGwmMAbD0k3cgTElfLCNzCOLzXlRPLcORo/usuwHMvny
+   d1mk5I+1aKoM18NTIXZ97fsqM3PtTvXfZ6vvpwP6M8HfOEjeDIzFUbhJA
+   c4gQtdWPbxqhUxZzhGCznNOcW8pjk/Ii0kWjWjKvfZIJWvXYLcV/SzLHF
+   SvOo+8aGaz94e07t1RWIUvduA5tpCkHRf9RQsvZFQMkuEqk8qGdrO2GZe
+   uvqMW+A7HeySc7OQtV8DK2Tz3C08P2nUz+i3Tk0LmpkwxAPdMqHSbFn2G
+   H6pJOmsknAJ+8QfvXqYDkNhKgExzRdJmRcxsbRUXmzjss57qm1k9sMMq8
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10852"; a="362348079"
+X-IronPort-AV: E=Sophos;i="6.03,198,1694761200"; 
+   d="scan'208";a="362348079"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Oct 2023 15:18:17 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10852"; a="816872134"
+X-IronPort-AV: E=Sophos;i="6.03,198,1694761200"; 
+   d="scan'208";a="816872134"
+Received: from adelynhu-mobl1.gar.corp.intel.com (HELO intel.com) ([10.214.161.181])
+  by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Oct 2023 15:18:15 -0700
+Date: Wed, 4 Oct 2023 00:18:07 +0200
+From: Andi Shyti <andi.shyti@linux.intel.com>
+To: Isoken Ibizugbe <isokenjune@gmail.com>
+Cc: outreachy@lists.linux.dev
+Subject: Re: [Error]
+Message-ID: <ZRyTH0WyHd3JJnNv@ashyti-mobl2.lan>
+References: <CAJHH8bHfnuwWa-NQOpypQrgWTWuqYGdTuptVOz=9h0uG2mVkEA@mail.gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ADIRuleOP-NewSCL: Rule Triggered
-X-Proofpoint-ORIG-GUID: G751w1x_Nc5UUwFA8aJeKvCe4Kq54MZf
-X-Proofpoint-GUID: G751w1x_Nc5UUwFA8aJeKvCe4Kq54MZf
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.267,Aquarius:18.0.980,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2023-10-03_13,2023-10-02_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxlogscore=633 clxscore=1011
- bulkscore=0 impostorscore=0 lowpriorityscore=0 malwarescore=0 spamscore=0
- priorityscore=1501 mlxscore=0 suspectscore=0 adultscore=0 phishscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.19.0-2309180000
- definitions=main-2310030126
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAJHH8bHfnuwWa-NQOpypQrgWTWuqYGdTuptVOz=9h0uG2mVkEA@mail.gmail.com>
 
-Add MAX77503 buck converter driver and devicetree bindings.
-Apply patches in sequence.
+> while cloning the Linux kernel repo, I had this error, please I need
+> help in resolving it;
+> git clone -b staging-testing
+> git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging.git
 
-Gokhan Celik (2):
-  regulator: max77503: Add ADI MAX77503 support
-  regulator: dt-bindings: Add ADI MAX77503 support
+try with https instead of git:
 
- .../regulator/adi,max77503-regulator.yaml     |  51 +++++++
- drivers/regulator/Kconfig                     |  10 ++
- drivers/regulator/Makefile                    |   1 +
- drivers/regulator/max77503-regulator.c        | 137 ++++++++++++++++++
- 4 files changed, 199 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/regulator/adi,max77503-regulator.yaml
- create mode 100644 drivers/regulator/max77503-regulator.c
+git clone https://kernel.googlesource.com/pub/scm/linux/kernel/git/gregkh/staging.git
 
--- 
-2.34.1
-
+Andi
