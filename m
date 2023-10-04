@@ -1,70 +1,71 @@
-Received: from mail-lj1-f175.google.com (mail-lj1-f175.google.com [209.85.208.175])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2F7FB3F4D0
-	for <outreachy@lists.linux.dev>; Tue,  3 Oct 2023 23:19:16 +0000 (UTC)
-Received: by mail-lj1-f175.google.com with SMTP id 38308e7fff4ca-2c1854bebf5so17162661fa.1
-        for <outreachy@lists.linux.dev>; Tue, 03 Oct 2023 16:19:16 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8163E17F8
+	for <outreachy@lists.linux.dev>; Wed,  4 Oct 2023 04:50:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1696375155; x=1696979955; darn=lists.linux.dev;
-        h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=uBQWH3wGClEoc520KxL5fJrsxznLitJh9/NaQHjv008=;
-        b=Rx8qyt2bjGw3HwbcbFFf3NEl8bSWwrcXL6gOe2i6DEyBuOC6j6m5fORQ8k9p4e3lvS
-         KxWDwT2EWtF4dSq1BPYph2gOJ11wmaF3T9zpCtaK2x8z7RlVa8rNniqsNvSDS/RIxfb6
-         Scf/KEpH2S6qoFAm0ej/CZClL9Q6d7fdjbUyPdmyFzBr86DAnBkY2pERMLmYZ1pYYeP3
-         C/gScPcKASQzIszISIWDEYDZB5+K4P4/hxRCYEJ4rkobC+SSX7IAZLctuQrLadmmiAm2
-         A1HTzEE40c8iBNYLd2i6t8L8uMPttZPUCc14/K3iYJ/XnC4o2UQdInEkV2ySXFelYl1i
-         zj2A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696375155; x=1696979955;
-        h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=uBQWH3wGClEoc520KxL5fJrsxznLitJh9/NaQHjv008=;
-        b=Wp0C70qZbEPupkL0tDTq8eCfhtlLbgDx5+d9j9SSnoWNN9AkCI6IMCT9t9KFigA4Ci
-         Bb8N5guYVFTPFP0p4Y6tkIUn0ByuOme+Ze38YbD1bspw4kUuQ95UMSvXm3xFAvluvX5m
-         kCVeRmoL6+LzoWfsk0e9MTu8vXeIHAGQ+ZU/NBvcp0+Buno+FCSLHihrPlc96iFJPpf8
-         R7XiQQU6uN94GlyafgRdt8bewc5LkYZrukU0yMGm93qwt3fVX2Y/D6V2qLMSGfB2jD91
-         b8l7vbCItHBsv3EAGe1MIHsXMBjiDxNIixIb6jOr7EmDkblAW3SLDCRE9T3bLxFnG95u
-         QmmQ==
-X-Gm-Message-State: AOJu0Yy1S+2e2OBM2d2x2HqGr9qbF8qQmYEBWjseN4CX7kAj2Tpmikqc
-	Vf1cg/6bvfMC9DR52DRYZHZQvibTkqepbOSHkznXsVxfupP0DuDE
-X-Google-Smtp-Source: AGHT+IFuYMsH1tVs3lFM3iVO8A4U4NaiOlNwVZ0DC1aN6JGWG0s7eoGLnICR6JeCnwPrxR3NiJnZCjJdp262ItlXbHI=
-X-Received: by 2002:a2e:7d07:0:b0:2bc:b88c:64ed with SMTP id
- y7-20020a2e7d07000000b002bcb88c64edmr627254ljc.12.1696375154568; Tue, 03 Oct
- 2023 16:19:14 -0700 (PDT)
+  d=inria.fr; s=dc;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=w2gzS/hycOXcB7IGy8Shg6mSjNLsCdO6atU+RRmii6E=;
+  b=u8zb5UyRa0DvPkpNTLYljseLA2PuxyVpVnTPANvt8T/Ey73URUWG6XIZ
+   4Fuqo7j6lkH7bvCMu612yhtBedgsRRTq+bNtioHiHOQZBohTNIOF49cNt
+   oKWEuVZu3s5o6l3nKvRVTnEqJWoJ55Xdbj0Ve/wQhfAgabQDCSsUuh4mB
+   Q=;
+Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="6.03,199,1694728800"; 
+   d="scan'208";a="67691827"
+Received: from 231.85.89.92.rev.sfr.net (HELO hadrien) ([92.89.85.231])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Oct 2023 06:50:43 +0200
+Date: Wed, 4 Oct 2023 06:50:42 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Gilbert Adikankwu <gilbertadikankwu@gmail.com>
+cc: outreachy@lists.linux.dev, andi.shyti@intel.com, karolinadrobnik@gmail.com
+Subject: Re: [Outreachy Applicant] Introduction and Interest in Contributing
+ to Linux Kernel
+In-Reply-To: <CAKrXSsZ-1AKg3FLmZj=Kt_7NqHhty0k3ob89LuNUgFBqdjgduw@mail.gmail.com>
+Message-ID: <alpine.DEB.2.22.394.2310040649530.3108@hadrien>
+References: <CAKrXSsZ-1AKg3FLmZj=Kt_7NqHhty0k3ob89LuNUgFBqdjgduw@mail.gmail.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-From: Gilbert Adikankwu <gilbertadikankwu@gmail.com>
-Date: Wed, 4 Oct 2023 00:18:37 +0100
-Message-ID: <CAKrXSsZ-1AKg3FLmZj=Kt_7NqHhty0k3ob89LuNUgFBqdjgduw@mail.gmail.com>
-Subject: [Outreachy Applicant] Introduction and Interest in Contributing to
- Linux Kernel
-To: outreachy@lists.linux.dev
-Cc: Julia.Lawall@inria.fr, andi.shyti@intel.com, karolinadrobnik@gmail.com
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=US-ASCII
 
-Dear Outreachy Linux Kernel Community,
 
-I am Gilbert Adikankwu, an Outreachy applicant for the December Cohort
-2023. I want to use this medium to introduce myself to the community.
- As a Linux user,  I appreciate the quality work that has gone into
-making Linux a rewarding experience. On this note, I'm interested in
-contributing to the Linux Kernel. Specifically, I want to contribute
-to the Linux Kernel through the project titled; "Improve i915 sysfs
-interface implementation". I am excited about collaborating with
-community members on this project.
 
-I am eager to learn, contribute, and be part of the Linux Kernel
-community's journey. I'm reading the first patch tutorial to learn how
-to push my first patch. Any help you can offer me to make the process
-easier is welcomed.
+On Wed, 4 Oct 2023, Gilbert Adikankwu wrote:
 
-Thank you for your time and consideration.
+> Dear Outreachy Linux Kernel Community,
+>
+> I am Gilbert Adikankwu, an Outreachy applicant for the December Cohort
+> 2023. I want to use this medium to introduce myself to the community.
+>  As a Linux user,  I appreciate the quality work that has gone into
+> making Linux a rewarding experience. On this note, I'm interested in
+> contributing to the Linux Kernel. Specifically, I want to contribute
+> to the Linux Kernel through the project titled; "Improve i915 sysfs
+> interface implementation". I am excited about collaborating with
+> community members on this project.
+>
+> I am eager to learn, contribute, and be part of the Linux Kernel
+> community's journey. I'm reading the first patch tutorial to learn how
+> to push my first patch. Any help you can offer me to make the process
+> easier is welcomed.
 
-Best regards
-Gilbert
+Welcome.  Thank you for your interest in the Linux kernel.  Please read
+the message wuth the subject "ANNOUNCE" in the mailing list if you have
+not done so already.
+
+julia
+
+>
+> Thank you for your time and consideration.
+>
+> Best regards
+> Gilbert
+>
+>
