@@ -1,74 +1,126 @@
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.136])
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A3232610E
-	for <outreachy@lists.linux.dev>; Wed,  4 Oct 2023 06:59:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1696402790; x=1727938790;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=NrJtZ4yBJeWtxvO57LhKCCupxJwCdcvfniwNEgdiDzE=;
-  b=TRSfpDbJluBNy8Km6Ee2M5HDJh0RD8Rj3iAAXQfGOsoFE+qQLupxJt3F
-   B3xoniiqg1/l6xJu81TJabFFFqrUqjfXOvK1YmH9wIqnQK8VZcBfkIGp5
-   ncmXMFnfPxIIrZNCPFja7azsk7GSm+P7ydjX5tvup4a2gcS766QCvo0yh
-   JrPHWOKNeDYM0K2X445hyy6m8AMOnDf9g7KbDV23uHAqceYn4N3wb0YvS
-   74o8s90hxREXL//t/uOfbeiCKRF0ARmka4MsxlfK89lAwHvGifLMBX9hh
-   g4bcKtHbfHB25tDESUdRBbRMoFroV1CCP8vnVw60WB8mppeWrvhbYbY9Z
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10852"; a="362435694"
-X-IronPort-AV: E=Sophos;i="6.03,199,1694761200"; 
-   d="scan'208";a="362435694"
-Received: from fmsmga006.fm.intel.com ([10.253.24.20])
-  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Oct 2023 23:59:31 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10852"; a="998343050"
-X-IronPort-AV: E=Sophos;i="6.03,199,1694761200"; 
-   d="scan'208";a="998343050"
-Received: from azainola-mobl3.gar.corp.intel.com (HELO intel.com) ([10.214.163.167])
-  by fmsmga006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Oct 2023 23:59:27 -0700
-Date: Wed, 4 Oct 2023 08:59:18 +0200
-From: Andi Shyti <andi.shyti@intel.com>
-To: Gilbert Adikankwu <gilbertadikankwu@gmail.com>
-Cc: outreachy@lists.linux.dev, Julia.Lawall@inria.fr,
-	karolinadrobnik@gmail.com
-Subject: Re: [Outreachy Applicant] Introduction and Interest in Contributing
- to Linux Kernel
-Message-ID: <ZR0NRvHkjcWIv9+f@ashyti-mobl2.lan>
-References: <CAKrXSsZ-1AKg3FLmZj=Kt_7NqHhty0k3ob89LuNUgFBqdjgduw@mail.gmail.com>
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 847D32F3C
+	for <outreachy@lists.linux.dev>; Wed,  4 Oct 2023 07:52:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BB063C433C7;
+	Wed,  4 Oct 2023 07:52:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1696405948;
+	bh=0AA+1PnTy/6DDDfHntmAoH+J0EY87NindKZqMi8CyGg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=s8UWQmahrDm+DtqubclNnmqD/mrTW9ojz5fRzZaDmifNFX7/FlksbHBC8qyPltkD1
+	 5qaQXEbMVmbmC3a6ZbIGCUhTDhHDSID49JKPDQaedn+E6MTyY0i1dnPVYX2DxzLs9K
+	 u6WpPNVoF3AO5rXAd48UWpInhv5N5ahxvfL388d2CRvv3wv4UxfI7Ia/9kWgiiDFuw
+	 rEp2nj2SfHPj1OckQt51lrNXXWUZ9rBfJF+6ZRphlEnqAWKRYfYIyeOsruy4Q43Fnz
+	 AoWQdcHmpzgZgIgtuKnEMHQVmgmLNLXdyEP2NyB/G37YZCaZB0cC2ISMi+ubL0fuaH
+	 EqL6nAB6Xnw6g==
+Message-ID: <29dc3d06-9cfd-4057-873e-ec0e6b3eb68d@kernel.org>
+Date: Wed, 4 Oct 2023 09:52:23 +0200
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAKrXSsZ-1AKg3FLmZj=Kt_7NqHhty0k3ob89LuNUgFBqdjgduw@mail.gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 2/2] regulator: dt-bindings: Add ADI MAX77503 support
+To: Gokhan Celik <gokhan.celik@analog.com>, outreachy@lists.linux.dev
+Cc: Conor Dooley <conor.dooley@microchip.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Rob Herring <robh+dt@kernel.org>,
+ Krzysztof Kozlowski <krzysztof.kozlowski+dt@linaro.org>,
+ Conor Dooley <conor+dt@kernel.org>
+References: <cover.1696348543.git.gokhan.celik@analog.com>
+ <f50172e025f063247d85725fa0e8600ae6f7a493.1696348543.git.gokhan.celik@analog.com>
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Autocrypt: addr=krzk@kernel.org; keydata=
+ xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
+ cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
+ JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
+ gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
+ J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
+ NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
+ BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
+ vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
+ Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
+ TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
+ S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGVBBMBCgA/AhsDBgsJCAcDAgYVCAIJCgsE
+ FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJgPO8PBQkUX63hAAoJEBuTQ307
+ QWKbBn8P+QFxwl7pDsAKR1InemMAmuykCHl+XgC0LDqrsWhAH5TYeTVXGSyDsuZjHvj+FRP+
+ gZaEIYSw2Yf0e91U9HXo3RYhEwSmxUQ4Fjhc9qAwGKVPQf6YuQ5yy6pzI8brcKmHHOGrB3tP
+ /MODPt81M1zpograAC2WTDzkICfHKj8LpXp45PylD99J9q0Y+gb04CG5/wXs+1hJy/dz0tYy
+ iua4nCuSRbxnSHKBS5vvjosWWjWQXsRKd+zzXp6kfRHHpzJkhRwF6ArXi4XnQ+REnoTfM5Fk
+ VmVmSQ3yFKKePEzoIriT1b2sXO0g5QXOAvFqB65LZjXG9jGJoVG6ZJrUV1MVK8vamKoVbUEe
+ 0NlLl/tX96HLowHHoKhxEsbFzGzKiFLh7hyboTpy2whdonkDxpnv/H8wE9M3VW/fPgnL2nPe
+ xaBLqyHxy9hA9JrZvxg3IQ61x7rtBWBUQPmEaK0azW+l3ysiNpBhISkZrsW3ZUdknWu87nh6
+ eTB7mR7xBcVxnomxWwJI4B0wuMwCPdgbV6YDUKCuSgRMUEiVry10xd9KLypR9Vfyn1AhROrq
+ AubRPVeJBf9zR5UW1trJNfwVt3XmbHX50HCcHdEdCKiT9O+FiEcahIaWh9lihvO0ci0TtVGZ
+ MCEtaCE80Q3Ma9RdHYB3uVF930jwquplFLNF+IBCn5JRzsFNBFVDXDQBEADNkrQYSREUL4D3
+ Gws46JEoZ9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLue
+ MNsWLJBvBaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6ei
+ OMheesVS5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wA
+ GldWsRxbf3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA
+ 6z6lBZn0WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9
+ YegxWKvXXHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt
+ 91pFzBSOIpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gU
+ BLHFTg2hYnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/
+ JoFzZ4B0p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu
+ 4vXVFBYIGmpyNPYzRm0QPwARAQABwsF8BBgBCgAmAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtB
+ YpsFAmA872oFCRRflLYACgkQG5NDfTtBYpvScw/9GrqBrVLuJoJ52qBBKUBDo4E+5fU1bjt0
+ Gv0nh/hNJuecuRY6aemU6HOPNc2t8QHMSvwbSF+Vp9ZkOvrM36yUOufctoqON+wXrliEY0J4
+ ksR89ZILRRAold9Mh0YDqEJc1HmuxYLJ7lnbLYH1oui8bLbMBM8S2Uo9RKqV2GROLi44enVt
+ vdrDvo+CxKj2K+d4cleCNiz5qbTxPUW/cgkwG0lJc4I4sso7l4XMDKn95c7JtNsuzqKvhEVS
+ oic5by3fbUnuI0cemeizF4QdtX2uQxrP7RwHFBd+YUia7zCcz0//rv6FZmAxWZGy5arNl6Vm
+ lQqNo7/Poh8WWfRS+xegBxc6hBXahpyUKphAKYkah+m+I0QToCfnGKnPqyYIMDEHCS/RfqA5
+ t8F+O56+oyLBAeWX7XcmyM6TGeVfb+OZVMJnZzK0s2VYAuI0Rl87FBFYgULdgqKV7R7WHzwD
+ uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
+ 7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
+ 5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
+In-Reply-To: <f50172e025f063247d85725fa0e8600ae6f7a493.1696348543.git.gokhan.celik@analog.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-Hi Gilbert,
+On 03/10/2023 18:38, Gokhan Celik wrote:
+> Add ADI MAX77503 buck converter devicetree document.
+> 
+> Signed-off-by: Gokhan Celik <gokhan.celik@analog.com>
+> Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
 
-> I am Gilbert Adikankwu, an Outreachy applicant for the December Cohort
-> 2023. I want to use this medium to introduce myself to the community.
->  As a Linux user,  I appreciate the quality work that has gone into
-> making Linux a rewarding experience. On this note, I'm interested in
-> contributing to the Linux Kernel. Specifically, I want to contribute
-> to the Linux Kernel through the project titled; "Improve i915 sysfs
-> interface implementation". I am excited about collaborating with
-> community members on this project.
+Please use scripts/get_maintainers.pl to get a list of necessary people
+and lists to CC. It might happen, that command when run on an older
+kernel, gives you outdated entries. Therefore please be sure you base
+your patches on recent Linux kernel.
 
-I'm glad that this topic has raised your interest. Please feel
-free to reach out for any questions and doubt.
+You missed at least devicetree list (maybe more), so this won't be
+tested by automated tooling.
 
-For the time being, please, check for Julia's guidelines.
+Please kindly resend and include all necessary To/Cc entries.
 
-> I am eager to learn, contribute, and be part of the Linux Kernel
-> community's journey. I'm reading the first patch tutorial to learn how
-> to push my first patch. Any help you can offer me to make the process
-> easier is welcomed.
 
-Looking forward to seeing your first contribution... Linux Kernel
-is a lot of fun ;-)
+...
 
-Thanks,
-Andi
+> +
+> +examples:
+> +  - |
+> +    i2c {
+> +        #address-cells = <1>;
+> +        #size-cells = <0>;
+> +
+> +        regulator@1e {
+> +            compatible = "adi,max77503";
+> +            reg = <0x1e>;
+> +
+> +            regulator-min-microvolt = <800000>;
+> +            regulator-max-microvolt = <5000000>;
+> +        };
+> +    };
+> +
+
+Looks like extra blank line here.
+
+
+Best regards,
+Krzysztof
+
