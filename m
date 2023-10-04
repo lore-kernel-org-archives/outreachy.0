@@ -1,22 +1,22 @@
 Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 847D32F3C
-	for <outreachy@lists.linux.dev>; Wed,  4 Oct 2023 07:52:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BB063C433C7;
-	Wed,  4 Oct 2023 07:52:26 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0DE70D51F
+	for <outreachy@lists.linux.dev>; Wed,  4 Oct 2023 07:53:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A162EC433C8;
+	Wed,  4 Oct 2023 07:53:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1696405948;
-	bh=0AA+1PnTy/6DDDfHntmAoH+J0EY87NindKZqMi8CyGg=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=s8UWQmahrDm+DtqubclNnmqD/mrTW9ojz5fRzZaDmifNFX7/FlksbHBC8qyPltkD1
-	 5qaQXEbMVmbmC3a6ZbIGCUhTDhHDSID49JKPDQaedn+E6MTyY0i1dnPVYX2DxzLs9K
-	 u6WpPNVoF3AO5rXAd48UWpInhv5N5ahxvfL388d2CRvv3wv4UxfI7Ia/9kWgiiDFuw
-	 rEp2nj2SfHPj1OckQt51lrNXXWUZ9rBfJF+6ZRphlEnqAWKRYfYIyeOsruy4Q43Fnz
-	 AoWQdcHmpzgZgIgtuKnEMHQVmgmLNLXdyEP2NyB/G37YZCaZB0cC2ISMi+ubL0fuaH
-	 EqL6nAB6Xnw6g==
-Message-ID: <29dc3d06-9cfd-4057-873e-ec0e6b3eb68d@kernel.org>
-Date: Wed, 4 Oct 2023 09:52:23 +0200
+	s=k20201202; t=1696406000;
+	bh=wQtDUEpgNC6DTIvPvuev2iEInART9qc5LsAVdhTT4/c=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=CLwT2WDOg8kuoCLiQwITwlYHh4dLJHDy14fuNerFmOTfLkRqsfQK5ja+XIpxoXfiC
+	 k6pzGiuNK1oY6krQ5n2ZUWW90E8wQ9kg2rmkLQ/oePyr0XZDyyUJ2SZ6ORVrWoE3PL
+	 PG9+fI/Ip+TAGmL0/Ke77ijg4JEXI45K2XSjxjQp+AmWIy8YI6oQc/8ErsZcS5tITB
+	 Zb5NbK7TwM9Zc9fKqe9nu35ih/3EUrjvw6w0zGTA4yFY0T+invTqaOOyBsmDsW7ZF4
+	 qyO1SlZEg0hV8G2Ub13uFO8vP4Sef0TvzeOM6ygOsK3ULR38d0psGnrZbCYZYuEZCf
+	 rmCrvUSBxtISA==
+Message-ID: <9c181172-e876-46fc-ad90-dbd2154b27c7@kernel.org>
+Date: Wed, 4 Oct 2023 09:53:18 +0200
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -25,6 +25,8 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v3 2/2] regulator: dt-bindings: Add ADI MAX77503 support
+Content-Language: en-US
+From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Gokhan Celik <gokhan.celik@analog.com>, outreachy@lists.linux.dev
 Cc: Conor Dooley <conor.dooley@microchip.com>,
  Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
@@ -33,8 +35,7 @@ Cc: Conor Dooley <conor.dooley@microchip.com>,
  Conor Dooley <conor+dt@kernel.org>
 References: <cover.1696348543.git.gokhan.celik@analog.com>
  <f50172e025f063247d85725fa0e8600ae6f7a493.1696348543.git.gokhan.celik@analog.com>
-Content-Language: en-US
-From: Krzysztof Kozlowski <krzk@kernel.org>
+ <29dc3d06-9cfd-4057-873e-ec0e6b3eb68d@kernel.org>
 Autocrypt: addr=krzk@kernel.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
  cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
@@ -78,48 +79,28 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  uZwJCLykjad45hsWcOGk3OcaAGQS6NDlfhM6O9aYNwGL6tGt/6BkRikNOs7VDEa4/HlbaSJo
  7FgndGw1kWmkeL6oQh7wBvYll2buKod4qYntmNKEicoHGU+x91Gcan8mCoqhJkbqrL7+nXG2
  5Q/GS5M9RFWS+nYyJh+c3OcfKqVcZQNANItt7+ULzdNJuhvTRRdC3g9hmCEuNSr+CLMdnRBY fv0=
-In-Reply-To: <f50172e025f063247d85725fa0e8600ae6f7a493.1696348543.git.gokhan.celik@analog.com>
+In-Reply-To: <29dc3d06-9cfd-4057-873e-ec0e6b3eb68d@kernel.org>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 
-On 03/10/2023 18:38, Gokhan Celik wrote:
-> Add ADI MAX77503 buck converter devicetree document.
+On 04/10/2023 09:52, Krzysztof Kozlowski wrote:
+> On 03/10/2023 18:38, Gokhan Celik wrote:
+>> Add ADI MAX77503 buck converter devicetree document.
+>>
+>> Signed-off-by: Gokhan Celik <gokhan.celik@analog.com>
+>> Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
 > 
-> Signed-off-by: Gokhan Celik <gokhan.celik@analog.com>
-> Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
+> Please use scripts/get_maintainers.pl to get a list of necessary people
+> and lists to CC. It might happen, that command when run on an older
+> kernel, gives you outdated entries. Therefore please be sure you base
+> your patches on recent Linux kernel.
+> 
+> You missed at least devicetree list (maybe more), so this won't be
+> tested by automated tooling.
+> 
+> Please kindly resend and include all necessary To/Cc entries.
 
-Please use scripts/get_maintainers.pl to get a list of necessary people
-and lists to CC. It might happen, that command when run on an older
-kernel, gives you outdated entries. Therefore please be sure you base
-your patches on recent Linux kernel.
-
-You missed at least devicetree list (maybe more), so this won't be
-tested by automated tooling.
-
-Please kindly resend and include all necessary To/Cc entries.
-
-
-...
-
-> +
-> +examples:
-> +  - |
-> +    i2c {
-> +        #address-cells = <1>;
-> +        #size-cells = <0>;
-> +
-> +        regulator@1e {
-> +            compatible = "adi,max77503";
-> +            reg = <0x1e>;
-> +
-> +            regulator-min-microvolt = <800000>;
-> +            regulator-max-microvolt = <5000000>;
-> +        };
-> +    };
-> +
-
-Looks like extra blank line here.
-
+Update: this missed all mailing lists, in fact. :/
 
 Best regards,
 Krzysztof
