@@ -1,51 +1,43 @@
-Received: from mail-ot1-f48.google.com (mail-ot1-f48.google.com [209.85.210.48])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.65])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DA00234CF8
-	for <outreachy@lists.linux.dev>; Thu,  5 Oct 2023 21:42:58 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 300D6154AB
+	for <outreachy@lists.linux.dev>; Thu,  5 Oct 2023 22:36:57 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.intel.com
+Authentication-Results: smtp.subspace.kernel.org; spf=none smtp.mailfrom=linux.intel.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="chrVWrQd"
-Received: by mail-ot1-f48.google.com with SMTP id 46e09a7af769-6c64a3c4912so965942a34.3
-        for <outreachy@lists.linux.dev>; Thu, 05 Oct 2023 14:42:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1696542177; x=1697146977; darn=lists.linux.dev;
-        h=content-disposition:mime-version:message-id:subject:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=1LMB2NmajON3SsqmaUjy0EtRmk+25EYc4Fha65m1XIU=;
-        b=chrVWrQdH2dDS5WgYDDXTBsvfdTOZDdOGzZCZfnhvRx5wi9XTpenR1wGOJW+jQBQKh
-         h0xR7Bt1t4ocZeuAJ/KpKUmeGJ5vRyd1ewi3ZXWxKRmnBi9dTXOiMpJ7snq+puUfBIeB
-         hXaTcXIkCxHjtd44gF8bMohpZ26yIUz+7A+xoMAqWU3eKGLUMaMJKt7hZzVGwL512rw9
-         yYNPwmMO7QsJ3njHzcTk9oplwr9ZUFKoo9orKt/p3Ab5X5s7pNFoK/Sfyu4ynklgCF+o
-         GJndoL5KkSF2VAZAIFRJqwBPsCY+joUkeKSiR+Wx7Ma8FWjTW7eai4AHbX0uYZeioncf
-         qC7Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696542177; x=1697146977;
-        h=content-disposition:mime-version:message-id:subject:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=1LMB2NmajON3SsqmaUjy0EtRmk+25EYc4Fha65m1XIU=;
-        b=kz2I4z46kNC4v5JV/tIsM9ihPdSCLIzJIJjRJv043h4RJX6VjXauhdKAngg3Mz7R0I
-         1XheqgUoW2DFy8vc+oHZ9NgIr9wh6ecac+gZ9TtTI9G17R7nrVEbkePN4RfGO2hlgMGU
-         nwpDZMy47tUqYACOvpzKVC9hMESXEaC97cwaYlKa0MdUDgo7RqXGe/igQ7FyWobcDsT3
-         hZ4RgvsN9Xvk/bR9l/GG2q4Zahpo7wpjNbxS4h+sLMoA1dAeRWr/qrAOn956ootzwJLr
-         n/sdLdQ1ifF3NcNCOOvJrFQbfnDQjG3CUBMyGKCj77fDGATBGk35g3T5WOQV2JELUv4w
-         FgWQ==
-X-Gm-Message-State: AOJu0Yxl4fSgX6ngTH11p6Y1zz9pmdzkc+iUDTVDjP40HvPf0Ihw4MB6
-	v8WJ8OhrnPOd39hDd7iZ6sl/0FTZBiVk1g==
-X-Google-Smtp-Source: AGHT+IG28wgaBS5AHIgTewnyXmC8wlP9sXVytbSo2xdd7loIV6E/r1uN/235R2M8mczCFlj7JOjrZA==
-X-Received: by 2002:a9d:7d98:0:b0:6bc:de95:a639 with SMTP id j24-20020a9d7d98000000b006bcde95a639mr6837593otn.16.1696542177439;
-        Thu, 05 Oct 2023 14:42:57 -0700 (PDT)
-Received: from DESKTOP-EVNFDUR.home ([47.184.17.213])
-        by smtp.gmail.com with ESMTPSA id k7-20020a056830168700b006b87f593877sm384859otr.37.2023.10.05.14.42.56
-        for <outreachy@lists.linux.dev>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 05 Oct 2023 14:42:57 -0700 (PDT)
-Date: Thu, 5 Oct 2023 16:42:55 -0500
-From: Jeremiah John <jeremiahjohn08706@gmail.com>
-To: outreachy@lists.linux.dev
-Subject: Checkpatch.pl throws an error for an object file
-Message-ID: <ZR8t36IHi65t900o@DESKTOP-EVNFDUR.home>
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="Rhu78sJG"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1696545418; x=1728081418;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=otLWxtPiqUNwo70uqhFdNQidJ2aAi7Avaj9RLjXTEks=;
+  b=Rhu78sJGo21vB/dQYioBNvIaXndNQleHPXmxDXJdGjR7NXD8z0fbl5xq
+   J9QJR9+SXBkNNtl4QqZl7kV/kxBqQhLsoTR0QpS94mXjpboXIQg/O+CkH
+   7SDVmp0kMJolK8qT03I7YMeaDJz2HW613K06GxMJv4mALFrs7MHkXPldT
+   GHJ4dhbONCe0j/hVmcNAYaNeeHKctHVqxYB4b7nYhU5MbMCyXZ4GvcGU5
+   tcg8bL6nCoZthg9j057NXgvbamGRn3MzDXFJqOj94BeZM9m1zjLv/pyMv
+   UHm7uXkv1ZxYHR+xnF76xoA0D0k4c9rGg5Dgi6dbtNqUJzp5/4Cc1kVKW
+   g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10854"; a="387513175"
+X-IronPort-AV: E=Sophos;i="6.03,203,1694761200"; 
+   d="scan'208";a="387513175"
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Oct 2023 15:36:57 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10854"; a="755642249"
+X-IronPort-AV: E=Sophos;i="6.03,203,1694761200"; 
+   d="scan'208";a="755642249"
+Received: from cchew3-mobl.gar.corp.intel.com (HELO intel.com) ([10.213.41.249])
+  by fmsmga007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Oct 2023 15:36:54 -0700
+Date: Fri, 6 Oct 2023 00:36:48 +0200
+From: Andi Shyti <andi.shyti@linux.intel.com>
+To: Jeremiah John <jeremiahjohn08706@gmail.com>
+Cc: outreachy@lists.linux.dev
+Subject: Re: Checkpatch.pl throws an error for an object file
+Message-ID: <ZR86gPmIpdjdTIwj@ashyti-mobl2.lan>
+References: <ZR8t36IHi65t900o@DESKTOP-EVNFDUR.home>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -54,14 +46,26 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <ZR8t36IHi65t900o@DESKTOP-EVNFDUR.home>
 
-I have ran checkpatch.pl on drivers/staging/rtl8192e/ to find any drivers that need modification, and I received the following error:
+Hi Jeremiah,
 
-drivers/staging/rtl8192e/dot11d.o
----------------------------------
-ERROR: Does not appear to be a unified-diff format patch
+On Thu, Oct 05, 2023 at 04:42:55PM -0500, Jeremiah John wrote:
+> I have ran checkpatch.pl on drivers/staging/rtl8192e/ to find any drivers that need modification, and I received the following error:
+> 
+> drivers/staging/rtl8192e/dot11d.o
 
-all other files checked within the rtl8192e folder had no formatting errors reported by the script. My question is why checkpatch would throw a formatting error for object code?
+you are passing the wrong file, you should run checkpatch on the
+source code, not on the binary. Try with the .c file:
 
-Thanks,
-Jeremiah John
+./scripts/checkpatch.pl drivers/staging/rtl8192e/dot11d.c
+
+Andi
+
+> ---------------------------------
+> ERROR: Does not appear to be a unified-diff format patch
+> 
+> all other files checked within the rtl8192e folder had no formatting errors reported by the script. My question is why checkpatch would throw a formatting error for object code?
+> 
+> Thanks,
+> Jeremiah John
