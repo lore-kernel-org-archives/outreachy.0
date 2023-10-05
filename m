@@ -1,131 +1,121 @@
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-lj1-f169.google.com (mail-lj1-f169.google.com [209.85.208.169])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 496887F
-	for <outreachy@lists.linux.dev>; Thu,  5 Oct 2023 09:44:51 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3896020E3
+	for <outreachy@lists.linux.dev>; Thu,  5 Oct 2023 09:58:29 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="g6sOf5Qd"
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="lK/NUpy+"
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+Received: by mail-lj1-f169.google.com with SMTP id 38308e7fff4ca-2c038a1e2e6so8991521fa.2
+        for <outreachy@lists.linux.dev>; Thu, 05 Oct 2023 02:58:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version:content-id;
-  bh=UbcmBJtM+8yU7TqNoYpHoXN8pfDW9EW48IqVKZIBNQ8=;
-  b=g6sOf5Qdot7w7VYUY+1+JC7Dyn6AJ7wgzVNTbiC3lB5SNSzr18uotVRy
-   +1+d03X8XCSEMi2+uK/OGkMfWP++6iCnRzY/EYUQqer2G23neJq6BxfYm
-   hbWUX2krx0A3WWPj6LbpZ6fcV420g4YTShyLxhx/VN2CfMTDAqfdXOx1+
-   E=;
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="6.03,202,1694728800"; 
-   d="scan'208";a="129622211"
-Received: from 231.85.89.92.rev.sfr.net (HELO hadrien) ([92.89.85.231])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Oct 2023 11:44:50 +0200
-Date: Thu, 5 Oct 2023 11:44:49 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Isoken Ibizugbe <isokenjune@gmail.com>
-cc: Linux Outreachy <outreachy@lists.linux.dev>
-Subject: Re: [Error]
-In-Reply-To: <CAJHH8bFETe6cfkG-w9H=UywxTC9xGss40+2r_EhDJT3k8Z5fvg@mail.gmail.com>
-Message-ID: <alpine.DEB.2.22.394.2310051143580.3375@hadrien>
-References: <CAJHH8bHfnuwWa-NQOpypQrgWTWuqYGdTuptVOz=9h0uG2mVkEA@mail.gmail.com> <ZRyTH0WyHd3JJnNv@ashyti-mobl2.lan> <CAJHH8bEtKMYJ2RUn71uHuzNDUzEFNLQMxumKnp8ezb6pvxvGhQ@mail.gmail.com> <CALPt=awuCRF3_Z5-Qh3biBBEuS7fVkvxQyfFcxuv8Snww6csMA@mail.gmail.com>
- <CAJHH8bEvLeEytHH7FR-eiGeshLmjfj9syjNa0ekuDbgT2q+=3w@mail.gmail.com> <CALPt=aznty=FRpmNXMvVVJKSH48OibdrQ5cr68ubEO2b8b+atg@mail.gmail.com> <CAJHH8bF7D5dREdF=4fmGhC6rnEWPyZ7+vW1C2mwuy_jAwaJ8Bw@mail.gmail.com> <alpine.DEB.2.22.394.2310051021430.3375@hadrien>
- <CAJHH8bGGship88xdjep302+wq0jbaC6VUbcwEW7DotUKY4bysw@mail.gmail.com> <alpine.DEB.2.22.394.2310051048360.3375@hadrien> <CAJHH8bFETe6cfkG-w9H=UywxTC9xGss40+2r_EhDJT3k8Z5fvg@mail.gmail.com>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+        d=gmail.com; s=20230601; t=1696499908; x=1697104708; darn=lists.linux.dev;
+        h=content-transfer-encoding:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=VdwQw+Ju44XQQqlyOAPffAUOFXFWZFinFrWH5k0p/sw=;
+        b=lK/NUpy+RE1pqKJ+ks32VBEYABZ1SoW1L65xU2g2ZLjhyDZPkbz/0Zen5/7pzLl0iM
+         SCYABOnAv/XRwFdlv+WHRUFOkaVlzUPvZMy7n/0mv8Qn4gc2+WxtaAn7llNRvgzF2HRr
+         7mOWw+0JFL8jZO273U2g4SPtSVi/xF8IN4G03MmrWW/wtT+1smxL6IDhy9to7nzhtn1M
+         97T5EcXLsLl6EOd1anFLROtYKU1FKAj4GJ1L5LT7+KV8eng8cRS7rlSUeHXYDPq0SnMK
+         tyMZX/tUBq8Tv2zmO9YeDlBEILaTyXHCUn1uY0rYWylMATVFxEDBnpuD7uVac93x4xrG
+         uJrg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1696499908; x=1697104708;
+        h=content-transfer-encoding:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=VdwQw+Ju44XQQqlyOAPffAUOFXFWZFinFrWH5k0p/sw=;
+        b=BNhKvnmQp8usv6waSR38BBa2R+GNhw2kLhFd0GytUgaZlradlBVIHBhGtj0Hajd4D7
+         DpolJUPCMmfMRQHDaSTTviAu2cwUap/W2AnxL0a12ujQpcvRy+yxqB6LS3N+mDh6WmC1
+         W8LtkWxrWCKdt2iNoNwXpD2qb4hxyRdEYW5yWpKeT9Xfq98Q8u3VZfuNAnwu/clCYKba
+         g/L7dWyudX9FK6YF7P5e9D1JTJq9HoMVce+FmitWeM0LHu355fne8bTZdub3bMioUjtp
+         rcUvwMtZOpuRBpMVGME17aHItJJGf95pKOEJIgZcO61xFIc38hw7UoXV+j/LDLIPoDt5
+         +YEw==
+X-Gm-Message-State: AOJu0Yw5oul4rG9iM3D9K0636sdYvXWb8lhawvLbkg3FuRv5gSVPb/dp
+	M709uxJeavfx4oHE4QgDFGs6eekwkSaU7hd0tI3xNWJHCuQqgg==
+X-Google-Smtp-Source: AGHT+IFaXrUAIC8sTRw5CXVTaBOvjHwg6rbQmIEYLWMyPHicvgtuaZ+RtKXyJJPmBJe5hiJf7CrNVOxKl3NVVxgh950=
+X-Received: by 2002:a2e:8310:0:b0:2c0:a99:68e7 with SMTP id
+ a16-20020a2e8310000000b002c00a9968e7mr4245385ljh.19.1696499907611; Thu, 05
+ Oct 2023 02:58:27 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; BOUNDARY="8323329-2126115087-1696499042=:3375"
-Content-ID: <alpine.DEB.2.22.394.2310051144150.3375@hadrien>
+References: <CAKrXSsZ-1AKg3FLmZj=Kt_7NqHhty0k3ob89LuNUgFBqdjgduw@mail.gmail.com>
+ <alpine.DEB.2.22.394.2310051126480.3375@hadrien> <CAKrXSsZxnjup4VBdXYgrndEatoQY_jxKB+iN7fWReSDOa8V=pQ@mail.gmail.com>
+ <alpine.DEB.2.22.394.2310051145160.3375@hadrien>
+In-Reply-To: <alpine.DEB.2.22.394.2310051145160.3375@hadrien>
+From: Gilbert Adikankwu <gilbertadikankwu@gmail.com>
+Date: Thu, 5 Oct 2023 10:57:50 +0100
+Message-ID: <CAKrXSsaBNZd6MJBB2JQmTdhNR=udoWtnO=PoRA7AGXKvqbiDHQ@mail.gmail.com>
+Subject: Fwd: [Outreachy Applicant] Introduction and Interest in Contributing
+ to Linux Kernel
+To: outreachy@lists.linux.dev
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
-
---8323329-2126115087-1696499042=:3375
-Content-Type: text/plain; CHARSET=UTF-8
-Content-Transfer-Encoding: 8BIT
-Content-ID: <alpine.DEB.2.22.394.2310051144151.3375@hadrien>
-
+---------- Forwarded message ---------
+From: Julia Lawall <julia.lawall@inria.fr>
+Date: Thu, Oct 5, 2023 at 10:45=E2=80=AFAM
+Subject: Re: [Outreachy Applicant] Introduction and Interest in
+Contributing to Linux Kernel
+To: Gilbert Adikankwu <gilbertadikankwu@gmail.com>
 
 
-On Thu, 5 Oct 2023, Isoken Ibizugbe wrote:
 
-> Thanks for the help, I set the .config to default and commented out the former instructions like before and ran make. It compiled successful.
 
-I'm not sure to understand.  You mean that after 10 hours it finally
-completed?  Or that you started over and it became faster?
+On Thu, 5 Oct 2023, Gilbert Adikankwu wrote:
+
+> Hello Julia,
+>
+> Yes, I have been looking at the tutorials... The questions I intended
+> to ask were already answered in response to the other Applicant
+> Isoken. However,  I want to know what this line in the setup tutorial
+> mean:
+>
+> "Do not forget to rename your kernel version "CONFIG_LOCALVERSION" in
+> the new .config. If you skip this, there is the risk of overwriting
+> one of your existing kernels by mistake."
+>
+> My understanding is that I can rename it to whatever name I like, is that
+
+Yes, whatever you like.
 
 julia
 
-
 >
-> On Thu, 5 Oct 2023 at 9:56 AM, Julia Lawall <julia.lawall@inria.fr> wrote:
+> On Thu, Oct 5, 2023 at 10:27=E2=80=AFAM Julia Lawall <julia.lawall@inria.=
+fr> wrote:
+> >
+> >
+> >
+> > On Wed, 4 Oct 2023, Gilbert Adikankwu wrote:
+> >
+> > > Dear Outreachy Linux Kernel Community,
+> > >
+> > > I am Gilbert Adikankwu, an Outreachy applicant for the December Cohor=
+t
+> > > 2023. I want to use this medium to introduce myself to the community.
+> > >  As a Linux user,  I appreciate the quality work that has gone into
+> > > making Linux a rewarding experience. On this note, I'm interested in
+> > > contributing to the Linux Kernel. Specifically, I want to contribute
+> > > to the Linux Kernel through the project titled; "Improve i915 sysfs
+> > > interface implementation". I am excited about collaborating with
+> > > community members on this project.
+> > >
+> > > I am eager to learn, contribute, and be part of the Linux Kernel
+> > > community's journey. I'm reading the first patch tutorial to learn ho=
+w
+> > > to push my first patch. Any help you can offer me to make the process
+> > > easier is welcomed.
+> > >
+> > > Thank you for your time and consideration.
+> >
+> > Have you had a chance to start on the tutorial?  Any questions?
+> >
+> > julia
 >
->
->       On Thu, 5 Oct 2023, Isoken Ibizugbe wrote:
->
->       > I just checked and the virtual machine has 4 CPUs but is set to 2, should I end the building process and use make localmodconfig?
->
->       I think you can run make localmodconfig from another directory, to have
->       the generated files be put in that other directory.  You could do:
->
->       make O=/path/to/mydir localmodconfig
->
->       https://stackoverflow.com/questions/15969694/make-o-files-in-separate-folder-in-linux-kernel-compilation
->
->       I have not tried this though.  Copy your .config file to some other file
->       first for easy reference.
->
->       In this way, maybe you can keep your current compilation running and see
->       if make localmodconfig would be beneficial.
->
->       julia
->
->       >
->       > On Thu, 5 Oct 2023 at 9:24 AM, Julia Lawall <julia.lawall@inria.fr> wrote:
->       >
->       >
->       >       On Thu, 5 Oct 2023, Isoken Ibizugbe wrote:
->       >
->       >       > Thank you for the clarification.
->       >
->       >       I think your configuration is too big.  You can try make localmodconfig
->       >       and see if you get a smaller configuration.
->       >
->       >       Does your VM actually have 4 cores?
->       >
->       >       julia
->       >
->       >
->       >       >
->       >       > On Thu, Oct 5, 2023 at 8:01 AM sumitra sharma <sumitraartsy@gmail.com> wrote:
->       >       > >
->       >       > >
->       >       > >
->       >       > > On Thu, 5 Oct, 2023, 12:24 pm Isoken Ibizugbe, <isokenjune@gmail.com> wrote:
->       >       > > Yes I copied the .config file of the currently running kernel and I'm
->       >       > > using Ubuntu 20.04LTS on a virtual box, I renamed the
->       >       > > CONFIG_LOCALVERSION in the .config and commented out these lines
->       >       > > CONFIG_SYSTEM_TRUSTED_KEY
->       >       > > and CONFIG_MODULE_SIG_KEY, then ran make -j4, but the kernel has been
->       >       > > compiling for 10 hours now. please is this normal?
->       >       > >
->       >       > > Hello Isoken,
->       >       > >
->       >       > > Yes, it is normal. The compilation time depends upon how much RAM you have allocated to your virtual machine. I still use virtual machines and sometimes the kernel building takes two days  :)
->       >       > >
->       >       > > Regards
->       >       > > Sumitra
->       >       >
->       >       >
->       >
->       >
->       >
->
->
->
---8323329-2126115087-1696499042=:3375--
