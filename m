@@ -1,98 +1,198 @@
-Received: from mail-oo1-f49.google.com (mail-oo1-f49.google.com [209.85.161.49])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.136])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 928F238FBC
-	for <outreachy@lists.linux.dev>; Fri,  6 Oct 2023 19:43:42 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=marliere.net
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0C7EE3D38E
+	for <outreachy@lists.linux.dev>; Fri,  6 Oct 2023 20:19:08 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=fail reason="key not found in DNS" (0-bit key) header.d=marliere.net header.i=@marliere.net header.b="e4z2yeGG"
-Received: by mail-oo1-f49.google.com with SMTP id 006d021491bc7-57e4459aa29so1302977eaf.0
-        for <outreachy@lists.linux.dev>; Fri, 06 Oct 2023 12:43:42 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696621421; x=1697226221;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:dkim-signature:date:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=ucWoIUTRyrC1qudbhkqCiFC3VNX8+bqF/XKzYlAgnEE=;
-        b=gM219shey2/MbV/xmjC3U5ibCXORfE8wltbnlqco3VrjOp2CEcC1hb9RiIaYtU7xEg
-         yT9XiGRRmB+FAN32OvVWC0p3gIL4CiRMVIGINF5sBOg9+ZkAACau2eH+9nqfo4GLmssg
-         CuvihuMkubnLy+7TsdaTjBfI9Ee+7YuqEAc0uN6Jxq+meo98Imwvl4i3Nmynfeya1lBT
-         fWox0BB1j/joPayUPFmyTOWDKq2BIwunUM9Lys96lYKimeokj50IVTOyeCPL9WsviAoq
-         CS7JiC+pEEuig+SskxFYd5DXVuKQ8kNf5WrSZR8BwLSP4YWqypbQJnpkdrNtaYKEj1q6
-         JVFA==
-X-Gm-Message-State: AOJu0YycyLm+7rAweX4vrqGPIKaSnYv5NnYtZ2YByN9pHBTxhe6XYjeW
-	y+I3l0eKW7A/CpsaU6D/Z+M=
-X-Google-Smtp-Source: AGHT+IEfXMI+xS0+ySSSOeaa7b7vKAGTc6EZtFCQw1O/FOhsImdRbWrckHarE3KMKv9WK4fsBfIbqA==
-X-Received: by 2002:a4a:dcda:0:b0:576:bbf6:8a8e with SMTP id h26-20020a4adcda000000b00576bbf68a8emr3320556oou.2.1696621421532;
-        Fri, 06 Oct 2023 12:43:41 -0700 (PDT)
-Received: from mail.marliere.net ([24.199.118.162])
-        by smtp.gmail.com with ESMTPSA id b3-20020a4a98c3000000b0057b38a94f38sm499180ooj.12.2023.10.06.12.43.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 06 Oct 2023 12:43:41 -0700 (PDT)
-Date: Fri, 6 Oct 2023 16:43:39 -0300
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=marliere.net;
-	s=2023; t=1696621419;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=ucWoIUTRyrC1qudbhkqCiFC3VNX8+bqF/XKzYlAgnEE=;
-	b=e4z2yeGG4frfc8+kfLrNXR8BB0rI2rlhWKZoNK5bwazWUOZWU76k+43uw+bEL2Lq5m1QiO
-	1KcezEx9ygXYUNQGi0FayaBTCiexSI90zcmIjK7fG6qzrSImNpAQiDm3qEqzBtNBeCHAhP
-	v90EGLs5PbwAZJoV4ITxLWBP99FFRuGlWfRcM5IZaYMslCeT1630VB/IlCGZ/TsxjiJZUe
-	8Hb+flg0625VJPe70POveaDRmnn8U1aZw3mDmFhnRUzrDoZ/LNLL/cXKPrmeu/PoEaiBqc
-	fBUSZaEJ9gU1bV2EKbETRPyo/exfqrCkAcNTGgjMmMEKX1VjdxStgCtjjSM6vA==
-Authentication-Results: ORIGINATING;
-	auth=pass smtp.auth=ricardo@marliere.net smtp.mailfrom=ricardo@marliere.net
-From: "Ricardo B. Marliere" <ricardo@marliere.net>
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="BHp/Vouu"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1696623549; x=1728159549;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=rXSRRPzVgdlVpPS76schJkP1pDv4j1Fdp7P+stFHps0=;
+  b=BHp/Vouu0dP6DJlMaFjRQ5aDVoZuPoqTN97NeI+joVk8Ntp52w65dHej
+   UzxFhA4lc8H1b7tbgsWrXJpISLuFn3Vh90sMI9vcuo8+9kfifIw8W4A0f
+   UIkGJW6XY9+n8SCeTJHzdY5pCjtg86Gs8SpRCCuw2mCSE9GIkmKIRK3o5
+   NYysYwc5/XD68TAMwSHmba96oGVPwFpkV5CejY5vOF7Nlxn55iWTEanqY
+   iEsz6wjCZ29DUkEmyIuvMG2H6eMOrNABTngMeH96S2E+nsOz/2Qb7mRyC
+   llVFuj983K24RCpUR/aPIrqftg3PEwYGOi9SZ2nhufBwm9xbk3yOjfd8t
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10855"; a="363176765"
+X-IronPort-AV: E=Sophos;i="6.03,204,1694761200"; 
+   d="scan'208";a="363176765"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Oct 2023 13:19:07 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10855"; a="1083574857"
+X-IronPort-AV: E=Sophos;i="6.03,204,1694761200"; 
+   d="scan'208";a="1083574857"
+Received: from pmanogar-mobl.gar.corp.intel.com (HELO intel.com) ([10.213.157.100])
+  by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Oct 2023 13:19:04 -0700
+Date: Fri, 6 Oct 2023 22:18:58 +0200
+From: Andi Shyti <andi.shyti@intel.com>
 To: Gilbert Adikankwu <gilbertadikankwu@gmail.com>
-Cc: outreachy <outreachy@lists.linux.dev>, 
-	Julia Lawall <Julia.Lawall@inria.fr>, Andi Shyti <andi.shyti@intel.com>, karolinadrobnik@gmail.com
-Subject: Re: [Outreachy Applicant] Help needed
-Message-ID: <yn3c3p66kibwp7rdw4wwfldbevw57ady3md2lqlvlkwtyxlv7c@kb2tr52gj7l5>
-References: <CAKrXSsZsMNxp4BmkWXzza-HYcPdyFYootjYjsz+tMowVb-pGEA@mail.gmail.com>
+Cc: outreachy <outreachy@lists.linux.dev>
+Subject: Re: [Outreachy Applicant] Introduction and Interest in Contributing
+ to Linux Kernel
+Message-ID: <ZSBrsmdAK9Q9DawP@ashyti-mobl2.lan>
+References: <CAKrXSsZ-1AKg3FLmZj=Kt_7NqHhty0k3ob89LuNUgFBqdjgduw@mail.gmail.com>
+ <ZR0NRvHkjcWIv9+f@ashyti-mobl2.lan>
+ <CAKrXSsafYQSb2YH128da-+CcnxejZ4V=n-xO5UDmTJLUk_zG8A@mail.gmail.com>
+ <ZR6xRGp4uD+jbzJ/@ashyti-mobl2.lan>
+ <CAKrXSsbRm9-nmZNj_i8DkW=a=px4DL_bt=ggAfiEnMjHVs3HqQ@mail.gmail.com>
+ <ZR7C3u2IdLt3IVlV@ashyti-mobl2.lan>
+ <CAKrXSsaC-3c1knSmGbSL6ivkJg8QgDJv7=j4C6ffB6Mjs5PRKQ@mail.gmail.com>
+ <ZR7j0Vc0y/K0arAF@ashyti-mobl2.lan>
+ <ZR+q/KtzEQ+FNw1l@ashyti-mobl2.lan>
+ <CAKrXSsaO3=b5f0YOBhRXn04j8jj5oL5WP4NXvCckcnJGu9++jQ@mail.gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <CAKrXSsZsMNxp4BmkWXzza-HYcPdyFYootjYjsz+tMowVb-pGEA@mail.gmail.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAKrXSsaO3=b5f0YOBhRXn04j8jj5oL5WP4NXvCckcnJGu9++jQ@mail.gmail.com>
 
-On 23/10/06 03:22PM, Gilbert Adikankwu wrote:
-> I need some clarity on a step in the setup tutorial.
-> I use a Windows Subsystem Linux 2 (WSL2) as my Linux environment on my
-> Windows 10. I have followed this "OutreachyfirstpatchSetup - Linux
-> Kernel Newbies" up until the installing Kernel stage. Now I am
-> confused about how to execute the next stage "Running your Kernel"
-> 
-> It says to make a grub boot menu and we are asked to run this
-> 
-> sudo vim /etc/default/grub
-> 
-> when I ran the above command in my WSL2, I realised there was no grub
-> file and the command just created a new file, is that normal?
-> 
-> this was the output of the next command:
-> 
-> gilbertadikankwu@GILBERT:$ sudo update-grub2
-> [sudo] password for gilbertadikankwu:
-> sudo: update-grub2: command not found
-> 
-> 
-> 
-> Please advise
-> Gilbert
+Hi Gilbert,
 
-Hello Gilbert,
+On Fri, Oct 06, 2023 at 03:16:45PM +0100, Gilbert Adikankwu wrote:
+> Hello Andi,
+> 
+> Thank you for your response. I have found a resource online that will
+> guide me through the process of dual-booting Linux on my machine. But
+> I have another question, the project's system requirement says 50GB is
+> recommended for the hard drive space by 5GB is the minimum. I am only
+> able to partition 27GB on my current hard drive can it still work?
 
-AFAIK you're still running a Windows kernel. You should either:
+I don't know, I feel like nowadays 27GB are a bit tight.
 
-1- Install a full Linux distribution in your host or;
-2- Emulate a full Linux distribution using something like Oracle VM
-VirtualBox.
+The 50GB we wrote was arbitrary... if you are able to fit things
+in 27GB, then OK... consider also that after the compilation, the
+kernel directory and other tools become a bit fatter.
 
+Andi
 
--	Ricardo
+> On Fri, Oct 6, 2023 at 7:40 AM Andi Shyti <andi.shyti@intel.com> wrote:
+> >
+> > Hi Gilbert,
+> >
+> > please, do not remove the mailing list from the Cc.
+> >
+> > For such cases there is never a single solution and I'm able to
+> > provide ony my experience. Besides, I'm not experienced in VMs.
+> >
+> > The point of reaching a community throught a mailing list is that
+> > you can collect a wider range of thoughts and opinions.
+> >
+> > Please, keep asking questions for clearing out your doubts.
+> >
+> > Andi
+> >
+> > On Thu, Oct 05, 2023 at 06:27:08PM +0200, Andi Shyti wrote:
+> > > Hi Gilbert,
+> > >
+> > > On Thu, Oct 05, 2023 at 05:15:02PM +0100, Gilbert Adikankwu wrote:
+> > > > Hello Andi
+> > > >
+> > > > I looked up my system properties and I have an Intel integrated GPU: Intel (R)
+> > > > HD Graphics 4400.
+> > >
+> > > Excellent!
+> > >
+> > > > I will go with your advice and try installing natively Linux.  I usually have
+> > > > been avoiding this process for a long time because I am scared of mistakenly
+> > > > wiping my computer's memory in the process but I guess I have to take the risk
+> > > > now 😅
+> > >
+> > > you could even use an external hard drive if you are afraid to
+> > > wipte your computer's memory, but it's going to be a bit slower.
+> > >
+> > > Let me know if you need further help in this process.
+> > >
+> > > Andi
+> > >
+> > > > Thanks
+> > > > Gilbert
+> > > >
+> > > >
+> > > > On Thu, Oct 5, 2023 at 3:06 PM Andi Shyti <andi.shyti@intel.com> wrote:
+> > > >
+> > > >     Hi Gilbert,
+> > > >
+> > > >     On Thu, Oct 05, 2023 at 02:36:03PM +0100, Gilbert Adikankwu wrote:
+> > > >     > Hello Andi,
+> > > >     >
+> > > >     > Thank you for your reply.
+> > > >     >
+> > > >     > So I use WSL2 as my Linux environment on a Dell running Windows 10
+> > > >     >
+> > > >     > This is what I got when I ran the command lspci
+> > > >     >
+> > > >     > 4234:00:00.0 SCSI storage controller: Red Hat, Inc. Virtio filesystem
+> > > >     (rev 01)
+> > > >     > 495f:00:00.0 SCSI storage controller: Red Hat, Inc. Virtio filesystem
+> > > >     (rev 01)
+> > > >     > 87ba:00:00.0 System peripheral: Red Hat, Inc. Device 105a (rev 01)
+> > > >     > e8a6:00:00.0 SCSI storage controller: Red Hat, Inc. Virtio console (rev
+> > > >     01)
+> > > >     > f883:00:00.0 SCSI storage controller: Red Hat, Inc. Virtio filesystem
+> > > >     (rev 01)
+> > > >     >
+> > > >     >
+> > > >     > Seems like my system doesn't meet the requirement, is there a workaround?
+> > > >
+> > > >     doing kernel development on a virtual machine is challenging and
+> > > >     I'm not sure you can run i915 on a VM.
+> > > >
+> > > >     I'm not a Windows user, but I guess, from the control panel you
+> > > >     should be able to see the graphic card you have. Try to look on
+> > > >     google, I'm sure you'll find plenty of answers.
+> > > >
+> > > >     If you have an Intel GPU, then you could consider installing
+> > > >     natively Linux on your machine in dual boot with Windows. That
+> > > >     would make your life so much easier.
+> > > >
+> > > >     Andi
+> > > >
+> > > >     > Thanks
+> > > >     > Gilbert
+> > > >     >
+> > > >     >
+> > > >     >
+> > > >     > On Thu, Oct 5, 2023 at 1:51 PM Andi Shyti <andi.shyti@intel.com> wrote:
+> > > >     > >
+> > > >     > > Hi Gilbert,
+> > > >     > >
+> > > >     > > > How do I check to see if my system meets the system requirements?
+> > > >     > >
+> > > >     > > If you run lspci, you should check that your VGA controller is
+> > > >     > > Intel.
+> > > >     > >
+> > > >     > > E.g., in my current laptop is:
+> > > >     > >
+> > > >     > > $ lspci
+> > > >     > > ...
+> > > >     > > 00:02.0 VGA compatible controller: Intel Corporation TigerLake-LP GT2
+> > > >     [Iris Xe Graphics] (rev 01)
+> > > >     > > ...
+> > > >     > >
+> > > >     > > Another way is to check the modules running in your PC with
+> > > >     > > lsmod. The module (i.e. the driver) is called i915. In my laptop:
+> > > >     > >
+> > > >     > > $ lsmod
+> > > >     > > ...
+> > > >     > > i915                 3756032  19
+> > > >     > > ...
+> > > >     > >
+> > > >     > > Besides, i915 will be the piece of software this project is based
+> > > >     > > on.
+> > > >     > >
+> > > >     > > Let me know,
+> > > >     > > Andi
+> > > >
