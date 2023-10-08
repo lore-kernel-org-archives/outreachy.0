@@ -1,179 +1,118 @@
-Received: from mail-wm1-f49.google.com (mail-wm1-f49.google.com [209.85.128.49])
+Received: from mail-pf1-f178.google.com (mail-pf1-f178.google.com [209.85.210.178])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5CC76C12F
-	for <outreachy@lists.linux.dev>; Sun,  8 Oct 2023 12:06:51 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 00D638F42
+	for <outreachy@lists.linux.dev>; Sun,  8 Oct 2023 12:12:59 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Ad85Pcm8"
-Received: by mail-wm1-f49.google.com with SMTP id 5b1f17b1804b1-405361bb94eso36278345e9.0
-        for <outreachy@lists.linux.dev>; Sun, 08 Oct 2023 05:06:51 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="aB9uNoU1"
+Received: by mail-pf1-f178.google.com with SMTP id d2e1a72fcca58-6934202b8bdso3021182b3a.1
+        for <outreachy@lists.linux.dev>; Sun, 08 Oct 2023 05:12:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1696766809; x=1697371609; darn=lists.linux.dev;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=PmF03Egbis1r0PMba/GwE1//0XI1lfekBgSXrakOzvg=;
-        b=Ad85Pcm8CTz/OSRKO3Se3n9H5trFkm+akNKj7I94e7CHE+xeCty0UM7lWUvxwbNkRq
-         wTy668QcHoJ6icrVw362gRnLX8tLHqFLRU9EZM2FD5a3Nlq95QWCpS6NcWD9W5Hv9Mnk
-         jbklUy9z3Q8T0ewVvLX6UbenuAAJso1ivu6qaolIa4b11NzMYJXgdei1CHpgx78TAoOt
-         u5RB5lZu4U8cPxazrAud+Xk56HpLxvdRrHoGNdTkZjOi7vguo18BO17k0aw034yka/fY
-         3KVOh5lq/QCa+1cbkbRnVP/BbLzXmeRWCxQX023tsglBNE4bPzcMdmw+38Qy9SRmeKG4
-         3LiQ==
+        d=gmail.com; s=20230601; t=1696767179; x=1697371979; darn=lists.linux.dev;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=gzVWyC3Uw96qg3fz/cZmSjeBDgcHMVStHcIEt656adM=;
+        b=aB9uNoU11sZQp0ayxyFetRaI38QE6SF1NBSk6xi03PlejRvkZyiw2+9QlhDnutRTQz
+         thIVEQt5pSEhcqzMir4JqPQLv2VVxy2d9TlGCPCqEDUMqs56YeEP+QV1/rzXg05kg/2e
+         GblsN2CKcpwlNXYIAkAmq2067iY6GltVuYJ6/PvKgTdBY5uxMVpl1NlxFZH/h1B+zuip
+         PJ1/1ql57kFXc4QIjexyHcZHw9mLmCCwC72V9K+xHvBxb0suNh+md6eMsSEPeHxVdF+X
+         ITaBpudLSl1iZluuDwkFd3p1xGFjb4lBX5pJ0uo0Kkfk7LZqWgHsZuaQcn4oi8qEv1My
+         Y7Qw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696766809; x=1697371609;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=PmF03Egbis1r0PMba/GwE1//0XI1lfekBgSXrakOzvg=;
-        b=cvv/8adf5DAB9rI7dpI+95iOnTeKeBJdWgwCKUHjjNxFxlR2pMe6cX16kq856Ucvks
-         ECHCtnAwGWHA68EdelH6KxJmpvnD9t1cvAKDfETLzyiXkIzA9VZ81cJmJstACTunGlYH
-         JFzUY17+YCN0Sb7Sahpj8hVBqXWlDz4Pr2lYWbFIsdXwMW2haRybf78C6ztTdQTjKSKS
-         c0mqMhah2mslhCxgJh6Xqvm+Ap2c6oNhxdU5m7a/Se0mGl682Co5fZvpiR77useqI4WI
-         XuzaTs1SPxIMBa5kaosmSrSterTmv4kjqUjposzc6ci0A/FAIHDcFr9+3thwaUvcOlst
-         cgTg==
-X-Gm-Message-State: AOJu0YzFl/aUO9cbTm36oeRJ1aGr42kJ8ozfeSTYYyeZ3oAGfBNpkO80
-	JOVQR/lJTny42nUUSkaI/IaYKI9hGfHQ/Y9hjqXkWJbfvDU=
-X-Google-Smtp-Source: AGHT+IGv6UC3W66Iwx0biZ87onYnvkyP+2V8tovBarsSHNLF1pO/RTX+vR8XYcEtODa5SUxRSTyYt+16xP46MZn/bAg=
-X-Received: by 2002:a05:6000:4d2:b0:322:dbe8:e18f with SMTP id
- h18-20020a05600004d200b00322dbe8e18fmr12984368wri.46.1696766809426; Sun, 08
- Oct 2023 05:06:49 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1696767179; x=1697371979;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=gzVWyC3Uw96qg3fz/cZmSjeBDgcHMVStHcIEt656adM=;
+        b=B4dxpMXLUbPeVo71uWY1hB5Su/RJ84wdT6t/8vKHKTWFbmAvXfMdjzy8RUNMKrn+a+
+         XJWRRhUdfGq/DL23nccaZ6dawuNqfeL37b1mHTPM8rYYuh7x4nqBmHumQffnIWGjyq8W
+         cJJKFCh1cGS4cC+0TKVH/Ubp1lZ5kx+KwonCV9CC5fy0z7aPPm5WTY3f1BlgFVQVe3Ox
+         bqtiswinTfJJjRQnbel9IdICGEXI8ZWF5cr2+DLdW6q/QPGGp7hl6xPMNegYHRtulKcR
+         Qj78I+9AaSqQ+0Y0O2MJq570bEzuhfbHJJLIgDmwMWL4ckVXbCAGD3XQkF3R01mEpX/c
+         mEiw==
+X-Gm-Message-State: AOJu0YxU1RzTFB+ma/n2yz6suSrkPwipvQR/Ye1Z4HEXjkxH6q6ri/D7
+	NNlrFEGpOx3Es74KBmPvp+g=
+X-Google-Smtp-Source: AGHT+IG09OpOyVbQjpi6nCvLRRi2DaE/Semj9suFIITKCrSRwUNKYiMYL4pp7WcjbftboHNbEr0/Ng==
+X-Received: by 2002:a05:6a00:1410:b0:68b:eb3d:8030 with SMTP id l16-20020a056a00141000b0068beb3d8030mr13707120pfu.1.1696767179204;
+        Sun, 08 Oct 2023 05:12:59 -0700 (PDT)
+Received: from debian.me ([103.131.18.64])
+        by smtp.gmail.com with ESMTPSA id x52-20020a056a000bf400b0069023d80e63sm4500313pfu.25.2023.10.08.05.12.58
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 08 Oct 2023 05:12:58 -0700 (PDT)
+Received: by debian.me (Postfix, from userid 1000)
+	id 30E8F81B12C1; Sun,  8 Oct 2023 19:12:49 +0700 (WIB)
+Date: Sun, 8 Oct 2023 19:12:48 +0700
+From: Bagas Sanjaya <bagasdotme@gmail.com>
+To: Gilbert Adikankwu <gilbertadikankwu@gmail.com>,
+	Linux Outreachy <outreachy@lists.linux.dev>,
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+Cc: Julia Lawall <Julia.Lawall@inria.fr>, Andy Lutomirski <luto@kernel.org>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	Ingo Molnar <mingo@redhat.com>, Borislav Petkov <bp@alien8.de>,
+	Dave Hansen <dave.hansen@linux.intel.com>, x86@kernel.org,
+	"H. Peter Anvin" <hpa@zytor.com>
+Subject: Re: [ERROR] HELP NEEDED
+Message-ID: <ZSKcwGbe0ZDWSdHQ@debian.me>
+References: <CAKrXSsbDAA=VXpy5kO33S9LkjLVGyZNKsmN2ttk_fK0kKRRLAw@mail.gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-References: <CAOJCLCujLWVgMy-DrPsj2LLWz07t6UZOoSJU7jcVLgpbemyfpw@mail.gmail.com>
- <alpine.DEB.2.22.394.2310081225160.3223@hadrien> <CAOJCLCvJC5eoMCWPD_WkREYX0xftE80P+oPSrbqDvh+yVimg7g@mail.gmail.com>
- <alpine.DEB.2.22.394.2310081254370.3223@hadrien> <CAOJCLCsbVPuN9S1GK0g0XmPp8hW26vrbiPOCUSBo7pbCQdDtNQ@mail.gmail.com>
- <alpine.DEB.2.22.394.2310081349520.3223@hadrien>
-In-Reply-To: <alpine.DEB.2.22.394.2310081349520.3223@hadrien>
-From: NAKITYO JOANITA <nakityojoanita51@gmail.com>
-Date: Sun, 8 Oct 2023 15:06:38 +0300
-Message-ID: <CAOJCLCswxE=xNorJ3XROW1DRLBGRNyF=YY0BoOdW=9pdj2U6wA@mail.gmail.com>
-Subject: Re: Assistance Needed: Error sending message, child exited 70
- (Internal error.).
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: outreachy@lists.linux.dev
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="1grw6rbc3eaU5EHP"
+Content-Disposition: inline
+In-Reply-To: <CAKrXSsbDAA=VXpy5kO33S9LkjLVGyZNKsmN2ttk_fK0kKRRLAw@mail.gmail.com>
+
+
+--1grw6rbc3eaU5EHP
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-I'm sorry about the top posting I don't know why it keeps happening,
-maybe because I was hitting the reply button instead of reply all. I
-am happy to offer help since the messages won't be clear, maybe I can
-write an article or send a detailed email. Thank you
+On Sun, Oct 08, 2023 at 12:12:17AM +0100, Gilbert Adikankwu wrote:
+> Hello fellow community member,
+>=20
+> I'm trying to build the kernel on Ubuntu 22.04 LTS natively installed
+> on my computer and I'm getting this error message:
+>=20
+> arch/x86/entry/thunk_64.o: warning: objtool: missing symbol table
+> make[2]: *** [scripts/Makefile.build:361: arch/x86/entry/thunk_64.o] Erro=
+r 1
+> make[2]: *** Deleting file 'arch/x86/entry/thunk_64.o'
+> make[1]: *** [scripts/Makefile.build:497: arch/x86/entry] Error 2
+> make: *** [Makefile:1764: arch/x86] Error 2
+>=20
+> It seems like a file is missing but I don't know if that is possible
+> because I just cloned the repository and didn't touch any file.
+>=20
 
-On Sun, Oct 8, 2023 at 2:52=E2=80=AFPM Julia Lawall <julia.lawall@inria.fr>=
- wrote:
->
->
->
-> On Sun, 8 Oct 2023, NAKITYO JOANITA wrote:
->
-> > I tried that, and it worked! =F0=9F=98=8A Thank you!
->
-> Wonderful!
->
-> Do you have any more detailed advice for other applicants who may have th=
-e
-> same issue?
->
-> Please stop top posting, though.  You can even see the problem in the
-> current message.  The message starts with "I tried that".  What is "that"=
-?
-> I know, because I remember what I suggested a few minutes ago.  But if
-> someone else has the same problem and looks in the archives later, they
-> will have to hunt around in all of the text below to see what "that" coul=
-d
-> be.
->
-> thanks,
-> julia
->
->
-> >
-> >
-> > On Sun, Oct 8, 2023 at 1:55=E2=80=AFPM Julia Lawall <julia.lawall@inria=
-.fr> wrote:
-> > >
-> > >
-> > >
-> > > On Sun, 8 Oct 2023, NAKITYO JOANITA wrote:
-> > >
-> > > > I attempted to follow these steps, but when I visited Google's 'Les=
-s
-> > > > Secure Apps' page, I encountered two issues. Initially, I received =
-a
-> > > > message stating, 'The setting is not available for accounts with
-> > > > 2-step verification enabled.' After disabling 2-step verification, =
-I
-> > > > encountered another message, 'This setting is not available for you=
-r
-> > > > account.' I have included screenshots of both pages for reference.
-> > >
-> > > The first screen shot mentioned the possibility of an application-spe=
-cific
-> > > password.  Maybe you can use that?
-> > >
-> > > julia
-> > >
-> > > >
-> > > > On Sun, Oct 8, 2023 at 1:27=E2=80=AFPM Julia Lawall <julia.lawall@i=
-nria.fr> wrote:
-> > > > >
-> > > > >
-> > > > >
-> > > > > On Sun, 8 Oct 2023, NAKITYO JOANITA wrote:
-> > > > >
-> > > > > > Hello,
-> > > > > >
-> > > > > > I hope this message finds you well.
-> > > > > >
-> > > > > > I am currently testing my email setup using Mutt and have encou=
-ntered
-> > > > > > an issue that I could use some assistance with. When attempting=
- to
-> > > > > > send a test email, I receive the following error message:
-> > > > > > Error sending message, child exited 70 (Internal error.).
-> > > > > >
-> > > > > > To provide some context, I have followed the previous steps to =
-set up
-> > > > > > my email configuration, which involved creating both a .esmtprc=
- and a
-> > > > > > .muttrc file. Below is the content of the email I am trying to =
-send:
-> > > > > >
-> > > > > > From: nakityojoanita51@gmail.com
-> > > > > > To: nakityojoanita51@gmail.com
-> > > > > > Cc:
-> > > > > > Bcc:
-> > > > > > Subject: Greetings
-> > > > > > Reply-To:
-> > > > > > Fcc: ~/sent
-> > > > > > Mix: <no chain defined>
-> > > > > > Security: None
-> > > > > >
-> > > > > > If you could offer any insights or guidance on resolving this i=
-ssue, I
-> > > > > > would greatly appreciate it.
-> > > > >
-> > > > > Maybe the following page will help you:
-> > > > >
-> > > > > https://stackoverflow.com/questions/38372023/ubuntu-sendmail-exit=
-ed-with-error-70
-> > > > >
-> > > > > Look at the answer at the very bottom of the page.
-> > > > >
-> > > > > julia
-> > > > >
-> > > > >
-> > > > > >
-> > > > > > Thank you for your time and assistance.
-> > > > > >
-> > > > > > Warm regards, Joanita
-> > > > > >
-> > > > > >
-> > > >
-> >
+You should always clean up the tree first (`make mrproper`), then do
+the build as usual. To speed up build time, you can try copying your
+current kernel configuration (can be found either in `/boot/` directory
+or in `/proc/config.gz`), then trim it up with `make localmodconfig`.
+Make sure that all options needed by your computer are enabled (you
+may have to plug all peripherals available on your hand) as well as
+options related to kernel subsystem/driver you're hacking. For more
+information, see Documentation/admin-guide/quickly-build-trimmed-linux.rst.
+
+Thanks.
+
+--=20
+An old man doll... just what I always wanted! - Clara
+
+--1grw6rbc3eaU5EHP
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQSSYQ6Cy7oyFNCHrUH2uYlJVVFOowUCZSKcwAAKCRD2uYlJVVFO
+o9svAP9tcVmFjDxIFZm9zqVK9xGXMpPBKQPLPDNkFEX1hLG7tQEAvOi372x7TrVY
+6HT8Pre2YYn79aM8tQ3YfUxIVtCO8AA=
+=ljq/
+-----END PGP SIGNATURE-----
+
+--1grw6rbc3eaU5EHP--
