@@ -1,38 +1,35 @@
 Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 09F903D82
-	for <outreachy@lists.linux.dev>; Sun,  8 Oct 2023 06:02:37 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7F16D3D82
+	for <outreachy@lists.linux.dev>; Sun,  8 Oct 2023 06:06:21 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="uLtAf0lv"
+	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="oMQBEm85"
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
   d=inria.fr; s=dc;
   h=date:from:to:cc:subject:in-reply-to:message-id:
    references:mime-version;
-  bh=cJ7wWvibCwzDExNzsAVef6cgwI8H480grNGZVc8zvrY=;
-  b=uLtAf0lvzOxvV1gKXxzYtVRb175MXnb670phMfNQfAnlKtO5/92Ol4Op
-   9aB17/Azn6fAsNtYaGzY92xCyPoZRsx/URg8l/wGrcSyut4OLEpE6ZpEr
-   w8rwkGuiOJEYuXxV2wfofoQKrmr+AIZ5cLdbgyQR/cAP2q98igKEzNc8i
-   A=;
+  bh=b4GK87Wp5/xvK8ii5kefRWMwaO6Qm8rfMhGkbnoy334=;
+  b=oMQBEm85Odz2Hlmc/cydrvM5CMILcyz1XxgReSurjHiIrDzBQBFfHmoB
+   EZ+qk5BoaWujOc6TCaVGEpfKtWsFc+pESkRiB4YNqSG3smFyJTyr/O0Ou
+   YOK4mRz/tVb5N71307ZmtxAvJaLHb3oyqhINSihurv0nMLqlX3Gib8mIv
+   I=;
 Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
 X-IronPort-AV: E=Sophos;i="6.03,207,1694728800"; 
-   d="scan'208";a="130047644"
+   d="scan'208";a="130048087"
 Received: from 231.85.89.92.rev.sfr.net (HELO hadrien) ([92.89.85.231])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Oct 2023 08:02:29 +0200
-Date: Sun, 8 Oct 2023 08:02:29 +0200 (CEST)
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Oct 2023 08:06:19 +0200
+Date: Sun, 8 Oct 2023 08:06:19 +0200 (CEST)
 From: Julia Lawall <julia.lawall@inria.fr>
 X-X-Sender: jll@hadrien
-To: Isoken Ibizugbe <isokenjune@gmail.com>
-cc: Linux Outreachy <outreachy@lists.linux.dev>
-Subject: Re: [Error]
-In-Reply-To: <CAJHH8bHV4rRPmM5scQ2AUk9FTs4hAy6i8S5fwJ=4v1xf7DDqOg@mail.gmail.com>
-Message-ID: <alpine.DEB.2.22.394.2310080800280.3223@hadrien>
-References: <CAJHH8bHfnuwWa-NQOpypQrgWTWuqYGdTuptVOz=9h0uG2mVkEA@mail.gmail.com> <CAJHH8bF7D5dREdF=4fmGhC6rnEWPyZ7+vW1C2mwuy_jAwaJ8Bw@mail.gmail.com> <alpine.DEB.2.22.394.2310051021430.3375@hadrien> <CAJHH8bGGship88xdjep302+wq0jbaC6VUbcwEW7DotUKY4bysw@mail.gmail.com>
- <alpine.DEB.2.22.394.2310051048360.3375@hadrien> <CAJHH8bFETe6cfkG-w9H=UywxTC9xGss40+2r_EhDJT3k8Z5fvg@mail.gmail.com> <alpine.DEB.2.22.394.2310051143580.3375@hadrien> <CAJHH8bFuZtfZEeknsiSQzLLUq=jhoSUmyVh7pcViBfa8nTnhhw@mail.gmail.com>
- <alpine.DEB.2.22.394.2310051203150.3375@hadrien> <CAJHH8bFS1=BpXjKkNNk0VQZR-Ztk13ooo5YSpbuKiQS3y9JR7w@mail.gmail.com> <alpine.DEB.2.22.394.2310051309370.3375@hadrien> <CAJHH8bGaPhMdYmm6swFdM1NTQQ=eHz0+hBsUB+hb-+EDqpz7ug@mail.gmail.com>
- <alpine.DEB.2.22.394.2310051857240.3375@hadrien> <CAJHH8bHixAcrUwpj_LCjAZ641tbzjHQHm9ig=UPvoRh+h0ubPg@mail.gmail.com> <alpine.DEB.2.22.394.2310051908490.3375@hadrien> <CAJHH8bHV4rRPmM5scQ2AUk9FTs4hAy6i8S5fwJ=4v1xf7DDqOg@mail.gmail.com>
+To: NAKITYO JOANITA <nakityojoanita51@gmail.com>
+cc: outreachy@lists.linux.dev
+Subject: Re: Seeking assistance on Creating a new patch
+In-Reply-To: <CAOJCLCvdcAqAN=DEE9Yx7gfW7fLhfDaYoU-zK1_KWNd5-Chh-w@mail.gmail.com>
+Message-ID: <alpine.DEB.2.22.394.2310080804100.3223@hadrien>
+References: <CAOJCLCvdcAqAN=DEE9Yx7gfW7fLhfDaYoU-zK1_KWNd5-Chh-w@mail.gmail.com>
 User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
@@ -40,237 +37,53 @@ List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-525878185-1696744949=:3223"
-
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
-
---8323329-525878185-1696744949=:3223
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
+Content-Type: text/plain; charset=US-ASCII
 
 
 
-On Sat, 7 Oct 2023, Isoken Ibizugbe wrote:
+On Sun, 8 Oct 2023, NAKITYO JOANITA wrote:
 
-> I cannot boot into my Virtual machine using vagrant after reloading it to
-> switch to the new kernel. It gives a warning that there was an error. Do I
-> really need to boot into the new kernel to work? . I cannot seem to fix the
-> issue, do I need to reinstall the virtual machine and start all over?
+> Hello,
+>
+> I hope this message finds you well.
+>
+> I am currently following the instructions outlined in the
+> KernelNewbies Outreachyfirstpatch guide
+> https://kernelnewbies.org/Outreachyfirstpatch and have reached the
+> "Set up email" section. My operating system is Ubuntu 22.04, and I am
+> attempting to send my first patch to myself using Git, as per the
+> provided directions.
+>
+> To set up my email software, I executed the following commands:
+> sudo apt-get install esmtp
+> sudo apt-get install mutt
+> sudo apt-get install git-email
 
-Didn't you already get to the point of booting a virtual machine, and the
-problem was just that you didn't see the effect of the code that you
-changed?
+So now you have mutt working?  Like you can use it to send mail?  I think
+there is more to do than just download the software.
+
+>
+> I referred to the official documentation on email clients
+> https://www.kernel.org/doc/html/latest/process/email-clients.html.
+> However, when I attempted to run the command git am raw_email.txt, I
+> encountered the following error message:
+> fatal: not a git repository (or any of the parent directories): .git
+
+When you run git am raw_email.txt, raw_email.txt should be a patch that
+you have sent to yourself.  This patch should be created within a git
+repository, such as the Linux kernel.  You should run the git am command
+within that same repository.
+
+Maybe you can provide a more detailed trace of all of the commands that
+you have run.
 
 julia
 
-
-> On Thu, 5 Oct 2023 at 6:09 PM, Julia Lawall <julia.lawall@inria.fr> wrote:
+> I am unsure about how to proceed from here. Any assistance or guidance
+> you can provide would be greatly appreciated.
+>
+> Thank you in advance for your help.
+>
+> Best regards, Joanita
 >
 >
->       On Thu, 5 Oct 2023, Isoken Ibizugbe wrote:
->
->       > I modified the e1000 driver and compiled with -j2 according to
->       the tutorial.
->
->       Whether a file gets compiled depends on your configuration.  Do
->       you have a
->       .o file or .ko file for the .c file that you changed?
->
->       Please remember to keep the list in CC.  Other people may have
->       better
->       answers than I do :)
->
->       julia
->
->       >
->       > On Thu, 5 Oct 2023 at 5:58 PM, Julia Lawall
->       <julia.lawall@inria.fr> wrote:
->       >
->       >
->       >       On Thu, 5 Oct 2023, Isoken Ibizugbe wrote:
->       >
->       >       > Thanks for the help. I made changes to the probe
->       function by adding
->       >       > the printk line to it 'printk(KERN_DEBUG "I can modify
->       the Linux
->       >       > kernel!\n");' , compiled and installed the changes ,
->       rebooted my VM
->       >       > and ran 'dmesg | less' test the changes, but can not 
->       find the
->       >       > changes. please what should I do?
->       >
->       >       What driver did you change?  Did you compile the
->       affected file?  Do you
->       >       have the corresponding device?
->       >
->       >       julia
->       >
->       >       >
->       >       > On Thu, Oct 5, 2023 at 12:10 PM Julia Lawall
->       <julia.lawall@inria.fr> wrote:
->       >       > >
->       >       > >
->       >       > >
->       >       > > On Thu, 5 Oct 2023, Isoken Ibizugbe wrote:
->       >       > >
->       >       > > > The .config file was a copy from my running kernel
->       using this commmand cp /boot/config- name -r * .config.  Then I
->       generated a new default configuration using ‘make defconfig’. I
->       had followed this from another resource before you
->       >       suggested using
->       >       > > > ‘make localmodconfig’
->       >       > >
->       >       > > OK, make defconfig will indeed result in a much
->       smaller configuration.  I
->       >       > > don't know if it will boot on your machine.  But if
->       it does, then that's
->       >       > > fine.
->       >       > >
->       >       > > julia
->       >       > >
->       >       > > >
->       >       > > > On Thu, 5 Oct 2023 at 11:03 AM, Julia Lawall
->       <julia.lawall@inria.fr> wrote:
->       >       > > >
->       >       > > >
->       >       > > >       On Thu, 5 Oct 2023, Isoken Ibizugbe wrote:
->       >       > > >
->       >       > > >       > I started by setting .config to default
->       and started over it again
->       >       > > >
->       >       > > >       What do you mean by "setting .config to
->       default"?  And what was the
->       >       > > >       .config file before?
->       >       > > >
->       >       > > >       julia
->       >       > > >
->       >       > > >       >
->       >       > > >       > On Thu, 5 Oct 2023 at 10:44 AM, Julia
->       Lawall <julia.lawall@inria.fr> wrote:
->       >       > > >       >
->       >       > > >       >
->       >       > > >       >       On Thu, 5 Oct 2023, Isoken Ibizugbe
->       wrote:
->       >       > > >       >
->       >       > > >       >       > Thanks for the help, I set the
->       .config to default and commented out the former instructions
->       like before and ran make. It compiled successful.
->       >       > > >       >
->       >       > > >       >       I'm not sure to understand.  You
->       mean that after 10 hours it finally
->       >       > > >       >       completed?  Or that you started over
->       and it became faster?
->       >       > > >       >
->       >       > > >       >       julia
->       >       > > >       >
->       >       > > >       >
->       >       > > >       >       >
->       >       > > >       >       > On Thu, 5 Oct 2023 at 9:56 AM,
->       Julia Lawall <julia.lawall@inria.fr> wrote:
->       >       > > >       >       >
->       >       > > >       >       >
->       >       > > >       >       >       On Thu, 5 Oct 2023, Isoken
->       Ibizugbe wrote:
->       >       > > >       >       >
->       >       > > >       >       >       > I just checked and the
->       virtual machine has 4 CPUs but is set to 2, should I end the
->       building process and use make localmodconfig?
->       >       > > >       >       >
->       >       > > >       >       >       I think you can run make
->       localmodconfig from another directory, to have
->       >       > > >       >       >       the generated files be put
->       in that other directory.  You could do:
->       >       > > >       >       >
->       >       > > >       >       >       make O=/path/to/mydir
->       localmodconfig
->       >       > > >       >       >
->       >       > > >       >       >      https://stackoverflow.com/questions/15969694/make-o-files-in-separate-fold
->       er-in-linux-kernel-compilation
->       >       > > >       >       >
->       >       > > >       >       >       I have not tried this
->       though.  Copy your .config file to some other file
->       >       > > >       >       >       first for easy reference.
->       >       > > >       >       >
->       >       > > >       >       >       In this way, maybe you can
->       keep your current compilation running and see
->       >       > > >       >       >       if make localmodconfig would
->       be beneficial.
->       >       > > >       >       >
->       >       > > >       >       >       julia
->       >       > > >       >       >
->       >       > > >       >       >       >
->       >       > > >       >       >       > On Thu, 5 Oct 2023 at 9:24
->       AM, Julia Lawall <julia.lawall@inria.fr> wrote:
->       >       > > >       >       >       >
->       >       > > >       >       >       >
->       >       > > >       >       >       >       On Thu, 5 Oct 2023,
->       Isoken Ibizugbe wrote:
->       >       > > >       >       >       >
->       >       > > >       >       >       >       > Thank you for the
->       clarification.
->       >       > > >       >       >       >
->       >       > > >       >       >       >       I think your
->       configuration is too big.  You can try make localmodconfig
->       >       > > >       >       >       >       and see if you get a
->       smaller configuration.
->       >       > > >       >       >       >
->       >       > > >       >       >       >       Does your VM
->       actually have 4 cores?
->       >       > > >       >       >       >
->       >       > > >       >       >       >       julia
->       >       > > >       >       >       >
->       >       > > >       >       >       >
->       >       > > >       >       >       >       >
->       >       > > >       >       >       >       > On Thu, Oct 5,
->       2023 at 8:01 AM sumitra sharma <sumitraartsy@gmail.com> wrote:
->       >       > > >       >       >       >       > >
->       >       > > >       >       >       >       > >
->       >       > > >       >       >       >       > >
->       >       > > >       >       >       >       > > On Thu, 5 Oct,
->       2023, 12:24 pm Isoken Ibizugbe, <isokenjune@gmail.com> wrote:
->       >       > > >       >       >       >       > > Yes I copied the
->       .config file of the currently running kernel and I'm
->       >       > > >       >       >       >       > > using Ubuntu
->       20.04LTS on a virtual box, I renamed the
->       >       > > >       >       >       >       > >
->       CONFIG_LOCALVERSION in the .config and commented out these lines
->       >       > > >       >       >       >       > >
->       CONFIG_SYSTEM_TRUSTED_KEY
->       >       > > >       >       >       >       > > and
->       CONFIG_MODULE_SIG_KEY, then ran make -j4, but the kernel has
->       been
->       >       > > >       >       >       >       > > compiling for 10
->       hours now. please is this normal?
->       >       > > >       >       >       >       > >
->       >       > > >       >       >       >       > > Hello Isoken,
->       >       > > >       >       >       >       > >
->       >       > > >       >       >       >       > > Yes, it is
->       normal. The compilation time depends upon how much RAM you have
->       allocated to your virtual machine. I still use virtual machines
->       and sometimes the kernel building takes two days  :)
->       >       > > >       >       >       >       > >
->       >       > > >       >       >       >       > > Regards
->       >       > > >       >       >       >       > > Sumitra
->       >       > > >       >       >       >       >
->       >       > > >       >       >       >       >
->       >       > > >       >       >       >
->       >       > > >       >       >       >
->       >       > > >       >       >       >
->       >       > > >       >       >
->       >       > > >       >       >
->       >       > > >       >       >
->       >       > > >       >
->       >       > > >       >
->       >       > > >       >
->       >       > > >
->       >       > > >
->       >       > > >
->       >       >
->       >
->       >
->       >
->
->
->
---8323329-525878185-1696744949=:3223--
