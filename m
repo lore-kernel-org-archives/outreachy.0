@@ -1,144 +1,100 @@
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-pl1-f179.google.com (mail-pl1-f179.google.com [209.85.214.179])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3E495BE7F
-	for <outreachy@lists.linux.dev>; Sun,  8 Oct 2023 11:52:19 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 35444C12F
+	for <outreachy@lists.linux.dev>; Sun,  8 Oct 2023 12:05:38 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="PtDFBDNo"
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="b/aL2p/+"
+Received: by mail-pl1-f179.google.com with SMTP id d9443c01a7336-1c5bf7871dcso26801875ad.1
+        for <outreachy@lists.linux.dev>; Sun, 08 Oct 2023 05:05:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=3bDpuVbnb93rBwZ+UU23wTCrffCDYTkt7PoPcX+3qyY=;
-  b=PtDFBDNo3THoCUTYWae7/G6pq5hl99+ZHEv8+eO0XpFwnPfLrRlIi+x+
-   BN4gVQsT4pPsSMzboXdk9lOA//z3pfi7TCpUsJCOvF6/OWH85e3ydwjGt
-   dMpEgLklOCOL2xlM9oOpqO2zgzU2ajeoQYL5SivCXb8+3asnP12+PpRJZ
-   g=;
-Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="6.03,207,1694728800"; 
-   d="scan'208";a="68078131"
-Received: from 231.85.89.92.rev.sfr.net (HELO hadrien) ([92.89.85.231])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Oct 2023 13:52:18 +0200
-Date: Sun, 8 Oct 2023 13:52:17 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: NAKITYO JOANITA <nakityojoanita51@gmail.com>
-cc: outreachy@lists.linux.dev
-Subject: Re: Assistance Needed: Error sending message, child exited 70
- (Internal error.).
-In-Reply-To: <CAOJCLCsbVPuN9S1GK0g0XmPp8hW26vrbiPOCUSBo7pbCQdDtNQ@mail.gmail.com>
-Message-ID: <alpine.DEB.2.22.394.2310081349520.3223@hadrien>
-References: <CAOJCLCujLWVgMy-DrPsj2LLWz07t6UZOoSJU7jcVLgpbemyfpw@mail.gmail.com> <alpine.DEB.2.22.394.2310081225160.3223@hadrien> <CAOJCLCvJC5eoMCWPD_WkREYX0xftE80P+oPSrbqDvh+yVimg7g@mail.gmail.com> <alpine.DEB.2.22.394.2310081254370.3223@hadrien>
- <CAOJCLCsbVPuN9S1GK0g0XmPp8hW26vrbiPOCUSBo7pbCQdDtNQ@mail.gmail.com>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+        d=gmail.com; s=20230601; t=1696766737; x=1697371537; darn=lists.linux.dev;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=FWzBqg/uMzCeH9u/p7gYmcBYBiRKByjB9Q9BAAADL3c=;
+        b=b/aL2p/+hFqkJDRH9c/cF96xfyTj9jJd2DJkijQNKEFMLCk6CLsZk6zUYX1UPwVN/e
+         M4n0nNhBFlHjxZkj8ITOTi272aREyar7R967SooZT8XFeT5TKgOGIdPNZ/KlkrZzgc0z
+         9Z0PTTuTlx006rjcThzmoaIrLg3jEWvnAwqCLIg59VL5vXA7o1P4WCrIXEtbkKvdtN1k
+         Wc5XeCBYm0/wceTkiz/Q01xZs5JfTK4CV7LVKib2XEuKNZCXrLb8K8leH/67P1mo6fCT
+         hIHBqpZFbc+z08q+peQ4CDyuSYUjlulDWvn0v07PcV1gDYS0fQQbP+KW40BirvT+0U2p
+         phUg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1696766737; x=1697371537;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=FWzBqg/uMzCeH9u/p7gYmcBYBiRKByjB9Q9BAAADL3c=;
+        b=MBH8AAnPh5pn40KqhldErM5rTKx8UyPQNuH7jYQpJFy8qoJyRvB4U9JePChQgb+ruM
+         rIAvdRP1o3SdtyUMswXBxoQQzjyOhnaGmnzVShPXUI58FuNy/mHG6tfzxmDumWho0l1B
+         oDvnXNRS3PkCEMudORZIZpg8eCxRPO5AgTdK1gS3sKKZGkait46Twu3XfqkMWhjTAoxk
+         VPmHEggOHllAEtBmrPw0HqE8M/TO3gIoJFNEB8j6JusnTmryQCFsMDW3RlLyQ6gMpzc4
+         TSDko840hz4erLhLB4hG6nd7XPPp+Ec50pDoHiCdjJz192xPq3u8xXgQVjlqFUud38zK
+         HWfw==
+X-Gm-Message-State: AOJu0Yww4AxOk9ez0G5TlrSjizhfrNzXhwUKXbdX+CcDbGUfufHDZqFE
+	lDfurt+TEvsJzP2IHC3BYpo=
+X-Google-Smtp-Source: AGHT+IEFnuCerr92QhFsumZAsrLC7GoGM9wLCXznCinDHzdBcExhckj/fHqqqEYbG337eNeBbsIgIw==
+X-Received: by 2002:a17:903:234e:b0:1bc:5924:2da2 with SMTP id c14-20020a170903234e00b001bc59242da2mr12212398plh.56.1696766737374;
+        Sun, 08 Oct 2023 05:05:37 -0700 (PDT)
+Received: from debian.me ([103.131.18.64])
+        by smtp.gmail.com with ESMTPSA id jg14-20020a17090326ce00b001c62b9a51a4sm7416489plb.239.2023.10.08.05.05.36
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 08 Oct 2023 05:05:36 -0700 (PDT)
+Received: by debian.me (Postfix, from userid 1000)
+	id 6BA7B81B12C1; Sun,  8 Oct 2023 19:05:28 +0700 (WIB)
+Date: Sun, 8 Oct 2023 19:05:27 +0700
+From: Bagas Sanjaya <bagasdotme@gmail.com>
+To: Gilbert Adikankwu <gilbertadikankwu@gmail.com>,
+	Julia Lawall <julia.lawall@inria.fr>
+Cc: outreachy <outreachy@lists.linux.dev>
+Subject: Re: [ERROR] HELP NEEDED
+Message-ID: <ZSKbB3K4dwqHD-6F@debian.me>
+References: <CAKrXSsbDAA=VXpy5kO33S9LkjLVGyZNKsmN2ttk_fK0kKRRLAw@mail.gmail.com>
+ <alpine.DEB.2.22.394.2310080811050.3223@hadrien>
+ <CAKrXSsZBOPVVOqwRqgg-zZMXq=8hqris-92CNRBt7j_qiHkixg@mail.gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-1680731850-1696765937=:3223"
-
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
-
---8323329-1680731850-1696765937=:3223
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="HSlEtDltTGT9929J"
+Content-Disposition: inline
+In-Reply-To: <CAKrXSsZBOPVVOqwRqgg-zZMXq=8hqris-92CNRBt7j_qiHkixg@mail.gmail.com>
 
 
+--HSlEtDltTGT9929J
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On Sun, 8 Oct 2023, NAKITYO JOANITA wrote:
+On Sun, Oct 08, 2023 at 08:06:33AM +0100, Gilbert Adikankwu wrote:
+> Hello Julia,
+>=20
+> I deleted the kernel and redownloaded it. It is compiling now.
+>=20
 
-> I tried that, and it worked! 😊 Thank you!
+Please don't top-post; reply inline with appropriate context instead.
+This allows readers to easily follow and understand the conversation flow.
 
-Wonderful!
+Did you download the tarball or cloning via git?
 
-Do you have any more detailed advice for other applicants who may have the
-same issue?
+Thanks.
 
-Please stop top posting, though.  You can even see the problem in the
-current message.  The message starts with "I tried that".  What is "that"?
-I know, because I remember what I suggested a few minutes ago.  But if
-someone else has the same problem and looks in the archives later, they
-will have to hunt around in all of the text below to see what "that" could
-be.
+--=20
+An old man doll... just what I always wanted! - Clara
 
-thanks,
-julia
+--HSlEtDltTGT9929J
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
 
->
->
-> On Sun, Oct 8, 2023 at 1:55 PM Julia Lawall <julia.lawall@inria.fr> wrote:
-> >
-> >
-> >
-> > On Sun, 8 Oct 2023, NAKITYO JOANITA wrote:
-> >
-> > > I attempted to follow these steps, but when I visited Google's 'Less
-> > > Secure Apps' page, I encountered two issues. Initially, I received a
-> > > message stating, 'The setting is not available for accounts with
-> > > 2-step verification enabled.' After disabling 2-step verification, I
-> > > encountered another message, 'This setting is not available for your
-> > > account.' I have included screenshots of both pages for reference.
-> >
-> > The first screen shot mentioned the possibility of an application-specific
-> > password.  Maybe you can use that?
-> >
-> > julia
-> >
-> > >
-> > > On Sun, Oct 8, 2023 at 1:27 PM Julia Lawall <julia.lawall@inria.fr> wrote:
-> > > >
-> > > >
-> > > >
-> > > > On Sun, 8 Oct 2023, NAKITYO JOANITA wrote:
-> > > >
-> > > > > Hello,
-> > > > >
-> > > > > I hope this message finds you well.
-> > > > >
-> > > > > I am currently testing my email setup using Mutt and have encountered
-> > > > > an issue that I could use some assistance with. When attempting to
-> > > > > send a test email, I receive the following error message:
-> > > > > Error sending message, child exited 70 (Internal error.).
-> > > > >
-> > > > > To provide some context, I have followed the previous steps to set up
-> > > > > my email configuration, which involved creating both a .esmtprc and a
-> > > > > .muttrc file. Below is the content of the email I am trying to send:
-> > > > >
-> > > > > From: nakityojoanita51@gmail.com
-> > > > > To: nakityojoanita51@gmail.com
-> > > > > Cc:
-> > > > > Bcc:
-> > > > > Subject: Greetings
-> > > > > Reply-To:
-> > > > > Fcc: ~/sent
-> > > > > Mix: <no chain defined>
-> > > > > Security: None
-> > > > >
-> > > > > If you could offer any insights or guidance on resolving this issue, I
-> > > > > would greatly appreciate it.
-> > > >
-> > > > Maybe the following page will help you:
-> > > >
-> > > > https://stackoverflow.com/questions/38372023/ubuntu-sendmail-exited-with-error-70
-> > > >
-> > > > Look at the answer at the very bottom of the page.
-> > > >
-> > > > julia
-> > > >
-> > > >
-> > > > >
-> > > > > Thank you for your time and assistance.
-> > > > >
-> > > > > Warm regards, Joanita
-> > > > >
-> > > > >
-> > >
->
+iHUEABYKAB0WIQSSYQ6Cy7oyFNCHrUH2uYlJVVFOowUCZSKbAAAKCRD2uYlJVVFO
+o8d5APkBATP5QZ9fYVKKjPEYjKyy4QNuvaLJp9ssR7UNnkfBRwEAtslaE6TNZg6Z
+P91IwB32llz1KOnpr+G60UTq3wSxgQg=
+=MXMm
+-----END PGP SIGNATURE-----
 
---8323329-1680731850-1696765937=:3223--
+--HSlEtDltTGT9929J--
