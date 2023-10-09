@@ -1,385 +1,73 @@
-Received: from mail-pj1-f44.google.com (mail-pj1-f44.google.com [209.85.216.44])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BC7E21843
-	for <outreachy@lists.linux.dev>; Mon,  9 Oct 2023 05:34:21 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 214DA1FA0
+	for <outreachy@lists.linux.dev>; Mon,  9 Oct 2023 06:43:01 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="mzULnhEN"
-Received: by mail-pj1-f44.google.com with SMTP id 98e67ed59e1d1-2773f776f49so2968058a91.1
-        for <outreachy@lists.linux.dev>; Sun, 08 Oct 2023 22:34:21 -0700 (PDT)
+	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="Sf84SZKN"
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1696829661; x=1697434461; darn=lists.linux.dev;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=iB4En1WQ5VkA7AJ0usHNS8NS2XjSU28Bp08x966lIiA=;
-        b=mzULnhENeeseN6K8ZhhMJwYMU2ZDXK9gfa3kK41sSok8hmKJCsjjF0DDo1O6AxTjSG
-         FB4FubsNY7YDWrhDzmTc0wpnHD8RPksQ62M3alH3ThoG5xcq7giqWmGlpCiq7i33vRt+
-         Vtr/uNUWQJn1CbHgxQRDbheHYvWd612zFQqVOYfU3sAL+BJYBGLG8LZP/HyRoHwthGhz
-         y8rJ9vqOVcvs5EjWNhbH3b9JXJ2nfHWdUG/bL7Au/KmxfflBpMLlsZmhKC30AxdUSRNt
-         Lc8UneY9LFZUA0dwKr6HwvBjP1pM32pL6I62ZQYMtTvJ6XB7d8Ifq8XLWRbedXm2ue9b
-         Wulw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696829661; x=1697434461;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=iB4En1WQ5VkA7AJ0usHNS8NS2XjSU28Bp08x966lIiA=;
-        b=ZPNGt+RnyonEGsFOctI7hKqs+yvrXOhubxsQhEOLEAxVMEUlvr3FRlaKJNEnthzQCI
-         00+Kd/ndvLdD+RD+Qgu9vW1Kj4tiu279Rso0Rt4PPwp7fmuiwVmorlLCF5HQ+aUlhQvf
-         Qpa+uZdbkQXKLVLSThUGUN8F6ORvpMzTk1DEt4sq2i1t0A19yCydVjpgZBdx2p01w1Nt
-         tLxDGUs1eboKp8M8l5AhNa29y/q904gU43TlWqoHRajNZVSBjmBFMPQRjZ206/uMtpM5
-         f5h6BoSagK3WWumf8F36cdb4we/eF9jh3l7QihcVz+kdwcPTn/+rnL3wpZmictVzzDcV
-         9lJA==
-X-Gm-Message-State: AOJu0YxnIP5wwdFbJQqa+NGR0o48mMeLSWneAUys374667mwmnS4TbwM
-	/AzUAuxZLUl3B8n7Bk1WhRhQutuQTCPyQVYOOZYoAj2XupPD+A==
-X-Google-Smtp-Source: AGHT+IE65fmXzby09XhlcVpEVryQxeEHum0DMvZGr/OX5/XKEiIkIz+rZ07Qc478lLHuqR4fgkAZAWpYmzb5l1IO/s8=
-X-Received: by 2002:a17:90b:33c6:b0:26d:49a0:2071 with SMTP id
- lk6-20020a17090b33c600b0026d49a02071mr18112036pjb.13.1696829660605; Sun, 08
- Oct 2023 22:34:20 -0700 (PDT)
+  d=inria.fr; s=dc;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=WqvZWxTmGWSkB/NBedVKFhEwSOMQODslE4U2C5qFyRo=;
+  b=Sf84SZKNm0s+1HEddVPqonFmm0Q3k+EXcHFJI5LMeRogi5+DKDHqvjLF
+   i5SEmElHCGCoF762HHKxaHs9+a7DWsJ2TRP1pfp6RxeUmNR/jc4FFDUQp
+   ZALXK05YhysbGHaC5svVP1+OWwaUc2duP7lnUDJ9sMg76nWecLj9Hi2nQ
+   o=;
+Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="6.03,209,1694728800"; 
+   d="scan'208";a="68111048"
+Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Oct 2023 08:42:59 +0200
+Date: Mon, 9 Oct 2023 08:42:59 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+To: Deepak R Varma <drv@mailo.com>
+cc: NAKITYO JOANITA <nakityojoanita51@gmail.com>, outreachy@lists.linux.dev
+Subject: Re: Assistance Needed: Error sending message, child exited 70
+ (Internal error.).
+In-Reply-To: <ZSMfu/rf3zKmsdKl@runicha.com>
+Message-ID: <a108a93-36a0-ddc7-a53b-4d53346cc211@inria.fr>
+References: <alpine.DEB.2.22.394.2310081349520.3223@hadrien> <CAOJCLCswxE=xNorJ3XROW1DRLBGRNyF=YY0BoOdW=9pdj2U6wA@mail.gmail.com> <alpine.DEB.2.22.394.2310081411300.3223@hadrien> <CAOJCLCsxH8jFPW9+o01hWJmNwPVTKMMdn0aB3R3-r-rySmpCtQ@mail.gmail.com>
+ <alpine.DEB.2.22.394.2310081423550.3223@hadrien> <CAOJCLCsBxra_E30bb5kzSdSotJfaj546LJ_r1qLW-RXpOhjLhw@mail.gmail.com> <alpine.DEB.2.22.394.2310081454060.3223@hadrien> <CAOJCLCv39n+W4VPwXTwqsKPo6XmaQ9XcCDVqLb4j3=t-cCQjEQ@mail.gmail.com> <ZSL3Jm9LfQwt6O7M@runicha.com>
+ <alpine.DEB.2.22.394.2310082046560.3223@hadrien> <ZSMfu/rf3zKmsdKl@runicha.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-References: <CAJHH8bHfnuwWa-NQOpypQrgWTWuqYGdTuptVOz=9h0uG2mVkEA@mail.gmail.com>
- <CAJHH8bGGship88xdjep302+wq0jbaC6VUbcwEW7DotUKY4bysw@mail.gmail.com>
- <alpine.DEB.2.22.394.2310051048360.3375@hadrien> <CAJHH8bFETe6cfkG-w9H=UywxTC9xGss40+2r_EhDJT3k8Z5fvg@mail.gmail.com>
- <alpine.DEB.2.22.394.2310051143580.3375@hadrien> <CAJHH8bFuZtfZEeknsiSQzLLUq=jhoSUmyVh7pcViBfa8nTnhhw@mail.gmail.com>
- <alpine.DEB.2.22.394.2310051203150.3375@hadrien> <CAJHH8bFS1=BpXjKkNNk0VQZR-Ztk13ooo5YSpbuKiQS3y9JR7w@mail.gmail.com>
- <alpine.DEB.2.22.394.2310051309370.3375@hadrien> <CAJHH8bGaPhMdYmm6swFdM1NTQQ=eHz0+hBsUB+hb-+EDqpz7ug@mail.gmail.com>
- <alpine.DEB.2.22.394.2310051857240.3375@hadrien> <CAJHH8bHixAcrUwpj_LCjAZ641tbzjHQHm9ig=UPvoRh+h0ubPg@mail.gmail.com>
- <alpine.DEB.2.22.394.2310051908490.3375@hadrien> <CAJHH8bHV4rRPmM5scQ2AUk9FTs4hAy6i8S5fwJ=4v1xf7DDqOg@mail.gmail.com>
- <alpine.DEB.2.22.394.2310080800280.3223@hadrien> <CAJHH8bGB4pVDZpK6LoTCZccRqJg_sry=NLdMsqO+7EzRufXWMQ@mail.gmail.com>
- <alpine.DEB.2.22.394.2310080806480.3223@hadrien>
-In-Reply-To: <alpine.DEB.2.22.394.2310080806480.3223@hadrien>
-From: Isoken Ibizugbe <isokenjune@gmail.com>
-Date: Mon, 9 Oct 2023 06:32:53 +0100
-Message-ID: <CAJHH8bEtYuWYkP0c=AoZscoq-hJ5_ZfedY_Ykn61-udfGP0QeQ@mail.gmail.com>
-Subject: Re: [Error]
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: Linux Outreachy <outreachy@lists.linux.dev>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=US-ASCII
 
-I am sorry for the confusion. After building and installing the kernel
-successfully I didn't edit the grub file, so I didn't see my new
-kernel after boot, so I went to do that and reboot, but my VM couldn't
-load any kernel at all, I don't know if its because I was using
-Vagrant, so I downloaded and installed Ubuntu on the VM to start
-afresh, but I have been able to finish the first instruction on
-compiling and installing, but my compiled kernel doesn't work, can I
-work on it from just the directory?
 
-On Sun, Oct 8, 2023 at 7:07=E2=80=AFAM Julia Lawall <julia.lawall@inria.fr>=
- wrote:
+
+On Mon, 9 Oct 2023, Deepak R Varma wrote:
+
+> On Sun, Oct 08, 2023 at 08:47:09PM +0200, Julia Lawall wrote:
+> >
+> >
+> > > If you are using GPG, the configuration may need to be corrected. Check if this
+> > > thread helps: https://stackoverflow.com/questions/49332245/cant-reply-to-email-via-mutt-with-gnupg-asks-for-keyid
+> >
+> > How does one not use GPG?
+>
+> I do not have any GPG configuration, keyrings for my setup, but I have been able
+> to work without any issues. I am not sure if mutt internally manages that for
+> me, but I did not do anything exclusively.
+> Please enlighten me if I am missing a point.
+
+I guess that there is some configuration option in mutt that is causing it
+to expect GPG?  What should be removed to stop it doing that?
+
+thanks,
+julia
+
+>
+> >
+> > julia
+> >
+> >
 >
 >
 >
-> On Sun, 8 Oct 2023, Isoken Ibizugbe wrote:
->
-> > I skipped that part, so I went back to edit the grub file.
->
-> Not sure what you mean here.
->
-> I mean, that I thought you had a working solution for the first step, so =
-I
-> wonder why you seem to have discarded that and taken another solution?
->
-> julia
->
-> >
-> > On Sun, 8 Oct 2023 at 7:02 AM, Julia Lawall <julia.lawall@inria.fr> wro=
-te:
-> >
-> >
-> >       On Sat, 7 Oct 2023, Isoken Ibizugbe wrote:
-> >
-> >       > I cannot boot into my Virtual machine using vagrant after
-> >       reloading it to
-> >       > switch to the new kernel. It gives a warning that there was an
-> >       error. Do I
-> >       > really need to boot into the new kernel to work? . I cannot
-> >       seem to fix the
-> >       > issue, do I need to reinstall the virtual machine and start
-> >       all over?
-> >
-> >       Didn't you already get to the point of booting a virtual
-> >       machine, and the
-> >       problem was just that you didn't see the effect of the code that
-> >       you
-> >       changed?
-> >
-> >       julia
-> >
-> >
-> >       > On Thu, 5 Oct 2023 at 6:09 PM, Julia Lawall
-> >       <julia.lawall@inria.fr> wrote:
-> >       >
-> >       >
-> >       >       On Thu, 5 Oct 2023, Isoken Ibizugbe wrote:
-> >       >
-> >       >       > I modified the e1000 driver and compiled with -j2
-> >       according to
-> >       >       the tutorial.
-> >       >
-> >       >       Whether a file gets compiled depends on your
-> >       configuration.  Do
-> >       >       you have a
-> >       >       .o file or .ko file for the .c file that you changed?
-> >       >
-> >       >       Please remember to keep the list in CC.  Other people
-> >       may have
-> >       >       better
-> >       >       answers than I do :)
-> >       >
-> >       >       julia
-> >       >
-> >       >       >
-> >       >       > On Thu, 5 Oct 2023 at 5:58 PM, Julia Lawall
-> >       >       <julia.lawall@inria.fr> wrote:
-> >       >       >
-> >       >       >
-> >       >       >       On Thu, 5 Oct 2023, Isoken Ibizugbe wrote:
-> >       >       >
-> >       >       >       > Thanks for the help. I made changes to the
-> >       probe
-> >       >       function by adding
-> >       >       >       > the printk line to it 'printk(KERN_DEBUG "I
-> >       can modify
-> >       >       the Linux
-> >       >       >       > kernel!\n");' , compiled and installed the
-> >       changes ,
-> >       >       rebooted my VM
-> >       >       >       > and ran 'dmesg | less' test the changes, but
-> >       can not
-> >       >       find the
-> >       >       >       > changes. please what should I do?
-> >       >       >
-> >       >       >       What driver did you change?  Did you compile the
-> >       >       affected file?  Do you
-> >       >       >       have the corresponding device?
-> >       >       >
-> >       >       >       julia
-> >       >       >
-> >       >       >       >
-> >       >       >       > On Thu, Oct 5, 2023 at 12:10=E2=80=AFPM Julia L=
-awall
-> >       >       <julia.lawall@inria.fr> wrote:
-> >       >       >       > >
-> >       >       >       > >
-> >       >       >       > >
-> >       >       >       > > On Thu, 5 Oct 2023, Isoken Ibizugbe wrote:
-> >       >       >       > >
-> >       >       >       > > > The .config file was a copy from my
-> >       running kernel
-> >       >       using this commmand cp /boot/config- name -r * .config.
-> >       Then I
-> >       >       generated a new default configuration using =E2=80=98make
-> >       defconfig=E2=80=99. I
-> >       >       had followed this from another resource before you
-> >       >       >       suggested using
-> >       >       >       > > > =E2=80=98make localmodconfig=E2=80=99
-> >       >       >       > >
-> >       >       >       > > OK, make defconfig will indeed result in a
-> >       much
-> >       >       smaller configuration.  I
-> >       >       >       > > don't know if it will boot on your machine.
-> >       But if
-> >       >       it does, then that's
-> >       >       >       > > fine.
-> >       >       >       > >
-> >       >       >       > > julia
-> >       >       >       > >
-> >       >       >       > > >
-> >       >       >       > > > On Thu, 5 Oct 2023 at 11:03 AM, Julia
-> >       Lawall
-> >       >       <julia.lawall@inria.fr> wrote:
-> >       >       >       > > >
-> >       >       >       > > >
-> >       >       >       > > >       On Thu, 5 Oct 2023, Isoken Ibizugbe
-> >       wrote:
-> >       >       >       > > >
-> >       >       >       > > >       > I started by setting .config to
-> >       default
-> >       >       and started over it again
-> >       >       >       > > >
-> >       >       >       > > >       What do you mean by "setting .config
-> >       to
-> >       >       default"?  And what was the
-> >       >       >       > > >       .config file before?
-> >       >       >       > > >
-> >       >       >       > > >       julia
-> >       >       >       > > >
-> >       >       >       > > >       >
-> >       >       >       > > >       > On Thu, 5 Oct 2023 at 10:44 AM,
-> >       Julia
-> >       >       Lawall <julia.lawall@inria.fr> wrote:
-> >       >       >       > > >       >
-> >       >       >       > > >       >
-> >       >       >       > > >       >       On Thu, 5 Oct 2023, Isoken
-> >       Ibizugbe
-> >       >       wrote:
-> >       >       >       > > >       >
-> >       >       >       > > >       >       > Thanks for the help, I set
-> >       the
-> >       >       .config to default and commented out the former
-> >       instructions
-> >       >       like before and ran make. It compiled successful.
-> >       >       >       > > >       >
-> >       >       >       > > >       >       I'm not sure to understand.
-> >       You
-> >       >       mean that after 10 hours it finally
-> >       >       >       > > >       >       completed?  Or that you
-> >       started over
-> >       >       and it became faster?
-> >       >       >       > > >       >
-> >       >       >       > > >       >       julia
-> >       >       >       > > >       >
-> >       >       >       > > >       >
-> >       >       >       > > >       >       >
-> >       >       >       > > >       >       > On Thu, 5 Oct 2023 at 9:56
-> >       AM,
-> >       >       Julia Lawall <julia.lawall@inria.fr> wrote:
-> >       >       >       > > >       >       >
-> >       >       >       > > >       >       >
-> >       >       >       > > >       >       >       On Thu, 5 Oct 2023,
-> >       Isoken
-> >       >       Ibizugbe wrote:
-> >       >       >       > > >       >       >
-> >       >       >       > > >       >       >       > I just checked and
-> >       the
-> >       >       virtual machine has 4 CPUs but is set to 2, should I end
-> >       the
-> >       >       building process and use make localmodconfig?
-> >       >       >       > > >       >       >
-> >       >       >       > > >       >       >       I think you can run
-> >       make
-> >       >       localmodconfig from another directory, to have
-> >       >       >       > > >       >       >       the generated files
-> >       be put
-> >       >       in that other directory.  You could do:
-> >       >       >       > > >       >       >
-> >       >       >       > > >       >       >       make
-> >       O=3D/path/to/mydir
-> >       >       localmodconfig
-> >       >       >       > > >       >       >
-> >       >       >       > > >       >       >     https://stackoverflow.c=
-om/questions/15969694/make-o-files-in-separate-fol
-> >       d
-> >       >       er-in-linux-kernel-compilation
-> >       >       >       > > >       >       >
-> >       >       >       > > >       >       >       I have not tried
-> >       this
-> >       >       though.  Copy your .config file to some other file
-> >       >       >       > > >       >       >       first for easy
-> >       reference.
-> >       >       >       > > >       >       >
-> >       >       >       > > >       >       >       In this way, maybe
-> >       you can
-> >       >       keep your current compilation running and see
-> >       >       >       > > >       >       >       if make
-> >       localmodconfig would
-> >       >       be beneficial.
-> >       >       >       > > >       >       >
-> >       >       >       > > >       >       >       julia
-> >       >       >       > > >       >       >
-> >       >       >       > > >       >       >       >
-> >       >       >       > > >       >       >       > On Thu, 5 Oct 2023
-> >       at 9:24
-> >       >       AM, Julia Lawall <julia.lawall@inria.fr> wrote:
-> >       >       >       > > >       >       >       >
-> >       >       >       > > >       >       >       >
-> >       >       >       > > >       >       >       >       On Thu, 5
-> >       Oct 2023,
-> >       >       Isoken Ibizugbe wrote:
-> >       >       >       > > >       >       >       >
-> >       >       >       > > >       >       >       >       > Thank you
-> >       for the
-> >       >       clarification.
-> >       >       >       > > >       >       >       >
-> >       >       >       > > >       >       >       >       I think your
-> >       >       configuration is too big.  You can try make
-> >       localmodconfig
-> >       >       >       > > >       >       >       >       and see if
-> >       you get a
-> >       >       smaller configuration.
-> >       >       >       > > >       >       >       >
-> >       >       >       > > >       >       >       >       Does your VM
-> >       >       actually have 4 cores?
-> >       >       >       > > >       >       >       >
-> >       >       >       > > >       >       >       >       julia
-> >       >       >       > > >       >       >       >
-> >       >       >       > > >       >       >       >
-> >       >       >       > > >       >       >       >       >
-> >       >       >       > > >       >       >       >       > On Thu,
-> >       Oct 5,
-> >       >       2023 at 8:01=E2=80=AFAM sumitra sharma <sumitraartsy@gmai=
-l.com>
-> >       wrote:
-> >       >       >       > > >       >       >       >       > >
-> >       >       >       > > >       >       >       >       > >
-> >       >       >       > > >       >       >       >       > >
-> >       >       >       > > >       >       >       >       > > On Thu,
-> >       5 Oct,
-> >       >       2023, 12:24 pm Isoken Ibizugbe, <isokenjune@gmail.com>
-> >       wrote:
-> >       >       >       > > >       >       >       >       > > Yes I
-> >       copied the
-> >       >       .config file of the currently running kernel and I'm
-> >       >       >       > > >       >       >       >       > > using
-> >       Ubuntu
-> >       >       20.04LTS on a virtual box, I renamed the
-> >       >       >       > > >       >       >       >       > >
-> >       >       CONFIG_LOCALVERSION in the .config and commented out
-> >       these lines
-> >       >       >       > > >       >       >       >       > >
-> >       >       CONFIG_SYSTEM_TRUSTED_KEY
-> >       >       >       > > >       >       >       >       > > and
-> >       >       CONFIG_MODULE_SIG_KEY, then ran make -j4, but the kernel
-> >       has
-> >       >       been
-> >       >       >       > > >       >       >       >       > >
-> >       compiling for 10
-> >       >       hours now. please is this normal?
-> >       >       >       > > >       >       >       >       > >
-> >       >       >       > > >       >       >       >       > > Hello
-> >       Isoken,
-> >       >       >       > > >       >       >       >       > >
-> >       >       >       > > >       >       >       >       > > Yes, it
-> >       is
-> >       >       normal. The compilation time depends upon how much RAM
-> >       you have
-> >       >       allocated to your virtual machine. I still use virtual
-> >       machines
-> >       >       and sometimes the kernel building takes two days  :)
-> >       >       >       > > >       >       >       >       > >
-> >       >       >       > > >       >       >       >       > > Regards
-> >       >       >       > > >       >       >       >       > > Sumitra
-> >       >       >       > > >       >       >       >       >
-> >       >       >       > > >       >       >       >       >
-> >       >       >       > > >       >       >       >
-> >       >       >       > > >       >       >       >
-> >       >       >       > > >       >       >       >
-> >       >       >       > > >       >       >
-> >       >       >       > > >       >       >
-> >       >       >       > > >       >       >
-> >       >       >       > > >       >
-> >       >       >       > > >       >
-> >       >       >       > > >       >
-> >       >       >       > > >
-> >       >       >       > > >
-> >       >       >       > > >
-> >       >       >       >
-> >       >       >
-> >       >       >
-> >       >       >
-> >       >
-> >       >
-> >       >
-> >
-> >
-> >
