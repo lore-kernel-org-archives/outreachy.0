@@ -1,381 +1,59 @@
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ej1-f41.google.com (mail-ej1-f41.google.com [209.85.218.41])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A52FAA929
-	for <outreachy@lists.linux.dev>; Mon,  9 Oct 2023 06:52:49 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3CB6638DDC
+	for <outreachy@lists.linux.dev>; Mon,  9 Oct 2023 17:45:54 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="X2YJ0R4x"
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="kDCo3K5u"
+Received: by mail-ej1-f41.google.com with SMTP id a640c23a62f3a-9b9a494cc59so813881166b.3
+        for <outreachy@lists.linux.dev>; Mon, 09 Oct 2023 10:45:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=m5azmQsvrBQaWXDOFANbLbZOFk9J7S7UBW1NPaTiH+Y=;
-  b=X2YJ0R4xeNjeBZ23UNTiwKO5ZdXWfOzVSTLuTHZOpWlM0rIEudwUvKqF
-   iUN5XWWUUtOKYk+E0WcLvsZBOgE0rfz0Ek32qKHldJ/A5f6htZMKhDmPk
-   QWH8t0xWkegcxnQf6dhRAcrIqBMq3dr+bKEIRZz8JMoylcuRATBeRl29c
-   Q=;
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="6.03,209,1694728800"; 
-   d="scan'208";a="130125982"
-Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Oct 2023 08:52:41 +0200
-Date: Mon, 9 Oct 2023 08:52:40 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-To: Isoken Ibizugbe <isokenjune@gmail.com>
-cc: Linux Outreachy <outreachy@lists.linux.dev>
-Subject: Re: [Error]
-In-Reply-To: <CAJHH8bEtYuWYkP0c=AoZscoq-hJ5_ZfedY_Ykn61-udfGP0QeQ@mail.gmail.com>
-Message-ID: <16afa9e8-9b77-bc68-18bc-f3acf29389b9@inria.fr>
-References: <CAJHH8bHfnuwWa-NQOpypQrgWTWuqYGdTuptVOz=9h0uG2mVkEA@mail.gmail.com> <CAJHH8bFETe6cfkG-w9H=UywxTC9xGss40+2r_EhDJT3k8Z5fvg@mail.gmail.com> <alpine.DEB.2.22.394.2310051143580.3375@hadrien> <CAJHH8bFuZtfZEeknsiSQzLLUq=jhoSUmyVh7pcViBfa8nTnhhw@mail.gmail.com>
- <alpine.DEB.2.22.394.2310051203150.3375@hadrien> <CAJHH8bFS1=BpXjKkNNk0VQZR-Ztk13ooo5YSpbuKiQS3y9JR7w@mail.gmail.com> <alpine.DEB.2.22.394.2310051309370.3375@hadrien> <CAJHH8bGaPhMdYmm6swFdM1NTQQ=eHz0+hBsUB+hb-+EDqpz7ug@mail.gmail.com>
- <alpine.DEB.2.22.394.2310051857240.3375@hadrien> <CAJHH8bHixAcrUwpj_LCjAZ641tbzjHQHm9ig=UPvoRh+h0ubPg@mail.gmail.com> <alpine.DEB.2.22.394.2310051908490.3375@hadrien> <CAJHH8bHV4rRPmM5scQ2AUk9FTs4hAy6i8S5fwJ=4v1xf7DDqOg@mail.gmail.com>
- <alpine.DEB.2.22.394.2310080800280.3223@hadrien> <CAJHH8bGB4pVDZpK6LoTCZccRqJg_sry=NLdMsqO+7EzRufXWMQ@mail.gmail.com> <alpine.DEB.2.22.394.2310080806480.3223@hadrien> <CAJHH8bEtYuWYkP0c=AoZscoq-hJ5_ZfedY_Ykn61-udfGP0QeQ@mail.gmail.com>
+        d=gmail.com; s=20230601; t=1696873553; x=1697478353; darn=lists.linux.dev;
+        h=content-disposition:content-description:mime-version:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=;
+        b=kDCo3K5uVd3nuRnuE/Jxyv2qy0t/tKyusgNWIQWXXV4scYx74dLg9syKJELxaycEhL
+         4YxNnCvaav+oVOoOI0vLoLyluyui1+uyR+nGWJJS1F9/hOsL52pwJcb2sgLMIo+/NU8G
+         V6laUSl69gLbIAD6GKS86IP5W6SCtKtsmejM1W47MHL0a2SeTSGslQ9o4LCN4Z0ermtS
+         b1JIj9a5OCFQsyqWsm9EA1LNmUW5EkTbvqHWVx7eo9mvODpq3v3hypHXnsYP1i2GotJ7
+         evyYtb8rtc15WchretcRB2XqRGXuIxrv4NyAt59NqEKfcD1qjD4ThS1jASH9TfiE5FMf
+         EbQQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1696873553; x=1697478353;
+        h=content-disposition:content-description:mime-version:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=;
+        b=c8fIFFvHYJhewLH6sVGJvn3X+1oe+uDjO+xOttD5Uhy3mZZshhpwHZSJENSypXhxXd
+         0aWwA8yFqRSMl6RUgL20H1e+aCOc6xreDJ24nVigeC21IXIiBv7LNGqncMLRHOtyqLzK
+         9NKViiPqWWiXSFeTfGgrszbdDWDBtBcYs2j9ZGIIbT5rjvEN11Sxikaf1CZlgTMU4Hu8
+         ZO0pNUUW9j/uPX51H8Ovbq1q1u4A3POnioCtIuV/KAPFqTItTSbsUp5GNQIK5sivSam+
+         jn9wUUTIEia4wIF8jAhf7xtfv9lDuoJArgxyTZ569CbtgrgIKcG3wCowwc76jXaH9nhw
+         oW8g==
+X-Gm-Message-State: AOJu0YzQptrcodohooq/Aj2eNwq1fOe38gn8d6W1BFg3WjTU+adXPp3s
+	w1Vx0j4xSxtXbbDCyEmfrVA=
+X-Google-Smtp-Source: AGHT+IElvBxqi/GlhY7ROyTF5l2CXmG3OWaO6IJ/msGDyiPd3w66vw7vAPG2HhgDY24X5Jh1ki7IxQ==
+X-Received: by 2002:a17:907:b1b:b0:9b9:ff16:344c with SMTP id h27-20020a1709070b1b00b009b9ff16344cmr9342412ejl.50.1696873553373;
+        Mon, 09 Oct 2023 10:45:53 -0700 (PDT)
+Received: from anita-HP-EliteBook-840-G2 ([41.75.181.219])
+        by smtp.gmail.com with ESMTPSA id e10-20020a1709062c0a00b009b64987e1absm6930904ejh.139.2023.10.09.10.45.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 09 Oct 2023 10:45:53 -0700 (PDT)
+Date: Mon, 9 Oct 2023 20:45:47 +0300
+From: Joanita Nakityo <nakityojoanita51@gmail.com>
+To: outreachy@lists.linux.dev
+Cc: julia.lawall@inria.fr
+Subject: Solution to Error sending message, child exited 70 (Internal error.).
+Message-ID: <ZSQ8S+0htr8RuTEh@anita-HP-EliteBook-840-G2>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-1893432716-1696834361=:3595"
+Content-Type: text/plain; charset=us-ascii
+Content-Description: I have received this error multiple times but the problem has been with the values i have entered in the .esmtprc and the .muttrc file , If you are facing this error i would advise that you have the correct values in those files. At first on receiving the error message, I sought guidance from mentors who advised to follow the steps outlined on this Stack Overflow page:https://stackoverflow.com/questions/38372023/ubuntu-sendmail-exited-with-error-70 Upon visiting the page mentioned in the solution, I received a message stating that the settings were not available for accounts with two-step verification enabled. However, it also mentioned the possibility of using an application-specific password. I created an application named 'mutt' and obtained a password for it. Then, I updated the password in my .esmtprc file, replacing the initial one I had recorded.
+Content-Disposition: inline
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
-
---8323329-1893432716-1696834361=:3595
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
-
-
-
-On Mon, 9 Oct 2023, Isoken Ibizugbe wrote:
-
-> I am sorry for the confusion. After building and installing the kernel
-> successfully I didn't edit the grub file, so I didn't see my new
-> kernel after boot, so I went to do that and reboot, but my VM couldn't
-> load any kernel at all, I don't know if its because I was using
-> Vagrant, so I downloaded and installed Ubuntu on the VM to start
-> afresh, but I have been able to finish the first instruction on
-> compiling and installing, but my compiled kernel doesn't work, can I
-> work on it from just the directory?
-
-I think you should check with the mentor(s) for the project(s) that you
-are interested in.  In some sense it is time to move on, since the
-contribution period is not very long.  But if you need to be able to
-obtain a running kernel for your project, then you need to be able to do
-that.
-
-Maybe you can use kexec: https://wiki.archlinux.org/title/kexec
-The following arguments: /boot/vmlinuz-linux --initrd=/boot/initramfs-linux.img
-both correspond to the kernel you want to boot.
-
-julia
-
->
-> On Sun, Oct 8, 2023 at 7:07 AM Julia Lawall <julia.lawall@inria.fr> wrote:
-> >
-> >
-> >
-> > On Sun, 8 Oct 2023, Isoken Ibizugbe wrote:
-> >
-> > > I skipped that part, so I went back to edit the grub file.
-> >
-> > Not sure what you mean here.
-> >
-> > I mean, that I thought you had a working solution for the first step, so I
-> > wonder why you seem to have discarded that and taken another solution?
-> >
-> > julia
-> >
-> > >
-> > > On Sun, 8 Oct 2023 at 7:02 AM, Julia Lawall <julia.lawall@inria.fr> wrote:
-> > >
-> > >
-> > >       On Sat, 7 Oct 2023, Isoken Ibizugbe wrote:
-> > >
-> > >       > I cannot boot into my Virtual machine using vagrant after
-> > >       reloading it to
-> > >       > switch to the new kernel. It gives a warning that there was an
-> > >       error. Do I
-> > >       > really need to boot into the new kernel to work? . I cannot
-> > >       seem to fix the
-> > >       > issue, do I need to reinstall the virtual machine and start
-> > >       all over?
-> > >
-> > >       Didn't you already get to the point of booting a virtual
-> > >       machine, and the
-> > >       problem was just that you didn't see the effect of the code that
-> > >       you
-> > >       changed?
-> > >
-> > >       julia
-> > >
-> > >
-> > >       > On Thu, 5 Oct 2023 at 6:09 PM, Julia Lawall
-> > >       <julia.lawall@inria.fr> wrote:
-> > >       >
-> > >       >
-> > >       >       On Thu, 5 Oct 2023, Isoken Ibizugbe wrote:
-> > >       >
-> > >       >       > I modified the e1000 driver and compiled with -j2
-> > >       according to
-> > >       >       the tutorial.
-> > >       >
-> > >       >       Whether a file gets compiled depends on your
-> > >       configuration.  Do
-> > >       >       you have a
-> > >       >       .o file or .ko file for the .c file that you changed?
-> > >       >
-> > >       >       Please remember to keep the list in CC.  Other people
-> > >       may have
-> > >       >       better
-> > >       >       answers than I do :)
-> > >       >
-> > >       >       julia
-> > >       >
-> > >       >       >
-> > >       >       > On Thu, 5 Oct 2023 at 5:58 PM, Julia Lawall
-> > >       >       <julia.lawall@inria.fr> wrote:
-> > >       >       >
-> > >       >       >
-> > >       >       >       On Thu, 5 Oct 2023, Isoken Ibizugbe wrote:
-> > >       >       >
-> > >       >       >       > Thanks for the help. I made changes to the
-> > >       probe
-> > >       >       function by adding
-> > >       >       >       > the printk line to it 'printk(KERN_DEBUG "I
-> > >       can modify
-> > >       >       the Linux
-> > >       >       >       > kernel!\n");' , compiled and installed the
-> > >       changes ,
-> > >       >       rebooted my VM
-> > >       >       >       > and ran 'dmesg | less' test the changes, but
-> > >       can not
-> > >       >       find the
-> > >       >       >       > changes. please what should I do?
-> > >       >       >
-> > >       >       >       What driver did you change?  Did you compile the
-> > >       >       affected file?  Do you
-> > >       >       >       have the corresponding device?
-> > >       >       >
-> > >       >       >       julia
-> > >       >       >
-> > >       >       >       >
-> > >       >       >       > On Thu, Oct 5, 2023 at 12:10 PM Julia Lawall
-> > >       >       <julia.lawall@inria.fr> wrote:
-> > >       >       >       > >
-> > >       >       >       > >
-> > >       >       >       > >
-> > >       >       >       > > On Thu, 5 Oct 2023, Isoken Ibizugbe wrote:
-> > >       >       >       > >
-> > >       >       >       > > > The .config file was a copy from my
-> > >       running kernel
-> > >       >       using this commmand cp /boot/config- name -r * .config.
-> > >       Then I
-> > >       >       generated a new default configuration using ‘make
-> > >       defconfig’. I
-> > >       >       had followed this from another resource before you
-> > >       >       >       suggested using
-> > >       >       >       > > > ‘make localmodconfig’
-> > >       >       >       > >
-> > >       >       >       > > OK, make defconfig will indeed result in a
-> > >       much
-> > >       >       smaller configuration.  I
-> > >       >       >       > > don't know if it will boot on your machine.
-> > >       But if
-> > >       >       it does, then that's
-> > >       >       >       > > fine.
-> > >       >       >       > >
-> > >       >       >       > > julia
-> > >       >       >       > >
-> > >       >       >       > > >
-> > >       >       >       > > > On Thu, 5 Oct 2023 at 11:03 AM, Julia
-> > >       Lawall
-> > >       >       <julia.lawall@inria.fr> wrote:
-> > >       >       >       > > >
-> > >       >       >       > > >
-> > >       >       >       > > >       On Thu, 5 Oct 2023, Isoken Ibizugbe
-> > >       wrote:
-> > >       >       >       > > >
-> > >       >       >       > > >       > I started by setting .config to
-> > >       default
-> > >       >       and started over it again
-> > >       >       >       > > >
-> > >       >       >       > > >       What do you mean by "setting .config
-> > >       to
-> > >       >       default"?  And what was the
-> > >       >       >       > > >       .config file before?
-> > >       >       >       > > >
-> > >       >       >       > > >       julia
-> > >       >       >       > > >
-> > >       >       >       > > >       >
-> > >       >       >       > > >       > On Thu, 5 Oct 2023 at 10:44 AM,
-> > >       Julia
-> > >       >       Lawall <julia.lawall@inria.fr> wrote:
-> > >       >       >       > > >       >
-> > >       >       >       > > >       >
-> > >       >       >       > > >       >       On Thu, 5 Oct 2023, Isoken
-> > >       Ibizugbe
-> > >       >       wrote:
-> > >       >       >       > > >       >
-> > >       >       >       > > >       >       > Thanks for the help, I set
-> > >       the
-> > >       >       .config to default and commented out the former
-> > >       instructions
-> > >       >       like before and ran make. It compiled successful.
-> > >       >       >       > > >       >
-> > >       >       >       > > >       >       I'm not sure to understand.
-> > >       You
-> > >       >       mean that after 10 hours it finally
-> > >       >       >       > > >       >       completed?  Or that you
-> > >       started over
-> > >       >       and it became faster?
-> > >       >       >       > > >       >
-> > >       >       >       > > >       >       julia
-> > >       >       >       > > >       >
-> > >       >       >       > > >       >
-> > >       >       >       > > >       >       >
-> > >       >       >       > > >       >       > On Thu, 5 Oct 2023 at 9:56
-> > >       AM,
-> > >       >       Julia Lawall <julia.lawall@inria.fr> wrote:
-> > >       >       >       > > >       >       >
-> > >       >       >       > > >       >       >
-> > >       >       >       > > >       >       >       On Thu, 5 Oct 2023,
-> > >       Isoken
-> > >       >       Ibizugbe wrote:
-> > >       >       >       > > >       >       >
-> > >       >       >       > > >       >       >       > I just checked and
-> > >       the
-> > >       >       virtual machine has 4 CPUs but is set to 2, should I end
-> > >       the
-> > >       >       building process and use make localmodconfig?
-> > >       >       >       > > >       >       >
-> > >       >       >       > > >       >       >       I think you can run
-> > >       make
-> > >       >       localmodconfig from another directory, to have
-> > >       >       >       > > >       >       >       the generated files
-> > >       be put
-> > >       >       in that other directory.  You could do:
-> > >       >       >       > > >       >       >
-> > >       >       >       > > >       >       >       make
-> > >       O=/path/to/mydir
-> > >       >       localmodconfig
-> > >       >       >       > > >       >       >
-> > >       >       >       > > >       >       >     https://stackoverflow.com/questions/15969694/make-o-files-in-separate-fol
-> > >       d
-> > >       >       er-in-linux-kernel-compilation
-> > >       >       >       > > >       >       >
-> > >       >       >       > > >       >       >       I have not tried
-> > >       this
-> > >       >       though.  Copy your .config file to some other file
-> > >       >       >       > > >       >       >       first for easy
-> > >       reference.
-> > >       >       >       > > >       >       >
-> > >       >       >       > > >       >       >       In this way, maybe
-> > >       you can
-> > >       >       keep your current compilation running and see
-> > >       >       >       > > >       >       >       if make
-> > >       localmodconfig would
-> > >       >       be beneficial.
-> > >       >       >       > > >       >       >
-> > >       >       >       > > >       >       >       julia
-> > >       >       >       > > >       >       >
-> > >       >       >       > > >       >       >       >
-> > >       >       >       > > >       >       >       > On Thu, 5 Oct 2023
-> > >       at 9:24
-> > >       >       AM, Julia Lawall <julia.lawall@inria.fr> wrote:
-> > >       >       >       > > >       >       >       >
-> > >       >       >       > > >       >       >       >
-> > >       >       >       > > >       >       >       >       On Thu, 5
-> > >       Oct 2023,
-> > >       >       Isoken Ibizugbe wrote:
-> > >       >       >       > > >       >       >       >
-> > >       >       >       > > >       >       >       >       > Thank you
-> > >       for the
-> > >       >       clarification.
-> > >       >       >       > > >       >       >       >
-> > >       >       >       > > >       >       >       >       I think your
-> > >       >       configuration is too big.  You can try make
-> > >       localmodconfig
-> > >       >       >       > > >       >       >       >       and see if
-> > >       you get a
-> > >       >       smaller configuration.
-> > >       >       >       > > >       >       >       >
-> > >       >       >       > > >       >       >       >       Does your VM
-> > >       >       actually have 4 cores?
-> > >       >       >       > > >       >       >       >
-> > >       >       >       > > >       >       >       >       julia
-> > >       >       >       > > >       >       >       >
-> > >       >       >       > > >       >       >       >
-> > >       >       >       > > >       >       >       >       >
-> > >       >       >       > > >       >       >       >       > On Thu,
-> > >       Oct 5,
-> > >       >       2023 at 8:01 AM sumitra sharma <sumitraartsy@gmail.com>
-> > >       wrote:
-> > >       >       >       > > >       >       >       >       > >
-> > >       >       >       > > >       >       >       >       > >
-> > >       >       >       > > >       >       >       >       > >
-> > >       >       >       > > >       >       >       >       > > On Thu,
-> > >       5 Oct,
-> > >       >       2023, 12:24 pm Isoken Ibizugbe, <isokenjune@gmail.com>
-> > >       wrote:
-> > >       >       >       > > >       >       >       >       > > Yes I
-> > >       copied the
-> > >       >       .config file of the currently running kernel and I'm
-> > >       >       >       > > >       >       >       >       > > using
-> > >       Ubuntu
-> > >       >       20.04LTS on a virtual box, I renamed the
-> > >       >       >       > > >       >       >       >       > >
-> > >       >       CONFIG_LOCALVERSION in the .config and commented out
-> > >       these lines
-> > >       >       >       > > >       >       >       >       > >
-> > >       >       CONFIG_SYSTEM_TRUSTED_KEY
-> > >       >       >       > > >       >       >       >       > > and
-> > >       >       CONFIG_MODULE_SIG_KEY, then ran make -j4, but the kernel
-> > >       has
-> > >       >       been
-> > >       >       >       > > >       >       >       >       > >
-> > >       compiling for 10
-> > >       >       hours now. please is this normal?
-> > >       >       >       > > >       >       >       >       > >
-> > >       >       >       > > >       >       >       >       > > Hello
-> > >       Isoken,
-> > >       >       >       > > >       >       >       >       > >
-> > >       >       >       > > >       >       >       >       > > Yes, it
-> > >       is
-> > >       >       normal. The compilation time depends upon how much RAM
-> > >       you have
-> > >       >       allocated to your virtual machine. I still use virtual
-> > >       machines
-> > >       >       and sometimes the kernel building takes two days  :)
-> > >       >       >       > > >       >       >       >       > >
-> > >       >       >       > > >       >       >       >       > > Regards
-> > >       >       >       > > >       >       >       >       > > Sumitra
-> > >       >       >       > > >       >       >       >       >
-> > >       >       >       > > >       >       >       >       >
-> > >       >       >       > > >       >       >       >
-> > >       >       >       > > >       >       >       >
-> > >       >       >       > > >       >       >       >
-> > >       >       >       > > >       >       >
-> > >       >       >       > > >       >       >
-> > >       >       >       > > >       >       >
-> > >       >       >       > > >       >
-> > >       >       >       > > >       >
-> > >       >       >       > > >       >
-> > >       >       >       > > >
-> > >       >       >       > > >
-> > >       >       >       > > >
-> > >       >       >       >
-> > >       >       >
-> > >       >       >
-> > >       >       >
-> > >       >
-> > >       >
-> > >       >
-> > >
-> > >
-> > >
->
->
---8323329-1893432716-1696834361=:3595--
