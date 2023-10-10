@@ -1,54 +1,43 @@
-Received: from mail-lj1-f170.google.com (mail-lj1-f170.google.com [209.85.208.170])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.115])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DE75B9467
-	for <outreachy@lists.linux.dev>; Tue, 10 Oct 2023 07:06:54 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1FE5EC139
+	for <outreachy@lists.linux.dev>; Tue, 10 Oct 2023 07:15:18 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.intel.com
+Authentication-Results: smtp.subspace.kernel.org; spf=none smtp.mailfrom=linux.intel.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="bq9kmOZH"
-Received: by mail-lj1-f170.google.com with SMTP id 38308e7fff4ca-2bfed7c4e6dso60151791fa.1
-        for <outreachy@lists.linux.dev>; Tue, 10 Oct 2023 00:06:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1696921613; x=1697526413; darn=lists.linux.dev;
-        h=content-disposition:mime-version:reply-to:message-id:subject:cc:to
-         :from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=dgWkyjpKy93lPVoXX6QJfh1THMHkhYjJiBaySS2MDY8=;
-        b=bq9kmOZH9jFE93zJGf59n4Bawf7YHC22PR1GxC+lx0s34LR+OYV0qX9MWJD2IjOGKa
-         lrpkz0IJlyqpXvbcWnwyZ7hpgkEPRKd6eOLdTi48pJBPzpdM943RfHhRuOyVIjy7yqaU
-         jT30vdc3C0DIHEHqVhgIagfQZZGQuKuGtKVlsynmK0NPQPObjpHDc2awpbeaduMXwuwV
-         8tZyKSSytoclcQBBAk3nZ83dXRa6vjp1xTDz7BLJgGkL61lRD/qefru7zOmj/lRnNiai
-         EwjgIX1th4zUq7/HDMwDChtk0830uwcU4n5TcSz9dtsDFK4IIpl3rjycMueIV/1cYvT0
-         cL2w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1696921613; x=1697526413;
-        h=content-disposition:mime-version:reply-to:message-id:subject:cc:to
-         :from:date:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=dgWkyjpKy93lPVoXX6QJfh1THMHkhYjJiBaySS2MDY8=;
-        b=NpLjVuWYRkvCFCgMN7qDVvP1dr7xOzZfsUCg3S8b9d0DozoKtTJUIAQS+/bYSYg/8c
-         IwUtT88uwErWwgIv/xemQF5t0ly05xIGjRrYs4jrgLHayeGs90KshyN/qCb6LpOGBBkD
-         IohlvOnaZvtleYRlOjVWtlCSD5W63MCNJV5Rey/Yy86Kh5obeNAeM0jfxY+RlWuje/kw
-         JfIXFtVvurSNZvSqGjzE7uDBNbjIvLmM9VnyJ0ZNeG6QN7gMenojS8hN6CsFyE3qCGco
-         JyXjREZSJ6N4giFKkmc0/Iaomz5886BHhtyro4apaEvh7L/aI9+WzUUvuXqHXW8CND7n
-         o5fA==
-X-Gm-Message-State: AOJu0Yw3/UfwD36w66jF+dnBQZtaINaj5UHff9LXd3SfIn9rGpRt/AXs
-	mqsNrTXzPY0zXJH+kH7b72M=
-X-Google-Smtp-Source: AGHT+IE5uFigM1GIW3lNPgHAzigvEnl/Ejlv6fm8FvFngF1IV7w7WN0mPTszxu3dDlvOBfk8jetYVw==
-X-Received: by 2002:a2e:90c7:0:b0:2bc:cff6:f506 with SMTP id o7-20020a2e90c7000000b002bccff6f506mr14574028ljg.0.1696921612690;
-        Tue, 10 Oct 2023 00:06:52 -0700 (PDT)
-Received: from gilbert-PC ([105.112.75.65])
-        by smtp.gmail.com with ESMTPSA id k10-20020a7bc40a000000b003fc06169ab3sm15406199wmi.20.2023.10.10.00.06.51
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Oct 2023 00:06:52 -0700 (PDT)
-Date: Tue, 10 Oct 2023 08:06:49 +0100
-From: Gilbert Adikankwu <gilbertadikankwu@gmail.com>
-To: drv@mailo.com
-Cc: andi.shyti@kernel.org, andi.shyti@intel.com, outreachy@lists.linux.dev,
-	Julia.Lawall@inria.fr
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="Vy2RlFNo"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1696922119; x=1728458119;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=NPXS9lZbBCFrTJlUDTH5/svcq0KKsbvMwmR/6TAYXQg=;
+  b=Vy2RlFNoqJk8ydh1iZ7syYDDee64npodS0QBER3nIxB0tdw0Q4NS7u1z
+   aimUOQlPy1tYLrHq1M4skXWGkOJidxvyAxat4vHXs87psGbgw9P02Klrz
+   OgGqaR5Kjs5Dwd7QBl0raci5TlrvnHG5meRRixVNiQliHAH/PhwdjiwVt
+   3f3k6hTjYfxiOlrmmmPh+sdU4a6elZYola+fAhs+tbOB0GP/7W8CTPtBg
+   kURSg/76hNhA6EClpxi3aVCOJWDtTCB7UksLJdCiBZILt6pYESqiJhCBB
+   aEv3URmmGk5QL8fvIKb+r+OMIz5H0gbLhp5aCBMse1hXduNRhPr8jMn+0
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10858"; a="384185699"
+X-IronPort-AV: E=Sophos;i="6.03,212,1694761200"; 
+   d="scan'208";a="384185699"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Oct 2023 00:15:17 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10858"; a="753297736"
+X-IronPort-AV: E=Sophos;i="6.03,212,1694761200"; 
+   d="scan'208";a="753297736"
+Received: from ppalanyk-mobl.gar.corp.intel.com (HELO intel.com) ([10.213.148.82])
+  by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Oct 2023 00:15:14 -0700
+Date: Tue, 10 Oct 2023 09:15:07 +0200
+From: Andi Shyti <andi.shyti@linux.intel.com>
+To: Gilbert Adikankwu <gilbertadikankwu@gmail.com>
+Cc: andi.shyti@kernel.org, outreachy@lists.linux.dev, Julia.Lawall@inria.fr
 Subject: Re: [Outreachy Applicant] NEEDS SOME CLARIFICATIONS
-Message-ID: <ZST4CYE6GOaHyEni@gilbert-PC>
-Reply-To: ZSTtMFxdpYzwMFVJ@runicha.com
+Message-ID: <ZST5+5a8Uq1pULop@ashyti-mobl2.lan>
+References: <ZSTRETv7sO+1A6/G@gilbert-PC>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -57,15 +46,62 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <ZSTRETv7sO+1A6/G@gilbert-PC>
 
-Hello Deepak,
+Hi Gilbert,
 
-Thank you for your response. Yes I realised that my message was worded
-as though I couldn't find any .c files in the
-drivers/net/ethernet/intel/e1000e/ directory. But your reply made me
-realise that what I really needed was a way to search all files in the
-subdirectory for the probe function. And your grep syntax provided the perfect
-solution.
+On Tue, Oct 10, 2023 at 05:20:33AM +0100, Gilbert Adikankwu wrote:
+> Hello Andi and Julia,
+> 
+> Thank you so much for your responses.
+> 
+> I need some help with moving forward in the tutorial.
+> 
+> I am at the "Make a driver change" step of the first patch tutorial. The tutorial made the look like finding the _main.c file of the driver and locating its probe function was quite easy.
+> 
+> I ran lsmod as instructed and picked e1000e. I used git grep e1000e -- '*Makefile' to search for its subdirectory in the kernel tree. This is where it got tricky for me, I thought I would find a .c file like e1000e.c or e1000e_main.c as was shown in the VM example(I'm using native Linux) but I can see in the subdirectory are .o files that I can't modify. And I don't what to do or how to find the probe function I'm supposed to modify
 
-Thanks
-Gilbert
+Long story short: the .o files are object binary files that are
+not supposed to be edited. The object files are then linked
+together in a single file that will be your final driver's
+object.
+
+Check the file drivers/net/ethernet/intel/e1000e/Makefile:
+
+obj-$(CONFIG_E1000E) += e1000e.o
+
+e1000e-objs := 82571.o ich8lan.o 80003es2lan.o \
+               mac.o manage.o nvm.o phy.o \
+               param.o ethtool.o netdev.o ptp.o
+
+This means that the compilation process will produce the objects
+in the second group of .o files. At the end an e1000e.o file
+will contain all of them.
+
+It doesn't mean that you will necessarily have a e1000e.c file.
+
+As Deepak recommended, you could find the probe file with the
+grep command. You found it in netdev.c. As you can see from the
+Makefile, you will also have a netdev.o that will end up inside
+the e1000e.o.
+
+This means that not always the driver is called the same way as
+its directory or the final .o file.
+
+This is true also you end up working for the i915 sysfs project.
+Indeed the big set of files in the drivers/gpu/drm/i915/ with all
+the subdirectories, will, at the end, create one single object,
+called i915.o, even though there is no i915.c file in it.
+
+I hope this cleared a bit things as in this list I have often
+seen people looking for source code in .o files.
+
+Andi
+
+> I tried the above process for a couple more names in the list returned by lsmod and it is the same issue.
+> 
+> Please advise
+> 
+> Thanks
+> Gilbert
+> 
