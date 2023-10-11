@@ -1,33 +1,33 @@
 Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 390C21EA71
-	for <outreachy@lists.linux.dev>; Wed, 11 Oct 2023 12:06:50 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 046291EA66
+	for <outreachy@lists.linux.dev>; Wed, 11 Oct 2023 12:08:31 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="pOvbuW/U"
+	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="OzVBoGZv"
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
   d=inria.fr; s=dc;
   h=date:from:to:cc:subject:in-reply-to:message-id:
    references:mime-version;
-  bh=DXaKW6w2Kf09l2IawuzzwZOrAqYp2cvlxavTHk6XviQ=;
-  b=pOvbuW/UvdARIXWF+qPImVcVBOLdVqmeLGAilflSPE8m5VS1bgsMu6Ro
-   CvuRtCkG9kG4Qy+QMr60GT84K9yhcL6WA1YMvYEitXGcrQi0f3f7LQjLg
-   /udVBl0eFUgbvy56T6yDAzSUvZ3JrnVvDbBp9E+SkebAsDmcsU0I2Ogj+
-   U=;
+  bh=uEePtSAVMQ5KHmaVTaSt+bpcugr90W4Z0youf6Aghz8=;
+  b=OzVBoGZv2uYm5nlMS4Ukn+Diy59VIjfBwYqOXzcMrRQfOoWhYJGOxkjS
+   CT8oM7EvxlPvZKoBzQskbLjoPZHxc0Zwi4AEb7B2IiNnFrt/pQl1v0AYN
+   XZHx6k/qM2cWK1/IXgLtsqLiy20l4WELhnHV5Iuy61w16sBqxEqt3Zg1E
+   M=;
 Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
 X-IronPort-AV: E=Sophos;i="6.03,214,1694728800"; 
-   d="scan'208";a="68401930"
+   d="scan'208";a="68402140"
 Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Oct 2023 14:06:49 +0200
-Date: Wed, 11 Oct 2023 14:06:48 +0200 (CEST)
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Oct 2023 14:08:30 +0200
+Date: Wed, 11 Oct 2023 14:08:29 +0200 (CEST)
 From: Julia Lawall <julia.lawall@inria.fr>
 To: Isoken Ibizugbe <isokenjune@gmail.com>
 cc: Linux Outreachy <outreachy@lists.linux.dev>
 Subject: Re: [Error]
 In-Reply-To: <CAJHH8bFNKnQFDz=sc1mcM6EbSdYnMtAoO14_FWEnzhK1pxM_2g@mail.gmail.com>
-Message-ID: <c73b257-be3d-230-fcb2-d15f22a91ca4@inria.fr>
+Message-ID: <d414b080-3967-f3a-71ba-4674114b113@inria.fr>
 References: <CAJHH8bHfnuwWa-NQOpypQrgWTWuqYGdTuptVOz=9h0uG2mVkEA@mail.gmail.com> <alpine.DEB.2.22.394.2310051203150.3375@hadrien> <CAJHH8bFS1=BpXjKkNNk0VQZR-Ztk13ooo5YSpbuKiQS3y9JR7w@mail.gmail.com> <alpine.DEB.2.22.394.2310051309370.3375@hadrien>
  <CAJHH8bGaPhMdYmm6swFdM1NTQQ=eHz0+hBsUB+hb-+EDqpz7ug@mail.gmail.com> <alpine.DEB.2.22.394.2310051857240.3375@hadrien> <CAJHH8bHixAcrUwpj_LCjAZ641tbzjHQHm9ig=UPvoRh+h0ubPg@mail.gmail.com> <alpine.DEB.2.22.394.2310051908490.3375@hadrien>
  <CAJHH8bHV4rRPmM5scQ2AUk9FTs4hAy6i8S5fwJ=4v1xf7DDqOg@mail.gmail.com> <alpine.DEB.2.22.394.2310080800280.3223@hadrien> <CAJHH8bGB4pVDZpK6LoTCZccRqJg_sry=NLdMsqO+7EzRufXWMQ@mail.gmail.com> <alpine.DEB.2.22.394.2310080806480.3223@hadrien>
@@ -38,12 +38,12 @@ List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-1255745667-1697026008=:5451"
+Content-Type: multipart/mixed; boundary="8323329-961786117-1697026110=:5451"
 
   This message is in MIME format.  The first part should be readable text,
   while the remaining parts are likely unreadable without MIME-aware tools.
 
---8323329-1255745667-1697026008=:5451
+--8323329-961786117-1697026110=:5451
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8BIT
 
@@ -59,7 +59,13 @@ On Wed, 11 Oct 2023, Isoken Ibizugbe wrote:
 > menuconfig has this symbol '---staging divers', so I cannot open it to
 > make the driver a module. Please what do I do?
 
-Maybe try /staging.  Then it should show you what the status is.
+If you changed a staging driver, it seems thta you will not want to boot
+that code, because you don't have the relevant device.
+
+So you can do make allyesconfig and then it will have as much selected as
+possible.  The you should be able to make the driver you changed.  See the
+tutorial for how to compile and single file and how to a compile a
+complete driver.
 
 julia
 
@@ -398,4 +404,4 @@ julia
 > >> >
 > >> >
 >
---8323329-1255745667-1697026008=:5451--
+--8323329-961786117-1697026110=:5451--
