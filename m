@@ -1,212 +1,105 @@
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-wm1-f51.google.com (mail-wm1-f51.google.com [209.85.128.51])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 999FF1A588
-	for <outreachy@lists.linux.dev>; Wed, 11 Oct 2023 08:20:27 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5E01C10941
+	for <outreachy@lists.linux.dev>; Wed, 11 Oct 2023 10:31:10 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="X7G3Whb9"
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="fnYFndJ9"
+Received: by mail-wm1-f51.google.com with SMTP id 5b1f17b1804b1-4060b623e64so4878815e9.0
+        for <outreachy@lists.linux.dev>; Wed, 11 Oct 2023 03:31:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=tbpNDE53woSpg8mdNFOvNAke3tOQbG3V22ru0IbPcdk=;
-  b=X7G3Whb9cNIwK5t147962H045yzm8ZDlkSbspChHJlcWQT8HHq1MoKiB
-   wVrcluvKG9K8v7JT0U3S+lh4OaNheYpsq8h+ceylfmKeGmsOj1S9EEjmt
-   8YVmaG0WcY7bg0v0+gHuDr87CxZ/dwZj67esz1M8J8bBN7QI8ferYe5F4
-   E=;
-Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="6.03,214,1694728800"; 
-   d="scan'208";a="68371815"
-Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Oct 2023 10:20:26 +0200
-Date: Wed, 11 Oct 2023 10:20:24 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-To: Dorcas Litunya <anonolitunya@gmail.com>
-cc: andi.shyti@linux.intel.com, outreachy@lists.linux.dev
-Subject: Re: [Outreachy Applicant]Building Linux Kernel failed,help Needed
-In-Reply-To: <CAKh3C7RbWgVvo+Ok0veDPGGVYbJr7vMYUCmgyQKA58V8rX6P4w@mail.gmail.com>
-Message-ID: <63756ac-9ad3-30e-e492-5575bc23822@inria.fr>
-References: <CAKh3C7SoERYPTHV_pZN_6fmr32esPMEoCisLCnJZ+_sfmvO=4Q@mail.gmail.com> <alpine.DEB.2.22.394.2310110741530.3208@hadrien> <CAKh3C7SPRWe740v=g0q8c=rtdBupNhqhvuqFCi+=jTFOFNY8RQ@mail.gmail.com> <alpine.DEB.2.22.394.2310110753420.3208@hadrien>
- <CAKh3C7RXKatfMrQBcnUHN1JEYobXQBSkygv-zXcqAQphQFW7Kg@mail.gmail.com> <CAKh3C7RWnxWJznVwcpG72jUVY=hYOq1FUmHPPz0hhQQAD-=ZbQ@mail.gmail.com> <aca2b1eb-bbef-e040-f348-c184d9da52b2@inria.fr> <CAKh3C7RbWgVvo+Ok0veDPGGVYbJr7vMYUCmgyQKA58V8rX6P4w@mail.gmail.com>
+        d=gmail.com; s=20230601; t=1697020268; x=1697625068; darn=lists.linux.dev;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=1sBMdGMTbTEy5Oo6D6oImER9eMAghQqD/e2h+De41J8=;
+        b=fnYFndJ9MNk7Ej00bpQRXBwV2Fw/joOuM64QFZZeVgY2zF+s/JTOG1KpC80eghxI4M
+         +6j8XqAhL2/HEPnLS03E8tMCSphaPHy9w6tLNFqNENQHsx4k3BeieHpx652qhl3dCgs/
+         MuuKsspbIL8yyar8JLLNe5q7gvelC8lULPGmgOW/vLIQZxL1kWK8rDLAFmv/TGf2OoQY
+         r1YJScxw/EXodpfgiQey0Teo5xrDYsgpZcgZPmm+p571x+ibF26ZUX9o0eAS7XLHk9Yr
+         AsGiTLMNpT8zu/niItOmEGf6yP5ZpdaIKEZOLhI3QddhfkyhM2QSdjx94OzPaWZKA5NW
+         Rohg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1697020268; x=1697625068;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=1sBMdGMTbTEy5Oo6D6oImER9eMAghQqD/e2h+De41J8=;
+        b=EZH4OARjRK+9X/UgUEPJL/seMG0oli30OFOC06GVChrQDsTBtVuF3XIybe64rhbkNL
+         rYxu8vp9cUMqGCiZKH1r+kmNwtdlBu4cxnRg+nhrLGHR91w0aSuy/lrit9oKsgsVXERi
+         SdA0osvVp3Y5BjFbPbnSpz4Dof7jRmIeib67GWAOWG/hGoA64uSvzPz70naWSnmr1snI
+         pKGnroglxhdans6cOX/dv2mQ1CgkuHVZjaQ33ekSM8eFEeVLy9pGEhGALoY/MOlRRoaf
+         zWz1lwu5pDMSSsmZBF1cRoSdNS2KPD+0JqVCoi/bupf9v2Ypht4XCXisy33Rd5pKw+Pf
+         qWrQ==
+X-Gm-Message-State: AOJu0YwfLdgqJ4A5DcCp4pVt4cigecZ+VPSTvCADY7rVSQ2WjgjLsg+h
+	DTK5Eyvm9wO75eKBSPq3m+cN++bYRYNVSXY/
+X-Google-Smtp-Source: AGHT+IFpAGS94rc1BfUiUxTkTqhHzPVY6rLiDr5CyaUiaKEIXnCxtPVmLiMYyGY7Ut6ommTgYw5s9w==
+X-Received: by 2002:a05:600c:4f02:b0:401:609f:7f9a with SMTP id l2-20020a05600c4f0200b00401609f7f9amr15525535wmq.8.1697020267882;
+        Wed, 11 Oct 2023 03:31:07 -0700 (PDT)
+Received: from gilbert-PC ([105.112.180.10])
+        by smtp.gmail.com with ESMTPSA id u6-20020a05600c00c600b00402ff8d6086sm16322096wmm.18.2023.10.11.03.31.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 11 Oct 2023 03:31:07 -0700 (PDT)
+Date: Wed, 11 Oct 2023 11:31:01 +0100
+From: Gilbert Adikankwu <gilbertadikankwu@gmail.com>
+To: outreachy@lists.linux.dev
+Cc: julia.lawall@inria.fr
+Subject: [Outreachy tip] Guide to setup mutt for Gmail
+Message-ID: <ZSZ5ZfwTdkHcG5WL@gilbert-PC>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-126472856-1697012425=:3449"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+Hello,
 
---8323329-126472856-1697012425=:3449
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
+This is a guide to setup mutt, the recommended text-based email client
+for the Outreachy Linux community.
+
+If you have not read the newbies tutorial, please read it first to see the 
+steps for the initial setup of mutt. This guide is a follow-up to the initial
+setup steps decribed in the newbies tutorial.
+
+Here, you will learn how to setup your mutt to access emails in
+your Gmail inbox and reply to them. 
+
+Next, set up the mail client, mutt, with some defaults, by creating a
+.muttrc file in your /home and add the following lines to it:
+
+set sendmail="/usr/bin/esmtp"
+set envelope_from=yes
+set from="Your name <your_username@gmail.com>"
+set use_from=yes
+set edit_headers=yes
+set editor="vi"
+set send_charset="us-ascii:utf-8"
+set sort_aux =  last-date-received
+set sort = reverse-threads
+
+# IMAP settings
+set imap_user = "your_username@gmail.com"
+set imap_pass = "mailbox/app password"
+
+# SMTP settings
+set smtp_url = "smtps://your_username@smtp.gmail.com"
+set smtp_pass = "mailbox/app password"
+
+# Remote Gmail folders
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set record = "+[Gmail]/Sent Mail"
+set trash = "+[Gmail]/Trash"
+set postponed = "+[Gmail]/Drafts"
 
 
+Note: The imap_pass and smtp_pass can be your App password or email
+password
 
-On Wed, 11 Oct 2023, Dorcas Litunya wrote:
+I hopes this helps
 
-> No
->
-> I duplicated my current config  then renamed my CONFIG_LOCALVERSION to an
-> another  version.
->
-> Is that okay?
-
-It's ok, but if you run make localmodconfig you should end up with a
-smaller configuration and thus a smaller kernel.
-
-julia
-
->
-> Kind regards,
-> Dorcas
->
->
-> On Wed, 11 Oct 2023 at 11:13, Julia Lawall <julia.lawall@inria.fr> wrote:
->
->
->       On Wed, 11 Oct 2023, Dorcas Litunya wrote:
->
->       > In the documentation, we had been told to allocate 40GB ,
->       however, it seems
->       > like 40GB is not enough as it is now saying the VM low than
->       disk space.
->       >
->       > I will try to allocate 70GB to see if it will fit. Is it
->       possible to tell me
->       > the exact size so that I can be able to allocate appropriate
->       space?
->
->       No, sorry it depends on your configuration.
->
->       Did you do make localmodconfig?
->
->       julia
->
->       >
->       > Kind regards, 
->       > Dorcas
->       >
->       > On Wed, 11 Oct 2023 at 08:54, Dorcas Litunya
->       <anonolitunya@gmail.com> wrote:
->       >       Okay. Lemme try that.
->       >
->       > On Wed, 11 Oct 2023 at 08:54, Julia Lawall
->       <julia.lawall@inria.fr>
->       > wrote:
->       >
->       >
->       >       On Wed, 11 Oct 2023, Dorcas Litunya wrote:
->       >
->       >       > Hi Julia
->       >       > How much disk space is enough?
->       >       >
->       >       > It’s used 30.8GB as at now…I have 15GB left…is this
->       >       enough?
->       >
->       >       Should be.  Try make with no -j to see what the problem
->       >       could be.
->       >
->       >       julia
->       >
->       >       >
->       >       > On Wed, 11 Oct 2023 at 08:43, Julia Lawall
->       >       <julia.lawall@inria.fr> wrote:
->       >       >
->       >       >
->       >       >       On Wed, 11 Oct 2023, Dorcas Litunya wrote:
->       >       >
->       >       >       > Hi everyone,
->       >       >       > My name is Dorcas Litunya and I am interested
->       in
->       >       participating
->       >       >       in the
->       >       >       > Outreachy Linux project.
->       >       >       > Thank you for this reminder. I have been
->       trying
->       >       to build the
->       >       >       Linux Kernel
->       >       >       > for the last day but I have faced this error
->       >       that I am not
->       >       >       sure how to
->       >       >       > navigate:
->       >       >       >
->       >       >       > libbpf: failed to find '.BTF' ELF section in
->       >       vmlinux
->       >       >       > FAILED: load BTF from vmlinux: No data
->       available
->       >       >       > make[2]: *** [scripts/Makefile.vmlinux:36:
->       >       vmlinux] Error 255
->       >       >       > make[2]: *** Deleting file 'vmlinux'
->       >       >       > make[1]: ***
->       >       >     
->       >     
->         [/home/dorcaslitunya/Desktop/Outreachy/LinuxProject/git/kernels
->       >       >       > /staging/Makefile:1165: vmlinux] Error 2
->       >       >       > make: *** [Makefile:234: __sub-make] Error 2
->       >       >       >
->       >       >       > I am currently working with linux Ubuntu
->       >       distribution on a
->       >       >       Virtual Box. My h
->       >       >       > ost machine is a windows device.
->       >       >       >
->       >       >       > This happens when I run the make command as
->       >       indicated here:
->       >       >       >                             Building the
->       kernel
->       >       >       >
->       >       >       > Run
->       >       >       >
->       >       >       > make
->       >       >       >
->       >       >       > Any guidance or assistance will be greatly
->       >       appreciated. I
->       >       >       really want to set
->       >       >       > this up and get started.
->       >       >
->       >       >       Maybe you had an error previously in the
->       >       compilation process. 
->       >       >       Try make
->       >       >       clean  (to start over) and then make without
->       -j. 
->       >       Then it will
->       >       >       stop
->       >       >       precisely at the place that didn't work.
->       >       >
->       >       >       Be sure that you have engough disk space
->       >       accessible to your VM. 
->       >       >       The Linux
->       >       >       kernel consumes a lot of space.  You can also
->       run
->       >       make
->       >       >       localmodconfig,
->       >       >       because the complete configuration offered by
->       >       ubuntu contains a
->       >       >       lot of
->       >       >       things you don't need.
->       >       >
->       >       >       julia
->       >       >
->       >       >
->       >       >
->       >       >       >
->       >       >       > Thank you.
->       >       >       >
->       >       >       > Kind regards,
->       >       >       > Dorcas Litunya
->       >       >       >
->       >       >       >
->       >       >
->       >       >
->       >       >
->       >
->       >
->       >
->
->
->
---8323329-126472856-1697012425=:3449--
+Best wishes
+Gilbert
