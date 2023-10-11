@@ -1,333 +1,114 @@
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-wm1-f51.google.com (mail-wm1-f51.google.com [209.85.128.51])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0DF461F5F8
-	for <outreachy@lists.linux.dev>; Wed, 11 Oct 2023 15:41:55 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 28D0D12E49
+	for <outreachy@lists.linux.dev>; Wed, 11 Oct 2023 19:30:34 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="OIY/m6KZ"
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Hdz+0sAa"
+Received: by mail-wm1-f51.google.com with SMTP id 5b1f17b1804b1-40666aa674fso2723305e9.0
+        for <outreachy@lists.linux.dev>; Wed, 11 Oct 2023 12:30:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=kr1ZbuxAqvnEI6CLy1LRLsslsNhk6BKg4G2JQqOr7po=;
-  b=OIY/m6KZ/DGdOacLV6LW/40+zqrERQngldQFyFTFtE9De0Ncw64OTT5a
-   ANWKEcjV9n6wXNPIjuPS0Pu6izNq4hCgNTjO6gkOLkcy9jhkI1K9AARfJ
-   xipV8A7w9DBJFAgODF0IZDBB2V1/QnqgogyWU7q9C9VIgg5PsVRneO0U4
-   s=;
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="6.03,216,1694728800"; 
-   d="scan'208";a="130716412"
-Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Oct 2023 17:41:53 +0200
-Date: Wed, 11 Oct 2023 17:41:53 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-To: Dorcas Litunya <anonolitunya@gmail.com>
-cc: andi.shyti@linux.intel.com, outreachy@lists.linux.dev
-Subject: Re: [Outreachy Applicant]Building Linux Kernel failed,help Needed
-In-Reply-To: <CAKh3C7RducOtuFmVZf-Jbk+5nVaG1FXRsF+HJbzgwdNBy=3fWA@mail.gmail.com>
-Message-ID: <54979ad8-2f19-a5bd-ce58-6fe534b82910@inria.fr>
-References: <CAKh3C7SoERYPTHV_pZN_6fmr32esPMEoCisLCnJZ+_sfmvO=4Q@mail.gmail.com> <alpine.DEB.2.22.394.2310110741530.3208@hadrien> <CAKh3C7SPRWe740v=g0q8c=rtdBupNhqhvuqFCi+=jTFOFNY8RQ@mail.gmail.com> <alpine.DEB.2.22.394.2310110753420.3208@hadrien>
- <CAKh3C7RXKatfMrQBcnUHN1JEYobXQBSkygv-zXcqAQphQFW7Kg@mail.gmail.com> <CAKh3C7RWnxWJznVwcpG72jUVY=hYOq1FUmHPPz0hhQQAD-=ZbQ@mail.gmail.com> <aca2b1eb-bbef-e040-f348-c184d9da52b2@inria.fr> <CAKh3C7RbWgVvo+Ok0veDPGGVYbJr7vMYUCmgyQKA58V8rX6P4w@mail.gmail.com>
- <63756ac-9ad3-30e-e492-5575bc23822@inria.fr> <CAKh3C7Twm=T9Fna1PJ5D5rs9hHqSn_7eF-hQzOSUfTCujoy2rA@mail.gmail.com> <CAKh3C7TEgaUREecfmjVFQNefnhKTjQjvKXXjBHRfRCei8-myQg@mail.gmail.com> <6d5c3122-f0c0-eb34-cfee-e0d1fcfd8d4f@inria.fr>
- <CAKh3C7RducOtuFmVZf-Jbk+5nVaG1FXRsF+HJbzgwdNBy=3fWA@mail.gmail.com>
+        d=gmail.com; s=20230601; t=1697052633; x=1697657433; darn=lists.linux.dev;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=k5Spzo7BlsNunBEJhKNm5Jzq+r9BI1Zk/hKbS1tW0V4=;
+        b=Hdz+0sAag8G7eVpZeDpEa02jCqYB6OJSws+PNLtw/vBDk66a/ICHaXmrNeZD9hnbyb
+         pfujUDvAkLp0Sy1mC34JvYz34VoT8C+El6G6ZgsRWOiziwQUlm8IeeIE9tyzbV+Z6ezL
+         QCp3anAEENCFYZA6XArICloCBNEvbP8VpgF4HJD3SUgLuFSOSlXpyn2jx+FKUpqblcCQ
+         Q15M/mY6fvuf10Ht+TpR3fWgCmFaHtYCwxDHdkI3L+XEQko5AnToE4oIMObRyugQFhU1
+         AgJ85buwj9urJ4ufrQHd6pClYwLLe/KO9av4nVFsHUFCgaZHX7gcBMFTABXS7N6nwdjq
+         V7gg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1697052633; x=1697657433;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=k5Spzo7BlsNunBEJhKNm5Jzq+r9BI1Zk/hKbS1tW0V4=;
+        b=OHCIe1jTZ5P+s7P1GO+OphKKv3TpY98rdZJr5Lmu/SIyCVouj2/DKuMyTRy2NYkg4p
+         hXWC34NNZPGTicW5jJNi/m0MCtxbq4J/Erako3GO+giYSn7pFda0lG0PBpgl9qj2z1vX
+         68o4XVA/SbScJtPbfhfHfYG6DOfV2e3jN170nQj02m/p5xswsq1ln74QY2XVaxKSyjEy
+         7em6Z3abKxcmLA9JlBhuxKww52Mx5fU50f4uVwSMocBr1jRcPtA/5kOYLfrw7JgrHCUm
+         i0OH8148I5lq7DD16W8C04yj3XHqodMWsYIOe7gsU5VSYxRnboRQeMK8jEVa2Qvm0ped
+         ENvA==
+X-Gm-Message-State: AOJu0Yw8fwnhv4mfidxLZAQ6xWqhIblz+4CHUKhPltwT7JiJip7fN3dj
+	Q4qKzgGeSdB2526upkY+1w==
+X-Google-Smtp-Source: AGHT+IGxJt5T3iZEq24NpWMubaYi8OPg2jRXZL9nJmeVwUouAPen5FYzE/iYb68gvNhACagGRHH6ow==
+X-Received: by 2002:a1c:7212:0:b0:401:bdd7:499d with SMTP id n18-20020a1c7212000000b00401bdd7499dmr20084515wmc.25.1697052632906;
+        Wed, 11 Oct 2023 12:30:32 -0700 (PDT)
+Received: from dorcaslitunya-virtual-machine ([105.163.2.146])
+        by smtp.gmail.com with ESMTPSA id y24-20020a7bcd98000000b004064741f855sm17521915wmj.47.2023.10.11.12.30.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 11 Oct 2023 12:30:32 -0700 (PDT)
+Date: Wed, 11 Oct 2023 22:30:29 +0300
+From: Dorcas Litunya <anonolitunya@gmail.com>
+To: Gilbert Adikankwu <gilbertadikankwu@gmail.com>
+Cc: outreachy@lists.linux.dev, julia.lawall@inria.fr
+Subject: Re: [Outreachy tip] Guide to setup mutt for Gmail
+Message-ID: <ZSb31aIwiXyJU10U@dorcaslitunya-virtual-machine>
+References: <ZSZ5ZfwTdkHcG5WL@gilbert-PC>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-1957737891-1697038914=:5451"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ZSZ5ZfwTdkHcG5WL@gilbert-PC>
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+On Wed, Oct 11, 2023 at 11:31:01AM +0100, Gilbert Adikankwu wrote:
+> Hello,
+> 
+> This is a guide to setup mutt, the recommended text-based email client
+> for the Outreachy Linux community.
+> 
+> If you have not read the newbies tutorial, please read it first to see the 
+> steps for the initial setup of mutt. This guide is a follow-up to the initial
+> setup steps decribed in the newbies tutorial.
+> 
+> Here, you will learn how to setup your mutt to access emails in
+> your Gmail inbox and reply to them. 
+> 
+> Next, set up the mail client, mutt, with some defaults, by creating a
+> .muttrc file in your /home and add the following lines to it:
+> 
+> set sendmail="/usr/bin/esmtp"
+> set envelope_from=yes
+> set from="Your name <your_username@gmail.com>"
+> set use_from=yes
+> set edit_headers=yes
+> set editor="vi"
+> set send_charset="us-ascii:utf-8"
+> set sort_aux =  last-date-received
+> set sort = reverse-threads
+> 
+> # IMAP settings
+> set imap_user = "your_username@gmail.com"
+> set imap_pass = "mailbox/app password"
+> 
+> # SMTP settings
+> set smtp_url = "smtps://your_username@smtp.gmail.com"
+> set smtp_pass = "mailbox/app password"
+> 
+> # Remote Gmail folders
+> set folder = "imaps://imap.gmail.com:993"
+> set spoolfile = "+INBOX"
+> set record = "+[Gmail]/Sent Mail"
+> set trash = "+[Gmail]/Trash"
+> set postponed = "+[Gmail]/Drafts"
+> 
 
---8323329-1957737891-1697038914=:5451
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
-
-
-
-On Wed, 11 Oct 2023, Dorcas Litunya wrote:
-
-> Hi Julia,
->
-> I think this worked.
-> Since I was able to build easily and also I have been able to edit the
-> grub2. Just a curious question, how can I confirm whether I have installed
-> the kernel and it’s running correctly?
-
-When you do uname -r you should see the name of your kernel.
-
->
-> I have been able to do all mentioned steps until running your kernel. Is
-> this sufficient proof that I have been able to set it up correctly?
->
-> PS: The documentation is stellar! Very clear for even a newbie. I have never
-> worked on the linux kernel before but I have found it so easy to navigate
-> and understand the documentation.Kudos!
-
-Nice to hear :)  Many people have worked on it for a long time.
-
-julia
-
-> Kind regards,
-> Dorcas
->
-> On Wed, 11 Oct 2023 at 15:14, Julia Lawall <julia.lawall@inria.fr> wrote:
->
->
->       On Wed, 11 Oct 2023, Dorcas Litunya wrote:
->
->       > Hi Julia,
->       >
->       > I wanted to please clarify on whether after do the make
->       localmodconfig
->       > (which is under step 2 in the  changing your config section
->       for kernel for
->       > newbies) Should I still run make command which is under
->       Building your
->       > kernel(this is after the changing your config section)? If I
->       do make
->       > localmodconfig, should I do a make again?
->
->       Make localmodconfig creates a .config file.  Once you have a
->       .config file,
->       you can type make to compile the kernel code.  Last you need to
->       install
->       the modules and install the kernel.
->
->       julia
->
->
->       >
->       > Kind regards,
->       > Dorcas
->       >
->       > On Wed, 11 Oct 2023 at 11:28, Dorcas Litunya
->       <anonolitunya@gmail.com> wrote:
->       >       Okay
->       > I have uninstalled and let me do a local config in this new
->       > installation.
->       > I have allocated it now 70GB
->       >
->       > On Wed, 11 Oct 2023 at 11:20, Julia Lawall
->       <julia.lawall@inria.fr>
->       > wrote:
->       >
->       >
->       >       On Wed, 11 Oct 2023, Dorcas Litunya wrote:
->       >
->       >       > No
->       >       >
->       >       > I duplicated my current config  then renamed my
->       >       CONFIG_LOCALVERSION to an
->       >       > another  version.
->       >       >
->       >       > Is that okay?
->       >
->       >       It's ok, but if you run make localmodconfig you should
->       end
->       >       up with a
->       >       smaller configuration and thus a smaller kernel.
->       >
->       >       julia
->       >
->       >       >
->       >       > Kind regards,
->       >       > Dorcas
->       >       >
->       >       >
->       >       > On Wed, 11 Oct 2023 at 11:13, Julia Lawall
->       >       <julia.lawall@inria.fr> wrote:
->       >       >
->       >       >
->       >       >       On Wed, 11 Oct 2023, Dorcas Litunya wrote:
->       >       >
->       >       >       > In the documentation, we had been told to
->       >       allocate 40GB ,
->       >       >       however, it seems
->       >       >       > like 40GB is not enough as it is now saying
->       the
->       >       VM low than
->       >       >       disk space.
->       >       >       >
->       >       >       > I will try to allocate 70GB to see if it will
->       >       fit. Is it
->       >       >       possible to tell me
->       >       >       > the exact size so that I can be able to
->       allocate
->       >       appropriate
->       >       >       space?
->       >       >
->       >       >       No, sorry it depends on your configuration.
->       >       >
->       >       >       Did you do make localmodconfig?
->       >       >
->       >       >       julia
->       >       >
->       >       >       >
->       >       >       > Kind regards, 
->       >       >       > Dorcas
->       >       >       >
->       >       >       > On Wed, 11 Oct 2023 at 08:54, Dorcas Litunya
->       >       >       <anonolitunya@gmail.com> wrote:
->       >       >       >       Okay. Lemme try that.
->       >       >       >
->       >       >       > On Wed, 11 Oct 2023 at 08:54, Julia Lawall
->       >       >       <julia.lawall@inria.fr>
->       >       >       > wrote:
->       >       >       >
->       >       >       >
->       >       >       >       On Wed, 11 Oct 2023, Dorcas Litunya
->       wrote:
->       >       >       >
->       >       >       >       > Hi Julia
->       >       >       >       > How much disk space is enough?
->       >       >       >       >
->       >       >       >       > It’s used 30.8GB as at now…I have 15GB
->       >       left…is this
->       >       >       >       enough?
->       >       >       >
->       >       >       >       Should be.  Try make with no -j to see
->       >       what the problem
->       >       >       >       could be.
->       >       >       >
->       >       >       >       julia
->       >       >       >
->       >       >       >       >
->       >       >       >       > On Wed, 11 Oct 2023 at 08:43, Julia
->       >       Lawall
->       >       >       >       <julia.lawall@inria.fr> wrote:
->       >       >       >       >
->       >       >       >       >
->       >       >       >       >       On Wed, 11 Oct 2023, Dorcas
->       >       Litunya wrote:
->       >       >       >       >
->       >       >       >       >       > Hi everyone,
->       >       >       >       >       > My name is Dorcas Litunya and
->       I
->       >       am interested
->       >       >       in
->       >       >       >       participating
->       >       >       >       >       in the
->       >       >       >       >       > Outreachy Linux project.
->       >       >       >       >       > Thank you for this reminder. I
->       >       have been
->       >       >       trying
->       >       >       >       to build the
->       >       >       >       >       Linux Kernel
->       >       >       >       >       > for the last day but I have
->       >       faced this error
->       >       >       >       that I am not
->       >       >       >       >       sure how to
->       >       >       >       >       > navigate:
->       >       >       >       >       >
->       >       >       >       >       > libbpf: failed to find '.BTF'
->       >       ELF section in
->       >       >       >       vmlinux
->       >       >       >       >       > FAILED: load BTF from vmlinux:
->       >       No data
->       >       >       available
->       >       >       >       >       > make[2]: ***
->       >       [scripts/Makefile.vmlinux:36:
->       >       >       >       vmlinux] Error 255
->       >       >       >       >       > make[2]: *** Deleting file
->       >       'vmlinux'
->       >       >       >       >       > make[1]: ***
->       >       >       >       >     
->       >       >       >     
->       >       >     
->       >     
->           [/home/dorcaslitunya/Desktop/Outreachy/LinuxProject/git/kernels
->       >       >       >       >       > /staging/Makefile:1165:
->       vmlinux]
->       >       Error 2
->       >       >       >       >       > make: *** [Makefile:234:
->       >       __sub-make] Error 2
->       >       >       >       >       >
->       >       >       >       >       > I am currently working with
->       >       linux Ubuntu
->       >       >       >       distribution on a
->       >       >       >       >       Virtual Box. My h
->       >       >       >       >       > ost machine is a windows
->       device.
->       >       >       >       >       >
->       >       >       >       >       > This happens when I run the
->       make
->       >       command as
->       >       >       >       indicated here:
->       >       >       >       >       >                           
->       >        Building the
->       >       >       kernel
->       >       >       >       >       >
->       >       >       >       >       > Run
->       >       >       >       >       >
->       >       >       >       >       > make
->       >       >       >       >       >
->       >       >       >       >       > Any guidance or assistance
->       will
->       >       be greatly
->       >       >       >       appreciated. I
->       >       >       >       >       really want to set
->       >       >       >       >       > this up and get started.
->       >       >       >       >
->       >       >       >       >       Maybe you had an error
->       previously
->       >       in the
->       >       >       >       compilation process. 
->       >       >       >       >       Try make
->       >       >       >       >       clean  (to start over) and then
->       >       make without
->       >       >       -j. 
->       >       >       >       Then it will
->       >       >       >       >       stop
->       >       >       >       >       precisely at the place that
->       didn't
->       >       work.
->       >       >       >       >
->       >       >       >       >       Be sure that you have engough
->       disk
->       >       space
->       >       >       >       accessible to your VM. 
->       >       >       >       >       The Linux
->       >       >       >       >       kernel consumes a lot of space. 
->       >       You can also
->       >       >       run
->       >       >       >       make
->       >       >       >       >       localmodconfig,
->       >       >       >       >       because the complete
->       configuration
->       >       offered by
->       >       >       >       ubuntu contains a
->       >       >       >       >       lot of
->       >       >       >       >       things you don't need.
->       >       >       >       >
->       >       >       >       >       julia
->       >       >       >       >
->       >       >       >       >
->       >       >       >       >
->       >       >       >       >       >
->       >       >       >       >       > Thank you.
->       >       >       >       >       >
->       >       >       >       >       > Kind regards,
->       >       >       >       >       > Dorcas Litunya
->       >       >       >       >       >
->       >       >       >       >       >
->       >       >       >       >
->       >       >       >       >
->       >       >       >       >
->       >       >       >
->       >       >       >
->       >       >       >
->       >       >
->       >       >
->       >       >
->       >
->       >
->       >
->
->
->
---8323329-1957737891-1697038914=:5451--
+Setting up the remote Gmail folders was particularly useful as I was
+stuck on how I would reach my inboxes from the mutt client. Good stuff
+Gilbert! Thanks for this tip :-)
+> 
+> Note: The imap_pass and smtp_pass can be your App password or email
+> password
+> 
+> I hopes this helps
+> 
+> Best wishes
+> Gilbert
+> 
