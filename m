@@ -1,52 +1,43 @@
-Received: from mail-yb1-f175.google.com (mail-yb1-f175.google.com [209.85.219.175])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.43])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 08E92171B1
-	for <outreachy@lists.linux.dev>; Wed, 11 Oct 2023 06:37:14 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7DE7018029
+	for <outreachy@lists.linux.dev>; Wed, 11 Oct 2023 07:11:03 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.intel.com
+Authentication-Results: smtp.subspace.kernel.org; spf=none smtp.mailfrom=linux.intel.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="T5UA1TzK"
-Received: by mail-yb1-f175.google.com with SMTP id 3f1490d57ef6-d81dd7d76e0so7529083276.1
-        for <outreachy@lists.linux.dev>; Tue, 10 Oct 2023 23:37:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1697006233; x=1697611033; darn=lists.linux.dev;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=QFxyzB2zssBAadtuO1ed49eHwL0UvArF9W6Ud/OjWYw=;
-        b=T5UA1TzKVDi5J6qkXNEpMx6rUbXxRh6QIeEaaDGswzS6txX0SJ/CfMtcYbLjE6ex1X
-         J/kUZIh+Gyk6ALeanDPGljam8ZpubTeLfA0EaaNsL32scwcsTRB+6/Q8NrBuILsjWhvq
-         EuZlNKP/MJqsyUnIVM+iFCFT3amw+mTVuJkzzXLOWOIinwS7pExMjkdrcrnWMx2nt41V
-         j30cuEizdLApbeTHbVb24XPEX41nugNPKtVToEZIO+FQyBMjEtIx6NAJQ6mQR5Uu0JTN
-         KMj/M+l4qkLMqWmg7yRmcTPnOXfKf+6mpQzBbOLZB9cPq0iXzcuHp++JOFrb7rLGwt1J
-         jT6w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697006233; x=1697611033;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=QFxyzB2zssBAadtuO1ed49eHwL0UvArF9W6Ud/OjWYw=;
-        b=Ad+6BdWqs0OwyC+RRQ1SnfbHj3JjikVbIiKAXidxUOhRcpPGhxw4BOoN8MdDFtJCy4
-         uqRuigQQ8iaWyNDxVhJOEporXZeNEWOosElJr8azJ7Ke3xbWl0Qcc8DqUuUKnx7GBSNJ
-         jwH1K1rW2OH/ZslhXuRnq8GdwLulIjXiG4I2tvU8oueguC9ulNQQnJ8VhCiaqKZxjXWi
-         sEKbisyhXqjjhHmvkFl7y8zVwyLU+gGBJFXwaTvGA64v31+ssawrgGc6ldtoxpaNwp63
-         1XFC5pRUOLpjbl6lkozgoeNOryRbSGoVmQYBomABI58QrEFyYK1Ek6dqw+e55dcYeFQN
-         /jsg==
-X-Gm-Message-State: AOJu0YzRLS4Oz9zcXsim4YCkOY4yKe7MPspo1+fOtpee1wU5yoGTkrwB
-	xHPQGhevSGabwd16zNEtat3aBef3+Dwzs+ET
-X-Google-Smtp-Source: AGHT+IENRi7MkX1C4wM9plWL/NEuRcWkJOUdEF+TESbAaKA0Ny9BNmWM9JXgfcxJbanWM2ySWKWbXg==
-X-Received: by 2002:a5b:70d:0:b0:d78:341d:e475 with SMTP id g13-20020a5b070d000000b00d78341de475mr18393923ybq.44.1697006233274;
-        Tue, 10 Oct 2023 23:37:13 -0700 (PDT)
-Received: from gilbert-PC ([105.112.30.11])
-        by smtp.gmail.com with ESMTPSA id b63-20020a253442000000b00d9a4f3bdffbsm1147763yba.11.2023.10.10.23.37.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Oct 2023 23:37:12 -0700 (PDT)
-Date: Wed, 11 Oct 2023 07:37:08 +0100
-From: Gilbert Adikankwu <gilbertadikankwu@gmail.com>
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="CNR9KCGH"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1697008263; x=1728544263;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=N7hjqP7HiuUtuFnBKMiLXiQ8WNx8yBxuRM+UX36aFW4=;
+  b=CNR9KCGHbEsscgyueE6dZTfgiV0mgan2PNcqtnZyYpyZ9ASCjnxld1bh
+   Hzr3kvcxyZ7EOqME8dMh8J40TQ3k7c3f0g5gu8OAocIi/shUijBEYLW+m
+   qLoTzue2FskkrRV/SitDijWR2NqcnLble9UD5Ife9RuSU/H+tpm5I/3DR
+   fY3O3gIFyV3zFqBcVIeb2xUOPQMOISSEYMe8xRkma/IpztyrAXemVntiU
+   xkPCkk9AIkiPl4w8rOSBy9UMlPlGKU6bc7lV7vRtzHIYw/XXtMpZ5/WFq
+   bFzBjDNRXkn/ZlE0dQGGxY0g3cbqv8S/DrFKoNElHPSV2XYLx03u/gQik
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10859"; a="470860665"
+X-IronPort-AV: E=Sophos;i="6.03,214,1694761200"; 
+   d="scan'208";a="470860665"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Oct 2023 00:11:02 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10859"; a="1001001792"
+X-IronPort-AV: E=Sophos;i="6.03,214,1694761200"; 
+   d="scan'208";a="1001001792"
+Received: from lyemeeki-mobl2.gar.corp.intel.com (HELO intel.com) ([10.214.156.206])
+  by fmsmga006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Oct 2023 00:10:59 -0700
+Date: Wed, 11 Oct 2023 09:10:54 +0200
+From: Andi Shyti <andi.shyti@linux.intel.com>
 To: Julia Lawall <julia.lawall@inria.fr>
-Cc: outreachy@lists.linux.dev
+Cc: Gilbert Adikankwu <gilbertadikankwu@gmail.com>,
+	Andi Shyti <andi.shyti@linux.intel.com>, outreachy@lists.linux.dev
 Subject: Re: [Outreachy Applicant] NEEDS SOME CLARIFICATIONS
-Message-ID: <ZSZClLOzEiiWiT+N@gilbert-PC>
+Message-ID: <ZSZKfhGAIlqDXvt1@ashyti-mobl2.lan>
 References: <ZST5+5a8Uq1pULop@ashyti-mobl2.lan>
  <CAKrXSsZe4w-K7kzGu=8_R_h1TSVtJWL1_TmFX-S-A1jCrPeCrg@mail.gmail.com>
  <8e38f1a1-1da4-1d1f-aa32-6ad7ebb31c11@inria.fr>
@@ -67,19 +58,8 @@ Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <alpine.DEB.2.22.394.2310110825150.3208@hadrien>
 
-On Wed, Oct 11, 2023 at 08:26:15AM +0200, Julia Lawall wrote:
-> 
-> 
-> On Wed, 11 Oct 2023, Gilbert Adikankwu wrote:
-> 
-> > On Tue, Oct 10, 2023 at 10:54:19PM +0200, Andi Shyti wrote:
-> > > Hi Gilbert,
-> > >
-> > > > Thank you for your response. I think I'm finally understanding good e-mail style
-> > > > thanks to you and everyone else who has responded to emails
-> > >
-> > > glad to hear! :-)
-> > >
+Hi Gilbert,
+
 > > > > > > > > You have too little space in the partition that contains /boot?
 > > > > > > >
 > > > > > > > What does "df -h" say?
@@ -163,7 +143,10 @@ On Wed, Oct 11, 2023 at 08:26:15AM +0200, Julia Lawall wrote:
 > > repository that is saved in my home directory.
 > >
 > > Is this what you mean by working from the home directory? or is there other setups I should be doing my home directory?
-> >
+
+yes, I mean the directory where you clone and build the kernel.
+If you do that in your home directory, then it's fine.
+
 > > Also I deleted the offending file in my /boot :
 > >
 > > 547M /boot/initrd.img-6.6.0-rc1gilbert+
@@ -188,13 +171,18 @@ On Wed, Oct 11, 2023 at 08:26:15AM +0200, Julia Lawall wrote:
 > > I want to generate a new .config file and recompile. I also realised
 > > that the staging repository I have on my machine is 28GB large is this
 > > normal?
-> 
+
+Yes, it's normaly. 28GB is a lot though, I guess you are using a
+big config.
+
 > When you start compiling the Linux kernel it gets very big.  But maybe you
 > reduced your config at some point, but didn't delete the no longer needed
 > .o files?  You could try make clean and then recompile.
-> 
-> julia
 
-Hello Julia,
+You could try with a "make distclean", before doing again
+everything, to cut some bytes down. This way you would start
+afresh.
 
-Thank you for your response, I will do as you have suggested.
+Andi
+
+PS my working machine has 110GB, not far from yours :-)
