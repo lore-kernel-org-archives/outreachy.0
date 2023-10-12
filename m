@@ -1,121 +1,78 @@
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-yw1-f177.google.com (mail-yw1-f177.google.com [209.85.128.177])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F1155101C1;
-	Thu, 12 Oct 2023 07:51:31 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 65E0520B39;
+	Thu, 12 Oct 2023 09:17:18 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="UGcSCDh2"
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="FCeYea39"
+Received: by mail-yw1-f177.google.com with SMTP id 00721157ae682-5a7b3d33663so10295627b3.3;
+        Thu, 12 Oct 2023 02:17:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=Es7QN2GEuzhlQdl0k2scO4nnsg4P8+3YcCL5L8h6RlA=;
-  b=UGcSCDh23Bz2f36LsEoJPPGkcVvqGmN678hSB70f31nwLBZmObbvWSv1
-   tcpWdZ6m6/un2kLdQLhD3OgAJF9WSxUM4uI+JZ0U8/IvLMae3CTqKCKjE
-   iYHAu3SzTvS75yUa+7q8QGmgKnr3TNSkwg+7L6EizcRYgFKkgsNV+zqbe
-   k=;
-Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="6.03,218,1694728800"; 
-   d="scan'208";a="68479733"
-Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Oct 2023 09:51:27 +0200
-Date: Thu, 12 Oct 2023 09:51:27 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-To: Soumya Negi <soumya.negi97@gmail.com>
-cc: Dan Carpenter <dan.carpenter@linaro.org>, 
-    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-    Micky Ching <micky_ching@realsil.com.cn>, outreachy@lists.linux.dev, 
-    linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] staging: rts5208: Parenthesize macro arguments
-In-Reply-To: <20231012074837.GE16374@Negi>
-Message-ID: <a1556f74-83ef-d32-103d-6b0b0233473@inria.fr>
-References: <20231012050240.20378-1-soumya.negi97@gmail.com> <81d6e283-fd87-4fd6-964f-22cbf420cdaa@kadam.mountain> <20231012074837.GE16374@Negi>
+        d=gmail.com; s=20230601; t=1697102237; x=1697707037; darn=lists.linux.dev;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=v6dAMz+0PBoS2XhVtGEyBlFK0C+DlTpY1GdaToHa8Jc=;
+        b=FCeYea396gCZzRMNaSfw3kLUhXddYZ3GtHoEx+puCuPgObhyGGWhvaXf41WRlqFOzC
+         SWM83Vmtx1EyzXsOd3PyDvYPJua9bPGuJlZOlaSyl7D5VcDxJQxo7yTPlf4WsDPdEtWz
+         0Iol5b+P+aEBHaK8J/F5Mi2u8CZq0Fa/VVZSKrZTyJcXSoHwK9E7fxTkV+KBCUdtB4oC
+         XLUc8f1cuhNRG7k2GM72qyR/yN02sMtCvVsErdSHh4Bq9jifP3VvgLDi34y0vPhrk12a
+         zzrjSEkyLOKn43qldk6cjxrrHOzrmRNgAurdhL+RO3K/mC2O+6ziyNZpzuPDRWJqNGRw
+         S21g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1697102237; x=1697707037;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=v6dAMz+0PBoS2XhVtGEyBlFK0C+DlTpY1GdaToHa8Jc=;
+        b=NJUNnnUmT17LrjXBOefVckDewhN/+iMaMJrq3c/ojdfj2lU5PPrd7HLlefB/2OzKPQ
+         3W/h65qfXbImX025I+c3VjMGZ+6gdLWZRJK3ws1SpOIzRd/+gwfY+Y/aPmYyed4GRKX8
+         jhBdHtvFZq9iCAlYLejugZEDubV/K2ObRzef9bZr/F4hDLmZTUUm1+myR5G89DVnJw2E
+         H4jkiVXZFtZLMB11yoWPRByUTozDhgPc0d54Xym6POcE3+Jo9wOiIOYtjMze1edtTcsz
+         CFjwrMCU5fNtvd3YA5ox9oFo6Ucyk9oTvnQrUEQb0K791MU4NDMb1gjU3uzSlLJKkK5i
+         CE7Q==
+X-Gm-Message-State: AOJu0YzLGRHjhZ6ZnSl1Phu15F8MiHLV0X2kR2EH5ngSSi0js4fEVnyn
+	PEmWuR1wR61svV413hhcCL8=
+X-Google-Smtp-Source: AGHT+IFuQMSMzJzJH2GkD7eihBN8OFvYqFcC1HGLtYAHbbnx3UQ7tSCfZ0ufU5iKSpJBX7SkHxuqpg==
+X-Received: by 2002:a81:6ec2:0:b0:5a1:db6a:6459 with SMTP id j185-20020a816ec2000000b005a1db6a6459mr23340529ywc.40.1697102237316;
+        Thu, 12 Oct 2023 02:17:17 -0700 (PDT)
+Received: from [192.168.0.106] ([103.131.18.64])
+        by smtp.gmail.com with ESMTPSA id i1-20020a17090a2a0100b0027669cbc30asm597246pjd.1.2023.10.12.02.17.14
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 12 Oct 2023 02:17:16 -0700 (PDT)
+Message-ID: <1e2cfefb-c4dd-4611-867a-2b2e9e5f7467@gmail.com>
+Date: Thu, 12 Oct 2023 16:17:11 +0700
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] staging/wlan-ng: remove strcpy() use in favor of
+ strscpy()
+To: Calvince Otieno <calvncce@gmail.com>, outreachy@lists.linux.dev,
+ linux-kernel@vger.kernel.org
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Dan Carpenter <error27@gmail.com>, Archana <craechal@gmail.com>,
+ Simon Horman <horms@kernel.org>, linux-staging@lists.linux.dev
+References: <ZSeD1UojAgrsOh16@lab-ubuntu>
+Content-Language: en-US
+From: Bagas Sanjaya <bagasdotme@gmail.com>
+In-Reply-To: <ZSeD1UojAgrsOh16@lab-ubuntu>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
+On 12/10/2023 12:27, Calvince Otieno wrote:
+>  		if (j == -1) {	/* plug the filename */
+>  			memset(dest, 0, s3plug[i].len);
+> -			strncpy(dest, PRISM2_USB_FWFILE, s3plug[i].len - 1);
+> +			strscpy(dest, PRISM2_USB_FWFILE, s3plug[i].len - 1);
 
+Is this strscpy() behavior same as previous strncpy()?
 
-On Thu, 12 Oct 2023, Soumya Negi wrote:
+-- 
+An old man doll... just what I always wanted! - Clara
 
-> Hi Dan,
->
-> On Thu, Oct 12, 2023 at 09:33:07AM +0300, Dan Carpenter wrote:
-> > On Wed, Oct 11, 2023 at 10:02:40PM -0700, Soumya Negi wrote:
-> > > Use parenthesis with macro arguments to avoid possible precedence
-> ...
-> > >   */
-> > >  #define rtsx_writel(chip, reg, value) \
-> > > -	iowrite32(value, (chip)->rtsx->remap_addr + reg)
-> > > +	iowrite32(value, (chip)->rtsx->remap_addr + (reg))
-> >
-> > These would be better as functions instead of defines.
->
-> There are actually more macros in the code. Should all of
-> them be redefined as functions? The original code looks like this:
-
-You should make a static inline function if you can.  That would require
-that the parameter types are the same at all call sites and that all of
-the arguments are used as values, not eg as the left side of an assignment
-(looks fine here).
-
->
-> /*
->  * macros for easy use
->  */
-> #define rtsx_writel(chip, reg, value) \
-> 	iowrite32(value, (chip)->rtsx->remap_addr + reg)
-> #define rtsx_readl(chip, reg) \
-> 	ioread32((chip)->rtsx->remap_addr + reg)
-> #define rtsx_writew(chip, reg, value) \
-> 	iowrite16(value, (chip)->rtsx->remap_addr + reg)
-> #define rtsx_readw(chip, reg) \
-> 	ioread16((chip)->rtsx->remap_addr + reg)
-> #define rtsx_writeb(chip, reg, value) \
-> 	iowrite8(value, (chip)->rtsx->remap_addr + reg)
-> #define rtsx_readb(chip, reg) \
-> 	ioread8((chip)->rtsx->remap_addr + reg)
->
-> #define rtsx_read_config_byte(chip, where, val) \
-> 	pci_read_config_byte((chip)->rtsx->pci, where, val)
->
-> #define rtsx_write_config_byte(chip, where, val) \
-> 	pci_write_config_byte((chip)->rtsx->pci, where, val)
->
-> #define wait_timeout_x(task_state, msecs)	\
-> do {						\
-> 	set_current_state((task_state));	\
-> 	schedule_timeout((msecs) * HZ / 1000);	\
-> } while (0)
-> #define wait_timeout(msecs)	wait_timeout_x(TASK_INTERRUPTIBLE, (msecs))
->
-> > >  	pci_read_config_byte((chip)->rtsx->pci, where, val)
-> > > @@ -131,8 +131,8 @@ static inline struct rtsx_dev *host_to_rtsx(struct Scsi_Host *host)
-> > >   * The scsi_lock() and scsi_unlock() macros protect the sm_state and the
-> > >   * single queue element srb for write access
-> > >   */
-> > > -#define scsi_unlock(host)	spin_unlock_irq(host->host_lock)
-> > > -#define scsi_lock(host)		spin_lock_irq(host->host_lock)
-> > > +#define scsi_unlock(host)	spin_unlock_irq((host)->host_lock)
-> > > +#define scsi_lock(host)		spin_lock_irq((host)->host_lock)
-> >
-> > For these ones, the name is too generic.  probably the right thing is
-> > to just get rid of them completely and call spin_lock/unlock_irq()
-> > directly.
->
-> I understand that there should be 2 different patches, one for the
-> macro-to-function rewrites & one for replacing the scsi lock/unlock macros with
-> direct spinlock calls. But, should these be in a patchset(they are vaguely
-> related since the patches together would get rid of the checkpatch warnings)?
-> I'm not sure.
-
-Patch set, since they affect the same file.  Otherwise, Greg doesn't know
-in what order to apply them.
-
-julia
