@@ -1,109 +1,91 @@
-Received: from mail-pl1-f179.google.com (mail-pl1-f179.google.com [209.85.214.179])
+Received: from mail-pl1-f177.google.com (mail-pl1-f177.google.com [209.85.214.177])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5CCDD63B3;
-	Thu, 12 Oct 2023 05:03:23 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DF61863B3
+	for <outreachy@lists.linux.dev>; Thu, 12 Oct 2023 05:14:54 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="ezTfOs8o"
-Received: by mail-pl1-f179.google.com with SMTP id d9443c01a7336-1bf55a81eeaso4775155ad.0;
-        Wed, 11 Oct 2023 22:03:23 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="IyIohrEJ"
+Received: by mail-pl1-f177.google.com with SMTP id d9443c01a7336-1c871a095ceso4889085ad.2
+        for <outreachy@lists.linux.dev>; Wed, 11 Oct 2023 22:14:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1697087002; x=1697691802; darn=lists.linux.dev;
-        h=message-id:date:subject:cc:to:from:from:to:cc:subject:date
+        d=gmail.com; s=20230601; t=1697087694; x=1697692494; darn=lists.linux.dev;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=E6/jvxDoKsynF/Hhi+qgRno1n6eO8dybkroD/ZkL/wM=;
-        b=ezTfOs8oRgi/Zi4fIsY+tbQwwVNGanQKamgdq0brP2e4rCv8lrygifwdNbz3gHoLuA
-         TKjgaA/9wLRDgvqYz+cuUf6cQUgortQN93N2ZfVk8YzaIVoMrNX9OwWgdCQE5aDenVJV
-         V45Tzbm3goKPlutDU87UealKwx4ccaZgzQYYf34fhgRcqSZE3h0xAJOpDuuUKC+vuQjx
-         cuGb3zYWf/h4kfm/t6Gc4nxTGpsuwbDP5co3dZIGMi0X0sm5xrt7n9/pJ977F79td5h4
-         KU1cUXQTe9PQc2dcPsSZZNzxFFBIcWIW2slWfxw9Ci4PmoxtyK/sBZjjiN8qfYw6iFln
-         TXRg==
+        bh=YRUIrcAmiAuxgrSpJrLpozQtM7sLAlk6GfQunU9PiRU=;
+        b=IyIohrEJmzd+2mrrWcMX8Fx7NMz9C26LBwaQCUjXxBWwcJpr6At1txuAfsFxppsFL+
+         xmNxgO+GOR3Tsa4b1egOKeoxSbmWcfMfkVb2l6oIkz1QU8/gPH0cpxBBnMYjhQpiUDAL
+         AIrDfJULG1QQyFSJP0Q0wyt7boEiCrFlhKLGQyBo2I1O8MZPibzplXPvVZ5grEQWt/f2
+         zjqtzoa8ynf4QHp69SJ7GbTtw3D3W+2POhX1AUBER/q6tJ5gGrW7+uBh5sscdnnxoD8r
+         PnHDz9eiACsLNrbyeIKytyZLaxHyh/1/DFa9o1/jpzWfQ+b3kAKuGgbSYaIU3yqtPteX
+         MXxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697087002; x=1697691802;
-        h=message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20230601; t=1697087694; x=1697692494;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=E6/jvxDoKsynF/Hhi+qgRno1n6eO8dybkroD/ZkL/wM=;
-        b=XpmsxfYczZ3esl/TLxHdzCUcqcOWqIS/wTUpl/HEp5LteVaMaH3xM0YCFTDeTNzupb
-         CqVMPWpNhxPeKaGxsSZ1xsIyb1TyzR/9XRdPwinaVrqkGAalS5bUzBD54yNF4pyq8kMc
-         S+iml2emixM8Ficsf7SaqJX93pQ8QM8ENcg0A4RnCoDv/hhsaEdmh9jv35b0K9Tm6kAC
-         b9a+y5b1uPTMIXHtF5ZwwDFyOxMmprjAblt+Hx7E3Urw4C06YeGPi0sAtdlxbzQbiwvH
-         2yBZIITbCuN0nTVTnogYJeL4D65OpEd3VC2QAunjBfKj7plq2oj9rIebjVSUmJqdjIBJ
-         HogA==
-X-Gm-Message-State: AOJu0YxPguV+leZnLUBm5F8S1kS5allAmhmsAH5UzDEwGYrGeK2FO4HT
-	QdVCEdOXTDolGZvt4KhbP30=
-X-Google-Smtp-Source: AGHT+IEruTfzVk/s5T22BWoCbdl3+aluCxel5xThVpM6incPCOA7p79gSs+jWmo6gvq0PWOP0xzamw==
-X-Received: by 2002:a17:902:c94f:b0:1c3:8464:cabd with SMTP id i15-20020a170902c94f00b001c38464cabdmr25693137pla.12.1697087002535;
-        Wed, 11 Oct 2023 22:03:22 -0700 (PDT)
+        bh=YRUIrcAmiAuxgrSpJrLpozQtM7sLAlk6GfQunU9PiRU=;
+        b=UPE9LY4FpJ5fmfsBVfoGMvDcPgxemwO5nlMeYyljO6TmBvZ8eFYRj8gZY56Yh2wZGP
+         Aqkk5SnklInsnVKUyoLLMUz8AYATr66kyvnRYkaFveJqpxpzam2amBnypxFwxJiHLGAR
+         /pqOUkq3tImMfJaGPhWmJKIX6TQb5FTPioRv+yOpkaLDyqYitwXqDtWrYVfd/LEdyEIT
+         Q8esKz2ArJdXv5oWo545wGmURgScvlxEFGCaEkXPJ1zm2tV3UA1qYKn5ko7g+JnQd3zy
+         ADz6p+aHqK5CyX7XHSbfyKGSY6qobfFZWtAvPhwj7oPO0pqZ2J/WXseZlthrE5FgVD/m
+         Ux2w==
+X-Gm-Message-State: AOJu0Yx2n6/y5wXHyw8i1IO5e8E+8wxSJX/ZiU38cxTAGpeImf+bMvm2
+	pMpd3yGY0Cdo9CudLj2Cmro8md3vGzLaOg==
+X-Google-Smtp-Source: AGHT+IH8y8HYFQEFT8Vf6APsF7hiUhSPUmtI+QGRLFeEKw2FdhCvjFPbYwiww2TbBvBT/gDfSkdZJg==
+X-Received: by 2002:a17:903:264a:b0:1c9:c496:bde3 with SMTP id je10-20020a170903264a00b001c9c496bde3mr4970986plb.53.1697087693864;
+        Wed, 11 Oct 2023 22:14:53 -0700 (PDT)
 Received: from Negi (2603-8000-b93d-20a0-29fa-db66-4c18-1f0a.res6.spectrum.com. [2603:8000:b93d:20a0:29fa:db66:4c18:1f0a])
-        by smtp.gmail.com with ESMTPSA id j9-20020a170902da8900b001c5900c9e8fsm837734plx.81.2023.10.11.22.03.21
+        by smtp.gmail.com with ESMTPSA id u18-20020a17090341d200b001c7283d3089sm833444ple.273.2023.10.11.22.14.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Oct 2023 22:03:21 -0700 (PDT)
+        Wed, 11 Oct 2023 22:14:53 -0700 (PDT)
+Date: Wed, 11 Oct 2023 22:14:52 -0700
 From: Soumya Negi <soumya.negi97@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Micky Ching <micky_ching@realsil.com.cn>
-Cc: Soumya Negi <soumya.negi97@gmail.com>,
-	outreachy@lists.linux.dev,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: rts5208: Parenthesize macro arguments
-Date: Wed, 11 Oct 2023 22:02:40 -0700
-Message-Id: <20231012050240.20378-1-soumya.negi97@gmail.com>
-X-Mailer: git-send-email 2.17.1
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: outreachy@lists.linux.dev
+Subject: Re: [Outreachy Applicant] Introduction and a quick question
+Message-ID: <20231012051452.GD16374@Negi>
+References: <20231012024411.GC16374@Negi>
+ <alpine.DEB.2.22.394.2310120633190.3080@hadrien>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.22.394.2310120633190.3080@hadrien>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-Use parenthesis with macro arguments to avoid possible precedence
-issues. Found by checkpatch.pl
+On Thu, Oct 12, 2023 at 06:34:15AM +0200, Julia Lawall wrote:
+> 
+> 
+> On Wed, 11 Oct 2023, Soumya Negi wrote:
+> 
+> > Hello!
+> >
+> > My name is Soumya. I'm one of the applicants to Outreachy's December 2023
+> > round. Very excited to get working with everyone here:)
+> >
+> > For our final application, can we include old patches as well? Or are we to
+> > record only recent ones?
+> 
+> You need to contribute patches in this round.  You can mention previous
+> patches in your application, but indicate that they are from a previous
+> round.
 
-Signed-off-by: Soumya Negi <soumya.negi97@gmail.com>
----
- drivers/staging/rts5208/rtsx.h | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/staging/rts5208/rtsx.h b/drivers/staging/rts5208/rtsx.h
-index 2e101da83220..1cc05956ab6d 100644
---- a/drivers/staging/rts5208/rtsx.h
-+++ b/drivers/staging/rts5208/rtsx.h
-@@ -40,17 +40,17 @@
-  * macros for easy use
-  */
- #define rtsx_writel(chip, reg, value) \
--	iowrite32(value, (chip)->rtsx->remap_addr + reg)
-+	iowrite32(value, (chip)->rtsx->remap_addr + (reg))
- #define rtsx_readl(chip, reg) \
--	ioread32((chip)->rtsx->remap_addr + reg)
-+	ioread32((chip)->rtsx->remap_addr + (reg))
- #define rtsx_writew(chip, reg, value) \
--	iowrite16(value, (chip)->rtsx->remap_addr + reg)
-+	iowrite16(value, (chip)->rtsx->remap_addr + (reg))
- #define rtsx_readw(chip, reg) \
--	ioread16((chip)->rtsx->remap_addr + reg)
-+	ioread16((chip)->rtsx->remap_addr + (reg))
- #define rtsx_writeb(chip, reg, value) \
--	iowrite8(value, (chip)->rtsx->remap_addr + reg)
-+	iowrite8(value, (chip)->rtsx->remap_addr + (reg))
- #define rtsx_readb(chip, reg) \
--	ioread8((chip)->rtsx->remap_addr + reg)
-+	ioread8((chip)->rtsx->remap_addr + (reg))
- 
- #define rtsx_read_config_byte(chip, where, val) \
- 	pci_read_config_byte((chip)->rtsx->pci, where, val)
-@@ -131,8 +131,8 @@ static inline struct rtsx_dev *host_to_rtsx(struct Scsi_Host *host)
-  * The scsi_lock() and scsi_unlock() macros protect the sm_state and the
-  * single queue element srb for write access
-  */
--#define scsi_unlock(host)	spin_unlock_irq(host->host_lock)
--#define scsi_lock(host)		spin_lock_irq(host->host_lock)
-+#define scsi_unlock(host)	spin_unlock_irq((host)->host_lock)
-+#define scsi_lock(host)		spin_lock_irq((host)->host_lock)
- 
- #define lock_state(chip)	spin_lock_irq(&((chip)->rtsx->reg_lock))
- #define unlock_state(chip)	spin_unlock_irq(&((chip)->rtsx->reg_lock))
--- 
-2.17.1
-
+Got it. Thank you!
+> 
+> julia
+> 
+> 
+> >
+> > Looking forward to contributing,
+> > Soumya Negi
+> >
+> >
+> >
