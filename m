@@ -1,59 +1,51 @@
-Received: from mail-wr1-f52.google.com (mail-wr1-f52.google.com [209.85.221.52])
+Received: from mail-wm1-f53.google.com (mail-wm1-f53.google.com [209.85.128.53])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E275F224D3
-	for <outreachy@lists.linux.dev>; Thu, 12 Oct 2023 10:15:09 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0766A12E47
+	for <outreachy@lists.linux.dev>; Thu, 12 Oct 2023 10:54:06 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="iZ0bJv3H"
-Received: by mail-wr1-f52.google.com with SMTP id ffacd0b85a97d-32d885e97e2so773547f8f.0
-        for <outreachy@lists.linux.dev>; Thu, 12 Oct 2023 03:15:09 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="VMaEwVGV"
+Received: by mail-wm1-f53.google.com with SMTP id 5b1f17b1804b1-40572aeb6d0so8333035e9.1
+        for <outreachy@lists.linux.dev>; Thu, 12 Oct 2023 03:54:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1697105708; x=1697710508; darn=lists.linux.dev;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=nGBRtscR5XFDxdOEvFyr/E+oy+5VNzI6usKYmeqNS50=;
-        b=iZ0bJv3Hx2Se8WwB9b24ZVBD7yavQYadrVmNJO2Dkc7SeBTmOROK7GdTDug5YkOHiL
-         z7LYbkzXH2Q0pSuuK75DxBh5SND3tqXv/c9AhQpCsMVWVAQsi0wLhPgVz3EWd1YzLrTV
-         G4QDKFZW4qEmrjdCu0pCFWpt5v0RKZsJZXTROX2T7sremrLeQ0SueNtMng++Ny128q8O
-         agwFBA7VHp9YVMvwd0i+UPOdhqIgHlxxmmJmRZrGcACtolao+83Mplq5BVbFcBcA+ZL8
-         s6fX3HWaINGR863NHzD298DVO/p91/Jdx7zerTraY46XJIyYMewVKHgJ8sFZ/NCYhidL
-         vSLA==
+        d=gmail.com; s=20230601; t=1697108045; x=1697712845; darn=lists.linux.dev;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=PwfVpeI/qSAs+d/kcZD7V6/5x83n0bo3RF0VhsDESEo=;
+        b=VMaEwVGVD/Mji2R+iHRmirxpMBLNRwc6GLLO6ooD4HVw1LcYiZMkZgusQz+zw5HaDC
+         DAQA/UlyMRpY6v/aPmSilIDc/RxK/mTGolDeCqPzJiEP2kqgSUPP5NoY3PH4S1wNNJ/K
+         IVBusp14hQFRR2DpkoGy4Ht80n0oPSn9O3Ti2y5IRGuAJZgtBTEB/s0J5hMGVupLAYiE
+         MswYt60g12BbGUmswAV5Eq7YW3QLhME3T23OnvBCypLJ5XKcyciqVnP3dIeXZiuqFIxr
+         +p10vK+O6iHu5n3Onn6sS8r0NcvyhRJNgx8PhPPw59ikRUUpr8YSdehShg257lzRxdY8
+         i6Dw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697105708; x=1697710508;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=nGBRtscR5XFDxdOEvFyr/E+oy+5VNzI6usKYmeqNS50=;
-        b=RNdPH9I2l12HtreRdDg1Y+TcsBb4Hb1+QgO9sbiYHCp9Fi7Qt/7CKSX5gCiXhfX0m3
-         eOxIzEooL/70KwN/IdB8FAFnRkUSs9XIZTTr8Ytzp0l6VCPdjznS5KSJPYWMDBhW8q9O
-         CXHjVDtW2hUTdq2eobmIkKeK/z07lS9JFquFNm71LnrbfgrmOTxiJSRv/DYWvhARaVgz
-         N1K/EOsmgJVtWEpmJhY6Rq6+pjpUm/H/Ve4mP1R4fxsiftgyYdcRTAvFt8rM/DbU6dAE
-         fHvdgUsOBAGSDuXJvzLCKj/7W2dIFx6jUx+T0wJeS44U1WY8Se6o+PqEVWvWeKXyZJTe
-         qSqw==
-X-Gm-Message-State: AOJu0YzBNSn3soIQkFC+H420Rwd2Vsip0LQl7pGizeBjSxJduM9Vm6wT
-	q0lJZuSKGrB/+1791ywcqhmwUg==
-X-Google-Smtp-Source: AGHT+IF7ZOB1GpuF5uoZtYv82cP81Ykcjmt9UppAs2wf1pmdfGmQref1xRyVHDZlDqgkcVFCb/HFmQ==
-X-Received: by 2002:adf:dd82:0:b0:324:84bc:d59e with SMTP id x2-20020adfdd82000000b0032484bcd59emr19004327wrl.22.1697105708075;
-        Thu, 12 Oct 2023 03:15:08 -0700 (PDT)
-Received: from localhost ([102.36.222.112])
-        by smtp.gmail.com with ESMTPSA id ba18-20020a0560001c1200b0032d8a4b637bsm2981997wrb.22.2023.10.12.03.15.07
+        d=1e100.net; s=20230601; t=1697108045; x=1697712845;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=PwfVpeI/qSAs+d/kcZD7V6/5x83n0bo3RF0VhsDESEo=;
+        b=hh8JiUBnZ1qSzYM5xW6Vec6u8q+Mg6yIm262gBd7PI2gieQgBd1n2hKel3cKJUXqj/
+         E+YjjnAaZgHxoPGur1tJo5EZE3HQqc+35IBDfnvDHm4U0PUt0r5SmC8YnlP5AYlz5VFB
+         qnPOanhG6F2b3hzUAhu2iQFHXqmX1RtSEf/pPuYUebeJmtK4TSm7cwpC5G80gjUgNKjZ
+         lLh4aG46q5WR0uE2w+8kZPFHcN8iFtvOkQgncvsialAei2+QNgPKQ7DVyBTmZ6bXariN
+         KSG5oN2GUWzoUIdj6uLk9wYUnCLg1zxkZCSbU/R7WekdXI5dhnKJmwn4dK7E29DN1fTL
+         hyEw==
+X-Gm-Message-State: AOJu0YziFLmI2oXxwMNEpCtI00YdSssq1DT+UF+CRDkv/ySVI2t3i9l0
+	w+BihIGQscnwnZOsGYx5yA==
+X-Google-Smtp-Source: AGHT+IGmil8G1lOOQ84BDSSL1lO5arUsgffeT2iBPG7XLayQy/zHk3ehOtzpTOo4YlETYqWfFYi7QA==
+X-Received: by 2002:a7b:cc95:0:b0:3fe:f726:4a94 with SMTP id p21-20020a7bcc95000000b003fef7264a94mr20743232wma.14.1697108044789;
+        Thu, 12 Oct 2023 03:54:04 -0700 (PDT)
+Received: from dorcaslitunya-virtual-machine ([105.163.2.146])
+        by smtp.gmail.com with ESMTPSA id ce9-20020a5d5e09000000b0032d687fd9d0sm6456549wrb.19.2023.10.12.03.54.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Oct 2023 03:15:07 -0700 (PDT)
-Date: Thu, 12 Oct 2023 13:15:04 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Calvince Otieno <calvncce@gmail.com>
-Cc: outreachy@lists.linux.dev, linux-kernel@vger.kernel.org,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Dan Carpenter <error27@gmail.com>, Archana <craechal@gmail.com>,
-	Bagas Sanjaya <bagasdotme@gmail.com>,
-	Simon Horman <horms@kernel.org>, linux-staging@lists.linux.dev
-Subject: Re: [PATCH] staging/wlan-ng: remove strcpy() use in favor of
- strscpy()
-Message-ID: <848becd6-9f65-4316-a2f0-ebf2ed2f5758@kadam.mountain>
-References: <ZSeD1UojAgrsOh16@lab-ubuntu>
- <f0c12a00-ad9e-45b2-9cb2-7a84f4f10ef9@kadam.mountain>
+        Thu, 12 Oct 2023 03:54:04 -0700 (PDT)
+Date: Thu, 12 Oct 2023 13:54:01 +0300
+From: Dorcas Litunya <anonolitunya@gmail.com>
+To: julia.lawall@inria.fr
+Cc: outreachy@lists.linux.dev
+Subject: [Outreachy]Inquiry on checkpatch.pl
+Message-ID: <ZSfQSSvna4hX0tnM@dorcaslitunya-virtual-machine>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -62,20 +54,15 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <f0c12a00-ad9e-45b2-9cb2-7a84f4f10ef9@kadam.mountain>
 
-On Thu, Oct 12, 2023 at 01:03:40PM +0300, Dan Carpenter wrote:
-> The simplest approach is to do a:
-> 
-> 	git grep strscpy | grep " - 1"
-> 
-> But the better approach would be to write a Smatch or Coverity check to
-> prevent these in the future.
+Hi Julia,
 
-I meant Coccinelle not Coverity.  Duh...
+A general inquiry on the checkpatch.pl link in the documentation page
+is not working. This is found in the "Start creating first patch"
+section. When you click the link, it seems to be broken, as it returns a
+404 error message. Any assistance with regards to this will be
+appreciated.
 
-Also btw, sometimes we want to keep the "don't necessarily terminate the
-string behavior".  That's rare and ugly, but it does exist.
+Kind regards,
+Dorcas
 
-regards,
-dan carpenter
