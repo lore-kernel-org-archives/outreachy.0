@@ -1,53 +1,52 @@
-Received: from mail-wm1-f51.google.com (mail-wm1-f51.google.com [209.85.128.51])
+Received: from mail-pj1-f51.google.com (mail-pj1-f51.google.com [209.85.216.51])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 28D0D12E49
-	for <outreachy@lists.linux.dev>; Wed, 11 Oct 2023 19:30:34 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C24067F4
+	for <outreachy@lists.linux.dev>; Thu, 12 Oct 2023 02:44:13 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Hdz+0sAa"
-Received: by mail-wm1-f51.google.com with SMTP id 5b1f17b1804b1-40666aa674fso2723305e9.0
-        for <outreachy@lists.linux.dev>; Wed, 11 Oct 2023 12:30:34 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="J5owiTGe"
+Received: by mail-pj1-f51.google.com with SMTP id 98e67ed59e1d1-27cfb36c0d4so422929a91.2
+        for <outreachy@lists.linux.dev>; Wed, 11 Oct 2023 19:44:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1697052633; x=1697657433; darn=lists.linux.dev;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=k5Spzo7BlsNunBEJhKNm5Jzq+r9BI1Zk/hKbS1tW0V4=;
-        b=Hdz+0sAag8G7eVpZeDpEa02jCqYB6OJSws+PNLtw/vBDk66a/ICHaXmrNeZD9hnbyb
-         pfujUDvAkLp0Sy1mC34JvYz34VoT8C+El6G6ZgsRWOiziwQUlm8IeeIE9tyzbV+Z6ezL
-         QCp3anAEENCFYZA6XArICloCBNEvbP8VpgF4HJD3SUgLuFSOSlXpyn2jx+FKUpqblcCQ
-         Q15M/mY6fvuf10Ht+TpR3fWgCmFaHtYCwxDHdkI3L+XEQko5AnToE4oIMObRyugQFhU1
-         AgJ85buwj9urJ4ufrQHd6pClYwLLe/KO9av4nVFsHUFCgaZHX7gcBMFTABXS7N6nwdjq
-         V7gg==
+        d=gmail.com; s=20230601; t=1697078653; x=1697683453; darn=lists.linux.dev;
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=Tss9BBPxVVJTSbjVDr2C0fRhOQgvFaoneVmVWfSajgw=;
+        b=J5owiTGeCUCRd65CXR2ygZUpfAwinRyHCC61Z1yzGXsi5shO76mvGKUos4S2rI+1Qs
+         9jVaKVkrC+VGx1EOQl+Zha0nsHVUlurdPffTFChbivw+hwsNl+KfI6ilFyuORKtM45Ca
+         IosyY0LcaJ1ZUx6m40GGjDErPwjaZ8f8ltua8VTy9MpET6SNpuyh675ntNjBMHN3VhdP
+         5BtDU0ZI8f1jlrZg55HlSdNwWh7GImVOvrg8s+0JV4hSzhtcmIz5l8dMRBRtwWO3M0XH
+         wT84gaSnCLy/eA0Aict9GNAdt8xvpIRpdHPMzbhq9bygRYrN9P3ofcW72rvJijrmkM8R
+         gGuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697052633; x=1697657433;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=k5Spzo7BlsNunBEJhKNm5Jzq+r9BI1Zk/hKbS1tW0V4=;
-        b=OHCIe1jTZ5P+s7P1GO+OphKKv3TpY98rdZJr5Lmu/SIyCVouj2/DKuMyTRy2NYkg4p
-         hXWC34NNZPGTicW5jJNi/m0MCtxbq4J/Erako3GO+giYSn7pFda0lG0PBpgl9qj2z1vX
-         68o4XVA/SbScJtPbfhfHfYG6DOfV2e3jN170nQj02m/p5xswsq1ln74QY2XVaxKSyjEy
-         7em6Z3abKxcmLA9JlBhuxKww52Mx5fU50f4uVwSMocBr1jRcPtA/5kOYLfrw7JgrHCUm
-         i0OH8148I5lq7DD16W8C04yj3XHqodMWsYIOe7gsU5VSYxRnboRQeMK8jEVa2Qvm0ped
-         ENvA==
-X-Gm-Message-State: AOJu0Yw8fwnhv4mfidxLZAQ6xWqhIblz+4CHUKhPltwT7JiJip7fN3dj
-	Q4qKzgGeSdB2526upkY+1w==
-X-Google-Smtp-Source: AGHT+IGxJt5T3iZEq24NpWMubaYi8OPg2jRXZL9nJmeVwUouAPen5FYzE/iYb68gvNhACagGRHH6ow==
-X-Received: by 2002:a1c:7212:0:b0:401:bdd7:499d with SMTP id n18-20020a1c7212000000b00401bdd7499dmr20084515wmc.25.1697052632906;
-        Wed, 11 Oct 2023 12:30:32 -0700 (PDT)
-Received: from dorcaslitunya-virtual-machine ([105.163.2.146])
-        by smtp.gmail.com with ESMTPSA id y24-20020a7bcd98000000b004064741f855sm17521915wmj.47.2023.10.11.12.30.31
+        d=1e100.net; s=20230601; t=1697078653; x=1697683453;
+        h=user-agent:content-disposition:mime-version:message-id:subject:to
+         :from:date:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Tss9BBPxVVJTSbjVDr2C0fRhOQgvFaoneVmVWfSajgw=;
+        b=MGBkg3rTBjIU6+3rx7njg1lClJSaxKoUI6zbVz6ZugnAexPZt3y/w4qvinuY5L3sKC
+         6czG8Zd8zeByMpiWuDK2TdRGi9kYEWtcwYZuA5Q8MHQN32Z1G3hNycFbIY2n3Mxrqm5w
+         iQ05K1b6oFn70Kl0zJrjjPQR1TIJCokJHShuRNcA3MDefQ+29Yj8W7lTLC3csA/sjN5f
+         GSH5BdWzwQoDsUAKnWrXkVhxwoG7dEfwGqq0h7KXjANmmryoUhTzRU9/jq+syFE+N8ZR
+         KRlfl2Q2y6pwnGTioEGHLaRiNo++Wm3PO1VwseaskZ3DlLVPDf/y6blvIYokPgVkfu8g
+         fFQg==
+X-Gm-Message-State: AOJu0YwYlyk8Y7INW8RD562TvfRgoDDwu7qfZnEcd1fBWMPUdesexcGQ
+	2I6hNvMLLin75DtgfHIE552mj2omxu8=
+X-Google-Smtp-Source: AGHT+IH1FmVYyJs/0ng8uxN065JX97GRgQsF2mKl6pHbmizTXWiw8dUm/gclVweaFbnbrt5NMFPp6A==
+X-Received: by 2002:a17:90a:1f4d:b0:279:3173:d73a with SMTP id y13-20020a17090a1f4d00b002793173d73amr20337960pjy.26.1697078652946;
+        Wed, 11 Oct 2023 19:44:12 -0700 (PDT)
+Received: from Negi (2603-8000-b93d-20a0-29fa-db66-4c18-1f0a.res6.spectrum.com. [2603:8000:b93d:20a0:29fa:db66:4c18:1f0a])
+        by smtp.gmail.com with ESMTPSA id nk14-20020a17090b194e00b00277246e857esm667017pjb.23.2023.10.11.19.44.11
+        for <outreachy@lists.linux.dev>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Oct 2023 12:30:32 -0700 (PDT)
-Date: Wed, 11 Oct 2023 22:30:29 +0300
-From: Dorcas Litunya <anonolitunya@gmail.com>
-To: Gilbert Adikankwu <gilbertadikankwu@gmail.com>
-Cc: outreachy@lists.linux.dev, julia.lawall@inria.fr
-Subject: Re: [Outreachy tip] Guide to setup mutt for Gmail
-Message-ID: <ZSb31aIwiXyJU10U@dorcaslitunya-virtual-machine>
-References: <ZSZ5ZfwTdkHcG5WL@gilbert-PC>
+        Wed, 11 Oct 2023 19:44:12 -0700 (PDT)
+Date: Wed, 11 Oct 2023 19:44:11 -0700
+From: Soumya Negi <soumya.negi97@gmail.com>
+To: outreachy@lists.linux.dev
+Subject: [Outreachy Applicant] Introduction and a quick question
+Message-ID: <20231012024411.GC16374@Negi>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -56,59 +55,16 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ZSZ5ZfwTdkHcG5WL@gilbert-PC>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-On Wed, Oct 11, 2023 at 11:31:01AM +0100, Gilbert Adikankwu wrote:
-> Hello,
-> 
-> This is a guide to setup mutt, the recommended text-based email client
-> for the Outreachy Linux community.
-> 
-> If you have not read the newbies tutorial, please read it first to see the 
-> steps for the initial setup of mutt. This guide is a follow-up to the initial
-> setup steps decribed in the newbies tutorial.
-> 
-> Here, you will learn how to setup your mutt to access emails in
-> your Gmail inbox and reply to them. 
-> 
-> Next, set up the mail client, mutt, with some defaults, by creating a
-> .muttrc file in your /home and add the following lines to it:
-> 
-> set sendmail="/usr/bin/esmtp"
-> set envelope_from=yes
-> set from="Your name <your_username@gmail.com>"
-> set use_from=yes
-> set edit_headers=yes
-> set editor="vi"
-> set send_charset="us-ascii:utf-8"
-> set sort_aux =  last-date-received
-> set sort = reverse-threads
-> 
-> # IMAP settings
-> set imap_user = "your_username@gmail.com"
-> set imap_pass = "mailbox/app password"
-> 
-> # SMTP settings
-> set smtp_url = "smtps://your_username@smtp.gmail.com"
-> set smtp_pass = "mailbox/app password"
-> 
-> # Remote Gmail folders
-> set folder = "imaps://imap.gmail.com:993"
-> set spoolfile = "+INBOX"
-> set record = "+[Gmail]/Sent Mail"
-> set trash = "+[Gmail]/Trash"
-> set postponed = "+[Gmail]/Drafts"
-> 
+Hello!
 
-Setting up the remote Gmail folders was particularly useful as I was
-stuck on how I would reach my inboxes from the mutt client. Good stuff
-Gilbert! Thanks for this tip :-)
-> 
-> Note: The imap_pass and smtp_pass can be your App password or email
-> password
-> 
-> I hopes this helps
-> 
-> Best wishes
-> Gilbert
-> 
+My name is Soumya. I'm one of the applicants to Outreachy's December 2023 
+round. Very excited to get working with everyone here:)
+
+For our final application, can we include old patches as well? Or are we to
+record only recent ones?
+
+Looking forward to contributing,
+Soumya Negi
+
