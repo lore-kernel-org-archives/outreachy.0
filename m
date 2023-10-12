@@ -1,55 +1,55 @@
-Received: from mail-pl1-f177.google.com (mail-pl1-f177.google.com [209.85.214.177])
+Received: from mail-ej1-f47.google.com (mail-ej1-f47.google.com [209.85.218.47])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DF61863B3
-	for <outreachy@lists.linux.dev>; Thu, 12 Oct 2023 05:14:54 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C64AC28EF;
+	Thu, 12 Oct 2023 05:27:53 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="IyIohrEJ"
-Received: by mail-pl1-f177.google.com with SMTP id d9443c01a7336-1c871a095ceso4889085ad.2
-        for <outreachy@lists.linux.dev>; Wed, 11 Oct 2023 22:14:54 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="lNSAALck"
+Received: by mail-ej1-f47.google.com with SMTP id a640c23a62f3a-9adca291f99so81706866b.2;
+        Wed, 11 Oct 2023 22:27:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1697087694; x=1697692494; darn=lists.linux.dev;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=YRUIrcAmiAuxgrSpJrLpozQtM7sLAlk6GfQunU9PiRU=;
-        b=IyIohrEJmzd+2mrrWcMX8Fx7NMz9C26LBwaQCUjXxBWwcJpr6At1txuAfsFxppsFL+
-         xmNxgO+GOR3Tsa4b1egOKeoxSbmWcfMfkVb2l6oIkz1QU8/gPH0cpxBBnMYjhQpiUDAL
-         AIrDfJULG1QQyFSJP0Q0wyt7boEiCrFlhKLGQyBo2I1O8MZPibzplXPvVZ5grEQWt/f2
-         zjqtzoa8ynf4QHp69SJ7GbTtw3D3W+2POhX1AUBER/q6tJ5gGrW7+uBh5sscdnnxoD8r
-         PnHDz9eiACsLNrbyeIKytyZLaxHyh/1/DFa9o1/jpzWfQ+b3kAKuGgbSYaIU3yqtPteX
-         MXxw==
+        d=gmail.com; s=20230601; t=1697088472; x=1697693272; darn=lists.linux.dev;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=ozg712u+fkxOtQ1gw/5043+BQ9WtYWW1ZFVe71DFuYA=;
+        b=lNSAALck0WoFO64VRXlK/EeMzEdQEU3214md23V2r/XWxf/V5NMXMBnlgZbKbhxp4w
+         BcuJwVxW7s2ETmsSxFog2wPjJnr3p+ZMhj0cQFm2em5jIVnZu9CPR1/IwXZ0iC+/0O0e
+         /LTnkx/ngaNWrDdmZEbTjwdsbmE7aJM4uxc6axUGWqJjiVXfstQdFgGbWhFdRNekpDar
+         j8iJbhLnZ2zwrwirlevK6IA8vqAo2WhVXle1WBaD7CdVoTcmjwoOnpSP5yJOEqon7Ze3
+         Fh+l1HnvaRY697mZ47l/dxfQK1pG+lxkMqVIWdNPttjb7JBHjPqdrA44vmabIwL3gmE/
+         sKiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697087694; x=1697692494;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=YRUIrcAmiAuxgrSpJrLpozQtM7sLAlk6GfQunU9PiRU=;
-        b=UPE9LY4FpJ5fmfsBVfoGMvDcPgxemwO5nlMeYyljO6TmBvZ8eFYRj8gZY56Yh2wZGP
-         Aqkk5SnklInsnVKUyoLLMUz8AYATr66kyvnRYkaFveJqpxpzam2amBnypxFwxJiHLGAR
-         /pqOUkq3tImMfJaGPhWmJKIX6TQb5FTPioRv+yOpkaLDyqYitwXqDtWrYVfd/LEdyEIT
-         Q8esKz2ArJdXv5oWo545wGmURgScvlxEFGCaEkXPJ1zm2tV3UA1qYKn5ko7g+JnQd3zy
-         ADz6p+aHqK5CyX7XHSbfyKGSY6qobfFZWtAvPhwj7oPO0pqZ2J/WXseZlthrE5FgVD/m
-         Ux2w==
-X-Gm-Message-State: AOJu0Yx2n6/y5wXHyw8i1IO5e8E+8wxSJX/ZiU38cxTAGpeImf+bMvm2
-	pMpd3yGY0Cdo9CudLj2Cmro8md3vGzLaOg==
-X-Google-Smtp-Source: AGHT+IH8y8HYFQEFT8Vf6APsF7hiUhSPUmtI+QGRLFeEKw2FdhCvjFPbYwiww2TbBvBT/gDfSkdZJg==
-X-Received: by 2002:a17:903:264a:b0:1c9:c496:bde3 with SMTP id je10-20020a170903264a00b001c9c496bde3mr4970986plb.53.1697087693864;
-        Wed, 11 Oct 2023 22:14:53 -0700 (PDT)
-Received: from Negi (2603-8000-b93d-20a0-29fa-db66-4c18-1f0a.res6.spectrum.com. [2603:8000:b93d:20a0:29fa:db66:4c18:1f0a])
-        by smtp.gmail.com with ESMTPSA id u18-20020a17090341d200b001c7283d3089sm833444ple.273.2023.10.11.22.14.52
+        d=1e100.net; s=20230601; t=1697088472; x=1697693272;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=ozg712u+fkxOtQ1gw/5043+BQ9WtYWW1ZFVe71DFuYA=;
+        b=O2Bs/zAm9ijsv7pgmLgRh0uyUFFSBazYvIujksxXbRo4WkbXi5M5AbVAUY/F9u9JRZ
+         T08nOel74uAQffzkGPQAB/znBx2YOGKFLE+Ugaz+ZkqVfgun1afKrXBEylVdrZ3SHW7A
+         9mJi6HwdmvqZl8KxDpelIxje5NOF3vnJip3b4l5H4YrqtfybDopN7Q0KGn/Xn0EWnyCS
+         3ArmGAYNQUqo7mVf4YzodHnx+5SWFeR8qGjqWAhmZwbvzIezws7F41V+/SNKJLNWO8S3
+         zH/GZAdr18+NpbWm6D0Mn4XpXY8cWuNky0pG00IKUD82OhMgJtlS7JYTiEDNSJdhKhIt
+         ayuQ==
+X-Gm-Message-State: AOJu0Yx1yTSSxyoGGpTyQ3om6XLGvOu2OCxAu+qx1QZcJmKBQe8JFpad
+	8oyXdiKwDOyZmHWQBCyD55E=
+X-Google-Smtp-Source: AGHT+IF5tYUPLGypOey9huLbPekHSPE+pf00HCsiwFtXUpe7IaMbQweFfXQemW7Ol5j6nK+4EEqVqw==
+X-Received: by 2002:a17:906:328c:b0:9ae:4776:5a3a with SMTP id 12-20020a170906328c00b009ae47765a3amr20714283ejw.39.1697088471826;
+        Wed, 11 Oct 2023 22:27:51 -0700 (PDT)
+Received: from lab-ubuntu ([41.90.69.21])
+        by smtp.gmail.com with ESMTPSA id n17-20020a170906379100b009b957d5237asm10516169ejc.80.2023.10.11.22.27.50
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Oct 2023 22:14:53 -0700 (PDT)
-Date: Wed, 11 Oct 2023 22:14:52 -0700
-From: Soumya Negi <soumya.negi97@gmail.com>
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: outreachy@lists.linux.dev
-Subject: Re: [Outreachy Applicant] Introduction and a quick question
-Message-ID: <20231012051452.GD16374@Negi>
-References: <20231012024411.GC16374@Negi>
- <alpine.DEB.2.22.394.2310120633190.3080@hadrien>
+        Wed, 11 Oct 2023 22:27:51 -0700 (PDT)
+Date: Thu, 12 Oct 2023 08:27:49 +0300
+From: Calvince Otieno <calvncce@gmail.com>
+To: outreachy@lists.linux.dev, linux-kernel@vger.kernel.org
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Dan Carpenter <error27@gmail.com>, Archana <craechal@gmail.com>,
+	Bagas Sanjaya <bagasdotme@gmail.com>,
+	Simon Horman <horms@kernel.org>, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] staging/wlan-ng: remove strcpy() use in favor of strscpy()
+Message-ID: <ZSeD1UojAgrsOh16@lab-ubuntu>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -58,34 +58,29 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <alpine.DEB.2.22.394.2310120633190.3080@hadrien>
-User-Agent: Mutt/1.9.4 (2018-02-28)
 
-On Thu, Oct 12, 2023 at 06:34:15AM +0200, Julia Lawall wrote:
-> 
-> 
-> On Wed, 11 Oct 2023, Soumya Negi wrote:
-> 
-> > Hello!
-> >
-> > My name is Soumya. I'm one of the applicants to Outreachy's December 2023
-> > round. Very excited to get working with everyone here:)
-> >
-> > For our final application, can we include old patches as well? Or are we to
-> > record only recent ones?
-> 
-> You need to contribute patches in this round.  You can mention previous
-> patches in your application, but indicate that they are from a previous
-> round.
+strncpy() function is actively dangerous to use since it may not
+NUL-terminate the destination string, resulting in potential memory
+content exposures, unbounded reads, or crashes. strcpy() performs
+no bounds checking on the destination buffer. The safe replacement
+is strscpy() which is specific to the Linux kernel.
 
-Got it. Thank you!
-> 
-> julia
-> 
-> 
-> >
-> > Looking forward to contributing,
-> > Soumya Negi
-> >
-> >
-> >
+Signed-off-by: Calvince Otieno <calvncce@gmail.com>
+---
+ drivers/staging/wlan-ng/prism2fw.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/wlan-ng/prism2fw.c b/drivers/staging/wlan-ng/prism2fw.c
+index 5d03b2b9aab4..57a99dd12143 100644
+--- a/drivers/staging/wlan-ng/prism2fw.c
++++ b/drivers/staging/wlan-ng/prism2fw.c
+@@ -725,7 +725,7 @@ static int plugimage(struct imgchunk *fchunk, unsigned int nfchunks,
+ 
+ 		if (j == -1) {	/* plug the filename */
+ 			memset(dest, 0, s3plug[i].len);
+-			strncpy(dest, PRISM2_USB_FWFILE, s3plug[i].len - 1);
++			strscpy(dest, PRISM2_USB_FWFILE, s3plug[i].len - 1);
+ 		} else {	/* plug a PDR */
+ 			memcpy(dest, &pda->rec[j]->data, s3plug[i].len);
+ 		}
+
