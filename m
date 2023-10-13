@@ -1,54 +1,56 @@
-Received: from mail-wm1-f54.google.com (mail-wm1-f54.google.com [209.85.128.54])
+Received: from mail-wr1-f45.google.com (mail-wr1-f45.google.com [209.85.221.45])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C9B535692
-	for <outreachy@lists.linux.dev>; Fri, 13 Oct 2023 06:52:16 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 847EF5692;
+	Fri, 13 Oct 2023 06:52:55 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="NZGWTc8W"
-Received: by mail-wm1-f54.google.com with SMTP id 5b1f17b1804b1-406402933edso18417145e9.2
-        for <outreachy@lists.linux.dev>; Thu, 12 Oct 2023 23:52:16 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="NDuWSIJW"
+Received: by mail-wr1-f45.google.com with SMTP id ffacd0b85a97d-32d849cc152so1691365f8f.1;
+        Thu, 12 Oct 2023 23:52:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1697179935; x=1697784735; darn=lists.linux.dev;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=Iw6+ctYW3Ezn1+ti7Uve8frkm4o0a9yAQ5tUuhclcNE=;
-        b=NZGWTc8W54m4J1gRruWm/DiFItL23MzUIfkU+fgraqr8gnVctjRy/akXkQgF2VlT8/
-         iuTsG0wloS+LlWYyxby+pygq+8n9xE8HI5fR9vjNI24tzO910FTGdsE9jIZj0FU997gg
-         gFZlWWxlOPkp+BAyOMJaBX5I3DBvg3NavQx1/pGifl+INvBa1xjctmsiVNG9g96ZXCbW
-         3zHRGUsL6jYq52EXnSwBiC/vFsT0W4JLKh49By0UsX5ail4fxSMkA1Qh9YaiPOpQoS9k
-         gbfZwx4RiBjGEdgpL9uKj6d13udMjE6VsIXknP+PvDymZkp5TeHNlRqFWFbQoguwnmqw
-         K8nQ==
+        d=gmail.com; s=20230601; t=1697179974; x=1697784774; darn=lists.linux.dev;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=1fwSnEb/oGascEkxYNcgQ1DoI1EHky2CUmiF3z/VGsc=;
+        b=NDuWSIJW0d8Gpbg3Moo6g+FhXiuAC4KoNDPn8ZSIBxZOaVP2TlObJAg1uigfyLuut7
+         GONF5xUY35qhJ0Hk4b2prLParIVuCh05FkxPgVluS/UHreYw6eC4Nn2CQk1zejCPIAYH
+         ajnROmXBq81AjcdN5EL/BkjQhxBDjHHHf3+nuLjFE5vnqJJ2rzMZa00F3TUuDJHPL2x+
+         uGeTPt491fpDFDPlO59U+MJRqQdNcD8/pgqa1a4Sxjeqped/Og6jsuo6662hXBI8F4B8
+         6o0gazstvtYgy4f47lOGuNINLp1WzTYCNNTveEU9LR/YLaVSYNY1Z/jHLWYzF5kL6O/2
+         1j/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697179935; x=1697784735;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Iw6+ctYW3Ezn1+ti7Uve8frkm4o0a9yAQ5tUuhclcNE=;
-        b=Wq3RVeTCT9oj22h4EIGWgiAtlgFE97ffsBLMdNpSDF9piHqbRGr7qisWrCKtfEssMA
-         2lk3Q3mZUTuzn51FA0qZhU9zFkwuQIORanYj4HiYH6UxqnNqKugAyNZGEhSUjQW6j639
-         pbzV1Ls4BM2CGLyi0drv5ByAZgAqTW1GnnlzZ9dvElOfMNQ7J0WsYkPDLseui1G6B51z
-         zLQYWcPO8hPi5Z0LdKiG6fQ/RdacSsDKiF0YJ89pr+xCE7YYeRSCyMrq0xTPNPP6zYkE
-         KrOpocw/hToUNH+7qmKF+50i8VEQOPdLeFdrgGj9qi0qTtwXkjYl6zZzphBhPGmn6XHT
-         zd5Q==
-X-Gm-Message-State: AOJu0YxKrgFtoGDjVzET5NvsI3D1t2EwRpLNzSSwNsM1Lw+ULoZjV5sm
-	nPF0qhSdoL7NAKFetbsJNiv2TTT+D6YQ
-X-Google-Smtp-Source: AGHT+IHfoqXKaHkuIgLIpG+aEw8d6FugWAjXm4JVGt56Rk/J0bltFBN7szGMhC47FOBFOtl6xIFULA==
-X-Received: by 2002:a7b:ce19:0:b0:405:3e9a:f1e3 with SMTP id m25-20020a7bce19000000b004053e9af1e3mr23684593wmc.11.1697179934642;
-        Thu, 12 Oct 2023 23:52:14 -0700 (PDT)
-Received: from dorcaslitunya-virtual-machine ([105.163.2.146])
-        by smtp.gmail.com with ESMTPSA id n25-20020a1c7219000000b003fe1c332810sm1661718wmc.33.2023.10.12.23.52.13
+        d=1e100.net; s=20230601; t=1697179974; x=1697784774;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=1fwSnEb/oGascEkxYNcgQ1DoI1EHky2CUmiF3z/VGsc=;
+        b=VMKSW3I0FJnS2wL/zPK+l2ctX99hElKRC8D1A21ihLrbAwsz188zE+ur1iABcgvRLY
+         KVodshwqADa2EnKNrO7ISgSJGcFcWI+ZYcq7QjsSzvp3HDsx53Jwhak97jnQ19BMZhpi
+         f0zeVFUZP/vMVv9I8mEQs2EWBhjum3dM7s4n77008RRq3aHncSFbm9zN29JoWpas48JX
+         Ex5FVDRO4mdRceUkyXVkv3PY3E1Ezn4YZ9aSFI2VB1iaAD0zq/tcpRE+gKs7p6paQQda
+         g1s2RJSH2K4oeC/BIUNJ7JImnxKv6f2M56yiipYsrp13ZL+G1tgkRIzjTD9hui/H9/L0
+         lLRw==
+X-Gm-Message-State: AOJu0YxkxKb7kjVVhln5rjQHhtcTc04qAH/K5khHsK0oVHJdDZINTB5/
+	HI25MriaCWC3GF9ksDysVnI=
+X-Google-Smtp-Source: AGHT+IGMvyjlULk/r5LkFCrZSMyEp4or+xvVuLLJOmX7A/O77IAh6ozNhv8iIiCmMKKwFR0y5b4qsQ==
+X-Received: by 2002:adf:f449:0:b0:32d:9daf:3f94 with SMTP id f9-20020adff449000000b0032d9daf3f94mr536713wrp.53.1697179973479;
+        Thu, 12 Oct 2023 23:52:53 -0700 (PDT)
+Received: from lab-ubuntu ([41.90.69.21])
+        by smtp.gmail.com with ESMTPSA id a1-20020a056000100100b0032d9efeccd8sm377463wrx.51.2023.10.12.23.52.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Oct 2023 23:52:14 -0700 (PDT)
-Date: Fri, 13 Oct 2023 09:52:11 +0300
-From: Dorcas Litunya <anonolitunya@gmail.com>
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: outreachy@lists.linux.dev
-Subject: Re: [Outreachy]Clarification on code section in qlge driver
-Message-ID: <ZSjpGx+s6xCVOnKF@dorcaslitunya-virtual-machine>
-References: <ZSjkhx+xWP9xXiAt@dorcaslitunya-virtual-machine>
- <388ed3fe-8e5f-9be9-4072-30ebbdd17960@inria.fr>
+        Thu, 12 Oct 2023 23:52:53 -0700 (PDT)
+Date: Fri, 13 Oct 2023 09:52:50 +0300
+From: Calvince Otieno <calvncce@gmail.com>
+To: outreachy@lists.linux.dev, linux-kernel@vger.kernel.org
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Luke Koch <lu.ale.koch@gmail.com>,
+	Bagas Sanjaya <bagasdotme@gmail.com>,
+	Simon Horman <horms@kernel.org>,
+	Calvince Otieno <calvncce@gmail.com>, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] staging: wlan-ng: remove unused functions
+Message-ID: <ZSjpQlUcyOoYv4Yh@lab-ubuntu>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -57,81 +59,41 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <388ed3fe-8e5f-9be9-4072-30ebbdd17960@inria.fr>
 
-On Fri, Oct 13, 2023 at 08:41:32AM +0200, Julia Lawall wrote:
-> 
-> 
-> On Fri, 13 Oct 2023, Dorcas Litunya wrote:
-> 
-> > Hi Julia,
-> >
-> > I am trying to edit the above macro to incorporate an inline function as
-> > macros with control flows are highly discouraged. However, I wanted to
-> > inquire about some parameters in the FILL_SEG  macro below so that I can be able effectively
-> > create a well parameterized function.
-> 
-> seg_hdr and seg_regs are not vealues, they are field names.  There is no
-> way that you can pass a field name to a function.  You could pass the
-> complete values &dump->seg_hdr and dump->seg_regs, but then one could
-> wonder why not pass dump as well.  And then the calls would start getting
-> a bit large.
-> 
-> Since this macro is specific to a particular function and is defined right
-> before that function, I think it would be better to leave it as it is.
->
-Makes a lot of sense. My other idea besides defining the entire macro as
-a function was to encapsulate what the macro does in the code block as a
-function as below:
+The following functions were defined in the prism2mgmt.h file but neither
+declared nor used anywhere. It is recommended that they be removed.
 
-#define FILL_SEG(seg_hdr, seg_regs,fmsg,dump) fill_seg_handling_error(fmsg,dump)
+	- void prism2mgmt_get_grpaddr(u32 did, struct p80211pstrd *pstr,
+				      struct hfa384x *priv);
+	- int prism2mgmt_set_grpaddr(u32 did,
+		                   u8 *prism2buf, struct p80211pstrd *pstr,
+	                           struct hfa384x *priv);
+	- int prism2mgmt_get_grpaddr_index(u32 did);
 
-static int fill_seg_handling_error(struct fmsg *fmsg, struct dump *dump) {
-        int err = qlge_fill_seg_(fmsg, &dump->seg_hdr, dump->seg_regs);
-        if (err) {
-                kvfree(dump);
-                return err;
-        }
-        return 0
-}
+Signed-off-by: Calvince Otieno <calvncce@gmail.com>
+---
+ drivers/staging/wlan-ng/prism2mgmt.h | 8 --------
+ 1 file changed, 8 deletions(-)
 
-Not sure if doing it this way creates some sort of redudancy or may lead to some 
-unprecedented problems or  can it be considered
-as a way to make the code more readable and maintainable?
+diff --git a/drivers/staging/wlan-ng/prism2mgmt.h b/drivers/staging/wlan-ng/prism2mgmt.h
+index 083a055ee986..8c3f1ac35913 100644
+--- a/drivers/staging/wlan-ng/prism2mgmt.h
++++ b/drivers/staging/wlan-ng/prism2mgmt.h
+@@ -78,14 +78,6 @@ void prism2mgmt_pstr2bytestr(struct hfa384x_bytestr *bytestr,
+ void prism2mgmt_bytestr2pstr(struct hfa384x_bytestr *bytestr,
+ 			     struct p80211pstrd *pstr);
+ 
+-/* functions to convert Group Addresses */
+-void prism2mgmt_get_grpaddr(u32 did, struct p80211pstrd *pstr,
+-			    struct hfa384x *priv);
+-int prism2mgmt_set_grpaddr(u32 did,
+-			   u8 *prism2buf, struct p80211pstrd *pstr,
+-			   struct hfa384x *priv);
+-int prism2mgmt_get_grpaddr_index(u32 did);
+-
+ void prism2sta_processing_defer(struct work_struct *data);
+ 
+ void prism2sta_commsqual_defer(struct work_struct *data);
+-- 
+Calvince Otieno
 
-Dorcas
-> julia
-> 
-> 
-> 
-> 
-> 
-> 
-> 
-> 
-> 
-> >
-> > #42: FILE: drivers/staging/qlge/qlge_devlink.c:42:
-> > +#define FILL_SEG(seg_hdr, seg_regs)                                        \
-> > +       do {                                                                \
-> > +               err = qlge_fill_seg_(fmsg, &dump->seg_hdr, dump->seg_regs); \
-> > +               if (err) {                                                  \
-> > +                       kvfree(dump);                                       \
-> > +                       return err;                                         \
-> > +               }                                                           \
-> > +       } while (0)
-> >
-> >
-> >
-> > The fmsg parameter and the dump parameter, both
-> > in the qlge_fill_seg_() function inside the macro, where are they referenced from?
-> > Looking through the code, I cannot see global variables in relation to
-> > this. Are they command line arguments or does is thekernel set to
-> > provide them?
-> >
-> > Any assistance will be appreciated.
-> >
-> > Kind regards,
-> > Dorcas
-> >
-> >
