@@ -1,76 +1,137 @@
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-wm1-f54.google.com (mail-wm1-f54.google.com [209.85.128.54])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 86DB03C36;
-	Fri, 13 Oct 2023 06:42:50 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C9B535692
+	for <outreachy@lists.linux.dev>; Fri, 13 Oct 2023 06:52:16 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="su3F6wnU"
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="NZGWTc8W"
+Received: by mail-wm1-f54.google.com with SMTP id 5b1f17b1804b1-406402933edso18417145e9.2
+        for <outreachy@lists.linux.dev>; Thu, 12 Oct 2023 23:52:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=do1ejETpZeeA7uGrvhUBwMkbFjN6NkVLG5rCWNrdvKM=;
-  b=su3F6wnUJWweb9YxR6sJpwVg0vJKYcBbVbhBmhb/sCfcAgB1pMc7OaDU
-   ScI2nVoCz0lWorgcK9x8sxMvH2/kYBXCne9Q2jWhCgi2FG3mlrpuTxOTs
-   YF2eEVDcXn8YMDG9kMmZUtHFjmPYhR4x7B8plq7XhMeglWRS4BTk5BCbY
-   s=;
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="6.03,221,1694728800"; 
-   d="scan'208";a="131020345"
-Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Oct 2023 08:42:42 +0200
-Date: Fri, 13 Oct 2023 08:42:42 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-To: Soumya Negi <soumya.negi97@gmail.com>
-cc: Jonathan Kim <jonathankim@gctsemi.com>, Dean ahn <deanahn@gctsemi.com>, 
-    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, outreachy@lists.linux.dev, 
-    linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] tty: gdm724x: Match alignment with open parenthesis
-In-Reply-To: <20231013060123.13400-1-soumya.negi97@gmail.com>
-Message-ID: <51deee17-33a5-d46c-1211-ca9186a4fe4@inria.fr>
-References: <20231013060123.13400-1-soumya.negi97@gmail.com>
+        d=gmail.com; s=20230601; t=1697179935; x=1697784735; darn=lists.linux.dev;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=Iw6+ctYW3Ezn1+ti7Uve8frkm4o0a9yAQ5tUuhclcNE=;
+        b=NZGWTc8W54m4J1gRruWm/DiFItL23MzUIfkU+fgraqr8gnVctjRy/akXkQgF2VlT8/
+         iuTsG0wloS+LlWYyxby+pygq+8n9xE8HI5fR9vjNI24tzO910FTGdsE9jIZj0FU997gg
+         gFZlWWxlOPkp+BAyOMJaBX5I3DBvg3NavQx1/pGifl+INvBa1xjctmsiVNG9g96ZXCbW
+         3zHRGUsL6jYq52EXnSwBiC/vFsT0W4JLKh49By0UsX5ail4fxSMkA1Qh9YaiPOpQoS9k
+         gbfZwx4RiBjGEdgpL9uKj6d13udMjE6VsIXknP+PvDymZkp5TeHNlRqFWFbQoguwnmqw
+         K8nQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1697179935; x=1697784735;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Iw6+ctYW3Ezn1+ti7Uve8frkm4o0a9yAQ5tUuhclcNE=;
+        b=Wq3RVeTCT9oj22h4EIGWgiAtlgFE97ffsBLMdNpSDF9piHqbRGr7qisWrCKtfEssMA
+         2lk3Q3mZUTuzn51FA0qZhU9zFkwuQIORanYj4HiYH6UxqnNqKugAyNZGEhSUjQW6j639
+         pbzV1Ls4BM2CGLyi0drv5ByAZgAqTW1GnnlzZ9dvElOfMNQ7J0WsYkPDLseui1G6B51z
+         zLQYWcPO8hPi5Z0LdKiG6fQ/RdacSsDKiF0YJ89pr+xCE7YYeRSCyMrq0xTPNPP6zYkE
+         KrOpocw/hToUNH+7qmKF+50i8VEQOPdLeFdrgGj9qi0qTtwXkjYl6zZzphBhPGmn6XHT
+         zd5Q==
+X-Gm-Message-State: AOJu0YxKrgFtoGDjVzET5NvsI3D1t2EwRpLNzSSwNsM1Lw+ULoZjV5sm
+	nPF0qhSdoL7NAKFetbsJNiv2TTT+D6YQ
+X-Google-Smtp-Source: AGHT+IHfoqXKaHkuIgLIpG+aEw8d6FugWAjXm4JVGt56Rk/J0bltFBN7szGMhC47FOBFOtl6xIFULA==
+X-Received: by 2002:a7b:ce19:0:b0:405:3e9a:f1e3 with SMTP id m25-20020a7bce19000000b004053e9af1e3mr23684593wmc.11.1697179934642;
+        Thu, 12 Oct 2023 23:52:14 -0700 (PDT)
+Received: from dorcaslitunya-virtual-machine ([105.163.2.146])
+        by smtp.gmail.com with ESMTPSA id n25-20020a1c7219000000b003fe1c332810sm1661718wmc.33.2023.10.12.23.52.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 12 Oct 2023 23:52:14 -0700 (PDT)
+Date: Fri, 13 Oct 2023 09:52:11 +0300
+From: Dorcas Litunya <anonolitunya@gmail.com>
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: outreachy@lists.linux.dev
+Subject: Re: [Outreachy]Clarification on code section in qlge driver
+Message-ID: <ZSjpGx+s6xCVOnKF@dorcaslitunya-virtual-machine>
+References: <ZSjkhx+xWP9xXiAt@dorcaslitunya-virtual-machine>
+ <388ed3fe-8e5f-9be9-4072-30ebbdd17960@inria.fr>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <388ed3fe-8e5f-9be9-4072-30ebbdd17960@inria.fr>
 
-This and the next patch need to be in a series because they touch the same
-file.
+On Fri, Oct 13, 2023 at 08:41:32AM +0200, Julia Lawall wrote:
+> 
+> 
+> On Fri, 13 Oct 2023, Dorcas Litunya wrote:
+> 
+> > Hi Julia,
+> >
+> > I am trying to edit the above macro to incorporate an inline function as
+> > macros with control flows are highly discouraged. However, I wanted to
+> > inquire about some parameters in the FILL_SEG  macro below so that I can be able effectively
+> > create a well parameterized function.
+> 
+> seg_hdr and seg_regs are not vealues, they are field names.  There is no
+> way that you can pass a field name to a function.  You could pass the
+> complete values &dump->seg_hdr and dump->seg_regs, but then one could
+> wonder why not pass dump as well.  And then the calls would start getting
+> a bit large.
+> 
+> Since this macro is specific to a particular function and is defined right
+> before that function, I think it would be better to leave it as it is.
+>
+Makes a lot of sense. My other idea besides defining the entire macro as
+a function was to encapsulate what the macro does in the code block as a
+function as below:
 
-julia
+#define FILL_SEG(seg_hdr, seg_regs,fmsg,dump) fill_seg_handling_error(fmsg,dump)
 
-On Thu, 12 Oct 2023, Soumya Negi wrote:
+static int fill_seg_handling_error(struct fmsg *fmsg, struct dump *dump) {
+        int err = qlge_fill_seg_(fmsg, &dump->seg_hdr, dump->seg_regs);
+        if (err) {
+                kvfree(dump);
+                return err;
+        }
+        return 0
+}
 
-> Fix CHECK: Alignment should match open parenthesis
-> Issue found by checkpatch.pl
->
-> Signed-off-by: Soumya Negi <soumya.negi97@gmail.com>
-> ---
->  drivers/staging/gdm724x/gdm_tty.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/drivers/staging/gdm724x/gdm_tty.c b/drivers/staging/gdm724x/gdm_tty.c
-> index 32b2e817ff04..4e5cac76db58 100644
-> --- a/drivers/staging/gdm724x/gdm_tty.c
-> +++ b/drivers/staging/gdm724x/gdm_tty.c
-> @@ -271,8 +271,8 @@ int register_lte_tty_driver(void)
->  	int ret;
->
->  	for (i = 0; i < TTY_MAX_COUNT; i++) {
-> -		tty_driver = tty_alloc_driver(GDM_TTY_MINOR,
-> -				TTY_DRIVER_REAL_RAW | TTY_DRIVER_DYNAMIC_DEV);
-> +		tty_driver = tty_alloc_driver(GDM_TTY_MINOR, TTY_DRIVER_REAL_RAW |
-> +					      TTY_DRIVER_DYNAMIC_DEV);
->  		if (IS_ERR(tty_driver))
->  			return PTR_ERR(tty_driver);
->
-> --
-> 2.42.0
->
->
->
+Not sure if doing it this way creates some sort of redudancy or may lead to some 
+unprecedented problems or  can it be considered
+as a way to make the code more readable and maintainable?
+
+Dorcas
+> julia
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> >
+> > #42: FILE: drivers/staging/qlge/qlge_devlink.c:42:
+> > +#define FILL_SEG(seg_hdr, seg_regs)                                        \
+> > +       do {                                                                \
+> > +               err = qlge_fill_seg_(fmsg, &dump->seg_hdr, dump->seg_regs); \
+> > +               if (err) {                                                  \
+> > +                       kvfree(dump);                                       \
+> > +                       return err;                                         \
+> > +               }                                                           \
+> > +       } while (0)
+> >
+> >
+> >
+> > The fmsg parameter and the dump parameter, both
+> > in the qlge_fill_seg_() function inside the macro, where are they referenced from?
+> > Looking through the code, I cannot see global variables in relation to
+> > this. Are they command line arguments or does is thekernel set to
+> > provide them?
+> >
+> > Any assistance will be appreciated.
+> >
+> > Kind regards,
+> > Dorcas
+> >
+> >
