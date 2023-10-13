@@ -1,54 +1,114 @@
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ej1-f47.google.com (mail-ej1-f47.google.com [209.85.218.47])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ACC4D11CA9
-	for <outreachy@lists.linux.dev>; Fri, 13 Oct 2023 10:19:33 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 20925111B0;
+	Fri, 13 Oct 2023 10:21:25 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="QUyhqmXX"
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Zbdlu/Jz"
+Received: by mail-ej1-f47.google.com with SMTP id a640c23a62f3a-9b2cee40de8so388432966b.1;
+        Fri, 13 Oct 2023 03:21:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=GGsS0dSydjHGV0z6fLRNbrmHH0TKgvLZbugg/r7GADs=;
-  b=QUyhqmXXaUEV5Hen7yV9Pw0sExZH455U+uZn+YFQYTYasgXtdZkQHbze
-   KqlB7uZQGHFFfQVuaJ/2fYzTT3mvELipgSqCZUXgdu7LzGG600dq27Po8
-   SwA1KrB6G0wNAke7ll7U2x9CntsT8z6dzZoVQlZ60AQZaDRFH7EFB3uA8
-   Y=;
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="6.03,221,1694728800"; 
-   d="scan'208";a="131082524"
-Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Oct 2023 12:19:28 +0200
-Date: Fri, 13 Oct 2023 12:19:28 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-To: Joanita Nakityo <nakityojoanita51@gmail.com>
-cc: outreachy@lists.linux.dev
-Subject: Re: Kernel Log Message Not Found After Adding printk Statement
-In-Reply-To: <ZSkDgdL0slUiu/JW@anita-HP-EliteBook-840-G2>
-Message-ID: <863df32-485e-c673-befe-f9f12b951c70@inria.fr>
-References: <ZSkDgdL0slUiu/JW@anita-HP-EliteBook-840-G2>
+        d=gmail.com; s=20230601; t=1697192484; x=1697797284; darn=lists.linux.dev;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=QrZvb5Q0DoAOQSgSrWjje0teuv1ya0EsyrCeefTKeuE=;
+        b=Zbdlu/JzX/zyHzVAszhpQRwKElSe87GF9u2OmjXxtWK+7Jir1kmsnKZ4QXo1Q4epC5
+         Z0od/qzgYXS0h1Uroqi0Vg3kvQzZLo6IZmYNUzjgHxrZ0FOkETK85eCtvYYnl9NtxzZx
+         MmkfWqYYY/XbWgwD4nJNQ2QEg6yUKmgCs3+06F/eqw8mFURZ33lTxephBXouqrHsGAah
+         M/HtvJDS+bLDjMX4jyjk7tS0mv06+QTk2Evyg4QrH0qqOotdePC1l48yg4LLTGQ9Y5/U
+         NGwi9/R8fWbn3tFOSa3EvQ9bfxPq3LhSiWUVq4vmHQMprqud7xI8FQ8/pAyvLbnZQuCX
+         oRKg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1697192484; x=1697797284;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=QrZvb5Q0DoAOQSgSrWjje0teuv1ya0EsyrCeefTKeuE=;
+        b=r3U4Sod484f0ET758j3SOtixjp6zwRON8TvV5Gg09tnhqeLqDA62d+5jocFCQhuR32
+         G+RTjvJ7+t8nin9M6Lw2r8E6XUlStv51ydheRx7mKsfoGumWCu95v2uCqXpv/+U7YNA2
+         AY5bRC8gQDK0T0p+Srl+1+crqsmrIMouUMiCRhWR3VJnIUFTjIDvTjd2Df/t9wG1ySgP
+         wE/LHi4A+28bGwmAzGqG+YXIxB+Fkxbgpqibal+LJYJ1jX2WM7DN3eVCgvKS5AE8c9zh
+         ILtl2Ut2k21iC/cDrrVvvvudjEb5+CQcpNvOSyS683rUzFfJt4408uhoGSMmDtoKLD5D
+         mRZw==
+X-Gm-Message-State: AOJu0Yx9P6aWuAXQGgIvdfA6bZjgQggnm40qcWtNHYnEXrdNpKfzVbJg
+	e7oWRUoi7NDNLmdLfG7xgmo=
+X-Google-Smtp-Source: AGHT+IH40FtbB60bhKPE1bOKZwEEmHU9uHks8tyaJZuLZ75QgWbZP6X/jIa188vG6YI/EoS/CBsFlA==
+X-Received: by 2002:a17:907:9306:b0:9bd:a66a:a22 with SMTP id bu6-20020a170907930600b009bda66a0a22mr874520ejc.15.1697192484138;
+        Fri, 13 Oct 2023 03:21:24 -0700 (PDT)
+Received: from lab-ubuntu ([41.90.69.21])
+        by smtp.gmail.com with ESMTPSA id ci24-20020a170906c35800b009a2235ed496sm12395302ejb.141.2023.10.13.03.21.23
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 13 Oct 2023 03:21:23 -0700 (PDT)
+Date: Fri, 13 Oct 2023 13:21:21 +0300
+From: Calvince Otieno <calvncce@gmail.com>
+To: outreachy@lists.linux.dev, linux-kernel@vger.kernel.org
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Luke Koch <lu.ale.koch@gmail.com>,
+	Bagas Sanjaya <bagasdotme@gmail.com>,
+	Simon Horman <horms@kernel.org>,
+	Calvince Otieno <calvncce@gmail.com>, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v5] staging: wlan-ng: replace strncpy() with strscpy()
+Message-ID: <ZSkaIYGqAg5xJakY@lab-ubuntu>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+Checkpatch suggests the use of  strscpy() instead of strncpy().
+The advantages are that it always adds a NUL terminator and it prevents
+a read overflow if the src string is not properly terminated.  One
+potential disadvantage is that it doesn't zero pad the string like
+strncpy() does.
+
+In this code, strscpy() and strncpy() are equivalent and it does not
+affect runtime behavior.  The string is zeroed on the line before
+using memset().  The resulting string was always NUL terminated and
+PRISM2_USB_FWFILE is string literal "prism2_ru.fw" so it's NUL
+terminated.
+
+However, even though using strscpy() does not fix any bugs, it's
+still nicer and makes checkpatch happy.
+
+Signed-off-by: Calvince Otieno <calvncce@gmail.com>
+---
+Patch version v5:
+	Removed v1 patch details from the revsion history
+
+Patch version v4:
+        Provide a valid description of the patch
+
+Patch version v3:
+        Correct the patch subject headline.
+        staging: wlan-ng: remove strncpy() use in favor of strscpy()
+
+Patch version v2 :
+        Correct implementation of the strscpy()
+
+drivers/staging/wlan-ng/prism2fw.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/wlan-ng/prism2fw.c b/drivers/staging/wlan-ng/prism2fw.c
+index 5d03b2b9aab4..3ccd11041646 100644
+--- a/drivers/staging/wlan-ng/prism2fw.c
++++ b/drivers/staging/wlan-ng/prism2fw.c
+@@ -725,7 +725,7 @@ static int plugimage(struct imgchunk *fchunk, unsigned int nfchunks,
+
+                if (j == -1) {  /* plug the filename */
+                        memset(dest, 0, s3plug[i].len);
+-                       strncpy(dest, PRISM2_USB_FWFILE, s3plug[i].len - 1);
++                       strscpy(dest, PRISM2_USB_FWFILE, s3plug[i].len);
+                } else {        /* plug a PDR */
+                        memcpy(dest, &pda->rec[j]->data, s3plug[i].len);
+                }
 
 
 
-On Fri, 13 Oct 2023, Joanita Nakityo wrote:
+-- 
+Calvince Otieno
 
-> Hello, hope you are doing well.
-> I inserted a printk line into the probe function, compiled and installed the changes successfully. However, when I run 'dmesg | less' to check the kernel logs,
-> I cannot locate the message from my printk statement. how can i go about this?
-
-Maybe you don't have the device, so your code won't get executed?  DSid
-you pick a module that is loaded one your machine?  Try lsmod.
-
-But don't get stuck on this point.  You can start submitting some patches,
-and work on this issue in parallel.
-
-julia
