@@ -1,197 +1,77 @@
-Received: from mail-pl1-f171.google.com (mail-pl1-f171.google.com [209.85.214.171])
+Received: from mail-pf1-f182.google.com (mail-pf1-f182.google.com [209.85.210.182])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3D5A72B5D7;
-	Thu, 12 Oct 2023 23:29:19 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9734336E
+	for <outreachy@lists.linux.dev>; Fri, 13 Oct 2023 00:42:23 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="MRpekHRw"
-Received: by mail-pl1-f171.google.com with SMTP id d9443c01a7336-1c9d3a21f7aso12828765ad.2;
-        Thu, 12 Oct 2023 16:29:19 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="ntlZcmHg"
+Received: by mail-pf1-f182.google.com with SMTP id d2e1a72fcca58-690b7cb71aeso1177540b3a.0
+        for <outreachy@lists.linux.dev>; Thu, 12 Oct 2023 17:42:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1697153359; x=1697758159; darn=lists.linux.dev;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=zlboVPPH070OagvlhKhz0n6waemv7KPXuN+LiDEoXiU=;
-        b=MRpekHRwesLy7IGFtn5wzIim30AOrAnGXmfimoBvLvgIlBOW1fPGiCSROHG00z1HZc
-         xpteBQcDqGew/aeIHi1YMSfm2K72WfleuumHXd3MGKshqxA0nOeISeQ/iXesUa8/w2ug
-         +XOLJMmBam2fET91J9NFHoLXu7b6bmXy3ylqTrOe2gMXpiAjz3mXLpEyyL1zAPqB4OXm
-         DhPQscgPdMoJoipXco8Nxxm6J5e0UfavrEI0+iauppmDOqjp+tV9YAkpcfyqfwSoOKfB
-         U2NFYU+EiYaGD00QVlhW871LLokcyyVQ7AL90U627pIYPwLRH7U/F33p3XTFSf2XkeAU
-         O4Zw==
+        d=gmail.com; s=20230601; t=1697157743; x=1697762543; darn=lists.linux.dev;
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=PaEDeSXTOizqzeb7aoSqmvy7RhJl66CamIMbwde7+S4=;
+        b=ntlZcmHgF0CsOtfRSsLH850BeLysscopX7pu4DksU5LtMJAx0HhIZ1i9wnjpBAdx/t
+         8WlxxrRB9tkBqZUI2Qb8FJB7jbOAMpx+BRSH5bebjp9qhA/yEKsSHf8KudfFShEjN9bC
+         w46TrUwf7jbhbEv8K8wdsa58c1r8UXuTMBPT/5Ucf6Rcdllh8Za/8qPZ9e5HSE7qEYsu
+         GPNs2O00R9F/FW6wLAQqNomHZ6mOG+mEjyJF3h3NkjSWv1BoCaEDBo8+QMQ5pASA3zr7
+         frYcwD94mgcNdeww2iV9ME3xum21SijUApdABckOCbxACXzUilpefLGwBYGbb2OE/02A
+         Pyfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697153359; x=1697758159;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=zlboVPPH070OagvlhKhz0n6waemv7KPXuN+LiDEoXiU=;
-        b=PSH5qvA/P0mnrUW1AQOx6d+6d4GQIs71O9M45yoxyvpywFLDhaydUifROh81lQyaN7
-         4gRUZ3in+1KR6fxLBDoTsk6fG621HF+D93crzX4i3KG2PGK4I8/FazKfpWLRaz7pOUi9
-         EdwxJyTuc3K9hPAYY6333iBDh17q9G5t+e/gltWmct64xkkbKLktUzA/GvXNk49bG3Ja
-         P8SQQALpoWVgAiCl/YFskF8i7s3wGjgr8172QDifErBfxGRtDLQVDRG1C+l6py3gKmUp
-         KeS9O6xIsQevg0X4hCZ1EOx+zgnsXuxV9yUd86I9xpRT9H9Z75ZYc45XGq48USZsP75F
-         3VGQ==
-X-Gm-Message-State: AOJu0Yyo3z11qAmbU6kFNegOrGDcbTd2zWaokKFBG1glDg0eyQn9me0w
-	jPuQXbZrOHqypHPX0KngkIo=
-X-Google-Smtp-Source: AGHT+IEikXob9hAVsKvXb/4Fcn/oTZF0vIojmHK4J1oWfygDpBqQhxUXzcC9HJpGB7mG7WXjlfy3RQ==
-X-Received: by 2002:a17:903:11d2:b0:1c7:2697:ec0a with SMTP id q18-20020a17090311d200b001c72697ec0amr29082570plh.30.1697153359510;
-        Thu, 12 Oct 2023 16:29:19 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1697157743; x=1697762543;
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=PaEDeSXTOizqzeb7aoSqmvy7RhJl66CamIMbwde7+S4=;
+        b=Z9vw2Jk/m5Yif33F+sNwr4AUkal7WLL+6lo/lc3GxSVv26zDorFRxttEg0xUKQXYam
+         sZaKhWlCUEk0X8fxNMX8S7DokDR05qE5cXaUiXmtaj0JmkvUAYoJHwSRUTt3n8NWKSzH
+         gUhEWYy3E58NJOj1i6x75lcki2IMGrKz7/77onjKf8fEJGfdPHU19JmlZ5EeC4oebh6X
+         rG/jqAcEZUvVZNAoP0S17rvxiSnqet1dN5Q0bu9flpCtE121DqPEXKtkfSzW7hymopkC
+         hlFrVxqXwvV0F0BAlBMaPcqoa9TmA/xmiZmhZM9jE0cnxRtRyx0mAvt2tQG5Ep0pnu/V
+         hC1g==
+X-Gm-Message-State: AOJu0YzjGFCbVZaRtIUu/b7gOlBCRA9ceyVlCJUUDUOXcIUgWeev9hKP
+	ImDI0nZWt8DZTMzvGTBz6uriZps0ZX2Z/g==
+X-Google-Smtp-Source: AGHT+IGmJ5fhayXs08n9SRfV+SEFV2Cal94CTlFE+F7DQsJfL5OeJW2GdOXF75Bok8AEv5zV0peBtA==
+X-Received: by 2002:a05:6a00:cd4:b0:68f:c1e0:a2c4 with SMTP id b20-20020a056a000cd400b0068fc1e0a2c4mr34886884pfv.3.1697157742676;
+        Thu, 12 Oct 2023 17:42:22 -0700 (PDT)
 Received: from Negi ([68.181.16.134])
-        by smtp.gmail.com with ESMTPSA id ju2-20020a170903428200b001c619fbd5fbsm2534402plb.298.2023.10.12.16.29.19
+        by smtp.gmail.com with ESMTPSA id j18-20020aa783d2000000b00672ea40b8a9sm12766584pfn.170.2023.10.12.17.42.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Oct 2023 16:29:19 -0700 (PDT)
+        Thu, 12 Oct 2023 17:42:22 -0700 (PDT)
+Date: Thu, 12 Oct 2023 17:42:21 -0700
 From: Soumya Negi <soumya.negi97@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+To: outreachy@lists.linux.dev
+Cc: Wei WANG <wei_wang@realsil.com.cn>,
 	Micky Ching <micky_ching@realsil.com.cn>
-Cc: outreachy@lists.linux.dev,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	Soumya Negi <soumya.negi97@gmail.com>,
-	Dan Carpenter <dan.carpenter@linaro.org>,
-	Julia Lawall <julia.lawall@inria.fr>
-Subject: [PATCH v2 2/2] staging: rts5208: Remove macros scsi_lock(), scsi_unlock()
-Date: Thu, 12 Oct 2023 16:29:06 -0700
-Message-ID: <75a5990190cf7a5d20d1c27237b90b583e68ced8.1697152251.git.soumya.negi97@gmail.com>
-X-Mailer: git-send-email 2.42.0
-In-Reply-To: <cover.1697152251.git.soumya.negi97@gmail.com>
-References: <cover.1697152251.git.soumya.negi97@gmail.com>
+Subject: Should udelay() be replaced by usleep_range() here?
+Message-ID: <20231013004221.GB12157@Negi>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-The scsi_lock() and scsi_unlock() macros protect the sm_state and the
-single queue element srb for write access in the driver. As suggested,
-these names are very generic. Remove the macros from header file and call
-spin_lock_irq() & spin_unlock_irq() directly instead.
+Hi,
 
-Suggested-by: Dan Carpenter <dan.carpenter@linaro.org>
-Suggested-by: Julia Lawall <julia.lawall@inria.fr>
-Signed-off-by: Soumya Negi <soumya.negi97@gmail.com>
----
- drivers/staging/rts5208/rtsx.c | 24 ++++++++++++------------
- drivers/staging/rts5208/rtsx.h |  7 -------
- 2 files changed, 12 insertions(+), 19 deletions(-)
+I'm looking at this checkpatch warning in driver staging/rts5208:
 
-diff --git a/drivers/staging/rts5208/rtsx.c b/drivers/staging/rts5208/rtsx.c
-index 08543a3936da..86d32e3b3282 100644
---- a/drivers/staging/rts5208/rtsx.c
-+++ b/drivers/staging/rts5208/rtsx.c
-@@ -117,7 +117,7 @@ static int slave_configure(struct scsi_device *sdev)
- 	} while (0)
- 
- /* queue a command */
--/* This is always called with scsi_lock(host) held */
-+/* This is always called with spin_lock_irq(host->host_lock) held */
- static int queuecommand_lck(struct scsi_cmnd *srb)
- {
- 	void (*done)(struct scsi_cmnd *) = scsi_done;
-@@ -159,18 +159,18 @@ static int command_abort(struct scsi_cmnd *srb)
- 	struct rtsx_dev *dev = host_to_rtsx(host);
- 	struct rtsx_chip *chip = dev->chip;
- 
--	scsi_lock(host);
-+	spin_lock_irq(host->host_lock);
- 
- 	/* Is this command still active? */
- 	if (chip->srb != srb) {
--		scsi_unlock(host);
-+		spin_unlock_irq(host->host_lock);
- 		dev_info(&dev->pci->dev, "-- nothing to abort\n");
- 		return FAILED;
- 	}
- 
- 	rtsx_set_stat(chip, RTSX_STAT_ABORT);
- 
--	scsi_unlock(host);
-+	spin_unlock_irq(host->host_lock);
- 
- 	/* Wait for the aborted command to finish */
- 	wait_for_completion(&dev->notify);
-@@ -366,7 +366,7 @@ static int rtsx_control_thread(void *__dev)
- 		}
- 
- 		/* lock access to the state */
--		scsi_lock(host);
-+		spin_lock_irq(host->host_lock);
- 
- 		/* has the command aborted ? */
- 		if (rtsx_chk_stat(chip, RTSX_STAT_ABORT)) {
-@@ -374,7 +374,7 @@ static int rtsx_control_thread(void *__dev)
- 			goto skip_for_abort;
- 		}
- 
--		scsi_unlock(host);
-+		spin_unlock_irq(host->host_lock);
- 
- 		/* reject the command if the direction indicator
- 		 * is UNKNOWN
-@@ -402,7 +402,7 @@ static int rtsx_control_thread(void *__dev)
- 		}
- 
- 		/* lock access to the state */
--		scsi_lock(host);
-+		spin_lock_irq(host->host_lock);
- 
- 		/* did the command already complete because of a disconnect? */
- 		if (!chip->srb)
-@@ -424,7 +424,7 @@ static int rtsx_control_thread(void *__dev)
- 
- 		/* finished working on this command */
- 		chip->srb = NULL;
--		scsi_unlock(host);
-+		spin_unlock_irq(host->host_lock);
- 
- 		/* unlock the device pointers */
- 		mutex_unlock(&dev->dev_mutex);
-@@ -603,9 +603,9 @@ static void quiesce_and_remove_host(struct rtsx_dev *dev)
- 	 * interrupt a SCSI-scan or device-reset delay
- 	 */
- 	mutex_lock(&dev->dev_mutex);
--	scsi_lock(host);
-+	spin_lock_irq(host->host_lock);
- 	rtsx_set_stat(chip, RTSX_STAT_DISCONNECT);
--	scsi_unlock(host);
-+	spin_unlock_irq(host->host_lock);
- 	mutex_unlock(&dev->dev_mutex);
- 	wake_up(&dev->delay_wait);
- 	wait_for_completion(&dev->scanning_done);
-@@ -621,10 +621,10 @@ static void quiesce_and_remove_host(struct rtsx_dev *dev)
- 	mutex_lock(&dev->dev_mutex);
- 	if (chip->srb) {
- 		chip->srb->result = DID_NO_CONNECT << 16;
--		scsi_lock(host);
-+		spin_lock_irq(host->host_lock);
- 		scsi_done(dev->chip->srb);
- 		chip->srb = NULL;
--		scsi_unlock(host);
-+		spin_unlock_irq(host->host_lock);
- 	}
- 	mutex_unlock(&dev->dev_mutex);
- 
-diff --git a/drivers/staging/rts5208/rtsx.h b/drivers/staging/rts5208/rtsx.h
-index ea29646b8c38..ec6f5b07390b 100644
---- a/drivers/staging/rts5208/rtsx.h
-+++ b/drivers/staging/rts5208/rtsx.h
-@@ -108,13 +108,6 @@ static inline struct rtsx_dev *host_to_rtsx(struct Scsi_Host *host)
- 	return (struct rtsx_dev *)host->hostdata;
- }
- 
--/*
-- * The scsi_lock() and scsi_unlock() macros protect the sm_state and the
-- * single queue element srb for write access
-- */
--#define scsi_unlock(host)	spin_unlock_irq(host->host_lock)
--#define scsi_lock(host)		spin_lock_irq(host->host_lock)
--
- #define lock_state(chip)	spin_lock_irq(&((chip)->rtsx->reg_lock))
- #define unlock_state(chip)	spin_unlock_irq(&((chip)->rtsx->reg_lock))
- 
--- 
-2.42.0
+CHECK: usleep_range is preferred over udelay; see Documentation/timers/timers-howto.rst
+#3240: FILE: drivers/staging/rts5208/ms.c:3240:
++		udelay(30);
+
+
+As per the .rst file, we should use usleep_range(min,max) to introduce
+delays of 10us - 20ms. Which applies here as we want 30us. How do we decide
+on what range to feed to usleep_range()? The documentation mentions
+tradeoffs between setting a large or small range.
+
+Thanks,
+Soumya
 
