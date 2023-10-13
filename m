@@ -1,89 +1,103 @@
-Received: from mail-oo1-f49.google.com (mail-oo1-f49.google.com [209.85.161.49])
+Received: from mail-pf1-f173.google.com (mail-pf1-f173.google.com [209.85.210.173])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DE2BD1D69F;
-	Fri, 13 Oct 2023 16:05:08 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8BC79241EB;
+	Fri, 13 Oct 2023 21:13:28 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="LM/Im5jh"
-Received: by mail-oo1-f49.google.com with SMTP id 006d021491bc7-57be3d8e738so1303320eaf.1;
-        Fri, 13 Oct 2023 09:05:08 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="MpoL7lxk"
+Received: by mail-pf1-f173.google.com with SMTP id d2e1a72fcca58-6b6f4c118b7so494938b3a.0;
+        Fri, 13 Oct 2023 14:13:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1697213108; x=1697817908; darn=lists.linux.dev;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
+        d=gmail.com; s=20230601; t=1697231608; x=1697836408; darn=lists.linux.dev;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=0E2adTq+ZvO86bFiocTbWu1/NJw0Sxi2mxF0K0O3yCI=;
-        b=LM/Im5jhroeplNAlPKEIUpPd2xx8SpzZPbjCKLy6Jf7aPVFRGouD1Vmifx+aCcrXZT
-         +epFnVzYRhYVMQzdPLuW3A7e1h0XpiqHhFeq4cZ5wE+CG4H6vccdz8Isx3tRsE3eLOqb
-         mebBHU+HqnaCBoDqK7EsjMXM+7b6nBATiCLJK3DaO9PIn6/GrYW+2LtCsTcB0trWHz2g
-         JU/HDjhsjE6IKuDu/bniavMwQHyfZ2aHP8mjnNMTH2C5Ki9ZTMrrbcflAcERseyFLXS9
-         CxhsQc9CeHDOK3LjF+NSTIW2C29G6mKfnk1J84WWWF8PxPwFiG0Q5ckT1kO2YYiJT00G
-         wxTA==
+        bh=gDEgyyosUqx6vs14HxrP/8FKw5FzUfuw525zCcTrL5Y=;
+        b=MpoL7lxkIr8+wGoJ3FgcQqcv9cTUYn8iPEW+Kh1OBzVG3yHARVsgeGtBGJETeinLEt
+         AV9mizRhYKnJQPx6PPDit8tqdGn0s+6ZeKU83M0Af1qq/YUCYBGYsryqLegNIj7pxZPN
+         ys7cZnLBzKSJ1r7DFoYFD57VNDKOomf3ThWk8b0FwPZSytesZSYMx5Su7LE9dHkuXHz/
+         f++DxRKzlewGKumECL96eeLGg/m7YiLrM0TfswJ6m9aV1TiMnkA9PKIx5aY7AXP9xbqo
+         avrUgquVMOpXHtkPt3GQI1ko9nA9bZoWqPJLJkl/SyHpKUWzeI7h8zbtaT5DNA1J3RDH
+         VKug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697213108; x=1697817908;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20230601; t=1697231608; x=1697836408;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=0E2adTq+ZvO86bFiocTbWu1/NJw0Sxi2mxF0K0O3yCI=;
-        b=fFbwBrr+XyVjyap5LvdIpdDTvS2lBr2Z4RlTDZmB85YdfPIFKoKwDtAnRN0VL82xZb
-         xGIPUK/ZMGwHkKgzgGIouovj72j9coMGad5EGRO9io4Hn5TWzydtDBwYRNpZfQQJdWtX
-         o4xAk33IssGFC8gF9lJJk1o/LabdadxcGdMXQi8bYHNB2oRv0XavBTP5uXmyh6JSwefN
-         6fUDxVIM6ru9rQWWu1fEMoNlMOLN7I6hbwnMbEKWhQvCQNO4Ekr7Wm73cVLcr0UBgiXn
-         inKrHNogrvBCmXoliMQFpNZWOILTDkpKU4XGvCmsh28BNLWS/wrot74ciKIi/s6ie9GS
-         fk/A==
-X-Gm-Message-State: AOJu0YxLH0arQIVeg/UKwisMeM7yaYxV8+1WJKZsYweve2JS+7qpMjJR
-	0td2a/qH1y6PpDU3B7VD+rYuAZtlDKd1Roye7Ag=
-X-Google-Smtp-Source: AGHT+IETtWM/w2WA9DKTdQv6dDMKZy6/XPv3txCpzyyRcq09faeMnhs/q9OovphD5y5FtIjEDZUykVEwQt4DOxp6Yu8=
-X-Received: by 2002:a4a:9c85:0:b0:567:4e58:6aaf with SMTP id
- z5-20020a4a9c85000000b005674e586aafmr27825009ooj.6.1697213107970; Fri, 13 Oct
- 2023 09:05:07 -0700 (PDT)
+        bh=gDEgyyosUqx6vs14HxrP/8FKw5FzUfuw525zCcTrL5Y=;
+        b=Xt9dv4IuLSl7dS96E/Q46HUtn36/KAUCxJk2rnn3ELVeZXVaBNCWJIkEcszLCnJS2H
+         6vvmi2p2fhfChX4z+SQDPJhL5jVVykwFZw9zZ8BxWEZ4s5PWRj+dzelKWSVKHrWyZNPY
+         n056IiwqgjPxI1crUzqvFwotUmFZHf7jvMP3dnFVTke/cUiMJZzNWtDJjtgnnkpYlnSW
+         kXEZ5raX+2URXHPxYfZnZut6qX4AkXpdeZl/oec53Kh0ZSFF+KMbkOUkGdVlA8J12W1V
+         65LTwUFJEBDV72pW414ry65h0tBCSMsHJNAdF4k1aXrymtA5N5+/a4uusG6yewWn1uRY
+         xaJQ==
+X-Gm-Message-State: AOJu0YyTrkh7KXA7nc6QemP3vVvYy59zNCwSkPCgPX+GxAKUveJEGeyu
+	1Tba13eE+uyCmytPG1EJQiQ9mvsYsNqt6A==
+X-Google-Smtp-Source: AGHT+IFhA3DtOVEKxx2Dik09MQrxURa0EuN5QE/3vbqXzk/tVtFx+lp2Qk/0lJ0G8IkwjwMLtDvLRg==
+X-Received: by 2002:a05:6a00:2406:b0:693:3963:847a with SMTP id z6-20020a056a00240600b006933963847amr26806679pfh.30.1697231607705;
+        Fri, 13 Oct 2023 14:13:27 -0700 (PDT)
+Received: from Negi ([68.181.16.134])
+        by smtp.gmail.com with ESMTPSA id y4-20020aa78544000000b006878cc942f1sm13928771pfn.54.2023.10.13.14.13.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 13 Oct 2023 14:13:27 -0700 (PDT)
+Date: Fri, 13 Oct 2023 14:13:26 -0700
+From: Soumya Negi <soumya.negi97@gmail.com>
+To: Dan Carpenter <dan.carpenter@linaro.org>
+Cc: Jonathan Kim <jonathankim@gctsemi.com>, Dean ahn <deanahn@gctsemi.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	outreachy@lists.linux.dev, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/2] tty: gdm724x: Match alignment with open parenthesis
+Message-ID: <20231013211326.GB25352@Negi>
+References: <cover.1697184167.git.soumya.negi97@gmail.com>
+ <ff627fcbc9e450c2e8f4aa5810b94e56151efa2a.1697184167.git.soumya.negi97@gmail.com>
+ <a0a7274f-eba6-4f72-9569-ec4c4fff3a1a@kadam.mountain>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-References: <ZSkg7y2Y2T3midXB@lab-ubuntu> <67d90726-15b9-4d64-87c6-bfbf662cbe81@kadam.mountain>
-In-Reply-To: <67d90726-15b9-4d64-87c6-bfbf662cbe81@kadam.mountain>
-From: Calvince Otieno <calvncce@gmail.com>
-Date: Fri, 13 Oct 2023 19:04:56 +0300
-Message-ID: <CADFX3ORVXcEBzovdbPawW2SLxcMoraKBmmLuOFkMpnHj=T48qQ@mail.gmail.com>
-Subject: Re: [PATCH v2] staging: wlan-ng: remove helper function prism2sta_inf_handover()
-To: Dan Carpenter <dan.carpenter@linaro.org>
-Cc: outreachy@lists.linux.dev, linux-kernel@vger.kernel.org, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Luke Koch <lu.ale.koch@gmail.com>, 
-	Bagas Sanjaya <bagasdotme@gmail.com>, Simon Horman <horms@kernel.org>, linux-staging@lists.linux.dev
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <a0a7274f-eba6-4f72-9569-ec4c4fff3a1a@kadam.mountain>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-On Fri, Oct 13, 2023 at 3:12=E2=80=AFPM Dan Carpenter <dan.carpenter@linaro=
-.org> wrote:
->
-> On Fri, Oct 13, 2023 at 01:50:23PM +0300, Calvince Otieno wrote:
-> > prism2sta_inf_handover() function basically calls pr_debug() to print
-> > a literal string. This can be done by the parent function directly.
-> >
-> > Signed-off-by: Calvince Otieno <calvncce@gmail.com>
+On Fri, Oct 13, 2023 at 11:57:40AM +0300, Dan Carpenter wrote:
+> On Fri, Oct 13, 2023 at 01:26:34AM -0700, Soumya Negi wrote:
+> > Fix CHECK: Alignment should match open parenthesis
+> > Issue found by checkpatch.pl
+> > 
+> > Signed-off-by: Soumya Negi <soumya.negi97@gmail.com>
 > > ---
-> > Patch version v2:
-> >       - Replace pr_debug() utility function with the module specific ne=
-tdev_dbg()
->
-> This isn't a v2 patch, right?  This patch assumes that we applied the
-> v1 patch...
->
-> This patch is not white space damaged though so that's good.
->
+> >  drivers/staging/gdm724x/gdm_tty.c | 4 ++--
+> >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/staging/gdm724x/gdm_tty.c b/drivers/staging/gdm724x/gdm_tty.c
+> > index 32b2e817ff04..4e5cac76db58 100644
+> > --- a/drivers/staging/gdm724x/gdm_tty.c
+> > +++ b/drivers/staging/gdm724x/gdm_tty.c
+> > @@ -271,8 +271,8 @@ int register_lte_tty_driver(void)
+> >  	int ret;
+> >  
+> >  	for (i = 0; i < TTY_MAX_COUNT; i++) {
+> > -		tty_driver = tty_alloc_driver(GDM_TTY_MINOR,
+> > -				TTY_DRIVER_REAL_RAW | TTY_DRIVER_DYNAMIC_DEV);
+> > +		tty_driver = tty_alloc_driver(GDM_TTY_MINOR, TTY_DRIVER_REAL_RAW |
+> > +					      TTY_DRIVER_DYNAMIC_DEV);
+> 
+> I prefered the original code.  It was more readable.
+> 
 > regards,
 > dan carpenter
->
->
+Hi Dan,
 
-Hello Dan,
-Does this response mean that the patch was accepted?
+Noted. I'm curious what happens when some of the patches in a patchset
+are acceptable and some are not. Is everything disregarded by
+maintainers or are the good patches cherry-picked from the set?
 
---
-Kind regards,
-Calvince Otieno
+Thanks,
+Soumya
+
