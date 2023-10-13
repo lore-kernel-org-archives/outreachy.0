@@ -1,57 +1,51 @@
-Received: from mail-ed1-f41.google.com (mail-ed1-f41.google.com [209.85.208.41])
+Received: from mail-ej1-f47.google.com (mail-ej1-f47.google.com [209.85.218.47])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6571E6FC0
-	for <outreachy@lists.linux.dev>; Fri, 13 Oct 2023 08:41:44 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 140986FB3
+	for <outreachy@lists.linux.dev>; Fri, 13 Oct 2023 08:44:54 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="G8HtGkLK"
-Received: by mail-ed1-f41.google.com with SMTP id 4fb4d7f45d1cf-5384975e34cso3442019a12.0
-        for <outreachy@lists.linux.dev>; Fri, 13 Oct 2023 01:41:44 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="PsH86EIF"
+Received: by mail-ej1-f47.google.com with SMTP id a640c23a62f3a-9a58dbd5daeso303598966b.2
+        for <outreachy@lists.linux.dev>; Fri, 13 Oct 2023 01:44:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1697186502; x=1697791302; darn=lists.linux.dev;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=WobKMhut5Z1WRadmQFOCLE0LDQkau8vC9hdk6oaKD04=;
-        b=G8HtGkLK5ZLpv9gnW3kNtMC6halxCw/X/2wOpinnkl7H8S0dl9eZkHZDH/TNh4YYmk
-         ab4fSq0OCDbPl4RIuVf9Ag2j+PLddZA/WG+L+11YuRfyDShlgKZAW5BirAGWvCOORr+k
-         7KNgD414UnIiuEDmVCYCYGKc/VaNd795sLWtsxgP8MbqHHfbXQqLNcfLOd8uyJrSTMSW
-         Jl/UyZ643GC4d7d0zY9cOYAgknKveUYt3AY782gMs/5G0yiKD2gFXTFYM/3LyTR0XAe1
-         SUc8cggmcn9oqSoDjkuD57IU+PeHvftcmQMGJf9d/iWR0r+whgvX6oavNdHDV4jmW9zx
-         Jg0Q==
+        d=gmail.com; s=20230601; t=1697186693; x=1697791493; darn=lists.linux.dev;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=7kv/V8qfqJObc3f07RkUq/pRsB37r+l7o4zt1RxkGrY=;
+        b=PsH86EIFI2w8ocsbEJtX9jI4W+CXPrMz3S8UVyD88oDnykkdH670srHjm8TI5Q8PeQ
+         bVxSkNF3B2RaCuNdbhBhqiROpSMRL7ioS5CbItFOlCxU3LoMchx0ozPQJK7nfWFS0y/J
+         Soq8Ht3RMkdbOsbegyDiXf1MBUK5zjZWUPFhn6cuuWUBhGa4n9BHulXK3c+9a8Ur3Z57
+         MKF+FIiL9JEOyG2xAyA0NrsE66p0/gbGnPPCxNqW8CJIzMOKpbwqumJhQtdcgfi0AGyk
+         CmfNLU3AIeKN6RsP9AJpiPvL/t7vNNguLVr2EImE9mtNjFG2p7pX4dEaSkgoZcjtNQOt
+         wlhw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697186502; x=1697791302;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=WobKMhut5Z1WRadmQFOCLE0LDQkau8vC9hdk6oaKD04=;
-        b=h1A8e1A0ei3FqaLgwePDtBg/QGsgibc1A5ox9wK/G1ywkygy+Ha4pV5TCSh6SvQy5e
-         5mdhwCqXvfSbz8omo//tnHJ+GZ0GImaplktmXqY1Os+kCX1jjy3NzPqXPFZoJULasAQ0
-         2h+/A7xiKPCZiwPQARGg8kBfjD9IvVC9Iq0MLPkUY64dPwyiM/6JBo4mnFoTid2et0BK
-         NDEMqW8FCRjxI505hNBcwWUaYEaWdm47RlmrIDrsGWs7dyslQ+44x1daWDyr1Q8+fWxP
-         IFfBbtIUSLvRJBpkwz8URF/dHtcXXkPIvQL+deWE/Br22ejyhFp8D6UW/or13IxF9Xke
-         6NAA==
-X-Gm-Message-State: AOJu0Yw8Y2ZTVv6V9T1ycg0wiSndMkzWyfi5KZnN9vfD8yOa1jkV5jZQ
-	xHXq19uftIF5e+SGSJSsjS7Y1A==
-X-Google-Smtp-Source: AGHT+IGl57G35Kgk+Wb+8j7IvEB83rBb+lMnwVBLThnUM4vWvaSEZOSoVzvBg81qjwsgjsDCv2K3XA==
-X-Received: by 2002:a17:907:6d2a:b0:9bd:c592:e0ce with SMTP id sa42-20020a1709076d2a00b009bdc592e0cemr278581ejc.51.1697186502647;
-        Fri, 13 Oct 2023 01:41:42 -0700 (PDT)
-Received: from localhost ([102.36.222.112])
-        by smtp.gmail.com with ESMTPSA id o1-20020a05600c378100b00405391f485fsm1893848wmr.41.2023.10.13.01.41.41
+        d=1e100.net; s=20230601; t=1697186693; x=1697791493;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=7kv/V8qfqJObc3f07RkUq/pRsB37r+l7o4zt1RxkGrY=;
+        b=ZQ9SRLzdJ+XAcCPS11dT4vOOFxMx1QBiahdiC3i+dmFgFFg2mcJeI4CNJOqIFE94NE
+         RPwyRXqwdEJPKcNp6QMy+5ho0qxZG0xr/7Id3ui3MAkOB336XxAoJmjLFqnmm+/t7qOj
+         Q89OkpWBs4cGBt6og5XOAmhNPhaPZKxTXdelMzHVIo0AM80gK4KrfOAU3Zl+CKPyrLfD
+         RsBXdbYrpGQijKwhu9vM0FhF+guDIKBpitTf+wYchyvCMD5OBbo3uvuOZFv/pasHFr7L
+         99dz2UMHUYwqvthCT8iO57JmcXco2nkUDH2fi4582TjTdTWCKpTBb8q8Yyr8QgVCt06X
+         tpEA==
+X-Gm-Message-State: AOJu0YypXyl/t0H+M6OmHq39apewxccb2BvbDExc5TCZ5qjCLW56l+Bj
+	BfWc45RqNSGVGLf3iP9w/iWrBnuqY8RuwA==
+X-Google-Smtp-Source: AGHT+IECX7S4APijhoMOwPfy+c5A9ni+cQO7PQe/nUiyUB+5oF8kUh7lpZr7hz9CNpJAQgpQjEz/WA==
+X-Received: by 2002:a17:906:76d1:b0:9b6:8155:cbef with SMTP id q17-20020a17090676d100b009b68155cbefmr23994960ejn.61.1697186693053;
+        Fri, 13 Oct 2023 01:44:53 -0700 (PDT)
+Received: from anita-HP-EliteBook-840-G2 (h3220.n1.ips.mtn.co.ug. [41.210.178.32])
+        by smtp.gmail.com with ESMTPSA id 17-20020a170906059100b00992f2befcbcsm12033727ejn.180.2023.10.13.01.44.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Oct 2023 01:41:42 -0700 (PDT)
-Date: Fri, 13 Oct 2023 11:41:39 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Calvince Otieno <calvncce@gmail.com>
-Cc: outreachy@lists.linux.dev, linux-kernel@vger.kernel.org,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Archana <craechal@gmail.com>, Dan Carpenter <error27@gmail.com>,
-	Bagas Sanjaya <bagasdotme@gmail.com>, linux-staging@lists.linux.dev
-Subject: Re: [PATCH v3] staging: wlan-ng: remove strncpy() use in favor of
- strscpy()
-Message-ID: <2c5720d1-616b-4cd2-adf9-58039b58e1c0@kadam.mountain>
-References: <ZShI4amWv7sdqfse@lab-ubuntu>
+        Fri, 13 Oct 2023 01:44:52 -0700 (PDT)
+Date: Fri, 13 Oct 2023 11:44:49 +0300
+From: Joanita Nakityo <nakityojoanita51@gmail.com>
+To: outreachy@lists.linux.dev
+Cc: Julia.Lawall@inria.fr
+Subject: Kernel Log Message Not Found After Adding printk Statement
+Message-ID: <ZSkDgdL0slUiu/JW@anita-HP-EliteBook-840-G2>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -60,11 +54,7 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ZShI4amWv7sdqfse@lab-ubuntu>
 
-Something went wrong in sending the patch.  It includes both v1 and v3
-patches.
-
-regards,
-dan carpenter
-
+Hello, hope you are doing well.
+I inserted a printk line into the probe function, compiled and installed the changes successfully. However, when I run 'dmesg | less' to check the kernel logs, 
+I cannot locate the message from my printk statement. how can i go about this?
