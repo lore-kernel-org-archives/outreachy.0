@@ -1,43 +1,59 @@
-Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-lf1-f50.google.com (mail-lf1-f50.google.com [209.85.167.50])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C799E1859;
-	Sat, 14 Oct 2023 07:14:28 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linutronix.de
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linutronix.de
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7ED6F1877
+	for <outreachy@lists.linux.dev>; Sat, 14 Oct 2023 07:38:29 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linutronix.de header.i=@linutronix.de header.b="SBLKtjiY";
-	dkim=permerror (0-bit key) header.d=linutronix.de header.i=@linutronix.de header.b="nfCw1hp2"
-Date: Sat, 14 Oct 2023 09:14:23 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020; t=1697267667;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Xbnbh99yvU7jmpVxBKvgmPJFoeFC8l82RIMouf6GW24=;
-	b=SBLKtjiYviFjveDjRb79mJyxqapQGgfrGoHxycbxNOE2Fx56SiFEglWX4Z+srnhA39LBC9
-	j8gWwA4026XEr4N5xgZeV/vldWNo6AIaeyMoDv0B+AUqVa1PKruF9c8NQscARdJBDrf4Wa
-	FPmksb863QBpNNH5Tog6eniPPmgR/GpVl7+fyo+ZUzloSFQpRWGCwDV91MjKA9cjTdb5Rh
-	zKzFCcwDnU1z3OySo+uFCqYB1U2gPrfwMoac4EUjfEnf8pXQF2BKvQerJy5WdMJF/Ztnsh
-	fPtDURRSjfUEPTqu0lnoiG+R28vH+W+cqvZhZs78/z8w2BrZoT5xHMglF4BjTg==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020e; t=1697267667;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Xbnbh99yvU7jmpVxBKvgmPJFoeFC8l82RIMouf6GW24=;
-	b=nfCw1hp2mjdEYlYTl1kbXXZXVkQCKhmYbw6+QD1OshrBYdosdg7ivbBHLGcOE+FOwu6l/g
-	J7kWFgWAwoMJjCAQ==
-From: Nam Cao <namcao@linutronix.de>
-To: Gilbert Adikankwu <gilbertadikankwu@gmail.com>
-Cc: outreachy@lists.linux.dev, manishc@marvell.com,
-	GR-Linux-NIC-Dev@marvell.com, coiby.xu@gmail.com,
-	gregkh@linuxfoundation.org, netdev@vger.kernel.org,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] staging: qlge: Add bool type to qlge_idc_wait()
-Message-ID: <20231014071423.UgDor1v0@linutronix.de>
-References: <ZSoxLxs45bIuBrHg@gilbert-PC>
- <20231014065813.mQvFyjWb@linutronix.de>
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="BOKmcmqV"
+Received: by mail-lf1-f50.google.com with SMTP id 2adb3069b0e04-50435ad51bbso3559077e87.2
+        for <outreachy@lists.linux.dev>; Sat, 14 Oct 2023 00:38:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1697269107; x=1697873907; darn=lists.linux.dev;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=5IW8rze1/YjaqUMjBuePhE7bES5VSq0kZGVhjWXwOWg=;
+        b=BOKmcmqVZ32J++AiU1w35P83OujMojBXiH8x8tQLRw5tqYRFlyGlNa8QFIOHrqmghm
+         PPBoxhFeeYgFj5K/rN2FzJuYiW5Tbe8mU9YojTsFfRz7pPoY/cAcgZDFVDd+sMQpO6DN
+         QuWb2xMQOP4sqEqpzLKqnwHyjOJV075K/SDtYrHfVNA57wVT1xmXpkb9lfI2Cs60qCp/
+         SE9CBIPeYaI9PoD+Stvx/jO4dJVLazDgNkcCYmw6+pbT5Vb8PRHV2Sd5kQGH8R2eJ2fM
+         8Nz1kbKJ7vMPITpVML/vmnVGxBzUwNi0TZLv0/Xo4FcrUit5/U2dYz2WKTwqyOmvJlxO
+         sR+Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1697269107; x=1697873907;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=5IW8rze1/YjaqUMjBuePhE7bES5VSq0kZGVhjWXwOWg=;
+        b=Q8gJUA8dAWmJ2Qbak/YjYbPA45/91IshVoZgEuzWP5pmnyzV+hDxxXIWHo+5XgU8wH
+         LUI1UZAPxuK180Ou6cZJjaiX+xm360Ra7QXRIYsDnrXWhdqbUEwDFnkJ/H3gVEjGeyM6
+         JSl9vN6COyE8RkYGX3JI17vHukXhi0pXp/SbOJhVgfGTEkB3LbPiROdZqCYtz/asb3BH
+         T7679Q+arFzCAEF3l/tzaGnNRZnIiRH3sECoDolWcp9CP1EldCLZV4tk+XZkzrRGAuij
+         XES8sYnVY7HbUuzL/o2LShCCfJ3IuAkBWhuyMJaZLtROvucIJUndif05NFBB8zlFlBHW
+         nlxQ==
+X-Gm-Message-State: AOJu0Yy7bs2r1kTWVD9gpyKaqpR2/9Meg7dEfdZQsFcDgVTeuLc/Cjul
+	wMgzkDPutxcXcs320jOWmFf8Zg==
+X-Google-Smtp-Source: AGHT+IEwy0mTowcwVn+E09x52F7nrltv7XkrXRZJXoKbC5VJ4QM5KNmK+GyTJYRivZMLkI2F/Mx9EA==
+X-Received: by 2002:a05:6512:3ba0:b0:507:9d70:b297 with SMTP id g32-20020a0565123ba000b005079d70b297mr3455700lfv.60.1697269107071;
+        Sat, 14 Oct 2023 00:38:27 -0700 (PDT)
+Received: from localhost ([102.36.222.112])
+        by smtp.gmail.com with ESMTPSA id v7-20020adfedc7000000b003197efd1e7bsm22225990wro.114.2023.10.14.00.38.25
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 14 Oct 2023 00:38:26 -0700 (PDT)
+Date: Sat, 14 Oct 2023 10:38:22 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: Soumya Negi <soumya.negi97@gmail.com>
+Cc: Jonathan Kim <jonathankim@gctsemi.com>, Dean ahn <deanahn@gctsemi.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	outreachy@lists.linux.dev, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/2] tty: gdm724x: Match alignment with open parenthesis
+Message-ID: <52732a88-7f40-4ce4-b75b-dded9827c1f0@kadam.mountain>
+References: <cover.1697184167.git.soumya.negi97@gmail.com>
+ <ff627fcbc9e450c2e8f4aa5810b94e56151efa2a.1697184167.git.soumya.negi97@gmail.com>
+ <a0a7274f-eba6-4f72-9569-ec4c4fff3a1a@kadam.mountain>
+ <20231013211326.GB25352@Negi>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -46,19 +62,49 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20231014065813.mQvFyjWb@linutronix.de>
+In-Reply-To: <20231013211326.GB25352@Negi>
 
-On Sat, Oct 14, 2023 at 08:58:13AM +0200, Nam Cao wrote:
-> On Sat, Oct 14, 2023 at 07:11:59AM +0100, Gilbert Adikankwu wrote:
-> > Reported by checkpatch:
+On Fri, Oct 13, 2023 at 02:13:26PM -0700, Soumya Negi wrote:
+> On Fri, Oct 13, 2023 at 11:57:40AM +0300, Dan Carpenter wrote:
+> > On Fri, Oct 13, 2023 at 01:26:34AM -0700, Soumya Negi wrote:
+> > > Fix CHECK: Alignment should match open parenthesis
+> > > Issue found by checkpatch.pl
+> > > 
+> > > Signed-off-by: Soumya Negi <soumya.negi97@gmail.com>
+> > > ---
+> > >  drivers/staging/gdm724x/gdm_tty.c | 4 ++--
+> > >  1 file changed, 2 insertions(+), 2 deletions(-)
+> > > 
+> > > diff --git a/drivers/staging/gdm724x/gdm_tty.c b/drivers/staging/gdm724x/gdm_tty.c
+> > > index 32b2e817ff04..4e5cac76db58 100644
+> > > --- a/drivers/staging/gdm724x/gdm_tty.c
+> > > +++ b/drivers/staging/gdm724x/gdm_tty.c
+> > > @@ -271,8 +271,8 @@ int register_lte_tty_driver(void)
+> > >  	int ret;
+> > >  
+> > >  	for (i = 0; i < TTY_MAX_COUNT; i++) {
+> > > -		tty_driver = tty_alloc_driver(GDM_TTY_MINOR,
+> > > -				TTY_DRIVER_REAL_RAW | TTY_DRIVER_DYNAMIC_DEV);
+> > > +		tty_driver = tty_alloc_driver(GDM_TTY_MINOR, TTY_DRIVER_REAL_RAW |
+> > > +					      TTY_DRIVER_DYNAMIC_DEV);
 > > 
-> > WARNING: else is not generally useful after a break or return
-> >
+> > I prefered the original code.  It was more readable.
+> > 
+> > regards,
+> > dan carpenter
+> Hi Dan,
 > 
-> What checkpatch is telling you here is that the "else" is redundant and
-> can be removed. Although your patch suppresses the warning, it makes the
-> code messier :(
+> Noted. I'm curious what happens when some of the patches in a patchset
+> are acceptable and some are not. Is everything disregarded by
+> maintainers or are the good patches cherry-picked from the set?
 
-Ah wait, after reading Julia's comment, I realize that the "else" is not
-redundant at all. Seems like checkpatch.pl is lying. So ignore what I
-said.
+Most of the time, you should just resend the series.  Sometimes a
+maintainer will take the first few patches and then when they hit one
+that can't be merged they'll stop.  So you should try to organize your
+patchsets from fixes first, then cleanups and then least controversial
+to most controversial.  Except people might be annoyed if it looks like
+you're hiding a really controversial one at the end of a long series.
+
+regards,
+dan carpenter
+
