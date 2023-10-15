@@ -1,128 +1,84 @@
-Received: from mail-qv1-f50.google.com (mail-qv1-f50.google.com [209.85.219.50])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from todd.t-8ch.de (todd.t-8ch.de [159.69.126.157])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 76DAFEBB
-	for <outreachy@lists.linux.dev>; Sun, 15 Oct 2023 08:56:46 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 19C382119;
+	Sun, 15 Oct 2023 09:24:51 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=weissschuh.net
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=weissschuh.net
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Pdnt0wmm"
-Received: by mail-qv1-f50.google.com with SMTP id 6a1803df08f44-66d134a019cso22922696d6.3
-        for <outreachy@lists.linux.dev>; Sun, 15 Oct 2023 01:56:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1697360205; x=1697965005; darn=lists.linux.dev;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=n2KXaGwDWUTXDC4E1rKzNmnoj3nOy20m9ZN+2X1+sps=;
-        b=Pdnt0wmmTpMaRE1CFiWPSr9r53apGP4pQYlDbhNK8uful/lP4uESIp/twDxKM3mzCK
-         wxeJB76CNbvfHeDJ/o+g1bfR/lYq0zi3GCz0WX1CYX842w3gV24tNCV9Pmm+RyjNSReH
-         S2jLrD5Cw53+uijrHcSeTvjLd5zwYsPS0WQmwdvyMF2ISNdBcmUsIR2ehtdrMJbxckgs
-         p6opMN/fUcOZ1+1J4xZ6uFYiY0ZA5OUv0Wv1nKD5Eqiq4vVH/JOHo8u/HKZG3uiCxf98
-         OZJIEleEsw9gcW1y6OHodAmIWGUS3oaWkX+qsWlBuiEHQgoq/bX71p6dd8SOQFt+tK9U
-         sg+w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697360205; x=1697965005;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=n2KXaGwDWUTXDC4E1rKzNmnoj3nOy20m9ZN+2X1+sps=;
-        b=FLKkPZkB4wv8MueoS6vz6X9duEJDaGeuY29DwZ9c3SCc7UJjr5xNUWgfMemw5Q+AkC
-         hzfuriEhhpUsYos93Tqzouxr+vZkIBfI8jSlw5kqYKr+/e/4RVBh/Be71hnRfiYu5N+h
-         IA9NRUQvqeHPQGQPCYgPn2BeXo2ZePUyiO3zfT5PtwgnJhPqGU0mswqHmH8RxWDNKLCS
-         cKWdcLRGZj7nT/610nhBTR2z1/kOlH3P7t9EYyZCz82wNo3XMFiXhHToiWWpsUldCQg5
-         E1LrlEhrx9QtLj/CLNHnW3sH4wZ0mWAPyRhxWKjIe1Ma5I7vC4Tx40P0BoDX5nQ6oyFq
-         0CnQ==
-X-Gm-Message-State: AOJu0YydKpiTzSXSQNwnSSri7s4JhNPT+S9fEaBMMEN2InsosiinfMtx
-	99u2GoOllidfgQIgRSzpu28l+/TwBgJw+tKp
-X-Google-Smtp-Source: AGHT+IHa/NA9/pIOc3BW/O5BjSfX9dcHmLxN8PiPZb1jF/4jrU1Et6Yf/5kQg7GjC1NBYpeML6Upsw==
-X-Received: by 2002:a05:620a:25c6:b0:76f:24bd:fef1 with SMTP id y6-20020a05620a25c600b0076f24bdfef1mr36680940qko.30.1697360205171;
-        Sun, 15 Oct 2023 01:56:45 -0700 (PDT)
-Received: from gilbert-PC ([105.112.18.68])
-        by smtp.gmail.com with ESMTPSA id s8-20020a5b0748000000b00d814d8dfd69sm1753822ybq.27.2023.10.15.01.56.43
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 15 Oct 2023 01:56:44 -0700 (PDT)
-Date: Sun, 15 Oct 2023 09:56:40 +0100
-From: Gilbert Adikankwu <gilbertadikankwu@gmail.com>
-To: Andi Shyti <andi.shyti@linux.intel.com>
-Cc: outreachy@lists.linux.dev
-Subject: Re: [PATCH v2] staging: rtl8192u: Align descendant arguments
-Message-ID: <ZSupSOhRK8Barcwh@gilbert-PC>
-References: <ZSuhYpyYfZz5EhDB@gilbert-PC>
- <ZSulKrvrrLyfnzND@ashyti-mobl2.lan>
+	dkim=pass (1024-bit key) header.d=weissschuh.net header.i=@weissschuh.net header.b="io6+Y4+T"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=weissschuh.net;
+	s=mail; t=1697361883;
+	bh=urG4oh7ObZeYy796+eJBTOzvZ+QqH/SVTyJ2zZ6fxs8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=io6+Y4+TXg3IBuIBwLGU1ltfzSdN84NFAuELISXW/8mT9o2gIBOYM8Hp1tkCIIQ+E
+	 LulG1P+6C1jSP4VujEK9FgLKe2FpmwE8akAJOR0LGH9hKqXIQYCGeuD3HMXtPsHhqz
+	 44+TRGTS6Q4NgqOsup8JHaztxUDQViGTVQ29i7Vs=
+Date: Sun, 15 Oct 2023 11:24:43 +0200
+From: Thomas =?utf-8?Q?Wei=C3=9Fschuh?= <linux@weissschuh.net>
+To: Calvince Otieno <calvncce@gmail.com>
+Cc: Dan Carpenter <dan.carpenter@linaro.org>, outreachy@lists.linux.dev, 
+	linux-kernel@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Luke Koch <lu.ale.koch@gmail.com>, Bagas Sanjaya <bagasdotme@gmail.com>, 
+	Simon Horman <horms@kernel.org>, linux-staging@lists.linux.dev
+Subject: Re: [PATCH] staging: wlan-ng: remove unused functions
+Message-ID: <5dd59334-428b-4e27-8d19-7b8514bb5ef5@t-8ch.de>
+References: <ZSjpQlUcyOoYv4Yh@lab-ubuntu>
+ <62778e4d-cc2e-4310-b334-52b54cfe7e79@kadam.mountain>
+ <CADFX3OSqnjGrxRazmmcBuGUOyv4TuXGEJ8fqbAhR4X9j0rn6sA@mail.gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <ZSulKrvrrLyfnzND@ashyti-mobl2.lan>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CADFX3OSqnjGrxRazmmcBuGUOyv4TuXGEJ8fqbAhR4X9j0rn6sA@mail.gmail.com>
 
-Hi Andi,
+Hi Calvince,
 
-On Sun, Oct 15, 2023 at 10:39:06AM +0200, Andi Shyti wrote:
-> Hi Gilbert,
+On 2023-10-15 10:39:20+0300, Calvince Otieno wrote:
+> On Sun, Oct 15, 2023 at 10:38 AM Calvince Otieno <calvncce@gmail.com> wrote:
+> > On Fri, Oct 13, 2023 at 12:02 PM Dan Carpenter <dan.carpenter@linaro.org> wrote:
+> >
+> > On Fri, Oct 13, 2023 at 09:52:50AM +0300, Calvince Otieno wrote:
+> > > The following functions were defined in the prism2mgmt.h file but neither
+> > > declared nor used anywhere. It is recommended that they be removed.
+> > >
+> > >       - void prism2mgmt_get_grpaddr(u32 did, struct p80211pstrd *pstr,
+> > >                                     struct hfa384x *priv);
+> > >       - int prism2mgmt_set_grpaddr(u32 did,
+> > >                                  u8 *prism2buf, struct p80211pstrd *pstr,
+> > >                                  struct hfa384x *priv);
+> > >       - int prism2mgmt_get_grpaddr_index(u32 did);
+> > >
+> >
+> > Could you look up when the functions were deleted and add that
+> > information to the commit message?
+> >
+> >     These functions were removed five years ago in commit 123412341234
+> >     ("delete functions").
+> >
+> > regards,
+> > dan carpenter
 > 
-> On Sun, Oct 15, 2023 at 09:22:58AM +0100, Gilbert Adikankwu wrote:
-> > Adhere to Linux kernel coding style.
-> > 
-> > "...A very commonly used style is to align descendants to a function
-> > open parenthesis" - (Excerpted from Linux kernel coding style (#2))
-> > 
-> > Reported by checkpatch:
-> > 
-> > CHECK: Alignment should match open parenthesis
-> > 
-> > Signed-off-by: Gilbert Adikankwu <gilbertadikankwu@gmail.com>
-> 
-> I don't like this commit message. Although it's correctly
-> written, I think it can be improved in order to be more
-> immediately understandable.
-> 
-> Write what you did in imperative form:
-> 
-> "Adhere to Linux kernel coding style" doesn't mean much, you can
-> write
-> 
->   Align descendant argument to the open parenthesis as per the
->   "Linux kernel coding style" in
->   Documentation/process/coding-style.rst.
-> 
-> Yuo tell immediately what you did and where to find the
-> reference. Citing the document in the commit log, in this case,
-> looks to me like an unnecessary information.
-> 
-> Copy pasting the output of the error is a very good practice and
-> you can write it as:
-> 
->   Mute the following checkpatch error:
-> 
->     CHECK: Alignment should match open parenthesis
->
+> I am  not able to locate exactly when these functions were deleted.
+> I have checked the commit history of these files prism2mgmt.h and prism2mgmt.c,
+> but, I can't find any commit relating to the removal of the above functions.
 
-Thank you for the review. I will adopt the corrections and try to be
-more concise in the commit message for my future patches.
+you can use the "-S" argument to "git log" for this quite nicely:
 
-> > ---
-> > v2: In the first patch I changed my commit title in the
-> > email and sent it before amending it in my git tree which then changed
-> > its SHA ID. I felt it might cause an issue so that is why I did a v2
-> > of the patch.
-> 
-> It's not an issue, you can do that.
-> 
-> But I'm going to give you another piece of advice that I already
-> gave in this list. Do not send patches between versions too fast.
-> Reviewers need some time to review... wait some time before
-> sending the v2, so that the v1 gets enough visibility. Sometimes
-> reviewers correct each other, but they need time to read the
-> e-mails.
-> 
-> This way you would also avoid unnecessary noise.
-> 
-> Andi
+$ git log --pretty=oneline  -Sprism2mgmt_set_grpaddr drivers/staging/wlan-ng
+1e7201836c576883d5bd708810cc72ab1392756f Staging: wlan-ng: Delete a pile of unused mibs. And fix WEXT SET_TXPOWER.
+cbec30c4c00c9f5a7357f5c5dacb63ae2378afb4 Staging: wlan-ng: Delete a large pile of now-unused code.
+00b3ed1685089ff52169a715de11106ed37df087 Staging: add wlan-ng prism2 usb driver
 
-Okay, thank you for the advice.
+This shows all the commits that touched the drivers/staging/wlan-ng
+directory and added or removed the string "prism2mgmt_set_grpadd".
 
-Gilbert
+You can check which of these three commits dropped the function and then
+repeat the procedure for the other two functions.
+
+Thomas
