@@ -1,44 +1,54 @@
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.120])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-yw1-f180.google.com (mail-yw1-f180.google.com [209.85.128.180])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 24E182107;
-	Sun, 15 Oct 2023 08:24:16 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.intel.com
-Authentication-Results: smtp.subspace.kernel.org; spf=none smtp.mailfrom=linux.intel.com
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 981C9EBB
+	for <outreachy@lists.linux.dev>; Sun, 15 Oct 2023 08:35:35 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="Z1dNk9ki"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1697358257; x=1728894257;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=UCl1SBB4cAuFZdCAf7wLUcAPW3DezCTL2qwAVti9xak=;
-  b=Z1dNk9kiTn28Nr+qRLVhfYNakhJN4f7WvyaN6Ax+zR8rfYXdeEhsAOmJ
-   3tOGBMkfg/6drYfQdHZRI58eDvjvrYBuhR+Di2TlT3ovYxP7qcWySEGBV
-   gE+xuLNoTM8GqG/X8KJsLJwzRGrZk1rAv3sKJlBYvNS1CljV3UF6G5bhg
-   zMwut9eT8nuQdpPnEqdsVzPm0kJj1x/HM1owzkCm1KRebqAN3kqq1bT83
-   yLQMLJFNAy0mduYQv8x+nXyG555nAHSFOW/3FcG7E3lc/K+Yq564DkiPC
-   pggMd1n4RXXIRFOibCZ5LkpPgsERWUQaZYcV5K+7LdNjCCskwse1A7Rw8
-   g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10863"; a="384247396"
-X-IronPort-AV: E=Sophos;i="6.03,226,1694761200"; 
-   d="scan'208";a="384247396"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
-  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Oct 2023 01:24:16 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10863"; a="825617109"
-X-IronPort-AV: E=Sophos;i="6.03,226,1694761200"; 
-   d="scan'208";a="825617109"
-Received: from ingmingt-mobl1.gar.corp.intel.com (HELO intel.com) ([10.214.164.147])
-  by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Oct 2023 01:24:12 -0700
-Date: Sun, 15 Oct 2023 10:24:06 +0200
-From: Andi Shyti <andi.shyti@linux.intel.com>
-To: Gilbert Adikankwu <gilbertadikankwu@gmail.com>
-Cc: gregkh@linuxfoundation.org, outreachy@lists.linux.dev,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="RcDphRzp"
+Received: by mail-yw1-f180.google.com with SMTP id 00721157ae682-5a7b91faf40so42385697b3.1
+        for <outreachy@lists.linux.dev>; Sun, 15 Oct 2023 01:35:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1697358934; x=1697963734; darn=lists.linux.dev;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=iRu38U4l8aUK5gWuFSPmpp7xLVfjE/bmKJrmQ2PiCYw=;
+        b=RcDphRzpUTuojRy/4Q0ilBrJHyF4FnqBHs5XxXgKVacYA/2MGe7SCa1XAVYjxJa5qY
+         CZN3K4xTlDisLUNVyE2oqxAbNs7/Ds8aSidRAmLeVf91zK9ajJp+jXKN9F709yhkLwn/
+         UYc6qusrrBxOcvWVZpgvlLQvnKTSJeX+2sF6IuKu70Jn3Z9LJMldaMGV9B9GsoMnPCBO
+         GskPCIs9tGYMkXML+zX9/8TGvxhdlD7jvVZtuoyPKWo8YfeJTc1SdvhPwqV30/PI88W/
+         43viYId/qhQpm+UrLXohJu3bb8/KtIS5U8MjmeX3o7/8/csUdJmfDQCEwOpKUSn0L5VT
+         KN+w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1697358934; x=1697963734;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=iRu38U4l8aUK5gWuFSPmpp7xLVfjE/bmKJrmQ2PiCYw=;
+        b=hN4eyo6rbMI7G16GOUSkglSFDeictQz/83VsQDtTNQWUmvXAJ3wDVUMOb3rmvBglXB
+         pZAKbXV9T+HaLHvbaBKxGA/RHx6uVqAdAm2TDv3RCyJrr0+1kLWXPkkyqQcqH7Uf806F
+         +GRv5yJ02zfEwS0jdiMvuCamH/0JPRk3NAI/uNdggevDJmTxPl/HKpRizlnfFjbCtuq3
+         GboFubS7u+54JuXaXViwAbOrxI6CwzAcGdeEoQc+oj4AU/0TGYq4ujC8xc7J66P6IxSW
+         J/FnzJj7D6qToE1v0FM8UQzFkUzPzZoxJHF1JUaKh6OTCgDh3M43N1rk0iQ7rSnIxkOj
+         fySw==
+X-Gm-Message-State: AOJu0YwF20p1O3YGFIa+98eDNh2e8TubPKdBPbv3j0xxYy0DPXwrXcIw
+	MRXb1J27WVVaENs9Cf/ojPESkS6qTPhMb2CT
+X-Google-Smtp-Source: AGHT+IGIMVMmzd7rZ1DYndoRJToaL+AFhXCDQLORf5ybzCMV4gCLqipNhv62D/HhhGHh+d39XTag1Q==
+X-Received: by 2002:a81:5488:0:b0:583:c917:7ff0 with SMTP id i130-20020a815488000000b00583c9177ff0mr28450398ywb.51.1697358934365;
+        Sun, 15 Oct 2023 01:35:34 -0700 (PDT)
+Received: from gilbert-PC ([105.112.18.68])
+        by smtp.gmail.com with ESMTPSA id t9-20020a258389000000b00d81425266c1sm1742988ybk.42.2023.10.15.01.35.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 15 Oct 2023 01:35:33 -0700 (PDT)
+Date: Sun, 15 Oct 2023 09:35:28 +0100
+From: Gilbert Adikankwu <gilbertadikankwu@gmail.com>
+To: Andi Shyti <andi.shyti@linux.intel.com>
+Cc: outreachy@lists.linux.dev
 Subject: Re: [PATCH] staging: rtl8192u: Align descendant arguments
-Message-ID: <ZSuhpu97lW45BEeS@ashyti-mobl2.lan>
+Message-ID: <ZSukUAuhYLeaOy04@gilbert-PC>
 References: <ZSuYUmX5P5M0Ok/I@gilbert-PC>
+ <ZSuhpu97lW45BEeS@ashyti-mobl2.lan>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -47,34 +57,43 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ZSuYUmX5P5M0Ok/I@gilbert-PC>
+In-Reply-To: <ZSuhpu97lW45BEeS@ashyti-mobl2.lan>
 
-Hi Gilbert,
-
-On Sun, Oct 15, 2023 at 08:44:18AM +0100, Gilbert Adikankwu wrote:
-> Adhere to Linux kernel coding style.
+On Sun, Oct 15, 2023 at 10:24:06AM +0200, Andi Shyti wrote:
+> Hi Gilbert,
 > 
-> "...A very commonly used style is to align descendants to a function
-> open parenthesis" - (Excerpted from Linux kernel coding style (#2))
+> On Sun, Oct 15, 2023 at 08:44:18AM +0100, Gilbert Adikankwu wrote:
+> > Adhere to Linux kernel coding style.
+> > 
+> > "...A very commonly used style is to align descendants to a function
+> > open parenthesis" - (Excerpted from Linux kernel coding style (#2))
+> > 
+> > Reported by checkpatch:
+> > 
+> > CHECK: Alignment should match open parenthesis
+> > 
+> > Signed-off-by: Gilbert Adikankwu <gilbertadikankwu@gmail.com>
+> > ---
+> >  drivers/staging/rtl8192u/r8180_93cx6.c     |  4 ++--
+> >  drivers/staging/rtl8192u/r8190_rtl8256.c   | 16 +++++++--------
+> >  drivers/staging/rtl8192u/r8192U_core.c     | 20 +++++++++---------
+> >  drivers/staging/rtl8192u/r8192U_dm.c       | 24 +++++++++++-----------
+> >  drivers/staging/rtl8192u/r819xU_firmware.c |  4 ++--
+> >  drivers/staging/rtl8192u/r819xU_phy.c      |  2 +-
+> >  6 files changed, 35 insertions(+), 35 deletions(-)
 > 
-> Reported by checkpatch:
+> Do you mind splitting one patch per file? It's not really
+> necessary, but normally easier to review.
 > 
-> CHECK: Alignment should match open parenthesis
+> As you are here, if you then run checkpatch on your patch you
+> will gather ideas for your next patches.
 > 
-> Signed-off-by: Gilbert Adikankwu <gilbertadikankwu@gmail.com>
-> ---
->  drivers/staging/rtl8192u/r8180_93cx6.c     |  4 ++--
->  drivers/staging/rtl8192u/r8190_rtl8256.c   | 16 +++++++--------
->  drivers/staging/rtl8192u/r8192U_core.c     | 20 +++++++++---------
->  drivers/staging/rtl8192u/r8192U_dm.c       | 24 +++++++++++-----------
->  drivers/staging/rtl8192u/r819xU_firmware.c |  4 ++--
->  drivers/staging/rtl8192u/r819xU_phy.c      |  2 +-
->  6 files changed, 35 insertions(+), 35 deletions(-)
+> Andi
 
-Do you mind splitting one patch per file? It's not really
-necessary, but normally easier to review.
+Hi Andi,
 
-As you are here, if you then run checkpatch on your patch you
-will gather ideas for your next patches.
+Thank you for your response. If it makes the review process easier, I
+don't mind splitting one patch per file. I will do as you have
+suggested. Should I make it a patchset?
 
-Andi
+Gilbert
