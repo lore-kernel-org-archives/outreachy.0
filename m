@@ -1,116 +1,84 @@
-Received: from mail-wr1-f43.google.com (mail-wr1-f43.google.com [209.85.221.43])
+Received: from mail-ej1-f54.google.com (mail-ej1-f54.google.com [209.85.218.54])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1B9ABF9CD
-	for <outreachy@lists.linux.dev>; Sun, 15 Oct 2023 20:11:55 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A6002F9CD;
+	Sun, 15 Oct 2023 20:13:53 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="OcY9SFf8"
-Received: by mail-wr1-f43.google.com with SMTP id ffacd0b85a97d-31427ddd3fbso3387613f8f.0
-        for <outreachy@lists.linux.dev>; Sun, 15 Oct 2023 13:11:55 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="J5MLnnyJ"
+Received: by mail-ej1-f54.google.com with SMTP id a640c23a62f3a-9b2f73e3af3so579152466b.3;
+        Sun, 15 Oct 2023 13:13:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1697400714; x=1698005514; darn=lists.linux.dev;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=BQsXsWLvN35QalqC7CZzQ/+URZcJ+/xwJPOBk4OOhbk=;
-        b=OcY9SFf8D7HB1kEMBON7EjUUeEZ9CzmJq3Ljm4yxdDW5r7eYrHppcI0PT0CalOQno1
-         5pEDOtEBSR1IcT+oHYlyBKzjfqdp0cFzDdu7uG9+wNk+g1ZCjvvBHkPe8g8G+Ug3EceY
-         7qfY+5/ty7rpaoJulS9cYZsLT8W0L+nx5i+DTKu/L+sL/14TRHZHYfYqgaGm70lROJP2
-         vpQHjNGCENCyn1q9VptsYG17SHALAAoln9s74ZTSJmqQsYnlbSddROVGrJd29OJW9TQG
-         k4YRr5hcAfXV5F3r485l8bn8vWI2pCqvykA5cp/iVB25t9T8VIUsELMOWM0XN41Y0zgk
-         aOHA==
+        d=gmail.com; s=20230601; t=1697400832; x=1698005632; darn=lists.linux.dev;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=DT1W8gUSuxT3Wwy3qW2e2tPQ4NkLWmb+aTGBrsPTZaY=;
+        b=J5MLnnyJVhHtvW5408vHWsQSDkFrXSQZOQEMgx8ok6maRJaJ9HqsidE7Yn6zoDCysm
+         uJdl4On7ovTqONV8ZVEfr/iP1ELhzxVUlmEm7tWyDbZGTkxLk7SENbQqinjFgowUipEA
+         8tvZzYJonhKW8qTSWGW2uHkGiXtWFfv9kyjjaI5l7XmdZPj7QqYAlwddFV4HpinWtbB+
+         9IM7821OFjhG6uxOqIp5t+9TsSMdMu8ZBpuvTeBVMwd/+BnMor3tLxBL7elaxdKSRsob
+         K+jQzv18e6ZCp82ipDTpR9C1hpT38q/lf5MS8fDS6jQ9wkQsTQak/VDnlVYTIt9vtomI
+         SnRw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697400714; x=1698005514;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=BQsXsWLvN35QalqC7CZzQ/+URZcJ+/xwJPOBk4OOhbk=;
-        b=m0G4k0taE+4O08hecRi2A8fMwrKWZEdCGIuijoxoxOdbbPCZrHt3NllrSSr4QHvO6f
-         hKjdBukIXBjwCYMNXlPWz7PDfcQ6P5BIaVbrUaKrorAtdstv2XhAzXfFe/i4UqF1hHdh
-         5SXNO3EthflVwYaXWo74lv7mx+mhQlvTDnYxo9kbB/CIg7HKmnaoMFi0UoaXeRiaO9dP
-         3BxuAL9H6TssMpFgcKxzWFYyyHgUR1Nb0vNSy0PICXzjIYJJLKa7Khz7BRwd/oC5Bx0Q
-         gv5nrJAKPumt6qyj52nMeiatyeidwLEaAY+vDGzyLarWWJ4I2YhTC/4jz65OT+3uQNPD
-         Ogjw==
-X-Gm-Message-State: AOJu0YylfzWdo465ugIAqvxMLTqcQiTLqUnQXrqWIwEu5ozvID/gYnbB
-	3m8gV/H0sv0immizXo3oUiewIDosR/cHrYMxENs=
-X-Google-Smtp-Source: AGHT+IFA5qOusosGR+dvQLP70ohoFg/N0rqcS6V23J64bNSRBIC/EpnWRgnF+9KiJlfLeCnTETX6mw==
-X-Received: by 2002:a5d:4848:0:b0:32d:a40f:d918 with SMTP id n8-20020a5d4848000000b0032da40fd918mr3331200wrs.68.1697400713969;
-        Sun, 15 Oct 2023 13:11:53 -0700 (PDT)
-Received: from gilbert-PC ([105.112.31.148])
-        by smtp.gmail.com with ESMTPSA id dj16-20020a0560000b1000b003198a9d758dsm8811656wrb.78.2023.10.15.13.11.45
+        d=1e100.net; s=20230601; t=1697400832; x=1698005632;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=DT1W8gUSuxT3Wwy3qW2e2tPQ4NkLWmb+aTGBrsPTZaY=;
+        b=o2FLsezFKJFHwDNDIQLQA0axDM2dOj31zr8fiwcQCfw7cRlHR2Zr9znqQWT0ImTHPG
+         uCdu1DUeRct5D3zBZnS306jltN//JBKYfvqDO6IiRdXvfEcRm7Zcendjcoc0p5tKarCa
+         jC1CcCV2XHVJrotiVpqkzOTpfG+d2XcbzVGd7jo7ZB6hTRnKP7f6K38ezurHCVikpt+y
+         WLusufx3g1VU26gY6a0B1qhwQaZv1nyxkPOLMudhE33X95ZZ9vtQrbTKq7l0AAM0GUEv
+         tnEvVu+CfmS41Y/aoJPS8xl0naNsITypccboxS9CbUvYn1dc2kIY9S/uoepPPzfBH+7o
+         w6IQ==
+X-Gm-Message-State: AOJu0YzwsijGGuNXmvWRANq1pVaPC95RSJ3dw8snQmhJt5iUWpt0eFQO
+	Xmde0a0dHcMIExsGeFOnFw==
+X-Google-Smtp-Source: AGHT+IEXViXuLbUs9s+KmzkE5bixqlOmue7yjzSoBKZULy7e0QSO4Sw9iKCVoEKX9cfxdOgfcgIHTQ==
+X-Received: by 2002:a17:907:a0d:b0:9c0:99c4:79e8 with SMTP id bb13-20020a1709070a0d00b009c099c479e8mr1751940ejc.6.1697400831619;
+        Sun, 15 Oct 2023 13:13:51 -0700 (PDT)
+Received: from dorcaslitunya-virtual-machine.localdomain ([105.163.157.6])
+        by smtp.gmail.com with ESMTPSA id m10-20020a170906234a00b009ae587ce133sm2721766eja.188.2023.10.15.13.13.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 15 Oct 2023 13:11:48 -0700 (PDT)
-Date: Sun, 15 Oct 2023 21:11:43 +0100
-From: Gilbert Adikankwu <gilbertadikankwu@gmail.com>
-To: Philipp Hortmann <philipp.g.hortmann@gmail.com>
-Cc: outreachy@lists.linux.dev, gregkh@linuxfoundation.org,
-	julia.lawall@inria.fr, andi.shyti@linux.intel.com
-Subject: Re: [PATCH 0/6] staging: rtl8192u: Mute checkpatch error
-Message-ID: <ZSxHf+ZMA8UcbvRc@gilbert-PC>
-References: <cover.1697367161.git.gilbertadikankwu@gmail.com>
- <bfe99c7a-f01f-4ae3-a17d-1e5887a5121f@inria.fr>
- <b5ac8e9f-f733-46bf-bff0-79556f0bd280@gmail.com>
+        Sun, 15 Oct 2023 13:13:50 -0700 (PDT)
+From: Dorcas AnonoLitunya <anonolitunya@gmail.com>
+To: 
+Cc: anonolitunya@gmail.com,
+	outreachy@lists.linux.dev,
+	Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
+	Teddy Wang <teddy.wang@siliconmotion.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-fbdev@vger.kernel.org,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH 0/5] staging: sm750fb: Renaming camelcase to snakecase
+Date: Sun, 15 Oct 2023 23:12:33 +0300
+Message-ID: <cover.1697400022.git.anonolitunya@gmail.com>
+X-Mailer: git-send-email 2.42.0.345.gaab89be2eb
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <b5ac8e9f-f733-46bf-bff0-79556f0bd280@gmail.com>
+Content-Transfer-Encoding: 8bit
 
-On Sun, Oct 15, 2023 at 06:10:44PM +0200, Philipp Hortmann wrote:
-> On 10/15/23 17:52, Julia Lawall wrote:
-> > "Mute checkpatch error" is not very informative.
-> > 
-> > julia
-> > 
-> > On Sun, 15 Oct 2023, Gilbert Adikankwu wrote:
-> > 
-> > > Align descendant arguments to the open parenthesis as per the "Linux
-> > > Kernel coding style" in Documentation/process/coding-style.rst
-> > > 
-> > > Mute the following checkpatch error:
-> > > 
-> > > CHECK: Alignment should match open parenthesis
-> > > 
-> > > Gilbert Adikankwu (6):
-> > >    staging: rtl8192u: Align descendant arguments
-> > >    staging: rtl8192u: Align descendant arguments
-> > >    staging: rtl8192u: Align descendant arguments
-> > >    staging: rtl8192u: Align descendant arguments
-> > >    staging: rtl8192u: Align descendant arguments
-> > >    staging: rtl8192u: Align descendant arguments
-> > > 
-> > >   drivers/staging/rtl8192u/r8180_93cx6.c     |  4 ++--
-> > >   drivers/staging/rtl8192u/r8190_rtl8256.c   | 16 +++++++--------
-> > >   drivers/staging/rtl8192u/r8192U_core.c     | 20 +++++++++---------
-> > >   drivers/staging/rtl8192u/r8192U_dm.c       | 24 +++++++++++-----------
-> > >   drivers/staging/rtl8192u/r819xU_firmware.c |  4 ++--
-> > >   drivers/staging/rtl8192u/r819xU_phy.c      |  2 +-
-> > >   6 files changed, 35 insertions(+), 35 deletions(-)
-> > > 
-> > > --
-> > > 2.34.1
-> 
-> Hi,
-> 
-> this driver is about to be removed.
-> 
-> Have a look at:
-> 
-> https://lore.kernel.org/linux-staging/20231014211051.GA29518@matrix-ESPRIMO-P710/T/#u
-> 
-> Thanks
-> 
-> Bye Philipp
+Renames various function names and variable names that were previously
+in camelcase to snakecase to ensure consistent naming styles.This issues
+were highlighted by checkpatch.
 
-Hi,
+Dorcas AnonoLitunya (5):
+  Staging: sm750fb: Rename displayControlAdjust_SM750E
+  Staging: sm750fb: Rename pModeParam
+  Staging: sm750fb: Rename displayControl
+  Staging: sm750fb: Rename programModeRegisters
+  Staging: sm750fb: Rename ddk750_setModeTiming
 
-Thank you for response. Please is there a list where I can see all the
-staging drivers that is about to be removed?
+ drivers/staging/sm750fb/ddk750_mode.c | 90 +++++++++++++--------------
+ drivers/staging/sm750fb/ddk750_mode.h |  2 +-
+ drivers/staging/sm750fb/sm750_hw.c    |  2 +-
+ 3 files changed, 47 insertions(+), 47 deletions(-)
 
-Thanks
-Gilbert
+-- 
+2.42.0.345.gaab89be2eb
+
