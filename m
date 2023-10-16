@@ -1,91 +1,81 @@
-Received: from mail-ed1-f50.google.com (mail-ed1-f50.google.com [209.85.208.50])
+Received: from mail-oo1-f44.google.com (mail-oo1-f44.google.com [209.85.161.44])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 48CD779D0
-	for <outreachy@lists.linux.dev>; Sun, 15 Oct 2023 20:34:57 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D605A1369
+	for <outreachy@lists.linux.dev>; Mon, 16 Oct 2023 01:41:13 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="kgQ3kSv9"
-Received: by mail-ed1-f50.google.com with SMTP id 4fb4d7f45d1cf-53e2308198dso916118a12.1
-        for <outreachy@lists.linux.dev>; Sun, 15 Oct 2023 13:34:57 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="cItZltDN"
+Received: by mail-oo1-f44.google.com with SMTP id 006d021491bc7-57b74782be6so2149615eaf.2
+        for <outreachy@lists.linux.dev>; Sun, 15 Oct 2023 18:41:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1697402096; x=1698006896; darn=lists.linux.dev;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=TpzzFHqZchZ079ZSceoZ+gGk8Uk6/jh68TgBT14ixLA=;
-        b=kgQ3kSv9NQmXgZA/MYjGQaNHz8altm9jxjmNTGGE5tul69jc1GvXP9R+E25QYpz45I
-         GAR/s39+Bnohci4s3r+PZG8GbbC5G4rrfc6fp0fLnInWRvo6gQAIClWjgV58KqjzGgrW
-         rou3/0w4jIeLJsCPL+EN800pSQSlHAgZgNZ62/Vg+iFsfOaB8cTH6QZlYSKDLvg72RYm
-         t2RICdzG52z/R8cc8dFaSWkMnl8a0C/LUIyVIl+dYBNwjFxSnlvgpL5VT9n1lTAtHHBz
-         BqWKMUta2opQKoio82WZc7bu2gfMK2l240ZC3Rmd1KLzL8S7ESeq/5rnmnJGiwyDucmS
-         4QNg==
+        d=gmail.com; s=20230601; t=1697420472; x=1698025272; darn=lists.linux.dev;
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=npPADBXYfDn6vFybL2r6rg5Gbim0rcJNk4DoWN2QQ9I=;
+        b=cItZltDNXpXXLHVudtPn/RjAyHrypztjZDoZ7HK7efssETMdD77ZLxpZgcsWREaYfl
+         PUkYnt3LQDb3mntXKQD1G3oKJ7IvMUz/vb8AP6Sy4ob2I9jSOL3SzpJtqLjhN8eOCe3B
+         +okfF2KCDHiTn6H+ODf7pYeMe7NSsuJqFm0moSubNQONpax0ro9A+ACqbdHFxADTK1mb
+         jmjlEycqjjwWnQilfxZpCt0G9Uory4gAGAYtWUz7gYgONqf9iNLcp8TqY3LBo9ekMEgg
+         9ndcMFHgOTNw004UX2mU9LzauZXAW+fZVC5VFUUJdYAXrKtHgg3eCMsOhPQV7Xau2Rrw
+         J5GQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697402096; x=1698006896;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=TpzzFHqZchZ079ZSceoZ+gGk8Uk6/jh68TgBT14ixLA=;
-        b=LrkwwQjdxed7sYwYHuDlLtniyxN0tdmZl+3UgZiieVhm7Nu24gLSKZA8c/1KeowROF
-         P6YpKlXRrj5alX5kIkWFCDUEsPsMLYKiAfhUGA2E2zncmZXpfTnp6fHL1mum2cDAyy2n
-         tj7Yj9RLvMmaoYr0W3ACa3a4dEgIDSyYLetOP630cC/yrih1d8e0UfCDNIkDffOR1GpW
-         MLG9UmZuxS3XNJSiMKeMRBB9SskR9Rb/8Cn8X3vo1PNdlmhk+NaQyupba5Z36wX2AQDg
-         lWjtE6HxX2SSIs9jJs/upCDgIz0X41kY1ZwLqACY9uV5yF0b7w/wwP/mftgWQbf1tJ6B
-         gaGQ==
-X-Gm-Message-State: AOJu0Yy9aKPW3XtxSmfPH1NVbMDCEJunXBdzcUO08sA1HRLUkgrwGy8e
-	jmpUrV1cXSC6VtFKC8BkgHc=
-X-Google-Smtp-Source: AGHT+IEvi0eVZsjsFBeVQbnHrdWeFkZi6oJTfR47MWMpw3IPpEpgPjtJF9N+1sEGx1u5eYo773agXA==
-X-Received: by 2002:a17:906:2254:b0:9b2:bf2d:6b65 with SMTP id 20-20020a170906225400b009b2bf2d6b65mr28598230ejr.4.1697402096091;
-        Sun, 15 Oct 2023 13:34:56 -0700 (PDT)
-Received: from [192.168.0.103] (p579356c7.dip0.t-ipconnect.de. [87.147.86.199])
-        by smtp.gmail.com with ESMTPSA id qt25-20020a170906ecf900b009a1fef32ce6sm2738355ejb.177.2023.10.15.13.34.55
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 15 Oct 2023 13:34:55 -0700 (PDT)
-Message-ID: <acf8c538-e148-447e-8efd-732fab3ad51f@gmail.com>
-Date: Sun, 15 Oct 2023 22:34:54 +0200
+        d=1e100.net; s=20230601; t=1697420472; x=1698025272;
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=npPADBXYfDn6vFybL2r6rg5Gbim0rcJNk4DoWN2QQ9I=;
+        b=NvXNvtnqVyYWI87zZGg1zupkvQ1IOXSx/gKWscmd3V8dBJFimysuk4Ev805dSQ18IH
+         uYwlvdCL/X9wwX3FPcXBkx6eyqfdUfe5sgbd99DiNWZdVDowpiNV4zxnWBGrIcbzVQCi
+         pSn4XMCds/mmYrIoZdpqH8uEMeCZnrWOJgD5cW1N9VqES153B2gwlnRmXEGRCPJVDeh0
+         BOO70bcUkUn8AZthROHDxMF8T2D48LXOa1JsghZEuE2IKiv6+BFs+sh45cwPWU48saR9
+         o1M4SRtNGi/VWTm/M55fj9WIqlb/woHT9NxCAwd4plAftcgLPKw/h5eQ302PHxcChB5d
+         aysA==
+X-Gm-Message-State: AOJu0YyG4Kywu5KPEfKLIJSauLiW0pzhyzB0x0YbW59nhTr+a3TNp3Zl
+	J67uFWjBJqvTmejmZpcdwB8D1JHgg2hjXA==
+X-Google-Smtp-Source: AGHT+IEAVFogjgt2wpeWTlWLawuxpvYXeStK0C1aXNjZuSp32SfjxYIuNtB94NNIDVIWyKFsLh2Nlw==
+X-Received: by 2002:a05:6358:7299:b0:164:9d1e:c3cd with SMTP id w25-20020a056358729900b001649d1ec3cdmr20966810rwf.28.1697420472461;
+        Sun, 15 Oct 2023 18:41:12 -0700 (PDT)
+Received: from Negi (2603-8000-b93d-20a0-2184-6fa4-0d39-1c6b.res6.spectrum.com. [2603:8000:b93d:20a0:2184:6fa4:d39:1c6b])
+        by smtp.gmail.com with ESMTPSA id z28-20020aa79f9c000000b0068ff6d21563sm3306463pfr.148.2023.10.15.18.41.11
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 15 Oct 2023 18:41:11 -0700 (PDT)
+Date: Sun, 15 Oct 2023 18:41:09 -0700
+From: Soumya Negi <soumya.negi97@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Martyn Welch <martyn@welchs.me.uk>,
+	Manohar Vanga <manohar.vanga@gmail.com>
+Cc: outreachy@lists.linux.dev
+Subject: Need advice on planning patches for staging/vme_user
+Message-ID: <20231016014109.GA6619@Negi>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/6] staging: rtl8192u: Mute checkpatch error
-Content-Language: en-US
-To: Gilbert Adikankwu <gilbertadikankwu@gmail.com>
-Cc: outreachy@lists.linux.dev, gregkh@linuxfoundation.org,
- julia.lawall@inria.fr, andi.shyti@linux.intel.com
-References: <cover.1697367161.git.gilbertadikankwu@gmail.com>
- <bfe99c7a-f01f-4ae3-a17d-1e5887a5121f@inria.fr>
- <b5ac8e9f-f733-46bf-bff0-79556f0bd280@gmail.com>
- <ZSxHf+ZMA8UcbvRc@gilbert-PC>
-From: Philipp Hortmann <philipp.g.hortmann@gmail.com>
-In-Reply-To: <ZSxHf+ZMA8UcbvRc@gilbert-PC>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-
-On 10/15/23 22:11, Gilbert Adikankwu wrote:
-> Hi, Thank you for response. Please is there a list where I can see all 
-> the staging drivers that is about to be removed? Thanks Gilbert
-
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
 Hi,
 
-all wlan drivers that use "wireless extension" interface are planned to 
-be removed or converted to mac80211. You can find them by looking for 
-iw_handler
+There are printk's in the staging driver vme_user(all in 1 file) which triggers
+checkpatch warnings all over. To replace printk() with appropriate logging 
+mechanisms(a mix of dev_err/warn & pr_err/warn), if I go by a patch for each 
+function that calls printk, the patchset will be too big(~33 patches). 
 
-Simple way to find them is using:
-https://elixir.bootlin.com/linux/latest/A/ident/iw_handler
+Or, if I split up patches this way: printk() to pr_*() & 
+printk() to dev_*(), there would be fewer patches(atleast 4) but perhaps
+it will be harder to review? (There are ~78 call sites)
 
-Finally you are very unlucky. That a driver gets removed before you get 
-your patches accepted is very unlikely. You can work on any of the others.
+What would be a good way to structure the patchset?
 
-Feel free to ask me in case of questions.
+Plus there are some other changes, like  using __func__ instead of func
+name in printk error messages, that can be done. Is it okay to make this
+change in the error string while replacing the printk() or does it need to be
+in a separate patch( after the printk's are replaced)?
 
-If you send in patches for rtl8712 I can test on hardware for you.
-
-Bye Philipp
-
-
+Thanks,
+Soumya
