@@ -1,54 +1,55 @@
-Received: from mail-wr1-f47.google.com (mail-wr1-f47.google.com [209.85.221.47])
+Received: from mail-wm1-f48.google.com (mail-wm1-f48.google.com [209.85.128.48])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E773114F63;
-	Mon, 16 Oct 2023 06:39:38 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2708AA2D;
+	Mon, 16 Oct 2023 07:43:04 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="aZh0IdQO"
-Received: by mail-wr1-f47.google.com with SMTP id ffacd0b85a97d-32d9cb5e0fcso2401968f8f.0;
-        Sun, 15 Oct 2023 23:39:38 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="E7Eu8Woh"
+Received: by mail-wm1-f48.google.com with SMTP id 5b1f17b1804b1-4056ce55e7eso41384045e9.2;
+        Mon, 16 Oct 2023 00:43:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1697438377; x=1698043177; darn=lists.linux.dev;
+        d=gmail.com; s=20230601; t=1697442183; x=1698046983; darn=lists.linux.dev;
         h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=Iiy71Ki/o2LF//sd0XBr3ccMYvSR+gE4EltrkOccHOo=;
-        b=aZh0IdQO1D94IzicVJzTX7HKb68W7n6RdrIOepaDrnmzD+4VeDtdvS/tUzxME6nXbF
-         i6N9x9zVhCWh9e1yUnRnpDA+Jiz13Yl37CmLAcScL5/2XehyhrOHEfcJQmbuEYDnpPFU
-         aOo4vHr8VswJgeqU+jbuS65myJWEytONbAyhbOSXPmOry/DqiFh9nrzReQrZcYXZOpx9
-         w5LmgimIFEGZxv1BuS/WDC5OSXF6Y76DT/wx96LLrFtIIppy3Nm8N6yBonb2dCJGecZW
-         3mgPbO5xTiw+80l8yJrXkAo+R6qjhOcvXnGEt5RyKA1qLE+7XoQLR17+claeaNDTiSoN
-         puIg==
+        bh=82ZZk+PdVHD4SgeMSwIuwPbebfsYW2eoRNAUDZyb4ZU=;
+        b=E7Eu8Woh0yHR3A2Wec5rlPs47wdjaO6ljh304lY0Qb46lZJTlv8tmw5LA7c26DYwsR
+         6e7JVU3MhonecACg5/7m93cmNPIXxPMH/wwKmOMbrYM9sVkAqXO70q6gjIFu17u/cucM
+         BrYgr7A8EIUzpnYdKquq61paHeXlatslYUC5NCYe+u16ZqOlh6SUmNKAqS3IOA/y5Dma
+         RSpuwOxK35BOfxI8XBqK+N80FPhFl25AnaE3BpFZg9wRtP7SwpGwMTAiM8QpfZp9IOPD
+         mRtOf3Is4deMOiEa76qm6+xSjw/F7aU48VeortfCdCjGLDBkRTgCuTQz73FQtzUNBmgs
+         Ij/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697438377; x=1698043177;
+        d=1e100.net; s=20230601; t=1697442183; x=1698046983;
         h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Iiy71Ki/o2LF//sd0XBr3ccMYvSR+gE4EltrkOccHOo=;
-        b=gNm4495SoJzk3Gu5wcF5GleSFxNqQPXl7bOu5N3f7vDCB9gJSBc3yIe3kwPSdpmKPJ
-         49IwqBmHohtqyEX4ivZH1AsFQVzOxkEgcQiPnhC2Na6MdyeDUi3qN+p1Y9KBsCvfEJiv
-         tvDYfqjO6gYQFVPabCru2qDTg6JICG+zRjvUJSvDUBUuKfln3+nk81DC+UaLg1X+CaLM
-         DAlYMSkGz1MUMaEo8M+0Uj4itPu+6IUucbhJGOf3gcbDxOFaeXXX4A3x+3SNIQ3eZpGw
-         87SUOBZxBzT80UtPiN2AnYif2noUtdgYOpDqWRY7QU7utNhYZvQW/MJ2vHjIYbc0Sj8h
-         BDkg==
-X-Gm-Message-State: AOJu0YxUy3U2/c4obd4NUbKai64wJF07rc6V3p4zZmF28UAT4qnuY3dn
-	xNsIjIKvhwdyzOQdbAQCp2U=
-X-Google-Smtp-Source: AGHT+IGCEsbCWSUVGoDB/k1LuP3lsGqIkCWTYbQ+M/DXl+xwMSZfyOm4NmQNkTpaeB9GknAAmygOcA==
-X-Received: by 2002:a05:6000:4e1:b0:31f:ea18:6f6b with SMTP id cr1-20020a05600004e100b0031fea186f6bmr27051651wrb.19.1697438376943;
-        Sun, 15 Oct 2023 23:39:36 -0700 (PDT)
+        bh=82ZZk+PdVHD4SgeMSwIuwPbebfsYW2eoRNAUDZyb4ZU=;
+        b=TFbl/Yz5bauRKhVrN3rdulnnRGKSUWX1SW+rXSWMrqPLaokQtdq7MGeMqSgZW4Z/rU
+         e65R02HNeAqd7o2slg9Eb9KOZYRTrgMkpcG37vf8R4y4UCgg1Ci2nJXIKIpqEKgH9xWB
+         0vvsVpJUtQqPNJl+3ya035lrl0IIppiKJvgLwLlIn60Gsl3+2tJJKnDWW92ikiRrU9+a
+         WikuBMrhcCQursBSaxGQ5M2PwkH5/A9tfnukhu6DcvA0k+0YfWLqfikpgR9Ihym4YGrK
+         pkPbihbaCl8TEP2xzxZJhadgzYk1emDcm9HCumPuyB7uZs3fFA1Ilw5ITVqQr8edMOot
+         heRQ==
+X-Gm-Message-State: AOJu0YyeEZy8akoZgYhmzuXEJw7ySzf97d+4ALZfSRc09mOMTcEp6KLq
+	nyPRC6Gy9O9/IzuoWEkrZxQ=
+X-Google-Smtp-Source: AGHT+IGiGMf1Qjq+nmSCG42rGlFyIuIJ6x7MSy7vJ7i9u/Hq1ziL0XDZYoa3a1ZD5JCV5mtlWPR9QQ==
+X-Received: by 2002:a7b:c84d:0:b0:3fa:934c:8356 with SMTP id c13-20020a7bc84d000000b003fa934c8356mr29857003wml.10.1697442182984;
+        Mon, 16 Oct 2023 00:43:02 -0700 (PDT)
 Received: from lab-ubuntu ([41.90.67.11])
-        by smtp.gmail.com with ESMTPSA id n18-20020a5d4c52000000b003197869bcd7sm2410920wrt.13.2023.10.15.23.39.35
+        by smtp.gmail.com with ESMTPSA id e28-20020adfa45c000000b0032d892e70b4sm12398417wra.37.2023.10.16.00.43.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 15 Oct 2023 23:39:36 -0700 (PDT)
-Date: Mon, 16 Oct 2023 09:39:33 +0300
+        Mon, 16 Oct 2023 00:43:02 -0700 (PDT)
+Date: Mon, 16 Oct 2023 10:43:00 +0300
 From: Calvince Otieno <calvncce@gmail.com>
 To: gustavo@embeddedor.com, outreachy@lists.linux.dev
 Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
 	Calvince Otieno <calvncce@gmail.com>,
+	Karl Relton <karllinuxtest.relton@ntlworld.com>,
 	Dan Carpenter <dan.carpenter@linaro.org>
-Subject: [PATCH] staging: wlan-ng: replace strncpy() with strscpy()
-Message-ID: <ZSzapU+eKWvHVwxi@lab-ubuntu>
+Subject: [PATCH] staging: wlan-ng: remove undefined function
+Message-ID: <ZSzphFeckE7dM5g/@lab-ubuntu>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -58,44 +59,31 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
-Checkpatch suggests the use of strscpy() instead of strncpy().
-The advantages are that it always adds a NUL terminator and it prevents
-a read overflow if the src string is not properly terminated. One
-potential disadvantage is that it doesn't zero pad the string like
-strncpy() does.
-In this code, strscpy() and strncpy() are equivalent and it does not
-affect runtime behavior. The string is zeroed on the line before
-using memset(). The resulting string was always NUL terminated and
-PRISM2_USB_FWFILE is string literal "prism2_ru.fw" so it's NUL
-terminated.
-However, even though using strscpy() does not fix any bugs, it's
-still nicer and makes checkpatch happy.
+The function p80211wext_get_wireless_stats() is declared in the code
+but has neither been defined nor referenced.
+
+It's definition was removed 13 years ago in the
+commit cb3126e60ffc ("Staging: wlan-ng: Switch from wext to cfg80211")
 
 Signed-off-by: Calvince Otieno <calvncce@gmail.com>
 ---
-Previous Patch Versions:
- - Earlier patch versions had issues with whitespace, preventing correct
- application. This is a reroll of those previous versions.
+ drivers/staging/wlan-ng/p80211netdev.h | 3 ---
+ 1 file changed, 3 deletions(-)
 
- - Versions v2 through v6 focused on improving the clarity of the commit
- message. There were no code changes in these patch versions.
-
- drivers/staging/wlan-ng/prism2fw.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/wlan-ng/prism2fw.c b/drivers/staging/wlan-ng/prism2fw.c
-index 5d03b2b9aab4..3ccd11041646 100644
---- a/drivers/staging/wlan-ng/prism2fw.c
-+++ b/drivers/staging/wlan-ng/prism2fw.c
-@@ -725,7 +725,7 @@ static int plugimage(struct imgchunk *fchunk, unsigned int nfchunks,
+diff --git a/drivers/staging/wlan-ng/p80211netdev.h b/drivers/staging/wlan-ng/p80211netdev.h
+index f5186380b629..485f2c697f5f 100644
+--- a/drivers/staging/wlan-ng/p80211netdev.h
++++ b/drivers/staging/wlan-ng/p80211netdev.h
+@@ -114,9 +114,6 @@ struct p80211_frmrx {
+ 	u32 decrypt_err;
+ };
  
- 		if (j == -1) {	/* plug the filename */
- 			memset(dest, 0, s3plug[i].len);
--			strncpy(dest, PRISM2_USB_FWFILE, s3plug[i].len - 1);
-+			strscpy(dest, PRISM2_USB_FWFILE, s3plug[i].len);
- 		} else {	/* plug a PDR */
- 			memcpy(dest, &pda->rec[j]->data, s3plug[i].len);
- 		}
+-/* called by /proc/net/wireless */
+-struct iw_statistics *p80211wext_get_wireless_stats(struct net_device *dev);
+-
+ /* WEP stuff */
+ #define NUM_WEPKEYS 4
+ #define MAX_KEYLEN 32
 -- 
 2.34.1
 
