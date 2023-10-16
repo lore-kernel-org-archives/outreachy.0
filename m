@@ -1,49 +1,90 @@
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ej1-f47.google.com (mail-ej1-f47.google.com [209.85.218.47])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E3DF328692;
-	Mon, 16 Oct 2023 15:00:53 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2572B34CE3;
+	Mon, 16 Oct 2023 20:15:05 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=linuxfoundation.org header.i=@linuxfoundation.org header.b="rS2G571H"
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 55C2CC433C7;
-	Mon, 16 Oct 2023 15:00:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1697468453;
-	bh=0GLvmKMndiyVt2ULVPwCbqdYlF8TzgXDxAHUw0Tml34=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=rS2G571HfKSELOJ65cQHDl05C83C7XrPtjD2iGcnZJQiCCAXXmXVv4RLjJ3Dj2XV/
-	 FHHkasnnjelj+h0Muc4UED112XsdR8cbC7dOdmur6L4smOq8s3WK1+g5o3qn8o5aX0
-	 XfP59iKl99MUMv/3XQmvYIBLxwSu80CphnkBzbUY=
-Date: Mon, 16 Oct 2023 16:57:16 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Gilbert Adikankwu <gilbertadikankwu@gmail.com>
-Cc: outreachy@lists.linux.dev, linux-staging@lists.linux.dev,
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="mNAGwtju"
+Received: by mail-ej1-f47.google.com with SMTP id a640c23a62f3a-9ada2e6e75fso873104866b.2;
+        Mon, 16 Oct 2023 13:15:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1697487304; x=1698092104; darn=lists.linux.dev;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=FRniKyUz9iHO7Fz4n7LlSe4JaoEPWk/8N3r3s0S38yc=;
+        b=mNAGwtju6yOqun5eD9HZwS4Ys/PP5Fk1q9PXpjL/XRyfEPGqfQ4LL83G2owM46XBrz
+         zus2YsRvcEoWH44e3CFt5ctIUCy5N9NEgnPTLL8Qzvn1Gv8jh6ldxQG3EPcBPoUIqC0o
+         AXqJU4P66ChG1vgD40PFnCCzyJtbTzSLhz6nHg7bktFMYKSTgtclV0p4PSe3oAzcn8qw
+         FDvA//vjRQFvPv+bgpl0PEx5cAND5j/koweDvJuoJG0IElR6+rwhUMWp+55MwzTDtEFN
+         5EopSNl9XLR+ew0xtAnFJBjZAj5zF5Re6D15LknZjRGIdPRGI8DpWsYtGaeGHFW91B/W
+         OLcQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1697487304; x=1698092104;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=FRniKyUz9iHO7Fz4n7LlSe4JaoEPWk/8N3r3s0S38yc=;
+        b=tAYm2i5r2yiAa8NYphXjtrWSrD7jxNYa6lxKuN+fJP1g/OyFmHNMFAcvCR3AhwJwki
+         8FjaMrMvNsoTVgEoh3yygv6qFUD+ny48QFd+YjmWJoQBm1CDuBeTNEJBntkpxdDy8BGx
+         JdJCF7bwbWnhsm6WXWw++PDh3xv803d3FtVA4VVWnyCNM/zgX8IvBVYM06wY15EsmepS
+         oOr4AG4xTlke0hyW8GpbSCoNkA65kNd//CVC7eyLH4HlWGcqrSqNfjNosFZOFQs5TvkR
+         +AJfAU/KsZTInKOjBWvYNkP058H1UY2EvMDxiu0hTrilYqKwE0hiTUnVHXgA4ddJgRvy
+         Y6ZA==
+X-Gm-Message-State: AOJu0Yzx/5Pfu4nQAsf1EpxEKuJX1/VUGOQNL2qErgSa6SSp+4AiqsRO
+	zDF4Nxi+MyBg0+F60Y8NXA==
+X-Google-Smtp-Source: AGHT+IFqWbp0v+lRnIYAfoA8RbKDtJE6+FBX4X9Kzec6bIIB2oZpNU94+sLO+oRr4pQMPO6v2uYU3w==
+X-Received: by 2002:a17:907:6d1d:b0:9be:5ab2:73c2 with SMTP id sa29-20020a1709076d1d00b009be5ab273c2mr104647ejc.58.1697487303797;
+        Mon, 16 Oct 2023 13:15:03 -0700 (PDT)
+Received: from dorcaslitunya-virtual-machine.localdomain ([105.163.1.143])
+        by smtp.gmail.com with ESMTPSA id u26-20020a17090657da00b009b97521b58bsm4606055ejr.39.2023.10.16.13.15.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 16 Oct 2023 13:15:03 -0700 (PDT)
+From: Dorcas AnonoLitunya <anonolitunya@gmail.com>
+To: 
+Cc: anonolitunya@gmail.com,
+	outreachy@lists.linux.dev,
+	julia.lawall@inria.fr,
+	dan.carpenter@linaro.org,
+	Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
+	Teddy Wang <teddy.wang@siliconmotion.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-fbdev@vger.kernel.org,
+	linux-staging@lists.linux.dev,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] staging: emxx_udc: Remove unnecessary parentheses around
- condition tests
-Message-ID: <2023101658-unmoral-survival-25cf@gregkh>
-References: <ZS0f+xaaLmLpKv2a@gilbert-PC>
+Subject: [PATCH v2 0/5] staging: sm750fb: Renaming camelcase to snakecase
+Date: Mon, 16 Oct 2023 23:14:07 +0300
+Message-ID: <20231016201434.7880-1-anonolitunya@gmail.com>
+X-Mailer: git-send-email 2.42.0.345.gaab89be2eb
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZS0f+xaaLmLpKv2a@gilbert-PC>
+Content-Transfer-Encoding: 8bit
 
-On Mon, Oct 16, 2023 at 12:35:23PM +0100, Gilbert Adikankwu wrote:
-> Fix 47 warnings detected by checkpatch.pl about unnecessary parenthesis
-> around condition tests.
+Renames various function names and variable names that were previously
+in camelcase to snakecase to ensure consistent naming style throughout.
+ This issues were highlighted by checkpatch.
 
-And as I have stated numerous times in the past, they are not
-"unnecessary" at all, and provide a valuable hint to the developer as to
-what is the ordering involved.
+Dorcas AnonoLitunya (5):
+  Staging: sm750fb: Rename displayControlAdjust_SM750E
+  Staging: sm750fb: Rename pModeParam
+  Staging: sm750fb: Rename dispControl
+  Staging: sm750fb: Rename programModeRegisters
+  Staging: sm750fb: Rename ddk750_setModeTiming
 
-So you can ignore this checkpatch warning please, it's not valid as far
-as I'm concerned for the subsystems that I maintain in the kernel.
+v2: Ammended wording in commit messages for all files. 
+    Suggested by Julia Lawall <julia.lawall@inria.fr>
 
-sorry,
 
-greg k-h
+ drivers/staging/sm750fb/ddk750_mode.c | 90 +++++++++++++--------------
+ drivers/staging/sm750fb/ddk750_mode.h |  2 +-
+ drivers/staging/sm750fb/sm750_hw.c    |  2 +-
+ 3 files changed, 47 insertions(+), 47 deletions(-)
+
+-- 
+2.42.0.345.gaab89be2eb
+
