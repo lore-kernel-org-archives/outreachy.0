@@ -1,141 +1,81 @@
-Received: from mail-wm1-f54.google.com (mail-wm1-f54.google.com [209.85.128.54])
+Received: from mail-yb1-f177.google.com (mail-yb1-f177.google.com [209.85.219.177])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DC7B43FB24;
-	Tue, 17 Oct 2023 10:13:01 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F282A4175D
+	for <outreachy@lists.linux.dev>; Tue, 17 Oct 2023 10:34:13 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="grRivgXp"
-Received: by mail-wm1-f54.google.com with SMTP id 5b1f17b1804b1-4079ed65471so3436055e9.1;
-        Tue, 17 Oct 2023 03:13:01 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="bLf3Jufm"
+Received: by mail-yb1-f177.google.com with SMTP id 3f1490d57ef6-d9ad90e1038so5841403276.3
+        for <outreachy@lists.linux.dev>; Tue, 17 Oct 2023 03:34:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1697537580; x=1698142380; darn=lists.linux.dev;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=E8E7YoxZ2av3orSrcaFfg8f95nyYUaTpAzrG7yxUAnU=;
-        b=grRivgXpladx9PwYIYVNv//h2pg9A/Ozbd51Dcqx+S2aFk+tz7eXtOK1d9/cHKN8lf
-         qJYmLAu1RPlrEqQNBAy9kSzgclmyjtd0RSmohhErFDBn/u66kkYUozabW5ftPe2TXTUF
-         ecx0nJZ/PUzwjsR8Yv3teUawxZFlq8KOhokK/oBfvKCgTHNMeV3uRgNMh/0tDHuyQSeA
-         MsbhE5J/F0MCFbx8tn/SSzX7TJ/3NDc/ewec4c+H8vleaMe695sKL2inXpDBGeljHkLd
-         BOydrh+NlcF28iRkuYqqFycppmAFu64S2RKDnnb4avcx9Fon6j+iaA50NwhGfvBB++Pk
-         KOpw==
+        d=gmail.com; s=20230601; t=1697538853; x=1698143653; darn=lists.linux.dev;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=y04BNRKy+ibQwyxy5U26dHcopyErfvq/EHK+Rz+47TY=;
+        b=bLf3JufmPXHj2IkUl8opDDAfpdyW53/OdxEZBsud8EQbN9c1+u7VVxfaadfWywHyFG
+         /+kiHGOvUI4u5CyKLPUGRxlf26gW1kAF4iVyyw98ELg+leBfQQH+z0zPhGjssMHflG8d
+         cZbZAf/7D5FlG6WftzZmI4k1OwkSH+TuFCs2fTEn/aWzrTkAXr9qRgvTiU7voNEa6KAQ
+         lFx2CEWdtbRx80DLg8dFOmtyY3+R5nLazYijZw4uBcaXyEl5G+TxvYpX5lzyXOCV7M9I
+         xrwUiRXWR85zIaodyCaXnfRWhZlYbAYy2z2M4FE4sXSM72zDVqGUrNkHz1FkL7D93nag
+         NH3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697537580; x=1698142380;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=E8E7YoxZ2av3orSrcaFfg8f95nyYUaTpAzrG7yxUAnU=;
-        b=nKWKdEj1Svlgt9n8lQlC6yAztSjx2NnHryj3MQhqZP6p67AeRH/ree4WPs7lNeMPyl
-         YMs0k9GLmogjVOBNpsKnZMgeviKoHiIaCWIiK4vRAKNIpCy0mzKHkXsnJSmq1eaCVk3T
-         3a2aIOdhGyxvR/R8v4k9Vx4Shy0gUPj3mCbGg0Y19KWZK9I94u6v6qAnfaigeW0ADjEo
-         PVh5GmjvWjd3G1QlCXT/I6JWx2JamGTI3PvUK+DiEtGgc8pMzZ3UVfVk2hP/oViqIKvV
-         swRysiiCI79LENdNzdoaOTezfxHscwcH+qQnRnkflTKtU4V7w9MKjcoNVy+vwgv6R3tV
-         +j1w==
-X-Gm-Message-State: AOJu0Yznnm13mlhWvGjoevMLo1z5uq4u3NJczoVMdozEY3rXIBQ9+xtT
-	KgWRpu4NJRGDu1KSZWd34bM=
-X-Google-Smtp-Source: AGHT+IGC29aSwArOWKsG/fAbXePFt9Io7X0exKliBc79JW4dCiH8sjHjUReO3UOWvvCrFfLau9VPWw==
-X-Received: by 2002:adf:e504:0:b0:32d:b7d4:b90 with SMTP id j4-20020adfe504000000b0032db7d40b90mr1560360wrm.39.1697537579751;
-        Tue, 17 Oct 2023 03:12:59 -0700 (PDT)
-Received: from lab-ubuntu ([41.90.67.11])
-        by smtp.gmail.com with ESMTPSA id y7-20020adffa47000000b0031aef72a021sm1323918wrr.86.2023.10.17.03.12.58
+        d=1e100.net; s=20230601; t=1697538853; x=1698143653;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=y04BNRKy+ibQwyxy5U26dHcopyErfvq/EHK+Rz+47TY=;
+        b=vH6JUEXqC+jOXAwkvvW51RiVCFnCHzZHaWloqlCtdki4g94gK/+m2goyYzZVhuDDNK
+         vIacx7u5IKTV6O9a2gvVqcmPPBqM4v7qjbmIndlelxl+maPlxBfXGi5nD8ETX3Xoe9G9
+         /ZjpQsDh72ogivXtzIswn0Ppuy6mD9eD78pjIqXFPKW9CpDa4xtyAA8uNO6p7D0PHscq
+         wQwqhPDpsKcs5Rzqg1DvsPEAp0variuQv+q40emty6PGcV4sJIq4PXdq8OGxiW4QVlJK
+         1gNfj/RALPA37hNmHeZmANsIHdGK7be5rUeNOeojQqpyn305sISuBrpu9FH82XH8Y7b8
+         jpmA==
+X-Gm-Message-State: AOJu0YyNvwwdv8JALJg0jWJ8gT0LDUamK9GhyNAkGI+RMCNhOh1KgJUh
+	6WzDURNxpYL2dOoCcIw79TWFIVDbNOa/NhwR
+X-Google-Smtp-Source: AGHT+IEgZXz2PEtAqP4WkVHZVHpYzUky+SMmeqL8JlqfI96eUVGpdlke1C/PPLhCDRHi82BnRx1AEw==
+X-Received: by 2002:a25:9b85:0:b0:d9a:5918:8f53 with SMTP id v5-20020a259b85000000b00d9a59188f53mr1579826ybo.56.1697538852835;
+        Tue, 17 Oct 2023 03:34:12 -0700 (PDT)
+Received: from gilbert-PC ([105.112.189.86])
+        by smtp.gmail.com with ESMTPSA id y140-20020a25dc92000000b00d746487d6f7sm417265ybe.35.2023.10.17.03.34.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 17 Oct 2023 03:12:59 -0700 (PDT)
-Date: Tue, 17 Oct 2023 13:12:56 +0300
-From: Calvince Otieno <calvncce@gmail.com>
-To: gustavo@embeddedor.com, outreachy@lists.linux.dev
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Calvince Otieno <calvncce@gmail.com>,
-	Bagas Sanjaya <bagasdotme@gmail.com>,
-	Deepak R Varma <drv@mailo.com>, Simon Horman <horms@kernel.org>,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: wlan-ng: remove function prism2sta_ev_txexc
-Message-ID: <ZS5eKFCfu7sGOCHL@lab-ubuntu>
+        Tue, 17 Oct 2023 03:34:12 -0700 (PDT)
+From: Gilbert Adikankwu <gilbertadikankwu@gmail.com>
+To: outreachy@lists.linux.dev
+Cc: Gilbert Adikankwu <gilbertadikankwu@gmail.com>
+Subject: [PATCH v2 0/4]: staging: vt6655: Rename variable bUpdateBBVGA, byCurrentCh, byCurPwr and byBBPreEDRSSI
+Date: Tue, 17 Oct 2023 11:34:01 +0100
+Message-Id: <cover.1697535791.git.gilbertadikankwu@gmail.com>
+X-Mailer: git-send-email 2.34.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
 
-The function prism2sta_ev_txexc() is called by the function
-hfa384x_usbin_txcompl() to print the transmit exception event - a debug
-information using netdev_dbg().
+Make the variable names adhere to Linux kernel coding style and fix
+checkpatch.pl errors.
 
-The debugging utility function can be called directly by
-hfa384x_usbin_txcompl().
+v1 -> v2:
+        fix error reported here [here](https://lore.kernel.org/outreachy/d77f35a3-5eec-d02f-459b-1968a58ff7d5@intel.com/T/#m12a562e40fc6c250f6989b252c7e121435c48bc2)
+        reword the commit messages as suggested [here](https://lore.kernel.org/outreachy/d77f35a3-5eec-d02f-459b-1968a58ff7d5@intel.com/T/#m9051ff56ac0248bbcad371c82e23cc22cefb2a23)
 
-Signed-off-by: Calvince Otieno <calvncce@gmail.com>
----
- drivers/staging/wlan-ng/hfa384x_usb.c |  2 +-
- drivers/staging/wlan-ng/prism2mgmt.h  |  4 +---
- drivers/staging/wlan-ng/prism2sta.c   | 24 ------------------------
- 3 files changed, 2 insertions(+), 28 deletions(-)
+Gilbert Adikankwu (4):
+  staging: vt6655: Rename variable bUpdateBBVGA
+  staging: vt6655: Rename variable byCurrentCh
+  staging: vt6655: Rename variable byCurPwr
+  staging: vt6655: Rename variable byBBPreEDRSSI
 
-diff --git a/drivers/staging/wlan-ng/hfa384x_usb.c b/drivers/staging/wlan-ng/hfa384x_usb.c
-index 3e8c92675c82..35650f911ebc 100644
---- a/drivers/staging/wlan-ng/hfa384x_usb.c
-+++ b/drivers/staging/wlan-ng/hfa384x_usb.c
-@@ -3194,7 +3194,7 @@ static void hfa384x_usbin_txcompl(struct wlandevice *wlandev,
- 
- 	/* Was there an error? */
- 	if (HFA384x_TXSTATUS_ISERROR(status))
--		prism2sta_ev_txexc(wlandev, status);
-+		netdev_dbg(wlandev->netdev, "TxExc status=0x%x.\n", status);
- 	else
- 		prism2sta_ev_tx(wlandev, status);
- }
-diff --git a/drivers/staging/wlan-ng/prism2mgmt.h b/drivers/staging/wlan-ng/prism2mgmt.h
-index 8c3f1ac35913..17222516e85e 100644
---- a/drivers/staging/wlan-ng/prism2mgmt.h
-+++ b/drivers/staging/wlan-ng/prism2mgmt.h
-@@ -45,9 +45,7 @@ extern int prism2_reset_settletime;
- 
- u32 prism2sta_ifstate(struct wlandevice *wlandev, u32 ifstate);
- 
--void prism2sta_ev_info(struct wlandevice *wlandev,
--		       struct hfa384x_inf_frame *inf);
--void prism2sta_ev_txexc(struct wlandevice *wlandev, u16 status);
-+void prism2sta_ev_info(struct wlandevice *wlandev, struct hfa384x_inf_frame *inf);
- void prism2sta_ev_tx(struct wlandevice *wlandev, u16 status);
- void prism2sta_ev_alloc(struct wlandevice *wlandev);
- 
-diff --git a/drivers/staging/wlan-ng/prism2sta.c b/drivers/staging/wlan-ng/prism2sta.c
-index 964164bb4165..cb6c7a9fb8f3 100644
---- a/drivers/staging/wlan-ng/prism2sta.c
-+++ b/drivers/staging/wlan-ng/prism2sta.c
-@@ -1748,30 +1748,6 @@ void prism2sta_ev_info(struct wlandevice *wlandev,
- 	}
- }
- 
--/*
-- * prism2sta_ev_txexc
-- *
-- * Handles the TxExc event.  A Transmit Exception event indicates
-- * that the MAC's TX process was unsuccessful - so the packet did
-- * not get transmitted.
-- *
-- * Arguments:
-- *	wlandev		wlan device structure
-- *	status		tx frame status word
-- *
-- * Returns:
-- *	nothing
-- *
-- * Side effects:
-- *
-- * Call context:
-- *	interrupt
-- */
--void prism2sta_ev_txexc(struct wlandevice *wlandev, u16 status)
--{
--	netdev_dbg(wlandev->netdev, "TxExc status=0x%x.\n", status);
--}
--
- /*
-  * prism2sta_ev_tx
-  *
+ drivers/staging/vt6655/baseband.c    |  2 +-
+ drivers/staging/vt6655/channel.c     | 18 +++++++++---------
+ drivers/staging/vt6655/device.h      |  8 ++++----
+ drivers/staging/vt6655/device_main.c |  8 ++++----
+ drivers/staging/vt6655/dpc.c         |  2 +-
+ drivers/staging/vt6655/rf.c          |  4 ++--
+ 6 files changed, 21 insertions(+), 21 deletions(-)
 -- 
 2.34.1
 
