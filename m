@@ -1,59 +1,62 @@
-Received: from mail-wr1-f49.google.com (mail-wr1-f49.google.com [209.85.221.49])
+Received: from mail-wm1-f45.google.com (mail-wm1-f45.google.com [209.85.128.45])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 532868F47
-	for <outreachy@lists.linux.dev>; Tue, 17 Oct 2023 04:14:52 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1BC10BA48
+	for <outreachy@lists.linux.dev>; Tue, 17 Oct 2023 04:21:18 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="xWIRk/cQ"
-Received: by mail-wr1-f49.google.com with SMTP id ffacd0b85a97d-32d8c2c6dfdso5052535f8f.1
-        for <outreachy@lists.linux.dev>; Mon, 16 Oct 2023 21:14:52 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="PDlBgXdJ"
+Received: by mail-wm1-f45.google.com with SMTP id 5b1f17b1804b1-40776b1ff73so29542065e9.2
+        for <outreachy@lists.linux.dev>; Mon, 16 Oct 2023 21:21:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1697516090; x=1698120890; darn=lists.linux.dev;
+        d=linaro.org; s=google; t=1697516477; x=1698121277; darn=lists.linux.dev;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=q2dZBUmwthCKe42eGQqfFVlklrGhflMnlew3Rp0hoTg=;
-        b=xWIRk/cQ+uK8uULeQSEq0tPW7WiErL7onorSYVjrsRG1nG/KoS79CTSFuatF2DLRED
-         DKoAKp4tOZFJCBwbzAf/F7IYRl/GgFdRfAc+NcpCBdJIPYlBuMC448+mXxisSvpZ/BPs
-         S7HBJl64h69G0xmmQsaMqhheCeYb5qBi5ioYFPdFxVMB9J/2z7wp1Ess0AVwzh6tqMq1
-         3tRJXBn+iLgoNptXWK1iYjfYivSbxwKAZfEHLOZIfWpYOwWWM2+SoW3oeXK6dTf5Nz92
-         kf9AB/Xoj+BIMZeelVrMXmwCLFVCyi5GbUscUcz0OmNSTHtZzGmAjtszRcDcmveWzo/L
-         4exw==
+        bh=mSCcyJKKhe9oQwQDqf1wV5AdygiSe6A+VMWBZelRBOg=;
+        b=PDlBgXdJOuUUWpuSD0GoUlf9H8ewzX1FnGhiMDKESXjBmgDd1vD6RDWs1g5mLNi9V3
+         LBUBW+Bllpt8JmEsNTSWNO2036nK4W9xFNkJu7bZoIlrXNnrYp7xaHAcVWUfduAV+yXY
+         /7fbIUkuIi9r2gD/Z0xZnBrcWrHb+CdZD6ajg/0TaC+j/ie7297wje8IEOhgeHc4ajwz
+         gqBJFPnc6FB1xicW0PYDLl6kY5GX/USKO7eV6yL7CUGYrIM6OgrUH+R+5fCJUG0bm2+M
+         DZRmn6PSMkoNfBbHbKW/66t9Fh4WWFPWOOZ+4Symnkq0muS+FEQileGoyKtDcXegYLHY
+         6Q4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697516090; x=1698120890;
+        d=1e100.net; s=20230601; t=1697516477; x=1698121277;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=q2dZBUmwthCKe42eGQqfFVlklrGhflMnlew3Rp0hoTg=;
-        b=iPHbY3RL3ZRbgodnMMXRw0mxB2BFIPdgX3I+DTNn4ZKLcsqzJiZqQOOL1MSBSxdb28
-         QdXHFiAi4aRrTOdfLtAonEr+lZUA/7P8emQ3HuX4ar5fqBqawSCgjaM3golzblQIrRyH
-         tVUQyo/dKqHb6LewkI+PGoSvLksc6a6pHOZ+JvRKozpeUOkEvBGFAE+UDlCzjLN0BMV2
-         Ou4q6Gx4lnJ/su/MdI4OKuB7LvOzIH9bc6YlLscSh05HOAkVD7DHiB432X+n4R/norrH
-         pxgWckNyWxbH+1gGEXNUiPyrzlmMUWUzG6MChJhVhc96ltdo0PyWigN9udLjs80e3IF1
-         mOgA==
-X-Gm-Message-State: AOJu0Yyie5h2Xo+xD6t4ynVshA0aXbbHdalcXT0pDL9VxxMggyk4XhUv
-	NCnA5TAsX3WBcMgD3ivXc3lSPA==
-X-Google-Smtp-Source: AGHT+IHL9edRjCBjUElxLPuvZjX09mIVD7SQA1z7VlWAEUiuE41FNpxgzfuMp4mLH2kzKjjH4uH/0Q==
-X-Received: by 2002:a5d:6186:0:b0:32d:9d3d:8b98 with SMTP id j6-20020a5d6186000000b0032d9d3d8b98mr1034563wru.71.1697516090540;
-        Mon, 16 Oct 2023 21:14:50 -0700 (PDT)
+        bh=mSCcyJKKhe9oQwQDqf1wV5AdygiSe6A+VMWBZelRBOg=;
+        b=hYuW0ZV0X2ZrfZlunnOvYPyFKCsBBf3rE9ialsGPqyddmtyXycE2zKzMe0Sxf6bR1u
+         GoYGgiEkJT8eGJdI3Fl/XN1wFgAc/JlA9Bx3wF6oBBDJFk1Ut1nw1amYyBf6bFqLNrVb
+         mnFMsqIvbjHbSU4NdBuTA5S76+R3DhryHXsnjjY+flM3W9YSAt9qv2WictMdeqbajm06
+         egP8r1018jyxfpHNez6c5FxFXa2uoENGuHVNdm8htpDt2s1oEp789B5VKx5OO55D1BeU
+         sa7rrJ72aKnuFmPi9mzgRE+PIJgVUNieerfswbx4v1ORqclMWSl25YZ3dZMNjEN0jpaf
+         vGtQ==
+X-Gm-Message-State: AOJu0YzIhrt9mjdMzQln4xCt8kElPetUP2nw/YlUR66M9El9HNIdCKbY
+	xmDkMWf+s/yHGWeLB7u5OACcuw==
+X-Google-Smtp-Source: AGHT+IFXi6U+vu92ahA0dSTkSUF4s/rRSRQ+VtC9Ir5a0Pm9QEmodyk0y5hzOYvsChcxJgVJkeg+wg==
+X-Received: by 2002:a05:600c:4744:b0:403:9b7:a720 with SMTP id w4-20020a05600c474400b0040309b7a720mr886510wmo.1.1697516477154;
+        Mon, 16 Oct 2023 21:21:17 -0700 (PDT)
 Received: from localhost ([102.36.222.112])
-        by smtp.gmail.com with ESMTPSA id e13-20020adfef0d000000b0032d9caeab0fsm686370wro.77.2023.10.16.21.14.49
+        by smtp.gmail.com with ESMTPSA id o11-20020a05600c510b00b00407752f5ab6sm758943wms.6.2023.10.16.21.21.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 16 Oct 2023 21:14:50 -0700 (PDT)
-Date: Tue, 17 Oct 2023 07:14:47 +0300
+        Mon, 16 Oct 2023 21:21:16 -0700 (PDT)
+Date: Tue, 17 Oct 2023 07:21:13 +0300
 From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Andi Shyti <andi.shyti@linux.intel.com>
-Cc: Greg KH <gregkh@linuxfoundation.org>,
-	Gilbert Adikankwu <gilbertadikankwu@gmail.com>,
-	outreachy@lists.linux.dev, linux-staging@lists.linux.dev,
+To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Cc: Gilbert Adikankwu <gilbertadikankwu@gmail.com>,
+	Nam Cao <namcao@linutronix.de>, outreachy@lists.linux.dev,
+	manishc@marvell.com, GR-Linux-NIC-Dev@marvell.com,
+	coiby.xu@gmail.com, gregkh@linuxfoundation.org,
+	netdev@vger.kernel.org, linux-staging@lists.linux.dev,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] staging: emxx_udc: Remove unnecessary parentheses around
- condition tests
-Message-ID: <8de0c0ea-d81c-402a-a5c4-7779a190c306@kadam.mountain>
-References: <ZS0f+xaaLmLpKv2a@gilbert-PC>
- <2023101658-unmoral-survival-25cf@gregkh>
- <ZS2qpwnfCxsbvOld@ashyti-mobl2.lan>
+Subject: Re: [PATCH] staging: qlge: Add bool type to qlge_idc_wait()
+Message-ID: <32b0e468-6943-431c-9f71-68fc41727914@kadam.mountain>
+References: <ZSoxLxs45bIuBrHg@gilbert-PC>
+ <20231014065813.mQvFyjWb@linutronix.de>
+ <20231014071423.UgDor1v0@linutronix.de>
+ <ZSpIPippZFtMw2aG@gilbert-PC>
+ <78f321db-bc09-06e8-b4ef-ac56ab91e187@intel.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -62,32 +65,50 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ZS2qpwnfCxsbvOld@ashyti-mobl2.lan>
+In-Reply-To: <78f321db-bc09-06e8-b4ef-ac56ab91e187@intel.com>
 
-On Mon, Oct 16, 2023 at 11:27:03PM +0200, Andi Shyti wrote:
-> > > Fix 47 warnings detected by checkpatch.pl about unnecessary parenthesis
-> > > around condition tests.
+On Mon, Oct 16, 2023 at 04:19:09PM +0200, Przemek Kitszel wrote:
+> On 10/14/23 09:50, Gilbert Adikankwu wrote:
+> > On Sat, Oct 14, 2023 at 09:14:23AM +0200, Nam Cao wrote:
+> > > On Sat, Oct 14, 2023 at 08:58:13AM +0200, Nam Cao wrote:
+> > > > On Sat, Oct 14, 2023 at 07:11:59AM +0100, Gilbert Adikankwu wrote:
+> > > > > Reported by checkpatch:
+> > > > > 
+> > > > > WARNING: else is not generally useful after a break or return
+> > > > > 
+> > > > 
+> > > > What checkpatch is telling you here is that the "else" is redundant and
+> > > > can be removed. Although your patch suppresses the warning, it makes the
+> > > > code messier :(
+> > > 
+> > > Ah wait, after reading Julia's comment, I realize that the "else" is not
+> > > redundant at all. Seems like checkpatch.pl is lying. So ignore what I
+> > > said.
 > > 
-> > And as I have stated numerous times in the past, they are not
-> > "unnecessary" at all, and provide a valuable hint to the developer as to
-> > what is the ordering involved.
+> > Thanks
 > > 
-> > So you can ignore this checkpatch warning please, it's not valid as far
-> > as I'm concerned for the subsystems that I maintain in the kernel.
+> > 
 > 
-> I find this very confusing, though:
-> 
->    if (((ep->epnum == 0) || (data & (1 << ep->epnum)) == 0))
+> Could you consider fixing checkpatch instead?
 
-Yeah.  Too many parens.  It could hide an == vs = bug.  (That happened
-once 10 years ago but I still remember it as if it were a useful and
-dangerous anti-pattern to remember instead of a getting hit by a meteor
-type thing that will never happen again).
+Parsing C is quite hard and checkpatch is never going to do it well.
+It might be fun to start this project but it's kind of doomed.  Doomed
+projects can be an educational experience as well.
 
-Also == 0 should only be used for the number zero (used as a number and
-not as a logical no or absence) and for strcmp() functions.
+The way to do it might be to add a new in_else_if variable which tracks
+if you are in an else if block.  You would look at the indent level and
+try the curly braces.  Then if the previous thing was an else_if silence
+the warning.
 
-	if ((ep->epnum == 0) || !(data & (1 << ep->epnum)))
+But also it's fine that checkpatch prints the occasional incorrect
+warning because it teaches people to be more careful.
+
+Another thing is that when you introduce a bug, you should always
+consider if other people have done that before as well.  Perhaps do
+a `git log -p --grep "else is not generally useful"` and see if everyone
+else did it correctly and if reviewers caught the mistakes.
 
 regards,
 dan carpenter
+
+
