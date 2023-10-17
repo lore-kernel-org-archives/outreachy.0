@@ -1,49 +1,49 @@
-Received: from mail-ed1-f50.google.com (mail-ed1-f50.google.com [209.85.208.50])
+Received: from mail-ed1-f52.google.com (mail-ed1-f52.google.com [209.85.208.52])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 95A15381BD;
-	Tue, 17 Oct 2023 08:44:49 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 834FE1C28C;
+	Tue, 17 Oct 2023 09:04:48 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="ctdo8nU1"
-Received: by mail-ed1-f50.google.com with SMTP id 4fb4d7f45d1cf-53d82bea507so9385905a12.2;
-        Tue, 17 Oct 2023 01:44:49 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="UjcvlJeO"
+Received: by mail-ed1-f52.google.com with SMTP id 4fb4d7f45d1cf-53e07db272cso8383793a12.3;
+        Tue, 17 Oct 2023 02:04:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1697532288; x=1698137088; darn=lists.linux.dev;
+        d=gmail.com; s=20230601; t=1697533487; x=1698138287; darn=lists.linux.dev;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=HmsMFOzw6DDo4sGJW291xAQW+LN+HB2lb3S1lOiqLbM=;
-        b=ctdo8nU1J//TfEV2XdVnhiDQJPbzpg4GTZWO5Drxb2z1BduRbZIGgDsAWMksPg3V6z
-         fovQ8PCstXnIa9I00grDr4LbUw0jijBn5gg5x2VWLq8RB03SfUeFyxwBAdsT4HhRwG4s
-         v0TkuazJLsRuvrVIWxXqCPEa1mWaKqJIgJn0uElHUHnnB4wCgR5QFN9LcbW0cCwnQbdN
-         XEZrcsspNJe7OFp08i9cVDC0MdbDw+BF86YLNmOZEGU5yvbK8y9lZqzcL+1jRUUvz6+H
-         /GKd7Xb+nqWvBaU21HQXFE+sOcsItdGpOAmBY2bJvIR+lGXvPV/V7WmiRaVva6ZfBtlU
-         l75A==
+        bh=B/Hk67Q+giYTh6qT9YmC2zwxxSpcK1axa1hb87I3ZOM=;
+        b=UjcvlJeOlPYbQYXpPggpMzhpZCkvX71EA38frbOjYmB8SFwUHslBTu5NRSVZl5Zmkc
+         1OSxAO+ng4P+DJW7tjJjqiFiFHINkVe3h6vohIm27z80XFOoT5xzPL08vHlyePWEsx+C
+         Cny4uHOG8VtM+XOSnkecu/rtBXfShUIcttCYhZqMgVjmq9Qrk2z4iD/jbl10tcj5Rvid
+         CdtqNCaLwVgcc97ngC0/0Z0CR0jeipuml2YHOgzORqMxrY74PoNcMIyFaP5JQmBnS7fG
+         p/rlrzrKSe37vKnq/UlMHQk8HZrCSbPuzktU7qcXqtJBWkr4gGPYLp0GLaMDHbZQPMsw
+         /vxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697532288; x=1698137088;
+        d=1e100.net; s=20230601; t=1697533487; x=1698138287;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=HmsMFOzw6DDo4sGJW291xAQW+LN+HB2lb3S1lOiqLbM=;
-        b=pAJkgGUjD8swAxfpq4FZzh1L6xHDuR5J1XXRkENBHlNSQ4EAUSFEWjibZq+PottOYR
-         fOkDPLZlQ+lfTnapq+BFJjZOfioIyBaZspfhkapHVJL3fnBvMe4ypQqVFW37jskgvy7X
-         LH6OaidmSmWGmmyie92yfzhKyNwMpE3gyuQ8IChfs54tTTFRD1Dhrjvf5D//XCQvWvAM
-         YRPsAgQRi3c7/lX3jkYoPsxPEVPNl2CaSUV000kQ4wDotxNklkq5NpbRVkmz/BLynn5I
-         2EWnr3/IavgHAbhO6rfpLGEqQIRU7/wsd8Lh3tPLDV8b1lJcevXSWNQeKotS2s0eykjH
-         29WQ==
-X-Gm-Message-State: AOJu0YxUWAOIo/HtWQ/M9U1EQ/VTcH6I5dTjnBhwMmC87alu0S4FdVDw
-	X6ZwCpfKsmzJr7ofVh2UPg==
-X-Google-Smtp-Source: AGHT+IH2TV8UJJYGPgu8FKx2WW718cPP7gAnkKjdnAT4ZmDMZY3hyupZUlDoPIAfIaxXivSpi3Hzjg==
-X-Received: by 2002:a05:6402:40d0:b0:53e:2af1:e966 with SMTP id z16-20020a05640240d000b0053e2af1e966mr1533871edb.1.1697532287453;
-        Tue, 17 Oct 2023 01:44:47 -0700 (PDT)
+        bh=B/Hk67Q+giYTh6qT9YmC2zwxxSpcK1axa1hb87I3ZOM=;
+        b=QyfExvTW4oyaVa9mlRdEJU/3af3rZm/bjAd8vgbcodTQHmORUBG2Na3LXvGfShBhAQ
+         DVThPDGgTSEu87F042pEul4HkilgAePg1+EbsAXhZVqThGk7y86uRbZ7xjTiCnt/+1Na
+         Km339yWkD6+/TGDqvLOVFgDxY1e/GWeEPHioJ8eqnd0RZQPp5crWExBEkb3JoHLihsdl
+         PGK6PBuccuBDPgZOQS3ITldOeGiTVQ6tR6h3U86//UkCDJ8lKjGe7GOKWvbIJxfk7lic
+         mvP/LV3+rbU0LanaF5+pgO7c4Re7RPnrW+3CbpMQMoLPlqTvGAC/2CRarc9BXYPgIW9R
+         n8qw==
+X-Gm-Message-State: AOJu0YzU3O6Fo2QyD961JX1F/J68itqWDLEUG1O0Ehu0NpSX0wVmYPB7
+	wVQMBA3XWzU5frJgyDj1ZA==
+X-Google-Smtp-Source: AGHT+IE556fO87GyMGId4qv9PrxSAzYqqPSIlNZ9KTKHH19u1KQ7UVQmLIXEouDr2rZadRDRs7/wDA==
+X-Received: by 2002:a17:907:98e:b0:9b3:308:d045 with SMTP id bf14-20020a170907098e00b009b30308d045mr1205146ejc.46.1697533486465;
+        Tue, 17 Oct 2023 02:04:46 -0700 (PDT)
 Received: from dorcaslitunya-virtual-machine ([105.163.1.143])
-        by smtp.gmail.com with ESMTPSA id m23-20020a509317000000b0053e408aec8bsm813926eda.6.2023.10.17.01.44.44
+        by smtp.gmail.com with ESMTPSA id eh15-20020a0564020f8f00b0053e775e428csm798353edb.83.2023.10.17.02.04.42
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 17 Oct 2023 01:44:47 -0700 (PDT)
-Date: Tue, 17 Oct 2023 11:44:43 +0300
+        Tue, 17 Oct 2023 02:04:46 -0700 (PDT)
+Date: Tue, 17 Oct 2023 12:04:40 +0300
 From: Dorcas Litunya <anonolitunya@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Andi Shyti <andi.shyti@linux.intel.com>
 Cc: anonolitunya@gmail.com, outreachy@lists.linux.dev,
 	julia.lawall@inria.fr, dan.carpenter@linaro.org,
 	Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
@@ -53,12 +53,10 @@ Cc: anonolitunya@gmail.com, outreachy@lists.linux.dev,
 	linux-kernel@vger.kernel.org
 Subject: Re: [PATCH v2 1/5] Staging: sm750fb: Rename
  displayControlAdjust_SM750E
-Message-ID: <ZS5JexVUSKZUuOd4@dorcaslitunya-virtual-machine>
+Message-ID: <ZS5OKMTY4BDX015/@dorcaslitunya-virtual-machine>
 References: <20231016201434.7880-1-anonolitunya@gmail.com>
  <20231016201434.7880-2-anonolitunya@gmail.com>
- <2023101724-diagram-legwork-0e53@gregkh>
- <ZS5FlsCPETnr8T5D@dorcaslitunya-virtual-machine>
- <2023101712-grudge-overtime-1f43@gregkh>
+ <ZS2sCEF/LsO8Fzk1@ashyti-mobl2.lan>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -67,68 +65,17 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <2023101712-grudge-overtime-1f43@gregkh>
+In-Reply-To: <ZS2sCEF/LsO8Fzk1@ashyti-mobl2.lan>
 
-On Tue, Oct 17, 2023 at 10:34:43AM +0200, Greg Kroah-Hartman wrote:
-> On Tue, Oct 17, 2023 at 11:28:06AM +0300, Dorcas Litunya wrote:
-> > On Tue, Oct 17, 2023 at 09:50:50AM +0200, Greg Kroah-Hartman wrote:
-> > > On Mon, Oct 16, 2023 at 11:14:08PM +0300, Dorcas AnonoLitunya wrote:
-> > > > Rename function displayControlAdjust_SM750E to
-> > > > display_control_adjust_SM750E. This follows snakecase naming convention
-> > > > and ensures a consistent naming style throughout the file. Issue found by
-> > > > checkpatch.
-> > > > 
-> > > > Mutes the following error:
-> > > > CHECK:Avoid CamelCase: <displayControlAdjust_SM750E>
-> > > > 
-> > > > Signed-off-by: Dorcas AnonoLitunya <anonolitunya@gmail.com>
-> > > > ---
-> > > >  drivers/staging/sm750fb/ddk750_mode.c | 6 +++---
-> > > >  1 file changed, 3 insertions(+), 3 deletions(-)
-> > > > 
-> > > > diff --git a/drivers/staging/sm750fb/ddk750_mode.c b/drivers/staging/sm750fb/ddk750_mode.c
-> > > > index e00a6cb31947..8708995f676c 100644
-> > > > --- a/drivers/staging/sm750fb/ddk750_mode.c
-> > > > +++ b/drivers/staging/sm750fb/ddk750_mode.c
-> > > > @@ -14,8 +14,8 @@
-> > > >   * in bit 29:27 of Display Control register.
-> > > >   */
-> > > >  static unsigned long
-> > > > -displayControlAdjust_SM750LE(struct mode_parameter *pModeParam,
-> > > > -			     unsigned long dispControl)
-> > > > +display_control_adjust_SM750LE(struct mode_parameter *pModeParam,
-> > > > +			       unsigned long dispControl)
-> > > >  {
-> > > >  	unsigned long x, y;
-> > > >  
-> > > > @@ -125,7 +125,7 @@ static int programModeRegisters(struct mode_parameter *pModeParam,
-> > > >  			tmp |= DISPLAY_CTRL_HSYNC_PHASE;
-> > > >  
-> > > >  		if (sm750_get_chip_type() == SM750LE) {
-> > > > -			displayControlAdjust_SM750LE(pModeParam, tmp);
-> > > > +			display_control_adjust_SM750LE(pModeParam, tmp);
-> > > 
-> > > Why is this function returning a value if it is just being ignored?
-> > > 
-> > > It's not the issue here in the patch, but for future changes.
-> > >
-> > Hi Greg,
-> > 
-> > I will do the correction in the next patchset to correct both functions
-> > return value as this patchset was not focused on that. Does this mean
-> > that this patchset has been accepted? Or should I submit another
-> > patchset that includes the two changes suggested on function return
-> > values?
+On Mon, Oct 16, 2023 at 11:32:56PM +0200, Andi Shyti wrote:
+> On Mon, Oct 16, 2023 at 11:14:08PM +0300, Dorcas AnonoLitunya wrote:
+> > Rename function displayControlAdjust_SM750E to
+> > display_control_adjust_SM750E. This follows snakecase naming convention
 > 
-> You'll get an email from my system when it is accepted, wait a day or so
-> before worrying about that.  And then send new patches on top of them
-> then.
+> I'd go one step further and call it display_control_adjust_sm750e.
 > 
-Thanks for the clarification Greg. I will wait for the confirmation
-email from your system then send the new patches shortly afterwards.
+Hi Andi,
+Thanks for this, I will include this in the next patch I submit.
 
-thanks,
 Dorcas
-> thanks,
-> 
-> greg k-h
+> Andi
