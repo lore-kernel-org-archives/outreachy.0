@@ -1,141 +1,104 @@
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ej1-f54.google.com (mail-ej1-f54.google.com [209.85.218.54])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 610F915B1;
-	Tue, 17 Oct 2023 04:48:08 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D3207D2FC;
+	Tue, 17 Oct 2023 06:19:52 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="a37R7m26"
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="P1rLnhFP"
+Received: by mail-ej1-f54.google.com with SMTP id a640c23a62f3a-9c14313eb1cso63813966b.0;
+        Mon, 16 Oct 2023 23:19:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=91VBfy8MlK6h8xhN26uGVvVTiR7aGe5n9JQ5Xt05oGA=;
-  b=a37R7m26HP2Xe8reoHtzOYjQUFQP0woq4SOIxjsdGTpuHCN8ZDBCzJgc
-   b+v9IuF087pystSS9fuOaxcHudS84S4EiCFGEGDPGJpDEHeDgcRIGrOg7
-   vMprw/2KdTBzZD24+gR1GAvHOtEBnb2WDM+ob/zIqRow+UX9G5/3R2r1l
-   E=;
-Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="6.03,231,1694728800"; 
-   d="scan'208";a="68896285"
-Received: from unknown (HELO hadrien) ([87.129.180.234])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Oct 2023 06:48:01 +0200
-Date: Tue, 17 Oct 2023 06:48:00 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-To: Gilbert Adikankwu <gilbertadikankwu@gmail.com>
-cc: forest@alittletooquiet.net, gregkh@linuxfoundation.org, 
-    outreachy@lists.linux.dev, linux-staging@lists.linux.dev, 
-    linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/4] staging: vt6655: Rename variable bUpdateBBVGA
-In-Reply-To: <9bd935c464671db2654c654964812cc48f4603d3.1697495598.git.gilbertadikankwu@gmail.com>
-Message-ID: <a060ab8-238d-dffa-ce4b-9b814667786c@inria.fr>
-References: <cover.1697495597.git.gilbertadikankwu@gmail.com> <9bd935c464671db2654c654964812cc48f4603d3.1697495598.git.gilbertadikankwu@gmail.com>
+        d=gmail.com; s=20230601; t=1697523591; x=1698128391; darn=lists.linux.dev;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=dBTFzOZUm33JicBd54NiMc5LyGvqTjPU5461OiFS0cA=;
+        b=P1rLnhFPTKV2xHTdH7flkpUfVIimdRZdVu7sXE5al36rzoccltL+FBOepnDa0azJxM
+         3zH37jRGIhvV8UJty2gwSVZjeSFeYOXTyqVhAj8kqHGbeLotnDn94x9eILzNllTPR98j
+         0ZamFMHe1pMBz0i7aiN68X3nBQ5S188bm0Y5+iF1mGnQB2bYZp2F+XtA2KNy+FtR0FfY
+         HP+aNM/FIzTQ7aidLaItIVDpX0dSONjMcv3Jy9FypEO5a6eV78BXEND8sd6eD3wWXqES
+         b5BXC5zbyliEX+gNl9d14VQ4C3Zv+p78mzDjqbMWIdhpfFfoLKsQqmlHMvy71qtCrLUv
+         x4WQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1697523591; x=1698128391;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=dBTFzOZUm33JicBd54NiMc5LyGvqTjPU5461OiFS0cA=;
+        b=rhdof2P5kHGWtk9/PEtopFwYl95iL3PdfFae/9Vof0JoHctTUjxOGV8sLHZIfWvSlh
+         nLkO1lnwa8EELNChFFASRHv6JcIXDcbJql4l0sF0Jm0TOMo8OOZXIdWEfIFhiCvthanO
+         gPhRZMoerxcazMNbpU7Hl+tNKUhr+OZka1xM4BXaqD43sgCPtq7CB+/e/h/D6hROETmB
+         nE0ulvnmrdcCtG9Qfi0+RB9GUXYAiVr0F95UZHPPjVrBaAC6yc+qa+J+pKKkG+lsBHYK
+         piu/DkS11FeyVsGO0RW389/RCV8BqetoGmQ/1+9Z1c371uuv+fw8Zry2xPvrrAhm+q+5
+         mYPw==
+X-Gm-Message-State: AOJu0YwKxdiibjIaYpH5awY2ou8SJG6Xh9Vp/xxgruvs/T0bmF3m0nT9
+	OtVnuTHnjS4iGvXMuTywdhQ=
+X-Google-Smtp-Source: AGHT+IGRvXAWIeFFF+cl54Cxh1CELKVXCCwn+KlvhhO2eJEOrA1kX4Jvjy4ihoENtdDerksriPn6ng==
+X-Received: by 2002:a17:907:6d1e:b0:9c4:4b20:44b0 with SMTP id sa30-20020a1709076d1e00b009c44b2044b0mr835694ejc.1.1697523590615;
+        Mon, 16 Oct 2023 23:19:50 -0700 (PDT)
+Received: from [192.168.0.104] (p579356c7.dip0.t-ipconnect.de. [87.147.86.199])
+        by smtp.gmail.com with ESMTPSA id z15-20020a17090655cf00b009b27d4153c0sm587208ejp.178.2023.10.16.23.19.50
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 16 Oct 2023 23:19:50 -0700 (PDT)
+Message-ID: <0f6661a4-7281-4d26-8c26-ba03a567fcaa@gmail.com>
+Date: Tue, 17 Oct 2023 08:19:49 +0200
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/4] Rename variable bUpdateBBVGA, byCurrentCh, byCurPwr
+ and byBBPreEDRSSI
+To: Gilbert Adikankwu <gilbertadikankwu@gmail.com>,
+ forest@alittletooquiet.net, gregkh@linuxfoundation.org,
+ outreachy@lists.linux.dev
+Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+References: <cover.1697495597.git.gilbertadikankwu@gmail.com>
+Content-Language: en-US
+From: Philipp Hortmann <philipp.g.hortmann@gmail.com>
+In-Reply-To: <cover.1697495597.git.gilbertadikankwu@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+
+On 10/17/23 00:58, Gilbert Adikankwu wrote:
+> Make the variable names adhere to Linux kernel coding style and mute
+> checkpatch.pl errors.
+> 
+> Gilbert Adikankwu (4):
+>    staging: vt6655: Rename variable bUpdateBBVGA
+>    staging: vt6655: Rename variable byCurrentCh
+>    staging: vt6655: Rename variable byCurPwr
+>    staging: vt6655: Rename variable byBBPreEDRSSI
+> 
+>   drivers/staging/vt6655/baseband.c    |  2 +-
+>   drivers/staging/vt6655/channel.c     | 18 +++++++++---------
+>   drivers/staging/vt6655/device.h      |  8 ++++----
+>   drivers/staging/vt6655/device_main.c |  8 ++++----
+>   drivers/staging/vt6655/dpc.c         |  2 +-
+>   drivers/staging/vt6655/rf.c          |  4 ++--
+>   6 files changed, 21 insertions(+), 21 deletions(-)
+> 
+
+Hi,
+
+-       if (priv->byCurrentCh == ch->hw_value)
++       if (priv->current_ch == ch->hw_value)^M
+                 return ret;
+
+ERROR: DOS line endings
+
+What does the "^M" at the end of the new line?
+Did you run checkpatch on your patches?
+
+Thanks
+
+Bye
+
+Philipp
 
 
 
-On Mon, 16 Oct 2023, Gilbert Adikankwu wrote:
-
-> Remove bool Type encoding "b" from variable name and replace camelcase
-> with snakecase.
->
-> Mute checkpatch.pl error:
->
-> CHECK: Avoid CamelCase: <bUpdateBBVGA>
->
-> Signed-off-by: Gilbert Adikankwu <gilbertadikankwu@gmail.com>
-> ---
->  drivers/staging/vt6655/baseband.c    | 2 +-
->  drivers/staging/vt6655/channel.c     | 2 +-
->  drivers/staging/vt6655/device.h      | 2 +-
->  drivers/staging/vt6655/device_main.c | 6 +++---
->  4 files changed, 6 insertions(+), 6 deletions(-)
->
-> diff --git a/drivers/staging/vt6655/baseband.c b/drivers/staging/vt6655/baseband.c
-> index 7d47b266b87e..f7824396c5ff 100644
-> --- a/drivers/staging/vt6655/baseband.c
-> +++ b/drivers/staging/vt6655/baseband.c
-> @@ -2087,7 +2087,7 @@ bool bb_vt3253_init(struct vnt_private *priv)
->  		/* {{ RobertYu: 20050104 */
->  	} else {
->  		/* No VGA Table now */
-> -		priv->bUpdateBBVGA = false;
-> +		priv->update_bbvga = false;
->  		priv->bbvga[0] = 0x1C;
-
-I wonder about the name bbvga in the line above.  Does the initial b mean
-byte or is it a lowercase version of BBVGA?
-
-julia
-
->  	}
->
-> diff --git a/drivers/staging/vt6655/channel.c b/drivers/staging/vt6655/channel.c
-> index 6ac7d470c041..c11bc2dbc356 100644
-> --- a/drivers/staging/vt6655/channel.c
-> +++ b/drivers/staging/vt6655/channel.c
-> @@ -86,7 +86,7 @@ bool set_channel(struct vnt_private *priv, struct ieee80211_channel *ch)
->  		return ret;
->
->  	/* Set VGA to max sensitivity */
-> -	if (priv->bUpdateBBVGA &&
-> +	if (priv->update_bbvga &&
->  	    priv->bbvga_current != priv->bbvga[0]) {
->  		priv->bbvga_current = priv->bbvga[0];
->
-> diff --git a/drivers/staging/vt6655/device.h b/drivers/staging/vt6655/device.h
-> index 68bfadacfa7c..b166d296b82d 100644
-> --- a/drivers/staging/vt6655/device.h
-> +++ b/drivers/staging/vt6655/device.h
-> @@ -246,7 +246,7 @@ struct vnt_private {
->  	unsigned char byAutoFBCtrl;
->
->  	/* For Update BaseBand VGA Gain Offset */
-> -	bool bUpdateBBVGA;
-> +	bool update_bbvga;
->  	unsigned int	uBBVGADiffCount;
->  	unsigned char bbvga_new;
->  	unsigned char bbvga_current;
-> diff --git a/drivers/staging/vt6655/device_main.c b/drivers/staging/vt6655/device_main.c
-> index b08fcf7e6edc..b654fc24d725 100644
-> --- a/drivers/staging/vt6655/device_main.c
-> +++ b/drivers/staging/vt6655/device_main.c
-> @@ -179,7 +179,7 @@ device_set_options(struct vnt_private *priv)
->  	priv->byBBType = priv->opts.bbp_type;
->  	priv->byPacketType = priv->byBBType;
->  	priv->byAutoFBCtrl = AUTO_FB_0;
-> -	priv->bUpdateBBVGA = true;
-> +	priv->update_bbvga = true;
->  	priv->preamble_type = 0;
->
->  	pr_debug(" byShortRetryLimit= %d\n", (int)priv->byShortRetryLimit);
-> @@ -423,7 +423,7 @@ static void device_init_registers(struct vnt_private *priv)
->  	/* initialize BBP registers */
->  	bb_vt3253_init(priv);
->
-> -	if (priv->bUpdateBBVGA) {
-> +	if (priv->update_bbvga) {
->  		priv->bbvga_current = priv->bbvga[0];
->  		priv->bbvga_new = priv->bbvga_current;
->  		bb_set_vga_gain_offset(priv, priv->bbvga[0]);
-> @@ -1040,7 +1040,7 @@ static void vnt_check_bb_vga(struct vnt_private *priv)
->  	long dbm;
->  	int i;
->
-> -	if (!priv->bUpdateBBVGA)
-> +	if (!priv->update_bbvga)
->  		return;
->
->  	if (priv->hw->conf.flags & IEEE80211_CONF_OFFCHANNEL)
-> --
-> 2.34.1
->
->
->
