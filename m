@@ -1,61 +1,58 @@
-Received: from mail-wr1-f43.google.com (mail-wr1-f43.google.com [209.85.221.43])
+Received: from mail-lf1-f52.google.com (mail-lf1-f52.google.com [209.85.167.52])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5336C1803D
-	for <outreachy@lists.linux.dev>; Wed, 18 Oct 2023 09:34:41 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A25C415E8B
+	for <outreachy@lists.linux.dev>; Wed, 18 Oct 2023 10:17:31 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="rSLzAnQ6"
-Received: by mail-wr1-f43.google.com with SMTP id ffacd0b85a97d-32d9552d765so5149981f8f.2
-        for <outreachy@lists.linux.dev>; Wed, 18 Oct 2023 02:34:41 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="udXI3c8K"
+Received: by mail-lf1-f52.google.com with SMTP id 2adb3069b0e04-507be298d2aso2472586e87.1
+        for <outreachy@lists.linux.dev>; Wed, 18 Oct 2023 03:17:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1697621679; x=1698226479; darn=lists.linux.dev;
+        d=linaro.org; s=google; t=1697624250; x=1698229050; darn=lists.linux.dev;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=2sv0FCDZpFwcd+OomNX8xlBQ0tLiUtxgv2CzVm71AOM=;
-        b=rSLzAnQ6bMtrFMWZMmeTaJrpaMnBQEXKn48JGg1YkEZMTN5S44BNiL1iv4vikmjnmg
-         A/sCqifxEaJf3+saKkcnmZD779HbK/KxoQnD3yJskpfdPe918py59F12rfePwf7x62Xw
-         V+o4gbeF2e7sPOF3yljExraCD75YVejeyqEt+PVWDGmd9sYyolqSpnkRdwX8g1yOiC8h
-         25qfn6FOnjUsINk5F3Jd76+36mWtIrn4ZATtxzBn+1gLQeL52bfad8D4x4o9roTIcJLn
-         IdMEu0E1Il8vc7slXeniZcTUeYfvdb4I2rtb7U8LKVLyrfM8CI142oW3PY8hevuDp8CL
-         hfkw==
+        bh=uMF9+XVbotmwlZkgFVQV7OtJV2XJqMd/UdMT31C9cZA=;
+        b=udXI3c8K/pWZoNZNcDNGITomdovn/hvkPpmt3b2HGGmvDyOupw4ukGJ7EnBYpwKQE+
+         IJXkcN9iHuVuZoYS1hqjJ4wl7nCUZzG9dXvytHN9oQO9jFmAuiQ/nxnrqTXgYXEd/EHc
+         /Z5W1ySPL6xBvWRs6r3G6awyhcLVTBZN69D5OZoWvi3HZ/rKl0VkbgujD1BG4zaWDH3z
+         MyTG1RgVJliV6SJd1Vs52/BpS0JU+A3DG6bQXoNv6bsbIZlsK3mxAcpQZgP0hPtkSTvz
+         vq82CJIwSu8txFlejc7QOJpx5S95KUUgnvYJyGFj9WIXvzT4Yluhruxd7+s6rBDb/3B0
+         A6PQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697621679; x=1698226479;
+        d=1e100.net; s=20230601; t=1697624250; x=1698229050;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=2sv0FCDZpFwcd+OomNX8xlBQ0tLiUtxgv2CzVm71AOM=;
-        b=YR6uv9mSLXCIwGh0sORArg9XUor0wtsN7Gnf2DkC67JyOQWfTr0cB6mXXyaSN1GywA
-         H/2d3CuWHk2poFC7DHSyrIPtCBG/ipPFauyu56tVBpUSDx62XNkgdhCf188CqbkB9A2M
-         88CQizqs5ShEVSO1lh03QG95k2uEBOmBXPxk6cAXN7GTwTQqF2r+XkjofJOHJ67nUZTk
-         alJplJX2EqzzWKbLA/4rgkiZdYt1XeuuZ8cI+0yEpQoSzbzBIT9cK6CcTRr9z0lczrQf
-         R3AiCPzSV7KzfG+4cVaQU9EZgSdCT2iLAOdVbpg9SXKTOvrf/o4tmsvJJBODjSHcBU0M
-         bPRw==
-X-Gm-Message-State: AOJu0Yx9FWczpHsaJfqUe6AWTTCHrQhcHgjb3QSWRwtrKx/2jAaE6BqP
-	F+EfnOvMneIYzMmGWgr8IT1dfg==
-X-Google-Smtp-Source: AGHT+IGIAS/j+uj93RmHmX/KEbmsiZXmJCczP64fq3Xd7hK0t1HHw4THzR0C0AbDNLPG9A9j4rAoxw==
-X-Received: by 2002:a5d:4f02:0:b0:32d:a28b:da08 with SMTP id c2-20020a5d4f02000000b0032da28bda08mr3721637wru.62.1697621679570;
-        Wed, 18 Oct 2023 02:34:39 -0700 (PDT)
+        bh=uMF9+XVbotmwlZkgFVQV7OtJV2XJqMd/UdMT31C9cZA=;
+        b=f0zJHa5sUSeQMHjQcx3uAkKKfgzz9S8SkXfaKVQqL5ort0DiAaASGtZLGaAbOrqHS2
+         pyKjrLabc4lT9smEiNMp+QcYOmS/2FuO5Otg1hIcQu4BVBCX2s26HpBhJD4hSURg+eWN
+         wvO18W5pHnFNBdzLWCaQviAnzcyy/8D8h0boeQRQ/nH+ibW8V8N7Cw9is3HPlSjURtO3
+         88q3+C7HhiZMC390NyXSv+j2O6zD/+15EjterFmrvC/pJFePFNy2lxq23i6gr3OOgR+R
+         y5aMtVNDFxmR1uvB0pxyQr83+KQaWSqr/CTY3K0gMIHt+VAgiCDNZDOBaqWZDdjj3Gd0
+         ntHA==
+X-Gm-Message-State: AOJu0Yy6qZXERH8US4+fs0R5WlGqHCXaE94R3utT2GJjFnLiEFfMNYXR
+	WokBG1ZOmBgbq/LomL2xSR8CFA==
+X-Google-Smtp-Source: AGHT+IHuHf/vAVlD/nYzbbKTFIUa4gHdOV6nXgpEc3kC6Vu1Tngn0aHuloTkDC1Ihtka7WkYH8MafA==
+X-Received: by 2002:a05:6512:3b89:b0:507:96fd:d3ee with SMTP id g9-20020a0565123b8900b0050796fdd3eemr4498644lfv.32.1697624249706;
+        Wed, 18 Oct 2023 03:17:29 -0700 (PDT)
 Received: from localhost ([102.36.222.112])
-        by smtp.gmail.com with ESMTPSA id h13-20020a056000000d00b0031fd849e797sm1681945wrx.105.2023.10.18.02.34.38
+        by smtp.gmail.com with ESMTPSA id l6-20020a5d4806000000b0032da75af3easm1786409wrq.80.2023.10.18.03.17.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 18 Oct 2023 02:34:39 -0700 (PDT)
-Date: Wed, 18 Oct 2023 12:34:36 +0300
+        Wed, 18 Oct 2023 03:17:28 -0700 (PDT)
+Date: Wed, 18 Oct 2023 13:17:25 +0300
 From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Dorcas AnonoLitunya <anonolitunya@gmail.com>
-Cc: outreachy@lists.linux.dev, julia.lawall@inria.fr,
-	andi.shyti@linux.intel.com,
+To: Calvince Otieno <calvncce@gmail.com>
+Cc: gustavo@embeddedor.com, outreachy@lists.linux.dev,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
-	Teddy Wang <teddy.wang@siliconmotion.com>,
-	linux-fbdev@vger.kernel.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 2/2] staging: sm750fb: Remove unused return value in
- program_mode_registers()
-Message-ID: <41a6ac1b-d21e-41ab-b193-623d2f5f2d2c@kadam.mountain>
-References: <cover.1697619623.git.anonolitunya@gmail.com>
- <492e63bbc58147fb534930ef9e1fb5d844ae8769.1697619623.git.anonolitunya@gmail.com>
+	Martyn Welch <martyn@welchs.me.uk>,
+	Manohar Vanga <manohar.vanga@gmail.com>,
+	Julia Lawall <julia.lawall@inria.fr>, linux-kernel@vger.kernel.org,
+	linux-staging@lists.linux.dev
+Subject: Re: [PATCH] staging: vme_user: replace strcpy with strscpy
+Message-ID: <e6c2d522-8770-4e94-81cd-5dedf91f5f32@kadam.mountain>
+References: <ZS+Jb2rQWbOIIQ42@lab-ubuntu>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -64,25 +61,32 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <492e63bbc58147fb534930ef9e1fb5d844ae8769.1697619623.git.anonolitunya@gmail.com>
+In-Reply-To: <ZS+Jb2rQWbOIIQ42@lab-ubuntu>
 
-On Wed, Oct 18, 2023 at 12:07:38PM +0300, Dorcas AnonoLitunya wrote:
-> -static int program_mode_registers(struct mode_parameter *mode_param,
-> -				  struct pll_value *pll)
-> +static void program_mode_registers(struct mode_parameter *mode_param,
-> +				   struct pll_value *pll)
->  {
->  	int ret = 0;
->  	int cnt = 0;
-> @@ -202,7 +202,6 @@ static int program_mode_registers(struct mode_parameter *mode_param,
->  	} else {
->  		ret = -1;
+On Wed, Oct 18, 2023 at 10:29:51AM +0300, Calvince Otieno wrote:
+> Checkpatch suggests using strscpy() instead of strncpy().
+> 
+> The advantages of strscpy() are that it always adds a NUL terminator
+> and prevents read overflows if the source string is not properly
+> terminated. One potential disadvantage is that it doesn't zero pad the
+> string like strncpy() does.
 
-No need to set ret here.
+You're not replacing strncpy(), you're replacing strcpy().  There is
+never a downside to replacing strcpy() with strspy() beyond that the
+secure function is probably slightly slower.
 
->  	}
-> -	return ret;
->  }
+> 
+> In this code, strscpy() and strncpy() are equivalent and do not affect
+> runtime behavior. strscpy() simply copies the known string value of the
+> variable driver_name into the fake_bridge->name variable, which also
+> has a fixed size.
+> 
+> While using strscpy() does not address any bugs, it is considered a better
+> practice and aligns with checkpatch recommendations.
+
+This analysis does not say where driver_name is set, or how big it is,
+or what the size of the fake_bridge->name buffer is.  I would like to
+see that sort of analysis in the commit message.
 
 regards,
 dan carpenter
