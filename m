@@ -1,72 +1,125 @@
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-wm1-f51.google.com (mail-wm1-f51.google.com [209.85.128.51])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 87129335AC;
-	Wed, 18 Oct 2023 12:07:21 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B46F0347AB;
+	Wed, 18 Oct 2023 12:59:34 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="Gn4JWz+/"
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="A7zcPzeY"
+Received: by mail-wm1-f51.google.com with SMTP id 5b1f17b1804b1-40836ea8cbaso11734605e9.0;
+        Wed, 18 Oct 2023 05:59:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=KhDy2uyh5BxLdB3QaglsiHAG0J7EpS+E3ZDPw2nSfPk=;
-  b=Gn4JWz+/N8lQ1Em4gBQwaUbdOCp9AqZtorQwM7xfR/TvGiF5UrCboKgx
-   B1gym28C59uvXeAg4ne3KBsjtoSmXvW4z3OMdDTASp4WAZSE+CbdRUvcB
-   9wp1iUmzip38X+8ukGquaMpt5vuetGen+v5ZYMvjmrnT8c5baQy6H8Ke5
-   A=;
-Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="6.03,235,1694728800"; 
-   d="scan'208";a="69068973"
-Received: from dhcp-138-246-3-50.dynamic.eduroam.mwn.de (HELO hadrien) ([138.246.3.50])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Oct 2023 14:07:19 +0200
-Date: Wed, 18 Oct 2023 14:07:17 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-To: Dorcas AnonoLitunya <anonolitunya@gmail.com>
-cc: outreachy@lists.linux.dev, julia.lawall@inria.fr, dan.carpenter@linaro.org, 
-    andi.shyti@linux.intel.com, Sudip Mukherjee <sudipm.mukherjee@gmail.com>, 
-    Teddy Wang <teddy.wang@siliconmotion.com>, 
-    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-    linux-fbdev@vger.kernel.org, linux-staging@lists.linux.dev, 
-    linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 0/2] Remove unused return values from functions
-In-Reply-To: <cover.1697619623.git.anonolitunya@gmail.com>
-Message-ID: <cb74515c-951c-f024-be3b-96e7e9bde068@inria.fr>
+        d=gmail.com; s=20230601; t=1697633973; x=1698238773; darn=lists.linux.dev;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=3l7KU10yNphdl5Vv+iDYUL4LqhI9vTGfAIrzdvNXoIs=;
+        b=A7zcPzeYSLzDHmlx26MecOuIGtzNXjYc/r3sDMFzGx+FqleK6ZNrboquVnjmJrm7Hy
+         dY9BnJH0+ARC1fQdrDCAqBbG/ODoYOH7kSn/L5F99wAT0n4kOdiNX2t2KfBqHzpMKYwg
+         50BzVhnz4rl7/i082jF+s8qs6C2t0lDWzJZ9dB5CVJZUJUtanVwJxRiKZf6lFgfXhM53
+         NQBfGrEaZFi7Glci+OMM6Ivw0Y8+gZNXF0BcCYLFSzBOX0m82vWH8+awYeoLAm7bSdmX
+         xJ4IbDgN79tqiHh3lAyen4AOPts90p2GHihd3QAuKO6vRR7sAIx9M6dC5avE4bqz2+o8
+         DE4w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1697633973; x=1698238773;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=3l7KU10yNphdl5Vv+iDYUL4LqhI9vTGfAIrzdvNXoIs=;
+        b=c4PJvWjruAF+SMf0V7cfnb7YFZzBHr0D96O5VM6/laIvk22qYODb3228Z6aCPCaVRE
+         7WuD5ZPSY0KmT8O2RuBatiusLHmeJDPVvmwpLe9i/7m/Bz1WoFsFTNis/hOcQdRXXCax
+         dTKS7aLEZD5+fxOhiapKfhGv0FbBNo+sfSUDs3ZHoEAyfnEGKrxhLNPOT3fNs14kdLoh
+         +6qSaAhjtfMLRXD6WQIr7xgkVu7AMZGYzvPFKjOJNLs5Qzm2LB7D7BjmLKhyT7dCk1K1
+         J6vIBghUdNoMkGMhzidrhdK6r3rgdinRbg1yGHXiCcNIH8DSyTifY++iQqjpSIB+PUO4
+         ceIg==
+X-Gm-Message-State: AOJu0YxNjSpoyg1wHBFCD+mmvuwdkoH/TyfW6/dhAn4koF7DjPv+KZCV
+	9pj1FiqR1dN/rmRCV0B+rA==
+X-Google-Smtp-Source: AGHT+IGorfdQKSOrVoY8L4UO3dsA6xUqICePH8OqA+pJtZnZPwhyw7zG0ELzN/8lhptrPKgSqkTmrg==
+X-Received: by 2002:a05:600c:1d22:b0:408:41b4:7fe0 with SMTP id l34-20020a05600c1d2200b0040841b47fe0mr134123wms.6.1697633972472;
+        Wed, 18 Oct 2023 05:59:32 -0700 (PDT)
+Received: from dorcaslitunya-virtual-machine ([105.163.0.137])
+        by smtp.gmail.com with ESMTPSA id t13-20020a05600c450d00b0040651505684sm1640297wmo.29.2023.10.18.05.59.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 18 Oct 2023 05:59:32 -0700 (PDT)
+Date: Wed, 18 Oct 2023 15:59:27 +0300
+From: Dorcas Litunya <anonolitunya@gmail.com>
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: outreachy@lists.linux.dev, dan.carpenter@linaro.org,
+	andi.shyti@linux.intel.com,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
+	Teddy Wang <teddy.wang@siliconmotion.com>,
+	linux-fbdev@vger.kernel.org, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 2/2] staging: sm750fb: Remove unused return value in
+ program_mode_registers()
+Message-ID: <ZS/Wr9ShnEe3umeY@dorcaslitunya-virtual-machine>
 References: <cover.1697619623.git.anonolitunya@gmail.com>
+ <492e63bbc58147fb534930ef9e1fb5d844ae8769.1697619623.git.anonolitunya@gmail.com>
+ <4b7129ae-27f9-7ff4-845-9c327aff488c@inria.fr>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <4b7129ae-27f9-7ff4-845-9c327aff488c@inria.fr>
 
-
-
-On Wed, 18 Oct 2023, Dorcas AnonoLitunya wrote:
-
-> Modifies the return type of different static functions to void as the return value is being ignored
-> in all funtion calls thus not useful to have a return type.This improves
-> code readability and maintainability.
-
-Remember to put a space between a period and the start of the next
-sentence.
-
-julia
-
+On Wed, Oct 18, 2023 at 02:06:41PM +0200, Julia Lawall wrote:
+> 
+> 
+> On Wed, 18 Oct 2023, Dorcas AnonoLitunya wrote:
+> 
+> > Modifies the return type of program_mode_registers()
+> > to void from int as the return value is being ignored in
+> > all subsequent function calls.
+> >
+> > This improves code readability and maintainability.
+> >
+> > Suggested-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> > Signed-off-by: Dorcas AnonoLitunya <anonolitunya@gmail.com>
+> > ---
+> >  drivers/staging/sm750fb/ddk750_mode.c | 5 ++---
+> >  1 file changed, 2 insertions(+), 3 deletions(-)
+> >
+> > diff --git a/drivers/staging/sm750fb/ddk750_mode.c b/drivers/staging/sm750fb/ddk750_mode.c
+> > index 83ace6cc9583..e15039238232 100644
+> > --- a/drivers/staging/sm750fb/ddk750_mode.c
+> > +++ b/drivers/staging/sm750fb/ddk750_mode.c
+> > @@ -73,8 +73,8 @@ display_control_adjust_sm750le(struct mode_parameter *mode_param,
+> >  }
+> >
+> >  /* only timing related registers will be  programed */
+> > -static int program_mode_registers(struct mode_parameter *mode_param,
+> > -				  struct pll_value *pll)
+> > +static void program_mode_registers(struct mode_parameter *mode_param,
+> > +				   struct pll_value *pll)
+> >  {
+> >  	int ret = 0;
+> >  	int cnt = 0;
+> > @@ -202,7 +202,6 @@ static int program_mode_registers(struct mode_parameter *mode_param,
+> >  	} else {
+> >  		ret = -1;
+> 
+> Is it still useful to have ret = -1?  Maybe the ret variable is not useful
+> at all any more, but one would have to check the parts of the function
+> that aren't shown.
 >
-> Dorcas AnonoLitunya (2):
->   staging: sm750fb: Remove unused return value in
->     display_control_adjust_sm750le()
->   staging: sm750fb: Remove unused return value in
->     program_mode_registers()
->
->  drivers/staging/sm750fb/ddk750_mode.c | 9 +++------
->  1 file changed, 3 insertions(+), 6 deletions(-)
->
-> --
-> 2.42.0.345.gaab89be2eb
->
->
->
+I agree Julia. I will remove the setting part for ret = -1 but keep the
+ret variable just in case it is being used by parts of the function not
+shown. Thanks for the feedback.
+
+Dorcas
+> julia
+> 
+> >  	}
+> > -	return ret;
+> >  }
+> >
+> >  int ddk750_set_mode_timing(struct mode_parameter *parm, enum clock_type clock)
+> > --
+> > 2.42.0.345.gaab89be2eb
+> >
+> >
