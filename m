@@ -1,57 +1,51 @@
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8D696171AE;
-	Wed, 18 Oct 2023 13:15:31 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2EC811A733;
+	Wed, 18 Oct 2023 13:23:16 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="JLloD9Ih"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=DaQ6cGTv6XMBNUYEJLOizIHbSt4Dr0Tm0u2P2jx7WHQ=;
-  b=JLloD9Ih8tfGPpU3niVRQTWFIgN2YFaBBQsmgj9eN6wDzmrsQXxAaakb
-   nrkm7m+flApLfrB7N7W2soYGtAlwr2kj2KntxviLP61GWckjinkpV0fcs
-   kBDfcu/9YF/E5V9825npk1EIJQwaroiDlPwAFF25IrrUCYaiO/NFjlo/A
-   0=;
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="6.03,235,1694728800"; 
-   d="scan'208";a="131910169"
-Received: from dhcp-138-246-3-50.dynamic.eduroam.mwn.de (HELO hadrien) ([138.246.3.50])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Oct 2023 15:15:28 +0200
-Date: Wed, 18 Oct 2023 15:15:28 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
+	dkim=pass (1024-bit key) header.d=linuxfoundation.org header.i=@linuxfoundation.org header.b="LPOr7bru"
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0335BC433C8;
+	Wed, 18 Oct 2023 13:23:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1697635396;
+	bh=joKmWNY9VbWhIfQ/mKSkRyaTHyCBreEtFSASbGm5sak=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=LPOr7bruIYPbgt1xPhFtXldnnWQppBGI8uYTAkw1/Zbx/VLmsRGknJ6/ERtpXYKi3
+	 JqM+yJCjFHWewSsb78yJKr98fUMBOcaHYBYptgp7ZNWRgA6foR7QVcBCsbgW/NWsjS
+	 Uw+kFQ6UWji/O4jfJ+zX12tbmh1MoAAIENzkZt/w=
+Date: Wed, 18 Oct 2023 15:23:13 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: Dorcas Litunya <anonolitunya@gmail.com>
-cc: Julia Lawall <julia.lawall@inria.fr>, outreachy@lists.linux.dev, 
-    dan.carpenter@linaro.org, andi.shyti@linux.intel.com, 
-    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-    Sudip Mukherjee <sudipm.mukherjee@gmail.com>, 
-    Teddy Wang <teddy.wang@siliconmotion.com>, linux-fbdev@vger.kernel.org, 
-    linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Cc: Julia Lawall <julia.lawall@inria.fr>, outreachy@lists.linux.dev,
+	dan.carpenter@linaro.org, andi.shyti@linux.intel.com,
+	Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
+	Teddy Wang <teddy.wang@siliconmotion.com>,
+	linux-fbdev@vger.kernel.org, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org
 Subject: Re: [PATCH 2/2] staging: sm750fb: Remove unused return value in
  program_mode_registers()
-In-Reply-To: <ZS/Wr9ShnEe3umeY@dorcaslitunya-virtual-machine>
-Message-ID: <254c6d21-3f44-4e6c-156-67fb3b56b426@inria.fr>
-References: <cover.1697619623.git.anonolitunya@gmail.com> <492e63bbc58147fb534930ef9e1fb5d844ae8769.1697619623.git.anonolitunya@gmail.com> <4b7129ae-27f9-7ff4-845-9c327aff488c@inria.fr> <ZS/Wr9ShnEe3umeY@dorcaslitunya-virtual-machine>
+Message-ID: <2023101836-earful-freight-9c51@gregkh>
+References: <cover.1697619623.git.anonolitunya@gmail.com>
+ <492e63bbc58147fb534930ef9e1fb5d844ae8769.1697619623.git.anonolitunya@gmail.com>
+ <4b7129ae-27f9-7ff4-845-9c327aff488c@inria.fr>
+ <ZS/Wr9ShnEe3umeY@dorcaslitunya-virtual-machine>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ZS/Wr9ShnEe3umeY@dorcaslitunya-virtual-machine>
 
-
-
-On Wed, 18 Oct 2023, Dorcas Litunya wrote:
-
+On Wed, Oct 18, 2023 at 03:59:27PM +0300, Dorcas Litunya wrote:
 > On Wed, Oct 18, 2023 at 02:06:41PM +0200, Julia Lawall wrote:
-> >
-> >
+> > 
+> > 
 > > On Wed, 18 Oct 2023, Dorcas AnonoLitunya wrote:
-> >
+> > 
 > > > Modifies the return type of program_mode_registers()
 > > > to void from int as the return value is being ignored in
 > > > all subsequent function calls.
@@ -82,31 +76,18 @@ On Wed, 18 Oct 2023, Dorcas Litunya wrote:
 > > > @@ -202,7 +202,6 @@ static int program_mode_registers(struct mode_parameter *mode_param,
 > > >  	} else {
 > > >  		ret = -1;
-> >
+> > 
 > > Is it still useful to have ret = -1?  Maybe the ret variable is not useful
 > > at all any more, but one would have to check the parts of the function
 > > that aren't shown.
 > >
 > I agree Julia. I will remove the setting part for ret = -1 but keep the
 > ret variable just in case it is being used by parts of the function not
-> shown. Thanks for the feedback.
+> shown.
 
-You can check the rest of the function code and see if ret is still
-useful.
+No, don't do that, you will trip other static checkers if you do so.
+Remove it entirely as it is obviously not needed anymore.
 
-julia
+thanks,
 
->
-> Dorcas
-> > julia
-> >
-> > >  	}
-> > > -	return ret;
-> > >  }
-> > >
-> > >  int ddk750_set_mode_timing(struct mode_parameter *parm, enum clock_type clock)
-> > > --
-> > > 2.42.0.345.gaab89be2eb
-> > >
-> > >
->
+greg k-h
