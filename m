@@ -1,63 +1,59 @@
-Received: from mail-ej1-f53.google.com (mail-ej1-f53.google.com [209.85.218.53])
+Received: from mail-pl1-f180.google.com (mail-pl1-f180.google.com [209.85.214.180])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 64DC338BDB;
-	Wed, 18 Oct 2023 15:34:40 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4166D34CED;
+	Wed, 18 Oct 2023 19:38:58 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Q/eHUrQq"
-Received: by mail-ej1-f53.google.com with SMTP id a640c23a62f3a-98377c5d53eso1077962866b.0;
-        Wed, 18 Oct 2023 08:34:40 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="eTBj8QKX"
+Received: by mail-pl1-f180.google.com with SMTP id d9443c01a7336-1ca6809fb8aso26648165ad.1;
+        Wed, 18 Oct 2023 12:38:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1697643278; x=1698248078; darn=lists.linux.dev;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=ub5Yg0CJelx4oGv8fp3eRsfPV6T6acMrYQkLBrGUmtg=;
-        b=Q/eHUrQqk++u/221zQJSlkasrIhbq48os4aG4DuNmDl54iDLOtQwqQaJk3/ygCOucd
-         lq04Fgx0vs9TslbJSoZx777kj+XZBvt7PLTJ8IE2dXo4k39Kek36zwbP6tPDR9EW+0HK
-         dkZU6x6ZgaZ1sa2LRChtvRcpYq4zKwAFTc1GQLmcg9H+9trl0Z8V9ThnbNKvD715IpwH
-         JPmDcDBOv+UXKuXpcuoGk27H+zTLbK7sHdA7CKGAFwokiKFneDF7faH+c7MPyQrvuOAQ
-         lJj2+2ZD9IDQ8UkJTDVkOGEpHIBO3Bv2+uQx1N7hfa0flYnJQho7n5uXVgBlGGL6Hqjb
-         Kt0Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697643278; x=1698248078;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+        d=gmail.com; s=20230601; t=1697657937; x=1698262737; darn=lists.linux.dev;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=ub5Yg0CJelx4oGv8fp3eRsfPV6T6acMrYQkLBrGUmtg=;
-        b=bhRE89wbdq4xOdiIIHZUw81y0jlGn2VnPOsIT/Tks9FILby9qvGEXMdk39hLp1+WKk
-         Bcbwj5RCO1A6O6JLnTvA7w0LppN7tc2k8obmgqalA5Euc3wGHnr/uFg6CqHQMw8cf9QS
-         m7nXSdZMHODBhWWRfPjiLLQUqKMeVWOuLfnclvr+3xta2HsIkMXi02Yzbz4YL09fZKi6
-         99dn9hTsxm6Hn52ke/FXZaasVgzf67B1EIVQlq1p0atgIvKXUv/dzshK8ckRWFlh3fzt
-         6U9Bs+0lGmquGUnqth6nlNfZLb+DDvQ5rGcVQUpByoZrd4wv5vLaj1nt2BKZfaYa6fBK
-         HmHw==
-X-Gm-Message-State: AOJu0YzaBp/0zKwLkEA0mU+1o8N+10Xr/XBhcJm3IqazLIipYXXeOy5t
-	cNATlpWTUOqpSxk34oodoA==
-X-Google-Smtp-Source: AGHT+IFuXpYMxlADLEsXxy5I5GqphwtTebkI3aaksBzLRVwqwh4y5mNKLrJxrinpzTR4oIfD9PVrvw==
-X-Received: by 2002:a17:907:78b:b0:9be:7de2:927c with SMTP id xd11-20020a170907078b00b009be7de2927cmr4110575ejb.70.1697643278205;
-        Wed, 18 Oct 2023 08:34:38 -0700 (PDT)
-Received: from dorcaslitunya-virtual-machine ([105.163.156.111])
-        by smtp.gmail.com with ESMTPSA id hb6-20020a170906b88600b009b8dbdd5203sm1880717ejb.107.2023.10.18.08.34.34
+        bh=SbWpIm78ki4Fx1nMnnk18t9z2vykmSJma0XrCQOyKmQ=;
+        b=eTBj8QKX9rc9YCa8mUkVZjzioXtwx9IjsujP2guyPdT/q1bfgbfGw34pwwPJBym4tV
+         PIGvjzsuxy/DRxcKdz11V6e8q1sqM+u6xHaHnPEN87v+n3YxN9Y9XcJKy3DNIVybPIPc
+         Eqsbsz8qAxheDb4gc8LzbNSuR+FVcZIJjmb+ERgPk0i80eE/OqqmxBkkyQOCvN+FAqCI
+         x7n1wYS3RY3PaTOmSrhYKM6DdH+jTWy1jUxIxBFWd0hGf6PyaKdsZU2jT/VK1/KpSQWn
+         dFJ2hukh1s9FDKsmYmp6WCvaYh30UhLTsJykbOoefqdnjsZ6RN+dsQ1uQX+CN17+Mk+a
+         K7pg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1697657937; x=1698262737;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=SbWpIm78ki4Fx1nMnnk18t9z2vykmSJma0XrCQOyKmQ=;
+        b=s7ABES1bn4y8BvmgPe5HxEmR77w+FNK9Boidt+OuOFiX0jU7L6qN/N5nqIqi/Gpxbj
+         d15lu+R9cb0LOJvG2pe2fgHdYXOy6dupq/LWwqA6ShmqtYw2ZF49f3pAUg+PBdSZSdEb
+         JnDAV/u7vsca+MLCV5NO+k2yCLYPcr1Ngy6smD/UjI9CsY5Tlr4oWtFnJ0v0lW+ThP+8
+         f9wAG2nMBMGZuH2zGY+6AibZ9fyb3VradX9KgHVTqUTwkhDQRk4U2GxB2M7J+qKOexOh
+         HD+qNx1KLtHQTjJLV1gCNuhre65pIjQcpjMi4NBoDLTE12KoDACcP8+lM0J2qHkyIRWE
+         Sv+w==
+X-Gm-Message-State: AOJu0YzOLm6w9edHh4yyJPzSaw2szrjq7YVFb0eAsji3rf/f9yvdLtk3
+	j7Yrp1Z2e0wrJfC/NaFrZjaFg8Vibd4PkQ==
+X-Google-Smtp-Source: AGHT+IGgVp5pZFDv7wfoIE5v7AmWPBT6HKlAlspyxnuNXWtvyCdJ3FtLj6kP9CH2Gk3zoAYZAe58Qw==
+X-Received: by 2002:a17:903:2305:b0:1c8:9d32:3396 with SMTP id d5-20020a170903230500b001c89d323396mr332383plh.60.1697657937180;
+        Wed, 18 Oct 2023 12:38:57 -0700 (PDT)
+Received: from Negi ([68.181.16.134])
+        by smtp.gmail.com with ESMTPSA id u8-20020a17090282c800b001b896d0eb3dsm311044plz.8.2023.10.18.12.38.56
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 18 Oct 2023 08:34:37 -0700 (PDT)
-Date: Wed, 18 Oct 2023 16:24:55 +0300
-From: Dorcas Litunya <anonolitunya@gmail.com>
+        Wed, 18 Oct 2023 12:38:56 -0700 (PDT)
+Date: Wed, 18 Oct 2023 12:38:56 -0700
+From: Soumya Negi <soumya.negi97@gmail.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Julia Lawall <julia.lawall@inria.fr>, outreachy@lists.linux.dev,
-	dan.carpenter@linaro.org, andi.shyti@linux.intel.com,
-	Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
-	Teddy Wang <teddy.wang@siliconmotion.com>,
-	linux-fbdev@vger.kernel.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 2/2] staging: sm750fb: Remove unused return value in
- program_mode_registers()
-Message-ID: <ZS/cp8IZyCjujmDQ@dorcaslitunya-virtual-machine>
-References: <cover.1697619623.git.anonolitunya@gmail.com>
- <492e63bbc58147fb534930ef9e1fb5d844ae8769.1697619623.git.anonolitunya@gmail.com>
- <2023101846-synopses-paralyses-d1ee@gregkh>
- <ZS+moqE585lPBN3m@dorcaslitunya-virtual-machine>
- <2023101830-janitor-trapezoid-bb48@gregkh>
+Cc: Martyn Welch <martyn@welchs.me.uk>,
+	Manohar Vanga <manohar.vanga@gmail.com>, outreachy@lists.linux.dev,
+	linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev
+Subject: Re: [PATCH 1/2] staging: vme_user: Replace printk() with
+ pr_*(),dev_*()
+Message-ID: <20231018193855.GA32553@Negi>
+References: <cover.1697601942.git.soumya.negi97@gmail.com>
+ <a0579eeda5ce70f69b6bfdcbe534b9d37138096c.1697601942.git.soumya.negi97@gmail.com>
+ <2023101823-unhidden-draw-d68c@gregkh>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -66,93 +62,55 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <2023101830-janitor-trapezoid-bb48@gregkh>
+In-Reply-To: <2023101823-unhidden-draw-d68c@gregkh>
+User-Agent: Mutt/1.9.4 (2018-02-28)
 
-On Wed, Oct 18, 2023 at 03:25:05PM +0200, Greg Kroah-Hartman wrote:
-> On Wed, Oct 18, 2023 at 12:34:26PM +0300, Dorcas Litunya wrote:
-> > On Wed, Oct 18, 2023 at 11:26:33AM +0200, Greg Kroah-Hartman wrote:
-> > > On Wed, Oct 18, 2023 at 12:07:38PM +0300, Dorcas AnonoLitunya wrote:
-> > > > Modifies the return type of program_mode_registers()
-> > > > to void from int as the return value is being ignored in
-> > > > all subsequent function calls.
-> > > > 
-> > > > This improves code readability and maintainability.
-> > > > 
-> > > > Suggested-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-> > > > Signed-off-by: Dorcas AnonoLitunya <anonolitunya@gmail.com>
-> > > > ---
-> > > >  drivers/staging/sm750fb/ddk750_mode.c | 5 ++---
-> > > >  1 file changed, 2 insertions(+), 3 deletions(-)
-> > > > 
-> > > > diff --git a/drivers/staging/sm750fb/ddk750_mode.c b/drivers/staging/sm750fb/ddk750_mode.c
-> > > > index 83ace6cc9583..e15039238232 100644
-> > > > --- a/drivers/staging/sm750fb/ddk750_mode.c
-> > > > +++ b/drivers/staging/sm750fb/ddk750_mode.c
-> > > > @@ -73,8 +73,8 @@ display_control_adjust_sm750le(struct mode_parameter *mode_param,
-> > > >  }
-> > > >  
-> > > >  /* only timing related registers will be  programed */
-> > > > -static int program_mode_registers(struct mode_parameter *mode_param,
-> > > > -				  struct pll_value *pll)
-> > > > +static void program_mode_registers(struct mode_parameter *mode_param,
-> > > > +				   struct pll_value *pll)
-> > > >  {
-> > > >  	int ret = 0;
-> > > >  	int cnt = 0;
-> > > > @@ -202,7 +202,6 @@ static int program_mode_registers(struct mode_parameter *mode_param,
-> > > >  	} else {
-> > > >  		ret = -1;
-> > > 
-> > > Why are you still setting the 'ret' variable if you are not doing
-> > > anything with it anymore?
-> > > 
-> > > >  	}
-> > > > -	return ret;
-> > > 
-> > > Are you sure that the caller shouldn't be checking for errors instead of
-> > > dropping the return value?  If so, document that in the changelog too.
-> > >
-> > Seems like the caller doesn't use the function to check for errors as in
-> > the code below:
+Hi Greg,
+
+On Wed, Oct 18, 2023 at 03:26:07PM +0200, Greg Kroah-Hartman wrote:
+> On Tue, Oct 17, 2023 at 09:36:32PM -0700, Soumya Negi wrote:
+> > vme.c uses printk() to log messages. To improve and standardize message
+> > formatting, use logging mechanisms pr_err()/pr_warn() and
+> > dev_err()/dev_warn() instead. Retain the printk log levels of the
+> > messages during replacement.
 > > 
-> > int ddk750_set_mode_timing(struct mode_parameter *parm, enum clock_type clock)
-> > {
-> >         struct pll_value pll;
+> > Issue found by checkpatch.pl
 > > 
-> >         pll.input_freq = DEFAULT_INPUT_CLOCK;
-> >         pll.clock_type = clock;
+> > Signed-off-by: Soumya Negi <soumya.negi97@gmail.com>
+> > ---
+> >  drivers/staging/vme_user/vme.c | 175 ++++++++++++++++++---------------
+> >  1 file changed, 94 insertions(+), 81 deletions(-)
 > > 
-> >         sm750_calc_pll_value(parm->pixel_clock, &pll);
-> >         if (sm750_get_chip_type() == SM750LE) {
-> >                 /* set graphic mode via IO method */
-> >                 outb_p(0x88, 0x3d4);
-> >                 outb_p(0x06, 0x3d5);
-> >         }
-> >         program_mode_registers(parm, &pll);
-> >         return 0;
-> > 
-> > It will still return 0 regardless of whether there is an error or not.
-> > Since I am not sure how the two functions relate to one another, is
-> > there need to check error in the caller function?
+> > diff --git a/drivers/staging/vme_user/vme.c b/drivers/staging/vme_user/vme.c
+> > index 6519a7c994a0..e8c2c1e77b7d 100644
+> > --- a/drivers/staging/vme_user/vme.c
+> > +++ b/drivers/staging/vme_user/vme.c
+> > @@ -9,6 +9,8 @@
+> >   * Copyright 2004 Motorola Inc.
+> >   */
+> >  
+> > +#define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
 > 
-> That is correct, it is not checking for errors, but shouldn't it?  If
-> the function can fail, then it should have proper error handling so
-> return the correct error (hint -1 is not a valid error), and then
-> propagate it up the call chain correctly as well.
-> 
-> For doing this type of work, either the function can not fail so there
-> can not be an error return value, or it can, and then the error should
-> be propagated correctly.  Sorry for not spelling that out earlier.
-> 
+> No, this is a driver, as others have pointed out, always use dev_*()
+> calls instead.
+
+Some of the pr_ fns can be dev_, but I don't think all can.
+e.g. device NULL-check error messages
+
+Also, there are portions of the driver where we have no access to
+any 'struct device' to feed into dev_.
+
+> Yes, that means that sometimes you do need to propagate the proper
+> device to the function, but that's ok, it's the correct solution here.
+
+Got it. In v2, I'll make pr_*() to dev_*() wherever possible. In most cases, 
+the VME bridge device is accessible or if not we can get it using find_bridge().
+
+Thanks,
+Soumya
 > thanks,
 > 
 > greg k-h
-Makes sense. I am not sure whether there exists a function that cannot
-fail. But for this patch I will start by assuming that it cannot fail and
-remove the error return variable altogether. Then after submission of the patch, I
-will look at whether the function can fail and see how to propagate the
-error. I think this should work?
 
-thanks,
-Dorcas
+
 
