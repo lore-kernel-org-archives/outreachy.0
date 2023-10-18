@@ -1,65 +1,52 @@
-Received: from mail-lf1-f45.google.com (mail-lf1-f45.google.com [209.85.167.45])
+Received: from mail-ed1-f46.google.com (mail-ed1-f46.google.com [209.85.208.46])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 091614121D;
-	Tue, 17 Oct 2023 18:47:31 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5F55017C4;
+	Wed, 18 Oct 2023 01:03:11 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="UnVft0xP"
-Received: by mail-lf1-f45.google.com with SMTP id 2adb3069b0e04-507a936f4a9so3665309e87.1;
-        Tue, 17 Oct 2023 11:47:31 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="RNUl7w1B"
+Received: by mail-ed1-f46.google.com with SMTP id 4fb4d7f45d1cf-538e8eca9c1so10785374a12.3;
+        Tue, 17 Oct 2023 18:03:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1697568450; x=1698173250; darn=lists.linux.dev;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=LmICwmBoI0nNKZqKDeA/2U9n80tXqZ7792F42uyLv0o=;
-        b=UnVft0xP0j4FvBLzjxNUZhbYBi+HbfJ6iKRIW9ol8kadylw3TxY6s9+bQhED/gG9Cq
-         wuowyJubFTzhVxxWz932YZ+Bmv5dF+6o+jWnXTSPus3O3NXeNGRlpVnOsxINxeIc8ZON
-         nOvEAOIu/9dXMiyP23sf+DEYBzgfZNkbBLrRhb3XI8mQXRZsA0+Xw39WBa+XLpFMSM+5
-         i3K8/wKSC3E5yMuEAsjzDomQZ4PM7e20YhNWTFDcDzGGJLf8mGQ+vHcG3f2+z+3qIeuE
-         c3Y0mxEH2TSrE7OWDS2MTFl76jAJ4uN+ia1f/thZWn2D28C+HK0Fsem0c03WGsd9veUv
-         RqWw==
+        d=gmail.com; s=20230601; t=1697590989; x=1698195789; darn=lists.linux.dev;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=kiAH34C/kctaaX3077HYkei7HPlkFJr20QXBxwSI6Qc=;
+        b=RNUl7w1BlzFg0olILlqTQWVve25eEo8DvhnGfvQMAEpava2Ds5bTln/nDMwo2YgD6b
+         JzqU3xPmJa/OwT7OodjGxqqBzng4Y61bKKo5QOFuFJ6JG9Pz/2wdkag55998bjZZwOAO
+         foe/hfQohWtU5qnoTnrHtvmjr27gOiqTAUvVVnx5ErRSE+u+Y+QCP7bx/VlOjY8G3YCK
+         kKjWp34T74lBiPYZUSOxInjYxviUiCvPKKboCQJQWznZ4Wiix44NLV+kOoAYGyZ+0wtr
+         aE653ZPY1W8zmU1rOEZaWv0AGSw6TeeC/fs8A1GoquHpnBKhfNdhwrWiYKi50uFIxAB9
+         KBIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697568450; x=1698173250;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=LmICwmBoI0nNKZqKDeA/2U9n80tXqZ7792F42uyLv0o=;
-        b=OzP000qNSItR5ClVITF1c8DsWXkkpRNOBQkRTc4SorEMG2UyAbHajcnqaXIIFvL0tJ
-         wJ73MKwg7pe9gRAYfRu2+s/zaIvtSDG2JhdXRLP9zmrLAhPCmcfurjKCIIZNNhTbWBu+
-         UlGduRittAzlGPMgexmrJEBx9HVrYDhwhvDhYwq+Auq01233qWcORPv/CoQ9hmPAqCph
-         q/mcs634+I06KZAHYJ80BuYTQSMDfD1HkrKdzNrZznLRJeUVP0ryVwVhql2YkM3w8d+q
-         MlQp1y0VdAZqi2xwkcxR7M5RWbpP8mzbBZ5sXyX9OARtUMM5ukdtCz0cAJcqPZVvwv/u
-         RfWA==
-X-Gm-Message-State: AOJu0YxbKe9RotdnBH+5w8lM9ttyU5OQIGNdDLbfZ++F9GOH098AbUtL
-	gtDVo/oq2atF4GecUGZDZw==
-X-Google-Smtp-Source: AGHT+IESZslQNyusElFBWo5mcRJLUnBIRNn71W/9mZybzHHY5GQR5etWw70lNAmSc1d5t4t4sq4ExQ==
-X-Received: by 2002:ac2:4206:0:b0:507:a16d:6699 with SMTP id y6-20020ac24206000000b00507a16d6699mr2208709lfh.13.1697568449638;
-        Tue, 17 Oct 2023 11:47:29 -0700 (PDT)
-Received: from dorcaslitunya-virtual-machine ([105.163.158.206])
-        by smtp.gmail.com with ESMTPSA id ee16-20020a056402291000b0053e8f1f79afsm1635197edb.30.2023.10.17.11.47.27
+        d=1e100.net; s=20230601; t=1697590989; x=1698195789;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=kiAH34C/kctaaX3077HYkei7HPlkFJr20QXBxwSI6Qc=;
+        b=l6aMPX4sgUgJI6Rh7S0yGDBNPLBrmh8F+EyaRgdn4rBDMu4s6XzkEWnfcmClRXWOpv
+         glNl7i+k6MCyRM6C+sxLDmkxmDdxGq5JDH6tm2+kUmyP+IB2U+EOot1Nd8vM/AiUEPJT
+         6qvaQrtxX0EEdEpqJcoTXTBAV4OdRGT2ATEnDT5aEGCRfeOE8TmVdSEpmEkabFLR4Kca
+         qaHND9LrnXV1wEaq8dAe5dEUvEUR9/TsZSDcgozgWusjfxH7FkrA5rGiPat5Djblrlsr
+         PQaBc/QmG5FLTH05VXIs5JACFXPvPmRJFJNC27VxsJD3MXYCo449Eb80+FiedfJP1+2r
+         zQSQ==
+X-Gm-Message-State: AOJu0YxPIav1+IRaecD7dGWQm3c5ViKjtn8am16RViNzPzFdE8iVUFmW
+	Y9fuqI8Vaqx9f4sEM/CUG3M=
+X-Google-Smtp-Source: AGHT+IEOToHY+FjeZ1+QFC3prDpL+/1h01J16kJ+hEmruNGEAZNL8D/NLPUO3ox3BEM032g/UpDm5Q==
+X-Received: by 2002:a17:907:36c3:b0:9bd:9507:ed1c with SMTP id bj3-20020a17090736c300b009bd9507ed1cmr3154408ejc.18.1697590989156;
+        Tue, 17 Oct 2023 18:03:09 -0700 (PDT)
+Received: from ubuntu ([129.205.113.163])
+        by smtp.gmail.com with ESMTPSA id n17-20020a17090673d100b009930c80b87csm616449ejl.142.2023.10.17.18.03.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 17 Oct 2023 11:47:29 -0700 (PDT)
-Date: Tue, 17 Oct 2023 21:47:25 +0300
-From: Dorcas Litunya <anonolitunya@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: anonolitunya@gmail.com, outreachy@lists.linux.dev,
-	julia.lawall@inria.fr, dan.carpenter@linaro.org,
-	Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
-	Teddy Wang <teddy.wang@siliconmotion.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-fbdev@vger.kernel.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 1/5] Staging: sm750fb: Rename
- displayControlAdjust_SM750E
-Message-ID: <ZS7WvaM65awtILqk@dorcaslitunya-virtual-machine>
-References: <20231016201434.7880-1-anonolitunya@gmail.com>
- <20231016201434.7880-2-anonolitunya@gmail.com>
- <2023101724-diagram-legwork-0e53@gregkh>
- <ZS5FlsCPETnr8T5D@dorcaslitunya-virtual-machine>
- <2023101712-grudge-overtime-1f43@gregkh>
- <ZS5JexVUSKZUuOd4@dorcaslitunya-virtual-machine>
+        Tue, 17 Oct 2023 18:03:08 -0700 (PDT)
+Date: Tue, 17 Oct 2023 18:03:05 -0700
+From: kenechukwu maduechesi <maduechesik@gmail.com>
+To: outreachy@lists.linux.dev, shreeya.patel23498@gmail.com
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: [PATCH] staging: rts5208: Replace delay function.
+Message-ID: <20231018004300.GA3189@ubuntu>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -68,74 +55,66 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ZS5JexVUSKZUuOd4@dorcaslitunya-virtual-machine>
 
-On Tue, Oct 17, 2023 at 11:44:43AM +0300, Dorcas Litunya wrote:
-> On Tue, Oct 17, 2023 at 10:34:43AM +0200, Greg Kroah-Hartman wrote:
-> > On Tue, Oct 17, 2023 at 11:28:06AM +0300, Dorcas Litunya wrote:
-> > > On Tue, Oct 17, 2023 at 09:50:50AM +0200, Greg Kroah-Hartman wrote:
-> > > > On Mon, Oct 16, 2023 at 11:14:08PM +0300, Dorcas AnonoLitunya wrote:
-> > > > > Rename function displayControlAdjust_SM750E to
-> > > > > display_control_adjust_SM750E. This follows snakecase naming convention
-> > > > > and ensures a consistent naming style throughout the file. Issue found by
-> > > > > checkpatch.
-> > > > > 
-> > > > > Mutes the following error:
-> > > > > CHECK:Avoid CamelCase: <displayControlAdjust_SM750E>
-> > > > > 
-> > > > > Signed-off-by: Dorcas AnonoLitunya <anonolitunya@gmail.com>
-> > > > > ---
-> > > > >  drivers/staging/sm750fb/ddk750_mode.c | 6 +++---
-> > > > >  1 file changed, 3 insertions(+), 3 deletions(-)
-> > > > > 
-> > > > > diff --git a/drivers/staging/sm750fb/ddk750_mode.c b/drivers/staging/sm750fb/ddk750_mode.c
-> > > > > index e00a6cb31947..8708995f676c 100644
-> > > > > --- a/drivers/staging/sm750fb/ddk750_mode.c
-> > > > > +++ b/drivers/staging/sm750fb/ddk750_mode.c
-> > > > > @@ -14,8 +14,8 @@
-> > > > >   * in bit 29:27 of Display Control register.
-> > > > >   */
-> > > > >  static unsigned long
-> > > > > -displayControlAdjust_SM750LE(struct mode_parameter *pModeParam,
-> > > > > -			     unsigned long dispControl)
-> > > > > +display_control_adjust_SM750LE(struct mode_parameter *pModeParam,
-> > > > > +			       unsigned long dispControl)
-> > > > >  {
-> > > > >  	unsigned long x, y;
-> > > > >  
-> > > > > @@ -125,7 +125,7 @@ static int programModeRegisters(struct mode_parameter *pModeParam,
-> > > > >  			tmp |= DISPLAY_CTRL_HSYNC_PHASE;
-> > > > >  
-> > > > >  		if (sm750_get_chip_type() == SM750LE) {
-> > > > > -			displayControlAdjust_SM750LE(pModeParam, tmp);
-> > > > > +			display_control_adjust_SM750LE(pModeParam, tmp);
-> > > > 
-> > > > Why is this function returning a value if it is just being ignored?
-> > > > 
-> > > > It's not the issue here in the patch, but for future changes.
-> > > >
-> > > Hi Greg,
-> > > 
-> > > I will do the correction in the next patchset to correct both functions
-> > > return value as this patchset was not focused on that. Does this mean
-> > > that this patchset has been accepted? Or should I submit another
-> > > patchset that includes the two changes suggested on function return
-> > > values?
-> > 
-> > You'll get an email from my system when it is accepted, wait a day or so
-> > before worrying about that.  And then send new patches on top of them
-> > then.
-> > 
-> Thanks for the clarification Greg. I will wait for the confirmation
-> email from your system then send the new patches shortly afterwards.
-> 
-> thanks,
-> Dorcas
-> > thanks,
-> > 
-> > greg k-h
-Hello,
- I have realised there was an error in the commit message subject and body for this patch. I had put "Staging: sm750fb: Rename displayControlAdjust_SM750E" instead of "Staging: sm750fb: Rename displayControlAdjust_SM750LE".I had forgotten the L in SM750LE. I have modified the commit message using git commit --amend to correct the mistake. I have seen the patch has been accepted, however, I am not sure whether the change in the commit message will reflect once the patch is merged. Please guide on what to do next. I am really sorry for the inconvenience.
+Replace udelay() with usleep_range() for more precise delay handling.
 
- Best,
- Dorcas
+Reported by checkpatch:
+
+CHECK: usleep_range is preferred over udelay
+
+Signed-off-by: kenechukwu maduechesi <maduechesik@gmail.com>
+---
+ drivers/staging/rts5208/sd.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/staging/rts5208/sd.c b/drivers/staging/rts5208/sd.c
+index 74c4f476b3a4..059f99b0a727 100644
+--- a/drivers/staging/rts5208/sd.c
++++ b/drivers/staging/rts5208/sd.c
+@@ -865,7 +865,7 @@ static int sd_change_phase(struct rtsx_chip *chip, u8 sample_point, u8 tune_dir)
+ 						     PHASE_CHANGE);
+ 			if (retval)
+ 				return retval;
+-			udelay(50);
++			usleep_range(50);
+ 			retval = rtsx_write_register(chip, SD_VP_CTL, 0xFF,
+ 						     PHASE_CHANGE |
+ 						     PHASE_NOT_RESET |
+@@ -877,14 +877,14 @@ static int sd_change_phase(struct rtsx_chip *chip, u8 sample_point, u8 tune_dir)
+ 						     CHANGE_CLK, CHANGE_CLK);
+ 			if (retval)
+ 				return retval;
+-			udelay(50);
++			usleep_range(50);
+ 			retval = rtsx_write_register(chip, SD_VP_CTL, 0xFF,
+ 						     PHASE_NOT_RESET |
+ 						     sample_point);
+ 			if (retval)
+ 				return retval;
+ 		}
+-		udelay(100);
++		usleep_range(100);
+ 
+ 		rtsx_init_cmd(chip);
+ 		rtsx_add_cmd(chip, WRITE_REG_CMD, SD_DCMPS_CTL, DCMPS_CHANGE,
+@@ -918,7 +918,7 @@ static int sd_change_phase(struct rtsx_chip *chip, u8 sample_point, u8 tune_dir)
+ 				return retval;
+ 		}
+ 
+-		udelay(50);
++		usleep_range(50);
+ 	}
+ 
+ 	retval = rtsx_write_register(chip, SD_CFG1, SD_ASYNC_FIFO_NOT_RST, 0);
+@@ -1416,7 +1416,7 @@ static int sd_wait_data_idle(struct rtsx_chip *chip)
+ 			retval = STATUS_SUCCESS;
+ 			break;
+ 		}
+-		udelay(100);
++		usleep_range(100);
+ 	}
+ 	dev_dbg(rtsx_dev(chip), "SD_DATA_STATE: 0x%02x\n", val);
+ 
+-- 
+2.25.1
+
