@@ -1,38 +1,63 @@
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ej1-f53.google.com (mail-ej1-f53.google.com [209.85.218.53])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B0FBF1A582;
-	Wed, 18 Oct 2023 13:27:46 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 64DC338BDB;
+	Wed, 18 Oct 2023 15:34:40 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=linuxfoundation.org header.i=@linuxfoundation.org header.b="cgi7WPeI"
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 902D3C433C8;
-	Wed, 18 Oct 2023 13:27:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1697635666;
-	bh=jCgth0ZM5NS8POYLQWWncAMyPeJN/zdTVz+jC6/ir9s=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=cgi7WPeIR22Maw7vQXg4kBgzinMLtQgFbpnFy9pUgqlKbc4AtGgTaOEBdVkMrWKCz
-	 ptQNibWB+rUMv/fArQrHll9RBq9B+8lWECJTao2WD01tRUvFWQ5Y4toqTEAntZVBIc
-	 bWUQRuYQgzQK4JKeyxxQqHPfjuKodQC/lS5z+kow=
-Date: Wed, 18 Oct 2023 15:27:41 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Dorcas Litunya <anonolitunya@gmail.com>
-Cc: outreachy@lists.linux.dev, julia.lawall@inria.fr,
-	dan.carpenter@linaro.org,
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Q/eHUrQq"
+Received: by mail-ej1-f53.google.com with SMTP id a640c23a62f3a-98377c5d53eso1077962866b.0;
+        Wed, 18 Oct 2023 08:34:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1697643278; x=1698248078; darn=lists.linux.dev;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=ub5Yg0CJelx4oGv8fp3eRsfPV6T6acMrYQkLBrGUmtg=;
+        b=Q/eHUrQqk++u/221zQJSlkasrIhbq48os4aG4DuNmDl54iDLOtQwqQaJk3/ygCOucd
+         lq04Fgx0vs9TslbJSoZx777kj+XZBvt7PLTJ8IE2dXo4k39Kek36zwbP6tPDR9EW+0HK
+         dkZU6x6ZgaZ1sa2LRChtvRcpYq4zKwAFTc1GQLmcg9H+9trl0Z8V9ThnbNKvD715IpwH
+         JPmDcDBOv+UXKuXpcuoGk27H+zTLbK7sHdA7CKGAFwokiKFneDF7faH+c7MPyQrvuOAQ
+         lJj2+2ZD9IDQ8UkJTDVkOGEpHIBO3Bv2+uQx1N7hfa0flYnJQho7n5uXVgBlGGL6Hqjb
+         Kt0Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1697643278; x=1698248078;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ub5Yg0CJelx4oGv8fp3eRsfPV6T6acMrYQkLBrGUmtg=;
+        b=bhRE89wbdq4xOdiIIHZUw81y0jlGn2VnPOsIT/Tks9FILby9qvGEXMdk39hLp1+WKk
+         Bcbwj5RCO1A6O6JLnTvA7w0LppN7tc2k8obmgqalA5Euc3wGHnr/uFg6CqHQMw8cf9QS
+         m7nXSdZMHODBhWWRfPjiLLQUqKMeVWOuLfnclvr+3xta2HsIkMXi02Yzbz4YL09fZKi6
+         99dn9hTsxm6Hn52ke/FXZaasVgzf67B1EIVQlq1p0atgIvKXUv/dzshK8ckRWFlh3fzt
+         6U9Bs+0lGmquGUnqth6nlNfZLb+DDvQ5rGcVQUpByoZrd4wv5vLaj1nt2BKZfaYa6fBK
+         HmHw==
+X-Gm-Message-State: AOJu0YzaBp/0zKwLkEA0mU+1o8N+10Xr/XBhcJm3IqazLIipYXXeOy5t
+	cNATlpWTUOqpSxk34oodoA==
+X-Google-Smtp-Source: AGHT+IFuXpYMxlADLEsXxy5I5GqphwtTebkI3aaksBzLRVwqwh4y5mNKLrJxrinpzTR4oIfD9PVrvw==
+X-Received: by 2002:a17:907:78b:b0:9be:7de2:927c with SMTP id xd11-20020a170907078b00b009be7de2927cmr4110575ejb.70.1697643278205;
+        Wed, 18 Oct 2023 08:34:38 -0700 (PDT)
+Received: from dorcaslitunya-virtual-machine ([105.163.156.111])
+        by smtp.gmail.com with ESMTPSA id hb6-20020a170906b88600b009b8dbdd5203sm1880717ejb.107.2023.10.18.08.34.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 18 Oct 2023 08:34:37 -0700 (PDT)
+Date: Wed, 18 Oct 2023 16:24:55 +0300
+From: Dorcas Litunya <anonolitunya@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Julia Lawall <julia.lawall@inria.fr>, outreachy@lists.linux.dev,
+	dan.carpenter@linaro.org, andi.shyti@linux.intel.com,
 	Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
 	Teddy Wang <teddy.wang@siliconmotion.com>,
 	linux-fbdev@vger.kernel.org, linux-staging@lists.linux.dev,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 1/5] Staging: sm750fb: Rename
- displayControlAdjust_SM750E
-Message-ID: <2023101844-sadness-payee-0923@gregkh>
-References: <20231016201434.7880-1-anonolitunya@gmail.com>
- <20231016201434.7880-2-anonolitunya@gmail.com>
- <2023101724-diagram-legwork-0e53@gregkh>
- <ZS5FlsCPETnr8T5D@dorcaslitunya-virtual-machine>
- <2023101712-grudge-overtime-1f43@gregkh>
- <ZS5JexVUSKZUuOd4@dorcaslitunya-virtual-machine>
- <ZS7WvaM65awtILqk@dorcaslitunya-virtual-machine>
+Subject: Re: [PATCH 2/2] staging: sm750fb: Remove unused return value in
+ program_mode_registers()
+Message-ID: <ZS/cp8IZyCjujmDQ@dorcaslitunya-virtual-machine>
+References: <cover.1697619623.git.anonolitunya@gmail.com>
+ <492e63bbc58147fb534930ef9e1fb5d844ae8769.1697619623.git.anonolitunya@gmail.com>
+ <2023101846-synopses-paralyses-d1ee@gregkh>
+ <ZS+moqE585lPBN3m@dorcaslitunya-virtual-machine>
+ <2023101830-janitor-trapezoid-bb48@gregkh>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -41,83 +66,93 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ZS7WvaM65awtILqk@dorcaslitunya-virtual-machine>
+In-Reply-To: <2023101830-janitor-trapezoid-bb48@gregkh>
 
-On Tue, Oct 17, 2023 at 09:47:25PM +0300, Dorcas Litunya wrote:
-> On Tue, Oct 17, 2023 at 11:44:43AM +0300, Dorcas Litunya wrote:
-> > On Tue, Oct 17, 2023 at 10:34:43AM +0200, Greg Kroah-Hartman wrote:
-> > > On Tue, Oct 17, 2023 at 11:28:06AM +0300, Dorcas Litunya wrote:
-> > > > On Tue, Oct 17, 2023 at 09:50:50AM +0200, Greg Kroah-Hartman wrote:
-> > > > > On Mon, Oct 16, 2023 at 11:14:08PM +0300, Dorcas AnonoLitunya wrote:
-> > > > > > Rename function displayControlAdjust_SM750E to
-> > > > > > display_control_adjust_SM750E. This follows snakecase naming convention
-> > > > > > and ensures a consistent naming style throughout the file. Issue found by
-> > > > > > checkpatch.
-> > > > > > 
-> > > > > > Mutes the following error:
-> > > > > > CHECK:Avoid CamelCase: <displayControlAdjust_SM750E>
-> > > > > > 
-> > > > > > Signed-off-by: Dorcas AnonoLitunya <anonolitunya@gmail.com>
-> > > > > > ---
-> > > > > >  drivers/staging/sm750fb/ddk750_mode.c | 6 +++---
-> > > > > >  1 file changed, 3 insertions(+), 3 deletions(-)
-> > > > > > 
-> > > > > > diff --git a/drivers/staging/sm750fb/ddk750_mode.c b/drivers/staging/sm750fb/ddk750_mode.c
-> > > > > > index e00a6cb31947..8708995f676c 100644
-> > > > > > --- a/drivers/staging/sm750fb/ddk750_mode.c
-> > > > > > +++ b/drivers/staging/sm750fb/ddk750_mode.c
-> > > > > > @@ -14,8 +14,8 @@
-> > > > > >   * in bit 29:27 of Display Control register.
-> > > > > >   */
-> > > > > >  static unsigned long
-> > > > > > -displayControlAdjust_SM750LE(struct mode_parameter *pModeParam,
-> > > > > > -			     unsigned long dispControl)
-> > > > > > +display_control_adjust_SM750LE(struct mode_parameter *pModeParam,
-> > > > > > +			       unsigned long dispControl)
-> > > > > >  {
-> > > > > >  	unsigned long x, y;
-> > > > > >  
-> > > > > > @@ -125,7 +125,7 @@ static int programModeRegisters(struct mode_parameter *pModeParam,
-> > > > > >  			tmp |= DISPLAY_CTRL_HSYNC_PHASE;
-> > > > > >  
-> > > > > >  		if (sm750_get_chip_type() == SM750LE) {
-> > > > > > -			displayControlAdjust_SM750LE(pModeParam, tmp);
-> > > > > > +			display_control_adjust_SM750LE(pModeParam, tmp);
-> > > > > 
-> > > > > Why is this function returning a value if it is just being ignored?
-> > > > > 
-> > > > > It's not the issue here in the patch, but for future changes.
-> > > > >
-> > > > Hi Greg,
+On Wed, Oct 18, 2023 at 03:25:05PM +0200, Greg Kroah-Hartman wrote:
+> On Wed, Oct 18, 2023 at 12:34:26PM +0300, Dorcas Litunya wrote:
+> > On Wed, Oct 18, 2023 at 11:26:33AM +0200, Greg Kroah-Hartman wrote:
+> > > On Wed, Oct 18, 2023 at 12:07:38PM +0300, Dorcas AnonoLitunya wrote:
+> > > > Modifies the return type of program_mode_registers()
+> > > > to void from int as the return value is being ignored in
+> > > > all subsequent function calls.
 > > > > 
-> > > > I will do the correction in the next patchset to correct both functions
-> > > > return value as this patchset was not focused on that. Does this mean
-> > > > that this patchset has been accepted? Or should I submit another
-> > > > patchset that includes the two changes suggested on function return
-> > > > values?
+> > > > This improves code readability and maintainability.
+> > > > 
+> > > > Suggested-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> > > > Signed-off-by: Dorcas AnonoLitunya <anonolitunya@gmail.com>
+> > > > ---
+> > > >  drivers/staging/sm750fb/ddk750_mode.c | 5 ++---
+> > > >  1 file changed, 2 insertions(+), 3 deletions(-)
+> > > > 
+> > > > diff --git a/drivers/staging/sm750fb/ddk750_mode.c b/drivers/staging/sm750fb/ddk750_mode.c
+> > > > index 83ace6cc9583..e15039238232 100644
+> > > > --- a/drivers/staging/sm750fb/ddk750_mode.c
+> > > > +++ b/drivers/staging/sm750fb/ddk750_mode.c
+> > > > @@ -73,8 +73,8 @@ display_control_adjust_sm750le(struct mode_parameter *mode_param,
+> > > >  }
+> > > >  
+> > > >  /* only timing related registers will be  programed */
+> > > > -static int program_mode_registers(struct mode_parameter *mode_param,
+> > > > -				  struct pll_value *pll)
+> > > > +static void program_mode_registers(struct mode_parameter *mode_param,
+> > > > +				   struct pll_value *pll)
+> > > >  {
+> > > >  	int ret = 0;
+> > > >  	int cnt = 0;
+> > > > @@ -202,7 +202,6 @@ static int program_mode_registers(struct mode_parameter *mode_param,
+> > > >  	} else {
+> > > >  		ret = -1;
 > > > 
-> > > You'll get an email from my system when it is accepted, wait a day or so
-> > > before worrying about that.  And then send new patches on top of them
-> > > then.
+> > > Why are you still setting the 'ret' variable if you are not doing
+> > > anything with it anymore?
 > > > 
-> > Thanks for the clarification Greg. I will wait for the confirmation
-> > email from your system then send the new patches shortly afterwards.
+> > > >  	}
+> > > > -	return ret;
+> > > 
+> > > Are you sure that the caller shouldn't be checking for errors instead of
+> > > dropping the return value?  If so, document that in the changelog too.
+> > >
+> > Seems like the caller doesn't use the function to check for errors as in
+> > the code below:
 > > 
-> > thanks,
-> > Dorcas
-> > > thanks,
-> > > 
-> > > greg k-h
-> Hello,
->  I have realised there was an error in the commit message subject and body for this patch. I had put "Staging: sm750fb: Rename displayControlAdjust_SM750E" instead of "Staging: sm750fb: Rename displayControlAdjust_SM750LE".I had forgotten the L in SM750LE. I have modified the commit message using git commit --amend to correct the mistake. I have seen the patch has been accepted, however, I am not sure whether the change in the commit message will reflect once the patch is merged. Please guide on what to do next. I am really sorry for the inconvenience.
-
-There is no connection between the change you made on your machine, and
-the ones on mine which get pushed to kernel.org.  So if you need a
-change, you need to send a new patch.
-
-For a typo fix like this, don't worry about it, it's already in my tree
-and is not worth dropping it, so it's all ok.
+> > int ddk750_set_mode_timing(struct mode_parameter *parm, enum clock_type clock)
+> > {
+> >         struct pll_value pll;
+> > 
+> >         pll.input_freq = DEFAULT_INPUT_CLOCK;
+> >         pll.clock_type = clock;
+> > 
+> >         sm750_calc_pll_value(parm->pixel_clock, &pll);
+> >         if (sm750_get_chip_type() == SM750LE) {
+> >                 /* set graphic mode via IO method */
+> >                 outb_p(0x88, 0x3d4);
+> >                 outb_p(0x06, 0x3d5);
+> >         }
+> >         program_mode_registers(parm, &pll);
+> >         return 0;
+> > 
+> > It will still return 0 regardless of whether there is an error or not.
+> > Since I am not sure how the two functions relate to one another, is
+> > there need to check error in the caller function?
+> 
+> That is correct, it is not checking for errors, but shouldn't it?  If
+> the function can fail, then it should have proper error handling so
+> return the correct error (hint -1 is not a valid error), and then
+> propagate it up the call chain correctly as well.
+> 
+> For doing this type of work, either the function can not fail so there
+> can not be an error return value, or it can, and then the error should
+> be propagated correctly.  Sorry for not spelling that out earlier.
+> 
+> thanks,
+> 
+> greg k-h
+Makes sense. I am not sure whether there exists a function that cannot
+fail. But for this patch I will start by assuming that it cannot fail and
+remove the error return variable altogether. Then after submission of the patch, I
+will look at whether the function can fail and see how to propagate the
+error. I think this should work?
 
 thanks,
+Dorcas
 
-greg k-h
