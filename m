@@ -1,89 +1,75 @@
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
+Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.43])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1262D18C1E;
-	Wed, 18 Oct 2023 10:28:37 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D3DF419459;
+	Wed, 18 Oct 2023 10:38:33 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.intel.com
+Authentication-Results: smtp.subspace.kernel.org; spf=none smtp.mailfrom=linux.intel.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="lduhjMdf"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=3jpi6tb2USUsryGUEr6x7yJ/m4xxBkCDZ36oL0gWECY=;
-  b=lduhjMdf6rMq63cR4tJzKodlbSMhSjFOCoZdjij/lJ580mw0rdvlt6BT
-   XE1MP7WktTFWHp/cMRYHb5XOs0fHFvHm9eGPBEPPKdFZBx/0C6DN62EOQ
-   gZzCE9wd9hjv3eBz+B/TqfNGo/dBq1Lw2hMcHIlcEoU8H8FOlGwRWUwBS
-   Y=;
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="6.03,234,1694728800"; 
-   d="scan'208";a="131873658"
-Received: from dhcp-138-246-3-50.dynamic.eduroam.mwn.de (HELO hadrien) ([138.246.3.50])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Oct 2023 12:28:35 +0200
-Date: Wed, 18 Oct 2023 12:28:35 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-To: Karolina Stolarek <karolina.stolarek@intel.com>
-cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-    kenechukwu maduechesi <maduechesik@gmail.com>, outreachy@lists.linux.dev, 
-    shreeya.patel23498@gmail.com, linux-staging@lists.linux.dev, 
-    linux-kernel@vger.kernel.org
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="ThfqWDvX"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1697625513; x=1729161513;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=qLHbWCmacxKJ8ooul8n81Sg2BO9OMG+tTZkTP0mZUGc=;
+  b=ThfqWDvXzRAAT36b7awQiDhx9YU/ATwPfB30dut883ZoIsC8x9ySAR8P
+   tdCT2p+YIH0peGEg9xZxVh1VxTO5OXlimEWCS+KUIzhxUsJKZQOMM571+
+   P7CnT76mrkAJr9ZvtisQBnzqPH6iSgl3soeMJ9ypHWlEz1CVBoLqsy/6k
+   Ha9RgBYqi6HxtH8iTnDr+HaX72dcNPqMEYLgG6YVWOrEfsWZ1THWZfUbe
+   Cubu4oo2egsihtsS33l27WVRQeYnFv4pZQ9Ts7Ft9zdiX4Z+QN4GZ+yA2
+   M7SJNlrs9LnOy+30LnqDyMzPu8RgTLwm0k3cbD/dIKh4WurOaSVZMtPxT
+   Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10866"; a="472211348"
+X-IronPort-AV: E=Sophos;i="6.03,234,1694761200"; 
+   d="scan'208";a="472211348"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Oct 2023 03:38:31 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10866"; a="785882037"
+X-IronPort-AV: E=Sophos;i="6.03,234,1694761200"; 
+   d="scan'208";a="785882037"
+Received: from nurfahan-mobl3.gar.corp.intel.com (HELO intel.com) ([10.213.159.217])
+  by orsmga008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Oct 2023 03:38:26 -0700
+Date: Wed, 18 Oct 2023 12:38:18 +0200
+From: Andi Shyti <andi.shyti@linux.intel.com>
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: kenechukwu maduechesi <maduechesik@gmail.com>,
+	outreachy@lists.linux.dev, shreeya.patel23498@gmail.com,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
 Subject: Re: [PATCH] staging: rts5208: Replace delay function.
-In-Reply-To: <7dde176b-1059-e9a4-a023-0243cce61d01@intel.com>
-Message-ID: <12b375b1-acd3-476e-17bc-b4db22efba69@inria.fr>
-References: <20231018004300.GA3189@ubuntu> <7bc719c4-459f-3d8-7ed-b1e1adf158@inria.fr> <1118ec6d-e1e7-79f3-08e4-9a79c996eed1@intel.com> <2023101853-axis-stylist-f1b9@gregkh> <7dde176b-1059-e9a4-a023-0243cce61d01@intel.com>
+Message-ID: <ZS+1mpOYTKRaABR1@ashyti-mobl2.lan>
+References: <20231018004300.GA3189@ubuntu>
+ <7bc719c4-459f-3d8-7ed-b1e1adf158@inria.fr>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <7bc719c4-459f-3d8-7ed-b1e1adf158@inria.fr>
 
+Hi Julia,
 
-
-On Wed, 18 Oct 2023, Karolina Stolarek wrote:
-
-> On 18.10.2023 09:45, Greg Kroah-Hartman wrote:
-> > On Wed, Oct 18, 2023 at 09:32:46AM +0200, Karolina Stolarek wrote:
-> > > On 18.10.2023 09:03, Julia Lawall wrote:
-> > > >
-> > > >
-> > > > On Tue, 17 Oct 2023, kenechukwu maduechesi wrote:
-> > > >
-> > > > > Replace udelay() with usleep_range() for more precise delay handling.
-> > > > >
-> > > > > Reported by checkpatch:
-> > > > >
-> > > > > CHECK: usleep_range is preferred over udelay
-> > > >
-> > > > This message is typically not a good candidate for outreachy patches,
-> > > > because you need access to the device to be sure that any change is
-> > > > correct.
-> > >
-> > > Could we add a paragraph on how to pick good checkpatch.pl error to fix to
-> > > the Outreachyfirstpatch docs? This could go to "Find a driver to clean up"
-> > > section, for example.
+> > Replace udelay() with usleep_range() for more precise delay handling.
 > >
-> > The ability to find a "good" error changes over time, so this might be
-> > hard to do.
->
-> I agree, but we can all agree that experimenting with udelay during Outreachy
-> is not a good idea, and people should know about it
-
-In general, I think that it is better in the contribution period to do the
-wrong thing and then learn about why it is wrong, but this case comes up
-over and over, and it is always not the right thing to do, so I added an
-appropriate explanation.  Thanks for the suggestion.
-
-julia
-
->
-> All the best,
-> Karolina
->
+> > Reported by checkpatch:
 > >
-> > good luck!
-> >
-> > greg k-h
->
+> > CHECK: usleep_range is preferred over udelay
+> 
+> This message is typically not a good candidate for outreachy patches,
+> because you need access to the device to be sure that any change is
+> correct.
+
+I actually don't really mind this patch... I would exchange these
+udelay() with almost anything, they look to me placed a bit
+random anyway (without going too much in detail).
+
+But in general, for this project, I think you are right and it's
+a good idea not to blindly change delay and sleeping functions
+without really knowing what you are doing.
+
+Andi
