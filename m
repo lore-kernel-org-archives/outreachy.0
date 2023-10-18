@@ -1,58 +1,58 @@
-Received: from mail-lf1-f52.google.com (mail-lf1-f52.google.com [209.85.167.52])
+Received: from mail-wr1-f48.google.com (mail-wr1-f48.google.com [209.85.221.48])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A25C415E8B
-	for <outreachy@lists.linux.dev>; Wed, 18 Oct 2023 10:17:31 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DE123134BF
+	for <outreachy@lists.linux.dev>; Wed, 18 Oct 2023 10:22:12 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="udXI3c8K"
-Received: by mail-lf1-f52.google.com with SMTP id 2adb3069b0e04-507be298d2aso2472586e87.1
-        for <outreachy@lists.linux.dev>; Wed, 18 Oct 2023 03:17:31 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="OMl1imqv"
+Received: by mail-wr1-f48.google.com with SMTP id ffacd0b85a97d-3296b49c546so5218729f8f.3
+        for <outreachy@lists.linux.dev>; Wed, 18 Oct 2023 03:22:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1697624250; x=1698229050; darn=lists.linux.dev;
+        d=linaro.org; s=google; t=1697624531; x=1698229331; darn=lists.linux.dev;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=uMF9+XVbotmwlZkgFVQV7OtJV2XJqMd/UdMT31C9cZA=;
-        b=udXI3c8K/pWZoNZNcDNGITomdovn/hvkPpmt3b2HGGmvDyOupw4ukGJ7EnBYpwKQE+
-         IJXkcN9iHuVuZoYS1hqjJ4wl7nCUZzG9dXvytHN9oQO9jFmAuiQ/nxnrqTXgYXEd/EHc
-         /Z5W1ySPL6xBvWRs6r3G6awyhcLVTBZN69D5OZoWvi3HZ/rKl0VkbgujD1BG4zaWDH3z
-         MyTG1RgVJliV6SJd1Vs52/BpS0JU+A3DG6bQXoNv6bsbIZlsK3mxAcpQZgP0hPtkSTvz
-         vq82CJIwSu8txFlejc7QOJpx5S95KUUgnvYJyGFj9WIXvzT4Yluhruxd7+s6rBDb/3B0
-         A6PQ==
+        bh=+YPVxhrij/9yyiFDCmXjbqG79WA01Bk0XowWcY3BL1k=;
+        b=OMl1imqvx0buMCWLsUOjcPIc+wFgoZI1UCq9v2GGSSNhwemcs7Wkd+mgHFiVJJ7PEC
+         n6tF+0BkSsS2OpVd11WlICuSpOTL99rEnr2EbKagObLtSD7/BERuduYMF4D7rA1bee9k
+         XowaHev77xIxg/Cwm3qG2svv62OMSMJuqSRJQjkJfy/f4vv7av2mJ+Hm3ElcEtx8h6yh
+         sQNUUaMjwNR1UEh90zrZUQuRuu9qzgDV6ONZSg95bC0MuGxB7DifBiQGeiK1nJWnghaX
+         oXyKLamei6RRTOmApbrbafVXwbxnkwO2PAIFbzNOthyt/JJVqBJwQglM7t1jhZzFQnxp
+         0KMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697624250; x=1698229050;
+        d=1e100.net; s=20230601; t=1697624531; x=1698229331;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=uMF9+XVbotmwlZkgFVQV7OtJV2XJqMd/UdMT31C9cZA=;
-        b=f0zJHa5sUSeQMHjQcx3uAkKKfgzz9S8SkXfaKVQqL5ort0DiAaASGtZLGaAbOrqHS2
-         pyKjrLabc4lT9smEiNMp+QcYOmS/2FuO5Otg1hIcQu4BVBCX2s26HpBhJD4hSURg+eWN
-         wvO18W5pHnFNBdzLWCaQviAnzcyy/8D8h0boeQRQ/nH+ibW8V8N7Cw9is3HPlSjURtO3
-         88q3+C7HhiZMC390NyXSv+j2O6zD/+15EjterFmrvC/pJFePFNy2lxq23i6gr3OOgR+R
-         y5aMtVNDFxmR1uvB0pxyQr83+KQaWSqr/CTY3K0gMIHt+VAgiCDNZDOBaqWZDdjj3Gd0
-         ntHA==
-X-Gm-Message-State: AOJu0Yy6qZXERH8US4+fs0R5WlGqHCXaE94R3utT2GJjFnLiEFfMNYXR
-	WokBG1ZOmBgbq/LomL2xSR8CFA==
-X-Google-Smtp-Source: AGHT+IHuHf/vAVlD/nYzbbKTFIUa4gHdOV6nXgpEc3kC6Vu1Tngn0aHuloTkDC1Ihtka7WkYH8MafA==
-X-Received: by 2002:a05:6512:3b89:b0:507:96fd:d3ee with SMTP id g9-20020a0565123b8900b0050796fdd3eemr4498644lfv.32.1697624249706;
-        Wed, 18 Oct 2023 03:17:29 -0700 (PDT)
+        bh=+YPVxhrij/9yyiFDCmXjbqG79WA01Bk0XowWcY3BL1k=;
+        b=t28oZZHo2ILFCEKe2gVC6/QTHsxd1kfgur0plMJ9wEksIfidnrFIqr04dtsB6Sv+OT
+         j61gWBDgXqvUuvibYf7p6p9d+9ljaWqd/QHwn3WqBFISod0mez4kdTx/Sp8A0Cu0/Vpv
+         /a6zGi44fm3d7V2duio98wCsDfqBOaoA/qO6jal8PdOfxm5jciJw54dQrju8iU1pOzSh
+         RGBb1Md4a+XLi4oiMeuT0Hm4QLbFXvM9xJ+F2QTKAsIl/RiHgyJTlU+7Qs7xTeQ5ybau
+         HOIMU9pwiGLqZmRESaD4GnKqoxgNVeA79H1H97V+zl4SutS9mFs+9GYT/s/glP0fROUO
+         vMwg==
+X-Gm-Message-State: AOJu0Yw9+WlJI2z7o8yHTy6dpLvUVSKc3WO+EbA1kACxp7UmiuK+Zavw
+	LqFRoeOzGh34QvISb0qiO9jVDA==
+X-Google-Smtp-Source: AGHT+IFblBhRhzmDzaS+pqwHqudeZroQ2KZlSAXVw5pwCj/0sJY/9y88i/ThbUt7ShHZ/AFjgg/51g==
+X-Received: by 2002:a5d:4e90:0:b0:32d:a4c4:f700 with SMTP id e16-20020a5d4e90000000b0032da4c4f700mr3953978wru.38.1697624531035;
+        Wed, 18 Oct 2023 03:22:11 -0700 (PDT)
 Received: from localhost ([102.36.222.112])
-        by smtp.gmail.com with ESMTPSA id l6-20020a5d4806000000b0032da75af3easm1786409wrq.80.2023.10.18.03.17.27
+        by smtp.gmail.com with ESMTPSA id c5-20020adfef45000000b0032da4c98ab2sm1796413wrp.35.2023.10.18.03.22.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 18 Oct 2023 03:17:28 -0700 (PDT)
-Date: Wed, 18 Oct 2023 13:17:25 +0300
+        Wed, 18 Oct 2023 03:22:10 -0700 (PDT)
+Date: Wed, 18 Oct 2023 13:22:06 +0300
 From: Dan Carpenter <dan.carpenter@linaro.org>
 To: Calvince Otieno <calvncce@gmail.com>
 Cc: gustavo@embeddedor.com, outreachy@lists.linux.dev,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	Martyn Welch <martyn@welchs.me.uk>,
 	Manohar Vanga <manohar.vanga@gmail.com>,
-	Julia Lawall <julia.lawall@inria.fr>, linux-kernel@vger.kernel.org,
-	linux-staging@lists.linux.dev
-Subject: Re: [PATCH] staging: vme_user: replace strcpy with strscpy
-Message-ID: <e6c2d522-8770-4e94-81cd-5dedf91f5f32@kadam.mountain>
-References: <ZS+Jb2rQWbOIIQ42@lab-ubuntu>
+	linux-kernel@vger.kernel.org, linux-staging@lists.linux.dev,
+	Julia Lawall <julia.lawall@inria.fr>
+Subject: Re: [PATCH V2] staging: vme_user: replace strcpy with strscpy
+Message-ID: <8a1d6d6f-b650-4aad-9b31-07a0a8acf45c@kadam.mountain>
+References: <ZS+c7NtfEw5ne2Oj@lab-ubuntu>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -61,33 +61,54 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ZS+Jb2rQWbOIIQ42@lab-ubuntu>
+In-Reply-To: <ZS+c7NtfEw5ne2Oj@lab-ubuntu>
 
-On Wed, Oct 18, 2023 at 10:29:51AM +0300, Calvince Otieno wrote:
-> Checkpatch suggests using strscpy() instead of strncpy().
+On Wed, Oct 18, 2023 at 11:53:00AM +0300, Calvince Otieno wrote:
+> Checkpatch suggests using strscpy() instead of strcpy().
 > 
 > The advantages of strscpy() are that it always adds a NUL terminator
 > and prevents read overflows if the source string is not properly
-> terminated. One potential disadvantage is that it doesn't zero pad the
-> string like strncpy() does.
+> terminated.
 
-You're not replacing strncpy(), you're replacing strcpy().  There is
-never a downside to replacing strcpy() with strspy() beyond that the
-secure function is probably slightly slower.
+strcpy() also always adds a NUL terminator.
+
+With strcpy() both read overflows and write overflows are an issue but
+write overflows are sooooooo much more serious that we don't worry about
+read overflow.
+
+> One potential disadvantage is that it doesn't zero pad the
+> string like strcpy() does.
+
+strcpy() does not zero pad anything.  You're resending patches too
+quickly.  You should wait a day between resends.
+
 
 > 
-> In this code, strscpy() and strncpy() are equivalent and do not affect
-> runtime behavior. strscpy() simply copies the known string value of the
-> variable driver_name into the fake_bridge->name variable, which also
-> has a fixed size.
+> In this specific context, both strscpy and strcpy performs the same
+> operation without any functional difference.
+> 
+> The reason for this equivalence is that the driver_name string "vme_fake"
+> is shorter than the size of the fake_bridge->name array which is defined
+> as 16 characters (struct vme_bridge {char name[VMENAMSIZ];...}). Thus,
+> there is no risk of buffer overflow in either case. VMENAMSIZ variable
+> holds a constant value of 16 (#define VMENAMSIZ 16)
+
+This paragraph is good and sufficient.
+
+> 
+> The null-terminated "vme_fake" string
+> (static const char driver_name[] = "vme_fake";) can be safely copied into
+> fake_bridge->name using either strscpy or strcpy.
 > 
 > While using strscpy() does not address any bugs, it is considered a better
 > practice and aligns with checkpatch recommendations.
+> 
+> Signed-off-by: Calvince Otieno <calvncce@gmail.com>
 
-This analysis does not say where driver_name is set, or how big it is,
-or what the size of the fake_bridge->name buffer is.  I would like to
-see that sort of analysis in the commit message.
+
+Okay.  Good.  Re-write the commit message and resend it tomorrow.
 
 regards,
 dan carpenter
+
 
