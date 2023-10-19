@@ -1,53 +1,51 @@
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.120])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-lj1-f171.google.com (mail-lj1-f171.google.com [209.85.208.171])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 844C942BFF;
-	Wed, 18 Oct 2023 22:17:13 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6735E46669
+	for <outreachy@lists.linux.dev>; Thu, 19 Oct 2023 04:11:41 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="VnKBOTMf"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1697667433; x=1729203433;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=uYBVBXbi85koNDPpvMhT/9afV4TOrNCWEn+UPSqZ71o=;
-  b=VnKBOTMf74ngIQGTLukRhPp8hY3JRQl9+jKS8wx7J3QqihZ/HMyqkR/T
-   eKwzIonjB1betlUiHb0DKVL0uCAYXhhUeOX+lfCGjdeJN2e4eDoNYLsXw
-   B5BZxejLFBqt/uSb8lb2rty89cZ+8d1cWZZb9a1ChecMKu5cbd1JX2RFr
-   x9okIQNm7OdewxjcsSYqnx0ExWLK5otIJ0JC1PrTVKC1ppHD7wPwnMcZ5
-   3nPV7Pu898haQkRsbxfdDdMmrFrG41suavPxm/88lMm9eYzC2wMO42Vqa
-   akU6wEjRBXUTdUmuEBu1wh/nWsJto9PxawDe0OPt/L2MMFWQiuWhcoCaZ
-   A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10867"; a="385005526"
-X-IronPort-AV: E=Sophos;i="6.03,236,1694761200"; 
-   d="scan'208";a="385005526"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
-  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Oct 2023 15:17:12 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10867"; a="733331062"
-X-IronPort-AV: E=Sophos;i="6.03,236,1694761200"; 
-   d="scan'208";a="733331062"
-Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.212.171.196])
-  by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Oct 2023 15:17:12 -0700
-Date: Wed, 18 Oct 2023 15:17:10 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: Karolina Stolarek <karolina.stolarek@intel.com>
-Cc: Julia Lawall <julia.lawall@inria.fr>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	kenechukwu maduechesi <maduechesik@gmail.com>,
-	outreachy@lists.linux.dev, shreeya.patel23498@gmail.com,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] staging: rts5208: Replace delay function.
-Message-ID: <ZTBZZvE/oYqCYNPp@aschofie-mobl2>
-References: <20231018004300.GA3189@ubuntu>
- <7bc719c4-459f-3d8-7ed-b1e1adf158@inria.fr>
- <1118ec6d-e1e7-79f3-08e4-9a79c996eed1@intel.com>
- <2023101853-axis-stylist-f1b9@gregkh>
- <7dde176b-1059-e9a4-a023-0243cce61d01@intel.com>
- <12b375b1-acd3-476e-17bc-b4db22efba69@inria.fr>
- <cf483cb5-7d94-9514-2213-46778b5ac9f4@intel.com>
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="JChDdINQ"
+Received: by mail-lj1-f171.google.com with SMTP id 38308e7fff4ca-2c5028e5b88so88627181fa.3
+        for <outreachy@lists.linux.dev>; Wed, 18 Oct 2023 21:11:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1697688699; x=1698293499; darn=lists.linux.dev;
+        h=cn:content-disposition:mime-version:message-id:subject:cc:to:from
+         :date:from:to:cc:subject:date:message-id:reply-to;
+        bh=myuCYeJM46kBGvhwTJjYjvzOGKOZ+6IkjM9iYH2ZIlQ=;
+        b=JChDdINQefK4Y/bVmqSuJihaYjlH8oxUkKCWzMr6huF34GloBYMh9+x4fsNfrdhNU6
+         nwmYbSwja0zECYmirl5W0gaSWIGxHTTw0Ff1CvHcOw606FTNJ4jX9zK+BEMSJlmnZhdw
+         aKcE5oDYtwPNISInR5EEyutdaP/v3M3zF0/l5L3wNnfyhHV8Y+MJcEZJ6Ea208rbLuVu
+         iLsLll7cuI0uTKWXofszcaRpABnUcvPSW/R9pqjTQZSzy4fQmrJ2AFZjgaecW0ziZ5Xg
+         y4BbfD86dR0e7QAk2mXNbUxk9oEYL7IA12eOUgQoIjoBD6O3U53eoqjowReRhtUhcfH5
+         0nJQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1697688699; x=1698293499;
+        h=cn:content-disposition:mime-version:message-id:subject:cc:to:from
+         :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=myuCYeJM46kBGvhwTJjYjvzOGKOZ+6IkjM9iYH2ZIlQ=;
+        b=LVcHnb3cOQ34Hz7xujX4HCNK+jfVCiyOEcl0NI2zc4364hHTYF2mwQ/90k1qmuChjj
+         w6b29xxTX1+C6EXnr+gxVeB8ig4U5M01iIgasgtWoG7Fs0QBZKkA6zGQV5r2V+YeKfXV
+         F08f+vtP8LMnfLs/QIOQB2OoCbkGdA7JfxzxZops/wIwFmEDOLK8EZNsvqDAvhiWuY3v
+         EHOLYKCk62jYRoI74rIDVa0VJq8klVT5N8VlxBjc5huUylpOgOzq88gTfU7OSu7ZXAV5
+         KFo0osCsSQb2L8zOooI4mytq97u1IpiZ0EyPDEdDUGIkOq5RNif3BNwgRaySOw3tqC+Q
+         LNOw==
+X-Gm-Message-State: AOJu0YxleLhY8UE7MjCJDI+6xkME9zllXYgh1w78OVdbtJFuHd/il+jm
+	Mh5M80jzJ6U9osVyeJy7hMDVVg==
+X-Google-Smtp-Source: AGHT+IGPD/XShFyYcXcP6LTLE7f542kIUhnUaL0S94qudfW/4Kjq9wloGBXpkYF5vY5HTV0XjXLkRg==
+X-Received: by 2002:a2e:8ecc:0:b0:2c5:115c:2d33 with SMTP id e12-20020a2e8ecc000000b002c5115c2d33mr517582ljl.3.1697688699320;
+        Wed, 18 Oct 2023 21:11:39 -0700 (PDT)
+Received: from localhost ([102.36.222.112])
+        by smtp.gmail.com with ESMTPSA id h17-20020a05600c499100b0040772138bb7sm3234160wmp.2.2023.10.18.21.11.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 18 Oct 2023 21:11:38 -0700 (PDT)
+Date: Thu, 19 Oct 2023 07:11:36 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: ksummit@lists.linux.dev
+Cc: outreachy@lists.linux.dev, kernel-janitors@vger.kernel.org
+Subject: KTODO automated TODO lists
+Message-ID: <369bc919-1a1d-4f37-9cc9-742a86a41282@kadam.mountain>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -56,85 +54,25 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cf483cb5-7d94-9514-2213-46778b5ac9f4@intel.com>
+Cn: outreachy@lists.linux.dev,kernel-janitors@vger.kernel.org
 
-On Wed, Oct 18, 2023 at 12:40:33PM +0200, Karolina Stolarek wrote:
-> On 18.10.2023 12:28, Julia Lawall wrote:
-> > 
-> > 
-> > On Wed, 18 Oct 2023, Karolina Stolarek wrote:
-> > 
-> > > On 18.10.2023 09:45, Greg Kroah-Hartman wrote:
-> > > > On Wed, Oct 18, 2023 at 09:32:46AM +0200, Karolina Stolarek wrote:
-> > > > > On 18.10.2023 09:03, Julia Lawall wrote:
-> > > > > > 
-> > > > > > 
-> > > > > > On Tue, 17 Oct 2023, kenechukwu maduechesi wrote:
-> > > > > > 
-> > > > > > > Replace udelay() with usleep_range() for more precise delay handling.
-> > > > > > > 
-> > > > > > > Reported by checkpatch:
-> > > > > > > 
-> > > > > > > CHECK: usleep_range is preferred over udelay
-> > > > > > 
-> > > > > > This message is typically not a good candidate for outreachy patches,
-> > > > > > because you need access to the device to be sure that any change is
-> > > > > > correct.
-> > > > > 
-> > > > > Could we add a paragraph on how to pick good checkpatch.pl error to fix to
-> > > > > the Outreachyfirstpatch docs? This could go to "Find a driver to clean up"
-> > > > > section, for example.
-> > > > 
-> > > > The ability to find a "good" error changes over time, so this might be
-> > > > hard to do.
-> > > 
-> > > I agree, but we can all agree that experimenting with udelay during Outreachy
-> > > is not a good idea, and people should know about it
-> > 
-> > In general, I think that it is better in the contribution period to do the
-> > wrong thing and then learn about why it is wrong, but this case comes up
-> > over and over, and it is always not the right thing to do, so I added an
-> > appropriate explanation.  Thanks for the suggestion.
-> 
-> Absolutely. Thanks for the docs update. Still, one thing -- is empty section
-> after "Some drivers that are on their way out of the kernel are:"
-> intentional?
-> 
-> All the best,
-> Karolina
+Yesterday someone on my lists just sent an email looking for kernel
+tasks.  This was a university student in a kernel programming class.
+We also have kernel-janitors and outreachy and those people are always
+asking for small tasks.
 
-Perhaps an applicant can expand on that "Find a driver to clean up..."
-section with a overview of how to use the Outreachy Mailing list,
-or any Mailing list to search for patches that cleaned up up the
-checkpatch error/warning/check that they are examining.
+One thing that I sometimes say as a reviewer is "This isn't caused by to
+your patch but I noticed something wrong."  We could add that kind of
+thing to a todo list by using a KTODO line.
 
-Here's the query for the udelay one:
-https://lore.kernel.org/outreachy/?q=%22CHECK%3A+usleep_range+is+preferred+over+udelay%22
+KTODO: add check for failure in function_something()
 
-When submitters include the actual checkpatch string in their commit log 
-it very easy to find and reference.
+Then people can look on lore or use lei to find small tasks to work on
+or they could use lei.
 
-For the first patch tutorial, I'll suggest something as simple as:
-1) goto https://lore.kernel.org/outreachy/
-2) enter the checkpatch string in the 'search' box
-3) boom - go see what others have done with this checkpatch error
+lei q -I https://lore.kernel.org/all/ -o ~/Mail/KTODO --dedupe=mid 'KTODO AND rt:6.month.ago..'
 
-Or, if someone wants to get fancy they can add screenshots :)
+Then grep ^KTODO ~/Mail/KTODO -R and cat the filename you want.
 
-Note, that we really like to keep the language similar on these
-cleanups. Find a few references, and do as they did.
-
-> 
-> > 
-> > julia
-> > 
-> > > 
-> > > All the best,
-> > > Karolina
-> > > 
-> > > > 
-> > > > good luck!
-> > > > 
-> > > > greg k-h
-> > > 
-> 
+regards,
+dan carpenter
