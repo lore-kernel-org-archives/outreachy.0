@@ -1,109 +1,265 @@
-Received: from mail-wr1-f42.google.com (mail-wr1-f42.google.com [209.85.221.42])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.88])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DB6C320B1F;
-	Sat, 21 Oct 2023 23:12:58 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6048AEDA;
+	Sun, 22 Oct 2023 06:13:47 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Z9c4dZ7P"
-Received: by mail-wr1-f42.google.com with SMTP id ffacd0b85a97d-32daeed7771so1394413f8f.3;
-        Sat, 21 Oct 2023 16:12:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1697929977; x=1698534777; darn=lists.linux.dev;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=amjkysvwGLDMqQy/BiqSp0BajkmyMximPs7WeghdDP8=;
-        b=Z9c4dZ7P2vWoliP/1UvKb0MtD2z7FYYxKGCmcAlxGIJ857VXLSpw2Iea3Iant/QbSB
-         vOk4pLECJwe++1mCZ7MKWtRpdYkpUAZkV0DOjWyI4sQvWtLSAYeh2avnUnAlhiD33O4N
-         sFs7sAt9zt3e5l5gbX5gZekjj5j8msm450cd0hK2KD1R58gtdQc/12VL/xNgBnoHAs6d
-         zxVk3f++hzWNF0rB0aOmurMVkiA+1XymstbPgRYpTNl1unssJHeMObrtKPM8yXuovI9u
-         QT8nIK2X0lG7z623JHo0g7FeO1qFI8tDF6xjLUoAQ21+GnqCiyq0kaO7FpOUCuLkQNGf
-         qKAA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1697929977; x=1698534777;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=amjkysvwGLDMqQy/BiqSp0BajkmyMximPs7WeghdDP8=;
-        b=G4sI6A1XIQj9Wvb7Q6dPZeXV5/iLFg8THdye2x3rJbe+XSIsYACaGNYzRKjv7S9np2
-         s94uJWZPUxHjGOVOZBpPU9UXUMZNMGRexW5OTo894Fyyasug1S36YvXe+2bhNuGnGNmN
-         hZHJujK9i43gamo5+eHVquRbDMRsMsZcVNBgnKyF1Shp1SRGSrpW1xKk4i588OfS4j1/
-         RCGc5hAJ5/JAqycSW0s8RNi7B+vLAKwroBzbfpp8BOZPDJvw7TWQY1EjwZYpzH0sf4l8
-         cH0EelC1RiiZ81feGmzRkLc0gE2WBivs00F7hoHjhZpOWpk/PZbpfQMs6qJSaRaBtV6r
-         0lCQ==
-X-Gm-Message-State: AOJu0Yxq2sim8oQ5TEkfYDRTjzWBKchObirwy4oZ/fSsdHo6NTVtK51d
-	7X5PfegXFhmZ0xVAVzmYOqY=
-X-Google-Smtp-Source: AGHT+IF388wDyEcE44JY0oqc4aiVNscTJNQza6DDdkdC9cj3Y1sX7vvjrj6sCaTLdYDZdpuaze36Mw==
-X-Received: by 2002:adf:f30e:0:b0:32d:a98c:aa1f with SMTP id i14-20020adff30e000000b0032da98caa1fmr3648237wro.1.1697929977124;
-        Sat, 21 Oct 2023 16:12:57 -0700 (PDT)
-Received: from gilbert-PC ([105.113.89.119])
-        by smtp.gmail.com with ESMTPSA id w15-20020a5d608f000000b0032dbf32bd56sm4505098wrt.37.2023.10.21.16.12.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 21 Oct 2023 16:12:56 -0700 (PDT)
-From: Gilbert Adikankwu <gilbertadikankwu@gmail.com>
-To: gregkh@linuxfoundation.org,
-	outreachy@lists.linux.dev
-Cc: linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	Gilbert Adikankwu <gilbertadikankwu@gmail.com>
-Subject: [PATCH 5/5] staging: vt6655: Rename variable byEIFS
-Date: Sun, 22 Oct 2023 00:12:31 +0100
-Message-Id: <4428aa96453516b6706b1a834c46e3f6e70b5828.1697927812.git.gilbertadikankwu@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <cover.1697927812.git.gilbertadikankwu@gmail.com>
-References: <cover.1697927812.git.gilbertadikankwu@gmail.com>
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="NfimDIoP"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1697955227; x=1729491227;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=w0YnrUlNlFoxL2PukGvP3nXb19IVe2UhjY9JFtaLt80=;
+  b=NfimDIoPO/60Q8fax4u+VllXCRQyXoE95IRxKsAcGZp5r9WR/etoZTlD
+   AH1jO91c/wQKYpQNW+jzO4elIVWn5mdRWUAzgc2M56l1OHVpoIN6qsUx1
+   STi65Q0f5LZCH3O83stTvp+G2lh35rIxGd7JXNvWojMchbCNpEvvSyYeL
+   u7IIIllMbs1taMgIGjdPP0QyQLeaZXTyB3ll1ceDmANhx2wxg5WSadAu8
+   a4iN6uTCw3kUTl1QowousuleR8Bp3rTqk6PIaeOWpizEKMcXi2FgXBEne
+   MRnD5aX5mThrUYSPccEdskhYNvS6cQWZSCEfQg/0be2E7475Ah3pJQVHS
+   A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10870"; a="417814184"
+X-IronPort-AV: E=Sophos;i="6.03,242,1694761200"; 
+   d="scan'208";a="417814184"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Oct 2023 23:13:46 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10870"; a="734344991"
+X-IronPort-AV: E=Sophos;i="6.03,242,1694761200"; 
+   d="scan'208";a="734344991"
+Received: from lkp-server01.sh.intel.com (HELO 8917679a5d3e) ([10.239.97.150])
+  by orsmga006.jf.intel.com with ESMTP; 21 Oct 2023 23:13:43 -0700
+Received: from kbuild by 8917679a5d3e with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1quRiX-0005e6-22;
+	Sun, 22 Oct 2023 06:13:41 +0000
+Date: Sun, 22 Oct 2023 14:13:36 +0800
+From: kernel test robot <lkp@intel.com>
+To: kenechukwu maduechesi <maduechesik@gmail.com>,
+	shreeya.patel23498@gmail.com, outreachy@lists.linux.dev
+Cc: oe-kbuild-all@lists.linux.dev,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] staging: rts5208: Add parenthesis to macro arguments
+Message-ID: <202310221433.99xPzVri-lkp@intel.com>
+References: <20231020065439.GA3579@ubuntu>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20231020065439.GA3579@ubuntu>
 
-Remove byte Type encoding "by" from variable name and replace camelcase
-with snakecase.
+Hi kenechukwu,
 
-Fix checkpatch.pl error:
-	CHECK: Avoid CamelCase: <byEIFS>
+kernel test robot noticed the following build errors:
 
-Signed-off-by: Gilbert Adikankwu <gilbertadikankwu@gmail.com>
----
- drivers/staging/vt6655/card.c   | 6 +++---
- drivers/staging/vt6655/device.h | 2 +-
- 2 files changed, 4 insertions(+), 4 deletions(-)
+[auto build test ERROR on staging/staging-linus]
+[also build test ERROR on linus/master v6.6-rc6]
+[cannot apply to staging/staging-testing staging/staging-next next-20231020]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-diff --git a/drivers/staging/vt6655/card.c b/drivers/staging/vt6655/card.c
-index 9c8648ea96be..079fd01c6780 100644
---- a/drivers/staging/vt6655/card.c
-+++ b/drivers/staging/vt6655/card.c
-@@ -250,9 +250,9 @@ bool CARDbSetPhyParameter(struct vnt_private *priv, u8 bb_type)
- 		priv->difs = difs;
- 		iowrite8(priv->difs, priv->port_offset + MAC_REG_DIFS);
- 	}
--	if (priv->byEIFS != C_EIFS) {
--		priv->byEIFS = C_EIFS;
--		iowrite8(priv->byEIFS, priv->port_offset + MAC_REG_EIFS);
-+	if (priv->eifs != C_EIFS) {
-+		priv->eifs = C_EIFS;
-+		iowrite8(priv->eifs, priv->port_offset + MAC_REG_EIFS);
- 	}
- 	if (priv->slot != slot) {
- 		priv->slot = slot;
-diff --git a/drivers/staging/vt6655/device.h b/drivers/staging/vt6655/device.h
-index 264bb056c80c..7773b19a5788 100644
---- a/drivers/staging/vt6655/device.h
-+++ b/drivers/staging/vt6655/device.h
-@@ -183,7 +183,7 @@ struct vnt_private {
- 	/* PHY parameter */
- 	unsigned char sifs;
- 	unsigned char difs;
--	unsigned char byEIFS;
-+	unsigned char eifs;
- 	unsigned char slot;
- 	unsigned char cw_max_min;
- 
+url:    https://github.com/intel-lab-lkp/linux/commits/kenechukwu-maduechesi/staging-rts5208-Add-parenthesis-to-macro-arguments/20231020-145549
+base:   staging/staging-linus
+patch link:    https://lore.kernel.org/r/20231020065439.GA3579%40ubuntu
+patch subject: [PATCH] staging: rts5208: Add parenthesis to macro arguments
+config: arc-randconfig-001-20231022 (https://download.01.org/0day-ci/archive/20231022/202310221433.99xPzVri-lkp@intel.com/config)
+compiler: arc-elf-gcc (GCC) 13.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20231022/202310221433.99xPzVri-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202310221433.99xPzVri-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   In file included from drivers/staging/rts5208/rtsx_scsi.c:17:
+>> drivers/staging/rts5208/rtsx.h:42:27: error: expected parameter name, found "("
+      42 | #define rtsx_writel(chip, (reg), value) \
+         |                           ^
+   drivers/staging/rts5208/rtsx.h:44:26: error: expected parameter name, found "("
+      44 | #define rtsx_readl(chip, (reg) \
+         |                          ^
+   drivers/staging/rts5208/rtsx.h:46:27: error: expected parameter name, found "("
+      46 | #define rtsx_writew(chip, (reg), value) \
+         |                           ^
+   drivers/staging/rts5208/rtsx.h:48:26: error: expected parameter name, found "("
+      48 | #define rtsx_readw(chip, (reg)) \
+         |                          ^
+   drivers/staging/rts5208/rtsx.h:50:27: error: expected parameter name, found "("
+      50 | #define rtsx_writeb(chip, (reg), value) \
+         |                           ^
+   drivers/staging/rts5208/rtsx.h:52:26: error: expected parameter name, found "("
+      52 | #define rtsx_readb(chip, (reg)) \
+         |                          ^
+   drivers/staging/rts5208/rtsx_scsi.c: In function 'read_host_reg':
+>> drivers/staging/rts5208/rtsx_scsi.c:1350:15: error: implicit declaration of function 'rtsx_readl'; did you mean 'rtsx_dev'? [-Werror=implicit-function-declaration]
+    1350 |         val = rtsx_readl(chip, addr);
+         |               ^~~~~~~~~~
+         |               rtsx_dev
+   drivers/staging/rts5208/rtsx_scsi.c: In function 'write_host_reg':
+>> drivers/staging/rts5208/rtsx_scsi.c:1388:9: error: implicit declaration of function 'rtsx_writel' [-Werror=implicit-function-declaration]
+    1388 |         rtsx_writel(chip, addr, val);
+         |         ^~~~~~~~~~~
+   cc1: some warnings being treated as errors
+--
+   In file included from drivers/staging/rts5208/spi.c:16:
+>> drivers/staging/rts5208/rtsx.h:42:27: error: expected parameter name, found "("
+      42 | #define rtsx_writel(chip, (reg), value) \
+         |                           ^
+   drivers/staging/rts5208/rtsx.h:44:26: error: expected parameter name, found "("
+      44 | #define rtsx_readl(chip, (reg) \
+         |                          ^
+   drivers/staging/rts5208/rtsx.h:46:27: error: expected parameter name, found "("
+      46 | #define rtsx_writew(chip, (reg), value) \
+         |                           ^
+   drivers/staging/rts5208/rtsx.h:48:26: error: expected parameter name, found "("
+      48 | #define rtsx_readw(chip, (reg)) \
+         |                          ^
+   drivers/staging/rts5208/rtsx.h:50:27: error: expected parameter name, found "("
+      50 | #define rtsx_writeb(chip, (reg), value) \
+         |                           ^
+   drivers/staging/rts5208/rtsx.h:52:26: error: expected parameter name, found "("
+      52 | #define rtsx_readb(chip, (reg)) \
+         |                          ^
+--
+   In file included from drivers/staging/rts5208/sd.c:16:
+>> drivers/staging/rts5208/rtsx.h:42:27: error: expected parameter name, found "("
+      42 | #define rtsx_writel(chip, (reg), value) \
+         |                           ^
+   drivers/staging/rts5208/rtsx.h:44:26: error: expected parameter name, found "("
+      44 | #define rtsx_readl(chip, (reg) \
+         |                          ^
+   drivers/staging/rts5208/rtsx.h:46:27: error: expected parameter name, found "("
+      46 | #define rtsx_writew(chip, (reg), value) \
+         |                           ^
+   drivers/staging/rts5208/rtsx.h:48:26: error: expected parameter name, found "("
+      48 | #define rtsx_readw(chip, (reg)) \
+         |                          ^
+   drivers/staging/rts5208/rtsx.h:50:27: error: expected parameter name, found "("
+      50 | #define rtsx_writeb(chip, (reg), value) \
+         |                           ^
+   drivers/staging/rts5208/rtsx.h:52:26: error: expected parameter name, found "("
+      52 | #define rtsx_readb(chip, (reg)) \
+         |                          ^
+   drivers/staging/rts5208/sd.c: In function 'sd_check_wp_state':
+>> drivers/staging/rts5208/sd.c:2278:15: error: implicit declaration of function 'rtsx_readl'; did you mean 'rtsx_dev'? [-Werror=implicit-function-declaration]
+    2278 |         val = rtsx_readl(chip, RTSX_BIPR);
+         |               ^~~~~~~~~~
+         |               rtsx_dev
+   cc1: some warnings being treated as errors
+--
+   In file included from drivers/staging/rts5208/rtsx_transport.c:16:
+>> drivers/staging/rts5208/rtsx.h:42:27: error: expected parameter name, found "("
+      42 | #define rtsx_writel(chip, (reg), value) \
+         |                           ^
+   drivers/staging/rts5208/rtsx.h:44:26: error: expected parameter name, found "("
+      44 | #define rtsx_readl(chip, (reg) \
+         |                          ^
+   drivers/staging/rts5208/rtsx.h:46:27: error: expected parameter name, found "("
+      46 | #define rtsx_writew(chip, (reg), value) \
+         |                           ^
+   drivers/staging/rts5208/rtsx.h:48:26: error: expected parameter name, found "("
+      48 | #define rtsx_readw(chip, (reg)) \
+         |                          ^
+   drivers/staging/rts5208/rtsx.h:50:27: error: expected parameter name, found "("
+      50 | #define rtsx_writeb(chip, (reg), value) \
+         |                           ^
+   drivers/staging/rts5208/rtsx.h:52:26: error: expected parameter name, found "("
+      52 | #define rtsx_readb(chip, (reg)) \
+         |                          ^
+   drivers/staging/rts5208/rtsx_transport.c: In function 'rtsx_send_cmd_no_wait':
+>> drivers/staging/rts5208/rtsx_transport.c:215:9: error: implicit declaration of function 'rtsx_writel'; did you mean 'vfs_write'? [-Werror=implicit-function-declaration]
+     215 |         rtsx_writel(chip, RTSX_HCBAR, chip->host_cmds_addr);
+         |         ^~~~~~~~~~~
+         |         vfs_write
+   cc1: some warnings being treated as errors
+--
+   In file included from drivers/staging/rts5208/rtsx_chip.c:18:
+>> drivers/staging/rts5208/rtsx.h:42:27: error: expected parameter name, found "("
+      42 | #define rtsx_writel(chip, (reg), value) \
+         |                           ^
+   drivers/staging/rts5208/rtsx.h:44:26: error: expected parameter name, found "("
+      44 | #define rtsx_readl(chip, (reg) \
+         |                          ^
+   drivers/staging/rts5208/rtsx.h:46:27: error: expected parameter name, found "("
+      46 | #define rtsx_writew(chip, (reg), value) \
+         |                           ^
+   drivers/staging/rts5208/rtsx.h:48:26: error: expected parameter name, found "("
+      48 | #define rtsx_readw(chip, (reg)) \
+         |                          ^
+   drivers/staging/rts5208/rtsx.h:50:27: error: expected parameter name, found "("
+      50 | #define rtsx_writeb(chip, (reg), value) \
+         |                           ^
+   drivers/staging/rts5208/rtsx.h:52:26: error: expected parameter name, found "("
+      52 | #define rtsx_readb(chip, (reg)) \
+         |                          ^
+   drivers/staging/rts5208/rtsx_chip.c: In function 'rtsx_enable_card_int':
+>> drivers/staging/rts5208/rtsx_chip.c:37:19: error: implicit declaration of function 'rtsx_readl'; did you mean 'rtsx_dev'? [-Werror=implicit-function-declaration]
+      37 |         u32 reg = rtsx_readl(chip, RTSX_BIER);
+         |                   ^~~~~~~~~~
+         |                   rtsx_dev
+>> drivers/staging/rts5208/rtsx_chip.c:51:9: error: implicit declaration of function 'rtsx_writel'; did you mean 'vfs_write'? [-Werror=implicit-function-declaration]
+      51 |         rtsx_writel(chip, RTSX_BIER, reg);
+         |         ^~~~~~~~~~~
+         |         vfs_write
+   cc1: some warnings being treated as errors
+--
+   In file included from drivers/staging/rts5208/rtsx_card.c:18:
+>> drivers/staging/rts5208/rtsx.h:42:27: error: expected parameter name, found "("
+      42 | #define rtsx_writel(chip, (reg), value) \
+         |                           ^
+   drivers/staging/rts5208/rtsx.h:44:26: error: expected parameter name, found "("
+      44 | #define rtsx_readl(chip, (reg) \
+         |                          ^
+   drivers/staging/rts5208/rtsx.h:46:27: error: expected parameter name, found "("
+      46 | #define rtsx_writew(chip, (reg), value) \
+         |                           ^
+   drivers/staging/rts5208/rtsx.h:48:26: error: expected parameter name, found "("
+      48 | #define rtsx_readw(chip, (reg)) \
+         |                          ^
+   drivers/staging/rts5208/rtsx.h:50:27: error: expected parameter name, found "("
+      50 | #define rtsx_writeb(chip, (reg), value) \
+         |                           ^
+   drivers/staging/rts5208/rtsx.h:52:26: error: expected parameter name, found "("
+      52 | #define rtsx_readb(chip, (reg)) \
+         |                          ^
+   drivers/staging/rts5208/rtsx_card.c: In function 'rtsx_release_cards':
+>> drivers/staging/rts5208/rtsx_card.c:328:25: error: implicit declaration of function 'rtsx_readl'; did you mean 'rtsx_dev'? [-Werror=implicit-function-declaration]
+     328 |         chip->int_reg = rtsx_readl(chip, RTSX_BIPR);
+         |                         ^~~~~~~~~~
+         |                         rtsx_dev
+   cc1: some warnings being treated as errors
+
+
+vim +42 drivers/staging/rts5208/rtsx.h
+
+    38	
+    39	/*
+    40	 * macros for easy use
+    41	 */
+  > 42	#define rtsx_writel(chip, (reg), value) \
+    43		iowrite32(value, (chip)->rtsx->remap_addr + reg)
+    44	#define rtsx_readl(chip, (reg) \
+    45		ioread32((chip)->rtsx->remap_addr + reg)
+    46	#define rtsx_writew(chip, (reg), value) \
+    47		iowrite16(value, (chip)->rtsx->remap_addr + reg)
+    48	#define rtsx_readw(chip, (reg)) \
+    49		ioread16((chip)->rtsx->remap_addr + reg)
+    50	#define rtsx_writeb(chip, (reg), value) \
+    51		iowrite8(value, (chip)->rtsx->remap_addr + reg)
+    52	#define rtsx_readb(chip, (reg)) \
+    53		ioread8((chip)->rtsx->remap_addr + reg)
+    54	
+
 -- 
-2.34.1
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
