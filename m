@@ -1,39 +1,49 @@
-Received: from mail-ot1-f45.google.com (mail-ot1-f45.google.com [209.85.210.45])
+Received: from mail-ej1-f47.google.com (mail-ej1-f47.google.com [209.85.218.47])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0FD39219EE;
-	Mon, 23 Oct 2023 19:00:49 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=linux-m68k.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; dkim=none
-Received: by mail-ot1-f45.google.com with SMTP id 46e09a7af769-6ce2988d62eso2337744a34.1;
-        Mon, 23 Oct 2023 12:00:49 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5E0046ABB
+	for <outreachy@lists.linux.dev>; Mon, 23 Oct 2023 19:18:13 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=linux-foundation.org
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linuxfoundation.org
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=linux-foundation.org header.i=@linux-foundation.org header.b="HNV9krDd"
+Received: by mail-ej1-f47.google.com with SMTP id a640c23a62f3a-9b6559cbd74so562682166b.1
+        for <outreachy@lists.linux.dev>; Mon, 23 Oct 2023 12:18:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linux-foundation.org; s=google; t=1698088691; x=1698693491; darn=lists.linux.dev;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=dz5jjur3qivUWZ6NESJNIBFVtESDaXyAPO0M+awTZ3M=;
+        b=HNV9krDdHroQHtVOot36bLbrJvr4l51IiL+TTznInTaOneyM9k/tAgkblDNv7WhQpq
+         kcRukhTCaiw/WPPokEkQbDP9+tymbjnT4RFC2zvDKPkk0+NDIn9+bo+97U2aKp8vrzLz
+         5DUhf63NXiUy62tc5g8xDx+i2c0bfLBo8sEDo=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698087649; x=1698692449;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=geG59CJUnKNbArhBFfxHpBXxgZZOqM365JF9tbFB7q4=;
-        b=XagN2x3+BeFtWxmgjhTMgsC6Cx5hfvBUBwrY0dldZOLeO/NMk9ytk1Wts07i8MS4zI
-         kw3FLmnWZObHJVGvDxIK9rcmA+d/b9+/MV6fYg2QydGPj9UwYaXrodvwtcWGlF6gQPOB
-         kTotQIsB73sBTpDRnvlZ7MiywmpHlqrkBN/BGvKnRF55a7tOECZZhOHdv+XaiPSTrsEq
-         XdxA+E2pVdxmVV9RMDecsu/vvbm7NeeH9QP0lqkkMcYScSMG/ufR6eQ6eNwLUV/T13Dd
-         hTK/LXBNQy83+pmDgexyAlspvcONK2qMFPzwiQtIzaWHNoYJaYxMKGyvvIYELEZMBsuE
-         GRcg==
-X-Gm-Message-State: AOJu0Yy/Mk9Sap7NcoErf/vn5Rw/jDnGD/9CiHtz7Lz50R+zf1WvVTNY
-	jszj+cs3NqINVc7up6nfbbRgptupRc0brw==
-X-Google-Smtp-Source: AGHT+IEKckRGW5Iy7rY4l06w8YeFTYuSgr78+8BF6Yeg3uXdN0rQGsEtRbQmdI3Wmgaw3Gpz0gbAJQ==
-X-Received: by 2002:a05:6830:61a:b0:6c4:7e5a:6db6 with SMTP id w26-20020a056830061a00b006c47e5a6db6mr10880400oti.17.1698087648654;
-        Mon, 23 Oct 2023 12:00:48 -0700 (PDT)
-Received: from mail-ot1-f45.google.com (mail-ot1-f45.google.com. [209.85.210.45])
-        by smtp.gmail.com with ESMTPSA id v19-20020a9d7d13000000b006c7c1868b05sm1522921otn.50.2023.10.23.12.00.47
+        d=1e100.net; s=20230601; t=1698088691; x=1698693491;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=dz5jjur3qivUWZ6NESJNIBFVtESDaXyAPO0M+awTZ3M=;
+        b=tU8o8aN+fSIlFWbxx+OOBgr8Bo37ZbaiffaR5R9DOV5CZY3iEJoFbbWMj/NHo+oRwT
+         hCC8/b6SR9q0tmiQhoMqxCC04crx3OR+PmGNllGj657619wa25RgO+96VBb0GzNABdl3
+         jNlCPOpkXs3gCyXqCkxzly+sjXzCRSn82cW8xGypEsNiMwb7y9UZEs+fZoeoY1HID431
+         wenBbvhkbTe4UjuFLXi48EP7RZ1MKTVqzO2abZKR1fZBo0har/rg7DOfxWcOUW5KPqOM
+         qsDUvVFdq8HH4R1LFDlQgi+kq5rTZmEC6pB4wKwolZvQ4BsHhBaa9YnY5m8lkanxkPcU
+         Ev9w==
+X-Gm-Message-State: AOJu0Yxsv84TOg9s04XNjmhveMNSDYKJ8zE5fBcxc/c6TS7I4CuVUfUE
+	vtxq5tVD70BtQ4pqVkwZyeLWvCuBQtNjW5OdHq6PwuZ8
+X-Google-Smtp-Source: AGHT+IExPX9LsJrrmFlPfILSLDdIQMpnKYq2J2ukbQCBQOPwbEzj8v282Snq96YlJ4lDmQZw5FoWeg==
+X-Received: by 2002:a17:907:72ce:b0:9bf:b5bc:6c50 with SMTP id du14-20020a17090772ce00b009bfb5bc6c50mr8689049ejc.4.1698088691327;
+        Mon, 23 Oct 2023 12:18:11 -0700 (PDT)
+Received: from mail-ed1-f50.google.com (mail-ed1-f50.google.com. [209.85.208.50])
+        by smtp.gmail.com with ESMTPSA id mm27-20020a170906cc5b00b009929ab17be0sm7019325ejb.162.2023.10.23.12.18.10
+        for <outreachy@lists.linux.dev>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 23 Oct 2023 12:00:48 -0700 (PDT)
-Received: by mail-ot1-f45.google.com with SMTP id 46e09a7af769-6cf65093780so452596a34.0;
-        Mon, 23 Oct 2023 12:00:47 -0700 (PDT)
-X-Received: by 2002:a9d:6b1a:0:b0:6bc:8cd2:dd97 with SMTP id
- g26-20020a9d6b1a000000b006bc8cd2dd97mr10105569otp.29.1698087647687; Mon, 23
- Oct 2023 12:00:47 -0700 (PDT)
+        Mon, 23 Oct 2023 12:18:10 -0700 (PDT)
+Received: by mail-ed1-f50.google.com with SMTP id 4fb4d7f45d1cf-53e07db272cso5500857a12.3
+        for <outreachy@lists.linux.dev>; Mon, 23 Oct 2023 12:18:10 -0700 (PDT)
+X-Received: by 2002:a05:6402:5243:b0:53e:7fe:b856 with SMTP id
+ t3-20020a056402524300b0053e07feb856mr8559456edd.15.1698088690404; Mon, 23 Oct
+ 2023 12:18:10 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -41,52 +51,41 @@ List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 References: <369bc919-1a1d-4f37-9cc9-742a86a41282@kadam.mountain>
- <20231023114949.34fc967988c354547f79c4e7@linux-foundation.org> <CAHk-=wiS=h7XBt0UMHq_8xWZxR_hmFik_j=SwTp9LzHhJVW=aQ@mail.gmail.com>
-In-Reply-To: <CAHk-=wiS=h7XBt0UMHq_8xWZxR_hmFik_j=SwTp9LzHhJVW=aQ@mail.gmail.com>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Mon, 23 Oct 2023 21:00:34 +0200
-X-Gmail-Original-Message-ID: <CAMuHMdXgZjN7Z484NAO51DV0tSLbbiUJr2hhiUB80FBeyh2KKw@mail.gmail.com>
-Message-ID: <CAMuHMdXgZjN7Z484NAO51DV0tSLbbiUJr2hhiUB80FBeyh2KKw@mail.gmail.com>
+ <20231023114949.34fc967988c354547f79c4e7@linux-foundation.org>
+ <CAHk-=wiS=h7XBt0UMHq_8xWZxR_hmFik_j=SwTp9LzHhJVW=aQ@mail.gmail.com> <CAMuHMdXgZjN7Z484NAO51DV0tSLbbiUJr2hhiUB80FBeyh2KKw@mail.gmail.com>
+In-Reply-To: <CAMuHMdXgZjN7Z484NAO51DV0tSLbbiUJr2hhiUB80FBeyh2KKw@mail.gmail.com>
+From: Linus Torvalds <torvalds@linux-foundation.org>
+Date: Mon, 23 Oct 2023 09:17:53 -1000
+X-Gmail-Original-Message-ID: <CAHk-=wgqTuj-mFKc+MQhumLajb+JrVxBiKjC9xaC+QRsBa-GuQ@mail.gmail.com>
+Message-ID: <CAHk-=wgqTuj-mFKc+MQhumLajb+JrVxBiKjC9xaC+QRsBa-GuQ@mail.gmail.com>
 Subject: Re: KTODO automated TODO lists
-To: Linus Torvalds <torvalds@linux-foundation.org>
+To: Geert Uytterhoeven <geert@linux-m68k.org>
 Cc: Andrew Morton <akpm@linux-foundation.org>, Konstantin Ryabitsev <mricon@kernel.org>, 
 	Dan Carpenter <dan.carpenter@linaro.org>, ksummit@lists.linux.dev, 
 	outreachy@lists.linux.dev, kernel-janitors@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-Hi Linus,
-
-On Mon, Oct 23, 2023 at 8:56=E2=80=AFPM Linus Torvalds
-<torvalds@linux-foundation.org> wrote:
-> On Mon, 23 Oct 2023 at 08:49, Andrew Morton <akpm@linux-foundation.org> w=
-rote:
-> > Well here's a task: write a bot which follows the mailing lists and
-> > sends people nastygrams if one of their emails is more than 95%(?)
-> > quoted text.
+On Mon, 23 Oct 2023 at 09:00, Geert Uytterhoeven <geert@linux-m68k.org> wrote:
 >
-> I think that might be better off as a spam filter rule.
->
-> Don't make it some after-the-fact "trawl the lists". Just make it a
-> bounce with a "you quoted too much". Same as the html avoidance.
->
-> Make it ok to quote 15 lines of commit message for a "Reviewed-by:"
-> kind of reply, but if it's more than 50 lines of quoting, trigger a
-> "at least equal parts new message".
+> How to handle the (unfortunately fairly common) case of
+> reply-with-CC-of-forgotten-relevant-person_added?
 
-How to handle the (unfortunately fairly common) case of
-reply-with-CC-of-forgotten-relevant-person_added?
+One option might be to just do a proper non-quoting reply and have a
+link to lore for context for the originally-forgotten person.
 
-Gr{oetje,eeting}s,
+I've done that anyway several times, where I reply to something, and
+bring in new people, and add a lore link for context.
 
-                        Geert
+I wouldn't have recommended that a few years ago, but lore has been so
+reliable (and reliably fast - not usually the case for most email
+archives) that I think it's a great way to fill people in.
 
---=20
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k=
-.org
+But yes, it does end up being a "outside email" thing. I suspect we're
+all good with that these days - the days of people working in text
+terminals purely out of email are long gone anyway, methinks.
 
-In personal conversations with technical people, I call myself a hacker. Bu=
-t
-when I'm talking to journalists I just say "programmer" or something like t=
-hat.
-                                -- Linus Torvalds
+Anyway, I'm in no way trying to say this is the way forward, but I do
+agree with Andrew that we've seen quite a bit of "long messages that
+are mostly quoting", and it's not great.
+
+              Linus
