@@ -1,78 +1,95 @@
-Received: from mail-oa1-f51.google.com (mail-oa1-f51.google.com [209.85.160.51])
+Received: from mail-qt1-f173.google.com (mail-qt1-f173.google.com [209.85.160.173])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BBD8B1855
-	for <outreachy@lists.linux.dev>; Tue, 24 Oct 2023 01:00:52 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2354C7E
+	for <outreachy@lists.linux.dev>; Tue, 24 Oct 2023 01:09:14 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Z95HJlnj"
-Received: by mail-oa1-f51.google.com with SMTP id 586e51a60fabf-1ea82246069so2672733fac.3
-        for <outreachy@lists.linux.dev>; Mon, 23 Oct 2023 18:00:52 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Ccmbld3r"
+Received: by mail-qt1-f173.google.com with SMTP id d75a77b69052e-41cb76f3cf0so24657851cf.2
+        for <outreachy@lists.linux.dev>; Mon, 23 Oct 2023 18:09:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1698109251; x=1698714051; darn=lists.linux.dev;
-        h=content-disposition:mime-version:message-id:subject:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=DjuqVM3WETD906P7XuBC32K4wWCoYbhKiGcPmIbgPYk=;
-        b=Z95HJlnjbQj2pQDcw1bj2eJ5NaGsULbQmyWinxqDQdT17/MayQQpN/+wvZl7UpRR8Q
-         OZ4Q5CXSIJ5Aul4rF/UvVmOQIgWxf2BDL2yakUTBOaiFKeTXffXW+aE4m2PcFJSzQlfY
-         d1Qgj0pHr2zN1zrmk3DNAR290vwjZaSUesc00iOZ/sWuuHBsHByWyqz8nXqTSWU060dt
-         9x/kklSLsgafr3jQhB8fdVyxyvPfogJwZpMXvDgiLVr3vQ/1SXRMkxe/ywwlbac+NPWS
-         6J4z9fAjm8U7klOZ2OV7mUvFMi06kv7w+K+4KOqFBZ9BFJRfIiZOoSXxeJO0qB6AJQot
-         rYOg==
+        d=gmail.com; s=20230601; t=1698109754; x=1698714554; darn=lists.linux.dev;
+        h=content-transfer-encoding:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=MN+WxtLj2vDVQ9l32ze3K/GGgRcQ0EV79C80vjQsCiQ=;
+        b=Ccmbld3r7d69sTkv2zEDXuwBrmp+n140MVPdaLRJZLUtuxt3qyWdNY3GOSNh9x5QAB
+         S8Pwbi7i5AeBAOjHkuvD9P2rLPVL/ac7uxCaDHafgYtG3akT+PQInDQlHMzOKbp6VXxv
+         DbWUYJ1bLSYLRnzBpT2scqnmAbtQuQkotxoaeaqME++WLckgb9nywO2dGxN70Rj/hAb8
+         MAMcZ81O3p3z+c7opGzvoelwKrAPliBGNIuygAuBaelX0AduTqD6NQr6Bpy3ERXODL6F
+         NHTzU4+S9o1PMDa6FLAYi3CzU66x5C7GvWP0lY5RUUagm5Yjnv3KjjFDaaF1RzSE6Syz
+         uiog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698109251; x=1698714051;
-        h=content-disposition:mime-version:message-id:subject:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=DjuqVM3WETD906P7XuBC32K4wWCoYbhKiGcPmIbgPYk=;
-        b=DVmmq/oKsijar8VltM/Ow1MCadyiN/QTFogGkrIXe2Yeh1rUi3P4bmsfUaY4bI8vfN
-         E3XC3ce2kvc1oHi4iHYKSInDnzHYqMynuil/Miigo490O4BpJJL8FL1vGKA7u+O59qtn
-         7Iz70mv/seohDoFOMxzflPVxbKBXruiFkhuJhVLK1fOPsIJ8fJB1yNcd0+ZivUa+I5if
-         KgVaZS0SBm3gcjEOLCaqxtc/PowJNfq6QT5l+OecIHVOGoRcD9+lCIWAUQp8PnqYGl91
-         YOX70JJA7/W9iE0EB6Hc652q1m6RYYkvSaxocC7wbHMGBkl4jkPuShwvP8BEfpiL1aiV
-         4tgQ==
-X-Gm-Message-State: AOJu0YydG5mdjwIAGwilGiGGlLssKYsayaNEePwycYCHuOuUqPBDHUfM
-	5W1WJL/FOZZN0z6wjVPLvaEPuvw/n3FaNQ==
-X-Google-Smtp-Source: AGHT+IGHFwP1BC2Le99CfGgnoEZq85vfYF/ldiz/VKhyr29aw1lZHIrvE8pgo3Phm/49rdqLG8L7bQ==
-X-Received: by 2002:a05:6870:2112:b0:1e9:b599:1aab with SMTP id f18-20020a056870211200b001e9b5991aabmr12917387oae.58.1698109251410;
-        Mon, 23 Oct 2023 18:00:51 -0700 (PDT)
-Received: from host-62.home ([47.184.17.213])
-        by smtp.gmail.com with ESMTPSA id k7-20020a056870d38700b001e9a7280a30sm1948059oag.0.2023.10.23.18.00.50
-        for <outreachy@lists.linux.dev>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 23 Oct 2023 18:00:50 -0700 (PDT)
-Date: Mon, 23 Oct 2023 20:00:49 -0500
-From: Jeremiah John <jeremiahjohn08706@gmail.com>
-To: outreachy@lists.linux.dev
-Subject: drivers/staging/nvec/nvec.c "usleep_range" check
-Message-ID: <ZTcXQXfnkEMYjnDk@host-62.home>
+        d=1e100.net; s=20230601; t=1698109754; x=1698714554;
+        h=content-transfer-encoding:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=MN+WxtLj2vDVQ9l32ze3K/GGgRcQ0EV79C80vjQsCiQ=;
+        b=ULcdh6e/DDe5e2rE8qIyvgJ//gp5YZfGA3I0TlaYgpC6Dgzi5LPJRi2HDjHVg4cO5+
+         NMiggfR25UQSnSnO4k5r8/Xa6ZLLjLecgOIWdKdS7lxiWjqT5H0Oo+ljfO5t3PpNPDUj
+         nSoSsTSVkMHJsJzFfZUqlEry6IErJXOSlJVmxKzgGZHznpEKyVEv0pmBT5EQOoKjIzz2
+         jVuKb3rKfjxMq0O3I3VgwxAQhHFfiQvAk2tkTZGU0Ck4bPuThwTggEx3Y9bALIfR77rl
+         KsSmnrEq1UD7jbq9C/puEatKb5spuqJU+gdhOcmMq8lp5Fg9gYlarZjtu9gp8OCeVJn/
+         jryQ==
+X-Gm-Message-State: AOJu0YxQ/++4/qptVO9HRk0H9oZDmIAGjejFfe+2JfPkI9iwy9xcMoNY
+	uwZEjqfgNsTld52YHpDzqf0dNgie2ipIHEiIonh+Ehx/tJE=
+X-Google-Smtp-Source: AGHT+IFC1eyFtSU3T138B7sHX3WCUvpsrJSgm/v5sJarZM93HODcEWIrjdIQdvihqYpJqRC6isPly7UDkpbhgeXKghk=
+X-Received: by 2002:ac8:5902:0:b0:41c:cc6d:bba with SMTP id
+ 2-20020ac85902000000b0041ccc6d0bbamr10907647qty.44.1698109753773; Mon, 23 Oct
+ 2023 18:09:13 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+References: <ZTcXQXfnkEMYjnDk@host-62.home>
+In-Reply-To: <ZTcXQXfnkEMYjnDk@host-62.home>
+From: Jeremiah John <jeremiahjohn08706@gmail.com>
+Date: Mon, 23 Oct 2023 20:09:02 -0500
+Message-ID: <CAFLe_K3aDJJsun9A9k8x80tL9GMK6z9AivC1zTN3+eETUs9ziA@mail.gmail.com>
+Subject: Re: drivers/staging/nvec/nvec.c "usleep_range" check
+To: outreachy@lists.linux.dev
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-I ran checkpatch.pl on the nvec directory in drivers/staging and got the following two checks for nvec.c:
+I apologize as I did not read further into the Outreachyfirstpatch
+guide on kernelnewbies, which states that changes regarding udelay are
+best to be avoided
 
-	>drivers/staging/nvec/nvec.c
-	>---------------------------
-	>CHECK: usleep_range is preferred over udelay; see Documentation/timers/timers-howto.rst
-	>#630: FILE: drivers/staging/nvec/nvec.c:630:
-	>+			udelay(33);
+I will look elsewhere for changes to make
 
-	>CHECK: usleep_range is preferred over udelay; see Documentation/timers/timers-howto.rst
-	>#717: FILE: drivers/staging/nvec/nvec.c:717:
-	>+	udelay(100);
+Thanks.
 
-I checked the documentation for drivers and it says that udelay() is used only in the context of atomic functions.
-looking through the source code (nvec.c), I found that the lines where udelay() was called were in functions:
-	1. static irqreturn_t nvec_interrupt(int irq, void *dev)
-
-is this an atomic function? can i test the changes if I do not have the nvec modules loaded in my current workstation?
-
-Thank you,
-
-Jeremiah John
+On Mon, Oct 23, 2023 at 8:00=E2=80=AFPM Jeremiah John
+<jeremiahjohn08706@gmail.com> wrote:
+>
+> I ran checkpatch.pl on the nvec directory in drivers/staging and got the =
+following two checks for nvec.c:
+>
+>         >drivers/staging/nvec/nvec.c
+>         >---------------------------
+>         >CHECK: usleep_range is preferred over udelay; see Documentation/=
+timers/timers-howto.rst
+>         >#630: FILE: drivers/staging/nvec/nvec.c:630:
+>         >+                      udelay(33);
+>
+>         >CHECK: usleep_range is preferred over udelay; see Documentation/=
+timers/timers-howto.rst
+>         >#717: FILE: drivers/staging/nvec/nvec.c:717:
+>         >+      udelay(100);
+>
+> I checked the documentation for drivers and it says that udelay() is used=
+ only in the context of atomic functions.
+> looking through the source code (nvec.c), I found that the lines where ud=
+elay() was called were in functions:
+>         1. static irqreturn_t nvec_interrupt(int irq, void *dev)
+>
+> is this an atomic function? can i test the changes if I do not have the n=
+vec modules loaded in my current workstation?
+>
+> Thank you,
+>
+> Jeremiah John
