@@ -1,55 +1,49 @@
-Received: from mail-qt1-f177.google.com (mail-qt1-f177.google.com [209.85.160.177])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from relay.hostedemail.com (smtprelay0015.hostedemail.com [216.40.44.15])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3EBF77E
-	for <outreachy@lists.linux.dev>; Tue, 24 Oct 2023 01:11:44 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="EgBfNt3Q"
-Received: by mail-qt1-f177.google.com with SMTP id d75a77b69052e-41cd6e1d4fbso21830531cf.1
-        for <outreachy@lists.linux.dev>; Mon, 23 Oct 2023 18:11:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1698109903; x=1698714703; darn=lists.linux.dev;
-        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=8Y0enxq+0lqIoO2anJusa7gquU0yhUQSIKVIKX+Xv74=;
-        b=EgBfNt3Q/upG/0Hyphip+sd7mxNVpaEhqdO33AHpNmBfoTbxZ9SJ3YZpLFZtsNa9tB
-         zhHKA05ZvJe9j7xuyxHm7RpgKBJQTnZyP+9bOEMegZPN6XmKZpzRjC9gwSnHF6S9TAca
-         LHdZFp8Seqzsyb0dkd0aAtH7Jvi/XuE4ivyoqQ7VCKL+2N9mzFK1nPfhNlCqtZp86ZBw
-         XKDSbk+59VxfKO6e//1WBnJw2KX5CyCieF1QYgLMVddqxo8f+2G7SrAZQkxOz8Xk5YSi
-         terpOBOjL6Gb4KnmKO9FPxd1M7ITpOeWFAkceKXow+YKjMs7V7n+3x8HJMeGDrBJhmK0
-         btVg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698109903; x=1698714703;
-        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=8Y0enxq+0lqIoO2anJusa7gquU0yhUQSIKVIKX+Xv74=;
-        b=eAKXvkKcjKz+IpuivNypv7F3D4k0h6WlymEN9K/mQB97XdUmnajnoe5yz2vlqskbxV
-         TKQ77olPo9ERtxk7gZ4pv8IbUzlOMLSn79JClIYQh0pGAEb/lOZ8M/hxWA1YRBtARLp+
-         bKYT+3E9OauQ8z2uPP5MwfRoK08oycvJ4oXy2BTDB/C7dvo7ujXwvMNcys5UntkX4vW1
-         h+HmiK9UOT0RySPqAz0sAuDSZ5rj1qeP8nH/7QquzQtqzxZDTOrLORnIO1DKcCIBV7F+
-         wzVjok8EXvZ43T0zhR6gF/OtLGhHo4m8dBVKFd43KuLOlGQNfg2Ptu4W6i7aSrbcj7w+
-         KlmQ==
-X-Gm-Message-State: AOJu0Yy1OamwOPQty0ZbnRNmqfGIldEFhievlvbCqCkyOBLufuNwMueB
-	L6lQP3oSXTsjBJhiClPQAdE5PNXzwgCJQ+V82zriWTnwOQ4=
-X-Google-Smtp-Source: AGHT+IE3Y//WF0Nj+t+AkXLr8Ghxmv1aw0JXDoVRVF0DCcpA14B5fIjIqUTOEACIRmRSu3Nrm/y1HqSE79Sl84B7c+8=
-X-Received: by 2002:a05:622a:1a09:b0:417:fe9c:6d88 with SMTP id
- f9-20020a05622a1a0900b00417fe9c6d88mr10565374qtb.37.1698109902856; Mon, 23
- Oct 2023 18:11:42 -0700 (PDT)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 17221161;
+	Tue, 24 Oct 2023 02:16:49 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=perches.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=perches.com
+Authentication-Results: smtp.subspace.kernel.org; dkim=none
+Received: from omf20.hostedemail.com (a10.router.float.18 [10.200.18.1])
+	by unirelay10.hostedemail.com (Postfix) with ESMTP id 6FFEFC09BB;
+	Tue, 24 Oct 2023 02:16:48 +0000 (UTC)
+Received: from [HIDDEN] (Authenticated sender: joe@perches.com) by omf20.hostedemail.com (Postfix) with ESMTPA id 6C92F2002D;
+	Tue, 24 Oct 2023 02:16:46 +0000 (UTC)
+Message-ID: <ea3266f0f09bd6c94ee14eba26996a8cdad953b4.camel@perches.com>
+Subject: Re: KTODO automated TODO lists
+From: Joe Perches <joe@perches.com>
+To: "Gustavo A. R. Silva" <gustavo@embeddedor.com>, Dan Carpenter
+	 <dan.carpenter@linaro.org>, ksummit@lists.linux.dev
+Cc: outreachy@lists.linux.dev, kernel-janitors@vger.kernel.org
+Date: Mon, 23 Oct 2023 19:16:45 -0700
+In-Reply-To: <9e0dc452-c4fe-4511-83fe-a1e356bd5438@embeddedor.com>
+References: <369bc919-1a1d-4f37-9cc9-742a86a41282@kadam.mountain>
+	 <9e0dc452-c4fe-4511-83fe-a1e356bd5438@embeddedor.com>
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.48.4 (3.48.4-1.fc38) 
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-References: <ZTcXQXfnkEMYjnDk@host-62.home> <CAFLe_K3aDJJsun9A9k8x80tL9GMK6z9AivC1zTN3+eETUs9ziA@mail.gmail.com>
-In-Reply-To: <CAFLe_K3aDJJsun9A9k8x80tL9GMK6z9AivC1zTN3+eETUs9ziA@mail.gmail.com>
-From: Jeremiah John <jeremiahjohn08706@gmail.com>
-Date: Mon, 23 Oct 2023 20:11:31 -0500
-Message-ID: <CAFLe_K2poweHwHcCAhN2peFQ55bBxT-0gRfVoKH=oMD2derkpg@mail.gmail.com>
-Subject: Re: drivers/staging/nvec/nvec.c "usleep_range" check
-To: outreachy@lists.linux.dev
-Content-Type: text/plain; charset="UTF-8"
+X-Rspamd-Queue-Id: 6C92F2002D
+X-Rspamd-Server: rspamout02
+X-Stat-Signature: pqe3j5ry7cundzgutfksgdpeiuqu18d1
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Session-ID: U2FsdGVkX1+SHiKi9GwP/4WHdk/t2B0jTo+S/Jrwybg=
+X-HE-Tag: 1698113806-995776
+X-HE-Meta: U2FsdGVkX1/nIUuuJO8aUmXqc4xz22OZbk8WUG3kczmA4NPXcIzzs10KFeeQ2trGYQL5Sa0enBLZ7A6InmJzJgWsDKhn/Ujdf4Hz8+sogpSgt0F4su+FHcR+LOSkoPrSxTK3zZvEiINF5i5dCOMm7T5cW5PKL4j4mdVi5bq61PrJu0/xWpjUVSkPfxsbw78/PMF2Kr5jY2jPujxgqFNvJDXkprh9+JfYQvAsdjs6RTaQynmNOfdYSEt8fYGZXBIdiDocQDBs6hSNhEwLbvVGKGrCakHbMRgnV+mO59TSk+8agSe+dayKVtKaxEdz+He49eK7KQwbC7F1eYjXfvB1kim0pAvRT21OAm/q6rUkbTZXFGo7ci1hCYpvEnG1MKeF
 
-I also understand that I should just remove quoted text if it's not necessary :)
+On Mon, 2023-10-23 at 17:38 -0600, Gustavo A. R. Silva wrote:
+> We have tons of issues waiting to be audited and fixed here:
+>=20
+> https://scan.coverity.com/projects/linux-next-weekly-scan
+>=20
+> You will never run out of fun. :) People just need to sign up.
+
+IMO: People should not need to sign up.
+
