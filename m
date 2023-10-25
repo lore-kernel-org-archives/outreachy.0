@@ -1,127 +1,109 @@
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-wm1-f52.google.com (mail-wm1-f52.google.com [209.85.128.52])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 85FDD79FB;
-	Wed, 25 Oct 2023 07:01:47 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B78D71FCC;
+	Wed, 25 Oct 2023 08:27:11 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="JjEgSPz2"
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9C335C433C8;
-	Wed, 25 Oct 2023 07:01:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1698217307;
-	bh=6bpoBX0kdFh4MK89QNKnictrdfcKlGVxk0LHuV7WNYM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=JjEgSPz27bny71UelvLtKpjnS5ujW3jPuAJu2yFAwoZIEcpJmLmSrd7VG9J83Z9XB
-	 zeUOHHNNzAEOgb0A3Rgdp7vI+s5HB+L96gNh/G0ImSN2SpkbsjnPYHu2dembnrv+Nz
-	 jkuBwMv2xZLxST9JO6mDe/BgvJh6CO78QNwsKhqrY/nScfsa3aa+6unZFHhoGSaSlz
-	 bh+wRYNB0XS1DgJtzt5gv4tScUgoiBploIb+74UjlgQOfJ/o+ZVMUBDjSwdo3uGZWQ
-	 88vYK2hT2z4YMDk0m8v1IsVvTHjmOHcVMVicZ9f8h3FXsWZL8y8AhCw2L0nWeKJq+G
-	 emwhCYdRILNVA==
-Message-ID: <db623920-34db-46e3-a768-f9b8b36d3268@kernel.org>
-Date: Wed, 25 Oct 2023 09:01:40 +0200
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="IYPj2XyD"
+Received: by mail-wm1-f52.google.com with SMTP id 5b1f17b1804b1-408382da7f0so43818545e9.0;
+        Wed, 25 Oct 2023 01:27:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1698222430; x=1698827230; darn=lists.linux.dev;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=BIEpeDhsmV1MGZX+rkMhWOfAqR84yFETrjktILCYvg0=;
+        b=IYPj2XyDNzOu8eLQ/WK7j/piCYod8pZ1k3Zm/gOar/EZAfRg7aKb1LehyA+rRmreVD
+         au6gJTWS2h6PnVhyxULc0UsM9woq+xOt6lUh8Wh5YCa5CyTV0Yb+8Q4jxUQTMjaE/BFb
+         EUMeLV5TB8xz7YoVzzZKA5F0rGlJ+R8Zpu4S3uPVpSoQVJqVm73sRaDy6V7ENa6tVm6n
+         tvdPA0hM0/CzPwUjVMOo0EtlF+yXUG95XaFbvAfWdbIxrfUb5ieNpSKDErL+AeU30KJ+
+         tYu1fcZLjmCOa3aCXljyGf+/+d9EOqILnPJF38IfH3aOnYY7jy2Ub1Pmwtp+csGbE93F
+         jx5w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1698222430; x=1698827230;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=BIEpeDhsmV1MGZX+rkMhWOfAqR84yFETrjktILCYvg0=;
+        b=AHqPIuyIwVwyF53umfY+8Jztx3fx9A2JmdUlzamTRj2gqTtujo+hjza5Kkd/YJ162O
+         LnJCFKbwOIDqSlwAq2DknsIx3s4dX+i0Dd+Tv9cZ77DqvdvDc6x33uXdkcUnjuabqdM/
+         j0u0susSRDOHWaP2d8qG0MtDBE0fKDq98uDZbDmXc2no7yoEozTEzXQJgzKpQbT/laAr
+         4tHuCWAGPV7+akaTQHzM4zUM0Z0/X4qadA/0yK1dL48w3FhaPSCUCGr4valNSlzKyDUv
+         H06UKnWg/DeXeakKIPQi7fAZUFLjwojxndgE0mbb8OwhP6XE/Ft8sL55rMeuQayVozTu
+         uxGw==
+X-Gm-Message-State: AOJu0YwsggT4QJeyVXYhjRYfT6xSOUAu4oqP99H7iptGKwzj5szvawxC
+	BAmGjw00kA2VUsbcPlqf+Ak=
+X-Google-Smtp-Source: AGHT+IHReVM8jgrUJE5dcVe4EUHcU8ycUKGqfApb7ktOI86IcTS14d+3EAtNR5vCIr187yj+5RqmLQ==
+X-Received: by 2002:a05:600c:1d1e:b0:408:4160:150a with SMTP id l30-20020a05600c1d1e00b004084160150amr11575395wms.33.1698222429636;
+        Wed, 25 Oct 2023 01:27:09 -0700 (PDT)
+Received: from lab-ubuntu ([41.90.66.64])
+        by smtp.gmail.com with ESMTPSA id u1-20020a05600c210100b004068de50c64sm13759396wml.46.2023.10.25.01.27.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 25 Oct 2023 01:27:09 -0700 (PDT)
+Date: Wed, 25 Oct 2023 11:27:06 +0300
+From: Calvince Otieno <calvncce@gmail.com>
+To: gustavo@embeddedor.com, outreachy@lists.linux.dev
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.or,
+	Julia Lawall <julia.lawall@inria.fr>, Deepak <dvarma04@hotmail.com>,
+	Calvince Otieno <calvncce@gmail.com>
+Subject: [PATCH] staging: wlan-ng: prism2mgmt.c: rewrite flexible array member
+Message-ID: <ZTjRWkqXeoS74E52@lab-ubuntu>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: KTODO automated TODO lists
-Content-Language: en-US
-To: NeilBrown <neilb@suse.de>
-Cc: Andrew Morton <akpm@linux-foundation.org>,
- Dan Carpenter <dan.carpenter@linaro.org>, ksummit@lists.linux.dev,
- outreachy@lists.linux.dev, kernel-janitors@vger.kernel.org
-References: <369bc919-1a1d-4f37-9cc9-742a86a41282@kadam.mountain>
- <20231023114949.34fc967988c354547f79c4e7@linux-foundation.org>
- <8ca50d4c-3c96-4efa-a111-fca04d580ab5@kernel.org>
- <169818295461.20306.14022136719064683486@noble.neil.brown.name>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 fv0=
-In-Reply-To: <169818295461.20306.14022136719064683486@noble.neil.brown.name>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-On 24/10/2023 23:29, NeilBrown wrote:
-> On Wed, 25 Oct 2023, Krzysztof Kozlowski wrote:
->> On 23/10/2023 20:49, Andrew Morton wrote:
->>> On Thu, 19 Oct 2023 07:11:36 +0300 Dan Carpenter <dan.carpenter@linaro.org> wrote:
->>>
->>>> Yesterday someone on my lists just sent an email looking for kernel
->>>> tasks. 
->>>
->>> Well here's a task: write a bot which follows the mailing lists and
->>> sends people nastygrams if one of their emails is more than 95%(?)
->>> quoted text.
->>>
->>> It's happening significantly more lately.  Possibly because the gmail
->>> client helpfully hides quoted text.
->>
->> I would also point to reviewers and maintainers who give a Rb/Ack tag:
->> 1. somewhere at the top, without any footer like Best regards, and then
->> quote entire patch, so I don't know shall I look for more comments after
->> Rb/Ack?
->>
->> 2. quote entire email and then add Rb/Ack, so I need to figure out
->> whether there was something between the hundreds of lines of text or not.
-> 
-> Here we all are, brilliantly talented computer programmers who spend
-> our days making amazing fast digital devices do amazingly clever and
-> subtle things, inventing time-saving tools and processing vast amounts
-> of data without blinking, but for some reason we think the task of
-> skipping over a few thousand lines that all start with '> " is too hard
-> for us and that we should, in stead, complain to some other human to
-> convince them to make our life easier for us.
-> 
-> Does anyone else see the irony?
+Declaring zero-length arrays is allowed in GNU C as an extension.
+Although the size of a zero-length array is zero, an array member of
+this kind may increase the size of the enclosing type as a result of
+tail padding. The offset of a zero-length array member from the beginning
+of the enclosing structure is the same as the offset of an array with one
+or more elements of the same type. The alignment of a zero-length array is
+the same as the alignment of its elements.
 
-Neither my email client is able to skip the quoted text, nor
-lore.kernel.org or Patchwork. Therefore in both cases - reading the
-email with my current toolset or checking some older threads on
-lore/Patchwork - I would have to do it manually. Quite a waste of time.
+Declaring zero-length arrays in other contexts, including as interior
+members of structure objects or as non-member objects, is discouraged.
+Accessing elements of zero-length arrays declared in such contexts is
+undefined and may be diagnosed.
 
-Best regards,
-Krzysztof
+There are some instances of code in which the sizeof operator is being
+incorrectly/erroneously applied to zero-length arrays and the result
+is zero. Such instances may be hiding some bugs.
+
+This issue was found with the help of Coccinelle.
+
+[1] https://gcc.gnu.org/onlinedocs/gcc/Zero-Length.html
+
+Signed-off-by: Calvince Otieno <calvncce@gmail.com>
+---
+ drivers/staging/wlan-ng/p80211metastruct.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/staging/wlan-ng/p80211metastruct.h b/drivers/staging/wlan-ng/p80211metastruct.h
+index a52217c9b953..c8b73c867391 100644
+--- a/drivers/staging/wlan-ng/p80211metastruct.h
++++ b/drivers/staging/wlan-ng/p80211metastruct.h
+@@ -71,7 +71,6 @@ struct p80211msg_dot11req_scan_results {
+ 	struct p80211item_uint32 signal;
+ 	struct p80211item_uint32 noise;
+ 	struct p80211item_pstr6 bssid;
+-	u8 pad_3C[1];
+ 	struct p80211item_pstr32 ssid;
+ 	u8 pad_4D[3];
+ 	struct p80211item_uint32 bsstype;
+@@ -95,6 +94,7 @@ struct p80211msg_dot11req_scan_results {
+ 	struct p80211item_uint32 capinfo;
+ 	struct p80211item_uint32 basicrate[8];
+ 	struct p80211item_uint32 supprate[8];
++	u8 pad_3C[];
+ } __packed;
+ 
+ struct p80211msg_dot11req_start {
+-- 
+2.34.1
 
