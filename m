@@ -1,80 +1,105 @@
-Received: from mail-ed1-f48.google.com (mail-ed1-f48.google.com [209.85.208.48])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F282963C7
-	for <outreachy@lists.linux.dev>; Sun, 29 Oct 2023 12:49:24 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B8AEC81E
+	for <outreachy@lists.linux.dev>; Sun, 29 Oct 2023 12:52:22 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="bJKfa+ni"
-Received: by mail-ed1-f48.google.com with SMTP id 4fb4d7f45d1cf-53df747cfe5so5987728a12.2
-        for <outreachy@lists.linux.dev>; Sun, 29 Oct 2023 05:49:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1698583763; x=1699188563; darn=lists.linux.dev;
-        h=content-transfer-encoding:signed-off-by:mime-version:message-id
-         :date:subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=kvGslAkSO5/GVCAS8NrwRFkgz5ZQQL9hkBl+qGy12PE=;
-        b=bJKfa+nieR1xNCAo9pNudMF4UAnNVa3SgofSSq9Uae7SGLBmaHpPZQ6sd2tU9k6WAc
-         FZ6dBOAVMVzOIBB7EzyMiF+4Uau7TfH1dje6YRwLurva9nc1pZVrwUruSyu7+L5Fptns
-         ZlCn614Kb4rJmB03XD0KFYn2sGpiv4SlNCG4D2dDoU6/grIECzguZJJY0WaZR1YbQKRW
-         URX8YlPHz8974aIXeMtUa3P1EH36RDyC7YeyZ/pFp3QoA7aFtkGjmUyPKgwTgx72IiSe
-         I0ft1u1vcvUvlmZ2jTlFdOAH9T2QIHvj4aerGrDJ8V+AHzgd5dPNmAnGkZSxapP/Xa5N
-         O7Dw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698583763; x=1699188563;
-        h=content-transfer-encoding:signed-off-by:mime-version:message-id
-         :date:subject:cc:to:from:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=kvGslAkSO5/GVCAS8NrwRFkgz5ZQQL9hkBl+qGy12PE=;
-        b=AnIxP56A/G1tbtzyXi00/hj34b1SMfHNdFzTPX6knsRLFdPWXevX+l3AJsyonomOzd
-         VFSCYYP6qR0mxmWCPBfYEHVtRi+lshj2QNa3chdccPJtyh0mwacFK1N/hDXIon+Qga0o
-         mWPmn7ofUxqa+eKZSAQ1GY8y0p1x6UCJckUHpzCqAbuj/+d/6YqoVn2GBkZdN7Z4JP7J
-         r68d7bwQ+r8kx4HufXs9mc75av1eY1M+CaxqRi3ji9OXaqG1Xu+D5/jUywQ62VrWKtDi
-         mx+VzS2X7LavL4M8Nz2yo9QDsDcDDWVkRAILddHPGc1GxcwkE9vkh0HRZFKajueofD4c
-         Tkpw==
-X-Gm-Message-State: AOJu0YxS8GnabICRz/jMQuadqQXLYixPu75pnA5Ldh3c9bMV/slcvrrN
-	vhj5UgG8M1zvdBpLw7Tkwm0=
-X-Google-Smtp-Source: AGHT+IHGOaf3Z4W+iL3P/rYZB3cS12F5b2UNxlTeF+sshlebuqeyuLy5zAUiNTd0ZuL9aB1nWlcPbA==
-X-Received: by 2002:a17:907:720e:b0:9bd:c592:e0ce with SMTP id dr14-20020a170907720e00b009bdc592e0cemr6100753ejc.51.1698583762729;
-        Sun, 29 Oct 2023 05:49:22 -0700 (PDT)
-Received: from ubuntu-focal.zuku.co.ke ([197.237.50.252])
-        by smtp.gmail.com with ESMTPSA id m8-20020a170906234800b0099cce6f7d50sm4270348eja.64.2023.10.29.05.49.20
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 29 Oct 2023 05:49:22 -0700 (PDT)
-From: Dorine Tipo <dorine.a.tipo@gmail.com>
-To: gregkh@linuxfoundation.org,
-	outreachy@lists.linux.dev
-Cc: Dorine Tipo <dorine.a.tipo@gmail.com>
-Subject: [PATCH]: Remove multiple blank lines
-Date: Sun, 29 Oct 2023 12:49:00 +0000
-Message-Id: <20231029124900.2674-1-dorine.a.tipo@gmail.com>
-X-Mailer: git-send-email 2.25.1
+	dkim=pass (1024-bit key) header.d=linuxfoundation.org header.i=@linuxfoundation.org header.b="PqhuNkPw"
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A4A09C433C8;
+	Sun, 29 Oct 2023 12:52:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1698583942;
+	bh=8spl7K1/FLdXBAri3W2+pcmycu+sQ0EjkG2iadehAVo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=PqhuNkPw0q96zP97RiS/2xZSvpWTFEWSTynDNGU+wLwvs5UlOCepojJHTgbZtvW+L
+	 47jwj56VFDP3WDqZVJGOyit+cPjrJiO/DAyY7LKCqgNoLSEqIuIYLilITXZiU0EWCZ
+	 602he42dLZ9mFWGvSmLN3W8YRmTLoiy8ZWlYTYGQ=
+Date: Sun, 29 Oct 2023 13:52:17 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Dorine Tipo <dorine.a.tipo@gmail.com>
+Cc: outreachy@lists.linux.dev
+Subject: Re: [PATCH]: Remove multiple blank lines
+Message-ID: <2023102943-rename-slam-ea49@gregkh>
+References: <20231029124900.2674-1-dorine.a.tipo@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Signed-off-by: Dorine Tipo <dorine.a.tipo@gmail.com>
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20231029124900.2674-1-dorine.a.tipo@gmail.com>
 
-This patch removes multiple consecutive blank lines from the code. It improves code readability and adheres to coding style guidelines.
----
- drivers/staging/vt6655/rxtx.h | 1 -
- 1 file changed, 1 deletion(-)
+On Sun, Oct 29, 2023 at 12:49:00PM +0000, Dorine Tipo wrote:
+> This patch removes multiple consecutive blank lines from the code. It improves code readability and adheres to coding style guidelines.
+> ---
+>  drivers/staging/vt6655/rxtx.h | 1 -
+>  1 file changed, 1 deletion(-)
+> 
+> diff --git a/drivers/staging/vt6655/rxtx.h b/drivers/staging/vt6655/rxtx.h
+> index a67757c9bb5c..be1e5180d57b 100644
+> --- a/drivers/staging/vt6655/rxtx.h
+> +++ b/drivers/staging/vt6655/rxtx.h
+> @@ -19,7 +19,6 @@
+>  #define DEFAULT_MSDU_LIFETIME_RES_64us	8000 /* 64us */
+>  #define DEFAULT_MGN_LIFETIME_RES_64us	125  /* 64us */
+>  
+> -
+>  /*---------------------  Export Definitions -------------------------*/
+>  
+>  /*---------------------  Export Variables  --------------------------*/
+> -- 
+> 2.25.1
+> 
 
-diff --git a/drivers/staging/vt6655/rxtx.h b/drivers/staging/vt6655/rxtx.h
-index a67757c9bb5c..be1e5180d57b 100644
---- a/drivers/staging/vt6655/rxtx.h
-+++ b/drivers/staging/vt6655/rxtx.h
-@@ -19,7 +19,6 @@
- #define DEFAULT_MSDU_LIFETIME_RES_64us	8000 /* 64us */
- #define DEFAULT_MGN_LIFETIME_RES_64us	125  /* 64us */
- 
--
- /*---------------------  Export Definitions -------------------------*/
- 
- /*---------------------  Export Variables  --------------------------*/
--- 
-2.25.1
+Hi,
 
+This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
+a patch that has triggered this response.  He used to manually respond
+to these common problems, but in order to save his sanity (he kept
+writing the same thing over and over, yet to different people), I was
+created.  Hopefully you will not take offence and will fix the problem
+in your patch and resubmit it so that it can be accepted into the Linux
+kernel tree.
+
+You are receiving this message because of the following common error(s)
+as indicated below:
+
+- Your patch does not have a Signed-off-by: line.  Please read the
+  kernel file, Documentation/process/submitting-patches.rst and resend
+  it after adding that line.  Note, the line needs to be in the body of
+  the email, before the patch, not at the bottom of the patch or in the
+  email signature.
+
+- Your patch was sent privately to Greg.  Kernel development is done in
+  public, please always cc: a public mailing list with a patch
+  submission.  Using the tool, scripts/get_maintainer.pl on the patch
+  will tell you what mailing list to cc.
+
+- You did not specify a description of why the patch is needed, or
+  possibly, any description at all, in the email body.  Please read the
+  section entitled "The canonical patch format" in the kernel file,
+  Documentation/process/submitting-patches.rst for what is needed in
+  order to properly describe the change.
+
+- You did not write a descriptive Subject: for the patch, allowing Greg,
+  and everyone else, to know what this patch is all about.  Please read
+  the section entitled "The canonical patch format" in the kernel file,
+  Documentation/process/submitting-patches.rst for what a proper
+  Subject: line should look like.
+
+- This looks like a new version of a previously submitted patch, but you
+  did not list below the --- line any changes from the previous version.
+  Please read the section entitled "The canonical patch format" in the
+  kernel file, Documentation/process/submitting-patches.rst for what
+  needs to be done here to properly describe this.
+
+If you wish to discuss this problem further, or you have questions about
+how to resolve this issue, please feel free to respond to this email and
+Greg will reply once he has dug out from the pending patches received
+from other developers.
+
+thanks,
+
+greg k-h's patch email bot
