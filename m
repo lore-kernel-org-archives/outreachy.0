@@ -1,55 +1,58 @@
-Received: from mail-ej1-f44.google.com (mail-ej1-f44.google.com [209.85.218.44])
+Received: from mail-wm1-f53.google.com (mail-wm1-f53.google.com [209.85.128.53])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D0410101CA
-	for <outreachy@lists.linux.dev>; Sun, 29 Oct 2023 17:33:17 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D0E59D2F6;
+	Sun, 29 Oct 2023 19:17:10 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="eAfBUHxi"
-Received: by mail-ej1-f44.google.com with SMTP id a640c23a62f3a-9d2e7726d5bso82614366b.0
-        for <outreachy@lists.linux.dev>; Sun, 29 Oct 2023 10:33:17 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="deG5Lmgq"
+Received: by mail-wm1-f53.google.com with SMTP id 5b1f17b1804b1-40850b244beso29787915e9.2;
+        Sun, 29 Oct 2023 12:17:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1698600796; x=1699205596; darn=lists.linux.dev;
+        d=gmail.com; s=20230601; t=1698607029; x=1699211829; darn=lists.linux.dev;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=oONESIONR0875+VY7V+KJv4RBl2k7EOc49mVhor/0ew=;
-        b=eAfBUHxi/SRrCIebobMMyhYzTyDEgHLjDtTDes8P+nidPGp5VUpR0cWOMJ0h+Yr46x
-         aktouM/NDZs3duGXd+uv+lfm4PdrmpxfE4PJn3txFi458qYO/bT8M5BSJzFMdBVs0Hma
-         kxNGj12qVVY6f2NnuDwgrT5LvpzXFlRLkwEOerLVwpm5g7TI8jTTppvxt23PcAaTF1sB
-         lqwjAsXRtjEsNzGL1VXqyq1Mw4nbwALkor84TAos8bZRPI2zC63GATuGPq/xjX+IFv8q
-         Ynw5g0EpCiZmhR/EQBUbujl6H5ifVUu9mJyytS9uuwiIcQBexnmdYFBKrPUNi4jOErv6
-         3YpQ==
+        bh=ITSqca1evCzkzhn7N4VS98YhVKLbCaQ6LkheIXfd40c=;
+        b=deG5LmgqOKX/N1J+a+Bi7Efp3Y5TJlhmpOrILTxsgvbQUJkrEUfks9hgnN0asYcJDx
+         2ogMAYeMJ9/jEiJRj0ViRpoT94l87kMKuqZl4O6mIaEGUGJUx7FiK0CQFR4ZLfHz2lLQ
+         7AcUhXLAIZurNZnT7zUWwJV7S/ktt+vxblOOJMkjviX9gRCfofTkXAZdchyXw3E7dCt+
+         TYMwoG5tgqm6dXT7mL0o+44306MuATW3Gyn6NX8BOJpkh51aAkhLsPNfCIaaTtsM2Zrv
+         /fdy6L/aB7rnApe2fzk4/c5G/ZgPEI3O1s/DuPg6lF9MvFD5/J9yrszdZx7lyjPG4zvU
+         /RaQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698600796; x=1699205596;
+        d=1e100.net; s=20230601; t=1698607029; x=1699211829;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=oONESIONR0875+VY7V+KJv4RBl2k7EOc49mVhor/0ew=;
-        b=tMClGBYoPUXIWYUwg67phNqMkVqqsJBMp9b0w+vbsCjYf9VJ8bj1JEt9q8QHtPBMPb
-         BzbqDufdcIoJi55JNBELAHF3wuNvrCxTCZ6KNVysEBMtj79HFUF1Abc0sURcQDYWgZj8
-         cnoeYB89QwKt6GGVP1sm8q/RWW8YSkU0GgbY4wRe9y7kyUdXzzM6un32sDPZqwN207pv
-         Di0fl2dGWUftBrIO/m+yZe7Dc9qwBJZkQ+xnrjyoJdtmuafdvem5q1RHDfWNvlDSwG9Q
-         T5FCip3voC9Y1rxxy2Y3qIGhif8w22anFdzPE0AddyqVR6MYSa6dMMrdZcHIJ/iuJPug
-         z0WQ==
-X-Gm-Message-State: AOJu0YxLVK4uPXvixfTR7fjWLdIqcbUqLOLPXKIR700Q+ch1pCtmZX5D
-	HSwZVtseq/F8AgOJCAh06hgqlZaGpBTOKMju
-X-Google-Smtp-Source: AGHT+IHOAEb0lBw33sYli3wNS10ABawn9u5kXn7O6/ZiB/QJZPtC3WKYnnG8XHFlXTygPc8nhZb0vw==
-X-Received: by 2002:a17:906:d555:b0:9bf:f20:8772 with SMTP id cr21-20020a170906d55500b009bf0f208772mr6691022ejc.26.1698600795251;
-        Sun, 29 Oct 2023 10:33:15 -0700 (PDT)
-Received: from ubuntu-focal.zuku.co.ke ([197.237.50.252])
-        by smtp.gmail.com with ESMTPSA id op12-20020a170906bcec00b00997cce73cc7sm4655418ejb.29.2023.10.29.10.33.13
+        bh=ITSqca1evCzkzhn7N4VS98YhVKLbCaQ6LkheIXfd40c=;
+        b=DCQuA0m+uwYTrYK8eLJ56/lMxTZIYXsd0AP25L/sa0mj9W82gRY2DhGJvBowUbKCzg
+         vjXoIIXV8GOW78L3FcLxf9wb0u6WuGObC1mTQ71F0JdqpCX2fq7sbN3/JhG9IFu213kZ
+         S+O/u1vyniju61W08JVmBv4vble3UsfshxsUnIO7idJdfPAjpwgygKHceZoAkPN+N6d2
+         KGRt5sEFXmEsuFDjG9X507R8oYzPi9LhV4wObstX7dwbgRcOPZaYDZpYI33BlJqPQJwo
+         3XaaadSWm06rtIvI9I8TdcHjFxUUr0gb3W++lHKx0b0kIYsk8IHTGFJFldkb8eAFEQUv
+         IZNQ==
+X-Gm-Message-State: AOJu0YxIbkHYoRhVWbR5K25hZAlJhFlP9yyWs7qb0ElieqcvZyIeapOr
+	20IYcr1yzH/PJDJA2BA2UQA=
+X-Google-Smtp-Source: AGHT+IHXE2bjhwJPibipKZXXVYDAVNLrcQqlZkEYTJRNgF/vz2gBUtTk5/EHvKpgfBfIDriqLRKsMw==
+X-Received: by 2002:a05:6000:1865:b0:32f:74ee:fcd4 with SMTP id d5-20020a056000186500b0032f74eefcd4mr7064455wri.2.1698607028509;
+        Sun, 29 Oct 2023 12:17:08 -0700 (PDT)
+Received: from nancy-1-2.. ([105.163.156.232])
+        by smtp.googlemail.com with ESMTPSA id p1-20020a5d68c1000000b0032db8f7f378sm6483343wrw.71.2023.10.29.12.17.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 29 Oct 2023 10:33:14 -0700 (PDT)
-From: Dorine Tipo <dorine.a.tipo@gmail.com>
-To: outreachy@lists.linux.dev,
-	gregkh@linuxfoundation.org,
-	julia.lawall@inria.fr
-Cc: Dorine Tipo <dorine.a.tipo@gmail.com>
-Subject: [PATCH v2] staging: octeon: remove unnecessary parentheses
-Date: Sun, 29 Oct 2023 17:11:19 +0000
-Message-Id: <20231029171119.7816-1-dorine.a.tipo@gmail.com>
-X-Mailer: git-send-email 2.25.1
+        Sun, 29 Oct 2023 12:17:08 -0700 (PDT)
+From: Nancy Nyambura <nicymimz@gmail.com>
+To: 
+Cc: nicydaniels@gmail.com,
+	outreachy@lists.linux.dev,
+	Nancy Nyambura <nicymimz@gmail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] staging: rts5208: Replace strncpy() with strscpy() for appropriate string copying in rtsx_scsi line 524 warning: found by checkpatch.pl script
+Date: Sun, 29 Oct 2023 22:16:42 +0300
+Message-Id: <20231029191647.44127-1-nicymimz@gmail.com>
+X-Mailer: git-send-email 2.40.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -58,53 +61,24 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-- Remove unnecessary parentheses around 'interface < 2'.
-
-Removing the parentheses around interface < 2 improves readability without
-changing the order of evaluation of the logic because the < operator has
-a higher precedence than the && operator.
-
-Signed-off-by: Dorine Tipo <dorine.a.tipo@gmail.com>
-
+Signed-off-by: Nancy Nyambura <nicymimz@gmail.com>
 ---
-This patch addresses the unnecessary issue reported by checkpatch.
-The subject line has been revised to be more concise and less detailed,
-as suggested in the patch feedback.
+ drivers/staging/rts5208/rtsx_scsi.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- drivers/staging/octeon/ethernet.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/staging/octeon/ethernet.c b/drivers/staging/octeon/ethernet.c
-index 8e1f4b987a25..349308edbc9e 100644
---- a/drivers/staging/octeon/ethernet.c
-+++ b/drivers/staging/octeon/ethernet.c
-@@ -248,7 +248,7 @@ static int cvm_oct_common_change_mtu(struct net_device *dev, int new_mtu)
+diff --git a/drivers/staging/rts5208/rtsx_scsi.c b/drivers/staging/rts5208/rtsx_scsi.c
+index 08bd768ad34d..52324b8ebbc7 100644
+--- a/drivers/staging/rts5208/rtsx_scsi.c
++++ b/drivers/staging/rts5208/rtsx_scsi.c
+@@ -523,7 +523,7 @@ static int inquiry(struct scsi_cmnd *srb, struct rtsx_chip *chip)
  
- 	dev->mtu = new_mtu;
- 
--	if ((interface < 2) &&
-+	if (interface < 2 &&
- 	    (cvmx_helper_interface_get_mode(interface) !=
- 		CVMX_HELPER_INTERFACE_MODE_SPI)) {
- 		int index = INDEX(priv->port);
-@@ -294,7 +294,7 @@ static void cvm_oct_common_set_multicast_list(struct net_device *dev)
- 	struct octeon_ethernet *priv = netdev_priv(dev);
- 	int interface = INTERFACE(priv->port);
- 
--	if ((interface < 2) &&
-+	if (interface < 2 &&
- 	    (cvmx_helper_interface_get_mode(interface) !=
- 		CVMX_HELPER_INTERFACE_MODE_SPI)) {
- 		union cvmx_gmxx_rxx_adr_ctl control;
-@@ -346,7 +346,7 @@ static int cvm_oct_set_mac_filter(struct net_device *dev)
- 	union cvmx_gmxx_prtx_cfg gmx_cfg;
- 	int interface = INTERFACE(priv->port);
- 
--	if ((interface < 2) &&
-+	if (interface < 2 &&
- 	    (cvmx_helper_interface_get_mode(interface) !=
- 		CVMX_HELPER_INTERFACE_MODE_SPI)) {
- 		int i;
+ 	if (sendbytes > 8) {
+ 		memcpy(buf, inquiry_buf, 8);
+-		strncpy(buf + 8, inquiry_string, sendbytes - 8);
++		strscpy(buf + 8, inquiry_string, sendbytes - 8);
+ 		if (pro_formatter_flag) {
+ 			/* Additional Length */
+ 			buf[4] = 0x33;
 -- 
-2.25.1
+2.40.1
 
