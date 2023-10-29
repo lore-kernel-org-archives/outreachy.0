@@ -1,140 +1,87 @@
-Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.100])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ed1-f49.google.com (mail-ed1-f49.google.com [209.85.208.49])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2F7AEEA3;
-	Mon, 30 Oct 2023 03:19:59 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BD76DEA3
+	for <outreachy@lists.linux.dev>; Mon, 30 Oct 2023 03:24:27 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="AgqYj5FW"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1698636000; x=1730172000;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=yRaMyJdeEKY3i1iGnqG12Lko57gYZ93LAzlgj2NDC6U=;
-  b=AgqYj5FW71suE1DMLV+scjzgZHvm3ZUPfMg20vPlCXsf3W3dLCrqoSdp
-   uohfjV6+HPu9ruEEVFALFSYV+hpGJMavqG1yW5YtLYmpqi/WXWw4hJVGt
-   +zETF0M+HmXMzc1i4cH1deTEZlg3azOb/qeABxjxbg8Vy6Zgf6GPEbli7
-   y4HIb1qvMIjyefgqCM2vT9wdyMiH06iIeftNLoWw+GHNTxSIqqvmAO5Tc
-   Ad5x8OHVHAbW/Q4qBm2mI+WVNRpatoIWQKnns6nyDVh5dSvheh6x0ndEr
-   eXmWR8AkXuTF9JwP80QQDP8W3ahimbERo53w+5FrXwJDpxrUvKyAuETNr
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10878"; a="454471270"
-X-IronPort-AV: E=Sophos;i="6.03,262,1694761200"; 
-   d="scan'208";a="454471270"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
-  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Oct 2023 20:19:59 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10878"; a="933655577"
-X-IronPort-AV: E=Sophos;i="6.03,262,1694761200"; 
-   d="scan'208";a="933655577"
-Received: from lkp-server01.sh.intel.com (HELO 8917679a5d3e) ([10.239.97.150])
-  by orsmga005.jf.intel.com with ESMTP; 29 Oct 2023 20:19:54 -0700
-Received: from kbuild by 8917679a5d3e with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1qxIoh-000D0t-1N;
-	Mon, 30 Oct 2023 03:19:51 +0000
-Date: Mon, 30 Oct 2023 11:19:06 +0800
-From: kernel test robot <lkp@intel.com>
-To: Nancy Nyambura <nicymimz@gmail.com>, gagallo7+outreachy@gmail.com
-Cc: oe-kbuild-all@lists.linux.dev, nicydaniels@gmail.com,
-	outreachy@lists.linux.dev, Nancy Nyambura <nicymimz@gmail.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	linux-media@vger.kernel.org,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] Media: omap4iss: Enable RSZB and update resizer control
-Message-ID: <202310301031.IZuhUjMc-lkp@intel.com>
-References: <20231029220710.47063-1-nicymimz@gmail.com>
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="YOkEGJAJ"
+Received: by mail-ed1-f49.google.com with SMTP id 4fb4d7f45d1cf-543456dbd7bso94341a12.1
+        for <outreachy@lists.linux.dev>; Sun, 29 Oct 2023 20:24:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1698636265; x=1699241065; darn=lists.linux.dev;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=JiJxLw61ZnvQAeB8p9Ml+AT1YeI+VnsqYImYkKk06Dc=;
+        b=YOkEGJAJyYQpqL24oE67GC5GPmh0SHm/Xic2PNJl/d6u3l1Dm0I2oEV8poG2YT3uKG
+         L/kS9v2s4tvx5Uvp1gDRzbklknPtCScD4Z0tcB9SPsA5yzKyZLNHJdtewJype4u8AyGJ
+         4i8QXZpHFho8XC6VWAJZ0WcLdgu5CWynCxQF9sLAubqi2KEzz+CFP6kLF9d5/ea2iPy9
+         RYPnB7q2uycw+i+vfh9wf58BGnI+j2knTm00DfgEPP+U/wElXcn4oRDMoOYrVDlgn/Wo
+         68uH6TgEQIArs395zz9vAOD76seVZuuPHN+amh3g79HMhgg2tJ6wanUUZA7+xH2N7aVX
+         UVHg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1698636265; x=1699241065;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=JiJxLw61ZnvQAeB8p9Ml+AT1YeI+VnsqYImYkKk06Dc=;
+        b=xRhJTQser2KwHwZcHuQOoHvjXfKNEZmdUEDTCf+4+OFcKLMzIjLlM8jnicKw6BMh78
+         dLai7iuLxvDsl9i1OJ897AEL/JRHr1p2c/VXfGVxldHEN4WQ8/Ld4rRvC5H7yuYsEhk8
+         E2KadSzG/4l/37MQ1Tzx9BSqfr4dZSJDR5wjKBBhulAOkf+BnkRyF17Nxmuw8iEI+0Lt
+         YFu16FD4q9GqZTpuoGvvz4k4JJe+exneRNVqj1jXYIaeGS1GvZrtsk9mPwGErF9aKHHd
+         fmsD1f+yTxuzrIEhDMcpPXT+hYLNk20RirREyLbwsONQSO8b/0ZelTF59UUyMypEll5t
+         TX+Q==
+X-Gm-Message-State: AOJu0YxD2nePMy4okb936tJtpQ5imwWRkZcDRNuh8lWiBeZhMIVvUzo1
+	On80mY7o6l0FQ0GBEBBbRjLUSCQ0pa8U9sr6
+X-Google-Smtp-Source: AGHT+IGPGhsWELlPZPrMmXeev1yRFGDdWfmalLz3azCTk6ZTQm3PNRUpvVH0PZU/bgDMzO+SyJJDXA==
+X-Received: by 2002:a17:907:728b:b0:9bd:a5a9:34de with SMTP id dt11-20020a170907728b00b009bda5a934demr7576789ejc.23.1698636265449;
+        Sun, 29 Oct 2023 20:24:25 -0700 (PDT)
+Received: from ubuntu-focal.zuku.co.ke ([197.237.50.252])
+        by smtp.gmail.com with ESMTPSA id sd2-20020a170906ce2200b009c762d89c76sm5183240ejb.0.2023.10.29.20.24.23
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 29 Oct 2023 20:24:24 -0700 (PDT)
+From: Dorine Tipo <dorine.a.tipo@gmail.com>
+To: outreachy@lists.linux.dev,
+	gregkh@linuxfoundation.org
+Cc: Dorine Tipo <dorine.a.tipo@gmail.com>
+Subject: [PATCH] staging: Remove unnecessary parentheses
+Date: Sun, 29 Oct 2023 18:54:05 +0000
+Message-Id: <20231029185405.11073-1-dorine.a.tipo@gmail.com>
+X-Mailer: git-send-email 2.25.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20231029220710.47063-1-nicymimz@gmail.com>
+Content-Transfer-Encoding: 8bit
 
-Hi Nancy,
+- Remove the unnecessary parentheses around
+'priv->imode == CVMX_HELPER_INTERFACE_MODE_RGMII'
 
-kernel test robot noticed the following build errors:
+The '==' operator has higher precedence than the '&&' and '||' operators.
+Removing the unnecessary parentheses simplifies the code while maintaining
+the correct order of operations, making it more readable.
 
-[auto build test ERROR on media-tree/master]
-[also build test ERROR on linus/master v6.6-rc7 next-20231027]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Signed-off-by: Dorine Tipo <dorine.a.tipo@gmail.com>
+---
+ drivers/staging/octeon/ethernet-rgmii.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Nancy-Nyambura/Media-omap4iss-Enable-RSZB-and-update-resizer-control/20231030-060944
-base:   git://linuxtv.org/media_tree.git master
-patch link:    https://lore.kernel.org/r/20231029220710.47063-1-nicymimz%40gmail.com
-patch subject: [PATCH] Media: omap4iss: Enable RSZB and update resizer control
-config: sh-allmodconfig (https://download.01.org/0day-ci/archive/20231030/202310301031.IZuhUjMc-lkp@intel.com/config)
-compiler: sh4-linux-gcc (GCC) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20231030/202310301031.IZuhUjMc-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202310301031.IZuhUjMc-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
-   drivers/staging/media/omap4iss/iss_resizer.c: In function 'resizer_enable':
-   drivers/staging/media/omap4iss/iss_resizer.c:119:37: error: 'struct iss_device' has no member named 'base_addr'
-     119 |         u32 reg_value = ioread32(iss->base_addr + OMAP4_ISS_MEM_ISP_RESIZER,
-         |                                     ^~
-   drivers/staging/media/omap4iss/iss_resizer.c:120:27: error: 'RZ_SYSCONFIG' undeclared (first use in this function); did you mean 'RSZ_SYSCONFIG'?
-     120 |                         + RZ_SYSCONFIG);
-         |                           ^~~~~~~~~~~~
-         |                           RSZ_SYSCONFIG
-   drivers/staging/media/omap4iss/iss_resizer.c:120:27: note: each undeclared identifier is reported only once for each function it appears in
-   In file included from include/linux/scatterlist.h:9,
-                    from include/linux/dma-mapping.h:11,
-                    from drivers/staging/media/omap4iss/iss_resizer.c:14:
->> arch/sh/include/asm/io.h:129:18: error: too many arguments to function 'ioread32'
-     129 | #define ioread32 ioread32
-         |                  ^~~~~~~~
-   drivers/staging/media/omap4iss/iss_resizer.c:119:25: note: in expansion of macro 'ioread32'
-     119 |         u32 reg_value = ioread32(iss->base_addr + OMAP4_ISS_MEM_ISP_RESIZER,
-         |                         ^~~~~~~~
-   In file included from arch/sh/include/asm/io.h:22:
-   include/asm-generic/iomap.h:32:21: note: declared here
-      32 | extern unsigned int ioread32(const void __iomem *);
-         |                     ^~~~~~~~
-   drivers/staging/media/omap4iss/iss_resizer.c:122:33: error: 'struct iss_device' has no member named 'base_addr'
-     122 |         iowrite32(reg_value, iss->base_addr + OMAP4_ISS_MEM_ISP_RESIZER,
-         |                                 ^~
->> arch/sh/include/asm/io.h:135:19: error: too many arguments to function 'iowrite32'
-     135 | #define iowrite32 iowrite32
-         |                   ^~~~~~~~~
-   drivers/staging/media/omap4iss/iss_resizer.c:122:9: note: in expansion of macro 'iowrite32'
-     122 |         iowrite32(reg_value, iss->base_addr + OMAP4_ISS_MEM_ISP_RESIZER,
-         |         ^~~~~~~~~
-   include/asm-generic/iomap.h:53:13: note: declared here
-      53 | extern void iowrite32(u32, void __iomem *);
-         |             ^~~~~~~~~
-
-
-vim +/ioread32 +129 arch/sh/include/asm/io.h
-
-b94692e84dccf1 Baoquan He 2023-07-06  125  
-b94692e84dccf1 Baoquan He 2023-07-06  126  #define ioread8 ioread8
-b94692e84dccf1 Baoquan He 2023-07-06  127  #define ioread16 ioread16
-b94692e84dccf1 Baoquan He 2023-07-06  128  #define ioread16be ioread16be
-b94692e84dccf1 Baoquan He 2023-07-06 @129  #define ioread32 ioread32
-b94692e84dccf1 Baoquan He 2023-07-06  130  #define ioread32be ioread32be
-b94692e84dccf1 Baoquan He 2023-07-06  131  
-b94692e84dccf1 Baoquan He 2023-07-06  132  #define iowrite8 iowrite8
-b94692e84dccf1 Baoquan He 2023-07-06  133  #define iowrite16 iowrite16
-b94692e84dccf1 Baoquan He 2023-07-06  134  #define iowrite16be iowrite16be
-b94692e84dccf1 Baoquan He 2023-07-06 @135  #define iowrite32 iowrite32
-b94692e84dccf1 Baoquan He 2023-07-06  136  #define iowrite32be iowrite32be
-b94692e84dccf1 Baoquan He 2023-07-06  137  
-
+diff --git a/drivers/staging/octeon/ethernet-rgmii.c b/drivers/staging/octeon/ethernet-rgmii.c
+index 0c4fac31540a..15d2c84925ba 100644
+--- a/drivers/staging/octeon/ethernet-rgmii.c
++++ b/drivers/staging/octeon/ethernet-rgmii.c
+@@ -148,7 +148,7 @@ int cvm_oct_rgmii_open(struct net_device *dev)
+ 		 */
+ 		if ((priv->imode == CVMX_HELPER_INTERFACE_MODE_GMII &&
+ 		     priv->port  == 0) ||
+-		    (priv->imode == CVMX_HELPER_INTERFACE_MODE_RGMII)) {
++		    priv->imode == CVMX_HELPER_INTERFACE_MODE_RGMII) {
+ 			priv->poll = cvm_oct_check_preamble_errors;
+ 			cvm_oct_check_preamble_errors(dev);
+ 		}
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.25.1
+
