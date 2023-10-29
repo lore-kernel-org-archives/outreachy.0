@@ -1,129 +1,128 @@
-Received: from perceval.ideasonboard.com (perceval.ideasonboard.com [213.167.242.64])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-pl1-f181.google.com (mail-pl1-f181.google.com [209.85.214.181])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BB08412E51;
-	Sun, 29 Oct 2023 23:23:36 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=ideasonboard.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=ideasonboard.com
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A5EFB3C10
+	for <outreachy@lists.linux.dev>; Sun, 29 Oct 2023 23:51:01 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=ideasonboard.com header.i=@ideasonboard.com header.b="SKXSwHTa"
-Received: from pendragon.ideasonboard.com (213-243-189-158.bb.dnainternet.fi [213.243.189.158])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 3499383F;
-	Mon, 30 Oct 2023 00:23:14 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1698621794;
-	bh=b7fAlWnVHD8ub32pUv2JqeBryzHEQYH8d55fVsFUfVw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=SKXSwHTavIpNoVy44Yhm+xz0ENUYRR9sRRNfaMB9/XEkKTzqAJeRoUAw0UvuTGZH8
-	 11zwt9Rk+KOoHEegp0bMgiV3oygn7HTScqjMD+OCBqddojgX6rM/bEeMvU2zPNdIWa
-	 ose3b9FpRIX/bFPLgYojCnWIwV19gayyS2ccwdt8=
-Date: Mon, 30 Oct 2023 01:23:35 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Nancy Nyambura <nicymimz@gmail.com>
-Cc: gagallo7+outreachy@gmail.com, nicydaniels@gmail.com,
-	outreachy@lists.linux.dev,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-media@vger.kernel.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] Media: omap4iss: Enable RSZB and update resizer control
-Message-ID: <20231029232335.GG12144@pendragon.ideasonboard.com>
-References: <20231029220710.47063-1-nicymimz@gmail.com>
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Ls3acaVs"
+Received: by mail-pl1-f181.google.com with SMTP id d9443c01a7336-1cc2f17ab26so9076995ad.0
+        for <outreachy@lists.linux.dev>; Sun, 29 Oct 2023 16:51:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1698623461; x=1699228261; darn=lists.linux.dev;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=tnaUx4F8KrZZ3PGoAEtrzlrFKiWjXS8sFp/d/9HvjiA=;
+        b=Ls3acaVsWELSrwHoVk/Sa99dleokk4UTJrlWggI8DMHQMcrz24NWfRfS+Rv1bZiB+G
+         8lPoprOASD/3i4/R5VbsaZPYh6SGxUjlf2JcezMYv+Q5zid+61YoWzRxjccaKKcZFyyf
+         qh7+Rc3TvpIKl25SPzCb+mo3vQwxpvPPAriRnqVzYzxIUHUeYeOZESmM8tS4fQDJ55Rd
+         HtEkOvlEudTA0zAEZirpmrc085lXocYsQ2W9Ahmruf5gAmeA7bd06kgN3tCzuARwwVjg
+         s8bdYI0CAjlKEoB92hDiJ20OARzTLzzYH03MGW2J6CjVthqd1xe1Pl8giIKSOxjrZN1f
+         +KYg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1698623461; x=1699228261;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=tnaUx4F8KrZZ3PGoAEtrzlrFKiWjXS8sFp/d/9HvjiA=;
+        b=IOPCVQ/IHEjnpSIy12OGvFdu2iZrx8bn1Uu64CDyTTWRLvshR9aCUcVqgzNR1pHDik
+         tbML4I70sHQkSCNcAJijjKG8flr4Ko9s+8wU1Vaahe0YweilaGbuwf5QTWPEo2pXwZJW
+         NsVarbx3JbQw3hkzAILJ96TpKRgJ69XHd/BeQUyFX51c541FEYpOFfPwv4pWuxVc/V73
+         r6UXxFP7E41Jp4rY67PHiDpfVCinvHMLKuI1UAMO52VwLjG7vcpa3Q/MaWGBU/ZJr28f
+         nGmYEdUr+feTirpG3RcqGp5IVc9W2PEOuN/rusPQZGd03w9dXSOq8gOZv/DeeHA+oWIm
+         Ax/g==
+X-Gm-Message-State: AOJu0YzJbqAuoYd6c34cfQPvF6zYTFRC4L8U37szlOHA7/AG/eZVK3X7
+	ohAbXIOgJkpK8tENtTCV/98=
+X-Google-Smtp-Source: AGHT+IHxBs7QaWgZIVC/mTGf2u0/bmEMVPy6LqzGkKMozIa2+zb2CUBE2+Sgs/lTnSYfa4r0xCiPgg==
+X-Received: by 2002:a17:902:db09:b0:1cc:3065:9167 with SMTP id m9-20020a170902db0900b001cc30659167mr3416006plx.23.1698623460693;
+        Sun, 29 Oct 2023 16:51:00 -0700 (PDT)
+Received: from debian.me ([103.131.18.64])
+        by smtp.gmail.com with ESMTPSA id p4-20020a170902bd0400b001b06c106844sm1077916pls.151.2023.10.29.16.50.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 29 Oct 2023 16:51:00 -0700 (PDT)
+Received: by debian.me (Postfix, from userid 1000)
+	id 461598039BBC; Mon, 30 Oct 2023 06:50:56 +0700 (WIB)
+Date: Mon, 30 Oct 2023 06:50:55 +0700
+From: Bagas Sanjaya <bagasdotme@gmail.com>
+To: Julia Lawall <julia.lawall@inria.fr>,
+	Dorine Tipo <dorine.a.tipo@gmail.com>,
+	Greg KH <gregkh@linuxfoundation.org>,
+	Tomeu Vizoso <tomeu.vizoso@collabora.com>,
+	Helen Koike <helen.koike@collabora.com>,
+	David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>,
+	Nick Terrell <terrelln@fb.com>,
+	Daniel Stone <daniels@collabora.com>,
+	Rob Clark <robdclark@gmail.com>
+Cc: Linux Outreachy <outreachy@lists.linux.dev>,
+	Linux DRI Development <dri-devel@lists.freedesktop.org>,
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH Resend] Fix line Length
+Message-ID: <ZT7v39jG4WTxPYjm@debian.me>
+References: <20231029144312.5895-1-dorine.a.tipo@gmail.com>
+ <alpine.DEB.2.22.394.2310291610030.3136@hadrien>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="hxSAXAGVE2cfMdh7"
+Content-Disposition: inline
+In-Reply-To: <alpine.DEB.2.22.394.2310291610030.3136@hadrien>
+
+
+--hxSAXAGVE2cfMdh7
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20231029220710.47063-1-nicymimz@gmail.com>
+Content-Transfer-Encoding: quoted-printable
 
-Hello Nancy,
+On Sun, Oct 29, 2023 at 04:11:01PM +0100, Julia Lawall wrote:
+>=20
+>=20
+> On Sun, 29 Oct 2023, Dorine Tipo wrote:
+>=20
+> > Signed-off-by: Dorine Tipo <dorine.a.tipo@gmail.com>
+> >
+> > Fix the line lengths of lines 8 and 49
+>=20
+> The Signed off by line should be here, below the log message.  Please see
+> the patches sent by others.
+>=20
+> >  export IGT_FORCE_DRIVER=3D${DRIVER_NAME}
+> >  export PATH=3D$PATH:/igt/bin/
+> > -export LD_LIBRARY_PATH=3D$LD_LIBRARY_PATH:/igt/lib/aarch64-linux-gnu/:=
+/igt/lib/x86_64-linux-gnu:/igt/lib:/igt/lib64
+> > +export LD_LIBRARY_PATH=3D$LD_LIBRARY_PATH:/igt/lib/aarch64-linux-gnu/:=
+/igt/lib/x86_64-linux-gnu
+> > +export LD_LIBRARY_PATH=3D$LD_LIBRARY_PATH:/igt/lib:/igt/lib64
+>=20
+> There was a suggestion that it was better to keep this as one line.
+>=20
 
-On Mon, Oct 30, 2023 at 01:07:09AM +0300, Nancy Nyambura wrote:
-> Enable RSZB functionality in the OMAP4 ISS driver. This change sets the RSZB system configuration register to enable the RSZB module. Additionally, it updates the resizer control by setting the RSZ_EN_EN flag as required. This change enhances the driver's capabilities and prepares it for future developments.
+Hi Julia,
 
-You haven't run this through checkpatch, have you ?
+The submitter touched one of CI scripts for the DRM subsystem. To test
+this patch, there must be a way to run these scripts locally (which
+may requires non-trivial setup).
 
-> Signed-off-by: Nancy Nyambura <nicymimz@gmail.com>
-> ---
->  drivers/staging/media/omap4iss/iss_resizer.c | 34 +++++++++++---------
->  1 file changed, 19 insertions(+), 15 deletions(-)
-> 
-> diff --git a/drivers/staging/media/omap4iss/iss_resizer.c b/drivers/staging/media/omap4iss/iss_resizer.c
-> index a5f8f9f1ab16..23089eeaf448 100644
-> --- a/drivers/staging/media/omap4iss/iss_resizer.c
-> +++ b/drivers/staging/media/omap4iss/iss_resizer.c
-> @@ -7,17 +7,17 @@
->   * Author: Sergio Aguirre <sergio.a.aguirre@gmail.com>
->   */
->  
-> -#include <linux/module.h>
-> -#include <linux/uaccess.h>
-> -#include <linux/delay.h>
-> -#include <linux/device.h>
-> -#include <linux/dma-mapping.h>
-> -#include <linux/mm.h>
-> -#include <linux/sched.h>
-> -
-> -#include "iss.h"
-> -#include "iss_regs.h"
-> -#include "iss_resizer.h"
-> + #include <linux/module.h>
-> + #include <linux/uaccess.h>
-> + #include <linux/delay.h>
-> + #include <linux/device.h>
-> + #include <linux/dma-mapping.h>
-> + #include <linux/mm.h>
-> + #include <linux/sched.h>
-> +
-> + #include "iss.h"
-> + #include "iss_regs.h"
-> + #include "iss_resizer.h"
+Cc'ed DRM maintainers.
 
-Or even read the patch before sending it out ?
+Thanks.
 
->  
->  static const unsigned int resizer_fmts[] = {
->  	MEDIA_BUS_FMT_UYVY8_1X16,
-> @@ -30,11 +30,11 @@ static const unsigned int resizer_fmts[] = {
->   *
->   * Also prints other debug information stored in the RESIZER module.
->   */
-> -#define RSZ_PRINT_REGISTER(iss, name)\
-> + #define RSZ_PRINT_REGISTER(iss, name)\
->  	dev_dbg(iss->dev, "###RSZ " #name "=0x%08x\n", \
->  		iss_reg_read(iss, OMAP4_ISS_MEM_ISP_RESIZER, RSZ_##name))
->  
-> -#define RZA_PRINT_REGISTER(iss, name)\
-> + #define RZA_PRINT_REGISTER(iss, name)\
->  	dev_dbg(iss->dev, "###RZA " #name "=0x%08x\n", \
->  		iss_reg_read(iss, OMAP4_ISS_MEM_ISP_RESIZER, RZA_##name))
->  
-> @@ -116,8 +116,12 @@ static void resizer_enable(struct iss_resizer_device *resizer, u8 enable)
->  		       RSZ_SRC_EN_SRC_EN, enable ? RSZ_SRC_EN_SRC_EN : 0);
->  
->  	/* TODO: Enable RSZB */
-> -	iss_reg_update(iss, OMAP4_ISS_MEM_ISP_RESIZER, RZA_EN, RSZ_EN_EN,
-> -		       enable ? RSZ_EN_EN : 0);
-> +	u32 reg_value = ioread32(iss->base_addr + OMAP4_ISS_MEM_ISP_RESIZER,
-> +		       	+ RZ_SYSCONFIG);
-> +	reg_value |= RSZ_SYSCONFIG_RSZB_CLK_EN;
-> +	iowrite32(reg_value, iss->base_addr + OMAP4_ISS_MEM_ISP_RESIZER, 
-> +			+ RSZ_SYSCONFIG);
-> +
+--=20
+An old man doll... just what I always wanted! - Clara
 
-This doesn't even compile.
+--hxSAXAGVE2cfMdh7
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Has this all been generated by chatgpt by any chance ? It doesn't look
-like whoever wrote this understand what they were doing.
+-----BEGIN PGP SIGNATURE-----
 
->  }
->  
->  /* -----------------------------------------------------------------------------
+iHUEABYKAB0WIQSSYQ6Cy7oyFNCHrUH2uYlJVVFOowUCZT7v2AAKCRD2uYlJVVFO
+o954AQD8oXo0ltpyVgNj+W2HrUdj0qfZcYHTNndycvvkv2Y9hQD+IgA8U6ryTDQ/
+pvwMNit/pa5/2yFf2sQWJmC+jlJpKAo=
+=Wy7e
+-----END PGP SIGNATURE-----
 
--- 
-Regards,
-
-Laurent Pinchart
+--hxSAXAGVE2cfMdh7--
