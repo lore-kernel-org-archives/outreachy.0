@@ -1,105 +1,102 @@
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ej1-f54.google.com (mail-ej1-f54.google.com [209.85.218.54])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B8AEC81E
-	for <outreachy@lists.linux.dev>; Sun, 29 Oct 2023 12:52:22 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 13B7633C7
+	for <outreachy@lists.linux.dev>; Sun, 29 Oct 2023 13:38:49 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=linuxfoundation.org header.i=@linuxfoundation.org header.b="PqhuNkPw"
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A4A09C433C8;
-	Sun, 29 Oct 2023 12:52:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1698583942;
-	bh=8spl7K1/FLdXBAri3W2+pcmycu+sQ0EjkG2iadehAVo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=PqhuNkPw0q96zP97RiS/2xZSvpWTFEWSTynDNGU+wLwvs5UlOCepojJHTgbZtvW+L
-	 47jwj56VFDP3WDqZVJGOyit+cPjrJiO/DAyY7LKCqgNoLSEqIuIYLilITXZiU0EWCZ
-	 602he42dLZ9mFWGvSmLN3W8YRmTLoiy8ZWlYTYGQ=
-Date: Sun, 29 Oct 2023 13:52:17 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Dorine Tipo <dorine.a.tipo@gmail.com>
-Cc: outreachy@lists.linux.dev
-Subject: Re: [PATCH]: Remove multiple blank lines
-Message-ID: <2023102943-rename-slam-ea49@gregkh>
-References: <20231029124900.2674-1-dorine.a.tipo@gmail.com>
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="JXD8q9Pc"
+Received: by mail-ej1-f54.google.com with SMTP id a640c23a62f3a-9c2a0725825so572746066b.2
+        for <outreachy@lists.linux.dev>; Sun, 29 Oct 2023 06:38:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1698586728; x=1699191528; darn=lists.linux.dev;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=3+9N2Spb+6l5Vm3dEcD+0dbViCYa89ODzappv9F4BBU=;
+        b=JXD8q9Pc4f+/aN6vYFqzJ/vPyVhL66jsIVTNo4Ge5GFo/obJdZZ8f4/NKNIo5KYihy
+         ibyw6OM752Rgatt8bR0z4cr8TJFnuTTAf0w3a6lx/hKOt7g/MnmoWQTlT1p8Zgl1G+z5
+         StNHOBm0VfurwQPscu/oiOropJvH2sE7O7HjaAz3LFoCIPgOonJAJxAvHCDRSpQacAdD
+         GhNSFBczWMoE9Dx4b46SFrZAnsjE9wqxvfpsBpKwRP0miJuL1UVu3xyzRqSdZ3ht4NeP
+         Op61R5OjTYva+5mzet8Hp+p1pqz32PGnrnPQrnirrd6dz5HkrYImEe7Ffo/yTy8cyHpO
+         F7SQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1698586728; x=1699191528;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=3+9N2Spb+6l5Vm3dEcD+0dbViCYa89ODzappv9F4BBU=;
+        b=jh3aEShySdN+NFoY9AH479+Hwhfha/8ePWr2+HdCmTNfs8liO/6ZOZrStc0ykzRGFY
+         bHOaORvTos1q4esxDcDP3B8Dbhdb9HSdDImbA+LOskUXNzXWvEtpYx93KGZpmXJG/VcI
+         juef7hQnCGMEc6P04L9bB1z+RTmHnvy3tdx3CxJY7HkyLZGviLWPMHBbBKUkGMRZMyDy
+         a1d2FHk1bOQHN5nOr4B3Rprp0Mja9xN6BsJH/9eSO2JM2XwoihpSpY8KdqbGAKTydHuA
+         wWrwPq0eFT7xyGprdZVXIcmmn7qidxTKhf9BKTLOBXRR2TIwTnNxu2Hhj2EoC4kgCS4o
+         kM/A==
+X-Gm-Message-State: AOJu0YzBgmN1xbtOSkPKGTgzGFQSPYbtSblRLsWIASGxXSiD0lo1N4m9
+	cwPM1MbMtamoH7JmcQB8KAPpv4tpIrIpl50c
+X-Google-Smtp-Source: AGHT+IGAIygI3Y6oEsKJmyUqMwrhceRvMd809EYFab4r+V0Al3OBR5bJT6RyuXRnvD7WrR1FoLs4bw==
+X-Received: by 2002:a17:907:72ce:b0:9c7:5a01:ffe6 with SMTP id du14-20020a17090772ce00b009c75a01ffe6mr6501347ejc.13.1698586727837;
+        Sun, 29 Oct 2023 06:38:47 -0700 (PDT)
+Received: from ubuntu-focal.zuku.co.ke ([197.237.50.252])
+        by smtp.gmail.com with ESMTPSA id y8-20020a50bb08000000b005400dc94f43sm4519099ede.45.2023.10.29.06.38.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 29 Oct 2023 06:38:47 -0700 (PDT)
+From: Dorine Tipo <dorine.a.tipo@gmail.com>
+To: gregkh@linuxfoundation.org,
+	outreachy@lists.linux.dev
+Cc: Dorine Tipo <dorine.a.tipo@gmail.com>
+Subject: [PATCH]
+Date: Sun, 29 Oct 2023 13:38:26 +0000
+Message-Id: <20231029133826.4576-1-dorine.a.tipo@gmail.com>
+X-Mailer: git-send-email 2.25.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20231029124900.2674-1-dorine.a.tipo@gmail.com>
+Content-Transfer-Encoding: 8bit
 
-On Sun, Oct 29, 2023 at 12:49:00PM +0000, Dorine Tipo wrote:
-> This patch removes multiple consecutive blank lines from the code. It improves code readability and adheres to coding style guidelines.
-> ---
->  drivers/staging/vt6655/rxtx.h | 1 -
->  1 file changed, 1 deletion(-)
-> 
-> diff --git a/drivers/staging/vt6655/rxtx.h b/drivers/staging/vt6655/rxtx.h
-> index a67757c9bb5c..be1e5180d57b 100644
-> --- a/drivers/staging/vt6655/rxtx.h
-> +++ b/drivers/staging/vt6655/rxtx.h
-> @@ -19,7 +19,6 @@
->  #define DEFAULT_MSDU_LIFETIME_RES_64us	8000 /* 64us */
->  #define DEFAULT_MGN_LIFETIME_RES_64us	125  /* 64us */
->  
-> -
->  /*---------------------  Export Definitions -------------------------*/
->  
->  /*---------------------  Export Variables  --------------------------*/
-> -- 
-> 2.25.1
-> 
+Fix unnecessary parentheses in drivers/staging/octeon/ethernet.c
 
-Hi,
+The commit addresses the following code style issue reported by checkpatch:
 
-This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
-a patch that has triggered this response.  He used to manually respond
-to these common problems, but in order to save his sanity (he kept
-writing the same thing over and over, yet to different people), I was
-created.  Hopefully you will not take offence and will fix the problem
-in your patch and resubmit it so that it can be accepted into the Linux
-kernel tree.
+Signed-off-by: Dorine Tipo <dorine.a.tipo@gmail.com>
+---
+ drivers/staging/octeon/ethernet.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-You are receiving this message because of the following common error(s)
-as indicated below:
+diff --git a/drivers/staging/octeon/ethernet.c b/drivers/staging/octeon/ethernet.c
+index 8e1f4b987a25..349308edbc9e 100644
+--- a/drivers/staging/octeon/ethernet.c
++++ b/drivers/staging/octeon/ethernet.c
+@@ -248,7 +248,7 @@ static int cvm_oct_common_change_mtu(struct net_device *dev, int new_mtu)
+ 
+ 	dev->mtu = new_mtu;
+ 
+-	if ((interface < 2) &&
++	if (interface < 2 &&
+ 	    (cvmx_helper_interface_get_mode(interface) !=
+ 		CVMX_HELPER_INTERFACE_MODE_SPI)) {
+ 		int index = INDEX(priv->port);
+@@ -294,7 +294,7 @@ static void cvm_oct_common_set_multicast_list(struct net_device *dev)
+ 	struct octeon_ethernet *priv = netdev_priv(dev);
+ 	int interface = INTERFACE(priv->port);
+ 
+-	if ((interface < 2) &&
++	if (interface < 2 &&
+ 	    (cvmx_helper_interface_get_mode(interface) !=
+ 		CVMX_HELPER_INTERFACE_MODE_SPI)) {
+ 		union cvmx_gmxx_rxx_adr_ctl control;
+@@ -346,7 +346,7 @@ static int cvm_oct_set_mac_filter(struct net_device *dev)
+ 	union cvmx_gmxx_prtx_cfg gmx_cfg;
+ 	int interface = INTERFACE(priv->port);
+ 
+-	if ((interface < 2) &&
++	if (interface < 2 &&
+ 	    (cvmx_helper_interface_get_mode(interface) !=
+ 		CVMX_HELPER_INTERFACE_MODE_SPI)) {
+ 		int i;
+-- 
+2.25.1
 
-- Your patch does not have a Signed-off-by: line.  Please read the
-  kernel file, Documentation/process/submitting-patches.rst and resend
-  it after adding that line.  Note, the line needs to be in the body of
-  the email, before the patch, not at the bottom of the patch or in the
-  email signature.
-
-- Your patch was sent privately to Greg.  Kernel development is done in
-  public, please always cc: a public mailing list with a patch
-  submission.  Using the tool, scripts/get_maintainer.pl on the patch
-  will tell you what mailing list to cc.
-
-- You did not specify a description of why the patch is needed, or
-  possibly, any description at all, in the email body.  Please read the
-  section entitled "The canonical patch format" in the kernel file,
-  Documentation/process/submitting-patches.rst for what is needed in
-  order to properly describe the change.
-
-- You did not write a descriptive Subject: for the patch, allowing Greg,
-  and everyone else, to know what this patch is all about.  Please read
-  the section entitled "The canonical patch format" in the kernel file,
-  Documentation/process/submitting-patches.rst for what a proper
-  Subject: line should look like.
-
-- This looks like a new version of a previously submitted patch, but you
-  did not list below the --- line any changes from the previous version.
-  Please read the section entitled "The canonical patch format" in the
-  kernel file, Documentation/process/submitting-patches.rst for what
-  needs to be done here to properly describe this.
-
-If you wish to discuss this problem further, or you have questions about
-how to resolve this issue, please feel free to respond to this email and
-Greg will reply once he has dug out from the pending patches received
-from other developers.
-
-thanks,
-
-greg k-h's patch email bot
