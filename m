@@ -1,79 +1,75 @@
-Received: from mail-ej1-f51.google.com (mail-ej1-f51.google.com [209.85.218.51])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3DC6965E
-	for <outreachy@lists.linux.dev>; Sun, 29 Oct 2023 10:48:22 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A8C3D33D6
+	for <outreachy@lists.linux.dev>; Sun, 29 Oct 2023 11:10:36 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="WeTa5xRS"
-Received: by mail-ej1-f51.google.com with SMTP id a640c23a62f3a-9d2e7726d5bso49104766b.0
-        for <outreachy@lists.linux.dev>; Sun, 29 Oct 2023 03:48:22 -0700 (PDT)
+	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="kOOzGuxk"
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1698576501; x=1699181301; darn=lists.linux.dev;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=qcIE7kVrVmLZ6pZP3xiLvchNa38mGFRB9NSmQcU4aMk=;
-        b=WeTa5xRSwTPLWp5XFH8fhgMzNY5f0CdEyL4FevYvu19U67htvX1POjdy6FZAXtvaSg
-         2znLEW3sVmQP0FtSulnT2dsiEi3OUfkJDsKDE5ZVjFcG3xHcEQXat830+djVqf1MZJrQ
-         /CQB+PNv6mpkp2UME+E5VyyiBoH4qWCz+UxUxKj92jLW/lh7pfmcaoLupwfeXdRdUpll
-         Z0f2ONQcRCLB793W7c7C3PawfWqPKIb6ffFqRXC69E95XFxZLSZz+XJ4PGnHtXa79kc+
-         mpg1OMfkV8drxxMga/mXPHZdCom4jfzWwZv4xK3C4wmmRStOx0jH1TU0fYoGng/H8Cy9
-         5TQQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698576501; x=1699181301;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=qcIE7kVrVmLZ6pZP3xiLvchNa38mGFRB9NSmQcU4aMk=;
-        b=T4e4Bn6v0bV/X/CBJQdoIhrsBhpb31BbNR7lTZRvfWBHM2z9fcs77+Bn5O70HuKOxp
-         ZQJNANipB1r6osxoxG0O2pcCShB8428990BzifPTs00dUNwz2cRQ2eqOWF+HRAvkI39H
-         9lM2mvKOOpxiZCoEzAqRciISerh8HN9bxR6JYxLzhcGGe5H5KQVklaoNf0sKstSYy9k0
-         wpT0Yn/W7rAo5HDHxToagLpvF6XAxHEtrlUhpEc7ngtW+UxKaCjMy3qmfgiV/Eetl1Lm
-         NXDOAQXomK76it4FVLlruGiQ4ZdT6touQKBDhLDO67JvLaYsRoY38dnc0wlqplewGeHF
-         k9aA==
-X-Gm-Message-State: AOJu0YwrEp2KFEwm0Z+eXraSJVJNdx4VLDe+FeFLkEXsjWsjVluxX8+x
-	hM4U6aCLF9A0UxIk9Iw1iFo=
-X-Google-Smtp-Source: AGHT+IHCgQ/J8f93Fc6rrzbF7HlNsQPUHQjs1M1G5m+COur+ZsSWqXdoRcFeNTBwezB+VST6txUqHA==
-X-Received: by 2002:a17:907:96a5:b0:9be:4eb8:5b1e with SMTP id hd37-20020a17090796a500b009be4eb85b1emr6242941ejc.59.1698576500729;
-        Sun, 29 Oct 2023 03:48:20 -0700 (PDT)
-Received: from ubuntu-focal.zuku.co.ke ([197.237.50.252])
-        by smtp.gmail.com with ESMTPSA id k21-20020a1709065fd500b009c5c5c2c59csm4186116ejv.149.2023.10.29.03.48.19
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 29 Oct 2023 03:48:20 -0700 (PDT)
-From: Dorine Tipo <dorine.a.tipo@gmail.com>
-To: gregkh@linuxfoundation.org,
-	outreachy@lists.linux.dev
-Cc: Dorine Tipo <dorine.a.tipo@gmail.com>
-Subject: [PATCH] Signed-off-by: Dorine Tipo <dorine.a.tipo@gmail.com>
-Date: Sun, 29 Oct 2023 09:47:13 +0000
-Message-Id: <20231029094713.18818-1-dorine.a.tipo@gmail.com>
-X-Mailer: git-send-email 2.25.1
+  d=inria.fr; s=dc;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=1qLgiijpSs2u+pIlDYwTSJ9hkAGJ8bzf5SI7XycKjio=;
+  b=kOOzGuxknVixB/mR/G6zRqdIwBAFYp1gWraPMl6zVlqknbGmzW/RYKbz
+   QK0ZxSz+ylxm+UKOj4uyQdJADAXlQhIs69dfuAKJpE0CAU04xAKcAzWFh
+   eqKys/R3fSu+jW1kuM7WeTGtZQf39kgtNjuyJ7g0boIVWoZzBPe9339WH
+   c=;
+Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="6.03,261,1694728800"; 
+   d="scan'208";a="70045914"
+Received: from 231.85.89.92.rev.sfr.net (HELO hadrien) ([92.89.85.231])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Oct 2023 12:10:34 +0100
+Date: Sun, 29 Oct 2023 12:10:33 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Dorine Tipo <dorine.a.tipo@gmail.com>
+cc: gregkh@linuxfoundation.org, outreachy@lists.linux.dev
+Subject: Re: [PATCH] Signed-off-by: Dorine Tipo <dorine.a.tipo@gmail.com>
+In-Reply-To: <20231029094713.18818-1-dorine.a.tipo@gmail.com>
+Message-ID: <alpine.DEB.2.22.394.2310291208360.3136@hadrien>
+References: <20231029094713.18818-1-dorine.a.tipo@gmail.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
 
-Fix multiple blank lines warning
----
- drivers/staging/vt6655/rxtx.h | 1 -
- 1 file changed, 1 deletion(-)
+The signed off by came out in the place of the subject line.  What did you
+do to create the patch?
 
-diff --git a/drivers/staging/vt6655/rxtx.h b/drivers/staging/vt6655/rxtx.h
-index a67757c9bb5c..be1e5180d57b 100644
---- a/drivers/staging/vt6655/rxtx.h
-+++ b/drivers/staging/vt6655/rxtx.h
-@@ -19,7 +19,6 @@
- #define DEFAULT_MSDU_LIFETIME_RES_64us	8000 /* 64us */
- #define DEFAULT_MGN_LIFETIME_RES_64us	125  /* 64us */
- 
--
- /*---------------------  Export Definitions -------------------------*/
- 
- /*---------------------  Export Variables  --------------------------*/
--- 
-2.25.1
+It could be good to try sending it to yourself first, to be sure that
+everything is ok.  Please reread the Submit a patch section of the first
+patch tutorial.
 
+thanks,
+julia
+
+On Sun, 29 Oct 2023, Dorine Tipo wrote:
+
+> Fix multiple blank lines warning
+> ---
+>  drivers/staging/vt6655/rxtx.h | 1 -
+>  1 file changed, 1 deletion(-)
+>
+> diff --git a/drivers/staging/vt6655/rxtx.h b/drivers/staging/vt6655/rxtx.h
+> index a67757c9bb5c..be1e5180d57b 100644
+> --- a/drivers/staging/vt6655/rxtx.h
+> +++ b/drivers/staging/vt6655/rxtx.h
+> @@ -19,7 +19,6 @@
+>  #define DEFAULT_MSDU_LIFETIME_RES_64us	8000 /* 64us */
+>  #define DEFAULT_MGN_LIFETIME_RES_64us	125  /* 64us */
+>
+> -
+>  /*---------------------  Export Definitions -------------------------*/
+>
+>  /*---------------------  Export Variables  --------------------------*/
+> --
+> 2.25.1
+>
+>
+>
