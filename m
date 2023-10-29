@@ -1,84 +1,451 @@
-Received: from mail-wm1-f53.google.com (mail-wm1-f53.google.com [209.85.128.53])
+Received: from mail-oi1-f172.google.com (mail-oi1-f172.google.com [209.85.167.172])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D0E59D2F6;
-	Sun, 29 Oct 2023 19:17:10 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0F03AC13B
+	for <outreachy@lists.linux.dev>; Sun, 29 Oct 2023 20:57:23 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="deG5Lmgq"
-Received: by mail-wm1-f53.google.com with SMTP id 5b1f17b1804b1-40850b244beso29787915e9.2;
-        Sun, 29 Oct 2023 12:17:10 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="PxFMaTpx"
+Received: by mail-oi1-f172.google.com with SMTP id 5614622812f47-3b2f28caab9so2377319b6e.1
+        for <outreachy@lists.linux.dev>; Sun, 29 Oct 2023 13:57:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1698607029; x=1699211829; darn=lists.linux.dev;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=ITSqca1evCzkzhn7N4VS98YhVKLbCaQ6LkheIXfd40c=;
-        b=deG5LmgqOKX/N1J+a+Bi7Efp3Y5TJlhmpOrILTxsgvbQUJkrEUfks9hgnN0asYcJDx
-         2ogMAYeMJ9/jEiJRj0ViRpoT94l87kMKuqZl4O6mIaEGUGJUx7FiK0CQFR4ZLfHz2lLQ
-         7AcUhXLAIZurNZnT7zUWwJV7S/ktt+vxblOOJMkjviX9gRCfofTkXAZdchyXw3E7dCt+
-         TYMwoG5tgqm6dXT7mL0o+44306MuATW3Gyn6NX8BOJpkh51aAkhLsPNfCIaaTtsM2Zrv
-         /fdy6L/aB7rnApe2fzk4/c5G/ZgPEI3O1s/DuPg6lF9MvFD5/J9yrszdZx7lyjPG4zvU
-         /RaQ==
+        d=gmail.com; s=20230601; t=1698613043; x=1699217843; darn=lists.linux.dev;
+        h=content-disposition:mime-version:message-id:subject:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=U5Zv96ZGOH+avg/SIao412MS7iDqpCIpPDL8bYJg0ow=;
+        b=PxFMaTpxVjEfrzrOi5n/ouQCCj1gT5KkPDk94J7pg57P2MIFYI6Vwb9oJXHhmG5hGX
+         FqvscbsV1SwXPrKHsC659HW00dCbAX8tdQRUxlj3lR+IujHhd8n7a1jUtHUG3vP0hzgr
+         NUaI/dZVQFvLGq2x6R8WLqdU5y4Ltnq6tAFRBwurSLoXiqXdV7RZHqbFPxGfLgY3JpA7
+         OWChX5V0bxbJReaAKTIswRllCqdvI0jblUQVTergdJ8wiXPbmmDBeItM/2XAaNGA6/1i
+         fjua+094Z2FrRCs9WfOzG5GEutVcAVOohjbDEsxLxUI8bs/CwyH6odTs2wKoOCLehjHt
+         WUPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698607029; x=1699211829;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ITSqca1evCzkzhn7N4VS98YhVKLbCaQ6LkheIXfd40c=;
-        b=DCQuA0m+uwYTrYK8eLJ56/lMxTZIYXsd0AP25L/sa0mj9W82gRY2DhGJvBowUbKCzg
-         vjXoIIXV8GOW78L3FcLxf9wb0u6WuGObC1mTQ71F0JdqpCX2fq7sbN3/JhG9IFu213kZ
-         S+O/u1vyniju61W08JVmBv4vble3UsfshxsUnIO7idJdfPAjpwgygKHceZoAkPN+N6d2
-         KGRt5sEFXmEsuFDjG9X507R8oYzPi9LhV4wObstX7dwbgRcOPZaYDZpYI33BlJqPQJwo
-         3XaaadSWm06rtIvI9I8TdcHjFxUUr0gb3W++lHKx0b0kIYsk8IHTGFJFldkb8eAFEQUv
-         IZNQ==
-X-Gm-Message-State: AOJu0YxIbkHYoRhVWbR5K25hZAlJhFlP9yyWs7qb0ElieqcvZyIeapOr
-	20IYcr1yzH/PJDJA2BA2UQA=
-X-Google-Smtp-Source: AGHT+IHXE2bjhwJPibipKZXXVYDAVNLrcQqlZkEYTJRNgF/vz2gBUtTk5/EHvKpgfBfIDriqLRKsMw==
-X-Received: by 2002:a05:6000:1865:b0:32f:74ee:fcd4 with SMTP id d5-20020a056000186500b0032f74eefcd4mr7064455wri.2.1698607028509;
-        Sun, 29 Oct 2023 12:17:08 -0700 (PDT)
-Received: from nancy-1-2.. ([105.163.156.232])
-        by smtp.googlemail.com with ESMTPSA id p1-20020a5d68c1000000b0032db8f7f378sm6483343wrw.71.2023.10.29.12.17.06
+        d=1e100.net; s=20230601; t=1698613043; x=1699217843;
+        h=content-disposition:mime-version:message-id:subject:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=U5Zv96ZGOH+avg/SIao412MS7iDqpCIpPDL8bYJg0ow=;
+        b=o7Pl12P6ZFPE4QimJd30y5IKaaxPoG0gUXo6Bsa4mxJzkXniVDF6XWFdjgfHejCd0A
+         GoiT+5HuDGPGfcfP5GJopWcBbZYVyc/0V3v9pH+DOema3RBumESrxVslIZB7l50nhOUb
+         i5HdyLYfhwmKZbB/i8CvAVVPj09wPpBlUSQdHytkKYoBsdQoSQzn88Dq4NnhiC1lLGT1
+         Q1Wbzg3KijndFQyBxVcime0h5+sEZwicKBMr88PGWxF9/nfEiOG+89+MOdMkobDYTIAE
+         0VEW5eiVqy5cPsaITsh1ThQTPhi5pHSZpx7irGt8Fh2+jLA6ii8C3Z/uczyKlxqiFj2w
+         374A==
+X-Gm-Message-State: AOJu0Yz7XnUqkNGMpYzFD7JdrjdaAJOSmeGHNVUswauQBKVjYiJKnoAx
+	THCvGt1y+qDPIGQy1C52mvSG9gdgqYo3PnVn
+X-Google-Smtp-Source: AGHT+IFKVph1WvvfCvQdXrmmvj0qff0ZLvuyG1efomh/0q1mHSB3oGoI73EA50JB4pq9gadJCRz2BA==
+X-Received: by 2002:a05:6808:158e:b0:3b1:11c6:6cff with SMTP id t14-20020a056808158e00b003b111c66cffmr10346021oiw.43.1698613043033;
+        Sun, 29 Oct 2023 13:57:23 -0700 (PDT)
+Received: from DESKTOP-EVNFDUR.home ([47.184.17.213])
+        by smtp.gmail.com with ESMTPSA id e22-20020a05680809b600b003afc33bf048sm1143502oig.2.2023.10.29.13.57.22
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 29 Oct 2023 12:17:08 -0700 (PDT)
-From: Nancy Nyambura <nicymimz@gmail.com>
-To: 
-Cc: nicydaniels@gmail.com,
-	outreachy@lists.linux.dev,
-	Nancy Nyambura <nicymimz@gmail.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: rts5208: Replace strncpy() with strscpy() for appropriate string copying in rtsx_scsi line 524 warning: found by checkpatch.pl script
-Date: Sun, 29 Oct 2023 22:16:42 +0300
-Message-Id: <20231029191647.44127-1-nicymimz@gmail.com>
-X-Mailer: git-send-email 2.40.1
+        Sun, 29 Oct 2023 13:57:22 -0700 (PDT)
+Date: Sun, 29 Oct 2023 15:57:20 -0500
+From: Jeremiah John <jeremiahjohn08706@gmail.com>
+To: gregkh@linuxfoundation.org, outreachy@lists.linux.dev
+Subject: [PATCH v2] staging: octeon: change integer to kernel type
+Message-ID: <ZT7HMDaL3C+N4CIP@DESKTOP-EVNFDUR.home>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Signed-off-by: Nancy Nyambura <nicymimz@gmail.com>
+change variable declarations of uint64_t, uint8_t, etc.
+to standard C99 typedefs u8/u16/u32/u64 in octeon-stubs.h.
+
+Reported by checkpatch:
+CHECK: Prefer kernel type 'u64' over 'uint64_t'
+
+Signed-off-by: Jeremiah John <jeremiahjohn08706@gmail.com>
 ---
- drivers/staging/rts5208/rtsx_scsi.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rts5208/rtsx_scsi.c b/drivers/staging/rts5208/rtsx_scsi.c
-index 08bd768ad34d..52324b8ebbc7 100644
---- a/drivers/staging/rts5208/rtsx_scsi.c
-+++ b/drivers/staging/rts5208/rtsx_scsi.c
-@@ -523,7 +523,7 @@ static int inquiry(struct scsi_cmnd *srb, struct rtsx_chip *chip)
+Changes in v2:
+	-make the patch description adhere to standard writing style,
+	 noted by Julia Lawall <julia.lawall@inria.fr>
+ drivers/staging/octeon/octeon-stubs.h | 126 +++++++++++++-------------
+ 1 file changed, 63 insertions(+), 63 deletions(-)
+
+diff --git a/drivers/staging/octeon/octeon-stubs.h b/drivers/staging/octeon/octeon-stubs.h
+index 579c755cfdc0..7e106feeacb4 100644
+--- a/drivers/staging/octeon/octeon-stubs.h
++++ b/drivers/staging/octeon/octeon-stubs.h
+@@ -43,7 +43,7 @@
+ #define CVMX_POW_WQ_INT_PC		0
  
- 	if (sendbytes > 8) {
- 		memcpy(buf, inquiry_buf, 8);
--		strncpy(buf + 8, inquiry_string, sendbytes - 8);
-+		strscpy(buf + 8, inquiry_string, sendbytes - 8);
- 		if (pro_formatter_flag) {
- 			/* Additional Length */
- 			buf[4] = 0x33;
+ union cvmx_pip_wqe_word2 {
+-	uint64_t u64;
++	u64 u64;
+ 	struct {
+ 		uint64_t bufs:8;
+ 		uint64_t ip_offset:8;
+@@ -123,7 +123,7 @@ union cvmx_pip_wqe_word2 {
+ union cvmx_pip_wqe_word0 {
+ 	struct {
+ 		uint64_t next_ptr:40;
+-		uint8_t unused;
++		u8 unused;
+ 		__wsum hw_chksum;
+ 	} cn38xx;
+ 	struct {
+@@ -139,12 +139,12 @@ union cvmx_pip_wqe_word0 {
+ };
+ 
+ union cvmx_wqe_word0 {
+-	uint64_t u64;
++	u64 u64;
+ 	union cvmx_pip_wqe_word0 pip;
+ };
+ 
+ union cvmx_wqe_word1 {
+-	uint64_t u64;
++	u64 u64;
+ 	struct {
+ 		uint64_t tag:32;
+ 		uint64_t tag_type:2;
+@@ -174,7 +174,7 @@ union cvmx_wqe_word1 {
+ 
+ union cvmx_buf_ptr {
+ 	void *ptr;
+-	uint64_t u64;
++	u64 u64;
+ 	struct {
+ 		uint64_t i:1;
+ 		uint64_t back:4;
+@@ -189,11 +189,11 @@ struct cvmx_wqe {
+ 	union cvmx_wqe_word1 word1;
+ 	union cvmx_pip_wqe_word2 word2;
+ 	union cvmx_buf_ptr packet_ptr;
+-	uint8_t packet_data[96];
++	u8 packet_data[96];
+ };
+ 
+ union cvmx_helper_link_info {
+-	uint64_t u64;
++	u64 u64;
+ 	struct {
+ 		uint64_t reserved_20_63:44;
+ 		uint64_t link_up:1;	    /**< Is the physical link up? */
+@@ -262,7 +262,7 @@ enum cvmx_pow_tag_type {
+ };
+ 
+ union cvmx_ipd_ctl_status {
+-	uint64_t u64;
++	u64 u64;
+ 	struct cvmx_ipd_ctl_status_s {
+ 		uint64_t reserved_18_63:46;
+ 		uint64_t use_sop:1;
+@@ -358,7 +358,7 @@ union cvmx_ipd_ctl_status {
+ };
+ 
+ union cvmx_ipd_sub_port_fcs {
+-	uint64_t u64;
++	u64 u64;
+ 	struct cvmx_ipd_sub_port_fcs_s {
+ 		uint64_t port_bit:32;
+ 		uint64_t reserved_32_35:4;
+@@ -376,7 +376,7 @@ union cvmx_ipd_sub_port_fcs {
+ };
+ 
+ union cvmx_ipd_sub_port_qos_cnt {
+-	uint64_t u64;
++	u64 u64;
+ 	struct cvmx_ipd_sub_port_qos_cnt_s {
+ 		uint64_t cnt:32;
+ 		uint64_t port_qos:9;
+@@ -385,38 +385,38 @@ union cvmx_ipd_sub_port_qos_cnt {
+ };
+ 
+ struct cvmx_pip_port_status {
+-	uint32_t dropped_octets;
+-	uint32_t dropped_packets;
+-	uint32_t pci_raw_packets;
+-	uint32_t octets;
+-	uint32_t packets;
+-	uint32_t multicast_packets;
+-	uint32_t broadcast_packets;
+-	uint32_t len_64_packets;
+-	uint32_t len_65_127_packets;
+-	uint32_t len_128_255_packets;
+-	uint32_t len_256_511_packets;
+-	uint32_t len_512_1023_packets;
+-	uint32_t len_1024_1518_packets;
+-	uint32_t len_1519_max_packets;
+-	uint32_t fcs_align_err_packets;
+-	uint32_t runt_packets;
+-	uint32_t runt_crc_packets;
+-	uint32_t oversize_packets;
+-	uint32_t oversize_crc_packets;
+-	uint32_t inb_packets;
+-	uint64_t inb_octets;
+-	uint16_t inb_errors;
++	u32 dropped_octets;
++	u32 dropped_packets;
++	u32 pci_raw_packets;
++	u32 octets;
++	u32 packets;
++	u32 multicast_packets;
++	u32 broadcast_packets;
++	u32 len_64_packets;
++	u32 len_65_127_packets;
++	u32 len_128_255_packets;
++	u32 len_256_511_packets;
++	u32 len_512_1023_packets;
++	u32 len_1024_1518_packets;
++	u32 len_1519_max_packets;
++	u32 fcs_align_err_packets;
++	u32 runt_packets;
++	u32 runt_crc_packets;
++	u32 oversize_packets;
++	u32 oversize_crc_packets;
++	u32 inb_packets;
++	u64 inb_octets;
++	u16 inb_errors;
+ };
+ 
+ struct cvmx_pko_port_status {
+-	uint32_t packets;
+-	uint64_t octets;
+-	uint64_t doorbell;
++	u32 packets;
++	u64 octets;
++	u64 doorbell;
+ };
+ 
+ union cvmx_pip_frm_len_chkx {
+-	uint64_t u64;
++	u64 u64;
+ 	struct cvmx_pip_frm_len_chkx_s {
+ 		uint64_t reserved_32_63:32;
+ 		uint64_t maxlen:16;
+@@ -425,7 +425,7 @@ union cvmx_pip_frm_len_chkx {
+ };
+ 
+ union cvmx_gmxx_rxx_frm_ctl {
+-	uint64_t u64;
++	u64 u64;
+ 	struct cvmx_gmxx_rxx_frm_ctl_s {
+ 		uint64_t pre_chk:1;
+ 		uint64_t pre_strp:1;
+@@ -522,7 +522,7 @@ union cvmx_gmxx_rxx_frm_ctl {
+ };
+ 
+ union cvmx_gmxx_rxx_int_reg {
+-	uint64_t u64;
++	u64 u64;
+ 	struct cvmx_gmxx_rxx_int_reg_s {
+ 		uint64_t minerr:1;
+ 		uint64_t carext:1;
+@@ -711,7 +711,7 @@ union cvmx_gmxx_rxx_int_reg {
+ };
+ 
+ union cvmx_gmxx_prtx_cfg {
+-	uint64_t u64;
++	u64 u64;
+ 	struct cvmx_gmxx_prtx_cfg_s {
+ 		uint64_t reserved_22_63:42;
+ 		uint64_t pknd:6;
+@@ -748,7 +748,7 @@ union cvmx_gmxx_prtx_cfg {
+ };
+ 
+ union cvmx_gmxx_rxx_adr_ctl {
+-	uint64_t u64;
++	u64 u64;
+ 	struct cvmx_gmxx_rxx_adr_ctl_s {
+ 		uint64_t reserved_4_63:60;
+ 		uint64_t cam_mode:1;
+@@ -758,7 +758,7 @@ union cvmx_gmxx_rxx_adr_ctl {
+ };
+ 
+ union cvmx_pip_prt_tagx {
+-	uint64_t u64;
++	u64 u64;
+ 	struct cvmx_pip_prt_tagx_s {
+ 		uint64_t reserved_54_63:10;
+ 		uint64_t portadd_en:1;
+@@ -851,7 +851,7 @@ union cvmx_pip_prt_tagx {
+ };
+ 
+ union cvmx_spxx_int_reg {
+-	uint64_t u64;
++	u64 u64;
+ 	struct cvmx_spxx_int_reg_s {
+ 		uint64_t reserved_32_63:32;
+ 		uint64_t spf:1;
+@@ -871,7 +871,7 @@ union cvmx_spxx_int_reg {
+ };
+ 
+ union cvmx_spxx_int_msk {
+-	uint64_t u64;
++	u64 u64;
+ 	struct cvmx_spxx_int_msk_s {
+ 		uint64_t reserved_12_63:52;
+ 		uint64_t calerr:1;
+@@ -889,7 +889,7 @@ union cvmx_spxx_int_msk {
+ };
+ 
+ union cvmx_pow_wq_int {
+-	uint64_t u64;
++	u64 u64;
+ 	struct cvmx_pow_wq_int_s {
+ 		uint64_t wq_int:16;
+ 		uint64_t iq_dis:16;
+@@ -898,7 +898,7 @@ union cvmx_pow_wq_int {
+ };
+ 
+ union cvmx_sso_wq_int_thrx {
+-	uint64_t u64;
++	u64 u64;
+ 	struct {
+ 		uint64_t iq_thr:12;
+ 		uint64_t reserved_12_13:2;
+@@ -911,7 +911,7 @@ union cvmx_sso_wq_int_thrx {
+ };
+ 
+ union cvmx_stxx_int_reg {
+-	uint64_t u64;
++	u64 u64;
+ 	struct cvmx_stxx_int_reg_s {
+ 		uint64_t reserved_9_63:55;
+ 		uint64_t syncerr:1;
+@@ -927,7 +927,7 @@ union cvmx_stxx_int_reg {
+ };
+ 
+ union cvmx_stxx_int_msk {
+-	uint64_t u64;
++	u64 u64;
+ 	struct cvmx_stxx_int_msk_s {
+ 		uint64_t reserved_8_63:56;
+ 		uint64_t frmerr:1;
+@@ -942,7 +942,7 @@ union cvmx_stxx_int_msk {
+ };
+ 
+ union cvmx_pow_wq_int_pc {
+-	uint64_t u64;
++	u64 u64;
+ 	struct cvmx_pow_wq_int_pc_s {
+ 		uint64_t reserved_0_7:8;
+ 		uint64_t pc_thr:20;
+@@ -953,7 +953,7 @@ union cvmx_pow_wq_int_pc {
+ };
+ 
+ union cvmx_pow_wq_int_thrx {
+-	uint64_t u64;
++	u64 u64;
+ 	struct cvmx_pow_wq_int_thrx_s {
+ 		uint64_t reserved_29_63:35;
+ 		uint64_t tc_en:1;
+@@ -1002,7 +1002,7 @@ union cvmx_pow_wq_int_thrx {
+ };
+ 
+ union cvmx_npi_rsl_int_blocks {
+-	uint64_t u64;
++	u64 u64;
+ 	struct cvmx_npi_rsl_int_blocks_s {
+ 		uint64_t reserved_32_63:32;
+ 		uint64_t rint_31:1;
+@@ -1140,7 +1140,7 @@ union cvmx_npi_rsl_int_blocks {
+ };
+ 
+ union cvmx_pko_command_word0 {
+-	uint64_t u64;
++	u64 u64;
+ 	struct {
+ 		uint64_t total_bytes:16;
+ 		uint64_t segs:6;
+@@ -1162,7 +1162,7 @@ union cvmx_pko_command_word0 {
+ };
+ 
+ union cvmx_ciu_timx {
+-	uint64_t u64;
++	u64 u64;
+ 	struct cvmx_ciu_timx_s {
+ 		uint64_t reserved_37_63:27;
+ 		uint64_t one_shot:1;
+@@ -1171,7 +1171,7 @@ union cvmx_ciu_timx {
+ };
+ 
+ union cvmx_gmxx_rxx_rx_inbnd {
+-	uint64_t u64;
++	u64 u64;
+ 	struct cvmx_gmxx_rxx_rx_inbnd_s {
+ 		uint64_t status:1;
+ 		uint64_t speed:2;
+@@ -1199,7 +1199,7 @@ static inline uint64_t cvmx_scratch_read64(uint64_t address)
+ 	return 0;
+ }
+ 
+-static inline void cvmx_scratch_write64(uint64_t address, uint64_t value)
++static inline void cvmx_scratch_write64(u64 address, uint64_t value)
+ { }
+ 
+ static inline int cvmx_wqe_get_grp(struct cvmx_wqe *work)
+@@ -1235,7 +1235,7 @@ static inline uint64_t cvmx_read_csr(uint64_t csr_addr)
+ 	return 0;
+ }
+ 
+-static inline void cvmx_write_csr(uint64_t csr_addr, uint64_t val)
++static inline void cvmx_write_csr(u64 csr_addr, uint64_t val)
+ { }
+ 
+ static inline int cvmx_helper_setup_red(int pass_thresh, int drop_thresh)
+@@ -1257,11 +1257,11 @@ static inline int octeon_is_simulation(void)
+ 	return 1;
+ }
+ 
+-static inline void cvmx_pip_get_port_status(uint64_t port_num, uint64_t clear,
++static inline void cvmx_pip_get_port_status(u64 port_num, u64 clear,
+ 					    struct cvmx_pip_port_status *status)
+ { }
+ 
+-static inline void cvmx_pko_get_port_status(uint64_t port_num, uint64_t clear,
++static inline void cvmx_pko_get_port_status(u64 port_num, u64 clear,
+ 					    struct cvmx_pko_port_status *status)
+ { }
+ 
+@@ -1362,12 +1362,12 @@ static inline struct cvmx_wqe *cvmx_pow_work_request_sync(enum cvmx_pow_wait wai
+ }
+ 
+ static inline int cvmx_spi_restart_interface(int interface,
+-					enum cvmx_spi_mode mode, int timeout)
++					     enum cvmx_spi_mode mode, int timeout)
+ {
+ 	return 0;
+ }
+ 
+-static inline void cvmx_fau_async_fetch_and_add32(uint64_t scraddr,
++static inline void cvmx_fau_async_fetch_and_add32(u64 scraddr,
+ 						  enum cvmx_fau_reg_32 reg,
+ 						  int32_t value)
+ { }
+@@ -1380,12 +1380,12 @@ static inline union cvmx_gmxx_rxx_rx_inbnd cvmx_spi4000_check_speed(int interfac
+ 	return r;
+ }
+ 
+-static inline void cvmx_pko_send_packet_prepare(uint64_t port, uint64_t queue,
++static inline void cvmx_pko_send_packet_prepare(u64 port, uint64_t queue,
+ 						enum cvmx_pko_lock use_locking)
+ { }
+ 
+-static inline enum cvmx_pko_status cvmx_pko_send_packet_finish(uint64_t port,
+-		uint64_t queue, union cvmx_pko_command_word0 pko_command,
++static inline enum cvmx_pko_status cvmx_pko_send_packet_finish(u64 port,
++							       u64 queue, union cvmx_pko_command_word0 pko_command,
+ 		union cvmx_buf_ptr packet, enum cvmx_pko_lock use_locking)
+ {
+ 	return 0;
+@@ -1407,7 +1407,7 @@ static inline void cvmx_wqe_set_grp(struct cvmx_wqe *work, int grp)
+ 
+ static inline void cvmx_pow_work_submit(struct cvmx_wqe *wqp, uint32_t tag,
+ 					enum cvmx_pow_tag_type tag_type,
+-					uint64_t qos, uint64_t grp)
++					u64 qos, uint64_t grp)
+ { }
+ 
+ #define CVMX_ASXX_RX_CLK_SETX(a, b)	((a) + (b))
 -- 
-2.40.1
+2.41.0
 
