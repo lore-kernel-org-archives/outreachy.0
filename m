@@ -1,86 +1,94 @@
-Received: from mail-ej1-f50.google.com (mail-ej1-f50.google.com [209.85.218.50])
+Received: from mail-pf1-f176.google.com (mail-pf1-f176.google.com [209.85.210.176])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C978C523A
-	for <outreachy@lists.linux.dev>; Mon, 30 Oct 2023 08:16:54 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CA722F4E8
+	for <outreachy@lists.linux.dev>; Mon, 30 Oct 2023 11:36:45 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Jmwq1zf8"
-Received: by mail-ej1-f50.google.com with SMTP id a640c23a62f3a-9be3b66f254so613621366b.3
-        for <outreachy@lists.linux.dev>; Mon, 30 Oct 2023 01:16:54 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="cqnCy2w/"
+Received: by mail-pf1-f176.google.com with SMTP id d2e1a72fcca58-6bd73395bceso3047462b3a.0
+        for <outreachy@lists.linux.dev>; Mon, 30 Oct 2023 04:36:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1698653813; x=1699258613; darn=lists.linux.dev;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=99HDq8JdZjefO7s5mlmYbkUZBpt/wwnQKYR+T6cySY8=;
-        b=Jmwq1zf8T+NacLzjkISOb4qUiWwd4TS+ogORYp+F6a+4TCTVDlraGCVjjM5Pd42krn
-         j0RdDV0Bd1E0NzLwlv8wh5bZE7EZPnYfZId48hMYsQ3fFfsnFm6UkXZE/qqToGJTxGUT
-         T2Ts4S8SFNCBsucieXxQKj7rmsDhrWlwk2OFbMGn/QWpDE8Kdg2FFXRZGzO1CKhHq5Px
-         LmU+oH4mjtX3sAKrPdZ0caz5s2h/7Vkp2Dtyv8UEFlrsiCkIIKpN6ocvk6IydjzkatBj
-         2nUW87me5Pt6MBOA0pjuyHT8dSyaXZ7J/fERFZHTQE69RPw8j6jattIDY2mjJrsF2b7w
-         rqhA==
+        d=gmail.com; s=20230601; t=1698665805; x=1699270605; darn=lists.linux.dev;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=vM7UrmexBzhlrtYGq+WTsMhMVaGhrgekLL9dJWIZR04=;
+        b=cqnCy2w/qVAEAnXG+Eo3d8IdoVG5qipp1wRNSyA5iM01cpseICOM+Glr7Nugau0MyB
+         gSE6fWSfoYcr2SP1Yea4M3RA3d1ZjiDEpqITiH+mrSfG/0Is1PmClCcBsCfULhh5uRg6
+         OMGS6UqsqenJgWwVt0nl0smp3GQveXF0lCAIXHdbBDrme+REo7GZ839Otpj/LumHrd/d
+         ke3NSdE3SpA7djjjlds1DoaUXxcWOrPCSe7XhNCvvyBMSPTA6IWzMekohyIRA/UaPQk7
+         730vtNM8n1xkAQdQ8ANC39h7jrIrqPjFEFQCG2BBWsMlA8T17uO3SqaFyu8R0FcNsfq3
+         6B2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698653813; x=1699258613;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=99HDq8JdZjefO7s5mlmYbkUZBpt/wwnQKYR+T6cySY8=;
-        b=vXnhy7+QR4xruSEyHEBr1D9txrve8T0+dEpm9HMqabzqS5YFfdMUB2qaAeHWqlpN/E
-         HYK3mAiEZuqkPnpoZBQZnbVi4ljNYyx886WUWpPkonnXlLL6GvaeSclU5Z2dOe+9OkMk
-         I9an5CQscWzTcWnXnWzcjVl6BncDskD6cOpKXZMJcplCIbiH9mjdXqojgXO/ycSpDdTJ
-         4RvAtcDq3/0+OKZrRxSfPkvm1ZrgyEeO2+ZIoivm985uBeO+hOVBwmN8ukrwzHJYzHy9
-         5O3ihUlsrOOGWrBuU1gfb7Bpf2iJiWTNeaLNnSuffDDQ3G88lvHwOB16l+pnItcSpCDC
-         anhQ==
-X-Gm-Message-State: AOJu0YwycQCuleyAvaB1TEeJNMvylP6Kzu/ZqAT97f96OFEUYdv4F5l9
-	/YujZLUZrtyTyEzN/qbcZeNkNg7r5bmboeU/
-X-Google-Smtp-Source: AGHT+IGPNL+JyLTWtIftmDUr/OHTL5ZqPtMmxQSmydr0FKFlR/1ctgRAWp7wWf2QL9IMPBrKFbl2HA==
-X-Received: by 2002:a17:907:9705:b0:9bf:6200:fe33 with SMTP id jg5-20020a170907970500b009bf6200fe33mr7778274ejc.16.1698653812745;
-        Mon, 30 Oct 2023 01:16:52 -0700 (PDT)
-Received: from ubuntu-focal.zuku.co.ke ([197.237.50.252])
-        by smtp.gmail.com with ESMTPSA id x6-20020a1709064a8600b00977cad140a8sm5582016eju.218.2023.10.30.01.16.50
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 30 Oct 2023 01:16:51 -0700 (PDT)
-From: Dorine Tipo <dorine.a.tipo@gmail.com>
-To: gregkh@linuxfoundation.org,
-	outreachy@lists.linux.dev
-Cc: Dorine Tipo <dorine.a.tipo@gmail.com>
-Subject: [PATCH] Subject: staging: fix alignment in function call
-Date: Sun, 29 Oct 2023 23:06:12 +0000
-Message-Id: <20231029230612.15852-1-dorine.a.tipo@gmail.com>
-X-Mailer: git-send-email 2.25.1
+        d=1e100.net; s=20230601; t=1698665805; x=1699270605;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=vM7UrmexBzhlrtYGq+WTsMhMVaGhrgekLL9dJWIZR04=;
+        b=qv8D2178pLsJ8CoMPJpErWvq4NQoIOqCdma6RFK+S8aN5u9GNeEVsLSG8rfs1+dNQp
+         v9OXqieYaRu5AsTbeh3L1eGHiYevqfPdVsWr6KXX0Suy/hoilmI3bo0wktqXEuEQFVqj
+         7tiOOUACaCnF3HkVnjPARHZmTIDP1EwPjdjF8oMhZ51syKLbEjBg8Bud9RlaqlbC7NhA
+         LtIeWIe0o5CZ/wxt4rYj4oVLUSg9O49hHcK7uoTpOKF54Gwn+iLNpOT38kMy3A3aJ/C1
+         ikzpREqMva58PIqQnOZ3YvyixmoWRpqIB8geS1sX+eonAsH5tvxWfBQbjgtsseVz56Vh
+         c0Ug==
+X-Gm-Message-State: AOJu0Yw57drgY4SPQm6lBubFg+12+n6oCprYhvJS/lRsJQNmpCg/nELU
+	a+S6U0KynarC/2CEfSTDXf4=
+X-Google-Smtp-Source: AGHT+IHB04Y3v0cpysF5Hffjhog9NL2AkKNDPwW89qQDZuAcCybJS+Ey+vqecfyEm8jG0xY2kLZT+Q==
+X-Received: by 2002:a05:6a00:148c:b0:693:43b5:aaf3 with SMTP id v12-20020a056a00148c00b0069343b5aaf3mr12536513pfu.13.1698665804989;
+        Mon, 30 Oct 2023 04:36:44 -0700 (PDT)
+Received: from [192.168.0.106] ([103.131.18.64])
+        by smtp.gmail.com with ESMTPSA id a18-20020aa78652000000b006be484e5b9bsm5725923pfo.58.2023.10.30.04.36.39
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 30 Oct 2023 04:36:44 -0700 (PDT)
+Message-ID: <3f1fdfa2-e30b-42c6-b290-bb02283b3589@gmail.com>
+Date: Mon, 30 Oct 2023 18:36:34 +0700
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH Resend] Fix line Length
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: Dorine Tipo <dorine.a.tipo@gmail.com>,
+ Greg KH <gregkh@linuxfoundation.org>,
+ Tomeu Vizoso <tomeu.vizoso@collabora.com>,
+ Helen Koike <helen.koike@collabora.com>, David Airlie <airlied@gmail.com>,
+ Daniel Vetter <daniel@ffwll.ch>, Nick Terrell <terrelln@fb.com>,
+ Daniel Stone <daniels@collabora.com>, Rob Clark <robdclark@gmail.com>,
+ Linux Outreachy <outreachy@lists.linux.dev>,
+ Linux DRI Development <dri-devel@lists.freedesktop.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+References: <20231029144312.5895-1-dorine.a.tipo@gmail.com>
+ <alpine.DEB.2.22.394.2310291610030.3136@hadrien> <ZT7v39jG4WTxPYjm@debian.me>
+ <alpine.DEB.2.22.394.2310300712310.3533@hadrien>
+Content-Language: en-US
+From: Bagas Sanjaya <bagasdotme@gmail.com>
+In-Reply-To: <alpine.DEB.2.22.394.2310300712310.3533@hadrien>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-- Fix alignment in the tty_alloc_driver function call
+On 30/10/2023 13:12, Julia Lawall wrote:
+> 
+> 
+> On Mon, 30 Oct 2023, Bagas Sanjaya wrote:
+> 
+>> Hi Julia,
+>>
+>> The submitter touched one of CI scripts for the DRM subsystem. To test
+>> this patch, there must be a way to run these scripts locally (which
+>> may requires non-trivial setup).
+>>
+>> Cc'ed DRM maintainers.
+> 
+> There is a DRM outreachy project.  I think that motivated this patch.
+> 
 
-The alignment in the code did not match the open parenthesis. This
-commit corrects the alignment to match the open parenthesis for better
-code readability.
+OK, thanks!
 
-Signed-off-by: Dorine Tipo <dorine.a.tipo@gmail.com>
----
- drivers/staging/gdm724x/gdm_tty.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/gdm724x/gdm_tty.c b/drivers/staging/gdm724x/gdm_tty.c
-index 15c246d3b1a3..b62e5e73905e 100644
---- a/drivers/staging/gdm724x/gdm_tty.c
-+++ b/drivers/staging/gdm724x/gdm_tty.c
-@@ -273,7 +273,7 @@ int register_lte_tty_driver(void)
- 
- 	for (i = 0; i < TTY_MAX_COUNT; i++) {
- 		tty_driver = tty_alloc_driver(GDM_TTY_MINOR,
--				TTY_DRIVER_REAL_RAW | TTY_DRIVER_DYNAMIC_DEV);
-+					      TTY_DRIVER_REAL_RAW | TTY_DRIVER_DYNAMIC_DEV);
- 		if (IS_ERR(tty_driver))
- 			return PTR_ERR(tty_driver);
- 
 -- 
-2.25.1
+An old man doll... just what I always wanted! - Clara
 
