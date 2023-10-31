@@ -1,90 +1,121 @@
-Received: from mail-wr1-f53.google.com (mail-wr1-f53.google.com [209.85.221.53])
+Received: from mail-wm1-f45.google.com (mail-wm1-f45.google.com [209.85.128.45])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D0D2E179A9;
-	Mon, 30 Oct 2023 14:28:00 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CAC89568D
+	for <outreachy@lists.linux.dev>; Tue, 31 Oct 2023 04:13:17 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="WYvN9d8K"
-Received: by mail-wr1-f53.google.com with SMTP id ffacd0b85a97d-32daeed7771so2855011f8f.3;
-        Mon, 30 Oct 2023 07:28:00 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="KTF4Kalt"
+Received: by mail-wm1-f45.google.com with SMTP id 5b1f17b1804b1-40842752c6eso40808785e9.1
+        for <outreachy@lists.linux.dev>; Mon, 30 Oct 2023 21:13:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1698676079; x=1699280879; darn=lists.linux.dev;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=8bh30D821O7pisqZqTkIBA0xZHpQPYVy9p5w5SCB02E=;
-        b=WYvN9d8KZsl9gMZsNF0uszwnlbCjKfGOnsnQYLv+BYZAP/6PHPLtFb7VmWXgAQJ1Yt
-         fAKAW1LSxbsyD2IfcZZflg8F88L8CK6i5pJ3PydguBbGD8m6m/dgkKW6kDdlZ+qsyzsj
-         3DFUzLZ9/DvRd/FebdGhXsApivIlW2eufLrpk0XUBUPTa3bLLOlioOeeg3TEaWOWN/US
-         tiPAygp3HsTkN3YdLVBR9RYGEMvRaLa40FR97CFYpC7OTlT8M/ZBJfxm9rhXYxnHuN8R
-         7XqrUDY6cwQFAbP/LYi13E+1zCEeboAmG/FduC5am1ER1tWV/8SRq+sko0S2NVhXnZP1
-         zltg==
+        d=linaro.org; s=google; t=1698725596; x=1699330396; darn=lists.linux.dev;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=JWzjKL8EVaea5V4HLaN3vFp8o2Efb8rSuCQYLqGhPNM=;
+        b=KTF4Kaltr2aoB+iguQDGxUMFKH0412njSQyhJr6RgrRcisbKE1BVMU1mnNz82BOTKe
+         tCBqjwLoEPPjiduiqLrbvxN62Lq7bTFxfcQCguqNDgaXwiTIMGJ81OU9vNQ0IUtXPkmb
+         fQCu2cT3M7hqF3IbXCBMLFO6MN14FgG9M6kBx297SR4Yxhk9M/x+GrZy6dq/dZJR7q59
+         N9l9n8DaVaK1Gp0Wz63F9YhDKcTd0bxZF9NA88wUB2s68yKEpb620F4pMMsx1S58ZxQ+
+         DqbJJZLudalmohn3AVfUTsFR4++FFmbCFP1s6wcq1Bbfw4nR+UnawsMePwYG3q8HZJVF
+         U7gQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698676079; x=1699280879;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=8bh30D821O7pisqZqTkIBA0xZHpQPYVy9p5w5SCB02E=;
-        b=D4oG1BziL70bHD+tcyRDtiCM/ltWaPQo1hQUVMdj+aC56krTRPMnlQPgd8b85K5L09
-         mSF/rvScW8MzyM0xrWsa+hTYcwuDFdJSJzFuLoMuIdiWaH8TriZBpeFGoCD3hnulAfDX
-         Tfw57UNrkuNlLNcMfarh9XXF7k/tNuUisA0HSs1fV3PwR9HrHga1G46XAORVRejiztb6
-         lIF56snddTXHOZXWrrSIvoWz/uCMLI3pTtUaJYcAaE6PP6ZdOzSkCQnwWWPk3hjA90VV
-         S+J7U/mLl331XWTa+doJztA3EDN13vAIhzor1fcIdIPjpuSBkkgsncWnHvUZSn3CkQ58
-         Plww==
-X-Gm-Message-State: AOJu0Yxaa2RKfgz1V0oTkfu8Szgxpy/cwlhz4l6G9bKar+noI8F84sGy
-	a/MJWPZalMCZHUhKgSc+5ws=
-X-Google-Smtp-Source: AGHT+IE3SQg91TEitYFJnQaQAgiOXMoUSTQs8i2qySEtTVeVUoQXBmjsnkqttxIyG/Sf9l0B1dk1Iw==
-X-Received: by 2002:a5d:64eb:0:b0:32f:79e5:5ea9 with SMTP id g11-20020a5d64eb000000b0032f79e55ea9mr4382841wri.10.1698676078663;
-        Mon, 30 Oct 2023 07:27:58 -0700 (PDT)
-Received: from nancy-1-2.. ([105.163.156.232])
-        by smtp.googlemail.com with ESMTPSA id d14-20020a5d4f8e000000b0032d96dd703bsm8276569wru.70.2023.10.30.07.27.56
+        d=1e100.net; s=20230601; t=1698725596; x=1699330396;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=JWzjKL8EVaea5V4HLaN3vFp8o2Efb8rSuCQYLqGhPNM=;
+        b=d66H8UbU55/UvCI2o9tGHNvo7Nz8Pal7XeKDjZZrUFWipZxeuZ+Tn2LdzCALw/7HMI
+         v6fm8bkPF6j7SJkAmDkDJHuqn2ywuHC3qNoW6drv5HeJS4ULvgGlq5M0Y4yQqBEuUtK8
+         ExY/pnwmr0UQZhDmOU2z2x9LyjlrlIv9bBhRM7tpC/X3YrS2vwGLIfNk+YqassUGedhz
+         /RK0DtMJBME6CTvCTyOF4M7WUW7eWXUztUaMv/sSRr3SW6aYygibtNkaKYdAow6R96qx
+         i6SzhGkvU5Kshfn/P0Zo04X1KsVYYas5PHlsGMYywDal2luXL87dvB5zB7frN8Ml36bq
+         EM3Q==
+X-Gm-Message-State: AOJu0YyjMgaay5iGDx/VzAmhcf1g7qnJwb1qj5cIsSbMPwXzC7baruAg
+	uzXOTpRWHDenVvW0FbCrukOK5g==
+X-Google-Smtp-Source: AGHT+IEPDxyOOgvptCIl3Y4Jak1XAQ25YdaQBYIEe+oAxOQClDi6eyZMDdGcKmIP/s9FKFQJNYn1og==
+X-Received: by 2002:a05:600c:458f:b0:408:3ac4:dc3f with SMTP id r15-20020a05600c458f00b004083ac4dc3fmr10053328wmo.29.1698725595302;
+        Mon, 30 Oct 2023 21:13:15 -0700 (PDT)
+Received: from localhost ([102.36.222.112])
+        by smtp.gmail.com with ESMTPSA id 16-20020a05600c229000b0040596352951sm549895wmf.5.2023.10.30.21.13.14
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 30 Oct 2023 07:27:58 -0700 (PDT)
-From: Nancy Nyambura <nicymimz@gmail.com>
-To: 
-Cc: nicydaniels@gmail.com,
-	outreachy@lists.linux.dev,
-	Nancy Nyambura <nicymimz@gmail.com>,
+        Mon, 30 Oct 2023 21:13:14 -0700 (PDT)
+Date: Tue, 31 Oct 2023 07:13:12 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: Nancy Nyambura <nicymimz@gmail.com>
+Cc: nicydaniels@gmail.com, outreachy@lists.linux.dev,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v3 1/2] Staging: rts5208: Replace strncpy() with strscpy()
-Date: Mon, 30 Oct 2023 17:27:47 +0300
-Message-Id: <20231030142751.49913-1-nicymimz@gmail.com>
-X-Mailer: git-send-email 2.40.1
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3 1/2] Staging: rts5208: Replace strncpy() with strscpy()
+Message-ID: <191cf6e2-6a46-4813-a0c4-c86bcf9bd0b2@kadam.mountain>
+References: <20231030142751.49913-1-nicymimz@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20231030142751.49913-1-nicymimz@gmail.com>
 
-Warning found by checkpath.pl
-I replaced strncpy with strscpy because strscpy is suitable when the destination buffer is NUL-terminated, which is often the case when copying strings. Strscpy ensures that the destination buffer is properly NUL-terminated without padding. In the code, the objective is to copy a string (inquiry_string) to the buf buffer, and it's likely that the buf buffer is NUL-terminated since it is handling a string. Strscpy_pad is used when you have afixed-size buffer, and you want to copy a string into it while ensuring the remaining space is padded with a specific character (like '\0') hence not appropriate for this context.
+On Mon, Oct 30, 2023 at 05:27:47PM +0300, Nancy Nyambura wrote:
+> Warning found by checkpath.pl
+> I replaced strncpy with strscpy because strscpy is suitable when the
+> destination buffer is NUL-terminated, which is often the case when
+> copying strings. Strscpy ensures that the destination buffer is
+> properly NUL-terminated without padding.
 
-Signed-off-by: Nancy Nyambura <nicymimz@gmail.com>
----
-Changes in v2:
-  - Explain why strscpy and not strscpy_pad
+The same is basically true for strncpy()...  In olden days strncpy()
+was the only "safe" function we had so we used it exactly how we use
+strscpy() today except we manually added a NUL terminator to the end.
 
- drivers/staging/rts5208/rtsx_scsi.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+	new = kzalloc(len + 1, GFP_KERNEL);
+	strncpy(new, old, len);
 
-diff --git a/drivers/staging/rts5208/rtsx_scsi.c b/drivers/staging/rts5208/rtsx_scsi.c
-index 08bd768ad34d..52324b8ebbc7 100644
---- a/drivers/staging/rts5208/rtsx_scsi.c
-+++ b/drivers/staging/rts5208/rtsx_scsi.c
-@@ -523,7 +523,7 @@ static int inquiry(struct scsi_cmnd *srb, struct rtsx_chip *chip)
- 
- 	if (sendbytes > 8) {
- 		memcpy(buf, inquiry_buf, 8);
--		strncpy(buf + 8, inquiry_string, sendbytes - 8);
-+		strscpy(buf + 8, inquiry_string, sendbytes - 8);
- 		if (pro_formatter_flag) {
- 			/* Additional Length */
- 			buf[4] = 0x33;
--- 
-2.40.1
+> In the code, the objective is to copy a string (inquiry_string) to the
+> buf buffer, and it's likely that the buf buffer is NUL-terminated
+> since it is handling a string. Strscpy_pad is used when you have
+> afixed-size buffer, and you want to copy a string into it while
+> ensuring the remaining space is padded with a specific character
+> (like '\0') hence not appropriate for this context.
+> 
+
+You need to run your patches through checkpatch.
+
+"it's likely that the buf buffer is NUL-terminated since it is handling
+a string."  That's not analysis.  That's just guessing.  Take what time
+you need and do the analysis.
+
+"Strscpy_pad is used when you have afixed-size buffer, and you want to
+copy a string into it while ensuring the remaining space is padded with
+a specific character (like '\0') hence not appropriate for this context."
+
+It's not "like '\0'" it's specifically '\0'...  This explains what
+strscpy_pad() does.  We all know what it does.  No need to explain that.
+However this doesn't explain *why* it's not appropriate.
+
+1) Look at buf.  How big is it?  What data is stored in buf before we do
+   the strncpy().
+2) Look at inquiry_string.  Where does it come from?  Is it NUL
+   terminated?  How long is it?
+3) Look at sendbytes.  What length is it?  Is it longer than the size of
+   buf + 8?  Is it longer than the size of inquiry_string?
+4) What do we do with buf after the strncpy()?  Does the surrounding
+   code assume that it is NUL terminated?  Do we copy the code to the
+   user?
+
+Once you know the answers to all these questions, then figure out which
+of the questions matter in this context.  Re-write the commit message
+with the relevant information.
+
+I'm going to give you a hint here.
+
+	rtsx_stor_set_xfer_buf(buf, scsi_bufflen(srb), srb);
+
+This function copies "buf" to the user.
+
+regards,
+dan carpenter
 
