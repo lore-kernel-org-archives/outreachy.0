@@ -1,67 +1,62 @@
-Received: from mail-pf1-f182.google.com (mail-pf1-f182.google.com [209.85.210.182])
+Received: from mail-pf1-f177.google.com (mail-pf1-f177.google.com [209.85.210.177])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 158831841
-	for <outreachy@lists.linux.dev>; Wed,  1 Nov 2023 02:11:31 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9AD2D2F48;
+	Wed,  1 Nov 2023 07:39:59 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="ImHruutW"
-Received: by mail-pf1-f182.google.com with SMTP id d2e1a72fcca58-6b89ab5ddb7so6397235b3a.0
-        for <outreachy@lists.linux.dev>; Tue, 31 Oct 2023 19:11:31 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="WSCcs4eY"
+Received: by mail-pf1-f177.google.com with SMTP id d2e1a72fcca58-6c3077984e8so83265b3a.0;
+        Wed, 01 Nov 2023 00:39:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1698804691; x=1699409491; darn=lists.linux.dev;
+        d=gmail.com; s=20230601; t=1698824399; x=1699429199; darn=lists.linux.dev;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=PkwyaILwsX+VKZTDFEUltkIi2zr5qDA6qHFMO6lWAZw=;
-        b=ImHruutWdBFA5Lz8AR87YqJa5AbGczYf6NtLBz3zA/Qr6Ccsga2Ys+MrC7lR+0PIqo
-         JW0frYd+Br66LHLxeI/isYv+jP4s7zZ01+zPUIL4cXFfHhT7G6UrCLvG9cz9fSOtgIsk
-         ouz/0vy2Vmq4VZParwqjyZRWXOLKNjTeRzVJ7X8NzO5GQKgrygiPQE/FMRw1rPMRrwqG
-         Fh+s5Q1dHJwyPduG4eOxLR2qorjLIB3QkJiu6uZoif/ffqKIT75EPXUnUmOUOfYYByph
-         2qKorb8qgnmq9M59KrY5wfR9IT3ZK1lO9VFOhqgK/YxQ0rm3XWxanMoOtIA304EFK2iq
-         D/3w==
+        bh=qaTfkXJcsWYh5uAYv4mhG+OfOpapi/f9ImTWYM58lNM=;
+        b=WSCcs4eY2XGAqbjDQmfg4bY7Ra9jcSdO6eXTNWRRm4G7BlBX7VMt8pSshODB6UGIfb
+         haqbXY7MARCvtXbEc7RJTPQ9hM6YeMv6wfbihGaJeZMPJofqVUfqiYtfbcSkPpU4w0xA
+         aYlAVzW0rd2X1HygQMZjOIUFgCt99/UQz8EiUvN9H0Tq2Z1f9/lWz8aSN6QihfD5LyxB
+         m1Ao6p0/WZL5FE0OPz/qjiRFVFyXtUaqJzjAx0DfmUfrs4BscvMjKO2BhevQnxAmTrli
+         p1cokwXRr4fWX/BvOqxm4TUHRJRJ/QbArE5ne3npMbs8ECzFx/XiZI4MK5iAolBt+CVU
+         BJXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698804691; x=1699409491;
+        d=1e100.net; s=20230601; t=1698824399; x=1699429199;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=PkwyaILwsX+VKZTDFEUltkIi2zr5qDA6qHFMO6lWAZw=;
-        b=j1Bz+WnUCQEaLuavrm6jST0a5s15T8r77tmpcxZY7Di2u5lPFkYH/rOUnyNcu15Gow
-         33vHm0hx4SURyUF4Qyl94svmwmXg58SztjQ2uyXSgJzR6dNhq71F68vuo3XcD8CIwT+i
-         CembDmmtg3ptGoK7BTx82DS2SYZn/oIEsAf6NV0mewBC3MDqeJ1VLdiakg5Ehrj5Q/TP
-         sjQu4gJMCJeYSxdD5toxiaF0snKc5zEF1UjUo1/DsHRxWjk8vbgrb61XBYbPHIi+Qk8/
-         ksflL6v/Ffek/gnqJxEQ6JuqmRCEOrH5ZWC+BbtvrYpnvGe6d6607JvzwngJ3/rYUkwD
-         8bPg==
-X-Gm-Message-State: AOJu0YxWT+l1MF4TBgdX/47gV9mcfZm9wfFlrkHZH4qZV3BEwNo008/o
-	VMVz0fbt/uOeGCklD+Mx/cw=
-X-Google-Smtp-Source: AGHT+IED9CeFPa2E+EjUNPDryeGPow3qOhz0APJeFNDxLSOX0Ztnwop3hA9Qhu4rcOE+I85CHm8FpQ==
-X-Received: by 2002:a05:6a20:2d2c:b0:17a:f37e:ddc2 with SMTP id g44-20020a056a202d2c00b0017af37eddc2mr16632463pzl.47.1698804691275;
-        Tue, 31 Oct 2023 19:11:31 -0700 (PDT)
+        bh=qaTfkXJcsWYh5uAYv4mhG+OfOpapi/f9ImTWYM58lNM=;
+        b=pJ6H0Z8QQQ26jE0wqOwys0Ds7VvfqM5Im/itJhn1zRCQOOsYNl80kmUZxJkvihDaSs
+         zx+C/wMtmAfgdeBrcC9oRgKNAGCAYIAspXhNg2ogkb/qpHfy+ncGoF/b/WVo1Byeyj9R
+         UHo6h2PnUXTShdghw3WdoFX0/uvWQPxz/W9AWLdtjbcPbTPtyswQpc9TSmi5t8+vQDQe
+         5cDXZvkoe/petxnVlBwwmpYP+RZrnR70Ah64aLDo3WGfL8BAXIoJ3IkVYcS+fcKs1b5I
+         MRnLa+nIcRsp/YdbO0jH9YU0Z6YfzOTOYHKCRgtDUiXXm7yszBYDUk5ILFTY4xJiS5jn
+         t1Hw==
+X-Gm-Message-State: AOJu0YxUl+jLLKJ0rTlb/lBbQoKQpmc0EEQLsV/IIRyhqqm3kdJKYGhk
+	AWxsH+nMt0Bljn3R/hr22M0=
+X-Google-Smtp-Source: AGHT+IEJK9IqlBWln2yy8MTDkKAUjJX4cbHw4LlzZt41nQjEK0AZpfxOQ4Vtl74E5H+jxfuKAwW9fw==
+X-Received: by 2002:a05:6a21:338b:b0:159:e0b9:bd02 with SMTP id yy11-20020a056a21338b00b00159e0b9bd02mr14538190pzb.40.1698824398648;
+        Wed, 01 Nov 2023 00:39:58 -0700 (PDT)
 Received: from debian.me ([103.131.18.64])
-        by smtp.gmail.com with ESMTPSA id e9-20020a170902d38900b001a80ad9c599sm204872pld.294.2023.10.31.19.11.30
+        by smtp.gmail.com with ESMTPSA id mu13-20020a17090b388d00b00274922d4b38sm332174pjb.27.2023.11.01.00.39.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 31 Oct 2023 19:11:30 -0700 (PDT)
+        Wed, 01 Nov 2023 00:39:58 -0700 (PDT)
 Received: by debian.me (Postfix, from userid 1000)
-	id 589A5819CFCE; Wed,  1 Nov 2023 09:10:56 +0700 (WIB)
-Date: Wed, 1 Nov 2023 09:10:39 +0700
+	id DD85280A734F; Wed,  1 Nov 2023 14:39:53 +0700 (WIB)
+Date: Wed, 1 Nov 2023 14:39:53 +0700
 From: Bagas Sanjaya <bagasdotme@gmail.com>
-To: Helen Koike <helen.koike@collabora.com>,
-	Julia Lawall <julia.lawall@inria.fr>
-Cc: Daniel Stone <daniels@collabora.com>,
+To: Dorine Tipo <dorine.a.tipo@gmail.com>,
 	Linux Outreachy <outreachy@lists.linux.dev>,
 	Greg KH <gregkh@linuxfoundation.org>,
-	Nick Terrell <terrelln@fb.com>,
-	Linux DRI Development <dri-devel@lists.freedesktop.org>,
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
-	Dorine Tipo <dorine.a.tipo@gmail.com>
-Subject: Re: [PATCH Resend] Fix line Length
-Message-ID: <ZUGzn-xcoymIfoQA@debian.me>
-References: <20231029144312.5895-1-dorine.a.tipo@gmail.com>
- <alpine.DEB.2.22.394.2310291610030.3136@hadrien>
- <ZT7v39jG4WTxPYjm@debian.me>
- <alpine.DEB.2.22.394.2310300712310.3533@hadrien>
- <3f1fdfa2-e30b-42c6-b290-bb02283b3589@gmail.com>
- <318c568f-c813-4d16-b577-28f37cde92c7@collabora.com>
+	Linux Staging Drivers <linux-staging@lists.linux.dev>,
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>
+Cc: Martyn Welch <martyn@welchs.me.uk>,
+	Manohar Vanga <manohar.vanga@gmail.com>,
+	Lukas Bulwahn <lukas.bulwahn@gmail.com>,
+	Charles Han <hanchunchao@inspur.com>
+Subject: Re: [PATCH] staging: vme: enhance the help paragraphs for clarity
+Message-ID: <ZUIAyQGSfIKqK7AE@debian.me>
+References: <20231029180346.8570-1-dorine.a.tipo@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -69,51 +64,74 @@ List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="dooGvATdJTR1HNc3"
+	protocol="application/pgp-signature"; boundary="ph4bCGRF0u6YYI3A"
 Content-Disposition: inline
-In-Reply-To: <318c568f-c813-4d16-b577-28f37cde92c7@collabora.com>
+In-Reply-To: <20231029180346.8570-1-dorine.a.tipo@gmail.com>
 
 
---dooGvATdJTR1HNc3
+--ph4bCGRF0u6YYI3A
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Tue, Oct 31, 2023 at 03:36:30PM -0300, Helen Koike wrote:
->=20
->=20
-> On 30/10/2023 08:36, Bagas Sanjaya wrote:
-> > On 30/10/2023 13:12, Julia Lawall wrote:
-> > >=20
-> > >=20
-> > > On Mon, 30 Oct 2023, Bagas Sanjaya wrote:
-> > >=20
-> > > > Hi Julia,
-> > > >=20
-> > > > The submitter touched one of CI scripts for the DRM subsystem. To t=
-est
-> > > > this patch, there must be a way to run these scripts locally (which
-> > > > may requires non-trivial setup).
->=20
-> Instructions to test it is on the docs:
->=20
-> https://docs.kernel.org/gpu/automated_testing.html?highlight=3Ddrm+ci#how=
--to-enable-automated-testing-on-your-tree
+[Cc'ing driver contributors found via get_maintainer.pl. Also Cc: Charles f=
+rom
+linux-doc mailing list as wording patches like this one most likely suit hi=
+m.]
 
-Thanks for the pointer!
+On Sun, Oct 29, 2023 at 06:03:46PM +0000, Dorine Tipo wrote:
+> diff --git a/drivers/staging/vme_user/Kconfig b/drivers/staging/vme_user/=
+Kconfig
+> index d65cc5510649..65a3e769090d 100644
+> --- a/drivers/staging/vme_user/Kconfig
+> +++ b/drivers/staging/vme_user/Kconfig
+> @@ -4,6 +4,11 @@ menuconfig VME_BUS
+>  	depends on PCI
+>  	help
+>  	  If you say Y here you get support for the VME bridge Framework.
+> +          The VME Bridge Framework provides a set of tools and drivers
+> +          for VMEbus systems, allowing seamless integration of VME devic=
+es
+> +          with your PCI-enabled hardware. Select 'Y' to enable this feat=
+ure
+> +          if you have VMEbus-based hardware or intend to use VME devices=
+ in
+> +          your system.
+> =20
+>  if VME_BUS
+> =20
+> @@ -14,7 +19,10 @@ config VME_TSI148
+>  	depends on HAS_DMA
+>  	help
+>  	 If you say Y here you get support for the Tundra TSI148 VME bridge
+> -	 chip.
+> +	 chip. This bridge chip provides compatibility for VMEbus systems, allo=
+wing
+> +         communication with various VME devices. If you have hardware th=
+at
+> +         includes the Tundra TSI148 VME bridge, or if you plan to use VME
+> +         devices with your system, choose 'Y' to enable this feature.
+
+Dorine,
+
+Are you sure that your description properly describes what these modules
+are doing? And most importantly, when users select them as module (choose
+M), what will the modules be named?
+
+Confused...
 
 --=20
 An old man doll... just what I always wanted! - Clara
 
---dooGvATdJTR1HNc3
+--ph4bCGRF0u6YYI3A
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQSSYQ6Cy7oyFNCHrUH2uYlJVVFOowUCZUGzYQAKCRD2uYlJVVFO
-o3Z4AQDaWdOvXjwiZ0Oc4b0iaHgCHKe7XwNerDY/r1vhieslYAEAquSuTvqW3nD4
-fc8XKmmvpMJ4l+G56RFFk2paFOoc6QA=
-=+axy
+iHUEABYKAB0WIQSSYQ6Cy7oyFNCHrUH2uYlJVVFOowUCZUIAxAAKCRD2uYlJVVFO
+owJoAQC2v2Rw64vzjbVbztTMOUI/hXJ2aOgbdCacohfuzvYkZwD/ciCDXTleE1P8
+GIh/Nsy2OZwTuZDFK26syy2LxMaRAA8=
+=fXwj
 -----END PGP SIGNATURE-----
 
---dooGvATdJTR1HNc3--
+--ph4bCGRF0u6YYI3A--
