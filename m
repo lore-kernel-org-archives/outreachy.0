@@ -1,100 +1,246 @@
-Received: from mail-ed1-f42.google.com (mail-ed1-f42.google.com [209.85.208.42])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 364C9CA73;
-	Wed,  1 Nov 2023 15:36:56 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 987011864F;
+	Sun,  5 Nov 2023 20:59:21 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="XFYaJ9s0"
-Received: by mail-ed1-f42.google.com with SMTP id 4fb4d7f45d1cf-53ed4688b9fso10908795a12.0;
-        Wed, 01 Nov 2023 08:36:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1698853015; x=1699457815; darn=lists.linux.dev;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=hexmk49ujNpb1xtdHgW2u+GIQeyEe+vJ7SF4SxvQAsE=;
-        b=XFYaJ9s0FcpgTyp3dHGvyX0V6GKK+n46engvuFu0Hy4OOifJmhpx+T6ryv8Fvh6eDA
-         X+n5p08HNzxjFnt3nbCkTLea25Rqdhu0nj4ga37laV2wMzTv9e5R78R9/f8uWu2Vzzjx
-         8NDCG85soEkRZo4LGzMlWg5vRmJsbQRwH0wpntwNNIBWu5MMBIB1jVIfWJzftoOjx1CH
-         O8zJjJCGgwL5ETNrFL4ezYDEIzad6TdRUoft5v79EzubOhmQ/GDoHTBCgeEXzWrQALef
-         CpQnNu+PEy5FUVAT/GnRVMn6DHlfrHXWbv4qnEfCmGSpoPCRA/iBR/hn//xXPG/j/i06
-         nYoQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1698853015; x=1699457815;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=hexmk49ujNpb1xtdHgW2u+GIQeyEe+vJ7SF4SxvQAsE=;
-        b=c5qaFdUolK33r82mA5Ctt7fxEJ5Y4cVbtov8NFBAarEP2j+LU3Ktzs4syjGG5dBAVm
-         e7D3Lz3fGbiQP7i7XsAiQATT49Lw2HNs/Z8pZxusDMgl1bTYbJ0/GbNXoJs2IS50wlwV
-         zUjL62sWymQ9p+pgk55yvxCVNgGGq5Bh7VdihkQznq1PlkXpDIEVxF4G5AKgHzUwyf7S
-         NA1nIi5G49Dgq2DTg5jzni4FZECVUmp9ep1D6ZtcOgSx9wTO6YcOmzN6QnsQmO2FRsiU
-         2AaItMWH+3gIXMQBLpYtr+1GGHp8qhWSNRoFj5cNhsSP/aMtBiH6i++JBRf9x2K20CVg
-         lgwA==
-X-Gm-Message-State: AOJu0Yy97zkp0O5xJ/k38+qelAnrW4xKanNdZho6r+RYl+OiFPVXmvoz
-	1svHYopmguE1eNIhBU5ujw==
-X-Google-Smtp-Source: AGHT+IHGBq6ikaR1Vc0Dr5gti0wNOgkMImLBk6ma21/TdEmuBAI35mUjQ49xGCe1d1e1AA5A2y3fCQ==
-X-Received: by 2002:aa7:d0ca:0:b0:530:74ed:fc8a with SMTP id u10-20020aa7d0ca000000b0053074edfc8amr12958328edo.41.1698853015062;
-        Wed, 01 Nov 2023 08:36:55 -0700 (PDT)
-Received: from [192.168.78.129] ([105.163.156.68])
-        by smtp.gmail.com with ESMTPSA id v10-20020aa7dbca000000b0052ffc2e82f1sm1191247edt.4.2023.11.01.08.36.52
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 01 Nov 2023 08:36:54 -0700 (PDT)
-Message-ID: <9d00781f-3c24-401d-902a-451e38c19e3c@gmail.com>
-Date: Wed, 1 Nov 2023 18:36:51 +0300
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="A2JmpBQt"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1699217961; x=1730753961;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=bpggp+jfEBeZBE1fxRDYA37/V6b3KkZ7Tyn+qf8LJIY=;
+  b=A2JmpBQtebgjUUiTsoFt4VXvyrjafYW6sqwCEmGI+25zdkcP5PRs6jfZ
+   3PU8GG0oOO17BGGbW9d4rF0tWeNFO4F8MGK5MovHaGj2TDSS0KYkfTRPa
+   JEsfEsCcmpYohqPGRhnszvowDAA4g3Z0BVFFFqZodaL9X2g/vVU946ZOj
+   RkOW0PXjSK4Gm1NK/E+hj4Paw3EmersjMU5dILT82cNQZCuWV6deL8S7t
+   yL2d/Cu5l4PSgsSTEbedHFgRksDjE9FRuLCKnAineNEE+4iXSc+qvY/XH
+   Rd/po+5fLu6bpH4e8Bv1opYwVdEVOVOB1QktqzTcgph0yuOoSjTFMtix4
+   A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10885"; a="10712393"
+X-IronPort-AV: E=Sophos;i="6.03,279,1694761200"; 
+   d="scan'208";a="10712393"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
+  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Nov 2023 12:59:20 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10885"; a="1009340930"
+X-IronPort-AV: E=Sophos;i="6.03,279,1694761200"; 
+   d="scan'208";a="1009340930"
+Received: from lkp-server01.sh.intel.com (HELO 17d9e85e5079) ([10.239.97.150])
+  by fmsmga006.fm.intel.com with ESMTP; 05 Nov 2023 12:59:18 -0800
+Received: from kbuild by 17d9e85e5079 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1qzkDE-0005n6-0Z;
+	Sun, 05 Nov 2023 20:59:16 +0000
+Date: Mon, 6 Nov 2023 04:58:51 +0800
+From: kernel test robot <lkp@intel.com>
+To: kenechukwu maduechesi <maduechesik@gmail.com>,
+	outreachy@lists.linux.dev, shreeya.patel23498@gmail.com
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] staging: rts5208: Replace delay function.
+Message-ID: <202311060455.MQsyG6kq-lkp@intel.com>
+References: <20231018004300.GA3189@ubuntu>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/2] staging: sm750fb: Remove unused return value in
- display_control_adjust_sm750le()
-Content-Language: en-US
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: outreachy@lists.linux.dev, julia.lawall@inria.fr,
- dan.carpenter@linaro.org, Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
- Teddy Wang <teddy.wang@siliconmotion.com>, linux-fbdev@vger.kernel.org,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-References: <20231019101348.22076-1-anonolitunya@gmail.com>
- <20231019101348.22076-2-anonolitunya@gmail.com>
- <2023102113-barbell-amazingly-cef6@gregkh>
-From: Dorcas Anono Litunya <anonolitunya@gmail.com>
-In-Reply-To: <2023102113-barbell-amazingly-cef6@gregkh>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20231018004300.GA3189@ubuntu>
+
+Hi kenechukwu,
+
+kernel test robot noticed the following build errors:
+
+[auto build test ERROR on staging/staging-testing]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/kenechukwu-maduechesi/staging-rts5208-Replace-delay-function/20231018-090457
+base:   staging/staging-testing
+patch link:    https://lore.kernel.org/r/20231018004300.GA3189%40ubuntu
+patch subject: [PATCH] staging: rts5208: Replace delay function.
+config: i386-allmodconfig (https://download.01.org/0day-ci/archive/20231106/202311060455.MQsyG6kq-lkp@intel.com/config)
+compiler: clang version 16.0.4 (https://github.com/llvm/llvm-project.git ae42196bc493ffe877a7e3dff8be32035dea4d07)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20231106/202311060455.MQsyG6kq-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202311060455.MQsyG6kq-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+>> drivers/staging/rts5208/sd.c:868:19: error: too few arguments to function call, expected 2, have 1
+                           usleep_range(50);
+                           ~~~~~~~~~~~~   ^
+   include/linux/delay.h:66:20: note: 'usleep_range' declared here
+   static inline void usleep_range(unsigned long min, unsigned long max)
+                      ^
+   drivers/staging/rts5208/sd.c:880:19: error: too few arguments to function call, expected 2, have 1
+                           usleep_range(50);
+                           ~~~~~~~~~~~~   ^
+   include/linux/delay.h:66:20: note: 'usleep_range' declared here
+   static inline void usleep_range(unsigned long min, unsigned long max)
+                      ^
+   drivers/staging/rts5208/sd.c:887:19: error: too few arguments to function call, expected 2, have 1
+                   usleep_range(100);
+                   ~~~~~~~~~~~~    ^
+   include/linux/delay.h:66:20: note: 'usleep_range' declared here
+   static inline void usleep_range(unsigned long min, unsigned long max)
+                      ^
+   drivers/staging/rts5208/sd.c:921:18: error: too few arguments to function call, expected 2, have 1
+                   usleep_range(50);
+                   ~~~~~~~~~~~~   ^
+   include/linux/delay.h:66:20: note: 'usleep_range' declared here
+   static inline void usleep_range(unsigned long min, unsigned long max)
+                      ^
+   drivers/staging/rts5208/sd.c:1419:19: error: too few arguments to function call, expected 2, have 1
+                   usleep_range(100);
+                   ~~~~~~~~~~~~    ^
+   include/linux/delay.h:66:20: note: 'usleep_range' declared here
+   static inline void usleep_range(unsigned long min, unsigned long max)
+                      ^
+   5 errors generated.
 
 
-On 21/10/2023 13:01, Greg Kroah-Hartman wrote:
-> On Thu, Oct 19, 2023 at 01:13:36PM +0300, Dorcas AnonoLitunya wrote:
->> Modifies the return type of display_control_adjust_sm750le()
->> to void from unsigned long as the return value is being ignored in
->> all subsequent function calls.
->>
->> This improves code readability and maintainability.
->>
->> Suggested-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
->> Signed-off-by: Dorcas AnonoLitunya <anonolitunya@gmail.com>
->> ---
->>   drivers/staging/sm750fb/ddk750_mode.c | 4 +---
->>   1 file changed, 1 insertion(+), 3 deletions(-)
-> This patch doesn't apply against my latest branch.  Please rebase it and
-> resend.
->
-> thanks,
->
-> greg k-h
+vim +868 drivers/staging/rts5208/sd.c
 
+   814	
+   815	static int sd_change_phase(struct rtsx_chip *chip, u8 sample_point, u8 tune_dir)
+   816	{
+   817		struct sd_info *sd_card = &chip->sd_card;
+   818		u16 SD_VP_CTL, SD_DCMPS_CTL;
+   819		u8 val;
+   820		int retval;
+   821		bool ddr_rx = false;
+   822	
+   823		dev_dbg(rtsx_dev(chip), "%s (sample_point = %d, tune_dir = %d)\n",
+   824			__func__, sample_point, tune_dir);
+   825	
+   826		if (tune_dir == TUNE_RX) {
+   827			SD_VP_CTL = SD_VPRX_CTL;
+   828			SD_DCMPS_CTL = SD_DCMPS_RX_CTL;
+   829			if (CHK_SD_DDR50(sd_card))
+   830				ddr_rx = true;
+   831		} else {
+   832			SD_VP_CTL = SD_VPTX_CTL;
+   833			SD_DCMPS_CTL = SD_DCMPS_TX_CTL;
+   834		}
+   835	
+   836		if (chip->asic_code) {
+   837			retval = rtsx_write_register(chip, CLK_CTL, CHANGE_CLK,
+   838						     CHANGE_CLK);
+   839			if (retval)
+   840				return retval;
+   841			retval = rtsx_write_register(chip, SD_VP_CTL, 0x1F,
+   842						     sample_point);
+   843			if (retval)
+   844				return retval;
+   845			retval = rtsx_write_register(chip, SD_VPCLK0_CTL,
+   846						     PHASE_NOT_RESET, 0);
+   847			if (retval)
+   848				return retval;
+   849			retval = rtsx_write_register(chip, SD_VPCLK0_CTL,
+   850						     PHASE_NOT_RESET, PHASE_NOT_RESET);
+   851			if (retval)
+   852				return retval;
+   853			retval = rtsx_write_register(chip, CLK_CTL, CHANGE_CLK, 0);
+   854			if (retval)
+   855				return retval;
+   856		} else {
+   857			rtsx_read_register(chip, SD_VP_CTL, &val);
+   858			dev_dbg(rtsx_dev(chip), "SD_VP_CTL: 0x%x\n", val);
+   859			rtsx_read_register(chip, SD_DCMPS_CTL, &val);
+   860			dev_dbg(rtsx_dev(chip), "SD_DCMPS_CTL: 0x%x\n", val);
+   861	
+   862			if (ddr_rx) {
+   863				retval = rtsx_write_register(chip, SD_VP_CTL,
+   864							     PHASE_CHANGE,
+   865							     PHASE_CHANGE);
+   866				if (retval)
+   867					return retval;
+ > 868				usleep_range(50);
+   869				retval = rtsx_write_register(chip, SD_VP_CTL, 0xFF,
+   870							     PHASE_CHANGE |
+   871							     PHASE_NOT_RESET |
+   872							     sample_point);
+   873				if (retval)
+   874					return retval;
+   875			} else {
+   876				retval = rtsx_write_register(chip, CLK_CTL,
+   877							     CHANGE_CLK, CHANGE_CLK);
+   878				if (retval)
+   879					return retval;
+   880				usleep_range(50);
+   881				retval = rtsx_write_register(chip, SD_VP_CTL, 0xFF,
+   882							     PHASE_NOT_RESET |
+   883							     sample_point);
+   884				if (retval)
+   885					return retval;
+   886			}
+   887			usleep_range(100);
+   888	
+   889			rtsx_init_cmd(chip);
+   890			rtsx_add_cmd(chip, WRITE_REG_CMD, SD_DCMPS_CTL, DCMPS_CHANGE,
+   891				     DCMPS_CHANGE);
+   892			rtsx_add_cmd(chip, CHECK_REG_CMD, SD_DCMPS_CTL,
+   893				     DCMPS_CHANGE_DONE, DCMPS_CHANGE_DONE);
+   894			retval = rtsx_send_cmd(chip, SD_CARD, 100);
+   895			if (retval != STATUS_SUCCESS)
+   896				goto fail;
+   897	
+   898			val = *rtsx_get_cmd_data(chip);
+   899			if (val & DCMPS_ERROR)
+   900				goto fail;
+   901	
+   902			if ((val & DCMPS_CURRENT_PHASE) != sample_point)
+   903				goto fail;
+   904	
+   905			retval = rtsx_write_register(chip, SD_DCMPS_CTL,
+   906						     DCMPS_CHANGE, 0);
+   907			if (retval)
+   908				return retval;
+   909			if (ddr_rx) {
+   910				retval = rtsx_write_register(chip, SD_VP_CTL,
+   911							     PHASE_CHANGE, 0);
+   912				if (retval)
+   913					return retval;
+   914			} else {
+   915				retval = rtsx_write_register(chip, CLK_CTL,
+   916							     CHANGE_CLK, 0);
+   917				if (retval)
+   918					return retval;
+   919			}
+   920	
+   921			usleep_range(50);
+   922		}
+   923	
+   924		retval = rtsx_write_register(chip, SD_CFG1, SD_ASYNC_FIFO_NOT_RST, 0);
+   925		if (retval)
+   926			return retval;
+   927	
+   928		return STATUS_SUCCESS;
+   929	
+   930	fail:
+   931		rtsx_read_register(chip, SD_VP_CTL, &val);
+   932		dev_dbg(rtsx_dev(chip), "SD_VP_CTL: 0x%x\n", val);
+   933		rtsx_read_register(chip, SD_DCMPS_CTL, &val);
+   934		dev_dbg(rtsx_dev(chip), "SD_DCMPS_CTL: 0x%x\n", val);
+   935	
+   936		rtsx_write_register(chip, SD_DCMPS_CTL, DCMPS_CHANGE, 0);
+   937		rtsx_write_register(chip, SD_VP_CTL, PHASE_CHANGE, 0);
+   938		mdelay(10);
+   939		sd_reset_dcm(chip, tune_dir);
+   940		return STATUS_FAIL;
+   941	}
+   942	
 
-Hi Greg,
-
-Sorry for the delay. Was occupied on the project starter tasks. I have 
-rebased the patch and resent it. Thanks!
-
-
-Dorcas
-
-
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
