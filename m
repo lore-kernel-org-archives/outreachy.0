@@ -1,28 +1,28 @@
-Received: from mout02.posteo.de (mout02.posteo.de [185.67.36.66])
+Received: from mout01.posteo.de (mout01.posteo.de [185.67.36.65])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 52B6E2111C
-	for <outreachy@lists.linux.dev>; Mon, 13 Nov 2023 15:11:16 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6C42E2136A
+	for <outreachy@lists.linux.dev>; Mon, 13 Nov 2023 15:15:55 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=posteo.net
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=posteo.net
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=posteo.net header.i=@posteo.net header.b="ME3jk71F"
+	dkim=pass (2048-bit key) header.d=posteo.net header.i=@posteo.net header.b="mDalR2aB"
 Received: from submission (posteo.de [185.67.36.169]) 
-	by mout02.posteo.de (Postfix) with ESMTPS id 85623240108
-	for <outreachy@lists.linux.dev>; Mon, 13 Nov 2023 16:06:06 +0100 (CET)
+	by mout01.posteo.de (Postfix) with ESMTPS id 58859240028
+	for <outreachy@lists.linux.dev>; Mon, 13 Nov 2023 16:06:01 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=posteo.net; s=2017;
-	t=1699887966; bh=cKoUTgqnqm13vv5MG10qVvupT4f2fR5l912U63mc1Jw=;
+	t=1699887961; bh=AysCfJIOEBxPiL99wZ1Aw/KlWYK0Ft/fT6gutzSaLP4=;
 	h=From:To:Cc:Subject:Date:Message-Id:MIME-Version:
 	 Content-Transfer-Encoding:From;
-	b=ME3jk71FlNDwdoz29NDXmzhntLvKVMRYDJ14Ni+MMSEoslo/nAtvgTOXUHugN9htP
-	 U8gkJJeHseXN5P31ERyUUELSVtvElTqRu8ZXir2gyxmTvi4YI+p65KGYlAC4PTcpSm
-	 I5J0kMF1RqXqThcOTegkw6rnxV1sRkGYIu7fzb0dz6+M+6h+8XEw1D7TwqhOZ0nMVp
-	 7NBgW6ngkwBHzoQ0N4FnYtAdzEO9p6OlaAqS5XTuCLHIcpSaUjqisJPhPwplsj8+eH
-	 3WsiOCb6AXnbcj6uJ8JIqFzOD+/vZJVXOZeqSvsopkUyo6zihtvoZMe1AYjEThbZ2W
-	 Hec2LpdIXxqjQ==
+	b=mDalR2aBzXSIHGPSwLs+VtxO0eZvFt1x08rnI3WKeA+r9+QdZhLWAQCsVkn5+Z3Rl
+	 ROyc/yW4GmXZ2cZDWCnZ8sVsDLvtzc053gzofR1L99bEl9v+un+5mwpklhIwgPaLq4
+	 nhdRa99J0+WSYhSfonqLpM5Ejyp0qJhGpltqTNqD40FKDdno0nvMqzrug4fRqWxw9t
+	 JZElx+Emi1cJzfk8CykC6QCXHp1HUwW2xDMcU3PCLrcvQL/I6hJwVQaDVYZggNCOKo
+	 G9jWqRBQrUACNxMF5Kbqbv6lgY5FfioQ90TFlRJsWTVfaTCj9TAVOC94/n5fZ3H5x7
+	 kd2g7C0vimbWw==
 Received: from customer (localhost [127.0.0.1])
-	by submission (posteo.de) with ESMTPSA id 4STXn90hFNz9rxY;
-	Mon, 13 Nov 2023 16:06:05 +0100 (CET)
+	by submission (posteo.de) with ESMTPSA id 4STXn26xbnz9rxM;
+	Mon, 13 Nov 2023 16:05:58 +0100 (CET)
 From: Charalampos Mitrodimas <charmitro@posteo.net>
 To: 
 Cc: sudipm.mukherjee@gmail.com,
@@ -33,11 +33,9 @@ Cc: sudipm.mukherjee@gmail.com,
 	linux-kernel@vger.kernel.org,
 	outreachy@lists.linux.dev,
 	Charalampos Mitrodimas <charmitro@posteo.net>
-Subject: [PATCH 4/8] staging: sm750fb: Rename sii164SetPower to sii164_set_power
-Date: Mon, 13 Nov 2023 15:05:09 +0000
-Message-Id: <20231113150512.1210869-5-charmitro@posteo.net>
-In-Reply-To: <20231113150512.1210869-1-charmitro@posteo.net>
-References: <20231113150512.1210869-1-charmitro@posteo.net>
+Subject: [PATCH 0/8] staging: sm750fb: Multiple camel cases renames
+Date: Mon, 13 Nov 2023 15:05:05 +0000
+Message-Id: <20231113150512.1210869-1-charmitro@posteo.net>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -46,70 +44,36 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-Signed-off-by: Charalampos Mitrodimas <charmitro@posteo.net>
----
- drivers/staging/sm750fb/ddk750_dvi.c    | 2 +-
- drivers/staging/sm750fb/ddk750_sii164.c | 8 ++++----
- drivers/staging/sm750fb/ddk750_sii164.h | 2 +-
- 3 files changed, 6 insertions(+), 6 deletions(-)
+Reported by "checkpatch.pl":
+	$ ./scripts/checkpatch.pl --file --terse drivers/staging/sm750fb/ddk750_dvi.c
+	drivers/staging/sm750fb/ddk750_dvi.c:19: CHECK: Avoid CamelCase: <sii164GetDeviceID>
+	drivers/staging/sm750fb/ddk750_dvi.c:21: CHECK: Avoid CamelCase: <sii164ResetChip>
+	drivers/staging/sm750fb/ddk750_dvi.c:22: CHECK: Avoid CamelCase: <sii164GetChipString>
+	drivers/staging/sm750fb/ddk750_dvi.c:23: CHECK: Avoid CamelCase: <sii164SetPower>
+	drivers/staging/sm750fb/ddk750_dvi.c:24: CHECK: Avoid CamelCase: <sii164EnableHotPlugDetection>
+	drivers/staging/sm750fb/ddk750_dvi.c:25: CHECK: Avoid CamelCase: <sii164IsConnected>
+	drivers/staging/sm750fb/ddk750_dvi.c:26: CHECK: Avoid CamelCase: <sii164CheckInterrupt>
+	drivers/staging/sm750fb/ddk750_dvi.c:27: CHECK: Avoid CamelCase: <sii164ClearInterrupt>
+	total: 0 errors, 0 warnings, 8 checks, 62 lines checked
 
-diff --git a/drivers/staging/sm750fb/ddk750_dvi.c b/drivers/staging/sm750fb/ddk750_dvi.c
-index e568c210e2bd..c12df1f9fb00 100644
---- a/drivers/staging/sm750fb/ddk750_dvi.c
-+++ b/drivers/staging/sm750fb/ddk750_dvi.c
-@@ -20,7 +20,7 @@ static struct dvi_ctrl_device dcft_supported_dvi_controller[] = {
- #ifdef SII164_FULL_FUNCTIONS
- 		.reset_chip = sii164_reset_chip,
- 		.get_chip_string = sii164_get_chip_string,
--		.set_power = sii164SetPower,
-+		.set_power = sii164_set_power,
- 		.enable_hot_plug_detection = sii164EnableHotPlugDetection,
- 		.is_connected = sii164IsConnected,
- 		.check_interrupt = sii164CheckInterrupt,
-diff --git a/drivers/staging/sm750fb/ddk750_sii164.c b/drivers/staging/sm750fb/ddk750_sii164.c
-index f0a255da1b36..d0b80b86a4d7 100644
---- a/drivers/staging/sm750fb/ddk750_sii164.c
-+++ b/drivers/staging/sm750fb/ddk750_sii164.c
-@@ -256,8 +256,8 @@ long sii164_init_chip(unsigned char edge_select,
- void sii164_reset_chip(void)
- {
- 	/* Power down */
--	sii164SetPower(0);
--	sii164SetPower(1);
-+	sii164_set_power(0);
-+	sii164_set_power(1);
- }
- 
- /*
-@@ -273,13 +273,13 @@ char *sii164_get_chip_string(void)
- }
- 
- /*
-- *  sii164SetPower
-+ *  sii164_set_power
-  *      This function sets the power configuration of the DVI Controller Chip.
-  *
-  *  Input:
-  *      powerUp - Flag to set the power down or up
-  */
--void sii164SetPower(unsigned char powerUp)
-+void sii164_set_power(unsigned char powerUp)
- {
- 	unsigned char config;
- 
-diff --git a/drivers/staging/sm750fb/ddk750_sii164.h b/drivers/staging/sm750fb/ddk750_sii164.h
-index 7c5cc81f38d4..c15cd6a5d53b 100644
---- a/drivers/staging/sm750fb/ddk750_sii164.h
-+++ b/drivers/staging/sm750fb/ddk750_sii164.h
-@@ -33,7 +33,7 @@ unsigned short sii164_get_device_id(void);
- #ifdef SII164_FULL_FUNCTIONS
- void sii164_reset_chip(void);
- char *sii164_get_chip_string(void);
--void sii164SetPower(unsigned char powerUp);
-+void sii164_set_power(unsigned char powerUp);
- void sii164EnableHotPlugDetection(unsigned char enableHotPlug);
- unsigned char sii164IsConnected(void);
- unsigned char sii164CheckInterrupt(void);
+Charalampos Mitrodimas (8):
+  staging: sm750fb: Rename sii164GetDeviceID to sii164_get_device_id
+  staging: sm750fb: Rename sii164ResetChip to sii164_reset_chip
+  staging: sm750fb: Rename sii164GetChipString to sii164_get_chip_string
+  staging: sm750fb: Rename sii164SetPower to sii164_set_power
+  staging: sm750fb: Rename sii164EnableHotPlugDetection to
+    sii164_enable_hot_plug_detection
+  staging: sm750fb: Rename sii164IsConnected to sii164_is_connected
+  staging: sm750fb: Rename sii164CheckInterrupt to
+    sii164_check_interrupt
+  staging: sm750fb: Rename sii164ClearInterrupt to
+    sii164_clear_interrupt
+
+ drivers/staging/sm750fb/ddk750_dvi.c    | 16 +++++------
+ drivers/staging/sm750fb/ddk750_sii164.c | 38 ++++++++++++-------------
+ drivers/staging/sm750fb/ddk750_sii164.h | 16 +++++------
+ 3 files changed, 35 insertions(+), 35 deletions(-)
+
 -- 
 2.39.2
 
