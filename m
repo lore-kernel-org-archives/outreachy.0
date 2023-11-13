@@ -1,28 +1,28 @@
 Received: from mout02.posteo.de (mout02.posteo.de [185.67.36.66])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 17A9E21372
-	for <outreachy@lists.linux.dev>; Mon, 13 Nov 2023 15:06:13 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 741B321355
+	for <outreachy@lists.linux.dev>; Mon, 13 Nov 2023 15:11:16 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=posteo.net
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=posteo.net
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=posteo.net header.i=@posteo.net header.b="mTunSV70"
+	dkim=pass (2048-bit key) header.d=posteo.net header.i=@posteo.net header.b="IXs8fTfT"
 Received: from submission (posteo.de [185.67.36.169]) 
-	by mout02.posteo.de (Postfix) with ESMTPS id 5CC4B240107
-	for <outreachy@lists.linux.dev>; Mon, 13 Nov 2023 16:06:11 +0100 (CET)
+	by mout02.posteo.de (Postfix) with ESMTPS id 4566D240103
+	for <outreachy@lists.linux.dev>; Mon, 13 Nov 2023 16:06:04 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=posteo.net; s=2017;
-	t=1699887971; bh=4NebyzUyVtbmcvuHG+8RjZVCYeuNv+9wPzrDKVbjtKw=;
+	t=1699887964; bh=53J0LHnKymzPZx4pjgLl4V71P0Nz78J62FrhdMGSnko=;
 	h=From:To:Cc:Subject:Date:Message-Id:MIME-Version:
 	 Content-Transfer-Encoding:From;
-	b=mTunSV70FDdYw/piyL63FrxU1EQod/a74D/bqgD//gv6hwvkid0pnIUpkkRNgPhJ9
-	 ignk4/d4G4ca1wJexrAmcs/vZMSYOTe/R+t7g61wWaeZUL7PYHj6Xcukf8j04pencJ
-	 rHU3nIG/6Ul75N7ayigL08zApHuB/zYaXdfLTusyhcBu/aE357elGa6cvStsLZb2qn
-	 v1xdRfsX8MPlXaUj4bPV0Q5BMKO/Z6dvXHhPZpfDsNN9SjCmpDdOPvD3htVSlbUHmo
-	 G+XCCYD5s7IIs3WAfW321UMRRDU22t6UHh0peiekJQOmU0eYurlWMAdmv+vHnXDCGh
-	 UUQB/7ACuAb5g==
+	b=IXs8fTfTBW5eSp3nfn6NdEeNt7XMOptO7GZRnK4zB9YsfjBDqZ30xwYdUnhJzaiMF
+	 gRiNPOR7nSVuMnxinFj5w6mlQaYbFOknIB0w5h6rerNYzDz4tyA2gJkS1aE6vDt/X+
+	 hBAtLU2UVWsypJrr54ZOeUL5+JBXmtbES2tsRMHCpCNQZinwu4KEZ5B5plZmLFUoHs
+	 iBv6owEbPgGB0zmyiH8QuuxOge/T9DYScAcTgUDkhFpkxUAAaQce4HKxckik0iO3Wg
+	 Wv7fASPvV0N19IuR+XyxHe68wf/HpI7UorQ+Q39mVe5uPM4VDlNUDQ+vZJMV3WKHb/
+	 BASuNspM1Bh4g==
 Received: from customer (localhost [127.0.0.1])
-	by submission (posteo.de) with ESMTPSA id 4STXnG0PHPz9rxh;
-	Mon, 13 Nov 2023 16:06:09 +0100 (CET)
+	by submission (posteo.de) with ESMTPSA id 4STXn62mxqz9rxX;
+	Mon, 13 Nov 2023 16:06:02 +0100 (CET)
 From: Charalampos Mitrodimas <charmitro@posteo.net>
 To: 
 Cc: sudipm.mukherjee@gmail.com,
@@ -33,9 +33,9 @@ Cc: sudipm.mukherjee@gmail.com,
 	linux-kernel@vger.kernel.org,
 	outreachy@lists.linux.dev,
 	Charalampos Mitrodimas <charmitro@posteo.net>
-Subject: [PATCH 8/8] staging: sm750fb: Rename sii164ClearInterrupt to sii164_clear_interrupt
-Date: Mon, 13 Nov 2023 15:05:13 +0000
-Message-Id: <20231113150512.1210869-9-charmitro@posteo.net>
+Subject: [PATCH 2/8] staging: sm750fb: Rename sii164ResetChip to sii164_reset_chip
+Date: Mon, 13 Nov 2023 15:05:07 +0000
+Message-Id: <20231113150512.1210869-3-charmitro@posteo.net>
 In-Reply-To: <20231113150512.1210869-1-charmitro@posteo.net>
 References: <20231113150512.1210869-1-charmitro@posteo.net>
 Precedence: bulk
@@ -54,48 +54,48 @@ Signed-off-by: Charalampos Mitrodimas <charmitro@posteo.net>
  3 files changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/staging/sm750fb/ddk750_dvi.c b/drivers/staging/sm750fb/ddk750_dvi.c
-index 1def02be4cce..6fef1ab484c1 100644
+index 3fb14eff2de1..6dee95e60a6e 100644
 --- a/drivers/staging/sm750fb/ddk750_dvi.c
 +++ b/drivers/staging/sm750fb/ddk750_dvi.c
-@@ -24,7 +24,7 @@ static struct dvi_ctrl_device dcft_supported_dvi_controller[] = {
- 		.enable_hot_plug_detection = sii164_enable_hot_plug_detection,
- 		.is_connected = sii164_is_connected,
- 		.check_interrupt = sii164_check_interrupt,
--		.clear_interrupt = sii164ClearInterrupt,
-+		.clear_interrupt = sii164_clear_interrupt,
- #endif
- 	},
- #endif
+@@ -18,7 +18,7 @@ static struct dvi_ctrl_device dcft_supported_dvi_controller[] = {
+ 		.get_vendor_id = sii164_get_vendor_id,
+ 		.get_device_id = sii164_get_device_id,
+ #ifdef SII164_FULL_FUNCTIONS
+-		.reset_chip = sii164ResetChip,
++		.reset_chip = sii164_reset_chip,
+ 		.get_chip_string = sii164GetChipString,
+ 		.set_power = sii164SetPower,
+ 		.enable_hot_plug_detection = sii164EnableHotPlugDetection,
 diff --git a/drivers/staging/sm750fb/ddk750_sii164.c b/drivers/staging/sm750fb/ddk750_sii164.c
-index b156a727bebf..d6bfd7c4eaba 100644
+index 223c181dc649..284c32f7e9b4 100644
 --- a/drivers/staging/sm750fb/ddk750_sii164.c
 +++ b/drivers/staging/sm750fb/ddk750_sii164.c
-@@ -390,10 +390,10 @@ unsigned char sii164_check_interrupt(void)
- }
+@@ -250,10 +250,10 @@ long sii164_init_chip(unsigned char edge_select,
+ #ifdef SII164_FULL_FUNCTIONS
  
  /*
-- *  sii164ClearInterrupt
-+ *  sii164_clear_interrupt
-  *      Clear the hot plug interrupt.
+- *  sii164ResetChip
++ *  sii164_reset_chip
+  *      This function resets the DVI Controller Chip.
   */
--void sii164ClearInterrupt(void)
-+void sii164_clear_interrupt(void)
+-void sii164ResetChip(void)
++void sii164_reset_chip(void)
  {
- 	unsigned char detectReg;
- 
+ 	/* Power down */
+ 	sii164SetPower(0);
 diff --git a/drivers/staging/sm750fb/ddk750_sii164.h b/drivers/staging/sm750fb/ddk750_sii164.h
-index 33351f6d7f11..005473ca20cd 100644
+index a76091f6622b..7a71f94a1e9b 100644
 --- a/drivers/staging/sm750fb/ddk750_sii164.h
 +++ b/drivers/staging/sm750fb/ddk750_sii164.h
-@@ -37,7 +37,7 @@ void sii164_set_power(unsigned char powerUp);
- void sii164_enable_hot_plug_detection(unsigned char enableHotPlug);
- unsigned char sii164_is_connected(void);
- unsigned char sii164_check_interrupt(void);
--void sii164ClearInterrupt(void);
-+void sii164_clear_interrupt(void);
- #endif
- /*
-  * below register definition is used for
+@@ -31,7 +31,7 @@ unsigned short sii164_get_vendor_id(void);
+ unsigned short sii164_get_device_id(void);
+ 
+ #ifdef SII164_FULL_FUNCTIONS
+-void sii164ResetChip(void);
++void sii164_reset_chip(void);
+ char *sii164GetChipString(void);
+ void sii164SetPower(unsigned char powerUp);
+ void sii164EnableHotPlugDetection(unsigned char enableHotPlug);
 -- 
 2.39.2
 
