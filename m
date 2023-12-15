@@ -1,28 +1,29 @@
 Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 976DD2C684;
-	Fri, 15 Dec 2023 12:32:45 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A8E5B2574B;
+	Fri, 15 Dec 2023 12:34:30 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=linuxfoundation.org header.i=@linuxfoundation.org header.b="2EGeuSHv"
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B155AC433C8;
-	Fri, 15 Dec 2023 12:32:44 +0000 (UTC)
+	dkim=pass (1024-bit key) header.d=linuxfoundation.org header.i=@linuxfoundation.org header.b="b36cOM1C"
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D714FC433CB;
+	Fri, 15 Dec 2023 12:34:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1702643565;
-	bh=Y8hbSRWRPFhwGIby9Bq2cIIBOU9rk6sYVOTuyf1oNcY=;
+	s=korg; t=1702643670;
+	bh=FKxZBM/eGnkcCWYq8ROqWWg4oGWQUMqw+sFNUzKW6/8=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=2EGeuSHvFyQjpJxhGREeC4dd2W5E9NmIQYtEdcf2/2uOcgw7WYqkobz2pZ//0EN21
-	 yQaVRx1ZrBbnrC0FZB8lE4RmhkG2cXyQj4RjqLl+o6kIe7Z8tta3B/BaTaArxHd0wi
-	 FdxmPQaXYt5XHlisD7+9rA53QyiLx1dXoKTXV5Yk=
-Date: Fri, 15 Dec 2023 13:32:42 +0100
+	b=b36cOM1C5UV7HdfqDsWF5sWuveQJXujHtiSXuKWT5dtHcXCspO+ncwxNERXQ++q8A
+	 iGM45bHMBWXS7IxdnbSE08EMqH59r7xE0AoDkqtdNVjKKOOUqiXfxmiT8oCOttqtsd
+	 Y7T2RhT3GEcw+dUCXsw0Xfoq4mk27lPSYdhz2qgQ=
+Date: Fri, 15 Dec 2023 13:34:26 +0100
 From: Greg KH <gregkh@linuxfoundation.org>
-To: Ryan England <rcengland@gmail.com>
-Cc: Larry.Finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev
-Subject: Re: [PATCH] staging: rtl8712: remove unnecessary parentheses
-Message-ID: <2023121508-limeade-gander-d777@gregkh>
-References: <ZXn/JjyrLGQzS9zD@kernel.ryanengland.xyz>
+To: Piro Yang <piroyangg@gmail.com>
+Cc: linux-staging@lists.linux.dev,
+	Linux Outreachy <outreachy@lists.linux.dev>,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2] staging:vme_user:fix the issue of using the wrong
+ error code
+Message-ID: <2023121505-viewer-kindle-5ed5@gregkh>
+References: <20231211173610.106501-1-piroyangg@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -31,17 +32,19 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ZXn/JjyrLGQzS9zD@kernel.ryanengland.xyz>
+In-Reply-To: <20231211173610.106501-1-piroyangg@gmail.com>
 
-On Wed, Dec 13, 2023 at 06:59:50PM +0000, Ryan England wrote:
-> Adhere to Linux kernel coding style.
+On Tue, Dec 12, 2023 at 01:36:10AM +0800, Piro Yang wrote:
+> the error code of ENOSYS indicates Invalid system call number, but there is not system call
 > 
-> Reported by checkpatch:
+> Signed-off-by: Piro Yang <piroyangg@gmail.com>
+> ---
+>  v2: split two different changes,
+>      only fix the issue of wrong error code
+> ---
+>  drivers/staging/vme_user/vme.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> CHECK: Unnecessary parentheses
-> 
-> Signed-off-by: Ryan England <rcengland@gmail.com>
-
 
 Hi,
 
@@ -55,12 +58,17 @@ kernel tree.
 
 You are receiving this message because of the following common error(s)
 as indicated below:
+- You did not specify a description of why the patch is needed, or
+  possibly, any description at all, in the email body.  Please read the
+  section entitled "The canonical patch format" in the kernel file,
+  Documentation/process/submitting-patches.rst for what is needed in
+  order to properly describe the change.
 
-- You sent a patch that has been sent multiple times in the past and is
-  identical to ones that have been rejected.  Please always look at the
-  mailing list traffic to determine if you are duplicating other
-  people's work.
-
+- You did not write a descriptive Subject: for the patch, allowing Greg,
+  and everyone else, to know what this patch is all about.  Please read
+  the section entitled "The canonical patch format" in the kernel file,
+  Documentation/process/submitting-patches.rst for what a proper
+  Subject: line should look like.
 
 If you wish to discuss this problem further, or you have questions about
 how to resolve this issue, please feel free to respond to this email and
