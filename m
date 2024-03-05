@@ -1,48 +1,48 @@
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 83E6C6E614
-	for <outreachy@lists.linux.dev>; Thu, 22 Feb 2024 19:57:13 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.21
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2E28E13FE0
+	for <outreachy@lists.linux.dev>; Tue,  5 Mar 2024 01:19:42 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.14
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1708631842; cv=none; b=BDiknGIBwySvHtmVUeIs/x8hOqWFCi30fRxPbcOiLLUYIZ34Q4naAclidBslkkAOdrFVVns3qL9rYaZyx9ykajyC7CG104TcIkS7yOACZHtl0Bs77ufWIijuPKkHT6yTugcRWV6cMmxkmbHjUFeaNkZRB6jjnH4vv0zGGWBc7e8=
+	t=1709601587; cv=none; b=cAQXHL4hvv1L3/qJu0jbKgfV2EE+OylmoQN/V73MqpDqVM3VHxLJOx/RKVd5S2KhAx/9+iEIfWW1HidbvOV6fKQHTRI/g2toptf3mNdxkGPpjsBfrfXoNzXuKpF0h3FFGh9LqzzBcqlu/YwL4ZaunH8WovBglj81BAuEEJrkPcg=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1708631842; c=relaxed/simple;
-	bh=esY5twlYy09F0Viy/Kxcm228kLDjqWNWOqfeM0eOJF0=;
+	s=arc-20240116; t=1709601587; c=relaxed/simple;
+	bh=/63I4VKdcAVS2pxWpnmGq/BJ2zyYvI5qAjnpo97cSqw=;
 	h=Date:From:To:Subject:Message-ID:MIME-Version:Content-Type:
-	 Content-Disposition; b=HofS3aCyFkOQC/xWu3tQIbGcq7Kx7l9oM4uVaPBPny1MthYuV21p2aVjiYP8xghLRkTcDHQ8L40Q3t96IT30kOBEEEcwvXiy3vRaceluslsjODxGgJry6KwjSAL0by4i4x/p9I3glTd/x3EeypIxBPxx5KiOS6QA/2/rn/+edqc=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=OPOQHdV7; arc=none smtp.client-ip=198.175.65.21
+	 Content-Disposition; b=LUug+1oMvh6sl4iapUQgf52Z06W80fr7MPq+F3vYYhbIBzmx+LqY6p0ifMMTNuYrxQbI9V26OlDd4Q3XrG3CNZ8Du9TmvMFr7p4FAbtxcjdQp6jbZ5edTvG8qWfjP1C9tLnxjR0Up7vnRzVxCcFVlgmzbE8evjPhlyHPDDnoCJM=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=KtEREwAp; arc=none smtp.client-ip=198.175.65.14
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="OPOQHdV7"
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="KtEREwAp"
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1708631834; x=1740167834;
+  t=1709601584; x=1741137584;
   h=date:from:to:subject:message-id:mime-version;
-  bh=esY5twlYy09F0Viy/Kxcm228kLDjqWNWOqfeM0eOJF0=;
-  b=OPOQHdV7KS5RMtIpyNwqOJ+67Sn5HtjjCuQPdwYFiB5gssHIIc7MVKUN
-   JFtkI10fk7VXfUSbYXH8Kz5w3RKYIeuwWrlYxfq0xwndI12gMVGg1fBXP
-   min1Eai0ajAYXx/GlT8z13NfyB9PnHYbnxCzD+U8h3SIhixDCo2QLeoDs
-   zmMfTa5DkfxwmQUKw7uizTMNONsZv76rQH1XLtitE/RIX+ur9cEbgLQub
-   SGMZ18IuKYJotc7VEtJi3cF+WprjJqYLgFIVfV04banRQ+lbgUhZ7THLV
-   ntsUVlhX+8Zi61ZcU+uIhzzlIIPiz5M8JMuVQrwWqMEH2myDui3ZRZRcn
+  bh=/63I4VKdcAVS2pxWpnmGq/BJ2zyYvI5qAjnpo97cSqw=;
+  b=KtEREwAp9RrWw9v7on8XrO4kLON9mGpWIvhsUoLQAUTidhd4w05tDiQw
+   vBORBBkyvnZELZOvaM6Y5dj/jSByWcsAf84pZQKcLtjRHXvahaO+1zGV4
+   qyJoaECdakc9yHXiKcJ2kGQUUwjIfE+50j6gyJXtilzt12dMWhzP+Ge0D
+   ewk6cAKbX5xV7mxKMJjTy67Gbka5Zjp3O/RvXlN6zIzTGmc5XFq4Poo8w
+   R9ir42ErTZkzzivUUoXrn5REA4v65QIAL4xIkxPdmJng/5UB9VgZ5O7kI
+   ip1kUE10rA9APYSJX/nJILCtE3JqSePp9ZasytCTzzN+8MNfKvnwy23gj
    Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10992"; a="2804055"
-X-IronPort-AV: E=Sophos;i="6.06,179,1705392000"; 
-   d="scan'208";a="2804055"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
-  by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Feb 2024 11:57:11 -0800
+X-IronPort-AV: E=McAfee;i="6600,9927,11003"; a="7948481"
+X-IronPort-AV: E=Sophos;i="6.06,205,1705392000"; 
+   d="scan'208";a="7948481"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Mar 2024 17:19:43 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,179,1705392000"; 
-   d="scan'208";a="5572792"
-Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.209.29.102])
-  by fmviesa010-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Feb 2024 11:57:08 -0800
-Date: Thu, 22 Feb 2024 11:57:06 -0800
+X-IronPort-AV: E=Sophos;i="6.06,205,1705392000"; 
+   d="scan'208";a="13844530"
+Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.209.24.237])
+  by ORVIESA003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Mar 2024 17:19:43 -0800
+Date: Mon, 4 Mar 2024 17:19:41 -0800
 From: Alison Schofield <alison.schofield@intel.com>
 To: outreachy@lists.linux.dev
-Subject: Extended: Linux Kernel: Call for Outreachy Mentors
-Message-ID: <ZdenEsFrWTk3Gm8N@aschofie-mobl2>
+Subject: Welcome Summer 2024 Applicants
+Message-ID: <ZeZzLWtk2nZ1Pcgw@aschofie-mobl2>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -52,59 +52,72 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
+Welcome Applicants,
 
-Hi Potential Mentors,
+Thank you for your interest in the Linux Kernel Community!
 
-We had an issue with the Outreachy site that caused our project
-to appear in the 'not participating' list for a short while.
+The 'Contribution Period' for the Summer 2024 Cohort runs March 4
+through April 2.
 
-We are participating in the next round! If you would like to
-submit a project, go ahead and do so.
+Our contribution period process works entirely via this mailing
+list. Make sure that you read over the emails on this list daily.
+Mentors and I will be posting updates here. Most importantly, it
+is where you will learn from each other, by following the questions
+asked/answered, the patches submitted, and the reviewer feedback
+offered.
 
-The date for project proposals is extended to March 1st. Please
-let me know if you have a proposal underway, and I'll 'hold the
-door' open for you.
+You found this email, now make sure you are personally subscribed
+to this list: 
+Subscribe: outreachy+subscribe@lists.linux.dev
+More subscriber options: https://subspace.kernel.org/lists.linux.dev.html
+View the archive: https://lore.kernel.org/outreachy/
 
-Thanks for volunteering,
+Ask your questions on this mailing list. If your question is directed at
+an individual, then 'CC this mailing list. This way you'll be able get
+quick responses to the issues you're facing. Please help other applicants
+who face issues that you've addressed. 
 
-Alison
+Support may also be found on IRC. Join the #outreachy IRC channel on
+irc.gnome.org, and the #kernel-outreachy channel on irc.oftc.net.
 
------ Forwarded message from Alison Schofield <alison.schofield@intel.com> -----
-Date: Mon, 22 Jan 2024 16:50:42 -0800
-From: Alison Schofield <alison.schofield@intel.com>
-To: Outreachy Linux Kernel <outreachy@lists.linux.dev>
-Subject: Linux Kernel: Call for Outreachy Mentors
+Your first task is to walk through our First Patch Tutorial:
+http://kernelnewbies.org/Outreachyfirstpatch
 
-Hi All,
+The tutorial leads you through submitting your first patch. Please
+do not submit your second patch until your first patch is accepted.
+Key point is that it is really helpful and efficient (for both you
+and patch reviewers) to refine your patch sending skills one patch
+at a time, rather than having multiple patches in flight that require
+similar rework.
 
-It's Outreachy time again - Summer 2024 Cohort 
+You must 'CC all patches to this Outreachy Mailing List and to the
+appropriate mailing lists and maintainers in get_maintainer.pl. The
+tutorial walks you through how to use get_maintainer.pl.
 
-Outreachy's goal is to support people from groups underrepresented
-in the technology industry. Interns will work remotely with mentors
-from the Linux Kernel community.
+Once that first patch is accepted, please record that contribution
+on the Outreachy website. It will serve to check your eligibility.
+Only eligible applicants will be able to log contributions on the
+Outreachy website.
 
-We are seeking Linux Kernel mentors with project proposals.
+Congratulations on getting your first patch accepted into the Linux
+Kernel! Celebrate, then do more!
 
-Key Dates:
-Project Submission Deadline:		Feb 23
-Application/Contribution Period:	Mar 04 - Apr 02
-Internship dates:			May 27 - Aug 23
+Once you have several cleanup patches accepted into drivers/staging by
+GregKH, we encourage applicants to move on to complete Starter Tasks
+outlined by the mentors here:
+https://www.outreachy.org/apply/project-selection/#linux-kernel
 
-Submit project proposals here by Feb. 23, 2024 at 4 pm UTC: 
-https://www.outreachy.org/communities/cfp/linux-kernel/
+Please know that you can start reading about, ramping up on our
+single project - Landlock, right away. We only have the rule that
+you don't contact the mentor or submit a project starter task
+until after your cleanup patches are done.
 
-Mentor FAQ: https://www.outreachy.org/mentor/mentor-faq/
+Ping me individually if you think you are done, or close to done,
+with cleanups. Also, folks who already have cleanup patches from
+prior work, email me about that too and let's see if we can move
+you on to project tasks.
 
-Full details about the Outreachy program and the internship timeline:
-https://www.outreachy.org/communities/cfp/
+All the best and thank-you for contributing to the Linux Kernel,
 
-I'm happy to iterate on project proposals with you. Also, I have a few
-experienced kernel developers who'd like to volunteer but don't have a
-proposal. These folks make terrific second mentors for your project.
-
-Thank you for welcoming new contributors to the kernel community!
-
-Thanks,
-Alison Schofield, Outreachy Coordinator for Linux Kernel
-
------ End forwarded message -----
+Alison Schofield
+Kernel Community Coordinator
