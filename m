@@ -1,68 +1,68 @@
-Received: from mail-ej1-f51.google.com (mail-ej1-f51.google.com [209.85.218.51])
+Received: from mail-ed1-f46.google.com (mail-ed1-f46.google.com [209.85.208.46])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CB798405FF;
-	Tue,  5 Mar 2024 05:14:35 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.218.51
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8B9CC5025C;
+	Tue,  5 Mar 2024 09:14:33 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.46
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1709615677; cv=none; b=uxYERwgXebo9wPSaEbEyr5+GVkeSQufSo3sY2SLE+flvG6mLKD/MWtjpyZvIidSHTODQ9o8Iprm/tqqq+imC1coM5t4enFqqLIxm/WnFwJu2I+gH30bfdMJP1OD15kleS5VWgiVsNPEEE6FGktQX7WD2C5/xDDdIQ5WYUUUC1mU=
+	t=1709630075; cv=none; b=dAI9rT6GoXHqtbX6U7Emb8ewEnBJF90NyNe4VE/PuzYYdKoy4O+tJ4gfL1XPE9h5dGf/Gqo+Au1JIDQJB+p9FekWbiEEDXtDdkOrlJcgqrER9uJX3pubbj1VNGISl5KUsgDt4j5k/nRdTytWfCxXKmnuAba/8DOe+idNE+GwgGw=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1709615677; c=relaxed/simple;
-	bh=8e8mh1+lTo9qSTd30CKj3HZW2HAO/HGPtMfajC34boA=;
+	s=arc-20240116; t=1709630075; c=relaxed/simple;
+	bh=74325vu5j9RLyiXVNesiBYtpIeyX7ByYhflq1XqO48s=;
 	h=From:To:Cc:Subject:Date:Message-Id:In-Reply-To:References:
-	 MIME-Version; b=BO4oPPpivsaVyM5CIzg8FgEKaQA9KCGnO9uw/WFqbM9IaFAfR9sXAE8Vmo05OT9uwcaxPo0OmpsW3W7TZ5mSMJgXKPd6wdR851+3ONgkc7fbdqjPtgmd9ig6rzb8ygmIVVOem8BqBFuzHUyiVIziQ4xDZFiDxZPbrW5hKEZcipo=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=eTVreLzx; arc=none smtp.client-ip=209.85.218.51
+	 MIME-Version; b=An2gG1Qsz5o/UIDeTQNcbFZakvyqojAj3dQWKK87DxaCNY0joISNZXeFQnKfBpNBsxwQJUzf7GMtaQAgD8bL+8SPPlphHfM1z2NZY7SuLY6eB7lVqpRPnEOhICJgVUpyNhG9QEx7wARjAjlen61xEGqsNhzdqLInOPjyC6xyRt8=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=O8oE1Hih; arc=none smtp.client-ip=209.85.208.46
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="eTVreLzx"
-Received: by mail-ej1-f51.google.com with SMTP id a640c23a62f3a-a44f2d894b7so300673166b.1;
-        Mon, 04 Mar 2024 21:14:35 -0800 (PST)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="O8oE1Hih"
+Received: by mail-ed1-f46.google.com with SMTP id 4fb4d7f45d1cf-565d1656c12so9584100a12.1;
+        Tue, 05 Mar 2024 01:14:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1709615674; x=1710220474; darn=lists.linux.dev;
+        d=gmail.com; s=20230601; t=1709630072; x=1710234872; darn=lists.linux.dev;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=N9EsxA7xIcMoc6bWidjqihc+y/5nGf4cIfIWxqPpPa8=;
-        b=eTVreLzx5yQX4q91SN6RQrmA7/kaX70+EgXgEWvFI2uLGBOtB2SdPvalVU/zxwnBSA
-         +IasIUyp8M+riKKRPsed4GSerGGsi7GZfes/KB2X3HFq9ebkVdYMs6Eud9B1u9nTxExQ
-         Uu9lHEaz/LKsNcVfo66UBRPCids+jpNhYP96ov6ZNPQxbPUVjB4TcK7DsFfYV+VTAFjs
-         esCTfkYrRkWXwlNmSEikjnJxCyiWr1W3w7bbY/RQ5wjlUs+nu8yEmUNwuCSDeO2VnOfx
-         Lrfu2EKAPokcHTISy893KzVGtH1bNhjRKzZMEWj/kiATCpI+9DgDYnIxpP0wle4/hciZ
-         hLBw==
+        bh=CKDqunHSeZKeRfB3J/WCAgzYcHJnsj5UcMMwptz3yYE=;
+        b=O8oE1HihkdJ/7/sL/YA2lNxd9Ikkl2eVidxwfecdujw+J9I1endS0xdQlKTPmKacM6
+         fjp1XQQlyAGmyfC8M8IaF7AVr3Y/w7nimkTPBpFvklDa/9GVE0a44UK8B71X6w+ni64W
+         K9hO1Hg4MIBNcPMYDSZMuT0Y1408YePe2EHP0gKvStAdJYELvmNAMeN0xIxu7pZX1QSu
+         rUEBVEgRO70gOV3A8aUW0D14caM2yfHldwIOdOzp+ftvAjZTRIw6m8IwAPRyq4ruLBfS
+         ziY2kuVoqa+jZAj4NjI1RgMWM+t/CV1ve9tfMeNzJzdziD4mpIppp66WKiJKr1Lk9E+L
+         gR8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1709615674; x=1710220474;
+        d=1e100.net; s=20230601; t=1709630072; x=1710234872;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=N9EsxA7xIcMoc6bWidjqihc+y/5nGf4cIfIWxqPpPa8=;
-        b=kALZg/Zg1UnFt2mHbUZSdk7iJiRD9TtivUtsbuaSZsCSFYNHej2Ud9ThjMFbUsSnpQ
-         pxV9CCs51yM5slgRHmsCP9GRRYdEtXEQjtTWHilYNBH71FXJLakTDaqLLmsXte+z2C3h
-         hHsc+xrAYUNFhMMkLdUIduYJk7zM35mbHbi69ZiFppzmiipweVr/iPq7CP7l4dtg9dTj
-         4n16glWxKQB1hnyhEombebJNorzHH3Kf7KuCIytWo2qJXvOgi0M0iu4n1+fc5PXyqG1a
-         AYR4Evinrdu1tHGvJot5TvTH4g/XzU+pVq/idhs4Rs99LkWzH/wmnvgXBQ3TaylN966S
-         tPlw==
-X-Forwarded-Encrypted: i=1; AJvYcCX6/PeWCNRWfmTpCgA9pHB/ENHKpFRrkYMvH2avzo4PpTK+ii+5duIbs3YX8UeSAyqqxmhliYrPE3JDeIAfIs8UsbOiWpBcraFBFtwW4rw1E5swME2/nv6ofoHVzHK/10VNCPctFqX6fw==
-X-Gm-Message-State: AOJu0Yyh2UeJQuBIQNOu1Ry7ztJqK+Ej+e3GT+j6d6vBGWaXen38K/37
-	hjotbF1ohaxx8XK4KMF3HSlGRI25CFqa39HP+gNNT1iU9y9mAOtfHTkuxbef
-X-Google-Smtp-Source: AGHT+IGt+gQmgCi0RPyCGvwWImcldNMG0ajogqhATTuXkwY3DF9pfNC9SHGyJ4g/cYKlSEdlf70IQQ==
-X-Received: by 2002:a17:906:f0d0:b0:a44:6b6b:bae3 with SMTP id dk16-20020a170906f0d000b00a446b6bbae3mr8962758ejb.59.1709615673869;
-        Mon, 04 Mar 2024 21:14:33 -0800 (PST)
+        bh=CKDqunHSeZKeRfB3J/WCAgzYcHJnsj5UcMMwptz3yYE=;
+        b=IKcFkcahCz2Zz8fL/JvhWgCux8PGpa8bPGGUjZXaQ6OqTHX26jhd8gltrlxAJD8kvW
+         Bvb7UfwMzSqSRk5hEmudTitwrjkLSqtgF0qdqfzBcipW4ZTDKR+ugqJyMB6O3V3egSYq
+         50iL3SsaglJh+dSr9ebFUXFgFvOMZgRdvHiUDRlyZPJBL3QoEY4VX7/obcNcEGTgmE22
+         Nubw2fb/RpUDAldpHvtdUkkyN3NilUGHa85o2FReUy/u0HFaxMGsN5HhObz66KVF6I5e
+         m7jUhs260Kv79UAtHeNA3Ea251bHeRaYGECJkED9QKXtLCP/vy+eR7CBndYsvP4r2gCJ
+         4pEw==
+X-Forwarded-Encrypted: i=1; AJvYcCW5IDGpjkmWgUbjUEpH2xuuPXxpPH5RhMJGe9rnjGZByGezxLqbwOOKLW/hM6BwO1DtFE+ZiXrcTQhz+8X/TlttuFmxvACPfzHNG0Wr3OeAJ8nofxjzKYV+PtfiglTD0o5iQPqz00LbWw==
+X-Gm-Message-State: AOJu0YyXTd37AK2D7wFnL0YhkSTjY0PP4Spunp8saOU1YPNHO0uZfQ0x
+	c/pPqm6DG2U25q2bCIWS/kwAShha5g6IWruswiktX+0clAEi4kWa/7L+DxtlwHM=
+X-Google-Smtp-Source: AGHT+IE8RjTL22NGd7pnLwV1C+dLDcyiK/GIOUoF4eVFcNyHyBgiK0NXq/GaJP2kKvwsoLWsWy3D+g==
+X-Received: by 2002:a05:6402:22e3:b0:567:80c7:33bf with SMTP id dn3-20020a05640222e300b0056780c733bfmr2054932edb.7.1709630071641;
+        Tue, 05 Mar 2024 01:14:31 -0800 (PST)
 Received: from ubuntu-focal.zuku.co.ke ([197.237.50.252])
-        by smtp.gmail.com with ESMTPSA id ld1-20020a170906f94100b00a451e507cfcsm2449270ejb.52.2024.03.04.21.14.32
+        by smtp.gmail.com with ESMTPSA id g3-20020a056402180300b00566ea8e9f38sm4120912edy.40.2024.03.05.01.14.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 04 Mar 2024 21:14:33 -0800 (PST)
+        Tue, 05 Mar 2024 01:14:31 -0800 (PST)
 From: Dorine Tipo <dorine.a.tipo@gmail.com>
 To: gregkh@linuxfoundation.org,
 	linux-staging@lists.linux.dev,
 	outreachy@lists.linux.dev
 Cc: Dorine Tipo <dorine.a.tipo@gmail.com>
-Subject: [PATCH v4] Staging: octeon: Match parenthesis alignment
-Date: Tue,  5 Mar 2024 05:14:11 +0000
-Message-Id: <20240305051411.6431-1-dorine.a.tipo@gmail.com>
+Subject: [PATCH v5] staging: vt6655: Match open parentheses
+Date: Tue,  5 Mar 2024 09:14:10 +0000
+Message-Id: <20240305091410.2798-1-dorine.a.tipo@gmail.com>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <2024030422-backstage-derby-a1e4@gregkh>
-References: <2024030422-backstage-derby-a1e4@gregkh>
+In-Reply-To: <20240304142603.32982-2-dorine.a.tipo@gmail.com>
+References: <20240304142603.32982-2-dorine.a.tipo@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -71,40 +71,76 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-Correct parameter alignment in cvmx_spi_restart_interface().
-
-This patch aligns the parameters with the opening parenthesis for better
-readability and adherence to coding style guidelines.
+Align the function parameters to silence a checkpatch warning
 
 Signed-off-by: Dorine Tipo <dorine.a.tipo@gmail.com>
 ---
 Changelog:
+V2: Modified subjects to be unique for each patch, as requested by
+<gregkh@linuxfoundation.org>
+    Fixed the warnings in the patches as suggested by
+<philipp.g.hortmann@gmail.com>
 
-V2: Fixed the warnings in the patch as suggested by
+V3: Combined the vt6655 patches into one patch as suggested by
+<dan.carpenter@linaro.org>
+
+V4: Removed the multiple signed-off-by as suggested by
     <philipp.g.hortmann@gmail.com>
+    Omitted the cover letter as the changes have been combined into one
+    patch
+    Reworked the patch subject to be concise
 
-V3: Reworked this patch as a separate patchset as suggested by
-    <dan.carpenter@linaro.org>
+V5: Fixed the commit message to "Align
+    the function parameters to silence a checkpatch warning." as
+    suggested by <dan.carpenter@linaro.org>
 
-V4: Added a changelog at the bottom as suggested by
-    <gregkh@linuxfoundation.org>
+ drivers/staging/vt6655/card.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
- drivers/staging/octeon/octeon-stubs.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/staging/octeon/octeon-stubs.h b/drivers/staging/octeon/octeon-stubs.h
-index 3e7b92cd2e35..44cced319c11 100644
---- a/drivers/staging/octeon/octeon-stubs.h
-+++ b/drivers/staging/octeon/octeon-stubs.h
-@@ -1362,7 +1362,7 @@ static inline struct cvmx_wqe *cvmx_pow_work_request_sync(cvmx_pow_wait_t wait)
- }
-
- static inline int cvmx_spi_restart_interface(int interface,
--					cvmx_spi_mode_t mode, int timeout)
-+					     cvmx_spi_mode_t mode, int timeout)
+diff --git a/drivers/staging/vt6655/card.c b/drivers/staging/vt6655/card.c
+index 36183f2a64c1..3f807d898607 100644
+--- a/drivers/staging/vt6655/card.c
++++ b/drivers/staging/vt6655/card.c
+@@ -81,9 +81,9 @@ static void vt6655_mac_set_bb_type(void __iomem *iobase, u32 mask)
+  * Return Value: none
+  */
+ static void calculate_ofdmr_parameter(unsigned char rate,
+-				       u8 bb_type,
+-				       unsigned char *tx_rate,
+-				       unsigned char *rsv_time)
++				      u8 bb_type,
++				      unsigned char *tx_rate,
++				      unsigned char *rsv_time)
  {
- 	return 0;
- }
---
+ 	switch (rate) {
+ 	case RATE_6M:
+@@ -288,7 +288,7 @@ bool card_set_phy_parameter(struct vnt_private *priv, u8 bb_type)
+  * Return Value: none
+  */
+ bool card_update_tsf(struct vnt_private *priv, unsigned char rx_rate,
+-		    u64 bss_timestamp)
++		     u64 bss_timestamp)
+ {
+ 	u64 local_tsf;
+ 	u64 tsf_offset = 0;
+@@ -297,7 +297,7 @@ bool card_update_tsf(struct vnt_private *priv, unsigned char rx_rate,
+ 
+ 	if (bss_timestamp != local_tsf) {
+ 		tsf_offset = card_get_tsf_offset(rx_rate, bss_timestamp,
+-						local_tsf);
++						 local_tsf);
+ 		/* adjust TSF, HW's TSF add TSF Offset reg */
+ 		tsf_offset =  le64_to_cpu(tsf_offset);
+ 		iowrite32((u32)tsf_offset, priv->port_offset + MAC_REG_TSFOFST);
+@@ -321,7 +321,7 @@ bool card_update_tsf(struct vnt_private *priv, unsigned char rx_rate,
+  * Return Value: true if succeed; otherwise false
+  */
+ bool card_set_beacon_period(struct vnt_private *priv,
+-			  unsigned short beacon_interval)
++			    unsigned short beacon_interval)
+ {
+ 	u64 next_tbtt;
+ 
+-- 
 2.25.1
 
