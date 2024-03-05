@@ -1,123 +1,148 @@
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ed1-f47.google.com (mail-ed1-f47.google.com [209.85.208.47])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2E28E13FE0
-	for <outreachy@lists.linux.dev>; Tue,  5 Mar 2024 01:19:42 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.14
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2CB923EA96;
+	Tue,  5 Mar 2024 04:54:04 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.47
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1709601587; cv=none; b=cAQXHL4hvv1L3/qJu0jbKgfV2EE+OylmoQN/V73MqpDqVM3VHxLJOx/RKVd5S2KhAx/9+iEIfWW1HidbvOV6fKQHTRI/g2toptf3mNdxkGPpjsBfrfXoNzXuKpF0h3FFGh9LqzzBcqlu/YwL4ZaunH8WovBglj81BAuEEJrkPcg=
+	t=1709614446; cv=none; b=FryAMBx9vVlgzethCXn6j+RC8Tx0W2Klg3K6YwmHrkCBkT4cjayiDAk2uY3kdOSBif2qFt79YWRsRMP4al7I3G3cmXtlfjQOTtpft5RqpsN0lHVzdrMJX55rrF5whxLUBWMqrXzFEY4lovCASq3+aRcUvNBUT0Y+QjGVLeogC9Y=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1709601587; c=relaxed/simple;
-	bh=/63I4VKdcAVS2pxWpnmGq/BJ2zyYvI5qAjnpo97cSqw=;
-	h=Date:From:To:Subject:Message-ID:MIME-Version:Content-Type:
-	 Content-Disposition; b=LUug+1oMvh6sl4iapUQgf52Z06W80fr7MPq+F3vYYhbIBzmx+LqY6p0ifMMTNuYrxQbI9V26OlDd4Q3XrG3CNZ8Du9TmvMFr7p4FAbtxcjdQp6jbZ5edTvG8qWfjP1C9tLnxjR0Up7vnRzVxCcFVlgmzbE8evjPhlyHPDDnoCJM=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=KtEREwAp; arc=none smtp.client-ip=198.175.65.14
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
+	s=arc-20240116; t=1709614446; c=relaxed/simple;
+	bh=/71kuDzJizLk1aETotuFiq6Yvfeba53Jahr3NLeTUVw=;
+	h=From:To:Cc:Subject:Date:Message-Id:In-Reply-To:References:
+	 MIME-Version; b=o1ZAkQLB9PLPLbuUQtoIW/GHGAtN35GXZFgFTQ/N8nsOzt+bf9aKUV4PN7PfSI6rkmT0nmPch9u86G2TPJKdZ/C9qGh96cDs/t/Jlv8lVYFvVBRTvNZ/TTL/jgYw4seYMFj9w9407mh3rqmWsNfWO2zN7A7w2NEJlZsX+mUt5OM=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=ZVzjdqnm; arc=none smtp.client-ip=209.85.208.47
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="KtEREwAp"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1709601584; x=1741137584;
-  h=date:from:to:subject:message-id:mime-version;
-  bh=/63I4VKdcAVS2pxWpnmGq/BJ2zyYvI5qAjnpo97cSqw=;
-  b=KtEREwAp9RrWw9v7on8XrO4kLON9mGpWIvhsUoLQAUTidhd4w05tDiQw
-   vBORBBkyvnZELZOvaM6Y5dj/jSByWcsAf84pZQKcLtjRHXvahaO+1zGV4
-   qyJoaECdakc9yHXiKcJ2kGQUUwjIfE+50j6gyJXtilzt12dMWhzP+Ge0D
-   ewk6cAKbX5xV7mxKMJjTy67Gbka5Zjp3O/RvXlN6zIzTGmc5XFq4Poo8w
-   R9ir42ErTZkzzivUUoXrn5REA4v65QIAL4xIkxPdmJng/5UB9VgZ5O7kI
-   ip1kUE10rA9APYSJX/nJILCtE3JqSePp9ZasytCTzzN+8MNfKvnwy23gj
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,11003"; a="7948481"
-X-IronPort-AV: E=Sophos;i="6.06,205,1705392000"; 
-   d="scan'208";a="7948481"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
-  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Mar 2024 17:19:43 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,205,1705392000"; 
-   d="scan'208";a="13844530"
-Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.209.24.237])
-  by ORVIESA003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Mar 2024 17:19:43 -0800
-Date: Mon, 4 Mar 2024 17:19:41 -0800
-From: Alison Schofield <alison.schofield@intel.com>
-To: outreachy@lists.linux.dev
-Subject: Welcome Summer 2024 Applicants
-Message-ID: <ZeZzLWtk2nZ1Pcgw@aschofie-mobl2>
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="ZVzjdqnm"
+Received: by mail-ed1-f47.google.com with SMTP id 4fb4d7f45d1cf-5643ae47cd3so7001481a12.3;
+        Mon, 04 Mar 2024 20:54:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1709614443; x=1710219243; darn=lists.linux.dev;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=tYAwummU5v15mvPDS8bHkza9KKI7KBb6rIoQ8Kl4uQE=;
+        b=ZVzjdqnm9xO+nuXSWwplDcikXWjuxjp1BlhOVh4DbyxsXQADThp27z6lw5GqY5uPMY
+         8580zyv/lU1BOG6dP9d0WyZX9k4xbD2dWpwMREJOPqa0+ya21sPl6CilfzhPj4XqHg17
+         E03euP0JQdC9AsK3o2BQTVRsEck5ZTwc4BX2d/M8vZ6nQP4fA3m6ekonCWda+RsyCag9
+         8YHiF+/J4+u6rmAACVDF0K9ohEveCMGzdIrw7VWbIWJL9cHJ9fJad6l+l8CKHVz31wZ7
+         ZkvHe61VgYNQofZCN4FszQXJzqGIAkmVbtRsJeTJ6hba81qJjtAs4D1a6QXECCDeKWrn
+         ZQkQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1709614443; x=1710219243;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=tYAwummU5v15mvPDS8bHkza9KKI7KBb6rIoQ8Kl4uQE=;
+        b=ozN8USoepe3r3bxR0rRhAKy9Qef5T9mTwKBRVgoRsihNzpBPRzpKLxxCXBVzdhhGL3
+         2Zi6YLquh5OODmFAgBnu0OUB91U8EEfMHwvDm9avjxaGneemv21S6DtvcCddKYLtsnsh
+         Ce8eUTXJ7I2jBBfrb06dE+Qht67KNxh+1x/G6QGDZ3tNNY2LQ9df0qxV6RcuYN9aOFat
+         65vbxjuAWIJ5tJ1n8wQA+WiJwTvgE1V8VLkOoM5Klg+FZSPTRbdtmwZDkrj1V8noSCZ9
+         /Y2PQlWZZuHx8uPRVh7/VDK04zLh6wEtFST+o4nQTPaqJhkN/FSvz6Z1YRNaHEpVGPzc
+         Ee7w==
+X-Forwarded-Encrypted: i=1; AJvYcCW00+ixceZUZ79HuUxRtpaJ38q3glzyWjtz/H2YWDbhVe18Rr0iknqqnxb5GatkN2oEtHs96aHqRpd+BqSm/bjwpJo22QrWDdir6x2LgpXtdLv5bRs9psFmM4Il3JNdvXRQ0tprF8/CoA==
+X-Gm-Message-State: AOJu0Yyybc7wWTLsl0Zg+oQoVrSjHXaq2DZmfm+vSiAz/JIXrE7Ga5IE
+	txUw2GRW8XBCU07r39bXsa6QuqShSLRwarV78cVKiaVvZjdfQvP7
+X-Google-Smtp-Source: AGHT+IH7d0LxzJV/QwA2UaFSK9I03OyhgrdOHcZ9BRKG9MhX/86AqdfgP89DeS90t/yRKe5T6NGSpQ==
+X-Received: by 2002:a05:6402:1e86:b0:566:c388:ceb4 with SMTP id f6-20020a0564021e8600b00566c388ceb4mr7735469edf.28.1709614443335;
+        Mon, 04 Mar 2024 20:54:03 -0800 (PST)
+Received: from ubuntu-focal.zuku.co.ke ([197.237.50.252])
+        by smtp.gmail.com with ESMTPSA id g13-20020a056402428d00b0056793ab2ad8sm86998edc.94.2024.03.04.20.54.01
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 04 Mar 2024 20:54:02 -0800 (PST)
+From: Dorine Tipo <dorine.a.tipo@gmail.com>
+To: gregkh@linuxfoundation.org,
+	linux-staging@lists.linux.dev,
+	outreachy@lists.linux.dev
+Cc: Dorine Tipo <dorine.a.tipo@gmail.com>
+Subject: [PATCH v4] staging: vt6655: Match open parentheses
+Date: Tue,  5 Mar 2024 04:53:38 +0000
+Message-Id: <20240305045338.4654-1-dorine.a.tipo@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <2ac49025-0cd0-4ea2-b06f-f1bfb5f8ee8f@gmail.com>
+References: <2ac49025-0cd0-4ea2-b06f-f1bfb5f8ee8f@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
 
-Welcome Applicants,
+Align parameters in static void calculate_ofdmr_parameter(),
+bool card_update_tsf(), card_get_tsf_offset(), and
+bool card_set_beacon_period().
 
-Thank you for your interest in the Linux Kernel Community!
+This patch fixes the alignment of parameters within various functions
+with the opening parentheses.
+This change improves code readability and ensures adherence to coding
+style guidelines.
 
-The 'Contribution Period' for the Summer 2024 Cohort runs March 4
-through April 2.
+Signed-off-by: Dorine Tipo <dorine.a.tipo@gmail.com>
+---
+Changelog:
+V2: Modified subjects to be unique for each patch, as requested by
+<gregkh@linuxfoundation.org>
+    Fixed the warnings in the patches as suggested by
+<philipp.g.hortmann@gmail.com>
 
-Our contribution period process works entirely via this mailing
-list. Make sure that you read over the emails on this list daily.
-Mentors and I will be posting updates here. Most importantly, it
-is where you will learn from each other, by following the questions
-asked/answered, the patches submitted, and the reviewer feedback
-offered.
+V3: Combined the vt6655 patches into one patch as suggested by
+<dan.carpenter@linaro.org>
+V4: Removed the multiple signed-off-by as suggested by
+    <philipp.g.hortmann@gmail.com>
+    Omitted the cover letter as the changes have been combined into one
+    patch
+    Reworked the patch subject to be concise
 
-You found this email, now make sure you are personally subscribed
-to this list: 
-Subscribe: outreachy+subscribe@lists.linux.dev
-More subscriber options: https://subspace.kernel.org/lists.linux.dev.html
-View the archive: https://lore.kernel.org/outreachy/
+ drivers/staging/vt6655/card.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-Ask your questions on this mailing list. If your question is directed at
-an individual, then 'CC this mailing list. This way you'll be able get
-quick responses to the issues you're facing. Please help other applicants
-who face issues that you've addressed. 
+diff --git a/drivers/staging/vt6655/card.c b/drivers/staging/vt6655/card.c
+index 36183f2a64c1..3f807d898607 100644
+--- a/drivers/staging/vt6655/card.c
++++ b/drivers/staging/vt6655/card.c
+@@ -81,9 +81,9 @@ static void vt6655_mac_set_bb_type(void __iomem *iobase, u32 mask)
+  * Return Value: none
+  */
+ static void calculate_ofdmr_parameter(unsigned char rate,
+-				       u8 bb_type,
+-				       unsigned char *tx_rate,
+-				       unsigned char *rsv_time)
++				      u8 bb_type,
++				      unsigned char *tx_rate,
++				      unsigned char *rsv_time)
+ {
+ 	switch (rate) {
+ 	case RATE_6M:
+@@ -288,7 +288,7 @@ bool card_set_phy_parameter(struct vnt_private *priv, u8 bb_type)
+  * Return Value: none
+  */
+ bool card_update_tsf(struct vnt_private *priv, unsigned char rx_rate,
+-		    u64 bss_timestamp)
++		     u64 bss_timestamp)
+ {
+ 	u64 local_tsf;
+ 	u64 tsf_offset = 0;
+@@ -297,7 +297,7 @@ bool card_update_tsf(struct vnt_private *priv, unsigned char rx_rate,
 
-Support may also be found on IRC. Join the #outreachy IRC channel on
-irc.gnome.org, and the #kernel-outreachy channel on irc.oftc.net.
+ 	if (bss_timestamp != local_tsf) {
+ 		tsf_offset = card_get_tsf_offset(rx_rate, bss_timestamp,
+-						local_tsf);
++						 local_tsf);
+ 		/* adjust TSF, HW's TSF add TSF Offset reg */
+ 		tsf_offset =  le64_to_cpu(tsf_offset);
+ 		iowrite32((u32)tsf_offset, priv->port_offset + MAC_REG_TSFOFST);
+@@ -321,7 +321,7 @@ bool card_update_tsf(struct vnt_private *priv, unsigned char rx_rate,
+  * Return Value: true if succeed; otherwise false
+  */
+ bool card_set_beacon_period(struct vnt_private *priv,
+-			  unsigned short beacon_interval)
++			    unsigned short beacon_interval)
+ {
+ 	u64 next_tbtt;
 
-Your first task is to walk through our First Patch Tutorial:
-http://kernelnewbies.org/Outreachyfirstpatch
+--
+2.25.1
 
-The tutorial leads you through submitting your first patch. Please
-do not submit your second patch until your first patch is accepted.
-Key point is that it is really helpful and efficient (for both you
-and patch reviewers) to refine your patch sending skills one patch
-at a time, rather than having multiple patches in flight that require
-similar rework.
-
-You must 'CC all patches to this Outreachy Mailing List and to the
-appropriate mailing lists and maintainers in get_maintainer.pl. The
-tutorial walks you through how to use get_maintainer.pl.
-
-Once that first patch is accepted, please record that contribution
-on the Outreachy website. It will serve to check your eligibility.
-Only eligible applicants will be able to log contributions on the
-Outreachy website.
-
-Congratulations on getting your first patch accepted into the Linux
-Kernel! Celebrate, then do more!
-
-Once you have several cleanup patches accepted into drivers/staging by
-GregKH, we encourage applicants to move on to complete Starter Tasks
-outlined by the mentors here:
-https://www.outreachy.org/apply/project-selection/#linux-kernel
-
-Please know that you can start reading about, ramping up on our
-single project - Landlock, right away. We only have the rule that
-you don't contact the mentor or submit a project starter task
-until after your cleanup patches are done.
-
-Ping me individually if you think you are done, or close to done,
-with cleanups. Also, folks who already have cleanup patches from
-prior work, email me about that too and let's see if we can move
-you on to project tasks.
-
-All the best and thank-you for contributing to the Linux Kernel,
-
-Alison Schofield
-Kernel Community Coordinator
