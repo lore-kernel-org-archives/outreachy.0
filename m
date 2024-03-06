@@ -1,93 +1,109 @@
-Received: from mail-wm1-f47.google.com (mail-wm1-f47.google.com [209.85.128.47])
+Received: from mail-ed1-f42.google.com (mail-ed1-f42.google.com [209.85.208.42])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B14B85381
-	for <outreachy@lists.linux.dev>; Wed,  6 Mar 2024 04:59:46 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.47
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C833214AAD;
+	Wed,  6 Mar 2024 05:40:07 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.42
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1709701189; cv=none; b=E26oRNz4ixNoGnfQrtMAMTPzfPLHSNzujZWdWcabNW/po3lngFBcPVQhyf5Or3sw1KWVol1asHt4yBb6PtIYO9VKA+oZY53VYvwxpZDY6HMOWuywPqCo4BiCGY4a8sSQ9K3cFYAx94EFgq2k31744ZAMDjQWYOJG+5ilWD0Apcw=
+	t=1709703609; cv=none; b=Usv45BSJi6I43fSPTra2msAaYXICMjNpvnuZME5bEtNMI7GvrYo14jJq4OQPUM+omPnJxYGtp9q6AqZo+QorF14F3mrc2Z1Th0o97Y2AA1BbBng6TZrCVhn3i9ev5M1c47zqq8mYCoV+w6A/7uVYVCBfpvqByQalQQLZ3/adLZ8=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1709701189; c=relaxed/simple;
-	bh=CS5/u6oEIV3D2Q8rTKYtBOZSOpW9K8Q0aBvfZgSffrE=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=nVYXFiFbb0O3/J+AWt4KADi0BbAndpnE7gxwCT8H7zcc+gUhYFrlrWAwX/0U2JHsu8RClZrNnql4ZecwIBhw0XAtCW1BZlA4vAAkOf330WBflda1FgDaOuUwogI7RGIGmXSDMp8a2jM/Q/4AK03CR6Uig409RpneMcxnFLeQZ5I=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=LFd8kaGe; arc=none smtp.client-ip=209.85.128.47
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
+	s=arc-20240116; t=1709703609; c=relaxed/simple;
+	bh=1EhWttxDjBUO01yxjjzBzR8Hxv+IQuEiuVgkvjLJR2E=;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+	 In-Reply-To:Content-Type; b=jm58PiOP6/e6xe5vOShSyvXbdEUnNfhxc4nccvo2W6RR/tfWbTn1ittOEDTw1StElPWn1xpqmGk8N4/n0Z9IH4lfV/vKb3qHig8vdJ9NRpzrXoc1KNbdEAf0oQ8r8cLWN9Kx7AzpjtRY6ZW51dtpIw+WizJ8/yP1kmF91vRrjzI=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=N/u1nmLq; arc=none smtp.client-ip=209.85.208.42
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="LFd8kaGe"
-Received: by mail-wm1-f47.google.com with SMTP id 5b1f17b1804b1-412f1ccf8d8so4772665e9.1
-        for <outreachy@lists.linux.dev>; Tue, 05 Mar 2024 20:59:46 -0800 (PST)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="N/u1nmLq"
+Received: by mail-ed1-f42.google.com with SMTP id 4fb4d7f45d1cf-5663da15a86so1067415a12.1;
+        Tue, 05 Mar 2024 21:40:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1709701185; x=1710305985; darn=lists.linux.dev;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=hprKIsL33w5QQg1W409HkLCjKgql+fd6wR2Huo+0dp8=;
-        b=LFd8kaGetTlb/xQCIOt9uUNYEF/iKhWLnN0CNU5ptwJuW+JRhN53JGefmECwYq+d5E
-         q6Rcx/CI1DBOxqCm2c3ygqvL0h8hsOlbndwFCH2CIikpMepBow2G9phxPgASHW82qfe/
-         Lxs9Se4AEwkmAt9T93c6v/u1zIjyKwMeL7i0ENl4QhPQDsQs0vMWyFiCUmkcyLhqzjuj
-         taO/8YK1Udpod9Up8ceBc6NfuqjqEncEWCmXgaaFBsl6b2oNNz8hKwEmglNfM1f/pmsJ
-         MSmo8WKrM+mOocXbjEaNKOwyh5QCAZ50xsPh+4uqdcu/WpkUq9w+K1FOx/d6BFTwKUu3
-         YAUg==
+        d=gmail.com; s=20230601; t=1709703606; x=1710308406; darn=lists.linux.dev;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=AIMzFHVpAJ8WamzqrCrxK0e3Ww2qspLuG4G6c3YXewQ=;
+        b=N/u1nmLqRCtuYJZsYVDNmlf5AQZ+yU1TttNwvP8uWufRiTbHQlxKOdARPYdjfrnGBG
+         oonA2C3iWYv9q6wSsCtti13VxFC2Bi8sw3O11VTVxBnyWXFlatrioJa5mGz188b+QbYd
+         cXh8ZfaqrHWuHfkMIKdmjCHC2L40M+7s2qFC4LjN4VecQzXw7JqTgU+SSdm8W3tJ5VeG
+         U5cOkijsdzL3yrBY5ikArrHtaKBJ422L2coQwmcxLq0IfiQo4vM2MZezuL40LpcrmVp+
+         airFZHa6IaAuMkZvyUKRrhDla/cy2Uv0/7vJR3I4NqESphxDUx+sHeD8abWbTsMCuFn+
+         6RSw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1709701185; x=1710305985;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=hprKIsL33w5QQg1W409HkLCjKgql+fd6wR2Huo+0dp8=;
-        b=ViwLxaymX8Tcctb1sGS7xVqTwaeKB73TGtZAbQQkfvSxcR7yYPDHc4KKRs5IgthYmE
-         4VGFYtKkd82bLULURCJcVCbAMPD0ROFOeqAOz40gmk1KqE6/O1VHa/zrRAuKHkYNI5vp
-         N0wpl1npfp1MjHu824C1UCDRNwQZXWFGUsHjb+7IHBZf0+9zsmcbXzqAcE9Qzzd1u21o
-         kldu/Eo6cImvjEpLGBnm4TnvF1Fd5GBmBmeqREmn1h7ZUb8Ej2PoYVEhi3h6o+X3nV5I
-         n2G/SPovgH++LaixVJd4Pko2FixCMKND1mthX90HGQh719lXDeTqtRYU2P/1wpO9XwsV
-         kkwA==
-X-Forwarded-Encrypted: i=1; AJvYcCXLWCZyvPbNU9rarnopZrbVGFkwYz/u4pgxxWp5Af1OQRnXsZDvzThKqX7rmpHVhLPOAxRwjK7CobMyS0yDEdc0eorw9viUP87Z
-X-Gm-Message-State: AOJu0Yy2zb3mbtuf77skS/5FGwS+/M8Q8i9ZpjeU6sMNkGpn7qj43smU
-	PckXt04pp06rOsE3QecBypj/fyB3VTVhjug/2yF+Z6OydoZGWu3KwW6aJdgW4+o=
-X-Google-Smtp-Source: AGHT+IGNx6oFyrh2qIFYO2uiKmvlhsTk+Kkc344zSLR8+Ll41GK0MZhkVT9Ua4dhquxwseOotb5uLA==
-X-Received: by 2002:adf:f74d:0:b0:33e:cc6:a998 with SMTP id z13-20020adff74d000000b0033e0cc6a998mr8947282wrp.6.1709701184840;
-        Tue, 05 Mar 2024 20:59:44 -0800 (PST)
-Received: from localhost ([102.222.70.76])
-        by smtp.gmail.com with ESMTPSA id n3-20020adfe783000000b0033b79d385f6sm16308390wrm.47.2024.03.05.20.59.43
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 05 Mar 2024 20:59:44 -0800 (PST)
-Date: Wed, 6 Mar 2024 07:59:39 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Philipp Hortmann <philipp.g.hortmann@gmail.com>
-Cc: Dorine Tipo <dorine.a.tipo@gmail.com>, gregkh@linuxfoundation.org,
-	linux-staging@lists.linux.dev, outreachy@lists.linux.dev
-Subject: Re: [PATCH v6] staging: vt6655: Match open parentheses
-Message-ID: <8add5a04-baab-49b8-b1b0-7b85131902f3@moroto.mountain>
-References: <20240305091410.2798-1-dorine.a.tipo@gmail.com>
- <20240305093213.4280-1-dorine.a.tipo@gmail.com>
- <f76416c1-157f-4c31-8443-a63194a630be@gmail.com>
+        d=1e100.net; s=20230601; t=1709703606; x=1710308406;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=AIMzFHVpAJ8WamzqrCrxK0e3Ww2qspLuG4G6c3YXewQ=;
+        b=CNKb1zDOnzBnXX2U0CFALAMMBq9fewDEbs1ir0Y2UwDCEGHQyfaaRy8+iTdJed8ypC
+         nfIns6Xb1i31YnKovUXne/aO16FKOEIL3P5runQj2A7Kg2nG0pZBHXz66UMuINeM6JyO
+         vjOGCpOc1QuYuQ9c1L4bIeqZ8aFfwfwJ0gCAusxtsWO9Ici/L/Fc0GURuZ/+Z/g3SVw1
+         6v7jRUZpsHqtGm3Z9jMZyrYUnAiOgLHv5pMHyQbItO3NHwajzLCsyvh4ctuIV8LBJXLI
+         FKYhbeoUCxjqks8lwf7yM4720Nzmuh0+tAyw1go+690k0R04ygDLs9zkpv5kB1EcD2uL
+         2D1g==
+X-Forwarded-Encrypted: i=1; AJvYcCW4A5Egb6UyGlvs7Pd+7xq21oIf7rQBEa5ThKagK/wMz3TYQzTmSkmzwYUlfTBpPseiImxZCBC7mesijQJt8vyUBWZqRdTGkl0+LnfQYFDWFPgeGhXL+Cw8BgJbM16YTOmtOR///obiog==
+X-Gm-Message-State: AOJu0YxvtH0+HpywoIikZDBDFyD9Z3DCSRH6En2nYN4RD9XpyaCJKfQU
+	KpR1ofhmNZKcNogrnCEUajWxP1A3XH/ghZuELHAmqCen68b2Q9Mh
+X-Google-Smtp-Source: AGHT+IHnbf0D7IdyT1bf1okQhvgPLU49bxY2cg+R2wKUDaBI2F/IwBFgW/dP0oGopFlFHtzYlzciRA==
+X-Received: by 2002:a17:907:1603:b0:a45:be6a:f600 with SMTP id cw3-20020a170907160300b00a45be6af600mr191172ejd.1.1709703606079;
+        Tue, 05 Mar 2024 21:40:06 -0800 (PST)
+Received: from [192.168.0.102] (p54a07fa0.dip0.t-ipconnect.de. [84.160.127.160])
+        by smtp.gmail.com with ESMTPSA id lf7-20020a170907174700b00a44d66a16efsm4655326ejc.2.2024.03.05.21.40.05
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 05 Mar 2024 21:40:05 -0800 (PST)
+Message-ID: <66564bca-3f9a-4848-8453-c2ecd5f061ac@gmail.com>
+Date: Wed, 6 Mar 2024 06:40:04 +0100
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <f76416c1-157f-4c31-8443-a63194a630be@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6] staging: vt6655: Match open parentheses
+To: Dan Carpenter <dan.carpenter@linaro.org>
+Cc: Dorine Tipo <dorine.a.tipo@gmail.com>, gregkh@linuxfoundation.org,
+ linux-staging@lists.linux.dev, outreachy@lists.linux.dev
+References: <20240305091410.2798-1-dorine.a.tipo@gmail.com>
+ <20240305093213.4280-1-dorine.a.tipo@gmail.com>
+ <f76416c1-157f-4c31-8443-a63194a630be@gmail.com>
+ <8add5a04-baab-49b8-b1b0-7b85131902f3@moroto.mountain>
+Content-Language: en-US
+From: Philipp Hortmann <philipp.g.hortmann@gmail.com>
+In-Reply-To: <8add5a04-baab-49b8-b1b0-7b85131902f3@moroto.mountain>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 
-On Tue, Mar 05, 2024 at 11:01:09PM +0100, Philipp Hortmann wrote:
-> On 3/5/24 10:32, Dorine Tipo wrote:
-> > Align the function parameters to silence a checkpatch warning.
-> > 
-> > Signed-off-by: Dorine Tipo<dorine.a.tipo@gmail.com>
-> > ---
+On 3/6/24 05:59, Dan Carpenter wrote:
+> On Tue, Mar 05, 2024 at 11:01:09PM +0100, Philipp Hortmann wrote:
+>> On 3/5/24 10:32, Dorine Tipo wrote:
+>>> Align the function parameters to silence a checkpatch warning.
+>>>
+>>> Signed-off-by: Dorine Tipo<dorine.a.tipo@gmail.com>
+>>> ---
+>>
+>> Hi Dorine,
+>> I tried to apply your patch but it failed. I do not really understand why.
+>> Have you edited the patch manually or was it created by git?
+>>
+>> Thanks for your support.
 > 
-> Hi Dorine,
-> I tried to apply your patch but it failed. I do not really understand why.
-> Have you edited the patch manually or was it created by git?
+> When you resend, could you start a new thread?  We used to advise people
+> to reply to the same thread but these days we always tell people to
+> start a new thread for a new version.
 > 
-> Thanks for your support.
+> regards,
+> dan carpenter
+> 
 
-When you resend, could you start a new thread?  We used to advise people
-to reply to the same thread but these days we always tell people to
-start a new thread for a new version.
+Hi Dorine,
 
-regards,
-dan carpenter
+one more thing would be nice. Could you make the Subject more unique? 
+Just think about the many patches the maintainer and reviewers have to 
+read and recognize for some time. Please add a filename or one of the 
+function names.
 
+Thanks for your support.
+
+Bye Philipp
