@@ -1,108 +1,92 @@
-Received: from mail-pl1-f182.google.com (mail-pl1-f182.google.com [209.85.214.182])
+Received: from mail-ej1-f44.google.com (mail-ej1-f44.google.com [209.85.218.44])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 72F9A4A35
-	for <outreachy@lists.linux.dev>; Fri,  8 Mar 2024 03:34:59 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.214.182
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AE1AD52F89;
+	Fri,  8 Mar 2024 09:10:22 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.218.44
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1709868900; cv=none; b=P3uToiaSR2kzlqHy3HKeboSfYBcoaWuFRODMoyVnm8i3FxmfM+aYhekpMBdmaO0vI0xRv8uuec+gTj/YKFPrkqc2Cg1LR/YiV7P8U3REJnDQt6oc1gk6vZoeFmPPK3ejTN8wZBxnJiQuoE/aAgdqrpLvGFet4OEXeJsN36Lzz6g=
+	t=1709889024; cv=none; b=JZ0zUPtl8i2fR426ZG3RTwrO8xYVIO5/+nvBguP1Y9sVRMje23yQMnpDjnZKiFQ8gfNTzSklHp/Z+I+6NkH6v4C/iu8m3dEC/RmnN/bZnD7xdms3BdUAsKPBzXqOUPa/qU1ju1nlXl0okNwD+4gT9D/E83k89jKyeb8sNuJI5qc=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1709868900; c=relaxed/simple;
-	bh=2rNEKWtByvREHolpPK7H4PBTGqYAr4T7wKko2YIrjOc=;
-	h=Date:From:To:Subject:Message-ID:MIME-Version:Content-Type:
-	 Content-Disposition; b=AaT8WXYaRSKR2d6JmPZc5/qrOb/xqVEFTjHK5j4wLxy1/ZiL43Hx690TRhfs1A/36+ZZmWu9wetIdAMawASQxCDRG1yZIpo7jIEO9Am26H2aS4VOTNGkUINud+aD2XoWxo0+4FUZihlxKjJN+iWR61SHU+3HxGzO+Qx5OhNRR/Q=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=WanKt/m4; arc=none smtp.client-ip=209.85.214.182
+	s=arc-20240116; t=1709889024; c=relaxed/simple;
+	bh=UNDCeg4Dpm8uipaUYfGgtRdthszBUXhI3wu3rtrL9JU=;
+	h=From:To:Subject:Date:Message-Id:In-Reply-To:References:
+	 MIME-Version; b=A/rGH7HosUF9TvcBgNTpk9BtnVVLTYpy1qjMVm9x/rdz+IFt7ayba4Og3pdU0sYbMDex0952zDu7CB3G8Kk3kdmvWULlzk7ElKv4a9e52hp4s6hkR7cAZ3CMg9zqwtfWE/lJ+hieETlY4DcDkYY//nkgozihRzq5P2dJsgvzFIU=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=Bwf7fmrL; arc=none smtp.client-ip=209.85.218.44
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="WanKt/m4"
-Received: by mail-pl1-f182.google.com with SMTP id d9443c01a7336-1dc13fb0133so2952985ad.3
-        for <outreachy@lists.linux.dev>; Thu, 07 Mar 2024 19:34:59 -0800 (PST)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Bwf7fmrL"
+Received: by mail-ej1-f44.google.com with SMTP id a640c23a62f3a-a456ab934eeso275739466b.0;
+        Fri, 08 Mar 2024 01:10:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1709868899; x=1710473699; darn=lists.linux.dev;
-        h=content-transfer-encoding:content-disposition:mime-version
-         :message-id:subject:to:from:date:from:to:cc:subject:date:message-id
+        d=gmail.com; s=20230601; t=1709889021; x=1710493821; darn=lists.linux.dev;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=gdpz57PmibBVpvzVpskMtAPMTdGFH+xQvrX79zWrRhs=;
-        b=WanKt/m4w3s5OKlfUuoPMl8AW71xc4K0FGn96JNYQrNbyP/Ufxa3vB/tkhDG9emHY7
-         Bgi73suwTtQt2uAYbfto1W3bamloTqxZdaWWwqY9K0lgmaTR16A/8Xs2oaCNLwim9fre
-         WerzQV45OmfDdqc4jxnd8TLw8i1pfaSsYI2sIkcBOF9Wr4G/cLKTI495iKQnBfKUpnOp
-         OAJugRpp3u0J9g7FO16XKlo55kGK+aDGJwByWc1iZigeSuoEZEOHcTIOOHJRg1ZdPQ+P
-         pwQso1zLTVwejcaP7DJ4ucOBTb92AbfFyz5+I/+wCgcET9u/LpVCM7SPTNsCq8Eu9sQ+
-         /pMg==
+        bh=UNDCeg4Dpm8uipaUYfGgtRdthszBUXhI3wu3rtrL9JU=;
+        b=Bwf7fmrLp2mFbKjofi9z3WG0f2/wZge/0LP1BYpNJbiSeOM5/6bBa+GI8wZGGnoXK/
+         N8LWZc+qnUc35ODx9dIFfmyEheP2qMZIfVGFO6pOG0q8X7j7FAHlBykuhk5Sp3ifsEzz
+         NSUzlhyFIz9fsk88J6xoAnrbuINeJaZVFKS906xyg+I5GDQ6y1Wugq0B0IS/P6Um9Isw
+         kS4aaPE0mJecwR4teRYAOKSdiIzeCIwc7bz7uQ8FMTAoUCa9iPbfzSi62WTHIryZIP+q
+         MigpTJ0whTM4mQJAIzVrCHusrvNN85AGQ6MzUMm8xKwzXrvS/w2YOU0zTMgXlMH635U6
+         j/wQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1709868899; x=1710473699;
-        h=content-transfer-encoding:content-disposition:mime-version
-         :message-id:subject:to:from:date:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20230601; t=1709889021; x=1710493821;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=gdpz57PmibBVpvzVpskMtAPMTdGFH+xQvrX79zWrRhs=;
-        b=clQzqlpctTV8aQfz02Y/KYqWTjHYLNf5K5GIbvIVDTpYXvaUAuaU1l6RabnmkKMBlP
-         zQxJTGpDGxfI11RIm5Tlq5d8sEYor5Hm1EuQe0Xyasz4q7Z1MuDkpSRvAgjWwU7mAz6B
-         vSmUkR2dt7u2vWtx0qvjDowXQjt/S62s20e/pv3rqUC+MdJSAcM0lN7BPtuFNpt1wQxH
-         FhmPKZK4qmN/wWlCmjNIbbfBEnKa5yHkW1jdclW/DUoA2sokzMZHn0Q0pB4EsOqmSiJX
-         LH5pyp6VMB+Qa1bpd/iPnTu6dMMkokuHdHVXro/O5f3uMGB+dcmiOk8AhleiEUaFOu0B
-         z5xQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVip6hDOG9G1NM0jO2VjX8KGkxrQxo9WZzgjVgSqiyyCwBsHeJvrhvXOZqPIHlA4aERQkYAKfag9mZJeGA6S72/ym5VkI2D8JhR
-X-Gm-Message-State: AOJu0YzEkEhUAmQhCat7qHydTFfv1ZsH3q2SAzvHQZwX0jgZ65kel1yT
-	vEkulsKdljqaXrpgb5pzAEdSRc43PJnYxykXlUsJL77EBGo+s1Ysc2OrQ94EhSk=
-X-Google-Smtp-Source: AGHT+IHJ4vZ0uigmYn4pBn5dDe7CBqG0e9yEfj2SYk7k6rtrgj1Dxxu5pVbQuOXHx44eAHbcSX3pRg==
-X-Received: by 2002:a17:902:e78c:b0:1dc:6c33:df8b with SMTP id cp12-20020a170902e78c00b001dc6c33df8bmr10039427plb.13.1709868898533;
-        Thu, 07 Mar 2024 19:34:58 -0800 (PST)
-Received: from toolbox ([189.6.212.130])
-        by smtp.gmail.com with ESMTPSA id im15-20020a170902bb0f00b001dcd7a0b5f1sm15749080plb.158.2024.03.07.19.34.57
+        bh=UNDCeg4Dpm8uipaUYfGgtRdthszBUXhI3wu3rtrL9JU=;
+        b=vx4p3SJGsuevuTVSTzdMrYQ6XdZclr6B0zg4fpmbVSspmhWIEDi8XzUOGH01XEJrrM
+         dbB3oAe8AZTN6xYzSPnX9PUt+MjkymwQOGYaplMtUTCCGoXLajmLtQ7h86aXOLcMcUto
+         AYfK2stzGSszlQbLMwKejOgGa3TP0rAh3smJbZ7aG2A9W2NvqXZMnX2q7w7SG0z4B0qf
+         F1mrJGIKPJlKgkbRrv1O04vN5/DhjkPuSHA9Oqd5PBjo2oP2ty2zzaGO4JxG8KskGmjG
+         4wGEUmRHoN+C7mVAjxQwEdQfP2okvNdGqAivjL/x4ZQ0fDeoTdHpGpK5ujJ1pFakRdQc
+         PXkw==
+X-Forwarded-Encrypted: i=1; AJvYcCWoqNZrpYkpz1K8SXGkuZbQ+9nnfhDyRXW02m0HGh4GIB+MQ6GssszE8y2ou0WCnPNi4vVLrAEOQhyepZwEAc31HUJSZ2QGEt+YVsDejd4JDr3OW1hlq3PP1E8T3k4mzDUApJ8Q2nLeYQ==
+X-Gm-Message-State: AOJu0YzIY7PuPFT6+qXK8CfqBwxmeTRmrlm3xekihl3IiXhZtZCvyv4a
+	b1kQ46HQknYb65aeOhowXbkopA+hsy14TYGZbhL85Od8zmgAh9ZKpC3iQGvzI0A=
+X-Google-Smtp-Source: AGHT+IEhMTXhPTCEQzHL2SwliBO4O+AxgTRXfRq6WvdJ/tj/uSKVlyG8EeBWJhNNplhGA8Zt1pkzcw==
+X-Received: by 2002:a17:906:7809:b0:a3f:6513:1489 with SMTP id u9-20020a170906780900b00a3f65131489mr13518551ejm.55.1709889020647;
+        Fri, 08 Mar 2024 01:10:20 -0800 (PST)
+Received: from ubuntu-focal.zuku.co.ke ([197.237.50.252])
+        by smtp.gmail.com with ESMTPSA id n18-20020a170906119200b00a45e04e3ebdsm1038222eja.83.2024.03.08.01.10.18
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 07 Mar 2024 19:34:58 -0800 (PST)
-Date: Fri, 8 Mar 2024 00:34:50 -0300
-From: Pedro =?iso-8859-1?Q?Guimar=E3es?= <moisespedro15@gmail.com>
-To: gregkh@linuxfoundation.org, outreachy@lists.linux.dev
-Subject: [PATCH] staging: axis-fifo: Fixes parenthesis alignment
-Message-ID: <ZeqHWuerM_aPsd1U@toolbox>
+        Fri, 08 Mar 2024 01:10:20 -0800 (PST)
+From: Dorine Tipo <dorine.a.tipo@gmail.com>
+To: gregkh@linuxfoundation.org,
+	linux-staging@lists.linux.dev,
+	outreachy@lists.linux.dev
+Subject: Apology and Request for Resubmitting Patch
+Date: Fri,  8 Mar 2024 09:10:00 +0000
+Message-Id: <20240308091000.36978-1-dorine.a.tipo@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20240306054458.102288-2-dorine.a.tipo@gmail.com>
+References: <20240306054458.102288-2-dorine.a.tipo@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
 
-This patch fixes the checks reported by checkpatch
-for alignment should match open parenthesis
+Dear maintainers,
 
-Signed-off-by: Pedro Guimarães <moisespedro15@gmail.com>
----
- drivers/staging/axis-fifo/axis-fifo.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+I hope this message finds you well. I am writing to offer my sincere apologies
+for the frustration and disappointment caused by my recent submissions of
+patches with unresolved issues.
 
-diff --git a/drivers/staging/axis-fifo/axis-fifo.c b/drivers/staging/axis-fifo/axis-fifo.c
-index c51818c56dd2..a70af76be7fb 100644
---- a/drivers/staging/axis-fifo/axis-fifo.c
-+++ b/drivers/staging/axis-fifo/axis-fifo.c
-@@ -376,8 +376,8 @@ static ssize_t axis_fifo_read(struct file *f, char __user *buf,
- 		 */
- 		mutex_lock(&fifo->read_lock);
- 		ret = wait_event_interruptible_timeout(fifo->read_queue,
--			ioread32(fifo->base_addr + XLLF_RDFO_OFFSET),
--			read_timeout);
-+						       ioread32(fifo->base_addr + XLLF_RDFO_OFFSET),
-+						       read_timeout);
- 
- 		if (ret <= 0) {
- 			if (ret == 0) {
-@@ -517,9 +517,9 @@ static ssize_t axis_fifo_write(struct file *f, const char __user *buf,
- 		 */
- 		mutex_lock(&fifo->write_lock);
- 		ret = wait_event_interruptible_timeout(fifo->write_queue,
--			ioread32(fifo->base_addr + XLLF_TDFV_OFFSET)
--				 >= words_to_write,
--			write_timeout);
-+						       ioread32(fifo->base_addr + XLLF_TDFV_OFFSET)
-+						       >= words_to_write,
-+						       write_timeout);
- 
- 		if (ret <= 0) {
- 			if (ret == 0) {
--- 
-2.44.0
+Upon careful investigation into the issue to debug the problem, I realize
+that my approach to addressing checkpatch warnings in the code was incomplete.
+While I corrected the assignments of variables to resolve the warnings, I neglected
+to rectify the corresponding declarations of these variables.
+I understand that this oversight not only failed to meet the standards expected of
+contributions but also created unnecessary work for you as maintainers.
 
+I take full responsibility for my actions and the impact they have had on the project and
+your workload. Please accept my heartfelt apologies for any inconvenience and frustration caused.
+
+In light of this, I would like to request the opportunity to resubmit a new patch that addresses
+both the assignment and declaration of the variables to resolve the issue effectively.
+To ensure that such oversights are not repeated in the future, I am committed to implementing
+stricter review processes and improving my attention to detail.
