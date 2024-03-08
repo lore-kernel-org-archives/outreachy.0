@@ -1,84 +1,111 @@
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DC526535BD;
-	Fri,  8 Mar 2024 09:52:34 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.104
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A9B3254664
+	for <outreachy@lists.linux.dev>; Fri,  8 Mar 2024 10:15:04 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.83
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1709891558; cv=none; b=Asw26h/mhPo89DCU+W979D5YjQtXtiy8cdU50EgPDHE8SQ0bRvosU3nRNnSneVgPfi8JFwctmbEkG0FAqsB2mQvxQexo8DgfwNqmDI6XTAO4Na6AT4xa+nN/h1AtwbveKjsyrzYEhvrG5oK2ihsXGAoDTNRyMLZMn0jB7xhtjXY=
+	t=1709892908; cv=none; b=XeGVbvxboJDED/HZBWFkF6FsyzlSGf1H/Bjq8HCSRGDtKozKtJO85A6niWDQi6hNkCnnidFeYg1Sc2YBORwdVdpZE7qYUgwe2YFDpOVpYDcQU3AWunWgSzaFwm0SfBHbnx2ScgEI29Vq6Q1cdsgXExppaCl9mtZAM3NCOGBdMGc=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1709891558; c=relaxed/simple;
-	bh=zAmi1uC8mO960rWAQfKAIULiv4MepnYwdsDKClyhOFc=;
+	s=arc-20240116; t=1709892908; c=relaxed/simple;
+	bh=TVJwbOMgh2JuU/WlxoU465ymROYnPrQ80GURCsPNEHc=;
 	h=Date:From:To:cc:Subject:In-Reply-To:Message-ID:References:
-	 MIME-Version:Content-Type; b=ngNhXerFFWGo+3gD66fTFs0xSGBRH1Q22Knmpn5aWJqj8bf0qJfcUu1y9Q/NJfHOkJpTbAouoppaJ4Pak/nDfgNZahnCAVQD1ZuhUPMXUHVDgOMONG5girFYXB3/o0Oa8NTs07x5U86LYsNu1IK9iqfHljMujU1ELWWn5QE+W24=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=LHt16mah; arc=none smtp.client-ip=192.134.164.104
+	 MIME-Version:Content-Type; b=rXFvZ3JuU/qOIUMKspAZ5b3FRkByuIx61WDf31JSQhTofNulhFM6X8sOecEylxpOju/vOGgTDu5laj7nGTOX/1aIqt+L6OPn7Gx60E5Fg0SmPDJxortIymQVJ3jnMPzTjNkv9T6DcurgzUJSFUnriqHD31A7BuB33Ojh5dueNbY=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=DnClKvdK; arc=none smtp.client-ip=192.134.164.83
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="LHt16mah"
+	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="DnClKvdK"
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
   d=inria.fr; s=dc;
   h=date:from:to:cc:subject:in-reply-to:message-id:
    references:mime-version;
-  bh=FxAnDnL2sYUr3DdqJhoyU9BKNkBz/XDdDhiSSpbKax0=;
-  b=LHt16mahiZ9aeQPrlxwYQxn0ikcBjq6BRlL1ehYpGa2iIJPDINd4+8Sr
-   3KNjScF4oSjSDqWaabzvSVMHDgzReb2i/CAuWP6NvB7DhPhyWeTfy+mgS
-   ozC5M38rizqLhEWZpm0+PtFBtvPGDCfHXa5fUvA4+BWb+1ceP/7NLzFqA
-   g=;
-Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+  bh=J2n06DnxQQHv7GS0YJ6Q2RfZKv1FQtibXooqmaDXDUc=;
+  b=DnClKvdK/3tFhB/LxRjE4M/VCjWVagSvb5u8kn0SQz5U1fvxKkD0HEsP
+   kUYX0XLmx4INGrF1WWyFrAgPey9IiFtHKWxWx2jmAN1Vs8VCEENg1KBrH
+   5qtEU1GlOGguuO+WYrKOe9KE/D9I238/7t3gkrQPAolRPkTfrbpSO/rBw
+   A=;
+Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
 X-IronPort-AV: E=Sophos;i="6.07,109,1708383600"; 
-   d="scan'208";a="81617110"
+   d="scan'208";a="155648999"
 Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Mar 2024 10:52:32 +0100
-Date: Fri, 8 Mar 2024 10:52:32 +0100 (CET)
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Mar 2024 11:15:01 +0100
+Date: Fri, 8 Mar 2024 11:15:01 +0100 (CET)
 From: Julia Lawall <julia.lawall@inria.fr>
-To: Dorine Tipo <dorine.a.tipo@gmail.com>
-cc: gregkh@linuxfoundation.org, linux-staging@lists.linux.dev, 
-    outreachy@lists.linux.dev
-Subject: Re: Apology and Request for Resubmitting Patch
-In-Reply-To: <20240308091000.36978-1-dorine.a.tipo@gmail.com>
-Message-ID: <ca7439a1-966c-8b37-ea5b-d3de38a6d563@inria.fr>
-References: <20240306054458.102288-2-dorine.a.tipo@gmail.com> <20240308091000.36978-1-dorine.a.tipo@gmail.com>
+To: =?ISO-8859-15?Q?Pedro_Guimar=E3es?= <moisespedro15@gmail.com>
+cc: gregkh@linuxfoundation.org, outreachy@lists.linux.dev
+Subject: Re: [PATCH] staging: axis-fifo: Fixes parenthesis alignment
+In-Reply-To: <ZeqHWuerM_aPsd1U@toolbox>
+Message-ID: <c087ff3e-6acd-9355-9e5f-ab69646bb326@inria.fr>
+References: <ZeqHWuerM_aPsd1U@toolbox>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: multipart/mixed; boundary="8323329-1353886061-1709892901=:4140"
+
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
+
+--8323329-1353886061-1709892901=:4140
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8BIT
 
 
 
-On Fri, 8 Mar 2024, Dorine Tipo wrote:
+On Fri, 8 Mar 2024, Pedro Guimarães wrote:
 
-> Dear maintainers,
+> This patch fixes the checks reported by checkpatch
+> for alignment should match open parenthesis
 >
-> I hope this message finds you well. I am writing to offer my sincere apologies
-> for the frustration and disappointment caused by my recent submissions of
-> patches with unresolved issues.
+> Signed-off-by: Pedro Guimarães <moisespedro15@gmail.com>
+> ---
+>  drivers/staging/axis-fifo/axis-fifo.c | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
 >
-> Upon careful investigation into the issue to debug the problem, I realize
-> that my approach to addressing checkpatch warnings in the code was incomplete.
-> While I corrected the assignments of variables to resolve the warnings, I neglected
-> to rectify the corresponding declarations of these variables.
-> I understand that this oversight not only failed to meet the standards expected of
-> contributions but also created unnecessary work for you as maintainers.
+> diff --git a/drivers/staging/axis-fifo/axis-fifo.c b/drivers/staging/axis-fifo/axis-fifo.c
+> index c51818c56dd2..a70af76be7fb 100644
+> --- a/drivers/staging/axis-fifo/axis-fifo.c
+> +++ b/drivers/staging/axis-fifo/axis-fifo.c
+> @@ -376,8 +376,8 @@ static ssize_t axis_fifo_read(struct file *f, char __user *buf,
+>  		 */
+>  		mutex_lock(&fifo->read_lock);
+>  		ret = wait_event_interruptible_timeout(fifo->read_queue,
+> -			ioread32(fifo->base_addr + XLLF_RDFO_OFFSET),
+> -			read_timeout);
+> +						       ioread32(fifo->base_addr + XLLF_RDFO_OFFSET),
+> +						       read_timeout);
 >
-> I take full responsibility for my actions and the impact they have had on the project and
-> your workload. Please accept my heartfelt apologies for any inconvenience and frustration caused.
->
-> In light of this, I would like to request the opportunity to resubmit a new patch that addresses
-> both the assignment and declaration of the variables to resolve the issue effectively.
-> To ensure that such oversights are not repeated in the future, I am committed to implementing
-> stricter review processes and improving my attention to detail.
+>  		if (ret <= 0) {
+>  			if (ret == 0) {
+> @@ -517,9 +517,9 @@ static ssize_t axis_fifo_write(struct file *f, const char __user *buf,
+>  		 */
+>  		mutex_lock(&fifo->write_lock);
+>  		ret = wait_event_interruptible_timeout(fifo->write_queue,
+> -			ioread32(fifo->base_addr + XLLF_TDFV_OFFSET)
+> -				 >= words_to_write,
+> -			write_timeout);
+> +						       ioread32(fifo->base_addr + XLLF_TDFV_OFFSET)
+> +						       >= words_to_write,
+> +						       write_timeout);
 
-No need to apologize.  The point is to learn.  Compiling Linux kernel code
-is also complex, due to the intervention of ifdefs.
+I have the impression that it was more readable beforehand.
 
-I would suggest to just throw away what you have done so far, pull Greg's
-tree again, and start over.  You can also be a bit less ambitious, and
-just do one thing.  When that is accepted, you can go on from there.
-
-Good luck!
+On the other hand, the placement of >= words_to_write does not seem ideal,
+because it is hard to see what exactly is being compared.  Perhaps exploit
+the fact that 100 characters are allowed to move that up to the right of
+the call to ioread32.
 
 julia
+
+>
+>  		if (ret <= 0) {
+>  			if (ret == 0) {
+> --
+> 2.44.0
+>
+>
+>
+--8323329-1353886061-1709892901=:4140--
