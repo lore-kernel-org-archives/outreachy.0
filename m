@@ -1,77 +1,108 @@
-Received: from mail-wr1-f50.google.com (mail-wr1-f50.google.com [209.85.221.50])
+Received: from mail-pl1-f169.google.com (mail-pl1-f169.google.com [209.85.214.169])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 33C8436AF9
-	for <outreachy@lists.linux.dev>; Sat,  9 Mar 2024 12:48:15 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.50
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0D21D3FE1
+	for <outreachy@lists.linux.dev>; Sat,  9 Mar 2024 16:39:31 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.214.169
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1709988496; cv=none; b=VyaEkzAj+Ba/g9l5TS6zc3iRQE6Jsh8ZVdH2BIa+TRfvGakQ8JjHEc4EdLe1gl/5wnptwtIMFkSCxiNadVY+Phoy9ut+If56OuKffSiroqns/UKob7KHgoCvCw9Q+66ysjF6QZuLluukBm2EbfZHcGY2j411eBuLN8Q0kE9cmDU=
+	t=1710002373; cv=none; b=s4ZHR11UEC3+l/oNla7PkIZ8evt0jUwMct86SotsEVrCErOGR20A9IqQUnVhWAaMlaQcO73Qr8zeLM4OICeuHIYbg/Rj+OdOIxi3oOTaWPElL1a/TGSDLySj1EL+Y/b8GTc2Ff+oNfWiNU586r9oD4kh6NTITWA+teAmo4MblWU=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1709988496; c=relaxed/simple;
-	bh=BgTqalcSlaKSmQ7MrHmWv5m+4b8D4ucdIG3gbvLHLig=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=FkxLQZMhNR1Px+1UO5rdALt7RoMdxnaPC5AmkOKmGy0qaWS9K8XLG9W+QOSyOcvA+XLArZ7g6y2kc+vZ1bFxsDhs5TENjGqmmzJW5vk+IdcjshNXTeZHaCXvtyBTff5yTRLnQdfXfZT2T5GkIY7oc1UEuXJXVxN6AlLoz5wqiqQ=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=sGs+8j+X; arc=none smtp.client-ip=209.85.221.50
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
+	s=arc-20240116; t=1710002373; c=relaxed/simple;
+	bh=FyNtSq6TdYQYRFemRQNZoOTz3x1W5YJ1xh6w6Xf5oW0=;
+	h=Date:From:To:Subject:Message-ID:MIME-Version:Content-Type:
+	 Content-Disposition; b=D2KLTmO8smrQ5ZDOiu3uJD4aKawSM6hlJvwoFyAklSZ1bO2yxoi37MNqcGZuCnLYHmnaAVC3UnMd6vA3T0mw8h9UEJDg9cCRb3wJj2ZbOspSp9frrr6roSk/zRGgQXzTT9rAZRbbo/+Lt4ktVushqmMOweP0x656Pt+LVQX6ahg=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=Q9i43oKm; arc=none smtp.client-ip=209.85.214.169
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="sGs+8j+X"
-Received: by mail-wr1-f50.google.com with SMTP id ffacd0b85a97d-33e6d364b7aso1798789f8f.3
-        for <outreachy@lists.linux.dev>; Sat, 09 Mar 2024 04:48:14 -0800 (PST)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Q9i43oKm"
+Received: by mail-pl1-f169.google.com with SMTP id d9443c01a7336-1dcab44747bso21850625ad.1
+        for <outreachy@lists.linux.dev>; Sat, 09 Mar 2024 08:39:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1709988493; x=1710593293; darn=lists.linux.dev;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=bDIiSQpIb51VZCFP6EOAla6YUJbjTTDo39b+hExh1BE=;
-        b=sGs+8j+XDU97AScpVf9tsO5mT6jFexfv522spiSmd+aGil9NmL4aaOjbYRwIOb89T6
-         Lja9PUOzGNc6dIfCgTwBo5+VljbiEh8n54h+AOA/2pCm87Sf2+iuo8hsdDRmQ+hE759z
-         2AzevpZ1Ia9gIgdZ/hj0B3x6GoRrtA85DH+yOZYaAnvMhtI3QxS9P2McyKe82EuqGb3y
-         aUuURWquSmAWktQY8wKFQXTYzAjJbV8Xxi6cjq8WxDQfoTrJSj39+1BiYGRUc7eGy8Te
-         G5k1iJxscZ/x10y0zcgSzXPFHLigFnkk/cDwdPSyC+3n+R+8X3f7ILEG5au+zZYgK2hr
-         UUDg==
+        d=gmail.com; s=20230601; t=1710002371; x=1710607171; darn=lists.linux.dev;
+        h=content-transfer-encoding:content-disposition:mime-version
+         :message-id:subject:to:from:date:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Vks5Y936g0LZpQvm8ZENTEbAyiouA/JbPPU9GWgqWFs=;
+        b=Q9i43oKmZNR0eQNOITN/YHu/1R3SzrYoHpO8kFLZukLLtt4HZTfT3zus9Gbt3vJffy
+         WurD0z7uoG7UfSxyw1aatv7efQ01rUQZrAPOjiKnZFY/0konyNyi5D+zaQC9+QIcM/Sm
+         3DkCG1sUJrS3jjNCNJ7b378aUVVWYYCuGYWcg/BNeQZ8u04EZA1jl4pBDeAjl8PDy+pf
+         ZSIdWSpnoeGPf5yqxnqal9m0pu0nmcAsrQZkDmKIC7AapdZVsBAQm28CDeMt4LQKQkG5
+         0YKwY/Oc/UwF9bPEPX9ORz2P7pAiL5QdZFG4jWUoOQ+un3YkdPa0in29JdNcQqGwviwO
+         6eXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1709988493; x=1710593293;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=bDIiSQpIb51VZCFP6EOAla6YUJbjTTDo39b+hExh1BE=;
-        b=ooW1Fz2vNdcUCCsfInULWxwJ2Z2DicZdUwbxd/nqq1TzX4Rq0kPqazYSxZN5a7P8xq
-         /sAPO4wmhHD+ELR2KErB6+JtgarBYPZv3tqPd6msVGlZ9T7Bq0ttuDsgx2zb6A1V8vtI
-         rH/+ps7KsqzYrICiV6/psyElW85RsE8KJyw04UyCorqtzK1xCuWcLLk+JpL4y7VObiFi
-         RvqLKXG4w41PFbMDlCnFyKrvYfwkiwWd/6L2lCnAHsDLO/aZS7J8yh1MPAsNBTKeaqV8
-         BqmyZaAFHjtezHcDhjPL40vxTiXd9dVWW/hU1RvCCiCH55n6YCz3AkO/1UWiZyslnnuM
-         bR+Q==
-X-Forwarded-Encrypted: i=1; AJvYcCXCn39Wg77POLOEA9AY5b15zhE6hbTiZwZNcyqSknZVHLnGJqprBP2kdOr3A33iEQVMruuRo1g8tAWVOKnZp2VaXkcKz32vR01X
-X-Gm-Message-State: AOJu0YxV0TU93wwaAXgXrnwEaLqqQFMu3p8rLfXn0eYXK3I0sdo6cyF0
-	cq1Uu5F8kFouVA3P6NWC/c+OYYZDzOerubvkEgbya4gKXFr3mvmrs2dhVnfAJWc=
-X-Google-Smtp-Source: AGHT+IFrrvJnxsFHIRB5gQiXZGhi6lbwWVTIpKIhipRhv70BLOctY5mEo1bIzoWTCOSn127ftAeR3Q==
-X-Received: by 2002:adf:f88a:0:b0:33e:7fcb:ba1 with SMTP id u10-20020adff88a000000b0033e7fcb0ba1mr1206563wrp.27.1709988493187;
-        Sat, 09 Mar 2024 04:48:13 -0800 (PST)
-Received: from localhost ([102.222.70.76])
-        by smtp.gmail.com with ESMTPSA id p12-20020adf9d8c000000b0033cf60e268fsm1771017wre.116.2024.03.09.04.48.11
+        d=1e100.net; s=20230601; t=1710002371; x=1710607171;
+        h=content-transfer-encoding:content-disposition:mime-version
+         :message-id:subject:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Vks5Y936g0LZpQvm8ZENTEbAyiouA/JbPPU9GWgqWFs=;
+        b=tiE9CHPByGEhfE1xyQiMJHhs/3NBn88lPmeMvbBSP2A8I2wm6fU+rskpk7o3krjNbl
+         0THuceN+ZjyJEmpREg3zmZT4F2gMNYyfppbbqUiOupfycl1ao+0sRewfBxw2hgb8i6r9
+         qKttAcrTHvNA8vIrYRxeLoVtL4awccazR56TPsksXv5+vU3n41sETcdY7iRnqS9zacgD
+         Pvr48tIlipSvM9lgjUSJoKfOQDsJWaS/vFaO31cksbdV0IEoQujhyb46j+nawxUeEYVh
+         vlI7koVH3woL+G6VFVZxuOyQ7y2JCIBmvU2kZa7IgjnarffoF2V6EHyNbQBoouESkv0h
+         5dCA==
+X-Forwarded-Encrypted: i=1; AJvYcCVKBGj+r+UGnoloLOyXS1nfJCXvFzMmYMfzy73itHGLvpmkLPJNiRRBtbkBmftoQQfIeM/zfVHuhYc8Kx32/YrRB3YGupVLx5NI
+X-Gm-Message-State: AOJu0YwQaQO7PSfip7nAaCIkp06O6EparCd13Z4NrPb/5HVHkYRGVzkw
+	ZeQKzXb7H4LJMNokuYtEAEvJlIIFQ1b0KYr8m86T2Ia6Nu7wybLlHY67OP82vFs=
+X-Google-Smtp-Source: AGHT+IEo4df7ED8n8yGuqA8Zq6fjWrzQk3e015+joNgmb0GgZfirVEsuCumiqD06yJqJpgAJTsRGTw==
+X-Received: by 2002:a17:902:f68f:b0:1dd:6675:5cf with SMTP id l15-20020a170902f68f00b001dd667505cfmr2289379plg.60.1710002371084;
+        Sat, 09 Mar 2024 08:39:31 -0800 (PST)
+Received: from toolbox ([189.6.212.130])
+        by smtp.gmail.com with ESMTPSA id d4-20020a170903230400b001dc0d1fb3b1sm1519640plh.58.2024.03.09.08.39.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 09 Mar 2024 04:48:12 -0800 (PST)
-Date: Sat, 9 Mar 2024 15:48:08 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Dorine Tipo <dorine.a.tipo@gmail.com>
-Cc: gregkh@linuxfoundation.org, linux-staging@lists.linux.dev,
-	outreachy@lists.linux.dev
-Subject: Re: Apology and Request for Resubmitting Patch
-Message-ID: <da438c22-11a2-4384-88b7-38cf40d3b304@moroto.mountain>
-References: <20240306054458.102288-2-dorine.a.tipo@gmail.com>
- <20240308091000.36978-1-dorine.a.tipo@gmail.com>
+        Sat, 09 Mar 2024 08:39:30 -0800 (PST)
+Date: Sat, 9 Mar 2024 13:39:26 -0300
+From: Pedro =?iso-8859-1?Q?Guimar=E3es?= <moisespedro15@gmail.com>
+To: gregkh@linuxfoundation.org, outreachy@lists.linux.dev
+Subject: [PATCH v2] staging: axis-fifo: Fixes parenthesis alignment
+Message-ID: <ZeyQvrynhv5efsOD@toolbox>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <20240308091000.36978-1-dorine.a.tipo@gmail.com>
+Content-Transfer-Encoding: 8bit
 
-Outreachy is designed for newbies.  It's not a big deal.
+This patch fixes the checks reported by checkpatch
+for alignment should match open parenthesis
 
-regards,
-dan carpenter
+Signed-off-by: Pedro Guimarães <moisespedro15@gmail.com>
+---
+ drivers/staging/axis-fifo/axis-fifo.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/staging/axis-fifo/axis-fifo.c b/drivers/staging/axis-fifo/axis-fifo.c
+index c51818c56dd2..600d81043946 100644
+--- a/drivers/staging/axis-fifo/axis-fifo.c
++++ b/drivers/staging/axis-fifo/axis-fifo.c
+@@ -376,8 +376,8 @@ static ssize_t axis_fifo_read(struct file *f, char __user *buf,
+ 		 */
+ 		mutex_lock(&fifo->read_lock);
+ 		ret = wait_event_interruptible_timeout(fifo->read_queue,
+-			ioread32(fifo->base_addr + XLLF_RDFO_OFFSET),
+-			read_timeout);
++						       ioread32(fifo->base_addr + XLLF_RDFO_OFFSET),
++						       read_timeout);
+ 
+ 		if (ret <= 0) {
+ 			if (ret == 0) {
+@@ -517,9 +517,9 @@ static ssize_t axis_fifo_write(struct file *f, const char __user *buf,
+ 		 */
+ 		mutex_lock(&fifo->write_lock);
+ 		ret = wait_event_interruptible_timeout(fifo->write_queue,
+-			ioread32(fifo->base_addr + XLLF_TDFV_OFFSET)
+-				 >= words_to_write,
+-			write_timeout);
++						       ioread32(fifo->base_addr +
++							       XLLF_TDFV_OFFSET) >= words_to_write,
++						       write_timeout);
+ 
+ 		if (ret <= 0) {
+ 			if (ret == 0) {
+-- 
+2.43.0
 
