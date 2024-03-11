@@ -1,114 +1,119 @@
-Received: from mail-ej1-f54.google.com (mail-ej1-f54.google.com [209.85.218.54])
+Received: from mail-wr1-f44.google.com (mail-wr1-f44.google.com [209.85.221.44])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 010B411C8B;
-	Mon, 11 Mar 2024 06:49:07 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.218.54
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5C6FA11721
+	for <outreachy@lists.linux.dev>; Mon, 11 Mar 2024 07:32:00 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.44
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1710139749; cv=none; b=S/X4KI7Z4w4jW3zmv1/I2aakm4AUdevFWOPdAaex/XpBF1EYw0Vl1j7rAPvhqTOBkHZkSDlGRyBaUQrWAKl69kDrKPTtvuZ1+igcRA4tMPaXrXIJrYVeIrfecsFJDKa58uWSCAvpC1iv8m3fRLqGkHef9RnnSYBDquTze76y60g=
+	t=1710142322; cv=none; b=EUcsY+HBAzrQe0O+ZjdVfotjW9Xl80lgFfRlYOje3eCLmKS06bPC8RwYOyTozBwy+Kk2lT4RGl2UCvKfzrRMS+2oUKGRkWF5EIBu4x3LJceGnqwR7iYU448+hdhXisTKtARxS5DjGAH1ByRuCLmNWlf66026u2ReyjWf+3tkwJU=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1710139749; c=relaxed/simple;
-	bh=DnrfZzUJftu0b6EZEqqpAmXgZZf3kIZ4uDyrmTYog0k=;
-	h=From:To:Cc:Subject:Date:Message-Id:In-Reply-To:References:
-	 MIME-Version; b=W49x/VXiilC4SVENzxYNr5XonAojIr9A3o3OXB0ZDjBO08/edLxRy4tX7eLKqlQDniP/0MeOjjzRdhz1X877+XqDWCMDR+ScEmXGcFpJDrVpYKDMJB2c/nfmB+zy6pXcZ2TE7k0IHhbNdQonK7m/f+LZkuUJoqpyuZgueEK4inM=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=Gr7PqOmh; arc=none smtp.client-ip=209.85.218.54
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	s=arc-20240116; t=1710142322; c=relaxed/simple;
+	bh=tIzYwYt3HYRW6tvsRn1lu3C0bRfEo4lMnrCrWvcYJm4=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=TqSdA/Yforu93nQIpJkGwW01s6ku6EzCMsCNpu0tmoFWlgSgWzzCQNangIPwvPbppfAFo6FC4fUbYZtTRMv+WyExFIjyXTpLLw1UZ7SuZ+/SKNMiS53lTIeFwOFICiGbOdFCf/vfU9W4vBf+YdblaeZa+Z1mCwLlbHMxJncm1Yk=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=Piglvt24; arc=none smtp.client-ip=209.85.221.44
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Gr7PqOmh"
-Received: by mail-ej1-f54.google.com with SMTP id a640c23a62f3a-a45c006ab82so458261666b.3;
-        Sun, 10 Mar 2024 23:49:07 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="Piglvt24"
+Received: by mail-wr1-f44.google.com with SMTP id ffacd0b85a97d-33e9623c3a8so532313f8f.0
+        for <outreachy@lists.linux.dev>; Mon, 11 Mar 2024 00:32:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1710139746; x=1710744546; darn=lists.linux.dev;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ctQfKrAcksRfuXqIJV+JdBJBY81zeUKJWfVLUaA6s0U=;
-        b=Gr7PqOmhFq8m25jIyRVG6MAn1kyCYTzVUmFff4f9sDKc3skru+fASNFS0EMwNBDOcU
-         PrGBbQwAyRaSETstLF9+5ITlqI/lXAAK8HpOMd30OOKRCA7aYeVeE7XP909LyaFl0WN1
-         4MqqqmQigV+szzt1cXnU3/LbKEXso0buMsUOyQ4w1ZKO2l+orkSjuagO1xaJN3v2NRzf
-         3kH/TVSdq41uD4c8CYCxSogQbup/rNQMCU2t1HALrLZSWxRziGoEEBNWwa8O05LJJOt2
-         iaZAtVLWra+vUvgXf5OgrrkTK2MC6ZcgRk+b7kW8phFutNgZmWJC2YOpR/PRgV6uXQ8/
-         xvIg==
+        d=linaro.org; s=google; t=1710142319; x=1710747119; darn=lists.linux.dev;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=Q3pXmhk4G6nHGiIL9usDm0td7IScHKEjFe8Cx/b3F0c=;
+        b=Piglvt24lP3P9e/2BiCpf27hP0uheSZSG+GeC6VAfzu9Q2gA8E/xCWp7eCHhzg5IZe
+         BRoMnDwkEsQylDtO2SeWsi5txRjCja7xzB9kOlkMKdGzrjpo6IfBkaV0Bzlgs+TkO7+v
+         eWjowzBmTh71Dv7l6IJ/G+utEq8IH3vkSOeW7eiP8DGzApPw6DxPWoTixdmz6rMJvpQQ
+         IwDAb/MHW3+EOfQyb8xDtgfupKyTJz1d7+a3DeEOLh5qM8+Y1xEIVNCfJ3xqKQcFEIOK
+         41XLfC1J9hLDFjTDwLZ04vUJhbjdbyaJ/cCialeRF/ZS7VWFywPGV+CoLjZttK3cIbcp
+         iiQw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1710139746; x=1710744546;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ctQfKrAcksRfuXqIJV+JdBJBY81zeUKJWfVLUaA6s0U=;
-        b=ElufyYUME51jI0orB4ddRE5G3cxXFTFi05IxzhgYX/dB9FDpUrp72oUoTcIVu6bwq5
-         m734K90f6nGOBfTm1mZtS1eJucpXaBdv+UnJOXcQ2Wd/6EjdWAlqir2LVl0iwf8r2BHC
-         rozU8cIEGFpsn8xDXCBveJ/oq3MrF+iMN7MjxVbYDrYBwWptbFHas0qk0lzTZlaDeyv6
-         6NJm8NprQ9U2mpKuUS0cxziXdERNfTo22IaIW2fyTZNiQezYECXE08pKLD0BWsXCa+/G
-         17joHMulvLGGWbQxLc6ZsTwxnyIimSDlVdJGv163iCMQFWl/YYLxRERwSFKH8+tKwP0F
-         1U5A==
-X-Forwarded-Encrypted: i=1; AJvYcCUEbspbCwaAedy8ZntAQI4rAjF7CCofiV4hti5w7dG/OHVe6/tyPhmrSChWkYfZMimPlmG/j4JHSp2c0IH1+fcoJoFcwX7ShJd5E9FwYlTKjKvjodkaUHQuOUIQ56AEbKfEN77VBhQRdA==
-X-Gm-Message-State: AOJu0YxCH1JtGTOgI+IMAZI3Kh2CffwhxPW+Mp/IbGcorvA1gOxKnGyS
-	dGkgfB/XRvqo/a/ldt/nZlQDpZpTIHv//NRet3OhkzU/6QaM0Uq86x/2JKYaZPM=
-X-Google-Smtp-Source: AGHT+IFaPuAdlo7MaQHOZsuo6KRQGk3wKl3V3fBbqdIK5JBSfAbvsF1qfP2L246MAp2wMWnYAPPxLg==
-X-Received: by 2002:a17:906:22d5:b0:a44:dc35:df19 with SMTP id q21-20020a17090622d500b00a44dc35df19mr3024324eja.67.1710139745945;
-        Sun, 10 Mar 2024 23:49:05 -0700 (PDT)
-Received: from ubuntu-focal.zuku.co.ke ([197.237.50.252])
-        by smtp.gmail.com with ESMTPSA id gc5-20020a170906c8c500b00a45a09e7e23sm2581864ejb.136.2024.03.10.23.49.04
+        d=1e100.net; s=20230601; t=1710142319; x=1710747119;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Q3pXmhk4G6nHGiIL9usDm0td7IScHKEjFe8Cx/b3F0c=;
+        b=YgePWqaSky1Vk7yomv21pumBz9CVqyNk0ZbnlC0pGMg6OkPnJMZoTCrWBdhO0FQ5n3
+         Ml6mdHKHeTlZnLi0MTnsLbxwX62zOUeO4rUU3FOJyaWbCbKNh+iwP9pJqgayoVoRm47/
+         1n10hcIMHH4PhQgADLmaiM0Q9peXwgZS0EXNoZbnVLZvOJnhLTm2hz/sUyjst758Tnba
+         HPaWtKfPKCH/faZ2vtZRy8d+gY2EE7ihLeG6nzeWS5gYz8PEcNsAE4/tKI/Bv6i0HdsS
+         HFzNF5RpUNW1J+M46OwYTHcp3uQl6aYMHK7vSsriXHcuby4RnF9sy8CZ1XXlydoUtBbR
+         fBUg==
+X-Forwarded-Encrypted: i=1; AJvYcCXgL1gB7la1jM+oW6gWSeq2WVU5VBDOQcqNRR+HFhFEoFoI1F+anNp3gVh4T4SQ4dskgcQOCzclqj7Rbh+LI1Wsj9ADMHsrNEDd
+X-Gm-Message-State: AOJu0Yzvo3vRhFXCpE/fziRUwGpDyDtUqg4NEfgpGdNSk9ksb4dDfTWZ
+	qJtRoFd2y/99I6B5tZ8wYNeJcWbls9/9GESsdTIR6YNWbxHMHMkM/b3ykFzlKhw=
+X-Google-Smtp-Source: AGHT+IF0cyB9q8cGAVzFt4meFCQZYK7OfTs4AcjO7I7FC74Eta4lEvbivT+0UH6KgrwAwpBrpVMUjQ==
+X-Received: by 2002:adf:ed47:0:b0:33d:3098:c1c with SMTP id u7-20020adfed47000000b0033d30980c1cmr4656488wro.5.1710142318543;
+        Mon, 11 Mar 2024 00:31:58 -0700 (PDT)
+Received: from localhost ([102.222.70.76])
+        by smtp.gmail.com with ESMTPSA id bx27-20020a5d5b1b000000b0033e7eba040dsm2746288wrb.97.2024.03.11.00.31.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 10 Mar 2024 23:49:05 -0700 (PDT)
-From: Dorine Tipo <dorine.a.tipo@gmail.com>
-To: gregkh@linuxfoundation.org,
-	linux-staging@lists.linux.dev,
-	outreachy@lists.linux.dev
-Cc: Dorine Tipo <dorine.a.tipo@gmail.com>
-Subject: [PATCH v3] staging: vt6655: Remove unused function RFbAL7230SelectChannelPostProcess
-Date: Mon, 11 Mar 2024 06:07:47 +0000
-Message-Id: <20240311060747.32876-1-dorine.a.tipo@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20240311035649.25043-1-dorine.a.tipo@gmail.com>
+        Mon, 11 Mar 2024 00:31:57 -0700 (PDT)
+Date: Mon, 11 Mar 2024 10:31:53 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: Dorine Tipo <dorine.a.tipo@gmail.com>
+Cc: gregkh@linuxfoundation.org, linux-staging@lists.linux.dev,
+	outreachy@lists.linux.dev,
+	Philipp Hortmann <philipp.g.hortmann@gmail.com>
+Subject: Re: [PATCH v3] staging: vt6655: Remove unused function
+ RFbAL7230SelectChannelPostProcess
+Message-ID: <36c92e00-213e-4f25-9720-66912b4da56f@moroto.mountain>
 References: <20240311035649.25043-1-dorine.a.tipo@gmail.com>
+ <20240311060747.32876-1-dorine.a.tipo@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240311060747.32876-1-dorine.a.tipo@gmail.com>
 
-Remove RFbAL7230SelectChannelPostProcess as it is dead code.
+The main issue with this patch is that it doesn't apply, but I have a
+few other comments as well.
 
-This commit removes the dead code to improve code cleanliness and reduce
-unnecessary complexity in the driver.
+Why is Forest Bond not on the CC list?  Please use get_maintainer.pl.
 
-staging: vt6655: Remove multiple blank lines
+On Mon, Mar 11, 2024 at 06:07:47AM +0000, Dorine Tipo wrote:
+> Remove RFbAL7230SelectChannelPostProcess as it is dead code.
+> 
 
-Fix unintended blank line introduced after removing dead code
+This isn't enough information.  At first I thought the function
+declaration was commented out, but then i noticed that it was just the
+weird curly braces stuff that was commented.  So I thought maybe it
+wasn't dead code.  Then I have to do a grep and search through git log
+to find why there isn't a RFbAL7230SelectChannelPostProcess() function.
 
-The previous commit inadvertently introduced a blank line after removing
-dead code from the rf.h file in the staging/vt6655 directory. This commit
-removes the unintended blank line to maintain code consistency.
+I want that sort of information in the commit message.
+"Commit dd2837bdea0e ("staging: vt6655: Remove unused byRFType in rf.c")
+removed the RFbAL7230SelectChannelPostProcess() but accidentally forgot
+to delete the declaration in the header file.  Delete it."  Since
+Philipp wrote commit dd2837bdea0e, you should add him to the CC list.
 
-Signed-off-by: Dorine Tipo <dorine.a.tipo@gmail.com>
----
-Changes since V1:
+> This commit removes the dead code to improve code cleanliness and reduce
+> unnecessary complexity in the driver.
 
-V2: - Removed unintended blank line introduced after removing dead code
-V3: - Squashed the commits for V1 and V2 for clarity and to streamline
-      the patch history
+This paragraph is unnecessary, we all know why dead code is bad.
 
- drivers/staging/vt6655/rf.h | 5 -----
- 1 file changed, 5 deletions(-)
+> 
+> staging: vt6655: Remove multiple blank lines
+> 
+> Fix unintended blank line introduced after removing dead code
+> 
+> The previous commit inadvertently introduced a blank line after removing
+> dead code from the rf.h file in the staging/vt6655 directory. This commit
+> removes the unintended blank line to maintain code consistency.
+> 
 
-diff --git a/drivers/staging/vt6655/rf.h b/drivers/staging/vt6655/rf.h
-index 057860a5e100..8eef100c7ef2 100644
---- a/drivers/staging/vt6655/rf.h
-+++ b/drivers/staging/vt6655/rf.h
-@@ -68,9 +68,4 @@ bool RFbRawSetPower(struct vnt_private *priv, unsigned char byPwr,
- void RFvRSSITodBm(struct vnt_private *priv, unsigned char byCurrRSSI,
- 		  long *pldBm);
+We aren't going to apply the previous commit...  So the patch is not
+going to apply and the commit message kind of doesn't make sense.  I
+have written a very short blog about how to send v2 patches.
 
--/* {{ RobertYu: 20050104 */
--bool RFbAL7230SelectChannelPostProcess(struct vnt_private *priv, u16 byOldChannel,
--				       u16 byNewChannel);
--/* }} RobertYu */
--
- #endif /* __RF_H__ */
---
-2.25.1
+https://staticthinking.wordpress.com/2022/07/27/how-to-send-a-v2-patch/
+
+regards,
+dan carpenter
 
