@@ -1,60 +1,63 @@
-Received: from mail-pf1-f177.google.com (mail-pf1-f177.google.com [209.85.210.177])
+Received: from mail-pf1-f182.google.com (mail-pf1-f182.google.com [209.85.210.182])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4DBDE143728
-	for <outreachy@lists.linux.dev>; Tue, 12 Mar 2024 21:22:14 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.210.177
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7BB8E143733;
+	Tue, 12 Mar 2024 21:24:45 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.210.182
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1710278535; cv=none; b=fqtLEteJ1t4sJUDxhE1/X6w8pGwH5soskPY4WTichKwp2DHdf5JvvH6xGav4o8UVY1dhTzsiQqwPwHCdhbXDV/RBxGcWO5E13l0SHf1WHVMsVJUf7Xt/8RNS1qZYByQKqEeHZcwHqXV72fuuvgKxg8YK1CzIKBWOVOwLdDWKp5Y=
+	t=1710278686; cv=none; b=oMtK1JFqYkcBC3sA8w19Luu70byLLwI2d9epswM9fsvWNpUkIBmkqUUpcW9JbcjgNx7wdsrPqAPGaQmTg+XJzC6i3XPbm1lnV4TS5MUQIgOr63+SIE7v2QWOzIQDH5vBtc651soOFVtNGy52kNhVzJvswvp1LOBXFqUUsENhzq8=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1710278535; c=relaxed/simple;
-	bh=7rBwd+sfmuDr30CU4/B+mYYhJgxmsGnIEOcFymakRRM=;
-	h=Date:From:To:Subject:Message-ID:MIME-Version:Content-Type:
-	 Content-Disposition; b=AyqTX5tUvp4yKMymrPBrXlXZUebY9b2DrOYyq4POR9tP/FrRJDdA5wkGAeYnsxG+FyJkxhxg7uVISrpQEhh4EAUViTPPOGbBG87s1vXhJMIV0eePGpMNOvMUAQIZH4m19oXmW2629MqFAYebWgaRmiwXwgvAFQlKL54wbYa4lfo=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=SNUsghrL; arc=none smtp.client-ip=209.85.210.177
+	s=arc-20240116; t=1710278686; c=relaxed/simple;
+	bh=zn+NCXHkplgUV+dXIwohdLE+F3/a8X6VbE67wHJakVs=;
+	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type:
+	 Content-Disposition; b=uzokEjKzF/hrT3ti5GPScPxMSAnsIdqh/W1BbXTu66cnqFFFfhgLnQfhpamvt5ObxejZloTta9xGHjZht3WBX+iQq7H+N3SUB7IivVoCFinjvH+4NtLYI1egFIBad7R4hPewUkYZR1uNium6gTgJm3oiArQLUXORQTuwka5FvvM=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=F9uXgz90; arc=none smtp.client-ip=209.85.210.182
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="SNUsghrL"
-Received: by mail-pf1-f177.google.com with SMTP id d2e1a72fcca58-6e6adc557b6so890341b3a.2
-        for <outreachy@lists.linux.dev>; Tue, 12 Mar 2024 14:22:14 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="F9uXgz90"
+Received: by mail-pf1-f182.google.com with SMTP id d2e1a72fcca58-6e6adc557f3so807736b3a.1;
+        Tue, 12 Mar 2024 14:24:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1710278534; x=1710883334; darn=lists.linux.dev;
-        h=content-disposition:mime-version:message-id:subject:to:from:date
+        d=gmail.com; s=20230601; t=1710278684; x=1710883484; darn=lists.linux.dev;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=oQmSvRDNaW580jwRE07lbPsAM7eCOP1OTVaOovGOOXM=;
-        b=SNUsghrLiEhGcPFXZRlsC4is8riWBxIspUGhF4oQ/SR4HDZKc0SSYJIKHBHVYSHsW0
-         38phxHeUc0HqxW11YcvB7Lh872wNYt7HxU+4WvJxgM9NqaPCmFWrtiXAyVPKcgRJPJ/o
-         G2x1OR+xleW1USsZIBC8I7oKvv3gybEtyRTIgfW/uyxqBIHutNuGWuz8tW69KAep0QSl
-         k9pftoS1Bx8jO8M9pGq3nRcFqVhMk8hj18augyXmLVcy/a2smH0UjX8CkXYF1c4Zqo6q
-         MgWktcrx5GwEZCy4q1P9VI2UNuqC5h7nCqzGLFfYzxr7kP0P2Y4PdsT5AejeL0kl03Fj
-         fl/w==
+        bh=yyVVkBcjoN3+kr62FySlopYdKOwyFmOO0p91aujbCWk=;
+        b=F9uXgz90fzRsOPIkESzPPxtnF0DoL+TQCyHbMxSvRaXpWueAq/yDIJ1QC4S3maAl6l
+         N3k+wO6q8ewQPRStOzf6QH90jJ6DeNTvC1kSmoEKBANqArVZDLnHYE28tH3B56xTK1/C
+         s3p2LCCAMPi4pVkT4cJfVHATEsDGIuBlZ0kpkcdc0Hemn4wkwDpwvHeKKNmwV/godO1i
+         hXwnlo/FaOcHeCfbiX2uvjTzuoPnK/jVoNfCUEXleysJDgaZ4KXw3lE9BU0MqVKvAEZZ
+         PWtXLd7odr5Gv/c7Agl9cUa+tKXWqB9qiUrkd7fp/r8ICkaR+STw6/yFt2e2XNTGo4Pr
+         pI9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1710278534; x=1710883334;
-        h=content-disposition:mime-version:message-id:subject:to:from:date
+        d=1e100.net; s=20230601; t=1710278684; x=1710883484;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=oQmSvRDNaW580jwRE07lbPsAM7eCOP1OTVaOovGOOXM=;
-        b=u0mlY3JT4u+L+1ueouc1oK5Pc1oSZAC3+0QwguKNo1YqzUiV3/UyZPXnzV/z9AO4WE
-         oReIdgRDCeeQ2PIPAIgFwghtNU7tkvokrPzmYrgz/vAg94XCZvpxlU6su+j7x89HntgT
-         yb/u71YvHFNhexjlOFlecniPPlZ4QnMhv2nwqgXxg65kuCiAnqo2WP+zgd849clOH7cQ
-         TmoQfx7FwOBVMa01GMSewfKde6qEb167XFjQSC9i82KS0ZB+cwgcKRVLva5Lx3rmATjo
-         JwwnKOw4s11htj9jDplsP12hXX9hy2h9p61IphB0QG73OE0Q4lFly6AIYVCM4AxeOWBj
-         qr4Q==
-X-Forwarded-Encrypted: i=1; AJvYcCVEwethOyYPHDegxYK9nziswzG1M9mJe0+Gyz+eWIJxJUniV+6VKtSAio6jjQTv9U0SXW9N2NAnIWmFdaR36hx37vfnOQSvy98t
-X-Gm-Message-State: AOJu0YzDgpc5hckhGex/2E3SPvnY/kDxqQbE426KRua+YAAuTzl3oC9L
-	TT68wh24bUmcZY+FWUOgrTahVOd6fAgDHThKeTUjHsGTltUDKYtgeBYMtRFs
-X-Google-Smtp-Source: AGHT+IGQrJYQvdI1GmiAWvgwiQgG/mIAkgaSSuLTqpOuVI61HALO3hzUWcy4Vqo7R3RdXY3u9BydvQ==
-X-Received: by 2002:a05:6a20:938d:b0:1a3:13a4:eaf6 with SMTP id x13-20020a056a20938d00b001a313a4eaf6mr1801041pzh.18.1710278533520;
-        Tue, 12 Mar 2024 14:22:13 -0700 (PDT)
-Received: from tahera-OptiPlex-5000 ([136.159.49.124])
-        by smtp.gmail.com with ESMTPSA id sl13-20020a17090b2e0d00b0029c19285192sm36683pjb.44.2024.03.12.14.22.12
+        bh=yyVVkBcjoN3+kr62FySlopYdKOwyFmOO0p91aujbCWk=;
+        b=sXgWNoSUgI9IQdE/wFoOmkF1o4NSNLYmva75KKT85+AJLE5jyKv25xjZTqVVlmdIBK
+         wuxQ6PJbW7/kqLy7Qy6ucunWuq2d8y/9CGYY9pVZh8Is4vkhz51gFaZ9qriC2iLzsTwq
+         Ln8EcZTufyFg0N61y5FGdVpYF1yIuBany0WIsnN5lHG8DZLbdztJZirVj/L7gdPOx4Rl
+         pOrKLfL0a72IPmhJWKsfrF/GjN5uwV5kFBb84DmK8p6IjrnWD8dOCux+vi2ufKwfQSV3
+         qo2D1ykfe8y82UT1LL2wYuMpLKU07ehO3cAbRBaPUmFJtHYmS23GfwvKxBbfLPPKLNaP
+         ORXg==
+X-Forwarded-Encrypted: i=1; AJvYcCUf9MiZ8xeVdc3wg1Q6MOQ8+8WlH0IX2x5v7Qu+E2N6naK7qN1G48BlETw7NkHWADLPuSODWuVvkMUkDIETNQFZfcwtTBpsceDhPSfCGQ==
+X-Gm-Message-State: AOJu0Yyq4kD/L1bbHQX9G6ckfgiq5D3wUfTMrXrmBfh6fdpWT1RoP4xB
+	2NnJH2jfb223y7HJ2E3UZWKWF9mbfo1wviJUmmLfvl0n8HT5lGWHeo0gqNz+eW8=
+X-Google-Smtp-Source: AGHT+IEcPiVY1OjLAeekn6g0s+Gbrp+3mGgtAJv9ETaGR3blWskKI0IHXdhBc+Qx2zE+ySIm38grIw==
+X-Received: by 2002:aa7:8885:0:b0:6e5:adb9:b955 with SMTP id z5-20020aa78885000000b006e5adb9b955mr777749pfe.23.1710278683901;
+        Tue, 12 Mar 2024 14:24:43 -0700 (PDT)
+Received: from ayush-HP-Pavilion-Gaming-Laptop-15-ec0xxx ([103.6.158.67])
+        by smtp.gmail.com with ESMTPSA id x19-20020a056a00189300b006e6b0c7c453sm775010pfh.216.2024.03.12.14.24.42
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 12 Mar 2024 14:22:13 -0700 (PDT)
-Date: Tue, 12 Mar 2024 15:22:11 -0600
-From: TaheraFahimi <fahimitahera@gmail.com>
-To: gregkh@linuxfoundation.org, outreachy@lists.linux.dev
-Subject: [PATCH] staging: ks7010: fix spinlock_t definition without comment
-Message-ID: <ZfDHg49k0Og3z9Lw@tahera-OptiPlex-5000>
+        Tue, 12 Mar 2024 14:24:43 -0700 (PDT)
+Date: Wed, 13 Mar 2024 02:54:39 +0530
+From: Ayush Tiwari <ayushtiw0110@gmail.com>
+To: outreachy@lists.linux.dev, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org, gregkh@linuxfoundation.org,
+	florian.c.schilhabel@googlemail.com, Larry.Finger@lwfinger.net
+Cc: outreachy@lists.linux.dev
+Subject: [PATCH] staging: rtl8712: removing redundant paranthesis chk_fwhdr
+Message-ID: <ZfDIF+6MrdrX79nd@ayush-HP-Pavilion-Gaming-Laptop-15-ec0xxx>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -64,26 +67,72 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 
-This change ensures adherence to coding style guidelines.
+Removing redundant parentheses in 'if ((pfwhdr->signature != 0x8712) && (pfwhdr->signature != 0x8192))' in static u8 chk_fwhdr(struct fw_hdr *pfwhdr, u32 ulfilelength). This will ensure adherence to coding style guidelines
 
-Signed-off-by: TaheraFahimi <fahimitahera@gmail.com>
+Signed-off-by: Ayush Tiwari <ayushtiw0110@gmail.com>
 ---
- drivers/staging/ks7010/ks_wlan.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/staging/rtl8712/hal_init.c |  2 +-
+ key.pem                            | 28 ++++++++++++++++++++++++++++
+ staging                            |  1 +
+ 3 files changed, 30 insertions(+), 1 deletion(-)
+ create mode 100644 key.pem
+ create mode 120000 staging
 
-diff --git a/drivers/staging/ks7010/ks_wlan.h b/drivers/staging/ks7010/ks_wlan.h
-index 3e9a91b5131c..94322e2ea304 100644
---- a/drivers/staging/ks7010/ks_wlan.h
-+++ b/drivers/staging/ks7010/ks_wlan.h
-@@ -468,7 +468,7 @@ struct ks_wlan_private {
- 	char nick[IW_ESSID_MAX_SIZE + 1];
+diff --git a/drivers/staging/rtl8712/hal_init.c b/drivers/staging/rtl8712/hal_init.c
+index 1148075f0cd6..9f41b2c086ca 100644
+--- a/drivers/staging/rtl8712/hal_init.c
++++ b/drivers/staging/rtl8712/hal_init.c
+@@ -138,7 +138,7 @@ static u8 chk_fwhdr(struct fw_hdr *pfwhdr, u32 ulfilelength)
+ 	u32	fwhdrsz, fw_sz;
  
- 	spinlock_t multicast_spin;
--
-+	/* lock for synchronize access to device read operation */
- 	spinlock_t dev_read_lock;
- 	wait_queue_head_t devread_wait;
- 
+ 	/* check signature */
+-	if ((pfwhdr->signature != 0x8712) && (pfwhdr->signature != 0x8192))
++	if (pfwhdr->signature != 0x8712 && pfwhdr->signature != 0x8192)
+ 		return _FAIL;
+ 	/* check fw_priv_sze & sizeof(struct fw_priv) */
+ 	if (pfwhdr->fw_priv_sz != sizeof(struct fw_priv))
+diff --git a/key.pem b/key.pem
+new file mode 100644
+index 000000000000..ef912436e976
+--- /dev/null
++++ b/key.pem
+@@ -0,0 +1,28 @@
++-----BEGIN PRIVATE KEY-----
++MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC8i/6L5h4wSbaP
++tn9whe9BfKa0jpiiy+F9L0fJEWGKqUqxMUL3D48LJsqTgt8vP6ORMcSQmtQ1ijyv
++f9s0N5/sNci9dYeiVhzArlcZi4IOEkfkn/lgRoz4WOsZ6NQzgsk6ctctavrlHUwB
++e6RQHFyEC9BOmCq6PTPMtPTeTrQvjzm68gMiQfoNT86/uho+eKxABYBOZEN1DObt
++Q2wEbJOhiZ+UfknJd5BuxLXFLLeutYNHT+jzymVETfH6Zqr5U+NS/68H8tVRSy5w
++zwMZ38yQc5RI0fhI/u+6Lsikf0sJYV4sNaUkElclfzKFRE9RNc8McQcjbY8RUVvG
++81qbKvDxAgMBAAECggEAB62YcpWu7LQmbpN10h0U1rEJpY2vB+Yklcal9jldJFqW
++M5a4IuaBIpOe/ph+7Tt6tjrKxewVheP4v67bEYp4WpQAIOhXMH8Fkbp9H98Er1JY
++QiZaRJeVkwwlRXtWn423vcfCcn409GftL0bxNIqgdod39qi6CLaIVFGZgoS9pWLD
++lrrEnK8nlq8/4bs/bPyZqoiEIUXTC9IAHhlmmwL1diLYmTOTIFn0XN3kqxMwz50D
++81Bh/pPZXXsL4f3an9v/68prsM4NgJMXvHh/qWGY8L75QyoPn69/6d4mETBDCSeL
++BAA1Ac2z2UlC6uqlM5A4/F1IEilrtDIFMD6r3UMZDwKBgQD1Zbx3A3VV/HDlH2CN
++Tzf/Er2xUPYbPHJCALbZVwEM8zNTeIysMM3LeqWXfbJ4JpfkU575QLCaAC1PdQJT
++AjNLqo9eYzsir6pj18HqBN/MxIujhbLGA78oD5fYRTL+5sXl0m1xkJq+ngkWbx6Y
++ByfZFZ/UIUMST8kU8nVlNuFN1wKBgQDEsXO0PH5f0RkdbRVBQvVIdj5kfR94bheW
++s7apwU07uYvlLiLrikRgC3Q60a7K3H7tfxkP5rjKUr+CyH+rlsL+WL4gJjBi4D13
++XQeFlNbZieNNrnOctFCnGPlUSmte4Ubd1QEplUkbYkfvh5XKIklAfLsQPf17FQr/
++ZAE/2YIOdwKBgGfXCQ0DdZ9RFySdRmoFX5icAZEKxVl5FpA/ZSBK5LLqJonntP8Y
++F71GxNN56Q9WpWeEyvyGFzTTZlj9FmKxx6r5HXm/W8KtuthM8E1qiplHgh9L7/5C
++j50QHBz0C0Q5uvwpMw6fNhv7G7VWiAek34PI1r0Y5hzVji1C+9I8itI5AoGAYGsU
++at/UmyenBhO4/ZrTHkhIYX4sdR6SlZ9XBXPqZkKYXyn0mD3ZMrOqsEKlSnA4EDfj
++kzXok9VoZ7XdT8HBqGjcGmpeAbomp2KFE2hYwZ6kPCouJj0F5EOLxVQNuh74XDnU
++LgwuICxXUwXF2aZg/immkVmx7inskDD3o9L9vBUCgYBhCpayQcy9hswdDVICOEst
++U9VXwVAbwfdmPTLiKacRQdw44zhBcsBB0wi1dszvGvSlAlB+ChFM6MxALEdbvTln
++Jxwsyxx9KXuoryhcTlHQikBOYxmrqPAhdrPh8H2tdiv2yX35x9g7E/XkRZZxMfkL
++H7x8vakFgGNcX2NITZBM4Q==
++-----END PRIVATE KEY-----
+diff --git a/staging b/staging
+new file mode 120000
+index 000000000000..ecd48e46fcb1
+--- /dev/null
++++ b/staging
+@@ -0,0 +1 @@
++/home/ayush/git/kernels/staging
+\ No newline at end of file
 -- 
-2.34.1
+2.40.1
 
