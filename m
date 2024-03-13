@@ -1,65 +1,65 @@
-Received: from mail-ej1-f54.google.com (mail-ej1-f54.google.com [209.85.218.54])
+Received: from mail-ed1-f41.google.com (mail-ed1-f41.google.com [209.85.208.41])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B17691119B
-	for <outreachy@lists.linux.dev>; Wed, 13 Mar 2024 05:39:16 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.218.54
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 565B412E5C
+	for <outreachy@lists.linux.dev>; Wed, 13 Mar 2024 05:47:17 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.41
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1710308358; cv=none; b=P/MeKMJeKPQhN0EvkO47k8RFBHcxc8rRtXAf2QoZfHYzwrWijAGE074q4JU7wzMAKpgHxdVGZ2BzxDEQulosBJopxRaQBDWqZKOYjPah3xSN0JNa1Fhqc6Fnji3N5mfuAx5+ZPgKcEL1VJEMkAPs3TNuGjIS2Lsgmll3NTKSkZ4=
+	t=1710308839; cv=none; b=bfs+HNtefd049hFW4ozh8pfc3hKoM9EB6QqhyYt+7jYjQsN55ySNZKIdk7VwHcJ4Xb0wqkJgUUnvZ+BQa2NQNm+EPr89flY4+LI0VTYJhtzEze6n3ztw2sUbQ7B/wjkrrXNiYHkf0cZEltZkxPZYw+kylhlEOKtEw+jBUVrplZc=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1710308358; c=relaxed/simple;
-	bh=qv9E0ryVzOnQqUuvfK/MZ3ePXhFc9C6pWJ33POv+pnE=;
+	s=arc-20240116; t=1710308839; c=relaxed/simple;
+	bh=XyJjIP3N3pEfS6auuifybHfrxfnQVY1JT4z5GvMYXjQ=;
 	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=TVPT6rP0L6n3yUrxISE4rDd0wn6ev1bt242BXsD0nc7i+ndEcUkKu71HHD4FOdUO8QGu1pmLXEajGUDWhMmGqkG6OYOC/+etJhFjY9HHxlpR2hVxqVwvFpsDD8lpCQdHYvi1voHbbJd0bMGyfpktvZ+TgQoXUAQa+d7+ovwsBAo=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=neqdYVRD; arc=none smtp.client-ip=209.85.218.54
+	 Content-Type:Content-Disposition:In-Reply-To; b=WbKVaI3cAtavZBVM3uMXZ1lJCjHpgRs8UyvK4Fvh2mO4/IfVH4Ib/eJ8NF5saK3A4gbBwW/SSNiGm4kE3B5ksRbNekwSeMkPDwsFMckMotXZINqmwtL1UjoqiGaOllYeud3nRDPTjRKPIN4/l8lhxhsuX8+xgNpDHasoOPmlX1M=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=GvnQLzL/; arc=none smtp.client-ip=209.85.208.41
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="neqdYVRD"
-Received: by mail-ej1-f54.google.com with SMTP id a640c23a62f3a-a45f257b81fso594967866b.0
-        for <outreachy@lists.linux.dev>; Tue, 12 Mar 2024 22:39:16 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="GvnQLzL/"
+Received: by mail-ed1-f41.google.com with SMTP id 4fb4d7f45d1cf-563c403719cso608792a12.2
+        for <outreachy@lists.linux.dev>; Tue, 12 Mar 2024 22:47:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1710308355; x=1710913155; darn=lists.linux.dev;
+        d=linaro.org; s=google; t=1710308836; x=1710913636; darn=lists.linux.dev;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=NSWceIUzISd19ErGqmK4nWkvRpe4eyaho/RKTDtrGmc=;
-        b=neqdYVRDEECDNUICuspR1ytBGRrmAnZpEApyc9JpNKBpAJ9CwB69tw/PLI4lvArDAZ
-         pqsSGju0tag2hVS6L/7DKvcDKLYgc4MtSQ+dp9DxNUXp3DKXC4B1IXiaC/1Wy4KHKaJh
-         +zMBI5MuEG/PF2WVOiv78OOM5Tcs94K6WgOgpOfcLuuooolmOHf7eZWy0Lr4huz6qxJu
-         uxEumyiMEwRoUF3h5Loycx0tHeijOvbRDUv1vYnwFC0Bm4Q/SJvWrFluaWLDoAbtaQ21
-         josDladaLYGzJFwDeOlask1cwa+8KlMwIsbTrSwf2yST7gQV7/sOtUO6/KJ6FVU6KBbi
-         Xe0g==
+        bh=1rNabkQK5fwhzB8TbiWGYIspOvr3QURMvFrMa2kcQL4=;
+        b=GvnQLzL/Py2j7bwmaAEe6wRgYu0DYrzC52pS+9sGQaRFSLJoWNB9RMhOWVEYgJq6L8
+         Vr/D2RTUnaFx6MwH6XtNqJqaaEKh+IVqqJeDnpr33YSqY5+n4U1lcsGvVUpfTsZ84DB/
+         S0Bh+fGE5lMEmvBcXDfyWn3Mcf79M/rFSqCv6n6g8oVGpT7STs6jFTGHTM8oY3zHFg80
+         rBczjvp0eSOHjy4JIo7Nve61g+gyAaeC1SrTC08nJcv0dlpEebLJttPcqMmYuR6Y+URx
+         YApFCa3rwcoIlm6K/efyYak5dtvZ7FuhkwlH39Ktjt4CD0Gpo7fd9Ij466/gWt3JAyWY
+         yjMQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1710308355; x=1710913155;
+        d=1e100.net; s=20230601; t=1710308836; x=1710913636;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=NSWceIUzISd19ErGqmK4nWkvRpe4eyaho/RKTDtrGmc=;
-        b=PU3zr1kV9i6ToURR96ua22ZLteRNRTUsvuE+O09sFWE7tMSPj6ZAsNK54lOrCFgG3N
-         JWXajsIuAFLThZJNbMzH2Moke24PSMMNO3vfb46cwrjQ3tBgJaYLXYf1RmJGDKUMR37L
-         jxy0JvTgKAz6/bYrzi06pJivtndKdQahst6yTtyks5o2GjDGnhLuWScGK5xGiVJz2SLP
-         4EUDpfWB2IGPa6f9s1cjEUCEdxFHfseRysso5f4V+VQ2crUGN3/+Rjy2HzaeDifewDWV
-         zFURaYUQ0UleVi6HHFjWSGOVPptGscEMPSns77sbFTklPl9ghE9plnajRgZznonpAjbJ
-         BeZg==
-X-Forwarded-Encrypted: i=1; AJvYcCU4oz3bvjUg4KRJOg2MWarc4xKOSf99+kkDqrZDDbEIJZbt/lQc3xGGi+wAWMM5sBtad9vDBbXVapU7mRwre9ebVZ9+JW6tg+Rl
-X-Gm-Message-State: AOJu0YyUpHbESrbwI+9B+lN/ommxK6U5TrypaCEjF1DGK7HgdbD33nYz
-	2IjA/OlcLSs7ZequAnp9F5jqDcT0aRU+Wj0l9gnTLrEBPlznKjVKDbLBTkpjsD0=
-X-Google-Smtp-Source: AGHT+IHIl2MZeMkBVrLJIRHhVpuSEJV9aPJOnnzBZz3010xMAZ4WjFN325JjVYWACAPKVHCN6Hpa3Q==
-X-Received: by 2002:a17:906:bf47:b0:a46:22a3:4798 with SMTP id ps7-20020a170906bf4700b00a4622a34798mr5890684ejb.46.1710308354976;
-        Tue, 12 Mar 2024 22:39:14 -0700 (PDT)
+        bh=1rNabkQK5fwhzB8TbiWGYIspOvr3QURMvFrMa2kcQL4=;
+        b=WP5axmqB9TaZJ7PCShFt+MNH2r6s6ns10kczoLbRqwQ4v8RSd83H+OKXSBiar/mtWL
+         iZ6eWOggUtJ2V/Nm0hmlTkaQYtL0EbjyIjVhLhj4xICS9ixub5AB6EGvDMTjYs9CjH1Y
+         6RHoqQtJorEweAF73p+Ps3wANKOsuL71Lb5Av3V/ScJ1W2bCtDyEpG1+nZCjQnjLRu2d
+         4NZWZSPNBKlEjnLlHoq03zIoDBBlS/4dg6yKZkSN4It4A7JDnvzY3joPRx6ZufsEjaWf
+         u3CsoXhSniSWMGVdUPuohlFlKdZET4Yxk0K1JSZqjiNQPWLh9HQkwTd21BkDJx5nel/M
+         j5sg==
+X-Forwarded-Encrypted: i=1; AJvYcCWF3mgCuowAAnQ3ksEdWsJzu+D8bDGEZI4oSaCHTIr/R+XJ0KW/0Xmujyu5kPHdKEIXtnOLpj7HK3oIuyfLeRztRmMRCxQVofWF
+X-Gm-Message-State: AOJu0Yy7zrzvd2dzE8ZaH0xFWfOnqIl3+/vCHXInfuGFzbEAEGNJirJ8
+	f2Wew1lyHEShluXIMDOTSxx8olic2KGo74YWs15zt2KNnJieRE5zDqrbIyJ0bzc=
+X-Google-Smtp-Source: AGHT+IF8t33P00Vffm3hQwTe343HmIWz64ZgPwumplB9cLE8YNCblECEIyKCkjc9aNVqfKfuN6GZQw==
+X-Received: by 2002:a50:cd95:0:b0:567:45e2:c4db with SMTP id p21-20020a50cd95000000b0056745e2c4dbmr4453144edi.39.1710308835557;
+        Tue, 12 Mar 2024 22:47:15 -0700 (PDT)
 Received: from localhost ([102.222.70.76])
-        by smtp.gmail.com with ESMTPSA id zh16-20020a170906881000b00a44d01aff81sm4525776ejb.97.2024.03.12.22.39.14
+        by smtp.gmail.com with ESMTPSA id gy4-20020a0564025bc400b0056820311668sm4623037edb.57.2024.03.12.22.47.14
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 12 Mar 2024 22:39:14 -0700 (PDT)
-Date: Wed, 13 Mar 2024 08:39:11 +0300
+        Tue, 12 Mar 2024 22:47:15 -0700 (PDT)
+Date: Wed, 13 Mar 2024 08:47:11 +0300
 From: Dan Carpenter <dan.carpenter@linaro.org>
-To: "Felix N. Kimbu" <felixkimbu1@gmail.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev
-Subject: Re: [PATCH v4] staging: wlan-ng: Rename 'foo' to 'rc' in p80211conv.c
-Message-ID: <f6f5e779-4881-4fcd-b162-8a8dde514b2c@moroto.mountain>
-References: <ZfEvTF7qwYZORGsY@MOLeToid>
+To: Ayush Tiwari <ayushtiw0110@gmail.com>
+Cc: Larry.Finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
+	gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
+	linux-staging@lists.linux.dev, outreachy@lists.linux.dev
+Subject: Re: [PATCH] staging: rtl8712: renaming tempVal to temp_val
+Message-ID: <aeb35d3c-8d4a-4b22-a620-7d61c255827d@moroto.mountain>
+References: <ZfE4iDfGUyq/C9s4@ayush-HP-Pavilion-Gaming-Laptop-15-ec0xxx>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -68,18 +68,25 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ZfEvTF7qwYZORGsY@MOLeToid>
+In-Reply-To: <ZfE4iDfGUyq/C9s4@ayush-HP-Pavilion-Gaming-Laptop-15-ec0xxx>
 
-On Wed, Mar 13, 2024 at 05:45:00AM +0100, Felix N. Kimbu wrote:
-> Rename identifier 'foo' to 'rc' in skb_p80211_to_ether() and
-> skb_ether_to_p80211() to match the common kernel coding style.
+On Wed, Mar 13, 2024 at 10:54:24AM +0530, Ayush Tiwari wrote:
+> Renaming variable tempVal to temp_val to address
+> checkpath warning 'Avoid Camelcase' and to
+> ensure adherence to coding style guidelines
+
+The end of the line is at 72-75 characters.  s/Renaming/Rename/.  Put a
+period on the end of the sentence.
+
+Rename variable tempVal to temp_val to address checkpath warning 'Avoid
+Camelcase' and to ensure adherence to coding style guidelines.
+
+
 > 
-> Signed-off-by: Felix N. Kimbu <felixkimbu1@gmail.com>
+> Signed-off-by: Ayush Tiwari <ayushtiw0110@gmail.com>
 > ---
 
-Thanks!
-
-Reviewed-by: Dan Carpenter <dan.carpenter@linaro.org>
+This will break the build.
 
 regards,
 dan carpenter
