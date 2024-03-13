@@ -1,127 +1,114 @@
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-oa1-f49.google.com (mail-oa1-f49.google.com [209.85.160.49])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 789FF383BD;
-	Wed, 13 Mar 2024 10:08:51 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.198.163.12
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EA4CE39867;
+	Wed, 13 Mar 2024 10:23:43 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.160.49
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1710324533; cv=none; b=NT7iaGONSTGCCGsIpc9CJXCjiSc0T9Y9B5o14UvMJzS+gVv5fSOcE3Ul1itHG/DfngGizfdaj+qDAJvfIPHZqX4tG9N/aoanT4uDJAGkG2Q6D2Fc1vN7joA2nK7D66wJBFXhk6NySQxztPIUYuXV8PjFK0/+sYyL9JRZpNSJpio=
+	t=1710325425; cv=none; b=YubJ2fdNAJeBLldMBQDzTDPjxFsrXmyqaUUr/nS83ZCJJ1bbxG4Z6AaDm0CIcLnWrPtvImG6N7pXSP7cCQtOxJ5VxUgPIIwX+QuyFZmQ/MIxS0o8fUYtmXS9ACpmfGgzf1FeMLDjhLRFMmzlTUVrOUi5P/bQPZ+YaUfctlB1KpA=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1710324533; c=relaxed/simple;
-	bh=aSw6o7ezc8c9/Vjkfi+RE9UYn23okpahByuvCrBXroI=;
-	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=akUI2Y6MDq+CBM80eSd9KONi7iyV/J8OBQJ1YO3KeivCKoFmD+Pp8T6LVuArSeJR92qEByK7nyG1VESSK3swJF7RoWldPQM8NDOWfxHuxPMGQqYVd59TyrAKeDGSQmRuwKVk+xJ1ftLsykKJuVHOlApaVsyXkJih8mKx0BqDMMs=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.intel.com; spf=none smtp.mailfrom=linux.intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=VRyLy1Fl; arc=none smtp.client-ip=192.198.163.12
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.intel.com
-Authentication-Results: smtp.subspace.kernel.org; spf=none smtp.mailfrom=linux.intel.com
+	s=arc-20240116; t=1710325425; c=relaxed/simple;
+	bh=7HxkYOHdvLa3vDWYcxeLYbaF/zPaQQMSyz4PwtWYdlI=;
+	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type:
+	 Content-Disposition; b=i9fXOVchZWpIni199GvsMWydbHHzIhgSuBnw0sfoPoPafitzuLS3bOIEnBxkGCbN29Xi151WBlH+Pu8uCPcwbx3hA6vP7pfxPnlFwBQewOlLSdUC346bJwchpZCclx70eru/xRmyIQNR3hT4H6l01sU6tcR8diw/nt37Fv+p8ug=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=TZupKiyQ; arc=none smtp.client-ip=209.85.160.49
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="VRyLy1Fl"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1710324532; x=1741860532;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=aSw6o7ezc8c9/Vjkfi+RE9UYn23okpahByuvCrBXroI=;
-  b=VRyLy1FlcOaOB+M4wVCpEZa+/wgIxT6sFsRB3lfPDYkXJzm0dZiLxcMq
-   0x6KsvuvMI6pjb3ddMwBzWfbtIHnFDsxn/S3yILBScKPlQ4K6b3158fuD
-   VUry7gJm9sDYbJBgbpvHxBW31HMT2T0dDNfXv6AjXY7HP0N33qIXdvZCo
-   cT4oCPgFFL1qZfL7uUQMUlYrwIkIG6ZZrG+x6RUSWDkJNy/haI9lSLiEO
-   rVkxdUIqIr3k0W+7WduhcgQixNa1gbhxNbR4HeUIFHaFHizoA7JpSvaXV
-   y/DLmW3QqurS2pHiJCHAiWr+Ig4UTIU9drHwCahVd06oGBrad25xwOcnd
-   Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,11011"; a="8848408"
-X-IronPort-AV: E=Sophos;i="6.07,122,1708416000"; 
-   d="scan'208";a="8848408"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
-  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Mar 2024 03:08:51 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,122,1708416000"; 
-   d="scan'208";a="16442321"
-Received: from fdefranc-mobl3.ger.corp.intel.com (HELO fdefranc-mobl3.localnet) ([10.213.6.143])
-  by fmviesa003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Mar 2024 03:08:48 -0700
-From: "Fabio M. De Francesco" <fabio.maria.de.francesco@linux.intel.com>
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="TZupKiyQ"
+Received: by mail-oa1-f49.google.com with SMTP id 586e51a60fabf-221ca677834so419562fac.2;
+        Wed, 13 Mar 2024 03:23:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1710325423; x=1710930223; darn=lists.linux.dev;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=bg+zFCejMNEntTHWqdq6Zt216uKhJFYmi4RiiUYU3I8=;
+        b=TZupKiyQ1EgOTGTKnjNQwS9ZZeCgHbHJuGuALXuLjym5c3qXwWRFLlqGjFS0F39VfA
+         USCzbCf9Pqq5McYlUvr18qx/xKSozy8SifPjE1PZqCxkkYzanKcHnNZp/yoBQkRUPoTh
+         BmYA6vTFgguNm8AlHzvSFXQfbtwH3fuOdBL5mhf602bLXrgegnXhLsU/95pCQLKxq8Ui
+         SW1vwxrn4fFDwAtF3WtzP/tvnTFUnKOFWBRTJXsFGdmN568KDK52Bk4mSCJWHyhCv8Yg
+         hPMNXNzz5o3w0BoR+gpmjiwRaaZgj03J8D1lEbXqJa2XsyRpoeyw4gZ2cF6EFVm+Fu34
+         QBoQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1710325423; x=1710930223;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=bg+zFCejMNEntTHWqdq6Zt216uKhJFYmi4RiiUYU3I8=;
+        b=sv3SANGuXYWv3g4mC697a9jpQCJM5TXMsTaaBk2fD0np8CMdgoqWQwGR5j5zpYEa36
+         U3Q9KajHczWVz+CVyC5Yt78An+ZZWNrO7Lz9oJEAgDugvQz2QJzBEi07blTuCy5tHSka
+         RLpI8kjOQb1pgveB8bTZ24ctcXzpN5uLGP7e4omUxxlJOEIYkgHX8yDH7lfi7iV/r4Ux
+         y4NSGudpF1y0/AP9vBP0h6h0z2Ce3ot5rOzJb4v993g6uPc6ch4moe29X/1haT0Q8mxC
+         2dwyRCkxCl4fA1ZVW7ZzxwTHd/ZuJj2hClIdJJauUF4+wiUj5m5207TVTQUygHi0ZMN4
+         NR9w==
+X-Forwarded-Encrypted: i=1; AJvYcCWThj41+2eFYrKXA2tvaZlBdfUU2MlG5oAIpWI2nIxPBhYNdvk48hDtMZnrgjnpKofasTAz6Kt6bPSDxXAv5yBT5SQo+ICNdiL5QcfzJQ==
+X-Gm-Message-State: AOJu0Yw2VBtaKCVkYVdcU92ZzuGAkq7OA97OpJjDpyAYhU6kInP/0iaw
+	cFPTIxffRcsA8eldLDIxcfb7yKFTNtV83w+0deWcIabhhIS8Ft4/UXUyJZ4Ry+E=
+X-Google-Smtp-Source: AGHT+IEzvOD7FNKQGGcWoTqnHsGpNrL0vp+14BGND2U9/27MeFjrArd97tKs/A3AgD8Ii7l5esAXsQ==
+X-Received: by 2002:a05:6870:1643:b0:220:8cc7:253e with SMTP id c3-20020a056870164300b002208cc7253emr6651488oae.22.1710325422770;
+        Wed, 13 Mar 2024 03:23:42 -0700 (PDT)
+Received: from ayush-HP-Pavilion-Gaming-Laptop-15-ec0xxx ([103.6.158.67])
+        by smtp.gmail.com with ESMTPSA id d8-20020a056a0010c800b006e685c36d41sm6178544pfu.55.2024.03.13.03.23.41
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 13 Mar 2024 03:23:42 -0700 (PDT)
+Date: Wed, 13 Mar 2024 15:53:38 +0530
+From: Ayush Tiwari <ayushtiw0110@gmail.com>
 To: Larry.Finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
- gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
- linux-staging@lists.linux.dev, Ayush Tiwari <ayushtiw0110@gmail.com>
+	gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
+	linux-staging@lists.linux.dev
 Cc: outreachy@lists.linux.dev
-Subject: Re: [PATCH v5] staging: rtl8712: rename tmpVal to avg_val
-Date: Wed, 13 Mar 2024 11:08:45 +0100
-Message-ID: <2263049.iZASKD2KPV@fdefranc-mobl3>
-Organization: intel
-In-Reply-To: <ZfFpW9XvHhUkcspq@ayush-HP-Pavilion-Gaming-Laptop-15-ec0xxx>
-References: <ZfFpW9XvHhUkcspq@ayush-HP-Pavilion-Gaming-Laptop-15-ec0xxx>
+Subject: [PATCH v6] staging: rtl8712: rename tmpVal to avg_val
+Message-ID: <ZfF+qu+CGHlpHrtY@ayush-HP-Pavilion-Gaming-Laptop-15-ec0xxx>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-On Wednesday, 13 March 2024 09:52:43 CET Ayush Tiwari wrote:
-> Rename local variable tmpVal back to avg_val in function process_link_qual
+Rename tmpVal to avg_val in process_link_qual() to reflect the intended use of
+the variable and conform to the kernel coding style.
 
-You are making a new patch versions (v5) against your previous one. This is 
-not how the development process works...
+Signed-off-by: Ayush Tiwari <ayushtiw0110@gmail.com>
+---
 
-Make v6 against a clean staging tree, and change your commit message 
-accordingly:
+Changes in v6: changed variable name tmpVal to avg_val against a clean
+staging tree
+Changes in v5: changed variable name pct_val back to avg_val, as agreed by
+Julia and Dan
+Changes in v4: changed variable name avg_val to pct_val, as suggested by
+Dan
+Changes in v3: changed variable name tmpVal to avg_val
+Changes in v2: added a period in message
 
-Rename tmpVal to avg_val in process_link_qual() to reflect the intended use of 
-the variable and conform to the kernel coding style. 
+ drivers/staging/rtl8712/rtl8712_recv.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-Not directly related but, there is no need to say that process_link_qual() is 
-a function (parentheses already say that). Furthermore, by renaming you make 
-it clear what is the intended use of symbols, you don't "give meaning" to them 
-(they already have meaning by the mere fact that they serve their intended 
-purpose - https://ludwig.guru/s/to+give+meaning+to+something).
-
-Remember that only the final versions of patches, the accepted version, will be 
-applied against the kernel. Therefore, if this version was good, it couldn't 
-be applied because in process_link_qual() there is no variable called pct_val.
-
-git-am on your patch gives expected errors:
-
-Applying: staging: rtl8712: rename tmpVal to avg_val
-error: patch failed: drivers/staging/rtl8712/rtl8712_recv.c:861
-error: drivers/staging/rtl8712/rtl8712_recv.c: patch does not apply
-
-> to give intuitive meaning to variable and match the common kernel
-> coding style.
-> 
-> Signed-off-by: Ayush Tiwari <ayushtiw0110@gmail.com>
-> ---
-> 
-> [skip]
->
-> --- a/drivers/staging/rtl8712/rtl8712_recv.c
-> +++ b/drivers/staging/rtl8712/rtl8712_recv.c
-> @@ -861,7 +861,7 @@ static void query_rx_phy_status(struct _adapter
-> *padapter, static void process_link_qual(struct _adapter *padapter,
->  			      union recv_frame *prframe)
->  {
-> -	u32	last_evm = 0, pct_val;
-
-As said, a clean process_link_qual() has no pct_val variable.
-
-Fabio
-
-> +	u32	last_evm = 0, avg_val;
->  	struct rx_pkt_attrib *pattrib;
->  	struct smooth_rssi_data *sqd = &padapter->recvpriv.signal_qual_data;
-> 
-> @@ -883,8 +883,8 @@ static void process_link_qual(struct _adapter *padapter,
-> sqd->index = 0;
-> 
->  		/* <1> Showed on UI for user, in percentage. */
-> -		pct_val = sqd->total_val / sqd->total_num;
-> -		padapter->recvpriv.signal = (u8)pct_val;
-> +		avg_val = sqd->total_val / sqd->total_num;
-> +		padapter->recvpriv.signal = (u8)avg_val;
->  	}
->  }
-
-
-
+diff --git a/drivers/staging/rtl8712/rtl8712_recv.c b/drivers/staging/rtl8712/rtl8712_recv.c
+index a3c4713c59b3..1fabc5137a4c 100644
+--- a/drivers/staging/rtl8712/rtl8712_recv.c
++++ b/drivers/staging/rtl8712/rtl8712_recv.c
+@@ -861,7 +861,7 @@ static void query_rx_phy_status(struct _adapter *padapter,
+ static void process_link_qual(struct _adapter *padapter,
+ 			      union recv_frame *prframe)
+ {
+-	u32	last_evm = 0, tmpVal;
++	u32	last_evm = 0, avg_val;
+ 	struct rx_pkt_attrib *pattrib;
+ 	struct smooth_rssi_data *sqd = &padapter->recvpriv.signal_qual_data;
+ 
+@@ -883,8 +883,8 @@ static void process_link_qual(struct _adapter *padapter,
+ 			sqd->index = 0;
+ 
+ 		/* <1> Showed on UI for user, in percentage. */
+-		tmpVal = sqd->total_val / sqd->total_num;
+-		padapter->recvpriv.signal = (u8)tmpVal;
++		avg_val = sqd->total_val / sqd->total_num;
++		padapter->recvpriv.signal = (u8)avg_val;
+ 	}
+ }
+ 
+-- 
+2.40.1
 
