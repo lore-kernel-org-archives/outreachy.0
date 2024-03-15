@@ -1,106 +1,86 @@
-Received: from mail-pf1-f181.google.com (mail-pf1-f181.google.com [209.85.210.181])
+Received: from mail-pl1-f182.google.com (mail-pl1-f182.google.com [209.85.214.182])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6F6CB28E3E
-	for <outreachy@lists.linux.dev>; Fri, 15 Mar 2024 13:06:42 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.210.181
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2C9CC524C3
+	for <outreachy@lists.linux.dev>; Fri, 15 Mar 2024 21:20:16 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.214.182
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1710508003; cv=none; b=W68hXDo4S5GiNYR3GetnpN5Qtai/G99sHEUN/N9a9Y/0KTOuVgB75M96qIuHC0Rr0M6/BCNtaw+b2IZKg1dDYxcZwA11PKDS3t8VK/bQGtRX4j2sTmngbSVI5kAO2jcYDBIoX84yb3+0kIFpelz39dVVBO64PQ7XaTeY3SheiVs=
+	t=1710537618; cv=none; b=d04b5PE1ZF7IBbH2shd9VKyE+1ySQd0fEHX6wg5eQg2Lra+r+ai+KnLT6lCDBb3lTngYba4XBvfD+P+TZXmYtRh3tV0fdYewW/wVp6lM5j8/dExk8A9P4bEo87eJ3yaFfkaiwR2fgenjN97Ee1tgLX+n5Dc+Sx9JDyV7qy329kw=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1710508003; c=relaxed/simple;
-	bh=pAuOxrGJjw+WcXIsvKFpQEfMzj7cwcNiaJNToVzH3Qc=;
-	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version; b=ff1aOPQQ1o5iXzEWVTx1JgZ5vJkWQp+MPgtS8TwKBt0gvEKTZYmeZFhwqKNHZiLubUw4+KA1ZQvUlKcept8y3zTPH2QRStregBo0wO3ro06IfYOMsvDIRf3SbFfKe1N4/ZBbt/+xhTCFzaMJDr0UnQ29vYEWSXYl19OZRZBxpgc=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=BPqfOPGZ; arc=none smtp.client-ip=209.85.210.181
+	s=arc-20240116; t=1710537618; c=relaxed/simple;
+	bh=/rAhp5fWBKrBdEV0longFkkw2bcW+4PWXvWNnaLR8qU=;
+	h=Date:From:To:Subject:Message-ID:MIME-Version:Content-Type:
+	 Content-Disposition; b=IdCu49wO4h43+uzU2u0dYzuQHdVv/QFf5XivXNf7DTtzWqR+rxkfAQ8ofuaC8UjVnyIgSNsrdFrvmHWHhkM28j7QQYIH2+dTe2LMAhpTEbrukkgvtOzp9vribrza717INWXfCZai54cUuUC1bbc60Tc2bFGse5pn4PBNlpnNTBQ=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=IBjaDMPe; arc=none smtp.client-ip=209.85.214.182
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="BPqfOPGZ"
-Received: by mail-pf1-f181.google.com with SMTP id d2e1a72fcca58-6e6aaa2f02cso1803709b3a.2;
-        Fri, 15 Mar 2024 06:06:42 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="IBjaDMPe"
+Received: by mail-pl1-f182.google.com with SMTP id d9443c01a7336-1dee5ef2a7bso13147755ad.1
+        for <outreachy@lists.linux.dev>; Fri, 15 Mar 2024 14:20:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1710508001; x=1711112801; darn=lists.linux.dev;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=1NY1O0ew0W7ggm7j9xxECvAoyGcWbE8/Wq9boK0lbYA=;
-        b=BPqfOPGZdtRfVHOWHiQMtDzEz6+8XmHKh4eDnFx0rqQXxSy6/zJrhJeqE5SNVRhu1Q
-         3siEreaV568nlK5On2p2Ubw0dd820zO0ugDA+HOCsyTV2/hda89LMVAHcXADjrCB27Mx
-         CNSptsQZvnl1diLwNm3g8IrpXaUZU9H5BjCPfUCgZ/n2/2zD/a95bNT3HfFFp68ekVVQ
-         y/rd8hvuSrfRZb9huIOtLkUkZQE1jLbgxfPJ85PdVlZA0uEu/ortljEoJRxEtGUU3Oqn
-         1QUykNCf819hoTQQ3w448XdENT68CPorlk0uyIxE52fMXoPVDzuopc+DDGnXnRCza0ba
-         qosw==
+        d=gmail.com; s=20230601; t=1710537616; x=1711142416; darn=lists.linux.dev;
+        h=content-disposition:mime-version:message-id:subject:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=42eGUTEM2WkRKIT/IYoF1gf6rERlQ9yv+m9C3/sXfdk=;
+        b=IBjaDMPeyzRqJ6CWkHE24koOLoJ6ztfDdXN7yRM7/VULdBmvBNOIRHgVH5R69a4zRK
+         gF/AwqzvcCAdSksG8MpCPoH6UVehN1DLnua1/8tQHAeY1xt5Ky7f9oKpnajR7JNBDaLg
+         hkifL+oS4EmZAbF9beNP6MkBo7Oxh+E9kz/lTi/gANQberThh5AQ7OuPxFxQOMV9QRzR
+         wFL2pI8vcy4Wp/JnOYRnbVGVp24JTWccLkandHTle5Utq4Sn45/l0pF8baVdSD/QqDCd
+         n3CBodSgNh72iuZQwlQ/BF8x4pw+myfeSdskOHrpfDxHRhKLcprXvt9EXEnXIKkNv69Y
+         ojCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1710508001; x=1711112801;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=1NY1O0ew0W7ggm7j9xxECvAoyGcWbE8/Wq9boK0lbYA=;
-        b=puCD9qoERzdHBt+xStWKa1CsAN2dKzwlocffjxkRa733MUsR5/hxCN8GktlZFFibJR
-         /W1phKnMKrLs8gxX14k71viOwM2zeHmGKVOz3TKYi48O5+c0YX/WB4aN81PteeGejgIt
-         QaPsx6DDESF69zTaizkBujww/5RKGj7U6bnGZJWyhfXPzhK8i2MU/Kt1gJtTuS7m4kOL
-         mkgbnCs9+lI0AW95yc2eCDLJosKk/o5GJVSLv/ZkGhigys/85CFzPt8QmWatoUCF1XZq
-         Udii6uSD5ggXERw8UNV9FSA4ZadrYfmkToIK7WkhWQLP+rH25AksP96t23k38bZ7TE4e
-         wPGA==
-X-Forwarded-Encrypted: i=1; AJvYcCVKVKaKrBvcUuYlPu9/VyMtWNGz/KTwbeyApsytNmAZ4dmOtkVUelSIqhRXYXrYVCYNF75i8qql19LJVCqjHJMZ9KaQI66pcA==
-X-Gm-Message-State: AOJu0YzCbuqd9uN5HAdEp38ymq7ghCthi6qnLUPyPNfdfhZDbbthAnXR
-	IxtusLkWnHPVYW8bONVdzgc9DU6h+zaVuir8c3NMtEaID9kT4eXcmysUtPx+CqYmKw==
-X-Google-Smtp-Source: AGHT+IHp3wY7HaOB/AXDMYPVMVe0FLS60qkHQi/s9HluWJwdOEJAqeMHDfX/YkdOWLYIGINrsaasnw==
-X-Received: by 2002:a05:6a20:959a:b0:1a3:18be:9b18 with SMTP id iu26-20020a056a20959a00b001a318be9b18mr5058987pzb.26.1710508001267;
-        Fri, 15 Mar 2024 06:06:41 -0700 (PDT)
-Received: from Ubuntu.. ([160.202.10.71])
-        by smtp.googlemail.com with ESMTPSA id i3-20020a056a00004300b006e56e5c09absm3408220pfk.14.2024.03.15.06.06.38
+        d=1e100.net; s=20230601; t=1710537616; x=1711142416;
+        h=content-disposition:mime-version:message-id:subject:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=42eGUTEM2WkRKIT/IYoF1gf6rERlQ9yv+m9C3/sXfdk=;
+        b=XEsNbzmtjS+ZIg2wY7q3ecSE1TvMAsAEcurZe05cYUyOVUBQ7+8QLuLWNkfe9a4AKz
+         z6czf6ErnUFtVGcc0dHChRYKZ8MsqDNLDDiQyHl7BX8oNsUYWM1lOtwsqigqzKaDXc8V
+         jbQ8yNKVK+yVt3eMvbqACIhJXMI7Xtz31rHzTDDJt9pwfxniv7xZcrdLEIVSNSOo5Ygv
+         G8uxxtj1koYcxDfMh8vOhTTth/ooWlyEctnaOxBGw8HnmvEpY0k9dCxk515NuLXXeo7b
+         6D/EnQIDTrHTE7OHfTSGyHLpdg4CN179wrauv5HpEJCgEAzTDfvRWMXQi5RdkMavudeh
+         GeMQ==
+X-Gm-Message-State: AOJu0YwfUX1YB9MqFfRVbGpNrgcDKjtvbXZ2wBykjj3hRkUDUqd+2fu+
+	iZ3Wq4wRYF7Q4dAb+bXMsTvacXnNNRKgkHBwXFCjJfvyWWBjf4jK6lkllEic
+X-Google-Smtp-Source: AGHT+IFwW3vXvVGC3gqXdq0JG0mgsHJUXBdB0sMLUmZhUsi7l0fk6epEN61KMUTZq43B23HWEKPfZQ==
+X-Received: by 2002:a17:903:2349:b0:1dc:56a9:5e9a with SMTP id c9-20020a170903234900b001dc56a95e9amr7082852plh.46.1710537615975;
+        Fri, 15 Mar 2024 14:20:15 -0700 (PDT)
+Received: from tahera-OptiPlex-5000 ([136.159.49.124])
+        by smtp.gmail.com with ESMTPSA id t20-20020a170902dcd400b001dc9893b03bsm4339664pll.272.2024.03.15.14.20.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 15 Mar 2024 06:06:40 -0700 (PDT)
-From: Chandra Pratap <chandrapratap3519@gmail.com>
-To: outreachy@lists.linux.dev
-Cc: sudipm.mukherjee@gmail.com,
-	teddy.wang@siliconmotion.com,
-	gregkh@linuxfoundation.org,
-	linux-fbdev@vger.kernel.org,
-	staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	Chandra Pratap <chandrapratap3519@gmail.com>
-Subject: [PATCH] staging: sm750fb: Replace comparisons with NULL and 0
-Date: Fri, 15 Mar 2024 18:31:11 +0530
-Message-ID: <20240315130400.11540-1-chandrapratap3519@gmail.com>
-X-Mailer: git-send-email 2.43.2
+        Fri, 15 Mar 2024 14:20:15 -0700 (PDT)
+Date: Fri, 15 Mar 2024 15:20:13 -0600
+From: TaheraFahimi <fahimitahera@gmail.com>
+To: outreachy@lists.linux.dev, gregkh@linuxfoundation.org
+Subject: [PATCH] staging: ks7010: fix spinlock_t definition without comment
+Message-ID: <ZfS7jcATb211X4I8@tahera-OptiPlex-5000>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Replace '(foo != NULL)' with '(foo)' and 'x != 0'
-with 'x' to adhere to the coding standards.
-
-Signed-off-by: Chandra Pratap <chandrapratap3519@gmail.com>
+Signed-off-by: TaheraFahimi <fahimitahera@gmail.com>
 ---
- drivers/staging/sm750fb/sm750.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/staging/ks7010/ks_wlan.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/sm750fb/sm750.c b/drivers/staging/sm750fb/sm750.c
-index 04c1b32a22c5..4537f007a810 100644
---- a/drivers/staging/sm750fb/sm750.c
-+++ b/drivers/staging/sm750fb/sm750.c
-@@ -926,7 +926,7 @@ static void sm750fb_setup(struct sm750_dev *sm750_dev, char *src)
- 		goto NO_PARAM;
- 	}
+diff --git a/drivers/staging/ks7010/ks_wlan.h b/drivers/staging/ks7010/ks_wlan.h
+index 94322e2ea304..bda7e0255b2c 100644
+--- a/drivers/staging/ks7010/ks_wlan.h
++++ b/drivers/staging/ks7010/ks_wlan.h
+@@ -468,7 +468,7 @@ struct ks_wlan_private {
+ 	char nick[IW_ESSID_MAX_SIZE + 1];
  
--	while ((opt = strsep(&src, ":")) != NULL && *opt != 0) {
-+	while ((opt = strsep(&src, ":")) && *opt) {
- 		dev_info(&sm750_dev->pdev->dev, "opt=%s\n", opt);
- 		dev_info(&sm750_dev->pdev->dev, "src=%s\n", src);
+ 	spinlock_t multicast_spin;
+-	/* lock for synchronize access to device read operation */
++	/* lock to ensure safe access to the device's receive buffer */
+ 	spinlock_t dev_read_lock;
+ 	wait_queue_head_t devread_wait;
  
-@@ -1147,7 +1147,7 @@ static int __init lynxfb_setup(char *options)
- 	 * strsep() updates @options to pointer after the first found token
- 	 * it also returns the pointer ahead the token.
- 	 */
--	while ((opt = strsep(&options, ":")) != NULL) {
-+	while ((opt = strsep(&options, ":"))) {
- 		/* options that mean for any lynx chips are configured here */
- 		if (!strncmp(opt, "noaccel", strlen("noaccel"))) {
- 			g_noaccel = 1;
 -- 
-2.43.2
+2.34.1
 
