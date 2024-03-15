@@ -1,59 +1,64 @@
-Received: from mail-pl1-f182.google.com (mail-pl1-f182.google.com [209.85.214.182])
+Received: from mail-pl1-f178.google.com (mail-pl1-f178.google.com [209.85.214.178])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2C9CC524C3
-	for <outreachy@lists.linux.dev>; Fri, 15 Mar 2024 21:20:16 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.214.182
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9143A54903;
+	Fri, 15 Mar 2024 21:32:04 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.214.178
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1710537618; cv=none; b=d04b5PE1ZF7IBbH2shd9VKyE+1ySQd0fEHX6wg5eQg2Lra+r+ai+KnLT6lCDBb3lTngYba4XBvfD+P+TZXmYtRh3tV0fdYewW/wVp6lM5j8/dExk8A9P4bEo87eJ3yaFfkaiwR2fgenjN97Ee1tgLX+n5Dc+Sx9JDyV7qy329kw=
+	t=1710538325; cv=none; b=PjiQ8xYCFheAnFkCpex+Z6uSc5DzxQttZs5gG4TBqXAm5IU+QwBToWxnhVGv3dtQbZXoEqhN07Du34SS85LTKIWZs0ZDiyir1fjsZN8fxZ3WMy4DmjIeoOAR8d95GptwXPIcGOhy2cBnVJ0W8x+9+6dTLaTG0zC9GBAtTSgFuUc=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1710537618; c=relaxed/simple;
-	bh=/rAhp5fWBKrBdEV0longFkkw2bcW+4PWXvWNnaLR8qU=;
-	h=Date:From:To:Subject:Message-ID:MIME-Version:Content-Type:
-	 Content-Disposition; b=IdCu49wO4h43+uzU2u0dYzuQHdVv/QFf5XivXNf7DTtzWqR+rxkfAQ8ofuaC8UjVnyIgSNsrdFrvmHWHhkM28j7QQYIH2+dTe2LMAhpTEbrukkgvtOzp9vribrza717INWXfCZai54cUuUC1bbc60Tc2bFGse5pn4PBNlpnNTBQ=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=IBjaDMPe; arc=none smtp.client-ip=209.85.214.182
+	s=arc-20240116; t=1710538325; c=relaxed/simple;
+	bh=kI3FpuAUIzIJ5YpNjrE1DZ6tCTgLd+HtXmRoONaXbJQ=;
+	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type:
+	 Content-Disposition; b=tPHRP3yeoA6GvN2utaUIA3tTG9XlKaVxe9BOkpgXwTbFWs0hdekc8sJqixCaWKfbhJ2oPNZcNONovC98ckXmMmMvS/4bwvBpNjQB50HXelVvwSMthwa84hO7ON8dy7mZYvFkFseBjS1u6DM3z82PBX+ht/Zr9c3ddN3JKFqUoT0=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=awWsICo2; arc=none smtp.client-ip=209.85.214.178
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="IBjaDMPe"
-Received: by mail-pl1-f182.google.com with SMTP id d9443c01a7336-1dee5ef2a7bso13147755ad.1
-        for <outreachy@lists.linux.dev>; Fri, 15 Mar 2024 14:20:16 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="awWsICo2"
+Received: by mail-pl1-f178.google.com with SMTP id d9443c01a7336-1dde26f7e1dso19770235ad.1;
+        Fri, 15 Mar 2024 14:32:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1710537616; x=1711142416; darn=lists.linux.dev;
-        h=content-disposition:mime-version:message-id:subject:to:from:date
+        d=gmail.com; s=20230601; t=1710538324; x=1711143124; darn=lists.linux.dev;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=42eGUTEM2WkRKIT/IYoF1gf6rERlQ9yv+m9C3/sXfdk=;
-        b=IBjaDMPeyzRqJ6CWkHE24koOLoJ6ztfDdXN7yRM7/VULdBmvBNOIRHgVH5R69a4zRK
-         gF/AwqzvcCAdSksG8MpCPoH6UVehN1DLnua1/8tQHAeY1xt5Ky7f9oKpnajR7JNBDaLg
-         hkifL+oS4EmZAbF9beNP6MkBo7Oxh+E9kz/lTi/gANQberThh5AQ7OuPxFxQOMV9QRzR
-         wFL2pI8vcy4Wp/JnOYRnbVGVp24JTWccLkandHTle5Utq4Sn45/l0pF8baVdSD/QqDCd
-         n3CBodSgNh72iuZQwlQ/BF8x4pw+myfeSdskOHrpfDxHRhKLcprXvt9EXEnXIKkNv69Y
-         ojCg==
+        bh=ql5/CZn2RtGTQlI61ALXwrW8731eNL3M0vcE3ykcjDQ=;
+        b=awWsICo2PDZJbf4qaPY26bZftVhOzqS5JsOWOgdDPTB1raDP/dPEKIuwtnIl/UPEdK
+         n2XOs7DU/EHSkifyn5w5wnFQ0U7hJkV0vIxXTO+Gtz7SavQYv4m491ycdq03E+XSQgdx
+         UJAURFPBnKqwV6poGQomZ/D7Q21STZDyyYtoxFEiC1VpW8p6eJ8/i1TGkGAT3qMhFM6N
+         S9ZdN0F/3oIMACNU+GoqUcOh8Wy6DfmzJqqVZnr8B5lbE0RPYERoDC7/Q0+81zm1gKrE
+         baE8nUpxjUd4714CT5OqJ3Sb783IrpUI27ori7Ebq6DVqem1TB/RNorC8ioDEY+gB4z3
+         F8kw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1710537616; x=1711142416;
-        h=content-disposition:mime-version:message-id:subject:to:from:date
+        d=1e100.net; s=20230601; t=1710538324; x=1711143124;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=42eGUTEM2WkRKIT/IYoF1gf6rERlQ9yv+m9C3/sXfdk=;
-        b=XEsNbzmtjS+ZIg2wY7q3ecSE1TvMAsAEcurZe05cYUyOVUBQ7+8QLuLWNkfe9a4AKz
-         z6czf6ErnUFtVGcc0dHChRYKZ8MsqDNLDDiQyHl7BX8oNsUYWM1lOtwsqigqzKaDXc8V
-         jbQ8yNKVK+yVt3eMvbqACIhJXMI7Xtz31rHzTDDJt9pwfxniv7xZcrdLEIVSNSOo5Ygv
-         G8uxxtj1koYcxDfMh8vOhTTth/ooWlyEctnaOxBGw8HnmvEpY0k9dCxk515NuLXXeo7b
-         6D/EnQIDTrHTE7OHfTSGyHLpdg4CN179wrauv5HpEJCgEAzTDfvRWMXQi5RdkMavudeh
-         GeMQ==
-X-Gm-Message-State: AOJu0YwfUX1YB9MqFfRVbGpNrgcDKjtvbXZ2wBykjj3hRkUDUqd+2fu+
-	iZ3Wq4wRYF7Q4dAb+bXMsTvacXnNNRKgkHBwXFCjJfvyWWBjf4jK6lkllEic
-X-Google-Smtp-Source: AGHT+IFwW3vXvVGC3gqXdq0JG0mgsHJUXBdB0sMLUmZhUsi7l0fk6epEN61KMUTZq43B23HWEKPfZQ==
-X-Received: by 2002:a17:903:2349:b0:1dc:56a9:5e9a with SMTP id c9-20020a170903234900b001dc56a95e9amr7082852plh.46.1710537615975;
-        Fri, 15 Mar 2024 14:20:15 -0700 (PDT)
+        bh=ql5/CZn2RtGTQlI61ALXwrW8731eNL3M0vcE3ykcjDQ=;
+        b=iDSCok37SKRB52aIn0l+d9GpwZi3AOQXrQ13WGYNZGa/JVEdhSJXp9UJQw0MExY+tv
+         1+P9HmC+hozNFy3J/3xfGOifoBYEr8DtsHH7zoqHhSrS7f6XM8fjgt+51C0ouNgbmn4h
+         8wMM9bwMR0Y2mTG0nWVfVOSnohVhGDqSFR1Afsv4Xzgm2PhsJNATHuADZZuXCVtUhaA4
+         G316qKuWb0RjweP3gRdQJMGYvc5qUJlOtui6IPPC17gxjPumwxvKqxkdWcd25/BJ+WY/
+         s5Aa8DxIlKtGrl73dnabtgiRS8pXAeAExMVomZOHY47gdu19I5MM8+YFs5PtD2vUNtJ6
+         bDyQ==
+X-Forwarded-Encrypted: i=1; AJvYcCU/H3h+XiRFJGTn71ZfIL4X6781BJAwVaIGyZbOK3E8DIbG/A2gM/qAmE8veknXkNqTJVZ7zJ2qUvLrlXLZ4/NbJBErB6AHFKUT1ixRIA==
+X-Gm-Message-State: AOJu0Yx+ifpa2W0iYKH7kz2+mf8QLfdQ/mhxw786pA2y0yZq+ghCOO47
+	HnbvvTNE3Gce0sjtIUhKhaxsCbeMBXZkWOfbNS86Y5i6xmqrQAi2KQhAr2HYByI=
+X-Google-Smtp-Source: AGHT+IGq2m6m0XKukC+zMZPHwWnmwOFptJAIRQ/jUEi1zvutS2LuS4RGpVQGVxHy/NR/2poQBzBUQg==
+X-Received: by 2002:a17:903:22cb:b0:1dd:66d1:a62b with SMTP id y11-20020a17090322cb00b001dd66d1a62bmr5176084plg.5.1710538323770;
+        Fri, 15 Mar 2024 14:32:03 -0700 (PDT)
 Received: from tahera-OptiPlex-5000 ([136.159.49.124])
-        by smtp.gmail.com with ESMTPSA id t20-20020a170902dcd400b001dc9893b03bsm4339664pll.272.2024.03.15.14.20.15
+        by smtp.gmail.com with ESMTPSA id a2-20020a170902ecc200b001dddc21866csm4364301plh.103.2024.03.15.14.32.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 15 Mar 2024 14:20:15 -0700 (PDT)
-Date: Fri, 15 Mar 2024 15:20:13 -0600
+        Fri, 15 Mar 2024 14:32:03 -0700 (PDT)
+Date: Fri, 15 Mar 2024 15:32:01 -0600
 From: TaheraFahimi <fahimitahera@gmail.com>
-To: outreachy@lists.linux.dev, gregkh@linuxfoundation.org
-Subject: [PATCH] staging: ks7010: fix spinlock_t definition without comment
-Message-ID: <ZfS7jcATb211X4I8@tahera-OptiPlex-5000>
+To: Marc Dietrich <marvin24@gmx.de>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	ac100@lists.launchpad.net, linux-tegra@vger.kernel.org,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Cc: outreachy@lists.linux.dev
+Subject: [PATCH] staging: nvec: edit udelay comment
+Message-ID: <ZfS+UaVyob+lFmmS@tahera-OptiPlex-5000>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -65,22 +70,22 @@ Content-Disposition: inline
 
 Signed-off-by: TaheraFahimi <fahimitahera@gmail.com>
 ---
- drivers/staging/ks7010/ks_wlan.h | 2 +-
+ drivers/staging/nvec/nvec.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/staging/ks7010/ks_wlan.h b/drivers/staging/ks7010/ks_wlan.h
-index 94322e2ea304..bda7e0255b2c 100644
---- a/drivers/staging/ks7010/ks_wlan.h
-+++ b/drivers/staging/ks7010/ks_wlan.h
-@@ -468,7 +468,7 @@ struct ks_wlan_private {
- 	char nick[IW_ESSID_MAX_SIZE + 1];
- 
- 	spinlock_t multicast_spin;
--	/* lock for synchronize access to device read operation */
-+	/* lock to ensure safe access to the device's receive buffer */
- 	spinlock_t dev_read_lock;
- 	wait_queue_head_t devread_wait;
- 
+diff --git a/drivers/staging/nvec/nvec.c b/drivers/staging/nvec/nvec.c
+index 282a664c9176..b4485b10beb8 100644
+--- a/drivers/staging/nvec/nvec.c
++++ b/drivers/staging/nvec/nvec.c
+@@ -712,7 +712,7 @@ static irqreturn_t nvec_interrupt(int irq, void *dev)
+ 	 * TODO: replace the udelay with a read back after each writel above
+ 	 * in order to work around a hardware issue, see i2c-tegra.c
+ 	 *
+-	 * Unfortunately, this change causes an intialisation issue with the
++	 * Unfortunately, this change causes an initialisation issue with the
+ 	 * touchpad, which needs to be fixed first.
+ 	 */
+ 	udelay(100);
 -- 
 2.34.1
 
