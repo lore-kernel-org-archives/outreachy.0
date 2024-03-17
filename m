@@ -1,66 +1,64 @@
-Received: from mail-ej1-f44.google.com (mail-ej1-f44.google.com [209.85.218.44])
+Received: from mail-ed1-f48.google.com (mail-ed1-f48.google.com [209.85.208.48])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8ECD41C29C;
-	Sat, 16 Mar 2024 20:42:30 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.218.44
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A84301AAA5;
+	Sun, 17 Mar 2024 12:10:15 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.48
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1710621752; cv=none; b=RKd6LJocfp8dR1BGPXZmzxYwvzKneV4fxKyZm07L65RsYCqmLRnCcKjbcSIJ8uGb7yjGZ1QBi5adoOANUZD5SpgV3eQWxLuc9CrB5q7shOKF9VOFb0xncaW2iQB9rhCO3r02PmfjY8rw6Lko2wQBjRzW5sm39Lzm2XTexmN1Btk=
+	t=1710677417; cv=none; b=ccaOBaoxI+CaOn2+QONuVk5wMykdNK6AvToxUKFua4o8IR8AdWxLOOEow9WjFkGwIFZWWGRWmJeJPKjw/OTlb76L5nEgQFuqtVkV0ITUP6alaIHP2mXyjV5VWQ6nh+2Yt3B+rwZFjFkhFxf4TJ7EgXB8vQsSbB66vKx16PLdmAk=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1710621752; c=relaxed/simple;
-	bh=7d9LxjljR/GIHgGBPZniwnhKo0p3y0egbVztTz9ELzg=;
-	h=From:To:Cc:Subject:Date:Message-Id:MIME-Version; b=EXfVBxJR7VvGTKYnzAAoLudObHDqG62Z5jQgCueJbGI5WwK3ylST2xE2JJwz3h3VEhSjM6JQceRnRtJhFOC419t5VCVQLGO8FxhEpxQOG2XnP1GzIp3pDmg5yZshEMwa7FSArb3uTjEvB6n5mJ49FBbwyzkNqBe4JvBjk5pHnPE=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=YXn86ent; arc=none smtp.client-ip=209.85.218.44
+	s=arc-20240116; t=1710677417; c=relaxed/simple;
+	bh=9VFShwVBNzTspoBKCpd6U+c3LjtRAVtq9eVSmw5I3wk=;
+	h=From:To:Cc:Subject:Date:Message-Id:MIME-Version; b=mhujSgAIzwH+FM1MxZyatqBq0AQwQr3xEg1hd/GvpZCmSqYrCxLbp0Ryyn6LkyX6tQ9Ym1Pn5Y/++i1gyduIX8Z+KQAeyDg6r0enOAYt6sJ6OytRf+W6CgcFVlfusuoggFlDDlI3TAu/e/eflS3iJ59IOrMdCu/FKv0bHl4/Ea4=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=QAXXsviB; arc=none smtp.client-ip=209.85.208.48
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="YXn86ent"
-Received: by mail-ej1-f44.google.com with SMTP id a640c23a62f3a-a469ee62fd1so128038966b.0;
-        Sat, 16 Mar 2024 13:42:30 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="QAXXsviB"
+Received: by mail-ed1-f48.google.com with SMTP id 4fb4d7f45d1cf-5691a35826fso165559a12.3;
+        Sun, 17 Mar 2024 05:10:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1710621749; x=1711226549; darn=lists.linux.dev;
+        d=gmail.com; s=20230601; t=1710677414; x=1711282214; darn=lists.linux.dev;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=MejTbP+k+R8k80paKCW+CmGuisFHW3BOu8XCILnbXi0=;
-        b=YXn86entKKVXoIdjJCfQmlIxWxVAhpJ2PaLyzhOkw3RuJI3bGutCjyKX1Bv2qZ0oFh
-         SzzFDD54k4dtWUMHtl0yFK/8Kz4tuj4SMskcduP+geMGcZ4fH2Fbzva3WLOlZSVVnkh4
-         jTs/AlRW/3sD82pbBB61p0nHngYKjXiFrXlslwjoOygDVcrhBaZ3AVbvj+ePlqLyJ/ZH
-         oLng+/JY2+1urAh//zY0Jx+FCQh6ovMtBux2vW7BHtYAUese2nlatuWRTHuKA61f8zWi
-         aXVr6qZTEl7ObBVshHidNlCzfSn7hTE1iE7LycubraFJlAGBYiLTJHvjFvkdPXlQ1cP6
-         27ZA==
+        bh=Ui0t13Vy7TPwnpeJlaf01c/OHY8VOmxd5VDc0UiW9P0=;
+        b=QAXXsviB3+v7Bk84k1EeMwFmMOmYrqbAoZrbDRelZIW1od9Dfp5oGtUlyYpvveAsk0
+         xXPb/sGwE7l2wsoh817EYsMzoxt2PL/zSx1DGPUr9nHDk7TM4EOgLePvOUSH2QwnwnMg
+         ny5YpjYBE4yCaLR091GpgvqAZb2Eo4XZBrt70XcvGJBgkbYKTf0aLt1Evd+8vw5vnzIc
+         p96NIniyL/q9pUM+/FcAcgZmKHlhvlztlToxSqDORta7iHoDbTjB4jWirfLDyo4Wb2ps
+         QbApG5dD2Lh5b67JJZf8DzGCTyiZxiEaW5YMHXPAZKpF8X0ibUW6xHqgPYTB5yWXKI6e
+         rupg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1710621749; x=1711226549;
+        d=1e100.net; s=20230601; t=1710677414; x=1711282214;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=MejTbP+k+R8k80paKCW+CmGuisFHW3BOu8XCILnbXi0=;
-        b=lvDbJJXYsuT4g5Q9nsduDS5hZa5YmUezXD2pzfc/3iBySk34iHTY5HTLnYFQa3hlSQ
-         fBj71qM45V3gnJh8tc8HN/QvD/vQ8SLmxs0qcJKerAIoVThd+gTnCWcqHaiYHN7Q1Y4I
-         wBnhMKtEb5I+ZUa09Kw6Yw0+p5mXcQ2/bf9MqBOas16h8d0sO/HxbHBctlJA3B2MRv68
-         vs2Hk1Sq6MEYWs2bN1Rkwdl4EkyYUWDD9m9NHzPl6T02722cpadrW/f4mo7tRXWVWYX4
-         xvS+NXeV9+ARD1Z70XThIzbAOvdU3DqRegH780MOsIG7lz0t4RF+jn+mZDZkyClN3AZF
-         BboQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUqnUtpSxjSqswxc4Y0z3HpV3oeZB+Nb0mQClZ0zJV5/rgJ10/FEZKvFSz9YC/fBnRp+GolrX3nuMDUWsDI3LkNeEId2zwz1aaYvt3e47zKIS1HSyRM25fH7i0ZePMzhYPcNdrAVQAF2g==
-X-Gm-Message-State: AOJu0YxPRLgPwkHtZi2z9Wv9BsgW/LS4919osv07R+FdWRCV0wTeKiPh
-	HAJAgo2X+d21oDr2IPd9TApcRuZ3NEy2uU++cU58sQkA2jbyCUE9
-X-Google-Smtp-Source: AGHT+IET2mrQJ049FYAXmuObAU+mqfsvDaCIRnm+CxoU/YK8sR4eevlwzqsbPZt640Nsquckz0LKww==
-X-Received: by 2002:a17:906:6a22:b0:a46:8c0a:4dbe with SMTP id qw34-20020a1709066a2200b00a468c0a4dbemr4059333ejc.9.1710621748614;
-        Sat, 16 Mar 2024 13:42:28 -0700 (PDT)
+        bh=Ui0t13Vy7TPwnpeJlaf01c/OHY8VOmxd5VDc0UiW9P0=;
+        b=A0SgXMmrCL1/+TDxR97tc5SqpnW3WcobbonMLJCRoncvFcJYbPeEHxS1iOJItV1Iun
+         DADceeuqqJbeqSHgmFp9FnbhGULu5JsiayfAg4JM9gdhspHarV7cEWCEWDcFtawXAleZ
+         g3Wi6Bbgy922qI32ZdhnQcHukINFF3PznchPDtY/QAhm+zlp2CuoKIvyw1xulvtrLViR
+         lNQrEO8zT9ih0ibGSoaL40vV+VJoYq1Y+JJmzspgBia/lrP2+FmbPgnoctPmHtCiTD06
+         EoZGNV9hWLnkuHzqJGL9anfPWX/JbZQaMQ8C2TZ50y7pmeoZVfcgemlbLC93nihw+HtH
+         EwSA==
+X-Forwarded-Encrypted: i=1; AJvYcCXJhjS0meKumY+FSewteuLoIrbOTgjvR7CKRyHbpLAXzb4EPG5ecDDubCdI8xXp1pk/9gy6AxLn2dCDmFvUPG56/gB3WwHtD1wjRiGoKhtyRsMkrtRhdi/8saI8CxMYRoVoMW3Q5UwgmQ==
+X-Gm-Message-State: AOJu0YwcbubrTc9E9svzXooAc9I+qb7DqFzuLj5dNwkxirN47mxqpQ5X
+	o+Eg0SDVDnMuE2mOP3aviCgMozwur2oo7OnVWyQW+jUjfVHJU+Uf
+X-Google-Smtp-Source: AGHT+IHhu+mQljK4JSTFNc4urw4uSisoJXVdQwZsPboYHjalFqGE6UTI3NcNo/OFFxoPczaJnPAgRQ==
+X-Received: by 2002:a05:6402:5385:b0:568:ac09:4a5c with SMTP id ew5-20020a056402538500b00568ac094a5cmr4770806edb.11.1710677413747;
+        Sun, 17 Mar 2024 05:10:13 -0700 (PDT)
 Received: from ubuntu-focal.zuku.co.ke ([197.237.50.252])
-        by smtp.gmail.com with ESMTPSA id h9-20020a170906110900b00a4665cd5664sm3048848eja.119.2024.03.16.13.42.25
+        by smtp.gmail.com with ESMTPSA id en10-20020a056402528a00b005693985c35dsm203252edb.36.2024.03.17.05.10.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 16 Mar 2024 13:42:28 -0700 (PDT)
+        Sun, 17 Mar 2024 05:10:13 -0700 (PDT)
 From: Dorine Tipo <dorine.a.tipo@gmail.com>
-To: gregkh@linuxfoundation.org,
-	forest@forestbond.com,
+To: marvin24@gmx.de,
+	gregkh@linuxfoundation.org,
 	linux-staging@lists.linux.dev,
 	outreachy@lists.linux.dev
-Cc: Dorine Tipo <dorine.a.tipo@gmail.com>,
-	julia.lawall@inria.fr,
-	dan.carpenter@linaro.org
-Subject: [PATCH v8] staging: vt6655: Remove unused  declaration of RFbAL7230SelectChannelPostProcess()
-Date: Sat, 16 Mar 2024 20:42:07 +0000
-Message-Id: <20240316204207.1779-1-dorine.a.tipo@gmail.com>
+Cc: Dorine Tipo <dorine.a.tipo@gmail.com>
+Subject: [PATCH] staging: nvec: Fix documentation typo in static irqreturn_t nvec_interrupt()
+Date: Sun, 17 Mar 2024 12:09:47 +0000
+Message-Id: <20240317120947.2923-1-dorine.a.tipo@gmail.com>
 X-Mailer: git-send-email 2.25.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
@@ -70,50 +68,27 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-Remove unused function RFbAL7230SelectChannelPostProcess declared in
-rf.h but has no associated implementation.
+Correct the spelling of initialisation with was misspelled in the
+documentation
 
-Commit dd2837bdea0e removed the RFbAL7230SelectChannelPostProcess() but
-accidentally forgot to delete the declaration in the header file.
-
-Fixes: dd2837bdea0e ("staging: vt6655: Remove unused byRFType in rf.c")
 Signed-off-by: Dorine Tipo <dorine.a.tipo@gmail.com>
 ---
-Changes since V1:
+ drivers/staging/nvec/nvec.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-V2: - Removed the unintended blank line after removing the dead code
-    - Removed "in rf.h" from the subject
-
-V3: - Added in the Description Comment about unintended blank line
-
-V4: - Adjusted complete description according to hint from feedback
-    - Rebased patch
-V5: - Added a missing closing parenthesis in the fixes tag
-
-V6: - Sent the wrong patch for v5. This version includes the fix in v5
-
-V7: - Made the subjectline more uniques as suggested by
-      fabio.maria.de.francesco@linux.intel.com
-
-V8: - Put the entire subject on one line to ensure the function name
-      appears on the subject
-
- drivers/staging/vt6655/rf.h | 4 ----
- 1 file changed, 4 deletions(-)
-
-diff --git a/drivers/staging/vt6655/rf.h b/drivers/staging/vt6655/rf.h
-index 6f842ac00526..8eef100c7ef2 100644
---- a/drivers/staging/vt6655/rf.h
-+++ b/drivers/staging/vt6655/rf.h
-@@ -68,8 +68,4 @@ bool RFbRawSetPower(struct vnt_private *priv, unsigned char byPwr,
- void RFvRSSITodBm(struct vnt_private *priv, unsigned char byCurrRSSI,
- 		  long *pldBm);
-
--/* {{ RobertYu: 20050104 */
--bool RFbAL7230SelectChannelPostProcess(struct vnt_private *priv, u16 byOldChannel, u16 byNewChannel);
--/* }} RobertYu */
--
- #endif /* __RF_H__ */
+diff --git a/drivers/staging/nvec/nvec.c b/drivers/staging/nvec/nvec.c
+index 282a664c9176..b4485b10beb8 100644
+--- a/drivers/staging/nvec/nvec.c
++++ b/drivers/staging/nvec/nvec.c
+@@ -712,7 +712,7 @@ static irqreturn_t nvec_interrupt(int irq, void *dev)
+ 	 * TODO: replace the udelay with a read back after each writel above
+ 	 * in order to work around a hardware issue, see i2c-tegra.c
+ 	 *
+-	 * Unfortunately, this change causes an intialisation issue with the
++	 * Unfortunately, this change causes an initialisation issue with the
+ 	 * touchpad, which needs to be fixed first.
+ 	 */
+ 	udelay(100);
 --
 2.25.1
 
