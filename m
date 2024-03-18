@@ -1,95 +1,88 @@
-Received: from mail-oa1-f53.google.com (mail-oa1-f53.google.com [209.85.160.53])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8DB291EB36;
-	Sun, 17 Mar 2024 19:46:49 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.160.53
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3570C22EF0;
+	Mon, 18 Mar 2024 07:39:19 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.104
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1710704811; cv=none; b=ULrhKCQRb5gGjhXZ5+k0T5lrdt6ohAjoxfhY8q7IeS1Veidb61a6lOLzlHa26HOZoBNGqkXd7poUwReAIAxuk2UEugF+NXZNlk/1xdh0ptpm+BepJ12oCsKqV2+21PjsxY2SXVDYmhzO2Q3yCSnaj0JE/ezrNmnPFZ90OUt3cmg=
+	t=1710747564; cv=none; b=puRT2UncY8zKfjk368zpJW9jI07gJAixoos9jn58zXaTrtgNjUg00yntKqqYJFIFUz97Jjn2EY4TDuvbfr5IuBi1G+OujBchHho52BoA2+KcnTTth/FOhWDNSsPcxdK+Zr7uuj2NhH0rapDsbSDN2fv1C3J3niooCFJpbk9xvro=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1710704811; c=relaxed/simple;
-	bh=5VoeI8shccD62vvJl27csC1lbvCVSUXAMc14gVH40eA=;
-	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type:
-	 Content-Disposition; b=lvKNhCqPnajnUBrk/7BaN4yR3XkXHUA/Xj/rRJKBaiyyqa8OJ1PHa7CiT+ERy+hATSqOCvXnFz7TxD5ndao3aeWMrBe0RwaPng25O2FrK+FAy/cPefmEBxP5qY6EJZIKIPsCFexhmy55bw4Yz80P7bcA+FInph5wrmDujphr0cA=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=SZGxwoJC; arc=none smtp.client-ip=209.85.160.53
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	s=arc-20240116; t=1710747564; c=relaxed/simple;
+	bh=EPLKDH3VljXFWrIbZBKT4SRpU0X8LxisU7rbFzf2ES4=;
+	h=Date:From:To:cc:Subject:In-Reply-To:Message-ID:References:
+	 MIME-Version:Content-Type; b=agJQUvI0s++59Mx29KHo2/V88bb8b7/x1FhXEZ89KIrcnLRyGkcF098UtOZxaFyuZKjdAwNNxcxEgny52Cp1LZG0rXTpN9GWlsyvvGdJbhC29dmSkPW2JQa7ffQUV0MzgznNRTnLDuF73aZhyx+aElksFRrTQat3qT0Ohx3XtFI=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=fdIxhYz0; arc=none smtp.client-ip=192.134.164.104
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="SZGxwoJC"
-Received: by mail-oa1-f53.google.com with SMTP id 586e51a60fabf-221e1910c3bso1942180fac.1;
-        Sun, 17 Mar 2024 12:46:49 -0700 (PDT)
+	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="fdIxhYz0"
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1710704808; x=1711309608; darn=lists.linux.dev;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=Kz8BkbFXqKqMfjxMVaZWBsOHuYxmooNt9MF70X9aYrc=;
-        b=SZGxwoJCVfk2KUpaA3nxbxcHGmq3lV/xnyON1A6iTl79AYXmYUnP0WNMNYGFvVDq/S
-         XDW5q+wSOqFtAN1uaROjXywRlrzD8u5GXJSIGauWzS1XbtNz2fLbh5+tQW3WYMfDn1YO
-         YWN4QE2DPGwDrrPGWkNLAC9KLww/TjPXuGsjKeYB9s9ZQCBnKvcBKWLFnMet7YCBPP2L
-         YunfOjH4zLZtyB2ugiCxZE8TD+kWdUQrLA8W9h0ghsBXhZ7ba7Zs2u8Q8j66lXUWsJca
-         rKHYy5ubBTEGvmYIMxAvTwzG27V1QgTj/+yp/42FKzazu9m86QvykclmO7BWcQ4J9LR6
-         HFIA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1710704808; x=1711309608;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Kz8BkbFXqKqMfjxMVaZWBsOHuYxmooNt9MF70X9aYrc=;
-        b=K9Z3kWGG4pm/KuIqb8EZI/PaJ48SSo/nfcLuNGXnBTBRTwFGfqfpW5scWnp4bnx+dI
-         y3rXv+4TTI//OTITdHudDCxGFxD8CMNPYRZE6szoZ/6VYb+OEmPV4sWVGmDSjrfzpIv4
-         dHFZIwPE6r6UsNHnJjw8vdnvxiB2PJw8h426P6j1s4LJS2yxoKcG64i5TpyIgyyx4yXy
-         MDAO43mErgFhX35lZT91PqSC4L6oELjKh8idLpvUU407FzF9QzIcVnrRFFcbF9nqDV7p
-         cd932SgMMG+ct9MJXAhqPdq88kf1KUH7EYQ/gN65SxlVnRFeptKODvz3jr21dfmvf7MS
-         z9ow==
-X-Forwarded-Encrypted: i=1; AJvYcCXWrFw0b4AZmjZIkR38Mvt1REJctho5ihb5OM00JvsLXvKNxHTzRB8DpwaFSRz60fTpGggdDk3vtK1j9cu4ihzojZwydconiQsp0wIESg==
-X-Gm-Message-State: AOJu0YyYV7kW5qTHTYAEm4NtURehhBjKfxsdu5+CXxT+K2QxQfM3Zxvj
-	1D+WCl8oSwGzkH3/KxDFkCz3r5WwN62VS+ILvIeCi0Cde2SaYvhHeQoLhCh+Z44=
-X-Google-Smtp-Source: AGHT+IEXP+04l7fbZ/T1oWuQc6nrIlGvXyfydrEluqYX2fpdbi/mkaup7DOLjFJd/IkVmikqyNrtfw==
-X-Received: by 2002:a05:6870:e415:b0:21e:a47f:ec31 with SMTP id n21-20020a056870e41500b0021ea47fec31mr11656682oag.43.1710704808430;
-        Sun, 17 Mar 2024 12:46:48 -0700 (PDT)
-Received: from ayush-HP-Pavilion-Gaming-Laptop-15-ec0xxx ([103.6.158.65])
-        by smtp.gmail.com with ESMTPSA id o9-20020a056a00214900b006e4e616e520sm6517625pfk.72.2024.03.17.12.46.47
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 17 Mar 2024 12:46:48 -0700 (PDT)
-Date: Mon, 18 Mar 2024 01:16:45 +0530
-From: Ayush Tiwari <ayushtiw0110@gmail.com>
-To: Larry.Finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
-	gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
-	linux-staging@lists.linux.dev
-Cc: outreachy@lists.linux.dev
-Subject: [PATCH] staging: rtl8712: Fix line length exceeding 100 columns
-Message-ID: <ZfdIpVyUTIEGTp7j@ayush-HP-Pavilion-Gaming-Laptop-15-ec0xxx>
+  d=inria.fr; s=dc;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=MbnpG8HNWfn6gCZ9HY/lgZBQCyKazod2hyic2wq2c0E=;
+  b=fdIxhYz0rTABKuRyQSTg26nnVDVMP0hgoNRMoiEOa3YOnUAa1L/9sWPl
+   vHge/fk4WW//hyx4PJWi0jeeQQXwKUfP/6suV3FncjElHOvgQvyH90Sie
+   HxbfgSjoTLRc/yauUrJ/pJrFZ2W1QRrLcao2V4ccDAY/fEQN6qgsphmPM
+   g=;
+Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="6.07,134,1708383600"; 
+   d="scan'208";a="82398387"
+Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Mar 2024 08:39:11 +0100
+Date: Mon, 18 Mar 2024 08:39:11 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+To: Ayush Tiwari <ayushtiw0110@gmail.com>
+cc: Larry.Finger@lwfinger.net, florian.c.schilhabel@googlemail.com, 
+    gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, 
+    linux-staging@lists.linux.dev, outreachy@lists.linux.dev
+Subject: Re: [PATCH 1/3] staging: rtl8712: rename backupPMKIDList to
+ backup_PMKID_list
+In-Reply-To: <10336a70a7d1b87857664e9733a419791e0e2ada.1710703217.git.ayushtiw0110@gmail.com>
+Message-ID: <c06e1e30-aeba-c8c-19d7-cdf83ff2099@inria.fr>
+References: <cover.1710703217.git.ayushtiw0110@gmail.com> <10336a70a7d1b87857664e9733a419791e0e2ada.1710703217.git.ayushtiw0110@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Type: text/plain; charset=US-ASCII
 
-Split the argument list of the kthread_run function call across two
-lines to address the checkpatch warning "line length exceeds 100
-columns".
 
-Signed-off-by: Ayush Tiwari <ayushtiw0110@gmail.com>
----
- drivers/staging/rtl8712/os_intfs.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/staging/rtl8712/os_intfs.c b/drivers/staging/rtl8712/os_intfs.c
-index 7554613fe7e1..e77fcfc465ba 100644
---- a/drivers/staging/rtl8712/os_intfs.c
-+++ b/drivers/staging/rtl8712/os_intfs.c
-@@ -221,7 +221,8 @@ struct net_device *r8712_init_netdev(void)
- 
- static u32 start_drv_threads(struct _adapter *padapter)
- {
--	padapter->cmd_thread = kthread_run(r8712_cmd_thread, padapter, "%s", padapter->pnetdev->name);
-+	padapter->cmd_thread = kthread_run(r8712_cmd_thread, padapter, "%s",
-+			padapter->pnetdev->name);
- 	if (IS_ERR(padapter->cmd_thread))
- 		return _FAIL;
- 	return _SUCCESS;
--- 
-2.40.1
+On Mon, 18 Mar 2024, Ayush Tiwari wrote:
 
+> Rename backupPMKIDList to backup_PMKID_list and remove extra spaces
+> between RT_PMKID_LIST and backupPMKIDList to address checkpatch
+> warnings and match the common kernel coding style.
+>
+> Signed-off-by: Ayush Tiwari <ayushtiw0110@gmail.com>
+> ---
+>  drivers/staging/rtl8712/mlme_linux.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/rtl8712/mlme_linux.c b/drivers/staging/rtl8712/mlme_linux.c
+> index b9f5104f3bf7..a8cda81f4240 100644
+> --- a/drivers/staging/rtl8712/mlme_linux.c
+> +++ b/drivers/staging/rtl8712/mlme_linux.c
+> @@ -84,7 +84,7 @@ void r8712_os_indicate_connect(struct _adapter *adapter)
+>  	netif_carrier_on(adapter->pnetdev);
+>  }
+>
+> -static struct RT_PMKID_LIST   backupPMKIDList[NUM_PMKID_CACHE];
+> +static struct RT_PMKID_LIST backup_PMKID_list[NUM_PMKID_CACHE];
+
+This one looks suspicious, because you have changed the definition but no
+uses.  Is it not used?
+
+julia
+
+>  void r8712_os_indicate_disconnect(struct _adapter *adapter)
+>  {
+>  	u8 backupPMKIDIndex = 0;
+> --
+> 2.40.1
+>
+>
+>
