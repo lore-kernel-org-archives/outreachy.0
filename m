@@ -1,91 +1,89 @@
-Received: from mail-wm1-f53.google.com (mail-wm1-f53.google.com [209.85.128.53])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.15])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4DFAA7D09C
-	for <outreachy@lists.linux.dev>; Tue, 19 Mar 2024 05:54:15 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.53
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 81DD345946;
+	Tue, 19 Mar 2024 06:04:46 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.15
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1710827657; cv=none; b=fN4YL7CxED3uv5FfLul3RkzxYILInjOXVq8cqnwNqoAO1UKbXoKYotPdeRYFaQxgAGh4VC1dMxaeEIbEIH9o7K1ZN3wPm9V95Tr0kehjhmS00Z+K8wW+k/ULPTQKaVj46VS+qEEsnyb+OgsHjwIyrLFxgg9mPp0LKnvBNsg5KFQ=
+	t=1710828288; cv=none; b=bpOzPRUvbnFAzuQyf08GhwiCEwnJv4/5dJn3mMN1KfJeWIv8W3bolaY6DLy7H/25UFU7WC+pUsFf0C1+d3sya62nP+OFxuwYUaBGCfw2MEH/J2SvMaGy/Uuw/1DOaFDCI1ebzafGWEfCf5mBgloSErXjCeIvoR1pKPO65B9ZRIU=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1710827657; c=relaxed/simple;
-	bh=1hih6VSpKV8xqGVxi4o4YhgWg8A3pPntjmOFpkgpVZU=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=nFEVLZJcXd54RyL2B/bpy41ToSJLsW9YeVJT9FVDhYcjG4MYqv43HBMcKQ4A6/AWHqVy2NNvan5UnkvSkMMLpTISbrnODvMA9umLYyNnHULOTwAtxSBw3OQKHtgSFFDsT4X7b7ZCI9VC5ycqMtzrxJ+rbuDW0yUKN+k7wBkinQc=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=LvWF4hui; arc=none smtp.client-ip=209.85.128.53
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
+	s=arc-20240116; t=1710828288; c=relaxed/simple;
+	bh=tQvXsniKwtZ0PeKE/Wxl4zOW+IREK9GLuyMiAOZl5I0=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=OX5QGLWzyJAaImfba8trU4fePSJF5k2nTbBGbxjgEcpzzXp6WW/pvx18ngbqB14x1eJwjPXXv9xMec8W2tHikOdMoeehLITqJWC/JpacLS7lLgd7W/CNhusLF1n0G9JTGm9LNscaQUvihi0eiPekaZB3Yr2S4+sgqLiaFWIM+Rs=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.intel.com; spf=none smtp.mailfrom=linux.intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=TdqMUi/o; arc=none smtp.client-ip=198.175.65.15
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.intel.com
+Authentication-Results: smtp.subspace.kernel.org; spf=none smtp.mailfrom=linux.intel.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="LvWF4hui"
-Received: by mail-wm1-f53.google.com with SMTP id 5b1f17b1804b1-41412411672so11480815e9.3
-        for <outreachy@lists.linux.dev>; Mon, 18 Mar 2024 22:54:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1710827654; x=1711432454; darn=lists.linux.dev;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=vl6AA9br/anlnpNsGMnkWOpzBxrWrKpWnKKq2r224oo=;
-        b=LvWF4huiKEzryCqg3DvlOvgtkRXaFuhiP9I+og2DIIBOVXlrr8EEXuCZL/IA1Io/64
-         qPXhbuXz5DQUxuHFMSM+KzBhZVNaqVEe9qn/7c4ZUavQnPHV0JqZ+ShLLwGDWgrE4cWU
-         4THJ4OY41bn3nFenaWw7tkS5t4U8CP9jxlV3xZikDCEZNmTXhN3gvrfYQH+d86aU6UdH
-         L3uFH4RIjmAOHC76ZKByq9v1c3DGjDsnGi/yFBb67XpKMZDNNNZFvg45OXatMV3On1PS
-         YqZzLsAzbHubrp+tgocLcOICADOZwP6QRXihW4di1lxc7mYWnZoxPCexfPjlMSC32HbE
-         zLYw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1710827654; x=1711432454;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=vl6AA9br/anlnpNsGMnkWOpzBxrWrKpWnKKq2r224oo=;
-        b=NUcmuWoZD29YqkfPptwFcojxGg2r9CSl7/pZGn4SbY0a2pZ+bQbgg2Z5XsAED1+eBX
-         bUhAwJE6hLnQlWS7oHnojON8vMUOwCsUYcUYU/4/OqoIK4KbGX2gCJTlqv39/1/f4wFA
-         uo6Gk0lhrdOgo6WU4FyZQhik3y7IXqUePmoiJdpPNqHq4hnv4Uci67vs7+zdqJch/rsx
-         g2M7x0SUvtT96vNY5ou/81puKr3XJIKFIH+rYXdhGtHBFIio+fS/nWlSFjqc9CqTHRCw
-         d6etxNQ3IwvO7QEcXDX594I/Zd5KcAuwOd1F7uIqYkPdE4B9qjTxR6arzvvZAYLngK+a
-         unmw==
-X-Forwarded-Encrypted: i=1; AJvYcCXoCq7cqcRicNaz/PVtyaHI+qHpq6cAnTIfDVnA8rVhFGOY2NBMruZA+5zIhvMOdMkd6aALO5tbz4jkeeUL5TqJ2mSz3ysNAZUQ
-X-Gm-Message-State: AOJu0YwLHrv0LLNIbYQTX/BP8NUgQIhosg6E26BoFX5L6Ds/2cQH9oS7
-	RuDMdF+7sonl/ZWd9+/JeM4WDA5VCXCDdpcBF/fGZHDx6CBydOvHIB8klKshM84=
-X-Google-Smtp-Source: AGHT+IElLSQLz49jl6r3n4FmIzslQwWn+SuuJwo5rV6apuyC+62iDEgiFx46QapPIPE18jQwDqHimQ==
-X-Received: by 2002:adf:a494:0:b0:33e:6a17:3e63 with SMTP id g20-20020adfa494000000b0033e6a173e63mr7815867wrb.47.1710827653420;
-        Mon, 18 Mar 2024 22:54:13 -0700 (PDT)
-Received: from localhost ([102.222.70.76])
-        by smtp.gmail.com with ESMTPSA id z5-20020a5d44c5000000b0033b87c2725csm11418889wrr.104.2024.03.18.22.54.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 18 Mar 2024 22:54:12 -0700 (PDT)
-Date: Tue, 19 Mar 2024 08:54:00 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="TdqMUi/o"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1710828287; x=1742364287;
+  h=from:to:cc:subject:date:message-id:in-reply-to:
+   references:mime-version:content-transfer-encoding;
+  bh=tQvXsniKwtZ0PeKE/Wxl4zOW+IREK9GLuyMiAOZl5I0=;
+  b=TdqMUi/o3IGqS5JnHmqZmoocOq58kMpYm25l5RcaXSF3FBEYMSCucDiC
+   ctxsoE/YWoioiGMx7Z6tEHhMziDlN7NwwYucXy9kDfJ9WY1Ap6l3K2V8Y
+   D321zoriDA7SJnG/y65uB2b15y75HNSsRBWQ8oHZpABdjX4GT9wvcT3QZ
+   9jWA+u1Vl3CIimTvonwlAk/w0ETbkSBxvXjx1K+Y3D84Osm8CJpMrTDP2
+   sTNrJsDu9ZiU4cRqMuQtmeJVP63vpspSCBySAsXSY79j4nSdI+evHDZLm
+   PROpxNq7OJElalbgz+zpqiUVMfnxd6RYozPBOBXo+x3cVJ5kNMgHw6mHb
+   A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,11017"; a="9478290"
+X-IronPort-AV: E=Sophos;i="6.07,136,1708416000"; 
+   d="scan'208";a="9478290"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+  by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Mar 2024 23:04:40 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.07,136,1708416000"; 
+   d="scan'208";a="18280558"
+Received: from fdefranc-mobl3.ger.corp.intel.com (HELO fdefranc-mobl3.localnet) ([10.213.26.116])
+  by fmviesa003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Mar 2024 23:04:36 -0700
+From: "Fabio M. De Francesco" <fabio.maria.de.francesco@linux.intel.com>
 To: Ayush Tiwari <ayushtiw0110@gmail.com>
 Cc: Larry.Finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
-	gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
-	linux-staging@lists.linux.dev, outreachy@lists.linux.dev
-Subject: Re: [PATCH v2] staging: rtl8712: Fix line length exceeding 100
- columns
-Message-ID: <51060bc1-7d1c-4687-ae20-864e65068858@moroto.mountain>
-References: <ZfiNNvks6v0JGhRA@ayush-HP-Pavilion-Gaming-Laptop-15-ec0xxx>
+ gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
+ linux-staging@lists.linux.dev, outreachy@lists.linux.dev
+Subject: Re: [PATCH v2 0/3] Trivial code cleanup patches
+Date: Tue, 19 Mar 2024 07:04:34 +0100
+Message-ID: <6485785.DvuYhMxLoT@fdefranc-mobl3>
+Organization: intel
+In-Reply-To: <cover.1710703217.git.ayushtiw0110@gmail.com>
+References: <cover.1710703217.git.ayushtiw0110@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZfiNNvks6v0JGhRA@ayush-HP-Pavilion-Gaming-Laptop-15-ec0xxx>
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
 
-On Tue, Mar 19, 2024 at 12:21:34AM +0530, Ayush Tiwari wrote:
-> Split the argument list of the kthread_run function call across two
-> lines to address the checkpatch warning "line length exceeds 100
-> columns".
+On Monday, 18 March 2024 20:54:09 CET Ayush Tiwari wrote:
+> Address different kinds of checkpatch complains for the rtl8712 module
+> to ensure adherence to coding style guidelines.
 > 
-> Signed-off-by: Ayush Tiwari <ayushtiw0110@gmail.com>
+> Changes in v2: Checked any possible reuse of backup_PMKID_list
+> manually and rebuilt, rebooted the kernel and loaded the driver
+> with modprobe.
+
+You have not made any changes to any of the three patches in this series. 
+No changes in commit messages and no changes in code. Am I missing 
+something?
+
+So why did you submit a v2 of this series?
+
+Fabio
+ 
+> Ayush Tiwari (3):
+>   staging: rtl8712: rename backupPMKIDList to backup_PMKID_list
+>   staging: rtl8712: rename backupPMKIDIndex to backup_PMKID_index
+>   staging: rtl8712: rename backupTKIPCountermeasure to
+>     backup_TKIP_countermeasure
 > 
-> ---
-> change in v2: Fixed the alignment to address checkpatch.pl warning
+>  drivers/staging/rtl8712/mlme_linux.c | 18 +++++++++---------
+>  1 file changed, 9 insertions(+), 9 deletions(-)
 
-You've created this patch to be applied on top of the v1 patch that we
-are not going to apply.  You need to restart based on a clean repo.
 
-https://staticthinking.wordpress.com/2022/07/27/how-to-send-a-v2-patch/
 
-regards,
-dan carpenter
 
