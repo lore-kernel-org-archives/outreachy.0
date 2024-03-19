@@ -1,89 +1,89 @@
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.15])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-wr1-f53.google.com (mail-wr1-f53.google.com [209.85.221.53])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 81DD345946;
-	Tue, 19 Mar 2024 06:04:46 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.15
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DC6DA4EB32
+	for <outreachy@lists.linux.dev>; Tue, 19 Mar 2024 06:17:29 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.53
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1710828288; cv=none; b=bpOzPRUvbnFAzuQyf08GhwiCEwnJv4/5dJn3mMN1KfJeWIv8W3bolaY6DLy7H/25UFU7WC+pUsFf0C1+d3sya62nP+OFxuwYUaBGCfw2MEH/J2SvMaGy/Uuw/1DOaFDCI1ebzafGWEfCf5mBgloSErXjCeIvoR1pKPO65B9ZRIU=
+	t=1710829051; cv=none; b=uQdBwsEUcuTIEmHrb5uWt9GQ8bWp0oQpuajL3ktTb1+HLw9rdWfnGgzbVhR5jmBk0sxRrOw9NEyfCL1evJTRLz2pehsJiL8P5GEpaQLOKMfsoUfdcDVxE3aDmDyHKXgOOyBhlyC/cQDcW1RE8uEkZDzB/O6I/fanejhvJI1dPtc=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1710828288; c=relaxed/simple;
-	bh=tQvXsniKwtZ0PeKE/Wxl4zOW+IREK9GLuyMiAOZl5I0=;
-	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=OX5QGLWzyJAaImfba8trU4fePSJF5k2nTbBGbxjgEcpzzXp6WW/pvx18ngbqB14x1eJwjPXXv9xMec8W2tHikOdMoeehLITqJWC/JpacLS7lLgd7W/CNhusLF1n0G9JTGm9LNscaQUvihi0eiPekaZB3Yr2S4+sgqLiaFWIM+Rs=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.intel.com; spf=none smtp.mailfrom=linux.intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=TdqMUi/o; arc=none smtp.client-ip=198.175.65.15
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.intel.com
-Authentication-Results: smtp.subspace.kernel.org; spf=none smtp.mailfrom=linux.intel.com
+	s=arc-20240116; t=1710829051; c=relaxed/simple;
+	bh=QQLxq5dEZDeApbmB/Lkx6MXuL7gadJz/3NlJEViXU8o=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=H5ok/HDyf4KtPUffn+tUbd4U3MVVrHWa5sYzn4baeMLNce/WOPGI5z8xTIEyVhtP1N3mlQ1m5sYcx8iRk1HU4uscl+n6RRJOtg1RHs3Cyr++rU23KJHkZ74VqOaoLcVkBfTukEf83zySTCZlqm8QSFpWscWyMTn+V5p754cq2EE=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=UubZbHp7; arc=none smtp.client-ip=209.85.221.53
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="TdqMUi/o"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1710828287; x=1742364287;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=tQvXsniKwtZ0PeKE/Wxl4zOW+IREK9GLuyMiAOZl5I0=;
-  b=TdqMUi/o3IGqS5JnHmqZmoocOq58kMpYm25l5RcaXSF3FBEYMSCucDiC
-   ctxsoE/YWoioiGMx7Z6tEHhMziDlN7NwwYucXy9kDfJ9WY1Ap6l3K2V8Y
-   D321zoriDA7SJnG/y65uB2b15y75HNSsRBWQ8oHZpABdjX4GT9wvcT3QZ
-   9jWA+u1Vl3CIimTvonwlAk/w0ETbkSBxvXjx1K+Y3D84Osm8CJpMrTDP2
-   sTNrJsDu9ZiU4cRqMuQtmeJVP63vpspSCBySAsXSY79j4nSdI+evHDZLm
-   PROpxNq7OJElalbgz+zpqiUVMfnxd6RYozPBOBXo+x3cVJ5kNMgHw6mHb
-   A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,11017"; a="9478290"
-X-IronPort-AV: E=Sophos;i="6.07,136,1708416000"; 
-   d="scan'208";a="9478290"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
-  by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Mar 2024 23:04:40 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,136,1708416000"; 
-   d="scan'208";a="18280558"
-Received: from fdefranc-mobl3.ger.corp.intel.com (HELO fdefranc-mobl3.localnet) ([10.213.26.116])
-  by fmviesa003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Mar 2024 23:04:36 -0700
-From: "Fabio M. De Francesco" <fabio.maria.de.francesco@linux.intel.com>
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="UubZbHp7"
+Received: by mail-wr1-f53.google.com with SMTP id ffacd0b85a97d-33e1878e357so2074606f8f.3
+        for <outreachy@lists.linux.dev>; Mon, 18 Mar 2024 23:17:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1710829048; x=1711433848; darn=lists.linux.dev;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=7NxyLAPBD0uYaEFsJsCLCqoFa7u1wfvFPNUDw78rj08=;
+        b=UubZbHp7kGW47u87N/xE4zMZR/hg2iyzgLOlj04i9UWgoW4kJmA5PM05hLnGttLcx8
+         SLFL1JCe0CF44yvFCEydfj4nsS7FJUv8gR1gYIciWgWoWFxDjjc3MAVAe5sWKhwEkHBL
+         /I6rCRXy4aO+xkARWmRYdbpBGSKkqj4Stt75efcOrZh24jbqJHKokoccV29bWM7QPBJn
+         VKgvtNbRpLJYtS67jfAQ8Dx2ioK9RCv96vcEIz6t/RY1J5Wc4B9KOKOoFkYKO1CmzvJf
+         Rgn+QXCS5xZb6sqJOI109asr4wFi7a4mYvTU8lV8Ak/XPh6O9U/oADr+GCgOrEL/ZXBx
+         sRrw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1710829048; x=1711433848;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=7NxyLAPBD0uYaEFsJsCLCqoFa7u1wfvFPNUDw78rj08=;
+        b=sEbesiaUUnvz8RsQ0N2ssQICupFA2X6ZCPUMvYQQ3+0puM2yWC+Hl61GXfJiJ0e9U3
+         tHd9HVxiOuUgF9drlHYx+Es2SFeQpUdPV1jxPm+ABF2fNiVdd5BF6xNx+Ncp4Grploug
+         rp0DoitHpwMNpMq3JejD6OIIFHqs6ALqycpee3vviIGZQTlMkrPzh2WA7Ede5pap9Vzp
+         z7+n7/eWyB1Z9FVNRwjZETx5M2psTFaCSanYIXcXKqXSoeO+1YBQ+GqSnl9Hf7moODSf
+         ZydynLa7vPOL2eAsz8ovJuKk7ZsxGXu1MQdqfQ3OGH00VZLsKbljWtJwhi+UY9dYmZAe
+         17lQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUV7q1Ff6Qj77KmlJ7VH0Vei39RHS0nj8nYiAIPGnGuAZb5UawOTp8smIDXuQxU1OEqWAl0xiw+pIzC4Lx1XefXV/eP2OTFTgR7
+X-Gm-Message-State: AOJu0YwOX8AygNRLczHzttWnZdd03++NR/781W+foP820N3lWVmABdCS
+	+vKK8RLD5rgpmqdZgdBj/INglbwqcUbeSj6D5hVq0DItZSXVwCbqdrVqii6dJ8o=
+X-Google-Smtp-Source: AGHT+IHxChfQOs9Mp8LF/ggHgGIqPNQKjvXFOMYn+smQajFfFmtbcaa0DsoWP2SsJGfEiulLyAko/w==
+X-Received: by 2002:adf:f606:0:b0:33e:cfff:a05d with SMTP id t6-20020adff606000000b0033ecfffa05dmr1111932wrp.59.1710829047915;
+        Mon, 18 Mar 2024 23:17:27 -0700 (PDT)
+Received: from localhost ([102.222.70.76])
+        by smtp.gmail.com with ESMTPSA id n8-20020a5d6608000000b0033e45930f35sm11520855wru.6.2024.03.18.23.17.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 18 Mar 2024 23:17:27 -0700 (PDT)
+Date: Tue, 19 Mar 2024 09:17:20 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
 To: Ayush Tiwari <ayushtiw0110@gmail.com>
 Cc: Larry.Finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
- gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
- linux-staging@lists.linux.dev, outreachy@lists.linux.dev
-Subject: Re: [PATCH v2 0/3] Trivial code cleanup patches
-Date: Tue, 19 Mar 2024 07:04:34 +0100
-Message-ID: <6485785.DvuYhMxLoT@fdefranc-mobl3>
-Organization: intel
-In-Reply-To: <cover.1710703217.git.ayushtiw0110@gmail.com>
-References: <cover.1710703217.git.ayushtiw0110@gmail.com>
+	gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
+	linux-staging@lists.linux.dev, outreachy@lists.linux.dev
+Subject: Re: [PATCH v6] staging: greybus: Constify gb_audio_module_type
+Message-ID: <9ef61ce3-6f14-4292-9364-903bc52c250d@moroto.mountain>
+References: <ZfiQsZBrHfImIJfc@ayush-HP-Pavilion-Gaming-Laptop-15-ec0xxx>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ZfiQsZBrHfImIJfc@ayush-HP-Pavilion-Gaming-Laptop-15-ec0xxx>
 
-On Monday, 18 March 2024 20:54:09 CET Ayush Tiwari wrote:
-> Address different kinds of checkpatch complains for the rtl8712 module
-> to ensure adherence to coding style guidelines.
+On Tue, Mar 19, 2024 at 12:36:25AM +0530, Ayush Tiwari wrote:
+> Constify static struct kobj_type gb_audio_module_type to prevent
+> modification of data shared across many instances and to address the
+> checkpatch warning that "gb_audio_module_type" should be const. The
+> "gb_audio_module_type" struct is only used in one place:
+> err = kobject_init_and_add(&m->kobj, &gb_audio_module_type, NULL, ...
+> so checkpatch is correct that it can be made const.
 > 
-> Changes in v2: Checked any possible reuse of backup_PMKID_list
-> manually and rebuilt, rebooted the kernel and loaded the driver
-> with modprobe.
+> Signed-off-by: Ayush Tiwari <ayushtiw0110@gmail.com>
 
-You have not made any changes to any of the three patches in this series. 
-No changes in commit messages and no changes in code. Am I missing 
-something?
+Thanks!
 
-So why did you submit a v2 of this series?
+Reviewed-by: Dan Carpenter <dan.carpenter@linaro.org>
 
-Fabio
- 
-> Ayush Tiwari (3):
->   staging: rtl8712: rename backupPMKIDList to backup_PMKID_list
->   staging: rtl8712: rename backupPMKIDIndex to backup_PMKID_index
->   staging: rtl8712: rename backupTKIPCountermeasure to
->     backup_TKIP_countermeasure
-> 
->  drivers/staging/rtl8712/mlme_linux.c | 18 +++++++++---------
->  1 file changed, 9 insertions(+), 9 deletions(-)
-
-
-
+regards,
+dan carpenter
 
