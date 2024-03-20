@@ -1,52 +1,63 @@
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-pl1-f182.google.com (mail-pl1-f182.google.com [209.85.214.182])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0C9AC85635
-	for <outreachy@lists.linux.dev>; Wed, 20 Mar 2024 19:22:42 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.198.163.11
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B5CF685644;
+	Wed, 20 Mar 2024 19:50:52 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.214.182
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1710962564; cv=none; b=t2mQh95scka6v5HekQlVW07C26T6xkwqRTCdYWxt2gzFX83MfqLHyoQnw2mT0BYYh3ZZUZ1lOJW9l0N+PAHHVGL/gsnu7EPQFTobhxZZnO7xxLgcC+dpBd/BG9N1YU1RsZ/QQDkuhvWkRaA2ky22SGVt3j7BGOuhqsMuWLczirI=
+	t=1710964254; cv=none; b=WD47ZpgER06SUnhdlNkJh6LEH0Q+9HJQeFDrT+P6TgGcpmDE7lZAmx3KgUyYM+BR61MUEFkd3RQrWixXAwB4khYDCj1QUNilyVWNA2jSpMgdfzzcYwtNJdT2ltzxQTbT5laYowfdLnZUSXToi8TRXSBS55cd6ewtW93AvNkBzls=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1710962564; c=relaxed/simple;
-	bh=HcP6+VjG29mV1Oc/XnfZp0Ddeu8NpYC61NpIuz2V05s=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=QZF/qNvk7HMZluy/yDTY99K3nE4AGePtTE+6Li4UyfzWdXrWtU7rPZ+8nRNpIZwPBK9bNU0cmIVhGV4Y45SRDIiIPK1Rod1eDNmswvboNoQ3POEFm4wQEj1SvlfPJPLebJKSzYhIjc+Jck8CSAZ25eS9ZaRbx+KR8q0AICq3JRU=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=ClT1xSwK; arc=none smtp.client-ip=192.198.163.11
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
+	s=arc-20240116; t=1710964254; c=relaxed/simple;
+	bh=0/W7ESYmtis8SWzlUSewRHzPrYkRdMN/q4nnWZaZDFI=;
+	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type:
+	 Content-Disposition; b=TJLNzUACYq4nJh45evNWVcQ+cFgpGTewIOLpm2ELT1dSdmmw3jbaJMZVvpflnT+eXQ/0yJJa4aiC5ebi6nm8oHsZaN96SPZ2uk/zYLahQk+hBWUwn5RTiMYBKoAWwllSBHj0/Ei9p/Dp7aYxewmkjN9VfFfn915nEz+KwfvaS3U=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=TlmIqDBA; arc=none smtp.client-ip=209.85.214.182
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="ClT1xSwK"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1710962561; x=1742498561;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=HcP6+VjG29mV1Oc/XnfZp0Ddeu8NpYC61NpIuz2V05s=;
-  b=ClT1xSwKwAXXLPe1fg5aXfXi9mNGiokLdNXoYRfl2ExOD9wJXEwP9JSB
-   9miqNetq2n9BgYPZ096zss1ufR2RYLPl1i81hRC3GWUlvulMI6hhLjQcg
-   zjPhkgXeoqcV3rAGj8als0VbXK9HoYn+0uVVkSs1hYZZI033iMyp4Ju87
-   DpEM5p9F/ZvkKSNWp9fbXMXn/so+gqyc5HbqmrSH7lL0WNFXc3cXZw2qB
-   EUKEdxuNhOuE75MqGAX2q50bIybDfg8R7o/7yOIwc14+cfUpYckiNiwQH
-   sqF5wGTwbrifGGNWDS8Ll8lI5c6GTn9vUa7Xbpt60pNlk5sNKyLsp0UoY
-   w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,11019"; a="16553614"
-X-IronPort-AV: E=Sophos;i="6.07,140,1708416000"; 
-   d="scan'208";a="16553614"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
-  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Mar 2024 12:22:40 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,141,1708416000"; 
-   d="scan'208";a="14159247"
-Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.209.72.188])
-  by orviesa010-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Mar 2024 12:22:42 -0700
-Date: Wed, 20 Mar 2024 12:22:40 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: TaheraFahimi <fahimitahera@gmail.com>
-Cc: outreachy@lists.linux.dev, gregkh@linuxfoundation.org
-Subject: Re: [PATCH] staging: ks7010: fix spinlock_t definition without
- comment
-Message-ID: <Zfs3gCsZns8FNyUv@aschofie-mobl2>
-References: <ZfS7jcATb211X4I8@tahera-OptiPlex-5000>
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="TlmIqDBA"
+Received: by mail-pl1-f182.google.com with SMTP id d9443c01a7336-1e0411c0a52so1771105ad.0;
+        Wed, 20 Mar 2024 12:50:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1710964252; x=1711569052; darn=lists.linux.dev;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=vRikpztEX2fwVvw9gSRXNm3qTKd29WgjYs5PneXIbLc=;
+        b=TlmIqDBAZXO+p6Ce/pqr13mQDNtjD5MtV1j2J+wzpt8GUCDSo1I94h5CMZGTDpEtRD
+         eqbqU+SZMJ4xvc7dfmb7x6TOInm8/Co7Nq/3uPWVqteNxnSziLwU+8aPu35PdbLvhiqd
+         7XRB8XymWth0J4uTuS2YSFztIDy+njcH/RKZGp+dJty3tN9BNUH4eHXBVKNMe/DJqx1P
+         RXXJNcHlYBWdNr9rNtxx3oUZxmgfu4aOurEMA27r5pXoZgmH79KdSTf4a1mu3FiA5vhR
+         9Ityr9K8r2bRI5kLxllU3Mun5+L7V1q6h5ykww0LhyXFqkOfuW2VgWJgYYUby/HOMvqu
+         70dQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1710964252; x=1711569052;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=vRikpztEX2fwVvw9gSRXNm3qTKd29WgjYs5PneXIbLc=;
+        b=lGWqrXRUR/kd4V5MpxNGHt5SQ+3UBYhEPzK9ABeAzorRf8TeOcO4UoocqP+sPGSqGR
+         baIZhnmrsAkYSl1M9Py7ZSblERDoChGBtJVI/UPRcZLXuorlmlrmd9srzYwcqAIFcKw8
+         8P1HCBN4rX3dyLggHGWG/5WxohSFL4wGfooDNtQB3ImQ4cgGTv+vbdfhjAwtMMOSCr2E
+         FUqzAKpDv9k/f5wBBvxTclH2iYG1pfagVK14fJp16nYij9mbnHIojYpVkItiVSVTRe5d
+         +ZTzjfTOV87IU8fbqJQiL5hDAC2kJeXr55zC8iSdGiC70SusuI0it26FXGKEjSCSrIck
+         XTOA==
+X-Forwarded-Encrypted: i=1; AJvYcCUHD/LZBaw4SEjgcFhnPhraShDbmr7W/STqXPJtrfCDRuG3CJZQ+6ApB1KMN1fJuXGlGlaDnxRv/zsiJCLdM/+6eH9fYRWVWfMn8SNKgQ==
+X-Gm-Message-State: AOJu0YzH4U0rCfGIV78W4wt1ivcCv5J5MzRjGugZ9TP/pYWwLQz3Iyua
+	xwgaie45yhe5VC0zAhPWCOUPyBGvJWACSKCqQcFXHn4jBJ3r3ktaxC7kWZeldpY=
+X-Google-Smtp-Source: AGHT+IHbRlTKqWtyyLF5oB3Uxpp1IauadFkrgFc+SRYJM579cvOlLYoldDBT893fqNGSxD1AdZGITA==
+X-Received: by 2002:a17:902:d212:b0:1de:e473:55f6 with SMTP id t18-20020a170902d21200b001dee47355f6mr6219658ply.66.1710964251778;
+        Wed, 20 Mar 2024 12:50:51 -0700 (PDT)
+Received: from ayush-HP-Pavilion-Gaming-Laptop-15-ec0xxx ([103.6.158.67])
+        by smtp.gmail.com with ESMTPSA id m9-20020a170902db0900b001defd1c0ca7sm7726001plx.229.2024.03.20.12.50.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 20 Mar 2024 12:50:51 -0700 (PDT)
+Date: Thu, 21 Mar 2024 01:20:48 +0530
+From: Ayush Tiwari <ayushtiw0110@gmail.com>
+To: Larry.Finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
+	gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
+	linux-staging@lists.linux.dev
+Cc: outreachy@lists.linux.dev
+Subject: [PATCH v2] staging: rtl8712: Change type and name of local variable
+Message-ID: <Zfs+GKmt9hDZdWt/@ayush-HP-Pavilion-Gaming-Laptop-15-ec0xxx>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -55,32 +66,58 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <ZfS7jcATb211X4I8@tahera-OptiPlex-5000>
 
-On Fri, Mar 15, 2024 at 03:20:13PM -0600, TaheraFahimi wrote:
+Change data type of local variable blnPending from u8 to bool and
+renamed it to len_padding since it only assumes 0 or 1 values and
+seems to add a padding based on wr_sz. This change also address the
+checkpatch warning "Avoid Camelcase".
 
-The to/cc list seems trimmed. Is that what you got using steps in
-first patch tutorial. Weird I don't see at least linux-staging.
+Signed-off-by: Ayush Tiwari <ayushtiw0110@gmail.com>
+---
+Changes in v2: Changed values of blnPending from 0/1 to false/true
+and renamed blnPending to len_padding
 
-> Signed-off-by: TaheraFahimi <fahimitahera@gmail.com>
-> ---
->  drivers/staging/ks7010/ks_wlan.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/ks7010/ks_wlan.h b/drivers/staging/ks7010/ks_wlan.h
-> index 94322e2ea304..bda7e0255b2c 100644
-> --- a/drivers/staging/ks7010/ks_wlan.h
-> +++ b/drivers/staging/ks7010/ks_wlan.h
-> @@ -468,7 +468,7 @@ struct ks_wlan_private {
->  	char nick[IW_ESSID_MAX_SIZE + 1];
->  
->  	spinlock_t multicast_spin;
-> -	/* lock for synchronize access to device read operation */
-> +	/* lock to ensure safe access to the device's receive buffer */
->  	spinlock_t dev_read_lock;
->  	wait_queue_head_t devread_wait;
->  
-> -- 
-> 2.34.1
-> 
-> 
+ drivers/staging/rtl8712/rtl8712_cmd.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/staging/rtl8712/rtl8712_cmd.c b/drivers/staging/rtl8712/rtl8712_cmd.c
+index bb7db96ed821..f499bbbf5bf5 100644
+--- a/drivers/staging/rtl8712/rtl8712_cmd.c
++++ b/drivers/staging/rtl8712/rtl8712_cmd.c
+@@ -284,7 +284,7 @@ int r8712_cmd_thread(void *context)
+ 		pcmd = cmd_hdl_filter(padapter, pcmd);
+ 		if (pcmd) { /* if pcmd != NULL, cmd will be handled by f/w */
+ 			struct dvobj_priv *pdvobj = &padapter->dvobjpriv;
+-			u8 blnPending = 0;
++			bool len_padding = false;
+ 			u16 cmdcode = pcmd->cmdcode;
+ 
+ 			pcmdpriv->cmd_issued_cnt++;
+@@ -294,12 +294,12 @@ int r8712_cmd_thread(void *context)
+ 						     0x0000ffff);
+ 			if (pdvobj->ishighspeed) {
+ 				if ((wr_sz % 512) == 0)
+-					blnPending = 1;
++					len_padding = true;
+ 			} else {
+ 				if ((wr_sz % 64) == 0)
+-					blnPending = 1;
++					len_padding = true;
+ 			}
+-			if (blnPending) { /* 32 bytes for TX Desc - 8 offset */
++			if (len_padding) { /* 32 bytes for TX Desc - 8 offset */
+ 				pdesc->txdw0 |= cpu_to_le32(((TXDESC_SIZE +
+ 						OFFSET_SZ + 8) << OFFSET_SHT) &
+ 						0x00ff0000);
+@@ -318,7 +318,7 @@ int r8712_cmd_thread(void *context)
+ 					       (pcmdpriv->cmd_seq << 24));
+ 			pcmdbuf += 2; /* 8 bytes alignment */
+ 			memcpy((u8 *)pcmdbuf, pcmd->parmbuf, pcmd->cmdsz);
+-			if (blnPending)
++			if (len_padding)
+ 				wr_sz += 8;   /* Append 8 bytes */
+ 			r8712_write_mem(padapter, RTL8712_DMA_H2CCMD, wr_sz,
+ 					(u8 *)pdesc);
+-- 
+2.40.1
+
