@@ -1,121 +1,123 @@
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-pl1-f172.google.com (mail-pl1-f172.google.com [209.85.214.172])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4E89A224F2;
-	Wed, 20 Mar 2024 21:05:07 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.104
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9F94085947;
+	Wed, 20 Mar 2024 21:19:21 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.214.172
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1710968712; cv=none; b=MEzk6X//lx9L1jHrM++2SsaBzq20PmSn34MdK6DyT5/SYWK1UP/IHHF4lCUuch9DGMqy40SoFbN82oln8//d3VSWfXw2fz64FLetzXikHiqZQK7iHQUZlyg/f7y4vyIlNpc5pmtC+rEgvueWRDZStqBJnyxgbvLL8RAFcKAvCQY=
+	t=1710969563; cv=none; b=LQzqE7spVGhASHR/E9nta6qOpluj0iTfCMMpr8tH4Tv6vMlwwQXKlIjjRfhf9w0FF4wNHfjH631fVeTjryC9XE5iQew/CTnEFlfBFbFA8wU3ODRJuhXj/UNwCjUqGJ5OR82fHHbPCG/thaFhq2JZ+7YnK4ulz0godEq6xv2Um24=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1710968712; c=relaxed/simple;
-	bh=Wyhez9FL5Ho+UmwZKIK3g6PGWtYemMdQMXRG7Iosh+s=;
-	h=Date:From:To:cc:Subject:In-Reply-To:Message-ID:References:
-	 MIME-Version:Content-Type; b=J7Vluay2mmbHs9lI9i24If2cpIxm+EJNZewtNRUU/jEz2FscOesIO+XQlFnpCOoobEgPDxz2B2YtOjOKk+TKt0qzIFdEYO3rdkTBvpYsa8S1bZBW31WtA43IMfTuFzOQzOzzn2Qk3OB4ascRTM7GUxhYmlYtXmY5stXZt5TT3YA=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=kukgWbT+; arc=none smtp.client-ip=192.134.164.104
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
+	s=arc-20240116; t=1710969563; c=relaxed/simple;
+	bh=GDUK059pKBZeHrxYHmKfn+74LCF9FZgSA5vmAJNvPi0=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=IXMy4gFtLlSE0ehaIVotnlacZ9vCRisbt4AFt1vJ5wAXBlsEmaJyiANXxXupQg1kTFY9y0EiAJ4NandIV93CNzgIpZLZ/aboIg0Li+bEBfsVBOQmerKv14AnS1fFL2hvX6MTcNQwM4652XMA4YNJHAzh0qzFPzQ47KI96S+d4x0=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=hDU4W1Xa; arc=none smtp.client-ip=209.85.214.172
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="kukgWbT+"
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="hDU4W1Xa"
+Received: by mail-pl1-f172.google.com with SMTP id d9443c01a7336-1e0679b1562so2587125ad.0;
+        Wed, 20 Mar 2024 14:19:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=DaEIabmCpPYeVfCnqcTR0G+EdrgHTPTuHfPVasDyRdg=;
-  b=kukgWbT+xGfq5/9uvX9N7ywdGDBTrWS+9Sf1iK73Xupv/1agITqwFMfd
-   6SxNUjC/9fCGjB+giKjfnqI5wuWvmBC9Pi6ZHXt50NZekstUyr6ifNu5S
-   zgSLlzbQozMYFA4ocBzOD85Yk+8sT48SRaqbS2Wcj1yQLNfWNWuXIfvzT
-   M=;
-Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="6.07,141,1708383600"; 
-   d="scan'208";a="82705121"
-Received: from 231.85.89.92.rev.sfr.net (HELO hadrien) ([92.89.85.231])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Mar 2024 22:05:04 +0100
-Date: Wed, 20 Mar 2024 22:05:03 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Ayush Tiwari <ayushtiw0110@gmail.com>
-cc: Larry.Finger@lwfinger.net, florian.c.schilhabel@googlemail.com, 
-    gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org, 
-    linux-staging@lists.linux.dev, outreachy@lists.linux.dev
-Subject: Re: [PATCH v2] staging: rtl8712: Change type and name of local
- variable
-In-Reply-To: <Zfs+GKmt9hDZdWt/@ayush-HP-Pavilion-Gaming-Laptop-15-ec0xxx>
-Message-ID: <alpine.DEB.2.22.394.2403202203470.3361@hadrien>
-References: <Zfs+GKmt9hDZdWt/@ayush-HP-Pavilion-Gaming-Laptop-15-ec0xxx>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+        d=gmail.com; s=20230601; t=1710969560; x=1711574360; darn=lists.linux.dev;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=h0B2zlqbREuHKOh+t9O0ebnJVeZkcILT08w8oULXcsk=;
+        b=hDU4W1XaHC1j53DcPjhZJ9Wf8YeQhAkTTA8QtLBCDWeSTtJuZtukxSxKtQKxSUW6tT
+         t0vbW8k8aZtBnkmLeYY1utl3ddqNOGDYjM6d/VQNOZmdDiBXwXPmKoz+fXuY5mIi72vF
+         lSODqZshbFR7U1aDBN47YKeMA7yBNvPhcHgiFz44X2LKcp4UKu2h3YFrABwxEt/NeCMB
+         Ye5Xodu6t2zLfrKI2oqaWIcWOGYJ70UhfKtK5iVAThGQ456bXcu+vNrkCPbHI13+T6nj
+         19q7cVnWyjC7UqKk7dHbuGQevIcAO71DxdC9Sh3E+fCDrZxwkyLZ+hKkn9xg83lwDgCK
+         nesQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1710969560; x=1711574360;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=h0B2zlqbREuHKOh+t9O0ebnJVeZkcILT08w8oULXcsk=;
+        b=rwqNuX4GBzc/Bl7FWCnfL3BeiHfMRN8RiNatFYVZdOFUHWxp5d1awp184Ye8A4ztM+
+         7MKFrL2dVGAcNRXWkYbfdJZQ0SCSnZAgHhTOXUZdDuql7sWI6m0pC3bT1WA+viPFkOl9
+         whqZ9LnDBnck68AySy3VI7iWMEwj2nTBzIOLXL3p6M8f9j1HlprVtOxsxfHgRDDX7KKH
+         Fkr3jk1Yje0LVMlbP5xsRGDTaJGJ0KUrx2oxEezeCtRZjTR5NPFdd2sXkgZNDVHIICL1
+         Xk2OGoCGvKR5Oy+KO2rn8XxZ32w2J8lKA+4/pftI0YDqmPMiTC2fb82LMnMrNdPEEywm
+         qeMA==
+X-Forwarded-Encrypted: i=1; AJvYcCW95h1KqWK7HHMJFKMulgJloIS3tMH+yBOUChbtxJtyYGPN9FZ9Lz9fnqupMVB6c4EVxPS9Vs/+9fqX1+t7hr6OLht9gM1AQHXRL2CF3Q==
+X-Gm-Message-State: AOJu0YwpnDx2JqA1RMKfu/Tqsb34aY2pwhPwC4utxgYf27xJOvmPDnmb
+	d4BbN/FTBlDEy+L7PrvaMr4pJ6Q8pfh2w7nC8BVNLKWQ6/RVMd31df9bRqNo6VI=
+X-Google-Smtp-Source: AGHT+IH+gkKiUOeFd5TiUgmcx2l6m+eiPE2XIe8uQh/+n91aD2xhd7pGMWQ9YU2OfQElPcvETHjaxQ==
+X-Received: by 2002:a17:903:41ca:b0:1dd:b728:b8d8 with SMTP id u10-20020a17090341ca00b001ddb728b8d8mr253646ple.45.1710969560324;
+        Wed, 20 Mar 2024 14:19:20 -0700 (PDT)
+Received: from ayush-HP-Pavilion-Gaming-Laptop-15-ec0xxx ([103.6.158.67])
+        by smtp.gmail.com with ESMTPSA id h5-20020a170902f54500b001e009717560sm7090751plf.232.2024.03.20.14.19.19
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 20 Mar 2024 14:19:20 -0700 (PDT)
+Date: Thu, 21 Mar 2024 02:49:17 +0530
+From: Ayush Tiwari <ayushtiw0110@gmail.com>
+To: Larry.Finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
+	gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
+	linux-staging@lists.linux.dev
+Cc: outreachy@lists.linux.dev
+Subject: [PATCH v3 1/3] staging: rtl8712: rename backupPMKIDList to
+ backup_PMKID_list
+Message-ID: <5d3930cb847fd311afdd16c8fb947133ec49b55e.1710965653.git.ayushtiw0110@gmail.com>
+References: <cover.1710965653.git.ayushtiw0110@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1710965653.git.ayushtiw0110@gmail.com>
 
+Rename backupPMKIDList to backup_PMKID_list and remove extra spaces
+between RT_PMKID_LIST and backupPMKIDList to address checkpatch
+warnings and match the common kernel coding style.
 
+Signed-off-by: Ayush Tiwari <ayushtiw0110@gmail.com>
+---
+Changes in v3: Fixed the errors in v2, built the kernel with
+CONFIG_WERROR set.
 
-On Thu, 21 Mar 2024, Ayush Tiwari wrote:
+Changes in v2: Checked any possible reuse of backup_PMKID_list 
+manually and rebuilt, rebooted the kernel and loaded the driver 
+with modprobe. 
 
-> Change data type of local variable blnPending from u8 to bool and
-> renamed it to len_padding since it only assumes 0 or 1 values and
-> seems to add a padding based on wr_sz. This change also address the
-> checkpatch warning "Avoid Camelcase".
->
-> Signed-off-by: Ayush Tiwari <ayushtiw0110@gmail.com>
-> ---
-> Changes in v2: Changed values of blnPending from 0/1 to false/true
-> and renamed blnPending to len_padding
+ drivers/staging/rtl8712/mlme_linux.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-I don't think "len" is a good choice.  That suggests length, which would
-be an integer.  I suspect that bln is an abbreviation of boolean, and the
-while thing should go.  But when you remove that, you get pending, not
-padding.
+diff --git a/drivers/staging/rtl8712/mlme_linux.c b/drivers/staging/rtl8712/mlme_linux.c
+index b9f5104f3bf7..a009ec1a5c11 100644
+--- a/drivers/staging/rtl8712/mlme_linux.c
++++ b/drivers/staging/rtl8712/mlme_linux.c
+@@ -84,7 +84,7 @@ void r8712_os_indicate_connect(struct _adapter *adapter)
+ 	netif_carrier_on(adapter->pnetdev);
+ }
+ 
+-static struct RT_PMKID_LIST   backupPMKIDList[NUM_PMKID_CACHE];
++static struct RT_PMKID_LIST backup_PMKID_list[NUM_PMKID_CACHE];
+ void r8712_os_indicate_disconnect(struct _adapter *adapter)
+ {
+ 	u8 backupPMKIDIndex = 0;
+@@ -99,7 +99,7 @@ void r8712_os_indicate_disconnect(struct _adapter *adapter)
+ 		 * disconnect with AP for 60 seconds.
+ 		 */
+ 
+-		memcpy(&backupPMKIDList[0],
++		memcpy(&backup_PMKID_list[0],
+ 		       &adapter->securitypriv.PMKIDList[0],
+ 		       sizeof(struct RT_PMKID_LIST) * NUM_PMKID_CACHE);
+ 		backupPMKIDIndex = adapter->securitypriv.PMKIDIndex;
+@@ -113,7 +113,7 @@ void r8712_os_indicate_disconnect(struct _adapter *adapter)
+ 		 * for the following connection.
+ 		 */
+ 		memcpy(&adapter->securitypriv.PMKIDList[0],
+-		       &backupPMKIDList[0],
++		       &backup_PMKID_list[0],
+ 		       sizeof(struct RT_PMKID_LIST) * NUM_PMKID_CACHE);
+ 		adapter->securitypriv.PMKIDIndex = backupPMKIDIndex;
+ 		adapter->securitypriv.btkip_countermeasure =
+-- 
+2.40.1
 
-julia
-
->
->  drivers/staging/rtl8712/rtl8712_cmd.c | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
->
-> diff --git a/drivers/staging/rtl8712/rtl8712_cmd.c b/drivers/staging/rtl8712/rtl8712_cmd.c
-> index bb7db96ed821..f499bbbf5bf5 100644
-> --- a/drivers/staging/rtl8712/rtl8712_cmd.c
-> +++ b/drivers/staging/rtl8712/rtl8712_cmd.c
-> @@ -284,7 +284,7 @@ int r8712_cmd_thread(void *context)
->  		pcmd = cmd_hdl_filter(padapter, pcmd);
->  		if (pcmd) { /* if pcmd != NULL, cmd will be handled by f/w */
->  			struct dvobj_priv *pdvobj = &padapter->dvobjpriv;
-> -			u8 blnPending = 0;
-> +			bool len_padding = false;
->  			u16 cmdcode = pcmd->cmdcode;
->
->  			pcmdpriv->cmd_issued_cnt++;
-> @@ -294,12 +294,12 @@ int r8712_cmd_thread(void *context)
->  						     0x0000ffff);
->  			if (pdvobj->ishighspeed) {
->  				if ((wr_sz % 512) == 0)
-> -					blnPending = 1;
-> +					len_padding = true;
->  			} else {
->  				if ((wr_sz % 64) == 0)
-> -					blnPending = 1;
-> +					len_padding = true;
->  			}
-> -			if (blnPending) { /* 32 bytes for TX Desc - 8 offset */
-> +			if (len_padding) { /* 32 bytes for TX Desc - 8 offset */
->  				pdesc->txdw0 |= cpu_to_le32(((TXDESC_SIZE +
->  						OFFSET_SZ + 8) << OFFSET_SHT) &
->  						0x00ff0000);
-> @@ -318,7 +318,7 @@ int r8712_cmd_thread(void *context)
->  					       (pcmdpriv->cmd_seq << 24));
->  			pcmdbuf += 2; /* 8 bytes alignment */
->  			memcpy((u8 *)pcmdbuf, pcmd->parmbuf, pcmd->cmdsz);
-> -			if (blnPending)
-> +			if (len_padding)
->  				wr_sz += 8;   /* Append 8 bytes */
->  			r8712_write_mem(padapter, RTL8712_DMA_H2CCMD, wr_sz,
->  					(u8 *)pdesc);
-> --
-> 2.40.1
->
->
->
