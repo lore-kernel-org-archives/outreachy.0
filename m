@@ -1,63 +1,63 @@
-Received: from mail-oo1-f53.google.com (mail-oo1-f53.google.com [209.85.161.53])
+Received: from mail-pf1-f177.google.com (mail-pf1-f177.google.com [209.85.210.177])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 93DBB4A28
-	for <outreachy@lists.linux.dev>; Mon, 25 Mar 2024 17:46:17 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.161.53
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C858E3DABE2;
+	Mon, 25 Mar 2024 17:47:46 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.210.177
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1711388779; cv=none; b=CsSQDRkH0BINCa1Ac28RHEsvEuWRBD9Ug9fbiJxyxOYUCWI8o988yi6wuRJRCIAKnZ+0SaOA6lsWUP3k0FJGZ7cy3yUhgWqpxpMD0DREh//awmHrl2AAJM550GBvDhahd1rSVCroPkwZgLnvdSSuhW0amEv6/TA2XAFK0Kq6wFU=
+	t=1711388868; cv=none; b=YNbHDGCr3h/A0z9NG2nkExYz5FeB4+7eabXRSlmSfoXlf2cfu4aC9siH6Qp9TJa3nuWQZ+9bC7JthTv0CEj+7wiff+IaJwhvDtqqZCVgLCuwhHtLh3i3o+d/wbjQDNyAHiYztAdZSAUNtWVagxl9IEhzEEQBstMe/YkZoq7MBUo=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1711388779; c=relaxed/simple;
-	bh=vdR2Ct/2vJ1Tp1sljJPBy3o/6JoVN+EFn9lQB2Uyhb4=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=UlSuHPek1xGtco0f3Kn26+G0QFR8zD2BtqSlAtSMZ15hTswo8/bAj4rsqhCEyiFmorGtYKUlDEle3SRzezGm0dcChXsVS7gEE66Vh6hDpES8xbT/Sgb5FMMYXDsboDVXaV0UjL56aelp6GPPjZxrqdQV6GfvG+o9oaSPc1eEqVg=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=ElEhzZCc; arc=none smtp.client-ip=209.85.161.53
+	s=arc-20240116; t=1711388868; c=relaxed/simple;
+	bh=x79bQNpuZSSP4gO8yikz0VUCiVgrNxK4tK/sdFtNq40=;
+	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type:
+	 Content-Disposition; b=npbxLBu5dGonfjXqfa0V/C960SGzI/n0duRHJUoCJGK/xnXcQcBgELGFEpn/UD3q9o4joZJgIYykQOdU0gVA+Ui2ikkO0g9mMIyzmkJxu7HFFm46emjg6w5gsOyZeehdCPUNsZc9A7iITZzlCPr3KAhBdCY+DyxL1l4W4BLUo58=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=F3PxjQaF; arc=none smtp.client-ip=209.85.210.177
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="ElEhzZCc"
-Received: by mail-oo1-f53.google.com with SMTP id 006d021491bc7-5a56a22004cso194493eaf.3
-        for <outreachy@lists.linux.dev>; Mon, 25 Mar 2024 10:46:17 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="F3PxjQaF"
+Received: by mail-pf1-f177.google.com with SMTP id d2e1a72fcca58-6e6a9fafacdso3484998b3a.2;
+        Mon, 25 Mar 2024 10:47:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1711388776; x=1711993576; darn=lists.linux.dev;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=OW0h6Jz54NBOP/j8FwUEDp5zhdnVGPm3pq8zwA6fMyE=;
-        b=ElEhzZCctpzqGAOdrmoTPBhLIZCHuo9VzIAytN1S/DsLeF8nRXTnRDUyfojIQo/Ia3
-         /7ntSbyxQU07Njlc9ud6Aj/AO6LUJDe0xIaZZZqj0QvNRgL2ZGB6ULTdTRglpJnEY74n
-         Aoz7n5+XVARyFo7KRdHbXTpu8Bq8mNvq4d1gzpY8cVmB5oppCdDDg4xEoLdXdWFLUJkq
-         Z1/rPfhrn9h+fV10NfihG0c2G/LugbS8m94RU/DD6xDiTCfFbPvDq1xZEIKklTvQSGln
-         hdH1unvMWdHeHYZB+DTJqcumZFVg1Ywun0YK9kyITAEiPThwB2SJHwc2g8+pkgv8LpjD
-         j8yg==
+        d=gmail.com; s=20230601; t=1711388866; x=1711993666; darn=lists.linux.dev;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=mEPz6M5iHmHoPmbFs3iYprvWP2TggHiaslNWFi8OZW0=;
+        b=F3PxjQaFcIvFiYAYXg//BZ0sGKl4WSBNk5UBhZNnQyZDehpS6M2HjF9wvjIy0IhZpM
+         tGGkQDbCbi5U2LqwXLpJZkM9sRZIoE0ntBiIvvf14fnd3la6Zo1sTFkX1moP7lVotnY7
+         pk8oY58mg2JhRtkMYpt9lUUTpBeNSQkuoE2L0YD1vJiPiE4MBeFBAp8giIdx5zqEQ6Hn
+         /nEGJ8+fci0rM1NVtWdmRrb0h9BiDoP8jfJp6YDA4M0joJKPIVfM8NLa4osAhH2DJEmg
+         rTfppWbYjYZ+ivIcIofImKJMhoyBq1aO7oWPSLkvNf5yOX2cffrAp8ytL5J8Xau35yUo
+         wL0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711388776; x=1711993576;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=OW0h6Jz54NBOP/j8FwUEDp5zhdnVGPm3pq8zwA6fMyE=;
-        b=AzRzaNGlWROJ7RzrhoADu44yVM6B+/jNoR1pMMJEalDKuyEARaIy1e/k6vXKhXN13h
-         yvZ1wtUlenGa2/hobX8+yoLkERRlu8p3hWc4gbWhfozf3MtJsXxlmriqpmGCB76xMIQ4
-         zmFPrr/EMRnblFkpWMOe0k9LR5S4iN6bAine3TkiPH05lmfF0TQ1N+8eHgUPu2wwL/RJ
-         Iv4wvpcqH+2oyDSYU2rYgHan6FOwVmMCdudz6Plxk1ZcVRmcVYBEAP04VIR6HKIam2Vw
-         zeVL0JxyY+CgBosrTkR48fOa32WpiD5FzSF6/XYDpGnpcAyJpvZUpVflo+XKOHhEdvyq
-         6tjg==
-X-Gm-Message-State: AOJu0YzGOtkNJR7gl3GO+OTxjC4YenAHf1hHtE/YT5FAoQQ5ojXK4zQp
-	swjE1I6H7TvIkDFECtEZf0t/vKSmT+umkiiQjFCQPbV6opwkE3bDJJfFF/Znkjc=
-X-Google-Smtp-Source: AGHT+IEFe25ngEKv3smVE0dg5LWXv4fRi5/jFgGNt3wDKfSHucUHw4v/kx9KWTBuqrwMyYQmrrGBaw==
-X-Received: by 2002:a05:6358:71cd:b0:17b:304f:b3d with SMTP id u13-20020a05635871cd00b0017b304f0b3dmr7832146rwu.23.1711388776404;
-        Mon, 25 Mar 2024 10:46:16 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1711388866; x=1711993666;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=mEPz6M5iHmHoPmbFs3iYprvWP2TggHiaslNWFi8OZW0=;
+        b=NHc9jAyt5oRLqrq61u8waKHaoeCKNaF/43PzqzuJUyNGwMjDYpdC7i+nNFQWW/xhMX
+         C6S+LCN1zdnROizuLJc9+Z1VtD1Adam/qZ8tzn/OczsZg/Eb69c9k4JWbd2lTvfqGbaQ
+         A3B/cCFJnE3HOK250p5KCEVJVIF9nAxhtN+KDn8V85Z+i2Eg3q5c4tcc526efRmwBixu
+         g8qdADz15btpQKLWIuda8sr4kDaLR2N3AxRGwcanFBNaKj53+Z4fmxWD4o0t+FXOw09H
+         EdyrRg8kYygQ4X1ONR27gQ7EIXPyGsts3vmJcivPe4/cm49hyYBrjCyMp39jlVZGthvV
+         RNnw==
+X-Forwarded-Encrypted: i=1; AJvYcCUz7GrxkmAKiPUxSaRCyiequVuBiEcJkQmNox9GzwJLzluOKnla9cha8I4T3g668v5n1u0nUNvK/whJNyvvyD+2iMFf5OlmZVOIHk2pKw==
+X-Gm-Message-State: AOJu0Yzm4iwBVblJ7rCU4B6DLwOSMPTToqsyRm6g3v1MvgHJruL9m6lH
+	nggdb8a7sCs555BHztsNPuBi4NaLavJjuNcjGWXQ6ts4MEGtIVRlOI/AbibLqao=
+X-Google-Smtp-Source: AGHT+IFGLoJ906tIgvVPhFldOKi+aRwpKUD3HGt3rUE/+t7NYeCllhEhK3pUP1gIHVT2SA4qZU2rjQ==
+X-Received: by 2002:a05:6a21:182:b0:1a3:b034:ca42 with SMTP id le2-20020a056a21018200b001a3b034ca42mr8109908pzb.40.1711388865962;
+        Mon, 25 Mar 2024 10:47:45 -0700 (PDT)
 Received: from ayush-HP-Pavilion-Gaming-Laptop-15-ec0xxx ([103.6.158.65])
-        by smtp.gmail.com with ESMTPSA id q9-20020a63e209000000b005eb4d24e809sm6125677pgh.34.2024.03.25.10.46.14
+        by smtp.gmail.com with ESMTPSA id k6-20020aa79986000000b006e6b415b405sm4322581pfh.36.2024.03.25.10.47.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 Mar 2024 10:46:15 -0700 (PDT)
-Date: Mon, 25 Mar 2024 23:16:11 +0530
+        Mon, 25 Mar 2024 10:47:45 -0700 (PDT)
+Date: Mon, 25 Mar 2024 23:17:40 +0530
 From: Ayush Tiwari <ayushtiw0110@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
+To: Larry.Finger@lwfinger.net, florian.c.schilhabel@googlemail.com,
+	gregkh@linuxfoundation.org, linux-kernel@vger.kernel.org,
+	linux-staging@lists.linux.dev
 Cc: outreachy@lists.linux.dev
-Subject: Re: [PATCH v3 0/3] Trivial code cleanup patches
-Message-ID: <ZgG4YxSmcPQ9zzRl@ayush-HP-Pavilion-Gaming-Laptop-15-ec0xxx>
-References: <cover.1710965653.git.ayushtiw0110@gmail.com>
- <2024032552-ardently-colonial-8502@gregkh>
+Subject: [PATCH v4 0/3] staging: rtl8712: Trivial code cleanup patches
+Message-ID: <cover.1711388443.git.ayushtiw0110@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -66,33 +66,23 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <2024032552-ardently-colonial-8502@gregkh>
 
-On Mon, Mar 25, 2024 at 06:23:30PM +0100, Greg KH wrote:
-> On Thu, Mar 21, 2024 at 02:44:51AM +0530, Ayush Tiwari wrote:
-> > Address different kinds of checkpatch complains for the rtl8712 module
-> > to ensure adherence to coding style guidelines.
-> > 
-> > Changes in v3: Fixed issues about backupPMKIDList and verified with
-> > CONFIG_WERROR set and built the kernel.
-> > 
-> > Changes in v2: Checked any possible reuse of backup_PMKID_list
-> > manually and rebuilt, rebooted the kernel and loaded the driver
-> > with modprobe.
-> 
-> The subject line for this 0/3 email does not give us a hint as to what
-> these changes are for.  Please resend the next version with something
-> like:
-> 	staging: rtl8712: .....
-> 
-> so that we know what to expect.
-> 
-> thanks,
-> 
-> greg k-h
+Address different kinds of checkpatch complains for the rtl8712 module
+to ensure adherence to coding style guidelines.
 
-Hello Greg.
-Thanks for the feedback. Sorry for the error. Sending the patch properly
-again.
+v4: Update the changelog to match revision history
+v3: Update memcpy() param to match new name backup_PMKID_list
+v2: No changes. Just a patch sending error.
 
-Ayush
+Ayush Tiwari (3):
+  staging: rtl8712: rename backupPMKIDList to backup_PMKID_list
+  staging: rtl8712: rename backupPMKIDIndex to backup_PMKID_index
+  staging: rtl8712: rename backupTKIPCountermeasure to
+    backup_TKIP_countermeasure
+
+ drivers/staging/rtl8712/mlme_linux.c | 18 +++++++++---------
+ 1 file changed, 9 insertions(+), 9 deletions(-)
+
+-- 
+2.40.1
+
