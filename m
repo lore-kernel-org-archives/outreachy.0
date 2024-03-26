@@ -1,126 +1,208 @@
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.16])
+Received: from smtp-190b.mail.infomaniak.ch (smtp-190b.mail.infomaniak.ch [185.125.25.11])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2461E4C3DE
-	for <outreachy@lists.linux.dev>; Tue, 26 Mar 2024 10:21:58 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.198.163.16
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B3C35134C6
+	for <outreachy@lists.linux.dev>; Tue, 26 Mar 2024 11:28:39 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=185.125.25.11
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1711448520; cv=none; b=tl5goso3BYXi4fWlykMP5imnTBM6qQ78dSjpBFno7W4JpZc23kDI9xC94zwSb9tem5wi317WhIybKe2Q75XEck8q/dsOy14sPjil+27IeLmrujbxEgIGLLX1W9C4If7woT0J6mKq30/AndeRW+1wYNdbRyrXZAKNYesWnP0/BCI=
+	t=1711452525; cv=none; b=XFw1SL4mqLiuG9KVTBm08ph3wHCv7t/hm8rqPp+i2GDZbMjbf6BYCaB8blPjlchTgQanguqW2vTXBQEKsqtRFhCeGgLIUVOW5HcHCL+l5+XAjjyLXxV3+95UdNvQwqupHaPAoppd8ByGrAjInDmwDGXer0Bqp2twF9qAidtTbB0=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1711448520; c=relaxed/simple;
-	bh=OYAafarS0Xo3fvfDKjSrQonje+qs0kXhZSKHs6JTmek=;
-	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=cMMScdpGjJ8H837xcKNMrgPdldlxmmBN4sirqLWu8Dr0syXotv+runa+rrb59PutE718u62XEkRxxCXJOiaBvoqWPP3hQnR5hQlGFAFgfHEsX3a1SYmG+PGmWJ+ZOPoDauhSPI1vLfoSDUsZGgI7a8clmaAUU2plA7nhWW2wuAE=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.intel.com; spf=none smtp.mailfrom=linux.intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=ftNlJ1il; arc=none smtp.client-ip=192.198.163.16
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.intel.com
-Authentication-Results: smtp.subspace.kernel.org; spf=none smtp.mailfrom=linux.intel.com
+	s=arc-20240116; t=1711452525; c=relaxed/simple;
+	bh=ONpBtbITa1A2ZAuZ6mS/vT3ctcxfIycxvwsg+2KKEC4=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=c+iiS4Cc4x2ypXLc0nix+Iwbx93RxADXJSrUPInAtab6CQl7tyzunV4aCEVHG7mIjHzrj+bvIQm267WVt5/lFpFtSnfz1uwqOYMfVoGqQSYGrS1GucJaxFBxW3FXU5hWow0zIqw8XpbxuFYMcZxcrcldA7M0GQCt4JnYfP3teK8=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net; spf=pass smtp.mailfrom=digikod.net; dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b=y8i39xDL; arc=none smtp.client-ip=185.125.25.11
+Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=digikod.net
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="ftNlJ1il"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1711448519; x=1742984519;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=OYAafarS0Xo3fvfDKjSrQonje+qs0kXhZSKHs6JTmek=;
-  b=ftNlJ1ildKDEPrGg0G9yznj4B2rIVRAloG0AuCoDspF6jeKqGcvmRCHJ
-   3bxf+hqqumWBO7hENerTQ/MU4SbkSPjjqqxkvKuxMbiiD1AlOrkHo7YuB
-   TaBcS2LTgTd14wizcI47PMVIVle6E36UhmKRsyJAzaibu4b4JVyiDbuWq
-   hEPwxwteoTFRg0RaDwlG/JwqbZG77lgPRslJ4O9KOFGszaajTAujqwT/m
-   rF2h7kPJq49H/f4gXMNbfW1QpZf+6kmbAuQzzlth2qHZSqukoxSmgI1J4
-   F582bIeaw+c40yRR6YUnA8BbxtT6UBJlktbivBZ1BPbe35AkwBLtGmrMr
-   A==;
-X-CSE-ConnectionGUID: uuz4BKOdTtG9W4m24UfdTw==
-X-CSE-MsgGUID: 2YlDs1BZT9yRsrDuLkCc4w==
-X-IronPort-AV: E=McAfee;i="6600,9927,11024"; a="7090194"
-X-IronPort-AV: E=Sophos;i="6.07,156,1708416000"; 
-   d="scan'208";a="7090194"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
-  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Mar 2024 03:21:57 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,156,1708416000"; 
-   d="scan'208";a="15954668"
-Received: from pkhursau-mobl.ger.corp.intel.com (HELO fdefranc-mobl3.localnet) ([10.213.16.129])
-  by fmviesa009-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Mar 2024 03:21:55 -0700
-From: "Fabio M. De Francesco" <fabio.maria.de.francesco@linux.intel.com>
-To: Dorine Tipo <dorine.a.tipo@gmail.com>
-Cc: mic@digikod.net, skhan@linuxfoundation.org, outreachy@lists.linux.dev,
- Dorine Tipo <dorine.a.tipo@gmail.com>
-Subject: Re: [PATCH 0/2] Add io_uring test with Landlock access control rules
-Date: Tue, 26 Mar 2024 11:21:52 +0100
-Message-ID: <3631043.iIbC2pHGDl@fdefranc-mobl3>
-Organization: intel
-In-Reply-To: <cover.1711331521.git.dorine.a.tipo@gmail.com>
-References: <cover.1711331521.git.dorine.a.tipo@gmail.com>
+	dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b="y8i39xDL"
+Received: from smtp-4-0000.mail.infomaniak.ch (smtp-4-0000.mail.infomaniak.ch [10.7.10.107])
+	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4V3ncQ0F7GzQbN;
+	Tue, 26 Mar 2024 12:28:38 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=digikod.net;
+	s=20191114; t=1711452517;
+	bh=ONpBtbITa1A2ZAuZ6mS/vT3ctcxfIycxvwsg+2KKEC4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=y8i39xDLeKgptySRxkWXoWelsxxda8xLI6zLgSSym0ufOTagRdu/LEKto473eCKcj
+	 TmLpD9CgsAKBwXEBgYMMCEmMMJ6qQhIkpqzgN6oFkKT+g+7BsQZ8G0+kJn3XIsD1wG
+	 MrG37DTtGgloAYfeB8riJBaQqVZpvc7Y5Ubrcmp0=
+Received: from unknown by smtp-4-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4V3ncP3G96zKK4;
+	Tue, 26 Mar 2024 12:28:37 +0100 (CET)
+Date: Tue, 26 Mar 2024 12:28:36 +0100
+From: =?utf-8?Q?Micka=C3=ABl_Sala=C3=BCn?= <mic@digikod.net>
+To: TaheraFahimi <fahimitahera@gmail.com>
+Cc: Paul Moore <paul@paul-moore.com>, outreachy@lists.linux.dev
+Subject: Re: [PATCH] Adding helpers for unix_stream_connect.
+Message-ID: <20240326.Ot8Zooveeh1k@digikod.net>
+References: <ZgD8lTToWEhtNmpg@tahera-OptiPlex-5000>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 7Bit
-Content-Type: text/plain; charset="us-ascii"
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <ZgD8lTToWEhtNmpg@tahera-OptiPlex-5000>
+X-Infomaniak-Routing: alpha
 
-On Monday, 25 March 2024 03:32:33 CET Dorine Tipo wrote:
-> This patch series introduces a new test for verifying Landlock access
-> control rules with io_uring operation, IORING_OP_OPENAT.
+CCing Outreachy mailing list and Paul.
+
+Related GitHub issue: https://github.com/landlock-lsm/linux/issues/7
+
+On Sun, Mar 24, 2024 at 10:24:53PM -0600, TaheraFahimi wrote:
+> Signed-off-by: TaheraFahimi <fahimitahera@gmail.com>
+
+I guess there is a space missing between your first and last name.
+
+> ---
+>  security/landlock/task.c | 89 ++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 89 insertions(+)
 > 
-> The first patch (Add test for io_uring openat access control with
-> Landlock rules) implements the actual test.
+> diff --git a/security/landlock/task.c b/security/landlock/task.c
+> index 849f5123610b..10195492c169 100644
+> --- a/security/landlock/task.c
+> +++ b/security/landlock/task.c
+> @@ -14,6 +14,10 @@
+>  #include <linux/rcupdate.h>
+>  #include <linux/sched.h>
+>  
+> +/*to use sock structure*/
+> +#include <net/sock.h>
+> +#include <linux/spinlock.h>
+> +
+>  #include "common.h"
+>  #include "cred.h"
+>  #include "ruleset.h"
+> @@ -108,9 +112,94 @@ static int hook_ptrace_traceme(struct task_struct *const parent)
+>  	return task_ptrace(parent, current);
+>  }
+>  
+> +
+> +/** 
+> + * sk_get_peer_cred : Helper Function from socket.c
+> + * This helper is used to retrieve the sk_peer credentioals.
+> + */
+> +static const struct cred *sk_get_peer_cred(struct sock *sk)
+> +{
+> +        const struct cred *cred;
+> +        spin_lock(&sk->sk_peer_lock);
+> +        cred = get_cred(sk->sk_peer_cred);
+> +        spin_unlock(&sk->sk_peer_lock);
+> +        return cred;
+> +}
+> +/**
+> + * Use domain_scope_le() to scope the access same as ptrace trask.
+> + */
+> +static bool unix_sock_is_scoped(struct sock *const sock,
+> +                                struct sock *const other)
+> +{
+> +
+> +        bool is_scoped = true;
+> +        /* retrieve the credential of socks.
+> +	 * other->sk_peer_cred shows the listening socket credentials (This credential
+> +	 *  is created at the init_cred function and will be coped to 
+> +	 *  sock->sk_peer_cred later.) 
+> +	 * Since sock is the connecting sock, then the credential of current task is equal
+> +	 * to cred_sock.
+> +	 *  */
+> +        const struct cred *cred_other;
+> +	cred_other = sk_get_peer_cred(other);
+> +	
+> +	
+> +	const struct cred *cred_sock;
+> +	spin_lock(&sock->sk_peer_lock);
+
+You don't need a lock for get_current_cred(), and sk_peer_lock is
+unrelated to current.  Moreover, security_unix_stream_connect() is
+already called while the lock being held.
+
+> +	cred_sock = get_current_cred();
+> +	spin_unlock(&sock->sk_peer_lock);
+
+You should just use landlock_get_current_domain().
+
+> +
+> +	printk(KERN_DEBUG "cred uid: %u\n", cred_other->gid);
+
+You can use pr_warn() instead.
+
+> +	//printk("the cred_sock kuid is : %llx\n", cred_sock->uid);
+> +        /* retrieve the landlock_rulesets*/
+> +	
+> +	printk("The credentials is retrieved!!\n");
+> +        
+> +	const struct landlock_cred_security *dom_parent, *dom_child;
+
+dom_* variables should only be used to refer do a Landlock domain, not
+credential.
+
+> +        const struct landlock_ruleset *parent, *child;
+> +        rcu_read_lock();
+> +        dom_parent = landlock_cred(cred_other);
+> +	dom_child = landlock_cred(cred_sock);
+> +        parent = dom_parent->domain;
+> +        child = dom_child->domain;
+> +	/* by uncommenting either the following if statement or calling 
+> +	 * the domain_scope_le the kernel will not load(make task dead)*/
+> +	//if (dom_parent)
+> +	//	printk("parent num rules %u\n", parent->num_rules);
+> +	if (child)
+> +		printk("child num rules %u\n", child->num_rules);
+> +	//is_scoped = domain_scope_le(parent, child);
+> +        rcu_read_unlock();
+> +	
+> +
+> +        return is_scoped;
+> +}
+> +/**
+> + * unix_stream_connect -
+> + */
+> +static int task_unix_stream_connect(struct sock *const sock,
+> +                               struct sock *const other,
+> +                               struct sock *const newsk)
+> +{
+> +        /* How do we check if the scoping is optional?  */
+> +        if (unix_sock_is_scoped(sock, other))
+> +                return 0;
+> +        return -EPERM;
+> +}
+> +
+> +/**
+> + * hook_unix_stream_connect -
+> + */
+> +static int hook_unix_stream_connect(struct sock *const sock, struct sock *const other,
+> +                                    struct sock *const newsk)
+> +{
+> +        return task_unix_stream_connect(sock, other, newsk);
+> +}
+> +
+>  static struct security_hook_list landlock_hooks[] __ro_after_init = {
+>  	LSM_HOOK_INIT(ptrace_access_check, hook_ptrace_access_check),
+>  	LSM_HOOK_INIT(ptrace_traceme, hook_ptrace_traceme),
+> +        LSM_HOOK_INIT(unix_stream_connect, hook_unix_stream_connect),
+>  };
+>  
+>  __init void landlock_add_task_hooks(void)
+> -- 
+> 2.34.1
 > 
-> - The test defines allowed and disallowed paths for access attempts.
-> - It creates Landlock rulesets for both allowed and disallowed access.
-> - It uses io_uring_prep_openat with the rulesets to attempt opening
-> files. - The test verifies successful preparation for allowed access and
-> expects submission failures for disallowed access.
-> 
-> The second patch  (Add liburing dependency for io_uring test) updates the
-> Makefile to include the necessary liburing library.
+> Hello Mickaël, I made the following changes to have an lsm hook function for "unix_stream_connect". I have an issue, and I was wondering  if you could give me a hint. At first, I retrieve the Socks' credentials through "sk_get_peer_cred" and "get_current_cred". As "get_current_cred" gives us the credential related to the sock and "sk_get_peer_cred" gives the sock's peer credential(this credential will be copied to the field sock->sk_peer_cred later). Then I uses both credentials to get their "landlock_cred_security". Since "landlock_cred_security" has a pointer to the "landlock_ruleset", we can pass their rulesets to the "domain_scope_le" (same as ptrace task) to check if it is scoped or not.
 
-Hi Dorine,
+Hello Tahera, this approach looks good.  However, Landlock credential's
+domain may be NULL (when the task is not sandboxed).
 
-If I read your message correctly, patch 1/2 depends on 2/2 because  
-liburing is needed by tests in 1/2. Every single patch of a series must 
-build and link successfully.  I think that patch 1/2 cannot link without 
-the changes that you put in patch 2/2. Am I missing something?
+> The problem is that If I uncomment the "domain_scope_le", the kernel will not work. I think it can not get the "landlock_cred_security". Thank you :)
 
-The prerequisites one must meet when sending series are that (1) that  
-series must be applicable to (based on) the most recent publicly available 
-official version of the subsystem/driver it is meant for, (2) for all n 
-patches of a series with N patches, patch n must not require any k > n  
-patch (i.e., k:=(n < k <= N)), and (3) each patch must always achieve a 
-logically self-contained objective.
+"the kernel will not work" could means a lot of things. We need a more
+precise description.
 
-Well, in theory you may think to reverse the order of the patches to meet 
-rule 2.  But by doing so you would break rule 3 because the changes you 
-make in the Makefile would only be needed to build and link another patch so 
-they don't serve any self-contained purposes. 
-
-Therefore, please make a self-contained patch that includes all the 
-necessary changes to make it build and link.
-
-Thanks,
-
-Fabio
-
-> This patch series improves Landlock's test coverage by incorporating
-> io_uring operations and helps ensure Landlock effectively controls access
-> through io_uring.
-> It enhances the overall security posture of the system.
-> 
-> The test has been successfully compiled using make run_tests -C landlock
-> and successfully verifies Landlock access control with io_uring.
-> 
-> Dorine Tipo (2):
->   Add test for io_uring openat access control with Landlock rules
->   Add liburing dependency for io_uring test
-> 
->  tools/testing/selftests/landlock/Makefile  |   4 +-
->  tools/testing/selftests/landlock/fs_test.c | 132 +++++++++++++++++++++
->  2 files changed, 134 insertions(+), 2 deletions(-)
-> 
-> --
-> 2.25.1
-
-
-
-
+I guess this is just a draft and the patch is not ready yet so it's
+fine. Before sending a first official version you should follow and read
+the referenced links and especially the kernel patch how-to here:
+https://lore.kernel.org/outreachy/ZeZzLWtk2nZ1Pcgw@aschofie-mobl2/
+For instance, you should run checkpatch.pl
+For Landlock-specific patches, they need to be formatted with
+clang-format (-i) and pass all the checked done by check-linux.sh
+provided here: https://github.com/landlock-lsm/landlock-test-tools
