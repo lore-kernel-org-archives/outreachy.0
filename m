@@ -1,200 +1,319 @@
-Received: from smtp-8fa8.mail.infomaniak.ch (smtp-8fa8.mail.infomaniak.ch [83.166.143.168])
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.19])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6C00A12BEA5
-	for <outreachy@lists.linux.dev>; Thu, 28 Mar 2024 14:45:15 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=83.166.143.168
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1EFC58004E
+	for <outreachy@lists.linux.dev>; Thu, 28 Mar 2024 16:04:49 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.19
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1711637120; cv=none; b=fdTE+bpZ+ybfn0maRw2967+vMU1GFCv0atJbUD05RshjOBvsuiKgrNbAzWJOF3ITNCBxkgd3RciW7YUOolOzk/z9ps64sx4Aye48C8gJuJNPgX+ymzrtKnsyS/nHtGMFMi+7lSCA9UlPikhj7SDQ3oKCUWExQAvn7ei+HKbjd+0=
+	t=1711641892; cv=none; b=nQFlKN/3htB8TK0l1UnzTZO11zXGVW5zO6V7xBKbXolzba1VvjQBK84DP3HFquATfGowZ3TRsJSLIBlwp754kLstZzIaVPMi4DQrP8qd5ssrqXLOuUJdm6g2S1UHcekVKTeCzEHsveFpezEaYfjYMciYrL2MqbgrlQOdsME4uC4=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1711637120; c=relaxed/simple;
-	bh=m6ExSO75re8+h+0kqgmc3taw/nhfvJpWp0RzVChKUD8=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=s0e3xdmNdpvWiuPhubQs6gXhKxLCWuzhwiIQO3F4f17DoDM7hznLE8Lc+o+oD8InNBbs/OXz4J/rjFBCOn5vekkG9DAwC6a2dfzSc/7au99vsKcZ67tysVbYTBK2B1Dg3OzfwXFnIaSpQdwc4NdGr6XEt3cY6rCzB5xGbS09Wzo=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net; spf=pass smtp.mailfrom=digikod.net; dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b=0RoR5jKm; arc=none smtp.client-ip=83.166.143.168
-Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=digikod.net
+	s=arc-20240116; t=1711641892; c=relaxed/simple;
+	bh=cFNL53wgKHM/0hLWPm8O7daOnoMrCmcZ6dFjPK62hPo=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=V2biEoB4WexkTGRFr5s1f63DLzVENXid3w7kmbcaHHguSWHZTqb+REY97XzfQOyMgDvk0MUp8HxiQB2C+yJSUH/WB9+1sUfyyaL/X58sNNlysLB/7y0t7EqgYojNwa9RAGhuIpUNrNGa6IsUbkdONMWvpwTPqX/Yh1h8kjrv87c=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.intel.com; spf=none smtp.mailfrom=linux.intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=ki/UFW2c; arc=none smtp.client-ip=198.175.65.19
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.intel.com
+Authentication-Results: smtp.subspace.kernel.org; spf=none smtp.mailfrom=linux.intel.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b="0RoR5jKm"
-Received: from smtp-4-0001.mail.infomaniak.ch (smtp-4-0001.mail.infomaniak.ch [10.7.10.108])
-	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4V55tK0jHzzh88;
-	Thu, 28 Mar 2024 15:45:13 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=digikod.net;
-	s=20191114; t=1711637112;
-	bh=m6ExSO75re8+h+0kqgmc3taw/nhfvJpWp0RzVChKUD8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=0RoR5jKmSZESMEyzyyfqQCBdDMidK2YEM0S6giPp/MumsJXKnukq6p0yh+n8lBUDh
-	 +Ly2A2jkpU9UJdKMMJ6cjtSIPEwpe4ycoBks2M1+RnFT/H4YsiMgWes0h2Ema/J11K
-	 C0XwLrdz1/Cpkjimu+R6Lc8YtVwHzWf4nOEcEtsg=
-Received: from unknown by smtp-4-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4V55tJ47G7zsZc;
-	Thu, 28 Mar 2024 15:45:12 +0100 (CET)
-Date: Thu, 28 Mar 2024 15:45:12 +0100
-From: =?utf-8?Q?Micka=C3=ABl_Sala=C3=BCn?= <mic@digikod.net>
-To: Ayush Tiwari <ayushtiw0110@gmail.com>
-Cc: Paul Moore <paul@paul-moore.com>, alison.schofield@intel.com, 
-	fabio.maria.de.francesco@linux.intel.com, linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, 
-	gregkh@linuxfoundation.org, outreachy@lists.linux.dev, linux-security-module@vger.kernel.org
-Subject: Re: [PATCH] LANDLOCK: use kmem_cache for landlock_object
-Message-ID: <20240328.aiPh0phaJ6ai@digikod.net>
-References: <ZgSrBVidW1U6yP+h@ayush-HP-Pavilion-Gaming-Laptop-15-ec0xxx>
- <CAHC9VhRYDNoqkbkgdUSg-kYSHVbheD5NtezmVxyRakZ0-DzuSg@mail.gmail.com>
- <ZgUh7cIQIsOgvWpw@ayush-HP-Pavilion-Gaming-Laptop-15-ec0xxx>
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="ki/UFW2c"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1711641891; x=1743177891;
+  h=from:to:cc:subject:date:message-id:in-reply-to:
+   references:mime-version:content-transfer-encoding;
+  bh=cFNL53wgKHM/0hLWPm8O7daOnoMrCmcZ6dFjPK62hPo=;
+  b=ki/UFW2c7wtZjNPmu00mnoaur6VXp7UYK6+KuQ7peHvUvF4sWOTMQ0zc
+   8nmsn658IcRzjDc/R7/iF6wFMrmd25CwidQfHW2FQOhCDIkz7hZeUF1UO
+   0g94+heRuAx+aiY8cTud92lUQH7Qe5yo/fPrzjst8kNp1ktr3f/+X5OaZ
+   SxSgGGlHSmZaKEtXPGsuzwrbTJsclzNk3j5F90Mhjr8RhxiPNDlTfY+HU
+   kmVQWRvWBmPkUsCo9FyQ9iK/l3zZynCNabiX7X4C/Bt36LgsxsHE0YJz8
+   itTilfim7WpKgJE7pcQrnuoMmPRySbg7HGqvfxHa6XPgXsEMQwqx12ihb
+   w==;
+X-CSE-ConnectionGUID: 8bQ+C8zXQOCl1JHfXk2Jig==
+X-CSE-MsgGUID: vyNU/OkER16B89Mgg0pD3A==
+X-IronPort-AV: E=McAfee;i="6600,9927,11027"; a="6657275"
+X-IronPort-AV: E=Sophos;i="6.07,162,1708416000"; 
+   d="scan'208";a="6657275"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Mar 2024 09:04:39 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.07,162,1708416000"; 
+   d="scan'208";a="47871551"
+Received: from fdefranc-mobl3.ger.corp.intel.com (HELO fdefranc-mobl3.localnet) ([10.213.16.221])
+  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Mar 2024 09:04:36 -0700
+From: "Fabio M. De Francesco" <fabio.maria.de.francesco@linux.intel.com>
+To: Dorine Tipo <dorine.a.tipo@gmail.com>
+Cc: mic@digikod.net, skhan@linuxfoundation.org, outreachy@lists.linux.dev,
+ Dorine Tipo <dorine.a.tipo@gmail.com>
+Subject:
+ Re: [PATCH v2] Add Landlock test for io_uring IORING_OP_OPENAT operation
+Date: Thu, 28 Mar 2024 17:04:33 +0100
+Message-ID: <5043999.MHq7AAxBmi@fdefranc-mobl3>
+Organization: intel
+In-Reply-To: <20240327132001.30576-1-dorine.a.tipo@gmail.com>
+References: <20240327132001.30576-1-dorine.a.tipo@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <ZgUh7cIQIsOgvWpw@ayush-HP-Pavilion-Gaming-Laptop-15-ec0xxx>
-X-Infomaniak-Routing: alpha
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
 
-The subject should start with "landlock: Use" instead of "LANDLOCK: use"
-
-On Thu, Mar 28, 2024 at 01:23:17PM +0530, Ayush Tiwari wrote:
-> Hello Paul
-> Thanks a lot for the feedback. Apologies for the mistakes. Could you
-> help me in some places so that I can correct the errors, like:
-> On Wed, Mar 27, 2024 at 07:43:36PM -0400, Paul Moore wrote:
-> > On Wed, Mar 27, 2024 at 7:26 PM Ayush Tiwari <ayushtiw0110@gmail.com> wrote:
-> > >
-> > > Use kmem_cache replace kzalloc() calls with kmem_cache_zalloc() for
-> > > struct landlock_object and update the related dependencies.
-> > >
-> > > Signed-off-by: Ayush Tiwari <ayushtiw0110@gmail.com>
-> > > ---
-> > >  security/landlock/fs.c     |  2 +-
-> > >  security/landlock/object.c | 14 ++++++++++++--
-> > >  security/landlock/object.h |  4 ++++
-> > >  security/landlock/setup.c  |  2 ++
-> > >  4 files changed, 19 insertions(+), 3 deletions(-)
-> > 
-> > Hi Ayush,
-> > 
-> > Mickaël has the final say on Landlock patches, but I had a few
-> > comments that I've included below ...
-> > 
-> > > diff --git a/security/landlock/fs.c b/security/landlock/fs.c
-> > > index fc520a06f9af..227dd67dd902 100644
-> > > --- a/security/landlock/fs.c
-> > > +++ b/security/landlock/fs.c
-> > > @@ -124,7 +124,7 @@ static struct landlock_object *get_inode_object(struct inode *const inode)
-> > >         if (unlikely(rcu_access_pointer(inode_sec->object))) {
-> > >                 /* Someone else just created the object, bail out and retry. */
-> > >                 spin_unlock(&inode->i_lock);
-> > > -               kfree(new_object);
-> > > +               kmem_cache_free(landlock_object_cache, new_object);
-> > 
-> > See my comment below, but you may want to wrap this in a Landlock
-> > object API function.
-> Sure. I will definitely implement this.
-> > 
-> > >                 rcu_read_lock();
-> > >                 goto retry;
-> > > diff --git a/security/landlock/object.c b/security/landlock/object.c
-> > > index 1f50612f0185..df1354215617 100644
-> > > --- a/security/landlock/object.c
-> > > +++ b/security/landlock/object.c
-> > > @@ -17,6 +17,15 @@
-> > >
-> > >  #include "object.h"
-> > >
-> > > +struct kmem_cache *landlock_object_cache;
-> > > +
-> > > +void __init landlock_object_init(void)
-> > > +{
-> > > +       landlock_object_cache = kmem_cache_create(
-> > > +               "landlock_object_cache", sizeof(struct landlock_object), 0,
-
-No need for the "_cache" name suffix.
-
-> > > +               SLAB_PANIC, NULL);
-> > 
-> > The comments in include/linux/slab.h suggest using the KMEM_CACHE()
-> > macro, instead of kmem_cache_create(), as a best practice for creating
-> > slab caches.
-> > 
-> Sure. Apologies I didn't see that, I tried to implement it from scratch
-> using the reference from linux memory management APIs.
-> > > +}
-> > > +
-> > >  struct landlock_object *
-> > >  landlock_create_object(const struct landlock_object_underops *const underops,
-> > >                        void *const underobj)
-> > > @@ -25,7 +34,8 @@ landlock_create_object(const struct landlock_object_underops *const underops,
-> > >
-> > >         if (WARN_ON_ONCE(!underops || !underobj))
-> > >                 return ERR_PTR(-ENOENT);
-> > > -       new_object = kzalloc(sizeof(*new_object), GFP_KERNEL_ACCOUNT);
-> > > +       new_object =
-> > > +               kmem_cache_zalloc(landlock_object_cache, GFP_KERNEL_ACCOUNT);
-> > 
-> > If the line is too long, you might want to consider splitting the
-> > function parameters like this:
-> > 
-> >   new_object = kmem_cache_zalloc(landlock_object_cache,
-> >                                  GFP_KERNEL_ACCOUNT);
-> > 
+On Wednesday, 27 March 2024 14:20:01 CET Dorine Tipo wrote:
+> This patch expands Landlock test coverage to include io_uring operations.
+> It introduces a test for IORING_OP_OPENAT with Landlock rules, verifying
+> allowed and disallowed access. This mitigates potential security
+> vulnerabilities by ensuring Landlock controls access through io_uring.
 > 
-> Sure. I didn't do as it was below the 100 columns limit, but will
-> definitely implement it.
+> It also updates the Makefile to include -luring in the LDLIBS.
+> This ensures the test code has access to the necessary liburing
+> library for io_uring operations.
+> 
+> Signed-off-by: Dorine Tipo <dorine.a.tipo@gmail.com>
+> ---
 
-Please just use clang-format.
+Hi Dorine,
 
-> > >         if (!new_object)
-> > >                 return ERR_PTR(-ENOMEM);
-> > >         refcount_set(&new_object->usage, 1);
-> > > @@ -62,6 +72,6 @@ void landlock_put_object(struct landlock_object *const object)
-> > >                  * @object->underobj to @object (if it still exists).
-> > >                  */
-> > >                 object->underops->release(object);
-> > > -               kfree_rcu(object, rcu_free);
+I'm adding inline a few comments and questions for you. However, since my 
+experience with io_uring (inexistent with Landlock) is limited, I won't 
+comment on the use of its API.
 
-Is it safe?
+> Changes since V1:
+> V2: - Consolidated two dependent patches in the V1 series into one patch
+>       as suggested by <fabio.maria.de.francesco@linux.intel.com>
 
-According to commit ae65a5211d90 ("mm/slab: document kfree() as allowed
-for kmem_cache_alloc() objects"), no change should be needed (and it
-must not be backported to kernels older than 6.4 with CONFIG_SLOB). This
-way we can avoid exporting landlock_object_cache.  Please add a note
-about this commit and the related warning in the commit message.
+NIT: No need for an entire email address. Next time"Fabio" will suffice  :)
 
-> > > +               kmem_cache_free(landlock_object_cache, object);
-> > >         }
-> > >  }
-> > > diff --git a/security/landlock/object.h b/security/landlock/object.h
-> > > index 5f28c35e8aa8..8ba1af3ddc2e 100644
-> > > --- a/security/landlock/object.h
-> > > +++ b/security/landlock/object.h
-> > > @@ -13,6 +13,10 @@
-> > >  #include <linux/refcount.h>
-> > >  #include <linux/spinlock.h>
-> > >
-> > > +extern struct kmem_cache *landlock_object_cache;
-> > 
-> > This really is a decision for Mickaël, but you may want to make
-> > @landlock_object_cache private to object.c and create functions to
-> > manage it as needed, e.g. put/free operations.
-> > 
-> Okay. I didn't make it private as I was using it in fs.c to use
-> kmem_cache_free, but if this is supposed to be private, I can modify the
-> approach and expose it via some function, not directly exposing
-> landlock_object_cache.
+>     - Updated the subject line to be more descriptive.
+> 
+>  tools/testing/selftests/landlock/Makefile  |   4 +-
+>  tools/testing/selftests/landlock/fs_test.c | 132 +++++++++++++++++++++
+>  2 files changed, 134 insertions(+), 2 deletions(-)
+> 
+> diff --git a/tools/testing/selftests/landlock/Makefile
+> b/tools/testing/selftests/landlock/Makefile index
+> 348e2dbdb4e0..ab47d1dadb62 100644
+> --- a/tools/testing/selftests/landlock/Makefile
+> +++ b/tools/testing/selftests/landlock/Makefile
+> @@ -13,11 +13,11 @@ TEST_GEN_PROGS := $(src_test:.c=)
+>  TEST_GEN_PROGS_EXTENDED := true
+> 
+>  # Short targets:
+> -$(TEST_GEN_PROGS): LDLIBS += -lcap
+> +$(TEST_GEN_PROGS): LDLIBS += -lcap -luring
+>  $(TEST_GEN_PROGS_EXTENDED): LDFLAGS += -static
+> 
+>  include ../lib.mk
+> 
+>  # Targets with $(OUTPUT)/ prefix:
+> -$(TEST_GEN_PROGS): LDLIBS += -lcap
+> +$(TEST_GEN_PROGS): LDLIBS += -lcap -luring
+>  $(TEST_GEN_PROGS_EXTENDED): LDFLAGS += -static
+> diff --git a/tools/testing/selftests/landlock/fs_test.c
+> b/tools/testing/selftests/landlock/fs_test.c index
+> 9a6036fbf289..9c8247995d42 100644
+> --- a/tools/testing/selftests/landlock/fs_test.c
+> +++ b/tools/testing/selftests/landlock/fs_test.c
+> @@ -21,7 +21,10 @@
+>  #include <sys/stat.h>
+>  #include <sys/sysmacros.h>
+>  #include <sys/vfs.h>
+> +#include <sys/types.h>
+>  #include <unistd.h>
+> +#include <liburing.h>
+> +#include <linux/io_uring.h>
+> 
+>  #include "common.h"
+> 
+> @@ -4874,4 +4877,133 @@ TEST_F_FORK(layout3_fs, release_inodes)
+>  	ASSERT_EQ(EACCES, test_open(TMP_DIR, O_RDONLY));
+>  }
+> 
+> +/* Test io_uring openat access control with landlock rules */
+> +static int test_ioring_op_openat(struct __test_metadata *const
+> _metadata, const __u64 access, const char **paths, const int paths_size)
 
-Yes, that would be better.
+"access", "paths", and "paths_size" are not used anywhere. Why are there 
+three unused arguments in the test_ioring_op_openat() signature?
 
-> > > +void __init landlock_object_init(void);
-> > > +
-> > >  struct landlock_object;
-> > >
-> > >  /**
-> > > diff --git a/security/landlock/setup.c b/security/landlock/setup.c
-> > > index f6dd33143b7f..a5fca4582ee1 100644
-> > 
-> > -- 
-> > paul-moore.com
-> I will make all the changes you mentioned, and as you said, I will
-> wait for Mickael's say.
+> +{
+> +	struct io_uring ring;
+> +	struct io_uring_sqe *sqe;
+> +
+> +	const char *allowed_paths[] = {
+> +		file1_s1d1, file2_s1d1,
+> +		file1_s1d2, file2_s1d2,
+> +		file1_s1d3, file2_s1d3,
+> +		file1_s2d1, file1_s2d2,
+> +		file1_s2d3, file2_s2d3,
+> +		file1_s3d1,
+> +	};
+> +
+> +	const char *disallowed_paths[] = {
+> +		/* dir_s3d2 is a mount point. */
+> +		dir_s3d2,
+> +		dir_s3d3,
+> +	};
+> +
+> +	/* Test Allowed Access */
+> +	const struct rule allowed_rule[] = {
+> +		{
+> +			.path = allowed_paths[0],
+> +			.access = LANDLOCK_ACCESS_FS_READ_FILE |
+> +				  LANDLOCK_ACCESS_FS_WRITE_FILE,
+> +		},
 
-Agree with Paul and Greg unless commented otherwise. Thanks
+I suspect that you are forgetting the other elements as well as the final 
+NULL element. Don't we need to fill allowed_rule[] with the other pairs of 
+allowed paths and their respective access?
+
+> +	};
+> +	int allowed_ruleset_fd = create_ruleset(_metadata,
+> allowed_rule[0].access, allowed_rule);
+
+Please check how create_ruleset() is implemented. And pay special attention 
+at this snippet:
+
+for (i = 0; rules[i].path; i++) {
+		add_path_beneath(_metadata, ruleset_fd, rules[i].access,
+				 rules[i].path); 
+
+It loops on the elements of rules[], working on the fields of each element 
+struct (i.e., "path" and  "access"), but "allowed_rule" is an array with a 
+single element. 
+
+Furthermore, I think that you are forgetting a NULL final struct that marks 
+the last element of allowed_rule[]. Am I overlooking something?
+ 
+> +	ASSERT_LE(0, allowed_ruleset_fd);
+> +
+> +	int ret = io_uring_queue_init(32, &ring, 0);
+> +
+> +	ASSERT_EQ(0, ret);
+> +
+> +	/* Test each allowed path */
+> +	for (int i = 0; i < ARRAY_SIZE(allowed_paths); ++i) {
+> +		sqe = io_uring_get_sqe(&ring);
+> +		io_uring_prep_openat(sqe, AT_FDCWD, allowed_paths[i], 
+O_RDONLY,
+> +				     allowed_ruleset_fd);
+> +		/* Verify successful SQE preparation */
+> +		ASSERT_EQ(0, ret);
+> +
+> +		if (ret != 0)
+> +			return ret;
+> +
+> +		ret = io_uring_submit(&ring);
+> +		/* Verify 1 submission completed */
+> +		ASSERT_EQ(1, ret);
+> +	}
+> +
+> +	/* Test Disallowed Access */
+> +	const struct rule disallowed_rule[] = {
+> +		{
+> +			.path = disallowed_paths[0],
+> +			.access = 0,
+> +		}
+
+Again, what happened to the other disallowed path and to the final NULL 
+element of disallowed_rule[]?
+
+> +
+> +	};
+> +	int disallowed_ruleset_fd = create_ruleset(_metadata,
+> disallowed_rule[0].access, disallowed_rule); +
+> +	ASSERT_LE(0, disallowed_ruleset_fd);
+> +
+> +	/* Test each disallowed path */
+> +	for (int i = 0; i < ARRAY_SIZE(disallowed_paths); ++i) {
+> +		sqe = io_uring_get_sqe(&ring);
+> +		io_uring_prep_openat(sqe, AT_FDCWD, disallowed_paths[i], 
+O_RDONLY,
+> disallowed_ruleset_fd); +		/* Verify successful SQE 
+preparation */
+> +		ASSERT_EQ(1, ret);
+> +
+> +		if (ret != 0)
+> +			return ret;
+> +
+> +		ret = io_uring_submit(&ring);
+> +		/* Verify 1 submission completed */
+> +		ASSERT_EQ(0, ret);
+> +	}
+> +
+> +	/*  Cleanup: close ruleset fds, etc. */
+> +	close(allowed_ruleset_fd);
+> +	close(disallowed_ruleset_fd);
+> +
+> +	return 0;
+> +}
+> +
+> +/* clang-format off */
+> +FIXTURE(openat_test) {
+> +	struct __test_metadata *metadata;
+> +	const char *allowed_paths[11];
+> +	const char *disallowed_paths[2];
+> +};
+> +
+> +/* clang-format on */
+> +
+> +FIXTURE_SETUP(openat_test)
+> +{
+> +	/* initialize metadata, allowed_paths, and disallowed_paths */
+> +	self->metadata = _metadata;
+> +	const char *temp_allowed_paths[] = {
+> +		file1_s1d1, file2_s1d1, file1_s1d2, file2_s1d2,
+> +		file1_s1d3, file2_s1d3, file1_s2d1, file1_s2d2,
+> +		file1_s2d3, file2_s2d3, file1_s3d1};
+> +
+
+Can you please say why you are defining both temp_allowed_paths[] and 
+allowed_paths[]? 
+
+> +	memcpy(self->allowed_paths, temp_allowed_paths,
+> sizeof(temp_allowed_paths)); +
+> +	const char *temp_disallowed_paths[] = {dir_s3d2, dir_s3d3};
+
+I have the same question for temp_disallowed_paths[] and 
+disallowed_paths[]. 
+
+I see that they are initialised with the same set of information. Why don't 
+you define them only once and pass references where needed?
+
+Thanks,
+
+Fabio 
+
+> +
+> +	memcpy(self->disallowed_paths, temp_disallowed_paths,
+> sizeof(temp_disallowed_paths)); +}
+> +
+> +FIXTURE_TEARDOWN(openat_test)
+> +{
+> +	/* Clean up test environment */
+> +}
+> +
+> +TEST_F_FORK(openat_test, test_ioring_op_openat_allowed)
+> +{
+> +	test_ioring_op_openat(self->metadata, LANDLOCK_ACCESS_FS_READ_FILE 
+|
+> +			      LANDLOCK_ACCESS_FS_WRITE_FILE, self-
+>allowed_paths,
+> +			      ARRAY_SIZE(self->allowed_paths));
+> +}
+> +
+> +TEST_F_FORK(openat_test, test_ioring_op_openat_disallowed)
+> +{
+> +	test_ioring_op_openat(self->metadata, 0, self->disallowed_paths,
+> +			      ARRAY_SIZE(self->disallowed_paths));
+> +}
+> +
+>  TEST_HARNESS_MAIN
+> --
+> 2.25.1
+
+
+
+
