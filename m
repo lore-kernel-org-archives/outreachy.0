@@ -1,188 +1,239 @@
-Received: from mail-yw1-f176.google.com (mail-yw1-f176.google.com [209.85.128.176])
+Received: from mail-pl1-f171.google.com (mail-pl1-f171.google.com [209.85.214.171])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 937C1153506
-	for <outreachy@lists.linux.dev>; Wed, 27 Mar 2024 23:43:48 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.176
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 25E0518E3A
+	for <outreachy@lists.linux.dev>; Thu, 28 Mar 2024 03:46:11 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.214.171
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1711583030; cv=none; b=Au32zEiqPPrNtDvmDf3mMWfTtJ8a71hs+71yfhqBjVqqLg0/Wd8cYVLltW2VkhFnnji+e67i98cWFreSAFX2OMbWLLZu0RnzQ8mzROfwY/NvzfNw5p/veSYt9UMuXx12Sb8JjbDiICSf5DMmw0v6fH0MxzWKhnByO+wO5pZrpm4=
+	t=1711597573; cv=none; b=EFoKCG5aWSFAPkRx9GTuSzIU/T22r/6USf3Hv88oZeIERfLYVh0peNnpfKpF1B6pqbDWS8Blsm7m/qlTWhkOeKixYNAbxHRZeIDYVSU6rV9gwUcAZcSuXF5Yi+srPGaO5EY1dsTg+L/CMaxb1cdKnDR0N1RBetWSTU9dHUWoN5o=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1711583030; c=relaxed/simple;
-	bh=LHSTVg05tlSrlDZR4E07ykDqUEUkIg1dZ8Yhyx6TfZs=;
-	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
-	 To:Cc:Content-Type; b=VdXJeKIHo0R0IbV1N8FhGSe+TV/Ez6Era1hsUiHwfD62NMKmKFW53TbzEFitFkSQpOnLOQVzY2Q8jABw2YLNqqtsAdPXMTRBcEPTZQx4f24jIeG3SJk7k+K5JgIAQ7+PhT8CnDhNXZlxKRPGmDyDYriGyn0qJaeBxw+ivQApMR8=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=paul-moore.com; spf=pass smtp.mailfrom=paul-moore.com; dkim=pass (2048-bit key) header.d=paul-moore.com header.i=@paul-moore.com header.b=aFEE7Xdt; arc=none smtp.client-ip=209.85.128.176
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=paul-moore.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=paul-moore.com
+	s=arc-20240116; t=1711597573; c=relaxed/simple;
+	bh=NqTtace3PnrTo27pcGTvxwSJ67AyusFj3fq3yjS3U64=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=QMMC/rip+/8Eh3ZzpsDVBYNQ5OIEEHVwXeOmxLJety4PaNIEaAgYyh/TLtLP5cyhzlCFIUuxqn00EQ8ee3MSwQFr894911M3Vaj9NQ26q15s1HDvWAwPtpUNMfjI8W4jTvqnbr5yvWPy/Ic8A5piSjjVPA9jtUCU3PyAfbMDsOc=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=WtU8+pAF; arc=none smtp.client-ip=209.85.214.171
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=paul-moore.com header.i=@paul-moore.com header.b="aFEE7Xdt"
-Received: by mail-yw1-f176.google.com with SMTP id 00721157ae682-609f4155b76so4239647b3.1
-        for <outreachy@lists.linux.dev>; Wed, 27 Mar 2024 16:43:48 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="WtU8+pAF"
+Received: by mail-pl1-f171.google.com with SMTP id d9443c01a7336-1e04ac4209eso4246945ad.1
+        for <outreachy@lists.linux.dev>; Wed, 27 Mar 2024 20:46:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=paul-moore.com; s=google; t=1711583027; x=1712187827; darn=lists.linux.dev;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=DsqU9PXjgnx5iMV4Gv2GAE/CJCMtgSBEOxF0nZeWP9w=;
-        b=aFEE7XdtbN8i2HDfhMUnVvU8UDUaFtPEKxxlSsi1P54HE+R5JvpQCV0RvbSZhvfWhs
-         3QK5cPS6tlUDu30IZKCks0ZjMOugGZCgeiL5PbttILHxSglqTedRA8Z++xIzmgIPbqDI
-         RB/Y2ZO5Dr/LVm0etrq11CGDI+tkHYS4wuv/huTZUZ5GLZIFKJUzKqyvWqpZjjRI5XAZ
-         rtKw+aRTxOVQUDwy3/D60J1kK221nj6RHrmVnSKZz7sh5dOwBJN7Cv4J7kMxGxkvrU4i
-         ilk7DU2mBnymuYOEk1BFpz9RPcyomN/o6pV9CZbS7RCGUPizxeUGgVOEreJUDl+88fHC
-         eY/A==
+        d=gmail.com; s=20230601; t=1711597571; x=1712202371; darn=lists.linux.dev;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=IVzawfvSLlDsfchDp0ryo63y5iOU2ojXgTT0/RWjSds=;
+        b=WtU8+pAF4oZPH9vI/vx+b8DeB4dYoTysNTcFATowUbiwV0zAzfiRW+Cq9J3ARe0DeY
+         66hYm6PDdSTw6W/XXcKBYLiTc+1/JY6Vgd1Q6NUAqXodniult6wyiyHGQep6jZO7NXfi
+         QIo4IqJoD9UMnI8WPOBgrO5YCifzHs0JW4WKSyKbb1bv9p/ya853ryoI8hbtQDbGdHDH
+         1bZ64WppZORzW55QKpl3Sl/MWO+D/DxzBUftrhyDYKXyAGwI+vtgSn3QwkXZd8St3jqX
+         e7L1ssYlkuPJEgkgpoP75y0U9Xdnd/+sRS+ZDf5O36c5hNuFL6ZzCEhTPFhv/zFcpYWn
+         wD0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711583027; x=1712187827;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=DsqU9PXjgnx5iMV4Gv2GAE/CJCMtgSBEOxF0nZeWP9w=;
-        b=PUA7PE3/ublitVH3nYJNxsJeQNKJQm+iVKhbt3RU5vB8nkMaUVO2W+St6cz4IVEq/n
-         BcU58BSjzkC1xZFrwiCD9En3Dig6nbOVCgobzQOtSxsYw/8w18R/OWelFyDcuKItBmLo
-         kVGSMRh0o5uV3BHl/lt8mp9FPsnhTwXkzYMHwBLYO2gcHvJykKNrSUPfzb1JnSxdCwOd
-         x+8iWJIbBVQbMGactM8yYPhv/JkyICJciBmwtoXlvpZVeV1ofm68QHatK1yR/oEjDb+m
-         STeVcg4O1kaxp7wlzsYf8Up5pGBPykPYdgDUp6eCZ7X6oOa905JIchcB0KTvUXH5WjVi
-         vWdg==
-X-Forwarded-Encrypted: i=1; AJvYcCWSDaXXZazayXQaPJkAGmZ3r/i3x4lhk8OFVuonhYFTXGHHq5WjzwXSg9x89iTmcoceVjADxEJZdQT8vpHUVDmAI7bXb2eOAuYo
-X-Gm-Message-State: AOJu0YzVLlbO5iLkeYkpp36r+p2HomOJ+Vi2PZmAKD4HowpAhgmGgXYF
-	Jafcz3XQqStS7LLmlrjZSdxdWbQiapKpRcUNbKW0cy3iT9TC4ytrmUx/5Njf5JEO0D/mPjlMoab
-	A+PuyABIQyeQHPV34b6Ouf4kJrzLtIOp/p+vM
-X-Google-Smtp-Source: AGHT+IFzJD42WxwIyDiJQ7hk0af16PEilvyKG/ivl0LgZM5S63lug/B1fRKIBhG8Khsl/MpMDLRdegs8EKQUu4OpC7E=
-X-Received: by 2002:a81:8397:0:b0:611:1eee:3af3 with SMTP id
- t145-20020a818397000000b006111eee3af3mr1296551ywf.7.1711583027605; Wed, 27
- Mar 2024 16:43:47 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1711597571; x=1712202371;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=IVzawfvSLlDsfchDp0ryo63y5iOU2ojXgTT0/RWjSds=;
+        b=CSYoR6u0yLKI4gPruZE/Ils1El8BZ7UoIsDQF7/+Bhtbfdld4ClHhmjxuR7eKMJJeW
+         hG6hH0aWFdfLqYGBsBvPiMy7k06WuxMc7KjtDyBEdo2lgaFDeN4xR5PwwSaPPu0a4f/c
+         YsJnisE7VFLc+01oSNUy3BgeoVDrgtO4pb3YVT4KE11T/o1nWIq0X0RwyQZIOu3yxBSa
+         Wh0+piAJVc2D3OPD60xsFNZFhxzd3884TTHjVMlbLCpuup+nByz1o5z0jWc3JMnsF/l3
+         RT1aSh3T1tzJVCRm6yV1onCljeom280PMj3Q5g0H804iKjG8W3PrJZHo+TnyxAX0HxhA
+         Ollg==
+X-Forwarded-Encrypted: i=1; AJvYcCV+Q/LeUKvVvdDU9a/Hky61W4xELPHKjUD0pHMr2Puo1s/6ExEtzxqiofOaD2bLdGEkT7VbXGDUKk34ie3uahtzKjahSk4rfN1u
+X-Gm-Message-State: AOJu0YwGU7Xr3BqCVWLAIBfhplJYtdIPNSvwbTx821eqoyrdCKKVKyVB
+	yE8GN420orKoPvpmIx8wg9U9pG/GNkZP/wa/AGrjmnuk0TJfNydJ
+X-Google-Smtp-Source: AGHT+IFF/Ds6FEvnzj2u5LQwxfj2AWOvSaiFJUVw3f2NVeBmnVYEaVFscJuUQ7q48DMdF0TihHGbqQ==
+X-Received: by 2002:a17:903:240a:b0:1e0:939d:3d59 with SMTP id e10-20020a170903240a00b001e0939d3d59mr2070990plo.19.1711597571271;
+        Wed, 27 Mar 2024 20:46:11 -0700 (PDT)
+Received: from tahera-OptiPlex-5000 ([136.159.49.124])
+        by smtp.gmail.com with ESMTPSA id d9-20020a170902b70900b001db37fd26bcsm344955pls.116.2024.03.27.20.46.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 27 Mar 2024 20:46:10 -0700 (PDT)
+Date: Wed, 27 Mar 2024 21:46:08 -0600
+From: Tahera Fahimi <fahimitahera@gmail.com>
+To: =?iso-8859-1?Q?Micka=EBl_Sala=FCn?= <mic@digikod.net>
+Cc: Paul Moore <paul@paul-moore.com>, outreachy@lists.linux.dev
+Subject: Re: [PATCH] Adding helpers for unix_stream_connect.
+Message-ID: <ZgToAL0HpTvr3l6G@tahera-OptiPlex-5000>
+References: <ZgD8lTToWEhtNmpg@tahera-OptiPlex-5000>
+ <20240326.Ot8Zooveeh1k@digikod.net>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-References: <ZgSrBVidW1U6yP+h@ayush-HP-Pavilion-Gaming-Laptop-15-ec0xxx>
-In-Reply-To: <ZgSrBVidW1U6yP+h@ayush-HP-Pavilion-Gaming-Laptop-15-ec0xxx>
-From: Paul Moore <paul@paul-moore.com>
-Date: Wed, 27 Mar 2024 19:43:36 -0400
-Message-ID: <CAHC9VhRYDNoqkbkgdUSg-kYSHVbheD5NtezmVxyRakZ0-DzuSg@mail.gmail.com>
-Subject: Re: [PATCH] LANDLOCK: use kmem_cache for landlock_object
-To: Ayush Tiwari <ayushtiw0110@gmail.com>
-Cc: alison.schofield@intel.com, mic@digikod.net, 
-	fabio.maria.de.francesco@linux.intel.com, linux-staging@lists.linux.dev, 
-	linux-kernel@vger.kernel.org, gregkh@linuxfoundation.org, 
-	outreachy@lists.linux.dev, linux-security-module@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240326.Ot8Zooveeh1k@digikod.net>
 
-On Wed, Mar 27, 2024 at 7:26=E2=80=AFPM Ayush Tiwari <ayushtiw0110@gmail.co=
-m> wrote:
->
-> Use kmem_cache replace kzalloc() calls with kmem_cache_zalloc() for
-> struct landlock_object and update the related dependencies.
->
-> Signed-off-by: Ayush Tiwari <ayushtiw0110@gmail.com>
-> ---
->  security/landlock/fs.c     |  2 +-
->  security/landlock/object.c | 14 ++++++++++++--
->  security/landlock/object.h |  4 ++++
->  security/landlock/setup.c  |  2 ++
->  4 files changed, 19 insertions(+), 3 deletions(-)
-
-Hi Ayush,
-
-Micka=C3=ABl has the final say on Landlock patches, but I had a few
-comments that I've included below ...
-
-> diff --git a/security/landlock/fs.c b/security/landlock/fs.c
-> index fc520a06f9af..227dd67dd902 100644
-> --- a/security/landlock/fs.c
-> +++ b/security/landlock/fs.c
-> @@ -124,7 +124,7 @@ static struct landlock_object *get_inode_object(struc=
-t inode *const inode)
->         if (unlikely(rcu_access_pointer(inode_sec->object))) {
->                 /* Someone else just created the object, bail out and ret=
-ry. */
->                 spin_unlock(&inode->i_lock);
-> -               kfree(new_object);
-> +               kmem_cache_free(landlock_object_cache, new_object);
-
-See my comment below, but you may want to wrap this in a Landlock
-object API function.
-
->                 rcu_read_lock();
->                 goto retry;
-> diff --git a/security/landlock/object.c b/security/landlock/object.c
-> index 1f50612f0185..df1354215617 100644
-> --- a/security/landlock/object.c
-> +++ b/security/landlock/object.c
-> @@ -17,6 +17,15 @@
->
->  #include "object.h"
->
-> +struct kmem_cache *landlock_object_cache;
-> +
-> +void __init landlock_object_init(void)
-> +{
-> +       landlock_object_cache =3D kmem_cache_create(
-> +               "landlock_object_cache", sizeof(struct landlock_object), =
-0,
-> +               SLAB_PANIC, NULL);
-
-The comments in include/linux/slab.h suggest using the KMEM_CACHE()
-macro, instead of kmem_cache_create(), as a best practice for creating
-slab caches.
-
-> +}
-> +
->  struct landlock_object *
->  landlock_create_object(const struct landlock_object_underops *const unde=
-rops,
->                        void *const underobj)
-> @@ -25,7 +34,8 @@ landlock_create_object(const struct landlock_object_und=
-erops *const underops,
->
->         if (WARN_ON_ONCE(!underops || !underobj))
->                 return ERR_PTR(-ENOENT);
-> -       new_object =3D kzalloc(sizeof(*new_object), GFP_KERNEL_ACCOUNT);
-> +       new_object =3D
-> +               kmem_cache_zalloc(landlock_object_cache, GFP_KERNEL_ACCOU=
-NT);
-
-If the line is too long, you might want to consider splitting the
-function parameters like this:
-
-  new_object =3D kmem_cache_zalloc(landlock_object_cache,
-                                 GFP_KERNEL_ACCOUNT);
-
->         if (!new_object)
->                 return ERR_PTR(-ENOMEM);
->         refcount_set(&new_object->usage, 1);
-> @@ -62,6 +72,6 @@ void landlock_put_object(struct landlock_object *const =
-object)
->                  * @object->underobj to @object (if it still exists).
->                  */
->                 object->underops->release(object);
-> -               kfree_rcu(object, rcu_free);
-> +               kmem_cache_free(landlock_object_cache, object);
->         }
->  }
-> diff --git a/security/landlock/object.h b/security/landlock/object.h
-> index 5f28c35e8aa8..8ba1af3ddc2e 100644
-> --- a/security/landlock/object.h
-> +++ b/security/landlock/object.h
-> @@ -13,6 +13,10 @@
->  #include <linux/refcount.h>
->  #include <linux/spinlock.h>
->
-> +extern struct kmem_cache *landlock_object_cache;
-
-This really is a decision for Micka=C3=ABl, but you may want to make
-@landlock_object_cache private to object.c and create functions to
-manage it as needed, e.g. put/free operations.
-
-> +void __init landlock_object_init(void);
-> +
->  struct landlock_object;
->
->  /**
-> diff --git a/security/landlock/setup.c b/security/landlock/setup.c
-> index f6dd33143b7f..a5fca4582ee1 100644
-
---=20
-paul-moore.com
+On Tue, Mar 26, 2024 at 12:28:36PM +0100, Mickaël Salaün wrote:
+> CCing Outreachy mailing list and Paul.
+> 
+> Related GitHub issue: https://github.com/landlock-lsm/linux/issues/7
+> 
+> On Sun, Mar 24, 2024 at 10:24:53PM -0600, TaheraFahimi wrote:
+> > Signed-off-by: TaheraFahimi <fahimitahera@gmail.com>
+> 
+> I guess there is a space missing between your first and last name.
+> 
+> > ---
+> >  security/landlock/task.c | 89 ++++++++++++++++++++++++++++++++++++++++
+> >  1 file changed, 89 insertions(+)
+> > 
+> > diff --git a/security/landlock/task.c b/security/landlock/task.c
+> > index 849f5123610b..10195492c169 100644
+> > --- a/security/landlock/task.c
+> > +++ b/security/landlock/task.c
+> > @@ -14,6 +14,10 @@
+> >  #include <linux/rcupdate.h>
+> >  #include <linux/sched.h>
+> >  
+> > +/*to use sock structure*/
+> > +#include <net/sock.h>
+> > +#include <linux/spinlock.h>
+> > +
+> >  #include "common.h"
+> >  #include "cred.h"
+> >  #include "ruleset.h"
+> > @@ -108,9 +112,94 @@ static int hook_ptrace_traceme(struct task_struct *const parent)
+> >  	return task_ptrace(parent, current);
+> >  }
+> >  
+> > +
+> > +/** 
+> > + * sk_get_peer_cred : Helper Function from socket.c
+> > + * This helper is used to retrieve the sk_peer credentioals.
+> > + */
+> > +static const struct cred *sk_get_peer_cred(struct sock *sk)
+> > +{
+> > +        const struct cred *cred;
+> > +        spin_lock(&sk->sk_peer_lock);
+> > +        cred = get_cred(sk->sk_peer_cred);
+> > +        spin_unlock(&sk->sk_peer_lock);
+> > +        return cred;
+> > +}
+> > +/**
+> > + * Use domain_scope_le() to scope the access same as ptrace trask.
+> > + */
+> > +static bool unix_sock_is_scoped(struct sock *const sock,
+> > +                                struct sock *const other)
+> > +{
+> > +
+> > +        bool is_scoped = true;
+> > +        /* retrieve the credential of socks.
+> > +	 * other->sk_peer_cred shows the listening socket credentials (This credential
+> > +	 *  is created at the init_cred function and will be coped to 
+> > +	 *  sock->sk_peer_cred later.) 
+> > +	 * Since sock is the connecting sock, then the credential of current task is equal
+> > +	 * to cred_sock.
+> > +	 *  */
+> > +        const struct cred *cred_other;
+> > +	cred_other = sk_get_peer_cred(other);
+> > +	
+> > +	
+> > +	const struct cred *cred_sock;
+> > +	spin_lock(&sock->sk_peer_lock);
+> 
+> You don't need a lock for get_current_cred(), and sk_peer_lock is
+> unrelated to current.  Moreover, security_unix_stream_connect() is
+> already called while the lock being held.
+> 
+> > +	cred_sock = get_current_cred();
+> > +	spin_unlock(&sock->sk_peer_lock);
+> 
+> You should just use landlock_get_current_domain().
+> 
+> > +
+> > +	printk(KERN_DEBUG "cred uid: %u\n", cred_other->gid);
+> 
+> You can use pr_warn() instead.
+> 
+> > +	//printk("the cred_sock kuid is : %llx\n", cred_sock->uid);
+> > +        /* retrieve the landlock_rulesets*/
+> > +	
+> > +	printk("The credentials is retrieved!!\n");
+> > +        
+> > +	const struct landlock_cred_security *dom_parent, *dom_child;
+> 
+> dom_* variables should only be used to refer do a Landlock domain, not
+> credential.
+> 
+> > +        const struct landlock_ruleset *parent, *child;
+> > +        rcu_read_lock();
+> > +        dom_parent = landlock_cred(cred_other);
+> > +	dom_child = landlock_cred(cred_sock);
+> > +        parent = dom_parent->domain;
+> > +        child = dom_child->domain;
+> > +	/* by uncommenting either the following if statement or calling 
+> > +	 * the domain_scope_le the kernel will not load(make task dead)*/
+> > +	//if (dom_parent)
+> > +	//	printk("parent num rules %u\n", parent->num_rules);
+> > +	if (child)
+> > +		printk("child num rules %u\n", child->num_rules);
+> > +	//is_scoped = domain_scope_le(parent, child);
+> > +        rcu_read_unlock();
+> > +	
+> > +
+> > +        return is_scoped;
+> > +}
+> > +/**
+> > + * unix_stream_connect -
+> > + */
+> > +static int task_unix_stream_connect(struct sock *const sock,
+> > +                               struct sock *const other,
+> > +                               struct sock *const newsk)
+> > +{
+> > +        /* How do we check if the scoping is optional?  */
+> > +        if (unix_sock_is_scoped(sock, other))
+> > +                return 0;
+> > +        return -EPERM;
+> > +}
+> > +
+> > +/**
+> > + * hook_unix_stream_connect -
+> > + */
+> > +static int hook_unix_stream_connect(struct sock *const sock, struct sock *const other,
+> > +                                    struct sock *const newsk)
+> > +{
+> > +        return task_unix_stream_connect(sock, other, newsk);
+> > +}
+> > +
+> >  static struct security_hook_list landlock_hooks[] __ro_after_init = {
+> >  	LSM_HOOK_INIT(ptrace_access_check, hook_ptrace_access_check),
+> >  	LSM_HOOK_INIT(ptrace_traceme, hook_ptrace_traceme),
+> > +        LSM_HOOK_INIT(unix_stream_connect, hook_unix_stream_connect),
+> >  };
+> >  
+> >  __init void landlock_add_task_hooks(void)
+> > -- 
+> > 2.34.1
+> > 
+> > Hello Mickaël, I made the following changes to have an lsm hook function for "unix_stream_connect". I have an issue, and I was wondering  if you could give me a hint. At first, I retrieve the Socks' credentials through "sk_get_peer_cred" and "get_current_cred". As "get_current_cred" gives us the credential related to the sock and "sk_get_peer_cred" gives the sock's peer credential(this credential will be copied to the field sock->sk_peer_cred later). Then I uses both credentials to get their "landlock_cred_security". Since "landlock_cred_security" has a pointer to the "landlock_ruleset", we can pass their rulesets to the "domain_scope_le" (same as ptrace task) to check if it is scoped or not.
+> 
+> Hello Tahera, this approach looks good.  However, Landlock credential's
+> domain may be NULL (when the task is not sandboxed).
+> 
+> > The problem is that If I uncomment the "domain_scope_le", the kernel will not work. I think it can not get the "landlock_cred_security". Thank you :)
+> 
+> "the kernel will not work" could means a lot of things. We need a more
+> precise description.
+> 
+> I guess this is just a draft and the patch is not ready yet so it's
+> fine. Before sending a first official version you should follow and read
+> the referenced links and especially the kernel patch how-to here:
+> https://lore.kernel.org/outreachy/ZeZzLWtk2nZ1Pcgw@aschofie-mobl2/
+> For instance, you should run checkpatch.pl
+> For Landlock-specific patches, they need to be formatted with
+> clang-format (-i) and pass all the checked done by check-linux.sh
+> provided here: https://github.com/landlock-lsm/landlock-test-tools
+Hello Mickaël,
+Thanks for the hints. As you mentioned, it was just a draft. Besides the check-linux.sh checks, is there any other checks that I can test my code with them? Or should I sandbox a task and test the codes with that?
+Thanks again,
+Also, In my previous I forgot to copy outreachy email, so I sent this email again.
+Regards,
+Tahera
