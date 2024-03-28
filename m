@@ -1,115 +1,160 @@
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-pl1-f175.google.com (mail-pl1-f175.google.com [209.85.214.175])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D82793FB90;
-	Thu, 28 Mar 2024 22:51:33 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.198.163.7
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7F8AF31A89
+	for <outreachy@lists.linux.dev>; Thu, 28 Mar 2024 23:12:16 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.214.175
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1711666295; cv=none; b=mzDtCM0/6IeJN8KMeVEdcvnEnijpXZQPMPfJpbqjoCC5G0RQlC/xRQCoRYBya898kimQA3xJ2RvmFqhDD4/FaabLVVa7K8RmnkZAXJM8MB2EZPbyAes4R4EHXPCPque1H8ABhJh/VLDv7oyDtePBnbTabE74+nNesyprY7Ev4YE=
+	t=1711667537; cv=none; b=YjRqnb1AXiFIBheCpJqTmNWp1LQzVVAZZlWJ7smoGOGv4Se/Ouuo3R2exKy3K23a4SwcN9UJJZj1ehLxco8FVTP2L8aausglyjrQoZjyPTBra1wGo3BhgCqraOLIHrcXdy1EyhjW5idAPEFiHxwQfMdp7FoEYLP3zKiqjvHuzm4=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1711666295; c=relaxed/simple;
-	bh=NifpSitZFwDIGKmPZazznM78PsJ/sym0i+5/IJ4O9zU=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=kMpmhx/nM9gc2S6YA+ImS3SE4p+NpJgfdZdqwP4YObKQ1anG0lxjDr5TYbVEHXHtuPxsOyVTHA5u6NvhnejLwRwQGpYHhcrgm+QLgXVsFJ/4GW1XY86gOsNmYxQtqp2cuQytkzMk2Yif9VbNd932WV/1eMO1oLQN6LcIcuHSdSs=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=n0sYZ3f0; arc=none smtp.client-ip=192.198.163.7
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
+	s=arc-20240116; t=1711667537; c=relaxed/simple;
+	bh=Y2yGhw5DoVYcmyKvtY93T2ZHh8GSDwyarOd0jGWdti4=;
+	h=Date:From:To:Subject:Message-ID:MIME-Version:Content-Type:
+	 Content-Disposition; b=umQ4saR6LNB/Hp+iJwdDt0XObEfpw6oBsdgCACqAWNYmsYVpDM6Zhxz8l0GiPs35PVxbPvbbXUbmes1P18/8cGjZZxXK2UV9Ij6ekspKT29wELPjMNsUQZE50caESRo+GH+eyoN0TVCoPHOGJORwURgnoL8/adI1jcm/9ASTJIQ=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=L4131AXh; arc=none smtp.client-ip=209.85.214.175
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="n0sYZ3f0"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1711666293; x=1743202293;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=NifpSitZFwDIGKmPZazznM78PsJ/sym0i+5/IJ4O9zU=;
-  b=n0sYZ3f0sTTxY7V6IoyJib78JcQzlxje71GMA0Kux/sd3drSKfpbhvdu
-   zSxWfZt+9QQdEjagkf9WP/8pwVjAr4bzWzPCkoN72LtuRk0H4QHaro6W3
-   yTnttylt3hHPPgS6B4cZ6GHGQ+ra0qYm59dFytjkPdOv8ysPvQk0lQM7I
-   FvXXSTxEKdZJTE7n2dpKxOeKulm8mOhi2/yVpCw7OS5IAzvIFP87M8fFh
-   D9SPgns4uWoVME9voLYPjmCVNJ40ST85F96ljoTJJ2UndT7eUUh+6Exq3
-   O4dkq5YOsPvKrlRr3cwc2H4v97+oyl+rgDpy9AEQZ/6tC7CGi2qHl2jiI
-   w==;
-X-CSE-ConnectionGUID: Id9N6n6hRwCjnszFyBIYpA==
-X-CSE-MsgGUID: G4sBVKnGSoCdUIOo1dowxg==
-X-IronPort-AV: E=McAfee;i="6600,9927,11027"; a="32252379"
-X-IronPort-AV: E=Sophos;i="6.07,162,1708416000"; 
-   d="scan'208";a="32252379"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
-  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Mar 2024 15:51:33 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,162,1708416000"; 
-   d="scan'208";a="16839134"
-Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.209.99.22])
-  by fmviesa009-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Mar 2024 15:51:33 -0700
-Date: Thu, 28 Mar 2024 15:51:31 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: TaheraFahimi <fahimitahera@gmail.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="L4131AXh"
+Received: by mail-pl1-f175.google.com with SMTP id d9443c01a7336-1e228c12468so3687225ad.1
+        for <outreachy@lists.linux.dev>; Thu, 28 Mar 2024 16:12:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1711667536; x=1712272336; darn=lists.linux.dev;
+        h=content-transfer-encoding:content-disposition:mime-version
+         :message-id:subject:to:from:date:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=5Gh8/LNAzMBxlxkm/tP0Vt2dtSY7TQP4IXEdBVsXfZM=;
+        b=L4131AXhZrtQLbW71OKoC4NzWHvP+j/eg6iaSrjcBhJN+qxoAR+LJpL0Slw5AzlfZP
+         mAOo5s363lGVm+Eafu+KI1DpISY44y4lXhnfE1N2Xqm7HPU4SwyS/8x4teQvRbVZcarU
+         TWVjTVn+U7nffFjTUsNTaQaWGn7RwCezR2XV7homPtGz2m4rHx9xU8wo+EToFR9sMVZl
+         xhz/LSul/x4awXBd4ruVQjTdpaukhWV7ZCDyqrZitIAh0/HjGK5pLDKx4groT0L74Ak2
+         yFsJ1qOXf2ROR7E+0zNs4ZP9RoWRwuA1iIbBeCvMxQL2/Gk0AqrPNU0FIoblL0M9xXlS
+         Uojg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1711667536; x=1712272336;
+        h=content-transfer-encoding:content-disposition:mime-version
+         :message-id:subject:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=5Gh8/LNAzMBxlxkm/tP0Vt2dtSY7TQP4IXEdBVsXfZM=;
+        b=kvU5PSQ3RFxDfEwB7gWtlLmdM35KQhNg8uSPk1hn3mlNyhImX160AzRHUnlru/HnlG
+         V3V8bM06ys2JBdmsZP/byA9nYnnRExsuTjRDLS4tTRBTJz/350GrpthujvL4MGagyG4A
+         BclLiSc6Dq/wQrNGkGgiUY9SxqEaOtkJGknG7nh5bGP2SYRUWyQZp7zgnB67ZKOPBDp2
+         o4taezzVc+qFzE6AobOuGy7lxRZz2LuOtO4IRK0Mg1FYptEstYvAuiq65TacGGjm4F6T
+         fTGMKSf9lPXQi5BYmeXCMWajWpL2/yVXNa3BXew5UAG6Uq8Cwwb7dEuDcvKqLC+i85Oc
+         m/Mg==
+X-Forwarded-Encrypted: i=1; AJvYcCVvCLRKpB/G8yl4wMxQLuS6wHW61LSWU5/qsYwz90gK0I7Fj7tkPD+Z/IvttPLzbku3aDXutUsQy69CoPmaQCabvfNaNl4S+NL4
+X-Gm-Message-State: AOJu0YwDS35yAbPJ1e8/cMV3dPhBiG7l3PR9mnvNjLEtnbq/bz64oqOX
+	D6n5BJ65lOWAQmZgzJeNyi3dQLjmo17ysQsblaePQtXOjsa9/iih6k70U01+UEs=
+X-Google-Smtp-Source: AGHT+IGiX4p20Gwid9PPKaKJVns4F9PJz84+sUjqx9+J/dOlHH2stjgClgj+FeJ3WcKQHrD7SdnqLw==
+X-Received: by 2002:a17:903:1c7:b0:1e0:115c:e05a with SMTP id e7-20020a17090301c700b001e0115ce05amr5996164plh.12.1711667535655;
+        Thu, 28 Mar 2024 16:12:15 -0700 (PDT)
+Received: from tahera-OptiPlex-5000 ([136.159.49.124])
+        by smtp.gmail.com with ESMTPSA id u1-20020a170902e5c100b001e0b5eee802sm2174664plf.123.2024.03.28.16.12.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 28 Mar 2024 16:12:15 -0700 (PDT)
+Date: Thu, 28 Mar 2024 17:12:13 -0600
+From: TaheraFahimi <fahimitahera@gmail.com>
+To: =?iso-8859-1?Q?Micka=EBl_Sala=FCn?= <mic@digikod.net>,
+	Paul Moore <paul@paul-moore.com>, James Morris <jmorris@namei.org>,
+	"Serge E. Hallyn" <serge@hallyn.com>,
+	linux-security-module@vger.kernel.org, linux-kernel@vger.kernel.org,
 	outreachy@lists.linux.dev
-Subject: Re: [PATCH] staging: gdm724x: Align descendant argument to the open
- parenthesis
-Message-ID: <ZgX0c7mTJkipSkmQ@aschofie-mobl2>
-References: <ZgXupx0nXwIOjy7F@tahera-OptiPlex-5000>
+Subject: [PATCH v2] landlock: Add abstract unix socket connect restrictions
+Message-ID: <ZgX5TRTrSDPrJFfF@tahera-OptiPlex-5000>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <ZgXupx0nXwIOjy7F@tahera-OptiPlex-5000>
+Content-Transfer-Encoding: 8bit
 
-On Thu, Mar 28, 2024 at 04:26:47PM -0600, TaheraFahimi wrote:
-> Mute the following checkpatch error:
-> 	CHECK: Alignment should match open parenthesis
-> 
-> Signed-off-by: Tahera Fahimi <fahimitahera@gmail.com>
+Abstract unix sockets are used for local interprocess communication without
+relying on filesystem. Since landlock has no restriction for connecting to
+a UNIX socket in the abstract namespace, a sandboxed process can connect to
+a socket outside the sandboxed environment. Access to such sockets should
+be scoped the same way ptrace access is limited.
 
-Tahera,
+For a landlocked process to be allowed to connect to a target process, it
+must have a subset of the target process’s rules (the connecting socket
+must be in a sub-domain of the listening socket). This patch adds a new
+LSM hook for connect function in unix socket with the related access rights.
 
-I'm seeing this from checkpatch:
+Link to first draft:
+	https://lore.kernel.org/outreachy/20240328.ShoR4Iecei8o@digikod.net/
 
-WARNING: From:/Signed-off-by: email name mismatch: 'From: TaheraFahimi <fahimitahera@gmail.com>' != 'Signed-off-by: Tahera Fahimi <fahimitahera@gmail.com>'
+Signed-off-by: Tahera Fahimi <fahimitahera@gmail.com>
 
-Folks sometimes miss checkpatch reports if they only run checkpatch
-on their head commit. Please run it on the formatted patch before
-sending it.  
+----
+Changes in v2:
+- Remove wrapper functions, noted by Casey Schaufler <casey@schaufler-ca.com>
+---
+ security/landlock/task.c | 40 ++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 40 insertions(+)
 
-Please refer to checkpatch documentation, but if it's useful, here's
-what I do:
+diff --git a/security/landlock/task.c b/security/landlock/task.c
+index 849f5123610b..67528f87b7de 100644
+--- a/security/landlock/task.c
++++ b/security/landlock/task.c
+@@ -13,6 +13,7 @@
+ #include <linux/lsm_hooks.h>
+ #include <linux/rcupdate.h>
+ #include <linux/sched.h>
++#include <net/sock.h>
+ 
+ #include "common.h"
+ #include "cred.h"
+@@ -108,9 +109,48 @@ static int hook_ptrace_traceme(struct task_struct *const parent)
+ 	return task_ptrace(parent, current);
+ }
+ 
++static bool unix_sock_is_scoped(struct sock *const sock,
++				struct sock *const other)
++{
++	bool is_scoped = true;
++
++	/* get the ruleset of connecting sock*/
++	const struct landlock_ruleset *const dom_sock =
++		landlock_get_current_domain();
++
++	if (!dom_sock)
++		return true;
++
++	/* get credential of listening sock*/
++	const struct cred *cred_other = get_cred(other->sk_peer_cred);
++
++	if (!cred_other)
++		return true;
++
++	/* retrieve the landlock_rulesets */
++	const struct landlock_ruleset *dom_parent;
++
++	rcu_read_lock();
++	dom_parent = landlock_cred(cred_other)->domain;
++	is_scoped = domain_scope_le(dom_parent, dom_sock);
++	rcu_read_unlock();
++
++	return is_scoped;
++}
++
++static int hook_unix_stream_connect(struct sock *const sock,
++				    struct sock *const other,
++				    struct sock *const newsk)
++{
++	if (unix_sock_is_scoped(sock, other))
++		return 0;
++	return -EPERM;
++}
++
+ static struct security_hook_list landlock_hooks[] __ro_after_init = {
+ 	LSM_HOOK_INIT(ptrace_access_check, hook_ptrace_access_check),
+ 	LSM_HOOK_INIT(ptrace_traceme, hook_ptrace_traceme),
++	LSM_HOOK_INIT(unix_stream_connect, hook_unix_stream_connect),
+ };
+ 
+ __init void landlock_add_task_hooks(void)
+-- 
+2.34.1
 
-While developing a patch do this:
-$ git show HEAD | scripts/checkpatch.pl --strict --codespell
-
-Confirm with this before sending a patch to a mailing list:
-$ scripts/checkpatch.pl --no-tree --strict --codespell $1
-($1 is the formatted patch and that location is usually out of tree
-in my development environment.)
-
---Alison
-
-> ---
->  drivers/staging/gdm724x/gdm_tty.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/gdm724x/gdm_tty.c b/drivers/staging/gdm724x/gdm_tty.c
-> index 15c246d3b1a3..bd80cd48fb44 100644
-> --- a/drivers/staging/gdm724x/gdm_tty.c
-> +++ b/drivers/staging/gdm724x/gdm_tty.c
-> @@ -272,8 +272,8 @@ int register_lte_tty_driver(void)
->  	int ret;
->  
->  	for (i = 0; i < TTY_MAX_COUNT; i++) {
-> -		tty_driver = tty_alloc_driver(GDM_TTY_MINOR,
-> -				TTY_DRIVER_REAL_RAW | TTY_DRIVER_DYNAMIC_DEV);
-> +		tty_driver = tty_alloc_driver(GDM_TTY_MINOR, TTY_DRIVER_REAL_RAW |
-> +						TTY_DRIVER_DYNAMIC_DEV);
->  		if (IS_ERR(tty_driver))
->  			return PTR_ERR(tty_driver);
->  
-> -- 
-> 2.34.1
-> 
-> 
