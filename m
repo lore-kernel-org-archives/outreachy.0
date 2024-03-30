@@ -1,62 +1,38 @@
-Received: from mail-pl1-f175.google.com (mail-pl1-f175.google.com [209.85.214.175])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 606EA1E500
-	for <outreachy@lists.linux.dev>; Sat, 30 Mar 2024 13:54:30 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.214.175
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 632128467;
+	Sat, 30 Mar 2024 16:12:22 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1711806872; cv=none; b=YBYHSwaAOiJQSsOtmS3vp85jK5weq9HIaFWGX4K11B1jE7La990bOIcU+ix3/kzP9qkINANvGPjj/Fv0xT6WNc54GwFQddMUVB14bxcpCNLY382Nf5D1wN0BF336AMIcVbIsXUhH1WLCcOZIJrk5/r6Grl/rlvhlwZEUj0XM+q4=
+	t=1711815142; cv=none; b=Gtg6dPScUZXoP6ABT/VPJ9ZMj+42YNSdiWJpRD65Lv0Uv4af+0zziNhZKUVxqmi+H+I9j3JeLiITN/LUbaGIiKafYB2qs786NUD7Cjmma/MLItz7rGFTYVl3FDQZ88TybXpXy+WaFU060PAJn8yMmiuNDPNN/k1ypirzkbbSjhs=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1711806872; c=relaxed/simple;
-	bh=fedmjVSg0DUkzLNTvNvlEWO9S467LP+p2s3GtiDdmBQ=;
-	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type:
-	 Content-Disposition; b=Xq/GvcNR9dq1CV119upPag2xC1cQctcgFGoYldctQeepxQlzJnv5MI5DIRTHtYKxMRGAgTGKOqx6+OV2IkU0VMgsiBpwpOxUi0p5+hBlE13D+3mgXElzN/Ll2Kj4Llzut/0J6suUr3fK6rOR39foCmJmotQxH+8G2sEOGSf7M3g=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=NcotcOIT; arc=none smtp.client-ip=209.85.214.175
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	s=arc-20240116; t=1711815142; c=relaxed/simple;
+	bh=7DJY80SqsN2zeO08mKaZocYC36hJgIIyI/nQTHv2yrU=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=eZ8dIDYk+3RGNmKnN0spStMzc4+ILXegENLk63pSOJOLI9TgKj3lX2yCGC6qiMw+1j4tS0CpkF2GaKFyt5lg1Z0QUbsdgNbGRVdqQhaU++4iWBBBVd5PWWigLaJAqB5CRAxPSukA/kHibpWvt2VNq1DcAA8PlYLRvKHuRT8bUIM=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (1024-bit key) header.d=linuxfoundation.org header.i=@linuxfoundation.org header.b=m5yyjZZx; arc=none smtp.client-ip=10.30.226.201
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="NcotcOIT"
-Received: by mail-pl1-f175.google.com with SMTP id d9443c01a7336-1e00d1e13a2so19697265ad.0
-        for <outreachy@lists.linux.dev>; Sat, 30 Mar 2024 06:54:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1711806870; x=1712411670; darn=lists.linux.dev;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=Oqh2nZliN5w5CydPn9rkbQtrtD4gRqfg8XL3I/NhjWQ=;
-        b=NcotcOIT+QZN/I9myXr5NsgiMCoTwRwkryndIp3yBlADxX90HDxLZ2kSULvkAPGUDz
-         4RgrD4xiZMKYhgpCT+aBlrtBErTmA4cFcVW11orkol64D+a9PKkmDyI7q91hjKUjpkOk
-         dGAkckCbwMNd7JxWSJl4y6LgLHCWoR9qAh8B5LP26E+mDLT+bbPl8b83E7yUz7WJlY+y
-         mnFJelMFz8jzNJVV9+dpzrVJjuBBAK+Y3o+Hhfu5tfDUwKg+lkUKkGmm36TPbwudh9Ds
-         RZTAE1cEpQNxUcK/DYyvIvV8RE8mzW8PpTolGrDPKKM2QP5Q2drsw8wUWI8wrkKxPVuC
-         4hYQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711806870; x=1712411670;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Oqh2nZliN5w5CydPn9rkbQtrtD4gRqfg8XL3I/NhjWQ=;
-        b=ux/380ZzS8IWvjxY8ii88JGeC9E2bzy2JULGb8fPzxOzFTF6cL1Md1DAbCI6y1cLAt
-         YoS4HWuv96ftLBoof3havbpVlZUq5T/AFsoTo47YT1Cl7cH+jaM7zk5DXtH8KRccvWU5
-         k3TZTWQhqHWPlvJwuvUjqjaui+zxAlqjvS/1qtEUHmwlECUmHjm0jvz6k89WPWefSmMK
-         tSS5vBzlYCECtZRfzkTNXU9MkV7gOxSEGPI/m3fzC0uW4tDG4LWUWlgvdJJdK3oGVk3X
-         QKQL+FQse70dEZ1F0HC9PMfEnSy9XQb0SviBjCiC8t1VdR3R880enAs7YV7T5S8xDXyO
-         gLqA==
-X-Gm-Message-State: AOJu0YwksTG1E1EC2AU9feIw50V8kBcFMGoK6et7OiCGsxbluP6TKRf4
-	RoNavsSZJq1uu4/nXPjq6m84wc/cYo6AgdsQRQr7loZnnwR0MCWV
-X-Google-Smtp-Source: AGHT+IHJAfl9nwTCg8S5xj8XlnhljcNjKRD0XBtulcVCZbbgtY27MBizPM6f5asDQjBwaT7Zg+3Ofg==
-X-Received: by 2002:a17:902:d4c3:b0:1e0:b5e8:7467 with SMTP id o3-20020a170902d4c300b001e0b5e87467mr5920862plg.3.1711806869527;
-        Sat, 30 Mar 2024 06:54:29 -0700 (PDT)
-Received: from ayush-HP-Pavilion-Gaming-Laptop-15-ec0xxx ([2409:40e3:103e:d98f:6ff5:fd6a:83ef:b115])
-        by smtp.gmail.com with ESMTPSA id b3-20020a170902d50300b001dcb654d1a5sm5249616plg.21.2024.03.30.06.54.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 30 Mar 2024 06:54:29 -0700 (PDT)
-Date: Sat, 30 Mar 2024 19:24:19 +0530
-From: Ayush Tiwari <ayushtiw0110@gmail.com>
-To: alison.schofield@intel.com, paul@paul-moore.com, mic@digikod.net,
+	dkim=pass (1024-bit key) header.d=linuxfoundation.org header.i=@linuxfoundation.org header.b="m5yyjZZx"
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 76F7DC433F1;
+	Sat, 30 Mar 2024 16:12:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1711815142;
+	bh=7DJY80SqsN2zeO08mKaZocYC36hJgIIyI/nQTHv2yrU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=m5yyjZZxH/klvWCBqIoRuOHkVpGXYh6HA/sHEABnoAgryF8I8SAM+MGoRMAK/g3wa
+	 VWWANrzP0+SrtPxZLoSYHQv8bDh4Vrjh+L2kYzartfBynhg7AtgOr+N9D32OoW54PM
+	 875jr+Sl46wU5PJ7IIT3IogAgVhpDkaHF968PPPo=
+Date: Sat, 30 Mar 2024 17:12:18 +0100
+From: Greg KH <gregkh@linuxfoundation.org>
+To: Ayush Tiwari <ayushtiw0110@gmail.com>
+Cc: alison.schofield@intel.com, paul@paul-moore.com, mic@digikod.net,
 	fabio.maria.de.francesco@linux.intel.com,
-	linux-kernel@vger.kernel.org, gregkh@linuxfoundation.org
-Cc: outreachy@lists.linux.dev, linux-security-module@vger.kernel.org
-Subject: [PATCH v2] landlock: Use kmem for landlock_object
-Message-ID: <ZggZi/EFICvb4xTU@ayush-HP-Pavilion-Gaming-Laptop-15-ec0xxx>
+	linux-kernel@vger.kernel.org, outreachy@lists.linux.dev,
+	linux-security-module@vger.kernel.org
+Subject: Re: [PATCH v2] landlock: Use kmem for landlock_object
+Message-ID: <2024033030-tutu-dynamite-47c9@gregkh>
+References: <ZggZi/EFICvb4xTU@ayush-HP-Pavilion-Gaming-Laptop-15-ec0xxx>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -65,82 +41,72 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
+In-Reply-To: <ZggZi/EFICvb4xTU@ayush-HP-Pavilion-Gaming-Laptop-15-ec0xxx>
 
-Use kmem_cache replace kzalloc() calls with kmem_cache_zalloc() for
-struct landlock_object and update the related dependencies to improve
-memory allocation and deallocation performance. This patch does not
-change kfree() and kfree_rcu() calls because according to kernel commit
-ae65a5211d90("mm/slab: document kfree() as allowed for
-kmem_cache_alloc() objects"), starting from kernel 6.4 with
-CONFIG_SLOB, kfree() is safe to use for such objects.
+On Sat, Mar 30, 2024 at 07:24:19PM +0530, Ayush Tiwari wrote:
+> Use kmem_cache replace kzalloc() calls with kmem_cache_zalloc() for
+> struct landlock_object and update the related dependencies to improve
+> memory allocation and deallocation performance.
 
-Signed-off-by: Ayush Tiwari <ayushtiw0110@gmail.com>
----
+So it's faster?  Great, what are the measurements?
 
-Changes in v2: Used clang-format and corrected the removal of kfree_rcu.
-Tried to use KMEM macro but due to lack of cache pointer in that macro,
-had to explicitly define landlock_object_cache, as done in security.c.
+> This patch does not
+> change kfree() and kfree_rcu() calls because according to kernel commit
+> ae65a5211d90("mm/slab: document kfree() as allowed for
+> kmem_cache_alloc() objects"), starting from kernel 6.4 with
+> CONFIG_SLOB, kfree() is safe to use for such objects.
 
- security/landlock/object.c | 12 +++++++++++-
- security/landlock/object.h |  2 ++
- security/landlock/setup.c  |  1 +
- 3 files changed, 14 insertions(+), 1 deletion(-)
+There is no CONFIG_SLOB anymore so why mention it?
 
-diff --git a/security/landlock/object.c b/security/landlock/object.c
-index 1f50612f0185..cfc367725624 100644
---- a/security/landlock/object.c
-+++ b/security/landlock/object.c
-@@ -17,6 +17,15 @@
- 
- #include "object.h"
- 
-+static struct kmem_cache *landlock_object_cache;
-+
-+void __init landlock_object_cache_init(void)
-+{
-+	landlock_object_cache = kmem_cache_create(
-+		"landlock_object_cache", sizeof(struct landlock_object), 0,
-+		SLAB_PANIC, NULL);
-+}
-+
- struct landlock_object *
- landlock_create_object(const struct landlock_object_underops *const underops,
- 		       void *const underobj)
-@@ -25,7 +34,8 @@ landlock_create_object(const struct landlock_object_underops *const underops,
- 
- 	if (WARN_ON_ONCE(!underops || !underobj))
- 		return ERR_PTR(-ENOENT);
--	new_object = kzalloc(sizeof(*new_object), GFP_KERNEL_ACCOUNT);
-+	new_object =
-+		kmem_cache_zalloc(landlock_object_cache, GFP_KERNEL_ACCOUNT);
- 	if (!new_object)
- 		return ERR_PTR(-ENOMEM);
- 	refcount_set(&new_object->usage, 1);
-diff --git a/security/landlock/object.h b/security/landlock/object.h
-index 5f28c35e8aa8..d9967ef16ec1 100644
---- a/security/landlock/object.h
-+++ b/security/landlock/object.h
-@@ -15,6 +15,8 @@
- 
- struct landlock_object;
- 
-+void __init landlock_object_cache_init(void);
-+
- /**
-  * struct landlock_object_underops - Operations on an underlying object
-  */
-diff --git a/security/landlock/setup.c b/security/landlock/setup.c
-index f6dd33143b7f..525820fc03ec 100644
---- a/security/landlock/setup.c
-+++ b/security/landlock/setup.c
-@@ -33,6 +33,7 @@ const struct lsm_id landlock_lsmid = {
- 
- static int __init landlock_init(void)
- {
-+	landlock_object_cache_init();
- 	landlock_add_cred_hooks();
- 	landlock_add_ptrace_hooks();
- 	landlock_add_fs_hooks();
--- 
-2.40.1
 
+
+
+> 
+> Signed-off-by: Ayush Tiwari <ayushtiw0110@gmail.com>
+> ---
+> 
+> Changes in v2: Used clang-format and corrected the removal of kfree_rcu.
+> Tried to use KMEM macro but due to lack of cache pointer in that macro,
+> had to explicitly define landlock_object_cache, as done in security.c.
+> 
+>  security/landlock/object.c | 12 +++++++++++-
+>  security/landlock/object.h |  2 ++
+>  security/landlock/setup.c  |  1 +
+>  3 files changed, 14 insertions(+), 1 deletion(-)
+> 
+> diff --git a/security/landlock/object.c b/security/landlock/object.c
+> index 1f50612f0185..cfc367725624 100644
+> --- a/security/landlock/object.c
+> +++ b/security/landlock/object.c
+> @@ -17,6 +17,15 @@
+>  
+>  #include "object.h"
+>  
+> +static struct kmem_cache *landlock_object_cache;
+> +
+> +void __init landlock_object_cache_init(void)
+> +{
+> +	landlock_object_cache = kmem_cache_create(
+> +		"landlock_object_cache", sizeof(struct landlock_object), 0,
+> +		SLAB_PANIC, NULL);
+
+You really want SLAB_PANIC?  Why?
+
+> +}
+> +
+>  struct landlock_object *
+>  landlock_create_object(const struct landlock_object_underops *const underops,
+>  		       void *const underobj)
+> @@ -25,7 +34,8 @@ landlock_create_object(const struct landlock_object_underops *const underops,
+>  
+>  	if (WARN_ON_ONCE(!underops || !underobj))
+>  		return ERR_PTR(-ENOENT);
+> -	new_object = kzalloc(sizeof(*new_object), GFP_KERNEL_ACCOUNT);
+> +	new_object =
+> +		kmem_cache_zalloc(landlock_object_cache, GFP_KERNEL_ACCOUNT);
+
+Odd indentation, why?
+
+thanks,
+
+greg k-h
