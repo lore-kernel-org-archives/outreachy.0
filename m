@@ -1,74 +1,103 @@
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ed1-f46.google.com (mail-ed1-f46.google.com [209.85.208.46])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5C221145B0E
-	for <outreachy@lists.linux.dev>; Sun, 31 Mar 2024 20:18:42 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.104
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E58341113;
+	Mon,  1 Apr 2024 06:55:52 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.46
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1711916328; cv=none; b=KUQhftKhCvIeSK9i130xXjnxDCVibrFvTR926Pic60/hrSsIbkBRxK91hIriN0vhdLubrbcvA0PNtjpECdER+ZG0PsjV0SlWzdHIZUJ8kOYUpkwmNvUWtWJx5RhMBn7OGdmFCP9m9V7MHQhfd4PTnW1YXFBKIdTg0DwFdZUqhgY=
+	t=1711954554; cv=none; b=RE0W+2SlSIEHu7ecSKergRbjpKwBzAT7drPG8+REaJiYpFgCLzXxt849g6NKbTguKJqi5JohRfPXftX1/d96d1jz2YCUcry4Rn024HP5TcjShhufNgWiDh9b/l0cgEg2TX0zDI5YVPXg5Tsy6uUsrMgU3KYCavD+JsEFxyCTgA4=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1711916328; c=relaxed/simple;
-	bh=SKi1t1SxtBa5sAjWFANYVgtgRpZIPkWHydeL//hzjmI=;
-	h=Date:From:To:cc:Subject:In-Reply-To:Message-ID:References:
-	 MIME-Version:Content-Type; b=Ko5RME0GL6dqOmpzUzm7PVkKAFbLW/J4n82QCvl+m0/A202kdMPxn967OafWPrNLhfijbU33gm2eMi6k9FBJVyBNEP6VIKUjR5NF17Qr+MUhbEiQ0qlnNO+llMDZzEiW/K1DXK9swduTY39ifUX5rWVN2popb4qkN51SetazkwQ=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=LzKDrMkt; arc=none smtp.client-ip=192.134.164.104
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
+	s=arc-20240116; t=1711954554; c=relaxed/simple;
+	bh=/yju9lel392OfRllN7ckkKL9AiRf1PmiXkoeZVtVAZ0=;
+	h=From:To:Cc:Subject:Date:Message-Id:MIME-Version; b=Bh4y6NBXPSFPkNf6NuhBUOE/cDToLYRwCtFfPAJyrGUf3MyOqy8+VqaLdE1NzN3ekS0NaK1RBvTpN2csYtppgwS2liEh1n4yKudJi8AXBmEfI86Z84v4KoK3SPLDLrlsHZk8w1Ro61l0DdIkB63w/HL0UHBhY1Aa7RuyDZOgbWk=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=RQR25S+v; arc=none smtp.client-ip=209.85.208.46
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="LzKDrMkt"
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="RQR25S+v"
+Received: by mail-ed1-f46.google.com with SMTP id 4fb4d7f45d1cf-56db72fc3a8so1037807a12.0;
+        Sun, 31 Mar 2024 23:55:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=iNnq42N6DQj7wyZDD/ZJeJVQunDGXeSrLdqY02H7VyA=;
-  b=LzKDrMkt4w795ZBRxL154WVZ5DrZD71U0onNrQ4qE75b06JRGyAvVhXj
-   NsCCivkowzOW/Hg5BfDR+kJNlcUltFuNLrkhyw4BTT81l41AQASLdkwPd
-   Fz/8ceL24hM8YtLuQeEOBEFwR1o+nmi6tFoSkkNy0WAy69lQqSxyopris
-   Q=;
-Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="6.07,170,1708383600"; 
-   d="scan'208";a="83541160"
-Received: from 71-51-181-183.chvl.centurylink.net (HELO hadrien) ([71.51.181.183])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Mar 2024 22:18:40 +0200
-Date: Sun, 31 Mar 2024 16:18:37 -0400 (EDT)
-From: Julia Lawall <julia.lawall@inria.fr>
-To: Saasha Gupta <saashaa1122@gmail.com>
-cc: outreachy@lists.linux.dev, alison.schofield@intel.com
-Subject: Re: checkpatch.pl script is throwing errors for the code I have not
- written.
-In-Reply-To: <CAN=P6FNRiaog4HZY9vG-067M_+3oG-FxMb2=rKaYmD_+8jRVgg@mail.gmail.com>
-Message-ID: <26d0f11-db73-7da-bea1-9bc018b59d36@inria.fr>
-References: <CAN=P6FNRiaog4HZY9vG-067M_+3oG-FxMb2=rKaYmD_+8jRVgg@mail.gmail.com>
+        d=gmail.com; s=20230601; t=1711954551; x=1712559351; darn=lists.linux.dev;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=DTB3IpGjwW6koQXgT7+nFzmTK/yYw6PkG/WN8b+/Pp0=;
+        b=RQR25S+vr2Jr/CzEp2ZWPpHV+ncC8r8Ftj8N6GbD0BnaXiFgn3114k1FKuML2OsumL
+         +62YiP3JycK2JC1KsJA+P7i3IzJJ7/3B4gf/4pV/NKlLujDaZs9sFlqf3iNc5ltHRmwJ
+         NPw7nZ9ZjqnkMpp1JPQ/98xWzYrbKo8NPXL2zM07VbSmjM6qNXDR/+wB4/zkHB8fBHMT
+         xWQW6ye3Mk321SclEz3y//DnIlsFJkfl8y6Nbi6Ztl5tzWS/K8klaHbUru/5DwjxfHpR
+         XyU7v3UCmuQz7AnnJTJijdkxe3QY01SigQW0RvstMdnGrX81nuLHVLmg28pBxYuTLUrk
+         Zs8g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1711954551; x=1712559351;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=DTB3IpGjwW6koQXgT7+nFzmTK/yYw6PkG/WN8b+/Pp0=;
+        b=BES0GQ0Kk34dEfZmKND2tXZMlCJHz0TkL5W72nCfB8ZAUY79WXO2glWKP0I27iiDk9
+         xW3X3jKUDxApXt6OecvPI2iHp5+r/ws35mBLRyEy1CSm8+kogEpl/3gfEygRQ2WvX1lm
+         2Qm9PRKJ/G31T6+olzOypXZhbW4gXlJy+ifAjE1O4IqZfaLIN8JGTUMytdO2gpnMZ/fw
+         /DjK5CXAftj53LeMRaJm5yDyfcMJalYvaXma+OdIVi8jQAnmhW6XDiF/1SbawkxeOstI
+         yt4Nw1xgt99NC//7I7ilCVqftqVc6uPtnDZdfso7WOpDzbOvqamLSyE4bbsO+gTNnD9X
+         eKiw==
+X-Forwarded-Encrypted: i=1; AJvYcCW0jefuVCC70tWUqbyxDfcZGPKRGnmqNgs0ptkooO7W4Ha5x7bbvldVUVRVbkyxqmbKaenrGVif/ktYuNZdaJ6KB1qvMGe3Yxy3xmU5ecdN/m8+OqaG9QmidwRuIClpjZHoVnaggiqreQ==
+X-Gm-Message-State: AOJu0YzSZO17GPfEAOt/Gu0f+grVzwVD0daBWcVgGIYc5Rgah8xak8eH
+	6HgBVtX3/z9UyVb3F90iIvLBkHsHSg3zMU6CKUROVmq8it9c69vY
+X-Google-Smtp-Source: AGHT+IHzFOoYM0AxzX43k/kIkuo7kzStBkVnLIHkJt0q1Lf8FeDxvnJr2erLbyDF5firwabdnHS0jA==
+X-Received: by 2002:a05:6402:2110:b0:568:a792:276 with SMTP id bl16-20020a056402211000b00568a7920276mr7918700edb.7.1711954551021;
+        Sun, 31 Mar 2024 23:55:51 -0700 (PDT)
+Received: from ubuntu-focal.zuku.co.ke ([197.237.50.252])
+        by smtp.gmail.com with ESMTPSA id eh13-20020a0564020f8d00b0056b7ed75a46sm5118876edb.27.2024.03.31.23.55.48
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 31 Mar 2024 23:55:50 -0700 (PDT)
+From: Dorine Tipo <dorine.a.tipo@gmail.com>
+To: gregkh@linuxfoundation.org,
+	marvin24@gmx.de,
+	linux-staging@lists.linux.dev,
+	outreachy@lists.linux.dev
+Cc: Dorine Tipo <dorine.a.tipo@gmail.com>,
+	Alison Schofield <alison.schofield@intel.com>
+Subject: [PATCH v2] staging: nvec: Fix documentation typo in nvec.c
+Date: Sun, 31 Mar 2024 17:05:48 +0000
+Message-Id: <20240331170548.81409-1-dorine.a.tipo@gmail.com>
+X-Mailer: git-send-email 2.25.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 8bit
+
+This commit corrects the spelling of "initialisation" which was
+misspelled as "intialisation" in the irqreturn_t nvec_interrupt()
+documentation.
+The issue was found using checkpatch.
 
 
+Signed-off-by: Dorine Tipo <dorine.a.tipo@gmail.com>
+---
+Changes since V1:
+V2: Fixed the patch subject length so it doesn't line wrap.
+    Tidied up the commit message and added a missing period at the end
+    of the sentence as suggested by Alison.
 
-On Mon, 1 Apr 2024, Saasha Gupta wrote:
+ drivers/staging/nvec/nvec.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> Dear maintainers of the outreachy team,
->
-> I have made a patch for this issue. I am able to create the patch with
-> `git format-patch`.
->
-> However, when I check my patch for errors using the checkpatch.pl
-> script, it throws errors for the code I have not written. What should
-> I do?
+diff --git a/drivers/staging/nvec/nvec.c b/drivers/staging/nvec/nvec.c
+index 282a664c9176..b4485b10beb8 100644
+--- a/drivers/staging/nvec/nvec.c
++++ b/drivers/staging/nvec/nvec.c
+@@ -712,7 +712,7 @@ static irqreturn_t nvec_interrupt(int irq, void *dev)
+ 	 * TODO: replace the udelay with a read back after each writel above
+ 	 * in order to work around a hardware issue, see i2c-tegra.c
+ 	 *
+-	 * Unfortunately, this change causes an intialisation issue with the
++	 * Unfortunately, this change causes an initialisation issue with the
+ 	 * touchpad, which needs to be fixed first.
+ 	 */
+ 	udelay(100);
+--
+2.25.1
 
-If you are proposing a change, you should only ensure that checkpatch is
-respected by your change.  If doing that will make the code look horribly
-inconsistent, you could consider making a patch series that first cleans
-up everything and then another patch that makes your change.
-
-julia
-
->
-> Sincerely,
-> Saasha
->
->
