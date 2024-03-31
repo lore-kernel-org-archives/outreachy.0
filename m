@@ -1,73 +1,74 @@
-Received: from mail-ej1-f47.google.com (mail-ej1-f47.google.com [209.85.218.47])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 728961474CB
-	for <outreachy@lists.linux.dev>; Sun, 31 Mar 2024 19:55:00 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.218.47
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5C221145B0E
+	for <outreachy@lists.linux.dev>; Sun, 31 Mar 2024 20:18:42 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.104
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1711914902; cv=none; b=P3XchFYZXO5kzrzJgP5OnrlmW77wkrfVZNTzQj3faLIw9BnbIY2OQgMeWLivXHSBv9ZGAvrmU73OhqB4MG7VpkxPgs4TlvtM1jh0DX8YGYIaH3UY6o+AKQ8pmuyAwCjvXQGsFSR57v9nDiYeQr5yedSuH8Md5SDBLkq/cTRgn/Y=
+	t=1711916328; cv=none; b=KUQhftKhCvIeSK9i130xXjnxDCVibrFvTR926Pic60/hrSsIbkBRxK91hIriN0vhdLubrbcvA0PNtjpECdER+ZG0PsjV0SlWzdHIZUJ8kOYUpkwmNvUWtWJx5RhMBn7OGdmFCP9m9V7MHQhfd4PTnW1YXFBKIdTg0DwFdZUqhgY=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1711914902; c=relaxed/simple;
-	bh=5LxCPankOnMz9lPZbTM+Dt3/cv+bjZcY1JZE0DhWo/M=;
-	h=MIME-Version:From:Date:Message-ID:Subject:To:Cc:Content-Type; b=P6o6DtcFBHxaVF/hk0IXIn2HU48immPgKuHzPNNDZESnXR5Iot8uWfOzAb7VAhSA/K50cpXUxWLnvneXkbYv0dKBHmhO7prTc9gJNvTtn3uxamJc6L7bsUwjxN3mcSW8Tw4s9JNvRSe4D2GRCViyHMAKS96HMEF+ewJO8r3cyx0=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=eQfqagkv; arc=none smtp.client-ip=209.85.218.47
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	s=arc-20240116; t=1711916328; c=relaxed/simple;
+	bh=SKi1t1SxtBa5sAjWFANYVgtgRpZIPkWHydeL//hzjmI=;
+	h=Date:From:To:cc:Subject:In-Reply-To:Message-ID:References:
+	 MIME-Version:Content-Type; b=Ko5RME0GL6dqOmpzUzm7PVkKAFbLW/J4n82QCvl+m0/A202kdMPxn967OafWPrNLhfijbU33gm2eMi6k9FBJVyBNEP6VIKUjR5NF17Qr+MUhbEiQ0qlnNO+llMDZzEiW/K1DXK9swduTY39ifUX5rWVN2popb4qkN51SetazkwQ=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=LzKDrMkt; arc=none smtp.client-ip=192.134.164.104
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="eQfqagkv"
-Received: by mail-ej1-f47.google.com with SMTP id a640c23a62f3a-a4a393b699fso522361166b.0
-        for <outreachy@lists.linux.dev>; Sun, 31 Mar 2024 12:55:00 -0700 (PDT)
+	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="LzKDrMkt"
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1711914899; x=1712519699; darn=lists.linux.dev;
-        h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=5LxCPankOnMz9lPZbTM+Dt3/cv+bjZcY1JZE0DhWo/M=;
-        b=eQfqagkv6vBMesL5hGGzLa0FEzcopbw2PRV3FW88uo7EAzSXw2v0Uz267C5T8HOKIw
-         De4GIRM3pgqewsSS3nw+0mREwd3t6eGGCH9wTfr/NaGTjAxhoo5fA9I7egboEU7TmGgm
-         /rU7OjONUjrTGf46+RP37Q58yZddXJy/kfSdKC0oDGWfvuSV7neMlL97WrxDR2ASQE1L
-         TpaOHtJZz3OKufqXCXlQ06VEHlHBt8E9q7yB7NjCfM0jm7uUP3hF1xkIw+O2GUkxaAVs
-         8BCNlGfOTSIwD0EkOGsAoD3vawdXg2LdNdiJ5sfW+kSdXZplDlEDwiM4j5RWEJE6qa9p
-         uZ1Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711914899; x=1712519699;
-        h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=5LxCPankOnMz9lPZbTM+Dt3/cv+bjZcY1JZE0DhWo/M=;
-        b=hL+gxx+TvbwJpe5TUAEViTtsIF/PzmLcxYN8aO860ALookqvDdyx4HYymHJp7t5Hhg
-         eFyWp5bqhs/nFBtpJU2v3nM8Xo/KYyo41q8Aqw0QnRdKk54TuCdEyKEkaneRBGXlTxOE
-         AU5ipDXDzHDxPWiIkuHFA48iXWPmSp9+ynuG6zCKGupajsm0yaPzqmZejdoGQdU5u0+O
-         MoolGAh1BjF895uU+wq3Rrv4vxv1SgAkaOLjkMWZgHCUvhpZpVCdWAmgTqmDulsX4+qJ
-         8mXxbFNRF2INb2mNfzpoitCacWqpk++lP5Ko5FSe977tRZZRVUwphGwhYmmnu01moYoX
-         NwdQ==
-X-Gm-Message-State: AOJu0YzQheu0ZTjtU1dq8mVR+hKfYRjIwz5JEjOqns9eMGV/qcw15hYo
-	ZmwCiTCcbnNe7TcsmVlm5LLoh41jeZA+lMW8uyoCKMMtWOUfZaf7M8sTkrCIkjz/OYv39L5TyF8
-	cDBkFUoJFV7GPTS+GoPWgwN4tcKGNvwDoar1E/A==
-X-Google-Smtp-Source: AGHT+IHr8lNiHLu2AtA0LJwd8lfmuRgz8AjjqhVEKw1J6mVrPuCUCmA1/2PdET5a66jnL1sJo/Dqj1C2duc33TT/4ro=
-X-Received: by 2002:a17:906:c2c7:b0:a4e:2dbf:2eb0 with SMTP id
- ch7-20020a170906c2c700b00a4e2dbf2eb0mr6360239ejb.38.1711914898498; Sun, 31
- Mar 2024 12:54:58 -0700 (PDT)
+  d=inria.fr; s=dc;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=iNnq42N6DQj7wyZDD/ZJeJVQunDGXeSrLdqY02H7VyA=;
+  b=LzKDrMkt4w795ZBRxL154WVZ5DrZD71U0onNrQ4qE75b06JRGyAvVhXj
+   NsCCivkowzOW/Hg5BfDR+kJNlcUltFuNLrkhyw4BTT81l41AQASLdkwPd
+   Fz/8ceL24hM8YtLuQeEOBEFwR1o+nmi6tFoSkkNy0WAy69lQqSxyopris
+   Q=;
+Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="6.07,170,1708383600"; 
+   d="scan'208";a="83541160"
+Received: from 71-51-181-183.chvl.centurylink.net (HELO hadrien) ([71.51.181.183])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Mar 2024 22:18:40 +0200
+Date: Sun, 31 Mar 2024 16:18:37 -0400 (EDT)
+From: Julia Lawall <julia.lawall@inria.fr>
+To: Saasha Gupta <saashaa1122@gmail.com>
+cc: outreachy@lists.linux.dev, alison.schofield@intel.com
+Subject: Re: checkpatch.pl script is throwing errors for the code I have not
+ written.
+In-Reply-To: <CAN=P6FNRiaog4HZY9vG-067M_+3oG-FxMb2=rKaYmD_+8jRVgg@mail.gmail.com>
+Message-ID: <26d0f11-db73-7da-bea1-9bc018b59d36@inria.fr>
+References: <CAN=P6FNRiaog4HZY9vG-067M_+3oG-FxMb2=rKaYmD_+8jRVgg@mail.gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-From: Saasha Gupta <saashaa1122@gmail.com>
-Date: Mon, 1 Apr 2024 01:24:47 +0530
-Message-ID: <CAN=P6FNRiaog4HZY9vG-067M_+3oG-FxMb2=rKaYmD_+8jRVgg@mail.gmail.com>
-Subject: checkpatch.pl script is throwing errors for the code I have not written.
-To: outreachy@lists.linux.dev
-Cc: alison.schofield@intel.com
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=US-ASCII
 
-Dear maintainers of the outreachy team,
 
-I have made a patch for this issue. I am able to create the patch with
-`git format-patch`.
 
-However, when I check my patch for errors using the checkpatch.pl
-script, it throws errors for the code I have not written. What should
-I do?
+On Mon, 1 Apr 2024, Saasha Gupta wrote:
 
-Sincerely,
-Saasha
+> Dear maintainers of the outreachy team,
+>
+> I have made a patch for this issue. I am able to create the patch with
+> `git format-patch`.
+>
+> However, when I check my patch for errors using the checkpatch.pl
+> script, it throws errors for the code I have not written. What should
+> I do?
+
+If you are proposing a change, you should only ensure that checkpatch is
+respected by your change.  If doing that will make the code look horribly
+inconsistent, you could consider making a patch series that first cleans
+up everything and then another patch that makes your change.
+
+julia
+
+>
+> Sincerely,
+> Saasha
+>
+>
