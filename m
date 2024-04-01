@@ -1,103 +1,87 @@
-Received: from mail-ed1-f46.google.com (mail-ed1-f46.google.com [209.85.208.46])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.16])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E58341113;
-	Mon,  1 Apr 2024 06:55:52 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.46
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4D35B17552
+	for <outreachy@lists.linux.dev>; Mon,  1 Apr 2024 15:58:36 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.198.163.16
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1711954554; cv=none; b=RE0W+2SlSIEHu7ecSKergRbjpKwBzAT7drPG8+REaJiYpFgCLzXxt849g6NKbTguKJqi5JohRfPXftX1/d96d1jz2YCUcry4Rn024HP5TcjShhufNgWiDh9b/l0cgEg2TX0zDI5YVPXg5Tsy6uUsrMgU3KYCavD+JsEFxyCTgA4=
+	t=1711987118; cv=none; b=EsV0MGfomVVU6GxMb7Ls2t2Kx5IxrYEchqKGxyDlNAvVrFERsSzhmR/RenjSijqCfCqYtfJnVhCN5t9ZKpuSgYvueR5CZ9JinWHlUdQuSC49tfs8P9xBMkMXdcDlVqCKuXyvBY2FtJADiQGa/87cr6GWe8wUoebNMB5pnFk19BI=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1711954554; c=relaxed/simple;
-	bh=/yju9lel392OfRllN7ckkKL9AiRf1PmiXkoeZVtVAZ0=;
-	h=From:To:Cc:Subject:Date:Message-Id:MIME-Version; b=Bh4y6NBXPSFPkNf6NuhBUOE/cDToLYRwCtFfPAJyrGUf3MyOqy8+VqaLdE1NzN3ekS0NaK1RBvTpN2csYtppgwS2liEh1n4yKudJi8AXBmEfI86Z84v4KoK3SPLDLrlsHZk8w1Ro61l0DdIkB63w/HL0UHBhY1Aa7RuyDZOgbWk=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=RQR25S+v; arc=none smtp.client-ip=209.85.208.46
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	s=arc-20240116; t=1711987118; c=relaxed/simple;
+	bh=f5uRzwyUzjkyOiYAR3pJAcZa7vEStpEPwyijZ/ogQ1I=;
+	h=Date:From:To:Subject:Message-ID:MIME-Version:Content-Type:
+	 Content-Disposition; b=bqJun3oCgI8bdhcNf9fbhtXg5jQQ2S+Dysu6AkdzbjqaBtPdDTlLcofjhjwcT/vmUfJmXu6eZPcPnjiSNwD/Z+yfWD/u3y6SIBovG9acMo39DRIXPzwFQcD3xLU53ypaBTDRTHQM0LX2P5RVS4UoOcRdOWvo8ahbHAfNHuv7LSo=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=kNxo4apZ; arc=none smtp.client-ip=192.198.163.16
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="RQR25S+v"
-Received: by mail-ed1-f46.google.com with SMTP id 4fb4d7f45d1cf-56db72fc3a8so1037807a12.0;
-        Sun, 31 Mar 2024 23:55:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1711954551; x=1712559351; darn=lists.linux.dev;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=DTB3IpGjwW6koQXgT7+nFzmTK/yYw6PkG/WN8b+/Pp0=;
-        b=RQR25S+vr2Jr/CzEp2ZWPpHV+ncC8r8Ftj8N6GbD0BnaXiFgn3114k1FKuML2OsumL
-         +62YiP3JycK2JC1KsJA+P7i3IzJJ7/3B4gf/4pV/NKlLujDaZs9sFlqf3iNc5ltHRmwJ
-         NPw7nZ9ZjqnkMpp1JPQ/98xWzYrbKo8NPXL2zM07VbSmjM6qNXDR/+wB4/zkHB8fBHMT
-         xWQW6ye3Mk321SclEz3y//DnIlsFJkfl8y6Nbi6Ztl5tzWS/K8klaHbUru/5DwjxfHpR
-         XyU7v3UCmuQz7AnnJTJijdkxe3QY01SigQW0RvstMdnGrX81nuLHVLmg28pBxYuTLUrk
-         Zs8g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1711954551; x=1712559351;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=DTB3IpGjwW6koQXgT7+nFzmTK/yYw6PkG/WN8b+/Pp0=;
-        b=BES0GQ0Kk34dEfZmKND2tXZMlCJHz0TkL5W72nCfB8ZAUY79WXO2glWKP0I27iiDk9
-         xW3X3jKUDxApXt6OecvPI2iHp5+r/ws35mBLRyEy1CSm8+kogEpl/3gfEygRQ2WvX1lm
-         2Qm9PRKJ/G31T6+olzOypXZhbW4gXlJy+ifAjE1O4IqZfaLIN8JGTUMytdO2gpnMZ/fw
-         /DjK5CXAftj53LeMRaJm5yDyfcMJalYvaXma+OdIVi8jQAnmhW6XDiF/1SbawkxeOstI
-         yt4Nw1xgt99NC//7I7ilCVqftqVc6uPtnDZdfso7WOpDzbOvqamLSyE4bbsO+gTNnD9X
-         eKiw==
-X-Forwarded-Encrypted: i=1; AJvYcCW0jefuVCC70tWUqbyxDfcZGPKRGnmqNgs0ptkooO7W4Ha5x7bbvldVUVRVbkyxqmbKaenrGVif/ktYuNZdaJ6KB1qvMGe3Yxy3xmU5ecdN/m8+OqaG9QmidwRuIClpjZHoVnaggiqreQ==
-X-Gm-Message-State: AOJu0YzSZO17GPfEAOt/Gu0f+grVzwVD0daBWcVgGIYc5Rgah8xak8eH
-	6HgBVtX3/z9UyVb3F90iIvLBkHsHSg3zMU6CKUROVmq8it9c69vY
-X-Google-Smtp-Source: AGHT+IHzFOoYM0AxzX43k/kIkuo7kzStBkVnLIHkJt0q1Lf8FeDxvnJr2erLbyDF5firwabdnHS0jA==
-X-Received: by 2002:a05:6402:2110:b0:568:a792:276 with SMTP id bl16-20020a056402211000b00568a7920276mr7918700edb.7.1711954551021;
-        Sun, 31 Mar 2024 23:55:51 -0700 (PDT)
-Received: from ubuntu-focal.zuku.co.ke ([197.237.50.252])
-        by smtp.gmail.com with ESMTPSA id eh13-20020a0564020f8d00b0056b7ed75a46sm5118876edb.27.2024.03.31.23.55.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 31 Mar 2024 23:55:50 -0700 (PDT)
-From: Dorine Tipo <dorine.a.tipo@gmail.com>
-To: gregkh@linuxfoundation.org,
-	marvin24@gmx.de,
-	linux-staging@lists.linux.dev,
-	outreachy@lists.linux.dev
-Cc: Dorine Tipo <dorine.a.tipo@gmail.com>,
-	Alison Schofield <alison.schofield@intel.com>
-Subject: [PATCH v2] staging: nvec: Fix documentation typo in nvec.c
-Date: Sun, 31 Mar 2024 17:05:48 +0000
-Message-Id: <20240331170548.81409-1-dorine.a.tipo@gmail.com>
-X-Mailer: git-send-email 2.25.1
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="kNxo4apZ"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1711987116; x=1743523116;
+  h=date:from:to:subject:message-id:mime-version;
+  bh=f5uRzwyUzjkyOiYAR3pJAcZa7vEStpEPwyijZ/ogQ1I=;
+  b=kNxo4apZ3dMBPn4eU2wtDYtIogBNbM6oaS0H2+TCgxTCUYRFH4nAoZ6g
+   5y/cRw6f9bZUvzrTEW6HnKLBzxtwh0fWrWv0t2XzkPWccarlg+9I7aUmy
+   eJGgJxhR+o9HG5gnskDrfXURufkOaKi68zPrElZU/Z1wpeQVR4CByKdx9
+   0ewCXl/FbwzdRJpIY2DPsHeNm3VUw4lwwvEDxRKAVNKbzuoG4eCXYqeaj
+   G3PbjWRC8ICdcdNY4/YZTyh5Lv6c5UfkT+EOJXhTZm+dzl3Q2EYAxDkdb
+   Zb9iGUsedGk9b+bL0pJ/YtiI89CyP7MdLyPEcxSClY730abg3L4NwUF/E
+   g==;
+X-CSE-ConnectionGUID: ywHecJVCQgyY/ROX0zSFWQ==
+X-CSE-MsgGUID: QBu6uSnZQjSVoudwHYGd3g==
+X-IronPort-AV: E=McAfee;i="6600,9927,11031"; a="7708183"
+X-IronPort-AV: E=Sophos;i="6.07,172,1708416000"; 
+   d="scan'208";a="7708183"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Apr 2024 08:58:36 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.07,172,1708416000"; 
+   d="scan'208";a="17639119"
+Received: from ngpfund-mobl1.amr.corp.intel.com (HELO aschofie-mobl2) ([10.209.66.56])
+  by fmviesa010-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Apr 2024 08:58:36 -0700
+Date: Mon, 1 Apr 2024 08:58:33 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: Outreachy Linux Kernel <outreachy@lists.linux.dev>
+Subject: Outreachy Deadline: April 2 4pm UTC
+Message-ID: <ZgrZqXAbEhPiBzOf@aschofie-mobl2>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-This commit corrects the spelling of "initialisation" which was
-misspelled as "intialisation" in the irqreturn_t nvec_interrupt()
-documentation.
-The issue was found using checkpatch.
+Hi Outreachy Applicants,
 
+Thank you for diving into the Linux Kernel community and for 
+helping to clean up the Linux Kernel during this contribution
+period.
 
-Signed-off-by: Dorine Tipo <dorine.a.tipo@gmail.com>
----
-Changes since V1:
-V2: Fixed the patch subject length so it doesn't line wrap.
-    Tidied up the commit message and added a missing period at the end
-    of the sentence as suggested by Alison.
+Contribution period ends: April 2 at 4pm UTC
+Application Deadline:	  April 2 at 4pm UTC
 
- drivers/staging/nvec/nvec.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Your final application must be submitted by April 2 at 4pm UTC.
+You can edit after submitting and up until April 2 at 4pm UTC.
 
-diff --git a/drivers/staging/nvec/nvec.c b/drivers/staging/nvec/nvec.c
-index 282a664c9176..b4485b10beb8 100644
---- a/drivers/staging/nvec/nvec.c
-+++ b/drivers/staging/nvec/nvec.c
-@@ -712,7 +712,7 @@ static irqreturn_t nvec_interrupt(int irq, void *dev)
- 	 * TODO: replace the udelay with a read back after each writel above
- 	 * in order to work around a hardware issue, see i2c-tegra.c
- 	 *
--	 * Unfortunately, this change causes an intialisation issue with the
-+	 * Unfortunately, this change causes an initialisation issue with the
- 	 * touchpad, which needs to be fixed first.
- 	 */
- 	udelay(100);
---
-2.25.1
+Community-specific questions:
+The Linux Kernel Community does not have any additional questions.
+(You can write that in the box, or leave it blank.)
+ 
+Internship project timeline:
+This field is optional. If you have a proposal, please include it.
+It is common for the intern and mentors to create that timeline
+during the first week of the internship.
+ 
+Neither the mentors, nor I, see your original application to Outreachy,
+so be sure to answer these 3 question on the final app fully:
+- Past experience with this free software community
+- Past experience with other free software communities
+- Relevant personal or class projects
 
+Questions, please ask on the list, email your mentors or me.
+
+Thanks,
+Alison
