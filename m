@@ -1,160 +1,183 @@
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.17])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-pl1-f177.google.com (mail-pl1-f177.google.com [209.85.214.177])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 48D9A53E16
-	for <outreachy@lists.linux.dev>; Mon,  1 Apr 2024 21:16:48 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.198.163.17
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B09CC54BD3
+	for <outreachy@lists.linux.dev>; Mon,  1 Apr 2024 21:19:50 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.214.177
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1712006211; cv=none; b=EfidxXzCavPH5YPiejb0kvXdz4hDSosCshbzDRJ5+KXYhqrwHlLN7QaLDmaF+tqWQT+kivcJlAtz0H1Mnw3HwKTTbv0iN64fP7SjJ/+Q4+h8sUo8sXPgYY3D1nRoeleFSbIB76tnTCK7Xncr//uthnikBC5DpsrShL5HriodvY4=
+	t=1712006392; cv=none; b=H9kk4Nogc9PzcJyq4xihcJurLDD/ERkfIoYnXbHCiDT7DbjUs2yZSKQpv9DBEyFEkjAHTsQbhpPHGxiuFjXl52HvUGCsVINWGKzaQgnHeUYH+ZXtJblp7MkQZEr4fUNSP6NpC3gSqFK6RYie/PP25O0wv4oN9HAy6CRiOzh2Aqg=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1712006211; c=relaxed/simple;
-	bh=GM+CVwavA7piPEbJBmLaj4CH9m8HW5BYuyBqKiD+AXU=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=EIV0fZM2WIGzi24h/MUzjJcPf0/4McJ40DE5092zteNdlmUEnI7qD+FNHR/4xNKxb8xydlSIds0z6Vh/nn7I/1h2yctUJoA2Docd3YjG/um3KfWo6uAYxVdS5F9gcHaD+gznLXq+eEhbVsoK2M+ld8gbHUgfuFR1w1Cdo80kGFY=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=IpVdH4fY; arc=none smtp.client-ip=192.198.163.17
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
+	s=arc-20240116; t=1712006392; c=relaxed/simple;
+	bh=kdpmtDg4h+ZaTEw599M0gGG7yvAN5EtrhRYwskEeHao=;
+	h=Message-ID:Subject:From:To:Cc:Date:Content-Type:MIME-Version; b=s2/Eejn6D2E7CVr3dhW/L9i9TWdwVtA79eob71wxjPlvdaBpY75HdmPIvq7vsSX9OHDmyI3YRvcONcvnWJwXGcylCPnITD9YxYbWs5SZcD0atBx5LcEHsJdlFHpSG2kcai24uBq08ZXfDMyryjS7Yodq6facPKwRiaOktE+4RTo=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=B5gAQdQD; arc=none smtp.client-ip=209.85.214.177
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="IpVdH4fY"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1712006208; x=1743542208;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=GM+CVwavA7piPEbJBmLaj4CH9m8HW5BYuyBqKiD+AXU=;
-  b=IpVdH4fY3tvaDoNICfmhQCKlCLiuu7aZKGt3kdlKmN9sRQF1aPw0u5L1
-   11c3RigXwLyOeU6tHCplCtF5qc3dHghPhzKylf1rpCrqVFvwmsdZ63uG0
-   pAhOz8e9cg3Jn//p6DG3YzLtToX4vDPHWjSdIMOxzeyvWmvefGPF/biH3
-   99uwVh1txt+tNCXYagK4mnNjlEPeL4kq13hm3wmM4mly6/W4ZTd2MVpuG
-   oWjDDr3TnHygg1IxyK/0SN/M+CaROhwRfjUWLNeIAAG48mu2tvIGjDDAb
-   49JavaUfuHqC96aJcIitusJhI+hiDA6oRS3SgOQa+oFYzwi4mGSt79gIq
-   A==;
-X-CSE-ConnectionGUID: 1DlpSNuSTCGCW3a2d86YIw==
-X-CSE-MsgGUID: 9o9C4eY1SLu/DsMYGYnuZg==
-X-IronPort-AV: E=McAfee;i="6600,9927,11031"; a="7016368"
-X-IronPort-AV: E=Sophos;i="6.07,173,1708416000"; 
-   d="scan'208";a="7016368"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
-  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Apr 2024 14:16:47 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,173,1708416000"; 
-   d="scan'208";a="22523806"
-Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.209.66.56])
-  by orviesa005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Apr 2024 14:16:47 -0700
-Date: Mon, 1 Apr 2024 14:16:45 -0700
-From: Alison Schofield <alison.schofield@intel.com>
-To: Saasha Gupta <saashaa1122@gmail.com>
-Cc: Outreachy Linux Kernel <outreachy@lists.linux.dev>
-Subject: Re: unable to submit patch with git send email
-Message-ID: <ZgskPa8w3Wzf/LwO@aschofie-mobl2>
-References: <CAN=P6FPod=+6zTPKy03oxCVYXzgcnnr6AFpwjZp8qap4bxod8w@mail.gmail.com>
- <Zgry0gfhKL8+iv/q@aschofie-mobl2>
- <CAN=P6FPOSOW6uKoYrmEB_7tHub8Ba09Vftjw0eeniL_MK01CPw@mail.gmail.com>
- <ZgsLAL2sELdJ9/h2@aschofie-mobl2>
- <CAN=P6FOtZUeOGKPSBP4gTUH3aAQc_AF8nN9AWCOWELEB2_1WpQ@mail.gmail.com>
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="B5gAQdQD"
+Received: by mail-pl1-f177.google.com with SMTP id d9443c01a7336-1e244c7cbf8so14133795ad.0
+        for <outreachy@lists.linux.dev>; Mon, 01 Apr 2024 14:19:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1712006389; x=1712611189; darn=lists.linux.dev;
+        h=mime-version:user-agent:content-transfer-encoding:date:cc:to:from
+         :subject:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=qatYW0FVH4vK7aU+YtR0sJpjoSbWBUdIZVdcV4l8QGY=;
+        b=B5gAQdQDw07tYCIkPAqCWr5e8Srmmj0/lyt8ayR5+MddIyIa0/QDj1bzzr9PyKrIR1
+         jvj/SYaZ2J0rGJ0XN6o9hnkpAs2HHOzpjXnvQM6ltvrxE/OOpoH8iJoFkv4U9BGrGslu
+         dbh+BV7cQlRVSRCd/D2slBWyl2OxKTafKU9HNn7+iucIHuQ2k1UFm7+FJT81O9/ZXnzb
+         4xRoKX6yjrc8vaQmYKBDinFoto4DkS5BYAF2EnFC2TxEcPN/7FZ0ilxkBzj2FCPkSo5E
+         CcfxhKXjHenClaHvZ5GGJpaZgaf9L5CEB1OrwQBvqiPv0YCZLQS7HqNHvkoNWCElNenc
+         s0Lw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1712006389; x=1712611189;
+        h=mime-version:user-agent:content-transfer-encoding:date:cc:to:from
+         :subject:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=qatYW0FVH4vK7aU+YtR0sJpjoSbWBUdIZVdcV4l8QGY=;
+        b=Ih8h03KD+LM94M7RH8iMyAVJdIAXZcnlspZl0WfOSfv6q+UcnQIkJ9CG1Oggna/Q9N
+         CTCvgkyLFgwdQIXm1zYB7OZ7nkmySaiuhTQJ7uYobsda+rhZiEMK7+1GrL+JJdCjhhm0
+         5poHMTdxctR/Tth5lmhnDzC077QnSbzdmEnZ0PI1kAe+nLNWaKj1sloHfM9BG5KOk/Ft
+         gdLe/D5ZnyUOAdskP2zwlkmhdxyCSid16MXBTBB67OqQ2+aWuyYc/p4RdMScoQOJ+gT0
+         Hy0V4iIV8RVZZbtnR6gR4Y5FVwKRfEQn7qU4zF8BU7LcQb0+uf5OWCJtl1nKVb0erLOH
+         YtDA==
+X-Gm-Message-State: AOJu0YyPgRyy9KoAWh3WxUg6BCOfdFwsX1pjBJiYKpN2/pFWnm43W3AS
+	fQHz99LwgaGqpR2/kGjr6DTXhpN1rbHlYGpPGpFOQwrX1Wn0skUuCTCwlnLx1AiKF59QU34=
+X-Google-Smtp-Source: AGHT+IFyatp8pZR7m4gdRImie5+Pxs8LyqcglgAU6FWLI1nl9divwmsv0dBs9FwBXQCCuhdsSLfAqg==
+X-Received: by 2002:a17:902:ea11:b0:1e2:3e0a:fc61 with SMTP id s17-20020a170902ea1100b001e23e0afc61mr9242312plg.34.1712006389310;
+        Mon, 01 Apr 2024 14:19:49 -0700 (PDT)
+Received: from [10.0.2.15] ([103.48.100.252])
+        by smtp.gmail.com with ESMTPSA id kv7-20020a17090328c700b001e0d8fd208fsm9449296plb.291.2024.04.01.14.19.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 01 Apr 2024 14:19:49 -0700 (PDT)
+Message-ID: <4398bb88a2f3b58646267e3d6ceb5414c86b65cb.camel@gmail.com>
+Subject: [PATCH] Add test for more file systems in landlock - ext4
+From: Saasha Gupta <saashaa1122@gmail.com>
+To: outreachy@lists.linux.dev, mic@digikod.net,
+ linux-kselftest@vger.kernel.org,  linux-kselftest@vger.kernel.org
+Cc: alison.schofield@intel.com, paul@paul-moore.com, julia.lawall@inria.fr, 
+	saashaa1122@gmail.com
+Date: Tue, 02 Apr 2024 02:49:14 +0530
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.52.0 
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAN=P6FOtZUeOGKPSBP4gTUH3aAQc_AF8nN9AWCOWELEB2_1WpQ@mail.gmail.com>
 
-On Tue, Apr 02, 2024 at 01:21:21AM +0530, Saasha Gupta wrote:
-> I used gmail to send and reply to this email, using plain text.
-> 
-> Saasha
+From 7bb9c34291b295e192155d2b800d2ef7ce910dfc Mon Sep 17 00:00:00 2001
+From: Saasha Gupta <saashaa1122@gmail.com>
+Date: Mon, 1 Apr 2024 19:59:56 +0530
+Subject: [PATCH] Add test for more file systems in landlock - ext4
 
-Take a look at First Patch tutorial 'Email Software' section:
-https://kernelnewbies.org/OutreachyfirstpatchSetup#:~:text=your%20new%20kernel.-,Email%20software,-The%20following%20instructions
+Landlock LSM, a part of the security subsystem, has some tests in place
+for synthetic filesystems such as tmpfs, proc, sysfs, etc. The goal of
+the new issue, and hence this patch is to add tests for non synthetic
+file systems, such as ext4, btrfs, etc
 
-It has mutt setup directions and also some special instructions for
-Arch users of git send-email.
+This patch adds tests for the ext4 file system. This includes creation
+of a loop device (test-ext4.img) and formating with mkfs.
+
+Signed-off-by: Saasha Gupta <saashaa1122@gmail.com>
+---
+ tools/testing/selftests/landlock/fs_test.c | 65 ++++++++++++++++++++++
+ 1 file changed, 65 insertions(+)
+
+diff --git a/tools/testing/selftests/landlock/fs_test.c
+b/tools/testing/selftests/landlock/fs_test.c
+index 9a6036fbf..b2f2cd5a5 100644
+--- a/tools/testing/selftests/landlock/fs_test.c
++++ b/tools/testing/selftests/landlock/fs_test.c
+@@ -4675,6 +4675,14 @@ FIXTURE_VARIANT_ADD(layout3_fs, hostfs) {
+ 	.cwd_fs_magic =3D HOSTFS_SUPER_MAGIC,
+ };
+=20
++/* Add more filesystems */
++FIXTURE_VARIANT_ADD(layout3_fs, ext4) {
++	.mnt =3D {
++		.type =3D "ext4",
++	},
++	.file_path =3D TMP_DIR "/dir/file",
++};
++
+ FIXTURE_SETUP(layout3_fs)
+ {
+ 	struct stat statbuf;
+@@ -4728,6 +4736,63 @@ FIXTURE_SETUP(layout3_fs)
+ 		self->has_created_file =3D true;
+ 		clear_cap(_metadata, CAP_DAC_OVERRIDE);
+ 	}
++
++	/* Create non synthetic file system - ext4 */
++	if (stat(self->dir_path, &statbuf) !=3D 0) {
++		pid_t pid =3D fork();
++
++		if (pid =3D=3D -1) {
++			perror("Failed to fork");
++			exit(EXIT_FAILURE);
++		} else if (pid =3D=3D 0) {
++			static const fallocate_argv[] =3D { "fallocate",
+"--length",
++						   "4M", "test-
+ext4.img",
++						   NULL };
++			execvp(fallocate_argv[0], fallocate_argv);
++			perror("execvp failed");
++			exit(EXIT_FAILURE);
++		} else {
++			int status;
++
++			if (waitpid(pid, &status, 0) =3D=3D -1) {
++				perror("waitpid failed");
++				exit(EXIT_FAILURE);
++			}
++			if (!WIFEXITED(status) || WEXITSTATUS(status)
+!=3D 0) {
++				TH_LOG(stderr,
++					"Failed to create ext4
+filesystem image: fallocate failed\n");
++				exit(EXIT_FAILURE);
++			}
++		}
++	}
++
++	/* Formate and mount non synthetic file system - ext4 */
++	if (stat("mnt", &statbuf) !=3D 0) {
++		pid_t pid =3D fork();
++
++		if (pid =3D=3D -1) {
++			perror("Failed to fork");
++			exit(EXIT_FAILURE);
++		} else if (pid =3D=3D 0) {
++			static const mkfs_argv[] =3D { "mkfs.ext4", "-
+q",
++					      "test-ext4.img", "mnt",
+NULL };
++			execvp(mkfs_argv[0], mkfs_argv);
++			perror("execvp failed");
++			exit(EXIT_FAILURE);
++		} else {
++			int status;
++
++			if (waitpid(pid, &status, 0) =3D=3D -1) {
++				perror("waitpid failed");
++				exit(EXIT_FAILURE);
++			}
++			if (!WIFEXITED(status) || WEXITSTATUS(status)
+!=3D 0) {
++				TH_LOG(stderr,
++					"Failed to format ext4
+filesystem image: mkfs.ext4 failed\n");
++				exit(EXIT_FAILURE);
++			}
++		}
++	}
+ }
+=20
+ FIXTURE_TEARDOWN(layout3_fs)
+--=20
+2.44.0
 
 
-> 
-> On Tue, Apr 2, 2024 at 12:59 AM Alison Schofield
-> <alison.schofield@intel.com> wrote:
-> >
-> >
-> >
-> >
-> > On Tue, Apr 02, 2024 at 12:56:06AM +0530, Saasha Gupta wrote:
-> > > Dear Alison,
-> > >
-> > > Thanks for the advice. I do indeed have a format-patch available,
-> > > which I tried sending via "mutt -H pkgname.patch"
-> > >
-> > > Mutt throwed error 70.
-> >
-> > How did you send this email?  Are you using mutt?
-> >
-> > (please don't trim recipients in an in progress thread)
-> >
-> > --Alison
-> >
-> > >
-> > > Saasha
-> > >
-> > > On Mon, Apr 1, 2024 at 11:15 PM Alison Schofield
-> > > <alison.schofield@intel.com> wrote:
-> > > >
-> > > > On Mon, Apr 01, 2024 at 10:43:53PM +0530, Saasha Gupta wrote:
-> > > > > Dear maintainers of the outreachy team,
-> > > > >
-> > > > > I am trying to submit a patch using `git send-email --to
-> > > > > outreachy@lists.linux.dev` with a few other emails cc'd.
-> > > > >
-> > > > > My SSL version is: 2.085
-> > > > >
-> > > > > When I am send the mail, I get the following error:
-> > > > > > DEBUG: .../IO/Socket/SSL.pm:851: local error: SSL connect attempt failed error:0A00010B:SSL routines::wrong version number
-> > > > > > DEBUG: .../IO/Socket/SSL.pm:854: fatal SSL error: SSL connect attempt failed error:0A00010B:SSL routines::wrong version number
-> > > > >
-> > > > > I am on Arch Linux, and I have installed the correct version with:
-> > > > > cpan Authen::SASL, and installed the correct perl package:
-> > > > > perl-io-socket-ssl 2.085-1
-> > > > >
-> > > > > My .gitconfig looks like this:
-> > > > > [sendemail]
-> > > > >     smtpencryption = ssl
-> > > > >     smtpserver = smtp.gmail.com
-> > > > >     smtpuser = saashaa1122@gmail.com
-> > > > >     smtpserverport = 587
-> > > > >     confirm = auto
-> > > > >     supresscc = self
-> > > > >
-> > > > > [user]
-> > > > >     name = Saasha Gupta
-> > > > >     email = saashaa1122@gmail.com
-> > > > > [core]
-> > > > >     editor = vim
-> > > > >     compression = 0
-> > > > >
-> > > > > I am not exactly sure why this issue is popping up, as all the
-> > > > > required dependencies are installed. Can you please point me to where
-> > > > > I might be going wrong?
-> > > > >
-> > > > > PS: Regarding the previous mail, I have solved all the problems, and
-> > > > > created a patch.
-> > > >
-> > > > Hi Saasha,
-> > > >
-> > > > A couple of thoughts here. I'm not familiar w your SSL version issue,
-> > > > maybe google that specifically.
-> > > >
-> > > > - https://man.archlinux.org/man/git-send-email.1.en  suggests using tls
-> > > >
-> > > > - And as a work-around, if you have used git format-patch and have the
-> > > > patch file ready to mail...you can simply do "mutt -H yourpatchname.patch"
-> > > > When it opens in mutt you can edit the To/Cc if needed.
-> > > > Send to yourself first to test.
-> > > >
-> > > > --Alison
-> > > >
-> > > >
-> > > > >
-> > > > > Thanks, Saasha
