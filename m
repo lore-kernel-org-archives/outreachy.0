@@ -1,283 +1,83 @@
-Received: from smtp-8faf.mail.infomaniak.ch (smtp-8faf.mail.infomaniak.ch [83.166.143.175])
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5574912BE86
-	for <outreachy@lists.linux.dev>; Tue,  2 Apr 2024 14:47:39 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=83.166.143.175
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 690832AD1E
+	for <outreachy@lists.linux.dev>; Tue,  2 Apr 2024 16:57:14 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.9
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1712069265; cv=none; b=Eec+htpL+MPwSlEZvxw2frYP/HZOlni/CtbiIDExE8YOYI9HCZFKvl3R+g9Quav835CdBZkZgLgcz5FXmV6QVXoVpBqDwk/sbmfIKKlpmLwbW1C5BraCuZYXkbBSER1eZFmHlFBaFy64c2d2q/OGSQT5gw3E+1Evs+diASahirk=
+	t=1712077036; cv=none; b=uRUD/moEns/GNqTQ9V5W5fhyxNXYE6ClZ6DzroKt3GxXGIB2RQP+O1RsNwI8FKgXz6agjmhb7Jjfg1nq5B9+CqHjhVn5YygI9bKnuvnqVw5SECNjRHdVJ4Z1EG1jjfEn7WwEsXbt1uDoCW0pQvH8FAQNEX6ppnks1Ikpo/duCIU=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1712069265; c=relaxed/simple;
-	bh=MK6T30+Wo49ys6KJbgTIIvM1jdCkjz/jw84lOhXfxfo=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=SrHvlbLhzUHC2+RM3Xxhdp+LdipIooq5a/5nJC+IbKQUxGvJTwbk5/VZJ2yNyd8Y3u9jBzz/bYW6Psw04HHHD+NcmnTFEwz2/u9CmH9MbrD6Mu3DcOG8uS1BsBObNXyPdaVZ5RMfd9aNmgm3ovTd+0Y4Bg70gLzsZYdUjH9Qxkk=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net; spf=pass smtp.mailfrom=digikod.net; dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b=eZVLpNRe; arc=none smtp.client-ip=83.166.143.175
-Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=digikod.net
+	s=arc-20240116; t=1712077036; c=relaxed/simple;
+	bh=8iW/RfJyqFiC2w6eDZ86ozqWeSiw3rxUCp/GNxrHzmU=;
+	h=Date:From:To:Subject:Message-ID:MIME-Version:Content-Type:
+	 Content-Disposition; b=EBLidn2Py18+39y/y26hfODQNZfWd5auRa8WBUA9igL5s1LqdLPfY48Cc+/47/jeIixCegmL02lv70RCx28qcx2mpVZDQkhFyt5drjYmKKfIHclMk9NVPTywMbZF+wfT98V+FeYDZ07dx5IbYHJQmIKei5jp/33U2me4r/qUoOw=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=WL9tTaYo; arc=none smtp.client-ip=198.175.65.9
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b="eZVLpNRe"
-Received: from smtp-3-0000.mail.infomaniak.ch (smtp-3-0000.mail.infomaniak.ch [10.4.36.107])
-	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4V89hg4PLczJsc;
-	Tue,  2 Apr 2024 16:47:31 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=digikod.net;
-	s=20191114; t=1712069251;
-	bh=MK6T30+Wo49ys6KJbgTIIvM1jdCkjz/jw84lOhXfxfo=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=eZVLpNRedGX1fsnBtd8O4iL3hg2jMgMkmVvwcK1prvfAkNZ2vOlmwe0IvuMzjBJaV
-	 SC376maWx78ZDcT2Qv3iBGbbIE5hZGVP/upjcHjetdbSD3V2v/NG9gLXveJsbhZds5
-	 G25+DVjyigtsy7P22cihf4lvcSIf3kcwLvL6ZBNw=
-Received: from unknown by smtp-3-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4V89hf5TcYz1b2;
-	Tue,  2 Apr 2024 16:47:30 +0200 (CEST)
-Date: Tue, 2 Apr 2024 16:47:30 +0200
-From: =?utf-8?Q?Micka=C3=ABl_Sala=C3=BCn?= <mic@digikod.net>
-To: Dorine Tipo <dorine.a.tipo@gmail.com>
-Cc: skhan@linuxfoundation.org, outreachy@lists.linux.dev, 
-	Linux-kernel-mentees-request@lists.linuxfoundation.org, fabio.maria.de.francesco@linux.intel.com, 
-	linux-security-module@vger.kernel.org, Paul Moore <paul@paul-moore.com>
-Subject: Re: [PATCH v3] selftests/landlock: Add tests for io_uring openat
- access control with Landlock rules
-Message-ID: <20240402.MooNaiJoo2cu@digikod.net>
-References: <20240330124817.42591-1-dorine.a.tipo@gmail.com>
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="WL9tTaYo"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1712077034; x=1743613034;
+  h=date:from:to:subject:message-id:mime-version;
+  bh=8iW/RfJyqFiC2w6eDZ86ozqWeSiw3rxUCp/GNxrHzmU=;
+  b=WL9tTaYoVMM0Aq6HgjaY6VNNtfMDioBxCfXzze3CS5fokW/3XSaorVv+
+   aRbH3VN5LZM1Ee5W7mMLpLsTh/XD/jgNdVfug7tb5WT1iQ+ZlOc6GXecU
+   oB1dXK700Dyk95gF0aW3k+VILNEYU7XQEVEw/2jgdd6OCRat+GQqOl+FU
+   As6M2Y0uDDWJedbVyX5Y1G7HrVq3wB1rWQ7DAnXr8RsgYbNIi1puqn0vZ
+   WKzcJvmtpJA95+G8D4qD63nCG9Yg8oq+dEql3sbkktyyIxT8kOn94XZZs
+   YEwUKYUXoQjLrD9yyLHNqfo9cNcOTS4X+e24uK2dkOip1ZdQ2YjNXXDG0
+   w==;
+X-CSE-ConnectionGUID: rV8LTEmKSYWy7J4DecPcGg==
+X-CSE-MsgGUID: DZ75fb+DT5CWd5Drk4A9IA==
+X-IronPort-AV: E=McAfee;i="6600,9927,11032"; a="29744885"
+X-IronPort-AV: E=Sophos;i="6.07,175,1708416000"; 
+   d="scan'208";a="29744885"
+Received: from fmviesa009.fm.intel.com ([10.60.135.149])
+  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Apr 2024 09:57:14 -0700
+X-CSE-ConnectionGUID: ncAjTr5ESfqiVzgoSeDlpw==
+X-CSE-MsgGUID: 8+Y06yHYRDOY+cHRwDkXgA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.07,175,1708416000"; 
+   d="scan'208";a="18177157"
+Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.209.65.243])
+  by fmviesa009-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Apr 2024 09:57:13 -0700
+Date: Tue, 2 Apr 2024 09:57:11 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: Outreachy Linux Kernel <outreachy@lists.linux.dev>
+Subject: Outreachy Applications Closed
+Message-ID: <Zgw451LebWw5mu+Q@aschofie-mobl2>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240330124817.42591-1-dorine.a.tipo@gmail.com>
-X-Infomaniak-Routing: alpha
 
-On Sat, Mar 30, 2024 at 12:48:17PM +0000, Dorine Tipo wrote:
-> This v3 patch expands Landlock test coverage to include io_uring
-> operations. It also introduces a test for IORING_OP_OPENAT with Landlock
-> rules, verifying allowed and disallowed access. This makes sure that
-> IORING_OP_OPENAT is well covered from security vulnerabilities by
-> ensuring Landlock controls access through io_uring.
-> 
-> It also updates Makefile to include -luring in the LDLIBS variable.
-> This ensures the test code has access to the necessary library for
-> io_uring operations.
-> 
-> The patch includes several improvements to the test_ioring_openat(),
-> FIXTURE_SETUP() and FIXTURE_TEARDOWN() addressing feedback received on
-> the initial version.
-> 
-> Signed-off-by: Dorine Tipo <dorine.a.tipo@gmail.com>
-> ---
-> Changes since V1:
-> V2: - Consolidated two dependent patches in the V1 series into one patch
->       as suggested by Fabio.
->     - Updated The subject line to be more descriptive.
-> 
-> V3: - Added "selftests/landlock" subject prefix
->     - Revised wording in the commit message to accurately reflect the
->       test functionality as suggested by Mickaël.
->     - Updated the Fixture set_up and tear_down to create and remove the
->       necesssary files and folders for testing access.
->     - renamed allowed_ruleset_fd and disallowed_ruleset_fd to ruleset_fd
->       as suggest by Mickaël.
->     - Moved all variable declarations to the top of the function.
->     - Refactored the code to test only one allowed and one restricted
->       path instead of iterating through all the paths.
->     - Added comments to explain what is happening in different blocks
->       of code
->     - Removed the clang-format markers.
->     - Removed unused arguments in the function definition.
->     - Added a final rule struct with a null path to the allowed_rule
->       and disallowed_rule arrays as suggested by Fabio.
->     - CC'd the missing mailing lists as suggested by Shuah.
->     - All executables have been included in the .gitignore so no updates
->       are necessary.
-> 
->  tools/testing/selftests/landlock/Makefile  |   4 +-
->  tools/testing/selftests/landlock/fs_test.c | 140 +++++++++++++++++++++
->  2 files changed, 142 insertions(+), 2 deletions(-)
-> 
-> diff --git a/tools/testing/selftests/landlock/Makefile b/tools/testing/selftests/landlock/Makefile
-> index 348e2dbdb4e0..ab47d1dadb62 100644
-> --- a/tools/testing/selftests/landlock/Makefile
-> +++ b/tools/testing/selftests/landlock/Makefile
-> @@ -13,11 +13,11 @@ TEST_GEN_PROGS := $(src_test:.c=)
->  TEST_GEN_PROGS_EXTENDED := true
-> 
->  # Short targets:
-> -$(TEST_GEN_PROGS): LDLIBS += -lcap
-> +$(TEST_GEN_PROGS): LDLIBS += -lcap -luring
->  $(TEST_GEN_PROGS_EXTENDED): LDFLAGS += -static
-> 
->  include ../lib.mk
-> 
->  # Targets with $(OUTPUT)/ prefix:
-> -$(TEST_GEN_PROGS): LDLIBS += -lcap
-> +$(TEST_GEN_PROGS): LDLIBS += -lcap -luring
->  $(TEST_GEN_PROGS_EXTENDED): LDFLAGS += -static
-> diff --git a/tools/testing/selftests/landlock/fs_test.c b/tools/testing/selftests/landlock/fs_test.c
-> index 9a6036fbf289..7147c75b6f79 100644
-> --- a/tools/testing/selftests/landlock/fs_test.c
-> +++ b/tools/testing/selftests/landlock/fs_test.c
-> @@ -21,7 +21,10 @@
->  #include <sys/stat.h>
->  #include <sys/sysmacros.h>
->  #include <sys/vfs.h>
-> +#include <sys/types.h>
->  #include <unistd.h>
-> +#include <liburing.h>
-> +#include <linux/io_uring.h>
-> 
->  #include "common.h"
-> 
-> @@ -4874,4 +4877,141 @@ TEST_F_FORK(layout3_fs, release_inodes)
->  	ASSERT_EQ(EACCES, test_open(TMP_DIR, O_RDONLY));
->  }
-> 
-> +/* Test io_uring's IORING_OP_OPENAT access control with landlock rules */
 
-What is tested exactly?
+Thank-you to applicants, mentors, and reviewers for participating
+in this contribution period. It is now closed.
 
-> +static int test_ioring_op_openat(struct __test_metadata *const _metadata, const __u64 access, const char **paths)
-> +{
-> +	int ruleset_fd;
-> +	int ret;
-> +	struct io_uring ring;
-> +	struct io_uring_sqe *sqe;
-> +
-> +	/* Test Allowed Access */
-> +	const struct rule allowed_rule[] = {
-> +		{
-> +			.path = paths[0],
-> +			.access = access,
-> +		},
-> +		{
-> +			.path = NULL,
-> +		},
-> +	};
-> +
-> +	ruleset_fd = create_ruleset(_metadata, allowed_rule[0].access, allowed_rule);
-> +
-> +	ASSERT_LE(0, ruleset_fd);
-> +
-> +	ret = io_uring_queue_init(32, &ring, 0);
-> +
-> +	ASSERT_EQ(0, ret);
-> +
-> +	/* Test allowed path */
-> +	sqe = io_uring_get_sqe(&ring);
-> +
-> +	/* Prepare SQE  for the openat operation */
-> +	io_uring_prep_openat(sqe, AT_FDCWD, paths[0], O_RDONLY, ruleset_fd);
+Intern selections will be announced on the alums page on May 1st.
 
-Can you please explain what this call to io_uring_prep_openat() do?
+Our community was fortunate to have a talented, passionate, and
+active group of applicants! Applicants who are not offered an
+internship are encouraged to continue their participation in the
+community and to consider participating in a future round. Dates
+will be announced here: [2]
 
-> +
-> +	/* Verify successful SQE preparation */
-> +	ASSERT_EQ(0, ret);
-> +
-> +	if (ret != 0)
-> +		return ret;
-> +
-> +	ret = io_uring_submit(&ring);
-> +
-> +	/* Verify 1 submission completed */
-> +	ASSERT_EQ(1, ret);
-> +
-> +	/* Test Disallowed Access */
-> +	const struct rule disallowed_rule[] = {
-> +		{
-> +			.path = paths[0],
-> +			.access = 0,
-> +		},
-> +		{
-> +			.path = NULL,
-> +		},
-> +	};
-> +
-> +	ruleset_fd = create_ruleset(_metadata, disallowed_rule[0].access, disallowed_rule);
-> +
-> +	ASSERT_LE(0, ruleset_fd);
-> +
-> +	/* Test disallowed path */
-> +	sqe = io_uring_get_sqe(&ring);
-> +
-> +	/* Prepare SQE  for the openat operation */
-> +	io_uring_prep_openat(sqe, AT_FDCWD, paths[0], O_RDONLY, ruleset_fd);
-> +
-> +	/* Verify successful SQE preparation */
-> +	ASSERT_EQ(0, ret);
-> +
-> +	if (ret != 0)
-> +		return ret;
-> +
-> +	ret = io_uring_submit(&ring);
-> +	/* Verify 1 submission completed */
-> +	ASSERT_EQ(0, ret);
-> +
-> +	/*  Cleanup: close ruleset fds, etc. */
-> +	close(ruleset_fd);
-> +
-> +	return 0;
-> +}
-> +
-> +FIXTURE(openat_test) {
-> +	struct __test_metadata *metadata;
-> +	const char *allowed_paths[11];
-> +	const char *disallowed_paths[2];
-> +};
-> +
-> +FIXTURE_SETUP(openat_test)
-> +{
-> +	/* initialize metadata, allowed_paths, and disallowed_paths */
-> +	self->metadata = _metadata;
-> +	const char *temp_allowed_paths[] = {
-> +		file1_s1d1, file2_s1d1, file1_s1d2, file2_s1d2,
-> +		file1_s1d3, file2_s1d3, file1_s2d1, file1_s2d2,
-> +		file1_s2d3, file2_s2d3, file1_s3d1};
-> +
-> +	memcpy(self->allowed_paths, temp_allowed_paths, sizeof(temp_allowed_paths));
-> +
-> +	const char *temp_disallowed_paths[] = {dir_s3d2, dir_s3d3};
-> +
-> +	memcpy(self->disallowed_paths, temp_disallowed_paths, sizeof(temp_disallowed_paths));
-> +
-> +	/* Create necessary directories and files */
-> +	for (int i = 0; i < sizeof(self->allowed_paths) / sizeof(char *); i++) {
-> +		create_file(self->metadata, self->allowed_paths[i]);
-> +	}
-> +
-> +	/* Create directories for disallowed paths */
-> +	for (int i = 0; i < sizeof(self->disallowed_paths) / sizeof(char *); i++) {
-> +		create_directory(self->metadata, self->disallowed_paths[i]);
-> +	}
-> +}
-> +
-> +FIXTURE_TEARDOWN(openat_test)
-> +{
-> +	/* Clean up test environment */
-> +	for (int i = 0; i < sizeof(self->allowed_paths) / sizeof(char *); i++) {
-> +		remove_path(self->allowed_paths[i]);
-> +	}
-> +
-> +	for (int i = 0; i < sizeof(self->disallowed_paths) / sizeof(char *); i++) {
-> +		remove_path(self->disallowed_paths[i]);
-> +	}
-> +}
-> +
-> +/* Test IORING_OP_OPENAT. */
-> +TEST_F_FORK(openat_test, test_ioring_op_openat_allowed)
-> +{
-> +	test_ioring_op_openat(self->metadata, LANDLOCK_ACCESS_FS_READ_FILE |
-> +			      LANDLOCK_ACCESS_FS_WRITE_FILE, self->allowed_paths);
-> +}
-> +
-> +TEST_F_FORK(openat_test, test_ioring_op_openat_disallowed)
-> +{
-> +	test_ioring_op_openat(self->metadata, 0, self->disallowed_paths);
-> +}
-> +
->  TEST_HARNESS_MAIN
-> --
-> 2.25.1
-> 
-> 
+This list will not be monitored until the next contribution period
+opens in Fall of 2024. If you have patches in flight, go ahead and
+continue to copy this list until you get closure on them. (As you've
+learned, we never drop folks from an ongoing mail thread.) If you have
+new patches to send, use your get_maintainers script only, omitting the
+Outreachy list.
+
+
+All the best,
+Alison
+
+[1] https://www.outreachy.org/alums/
+[2] https://www.outreachy.org/
