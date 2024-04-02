@@ -1,173 +1,257 @@
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
+Received: from smtp-1908.mail.infomaniak.ch (smtp-1908.mail.infomaniak.ch [185.125.25.8])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 463E2664AB
-	for <outreachy@lists.linux.dev>; Tue,  2 Apr 2024 11:54:53 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.104
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9308112F5B1
+	for <outreachy@lists.linux.dev>; Tue,  2 Apr 2024 14:35:35 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=185.125.25.8
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1712058897; cv=none; b=gADWuLA97Jwniq5L3h37dSGZLJLriPisS3T1McHMq00wFUc6PmdoOd3vQYsSyYHMt3fpPPf1VeVfO6UWm3Bv+sDu3sFoR0MxWkI1elPbaomNf7lQV5Damuki+Ew4G1/HbHu9HWhRXHXhkFkWKa20VZXKbjQc5XNtQY4oPxoRJHI=
+	t=1712068542; cv=none; b=g6s01FrsHOY+i7wmk9vOMiXKdBU6K/8+rfT62JYdh7Fev/St2/4XCYC1pGMfhq7en4mofrZmB1Wyu81mazpIqIT8ArL1AzX/xDpcEXYKA32aXVmwK7eX81li3V5ztDyYhG7FpSrV6CLcEWdtRVBxQWkQA883uxVpQs1tDP4kL+I=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1712058897; c=relaxed/simple;
-	bh=AbcJNfryz3ikREq1ToLFUEKmW32S8324XKssQNFnC/o=;
-	h=Date:From:To:cc:Subject:In-Reply-To:Message-ID:References:
-	 MIME-Version:Content-Type; b=fGjqyeehoMzRm5Q6A4aZWGv7vpBJ/SuV7vVvWzCp7Lil1hvITOQPvz68GqoEgUwcQNTJtjbiLqqTqsfyP46HEJa9+zyKSqmgNgjNS6FrYQircVm73O2xW24oB0l8tAwWzsEnvnINQqLlkrB3rHSmSf2FhWglioVmpHcST8q0K0c=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=lUn7NZ5t; arc=none smtp.client-ip=192.134.164.104
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
+	s=arc-20240116; t=1712068542; c=relaxed/simple;
+	bh=XbhEgS2qgQ/ETZvWq9Hn5rCu3j5xdGFroGw0awV1sp4=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=n1sWD7AF2d1HGVX9jvKyeIcm4g64g7PBjI6pRI6ZznZpLjVON2CA0PBCvCVixxFiEl1WQnttOnFopb1hNdoUBxIf889dwXMaQQ/cP4/MvGUSM8x1yfvklV++rRy6p82r4gq4SvKLjob4KNvLQjlvAYvWksut7hANYeclKmHIsWY=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net; spf=pass smtp.mailfrom=digikod.net; dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b=ekMHOtUE; arc=none smtp.client-ip=185.125.25.8
+Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=digikod.net
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="lUn7NZ5t"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=amhJgKxkEum2SG4fYWqJx66qHnEM75pqagVaDk/5ic4=;
-  b=lUn7NZ5tN794UWgWFjCP3saUsHSRGC0XLErDkfc4J6K0jEwSx/DIOfGA
-   5SPa34SOq6Pks/01idfZCee6RbyGV+FUKb2zSyHo03ToV1tcIKB08bjAx
-   qPD3PeiHY5xcRbZ5PR/701ROfKmj9XN2Ry33t0bbMGDzvoukVm2Np3PYn
-   M=;
-Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="6.07,174,1708383600"; 
-   d="scan'208";a="83651121"
-Received: from 71-51-181-183.chvl.centurylink.net (HELO hadrien) ([71.51.181.183])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Apr 2024 13:54:44 +0200
-Date: Tue, 2 Apr 2024 07:54:42 -0400 (EDT)
-From: Julia Lawall <julia.lawall@inria.fr>
-To: Saasha Gupta <saashaa1122@gmail.com>
-cc: outreachy@lists.linux.dev, mic@digikod.net, 
-    linux-security-module@vger.kernel.org, linux-kselftest@vger.kernel.org, 
-    alison.schofield@intel.com, paul@paul-moore.com, shuah@kernel.org
-Subject: Re: Subject: [PATCH] Add test for more file systems in landlock -
- ext4
-In-Reply-To: <860c9cadb2fa06c8f10db42ad38405ee19d43a16.camel@gmail.com>
-Message-ID: <3cdf4be4-a9ee-4e4-c839-29ae58e4c199@inria.fr>
-References: <860c9cadb2fa06c8f10db42ad38405ee19d43a16.camel@gmail.com>
+	dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b="ekMHOtUE"
+Received: from smtp-3-0001.mail.infomaniak.ch (smtp-3-0001.mail.infomaniak.ch [10.4.36.108])
+	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4V89Ql4tYsz9YG;
+	Tue,  2 Apr 2024 16:35:27 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=digikod.net;
+	s=20191114; t=1712068527;
+	bh=XbhEgS2qgQ/ETZvWq9Hn5rCu3j5xdGFroGw0awV1sp4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ekMHOtUEo5EmqL1MxjTSqCGhFgFIxODRgNZwuP1DFl2KVyRG0uEboUpZeWJqzB/d/
+	 8i2JFdTCJ/GIYrFNEvDJ6+0vwR9Ju33R0UE+s9PCu91pgqCaAamXMTjdzFEJ7+jntA
+	 GraSeasa4sQhLmpKwHlZIfElxM65tY/XqO+H2bik=
+Received: from unknown by smtp-3-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4V89Ql1h0ZzMpnPm;
+	Tue,  2 Apr 2024 16:35:27 +0200 (CEST)
+Date: Tue, 2 Apr 2024 16:35:26 +0200
+From: =?utf-8?Q?Micka=C3=ABl_Sala=C3=BCn?= <mic@digikod.net>
+To: Tahera Fahimi <fahimitahera@gmail.com>
+Cc: Paul Moore <paul@paul-moore.com>, outreachy@lists.linux.dev
+Subject: Re: [PATCH] Adding helpers for unix_stream_connect.
+Message-ID: <20240402.ij4eeWaegai4@digikod.net>
+References: <ZgD8lTToWEhtNmpg@tahera-OptiPlex-5000>
+ <20240326.Ot8Zooveeh1k@digikod.net>
+ <ZgToAL0HpTvr3l6G@tahera-OptiPlex-5000>
+ <20240328.ShoR4Iecei8o@digikod.net>
+ <ZgeKZ8ANztsvO245@tahera-OptiPlex-5000>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <ZgeKZ8ANztsvO245@tahera-OptiPlex-5000>
+X-Infomaniak-Routing: alpha
 
+On Fri, Mar 29, 2024 at 09:43:35PM -0600, Tahera Fahimi wrote:
+> On Thu, Mar 28, 2024 at 03:42:24PM +0100, Mickaël Salaün wrote:
+> > On Wed, Mar 27, 2024 at 09:46:08PM -0600, Tahera Fahimi wrote:
+> > > On Tue, Mar 26, 2024 at 12:28:36PM +0100, Mickaël Salaün wrote:
+> > > > CCing Outreachy mailing list and Paul.
+> > > > 
+> > > > Related GitHub issue: https://github.com/landlock-lsm/linux/issues/7
+> > > > 
+> > > > On Sun, Mar 24, 2024 at 10:24:53PM -0600, TaheraFahimi wrote:
+> > > > > Signed-off-by: TaheraFahimi <fahimitahera@gmail.com>
+> > > > 
+> > > > I guess there is a space missing between your first and last name.
+> > > > 
+> > > > > ---
+> > > > >  security/landlock/task.c | 89 ++++++++++++++++++++++++++++++++++++++++
+> > > > >  1 file changed, 89 insertions(+)
+> > > > > 
+> > > > > diff --git a/security/landlock/task.c b/security/landlock/task.c
+> > > > > index 849f5123610b..10195492c169 100644
+> > > > > --- a/security/landlock/task.c
+> > > > > +++ b/security/landlock/task.c
+> > > > > @@ -14,6 +14,10 @@
+> > > > >  #include <linux/rcupdate.h>
+> > > > >  #include <linux/sched.h>
+> > > > >  
+> > > > > +/*to use sock structure*/
+> > > > > +#include <net/sock.h>
+> > > > > +#include <linux/spinlock.h>
+> > > > > +
+> > > > >  #include "common.h"
+> > > > >  #include "cred.h"
+> > > > >  #include "ruleset.h"
+> > > > > @@ -108,9 +112,94 @@ static int hook_ptrace_traceme(struct task_struct *const parent)
+> > > > >  	return task_ptrace(parent, current);
+> > > > >  }
+> > > > >  
+> > > > > +
+> > > > > +/** 
+> > > > > + * sk_get_peer_cred : Helper Function from socket.c
+> > > > > + * This helper is used to retrieve the sk_peer credentioals.
+> > > > > + */
+> > > > > +static const struct cred *sk_get_peer_cred(struct sock *sk)
+> > > > > +{
+> > > > > +        const struct cred *cred;
+> > > > > +        spin_lock(&sk->sk_peer_lock);
+> > > > > +        cred = get_cred(sk->sk_peer_cred);
+> > > > > +        spin_unlock(&sk->sk_peer_lock);
+> > > > > +        return cred;
+> > > > > +}
+> > > > > +/**
+> > > > > + * Use domain_scope_le() to scope the access same as ptrace trask.
+> > > > > + */
+> > > > > +static bool unix_sock_is_scoped(struct sock *const sock,
+> > > > > +                                struct sock *const other)
+> > > > > +{
+> > > > > +
+> > > > > +        bool is_scoped = true;
+> > > > > +        /* retrieve the credential of socks.
+> > > > > +	 * other->sk_peer_cred shows the listening socket credentials (This credential
+> > > > > +	 *  is created at the init_cred function and will be coped to 
+> > > > > +	 *  sock->sk_peer_cred later.) 
+> > > > > +	 * Since sock is the connecting sock, then the credential of current task is equal
+> > > > > +	 * to cred_sock.
+> > > > > +	 *  */
+> > > > > +        const struct cred *cred_other;
+> > > > > +	cred_other = sk_get_peer_cred(other);
+> > > > > +	
+> > > > > +	
+> > > > > +	const struct cred *cred_sock;
+> > > > > +	spin_lock(&sock->sk_peer_lock);
+> > > > 
+> > > > You don't need a lock for get_current_cred(), and sk_peer_lock is
+> > > > unrelated to current.  Moreover, security_unix_stream_connect() is
+> > > > already called while the lock being held.
+> > > > 
+> > > > > +	cred_sock = get_current_cred();
+> > > > > +	spin_unlock(&sock->sk_peer_lock);
+> > > > 
+> > > > You should just use landlock_get_current_domain().
+> > > > 
+> > > > > +
+> > > > > +	printk(KERN_DEBUG "cred uid: %u\n", cred_other->gid);
+> > > > 
+> > > > You can use pr_warn() instead.
+> > > > 
+> > > > > +	//printk("the cred_sock kuid is : %llx\n", cred_sock->uid);
+> > > > > +        /* retrieve the landlock_rulesets*/
+> > > > > +	
+> > > > > +	printk("The credentials is retrieved!!\n");
+> > > > > +        
+> > > > > +	const struct landlock_cred_security *dom_parent, *dom_child;
+> > > > 
+> > > > dom_* variables should only be used to refer do a Landlock domain, not
+> > > > credential.
+> > > > 
+> > > > > +        const struct landlock_ruleset *parent, *child;
+> > > > > +        rcu_read_lock();
+> > > > > +        dom_parent = landlock_cred(cred_other);
+> > > > > +	dom_child = landlock_cred(cred_sock);
+> > > > > +        parent = dom_parent->domain;
+> > > > > +        child = dom_child->domain;
+> > > > > +	/* by uncommenting either the following if statement or calling 
+> > > > > +	 * the domain_scope_le the kernel will not load(make task dead)*/
+> > > > > +	//if (dom_parent)
+> > > > > +	//	printk("parent num rules %u\n", parent->num_rules);
+> > > > > +	if (child)
+> > > > > +		printk("child num rules %u\n", child->num_rules);
+> > > > > +	//is_scoped = domain_scope_le(parent, child);
+> > > > > +        rcu_read_unlock();
+> > > > > +	
+> > > > > +
+> > > > > +        return is_scoped;
+> > > > > +}
+> > > > > +/**
+> > > > > + * unix_stream_connect -
+> > > > > + */
+> > > > > +static int task_unix_stream_connect(struct sock *const sock,
+> > > > > +                               struct sock *const other,
+> > > > > +                               struct sock *const newsk)
+> > > > > +{
+> > > > > +        /* How do we check if the scoping is optional?  */
+> > > > > +        if (unix_sock_is_scoped(sock, other))
+> > > > > +                return 0;
+> > > > > +        return -EPERM;
+> > > > > +}
+> > > > > +
+> > > > > +/**
+> > > > > + * hook_unix_stream_connect -
+> > > > > + */
+> > > > > +static int hook_unix_stream_connect(struct sock *const sock, struct sock *const other,
+> > > > > +                                    struct sock *const newsk)
+> > > > > +{
+> > > > > +        return task_unix_stream_connect(sock, other, newsk);
+> > > > > +}
+> > > > > +
+> > > > >  static struct security_hook_list landlock_hooks[] __ro_after_init = {
+> > > > >  	LSM_HOOK_INIT(ptrace_access_check, hook_ptrace_access_check),
+> > > > >  	LSM_HOOK_INIT(ptrace_traceme, hook_ptrace_traceme),
+> > > > > +        LSM_HOOK_INIT(unix_stream_connect, hook_unix_stream_connect),
+> > > > >  };
+> > > > >  
+> > > > >  __init void landlock_add_task_hooks(void)
+> > > > > -- 
+> > > > > 2.34.1
+> > > > > 
+> > > > > Hello Mickaël, I made the following changes to have an lsm hook function for "unix_stream_connect". I have an issue, and I was wondering  if you could give me a hint. At first, I retrieve the Socks' credentials through "sk_get_peer_cred" and "get_current_cred". As "get_current_cred" gives us the credential related to the sock and "sk_get_peer_cred" gives the sock's peer credential(this credential will be copied to the field sock->sk_peer_cred later). Then I uses both credentials to get their "landlock_cred_security". Since "landlock_cred_security" has a pointer to the "landlock_ruleset", we can pass their rulesets to the "domain_scope_le" (same as ptrace task) to check if it is scoped or not.
+> > > > 
+> > > > Hello Tahera, this approach looks good.  However, Landlock credential's
+> > > > domain may be NULL (when the task is not sandboxed).
+> > > > 
+> > > > > The problem is that If I uncomment the "domain_scope_le", the kernel will not work. I think it can not get the "landlock_cred_security". Thank you :)
+> > > > 
+> > > > "the kernel will not work" could means a lot of things. We need a more
+> > > > precise description.
+> > > > 
+> > > > I guess this is just a draft and the patch is not ready yet so it's
+> > > > fine. Before sending a first official version you should follow and read
+> > > > the referenced links and especially the kernel patch how-to here:
+> > > > https://lore.kernel.org/outreachy/ZeZzLWtk2nZ1Pcgw@aschofie-mobl2/
+> > > > For instance, you should run checkpatch.pl
+> > > > For Landlock-specific patches, they need to be formatted with
+> > > > clang-format (-i) and pass all the checked done by check-linux.sh
+> > > > provided here: https://github.com/landlock-lsm/landlock-test-tools
+> > > Hello Mickaël,
+> > > Thanks for the hints. As you mentioned, it was just a draft. Besides the check-linux.sh checks, is there any other checks that I can test my code with them? Or should I sandbox a task and test the codes with that?
+> > 
+> > Please send a complete patch taking into account my review (and with a
+> > link to this initial draft).
+> Hi Mickaël, 
+> I completed my patch, in the following link: 
+> https://lore.kernel.org/outreachy/ZgX5TRTrSDPrJFfF@tahera-OptiPlex-5000/T/#u
 
+I reviewed your patch. We should continue the discussion there.
 
-On Tue, 2 Apr 2024, Saasha Gupta wrote:
+>  
+> > Then, you can write new tests using the hierarchy variants from
+> > tools/testing/selftests/landlock/ptrace_test.c (I'll probably rename the
+> > file but you don't need to worry about that).  The new TEST_F(hierarchy,
+> > abstract_unix_socket) should be pretty similar to TEST_F(hierarchy,
+> > trace) but without the ptrace and Yama specificities.
+> Also, While I was writing the test code, I noticed that my patch only
+> considers that the connecting socket is always the child process (But
+> a parent process should also be able to connet to a child process). So 
+> I should cover this as well, do you agree?
 
-> Date: Mon, 2 Apr 2024 19:59:56 +0530
->
-> RE: This patch is now properly preformatted.
->
-> Landlock LSM, a part of the security subsystem, has some tests in place
-> for synthetic filesystems such as tmpfs, proc, sysfs, etc. The goal of
-> the new issue, and hence this patch is to add tests for non synthetic
-> file systems, such as ext4, btrfs, etc
+I think the domain_scope_le()'s argument are reversed. Both may_send and
+stream_connect should block reaching a task in a parent domain or not
+sandboxed. Tests will make this clear.
 
-Not clear what "the new issue" could be.  Remember that the log message
-will be read by people 10 years from now.  Not just by the recipientes of
-the patch.
-
-> This patch adds tests for the ext4 file system. This includes creation
-> of a loop device (test-ext4.img) and formating with mkfs.
-
-This should be "Add tests for the ext4 file system".
-You seem to have joined application period quite late, but you need to
-read the entirety of the tutorial and be prepared to follow it, at least
-in the future.
-
-julia
-
->
-> Signed-off-by: Saasha Gupta <saashaa1122@gmail.com>
-> ---
->  tools/testing/selftests/landlock/fs_test.c | 65 ++++++++++++++++++++++
->  1 file changed, 65 insertions(+)
->
-> diff --git a/tools/testing/selftests/landlock/fs_test.c b/tools/testing/selftests/landlock/fs_test.c
-> index 9a6036fbf..b2f2cd5a5 100644
-> --- a/tools/testing/selftests/landlock/fs_test.c
-> +++ b/tools/testing/selftests/landlock/fs_test.c
-> @@ -4675,6 +4675,14 @@ FIXTURE_VARIANT_ADD(layout3_fs, hostfs) {
->  	.cwd_fs_magic = HOSTFS_SUPER_MAGIC,
->  };
->
-> +/* Add more filesystems */
-> +FIXTURE_VARIANT_ADD(layout3_fs, ext4) {
-> +	.mnt = {
-> +		.type = "ext4",
-> +	},
-> +	.file_path = TMP_DIR "/dir/file",
-> +};
-> +
->  FIXTURE_SETUP(layout3_fs)
->  {
->  	struct stat statbuf;
-> @@ -4728,6 +4736,63 @@ FIXTURE_SETUP(layout3_fs)
->  		self->has_created_file = true;
->  		clear_cap(_metadata, CAP_DAC_OVERRIDE);
->  	}
-> +
-> +	/* Create non synthetic file system - ext4 */
-> +	if (stat(self->dir_path, &statbuf) != 0) {
-> +		pid_t pid = fork();
-> +
-> +		if (pid == -1) {
-> +			perror("Failed to fork");
-> +			exit(EXIT_FAILURE);
-> +		} else if (pid == 0) {
-> +			static const fallocate_argv[] = { "fallocate", "--length",
-> +						   "4M", "test-ext4.img",
-> +						   NULL };
-> +			execvp(fallocate_argv[0], fallocate_argv);
-> +			perror("execvp failed");
-> +			exit(EXIT_FAILURE);
-> +		} else {
-> +			int status;
-> +
-> +			if (waitpid(pid, &status, 0) == -1) {
-> +				perror("waitpid failed");
-> +				exit(EXIT_FAILURE);
-> +			}
-> +			if (!WIFEXITED(status) || WEXITSTATUS(status) != 0) {
-> +				TH_LOG(stderr,
-> +					"Failed to create ext4 filesystem image: fallocate failed\n");
-> +				exit(EXIT_FAILURE);
-> +			}
-> +		}
-> +	}
-> +
-> +	/* Formate and mount non synthetic file system - ext4 */
-> +	if (stat("mnt", &statbuf) != 0) {
-> +		pid_t pid = fork();
-> +
-> +		if (pid == -1) {
-> +			perror("Failed to fork");
-> +			exit(EXIT_FAILURE);
-> +		} else if (pid == 0) {
-> +			static const mkfs_argv[] = { "mkfs.ext4", "-q",
-> +					      "test-ext4.img", "mnt", NULL };
-> +			execvp(mkfs_argv[0], mkfs_argv);
-> +			perror("execvp failed");
-> +			exit(EXIT_FAILURE);
-> +		} else {
-> +			int status;
-> +
-> +			if (waitpid(pid, &status, 0) == -1) {
-> +				perror("waitpid failed");
-> +				exit(EXIT_FAILURE);
-> +			}
-> +			if (!WIFEXITED(status) || WEXITSTATUS(status) != 0) {
-> +				TH_LOG(stderr,
-> +					"Failed to format ext4 filesystem image: mkfs.ext4 failed\n");
-> +				exit(EXIT_FAILURE);
-> +			}
-> +		}
-> +	}
->  }
->
->  FIXTURE_TEARDOWN(layout3_fs)
-> --
-> 2.44.0
->
->
->
->
+> 
+> Thank you,
+> Tahera
+> 
+> > When your tests will be OK, you can send a new patch series (new
+> > version) with one patch for the kernel changes and another for the new
+> > tests.  You'll also need to write the user documentation in another
+> > patch.
+> > 
+> > > Thanks again,
+> > > Also, In my previous I forgot to copy outreachy email, so I sent this email again.
+> > > Regards,
+> > > Tahera
+> > > 
+> 
