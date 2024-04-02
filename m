@@ -1,44 +1,43 @@
-Received: from smtp-1908.mail.infomaniak.ch (smtp-1908.mail.infomaniak.ch [185.125.25.8])
+Received: from smtp-8faf.mail.infomaniak.ch (smtp-8faf.mail.infomaniak.ch [83.166.143.175])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9308112F5B1
-	for <outreachy@lists.linux.dev>; Tue,  2 Apr 2024 14:35:35 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=185.125.25.8
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5574912BE86
+	for <outreachy@lists.linux.dev>; Tue,  2 Apr 2024 14:47:39 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=83.166.143.175
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1712068542; cv=none; b=g6s01FrsHOY+i7wmk9vOMiXKdBU6K/8+rfT62JYdh7Fev/St2/4XCYC1pGMfhq7en4mofrZmB1Wyu81mazpIqIT8ArL1AzX/xDpcEXYKA32aXVmwK7eX81li3V5ztDyYhG7FpSrV6CLcEWdtRVBxQWkQA883uxVpQs1tDP4kL+I=
+	t=1712069265; cv=none; b=Eec+htpL+MPwSlEZvxw2frYP/HZOlni/CtbiIDExE8YOYI9HCZFKvl3R+g9Quav835CdBZkZgLgcz5FXmV6QVXoVpBqDwk/sbmfIKKlpmLwbW1C5BraCuZYXkbBSER1eZFmHlFBaFy64c2d2q/OGSQT5gw3E+1Evs+diASahirk=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1712068542; c=relaxed/simple;
-	bh=XbhEgS2qgQ/ETZvWq9Hn5rCu3j5xdGFroGw0awV1sp4=;
+	s=arc-20240116; t=1712069265; c=relaxed/simple;
+	bh=MK6T30+Wo49ys6KJbgTIIvM1jdCkjz/jw84lOhXfxfo=;
 	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=n1sWD7AF2d1HGVX9jvKyeIcm4g64g7PBjI6pRI6ZznZpLjVON2CA0PBCvCVixxFiEl1WQnttOnFopb1hNdoUBxIf889dwXMaQQ/cP4/MvGUSM8x1yfvklV++rRy6p82r4gq4SvKLjob4KNvLQjlvAYvWksut7hANYeclKmHIsWY=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net; spf=pass smtp.mailfrom=digikod.net; dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b=ekMHOtUE; arc=none smtp.client-ip=185.125.25.8
+	 Content-Type:Content-Disposition:In-Reply-To; b=SrHvlbLhzUHC2+RM3Xxhdp+LdipIooq5a/5nJC+IbKQUxGvJTwbk5/VZJ2yNyd8Y3u9jBzz/bYW6Psw04HHHD+NcmnTFEwz2/u9CmH9MbrD6Mu3DcOG8uS1BsBObNXyPdaVZ5RMfd9aNmgm3ovTd+0Y4Bg70gLzsZYdUjH9Qxkk=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net; spf=pass smtp.mailfrom=digikod.net; dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b=eZVLpNRe; arc=none smtp.client-ip=83.166.143.175
 Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=digikod.net
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b="ekMHOtUE"
-Received: from smtp-3-0001.mail.infomaniak.ch (smtp-3-0001.mail.infomaniak.ch [10.4.36.108])
-	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4V89Ql4tYsz9YG;
-	Tue,  2 Apr 2024 16:35:27 +0200 (CEST)
+	dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b="eZVLpNRe"
+Received: from smtp-3-0000.mail.infomaniak.ch (smtp-3-0000.mail.infomaniak.ch [10.4.36.107])
+	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4V89hg4PLczJsc;
+	Tue,  2 Apr 2024 16:47:31 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=digikod.net;
-	s=20191114; t=1712068527;
-	bh=XbhEgS2qgQ/ETZvWq9Hn5rCu3j5xdGFroGw0awV1sp4=;
+	s=20191114; t=1712069251;
+	bh=MK6T30+Wo49ys6KJbgTIIvM1jdCkjz/jw84lOhXfxfo=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ekMHOtUEo5EmqL1MxjTSqCGhFgFIxODRgNZwuP1DFl2KVyRG0uEboUpZeWJqzB/d/
-	 8i2JFdTCJ/GIYrFNEvDJ6+0vwR9Ju33R0UE+s9PCu91pgqCaAamXMTjdzFEJ7+jntA
-	 GraSeasa4sQhLmpKwHlZIfElxM65tY/XqO+H2bik=
-Received: from unknown by smtp-3-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4V89Ql1h0ZzMpnPm;
-	Tue,  2 Apr 2024 16:35:27 +0200 (CEST)
-Date: Tue, 2 Apr 2024 16:35:26 +0200
+	b=eZVLpNRedGX1fsnBtd8O4iL3hg2jMgMkmVvwcK1prvfAkNZ2vOlmwe0IvuMzjBJaV
+	 SC376maWx78ZDcT2Qv3iBGbbIE5hZGVP/upjcHjetdbSD3V2v/NG9gLXveJsbhZds5
+	 G25+DVjyigtsy7P22cihf4lvcSIf3kcwLvL6ZBNw=
+Received: from unknown by smtp-3-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4V89hf5TcYz1b2;
+	Tue,  2 Apr 2024 16:47:30 +0200 (CEST)
+Date: Tue, 2 Apr 2024 16:47:30 +0200
 From: =?utf-8?Q?Micka=C3=ABl_Sala=C3=BCn?= <mic@digikod.net>
-To: Tahera Fahimi <fahimitahera@gmail.com>
-Cc: Paul Moore <paul@paul-moore.com>, outreachy@lists.linux.dev
-Subject: Re: [PATCH] Adding helpers for unix_stream_connect.
-Message-ID: <20240402.ij4eeWaegai4@digikod.net>
-References: <ZgD8lTToWEhtNmpg@tahera-OptiPlex-5000>
- <20240326.Ot8Zooveeh1k@digikod.net>
- <ZgToAL0HpTvr3l6G@tahera-OptiPlex-5000>
- <20240328.ShoR4Iecei8o@digikod.net>
- <ZgeKZ8ANztsvO245@tahera-OptiPlex-5000>
+To: Dorine Tipo <dorine.a.tipo@gmail.com>
+Cc: skhan@linuxfoundation.org, outreachy@lists.linux.dev, 
+	Linux-kernel-mentees-request@lists.linuxfoundation.org, fabio.maria.de.francesco@linux.intel.com, 
+	linux-security-module@vger.kernel.org, Paul Moore <paul@paul-moore.com>
+Subject: Re: [PATCH v3] selftests/landlock: Add tests for io_uring openat
+ access control with Landlock rules
+Message-ID: <20240402.MooNaiJoo2cu@digikod.net>
+References: <20240330124817.42591-1-dorine.a.tipo@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -48,210 +47,237 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <ZgeKZ8ANztsvO245@tahera-OptiPlex-5000>
+In-Reply-To: <20240330124817.42591-1-dorine.a.tipo@gmail.com>
 X-Infomaniak-Routing: alpha
 
-On Fri, Mar 29, 2024 at 09:43:35PM -0600, Tahera Fahimi wrote:
-> On Thu, Mar 28, 2024 at 03:42:24PM +0100, Mickaël Salaün wrote:
-> > On Wed, Mar 27, 2024 at 09:46:08PM -0600, Tahera Fahimi wrote:
-> > > On Tue, Mar 26, 2024 at 12:28:36PM +0100, Mickaël Salaün wrote:
-> > > > CCing Outreachy mailing list and Paul.
-> > > > 
-> > > > Related GitHub issue: https://github.com/landlock-lsm/linux/issues/7
-> > > > 
-> > > > On Sun, Mar 24, 2024 at 10:24:53PM -0600, TaheraFahimi wrote:
-> > > > > Signed-off-by: TaheraFahimi <fahimitahera@gmail.com>
-> > > > 
-> > > > I guess there is a space missing between your first and last name.
-> > > > 
-> > > > > ---
-> > > > >  security/landlock/task.c | 89 ++++++++++++++++++++++++++++++++++++++++
-> > > > >  1 file changed, 89 insertions(+)
-> > > > > 
-> > > > > diff --git a/security/landlock/task.c b/security/landlock/task.c
-> > > > > index 849f5123610b..10195492c169 100644
-> > > > > --- a/security/landlock/task.c
-> > > > > +++ b/security/landlock/task.c
-> > > > > @@ -14,6 +14,10 @@
-> > > > >  #include <linux/rcupdate.h>
-> > > > >  #include <linux/sched.h>
-> > > > >  
-> > > > > +/*to use sock structure*/
-> > > > > +#include <net/sock.h>
-> > > > > +#include <linux/spinlock.h>
-> > > > > +
-> > > > >  #include "common.h"
-> > > > >  #include "cred.h"
-> > > > >  #include "ruleset.h"
-> > > > > @@ -108,9 +112,94 @@ static int hook_ptrace_traceme(struct task_struct *const parent)
-> > > > >  	return task_ptrace(parent, current);
-> > > > >  }
-> > > > >  
-> > > > > +
-> > > > > +/** 
-> > > > > + * sk_get_peer_cred : Helper Function from socket.c
-> > > > > + * This helper is used to retrieve the sk_peer credentioals.
-> > > > > + */
-> > > > > +static const struct cred *sk_get_peer_cred(struct sock *sk)
-> > > > > +{
-> > > > > +        const struct cred *cred;
-> > > > > +        spin_lock(&sk->sk_peer_lock);
-> > > > > +        cred = get_cred(sk->sk_peer_cred);
-> > > > > +        spin_unlock(&sk->sk_peer_lock);
-> > > > > +        return cred;
-> > > > > +}
-> > > > > +/**
-> > > > > + * Use domain_scope_le() to scope the access same as ptrace trask.
-> > > > > + */
-> > > > > +static bool unix_sock_is_scoped(struct sock *const sock,
-> > > > > +                                struct sock *const other)
-> > > > > +{
-> > > > > +
-> > > > > +        bool is_scoped = true;
-> > > > > +        /* retrieve the credential of socks.
-> > > > > +	 * other->sk_peer_cred shows the listening socket credentials (This credential
-> > > > > +	 *  is created at the init_cred function and will be coped to 
-> > > > > +	 *  sock->sk_peer_cred later.) 
-> > > > > +	 * Since sock is the connecting sock, then the credential of current task is equal
-> > > > > +	 * to cred_sock.
-> > > > > +	 *  */
-> > > > > +        const struct cred *cred_other;
-> > > > > +	cred_other = sk_get_peer_cred(other);
-> > > > > +	
-> > > > > +	
-> > > > > +	const struct cred *cred_sock;
-> > > > > +	spin_lock(&sock->sk_peer_lock);
-> > > > 
-> > > > You don't need a lock for get_current_cred(), and sk_peer_lock is
-> > > > unrelated to current.  Moreover, security_unix_stream_connect() is
-> > > > already called while the lock being held.
-> > > > 
-> > > > > +	cred_sock = get_current_cred();
-> > > > > +	spin_unlock(&sock->sk_peer_lock);
-> > > > 
-> > > > You should just use landlock_get_current_domain().
-> > > > 
-> > > > > +
-> > > > > +	printk(KERN_DEBUG "cred uid: %u\n", cred_other->gid);
-> > > > 
-> > > > You can use pr_warn() instead.
-> > > > 
-> > > > > +	//printk("the cred_sock kuid is : %llx\n", cred_sock->uid);
-> > > > > +        /* retrieve the landlock_rulesets*/
-> > > > > +	
-> > > > > +	printk("The credentials is retrieved!!\n");
-> > > > > +        
-> > > > > +	const struct landlock_cred_security *dom_parent, *dom_child;
-> > > > 
-> > > > dom_* variables should only be used to refer do a Landlock domain, not
-> > > > credential.
-> > > > 
-> > > > > +        const struct landlock_ruleset *parent, *child;
-> > > > > +        rcu_read_lock();
-> > > > > +        dom_parent = landlock_cred(cred_other);
-> > > > > +	dom_child = landlock_cred(cred_sock);
-> > > > > +        parent = dom_parent->domain;
-> > > > > +        child = dom_child->domain;
-> > > > > +	/* by uncommenting either the following if statement or calling 
-> > > > > +	 * the domain_scope_le the kernel will not load(make task dead)*/
-> > > > > +	//if (dom_parent)
-> > > > > +	//	printk("parent num rules %u\n", parent->num_rules);
-> > > > > +	if (child)
-> > > > > +		printk("child num rules %u\n", child->num_rules);
-> > > > > +	//is_scoped = domain_scope_le(parent, child);
-> > > > > +        rcu_read_unlock();
-> > > > > +	
-> > > > > +
-> > > > > +        return is_scoped;
-> > > > > +}
-> > > > > +/**
-> > > > > + * unix_stream_connect -
-> > > > > + */
-> > > > > +static int task_unix_stream_connect(struct sock *const sock,
-> > > > > +                               struct sock *const other,
-> > > > > +                               struct sock *const newsk)
-> > > > > +{
-> > > > > +        /* How do we check if the scoping is optional?  */
-> > > > > +        if (unix_sock_is_scoped(sock, other))
-> > > > > +                return 0;
-> > > > > +        return -EPERM;
-> > > > > +}
-> > > > > +
-> > > > > +/**
-> > > > > + * hook_unix_stream_connect -
-> > > > > + */
-> > > > > +static int hook_unix_stream_connect(struct sock *const sock, struct sock *const other,
-> > > > > +                                    struct sock *const newsk)
-> > > > > +{
-> > > > > +        return task_unix_stream_connect(sock, other, newsk);
-> > > > > +}
-> > > > > +
-> > > > >  static struct security_hook_list landlock_hooks[] __ro_after_init = {
-> > > > >  	LSM_HOOK_INIT(ptrace_access_check, hook_ptrace_access_check),
-> > > > >  	LSM_HOOK_INIT(ptrace_traceme, hook_ptrace_traceme),
-> > > > > +        LSM_HOOK_INIT(unix_stream_connect, hook_unix_stream_connect),
-> > > > >  };
-> > > > >  
-> > > > >  __init void landlock_add_task_hooks(void)
-> > > > > -- 
-> > > > > 2.34.1
-> > > > > 
-> > > > > Hello Mickaël, I made the following changes to have an lsm hook function for "unix_stream_connect". I have an issue, and I was wondering  if you could give me a hint. At first, I retrieve the Socks' credentials through "sk_get_peer_cred" and "get_current_cred". As "get_current_cred" gives us the credential related to the sock and "sk_get_peer_cred" gives the sock's peer credential(this credential will be copied to the field sock->sk_peer_cred later). Then I uses both credentials to get their "landlock_cred_security". Since "landlock_cred_security" has a pointer to the "landlock_ruleset", we can pass their rulesets to the "domain_scope_le" (same as ptrace task) to check if it is scoped or not.
-> > > > 
-> > > > Hello Tahera, this approach looks good.  However, Landlock credential's
-> > > > domain may be NULL (when the task is not sandboxed).
-> > > > 
-> > > > > The problem is that If I uncomment the "domain_scope_le", the kernel will not work. I think it can not get the "landlock_cred_security". Thank you :)
-> > > > 
-> > > > "the kernel will not work" could means a lot of things. We need a more
-> > > > precise description.
-> > > > 
-> > > > I guess this is just a draft and the patch is not ready yet so it's
-> > > > fine. Before sending a first official version you should follow and read
-> > > > the referenced links and especially the kernel patch how-to here:
-> > > > https://lore.kernel.org/outreachy/ZeZzLWtk2nZ1Pcgw@aschofie-mobl2/
-> > > > For instance, you should run checkpatch.pl
-> > > > For Landlock-specific patches, they need to be formatted with
-> > > > clang-format (-i) and pass all the checked done by check-linux.sh
-> > > > provided here: https://github.com/landlock-lsm/landlock-test-tools
-> > > Hello Mickaël,
-> > > Thanks for the hints. As you mentioned, it was just a draft. Besides the check-linux.sh checks, is there any other checks that I can test my code with them? Or should I sandbox a task and test the codes with that?
-> > 
-> > Please send a complete patch taking into account my review (and with a
-> > link to this initial draft).
-> Hi Mickaël, 
-> I completed my patch, in the following link: 
-> https://lore.kernel.org/outreachy/ZgX5TRTrSDPrJFfF@tahera-OptiPlex-5000/T/#u
-
-I reviewed your patch. We should continue the discussion there.
-
->  
-> > Then, you can write new tests using the hierarchy variants from
-> > tools/testing/selftests/landlock/ptrace_test.c (I'll probably rename the
-> > file but you don't need to worry about that).  The new TEST_F(hierarchy,
-> > abstract_unix_socket) should be pretty similar to TEST_F(hierarchy,
-> > trace) but without the ptrace and Yama specificities.
-> Also, While I was writing the test code, I noticed that my patch only
-> considers that the connecting socket is always the child process (But
-> a parent process should also be able to connet to a child process). So 
-> I should cover this as well, do you agree?
-
-I think the domain_scope_le()'s argument are reversed. Both may_send and
-stream_connect should block reaching a task in a parent domain or not
-sandboxed. Tests will make this clear.
-
+On Sat, Mar 30, 2024 at 12:48:17PM +0000, Dorine Tipo wrote:
+> This v3 patch expands Landlock test coverage to include io_uring
+> operations. It also introduces a test for IORING_OP_OPENAT with Landlock
+> rules, verifying allowed and disallowed access. This makes sure that
+> IORING_OP_OPENAT is well covered from security vulnerabilities by
+> ensuring Landlock controls access through io_uring.
 > 
-> Thank you,
-> Tahera
+> It also updates Makefile to include -luring in the LDLIBS variable.
+> This ensures the test code has access to the necessary library for
+> io_uring operations.
 > 
-> > When your tests will be OK, you can send a new patch series (new
-> > version) with one patch for the kernel changes and another for the new
-> > tests.  You'll also need to write the user documentation in another
-> > patch.
-> > 
-> > > Thanks again,
-> > > Also, In my previous I forgot to copy outreachy email, so I sent this email again.
-> > > Regards,
-> > > Tahera
-> > > 
+> The patch includes several improvements to the test_ioring_openat(),
+> FIXTURE_SETUP() and FIXTURE_TEARDOWN() addressing feedback received on
+> the initial version.
+> 
+> Signed-off-by: Dorine Tipo <dorine.a.tipo@gmail.com>
+> ---
+> Changes since V1:
+> V2: - Consolidated two dependent patches in the V1 series into one patch
+>       as suggested by Fabio.
+>     - Updated The subject line to be more descriptive.
+> 
+> V3: - Added "selftests/landlock" subject prefix
+>     - Revised wording in the commit message to accurately reflect the
+>       test functionality as suggested by Mickaël.
+>     - Updated the Fixture set_up and tear_down to create and remove the
+>       necesssary files and folders for testing access.
+>     - renamed allowed_ruleset_fd and disallowed_ruleset_fd to ruleset_fd
+>       as suggest by Mickaël.
+>     - Moved all variable declarations to the top of the function.
+>     - Refactored the code to test only one allowed and one restricted
+>       path instead of iterating through all the paths.
+>     - Added comments to explain what is happening in different blocks
+>       of code
+>     - Removed the clang-format markers.
+>     - Removed unused arguments in the function definition.
+>     - Added a final rule struct with a null path to the allowed_rule
+>       and disallowed_rule arrays as suggested by Fabio.
+>     - CC'd the missing mailing lists as suggested by Shuah.
+>     - All executables have been included in the .gitignore so no updates
+>       are necessary.
+> 
+>  tools/testing/selftests/landlock/Makefile  |   4 +-
+>  tools/testing/selftests/landlock/fs_test.c | 140 +++++++++++++++++++++
+>  2 files changed, 142 insertions(+), 2 deletions(-)
+> 
+> diff --git a/tools/testing/selftests/landlock/Makefile b/tools/testing/selftests/landlock/Makefile
+> index 348e2dbdb4e0..ab47d1dadb62 100644
+> --- a/tools/testing/selftests/landlock/Makefile
+> +++ b/tools/testing/selftests/landlock/Makefile
+> @@ -13,11 +13,11 @@ TEST_GEN_PROGS := $(src_test:.c=)
+>  TEST_GEN_PROGS_EXTENDED := true
+> 
+>  # Short targets:
+> -$(TEST_GEN_PROGS): LDLIBS += -lcap
+> +$(TEST_GEN_PROGS): LDLIBS += -lcap -luring
+>  $(TEST_GEN_PROGS_EXTENDED): LDFLAGS += -static
+> 
+>  include ../lib.mk
+> 
+>  # Targets with $(OUTPUT)/ prefix:
+> -$(TEST_GEN_PROGS): LDLIBS += -lcap
+> +$(TEST_GEN_PROGS): LDLIBS += -lcap -luring
+>  $(TEST_GEN_PROGS_EXTENDED): LDFLAGS += -static
+> diff --git a/tools/testing/selftests/landlock/fs_test.c b/tools/testing/selftests/landlock/fs_test.c
+> index 9a6036fbf289..7147c75b6f79 100644
+> --- a/tools/testing/selftests/landlock/fs_test.c
+> +++ b/tools/testing/selftests/landlock/fs_test.c
+> @@ -21,7 +21,10 @@
+>  #include <sys/stat.h>
+>  #include <sys/sysmacros.h>
+>  #include <sys/vfs.h>
+> +#include <sys/types.h>
+>  #include <unistd.h>
+> +#include <liburing.h>
+> +#include <linux/io_uring.h>
+> 
+>  #include "common.h"
+> 
+> @@ -4874,4 +4877,141 @@ TEST_F_FORK(layout3_fs, release_inodes)
+>  	ASSERT_EQ(EACCES, test_open(TMP_DIR, O_RDONLY));
+>  }
+> 
+> +/* Test io_uring's IORING_OP_OPENAT access control with landlock rules */
+
+What is tested exactly?
+
+> +static int test_ioring_op_openat(struct __test_metadata *const _metadata, const __u64 access, const char **paths)
+> +{
+> +	int ruleset_fd;
+> +	int ret;
+> +	struct io_uring ring;
+> +	struct io_uring_sqe *sqe;
+> +
+> +	/* Test Allowed Access */
+> +	const struct rule allowed_rule[] = {
+> +		{
+> +			.path = paths[0],
+> +			.access = access,
+> +		},
+> +		{
+> +			.path = NULL,
+> +		},
+> +	};
+> +
+> +	ruleset_fd = create_ruleset(_metadata, allowed_rule[0].access, allowed_rule);
+> +
+> +	ASSERT_LE(0, ruleset_fd);
+> +
+> +	ret = io_uring_queue_init(32, &ring, 0);
+> +
+> +	ASSERT_EQ(0, ret);
+> +
+> +	/* Test allowed path */
+> +	sqe = io_uring_get_sqe(&ring);
+> +
+> +	/* Prepare SQE  for the openat operation */
+> +	io_uring_prep_openat(sqe, AT_FDCWD, paths[0], O_RDONLY, ruleset_fd);
+
+Can you please explain what this call to io_uring_prep_openat() do?
+
+> +
+> +	/* Verify successful SQE preparation */
+> +	ASSERT_EQ(0, ret);
+> +
+> +	if (ret != 0)
+> +		return ret;
+> +
+> +	ret = io_uring_submit(&ring);
+> +
+> +	/* Verify 1 submission completed */
+> +	ASSERT_EQ(1, ret);
+> +
+> +	/* Test Disallowed Access */
+> +	const struct rule disallowed_rule[] = {
+> +		{
+> +			.path = paths[0],
+> +			.access = 0,
+> +		},
+> +		{
+> +			.path = NULL,
+> +		},
+> +	};
+> +
+> +	ruleset_fd = create_ruleset(_metadata, disallowed_rule[0].access, disallowed_rule);
+> +
+> +	ASSERT_LE(0, ruleset_fd);
+> +
+> +	/* Test disallowed path */
+> +	sqe = io_uring_get_sqe(&ring);
+> +
+> +	/* Prepare SQE  for the openat operation */
+> +	io_uring_prep_openat(sqe, AT_FDCWD, paths[0], O_RDONLY, ruleset_fd);
+> +
+> +	/* Verify successful SQE preparation */
+> +	ASSERT_EQ(0, ret);
+> +
+> +	if (ret != 0)
+> +		return ret;
+> +
+> +	ret = io_uring_submit(&ring);
+> +	/* Verify 1 submission completed */
+> +	ASSERT_EQ(0, ret);
+> +
+> +	/*  Cleanup: close ruleset fds, etc. */
+> +	close(ruleset_fd);
+> +
+> +	return 0;
+> +}
+> +
+> +FIXTURE(openat_test) {
+> +	struct __test_metadata *metadata;
+> +	const char *allowed_paths[11];
+> +	const char *disallowed_paths[2];
+> +};
+> +
+> +FIXTURE_SETUP(openat_test)
+> +{
+> +	/* initialize metadata, allowed_paths, and disallowed_paths */
+> +	self->metadata = _metadata;
+> +	const char *temp_allowed_paths[] = {
+> +		file1_s1d1, file2_s1d1, file1_s1d2, file2_s1d2,
+> +		file1_s1d3, file2_s1d3, file1_s2d1, file1_s2d2,
+> +		file1_s2d3, file2_s2d3, file1_s3d1};
+> +
+> +	memcpy(self->allowed_paths, temp_allowed_paths, sizeof(temp_allowed_paths));
+> +
+> +	const char *temp_disallowed_paths[] = {dir_s3d2, dir_s3d3};
+> +
+> +	memcpy(self->disallowed_paths, temp_disallowed_paths, sizeof(temp_disallowed_paths));
+> +
+> +	/* Create necessary directories and files */
+> +	for (int i = 0; i < sizeof(self->allowed_paths) / sizeof(char *); i++) {
+> +		create_file(self->metadata, self->allowed_paths[i]);
+> +	}
+> +
+> +	/* Create directories for disallowed paths */
+> +	for (int i = 0; i < sizeof(self->disallowed_paths) / sizeof(char *); i++) {
+> +		create_directory(self->metadata, self->disallowed_paths[i]);
+> +	}
+> +}
+> +
+> +FIXTURE_TEARDOWN(openat_test)
+> +{
+> +	/* Clean up test environment */
+> +	for (int i = 0; i < sizeof(self->allowed_paths) / sizeof(char *); i++) {
+> +		remove_path(self->allowed_paths[i]);
+> +	}
+> +
+> +	for (int i = 0; i < sizeof(self->disallowed_paths) / sizeof(char *); i++) {
+> +		remove_path(self->disallowed_paths[i]);
+> +	}
+> +}
+> +
+> +/* Test IORING_OP_OPENAT. */
+> +TEST_F_FORK(openat_test, test_ioring_op_openat_allowed)
+> +{
+> +	test_ioring_op_openat(self->metadata, LANDLOCK_ACCESS_FS_READ_FILE |
+> +			      LANDLOCK_ACCESS_FS_WRITE_FILE, self->allowed_paths);
+> +}
+> +
+> +TEST_F_FORK(openat_test, test_ioring_op_openat_disallowed)
+> +{
+> +	test_ioring_op_openat(self->metadata, 0, self->disallowed_paths);
+> +}
+> +
+>  TEST_HARNESS_MAIN
+> --
+> 2.25.1
+> 
 > 
