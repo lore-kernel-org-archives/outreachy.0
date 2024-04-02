@@ -1,174 +1,232 @@
-Received: from mail-pl1-f180.google.com (mail-pl1-f180.google.com [209.85.214.180])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from smtp-bc09.mail.infomaniak.ch (smtp-bc09.mail.infomaniak.ch [45.157.188.9])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EEF9B3D994
-	for <outreachy@lists.linux.dev>; Tue,  2 Apr 2024 08:08:20 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.214.180
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A56E558AC1
+	for <outreachy@lists.linux.dev>; Tue,  2 Apr 2024 09:53:18 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=45.157.188.9
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1712045302; cv=none; b=joBqbBU9C47LQ2dUiJI4tFCnnGk+Ix9cO27+jmSZKpfBfR2Rx7jYXLaVYQT87DH7veFE9Yu28pqj1y+krkHSRksLkaym9nGPvnGxsJQyJJGGvnUoUx6xHqmVdyLBB9HbcJwU2cJyAcbqHVgt6dAm0fEJR7kGs47AIRhT4U2FhQ0=
+	t=1712051604; cv=none; b=Nnw/r9+T6k5OIC0g4iZ44e9ecszs8DRUFLIB8a96UZaFkDh0T6b18p652CjSM66LfmgbWDFLtJomjBqZsrxAlmkL51B/cThN4VIM2W8ShveijZFE1Nbank/NgB0dn2IR5DU7eW8jFK0BcJ5Gy6gGoce7Io1bgYO4pELJzwB/rx0=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1712045302; c=relaxed/simple;
-	bh=RvjIoEFCnlt4dJMFpZZIOO4Sc8JyrvCLEP31AeMdHHA=;
-	h=Message-ID:Subject:From:To:Cc:Date:Content-Type:MIME-Version; b=onOKE3kQhVxa5zZruCh/vGlckMwpH+i2+81gnA36Kgw7Y1tA4jvaW1wI0qFgmCRS82XUTcuFff/WDD7+A9eZhEhPqB6ieCwBHqa39lSjaZuEqUYLsypt1kcMt7IACVfOp6VRutNFy7P0gTfJAxZgjBwPqH0QP8DfrROqXJugUnA=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=HnQI7sKh; arc=none smtp.client-ip=209.85.214.180
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	s=arc-20240116; t=1712051604; c=relaxed/simple;
+	bh=H92Z8U2YBFFdaC4L6X13E2f0ZVakp5ra2dp91kdypcc=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=t071CiQNRC/9Qpay2xKDuo4CYVhChEcuFbZKeucbmmN5Q4zYMKZvcLpYCHwTEmIowYIPzyvKoZyqK44THyET//qVzCwdeGdAt1FRlEN6WgMv4YgZ+dvpSXP1uJ08LT07Yu81MjgFfh5y21Brsk1fonCvecwVKIoQiO+9D92UgRs=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net; spf=pass smtp.mailfrom=digikod.net; dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b=nvhlaD+a; arc=none smtp.client-ip=45.157.188.9
+Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=digikod.net
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="HnQI7sKh"
-Received: by mail-pl1-f180.google.com with SMTP id d9443c01a7336-1e0878b76f3so35087515ad.0
-        for <outreachy@lists.linux.dev>; Tue, 02 Apr 2024 01:08:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1712045300; x=1712650100; darn=lists.linux.dev;
-        h=mime-version:user-agent:content-transfer-encoding:date:cc:to:from
-         :subject:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=cXS4cJz05mC2M6wLT/RtjR7duIEuJE+jEDewfgJLeHk=;
-        b=HnQI7sKhCM6hUbLBzR5TecZg3Jd5N7svipZae37Y5mDWDHjAhj7nIoFBUtLsFmyGWb
-         z9sXTZof9j+LnNmDK+mlhlNFwVjYA/ckx4GYPD3qIz+yG6NKR80QylpVHfckPMmNDQ+7
-         7GcILmA2w2KRSoZAOFu4g4I0t/k2qu4YeY2Jwv4RCLZu/cv9HQzH0mr5005Hyt+JjAQQ
-         5USUet+5bj0vRzbPstjoQnAkTTtaUumFurR0wekCNF4f+zkrGi3lhyvRfjp8QD1nT0XX
-         ByRP716aCqTJ5gY11WfET2sl9FNXgvbhbMq55bE9j8EpSTVv8Vk4vVzTmzST5iOqmpPx
-         l5Bg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712045300; x=1712650100;
-        h=mime-version:user-agent:content-transfer-encoding:date:cc:to:from
-         :subject:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=cXS4cJz05mC2M6wLT/RtjR7duIEuJE+jEDewfgJLeHk=;
-        b=o6BEfNePmPCpnpU0L36Dty+zjPvgv3ht5cx8pu6RLpRX/tJjb5ckGlkskgwdXLMze7
-         sQ5MMgz9qs/dwazzeaj1uHGjx66rkEAKqXbyjhOw/cuFurO4MILkI3nxPdS+rxEg4DnR
-         TG0PtktufkgYIMZjrlwC7q535jLKSVhe5vCDadTyCPKY+kBse4U4xVFabp/3hfxLycyX
-         lnybOqBgv2upZOOPmdud1HeNFXoKgcVJyAx/vyj8TVI73bw2APMNYoobLUgGWxnmTotx
-         XyEGrgag3SEwt3+W6q/SvVE8RbUJZz4F8LJW+69zzCaxyCNqyOZUc2nL0oxofFOkVOrB
-         ZEhg==
-X-Gm-Message-State: AOJu0YyFX5yKhJQPM/qmNchSsYcwE1adgUVSMflyoBAjbR/Ab3Tfte43
-	U7X7NagpOE05rTZ2e1NfqoSzLXfM7H9XkpswYO96mRwzqkEz0HYCJh0jH1YKK1t+H4nC
-X-Google-Smtp-Source: AGHT+IE34CFOHQtWBVwkAC+tfxS3OlSnWZqxk6sERGtnE+HKd+m7AK82BE8k/HW5JOx8TzyByc9RTg==
-X-Received: by 2002:a17:902:f68e:b0:1e0:c070:b082 with SMTP id l14-20020a170902f68e00b001e0c070b082mr23405632plg.14.1712045299863;
-        Tue, 02 Apr 2024 01:08:19 -0700 (PDT)
-Received: from [10.0.2.15] ([103.111.134.151])
-        by smtp.gmail.com with ESMTPSA id b15-20020a170902650f00b001dda64281a9sm10575031plk.85.2024.04.02.01.08.17
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 02 Apr 2024 01:08:19 -0700 (PDT)
-Message-ID: <860c9cadb2fa06c8f10db42ad38405ee19d43a16.camel@gmail.com>
-Subject: Subject: [PATCH] Add test for more file systems in landlock - ext4
-From: Saasha Gupta <saashaa1122@gmail.com>
-To: outreachy@lists.linux.dev, mic@digikod.net, 
-	linux-security-module@vger.kernel.org, linux-kselftest@vger.kernel.org
-Cc: alison.schofield@intel.com, paul@paul-moore.com, shuah@kernel.org, 
-	saashaa1122@gmail.com
-Date: Tue, 02 Apr 2024 13:37:44 +0530
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.52.0 
+	dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b="nvhlaD+a"
+Received: from smtp-3-0000.mail.infomaniak.ch (smtp-3-0000.mail.infomaniak.ch [10.4.36.107])
+	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4V83923hzMzct9;
+	Tue,  2 Apr 2024 11:53:10 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=digikod.net;
+	s=20191114; t=1712051590;
+	bh=H92Z8U2YBFFdaC4L6X13E2f0ZVakp5ra2dp91kdypcc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=nvhlaD+aptQO/JRmneq8ZnxYjv4HOJIA3KIc1BP3n8jL9jutIVsnzyzcovfquN3iu
+	 NN6ZYAImAt84ML8xfof0x+yJaNwuEwn+1LjmiVdczc2Qhv1Dt/3KBKveAKodKPAEk+
+	 8zi7/Sid/sQfs4+wPc7sXSTxoDXdUTr9Lds8fcy4=
+Received: from unknown by smtp-3-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4V83913wxVz3Y;
+	Tue,  2 Apr 2024 11:53:09 +0200 (CEST)
+Date: Tue, 2 Apr 2024 11:53:09 +0200
+From: =?utf-8?Q?Micka=C3=ABl_Sala=C3=BCn?= <mic@digikod.net>
+To: TaheraFahimi <fahimitahera@gmail.com>
+Cc: Paul Moore <paul@paul-moore.com>, James Morris <jmorris@namei.org>, 
+	"Serge E. Hallyn" <serge@hallyn.com>, linux-security-module@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, outreachy@lists.linux.dev, netdev@vger.kernel.org, 
+	=?utf-8?B?QmrDtnJu?= Roy Baron <bjorn3_gh@protonmail.com>, Jann Horn <jannh@google.com>
+Subject: Re: [PATCH v2] landlock: Add abstract unix socket connect
+ restrictions
+Message-ID: <20240401.ieC2uqua5sha@digikod.net>
+References: <ZgX5TRTrSDPrJFfF@tahera-OptiPlex-5000>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <ZgX5TRTrSDPrJFfF@tahera-OptiPlex-5000>
+X-Infomaniak-Routing: alpha
 
-Date: Mon, 2 Apr 2024 19:59:56 +0530
+Thanks for this patch.  Please CC the netdev mailing list too, they may
+be interested by this feature. I also added a few folks that previously
+showed their interest for this feature.
 
-RE: This patch is now properly preformatted.
+On Thu, Mar 28, 2024 at 05:12:13PM -0600, TaheraFahimi wrote:
+> Abstract unix sockets are used for local interprocess communication without
+> relying on filesystem. Since landlock has no restriction for connecting to
+> a UNIX socket in the abstract namespace, a sandboxed process can connect to
+> a socket outside the sandboxed environment. Access to such sockets should
+> be scoped the same way ptrace access is limited.
 
-Landlock LSM, a part of the security subsystem, has some tests in place
-for synthetic filesystems such as tmpfs, proc, sysfs, etc. The goal of
-the new issue, and hence this patch is to add tests for non synthetic
-file systems, such as ext4, btrfs, etc
-
-This patch adds tests for the ext4 file system. This includes creation
-of a loop device (test-ext4.img) and formating with mkfs.
-
-Signed-off-by: Saasha Gupta <saashaa1122@gmail.com>
----
- tools/testing/selftests/landlock/fs_test.c | 65 ++++++++++++++++++++++
- 1 file changed, 65 insertions(+)
-
-diff --git a/tools/testing/selftests/landlock/fs_test.c b/tools/testing/sel=
-ftests/landlock/fs_test.c
-index 9a6036fbf..b2f2cd5a5 100644
---- a/tools/testing/selftests/landlock/fs_test.c
-+++ b/tools/testing/selftests/landlock/fs_test.c
-@@ -4675,6 +4675,14 @@ FIXTURE_VARIANT_ADD(layout3_fs, hostfs) {
- 	.cwd_fs_magic =3D HOSTFS_SUPER_MAGIC,
- };
-=20
-+/* Add more filesystems */
-+FIXTURE_VARIANT_ADD(layout3_fs, ext4) {
-+	.mnt =3D {
-+		.type =3D "ext4",
-+	},
-+	.file_path =3D TMP_DIR "/dir/file",
-+};
-+
- FIXTURE_SETUP(layout3_fs)
- {
- 	struct stat statbuf;
-@@ -4728,6 +4736,63 @@ FIXTURE_SETUP(layout3_fs)
- 		self->has_created_file =3D true;
- 		clear_cap(_metadata, CAP_DAC_OVERRIDE);
- 	}
-+
-+	/* Create non synthetic file system - ext4 */
-+	if (stat(self->dir_path, &statbuf) !=3D 0) {
-+		pid_t pid =3D fork();
-+
-+		if (pid =3D=3D -1) {
-+			perror("Failed to fork");
-+			exit(EXIT_FAILURE);
-+		} else if (pid =3D=3D 0) {
-+			static const fallocate_argv[] =3D { "fallocate", "--length",
-+						   "4M", "test-ext4.img",
-+						   NULL };
-+			execvp(fallocate_argv[0], fallocate_argv);
-+			perror("execvp failed");
-+			exit(EXIT_FAILURE);
-+		} else {
-+			int status;
-+
-+			if (waitpid(pid, &status, 0) =3D=3D -1) {
-+				perror("waitpid failed");
-+				exit(EXIT_FAILURE);
-+			}
-+			if (!WIFEXITED(status) || WEXITSTATUS(status) !=3D 0) {
-+				TH_LOG(stderr,
-+					"Failed to create ext4 filesystem image: fallocate failed\n");
-+				exit(EXIT_FAILURE);
-+			}
-+		}
-+	}
-+
-+	/* Formate and mount non synthetic file system - ext4 */
-+	if (stat("mnt", &statbuf) !=3D 0) {
-+		pid_t pid =3D fork();
-+
-+		if (pid =3D=3D -1) {
-+			perror("Failed to fork");
-+			exit(EXIT_FAILURE);
-+		} else if (pid =3D=3D 0) {
-+			static const mkfs_argv[] =3D { "mkfs.ext4", "-q",
-+					      "test-ext4.img", "mnt", NULL };
-+			execvp(mkfs_argv[0], mkfs_argv);
-+			perror("execvp failed");
-+			exit(EXIT_FAILURE);
-+		} else {
-+			int status;
-+
-+			if (waitpid(pid, &status, 0) =3D=3D -1) {
-+				perror("waitpid failed");
-+				exit(EXIT_FAILURE);
-+			}
-+			if (!WIFEXITED(status) || WEXITSTATUS(status) !=3D 0) {
-+				TH_LOG(stderr,
-+					"Failed to format ext4 filesystem image: mkfs.ext4 failed\n");
-+				exit(EXIT_FAILURE);
-+			}
-+		}
-+	}
- }
-=20
- FIXTURE_TEARDOWN(layout3_fs)
---=20
-2.44.0
+This is good but it would be better to explain that Landlock doesn't
+currently control abstract unix sockets and that it would make sense for
+a sandbox.
 
 
+> 
+> For a landlocked process to be allowed to connect to a target process, it
+> must have a subset of the target process’s rules (the connecting socket
+> must be in a sub-domain of the listening socket). This patch adds a new
+> LSM hook for connect function in unix socket with the related access rights.
+
+Because of compatibility reasons, and because Landlock should be
+flexible, we need to extend the user space interface.  As explained in
+the GitHub issue, we need to add a new "scoped" field to the
+landlock_ruleset_attr struct. This field will optionally contain a
+LANDLOCK_RULESET_SCOPED_ABSTRACT_UNIX_SOCKET flag to specify that this
+ruleset will deny any connection from within the sandbox to its parents
+(i.e. any parent sandbox or not-sandboxed processes).
+
+> 
+> Link to first draft:
+> 	https://lore.kernel.org/outreachy/20240328.ShoR4Iecei8o@digikod.net/
+
+You can move this sentence in the below changelog.
+
+> 
+
+You can add this:
+
+Closes: https://github.com/landlock-lsm/linux/issues/7
+
+> Signed-off-by: Tahera Fahimi <fahimitahera@gmail.com>
+
+Your Git (or email app) configuration doesn't use the same name as here.
+
+Please run ./scripts/checkpatch.pl on this patch and fix the warnings.
+
+> 
+> ----
+> Changes in v2:
+> - Remove wrapper functions, noted by Casey Schaufler <casey@schaufler-ca.com>
+> ---
+>  security/landlock/task.c | 40 ++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 40 insertions(+)
+> 
+> diff --git a/security/landlock/task.c b/security/landlock/task.c
+> index 849f5123610b..67528f87b7de 100644
+> --- a/security/landlock/task.c
+> +++ b/security/landlock/task.c
+> @@ -13,6 +13,7 @@
+>  #include <linux/lsm_hooks.h>
+>  #include <linux/rcupdate.h>
+>  #include <linux/sched.h>
+> +#include <net/sock.h>
+>  
+>  #include "common.h"
+>  #include "cred.h"
+> @@ -108,9 +109,48 @@ static int hook_ptrace_traceme(struct task_struct *const parent)
+>  	return task_ptrace(parent, current);
+>  }
+>  
+> +static bool unix_sock_is_scoped(struct sock *const sock,
+
+For consistency with task_is_scoped(), you can rename this to
+sock_is_scoped().
+
+> +				struct sock *const other)
+> +{
+> +	bool is_scoped = true;
+> +
+> +	/* get the ruleset of connecting sock*/
+
+These comments don't help more than the following line, you can remove
+them.
+
+> +	const struct landlock_ruleset *const dom_sock =
+
+According to the name it looks like the domain of the socket but it is
+just the domain of the current task. Just "dom" would be clearer and
+more consistent with security/landlock/fs.c
+
+> +		landlock_get_current_domain();
+> +
+> +	if (!dom_sock)
+> +		return true;
+> +
+> +	/* get credential of listening sock*/
+> +	const struct cred *cred_other = get_cred(other->sk_peer_cred);
+
+We have a get but not a put call, so the credentials will never be
+freed.  The put call must be called before any return, so you
+probably need to follow the goto/error pattern.
+
+In the context of these LSM hooks, only unix_listen() sets the "other"
+socket credential, and unix_listen() is guarded by unix_state_lock()
+which locks unix_sk(s)->lock .  When security_unix_stream_connect() or
+security_unix_may_send() are called, unix_sk(s)->lock is locked as well,
+which protects the credentials against race-conditions (TOCTOU:
+time-of-check to time-of-use).  We should then make that explicit with
+this assertion (which also documents it):
+
+lockdep_assert_held(&unix_sk(other)->lock);
+
+In theory it is then not required to call get_cred().  However, because
+the performance impact should be negligible and to avoid a potential
+use-after-free (not possible in theory with the current code), it would
+be safer to still call get/put.  It would be worse to have a
+use-after-free rather than an access control issue.
+
+Another thing to keep in mind is that for this hook to be
+race-condition-free, the credential must not change anyway.  A comment
+should highlight that.
+
+> +
+> +	if (!cred_other)
+> +		return true;
+> +
+> +	/* retrieve the landlock_rulesets */
+> +	const struct landlock_ruleset *dom_parent;
+
+All declarations should be at the top of functions.
+
+> +
+> +	rcu_read_lock();
+
+No need for this RCU lock because the lock is managed by
+unix_state_lock() in this case.
+
+> +	dom_parent = landlock_cred(cred_other)->domain;
+> +	is_scoped = domain_scope_le(dom_parent, dom_sock);
+> +	rcu_read_unlock();
+> +
+> +	return is_scoped;
+> +}
+> +
+> +static int hook_unix_stream_connect(struct sock *const sock,
+> +				    struct sock *const other,
+> +				    struct sock *const newsk)
+> +{
+> +	if (unix_sock_is_scoped(sock, other))
+> +		return 0;
+> +	return -EPERM;
+> +}
+> +
+>  static struct security_hook_list landlock_hooks[] __ro_after_init = {
+>  	LSM_HOOK_INIT(ptrace_access_check, hook_ptrace_access_check),
+>  	LSM_HOOK_INIT(ptrace_traceme, hook_ptrace_traceme),
+> +	LSM_HOOK_INIT(unix_stream_connect, hook_unix_stream_connect),
+
+Please add a hook for security_unix_may_send() too, it should be quite
+similar, and simplify the patch's subject accordingly.
+
+You now need to add tests (in a dedicated patch) extending
+tools/testing/selftests/landlock/ptrace_test.c (I'll rename the file
+later).
+
+These tests should also check with unnamed and named unix sockets.  I
+guess the current code doesn't differentiate them and control all kind
+of unix sockets.  Because they must explicitly be passed, sockets
+created with socketpair(2) (i.e. unnamed socket) should never be denied.
+
+>  };
+>  
+>  __init void landlock_add_task_hooks(void)
+> -- 
+> 2.34.1
+> 
+> 
