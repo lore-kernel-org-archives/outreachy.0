@@ -1,109 +1,174 @@
-Received: from mail-ed1-f45.google.com (mail-ed1-f45.google.com [209.85.208.45])
+Received: from mail-pl1-f180.google.com (mail-pl1-f180.google.com [209.85.214.180])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CCD071D6AA
-	for <outreachy@lists.linux.dev>; Tue,  2 Apr 2024 06:49:57 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.45
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EEF9B3D994
+	for <outreachy@lists.linux.dev>; Tue,  2 Apr 2024 08:08:20 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.214.180
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1712040599; cv=none; b=ceG3Y5ttvf7Wszk20s9ZBReEShWLb5nA295P4MllAj8v6rsx2Q4OZw0diULkO3uP02pwV+c40SVlFITQdpbzYY6F7xZ5kLqB97rvtnEnNVb3PycM8ukaFKucChzenA35hU7nwqgpQdL0GR9d4LkG2IPFUxICEN0ZxYTNec5CuO8=
+	t=1712045302; cv=none; b=joBqbBU9C47LQ2dUiJI4tFCnnGk+Ix9cO27+jmSZKpfBfR2Rx7jYXLaVYQT87DH7veFE9Yu28pqj1y+krkHSRksLkaym9nGPvnGxsJQyJJGGvnUoUx6xHqmVdyLBB9HbcJwU2cJyAcbqHVgt6dAm0fEJR7kGs47AIRhT4U2FhQ0=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1712040599; c=relaxed/simple;
-	bh=eiNouxOE5/rBXeDv+m/p4E72cospl88ziAJcUPNip/c=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=IdtSkbPmE1bQE6ZxbPlPJrA5EeWbxD83TyUF6F908BqtgYO9Pn1cKS6ZX8dmqBJF1v7eYHo0IDcU+nfzCbN9lCid0tG44bvfIK6llUM8mCm/FIqEvI6VFa3eu722LDZNGbZSEfq5nSWkwRNmW6R7vos3WCZx83OwPTwJQSMznpA=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=lgAW3pDi; arc=none smtp.client-ip=209.85.208.45
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
+	s=arc-20240116; t=1712045302; c=relaxed/simple;
+	bh=RvjIoEFCnlt4dJMFpZZIOO4Sc8JyrvCLEP31AeMdHHA=;
+	h=Message-ID:Subject:From:To:Cc:Date:Content-Type:MIME-Version; b=onOKE3kQhVxa5zZruCh/vGlckMwpH+i2+81gnA36Kgw7Y1tA4jvaW1wI0qFgmCRS82XUTcuFff/WDD7+A9eZhEhPqB6ieCwBHqa39lSjaZuEqUYLsypt1kcMt7IACVfOp6VRutNFy7P0gTfJAxZgjBwPqH0QP8DfrROqXJugUnA=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=HnQI7sKh; arc=none smtp.client-ip=209.85.214.180
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="lgAW3pDi"
-Received: by mail-ed1-f45.google.com with SMTP id 4fb4d7f45d1cf-56c0a249bacso5735558a12.1
-        for <outreachy@lists.linux.dev>; Mon, 01 Apr 2024 23:49:57 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="HnQI7sKh"
+Received: by mail-pl1-f180.google.com with SMTP id d9443c01a7336-1e0878b76f3so35087515ad.0
+        for <outreachy@lists.linux.dev>; Tue, 02 Apr 2024 01:08:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1712040596; x=1712645396; darn=lists.linux.dev;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=pPqjVRbAXgeGN1lA/Onn5A9KAG7ZFxViPCHqpcaB3vk=;
-        b=lgAW3pDiWIJgaOQtS8sxCEeJMmSpRXvjtG8pG6wXbGT3Cd8r2j4b6K0pGSh3HW/Bnq
-         XB4wWncaVVjcIegT+gB1jXABAR4oD7+xTd6A2CwNhP+yPBbj9n/8Bw/pXz1SLPQlfNRX
-         GQPXw0oFhGNsWXhy7+0j9hTTiOQXVTICXszZS6GTPSwY6iCmaLZhIQQPuQy3A5T5cnVl
-         mikKHCyzNf6pBjUmB23ry1QfExM+9Y4vsnH1siT29VrsgKV7kMDJK7Ct+yYY99cHhyL1
-         hJ+3w5172QZPXQQqWLFKLuCN65khz5rOv0E20hay2awKnHhCxPuym3+YQKRjq0BELmiM
-         pwVg==
+        d=gmail.com; s=20230601; t=1712045300; x=1712650100; darn=lists.linux.dev;
+        h=mime-version:user-agent:content-transfer-encoding:date:cc:to:from
+         :subject:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=cXS4cJz05mC2M6wLT/RtjR7duIEuJE+jEDewfgJLeHk=;
+        b=HnQI7sKhCM6hUbLBzR5TecZg3Jd5N7svipZae37Y5mDWDHjAhj7nIoFBUtLsFmyGWb
+         z9sXTZof9j+LnNmDK+mlhlNFwVjYA/ckx4GYPD3qIz+yG6NKR80QylpVHfckPMmNDQ+7
+         7GcILmA2w2KRSoZAOFu4g4I0t/k2qu4YeY2Jwv4RCLZu/cv9HQzH0mr5005Hyt+JjAQQ
+         5USUet+5bj0vRzbPstjoQnAkTTtaUumFurR0wekCNF4f+zkrGi3lhyvRfjp8QD1nT0XX
+         ByRP716aCqTJ5gY11WfET2sl9FNXgvbhbMq55bE9j8EpSTVv8Vk4vVzTmzST5iOqmpPx
+         l5Bg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712040596; x=1712645396;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+        d=1e100.net; s=20230601; t=1712045300; x=1712650100;
+        h=mime-version:user-agent:content-transfer-encoding:date:cc:to:from
+         :subject:message-id:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=pPqjVRbAXgeGN1lA/Onn5A9KAG7ZFxViPCHqpcaB3vk=;
-        b=wSsRF8Ngd5haaNu1pS3DfW2uM/6bLePxF5ZAduVwFj9CKrVWR9kac/eYfWjwbUywZD
-         XsderMJW1vv3/POKj3Jsa/IpGyc2CcIyKitizAVvtcOt7Uvz9GBFBTjEslSk+f/h4AdC
-         ju7w78LmhScltRg1d92riwlJ1LnYcPgcrCN58d7kQ9Itgo5yXllwATQC/r16wJ4JpEFo
-         gp6nU4wZE/ca4Cyh4b5gdOQmCPAf5e0bkSpftLVDQrGW9J3dWiIWbHPM+Cy5VkLlPlVm
-         /mahm9tCBnNcxPbEzahS8mFvLApZgAZlpZ2a+DxeDfpglg2AG+aIidipr1l61iJL+Sei
-         iB9Q==
-X-Forwarded-Encrypted: i=1; AJvYcCXvOkF9xHggq4eeATO25h6Qrqjq0+1AbILdbZBsJXqw2Arprjo1j/tdwJRl+D15TQ6fnYr0D62TG2CQ6KXV4YuQiR3mkTaygVTW
-X-Gm-Message-State: AOJu0YyTSZSOzU3G/K44LQS2OXmiH33Kdv93ylc8MjPwCeDkGuFTVMkA
-	PHy6s6wQqp6ySUTZeFE2NlTu/tnfDLLJ0VKPrY7ciJkKQ7KLBP1KUv8FRsZmFF4=
-X-Google-Smtp-Source: AGHT+IGu1POPDiPVv+vHKQ69u63fSHZ3ugYq99osz195dbi2X3kVADg2wwCDwA62w7Y7hOSFs5PWpg==
-X-Received: by 2002:a50:9e87:0:b0:56c:189f:cf2f with SMTP id a7-20020a509e87000000b0056c189fcf2fmr6578870edf.32.1712040595959;
-        Mon, 01 Apr 2024 23:49:55 -0700 (PDT)
-Received: from localhost ([102.222.70.76])
-        by smtp.gmail.com with ESMTPSA id q14-20020a056402248e00b0056c5515c183sm6052986eda.13.2024.04.01.23.49.54
+        bh=cXS4cJz05mC2M6wLT/RtjR7duIEuJE+jEDewfgJLeHk=;
+        b=o6BEfNePmPCpnpU0L36Dty+zjPvgv3ht5cx8pu6RLpRX/tJjb5ckGlkskgwdXLMze7
+         sQ5MMgz9qs/dwazzeaj1uHGjx66rkEAKqXbyjhOw/cuFurO4MILkI3nxPdS+rxEg4DnR
+         TG0PtktufkgYIMZjrlwC7q535jLKSVhe5vCDadTyCPKY+kBse4U4xVFabp/3hfxLycyX
+         lnybOqBgv2upZOOPmdud1HeNFXoKgcVJyAx/vyj8TVI73bw2APMNYoobLUgGWxnmTotx
+         XyEGrgag3SEwt3+W6q/SvVE8RbUJZz4F8LJW+69zzCaxyCNqyOZUc2nL0oxofFOkVOrB
+         ZEhg==
+X-Gm-Message-State: AOJu0YyFX5yKhJQPM/qmNchSsYcwE1adgUVSMflyoBAjbR/Ab3Tfte43
+	U7X7NagpOE05rTZ2e1NfqoSzLXfM7H9XkpswYO96mRwzqkEz0HYCJh0jH1YKK1t+H4nC
+X-Google-Smtp-Source: AGHT+IE34CFOHQtWBVwkAC+tfxS3OlSnWZqxk6sERGtnE+HKd+m7AK82BE8k/HW5JOx8TzyByc9RTg==
+X-Received: by 2002:a17:902:f68e:b0:1e0:c070:b082 with SMTP id l14-20020a170902f68e00b001e0c070b082mr23405632plg.14.1712045299863;
+        Tue, 02 Apr 2024 01:08:19 -0700 (PDT)
+Received: from [10.0.2.15] ([103.111.134.151])
+        by smtp.gmail.com with ESMTPSA id b15-20020a170902650f00b001dda64281a9sm10575031plk.85.2024.04.02.01.08.17
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 01 Apr 2024 23:49:55 -0700 (PDT)
-Date: Tue, 2 Apr 2024 09:49:51 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: TaheraFahimi <fahimitahera@gmail.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev
-Subject: Re: [PATCH] staging: gdm724x: Align descendant argument to the open
- parenthesis
-Message-ID: <56072f1a-6cca-4c11-9fbd-4081387afdfc@moroto.mountain>
-References: <ZgXupx0nXwIOjy7F@tahera-OptiPlex-5000>
+        Tue, 02 Apr 2024 01:08:19 -0700 (PDT)
+Message-ID: <860c9cadb2fa06c8f10db42ad38405ee19d43a16.camel@gmail.com>
+Subject: Subject: [PATCH] Add test for more file systems in landlock - ext4
+From: Saasha Gupta <saashaa1122@gmail.com>
+To: outreachy@lists.linux.dev, mic@digikod.net, 
+	linux-security-module@vger.kernel.org, linux-kselftest@vger.kernel.org
+Cc: alison.schofield@intel.com, paul@paul-moore.com, shuah@kernel.org, 
+	saashaa1122@gmail.com
+Date: Tue, 02 Apr 2024 13:37:44 +0530
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.52.0 
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZgXupx0nXwIOjy7F@tahera-OptiPlex-5000>
 
-On Thu, Mar 28, 2024 at 04:26:47PM -0600, TaheraFahimi wrote:
-> Mute the following checkpatch error:
-> 	CHECK: Alignment should match open parenthesis
+Date: Mon, 2 Apr 2024 19:59:56 +0530
 
-It's not aligned either before or after.  It should have been:
+RE: This patch is now properly preformatted.
 
-[tab][tab][tab][tab][tab][space][space][space][space][space][space]TTY_DRIVER_...
+Landlock LSM, a part of the security subsystem, has some tests in place
+for synthetic filesystems such as tmpfs, proc, sysfs, etc. The goal of
+the new issue, and hence this patch is to add tests for non synthetic
+file systems, such as ext4, btrfs, etc
 
-> 
-> Signed-off-by: Tahera Fahimi <fahimitahera@gmail.com>
-> ---
->  drivers/staging/gdm724x/gdm_tty.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/gdm724x/gdm_tty.c b/drivers/staging/gdm724x/gdm_tty.c
-> index 15c246d3b1a3..bd80cd48fb44 100644
-> --- a/drivers/staging/gdm724x/gdm_tty.c
-> +++ b/drivers/staging/gdm724x/gdm_tty.c
-> @@ -272,8 +272,8 @@ int register_lte_tty_driver(void)
->  	int ret;
->  
->  	for (i = 0; i < TTY_MAX_COUNT; i++) {
-> -		tty_driver = tty_alloc_driver(GDM_TTY_MINOR,
-> -				TTY_DRIVER_REAL_RAW | TTY_DRIVER_DYNAMIC_DEV);
-> +		tty_driver = tty_alloc_driver(GDM_TTY_MINOR, TTY_DRIVER_REAL_RAW |
-> +						TTY_DRIVER_DYNAMIC_DEV);
+This patch adds tests for the ext4 file system. This includes creation
+of a loop device (test-ext4.img) and formating with mkfs.
 
-"TTY_DRIVER_REAL_RAW | TTY_DRIVER_DYNAMIC_DEV" goes together.  Don't
-split that up over two lines.  Checkpatch is a tool which is supposed to
-help readability.  It's not a ruler which must be obeyed.  If checkpatch
-tells you to do something which makes the code less readable then just
-ignore it.
+Signed-off-by: Saasha Gupta <saashaa1122@gmail.com>
+---
+ tools/testing/selftests/landlock/fs_test.c | 65 ++++++++++++++++++++++
+ 1 file changed, 65 insertions(+)
 
-regards,
-dan carpenter
+diff --git a/tools/testing/selftests/landlock/fs_test.c b/tools/testing/sel=
+ftests/landlock/fs_test.c
+index 9a6036fbf..b2f2cd5a5 100644
+--- a/tools/testing/selftests/landlock/fs_test.c
++++ b/tools/testing/selftests/landlock/fs_test.c
+@@ -4675,6 +4675,14 @@ FIXTURE_VARIANT_ADD(layout3_fs, hostfs) {
+ 	.cwd_fs_magic =3D HOSTFS_SUPER_MAGIC,
+ };
+=20
++/* Add more filesystems */
++FIXTURE_VARIANT_ADD(layout3_fs, ext4) {
++	.mnt =3D {
++		.type =3D "ext4",
++	},
++	.file_path =3D TMP_DIR "/dir/file",
++};
++
+ FIXTURE_SETUP(layout3_fs)
+ {
+ 	struct stat statbuf;
+@@ -4728,6 +4736,63 @@ FIXTURE_SETUP(layout3_fs)
+ 		self->has_created_file =3D true;
+ 		clear_cap(_metadata, CAP_DAC_OVERRIDE);
+ 	}
++
++	/* Create non synthetic file system - ext4 */
++	if (stat(self->dir_path, &statbuf) !=3D 0) {
++		pid_t pid =3D fork();
++
++		if (pid =3D=3D -1) {
++			perror("Failed to fork");
++			exit(EXIT_FAILURE);
++		} else if (pid =3D=3D 0) {
++			static const fallocate_argv[] =3D { "fallocate", "--length",
++						   "4M", "test-ext4.img",
++						   NULL };
++			execvp(fallocate_argv[0], fallocate_argv);
++			perror("execvp failed");
++			exit(EXIT_FAILURE);
++		} else {
++			int status;
++
++			if (waitpid(pid, &status, 0) =3D=3D -1) {
++				perror("waitpid failed");
++				exit(EXIT_FAILURE);
++			}
++			if (!WIFEXITED(status) || WEXITSTATUS(status) !=3D 0) {
++				TH_LOG(stderr,
++					"Failed to create ext4 filesystem image: fallocate failed\n");
++				exit(EXIT_FAILURE);
++			}
++		}
++	}
++
++	/* Formate and mount non synthetic file system - ext4 */
++	if (stat("mnt", &statbuf) !=3D 0) {
++		pid_t pid =3D fork();
++
++		if (pid =3D=3D -1) {
++			perror("Failed to fork");
++			exit(EXIT_FAILURE);
++		} else if (pid =3D=3D 0) {
++			static const mkfs_argv[] =3D { "mkfs.ext4", "-q",
++					      "test-ext4.img", "mnt", NULL };
++			execvp(mkfs_argv[0], mkfs_argv);
++			perror("execvp failed");
++			exit(EXIT_FAILURE);
++		} else {
++			int status;
++
++			if (waitpid(pid, &status, 0) =3D=3D -1) {
++				perror("waitpid failed");
++				exit(EXIT_FAILURE);
++			}
++			if (!WIFEXITED(status) || WEXITSTATUS(status) !=3D 0) {
++				TH_LOG(stderr,
++					"Failed to format ext4 filesystem image: mkfs.ext4 failed\n");
++				exit(EXIT_FAILURE);
++			}
++		}
++	}
+ }
+=20
+ FIXTURE_TEARDOWN(layout3_fs)
+--=20
+2.44.0
+
 
