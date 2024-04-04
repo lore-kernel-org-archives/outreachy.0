@@ -1,169 +1,132 @@
-Received: from smtp-bc0f.mail.infomaniak.ch (smtp-bc0f.mail.infomaniak.ch [45.157.188.15])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ed1-f42.google.com (mail-ed1-f42.google.com [209.85.208.42])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 34A7313665F
-	for <outreachy@lists.linux.dev>; Wed,  3 Apr 2024 16:32:26 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=45.157.188.15
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 71F63129A8D
+	for <outreachy@lists.linux.dev>; Thu,  4 Apr 2024 12:16:47 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.42
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1712161953; cv=none; b=soiPsOLXU8rkE3379t9Tsflz2zRf/xA3raCcYUSbrmNFhd7d96X5EpoyRJP4Is3AvWsCTwFfk0X05orZifmeKzN3tsbDo/m2aETYU14VYw5wI+xbCBknqLa2HoXsc4hRtv5h0rSEY7s7i+nTLlUPKenzNTI4d+s6q5SMxjq/Zxk=
+	t=1712233009; cv=none; b=OSZkOZ6gDKVYMH0a9o2v0G5Je79Z/1jVYGzs87z0vb2uodH8BXi4+zfBHVl2QJCGH0F8dt40GSf6eM38/RqtOV+Bt20lSiT/nqN4WI+z5h174m4+sAFrK+zfbN6DgfCN5ySq4A87n/tyL22uwaOy8xStzgJwBFpN95n7/qFEd5A=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1712161953; c=relaxed/simple;
-	bh=2mD3wd3nmiYzDQWwIH66jr73DzAk3vQYxK4D3uGstmU=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=ovbQtjJDoj5hQZeg4S0fNgCm3PQ09iSbw2oYXQ+KmtEyGotN/KTRvWzNxQAgCvlVchN/uCUGtEjCo1VZdt1hC5w1Nb0zIrqEWa6zUhthT9Sl69iDoAgwFmuNSD8s9aLB7R8xfThWLnemQSvEezlNk8ENizkufZpn2V86CPVqO/M=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net; spf=pass smtp.mailfrom=digikod.net; dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b=f9d7h/aC; arc=none smtp.client-ip=45.157.188.15
-Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=digikod.net
+	s=arc-20240116; t=1712233009; c=relaxed/simple;
+	bh=OrnyRAznfz0HaoBMmuRRvJwgEktTbAkUuzxqcJvq3Bo=;
+	h=From:To:Cc:Subject:Date:Message-Id:In-Reply-To:References:
+	 MIME-Version; b=W1LD16cUjpLo6BKQt5LG+OYLmDkyOTc2DgDMzTnElEFcU4cVPYXDDJbJNZvz4iOmzYygeomdOEejXlX+0VVFlJ909o8yP2Shf3eksuOEaCvzrvjnwktv8lwlX1LLXvQSuc29JBggIhP0vTeTJVAG5UnPZh5K5we4Lw3ZSOEtVBU=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=WJvQXeHG; arc=none smtp.client-ip=209.85.208.42
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b="f9d7h/aC"
-Received: from smtp-4-0001.mail.infomaniak.ch (smtp-4-0001.mail.infomaniak.ch [10.7.10.108])
-	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4V8qzD5W0DzJnJ;
-	Wed,  3 Apr 2024 18:32:24 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=digikod.net;
-	s=20191114; t=1712161944;
-	bh=2mD3wd3nmiYzDQWwIH66jr73DzAk3vQYxK4D3uGstmU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=f9d7h/aCKQsdTBMI+Epb4SZd4Eo/slK/sWHGQMS/E78snT9F4cU62k9vtYT7Cb0SC
-	 D0Uoq2D73VwBlL4L+NHYM3SRaKTNZn7Q2msLaYzRFt/lx0jvs/FB8PMWoKJWwjhTiJ
-	 6A+zBL+s1pMyFK0D6UxgQLIH5TG841e6Jj8lZ9CU=
-Received: from unknown by smtp-4-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4V8qzD0VSHz3Hw;
-	Wed,  3 Apr 2024 18:32:24 +0200 (CEST)
-Date: Wed, 3 Apr 2024 18:32:23 +0200
-From: =?utf-8?Q?Micka=C3=ABl_Sala=C3=BCn?= <mic@digikod.net>
-To: Saasha Gupta <saashaa1122@gmail.com>
-Cc: outreachy@lists.linux.dev, linux-security-module@vger.kernel.org, 
-	linux-kselftest@vger.kernel.org, alison.schofield@intel.com, paul@paul-moore.com, 
-	shuah@kernel.org
-Subject: Re: Subject: [PATCH] Add test for more file systems in landlock -
- ext4
-Message-ID: <20240403.gaingaeR2zez@digikod.net>
-References: <860c9cadb2fa06c8f10db42ad38405ee19d43a16.camel@gmail.com>
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="WJvQXeHG"
+Received: by mail-ed1-f42.google.com with SMTP id 4fb4d7f45d1cf-56e2393b073so281440a12.0
+        for <outreachy@lists.linux.dev>; Thu, 04 Apr 2024 05:16:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1712233006; x=1712837806; darn=lists.linux.dev;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=c8AAXdi6UnwgE8mvtF9U8oApK2XyGAr7kUWfIztB0ZU=;
+        b=WJvQXeHGkwTPFjK4NvPnZdlZgHFQfieLcMTDC0L07vJkwTHCsB8jI4/tG9+Y41Mno4
+         8DmrIMIylT0QxRCbt8IoZQvUQdvB2ojeJzX3seYnmmYulX+Iy0DoZ05JtkNwUXjD8qWU
+         AXb0cppE4Px45LPx2i9ysBb/sGi25QbNps4q1POcQKO7moXUFjANLYbo438y9xswbxVQ
+         Eldx5/z9hDQYBZNxkA+7koXvwIRsLzIsRTfPc3WEcKAQQb6juy5sZAQ7Hh6+B2hyd7Yd
+         xb4n7Bb1CIQiQwsq/YTzL7bomqI9DHJXVKH9pFfz0V1LccFx7lRVzkqkDa6cdeDk5BTo
+         4KSw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1712233006; x=1712837806;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=c8AAXdi6UnwgE8mvtF9U8oApK2XyGAr7kUWfIztB0ZU=;
+        b=j2zCdgcSJxG9Nar6OhHw+ri9UR+ynqCzuWayh9McU8NabMZJdi+xVyxTDHT/i3lJ0c
+         9H5eUyusYUSvftg4UMF5lZswpIgLlRDSDodg4UuDWeitp2L1Un5gp5rtLql0sHBzhC08
+         80Za28HZKk8FLHjX2hfh9wazEfvVkseTCE1PGIu4AjLvBAlJIprNu8HzAGDND0xlx0Nv
+         gEkLMIPTjnhpOvMgvoTn8+Cp30hVpA9i4ZYGym7htG9VY0mFjquxl2Wx2Q0ai/SxC1Oy
+         87GJOJdJibXewj5ccI+1i3LdpADHlNNNh2vnTAGNuk2B/z7mR3gjLrKK9ukhsDGu3CBu
+         79KA==
+X-Forwarded-Encrypted: i=1; AJvYcCUU0slCVjLY3dV6tYeedsMyVUxeJBhVSN1+zFKPuVDl0j9aS2lBCFLlh3YGoUNZpCxTvnabPDX7qWkFWSO7goNInjNoy/9Iz775
+X-Gm-Message-State: AOJu0YxAncqeIJtOMj+roUeyJLajudBYAp1JKFHyiLsHC5IgAppidp9P
+	ZaWlUEgGzG6pOYvsao4DUI28CjY4B7llzqoRy9GJIF8xilq67Iqd
+X-Google-Smtp-Source: AGHT+IHI+m/JUz68f3ZXkP11/1Bukju4pMSINUlPdlcJzyhLnmLRJ29mVu0SsOgQem3HUZoxhIqiuA==
+X-Received: by 2002:a17:906:af0c:b0:a4d:fb90:4a4e with SMTP id lx12-20020a170906af0c00b00a4dfb904a4emr5193795ejb.2.1712233005512;
+        Thu, 04 Apr 2024 05:16:45 -0700 (PDT)
+Received: from ubuntu-focal.zuku.co.ke ([197.237.50.252])
+        by smtp.gmail.com with ESMTPSA id h19-20020a1709060f5300b00a4e30ff4cbcsm7948001ejj.194.2024.04.04.05.16.41
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 04 Apr 2024 05:16:45 -0700 (PDT)
+From: Dorine Tipo <dorine.a.tipo@gmail.com>
+To: =?UTF-8?q?Micka=C3=ABl=20Sala=C3=BCn?= <mic@digikod.net>
+Cc: Dorine Tipo <dorine.a.tipo@gmail.com>,
+	Linux-kernel-mentees-request@lists.linuxfoundation.org,
+	fabio.maria.de.francesco@linux.intel.com,
+	skhan@linuxfoundation.org,
+	outreachy@lists.linux.dev,
+	linux-security-module@vger.kernel.org,
+	Paul Moore <paul@paul-moore.com>
+Subject: 
+Date: Thu,  4 Apr 2024 12:16:21 +0000
+Message-Id: <20240404121621.9162-1-dorine.a.tipo@gmail.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20240402.MooNaiJoo2cu@digikod.net>
+References: <20240402.MooNaiJoo2cu@digikod.net>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <860c9cadb2fa06c8f10db42ad38405ee19d43a16.camel@gmail.com>
-X-Infomaniak-Routing: alpha
+Content-Transfer-Encoding: 8bit
 
-On Tue, Apr 02, 2024 at 01:37:44PM +0530, Saasha Gupta wrote:
-> Date: Mon, 2 Apr 2024 19:59:56 +0530
-> 
-> RE: This patch is now properly preformatted.
-> 
-> Landlock LSM, a part of the security subsystem, has some tests in place
-> for synthetic filesystems such as tmpfs, proc, sysfs, etc. The goal of
-> the new issue, and hence this patch is to add tests for non synthetic
-> file systems, such as ext4, btrfs, etc
+Subject: [PATCH v3] selftests/landlock: Add tests for io_uring openat access control with Landlock rules
 
-I agree with Julia's review.
+> What is tested exactly?
 
-> 
-> This patch adds tests for the ext4 file system. This includes creation
-> of a loop device (test-ext4.img) and formating with mkfs.
-> 
-> Signed-off-by: Saasha Gupta <saashaa1122@gmail.com>
-> ---
->  tools/testing/selftests/landlock/fs_test.c | 65 ++++++++++++++++++++++
->  1 file changed, 65 insertions(+)
-> 
-> diff --git a/tools/testing/selftests/landlock/fs_test.c b/tools/testing/selftests/landlock/fs_test.c
-> index 9a6036fbf..b2f2cd5a5 100644
-> --- a/tools/testing/selftests/landlock/fs_test.c
-> +++ b/tools/testing/selftests/landlock/fs_test.c
-> @@ -4675,6 +4675,14 @@ FIXTURE_VARIANT_ADD(layout3_fs, hostfs) {
->  	.cwd_fs_magic = HOSTFS_SUPER_MAGIC,
->  };
->  
-> +/* Add more filesystems */
-> +FIXTURE_VARIANT_ADD(layout3_fs, ext4) {
-> +	.mnt = {
-> +		.type = "ext4",
-> +	},
-> +	.file_path = TMP_DIR "/dir/file",
-> +};
+The test_ioring_op_openat() function is testing the enforcement of
+Landlock rules for read-only access.
+It's specifically checking whether the Landlock rules correctly allow or
+deny read-only access to the specified file when using the openat system
+call with io_uring. The test does this by preparing a submission queue
+entry for the openat operation with io_uring_prep_openat(), submitting
+this operation to the kernel via io_uring, and then checking the result.
+If the operation is successful, it means that Landlock allowed the read-only
+access as expected. If the operation fails, it means that Landlock correctly
+denied the access.
+
+> +static int test_ioring_op_openat(struct __test_metadata *const _metadata, const __u64 access, const char **paths)
+> +{
+> +     int ruleset_fd;
+> +     int ret;
+> +     struct io_uring ring;
+> +     struct io_uring_sqe *sqe;
 > +
->  FIXTURE_SETUP(layout3_fs)
->  {
->  	struct stat statbuf;
-> @@ -4728,6 +4736,63 @@ FIXTURE_SETUP(layout3_fs)
->  		self->has_created_file = true;
->  		clear_cap(_metadata, CAP_DAC_OVERRIDE);
->  	}
+> +     /* Test Allowed Access */
+> +     const struct rule allowed_rule[] = {
+> +             {
+> +                     .path = paths[0],
+> +                     .access = access,
+> +             },
+> +             {
+> +                     .path = NULL,
+> +             },
+> +     };
 > +
-> +	/* Create non synthetic file system - ext4 */
-> +	if (stat(self->dir_path, &statbuf) != 0) {
-
-dir_path should already exist with previous code right?
-
-> +		pid_t pid = fork();
+> +     ruleset_fd = create_ruleset(_metadata, allowed_rule[0].access, allowed_rule);
 > +
-> +		if (pid == -1) {
-> +			perror("Failed to fork");
-> +			exit(EXIT_FAILURE);
-> +		} else if (pid == 0) {
-> +			static const fallocate_argv[] = { "fallocate", "--length",
-> +						   "4M", "test-ext4.img",
-> +						   NULL };
-> +			execvp(fallocate_argv[0], fallocate_argv);
-
-Using system() would makes this much simpler (see net_test.c).
-
-> +			perror("execvp failed");
-> +			exit(EXIT_FAILURE);
-> +		} else {
-> +			int status;
+> +     ASSERT_LE(0, ruleset_fd);
 > +
-> +			if (waitpid(pid, &status, 0) == -1) {
-> +				perror("waitpid failed");
-> +				exit(EXIT_FAILURE);
-> +			}
-> +			if (!WIFEXITED(status) || WEXITSTATUS(status) != 0) {
-> +				TH_LOG(stderr,
-> +					"Failed to create ext4 filesystem image: fallocate failed\n");
-> +				exit(EXIT_FAILURE);
-> +			}
-> +		}
-> +	}
+> +     ret = io_uring_queue_init(32, &ring, 0);
 > +
-> +	/* Formate and mount non synthetic file system - ext4 */
-> +	if (stat("mnt", &statbuf) != 0) {
+> +     ASSERT_EQ(0, ret);
+> +
+> +     /* Test allowed path */
+> +     sqe = io_uring_get_sqe(&ring);
+> +
+> +     /* Prepare SQE  for the openat operation */
+> +     io_uring_prep_openat(sqe, AT_FDCWD, paths[0], O_RDONLY, ruleset_fd);
 
-"mnt" never exists, so this would always run this code...
+> Can you please explain what this call to io_uring_prep_openat() do?
 
-> +		pid_t pid = fork();
-> +
-> +		if (pid == -1) {
-> +			perror("Failed to fork");
-> +			exit(EXIT_FAILURE);
-> +		} else if (pid == 0) {
-> +			static const mkfs_argv[] = { "mkfs.ext4", "-q",
-> +					      "test-ext4.img", "mnt", NULL };
-> +			execvp(mkfs_argv[0], mkfs_argv);
-> +			perror("execvp failed");
-> +			exit(EXIT_FAILURE);
-> +		} else {
-> +			int status;
-> +
-> +			if (waitpid(pid, &status, 0) == -1) {
-> +				perror("waitpid failed");
-> +				exit(EXIT_FAILURE);
-> +			}
-> +			if (!WIFEXITED(status) || WEXITSTATUS(status) != 0) {
-> +				TH_LOG(stderr,
-> +					"Failed to format ext4 filesystem image: mkfs.ext4 failed\n");
-> +				exit(EXIT_FAILURE);
-> +			}
-> +		}
-> +	}
->  }
->  
->  FIXTURE_TEARDOWN(layout3_fs)
-> -- 
-> 2.44.0
-> 
-> 
-> 
+io_uring_prep_openat() prepares the submission queue entry for the openat
+system call. In my tests the call to io_uring_prep_openat() is preparing
+an openat operation to open a file at a certain path with read-only access.
+This operation is then submitted to the kernel via io_uring, and the test
+checks whether the operation is allowed or denied based on the define
+Landlock rules.
