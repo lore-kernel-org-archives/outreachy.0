@@ -1,132 +1,119 @@
-Received: from mail-ed1-f42.google.com (mail-ed1-f42.google.com [209.85.208.42])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from smtp-190e.mail.infomaniak.ch (smtp-190e.mail.infomaniak.ch [185.125.25.14])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 71F63129A8D
-	for <outreachy@lists.linux.dev>; Thu,  4 Apr 2024 12:16:47 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.42
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 792F38F6F
+	for <outreachy@lists.linux.dev>; Thu,  4 Apr 2024 13:28:12 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=185.125.25.14
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1712233009; cv=none; b=OSZkOZ6gDKVYMH0a9o2v0G5Je79Z/1jVYGzs87z0vb2uodH8BXi4+zfBHVl2QJCGH0F8dt40GSf6eM38/RqtOV+Bt20lSiT/nqN4WI+z5h174m4+sAFrK+zfbN6DgfCN5ySq4A87n/tyL22uwaOy8xStzgJwBFpN95n7/qFEd5A=
+	t=1712237299; cv=none; b=pv32yfIvl/z+0w9RMOi17E2BUfQ9pUDgVc6+hBk4MS6K/LBVng+2myllXqXoqI2tX73UDQOgquj8k6pWiOjALuT7G1LonWr6qK+7DWLHK3haswMe0rFI/hIXmNItPRJKSFzCs86pCNRII7ZgOvchBVokJY4Fgofz9tY34deaHi4=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1712233009; c=relaxed/simple;
-	bh=OrnyRAznfz0HaoBMmuRRvJwgEktTbAkUuzxqcJvq3Bo=;
-	h=From:To:Cc:Subject:Date:Message-Id:In-Reply-To:References:
-	 MIME-Version; b=W1LD16cUjpLo6BKQt5LG+OYLmDkyOTc2DgDMzTnElEFcU4cVPYXDDJbJNZvz4iOmzYygeomdOEejXlX+0VVFlJ909o8yP2Shf3eksuOEaCvzrvjnwktv8lwlX1LLXvQSuc29JBggIhP0vTeTJVAG5UnPZh5K5we4Lw3ZSOEtVBU=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=WJvQXeHG; arc=none smtp.client-ip=209.85.208.42
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	s=arc-20240116; t=1712237299; c=relaxed/simple;
+	bh=TNa/BNEOuYD5hp6QjAdEPCaM+Cp1hRL0BDPW82LVBoE=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=KiOE12gF2Z97y++rq67sRoQf/EEm8B82VwKf3SrV5K1hi4s+DkgzZky8CXVQT49p1UfyNP5DWZ3/INlNRgXFBpab1KObSwm8AcrBb+rVWpmcEgjwK2v9zQOgNHUF5vh80SnudtEGZsaKh2VczZ/u7lA3y1/b+CxOLM6wh2yoxBc=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net; spf=pass smtp.mailfrom=digikod.net; dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b=fgs5eawN; arc=none smtp.client-ip=185.125.25.14
+Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=digikod.net
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="WJvQXeHG"
-Received: by mail-ed1-f42.google.com with SMTP id 4fb4d7f45d1cf-56e2393b073so281440a12.0
-        for <outreachy@lists.linux.dev>; Thu, 04 Apr 2024 05:16:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1712233006; x=1712837806; darn=lists.linux.dev;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=c8AAXdi6UnwgE8mvtF9U8oApK2XyGAr7kUWfIztB0ZU=;
-        b=WJvQXeHGkwTPFjK4NvPnZdlZgHFQfieLcMTDC0L07vJkwTHCsB8jI4/tG9+Y41Mno4
-         8DmrIMIylT0QxRCbt8IoZQvUQdvB2ojeJzX3seYnmmYulX+Iy0DoZ05JtkNwUXjD8qWU
-         AXb0cppE4Px45LPx2i9ysBb/sGi25QbNps4q1POcQKO7moXUFjANLYbo438y9xswbxVQ
-         Eldx5/z9hDQYBZNxkA+7koXvwIRsLzIsRTfPc3WEcKAQQb6juy5sZAQ7Hh6+B2hyd7Yd
-         xb4n7Bb1CIQiQwsq/YTzL7bomqI9DHJXVKH9pFfz0V1LccFx7lRVzkqkDa6cdeDk5BTo
-         4KSw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712233006; x=1712837806;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=c8AAXdi6UnwgE8mvtF9U8oApK2XyGAr7kUWfIztB0ZU=;
-        b=j2zCdgcSJxG9Nar6OhHw+ri9UR+ynqCzuWayh9McU8NabMZJdi+xVyxTDHT/i3lJ0c
-         9H5eUyusYUSvftg4UMF5lZswpIgLlRDSDodg4UuDWeitp2L1Un5gp5rtLql0sHBzhC08
-         80Za28HZKk8FLHjX2hfh9wazEfvVkseTCE1PGIu4AjLvBAlJIprNu8HzAGDND0xlx0Nv
-         gEkLMIPTjnhpOvMgvoTn8+Cp30hVpA9i4ZYGym7htG9VY0mFjquxl2Wx2Q0ai/SxC1Oy
-         87GJOJdJibXewj5ccI+1i3LdpADHlNNNh2vnTAGNuk2B/z7mR3gjLrKK9ukhsDGu3CBu
-         79KA==
-X-Forwarded-Encrypted: i=1; AJvYcCUU0slCVjLY3dV6tYeedsMyVUxeJBhVSN1+zFKPuVDl0j9aS2lBCFLlh3YGoUNZpCxTvnabPDX7qWkFWSO7goNInjNoy/9Iz775
-X-Gm-Message-State: AOJu0YxAncqeIJtOMj+roUeyJLajudBYAp1JKFHyiLsHC5IgAppidp9P
-	ZaWlUEgGzG6pOYvsao4DUI28CjY4B7llzqoRy9GJIF8xilq67Iqd
-X-Google-Smtp-Source: AGHT+IHI+m/JUz68f3ZXkP11/1Bukju4pMSINUlPdlcJzyhLnmLRJ29mVu0SsOgQem3HUZoxhIqiuA==
-X-Received: by 2002:a17:906:af0c:b0:a4d:fb90:4a4e with SMTP id lx12-20020a170906af0c00b00a4dfb904a4emr5193795ejb.2.1712233005512;
-        Thu, 04 Apr 2024 05:16:45 -0700 (PDT)
-Received: from ubuntu-focal.zuku.co.ke ([197.237.50.252])
-        by smtp.gmail.com with ESMTPSA id h19-20020a1709060f5300b00a4e30ff4cbcsm7948001ejj.194.2024.04.04.05.16.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 04 Apr 2024 05:16:45 -0700 (PDT)
-From: Dorine Tipo <dorine.a.tipo@gmail.com>
-To: =?UTF-8?q?Micka=C3=ABl=20Sala=C3=BCn?= <mic@digikod.net>
-Cc: Dorine Tipo <dorine.a.tipo@gmail.com>,
-	Linux-kernel-mentees-request@lists.linuxfoundation.org,
-	fabio.maria.de.francesco@linux.intel.com,
-	skhan@linuxfoundation.org,
-	outreachy@lists.linux.dev,
-	linux-security-module@vger.kernel.org,
-	Paul Moore <paul@paul-moore.com>
-Subject: 
-Date: Thu,  4 Apr 2024 12:16:21 +0000
-Message-Id: <20240404121621.9162-1-dorine.a.tipo@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20240402.MooNaiJoo2cu@digikod.net>
+	dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b="fgs5eawN"
+Received: from smtp-3-0000.mail.infomaniak.ch (smtp-3-0000.mail.infomaniak.ch [10.4.36.107])
+	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4V9MPq3V48zYqg;
+	Thu,  4 Apr 2024 15:08:47 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=digikod.net;
+	s=20191114; t=1712236127;
+	bh=TNa/BNEOuYD5hp6QjAdEPCaM+Cp1hRL0BDPW82LVBoE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=fgs5eawNezgekiN6MJ6Znsb5GoCOL2Q4EpWkTH/QQR3qKNOrm7EJ7zLqfBqE2U2XK
+	 4zRiTg/gsVyEjwXqwXxIHJe7aHXh/0ZuiMD+oFnNIwz2BDaBXfh819RYVGo+vFOcUM
+	 54AFS1HfwpzUXbh8f99R6GOEn9hJe7+i7AdUtL70=
+Received: from unknown by smtp-3-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4V9MPp3mL4zG3N;
+	Thu,  4 Apr 2024 15:08:46 +0200 (CEST)
+Date: Thu, 4 Apr 2024 15:08:46 +0200
+From: =?utf-8?Q?Micka=C3=ABl_Sala=C3=BCn?= <mic@digikod.net>
+To: Dorine Tipo <dorine.a.tipo@gmail.com>
+Cc: Linux-kernel-mentees-request@lists.linuxfoundation.org, 
+	fabio.maria.de.francesco@linux.intel.com, skhan@linuxfoundation.org, outreachy@lists.linux.dev, 
+	linux-security-module@vger.kernel.org, Paul Moore <paul@paul-moore.com>
+Subject: Re: [PATCH v3] selftests/landlock: Add tests for io_uring openat
+ access control with Landlock rules
+Message-ID: <20240404.Aejufoh8gier@digikod.net>
 References: <20240402.MooNaiJoo2cu@digikod.net>
+ <20240404121621.9162-1-dorine.a.tipo@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20240404121621.9162-1-dorine.a.tipo@gmail.com>
+X-Infomaniak-Routing: alpha
 
-Subject: [PATCH v3] selftests/landlock: Add tests for io_uring openat access control with Landlock rules
+> Subject: Re: your mail
 
-> What is tested exactly?
+There is an issue with the subject.
 
-The test_ioring_op_openat() function is testing the enforcement of
-Landlock rules for read-only access.
-It's specifically checking whether the Landlock rules correctly allow or
-deny read-only access to the specified file when using the openat system
-call with io_uring. The test does this by preparing a submission queue
-entry for the openat operation with io_uring_prep_openat(), submitting
-this operation to the kernel via io_uring, and then checking the result.
-If the operation is successful, it means that Landlock allowed the read-only
-access as expected. If the operation fails, it means that Landlock correctly
-denied the access.
+On Thu, Apr 04, 2024 at 12:16:21PM +0000, Dorine Tipo wrote:
+> 
+> > What is tested exactly?
+> 
+> The test_ioring_op_openat() function is testing the enforcement of
+> Landlock rules for read-only access.
+> It's specifically checking whether the Landlock rules correctly allow or
+> deny read-only access to the specified file when using the openat system
+> call with io_uring. The test does this by preparing a submission queue
+> entry for the openat operation with io_uring_prep_openat(), submitting
+> this operation to the kernel via io_uring, and then checking the result.
+> If the operation is successful, it means that Landlock allowed the read-only
+> access as expected. If the operation fails, it means that Landlock correctly
+> denied the access.
 
-> +static int test_ioring_op_openat(struct __test_metadata *const _metadata, const __u64 access, const char **paths)
-> +{
-> +     int ruleset_fd;
-> +     int ret;
-> +     struct io_uring ring;
-> +     struct io_uring_sqe *sqe;
-> +
-> +     /* Test Allowed Access */
-> +     const struct rule allowed_rule[] = {
-> +             {
-> +                     .path = paths[0],
-> +                     .access = access,
-> +             },
-> +             {
-> +                     .path = NULL,
-> +             },
-> +     };
-> +
-> +     ruleset_fd = create_ruleset(_metadata, allowed_rule[0].access, allowed_rule);
-> +
-> +     ASSERT_LE(0, ruleset_fd);
-> +
-> +     ret = io_uring_queue_init(32, &ring, 0);
-> +
-> +     ASSERT_EQ(0, ret);
-> +
-> +     /* Test allowed path */
-> +     sqe = io_uring_get_sqe(&ring);
-> +
-> +     /* Prepare SQE  for the openat operation */
-> +     io_uring_prep_openat(sqe, AT_FDCWD, paths[0], O_RDONLY, ruleset_fd);
+That doesn't reflect the content of this patch.
 
-> Can you please explain what this call to io_uring_prep_openat() do?
+> 
+> > +static int test_ioring_op_openat(struct __test_metadata *const _metadata, const __u64 access, const char **paths)
+> > +{
+> > +     int ruleset_fd;
+> > +     int ret;
+> > +     struct io_uring ring;
+> > +     struct io_uring_sqe *sqe;
+> > +
+> > +     /* Test Allowed Access */
+> > +     const struct rule allowed_rule[] = {
+> > +             {
+> > +                     .path = paths[0],
+> > +                     .access = access,
+> > +             },
+> > +             {
+> > +                     .path = NULL,
+> > +             },
+> > +     };
+> > +
+> > +     ruleset_fd = create_ruleset(_metadata, allowed_rule[0].access, allowed_rule);
+> > +
+> > +     ASSERT_LE(0, ruleset_fd);
+> > +
+> > +     ret = io_uring_queue_init(32, &ring, 0);
+> > +
+> > +     ASSERT_EQ(0, ret);
+> > +
+> > +     /* Test allowed path */
+> > +     sqe = io_uring_get_sqe(&ring);
+> > +
+> > +     /* Prepare SQE  for the openat operation */
+> > +     io_uring_prep_openat(sqe, AT_FDCWD, paths[0], O_RDONLY, ruleset_fd);
+> 
+> > Can you please explain what this call to io_uring_prep_openat() do?
+> 
+> io_uring_prep_openat() prepares the submission queue entry for the openat
+> system call. In my tests the call to io_uring_prep_openat() is preparing
+> an openat operation to open a file at a certain path with read-only access.
+> This operation is then submitted to the kernel via io_uring, and the test
+> checks whether the operation is allowed or denied based on the define
+> Landlock rules.
 
-io_uring_prep_openat() prepares the submission queue entry for the openat
-system call. In my tests the call to io_uring_prep_openat() is preparing
-an openat operation to open a file at a certain path with read-only access.
-This operation is then submitted to the kernel via io_uring, and the test
-checks whether the operation is allowed or denied based on the define
-Landlock rules.
+This is not what is tested by this patch.
+
+What is the last argument of io_uring_prep_openat()?  Did you write this
+code?
