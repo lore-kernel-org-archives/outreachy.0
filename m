@@ -1,245 +1,132 @@
-Received: from mail-wr1-f46.google.com (mail-wr1-f46.google.com [209.85.221.46])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.11])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8C1062C1A6
-	for <outreachy@lists.linux.dev>; Sat,  6 Apr 2024 12:12:28 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.46
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 71FD8153826
+	for <outreachy@lists.linux.dev>; Tue,  9 Apr 2024 17:10:16 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.11
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1712405550; cv=none; b=lNvtAiyAm3uokPOGBhYmqXf4ESZ6805WW+6JCtF62wQNByFdExgEjL2hbjO4JEYAh0TXen2RFTcbfQA9hhcgnhZ5bRhx+aeKO/xtOhfou+6rtvv8NoxBTerGyG4xBfAcWE4R82vAYCv9ABDRj6XRJxNlkUT7up/DVslsFnNorzo=
+	t=1712682618; cv=none; b=l0AtcPZgabkHM2eC1Woaj1oSFF18ktnaI56sYYA0SsSAfv3IKAG+5iKh9ZK2LHkiDlDCjr3s7mVW8c48QESfGKVKzNfJvDKJRLOahuaGL/21e+kH26hAbQM1SAFcLpCqrYRMDA7zAjogeg7HDlxOaJdXP0qX7mfSHmuz7HbXcKM=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1712405550; c=relaxed/simple;
-	bh=+llZnZZ0fqskCpk1GqD8dkbcPml+61V7b1nbCU6ksk4=;
-	h=From:To:Cc:Subject:Date:Message-Id:MIME-Version:Content-Type; b=iczDB1j5lZWM9FMfmHhGNXzwxNW2R2Ne5xlUv9GSWjSaf8hzFKQmOAtaiwhDBYQUTJEcvdTNrOTS7kKLmokNQZ/r1tl6/UF+FJx4VZZDgs1ghX8FRHDyQiVRFj6XN2ymevznmOo8Ork2LPwoMcAyxoaFtm+mfQpf8A+YakVO63g=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=h4s0+MAh; arc=none smtp.client-ip=209.85.221.46
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	s=arc-20240116; t=1712682618; c=relaxed/simple;
+	bh=AvtrSVg8ba19zH8OqHTXIoJzzvKoZt9W5St7gIdRNBI=;
+	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type:
+	 Content-Disposition; b=n9Ichc2GvIu985WX5WN5y89Z2rwly3eiZURkWHvRrJ1hcUVVKJ2HjdootrsWR/Rg6s7GBVBQ9BxRwhumPPuOe3EQ7Lxlv7JQGmRulaVgY3ftXZoTB/dFEULBxkcDW4plQ6i2yKoBlYOhjNAoP7cr3pDlK4XctZCjpW7PibutEVo=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=KLCYJv/1; arc=none smtp.client-ip=198.175.65.11
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="h4s0+MAh"
-Received: by mail-wr1-f46.google.com with SMTP id ffacd0b85a97d-343cfa6faf0so1871918f8f.0
-        for <outreachy@lists.linux.dev>; Sat, 06 Apr 2024 05:12:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1712405547; x=1713010347; darn=lists.linux.dev;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=3nY0ke4mztvDFdycWcex2NH962CeQxNqnfP1gnvmLTI=;
-        b=h4s0+MAh3c/vcXaDSKD+fs7VOqd+Tmq0mm6J+BPe/rJta86N8WvsHggR8yiWAxLlpz
-         ehapm2rACxrZGdjjh9uNIgvMI9bPtH2kwnmD0G/5E/KvHE4hZIzipKh6XduhC3y2C1So
-         S/Nvjg2LnzXi38X78mONEDiE6Npg0iam/ZTlzQlgC5htLij+PMLvR1av/arPA1Mazup2
-         LzEINTJjjZi6eWorUNJCVnFburrxl+KQgHZ2ZSXVEweijoeM76kOfvJp3bx0It+0j28b
-         BXoRPH45mHbt7YHfxlRAwUxmZ5iwsIi1v7rHV5kL+0WDO/6AixDD/WnXvC6JuYD5EN/A
-         8KPQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1712405547; x=1713010347;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=3nY0ke4mztvDFdycWcex2NH962CeQxNqnfP1gnvmLTI=;
-        b=uzvNQI6c4p/lMdaNuUFTneWQNug6cLErCwLvAM3IA85yFx7hIy3mvuBQeD4Tk8jUZg
-         juNyVwpZW3PxYXq8cza5WrDP3EQ+4o/ZdbmhtpYf0j0s6ZCIaTp1dW1tvxXNIiQu4kKI
-         59gh2kpgwjqRQ/4BlheyB7Em3kh6krqg+Uj3Y+kythGZFw3w/7nD9BcUuxLLDho8wuFH
-         Xsnv4DUtqCLRGDL3q7sfZgLgl7tkIDT+OoLKeEF7RP2i/OBeaBRwRu5whk4MEwy/GI7/
-         b9dMrhF7AJEr9vDW3W97qfhZCAhHUHPj0Sd8G8ftm5uDUeiIYJWFXg0kuinO/nrjnYFG
-         JxcQ==
-X-Forwarded-Encrypted: i=1; AJvYcCX6JkZ6T+OlmeDHdTgauIO1wG+pqFmlSotK8pnmqRT+uUCy7giLooqzg8AOkWsSYYrS9OCBUHMCw5G5MquxgN60ODKKvlbPF+xS
-X-Gm-Message-State: AOJu0YxjSNwFkznrR61jZgGM9s/VaL7aMTx1/aIHRCm1UgxVfY7UOp51
-	FGr8RUWrKFIjxUxd+FEFznUV6wEe+viqvk3Ul/p1Czp+39iFh4Ip
-X-Google-Smtp-Source: AGHT+IEvw3Q6SBQARb3UI9C/4xBBW9Ei0m9PfHb5hogw/w9BwrS0RhlaA0RW+BU+XwCNG2YQBCnEgw==
-X-Received: by 2002:a5d:438f:0:b0:33e:ca28:bb59 with SMTP id i15-20020a5d438f000000b0033eca28bb59mr3768395wrq.57.1712405546568;
-        Sat, 06 Apr 2024 05:12:26 -0700 (PDT)
-Received: from ubuntu-focal.zuku.co.ke ([197.237.50.252])
-        by smtp.gmail.com with ESMTPSA id di3-20020a0560000ac300b00341c7129e28sm4325591wrb.91.2024.04.06.05.12.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 06 Apr 2024 05:12:25 -0700 (PDT)
-From: Dorine Tipo <dorine.a.tipo@gmail.com>
-To: =?UTF-8?q?Micka=C3=ABl=20Sala=C3=BCn?= <mic@digikod.net>,
-	skhan@linuxfoundation.org,
-	Paul Moore <paul@paul-moore.com>,
-	linux-security-module@vger.kernel.org,
-	outreachy@lists.linux.dev
-Cc: Dorine Tipo <dorine.a.tipo@gmail.com>,
-	Linux-kernel-mentees-request@lists.linuxfoundation.org
-Subject: [PATCH v4] Add test for io_uring openat access control with Landlock rules
-Date: Thu,  4 Apr 2024 21:16:37 +0000
-Message-Id: <20240404211637.38472-1-dorine.a.tipo@gmail.com>
-X-Mailer: git-send-email 2.25.1
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="KLCYJv/1"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1712682617; x=1744218617;
+  h=date:from:to:cc:subject:message-id:mime-version;
+  bh=AvtrSVg8ba19zH8OqHTXIoJzzvKoZt9W5St7gIdRNBI=;
+  b=KLCYJv/1NAPzU7V5wS3A/gXC/ZiYt9xlyh+ke+cTztThupXhRuJKAtjM
+   n7wtWHCUZSB5yaEr+A2zP8/JdJDUEE1Mtzbfg0maz+P70VLb1+gMtUbAg
+   53iGYRtkpwhhIp8ZQ9o0XzREXxVvcCW+6Sv5eUbK4cIgcnzOoTqwbBZpc
+   iuTiOzT6WfLkWNeKsAqt9DrhLCFPSfu+BZ/x1SuDLgcjbLaK1lh7JGif9
+   07pmjH8Yaj/+3mRJLhsXkayVP6F8cPQHgzALKtFtQD9PxVX+hPlGWNRaO
+   c31qRM/eWO86bbrltN0UiguMJWG3UUx02phkHPciSLVarza0vJihld2cY
+   A==;
+X-CSE-ConnectionGUID: sYYcoeFETjuUlpkFepN4og==
+X-CSE-MsgGUID: bpkA+2peRyi0tB71DLoWuw==
+X-IronPort-AV: E=McAfee;i="6600,9927,11039"; a="18575161"
+X-IronPort-AV: E=Sophos;i="6.07,190,1708416000"; 
+   d="scan'208";a="18575161"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Apr 2024 10:10:16 -0700
+X-CSE-ConnectionGUID: XYaFcFBJReOph56GOhQ8tQ==
+X-CSE-MsgGUID: 8C8M74h0SKOyejuOcU8K/Q==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.07,190,1708416000"; 
+   d="scan'208";a="24778549"
+Received: from aschofie-mobl2.amr.corp.intel.com (HELO aschofie-mobl2) ([10.209.89.148])
+  by fmviesa003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Apr 2024 10:10:15 -0700
+Date: Tue, 9 Apr 2024 10:10:13 -0700
+From: Alison Schofield <alison.schofield@intel.com>
+To: Outreachy Linux Kernel <outreachy@lists.linux.dev>
+Cc: Hans Verkuil <hverkuil@xs4all.nl>
+Subject: Outreachy Panel at OSSE Vienna
+Message-ID: <ZhV2dYUQnOfOjmje@aschofie-mobl2>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-This v4 patch expands Landlock test coverage to include io_uring
-operations. It also introduces a test for IORING_OP_OPENAT with Landlock
-rules, verifying allowed and restricted O_RDONLY access. This makes sure that
-IORING_OP_OPENAT is well covered from security vulnerabilities by
-ensuring Landlock controls access through io_uring.
 
-It also updates Makefile to include -luring in the LDLIBS variable.
-This ensures the test code has access to the necessary library for
-io_uring operations.
+To All Outreachy Alumni: Interns & Mentors,
 
-The previous implementation of tests for the io_uring operation
-IORING_OP_OPENAT in the Landlock fs_test suite was found to be incorrect
-and ineffective.
-This patch removes the previous implementation and introduces a new set
-of tests that cover both allowed and denied access scenarios.
+Response Due: April 20th
 
-Signed-off-by: Dorine Tipo <dorine.a.tipo@gmail.com>
-Changes since V1:
-V2: - Consolidated two dependent patches in the V1 series into one patch
-      as suggested by Fabio.
-    - Updated The subject line to be more descriptive.
+The Open Source Summit Europe is in planning for September 2024 in Vienna,
+Austria.  https://sessionize.com/open-source-summit-europe-2024
 
-V3: - Added "selftests/landlock" subject prefix
-    - Revised wording in the commit message to accurately reflect the
-      test functionality as suggested by Mickaël.
-    - Updated the Fixture set_up and tear_down to create and remove the
-      necesssary files and folders for testing access.
-    - renamed allowed_ruleset_fd and disallowed_ruleset_fd to ruleset_fd
-      as suggest by Mickaël.
-    - Moved all variable declarations to the top of the function.
-    - Refactored the code to test only one allowed and one restricted
-      path instead of iterating through all the paths.
-    - Added comments to explain what is happening in different blocks
-      of code
-    - Removed the clang-format markers.
-    - Removed unused arguments in the function definition.
-    - Added a final rule struct with a null path to the allowed_rule
-      and disallowed_rule arrays as suggested by Fabio.
-    - CC'd the missing mailing lists as suggested by Shuah.
-    - All executables have been included in the .gitignore so no updates
-      are necessary.
+Our Outreachy Linux Kernel community traditionally submits a panel
+presenation to one Open Source Summit event per year. The last time we
+presented was in Vancouver in 2023.
 
-V4: - Removed the previous implementation of the tests as they were not
-      correctly implemented.
----
- tools/testing/selftests/landlock/Makefile  |  4 +-
- tools/testing/selftests/landlock/fs_test.c | 85 ++++++++++++++++++++++
- 2 files changed, 87 insertions(+), 2 deletions(-)
+The last few presentations have been remote. We'd really like to get some
+folks to an actual conference so that you get the full experience!
 
-diff --git a/tools/testing/selftests/landlock/Makefile b/tools/testing/selftests/landlock/Makefile
-index 348e2dbdb4e0..ab47d1dadb62 100644
---- a/tools/testing/selftests/landlock/Makefile
-+++ b/tools/testing/selftests/landlock/Makefile
-@@ -13,11 +13,11 @@ TEST_GEN_PROGS := $(src_test:.c=)
- TEST_GEN_PROGS_EXTENDED := true
+Who wants to present in Vienna?
 
- # Short targets:
--$(TEST_GEN_PROGS): LDLIBS += -lcap
-+$(TEST_GEN_PROGS): LDLIBS += -lcap -luring
- $(TEST_GEN_PROGS_EXTENDED): LDFLAGS += -static
+Here's how you get there:
 
- include ../lib.mk
+- Request to join the Outreachy panel.
+  Panelists are interns or mentors, each telling their story. The total
+  time allotted is usually just 40 minutes. We seek 4-5 panelists, so 
+  you may be allotted at most 10 minutes to present.
 
- # Targets with $(OUTPUT)/ prefix:
--$(TEST_GEN_PROGS): LDLIBS += -lcap
-+$(TEST_GEN_PROGS): LDLIBS += -lcap -luring
- $(TEST_GEN_PROGS_EXTENDED): LDFLAGS += -static
-diff --git a/tools/testing/selftests/landlock/fs_test.c b/tools/testing/selftests/landlock/fs_test.c
-index 9a6036fbf289..d1fae72e99be 100644
---- a/tools/testing/selftests/landlock/fs_test.c
-+++ b/tools/testing/selftests/landlock/fs_test.c
-@@ -21,7 +21,10 @@
- #include <sys/stat.h>
- #include <sys/sysmacros.h>
- #include <sys/vfs.h>
-+#include <sys/types.h>
- #include <unistd.h>
-+#include <liburing.h>
-+#include <linux/io_uring.h>
+- Telling their story usually means presenting their intern project, but
+  it can differ.
 
- #include "common.h"
+- If you presented virtually and now would like to present in person,
+  you are welcome to throw your name in the hat.
 
-@@ -4874,4 +4877,86 @@ TEST_F_FORK(layout3_fs, release_inodes)
- 	ASSERT_EQ(EACCES, test_open(TMP_DIR, O_RDONLY));
- }
+- If you did or didn't present virtually, and would like to present
+  something a little different - ie - tell the tale of how you got
+  the job you have now because of Outreachy - that would be welcomed.
 
-+/* test openat */
-+static int test_openat(struct io_uring *ring, const char *path, int dfd)
-+{
-+	struct io_uring_cqe *cqe;
-+	struct io_uring_sqe *sqe;
-+	int ret;
-+
-+	sqe = io_uring_get_sqe(ring);
-+	if (!sqe) {
-+		fprintf(stderr, "get sqe failed\n");
-+		goto err;
-+	}
-+	io_uring_prep_openat(sqe, dfd, path, O_RDONLY, 0);
-+
-+	ret = io_uring_submit(ring);
-+	if (ret <= 0) {
-+		fprintf(stderr, "sqe submit failed: %d\n", ret);
-+		goto err;
-+	}
-+
-+	ret = io_uring_wait_cqe(ring, &cqe);
-+	if (ret < 0) {
-+		fprintf(stderr, "wait completion %d\n", ret);
-+		goto err;
-+	}
-+	ret = cqe->res;
-+	io_uring_cqe_seen(ring, cqe);
-+	return ret;
-+err:
-+	return -1;
-+}
-+
-+TEST_F_FORK(layout1, openat_allowed)
-+{
-+	struct io_uring ring;
-+	int ret;
-+	const char *path = "file1_s1d3";
-+	const struct rule rules[] = {
-+		{
-+			.path = path,
-+			.access = LANDLOCK_ACCESS_FS_READ_FILE,
-+		},
-+		{
-+			.path = NULL,
-+		},
-+	};
-+	int ruleset_fd;
-+
-+	ruleset_fd = create_ruleset(_metadata, rules[0].access, rules);
-+	ret = io_uring_queue_init(8, &ring, 0);
-+
-+	ASSERT_EQ(0, ret);
-+	ASSERT_LE(0, ruleset_fd);
-+	enforce_ruleset(_metadata, ruleset_fd);
-+	ASSERT_EQ(0, test_openat(&ring, file1_s1d3, AT_FDCWD));
-+}
-+
-+TEST_F_FORK(layout1, openat_denied)
-+{
-+	struct io_uring ring;
-+	int ret;
-+	const char *path = "file2_s1d3";
-+	const struct rule rules[] = {
-+		{
-+			.path = path,
-+			.access = LANDLOCK_ACCESS_FS_READ_FILE,
-+		},
-+		{
-+			.path = NULL,
-+		},
-+	};
-+	int ruleset_fd;
-+
-+	ruleset_fd = create_ruleset(_metadata, rules[0].access, rules);
-+	ret = io_uring_queue_init(8, &ring, 0);
-+
-+	ASSERT_EQ(0, ret);
-+	ASSERT_LE(0, ruleset_fd);
-+	enforce_ruleset(_metadata, ruleset_fd);
-+	ASSERT_EQ(EACCES, test_openat(&ring, file1_s1d3, AT_FDCWD));
-+}
-+
- TEST_HARNESS_MAIN
---
-2.25.1
+- Once the proposal is accepted folks needing travel assistance (ie money)
+  apply to Linux Foundation for a travel scholarship. Note that if you
+  don't get the money you need to travel, then you are not obligated to go.
 
+- You'll get a presentation template and pointers to previous presentations.
+  In late August we can get together and do a practice run virtually.
+  Ultimately, the panel has creative control over the presentation.
+
+
+I've appended the Outreachy accepted proposal from Vancouver 2023 for
+your reference.
+
+Please ask any questions!!
+
+--Alison
+
+
+
+OSSummit Vancouver 2023
+------------------------
+Come learn about the great accomplishments of our Outreachy Linux Kernel
+interns!
+
+Outreachy offers open-source internships to people subject to systemic bias
+and impacted by underrepresentation in the technical industry where they
+are living. Alison Schofield, the Linux Kernel Community Coordinator, offers
+a program overview, followed by intern presentations showcasing their projects
+and experiences with Outreachy!
+
+Karolina Stolarek describes laying the groundwork for memblock simulator, a
+test suite for boot time memory allocator. Next, Rebecca Mckeever shares her
+work extending the memblock simulator to increase test coverage and usability.
+Sevinj Aghayeva and Jaehee Park each present their projects in the networking
+subsystem where they contributed API and self-test improvements. And Deepak
+Varma shares his experience using Coccinelle to improve the Linux Kernel.
+
+We are excited to have Outreachy mentors joining the virtual panel this year.
+Linux kernel experts Stefano Brivio, David Hildenbrand, Roopa Prabhu, Mike
+Rapoport, and Ira Weiny, offer reflections on the mentorship experience.
