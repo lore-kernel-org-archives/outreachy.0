@@ -1,121 +1,85 @@
-Received: from mail-lj1-f170.google.com (mail-lj1-f170.google.com [209.85.208.170])
+Received: from sonic307-9.consmr.mail.ne1.yahoo.com (sonic307-9.consmr.mail.ne1.yahoo.com [66.163.190.32])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3B20F14F13F
-	for <outreachy@lists.linux.dev>; Mon, 22 Apr 2024 13:25:44 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.170
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0044F14F11B
+	for <outreachy@lists.linux.dev>; Mon, 22 Apr 2024 16:23:05 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=66.163.190.32
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1713792347; cv=none; b=IcuhMGI02MrZguHXNZuHV5UH30AalE9McgOmW7VVoKZm+HFK9REl8rSmDh8Y2l2/HoXxV8G7quxViII3R2yx2ldRN1bZqyIt8jaEfR75SF3RRCz44cxD3KKRfTR6jqc115Fp35eTfrq773i1c/gXApt74ApT53EQ6+6lYwammkQ=
+	t=1713802987; cv=none; b=dg8iW+Y5Za4JZxU5U8iKaEAPs4GeZfuAnFO5uggVj8yWH1wui0oBCO4KC09I2WjJglFtoUC+zk2xMYkH6REYnkhceqZiBrXDkmkxwUEnm7DHE/LnqPMxjLpAq2ITsJ1jtVOHCR9oVq92E2nKS41LgOBso3XdaqmSQKKBFVOmNaY=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1713792347; c=relaxed/simple;
-	bh=p71XPOYccBTrK5vNtFphHMc7xrNQr0V9gF4p0adc0z8=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=PhJoDuOSkDrxjzeA0ACsvQbZa5ok45dCeV1Au8KhzBA/bwaArtgWl/sHqWmoJkok3MoGY9KGpp6JNi1yZiEScKP7ldowJcUxvf/fJBQIZMBmFZVfOgnMaYlSGPKGuPzMKN0Acb7C+i68xFTlQ4CHchlUbq6Tbb4IDM1UG7/8mUw=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=nfOcDd29; arc=none smtp.client-ip=209.85.208.170
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
+	s=arc-20240116; t=1713802987; c=relaxed/simple;
+	bh=fLATWBlPEPcZQ76mE2CLu0MkLgQxEM1UJa0HFleVyPc=;
+	h=Date:From:To:Message-ID:Subject:MIME-Version:Content-Type:
+	 References; b=n1fhfPGRu/WlUKrU4+hZRbRDOE/a6XxfelNo/T5mW/TqmcaJSuE/CT3gh9ynJtuAWvMO7K8jPobwR5FOeuy59/c9fzghUAw7ZhhLqm27ZBcJ0BvkvCTCDcF32qX2Zpu5ptK5tIgr4S31t4/CFFUb41Q53/yuMd7saQtv/fwxSIw=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=yahoo.com; spf=pass smtp.mailfrom=yahoo.com; dkim=pass (2048-bit key) header.d=yahoo.com header.i=@yahoo.com header.b=Xp2/+2QD; arc=none smtp.client-ip=66.163.190.32
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=yahoo.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=yahoo.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="nfOcDd29"
-Received: by mail-lj1-f170.google.com with SMTP id 38308e7fff4ca-2d895138ce6so62311021fa.0
-        for <outreachy@lists.linux.dev>; Mon, 22 Apr 2024 06:25:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1713792342; x=1714397142; darn=lists.linux.dev;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=/kyPaZIZyrkWqjj0WFiDLbAxvb7aRYR+HuKJ6/NuUGw=;
-        b=nfOcDd29DEsp0RbKmWIo0V8xLsDPIEmyJvOYH4w447KdDpY7Lj6q/6PDVcTINiQHMh
-         HF3IO1Gd3Hogfl6JN0gRCmECBonwnE9+cG0nfacnUQo5B3QvHUGfDyozKl+de8FgwXjk
-         ijMeRlG+9yOLaC6yArFUeaNKceFmwlPRXuGAQkJLdq+OmP888YEaLVtZoJUQrycBHVUL
-         DqMVIaYYppkoeGwSCRMFruA+LnXyRkjE60iBpJlp3iDwsRe3g7ymGybtCRY0+wF3YXfP
-         wmVoRaU0RJxUPnv/nMCsxXtZ4/9iuv0i/8j9w7ob8hEsCbX+6Q/zRk9ePPRV27fN9bSJ
-         DzAA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1713792342; x=1714397142;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=/kyPaZIZyrkWqjj0WFiDLbAxvb7aRYR+HuKJ6/NuUGw=;
-        b=jDfnCRYkMbZyAdjQEfLyQHdZGfZ1wnw1M1/UeLtHz8e2mb1gg+KFrn7YHqwCI9XyBv
-         Mia++OEIFHj4MzptmAam2GlNCgTcfFIwjz6Ofz+G1/pBPDmvSwICfnXe+sUIPpKlj8wZ
-         rDSXOhjNwlfvgAXrl4cYWt3bq/U07jJW520MYGRVVxI8KwlN+j5MNvhFwpgOc2ORQUo0
-         5/7n+MALsvrE5rMeOfmnjytq0/4zVPT9sj3X8Yel5y9CtxCgOyXNq4IIdmUtZatgWCkz
-         LctLDijSde2pDR/6A1CQyI03VhIli5BjKiWvDsCF0STH5m0RJJyFP46LPWucBDf8fqyh
-         OXRw==
-X-Forwarded-Encrypted: i=1; AJvYcCWqJ/BOeCvRako1L+GpmHzBzGp0ZIGc81rfMMSIvZv4JEe3a1HxAVmlBIyMizbR/eUKspXgJlbCZKFij4HB4d3X6jWoizreRwyJ
-X-Gm-Message-State: AOJu0YwAhSKt/WDNhnqG/DMQKXNUdX+yYCE07cENpK9Jcw6SNcT+/KTU
-	2vU5haa7dENFa4toMXvWiBb8MNACbWuTQGPuRPZLfQOlsbIFM6epi3CBz1jkNCw=
-X-Google-Smtp-Source: AGHT+IHWET/ZymKfhlPZrQHfC2dJ8JbIntynRS8qE8Jm7h5ARJyaDMzXxiK//kI7R+cm7SauaT3FVQ==
-X-Received: by 2002:a2e:9d43:0:b0:2d4:6f33:2e59 with SMTP id y3-20020a2e9d43000000b002d46f332e59mr5822818ljj.30.1713792342161;
-        Mon, 22 Apr 2024 06:25:42 -0700 (PDT)
-Received: from localhost ([102.222.70.76])
-        by smtp.gmail.com with ESMTPSA id ef9-20020a05640228c900b00571bde3b0a4sm5246522edb.34.2024.04.22.06.25.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 22 Apr 2024 06:25:41 -0700 (PDT)
-Date: Mon, 22 Apr 2024 16:25:36 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: A <ashokemailat@yahoo.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	dri-devel@lists.freedesktop.org, linux-fbdev@vger.kernel.org,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev
-Subject: Re: [PATCH] staging:fbtft:fb_ili9320 Removed redundant Parentheses
-Message-ID: <9baed766-a2d2-4b94-ae2b-d16ffbea3f67@moroto.mountain>
-References: <452e4a2dcdc7020f75b84d787297a1d17a21ca81.camel.ref@yahoo.com>
- <452e4a2dcdc7020f75b84d787297a1d17a21ca81.camel@yahoo.com>
+	dkim=pass (2048-bit key) header.d=yahoo.com header.i=@yahoo.com header.b="Xp2/+2QD"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1713802979; bh=fLATWBlPEPcZQ76mE2CLu0MkLgQxEM1UJa0HFleVyPc=; h=Date:From:To:Subject:References:From:Subject:Reply-To; b=Xp2/+2QDmgygMCoXzEevBLDYEc9k0IqocsjtGEsxV+sGo5WKZcP+QNmYDDc8n/8VCrcVk2u9OlCnXr46/P4O8xILTFv1F/1ox2BY/sbM3ubm2fULIDnNHt60v1gwZI1KvkVEQeTXloV/ynybjp/PUd2t9FQ6Ee7y3Kk9bkNpNrZfAePLD8CgPkKUIFmCSFlMlbG8sXy00GjTnHgSQ1J+R2jj49kEQTlP6aWVoa5v1LME1+/JY9ozogM9NlVCUVNwbKDpTdfZ2ebeWdh5lXXvSJMgg0nboVypsbLwd0EKssfVKiyeeNQcTyo3yGtmzMp+nC/CWGjFXkvLPRkDaDQHKg==
+X-SONIC-DKIM-SIGN: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1713802979; bh=bX5Sc8SxKGNVJZtcBIikNsptkMB/cYnNe7Rrjc8/3gM=; h=X-Sonic-MF:Date:From:To:Subject:From:Subject; b=ilDzXpqvbZ+OLiiy4vCk0R25GgpJmg2d2n+n/TdX1kRjefh0wPvmRhdbz5Thx11xxYZDigpzxGoQWy7EDodizhNJJdCLJN6TNlvMYvN/ncJrOZYTXksw0RFTd7T3yHK3+5EO5/Nue9FcAHljNWx0iLVqchwn+gSBcl12J1/D9OnmQJHrbDmWcgrV3TSyvkp6CTljTD7z3Sfp4WvjYMcpaXPiY4O9AnLekEezYcJAF9tbcORoVONzuUrU/qI0/6J229vTVSSMKLYXY3xXi8ggZTEKf0humXCXqya3SsD1uH69tN2hxM1OxhaH2dnoyL5Jm2M4j0FlLb3uZKVTY6/1zg==
+X-YMail-OSG: enpKdcIVM1k8UJvoac9Yb.5I421hAE6fN_UzuBMkwa.akOTPfpFA49yIPLgJfqC
+ qW5tuyga0d36Kj0_EPF9mPfZIkWHu3JmFH6.CnnveAxXqwGGWrRWOrQVUP1jOTkSIi55_sDhks2R
+ 4q4QnThztPHKWdrq4315z.NsyM8vh3Wleufg_uCt31aP6hxutTfSdllb2AEWNolAPL6jFvkK4F6a
+ gw_lN76ErDe61Xud3L7nfve3gtGejPsuisZpfbXdx1oXUcdkSaem.VazeppNeVz67Y22.64aiS4X
+ vpEk1kN5HAvhcBiBh.SxK1fEza_veVjXkjjgw3KDNye6B_eXdm1XilCbosof9yldl9_G5WXfpM.8
+ 3XtXdc1IQBBfXPnvOf3UDc0IIrP2IwOG776A3fL6JLrrcv8bgIsIUrCAyeCHk1WqPLQN_OghW5gK
+ jRaspvIF_izLIXmKG20FZRZSYXBPh64oh.94DY.5IXsCYdlDj6ey7MlGx1TZeoElf6XtGh8UD7Zw
+ TDjmCrDSo6Yw5PEtnDvehdjBip76kZtTaQvZw87u9eIB8zZbxCFXctQBO2zpgEtYFXbq8hxdP2oh
+ 32Mmm8CVkjmqBPuRg8rQMa.Ady7vHEBy5BuHuSAJfJBg3Duvy2qpaigenJZ7ln6_udJjP2B2tET3
+ 9UYqmNeQErUfqF.SuSAlZV0GCRPVlh2f5JmKzitjww0Zvhlbwpt9jw5fNXYe3qgELvp7ypl5tuYg
+ MJR_uPaDSPdDqI7IuyYCuxPIqrxPhISRP6_8hLFz9rCOxa0o9Sj5r42K0Db0_5aqs1RM424WVrXR
+ Hr4Xpu6WIL.9WCs88VqHg9T5w5J2WGejrx5z6ZKxkCGKJLNLUR0ZgDwDON0L67BsPApxwtG_Aq9U
+ Z38np53pxtqBVY8wBNFKJXVy.9aI7eMCV7h71_Dk9xAmHeLudwNuEkTLJmWwienyNb9sSziDu564
+ pQMxAPiZse54w3364zVZLOmwl5D1pGhJXZ7dkg4plYhfUl46GHWScOvW1Y_z0oC3u59UY3f5I_C4
+ aUs6Y..TxdsTsn4_ImBahGDS3Yj93p4CXv76Hy7MHje83I_0z3WiRS6custJNMKRTNAA8K9iAhLD
+ 43iF.xTD6iCXK45KaLk4YsdXfskws115059YNBgT2uWNTtOHLMPWB8sMxrkOJJdyu.di_H9WKSHY
+ km8Sy8X.MQ5XIhXF_1kBFkaLtk83skmlFyYxPAEcvJfiHJ8FRCePkCP34ZiGVaMlRADjEzAecDHZ
+ XxRvqi1vUR9Tmkn2o71mzQIEZBkeV73XfpmcquV2wrwb3mCMpbVGhErYakiWX06ndx85qMlfArF9
+ GRBOytGAVxmQm7hI.1nNC.CtWjedhN.tMb.BVolxtr1MEDAVlNZ0CWo6n8yjICFh3reLFrfBdtGi
+ ij2.I5X1ecGU_6guBl.lsvGupnbWjt7dt8DH4nL33DCRy.zYOx0YYz0MA_IZysy5E.rqBIE0elWZ
+ Rkc1PODRFzvTiJKapff4EVQEKQ3lz3IrHkDbF2C7bckoYu_i5n1EUuxjboPdQpgnreVFivLYyq7d
+ bdwZ_Q.23ugnZbxcq9mqkJ.LaqKRsoeyk3zHvJY1eEb7vqdQDKIDmnK9C27YiQ9Q1qnuMlJ.n6ux
+ 9VGkdXKngvmqkZwiOHWEwkrH9gU80UV3SK91g4HajG3gmxbotdSN45jnkr0CeHD1c9tXphlw74_d
+ EYeYIM.gk1Z3RfBfymM.V10Q4dozAae1Lo0owXnSWmX.puKGZ14ffjtI19pDZTyMVOmte.akYrvX
+ Wsj.9rpPxWmZViZegwUjSGqJh1pPlZo1zlpuCYLFUb7Ep_139hsqSrLlmVeJmhA3sOEts4eBaG7L
+ Qj4sCoycRDVz_0tuenEoeNg.lIvIFwXejfO1dKVWo_IEYNVGGXcsDYTuNUU7gY4hBLQh..JEkbq9
+ UK.pQlegY6iGhpmCnDbesm3j7T_wb_uN6u_.Jfp6cTnxh8BKpyKJd_t5KR1cQ_J0XRj1EOs_oqbL
+ aQ3qWj6Nu44.1LydPfNP03P5YJy_Wqhfb06w2KbrrSSgWq27_AE2HwAFQoDCCFgAPDOLbCKGMKV5
+ UaOnc6TcDLlyVskAjOYjhifN9FfolDWwTPcJLCmL7lKYaeE9TFMmoMlK2BhRT5ohtVIwa9Jehku9
+ OnqbEG0XPG5pbHEmAitF6hty3ac86NU4MZmOlSoiqLOjkP4AEVJ1eEeNgVXrXOnD5twNUnXimPYC
+ 48dwKy0_C55m3WAGCS7NvnSnXOYeEWoOHfu53.JvQgc3SeQDjZzN6QA4QoKVizd8usQ--
+X-Sonic-MF: <ashokemailat@yahoo.com>
+X-Sonic-ID: 4013e3ad-1736-480c-856b-f33dff396edf
+Received: from sonic.gate.mail.ne1.yahoo.com by sonic307.consmr.mail.ne1.yahoo.com with HTTP; Mon, 22 Apr 2024 16:22:59 +0000
+Date: Mon, 22 Apr 2024 16:22:54 +0000 (UTC)
+From: Ashok Kumar <ashokemailat@yahoo.com>
+To: "outreachy@lists.linux.dev" <outreachy@lists.linux.dev>
+Message-ID: <489061394.2270510.1713802974136@mail.yahoo.com>
+Subject: setting up mutt / git sendmail to send patch through yahoo email
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <452e4a2dcdc7020f75b84d787297a1d17a21ca81.camel@yahoo.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+References: <489061394.2270510.1713802974136.ref@mail.yahoo.com>
+X-Mailer: WebService/1.1.22256 YMailNorrin
 
-0) Fix your From address.
+Hello,
 
-1) Look at how other people write subjects.
-   git log --oneline drivers/staging/fbtft/fb_ili9320.c
+If anyone of you have successfully setup either mutt or git sendmail to sen=
+d patches through Yahoo email kindly let me know the steps you followed to =
+make it work.=C2=A0=20
 
-On Fri, Apr 19, 2024 at 11:04:21AM -0700, A wrote:
-> >From 51e98164e314a2d1d834d2a9baea21a9823650bb Mon Sep 17 00:00:00 2001
-> From: Ashok Kumar <ashokemailat@yahoo.com>
-> Date: Fri, 19 Apr 2024 10:32:48 -0700
-> Subject: [PATCH] staging:fbtft:fb_ili9320 Removed redundant
->  Parentheses
+Followed the steps https://www.kernel.org/doc/html/latest/process/email-cli=
+ents.html=C2=A0 but could not get it to work.=C2=A0 Did some research to tr=
+ied some fixes but could not get it to working.
 
-2) This should not be part of the email.
+Used Evolution and followed the procedure listed above unfortunately it see=
+ms it breaks the patch and it could not be applied.
 
-> 
-> Adhere to Linux kernel coding style.
-> Reported by checkpatch
-> 
-> CHECK: Unnecessary parentheses around 'devcode != 0x0000'
-> +       if ((devcode != 0x0000) && (devcode != 0x9320))
-> 
-
-3) Just leave this as-is.  Ignore checkpatch in this case.  Greg likes
-   parens.
-
-> Signed-off-by: Ashok Kumar <ashokemailat@yahoo.com>
-> ---
->  drivers/staging/fbtft/fb_ili9320.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/fbtft/fb_ili9320.c
-> b/drivers/staging/fbtft/fb_ili9320.c
-> index 0be7c2d51548..409b54cc562e 100644
-> --- a/drivers/staging/fbtft/fb_ili9320.c
-> +++ b/drivers/staging/fbtft/fb_ili9320.c
-> @@ -37,7 +37,7 @@ static int init_display(struct fbtft_par *par)
->  	devcode = read_devicecode(par);
->  	fbtft_par_dbg(DEBUG_INIT_DISPLAY, par, "Device code:
-> 0x%04X\n",
-
-4) This patch is corrupt and will not apply.  Read the first two
-paragraphs of Documentation/process/email-clients.rst.
-
-regards,
-dan carpenter
-
-
+Thanks=20
+Ashok
