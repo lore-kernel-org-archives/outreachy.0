@@ -1,130 +1,92 @@
-Received: from sonic301-32.consmr.mail.ne1.yahoo.com (sonic301-32.consmr.mail.ne1.yahoo.com [66.163.184.201])
+Received: from mail-lj1-f178.google.com (mail-lj1-f178.google.com [209.85.208.178])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7249A157E61
-	for <outreachy@lists.linux.dev>; Fri,  3 May 2024 17:00:53 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=66.163.184.201
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 852FA1AACB
+	for <outreachy@lists.linux.dev>; Sat,  4 May 2024 11:18:09 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.178
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1714755655; cv=none; b=lFp64wCidauqGdgWoYFmrB+AqBGbxindudjrKBNTHOPuSBXpVt7Rm011f8wdTGD31HcK0z5E0dkc6XHcViA7VyyIqZRa9lu+eUDX2xIWtltUiwl/nIT6JvOBSr3Z2IF1EvQccgOze/auDWcpAxObLzW6pDUNeLgCdPx/QyuqDcM=
+	t=1714821491; cv=none; b=ozxGNaypf5O1R9NBau7iEYWRo8YFI4fjIh0CJsQFbLbF5eYtwkjT0xLf1GLLZvIQfsSLRwjK+KNzb5Mp/acqHZa3HcIvgC/mASxPU2hIWb5fRJVsvXPSU7n6NBeyzE1HygDsLRP2SzpMdbPbtEOvLq8IzcRbFwD99HpfjHK5yiY=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1714755655; c=relaxed/simple;
-	bh=OpuBHTwhnfArlf2PsQ6g2wnS/DKkhtNrSqNbd0Cd8cY=;
-	h=Date:From:To:Cc:Message-ID:In-Reply-To:References:Subject:
-	 MIME-Version:Content-Type; b=gXl+yf7mKywFkKcjif2mNkSCuQJOI49IyjapsvEVBqtJpYUrcrdAUVJA+lErWMCBNrpAVXp4B7BgGeAzvvGOXOkWyDgUaCuEtlJXwRQAw6Ms5Yb8nxSTX6lbBHykiLlSkcfEW3ohBAziO6Xy8qWlt7fZtACnTL83piWp1fDO9lE=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=yahoo.com; spf=pass smtp.mailfrom=yahoo.com; dkim=pass (2048-bit key) header.d=yahoo.com header.i=@yahoo.com header.b=h/XuJOfP; arc=none smtp.client-ip=66.163.184.201
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=yahoo.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=yahoo.com
+	s=arc-20240116; t=1714821491; c=relaxed/simple;
+	bh=smELU36PpAU3prIkce0be7IjpSNr4t5xDRxPzlw1+z4=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=qDDewyha8aWnpdEacbXBr6lmbtyvee9ACnvxuzayX0gCRX5Jv0mbDTU6yNbAdqrQAx59+rOVdcQMdUO4gKF2sQT27IYRBWaSi3v8xAEWs45k92PrpmNrCk+3MGmXpg6p5bQ1O2NNDkCYr9K4MvDZfiw0TdC50MCZoIMyH10rddU=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=sPVzYb3H; arc=none smtp.client-ip=209.85.208.178
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=yahoo.com header.i=@yahoo.com header.b="h/XuJOfP"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1714755652; bh=OpuBHTwhnfArlf2PsQ6g2wnS/DKkhtNrSqNbd0Cd8cY=; h=Date:From:To:Cc:In-Reply-To:References:Subject:From:Subject:Reply-To; b=h/XuJOfP4qeWJeJUfu9XI2dvEgzygtrC4CQkQr52hHqL+u5d0EZKbP2COHmnzEf/JrOcrHLPnb3WKJ8WKv7KYu67zkNNbxwbMhHZAkfXWXsOApW31dy8X39SKCTp7/aUnyM+SkluOIU1tReyUEiYIPp83FqHP+7BHFnLBWjlh7AoF8bnulEyF2VKqInpLbYgAM31rUm5IpaFK88Qmb+Xm/jPTZSkNBXqogko/W5N6AuBT0PRrH9mWkBQHSH0zAL5AE/2EeQWUS9lvCZNTpQK4mFb07RYgGwHL6cgc0kaJnLvM27Za+5x+X2Sv32SB53OshVlWVpage6SsD2T8PfCkg==
-X-SONIC-DKIM-SIGN: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1714755652; bh=0fxNlfHnDi2x0VZTZnwB+hDykfom9hPyOGqst6aLhtN=; h=X-Sonic-MF:Date:From:To:Subject:From:Subject; b=ssNod7ucbuMHgBYwIe1OqE8SzJgCz8oNThKHASKRY3G6mXqkmlivGgX8CvcWFa5M0iuyJ9roBf/9UL6WLr30uprODwawhmQfQdjH4m3QKGhwvq9ND6UwxBmMwe16kHt5tnmQ+GI/dcxldzRgFepQbsVsBj5jJDAM0Frhj+F4Z/AXACkmWBtG5/YnwgcnaIRF14emcQyu0meWjFortT5MowFDur+WM3wFIGm9SMssuYmcWKChL29d8HgnBfehLiA/sI2kDIYUlALIIzvzPOjxhBahDt2fyYAoJN2VprKbPt/brWIsLFY6dSXncipSZ/NyXi95ez91SBCfUxItdiwi6Q==
-X-YMail-OSG: u7CikhkVM1mEMBJgRhgeFfykAxEVELBK2D8SuCjgxXEHVfhg2Mh1jCun.7euP4n
- YuKTaefJTFGNeHA6y0GKN8r5o3pt6uZ4L7fJsdR9huBW4xI._HbSxGmtwL7Q.r.q2HNLUhrxNcqJ
- iQk0clfL4rJB7emk22t.djOQDkv.3brzpvxYm7mD76etPxjsHtjznB4tUyLYzXFO.6IDvqV7cuVU
- s7YU8V1I5QXnD2RY954jhO_zWBG1FHHEhnmc2lafLzGClMxUD1sSeuRmEUnPzd9UJb1XvnNuPzoR
- HDhGIP5Qbmk9vsiiNBfzez4x4g8KFg3M.G5Uk5n2WX7L_k6B9_ZGCVtrDh348xQOjY1Y_1Cd81b4
- noQswoJiZsryvGYbOrdRyqJAQrn1NxglYFDVVQ8ihsj3JFsAg8idJ57wbS4lW1zJR0z2hwX0D5L8
- Ah9_5UWH5vGNxPLESZLBXSsL8X91UjsCxu6TnFw7uhzNds6_ofPqhWISo6wokWtoHo4s5i_Dd1g1
- pgusS5pHJ1PX8KPBpv1fMxnUGbma5Mq06lphYU_SSXY4i5qCBUK37DNnJIV5AgXDEbpreAvPY5KN
- vR8Tb6Q2yF6axmhLYw2qwsfnAUr0vA_Jzc2pUUzAeDxF6I0UPkjLA7a7yiaDIczakKX6dwdSJ.mG
- 58OM_lkjw52d71AdkfrDJUX2MksGHq1K63WSXuFurdzA3S18AlusvV.5PFProfYCIRztn0BDISD2
- Qa0GpFEiFwlzby4x0fgGxV8dJZ7Xq5ugd4xBCV.6.A2dnjy26PjzG0jwSLH9GPjFaJGaVk9uUasX
- Ix6sSXmG_K_jm3KYote_PDn6JLIa0hbq_HNpR__3cjgTP1plr_6Akyd1GFihjkHF_mscqbk6S76Q
- jpIhhLUmyHcsZ.NWMfj678JphFYyxPaOOxLXXAMfL_zhiEjNUJvyW4VexTTgNZ3xy4unuIoacAoJ
- i65ljO1IAGxShzOLanEqKFAMguiVBBN84wbYDBpr0kbG1lU32E1cGTIczqgW2w82DRV0zMHp7_sk
- RkIuj5k_JzxlnN5zNfGNQ27h3I4gVCCP9gOc5wekqRwLV8ifLYRb0bPkd8tD7JmD2LZ4W42b5344
- HsLeoU48IJJDVr0YJZVirumWrxsKvF2I3o7_KXaVyliAP25U_deLjmT.BBE1UONAftNh2kNMOZhG
- ak5IKdiwLyK6_12ip8oazaBJj_0W2q_gqrvjiq4bKG6iI._HycRHunW22uHeF9wvQrk5tc_APutn
- ySnbWQ9ziXxvaBWtboypHwNZUDPR.1KsQgcqJSY2RL3r9XfaUo845YNVfdFuXJRnWkIvdttDKler
- fyJKbvSmeSCJKhNzvxBHRQYh5n.3NYvEikv_TsZJacJhbUnWXZUvXasP37MGyoQ7GLT5da687ovE
- MPDnTVH5iJuFgVqg.nx3oyRUA1nTBGBfvFZYSiKFVAvWHa4stTt3NH3SSaTDdTBWfIGRsYGhkvLA
- dGy3Z7XijAEEDsjVV7IcaVpLVWIbJ5jIIBJ13eYMxWVJ5f4A4lIZrv_SZBpvByB1sfv.DS7gSonq
- 1VNOutIuK8hijTa9otiRaFsP5_Q0XVFGUteywvHokJuiKc9VgRr3JHFzTPQ4VicD_5wUtc5IFJ1G
- Whv.16lmZ496l.ekC09_B7nK3cP4JcBG1bvLevBfXuZGDgqGnk69NAcG7XfInLZXd.siTtH_j2Hu
- Um8ryul1Tv18C0USqxm8iwpFTlN8Nnzyfmboy0o0wiQplgRXpa.HUUaRAp_Q1evqftIW2KXhIQd.
- PgvidYsIBtF.XIaFWMsLdcMg1GvBlnp_6PRqwXVoLM2PAqh5VqVkQQTOfaBeMPEn8jtbd6qNLLqP
- 0LUJpjXA1La1EIPftMu6oPuaNY5s2vCt4KwXJcivqOm8eJpB7YSB6SjubeIV9IqXdILqqdTIJ5I1
- loXhSfvkPvTocCDcdoz7FvbKaejGqeAjQjG8RIM0v82Pdtw0DCF.8aCwGPn7CiVmUwVA3AB8L30S
- N_n9FCd6TcDBPoK5HwRSX..z0kdfVosVSs6SS2qsrOs3jY06vlXP0PhNz2EG_YmgI7YvRoqKxbY7
- PKcwpvJsXvM7YBuftOiseBjk3I_KzychmFW.f.Ls34I5eM8XzWMW0LfYeBAwTIprJKhvL6V_Vrms
- tgESrkIU7v9UtaRwWh7DKRHDJUDHgqExo6lBS0mqHPrUKy.hVNgkJlB2PDa_Qv4JSP3Rf1VmTgvH
- Fcv96CSp4tjyCAXFkI47vWUo4VCWan1qd7NG.JaBVJ1kVaf_Z0uiLr9CVPVJD6A.o_UxUDqo-
-X-Sonic-MF: <ashokemailat@yahoo.com>
-X-Sonic-ID: b20f7dc0-ce88-4f67-8215-c25d657d58b6
-Received: from sonic.gate.mail.ne1.yahoo.com by sonic301.consmr.mail.ne1.yahoo.com with HTTP; Fri, 3 May 2024 17:00:52 +0000
-Date: Fri, 3 May 2024 16:20:24 +0000 (UTC)
-From: Ashok Kumar <ashokemailat@yahoo.com>
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, 
-	"linux-fbdev@vger.kernel.org" <linux-fbdev@vger.kernel.org>, 
-	"linux-staging@lists.linux.dev" <linux-staging@lists.linux.dev>, 
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="sPVzYb3H"
+Received: by mail-lj1-f178.google.com with SMTP id 38308e7fff4ca-2e242b1dfd6so6085911fa.0
+        for <outreachy@lists.linux.dev>; Sat, 04 May 2024 04:18:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1714821488; x=1715426288; darn=lists.linux.dev;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=yv9FzWOzBDzyrTcS40BSQArXvrw2k2j9CKdjQ6IcHqo=;
+        b=sPVzYb3HououVvbe/Nb4Jb1TljNFlVzBw7DEefwdqK5vfmM8IFrr/fBii9sjg7RPto
+         EoPYM9jCiOp1pa6tr7FJb8CqUbn+Az3zOM7Uxwa3nF2R8ugb64ufMBMYmrHjSwLaV14x
+         YUDYEa2yciA5zsRMxVPQPdMc05HSqknm8pMWVeLEpFYReUhkj8jbczapoNCY6GhIekRn
+         RH/GlYPrirA+4xq/3AZZMabMfu4idpKTbWlTq1JJECSFSTqxkD92LqUqjzI0hQ61u2J3
+         LAzpus3XUE+O+g+Rbgxe0y7ow8EopWyQqIScvWl7CcAnZIrt6qQWWIoOPCDdfzCjZjCe
+         0aog==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1714821488; x=1715426288;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=yv9FzWOzBDzyrTcS40BSQArXvrw2k2j9CKdjQ6IcHqo=;
+        b=v9eXUAdywqhRATYNOs9k81/LVWXqZDoxZCtCYQziY3MV/gLFj3SXNqp1+4atSO5iKV
+         hCuykGN7kcYkz6hfXw/zpfa5lN83xsLi+KT8WSUXGu+OZ7WN77ZLihY3ah1NB3Ov6mtQ
+         o8cPjPulrzdFznGK8ub+awlexl9xFTxuU3wjTiK+LZAPO71BRTGh3sKtXFFswapQ8/r0
+         u+17imm1eS79kMROGMPwmVWoSYdHoaMfBvGza20FyZPfJA6AQ8X3U/54zTT/wHdNRCJi
+         LbPWBifhOOFaw3Lll/KoWjXxpuQZIUrRWz1PfSGzN1uiQ3EZftEwn2TzmCFrn+S/YNnx
+         gTRA==
+X-Forwarded-Encrypted: i=1; AJvYcCWV1wO4yPrNjP8ciq3XCMTqo8yWt1sIXQHQRZ1RAApwODg7Mbg6mpLPSsmb85cWI5rqQMd9A239E8TN9+EIxHiEhW4b5GPxp7rZ
+X-Gm-Message-State: AOJu0YzfI/MW1LkbV/w4g5dpRnpFjBIFzv3KZKyz0J6b/92r+Q67ROKR
+	wjztsvzzsz1ocufuk9zR+Qxn0u3a29RxlHlqFTN16E+xJjtxOC0fTPbt/WEgynY=
+X-Google-Smtp-Source: AGHT+IEggVHErInNqsEkGN4lf9Fm25s9yd+oVBzpPNb90IQ2CCo7mKtWyU3ysBaUz2WYQTnosuIkqw==
+X-Received: by 2002:a2e:9dd4:0:b0:2e2:2791:9842 with SMTP id x20-20020a2e9dd4000000b002e227919842mr3499876ljj.44.1714821487428;
+        Sat, 04 May 2024 04:18:07 -0700 (PDT)
+Received: from localhost ([102.222.70.76])
+        by smtp.gmail.com with ESMTPSA id je8-20020a05600c1f8800b0041bf28aa11dsm8916105wmb.42.2024.05.04.04.18.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 04 May 2024 04:18:07 -0700 (PDT)
+Date: Sat, 4 May 2024 14:17:59 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: Ashok Kumar <ashokemailat@yahoo.com>
+Cc: Julia Lawall <julia.lawall@inria.fr>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+	"linux-fbdev@vger.kernel.org" <linux-fbdev@vger.kernel.org>,
+	"linux-staging@lists.linux.dev" <linux-staging@lists.linux.dev>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
 	"outreachy@lists.linux.dev" <outreachy@lists.linux.dev>
-Message-ID: <1389558595.6771301.1714753224419@mail.yahoo.com>
-In-Reply-To: <c8d24241-1763-f7b7-4491-2e5aa3ea3be@inria.fr>
-References: <ZjRDUO6/M+RDCcQJ.ref@c> <ZjRDUO6/M+RDCcQJ@c> <c8d24241-1763-f7b7-4491-2e5aa3ea3be@inria.fr>
 Subject: Re: [PATCH] staging: fb_tinylcd Alignment to open parenthesis
+Message-ID: <45366e52-47e7-4e9d-a2a2-7eede9d3b450@moroto.mountain>
+References: <ZjRDUO6/M+RDCcQJ.ref@c>
+ <ZjRDUO6/M+RDCcQJ@c>
+ <c8d24241-1763-f7b7-4491-2e5aa3ea3be@inria.fr>
+ <1389558595.6771301.1714753224419@mail.yahoo.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Mailer: WebService/1.1.22256 YMailNorrin
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1389558595.6771301.1714753224419@mail.yahoo.com>
 
+On Fri, May 03, 2024 at 04:20:24PM +0000, Ashok Kumar wrote:
+> 
+> Is there a list of exceptions to the checkpatch information that we can ignore in general.
+> 
 
-On Thursday, May 2, 2024 at 11:54:58 PM PDT, Julia Lawall <julia.lawall@inr=
-ia.fr> wrote:=20
+For Greg's subsystems ignore the warning about extra parentheses.
+You can search on lore for if a patch has been patch has been sent
+before.  Otherwise ignore checkpatch if it tells you to do something
+that makes the code less readable.
 
+regards,
+dan carpenter
 
-
-
-
-
-
-On Thu, 2 May 2024, Ashok Kumar wrote:
-
-> Corrected coding style CHECK: Alignment should match open parenthesis
-
-Ashok, I think the code is nicer as is, because it has all the constant
-numbers lined up.
-
-julia
-
-Thanks for the update I will ignore this change.=C2=A0
-
-Is there a list of exceptions to the checkpatch information that we can ign=
-ore in general.
-
-
->
-> Signed-off-by: Ashok Kumar <ashokemailat@yahoo.com>
-> ---
->=C2=A0 drivers/staging/fbtft/fb_tinylcd.c | 2 +-
->=C2=A0 1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/staging/fbtft/fb_tinylcd.c b/drivers/staging/fbtft/f=
-b_tinylcd.c
-> index 9469248f2c50..60cda57bcb33 100644
-> --- a/drivers/staging/fbtft/fb_tinylcd.c
-> +++ b/drivers/staging/fbtft/fb_tinylcd.c
-> @@ -38,7 +38,7 @@ static int init_display(struct fbtft_par *par)
->=C2=A0 =C2=A0=C2=A0=C2=A0 write_reg(par, 0xE5, 0x00);
->=C2=A0 =C2=A0=C2=A0=C2=A0 write_reg(par, 0xF0, 0x36, 0xA5, 0x53);
->=C2=A0 =C2=A0=C2=A0=C2=A0 write_reg(par, 0xE0, 0x00, 0x35, 0x33, 0x00, 0x0=
-0, 0x00,
-> -=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 =C2=A0 =C2=A0 =C2=A0 0x00, 0x35, 0=
-x33, 0x00, 0x00, 0x00);
-> +=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 =C2=A0 0x00, 0x35, 0x33, 0x00, 0x0=
-0, 0x00);
->=C2=A0 =C2=A0=C2=A0=C2=A0 write_reg(par, MIPI_DCS_SET_PIXEL_FORMAT, 0x55);
->=C2=A0 =C2=A0=C2=A0=C2=A0 write_reg(par, MIPI_DCS_EXIT_SLEEP_MODE);
->=C2=A0 =C2=A0=C2=A0=C2=A0 udelay(250);
-> --
-> 2.34.1
->
->
->
