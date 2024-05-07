@@ -1,68 +1,66 @@
-Received: from sonic306-22.consmr.mail.ne1.yahoo.com (sonic306-22.consmr.mail.ne1.yahoo.com [66.163.189.84])
+Received: from mail-lf1-f54.google.com (mail-lf1-f54.google.com [209.85.167.54])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C0EE14EB5C
-	for <outreachy@lists.linux.dev>; Tue,  7 May 2024 04:20:29 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=66.163.189.84
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 34D8215E1FF
+	for <outreachy@lists.linux.dev>; Tue,  7 May 2024 13:42:41 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.167.54
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1715055631; cv=none; b=fNS5Uaey0Bed9hIQN6ht/nbmYXePYidmEsFl2+ZNVEpKAXzNvCcWQdSGR5AmU8nnRV3qSCl0TGw+h/9BziMdtrZERtP56ASNldzD9U4LTd1O/IcDNNuck2LnHUCN+edRB848DojdVFuMclT2r5uJHdy46H9/cv6GZyLokvizvqo=
+	t=1715089362; cv=none; b=ZZXHLOuWYbElzk6ceGop3CUu1sMg0AqAqK/Hvy+7pHLT9mfzmI45aX3U8q0sHB8HIYg6Lmv/yjY8mF8yTNMKKul1VrXDqJzGCRK2S1SwEcqM4v0HqvyrMOdm7Q8DMRFYyUx1qnZjETd0J7+Hxl6BYqMop3WMeWhvRAvtSXIT3XQ=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1715055631; c=relaxed/simple;
-	bh=yBd5iJJkhGCtWrRHHUh2Cy7RfSiIGU4wuvSAFtG2uYg=;
-	h=Date:From:To:Subject:Message-ID:MIME-Version:Content-Type:
-	 Content-Disposition:References; b=OLk4Yn7l3zfme+YrlVe7GZ8v+stJsJYCjoDb5f/TrFbah4dCsnkYmHw/80vjvEg1k5Dl4tZL/kP0BWfNOlLawKixxiccKOBVY+TgLxmnKJ6n5ZE9e+WrFA/tDVB8N0v+TuDgxcOE1E0BKWnlq3QXtnwdbP88Tgcn8lQYQnZ4cxU=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=yahoo.com; spf=pass smtp.mailfrom=yahoo.com; dkim=pass (2048-bit key) header.d=yahoo.com header.i=@yahoo.com header.b=fdxIWxkC; arc=none smtp.client-ip=66.163.189.84
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=yahoo.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=yahoo.com
+	s=arc-20240116; t=1715089362; c=relaxed/simple;
+	bh=RNmcCGwn/9/Ko6Q/dYPFgq3QsYqQcfCFf9m2+RNV4HU=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=Fmy1NqrnZHjOSiCvtYhf81qwZA81L9c+B4hZdCUCqSySFOZwZ5Ew+cqgfePSc23YAUUL4J9K9ED2YlIyj4YdyXmYAwt+d3LuYjDSgBWBOJp+tSAgEvCNySi5b/l6k1JIpkhZGMn+wOFGr/HAqbCehgHLoQv6IdEwcPzqa6ORg7A=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=NUxQZR0f; arc=none smtp.client-ip=209.85.167.54
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=yahoo.com header.i=@yahoo.com header.b="fdxIWxkC"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1715055623; bh=yBd5iJJkhGCtWrRHHUh2Cy7RfSiIGU4wuvSAFtG2uYg=; h=Date:From:To:Subject:References:From:Subject:Reply-To; b=fdxIWxkC9DKL2A8k+SwzyW+WvETTiI0M41Q0nN/zugR2eo5dnrxeXD/ueykYRXgJQiHoyNjmhHWoaZ4D+X8pz3qSA5nFGfGWrw6+dETkEs9M9sZpNh3GRz7SIRqzzjTWjOgd8LUFUpbkZu9v2tWY6tTsY7vsnC7xczhOxBMtmiZpF8U6MlW0B7i4cg0NcIqh+vYOtbO2VwYEhXJYtbF6U3QffoXyE+N/I45uJvhfVXUBBsCCLUXPfIwZEMzI7VH7tQ5vfYGxz/rJmM7TAEHZgEklGhlvYYptNO5YqLLK87G/r2Pq8bFs9pvzRdTL/YpaQ7MCLsdXQoEFLy5+uV+DzQ==
-X-SONIC-DKIM-SIGN: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1715055623; bh=9bazwOmnXQMosmZhC0nI7UqxY1qvbKFBdZB+wLLJbBA=; h=X-Sonic-MF:Date:From:To:Subject:From:Subject; b=HXv+SO2cOQCq7vNs1MlXC9vDVIyvQuFscQSEzbQLjSr89ucplZOJPM/q3U8jcitWQ872eJwkvGDAzWwXk+2IVS+bGZrfiVsaL/7+M/tj8FxHn1j9BmxeY8Xq/Qa45D4RsHZawG0IR/uG8HKkSaKvncfnu6m3xDHBDcr/2C8Y6ie/f/geYQoyjquKv4GG4hM8P0vsZWSHPY0gO58cG9VSUnbM7Aml495EjgB374VsWynExhJNSaZJN8oq9fwifyXugo/2r8bQ9KC+qa1FgP3ZkosTgfM/Ur8yAMYPOp0cNYeQk4CRyjDLqfSaPWTZR6+HpHB62YZ0YCyl1W5trnCm7A==
-X-YMail-OSG: twiscKMVM1m7dUmQ9FUKnkYtR7D_os1WXueeBU2EZbGlzma1rND7t_VXk7m.Kw6
- Lq3kVUPADUDEfl6ZyvZDAr4O9LvpAFJelVq9V9ggg45rYwM3lmq6cPQV1adFBmOC3NjUMeVC8WbN
- ur5b7W3u6UsWtIfo_AQAl2XZtmS2R67wrc8H0mrxoSzDUDsvDGy96H47zWY4PHykv6X3fV136kXn
- Hcz2Ce5daWioqe8kzgKctXgGxEI6JHuXQj2ZUxHXYDqCZ_APeCpH89ieg5zJEMj1er0Xd02buwhY
- ZqKsfLsFroueBwCsicBz4h9gXQ6hCbgsyMfWtQo.LTQ21r3S5BvsioIME_CXqxy68YtNyOc8OWXp
- VKNHPs1e9C3iL6E.mBcLxLEM7di3B0eLbT2WHKUfYE8QGISdjwlJCA408NSKhBo1MeAFd_s0pV4q
- MO.2qtpC9CelljZnYiwfGuRoz5zCsEqL.2tMmP3gcTUGuSXC3W73nPIYUgUI9yOpCyRRO8Vb6esT
- 2rPjcUvetXGuq3gN7Q9YQRtVg29hQWvOq7UUjurShm__GddfgXfBhr06tjoCh8Aj_r2iA5t.8wM7
- PWBTy99hx0C7DX47MMJz6mQmVGdiSRzmgbpkYBqn8bn9g1ZW9SAMBLffBWJaG5g2LIdu90ySXMrU
- JXunFAEKyK8bt6P_D8ztX8dSlbeTThu4HDcH3FVgJp1qa7TEsIWsupYMRS8MQwiNLTLeAkXCTd3g
- 6lwjn.y7vq9vCNjdZEDkj.LzcFlsEKeIddS.nXt0M2WA1pCprBWyyqI3foQVEqDNfsuQYVldIA3D
- mNIaT9EcwKG_w95hHTQS_Sv_EBbxmYBW6RsJlylAC_FlsQHFM4naddCdISsymapPlk.qof8gzVfD
- k2V737Z2PskCTrCarscZFjMEwD9FEKI6TTVMcbA6xWy6Tt.DKm8lstjKiKWjk_VuHC3ExGZL.QV5
- HWlFc.mWIJjeMPK4ZJIlEHsB4itfUl14.BIOGvs.x3STyrydWXhy4aYQSpa7kmJfteQ7JF3QOudd
- eW2VEIjgTjq68v5NEvsqP3x6UnKDxYOsBPDQGfx1cF7q6qBRaGXvLn24IHL7340BFSQchj6h7jA0
- HNIPDEoh5zfixKotbABPiKCi262FF34.XSA3Hwna0UWuK8iRLqQ3L8o3rss9kYVBdG1bYrq8ZBJD
- c5kkwE7SPmvBgU2EmsO4O1UthYTLowof9pGd1o9ucDLi7x2Un_G8Qhyv9r0aHdUQhNElNzwo._Gq
- YMY.sMxIfS40ec5V2rovMhxiSAYKPYe3.o7kNrm9x9Gl1jC8NNPhdsk43QjgmME8aL9qzPti6Hw8
- aHZ2Zp0VYUeW82YbUd3B52hIc31jbOwu9DqtB7BGYaYewZZmgRFfJzSLCBRhi58IiiHjX07v7mPC
- O.Z4Bi2hwGwY.ib6gqJNaBQjmAo3F3..vyU5oooxIbpizR8Kw_rv3cERtbiEDGBAX9spReKEjNs1
- nMIvIkDtwybkiWOMZWyyQFQWKgpGJ3tVEvXsNJ9RyzEmxCbLscpoxOj69yXLUxRJhNWqgQqUl_8Q
- H8x0qobmAOWG7nOK5m.wav7th_cUjbCJB4xLGRSITSp48hAHpiysich4utTuh6DXe7ym2s0XUng4
- znUNfJVX.6CLCzf9VzQe8n1zUbOE8WOPKrhTDfQz3s5wDUP4lwDTAmVxlj1F1C9mvm_W_z8Ug5vv
- POJfyM52fMOaFJZ3b1qdH2dC1Kvdt.i19igCx6VgRuJDfZUBGr.eeJJaIlJXrw74rMuHKYaVadTM
- tWKZFtA8I5_XxC9Qi02X5xDmV1J4owAISJvUxqCJkJtM7Ssn1vyRE1HbKoBJboh8IMeWqX2c_PSI
- .x3hfrDOvvxG3uv7H3H_u6Yon6hXl1KfGEnGgu7JrKt_7QcyCuzEiUnHuaOrew8t_yco6Rh_ryfo
- HSHhXbGITo3sD0cfYVE3iI2M8kZbTXjMi7FJflOK_3y3mpBwdnjeyxxNrrLldlN17Nbkdaggn1MS
- CKwERrCssQP4HMuL9UFZAohiTP6izjxXCdLZ4RTIYti2_pF.On5EwQ2sQmR5MlGz7x.8RaRS.50G
- TvqTM92krChUkRVhYDmR1DAIX0PJgjfImvZX7qsVhdxYsOeF9cddVwJRQPrC7JXzZe9.fG.dh_Qg
- PHipYLDEDK2LVgx4oKjS2.ZWZgBG80WPg7EkujMs5VE1.a7eujIj0oInv1f0JXb2gwLgbBDZ5nHr
- ZwmwJ5nm_KHMqvwosqez1Kl2VS4wlUHqzHr8RxtexAD4AjaRZnRd0l.5BZv83xQfqCEMJuPq9f14
- -
-X-Sonic-MF: <ashokemailat@yahoo.com>
-X-Sonic-ID: 10a2b099-89fc-4124-bf07-605818fdfc44
-Received: from sonic.gate.mail.ne1.yahoo.com by sonic306.consmr.mail.ne1.yahoo.com with HTTP; Tue, 7 May 2024 04:20:23 +0000
-Received: by hermes--production-bf1-5cc9fc94c8-qql8s (Yahoo Inc. Hermes SMTP Server) with ESMTPA ID 88b0ea99ab69fea61943fcb9ca83817a;
-          Tue, 07 May 2024 04:20:20 +0000 (UTC)
-Date: Mon, 6 May 2024 21:20:17 -0700
-From: Ashok Kumar <ashokemailat@yahoo.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	dri-devel@lists.freedesktop.org, linux-fbdev@vger.kernel.org,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev
-Subject: [RFC] CamelCase can it be fixed per Checkpatch.pl script
-Message-ID: <ZjmsAVlZmA5sje/Y@c>
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="NUxQZR0f"
+Received: by mail-lf1-f54.google.com with SMTP id 2adb3069b0e04-51f12ccff5eso4105490e87.1
+        for <outreachy@lists.linux.dev>; Tue, 07 May 2024 06:42:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1715089359; x=1715694159; darn=lists.linux.dev;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=ofLWh7+7lynH4ssD7W2H3GNyThDD7FYWFzKSbNNIGKY=;
+        b=NUxQZR0fx6II9d2Zvj9zv9JEKCbgW0VRNjIFpjCGAjUUs41ryZoYTOyO/6U8k1X9Us
+         yAWkrU/07TgY7zt8Eg0KjHf6SAV55iu3T3bTHGAB+FIOkLZ6qXF3UsT3sgQZMpbPYBq0
+         pXKGMhEhBDqzvb8TjJfji8kwetXG9hZz1L+49bovvscwrS/fmyydBu4u7VbJTw5U3puY
+         14LAU1D1AqMSxMaPpp/+ll3YIPWKR8oevr8QmgNr9K6bZiiq4fFh8pWkfkAK5JiD6gEj
+         e+l2KkyQLmGqlX1EGqFP2UqdOg/v3kF61Nosy30s+9Inougvh+jUUxnsJpdKKOFLs0BU
+         3E6Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1715089359; x=1715694159;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ofLWh7+7lynH4ssD7W2H3GNyThDD7FYWFzKSbNNIGKY=;
+        b=ptPhgTYaMRwXxsBR/haDIMEg1Fl+Fo/lw4qQRYz7Gm5r3TLDQpS8Dp8ZPsAEqNZMKW
+         fOrwl3/pKcwgCa9uiHHqobBBsNNeavpDRFg8jfYgV4+rvNk8yEu0qPM2oksEhKvLPPTU
+         pcEutXbp8A35o5HaCC7xv8/N/pdDqoRmlXkSKKRYsFK6RsElxchBPWWrRCI2IIlSR2S7
+         bk94gGuJpTusOC8I9KUqC2xxwMZxHFnS2BPuws/BX0lf0IKjSHzrBe4x1kOOHul3iwh1
+         6f8/mSHRa95qWryKWHsMO0zfNX/SRA1lbcT1b175SSs1MMBXYJ+Yx10kiwmeqXXBBREw
+         QqSQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXDu+3+YnrJw2bxYQ1SYsX82wpz8AGh6syG5e444/pIuE0h49ygDodlpOnzQRZvQT5EFmpMoO7WVRvgk7/MII0dSnTby6efFCZ8
+X-Gm-Message-State: AOJu0YxLki5TCibKDaD4f1q7G+HI9uUYAukQRmtqQx4tvWqFTijTdoEr
+	FDMyiqIG81yyTX+5Zxv2PpuZqPZeeQecK+f/u3l9iRVUDzLn3oSUz3gXf2IwwME=
+X-Google-Smtp-Source: AGHT+IEcEQ1M88NR4vmUiqGMt8ZxsM659IZuZ4CO8gzi53YrJgC5MzydtewGy6QWY5cBxG7eM8j7VQ==
+X-Received: by 2002:ac2:483a:0:b0:51e:11d5:bca3 with SMTP id 26-20020ac2483a000000b0051e11d5bca3mr8661395lft.18.1715089359358;
+        Tue, 07 May 2024 06:42:39 -0700 (PDT)
+Received: from eriador.lumag.spb.ru (dzdbxzyyyyyyyyyyyykxt-3.rev.dnainternet.fi. [2001:14ba:a0c3:3a00::227])
+        by smtp.gmail.com with ESMTPSA id j6-20020ac24546000000b0051da3abd6c8sm2109596lfm.150.2024.05.07.06.42.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 07 May 2024 06:42:39 -0700 (PDT)
+Date: Tue, 7 May 2024 16:42:37 +0300
+From: Dmitry Baryshkov <dmitry.baryshkov@linaro.org>
+To: Ashok Kumar <ashokemailat@yahoo.com>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	dri-devel@lists.freedesktop.org, linux-fbdev@vger.kernel.org, linux-staging@lists.linux.dev, 
+	linux-kernel@vger.kernel.org, outreachy@lists.linux.dev
+Subject: Re: [RFC] CamelCase can it be fixed per Checkpatch.pl script
+Message-ID: <uewpqrf2hkczmxftsl5pb2lx4tylxcntxqn5cwmlcrx3w54mu5@bc7nta7chbkm>
+References: <ZjmsAVlZmA5sje/Y.ref@c>
+ <ZjmsAVlZmA5sje/Y@c>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -70,25 +68,29 @@ List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
-Content-Disposition: attachment; filename=mtxt
-References: <ZjmsAVlZmA5sje/Y.ref@c>
-X-Mailer: WebService/1.1.22256 mail.backend.jedi.jws.acl:role.jedi.acl.token.atz.jws.hermes.yahoo
+Content-Disposition: inline
+In-Reply-To: <ZjmsAVlZmA5sje/Y@c>
 
-Found some files in Staging Drivers for which checkpatch.pl throws a CHECK to
-+remove CamelCase.
+On Mon, May 06, 2024 at 09:20:17PM -0700, Ashok Kumar wrote:
+> Found some files in Staging Drivers for which checkpatch.pl throws a CHECK to
+> +remove CamelCase.
+> 
+> For instance in program vt6655/card.c find the usage of CamelCase as
+> i) Variable names eg: &priv->apTD0Rings[0]
+> ii) Function names eg: void CARDvSafeResetRx(
+> 
+> Note: some of the functions are
+> +static functions
+> 
+> Reviewed lore and seems in some instances removing CamelCase was allowed and in
+> +some case removing them was disallowed.
+> 
+> Hence wanted comments if we should change them or not.
 
-For instance in program vt6655/card.c find the usage of CamelCase as
-i) Variable names eg: &priv->apTD0Rings[0]
-ii) Function names eg: void CARDvSafeResetRx(
+It's better to work with the corresponding driver maintainer. Generic
+comment is that functions must be renamed, while variables / fields
+naming usually depends on the maintainer's decision.
 
-Note: some of the functions are
-+static functions
-
-Reviewed lore and seems in some instances removing CamelCase was allowed and in
-+some case removing them was disallowed.
-
-Hence wanted comments if we should change them or not.
-
-Thanks
-Ashok
-
+-- 
+With best wishes
+Dmitry
