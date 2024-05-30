@@ -1,62 +1,62 @@
-Received: from mail-pf1-f176.google.com (mail-pf1-f176.google.com [209.85.210.176])
+Received: from mail-pl1-f173.google.com (mail-pl1-f173.google.com [209.85.214.173])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 89E5BC12C
-	for <outreachy@lists.linux.dev>; Thu, 30 May 2024 00:50:38 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.210.176
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1135919067D
+	for <outreachy@lists.linux.dev>; Thu, 30 May 2024 23:13:07 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.214.173
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1717030240; cv=none; b=Gww5sDeEAM0lN7TbY/kLdvNiMzm+FeeoJrWcICBcYyI8UuOtyJWx4iv7EpRNkhrwV9ymX8fn5C4VAeYI5Xj5Gfo879xcQi9qiKf/ibe8jrLqMG0o59MJHfdqtzPaLIQBF0xOP9qlro/ba/X+zoJATEUxvhucEOdZa8ETP709YRY=
+	t=1717110789; cv=none; b=QFxEIAns1Vs5DblzIMEx/4mjdz6j5RwqFrj9oVtyv47mxf+UTjFUVD5Ov9ooCxDvu+T5URnclcICZBhimeFUP7MkCsFpxab9h7/noTfO9unw4H1bJ0IecAKl0t34n5Og1/QY1YvDzvu5RXu5FlJBvymmUpeP/sgJ3Y7IPm3ji8M=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1717030240; c=relaxed/simple;
-	bh=w0M2NwYr/14Mvs7l87d7yBk8eY17sbC7zcA+FobWwQY=;
+	s=arc-20240116; t=1717110789; c=relaxed/simple;
+	bh=po7DAgy8YTC2bJzT7s/B+fFjRETSLdi28cWfqH3P/sU=;
 	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=QEZZJpZlRQDPmt9tl3JSstB/pl3d1Ot4nC3lJJ4t5D0xiDsHrOZOwelczlB875lvwvCrxRT6ckRUmFNveGWY8X/YTF9hQ92AnvQ+XKwEHhRZ8EFiILbCg0ApU9tQEgcLVzt8SjZIT2a79aXXcV+rpXsosQh6U++hlmk7XCO5s9c=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=gogX5pmg; arc=none smtp.client-ip=209.85.210.176
+	 Content-Type:Content-Disposition:In-Reply-To; b=FAFE2fdCk4yCVXsBk2ExhmnZuGVegDrjxM6t24H8QSLkIkVadwfprHf0ctChkzoLDD090HT8cMuTB+3Z0mRde1VbW49RLCtxDUy151PUFnadZOu2Fvxj6+5+zXZhr/O74r+nDWLufn3magwuIkiMoJJD5t8o2pzekpal7uKgk+0=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=ayE+EVWR; arc=none smtp.client-ip=209.85.214.173
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="gogX5pmg"
-Received: by mail-pf1-f176.google.com with SMTP id d2e1a72fcca58-6f4603237e0so254301b3a.0
-        for <outreachy@lists.linux.dev>; Wed, 29 May 2024 17:50:38 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="ayE+EVWR"
+Received: by mail-pl1-f173.google.com with SMTP id d9443c01a7336-1f62fae8c3cso5117075ad.3
+        for <outreachy@lists.linux.dev>; Thu, 30 May 2024 16:13:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1717030238; x=1717635038; darn=lists.linux.dev;
+        d=gmail.com; s=20230601; t=1717110787; x=1717715587; darn=lists.linux.dev;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=k8+O8xhY+pxJWdqeW2KaJVJjVRnx1SFKpe5mCJ/JMA4=;
-        b=gogX5pmgc7BIrHobjFBe9MjGBHX17amIQXwfcXOeCGugx2NYBJr+ExbOXMJJRwsGgE
-         1u96a8G9+fLr9bUK8Kus3TWdZ61JBHAIhSyhcMVYErA9X10kALX8M+tixBKjdfifquKu
-         2cxhLyHq4BnKvt9NxXER0alZrlRCHJ6QTPe/Mt8l5ffCEy+Ot9Eu0/oxCPWAKi0rvShp
-         AtxUPIOjRlANXqJ8vrgeF59LmzoEXU1ZrxRmQhssxGGwbhLuWXRMD5jV+uw52sVAZgaD
-         hyBe+v2x7U9m7URdLTOiIEnAxkfLHKqs8WgOipp1AA2uNVQjCMJIDKWcMK6TejmF3rse
-         vahQ==
+        bh=FuqdMEwY6ApcjLMbdp1tLuV20KDvi7MGyAlyHkkts5I=;
+        b=ayE+EVWRFpwRePbc8yEEtKqaYZGKpzVfft91G6I7YBHsnrdNSJ0Q488F75QKIvGbIF
+         ApC7wrLBPqOoa0SUFS0skriavKhsrLITsPKM2RBKDgYhNIqqR3DbE0mqBBY30cIXuK8h
+         up0GmwAtEZVj/seK1hwtaCMVMJckOS6m5TPDggPAyGP7K5PAeodab/5NCIdYFxLYlQh9
+         EUtRZUofykecdsz9AduVeVDvZpoNQhgV6GCEwpNzH+3BPr5dl5T3O3wrYltjzAHuxlti
+         dAXVTx7LwxrsR3kPKrVs8kFwc5bhFmX/HP8bu5xjQ2mMtZeynMAF6Pf4+bKGbE7AqPbx
+         uh1Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1717030238; x=1717635038;
+        d=1e100.net; s=20230601; t=1717110787; x=1717715587;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=k8+O8xhY+pxJWdqeW2KaJVJjVRnx1SFKpe5mCJ/JMA4=;
-        b=VdD+MIo+P37ysOzdC9Y4MwlbvJMX6d4L1ohSDy7zgw1prx5HR5IJg6mCOr3VygS1YX
-         iLesen3oas/EEP8xCcLanOV/+n6lC/SOFC5JV9XlEPtwTE8BKQyl2Zc4yiiuzB+NnuGq
-         kzPA37v9EjnwdEc6Tt9cmSi++U0qHYBaLMp6ihOlZIyHWIlvkb1lyxb7tTY/Rc84NlBm
-         fLEp8DC3XkiwBjtE8DCzWh8P56OyT9+tZLs0HbxnkjcIi+q1stZxughKQ5niEbLNbBT6
-         hICwx0zGGpkjuX86K3K7pp/B+ye+Cm7AkI4Eayv4vk9EnCVcLGxqAerLn4ds+EzyRh4c
-         cQCg==
-X-Forwarded-Encrypted: i=1; AJvYcCVuw+VE593CNjoZ1DkVBEtpcGDop4Pq+uWYgNEDsFl7ysC4MduZPTu/s2wje0ztrkvOZXJSIr674+9NWvbgd1HXSPbyt66aZRg1
-X-Gm-Message-State: AOJu0Yx1UhPJZr2tvm1sLJv9DjfJ0Mw1+vIfcMNsb7jlk41UOzZ5I36E
-	IuJfy64H41QkuD4/Uv7nioKwRmF2U3wdpjzY7HsdpCZ29J0C5iO5
-X-Google-Smtp-Source: AGHT+IEYDfQxP1oHkh5ta+MZE51Ikrl8Y36qaiEgsMUgYNELNTiBc5MpFMcJovRpYRv1UkeiFSflbw==
-X-Received: by 2002:a62:f201:0:b0:701:c944:ae75 with SMTP id d2e1a72fcca58-70231a867d5mr652385b3a.4.1717030237502;
-        Wed, 29 May 2024 17:50:37 -0700 (PDT)
+        bh=FuqdMEwY6ApcjLMbdp1tLuV20KDvi7MGyAlyHkkts5I=;
+        b=EOBwqajRKjMBhPs4Jfn2Cf7uWwfa+IelJc1npqL9NAeD4E94cK85vI+Q/LyxXAHHAk
+         +hJ361O/MC875ZLlCIImwdrE+PIH9qPNuKyl1rZBaJUyJYVqM96b62sbgEK2x0GpI9C0
+         9QT4m6/+e/MuNztRJm/y6PgTc3oWYYjLGPIf/qDFxGr3nUUoPBUq/bIQV5n86Gdc7cLq
+         3DsIA6aii61XkkR1VEzwbbLNN+h/+GnilNoKXuO6Pmtvj4Tl+aSVraucAi0elgDkjka8
+         SrXpz7OvUi2kXYep/+skeJP+lhNJ6DD+LYKqXp9Ns+ARHt40/5lMG5MQGIO3Nf2nYjlN
+         Pq1A==
+X-Forwarded-Encrypted: i=1; AJvYcCUGK0JkWLutx5K88MCs8K7m952nzflQmC7zvWxMmoTKVeOBYKXqlNW+fj7yfms2rAH0d7h/wi262ih0dDwDPEdqxat/Q5+h6BBF
+X-Gm-Message-State: AOJu0YwJz7jxqZVvZgBQnhE7SwwM6/KLfFsDA24XZ1CViMlOUOkJdHmF
+	2XVWEyPsyQkNl2zxf8tNvSdho3Nhnk20flAar+dLLr9hhVxD/NRl
+X-Google-Smtp-Source: AGHT+IFiG5YeKzz45vQv3iDZc2S0tQYYcLWdJy2aRjmI2ti60UDng2VinTyifoaD9XAnyO4R0PyYFQ==
+X-Received: by 2002:a17:902:e851:b0:1f4:947b:b7b6 with SMTP id d9443c01a7336-1f6370320c1mr2748675ad.39.1717110787217;
+        Thu, 30 May 2024 16:13:07 -0700 (PDT)
 Received: from tahera-OptiPlex-5000 ([136.159.49.123])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-6f8fc3552ffsm8593308b3a.80.2024.05.29.17.50.36
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1f6323e9f2csm3160285ad.200.2024.05.30.16.13.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 29 May 2024 17:50:37 -0700 (PDT)
-Date: Wed, 29 May 2024 18:50:34 -0600
+        Thu, 30 May 2024 16:13:06 -0700 (PDT)
+Date: Thu, 30 May 2024 17:13:04 -0600
 From: Tahera Fahimi <fahimitahera@gmail.com>
 To: =?iso-8859-1?Q?Micka=EBl_Sala=FCn?= <mic@digikod.net>
 Cc: Paul Moore <paul@paul-moore.com>, James Morris <jmorris@namei.org>,
-	"Serge E. Hallyn" <serge@hallyn.com>,
+	"Serge E.Hallyn" <serge@hallyn.com>,
 	linux-security-module@vger.kernel.org, linux-kernel@vger.kernel.org,
 	outreachy@lists.linux.dev, netdev@vger.kernel.org,
 	=?iso-8859-1?Q?Bj=F6rn?= Roy Baron <bjorn3_gh@protonmail.com>,
@@ -64,7 +64,7 @@ Cc: Paul Moore <paul@paul-moore.com>, James Morris <jmorris@namei.org>,
 	=?iso-8859-1?Q?G=FCnther?= Noack <gnoack@google.com>
 Subject: Re: [PATCH v2] landlock: Add abstract unix socket connect
  restrictions
-Message-ID: <ZlfNWtyEnIAw99ne@tahera-OptiPlex-5000>
+Message-ID: <ZlkIAIpWG/l64Pl9@tahera-OptiPlex-5000>
 References: <ZgX5TRTrSDPrJFfF@tahera-OptiPlex-5000>
  <20240401.ieC2uqua5sha@digikod.net>
  <ZhcRnhVKFUgCleDi@tahera-OptiPlex-5000>
@@ -160,12 +160,59 @@ On Tue, Apr 30, 2024 at 05:24:45PM +0200, Mickaël Salaün wrote:
 >   limited)
 > 
 > What do you think?
-Indeed, in the case of abstract Unix sockets, both parties can send and
-receive data when a connection is established. Therefore, we can define
-a single LANDLOCK_ACCESS_DOM_UNIX_ABSTRACT to represent the right to
-share data, regardless of direction. However, we should still retain
-LANDLOCK_DOMAIN_HIERARCHY for SELF, PARENT, and CHILD, as the source and
-destination are important. 
-As you said, I believe we should have receive and send rights for
-another kind of IPCs (which will be used for landlock#8 issue)
+
+I was wondering if you expand your idea on the following example. 
+
+Considering P1 with the rights that you mentioned in your email, forks a
+new process (P2). Now both P1 and P2 are on the same domain and are
+allowed to send data to and receive data from processes in the same
+domain or a child domain. 
+/*
+ *         Same domain (inherited)
+ * .-------------.
+ * | P1----.     |      P1 -> P2 : allow
+ * |        \    |      P2 -> P1 : allow
+ * |         '   |
+ * |         P2  |
+ * '-------------'
+ */
+(P1 domain) = (P2 domain) = {
+		.allowed_access =
+			LANDLOCK_ACCESS_DOM_UNIX_ABSTRACT_RECEIVE | 
+			LANDLOCK_ACCESS_DOM_UNIX_ABSTRACT_SEND,
+		.relationship = 
+			LANDLOCK_DOMAIN_HIERARCHY_SELF | 
+			LANDLOCK_DOMAIN_HIERARCHY_CHILD,
+		}
+
+In another example, if P1 has the same domain as before but P2 has
+LANDLOCK_DOMAIN_HIERARCHY_PARENT in their domain, so P1 still can 
+connect to P2. 
+/*
+ *        Parent domain
+ * .------.
+ * |  P1  --.           P1 -> P2 : allow
+ * '------'  \          P2 -> P1 : allow
+ *            '
+ *            P2
+ */
+
+(P1 domain) = {
+                .allowed_access =
+                        LANDLOCK_ACCESS_DOM_UNIX_ABSTRACT_RECEIVE |
+                        LANDLOCK_ACCESS_DOM_UNIX_ABSTRACT_SEND,
+                .relationship = 
+                        LANDLOCK_DOMAIN_HIERARCHY_SELF |
+                        LANDLOCK_DOMAIN_HIERARCHY_CHILD,
+                }
+(P2 domain) = {
+                .allowed_access =
+                        LANDLOCK_ACCESS_DOM_UNIX_ABSTRACT_RECEIVE |
+                        LANDLOCK_ACCESS_DOM_UNIX_ABSTRACT_SEND,
+                .relationship = 
+                        LANDLOCK_DOMAIN_HIERARCHY_SELF |
+                        LANDLOCK_DOMAIN_HIERARCHY_CHILD |
+			LANDLOCK_DOMAIN_HIERARCHY_PARENT,
+		}
+ 
 
