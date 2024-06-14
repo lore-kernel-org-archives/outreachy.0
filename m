@@ -1,61 +1,61 @@
-Received: from mail-pg1-f179.google.com (mail-pg1-f179.google.com [209.85.215.179])
+Received: from mail-ed1-f49.google.com (mail-ed1-f49.google.com [209.85.208.49])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 50702763F2
-	for <outreachy@lists.linux.dev>; Tue, 11 Jun 2024 21:06:45 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.215.179
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5BCC1383
+	for <outreachy@lists.linux.dev>; Fri, 14 Jun 2024 20:05:03 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.49
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1718140006; cv=none; b=QHL+qUEyY+E99I3dv36WG/oE3zk3kByScfQyU8UtVnl/pvWF1vjS0DtVg8be8pqDCMBvjY94MG4XkSsPDqS+24ujpWStTw3MJlcBvge337R4IF5WQy7YnGNvk4DRLj5G+I+1vZcBAWhHwljpEb3emDHZsTTQQbBbOzkBCqZmW4U=
+	t=1718395504; cv=none; b=lBJHuh7zB6Mx6ARHt3MpcCVgZ4dfgO5/4nF564VBVs+xDLq3l5p3D9gqDiT3NXpkygHyW7wdjprMePHDcLbdoX6vUgNuxTEDMmCiLV4Xb8eSh8fKek/3iQUlY2urbzfTLJ7Rd96jIp3ZteZ1Qo1rFeLCfGOiogy0eMkbakkh/AA=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1718140006; c=relaxed/simple;
-	bh=Rui9AoBITRyDlF2eWQs8vZ8OuJoMhByhTlQhym14BIA=;
+	s=arc-20240116; t=1718395504; c=relaxed/simple;
+	bh=RY8ceAoPye2/KbZtpTdpJ8++ZFtCXb35P5m4OwHe5Os=;
 	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=WleXF/6MD+YbP9fiLFPQOd5cZXfE7+RaZ60I6u0/5F73DEKIxXYCfe1F34+YmG0YoCc4HDkLCA4qhYKhm3fXZRP3xshjCywgrLXvKAxOcfqlI0pvr99rvhoQ4ttIOnhe8bmRqKqe5Ci+AWjh98mYo+tIllgCkp6wwvbBnunlDWI=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=XFwdlf66; arc=none smtp.client-ip=209.85.215.179
+	 Content-Type:Content-Disposition:In-Reply-To; b=szVtZYVMvQi+ykbOibdUQWx0xbCPYnwhLemub8p8NhZjMmfHYmy+F0uSPFjti/o7R7QWEwMROVfx/jtqdzACiunspNxnRAVBqNl4LTbh/PHV1JJHerfE2Dj5a90S6cyYCl0/XjCPo4AMjixUh8SGlwpnR/93RBBMw+FaAjsqFbE=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=lm13D/Nh; arc=none smtp.client-ip=209.85.208.49
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="XFwdlf66"
-Received: by mail-pg1-f179.google.com with SMTP id 41be03b00d2f7-6ce533b6409so1193146a12.1
-        for <outreachy@lists.linux.dev>; Tue, 11 Jun 2024 14:06:45 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="lm13D/Nh"
+Received: by mail-ed1-f49.google.com with SMTP id 4fb4d7f45d1cf-57c8353d8d0so3262478a12.1
+        for <outreachy@lists.linux.dev>; Fri, 14 Jun 2024 13:05:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1718140004; x=1718744804; darn=lists.linux.dev;
+        d=gmail.com; s=20230601; t=1718395502; x=1719000302; darn=lists.linux.dev;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=F6Ifet/6ih8RgGZZ0QsdkVuw8FBoDD+UlCvt9Kx1Ys4=;
-        b=XFwdlf660WiT4cwBbZF/6J1R4YsyXg71YYa+43F3XTQMBCbIKfF+fVPEGtBOhv/1Ap
-         hWVHW2Z3BcO2HsoV3YI9t7ocTdpCTi5m1IcY5Mo7F2OMn/sOo7NEgSzVWQpzbKh++KK3
-         r/TJPwrKPfmOdN3L2sTF0PBtOH28Bk8yLGjJPkoTkbHZ2f92/Wtsg0aIHFihWEBeTg0q
-         N6h3Mww2XNcM8LFSkn0UJAU/gT1IyUZLo9E068CtLc+0LlGFMGJOimLUOZUgfvXzyWJh
-         JP4WY3lOnuwmwF7M1xWnxGDQtDv7zPzb+i5S6LoCgLbowcFJnsT6UiaopyfcnCxE+FYx
-         F53w==
+        bh=GOLNVEd7uGKCnwNzRJhDFbm6VnORpl1wejZd5oVyq3I=;
+        b=lm13D/Nh8TY0m7+vQZHI3ysRroQxqapurDu2cDgg7SkA/+tQqtAcXTPy0OSTcfWEV3
+         1YWP+p1XzSRbwNm577vWMKarRrcPtwhX1rd4Uk4Woz96S6W7Px74s904dB8Rvwt4asrz
+         1YJR1vAs5A98iEcdBZY72wvqxxGcSd7V0UX0v5Q2/TWXtCbyBQR23JJv4kcyK5fTgTtw
+         pN9X6joDEkW6nzvp9PmIIgbXuliChpJOqIt/WqNYKyimmFrXiLWo90NevtFng6S8kBMS
+         QLgNAZQ4yVQQ1aMMTj+72QcreQE+LvusKlUOB+vwTlpSgtE6XcJHG4KHC4aL8/svJ5p2
+         xiKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718140004; x=1718744804;
+        d=1e100.net; s=20230601; t=1718395502; x=1719000302;
         h=in-reply-to:content-transfer-encoding:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=F6Ifet/6ih8RgGZZ0QsdkVuw8FBoDD+UlCvt9Kx1Ys4=;
-        b=mS42IGXJ518YDyrlPmcPOlzGzUzFzKnQmRwJ1uVyzjxfy46tWBea65jUFGwgPSvIEa
-         dT7yWwv9uVNJxiRYUNfhhFsMWZIjbdL1cwhADlb3cfYWDwuzWU86sjPisQK2IhHnbCuS
-         /Em1FuQHnYwhqYK40KZwwIDFXs2F4NM+sOQOSGNb4UfsD7AFNn+8llPfJJcSYyCkNOhg
-         15B1pfzTWgNLBF5/7f3b8UDrfLjFwNRkQUBYy9/h8PdieLGyv99GMbono2F9EEX4n7Gq
-         a5c2GRPKNmlPQA4DAxl7LqYqeQ8FjI8eZW680RFLaohw+UuV57Gtpnz5i9cGFKIef1Gs
-         HdZw==
-X-Forwarded-Encrypted: i=1; AJvYcCVmRHu5cr4824jnFwdkm5iaLj4l7XEmv0+K5CwNmHyjN7whPrlfe53oxTPpZ0Su2RmXkiiqCxGx/LVcb4baOARrmomTgPnBoxxP
-X-Gm-Message-State: AOJu0YxUVlR3h3qGgPRIFeVPW3gnR4Z8fEtTEW00Ttj0YxYo5/9WnBYz
-	sba3b1K49uPYPKbfepx0d2DwHup2z83vbdSIFsKHU39ZxC9/RUR/
-X-Google-Smtp-Source: AGHT+IEmtVX2k5iMqX+QTQs2nsXQB9pmHFxP3TYrDQbolAgY9BCTAdR+sFm/P/GOwC4t2bikQlErXw==
-X-Received: by 2002:a05:6a20:12cb:b0:1b8:391f:dfaf with SMTP id adf61e73a8af0-1b8aa068190mr139979637.52.1718140004183;
-        Tue, 11 Jun 2024 14:06:44 -0700 (PDT)
-Received: from tahera-OptiPlex-5000 ([136.159.49.123])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7041aef65f2sm7117544b3a.108.2024.06.11.14.06.43
+        bh=GOLNVEd7uGKCnwNzRJhDFbm6VnORpl1wejZd5oVyq3I=;
+        b=fKRMJQA9alRWiEZUdYmUnhOKjPbFlymhEozlhodiOh8DXmomvkumkgbs/aoZjY2UaP
+         2tYvvdqN7fnS0KwfY5yDFxs68svztJuKVr8k46mm4PYVVucecm4oNXbxkPvGAqsoXCOc
+         /FQub4sSeTdrlOF9VcU90n234wFFygVnSwKOEIckS1DUXhw3mtIaBwPKhFVaZNEq+jOZ
+         gsCEXoUHnhWMLS8Kq55GS8VX4omDJI3UpFkOvnt2lXJO/cNUxmYGEEfKdxJwbjWR2B7x
+         nxbDxUZUwsv2Be54pJnCL4tJBS/Vi6vLpz/nLEWU5Rl6ZGx4RV3gyCb/sP0RCsZOCOUg
+         Z0tQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXqZOI2qT+OTVOIiX5ziQA+ombgJ+ErEFcWazMWaoktcOnsCGekViNYkUfhP90FoMiqF8nhuQEk50jFSQrI9E7vKWNnEXVZMOGZ
+X-Gm-Message-State: AOJu0YyxiV6oiXHRTFnnT1rOG/M9PhK/mZra/Yb6q0Zzy5uVE1938nkv
+	xBTBM/8092dXveoHVJImWgr3LT5hSGtsMXwHRs5eaDIpVs7kyEjMR0O8JFlM
+X-Google-Smtp-Source: AGHT+IEWfLWlENiwg72FCRRqNPcBcq3lwyJii5+8BM8ZYIu/nw1QYu4DRlw4LsF9JMJ9JUGXSABcog==
+X-Received: by 2002:a50:ab1d:0:b0:57c:a886:c402 with SMTP id 4fb4d7f45d1cf-57cbd665237mr2364187a12.12.1718395501361;
+        Fri, 14 Jun 2024 13:05:01 -0700 (PDT)
+Received: from localhost ([2a02:168:59f0:1:b0ab:dd5e:5c82:86b0])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-57cb741e5aesm2639504a12.60.2024.06.14.13.05.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 11 Jun 2024 14:06:43 -0700 (PDT)
-Date: Tue, 11 Jun 2024 15:06:41 -0600
-From: Tahera Fahimi <fahimitahera@gmail.com>
-To: Jann Horn <jannh@google.com>
-Cc: =?iso-8859-1?Q?Micka=EBl_Sala=FCn?= <mic@digikod.net>,
+        Fri, 14 Jun 2024 13:05:01 -0700 (PDT)
+Date: Fri, 14 Jun 2024 22:04:56 +0200
+From: =?iso-8859-1?Q?G=FCnther?= Noack <gnoack3000@gmail.com>
+To: =?iso-8859-1?Q?Micka=EBl_Sala=FCn?= <mic@digikod.net>
+Cc: Jann Horn <jannh@google.com>, Tahera Fahimi <fahimitahera@gmail.com>,
 	=?iso-8859-1?Q?G=FCnther?= Noack <gnoack@google.com>,
 	linux-security-module@vger.kernel.org, linux-kernel@vger.kernel.org,
 	Paul Moore <paul@paul-moore.com>, James Morris <jmorris@namei.org>,
@@ -63,9 +63,10 @@ Cc: =?iso-8859-1?Q?Micka=EBl_Sala=FCn?= <mic@digikod.net>,
 	netdev@vger.kernel.org,
 	=?iso-8859-1?Q?Bj=F6rn?= Roy Baron <bjorn3_gh@protonmail.com>
 Subject: Re: [PATCH v3] landlock: Add abstract unix socket connect restriction
-Message-ID: <Zmi8Ydz4Z6tYtpY1@tahera-OptiPlex-5000>
+Message-ID: <20240614.128b8d9046fd@gnoack.org>
 References: <ZmJJ7lZdQuQop7e5@tahera-OptiPlex-5000>
  <CAG48ez3NvVnonOqKH4oRwRqbSOLO0p9djBqgvxVwn6gtGQBPcw@mail.gmail.com>
+ <20240611.Pi8Iph7ootae@digikod.net>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -75,81 +76,25 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAG48ez3NvVnonOqKH4oRwRqbSOLO0p9djBqgvxVwn6gtGQBPcw@mail.gmail.com>
+In-Reply-To: <20240611.Pi8Iph7ootae@digikod.net>
 
-On Tue, Jun 11, 2024 at 12:27:58AM +0200, Jann Horn wrote:
-> Hi!
+On Tue, Jun 11, 2024 at 10:19:20AM +0200, Mickaël Salaün wrote:
+> On Tue, Jun 11, 2024 at 12:27:58AM +0200, Jann Horn wrote:
+> > This reminds me - from what I remember, Landlock also doesn't restrict
+> > access to filesystem-based unix sockets yet... I'm I'm right about
+> > that, we should probably at some point add code at some point to
+> > restrict that as part of the path-based filesystem access rules? (But
+> > to be clear, I'm not saying I expect you to do that as part of your
+> > patch, just commenting for context.)
 > 
-> Thanks for helping with making Landlock more comprehensive!
-Thanks for your feedback!
+> Yes, I totally agree.  For now, unix socket binding requires to create
+> the LANDLOCK_ACCESS_FS_MAKE_SOCK right, but connecting to an existing
+> socket is not controlled.  The abstract unix socket scoping is
+> orthogonal and extends Landlock with unix socket LSM hooks, which are
+> required to extend the "filesystem" access rights to control path-based
+> unix socket.
 
-> On Fri, Jun 7, 2024 at 1:44 AM Tahera Fahimi <fahimitahera@gmail.com> wrote:
-> > Abstract unix sockets are used for local inter-process communications
-> > without on a filesystem. Currently a sandboxed process can connect to a
-> > socket outside of the sandboxed environment, since landlock has no
-> > restriction for connecting to a unix socket in the abstract namespace.
-> > Access to such sockets for a sandboxed process should be scoped the same
-> > way ptrace is limited.
-> 
-> This reminds me - from what I remember, Landlock also doesn't restrict
-> access to filesystem-based unix sockets yet... I'm I'm right about
-> that, we should probably at some point add code at some point to
-> restrict that as part of the path-based filesystem access rules? (But
-> to be clear, I'm not saying I expect you to do that as part of your
-> patch, just commenting for context.)
-> 
-> > Because of compatibility reasons and since landlock should be flexible,
-> > we extend the user space interface by adding a new "scoped" field. This
-> > field optionally contains a "LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET" to
-> > specify that the ruleset will deny any connection from within the
-> > sandbox to its parents(i.e. any parent sandbox or non-sandbox processes)
-> 
-> You call the feature "LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET", but I
-> don't see anything in this code that actually restricts it to abstract
-> unix sockets (as opposed to path-based ones and unnamed ones, see the
-> "Three types of address are distinguished" paragraph of
-> https://man7.org/linux/man-pages/man7/unix.7.html). If the feature is
-> supposed to be limited to abstract unix sockets, I guess you'd maybe
-> have to inspect the unix_sk(other)->addr, check that it's non-NULL,
-> and then check that `unix_sk(other)->addr->name->sun_path[0] == 0`,
-> similar to what unix_seq_show() does? (unix_seq_show() shows abstract
-> sockets with an "@".)
-Correct, I will break it into another function that checks if it is an
-abstract unix socket. In this case, we can add other restrictions on
-connection for pathname and unname sockets later. 
+Thanks for the reminder, Jann!  I filed it as
+https://github.com/landlock-lsm/linux/issues/36.
 
-> Separately, I wonder if it would be useful to have another mode for
-> forbidding access to abstract unix sockets entirely; or alternatively
-> to change the semantics of LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET so
-> that it also forbids access from outside the landlocked domain as was
-> discussed elsewhere in the thread. If a landlocked process starts
-> listening on something like "@/tmp/.X11-unix/X0", maybe X11 clients
-> elsewhere on my system shouldn't be confused into connecting to that
-> landlocked socket...
-> 
-> [...]
-> > +static bool sock_is_scoped(struct sock *const other)
-> > +{
-> > +       bool is_scoped = true;
-> > +       const struct landlock_ruleset *dom_other;
-> > +       const struct cred *cred_other;
-> > +
-> > +       const struct landlock_ruleset *const dom =
-> > +               landlock_get_current_domain();
-> > +       if (!dom)
-> > +               return true;
-> > +
-> > +       lockdep_assert_held(&unix_sk(other)->lock);
-> > +       /* the credentials will not change */
-> > +       cred_other = get_cred(other->sk_peer_cred);
-> > +       dom_other = landlock_cred(cred_other)->domain;
-> > +       is_scoped = domain_scope_le(dom, dom_other);
-> > +       put_cred(cred_other);
-> 
-> You don't have to use get_cred()/put_cred() here; as the comment says,
-> the credentials will not change, so we don't need to take another
-> reference to them.
-Noted. Thanks.
-
-> > +       return is_scoped;
-> > +}
+–Günther
