@@ -1,56 +1,56 @@
-Received: from mail-pf1-f181.google.com (mail-pf1-f181.google.com [209.85.210.181])
+Received: from mail-pl1-f169.google.com (mail-pl1-f169.google.com [209.85.214.169])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9683F15B150
-	for <outreachy@lists.linux.dev>; Wed, 19 Jun 2024 22:30:47 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.210.181
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7A93F74BE8
+	for <outreachy@lists.linux.dev>; Thu, 20 Jun 2024 21:05:38 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.214.169
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1718836249; cv=none; b=q3yKINbOBZRuigbmhUBkVu9Jn32XEumtlJnN+32N+5We8U53Cv38vmtf/S6Aid138ZzS2ATGOYQ5lIiP8dlPhmJGQhxqKONLo+Qe8MXwZZvyGu/FioQynnS99xoLvVS5d5A6yJ7AAX5FZJ0vfpxWWsT26nSWi9Qkm8zjcWQOijU=
+	t=1718917540; cv=none; b=HZey4CQRAMiqsOgEjux1u4EvnEUDvWwNjz/fs2zRA4TPqaR3NgAS4sgoLAd0CRTedw5G3GNlaYkb0QU4y18bLGJacXrEhKrJLysg2p8NF2/4bBympOLdcqWlMH02R3pRLqP/B2V5Jp9MF8wvjMxJqi6IjKuNs3og/GYDQqjF5Os=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1718836249; c=relaxed/simple;
-	bh=9YIb5OS+BHYwjeZ2kz75aEiIqfxIjvjTWF70v22zDH0=;
+	s=arc-20240116; t=1718917540; c=relaxed/simple;
+	bh=xm45bYqOQQOVNUKToopnMPsmqi45fgnJ2Vh9u3ZgX4I=;
 	h=Date:From:To:Subject:Message-ID:MIME-Version:Content-Type:
-	 Content-Disposition; b=tYkgWmZ1bMcuZplzfF50gD+aR98ZEZS270kA/CsSwBkU0hSMJ+KHY9omVwfQArb08oCh8hVKnP9RUl2wBl6hc8eigqQor3UFvsOhv/LgYGocNfqviW8OTqJXdo9Ut6csAQu+9lM+BYwHGo+brxFx3Y2eIJKayAjGWcwchrniIcw=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=G+WfX0st; arc=none smtp.client-ip=209.85.210.181
+	 Content-Disposition; b=dHLtxhGtU2x2yeNKc9SgUt4LeAGpPYZjIBIJg/EDqkyOXCE16mG/yjaV3iO7y8O/m7ykJrXylxtH1KLgMXY1bWvyQR2FdCg/Ltkm8Uu9ABOV6XmPtU82cJRFr2cjEM8DxEn9jkJcAMuiDnVdeqaOKqyzTV/cVKfPt2Puzzg0QkM=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=ZmODD/f8; arc=none smtp.client-ip=209.85.214.169
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="G+WfX0st"
-Received: by mail-pf1-f181.google.com with SMTP id d2e1a72fcca58-7046211e455so219946b3a.3
-        for <outreachy@lists.linux.dev>; Wed, 19 Jun 2024 15:30:47 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="ZmODD/f8"
+Received: by mail-pl1-f169.google.com with SMTP id d9443c01a7336-1f9aa039327so11713465ad.2
+        for <outreachy@lists.linux.dev>; Thu, 20 Jun 2024 14:05:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1718836247; x=1719441047; darn=lists.linux.dev;
+        d=gmail.com; s=20230601; t=1718917538; x=1719522338; darn=lists.linux.dev;
         h=content-disposition:mime-version:message-id:subject:to:from:date
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=csI2H+Rs6bIctYJIqmJF7l1t4vY//7FkqN3R5aHNSgk=;
-        b=G+WfX0st4ZgFrD3xacC12oYjxkZlnRA2Q6h7vR2kHg68p620uEQMlcZbpivbH92cze
-         Sm+S0rysH99WyPYGv0aFsFtJXU1fi6q0FspHHER+SlEMaENPNY7BVxPNkiIpyPmY0SQe
-         05woB3bUpATIwyUxfJkPumrP/kWz4VY9QwygMSuj20fsntXUo0+J2XvdQHpk+JAuaugs
-         9SUrY39zL734DzCH93ZNcOtoeFQ6lJLkWsX1Dvogt3KsJwfgzzu2vpeKW+caq7771dzB
-         6CNrJDQWUVXsfciCzwfKybsk+Vl+xF0e4p1ShOZH1SWREMIjw/K0ArhY0KfZFq/kxsem
-         4ifw==
+        bh=i2466Dce19cj2BQ3ZpJsopSXNqEq+bcueHyYljZ/i3A=;
+        b=ZmODD/f8ZCI0VTaQGk/T0DdA8IbCQ75ji5D1+Pj7BwI9TFQLbHRW15bnq+kYtNd5Dv
+         uyTLX6CzFXZV2R1Q0hh3K3jeg0YssWWvf7VtIWsmlAB6X7+195P+Zuq7+Wlc5f4Gv30u
+         SoSu+ZdJ2YbKjMAUMG5A+kbOWakFIWIkFNRXK6Uv6nFDYG4U/odALAE7xyUuIE6Qf0vU
+         c5hZeMqPwxCYwdbXyh+MAT+wY/A5ttTmS7epMtlG5sNnv10J0Y86K9W5ZYmm8sd97WvP
+         ZPY6xw0T6vQ4/h434FFiZ0RJWR6ZkueAMvrzhY2G1KCDj06RJ7lv4zXUap62G8OTt0gE
+         Vocg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1718836247; x=1719441047;
+        d=1e100.net; s=20230601; t=1718917538; x=1719522338;
         h=content-disposition:mime-version:message-id:subject:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=csI2H+Rs6bIctYJIqmJF7l1t4vY//7FkqN3R5aHNSgk=;
-        b=S1fEThQJhhaMrZYoiImaqgzliV5j/z0AV/Wulltwt4qbQvknsunX0dHKSwlFTQh9u6
-         UeWPFQqHDYRlU3jtvq0GAQEovTBKedD0e6lU8Giub0szX7L1drU2uUkOJxkmOwQk/MVn
-         SOt9IM9g8sLXWmQV3YNR92swY87uI95rYnuVmPstlFau5FIQ2dqbKTyOS4f6wuhAoNtf
-         xeSNAJS84kx+hIUBNkD8UbBTIOoVjv4wtwl3YwbuMQqOEnFOpAmMilBNHfG/1dCISC+s
-         tsSIqe7bxYrhYYS9VP6Mk0kPuk/UcZtQPjqEHgVrbVJiGXQEC4d+fsqtdFo2JU3XjHtm
-         RE9A==
-X-Forwarded-Encrypted: i=1; AJvYcCXgBrim8uJdLUe3AJCkzzlV7sCIgdpWXl33DyOjOmBi1HklK/GmnkkFEsNd0oLkc6dx1U+oaHSFrjEoNyVqdVkq+apCeXN+ls9o
-X-Gm-Message-State: AOJu0YxLPf3QlZ9MYzfw3VEmkwyELbSFIFiKRyInvV1Y1HWmK8ds8An3
-	Vdw9lKWNP6uscWnVR0EBLLCl044ozQqdLKgQ9CdGayFdfGE1j4HK
-X-Google-Smtp-Source: AGHT+IFsx0FI/S5AkoRdVDrjyUsGVQ7lVBP7G3kthNgbWkWiX4OPsm0vL8MNuf62qFLAWiHCC+hepQ==
-X-Received: by 2002:a05:6a20:c11a:b0:1b5:4c70:d688 with SMTP id adf61e73a8af0-1bcbb3dcb94mr3732697637.3.1718836246544;
-        Wed, 19 Jun 2024 15:30:46 -0700 (PDT)
+        bh=i2466Dce19cj2BQ3ZpJsopSXNqEq+bcueHyYljZ/i3A=;
+        b=BmAlid/qWoMdY5JsJX3Ul6zDsqsfUe5W47b8MvNwY6Zk6MWsBBweNn3OQuuZyaHfus
+         K5LSoHjvafMKzlMMnFsqzktEFrh59iivJMOKaHmL124J55oy/CCqpbeLCmP69UJW3C7h
+         mnTXx5UmES81J77KcJ49KNwDtzfk68ctzi+HdaPsSk3oZFTcAAmWgk5IVM0x6oLcJwIX
+         5GODXNN1bq5lemIY/xRlL8pc6RvYN0KPLUcJVixI2fQUjmRZD/tcvejOQ2bVqZ4bYIXk
+         1CYNPZDwPG1GJdRCHMNtzifQ0AgOF8M7udVJTovgGIe3+Mo6mY+6D91smPqXExNFMVZf
+         eH7A==
+X-Forwarded-Encrypted: i=1; AJvYcCXnmRUnkiZ5wOlDBm5PzXYisJWx/2mL70lVbqsZglF1vwv+DWGJ2hcNyh055jY+7ejXNIFAT6KIcMTm7jk3sMfEHzfsjnB7h1iT
+X-Gm-Message-State: AOJu0YxCLhBvdiyGlYNFyb9kMlAk5ZCaoLHspvOrEmhs9F2MVZTd2XWf
+	1tNXgJk2MiJvBbXTSUqsMyv+YEoXW1ZgRIYB3a1Itum4+P9ZZr6+
+X-Google-Smtp-Source: AGHT+IFq4lLdYW2Bs2UyXEWrzoqFVWFUUhHHWF6w7rCNHC+Mfi0UpE17wGNTme4jXIc3V1sonRT1rA==
+X-Received: by 2002:a17:902:e544:b0:1f7:414:d67d with SMTP id d9443c01a7336-1f9aa466120mr76918275ad.63.1718917537247;
+        Thu, 20 Jun 2024 14:05:37 -0700 (PDT)
 Received: from tahera-OptiPlex-5000 ([136.159.49.123])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-6fedf3a34ddsm8729111a12.48.2024.06.19.15.30.45
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1f9eb8c8960sm533085ad.227.2024.06.20.14.05.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 19 Jun 2024 15:30:46 -0700 (PDT)
-Date: Wed, 19 Jun 2024 16:30:43 -0600
+        Thu, 20 Jun 2024 14:05:36 -0700 (PDT)
+Date: Thu, 20 Jun 2024 15:05:34 -0600
 From: Tahera Fahimi <fahimitahera@gmail.com>
 To: =?iso-8859-1?Q?Micka=EBl_Sala=FCn?= <mic@digikod.net>,
 	=?iso-8859-1?Q?G=FCnther?= Noack <gnoack@google.com>,
@@ -60,8 +60,8 @@ To: =?iso-8859-1?Q?Micka=EBl_Sala=FCn?= <mic@digikod.net>,
 	=?iso-8859-1?Q?Bj=F6rn?= Roy Baron <bjorn3_gh@protonmail.com>,
 	Jann Horn <jannh@google.com>, outreachy@lists.linux.dev,
 	netdev@vger.kernel.org
-Subject: [PATCH v4] landlock: Add abstract unix socket connect restriction
-Message-ID: <ZnNcE3ph2SWi1qmd@tahera-OptiPlex-5000>
+Subject: [PATCH v5] landlock: Add abstract unix socket connect restriction
+Message-ID: <ZnSZnhGBiprI6FRk@tahera-OptiPlex-5000>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -88,6 +88,7 @@ Closes: https://github.com/landlock-lsm/linux/issues/7
 Signed-off-by: Tahera Fahimi <fahimitahera@gmail.com>
 
 -------
+V4: Added abstract unix socket scoping tests
 V3: Added "scoped" field to landlock_ruleset_attr
 V2: Remove wrapper functions
 
@@ -97,15 +98,15 @@ Signed-off-by: Tahera Fahimi <fahimitahera@gmail.com>
 ---
  include/uapi/linux/landlock.h                 |  27 ++
  security/landlock/limits.h                    |   3 +
- security/landlock/ruleset.c                   |   7 +-
- security/landlock/ruleset.h                   |  29 +-
+ security/landlock/ruleset.c                   |  12 +-
+ security/landlock/ruleset.h                   |  27 +-
  security/landlock/syscalls.c                  |  13 +-
- security/landlock/task.c                      |  58 ++++
+ security/landlock/task.c                      |  95 +++++++
  .../testing/selftests/landlock/ptrace_test.c  | 261 ++++++++++++++++++
- 7 files changed, 392 insertions(+), 6 deletions(-)
+ 7 files changed, 430 insertions(+), 8 deletions(-)
 
 diff --git a/include/uapi/linux/landlock.h b/include/uapi/linux/landlock.h
-index 68625e728f43..3ea370c52aaa 100644
+index 68625e728f43..1eb459afcb3b 100644
 --- a/include/uapi/linux/landlock.h
 +++ b/include/uapi/linux/landlock.h
 @@ -37,6 +37,11 @@ struct landlock_ruleset_attr {
@@ -138,7 +139,7 @@ index 68625e728f43..3ea370c52aaa 100644
 + * actions. Setting a flag in a landlock domain will isolate the Landlock
 + *  domain to forbid connections to resources outside the domain.
 + *
-+ * IPCs with allowed actions:
++ * IPCs with scoped actions:
 + * - %LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET: Restrict a sandbox process to
 + *   connect to a process outside of the sandbox domain through abstract
 + *   unix sockets. 
@@ -148,21 +149,21 @@ index 68625e728f43..3ea370c52aaa 100644
 +/* clang-format on*/
  #endif /* _UAPI_LINUX_LANDLOCK_H */
 diff --git a/security/landlock/limits.h b/security/landlock/limits.h
-index 4eb643077a2a..93d5fa8495b2 100644
+index 4eb643077a2a..eb01d0fb2165 100644
 --- a/security/landlock/limits.h
 +++ b/security/landlock/limits.h
 @@ -26,6 +26,9 @@
  #define LANDLOCK_MASK_ACCESS_NET	((LANDLOCK_LAST_ACCESS_NET << 1) - 1)
  #define LANDLOCK_NUM_ACCESS_NET		__const_hweight64(LANDLOCK_MASK_ACCESS_NET)
  
-+#define LANDLOCK_LAST_ACCESS_SCOPE       LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET
-+#define LANDLOCK_MASK_ACCESS_SCOPE	((LANDLOCK_LAST_ACCESS_SCOPE << 1) - 1)
-+#define LANDLOCK_NUM_ACCESS_SCOPE         __const_hweight64(LANDLOCK_MASK_ACCESS_SCOPE)
++#define LANDLOCK_LAST_SCOPE		LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET
++#define LANDLOCK_MASK_SCOPE		((LANDLOCK_LAST_SCOPE << 1) - 1)
++#define LANDLOCK_NUM_SCOPE		__const_hweight64(LANDLOCK_MASK_SCOPE)
  /* clang-format on */
  
  #endif /* _SECURITY_LANDLOCK_LIMITS_H */
 diff --git a/security/landlock/ruleset.c b/security/landlock/ruleset.c
-index 6ff232f58618..a93bdbf52fff 100644
+index 6ff232f58618..3b3844574326 100644
 --- a/security/landlock/ruleset.c
 +++ b/security/landlock/ruleset.c
 @@ -52,12 +52,13 @@ static struct landlock_ruleset *create_ruleset(const u32 num_layers)
@@ -190,8 +191,34 @@ index 6ff232f58618..a93bdbf52fff 100644
  	return new_ruleset;
  }
  
+@@ -311,7 +314,7 @@ static void put_hierarchy(struct landlock_hierarchy *hierarchy)
+ {
+ 	while (hierarchy && refcount_dec_and_test(&hierarchy->usage)) {
+ 		const struct landlock_hierarchy *const freeme = hierarchy;
+-
++		
+ 		hierarchy = hierarchy->parent;
+ 		kfree(freeme);
+ 	}
+@@ -472,6 +475,7 @@ static int inherit_ruleset(struct landlock_ruleset *const parent,
+ 	}
+ 	get_hierarchy(parent->hierarchy);
+ 	child->hierarchy->parent = parent->hierarchy;
++	child->hierarchy->curr_ruleset = child;
+ 
+ out_unlock:
+ 	mutex_unlock(&parent->lock);
+@@ -571,7 +575,7 @@ landlock_merge_ruleset(struct landlock_ruleset *const parent,
+ 	err = merge_ruleset(new_dom, ruleset);
+ 	if (err)
+ 		goto out_put_dom;
+-
++	new_dom->hierarchy->curr_ruleset = new_dom;
+ 	return new_dom;
+ 
+ out_put_dom:
 diff --git a/security/landlock/ruleset.h b/security/landlock/ruleset.h
-index 0f1b5b4c8f6b..2d3f41613bdc 100644
+index 0f1b5b4c8f6b..39cb313812dc 100644
 --- a/security/landlock/ruleset.h
 +++ b/security/landlock/ruleset.h
 @@ -35,6 +35,8 @@ typedef u16 access_mask_t;
@@ -199,27 +226,30 @@ index 0f1b5b4c8f6b..2d3f41613bdc 100644
  /* Makes sure all network access rights can be stored. */
  static_assert(BITS_PER_TYPE(access_mask_t) >= LANDLOCK_NUM_ACCESS_NET);
 +/* Makes sure all scoped rights can be stored*/
-+static_assert(BITS_PER_TYPE(access_mask_t) >= LANDLOCK_NUM_ACCESS_SCOPE);
++static_assert(BITS_PER_TYPE(access_mask_t) >= LANDLOCK_NUM_SCOPE);
  /* Makes sure for_each_set_bit() and for_each_clear_bit() calls are OK. */
  static_assert(sizeof(unsigned long) >= sizeof(access_mask_t));
  
-@@ -42,8 +44,15 @@ static_assert(sizeof(unsigned long) >= sizeof(access_mask_t));
+@@ -42,6 +44,7 @@ static_assert(sizeof(unsigned long) >= sizeof(access_mask_t));
  struct access_masks {
  	access_mask_t fs : LANDLOCK_NUM_ACCESS_FS;
  	access_mask_t net : LANDLOCK_NUM_ACCESS_NET;
-+	access_mask_t scoped : LANDLOCK_NUM_ACCESS_SCOPE;
++	access_mask_t scoped : LANDLOCK_NUM_SCOPE;
  };
  
-+typedef u32 access_masks_t;
-+/* Makes sure all ruleset access rights can be stored. */
-+static_assert(BITS_PER_TYPE(access_masks_t) >=
-+	      LANDLOCK_NUM_ACCESS_FS + LANDLOCK_NUM_ACCESS_NET +
-+		      LANDLOCK_NUM_ACCESS_SCOPE);
-+
  typedef u16 layer_mask_t;
- /* Makes sure all layers can be checked. */
- static_assert(BITS_PER_TYPE(layer_mask_t) >= LANDLOCK_MAX_NUM_LAYERS);
-@@ -233,7 +242,8 @@ struct landlock_ruleset {
+@@ -150,6 +153,10 @@ struct landlock_hierarchy {
+ 	 * domain.
+ 	 */
+ 	refcount_t usage;
++	/**
++	 * @curr_ruleset: a pointer back to the current ruleset
++	 */
++	struct landlock_ruleset *curr_ruleset;
+ };
+ 
+ /**
+@@ -233,7 +240,8 @@ struct landlock_ruleset {
  
  struct landlock_ruleset *
  landlock_create_ruleset(const access_mask_t access_mask_fs,
@@ -229,7 +259,7 @@ index 0f1b5b4c8f6b..2d3f41613bdc 100644
  
  void landlock_put_ruleset(struct landlock_ruleset *const ruleset);
  void landlock_put_ruleset_deferred(struct landlock_ruleset *const ruleset);
-@@ -280,6 +290,16 @@ landlock_add_net_access_mask(struct landlock_ruleset *const ruleset,
+@@ -280,6 +288,16 @@ landlock_add_net_access_mask(struct landlock_ruleset *const ruleset,
  	ruleset->access_masks[layer_level].net |= net_mask;
  }
  
@@ -237,7 +267,7 @@ index 0f1b5b4c8f6b..2d3f41613bdc 100644
 +landlock_add_scope_mask(struct landlock_ruleset *const ruleset,
 +			const access_mask_t scope_mask, const u16 layer_level)
 +{
-+	access_mask_t scoped_mask = scope_mask & LANDLOCK_MASK_ACCESS_SCOPE;
++	access_mask_t scoped_mask = scope_mask & LANDLOCK_MASK_SCOPE;
 +
 +	WARN_ON_ONCE(scope_mask != scoped_mask);
 +	ruleset->access_masks[layer_level].scoped |= scoped_mask;
@@ -246,7 +276,7 @@ index 0f1b5b4c8f6b..2d3f41613bdc 100644
  static inline access_mask_t
  landlock_get_raw_fs_access_mask(const struct landlock_ruleset *const ruleset,
  				const u16 layer_level)
-@@ -303,6 +323,13 @@ landlock_get_net_access_mask(const struct landlock_ruleset *const ruleset,
+@@ -303,6 +321,13 @@ landlock_get_net_access_mask(const struct landlock_ruleset *const ruleset,
  	return ruleset->access_masks[layer_level].net;
  }
  
@@ -261,7 +291,7 @@ index 0f1b5b4c8f6b..2d3f41613bdc 100644
  			    const access_mask_t access_request,
  			    layer_mask_t (*const layer_masks)[],
 diff --git a/security/landlock/syscalls.c b/security/landlock/syscalls.c
-index 03b470f5a85a..15ad79ac022b 100644
+index 03b470f5a85a..6b5a97a199d9 100644
 --- a/security/landlock/syscalls.c
 +++ b/security/landlock/syscalls.c
 @@ -97,8 +97,9 @@ static void build_check_abi(void)
@@ -290,8 +320,8 @@ index 03b470f5a85a..15ad79ac022b 100644
  		return -EINVAL;
 +	
 +	/* Checks IPC scoping content (and 32-bits cast). */
-+	if ((ruleset_attr.scoped | LANDLOCK_MASK_ACCESS_SCOPE) !=
-+	    LANDLOCK_MASK_ACCESS_SCOPE)
++	if ((ruleset_attr.scoped | LANDLOCK_MASK_SCOPE) !=
++	    LANDLOCK_MASK_SCOPE)
 +		return -EINVAL;
  
  	/* Checks arguments and transforms to kernel struct. */
@@ -303,7 +333,7 @@ index 03b470f5a85a..15ad79ac022b 100644
  		return PTR_ERR(ruleset);
  
 diff --git a/security/landlock/task.c b/security/landlock/task.c
-index 849f5123610b..b8bde74ff684 100644
+index 849f5123610b..dfaeb5694181 100644
 --- a/security/landlock/task.c
 +++ b/security/landlock/task.c
 @@ -13,6 +13,8 @@
@@ -315,7 +345,7 @@ index 849f5123610b..b8bde74ff684 100644
  
  #include "common.h"
  #include "cred.h"
-@@ -108,9 +110,65 @@ static int hook_ptrace_traceme(struct task_struct *const parent)
+@@ -108,9 +110,102 @@ static int hook_ptrace_traceme(struct task_struct *const parent)
  	return task_ptrace(parent, current);
  }
  
@@ -328,6 +358,42 @@ index 849f5123610b..b8bde74ff684 100644
 +	for (layer_level = 0; layer_level < domain->num_layers; layer_level++)
 +		access_dom |= landlock_get_scope_mask(domain, layer_level);
 +	return access_dom;
++}
++
++/**
++ * optional_domain_scope - Checks domain ordering for scoped unix sockets
++ *
++ * @client: client domain.
++ * @server: Potential child of @client.
++ *
++ * Checks if the @client domain is less or equal to (i.e. an ancestor, which
++ * means a subset of) the @server domain.
++ * Same as domain_scope_le, only for optional scoping unix sockets.
++ */
++static bool optional_domain_scope(const struct landlock_ruleset *const client,
++				  const struct landlock_ruleset *const server)
++{
++	const struct landlock_hierarchy *walker;
++	access_mask_t scoped;
++
++	if (!client)
++		return true;
++
++	/* quick return if server does not have domain */
++	if (!server)
++		return false;
++
++	for (walker = server->hierarchy; walker; walker = walker->parent) {
++		scoped = get_scoped_accesses(walker->curr_ruleset);
++		if (walker == client->hierarchy)
++			/* @client is in the scoped hierarchy of @server. */
++			return true;
++		if (scoped)
++			/* There is a node between client and server that is scoped */
++			return false;
++	}
++	/* There is no relationship between @parent and @child. */
++	return false;
 +}
 +
 +static bool sock_is_scoped(struct sock *const other)
@@ -343,12 +409,13 @@ index 849f5123610b..b8bde74ff684 100644
 +
 +	/* the credentials will not change */
 +	lockdep_assert_held(&unix_sk(other)->lock);
-+	if (other->sk_type != SOCK_DGRAM){
++	if (other->sk_type != SOCK_DGRAM) {
 +		dom_other = landlock_cred(other->sk_peer_cred)->domain;
 +	} else {
-+		dom_other = landlock_cred(other->sk_socket->file->f_cred)->domain;
++		dom_other =
++			landlock_cred(other->sk_socket->file->f_cred)->domain;
 +	}
-+	is_scoped = domain_scope_le(dom, dom_other);
++	is_scoped = optional_domain_scope(dom, dom_other);
 +	return is_scoped;
 +}
 +
