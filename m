@@ -1,34 +1,34 @@
-Received: from smtp-bc0a.mail.infomaniak.ch (smtp-bc0a.mail.infomaniak.ch [45.157.188.10])
+Received: from smtp-bc09.mail.infomaniak.ch (smtp-bc09.mail.infomaniak.ch [45.157.188.9])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D509F148833
-	for <outreachy@lists.linux.dev>; Mon,  8 Jul 2024 17:31:46 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=45.157.188.10
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1939018643
+	for <outreachy@lists.linux.dev>; Mon,  8 Jul 2024 19:45:56 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=45.157.188.9
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1720459909; cv=none; b=uviTV50kBawyAM3HDcs3l1QERCGMJmBJCuKESsVtmVLBDixYn/qfpqIkyyMLRuXCbfjjS6im8NFCi7qbOLoqFLpUL7krNvLdVWLcl6Orj7BO8NsrS/2hptHg3/h+5XONdVrgKu3GhTplwX+C0BUrY2myx8rnqnbPCFXRDQ4lhLg=
+	t=1720467962; cv=none; b=qdpHUzpGtdEDUM4abjgkohUe1jycoWcIByVA/F0L/sSwMgicWMoka+H7I5Ps7912YIRAfCyh/oFo5edKe5kr+N9BgbPnKxPMqRMb8Bkjl9gB73Z5teaaS/SwV2YkPjaA+mgQcKR405WUJ7xL28RnuuBLeA148DvYQ2QKI3ghRe4=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1720459909; c=relaxed/simple;
-	bh=lJ2932qDkC0LYg+crodmOu1OYYAGfPXir2mvX7XuYlQ=;
+	s=arc-20240116; t=1720467962; c=relaxed/simple;
+	bh=f6J3SyMoDlZnX07mleC15lOwC8e7IIONVGk8M5fMiVc=;
 	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=HHIZf0du/mNywa8Uq6Fmd4bwPHijJe3lbdcGLMoB08q6XpC0Lyx96UT1GxI28PHXY5v0G6fsAJuttUu44letEFB6pqKF7ptPyrrUi8AdmY0Z7c+5+rb9+i6kkafoaF0QfsHoXkebGnca9x7Q78xpiW3xlTFfbvnjOrJngptSjEo=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net; spf=pass smtp.mailfrom=digikod.net; dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b=wrHC8FpA; arc=none smtp.client-ip=45.157.188.10
+	 Content-Type:Content-Disposition:In-Reply-To; b=IdCaOr3l330n/74LaKjoxo5mVsWJJXNlEhh9f+rchld8L/nlpuzU2RZmOM7LNM1amL0/n61pUrjCAlDh7Ii0dmeo7c/16BaFq0b5rlupp9itBnujCCk8W4GX3RhkUi7CdWPTYuUJ1C9QCGkbMzJ0T2plvKHrwAUkGqMAaIO2JBo=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net; spf=pass smtp.mailfrom=digikod.net; dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b=14o6G+kt; arc=none smtp.client-ip=45.157.188.9
 Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=digikod.net
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b="wrHC8FpA"
-Received: from smtp-4-0001.mail.infomaniak.ch (smtp-4-0001.mail.infomaniak.ch [10.7.10.108])
-	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4WHrlH2nGgz7CV;
-	Mon,  8 Jul 2024 19:31:39 +0200 (CEST)
+	dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b="14o6G+kt"
+Received: from smtp-4-0000.mail.infomaniak.ch (smtp-4-0000.mail.infomaniak.ch [10.7.10.107])
+	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4WHvkC0RZ8zTJk;
+	Mon,  8 Jul 2024 21:45:55 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=digikod.net;
-	s=20191114; t=1720459899;
-	bh=mQnW5NCn1TmU2xbMOO/R79KgJurHxMXyQn21myAso+g=;
+	s=20191114; t=1720467954;
+	bh=ilehYGP+q5fwPfEBN5/iUyPlmWRy6d513iG8m2WrmI8=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=wrHC8FpAa0Nrl6MDhZVLEh2IeCdDaKszP59Loyn9h+Zj4ecIdUMCDDZKe7nSZkOwP
-	 uzWsImMOqfvVuCwR+BC6UzTKJmdW3P8jRIgpiH2ZG68a9aMTMVELy+D/AFwLi4zKW1
-	 hotUiwgj3pzOluGti7Y3vY2hLM6TYdSwJLXo5s3g=
-Received: from unknown by smtp-4-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4WHrlG41Ygz3C2;
-	Mon,  8 Jul 2024 19:31:38 +0200 (CEST)
-Date: Mon, 8 Jul 2024 19:31:35 +0200
+	b=14o6G+ktpNaLu4raXbCfVq0pepd/8UsG3XShk47o7zGTN4rGazuD5syQSYmnD2Ihg
+	 HDnlDIQIBwCMAmSJvEgcJrk1d4Vl4+PGEy4YdG4h/kYYXX1STAfivnR+7paePaMWTU
+	 7u8oCJK5OknQp9bCFzbLfNGwFSuL0rNel1zR3/IY=
+Received: from unknown by smtp-4-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4WHvkB1W56zm5b;
+	Mon,  8 Jul 2024 21:45:54 +0200 (CEST)
+Date: Mon, 8 Jul 2024 21:45:42 +0200
 From: =?utf-8?Q?Micka=C3=ABl_Sala=C3=BCn?= <mic@digikod.net>
 To: Tahera Fahimi <fahimitahera@gmail.com>
 Cc: =?utf-8?Q?G=C3=BCnther?= Noack <gnoack@google.com>, 
@@ -36,10 +36,9 @@ Cc: =?utf-8?Q?G=C3=BCnther?= Noack <gnoack@google.com>,
 	"Serge E. Hallyn" <serge@hallyn.com>, linux-security-module@vger.kernel.org, 
 	linux-kernel@vger.kernel.org, =?utf-8?B?QmrDtnJu?= Roy Baron <bjorn3_gh@protonmail.com>, 
 	Jann Horn <jannh@google.com>, outreachy@lists.linux.dev, netdev@vger.kernel.org
-Subject: Re: [PATCH 0/2] Landlock: Add abstract unix socket connect
- reastriction
-Message-ID: <20240708.nujahgh6Zeec@digikod.net>
-References: <cover.1720203255.git.fahimitahera@gmail.com>
+Subject: Re: [PATCH v1] landlock: Abstract unix socket restriction tests
+Message-ID: <20240708.rootai6weiXe@digikod.net>
+References: <Zn32KKIJrY7Zi51K@tahera-OptiPlex-5000>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -48,43 +47,111 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <cover.1720203255.git.fahimitahera@gmail.com>
+In-Reply-To: <Zn32KKIJrY7Zi51K@tahera-OptiPlex-5000>
 X-Infomaniak-Routing: alpha
 
-Please send inline patches, and don't forget to set the patch series
-version.  Because the difference with the previous series is only about
-formatting, I'l only review the previous one.
+These are good tests!  However, I get errors when running some of them (using
+the latest formatted patches):
 
-On Fri, Jul 05, 2024 at 12:58:10PM -0600, Tahera Fahimi wrote:
-> This patch series introduces the optional scoping of abstract unix
-> sockets. This feature aims to scope the connection of an abstract socket
-> from a sandbox process to other sockets outside of the sandbox domain.
-> (see [1, 2])
-> 
-> The following changes are included in this series:
->   [PATCH 1/2]: Introduce the "scoped" field to the ruleset structure in
->                the user space interface, and add the restriction
->                mechanism to Landlock.
->   [PATCH 2/2]: Add three comprehensive tests for the new feature.
-> 
-> Tahera Fahimi (2):
->   Landlock: Add abstract unix socket connect restriction
->   Landlock: Abstract unix socket restriction tests
-> 
->  include/uapi/linux/landlock.h                 |  29 +
->  security/landlock/limits.h                    |   3 +
->  security/landlock/ruleset.c                   |   7 +-
->  security/landlock/ruleset.h                   |  23 +-
->  security/landlock/syscalls.c                  |  12 +-
->  security/landlock/task.c                      |  62 ++
->  .../testing/selftests/landlock/ptrace_test.c  | 786 ++++++++++++++++++
->  7 files changed, 916 insertions(+), 6 deletions(-)
-> 
-> [1]: https://lore.kernel.org/all/20231023.ahphah4Wii4v@digikod.net/
-> [2]: https://lore.kernel.org/all/20231102.MaeWaepav8nu@digikod.net/
-> -- 
-> 2.34.1
-> 
+#  RUN           unix_socket.allow_without_domain_connect_to_parent.abstract_unix_socket ...
+# ptrace_test.c:845:abstract_unix_socket:Expected 0 (0) == bind(self->server, (struct sockaddr *)&addr, addrlen) (-1)
+# abstract_unix_socket: Test terminated by assertion
+#          FAIL  unix_socket.allow_without_domain_connect_to_parent.abstract_unix_socket
+not ok 9 unix_socket.allow_without_domain_connect_to_parent.abstract_unix_socket
+#  RUN           unix_socket.allow_without_domain_connect_to_child.abstract_unix_socket ...
+# ptrace_test.c:793:abstract_unix_socket:Expected 0 (0) == bind(self->server, (struct sockaddr *)&addr, addrlen) (-1)
+# ptrace_test.c:826:abstract_unix_socket:Expected 1 (1) == read(pipe_child[0], &buf_parent, 1) (0)
+# abstract_unix_socket: Test terminated by assertion
+#          FAIL  unix_socket.allow_without_domain_connect_to_child.abstract_unix_socket
+not ok 10 unix_socket.allow_without_domain_connect_to_child.abstract_unix_socket
 
 
+On Thu, Jun 27, 2024 at 05:30:48PM -0600, Tahera Fahimi wrote:
+> Tests for scoping abstract unix sockets. The patch has three types of tests:
+> i) unix_socket: tests the scoping mechanism for a landlocked process, same as
+> ptrace test.
+> ii) optional_scoping: generates three processes with different domains and tests if
+> a process with a non-scoped domain can connect to other processes.
+> iii) unix_sock_special_cases: since the socket's creator credentials are used for
+> scoping datagram sockets, this test examine the cases where the socket's credentials
+> are different from the process who is using it.
+> 
+> Closes: https://github.com/landlock-lsm/linux/issues/7
+> Signed-off-by: Tahera Fahimi <fahimitahera@gmail.com>
+> ---
 
+> +/* clang-format off */
+> +FIXTURE(optional_scoping)
+> +{
+> +	int parent_server, child_server, client;
+> +};
+> +/* clang-format on */
+> +
+> +/* Domain is defined as follows:
+> + * 0 --> no domain
+> + * 1 --> have domain
+> + * 2 --> have domain and is scoped
+
+You should use an enum instead of these hardcoded values.  This is
+better to understand/document, to review, and to maintain.
+
+> + **/
+> +FIXTURE_VARIANT(optional_scoping)
+> +{
+> +	int domain_all;
+> +	int domain_parent;
+> +	int domain_children;
+> +	int domain_child;
+> +	int domain_grand_child;
+> +	int type;
+> +};
+> +/*
+> + * .-----------------.
+> + * |         ####### |  P3 -> P2 : allow
+> + * |   P1----# P2  # |  P3 -> P1 : deny
+> + * |         #  |  # |
+> + * |         # P3  # |
+> + * |         ####### |
+> + * '-----------------'
+> + */
+> +/* clang-format off */
+> +FIXTURE_VARIANT_ADD(optional_scoping, deny_scoped) {
+> +	.domain_all = 1,
+> +	.domain_parent = 0,
+> +	.domain_children = 2,
+> +	.domain_child = 0,
+> +	.domain_grand_child = 0,
+> +	.type = SOCK_DGRAM,
+> +	/* clang-format on */
+> +};
+> +/*
+> + * .-----------------.
+> + * |         .-----. |  P3 -> P2 : allow
+> + * |   P1----| P2  | |  P3 -> P1 : allow
+> + * |         |     | |
+> + * |         | P3  | |
+> + * |         '-----' |
+> + * '-----------------'
+> + */
+> +/* clang-format off */
+> +FIXTURE_VARIANT_ADD(optional_scoping, allow_with_domain) {
+> +	.domain_all = 1,
+> +	.domain_parent = 0,
+> +	.domain_children = 1,
+> +	.domain_child = 0,
+> +	.domain_grand_child = 0,
+> +	.type = SOCK_DGRAM,
+> +	/* clang-format on */
+> +};
+
+I guess this should failed with the current kernel patch (see my review
+of the kernel patch), but something like that should be tested:
+
+FIXTURE_VARIANT_ADD(optional_scoping, allow_with_one_domain) {
+	.domain_parent = 0,
+	.domain_child = 2,
+	.domain_grand_child = 0,
+};
+
+grand_child should be able to connect to its parent (child), but not its
+grand parent (parent).
