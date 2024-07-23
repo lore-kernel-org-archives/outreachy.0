@@ -1,102 +1,355 @@
-Received: from mail-ed1-f44.google.com (mail-ed1-f44.google.com [209.85.208.44])
+Received: from mail-pl1-f175.google.com (mail-pl1-f175.google.com [209.85.214.175])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BA4923AC36
-	for <outreachy@lists.linux.dev>; Mon, 22 Jul 2024 12:46:13 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.44
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1A7CFBE6C
+	for <outreachy@lists.linux.dev>; Tue, 23 Jul 2024 01:13:47 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.214.175
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1721652375; cv=none; b=aNkYaAE0Rt+KTE9eDMmPaiGMWhP+5XbUbLRTh8oknwBpu8G6c7leBktyy37wyVBnHqulpkYksaTyKWeIxFWCHpDbvGEfeG1oC494x29Qko80Pxo1wb8rbWr0IGNbvnVU5feTibwLTPFCzOvbRi0w0HffcprzLQ2s/s8SXQ071iw=
+	t=1721697229; cv=none; b=lCF3g1vPhZgYGrWrDEPb91CN3uS7Gt6cfP5HASLB69B+FMjU43/EQHeTGGaGVnYAUWjCnS7xIWZSorhGK63uBnYevMnS2a7ec7Gpa248GDSW9xzTLCzExq1PjT72uhojz0GvRX+81qYaWwhUn7JyXFMeZWl9GjmHssry1M8b/Cw=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1721652375; c=relaxed/simple;
-	bh=08A40bbhznrlKFn2gZRVp22dL57vJ4Sag/bNSCApeS4=;
-	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
-	 To:Cc:Content-Type; b=dUp66bLc71L73ojeYEQ02jGB0q1rsK/F1/dt2VQRQiCWLRVtbC/TFt27Qf5tlKqcUpEEpzjIn8oxJ+AaiSdCG49mzZv1nq/FRY5MPsz7Tgnz5djHjZeKvFNgt7bb/nnWlvrDK0QCDoXdlLnx2VWAIXn6p2yp5fGKXqkO8BR5ktc=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=google.com; spf=pass smtp.mailfrom=google.com; dkim=pass (2048-bit key) header.d=google.com header.i=@google.com header.b=QYjebo3R; arc=none smtp.client-ip=209.85.208.44
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=google.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=google.com
+	s=arc-20240116; t=1721697229; c=relaxed/simple;
+	bh=xtWbZQ8b6f20b6fnqMWyqnFt+E/j4EHaLIGmaNiZX/Q=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=TEUyFQSiocV58Lcs+t4+vNJmVkWIjo00FWYVcvYpOjXQZpNdYnB6bNyLTuIcLtXmRfZVuDaSNW5AqDMdkTW11JcBoOfNEKKkTtuSRBg0Pau1ifE/ZN55h6w1FLvzuqgePfqwQnXlUn3QUP8Cid3y2pNR70IoBqE0h3Wf5F8joXo=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=UOlJchKh; arc=none smtp.client-ip=209.85.214.175
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=google.com header.i=@google.com header.b="QYjebo3R"
-Received: by mail-ed1-f44.google.com with SMTP id 4fb4d7f45d1cf-5a869e3e9dfso8855a12.0
-        for <outreachy@lists.linux.dev>; Mon, 22 Jul 2024 05:46:13 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="UOlJchKh"
+Received: by mail-pl1-f175.google.com with SMTP id d9443c01a7336-1fc5296e214so37946935ad.0
+        for <outreachy@lists.linux.dev>; Mon, 22 Jul 2024 18:13:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1721652372; x=1722257172; darn=lists.linux.dev;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=SkPk7qSJmsTXHG/tHIONPG7HUxcysTuWtB6jumYqrdM=;
-        b=QYjebo3RW2i2zGoEN5NADCJHWZU4t18q4O8e6uR/Y7S1C6xIVdApsIEoc9mUN/cEKb
-         F1ZqKEUVWPB4sLFGmTC0aCEt9FFI+ZH69hLv7VkYnsCkotpNy2YRyEGkddjCN0eK2amv
-         3+GKDZY0sThaG06EK2FUvG5ENz4ItbuBiOP3mOOin9tKQyJf7kNCIfaNHSe88N8KV8Ke
-         pMslIlVZ2HcnAgzkz76d8hFnVJFev2O5hkhMJ8U/7TYJm317T2Y0fjw1x9ZW26ecvuXz
-         9nZw43P0ghmEvRV/kX/u199NdpW6pL8SZ7Ey8sldD7m4Y+vjlxEhs72EiTGZvNJB0vIi
-         rQ2w==
+        d=gmail.com; s=20230601; t=1721697227; x=1722302027; darn=lists.linux.dev;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=/AKY3nAMwS+b4aSLVBXV1XRPEZHBZfsLIQOfnP+g8jk=;
+        b=UOlJchKh2++hL/eNBvqu+PsJThcW0pUEal8rgmDeZ1FT3t1Sst18RgpM+H709GZpH2
+         Z7qk02uil/y0zD+2lBjmnv78ZK7h+aQHdcHkeX3JpawarTL8FjLtlQMlAdjbwag+uJrU
+         1xwzDKiJ77AN/V73woEpyaA11HAaJ28Z3ynp302W7EWXGwWmv/ATVkq4S1AtFk58LeXH
+         LLQU5uENc2yhkTHbYG2qXQUlrTgiENThHPBQPByEEn42L39F98SjysQJYVnWoLw03+Ng
+         GAw+5C9pjK3EpFc3XCGG7YfoSzhdfnBY4yLclR6kneVpxk30MVS45TAw1GVdn/6FTcen
+         rdSw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1721652372; x=1722257172;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=SkPk7qSJmsTXHG/tHIONPG7HUxcysTuWtB6jumYqrdM=;
-        b=cuNM5a6TH9dYcPqQMzcuJdzm95gymlbAmRrSoj3kyS02i5z9qA0AqPKMrMuOitnsDN
-         NNKVNsrklh7W+afZakF2r57lo1+pbtfBNXZNDe5cPVDsqnKCVaaHcw/LyEBn4HI12+C8
-         TX++krro6Qjts36NyXLPItB5PgF/3fu/trJNMVJ5uD5XQPiVjINR8MmybrdebZ+MUWUW
-         5KvfwXtzBoe7JqbGgdJHag6FqzZ2tmVytDtuJuRN9KoI3ouvjmnCobTJUzfAiUQ3KVsN
-         A/4kDd2K70MNUM/YCCSlgR4IrcS3duPKUtG9PdUfgqqxJxlgx44Mln0br7yuky13w3P3
-         KLwg==
-X-Forwarded-Encrypted: i=1; AJvYcCVpHqRpgAHhhCzB7MuXP6Sq3LvBIl0sdw0ro55JxYrI086Ocy2FRfBegjf7FyuFdL0ksM7ICbezA73khUPLnACuPX4ageI1CEWg
-X-Gm-Message-State: AOJu0YzuOQN/5LArSlGoVPeMflGfmwUvRuqYKdBHhqkdQnOinUn2AuoI
-	1RQtEj6Xfkqxgpb+8FCFfh4ONZqJc9thAeYBxHiTQ3wrZ/drz0W5/vPD7Apppk0VaORQtAlMYOL
-	qQ+05AoBb1HWvvzhuBi7O6YHiHsD+PsR48ZXU
-X-Google-Smtp-Source: AGHT+IHCi62PM+KOTFc8/S9a0uMCt8sBsWfBOfvWEaTCwIQZzIuRwZy1cJ/vucoCoYuRW5CLLmMrzJQs2JS1pzid0TE=
-X-Received: by 2002:a05:6402:34c9:b0:57c:c3a7:dab6 with SMTP id
- 4fb4d7f45d1cf-5a4a842af45mr220593a12.3.1721652371314; Mon, 22 Jul 2024
- 05:46:11 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1721697227; x=1722302027;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=/AKY3nAMwS+b4aSLVBXV1XRPEZHBZfsLIQOfnP+g8jk=;
+        b=RpprCId+K3IFeYIrIMSV/+uhuziEGY1RS2IrVU15D2ktzmhlHxwyOQWRmOgZpyNPlg
+         pIJ5mPVYC0lMwLZ/KCztEchBgWnNhBd+AveWnRmqcn6+B/i2CUmkNRKCvne6dvrjf75p
+         a81E63RB9jJW9poWQvWrqymJRExW/cZGis3hZ3pVtS4qmr9QX2+zWtImsDiiy4eAEsLu
+         aupPZxYu1o0gA+NcoTM+IKJ7yE8DSjgSYrmRQQbzvY46DTXbNvkj9y7mveROJiKF1fZU
+         NtS7Ch5gWCJsN2WL446a8QyMk9xvguChtEy3yT43WrDGiQsQK249Lvfqi1Cxjs8iQ/2T
+         Uxfw==
+X-Forwarded-Encrypted: i=1; AJvYcCVnJqp4ErFTyT4FS+xTeeL44RGy00s0C2qMqzOthtb+WEqjF7IZFtk125JGTM564CUiiXhC/GTJtspp85SWi+CoE9Vz0elsZuw9
+X-Gm-Message-State: AOJu0YzV/v7ybkMk84afekCwiwUyPe85qczxCiiSdGtfV54lcDjUa+id
+	pXLQPTa2LxeaynxJCxlznMm1eJ7oikskIVFi2ZC9J3GntovXrfeW
+X-Google-Smtp-Source: AGHT+IEIKtL1NeEYxCc+rvXe9hKQP3R/Ez+CkYyJHQqDKWPbSxOsjNTjA/iCsB20kUdupc8N9u0XLQ==
+X-Received: by 2002:a17:902:dad1:b0:1fd:6c5b:afd4 with SMTP id d9443c01a7336-1fd74654427mr82054285ad.64.1721697227109;
+        Mon, 22 Jul 2024 18:13:47 -0700 (PDT)
+Received: from tahera-OptiPlex-5000 ([136.159.49.123])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-1fd6f259f83sm61699915ad.58.2024.07.22.18.13.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 22 Jul 2024 18:13:46 -0700 (PDT)
+Date: Mon, 22 Jul 2024 19:13:44 -0600
+From: Tahera Fahimi <fahimitahera@gmail.com>
+To: =?iso-8859-1?Q?Micka=EBl_Sala=FCn?= <mic@digikod.net>
+Cc: gnoack@google.com, paul@paul-moore.com, jmorris@namei.org,
+	serge@hallyn.com, linux-security-module@vger.kernel.org,
+	linux-kernel@vger.kernel.org, bjorn3_gh@protonmail.com,
+	jannh@google.com, outreachy@lists.linux.dev, netdev@vger.kernel.org
+Subject: Re: [PATCH v7 1/4] Landlock: Add abstract unix socket connect
+ restriction
+Message-ID: <Zp8DyAUZaNKgancC@tahera-OptiPlex-5000>
+References: <cover.1721269836.git.fahimitahera@gmail.com>
+ <d7bad636c2e3609ade32fd02875fa43ec1b1d526.1721269836.git.fahimitahera@gmail.com>
+ <20240719.AepeeXeib7sh@digikod.net>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-References: <36958dbc486e1f975f4d4ecdfa51ae65c2c4ced0.1720213293.git.fahimitahera@gmail.com>
-In-Reply-To: <36958dbc486e1f975f4d4ecdfa51ae65c2c4ced0.1720213293.git.fahimitahera@gmail.com>
-From: Jann Horn <jannh@google.com>
-Date: Mon, 22 Jul 2024 14:45:35 +0200
-Message-ID: <CAG48ez3MNJ9QiULabERc-SWQLx4T80_UOvsqCVFXTi3yxeeMRg@mail.gmail.com>
-Subject: Re: [PATCH v1 1/2] Landlock: Add signal control
-To: Tahera Fahimi <fahimitahera@gmail.com>
-Cc: mic@digikod.net, gnoack@google.com, paul@paul-moore.com, jmorris@namei.org, 
-	serge@hallyn.com, linux-security-module@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, bjorn3_gh@protonmail.com, 
-	outreachy@lists.linux.dev, netdev@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240719.AepeeXeib7sh@digikod.net>
 
-On Fri, Jul 5, 2024 at 11:22=E2=80=AFPM Tahera Fahimi <fahimitahera@gmail.c=
-om> wrote:
-> Currently, a sandbox process is not restricted to send a signal
-> (e.g. SIGKILL) to a process outside of the sandbox environment.
-> Ability to sending a signal for a sandboxed process should be
-> scoped the same way abstract unix sockets are scoped.
->
-> The same way as abstract unix socket, we extend "scoped" field
-> in a ruleset with "LANDLOCK_SCOPED_SIGNAL" to specify that a ruleset
-> will deny sending any signal from within a sandbox process to its
-> parent(i.e. any parent sandbox or non-sandboxed procsses).
->
-> Signed-off-by: Tahera Fahimi <fahimitahera@gmail.com>
-[...]
-> +static int hook_file_send_sigiotask(struct task_struct *tsk,
-> +                                   struct fown_struct *fown, int signum)
-> +{
-> +       const struct task_struct *result =3D
-> +               get_pid_task(fown->pid, fown->pid_type);
+On Fri, Jul 19, 2024 at 08:14:02PM +0200, Mickaël Salaün wrote:
+> On Wed, Jul 17, 2024 at 10:15:19PM -0600, Tahera Fahimi wrote:
+> > The patch introduces a new "scoped" attribute to the
+> > landlock_ruleset_attr that can specify "LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET"
+> > to scope abstract unix sockets from connecting to a process outside of
+> > the same landlock domain.
+> > 
+> > This patch implement two hooks, "unix_stream_connect" and "unix_may_send" to
+> > enforce this restriction.
+> > 
+> > Signed-off-by: Tahera Fahimi <fahimitahera@gmail.com>
+> > 
+> > -------
+Hello Mickaël, 
+Thanks for the feedback.
+> Only "---"
+> 
+> > v7:
+> 
+> Thanks for the detailed changelog, it helps!
+> 
+> >  - Using socket's file credentials for both connected(STREAM) and
+> >    non-connected(DGRAM) sockets.
+> >  - Adding "domain_sock_scope" instead of the domain scoping mechanism used in
+> >    ptrace ensures that if a server's domain is accessible from the client's
+> >    domain (where the client is more privileged than the server), the client
+> >    can connect to the server in all edge cases.
+> >  - Removing debug codes.
+> > v6:
+> >  - Removing curr_ruleset from landlock_hierarchy, and switching back to use
+> >    the same domain scoping as ptrace.
+> >  - code clean up.
+> > v5:
+> >  - Renaming "LANDLOCK_*_ACCESS_SCOPE" to "LANDLOCK_*_SCOPE"
+> >  - Adding curr_ruleset to hierarachy_ruleset structure to have access from
+> >    landlock_hierarchy to its respective landlock_ruleset.
+> >  - Using curr_ruleset to check if a domain is scoped while walking in the
+> >    hierarchy of domains.
+> >  - Modifying inline comments.
+> > V4:
+> >  - Rebased on Günther's Patch:
+> >    https://lore.kernel.org/all/20240610082115.1693267-1-gnoack@google.com/
+> >    so there is no need for "LANDLOCK_SHIFT_ACCESS_SCOPE", then it is removed.
+> >  - Adding get_scope_accesses function to check all scoped access masks in a ruleset.
+> >  - Using file's FD credentials instead of credentials stored in peer_cred
+> >    for datagram sockets. (see discussion in [1])
+> >  - Modifying inline comments.
+> > V3:
+> >  - Improving commit description.
+> >  - Introducing "scoped" attribute to landlock_ruleset_attr for IPC scoping
+> >    purpose, and adding related functions.
+> >  - Changing structure of ruleset based on "scoped".
+> >  - Removing rcu lock and using unix_sk lock instead.
+> >  - Introducing scoping for datagram sockets in unix_may_send.
+> > V2:
+> >  - Removing wrapper functions
+> > 
+> > [1]https://lore.kernel.org/outreachy/Zmi8Ydz4Z6tYtpY1@tahera-OptiPlex-5000/T/#m8cdf33180d86c7ec22932e2eb4ef7dd4fc94c792
+> 
+> 
+> > -------
+> > 
+> > Signed-off-by: Tahera Fahimi <fahimitahera@gmail.com>
+> 
+> No need for this hunk.
+> 
+> 
+> > ---
+> >  include/uapi/linux/landlock.h |  29 +++++++++
+> >  security/landlock/limits.h    |   3 +
+> >  security/landlock/ruleset.c   |   7 ++-
+> >  security/landlock/ruleset.h   |  23 ++++++-
+> >  security/landlock/syscalls.c  |  14 +++--
+> >  security/landlock/task.c      | 112 ++++++++++++++++++++++++++++++++++
+> >  6 files changed, 181 insertions(+), 7 deletions(-)
+> 
+> > diff --git a/security/landlock/task.c b/security/landlock/task.c
+> > index 849f5123610b..597d89e54aae 100644
+> > --- a/security/landlock/task.c
+> > +++ b/security/landlock/task.c
+> > @@ -13,6 +13,8 @@
+> >  #include <linux/lsm_hooks.h>
+> >  #include <linux/rcupdate.h>
+> >  #include <linux/sched.h>
+> > +#include <net/sock.h>
+> > +#include <net/af_unix.h>
+> >  
+> >  #include "common.h"
+> >  #include "cred.h"
+> > @@ -108,9 +110,119 @@ static int hook_ptrace_traceme(struct task_struct *const parent)
+> >  	return task_ptrace(parent, current);
+> >  }
+> >  
+> > +static int walk_and_check(const struct landlock_ruleset *const child,
+> > +			  struct landlock_hierarchy **walker, int i, int j,
+> 
+> We don't know what are "i" and "j" are while reading this function's
+> signature.  They need a better name.
+> 
+> Also, they are ingegers (signed), whereas l1 and l2 are size_t (unsigned).
+> 
+> > +			  bool check)
+> > +{
+> > +	if (!child || i < 0)
+> > +		return -1;
+> > +
+> > +	while (i < j && *walker) {
+> 
+> This would be more readable with a for() loop.
+> 
+> > +		if (check && landlock_get_scope_mask(child, j))
+> 
+> This is correct now but it will be a bug when we'll have other scope.
+> Instead, you can replace the "check" boolean with a variable containing
+> LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET.
+> 
+> > +			return -1;
+> > +		*walker = (*walker)->parent;
+> > +		j--;
+> > +	}
+> > +	if (!*walker)
+> > +		pr_warn_once("inconsistency in landlock hierarchy and layers");
+> 
+> This must indeed never happen, but WARN_ON_ONCE(!*walker) would be
+> better than this check+pr_warn.
+> 
+> Anyway, if this happen this pointer will still be dereferenced in
+> domain_sock_scope() right?  This must not be possible.
+> 
+> 
+> > +	return j;
+> 
+> Because j is now equal to i, no need to return it.  This function can
+> return a boolean instead, or a struct landlock_ruleset pointer/NULL to
+> avoid the pointer of pointer?
+corret, in the next version, this function will return a boolean that
+shows chcking the hierarchy of domain is successful or not. 
 
-get_pid_task() returns a refcounted reference; you'll have to call
-put_task_struct(result) to drop this reference at the end of the
-function.
+> > +}
+> > +
+> > +/**
+> > + * domain_sock_scope - Checks if client domain is scoped in the same
+> > + *			domain as server.
+> > + *
+> > + * @client: Connecting socket domain.
+> > + * @server: Listening socket domain.
+> > + *
+> > + * Checks if the @client domain is scoped, then the server should be
+> > + * in the same domain to connect. If not, @client can connect to @server.
+> > + */
+> > +static bool domain_sock_scope(const struct landlock_ruleset *const client,
+> 
+> This function can have a more generic name if
+> LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET is passed as argument.  This could
+> be reused as-is for other kind of scope.
+> 
+> > +			      const struct landlock_ruleset *const server)
+> > +{
+> > +	size_t l1, l2;
+> > +	int scope_layer;
+> > +	struct landlock_hierarchy *cli_walker, *srv_walker;
+> 
+> We have some room for a bit more characters ;)
+> client_walker, server_walker;
+> 
+> > +
+> > +	if (!client)
+> > +		return true;
+> > +
+> > +	l1 = client->num_layers - 1;
+> 
+> Please rename variables in a consistent way, in this case something like
+> client_layer?
+done 
+> > +	cli_walker = client->hierarchy;
+> > +	if (server) {
+> > +		l2 = server->num_layers - 1;
+> > +		srv_walker = server->hierarchy;
+> > +	} else
+> > +		l2 = 0;
+> > +
+> > +	if (l1 > l2)
+> > +		scope_layer = walk_and_check(client, &cli_walker, l2, l1, true);
+> 
+> Instead of mixing the layer number with an error code, walk_and_check()
+> can return a boolean, take as argument &scope_layer, and update it.
+> 
+> > +	else if (l2 > l1)
+> > +		scope_layer =
+> > +			walk_and_check(server, &srv_walker, l1, l2, false);
+> > +	else
+> > +		scope_layer = l1;
+> > +
+> > +	if (scope_layer == -1)
+> > +		return false;
+> 
+> All these domains and layers checks are difficult to review. It needs at
+> least some comments, and preferably also some code refactoring to avoid
+> potential inconsistencies (checks).
+> 
+> > +
+> > +	while (scope_layer >= 0 && cli_walker) {
+> 
+> Why srv_walker is not checked?  Could this happen?  What would be the
+> result?
+This is the same scenario as "walk_and_check". If the loop breaks
+because of cli_walker is null, then there is an inconsistency between
+num_layers and landlock_hierarchy. In normal scenario, we expect the
+loop breaks with condition(scope_layer>=0).
 
-> +       const struct landlock_ruleset *const dom =3D
-> +               landlock_get_task_domain(result);
-> +       if (signal_is_scoped(dom, tsk))
-> +               return 0;
-> +       return EPERM;
-> +}
+> Please also use a for() loop here.
+> 
+> > +		if (landlock_get_scope_mask(client, scope_layer) &
+> > +		    LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET) {
+> 
+> The logic needs to be explained.
+> 
+> > +			if (!server)
+> > +				return false;
+> > +
+> > +			if (srv_walker == cli_walker)
+> > +				return true;
+> > +
+> > +			return false;
+> > +		}
+> > +		cli_walker = cli_walker->parent;
+> > +		srv_walker = srv_walker->parent;
+> > +		scope_layer--;
+> > +	}
+> > +	return true;
+> > +}
+> > +
+> > +static bool sock_is_scoped(struct sock *const other)
+> > +{
+> > +	const struct landlock_ruleset *dom_other;
+> > +	const struct landlock_ruleset *const dom =
+> > +		landlock_get_current_domain();
+> > +
+> > +	/* the credentials will not change */
+> > +	lockdep_assert_held(&unix_sk(other)->lock);
+> > +	dom_other = landlock_cred(other->sk_socket->file->f_cred)->domain;
+> > +
+> > +	/* other is scoped, they connect if they are in the same domain */
+> > +	return domain_sock_scope(dom, dom_other);
+> > +}
+> > +
+> > +static int hook_unix_stream_connect(struct sock *const sock,
+> > +				    struct sock *const other,
+> > +				    struct sock *const newsk)
+> > +{
+> > +	if (sock_is_scoped(other))
+> > +		return 0;
+> > +
+> > +	return -EPERM;
+> > +}
+> > +
+> > +static int hook_unix_may_send(struct socket *const sock,
+> > +			      struct socket *const other)
+> > +{
+> > +	if (sock_is_scoped(other->sk))
+> > +		return 0;
+> > +
+> > +	return -EPERM;
+> > +}
+> > +
+> >  static struct security_hook_list landlock_hooks[] __ro_after_init = {
+> >  	LSM_HOOK_INIT(ptrace_access_check, hook_ptrace_access_check),
+> >  	LSM_HOOK_INIT(ptrace_traceme, hook_ptrace_traceme),
+> > +	LSM_HOOK_INIT(unix_stream_connect, hook_unix_stream_connect),
+> > +	LSM_HOOK_INIT(unix_may_send, hook_unix_may_send),
+> >  };
+> >  
+> >  __init void landlock_add_task_hooks(void)
+> > -- 
+> > 2.34.1
+> > 
+> > 
