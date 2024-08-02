@@ -1,203 +1,169 @@
-Received: from mail-pf1-f182.google.com (mail-pf1-f182.google.com [209.85.210.182])
+Received: from mail-pf1-f179.google.com (mail-pf1-f179.google.com [209.85.210.179])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A1B4C18DF8B
-	for <outreachy@lists.linux.dev>; Tue, 30 Jul 2024 21:41:19 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.210.182
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DD32A290F
+	for <outreachy@lists.linux.dev>; Fri,  2 Aug 2024 04:03:08 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.210.179
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1722375681; cv=none; b=hCIebx3wgGBFFjad31uyEkFofa3Dwk4VLN9XU6hIDeZRgGip8UNwqYuuCxqgMAljRhIcxCdMdwjJ/3z13NnV/FMBmqbC4tBfhVzrRiVaBhWNcgyxb5JPySKSY4tAcIBuwH6idqwDYe9Wn4KvhIzxCnibLZ1SF1As6J7In6vfv18=
+	t=1722571390; cv=none; b=NAqVA4cXwL1BqaHcDVDiEmxqNk5NmQNp/N4I54UsEJ49fmP2ymEaAyE64upuLi0MYzqsEwDv6bydFoCSv3zqY9a75WTeW7w2YWG6nsTNkfAju79/P3iKZIRjapyymYgohVwdEwjnEFJyPaOLFlUMF0Y7FIjg9eBES101P4PohmA=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1722375681; c=relaxed/simple;
-	bh=4pC6xzGT5WwjzhDI4qWpsh75dO6q2v+/sConbT8rVmI=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=RkgL4OHyhvCOFnP5EixPtCbKr7/oYfAaSMKMm19wGbhVDNlSiC4IxpITZIxvS/75rGRDvehkE9/SbpH1TrRkaN1RrH4M8Zw8l+TZgFEtlsd1hJnLIfAR+p66xYdilU3Omt5FbGt6kToeMHz45r9LvXjWWnCTWF2qwuKB4ATykhc=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=GxYyteOl; arc=none smtp.client-ip=209.85.210.182
+	s=arc-20240116; t=1722571390; c=relaxed/simple;
+	bh=+BmkYUY4FplYkQ1Fdo4rcSxasEfFGNdydNASNR1GMSw=;
+	h=From:To:Cc:Subject:Date:Message-Id:MIME-Version:Content-Type; b=thTCcmuL+J9AnJE8zGmNbvIWabwDsa7GDE+oEixvYyltNBzhjsEBw4UjrTEg/vCJFBvNoJgntOVCLVvCndlsGkfPSG9QgO6Yvibytq5SpTWgd4Xn8OXAP23+w76z67U1Y0ywqdrzGVW1H8r5DIsGofc3dWka2yIrT5Twjs4Vceo=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=jyzDco9t; arc=none smtp.client-ip=209.85.210.179
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="GxYyteOl"
-Received: by mail-pf1-f182.google.com with SMTP id d2e1a72fcca58-70d1cbbeeaeso3630002b3a.0
-        for <outreachy@lists.linux.dev>; Tue, 30 Jul 2024 14:41:19 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="jyzDco9t"
+Received: by mail-pf1-f179.google.com with SMTP id d2e1a72fcca58-7105043330aso2044943b3a.0
+        for <outreachy@lists.linux.dev>; Thu, 01 Aug 2024 21:03:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1722375679; x=1722980479; darn=lists.linux.dev;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=vDHDlQoT1LUK3kA0AHu9dgucFO36otH5SCr/Prge0+c=;
-        b=GxYyteOlBcyxktmX3whohHqrPSIgsFW32tMXLoV2C5LWyuImAGM3R4SLDh8sNwfYso
-         NsordY72LQnMUcQsvHeGt9+4Aov5XOI/5UhT6ZciHkP59v40Y/FFd+LOTmW0eL0fPuOf
-         BBVZCIqo4cfucqu8rvNNYdwH7moHeNdXkJTwv/DiB6VxoW4SOBV7+3RVXDa41W65GdhI
-         nA8JqpFaYEE8cgbe2LSQkTRiuyGld3SvO0abSMth7drE+q9jihtVnx1EhcaxPRTJlHDw
-         /IUBqdVH8sgH8JtO9ickHOz1HjGurV1GBJ33xe4IsdqOF/HaaTYrBvGa1N1vlB+Y+Whx
-         jHjA==
+        d=gmail.com; s=20230601; t=1722571387; x=1723176187; darn=lists.linux.dev;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=87jAKyalWQYEjkVcjCPIrit4kthuulRv/TtpkKf3Fj8=;
+        b=jyzDco9tsGTNUppBp/tirHcHluHKCaVdmsqeJFlKRSe8GSGQhKcwBGoQ2YJ6wBno8O
+         8DImdA5JFAJJtFh26ltEikJZ4RupRwv1XgL4u4TPz8mmeqRh/jZIDfTinZXC6cdcZi0Z
+         4Vqgn+6kQDMRe90nCDXbAKxZWkbpPJukE9wN/osQi1Y7DZvEIu1e5ONPrZDHjZu/QZ7J
+         B8nvOHg30z55y2B93XOCoc92c0tF2Qy4c9dBh5qrL91ZW8oM7TXRNW6B2/nPgIstOiYh
+         zqrH2+HKz8CFS9uizNR68um8AY2bPsKZ646Af5vz08ilSCZWEvfu8vjr6coEeXH/jBLv
+         KEFA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722375679; x=1722980479;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=vDHDlQoT1LUK3kA0AHu9dgucFO36otH5SCr/Prge0+c=;
-        b=bQRsNdFer1M9tFuU0MWVfHTOqwmHtrZqd2hu+ciF8MEYuc+iyVy52BTD+SQS9YlqGb
-         9IctKF27WxbMbOfIJKV7wcJWRsc2sZR8OHUUsXmavaCGMsMK9DixJ22Hx5PzpppTngxu
-         7TstOnaiuhmEhGbuUS5aKAIp5zf3gjVejexCvIbIrBgkhlX+fcu3FlXGVwO5SzasGv1j
-         +3GT4klFe7TkADW5DI5Jc8Xit3WGrAjs5vC1Qxu/2U9T4QVtMp03c6ZZE6l4OCEcd8OY
-         fwtXYnkL+I/WJrlzXZc9xAWkZvIHUjtUXef3pUqB2G+7jpa14KTVA0H+aTkP775vcQVb
-         9e3A==
-X-Forwarded-Encrypted: i=1; AJvYcCUpPGW9QUB3upFJsQifWBE9yI8+y4GGG1y0r/brnGgfd5yMUZWIjtP4PpQ/HsI5TWonfyyKW+MJ60dbl2am9r7dIYLS7r2mrvCH
-X-Gm-Message-State: AOJu0YzZUbIZ2k9KaWtAI2cbiYFfvGjZ6xxMiFEcT57tfJ5Zu9+z1f3c
-	UL9sLALHV1C/CwlZmKda9Pw+4SfEG8Oq6IzxZzEg5hCQji5L7P+t
-X-Google-Smtp-Source: AGHT+IGjRQKhxXwBH7xWRe2/ELl+5VxNoPQROhB+1zg6heUR4Gzti1+1Jxn13bXjj/tB6YlUvQ/Fug==
-X-Received: by 2002:a05:6a20:6a10:b0:1c2:8d33:af69 with SMTP id adf61e73a8af0-1c4a13afd31mr11605130637.41.1722375678712;
-        Tue, 30 Jul 2024 14:41:18 -0700 (PDT)
-Received: from tahera-OptiPlex-5000 ([136.159.49.123])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-70ead812316sm8883493b3a.101.2024.07.30.14.41.17
+        d=1e100.net; s=20230601; t=1722571387; x=1723176187;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=87jAKyalWQYEjkVcjCPIrit4kthuulRv/TtpkKf3Fj8=;
+        b=oXwDq1tZK8T2K+zDNMO+N2KJ0fhDCVIZczc9Q7vGczPHTEC9GTPnZ3iptIDINniRWV
+         H9r6Ke9RioDUq5pJF5BnbqrJZd8Z+rj1fKZ95Nnb8/eeyMJOMaK0oOpgI37oEq9XidA3
+         TBkzagDiZoRcj9Ujbsb+GesUu4q8J7IAEtrYuDGI3LoYMmXb9Pc7UzKSk9tDxO8yZTSC
+         +xZtgxOzokLi54jSb9H4mDMxoP8Nk8KGmRnseoQR2e6SI/7GIi9Iuaen02NGTO54dIPX
+         fCfj5wRhHyDnQLH+gvn4unotrr4DRawh0k54NM4/u2G3+/bLp+x6/H8ZGpG/+kTKvp/h
+         Rh1A==
+X-Gm-Message-State: AOJu0Yx/8XpuTSJIypI34xGEAl42ig8TEQfBnPyEaCnhri8yCA8Ic5ll
+	6A00jnWVC0AKvZ+3jIDoT62YyNVKFCERDDFng5XcPmVPc23Gqk2F6WckpmNB
+X-Google-Smtp-Source: AGHT+IG52+8kacj0yZdlHx1LB4HGbf8WZV2BUzSpcQgNapmwB0WeLFpk3LWzvr/d88yI0SuUgYUahA==
+X-Received: by 2002:a05:6a00:914c:b0:706:284f:6a68 with SMTP id d2e1a72fcca58-7106d04618amr2607561b3a.23.1722571387151;
+        Thu, 01 Aug 2024 21:03:07 -0700 (PDT)
+Received: from tahera-OptiPlex-5000.tail3bf47f.ts.net ([136.159.49.123])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7106ec41465sm542099b3a.60.2024.08.01.21.03.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 30 Jul 2024 14:41:18 -0700 (PDT)
-Date: Tue, 30 Jul 2024 15:41:15 -0600
+        Thu, 01 Aug 2024 21:03:06 -0700 (PDT)
 From: Tahera Fahimi <fahimitahera@gmail.com>
-To: =?iso-8859-1?Q?Micka=EBl_Sala=FCn?= <mic@digikod.net>
-Cc: gnoack@google.com, paul@paul-moore.com, jmorris@namei.org,
-	serge@hallyn.com, linux-security-module@vger.kernel.org,
-	linux-kernel@vger.kernel.org, bjorn3_gh@protonmail.com,
-	jannh@google.com, outreachy@lists.linux.dev, netdev@vger.kernel.org
-Subject: Re: [PATCH v7 1/4] Landlock: Add abstract unix socket connect
- restriction
-Message-ID: <Zqld+6wj8v0kLMBV@tahera-OptiPlex-5000>
-References: <cover.1721269836.git.fahimitahera@gmail.com>
- <d7bad636c2e3609ade32fd02875fa43ec1b1d526.1721269836.git.fahimitahera@gmail.com>
- <20240730.Quei5io6sesh@digikod.net>
+To: outreachy@lists.linux.dev
+Cc: mic@digikod.net,
+	gnoack@google.com,
+	paul@paul-moore.com,
+	jmorris@namei.org,
+	serge@hallyn.com,
+	linux-security-module@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	bjorn3_gh@protonmail.com,
+	jannh@google.com,
+	netdev@vger.kernel.org,
+	Tahera Fahimi <fahimitahera@gmail.com>
+Subject: [PATCH v8 0/4] Landlock: Add abstract unix socket connect
+Date: Thu,  1 Aug 2024 22:02:32 -0600
+Message-Id: <cover.1722570749.git.fahimitahera@gmail.com>
+X-Mailer: git-send-email 2.34.1
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240730.Quei5io6sesh@digikod.net>
 
-On Tue, Jul 30, 2024 at 06:05:15PM +0200, Mickaël Salaün wrote:
-> On Wed, Jul 17, 2024 at 10:15:19PM -0600, Tahera Fahimi wrote:
-> > The patch introduces a new "scoped" attribute to the
-> > landlock_ruleset_attr that can specify "LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET"
-> > to scope abstract unix sockets from connecting to a process outside of
-> > the same landlock domain.
-> > 
-> > This patch implement two hooks, "unix_stream_connect" and "unix_may_send" to
-> > enforce this restriction.
-> > 
-> > Signed-off-by: Tahera Fahimi <fahimitahera@gmail.com>
-> > 
-> > -------
-> > v7:
-> >  - Using socket's file credentials for both connected(STREAM) and
-> >    non-connected(DGRAM) sockets.
-> >  - Adding "domain_sock_scope" instead of the domain scoping mechanism used in
-> >    ptrace ensures that if a server's domain is accessible from the client's
-> >    domain (where the client is more privileged than the server), the client
-> >    can connect to the server in all edge cases.
-> >  - Removing debug codes.
-> > v6:
-> >  - Removing curr_ruleset from landlock_hierarchy, and switching back to use
-> >    the same domain scoping as ptrace.
-> >  - code clean up.
-> > v5:
-> >  - Renaming "LANDLOCK_*_ACCESS_SCOPE" to "LANDLOCK_*_SCOPE"
-> >  - Adding curr_ruleset to hierarachy_ruleset structure to have access from
-> >    landlock_hierarchy to its respective landlock_ruleset.
-> >  - Using curr_ruleset to check if a domain is scoped while walking in the
-> >    hierarchy of domains.
-> >  - Modifying inline comments.
-> > V4:
-> >  - Rebased on Günther's Patch:
-> >    https://lore.kernel.org/all/20240610082115.1693267-1-gnoack@google.com/
-> >    so there is no need for "LANDLOCK_SHIFT_ACCESS_SCOPE", then it is removed.
-> >  - Adding get_scope_accesses function to check all scoped access masks in a ruleset.
-> >  - Using file's FD credentials instead of credentials stored in peer_cred
-> >    for datagram sockets. (see discussion in [1])
-> >  - Modifying inline comments.
-> > V3:
-> >  - Improving commit description.
-> >  - Introducing "scoped" attribute to landlock_ruleset_attr for IPC scoping
-> >    purpose, and adding related functions.
-> >  - Changing structure of ruleset based on "scoped".
-> >  - Removing rcu lock and using unix_sk lock instead.
-> >  - Introducing scoping for datagram sockets in unix_may_send.
-> > V2:
-> >  - Removing wrapper functions
-> > 
-> > [1]https://lore.kernel.org/outreachy/Zmi8Ydz4Z6tYtpY1@tahera-OptiPlex-5000/T/#m8cdf33180d86c7ec22932e2eb4ef7dd4fc94c792
-> > -------
-> > 
-> > Signed-off-by: Tahera Fahimi <fahimitahera@gmail.com>
-> > ---
-> >  include/uapi/linux/landlock.h |  29 +++++++++
-> >  security/landlock/limits.h    |   3 +
-> >  security/landlock/ruleset.c   |   7 ++-
-> >  security/landlock/ruleset.h   |  23 ++++++-
-> >  security/landlock/syscalls.c  |  14 +++--
-> >  security/landlock/task.c      | 112 ++++++++++++++++++++++++++++++++++
-> >  6 files changed, 181 insertions(+), 7 deletions(-)
-> 
-> > diff --git a/security/landlock/task.c b/security/landlock/task.c
-> > index 849f5123610b..597d89e54aae 100644
-> > --- a/security/landlock/task.c
-> > +++ b/security/landlock/task.c
-> 
-> > +static int hook_unix_stream_connect(struct sock *const sock,
-> > +				    struct sock *const other,
-> > +				    struct sock *const newsk)
-> > +{
-> 
-> We must check if the unix sockets use an abstract address.  We need a
-> new test to check against a the three types of addresse: pathname,
-> unnamed (socketpair), and abstract.  This should result into 6 variants
-> because of the stream-oriented or dgram-oriented sockets to check both
-> hooks.  The test can do 3 checks: without any Landlock domain, with the
-> client being sandboxed with a Landlock domain for filesystem
-> restrictions only, and with a domain scoped for abstract unix sockets.
-correct. Since the current tests check all the possible scenarios for
-abstract unix sockets, we only need to add the scenarios where a socket
-with pathname or unnamed address and scoped domain wants to connect to a
-listening socket. In this case, the access should guaranteed since there
-is no scoping mechanism for these sockets yet.
+This patch series adds scoping mechanism for abstract unix sockets.
+Closes: https://github.com/landlock-lsm/linux/issues/7
 
-> For pathname you'll need to move the TMP_DIR define from fs_test.c into
-> common.h and create a static path for the named socket.  A fixture
-> teardown should remove the socket and the directory.
-Thanks for the help :) 
-> > +	if (sock_is_scoped(other))
-> > +		return 0;
-> > +
-> > +	return -EPERM;
-> > +}
-> > +
-> > +static int hook_unix_may_send(struct socket *const sock,
-> > +			      struct socket *const other)
-> > +{
-> 
-> Same here
-> 
-> > +	if (sock_is_scoped(other->sk))
-> > +		return 0;
-> > +
-> > +	return -EPERM;
-> > +}
-> > +
-> >  static struct security_hook_list landlock_hooks[] __ro_after_init = {
-> >  	LSM_HOOK_INIT(ptrace_access_check, hook_ptrace_access_check),
-> >  	LSM_HOOK_INIT(ptrace_traceme, hook_ptrace_traceme),
-> > +	LSM_HOOK_INIT(unix_stream_connect, hook_unix_stream_connect),
-> > +	LSM_HOOK_INIT(unix_may_send, hook_unix_may_send),
-> 
-> Future access controls dedicated to pathname unix sockets may need these
-> hooks too, but I guess we'll see where tehy fit the best when we'll be
-> there.
-> 
-> >  };
-> >  
-> >  __init void landlock_add_task_hooks(void)
-> > -- 
-> > 2.34.1
-> > 
-> > 
+Problem
+=======
+
+Abstract unix sockets are used for local inter-process communications
+independent of the filesystem. Currently, a sandboxed process can
+connect to a socket outside of the sandboxed environment, since Landlock
+has no restriction for connecting to an abstract socket address(see more
+details in [1,2]). Access to such sockets for a sandboxed process should
+be scoped the same way ptrace is limited.
+
+[1] https://lore.kernel.org/all/20231023.ahphah4Wii4v@digikod.net/
+[2] https://lore.kernel.org/all/20231102.MaeWaepav8nu@digikod.net/
+
+Solution
+========
+
+To solve this issue, we extend the user space interface by adding a new
+"scoped" field to Landlock ruleset attribute structure. This field can
+contains different rights to restrict different functionalities. For
+abstract unix sockets, we introduce
+"LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET" field to specify that a ruleset
+will deny any connection from within the sandbox domain to its parent
+(i.e. any parent sandbox or non-sandbox processes).
+
+Example
+=======
+
+Starting a listening socket with socat(1):
+	socat abstract-listen:mysocket -
+
+Starting a sandboxed shell from $HOME with samples/landlock/sandboxer:
+	LL_FS_RO=/ LL_FS_RW=. LL_SCOPED="a" ./sandboxer /bin/bash
+
+If we try to connect to the listening socket, the connection would be
+refused.
+	socat - abstract-connect:mysocket --> fails
+
+
+Notes of Implementation
+=======================
+
+* Using the "scoped" field provides enough compatibility and flexibility
+  to extend the scoping mechanism for other IPCs(e.g. signals).
+
+* To access the domain of a socket, we use its credentials of the file's FD
+  which point to the credentials of the process that created the socket.
+  (see more details in [3]). Cases where the process using the socket has
+  a different domain than the process created it are covered in the 
+  unix_sock_special_cases test.
+
+[3]https://lore.kernel.org/all/20240611.Pi8Iph7ootae@digikod.net/
+
+
+Previous Versions
+=================
+v6: https://lore.kernel.org/all/Zn32CYZiu7pY+rdI@tahera-OptiPlex-5000/
+and https://lore.kernel.org/all/Zn32KKIJrY7Zi51K@tahera-OptiPlex-5000/
+v5: https://lore.kernel.org/all/ZnSZnhGBiprI6FRk@tahera-OptiPlex-5000/
+v4: https://lore.kernel.org/all/ZnNcE3ph2SWi1qmd@tahera-OptiPlex-5000/
+v3: https://lore.kernel.org/all/ZmJJ7lZdQuQop7e5@tahera-OptiPlex-5000/
+v2: https://lore.kernel.org/all/ZgX5TRTrSDPrJFfF@tahera-OptiPlex-5000/
+v1: https://lore.kernel.org/all/ZgXN5fi6A1YQKiAQ@tahera-OptiPlex-5000/
+
+Tahera Fahimi (4):
+  Landlock: Add abstract unix socket connect restriction
+  selftests/landlock: Abstract unix socket restriction tests
+  sample/Landlock: Support abstract unix socket restriction
+  Landlock: Document LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET and ABI
+    versioning
+
+ Documentation/userspace-api/landlock.rst      |   33 +-
+ include/uapi/linux/landlock.h                 |   30 +
+ samples/landlock/sandboxer.c                  |   56 +-
+ security/landlock/limits.h                    |    3 +
+ security/landlock/ruleset.c                   |    7 +-
+ security/landlock/ruleset.h                   |   23 +-
+ security/landlock/syscalls.c                  |   14 +-
+ security/landlock/task.c                      |  155 +++
+ tools/testing/selftests/landlock/base_test.c  |    2 +-
+ tools/testing/selftests/landlock/common.h     |   72 ++
+ tools/testing/selftests/landlock/fs_test.c    |   34 -
+ tools/testing/selftests/landlock/net_test.c   |   31 +-
+ .../landlock/scoped_abstract_unix_test.c      | 1136 +++++++++++++++++
+ 13 files changed, 1518 insertions(+), 78 deletions(-)
+ create mode 100644 tools/testing/selftests/landlock/scoped_abstract_unix_test.c
+
+-- 
+2.34.1
+
