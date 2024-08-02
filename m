@@ -1,56 +1,56 @@
-Received: from mail-oo1-f50.google.com (mail-oo1-f50.google.com [209.85.161.50])
+Received: from mail-pg1-f176.google.com (mail-pg1-f176.google.com [209.85.215.176])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5315C224D6
-	for <outreachy@lists.linux.dev>; Fri,  2 Aug 2024 04:03:10 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.161.50
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7078C29D19
+	for <outreachy@lists.linux.dev>; Fri,  2 Aug 2024 04:03:12 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.215.176
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1722571393; cv=none; b=n7xozmWAaUeNRptybhEjTm/7AVk2UyrQSDIO/8NlAcaEG2Sf6fWdpn1u73HhSOXngz81JtwZTKPXAcNecL7DCpwNDTcLyfdgci8TYozwjBz5EX/lsgzKKvSXX5X/AuNwsplNuLVTvyOccR45kZVIhh/oKDo5ZjCzp4HHPXu7tD0=
+	t=1722571394; cv=none; b=UTBjYMc/8pou0IiqNWhFkGQeRNWyr0nApA01llGCQuDhsH2yJC99dTLDaH9t/Y5jZvJMajwy7aqSXLnwop0gpRt2UhCXJP59RX+XzxQFBgYa0srNdRFlPQA3lBzf22RCHcPAm00gKpl1fvlb42baz63MPof7NVCGIXcPqIdAezU=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1722571393; c=relaxed/simple;
-	bh=YotXhV4uo9htrXG453qHjjxydfLffVK0+D5tGIeIJkY=;
+	s=arc-20240116; t=1722571394; c=relaxed/simple;
+	bh=8XIoOmnudj+J0jp40AbjeJinyE+1/P9q1HUvUmfnQcA=;
 	h=From:To:Cc:Subject:Date:Message-Id:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=eva20kciZOxByfyIhySrLF/CnFg/UPDvmZYSgakZU2yKv9QBfhqAKY5Pac8IvEgtJXtw8s1NPFJVnlJEYVvavM7yYZhFp5ULObhlqnzwsfuPpwbI1dSn/W2N7auKo+8T5fYy6OFbQSxA7Csz/HvBCAsvVNZlIViaoor/W9zPElM=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=SBULWiYP; arc=none smtp.client-ip=209.85.161.50
+	 MIME-Version:Content-Type; b=Ye+R93OtmZ5ZC+DIMxh1GSuzv+D/g/YiWWsHjcN5ptlkzntkwJECwfYxV4AE2ritoJ+1z7Ev3MIEZm7CJjivqV2ok7QfnMaFZbylH0kGVp9AhLMHRNsVuFTXp8Yhy8Vs57U66UbKq+g6SXS6JFQe1Xplm3PnbzPcFmiEPVh2w7s=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=K5jwuFr6; arc=none smtp.client-ip=209.85.215.176
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="SBULWiYP"
-Received: by mail-oo1-f50.google.com with SMTP id 006d021491bc7-5d5bd1b79cfso4480727eaf.2
-        for <outreachy@lists.linux.dev>; Thu, 01 Aug 2024 21:03:10 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="K5jwuFr6"
+Received: by mail-pg1-f176.google.com with SMTP id 41be03b00d2f7-7a264a24ea7so5096839a12.3
+        for <outreachy@lists.linux.dev>; Thu, 01 Aug 2024 21:03:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1722571389; x=1723176189; darn=lists.linux.dev;
+        d=gmail.com; s=20230601; t=1722571391; x=1723176191; darn=lists.linux.dev;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=ImkKaH7WBzIdVWRbmn44o56X3eXOfBL1FlJFCdCwLH0=;
-        b=SBULWiYPCtmoZBiM73oEaP+qXPBWcoMTvXTBtq2ViEpw0zAMongnBqhGFTUJcMvAkx
-         5G65ImWiLJGXf6qvrEhuzOHBALMBqwjXkzOsb+/AeOTRoNhaEvAs+GZRxqBx1K60hdEc
-         jZdbd+Y9mTtcNubdrYRvo6ZKSby3jWBRNWJWce/xq0AUgATtN5dXdnjw2y4zwkHfermA
-         DwhRRLOaguTHgTywHlkujuIQAWSDwvj3Gs/eLXdxYDLjMw1m/zewGduH2Iz9D5CJqzon
-         vvJHrCzN2VIgNwzFIkpG7kE4SgabIAUYS8hbr3prC0OvI5ckFhijbWysU4CMkSMFtJ5E
-         oBHQ==
+        bh=V/7ENZLqF+SNnzbCmbEtFHYfnUukQIei88t3Zjus22M=;
+        b=K5jwuFr6ETM/OqsMKSTKcX8TXH43NFW9+cjkvPiPql7StMF+sXhuitWowqd7YReDz1
+         2z5cTtR0BMhWkps5Cy2sDi/PnxDzTP7FM945pCw4IFdkoECZgupW9nP1Lulb0FKnGoY0
+         v6pPeNFg33jb8FavrFgF3FBhJdiGs0lWqMYo+1mqjIpn3gb1/wqBVTsa8nWF4FyDlFuI
+         sYMJGT9Ns4foEOBGdd0Z0Z4tmsSbLFKqPt/QwdZwCKrs5mP1rTK4gHRUyUiON/CGbyIP
+         aQB2QFRl7hqu7dn2FXwwKNNMCQsoBcUf/DLKl2wW3l3/c9GLt4sp942tkWB5I0XtaAta
+         rcUg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722571389; x=1723176189;
+        d=1e100.net; s=20230601; t=1722571391; x=1723176191;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=ImkKaH7WBzIdVWRbmn44o56X3eXOfBL1FlJFCdCwLH0=;
-        b=v/14VEqfAk29UaY+4jwkho8okQRcaJ4wC+1gsUoKG4tzSAdh9Iv6bKZsqQmdxfTStI
-         l1GsKisVg70urCs8kQWRQgdKCtSpyfhrG+7i+c3JSGXTivFJmNqG9os+VwjjtDbaoCGN
-         D7ZUcKgcc6kTCZzPu5/1ENSxS9DQfHw16xDTRcj/7cJbjMytu8ImlaYcskEONkWi/v+9
-         R9zqyYbUepAQcOG5iymJIXkkfcUebI8FCjNajbol5WiIzlUMIyd0rTk5L9BQMjkcE43g
-         hUH4DBGBDsg+PpMJHixa25fyuvrlEEJN5V5DVpouOLw08URMY7+gWxLW8N4coHH1LObt
-         trxg==
-X-Gm-Message-State: AOJu0YwY5Cbs4fT3IgGj+RXX+dv2HzMFON8UhOd0M2FlFehw0wWLoMfH
-	R2HWtHL8lAtbZG6l9HNg9QM7oKy/PfEPBMul+or46KyqnqZNkq+KshQ1uDAu
-X-Google-Smtp-Source: AGHT+IFVoZPochyOfuDQ+SlstEbMIoO1KxFIxh7A1gCZ0HELnXmlpRbHjIqEFQp2l1KO0DZPRNgxTQ==
-X-Received: by 2002:a05:6871:23c1:b0:268:9d6b:672 with SMTP id 586e51a60fabf-2689d6b4e84mr556145fac.42.1722571388699;
-        Thu, 01 Aug 2024 21:03:08 -0700 (PDT)
+        bh=V/7ENZLqF+SNnzbCmbEtFHYfnUukQIei88t3Zjus22M=;
+        b=dFuv7Pg29gNUqLR0YHkKsGC7FdbTBWEZkwaxbuQDXajNXMPQwTVNPiTPQhMdIcGDxM
+         bdcAPRczC9P7IKwVxhuTLr4rAWExvVr/h995PJ7AyzMIlX5FpQuCDlBdAwhRE31Dsr18
+         OG0c8ZKUPFHSh/XCbqM/Bwe06vOrJ2hy8KAw3j7iYt5XGuMHuUYHlcRoGL62It6tBD0e
+         1rdhQywDaJnaqxfcwej1NILxPk17DAczCQIalEN2h/d+Uzx3+LYpVRgWbpsTaRev61Gg
+         GMdNcNThssD0LyGhFcoI2nAl+Yv2LGdqDIwrmn7YM95JiD6nYX3mT+OTEH+LxcprTiKb
+         9icg==
+X-Gm-Message-State: AOJu0Yx9lod4QjV6DMNLqQNLb5jiP/JXKG7AjDv2jfTk4aWYplDbAWTD
+	ImxG7YiKbEcBxHuOENqWyhvz/W2Gh9Jh9cH+zeexRgarJveNDERxnXp5QyoY
+X-Google-Smtp-Source: AGHT+IEYDNYKInMS3sjYGMrrwrb6W3AgsMv3z/oTq4RwfulLbbgIBY6gjz5fOXBjO9sspRWBr7e5bg==
+X-Received: by 2002:a05:6a21:38d:b0:1af:66aa:7fc7 with SMTP id adf61e73a8af0-1c6995795c3mr1987577637.3.1722571391105;
+        Thu, 01 Aug 2024 21:03:11 -0700 (PDT)
 Received: from tahera-OptiPlex-5000.tail3bf47f.ts.net ([136.159.49.123])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7106ec41465sm542099b3a.60.2024.08.01.21.03.07
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7106ec41465sm542099b3a.60.2024.08.01.21.03.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 01 Aug 2024 21:03:07 -0700 (PDT)
+        Thu, 01 Aug 2024 21:03:10 -0700 (PDT)
 From: Tahera Fahimi <fahimitahera@gmail.com>
 To: outreachy@lists.linux.dev
 Cc: mic@digikod.net,
@@ -64,9 +64,9 @@ Cc: mic@digikod.net,
 	jannh@google.com,
 	netdev@vger.kernel.org,
 	Tahera Fahimi <fahimitahera@gmail.com>
-Subject: [PATCH v8 1/4] Landlock: Add abstract unix socket connect restriction
-Date: Thu,  1 Aug 2024 22:02:33 -0600
-Message-Id: <e8da4d5311be78806515626a6bd4a16fe17ded04.1722570749.git.fahimitahera@gmail.com>
+Subject: [PATCH v8 3/4] sample/Landlock: Support abstract unix socket restriction
+Date: Thu,  1 Aug 2024 22:02:35 -0600
+Message-Id: <2b1ac6822d852ea70dd2dcdf41065076d9ee8028.1722570749.git.fahimitahera@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <cover.1722570749.git.fahimitahera@gmail.com>
 References: <cover.1722570749.git.fahimitahera@gmail.com>
@@ -79,447 +79,175 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
-This patch introduces a new "scoped" attribute to the landlock_ruleset_attr
-that can specify "LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET" to scope
-abstract Unix sockets from connecting to a process outside of
-the same landlock domain. It implements two hooks, unix_stream_connect
-and unix_may_send to enforce this restriction.
+A sandboxer can receive the character "a" as input from the environment
+variable LL_SCOPE to restrict the abstract unix sockets from connecting
+to a process outside its scoped domain.
 
-Closes: https://github.com/landlock-lsm/linux/issues/7
+Example
+=======
+Create an abstract unix socket to listen with socat(1):
+socat abstract-listen:mysocket -
+Create a sandboxed shell and pass the character "a" to LL_SCOPED:
+LL_FS_RO=/ LL_FS_RW=. LL_SCOPED="a" ./sandboxer /bin/bash
+If the sandboxed process tries to connect to the listening socket
+with command "socat - abstract-connect:mysocket", the connection
+will fail.
+
 Signed-off-by: Tahera Fahimi <fahimitahera@gmail.com>
 
 ---
 v8:
-- Code refactoring (improve code readability, renaming variable, etc.) based
-  on reviews by Mickaël Salaün on version 7.
-- Adding warn_on_once to check (impossible) inconsistencies.
-- Adding inline comments.
-- Adding check_unix_address_format to check if the scoping socket is an abstract
-  unix sockets.
+- Adding check_ruleset_scope function to parse the scope environment
+  variable and update the landlock attribute based on the restriction
+  provided by the user.
+- Adding Mickaël Salaün reviews on version 7.
+
 v7:
- - Using socket's file credentials for both connected(STREAM) and
-   non-connected(DGRAM) sockets.
- - Adding "domain_sock_scope" instead of the domain scoping mechanism used in
-   ptrace ensures that if a server's domain is accessible from the client's
-   domain (where the client is more privileged than the server), the client
-   can connect to the server in all edge cases.
- - Removing debug codes.
-v6:
- - Removing curr_ruleset from landlock_hierarchy, and switching back to use
-   the same domain scoping as ptrace.
- - code clean up.
-v5:
- - Renaming "LANDLOCK_*_ACCESS_SCOPE" to "LANDLOCK_*_SCOPE"
- - Adding curr_ruleset to hierarachy_ruleset structure to have access from
-   landlock_hierarchy to its respective landlock_ruleset.
- - Using curr_ruleset to check if a domain is scoped while walking in the
-   hierarchy of domains.
- - Modifying inline comments.
-V4:
- - Rebased on Günther's Patch:
-   https://lore.kernel.org/all/20240610082115.1693267-1-gnoack@google.com/
-   so there is no need for "LANDLOCK_SHIFT_ACCESS_SCOPE", then it is removed.
- - Adding get_scope_accesses function to check all scoped access masks in a ruleset.
- - Using socket's file credentials instead of credentials stored in peer_cred
-   for datagram sockets. (see discussion in [1])
- - Modifying inline comments.
-V3:
- - Improving commit description.
- - Introducing "scoped" attribute to landlock_ruleset_attr for IPC scoping
-   purpose, and adding related functions.
- - Changing structure of ruleset based on "scoped".
- - Removing rcu lock and using unix_sk lock instead.
- - Introducing scoping for datagram sockets in unix_may_send.
-V2:
- - Removing wrapper functions
-
-[1]https://lore.kernel.org/all/20240610.Aifee5ingugh@digikod.net/
-----
+- Adding IPC scoping to the sandbox demo by defining a new "LL_SCOPED"
+  environment variable. "LL_SCOPED" gets value "a" to restrict abstract
+  unix sockets.
+- Change LANDLOCK_ABI_LAST to 6.
 ---
- include/uapi/linux/landlock.h |  30 +++++++
- security/landlock/limits.h    |   3 +
- security/landlock/ruleset.c   |   7 +-
- security/landlock/ruleset.h   |  23 ++++-
- security/landlock/syscalls.c  |  14 ++-
- security/landlock/task.c      | 155 ++++++++++++++++++++++++++++++++++
- 6 files changed, 225 insertions(+), 7 deletions(-)
+ samples/landlock/sandboxer.c | 56 +++++++++++++++++++++++++++++++++---
+ 1 file changed, 52 insertions(+), 4 deletions(-)
 
-diff --git a/include/uapi/linux/landlock.h b/include/uapi/linux/landlock.h
-index 68625e728f43..ab31e9f53e55 100644
---- a/include/uapi/linux/landlock.h
-+++ b/include/uapi/linux/landlock.h
-@@ -37,6 +37,12 @@ struct landlock_ruleset_attr {
- 	 * rule explicitly allow them.
- 	 */
- 	__u64 handled_access_net;
-+	/**
-+	 * @scoped: Bitmask of scopes (cf. `Scope flags`_)
-+	 * restricting a Landlock domain from accessing outside
-+	 * resources(e.g. IPCs).
-+	 */
-+	__u64 scoped;
- };
+diff --git a/samples/landlock/sandboxer.c b/samples/landlock/sandboxer.c
+index e8223c3e781a..98132fd823ad 100644
+--- a/samples/landlock/sandboxer.c
++++ b/samples/landlock/sandboxer.c
+@@ -14,6 +14,7 @@
+ #include <fcntl.h>
+ #include <linux/landlock.h>
+ #include <linux/prctl.h>
++#include <linux/socket.h>
+ #include <stddef.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+@@ -22,6 +23,7 @@
+ #include <sys/stat.h>
+ #include <sys/syscall.h>
+ #include <unistd.h>
++#include <stdbool.h>
  
- /*
-@@ -266,4 +272,28 @@ struct landlock_net_port_attr {
- #define LANDLOCK_ACCESS_NET_BIND_TCP			(1ULL << 0)
- #define LANDLOCK_ACCESS_NET_CONNECT_TCP			(1ULL << 1)
- /* clang-format on */
-+
-+/**
-+ * DOC: scope
-+ *
-+ * scoped attribute handles a set of restrictions on kernel IPCs through
-+ * the following flags.
-+ *
-+ * Scope flags
-+ * ~~~~~~~~~~~
-+ *
-+ * These flags enable to restrict a sandboxed process from a set of IPC
-+ * actions. Setting a flag for a ruleset will isolate the Landlock domain
-+ * to forbid connections to resources outside the domain.
-+ *
-+ * IPCs with scoped actions:
-+ *
-+ * - %LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET: Restrict a sandboxed process
-+ *   from connecting to an abstract unix socket created by a process
-+ *   outside the related Landlock domain (e.g. a parent domain or a
-+ *   non-sandboxed process).
-+ */
-+/* clang-format off */
-+#define LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET		(1ULL << 0)
-+/* clang-format on*/
- #endif /* _UAPI_LINUX_LANDLOCK_H */
-diff --git a/security/landlock/limits.h b/security/landlock/limits.h
-index 4eb643077a2a..eb01d0fb2165 100644
---- a/security/landlock/limits.h
-+++ b/security/landlock/limits.h
-@@ -26,6 +26,9 @@
- #define LANDLOCK_MASK_ACCESS_NET	((LANDLOCK_LAST_ACCESS_NET << 1) - 1)
- #define LANDLOCK_NUM_ACCESS_NET		__const_hweight64(LANDLOCK_MASK_ACCESS_NET)
+ #ifndef landlock_create_ruleset
+ static inline int
+@@ -55,6 +57,7 @@ static inline int landlock_restrict_self(const int ruleset_fd,
+ #define ENV_FS_RW_NAME "LL_FS_RW"
+ #define ENV_TCP_BIND_NAME "LL_TCP_BIND"
+ #define ENV_TCP_CONNECT_NAME "LL_TCP_CONNECT"
++#define ENV_SCOPED_NAME "LL_SCOPED"
+ #define ENV_DELIMITER ":"
  
-+#define LANDLOCK_LAST_SCOPE		LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET
-+#define LANDLOCK_MASK_SCOPE		((LANDLOCK_LAST_SCOPE << 1) - 1)
-+#define LANDLOCK_NUM_SCOPE		__const_hweight64(LANDLOCK_MASK_SCOPE)
- /* clang-format on */
- 
- #endif /* _SECURITY_LANDLOCK_LIMITS_H */
-diff --git a/security/landlock/ruleset.c b/security/landlock/ruleset.c
-index 6ff232f58618..a93bdbf52fff 100644
---- a/security/landlock/ruleset.c
-+++ b/security/landlock/ruleset.c
-@@ -52,12 +52,13 @@ static struct landlock_ruleset *create_ruleset(const u32 num_layers)
- 
- struct landlock_ruleset *
- landlock_create_ruleset(const access_mask_t fs_access_mask,
--			const access_mask_t net_access_mask)
-+			const access_mask_t net_access_mask,
-+			const access_mask_t scope_mask)
- {
- 	struct landlock_ruleset *new_ruleset;
- 
- 	/* Informs about useless ruleset. */
--	if (!fs_access_mask && !net_access_mask)
-+	if (!fs_access_mask && !net_access_mask && !scope_mask)
- 		return ERR_PTR(-ENOMSG);
- 	new_ruleset = create_ruleset(1);
- 	if (IS_ERR(new_ruleset))
-@@ -66,6 +67,8 @@ landlock_create_ruleset(const access_mask_t fs_access_mask,
- 		landlock_add_fs_access_mask(new_ruleset, fs_access_mask, 0);
- 	if (net_access_mask)
- 		landlock_add_net_access_mask(new_ruleset, net_access_mask, 0);
-+	if (scope_mask)
-+		landlock_add_scope_mask(new_ruleset, scope_mask, 0);
- 	return new_ruleset;
+ static int parse_path(char *env_path, const char ***const path_list)
+@@ -184,6 +187,38 @@ static int populate_ruleset_net(const char *const env_var, const int ruleset_fd,
+ 	return ret;
  }
  
-diff --git a/security/landlock/ruleset.h b/security/landlock/ruleset.h
-index 0f1b5b4c8f6b..c749fa0b3ecd 100644
---- a/security/landlock/ruleset.h
-+++ b/security/landlock/ruleset.h
-@@ -35,6 +35,8 @@ typedef u16 access_mask_t;
- static_assert(BITS_PER_TYPE(access_mask_t) >= LANDLOCK_NUM_ACCESS_FS);
- /* Makes sure all network access rights can be stored. */
- static_assert(BITS_PER_TYPE(access_mask_t) >= LANDLOCK_NUM_ACCESS_NET);
-+/* Makes sure all scoped rights can be stored*/
-+static_assert(BITS_PER_TYPE(access_mask_t) >= LANDLOCK_NUM_SCOPE);
- /* Makes sure for_each_set_bit() and for_each_clear_bit() calls are OK. */
- static_assert(sizeof(unsigned long) >= sizeof(access_mask_t));
- 
-@@ -42,6 +44,7 @@ static_assert(sizeof(unsigned long) >= sizeof(access_mask_t));
- struct access_masks {
- 	access_mask_t fs : LANDLOCK_NUM_ACCESS_FS;
- 	access_mask_t net : LANDLOCK_NUM_ACCESS_NET;
-+	access_mask_t scoped : LANDLOCK_NUM_SCOPE;
- };
- 
- typedef u16 layer_mask_t;
-@@ -233,7 +236,8 @@ struct landlock_ruleset {
- 
- struct landlock_ruleset *
- landlock_create_ruleset(const access_mask_t access_mask_fs,
--			const access_mask_t access_mask_net);
-+			const access_mask_t access_mask_net,
-+			const access_mask_t scope_mask);
- 
- void landlock_put_ruleset(struct landlock_ruleset *const ruleset);
- void landlock_put_ruleset_deferred(struct landlock_ruleset *const ruleset);
-@@ -280,6 +284,16 @@ landlock_add_net_access_mask(struct landlock_ruleset *const ruleset,
- 	ruleset->access_masks[layer_level].net |= net_mask;
- }
- 
-+static inline void
-+landlock_add_scope_mask(struct landlock_ruleset *const ruleset,
-+			const access_mask_t scope_mask, const u16 layer_level)
++static bool check_ruleset_scope(const char *const env_var,
++				struct landlock_ruleset_attr *ruleset_attr)
 +{
-+	access_mask_t scoped_mask = scope_mask & LANDLOCK_MASK_SCOPE;
++	bool ret = true;
++	char *env_type_scope, *env_type_scope_next, *ipc_scoping_name;
 +
-+	WARN_ON_ONCE(scope_mask != scoped_mask);
-+	ruleset->access_masks[layer_level].scoped |= scoped_mask;
-+}
-+
- static inline access_mask_t
- landlock_get_raw_fs_access_mask(const struct landlock_ruleset *const ruleset,
- 				const u16 layer_level)
-@@ -303,6 +317,13 @@ landlock_get_net_access_mask(const struct landlock_ruleset *const ruleset,
- 	return ruleset->access_masks[layer_level].net;
- }
- 
-+static inline access_mask_t
-+landlock_get_scope_mask(const struct landlock_ruleset *const ruleset,
-+			const u16 layer_level)
-+{
-+	return ruleset->access_masks[layer_level].scoped;
-+}
-+
- bool landlock_unmask_layers(const struct landlock_rule *const rule,
- 			    const access_mask_t access_request,
- 			    layer_mask_t (*const layer_masks)[],
-diff --git a/security/landlock/syscalls.c b/security/landlock/syscalls.c
-index 03b470f5a85a..f51b29521d6b 100644
---- a/security/landlock/syscalls.c
-+++ b/security/landlock/syscalls.c
-@@ -97,8 +97,9 @@ static void build_check_abi(void)
- 	 */
- 	ruleset_size = sizeof(ruleset_attr.handled_access_fs);
- 	ruleset_size += sizeof(ruleset_attr.handled_access_net);
-+	ruleset_size += sizeof(ruleset_attr.scoped);
- 	BUILD_BUG_ON(sizeof(ruleset_attr) != ruleset_size);
--	BUILD_BUG_ON(sizeof(ruleset_attr) != 16);
-+	BUILD_BUG_ON(sizeof(ruleset_attr) != 24);
- 
- 	path_beneath_size = sizeof(path_beneath_attr.allowed_access);
- 	path_beneath_size += sizeof(path_beneath_attr.parent_fd);
-@@ -149,7 +150,7 @@ static const struct file_operations ruleset_fops = {
- 	.write = fop_dummy_write,
- };
- 
--#define LANDLOCK_ABI_VERSION 5
-+#define LANDLOCK_ABI_VERSION 6
- 
- /**
-  * sys_landlock_create_ruleset - Create a new ruleset
-@@ -170,7 +171,7 @@ static const struct file_operations ruleset_fops = {
-  * Possible returned errors are:
-  *
-  * - %EOPNOTSUPP: Landlock is supported by the kernel but disabled at boot time;
-- * - %EINVAL: unknown @flags, or unknown access, or too small @size;
-+ * - %EINVAL: unknown @flags, or unknown access, or unknown scope, or too small @size;
-  * - %E2BIG or %EFAULT: @attr or @size inconsistencies;
-  * - %ENOMSG: empty &landlock_ruleset_attr.handled_access_fs.
-  */
-@@ -213,9 +214,14 @@ SYSCALL_DEFINE3(landlock_create_ruleset,
- 	    LANDLOCK_MASK_ACCESS_NET)
- 		return -EINVAL;
- 
-+	/* Checks IPC scoping content (and 32-bits cast). */
-+	if ((ruleset_attr.scoped | LANDLOCK_MASK_SCOPE) != LANDLOCK_MASK_SCOPE)
-+		return -EINVAL;
-+
- 	/* Checks arguments and transforms to kernel struct. */
- 	ruleset = landlock_create_ruleset(ruleset_attr.handled_access_fs,
--					  ruleset_attr.handled_access_net);
-+					  ruleset_attr.handled_access_net,
-+					  ruleset_attr.scoped);
- 	if (IS_ERR(ruleset))
- 		return PTR_ERR(ruleset);
- 
-diff --git a/security/landlock/task.c b/security/landlock/task.c
-index 849f5123610b..7e8579ebae83 100644
---- a/security/landlock/task.c
-+++ b/security/landlock/task.c
-@@ -13,6 +13,8 @@
- #include <linux/lsm_hooks.h>
- #include <linux/rcupdate.h>
- #include <linux/sched.h>
-+#include <net/sock.h>
-+#include <net/af_unix.h>
- 
- #include "common.h"
- #include "cred.h"
-@@ -108,9 +110,162 @@ static int hook_ptrace_traceme(struct task_struct *const parent)
- 	return task_ptrace(parent, current);
- }
- 
-+static bool walk_and_check(const struct landlock_ruleset *const child,
-+			   struct landlock_hierarchy **walker,
-+			   size_t base_layer, size_t deep_layer,
-+			   access_mask_t check_scoping)
-+{
-+	if (!child || base_layer < 0 || !(*walker))
-+		return false;
-+
-+	for (deep_layer; base_layer < deep_layer; deep_layer--) {
-+		if (check_scoping & landlock_get_scope_mask(child, deep_layer))
-+			return false;
-+		*walker = (*walker)->parent;
-+		if (WARN_ON_ONCE(!*walker))
-+			/* there is an inconsistency between num_layers
-+			 * and landlock_hierarchy in the ruleset
-+			 */
-+			return false;
-+	}
-+	return true;
-+}
-+
-+/**
-+ * domain_IPC_scope - Checks if the client domain is scoped in the same
-+ *		      domain as the server.
-+ *
-+ * @client: IPC sender domain.
-+ * @server: IPC receiver domain.
-+ *
-+ * Check if the @client domain is scoped to access the @server; the @server
-+ * must be scoped in the same domain.
-+ */
-+static bool domain_IPC_scope(const struct landlock_ruleset *const client,
-+			     const struct landlock_ruleset *const server,
-+			     access_mask_t ipc_type)
-+{
-+	size_t client_layer, server_layer = 0;
-+	int base_layer;
-+	struct landlock_hierarchy *client_walker, *server_walker;
-+	bool is_scoped;
-+
-+	/* Quick return if client has no domain */
-+	if (!client)
++	ruleset_attr->scoped &= ~LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET;
++	env_type_scope = getenv(env_var);
++	/* scoping is not supported by the user */
++	if (!env_type_scope)
 +		return true;
++	env_type_scope = strdup(env_type_scope);
++	unsetenv(env_var);
 +
-+	client_layer = client->num_layers - 1;
-+	client_walker = client->hierarchy;
-+	if (server) {
-+		server_layer = server->num_layers - 1;
-+		server_walker = server->hierarchy;
-+	}
-+	base_layer = (client_layer > server_layer) ? server_layer :
-+						     client_layer;
-+
-+	/* For client domain, walk_and_check ensures the client domain is
-+	 * not scoped until gets to base_layer.
-+	 * For server_domain, it only ensures that the server domain exist.
-+	 */
-+	if (client_layer != server_layer) {
-+		if (client_layer > server_layer)
-+			is_scoped = walk_and_check(client, &client_walker,
-+						   server_layer, client_layer,
-+						   ipc_type);
-+		else
-+			is_scoped = walk_and_check(server, &server_walker,
-+						   client_layer, server_layer,
-+						   ipc_type & 0);
-+		if (!is_scoped)
-+			return false;
-+	}
-+	/* client and server are at the same level in hierarchy. If client is
-+	 * scoped, the server must be scoped in the same domain
-+	 */
-+	for (base_layer; base_layer >= 0; base_layer--) {
-+		if (landlock_get_scope_mask(client, base_layer) & ipc_type) {
-+			/* This check must be here since access would be denied only if
-+			 * the client is scoped and the server has no domain, so
-+			 * if the client has a domain but is not scoped and the server
-+			 * has no domain, access is guaranteed.
-+			 */
-+			if (!server)
-+				return false;
-+
-+			if (server_walker == client_walker)
-+				return true;
-+
-+			return false;
++	env_type_scope_next = env_type_scope;
++	while ((ipc_scoping_name =
++			strsep(&env_type_scope_next, ENV_DELIMITER))) {
++		if (strcmp("a", ipc_scoping_name) == 0) {
++			ruleset_attr->scoped |=
++				LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET;
++		} else {
++			fprintf(stderr, "Unsupported scoping \"%s\"\n",
++				ipc_scoping_name);
++			ret = false;
++			goto out_free_name;
 +		}
-+		client_walker = client_walker->parent;
-+		server_walker = server_walker->parent;
-+		/* Warn if there is an incosistenncy between num_layers and
-+		 * landlock_hierarchy in each of rulesets
-+		 */
-+		if (WARN_ON_ONCE(base_layer > 0 &&
-+				 (!server_walker || !client_walker)))
-+			return false;
 +	}
-+	return true;
++out_free_name:
++	free(env_type_scope);
++	return ret;
 +}
 +
-+static bool sock_is_scoped(struct sock *const other)
-+{
-+	const struct landlock_ruleset *dom_other;
-+	const struct landlock_ruleset *const dom =
-+		landlock_get_current_domain();
-+
-+	/* the credentials will not change */
-+	lockdep_assert_held(&unix_sk(other)->lock);
-+	dom_other = landlock_cred(other->sk_socket->file->f_cred)->domain;
-+	return domain_IPC_scope(dom, dom_other,
-+				LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET);
-+}
-+
-+static bool check_unix_address_format(struct sock *const sock)
-+{
-+	struct unix_address *addr = unix_sk(sock)->addr;
-+
-+	if (!addr)
-+		return true;
-+
-+	if (addr->len > sizeof(AF_UNIX)) {
-+		/* handling unspec sockets */
-+		if (!addr->name[0].sun_path)
-+			return true;
-+
-+		if (addr->name[0].sun_path[0] == '\0')
-+			if (!sock_is_scoped(sock))
-+				return false;
-+	}
-+
-+	return true;
-+}
-+
-+static int hook_unix_stream_connect(struct sock *const sock,
-+				    struct sock *const other,
-+				    struct sock *const newsk)
-+{
-+	if (check_unix_address_format(other))
-+		return 0;
-+
-+	return -EPERM;
-+}
-+
-+static int hook_unix_may_send(struct socket *const sock,
-+			      struct socket *const other)
-+{
-+	if (check_unix_address_format(other->sk))
-+		return 0;
-+
-+	return -EPERM;
-+}
-+
- static struct security_hook_list landlock_hooks[] __ro_after_init = {
- 	LSM_HOOK_INIT(ptrace_access_check, hook_ptrace_access_check),
- 	LSM_HOOK_INIT(ptrace_traceme, hook_ptrace_traceme),
-+	LSM_HOOK_INIT(unix_stream_connect, hook_unix_stream_connect),
-+	LSM_HOOK_INIT(unix_may_send, hook_unix_may_send),
- };
+ /* clang-format off */
  
- __init void landlock_add_task_hooks(void)
+ #define ACCESS_FS_ROUGHLY_READ ( \
+@@ -208,7 +243,7 @@ static int populate_ruleset_net(const char *const env_var, const int ruleset_fd,
+ 
+ /* clang-format on */
+ 
+-#define LANDLOCK_ABI_LAST 5
++#define LANDLOCK_ABI_LAST 6
+ 
+ int main(const int argc, char *const argv[], char *const *const envp)
+ {
+@@ -223,14 +258,15 @@ int main(const int argc, char *const argv[], char *const *const envp)
+ 		.handled_access_fs = access_fs_rw,
+ 		.handled_access_net = LANDLOCK_ACCESS_NET_BIND_TCP |
+ 				      LANDLOCK_ACCESS_NET_CONNECT_TCP,
++		.scoped = LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET,
+ 	};
+ 
+ 	if (argc < 2) {
+ 		fprintf(stderr,
+-			"usage: %s=\"...\" %s=\"...\" %s=\"...\" %s=\"...\"%s "
++			"usage: %s=\"...\" %s=\"...\" %s=\"...\" %s=\"...\" %s=\"...\" %s "
+ 			"<cmd> [args]...\n\n",
+ 			ENV_FS_RO_NAME, ENV_FS_RW_NAME, ENV_TCP_BIND_NAME,
+-			ENV_TCP_CONNECT_NAME, argv[0]);
++			ENV_TCP_CONNECT_NAME, ENV_SCOPED_NAME, argv[0]);
+ 		fprintf(stderr,
+ 			"Execute a command in a restricted environment.\n\n");
+ 		fprintf(stderr,
+@@ -251,15 +287,18 @@ int main(const int argc, char *const argv[], char *const *const envp)
+ 		fprintf(stderr,
+ 			"* %s: list of ports allowed to connect (client).\n",
+ 			ENV_TCP_CONNECT_NAME);
++		fprintf(stderr, "* %s: list of restrictions on IPCs.\n",
++			ENV_SCOPED_NAME);
+ 		fprintf(stderr,
+ 			"\nexample:\n"
+ 			"%s=\"${PATH}:/lib:/usr:/proc:/etc:/dev/urandom\" "
+ 			"%s=\"/dev/null:/dev/full:/dev/zero:/dev/pts:/tmp\" "
+ 			"%s=\"9418\" "
+ 			"%s=\"80:443\" "
++			"%s=\"a\" "
+ 			"%s bash -i\n\n",
+ 			ENV_FS_RO_NAME, ENV_FS_RW_NAME, ENV_TCP_BIND_NAME,
+-			ENV_TCP_CONNECT_NAME, argv[0]);
++			ENV_TCP_CONNECT_NAME, ENV_SCOPED_NAME, argv[0]);
+ 		fprintf(stderr,
+ 			"This sandboxer can use Landlock features "
+ 			"up to ABI version %d.\n",
+@@ -327,6 +366,10 @@ int main(const int argc, char *const argv[], char *const *const envp)
+ 		/* Removes LANDLOCK_ACCESS_FS_IOCTL_DEV for ABI < 5 */
+ 		ruleset_attr.handled_access_fs &= ~LANDLOCK_ACCESS_FS_IOCTL_DEV;
+ 
++		__attribute__((fallthrough));
++	case 5:
++		/* Removes LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET for ABI < 6 */
++		ruleset_attr.scoped &= ~LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET;
+ 		fprintf(stderr,
+ 			"Hint: You should update the running kernel "
+ 			"to leverage Landlock features "
+@@ -358,6 +401,11 @@ int main(const int argc, char *const argv[], char *const *const envp)
+ 			~LANDLOCK_ACCESS_NET_CONNECT_TCP;
+ 	}
+ 
++	if (!check_ruleset_scope(ENV_SCOPED_NAME, &ruleset_attr)) {
++		perror("Unsupported IPC scoping requested");
++		return 1;
++	}
++
+ 	ruleset_fd =
+ 		landlock_create_ruleset(&ruleset_attr, sizeof(ruleset_attr), 0);
+ 	if (ruleset_fd < 0) {
 -- 
 2.34.1
 
