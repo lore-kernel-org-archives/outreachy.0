@@ -1,208 +1,121 @@
-Received: from mail-wm1-f46.google.com (mail-wm1-f46.google.com [209.85.128.46])
+Received: from mail-ed1-f52.google.com (mail-ed1-f52.google.com [209.85.208.52])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7C03C158D91
-	for <outreachy@lists.linux.dev>; Tue,  6 Aug 2024 20:47:25 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.46
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 14086170A21
+	for <outreachy@lists.linux.dev>; Tue,  6 Aug 2024 21:56:08 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.52
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1722977247; cv=none; b=GTHhMxCGhytwVz4IWf9XSX8ioLl+MYfGweGNCIKMxxE1kF+9RwK88PnH0eIDzFllF+dDTlFtlT35H8vckhd/87kuYd9HlxGyvEoMrdHP4CfIWCwwVWq5HcykOv+QVtDDJq9ia6MJfMuwfU5wvrv/VQeM2eEh7xbH8+VuYoiifAg=
+	t=1722981370; cv=none; b=XkC1pi6GH3HAkV00W+39GS9+KvFTv10JopO7OEWt/K0CNB2CfSfObX8mQWUBQ1ex4BjKtV3trImU0ZyPkVNd6u44M5bSlvZMNz8AzmB2apb9gIirCk9RHB/8WItjS0fUahUDpupkzuVbPq65yHQlh1VEa+4vFqpEGWLujmFRQvM=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1722977247; c=relaxed/simple;
-	bh=iNiCv/tWWg8EntneQR9N42nc9zfctX2Eyo2IjjLXles=;
+	s=arc-20240116; t=1722981370; c=relaxed/simple;
+	bh=wmfgdQYdTGpqJb5pxWE0y8AYHfytkLr7bRVUJCeQ1rY=;
 	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
-	 To:Cc:Content-Type; b=ShJbhCy9M57brblb1S+HbMDwlK6SUYvLoY3R6QCbB5YAOJ7JyZuIreC01aZbmSsJnzu1T8eQob4oowwRNTgGTS0LWY3ka7Oa5FgdlgijfndZHEA2g7Wn6U3NbkekO2SSZBSzhwi0Z5kJAkSiDZn7DIXmoPhoHFEhfQ6Ijv5u8NY=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=google.com; spf=pass smtp.mailfrom=google.com; dkim=pass (2048-bit key) header.d=google.com header.i=@google.com header.b=kTZgReKD; arc=none smtp.client-ip=209.85.128.46
+	 To:Cc:Content-Type; b=P/I3b0/xU7kCBzh55UxGnDP4XHgWSW615L2OukBhLn0Zikr8+GDn+BNC7MlTex9hsE5SPkX6rvsdvzAtZSKQfv1Lg9NLXCePjAeWjqCK5JJ3gDzB/mrYRG40hj2GqSLs3qKHSSgvZz1a9hEZuTt8znj6AtaDqpdtMIsVSU6iUDs=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=google.com; spf=pass smtp.mailfrom=google.com; dkim=pass (2048-bit key) header.d=google.com header.i=@google.com header.b=DWifKK6E; arc=none smtp.client-ip=209.85.208.52
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=google.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=google.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=google.com header.i=@google.com header.b="kTZgReKD"
-Received: by mail-wm1-f46.google.com with SMTP id 5b1f17b1804b1-428063f4d71so89545e9.1
-        for <outreachy@lists.linux.dev>; Tue, 06 Aug 2024 13:47:25 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=google.com header.i=@google.com header.b="DWifKK6E"
+Received: by mail-ed1-f52.google.com with SMTP id 4fb4d7f45d1cf-5a18a5dbb23so20559a12.1
+        for <outreachy@lists.linux.dev>; Tue, 06 Aug 2024 14:56:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1722977244; x=1723582044; darn=lists.linux.dev;
+        d=google.com; s=20230601; t=1722981367; x=1723586167; darn=lists.linux.dev;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=SpIQih8KvxtMB9HL2JerR868gTSsYiklZU/ALdGs0Ro=;
-        b=kTZgReKDLvOVsKIaXwyW1qEHmgV/7idUH7ka0XapApmaFZsd5FwMGsYO+1HFLBq1Go
-         4BBLvwo9NRVfBaHo7NWoWN+3D2UX+ojLqe7Q0wokK1bsKwxpoD/GReizm2c+0oxdnKY2
-         9nNzSJq577/AjYm8OXZyjIg2cXYDTN2SZfdR4AufXJ9rB/h+fJRBIDlrsMU9SknpEgjF
-         H+YIXHiqyDNsZaQOklHaLarMrhorJxXoUvxLOv0ARem1QFbaBsOgFWMtw4RGTm5+Qg2x
-         Ze1bNtOuFB5W6dSscF8FUJM214MzFR/bwvjyKfW6f6jpI7HOvIng8yQNnGI35IGhYXo4
-         rbOA==
+        bh=+sWPUIMGVUWcmjL98+oi0JS8IjtLhhZ9IWBSne+zhKM=;
+        b=DWifKK6ERM6po/Ka0GC584eb+/hDYjWCp7pATXEJL9FZkMcET01Xd8u4BZW+jjEM5P
+         KM4pPn2ok1dpWOgKaBY5Wz1IwP+IDyHuxW+X4G61GneVoTSDOADXw3u/tUO2GOEKhTtt
+         h3rpbSADpnut3h+CehhnWb3T+hRpdEIw194Mx1aBQKYgMt54ODtOAxmasYUbCebxGqIh
+         3bRL7JM05gLnXG3gB3qlXTmrBJs4/V1nCvQKmOUJoxU3CRblseao+eciByUKdhMgSYmM
+         j9QyIi/SJXllWQIQK43PRtbdWjOkgcZfPd6bs0PMSQ9qCN/rGeVO/TfMcs5Auq/APrdE
+         /N+A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722977244; x=1723582044;
+        d=1e100.net; s=20230601; t=1722981367; x=1723586167;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=SpIQih8KvxtMB9HL2JerR868gTSsYiklZU/ALdGs0Ro=;
-        b=oEZXuQfzoq+8rMTGXexFp5LzYANn+KRhyiohNLP7FsZLqLbUVlTWa4FUxq07tMDD/d
-         gH42/EwqF+Mt5j8sqamiaCGuVNE/7vmbqNNHDdWH5mIdqNevbmLkDkaMVb5oxH1JebXX
-         UXo2JRJRJnvqi5qBI0WBtVTJhX8i4WdLedBKmLx2hVIbelKOYDGqFDtaf2l2ApGbTJG/
-         nX/xt6x/2doaYDb+9Cd4xrID/GZq9H0yI49gKfaNAZpe2BfQ04bHLrEHzpQS/PBm884Q
-         +Ma7j590NXzJ8zFnHNIVnexaX/Sj65LTuoOlzThJWLT/0u9XB4pc5r2x8j4sQAETQA0x
-         a9kg==
-X-Forwarded-Encrypted: i=1; AJvYcCVBY4Bqbh8lWhkEdqdwEz9QbGlN5g1wMXPv8DXm9qWlvRHdnN6mteUv7a5wPEcY2uhMN6xPx0Qak4nv6qmG0EHHh1FIF3SoOqaB
-X-Gm-Message-State: AOJu0YwIlHd9EkanD6T1wJHI6cMsLMkUM+KKLihGe/aJLxebc3iCo4at
-	bY6m8AhC70Xh7b9aDDlRxquB0d8+J86nTu5e0vqHwatDab19eA6165+fIzjcpi29tCyuawWh7rj
-	W6LwXJaYbmdmRXxyJZy0RhhArKWbDVUnQJbPT
-X-Google-Smtp-Source: AGHT+IFnLFSvEc9rWyHW8xXfw+Dz/FmVeodJf43WAbqQSInymwYsOkKLiGreK4c1sUiRw4gA7f7QLpsQN6QwUfSSKnY=
-X-Received: by 2002:a05:600c:3d12:b0:426:66a0:6df6 with SMTP id
- 5b1f17b1804b1-429039cb750mr267845e9.0.1722977243051; Tue, 06 Aug 2024
- 13:47:23 -0700 (PDT)
+        bh=+sWPUIMGVUWcmjL98+oi0JS8IjtLhhZ9IWBSne+zhKM=;
+        b=ArbIeibY9qGnsq64AfriG6657CUyeh1XQwPegSIItPxGueRSGGfrKegzRdU4QL/t5l
+         NDNoCqkXILwHk7qQvjmiJz+7Cjr1xDdMx7uVQJ4lL059HYfVBlnoRxbD1ia6vj+ldqc/
+         ovc19hcHdH1NucTOjQ2e8KCqfIVWxG/7DJKg8h65igusS0ghT26q4KahbftdwkPjWn5N
+         3aIdycNXk46OToK7LAwTSMKBULjOdp5WC76zu+Gkf1ESZDR+k/YLmuMxopI/S9m5wEtr
+         zXRCOIi4ZYvmWTYdyCPluk1DCCmlm7wjgZjg3PGQrExppYueCUMbtv3uKyjg2uvAIJOI
+         wUrw==
+X-Gm-Message-State: AOJu0YzVElVOGA3WR6BVYst5scFthMBDjxRdeWZiW8oYBZ3YA3OM9op/
+	cdBy/HI5yDw9YWe99Tr+gB49Cm0H4Hh0qOZdyJ5+KSW8qbkmuDommAlKDbG/A5WgYBMJ8K13n1O
+	FbDild1Q81nWlJM6jhitDSsQQ2nw0tG7ZseAo
+X-Google-Smtp-Source: AGHT+IHrdbF6ksKEP/0jX+HSSz9PUgh5mkW7R8u/LJHt8G4iQfLdba2Kwe1pQYLhXbf9Qp8tAYkNpUdj+svO6W0QJQs=
+X-Received: by 2002:a05:6402:84c:b0:59f:9f59:9b07 with SMTP id
+ 4fb4d7f45d1cf-5bba28bb22amr74904a12.4.1722981366891; Tue, 06 Aug 2024
+ 14:56:06 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-References: <cover.1722570749.git.fahimitahera@gmail.com> <e8da4d5311be78806515626a6bd4a16fe17ded04.1722570749.git.fahimitahera@gmail.com>
- <20240803.iefooCha4gae@digikod.net> <20240806.nookoChoh2Oh@digikod.net>
-In-Reply-To: <20240806.nookoChoh2Oh@digikod.net>
+References: <cover.1722966592.git.fahimitahera@gmail.com> <49557e48c1904d2966b8aa563215d2e1733dad95.1722966592.git.fahimitahera@gmail.com>
+ <CAG48ez3o9fmqz5FkFh3YoJs_jMdtDq=Jjj-qMj7v=CxFROq+Ew@mail.gmail.com>
+In-Reply-To: <CAG48ez3o9fmqz5FkFh3YoJs_jMdtDq=Jjj-qMj7v=CxFROq+Ew@mail.gmail.com>
 From: Jann Horn <jannh@google.com>
-Date: Tue, 6 Aug 2024 22:46:43 +0200
-Message-ID: <CAG48ez2ZYzB+GyDLAx7y2TobE=MLXWucQx0qjitfhPSDaaqjiA@mail.gmail.com>
-Subject: Re: [PATCH v8 1/4] Landlock: Add abstract unix socket connect restriction
-To: =?UTF-8?B?TWlja2HDq2wgU2FsYcO8bg==?= <mic@digikod.net>
-Cc: Tahera Fahimi <fahimitahera@gmail.com>, outreachy@lists.linux.dev, gnoack@google.com, 
+Date: Tue, 6 Aug 2024 23:55:27 +0200
+Message-ID: <CAG48ez1jufy8iwP=+DDY662veqBdv9VbMxJ69Ohwt8Tns9afOw@mail.gmail.com>
+Subject: Re: [PATCH v2 1/4] Landlock: Add signal control
+To: Tahera Fahimi <fahimitahera@gmail.com>
+Cc: outreachy@lists.linux.dev, mic@digikod.net, gnoack@google.com, 
 	paul@paul-moore.com, jmorris@namei.org, serge@hallyn.com, 
 	linux-security-module@vger.kernel.org, linux-kernel@vger.kernel.org, 
 	bjorn3_gh@protonmail.com, netdev@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On Tue, Aug 6, 2024 at 9:36=E2=80=AFPM Micka=C3=ABl Sala=C3=BCn <mic@digiko=
-d.net> wrote:
-> On Sat, Aug 03, 2024 at 01:29:09PM +0200, Micka=C3=ABl Sala=C3=BCn wrote:
-> > On Thu, Aug 01, 2024 at 10:02:33PM -0600, Tahera Fahimi wrote:
-> > > This patch introduces a new "scoped" attribute to the landlock_rulese=
-t_attr
-> > > that can specify "LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET" to scope
-> > > abstract Unix sockets from connecting to a process outside of
-> > > the same landlock domain. It implements two hooks, unix_stream_connec=
-t
-> > > and unix_may_send to enforce this restriction.
+On Tue, Aug 6, 2024 at 8:56=E2=80=AFPM Jann Horn <jannh@google.com> wrote:
+> On Tue, Aug 6, 2024 at 8:11=E2=80=AFPM Tahera Fahimi <fahimitahera@gmail.=
+com> wrote:
+> > Currently, a sandbox process is not restricted to send a signal
+> > (e.g. SIGKILL) to a process outside of the sandbox environment.
+> > Ability to sending a signal for a sandboxed process should be
+> > scoped the same way abstract unix sockets are scoped. Therefore,
+> > we extend "scoped" field in a ruleset with
+> > "LANDLOCK_SCOPED_SIGNAL" to specify that a ruleset will deny
+> > sending any signal from within a sandbox process to its
+> > parent(i.e. any parent sandbox or non-sandboxed procsses).
 [...]
-> Here is a refactoring that is easier to read and avoid potential pointer
-> misuse:
+> > +       if (is_scoped)
+> > +               return 0;
+> > +
+> > +       return -EPERM;
+> > +}
+> > +
+> > +static int hook_file_send_sigiotask(struct task_struct *tsk,
+> > +                                   struct fown_struct *fown, int signu=
+m)
+> > +{
+> > +       bool is_scoped;
+> > +       const struct landlock_ruleset *dom, *target_dom;
+> > +       struct task_struct *result =3D get_pid_task(fown->pid, fown->pi=
+d_type);
 >
-> static bool domain_is_scoped(const struct landlock_ruleset *const client,
->                              const struct landlock_ruleset *const server,
->                              access_mask_t scope)
-> {
->         int client_layer, server_layer;
->         struct landlock_hierarchy *client_walker, *server_walker;
+> I'm not an expert on how the fowner stuff works, but I think this will
+> probably give you "result =3D NULL" if the file owner PID has already
+> exited, and then the following landlock_get_task_domain() would
+> probably crash? But I'm not entirely sure about how this works.
 >
->         if (WARN_ON_ONCE(!client))
->                 return false;
->
->         client_layer =3D client->num_layers - 1;
->         client_walker =3D client->hierarchy;
->
->         /*
->          * client_layer must be a signed integer with greater capacity th=
-an
->          * client->num_layers to ensure the following loop stops.
->          */
->         BUILD_BUG_ON(sizeof(client_layer) > sizeof(client->num_layers));
->
->         if (!server) {
->                 /*
->                  * Walks client's parent domains and checks that none of =
-these
->                  * domains are scoped.
->                  */
->                 for (; client_layer >=3D 0; client_layer--) {
->                         if (landlock_get_scope_mask(client, client_layer)=
- &
->                             scope)
->                                 return true;
->                 }
->                 return false;
->         }
->
->         server_layer =3D server->num_layers - 1;
->         server_walker =3D server->hierarchy;
->
->         /*
->          * Walks client's parent domains down to the same hierarchy level=
- as
->          * the server's domain, and checks that none of these client's pa=
-rent
->          * domains are scoped.
->          */
->         for (; client_layer > server_layer; client_layer--) {
->                 if (landlock_get_scope_mask(client, client_layer) & scope=
-)
->                         return true;
->
->                 client_walker =3D client_walker->parent;
->         }
->
->         /*
->          * Walks server's parent domains down to the same hierarchy level=
- as
->          * the client's domain.
->          */
->         for (; server_layer > client_layer; server_layer--)
->                 server_walker =3D server_walker->parent;
->
->         for (; client_layer >=3D 0; client_layer--) {
->                 if (landlock_get_scope_mask(client, client_layer) & scope=
-) {
->                         /*
->                          * Client and server are at the same level in the
->                          * hierarchy.  If the client is scoped, the reque=
-st is
->                          * only allowed if this domain is also a server's
->                          * ancestor.
->                          */
->                         if (server_walker =3D=3D client_walker)
->                                 return false;
->
->                         return true;
->                 }
->                 client_walker =3D client_walker->parent;
->                 server_walker =3D server_walker->parent;
->         }
->         return false;
-> }
+> I think the intended way to use this hook would be to instead use the
+> "file_set_fowner" hook to record the owning domain (though the setup
+> for that is going to be kind of a pain...), see the Smack and SELinux
+> definitions of that hook. Or alternatively maybe it would be even
+> nicer to change the fown_struct to record a cred* instead of a uid and
+> euid and then use the domain from those credentials for this hook...
+> I'm not sure which of those would be easier.
 
-I think adding something like this change on top of your code would
-make it more concise (though this is entirely untested):
-
---- /tmp/a      2024-08-06 22:37:33.800158308 +0200
-+++ /tmp/b      2024-08-06 22:44:49.539314039 +0200
-@@ -15,25 +15,12 @@
-          * client_layer must be a signed integer with greater capacity tha=
-n
-          * client->num_layers to ensure the following loop stops.
-          */
-         BUILD_BUG_ON(sizeof(client_layer) > sizeof(client->num_layers));
-
--        if (!server) {
--                /*
--                 * Walks client's parent domains and checks that none of t=
-hese
--                 * domains are scoped.
--                 */
--                for (; client_layer >=3D 0; client_layer--) {
--                        if (landlock_get_scope_mask(client, client_layer) =
-&
--                            scope)
--                                return true;
--                }
--                return false;
--        }
--
--        server_layer =3D server->num_layers - 1;
--        server_walker =3D server->hierarchy;
-+        server_layer =3D server ? (server->num_layers - 1) : -1;
-+        server_walker =3D server ? server->hierarchy : NULL;
-
-         /*
-          * Walks client's parent domains down to the same hierarchy level =
-as
-          * the server's domain, and checks that none of these client's par=
-ent
-          * domains are scoped.
+(For what it's worth, I think the first option would probably be
+easier to implement and ship for now, since you can basically copy
+what Smack and SELinux are already doing in their implementations of
+these hooks. I think the second option would theoretically result in
+nicer code, but it might require a bit more work, and you'd have to
+include the maintainers of the file locking code in the review of such
+refactoring and have them approve those changes. So if you want to get
+this patchset into the kernel quickly, the first option might be
+better for now?)
