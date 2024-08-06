@@ -1,56 +1,56 @@
-Received: from mail-pg1-f180.google.com (mail-pg1-f180.google.com [209.85.215.180])
+Received: from mail-pj1-f42.google.com (mail-pj1-f42.google.com [209.85.216.42])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CD76913AD20
-	for <outreachy@lists.linux.dev>; Tue,  6 Aug 2024 18:11:20 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.215.180
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C408A144D29
+	for <outreachy@lists.linux.dev>; Tue,  6 Aug 2024 18:11:21 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.216.42
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1722967882; cv=none; b=h2R/0M8PgVAYN1JlgGly4uUr6bW+BrepKtQ+fqWlvTTGt32Bsfk6FbUeSofd9feThAAQv2xxajgCyZekBrlORamTJJ14T9DDXvix+gTuBcfcAgUyxjy8SSxo9rxOoNH1fvCQbaqT5LO3LdjMfgfc1maPP1sjLnOm4uJaynmp39c=
+	t=1722967883; cv=none; b=YV51jvCmjiBnDw5CcNyxj9rspZxQHc1ubGBBpxKPvNtQQzeUP+KMT9burivyPo1kyak00YQZ2qwjSmJwtKOcWKHRahwGXlSU3ty/t3oMVa9p1LIYlgZTmAa78nvhoZzSxiAAW5O9+AbSOdxQyItwNJzeA704IIio04lSTFDKyeE=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1722967882; c=relaxed/simple;
-	bh=OL8YDt9ckh5mt14xDgUvpKYnO8xoVA5eiX3ktYKrBwg=;
+	s=arc-20240116; t=1722967883; c=relaxed/simple;
+	bh=n4/dqbrwVslhyK/HTd08bHNcZ8Y8wPwXJ9K9yx1yxas=;
 	h=From:To:Cc:Subject:Date:Message-Id:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=tfRAwds+p5t1PVCtdXQ4Ig9/OoFq9q6JW+C0HykZRIvm5pVPWcxRSn9Ap0j62SYcqZ0Qum9kpdt9DKgw/2yfp+wxyFKWUFVV8+Zd5IYNGW5okGsp/fLay0pd/oJqDZry69i3B+1V4/sWH6SiUqjSNz0ZYa9qlKE+AYmqNrxc9W0=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=VRwQ11PX; arc=none smtp.client-ip=209.85.215.180
+	 MIME-Version; b=GVz+Hgd8CvaezjxW0j6aRIKcaFlplc/yQ5fKyUwmupVAKExJAj6W708aeEbGl9+JUluEgttm6kHV64QDVMvCJ5iw9jZBm1fgHGEXVXzNy98r3FoVj5g86B5TqLCLguoWtyxG/8Ujozo6cGNnSU+EGORxDVtXNXVmrwiXRxLAkeo=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=IbOfHxId; arc=none smtp.client-ip=209.85.216.42
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="VRwQ11PX"
-Received: by mail-pg1-f180.google.com with SMTP id 41be03b00d2f7-7a0e8b76813so622929a12.3
-        for <outreachy@lists.linux.dev>; Tue, 06 Aug 2024 11:11:20 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="IbOfHxId"
+Received: by mail-pj1-f42.google.com with SMTP id 98e67ed59e1d1-2cb7cd6f5f2so697770a91.2
+        for <outreachy@lists.linux.dev>; Tue, 06 Aug 2024 11:11:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1722967880; x=1723572680; darn=lists.linux.dev;
+        d=gmail.com; s=20230601; t=1722967881; x=1723572681; darn=lists.linux.dev;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=1m33RcWxdO0nPOjLkO6+czI4OXLdEbwvOpCuSkjhK1I=;
-        b=VRwQ11PXiZFdWpNeGSGQX4/oxVVRL1P5wSyFEgvTWS9+TfkvPvsq8rca3Ulj3Tm5wh
-         M4eg78vigBeKiph7/ciicAaQLZWziq2uopJnFerfzA45nmZ6qmu4TTkalyT5hTMRqNaN
-         TKh5qOeABnkX1sG5tCoow2RQUvpKKyQqbd9ABYAv/E//xPMYbQQHRZCo51JXeePHQVFO
-         ZW4fdE1ONkPNt/E+r26Cx81qWnU17mvc/zezM8FEJWBXlwG94gq2lRK7+bMdRXprF1k6
-         fukkTZOJ+rOzcaIoqdVh6Ior7WXza73T6kc1E6BjIpKOevTzau6rYqTiFZkXpJUR2ye1
-         9dyg==
+        bh=BEZkK4aC6TuYoJdjdgVGJfF2fqj8l2qjt8Waj8faY9E=;
+        b=IbOfHxIdTnMvwflvpsLSLFPUQdzZ/nHIfJklHvHJV+4s+iUMbJIDrYSRNn3aLPBSui
+         eANMz+SXv3f4NMStsOWBsRqd8WE5lk4zGGJyi/zVBrjuVyhDL4ALO8NnMHp1wLdbsi5H
+         rpSnWFrNYu4JZ1R+tU1W56Gkhb+Du6HubV/a/fR5PBgP/ehLjM5t5mi0iClFc8yksCCs
+         Ol1+uTpy6bzF4UfGduUUvuYL8jGjIfG+oAjTg87YLaKilrRBJQNExt4nLf8dseVQWm8f
+         1BEJwDpnFaIGipCKKe/N5VXdijRGK5DkMzGSPdfyY6INm+gC4jwwuWxkW+6vs9CUeKta
+         wk7g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1722967880; x=1723572680;
+        d=1e100.net; s=20230601; t=1722967881; x=1723572681;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=1m33RcWxdO0nPOjLkO6+czI4OXLdEbwvOpCuSkjhK1I=;
-        b=Mr0E1Th9sIk0NWRGcH0y+Go+bJVkFVnxW5WeV+el2eJbpVhtdJsaFKc91EyauRghQW
-         4BkkzxotA9c3TE6LEwnxdl7B7+C0Aw049tMJ/6JQbAdksQUGzNODKYyJMTkwdTWpetgV
-         cB7nTV0SFLnKQz0oGESd6tNb2ipBCYJ48nPnHcquewiu3MsVdONXgl7eaxvHuAMRJ5Yj
-         BT0ljTsGvFKeMQxBifq1z/dIPjwqa+kbo1EG5wyOiyjpYQFRmNuOL2ISr0q/gNqnRBxn
-         J/qvXNQC3Tlpc4K2exZ+ywzEZnDqWAOsVM+cN2X+pMMH6pdqVahjdC/MSUSaO3+TwlMQ
-         WU5g==
-X-Gm-Message-State: AOJu0YyVwDetK4xg6rnGKK0wop64CU/XowxKq9gKRZRswKVeti/OcUTf
-	QX1mo7pxJqmLqVWfUqq9OZHuQ1ZyudfKsie1xM/n/agCwvsHutNF5EMD4V3l
-X-Google-Smtp-Source: AGHT+IEGenzYlt3InIG6GjJXqL6gzeoVJJlv0EHbALzZdfiNd16vaiBKs7i7E7zW2R/WfazNUE5HQA==
-X-Received: by 2002:a17:90b:50cf:b0:2cf:cc0d:96cc with SMTP id 98e67ed59e1d1-2cff9413dcemr18564083a91.9.1722967879444;
-        Tue, 06 Aug 2024 11:11:19 -0700 (PDT)
+        bh=BEZkK4aC6TuYoJdjdgVGJfF2fqj8l2qjt8Waj8faY9E=;
+        b=PM3iz5mo6VTnzAuR6vC9Q4WdNRu1d10zoxtqAfyJqoEcUxkmD0XWFjGNzUz73PdnDa
+         +5Bbv0FXZiXbpQSX9y5aWB7aliq/TBpK8mgC5LFD/DXloVy8EQ6lQ1G3hXVExlyxEGI8
+         MCo4y8hd/AujjFCiKbmmeRAMUXOPLsnyHKJFWTyRoeOLzb8Ig+08uOjIh3HkuKm097VG
+         vojySUH//M+jmzb8h9JSQU1X6n9kraIMwyIMA0UF1rhDITZ0I/SAyIqru1bryVQFZIxx
+         qurLzuZ7UlVTWiYK6gRTn+d1S91rogCGbUE6yOu7eb6Cbcx993nWOBip7dV/1M04UHH1
+         ivBQ==
+X-Gm-Message-State: AOJu0YwomrDDkKeJGykYhdfUWWLEJSt0uPjhCDeon2gCqv/MIZrhk7pJ
+	Bi6BQlvpY7QbhHoy3wTpHribZxbsaPXiRJdwfLN92B4pwuoCXVtbUal0CVuY
+X-Google-Smtp-Source: AGHT+IFp4JhvBq+3jfMNtSfpN+1rDjfve0u0OglfBB7FNWXmGTaZh1UuxmojRVX4EBP5p89W5q94xA==
+X-Received: by 2002:a17:90b:38c:b0:2cf:2ab6:a134 with SMTP id 98e67ed59e1d1-2cff952becbmr18435616a91.32.1722967880615;
+        Tue, 06 Aug 2024 11:11:20 -0700 (PDT)
 Received: from tahera-OptiPlex-5000.tail3bf47f.ts.net ([136.159.49.123])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2cfdc45b51esm12829504a91.32.2024.08.06.11.11.18
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2cfdc45b51esm12829504a91.32.2024.08.06.11.11.19
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 06 Aug 2024 11:11:18 -0700 (PDT)
+        Tue, 06 Aug 2024 11:11:20 -0700 (PDT)
 From: Tahera Fahimi <fahimitahera@gmail.com>
 To: outreachy@lists.linux.dev
 Cc: mic@digikod.net,
@@ -64,9 +64,9 @@ Cc: mic@digikod.net,
 	jannh@google.com,
 	netdev@vger.kernel.org,
 	Tahera Fahimi <fahimitahera@gmail.com>
-Subject: [PATCH v2 2/4] selftest/Landlock: Signal restriction tests
-Date: Tue,  6 Aug 2024 12:10:41 -0600
-Message-Id: <d8fdf745f0f624cae57312e7f5f06ee64b96b33d.1722966592.git.fahimitahera@gmail.com>
+Subject: [PATCH v2 3/4] sample/Landlock: Support signal scoping restriction
+Date: Tue,  6 Aug 2024 12:10:42 -0600
+Message-Id: <b301aea5431e60f8827404e76975cfbf4601edbf.1722966592.git.fahimitahera@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <cover.1722966592.git.fahimitahera@gmail.com>
 References: <cover.1722966592.git.fahimitahera@gmail.com>
@@ -76,353 +76,77 @@ List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
-This patch expands Landlock ABI version 6 by providing tests for
-signal scoping mechanism. Base on kill(2), if the signal is 0,
-no signal will be sent, but the permission of a process to send
-a signal will be checked. Likewise, this test consider one signal
-for each signal category.
+A sandboxer can receive the character "s" as input from the environment
+variable LL_SCOPE to restrict itself from sending a signal to a process
+outside its scoped domain.
+
+Example
+=======
+Create a sandboxed shell and pass the character "s" to LL_SCOPED:
+LL_FS_RO=/ LL_FS_RW=. LL_SCOPED="s" ./sandboxer /bin/bash
+Try to send a SIGTRAP to a process with process ID <PID> through:
+kill -SIGTRAP <PID>
+The sandboxed process should not be able to send the signal.
 
 Signed-off-by: Tahera Fahimi <fahimitahera@gmail.com>
 ---
-Chnages in versions:
-V2:
-* Moving tests from ptrace_test.c to scoped_signal_test.c
-* Remove debugging statements.
-* Covering all basic restriction scenarios by sending 0 as signal
-V1:
-* Expanding Landlock ABI version 6 by providing basic tests for
-  four signals to test signal scoping mechanism.
----
- tools/testing/selftests/landlock/base_test.c  |   2 +-
- .../selftests/landlock/scoped_signal_test.c   | 303 ++++++++++++++++++
- 2 files changed, 304 insertions(+), 1 deletion(-)
- create mode 100644 tools/testing/selftests/landlock/scoped_signal_test.c
+ samples/landlock/sandboxer.c | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
 
-diff --git a/tools/testing/selftests/landlock/base_test.c b/tools/testing/selftests/landlock/base_test.c
-index 3c1e9f35b531..52b00472a487 100644
---- a/tools/testing/selftests/landlock/base_test.c
-+++ b/tools/testing/selftests/landlock/base_test.c
-@@ -75,7 +75,7 @@ TEST(abi_version)
- 	const struct landlock_ruleset_attr ruleset_attr = {
- 		.handled_access_fs = LANDLOCK_ACCESS_FS_READ_FILE,
- 	};
--	ASSERT_EQ(5, landlock_create_ruleset(NULL, 0,
-+	ASSERT_EQ(6, landlock_create_ruleset(NULL, 0,
- 					     LANDLOCK_CREATE_RULESET_VERSION));
+diff --git a/samples/landlock/sandboxer.c b/samples/landlock/sandboxer.c
+index 98132fd823ad..c3123f3ee8eb 100644
+--- a/samples/landlock/sandboxer.c
++++ b/samples/landlock/sandboxer.c
+@@ -193,7 +193,8 @@ static bool check_ruleset_scope(const char *const env_var,
+ 	bool ret = true;
+ 	char *env_type_scope, *env_type_scope_next, *ipc_scoping_name;
  
- 	ASSERT_EQ(-1, landlock_create_ruleset(&ruleset_attr, 0,
-diff --git a/tools/testing/selftests/landlock/scoped_signal_test.c b/tools/testing/selftests/landlock/scoped_signal_test.c
-new file mode 100644
-index 000000000000..133b1c8edf49
---- /dev/null
-+++ b/tools/testing/selftests/landlock/scoped_signal_test.c
-@@ -0,0 +1,303 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Landlock tests - Signal Scoping
-+ *
-+ * Copyright © 2017-2020 Mickaël Salaün <mic@digikod.net>
-+ * Copyright © 2019-2020 ANSSI
-+ */
-+
-+#define _GNU_SOURCE
-+#include <errno.h>
-+#include <fcntl.h>
-+#include <linux/landlock.h>
-+#include <signal.h>
-+#include <sys/prctl.h>
-+#include <sys/types.h>
-+#include <sys/wait.h>
-+#include <unistd.h>
-+#include <signal.h>
-+
-+#include "common.h"
-+
-+static sig_atomic_t signaled;
-+
-+static void create_signal_domain(struct __test_metadata *const _metadata)
-+{
-+	int ruleset_fd;
-+	const struct landlock_ruleset_attr ruleset_attr = {
-+		.scoped = LANDLOCK_SCOPED_SIGNAL,
-+	};
-+
-+	ruleset_fd =
-+		landlock_create_ruleset(&ruleset_attr, sizeof(ruleset_attr), 0);
-+	EXPECT_LE(0, ruleset_fd)
-+	{
-+		TH_LOG("Failed to create a ruleset: %s", strerror(errno));
-+	}
-+	enforce_ruleset(_metadata, ruleset_fd);
-+	EXPECT_EQ(0, close(ruleset_fd));
-+}
-+
-+static void scope_signal_handler(int sig, siginfo_t *info, void *ucontext)
-+{
-+	if (sig == SIGHUP || sig == SIGURG || sig == SIGTSTP ||
-+	    sig == SIGTRAP || sig == SIGUSR1) {
-+		signaled = 1;
-+	}
-+}
-+
-+/* clang-format off */
-+FIXTURE(signal_scoping) {};
-+/* clang-format on */
-+
-+FIXTURE_VARIANT(signal_scoping)
-+{
-+	const int sig;
-+	const bool domain_both;
-+	const bool domain_parent;
-+	const bool domain_child;
-+};
-+
-+/* clang-format off */
-+FIXTURE_VARIANT_ADD(signal_scoping, allow_without_domain) {
-+	/* clang-format on */
-+	.sig = 0,
-+	.domain_both = false,
-+	.domain_parent = false,
-+	.domain_child = false,
-+};
-+
-+/* clang-format off */
-+FIXTURE_VARIANT_ADD(signal_scoping, deny_with_child_domain) {
-+	/* clang-format on */
-+	.sig = 0,
-+	.domain_both = false,
-+	.domain_parent = false,
-+	.domain_child = true,
-+};
-+
-+/* clang-format off */
-+FIXTURE_VARIANT_ADD(signal_scoping, allow_with_parent_domain) {
-+	/* clang-format on */
-+	.sig = 0,
-+	.domain_both = false,
-+	.domain_parent = true,
-+	.domain_child = false,
-+};
-+
-+/* clang-format off */
-+FIXTURE_VARIANT_ADD(signal_scoping, deny_with_sibling_domain) {
-+	/* clang-format on */
-+	.sig = 0,
-+	.domain_both = false,
-+	.domain_parent = true,
-+	.domain_child = true,
-+};
-+
-+/* clang-format off */
-+FIXTURE_VARIANT_ADD(signal_scoping, allow_sibling_domain) {
-+	/* clang-format on */
-+	.sig = 0,
-+	.domain_both = true,
-+	.domain_parent = false,
-+	.domain_child = false,
-+};
-+
-+/* clang-format off */
-+FIXTURE_VARIANT_ADD(signal_scoping, deny_with_nested_domain) {
-+	/* clang-format on */
-+	.sig = 0,
-+	.domain_both = true,
-+	.domain_parent = false,
-+	.domain_child = true,
-+};
-+
-+/* clang-format off */
-+FIXTURE_VARIANT_ADD(signal_scoping, allow_with_nested_and_parent_domain) {
-+	/* clang-format on */
-+	.sig = 0,
-+	.domain_both = true,
-+	.domain_parent = true,
-+	.domain_child = false,
-+};
-+
-+/* clang-format off */
-+FIXTURE_VARIANT_ADD(signal_scoping, deny_with_forked_domain) {
-+	/* clang-format on */
-+	.sig = 0,
-+	.domain_both = true,
-+	.domain_parent = true,
-+	.domain_child = true,
-+};
-+
-+/* Default Action: Terminate*/
-+/* clang-format off */
-+FIXTURE_VARIANT_ADD(signal_scoping, deny_with_forked_domain_SIGHUP) {
-+	/* clang-format on */
-+	.sig = SIGHUP,
-+	.domain_both = true,
-+	.domain_parent = true,
-+	.domain_child = true,
-+};
-+
-+/* clang-format off */
-+FIXTURE_VARIANT_ADD(signal_scoping, allow_with_forked_domain_SIGHUP) {
-+	/* clang-format on */
-+	.sig = SIGHUP,
-+	.domain_both = false,
-+	.domain_parent = true,
-+	.domain_child = false,
-+};
-+
-+/* Default Action: Ignore*/
-+/* clang-format off */
-+FIXTURE_VARIANT_ADD(signal_scoping, deny_with_forked_domain_SIGURG) {
-+	/* clang-format on */
-+	.sig = SIGURG,
-+	.domain_both = true,
-+	.domain_parent = true,
-+	.domain_child = true,
-+};
-+
-+/* clang-format off */
-+FIXTURE_VARIANT_ADD(signal_scoping, allow_with_forked_domain_SIGURG) {
-+	/* clang-format on */
-+	.sig = SIGURG,
-+	.domain_both = false,
-+	.domain_parent = true,
-+	.domain_child = false,
-+};
-+
-+/* Default Action: Stop*/
-+/* clang-format off */
-+FIXTURE_VARIANT_ADD(signal_scoping, deny_with_forked_domain_SIGTSTP) {
-+	/* clang-format on */
-+	.sig = SIGTSTP,
-+	.domain_both = true,
-+	.domain_parent = true,
-+	.domain_child = true,
-+};
-+
-+/* clang-format off */
-+FIXTURE_VARIANT_ADD(signal_scoping, allow_with_forked_domain_SIGTSTP) {
-+	/* clang-format on */
-+	.sig = SIGTSTP,
-+	.domain_both = false,
-+	.domain_parent = true,
-+	.domain_child = false,
-+};
-+
-+/* Default Action: Coredump*/
-+/* clang-format off */
-+FIXTURE_VARIANT_ADD(signal_scoping, deny_with_forked_domain_SIGTRAP) {
-+	/* clang-format on */
-+	.sig = SIGTRAP,
-+	.domain_both = true,
-+	.domain_parent = true,
-+	.domain_child = true,
-+};
-+
-+/* clang-format off */
-+FIXTURE_VARIANT_ADD(signal_scoping, allow_with_forked_domain_SIGTRAP) {
-+	/* clang-format on */
-+	.sig = SIGTRAP,
-+	.domain_both = false,
-+	.domain_parent = true,
-+	.domain_child = false,
-+};
-+
-+/* clang-format off */
-+FIXTURE_VARIANT_ADD(signal_scoping, deny_with_forked_domain_SIGUSR1) {
-+	/* clang-format on */
-+	.sig = SIGUSR1,
-+	.domain_both = true,
-+	.domain_parent = true,
-+	.domain_child = true,
-+};
-+
-+FIXTURE_SETUP(signal_scoping)
-+{
-+}
-+
-+FIXTURE_TEARDOWN(signal_scoping)
-+{
-+}
-+
-+TEST_F(signal_scoping, test_signal)
-+{
-+	pid_t child;
-+	pid_t parent = getpid();
-+	int status;
-+	bool can_signal;
-+	int pipe_parent[2];
-+	struct sigaction action = {
-+		.sa_sigaction = scope_signal_handler,
-+		.sa_flags = SA_SIGINFO,
-+
-+	};
-+
-+	can_signal = !variant->domain_child;
-+
-+	if (variant->sig > 0)
-+		ASSERT_LE(0, sigaction(variant->sig, &action, NULL));
-+
-+	if (variant->domain_both) {
-+		create_signal_domain(_metadata);
-+		if (!__test_passed(_metadata))
-+			/* Aborts before forking. */
-+			return;
-+	}
-+	ASSERT_EQ(0, pipe2(pipe_parent, O_CLOEXEC));
-+
-+	child = fork();
-+	ASSERT_LE(0, child);
-+	if (child == 0) {
-+		char buf_child;
-+		int err;
-+
-+		ASSERT_EQ(0, close(pipe_parent[1]));
-+		if (variant->domain_child)
-+			create_signal_domain(_metadata);
-+
-+		/* Waits for the parent to be in a domain, if any. */
-+		ASSERT_EQ(1, read(pipe_parent[0], &buf_child, 1));
-+
-+		err = kill(parent, variant->sig);
-+		if (can_signal) {
-+			ASSERT_EQ(0, err);
-+		} else {
-+			ASSERT_EQ(-1, err);
-+			ASSERT_EQ(EPERM, errno);
-+		}
-+		/* no matter of the domain, a process should be able to send
-+		 * a signal to itself.
-+		 */
-+		ASSERT_EQ(0, raise(variant->sig));
-+		if (variant->sig > 0)
-+			ASSERT_EQ(1, signaled);
-+		_exit(_metadata->exit_code);
-+		return;
-+	}
-+	ASSERT_EQ(0, close(pipe_parent[0]));
-+	if (variant->domain_parent)
-+		create_signal_domain(_metadata);
-+
-+	/* Signals that the parent is in a domain, if any. */
-+	ASSERT_EQ(1, write(pipe_parent[1], ".", 1));
-+
-+	if (can_signal && variant->sig > 0) {
-+		ASSERT_EQ(-1, pause());
-+		ASSERT_EQ(EINTR, errno);
-+		ASSERT_EQ(1, signaled);
-+	} else {
-+		ASSERT_EQ(0, signaled);
-+	}
-+
-+	ASSERT_EQ(child, waitpid(child, &status, 0));
-+
-+	if (WIFSIGNALED(status) || !WIFEXITED(status) ||
-+	    WEXITSTATUS(status) != EXIT_SUCCESS)
-+		_metadata->exit_code = KSFT_FAIL;
-+}
-+
-+TEST_HARNESS_MAIN
+-	ruleset_attr->scoped &= ~LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET;
++	ruleset_attr->scoped &= ~(LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET |
++				  LANDLOCK_SCOPED_SIGNAL);
+ 	env_type_scope = getenv(env_var);
+ 	/* scoping is not supported by the user */
+ 	if (!env_type_scope)
+@@ -207,6 +208,8 @@ static bool check_ruleset_scope(const char *const env_var,
+ 		if (strcmp("a", ipc_scoping_name) == 0) {
+ 			ruleset_attr->scoped |=
+ 				LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET;
++		} else if (strcmp("s", ipc_scoping_name) == 0) {
++			ruleset_attr->scoped |= LANDLOCK_SCOPED_SIGNAL;
+ 		} else {
+ 			fprintf(stderr, "Unsupported scoping \"%s\"\n",
+ 				ipc_scoping_name);
+@@ -258,7 +261,8 @@ int main(const int argc, char *const argv[], char *const *const envp)
+ 		.handled_access_fs = access_fs_rw,
+ 		.handled_access_net = LANDLOCK_ACCESS_NET_BIND_TCP |
+ 				      LANDLOCK_ACCESS_NET_CONNECT_TCP,
+-		.scoped = LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET,
++		.scoped = LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET |
++			  LANDLOCK_SCOPED_SIGNAL,
+ 	};
+ 
+ 	if (argc < 2) {
+@@ -295,7 +299,7 @@ int main(const int argc, char *const argv[], char *const *const envp)
+ 			"%s=\"/dev/null:/dev/full:/dev/zero:/dev/pts:/tmp\" "
+ 			"%s=\"9418\" "
+ 			"%s=\"80:443\" "
+-			"%s=\"a\" "
++			"%s=\"a:s\" "
+ 			"%s bash -i\n\n",
+ 			ENV_FS_RO_NAME, ENV_FS_RW_NAME, ENV_TCP_BIND_NAME,
+ 			ENV_TCP_CONNECT_NAME, ENV_SCOPED_NAME, argv[0]);
+@@ -369,7 +373,8 @@ int main(const int argc, char *const argv[], char *const *const envp)
+ 		__attribute__((fallthrough));
+ 	case 5:
+ 		/* Removes LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET for ABI < 6 */
+-		ruleset_attr.scoped &= ~LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET;
++		ruleset_attr.scoped &= ~(LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET |
++					 LANDLOCK_SCOPED_SIGNAL);
+ 		fprintf(stderr,
+ 			"Hint: You should update the running kernel "
+ 			"to leverage Landlock features "
 -- 
 2.34.1
 
