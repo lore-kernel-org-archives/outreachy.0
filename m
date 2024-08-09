@@ -1,47 +1,78 @@
-Received: from smtp-bc08.mail.infomaniak.ch (smtp-bc08.mail.infomaniak.ch [45.157.188.8])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-pf1-f178.google.com (mail-pf1-f178.google.com [209.85.210.178])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 20D8F197545
-	for <outreachy@lists.linux.dev>; Fri,  9 Aug 2024 14:13:16 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=45.157.188.8
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3B1A6A41
+	for <outreachy@lists.linux.dev>; Fri,  9 Aug 2024 17:54:20 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.210.178
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1723212802; cv=none; b=MSMQHizrSA52BkInIcbzyldi8/4lX3hbGnJe4n7wCPZNcRlV7rgnhF7RQJvbsbGucc5r43qMU0mbLtnWtMuy2eJyPSj+dkwqVkDnJHyPoCSZxU71+XGn6L2YSzh6XZezTFulaX8nSZAREnfs/n8EoECpM6s60OZAeav0iQZivjA=
+	t=1723226061; cv=none; b=qr5fTwBzJb3EICRC74mhsVajP1gqboy2hI6R17fyNOxSdiviU8QNImP+PM8+rhItSDtNYTc69YRyzw9lptyQvTptVMbjT6FHSTilUoSQSKb7o7tyU/ZbQV1UTMd2WYFg7eAYlJ3cmSsye0xwOLsQaDgetXUR4vP503h2rXqNO4o=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1723212802; c=relaxed/simple;
-	bh=IdyXKuv8TCnQV7kc3lc9CHgBFc/wIDn4JaWOALDmfFI=;
+	s=arc-20240116; t=1723226061; c=relaxed/simple;
+	bh=w9dwPrdglNjb4CJuuomMjEb9PTsCXrE6sDFhrWPwxbI=;
 	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=KlG8bg9aD/KQBim/1kVTfFAta40f+FulOzruWtoqpek0F98lwWYKAt88TpMTK1NH3PfJ0Tspnk2n5ZdJLDxlYRbzqH2Dl8u4CUl+j+DgW3rAKHA4+aeYeLckj7C5ZHQLfD8wSgU4KIdezR+8mGYV++OB12Ei1gPtEfl+AcjAxD8=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net; spf=pass smtp.mailfrom=digikod.net; dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b=xf9Hcckd; arc=none smtp.client-ip=45.157.188.8
-Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=digikod.net
+	 Content-Type:Content-Disposition:In-Reply-To; b=cOKwKi+iutcS8YAhYFJPLAGjvsABfcZ+cMXp64uOw53jC0Hw6q9duV60w6u7V4zQT6qHcMMlHl2mpkuXYP/CnYFtmev8fw4SiMYbhMpEepjRvMVG5U0U3RM16yUI99VVB1kiE54oZqA5dZRKoKm88XmrV0tDA5RFR90TFIc/hJs=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=k1eVkJTE; arc=none smtp.client-ip=209.85.210.178
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b="xf9Hcckd"
-Received: from smtp-4-0000.mail.infomaniak.ch (smtp-4-0000.mail.infomaniak.ch [10.7.10.107])
-	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4WgQqb0RyWzZF9;
-	Fri,  9 Aug 2024 16:13:15 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=digikod.net;
-	s=20191114; t=1723212794;
-	bh=5BWDmypNukZ0yTegwp5Rd5X/N9tPnn8xecPpj+dDlYU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=xf9HcckdVauPhJ3oo4DRn7uHRHMXLd7Pcka7j+6WLKpm1E1JXnRhNkHCT7HTcl47Y
-	 S0yYlpiGyeIHB+e284LyNInzlQqoC7KQSmg4jg7hMj6Ik4j/izVVw+YBQBHcWsyecG
-	 8RnsDwzlrLR8QrZdOV3FaGnjpq+2GiM/aKaFbt2E=
-Received: from unknown by smtp-4-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4WgQqZ3WRSzqWn;
-	Fri,  9 Aug 2024 16:13:14 +0200 (CEST)
-Date: Fri, 9 Aug 2024 16:13:08 +0200
-From: =?utf-8?Q?Micka=C3=ABl_Sala=C3=BCn?= <mic@digikod.net>
-To: Tahera Fahimi <fahimitahera@gmail.com>
-Cc: outreachy@lists.linux.dev, gnoack@google.com, paul@paul-moore.com, 
-	jmorris@namei.org, serge@hallyn.com, linux-security-module@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, bjorn3_gh@protonmail.com, jannh@google.com, 
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="k1eVkJTE"
+Received: by mail-pf1-f178.google.com with SMTP id d2e1a72fcca58-70cec4aa1e4so1729678b3a.1
+        for <outreachy@lists.linux.dev>; Fri, 09 Aug 2024 10:54:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1723226059; x=1723830859; darn=lists.linux.dev;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=i79kJL7es86O5bR3t8PxNT/TfJeYLRkUdgp0cZ8YJDQ=;
+        b=k1eVkJTEWGoYxw/19z5cTNmkbu3nsBdGRluKMOb0f0Ejbjjp3qi9Hgul2FWcgsRibz
+         A2d3kNVWDy9L3RPofPhzxcl+jJPvJNlN8R6ldrHt0onL8hOGrDc6/VBSyCf6Q13VBujB
+         wmnM2v3QEymnA/Sw+mVAoGb7CNmrdrgdXSvahW+RaBrnPBkyN+aiGo3UvutUGpHEVoTS
+         OLy2m/bspXrIJhrht9udMGMG0FFaz+6BKgXx0hCMxBq4MiHzLmtYpocKHkJtqgsTdjMa
+         m801yha9CIFFNoI8idaYYZR2WHfy+QB1EBp01aMQNRhCsSG/U4802s7xcFX9T7JXyxK2
+         1SXw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1723226059; x=1723830859;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=i79kJL7es86O5bR3t8PxNT/TfJeYLRkUdgp0cZ8YJDQ=;
+        b=BowhbSZJ9vTOc49iUT1netwlDzxt+bbaZpGxMqr+cJgDA95AxuF+0Ja7yyB48I2nyN
+         QpcsknNgmae1Md7jJ3pnVV0V1ijQst7WETtCcnalNPrym696mwRRjKdiJkdUiTv4VEVq
+         lQt+QAWJZ5BrEIHWuV1iZ+/fN0AbsmSVctAx5Q21AZA47VnpeopMDc1eqwpuerNOdlwS
+         3kpYhBY1qv3Hn6qO3VwfsTYDblCE+IwcuN/YJz3S0Akf5nMv62TC7bRiXHqoklaCtm1w
+         G8hiruRb4AvYRMRhLO/cD5n6C2yFRX5nbN3c9Cmc42ImL7Jcl8tMV+dGWqFw6dm/aWmC
+         90aQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXWWTajfI1oarXW8w2DnIbHxw+WbIsoG1Frw8SQ+pnz97xtFpiK8uhSXDSXzb9EQFWmVnAbebmukDIURM31qCt/HgUk7hfgeUvc
+X-Gm-Message-State: AOJu0Yy4TyfO0OBejEbdfwRM9T7wPFXBqgm1FSfjUrMcB6coFdIgsa+4
+	Duo/KaqfJpjIHpEu//XSfbai3lXjHpqHY9lyZfUh2+rqCdPUTz0PlbTHnppL
+X-Google-Smtp-Source: AGHT+IF6TgRVbkkS/8fWCgztwP8ah68LpZDibl4Zah5cJzKVfLC4DTZHFu319cogK1EsbydUK/ROvw==
+X-Received: by 2002:a17:902:d2ce:b0:1fd:9d0c:9996 with SMTP id d9443c01a7336-200ae589d28mr29785955ad.35.1723226059245;
+        Fri, 09 Aug 2024 10:54:19 -0700 (PDT)
+Received: from tahera-OptiPlex-5000 ([136.159.49.123])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-200bba3ffc7sm300555ad.244.2024.08.09.10.54.18
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 09 Aug 2024 10:54:18 -0700 (PDT)
+Date: Fri, 9 Aug 2024 11:54:16 -0600
+From: Tahera Fahimi <fahimitahera@gmail.com>
+To: =?iso-8859-1?Q?Micka=EBl_Sala=FCn?= <mic@digikod.net>
+Cc: Jann Horn <jannh@google.com>, outreachy@lists.linux.dev,
+	gnoack@google.com, paul@paul-moore.com, jmorris@namei.org,
+	serge@hallyn.com, linux-security-module@vger.kernel.org,
+	linux-kernel@vger.kernel.org, bjorn3_gh@protonmail.com,
 	netdev@vger.kernel.org
 Subject: Re: [PATCH v8 1/4] Landlock: Add abstract unix socket connect
  restriction
-Message-ID: <20240808.aiQu4ohho1xi@digikod.net>
+Message-ID: <ZrZXyGLYSMnpMBfS@tahera-OptiPlex-5000>
 References: <cover.1722570749.git.fahimitahera@gmail.com>
  <e8da4d5311be78806515626a6bd4a16fe17ded04.1722570749.git.fahimitahera@gmail.com>
  <20240803.iefooCha4gae@digikod.net>
- <ZrOUq6rBRS1Fch42@tahera-OptiPlex-5000>
+ <20240806.nookoChoh2Oh@digikod.net>
+ <CAG48ez2ZYzB+GyDLAx7y2TobE=MLXWucQx0qjitfhPSDaaqjiA@mail.gmail.com>
+ <20240807.mieloh8bi8Ae@digikod.net>
+ <CAG48ez3_u5ZkVY31h4J6Shap9kEsgDiLxF+s10Aea52EkrDMJg@mail.gmail.com>
+ <20240807.Be5aiChaf8ie@digikod.net>
+ <ZrVR9ni4qpFdF0iA@tahera-OptiPlex-5000>
+ <20240809.gooHaid7mo1b@digikod.net>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -51,279 +82,90 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <ZrOUq6rBRS1Fch42@tahera-OptiPlex-5000>
-X-Infomaniak-Routing: alpha
+In-Reply-To: <20240809.gooHaid7mo1b@digikod.net>
 
-On Wed, Aug 07, 2024 at 09:37:15AM -0600, Tahera Fahimi wrote:
-> On Sat, Aug 03, 2024 at 01:29:04PM +0200, Mickaël Salaün wrote:
-> > On Thu, Aug 01, 2024 at 10:02:33PM -0600, Tahera Fahimi wrote:
-> > > This patch introduces a new "scoped" attribute to the landlock_ruleset_attr
-> > > that can specify "LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET" to scope
-> > > abstract Unix sockets from connecting to a process outside of
-> > > the same landlock domain. It implements two hooks, unix_stream_connect
-> > > and unix_may_send to enforce this restriction.
+On Fri, Aug 09, 2024 at 10:49:17AM +0200, Mickaël Salaün wrote:
+> On Thu, Aug 08, 2024 at 05:17:10PM -0600, Tahera Fahimi wrote:
+> > On Wed, Aug 07, 2024 at 04:44:36PM +0200, Mickaël Salaün wrote:
+> > > On Wed, Aug 07, 2024 at 03:45:18PM +0200, Jann Horn wrote:
+> > > > On Wed, Aug 7, 2024 at 9:21 AM Mickaël Salaün <mic@digikod.net> wrote:
+> > > > > On Tue, Aug 06, 2024 at 10:46:43PM +0200, Jann Horn wrote:
+> > > > > > I think adding something like this change on top of your code would
+> > > > > > make it more concise (though this is entirely untested):
+> > > > > >
+> > > > > > --- /tmp/a      2024-08-06 22:37:33.800158308 +0200
+> > > > > > +++ /tmp/b      2024-08-06 22:44:49.539314039 +0200
+> > > > > > @@ -15,25 +15,12 @@
+> > > > > >           * client_layer must be a signed integer with greater capacity than
+> > > > > >           * client->num_layers to ensure the following loop stops.
+> > > > > >           */
+> > > > > >          BUILD_BUG_ON(sizeof(client_layer) > sizeof(client->num_layers));
+> > > > > >
+> > > > > > -        if (!server) {
+> > > > > > -                /*
+> > > > > > -                 * Walks client's parent domains and checks that none of these
+> > > > > > -                 * domains are scoped.
+> > > > > > -                 */
+> > > > > > -                for (; client_layer >= 0; client_layer--) {
+> > > > > > -                        if (landlock_get_scope_mask(client, client_layer) &
+> > > > > > -                            scope)
+> > > > > > -                                return true;
+> > > > > > -                }
+> > > > > > -                return false;
+> > > > > > -        }
+> > > > >
+> > > > > This loop is redundant with the following one, but it makes sure there
+> > > > > is no issue nor inconsistencies with the server or server_walker
+> > > > > pointers.  That's the only approach I found to make sure we don't go
+> > > > > through a path that could use an incorrect pointer, and makes the code
+> > > > > easy to review.
+> > > > 
+> > > > My view is that this is a duplication of logic for one particular
+> > > > special case - after all, you can also end up walking up to the same
+> > > > state (client_layer==-1, server_layer==-1, client_walker==NULL,
+> > > > server_walker==NULL) with the loop at the bottom.
 > > > 
-> > > Closes: https://github.com/landlock-lsm/linux/issues/7
-> > > Signed-off-by: Tahera Fahimi <fahimitahera@gmail.com>
+> > > Indeed
 > > > 
-> > > ---
-> > > v8:
-> > > - Code refactoring (improve code readability, renaming variable, etc.) based
-> > >   on reviews by Mickaël Salaün on version 7.
-> > > - Adding warn_on_once to check (impossible) inconsistencies.
-> > > - Adding inline comments.
-> > > - Adding check_unix_address_format to check if the scoping socket is an abstract
-> > >   unix sockets.
-> > > v7:
-> > >  - Using socket's file credentials for both connected(STREAM) and
-> > >    non-connected(DGRAM) sockets.
-> > >  - Adding "domain_sock_scope" instead of the domain scoping mechanism used in
-> > >    ptrace ensures that if a server's domain is accessible from the client's
-> > >    domain (where the client is more privileged than the server), the client
-> > >    can connect to the server in all edge cases.
-> > >  - Removing debug codes.
-> > > v6:
-> > >  - Removing curr_ruleset from landlock_hierarchy, and switching back to use
-> > >    the same domain scoping as ptrace.
-> > >  - code clean up.
-> > > v5:
-> > >  - Renaming "LANDLOCK_*_ACCESS_SCOPE" to "LANDLOCK_*_SCOPE"
-> > >  - Adding curr_ruleset to hierarachy_ruleset structure to have access from
-> > >    landlock_hierarchy to its respective landlock_ruleset.
-> > >  - Using curr_ruleset to check if a domain is scoped while walking in the
-> > >    hierarchy of domains.
-> > >  - Modifying inline comments.
-> > > V4:
-> > >  - Rebased on Günther's Patch:
-> > >    https://lore.kernel.org/all/20240610082115.1693267-1-gnoack@google.com/
-> > >    so there is no need for "LANDLOCK_SHIFT_ACCESS_SCOPE", then it is removed.
-> > >  - Adding get_scope_accesses function to check all scoped access masks in a ruleset.
-> > >  - Using socket's file credentials instead of credentials stored in peer_cred
-> > >    for datagram sockets. (see discussion in [1])
-> > >  - Modifying inline comments.
-> > > V3:
-> > >  - Improving commit description.
-> > >  - Introducing "scoped" attribute to landlock_ruleset_attr for IPC scoping
-> > >    purpose, and adding related functions.
-> > >  - Changing structure of ruleset based on "scoped".
-> > >  - Removing rcu lock and using unix_sk lock instead.
-> > >  - Introducing scoping for datagram sockets in unix_may_send.
-> > > V2:
-> > >  - Removing wrapper functions
+> > > > 
+> > > > But I guess my preference for more concise code is kinda subjective -
+> > > > if you prefer the more verbose version, I'm fine with that too.
+> > > > 
+> > > > > > -
+> > > > > > -        server_layer = server->num_layers - 1;
+> > > > > > -        server_walker = server->hierarchy;
+> > > > > > +        server_layer = server ? (server->num_layers - 1) : -1;
+> > > > > > +        server_walker = server ? server->hierarchy : NULL;
+> > > > >
+> > > > > We would need to change the last loop to avoid a null pointer deref.
+> > > > 
+> > > > Why? The first loop would either exit or walk the client_walker up
+> > > > until client_layer is -1 and client_walker is NULL; the second loop
+> > > > wouldn't do anything because the walkers are at the same layer; the
+> > > > third loop's body wouldn't be executed because client_layer is -1.
 > > > 
-> > > [1]https://lore.kernel.org/all/20240610.Aifee5ingugh@digikod.net/
-> > > ----
-> > > ---
-> > >  include/uapi/linux/landlock.h |  30 +++++++
-> > >  security/landlock/limits.h    |   3 +
-> > >  security/landlock/ruleset.c   |   7 +-
-> > >  security/landlock/ruleset.h   |  23 ++++-
-> > >  security/landlock/syscalls.c  |  14 ++-
-> > >  security/landlock/task.c      | 155 ++++++++++++++++++++++++++++++++++
-> > >  6 files changed, 225 insertions(+), 7 deletions(-)
-> > 
-> > > diff --git a/security/landlock/task.c b/security/landlock/task.c
-> > > index 849f5123610b..7e8579ebae83 100644
-> > > --- a/security/landlock/task.c
-> > > +++ b/security/landlock/task.c
-> > > @@ -13,6 +13,8 @@
-> > >  #include <linux/lsm_hooks.h>
-> > >  #include <linux/rcupdate.h>
-> > >  #include <linux/sched.h>
-> > > +#include <net/sock.h>
-> > > +#include <net/af_unix.h>
-> > >  
-> > >  #include "common.h"
-> > >  #include "cred.h"
-> > > @@ -108,9 +110,162 @@ static int hook_ptrace_traceme(struct task_struct *const parent)
-> > >  	return task_ptrace(parent, current);
-> > >  }
-> > >  
-> > > +static bool walk_and_check(const struct landlock_ruleset *const child,
-> > > +			   struct landlock_hierarchy **walker,
-> > > +			   size_t base_layer, size_t deep_layer,
-> > > +			   access_mask_t check_scoping)
-> > 
-> > s/check_scoping/scope/
-> > 
-> > > +{
-> > > +	if (!child || base_layer < 0 || !(*walker))
-> > 
-> > I guess it should be:
-> > WARN_ON_ONCE(!child || base_layer < 0 || !(*walker))
-> > 
-> > > +		return false;
-> > > +
-> > > +	for (deep_layer; base_layer < deep_layer; deep_layer--) {
-> > 
-> > No need to pass deep_layer as argument:
-> > deep_layer = child->num_layers - 1
-> > 
-> > > +		if (check_scoping & landlock_get_scope_mask(child, deep_layer))
-> > > +			return false;
-> > > +		*walker = (*walker)->parent;
-> > > +		if (WARN_ON_ONCE(!*walker))
-> > > +			/* there is an inconsistency between num_layers
-> > 
-> > Please use full sentences starting with a capital letter and ending with
-> > a dot, and in this case start with "/*"
-> > 
-> > > +			 * and landlock_hierarchy in the ruleset
-> > > +			 */
-> > > +			return false;
-> > > +	}
-> > > +	return true;
-> > > +}
-> > > +
-> > > +/**
-> > > + * domain_IPC_scope - Checks if the client domain is scoped in the same
-> > > + *		      domain as the server.
-> > 
-> > Actually, you can remove IPC from the function name.
-> > 
-> > > + *
-> > > + * @client: IPC sender domain.
-> > > + * @server: IPC receiver domain.
-> > > + *
-> > > + * Check if the @client domain is scoped to access the @server; the @server
-> > > + * must be scoped in the same domain.
-> > 
-> > Returns true if...
-> > 
-> > > + */
-> > > +static bool domain_IPC_scope(const struct landlock_ruleset *const client,
-> > > +			     const struct landlock_ruleset *const server,
-> > > +			     access_mask_t ipc_type)
-> > > +{
-> > > +	size_t client_layer, server_layer = 0;
-> > > +	int base_layer;
-> > > +	struct landlock_hierarchy *client_walker, *server_walker;
-> > > +	bool is_scoped;
-> > > +
-> > > +	/* Quick return if client has no domain */
-> > > +	if (!client)
-> > > +		return true;
-> > > +
-> > > +	client_layer = client->num_layers - 1;
-> > > +	client_walker = client->hierarchy;
-> > > +	if (server) {
-> > > +		server_layer = server->num_layers - 1;
-> > > +		server_walker = server->hierarchy;
-> > > +	}
-> > 
-> > } else {
-> > 	server_layer = 0;
-> > 	server_walker = NULL;
-> > }
-> > 
-> > > +	base_layer = (client_layer > server_layer) ? server_layer :
-> > > +						     client_layer;
-> > > +
-> > > +	/* For client domain, walk_and_check ensures the client domain is
-> > > +	 * not scoped until gets to base_layer.
-> > 
-> > until gets?
-> > 
-> > > +	 * For server_domain, it only ensures that the server domain exist.
-> > > +	 */
-> > > +	if (client_layer != server_layer) {
-> > 
-> > bool is_scoped;
-> It is defined above. 
-
-Yes, but it should be defined here because it is not used outside of
-this block.
-
-> > > +		if (client_layer > server_layer)
-> > > +			is_scoped = walk_and_check(client, &client_walker,
-> > > +						   server_layer, client_layer,
-> > > +						   ipc_type);
-> > > +		else
-> > 
-> > server_walker may be uninitialized and still read here, and maybe later
-> > in the for loop.  The whole code should maks sure this cannot happen,
-> > and a test case should check this.
-> I think this case never happens, since the server_walker can be read
-> here if there are more than one layers in server domain which means that
-> the server_walker is not unintialized.
-
-Yes, but this code makes it more difficult to convince yourself.  The
-proposed refactoring should help.
-
+> > > Correct, I missed that client_layer would always be greater than
+> > > server_layer (-1).
+> > > 
+> > > Tahera, could you please take Jann's proposal?
+> > Done.
+> > We will have duplicate logic, but it would be easier to read and review.
 > 
-> > > +			is_scoped = walk_and_check(server, &server_walker,
-> > > +						   client_layer, server_layer,
-> > > +						   ipc_type & 0);
+> With Jann's proposal we don't have duplicate logic.
+Still the first two for loops apply the same logic for client and server
+domains, but I totally understand that it is much easier to review and
+understand.
+> > > 
+> > > > 
+> > > > The case where the server is not in any Landlock domain is just one
+> > > > subcase of the more general case "client and server do not have a
+> > > > common ancestor domain".
+> > > > 
+> > > > > >
+> > > > > >          /*
+> > > > > >           * Walks client's parent domains down to the same hierarchy level as
+> > > > > >           * the server's domain, and checks that none of these client's parent
+> > > > > >           * domains are scoped.
+> > > > > >
+> > > > 
 > > 
-> > "ipc_type & 0" is the same as "0"
-> > 
-> > > +		if (!is_scoped)
-> > 
-> > The name doesn't reflect the semantic. walk_and_check() should return
-> > the inverse.
-> > 
-> > > +			return false;
-> > > +	}
-> > 
-> > This code would be simpler:
-> > 
-> > if (client_layer > server_layer) {
-> > 	base_layer = server_layer;
-> > 	// TODO: inverse boolean logic
-> > 	if (!walk_and_check(client, &client_walker,
-> > 				   base_layer, ipc_type))
-> > 		return false;
-> > } else (client_layer < server_layer) {
-> > 	base_layer = client_layer;
-> > 	// TODO: inverse boolean logic
-> > 	if (!walk_and_check(server, &server_walker,
-> > 				   base_layer, 0))
-> > 		return false;
-> > } else {
-> > 	base_layer = client_layer;
-> > }
-> > 
-> > 
-> > I think we can improve more to make sure there is no path/risk of
-> > inconsistent pointers.
-> > 
-> > 
-> > > +	/* client and server are at the same level in hierarchy. If client is
-> > > +	 * scoped, the server must be scoped in the same domain
-> > > +	 */
-> > > +	for (base_layer; base_layer >= 0; base_layer--) {
-> > > +		if (landlock_get_scope_mask(client, base_layer) & ipc_type) {
-> > 
-> > With each multi-line comment, the first line should be empty:
-> > /*
-> >  * This check must be here since access would be denied only if
-> > 
-> > > +			/* This check must be here since access would be denied only if
-> > > +			 * the client is scoped and the server has no domain, so
-> > > +			 * if the client has a domain but is not scoped and the server
-> > > +			 * has no domain, access is guaranteed.
-> > > +			 */
-> > > +			if (!server)
-> > > +				return false;
-> > > +
-> > > +			if (server_walker == client_walker)
-> > > +				return true;
-> > > +
-> > > +			return false;
-> > > +		}
-> > > +		client_walker = client_walker->parent;
-> > > +		server_walker = server_walker->parent;
-> > > +		/* Warn if there is an incosistenncy between num_layers and
-> > 
-> > Makes sure there is no inconsistency between num_layers and
-> > 
-> > 
-> > > +		 * landlock_hierarchy in each of rulesets
-> > > +		 */
-> > > +		if (WARN_ON_ONCE(base_layer > 0 &&
-> > > +				 (!server_walker || !client_walker)))
-> > > +			return false;
-> > > +	}
-> > > +	return true;
-> > > +}
-> 
