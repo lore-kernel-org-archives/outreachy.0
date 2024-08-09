@@ -1,117 +1,244 @@
-Received: from mail-ed1-f47.google.com (mail-ed1-f47.google.com [209.85.208.47])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from smtp-42ab.mail.infomaniak.ch (smtp-42ab.mail.infomaniak.ch [84.16.66.171])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 318491957FF
-	for <outreachy@lists.linux.dev>; Fri,  9 Aug 2024 13:58:01 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.47
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 74513196C86
+	for <outreachy@lists.linux.dev>; Fri,  9 Aug 2024 14:12:01 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=84.16.66.171
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1723211883; cv=none; b=lZ+CbGLpK6iqOmRMCEDht7YesOm3pLUCxFzzvgWbN7Yu1FTOb+wtJ9hVDMEq9JW01W91rMNqnIJdHwMImZSjVAxd/syVhDWHwTfLUKBzp6sWpIUVNV1QgbxwO17D+oJLdiO9+5mHorOi58Q9oi9XouBtDnLs1NfSSWVGISa+QJg=
+	t=1723212725; cv=none; b=VllvsHMdwmXkv+SoJAj5QwdSZ/4Jxu37LSMsOAeNwqpJUzU0D9KMZyno5qh7lbqCJZcawci9vYqoGGPJZav7sV9UfSjRWv+MInqPhaZFJWplhXv3jJViovw8pXw5bvdhtTRjyLOeBImS1cmILZGhsEmLuf2LIWLDhFA2fQsJjrg=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1723211883; c=relaxed/simple;
-	bh=w6Vkbk7g1bhMu2SYQ5zcQ14DAY77SckcLxEdl1ex4yo=;
-	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
-	 To:Cc:Content-Type; b=QecLLrf0xrDK2SfGGpz6q6/y8E8UpjgA/iGgyNTFRsHsGLyhkZaK10cjPARZJ3q8vnaLVlCLHMvdU8DnNpZnCy9L3lufL+htGWDFe8qBzCUXMcW5P/9UrJZapqCgUVDGm/N/2qyX80IZa/Ou1wmEZudjksHjoSBmKfJnsfw0i/w=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=google.com; spf=pass smtp.mailfrom=google.com; dkim=pass (2048-bit key) header.d=google.com header.i=@google.com header.b=BQsziiGY; arc=none smtp.client-ip=209.85.208.47
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=google.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=google.com
+	s=arc-20240116; t=1723212725; c=relaxed/simple;
+	bh=d2qpUjqP+5ygwVuOs3eMSo1YBavpbn1nxLoDr7z9oQQ=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=AwvHhH17n74+40vfrM9L6XYlWVZ/z/jTaLarApV+Zm6AM74Hiahh2tlt9pVT9J528WUcoWJdR34Gi11NG8JWvbFDEywoBsA0P9I4Lvilo1c45GzpkbWdWVp711ahypq6asPCpSF02SJG+Gv9raS0fTF7JGKOYsnlQzlpiknHSM8=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net; spf=pass smtp.mailfrom=digikod.net; dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b=sc5OSfc5; arc=none smtp.client-ip=84.16.66.171
+Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=digikod.net
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=google.com header.i=@google.com header.b="BQsziiGY"
-Received: by mail-ed1-f47.google.com with SMTP id 4fb4d7f45d1cf-5b9fe5ea355so11924a12.0
-        for <outreachy@lists.linux.dev>; Fri, 09 Aug 2024 06:58:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1723211880; x=1723816680; darn=lists.linux.dev;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=w6Vkbk7g1bhMu2SYQ5zcQ14DAY77SckcLxEdl1ex4yo=;
-        b=BQsziiGYHNySX+7pcmlX2m+G73FtawJwhgO6tAOvw33PHt31O9FFK5nl8jQ+3rSXXI
-         gsRbkC5m8Mw3Ce5PjfUbelcPcWnmMi61yRqe1tAgC0j1dWjMLWqBu+ZUWejbCo5BvaXF
-         3XXCivnDh0IZ+pnxiFh8x3QrMpor9hcBKMerXKE1j6pkAgzUM6kyNmYFilPJ8a58BgKF
-         iSDMns8DEE3wqAYnGIZyTkR+eTKYC+NZbwdZmjexSSTL9tsqhLwv2vSi5x65unPF6ojl
-         IXoEpSrMLYB0VTrZQPcn+5Tt86Nn6CR3YWfLjtd8UIPhNI375LZw4D6faoxTRbUMLeWE
-         dy0A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723211880; x=1723816680;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=w6Vkbk7g1bhMu2SYQ5zcQ14DAY77SckcLxEdl1ex4yo=;
-        b=blJl6zWR3wdnskRGKEgZ6NYoX/XIE1q2m2dybeP0JQUQIs0kzJt3+SZ8oGfpmDrIMP
-         5nmZM1wJrUqNmAIxMfbnSGycdmkSGND9pnWQAtsZBIE/oODY2y8vrXikoDdh0VbSo2gS
-         TOLb7lLrAClIalYY82XXMx02dKs/eZEje6Oml6bihgwwq3mvqbmFriQ8e6b1/NYIXAFB
-         jrk2uIwwU5NivMOrfvtWnG3ZbHpwOOYfatymeDN+02EqCDftEpn1ulb2ZfVaCTZkGYxM
-         0AM0QXnYfPTPm4c+bO1J//oSyhQ++p3oZlMf9AcXnEzLJcewJUtyG8iAnHD/IKXUYPqG
-         bp/A==
-X-Forwarded-Encrypted: i=1; AJvYcCXEWEEA9cQw7tEy1Go9xs2tlzj7dobkt9c8kP4cxamit0E2R0L3otLa7cDUCKn+byM6RobhMmcM6gOLvSYAJKjcIKxYoIIWXzMJ
-X-Gm-Message-State: AOJu0YyMUU2F0MVFKUJV8E6n7YDKjxTHTE2EQLqnt9lTcpC8/Djq/6p+
-	Hi/aU4jZQJW9f5zf6DxNt72qIY8b0eb+tUQIP3UIYuNTuNfZJqjnE+w23wcmgt10t/qR23dhe/1
-	Jbo/VAA0lDT4dvA5rqoy0UBp9kReymo3WvHr9
-X-Google-Smtp-Source: AGHT+IEAwCE819eFp9HXrJhbiR7g72RxfA+RZ0jzRNR/HFmgCAtCKkR3PyB+6FOmP0Sp56cWkOjaTh98FKimp19wPws=
-X-Received: by 2002:a05:6402:5216:b0:5b8:ccae:a8b8 with SMTP id
- 4fb4d7f45d1cf-5bc4b3fd7b2mr131081a12.3.1723211879768; Fri, 09 Aug 2024
- 06:57:59 -0700 (PDT)
+	dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b="sc5OSfc5"
+Received: from smtp-4-0000.mail.infomaniak.ch (smtp-4-0000.mail.infomaniak.ch [10.7.10.107])
+	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4WgQp1604fz6mf;
+	Fri,  9 Aug 2024 16:11:53 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=digikod.net;
+	s=20191114; t=1723212713;
+	bh=alrcssf8lb4SOpOwA57ksV7R442dpGsapRV5pmoJxog=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=sc5OSfc5KsTDO1QTM/8FIt51I2Z/1wYzmExzou+RihNNlqeUQTXutqdLOS+ddmfaM
+	 +GRwOTBFHjSV75JIBcPY2A+YiHII82jaUvTTJ5sd4PVaiToV60143MSlkbRdMAuS6f
+	 8J+cd4wWBauEEYAtULmiIbZ5ea/jOrdnQWmDGquk=
+Received: from unknown by smtp-4-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4WgQp03lQBzqHV;
+	Fri,  9 Aug 2024 16:11:52 +0200 (CEST)
+Date: Fri, 9 Aug 2024 16:11:47 +0200
+From: =?utf-8?Q?Micka=C3=ABl_Sala=C3=BCn?= <mic@digikod.net>
+To: Tahera Fahimi <fahimitahera@gmail.com>
+Cc: outreachy@lists.linux.dev, gnoack@google.com, paul@paul-moore.com, 
+	jmorris@namei.org, serge@hallyn.com, linux-security-module@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, bjorn3_gh@protonmail.com, jannh@google.com, 
+	netdev@vger.kernel.org
+Subject: Re: [PATCH v8 3/4] sample/Landlock: Support abstract unix socket
+ restriction
+Message-ID: <20240809.uupaip5Iepho@digikod.net>
+References: <cover.1722570749.git.fahimitahera@gmail.com>
+ <2b1ac6822d852ea70dd2dcdf41065076d9ee8028.1722570749.git.fahimitahera@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-References: <49557e48c1904d2966b8aa563215d2e1733dad95.1722966592.git.fahimitahera@gmail.com>
- <CAG48ez3o9fmqz5FkFh3YoJs_jMdtDq=Jjj-qMj7v=CxFROq+Ew@mail.gmail.com>
- <CAG48ez1jufy8iwP=+DDY662veqBdv9VbMxJ69Ohwt8Tns9afOw@mail.gmail.com>
- <20240807.Yee4al2lahCo@digikod.net> <ZrQE+d2b/FWxIPoA@tahera-OptiPlex-5000>
- <CAG48ez1q80onUxoDrFFvGmoWzOhjRaXzYpu+e8kNAHzPADvAAg@mail.gmail.com>
- <20240808.kaiyaeZoo1ha@digikod.net> <CAG48ez34C2pv7qugcYHeZgp5P=hOLyk4p5RRgKwhU5OA4Dcnuw@mail.gmail.com>
- <20240809.eejeekoo4Quo@digikod.net> <CAG48ez2Cd3sjzv5rKT1YcMi1AzBxwN8r-jTbWy0Lv89iik-Y4Q@mail.gmail.com>
- <20240809.fee1eiPohphu@digikod.net>
-In-Reply-To: <20240809.fee1eiPohphu@digikod.net>
-From: Jann Horn <jannh@google.com>
-Date: Fri, 9 Aug 2024 15:57:21 +0200
-Message-ID: <CAG48ez3nx4fR7skDf_Vhgm3OLJqGtsLUgHQMykq7oy9HZq5fgw@mail.gmail.com>
-Subject: Re: [PATCH v2 1/4] Landlock: Add signal control
-To: =?UTF-8?B?TWlja2HDq2wgU2FsYcO8bg==?= <mic@digikod.net>
-Cc: Tahera Fahimi <fahimitahera@gmail.com>, outreachy@lists.linux.dev, gnoack@google.com, 
-	paul@paul-moore.com, jmorris@namei.org, serge@hallyn.com, 
-	linux-security-module@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	bjorn3_gh@protonmail.com, netdev@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <2b1ac6822d852ea70dd2dcdf41065076d9ee8028.1722570749.git.fahimitahera@gmail.com>
+X-Infomaniak-Routing: alpha
 
-On Fri, Aug 9, 2024 at 3:37=E2=80=AFPM Micka=C3=ABl Sala=C3=BCn <mic@digiko=
-d.net> wrote:
-> On Fri, Aug 09, 2024 at 02:44:06PM +0200, Jann Horn wrote:
-> > On Fri, Aug 9, 2024 at 12:59=E2=80=AFPM Micka=C3=ABl Sala=C3=BCn <mic@d=
-igikod.net> wrote:
-> > > On Thu, Aug 08, 2024 at 04:42:23PM +0200, Jann Horn wrote:
-[...]
-> > > > So if you want to use RCU lifetime for this, I think you'll have to
-> > > > turn landlock_put_ruleset() and landlock_put_ruleset_deferred() int=
-o
-> > > > one common function that always, when reaching refcount 0, schedule=
-s
-> > > > an RCU callback which then schedules a work_struct which then does
-> > > > free_ruleset().
-> > > >
-> > > > I think that would be a little ugly, and it would look nicer to jus=
-t
-> > > > use normal locking in the file_send_sigiotask hook?
-> > >
-> > > I don't see how we can do that without delaying the free_ruleset() ca=
-ll
-> > > to after the RCU read-side critical section in f_setown().
-> >
-> > It should work if you used landlock_put_ruleset_deferred() instead of
-> > landlock_put_ruleset().
->
-> Calling landlock_put_ruleset_deferred() in hook_file_set_fowner() or
-> replacing all landlock_put_ruleset() calls?
+On Thu, Aug 01, 2024 at 10:02:35PM -0600, Tahera Fahimi wrote:
+> A sandboxer can receive the character "a" as input from the environment
+> variable LL_SCOPE to restrict the abstract unix sockets from connecting
+> to a process outside its scoped domain.
+> 
+> Example
+> =======
+> Create an abstract unix socket to listen with socat(1):
+> socat abstract-listen:mysocket -
+> Create a sandboxed shell and pass the character "a" to LL_SCOPED:
+> LL_FS_RO=/ LL_FS_RW=. LL_SCOPED="a" ./sandboxer /bin/bash
+> If the sandboxed process tries to connect to the listening socket
+> with command "socat - abstract-connect:mysocket", the connection
+> will fail.
+> 
+> Signed-off-by: Tahera Fahimi <fahimitahera@gmail.com>
+> 
+> ---
+> v8:
+> - Adding check_ruleset_scope function to parse the scope environment
+>   variable and update the landlock attribute based on the restriction
+>   provided by the user.
+> - Adding Mickaël Salaün reviews on version 7.
+> 
+> v7:
+> - Adding IPC scoping to the sandbox demo by defining a new "LL_SCOPED"
+>   environment variable. "LL_SCOPED" gets value "a" to restrict abstract
+>   unix sockets.
+> - Change LANDLOCK_ABI_LAST to 6.
+> ---
+>  samples/landlock/sandboxer.c | 56 +++++++++++++++++++++++++++++++++---
+>  1 file changed, 52 insertions(+), 4 deletions(-)
+> 
+> diff --git a/samples/landlock/sandboxer.c b/samples/landlock/sandboxer.c
+> index e8223c3e781a..98132fd823ad 100644
+> --- a/samples/landlock/sandboxer.c
+> +++ b/samples/landlock/sandboxer.c
+> @@ -14,6 +14,7 @@
+>  #include <fcntl.h>
+>  #include <linux/landlock.h>
+>  #include <linux/prctl.h>
+> +#include <linux/socket.h>
+>  #include <stddef.h>
+>  #include <stdio.h>
+>  #include <stdlib.h>
+> @@ -22,6 +23,7 @@
+>  #include <sys/stat.h>
+>  #include <sys/syscall.h>
+>  #include <unistd.h>
+> +#include <stdbool.h>
+>  
+>  #ifndef landlock_create_ruleset
+>  static inline int
+> @@ -55,6 +57,7 @@ static inline int landlock_restrict_self(const int ruleset_fd,
+>  #define ENV_FS_RW_NAME "LL_FS_RW"
+>  #define ENV_TCP_BIND_NAME "LL_TCP_BIND"
+>  #define ENV_TCP_CONNECT_NAME "LL_TCP_CONNECT"
+> +#define ENV_SCOPED_NAME "LL_SCOPED"
+>  #define ENV_DELIMITER ":"
+>  
+>  static int parse_path(char *env_path, const char ***const path_list)
+> @@ -184,6 +187,38 @@ static int populate_ruleset_net(const char *const env_var, const int ruleset_fd,
+>  	return ret;
+>  }
+>  
+> +static bool check_ruleset_scope(const char *const env_var,
+> +				struct landlock_ruleset_attr *ruleset_attr)
+> +{
+> +	bool ret = true;
+> +	char *env_type_scope, *env_type_scope_next, *ipc_scoping_name;
+> +
+> +	ruleset_attr->scoped &= ~LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET;
 
-Calling landlock_put_ruleset_deferred() in hook_file_set_fowner().
+Why always removing the suported scope?
+What happen if ABI < 6 ?
 
-> The deferred work queue is not guarantee to run after all concurrent RCU
-> read-side critical sections right?
+> +	env_type_scope = getenv(env_var);
+> +	/* scoping is not supported by the user */
+> +	if (!env_type_scope)
+> +		return true;
+> +	env_type_scope = strdup(env_type_scope);
+> +	unsetenv(env_var);
+> +
+> +	env_type_scope_next = env_type_scope;
+> +	while ((ipc_scoping_name =
+> +			strsep(&env_type_scope_next, ENV_DELIMITER))) {
+> +		if (strcmp("a", ipc_scoping_name) == 0) {
+> +			ruleset_attr->scoped |=
+> +				LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET;
 
-Yes, I was talking about my "it would look nicer to just use normal
-locking in the file_send_sigiotask hook" suggestion - don't use any
-RCU stuff, just use the same lock in file_set_fowner and
-file_send_sigiotask.
+There are two issues here:
+1. this would not work for ABI < 6
+2. "a" can be repeated several times, which should probably not be
+   allowed because we don't want to support this
+   unspecified/undocumented behavior.
+
+
+> +		} else {
+> +			fprintf(stderr, "Unsupported scoping \"%s\"\n",
+> +				ipc_scoping_name);
+> +			ret = false;
+> +			goto out_free_name;
+> +		}
+> +	}
+> +out_free_name:
+> +	free(env_type_scope);
+> +	return ret;
+> +}
+> +
+>  /* clang-format off */
+>  
+>  #define ACCESS_FS_ROUGHLY_READ ( \
+> @@ -208,7 +243,7 @@ static int populate_ruleset_net(const char *const env_var, const int ruleset_fd,
+>  
+>  /* clang-format on */
+>  
+> -#define LANDLOCK_ABI_LAST 5
+> +#define LANDLOCK_ABI_LAST 6
+>  
+>  int main(const int argc, char *const argv[], char *const *const envp)
+>  {
+> @@ -223,14 +258,15 @@ int main(const int argc, char *const argv[], char *const *const envp)
+>  		.handled_access_fs = access_fs_rw,
+>  		.handled_access_net = LANDLOCK_ACCESS_NET_BIND_TCP |
+>  				      LANDLOCK_ACCESS_NET_CONNECT_TCP,
+> +		.scoped = LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET,
+>  	};
+>  
+>  	if (argc < 2) {
+>  		fprintf(stderr,
+> -			"usage: %s=\"...\" %s=\"...\" %s=\"...\" %s=\"...\"%s "
+> +			"usage: %s=\"...\" %s=\"...\" %s=\"...\" %s=\"...\" %s=\"...\" %s "
+>  			"<cmd> [args]...\n\n",
+>  			ENV_FS_RO_NAME, ENV_FS_RW_NAME, ENV_TCP_BIND_NAME,
+> -			ENV_TCP_CONNECT_NAME, argv[0]);
+> +			ENV_TCP_CONNECT_NAME, ENV_SCOPED_NAME, argv[0]);
+>  		fprintf(stderr,
+>  			"Execute a command in a restricted environment.\n\n");
+>  		fprintf(stderr,
+> @@ -251,15 +287,18 @@ int main(const int argc, char *const argv[], char *const *const envp)
+>  		fprintf(stderr,
+>  			"* %s: list of ports allowed to connect (client).\n",
+>  			ENV_TCP_CONNECT_NAME);
+> +		fprintf(stderr, "* %s: list of restrictions on IPCs.\n",
+> +			ENV_SCOPED_NAME);
+>  		fprintf(stderr,
+>  			"\nexample:\n"
+>  			"%s=\"${PATH}:/lib:/usr:/proc:/etc:/dev/urandom\" "
+>  			"%s=\"/dev/null:/dev/full:/dev/zero:/dev/pts:/tmp\" "
+>  			"%s=\"9418\" "
+>  			"%s=\"80:443\" "
+> +			"%s=\"a\" "
+>  			"%s bash -i\n\n",
+>  			ENV_FS_RO_NAME, ENV_FS_RW_NAME, ENV_TCP_BIND_NAME,
+> -			ENV_TCP_CONNECT_NAME, argv[0]);
+> +			ENV_TCP_CONNECT_NAME, ENV_SCOPED_NAME, argv[0]);
+>  		fprintf(stderr,
+>  			"This sandboxer can use Landlock features "
+>  			"up to ABI version %d.\n",
+> @@ -327,6 +366,10 @@ int main(const int argc, char *const argv[], char *const *const envp)
+>  		/* Removes LANDLOCK_ACCESS_FS_IOCTL_DEV for ABI < 5 */
+>  		ruleset_attr.handled_access_fs &= ~LANDLOCK_ACCESS_FS_IOCTL_DEV;
+>  
+> +		__attribute__((fallthrough));
+> +	case 5:
+> +		/* Removes LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET for ABI < 6 */
+> +		ruleset_attr.scoped &= ~LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET;
+>  		fprintf(stderr,
+>  			"Hint: You should update the running kernel "
+>  			"to leverage Landlock features "
+> @@ -358,6 +401,11 @@ int main(const int argc, char *const argv[], char *const *const envp)
+>  			~LANDLOCK_ACCESS_NET_CONNECT_TCP;
+>  	}
+>  
+> +	if (!check_ruleset_scope(ENV_SCOPED_NAME, &ruleset_attr)) {
+
+You should use the same pattern as for TCP access rigths: if the
+environment variable is not set then remove the ruleset's scopes.
+
+> +		perror("Unsupported IPC scoping requested");
+> +		return 1;
+> +	}
+> +
+>  	ruleset_fd =
+>  		landlock_create_ruleset(&ruleset_attr, sizeof(ruleset_attr), 0);
+>  	if (ruleset_fd < 0) {
+> -- 
+> 2.34.1
+> 
+> 
