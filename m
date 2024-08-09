@@ -1,34 +1,34 @@
-Received: from smtp-42ad.mail.infomaniak.ch (smtp-42ad.mail.infomaniak.ch [84.16.66.173])
+Received: from smtp-42af.mail.infomaniak.ch (smtp-42af.mail.infomaniak.ch [84.16.66.175])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B803E197A6A
-	for <outreachy@lists.linux.dev>; Fri,  9 Aug 2024 12:45:48 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=84.16.66.173
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 02F1F192B9F
+	for <outreachy@lists.linux.dev>; Fri,  9 Aug 2024 13:37:27 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=84.16.66.175
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1723207552; cv=none; b=m3fv4mk4AFbsGdEoXDT+J3MktAtzFPEWGPyQGziPgSoD0o9dQIGinz31XyKBQ7MqYyilFi2HRnEcgZC3EYh8enXu9T9OT1oCBWov9b1k8wFAKtQwk3LEA4VpCNBa9wesr7ao0YuIVYF9nS6hbGSkh7MW4Zkr74gw5gqPlZldejc=
+	t=1723210652; cv=none; b=EWTwDRu44Fka/AS84Ek0093dvfKSoB38d9XLqhHpH1iBXfw3Zcmkt8KUJ7rvwSKnBa5stsnXDTDhc5yaPDF/mSwrkIIpOllcNS7sgMq/d7tLjTXCYQQRIxMzvc82dg1S2oc86I1rkdrvm+Y39hjM0bcDwUBR+359h858Z18ct2c=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1723207552; c=relaxed/simple;
-	bh=Trcqj4P9tk1i1V9qr1YFG4yl53DMu6W2JO1hq+qEC5A=;
+	s=arc-20240116; t=1723210652; c=relaxed/simple;
+	bh=CV2KsuTzZFM3tb3jpFAEOVmdFeFl9DGCIr23w73TUBc=;
 	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=j0oToLwfUZDiB1Dut/ooKKG9IvHUdN5sXCv707vNsrWqBdUjdMfYFgUFn5rpWXtWwe+hh+DfQclFm4qnyKgs80AkWu8k+/0qd8GzsL+9+5Rs91F4sr65kzsiMFr5YYgNWUGTY+yyyntg48OExDdf25WeuyHpHkO5I9l3dIa9bi8=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net; spf=pass smtp.mailfrom=digikod.net; dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b=mlFAfdfh; arc=none smtp.client-ip=84.16.66.173
+	 Content-Type:Content-Disposition:In-Reply-To; b=XJoDCs6pcY0eAswiYZcXiuHraHejalIe54CIFhXKzB1vaDuu2QacgDfZindYS3Tadpe0PbAgPlaYMHuVB7xWYG3Y9ipjhbc5CRsElPUr6OoVrqo5ICM8R8/bDTd298xM1EjQojPtZTqSCkxXPPSpvT/X+1yo6YNCwqnklnK4MDk=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net; spf=pass smtp.mailfrom=digikod.net; dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b=OpYdACcN; arc=none smtp.client-ip=84.16.66.175
 Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=digikod.net
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b="mlFAfdfh"
-Received: from smtp-4-0001.mail.infomaniak.ch (smtp-4-0001.mail.infomaniak.ch [10.7.10.108])
-	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4WgNtX5XJxzT3d;
-	Fri,  9 Aug 2024 14:45:40 +0200 (CEST)
+	dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b="OpYdACcN"
+Received: from smtp-3-0000.mail.infomaniak.ch (smtp-3-0000.mail.infomaniak.ch [10.4.36.107])
+	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4WgQ2G15hFzsbq;
+	Fri,  9 Aug 2024 15:37:26 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=digikod.net;
-	s=20191114; t=1723207540;
-	bh=20glFXAeQ4aDIox+dfGLIPtIyZEgMytK3bDO6kau5xM=;
+	s=20191114; t=1723210646;
+	bh=8yuEdFJ5d9KshgHjOdDGSrL9W7g0PXB4OxTMQzj+pOw=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=mlFAfdfhxjNPQIMbRpN7tgGvUM+YZM/d15b2H9+8dQFYr5nZp5QMm/iPwkird+NxJ
-	 Xj37u98f2wumczOBFZTw+UAfESl5iWFiVwc6PUJ4lrGA9iYfxUchZFm10xUmcxESwB
-	 Jy1ehp3U82//kDQmZfTpi9y6iYDY1xrjtzGZ1whE=
-Received: from unknown by smtp-4-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4WgNtX0rjKzd3G;
-	Fri,  9 Aug 2024 14:45:40 +0200 (CEST)
-Date: Fri, 9 Aug 2024 14:45:35 +0200
+	b=OpYdACcNA4gLC3N3pH0KoWMirAjjPj2EBVJfEGi4dfMGog77vLpqZuSTrW72bVb3M
+	 +EQ3x26RAlAsnbvc1YpYxMtM/93AA3EBwXiEFROh8BxkZ5/30nqycipm6+yqoJkswN
+	 Bts5A/dMbwc93yssOu8etR1rmfOSZV1LvaBfXbOU=
+Received: from unknown by smtp-3-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4WgQ2F4g09z7Hk;
+	Fri,  9 Aug 2024 15:37:25 +0200 (CEST)
+Date: Fri, 9 Aug 2024 15:37:20 +0200
 From: =?utf-8?Q?Micka=C3=ABl_Sala=C3=BCn?= <mic@digikod.net>
 To: Jann Horn <jannh@google.com>
 Cc: Tahera Fahimi <fahimitahera@gmail.com>, outreachy@lists.linux.dev, 
@@ -36,7 +36,7 @@ Cc: Tahera Fahimi <fahimitahera@gmail.com>, outreachy@lists.linux.dev,
 	linux-security-module@vger.kernel.org, linux-kernel@vger.kernel.org, bjorn3_gh@protonmail.com, 
 	netdev@vger.kernel.org
 Subject: Re: [PATCH v2 1/4] Landlock: Add signal control
-Message-ID: <20240809.Ieng6cheumo9@digikod.net>
+Message-ID: <20240809.fee1eiPohphu@digikod.net>
 References: <49557e48c1904d2966b8aa563215d2e1733dad95.1722966592.git.fahimitahera@gmail.com>
  <CAG48ez3o9fmqz5FkFh3YoJs_jMdtDq=Jjj-qMj7v=CxFROq+Ew@mail.gmail.com>
  <CAG48ez1jufy8iwP=+DDY662veqBdv9VbMxJ69Ohwt8Tns9afOw@mail.gmail.com>
@@ -46,7 +46,7 @@ References: <49557e48c1904d2966b8aa563215d2e1733dad95.1722966592.git.fahimitaher
  <20240808.kaiyaeZoo1ha@digikod.net>
  <CAG48ez34C2pv7qugcYHeZgp5P=hOLyk4p5RRgKwhU5OA4Dcnuw@mail.gmail.com>
  <20240809.eejeekoo4Quo@digikod.net>
- <20240809.soh6aeCeeRiu@digikod.net>
+ <CAG48ez2Cd3sjzv5rKT1YcMi1AzBxwN8r-jTbWy0Lv89iik-Y4Q@mail.gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -56,11 +56,11 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240809.soh6aeCeeRiu@digikod.net>
+In-Reply-To: <CAG48ez2Cd3sjzv5rKT1YcMi1AzBxwN8r-jTbWy0Lv89iik-Y4Q@mail.gmail.com>
 X-Infomaniak-Routing: alpha
 
-On Fri, Aug 09, 2024 at 02:40:17PM +0200, Mickaël Salaün wrote:
-> On Fri, Aug 09, 2024 at 12:59:48PM +0200, Mickaël Salaün wrote:
+On Fri, Aug 09, 2024 at 02:44:06PM +0200, Jann Horn wrote:
+> On Fri, Aug 9, 2024 at 12:59 PM Mickaël Salaün <mic@digikod.net> wrote:
 > > On Thu, Aug 08, 2024 at 04:42:23PM +0200, Jann Horn wrote:
 > > > On Thu, Aug 8, 2024 at 4:09 PM Mickaël Salaün <mic@digikod.net> wrote:
 > > > > On Thu, Aug 08, 2024 at 03:10:54AM +0200, Jann Horn wrote:
@@ -177,87 +177,51 @@ On Fri, Aug 09, 2024 at 02:40:17PM +0200, Mickaël Salaün wrote:
 > > > > +       ruleset = container_of(head, struct landlock_ruleset, rcu);
 > > > > +       free_ruleset(ruleset);
 > > > > +}
-> > > 
+> > >
 > > > free_ruleset() can block but RCU callbacks aren't allowed to block,
 > > > that's why landlock_put_ruleset_deferred() exists.
-> > 
+> >
 > > Yes, but landlock_put_ruleset_deferred() doesn't wait for RCU read-side
 > > critical sections.
-> > 
-> > > 
-> > > > +
-> > > > +void landlock_put_ruleset_rcu(struct landlock_ruleset *const ruleset)
-> > > > +{
-> > > > +       if (ruleset && refcount_dec_and_test(&ruleset->usage))
-> > > > +               call_rcu(&ruleset->rcu, free_ruleset_rcu);
-> > > > +}
-> > > 
-> > > No, this pattern of combining refcounting and RCU doesn't work.
-> > > 
-> > > One legal pattern is:
-> > > *The entire object* is subject to RCU; any refcount decrement that
-> > > drops the refcount to 0 does call_rcu().
-> > > (This is the usual RCU refcounting pattern in the kernel.)
-> > > 
-> > > Another legal pattern is:
-> > > One particular *reference* is subject to RCU; when dropping this
-> > > reference, *the refcount decrement is delayed with call_rcu()*.
-> > > (This is basically the RCU pattern used for stuff like the reference
-> > > from "struct pid" to "struct task_struct".)
-> > > 
-> > > But you can't use call_rcu() depending on whether the last dropped
-> > > reference happened to be a reference that required RCU; what if the
-> > > refcount is 2, then you first call landlock_put_ruleset_rcu() which
-> > > decrements the refcount to 1, and immediately afterwards you call
-> > > landlock_put_ruleset() which drops the refcount to 0 and frees the
-> > > object without waiting for an RCU grace period? Like so:
-> > > 
-> > > thread A         thread B
-> > > ========         ========
-> > > rcu_read_lock()
-> > > ruleset = rcu_dereference(...->fown_domain)
-> > >                  ruleset = rcu_replace_pointer(...->fown_domain, new_dom, ...)
-> > >                  landlock_put_ruleset_rcu(ruleset)
-> > >                  landlock_put_ruleset(ruleset)
-> > >                    free_ruleset(ruleset)
-> > >                      kfree(ruleset)
-> > > access ruleset [UAF]
-> > > rcu_read_unlock()
-> > 
-> > Indeed
-> > 
-> > > 
+> 
+> Ah, I phrased that badly - I didn't mean to suggest that you should
+> use landlock_put_ruleset_deferred() as a replacement for call_rcu().
+> 
+> [...]
 > > > So if you want to use RCU lifetime for this, I think you'll have to
 > > > turn landlock_put_ruleset() and landlock_put_ruleset_deferred() into
 > > > one common function that always, when reaching refcount 0, schedules
 > > > an RCU callback which then schedules a work_struct which then does
 > > > free_ruleset().
-> > > 
+> > >
 > > > I think that would be a little ugly, and it would look nicer to just
 > > > use normal locking in the file_send_sigiotask hook?
-> > 
+> >
 > > I don't see how we can do that without delaying the free_ruleset() call
 > > to after the RCU read-side critical section in f_setown().
-> > 
+> 
+> It should work if you used landlock_put_ruleset_deferred() instead of
+> landlock_put_ruleset().
+
+Calling landlock_put_ruleset_deferred() in hook_file_set_fowner() or
+replacing all landlock_put_ruleset() calls?
+
+The deferred work queue is not guarantee to run after all concurrent RCU
+read-side critical sections right?  Calling synchronize_rcu() in
+free_ruleset_work() should give this guarantee, but it's not nice.  We
+could add a boolean in landlock_ruleset to only call synchronize_rcu()
+when required (i.e. called from file_set_fowner).
+
+> 
 > > What about calling refcount_dec_and_test() in free_ruleset_rcu()?  That
 > > would almost always queue this call but it looks safe.
 > 
-> That's the second pattern you pointed out just above.  Because we should
-> only use the related struct rcu_head for this call site (which is
-> protected with f_owner.lock), we should make that explicit with a
-> "_fown" suffix for the function (landlock_put_ruleset_rcu_fown) and the
-> ruleset's field (rcu_fown).
+> Every queued RCU invocation needs to have its own rcu_head - I think
+> the approach you're suggesting could end up queuing the same rcu_head
+> multiple times?
 
-Hmm, this is not enough because this function site could still be called
-with the same ruleset several time, which could lead to memory leak and
-potential rcu_head pointers inconsistencies...
+Right
 
 > 
-> > 
 > > An alternative might be to call synchronize_rcu() in free_ruleset(), but
 > > it's a big ugly too.
-> > 
-> > BTW, I don't understand why neither SELinux nor Smack use (explicit)
-> > atomic operations nor lock.  And it looks weird that
-> > security_file_set_fowner() isn't called by f_modown() with the same
-> > locking to avoid races.
