@@ -1,71 +1,45 @@
-Received: from mail-pf1-f173.google.com (mail-pf1-f173.google.com [209.85.210.173])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from smtp-8fae.mail.infomaniak.ch (smtp-8fae.mail.infomaniak.ch [83.166.143.174])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E83DC12B94
-	for <outreachy@lists.linux.dev>; Thu, 15 Aug 2024 23:06:10 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.210.173
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 039EA7DA64
+	for <outreachy@lists.linux.dev>; Fri, 16 Aug 2024 21:20:13 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=83.166.143.174
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1723763172; cv=none; b=sSDG2K0f6CT0Gwosz3Y7rKVDkXWQlBJhFyffzAgXOD+S6TjbRjFP5zxcOAhAguMD1z1iwMGf/qZ1UKG2NYSSExjvkqj9UQgA7xWF4T2dh1EDcg8kyYtF4WeOMtGw3TTvvJvS0jgiDc5NtoyLGGSKUf143yit92l9vCtP54WJa5o=
+	t=1723843220; cv=none; b=L0/bXJdWbowoD1+VHr9Kl+x5QASAHk87JRT9Tz/Sw2PqGU5DiQqPapX7f0InN7iOg9PfjkFmvErmxRCUd7JreCfIkQ1n/cKYqmEXAJbhjAQ8Q/vIaFYoBZ/+mQ1jm4A2K65L470QhjtIibWSQXCkRtzzfVyRe1Yqbo3Jh6F7a5M=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1723763172; c=relaxed/simple;
-	bh=bvTlhlXNaVe0JPjLpRuKFXfFp3CAjwWT83vZcv58etE=;
+	s=arc-20240116; t=1723843220; c=relaxed/simple;
+	bh=RsnMdQdxZqF2ortXNgK8m4Eno7YiqvVAhPbPy6YyNWM=;
 	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=WvXJmSSzqrOmQNYw0ukL3eR5YQ8Cad3Q0FOaG/P+i+STkccGJHAM+M7q3eRRbtMeBzra438sM7hAwTymUgIkRCKElT1AyVHd1p5mmOJgExuygNzZ8qV5xRBasGeqWJxLW95wtZ4NOexesRpRGpL0936PxWZ+KDa3VDj2M2/+P70=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=lrjONIyM; arc=none smtp.client-ip=209.85.210.173
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	 Content-Type:Content-Disposition:In-Reply-To; b=UpHHvYgb/06aVVQXRtfDCIO64dfK0dNoG01MfLwQFx2BmugvfObejmcfVkshMSMMOiNV6Q5pwcBQmfYTq4DMrCjLl1iBveUtO4r1nXUUy4xUJWOC8RxTlxWab7FjNB8rAWiv6DZ/VJ+aKWQdZhqYk9xAHuCbd2o1CQW5bdi4nf8=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net; spf=pass smtp.mailfrom=digikod.net; dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b=XxBWyddf; arc=none smtp.client-ip=83.166.143.174
+Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=digikod.net
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="lrjONIyM"
-Received: by mail-pf1-f173.google.com with SMTP id d2e1a72fcca58-710bdddb95cso976915b3a.3
-        for <outreachy@lists.linux.dev>; Thu, 15 Aug 2024 16:06:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1723763170; x=1724367970; darn=lists.linux.dev;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=r2MVp98bZo761S4wGmdjk4zKZB2eYXUc53AD4ygWeNY=;
-        b=lrjONIyMCdNVcecZ69EmBZMAoT+hS9o5PJy0BXvNl227nAamCjyJHBjoAF12YmH/LB
-         lz3WnWM87R+lHf+3Eo4r40UeQ7ATkKjqWx9urL4bzYh5uM/g7nUaYJLF3MmDaLc7pSJa
-         0icsGiyUYVTL46G+heS7msxcFsIXPKhyn8RRhJ8BDNwCDDneLzFZHAs0PY8+3LaRMMP+
-         abBmpbn7SSt0B9YqOSPPx1HuvLxYyqAajkzEFv5TzRLY/k9YR5rznYIlsBEeL3PxRaax
-         hj8wR+hihrmZPCedU7dLnB4nI3TC+tgKnJGWAvC40oZrW9kkk7yj74yV3jujhGUaVFhh
-         m65w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1723763170; x=1724367970;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=r2MVp98bZo761S4wGmdjk4zKZB2eYXUc53AD4ygWeNY=;
-        b=lsGhB7GDGc/bOCIMgcU1dwSfXtjoEWlI+vGc7hyKrNdDXdaV/46OcdKiJoI4TEdlie
-         apAoHp0EReX/T+byrHWm/n7UFnF5eTJUagO7h7hab/ikrCBjMYR7GijIHujBBTBRd87u
-         KjF7pTB0QCA/Oi7rLkMKbM6xiydSbMq1t1+cQ6mwflsprUvmw+2Pg5CMy7aKnvN6+213
-         DTdmjLA7zZVxYjxWSgFsIMzwwFrhS3CKwRhJTahiEaL15O7dYpI0DqjpnhXCZHECfAro
-         jTMUe+N6VVp4H/TnJ7/ziNmvc+MOP1v8qgDIiQjAUG8fnOUJ+DB7DXZ6XZPrwr6sstG8
-         Dy6g==
-X-Gm-Message-State: AOJu0Yx7+OSH9ZRnQN+FihWeifc/MeB9xE7BKlfdIPikP8zmVIYFmTlw
-	DPh4jndi/FeGoC/DbtinfjEDbyZnE6RA0L1S4c0gwLqkwR+v7yxh
-X-Google-Smtp-Source: AGHT+IGXM/Mqg9qSgfOA6fMJ1xt6FPn83RQRVebx68PrCIT9+I7807vn1nG8ky9ebKzf39dbjaw4Wg==
-X-Received: by 2002:a05:6a20:c88a:b0:1c8:95c9:307c with SMTP id adf61e73a8af0-1c904fb6489mr1756065637.28.1723763170085;
-        Thu, 15 Aug 2024 16:06:10 -0700 (PDT)
-Received: from tahera-OptiPlex-5000 ([136.159.49.123])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-7127ae0756dsm1508384b3a.47.2024.08.15.16.06.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 15 Aug 2024 16:06:09 -0700 (PDT)
-Date: Thu, 15 Aug 2024 17:06:07 -0600
-From: Tahera Fahimi <fahimitahera@gmail.com>
-To: Jann Horn <jannh@google.com>
-Cc: outreachy@lists.linux.dev, mic@digikod.net, gnoack@google.com,
-	paul@paul-moore.com, jmorris@namei.org, serge@hallyn.com,
-	linux-security-module@vger.kernel.org, linux-kernel@vger.kernel.org,
-	bjorn3_gh@protonmail.com, netdev@vger.kernel.org
-Subject: Re: [PATCH v3 2/6] Landlock: Adding file_send_sigiotask signal
- scoping support
-Message-ID: <Zr6J31ewINPtPtTD@tahera-OptiPlex-5000>
-References: <cover.1723680305.git.fahimitahera@gmail.com>
- <d04bc943e8d275e8d00bb7742bcdbabc7913abbe.1723680305.git.fahimitahera@gmail.com>
- <CAG48ez2Sw0Cy3RYrgrsEDKyWoxMmMbzX6yY-OEfZqeyGDQhy9w@mail.gmail.com>
- <Zr5y53Bl6cgdLKjj@tahera-OptiPlex-5000>
- <CAG48ez1PcHRDhRjtsq_JAr5e6z=XNjB1Mi_jjtr8EsRphnnb2g@mail.gmail.com>
+	dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b="XxBWyddf"
+Received: from smtp-4-0001.mail.infomaniak.ch (smtp-4-0001.mail.infomaniak.ch [10.7.10.108])
+	by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4Wlvys5SGGz13tW;
+	Fri, 16 Aug 2024 23:20:05 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=digikod.net;
+	s=20191114; t=1723843205;
+	bh=0w9S8iWKBv9Q934rgCPmMlAKNc73m9LHTITdhR8icLw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=XxBWyddfhDcivwuxUJ//c/Uw64C145/x13b57MCGJNrLK+x1umQMBWXj+98KXZ0oJ
+	 w0TJHM4caw8ZXGBykR+9XzqWp0si8WGdahU0nriRiSvKb63LQEkplKEVQKdOuVS+hf
+	 76TYx1SzhjKTjGR6xyjFTsfg0Xb5VnJ9YWxUWcsg=
+Received: from unknown by smtp-4-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4Wlvyr4WZVzQPg;
+	Fri, 16 Aug 2024 23:20:04 +0200 (CEST)
+Date: Fri, 16 Aug 2024 23:19:58 +0200
+From: =?utf-8?Q?Micka=C3=ABl_Sala=C3=BCn?= <mic@digikod.net>
+To: Tahera Fahimi <fahimitahera@gmail.com>
+Cc: outreachy@lists.linux.dev, gnoack@google.com, paul@paul-moore.com, 
+	jmorris@namei.org, serge@hallyn.com, linux-security-module@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, bjorn3_gh@protonmail.com, jannh@google.com, 
+	netdev@vger.kernel.org
+Subject: Re: [PATCH v9 1/5] Landlock: Add abstract unix socket connect
+ restriction
+Message-ID: <20240816.Bi8EitheeV2o@digikod.net>
+References: <cover.1723615689.git.fahimitahera@gmail.com>
+ <603cf546392f0cd35227f696527fd8f1d644cb31.1723615689.git.fahimitahera@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -75,92 +49,167 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAG48ez1PcHRDhRjtsq_JAr5e6z=XNjB1Mi_jjtr8EsRphnnb2g@mail.gmail.com>
+In-Reply-To: <603cf546392f0cd35227f696527fd8f1d644cb31.1723615689.git.fahimitahera@gmail.com>
+X-Infomaniak-Routing: alpha
 
-On Fri, Aug 16, 2024 at 12:10:44AM +0200, Jann Horn wrote:
-> On Thu, Aug 15, 2024 at 11:28 PM Tahera Fahimi <fahimitahera@gmail.com> wrote:
-> >
-> > On Thu, Aug 15, 2024 at 10:25:15PM +0200, Jann Horn wrote:
-> > > On Thu, Aug 15, 2024 at 8:29 PM Tahera Fahimi <fahimitahera@gmail.com> wrote:
-> > > > This patch adds two new hooks "hook_file_set_fowner" and
-> > > > "hook_file_free_security" to set and release a pointer to the
-> > > > domain of the file owner. This pointer "fown_domain" in
-> > > > "landlock_file_security" will be used in "file_send_sigiotask"
-> > > > to check if the process can send a signal.
-> > > >
-> > > > Signed-off-by: Tahera Fahimi <fahimitahera@gmail.com>
-> > > > ---
-> > > >  security/landlock/fs.c   | 18 ++++++++++++++++++
-> > > >  security/landlock/fs.h   |  6 ++++++
-> > > >  security/landlock/task.c | 27 +++++++++++++++++++++++++++
-> > > >  3 files changed, 51 insertions(+)
-> > > >
-> > > > diff --git a/security/landlock/fs.c b/security/landlock/fs.c
-> > > > index 7877a64cc6b8..d05f0e9c5e54 100644
-> > > > --- a/security/landlock/fs.c
-> > > > +++ b/security/landlock/fs.c
-> > > > @@ -1636,6 +1636,21 @@ static int hook_file_ioctl_compat(struct file *file, unsigned int cmd,
-> > > >         return -EACCES;
-> > > >  }
-> > > >
-> > > > +static void hook_file_set_fowner(struct file *file)
-> > > > +{
-> > > > +       write_lock_irq(&file->f_owner.lock);
-> > >
-> > > Before updating landlock_file(file)->fown_domain, this hook must also
-> > > drop a reference on the old domain - maybe by just calling
-> > > landlock_put_ruleset_deferred(landlock_file(file)->fown_domain) here.
-> > Hi Jann,
-> >
-> > Thanks for the feedback :)
-> > It totally make sense.
-> > > > +       landlock_file(file)->fown_domain = landlock_get_current_domain();
-> > > > +       landlock_get_ruleset(landlock_file(file)->fown_domain);
-> > > > +       write_unlock_irq(&file->f_owner.lock);
-> > > > +}
-> > > > +
-> > > > +static void hook_file_free_security(struct file *file)
-> > > > +{
-> > > > +       write_lock_irq(&file->f_owner.lock);
-> > > > +       landlock_put_ruleset(landlock_file(file)->fown_domain);
-> > I was thinking of if we can replace this landlock_put_ruleset with
-> > landlock_put_ruleset_deferred. In this case, it would be better use of
-> > handling the lock?
+On Wed, Aug 14, 2024 at 12:22:19AM -0600, Tahera Fahimi wrote:
+> This patch introduces a new "scoped" attribute to the landlock_ruleset_attr
+> that can specify "LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET" to scope
+> abstract Unix sockets from connecting to a process outside of
+> the same landlock domain. It implements two hooks, unix_stream_connect
+> and unix_may_send to enforce this restriction.
 > 
-> I don't think you have to take the "file->f_owner.lock" in this hook -
-> the file has already been torn down pretty far, nothing is going to be
-> able to trigger the file_set_fowner hook anymore.
-That's right. Thanks.
+> Closes: https://github.com/landlock-lsm/linux/issues/7
+> Signed-off-by: Tahera Fahimi <fahimitahera@gmail.com>
+> 
+> ---
+> v9:
+> - Editting inline comments.
+> - Major refactoring in domain_is_scoped() and is_abstract_socket
+> v8:
+> - Code refactoring (improve code readability, renaming variable, etc.) based
+>   on reviews by Mickaël Salaün on version 7.
+> - Adding warn_on_once to check (impossible) inconsistencies.
+> - Adding inline comments.
+> - Adding check_unix_address_format to check if the scoping socket is an abstract
+>   unix sockets.
+> v7:
+>  - Using socket's file credentials for both connected(STREAM) and
+>    non-connected(DGRAM) sockets.
+>  - Adding "domain_sock_scope" instead of the domain scoping mechanism used in
+>    ptrace ensures that if a server's domain is accessible from the client's
+>    domain (where the client is more privileged than the server), the client
+>    can connect to the server in all edge cases.
+>  - Removing debug codes.
+> v6:
+>  - Removing curr_ruleset from landlock_hierarchy, and switching back to use
+>    the same domain scoping as ptrace.
+>  - code clean up.
+> v5:
+>  - Renaming "LANDLOCK_*_ACCESS_SCOPE" to "LANDLOCK_*_SCOPE"
+>  - Adding curr_ruleset to hierarachy_ruleset structure to have access from
+>    landlock_hierarchy to its respective landlock_ruleset.
+>  - Using curr_ruleset to check if a domain is scoped while walking in the
+>    hierarchy of domains.
+>  - Modifying inline comments.
+> V4:
+>  - Rebased on Günther's Patch:
+>    https://lore.kernel.org/all/20240610082115.1693267-1-gnoack@google.com/
+>    so there is no need for "LANDLOCK_SHIFT_ACCESS_SCOPE", then it is removed.
+>  - Adding get_scope_accesses function to check all scoped access masks in a ruleset.
+>  - Using socket's file credentials instead of credentials stored in peer_cred
+>    for datagram sockets. (see discussion in [1])
+>  - Modifying inline comments.
+> V3:
+>  - Improving commit description.
+>  - Introducing "scoped" attribute to landlock_ruleset_attr for IPC scoping
+>    purpose, and adding related functions.
+>  - Changing structure of ruleset based on "scoped".
+>  - Removing rcu lock and using unix_sk lock instead.
+>  - Introducing scoping for datagram sockets in unix_may_send.
+> V2:
+>  - Removing wrapper functions
+> 
+> [1]https://lore.kernel.org/all/20240610.Aifee5ingugh@digikod.net/
+> ----
 
-> But either way, you're right that we can't just use
-> landlock_put_ruleset() here because landlock_put_ruleset() can sleep
-> and the file_free_security hook can be invoked from non-sleepable
-> context. (This only happens when fput() directly calls file_free(),
-> and I think that only happens with ->fown_domain==NULL, so technically
-> it would also be fine to do something like "if (domain)
-> landlock_put_ruleset(domain);".)
-> If you test your current code in a kernel that was built with
-> CONFIG_DEBUG_ATOMIC_SLEEP=y, this will probably print an warning
-> message in the kernel log (dmesg). You're right that using
-> landlock_put_ruleset_deferred() instead would fix that.
+Useless "----"
+
+> ---
+>  include/uapi/linux/landlock.h |  27 +++++++
+>  security/landlock/limits.h    |   3 +
+>  security/landlock/ruleset.c   |   7 +-
+>  security/landlock/ruleset.h   |  23 +++++-
+>  security/landlock/syscalls.c  |  17 +++--
+>  security/landlock/task.c      | 129 ++++++++++++++++++++++++++++++++++
+>  6 files changed, 198 insertions(+), 8 deletions(-)
 > 
-> I think the right solution here is probably just to do:
+
+> +static bool sock_is_scoped(struct sock *const other,
+> +			   const struct landlock_ruleset *const dom)
+
+Please rename "dom" to "domain".  Function arguments with full names
+make the API more consistent and easier to understand.
+
+> +{
+> +	const struct landlock_ruleset *dom_other;
+> +
+> +	/* the credentials will not change */
+> +	lockdep_assert_held(&unix_sk(other)->lock);
+> +	dom_other = landlock_cred(other->sk_socket->file->f_cred)->domain;
+> +	return domain_is_scoped(dom, dom_other,
+> +				LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET);
+> +}
+> +
+> +static bool is_abstract_socket(struct sock *const sock)
+> +{
+> +	struct unix_address *addr = unix_sk(sock)->addr;
+> +
+> +	if (!addr)
+> +		return false;
+> +
+> +	if (addr->len >= offsetof(struct sockaddr_un, sun_path) + 1 &&
+> +	    addr->name[0].sun_path[0] == '\0')
+> +		return true;
+> +
+> +	return false;
+
+Much better!
+
+> +}
+> +
+> +static int hook_unix_stream_connect(struct sock *const sock,
+> +				    struct sock *const other,
+> +				    struct sock *const newsk)
+> +{
+> +	const struct landlock_ruleset *const dom =
+> +		landlock_get_current_domain();
+> +
+> +	/* quick return for non-sandboxed processes */
+> +	if (!dom)
+> +		return 0;
+> +
+> +	if (is_abstract_socket(other))
+> +		if (sock_is_scoped(other, dom))
+
+if (is_abstract_socket(other) && sock_is_scoped(other, dom))
+
+(We might want to extend this hook in the future but we'll revise this
+notation when needed)
+
+> +			return -EPERM;
+> +
+> +	return 0;
+> +}
+> +
+> +static int hook_unix_may_send(struct socket *const sock,
+> +			      struct socket *const other)
+> +{
+> +	const struct landlock_ruleset *const dom =
+> +		landlock_get_current_domain();
+> +
+> +	if (!dom)
+> +		return 0;
+> +
+> +	if (is_abstract_socket(other->sk))
+> +		if (sock_is_scoped(other->sk, dom))
+
+ditto
+
+> +			return -EPERM;
+> +
+> +	return 0;
+> +}
+> +
+>  static struct security_hook_list landlock_hooks[] __ro_after_init = {
+>  	LSM_HOOK_INIT(ptrace_access_check, hook_ptrace_access_check),
+>  	LSM_HOOK_INIT(ptrace_traceme, hook_ptrace_traceme),
+> +	LSM_HOOK_INIT(unix_stream_connect, hook_unix_stream_connect),
+> +	LSM_HOOK_INIT(unix_may_send, hook_unix_may_send),
+>  };
+>  
+>  __init void landlock_add_task_hooks(void)
+> -- 
+> 2.34.1
 > 
-> static void hook_file_free_security(struct file *file)
-> {
->   landlock_put_ruleset_deferred(landlock_file(file)->fown_domain);
-> }
-I think I will stick to this one since it is easier to understand. 
-> Alternatively it would also work to do this - this code is probably a
-> bit more efficient but also a little less clear:
 > 
-> static void hook_file_free_security(struct file *file)
-> {
->   /* don't trigger might_sleep() for tearing down unopened file */
->   if (landlock_file(file)->fown_domain)
->     landlock_put_ruleset(landlock_file(file)->fown_domain);
-> }
-> 
-> >
-> > > > +       write_unlock_irq(&file->f_owner.lock);
-> > > > +}
