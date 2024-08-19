@@ -1,45 +1,45 @@
 Received: from smtp-8fa9.mail.infomaniak.ch (smtp-8fa9.mail.infomaniak.ch [83.166.143.169])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C7A861DD38D
-	for <outreachy@lists.linux.dev>; Mon, 19 Aug 2024 19:47:34 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 98F0B1DD392
+	for <outreachy@lists.linux.dev>; Mon, 19 Aug 2024 19:49:08 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=83.166.143.169
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1724096858; cv=none; b=feSIjMMKxeTY9g/IxXzeEDjsIonFUriw5toWKlRspFeePKW33Y8O/6keUFdJRCgfh7ndSkKcObPD84Sj1cFhueTZlwySKCSAoyQr2DCxQSYEBrNIuHrkUL/iXNiVT7Is3of0LmKVBJD69v4BFPnu2jo48A5338BLLm3Clpx+z0E=
+	t=1724096951; cv=none; b=uFS3rhNqZmzsgNsyFkITqP8qd6jZrn04+cQVu9LZNtPWAtchDM9goulUYN1AGYGk0OZhgSFRYv39allQbaK6AWI+seJ4wyPTM6MGGCxWT4szWAyTDeGKdZZnAG9VUOzAKnY0LfyBPeIU+J0dECuk0ITv8clPwJcVVOUtyEY68Is=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1724096858; c=relaxed/simple;
-	bh=aFO8S6ptrA9vRatPbkASy+wPxZ+69fy3yw2vN8gDmyM=;
+	s=arc-20240116; t=1724096951; c=relaxed/simple;
+	bh=tbHoPE0VvmtElKliER9pfKhX6a4EXee9XD9DFCh1owc=;
 	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=YXN+O6W4sD3VMJJkrE7vL952lti/TVxhpYgvRVEAx49BtCx7fUCZAaJCYdAxgQwkUou2uuy3+1/qSZAxlWKQYrIVyIld8ftJm7/G9xz70sndOylsu3EcXLduYjbkwl99A+TLY3nhX2yIjOERq9WNghSyS+sOo2jUZz8cfJrjteM=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net; spf=pass smtp.mailfrom=digikod.net; dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b=r/zgoQk4; arc=none smtp.client-ip=83.166.143.169
+	 Content-Type:Content-Disposition:In-Reply-To; b=aViUROpQpi6Kq6QyLI8uUZQV+XzcWw3WR4LSJ9rGmngPjkZhTxyY9g1nxLhP5mfWmyugXbHpAyktvhsFb1qPxbuIas2yhfc8xq3Y0baV2iTZs4drSwNTbRIL7v3aHPYJOTC2DRMpPTpbgvcYzz9CRfBkxuOQ67UJgA6qDJlDCXM=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net; spf=pass smtp.mailfrom=digikod.net; dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b=1RpBJuJh; arc=none smtp.client-ip=83.166.143.169
 Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=digikod.net
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b="r/zgoQk4"
+	dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b="1RpBJuJh"
 Received: from smtp-4-0001.mail.infomaniak.ch (smtp-4-0001.mail.infomaniak.ch [10.7.10.108])
-	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4Wnjmb1n0vzl56;
-	Mon, 19 Aug 2024 21:47:27 +0200 (CEST)
+	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4WnjpW1HqnzsCn;
+	Mon, 19 Aug 2024 21:49:07 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=digikod.net;
-	s=20191114; t=1724096847;
-	bh=47ZixQsG6Q3QUb7QdsnWS5gr698drar7jhvYV9oZYqM=;
+	s=20191114; t=1724096947;
+	bh=XXYTKUIhmb3g4TO0o6A/cG623xPk3XJMJW789prBuLg=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=r/zgoQk4IAhjbwAJg5XLXENBvlZ/P26MVDkiXM/bF3Gf1X2mLHq1aDGmtwX0Pvx1e
-	 79Mb28wAS+xfG1/FeBqVWUEXKucJp1a10gO4JWtbEsferxfgoEZ5aMhNkKNsk6ctBf
-	 p4e6hkfHM6RusnwKzCgDvyVkRugQyKI5GTLe//fo=
-Received: from unknown by smtp-4-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4WnjmZ55z7z27s;
-	Mon, 19 Aug 2024 21:47:26 +0200 (CEST)
-Date: Mon, 19 Aug 2024 21:47:23 +0200
+	b=1RpBJuJhgnI7yHLSl+S6FB5nssMonj/Q+fYtYrthmDUMFxWm3oQ5PihvcGJ24nf1d
+	 A3tOPEWUDWuWuCnGyXm6HlRyppPDbruAIMtkLmWBU+Rd+E69ak+6SP3fASGFvgrhBq
+	 aEhcetaxPEMPghLcgWKcwPwN3VgZEa2Y8zml3fF8=
+Received: from unknown by smtp-4-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4WnjpV5BJNz2TR;
+	Mon, 19 Aug 2024 21:49:06 +0200 (CEST)
+Date: Mon, 19 Aug 2024 21:49:03 +0200
 From: =?utf-8?Q?Micka=C3=ABl_Sala=C3=BCn?= <mic@digikod.net>
 To: Tahera Fahimi <fahimitahera@gmail.com>
 Cc: outreachy@lists.linux.dev, gnoack@google.com, paul@paul-moore.com, 
 	jmorris@namei.org, serge@hallyn.com, linux-security-module@vger.kernel.org, 
 	linux-kernel@vger.kernel.org, bjorn3_gh@protonmail.com, jannh@google.com, 
 	netdev@vger.kernel.org
-Subject: Re: [PATCH v9 3/5] selftests/Landlock: Adding pathname Unix socket
- tests
-Message-ID: <20240819.Ohph6ahphohH@digikod.net>
+Subject: Re: [PATCH v9 5/5] Landlock: Document
+ LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET and ABI versioning
+Message-ID: <20240816.ee2Ahkegooch@digikod.net>
 References: <cover.1723615689.git.fahimitahera@gmail.com>
- <df1c54690beeab024534f6671ee9a3266270d9e1.1723615689.git.fahimitahera@gmail.com>
+ <c70649f74688605f31ab632350ab77d2a4453ab9.1723615689.git.fahimitahera@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -48,69 +48,44 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <df1c54690beeab024534f6671ee9a3266270d9e1.1723615689.git.fahimitahera@gmail.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <c70649f74688605f31ab632350ab77d2a4453ab9.1723615689.git.fahimitahera@gmail.com>
 X-Infomaniak-Routing: alpha
 
-On Wed, Aug 14, 2024 at 12:22:21AM -0600, Tahera Fahimi wrote:
-> This patch expands abstract Unix socket restriction tests by
-> testing pathname sockets connection with scoped domain.
-> 
-> pathname_address_sockets ensures that Unix sockets bound to
-> a null-terminated filesystem can still connect to a socket
-
-"bound to a filesystem path name"
-
-> outside of their scoped domain. This means that even if the
-> domain is scoped with LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET,
-> the socket can connect to a socket outside the scoped domain.
+On Wed, Aug 14, 2024 at 12:22:23AM -0600, Tahera Fahimi wrote:
+> Introducing LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET as an IPC scoping
+> mechanism in Landlock ABI version 6, and updating ruleset_attr,
+> Landlock ABI version, and access rights code blocks based on that.
 > 
 > Signed-off-by: Tahera Fahimi <fahimitahera@gmail.com>
 > ---
-> changes in versions:
-> v9:
-> - Moving remove_path() back to fs_test.c, and using unlink(2)
->   and rmdir(2) instead.
-> - Removing hard-coded numbers and using "backlog" instead.
-> V8:
-> - Adding pathname_address_sockets to cover all types of address
->   formats for unix sockets, and moving remove_path() to
->   common.h to reuse in this test.
+> v8:
+> - Improving documentation by specifying differences between scoped and
+>   non-scoped domains.
+> - Adding review notes of version 7.
+> - Update date
+> v7:
+> - Add "LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET" explanation to IPC scoping
+>   section and updating ABI to version 6.
+> - Adding "scoped" attribute to the Access rights section.
+> - In current limitation, unnamed sockets are specified as sockets that
+>   are not restricted.
+> - Update date
 > ---
->  .../landlock/scoped_abstract_unix_test.c      | 204 ++++++++++++++++++
->  1 file changed, 204 insertions(+)
+>  Documentation/userspace-api/landlock.rst | 33 ++++++++++++++++++++++--
+>  1 file changed, 31 insertions(+), 2 deletions(-)
 > 
-> diff --git a/tools/testing/selftests/landlock/scoped_abstract_unix_test.c b/tools/testing/selftests/landlock/scoped_abstract_unix_test.c
-> index 232c3b767b8a..21285a7158b6 100644
-> --- a/tools/testing/selftests/landlock/scoped_abstract_unix_test.c
-> +++ b/tools/testing/selftests/landlock/scoped_abstract_unix_test.c
-> @@ -939,4 +939,208 @@ TEST_F(unix_sock_special_cases, socket_with_different_domain)
->  	    WEXITSTATUS(status) != EXIT_SUCCESS)
->  		_metadata->exit_code = KSFT_FAIL;
->  }
-> +
-> +static const char path1[] = TMP_DIR "/s1_variant1";
-> +static const char path2[] = TMP_DIR "/s2_variant1";
-> +
-> +/* clang-format off */
-> +FIXTURE(pathname_address_sockets) {
-> +	struct service_fixture stream_address, dgram_address;
-> +};
-> +
-> +/* clang-format on */
+> diff --git a/Documentation/userspace-api/landlock.rst b/Documentation/userspace-api/landlock.rst
+> index 07b63aec56fa..0582f93bd952 100644
+> --- a/Documentation/userspace-api/landlock.rst
+> +++ b/Documentation/userspace-api/landlock.rst
+> @@ -8,7 +8,7 @@ Landlock: unprivileged access control
+>  =====================================
+>  
+>  :Author: Mickaël Salaün
+> -:Date: April 2024
+> +:Date: July 2024
 
-Please minimize the use of these tags (e.g. don't include new lines) and
-remove them when they don't change the formatting.
+"August"
 
-> +	if (WIFSIGNALED(status) || !WIFEXITED(status) ||
-> +	    WEXITSTATUS(status) != EXIT_SUCCESS)
-> +		_metadata->exit_code = KSFT_FAIL;
-> +}
-
-Please always add a newline before TEST_HARNESS_MAIN.
-`check-linux.sh all` prints an error.
-
->  TEST_HARNESS_MAIN
-> -- 
-> 2.34.1
-> 
-> 
+Please rebase the two patch series on v6.11-rc4
