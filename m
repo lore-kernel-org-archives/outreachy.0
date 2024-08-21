@@ -1,92 +1,72 @@
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+Received: from smtp-42a9.mail.infomaniak.ch (smtp-42a9.mail.infomaniak.ch [84.16.66.169])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 872A97BB14;
-	Tue, 20 Aug 2024 19:14:41 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 79F062111D6
+	for <outreachy@lists.linux.dev>; Wed, 21 Aug 2024 10:13:46 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=84.16.66.169
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1724181281; cv=none; b=Dn7p251OdbjOj0AYPfPUi6rBw2oiDMqReN31EZXQ4GXwra7/tq56YCPoatAwBAQiE4u/R8BDIIK656eNhjT8NYTIcYOdutT9ujpj3K46XszSoGtHosOgBg/sDd2fPh+ANqSMntSt5Q2ZZyzOdbY4Nce6MYo2vJU+BMCrwxolIT8=
+	t=1724235232; cv=none; b=Yj0W5Z0Xjuum/EOhC49B8Rp6GHTaHuungauYP8VDRhmH5F9CWyEJhd4MtbqA9OScVIS/Xf90sBNpRuKDVjLHZ/Xd0UHB2xE0iZgMPC5LzFxkjs1IBDvqTFW6+grrLiWt5dtEV37CLckDOWaxued1ldcM2lf0Sx8egr761h2f8Hk=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1724181281; c=relaxed/simple;
-	bh=O9lDwwEZLF3IPkdCIDjxG8Rr0iIiU8r/cXUtN84ZbYU=;
+	s=arc-20240116; t=1724235232; c=relaxed/simple;
+	bh=FoTolnMxIcYfhIWfLyGYqLu9gydImlghdFwJAaptLvw=;
 	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=SuteQwqu1+2g0gQiQlrk0RASvQWdpRCbMp3NHUxAjinkA5hw3sEJd4DXokCVuS7yVCauLzkuRskvwSUChJ79QPg/aKhD6DDJxq2ImTkmxAPPJcWnmuZ1V+BGJrwADbrl/jEQ24WvZjHguFG4rvXAYXwdGA7YBdWluIahikpfA68=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=tDRGAic+; arc=none smtp.client-ip=10.30.226.201
+	 Content-Type:Content-Disposition:In-Reply-To; b=o7713cXKqkqfI0XF5iFlWjbD+wTURC/oq+VUJcrqpKqap8d5LQjTUjloqwAiRUsrk2WneUJghMvOcvVjXvGF1wMl8CKa77cHQwwmpDCOQuFLygXOdkS9XlsfvktQoTHhHYfFqXUBfF7SdqfhwdIX/M449o+Z8u8sRIhRAbwIpPI=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net; spf=pass smtp.mailfrom=digikod.net; dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b=xWNhkNn6; arc=none smtp.client-ip=84.16.66.169
+Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=digikod.net
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="tDRGAic+"
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 65068C4AF14;
-	Tue, 20 Aug 2024 19:14:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1724181280;
-	bh=O9lDwwEZLF3IPkdCIDjxG8Rr0iIiU8r/cXUtN84ZbYU=;
+	dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b="xWNhkNn6"
+Received: from smtp-3-0000.mail.infomaniak.ch (smtp-3-0000.mail.infomaniak.ch [10.4.36.107])
+	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4WphxV1M4Vz6wt;
+	Wed, 21 Aug 2024 12:13:34 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=digikod.net;
+	s=20191114; t=1724235214;
+	bh=PIbYf2E6OPhrBU4LYZ5NlLv0ePo6bVAkYtdfPLo1FhI=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=tDRGAic+MPhG4mm6OAHH9arVzekQajz8/70B3gLBf3bLq4fYYzG4VnrsSUotTi+0m
-	 gjHOZHeQhRvMggYC5a1cCBBYF1uRbmqa3phy8FxWa/q8aJYCtX12uJUIlgB2bFJH/n
-	 zXQRK/UGlRGEA7afRTvMCLNtszrA2rz76BQ25oBok+JNc7fDcQdwCoBdhEwuDKcPoO
-	 xqTWspEVCFia4uH7O2YdT5m16bHQPcEBzMPY+brHcFLdSKG6t+KuXZfZeMtf1rSfwI
-	 LzMbOqzpN7+SFN0Zj++NMMQBLFxFxWsl8Q3VzX2csiothsURhwGTBwvO+9ll9I5clI
-	 g1879KGTpuc7g==
-Date: Tue, 20 Aug 2024 20:14:36 +0100
-From: Simon Horman <horms@kernel.org>
+	b=xWNhkNn6ovuKiW3U8C83BrwS0PTUyzVTuxPglAQOyRsNc7ZSch0dB/BCSAT/HAJ69
+	 j/lxa7hNNN1sfDNojR6UiQqNInBpVW2XtqMgc6orV0e7MiZWhABgliT/jEZz9m1zr1
+	 Ym98BOHgFnzOMUzI+dztKsYSQiceabnxuF39jEpo=
+Received: from unknown by smtp-3-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4WphxT19jVzrPb;
+	Wed, 21 Aug 2024 12:13:33 +0200 (CEST)
+Date: Wed, 21 Aug 2024 12:13:28 +0200
+From: =?utf-8?Q?Micka=C3=ABl_Sala=C3=BCn?= <mic@digikod.net>
 To: Tahera Fahimi <fahimitahera@gmail.com>
-Cc: outreachy@lists.linux.dev, mic@digikod.net, gnoack@google.com,
-	paul@paul-moore.com, jmorris@namei.org, serge@hallyn.com,
-	linux-security-module@vger.kernel.org, linux-kernel@vger.kernel.org,
-	bjorn3_gh@protonmail.com, jannh@google.com, netdev@vger.kernel.org
-Subject: Re: [PATCH v10 1/6] Landlock: Add abstract UNIX socket connect
- restriction
-Message-ID: <20240820191436.GD2898@kernel.org>
-References: <cover.1724125513.git.fahimitahera@gmail.com>
- <9a365e0c8effb68a891f9dde3ef231d592a06f61.1724125513.git.fahimitahera@gmail.com>
+Cc: outreachy@lists.linux.dev, gnoack@google.com, paul@paul-moore.com, 
+	jmorris@namei.org, serge@hallyn.com, linux-security-module@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, bjorn3_gh@protonmail.com, jannh@google.com, 
+	netdev@vger.kernel.org
+Subject: Re: [PATCH v3 2/6] Landlock: Adding file_send_sigiotask signal
+ scoping support
+Message-ID: <20240821.oBeepeel9ir1@digikod.net>
+References: <cover.1723680305.git.fahimitahera@gmail.com>
+ <d04bc943e8d275e8d00bb7742bcdbabc7913abbe.1723680305.git.fahimitahera@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <9a365e0c8effb68a891f9dde3ef231d592a06f61.1724125513.git.fahimitahera@gmail.com>
+In-Reply-To: <d04bc943e8d275e8d00bb7742bcdbabc7913abbe.1723680305.git.fahimitahera@gmail.com>
+X-Infomaniak-Routing: alpha
 
-On Mon, Aug 19, 2024 at 10:08:51PM -0600, Tahera Fahimi wrote:
-> This patch introduces a new "scoped" attribute to the landlock_ruleset_attr
-> that can specify "LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET" to scope
-> abstract UNIX sockets from connecting to a process outside of
-> the same Landlock domain. It implements two hooks, unix_stream_connect
-> and unix_may_send to enforce this restriction.
+On Thu, Aug 15, 2024 at 12:29:21PM -0600, Tahera Fahimi wrote:
+> This patch adds two new hooks "hook_file_set_fowner" and
+> "hook_file_free_security" to set and release a pointer to the
+> domain of the file owner. This pointer "fown_domain" in
+> "landlock_file_security" will be used in "file_send_sigiotask"
+> to check if the process can send a signal.
 > 
-> Closes: https://github.com/landlock-lsm/linux/issues/7
 > Signed-off-by: Tahera Fahimi <fahimitahera@gmail.com>
+> ---
+>  security/landlock/fs.c   | 18 ++++++++++++++++++
+>  security/landlock/fs.h   |  6 ++++++
+>  security/landlock/task.c | 27 +++++++++++++++++++++++++++
+>  3 files changed, 51 insertions(+)
 
-...
+Please squash this patch with the previous one, both are enforcing the
+signal scoping restriction with LANDLOCK_SCOPED_SIGNAL.
 
-> diff --git a/security/landlock/task.c b/security/landlock/task.c
-
-...
-
-> @@ -108,9 +110,134 @@ static int hook_ptrace_traceme(struct task_struct *const parent)
->  	return task_ptrace(parent, current);
->  }
->  
-> +/**
-> + * domain_is_scoped - Checks if the client domain is scoped in the same
-> + *			domain as the server.
-> + *
-> + * @client: IPC sender domain.
-> + * @server: IPC receiver domain.
-
-nit: @scope should be documented here.
-
-> + *
-> + * Return true if the @client domain is scoped to access the @server,
-
-nit: Kernel doc returns sections start with "Return:" or "Returns:".
-     It might be worth using that syntax here.
-
-> + * unless the @server is also scoped in the same domain as @client.
-> + */
-> +static bool domain_is_scoped(const struct landlock_ruleset *const client,
-> +			     const struct landlock_ruleset *const server,
-> +			     access_mask_t scope)
-
-...
+You'll also need to update the scoped_test.c file with
+LANDLOCK_SCOPED_SIGNAL (in this same squashed patch).
