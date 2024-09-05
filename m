@@ -1,56 +1,56 @@
-Received: from mail-oa1-f52.google.com (mail-oa1-f52.google.com [209.85.160.52])
+Received: from mail-oo1-f50.google.com (mail-oo1-f50.google.com [209.85.161.50])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0D68E182B2
-	for <outreachy@lists.linux.dev>; Thu,  5 Sep 2024 00:14:30 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.160.52
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1F09C184E
+	for <outreachy@lists.linux.dev>; Thu,  5 Sep 2024 00:14:31 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.161.50
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1725495272; cv=none; b=NH/WSDzE+PWB8HRZlUs8IV9SCWHERHSRQUHlc00zZzb3kw0BB8cjthQETY9tXU4o3qcG4Pug8Muz4zXi3KHs9OutD2doY2478fbLvwMOOSUT7p2u9b4UyyjIc8FdG0Bljl82pQIZv9+fDkvuP/uRc9ShZdPU05QsNa2CJ88FhLc=
+	t=1725495273; cv=none; b=dUdAbaBRzaByMpkbeDW6bMHHuljq4fNFWZx0AfqUPOhGDbbMNiPK5QxiA4PE6+trzj5tu53ibf+jIscoiPxVLSbOr5tf+BQvYC8gXRJy0l72MU7tk8KzNZf1zf6zYIXD4gXPMaRGLg4g+P9q6X1ZC38HJbRoYfi7Jwjkyn6Qsn8=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1725495272; c=relaxed/simple;
-	bh=3eeRu4zbZB1MuGmyZVhbliCojVX5Q+y6lx7CXpm0fh4=;
+	s=arc-20240116; t=1725495273; c=relaxed/simple;
+	bh=n6AgMjmb2jzjsD5uIIArajKwcjywOgVITJCK0KBH+y4=;
 	h=From:To:Cc:Subject:Date:Message-Id:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=R2j4Xyvvx9f8o2a7vINwFoixHa/cNCa5fgNtDn7vzmj2po24yTtqyL1r2Hq8BXqangQ9UJv8Z2w4b8YomMuMHuJhgB5k/SXPc6uioXUo1+JSfmf+UKjW73OpPZ21R73LR3WM66q5/mDIVT6DhndJJjrxGHW2Sr8+sFu8+i+5Pm4=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=MPtfQ8bC; arc=none smtp.client-ip=209.85.160.52
+	 MIME-Version:Content-Type; b=eJqdNRABhpGoFuVX1mDL99uqnb77op2kLyGLgCcx6jCXRMNy2SsP/qCf8Y2nyYEvoUap/Nbfw+QL1QhrZ29+5dZNPlSaJCDpv8O2v/LBOda3k3lbElPtpfwTRXBKlPL5cGzHlh8H8iT1u8p3PvCyDny9pJkipBtS8PqpPkG8458=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=eQVQKmEP; arc=none smtp.client-ip=209.85.161.50
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="MPtfQ8bC"
-Received: by mail-oa1-f52.google.com with SMTP id 586e51a60fabf-277e4327c99so155111fac.0
-        for <outreachy@lists.linux.dev>; Wed, 04 Sep 2024 17:14:30 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="eQVQKmEP"
+Received: by mail-oo1-f50.google.com with SMTP id 006d021491bc7-5df9c34c890so137437eaf.1
+        for <outreachy@lists.linux.dev>; Wed, 04 Sep 2024 17:14:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1725495270; x=1726100070; darn=lists.linux.dev;
+        d=gmail.com; s=20230601; t=1725495271; x=1726100071; darn=lists.linux.dev;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Nb5jw/WoOQPFLaFxTOIP9Tl9HcnrTWdqDgrxkbTFv9o=;
-        b=MPtfQ8bCLxPJrsyLh6kKgS68ENQ2MxLJMmc7CQjk59ErQ4+WmTzYUs81FU6tmbwgsU
-         qwW9M666FNwzA5T7NK2SruUgNq3yWf1626IMLlqsbUuzS+tRSaQbWUWKLU5DTmdi90tR
-         gjqlz1z51SxibxRDlv23f0h7xIp+wfqVEEKriCw3pmnohHxtrnHUBef9nepXNBMnXakX
-         p3+GTClcOkSAkOnbAil1V6nEbhywOPsiRr+dRTLYocwFSFb9h9wX01ZsYtmwOoGZZEoh
-         L1qUeV0L2Bkudu194jW4Ni9qZ04zlAl5tcclnYHucXD0wGw+GqFQ8dI02mpDClD5G2sA
-         euvw==
+        bh=uGMSf+BOMvZ54AzTEvMeQPkYD6qUwye83VZEdQAhs/Y=;
+        b=eQVQKmEP7VYKoV0dyr7Y/b0qwsZhfnEVWAlNuD7Qu2haKXTbWrD0YRBniv8DLUMXct
+         o0WMUsgsNcUouPKvLCCqs1BLsMud5ddzHnqOI9kuBQkhampmGW8Qq36FeBMwnhWGnlBA
+         fZj6U3cK9CKTqAcJa0qgj86Etqqnp96YQxLcf/6duzW+hm2l3zSHHqgft6FXPgWjlaVl
+         FSJru+7rU4Zj3EYVLscG3vClyjAcaTMNsxgCK8hO6d/vt4dVfGucFSkRAHqr9/fYLRpj
+         95ucxlCQYeOC3xN0bc/0AOfte/cQykwJy5HaKh5g1x43LQ6MoTIODmZ7vzjLPegMrcEG
+         sKDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725495270; x=1726100070;
+        d=1e100.net; s=20230601; t=1725495271; x=1726100071;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Nb5jw/WoOQPFLaFxTOIP9Tl9HcnrTWdqDgrxkbTFv9o=;
-        b=aoxC7eKoAr8/ezcG2xd9mr1CBcL92q5ByucihpO42onlISuKDoH56ocFNRgXw0/8mk
-         PK8SM/8QuY3HRWJxrgn1edz72cJ3XRJmfHcxJKNMtsbfFHvZk/I0oJJktvx00LbttFiu
-         bUi4q0h96mQdhiYn66f+o5ZnYZAxmFL3OWaijEPWIHt/wWsJJtbs13Ha3yWUlde4MDKU
-         GeCQ51jeuLY3bSlDczDVloyTDAV8KETC8xNWKX6OsHp3pZyogXPqBf7XeMMy6W7YtcrV
-         DFQ05vAmv0fVI+b6Oxj9V0cfPiUDLV6I0N2G8Mhs0xGHbM3u9SxJIA1CcJhDMBGinAL2
-         hNYQ==
-X-Gm-Message-State: AOJu0YzsKFIl5XXdJnTGdsaSeahDPhV34zizjEXP5+9+Im1apG49G3lx
-	rftfYFLaslDW+NJ5sLIyizwqU6Sq3Jn7GajSnYM4Jx4ZjB348G5yPM5ze+id
-X-Google-Smtp-Source: AGHT+IF/swT4/QCQUaShc+LWLrYgsQ803/PfQesWXvFDsSqr4DHMuf7CQ8p1bPaggbUhXEZiXo2vvw==
-X-Received: by 2002:a05:6870:ab13:b0:260:e678:b653 with SMTP id 586e51a60fabf-277d06c890emr17533784fac.42.1725495269915;
-        Wed, 04 Sep 2024 17:14:29 -0700 (PDT)
+        bh=uGMSf+BOMvZ54AzTEvMeQPkYD6qUwye83VZEdQAhs/Y=;
+        b=OBB+JOr1Wp0Es6/qyds+aaWAJJZAGP48mxBcVWYEZGOV/O8muQq2u5llx12r0p8jze
+         oVD8k2dutw/6tNX2aukj0X+Hu3tBrqNSt+aM25SjNrY3JJN10wHvtaQ7gVuD2wPI58p4
+         We+b+Sa65QA/NifT/qOpZp5dgT9kaEyDxrjJhvkOn9Rf8Lo3Fxcz3lek4KvD0l258RtI
+         RzE6KfIherL2wsULc1rjbgDbXx0p8elDXn1pKDHAkn8wc/IYFrR23D7RysaadXhjZ8Jk
+         nLQMfo/ZI8YQMrHXkT6SNtdaGFWAlvyKBCMCzPV8p+tcWi0F2ZFSipZLDiWex2uOtDPz
+         4A2g==
+X-Gm-Message-State: AOJu0Yz5S4ymgC/APzUiPbquksAOrPK/vLjevuwY/tE2xHJ/eTFaz2DK
+	3IKXfN3QoO+3h4PoRoEvEWuITkdSZZEim/Vc6NsgKDm4axbTNtmTedC0bgA3
+X-Google-Smtp-Source: AGHT+IEFkBdiQ9mIrNMKcS7w3UIAuGCobjurYy6KLJ90BaABI+/F2r4VxGZAHpnI7d8X+tlZa9qy1g==
+X-Received: by 2002:a05:6870:64a9:b0:277:e512:f27a with SMTP id 586e51a60fabf-277e512f84emr13912948fac.16.1725495270894;
+        Wed, 04 Sep 2024 17:14:30 -0700 (PDT)
 Received: from tahera-OptiPlex-5000.tail3bf47f.ts.net ([136.159.49.123])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71778534921sm2159781b3a.76.2024.09.04.17.14.28
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71778534921sm2159781b3a.76.2024.09.04.17.14.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Sep 2024 17:14:29 -0700 (PDT)
+        Wed, 04 Sep 2024 17:14:30 -0700 (PDT)
 From: Tahera Fahimi <fahimitahera@gmail.com>
 To: outreachy@lists.linux.dev
 Cc: mic@digikod.net,
@@ -64,9 +64,9 @@ Cc: mic@digikod.net,
 	jannh@google.com,
 	netdev@vger.kernel.org,
 	Tahera Fahimi <fahimitahera@gmail.com>
-Subject: [PATCH v11 7/8] sample/landlock: Add support abstract UNIX socket restriction
-Date: Wed,  4 Sep 2024 18:14:01 -0600
-Message-Id: <d8af908f00b77415caa3eb0f4de631c3794e4909.1725494372.git.fahimitahera@gmail.com>
+Subject: [PATCH v11 8/8] Landlock: Document LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET and ABI version
+Date: Wed,  4 Sep 2024 18:14:02 -0600
+Message-Id: <ac75151861724c19ed62b500cfe497612d9a6607.1725494372.git.fahimitahera@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <cover.1725494372.git.fahimitahera@gmail.com>
 References: <cover.1725494372.git.fahimitahera@gmail.com>
@@ -79,191 +79,126 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
-A sandboxer can receive the character "a" as input from the environment
-variable LL_SCOPE to restrict the abstract UNIX sockets from connecting
-to a process outside its scoped domain.
-
-Example
-=======
-Create an abstract UNIX socket to listen with socat(1):
-socat abstract-listen:mysocket -
-
-Create a sandboxed shell and pass the character "a" to LL_SCOPED:
-LL_FS_RO=/ LL_FS_RW=. LL_SCOPED="a" ./sandboxer /bin/bash
-
-Note that any other form of input(e.g. "a:a", "aa", etc) is not
-acceptable.
-
-If the sandboxed process tries to connect to the listening socket with
-command "socat - abstract-connect:mysocket", the connection will fail.
+Introducing LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET as an IPC scoping
+mechanism in Landlock ABI version 6, and updating ruleset_attr, Landlock
+ABI version, and access rights code blocks based on that.
 
 Signed-off-by: Tahera Fahimi <fahimitahera@gmail.com>
 ---
 v11:
-- Change implementation of check_ruleset_scope function to make it less
-  bug prone.
-- Imptovement on the commit description.
+- Documentation cases where i) a connected datagram UNIX socket send(2)/
+  sendto(2) data, but it is denied when the socket is not connected, and
+  ii) a scoped process cannot connect by an inherited socket's file
+  descriptor.
 v10:
-- Minor improvement in code based on v9.
-v9:
-- Add a restrict approach on input of LL_SCOPED, so it only allows zero
-  or one "a" to be the input.
+- Update date.
 v8:
-- Adding check_ruleset_scope function to parse the scope environment
-  variable and update the landlock attribute based on the restriction
-  provided by the user.
-- Adding Mickaël Salaün reviews on version 7.
+- Improving documentation by specifying differences between scoped and
+  non-scoped domains.
+- Adding review notes of version 7.
+- Update date.
 v7:
-- Adding IPC scoping to the sandbox demo by defining a new "LL_SCOPED"
-  environment variable. "LL_SCOPED" gets value "a" to restrict abstract
-  unix sockets.
-- Change LANDLOCK_ABI_LAST to 6.
+- Add "LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET" explanation to IPC scoping
+  section and updating ABI to version 6.
+- Adding "scoped" attribute to the Access rights section.
+- In current limitation, unnamed sockets are specified as sockets that
+  are not restricted.
+- Update date.
 ---
- samples/landlock/sandboxer.c | 61 +++++++++++++++++++++++++++++++++---
- 1 file changed, 57 insertions(+), 4 deletions(-)
+ Documentation/userspace-api/landlock.rst | 45 ++++++++++++++++++++++--
+ 1 file changed, 43 insertions(+), 2 deletions(-)
 
-diff --git a/samples/landlock/sandboxer.c b/samples/landlock/sandboxer.c
-index e8223c3e781a..18d072c23a23 100644
---- a/samples/landlock/sandboxer.c
-+++ b/samples/landlock/sandboxer.c
-@@ -14,6 +14,7 @@
- #include <fcntl.h>
- #include <linux/landlock.h>
- #include <linux/prctl.h>
-+#include <linux/socket.h>
- #include <stddef.h>
- #include <stdio.h>
- #include <stdlib.h>
-@@ -22,6 +23,7 @@
- #include <sys/stat.h>
- #include <sys/syscall.h>
- #include <unistd.h>
-+#include <stdbool.h>
+diff --git a/Documentation/userspace-api/landlock.rst b/Documentation/userspace-api/landlock.rst
+index 37dafce8038b..c3b87755e98d 100644
+--- a/Documentation/userspace-api/landlock.rst
++++ b/Documentation/userspace-api/landlock.rst
+@@ -8,7 +8,7 @@ Landlock: unprivileged access control
+ =====================================
  
- #ifndef landlock_create_ruleset
- static inline int
-@@ -55,6 +57,7 @@ static inline int landlock_restrict_self(const int ruleset_fd,
- #define ENV_FS_RW_NAME "LL_FS_RW"
- #define ENV_TCP_BIND_NAME "LL_TCP_BIND"
- #define ENV_TCP_CONNECT_NAME "LL_TCP_CONNECT"
-+#define ENV_SCOPED_NAME "LL_SCOPED"
- #define ENV_DELIMITER ":"
+ :Author: Mickaël Salaün
+-:Date: July 2024
++:Date: August 2024
  
- static int parse_path(char *env_path, const char ***const path_list)
-@@ -184,6 +187,45 @@ static int populate_ruleset_net(const char *const env_var, const int ruleset_fd,
- 	return ret;
- }
+ The goal of Landlock is to enable to restrict ambient rights (e.g. global
+ filesystem or network access) for a set of processes.  Because Landlock
+@@ -81,6 +81,8 @@ to be explicit about the denied-by-default access rights.
+         .handled_access_net =
+             LANDLOCK_ACCESS_NET_BIND_TCP |
+             LANDLOCK_ACCESS_NET_CONNECT_TCP,
++        .scoped =
++            LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET,
+     };
  
-+static bool check_ruleset_scope(const char *const env_var,
-+				struct landlock_ruleset_attr *ruleset_attr)
-+{
-+	bool abstract_scoping = false;
-+	bool ret = true;
-+	char *env_type_scope, *env_type_scope_next, *ipc_scoping_name;
+ Because we may not know on which kernel version an application will be
+@@ -119,6 +121,9 @@ version, and only use the available subset of access rights:
+     case 4:
+         /* Removes LANDLOCK_ACCESS_FS_IOCTL_DEV for ABI < 5 */
+         ruleset_attr.handled_access_fs &= ~LANDLOCK_ACCESS_FS_IOCTL_DEV;
++    case 5:
++        /* Removes LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET for ABI < 6 */
++        ruleset_attr.scoped &= ~LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET;
+     }
+ 
+ This enables to create an inclusive ruleset that will contain our rules.
+@@ -306,6 +311,35 @@ To be allowed to use :manpage:`ptrace(2)` and related syscalls on a target
+ process, a sandboxed process should have a subset of the target process rules,
+ which means the tracee must be in a sub-domain of the tracer.
+ 
++IPC Scoping
++-----------
 +
-+	/* scoping is not supported by Landlock ABI */
-+	if (!(ruleset_attr->scoped & LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET))
-+		return ret;
++Similar to the implicit `Ptrace restrictions`_, we may want to further
++restrict interactions between sandboxes. Each Landlock domain can be
++explicitly scoped for a set of actions by specifying it on a ruleset.
++For example, if a sandboxed process should not be able to
++:manpage:`connect(2)` to a non-sandboxed process through abstract
++:manpage:`unix(7)` sockets, we can specify such restriction with
++``LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET``.
 +
-+	env_type_scope = getenv(env_var);
-+	/* scoping is not supported by the user */
-+	if (!env_type_scope || strcmp("", env_type_scope) == 0) {
-+		ruleset_attr->scoped &= ~LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET;
-+		return ret;
-+	}
++A sandboxed process can connect to a non-sandboxed process when its
++domain is not scoped. If a process's domain is scoped, it can only
++connect to sockets created by processes in the same scoped domain.
 +
-+	env_type_scope = strdup(env_type_scope);
-+	unsetenv(env_var);
-+	env_type_scope_next = env_type_scope;
-+	while ((ipc_scoping_name =
-+			strsep(&env_type_scope_next, ENV_DELIMITER))) {
-+		if (strcmp("a", ipc_scoping_name) == 0 && !abstract_scoping) {
-+			abstract_scoping = true;
-+		} else {
-+			fprintf(stderr, "Unsupported scoping \"%s\"\n",
-+				ipc_scoping_name);
-+			ret = false;
-+			goto out_free_name;
-+		}
-+	}
-+	if (!abstract_scoping)
-+		ruleset_attr->scoped &= ~LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET;
-+out_free_name:
-+	free(env_type_scope);
-+	return ret;
-+}
++A connected datagram socket behaves like a stream socket when its domain
++is scoped, meaning if the domain is scoped after the socket is connected
++, it can still :manpage:`send(2)` data just like a stream socket.
++However, in the same scenario, a non-connected datagram socket cannot
++send data (with :manpage:`sendto(2)`) outside its scoped domain.
 +
- /* clang-format off */
- 
- #define ACCESS_FS_ROUGHLY_READ ( \
-@@ -208,7 +250,7 @@ static int populate_ruleset_net(const char *const env_var, const int ruleset_fd,
- 
- /* clang-format on */
- 
--#define LANDLOCK_ABI_LAST 5
-+#define LANDLOCK_ABI_LAST 6
- 
- int main(const int argc, char *const argv[], char *const *const envp)
- {
-@@ -223,14 +265,15 @@ int main(const int argc, char *const argv[], char *const *const envp)
- 		.handled_access_fs = access_fs_rw,
- 		.handled_access_net = LANDLOCK_ACCESS_NET_BIND_TCP |
- 				      LANDLOCK_ACCESS_NET_CONNECT_TCP,
-+		.scoped = LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET,
- 	};
- 
- 	if (argc < 2) {
- 		fprintf(stderr,
--			"usage: %s=\"...\" %s=\"...\" %s=\"...\" %s=\"...\"%s "
-+			"usage: %s=\"...\" %s=\"...\" %s=\"...\" %s=\"...\" %s=\"...\" %s "
- 			"<cmd> [args]...\n\n",
- 			ENV_FS_RO_NAME, ENV_FS_RW_NAME, ENV_TCP_BIND_NAME,
--			ENV_TCP_CONNECT_NAME, argv[0]);
-+			ENV_TCP_CONNECT_NAME, ENV_SCOPED_NAME, argv[0]);
- 		fprintf(stderr,
- 			"Execute a command in a restricted environment.\n\n");
- 		fprintf(stderr,
-@@ -251,15 +294,18 @@ int main(const int argc, char *const argv[], char *const *const envp)
- 		fprintf(stderr,
- 			"* %s: list of ports allowed to connect (client).\n",
- 			ENV_TCP_CONNECT_NAME);
-+		fprintf(stderr, "* %s: list of restrictions on IPCs.\n",
-+			ENV_SCOPED_NAME);
- 		fprintf(stderr,
- 			"\nexample:\n"
- 			"%s=\"${PATH}:/lib:/usr:/proc:/etc:/dev/urandom\" "
- 			"%s=\"/dev/null:/dev/full:/dev/zero:/dev/pts:/tmp\" "
- 			"%s=\"9418\" "
- 			"%s=\"80:443\" "
-+			"%s=\"a\" "
- 			"%s bash -i\n\n",
- 			ENV_FS_RO_NAME, ENV_FS_RW_NAME, ENV_TCP_BIND_NAME,
--			ENV_TCP_CONNECT_NAME, argv[0]);
-+			ENV_TCP_CONNECT_NAME, ENV_SCOPED_NAME, argv[0]);
- 		fprintf(stderr,
- 			"This sandboxer can use Landlock features "
- 			"up to ABI version %d.\n",
-@@ -327,6 +373,10 @@ int main(const int argc, char *const argv[], char *const *const envp)
- 		/* Removes LANDLOCK_ACCESS_FS_IOCTL_DEV for ABI < 5 */
- 		ruleset_attr.handled_access_fs &= ~LANDLOCK_ACCESS_FS_IOCTL_DEV;
- 
-+		__attribute__((fallthrough));
-+	case 5:
-+		/* Removes LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET for ABI < 6 */
-+		ruleset_attr.scoped &= ~LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET;
- 		fprintf(stderr,
- 			"Hint: You should update the running kernel "
- 			"to leverage Landlock features "
-@@ -358,6 +408,9 @@ int main(const int argc, char *const argv[], char *const *const envp)
- 			~LANDLOCK_ACCESS_NET_CONNECT_TCP;
- 	}
- 
-+	if (!check_ruleset_scope(ENV_SCOPED_NAME, &ruleset_attr))
-+		return 1;
++A process with a scoped domain can inherit a socket created by a
++non-scoped process. The process cannot connect to this socket since it
++has a scoped domain.
 +
- 	ruleset_fd =
- 		landlock_create_ruleset(&ruleset_attr, sizeof(ruleset_attr), 0);
- 	if (ruleset_fd < 0) {
++IPC scoping does not support Landlock rules, so if a domain is scoped,
++no rules can be added to allow access to a resource outside of the
++scoped domain.
++
+ Truncating files
+ ----------------
+ 
+@@ -404,7 +438,7 @@ Access rights
+ -------------
+ 
+ .. kernel-doc:: include/uapi/linux/landlock.h
+-    :identifiers: fs_access net_access
++    :identifiers: fs_access net_access scope
+ 
+ Creating a new ruleset
+ ----------------------
+@@ -541,6 +575,13 @@ earlier ABI.
+ Starting with the Landlock ABI version 5, it is possible to restrict the use of
+ :manpage:`ioctl(2)` using the new ``LANDLOCK_ACCESS_FS_IOCTL_DEV`` right.
+ 
++Abstract UNIX sockets Restriction  (ABI < 6)
++--------------------------------------------
++
++With ABI version 6, it is possible to restrict connection to an abstract
++Unix socket through ``LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET``, thanks to
++the ``scoped`` ruleset attribute.
++
+ .. _kernel_support:
+ 
+ Kernel support
 -- 
 2.34.1
 
