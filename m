@@ -1,56 +1,56 @@
-Received: from mail-pg1-f181.google.com (mail-pg1-f181.google.com [209.85.215.181])
+Received: from mail-oo1-f45.google.com (mail-oo1-f45.google.com [209.85.161.45])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BB88C28EB
-	for <outreachy@lists.linux.dev>; Thu,  5 Sep 2024 00:14:28 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.215.181
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 403E117BCA
+	for <outreachy@lists.linux.dev>; Thu,  5 Sep 2024 00:14:30 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.161.45
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1725495270; cv=none; b=mTvMAUZoi3qGLM9GAJdT26DRQEv00uMTbdZDyeKtpNTOfd+78nXyFHM1NO+73tzlVP6yD7muoMNm5fuMo+5CfuZezhbwSFw6nBbE2VphEHT4vHOZPGlWU7c4VmBLc4uwDE4wBlZeLH9P18+5JO1JWhmSoznj8E60HB4OaoYmUsc=
+	t=1725495271; cv=none; b=bqLe6dFP4fEPEEYGs39NmfCuJJyia4ljCr4LjXSPnZosws09pyG3p+baEbmSN/BxbFaT0PVvgaqNEgqiQeaq76tBb/bbJsHk4QTHw+8uozX/+0B7blEB3TNlZK/0gF99u8dUDudtcSSEuerPD72srXfV941sqCEuwt0q0Zpcnjw=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1725495270; c=relaxed/simple;
-	bh=6B5/fbYGXDCmpCB56kmnCm2tByrZA7Zjr7RtQx6ILtg=;
+	s=arc-20240116; t=1725495271; c=relaxed/simple;
+	bh=RqWkchAHwryayt3Hw0HpIWRhsf16JdaX/v77cAvyw3g=;
 	h=From:To:Cc:Subject:Date:Message-Id:In-Reply-To:References:
-	 MIME-Version; b=R5m29VSBCwbg+QKSiaYh8ZCO+VUNP6HSPXWJpSO3PsN+/osQg3rgsYnXSQSa5D87mvuttTDAlSmizYl21FLGNPNLEXBOXlEg6E1waFIT5U3z/5BNifXFtYv0Xur9fc09oPFGRNPc1YEbCbRLuQF9R2wbVRTixSBTs1Pwv4q2L+k=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=TDy9ZiWm; arc=none smtp.client-ip=209.85.215.181
+	 MIME-Version; b=W4C0xFimmqY2SQrezih2X81VvG+G+buYhjF209BD4k6P6FQbmWxSgFcY8vs9CFdvXx9lmPmQtg8f+DRw6nPgzMYl8ZOKk/vyrxcEym9QWVi8oIdyy5Sy3mqXqjKNiB9k8TgfE6Zilf6Bhjm7VQW+9rle702OZFHmQ2iWO12oI7s=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=Q1KrD7fN; arc=none smtp.client-ip=209.85.161.45
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="TDy9ZiWm"
-Received: by mail-pg1-f181.google.com with SMTP id 41be03b00d2f7-7d4fb2cd1ecso13919a12.0
-        for <outreachy@lists.linux.dev>; Wed, 04 Sep 2024 17:14:28 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Q1KrD7fN"
+Received: by mail-oo1-f45.google.com with SMTP id 006d021491bc7-5e1972a9622so145781eaf.0
+        for <outreachy@lists.linux.dev>; Wed, 04 Sep 2024 17:14:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1725495267; x=1726100067; darn=lists.linux.dev;
+        d=gmail.com; s=20230601; t=1725495268; x=1726100068; darn=lists.linux.dev;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=UYo96gfr0shigHW7k7ch8rY/tXVue2H6sZrfJvM5RKk=;
-        b=TDy9ZiWmbphjVCCx/Sxwf6vBULdtT6CeYSbw4h03yM3c4Nk4x4Zde5mEb0y9l+n4Yb
-         OPUwhC4SBCDTf7fmlaAYPTZE0pIKEjpd1OmUhb+k3cca4d84xtcm0QnjCInZtYklr6S3
-         SJTcEynZw8/CktaPVHUur2h9UJbBfSjQg9WEq91pnS/Z0ZygDCbhj7V/Vc+2IV5mhXZi
-         bnWzGv6ReXZA5z31tBn6VILc5Dj6rbskkTz2LYy/7OioMxhRUIUf3kWKThvSnRMHgPRV
-         pfWilldHYXoYXOJFNjG1w6/S7iCPoYwAInH+K4OmI24EFg5htzu9SQch7PuKdZl7gjWV
-         2AQg==
+        bh=VLU/Dks+aXWcA0j3NcWT/JOFKYGYOLpEI0gipU7ELuY=;
+        b=Q1KrD7fNLYu4yv6KeOtCGP1apo4yOquQsK6wnLMOceLTh1zgpeEvMz3/K/DggTo2JJ
+         ifEz0wnwFzLf5m8b9pI0Bu4ntwgWvX6XR9oOck5ftrWf68w7Qd9BaL7p7j5WSZwtWKXO
+         8uRLNqguAabzvXtF8qwWkyi9hfAO4xEQx+xlrom/465wG9sR2pefD0goeev2ePti4vqS
+         V3Ey/BTo0YGveLvuDQ6wNMyLhfnnOmjIRYO6NSL4rd5CGZYR71qvLtQ4HnBZdxSFA8yn
+         qLrFwy+0c1HApi++9uvAGiuwdlap5XtkBIjChyhHJZq9yUyJn51VXNepCrKm2XxTx7T3
+         IxUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725495267; x=1726100067;
+        d=1e100.net; s=20230601; t=1725495268; x=1726100068;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=UYo96gfr0shigHW7k7ch8rY/tXVue2H6sZrfJvM5RKk=;
-        b=O+0akyfqxjf2dqPBC5XgAPVDz5vncpcvkgqZGu0y90ch+CcBzFJyz1MjLRCGESdeQa
-         yI6GDajDIxhA0msezRIzOCUM1moAAlNd+MtrmN47DNBgquf5uRxshsR8Q7We8tz1ur9N
-         x437TXjzVvN6DmKQ/zE4a885Vrrv2W3SJDzZP6KR0Cmz2fWBCcVStA3WUaIeD2ZG+BRL
-         tvN1U+GEggMZ+dYuL3QRbRXoaiD35kx7LjsouLX6jE/KlZ5tW0lZ4xE9YXQ7p3WNuann
-         B+iq6af1qs6tW34EorVx1NSZxv4XegfWQUIkT+ZyfIkhss23tZOsbjhpRWXy5Zr11c/D
-         0qTA==
-X-Gm-Message-State: AOJu0YzXbnmBZESRQfyAYFMEAcONLNn82bskoQsQFEr40O9BhNFKmrCL
-	84lT6XWJQA0R7gXvdQCTgxjWvV9sUvPXsWQESs6aGEhUH9uVtB/k3JtGlfE1
-X-Google-Smtp-Source: AGHT+IGDPU/BNHAZz0bwWU8S2tHlNB+zCpsSMRBxuqOoSw8vPfK18pVrIafwCMVe5MFMa3TZMSUUkg==
-X-Received: by 2002:a05:6a20:43a8:b0:1be:c3c1:7be8 with SMTP id adf61e73a8af0-1cce1015c4dmr23641835637.26.1725495266908;
-        Wed, 04 Sep 2024 17:14:26 -0700 (PDT)
+        bh=VLU/Dks+aXWcA0j3NcWT/JOFKYGYOLpEI0gipU7ELuY=;
+        b=sqKyWI3ZyXL27oI24VE58X29J5Wt1enhnJyNo3FHhMBomTzchpfUkRMBWrPqKGmggf
+         tOAnD99Q2HlVBHE1QjkT5+lFqtak7RlMspCeH50iOKf/eJEVEa2UMPcRG3Kd3qHu/2qo
+         jEs6IRP9dHn1EedUQqwQbDGjZSHIcrHx10Mwub1nW2elbQ+uXGmjs9vAZhfFbT43W+dr
+         mZYaPat85480u9DOmFr9mhX9lG1vDue1bUR7eUtYwxOgj1eFEI81Szm2ot2HigANWu6e
+         zLIdRWL6t9vf178XNbCW50k8xmR8eCQaf44A1TCE2K3Xf4XPDdIuaGUtWIL0pHGj0/de
+         B8aA==
+X-Gm-Message-State: AOJu0YzPnK6xeF/rhe4p3PyAEAF/7JqzIAeJiCTffh9zY7pE71UBnRrd
+	zmayIzRHnGQVCMG7jcUNwUCQs85vjaI7GXj1cTx/FQ0Grqa6rm+wMpxCSENX
+X-Google-Smtp-Source: AGHT+IEYBzaZziqgePl/VAJRK2y9nblLr4dKcr/reyFKQBYG8x3W9aZIf9LB6cNhGm5u/xeQg76/dg==
+X-Received: by 2002:a05:6358:e48b:b0:1b5:f592:6729 with SMTP id e5c5f4694b2df-1b603c200f6mr410937955d.9.1725495268523;
+        Wed, 04 Sep 2024 17:14:28 -0700 (PDT)
 Received: from tahera-OptiPlex-5000.tail3bf47f.ts.net ([136.159.49.123])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71778534921sm2159781b3a.76.2024.09.04.17.14.26
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-71778534921sm2159781b3a.76.2024.09.04.17.14.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Sep 2024 17:14:26 -0700 (PDT)
+        Wed, 04 Sep 2024 17:14:27 -0700 (PDT)
 From: Tahera Fahimi <fahimitahera@gmail.com>
 To: outreachy@lists.linux.dev
 Cc: mic@digikod.net,
@@ -64,9 +64,9 @@ Cc: mic@digikod.net,
 	jannh@google.com,
 	netdev@vger.kernel.org,
 	Tahera Fahimi <fahimitahera@gmail.com>
-Subject: [PATCH v11 5/8] selftests/landlock: Test connected vs non-connected datagram UNIX socket
-Date: Wed,  4 Sep 2024 18:13:59 -0600
-Message-Id: <c28c9cd8feef67dd25e115c401a2389a75f9983b.1725494372.git.fahimitahera@gmail.com>
+Subject: [PATCH v11 6/8] selftests/landlock: Restrict inherited datagram UNIX socket to connect
+Date: Wed,  4 Sep 2024 18:14:00 -0600
+Message-Id: <1428574deec13603b6ab2f2ed68ecbfa3b63bcb3.1725494372.git.fahimitahera@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <cover.1725494372.git.fahimitahera@gmail.com>
 References: <cover.1725494372.git.fahimitahera@gmail.com>
@@ -78,33 +78,29 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-This patch checks the specific case where a scoped datagram socket is
-connected and send(2) works, whereas sendto(2) is denied if the datagram
-socket is not connected.
+A socket can be shared between multiple processes, so it can connect and
+send data to them. This patch provides a test scenario where a sandboxed
+process inherits a socket's file descriptor. The process cannot connect
+or send data to the inherited socket since the process is scoped.
 
 Signed-off-by: Tahera Fahimi <fahimitahera@gmail.com>
 ---
- .../landlock/scoped_abstract_unix_test.c      | 105 ++++++++++++++++++
- 1 file changed, 105 insertions(+)
+ .../landlock/scoped_abstract_unix_test.c      | 66 +++++++++++++++++++
+ 1 file changed, 66 insertions(+)
 
 diff --git a/tools/testing/selftests/landlock/scoped_abstract_unix_test.c b/tools/testing/selftests/landlock/scoped_abstract_unix_test.c
-index 8fc47e45d17e..39297ebf7b73 100644
+index 39297ebf7b73..97ef74ce9f49 100644
 --- a/tools/testing/selftests/landlock/scoped_abstract_unix_test.c
 +++ b/tools/testing/selftests/landlock/scoped_abstract_unix_test.c
-@@ -819,4 +819,109 @@ TEST_F(various_address_sockets, scoped_pathname_sockets)
+@@ -924,4 +924,70 @@ TEST(datagram_sockets)
  		_metadata->exit_code = KSFT_FAIL;
  }
  
-+TEST(datagram_sockets)
++TEST(self_connect)
 +{
 +	struct service_fixture connected_addr, non_connected_addr;
-+	int conn_sock, non_conn_sock;
-+	int pipe_parent[2], pipe_child[2];
-+	int status;
-+	char buf;
++	int connected_socket, non_connected_socket, status;
 +	pid_t child;
-+	int num_bytes;
-+	char data[64];
 +
 +	drop_caps(_metadata);
 +	memset(&connected_addr, 0, sizeof(connected_addr));
@@ -112,88 +108,54 @@ index 8fc47e45d17e..39297ebf7b73 100644
 +	memset(&non_connected_addr, 0, sizeof(non_connected_addr));
 +	set_unix_address(&non_connected_addr, 1);
 +
-+	ASSERT_EQ(0, pipe2(pipe_parent, O_CLOEXEC));
-+	ASSERT_EQ(0, pipe2(pipe_child, O_CLOEXEC));
++	connected_socket = socket(AF_UNIX, SOCK_DGRAM, 0);
++	non_connected_socket = socket(AF_UNIX, SOCK_DGRAM, 0);
++	ASSERT_NE(-1, connected_socket);
++	ASSERT_NE(-1, non_connected_socket);
++
++	ASSERT_EQ(0, bind(connected_socket, &connected_addr.unix_addr,
++			  connected_addr.unix_addr_len));
++	ASSERT_EQ(0, bind(non_connected_socket, &non_connected_addr.unix_addr,
++			  non_connected_addr.unix_addr_len));
 +
 +	child = fork();
 +	ASSERT_LE(0, child);
 +	if (child == 0) {
 +		char buf_data[64];
 +
-+		ASSERT_EQ(0, close(pipe_parent[1]));
-+		ASSERT_EQ(0, close(pipe_child[0]));
-+
-+		conn_sock = socket(AF_UNIX, SOCK_DGRAM, 0);
-+		non_conn_sock = socket(AF_UNIX, SOCK_DGRAM, 0);
-+		ASSERT_NE(-1, conn_sock);
-+		ASSERT_NE(-1, non_conn_sock);
-+
-+		ASSERT_EQ(1, read(pipe_parent[0], &buf, 1));
-+
-+		ASSERT_EQ(0, connect(conn_sock, &connected_addr.unix_addr,
-+				     connected_addr.unix_addr_len));
-+
-+		/* Both connected and non-connected sockets can send
-+		 * data when the domain is not scoped.
-+		 */
 +		memset(buf_data, 'x', sizeof(buf_data));
-+		ASSERT_NE(-1, send(conn_sock, buf_data, sizeof(buf_data), 0));
-+		ASSERT_NE(-1, sendto(non_conn_sock, buf_data, sizeof(buf_data),
-+				     0, &non_connected_addr.unix_addr,
-+				     non_connected_addr.unix_addr_len));
-+		ASSERT_EQ(1, write(pipe_child[1], ".", 1));
-+
-+		/* Scopes the domain. */
++		/* Child's domain is scoped. */
 +		create_scoped_domain(_metadata,
 +				     LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET);
 +
 +		/*
-+		 * Connected socket sends data to the receiver, but the
-+		 * non-connected socket must fail to send data.
++		 * The child inherits the sockets, and cannot connect or
++		 * send data to them.
 +		 */
-+		ASSERT_NE(-1, send(conn_sock, buf_data, sizeof(buf_data), 0));
-+		ASSERT_EQ(-1, sendto(non_conn_sock, buf_data, sizeof(buf_data),
-+				     0, &non_connected_addr.unix_addr,
++		ASSERT_NE(0,
++			  connect(connected_socket, &connected_addr.unix_addr,
++				  connected_addr.unix_addr_len));
++		ASSERT_EQ(EPERM, errno);
++
++		ASSERT_EQ(-1,
++			  sendto(connected_socket, buf_data, sizeof(buf_data),
++				 0, &connected_addr.unix_addr,
++				 connected_addr.unix_addr_len));
++		ASSERT_EQ(EPERM, errno);
++
++		ASSERT_EQ(-1, sendto(non_connected_socket, buf_data,
++				     sizeof(buf_data), 0,
++				     &non_connected_addr.unix_addr,
 +				     non_connected_addr.unix_addr_len));
 +		ASSERT_EQ(EPERM, errno);
-+		ASSERT_EQ(1, write(pipe_child[1], ".", 1));
 +
-+		EXPECT_EQ(0, close(conn_sock));
-+		EXPECT_EQ(0, close(non_conn_sock));
++		EXPECT_EQ(0, close(connected_socket));
++		EXPECT_EQ(0, close(non_connected_socket));
 +		_exit(_metadata->exit_code);
 +		return;
 +	}
-+	ASSERT_EQ(0, close(pipe_parent[0]));
-+	ASSERT_EQ(0, close(pipe_child[1]));
-+
-+	conn_sock = socket(AF_UNIX, SOCK_DGRAM, 0);
-+	non_conn_sock = socket(AF_UNIX, SOCK_DGRAM, 0);
-+	ASSERT_NE(-1, conn_sock);
-+	ASSERT_NE(-1, non_conn_sock);
-+
-+	ASSERT_EQ(0, bind(conn_sock, &connected_addr.unix_addr,
-+			  connected_addr.unix_addr_len));
-+	ASSERT_EQ(0, bind(non_conn_sock, &non_connected_addr.unix_addr,
-+			  non_connected_addr.unix_addr_len));
-+
-+	ASSERT_EQ(1, write(pipe_parent[1], ".", 1));
-+
-+	ASSERT_EQ(1, read(pipe_child[0], &buf, 1));
-+	num_bytes = recv(conn_sock, data, sizeof(data) - 1, 0);
-+	ASSERT_NE(-1, num_bytes);
-+	num_bytes = recv(non_conn_sock, data, sizeof(data) - 1, 0);
-+	ASSERT_NE(-1, num_bytes);
-+
-+	/*
-+	 * Connected datagram socket will receive data, but
-+	 * non-connected datagram socket does not receive data.
-+	 */
-+	ASSERT_EQ(1, read(pipe_child[0], &buf, 1));
-+	num_bytes = recv(conn_sock, data, sizeof(data) - 1, 0);
-+	ASSERT_NE(-1, num_bytes);
-+
-+	EXPECT_EQ(0, close(conn_sock));
-+	EXPECT_EQ(0, close(non_conn_sock));
++	EXPECT_EQ(0, close(connected_socket));
++	EXPECT_EQ(0, close(non_connected_socket));
 +	ASSERT_EQ(child, waitpid(child, &status, 0));
 +	if (WIFSIGNALED(status) || !WIFEXITED(status) ||
 +	    WEXITSTATUS(status) != EXIT_SUCCESS)
