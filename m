@@ -1,56 +1,56 @@
-Received: from mail-pl1-f169.google.com (mail-pl1-f169.google.com [209.85.214.169])
+Received: from mail-pg1-f178.google.com (mail-pg1-f178.google.com [209.85.215.178])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2C53A1591E2
-	for <outreachy@lists.linux.dev>; Fri,  6 Sep 2024 21:30:17 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.214.169
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 35F8E15A85A
+	for <outreachy@lists.linux.dev>; Fri,  6 Sep 2024 21:30:18 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.215.178
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1725658219; cv=none; b=bfjSpzGc0ZiRrL/MKfyCueHn/0oUT1iuqgIYLmlL0p7Ao1nWJNEAJpYl73mtzxy+KU/lQgoe9+KtjRDCavt3/6Gi+z9sL+UpZOpu3m/R9etJ5EZFiUWnj4oFZE8VUtKk+FJwGyXavbh0lyWxmR0CJg0w0JwLOIQFPobg5Q34fa4=
+	t=1725658220; cv=none; b=GuJ05LPnUPMQPFwlxkbhsHpKCLrNWBPiq7hffKXhNQSUzmMTfTxIIJ1Q2LxGgeQJNpN1xes6L9LLwhpIzl8e+JN4ryC5xu3YimlqY80eQPubLvJEBuNCXOWgNWa1f2/XTx+7F442hO067M2vKvvp3vCo6Iojj3ixkJIw7bJaRjs=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1725658219; c=relaxed/simple;
-	bh=K+Qxz45A+ZqPOXWVuq415afaze3pbu1zD+OP3kZ887g=;
+	s=arc-20240116; t=1725658220; c=relaxed/simple;
+	bh=+3GejC8fHZoPuCDOxc4GYCoeoABETLnFK0r5C8s/9TY=;
 	h=From:To:Cc:Subject:Date:Message-Id:In-Reply-To:References:
-	 MIME-Version; b=aN9kqCIgalDNWQS9K0vg5k/3iyQO4hlU6c8Gt/wiNviZ9yqcUDH9TV4PCSDbbPqjyavCaHDgTBgShC3LwKBYY8YpTk7n5ENSbehT/bFYyXDWiJlcRVl2ca3yhwkrP/peBLTAemZdMxVk2uOS4RwNHu/D7ngAx5kWg/kgElEKE9s=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=C8l2C90h; arc=none smtp.client-ip=209.85.214.169
+	 MIME-Version:Content-Type; b=PS5T6zxz+ZL/vIMoelCbRsS0hhgA3aN+icQ3WMXHlGfYER4qirifSLmnijRZ25O7cLr2jMvx+4TkYhkBk8nCg3zDSjE1WMrjcv5Ev41qAIegxAAWVbAAIwS8Wiw4xPbofouXi4vmAHhFAiXlQEsO0v6svsWRvo5iFHM8zAGPU5c=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=D6hctdBa; arc=none smtp.client-ip=209.85.215.178
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="C8l2C90h"
-Received: by mail-pl1-f169.google.com with SMTP id d9443c01a7336-2054feabfc3so24118805ad.1
-        for <outreachy@lists.linux.dev>; Fri, 06 Sep 2024 14:30:17 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="D6hctdBa"
+Received: by mail-pg1-f178.google.com with SMTP id 41be03b00d2f7-7c691c8f8dcso1819616a12.1
+        for <outreachy@lists.linux.dev>; Fri, 06 Sep 2024 14:30:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1725658217; x=1726263017; darn=lists.linux.dev;
+        d=gmail.com; s=20230601; t=1725658218; x=1726263018; darn=lists.linux.dev;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=ZNTSuYvcE2rzLSfQuS2YWafJRc01WE85sQS6n5qwC5Q=;
-        b=C8l2C90hHdUtxYpqH5VOVFJUB1jzesyd77FUrpsfVnwXw4jV1vjbNW8MOSgwPpiurE
-         Nbr4D5lGWRgBvBdTDG3c/6HYNi8C1TVPlgXWNpJoBbxr9b+KeLE6KZQ726QSCw7fraPd
-         zWdUYa7gLYz75aieXgzDmdscple+Hs6XSH8GcyphO5hW4Y+eqji0yRpIQdDaXYL+n90q
-         zOcByDMgQGzpgt6w8B4AtuNn1hxrzetGvVp+nwzWTD6QYGNxvKgYzekvSz670ssQ/TXN
-         DFBQSrDd31srFV/wrRStCLKaNycJXo+ADr/0n6gDMP1sMWJ4QyjdEP5JhqdMz1ku2brs
-         hUTQ==
+        bh=Px9kUYGOkDiPrxrl12O1BhXK0JaB/ZwCDZNetTf6eAE=;
+        b=D6hctdBaG0d5fOJyjD/YS+mEaRImWSritUdQMzwv9QHYRiNlHiT3qllnZ9rB6xjW9q
+         JgnSFgL0tNavZCJXpjm6vviEBFBJBStd7TAXJ3eVlDoSHOYABZ9beM1Rb3QpEHA2g480
+         ETrVRGMMAIsf3hCUrp5OnpEhacB6RYj2cGh+GciSDnCsHctz3qX3VwBgRHpRi0DhKPKT
+         R+joQu0nN2IFi3pSho1KL/IPEoLPr7VT7ZyKKC8m2YArBIvv5TGx/gTtTB+zqq8vZxiA
+         R/K+gFfOs9HVmoH8CB+rvFG0DVM00rjULKaurCHljjGkltfvOPbmrjm/QXS151P+81p+
+         trPw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725658217; x=1726263017;
+        d=1e100.net; s=20230601; t=1725658218; x=1726263018;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=ZNTSuYvcE2rzLSfQuS2YWafJRc01WE85sQS6n5qwC5Q=;
-        b=lMOcw5oj+KRATny3EhU9C08EIZf0exELc9qyxHQ69qkUDDLbs+sWLTJRFxyWzYQp/9
-         Y27+afErpKkM1Lp3/L0s5AAXJS90ipLigNob9XvuA4r/DO6fiSQ9V71pC65s9x/BecUR
-         09tR7iN9NbZEjOBMJmH7pNanMNmSUdwF+n4hRDHqmjwNm+w3yS5j6hS+JQcxwiMuDjXE
-         Rz7JXUCwU3W9jYZPWXBgOBgHZi1xR3WAYLhPdkDarqkjeGoeqcQK4gRRKGjGJhZVTUHF
-         dE9ndRbtRW15VGyPn1mg24GS4E+a0aoLWszjAdWJP1H9EME6bWti/56k1Hplqb7dSGUS
-         qdeg==
-X-Gm-Message-State: AOJu0YxBr0EunZa5hS34srXshrhnj23yWQvHNP8HEjXFCil4bXEMyYrh
-	ehxqUKrXJktCkDUDQ4JyCsvEE1FwbosInXO14gr4oCjYmfm5nvB5AyMRhBPN
-X-Google-Smtp-Source: AGHT+IGLGFe3bBoUDYICYLnIDNAzUNx2k3gkrHKaRnE81r7MI60+PtIa2Khcq4/6/hovHQFWRcjSMQ==
-X-Received: by 2002:a17:902:db0e:b0:202:301f:36fd with SMTP id d9443c01a7336-206f051a7bamr45948335ad.18.1725658216656;
-        Fri, 06 Sep 2024 14:30:16 -0700 (PDT)
+        bh=Px9kUYGOkDiPrxrl12O1BhXK0JaB/ZwCDZNetTf6eAE=;
+        b=ZwDU/fRNJecQAstaAeYNpp8wHtYcEd2RF4MYdWFWUYOPkUmfrvRWHtSk9FjAS6cnrI
+         2fu0RYO3m7P6oeAjxJjo7lERuGGGnLISoAOAzBnkUVXfxIYq0pBhFcc2ZLZVTG3ACnId
+         F/JYZobEjL9fcMGM4H1YHFkPwhkTBJPxTJo35wBnIIkznz7r06YWdYA1LmdqbmeXCM5i
+         fmb/JkUSvtOUsotoW/BRx/y8/+ZSGn2p3sNgvHFWspaskD1hylZfc5spKZCWJSRDIynq
+         hWrcwT8etc4zwf0jfsIm0C80w0VpfYK2Ddpua4eylXlS7x27IYkFV7YaX3mUAp5jMbD5
+         0ZnQ==
+X-Gm-Message-State: AOJu0Yyw75aXFaVKhhGrrFgm1uP9RICiav6+4KvPzYfEEbsYYobD4MV5
+	igWv/x/sxqmTooNtplzTEia6k3mhoDyhLyXbfJ/ijBi6opbnr3OI/S+IfEcV
+X-Google-Smtp-Source: AGHT+IGGt8W0J2UbunoEUWLDtpF2ThbmJPfKVMU0HnPXu6CQeI3givwDF6NiWdHYI5hjtmDFB8XDdA==
+X-Received: by 2002:a17:902:e80c:b0:206:c5cf:9727 with SMTP id d9443c01a7336-206f056f895mr40518755ad.31.1725658218067;
+        Fri, 06 Sep 2024 14:30:18 -0700 (PDT)
 Received: from tahera-OptiPlex-5000.tail3bf47f.ts.net ([136.159.49.123])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-206aea67bd1sm47081065ad.247.2024.09.06.14.30.15
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-206aea67bd1sm47081065ad.247.2024.09.06.14.30.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 06 Sep 2024 14:30:16 -0700 (PDT)
+        Fri, 06 Sep 2024 14:30:17 -0700 (PDT)
 From: Tahera Fahimi <fahimitahera@gmail.com>
 To: outreachy@lists.linux.dev
 Cc: mic@digikod.net,
@@ -64,9 +64,9 @@ Cc: mic@digikod.net,
 	jannh@google.com,
 	netdev@vger.kernel.org,
 	Tahera Fahimi <fahimitahera@gmail.com>
-Subject: [PATCH v4 1/6] landlock: Add signal scoping control
-Date: Fri,  6 Sep 2024 15:30:03 -0600
-Message-Id: <df2b4f880a2ed3042992689a793ea0951f6798a5.1725657727.git.fahimitahera@gmail.com>
+Subject: [PATCH v4 2/6] selftest/landlock: Signal restriction tests
+Date: Fri,  6 Sep 2024 15:30:04 -0600
+Message-Id: <15dc202bb7f0a462ddeaa0c1cd630d2a7c6fa5c5.1725657728.git.fahimitahera@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <cover.1725657727.git.fahimitahera@gmail.com>
 References: <cover.1725657727.git.fahimitahera@gmail.com>
@@ -76,226 +76,268 @@ List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
-Currently, a sandbox process is not restricted to sending a signal (e.g.
-SIGKILL) to a process outside the sandbox environment. The ability to
-send a signal for a sandboxed process should be scoped the same way
-abstract UNIX sockets are scoped. Therefore, we extend the "scoped"
-field in a ruleset with "LANDLOCK_SCOPED_SIGNAL" to specify that a
-ruleset will deny sending any signal from within a sandbox process to
-its parent(i.e. any parent sandbox or non-sandboxed procsses).
-
-This patch adds two new hooks, "hook_file_set_fowner" and
-"hook_file_free_security", to set and release a pointer to the file
-owner's domain. This pointer, "fown_domain" in "landlock_file_security"
-will be used in "file_send_sigiotask" to check if the process can send a
-signal. Also, it updates the function "ruleset_with_unknown_scope", to
-support the scope mask of signal "LANDLOCK_SCOPED_SIGNAL".
+This patch expands Landlock ABI version 6 by providing tests for signal
+scoping mechanism. Base on kill(2), if the signal is 0, no signal will
+be sent, but the permission of a process to send a signal will be
+checked. Likewise, this test consider one signal for each signal
+category (SIGTRAP, SIGURG, SIGHUP, and SIGTSTP).
 
 Signed-off-by: Tahera Fahimi <fahimitahera@gmail.com>
 ---
 Changes in versions:
 V4:
-* Merging file_send_sigiotask and task_kill patches into one.
-* Commit improvement.
-* Applying feedback of V3 on managing fown_domain pointer.
+* Refactoring by providing two sets of tests, send_sig_to_parent to
+  check simple case of sending signal with scoped and non-scoped
+  domains, and check_access_signal to examine access to send a signal
+  with various domains.
 V3:
-* Moving file_send_sigiotask to another patch.
-* Minor code refactoring.
+* Using generalized scoped domain creation "create_scoped_domain"
 V2:
-* Remove signal_is_scoped function
-* Applying reviews of V1
+* Moving tests from ptrace_test.c to scoped_signal_test.c
+* Remove debugging statements.
+* Covering all basic restriction scenarios by sending 0 as signal
 V1:
-* Introducing LANDLOCK_SCOPE_SIGNAL
-* Adding two hooks, hook_task_kill and hook_file_send_sigiotask for
-  signal scoping.
+* Expanding Landlock ABI version 6 by providing basic tests for
+  four signals to test signal scoping mechanism.
 ---
- include/uapi/linux/landlock.h                 |  3 +
- security/landlock/fs.c                        | 17 ++++++
- security/landlock/fs.h                        |  6 ++
- security/landlock/limits.h                    |  2 +-
- security/landlock/task.c                      | 59 +++++++++++++++++++
- .../testing/selftests/landlock/scoped_test.c  |  2 +-
- 6 files changed, 87 insertions(+), 2 deletions(-)
+ .../selftests/landlock/scoped_signal_test.c   | 225 ++++++++++++++++++
+ 1 file changed, 225 insertions(+)
+ create mode 100644 tools/testing/selftests/landlock/scoped_signal_test.c
 
-diff --git a/include/uapi/linux/landlock.h b/include/uapi/linux/landlock.h
-index dfd48d722834..197da0c5c264 100644
---- a/include/uapi/linux/landlock.h
-+++ b/include/uapi/linux/landlock.h
-@@ -297,9 +297,12 @@ struct landlock_net_port_attr {
-  *   from connecting to an abstract unix socket created by a process
-  *   outside the related Landlock domain (e.g. a parent domain or a
-  *   non-sandboxed process).
-+ * - %LANDLOCK_SCOPED_SIGNAL: Restrict a sandboxed process from sending
-+ *   a signal to another process outside sandbox domain.
-  */
- /* clang-format off */
- #define LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET		(1ULL << 0)
-+#define LANDLOCK_SCOPED_SIGNAL		                (1ULL << 1)
- /* clang-format on*/
- 
- #endif /* _UAPI_LINUX_LANDLOCK_H */
-diff --git a/security/landlock/fs.c b/security/landlock/fs.c
-index 7877a64cc6b8..b1207f0a8cd4 100644
---- a/security/landlock/fs.c
-+++ b/security/landlock/fs.c
-@@ -1636,6 +1636,20 @@ static int hook_file_ioctl_compat(struct file *file, unsigned int cmd,
- 	return -EACCES;
- }
- 
-+static void hook_file_set_fowner(struct file *file)
+diff --git a/tools/testing/selftests/landlock/scoped_signal_test.c b/tools/testing/selftests/landlock/scoped_signal_test.c
+new file mode 100644
+index 000000000000..8df027e22324
+--- /dev/null
++++ b/tools/testing/selftests/landlock/scoped_signal_test.c
+@@ -0,0 +1,225 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Landlock tests - Signal Scoping
++ *
++ * Copyright © 2024 Tahera Fahimi <fahimitahera@gmail.com>
++ */
++
++#define _GNU_SOURCE
++#include <errno.h>
++#include <fcntl.h>
++#include <linux/landlock.h>
++#include <signal.h>
++#include <sys/prctl.h>
++#include <sys/types.h>
++#include <sys/wait.h>
++#include <unistd.h>
++
++#include "common.h"
++#include "scoped_common.h"
++
++/* This variable is used for handeling several signals. */
++static volatile sig_atomic_t is_signaled;
++
++/* clang-format off */
++FIXTURE(scoping_signals) {};
++/* clang-format on */
++
++FIXTURE_VARIANT(scoping_signals)
 +{
-+	write_lock_irq(&file->f_owner.lock);
-+	landlock_put_ruleset_deferred(landlock_file(file)->fown_domain);
-+	landlock_file(file)->fown_domain = landlock_get_current_domain();
-+	landlock_get_ruleset(landlock_file(file)->fown_domain);
-+	write_unlock_irq(&file->f_owner.lock);
++	int sig;
++};
++
++/* clang-format off */
++FIXTURE_VARIANT_ADD(scoping_signals, sigtrap) {
++	/* clang-format on */
++	.sig = SIGTRAP,
++};
++
++/* clang-format off */
++FIXTURE_VARIANT_ADD(scoping_signals, sigurg) {
++	/* clang-format on */
++	.sig = SIGURG,
++};
++
++/* clang-format off */
++FIXTURE_VARIANT_ADD(scoping_signals, sighup) {
++	/* clang-format on */
++	.sig = SIGHUP,
++};
++
++/* clang-format off */
++FIXTURE_VARIANT_ADD(scoping_signals, sigtstp) {
++	/* clang-format on */
++	.sig = SIGTSTP,
++};
++
++FIXTURE_SETUP(scoping_signals)
++{
++	is_signaled = 0;
 +}
 +
-+static void hook_file_free_security(struct file *file)
++FIXTURE_TEARDOWN(scoping_signals)
 +{
-+	landlock_put_ruleset_deferred(landlock_file(file)->fown_domain);
 +}
 +
- static struct security_hook_list landlock_hooks[] __ro_after_init = {
- 	LSM_HOOK_INIT(inode_free_security, hook_inode_free_security),
- 
-@@ -1660,6 +1674,9 @@ static struct security_hook_list landlock_hooks[] __ro_after_init = {
- 	LSM_HOOK_INIT(file_truncate, hook_file_truncate),
- 	LSM_HOOK_INIT(file_ioctl, hook_file_ioctl),
- 	LSM_HOOK_INIT(file_ioctl_compat, hook_file_ioctl_compat),
-+
-+	LSM_HOOK_INIT(file_set_fowner, hook_file_set_fowner),
-+	LSM_HOOK_INIT(file_free_security, hook_file_free_security),
- };
- 
- __init void landlock_add_fs_hooks(void)
-diff --git a/security/landlock/fs.h b/security/landlock/fs.h
-index 488e4813680a..9a97f9285b90 100644
---- a/security/landlock/fs.h
-+++ b/security/landlock/fs.h
-@@ -52,6 +52,12 @@ struct landlock_file_security {
- 	 * needed to authorize later operations on the open file.
- 	 */
- 	access_mask_t allowed_access;
-+	/**
-+	 * @fown_domain: A pointer to a &landlock_ruleset of the process owns
-+	 * the file. This ruleset is protected by fowner_struct.lock same as
-+	 * pid, uid, euid fields in fown_struct.
-+	 */
-+	struct landlock_ruleset *fown_domain;
- };
- 
- /**
-diff --git a/security/landlock/limits.h b/security/landlock/limits.h
-index eb01d0fb2165..fa28f9236407 100644
---- a/security/landlock/limits.h
-+++ b/security/landlock/limits.h
-@@ -26,7 +26,7 @@
- #define LANDLOCK_MASK_ACCESS_NET	((LANDLOCK_LAST_ACCESS_NET << 1) - 1)
- #define LANDLOCK_NUM_ACCESS_NET		__const_hweight64(LANDLOCK_MASK_ACCESS_NET)
- 
--#define LANDLOCK_LAST_SCOPE		LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET
-+#define LANDLOCK_LAST_SCOPE		LANDLOCK_SCOPED_SIGNAL
- #define LANDLOCK_MASK_SCOPE		((LANDLOCK_LAST_SCOPE << 1) - 1)
- #define LANDLOCK_NUM_SCOPE		__const_hweight64(LANDLOCK_MASK_SCOPE)
- /* clang-format on */
-diff --git a/security/landlock/task.c b/security/landlock/task.c
-index b9390445d242..a72a61e7e6c3 100644
---- a/security/landlock/task.c
-+++ b/security/landlock/task.c
-@@ -18,6 +18,7 @@
- 
- #include "common.h"
- #include "cred.h"
-+#include "fs.h"
- #include "ruleset.h"
- #include "setup.h"
- #include "task.h"
-@@ -242,11 +243,69 @@ static int hook_unix_may_send(struct socket *const sock,
- 	return 0;
- }
- 
-+static int hook_task_kill(struct task_struct *const p,
-+			  struct kernel_siginfo *const info, const int sig,
-+			  const struct cred *const cred)
++static void scope_signal_handler(int sig, siginfo_t *info, void *ucontext)
 +{
-+	bool is_scoped;
-+	const struct landlock_ruleset *target_dom, *dom;
-+
-+	dom = landlock_get_current_domain();
-+	rcu_read_lock();
-+	target_dom = landlock_get_task_domain(p);
-+	if (cred)
-+		/* dealing with USB IO */
-+		is_scoped = domain_is_scoped(landlock_cred(cred)->domain,
-+					     target_dom,
-+					     LANDLOCK_SCOPED_SIGNAL);
-+	else
-+		is_scoped = (!dom) ? false :
-+				     domain_is_scoped(dom, target_dom,
-+						      LANDLOCK_SCOPED_SIGNAL);
-+	rcu_read_unlock();
-+	if (is_scoped)
-+		return -EPERM;
-+
-+	return 0;
++	if (sig == SIGTRAP || sig == SIGURG || sig == SIGHUP || sig == SIGTSTP)
++		is_signaled = 1;
 +}
 +
-+static int hook_file_send_sigiotask(struct task_struct *tsk,
-+				    struct fown_struct *fown, int signum)
++/*
++ * In this test, a child process sends a signal to parent before and
++ * after getting scoped.
++ */
++TEST_F(scoping_signals, send_sig_to_parent)
 +{
-+	struct file *file;
-+	bool is_scoped;
-+	struct landlock_ruleset *dom;
++	pid_t child;
++	pid_t parent = getpid();
++	int status;
++	struct sigaction action = {
++		.sa_sigaction = scope_signal_handler,
++		.sa_flags = SA_SIGINFO,
 +
-+	/* struct fown_struct is never outside the context of a struct file */
-+	file = container_of(fown, struct file, f_owner);
++	};
 +
-+	read_lock_irq(&file->f_owner.lock);
-+	dom = landlock_file(file)->fown_domain;
-+	landlock_get_ruleset(dom);
-+	read_unlock_irq(&file->f_owner.lock);
-+	if (!dom)
-+		goto out_unlock;
++	ASSERT_LE(0, sigaction(variant->sig, &action, NULL));
 +
-+	rcu_read_lock();
-+	is_scoped = domain_is_scoped(dom, landlock_get_task_domain(tsk),
-+				     LANDLOCK_SCOPED_SIGNAL);
-+	rcu_read_unlock();
-+	if (is_scoped) {
-+		landlock_put_ruleset(dom);
-+		return -EPERM;
++	/* The process should not have already been signaled. */
++	EXPECT_EQ(0, is_signaled);
++
++	child = fork();
++	ASSERT_LE(0, child);
++	if (child == 0) {
++		int err;
++
++		/*
++		 * The child process can send signal to parent when
++		 * domain is not scoped.
++		 */
++		err = kill(parent, variant->sig);
++		ASSERT_EQ(0, err);
++
++		create_scoped_domain(_metadata, LANDLOCK_SCOPED_SIGNAL);
++
++		/*
++		 * The child process cannot send signal to the parent
++		 * anymore.
++		 */
++		err = kill(parent, variant->sig);
++		ASSERT_EQ(-1, err);
++		ASSERT_EQ(EPERM, errno);
++
++		/*
++		 * No matter of the domain, a process should be able to
++		 * send a signal to itself.
++		 */
++		ASSERT_EQ(0, is_signaled);
++		ASSERT_EQ(0, raise(variant->sig));
++		ASSERT_EQ(1, is_signaled);
++
++		_exit(_metadata->exit_code);
++		return;
 +	}
-+out_unlock:
-+	landlock_put_ruleset(dom);
-+	return 0;
++
++	while (!is_signaled && !usleep(1))
++		;
++	ASSERT_EQ(1, is_signaled);
++
++	ASSERT_EQ(child, waitpid(child, &status, 0));
++
++	if (WIFSIGNALED(status) || !WIFEXITED(status) ||
++	    WEXITSTATUS(status) != EXIT_SUCCESS)
++		_metadata->exit_code = KSFT_FAIL;
 +}
 +
- static struct security_hook_list landlock_hooks[] __ro_after_init = {
- 	LSM_HOOK_INIT(ptrace_access_check, hook_ptrace_access_check),
- 	LSM_HOOK_INIT(ptrace_traceme, hook_ptrace_traceme),
- 	LSM_HOOK_INIT(unix_stream_connect, hook_unix_stream_connect),
- 	LSM_HOOK_INIT(unix_may_send, hook_unix_may_send),
-+	LSM_HOOK_INIT(task_kill, hook_task_kill),
-+	LSM_HOOK_INIT(file_send_sigiotask, hook_file_send_sigiotask),
- };
- 
- __init void landlock_add_task_hooks(void)
-diff --git a/tools/testing/selftests/landlock/scoped_test.c b/tools/testing/selftests/landlock/scoped_test.c
-index 36d7266de9dc..237f98369b25 100644
---- a/tools/testing/selftests/landlock/scoped_test.c
-+++ b/tools/testing/selftests/landlock/scoped_test.c
-@@ -12,7 +12,7 @@
- 
- #include "common.h"
- 
--#define ACCESS_LAST LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET
-+#define ACCESS_LAST LANDLOCK_SCOPED_SIGNAL
- 
- TEST(ruleset_with_unknown_scope)
- {
++/* clang-format off */
++FIXTURE(scoped_domains) {};
++/* clang-format on */
++
++#include "scoped_base_variants.h"
++
++FIXTURE_SETUP(scoped_domains)
++{
++}
++
++FIXTURE_TEARDOWN(scoped_domains)
++{
++}
++
++/*
++ * This test ensures that a scoped process cannot send signal out of
++ * scoped domain.
++ */
++TEST_F(scoped_domains, check_access_signal)
++{
++	pid_t child;
++	pid_t parent = getpid();
++	int status;
++	bool can_signal_child, can_signal_parent;
++	int pipe_parent[2], pipe_child[2];
++	int err;
++	char buf;
++
++	can_signal_parent = !variant->domain_child;
++	can_signal_child = !variant->domain_parent;
++
++	if (variant->domain_both)
++		create_scoped_domain(_metadata, LANDLOCK_SCOPED_SIGNAL);
++	ASSERT_EQ(0, pipe2(pipe_parent, O_CLOEXEC));
++	ASSERT_EQ(0, pipe2(pipe_child, O_CLOEXEC));
++
++	child = fork();
++	ASSERT_LE(0, child);
++	if (child == 0) {
++		ASSERT_EQ(0, close(pipe_child[0]));
++		ASSERT_EQ(0, close(pipe_parent[1]));
++
++		if (variant->domain_child)
++			create_scoped_domain(_metadata, LANDLOCK_SCOPED_SIGNAL);
++
++		ASSERT_EQ(1, write(pipe_child[1], ".", 1));
++
++		/* Waits for the parent to send signals. */
++		ASSERT_EQ(1, read(pipe_parent[0], &buf, 1));
++
++		err = kill(parent, 0);
++		if (can_signal_parent) {
++			ASSERT_EQ(0, err);
++		} else {
++			ASSERT_EQ(-1, err);
++			ASSERT_EQ(EPERM, errno);
++		}
++		/*
++		 * No matter of the domain, a process should be able to
++		 * send a signal to itself.
++		 */
++		ASSERT_EQ(0, raise(0));
++
++		_exit(_metadata->exit_code);
++		return;
++	}
++	ASSERT_EQ(0, close(pipe_parent[0]));
++	if (variant->domain_parent)
++		create_scoped_domain(_metadata, LANDLOCK_SCOPED_SIGNAL);
++
++	ASSERT_EQ(1, read(pipe_child[0], &buf, 1));
++
++	err = kill(child, 0);
++	if (can_signal_child) {
++		ASSERT_EQ(0, err);
++	} else {
++		ASSERT_EQ(-1, err);
++		ASSERT_EQ(EPERM, errno);
++	}
++	ASSERT_EQ(0, raise(0));
++
++	ASSERT_EQ(1, write(pipe_parent[1], ".", 1));
++	ASSERT_EQ(child, waitpid(child, &status, 0));
++	if (WIFSIGNALED(status) || !WIFEXITED(status) ||
++	    WEXITSTATUS(status) != EXIT_SUCCESS)
++		_metadata->exit_code = KSFT_FAIL;
++}
++
++TEST_HARNESS_MAIN
 -- 
 2.34.1
 
