@@ -1,154 +1,185 @@
-Received: from mail-pl1-f170.google.com (mail-pl1-f170.google.com [209.85.214.170])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from smtp-8fad.mail.infomaniak.ch (smtp-8fad.mail.infomaniak.ch [83.166.143.173])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A840B15CD42
-	for <outreachy@lists.linux.dev>; Fri,  6 Sep 2024 21:30:23 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.214.170
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 545CC15EFA1
+	for <outreachy@lists.linux.dev>; Mon,  9 Sep 2024 11:10:11 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=83.166.143.173
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1725658225; cv=none; b=bF/UGx76lVextBDlcC9EQKdW0lI5pVSapOlQgzx3fG3mfGb5XTHpU7FTXOaOxCS5RKfhCTMObhDEuxB60O9hOZ1gksaUaAcYoIKvlqXe7DO0J3tx3Sacok6DfXo6g1J1q5XNCEnsqJqEhU2YAuj4uMiwpdAdCTCeMk/2kNVwXAc=
+	t=1725880217; cv=none; b=EuOi7NIAy3MnQgwdKHuBTesm57Jamj8eG0hecvAzKDHfWIjvdJ18MPLYxe3ZzPWuBhDVgWivrwdThCRUjIaKW+D89jF+TzYG5Vol0cZ0QBekQkzv8yQaEmRqwgboIo21EoMV/DyYSmdBqOUWBho0DF/2c6OsqlXGyX816Kmt2Bc=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1725658225; c=relaxed/simple;
-	bh=bElnKQofCAY+p/boD/vxtSPmvt2QWu/imirBWf3UgRo=;
-	h=From:To:Cc:Subject:Date:Message-Id:In-Reply-To:References:
-	 MIME-Version; b=n1OAaJ3L549wHMGU6wEDYFGVW5Dz7wYPX1K+n3UZoXuFnes6Y/R1rUaTsUlhu9mzSQL4eW65ortBx7q1zdI5Ba88v3PjWrTnCTkd/ivxBrkBA+NtoBppX/R36vT0P+501G9fy3xQ1T0Cf+aGrfyZTToMojTsU8GGKwAjhB7ftd8=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=gymh9hX0; arc=none smtp.client-ip=209.85.214.170
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	s=arc-20240116; t=1725880217; c=relaxed/simple;
+	bh=hw8yQ0VolwvnBmKSF3LNIg7oRvWDO7NrzgXIKv0VxmU=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=sz0LWor3EdTaP1C8FdQ2Dm7YmeShRcKJUoeFs6607Kztnuc+tAWBZ4tzaOATs8hLEJpJ2p98Qnd/edQof2/nfr2JGrxUkg/Bp03XDKGSH4aFR/ji0WbpJvwuA8yuocStgpsDdqogGVlPjwDOQRgq4CNdWwvZqZTLCt1wIioXGqk=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net; spf=pass smtp.mailfrom=digikod.net; dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b=0u6d7mzk; arc=none smtp.client-ip=83.166.143.173
+Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=digikod.net
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="gymh9hX0"
-Received: by mail-pl1-f170.google.com with SMTP id d9443c01a7336-2054feabfc3so24119365ad.1
-        for <outreachy@lists.linux.dev>; Fri, 06 Sep 2024 14:30:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1725658222; x=1726263022; darn=lists.linux.dev;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=AK65wUPtnvGMD/yVvdcqm/At2jScfUF7HQejuo4N+EU=;
-        b=gymh9hX0CBoGdBNWvC50MTdYUtCnzF7m237ZC1O6TR8sf6U/2GeF//NptSFVZE/9zG
-         9iimm6h6jqavATgpJ57hx3+bhoBPMamclvvt3VT3/aDkbqIqb6ENcdNWuHw52bHIXTUI
-         xZUdsFrOTW0wYmmwI6mkvFTo92yB6dp5X+wSzDn2++L4XKuapXU1LF+3REUVEDWWrcqn
-         8Btgo9kigz+1x5HMFR4MuMtwf4lUT4dOySxprTmnSWbk9/qVdEIRl76rgGNbJ9rVnaiL
-         Wqtqbg7kpWRTthxJX2Ywel6FtWzRk7gTDy/avntr06UGLRPCQTMexc6PMLlVBhgRltt7
-         FzWg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1725658222; x=1726263022;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=AK65wUPtnvGMD/yVvdcqm/At2jScfUF7HQejuo4N+EU=;
-        b=pIP262KXN1kGWWspNp33mpySyMpomHEKclWD/BWV7zNj57HtdfzFgcAJwthiSpFKte
-         1yvu8vTyls3+RZhSVJN/Vrieai7Gv0rPkoh1oHUz878fr4gX125CHCYIQCYq/Y+kLsuM
-         T65mgQJH6G68GgB89LvpIck0YK7ia6HICIPaICoP+uIDSo9abGQs0U4PPXyk7Zki7Jnb
-         Xl88RxKrxNUhYZvgXnx9l3EvZrmjXr4vy4CF6wk6Vy0uv0vmsmxchXMCAGQcBGMPBtcE
-         KA/FNG07zApZvGj0MsXuk5Xuf+2WkwET5U4QspQT9Azw/atrcq6cnMiJVpPkv9POoDOv
-         ZaKQ==
-X-Gm-Message-State: AOJu0YzUCcpxpGkQ9Mv3NnvCPuJoNRvYDqOzeKGMOKjRfKiEjCfXhlrB
-	GAu5GJlGsbn4eVn022YIU0iL2Qq+pebptQGFkizL0jB/zlDJ+EglVZEOZtlW
-X-Google-Smtp-Source: AGHT+IEDfS8XZHaSIjFR2D/Uhvuv/fnpxsuxJtjyzWagdGZHGaUqv1bNz5wGU4hHfQV4rxOlTWlsIw==
-X-Received: by 2002:a17:902:f788:b0:205:56e8:4a4b with SMTP id d9443c01a7336-206f04e1a86mr45554685ad.2.1725658222626;
-        Fri, 06 Sep 2024 14:30:22 -0700 (PDT)
-Received: from tahera-OptiPlex-5000.tail3bf47f.ts.net ([136.159.49.123])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-206aea67bd1sm47081065ad.247.2024.09.06.14.30.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 06 Sep 2024 14:30:21 -0700 (PDT)
-From: Tahera Fahimi <fahimitahera@gmail.com>
-To: outreachy@lists.linux.dev
-Cc: mic@digikod.net,
-	gnoack@google.com,
-	paul@paul-moore.com,
-	jmorris@namei.org,
-	serge@hallyn.com,
-	linux-security-module@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	bjorn3_gh@protonmail.com,
-	jannh@google.com,
-	netdev@vger.kernel.org,
-	Tahera Fahimi <fahimitahera@gmail.com>
-Subject: [PATCH v4 6/6] landlock: Document LANDLOCK_SCOPED_SIGNAL
-Date: Fri,  6 Sep 2024 15:30:08 -0600
-Message-Id: <dae0dbe1a78be2ce5506b90fc4ffd12c82fa1061.1725657728.git.fahimitahera@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <cover.1725657727.git.fahimitahera@gmail.com>
+	dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b="0u6d7mzk"
+Received: from smtp-4-0000.mail.infomaniak.ch (smtp-4-0000.mail.infomaniak.ch [10.7.10.107])
+	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4X2NT75smbz105G;
+	Mon,  9 Sep 2024 12:32:59 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=digikod.net;
+	s=20191114; t=1725877979;
+	bh=USLrcmWGFqTUBjA2tdW0YzQ39cdQX5h4S2o2tNzyS+0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=0u6d7mzkBO6aFeKEMuu2IYY0PL7osWBo2Z3PHskcQo/HMlMZmWYjCAGLF0I7wVc/j
+	 fdo33Rz5+78d5pFRDkYqx76o5FSEsDIH5jWr7nV4xkkfOnnLBWIemB41drtOyzw6+O
+	 QKHJF0tm4DVWbCLSWKgSOdo55lYImi8mC4rJtsZQ=
+Received: from unknown by smtp-4-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4X2NT63tfBzxy;
+	Mon,  9 Sep 2024 12:32:58 +0200 (CEST)
+Date: Mon, 9 Sep 2024 12:32:52 +0200
+From: =?utf-8?Q?Micka=C3=ABl_Sala=C3=BCn?= <mic@digikod.net>
+To: Tahera Fahimi <fahimitahera@gmail.com>
+Cc: outreachy@lists.linux.dev, gnoack@google.com, paul@paul-moore.com, 
+	jmorris@namei.org, serge@hallyn.com, linux-security-module@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, bjorn3_gh@protonmail.com, jannh@google.com, 
+	netdev@vger.kernel.org
+Subject: Re: [PATCH v4 4/6] selftest/landlock: Test file_send_sigiotask by
+ sending out-of-bound message
+Message-ID: <20240909.aekeexooNo8i@digikod.net>
 References: <cover.1725657727.git.fahimitahera@gmail.com>
+ <50daeed4d4f60d71e9564d0f24004a373fc5f7d5.1725657728.git.fahimitahera@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <50daeed4d4f60d71e9564d0f24004a373fc5f7d5.1725657728.git.fahimitahera@gmail.com>
+X-Infomaniak-Routing: alpha
 
-Improving Landlock ABI version 6 to support signal scoping with
-LANDLOCK_SCOPED_SIGNAL.
+This test does not cover hook_file_send_sigiotask(): the is_scoped
+variable is never set to true.
 
-Signed-off-by: Tahera Fahimi <fahimitahera@gmail.com>
----
-v3:
-- update date
----
- Documentation/userspace-api/landlock.rst | 22 +++++++++++++++-------
- 1 file changed, 15 insertions(+), 7 deletions(-)
+On Fri, Sep 06, 2024 at 03:30:06PM -0600, Tahera Fahimi wrote:
+> This patch adds a test to verify handling the signal scoping mechanism
+> in file_send_sigiotask by triggering SIGURG through receiving an
+> out-of-bound message in UNIX sockets.
+> 
+> Signed-off-by: Tahera Fahimi <fahimitahera@gmail.com>
+> ---
+> V4:
+> * Using pipe instead of Poll for synchronization.
+> ---
+>  .../selftests/landlock/scoped_signal_test.c   | 99 +++++++++++++++++++
+>  1 file changed, 99 insertions(+)
+> 
+> diff --git a/tools/testing/selftests/landlock/scoped_signal_test.c b/tools/testing/selftests/landlock/scoped_signal_test.c
+> index c71fb83b7147..630f3a515731 100644
+> --- a/tools/testing/selftests/landlock/scoped_signal_test.c
+> +++ b/tools/testing/selftests/landlock/scoped_signal_test.c
+> @@ -269,4 +269,103 @@ TEST(signal_scoping_threads)
+>  	EXPECT_EQ(0, close(thread_pipe[1]));
+>  }
+>  
+> +#define SOCKET_PATH "/tmp/unix_sock_test"
 
-diff --git a/Documentation/userspace-api/landlock.rst b/Documentation/userspace-api/landlock.rst
-index c3b87755e98d..c694e9fe36fc 100644
---- a/Documentation/userspace-api/landlock.rst
-+++ b/Documentation/userspace-api/landlock.rst
-@@ -82,7 +82,8 @@ to be explicit about the denied-by-default access rights.
-             LANDLOCK_ACCESS_NET_BIND_TCP |
-             LANDLOCK_ACCESS_NET_CONNECT_TCP,
-         .scoped =
--            LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET,
-+            LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET |
-+            LANDLOCK_SCOPED_SIGNAL,
-     };
- 
- Because we may not know on which kernel version an application will be
-@@ -123,7 +124,8 @@ version, and only use the available subset of access rights:
-         ruleset_attr.handled_access_fs &= ~LANDLOCK_ACCESS_FS_IOCTL_DEV;
-     case 5:
-         /* Removes LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET for ABI < 6 */
--        ruleset_attr.scoped &= ~LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET;
-+        ruleset_attr.scoped &= ~(LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET |
-+                                 LANDLOCK_SCOPED_SIGNAL);
-     }
- 
- This enables to create an inclusive ruleset that will contain our rules.
-@@ -320,11 +322,15 @@ explicitly scoped for a set of actions by specifying it on a ruleset.
- For example, if a sandboxed process should not be able to
- :manpage:`connect(2)` to a non-sandboxed process through abstract
- :manpage:`unix(7)` sockets, we can specify such restriction with
--``LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET``.
-+``LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET``. Moreover, if a sandboxed
-+process should not be able to send a signal to a non-sandboxed process,
-+we can specify this restriction with ``LANDLOCK_SCOPED_SIGNAL``.
- 
- A sandboxed process can connect to a non-sandboxed process when its
- domain is not scoped. If a process's domain is scoped, it can only
- connect to sockets created by processes in the same scoped domain.
-+Moreover, If a process is scoped to send signal to a non-scoped process,
-+it can only send signals to processes in the same scoped domain.
- 
- A connected datagram socket behaves like a stream socket when its domain
- is scoped, meaning if the domain is scoped after the socket is connected
-@@ -575,12 +581,14 @@ earlier ABI.
- Starting with the Landlock ABI version 5, it is possible to restrict the use of
- :manpage:`ioctl(2)` using the new ``LANDLOCK_ACCESS_FS_IOCTL_DEV`` right.
- 
--Abstract UNIX sockets Restriction  (ABI < 6)
----------------------------------------------
-+Abstract Unix sockets and Signal Restriction  (ABI < 6)
-+-------------------------------------------------------
- 
-+<<<<<<< current
- With ABI version 6, it is possible to restrict connection to an abstract
--Unix socket through ``LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET``, thanks to
--the ``scoped`` ruleset attribute.
-+:manpage:`unix(7)` socket through
-+``LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET`` and sending signal through
-+``LANDLOCK_SCOPED_SIGNAL``, thanks to the ``scoped`` ruleset attribute.
- 
- .. _kernel_support:
- 
--- 
-2.34.1
+We must not create file on absolute paths because concurrent executions
+or previous ones could interfer with the tests.  Why not use an abstract
+unix socket created with set_unix_address()?
 
+> +
+> +const short backlog = 10;
+> +
+> +static volatile sig_atomic_t signal_received;
+> +
+> +static void handle_sigurg(int sig)
+> +{
+> +	if (sig == SIGURG)
+> +		signal_received = 1;
+> +	else
+> +		signal_received = -1;
+> +}
+> +
+> +static int setup_signal_handler(int signal)
+> +{
+> +	struct sigaction sa;
+> +
+> +	sa.sa_handler = handle_sigurg;
+> +	sigemptyset(&sa.sa_mask);
+> +	sa.sa_flags = SA_SIGINFO | SA_RESTART;
+> +	return sigaction(SIGURG, &sa, NULL);
+> +}
+> +
+> +/*
+> + * Sending an out of bound message will trigger the SIGURG signal
+> + * through file_send_sigiotask.
+> + */
+> +TEST(test_sigurg_socket)
+> +{
+> +	int sock_fd, recv_sock;
+> +	struct sockaddr_un addr, paddr;
+> +	socklen_t size;
+> +	char oob_buf, buffer;
+> +	int status;
+> +	int pipe_parent[2], pipe_child[2];
+> +	pid_t child;
+> +
+> +	ASSERT_EQ(0, pipe2(pipe_parent, O_CLOEXEC));
+> +	ASSERT_EQ(0, pipe2(pipe_child, O_CLOEXEC));
+> +
+> +	memset(&addr, 0, sizeof(addr));
+> +	addr.sun_family = AF_UNIX;
+> +	snprintf(addr.sun_path, sizeof(addr.sun_path), "%s", SOCKET_PATH);
+> +	unlink(SOCKET_PATH);
+> +	size = sizeof(addr);
+> +
+> +	child = fork();
+> +	ASSERT_LE(0, child);
+> +	if (child == 0) {
+> +		oob_buf = '.';
+> +
+> +		ASSERT_EQ(0, close(pipe_parent[1]));
+> +		ASSERT_EQ(0, close(pipe_child[0]));
+> +
+> +		sock_fd = socket(AF_UNIX, SOCK_STREAM, 0);
+> +		ASSERT_NE(-1, sock_fd);
+> +
+> +		ASSERT_EQ(1, read(pipe_parent[0], &buffer, 1));
+> +		ASSERT_EQ(0, connect(sock_fd, &addr, sizeof(addr)));
+> +
+> +		ASSERT_EQ(1, read(pipe_parent[0], &buffer, 1));
+> +		ASSERT_NE(-1, send(sock_fd, &oob_buf, 1, MSG_OOB));
+> +		ASSERT_EQ(1, write(pipe_child[1], ".", 1));
+> +
+> +		EXPECT_EQ(0, close(sock_fd));
+> +
+> +		_exit(_metadata->exit_code);
+> +		return;
+> +	}
+> +	ASSERT_EQ(0, close(pipe_parent[0]));
+> +	ASSERT_EQ(0, close(pipe_child[1]));
+> +
+> +	sock_fd = socket(AF_UNIX, SOCK_STREAM, 0);
+> +	ASSERT_NE(-1, sock_fd);
+> +	ASSERT_EQ(0, bind(sock_fd, &addr, size));
+> +	ASSERT_EQ(0, listen(sock_fd, backlog));
+> +
+> +	ASSERT_NE(-1, setup_signal_handler(SIGURG));
+> +	ASSERT_EQ(1, write(pipe_parent[1], ".", 1));
+> +	recv_sock = accept(sock_fd, &paddr, &size);
+> +	ASSERT_NE(-1, recv_sock);
+> +
+> +	create_scoped_domain(_metadata, LANDLOCK_SCOPED_SIGNAL);
+> +
+> +	ASSERT_NE(-1, fcntl(recv_sock, F_SETOWN, getpid()));
+> +	ASSERT_EQ(1, write(pipe_parent[1], ".", 1));
+> +	ASSERT_EQ(1, read(pipe_child[0], &buffer, 1));
+> +	ASSERT_EQ(1, recv(recv_sock, &oob_buf, 1, MSG_OOB));
+> +
+> +	ASSERT_EQ(1, signal_received);
+> +	EXPECT_EQ(0, close(sock_fd));
+> +	EXPECT_EQ(0, close(recv_sock));
+> +	ASSERT_EQ(child, waitpid(child, &status, 0));
+> +	if (WIFSIGNALED(status) || !WIFEXITED(status) ||
+> +	    WEXITSTATUS(status) != EXIT_SUCCESS)
+> +		_metadata->exit_code = KSFT_FAIL;
+> +}
+> +
+>  TEST_HARNESS_MAIN
+> -- 
+> 2.34.1
+> 
