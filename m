@@ -1,45 +1,43 @@
-Received: from smtp-8fad.mail.infomaniak.ch (smtp-8fad.mail.infomaniak.ch [83.166.143.173])
+Received: from smtp-42a9.mail.infomaniak.ch (smtp-42a9.mail.infomaniak.ch [84.16.66.169])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 545CC15EFA1
-	for <outreachy@lists.linux.dev>; Mon,  9 Sep 2024 11:10:11 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=83.166.143.173
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7A64E192D74
+	for <outreachy@lists.linux.dev>; Wed, 11 Sep 2024 18:25:11 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=84.16.66.169
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1725880217; cv=none; b=EuOi7NIAy3MnQgwdKHuBTesm57Jamj8eG0hecvAzKDHfWIjvdJ18MPLYxe3ZzPWuBhDVgWivrwdThCRUjIaKW+D89jF+TzYG5Vol0cZ0QBekQkzv8yQaEmRqwgboIo21EoMV/DyYSmdBqOUWBho0DF/2c6OsqlXGyX816Kmt2Bc=
+	t=1726079115; cv=none; b=EqQ8uagFKAmRRHFd39UYwWFlfpP51E9nu4Dc4aj+8e1aGOLIFjANlBddISKM/iXsI87neVhzS877abW2CZCSAmSsAw0Z1Qgwb1BWH6gN5koHZnEnA/ZU0XgexGocT3Z/NI8SPVgXhVXiC1/HAqGM3dORuJlMsFZ21KJ6Sc078kU=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1725880217; c=relaxed/simple;
-	bh=hw8yQ0VolwvnBmKSF3LNIg7oRvWDO7NrzgXIKv0VxmU=;
+	s=arc-20240116; t=1726079115; c=relaxed/simple;
+	bh=Iv7X5S71r9G8/8xCax5nJjG2CNB8/rQcjQXAMuNXl+Y=;
 	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=sz0LWor3EdTaP1C8FdQ2Dm7YmeShRcKJUoeFs6607Kztnuc+tAWBZ4tzaOATs8hLEJpJ2p98Qnd/edQof2/nfr2JGrxUkg/Bp03XDKGSH4aFR/ji0WbpJvwuA8yuocStgpsDdqogGVlPjwDOQRgq4CNdWwvZqZTLCt1wIioXGqk=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net; spf=pass smtp.mailfrom=digikod.net; dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b=0u6d7mzk; arc=none smtp.client-ip=83.166.143.173
+	 Content-Type:Content-Disposition:In-Reply-To; b=JmdvCes7a8dSkawd6ao/Yd1mSbJBa9v3AU1knDmI+r3c8c4UWm5cAnYXy7aEk/822IzTeg6zjdQ9gilUOSXf/O9CwG/qsQC8KJgzYHDb5/DO+AU9fkZCWy2HwBnBiwrS0c55bqygsSBXFuVaA2KnavS7bSEgDh8vVG6PrP4Qm98=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net; spf=pass smtp.mailfrom=digikod.net; dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b=rKuo1xxl; arc=none smtp.client-ip=84.16.66.169
 Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=digikod.net
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b="0u6d7mzk"
-Received: from smtp-4-0000.mail.infomaniak.ch (smtp-4-0000.mail.infomaniak.ch [10.7.10.107])
-	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4X2NT75smbz105G;
-	Mon,  9 Sep 2024 12:32:59 +0200 (CEST)
+	dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b="rKuo1xxl"
+Received: from smtp-3-0000.mail.infomaniak.ch (smtp-3-0000.mail.infomaniak.ch [10.4.36.107])
+	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4X3pgs0CMCzXH1;
+	Wed, 11 Sep 2024 20:17:13 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=digikod.net;
-	s=20191114; t=1725877979;
-	bh=USLrcmWGFqTUBjA2tdW0YzQ39cdQX5h4S2o2tNzyS+0=;
+	s=20191114; t=1726078632;
+	bh=2VJrSaRcSGNHnP75mgU3Crci81AkrircpLyaN62nmUE=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=0u6d7mzkBO6aFeKEMuu2IYY0PL7osWBo2Z3PHskcQo/HMlMZmWYjCAGLF0I7wVc/j
-	 fdo33Rz5+78d5pFRDkYqx76o5FSEsDIH5jWr7nV4xkkfOnnLBWIemB41drtOyzw6+O
-	 QKHJF0tm4DVWbCLSWKgSOdo55lYImi8mC4rJtsZQ=
-Received: from unknown by smtp-4-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4X2NT63tfBzxy;
-	Mon,  9 Sep 2024 12:32:58 +0200 (CEST)
-Date: Mon, 9 Sep 2024 12:32:52 +0200
+	b=rKuo1xxlqeWVXz6ApHqUCrGp3w15gL0PNnZpT//NwiuTTPeN91YRkh4uAcKy269vk
+	 TDHwGnSdeK4bYWP0MHroX/UK6Ork+jTHv07FgZPgG5+BboRnpcFSOdQyrCoN+XIOZX
+	 MkCYLnA4y8XMFjm14OG6db/bKOJ0LmJkeLhMdxuM=
+Received: from unknown by smtp-3-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4X3pgr0xH1zWmB;
+	Wed, 11 Sep 2024 20:17:12 +0200 (CEST)
+Date: Wed, 11 Sep 2024 20:17:04 +0200
 From: =?utf-8?Q?Micka=C3=ABl_Sala=C3=BCn?= <mic@digikod.net>
 To: Tahera Fahimi <fahimitahera@gmail.com>
 Cc: outreachy@lists.linux.dev, gnoack@google.com, paul@paul-moore.com, 
 	jmorris@namei.org, serge@hallyn.com, linux-security-module@vger.kernel.org, 
 	linux-kernel@vger.kernel.org, bjorn3_gh@protonmail.com, jannh@google.com, 
 	netdev@vger.kernel.org
-Subject: Re: [PATCH v4 4/6] selftest/landlock: Test file_send_sigiotask by
- sending out-of-bound message
-Message-ID: <20240909.aekeexooNo8i@digikod.net>
+Subject: Re: [PATCH v4 0/6] landlock: Signal scoping support
+Message-ID: <20240911.BieLu8DooJiw@digikod.net>
 References: <cover.1725657727.git.fahimitahera@gmail.com>
- <50daeed4d4f60d71e9564d0f24004a373fc5f7d5.1725657728.git.fahimitahera@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -48,138 +46,79 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <50daeed4d4f60d71e9564d0f24004a373fc5f7d5.1725657728.git.fahimitahera@gmail.com>
+In-Reply-To: <cover.1725657727.git.fahimitahera@gmail.com>
 X-Infomaniak-Routing: alpha
 
-This test does not cover hook_file_send_sigiotask(): the is_scoped
-variable is never set to true.
+We should also have the same tests as for scoped_vs_unscoped variants.
+I renamed them from the abstract unix socket patch series, please take a
+look:
+https://git.kernel.org/pub/scm/linux/kernel/git/mic/linux.git/log/?h=next
 
-On Fri, Sep 06, 2024 at 03:30:06PM -0600, Tahera Fahimi wrote:
-> This patch adds a test to verify handling the signal scoping mechanism
-> in file_send_sigiotask by triggering SIGURG through receiving an
-> out-of-bound message in UNIX sockets.
+I'll send more reviews tomorrow and I'll fix most of them in my -next
+branch (WIP), except for the hook_file_send_sigiotask tests and these
+scoped_vs_unscoped variants that you should resolve.
+
+On Fri, Sep 06, 2024 at 03:30:02PM -0600, Tahera Fahimi wrote:
+> This patch series adds scoping mechanism for signals.
+> Closes: https://github.com/landlock-lsm/linux/issues/8
 > 
-> Signed-off-by: Tahera Fahimi <fahimitahera@gmail.com>
-> ---
-> V4:
-> * Using pipe instead of Poll for synchronization.
-> ---
->  .../selftests/landlock/scoped_signal_test.c   | 99 +++++++++++++++++++
->  1 file changed, 99 insertions(+)
+> Problem
+> =======
 > 
-> diff --git a/tools/testing/selftests/landlock/scoped_signal_test.c b/tools/testing/selftests/landlock/scoped_signal_test.c
-> index c71fb83b7147..630f3a515731 100644
-> --- a/tools/testing/selftests/landlock/scoped_signal_test.c
-> +++ b/tools/testing/selftests/landlock/scoped_signal_test.c
-> @@ -269,4 +269,103 @@ TEST(signal_scoping_threads)
->  	EXPECT_EQ(0, close(thread_pipe[1]));
->  }
->  
-> +#define SOCKET_PATH "/tmp/unix_sock_test"
-
-We must not create file on absolute paths because concurrent executions
-or previous ones could interfer with the tests.  Why not use an abstract
-unix socket created with set_unix_address()?
-
-> +
-> +const short backlog = 10;
-> +
-> +static volatile sig_atomic_t signal_received;
-> +
-> +static void handle_sigurg(int sig)
-> +{
-> +	if (sig == SIGURG)
-> +		signal_received = 1;
-> +	else
-> +		signal_received = -1;
-> +}
-> +
-> +static int setup_signal_handler(int signal)
-> +{
-> +	struct sigaction sa;
-> +
-> +	sa.sa_handler = handle_sigurg;
-> +	sigemptyset(&sa.sa_mask);
-> +	sa.sa_flags = SA_SIGINFO | SA_RESTART;
-> +	return sigaction(SIGURG, &sa, NULL);
-> +}
-> +
-> +/*
-> + * Sending an out of bound message will trigger the SIGURG signal
-> + * through file_send_sigiotask.
-> + */
-> +TEST(test_sigurg_socket)
-> +{
-> +	int sock_fd, recv_sock;
-> +	struct sockaddr_un addr, paddr;
-> +	socklen_t size;
-> +	char oob_buf, buffer;
-> +	int status;
-> +	int pipe_parent[2], pipe_child[2];
-> +	pid_t child;
-> +
-> +	ASSERT_EQ(0, pipe2(pipe_parent, O_CLOEXEC));
-> +	ASSERT_EQ(0, pipe2(pipe_child, O_CLOEXEC));
-> +
-> +	memset(&addr, 0, sizeof(addr));
-> +	addr.sun_family = AF_UNIX;
-> +	snprintf(addr.sun_path, sizeof(addr.sun_path), "%s", SOCKET_PATH);
-> +	unlink(SOCKET_PATH);
-> +	size = sizeof(addr);
-> +
-> +	child = fork();
-> +	ASSERT_LE(0, child);
-> +	if (child == 0) {
-> +		oob_buf = '.';
-> +
-> +		ASSERT_EQ(0, close(pipe_parent[1]));
-> +		ASSERT_EQ(0, close(pipe_child[0]));
-> +
-> +		sock_fd = socket(AF_UNIX, SOCK_STREAM, 0);
-> +		ASSERT_NE(-1, sock_fd);
-> +
-> +		ASSERT_EQ(1, read(pipe_parent[0], &buffer, 1));
-> +		ASSERT_EQ(0, connect(sock_fd, &addr, sizeof(addr)));
-> +
-> +		ASSERT_EQ(1, read(pipe_parent[0], &buffer, 1));
-> +		ASSERT_NE(-1, send(sock_fd, &oob_buf, 1, MSG_OOB));
-> +		ASSERT_EQ(1, write(pipe_child[1], ".", 1));
-> +
-> +		EXPECT_EQ(0, close(sock_fd));
-> +
-> +		_exit(_metadata->exit_code);
-> +		return;
-> +	}
-> +	ASSERT_EQ(0, close(pipe_parent[0]));
-> +	ASSERT_EQ(0, close(pipe_child[1]));
-> +
-> +	sock_fd = socket(AF_UNIX, SOCK_STREAM, 0);
-> +	ASSERT_NE(-1, sock_fd);
-> +	ASSERT_EQ(0, bind(sock_fd, &addr, size));
-> +	ASSERT_EQ(0, listen(sock_fd, backlog));
-> +
-> +	ASSERT_NE(-1, setup_signal_handler(SIGURG));
-> +	ASSERT_EQ(1, write(pipe_parent[1], ".", 1));
-> +	recv_sock = accept(sock_fd, &paddr, &size);
-> +	ASSERT_NE(-1, recv_sock);
-> +
-> +	create_scoped_domain(_metadata, LANDLOCK_SCOPED_SIGNAL);
-> +
-> +	ASSERT_NE(-1, fcntl(recv_sock, F_SETOWN, getpid()));
-> +	ASSERT_EQ(1, write(pipe_parent[1], ".", 1));
-> +	ASSERT_EQ(1, read(pipe_child[0], &buffer, 1));
-> +	ASSERT_EQ(1, recv(recv_sock, &oob_buf, 1, MSG_OOB));
-> +
-> +	ASSERT_EQ(1, signal_received);
-> +	EXPECT_EQ(0, close(sock_fd));
-> +	EXPECT_EQ(0, close(recv_sock));
-> +	ASSERT_EQ(child, waitpid(child, &status, 0));
-> +	if (WIFSIGNALED(status) || !WIFEXITED(status) ||
-> +	    WEXITSTATUS(status) != EXIT_SUCCESS)
-> +		_metadata->exit_code = KSFT_FAIL;
-> +}
-> +
->  TEST_HARNESS_MAIN
+> A sandboxed process is currently not restricted from sending signals
+> (e.g. SIGKILL) to processes outside the sandbox since Landlock has no
+> restriction on signals(see more details in [1]).
+> 
+> A simple way to apply this restriction would be to scope signals the
+> same way abstract unix sockets are restricted.
+> 
+> [1]https://lore.kernel.org/all/20231023.ahphah4Wii4v@digikod.net/
+> 
+> Solution
+> ========
+> 
+> To solve this issue, we extend the "scoped" field in the Landlock
+> ruleset attribute structure by introducing "LANDLOCK_SCOPED_SIGNAL"
+> field to specify that a ruleset will deny sending any signals from
+> within the sandbox domain to its parent(i.e. any parent sandbox or
+> non-sandbox processes).
+> 
+> Example
+> =======
+> 
+> Create a sansboxed shell and pass the character "s" to LL_SCOPED:
+> LL_FD_RO=/ LL_FS_RW=. LL_SCOPED="s" ./sandboxer /bin/bash
+> Try to send a signal(like SIGTRAP) to a process ID <PID> through:
+> kill -SIGTRAP <PID>
+> The sandboxed process should not be able to send the signal.
+> 
+> Previous Versions
+> =================
+> v3:https://lore.kernel.org/all/cover.1723680305.git.fahimitahera@gmail.com/
+> v2:https://lore.kernel.org/all/cover.1722966592.git.fahimitahera@gmail.com/
+> v1:https://lore.kernel.org/all/cover.1720203255.git.fahimitahera@gmail.com/
+> 
+> Tahera Fahimi (6):
+>   landlock: Add signal scoping control
+>   selftest/landlock: Signal restriction tests
+>   selftest/landlock: Add signal_scoping_threads test
+>   selftest/landlock: Test file_send_sigiotask by sending out-of-bound
+>     message
+>   sample/landlock: Support sample for signal scoping restriction
+>   landlock: Document LANDLOCK_SCOPED_SIGNAL
+> 
+>  Documentation/userspace-api/landlock.rst      |  22 +-
+>  include/uapi/linux/landlock.h                 |   3 +
+>  samples/landlock/sandboxer.c                  |  17 +-
+>  security/landlock/fs.c                        |  17 +
+>  security/landlock/fs.h                        |   6 +
+>  security/landlock/limits.h                    |   2 +-
+>  security/landlock/task.c                      |  59 +++
+>  .../selftests/landlock/scoped_signal_test.c   | 371 ++++++++++++++++++
+>  .../testing/selftests/landlock/scoped_test.c  |   2 +-
+>  9 files changed, 486 insertions(+), 13 deletions(-)
+>  create mode 100644 tools/testing/selftests/landlock/scoped_signal_test.c
+> 
 > -- 
 > 2.34.1
 > 
