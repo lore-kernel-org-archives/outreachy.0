@@ -1,44 +1,44 @@
-Received: from smtp-bc0d.mail.infomaniak.ch (smtp-bc0d.mail.infomaniak.ch [45.157.188.13])
+Received: from smtp-190b.mail.infomaniak.ch (smtp-190b.mail.infomaniak.ch [185.125.25.11])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AA2EB1D935A
-	for <outreachy@lists.linux.dev>; Fri, 13 Sep 2024 13:40:16 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=45.157.188.13
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9E80426AED
+	for <outreachy@lists.linux.dev>; Fri, 13 Sep 2024 15:07:16 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=185.125.25.11
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1726234820; cv=none; b=IfwWbL/GcbxBQOjk32CNcP3dKgcVZWYND42v86RGOpFYkWbe1kHsMPvEvPn9itcb3i9eCUEvAUQkGVoHkxdo4U2SC5W9HBqxjq4cG8miydKSoip7yndnN3BtGV7cXo4RZ+ivpt3exke/wiBr8OsB4AfIG8lqg+QGJs3nNq7bC7Y=
+	t=1726240042; cv=none; b=MiBYxmtQvZbgJfYohkgjEbt/iQhjWdcbOt83jcRboeV0qgAM17N3KtTUyRej+4AD3maZLx8Ax1EehYZ5/ZnU8W94QxzGbz/mBqgfkhnZFXkwhBufiYuACA0gk6F13NzUbxKbHAo8io8ewOpKF9VSyXHdIIkKvlL1NHt0pLhlcd8=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1726234820; c=relaxed/simple;
-	bh=FuLavyQvHtM8WNrI6vKqzszV+dUVTGkQOGNr5SLyZC4=;
+	s=arc-20240116; t=1726240042; c=relaxed/simple;
+	bh=agAGQaQKR7jPdfLVXlx5YU1jit9N0eVgGXj1g6kX3+M=;
 	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=qfSwyklLw4bhiwlphk51slxTmUFw+6j2MjV6I+jI73V1aR+j7454usK5VyYCn5GtoIkLcBHCCsMuM7KY9z884/C9hK3c/2O5MlOMD/0ZGDg3DvBBYQYDCwUp9f6nwBswoGcScTPuH3CVEk4NgXLv04IJEK/B4rv2B+5c6feQaJk=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net; spf=pass smtp.mailfrom=digikod.net; dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b=rHKCAJL8; arc=none smtp.client-ip=45.157.188.13
+	 Content-Type:Content-Disposition:In-Reply-To; b=YhDvFVVcmr28uD7geWaon1UzZMCbzhGM+be6PMOrqNFDd05VioOnCrsoQWDrTx0nqVGW6XckoGIUeMwGvWG+Pnj7xH8NHI3KMyFKNxI5xwKG9AIawc9cyY2zhnjx2VpY2g35zedefFRRF2a+9fWjgzSNOMS4QFeG7cWFSiPxGOY=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net; spf=pass smtp.mailfrom=digikod.net; dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b=QldiuMcR; arc=none smtp.client-ip=185.125.25.11
 Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=digikod.net
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b="rHKCAJL8"
+	dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b="QldiuMcR"
 Received: from smtp-3-0000.mail.infomaniak.ch (smtp-3-0000.mail.infomaniak.ch [10.4.36.107])
-	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4X4wH83tfjzgWW;
-	Fri, 13 Sep 2024 15:33:08 +0200 (CEST)
+	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4X4yMk5McMzcN1;
+	Fri, 13 Sep 2024 17:07:14 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=digikod.net;
-	s=20191114; t=1726234388;
-	bh=MH8HjPJeBlhN/lWhWBgQcXkOURL5N2O7tfwxaECdnFQ=;
+	s=20191114; t=1726240034;
+	bh=/BtaBBtka7t3ajVss1QhVMZIogsSOt5+FKZJzJgMvpw=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=rHKCAJL8t1bdaLNqjn89ZGONAIOviOasFHZS3MK8w73wdLPvihXWzz/n4NNcCC0ZD
-	 bOe9KY1bV3n04AQIH9Y/TK+opSL9NA/PLQdazDyfx9phHwm962fsuFzk97IPAIJ81o
-	 fCS3LXWubgoWrnYigeSczWA7VS6P8xC3tNYVGw0U=
-Received: from unknown by smtp-3-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4X4wH64ldfzZ9Z;
-	Fri, 13 Sep 2024 15:33:06 +0200 (CEST)
-Date: Fri, 13 Sep 2024 15:32:59 +0200
+	b=QldiuMcRDfE6QIHxZmZhri+JpoJvAai36ZfUiXb75iEKYe3J3HiBl514lGhtTm27t
+	 JbzYzcyEDltJpFpF3xo3YiLL4zQ20+Ou9TLTxOZG+XypB2dRDSJeEO2MyPZYhuGkre
+	 weiLJfmluJRGm6oqDOJ82ffQCCNdG/qXPMguaDuE=
+Received: from unknown by smtp-3-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4X4yMj3WqKz1dQ;
+	Fri, 13 Sep 2024 17:07:13 +0200 (CEST)
+Date: Fri, 13 Sep 2024 17:07:06 +0200
 From: =?utf-8?Q?Micka=C3=ABl_Sala=C3=BCn?= <mic@digikod.net>
-To: Tahera Fahimi <fahimitahera@gmail.com>, linux-api@vger.kernel.org
+To: Tahera Fahimi <fahimitahera@gmail.com>
 Cc: outreachy@lists.linux.dev, gnoack@google.com, paul@paul-moore.com, 
 	jmorris@namei.org, serge@hallyn.com, linux-security-module@vger.kernel.org, 
 	linux-kernel@vger.kernel.org, bjorn3_gh@protonmail.com, jannh@google.com, 
 	netdev@vger.kernel.org
-Subject: Re: [PATCH v11 1/8] Landlock: Add abstract UNIX socket restriction
-Message-ID: <20240913.AmeeLo0aeheD@digikod.net>
-References: <cover.1725494372.git.fahimitahera@gmail.com>
- <5f7ad85243b78427242275b93481cfc7c127764b.1725494372.git.fahimitahera@gmail.com>
+Subject: Re: [PATCH v4 1/6] landlock: Add signal scoping control
+Message-ID: <20240913.aipoh9chooBo@digikod.net>
+References: <cover.1725657727.git.fahimitahera@gmail.com>
+ <df2b4f880a2ed3042992689a793ea0951f6798a5.1725657727.git.fahimitahera@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -47,153 +47,319 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <5f7ad85243b78427242275b93481cfc7c127764b.1725494372.git.fahimitahera@gmail.com>
+In-Reply-To: <df2b4f880a2ed3042992689a793ea0951f6798a5.1725657727.git.fahimitahera@gmail.com>
 X-Infomaniak-Routing: alpha
 
-On Wed, Sep 04, 2024 at 06:13:55PM -0600, Tahera Fahimi wrote:
-> This patch introduces a new "scoped" attribute to the
-> landlock_ruleset_attr that can specify
-> "LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET" to scope abstract UNIX sockets
-> from connecting to a process outside of the same Landlock domain. It
-> implements two hooks, unix_stream_connect and unix_may_send to enforce
-> this restriction.
+On Fri, Sep 06, 2024 at 03:30:03PM -0600, Tahera Fahimi wrote:
+> Currently, a sandbox process is not restricted to sending a signal (e.g.
+> SIGKILL) to a process outside the sandbox environment. The ability to
+> send a signal for a sandboxed process should be scoped the same way
+> abstract UNIX sockets are scoped. Therefore, we extend the "scoped"
+> field in a ruleset with "LANDLOCK_SCOPED_SIGNAL" to specify that a
+> ruleset will deny sending any signal from within a sandbox process to
+> its parent(i.e. any parent sandbox or non-sandboxed procsses).
 > 
-> Closes: https://github.com/landlock-lsm/linux/issues/7
+> This patch adds two new hooks, "hook_file_set_fowner" and
+> "hook_file_free_security", to set and release a pointer to the file
+> owner's domain. This pointer, "fown_domain" in "landlock_file_security"
+> will be used in "file_send_sigiotask" to check if the process can send a
+> signal. Also, it updates the function "ruleset_with_unknown_scope", to
+> support the scope mask of signal "LANDLOCK_SCOPED_SIGNAL".
+> 
 > Signed-off-by: Tahera Fahimi <fahimitahera@gmail.com>
-> 
 > ---
-> v11:
-> - For a connected abstract datagram socket, the hook_unix_may_send
->   allows the socket to send a data. (it is treated as a connected stream
->   socket)
-> - Minor comment revision.
-> v10:
-> - Minor code improvement based on reviews on v9.
-> v9:
-> - Editting inline comments.
-> - Major refactoring in domain_is_scoped() and is_abstract_socket
-> v8:
-> - Code refactoring (improve code readability, renaming variable, etc.)
->   based on reviews by Mickaël Salaün on version 7.
-> - Adding warn_on_once to check (impossible) inconsistencies.
-> - Adding inline comments.
-> - Adding check_unix_address_format to check if the scoping socket is an
->   abstract UNIX sockets.
-> v7:
-> - Using socket's file credentials for both connected(STREAM) and
->   non-connected(DGRAM) sockets.
-> - Adding "domain_sock_scope" instead of the domain scoping mechanism
->   used in ptrace ensures that if a server's domain is accessible from
->   the client's domain (where the client is more privileged than the
->   server), the client can connect to the server in all edge cases.
-> - Removing debug codes.
-> v6:
-> - Removing curr_ruleset from landlock_hierarchy, and switching back to
->   use the same domain scoping as ptrace.
-> - code clean up.
-> v5:
-> - Renaming "LANDLOCK_*_ACCESS_SCOPE" to "LANDLOCK_*_SCOPE"
-> - Adding curr_ruleset to hierarachy_ruleset structure to have access
->   from landlock_hierarchy to its respective landlock_ruleset.
-> - Using curr_ruleset to check if a domain is scoped while walking in the
->   hierarchy of domains.
-> - Modifying inline comments.
-> v4:
-> - Rebased on Günther's Patch:
->   https://lore.kernel.org/all/20240610082115.1693267-1-gnoack@google.com/
->   so there is no need for "LANDLOCK_SHIFT_ACCESS_SCOPE", then it is
->   removed.
-> - Adding get_scope_accesses function to check all scoped access masks in
->   a ruleset.
-> - Using socket's file credentials instead of credentials stored in
->   peer_cred for datagram sockets. (see discussion in [1])
-> - Modifying inline comments.
+> Changes in versions:
+> V4:
+> * Merging file_send_sigiotask and task_kill patches into one.
+> * Commit improvement.
+> * Applying feedback of V3 on managing fown_domain pointer.
 > V3:
-> - Improving commit description.
-> - Introducing "scoped" attribute to landlock_ruleset_attr for IPC
->   scoping purpose, and adding related functions.
-> - Changing structure of ruleset based on "scoped".
-> - Removing rcu lock and using unix_sk lock instead.
-> - Introducing scoping for datagram sockets in unix_may_send.
+> * Moving file_send_sigiotask to another patch.
+> * Minor code refactoring.
 > V2:
-> - Removing wrapper functions
-> 
-> [1]https://lore.kernel.org/all/20240610.Aifee5ingugh@digikod.net/
+> * Remove signal_is_scoped function
+> * Applying reviews of V1
+> V1:
+> * Introducing LANDLOCK_SCOPE_SIGNAL
+> * Adding two hooks, hook_task_kill and hook_file_send_sigiotask for
+>   signal scoping.
 > ---
->  include/uapi/linux/landlock.h                |  28 ++++
->  security/landlock/limits.h                   |   3 +
->  security/landlock/ruleset.c                  |   7 +-
->  security/landlock/ruleset.h                  |  24 +++-
->  security/landlock/syscalls.c                 |  17 ++-
->  security/landlock/task.c                     | 136 +++++++++++++++++++
->  tools/testing/selftests/landlock/base_test.c |   2 +-
->  7 files changed, 208 insertions(+), 9 deletions(-)
+>  include/uapi/linux/landlock.h                 |  3 +
+>  security/landlock/fs.c                        | 17 ++++++
+>  security/landlock/fs.h                        |  6 ++
+>  security/landlock/limits.h                    |  2 +-
+>  security/landlock/task.c                      | 59 +++++++++++++++++++
+>  .../testing/selftests/landlock/scoped_test.c  |  2 +-
+>  6 files changed, 87 insertions(+), 2 deletions(-)
 > 
 > diff --git a/include/uapi/linux/landlock.h b/include/uapi/linux/landlock.h
-> index 2c8dbc74b955..dfd48d722834 100644
+> index dfd48d722834..197da0c5c264 100644
 > --- a/include/uapi/linux/landlock.h
 > +++ b/include/uapi/linux/landlock.h
-> @@ -44,6 +44,12 @@ struct landlock_ruleset_attr {
->  	 * flags`_).
->  	 */
->  	__u64 handled_access_net;
-> +	/**
-> +	 * @scoped: Bitmask of scopes (cf. `Scope flags`_)
-> +	 * restricting a Landlock domain from accessing outside
-> +	 * resources(e.g. IPCs).
-> +	 */
-> +	__u64 scoped;
+> @@ -297,9 +297,12 @@ struct landlock_net_port_attr {
+>   *   from connecting to an abstract unix socket created by a process
+>   *   outside the related Landlock domain (e.g. a parent domain or a
+>   *   non-sandboxed process).
+> + * - %LANDLOCK_SCOPED_SIGNAL: Restrict a sandboxed process from sending
+> + *   a signal to another process outside sandbox domain.
+>   */
+>  /* clang-format off */
+>  #define LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET		(1ULL << 0)
+> +#define LANDLOCK_SCOPED_SIGNAL		                (1ULL << 1)
+>  /* clang-format on*/
+>  
+>  #endif /* _UAPI_LINUX_LANDLOCK_H */
+> diff --git a/security/landlock/fs.c b/security/landlock/fs.c
+> index 7877a64cc6b8..b1207f0a8cd4 100644
+> --- a/security/landlock/fs.c
+> +++ b/security/landlock/fs.c
+> @@ -1636,6 +1636,20 @@ static int hook_file_ioctl_compat(struct file *file, unsigned int cmd,
+>  	return -EACCES;
+>  }
+>  
+> +static void hook_file_set_fowner(struct file *file)
+> +{
+> +	write_lock_irq(&file->f_owner.lock);
+
+This lock is already held.
+
+> +	landlock_put_ruleset_deferred(landlock_file(file)->fown_domain);
+> +	landlock_file(file)->fown_domain = landlock_get_current_domain();
+> +	landlock_get_ruleset(landlock_file(file)->fown_domain);
+> +	write_unlock_irq(&file->f_owner.lock);
+
+Here is my new proposal:
+
+struct landlock_ruleset *new_dom, *prev_dom;
+
+/*
+ * Lock already held by __f_setown(), see commit 26f204380a3c ("fs: Fix
+ * file_set_fowner LSM hook inconsistencies").
+ */
+lockdep_assert_held(&file_f_owner(file)->lock);
+new_dom = landlock_get_current_domain();
+landlock_get_ruleset(new_dom);
+prev_dom = landlock_file(file)->fown_domain;
+landlock_file(file)->fown_domain = new_dom;
+
+/* Called in an RCU read-side critical section. */
+landlock_put_ruleset_deferred(prev_dom);
+
+
+> +}
+> +
+> +static void hook_file_free_security(struct file *file)
+> +{
+> +	landlock_put_ruleset_deferred(landlock_file(file)->fown_domain);
+> +}
+> +
+>  static struct security_hook_list landlock_hooks[] __ro_after_init = {
+>  	LSM_HOOK_INIT(inode_free_security, hook_inode_free_security),
+>  
+> @@ -1660,6 +1674,9 @@ static struct security_hook_list landlock_hooks[] __ro_after_init = {
+>  	LSM_HOOK_INIT(file_truncate, hook_file_truncate),
+>  	LSM_HOOK_INIT(file_ioctl, hook_file_ioctl),
+>  	LSM_HOOK_INIT(file_ioctl_compat, hook_file_ioctl_compat),
+> +
+> +	LSM_HOOK_INIT(file_set_fowner, hook_file_set_fowner),
+> +	LSM_HOOK_INIT(file_free_security, hook_file_free_security),
 >  };
 >  
->  /*
-> @@ -274,4 +280,26 @@ struct landlock_net_port_attr {
->  #define LANDLOCK_ACCESS_NET_BIND_TCP			(1ULL << 0)
->  #define LANDLOCK_ACCESS_NET_CONNECT_TCP			(1ULL << 1)
->  /* clang-format on */
-> +
-> +/**
-> + * DOC: scope
-> + *
-> + * Scope flags
-> + * ~~~~~~~~~~~
-> + *
-> + * These flags enable to restrict a sandboxed process from a set of IPC
-> + * actions. Setting a flag for a ruleset will isolate the Landlock domain
-> + * to forbid connections to resources outside the domain.
-> + *
-> + * IPCs with scoped actions:
-> + *
-> + * - %LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET: Restrict a sandboxed process
-> + *   from connecting to an abstract unix socket created by a process
-> + *   outside the related Landlock domain (e.g. a parent domain or a
-> + *   non-sandboxed process).
-> + */
-> +/* clang-format off */
-> +#define LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET		(1ULL << 0)
+>  __init void landlock_add_fs_hooks(void)
+> diff --git a/security/landlock/fs.h b/security/landlock/fs.h
+> index 488e4813680a..9a97f9285b90 100644
+> --- a/security/landlock/fs.h
+> +++ b/security/landlock/fs.h
+> @@ -52,6 +52,12 @@ struct landlock_file_security {
+>  	 * needed to authorize later operations on the open file.
+>  	 */
+>  	access_mask_t allowed_access;
+> +	/**
+> +	 * @fown_domain: A pointer to a &landlock_ruleset of the process owns
+> +	 * the file. This ruleset is protected by fowner_struct.lock same as
+> +	 * pid, uid, euid fields in fown_struct.
+> +	 */
 
-Thinking more about it, it makes more sense to rename it to
-LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET (s/SCOPED/SCOPE/) because it
-express a scope (not a "scoped") and it allign with the current
-LANDLOCK_ACCESS_* and other internal variables such as
-LANDLOCK_LAST_SCOPE...
+Some rewording:
 
-However, it still makes sense to keep the "scoped" ruleset's field,
-which is pretty similar to the "handled_*" semantic: it describes what
-will be *scoped* by the ruleset.
+/**
+ * @fown_domain: Domain of the task that set the PID that may receive a
+ * signal e.g., SIGURG when writing MSG_OOB to the related socket.
+ * This pointer is protected by the related file->f_owner->lock, as for
+ * fown_struct's members: pid, uid, and euid.
+ */
 
-> +/* clang-format on*/
-> +
->  #endif /* _UAPI_LINUX_LANDLOCK_H */
+
+> +	struct landlock_ruleset *fown_domain;
+>  };
+>  
+>  /**
 > diff --git a/security/landlock/limits.h b/security/landlock/limits.h
-> index 4eb643077a2a..eb01d0fb2165 100644
+> index eb01d0fb2165..fa28f9236407 100644
 > --- a/security/landlock/limits.h
 > +++ b/security/landlock/limits.h
-> @@ -26,6 +26,9 @@
+> @@ -26,7 +26,7 @@
 >  #define LANDLOCK_MASK_ACCESS_NET	((LANDLOCK_LAST_ACCESS_NET << 1) - 1)
 >  #define LANDLOCK_NUM_ACCESS_NET		__const_hweight64(LANDLOCK_MASK_ACCESS_NET)
 >  
-> +#define LANDLOCK_LAST_SCOPE		LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET
-> +#define LANDLOCK_MASK_SCOPE		((LANDLOCK_LAST_SCOPE << 1) - 1)
-> +#define LANDLOCK_NUM_SCOPE		__const_hweight64(LANDLOCK_MASK_SCOPE)
+> -#define LANDLOCK_LAST_SCOPE		LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET
+> +#define LANDLOCK_LAST_SCOPE		LANDLOCK_SCOPED_SIGNAL
+>  #define LANDLOCK_MASK_SCOPE		((LANDLOCK_LAST_SCOPE << 1) - 1)
+>  #define LANDLOCK_NUM_SCOPE		__const_hweight64(LANDLOCK_MASK_SCOPE)
 >  /* clang-format on */
+> diff --git a/security/landlock/task.c b/security/landlock/task.c
+> index b9390445d242..a72a61e7e6c3 100644
+> --- a/security/landlock/task.c
+> +++ b/security/landlock/task.c
+> @@ -18,6 +18,7 @@
+>  
+>  #include "common.h"
+>  #include "cred.h"
+> +#include "fs.h"
+>  #include "ruleset.h"
+>  #include "setup.h"
+>  #include "task.h"
+> @@ -242,11 +243,69 @@ static int hook_unix_may_send(struct socket *const sock,
+>  	return 0;
+>  }
+>  
+> +static int hook_task_kill(struct task_struct *const p,
+> +			  struct kernel_siginfo *const info, const int sig,
+> +			  const struct cred *const cred)
+> +{
+> +	bool is_scoped;
+> +	const struct landlock_ruleset *target_dom, *dom;
+> +
+
+> +	dom = landlock_get_current_domain();
+> +	rcu_read_lock();
+> +	target_dom = landlock_get_task_domain(p);
+> +	if (cred)
+> +		/* dealing with USB IO */
+> +		is_scoped = domain_is_scoped(landlock_cred(cred)->domain,
+> +					     target_dom,
+> +					     LANDLOCK_SCOPED_SIGNAL);
+> +	else
+> +		is_scoped = (!dom) ? false :
+> +				     domain_is_scoped(dom, target_dom,
+> +						      LANDLOCK_SCOPED_SIGNAL);
+
+Some refactoring to simplify code:
+
+if (cred) {
+	/* Dealing with USB IO. */
+	dom = landlock_cred(cred)->domain;
+} else {
+	dom = landlock_get_current_domain();
+}
+
+/* Quick return for non-landlocked tasks. */
+if (!dom)
+	return 0;
+
+rcu_read_lock();
+is_scoped = domain_is_scoped(dom, landlock_get_task_domain(p),
+			     LANDLOCK_SCOPE_SIGNAL);
+
+
+> +	rcu_read_unlock();
+> +	if (is_scoped)
+> +		return -EPERM;
+> +
+> +	return 0;
+> +}
+> +
+> +static int hook_file_send_sigiotask(struct task_struct *tsk,
+> +				    struct fown_struct *fown, int signum)
+> +{
+> +	struct file *file;
+> +	bool is_scoped;
+> +	struct landlock_ruleset *dom;
+> +
+> +	/* struct fown_struct is never outside the context of a struct file */
+> +	file = container_of(fown, struct file, f_owner);
+> +
+
+I rebased on these two commits that are planned for the next merge
+window:
+- commit 1934b212615d ("file: reclaim 24 bytes from f_owner"): replace
+  container_of(fown, struct file, f_owner) with fown->file .
+- commit 26f204380a3c ("fs: Fix file_set_fowner LSM hook
+  inconsistencies"): lock before calling the hook.
+
+For now, this is based on a custom merge:
+https://git.kernel.org/pub/scm/linux/kernel/git/mic/linux.git/commit/?h=next&id=b1fefed2459f7bd3b1a03c2fa577d30a07130ef6
+
+I'll rebase on top of the master branch once it will include the
+required commits.  In the meantime, please use this merge commit as the
+base commit for both patch series.
+
+> +	read_lock_irq(&file->f_owner.lock);
+> +	dom = landlock_file(file)->fown_domain;
+> +	landlock_get_ruleset(dom);
+> +	read_unlock_irq(&file->f_owner.lock);
+> +	if (!dom)
+> +		goto out_unlock;
+> +
+> +	rcu_read_lock();
+> +	is_scoped = domain_is_scoped(dom, landlock_get_task_domain(tsk),
+> +				     LANDLOCK_SCOPED_SIGNAL);
+> +	rcu_read_unlock();
+> +	if (is_scoped) {
+> +		landlock_put_ruleset(dom);
+> +		return -EPERM;
+> +	}
+> +out_unlock:
+> +	landlock_put_ruleset(dom);
+> +	return 0;
+
+Here is the refactoring:
+
+bool is_scoped = false;
+
+/* Lock already held by send_sigio() and send_sigurg(). */
+lockdep_assert_held(&fown->lock);
+dom = landlock_file(fown->file)->fown_domain;
+
+/* Quick return for unowned socket. */
+if (!dom)
+	return 0;
+
+rcu_read_lock();
+is_scoped = domain_is_scoped(dom, landlock_get_task_domain(tsk),
+			     LANDLOCK_SCOPE_SIGNAL);
+rcu_read_unlock();
+if (is_scoped)
+	return -EPERM;
+
+return 0;
+
+
+> +}
+> +
+>  static struct security_hook_list landlock_hooks[] __ro_after_init = {
+>  	LSM_HOOK_INIT(ptrace_access_check, hook_ptrace_access_check),
+>  	LSM_HOOK_INIT(ptrace_traceme, hook_ptrace_traceme),
+>  	LSM_HOOK_INIT(unix_stream_connect, hook_unix_stream_connect),
+>  	LSM_HOOK_INIT(unix_may_send, hook_unix_may_send),
+> +	LSM_HOOK_INIT(task_kill, hook_task_kill),
+> +	LSM_HOOK_INIT(file_send_sigiotask, hook_file_send_sigiotask),
+>  };
+>  
+>  __init void landlock_add_task_hooks(void)
+> diff --git a/tools/testing/selftests/landlock/scoped_test.c b/tools/testing/selftests/landlock/scoped_test.c
+> index 36d7266de9dc..237f98369b25 100644
+> --- a/tools/testing/selftests/landlock/scoped_test.c
+> +++ b/tools/testing/selftests/landlock/scoped_test.c
+> @@ -12,7 +12,7 @@
+>  
+>  #include "common.h"
+>  
+> -#define ACCESS_LAST LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET
+> +#define ACCESS_LAST LANDLOCK_SCOPED_SIGNAL
+>  
+>  TEST(ruleset_with_unknown_scope)
+>  {
+> -- 
+> 2.34.1
+> 
