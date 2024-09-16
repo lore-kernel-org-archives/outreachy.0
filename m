@@ -1,179 +1,226 @@
-Received: from smtp-bc0f.mail.infomaniak.ch (smtp-bc0f.mail.infomaniak.ch [45.157.188.15])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-pg1-f171.google.com (mail-pg1-f171.google.com [209.85.215.171])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6D47784DF1
-	for <outreachy@lists.linux.dev>; Fri, 13 Sep 2024 17:40:13 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=45.157.188.15
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 956B6A95E
+	for <outreachy@lists.linux.dev>; Mon, 16 Sep 2024 12:32:31 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.215.171
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1726249217; cv=none; b=km+Qnef/8+yQCq3p4POXvQwQVXI/AFx9SPxqadeSH5Aej8ZujbSC7N4A1mPR1HhrUV8Yku4GaMUardtTVQTJMYGiLm7zu93/cqKyJWFkE5YggR+yvUC+c/Qv32xQj56afG9ebN/JGeedTFkt5mO6XIhCRzntHL4pYDCXUG+5pMI=
+	t=1726489953; cv=none; b=naqstqUfmEVC2d9TE9eFoUXjFUpyLhHVfOY9nl3jT9qMRm/D0q/ZR3ejRRKvypDRlSujoHRqbeB9/JRMOFtXCv/deqCL8cHVUdC2wYemyb87JpDGwLfZvTn7wJ4e59zSOHXraQ3u1vkFE7rRjYFDnERHK+JXCKNC9zYb3Wb/uZg=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1726249217; c=relaxed/simple;
-	bh=D6ZmP9llx3uYCZMYQPb8wPmjZaefawLkTm6ZslZwak0=;
+	s=arc-20240116; t=1726489953; c=relaxed/simple;
+	bh=BBZ4oW2A9GpeSP/yb9umtm+fkmRQ9Bjb/uUApp3m0fk=;
 	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=c2ndvat6KEGotoQS/dlcu9XbsYIe2VUZuPu45xtXeWWy04bMuR2c1f+GTTaTt9M8vA9GBMNCXZsQsvepaIrshsvxW+tA0uJCDtEj723MO7TZGxtfy5u4xRPkWSZgmb40EFDjo5tWBhJk0uqTe2gwpyeHg9AS1A6A5T7ty9trn1A=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net; spf=pass smtp.mailfrom=digikod.net; dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b=fs5PlIjs; arc=none smtp.client-ip=45.157.188.15
-Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=digikod.net
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=digikod.net
+	 Content-Type:Content-Disposition:In-Reply-To; b=XT4WX5AbpRUkEHXbAynSKXzANt2IZfphGIkdRX9UmRZ1jwBZoWlFKYWll4hQurHHEaY17wEc5sf9wZhWAZOccnnIjhxY75i+m/xquFnASSlfSGafdN0gU1TwLXGjNAVmAdGWBCSBnb4P+ODY1RoYlxtV3uxiJ3CAm3g2Dqe3qCE=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=cnnpVZ3R; arc=none smtp.client-ip=209.85.215.171
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=digikod.net header.i=@digikod.net header.b="fs5PlIjs"
-Received: from smtp-3-0001.mail.infomaniak.ch (smtp-3-0001.mail.infomaniak.ch [10.4.36.108])
-	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4X51m56gZHzgB1;
-	Fri, 13 Sep 2024 19:40:05 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=digikod.net;
-	s=20191114; t=1726249205;
-	bh=pL4gbuvKaW6aHOi1Zg0CXD7GTLnjMnJJ/kZGPDbkyfI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=fs5PlIjsA9R+QZXZvjLNqWpV/DXx4UUbjYATZIIoZEnQeZRYSwKj9+PZiFPjY8EdF
-	 06SFv/AIAJ5W3iEz5u9z+sFeTtsseitqb0G9S3q7fIgXpOFzNIMJpCKhbHLZAzzJU+
-	 if62UdCkj20bBGNyhoel3zwZW+WVSk4mp87qcx18=
-Received: from unknown by smtp-3-0001.mail.infomaniak.ch (Postfix) with ESMTPA id 4X51m45mG9zmkr;
-	Fri, 13 Sep 2024 19:40:04 +0200 (CEST)
-Date: Fri, 13 Sep 2024 19:39:57 +0200
-From: =?utf-8?Q?Micka=C3=ABl_Sala=C3=BCn?= <mic@digikod.net>
-To: Tahera Fahimi <fahimitahera@gmail.com>
-Cc: outreachy@lists.linux.dev, gnoack@google.com, paul@paul-moore.com, 
-	jmorris@namei.org, serge@hallyn.com, linux-security-module@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, bjorn3_gh@protonmail.com, jannh@google.com, 
-	netdev@vger.kernel.org
-Subject: Re: [PATCH v11 0/8] Landlock: Add abstract UNIX socket restriction
-Message-ID: <20240913.gie8eiqu3ohM@digikod.net>
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="cnnpVZ3R"
+Received: by mail-pg1-f171.google.com with SMTP id 41be03b00d2f7-656d8b346d2so1818274a12.2
+        for <outreachy@lists.linux.dev>; Mon, 16 Sep 2024 05:32:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1726489951; x=1727094751; darn=lists.linux.dev;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=oykc0XNUZ2U9di3dFTc+iIQRMLcm/D4KvDGsPvtFBVA=;
+        b=cnnpVZ3RN172fdxo5alfbKHGiGlSid1C+Pne9RIcOcANAPfRA7QH5EEAfG37wT406g
+         NCKyftwkPh3IGoOuJkWE48KKTcDduRq05g80RNM/C6GcwKEboTK8pYQt/46etTcmoIoC
+         2MDP9qhSe8Keb0xM0uX3liPp87piXd+sb15yF110rBNMxJVRnAxfLQv5lNRV2WF2kVgo
+         GzJLAbKwA6uE7mXccMljwoHLsUZNiSn29CzaCeTeTkB91wbBYZ6G522LEKPhP2O8rQo0
+         hOK2GYpqlZ5Q7eFoysVucP/WWcFB6xoFnFb13LBjRSPKRl4dylR9me3Mw6VyySWpxsBH
+         MSpQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1726489951; x=1727094751;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=oykc0XNUZ2U9di3dFTc+iIQRMLcm/D4KvDGsPvtFBVA=;
+        b=dvQ47H2iWZ87waLgzeD6iY2QCK1ZCACrtiTbPEqACVmy9oJoNtx17HrTvgUoa3WhN2
+         WUKDKInZd8M8TXF8E9wdJhNGtmWPhIujREzaaLhrJ31D6MUrYc5eqwD1dlsyho6X0EIj
+         OAyj/aDZiQerLI5qcPZiG5Qx+sW5JsNkuOgb6u9Fylb1PlISK2hIrq4NtLK7A/qo+mQY
+         FvgWVRARJxvZ+cpxkjaGYubSU4M+v47JRFarwMwrtb00v1PVe5Nd4ewyDSEcg3B6afje
+         gD0km9zSxl3sul5yQtCeJnFW+bKAGVld/xZq0RrltOGppPiA9S1llucyJjgtX4fJKAAU
+         VHkg==
+X-Gm-Message-State: AOJu0YzbGo1Ohq5cunfzEMCt7FQNGnInjhqvahqTQFn3Kv1ZVKhCoLVM
+	YXZJn4Dx/1tjQcaFH8BgRViEyTEES9uyl1ZSAwk5W0DccrxW/NWg
+X-Google-Smtp-Source: AGHT+IFts4nnZqQTc5USJdj9JGXLmyuh67enW6i4PHhte5UX080Zn5yVqDdpBBdawrwHK8xCZGfQRQ==
+X-Received: by 2002:a17:90b:278b:b0:2cf:c9ab:e747 with SMTP id 98e67ed59e1d1-2dbb9dbd720mr14614413a91.1.1726489950395;
+        Mon, 16 Sep 2024 05:32:30 -0700 (PDT)
+Received: from tahera-OptiPlex-5000 ([136.159.49.123])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2dbb9cadb0bsm7164027a91.27.2024.09.16.05.32.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 16 Sep 2024 05:32:29 -0700 (PDT)
+Date: Mon, 16 Sep 2024 06:32:27 -0600
+From: Tahera Fahimi <fahimitahera@gmail.com>
+To: =?iso-8859-1?Q?Micka=EBl_Sala=FCn?= <mic@digikod.net>
+Cc: outreachy@lists.linux.dev, gnoack@google.com, paul@paul-moore.com,
+	jmorris@namei.org, serge@hallyn.com,
+	linux-security-module@vger.kernel.org, linux-kernel@vger.kernel.org,
+	bjorn3_gh@protonmail.com, jannh@google.com, netdev@vger.kernel.org
+Subject: Re: [PATCH v11 1/8] Landlock: Add abstract UNIX socket restriction
+Message-ID: <ZuglWy71qvgEhJQ4@tahera-OptiPlex-5000>
 References: <cover.1725494372.git.fahimitahera@gmail.com>
- <20240913.Doof4aiK8soh@digikod.net>
+ <5f7ad85243b78427242275b93481cfc7c127764b.1725494372.git.fahimitahera@gmail.com>
+ <20240913.AmeeLo0aeheD@digikod.net>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240913.Doof4aiK8soh@digikod.net>
-X-Infomaniak-Routing: alpha
+In-Reply-To: <20240913.AmeeLo0aeheD@digikod.net>
 
-On Fri, Sep 13, 2024 at 06:33:05PM +0200, MickaÃ«l SalaÃ¼n wrote:
-> I have reworked a bit the patches, including the signal scoping ones,
-> and they are here:
-> https://git.kernel.org/pub/scm/linux/kernel/git/mic/linux.git/log/?h=next
-
-I pushed a last few changes to add drop_caps() calls to all the signal
-tests.  The top commit is b530ec46a0dbe8889b35909ae51f2dacbd18f0f5
-
-> 
-> This is based on a manual merge of some VFS changes and LSM changes
-> required for this patch series:
-> https://git.kernel.org/pub/scm/linux/kernel/git/mic/linux.git/commit/?h=next&id=24dfe95e493086a99acf7df1ef23d9f21f8cdec7
-> 
-> My changes are explained in the "[mic: ...]" part of the commit
-> messages. Please send two last patch series, with this changes and reply
-> to it with your comments if any.
-> 
-> On Wed, Sep 04, 2024 at 06:13:54PM -0600, Tahera Fahimi wrote:
-> > This patch series adds scoping mechanism for abstract UNIX sockets.
+On Fri, Sep 13, 2024 at 03:32:59PM +0200, Mickaël Salaün wrote:
+> On Wed, Sep 04, 2024 at 06:13:55PM -0600, Tahera Fahimi wrote:
+> > This patch introduces a new "scoped" attribute to the
+> > landlock_ruleset_attr that can specify
+> > "LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET" to scope abstract UNIX sockets
+> > from connecting to a process outside of the same Landlock domain. It
+> > implements two hooks, unix_stream_connect and unix_may_send to enforce
+> > this restriction.
+> > 
 > > Closes: https://github.com/landlock-lsm/linux/issues/7
+> > Signed-off-by: Tahera Fahimi <fahimitahera@gmail.com>
 > > 
-> > Problem
-> > =======
+> > ---
+> > v11:
+> > - For a connected abstract datagram socket, the hook_unix_may_send
+> >   allows the socket to send a data. (it is treated as a connected stream
+> >   socket)
+> > - Minor comment revision.
+> > v10:
+> > - Minor code improvement based on reviews on v9.
+> > v9:
+> > - Editting inline comments.
+> > - Major refactoring in domain_is_scoped() and is_abstract_socket
+> > v8:
+> > - Code refactoring (improve code readability, renaming variable, etc.)
+> >   based on reviews by Mickaël Salaün on version 7.
+> > - Adding warn_on_once to check (impossible) inconsistencies.
+> > - Adding inline comments.
+> > - Adding check_unix_address_format to check if the scoping socket is an
+> >   abstract UNIX sockets.
+> > v7:
+> > - Using socket's file credentials for both connected(STREAM) and
+> >   non-connected(DGRAM) sockets.
+> > - Adding "domain_sock_scope" instead of the domain scoping mechanism
+> >   used in ptrace ensures that if a server's domain is accessible from
+> >   the client's domain (where the client is more privileged than the
+> >   server), the client can connect to the server in all edge cases.
+> > - Removing debug codes.
+> > v6:
+> > - Removing curr_ruleset from landlock_hierarchy, and switching back to
+> >   use the same domain scoping as ptrace.
+> > - code clean up.
+> > v5:
+> > - Renaming "LANDLOCK_*_ACCESS_SCOPE" to "LANDLOCK_*_SCOPE"
+> > - Adding curr_ruleset to hierarachy_ruleset structure to have access
+> >   from landlock_hierarchy to its respective landlock_ruleset.
+> > - Using curr_ruleset to check if a domain is scoped while walking in the
+> >   hierarchy of domains.
+> > - Modifying inline comments.
+> > v4:
+> > - Rebased on Günther's Patch:
+> >   https://lore.kernel.org/all/20240610082115.1693267-1-gnoack@google.com/
+> >   so there is no need for "LANDLOCK_SHIFT_ACCESS_SCOPE", then it is
+> >   removed.
+> > - Adding get_scope_accesses function to check all scoped access masks in
+> >   a ruleset.
+> > - Using socket's file credentials instead of credentials stored in
+> >   peer_cred for datagram sockets. (see discussion in [1])
+> > - Modifying inline comments.
+> > V3:
+> > - Improving commit description.
+> > - Introducing "scoped" attribute to landlock_ruleset_attr for IPC
+> >   scoping purpose, and adding related functions.
+> > - Changing structure of ruleset based on "scoped".
+> > - Removing rcu lock and using unix_sk lock instead.
+> > - Introducing scoping for datagram sockets in unix_may_send.
+> > V2:
+> > - Removing wrapper functions
 > > 
-> > Abstract UNIX sockets are used for local inter-process communications
-> > independent of the filesystem. Currently, a sandboxed process can
-> > connect to a socket outside of the sandboxed environment, since Landlock
-> > has no restriction for connecting to an abstract socket address(see more
-> > details in [1,2]). Access to such sockets for a sandboxed process should
-> > be scoped the same way ptrace is limited.
+> > [1]https://lore.kernel.org/all/20240610.Aifee5ingugh@digikod.net/
+> > ---
+> >  include/uapi/linux/landlock.h                |  28 ++++
+> >  security/landlock/limits.h                   |   3 +
+> >  security/landlock/ruleset.c                  |   7 +-
+> >  security/landlock/ruleset.h                  |  24 +++-
+> >  security/landlock/syscalls.c                 |  17 ++-
+> >  security/landlock/task.c                     | 136 +++++++++++++++++++
+> >  tools/testing/selftests/landlock/base_test.c |   2 +-
+> >  7 files changed, 208 insertions(+), 9 deletions(-)
 > > 
-> > [1] https://lore.kernel.org/all/20231023.ahphah4Wii4v@digikod.net/
-> > [2] https://lore.kernel.org/all/20231102.MaeWaepav8nu@digikod.net/
-> > 
-> > Solution
-> > ========
-> > 
-> > To solve this issue, we extend the user space interface by adding a new
-> > "scoped" field to Landlock ruleset attribute structure. This field can
-> > contains different rights to restrict different functionalities. For
-> > abstract UNIX sockets, we introduce
-> > "LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET" field to specify that a ruleset
-> > will deny any connection from within the sandbox domain to its parent
-> > (i.e. any parent sandbox or non-sandbox processes).
-> > 
-> > Example
-> > =======
-> > 
-> > Starting a listening socket with socat(1):
-> >         socat abstract-listen:mysocket -
-> > 
-> > Starting a sandboxed shell from $HOME with samples/landlock/sandboxer:
-> >         LL_FS_RO=/ LL_FS_RW=. LL_SCOPED="a" ./sandboxer /bin/bash
-> > 
-> > If we try to connect to the listening socket, the connection gets
-> > refused.
-> >         socat - abstract-connect:mysocket --> fails
-> > 
-> > 
-> > Notes of Implementation
-> > =======================
-> > 
-> > * Using the "scoped" field provides enough compatibility and flexibility
-> >   to extend the scoping mechanism for other IPCs(e.g. signals).
-> > 
-> > * To access the domain of a socket, we use its credentials of the file's
-> >   FD which point to the credentials of the process that created the
-> >   socket (see more details in [3]). Cases where the process using the
-> >   socket has a different domain than the process created it are covered
-> >   in the "outside_socket" test.
-> > 
-> > [3]https://lore.kernel.org/all/20240611.Pi8Iph7ootae@digikod.net/
-> > 
-> > Previous Versions
-> > =================
-> > v10:https://lore.kernel.org/all/cover.1724125513.git.fahimitahera@gmail.com/
-> > v9: https://lore.kernel.org/all/cover.1723615689.git.fahimitahera@gmail.com/
-> > v8: https://lore.kernel.org/all/cover.1722570749.git.fahimitahera@gmail.com/
-> > v7: https://lore.kernel.org/all/cover.1721269836.git.fahimitahera@gmail.com/
-> > v6: https://lore.kernel.org/all/Zn32CYZiu7pY+rdI@tahera-OptiPlex-5000/
-> > and https://lore.kernel.org/all/Zn32KKIJrY7Zi51K@tahera-OptiPlex-5000/
-> > v5: https://lore.kernel.org/all/ZnSZnhGBiprI6FRk@tahera-OptiPlex-5000/
-> > v4: https://lore.kernel.org/all/ZnNcE3ph2SWi1qmd@tahera-OptiPlex-5000/
-> > v3: https://lore.kernel.org/all/ZmJJ7lZdQuQop7e5@tahera-OptiPlex-5000/
-> > v2: https://lore.kernel.org/all/ZgX5TRTrSDPrJFfF@tahera-OptiPlex-5000/
-> > v1: https://lore.kernel.org/all/ZgXN5fi6A1YQKiAQ@tahera-OptiPlex-5000/
-> > 
-> > Tahera Fahimi (8):
-> >   Landlock: Add abstract UNIX socket restriction
-> >   selftests/landlock: Add test for handling unknown scope
-> >   selftests/landlock: Add abstract UNIX socket restriction tests
-> >   selftests/landlock: Add tests for UNIX sockets with any address
-> >     formats
-> >   selftests/landlock: Test connected vs non-connected datagram UNIX
-> >     socket
-> >   selftests/landlock: Restrict inherited datagram UNIX socket to connect
-> >   sample/landlock: Add support abstract UNIX socket restriction
-> >   Landlock: Document LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET and ABI
-> >     version
-> > 
-> >  Documentation/userspace-api/landlock.rst      |  45 +-
-> >  include/uapi/linux/landlock.h                 |  28 +
-> >  samples/landlock/sandboxer.c                  |  61 +-
-> >  security/landlock/limits.h                    |   3 +
-> >  security/landlock/ruleset.c                   |   7 +-
-> >  security/landlock/ruleset.h                   |  24 +-
-> >  security/landlock/syscalls.c                  |  17 +-
-> >  security/landlock/task.c                      | 136 +++
-> >  tools/testing/selftests/landlock/base_test.c  |   2 +-
-> >  tools/testing/selftests/landlock/common.h     |  38 +
-> >  tools/testing/selftests/landlock/net_test.c   |  31 +-
-> >  .../landlock/scoped_abstract_unix_test.c      | 993 ++++++++++++++++++
-> >  .../selftests/landlock/scoped_base_variants.h | 154 +++
-> >  .../selftests/landlock/scoped_common.h        |  28 +
-> >  .../scoped_multiple_domain_variants.h         | 154 +++
-> >  .../testing/selftests/landlock/scoped_test.c  |  33 +
-> >  16 files changed, 1709 insertions(+), 45 deletions(-)
-> >  create mode 100644 tools/testing/selftests/landlock/scoped_abstract_unix_test.c
-> >  create mode 100644 tools/testing/selftests/landlock/scoped_base_variants.h
-> >  create mode 100644 tools/testing/selftests/landlock/scoped_common.h
-> >  create mode 100644 tools/testing/selftests/landlock/scoped_multiple_domain_variants.h
-> >  create mode 100644 tools/testing/selftests/landlock/scoped_test.c
-> > 
-> > -- 
-> > 2.34.1
-> > 
+> > diff --git a/include/uapi/linux/landlock.h b/include/uapi/linux/landlock.h
+> > index 2c8dbc74b955..dfd48d722834 100644
+> > --- a/include/uapi/linux/landlock.h
+> > +++ b/include/uapi/linux/landlock.h
+> > @@ -44,6 +44,12 @@ struct landlock_ruleset_attr {
+> >  	 * flags`_).
+> >  	 */
+> >  	__u64 handled_access_net;
+> > +	/**
+> > +	 * @scoped: Bitmask of scopes (cf. `Scope flags`_)
+> > +	 * restricting a Landlock domain from accessing outside
+> > +	 * resources(e.g. IPCs).
+> > +	 */
+> > +	__u64 scoped;
+> >  };
+> >  
+> >  /*
+> > @@ -274,4 +280,26 @@ struct landlock_net_port_attr {
+> >  #define LANDLOCK_ACCESS_NET_BIND_TCP			(1ULL << 0)
+> >  #define LANDLOCK_ACCESS_NET_CONNECT_TCP			(1ULL << 1)
+> >  /* clang-format on */
+> > +
+> > +/**
+> > + * DOC: scope
+> > + *
+> > + * Scope flags
+> > + * ~~~~~~~~~~~
+> > + *
+> > + * These flags enable to restrict a sandboxed process from a set of IPC
+> > + * actions. Setting a flag for a ruleset will isolate the Landlock domain
+> > + * to forbid connections to resources outside the domain.
+> > + *
+> > + * IPCs with scoped actions:
+> > + *
+> > + * - %LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET: Restrict a sandboxed process
+> > + *   from connecting to an abstract unix socket created by a process
+> > + *   outside the related Landlock domain (e.g. a parent domain or a
+> > + *   non-sandboxed process).
+> > + */
+> > +/* clang-format off */
+> > +#define LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET		(1ULL << 0)
+> 
+> Thinking more about it, it makes more sense to rename it to
+> LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET (s/SCOPED/SCOPE/) because it
+> express a scope (not a "scoped") and it allign with the current
+> LANDLOCK_ACCESS_* and other internal variables such as
+> LANDLOCK_LAST_SCOPE...
+> 
+> However, it still makes sense to keep the "scoped" ruleset's field,
+> which is pretty similar to the "handled_*" semantic: it describes what
+> will be *scoped* by the ruleset.
+The proposed changes make sense. They are applied in commit
+[0b365024c726277eb73e461849709605d1819977]/next branch, and look good
+to me.
+
+> > +/* clang-format on*/
+> > +
+> >  #endif /* _UAPI_LINUX_LANDLOCK_H */
+> > diff --git a/security/landlock/limits.h b/security/landlock/limits.h
+> > index 4eb643077a2a..eb01d0fb2165 100644
+> > --- a/security/landlock/limits.h
+> > +++ b/security/landlock/limits.h
+> > @@ -26,6 +26,9 @@
+> >  #define LANDLOCK_MASK_ACCESS_NET	((LANDLOCK_LAST_ACCESS_NET << 1) - 1)
+> >  #define LANDLOCK_NUM_ACCESS_NET		__const_hweight64(LANDLOCK_MASK_ACCESS_NET)
+> >  
+> > +#define LANDLOCK_LAST_SCOPE		LANDLOCK_SCOPED_ABSTRACT_UNIX_SOCKET
+> > +#define LANDLOCK_MASK_SCOPE		((LANDLOCK_LAST_SCOPE << 1) - 1)
+> > +#define LANDLOCK_NUM_SCOPE		__const_hweight64(LANDLOCK_MASK_SCOPE)
+> >  /* clang-format on */
