@@ -1,87 +1,71 @@
-Received: from mail-wm1-f42.google.com (mail-wm1-f42.google.com [209.85.128.42])
+Received: from mail-wr1-f47.google.com (mail-wr1-f47.google.com [209.85.221.47])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 150E0145355
-	for <outreachy@lists.linux.dev>; Tue, 18 Mar 2025 13:16:53 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.42
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EB4A9126C02
+	for <outreachy@lists.linux.dev>; Tue, 18 Mar 2025 14:17:36 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.47
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1742303815; cv=none; b=E53rKt5PDI2llHdnoo9Jxd16dRVlpy6TBTouNskqXO3dTk1tIL9WwjXakfp13nQRyw1gdM02TdznWku2wSb7h1mtpI0daQ6KvTKRa85Qt92WFg77BVm9JwNZ5nxjFa+ITurmFsVtbikR59X7DQfc83XAUKEijFq9TeJvc0ZrfrQ=
+	t=1742307458; cv=none; b=U/KzAuJLuCJBvl2vnqO9it4B6TAVbUm/T3sMxQKzpMRrxFlW7U78NkheFGwx89B3u1ErFwgjSsUmw9ujMzF1y8p8hqZboEEIzGdUpAglEy0c4n0poTuXd9nt06hphMdtHQQ0D8Yq/m2PZYpdBvsq+p1ro/745diM5wZUY5OOYQI=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1742303815; c=relaxed/simple;
-	bh=yHoCqsq/LU/Tqbq7Jn+ve+f71PBe/AwGwLnwn0KASTI=;
-	h=From:To:CC:Subject:Date:Message-ID:References:In-Reply-To:
-	 Content-Type:MIME-Version; b=BmkYSxf4KCG0Dw2Oz1LA/Dd/SL9389Pc2+Q3G9YkLzE9SWq+9rlDPQgz95Tq6PzGGT5B0X9IC//bGnZu6Q95d0Jd5Lg1LcGh0/DEuvgfSvmtKr7ugA7eTp5O1jgeKzr1u7zGVOxjiT27/KqpSvds5hyMgfl++F9Z34qlSQXztbM=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=kJzf2iIO; arc=none smtp.client-ip=209.85.128.42
+	s=arc-20240116; t=1742307458; c=relaxed/simple;
+	bh=ninTeJKvZFFaWOIcvhtggfzwkgAQXhUT3FoPvKyDdr0=;
+	h=Message-ID:Subject:From:To:Cc:Date:In-Reply-To:Content-Type:
+	 MIME-Version; b=d/byb5uiYCJlA3pep4lxkig1c5p/Okx3Z/8j5jj4PhwlNouXr8QyP1ChS33pV1HUytHncR+YdWlQdNqdNrhojLCH/TdjqvRzQoimFOCcY6q7qeLevTn6B1SFyZXafBw0p8RxolWq2z8TdpPRxagxI7R97a7rhUMMvjPNVTsYSPI=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=S0Ai33O2; arc=none smtp.client-ip=209.85.221.47
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="kJzf2iIO"
-Received: by mail-wm1-f42.google.com with SMTP id 5b1f17b1804b1-43cf58eea0fso17325265e9.0
-        for <outreachy@lists.linux.dev>; Tue, 18 Mar 2025 06:16:53 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="S0Ai33O2"
+Received: by mail-wr1-f47.google.com with SMTP id ffacd0b85a97d-39129fc51f8so5037610f8f.0
+        for <outreachy@lists.linux.dev>; Tue, 18 Mar 2025 07:17:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1742303812; x=1742908612; darn=lists.linux.dev;
-        h=mime-version:content-transfer-encoding:msip_labels:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from:from:to:cc:subject:date:message-id
+        d=gmail.com; s=20230601; t=1742307455; x=1742912255; darn=lists.linux.dev;
+        h=mime-version:user-agent:content-transfer-encoding:in-reply-to:date
+         :cc:to:from:subject:message-id:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=yHoCqsq/LU/Tqbq7Jn+ve+f71PBe/AwGwLnwn0KASTI=;
-        b=kJzf2iIOaBzZtL+LisTdRsvbse5f2Y9OMksUdxVmQFiiXnp3AyiJWNoWc+EF8XcVYb
-         rto118VHZRpkd2GjbrpKxT6RPySHVAks3aoxbAqziiBlYZ61rlX1JmQ95it5IoPy8ZAo
-         inwD5NyjmeNKoPjMg+cu/ZhF85PPQWbn536047A4RrEZCueOqdj24JQ5FENnVhbKsomN
-         e4vkOPPh0Dus+cLsUooDVxt3IIGOWbGkK+magMF62HVfLC5xVIBO2Nvq6evLDmYwx78f
-         hYWE0MoQOK7susicAUsRSuAIxeapKi9jmcKsPz3kGkQ2nh6ZwruDzXwrJImZlpCtqNhC
-         Zb+g==
+        bh=ninTeJKvZFFaWOIcvhtggfzwkgAQXhUT3FoPvKyDdr0=;
+        b=S0Ai33O2nFfVrhugAclP+DiTPlyZ5CXVO0sN1uvt4g7CePPF7eQdDQc8GO2G7kCaLW
+         QH/Ct3F2V7DesrMrDn1a7xjiqFpENgpZcp6j9/zcUsPMZl/va1grgMrRK/QEDic/hVfk
+         OylL29V17qePflibRmSGrte+AUDwOnJkS/uQoqjVIqI+6wVb34lgtFFKvmPiN3flhh4S
+         NS9mwtG9fNnNkYutFlrZxcCeYi21vS6u56hZEE6BVF1ilVr5eQIzWIif4A1px+WiQ8mh
+         wAJtZYcO9QdCclJIx19g3TPokFQ44Kdunu6OU5vP44eg22GN86WnHEqQ5vi6d8cIl1D1
+         o1mw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742303812; x=1742908612;
-        h=mime-version:content-transfer-encoding:msip_labels:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=yHoCqsq/LU/Tqbq7Jn+ve+f71PBe/AwGwLnwn0KASTI=;
-        b=C7PGOcVnjzVzhQgJghzqBHGOO2Wl/Zb6wIwSnHDkFUIUG6WTChI/KOnhh6kulr1aCm
-         TlJYItcmHZxlv6F4z1Pluayim3+z936fz611SnalSRFJpynOLNUsUX9Fy+knAi7Ksw3e
-         87UJSd0eL56D4gaHYEjAreTMkUdtRdLEJeaz553sxSKwVhbUhaEOSuu0UVfW5ydMKaC3
-         hYH7SS2w1SR3l7EUbeWQhWBaJvBLAKRtHos7+hBWw1PCzt6CkWeiMLaeHFqyQQ7HZwRs
-         Ni+VAbHSwC7gbd4KLoBVcTsgTUlXeSRcyQCf4DMfuVn75r1gkSnzfq5ykLFIyULN+3SH
-         29eg==
-X-Gm-Message-State: AOJu0YxaDeT22qXt7kIUcE3cgL005eEKpSGL9xFGEgLkugmLCw62mo4B
-	7efpzkBSR5EbmSKxkfxWqbt46+H0pka/l3TS5saW0w6BWDbnP0Jykc9X/8CS
-X-Gm-Gg: ASbGncsP28wOmy2QJUypu+VidlvzbkjnRZUDT5/lPKxOKB2cHswgp8LqHesdnSZ60+N
-	xK6TtPKazZfCUzzu5EfKyCBhXnJcnYtgqqzBEKSBTWPRK2/P3BIYyF9bHv6IISPyFnz780y2Blx
-	yA77mYJc/heXvMuCXHboDUyK16PwsknA4pi++gzFAUodBFAfQnOOEz8devL0ej9zjKmRvFRq3TD
-	ah9j7JG2YGNOddyggLv8RvVHHMHZLMwJJb5jyfBEwbeYw8a3wC0AP00716mP/SDltQ3jU13i8c2
-	gFJkOECXdnk7SH+7frzE7GB7shjBoafP2FG918tfOmCu/iWzjTSVd75FXvdxBe1iDFn0mZJxRC5
-	OHSUNVSi6rQ30t/YUUgFtvpyFgw==
-X-Google-Smtp-Source: AGHT+IG9XobvUK4s5/KzuHmYGXxYxGH3+et3saraIM79+QZ4PpJnjl47jvyeVLcAvlPFvLPW/Bq32g==
-X-Received: by 2002:a05:600c:b88:b0:43c:fd2b:823a with SMTP id 5b1f17b1804b1-43d3b9cc182mr22399195e9.24.1742303812070;
-        Tue, 18 Mar 2025 06:16:52 -0700 (PDT)
-Received: from CWLP265MB4434.GBRP265.PROD.OUTLOOK.COM ([2603:1026:c08:121::5])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43d3adc4488sm14284535e9.0.2025.03.18.06.16.51
+        d=1e100.net; s=20230601; t=1742307455; x=1742912255;
+        h=mime-version:user-agent:content-transfer-encoding:in-reply-to:date
+         :cc:to:from:subject:message-id:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=ninTeJKvZFFaWOIcvhtggfzwkgAQXhUT3FoPvKyDdr0=;
+        b=Z6UC3ABrNBsdG7MpBjE3rhneo8Tad74H3Ucj9Y7AtZDwfKWttRLabmWurY/qc8Fy5w
+         xPb8HjWvdNlZBZ3hMo3ZAXosJAw7O+dti6QiwmQV05BxwLhNPx6uI7smLCgXGQw2ey3y
+         TnPvyo9GsEYnd10frppHFkZ6SsSPmPGqCP03QErzOa+iZHxjtoav4jCkCxHYSP6jDSez
+         MdbVYwguIYp4scju9N55FTrYD2rgcp/C7kKb2o6kcaAyjygT0p2zZWyznkBXh//2c2ba
+         rupjG/S/1EhXGwPZshxS9/spH9H9V/nsMppUYQlWFXS1okAd1xy0CTcbw3KCvy4hpsZT
+         q8Ow==
+X-Gm-Message-State: AOJu0Yy9TFx4sv4jQG0Zmk9aDTGjK0s8Faqijett1HxsJbP67N0J21DZ
+	kgZd6vU6Bpxt9lXn0Nbk6U3hh4D/GtwUkVInrp1si/1OrKHf/G50Zjeho8M4TLxndw==
+X-Gm-Gg: ASbGncu/1zg+VbADSYrgm/euhzdukA2MG/Pkt13cqJYgRB+DKOy7V+j2PLR/yMXANSA
+	hmgToXBGOLQfl7ig3JVsqbpJf9HuVMU2y0NuyBJ7VhTiDKWm2FcAUTPf2bLqphD+w8zk7F8y/C2
+	AGqqXwx+MR3mUA6k6xtFCy2Ra/nTPQflZ18xCOP8NZ9p8t9porKJQrM3Gdh2xWTY1lzn0YU1Vt1
+	xI6npkA5fyU5IkwbHUaAoMI3V5eSe+zYaXL75tBhIhtHwf+Ju2RnT+RtJwelVbHehrhe/EHcfpL
+	2XimUCymAppPbbiAn0NI7KMeFzfJkSblpBh1RnfwNWtz7121IqIfeUmMXecMwuEmN+Wk3w==
+X-Google-Smtp-Source: AGHT+IGTf5re7kmco++y1A56QEV2TL5kWCLwswpEigF9gxDDCZEzR9iSWWvysCTnpPhf5XbOnUb1aQ==
+X-Received: by 2002:a5d:598b:0:b0:391:3406:b4e1 with SMTP id ffacd0b85a97d-3971d23792fmr16889859f8f.15.1742307455044;
+        Tue, 18 Mar 2025 07:17:35 -0700 (PDT)
+Received: from [192.168.42.253] ([197.211.53.79])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43d1fdda38esm140097165e9.8.2025.03.18.07.17.33
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 18 Mar 2025 06:16:51 -0700 (PDT)
-From: Nancy Enos <nicymimz@gmail.com>
-To: Julia Lawall <julia.lawall@inria.fr>
-CC: "outreachy@lists.linux.dev" <outreachy@lists.linux.dev>
-Subject: Re: Hey Outreachy
-Thread-Topic: Hey Outreachy
-Thread-Index: AQHbmAXZpluOGptpSkGaEJsCB2hu+bN43cUAgAAB9mY=
-X-MS-Exchange-MessageSentRepresentingType: 1
-Date: Tue, 18 Mar 2025 13:16:51 +0000
-Message-ID:
-	<CWLP265MB4434A3BBA3F92D5E1563E8B1AFDE2@CWLP265MB4434.GBRP265.PROD.OUTLOOK.COM>
-References:
-	<CWLP265MB44344955383DB5471A968D8DAFDE2@CWLP265MB4434.GBRP265.PROD.OUTLOOK.COM>
- <ad3e8b11-f60-cdd-b393-2b4b3074aff7@inria.fr>
-In-Reply-To: <ad3e8b11-f60-cdd-b393-2b4b3074aff7@inria.fr>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-Exchange-Organization-SCL: -1
-X-MS-TNEF-Correlator:
-X-MS-Exchange-Organization-RecordReviewCfmType: 0
-msip_labels:
-Content-Type: text/plain; charset="iso-8859-1"
+        Tue, 18 Mar 2025 07:17:34 -0700 (PDT)
+Message-ID: <4bdfd49457f9d2ca69240344bdf0e6f42953a1d6.camel@gmail.com>
+Subject: Re: Welcome to outreachy 2025
+From: Richard Akintola <princerichard17a@gmail.com>
+To: julia.lawall@inria.fr
+Cc: outreachy@lists.linux.dev
+Date: Tue, 18 Mar 2025 15:17:32 +0100
+In-Reply-To: <cf324d24-faa2-faf8-bcbb-3f22a7b7ba8d@inria.fr>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.46.4-2 
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -89,27 +73,5 @@ List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 
-Checking it out. Thank you=0A=
-=0A=
-________________________________________=0A=
-From:=A0Julia Lawall <julia.lawall@inria.fr>=0A=
-Sent:=A0Tuesday, March 18, 2025 4:08 PM=0A=
-To:=A0Nancy Enos <nicymimz@gmail.com>=0A=
-Cc:=A0outreachy@lists.linux.dev <outreachy@lists.linux.dev>=0A=
-Subject:=A0Re: Hey Outreachy=0A=
-=A0=0A=
-=0A=
-=0A=
-On Tue, 18 Mar 2025, Nancy Enos wrote:=0A=
-=0A=
-> My name is Nancy. an outreachy intern in the contribution stage..lookingf=
-orward to making meaningful contributions=0A=
-=0A=
-Hello and welcome.=0A=
-=0A=
-Please start with the tutorial:=0A=
-https://kernelnewbies.org/Outreachyfirstpatch=0A=
-=0A=
-Write back to the list if you have any questions.=0A=
-=0A=
-julia=
+Thank you for the warm welcome Julia, I look forward to making great
+contributions during the course of the internship and beyond.
