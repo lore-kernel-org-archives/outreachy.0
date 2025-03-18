@@ -1,68 +1,71 @@
-Received: from mail-ot1-f53.google.com (mail-ot1-f53.google.com [209.85.210.53])
+Received: from mail-wm1-f54.google.com (mail-wm1-f54.google.com [209.85.128.54])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3949620FABA
-	for <outreachy@lists.linux.dev>; Tue, 18 Mar 2025 16:10:58 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.210.53
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2C00A1917FB
+	for <outreachy@lists.linux.dev>; Tue, 18 Mar 2025 17:48:49 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.54
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1742314260; cv=none; b=hRAwMKOzjHtkuRNGmS+P3sm5VKMia0pkTjUKCWzo1EpNHeg2BCJ3ebe9yR5pEbHkki1c+2iIPx9AKvr1ZFBrxnxJWC4067PIAe2ripZ/aHyJhjaDLOCAMr91qusRB8tVmiYJjJJKt+nEM5HMzg3XEKsd6HPPYBwQw6n0Bk39vLY=
+	t=1742320134; cv=none; b=XPfx97UnNxFJtVjnlm+r8yfTyqHEdc31BrSHk003VfMPveDbHtGdhDi9QJBzcocrbPZ09QZptsacdfed4FKkoJYbGfe5THv0Jek0rU9DwJUSPpp8ync9ouSsDLj6mdZeFt+gYj+HvyKdsTmKL4f1963Vlq66ykRFdzii6fxgeT0=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1742314260; c=relaxed/simple;
-	bh=rzUqbiKWT4aw2+OdP28r4zfXflpDCwCPJkEtTYsypV8=;
-	h=MIME-Version:From:Date:Message-ID:Subject:To:Content-Type; b=fsmhQuUIU+uWg3b9b8u3u4fFSzwlmMNwbFLLGDDLGXEqCkkE5kil6xTsSOKp/BeDOUPkweuDDmwYv0/XqdkCLy6LEF0W+/eCUPjmMJoxKyU6aRw2UiHCi7AWpetlUZ7tovlxC6hbdO4FtN7zr7XvpWhCnKBa4OMO6gvmXD9eM7s=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=EpBb/n47; arc=none smtp.client-ip=209.85.210.53
+	s=arc-20240116; t=1742320134; c=relaxed/simple;
+	bh=ZEqtf6iuRubVwNNBmbGNMeXrFMOT2teOT9cGa42B9DE=;
+	h=MIME-Version:From:Date:Message-ID:Subject:To:Content-Type; b=FeD0WcM/oUUMn0qQsqWS0jMbDZ161wPL1rt38HxgwAr/V888qPTn4so7FS8boJWJ8fJ+wNOUPty5FChSNxDSll5gAVv8A0iCuT03J+sEFrf00H0wuBc4zZDX/mNfL/W5E935lN+ZJ1kkT22kPtp1BA3i3Gp36Ml674j8OpOt6AA=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=GoBI0Fuj; arc=none smtp.client-ip=209.85.128.54
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="EpBb/n47"
-Received: by mail-ot1-f53.google.com with SMTP id 46e09a7af769-72bb9725de1so1087432a34.2
-        for <outreachy@lists.linux.dev>; Tue, 18 Mar 2025 09:10:58 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="GoBI0Fuj"
+Received: by mail-wm1-f54.google.com with SMTP id 5b1f17b1804b1-43cfe63c592so40408395e9.2
+        for <outreachy@lists.linux.dev>; Tue, 18 Mar 2025 10:48:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1742314258; x=1742919058; darn=lists.linux.dev;
+        d=gmail.com; s=20230601; t=1742320127; x=1742924927; darn=lists.linux.dev;
         h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
          :date:message-id:reply-to;
-        bh=rzUqbiKWT4aw2+OdP28r4zfXflpDCwCPJkEtTYsypV8=;
-        b=EpBb/n47723LEyEYQfgL1be6AjRhSEaP7pAfw+pwYvreTidt0jFiKEjuuMllCQ1Fjr
-         4dq3GUuelK0anHMUO0a0bQR6mhRXNt4RUbGcBuq1nm6OTIP6eAsv7KMzx5Rf+y/1dqWG
-         1sECZ5Mn9PU6PJ7cvwMILr7vbdcYJuroHVcHnQUYYEICR4it2cZySt+9+OB75lU8VL6X
-         kwZoIHWlXPpteDNMbBDBhaB9tLxPklrWeuntomuGEn77VPZuwFzkSjTmbNptt3vmVDzV
-         23apjy502R0NWTfm94UUwG4To7eqk7ymKDhuYhIMWahG5WNg+AYM2I4MQ0YdLHq3pQg8
-         TSdQ==
+        bh=ZEqtf6iuRubVwNNBmbGNMeXrFMOT2teOT9cGa42B9DE=;
+        b=GoBI0FujdzDudS9/ZW7ocN6w3OfkoFMjTreK4rJVmj2/8p1fPHt6FDSEX6nar3NPAX
+         RO+XyWWaG6v+GYVWjvP7sC/ySYJhLQ284Ugz2JUrYK2hqOk884Fu6Qlkwi9tucPVw1h4
+         mlbv5DXOFpoJ1Et/z46vtZsfA+GD0tW+bcBOsA6l6JjVXH8bBF6O5HI5+1FUcUMfYhPx
+         FVw+QS/3mXUp15WrKlwaMkl9eof6pvAGHw7V0lPgl8hzJHUeL4e/8JSq9QjIxLXB5vPo
+         OF/ZClGZveUJ1hxyGQHvlkWAoZZSabEgek/SyQ1WaTSZG6ycEA+JRbCJTJU1nj/gosXv
+         9/Iw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742314258; x=1742919058;
+        d=1e100.net; s=20230601; t=1742320127; x=1742924927;
         h=to:subject:message-id:date:from:mime-version:x-gm-message-state
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=rzUqbiKWT4aw2+OdP28r4zfXflpDCwCPJkEtTYsypV8=;
-        b=m676ruLVyF6nxOJUeRoox9WmXKVPjJ91KFRvMGY5wqZhPkLz6XK/mU/MK/69m+6GPE
-         e969RbTo1aHw/nCoWRDbCpZU2e5so9Z+4HWIE11rG9dalOz5XRQ4NlgjBaz3cOW0b/bd
-         T6ws6fT8U6/WZiPhndgzPjZSryPGsziahJKtifyH91t1Mirgl4cfI9ZAg5l4TXaK3mje
-         7xWtEA1EkoVOi0eonZRxXaGXhB5mIBTgCKPgEWsy78wU9KUOANQM1N356y0CC/9RcvF1
-         7vWtJh7ME0MhdRwJDFCTbZsyhaEXlxD71U5Vm48k4mCO+L/Lm1VUd8b78zuV73wNn+WW
-         o+DA==
-X-Gm-Message-State: AOJu0YzEbcgreoQl+sTykJRsj2oSdEbkD2NF4WLIqAWq7bo9hGcLyLuW
-	3SR+wnjM+VKUHkrZ+K3hJ5B+kBKuTZWTNpdZxlQsTrLCRFm5p7sdvwpfDfLGd8txcpvIv73BKRJ
-	y6vDMqZdx+zVWD/kjQlBI+tEiMnQmfdyL
-X-Gm-Gg: ASbGncur8iACTv9aC3w9voAmJG17qx5WxGorruy/fQzzF4B0gpp+X1mwKulvfFMl3b9
-	pvb+qv6qmJyjNu5myzh7lcxHv9wv3UcIz34VZUhRbiEf67YHCL+eS+H3i42xuyhuRktaSCNmP71
-	7+M9M4Cr+WQV84bCFQsmyvAW8Ubt8=
-X-Google-Smtp-Source: AGHT+IGzmwAQsNNdresAbrfn9GEpASkbvsCnUeYF2ey6EMQ2rX9rkd7meBwcLULEUgWB44quoEz4mPCGUj+KjkMvXP8=
-X-Received: by 2002:a05:6830:6784:b0:727:345d:3b83 with SMTP id
- 46e09a7af769-72bbc5482d4mr10716225a34.23.1742314257583; Tue, 18 Mar 2025
- 09:10:57 -0700 (PDT)
+        bh=ZEqtf6iuRubVwNNBmbGNMeXrFMOT2teOT9cGa42B9DE=;
+        b=EzFPRB8z5A+5sYsXOpHctqa5G5zkBWSJi2EghzyqrcLxevQ5qz3m4NcLsesFR9kcw/
+         LSN6OJJ0QLfcIv/heRyuos91c29neWxvtTIDHnAznsjCilvHCO7Geho3F8dB6VNUai3/
+         VUxV7Lt5QHZ3ElH06PfRGXeRlSNGc/zAIGqxFgKz+7wKg/yMWQ6bgwO6IlnYpjArF38/
+         xGQkZOvImtDNJv6MAdcNMlflL3GuzCpBhxzyGbHCVg6lXCgj4xHf/vSr5cgHVmaxa46Q
+         5L9eMazv/v9dqO2Lp5pTyQ+QU1H28vXHnPowZ7q0QMZzvfzzOs5+SBviIVNrG2na4Ueq
+         6nqA==
+X-Gm-Message-State: AOJu0Yw8XZu5Y8aLdYSiGT+H4vvY7RurgUotwAYP9Tg/KC3tEmxkAzfG
+	zkgkmYrsOhhWVD7a9HrCHBwJmNtnXUpH/pX40d7zQN8yuxQka4Frmnpk7istGEcbB5CROf4CNlh
+	0uRuARbi/HQd+CWT+mVeoQ/ILrHuA/rj0CNU=
+X-Gm-Gg: ASbGncuO8KiMOjm9ILTl69VMu/g7gm+oC1rkfTySX1l8JJz49lR5mB9d+SZGZOpVne3
+	4OqZrSLfZf8KzF0rIRNQO8O8f3IKzIsPsRVt6vCWeHZTaJJFngTenURFNBSc6Tb9EKv4gkTHXUU
+	eX+snsYkK/KZqcmoifXMk2hu4ddLtY
+X-Google-Smtp-Source: AGHT+IFE/9atg4nQ65sHnymm7nNY/V3kpABkBvvJwwDE3UKTiVgh2WuIGlzzhupVgRq4rdw9HyCj6gCLui2Zo3cLV/g=
+X-Received: by 2002:a5d:598c:0:b0:391:476f:d3b7 with SMTP id
+ ffacd0b85a97d-3971f510ec0mr16958101f8f.49.1742320127080; Tue, 18 Mar 2025
+ 10:48:47 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-From: erick karanja <karanja99erick@gmail.com>
-Date: Tue, 18 Mar 2025 19:10:46 +0300
-X-Gm-Features: AQ5f1Jr_vI_8qPhUtOV5Nr9xSI22GlzWfhFx2ojteJ5ETUA-0HmS3Fq-p6d-aEk
-Message-ID: <CAK=KnqQpAsaroFjQD9dd0ucWbojjDzAjBW4bTeaY3cKZ4a9oQQ@mail.gmail.com>
-Subject: introduction
-To: outreachy@lists.linux.dev
+From: Samuel Abraham <abrahamadekunle50@gmail.com>
+Date: Tue, 18 Mar 2025 18:48:39 +0100
+X-Gm-Features: AQ5f1Jo0k86TETJj485-OPPrq_oI5wfNIKniZxJzOQcIpVPnMPyubi0PxdzhMEY
+Message-ID: <CADYq+fZz-ehjB=mFOR=EKm016Qgm1JJ4z2rxJDZdNBSF5PjBtg@mail.gmail.com>
+Subject: Outreachy Applicant Introduction
+To: outreachy@lists.linux.dev, julia.lawall@inria.fr
 Content-Type: text/plain; charset="UTF-8"
 
-Hello community, my name is Erick Karanja Muthama.I am currently
-applying for outreachy internship and I would love to contribute to
-your project.Thank you.
+Hello Linux Community,
+My name is Adekunle Abraham and I have been accepted to participate in
+the Outreachy Contribution phase. I am delighted to contribute to this
+great project and community.
+I can see that instructions on the first steps have been given by
+Mentor Julia which i will follow up on. Thanks for having me.
