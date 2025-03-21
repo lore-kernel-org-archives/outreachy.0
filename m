@@ -1,85 +1,77 @@
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8CA6022AE71
-	for <outreachy@lists.linux.dev>; Fri, 21 Mar 2025 12:49:15 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.104
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1B995216E01;
+	Fri, 21 Mar 2025 12:53:33 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1742561357; cv=none; b=N7lQv3GVqbMlC3If/IOZ+H24K0+EwU+ShsVXLoENyfYSU0fy1dN6VK5BxuumNA9SKczH8ttfVMT4n9YCWkaPJ0VNzSGoIAHfbK8aAmjaoJXvoz39KvI3djwPNs+vdynjUnoTOeAlLCLzOqnMSfxSRzJFSK4l401BAZI3KH+1p6s=
+	t=1742561614; cv=none; b=rDFHC6b5VNb2Yz0lc/oDBcssuDU2651Z9Qe5jTe72zrhRp8JvHFu4IU+7Zs1FA5on/FOVC4KZh4Z8Ne8uWZLY551thOyKbQwpXZ8oGDL7bEfQIEy8fItUpX0Egpl+Zo1HMRv4WMbsT9H8lfijZnOxqsfV2B7cJH98ZLoJvVWiqs=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1742561357; c=relaxed/simple;
-	bh=abBv0opUjavP1EorW7eu8vkvJDRHWlJfEnpzY066hEU=;
-	h=Date:From:To:cc:Subject:In-Reply-To:Message-ID:References:
-	 MIME-Version:Content-Type; b=OopzLUGmyizQh2lBZR6fsMuW7F92soPFw6omqy1Ly381N0cI5uCirdskhTbQ6LeBTozDR+ElinJhEL7CKT8eltvZYNRU/ehDpxJDQDzd9KAtuwq/U9mHOFTvQ1GnldzZOiDcfisWzZhFBH/BADWnv6rz8aYJkUtqYdQ9QHJRHME=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=rt6G+xZV; arc=none smtp.client-ip=192.134.164.104
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
+	s=arc-20240116; t=1742561614; c=relaxed/simple;
+	bh=s/cUC2OPWQPcceRiqmx99A3AD3Pmhwe/P6u+rDHTNwI=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=p+bx2Fq730dqgwn4zORBNa30gNbCTKBL6RS8PdCvyAsM2hL8/2Cw/wem+PwKdE9jjoyx4LHdih7nYIgxLbyGCZnP9Wl5zfX365enzu+TX8omCJPSqlf+A622bh7l3bvy7lYvEVh2uHetMcU1zm9suFh67exQOQxfrhhsW9zjxzY=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (1024-bit key) header.d=linuxfoundation.org header.i=@linuxfoundation.org header.b=yS3K6222; arc=none smtp.client-ip=10.30.226.201
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="rt6G+xZV"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=Wcv2C3HLf5uNsGbrHt+P71QmOIWUhfmOdtg5vcIlR6g=;
-  b=rt6G+xZVanjl+fv6cSDhD588N3igI3YceU/Z3Uzv39wZuWKzmKgS/rMB
-   7lC+eaunJG4jAQDSmzYekDYcWhayFeY6jxgwJX4paHWQFMqA0hJ8+dhXs
-   7MXxq7EsEUVrAPKANCBAOvi0QBfhCBr7JpufjsBDsq3uUnmnjzs6LilKb
-   I=;
-Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="6.14,264,1736809200"; 
-   d="scan'208";a="112253258"
-Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Mar 2025 13:49:13 +0100
-Date: Fri, 21 Mar 2025 13:49:13 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-To: Nancy Enos <nicymimz@gmail.com>
-cc: "outreachy@lists.linux.dev" <outreachy@lists.linux.dev>
-Subject: Re: status?
-In-Reply-To: <CWLP265MB44344D951D471C5624C30EA6AFDB2@CWLP265MB4434.GBRP265.PROD.OUTLOOK.COM>
-Message-ID: <baeff439-c3b9-cf9f-e9e4-8173def11e2c@inria.fr>
-References: <18312c4a-13ec-d7b6-d5cf-e5fd24355ee@inria.fr> <CWLP265MB44344D951D471C5624C30EA6AFDB2@CWLP265MB4434.GBRP265.PROD.OUTLOOK.COM>
+	dkim=pass (1024-bit key) header.d=linuxfoundation.org header.i=@linuxfoundation.org header.b="yS3K6222"
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 801F2C4CEE3;
+	Fri, 21 Mar 2025 12:53:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
+	s=korg; t=1742561613;
+	bh=s/cUC2OPWQPcceRiqmx99A3AD3Pmhwe/P6u+rDHTNwI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=yS3K6222ngRFce9hgjH2AtwZ2HHZZb7jM/2B/lt7q42vRMupty7s+YkHXl4NNnMkP
+	 Lboqlxr9aEtmghcnWGyYtiQqi6cLSCTkCwR0zjLExuTP4b596G8xCmL9quB63YaPOu
+	 O8CEjZ6CGGcXUrYY/OY5j7I1eIs7mbQSCNI4Nmfc=
+Date: Fri, 21 Mar 2025 05:52:13 -0700
+From: Greg KH <gregkh@linuxfoundation.org>
+To: ErickKaranja <karanja99erick@gmail.com>
+Cc: hvaibhav.linux@gmail.com, johan@kernel.org, elder@kernel.org,
+	outreachy@lists.linux.dev, greybus-dev@lists.linaro.org,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] staging: greybus: fix line length issue
+Message-ID: <2025032148-backfield-crux-184d@gregkh>
+References: <20250321115545.24468-1-karanja99erick@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-1067084767-1742561353=:3459"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250321115545.24468-1-karanja99erick@gmail.com>
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+On Fri, Mar 21, 2025 at 02:55:45PM +0300, ErickKaranja wrote:
+> Fix line length exceeding 100 columns in arche-platform.c. The code now
+> follows Linux kernel coding style guidelines by keeping lines under the
+> maximum allowed length of 100 characters.
+> 
+> Reported by checkpatch:
+> 
+> CHECK: line length of 101 exceeds 100 columns
+> 
+> Signed-off-by: ErickKaranja <karanja99erick@gmail.com>
+> ---
+>  drivers/staging/greybus/arche-platform.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/greybus/arche-platform.c b/drivers/staging/greybus/arche-platform.c
+> index d48464390f58..1a82a7a3991c 100644
+> --- a/drivers/staging/greybus/arche-platform.c
+> +++ b/drivers/staging/greybus/arche-platform.c
+> @@ -179,8 +179,8 @@ static irqreturn_t arche_platform_wd_irq(int irq, void *devid)
+>  				 */
+>  				if (arche_pdata->wake_detect_state !=
+>  						WD_STATE_COLDBOOT_START) {
+> -					arche_platform_set_wake_detect_state(arche_pdata,
+> -									     WD_STATE_COLDBOOT_TRIG);
+> +					arche_platform_set_wake_detect_state
+> +						(arche_pdata, WD_STATE_COLDBOOT_TRIG);
 
---8323329-1067084767-1742561353=:3459
-Content-Type: text/plain; charset=ISO-8859-15
-Content-Transfer-Encoding: 8BIT
+With this change, you will now have added a different checkpatch
+warning.  So the original should stay as-is, sorry.
 
+thanks,
 
-
-On Fri, 21 Mar 2025, Nancy Enos wrote:
-
-> Hey Julia,
-> Thank you for reaching out. Personally , i was struggling with the initial setup, but after taking time and going through the documentation, i thing i have the hang of it. I will ask questions soon, once i
-> try out my first patch. Hopefully today..Let me formulate the question.thank you
-
-Good to hear about your progress!  Looking forward to seeing the first
-patch.
-
-julia
-
->
-> _______________________________________________________________________________________________________________________________________________________________________________________________________________
-> From: Julia Lawall <julia.lawall@inria.fr>
-> Sent: Friday, March 21, 2025 2:32 PM
-> To: outreachy@lists.linux.dev <outreachy@lists.linux.dev>
-> Subject: status?  
-> Hello all,
->
-> How are things going with the tutorial?  Any successes to report?  And
-> roadblocks to overcome?
->
-> thanks,
-> julia
->
->
->
---8323329-1067084767-1742561353=:3459--
+greg k-h
