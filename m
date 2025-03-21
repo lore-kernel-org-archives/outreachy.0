@@ -1,77 +1,96 @@
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-wm1-f50.google.com (mail-wm1-f50.google.com [209.85.128.50])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1B995216E01;
-	Fri, 21 Mar 2025 12:53:33 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 95309227EB6
+	for <outreachy@lists.linux.dev>; Fri, 21 Mar 2025 13:10:47 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.50
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1742561614; cv=none; b=rDFHC6b5VNb2Yz0lc/oDBcssuDU2651Z9Qe5jTe72zrhRp8JvHFu4IU+7Zs1FA5on/FOVC4KZh4Z8Ne8uWZLY551thOyKbQwpXZ8oGDL7bEfQIEy8fItUpX0Egpl+Zo1HMRv4WMbsT9H8lfijZnOxqsfV2B7cJH98ZLoJvVWiqs=
+	t=1742562649; cv=none; b=gTunHzGJDOUaDlqcukGUIWSCc9v4fHdiQFIaWDm8W32LSfWXhWvEXtP3WpW2MpQn5lQCVZT7v16zwYfCRLeSHbMU3Mmnp1zz0yKS4MydCgowFaCWmmAIraq2wWbQSWGzAIXI5offHeglpPYXB16q6ZUPAV7a2ZTyfesLsyZEtRQ=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1742561614; c=relaxed/simple;
-	bh=s/cUC2OPWQPcceRiqmx99A3AD3Pmhwe/P6u+rDHTNwI=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=p+bx2Fq730dqgwn4zORBNa30gNbCTKBL6RS8PdCvyAsM2hL8/2Cw/wem+PwKdE9jjoyx4LHdih7nYIgxLbyGCZnP9Wl5zfX365enzu+TX8omCJPSqlf+A622bh7l3bvy7lYvEVh2uHetMcU1zm9suFh67exQOQxfrhhsW9zjxzY=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (1024-bit key) header.d=linuxfoundation.org header.i=@linuxfoundation.org header.b=yS3K6222; arc=none smtp.client-ip=10.30.226.201
+	s=arc-20240116; t=1742562649; c=relaxed/simple;
+	bh=QlcVfP154dmx/khEf578pD20ZFqg771qH+QGhMSSCh4=;
+	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
+	 To:Cc:Content-Type; b=Lrnp57w4U1V0ld3R4VqmcqdESZ0OfI+j0iYIdYceZjU3fddVoo+ywIvRug1hhchdXuh1/ASS0NYanqStnHa0f/aC6UwyonSgXWPSsB8Pse+Xk9EfPkLKUDTNLZguW56YAZsApZJbCa31KoRBHtQ2QQuY6DyCT/LSah+W7ESBzPE=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=Wi1jSOII; arc=none smtp.client-ip=209.85.128.50
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=linuxfoundation.org header.i=@linuxfoundation.org header.b="yS3K6222"
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 801F2C4CEE3;
-	Fri, 21 Mar 2025 12:53:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1742561613;
-	bh=s/cUC2OPWQPcceRiqmx99A3AD3Pmhwe/P6u+rDHTNwI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=yS3K6222ngRFce9hgjH2AtwZ2HHZZb7jM/2B/lt7q42vRMupty7s+YkHXl4NNnMkP
-	 Lboqlxr9aEtmghcnWGyYtiQqi6cLSCTkCwR0zjLExuTP4b596G8xCmL9quB63YaPOu
-	 O8CEjZ6CGGcXUrYY/OY5j7I1eIs7mbQSCNI4Nmfc=
-Date: Fri, 21 Mar 2025 05:52:13 -0700
-From: Greg KH <gregkh@linuxfoundation.org>
-To: ErickKaranja <karanja99erick@gmail.com>
-Cc: hvaibhav.linux@gmail.com, johan@kernel.org, elder@kernel.org,
-	outreachy@lists.linux.dev, greybus-dev@lists.linaro.org,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] staging: greybus: fix line length issue
-Message-ID: <2025032148-backfield-crux-184d@gregkh>
-References: <20250321115545.24468-1-karanja99erick@gmail.com>
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Wi1jSOII"
+Received: by mail-wm1-f50.google.com with SMTP id 5b1f17b1804b1-43cf05f0c3eso12664235e9.0
+        for <outreachy@lists.linux.dev>; Fri, 21 Mar 2025 06:10:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1742562646; x=1743167446; darn=lists.linux.dev;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=X/TiJxb/8rK8h4Hvs7PiD++TVssomNiL2i3GN5RpJrc=;
+        b=Wi1jSOIIjUBaua6fFP91lCW0zTADy07kxL/JKcm+X3+aBBXFFQMcdAfp/DT/Jtlbbb
+         41mORkxrcer3rkvyXiyC4dKdOCyXzb9kXtGdkq68kFFRl4yYvIspOLJb38KhI1vOIlqn
+         4lin6200GZ1SDE9kRjEt2dMOyyZoqmK04Q6ELRr3ok3bnmJwiJzQdOX4IYDdfXpUDPZP
+         /4n8XPk1d2ToZB973fEMMK6Lr9NOPPkZThpZkiHLAMrSB0qvZqVN/peyjSNBJOOBpHUp
+         LkiKH96hgEcRLaOU36AbpYa+N4R7wRCVo6Tip6ka9QAQPxvBwBxFkphOFhXOqicK29x1
+         M9IQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742562646; x=1743167446;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=X/TiJxb/8rK8h4Hvs7PiD++TVssomNiL2i3GN5RpJrc=;
+        b=LNLQSicelJg2oHLcH2g9agzWeTpM1vnWp/SgWRQrLiLp9vDHdHemFM5P4xMH3hqRh4
+         ZnTy7//EhoeXMZD0urXg2VSCXfGnAcPlnTCXfBAVWRt2S/qTjDJoJVwNZPWu7yWc/Qc6
+         X7kO3nnS3S84ERKa9OsM5lbmbIfhSKG43K8roSen0kMmewCEw+AU07WOBjTdLwkajCzi
+         4Ml29sUpWhTUHRDi3o/PfS3w7QKUG9+LyYK5sdT+PGAy0/FR6SSR3pySGyeCyJB1rjnL
+         9W37+UQvYTEfuPKe7B5GsfWuGPy5DX6im6TO4TmqRwGngD50bOExbVbAG0KoZQYVeMiC
+         tPIQ==
+X-Gm-Message-State: AOJu0YwUHmH9qqJ3BC6e1QZniIQzMgFHt1/Ui8HO9gR2WaUZB0LuPs0S
+	C3ZX+iqeOyGgXAJqMqdkGNXRlYFLn80MO0YPK5CjPqv7IpuETu+tofaNodOXySJ6mTc4Han9/6o
+	Y+Ffy5JU36LUZUBAH8GjAZvopkDV8FDYv
+X-Gm-Gg: ASbGncsweYU8i+mQKGcPM69tFEArkL/CtTS9Eu1caLWfe/Ytq5+H3TGDWS/Dr8PRJro
+	SsTVwNAuCTbStVJCe89IZsa/A+HKtTWESAXw+jBA55uWGT6S78H4BTsp+8HeZgQRbYOWpw30HCs
+	Qzgq4TzTx5gOvYU5G867Wpnl6uQwBV
+X-Google-Smtp-Source: AGHT+IGPfy0XJArjtt7fxF0WySNYRUJ0Ixv363wwSXd4tBBXrc/3QYOUwn9HTt4vixNhVpKZIJ+TKWWC1T1G2OFCBVE=
+X-Received: by 2002:a05:600c:35ca:b0:43c:fc04:6d48 with SMTP id
+ 5b1f17b1804b1-43d50873ee8mr32808995e9.0.1742562645531; Fri, 21 Mar 2025
+ 06:10:45 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250321115545.24468-1-karanja99erick@gmail.com>
+References: <18312c4a-13ec-d7b6-d5cf-e5fd24355ee@inria.fr> <CADYq+fYGgssZ36=dCcvyZtf7LV1uR-4G9gSA7KQ7xz1tPBbujA@mail.gmail.com>
+In-Reply-To: <CADYq+fYGgssZ36=dCcvyZtf7LV1uR-4G9gSA7KQ7xz1tPBbujA@mail.gmail.com>
+From: Samuel Abraham <abrahamadekunle50@gmail.com>
+Date: Fri, 21 Mar 2025 14:10:37 +0100
+X-Gm-Features: AQ5f1Jow4suSMcTr58ACTWrRKpPUC_WEwyA6HxexZY3aSnH79ufzYk4V1BTCgqk
+Message-ID: <CADYq+fbxzMXbVXG2ESpw-EfxqsBMhxEPFC0hT6U=dVuoNo07dw@mail.gmail.com>
+Subject: Re: status?
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: outreachy@lists.linux.dev
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-On Fri, Mar 21, 2025 at 02:55:45PM +0300, ErickKaranja wrote:
-> Fix line length exceeding 100 columns in arche-platform.c. The code now
-> follows Linux kernel coding style guidelines by keeping lines under the
-> maximum allowed length of 100 characters.
-> 
-> Reported by checkpatch:
-> 
-> CHECK: line length of 101 exceeds 100 columns
-> 
-> Signed-off-by: ErickKaranja <karanja99erick@gmail.com>
-> ---
->  drivers/staging/greybus/arche-platform.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/greybus/arche-platform.c b/drivers/staging/greybus/arche-platform.c
-> index d48464390f58..1a82a7a3991c 100644
-> --- a/drivers/staging/greybus/arche-platform.c
-> +++ b/drivers/staging/greybus/arche-platform.c
-> @@ -179,8 +179,8 @@ static irqreturn_t arche_platform_wd_irq(int irq, void *devid)
->  				 */
->  				if (arche_pdata->wake_detect_state !=
->  						WD_STATE_COLDBOOT_START) {
-> -					arche_platform_set_wake_detect_state(arche_pdata,
-> -									     WD_STATE_COLDBOOT_TRIG);
-> +					arche_platform_set_wake_detect_state
-> +						(arche_pdata, WD_STATE_COLDBOOT_TRIG);
+On Fri, Mar 21, 2025 at 12:53=E2=80=AFPM Samuel Abraham
+<abrahamadekunle50@gmail.com> wrote:
+>
+> On Fri, Mar 21, 2025 at 12:40=E2=80=AFPM Julia Lawall <julia.lawall@inria=
+.fr> wrote:
+> >
+> > Hello all,
+> Hello Julia
+> > How are things going with the tutorial?  Any successes to report?  And
+> > roadblocks to overcome?
+> On my part, I have been able to successfully clone, build and install
+> the kernel from Greg's staging tree.
+> I have also modified it by adding the print statement into the kernel
+> log in the psmouse_probe function in the psmouse-basic.c file
+> in the drivers/input/mouse directory. I have also been able to see the
+> message when I reboot the newly modified kernel and use dmesg | less
+> Surely I will send a patch soon.
+>
+> Thank you for checking in Julia.
+>
+> Adekunle.
 
-With this change, you will now have added a different checkpatch
-warning.  So the original should stay as-is, sorry.
-
-thanks,
-
-greg k-h
+Hello Julia,
+Please I just want to be sure you can see my message to the list also.
