@@ -1,129 +1,107 @@
-Received: from mx0a-0031df01.pphosted.com (mx0a-0031df01.pphosted.com [205.220.168.131])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-wm1-f47.google.com (mail-wm1-f47.google.com [209.85.128.47])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 48821191484;
-	Fri, 21 Mar 2025 14:37:38 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=205.220.168.131
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5A2CB4502B;
+	Sat, 22 Mar 2025 06:58:11 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.47
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1742567861; cv=none; b=eK1Ro1urkLb0E09eSeUKVoODXk0+ZTNXiRQbNzmP6cBWA/7HdewiOH140a5RjqxH7c1nneFP0LWZt1mq0Q8YSL42CLDVud8IgtOFdR22agLAtFqfu5145D/dOzMkeNU+GcyK/MJpJyLrEV/mUZTYE2Li5LmjzZ4briqwvJrhlOc=
+	t=1742626692; cv=none; b=r8XbbyFleXMQyz523kyyy5sSI2cWi6kCPf9VWmHf6u5TLqhcNHZ4VSNIgvs1MPmU/oLpDFgzenioiRHBpWeNlo6m3vXH7huX4I3tiGl63Kg+UmQN9P42cKa8k7t/CZSVHalcgGR4xRVEH+i+1oWAWU2Co9JCKPO8tKaMYqGlXDA=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1742567861; c=relaxed/simple;
-	bh=JofJA9YIAu8ZNlMBVwcqyxuF4uUm1QL2UdVB33tJMBw=;
-	h=Message-ID:Date:MIME-Version:Subject:To:CC:References:From:
-	 In-Reply-To:Content-Type; b=KdNQRDRY0+jpaYmM24Wvkr6s3RaACpfKMn1cETdi0A6rSUagxtoW+19fpoliXmwMZndXzVJWOxFoQw0qMuHwC9g5Yc1V9E2r4zx4mvkwlOUE5gMdirl8geu+L0DlM5IhW/YXnLukSwJtFBtLKljQpZNfqE2ea/wlIQdUGo8yKwc=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=quicinc.com; spf=pass smtp.mailfrom=quicinc.com; dkim=pass (2048-bit key) header.d=quicinc.com header.i=@quicinc.com header.b=cfZoLcI6; arc=none smtp.client-ip=205.220.168.131
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=quicinc.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=quicinc.com
+	s=arc-20240116; t=1742626692; c=relaxed/simple;
+	bh=HdCqHk31IVrFS5wCjRMxdwYXQ5QQ5E8hSwrIOXTpRYg=;
+	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version; b=HjySRokui13sCREtf6/mLPDfaZh5P509n+VxcqxNRIMAcGKOrLIQwPNQ2ojAKYwpojZ2arGhI2TJ1ObUOChBkDnWa+ZuS0sCO0LCBWzpJhbYF2N7aYlGdjZbsmDYP25Qtw7JZcgsCwiHLgJdp/Zx1Sds/n/hklomBPUbjxMflWw=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=H4QJ1kwr; arc=none smtp.client-ip=209.85.128.47
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=quicinc.com header.i=@quicinc.com header.b="cfZoLcI6"
-Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 52LATEER031803;
-	Fri, 21 Mar 2025 14:37:32 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	lUAuubmhP/bAgXWQaiCREHxXWbMHCn3WKpV9q57SXdk=; b=cfZoLcI6hOuqbkYM
-	RJbQINSNj8Y0/DFE+IguY2WfAbFWf4skwfZTlrciWzr+M6zrVxrpYxHwPtxvxFKz
-	GupoPjJN4R5ggnfO2SO3hMFJKLcCGN236KCEv5r0phMve4WoMgAAkhJ7cB6rBEk1
-	SPk7Rnclqt/e8AcLmtAWFrVvJptrWcjkpO07OszwNdCMmcoCptKU/7KRias5bOGL
-	pAWjSiSCGICQMzJqPXvxgDGjsOT8Sr2pKPg4YnlUCGiodFefl8GlXWUO7dvzRXtG
-	VRSCK2M4ssTHDUNlwnHTK5RZxGyyG8RtfI9qnE+T0Q6A0LkHQ6SV8xlGsc4LdeEs
-	D3r4sA==
-Received: from nalasppmta01.qualcomm.com (Global_NAT1.qualcomm.com [129.46.96.20])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 45gt5kjfc2-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 21 Mar 2025 14:37:32 +0000 (GMT)
-Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com [10.47.209.196])
-	by NALASPPMTA01.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTPS id 52LEbVTd032366
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 21 Mar 2025 14:37:31 GMT
-Received: from [10.111.179.44] (10.49.16.6) by nalasex01a.na.qualcomm.com
- (10.47.209.196) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.9; Fri, 21 Mar
- 2025 07:37:30 -0700
-Message-ID: <acbe5688-9be4-489b-8a9c-4950dc3b8133@quicinc.com>
-Date: Fri, 21 Mar 2025 07:37:30 -0700
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="H4QJ1kwr"
+Received: by mail-wm1-f47.google.com with SMTP id 5b1f17b1804b1-43cf628cb14so24398685e9.1;
+        Fri, 21 Mar 2025 23:58:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1742626689; x=1743231489; darn=lists.linux.dev;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=8emfl3/iA6hoYtuWERF3HJ4s5M5mU6RjMOHWHh7wDU0=;
+        b=H4QJ1kwrGUjasOVJ/CMGwsKFM5hm6aVyCHZQAEkXkuEUG1s4z/56QpBTAJPY9WhPpc
+         5dgwb450V4XiD2e7MQCrhS1bmGVZF89wEx2TXofe5mgCCgyNhv4iqKGrcPfdNU4kciOF
+         g6QV10sMkLEqaNcuMQiRj1zZDsRVeYtV+6a0PM6UoOVbuY24NCKSbup5hzum9EsyGNAu
+         n6ZqYchwV4rPo1EXeaRBzSgPQSSEpuP7fr1mR37/XDssm2kYhtk/ThKKsWAQioyQiwLE
+         sKrPgFklbx/atBtqexfrUmCXjWx+HAgHE61qH/htLxXk7gwcW2eEmbBT4RGl11lZMflj
+         8BWw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742626689; x=1743231489;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=8emfl3/iA6hoYtuWERF3HJ4s5M5mU6RjMOHWHh7wDU0=;
+        b=iPC4MZBS3ubNFweEA+o3OTLX6rs3XeC05+x3DZvTkWGqL5JOSo4XIR3fZ3yzgNJoOe
+         HVOwdi2rSsbxgZEcH3P/sAet4Fir4ikESmH6BrH/4linWlQCXpo2ENQacmZPm2aTaB7c
+         4E3qEAbQUIcz7AWac3u5ajkeGaShbGtn4Oi2oY4EfGjqiDR0FZYILNEinDnaHRABTrhW
+         ztzH9Putib0iiUa3CPX+jDV8+vtLxUv8hkU6sK5z4XcEuD3kmq2snIFX39+S7CqrhyeK
+         0SinrXPbHFcn6gDVmtW1KeISPjqcutATyLwSZ4c63cS0lnln1K4HZg1owaSvd1slLuef
+         yMJQ==
+X-Forwarded-Encrypted: i=1; AJvYcCULclnL3ijv70cH8AZVftZTL7mdjRUo3aWmUaArck5xKhZYVH78MWkNpMkjMl4N5RT7RGiU8olZRHzUP7Fg@lists.linux.dev
+X-Gm-Message-State: AOJu0YzghI6Trb/m3X58OGW8dlBk7HaVaoHO3nWOnvHh3antlRAJ3Gnw
+	klwjkBohteHhzjvbUnXn0Ih5sHWtFZhOTe7R9rwwWFO1fuRETpzlMgbntb+StEA=
+X-Gm-Gg: ASbGnctoS4Cf1BAfEzb4NZr9ZT7z7fGJJ5hllgviqODyYa3mujrf37FoR8uhY/5uFOG
+	W+piraQcwyUCGYEKxzTWLKbkAao8+rt2alqIyiO90BCt14K54enbLT3coZGRUUsvXxAAlEFypV8
+	azlfQD5RVfRSpr/xYJBrkaSAjvN62zx16Jf8nojFEtAxhfAl3rq60HkgE3fvXAfyhnFYZmxAphH
+	M4VelbecwWVKLoQcHYR7sJNlUeRtDVcpy7eAx5Ad2bWbBH2jgpoySzom2ZdE2emeJc378b4C4F7
+	AkDDyr1C4zhXqgHnoNVOwa9P9yrWZttOW+ryZy4=
+X-Google-Smtp-Source: AGHT+IHNV8Bc+MdPoxMoHiudNZ/7s72orS1cZ4p20xYam3PMqwE8iNaxMoft8jHkRHlzJXMvlWH/Lg==
+X-Received: by 2002:a05:600c:4995:b0:43c:ed33:a500 with SMTP id 5b1f17b1804b1-43d491b7dc5mr81439075e9.10.1742626688799;
+        Fri, 21 Mar 2025 23:58:08 -0700 (PDT)
+Received: from pc.. ([41.206.42.66])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43d4fd277c9sm49607825e9.22.2025.03.21.23.58.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 21 Mar 2025 23:58:08 -0700 (PDT)
+From: Erick Karanja <karanja99erick@gmail.com>
+To: outreachy@lists.linux.dev,
+	johan@kernel.org,
+	elder@kernel.org,
+	gregkh@linuxfoundation.org
+Cc: greybus-dev@lists.linaro.org,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	Erick Karanja <karanja99erick@gmail.com>
+Subject: [PATCH] staging: greybus: Alignment warning
+Date: Sat, 22 Mar 2025 09:58:00 +0300
+Message-ID: <20250322065800.21361-1-karanja99erick@gmail.com>
+X-Mailer: git-send-email 2.43.0
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [greybus-dev] [PATCH] staging: greybus: fix line length issue
-To: ErickKaranja <karanja99erick@gmail.com>, <hvaibhav.linux@gmail.com>,
-        <johan@kernel.org>, <elder@kernel.org>, <gregkh@linuxfoundation.org>,
-        <outreachy@lists.linux.dev>
-CC: <greybus-dev@lists.linaro.org>, <linux-staging@lists.linux.dev>,
-        <linux-kernel@vger.kernel.org>
-References: <20250321115545.24468-1-karanja99erick@gmail.com>
-From: Jeff Johnson <quic_jjohnson@quicinc.com>
-Content-Language: en-US
-In-Reply-To: <20250321115545.24468-1-karanja99erick@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: nalasex01a.na.qualcomm.com (10.47.209.196) To
- nalasex01a.na.qualcomm.com (10.47.209.196)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800 signatures=585085
-X-Proofpoint-GUID: N3pmzDtsjdnERo5NIcyFkfj6JxdhvGaw
-X-Proofpoint-ORIG-GUID: N3pmzDtsjdnERo5NIcyFkfj6JxdhvGaw
-X-Authority-Analysis: v=2.4 cv=PsuTbxM3 c=1 sm=1 tr=0 ts=67dd79ac cx=c_pps a=ouPCqIW2jiPt+lZRy3xVPw==:117 a=ouPCqIW2jiPt+lZRy3xVPw==:17 a=3H110R4YSZwA:10 a=IkcTkHD0fZMA:10 a=Vs1iUdzkB0EA:10 a=VwQbUJbxAAAA:8 a=pGLkceISAAAA:8 a=UII2AE8if6k0RuonElUA:9
- a=QEXdDO2ut3YA:10 a=KpMAsf9diV4A:10 a=ftr0zfsHvHYA:10
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1093,Hydra:6.0.680,FMLib:17.12.68.34
- definitions=2025-03-21_05,2025-03-20_01,2024-11-22_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 priorityscore=1501
- phishscore=0 adultscore=0 spamscore=0 mlxscore=0 lowpriorityscore=0
- bulkscore=0 clxscore=1011 malwarescore=0 suspectscore=0 impostorscore=0
- mlxlogscore=999 classifier=spam authscore=0 authtc=n/a authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.19.0-2502280000
- definitions=main-2503210106
+Content-Transfer-Encoding: 8bit
 
-On 3/21/2025 4:55 AM, ErickKaranja wrote:
-> Fix line length exceeding 100 columns in arche-platform.c. The code now
-> follows Linux kernel coding style guidelines by keeping lines under the
-> maximum allowed length of 100 characters.
-> 
-> Reported by checkpatch:
-> 
-> CHECK: line length of 101 exceeds 100 columns
-> 
-> Signed-off-by: ErickKaranja <karanja99erick@gmail.com>
-> ---
->  drivers/staging/greybus/arche-platform.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/greybus/arche-platform.c b/drivers/staging/greybus/arche-platform.c
-> index d48464390f58..1a82a7a3991c 100644
-> --- a/drivers/staging/greybus/arche-platform.c
-> +++ b/drivers/staging/greybus/arche-platform.c
-> @@ -179,8 +179,8 @@ static irqreturn_t arche_platform_wd_irq(int irq, void *devid)
->  				 */
->  				if (arche_pdata->wake_detect_state !=
->  						WD_STATE_COLDBOOT_START) {
-> -					arche_platform_set_wake_detect_state(arche_pdata,
-> -									     WD_STATE_COLDBOOT_TRIG);
-> +					arche_platform_set_wake_detect_state
-> +						(arche_pdata, WD_STATE_COLDBOOT_TRIG);
->  					spin_unlock_irqrestore(&arche_pdata->wake_lock,
->  							       flags);
->  					return IRQ_WAKE_THREAD;
+Correct the alignment of the parameters to match the open parenthesis.
 
-I see you already received some good feedback. However I think the most
-important feedback wasn't given, namely that checkpatch performs rigorous
-enforcement of Coding Style guidelines that themselves are not always rigorous.
+Reported by checkpatch:
 
-For line length the Coding Style still says the "preferred limit" is 80
-columns. But whether it is 80 or 100, the Coding Style has this very important
-caveat: Statements longer than [the limit] should be broken into sensible
-chunks, unless exceeding [the limit] significantly increases readability.
+    CHECK: Alignment should match open parenthesis
 
-<https://www.kernel.org/doc/html/latest/process/coding-style.html#breaking-long-lines-and-strings>
+Signed-off-by: Erick Karanja <karanja99erick@gmail.com>
+---
+ drivers/staging/greybus/camera.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Obviously this is subjective, but for me the original code is significantly
-more readable than the patched code.
+diff --git a/drivers/staging/greybus/camera.c b/drivers/staging/greybus/camera.c
+index 5d80ace41d8e..ec9fddfc0b14 100644
+--- a/drivers/staging/greybus/camera.c
++++ b/drivers/staging/greybus/camera.c
+@@ -1165,8 +1165,8 @@ static int gb_camera_debugfs_init(struct gb_camera *gcam)
+ 		gcam->debugfs.buffers[i].length = 0;
+ 
+ 		debugfs_create_file_aux(entry->name, entry->mask,
+-				    gcam->debugfs.root, gcam, entry,
+-				    &gb_camera_debugfs_ops);
++					gcam->debugfs.root, gcam, entry,
++					&gb_camera_debugfs_ops);
+ 	}
+ 
+ 	return 0;
+-- 
+2.43.0
 
-So the takeaway is that not every checkpatch issue should be "fixed".
-
-/jeff
