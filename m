@@ -1,127 +1,66 @@
-Received: from mail-ej1-f43.google.com (mail-ej1-f43.google.com [209.85.218.43])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 007B77080D;
-	Sat, 22 Mar 2025 15:37:16 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.218.43
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D8F3D42AA6
+	for <outreachy@lists.linux.dev>; Sun, 23 Mar 2025 17:18:59 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.83
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1742657838; cv=none; b=MX0y/PqA6gWFAsTbzvwatSV02BjvPrC/HjhupjxAm8nPvFd2DelD4pROJAdECvj8w+T+ixO2MqAEh+34wQerq17kPuufllCy2l+HDb5wkRCFb/2Dz27DbgDFq0J6Ju/YMwe7QYZPo9AKO0+z2RRUZXQ3A6CV04oDaVSayv6y4Qw=
+	t=1742750343; cv=none; b=F8fIs1DkhJgx23BP/jOCB+HtkqIIFv3MuW3GJyV3o0QQxtc7lU6XNAGtzc0ImLK1Q7nwwzRcnUi0HJJDsg/tEgSUXiaY5b+eDlXT5/qTmhtKmZyVjyg+x6XEQsN638Z6CFg2OrLPwptfOzPQCgo/Cen/L5dydoHglabzbtFsLuQ=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1742657838; c=relaxed/simple;
-	bh=/T8vDis5wt1e8gSA9CFxhWdIs6vxuC+8XJ8OzBDc8JY=;
-	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type:
-	 Content-Disposition; b=Dc4gR1IHKLR/lijw9q1NOx7lupeFVJCCpxRKMhBIPBhPoixjMDRLfLvu+I4Q+ei7eK6fE0Paj6my3mLD1NJyJkNZLqqfYO/7EcO0aisZrQyplnYLwLYAt5dTUYi9HTExNc10eOI4ZqNZ5fJBYlDD8dvLKQI/eT3PaQE81pi+b2k=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=hDarWXeA; arc=none smtp.client-ip=209.85.218.43
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	s=arc-20240116; t=1742750343; c=relaxed/simple;
+	bh=DaHWIrYsZj7Gv7ZUkGV4tObYt93OpVK+iO8cnEjrWoE=;
+	h=Date:From:To:Subject:Message-ID:MIME-Version:Content-Type; b=lHQPuDIcEFxOeBL+xSGfslm1e6B5NWctv4HGGohupclKAZuI+vi68vxd/orAf7bu/ObreSqSNmm9gcEU6NdQQ89VHdwgmcbH5gLBxOQegmT982KcFtuOkQ8y3j3K3BlnNkiAzQ0Xk0YBlve9y/IiA/KKV1wbULOH1rgbBuPp92I=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=tIavgUIG; arc=none smtp.client-ip=192.134.164.83
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="hDarWXeA"
-Received: by mail-ej1-f43.google.com with SMTP id a640c23a62f3a-ac3b12e8518so651619066b.0;
-        Sat, 22 Mar 2025 08:37:16 -0700 (PDT)
+	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="tIavgUIG"
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1742657835; x=1743262635; darn=lists.linux.dev;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=MDPcWgMNo2FqmuOqa9TlGd/nusehsLtSUTJAhoCLfx8=;
-        b=hDarWXeACxlIzKZTDm//Zpig3II8GZj6MP9v45m4lHat9jOb3e/trKzGa9cm/iH4Qu
-         an3+4OXKCyQmiqyEJTzhxcIlxSGjDnorO2NItM7aWS7KYEdysNUTT5V9lDmwGX1saBbU
-         Rnrtrtv8cWlePBL6SZR4KPY5I1SkqsuQsh3UYe446PrK4l73wGGYpUkzPGVOTkUF4mQq
-         UEd/njiTlP9YJ25HrBsBo+Ynw/WvPlg91gEr7zna1H/66SgbMIK9m+LFhju5Vho2p4qn
-         s6MYtpHWQKeFSLwfwclht56RxAP9VCTeCrIoalQqXxGG6bsYg4+/ZNSh67WVfrlrT6Ma
-         liOg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742657835; x=1743262635;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=MDPcWgMNo2FqmuOqa9TlGd/nusehsLtSUTJAhoCLfx8=;
-        b=Z8wTxq1PsVlbU/uiaQwSHfiFlysEpG2ryXbHli0mDsd4YjQOYRdV997VW7Uf/UfvUO
-         RImoblV+pS2kmmRqiTrMxcAmnLzOjQeohR4MZ6IMURUEeKlkZSZpkTAjGdQeRLV6rzul
-         tWwd6fpDKPcMm9mcuDenfQ9Bws7N6RNueKMwQ/51enavklMVwSOPyC3d4ImrIAjB4gKM
-         TrGSvuBUXwFAuYqtrxb/+TAdVx+D2+fch8bngWCHGYeb6LkvIhvL+MdGhpID0ahDvk+P
-         RpdrdkgIQvKEiQ5luCkweaoXlpramJ/IwslRcRsEja1dmGIyR5j9IxfTr7EXbxy3e0LB
-         5GiQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVRa5FkYDFDCDGfTN+HX4VuA9tp9gq5IepA461lq6/rAXkN0LKK8el888WfI/Qga4imFw2NzBc2MatIoVAV@lists.linux.dev, AJvYcCXlPPxclKpCaR+Kbl7au8MkbLL0JgjE/BFyiEKIBeKzGUcBuiPOZfVjOGs3tIA2z+BLv1f0A405Qt/j@lists.linux.dev
-X-Gm-Message-State: AOJu0Yxle+XVGmLzXskwCHjON7RhLIrdnw6owiAK825XoL+Hy/DCtck/
-	NnWk3b04DK166/vtsM8BLVChiSqU/pvbbkWOrAOZt9/Oa/IzVGbT
-X-Gm-Gg: ASbGnctpU1E9yCyoTbjvxL8nfiXHgPLc2DKur0SjgWqMsLoF307rHN/ZkjeomhopqSt
-	JnXQJ9pT61daNxok6OPF4Ne5m9stNEmijA+waAwIvrkn91Lx7JwKfghAzYPwHdbVGcshCfOJcHW
-	TnZeJ9kysLy45GdQTKyLNJqPAydGkoNOyneBLtUpULaUwmAJblpYtJcFFfxFbxtQyi6CAEd3YIX
-	AlAQ6V10DsTozrp3vJWMfzOBe4HeWqYrEqcHNotULryMlJ6168OK/eD4I7EZVu0YBUcROQ8K4ui
-	wRTE/irGhK6ZrsITG48b7bENwSvBl3K+GvdDjztANsakv0Z+Bw==
-X-Google-Smtp-Source: AGHT+IFkSEzUgBZ0q29OnEgwaAmNJN8Y3mUH0OvKhoqlOBRCbzI4wzIkN6km6zh3cBkvJW4Gi+rwRw==
-X-Received: by 2002:a17:907:9403:b0:ac3:154e:1391 with SMTP id a640c23a62f3a-ac3f207f927mr779803966b.10.1742657834898;
-        Sat, 22 Mar 2025 08:37:14 -0700 (PDT)
-Received: from HP-650 ([105.112.226.109])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ac3ef8d3cd3sm363834466b.40.2025.03.22.08.37.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 22 Mar 2025 08:37:14 -0700 (PDT)
-Date: Sat, 22 Mar 2025 16:36:53 +0100
-From: Abraham Samuel Adekunle <abrahamadekunle50@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Julia Lawall <julia.lawall@inria.fr>, outreachy@lists.linux.dev
-Cc: Florian Fainelli <florian.fainelli@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	linux-staging@lists.linux.dev, linux-rpi-kernel@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v2] staging: bcm2835-camera: Modify function call formatting
-Message-ID: <Z97ZFURPvDcTkjjf@HP-650>
+  d=inria.fr; s=dc;
+  h=date:from:to:subject:message-id:mime-version;
+  bh=z4gQuz5DCzPQyloNubzq4Sb1RrA4V/aFpPe0Qgzgfa4=;
+  b=tIavgUIGl1X1+CVOGJg87ajn0xJyf7C+fZyOflKiw1H5gISwoKwjFDK2
+   u2NKPkxZmVa5Y1zbwhkLzZIeKvTzOMvNVVyIYo0nVCI+WOon9nsYsdimY
+   BTx73Vgr1gQsa8m0Lg22wSvr9BXt/ZDFo35Lot4tQTX7FlcynKwkqx5z+
+   o=;
+Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="6.14,270,1736809200"; 
+   d="scan'208";a="214304096"
+Received: from 231.85.89.92.rev.sfr.net (HELO hadrien) ([92.89.85.231])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Mar 2025 18:18:58 +0100
+Date: Sun, 23 Mar 2025 18:18:57 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: outreachy@lists.linux.dev
+Subject: [Outreachy] cleanup opportunities
+Message-ID: <alpine.DEB.2.22.394.2503231814050.3562@hadrien>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Type: text/plain; charset=US-ASCII
 
-The line is a function call which ends with an opening parenthesis
-thereby not adhering to the Linux kernel coding style.
+Hello,
 
-Modify the function call to include parameters on the same line as
-the opening parenthesis to improve readability and consistency while
-adhering to Linux coding styles.
+If you are wondering what would be interesting to work on, you can
+consider:
 
-Reported by checkpatch:
+drivers/staging/gpib
+drivers/staging/rtl8723bs
+drivers/staging/vme_user
 
-CHECK: Lines should not end with '('
+For all of these, you can find a number of cleanup opportunities with
+checkpatch.  Remember though that checkpatch is just offering suggestions.
+You need to decide whether what it highlights is a real problem.  For this
+it may be helpful to look at other similar kernel code.  Sometimes it may
+be clear that what checkpatch is complaining about is indeed likely a
+problem, but it's not clear what to do about it.  At this point, the goal
+is to learn how to submit patches, write a good commit message, etc.  So
+don't hesitate to make change that seem quite trivial to get started.
 
-Signed-off-by: Abraham Samuel Adekunle <abrahamadekunle50@gmail.com>
----
-Changes in v2:
-	- Add more patch recipients.
+Let me know if you have any questions.
 
- .../vc04_services/bcm2835-camera/controls.c        | 14 ++++++--------
- 1 file changed, 6 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/staging/vc04_services/bcm2835-camera/controls.c b/drivers/staging/vc04_services/bcm2835-camera/controls.c
-index 6bce45925bf1..e670226f1edf 100644
---- a/drivers/staging/vc04_services/bcm2835-camera/controls.c
-+++ b/drivers/staging/vc04_services/bcm2835-camera/controls.c
-@@ -533,17 +533,15 @@ static int ctrl_set_image_effect(struct bcm2835_mmal_dev *dev,
-
- 		control = &dev->component[COMP_CAMERA]->control;
-
--		ret = vchiq_mmal_port_parameter_set(
--				dev->instance, control,
--				MMAL_PARAMETER_IMAGE_EFFECT_PARAMETERS,
--				&imagefx, sizeof(imagefx));
-+		ret = vchiq_mmal_port_parameter_set(dev->instance, control,
-+						    MMAL_PARAMETER_IMAGE_EFFECT_PARAMETERS,
-+						    &imagefx, sizeof(imagefx));
- 		if (ret)
- 			goto exit;
-
--		ret = vchiq_mmal_port_parameter_set(
--				dev->instance, control,
--				MMAL_PARAMETER_COLOUR_EFFECT,
--				&dev->colourfx, sizeof(dev->colourfx));
-+		ret = vchiq_mmal_port_parameter_set(dev->instance, control,
-+						    MMAL_PARAMETER_COLOUR_EFFECT,
-+						    &dev->colourfx, sizeof(dev->colourfx));
- 	}
-
- exit:
---
-2.34.1
-
+julia
