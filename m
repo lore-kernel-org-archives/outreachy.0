@@ -1,103 +1,186 @@
-Received: from mail-vk1-f181.google.com (mail-vk1-f181.google.com [209.85.221.181])
+Received: from mail-wm1-f44.google.com (mail-wm1-f44.google.com [209.85.128.44])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7CA7B77104
-	for <outreachy@lists.linux.dev>; Sun, 23 Mar 2025 22:12:27 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.181
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D14F138DE9
+	for <outreachy@lists.linux.dev>; Mon, 24 Mar 2025 13:16:55 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.44
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1742767949; cv=none; b=qqXFV2Wg7MSAXK5jHWlIxt4nagOKWC9aamdF91iDjinaYRKfSqAZE9GkOlOaJpPv8dViuQeZ5/3naxYj3PQ3sji8mlZVnhN1Upi5qnOwNwyRMTTFCHxaeUHL0+6Vi8+f2DdNDVqdYvPHagSSkx9ygtvIaSuE6cksQ3NGEsmaaf4=
+	t=1742822217; cv=none; b=eD+/oueN3fyWdbxOZIYdtaNyAQ4EC/tUZmDk8Mb3gfuo4YQXw3cR0SLMg+2oO/cStGQMTflXYgeko3JoDib2MYdvbZDr9t0FH3ajv8DKybJX7O82Papd+hcGc5Kh1pgzbYBRsxGu6U54Xt27d4FtiLY5KYumH72jcFm5q3orUno=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1742767949; c=relaxed/simple;
-	bh=/JHod6pt3wdjEOPsLXe4XVnUhNje8vUkwyXOI64huMM=;
-	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
-	 To:Cc:Content-Type; b=Jmbk6AvSXi/cD3SXjm3+ilZ4eXeIham/4WHqCf/rr6B2i+Xkz583/+wBFlOHIWJ5IhrL/DAoZzyk+tw7TtL4kjSn5dfXcnzSqoUAxRNzR2WpBPT37X9QoA898Hn7Ra7b+gOTJ3apXQ77rPc9cjVAdqTwCuhGicLVjzFwhlWIK/I=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=ifP0qbRn; arc=none smtp.client-ip=209.85.221.181
+	s=arc-20240116; t=1742822217; c=relaxed/simple;
+	bh=0BzVdWAZwgS/kbwCItbhTqku+Dxp2YBo04vVP5bX8wg=;
+	h=Message-ID:Subject:From:To:Cc:Date:Content-Type:MIME-Version; b=DDcNmj2IDr8ulaOFLcX168zcOZLNapC7udQXOyFq6FJZCTb2fgXBOLXEYmwh5arwcNE8EjuhGorYO24RsiV5xEg2palV/Fe6SjESXJ6IershvF+2qqXpYxPuao6L/N79q0yOEoOLAc8GtlQyOL5TsWNUuBnfEQ7pafeKkEN+cRA=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=nYQWwyKA; arc=none smtp.client-ip=209.85.128.44
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="ifP0qbRn"
-Received: by mail-vk1-f181.google.com with SMTP id 71dfb90a1353d-51eb18130f9so1865822e0c.3
-        for <outreachy@lists.linux.dev>; Sun, 23 Mar 2025 15:12:27 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="nYQWwyKA"
+Received: by mail-wm1-f44.google.com with SMTP id 5b1f17b1804b1-43d0618746bso28935475e9.2
+        for <outreachy@lists.linux.dev>; Mon, 24 Mar 2025 06:16:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1742767946; x=1743372746; darn=lists.linux.dev;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=rwYmcHhtUyY06D4jdaYYSD4/ihtjK3ew31m+965fP/E=;
-        b=ifP0qbRn9IneZFCaI2XwXz+zFVTLmPS9PfG929Em2wndtzCHl/Z07HZKOdIkEEnW7V
-         DxEY98MfcXzO1/Aop4Oy/kM9LC0nQW/ECKPtq/nAZu15BFs3rhtRZ0aQVHufyH3DS2FI
-         ZKzoW9RgVoNxpolT5ps76FrR/2aKp+4ARUCJwurHHOzLPpPOssuaghA+XaGQrb/tiPkI
-         Uw8AX4vMDez73XS9fyEifQg+16wzeXQrumhcF6of09QPzLNUQ40F/tGVcw7bc8GbXHm5
-         1vAwSSAfgXRPxuLdXdpHuODIgOz9F6DoDVExYtmGSGL3r86nal/YPa6e4nsDdFw4Jkmp
-         92KQ==
+        d=gmail.com; s=20230601; t=1742822214; x=1743427014; darn=lists.linux.dev;
+        h=mime-version:user-agent:content-transfer-encoding:date:cc:to:from
+         :subject:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=tc+DC7nQht4uq+LFg1TrVlCtd0t/QCvudCtu5guggqw=;
+        b=nYQWwyKAt2VduSHjsiADAnAm7FtQ4aQlJw9P9f+haZ9fAYHYb/X5CI4U+Sfm1GBHkh
+         MWBanGnYERu9AoKM9WnHBhzEjEdDtKAUsJe76YPd3r+LGtfwp5Q+DF+QrAoTjtRMHA+b
+         NbmP7msQgmhDkd34ZDS1hnW2c1/Q42utzSaJwpIhby76EZsH/iARytPBCE1/FLarXW3F
+         4O5UysTV0amkC14smyQAOe4ffkwLFSX9d18g/10wF5KFSte/jfp8efo1deola5qayhXB
+         fQBMNsoWUVr0iaJgrYo9ZmjlFj3uE3PZh7T+GJyNoIDJHydzUlVygOdnCO77mKoiMBei
+         VS/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742767946; x=1743372746;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=rwYmcHhtUyY06D4jdaYYSD4/ihtjK3ew31m+965fP/E=;
-        b=OZwWRoXucUi/8g9D4pmOggTzMxgnYtonxBv0H+9j5EiByXTVKbwI9F47BdNfeyMShI
-         N92dZjgtANzutrqX7HqiWdxV84tWs/wUqbW9c5r+nDaeBF4k5W9Zbnazwm+fzE+KQ+2N
-         7bs4f5KvKL+xYRp+mvrllpFLSAxmjpwNpqrkFSGC8Qraf8M9TMqksMyUxiGdQlJ0QwWZ
-         6WQaVyTnKX6HZW+0pRXYci7nVGRmFssFNKD/fPz86Ieg/OWoDmXpGUjdeLvjEiP6mb1C
-         0NS/dP4gYIG7zO/UoLv+xfDFEvuNHG3TfzI/f17AD3VG23YtelDj/u2ai0O98szCzqbj
-         9p5A==
-X-Gm-Message-State: AOJu0YyFPUonI64gu1ux041kknxtledyXNPnPWQLWMLQUtcL6WjJDaW/
-	1lLr08y84pGR99yVmduw6OHqGJ8Y4VeS0eG7/V1JcmNf/0H3N84noY4hi3JF5WRPPPtSc5jFs0H
-	5VSVcuK+xsmc/xuPKPv10R0STfto=
-X-Gm-Gg: ASbGnctq6Ydpnlu/jK4SoXkPCPhXoUqVZr37R0w8ipgwtPQvvaGuP33wPhZ6LWm4ddm
-	WpaL4bylVRBORT1GO/nYeOkxadm4SpWEgBQkCK7a+AhGjI5QgMIITGzBvS0UbZtEXWlajHv/wMw
-	j581VKI0j8SmMoKyWaPbvNJIZ+2hgZ
-X-Google-Smtp-Source: AGHT+IHk8emxBr6P9+UusOJ5hyUmHTnR23cTNIceeN4igoUB/JcCG5iiAyhvws0DDmUa2f5XhT5H2638hOEJanjPauI=
-X-Received: by 2002:a05:6122:322b:b0:520:9b05:4cb6 with SMTP id
- 71dfb90a1353d-525a80d1963mr8048437e0c.0.1742767946218; Sun, 23 Mar 2025
- 15:12:26 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1742822214; x=1743427014;
+        h=mime-version:user-agent:content-transfer-encoding:date:cc:to:from
+         :subject:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=tc+DC7nQht4uq+LFg1TrVlCtd0t/QCvudCtu5guggqw=;
+        b=G7ooxu4U+lTDXJEkMCQfJRHt8qZKUlrx9PD8XN+ZcahvHu4Kekxlos0fNM1HSZc0LU
+         vYF+YCnDXKPCuSgPMqjLCwdzrtbZ8HY4RygMLCjZybY6l/yTackxk5DqZ4A/ncjcL32y
+         MKUjn6qkDESv91bQ0/Y8ef+vSXyUh8BfZYdWCo2eHUxihxWGVy4Qb9B+c5p2mZfFPrk5
+         KsYftAcvL7aUYje1DtSMf3aQnr/oehM5Y9rutAfwGXKA5GIydYKP/ydHaC+BHwkRPGbM
+         6WAEZ8Pse6nr1hCelV2QKx+V8DdbEXCLjtnjtE+Zmm+BUkzbuH8fozKQa9bgmF/wAAFX
+         jWZg==
+X-Gm-Message-State: AOJu0YyBSAMTqRxfJT3hAWZMIZGSnHzhabr3k0FBv3gd5khNIVSrtxme
+	+R7Z/1GBEUMnyHFURTtv3ZharvMvYAqvsbjuRST67hq4YpiFhH8xfBbaXHSZS4M=
+X-Gm-Gg: ASbGncvJ4J4tXs92nsDVRZyKz88dCblvtny0fu1fVCMs0dbGHGatdu76txwexu7C2c/
+	2lpYQjsUlaT401ztmszJOSXNn7Snu1vmZIiFEfzNJ+lE9DBWq7s5JYCVFcFRTNc47ZOPYat3V9P
+	n9o4z+Kkm3vqx1onVcJ6dnpwQ1IKPfszw+CrfMH+Qzen4gZDdIe43t3LBjAlEAe4Eis/j0zS3ka
+	MPLBAZFVEk9z1iuWXNuO8Dr58O2TmmMUGxltX5nS3utjV+jyp/BRNMRNWEZA4v2Ma3QLf/52sDu
+	YPpW4aGT4YQi03gTWB+RphuuMTNu5eguKD1QCQ==
+X-Google-Smtp-Source: AGHT+IEWm/T4kB7EOgzUa6hFfg6nymd1uFT4+Y4Pf1nvcR56HF+WSJOTkz7O9aVgGAvGFg5J+7xNrA==
+X-Received: by 2002:a7b:c049:0:b0:43c:eeee:b70a with SMTP id 5b1f17b1804b1-43d5100a2camr94110815e9.22.1742822213717;
+        Mon, 24 Mar 2025 06:16:53 -0700 (PDT)
+Received: from [192.168.42.3] ([105.112.20.131])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3997f9ef16csm10852345f8f.86.2025.03.24.06.16.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 24 Mar 2025 06:16:53 -0700 (PDT)
+Message-ID: <c1b29fc7062b6e6a130de4adb121845d9574a50e.camel@gmail.com>
+Subject: Can't Build Linux Kernel from Tutorial
+From: Richard Akintola <princerichard17a@gmail.com>
+To: julia.lawall@inria.fr
+Cc: outreachy@lists.linux.dev
+Date: Mon, 24 Mar 2025 14:16:50 +0100
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.46.4-2 
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-References: <alpine.DEB.2.22.394.2503231814050.3562@hadrien>
-In-Reply-To: <alpine.DEB.2.22.394.2503231814050.3562@hadrien>
-From: Samuel Abraham <abrahamadekunle50@gmail.com>
-Date: Sun, 23 Mar 2025 23:12:18 +0100
-X-Gm-Features: AQ5f1Jr_YmOuFoSifSnzHapTdmJ2La3MVpgoiyC6hPZjD8XfSKO05SVOY_kDljI
-Message-ID: <CADYq+fbpR-T9TDGi6NWZcMW58sag1UbHYnEm9nx1ix0__2nmNg@mail.gmail.com>
-Subject: Re: [Outreachy] cleanup opportunities
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: outreachy@lists.linux.dev
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-On Sun, Mar 23, 2025 at 6:19=E2=80=AFPM Julia Lawall <julia.lawall@inria.fr=
-> wrote:
->
-> Hello,
->
-> If you are wondering what would be interesting to work on, you can
-> consider:
->
-> drivers/staging/gpib
-> drivers/staging/rtl8723bs
-> drivers/staging/vme_user
->
-> For all of these, you can find a number of cleanup opportunities with
-> checkpatch.  Remember though that checkpatch is just offering suggestions=
-.
-> You need to decide whether what it highlights is a real problem.  For thi=
-s
-> it may be helpful to look at other similar kernel code.  Sometimes it may
-> be clear that what checkpatch is complaining about is indeed likely a
-> problem, but it's not clear what to do about it.  At this point, the goal
-> is to learn how to submit patches, write a good commit message, etc.  So
-> don't hesitate to make change that seem quite trivial to get started.
->
-> Let me know if you have any questions.
->
-> julia
->
-Thank you very much for the guidance. It's very well appreciated.
-I'll indeed send my questions if I have any
+Hello Julia,
 
-Adekunle
+I have been trying to build the Linux Kernel via the tutorial on my
+machine to no avail.
+
+This has prevented me from making a PATCH.
+
+This is the Os and Kernel version of my machine
+OS: Parrot Security 6.3 (lorikeet) x86_64=20
+Kernel: 6.5.0-13parrot1-amd64
+
+Below is the error I got while installing the kernel build
+
+...
+
+INSTALL /lib/modules/6.14.0-rc1custom-
+ola+/kernel/net/vmw_vsock/vmw_vsock_virtio_transport_common.ko
+  INSTALL /lib/modules/6.14.0-rc1custom-
+ola+/kernel/net/vmw_vsock/hv_sock.ko
+  INSTALL /lib/modules/6.14.0-rc1custom-
+ola+/kernel/net/vmw_vsock/vsock_loopback.ko
+  INSTALL /lib/modules/6.14.0-rc1custom-ola+/kernel/net/nsh/nsh.ko
+  INSTALL /lib/modules/6.14.0-rc1custom-ola+/kernel/net/hsr/hsr.ko
+  INSTALL /lib/modules/6.14.0-rc1custom-ola+/kernel/net/qrtr/qrtr.ko
+  INSTALL /lib/modules/6.14.0-rc1custom-ola+/kernel/net/qrtr/qrtr-
+mhi.ko
+  DEPMOD  /lib/modules/6.14.0-rc1custom-ola+
+  INSTALL /boot
+run-parts: executing /etc/kernel/postinst.d/dkms 6.14.0-rc1custom-ola+
+/boot/vmlinuz-6.14.0-rc1custom-ola+
+dkms: running auto installation service for kernel 6.14.0-rc1custom-
+ola+.
+readelf: Error: Not an ELF file - it has the wrong magic bytes at the
+start
+readelf: Error: Not an ELF file - it has the wrong magic bytes at the
+start
+readelf: Error: Not an ELF file - it has the wrong magic bytes at the
+start
+readelf: Error: Not an ELF file - it has the wrong magic bytes at the
+start
+readelf: Error: Not an ELF file - it has the wrong magic bytes at the
+start
+readelf: Error: Not an ELF file - it has the wrong magic bytes at the
+start
+readelf: Error: Not an ELF file - it has the wrong magic bytes at the
+start
+readelf: Error: Not an ELF file - it has the wrong magic bytes at the
+start
+readelf: Error: Not an ELF file - it has the wrong magic bytes at the
+start
+readelf: Error: Not an ELF file - it has the wrong magic bytes at the
+start
+readelf: Error: Not an ELF file - it has the wrong magic bytes at the
+start
+readelf: Error: Not an ELF file - it has the wrong magic bytes at the
+start
+readelf: Error: Not an ELF file - it has the wrong magic bytes at the
+start
+readelf: Error: Not an ELF file - it has the wrong magic bytes at the
+start
+Sign command: /lib/modules/6.14.0-rc1custom-ola+/build/scripts/sign-
+file
+Binary /lib/modules/6.14.0-rc1custom-ola+/build/scripts/sign-file not
+found, modules won't be signed
+
+Building module:
+Cleaning build area...
+make -j4 KERNELRELEASE=3D6.14.0-rc1custom-ola+ KVER=3D6.14.0-rc1custom-
+ola+........(bad exit status: 2)
+Error! Bad return status for module build on kernel: 6.14.0-rc1custom-
+ola+ (x86_64)
+Consult /var/lib/dkms/broadcom-sta/6.30.223.271/build/make.log for more
+information.
+Sign command: /lib/modules/6.14.0-rc1custom-ola+/build/scripts/sign-
+file
+Binary /lib/modules/6.14.0-rc1custom-ola+/build/scripts/sign-file not
+found, modules won't be signed
+
+Building module:
+Cleaning build area...(bad exit status: 2)
+kernelver=3D6.14.0-rc1custom-ola+ ./dkms-make.sh...(bad exit status: 2)
+Error! Bad return status for module build on kernel: 6.14.0-rc1custom-
+ola+ (x86_64)
+Consult /var/lib/dkms/realtek-
+rtl8814au/5.8.5.1~git20240527.d8208c8/build/make.log for more
+information.
+Sign command: /lib/modules/6.14.0-rc1custom-ola+/build/scripts/sign-
+file
+Binary /lib/modules/6.14.0-rc1custom-ola+/build/scripts/sign-file not
+found, modules won't be signed
+
+Building module:
+Cleaning build area...(bad exit status: 2)
+'make' -j4 KVER=3D6.14.0-rc1custom-ola+ KSRC=3D/lib/modules/6.14.0-
+rc1custom-ola+/build...(bad exit status: 2)
+Error! Bad return status for module build on kernel: 6.14.0-rc1custom-
+ola+ (x86_64)
+Consult /var/lib/dkms/realtek-
+rtl88xxau/5.6.4.2~git20240510.b44d288/build/make.log for more
+information.
+Error! One or more modules failed to install during autoinstall.
+Refer to previous errors for more information.
+dkms: autoinstall for kernel: 6.14.0-rc1custom-ola+ failed!
+run-parts: /etc/kernel/postinst.d/dkms exited with return code 11
+make[2]: *** [arch/x86/Makefile:321: install] Error 1
+make[1]: *** [/home/laolu/Desktop/Outreachy_Contributions/Linux-
+Kernel/git/kernels/staging/Makefile:372: __build_one_by_one] Error 2
+make[1]: Target 'modules_install' not remade because of errors.
+make[1]: Target 'install' not remade because of errors.
+make: *** [Makefile:251: __sub-make] Error 2
+make: Target 'modules_install' not remade because of errors.
+make: Target 'install' not remade because of errors.
+
+
