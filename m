@@ -1,117 +1,301 @@
-Received: from mail-ed1-f41.google.com (mail-ed1-f41.google.com [209.85.208.41])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8592C25D8E1;
-	Tue, 25 Mar 2025 16:32:50 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.41
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A05601A7044
+	for <outreachy@lists.linux.dev>; Tue, 25 Mar 2025 20:25:03 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.104
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1742920372; cv=none; b=Du/eJdUPAKTXXw7wQtFswr87CA5IrO4t8CYjcSZkmfT9+AoYchEHmeLN0G8UEtVbZpVB9hfCDblEKFd0Le7SCuJosxTId/0RF0rRMdxr8R/m43JxZFWjpDKM/GgqDFvoaESNGbNHE13QHyf4lLQ6YjARJqywi1E66Hjse4KG0UY=
+	t=1742934307; cv=none; b=aGVWbprp3cy+PFlijp87qSLNGs8qhyAoEXmD6W9Uax85/TcABj47yE6eoLPRlMigWAuz7wioDPb9W8suN9aUgoqgKWadzeKKQHnlTesosZ+TQJMaHY4CxW2fek6DJXY28R5MAiqtDoxEDGmLCxR/tGEMzZbOg3YzUUmS4iilGPk=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1742920372; c=relaxed/simple;
-	bh=NSec+iBcn7Q/AJxbbFrWQy9WdryMOTeKoH6dL/cAgaQ=;
-	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type:
-	 Content-Disposition; b=BvLyHCpasSz6OWQX19h/8hXLzt20ccpNQFGNl6gmdudF/BBCHOqv1POMgGMryWUFxOXajJO4DcDIqg0IaHhuj+jNsuZcT7Pgx8hFXvnFyDeUstSTegP3CkDkacd7QkyDiGnJEQ7oNFFA6lB5mnhylBWZkC+K7GLhSd86uS/N7IU=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=QK9w8PHe; arc=none smtp.client-ip=209.85.208.41
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	s=arc-20240116; t=1742934307; c=relaxed/simple;
+	bh=MrL1tFzf6tLgOCmXH5U63i4zGLc75hMViTawYZJyGQs=;
+	h=Date:From:To:cc:Subject:In-Reply-To:Message-ID:References:
+	 MIME-Version:Content-Type; b=u102NKZar1TTTFrSH4+IOpIwmAubTjFnc22Y1UOwdt8luB3WcZteJt/d3t+Zujxiphstunj986aJB4cJo6+GZIvrdDvdiF1CskihYP2AiQHIFjDAUWBLarBF/P4GYaMr2adHns4ym95PGNX5kLaeOie0CynwA5+PZmfNMkxbEMw=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=QfoIHATm; arc=none smtp.client-ip=192.134.164.104
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="QK9w8PHe"
-Received: by mail-ed1-f41.google.com with SMTP id 4fb4d7f45d1cf-5e60cfef9cfso8793083a12.2;
-        Tue, 25 Mar 2025 09:32:50 -0700 (PDT)
+	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="QfoIHATm"
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1742920369; x=1743525169; darn=lists.linux.dev;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=4odgKTupI6gjEJZNLy+RWifMVtAgdHPam3xHzX2/tcs=;
-        b=QK9w8PHeC4qQDMUQxwZCiFGOK34+c3XOL4JSFKC+VOioaOyXpL8U2x+QxorBtCjMMw
-         KfwcSJwQNLIqaOLAr8BV+1gl++5me6Qr6oP0YyscYfZSEgMO2JakHnSoYYLfXP+3GUu2
-         2d/DOH3jhUWejWVu98fpvfCf+OesV0FB/lmtzE5/OhhNN7agYqao7ZvPC0p1CscrxJss
-         De4tyYbZVZKsGOubrw/ywwaKWzjE7uzZStilIWdi9kT9Uk8v4SnL01ZTog9N8QFH1kWs
-         SRGBqpBQx6nT5tg662c0xiOg0a3d3gwE9Rd8GGAox+l9bFjhRRxB8Nf3bHVU9ls3Mt8Y
-         B/qA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1742920369; x=1743525169;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=4odgKTupI6gjEJZNLy+RWifMVtAgdHPam3xHzX2/tcs=;
-        b=rboESOSnBe+LpixeY8yU0mQou+gg/f7OYqO3fGlqXvhoXgYWgb7n+sb8hbfU6b0MHv
-         Ss4sNpWDYzWMBv+U8NQ2kJYcUhERMpmO9iZLTp77PNmN65f6pYQGZCCgAp5D5MKw3Vih
-         kCScFTJbY4NXNGctn9InVCThak9PqPOjVY2dKW7bfUe5mVk6zC1ITSLVfZv2ttMPXqjD
-         xJxhe8fuGFAfaz13gW3+LzyWObcFMaI3nH+DcyjSut8dTRSJgE/r7StuVhQb7yrCZTFD
-         FTtTwbd7iSEjtpXeuhpsfprxjQT2ZJgrRoUC0dd89+fTpIM9+5tk5lapHwox6UOjBF3i
-         Aa6w==
-X-Forwarded-Encrypted: i=1; AJvYcCVNUK60uY4tSeu75W+cQdMGsMiBdXR9y8lkszL4YC+qVSzR8feEoTOszkNc7cX1+DtmA6oIn81SSjE=@lists.linux.dev
-X-Gm-Message-State: AOJu0Yz0ckc86ZsC8qr5WX1mIliMhTGa2yE7HJr0oT+AuciVd2R6uNuG
-	JqML05m6FL4aL4ChW8/8JcD4ExlF8hIj7QQ8Lwb7scp/U6SK24NMdgSJX8yF
-X-Gm-Gg: ASbGncuB3DkI+VNY911Aidfcu7QiVBXvONfmGhPAF++HI21tXmTSJbxw/RPFb11XZDe
-	xQC85nAQtVO5VzoLkwfxiaNl7YQSiBgSWcd+IcRBIOrM7bGGvxaArJK4Z9Qkpt6jfEZl8ZQDlY8
-	wV8p5JsAgaaQY/yQyVQJL2eePDzRmoAX31Zv0azSi8jxxTxLKSpyT4z6C+9wrhIppRmnBBDL9kZ
-	kAVBe9viPOgJxHbJH2APQ5WF1BNWzXnMpNnH6jYuqffFQUNj3N7hA7efnxx7ADK6b2q+vf8CYeL
-	sa1aprbFX/mIlXarl5zEgPAePGUoL9eXtG/cYFUqSCC+LaziJQ==
-X-Google-Smtp-Source: AGHT+IHVgHE8zQfANSq9zhdazHfrmTIr8aqswsXlpCS61/JJ0ZXz7XZidItYALPPaLUJjU2St1EgHA==
-X-Received: by 2002:a05:6402:13d0:b0:5eb:9673:feb with SMTP id 4fb4d7f45d1cf-5ebcd4f8250mr15323553a12.25.1742920368472;
-        Tue, 25 Mar 2025 09:32:48 -0700 (PDT)
-Received: from HP-650 ([105.112.117.141])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5ebcd0c7157sm8011720a12.60.2025.03.25.09.32.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 25 Mar 2025 09:32:48 -0700 (PDT)
-Date: Tue, 25 Mar 2025 17:32:31 +0100
-From: Abraham Samuel Adekunle <abrahamadekunle50@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	outreachy@lists.linux.dev, Julia Lawall <julia.lawal@inria.fr>
-Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: [PATCH] staging: rtl8723bs: remove braces around single statements
-Message-ID: <Z+Lan0xeQd3m5ejY@HP-650>
+  d=inria.fr; s=dc;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=vOYB+VkxP6caT3PJ4iquQyhI/4XKVZzlLCqqKHEsz8Y=;
+  b=QfoIHATmM6E2MOPHLqevsoyOVZ5mL7QRCIFFGEZWpEjPauUZSQKz8wmS
+   Zv5Fb/EsA1wLUcXH85JV1FlEdguRDOTlGczMkuTjdoZLgDBZ2UXxTr6dV
+   rUFwH3VNaD4QWhVFMA45jOVilqwFxXcNfKk4L45DZ/x1CuMIZThQ+QQJh
+   0=;
+Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="6.14,275,1736809200"; 
+   d="scan'208";a="112588823"
+Received: from 231.85.89.92.rev.sfr.net (HELO hadrien) ([92.89.85.231])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Mar 2025 21:25:02 +0100
+Date: Tue, 25 Mar 2025 21:25:00 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+X-X-Sender: jll@hadrien
+To: Richard Akintola <princerichard17a@gmail.com>
+cc: "outreachy@lists.linux.dev" <outreachy@lists.linux.dev>
+Subject: Re: Can't Build Linux Kernel from Tutorial
+In-Reply-To: <CAMyr_b+rJBRQFrFCnB=kq33XCyo=twuRQ-OrQC50D0mH9CaRUg@mail.gmail.com>
+Message-ID: <alpine.DEB.2.22.394.2503252124080.3642@hadrien>
+References: <c1b29fc7062b6e6a130de4adb121845d9574a50e.camel@gmail.com> <c651948d-2c11-d140-3aca-9ace35f52eb@inria.fr> <CAMyr_bLnE22pObV784EKpabb-R8w64o0fYDf8_x8h9rmySCoVA@mail.gmail.com> <bbec6f21-69c1-b14d-512-7660b83ffd7@inria.fr>
+ <CAMyr_bJyn3Krz0R5tYooQRP6A3=bj_H_f3f4rejGJGkS8LQaLg@mail.gmail.com> <CAMyr_b+rJBRQFrFCnB=kq33XCyo=twuRQ-OrQC50D0mH9CaRUg@mail.gmail.com>
+User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Type: multipart/mixed; boundary="8323329-1856772669-1742934301=:3642"
 
-The code contains braces around single statements in the if blocks
-which are unnecessary according to the Linux kernel coding style.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Remove the braces to improve readability and maintain consistency.
+--8323329-1856772669-1742934301=:3642
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-Reported by checkpatch:
 
-WARNING: braces {} are not necessary for single statement blocks
 
-Signed-off-by: Abraham Samuel Adekunle <abrahamadekunle50@gmail.com>
----
- drivers/staging/rtl8723bs/core/rtw_pwrctrl.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+On Tue, 25 Mar 2025, Richard Akintola wrote:
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c b/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c
-index c60e179bb2e1..b17b295e8d3c 100644
---- a/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c
-@@ -56,9 +56,9 @@ int _ips_leave(struct adapter *padapter)
- 		pwrpriv->ips_leave_cnts++;
- 
- 		result = rtw_ips_pwr_up(padapter);
--		if (result == _SUCCESS) {
-+		if (result == _SUCCESS)
- 			pwrpriv->rf_pwrstate = rf_on;
--		}
-+
- 		pwrpriv->bips_processing = false;
- 
- 		pwrpriv->bkeepfwalive = false;
-@@ -549,9 +549,8 @@ void LeaveAllPowerSaveMode(struct adapter *Adapter)
- 
- 		LPS_Leave_check(Adapter);
- 	} else {
--		if (adapter_to_pwrctl(Adapter)->rf_pwrstate == rf_off) {
-+		if (adapter_to_pwrctl(Adapter)->rf_pwrstate == rf_off)
- 			ips_leave(Adapter);
--		}
- 	}
- }
- 
--- 
-2.34.1
+> Hi Julia,
+> The reason I haven't sent feedback is that the kernel I built and installed resulted in kernel panic which I am trying to recover from and if I am not able to, I will install a new Os and try again (until I successfully build the kernel).
 
+OK, thanks for the update.  If you can't make it work in th short term,
+you could start working on some patches while continuing to try to get the
+build to work.
+
+julia
+
+
+
+>
+> Thank you for the support so far.
+>
+> Richard Akintola
+>
+> On Monday, March 24, 2025, Richard Akintola <princerichard17a@gmail.com> wrote:
+>
+>       Thank you Julia, I will go about resolving it as recommended
+>
+>       Richard Akintola
+>
+>
+>       On Mon, 24 Mar 2025, 16:06 Julia Lawall, <julia.lawall@inria.fr> wrote:
+>
+>
+>       On Mon, 24 Mar 2025, Richard Akintola wrote:
+>
+>       > Good to hear from you Julia,
+>       >
+>       > For the first question: No, I am not using a VM, I am building the kernel on
+>       > my machine's Os which is Parrot Linux Os.
+>       >
+>       > And as for the configuration: yes, I am reusing the the configuration of my
+>       > host machine - I copied my machine's configuration to the repository as
+>       > shown in the tutorial.
+>
+>
+>       OK, try to find something related to signatures in your configuration.
+>       Distro configurations often have this issue.  For Debian there is some PEM
+>       thing.
+>
+>       julia
+>
+>       >
+>       > Richard Akintola
+>       >
+>       > On Mon, 24 Mar 2025, 14:57 Julia Lawall, <julia.lawall@inria.fr> wrote:
+>       >
+>       >
+>       >       On Mon, 24 Mar 2025, Richard Akintola wrote:
+>       >
+>       >       > Hello Julia,
+>       >       >
+>       >       > I have been trying to build the Linux Kernel via the tutorial
+>       >       on my
+>       >       > machine to no avail.
+>       >       >
+>       >       > This has prevented me from making a PATCH.
+>       >       >
+>       >       > This is the Os and Kernel version of my machine
+>       >       > OS: Parrot Security 6.3 (lorikeet) x86_64
+>       >       > Kernel: 6.5.0-13parrot1-amd64
+>       >
+>       >       Sort of basic questions are whether you are using a VM and how
+>       >       much memory
+>       >       you have.
+>       >
+>       >       Afterwards, maybe it is a configuration problems?  Are you
+>       >       reusing the
+>       >       configuration of your host machine?  Here are some old posts on
+>       >       disabling
+>       >       module signing:
+>       >
+>       > https://stackoverflow.com/questions/29806414/how-to-disable-kernel-module-s
+>       >       igning-in-linux
+>       > https://kernelnewbies.kernelnewbies.narkive.com/kKXLBu8C/how-to-disable-mod
+>       > ule-verification-failed-signature-and-or-required-key-missing-tainting-ker
+>       >       nel
+>       >
+>       >       If you change the configuration file, do make olddefconfig
+>       >       afterwards to
+>       >       make sure your changes are take into account.
+>       >
+>       >       Let me know how it goes.
+>       >
+>       >       julia
+>       >
+>       >
+>       >       >
+>       >       > Below is the error I got while installing the kernel build
+>       >       >
+>       >       > ...
+>       >       >
+>       >       > INSTALL /lib/modules/6.14.0-rc1custom-
+>       >       > ola+/kernel/net/vmw_vsock/vmw_vsock_virtio_transport_common.ko
+>       >       >   INSTALL /lib/modules/6.14.0-rc1custom-
+>       >       > ola+/kernel/net/vmw_vsock/hv_sock.ko
+>       >       >   INSTALL /lib/modules/6.14.0-rc1custom-
+>       >       > ola+/kernel/net/vmw_vsock/vsock_loopback.ko
+>       >       >   INSTALL
+>       >       /lib/modules/6.14.0-rc1custom-ola+/kernel/net/nsh/nsh.ko
+>       >       >   INSTALL
+>       >       /lib/modules/6.14.0-rc1custom-ola+/kernel/net/hsr/hsr.ko
+>       >       >   INSTALL
+>       >       /lib/modules/6.14.0-rc1custom-ola+/kernel/net/qrtr/qrtr.ko
+>       >       >   INSTALL
+>       >       /lib/modules/6.14.0-rc1custom-ola+/kernel/net/qrtr/qrtr-
+>       >       > mhi.ko
+>       >       >   DEPMOD  /lib/modules/6.14.0-rc1custom-ola+
+>       >       >   INSTALL /boot
+>       >       > run-parts: executing /etc/kernel/postinst.d/dkms
+>       >       6.14.0-rc1custom-ola+
+>       >       > /boot/vmlinuz-6.14.0-rc1custom-ola+
+>       >       > dkms: running auto installation service for kernel
+>       >       6.14.0-rc1custom-
+>       >       > ola+.
+>       >       > readelf: Error: Not an ELF file - it has the wrong magic bytes
+>       >       at the
+>       >       > start
+>       >       > readelf: Error: Not an ELF file - it has the wrong magic bytes
+>       >       at the
+>       >       > start
+>       >       > readelf: Error: Not an ELF file - it has the wrong magic bytes
+>       >       at the
+>       >       > start
+>       >       > readelf: Error: Not an ELF file - it has the wrong magic bytes
+>       >       at the
+>       >       > start
+>       >       > readelf: Error: Not an ELF file - it has the wrong magic bytes
+>       >       at the
+>       >       > start
+>       >       > readelf: Error: Not an ELF file - it has the wrong magic bytes
+>       >       at the
+>       >       > start
+>       >       > readelf: Error: Not an ELF file - it has the wrong magic bytes
+>       >       at the
+>       >       > start
+>       >       > readelf: Error: Not an ELF file - it has the wrong magic bytes
+>       >       at the
+>       >       > start
+>       >       > readelf: Error: Not an ELF file - it has the wrong magic bytes
+>       >       at the
+>       >       > start
+>       >       > readelf: Error: Not an ELF file - it has the wrong magic bytes
+>       >       at the
+>       >       > start
+>       >       > readelf: Error: Not an ELF file - it has the wrong magic bytes
+>       >       at the
+>       >       > start
+>       >       > readelf: Error: Not an ELF file - it has the wrong magic bytes
+>       >       at the
+>       >       > start
+>       >       > readelf: Error: Not an ELF file - it has the wrong magic bytes
+>       >       at the
+>       >       > start
+>       >       > readelf: Error: Not an ELF file - it has the wrong magic bytes
+>       >       at the
+>       >       > start
+>       >       > Sign command:
+>       >       /lib/modules/6.14.0-rc1custom-ola+/build/scripts/sign-
+>       >       > file
+>       >       > Binary
+>       >       /lib/modules/6.14.0-rc1custom-ola+/build/scripts/sign-file not
+>       >       > found, modules won't be signed
+>       >       >
+>       >       > Building module:
+>       >       > Cleaning build area...
+>       >       > make -j4 KERNELRELEASE=6.14.0-rc1custom-ola+
+>       >       KVER=6.14.0-rc1custom-
+>       >       > ola+........(bad exit status: 2)
+>       >       > Error! Bad return status for module build on kernel:
+>       >       6.14.0-rc1custom-
+>       >       > ola+ (x86_64)
+>       >       > Consult /var/lib/dkms/broadcom-sta/6.30.223.271/build/make.log
+>       >       for more
+>       >       > information.
+>       >       > Sign command:
+>       >       /lib/modules/6.14.0-rc1custom-ola+/build/scripts/sign-
+>       >       > file
+>       >       > Binary
+>       >       /lib/modules/6.14.0-rc1custom-ola+/build/scripts/sign-file not
+>       >       > found, modules won't be signed
+>       >       >
+>       >       > Building module:
+>       >       > Cleaning build area...(bad exit status: 2)
+>       >       > kernelver=6.14.0-rc1custom-ola+ ./dkms-make.sh...(bad exit
+>       >       status: 2)
+>       >       > Error! Bad return status for module build on kernel:
+>       >       6.14.0-rc1custom-
+>       >       > ola+ (x86_64)
+>       >       > Consult /var/lib/dkms/realtek-
+>       >       > rtl8814au/5.8.5.1~git20240527.d8208c8/build/make.log for more
+>       >       > information.
+>       >       > Sign command:
+>       >       /lib/modules/6.14.0-rc1custom-ola+/build/scripts/sign-
+>       >       > file
+>       >       > Binary
+>       >       /lib/modules/6.14.0-rc1custom-ola+/build/scripts/sign-file not
+>       >       > found, modules won't be signed
+>       >       >
+>       >       > Building module:
+>       >       > Cleaning build area...(bad exit status: 2)
+>       >       > 'make' -j4 KVER=6.14.0-rc1custom-ola+
+>       >       KSRC=/lib/modules/6.14.0-
+>       >       > rc1custom-ola+/build...(bad exit status: 2)
+>       >       > Error! Bad return status for module build on kernel:
+>       >       6.14.0-rc1custom-
+>       >       > ola+ (x86_64)
+>       >       > Consult /var/lib/dkms/realtek-
+>       >       > rtl88xxau/5.6.4.2~git20240510.b44d288/build/make.log for more
+>       >       > information.
+>       >       > Error! One or more modules failed to install during
+>       >       autoinstall.
+>       >       > Refer to previous errors for more information.
+>       >       > dkms: autoinstall for kernel: 6.14.0-rc1custom-ola+ failed!
+>       >       > run-parts: /etc/kernel/postinst.d/dkms exited with return code
+>       >       11
+>       >       > make[2]: *** [arch/x86/Makefile:321: install] Error 1
+>       >       > make[1]: ***
+>       >       [/home/laolu/Desktop/Outreachy_Contributions/Linux-
+>       >       > Kernel/git/kernels/staging/Makefile:372: __build_one_by_one]
+>       >       Error 2
+>       >       > make[1]: Target 'modules_install' not remade because of
+>       >       errors.
+>       >       > make[1]: Target 'install' not remade because of errors.
+>       >       > make: *** [Makefile:251: __sub-make] Error 2
+>       >       > make: Target 'modules_install' not remade because of errors.
+>       >       > make: Target 'install' not remade because of errors.
+>       >       >
+>       >       >
+>       >       >
+>       >
+>       >
+>       >
+>
+>
+>
+--8323329-1856772669-1742934301=:3642--
