@@ -1,127 +1,57 @@
-Received: from mail-vk1-f176.google.com (mail-vk1-f176.google.com [209.85.221.176])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C8B0522332D
-	for <outreachy@lists.linux.dev>; Wed, 26 Mar 2025 17:42:55 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.176
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BB6D61F95C
+	for <outreachy@lists.linux.dev>; Wed, 26 Mar 2025 17:55:22 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.83
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1743010977; cv=none; b=rEMvor2ruoo0mzaAHms6hkgSpzguc1UUTMw9Z1kPnsa7rUbS+SFMTpeX1mIkUK7Pq8HeiydE3Y+mVD7qvCR0HTcnxbMsV2Egr4/QRBUMyXHWMfRtIZV6yPgAt6QUWVPfnoEMfX3NvlOjMdLMFnuUC4txHOYaSIf1Zr/dKtrt8xQ=
+	t=1743011725; cv=none; b=ETm3uWHQIm3czFTcO/poV7uac7C8aUaCSzSGY3KpYXoKIv6C0Kq+d0A3Kmg9aOQ8eeBJzzj07mU679sEHF+f910U3spjJvvaHXWNm6pK05PtX6KORzsS3QAQvbco40YNV5uDjqjXBZBMGXOHNAQYqBRxgJFF1sHUvLJwi4J8NPo=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1743010977; c=relaxed/simple;
-	bh=SEvTfoeHyrQO6mKr1rEgaOS2Iihs9i3z6Zjes7C3Izo=;
-	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
-	 To:Cc:Content-Type; b=DnRnL6rRxYN+PXfRrUp3o2YE+bVRpbZmZ5RuUNoNnujYICtkzbMb7Np7PX5kYQw0raEuemmuwdQe7normpf69yV8pMNJNrlFSaBSi4y/cmX7+dmr6jypl6cHQH/vjwRdkbBYkLwq++pAStLihUiinbK0U2vzPpy15O+k+sW0FXM=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=FQyKtJY/; arc=none smtp.client-ip=209.85.221.176
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	s=arc-20240116; t=1743011725; c=relaxed/simple;
+	bh=aKK86b4LKPY1yj6u652FGwXwaMQ1G91saw0xrTW8VqI=;
+	h=Date:From:To:cc:Subject:In-Reply-To:Message-ID:References:
+	 MIME-Version:Content-Type; b=AFZbWOItwC7kifmeBM7AvZUgCNPuv+qA0VvscWbI2sLfw0a5ixoIK4KOypW6BLt3Gm9G19hYHg8u4dQcDKnKYwZye/5LVmcnp+4QMIpG2V6TkY2SpmwF+i5ZyglqF4JhGDS5PV76e93eHqsJ7rRWCFc9AtMjNNzGUQUWI6M+0vI=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=Wn5EjcwO; arc=none smtp.client-ip=192.134.164.83
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="FQyKtJY/"
-Received: by mail-vk1-f176.google.com with SMTP id 71dfb90a1353d-52403e39a23so87588e0c.2
-        for <outreachy@lists.linux.dev>; Wed, 26 Mar 2025 10:42:55 -0700 (PDT)
+	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="Wn5EjcwO"
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1743010974; x=1743615774; darn=lists.linux.dev;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=JL7J6GneLv4d47o+RXRu/NQjpOvyqoS663DaWoxHyc4=;
-        b=FQyKtJY/4ttwSlFUdgiqfH3KqPCQrAutAO0DsRSJ9X0Q3PVwfTuwaPWcAJ6KvJg8yl
-         tS0EsKe750p8t/B1MFCjOpHzWAEXafDkbrX7yYp9g/vO6bGWy0biX7RYLiHdovxn7p/Z
-         bRLngxcMiCHn1TpcHg5U6TCKO96Qn+8k7S+9qq4L1bPeCDpPRkxmgJn9uVdx/ZvYotf6
-         3yTRLPeSYb/+VPgTU4e9ukECT3wOQYLuhkNiBzV+1X1e5Ovyy5EKxQx6KwlnAI3OE+NS
-         O7l2r9zWYpyWymbTLcmKQQvv3w09TBEkGKm2vdvDNV33KZYJ9q/7i1ZBost7fRodbuzt
-         7kvw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743010974; x=1743615774;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=JL7J6GneLv4d47o+RXRu/NQjpOvyqoS663DaWoxHyc4=;
-        b=emHU0Lqzgy40l6HmsVlXjFyPh5XiqenFvpyxB4E9gBtGgei3nZrqq9LHzqPYCv1aA1
-         Noh7zuqEJiOMBKAc08PYaXPG3Yi9CGByeR/rDSNII7Qjvevh5cHaGl8wTOST++TIzeDX
-         oVHIi4cGYARFpFBV+ZEaT8VR7NRi0Z9CgJ7skh2G+kFsrO2Z+YYy4U3rEtnG3kjgVsr/
-         +qODp/KKBf6PMXnxJrcNB5IYJmgic6RmBz4aYxvopQuizs6nYrXNYYYUjIQenuybhAGk
-         kD/nobujj6moqvVtO8PDUOlp2lad1OE3V8h+F5Uo+u+1diiyTDxr25T06F7vAjTH+HRf
-         aoXw==
-X-Gm-Message-State: AOJu0Yyoy0FVCDgGKyHujvwrPht7uuimXJ0LjDt6c1rGTg+Jmze1vYOh
-	iXvOCxTNsRhU1/hesZTkBiU7pZVkLC6Ck+d0LRvRCsCMAyc0+mQ2w9Wne+4IdrVER/nZLxsMQ+1
-	JfyEFg9caFzMjYgpu/ZywnioX1uHV4+PY
-X-Gm-Gg: ASbGncvUD54DQjir036n/EzJ9A3WeT5Xulz0iXN1q68EqKOTk+iAFL1YhbIiUIFv+T6
-	92Vfaf4S1o91NNBBIIIp+kBaKHHfXNvzUsi8jVTYAQ6W4VrjRMGMhjcpJ55T5iA0zdOPHbgRCUF
-	0KDzDeFFy/GAvUlwkOfcX6Jhq52iH7
-X-Google-Smtp-Source: AGHT+IFXMkjZqhz06byEOvzggfTxSH+APxx54hSbteFe9l70zw3wipeaU67T67wiyrD6KihKo0c8w1dPVWDKYeheSIY=
-X-Received: by 2002:a05:6122:32d1:b0:520:61ee:c7f9 with SMTP id
- 71dfb90a1353d-52600a31f2bmr943297e0c.7.1743010974492; Wed, 26 Mar 2025
- 10:42:54 -0700 (PDT)
+  d=inria.fr; s=dc;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=eVK0w+jUetR0iJrDla8lqqHq7TforG0jBS+jzrnv3pg=;
+  b=Wn5EjcwOSGLjF85N+Kn+Wjn0HC/8O3bOovA0K8a8aP8JZilT1PkX2U/e
+   yiIJBP7APOATyAM2k15J2NxkHMCQRCj9d28O80OBb8lHawa6nZnqO7NWj
+   GdEYsp4wrndpgL4jK5Pa+D5qH8ZTeNidjkb641Pua/PFxAg0rkDdCKIMz
+   w=;
+Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="6.14,278,1736809200"; 
+   d="scan'208";a="214936430"
+Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Mar 2025 18:55:21 +0100
+Date: Wed, 26 Mar 2025 18:55:20 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+To: Samuel Abraham <abrahamadekunle50@gmail.com>
+cc: outreachy@lists.linux.dev
+Subject: Re: Confirmation on next steps for contribution
+In-Reply-To: <CADYq+fa76jcWrs-qJVEmMJ1-GCYx59N1V3Wtj+YARTXnqNQB2w@mail.gmail.com>
+Message-ID: <d22f7ea4-a311-dedb-4479-a6dbeb82835b@inria.fr>
+References: <CADYq+fbMox6e7AJMkoEmYjjt-V4L29oy9WyDcL0W8pw_KL3b=w@mail.gmail.com> <ff7f6d0-3efc-d977-d1fd-2349f331a6d0@inria.fr> <CADYq+fYrDqmFS=+U2jhGAqNr19rp1ChFaog6C=o5DCQFS7FxCA@mail.gmail.com> <d273923a-3833-9bcb-9771-dca770d0d8a8@inria.fr>
+ <CADYq+fa76jcWrs-qJVEmMJ1-GCYx59N1V3Wtj+YARTXnqNQB2w@mail.gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-References: <CADYq+fbMox6e7AJMkoEmYjjt-V4L29oy9WyDcL0W8pw_KL3b=w@mail.gmail.com>
- <ff7f6d0-3efc-d977-d1fd-2349f331a6d0@inria.fr> <CADYq+fYrDqmFS=+U2jhGAqNr19rp1ChFaog6C=o5DCQFS7FxCA@mail.gmail.com>
- <d273923a-3833-9bcb-9771-dca770d0d8a8@inria.fr>
-In-Reply-To: <d273923a-3833-9bcb-9771-dca770d0d8a8@inria.fr>
-From: Samuel Abraham <abrahamadekunle50@gmail.com>
-Date: Wed, 26 Mar 2025 18:42:45 +0100
-X-Gm-Features: AQ5f1JqhkXQfF3_PZYpTt_3YmFHCBKaWQ8FKrorLZPvQw_PCbKobHx_Fm_a5FK4
-Message-ID: <CADYq+fa76jcWrs-qJVEmMJ1-GCYx59N1V3Wtj+YARTXnqNQB2w@mail.gmail.com>
-Subject: Re: Confirmation on next steps for contribution
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: outreachy@lists.linux.dev
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=US-ASCII
 
-On Wed, Mar 26, 2025 at 6:35=E2=80=AFPM Julia Lawall <julia.lawall@inria.fr=
-> wrote:
->
->
->
-> On Wed, 26 Mar 2025, Samuel Abraham wrote:
->
-> > On Wed, Mar 26, 2025 at 5:57=E2=80=AFPM Julia Lawall <julia.lawall@inri=
-a.fr> wrote:
-> > >
-> > >
-> > >
-> > > On Wed, 26 Mar 2025, Samuel Abraham wrote:
-> > >
-> > > > Hello Julia,
-> > > >
-> > > > I hope you are having a great day.
-> > > > I just wanted to confirm the next steps for our contribution.
-> > > > Do we send more clean-up patches and how many accepted ones
-> > > > should we have before we can move forward?
-> > >
-> > > Previously we asked for 20, but there are not that many opportunities=
- at
-> > > the moment, so I would say 5.  Basically, you should get your patches
-> > > acepted on the first try.  And try to look around to find more intere=
-sting
-> >
-> > Okay thank you for your response.
-> > So do you mean we should try to get our patches accepted with
-> > the very first version we send? Like it should be accepted without any
-> > corrections?
->
-> Yes.
+> Okay Lastly, please do we continue sending more clean-up patches we find or
+> we should wait for your pointers on the weekend before we continue.
 
-Okay thank you.
+Please send more cleanup patches.  The more the better.  By cleaning
+things up you learn about sending patches properly and also about what is
+the desired Linux kernel coding style.
 
->
-> >
-> > Also how do we know when a patch has been accepted. Is it when the "Rev=
-iewed-by"
-> > tag has been added by a reviewer?
->
-> When it is in Greg's git tree.
-
-Alright noted.
-
-> > > I will post some more pointers to suggested cleanups on the weekend.
-
-Okay Lastly, please do we continue sending more clean-up patches we find or
-we should wait for your pointers on the weekend before we continue.
-Thanks for your patience.
-
-Adekunle.
+julia
