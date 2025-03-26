@@ -1,107 +1,99 @@
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-vk1-f171.google.com (mail-vk1-f171.google.com [209.85.221.171])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F27DF1B07AE
-	for <outreachy@lists.linux.dev>; Wed, 26 Mar 2025 10:06:06 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.104
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5CD3714D2A0
+	for <outreachy@lists.linux.dev>; Wed, 26 Mar 2025 12:11:46 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.171
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1742983570; cv=none; b=XqCZ+gPo79iO+W5f6RKIrFLavEbsBHk5+HEjGuVwuPoxsM03QQBTbPUlW4clQ8UHX6A9xaGtON86kR2YbgXCDWvUaL7Y0cbVEEew0l6T+empDt40mgKZVhzyFLfUYbunGrdH9evSQEqwws/HzUYnxLzrZ9TcLk0TVm8KF7vwFqY=
+	t=1742991108; cv=none; b=Cu3qEnMg1sP+IULONRUIuXkFu54InxvrU5dI4rsMiiEa1odZU300T1hBgJRH7lHc8LhkIjWIVGAfzFqcBTFPpnSPLAwyEwfCNXPoygL93AHACmMCYZqXYWovH3m438QAXW9eoeGqyaCQqfp016k8cTmgFwbEdZeCOM7xI3XXKxo=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1742983570; c=relaxed/simple;
-	bh=p5NenfIZ6tIwQtu+gmx7Wu+V7BdbgH9EnNUE/0BJxLg=;
-	h=Date:From:To:cc:Subject:In-Reply-To:Message-ID:References:
-	 MIME-Version:Content-Type; b=tIOHqXanYjrz0JdPHzuepJKwvGBOE7W6ViYqpso9psC4Boy+qf65X0CROqgGglj26rUgBlSKfB1F+lavzLzoVUs2HaNoKl9FdiV0LAWrWJzu92InrocSAYU9X18GLgtn81A50ydJQQNFUi6m0oLOB8sIcrVg6LI/xSO/KtxPEwI=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=Z046gtT6; arc=none smtp.client-ip=192.134.164.104
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
+	s=arc-20240116; t=1742991108; c=relaxed/simple;
+	bh=9TuINaX/8jr53YX8Hmfn7gQjP8q2rE4os0kvCZcXtMQ=;
+	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
+	 To:Cc:Content-Type; b=lpKqG49SGhL8WPIA2dhwa9q4gF3PS+/JZxSzwwadcpW3Rl5GjMeCOKdWz5IxeIJqDah8KoMsvxxX6RhQ1o1WE3N9O53emd+vF80wIIHUtdaVaIpDSb2HHPPV9ugeZmw5wE8GcnrNouutGtnetJzSUo9Zn6jlhVgQ0oaKSJMnmeo=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=Xq+Y/Dh2; arc=none smtp.client-ip=209.85.221.171
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="Z046gtT6"
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Xq+Y/Dh2"
+Received: by mail-vk1-f171.google.com with SMTP id 71dfb90a1353d-520847ad493so6465180e0c.1
+        for <outreachy@lists.linux.dev>; Wed, 26 Mar 2025 05:11:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=dnsHio1GCsTfCrPQVtVqojZS0vX25lg87Q51NNl/sKU=;
-  b=Z046gtT60BkRMnD1afD0Ch24oLN2+Go1Az9g+5y74C8vBq3Gv2PljWv2
-   UN1dhf7w/gZAmQ22qeKW0Y8XT2j1/XolE7Gvo9rNlG1hYQG58EpLFhFCL
-   2h79QEGxsYP5StfrX/Hlx6aiUIQxNYw6L1Ovfsv0d+nAAZLA/fi+1eKDT
-   g=;
-Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="6.14,277,1736809200"; 
-   d="scan'208";a="112632871"
-Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Mar 2025 11:06:05 +0100
-Date: Wed, 26 Mar 2025 11:06:04 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-To: Abraham Samuel Adekunle <abrahamadekunle50@gmail.com>
-cc: outreachy@lists.linux.dev
-Subject: Re: [PATCH v2] staging: rtl8723bs: remove braces around single
- statements
-In-Reply-To: <Z+PP5xLvTltjFKF2@HP-650>
-Message-ID: <5cc238fb-e5e5-a8c1-7d18-444b1865bdcb@inria.fr>
-References: <Z+PP5xLvTltjFKF2@HP-650>
+        d=gmail.com; s=20230601; t=1742991105; x=1743595905; darn=lists.linux.dev;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=9TuINaX/8jr53YX8Hmfn7gQjP8q2rE4os0kvCZcXtMQ=;
+        b=Xq+Y/Dh2HNra2VZQTfh6w/5ujkbwlkJGaVFBCDt+w1cYOE279rNn8pXkuQJMhHenzA
+         5XWtbrAbLDGtWUDkBmdbt9MS/lyMKwXTR0H62o2qcocCM+okw3hkD0/ptTVqsYnEUhlq
+         /YVO24OP2/VUmuMlJnRPu9wPN6mOB5f3/LGxAOJUsEZbny+/4BxJn87O2YxC5v7LZEIL
+         dOsg4grOe6BrFrpTLSJaKU9LObfXpeLmI+R4N0CKavOv8wrRVMFNswyhd4MVf3w2odUV
+         xTyr/8e9czriLFkUBdWsI387l5ADOW9GhL9BUtqoqt0kYYw3Ee4l8n3ctEd/O2dMgUKK
+         WOiw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1742991105; x=1743595905;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=9TuINaX/8jr53YX8Hmfn7gQjP8q2rE4os0kvCZcXtMQ=;
+        b=CnAuvERHGUOvkGm88lTB8XEaaDF5ba2MsOI3Hsx32tHS5l2ZyluEQElOG3wFXwyGDO
+         Y8/SKgQDyelcq22lFTgGb60ZrxHyPZCGjFLVGsC/GdoWN7Eer7gZUnKw9TmRvcW8Y+yP
+         kt+LIrUdsVidp+mSupKQg5aJd9abekOD+eAhYILFx41sJUBCJUHY4bQDoFm8UaSwoiQF
+         Nxqa69HkTf8xiBQYHLf0ha0GvNKPQomiwRwJK7CIZNlsHrR6XV6f5X9Y1ujYrIUpfl9Y
+         R2jtLXcNNSZ8B95Tp0GDDmKkP6OfU2YajJIlwSFnaWKTKa0GMA9j8XgZHhUGeuwx2xUY
+         RPuQ==
+X-Gm-Message-State: AOJu0YyuZ06sjSB2cG2ucgzUiuB9mzHqxm9L7CyWNm4RuEOeap9JY+rD
+	c68gTwc0Gp+MSD8gpg/OxTrsUrFKI6zM2Vv3/gCJRAgCjw1QmNBoPCtZBHTBdPFn0TQ4w/Biyrv
+	iON+VfGH9j8jA63eU9ZV796i4D52Ad722
+X-Gm-Gg: ASbGncvdLE/QAGLwSwnGeahIt7OSnW2Z3mmU4kPVzUaDhknVVkYFphHInbIRgaI5lXR
+	Qjgeb+ESRmanot10a7WC56g/7ciQV2C6la91P9QIjoKIjVJ5HmP49EWO8NELG6tbSYtW2O+FyFi
+	MxySAfa1wI3Z9F/kcdyu3Qvt/tQhvS
+X-Google-Smtp-Source: AGHT+IE5kJaLa/2T8ckyxPy0dRfFDI0oRkLttfePGz4UA+PXIfSZOBrk03RY2vyNmmBZWBDXWdIZC09QJDPv6RxMjH0=
+X-Received: by 2002:a05:6122:d95:b0:520:63e6:79d1 with SMTP id
+ 71dfb90a1353d-525a85412bcmr12756327e0c.10.1742991103395; Wed, 26 Mar 2025
+ 05:11:43 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+References: <Z+PP5xLvTltjFKF2@HP-650> <5cc238fb-e5e5-a8c1-7d18-444b1865bdcb@inria.fr>
+In-Reply-To: <5cc238fb-e5e5-a8c1-7d18-444b1865bdcb@inria.fr>
+From: Samuel Abraham <abrahamadekunle50@gmail.com>
+Date: Wed, 26 Mar 2025 13:11:35 +0100
+X-Gm-Features: AQ5f1JoO6r_kKCTCdyC0cbKwcqBjIZc-v70OhSabrPn_RbUSKMRUvLxh-IcbT7I
+Message-ID: <CADYq+fbdMogrV6OH+tykLzxPgCa14uQjpr8EwrW2zL0rhyTi+Q@mail.gmail.com>
+Subject: Re: [PATCH v2] staging: rtl8723bs: remove braces around single statements
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: outreachy@lists.linux.dev
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
+On Wed, Mar 26, 2025 at 11:06=E2=80=AFAM Julia Lawall <julia.lawall@inria.f=
+r> wrote:
+>
+>
+>
+> On Wed, 26 Mar 2025, Abraham Samuel Adekunle wrote:
+>
+> > The code contains braces around single statements in the if blocks
+> > which are unnecessary according to the Linux kernel coding style.
+> >
+> > Remove the braces to improve readability and maintain consistency.
+> >
+> > Reported by checkpatch:
+> >
+> > WARNING: braces {} are not necessary for single statement blocks
+>
+>
+> Are there no other email addresses that shoudl receive this patch?
+>
+> julia
+>
 
+Yes I mistakenly omitted the Outreachy mailing list in the first v2
+patch I sent. I will update and add all
+recipients in a patch v3. Thank you
 
-On Wed, 26 Mar 2025, Abraham Samuel Adekunle wrote:
-
-> The code contains braces around single statements in the if blocks
-> which are unnecessary according to the Linux kernel coding style.
->
-> Remove the braces to improve readability and maintain consistency.
->
-> Reported by checkpatch:
->
-> WARNING: braces {} are not necessary for single statement blocks
-
-
-Are there no other email addresses that shoudl receive this patch?
-
-julia
-
->
-> Signed-off-by: Abraham Samuel Adekunle <abrahamadekunle50@gmail.com>
-> ---
-> Changes in v2:
-> 	- Remove extra blank line
->
->  drivers/staging/rtl8723bs/core/rtw_pwrctrl.c | 6 ++----
->  1 file changed, 2 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c b/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c
-> index c60e179bb2e1..74a8fcf18e84 100644
-> --- a/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c
-> +++ b/drivers/staging/rtl8723bs/core/rtw_pwrctrl.c
-> @@ -56,9 +56,8 @@ int _ips_leave(struct adapter *padapter)
->  		pwrpriv->ips_leave_cnts++;
->
->  		result = rtw_ips_pwr_up(padapter);
-> -		if (result == _SUCCESS) {
-> +		if (result == _SUCCESS)
->  			pwrpriv->rf_pwrstate = rf_on;
-> -		}
->  		pwrpriv->bips_processing = false;
->
->  		pwrpriv->bkeepfwalive = false;
-> @@ -549,9 +548,8 @@ void LeaveAllPowerSaveMode(struct adapter *Adapter)
->
->  		LPS_Leave_check(Adapter);
->  	} else {
-> -		if (adapter_to_pwrctl(Adapter)->rf_pwrstate == rf_off) {
-> +		if (adapter_to_pwrctl(Adapter)->rf_pwrstate == rf_off)
->  			ips_leave(Adapter);
-> -		}
->  	}
->  }
->
-> --
-> 2.34.1
->
->
->
+Adekunle
