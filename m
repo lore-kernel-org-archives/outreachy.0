@@ -1,121 +1,333 @@
-Received: from mail-vk1-f172.google.com (mail-vk1-f172.google.com [209.85.221.172])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.9])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3EC773C0C;
-	Fri, 28 Mar 2025 15:17:55 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.172
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 77019179A7;
+	Sat, 29 Mar 2025 02:48:04 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.198.163.9
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1743175076; cv=none; b=DLJ1da1ZdZ++RHmmZBK6hZq35wATRxTi/mkqajbAeOn3dL5ssJfHPHy0JXRweyJbmezvCXgRHPtNtw4BvsPED/AicNe2+7z1ZunS3wtwSGUwpph+gyB/CcAn/fffPrb6H6C1eIo6gPR3PcRWXd3eE+qpIlWu3the23pxRlXZXas=
+	t=1743216487; cv=none; b=rAzdHvSSAV90BZLBb/YFLEvnzU1Trllpd7YDTuaOIcVUQIfMR3gB88Il5hXgo4jJ7UqUg5c0ViGA+u+frBZaMbn2UYPsa6uE6lVC91vNi2PwhQxjBGqeN3lpkJnRM3BKSDar3Dnms54EI4evyn9tG8Ml368rk3uwj7LnISzTckE=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1743175076; c=relaxed/simple;
-	bh=jEhtVTn1QWFoySaUXbkHkCIjovKC7NhTpAQFfzMoxEA=;
-	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
-	 To:Cc:Content-Type; b=gc9C7Hq90apUSapcD+Edue/OXS0O6fKxdkHV7cunoLoRG8lRZEG30k9QuppsCweHf3I433z2Klpe6mjGUHyUjJuRGZdXyZmpLQ1nL7vWbl7iE3UhguDy241NaCVx1ZwNLwtYfQPV54/NEa1G7VDIdKZ2TlBHBkysTFuxzQ63rpc=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=fSf157Wq; arc=none smtp.client-ip=209.85.221.172
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	s=arc-20240116; t=1743216487; c=relaxed/simple;
+	bh=EDYG4zRvkdH/KzsY2QmjYFwURAqnv8xw9ek6Kew5GGU=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=br6mf8uuot/CiB6L7yF+ALVmKGxUkZkLk9yWMn1abZFC/shtzwyTuKJhHbZNJ66WsvADDS9trh7YivyWEKyg4fW3rKlOcXnzotSVGidQBRwv3OMAGuzCWSHkPcDjuArGR68szR7FBb17Lwl9bOYuSyNOYdbeoi7sSuXf3oy0+d4=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=EHn+opqu; arc=none smtp.client-ip=192.198.163.9
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="fSf157Wq"
-Received: by mail-vk1-f172.google.com with SMTP id 71dfb90a1353d-524038ba657so2211428e0c.0;
-        Fri, 28 Mar 2025 08:17:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1743175074; x=1743779874; darn=lists.linux.dev;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=2Jn0e09I6pw9OL2TVwRIfefTbq7C/d6a62JusO5U0Kc=;
-        b=fSf157WqosNAFw/6KCK1UBzDGCLirfSQmDMImiNyi27ZpSj5ZEIlL9OSxFizMHHoJ/
-         /qFE84QsaEVJ8QBWyx+Mj+PX1yAZOJf1HbCbevBsxiPBv2MCoE/OXAga5cKU98JLfq10
-         IrKgsFe/gdNYvLlAAq0Hbu3kSoJY74FnM37GNM4x/yH3qJeS4gA9elae7BuKuB6DEdLq
-         eNSAT6bLU+3NXIGP6IQ7BTj+UGejcFWP8gmGnhdQE6Yjpz+qYzVvQ3KdK6h0Xo4fSf3I
-         VSiZudvMNyUOQW63jiEQcvi/SGU8IWVgo9ArR5yz9EEZbJgxXI3ysF+1ztgh55FZL8MB
-         leMg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743175074; x=1743779874;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=2Jn0e09I6pw9OL2TVwRIfefTbq7C/d6a62JusO5U0Kc=;
-        b=VygaCEv6F6uotAx9YWXlE5pUd3vVmF1S/77LiMRW/u1KM4S958a86cEEGfpHqAL/Jv
-         HnzRuwEuS+3f7SzGNwcjTqYTXNSHHCEZ7l+L3UyauqdCNVmIxorfx9W2sEE57Ga37lfz
-         oUA8pMozAZ09shF8IP8Le6p9GQjXb+23t/eW6a0rYRpGW1KBD4YwlIwlVs4tgp3FzZwc
-         y2Q/cFICmD1Vgi0BYZS1k1lNVkoxU57ePQmlNMfetEDzPckaJu8nPVW1tMdgaPRyU4U/
-         u6XekXZekH0uTUsfsDvnaT8BEwnIXrhCGDFdCmI7k9SShZ9ou8FfMOGVaSWn44GKNbc4
-         KUQw==
-X-Forwarded-Encrypted: i=1; AJvYcCU70hpPTFwvelm4D2FipLzzaV0NCThfYOmE40DcreyjMr7t4mBRYoigqdIAJqwq6ETPVrgrcLaMIuOwcvcX@lists.linux.dev
-X-Gm-Message-State: AOJu0YwxctIwNRs0eW8GKtowy3XnrH7FW5kTrQZXv0svlwMJXUlj8zMn
-	lu47iBsuBnEn4IlM4e5M8QOUi07eIMZCN4eejjGBGiOVzw0J1e8YChwGjOIYTVBAreeJaN615se
-	Iv8cqv9rIBJ5hZ+zh+7pbihQ95Yg=
-X-Gm-Gg: ASbGncthGOfFJ7pgLZBDpFBXOfzElFZp/qsa6l5JJba+9eOcA5JOyjT3IwlAamvG2Jd
-	lsG2FqoUG06dn65rx/ZUL0rd6uf0+W9KhZzpim6IGJ38Wpjlcwqo6i8xLJEjtgptGHxfkfamL/b
-	jK6uO8FJJuMQRoZltRGHYNviw9kw8=
-X-Google-Smtp-Source: AGHT+IEqrBEH5TDL81Y5j3ZIzOBqupeT+igPlWE2szhh0MEQKTWwtxcEL2xqXu4qp0Tz0FWhtqAPB67lgvSSjeeodZY=
-X-Received: by 2002:a05:6122:889:b0:50d:39aa:7881 with SMTP id
- 71dfb90a1353d-52610fc715cmr2676350e0c.0.1743175073764; Fri, 28 Mar 2025
- 08:17:53 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="EHn+opqu"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1743216484; x=1774752484;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=EDYG4zRvkdH/KzsY2QmjYFwURAqnv8xw9ek6Kew5GGU=;
+  b=EHn+opquKa4dRtb4XAI5A8Ctvuoz0buafF2m6s4VBjDhF+GDYK0xWAJs
+   43IZsi0DNgYuySHkU6aerYusRj5zz6gF1wQa7NhClAgWSPKXNYqX9bJtS
+   MLZzxJ5tSkQDSMoC9VXeW6UqfWoDMUNvZvoMKgp3o2IxOS8T1h8CnIqig
+   wfkPJM6QV8wgqvbWrcZbOAlkJ8Kt+J1lN+WihIrSmw0x5O6LJJnakk7je
+   fjzRfhxQ+15uqQm6BdHsvI149aKEenCamv6DpmjhhAyWDwgmmDocJyC4t
+   y6VV3jey4xZcibJYUBdVZkLPhAmxKMxBOvZvbzGxg+0pVM2kUsdlYitdT
+   Q==;
+X-CSE-ConnectionGUID: SFIMWLe3TZer/BY676V0xA==
+X-CSE-MsgGUID: /k1k2SOZRTqPqMns+7bOSQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11387"; a="55235495"
+X-IronPort-AV: E=Sophos;i="6.14,285,1736841600"; 
+   d="scan'208";a="55235495"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+  by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Mar 2025 19:48:04 -0700
+X-CSE-ConnectionGUID: 3tECzbuhSTOIowdi/Eizkw==
+X-CSE-MsgGUID: SrZtT6CpTyKIxWH3gjU1RQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.14,285,1736841600"; 
+   d="scan'208";a="125838908"
+Received: from lkp-server02.sh.intel.com (HELO e98e3655d6d2) ([10.239.97.151])
+  by fmviesa008.fm.intel.com with ESMTP; 28 Mar 2025 19:48:02 -0700
+Received: from kbuild by e98e3655d6d2 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1tyMEo-0007rO-13;
+	Sat, 29 Mar 2025 02:47:58 +0000
+Date: Sat, 29 Mar 2025 10:47:31 +0800
+From: kernel test robot <lkp@intel.com>
+To: nancyenos <nicymimz@gmail.com>, gregkh@linuxfoundation.org
+Cc: oe-kbuild-all@lists.linux.dev, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org, outreachy@lists.linux.dev,
+	nancyenos <nicymimz@gmail.com>
+Subject: Re: [PATCH] staging: octeon: Fix unused macro Argument 'x'
+Message-ID: <202503291001.v9aaXwZc-lkp@intel.com>
+References: <20250325100952.2956-1-nicymimz@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-References: <cover.1743163800.git.abrahamadekunle50@gmail.com>
- <dd32dfe6c837d88dd13a546aadcb0bc207b997d6.1743163801.git.abrahamadekunle50@gmail.com>
- <21e624e7-c18f-6aa2-2a16-7cd46e706d47@inria.fr> <CADYq+fZd=C-EydjBmkP6Rh6XAJS6Kg1nM7zGhyLrGYiLGkZ8mw@mail.gmail.com>
- <acd2df4b-6865-d2c0-7bc2-babcc930d03d@inria.fr>
-In-Reply-To: <acd2df4b-6865-d2c0-7bc2-babcc930d03d@inria.fr>
-From: Samuel Abraham <abrahamadekunle50@gmail.com>
-Date: Fri, 28 Mar 2025 16:17:44 +0100
-X-Gm-Features: AQ5f1JoIf6U6Zu3AD1_fwccY3uYCCIVmv3RFHYcdBK_5pT0_ajsEDqFotfNCPoc
-Message-ID: <CADYq+fY-UNbpWeefGuo_Y5OG98AQRu1=uZYu2cqpONOTpar4YA@mail.gmail.com>
-Subject: Re: [PATCH 5/5] staging: rtl8723bs: modify variable names to comply
- with kernel naming convention
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: outreachy@lists.linux.dev, gregkh@linuxfoundation.org, 
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250325100952.2956-1-nicymimz@gmail.com>
 
-On Fri, Mar 28, 2025 at 4:13=E2=80=AFPM Julia Lawall <julia.lawall@inria.fr=
-> wrote:
->
->
->
-> On Fri, 28 Mar 2025, Samuel Abraham wrote:
->
-> > On Fri, Mar 28, 2025 at 3:55=E2=80=AFPM Julia Lawall <julia.lawall@inri=
-a.fr> wrote:
-> > >
-> > >
-> > >
-> > > On Fri, 28 Mar 2025, Abraham Samuel Adekunle wrote:
-> > >
-> > > > The variable names use the camelCase naming convention which is not=
- consistent
-> > > > with Linux kernel naming convention.
-> > > >
-> > > > Modify the names to use snake_case in adherence to the Linux kernel=
- approved
-> > > > naming convention for consistency with the codebase.
-> > >
-> > > There is another naming issue that checkpatch perhaps doesn't warn ab=
-out
-> > > which is the encoding of types in variable names.  You can see some
-> > > variables with names that start with b for boolean and p for pointer.
-> > > Those letters shouldn't be used in kernel code.
-> > >
-> > > julia
-> >
-> > Hello, and thank you very much for your review
-> > Do I send that as a different standalone patch?
-> > Or should I send a v2 after attaching the patch to the patchset?
->
-> Perhaps find some different files than the ones affected by your patchset
-> and send a standalone patch.
->
-> julia
+Hi nancyenos,
 
-Okay noted.
-Thanks
+kernel test robot noticed the following build errors:
 
-Adekunle.
+[auto build test ERROR on staging/staging-testing]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/nancyenos/staging-octeon-Fix-unused-macro-Argument-x/20250325-181353
+base:   staging/staging-testing
+patch link:    https://lore.kernel.org/r/20250325100952.2956-1-nicymimz%40gmail.com
+patch subject: [PATCH] staging: octeon: Fix unused macro Argument 'x'
+config: parisc-allyesconfig (https://download.01.org/0day-ci/archive/20250329/202503291001.v9aaXwZc-lkp@intel.com/config)
+compiler: hppa-linux-gcc (GCC) 14.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250329/202503291001.v9aaXwZc-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202503291001.v9aaXwZc-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   In file included from drivers/staging/octeon/octeon-ethernet.h:41,
+                    from drivers/staging/octeon/ethernet.c:23:
+   drivers/staging/octeon/ethernet.c: In function 'cvm_oct_common_change_mtu':
+>> drivers/staging/octeon/ethernet.c:258:37: error: 'OCTEON_CN3XXX' undeclared (first use in this function)
+     258 |                 if (OCTEON_IS_MODEL(OCTEON_CN3XXX) ||
+         |                                     ^~~~~~~~~~~~~
+   drivers/staging/octeon/octeon-stubs.h:11:36: note: in definition of macro 'OCTEON_IS_MODEL'
+      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
+         |                                    ^
+   drivers/staging/octeon/ethernet.c:258:37: note: each undeclared identifier is reported only once for each function it appears in
+     258 |                 if (OCTEON_IS_MODEL(OCTEON_CN3XXX) ||
+         |                                     ^~~~~~~~~~~~~
+   drivers/staging/octeon/octeon-stubs.h:11:36: note: in definition of macro 'OCTEON_IS_MODEL'
+      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
+         |                                    ^
+   drivers/staging/octeon/octeon-stubs.h:11:38: warning: left-hand operand of comma expression has no effect [-Wunused-value]
+      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
+         |                                      ^
+   drivers/staging/octeon/ethernet.c:258:21: note: in expansion of macro 'OCTEON_IS_MODEL'
+     258 |                 if (OCTEON_IS_MODEL(OCTEON_CN3XXX) ||
+         |                     ^~~~~~~~~~~~~~~
+>> drivers/staging/octeon/ethernet.c:259:37: error: 'OCTEON_CN58XX' undeclared (first use in this function)
+     259 |                     OCTEON_IS_MODEL(OCTEON_CN58XX)) {
+         |                                     ^~~~~~~~~~~~~
+   drivers/staging/octeon/octeon-stubs.h:11:36: note: in definition of macro 'OCTEON_IS_MODEL'
+      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
+         |                                    ^
+   drivers/staging/octeon/octeon-stubs.h:11:38: warning: left-hand operand of comma expression has no effect [-Wunused-value]
+      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
+         |                                      ^
+   drivers/staging/octeon/ethernet.c:259:21: note: in expansion of macro 'OCTEON_IS_MODEL'
+     259 |                     OCTEON_IS_MODEL(OCTEON_CN58XX)) {
+         |                     ^~~~~~~~~~~~~~~
+   drivers/staging/octeon/ethernet.c: In function 'cvm_oct_common_open':
+>> drivers/staging/octeon/ethernet.c:469:32: error: 'OCTEON_FEATURE_PKND' undeclared (first use in this function)
+     469 |         if (octeon_has_feature(OCTEON_FEATURE_PKND))
+         |                                ^~~~~~~~~~~~~~~~~~~
+   drivers/staging/octeon/octeon-stubs.h:12:39: note: in definition of macro 'octeon_has_feature'
+      12 | #define octeon_has_feature(x) ((void)(x), 0)
+         |                                       ^
+   drivers/staging/octeon/octeon-stubs.h:12:41: warning: left-hand operand of comma expression has no effect [-Wunused-value]
+      12 | #define octeon_has_feature(x) ((void)(x), 0)
+         |                                         ^
+   drivers/staging/octeon/ethernet.c:469:13: note: in expansion of macro 'octeon_has_feature'
+     469 |         if (octeon_has_feature(OCTEON_FEATURE_PKND))
+         |             ^~~~~~~~~~~~~~~~~~
+   drivers/staging/octeon/ethernet.c: In function 'cvm_oct_probe':
+>> drivers/staging/octeon/ethernet.c:725:53: error: 'OCTEON_CN68XX' undeclared (first use in this function)
+     725 |                                 if (OCTEON_IS_MODEL(OCTEON_CN68XX))
+         |                                                     ^~~~~~~~~~~~~
+   drivers/staging/octeon/octeon-stubs.h:11:36: note: in definition of macro 'OCTEON_IS_MODEL'
+      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
+         |                                    ^
+   drivers/staging/octeon/octeon-stubs.h:11:38: warning: left-hand operand of comma expression has no effect [-Wunused-value]
+      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
+         |                                      ^
+   drivers/staging/octeon/ethernet.c:725:37: note: in expansion of macro 'OCTEON_IS_MODEL'
+     725 |                                 if (OCTEON_IS_MODEL(OCTEON_CN68XX))
+         |                                     ^~~~~~~~~~~~~~~
+--
+   In file included from drivers/staging/octeon/octeon-ethernet.h:41,
+                    from drivers/staging/octeon/ethernet-rx.c:26:
+   drivers/staging/octeon/ethernet-rx.c: In function 'cvm_oct_check_rcv_error':
+>> drivers/staging/octeon/ethernet-rx.c:67:32: error: 'OCTEON_FEATURE_PKND' undeclared (first use in this function)
+      67 |         if (octeon_has_feature(OCTEON_FEATURE_PKND))
+         |                                ^~~~~~~~~~~~~~~~~~~
+   drivers/staging/octeon/octeon-stubs.h:12:39: note: in definition of macro 'octeon_has_feature'
+      12 | #define octeon_has_feature(x) ((void)(x), 0)
+         |                                       ^
+   drivers/staging/octeon/ethernet-rx.c:67:32: note: each undeclared identifier is reported only once for each function it appears in
+      67 |         if (octeon_has_feature(OCTEON_FEATURE_PKND))
+         |                                ^~~~~~~~~~~~~~~~~~~
+   drivers/staging/octeon/octeon-stubs.h:12:39: note: in definition of macro 'octeon_has_feature'
+      12 | #define octeon_has_feature(x) ((void)(x), 0)
+         |                                       ^
+   drivers/staging/octeon/octeon-stubs.h:12:41: warning: left-hand operand of comma expression has no effect [-Wunused-value]
+      12 | #define octeon_has_feature(x) ((void)(x), 0)
+         |                                         ^
+   drivers/staging/octeon/ethernet-rx.c:67:13: note: in expansion of macro 'octeon_has_feature'
+      67 |         if (octeon_has_feature(OCTEON_FEATURE_PKND))
+         |             ^~~~~~~~~~~~~~~~~~
+   drivers/staging/octeon/ethernet-rx.c: In function 'cvm_oct_poll':
+>> drivers/staging/octeon/ethernet-rx.c:201:29: error: 'OCTEON_CN68XX' undeclared (first use in this function)
+     201 |         if (OCTEON_IS_MODEL(OCTEON_CN68XX)) {
+         |                             ^~~~~~~~~~~~~
+   drivers/staging/octeon/octeon-stubs.h:11:36: note: in definition of macro 'OCTEON_IS_MODEL'
+      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
+         |                                    ^
+   drivers/staging/octeon/octeon-stubs.h:11:38: warning: left-hand operand of comma expression has no effect [-Wunused-value]
+      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
+         |                                      ^
+   drivers/staging/octeon/ethernet-rx.c:201:13: note: in expansion of macro 'OCTEON_IS_MODEL'
+     201 |         if (OCTEON_IS_MODEL(OCTEON_CN68XX)) {
+         |             ^~~~~~~~~~~~~~~
+   drivers/staging/octeon/octeon-stubs.h:11:38: warning: left-hand operand of comma expression has no effect [-Wunused-value]
+      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
+         |                                      ^
+   drivers/staging/octeon/ethernet-rx.c:233:29: note: in expansion of macro 'OCTEON_IS_MODEL'
+     233 |                         if (OCTEON_IS_MODEL(OCTEON_CN68XX)) {
+         |                             ^~~~~~~~~~~~~~~
+   drivers/staging/octeon/ethernet-rx.c:267:40: error: 'OCTEON_FEATURE_PKND' undeclared (first use in this function)
+     267 |                 if (octeon_has_feature(OCTEON_FEATURE_PKND))
+         |                                        ^~~~~~~~~~~~~~~~~~~
+   drivers/staging/octeon/octeon-stubs.h:12:39: note: in definition of macro 'octeon_has_feature'
+      12 | #define octeon_has_feature(x) ((void)(x), 0)
+         |                                       ^
+   drivers/staging/octeon/octeon-stubs.h:12:41: warning: left-hand operand of comma expression has no effect [-Wunused-value]
+      12 | #define octeon_has_feature(x) ((void)(x), 0)
+         |                                         ^
+   drivers/staging/octeon/ethernet-rx.c:267:21: note: in expansion of macro 'octeon_has_feature'
+     267 |                 if (octeon_has_feature(OCTEON_FEATURE_PKND))
+         |                     ^~~~~~~~~~~~~~~~~~
+   drivers/staging/octeon/octeon-stubs.h:11:38: warning: left-hand operand of comma expression has no effect [-Wunused-value]
+      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
+         |                                      ^
+   drivers/staging/octeon/ethernet-rx.c:389:13: note: in expansion of macro 'OCTEON_IS_MODEL'
+     389 |         if (OCTEON_IS_MODEL(OCTEON_CN68XX)) {
+         |             ^~~~~~~~~~~~~~~
+   drivers/staging/octeon/ethernet-rx.c: In function 'cvm_oct_rx_initialize':
+   drivers/staging/octeon/ethernet-rx.c:489:37: error: 'OCTEON_CN68XX' undeclared (first use in this function)
+     489 |                 if (OCTEON_IS_MODEL(OCTEON_CN68XX)) {
+         |                                     ^~~~~~~~~~~~~
+   drivers/staging/octeon/octeon-stubs.h:11:36: note: in definition of macro 'OCTEON_IS_MODEL'
+      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
+         |                                    ^
+   drivers/staging/octeon/octeon-stubs.h:11:38: warning: left-hand operand of comma expression has no effect [-Wunused-value]
+      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
+         |                                      ^
+   drivers/staging/octeon/ethernet-rx.c:489:21: note: in expansion of macro 'OCTEON_IS_MODEL'
+     489 |                 if (OCTEON_IS_MODEL(OCTEON_CN68XX)) {
+         |                     ^~~~~~~~~~~~~~~
+   drivers/staging/octeon/ethernet-rx.c: In function 'cvm_oct_rx_shutdown':
+   drivers/staging/octeon/ethernet-rx.c:532:37: error: 'OCTEON_CN68XX' undeclared (first use in this function)
+     532 |                 if (OCTEON_IS_MODEL(OCTEON_CN68XX))
+         |                                     ^~~~~~~~~~~~~
+   drivers/staging/octeon/octeon-stubs.h:11:36: note: in definition of macro 'OCTEON_IS_MODEL'
+      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
+         |                                    ^
+   drivers/staging/octeon/octeon-stubs.h:11:38: warning: left-hand operand of comma expression has no effect [-Wunused-value]
+      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
+         |                                      ^
+   drivers/staging/octeon/ethernet-rx.c:532:21: note: in expansion of macro 'OCTEON_IS_MODEL'
+     532 |                 if (OCTEON_IS_MODEL(OCTEON_CN68XX))
+         |                     ^~~~~~~~~~~~~~~
+--
+   In file included from drivers/staging/octeon/octeon-ethernet.h:41,
+                    from drivers/staging/octeon/ethernet-tx.c:25:
+   drivers/staging/octeon/ethernet-tx.c: In function 'cvm_oct_xmit':
+>> drivers/staging/octeon/ethernet-tx.c:227:48: error: 'OCTEON_CN3XXX' undeclared (first use in this function)
+     227 |         if ((skb->len < 64) && OCTEON_IS_MODEL(OCTEON_CN3XXX)) {
+         |                                                ^~~~~~~~~~~~~
+   drivers/staging/octeon/octeon-stubs.h:11:36: note: in definition of macro 'OCTEON_IS_MODEL'
+      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
+         |                                    ^
+   drivers/staging/octeon/ethernet-tx.c:227:48: note: each undeclared identifier is reported only once for each function it appears in
+     227 |         if ((skb->len < 64) && OCTEON_IS_MODEL(OCTEON_CN3XXX)) {
+         |                                                ^~~~~~~~~~~~~
+   drivers/staging/octeon/octeon-stubs.h:11:36: note: in definition of macro 'OCTEON_IS_MODEL'
+      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
+         |                                    ^
+   drivers/staging/octeon/octeon-stubs.h:11:38: warning: left-hand operand of comma expression has no effect [-Wunused-value]
+      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
+         |                                      ^
+   drivers/staging/octeon/ethernet-tx.c:227:32: note: in expansion of macro 'OCTEON_IS_MODEL'
+     227 |         if ((skb->len < 64) && OCTEON_IS_MODEL(OCTEON_CN3XXX)) {
+         |                                ^~~~~~~~~~~~~~~
+   drivers/staging/octeon/ethernet-tx.c: In function 'cvm_oct_xmit_pow':
+>> drivers/staging/octeon/ethernet-tx.c:558:30: error: 'OCTEON_CN68XX' undeclared (first use in this function)
+     558 |         if (!OCTEON_IS_MODEL(OCTEON_CN68XX))
+         |                              ^~~~~~~~~~~~~
+   drivers/staging/octeon/octeon-stubs.h:11:36: note: in definition of macro 'OCTEON_IS_MODEL'
+      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
+         |                                    ^
+   drivers/staging/octeon/octeon-stubs.h:11:38: warning: left-hand operand of comma expression has no effect [-Wunused-value]
+      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
+         |                                      ^
+   drivers/staging/octeon/ethernet-tx.c:558:14: note: in expansion of macro 'OCTEON_IS_MODEL'
+     558 |         if (!OCTEON_IS_MODEL(OCTEON_CN68XX))
+         |              ^~~~~~~~~~~~~~~
+
+
+vim +/OCTEON_CN3XXX +258 drivers/staging/octeon/ethernet.c
+
+422d97b8b05ed38 Chris Packham 2020-02-05  230  
+422d97b8b05ed38 Chris Packham 2020-02-05  231  /**
+422d97b8b05ed38 Chris Packham 2020-02-05  232   * cvm_oct_common_change_mtu - change the link MTU
+422d97b8b05ed38 Chris Packham 2020-02-05  233   * @dev:     Device to change
+422d97b8b05ed38 Chris Packham 2020-02-05  234   * @new_mtu: The new MTU
+422d97b8b05ed38 Chris Packham 2020-02-05  235   *
+422d97b8b05ed38 Chris Packham 2020-02-05  236   * Returns Zero on success
+422d97b8b05ed38 Chris Packham 2020-02-05  237   */
+422d97b8b05ed38 Chris Packham 2020-02-05  238  static int cvm_oct_common_change_mtu(struct net_device *dev, int new_mtu)
+422d97b8b05ed38 Chris Packham 2020-02-05  239  {
+422d97b8b05ed38 Chris Packham 2020-02-05  240  	struct octeon_ethernet *priv = netdev_priv(dev);
+422d97b8b05ed38 Chris Packham 2020-02-05  241  	int interface = INTERFACE(priv->port);
+422d97b8b05ed38 Chris Packham 2020-02-05  242  #if IS_ENABLED(CONFIG_VLAN_8021Q)
+422d97b8b05ed38 Chris Packham 2020-02-05  243  	int vlan_bytes = VLAN_HLEN;
+422d97b8b05ed38 Chris Packham 2020-02-05  244  #else
+422d97b8b05ed38 Chris Packham 2020-02-05  245  	int vlan_bytes = 0;
+422d97b8b05ed38 Chris Packham 2020-02-05  246  #endif
+422d97b8b05ed38 Chris Packham 2020-02-05  247  	int mtu_overhead = ETH_HLEN + ETH_FCS_LEN + vlan_bytes;
+422d97b8b05ed38 Chris Packham 2020-02-05  248  
+422d97b8b05ed38 Chris Packham 2020-02-05  249  	dev->mtu = new_mtu;
+422d97b8b05ed38 Chris Packham 2020-02-05  250  
+422d97b8b05ed38 Chris Packham 2020-02-05  251  	if ((interface < 2) &&
+422d97b8b05ed38 Chris Packham 2020-02-05  252  	    (cvmx_helper_interface_get_mode(interface) !=
+422d97b8b05ed38 Chris Packham 2020-02-05  253  		CVMX_HELPER_INTERFACE_MODE_SPI)) {
+422d97b8b05ed38 Chris Packham 2020-02-05  254  		int index = INDEX(priv->port);
+422d97b8b05ed38 Chris Packham 2020-02-05  255  		/* Add ethernet header and FCS, and VLAN if configured. */
+422d97b8b05ed38 Chris Packham 2020-02-05  256  		int max_packet = new_mtu + mtu_overhead;
+422d97b8b05ed38 Chris Packham 2020-02-05  257  
+422d97b8b05ed38 Chris Packham 2020-02-05 @258  		if (OCTEON_IS_MODEL(OCTEON_CN3XXX) ||
+422d97b8b05ed38 Chris Packham 2020-02-05 @259  		    OCTEON_IS_MODEL(OCTEON_CN58XX)) {
+422d97b8b05ed38 Chris Packham 2020-02-05  260  			/* Signal errors on packets larger than the MTU */
+422d97b8b05ed38 Chris Packham 2020-02-05  261  			cvmx_write_csr(CVMX_GMXX_RXX_FRM_MAX(index, interface),
+422d97b8b05ed38 Chris Packham 2020-02-05  262  				       max_packet);
+422d97b8b05ed38 Chris Packham 2020-02-05  263  		} else {
+422d97b8b05ed38 Chris Packham 2020-02-05  264  			/*
+422d97b8b05ed38 Chris Packham 2020-02-05  265  			 * Set the hardware to truncate packets larger
+422d97b8b05ed38 Chris Packham 2020-02-05  266  			 * than the MTU and smaller the 64 bytes.
+422d97b8b05ed38 Chris Packham 2020-02-05  267  			 */
+422d97b8b05ed38 Chris Packham 2020-02-05  268  			union cvmx_pip_frm_len_chkx frm_len_chk;
+422d97b8b05ed38 Chris Packham 2020-02-05  269  
+422d97b8b05ed38 Chris Packham 2020-02-05  270  			frm_len_chk.u64 = 0;
+422d97b8b05ed38 Chris Packham 2020-02-05  271  			frm_len_chk.s.minlen = VLAN_ETH_ZLEN;
+422d97b8b05ed38 Chris Packham 2020-02-05  272  			frm_len_chk.s.maxlen = max_packet;
+422d97b8b05ed38 Chris Packham 2020-02-05  273  			cvmx_write_csr(CVMX_PIP_FRM_LEN_CHKX(interface),
+422d97b8b05ed38 Chris Packham 2020-02-05  274  				       frm_len_chk.u64);
+422d97b8b05ed38 Chris Packham 2020-02-05  275  		}
+422d97b8b05ed38 Chris Packham 2020-02-05  276  		/*
+422d97b8b05ed38 Chris Packham 2020-02-05  277  		 * Set the hardware to truncate packets larger than
+422d97b8b05ed38 Chris Packham 2020-02-05  278  		 * the MTU. The jabber register must be set to a
+422d97b8b05ed38 Chris Packham 2020-02-05  279  		 * multiple of 8 bytes, so round up.
+422d97b8b05ed38 Chris Packham 2020-02-05  280  		 */
+422d97b8b05ed38 Chris Packham 2020-02-05  281  		cvmx_write_csr(CVMX_GMXX_RXX_JABBER(index, interface),
+422d97b8b05ed38 Chris Packham 2020-02-05  282  			       (max_packet + 7) & ~7u);
+422d97b8b05ed38 Chris Packham 2020-02-05  283  	}
+422d97b8b05ed38 Chris Packham 2020-02-05  284  	return 0;
+422d97b8b05ed38 Chris Packham 2020-02-05  285  }
+422d97b8b05ed38 Chris Packham 2020-02-05  286  
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
