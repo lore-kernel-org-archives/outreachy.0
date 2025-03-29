@@ -1,333 +1,393 @@
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.9])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ed1-f43.google.com (mail-ed1-f43.google.com [209.85.208.43])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 77019179A7;
-	Sat, 29 Mar 2025 02:48:04 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.198.163.9
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 418F9184524
+	for <outreachy@lists.linux.dev>; Sat, 29 Mar 2025 10:24:43 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.43
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1743216487; cv=none; b=rAzdHvSSAV90BZLBb/YFLEvnzU1Trllpd7YDTuaOIcVUQIfMR3gB88Il5hXgo4jJ7UqUg5c0ViGA+u+frBZaMbn2UYPsa6uE6lVC91vNi2PwhQxjBGqeN3lpkJnRM3BKSDar3Dnms54EI4evyn9tG8Ml368rk3uwj7LnISzTckE=
+	t=1743243886; cv=none; b=JZ5vrase24TJLDpmtSrC5IXmS0O0S97ttvgCTLoz1sCCTJOOiwYTg8AJL2MqBqJ3caQJWhMky7JMBY+C6d+kF7a4upzSLHU78jb47ggebOr9/GyEs7dQwjtbFbYfnxH3iG0GMehp8QaZdX5V8cNILYrHx8pR3t9NUCh3vvEnyl4=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1743216487; c=relaxed/simple;
-	bh=EDYG4zRvkdH/KzsY2QmjYFwURAqnv8xw9ek6Kew5GGU=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=br6mf8uuot/CiB6L7yF+ALVmKGxUkZkLk9yWMn1abZFC/shtzwyTuKJhHbZNJ66WsvADDS9trh7YivyWEKyg4fW3rKlOcXnzotSVGidQBRwv3OMAGuzCWSHkPcDjuArGR68szR7FBb17Lwl9bOYuSyNOYdbeoi7sSuXf3oy0+d4=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=EHn+opqu; arc=none smtp.client-ip=192.198.163.9
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
+	s=arc-20240116; t=1743243886; c=relaxed/simple;
+	bh=nlbYy4Z7P82iAS/QWG32nr6t3Rxk5AHS8vl+S0b63Nk=;
+	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
+	 To:Cc:Content-Type; b=TTcfjmOUPgAAU3JYHp3i9u5vJmz4zhCe6TROL2b+N7UbQPkWNHitn6tjD+6lpVyvRbObC6oEauVP8zOiv+xIpluzVmNWIWFuWCt39irTVyjhnKcJ+L+wECtov1km2/zS7F26NXsvdZUBz6wDYN5PesezbUB4gEGK5DAoU+BeP9o=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=NDfD4W4y; arc=none smtp.client-ip=209.85.208.43
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="EHn+opqu"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1743216484; x=1774752484;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=EDYG4zRvkdH/KzsY2QmjYFwURAqnv8xw9ek6Kew5GGU=;
-  b=EHn+opquKa4dRtb4XAI5A8Ctvuoz0buafF2m6s4VBjDhF+GDYK0xWAJs
-   43IZsi0DNgYuySHkU6aerYusRj5zz6gF1wQa7NhClAgWSPKXNYqX9bJtS
-   MLZzxJ5tSkQDSMoC9VXeW6UqfWoDMUNvZvoMKgp3o2IxOS8T1h8CnIqig
-   wfkPJM6QV8wgqvbWrcZbOAlkJ8Kt+J1lN+WihIrSmw0x5O6LJJnakk7je
-   fjzRfhxQ+15uqQm6BdHsvI149aKEenCamv6DpmjhhAyWDwgmmDocJyC4t
-   y6VV3jey4xZcibJYUBdVZkLPhAmxKMxBOvZvbzGxg+0pVM2kUsdlYitdT
-   Q==;
-X-CSE-ConnectionGUID: SFIMWLe3TZer/BY676V0xA==
-X-CSE-MsgGUID: /k1k2SOZRTqPqMns+7bOSQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11387"; a="55235495"
-X-IronPort-AV: E=Sophos;i="6.14,285,1736841600"; 
-   d="scan'208";a="55235495"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
-  by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Mar 2025 19:48:04 -0700
-X-CSE-ConnectionGUID: 3tECzbuhSTOIowdi/Eizkw==
-X-CSE-MsgGUID: SrZtT6CpTyKIxWH3gjU1RQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.14,285,1736841600"; 
-   d="scan'208";a="125838908"
-Received: from lkp-server02.sh.intel.com (HELO e98e3655d6d2) ([10.239.97.151])
-  by fmviesa008.fm.intel.com with ESMTP; 28 Mar 2025 19:48:02 -0700
-Received: from kbuild by e98e3655d6d2 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1tyMEo-0007rO-13;
-	Sat, 29 Mar 2025 02:47:58 +0000
-Date: Sat, 29 Mar 2025 10:47:31 +0800
-From: kernel test robot <lkp@intel.com>
-To: nancyenos <nicymimz@gmail.com>, gregkh@linuxfoundation.org
-Cc: oe-kbuild-all@lists.linux.dev, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy@lists.linux.dev,
-	nancyenos <nicymimz@gmail.com>
-Subject: Re: [PATCH] staging: octeon: Fix unused macro Argument 'x'
-Message-ID: <202503291001.v9aaXwZc-lkp@intel.com>
-References: <20250325100952.2956-1-nicymimz@gmail.com>
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="NDfD4W4y"
+Received: by mail-ed1-f43.google.com with SMTP id 4fb4d7f45d1cf-5e61da95244so5483362a12.2
+        for <outreachy@lists.linux.dev>; Sat, 29 Mar 2025 03:24:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1743243882; x=1743848682; darn=lists.linux.dev;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=8IYpSCidSHSUllrJq68diooMeu0dG9ChDybMJrAdueY=;
+        b=NDfD4W4yfaSuaES+3abXmiJ4qL6Wv24vzS78RpBJm2BXUM2hLLEuqVRFeRhbTgwzFI
+         qTNbp393FgVhcD43xcBan+gzDSTsSjXKRt3MW3SjQ/bs6LGTGunSfAhXkq5OQUKERXTj
+         kDmURwFFgKbpglC+qOkkMdNPOl0X803tFhfE9uN4SAJt4UEcBvX2qcd89P1Un9NC4R8u
+         c9CH0aRZenJU7tdMCmFk0JHfpJ3os1/FEzE2IHn+3R9E+XP5d9hiqveC5e35mxHXkOIU
+         ETLdBz09L98P107Im3aEsW37wCp2G5XQ/7axuW/qnZKgnYYYf7QeXcYwJKeX5GBExyfQ
+         W0HA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1743243882; x=1743848682;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=8IYpSCidSHSUllrJq68diooMeu0dG9ChDybMJrAdueY=;
+        b=Qhn+1WWO52H4Q20N/4etcbu3aGlgVC9/3Kn5cyHbJAy2HWJAGjohHtzSGE0W/H5e9w
+         40MvfmSbcrLAgwEm4OiXF93h9STm95vWNnHiwVx6JPkaXQn3hAqQoQx5VwnIca6miQ0R
+         Q0Fq+YlJCOl6AYI/Fc3YUTPkT6viXywjBmdad3MsOg87KMcZodwHraDBBIqpwikecBWO
+         w0seHdgK00+R+Zp33FsIqQCL4aIdyw1wcahL7YBHiF2alNUPXvtRzu1SU5ieEmrJwj0/
+         0lu6CYkI0F1Ssi3fpgXOyRrRHqEUXp5JUgjTW4pvSzivc6c6Z9CAb4/GZ21iSksnU5qM
+         bQFQ==
+X-Gm-Message-State: AOJu0YxO0zqLGnGhLZRUIOyKwEsuD0FCvaRZsfaSWz9IHI76w/4yfMKx
+	CrF2mTMemFoYxpivjqG3CbFOAKACvShcW2CYmOX4TEE/7Gx67ai/rTrwnMUM97eNt7bgbS+2smY
+	ByI1BiHRxc3+MHWzOcyOqhHU2Rzao8ajF
+X-Gm-Gg: ASbGncsBx+9mBXIqwj352C6idEHYieQEhv1zkceXnLAe02qX4rhr//lRz63O3CY8qbV
+	mQIP3E7SudcpfMvKeSjWxh5zeTOk/ErZ4Bsf5OG/5HKuAqjk/OAJzaIaAK9hDK2kCFZjuuuxqAX
+	5YukoQMfzU16DklvWmQJFyYA82ww==
+X-Google-Smtp-Source: AGHT+IHsihZfYq6M78mP67JlUIDT7fzvAaxBekkfen6jS0a9KTCvkpMZdApWgaeSKlgj+bm/urT952KEvZEh1CNBjAs=
+X-Received: by 2002:a05:6402:5201:b0:5ee:497:d4f3 with SMTP id
+ 4fb4d7f45d1cf-5ee0497d6eemr1734672a12.33.1743243882055; Sat, 29 Mar 2025
+ 03:24:42 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250325100952.2956-1-nicymimz@gmail.com>
+References: <c1b29fc7062b6e6a130de4adb121845d9574a50e.camel@gmail.com>
+ <c651948d-2c11-d140-3aca-9ace35f52eb@inria.fr> <CAMyr_bLnE22pObV784EKpabb-R8w64o0fYDf8_x8h9rmySCoVA@mail.gmail.com>
+ <bbec6f21-69c1-b14d-512-7660b83ffd7@inria.fr> <CAMyr_bJyn3Krz0R5tYooQRP6A3=bj_H_f3f4rejGJGkS8LQaLg@mail.gmail.com>
+ <CAMyr_b+rJBRQFrFCnB=kq33XCyo=twuRQ-OrQC50D0mH9CaRUg@mail.gmail.com>
+ <alpine.DEB.2.22.394.2503252124080.3642@hadrien> <CAMyr_bKWDLGZLQgducONi=H_107UydmaOErRcRythgw9FR9CFw@mail.gmail.com>
+In-Reply-To: <CAMyr_bKWDLGZLQgducONi=H_107UydmaOErRcRythgw9FR9CFw@mail.gmail.com>
+From: Richard Akintola <princerichard17a@gmail.com>
+Date: Sat, 29 Mar 2025 11:24:30 +0100
+X-Gm-Features: AQ5f1JpNbKti99xzRmb5pzA_uorwhSedjelBIngACpV5fZLNbo3bzJbkHda_Ed8
+Message-ID: <CAMyr_bKSouz-OCTOaWX9HvAEVLEsodW6Nv9MNDqjzYWp+=Ohtw@mail.gmail.com>
+Subject: Re: Can't Build Linux Kernel from Tutorial
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: "outreachy@lists.linux.dev" <outreachy@lists.linux.dev>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Hi nancyenos,
+Hi Julia,
 
-kernel test robot noticed the following build errors:
+I want to inform you that I have successfully built the kernel.
+After building successfully, I could not install, I searched on how to
+build Linux kernel on Debian, so I found the command "make -jN
+bindeb-pkg" which created a debian packages for easy installation in
+the parent directory which I installed with the command "sudo apt
+install ./*.deb".
 
-[auto build test ERROR on staging/staging-testing]
+Thank you for the support so far, I really appreciate, now nothing is
+standing in the way of sending my patches.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/nancyenos/staging-octeon-Fix-unused-macro-Argument-x/20250325-181353
-base:   staging/staging-testing
-patch link:    https://lore.kernel.org/r/20250325100952.2956-1-nicymimz%40gmail.com
-patch subject: [PATCH] staging: octeon: Fix unused macro Argument 'x'
-config: parisc-allyesconfig (https://download.01.org/0day-ci/archive/20250329/202503291001.v9aaXwZc-lkp@intel.com/config)
-compiler: hppa-linux-gcc (GCC) 14.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250329/202503291001.v9aaXwZc-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202503291001.v9aaXwZc-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
-   In file included from drivers/staging/octeon/octeon-ethernet.h:41,
-                    from drivers/staging/octeon/ethernet.c:23:
-   drivers/staging/octeon/ethernet.c: In function 'cvm_oct_common_change_mtu':
->> drivers/staging/octeon/ethernet.c:258:37: error: 'OCTEON_CN3XXX' undeclared (first use in this function)
-     258 |                 if (OCTEON_IS_MODEL(OCTEON_CN3XXX) ||
-         |                                     ^~~~~~~~~~~~~
-   drivers/staging/octeon/octeon-stubs.h:11:36: note: in definition of macro 'OCTEON_IS_MODEL'
-      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
-         |                                    ^
-   drivers/staging/octeon/ethernet.c:258:37: note: each undeclared identifier is reported only once for each function it appears in
-     258 |                 if (OCTEON_IS_MODEL(OCTEON_CN3XXX) ||
-         |                                     ^~~~~~~~~~~~~
-   drivers/staging/octeon/octeon-stubs.h:11:36: note: in definition of macro 'OCTEON_IS_MODEL'
-      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
-         |                                    ^
-   drivers/staging/octeon/octeon-stubs.h:11:38: warning: left-hand operand of comma expression has no effect [-Wunused-value]
-      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
-         |                                      ^
-   drivers/staging/octeon/ethernet.c:258:21: note: in expansion of macro 'OCTEON_IS_MODEL'
-     258 |                 if (OCTEON_IS_MODEL(OCTEON_CN3XXX) ||
-         |                     ^~~~~~~~~~~~~~~
->> drivers/staging/octeon/ethernet.c:259:37: error: 'OCTEON_CN58XX' undeclared (first use in this function)
-     259 |                     OCTEON_IS_MODEL(OCTEON_CN58XX)) {
-         |                                     ^~~~~~~~~~~~~
-   drivers/staging/octeon/octeon-stubs.h:11:36: note: in definition of macro 'OCTEON_IS_MODEL'
-      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
-         |                                    ^
-   drivers/staging/octeon/octeon-stubs.h:11:38: warning: left-hand operand of comma expression has no effect [-Wunused-value]
-      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
-         |                                      ^
-   drivers/staging/octeon/ethernet.c:259:21: note: in expansion of macro 'OCTEON_IS_MODEL'
-     259 |                     OCTEON_IS_MODEL(OCTEON_CN58XX)) {
-         |                     ^~~~~~~~~~~~~~~
-   drivers/staging/octeon/ethernet.c: In function 'cvm_oct_common_open':
->> drivers/staging/octeon/ethernet.c:469:32: error: 'OCTEON_FEATURE_PKND' undeclared (first use in this function)
-     469 |         if (octeon_has_feature(OCTEON_FEATURE_PKND))
-         |                                ^~~~~~~~~~~~~~~~~~~
-   drivers/staging/octeon/octeon-stubs.h:12:39: note: in definition of macro 'octeon_has_feature'
-      12 | #define octeon_has_feature(x) ((void)(x), 0)
-         |                                       ^
-   drivers/staging/octeon/octeon-stubs.h:12:41: warning: left-hand operand of comma expression has no effect [-Wunused-value]
-      12 | #define octeon_has_feature(x) ((void)(x), 0)
-         |                                         ^
-   drivers/staging/octeon/ethernet.c:469:13: note: in expansion of macro 'octeon_has_feature'
-     469 |         if (octeon_has_feature(OCTEON_FEATURE_PKND))
-         |             ^~~~~~~~~~~~~~~~~~
-   drivers/staging/octeon/ethernet.c: In function 'cvm_oct_probe':
->> drivers/staging/octeon/ethernet.c:725:53: error: 'OCTEON_CN68XX' undeclared (first use in this function)
-     725 |                                 if (OCTEON_IS_MODEL(OCTEON_CN68XX))
-         |                                                     ^~~~~~~~~~~~~
-   drivers/staging/octeon/octeon-stubs.h:11:36: note: in definition of macro 'OCTEON_IS_MODEL'
-      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
-         |                                    ^
-   drivers/staging/octeon/octeon-stubs.h:11:38: warning: left-hand operand of comma expression has no effect [-Wunused-value]
-      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
-         |                                      ^
-   drivers/staging/octeon/ethernet.c:725:37: note: in expansion of macro 'OCTEON_IS_MODEL'
-     725 |                                 if (OCTEON_IS_MODEL(OCTEON_CN68XX))
-         |                                     ^~~~~~~~~~~~~~~
---
-   In file included from drivers/staging/octeon/octeon-ethernet.h:41,
-                    from drivers/staging/octeon/ethernet-rx.c:26:
-   drivers/staging/octeon/ethernet-rx.c: In function 'cvm_oct_check_rcv_error':
->> drivers/staging/octeon/ethernet-rx.c:67:32: error: 'OCTEON_FEATURE_PKND' undeclared (first use in this function)
-      67 |         if (octeon_has_feature(OCTEON_FEATURE_PKND))
-         |                                ^~~~~~~~~~~~~~~~~~~
-   drivers/staging/octeon/octeon-stubs.h:12:39: note: in definition of macro 'octeon_has_feature'
-      12 | #define octeon_has_feature(x) ((void)(x), 0)
-         |                                       ^
-   drivers/staging/octeon/ethernet-rx.c:67:32: note: each undeclared identifier is reported only once for each function it appears in
-      67 |         if (octeon_has_feature(OCTEON_FEATURE_PKND))
-         |                                ^~~~~~~~~~~~~~~~~~~
-   drivers/staging/octeon/octeon-stubs.h:12:39: note: in definition of macro 'octeon_has_feature'
-      12 | #define octeon_has_feature(x) ((void)(x), 0)
-         |                                       ^
-   drivers/staging/octeon/octeon-stubs.h:12:41: warning: left-hand operand of comma expression has no effect [-Wunused-value]
-      12 | #define octeon_has_feature(x) ((void)(x), 0)
-         |                                         ^
-   drivers/staging/octeon/ethernet-rx.c:67:13: note: in expansion of macro 'octeon_has_feature'
-      67 |         if (octeon_has_feature(OCTEON_FEATURE_PKND))
-         |             ^~~~~~~~~~~~~~~~~~
-   drivers/staging/octeon/ethernet-rx.c: In function 'cvm_oct_poll':
->> drivers/staging/octeon/ethernet-rx.c:201:29: error: 'OCTEON_CN68XX' undeclared (first use in this function)
-     201 |         if (OCTEON_IS_MODEL(OCTEON_CN68XX)) {
-         |                             ^~~~~~~~~~~~~
-   drivers/staging/octeon/octeon-stubs.h:11:36: note: in definition of macro 'OCTEON_IS_MODEL'
-      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
-         |                                    ^
-   drivers/staging/octeon/octeon-stubs.h:11:38: warning: left-hand operand of comma expression has no effect [-Wunused-value]
-      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
-         |                                      ^
-   drivers/staging/octeon/ethernet-rx.c:201:13: note: in expansion of macro 'OCTEON_IS_MODEL'
-     201 |         if (OCTEON_IS_MODEL(OCTEON_CN68XX)) {
-         |             ^~~~~~~~~~~~~~~
-   drivers/staging/octeon/octeon-stubs.h:11:38: warning: left-hand operand of comma expression has no effect [-Wunused-value]
-      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
-         |                                      ^
-   drivers/staging/octeon/ethernet-rx.c:233:29: note: in expansion of macro 'OCTEON_IS_MODEL'
-     233 |                         if (OCTEON_IS_MODEL(OCTEON_CN68XX)) {
-         |                             ^~~~~~~~~~~~~~~
-   drivers/staging/octeon/ethernet-rx.c:267:40: error: 'OCTEON_FEATURE_PKND' undeclared (first use in this function)
-     267 |                 if (octeon_has_feature(OCTEON_FEATURE_PKND))
-         |                                        ^~~~~~~~~~~~~~~~~~~
-   drivers/staging/octeon/octeon-stubs.h:12:39: note: in definition of macro 'octeon_has_feature'
-      12 | #define octeon_has_feature(x) ((void)(x), 0)
-         |                                       ^
-   drivers/staging/octeon/octeon-stubs.h:12:41: warning: left-hand operand of comma expression has no effect [-Wunused-value]
-      12 | #define octeon_has_feature(x) ((void)(x), 0)
-         |                                         ^
-   drivers/staging/octeon/ethernet-rx.c:267:21: note: in expansion of macro 'octeon_has_feature'
-     267 |                 if (octeon_has_feature(OCTEON_FEATURE_PKND))
-         |                     ^~~~~~~~~~~~~~~~~~
-   drivers/staging/octeon/octeon-stubs.h:11:38: warning: left-hand operand of comma expression has no effect [-Wunused-value]
-      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
-         |                                      ^
-   drivers/staging/octeon/ethernet-rx.c:389:13: note: in expansion of macro 'OCTEON_IS_MODEL'
-     389 |         if (OCTEON_IS_MODEL(OCTEON_CN68XX)) {
-         |             ^~~~~~~~~~~~~~~
-   drivers/staging/octeon/ethernet-rx.c: In function 'cvm_oct_rx_initialize':
-   drivers/staging/octeon/ethernet-rx.c:489:37: error: 'OCTEON_CN68XX' undeclared (first use in this function)
-     489 |                 if (OCTEON_IS_MODEL(OCTEON_CN68XX)) {
-         |                                     ^~~~~~~~~~~~~
-   drivers/staging/octeon/octeon-stubs.h:11:36: note: in definition of macro 'OCTEON_IS_MODEL'
-      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
-         |                                    ^
-   drivers/staging/octeon/octeon-stubs.h:11:38: warning: left-hand operand of comma expression has no effect [-Wunused-value]
-      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
-         |                                      ^
-   drivers/staging/octeon/ethernet-rx.c:489:21: note: in expansion of macro 'OCTEON_IS_MODEL'
-     489 |                 if (OCTEON_IS_MODEL(OCTEON_CN68XX)) {
-         |                     ^~~~~~~~~~~~~~~
-   drivers/staging/octeon/ethernet-rx.c: In function 'cvm_oct_rx_shutdown':
-   drivers/staging/octeon/ethernet-rx.c:532:37: error: 'OCTEON_CN68XX' undeclared (first use in this function)
-     532 |                 if (OCTEON_IS_MODEL(OCTEON_CN68XX))
-         |                                     ^~~~~~~~~~~~~
-   drivers/staging/octeon/octeon-stubs.h:11:36: note: in definition of macro 'OCTEON_IS_MODEL'
-      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
-         |                                    ^
-   drivers/staging/octeon/octeon-stubs.h:11:38: warning: left-hand operand of comma expression has no effect [-Wunused-value]
-      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
-         |                                      ^
-   drivers/staging/octeon/ethernet-rx.c:532:21: note: in expansion of macro 'OCTEON_IS_MODEL'
-     532 |                 if (OCTEON_IS_MODEL(OCTEON_CN68XX))
-         |                     ^~~~~~~~~~~~~~~
---
-   In file included from drivers/staging/octeon/octeon-ethernet.h:41,
-                    from drivers/staging/octeon/ethernet-tx.c:25:
-   drivers/staging/octeon/ethernet-tx.c: In function 'cvm_oct_xmit':
->> drivers/staging/octeon/ethernet-tx.c:227:48: error: 'OCTEON_CN3XXX' undeclared (first use in this function)
-     227 |         if ((skb->len < 64) && OCTEON_IS_MODEL(OCTEON_CN3XXX)) {
-         |                                                ^~~~~~~~~~~~~
-   drivers/staging/octeon/octeon-stubs.h:11:36: note: in definition of macro 'OCTEON_IS_MODEL'
-      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
-         |                                    ^
-   drivers/staging/octeon/ethernet-tx.c:227:48: note: each undeclared identifier is reported only once for each function it appears in
-     227 |         if ((skb->len < 64) && OCTEON_IS_MODEL(OCTEON_CN3XXX)) {
-         |                                                ^~~~~~~~~~~~~
-   drivers/staging/octeon/octeon-stubs.h:11:36: note: in definition of macro 'OCTEON_IS_MODEL'
-      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
-         |                                    ^
-   drivers/staging/octeon/octeon-stubs.h:11:38: warning: left-hand operand of comma expression has no effect [-Wunused-value]
-      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
-         |                                      ^
-   drivers/staging/octeon/ethernet-tx.c:227:32: note: in expansion of macro 'OCTEON_IS_MODEL'
-     227 |         if ((skb->len < 64) && OCTEON_IS_MODEL(OCTEON_CN3XXX)) {
-         |                                ^~~~~~~~~~~~~~~
-   drivers/staging/octeon/ethernet-tx.c: In function 'cvm_oct_xmit_pow':
->> drivers/staging/octeon/ethernet-tx.c:558:30: error: 'OCTEON_CN68XX' undeclared (first use in this function)
-     558 |         if (!OCTEON_IS_MODEL(OCTEON_CN68XX))
-         |                              ^~~~~~~~~~~~~
-   drivers/staging/octeon/octeon-stubs.h:11:36: note: in definition of macro 'OCTEON_IS_MODEL'
-      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
-         |                                    ^
-   drivers/staging/octeon/octeon-stubs.h:11:38: warning: left-hand operand of comma expression has no effect [-Wunused-value]
-      11 | #define OCTEON_IS_MODEL(x) ((void)(x), 0)
-         |                                      ^
-   drivers/staging/octeon/ethernet-tx.c:558:14: note: in expansion of macro 'OCTEON_IS_MODEL'
-     558 |         if (!OCTEON_IS_MODEL(OCTEON_CN68XX))
-         |              ^~~~~~~~~~~~~~~
+Richard Akintola
 
 
-vim +/OCTEON_CN3XXX +258 drivers/staging/octeon/ethernet.c
-
-422d97b8b05ed38 Chris Packham 2020-02-05  230  
-422d97b8b05ed38 Chris Packham 2020-02-05  231  /**
-422d97b8b05ed38 Chris Packham 2020-02-05  232   * cvm_oct_common_change_mtu - change the link MTU
-422d97b8b05ed38 Chris Packham 2020-02-05  233   * @dev:     Device to change
-422d97b8b05ed38 Chris Packham 2020-02-05  234   * @new_mtu: The new MTU
-422d97b8b05ed38 Chris Packham 2020-02-05  235   *
-422d97b8b05ed38 Chris Packham 2020-02-05  236   * Returns Zero on success
-422d97b8b05ed38 Chris Packham 2020-02-05  237   */
-422d97b8b05ed38 Chris Packham 2020-02-05  238  static int cvm_oct_common_change_mtu(struct net_device *dev, int new_mtu)
-422d97b8b05ed38 Chris Packham 2020-02-05  239  {
-422d97b8b05ed38 Chris Packham 2020-02-05  240  	struct octeon_ethernet *priv = netdev_priv(dev);
-422d97b8b05ed38 Chris Packham 2020-02-05  241  	int interface = INTERFACE(priv->port);
-422d97b8b05ed38 Chris Packham 2020-02-05  242  #if IS_ENABLED(CONFIG_VLAN_8021Q)
-422d97b8b05ed38 Chris Packham 2020-02-05  243  	int vlan_bytes = VLAN_HLEN;
-422d97b8b05ed38 Chris Packham 2020-02-05  244  #else
-422d97b8b05ed38 Chris Packham 2020-02-05  245  	int vlan_bytes = 0;
-422d97b8b05ed38 Chris Packham 2020-02-05  246  #endif
-422d97b8b05ed38 Chris Packham 2020-02-05  247  	int mtu_overhead = ETH_HLEN + ETH_FCS_LEN + vlan_bytes;
-422d97b8b05ed38 Chris Packham 2020-02-05  248  
-422d97b8b05ed38 Chris Packham 2020-02-05  249  	dev->mtu = new_mtu;
-422d97b8b05ed38 Chris Packham 2020-02-05  250  
-422d97b8b05ed38 Chris Packham 2020-02-05  251  	if ((interface < 2) &&
-422d97b8b05ed38 Chris Packham 2020-02-05  252  	    (cvmx_helper_interface_get_mode(interface) !=
-422d97b8b05ed38 Chris Packham 2020-02-05  253  		CVMX_HELPER_INTERFACE_MODE_SPI)) {
-422d97b8b05ed38 Chris Packham 2020-02-05  254  		int index = INDEX(priv->port);
-422d97b8b05ed38 Chris Packham 2020-02-05  255  		/* Add ethernet header and FCS, and VLAN if configured. */
-422d97b8b05ed38 Chris Packham 2020-02-05  256  		int max_packet = new_mtu + mtu_overhead;
-422d97b8b05ed38 Chris Packham 2020-02-05  257  
-422d97b8b05ed38 Chris Packham 2020-02-05 @258  		if (OCTEON_IS_MODEL(OCTEON_CN3XXX) ||
-422d97b8b05ed38 Chris Packham 2020-02-05 @259  		    OCTEON_IS_MODEL(OCTEON_CN58XX)) {
-422d97b8b05ed38 Chris Packham 2020-02-05  260  			/* Signal errors on packets larger than the MTU */
-422d97b8b05ed38 Chris Packham 2020-02-05  261  			cvmx_write_csr(CVMX_GMXX_RXX_FRM_MAX(index, interface),
-422d97b8b05ed38 Chris Packham 2020-02-05  262  				       max_packet);
-422d97b8b05ed38 Chris Packham 2020-02-05  263  		} else {
-422d97b8b05ed38 Chris Packham 2020-02-05  264  			/*
-422d97b8b05ed38 Chris Packham 2020-02-05  265  			 * Set the hardware to truncate packets larger
-422d97b8b05ed38 Chris Packham 2020-02-05  266  			 * than the MTU and smaller the 64 bytes.
-422d97b8b05ed38 Chris Packham 2020-02-05  267  			 */
-422d97b8b05ed38 Chris Packham 2020-02-05  268  			union cvmx_pip_frm_len_chkx frm_len_chk;
-422d97b8b05ed38 Chris Packham 2020-02-05  269  
-422d97b8b05ed38 Chris Packham 2020-02-05  270  			frm_len_chk.u64 = 0;
-422d97b8b05ed38 Chris Packham 2020-02-05  271  			frm_len_chk.s.minlen = VLAN_ETH_ZLEN;
-422d97b8b05ed38 Chris Packham 2020-02-05  272  			frm_len_chk.s.maxlen = max_packet;
-422d97b8b05ed38 Chris Packham 2020-02-05  273  			cvmx_write_csr(CVMX_PIP_FRM_LEN_CHKX(interface),
-422d97b8b05ed38 Chris Packham 2020-02-05  274  				       frm_len_chk.u64);
-422d97b8b05ed38 Chris Packham 2020-02-05  275  		}
-422d97b8b05ed38 Chris Packham 2020-02-05  276  		/*
-422d97b8b05ed38 Chris Packham 2020-02-05  277  		 * Set the hardware to truncate packets larger than
-422d97b8b05ed38 Chris Packham 2020-02-05  278  		 * the MTU. The jabber register must be set to a
-422d97b8b05ed38 Chris Packham 2020-02-05  279  		 * multiple of 8 bytes, so round up.
-422d97b8b05ed38 Chris Packham 2020-02-05  280  		 */
-422d97b8b05ed38 Chris Packham 2020-02-05  281  		cvmx_write_csr(CVMX_GMXX_RXX_JABBER(index, interface),
-422d97b8b05ed38 Chris Packham 2020-02-05  282  			       (max_packet + 7) & ~7u);
-422d97b8b05ed38 Chris Packham 2020-02-05  283  	}
-422d97b8b05ed38 Chris Packham 2020-02-05  284  	return 0;
-422d97b8b05ed38 Chris Packham 2020-02-05  285  }
-422d97b8b05ed38 Chris Packham 2020-02-05  286  
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+On Wed, Mar 26, 2025 at 11:50=E2=80=AFAM Richard Akintola
+<princerichard17a@gmail.com> wrote:
+>
+> Thank you Julia, do expect my patches.
+>
+> Richard
+>
+>
+> On Tue, 25 Mar 2025, 21:25 Julia Lawall, <julia.lawall@inria.fr> wrote:
+>>
+>>
+>>
+>> On Tue, 25 Mar 2025, Richard Akintola wrote:
+>>
+>> > Hi Julia,
+>> > The reason I haven't sent feedback is that the kernel I built and inst=
+alled resulted in kernel panic which I am trying to recover from and if I a=
+m not able to, I will install a new Os and try again (until I successfully =
+build the kernel).
+>>
+>> OK, thanks for the update.  If you can't make it work in th short term,
+>> you could start working on some patches while continuing to try to get t=
+he
+>> build to work.
+>>
+>> julia
+>>
+>>
+>>
+>> >
+>> > Thank you for the support so far.
+>> >
+>> > Richard Akintola
+>> >
+>> > On Monday, March 24, 2025, Richard Akintola <princerichard17a@gmail.co=
+m> wrote:
+>> >
+>> >       Thank you Julia, I will go about resolving it as recommended
+>> >
+>> >       Richard Akintola
+>> >
+>> >
+>> >       On Mon, 24 Mar 2025, 16:06 Julia Lawall, <julia.lawall@inria.fr>=
+ wrote:
+>> >
+>> >
+>> >       On Mon, 24 Mar 2025, Richard Akintola wrote:
+>> >
+>> >       > Good to hear from you Julia,
+>> >       >
+>> >       > For the first question: No, I am not using a VM, I am building=
+ the kernel on
+>> >       > my machine's Os which is Parrot Linux Os.
+>> >       >
+>> >       > And as for the configuration: yes, I am reusing the the config=
+uration of my
+>> >       > host machine - I copied my machine's configuration to the repo=
+sitory as
+>> >       > shown in the tutorial.
+>> >
+>> >
+>> >       OK, try to find something related to signatures in your configur=
+ation.
+>> >       Distro configurations often have this issue.  For Debian there i=
+s some PEM
+>> >       thing.
+>> >
+>> >       julia
+>> >
+>> >       >
+>> >       > Richard Akintola
+>> >       >
+>> >       > On Mon, 24 Mar 2025, 14:57 Julia Lawall, <julia.lawall@inria.f=
+r> wrote:
+>> >       >
+>> >       >
+>> >       >       On Mon, 24 Mar 2025, Richard Akintola wrote:
+>> >       >
+>> >       >       > Hello Julia,
+>> >       >       >
+>> >       >       > I have been trying to build the Linux Kernel via the t=
+utorial
+>> >       >       on my
+>> >       >       > machine to no avail.
+>> >       >       >
+>> >       >       > This has prevented me from making a PATCH.
+>> >       >       >
+>> >       >       > This is the Os and Kernel version of my machine
+>> >       >       > OS: Parrot Security 6.3 (lorikeet) x86_64
+>> >       >       > Kernel: 6.5.0-13parrot1-amd64
+>> >       >
+>> >       >       Sort of basic questions are whether you are using a VM a=
+nd how
+>> >       >       much memory
+>> >       >       you have.
+>> >       >
+>> >       >       Afterwards, maybe it is a configuration problems?  Are y=
+ou
+>> >       >       reusing the
+>> >       >       configuration of your host machine?  Here are some old p=
+osts on
+>> >       >       disabling
+>> >       >       module signing:
+>> >       >
+>> >       > https://stackoverflow.com/questions/29806414/how-to-disable-ke=
+rnel-module-s
+>> >       >       igning-in-linux
+>> >       > https://kernelnewbies.kernelnewbies.narkive.com/kKXLBu8C/how-t=
+o-disable-mod
+>> >       > ule-verification-failed-signature-and-or-required-key-missing-=
+tainting-ker
+>> >       >       nel
+>> >       >
+>> >       >       If you change the configuration file, do make olddefconf=
+ig
+>> >       >       afterwards to
+>> >       >       make sure your changes are take into account.
+>> >       >
+>> >       >       Let me know how it goes.
+>> >       >
+>> >       >       julia
+>> >       >
+>> >       >
+>> >       >       >
+>> >       >       > Below is the error I got while installing the kernel b=
+uild
+>> >       >       >
+>> >       >       > ...
+>> >       >       >
+>> >       >       > INSTALL /lib/modules/6.14.0-rc1custom-
+>> >       >       > ola+/kernel/net/vmw_vsock/vmw_vsock_virtio_transport_c=
+ommon.ko
+>> >       >       >   INSTALL /lib/modules/6.14.0-rc1custom-
+>> >       >       > ola+/kernel/net/vmw_vsock/hv_sock.ko
+>> >       >       >   INSTALL /lib/modules/6.14.0-rc1custom-
+>> >       >       > ola+/kernel/net/vmw_vsock/vsock_loopback.ko
+>> >       >       >   INSTALL
+>> >       >       /lib/modules/6.14.0-rc1custom-ola+/kernel/net/nsh/nsh.ko
+>> >       >       >   INSTALL
+>> >       >       /lib/modules/6.14.0-rc1custom-ola+/kernel/net/hsr/hsr.ko
+>> >       >       >   INSTALL
+>> >       >       /lib/modules/6.14.0-rc1custom-ola+/kernel/net/qrtr/qrtr.=
+ko
+>> >       >       >   INSTALL
+>> >       >       /lib/modules/6.14.0-rc1custom-ola+/kernel/net/qrtr/qrtr-
+>> >       >       > mhi.ko
+>> >       >       >   DEPMOD  /lib/modules/6.14.0-rc1custom-ola+
+>> >       >       >   INSTALL /boot
+>> >       >       > run-parts: executing /etc/kernel/postinst.d/dkms
+>> >       >       6.14.0-rc1custom-ola+
+>> >       >       > /boot/vmlinuz-6.14.0-rc1custom-ola+
+>> >       >       > dkms: running auto installation service for kernel
+>> >       >       6.14.0-rc1custom-
+>> >       >       > ola+.
+>> >       >       > readelf: Error: Not an ELF file - it has the wrong mag=
+ic bytes
+>> >       >       at the
+>> >       >       > start
+>> >       >       > readelf: Error: Not an ELF file - it has the wrong mag=
+ic bytes
+>> >       >       at the
+>> >       >       > start
+>> >       >       > readelf: Error: Not an ELF file - it has the wrong mag=
+ic bytes
+>> >       >       at the
+>> >       >       > start
+>> >       >       > readelf: Error: Not an ELF file - it has the wrong mag=
+ic bytes
+>> >       >       at the
+>> >       >       > start
+>> >       >       > readelf: Error: Not an ELF file - it has the wrong mag=
+ic bytes
+>> >       >       at the
+>> >       >       > start
+>> >       >       > readelf: Error: Not an ELF file - it has the wrong mag=
+ic bytes
+>> >       >       at the
+>> >       >       > start
+>> >       >       > readelf: Error: Not an ELF file - it has the wrong mag=
+ic bytes
+>> >       >       at the
+>> >       >       > start
+>> >       >       > readelf: Error: Not an ELF file - it has the wrong mag=
+ic bytes
+>> >       >       at the
+>> >       >       > start
+>> >       >       > readelf: Error: Not an ELF file - it has the wrong mag=
+ic bytes
+>> >       >       at the
+>> >       >       > start
+>> >       >       > readelf: Error: Not an ELF file - it has the wrong mag=
+ic bytes
+>> >       >       at the
+>> >       >       > start
+>> >       >       > readelf: Error: Not an ELF file - it has the wrong mag=
+ic bytes
+>> >       >       at the
+>> >       >       > start
+>> >       >       > readelf: Error: Not an ELF file - it has the wrong mag=
+ic bytes
+>> >       >       at the
+>> >       >       > start
+>> >       >       > readelf: Error: Not an ELF file - it has the wrong mag=
+ic bytes
+>> >       >       at the
+>> >       >       > start
+>> >       >       > readelf: Error: Not an ELF file - it has the wrong mag=
+ic bytes
+>> >       >       at the
+>> >       >       > start
+>> >       >       > Sign command:
+>> >       >       /lib/modules/6.14.0-rc1custom-ola+/build/scripts/sign-
+>> >       >       > file
+>> >       >       > Binary
+>> >       >       /lib/modules/6.14.0-rc1custom-ola+/build/scripts/sign-fi=
+le not
+>> >       >       > found, modules won't be signed
+>> >       >       >
+>> >       >       > Building module:
+>> >       >       > Cleaning build area...
+>> >       >       > make -j4 KERNELRELEASE=3D6.14.0-rc1custom-ola+
+>> >       >       KVER=3D6.14.0-rc1custom-
+>> >       >       > ola+........(bad exit status: 2)
+>> >       >       > Error! Bad return status for module build on kernel:
+>> >       >       6.14.0-rc1custom-
+>> >       >       > ola+ (x86_64)
+>> >       >       > Consult /var/lib/dkms/broadcom-sta/6.30.223.271/build/=
+make.log
+>> >       >       for more
+>> >       >       > information.
+>> >       >       > Sign command:
+>> >       >       /lib/modules/6.14.0-rc1custom-ola+/build/scripts/sign-
+>> >       >       > file
+>> >       >       > Binary
+>> >       >       /lib/modules/6.14.0-rc1custom-ola+/build/scripts/sign-fi=
+le not
+>> >       >       > found, modules won't be signed
+>> >       >       >
+>> >       >       > Building module:
+>> >       >       > Cleaning build area...(bad exit status: 2)
+>> >       >       > kernelver=3D6.14.0-rc1custom-ola+ ./dkms-make.sh...(ba=
+d exit
+>> >       >       status: 2)
+>> >       >       > Error! Bad return status for module build on kernel:
+>> >       >       6.14.0-rc1custom-
+>> >       >       > ola+ (x86_64)
+>> >       >       > Consult /var/lib/dkms/realtek-
+>> >       >       > rtl8814au/5.8.5.1~git20240527.d8208c8/build/make.log f=
+or more
+>> >       >       > information.
+>> >       >       > Sign command:
+>> >       >       /lib/modules/6.14.0-rc1custom-ola+/build/scripts/sign-
+>> >       >       > file
+>> >       >       > Binary
+>> >       >       /lib/modules/6.14.0-rc1custom-ola+/build/scripts/sign-fi=
+le not
+>> >       >       > found, modules won't be signed
+>> >       >       >
+>> >       >       > Building module:
+>> >       >       > Cleaning build area...(bad exit status: 2)
+>> >       >       > 'make' -j4 KVER=3D6.14.0-rc1custom-ola+
+>> >       >       KSRC=3D/lib/modules/6.14.0-
+>> >       >       > rc1custom-ola+/build...(bad exit status: 2)
+>> >       >       > Error! Bad return status for module build on kernel:
+>> >       >       6.14.0-rc1custom-
+>> >       >       > ola+ (x86_64)
+>> >       >       > Consult /var/lib/dkms/realtek-
+>> >       >       > rtl88xxau/5.6.4.2~git20240510.b44d288/build/make.log f=
+or more
+>> >       >       > information.
+>> >       >       > Error! One or more modules failed to install during
+>> >       >       autoinstall.
+>> >       >       > Refer to previous errors for more information.
+>> >       >       > dkms: autoinstall for kernel: 6.14.0-rc1custom-ola+ fa=
+iled!
+>> >       >       > run-parts: /etc/kernel/postinst.d/dkms exited with ret=
+urn code
+>> >       >       11
+>> >       >       > make[2]: *** [arch/x86/Makefile:321: install] Error 1
+>> >       >       > make[1]: ***
+>> >       >       [/home/laolu/Desktop/Outreachy_Contributions/Linux-
+>> >       >       > Kernel/git/kernels/staging/Makefile:372: __build_one_b=
+y_one]
+>> >       >       Error 2
+>> >       >       > make[1]: Target 'modules_install' not remade because o=
+f
+>> >       >       errors.
+>> >       >       > make[1]: Target 'install' not remade because of errors=
+.
+>> >       >       > make: *** [Makefile:251: __sub-make] Error 2
+>> >       >       > make: Target 'modules_install' not remade because of e=
+rrors.
+>> >       >       > make: Target 'install' not remade because of errors.
+>> >       >       >
+>> >       >       >
+>> >       >       >
+>> >       >
+>> >       >
+>> >       >
+>> >
+>> >
+>> >
