@@ -1,412 +1,146 @@
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-wm1-f46.google.com (mail-wm1-f46.google.com [209.85.128.46])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E2514524F
-	for <outreachy@lists.linux.dev>; Sun, 30 Mar 2025 18:36:19 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.104
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 10BCC2E630;
+	Mon, 31 Mar 2025 04:38:41 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.46
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1743359784; cv=none; b=j95z3qnIFC+UYY0VqNingp+zihZW8ULlRxjbCCHxseSjZ3/NdWdSg1FHSJbKgEhEyqxKsCBPledWxhoreIYgXGDpyutbDBoq/XyVXz5t83tCBYAZjQ/NHyzFOwuX6fXkJp1KkXGTSPt6/OlZce7tcGKZS+Dhqdd/jweQIRXjoCg=
+	t=1743395923; cv=none; b=DsWFxFulq6/pyoFMfu3Y2uXbFojWj0d5tbQNOQuiSMigPeMMCdShpcy0Y7yJ0R2ol5xGoCrfcRit0ZdWLyuo7b7aYYtBF7dVFOd0p2vSytHv1/kEjWc+DalK3x0jApbd9ZbSSeZY8bI7nhu58P9ogwxb352vZKP29ovMlrhhrnU=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1743359784; c=relaxed/simple;
-	bh=oo/EnwaKpUymZas5G3VgfT2WWeByRWULSFX7+Ox8j38=;
-	h=Date:From:To:cc:Subject:In-Reply-To:Message-ID:References:
-	 MIME-Version:Content-Type; b=F2undS0WzS9+LlgSnMigqHsIkYWl6krvbGYKX48extItfFeMSHa/mikydS8AarYNbhO2pMohrr3cGQ989Fg/SogzIFo7hXUFOswHIHX78GrwCuPaEYORscPraGsU5WcxQU99YMyMvNEe4dzihqpe7jL2am25ap7Dw+FQ/u/J9kA=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=qQ7Lndkx; arc=none smtp.client-ip=192.134.164.104
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
+	s=arc-20240116; t=1743395923; c=relaxed/simple;
+	bh=TtjY9Wzkw60oyefIgqV6BsR5lP3P31nmpIUBDv1LY0s=;
+	h=Message-ID:Date:From:To:Cc:Subject:MIME-Version:Content-Type:
+	 Content-Disposition; b=BVR4D2/ikdymZ/FHCJnvcsi8/JNCqnSXIbItJDoQif//oo81juSHFLfyOR+MBSqbA6DwLHWCSRDGuJBZFOne+lAm6uwndpHU92Gc9Yrpw0X4Rug3gPBEGIQoPr8l7FM+/PP+549dh7EJkRMpNKbdU3aRPagsN9GhA444O+I2UOY=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=AUR7OPFp; arc=none smtp.client-ip=209.85.128.46
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="qQ7Lndkx"
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="AUR7OPFp"
+Received: by mail-wm1-f46.google.com with SMTP id 5b1f17b1804b1-43cf3192f3bso40703365e9.1;
+        Sun, 30 Mar 2025 21:38:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=VdOzthKeFV6WQMKNq61+S5EPtURguAIJIUh2EdnyIYs=;
-  b=qQ7Lndkxo+TgWEYkWdrI4akb3tjbfMh0WTk2/pRDkjo16xFhIWIIO7NE
-   EXT+02XWzWUEGV9C1Jx8adM/3uJ8pcoJqHBUqTStinFwYvZ18AuIreZ/W
-   bv+KfKM4+W/d9T38f0JMyfw4ngiqfDF0LJIZPO1bDk6oJqrxVK6gEwNia
-   c=;
-Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="6.14,289,1736809200"; 
-   d="scan'208";a="112970224"
-Received: from 231.85.89.92.rev.sfr.net (HELO hadrien) ([92.89.85.231])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Mar 2025 20:36:18 +0200
-Date: Sun, 30 Mar 2025 20:36:17 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-X-X-Sender: jll@hadrien
-To: Richard Akintola <princerichard17a@gmail.com>
-cc: "outreachy@lists.linux.dev" <outreachy@lists.linux.dev>
-Subject: Re: Can't Build Linux Kernel from Tutorial
-In-Reply-To: <CAMyr_bL-rAZRfPjEWMKHJNApUySeP_Jgkj_iDH+7EK_hCS-Bmg@mail.gmail.com>
-Message-ID: <alpine.DEB.2.22.394.2503302034530.23941@hadrien>
-References: <c1b29fc7062b6e6a130de4adb121845d9574a50e.camel@gmail.com> <c651948d-2c11-d140-3aca-9ace35f52eb@inria.fr> <CAMyr_bLnE22pObV784EKpabb-R8w64o0fYDf8_x8h9rmySCoVA@mail.gmail.com> <bbec6f21-69c1-b14d-512-7660b83ffd7@inria.fr>
- <CAMyr_bJyn3Krz0R5tYooQRP6A3=bj_H_f3f4rejGJGkS8LQaLg@mail.gmail.com> <CAMyr_b+rJBRQFrFCnB=kq33XCyo=twuRQ-OrQC50D0mH9CaRUg@mail.gmail.com> <alpine.DEB.2.22.394.2503252124080.3642@hadrien> <CAMyr_bKWDLGZLQgducONi=H_107UydmaOErRcRythgw9FR9CFw@mail.gmail.com>
- <CAMyr_bKSouz-OCTOaWX9HvAEVLEsodW6Nv9MNDqjzYWp+=Ohtw@mail.gmail.com> <alpine.DEB.2.22.394.2503291129340.58211@hadrien> <CAMyr_bL-rAZRfPjEWMKHJNApUySeP_Jgkj_iDH+7EK_hCS-Bmg@mail.gmail.com>
-User-Agent: Alpine 2.22 (DEB 394 2020-01-19)
+        d=gmail.com; s=20230601; t=1743395920; x=1744000720; darn=lists.linux.dev;
+        h=content-disposition:mime-version:subject:cc:to:from:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=v+aXTy1NLfcdVoSzh3r1E4KeMRGPMrOizren/t4vs+g=;
+        b=AUR7OPFpglcTLM/MwIjhZ7uo4GnUW+0KTDh6CYTA2lJd2pD1kIAVykPgHSQ5O2HyWA
+         keW+16XGwn0YdedAetGjKWIIKd0mUns0VyCDyWpbMZs3f1r47y5PWsMiGdJvV2aI+3n3
+         hIVXRUrnkbsAx9zz1o/4Xy8REW1yB9QeD3SDOmT1gPxIDgxI1ONTSdgD8yeoHLGJwS6V
+         mcfU7PNADCAk+mfVq7efGhJPSc9juSco805CiDZYdDd93mz8KqFfBzfbp/KRPgeMLZ/I
+         Kz5n4mrJRFrafzpBq0ZD+cHL0OANM7k229FjDD+ZDl3Io1vhU6bMJUcbu8kXEu3R7Jhr
+         jDWQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1743395920; x=1744000720;
+        h=content-disposition:mime-version:subject:cc:to:from:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=v+aXTy1NLfcdVoSzh3r1E4KeMRGPMrOizren/t4vs+g=;
+        b=mLIo+3NjP4VRYEV7RrRycgkedOTQGZh0NkIjQxOIlO337QGOMEx24XAEro0LybqLXk
+         JXpL60oRFxgUsVg8SxedQ8HZlbno5c66/3+Z5c+bpDGWaTGBuoTtL30nBtIsT8LC6LX4
+         ASRP7WpypbWEBQZ2xscSa3VQ9NroMbQhWX6HwZpHA3rFTGRP8bxYdaxgrHGfBqNx/p6I
+         rcJS5Tce217R67JX1gV6SdNc6hHUq1Op68V5iNSKGkWh/k0Pj2z6bpFFJZ8v4qAAuWDn
+         EzNv51OEP4Apeu/ZGTYeeOitVSftRYlIVpu5591fB1Nqpj6PesA56vr6fy6Ou5pQBfEa
+         YkCg==
+X-Forwarded-Encrypted: i=1; AJvYcCUi4EoJ5cMqNjqNVGqoZbtwF6oVYR9/SvpixlH4yh0r1kQaSLbaO9HqkzQoQt+BW1yT+OWco/Q33dwwwBK3@lists.linux.dev, AJvYcCVdDm0q2+oDhmEJnQ44CQHR1gEbY44LDfE7KbsdvmUIvHQ3S6kop+Kbq+et19aI717ENTkh/vCjpKrQ@lists.linux.dev
+X-Gm-Message-State: AOJu0YyH0GrByHDooy+mMA12s6yDEoF+BPMvr0wDCWk4csGQG6wMs8h8
+	br7TTnnDmrZF8CXUqaOy50B6yfKb2j0nwPowE6Zh28isolLyqgQC
+X-Gm-Gg: ASbGncuNQKtoV/23SbAjsgA9UDcotWYn26iB1FuMpV2c9kXgARYaG6OONeSL3wJsIv8
+	lsmDL4NH7lpzFDVyEFvYJT55oHGTU5k1zvzglz0E1E+EJNzeU+5KgxhgQLRtsoZ3LjDdmfE2IRo
+	CcuT++TlBs/8rQEbaXhZ8VXnkThty01ORwo3yLUGWfQGC9eJSsTgX1yxq+CJH7dSNunIZLa0zRx
+	XwmID5eWzH0z/a6/KtR7PkVqm+dmdIjWFK/iQRlPz38aXqvmbr/0PfCFW0BYu8UjblSb7Udc3uG
+	5dicKllxbTC5w1LJY6L/7GImBXtbwT69USUPXN7txe+ycA==
+X-Google-Smtp-Source: AGHT+IEW8oi7KoyElo34NgNIBd83oZY1zutO8TKygkw+BTaZnofnBPjZ4iGfPTgKHb23i3nSxmztvQ==
+X-Received: by 2002:a05:600c:3d0d:b0:43c:f44c:72a6 with SMTP id 5b1f17b1804b1-43db61e0584mr70709495e9.2.1743395919970;
+        Sun, 30 Mar 2025 21:38:39 -0700 (PDT)
+Received: from parrot ([197.211.59.65])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43d82dede98sm152633395e9.6.2025.03.30.21.38.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 30 Mar 2025 21:38:39 -0700 (PDT)
+Message-ID: <67ea1c4f.050a0220.29e327.3bb6@mx.google.com>
+X-Google-Original-Message-ID: <Z-ocTGZOZATD1Nbo@princerichard17a@gmail.com>
+Date: Mon, 31 Mar 2025 05:38:36 +0100
+From: Richard Akintola <princerichard17a@gmail.com>
+To: sudip.mukherjee@gmail.com, teddy.wang@siliconmotion.com,
+	gregkh@linuxfoundation.org, linux-fbdev@vger.kernel.org,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy@lists.linux.dev
+Cc: julia.lawall@inria.fr, princerichard17a@gmail.com
+Subject: [PATCH] staging: sm750fb: fix function name to kernel code style
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-1319142966-1743359777=:23941"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+Change camelCase function name sii164GetDeviceID to sii164_get_device_id
+as reported by checkpatch.pl:
 
---8323329-1319142966-1743359777=:23941
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
+CHECK: Avoid camelCase: <sii164GetDeviceID>
 
+Signed-off-by: Richard Akintola <princerichard17a@gmail.com>
+---
+ drivers/staging/sm750fb/ddk750_dvi.c    | 2 +-
+ drivers/staging/sm750fb/ddk750_sii164.c | 6 +++---
+ drivers/staging/sm750fb/ddk750_sii164.h | 2 +-
+ 3 files changed, 5 insertions(+), 5 deletions(-)
 
+diff --git a/drivers/staging/sm750fb/ddk750_dvi.c b/drivers/staging/sm750fb/ddk750_dvi.c
+index 8b81e8642f9e..3fb14eff2de1 100644
+--- a/drivers/staging/sm750fb/ddk750_dvi.c
++++ b/drivers/staging/sm750fb/ddk750_dvi.c
+@@ -16,7 +16,7 @@ static struct dvi_ctrl_device dcft_supported_dvi_controller[] = {
+ 	{
+ 		.init = sii164_init_chip,
+ 		.get_vendor_id = sii164_get_vendor_id,
+-		.get_device_id = sii164GetDeviceID,
++		.get_device_id = sii164_get_device_id,
+ #ifdef SII164_FULL_FUNCTIONS
+ 		.reset_chip = sii164ResetChip,
+ 		.get_chip_string = sii164GetChipString,
+diff --git a/drivers/staging/sm750fb/ddk750_sii164.c b/drivers/staging/sm750fb/ddk750_sii164.c
+index 2532b60245ac..bdf270f38884 100644
+--- a/drivers/staging/sm750fb/ddk750_sii164.c
++++ b/drivers/staging/sm750fb/ddk750_sii164.c
+@@ -48,13 +48,13 @@ unsigned short sii164_get_vendor_id(void)
+ }
+ 
+ /*
+- *  sii164GetDeviceID
++ *  sii164_get_gevice_id
+  *      This function gets the device ID of the DVI controller chip.
+  *
+  *  Output:
+  *      Device ID
+  */
+-unsigned short sii164GetDeviceID(void)
++unsigned short sii164_get_device_id(void)
+ {
+ 	unsigned short deviceID;
+ 
+@@ -141,7 +141,7 @@ long sii164_init_chip(unsigned char edge_select,
+ 
+ 	/* Check if SII164 Chip exists */
+ 	if ((sii164_get_vendor_id() == SII164_VENDOR_ID) &&
+-	    (sii164GetDeviceID() == SII164_DEVICE_ID)) {
++	    (sii164_get_device_id() == SII164_DEVICE_ID)) {
+ 		/*
+ 		 *  Initialize SII164 controller chip.
+ 		 */
+diff --git a/drivers/staging/sm750fb/ddk750_sii164.h b/drivers/staging/sm750fb/ddk750_sii164.h
+index 71a7c1cb42c4..a76091f6622b 100644
+--- a/drivers/staging/sm750fb/ddk750_sii164.h
++++ b/drivers/staging/sm750fb/ddk750_sii164.h
+@@ -28,7 +28,7 @@ long sii164_init_chip(unsigned char edgeSelect,
+ 		      unsigned char pllFilterValue);
+ 
+ unsigned short sii164_get_vendor_id(void);
+-unsigned short sii164GetDeviceID(void);
++unsigned short sii164_get_device_id(void);
+ 
+ #ifdef SII164_FULL_FUNCTIONS
+ void sii164ResetChip(void);
+-- 
+2.39.5
 
-On Sun, 30 Mar 2025, Richard Akintola wrote:
-
-> Hi Julia,
->
-> Having reviewed previous messages on the mailing list, and running the command:
-> perl scripts/checkpatch.pl --strict -f drivers/staging/sm750fb/* | less
->
-> I found:
-> ------------------------------------
-> drivers/staging/sm750fb/ddk750_dvi.c
-> ------------------------------------
-> CHECK: Avoid CamelCase: <sii164GetDeviceID>
-> #19: FILE: drivers/staging/sm750fb/ddk750_dvi.c:19:
-> +               .get_device_id = sii164GetDeviceID,
->
-> CHECK: Avoid CamelCase: <sii164ResetChip>
-> #21: FILE: drivers/staging/sm750fb/ddk750_dvi.c:21:
-> +               .reset_chip = sii164ResetChip,
->
-> CHECK: Avoid CamelCase: <sii164GetChipString>
-> #22: FILE: drivers/staging/sm750fb/ddk750_dvi.c:22:
-> +               .get_chip_string = sii164GetChipString,
->
-> CHECK: Avoid CamelCase: <sii164SetPower>
-> #23: FILE: drivers/staging/sm750fb/ddk750_dvi.c:23:
-> +               .set_power = sii164SetPower,
->
-> CHECK: Avoid CamelCase: <sii164EnableHotPlugDetection>
-> #24: FILE: drivers/staging/sm750fb/ddk750_dvi.c:24:
-> +               .enable_hot_plug_detection = sii164EnableHotPlugDetection,
->
-> CHECK: Avoid CamelCase: <sii164IsConnected>
-> #25: FILE: drivers/staging/sm750fb/ddk750_dvi.c:25:
-> +               .is_connected = sii164IsConnected,
->
-> CHECK: Avoid CamelCase: <sii164CheckInterrupt>
-> #26: FILE: drivers/staging/sm750fb/ddk750_dvi.c:26:
-> +               .check_interrupt = sii164CheckInterrupt,
->
-> CHECK: Avoid CamelCase: <sii164ClearInterrupt>
-> #27: FILE: drivers/staging/sm750fb/ddk750_dvi.c:27:
-> +               .clear_interrupt = sii164ClearInterrupt,
->
-> total: 0 errors, 0 warnings, 8 checks, 62 lines checked
->
-> I would love to have all the 8 checks done, although I learnt it is one
-> check at a time.
->
-> Please how do I go about sending the patches, given the fact that same
-> definitions are
-> found in file: drivers/staging/sm750fb/ddk750_dvi.c and file:
-> drivers/staging/sm750fb/ddk750_sii164.h
-> and I don't know which other files they are defined.
-
-It looks like you should be able to find the function definitions using
-grep.  You can make one patch that contains all of the changes in all the
-relevant files.  Remember to compile your kernel to be sure that
-everything is consistent.
-
-julia
-
->
-> Richard Akintola
->
-> On Sat, Mar 29, 2025 at 11:30 AM Julia Lawall <julia.lawall@inria.fr> wrote:
-> >
-> >
-> >
-> > On Sat, 29 Mar 2025, Richard Akintola wrote:
-> >
-> > > Hi Julia,
-> > >
-> > > I want to inform you that I have successfully built the kernel.
-> > > After building successfully, I could not install, I searched on how to
-> > > build Linux kernel on Debian, so I found the command "make -jN
-> > > bindeb-pkg" which created a debian packages for easy installation in
-> > > the parent directory which I installed with the command "sudo apt
-> > > install ./*.deb".
-> > >
-> > > Thank you for the support so far, I really appreciate, now nothing is
-> > > standing in the way of sending my patches.
-> >
-> > OK, sounds good.
-> >
-> > It could be good to review the previous messages on the mailing list to
-> > get suggestions of what to focus on and to see what others have done.  I
-> > will post some more suggestions this weekend.
-> >
-> > julia
-> >
-> >
-> > >
-> > > Richard Akintola
-> > >
-> > >
-> > > On Wed, Mar 26, 2025 at 11:50 AM Richard Akintola
-> > > <princerichard17a@gmail.com> wrote:
-> > > >
-> > > > Thank you Julia, do expect my patches.
-> > > >
-> > > > Richard
-> > > >
-> > > >
-> > > > On Tue, 25 Mar 2025, 21:25 Julia Lawall, <julia.lawall@inria.fr> wrote:
-> > > >>
-> > > >>
-> > > >>
-> > > >> On Tue, 25 Mar 2025, Richard Akintola wrote:
-> > > >>
-> > > >> > Hi Julia,
-> > > >> > The reason I haven't sent feedback is that the kernel I built and installed resulted in kernel panic which I am trying to recover from and if I am not able to, I will install a new Os and try again (until I successfully build the kernel).
-> > > >>
-> > > >> OK, thanks for the update.  If you can't make it work in th short term,
-> > > >> you could start working on some patches while continuing to try to get the
-> > > >> build to work.
-> > > >>
-> > > >> julia
-> > > >>
-> > > >>
-> > > >>
-> > > >> >
-> > > >> > Thank you for the support so far.
-> > > >> >
-> > > >> > Richard Akintola
-> > > >> >
-> > > >> > On Monday, March 24, 2025, Richard Akintola <princerichard17a@gmail.com> wrote:
-> > > >> >
-> > > >> >       Thank you Julia, I will go about resolving it as recommended
-> > > >> >
-> > > >> >       Richard Akintola
-> > > >> >
-> > > >> >
-> > > >> >       On Mon, 24 Mar 2025, 16:06 Julia Lawall, <julia.lawall@inria.fr> wrote:
-> > > >> >
-> > > >> >
-> > > >> >       On Mon, 24 Mar 2025, Richard Akintola wrote:
-> > > >> >
-> > > >> >       > Good to hear from you Julia,
-> > > >> >       >
-> > > >> >       > For the first question: No, I am not using a VM, I am building the kernel on
-> > > >> >       > my machine's Os which is Parrot Linux Os.
-> > > >> >       >
-> > > >> >       > And as for the configuration: yes, I am reusing the the configuration of my
-> > > >> >       > host machine - I copied my machine's configuration to the repository as
-> > > >> >       > shown in the tutorial.
-> > > >> >
-> > > >> >
-> > > >> >       OK, try to find something related to signatures in your configuration.
-> > > >> >       Distro configurations often have this issue.  For Debian there is some PEM
-> > > >> >       thing.
-> > > >> >
-> > > >> >       julia
-> > > >> >
-> > > >> >       >
-> > > >> >       > Richard Akintola
-> > > >> >       >
-> > > >> >       > On Mon, 24 Mar 2025, 14:57 Julia Lawall, <julia.lawall@inria.fr> wrote:
-> > > >> >       >
-> > > >> >       >
-> > > >> >       >       On Mon, 24 Mar 2025, Richard Akintola wrote:
-> > > >> >       >
-> > > >> >       >       > Hello Julia,
-> > > >> >       >       >
-> > > >> >       >       > I have been trying to build the Linux Kernel via the tutorial
-> > > >> >       >       on my
-> > > >> >       >       > machine to no avail.
-> > > >> >       >       >
-> > > >> >       >       > This has prevented me from making a PATCH.
-> > > >> >       >       >
-> > > >> >       >       > This is the Os and Kernel version of my machine
-> > > >> >       >       > OS: Parrot Security 6.3 (lorikeet) x86_64
-> > > >> >       >       > Kernel: 6.5.0-13parrot1-amd64
-> > > >> >       >
-> > > >> >       >       Sort of basic questions are whether you are using a VM and how
-> > > >> >       >       much memory
-> > > >> >       >       you have.
-> > > >> >       >
-> > > >> >       >       Afterwards, maybe it is a configuration problems?  Are you
-> > > >> >       >       reusing the
-> > > >> >       >       configuration of your host machine?  Here are some old posts on
-> > > >> >       >       disabling
-> > > >> >       >       module signing:
-> > > >> >       >
-> > > >> >       > https://stackoverflow.com/questions/29806414/how-to-disable-kernel-module-s
-> > > >> >       >       igning-in-linux
-> > > >> >       > https://kernelnewbies.kernelnewbies.narkive.com/kKXLBu8C/how-to-disable-mod
-> > > >> >       > ule-verification-failed-signature-and-or-required-key-missing-tainting-ker
-> > > >> >       >       nel
-> > > >> >       >
-> > > >> >       >       If you change the configuration file, do make olddefconfig
-> > > >> >       >       afterwards to
-> > > >> >       >       make sure your changes are take into account.
-> > > >> >       >
-> > > >> >       >       Let me know how it goes.
-> > > >> >       >
-> > > >> >       >       julia
-> > > >> >       >
-> > > >> >       >
-> > > >> >       >       >
-> > > >> >       >       > Below is the error I got while installing the kernel build
-> > > >> >       >       >
-> > > >> >       >       > ...
-> > > >> >       >       >
-> > > >> >       >       > INSTALL /lib/modules/6.14.0-rc1custom-
-> > > >> >       >       > ola+/kernel/net/vmw_vsock/vmw_vsock_virtio_transport_common.ko
-> > > >> >       >       >   INSTALL /lib/modules/6.14.0-rc1custom-
-> > > >> >       >       > ola+/kernel/net/vmw_vsock/hv_sock.ko
-> > > >> >       >       >   INSTALL /lib/modules/6.14.0-rc1custom-
-> > > >> >       >       > ola+/kernel/net/vmw_vsock/vsock_loopback.ko
-> > > >> >       >       >   INSTALL
-> > > >> >       >       /lib/modules/6.14.0-rc1custom-ola+/kernel/net/nsh/nsh.ko
-> > > >> >       >       >   INSTALL
-> > > >> >       >       /lib/modules/6.14.0-rc1custom-ola+/kernel/net/hsr/hsr.ko
-> > > >> >       >       >   INSTALL
-> > > >> >       >       /lib/modules/6.14.0-rc1custom-ola+/kernel/net/qrtr/qrtr.ko
-> > > >> >       >       >   INSTALL
-> > > >> >       >       /lib/modules/6.14.0-rc1custom-ola+/kernel/net/qrtr/qrtr-
-> > > >> >       >       > mhi.ko
-> > > >> >       >       >   DEPMOD  /lib/modules/6.14.0-rc1custom-ola+
-> > > >> >       >       >   INSTALL /boot
-> > > >> >       >       > run-parts: executing /etc/kernel/postinst.d/dkms
-> > > >> >       >       6.14.0-rc1custom-ola+
-> > > >> >       >       > /boot/vmlinuz-6.14.0-rc1custom-ola+
-> > > >> >       >       > dkms: running auto installation service for kernel
-> > > >> >       >       6.14.0-rc1custom-
-> > > >> >       >       > ola+.
-> > > >> >       >       > readelf: Error: Not an ELF file - it has the wrong magic bytes
-> > > >> >       >       at the
-> > > >> >       >       > start
-> > > >> >       >       > readelf: Error: Not an ELF file - it has the wrong magic bytes
-> > > >> >       >       at the
-> > > >> >       >       > start
-> > > >> >       >       > readelf: Error: Not an ELF file - it has the wrong magic bytes
-> > > >> >       >       at the
-> > > >> >       >       > start
-> > > >> >       >       > readelf: Error: Not an ELF file - it has the wrong magic bytes
-> > > >> >       >       at the
-> > > >> >       >       > start
-> > > >> >       >       > readelf: Error: Not an ELF file - it has the wrong magic bytes
-> > > >> >       >       at the
-> > > >> >       >       > start
-> > > >> >       >       > readelf: Error: Not an ELF file - it has the wrong magic bytes
-> > > >> >       >       at the
-> > > >> >       >       > start
-> > > >> >       >       > readelf: Error: Not an ELF file - it has the wrong magic bytes
-> > > >> >       >       at the
-> > > >> >       >       > start
-> > > >> >       >       > readelf: Error: Not an ELF file - it has the wrong magic bytes
-> > > >> >       >       at the
-> > > >> >       >       > start
-> > > >> >       >       > readelf: Error: Not an ELF file - it has the wrong magic bytes
-> > > >> >       >       at the
-> > > >> >       >       > start
-> > > >> >       >       > readelf: Error: Not an ELF file - it has the wrong magic bytes
-> > > >> >       >       at the
-> > > >> >       >       > start
-> > > >> >       >       > readelf: Error: Not an ELF file - it has the wrong magic bytes
-> > > >> >       >       at the
-> > > >> >       >       > start
-> > > >> >       >       > readelf: Error: Not an ELF file - it has the wrong magic bytes
-> > > >> >       >       at the
-> > > >> >       >       > start
-> > > >> >       >       > readelf: Error: Not an ELF file - it has the wrong magic bytes
-> > > >> >       >       at the
-> > > >> >       >       > start
-> > > >> >       >       > readelf: Error: Not an ELF file - it has the wrong magic bytes
-> > > >> >       >       at the
-> > > >> >       >       > start
-> > > >> >       >       > Sign command:
-> > > >> >       >       /lib/modules/6.14.0-rc1custom-ola+/build/scripts/sign-
-> > > >> >       >       > file
-> > > >> >       >       > Binary
-> > > >> >       >       /lib/modules/6.14.0-rc1custom-ola+/build/scripts/sign-file not
-> > > >> >       >       > found, modules won't be signed
-> > > >> >       >       >
-> > > >> >       >       > Building module:
-> > > >> >       >       > Cleaning build area...
-> > > >> >       >       > make -j4 KERNELRELEASE=6.14.0-rc1custom-ola+
-> > > >> >       >       KVER=6.14.0-rc1custom-
-> > > >> >       >       > ola+........(bad exit status: 2)
-> > > >> >       >       > Error! Bad return status for module build on kernel:
-> > > >> >       >       6.14.0-rc1custom-
-> > > >> >       >       > ola+ (x86_64)
-> > > >> >       >       > Consult /var/lib/dkms/broadcom-sta/6.30.223.271/build/make.log
-> > > >> >       >       for more
-> > > >> >       >       > information.
-> > > >> >       >       > Sign command:
-> > > >> >       >       /lib/modules/6.14.0-rc1custom-ola+/build/scripts/sign-
-> > > >> >       >       > file
-> > > >> >       >       > Binary
-> > > >> >       >       /lib/modules/6.14.0-rc1custom-ola+/build/scripts/sign-file not
-> > > >> >       >       > found, modules won't be signed
-> > > >> >       >       >
-> > > >> >       >       > Building module:
-> > > >> >       >       > Cleaning build area...(bad exit status: 2)
-> > > >> >       >       > kernelver=6.14.0-rc1custom-ola+ ./dkms-make.sh...(bad exit
-> > > >> >       >       status: 2)
-> > > >> >       >       > Error! Bad return status for module build on kernel:
-> > > >> >       >       6.14.0-rc1custom-
-> > > >> >       >       > ola+ (x86_64)
-> > > >> >       >       > Consult /var/lib/dkms/realtek-
-> > > >> >       >       > rtl8814au/5.8.5.1~git20240527.d8208c8/build/make.log for more
-> > > >> >       >       > information.
-> > > >> >       >       > Sign command:
-> > > >> >       >       /lib/modules/6.14.0-rc1custom-ola+/build/scripts/sign-
-> > > >> >       >       > file
-> > > >> >       >       > Binary
-> > > >> >       >       /lib/modules/6.14.0-rc1custom-ola+/build/scripts/sign-file not
-> > > >> >       >       > found, modules won't be signed
-> > > >> >       >       >
-> > > >> >       >       > Building module:
-> > > >> >       >       > Cleaning build area...(bad exit status: 2)
-> > > >> >       >       > 'make' -j4 KVER=6.14.0-rc1custom-ola+
-> > > >> >       >       KSRC=/lib/modules/6.14.0-
-> > > >> >       >       > rc1custom-ola+/build...(bad exit status: 2)
-> > > >> >       >       > Error! Bad return status for module build on kernel:
-> > > >> >       >       6.14.0-rc1custom-
-> > > >> >       >       > ola+ (x86_64)
-> > > >> >       >       > Consult /var/lib/dkms/realtek-
-> > > >> >       >       > rtl88xxau/5.6.4.2~git20240510.b44d288/build/make.log for more
-> > > >> >       >       > information.
-> > > >> >       >       > Error! One or more modules failed to install during
-> > > >> >       >       autoinstall.
-> > > >> >       >       > Refer to previous errors for more information.
-> > > >> >       >       > dkms: autoinstall for kernel: 6.14.0-rc1custom-ola+ failed!
-> > > >> >       >       > run-parts: /etc/kernel/postinst.d/dkms exited with return code
-> > > >> >       >       11
-> > > >> >       >       > make[2]: *** [arch/x86/Makefile:321: install] Error 1
-> > > >> >       >       > make[1]: ***
-> > > >> >       >       [/home/laolu/Desktop/Outreachy_Contributions/Linux-
-> > > >> >       >       > Kernel/git/kernels/staging/Makefile:372: __build_one_by_one]
-> > > >> >       >       Error 2
-> > > >> >       >       > make[1]: Target 'modules_install' not remade because of
-> > > >> >       >       errors.
-> > > >> >       >       > make[1]: Target 'install' not remade because of errors.
-> > > >> >       >       > make: *** [Makefile:251: __sub-make] Error 2
-> > > >> >       >       > make: Target 'modules_install' not remade because of errors.
-> > > >> >       >       > make: Target 'install' not remade because of errors.
-> > > >> >       >       >
-> > > >> >       >       >
-> > > >> >       >       >
-> > > >> >       >
-> > > >> >       >
-> > > >> >       >
-> > > >> >
-> > > >> >
-> > > >> >
-> > >
-> > >
->
---8323329-1319142966-1743359777=:23941--
