@@ -1,146 +1,108 @@
-Received: from mail-vk1-f170.google.com (mail-vk1-f170.google.com [209.85.221.170])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 54DD01F09B7
-	for <outreachy@lists.linux.dev>; Wed,  2 Apr 2025 20:26:29 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.170
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6B7D51F1521;
+	Wed,  2 Apr 2025 20:34:30 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.83
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1743625590; cv=none; b=pZEn4ebQG7hJkb04pP+iRGxHByQRAkPt52hxi1F3KOW45WC996b8UcKKVngTKQw6mLyPOdU2UAUfRlXM6XWvONc/CULdTbu64ijRmGQ5MAivuqm2d7G/81/RIhO4f88b3W/1QnUOKto912XHB0fuxkPrSW/4oly9eEhqnwvC38E=
+	t=1743626073; cv=none; b=BiVJPd6QgKzIFJc6n5+ySYEuPz6kJD85zAXNamfbQPJtO5WS7MkIZTX1gsItHJj1aIKSOWMq93g3wzPGCPUncI/lX1+7caDHo3UCvmIBquqJK/tLr36JztAsZIOvz7QASIxIFUgRFH7GEO5LY7XDvgKmBUH3Tvn3S+zg87R/W7k=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1743625590; c=relaxed/simple;
-	bh=tqhvsI7M6zu5H/d4RC6oKcSwiESTyItJImU6Uu2AyEM=;
-	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
-	 To:Cc:Content-Type; b=OJhqQV5wwNODpFUW+x2QPLNr27YNpcCkUEybDe+uhF5ZnCctCWjEWSDh4H8rwyikSWcnqs7vMOOM3hnomKqmzAxGa5M9Q1QU/4WYk98x6rWJAuLEtzd6nJ+zmUZLkSrvcMrsHWYMjWalLgBTVmttviuVgWM6KyM9RIwavn0FzKg=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=BTizzUON; arc=none smtp.client-ip=209.85.221.170
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	s=arc-20240116; t=1743626073; c=relaxed/simple;
+	bh=t13ChJdfZcyB2oLRzhdA1SW3Z11asTQR/3qPJS36vrQ=;
+	h=Date:From:To:cc:Subject:In-Reply-To:Message-ID:References:
+	 MIME-Version:Content-Type; b=GcnC+BJhxNXNau7TAP4FoPqLjwpPGJ3THtF3SePa4tq0k5VPSaU7Y0cGtWB5zLPwFKa2s7+0Lrlpg7jO8ZpU7xbQEU/HXPwAmger2xDAe90ySR5ABxSrUuxHPaVQLCJXMStJgAmaJiSlWEondzxHJYXbjgpk6cQW5ONrAo6GvIE=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=S1+tUC9c; arc=none smtp.client-ip=192.134.164.83
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="BTizzUON"
-Received: by mail-vk1-f170.google.com with SMTP id 71dfb90a1353d-5240764f7c1so102325e0c.2
-        for <outreachy@lists.linux.dev>; Wed, 02 Apr 2025 13:26:29 -0700 (PDT)
+	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="S1+tUC9c"
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1743625588; x=1744230388; darn=lists.linux.dev;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=C8wPFPgt/bI1Ab8FIOJQ6VrIdMtAfZfghmoT30YYZQ0=;
-        b=BTizzUONFqh55jwux5iPBj2uD/1oJWt0QXXSoyDjVmo/nOU/kM5ZLHVLj5ZrUv3m8M
-         SbCl01lmSwiOkgMJLlzwDfswaejLYmrKohuJJ+yoKmkoGDlVkm8D2gm//w1TtZvs6QrL
-         LCbkk0N/SD25PzSvm1vAV6TgLExYp6Er1TdJD2nMz3E4lPqp94JM02eBiBMzY5W/IHN4
-         fKIeYij9iQjXKzRLIDlk1WlyL6k5LB8BesX7YGa919WN9e8rMJLJZcipBq/Ul6VXGdVs
-         eAXo6Qdfl+QRJf948bLGJDSh2x9kHOtUxuMnNyQ8kT5jinMy9c6v6WzSkz8iIGh1prbg
-         vcUQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743625588; x=1744230388;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=C8wPFPgt/bI1Ab8FIOJQ6VrIdMtAfZfghmoT30YYZQ0=;
-        b=ZYty8QOjElFltrOJd52EZJ+muwINnl86IL0x8jJXAyUjcbtu5SzCOIIJlHQKRlz9If
-         UDvEmhQNDR2phdcsrI5XdhwuQKXIr95+YVu66ZqFnr5xaufB7Cm3T7klGcKbpUrEJYFR
-         rqvHDjFJ3b2cEQ6vW+VKwyTUAJK6sZ0+/+/Je7Q4h9Oz01O1LmOIvL2oPZn7IJWz6C2C
-         dPvNyKxfTTN9CP9fWDtYobsEkXuY7x6eVqW0+4sFz9vfEwMonfkFGvBX1ems9eBwxHgC
-         +F3xYhIydRm/6aUFkoJ8bh8oQK475juL+ScNOlj2yImaaI4dALvfAjd4QS9fDJ8ruzzQ
-         IdcQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVZsUqqR3GHhftTi1YR2aueaXAUlW/zfVH4QKkc3iBq9ogVntWWUaFoHJBXWVi5W6ot8aPkHZcAVRo=@lists.linux.dev
-X-Gm-Message-State: AOJu0YyJtXXbaPoiymd+gKjdoPMZKKozIWdw65qfxjPfkywoSiID13SZ
-	7WqX3IuSsLV1cVzXBG2yHlTZAp5rpXi8qMHitrHsFkyefUXRpNSm1WUpLwDA/60VPK3oEkTp9Q8
-	Pp++zf4jA64BFvoHB6esK78kfum4=
-X-Gm-Gg: ASbGncu/+tx/iLzyh1wrovHHDhssFLtqi1YW382f8udqJgtFkwTGhr1ykXzy18wDhzE
-	7cSY5AQPkIr3SA34zeq5VdVKpO5Ku/KVxa43X6XPr7GTF+FmYzkY9uNWnbmLzFJ+EpDbQHl/fO8
-	mH2R9L26ZlqnccJc29b7rpiI4/7CpO
-X-Google-Smtp-Source: AGHT+IGorSTepQVsXhBNOvm/zf/47AgJrSsLTorFYqRRe8EUocWPlkMaF4asp584fB6DmFmz9SXCR2ZAmFf4ptjeSWI=
-X-Received: by 2002:a05:6122:249a:b0:526:42c2:8453 with SMTP id
- 71dfb90a1353d-52642c2849fmr7346060e0c.7.1743625588169; Wed, 02 Apr 2025
- 13:26:28 -0700 (PDT)
+  d=inria.fr; s=dc;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=YdY9NjVGP/c1hDSuiBo1YTsoSfUzfjUsbe9MkbnllRs=;
+  b=S1+tUC9cZfGverL42ZTwQZe9danfPE1Xj4d6YVvA0CIMVw7AcQup82XI
+   Lbp47wdADR0WX8I4+QVWcysWP5phXr3u9tM2HFBqHQSpzJZOipPpKZ3fQ
+   lTZvuLHG77uOBCyNQWSYxsFOUxsFPK9KNQKpZcx16dQOhypn6fd9YfTYa
+   Y=;
+Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="6.15,183,1739833200"; 
+   d="scan'208";a="216085620"
+Received: from powered-by.xenosite.net (HELO hadrien) ([89.255.17.162])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Apr 2025 22:34:23 +0200
+Date: Wed, 2 Apr 2025 22:34:22 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+To: Greg KH <gregkh@linuxfoundation.org>
+cc: Erick Karanja <karanja99erick@gmail.com>, outreachy@lists.linux.dev, 
+    philipp.g.hortmann@gmail.com, linux-staging@lists.linux.dev, 
+    linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 1/3] staging: rtl8723bs: Modify struct rx_pkt_attrib
+ attribute bdecrypted
+In-Reply-To: <2025040215-confusing-sibling-f99f@gregkh>
+Message-ID: <3c235d91-efd6-ddf8-7c9-d8d35c7585@inria.fr>
+References: <cover.1743613025.git.karanja99erick@gmail.com> <00287fa9f40c643b8451a0d2df8e2fb97235ee46.1743613025.git.karanja99erick@gmail.com> <2025040215-confusing-sibling-f99f@gregkh>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-References: <alpine.DEB.2.22.394.2503301522210.23941@hadrien>
- <CAG+54DYX8DEh2AVkQmL2O=5=0rF=GHrMiZnsSWwnvtpo-36-jw@mail.gmail.com>
- <CAMyr_bLCOWsNTDrCBuLgGDYFqqpNCJ46x_ob01vL8crPC4L=_A@mail.gmail.com>
- <CAG+54DYFO7cEkekhQ1K_5dYLDgQjw_QedqcTRGXXSkFFQ8QySg@mail.gmail.com>
- <CAMyr_bKKf3Hq4fVzA9h2ZU=bpL2dHJHTU+qjhusCxYBYZXeW5A@mail.gmail.com>
- <Z-vIFv5cLEyjA2JD@brak3rDesk> <CAMyr_b+K3q5avgd7HHNbSufP5pk=-HPMjTomLLc0Rc7k=6V=kg@mail.gmail.com>
- <CAG+54DasAjm0StZWGithAXKJbR6SPGJ7UiD_hAcBkGMJLPSRew@mail.gmail.com>
- <CAMyr_bJgUjK-UMryTOqT7-G0-uduzx3J9Kg7co_owghpBiwOyA@mail.gmail.com>
- <CAG+54DbOK9sEPAwF_oHR=RzKL8xh4+X5GR0K9xmrvvOauwON9A@mail.gmail.com>
- <CAG+54DYK-C=bAWTueZSkHLtBpWj3urNJ64_z+Ey5uGsgr+nruQ@mail.gmail.com>
- <CAMyr_bLhdH27ngH95MEQFp5_XMm8NzQDd7Kf9Cx4WZY9+9tGTg@mail.gmail.com>
- <CAG+54Db1B1MqgErFoiLfx9bePwMXZe0zZaHzVEMcU+GTW+M5wA@mail.gmail.com>
- <CAG+54Dbc3BC8H1oLUFJ1mbRxH6K01EUsT7jVceabmeuSV3N=_A@mail.gmail.com> <d7b552d0-9d57-ab39-417c-4b1bc13a22f0@inria.fr>
-In-Reply-To: <d7b552d0-9d57-ab39-417c-4b1bc13a22f0@inria.fr>
-From: Samuel Abraham <abrahamadekunle50@gmail.com>
-Date: Wed, 2 Apr 2025 21:26:19 +0100
-X-Gm-Features: AQ5f1JrAVNkjyiJ3KHxZzNcmSIsEH5Ip6UkB6w6bbAcJDKskTA7eTden8ZIq6-4
-Message-ID: <CADYq+fZyNOGS4nuWf8v6_DOpC3nFR+_rnY1iObXDwc0rq=3SYg@mail.gmail.com>
-Subject: Re: I am unable to setup and send mail via mutt Here I am sharing my
- Here I have attached the xhci files where have found the probe functions: so
- which one should i change ?
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: rujra <braker.noob.kernel@gmail.com>, 
-	Richard Akintola <princerichard17a@gmail.com>, outreachy@lists.linux.dev
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/mixed; boundary="8323329-2051585220-1743626063=:3363"
 
-On Wed, Apr 2, 2025 at 9:10=E2=80=AFPM Julia Lawall <julia.lawall@inria.fr>=
- wrote:
->
->
->
-> On Thu, 3 Apr 2025, rujra wrote:
->
-> > Hi team,
-> > Its regarding the issue which I am facing in tutorial this command line=
-:
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
+
+--8323329-2051585220-1743626063=:3363
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8BIT
+
+
+
+On Wed, 2 Apr 2025, Greg KH wrote:
+
+> On Wed, Apr 02, 2025 at 08:16:42PM +0300, Erick Karanja wrote:
+> > Standardize boolean representation by ensuring consistency,
+> > replace instances of 1/0 with true/false where boolean logic is implied,
+> > as some definitions already use true/false.
+> > This improves code clarity and aligns with the kernel’s bool type usage.
 > >
-> > apt-get install python-ply python-git
->
-> What motivated you to want to install these things?
->
-> julia
->
->
-> > OUTPUT :
-> > <
-> > sudo apt-get install python-ply python-git
-> > Reading package lists... Done
-> > Building dependency tree... Done
-> > Reading state information... Done
-> > Package python-git is not available, but is referred to by another pack=
-age.
-> > This may mean that the package is missing, has been obsoleted, or
-> > is only available from another source
-> > However the following packages replace it:
-> >   python-git-doc
+> > Signed-off-by: Erick Karanja <karanja99erick@gmail.com>
+> > ---
+> >  drivers/staging/rtl8723bs/core/rtw_recv.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
 > >
-> > E: Unable to locate package python-ply
-> > E: Package 'python-git' has no installation candidate
+> > diff --git a/drivers/staging/rtl8723bs/core/rtw_recv.c b/drivers/staging/rtl8723bs/core/rtw_recv.c
+> > index a389ba5ecc6f..fd04dbacb50f 100644
+> > --- a/drivers/staging/rtl8723bs/core/rtw_recv.c
+> > +++ b/drivers/staging/rtl8723bs/core/rtw_recv.c
+> > @@ -1358,7 +1358,7 @@ static signed int validate_80211w_mgmt(struct adapter *adapter, union recv_frame
+> >  			u8 *mgmt_DATA;
+> >  			u32 data_len = 0;
+> >
+> > -			pattrib->bdecrypted = 0;
+> > +			pattrib->bdecrypted = false;
+>
+> but bdecrypted is a u8, not a boolean type.  So setting it to "false"
+> does not seem correct here, right?
 
-I think you might be missing some package sources
-I have encountered this issue before
-Here are some steps you can try
-1. run sudo apt update
-2. check your architecture
-    dpkg --print-architecture
-3. check your package source list with
-vim /etc/apt/sources.list
-this is how mine looks like
-deb http://archive.ubuntu.com/ubuntu jammy main restricted universe multive=
-rse
-deb http://archive.ubuntu.com/ubuntu jammy-updates main restricted
-universe multiverse
-deb http://security.ubuntu.com/ubuntu jammy-security main restricted
-universe multiverse
-deb http://archive.ubuntu.com/ubuntu jammy-backports main restricted
-universe multiverse
+Is false different than 0?
 
-4. if yours is empty, you can browse the appropriate source list for
-your distribution and architecture
-5.run sudo apt update && sudo apt upgrade -y
+Elsewhere there is an assignment to true.
 
-I hope this helps
-Adekunle
+julia
+
+>
+> Also, the name of the variable should really be changed.
+>
+> But, step back, are you _SURE_ you can change this structure at all?
+> At a quick glance it kind of looks like it comes directly from the
+> hardware, or am I mis-reading the driver code?
+>
+> Have you tested this series on an actual device?
+>
+> thanks,
+>
+> greg k-h
+>
+>
+--8323329-2051585220-1743626063=:3363--
