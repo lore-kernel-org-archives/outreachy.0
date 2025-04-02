@@ -1,58 +1,58 @@
-Received: from mail-vk1-f182.google.com (mail-vk1-f182.google.com [209.85.221.182])
+Received: from mail-vk1-f170.google.com (mail-vk1-f170.google.com [209.85.221.170])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D0E0D19CCEC
-	for <outreachy@lists.linux.dev>; Wed,  2 Apr 2025 20:14:40 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.182
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 54DD01F09B7
+	for <outreachy@lists.linux.dev>; Wed,  2 Apr 2025 20:26:29 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.170
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1743624882; cv=none; b=tmJ1v4+9lRaxgLBXwkcHIo+Qf3mPiiWvNfiWAp/+JF8qJhiSuVBJUY7R/zzBwIbdzm68SbWMqY0qyf7GIqjBJHJ4/YQfZ4UEepuhcLZstKP+5A6i5h5OEzWp8zQBA9bUABhhRTnART/flPio4SKUiuonlFlztd+H7ZxXL0/yhbk=
+	t=1743625590; cv=none; b=pZEn4ebQG7hJkb04pP+iRGxHByQRAkPt52hxi1F3KOW45WC996b8UcKKVngTKQw6mLyPOdU2UAUfRlXM6XWvONc/CULdTbu64ijRmGQ5MAivuqm2d7G/81/RIhO4f88b3W/1QnUOKto912XHB0fuxkPrSW/4oly9eEhqnwvC38E=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1743624882; c=relaxed/simple;
-	bh=9/fmKs6XT96V1w+e807M45XtjmTqp9xFNEZLBBR5fp4=;
+	s=arc-20240116; t=1743625590; c=relaxed/simple;
+	bh=tqhvsI7M6zu5H/d4RC6oKcSwiESTyItJImU6Uu2AyEM=;
 	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
-	 To:Cc:Content-Type; b=VX1PRos+PZ0ukrtEzxDh9QScq06cuECf0JifUAGH7Jf1hxtF+Euvd7orJwXO0yZVPuGsk4Gt18WVyb3W+g6j5iuWQD90tFiwKJw04+EUdaEb3hYYDKNcDbAqOsIfOJg7K4H5sb0L1YsGE65ZPF8NG+BTwEuG4msWNrnOZta5SJs=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=WTReuSlG; arc=none smtp.client-ip=209.85.221.182
+	 To:Cc:Content-Type; b=OJhqQV5wwNODpFUW+x2QPLNr27YNpcCkUEybDe+uhF5ZnCctCWjEWSDh4H8rwyikSWcnqs7vMOOM3hnomKqmzAxGa5M9Q1QU/4WYk98x6rWJAuLEtzd6nJ+zmUZLkSrvcMrsHWYMjWalLgBTVmttviuVgWM6KyM9RIwavn0FzKg=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=BTizzUON; arc=none smtp.client-ip=209.85.221.170
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="WTReuSlG"
-Received: by mail-vk1-f182.google.com with SMTP id 71dfb90a1353d-523eb86b31aso110219e0c.0
-        for <outreachy@lists.linux.dev>; Wed, 02 Apr 2025 13:14:40 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="BTizzUON"
+Received: by mail-vk1-f170.google.com with SMTP id 71dfb90a1353d-5240764f7c1so102325e0c.2
+        for <outreachy@lists.linux.dev>; Wed, 02 Apr 2025 13:26:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1743624879; x=1744229679; darn=lists.linux.dev;
+        d=gmail.com; s=20230601; t=1743625588; x=1744230388; darn=lists.linux.dev;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=+5kPGDeJdkPDI4HiGC6TzCTJMQN6Y+CQH2NUWfZ35yc=;
-        b=WTReuSlGjIRmp18iyXbQF1P1Jipr9Zd7QOZg7GfGHYk7rsLNMAA8SnjvLYJ+1PWqZt
-         FfrWfloRE57vWzM7QQVpuaAOgi/ori6XDN+wT9zzVsGsOaCtfA5igfZ7HHYwPZQlYm0l
-         Pml96Ug+VubsgWQVj05eW5eCm9KxkEFq562YuNLPhKLTN1u8MPG5kCDSxoptqhE+nIOQ
-         ASvRVE9mP+ejnwx+VYTM93thE4t7Jrt38pUkI/orCgOv6HUEHvYXJCz+Avm7bYNME8tA
-         A5+LzzJ4zCjoIXOcjq9W3WyVvnK5G6jbllTGFGCoBIsyvCgqaGIoWdZo8Z/tTDGGnnO0
-         Nffg==
+        bh=C8wPFPgt/bI1Ab8FIOJQ6VrIdMtAfZfghmoT30YYZQ0=;
+        b=BTizzUONFqh55jwux5iPBj2uD/1oJWt0QXXSoyDjVmo/nOU/kM5ZLHVLj5ZrUv3m8M
+         SbCl01lmSwiOkgMJLlzwDfswaejLYmrKohuJJ+yoKmkoGDlVkm8D2gm//w1TtZvs6QrL
+         LCbkk0N/SD25PzSvm1vAV6TgLExYp6Er1TdJD2nMz3E4lPqp94JM02eBiBMzY5W/IHN4
+         fKIeYij9iQjXKzRLIDlk1WlyL6k5LB8BesX7YGa919WN9e8rMJLJZcipBq/Ul6VXGdVs
+         eAXo6Qdfl+QRJf948bLGJDSh2x9kHOtUxuMnNyQ8kT5jinMy9c6v6WzSkz8iIGh1prbg
+         vcUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743624879; x=1744229679;
+        d=1e100.net; s=20230601; t=1743625588; x=1744230388;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=+5kPGDeJdkPDI4HiGC6TzCTJMQN6Y+CQH2NUWfZ35yc=;
-        b=pHTihjsHwCI1ZCRUqv05MUYHznXMSIi1Kl1coDIqyMujQEASzI0G5gwhtUILZQjIZ4
-         B8oaOTActCSZPjqNKRYvXLv2WRH23lpdLFkQ4ozhNcMVe58m50NvHACQ621lJqt9wGkc
-         EFd1r8uT1K163qR6YXjf9AIOUrXdCSsSAmbmT26U2YT1QdBBnEw3dFNd6Qj4LLxySabZ
-         5Ea+LX2bl84f24KwQV2m3zOy0pOmvKdluRMtoqNPop11ypi7eGfCS/1gPx7LFd7FiFQz
-         9NG80V9jQyMocQKWwbMsJuo3f8JSdTHf7WHhZeozk/6cljWkMg7mzv8KcJ8WQzg1FM1F
-         DIbQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXgLbP0yIhV1+rdqKZND5Yh0XUqJUnbcIwU93idK9nyQUvu2iKoBdc1bgQ/4yNGPaE15zSn1j3lALI=@lists.linux.dev
-X-Gm-Message-State: AOJu0Yw3ED3jp3w2RtwCrEeKe4w+1RDeXaysmSfbh382HlGY1YH/TtBj
-	rMJOdtByR5jiqiKM+uR+K8hKWftOvbEO2Zjo7HA0zExdCXFB6tXybMuEkEnLN9LuXRG/j5gNU69
-	hNAE12qNq/20CnpY31SJ0PQ6nX0Q=
-X-Gm-Gg: ASbGnctjizvUzVbJXWy0McgcwrrDBOEZaC3qQfvCEs/NDE7arh4bnmlWEys94dD4qKB
-	NuRz5b32sfgh0KoBMH9OBiO2p8W8uugVoevkrOK2qIl8N1UVM4Qh+xo5rByZgvHZtWLtQF/y1nt
-	WpnqDnKFpeN1FLm+CCo+/Dj3DmAYTX
-X-Google-Smtp-Source: AGHT+IG+KcoCFM+EFU85dYy3jZ9TGepiGeQpPVmqQJAARsO/5ikZLPUx4FCB8nwNkIO87IYhNmHXG5B900Kq85wXdYE=
-X-Received: by 2002:a05:6122:8c01:b0:520:61ee:c815 with SMTP id
- 71dfb90a1353d-52758eebd9cmr144053e0c.10.1743624879668; Wed, 02 Apr 2025
- 13:14:39 -0700 (PDT)
+        bh=C8wPFPgt/bI1Ab8FIOJQ6VrIdMtAfZfghmoT30YYZQ0=;
+        b=ZYty8QOjElFltrOJd52EZJ+muwINnl86IL0x8jJXAyUjcbtu5SzCOIIJlHQKRlz9If
+         UDvEmhQNDR2phdcsrI5XdhwuQKXIr95+YVu66ZqFnr5xaufB7Cm3T7klGcKbpUrEJYFR
+         rqvHDjFJ3b2cEQ6vW+VKwyTUAJK6sZ0+/+/Je7Q4h9Oz01O1LmOIvL2oPZn7IJWz6C2C
+         dPvNyKxfTTN9CP9fWDtYobsEkXuY7x6eVqW0+4sFz9vfEwMonfkFGvBX1ems9eBwxHgC
+         +F3xYhIydRm/6aUFkoJ8bh8oQK475juL+ScNOlj2yImaaI4dALvfAjd4QS9fDJ8ruzzQ
+         IdcQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVZsUqqR3GHhftTi1YR2aueaXAUlW/zfVH4QKkc3iBq9ogVntWWUaFoHJBXWVi5W6ot8aPkHZcAVRo=@lists.linux.dev
+X-Gm-Message-State: AOJu0YyJtXXbaPoiymd+gKjdoPMZKKozIWdw65qfxjPfkywoSiID13SZ
+	7WqX3IuSsLV1cVzXBG2yHlTZAp5rpXi8qMHitrHsFkyefUXRpNSm1WUpLwDA/60VPK3oEkTp9Q8
+	Pp++zf4jA64BFvoHB6esK78kfum4=
+X-Gm-Gg: ASbGncu/+tx/iLzyh1wrovHHDhssFLtqi1YW382f8udqJgtFkwTGhr1ykXzy18wDhzE
+	7cSY5AQPkIr3SA34zeq5VdVKpO5Ku/KVxa43X6XPr7GTF+FmYzkY9uNWnbmLzFJ+EpDbQHl/fO8
+	mH2R9L26ZlqnccJc29b7rpiI4/7CpO
+X-Google-Smtp-Source: AGHT+IGorSTepQVsXhBNOvm/zf/47AgJrSsLTorFYqRRe8EUocWPlkMaF4asp584fB6DmFmz9SXCR2ZAmFf4ptjeSWI=
+X-Received: by 2002:a05:6122:249a:b0:526:42c2:8453 with SMTP id
+ 71dfb90a1353d-52642c2849fmr7346060e0c.7.1743625588169; Wed, 02 Apr 2025
+ 13:26:28 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -74,9 +74,9 @@ References: <alpine.DEB.2.22.394.2503301522210.23941@hadrien>
  <CAG+54Dbc3BC8H1oLUFJ1mbRxH6K01EUsT7jVceabmeuSV3N=_A@mail.gmail.com> <d7b552d0-9d57-ab39-417c-4b1bc13a22f0@inria.fr>
 In-Reply-To: <d7b552d0-9d57-ab39-417c-4b1bc13a22f0@inria.fr>
 From: Samuel Abraham <abrahamadekunle50@gmail.com>
-Date: Wed, 2 Apr 2025 21:14:30 +0100
-X-Gm-Features: AQ5f1JrvVU6C433veyVhd_ovLtfvtDoMKo8eFTyLb8uaPMGlQGwDy1nLHTOaXLY
-Message-ID: <CADYq+fZHYzo5v0XOMBOd0iRiJzcP6v1xctbaBPH2e+H61Wh0jw@mail.gmail.com>
+Date: Wed, 2 Apr 2025 21:26:19 +0100
+X-Gm-Features: AQ5f1JrAVNkjyiJ3KHxZzNcmSIsEH5Ip6UkB6w6bbAcJDKskTA7eTden8ZIq6-4
+Message-ID: <CADYq+fZyNOGS4nuWf8v6_DOpC3nFR+_rnY1iObXDwc0rq=3SYg@mail.gmail.com>
 Subject: Re: I am unable to setup and send mail via mutt Here I am sharing my
  Here I have attached the xhci files where have found the probe functions: so
  which one should i change ?
@@ -102,15 +102,6 @@ On Wed, Apr 2, 2025 at 9:10=E2=80=AFPM Julia Lawall <julia.lawall@inria.fr>=
 > What motivated you to want to install these things?
 >
 > julia
-
-Hello Julia
-This were installed when chechpatch produced the following error when
-running checks on a driver
-
-ModuleNotFoundError: No module named 'ply'
-
-ModuleNotFoundError: No module named 'git'
-
 >
 >
 > > OUTPUT :
@@ -128,25 +119,28 @@ age.
 > >
 > > E: Unable to locate package python-ply
 > > E: Package 'python-git' has no installation candidate
-> > brak3r@brak3rDesk:~/braker.noob.kernel/git/kernels/staging$ sudo apt-ge=
-t
-> > install python-ply python-git-doc
-> > Reading package lists... Done
-> > Building dependency tree... Done
-> > Reading state information... Done
-> > E: Unable to locate package python-ply
-> > >
-> >
-> >
-> > not able to install ply. so that "checkpatch.pl" can work
-> > also have tried this command as well :
-> > "sudo apt-get install python3-pip python-git-doc"
-> >
-> > Here also we might need to change the tutorial steps for the upcoming
-> > candidates.
-> > happy to help here,
-> > thanking you,regards
-> > Rujra Bhatt
-> >
-> >
-> >
+
+I think you might be missing some package sources
+I have encountered this issue before
+Here are some steps you can try
+1. run sudo apt update
+2. check your architecture
+    dpkg --print-architecture
+3. check your package source list with
+vim /etc/apt/sources.list
+this is how mine looks like
+deb http://archive.ubuntu.com/ubuntu jammy main restricted universe multive=
+rse
+deb http://archive.ubuntu.com/ubuntu jammy-updates main restricted
+universe multiverse
+deb http://security.ubuntu.com/ubuntu jammy-security main restricted
+universe multiverse
+deb http://archive.ubuntu.com/ubuntu jammy-backports main restricted
+universe multiverse
+
+4. if yours is empty, you can browse the appropriate source list for
+your distribution and architecture
+5.run sudo apt update && sudo apt upgrade -y
+
+I hope this helps
+Adekunle
