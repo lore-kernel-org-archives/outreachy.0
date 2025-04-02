@@ -1,108 +1,132 @@
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6B7D51F1521;
-	Wed,  2 Apr 2025 20:34:30 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.83
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A82501EDA0E
+	for <outreachy@lists.linux.dev>; Wed,  2 Apr 2025 20:36:44 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.104
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1743626073; cv=none; b=BiVJPd6QgKzIFJc6n5+ySYEuPz6kJD85zAXNamfbQPJtO5WS7MkIZTX1gsItHJj1aIKSOWMq93g3wzPGCPUncI/lX1+7caDHo3UCvmIBquqJK/tLr36JztAsZIOvz7QASIxIFUgRFH7GEO5LY7XDvgKmBUH3Tvn3S+zg87R/W7k=
+	t=1743626207; cv=none; b=Gm7jSCeFAlkjkH2KQWdaS2KShx9S5+JAdHYridozArDmiqSAwCCIim9hbxbXI4OmUvC1JJt2yFX34rq2z8AlGCgUGmVkgnGW07eWPnVZhYa5CwalFxhqqS3lWeo+LzM3GzEpnqNKFwHHasFKfIGnrNItewmkFsGdf/nxavP/tYg=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1743626073; c=relaxed/simple;
-	bh=t13ChJdfZcyB2oLRzhdA1SW3Z11asTQR/3qPJS36vrQ=;
+	s=arc-20240116; t=1743626207; c=relaxed/simple;
+	bh=4ysQwqobGrUWe/0gAYnFFZBMlUUyMTcZiVoGa4AKgG0=;
 	h=Date:From:To:cc:Subject:In-Reply-To:Message-ID:References:
-	 MIME-Version:Content-Type; b=GcnC+BJhxNXNau7TAP4FoPqLjwpPGJ3THtF3SePa4tq0k5VPSaU7Y0cGtWB5zLPwFKa2s7+0Lrlpg7jO8ZpU7xbQEU/HXPwAmger2xDAe90ySR5ABxSrUuxHPaVQLCJXMStJgAmaJiSlWEondzxHJYXbjgpk6cQW5ONrAo6GvIE=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=S1+tUC9c; arc=none smtp.client-ip=192.134.164.83
+	 MIME-Version:Content-Type; b=cyFdGlF57KkCKCyhTlj535JfKHpJ7Yu9lT9kgBNPdDaBwaIgbKT7JfGxZ0AGhHIqfzD2b4vBB1POVI36k7hdpfG1u31rv//WbMpHwlkljGU74D/SjKRafMgnVyrWEZlYXepddvES2mVNCXbsA9Ar4Dh++QaKRYEykmcbLgyvkkw=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=W/y7ojMt; arc=none smtp.client-ip=192.134.164.104
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="S1+tUC9c"
+	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="W/y7ojMt"
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
   d=inria.fr; s=dc;
   h=date:from:to:cc:subject:in-reply-to:message-id:
    references:mime-version;
-  bh=YdY9NjVGP/c1hDSuiBo1YTsoSfUzfjUsbe9MkbnllRs=;
-  b=S1+tUC9cZfGverL42ZTwQZe9danfPE1Xj4d6YVvA0CIMVw7AcQup82XI
-   Lbp47wdADR0WX8I4+QVWcysWP5phXr3u9tM2HFBqHQSpzJZOipPpKZ3fQ
-   lTZvuLHG77uOBCyNQWSYxsFOUxsFPK9KNQKpZcx16dQOhypn6fd9YfTYa
-   Y=;
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+  bh=dyMyeqqsOtufggWMDgC7H1sCM/PNpY8dAHYqT/zoltY=;
+  b=W/y7ojMtg53gJCazqrLFEL/1hHzzddFvzqnudlLu8wiI4lZ/A5OVrHF+
+   lshj2qeEjrGbRC4N8OgJQKhiSn2svgecHOBRPMeFDLCiSmpCx5GCR+7Nm
+   m8tIgaHEAlZVatDNclpH/w2aBkWs6V06lqJ4DV9CTN4YUTMduseFm4MDQ
+   o=;
+Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
 X-IronPort-AV: E=Sophos;i="6.15,183,1739833200"; 
-   d="scan'208";a="216085620"
+   d="scan'208";a="113302164"
 Received: from powered-by.xenosite.net (HELO hadrien) ([89.255.17.162])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Apr 2025 22:34:23 +0200
-Date: Wed, 2 Apr 2025 22:34:22 +0200 (CEST)
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Apr 2025 22:36:43 +0200
+Date: Wed, 2 Apr 2025 22:36:41 +0200 (CEST)
 From: Julia Lawall <julia.lawall@inria.fr>
-To: Greg KH <gregkh@linuxfoundation.org>
-cc: Erick Karanja <karanja99erick@gmail.com>, outreachy@lists.linux.dev, 
-    philipp.g.hortmann@gmail.com, linux-staging@lists.linux.dev, 
-    linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 1/3] staging: rtl8723bs: Modify struct rx_pkt_attrib
- attribute bdecrypted
-In-Reply-To: <2025040215-confusing-sibling-f99f@gregkh>
-Message-ID: <3c235d91-efd6-ddf8-7c9-d8d35c7585@inria.fr>
-References: <cover.1743613025.git.karanja99erick@gmail.com> <00287fa9f40c643b8451a0d2df8e2fb97235ee46.1743613025.git.karanja99erick@gmail.com> <2025040215-confusing-sibling-f99f@gregkh>
+To: Samuel Abraham <abrahamadekunle50@gmail.com>
+cc: rujra <braker.noob.kernel@gmail.com>, 
+    Richard Akintola <princerichard17a@gmail.com>, outreachy@lists.linux.dev
+Subject: Re: I am unable to setup and send mail via mutt Here I am sharing
+ my Here I have attached the xhci files where have found the probe functions:
+ so which one should i change ?
+In-Reply-To: <CADYq+fZHYzo5v0XOMBOd0iRiJzcP6v1xctbaBPH2e+H61Wh0jw@mail.gmail.com>
+Message-ID: <f49386a1-9298-c82-1189-4d694cadfd33@inria.fr>
+References: <alpine.DEB.2.22.394.2503301522210.23941@hadrien> <CAMyr_bLCOWsNTDrCBuLgGDYFqqpNCJ46x_ob01vL8crPC4L=_A@mail.gmail.com> <CAG+54DYFO7cEkekhQ1K_5dYLDgQjw_QedqcTRGXXSkFFQ8QySg@mail.gmail.com> <CAMyr_bKKf3Hq4fVzA9h2ZU=bpL2dHJHTU+qjhusCxYBYZXeW5A@mail.gmail.com>
+ <Z-vIFv5cLEyjA2JD@brak3rDesk> <CAMyr_b+K3q5avgd7HHNbSufP5pk=-HPMjTomLLc0Rc7k=6V=kg@mail.gmail.com> <CAG+54DasAjm0StZWGithAXKJbR6SPGJ7UiD_hAcBkGMJLPSRew@mail.gmail.com> <CAMyr_bJgUjK-UMryTOqT7-G0-uduzx3J9Kg7co_owghpBiwOyA@mail.gmail.com>
+ <CAG+54DbOK9sEPAwF_oHR=RzKL8xh4+X5GR0K9xmrvvOauwON9A@mail.gmail.com> <CAG+54DYK-C=bAWTueZSkHLtBpWj3urNJ64_z+Ey5uGsgr+nruQ@mail.gmail.com> <CAMyr_bLhdH27ngH95MEQFp5_XMm8NzQDd7Kf9Cx4WZY9+9tGTg@mail.gmail.com> <CAG+54Db1B1MqgErFoiLfx9bePwMXZe0zZaHzVEMcU+GTW+M5wA@mail.gmail.com>
+ <CAG+54Dbc3BC8H1oLUFJ1mbRxH6K01EUsT7jVceabmeuSV3N=_A@mail.gmail.com> <d7b552d0-9d57-ab39-417c-4b1bc13a22f0@inria.fr> <CADYq+fZHYzo5v0XOMBOd0iRiJzcP6v1xctbaBPH2e+H61Wh0jw@mail.gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-2051585220-1743626063=:3363"
+Content-Type: multipart/mixed; boundary="8323329-66223613-1743626202=:3363"
 
   This message is in MIME format.  The first part should be readable text,
   while the remaining parts are likely unreadable without MIME-aware tools.
 
---8323329-2051585220-1743626063=:3363
-Content-Type: text/plain; charset=utf-8
+--8323329-66223613-1743626202=:3363
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8BIT
 
 
 
-On Wed, 2 Apr 2025, Greg KH wrote:
+On Wed, 2 Apr 2025, Samuel Abraham wrote:
 
-> On Wed, Apr 02, 2025 at 08:16:42PM +0300, Erick Karanja wrote:
-> > Standardize boolean representation by ensuring consistency,
-> > replace instances of 1/0 with true/false where boolean logic is implied,
-> > as some definitions already use true/false.
-> > This improves code clarity and aligns with the kernel’s bool type usage.
+> On Wed, Apr 2, 2025 at 9:10 PM Julia Lawall <julia.lawall@inria.fr> wrote:
 > >
-> > Signed-off-by: Erick Karanja <karanja99erick@gmail.com>
-> > ---
-> >  drivers/staging/rtl8723bs/core/rtw_recv.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
 > >
-> > diff --git a/drivers/staging/rtl8723bs/core/rtw_recv.c b/drivers/staging/rtl8723bs/core/rtw_recv.c
-> > index a389ba5ecc6f..fd04dbacb50f 100644
-> > --- a/drivers/staging/rtl8723bs/core/rtw_recv.c
-> > +++ b/drivers/staging/rtl8723bs/core/rtw_recv.c
-> > @@ -1358,7 +1358,7 @@ static signed int validate_80211w_mgmt(struct adapter *adapter, union recv_frame
-> >  			u8 *mgmt_DATA;
-> >  			u32 data_len = 0;
 > >
-> > -			pattrib->bdecrypted = 0;
-> > +			pattrib->bdecrypted = false;
+> > On Thu, 3 Apr 2025, rujra wrote:
+> >
+> > > Hi team,
+> > > Its regarding the issue which I am facing in tutorial this command line:
+> > >
+> > > apt-get install python-ply python-git
+> >
+> > What motivated you to want to install these things?
+> >
+> > julia
 >
-> but bdecrypted is a u8, not a boolean type.  So setting it to "false"
-> does not seem correct here, right?
+> Hello Julia
+> This were installed when chechpatch produced the following error when
+> running checks on a driver
+>
+> ModuleNotFoundError: No module named 'ply'
+>
+> ModuleNotFoundError: No module named 'git'
 
-Is false different than 0?
-
-Elsewhere there is an assignment to true.
+OK, thanks for the information.
 
 julia
 
 >
-> Also, the name of the variable should really be changed.
+> >
+> >
+> > > OUTPUT :
+> > > <
+> > > sudo apt-get install python-ply python-git
+> > > Reading package lists... Done
+> > > Building dependency tree... Done
+> > > Reading state information... Done
+> > > Package python-git is not available, but is referred to by another package.
+> > > This may mean that the package is missing, has been obsoleted, or
+> > > is only available from another source
+> > > However the following packages replace it:
+> > >   python-git-doc
+> > >
+> > > E: Unable to locate package python-ply
+> > > E: Package 'python-git' has no installation candidate
+> > > brak3r@brak3rDesk:~/braker.noob.kernel/git/kernels/staging$ sudo apt-get
+> > > install python-ply python-git-doc
+> > > Reading package lists... Done
+> > > Building dependency tree... Done
+> > > Reading state information... Done
+> > > E: Unable to locate package python-ply
+> > > >
+> > >
+> > >
+> > > not able to install ply. so that "checkpatch.pl" can work
+> > > also have tried this command as well :
+> > > "sudo apt-get install python3-pip python-git-doc"
+> > >
+> > > Here also we might need to change the tutorial steps for the upcoming
+> > > candidates.
+> > > happy to help here,
+> > > thanking you,regards
+> > > Rujra Bhatt
+> > >
+> > >
+> > >
 >
-> But, step back, are you _SURE_ you can change this structure at all?
-> At a quick glance it kind of looks like it comes directly from the
-> hardware, or am I mis-reading the driver code?
->
-> Have you tested this series on an actual device?
->
-> thanks,
->
-> greg k-h
->
->
---8323329-2051585220-1743626063=:3363--
+--8323329-66223613-1743626202=:3363--
