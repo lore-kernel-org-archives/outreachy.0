@@ -1,92 +1,150 @@
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-wr1-f42.google.com (mail-wr1-f42.google.com [209.85.221.42])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1D12A1B7F4
-	for <outreachy@lists.linux.dev>; Wed,  2 Apr 2025 07:38:54 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.83
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D85B823E358;
+	Wed,  2 Apr 2025 12:47:53 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.42
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1743579538; cv=none; b=FCM6V9hx0nXsi4XfWdNhkdCcTiqJnSgjGwLhWGG62l0Z12JLjLi49aJyccFvydQ8kAQC0uSxdr6UZxY7OnrqR015eLVW+Up0TUGz/kFSc6fHz2/wJqoiDdSGhWF8OP0XswP44sjJyPv56DdrK37h0nsoSnPlCTOuzbH11BL3qx4=
+	t=1743598075; cv=none; b=OTImkHvdrBcashgMgERTECvmJS37rytK1SPienL4+azyqVoWGtLxE0OXd1+uUAtFq1armVCMx5dYeFUHa+5m+/Bs6TdFP7n2Aqrpm4sGm3eFN5iNqO5AqR9Sr/G2INxBho5dwd83TBAKx6PO42TfqawJj/b8gsfdtWWHspYAd8Q=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1743579538; c=relaxed/simple;
-	bh=cvLBiMzFE74sDP287rNh8BzuUr7Pi0LlfuRQbzswDJs=;
-	h=Date:From:To:cc:Subject:In-Reply-To:Message-ID:References:
-	 MIME-Version:Content-Type; b=qYt9zHwRxax2K3N3Ohip2UZyhqFFZjGJXa71dOlEvDDiQMHmHU+DXH7oGMEasGAgXirblpj4svixkgMqOLmAjR8+iL6tmas6W8qEt4qifQG2GsxMpN9J8OInq7AHD+GRjHz8dBXvK+J8IzzFi3uLVEN7JGNGH4ezSqaWZBl2kiI=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=cbSKfq1x; arc=none smtp.client-ip=192.134.164.83
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
+	s=arc-20240116; t=1743598075; c=relaxed/simple;
+	bh=zSoehIniU8jm04IOOedJamJbm8GIIQPM5e7PJNzDOKc=;
+	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version:Content-Type; b=hLipKCgYRF1V3XyAy+TEJBYjAvbrJFZU+D+lP0oiEIGYMBAjiYwRAsRS3U5oBmSQKR9wBGUatiUxUR2l3OtW3p9CyUsNymO10HQ4knGZyZClQv1lpSZa89xQ4lnvGeunItSw/5OoSBmQSlveWeSFAxl3Rm8+KgMPTMObzJgAh5g=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=k/B7G3vD; arc=none smtp.client-ip=209.85.221.42
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="cbSKfq1x"
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="k/B7G3vD"
+Received: by mail-wr1-f42.google.com with SMTP id ffacd0b85a97d-39141ffa9fcso6566042f8f.0;
+        Wed, 02 Apr 2025 05:47:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=fgYu6rYIzGN80j8Kvb9TVOHAocSWp7qrKIBs2AbSxkA=;
-  b=cbSKfq1xjgTPLJxZmoEu7RbJlxFJTTnH6AmJw0OO5qGNlFOzZhjSF2a2
-   SBPnjC2FvzFSpEGMqYzYX9ia4q86K5Eo6MXQOQE5LMtXzc/vDA4eFh32E
-   gmtoQNl2Ma+PtAf2KeP/WB26GCEvCpp9umN+vhEq+Yu4tiMnhwBIFXZ2t
-   E=;
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="6.14,295,1736809200"; 
-   d="scan'208";a="215927135"
-Received: from a81-173-67-6.dsl.pocosnet.nl (HELO hadrien) ([81.173.67.6])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Apr 2025 09:38:53 +0200
-Date: Wed, 2 Apr 2025 09:38:52 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-To: Erick Karanja <karanja99erick@gmail.com>
-cc: outreachy@lists.linux.dev
-Subject: Re: patches
-In-Reply-To: <7d2e32b800eb14343084b06ed93a2e5070426011.camel@gmail.com>
-Message-ID: <4692c01c-5478-1ad4-a698-2ab56fbce064@inria.fr>
-References: <cd684867-6bd3-f7ef-9672-6513e0efa336@inria.fr> <7d2e32b800eb14343084b06ed93a2e5070426011.camel@gmail.com>
+        d=gmail.com; s=20230601; t=1743598072; x=1744202872; darn=lists.linux.dev;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=LEWeMCeaswgmteuyJgZbeIbf8aY5zFHTFf+liUe5LTg=;
+        b=k/B7G3vDrVLHtw5Uv4iIMLNmfAQrfKiPjmkDu+zwglWKwcuiAW1iS+MNopKYCVf5T/
+         sx7V9Hvin91IiIZBJRyvixEj0VIuds5fAHIolJMMkvP0WKTZz4oHxUO33ZEZsz7FIhM6
+         eVWW3QGuDQt3z1XkEcjv49+hhB5A/PT0i8lmwrvFX+0dSgpEZv3SvuAx+IQFlV6zYB23
+         qIcHJvaDRCdJCTv1kjLSWpsmmqV4YlOor2QbGB5obnoxugz/DGDjhgTjgxsNj6pRo+Pj
+         B9KLdiwPPBVWS5/Z0blj3CScIk3vQG9HpZbRHPNGNGUPpRahprQhsHrO9nAk7XLs2vv0
+         zCPw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1743598072; x=1744202872;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=LEWeMCeaswgmteuyJgZbeIbf8aY5zFHTFf+liUe5LTg=;
+        b=EDcIc4QS05+aeiy+MqjgXmE7fyg6Vq6XxtWfT2A1OcyCxZh+YGij3d3an0zKkblVRK
+         2pebdCANuTRR9ykysVzOlzg9ogP4hHF/yFVArXyh1XBUOEaLT0GTW1o66BXmlioxvBG6
+         EiKau1zB+3G9WpUQTmkhDIlESJJ6siR90eaDTKimyo+RZ0mFl6kTOoegHQeSvUWjpabv
+         b2ybF47lF/wjr5auf+OBgVP6XMvufksIZ04M5Uu/kNz/Pw+w/TDTg3Ryik0IKii3Pxwb
+         2bWOPZdlZBEyurBimcMI3CsqBeTFypw3v1tg8K5XObiBMfIH4JQEZ26nuzvXRKx3wl+k
+         0OoA==
+X-Forwarded-Encrypted: i=1; AJvYcCUCU8IJry5mmtN6yReYDPcvn8QzPMyUFpCaTCv6+6WWsz0IuogJgPjjNHKQ8Eq4BC5VjvpEutppeUnb@lists.linux.dev, AJvYcCVQXcg+6pl6LKAxl+/sQmUl6jKuiaNyineBXg5jrFUfY3LS9ZVeXFIf1J6B34Qr4MaDGd5wQBYB+wpYwr8u@lists.linux.dev
+X-Gm-Message-State: AOJu0YzcxPrUhSLbFP24NDhJjBIL5N2kj5L6iP+nZpDh25V+O1I/9+rP
+	n1j1yBNF8uE74nEWN8RCOk1odoDg5X+bByqZcRxc+gcdj0gLEOOglF3COS9Hthc=
+X-Gm-Gg: ASbGnctjx0b+uTK2/WUxLvtcSA4FOM2gAWsijjW3Gfs1XjcRSl+12str1eaBrAhd3mg
+	WhbqWuNik33oieuxlVcavTPpCy5dcuOgSiePOeuzNy58mzMM4eTjLUVJnegsr9HRNYfYn20rR1a
+	LOIwK/GPcOWRdzgYPt89GJx4eDZKm45UFxSNaGkgiCfAP27Jaj2VBTIeibpB79kElsx69xl7jhJ
+	ZBqCyWFCw1F1qx6xSa8pvjnfn3VN1OjByGib5Ec/56HHgSx6zSUJMZKldVCUw+FgBeu0P8vjL2p
+	ZXz0Db0JQP7riWYmjUp6p4HeK3xpcyrPuiRRntIlvw==
+X-Google-Smtp-Source: AGHT+IEOTmnpf9qGDadsLtbYyixVKFrhrd0ujtS0ksf/cMhCW8I+X2FWzaYLi0rLTArKqpzOW2dvHA==
+X-Received: by 2002:a5d:598b:0:b0:39a:c80b:8288 with SMTP id ffacd0b85a97d-39c297698fcmr2134047f8f.33.1743598071795;
+        Wed, 02 Apr 2025 05:47:51 -0700 (PDT)
+Received: from pc.. ([197.155.71.138])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43eb61b6cd2sm19675985e9.39.2025.04.02.05.47.49
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 02 Apr 2025 05:47:51 -0700 (PDT)
+From: Erick Karanja <karanja99erick@gmail.com>
+To: gregkh@linuxfoundation.org,
+	outreachy@lists.linux.dev
+Cc: karanja99erick@gmail.com,
+	philipp.g.hortmann@gmail.com,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH 0/3] staging: rtl8723bs: Code cleanup patches
+Date: Wed,  2 Apr 2025 15:47:40 +0300
+Message-ID: <cover.1743596287.git.karanja99erick@gmail.com>
+X-Mailer: git-send-email 2.43.0
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-403175492-1743579533=:3162"
-
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
-
---8323329-403175492-1743579533=:3162
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
+Content-Transfer-Encoding: 8bit
 
 
 
-On Wed, 2 Apr 2025, Erick Karanja wrote:
+This patchset refactors the rtl8723bs driver by replacing
+integer literals (1 and 0) with true and false,
+improving code readability and consistency with standard kernel practices.
+The transformation was performed using Coccinelle.
 
-> On Wed, 2025-04-02 at 08:43 +0200, Julia Lawall wrote:
-> > Hello,
-> >
-> > Please send more patches.  Greg has been busy with a conference in
-> > the
-> > past few days, so it's not necessary to wait for feedback. 
-> > Generally, I
-> > will send some feedback if there is a concern or suggestion for
-> > further
-> > work.
-> >
-> > If you have sent some patches already with no issues, try running
-> > Coccinelle and sending some patches according to the suggestions.  It
-> > is
-> > not necessary to send such patches at a large scale.  Working on one
-> > file
-> > at a time is fine.
-> >
-> > julia
-> >
-> Hello, Thank you for the update I run one of the scripts you sent
-> earlier and found that the suggested changes were on a struct defined
-> in a header library. I would love to check further that truly this are
-> boolean definitions but I can't access the header file. How do I go
-> about this. Thank you.
+below is the coccinelle script used:
+@initialize:ocaml@
+@@
 
-What is the file you are concerned about?  The Linux kernel is entirely
-self contains, so you should be able to find all relevant header files.
-Perhaps a path is indicated in the Makefile.  So you may have to use find
-. -name file.h to find the file.
+let same_function p q =
+  (List.hd p).Coccilib.current_element = (List.hd q).Coccilib.current_element
 
-julia
---8323329-403175492-1743579533=:3162--
+@r@
+expression e;
+position p;
+symbol true,false;
+@@
+
+e =@p \(true\|false\)
+
+@@
+expression r.e;
+position q : script:ocaml(r.p) { same_function p q };
+@@
+
+e =@q
+(
+- 1
++ true
+|
+- 0
++ false
+)
+
+@s@
+type T;
+T e;
+identifier fld;
+symbol true,false;
+@@
+
+e.fld = \(true\|false\)
+
+@@
+type s.T;
+T e;
+identifier s.fld;
+@@
+
+e.fld =
+(
+- 1
++ true
+|
+- 0
++ false
+)
+
+Erick Karanja (3):
+  staging: rtl8723bs: Use true/false instead of 1/0
+  staging: rtl8723bs: Use true/false instead of 1/0
+  staging: rtl8723bs: Use true/false instead of 1/0
+
+ drivers/staging/rtl8723bs/core/rtw_ap.c       | 12 ++++++------
+ drivers/staging/rtl8723bs/core/rtw_mlme_ext.c |  4 ++--
+ drivers/staging/rtl8723bs/core/rtw_recv.c     |  2 +-
+ 3 files changed, 9 insertions(+), 9 deletions(-)
+
+-- 
+2.43.0
+
