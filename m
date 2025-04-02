@@ -1,82 +1,112 @@
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 024D5175D48;
-	Wed,  2 Apr 2025 19:23:09 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 364C219CCEC
+	for <outreachy@lists.linux.dev>; Wed,  2 Apr 2025 20:10:06 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.104
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1743621790; cv=none; b=FG/KUUInwjyaVjHU4SH7+6F3bi4UakGAeVfhUHvoDqiMPDGdYMHtSKClC/yRIZAtcPK4B/KDRX466SZT67zsLs9FBhLTD4+FBdZofi1N62/ambdMbRsl09PKVTTpzd5Y5SGReJx4EcJi0s71/zDqBQ8ZFvZCo92pqFjSLzvPFO8=
+	t=1743624610; cv=none; b=g3b71kSK1apBNtEnkTDOAHI5/phUNHoJKuAUzfhx/ihiuHt8VDyGGmfNL+bB7pMyNrIBHbRaBgk8kapUkmUhGL+Jts8+V9WUh7iq3Kjd2F9gAqoR+lhhziIJztHn292JJ5EY4FJ8wcgt9wh9BqfjGYZ17DwLRtmHu6OeFWT7kDI=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1743621790; c=relaxed/simple;
-	bh=wr2HT3UODu1UCtP8eVxFHdE3J1WTxGPPJq6w4reJpSM=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=u16y72cFDEzxJoNC6tH7iB0k/lsrOm7YKk/VY7pK9RwLwoavGyFH6lxD8wZfhWMju7B0Yb9QLikJg9XErJExawm+SABhiKgauXSW5IbiKaUzA8y/cjrhg7lou2KBdCVdhEReF27CG3HGn858nDNvDcdflb5lhmn57dOq3tIKx0g=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (1024-bit key) header.d=linuxfoundation.org header.i=@linuxfoundation.org header.b=LoKQbzam; arc=none smtp.client-ip=10.30.226.201
+	s=arc-20240116; t=1743624610; c=relaxed/simple;
+	bh=TgNeFryTIn3dCWcZ2wzs3jrHerxLRDHrfMiBoXaIgxE=;
+	h=Date:From:To:cc:Subject:In-Reply-To:Message-ID:References:
+	 MIME-Version:Content-Type; b=lIVd0xfCz2jHApiEkpXuWOLK7PT1wR61uz/vVl8nxVjY2f+E7CpjzLTweS339bxnW9IaNwCdyBQMuUc0odM7HB5bLaMhCC19seUKi3io7P5sLOEqjhCFhMR4YezP5lOhbwPTuIqN8H5g1lGRycMiYcewQFx9M0aIBSGZkVu/8co=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=iQok9/6k; arc=none smtp.client-ip=192.134.164.104
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=linuxfoundation.org header.i=@linuxfoundation.org header.b="LoKQbzam"
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1F66BC4CEDD;
-	Wed,  2 Apr 2025 19:23:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1743621789;
-	bh=wr2HT3UODu1UCtP8eVxFHdE3J1WTxGPPJq6w4reJpSM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=LoKQbzamhuAfBqujF6GrA+tZiYNzT6/X4YmV1kcBBTdqD9yRS9U1OzrP2uF6DR7tm
-	 f+61xzDLOnalEVrq5wtsVNmBpf5t24EVPbyefn/nbqc8W5Tz+VUSgBGqA6V2KwSpa+
-	 SPTUs5e4/+NF1CR4Fkvi01sEr4J1kIlFJBmm/4Ng=
-Date: Wed, 2 Apr 2025 20:21:41 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Erick Karanja <karanja99erick@gmail.com>
-Cc: outreachy@lists.linux.dev, philipp.g.hortmann@gmail.com,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 1/3] staging: rtl8723bs: Modify struct rx_pkt_attrib
- attribute bdecrypted
-Message-ID: <2025040215-confusing-sibling-f99f@gregkh>
-References: <cover.1743613025.git.karanja99erick@gmail.com>
- <00287fa9f40c643b8451a0d2df8e2fb97235ee46.1743613025.git.karanja99erick@gmail.com>
+	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="iQok9/6k"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+  d=inria.fr; s=dc;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version:content-id;
+  bh=4HNM9qm0svbaJGbEFHsTe9AtVRczCCVGxst0EVZSPmI=;
+  b=iQok9/6kL9eWz2+B7nwdQppIyYQ2nqG6/5df5vZiNupYCEo9VYng7zV+
+   isvyUT9flk+rklPRC/8Rv0Hh8MhWh7vM+s49A2Yo+5XrrZUnWHAxVJ7gQ
+   DIQ1cuBFVCj8aSOOzAM0o8AAJw5DT8AY352GdmRltCrAQsDdxfY7VYF0y
+   M=;
+Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="6.15,183,1739833200"; 
+   d="scan'208";a="113300742"
+Received: from a81-173-67-6.dsl.pocosnet.nl (HELO hadrien) ([81.173.67.6])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Apr 2025 22:10:04 +0200
+Date: Wed, 2 Apr 2025 22:10:02 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+To: rujra <braker.noob.kernel@gmail.com>
+cc: Richard Akintola <princerichard17a@gmail.com>, outreachy@lists.linux.dev
+Subject: Re: I am unable to setup and send mail via mutt Here I am sharing
+ my Here I have attached the xhci files where have found the probe functions:
+ so which one should i change ?
+In-Reply-To: <CAG+54Dbc3BC8H1oLUFJ1mbRxH6K01EUsT7jVceabmeuSV3N=_A@mail.gmail.com>
+Message-ID: <d7b552d0-9d57-ab39-417c-4b1bc13a22f0@inria.fr>
+References: <alpine.DEB.2.22.394.2503301522210.23941@hadrien> <CAG+54DYX8DEh2AVkQmL2O=5=0rF=GHrMiZnsSWwnvtpo-36-jw@mail.gmail.com> <CAMyr_bLCOWsNTDrCBuLgGDYFqqpNCJ46x_ob01vL8crPC4L=_A@mail.gmail.com> <CAG+54DYFO7cEkekhQ1K_5dYLDgQjw_QedqcTRGXXSkFFQ8QySg@mail.gmail.com>
+ <CAMyr_bKKf3Hq4fVzA9h2ZU=bpL2dHJHTU+qjhusCxYBYZXeW5A@mail.gmail.com> <Z-vIFv5cLEyjA2JD@brak3rDesk> <CAMyr_b+K3q5avgd7HHNbSufP5pk=-HPMjTomLLc0Rc7k=6V=kg@mail.gmail.com> <CAG+54DasAjm0StZWGithAXKJbR6SPGJ7UiD_hAcBkGMJLPSRew@mail.gmail.com>
+ <CAMyr_bJgUjK-UMryTOqT7-G0-uduzx3J9Kg7co_owghpBiwOyA@mail.gmail.com> <CAG+54DbOK9sEPAwF_oHR=RzKL8xh4+X5GR0K9xmrvvOauwON9A@mail.gmail.com> <CAG+54DYK-C=bAWTueZSkHLtBpWj3urNJ64_z+Ey5uGsgr+nruQ@mail.gmail.com> <CAMyr_bLhdH27ngH95MEQFp5_XMm8NzQDd7Kf9Cx4WZY9+9tGTg@mail.gmail.com>
+ <CAG+54Db1B1MqgErFoiLfx9bePwMXZe0zZaHzVEMcU+GTW+M5wA@mail.gmail.com> <CAG+54Dbc3BC8H1oLUFJ1mbRxH6K01EUsT7jVceabmeuSV3N=_A@mail.gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <00287fa9f40c643b8451a0d2df8e2fb97235ee46.1743613025.git.karanja99erick@gmail.com>
+Content-Type: multipart/mixed; BOUNDARY="8323329-1821910105-1743624561=:3363"
+Content-ID: <6ae76c6-bebc-188e-5970-3a92b1b6ddcc@lip6.fr>
 
-On Wed, Apr 02, 2025 at 08:16:42PM +0300, Erick Karanja wrote:
-> Standardize boolean representation by ensuring consistency,
-> replace instances of 1/0 with true/false where boolean logic is implied,
-> as some definitions already use true/false.
-> This improves code clarity and aligns with the kernelâ€™s bool type usage.
-> 
-> Signed-off-by: Erick Karanja <karanja99erick@gmail.com>
-> ---
->  drivers/staging/rtl8723bs/core/rtw_recv.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/rtl8723bs/core/rtw_recv.c b/drivers/staging/rtl8723bs/core/rtw_recv.c
-> index a389ba5ecc6f..fd04dbacb50f 100644
-> --- a/drivers/staging/rtl8723bs/core/rtw_recv.c
-> +++ b/drivers/staging/rtl8723bs/core/rtw_recv.c
-> @@ -1358,7 +1358,7 @@ static signed int validate_80211w_mgmt(struct adapter *adapter, union recv_frame
->  			u8 *mgmt_DATA;
->  			u32 data_len = 0;
->  
-> -			pattrib->bdecrypted = 0;
-> +			pattrib->bdecrypted = false;
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-but bdecrypted is a u8, not a boolean type.  So setting it to "false"
-does not seem correct here, right?
+--8323329-1821910105-1743624561=:3363
+Content-Type: text/plain; CHARSET=ISO-8859-15
+Content-Transfer-Encoding: 8BIT
+Content-ID: <7817ef68-ff61-9758-586b-34a7bc20ad26@lip6.fr>
 
-Also, the name of the variable should really be changed.
 
-But, step back, are you _SURE_ you can change this structure at all?
-At a quick glance it kind of looks like it comes directly from the
-hardware, or am I mis-reading the driver code?
 
-Have you tested this series on an actual device?
+On Thu, 3 Apr 2025, rujra wrote:
 
-thanks,
+> Hi team, 
+> Its regarding the issue which I am facing in tutorial this command line: 
+>
+> apt-get install python-ply python-git
 
-greg k-h
+What motivated you to want to install these things?
+
+julia
+
+
+> OUTPUT : 
+> <
+> sudo apt-get install python-ply python-git
+> Reading package lists... Done
+> Building dependency tree... Done
+> Reading state information... Done
+> Package python-git is not available, but is referred to by another package.
+> This may mean that the package is missing, has been obsoleted, or
+> is only available from another source
+> However the following packages replace it:
+>   python-git-doc
+>
+> E: Unable to locate package python-ply
+> E: Package 'python-git' has no installation candidate
+> brak3r@brak3rDesk:~/braker.noob.kernel/git/kernels/staging$ sudo apt-get
+> install python-ply python-git-doc
+> Reading package lists... Done
+> Building dependency tree... Done
+> Reading state information... Done
+> E: Unable to locate package python-ply
+> >
+>
+>
+> not able to install ply. so that "checkpatch.pl" can work
+> also have tried this command as well :
+> "sudo apt-get install python3-pip python-git-doc" 
+>
+> Here also we might need to change the tutorial steps for the upcoming
+> candidates.
+> happy to help here,
+> thanking you,regards
+> Rujra Bhatt
+>
+>
+>
+--8323329-1821910105-1743624561=:3363--
