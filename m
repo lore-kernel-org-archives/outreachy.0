@@ -1,104 +1,102 @@
-Received: from mail-vk1-f175.google.com (mail-vk1-f175.google.com [209.85.221.175])
+Received: from mail-wm1-f48.google.com (mail-wm1-f48.google.com [209.85.128.48])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C1AA533C9
-	for <outreachy@lists.linux.dev>; Wed,  2 Apr 2025 07:00:38 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.175
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7E14F231CAE
+	for <outreachy@lists.linux.dev>; Wed,  2 Apr 2025 07:15:43 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.48
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1743577240; cv=none; b=OaUn31fIrvZDR6G8puWjbYYrp3mKNf7+/1WQD8TGlnmvcgMlNKecanzlKQk04zOURzyVV3eEkvUNIELqdkZLn1LIDpYBPsFPBjPPBD937Cwv6YzEzAp7JvvY+/aJGCw2dUs11Fl8eBfIGDhEV0OagQfVkB+j0VBpCrfa81vjdlc=
+	t=1743578145; cv=none; b=Y9IN9FhSpO7VOG2n0iGZUl+rJd5J1QxaeVM8Ej/izCUI30mMJPN9JlE85uEru51oJeKYflpkINW7btfkJlUD/gKa8K9NdFmSXZ3U+9C28FEEG6pcTsmC9Ow/4QF6QRzSZUQSrsB+e+q1w5O9R1e0zFsQMz9ga/WhYaBpPwjN2i0=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1743577240; c=relaxed/simple;
-	bh=3RRrxrscLj7RR3W4MIyPUfEvqG6Mb19dXJLWPUwJHMM=;
-	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
-	 To:Cc:Content-Type; b=L8xT9Ua7qEnaKi7WRaEH+9Gt1xw0asOHGeHQsQwfZw92hHTVE/+boL5Bvehor8fB8C88L1Ow788ZkeDtxIqI4jSF7qKIf7j5CpbpbgR8JS5uQMRyZZqWl3HqqSOeQqlWb6qrQd/xSJu5vj6FNIQ437VDy2/Opxdy9Bnjd+33f9U=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=DBLn0mQX; arc=none smtp.client-ip=209.85.221.175
+	s=arc-20240116; t=1743578145; c=relaxed/simple;
+	bh=O+84DvDHtgxK5D3MIv7SCDBPh3cyrlTHbLDYVYXgMY8=;
+	h=Message-ID:Subject:From:To:Date:In-Reply-To:References:
+	 Content-Type:MIME-Version; b=XdRWSpMB5SVIRhe8KClfLjRl7oEzQjsMmFvBeAgamlAElfYo2VA6YfaK7o7UbwcISBc5I+lYIWUfXXPbUneYGfZKKl9IGMC1t8JZeTMNjVceqw/LNR9PyTVGNJ/yZVnbXApjBZYepVxkp20sS2SN4JdM3ic9i9GwOYR+SaELcds=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=QNQCrC1P; arc=none smtp.client-ip=209.85.128.48
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="DBLn0mQX"
-Received: by mail-vk1-f175.google.com with SMTP id 71dfb90a1353d-5262475372eso1530877e0c.2
-        for <outreachy@lists.linux.dev>; Wed, 02 Apr 2025 00:00:38 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="QNQCrC1P"
+Received: by mail-wm1-f48.google.com with SMTP id 5b1f17b1804b1-43d0782d787so41823755e9.0
+        for <outreachy@lists.linux.dev>; Wed, 02 Apr 2025 00:15:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1743577237; x=1744182037; darn=lists.linux.dev;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
+        d=gmail.com; s=20230601; t=1743578142; x=1744182942; darn=lists.linux.dev;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:to:from:subject:message-id:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=KaoAnOepFWNYODo0UqJx0EcUtVZogCI/FZ8az3F8LO4=;
-        b=DBLn0mQX5LAKYJ+Eyc4xj3vyRlmSuJoih8Ie5leLV5+amDhIroqeNdUJpuy3dNn5/I
-         2gNBILNGLrhouJHzCGMg8AQjuB/IT2bQGf9fPwzx1pUy8jcnDlHx+JtnlV1WB80rGQgs
-         hBzpuTfEwxk6Q+V2sLK7jgKBSepeOz+igVY+ZK4YzOFnPPrAPxhFyn9QH1dgequoxzak
-         grNL/CCnHkdgF1It2HVSdz/5QAf64FMVK9amU7T9JOY9GjQLqjbQltAZV06Qd3MGcIg+
-         +mQLPS+TSC7ayGQqR9H7yx6euxO9LSvnqbpHHvv6NF6S9A+jLR1oIE4fvNQXWAuwM+Tz
-         2e1g==
+        bh=O+84DvDHtgxK5D3MIv7SCDBPh3cyrlTHbLDYVYXgMY8=;
+        b=QNQCrC1PvkdLyulRsAqo2ehxrF+joXBQq6XyjNtELzHNixS5lxzzTev3BYjfJXCY6e
+         Xe5DznOH8KI8Mk1ZLsNJBEZ2Rf0JapnMK91zBj9dgXTntUDHCLm/QmeHgoYKBVUS6zAo
+         u1Z0Pt2GC6NRw/0lx+zZHtRsJqreBIxFQNRcPbOtxJ3Vn08jUS9PUFmvTQwWxq1EPe1J
+         1vHyAo1wSMTlsWCG1oCC22m24QnjDNNPxI3H8rgllTZytIg74fDfN/+qqbrw/C++mpty
+         G3vGGIaRw8/rIhRBVMuZsXdZwdAtN36MeXzqLxmszsbix58ypINngldtGKlPS8rFBD0b
+         Boew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743577237; x=1744182037;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=KaoAnOepFWNYODo0UqJx0EcUtVZogCI/FZ8az3F8LO4=;
-        b=lBtE1Ara7oNNhWYA3qATa/H5iJJ1f1FMok2E0JUsnhhTg1klpI2uaIrjTp0ZKtd0WJ
-         rM36hTp916NsblaJ4i/cqMjU9uwoyOPcrEKLSpY8/Tv47IHBAeOZPZBUUWydfSGILtbR
-         AalsKNbwBwRG8dQBiwiOCUGHof6XHYNRQ5hhmFw3sdDAGbmzTxkTEtazgNu+5J8lTeSx
-         kpvbWrq4ygHeHULTJ3BHYLHCBZkXpLXViNtLcUUJ9zBUZQMXN5cHuJAWanngJkkB0gVO
-         O4CDwQ6ohL2Cs8BmImHPBq3XvBdyzMNzWPXB/fz+bQNiPEkA8vmENEyKbnKbj3b4Sk6T
-         SKGA==
-X-Gm-Message-State: AOJu0YwN9tgG6j3b7IPUc0toBMrr0y1oefVFkc5I1UQuJ1/7qbxofjcB
-	u09nKI6okVp/sGWIkPI0ZIuOl8y80LXp2HYauTxsAimgMnJE1UcO50bxmCPM8cERLVauVosY47v
-	FGm7aKkhWpvgkwyOchwrujQR9p7U=
-X-Gm-Gg: ASbGncthfwWYHIB0fvdXXF+XiV3p1jT+fZC8L+KqfdsmYz6vufg/Ebs1b9ZODLtM1PL
-	UZsrsO55kp7KoFf6At518p4X4ZLXaPeldp0LyP+jk7qn0/puMLyORRzPa7fUDDym5QGikKgBU4G
-	hHBR4OrU8z1JfcSIlDoVVZhJlRmmyV
-X-Google-Smtp-Source: AGHT+IHC69KNKxUhTIA3n2en0U+zARshmyk0WkszHwZC+nFsUyOWkKXI3DZ6cV3jx3Zly/W3Q47tLX19nfmVebVQdvc=
-X-Received: by 2002:a05:6122:3c8b:b0:523:9ee7:7f8e with SMTP id
- 71dfb90a1353d-5261d36a655mr11503445e0c.4.1743577237533; Wed, 02 Apr 2025
- 00:00:37 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1743578142; x=1744182942;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:to:from:subject:message-id:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=O+84DvDHtgxK5D3MIv7SCDBPh3cyrlTHbLDYVYXgMY8=;
+        b=LZvXs/Ro7ZCnJDECoK16VAayaPFP9vi+x+BcfY3NiadOi2CAUWTHWkYbnTqmFu7+Ka
+         579X0z+iN3piGr08ckfrANNjehCOPJYf7WVocbDmR8cFQMiuTXkZrWDftwDbpa+Uol8C
+         aZmFb+/2N1mpbVJZl05bkzcFMJqa5dpFoC8lC+roFUbkDN+vpV2l8T6T0n7PczJqfazk
+         OKcvkCgfr6VqssEUGo87EFHLRVh+uE/VSJscTDuDEmhk6kkTmEXDgpKg1jHpSxB5mzbp
+         cfnHRv9JF/dw7jaJ9yedIeIULfv7Dde/kTg0RRf0ajEVTGD2R5tuAxVRE4s5YePiyp20
+         +M/g==
+X-Forwarded-Encrypted: i=1; AJvYcCU35YcESytIOGfBvRD3ujUvGyRwdGwyZtiEMysNtUdwuywhDuGtaZsIBmB0CCKwqE71L2fPn1geZvA=@lists.linux.dev
+X-Gm-Message-State: AOJu0YxTyJH5Dx1chvaiBmp3iI2aIf/iJCeIvbNZv8SIEGFf2V2jOe5u
+	I1xQG0hPFRyWcY1nslukgrWWROuvNAwPYE1E3RLO6VDwmXfd263F
+X-Gm-Gg: ASbGncvg8eIa9DScovqxSC19Qn+LAuhOkZBrvSFnlNmWafkpOciUr22qM12/yYZAYq9
+	UVoEYi17CAtG2MGT6MrDgwqh6KAFm51LCDCEGYBruToB7AEbLz519uWSkamPx/NHBmvTqR2veQi
+	mk/cuNNWM9ZupC1fWUAKkB9ATDpJe0xyHN5r4JxkaMq4uRKS3McfC60EbIrQNG15T1zi5cI56xm
+	CcAr10u6qZIeVenyNMHpSi0LML9K8uSyR+GTDyliNyOSieuNx/zctnK+LYaHvZtDU4JrCcwib5y
+	CEAxbkzEvgK4XYtMmSxflRNkbXMqy67b/11biXUW5O0QOxwsaEge5dA=
+X-Google-Smtp-Source: AGHT+IELp0yDEG0CEOq310v5UPBDfVa6/iRictyGHNXD3TXuDucZxf46d9NREFhM+vDF5l905QJ6xA==
+X-Received: by 2002:a5d:47c6:0:b0:391:2c67:7983 with SMTP id ffacd0b85a97d-39c12114efcmr11423099f8f.39.1743578141576;
+        Wed, 02 Apr 2025 00:15:41 -0700 (PDT)
+Received: from [172.16.8.120] ([197.155.71.138])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39c0b79e37bsm16379275f8f.61.2025.04.02.00.15.39
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 02 Apr 2025 00:15:41 -0700 (PDT)
+Message-ID: <7d2e32b800eb14343084b06ed93a2e5070426011.camel@gmail.com>
+Subject: Re: patches
+From: Erick Karanja <karanja99erick@gmail.com>
+To: Julia Lawall <julia.lawall@inria.fr>, outreachy@lists.linux.dev
+Date: Wed, 02 Apr 2025 10:15:35 +0300
+In-Reply-To: <cd684867-6bd3-f7ef-9672-6513e0efa336@inria.fr>
+References: <cd684867-6bd3-f7ef-9672-6513e0efa336@inria.fr>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.52.3-0ubuntu1 
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-References: <cd684867-6bd3-f7ef-9672-6513e0efa336@inria.fr>
-In-Reply-To: <cd684867-6bd3-f7ef-9672-6513e0efa336@inria.fr>
-From: Samuel Abraham <abrahamadekunle50@gmail.com>
-Date: Wed, 2 Apr 2025 08:00:27 +0100
-X-Gm-Features: AQ5f1JqIbg6lD9pC2O924Vbby_pnz0QvqxfvVk2JiseXMOxTbdUR4T2yYV9sLO8
-Message-ID: <CADYq+fauoeq0fPbV10d0fwnoOSG7=5-_Gd5jCKuJ-rJmoqMp6A@mail.gmail.com>
-Subject: Re: patches
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: outreachy@lists.linux.dev
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-On Wed, Apr 2, 2025 at 7:43=E2=80=AFAM Julia Lawall <julia.lawall@inria.fr>=
- wrote:
->
+On Wed, 2025-04-02 at 08:43 +0200, Julia Lawall wrote:
 > Hello,
-Hello Julia
->
-> Please send more patches.  Greg has been busy with a conference in the
-> past few days, so it's not necessary to wait for feedback.  Generally, I
-> will send some feedback if there is a concern or suggestion for further
+>=20
+> Please send more patches.=C2=A0 Greg has been busy with a conference in
+> the
+> past few days, so it's not necessary to wait for feedback.=C2=A0
+> Generally, I
+> will send some feedback if there is a concern or suggestion for
+> further
 > work.
->
+>=20
 > If you have sent some patches already with no issues, try running
-> Coccinelle and sending some patches according to the suggestions.  It is
-
-Thank you.
-Please do you mean we can run some checks on drivers just like check patch?
-I saw the coccicheck binary in the scripts/ directory but I am not
-sure how to run it
-on a driver if that is what it is meant for.
-Could you please provide some guidance?
-> not necessary to send such patches at a large scale.  Working on one file
+> Coccinelle and sending some patches according to the suggestions.=C2=A0 I=
+t
+> is
+> not necessary to send such patches at a large scale.=C2=A0 Working on one
+> file
 > at a time is fine.
-
-Also, I would like to ask that when a driver is eventually transformed
-using Coccinelle,
-how do we indicate in the commit message that the suggestion and the
-transformation
-was done using coccinelle just like we do for checkpatch?
-
-Thanks
-
-Adekunle
+>=20
+> julia
+>=20
+Hello, Thank you for the update I run one of the scripts you sent
+earlier and found that the suggested changes were on a struct defined
+in a header library. I would love to check further that truly this are
+boolean definitions but I can't access the header file. How do I go
+about this. Thank you.
