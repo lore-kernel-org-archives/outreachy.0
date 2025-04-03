@@ -1,128 +1,130 @@
-Received: from mail-ej1-f50.google.com (mail-ej1-f50.google.com [209.85.218.50])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9561D1F583B;
-	Wed,  2 Apr 2025 23:30:18 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.218.50
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 567416BB5B;
+	Thu,  3 Apr 2025 02:36:17 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.16
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1743636620; cv=none; b=NhlZe1vBdE4+n0sH8NCroUMEr7QabeCxFVXN7/wvydTdv9vh9FKQIbCtkX7G+q9oQE9wcePUN38s00buCbJCJrm6aqnsAtSYIP9Uw49q7vCaUZewnY3i5fGpeeGoLo8cXO+ODcS/zQw04MEp8QIP45csw2balFUJaDCy3hwNXII=
+	t=1743647779; cv=none; b=JVgxNbtLFM1WlGeVPYm+ssiE7QKeAgp+IEnbiVDO0cK+kuB/tnhW4k/Y+ZkOsfqvQKe0wSSbiVYOC2gBpJgeiYtD0ZxdMy2vPjbQ6pwAEXqOH3nJIoVDJs+JbA08yQzXdoHRhQNjA9bFFwtkzXMQ/QidrKS94U9xOTHGYwyO8EE=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1743636620; c=relaxed/simple;
-	bh=FC+bXCg9OO5iq9t3ZXMfUjkc9O7zgg/6bFgCTEb1FHU=;
-	h=From:To:Cc:Subject:Date:Message-Id:In-Reply-To:References:
-	 MIME-Version; b=I9qzClc5nezQkzYNq6MYvyo5R5Hcs+RGWLWEMHBDeHcmHni6py7s7oA/lR2UVn0Gv7z9ACSy/auEDdexr7/w1rfIr0+q4+HhscvzWq4PnUTn1Spq8O7pWsj4yvqpiV0y2AR1Vc878muRLrqwbMk3J0K5Fz/A5JUduNzEF6Zml9k=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=TCg1lMwv; arc=none smtp.client-ip=209.85.218.50
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	s=arc-20240116; t=1743647779; c=relaxed/simple;
+	bh=NZBuTBYfIwLshdQDTbcROAiQdSt6dnB12ilYyCOQhL8=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=JhGpVlbvja+JoMrEvOi/jltqpcDLDt4e8+BGM3wYx6V21FC5SIG/m8wyuBCMBfo5pLAkrR3RSYWTafiJiILlLfK8sT6OvI0j+GkkWebBo5u2b1xpY3CjqgQePLyQS4bLrcVq8R4/hJcMBY9wlJGTreiGdgwixnJF0VEhi6ir2BQ=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=FhrN2AtP; arc=none smtp.client-ip=198.175.65.16
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="TCg1lMwv"
-Received: by mail-ej1-f50.google.com with SMTP id a640c23a62f3a-ac345bd8e13so49795466b.0;
-        Wed, 02 Apr 2025 16:30:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1743636617; x=1744241417; darn=lists.linux.dev;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=cgSAGPNVdbA1kLYMuFDlu0LEzgebSSjzEPSiFTvtLho=;
-        b=TCg1lMwvqja+zHNL0JhYbIK3R9trNdgi90qdxgASBtatnVOZVKjwxRTe2sEA55jyIv
-         aQRnCeEbLoLARLAC5Lt19tNb270Pu/udkwrwxDjnJC8mBg0S3qLf7zk3TzZK0vMun7Rd
-         hvfDcxwoMXOKmRFf7S9wtOZP6iuoH1ChYv/XAN2YgyZ4u2tO1AH1YskNi4hynsLnnOJR
-         lJhohYAFQGiqMOtfy7dc/wKLoA7i3z5M564eBPWNxgZUqQpSeD99P+zO932UCqq7DuYQ
-         8b2TT/7UnUyt88X3T80Ay51XUtiRbdRsVTrgTmkx2C6nWNo8VPlg0+/8+QWHNoAftnG6
-         DlOA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743636617; x=1744241417;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=cgSAGPNVdbA1kLYMuFDlu0LEzgebSSjzEPSiFTvtLho=;
-        b=XnZwWWFh5A+xVIMZ+UDI/wv7+J9t2drwzNF6ILnY0qi7fXIxHABSlJsU5RBwobAWlG
-         vBSYDvsfGngBhFZMbuVCK1IK7rCPMNPtKpP9LezpVHTD14HUCsyp802UzKjsUdNMwPTQ
-         umSoWFadUUQXkpgct/ne3G0i22g7co9AIWA7HjqPPEmpj/V6k+mMPixLxwBF9d6VX9mf
-         bEmaOeCk8eqO8G3pR5sP0ZtBKhvZfDSu0/NXClxhyERVQz851fUrdicdGJXVh4k+dOo7
-         GtlR7sPnm3FiEcp0RhubWD6wgc4d6eNYx4PLEb0TToEV4Z+wRREaAjpMu5m1zd7iVYbP
-         KYJQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXT3820VC8hcatEusYr60NQLalT6i2fr+4oOdNPBdQ6YrHat48FsCTcwykYaFJeSK6KK++JIzzBt2+uAslH@lists.linux.dev
-X-Gm-Message-State: AOJu0YzDz/VSZYmGH0AJwnaphE5JXIGGGbEWxMpsALhBFWQm7MlKm9BL
-	1hVQzEEXPwinxq1F6TSoVTB4STnc+MX/hqhMMNl5e9cUnJ56afzX
-X-Gm-Gg: ASbGnctafz3g9zxP+jMPSjXX3clGoKNyDjodLpz41xfQwbtLbb4UFOafvsP4UD916DV
-	e4JSWxiBZbCuHHDsGcwGToc9ynoYdAncK/MmFuxjI9NIb4uJ6cwej281xJwU4+r/qvHtqzK5T6U
-	G/j12EIZifQu4+/5KQs8dw2Z+sozR7bgRm+VgTjDJjA94Ml8v6vMF7i3uFQ04jYhuOtvSo652wG
-	raQvDfZXeqUAMdV+5FV0HO8fliJB7hm73yvw3WX3i7sBhb6pAZq4jameS7b3cLaA6N9fUUoAih2
-	9DDvSZk7iCissnye/ha8hSiPs8BWdkotIqy6l6AlYu6+pJ7WIg==
-X-Google-Smtp-Source: AGHT+IEq+GxVf2hMdfSdfKBaOs+XYnhK5g0kYcToDxnihsf9c0xrQWGI6o9j4Go0+ESAfyepzOaA+g==
-X-Received: by 2002:a17:906:7955:b0:ac2:55f2:f939 with SMTP id a640c23a62f3a-ac7a166e465mr353956966b.6.1743636616755;
-        Wed, 02 Apr 2025 16:30:16 -0700 (PDT)
-Received: from HP-650 ([105.112.231.107])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ac7c01c2c13sm1458466b.182.2025.04.02.16.30.06
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 02 Apr 2025 16:30:16 -0700 (PDT)
-From: Abraham Samuel Adekunle <abrahamadekunle50@gmail.com>
-To: outreachy@lists.linux.dev,
-	julia.lawall@inria.fr
-Cc: hdegoede@redhat.com,
-	mchehab@kernel.org,
-	sakari.ailus@linux.intel.com,
-	andy@kernel.org,
-	gregkh@linuxfoundation.org,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="FhrN2AtP"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1743647777; x=1775183777;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=NZBuTBYfIwLshdQDTbcROAiQdSt6dnB12ilYyCOQhL8=;
+  b=FhrN2AtPZLoUszvH9HCk1yGflb37pYgjvuWVyjo8Sz6nE0Eu73TtgJAw
+   xw7qtwXvyiowM0fc+754bZ+kPrWuLIMfZPWK6mnk3xt/6M52piV/gBInx
+   SH8yTIUcD+YExkrOmxXB/H1UkvSjyNEeLBeXW3Qnwa9bBW01oiEFtsn1z
+   FU7cUnaTwPIyoqPovnf8GCXmX8RPhf6cx01JK+BjE7ii+yLIvA3PI+bkh
+   zO9S5l1vzxnQrX7q9vCaqtBCmSpMNlGn5s9JnLfmuYOTTxlCYYrFJ41IQ
+   SQCy448xnphgCBdHynaDcr3p8M2mHoIYh7VPHoW5PxTKhGu8j06N7/BgI
+   g==;
+X-CSE-ConnectionGUID: 4ikuFx4WQICg95g/lM3t5g==
+X-CSE-MsgGUID: MZ6RL4vET1mvI3NlSZK3YA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11392"; a="45137215"
+X-IronPort-AV: E=Sophos;i="6.15,184,1739865600"; 
+   d="scan'208";a="45137215"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Apr 2025 19:36:17 -0700
+X-CSE-ConnectionGUID: V8R3s9rmT/iw0v9OBTeU7w==
+X-CSE-MsgGUID: RO4mmT0+Tv6uFP43y6mfrw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,184,1739865600"; 
+   d="scan'208";a="126634125"
+Received: from lkp-server02.sh.intel.com (HELO e98e3655d6d2) ([10.239.97.151])
+  by orviesa009.jf.intel.com with ESMTP; 02 Apr 2025 19:36:14 -0700
+Received: from kbuild by e98e3655d6d2 with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1u0ARA-000BAu-1E;
+	Thu, 03 Apr 2025 02:36:12 +0000
+Date: Thu, 3 Apr 2025 10:35:47 +0800
+From: kernel test robot <lkp@intel.com>
+To: Abraham Samuel Adekunle <abrahamadekunle50@gmail.com>,
+	outreachy@lists.linux.dev
+Cc: oe-kbuild-all@lists.linux.dev, gregkh@linuxfoundation.org,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	julia.lawall@inria.fr,
 	Abraham Samuel Adekunle <abrahamadekunle50@gmail.com>
-Subject: [PATCH 2/2] staging: rtl8723bs: Prevent duplicate NULL tests on a value
-Date: Thu,  3 Apr 2025 00:29:01 +0100
-Message-Id: <f04b31c428beb6195ad5df5116d1421fc036af16.1743635480.git.abrahamadekunle50@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <cover.1743635480.git.abrahamadekunle50@gmail.com>
-References: <cover.1743635480.git.abrahamadekunle50@gmail.com>
+Subject: Re: [PATCH 5/5] staging: rtl8723bs: modify variable names to comply
+ with kernel naming convention
+Message-ID: <202504031009.mcD22ETY-lkp@intel.com>
+References: <dd32dfe6c837d88dd13a546aadcb0bc207b997d6.1743163801.git.abrahamadekunle50@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <dd32dfe6c837d88dd13a546aadcb0bc207b997d6.1743163801.git.abrahamadekunle50@gmail.com>
 
-When a value has been tested for NULL in an expression, a
-second NULL test on the same value in another expression
-is unnecessary when the value has not been assigned NULL.
+Hi Abraham,
 
-Remove unnecessary duplicate NULL tests on the same value that
-has previously been NULL tested.
+kernel test robot noticed the following build warnings:
 
-Found by Coccinelle
+[auto build test WARNING on staging/staging-testing]
 
-Signed-off-by: Abraham Samuel Adekunle <abrahamadekunle50@gmail.com>
----
- drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 2 +-
- drivers/staging/rtl8723bs/core/rtw_xmit.c     | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+url:    https://github.com/intel-lab-lkp/linux/commits/Abraham-Samuel-Adekunle/staging-rtl8723bs-correct-coding-style-by-preventing-lines-from-ending-with/20250328-204628
+base:   staging/staging-testing
+patch link:    https://lore.kernel.org/r/dd32dfe6c837d88dd13a546aadcb0bc207b997d6.1743163801.git.abrahamadekunle50%40gmail.com
+patch subject: [PATCH 5/5] staging: rtl8723bs: modify variable names to comply with kernel naming convention
+config: i386-randconfig-063-20250403 (https://download.01.org/0day-ci/archive/20250403/202504031009.mcD22ETY-lkp@intel.com/config)
+compiler: gcc-12 (Debian 12.2.0-14) 12.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250403/202504031009.mcD22ETY-lkp@intel.com/reproduce)
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-index 90966b7034ab..675226535cd1 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-@@ -1323,7 +1323,7 @@ unsigned int OnAssocReq(struct adapter *padapter, union recv_frame *precv_frame)
- 	spin_unlock_bh(&pstapriv->asoc_list_lock);
- 
- 	/*  now the station is qualified to join our BSS... */
--	if (pstat && (pstat->state & WIFI_FW_ASSOC_SUCCESS) && (status == WLAN_STATUS_SUCCESS)) {
-+	if ((pstat->state & WIFI_FW_ASSOC_SUCCESS) && (status == WLAN_STATUS_SUCCESS)) {
- 		/* 1 bss_cap_update & sta_info_update */
- 		bss_cap_update_on_sta_join(padapter, pstat);
- 		sta_info_update(padapter, pstat);
-diff --git a/drivers/staging/rtl8723bs/core/rtw_xmit.c b/drivers/staging/rtl8723bs/core/rtw_xmit.c
-index 026061b464f7..5d5278eefabe 100644
---- a/drivers/staging/rtl8723bs/core/rtw_xmit.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_xmit.c
-@@ -941,7 +941,7 @@ s32 rtw_make_wlanhdr(struct adapter *padapter, u8 *hdr, struct pkt_attrib *pattr
- 			if (!(psta->state & _FW_LINKED))
- 				return _FAIL;
- 
--			if (psta) {
-+			{
- 				psta->sta_xmitpriv.txseq_tid[pattrib->priority]++;
- 				psta->sta_xmitpriv.txseq_tid[pattrib->priority] &= 0xFFF;
- 				pattrib->seqnum = psta->sta_xmitpriv.txseq_tid[pattrib->priority];
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202504031009.mcD22ETY-lkp@intel.com/
+
+sparse warnings: (new ones prefixed by >>)
+>> drivers/staging/rtl8723bs/core/rtw_efuse.c:13:4: sparse: sparse: symbol 'fake_efuse_bank' was not declared. Should it be static?
+>> drivers/staging/rtl8723bs/core/rtw_efuse.c:14:5: sparse: sparse: symbol 'fake_efuse_used_bytes' was not declared. Should it be static?
+>> drivers/staging/rtl8723bs/core/rtw_efuse.c:15:4: sparse: sparse: symbol 'fake_efuse_content' was not declared. Should it be static?
+>> drivers/staging/rtl8723bs/core/rtw_efuse.c:16:4: sparse: sparse: symbol 'fake_efuse_init_map' was not declared. Should it be static?
+>> drivers/staging/rtl8723bs/core/rtw_efuse.c:17:4: sparse: sparse: symbol 'fake_efuse_modified_map' was not declared. Should it be static?
+>> drivers/staging/rtl8723bs/core/rtw_efuse.c:19:5: sparse: sparse: symbol 'bte_fuse_used_bytes' was not declared. Should it be static?
+>> drivers/staging/rtl8723bs/core/rtw_efuse.c:20:4: sparse: sparse: symbol 'bte_fuse_content' was not declared. Should it be static?
+>> drivers/staging/rtl8723bs/core/rtw_efuse.c:21:4: sparse: sparse: symbol 'bte_use_init_map' was not declared. Should it be static?
+>> drivers/staging/rtl8723bs/core/rtw_efuse.c:22:4: sparse: sparse: symbol 'bte_use_modified_map' was not declared. Should it be static?
+>> drivers/staging/rtl8723bs/core/rtw_efuse.c:24:5: sparse: sparse: symbol 'fakebte_fuse_used_bytes' was not declared. Should it be static?
+>> drivers/staging/rtl8723bs/core/rtw_efuse.c:25:4: sparse: sparse: symbol 'fakebte_fuse_content' was not declared. Should it be static?
+>> drivers/staging/rtl8723bs/core/rtw_efuse.c:26:4: sparse: sparse: symbol 'fakebte_use_init_map' was not declared. Should it be static?
+>> drivers/staging/rtl8723bs/core/rtw_efuse.c:27:4: sparse: sparse: symbol 'fakebte_use_modified_map' was not declared. Should it be static?
+
+vim +/fake_efuse_bank +13 drivers/staging/rtl8723bs/core/rtw_efuse.c
+
+    10	
+    11	
+    12	/* Define global variables */
+  > 13	u8 fake_efuse_bank;
+  > 14	u32 fake_efuse_used_bytes;
+  > 15	u8 fake_efuse_content[EFUSE_MAX_HW_SIZE] = {0};
+  > 16	u8 fake_efuse_init_map[EFUSE_MAX_MAP_LEN] = {0};
+  > 17	u8 fake_efuse_modified_map[EFUSE_MAX_MAP_LEN] = {0};
+    18	
+  > 19	u32 bte_fuse_used_bytes;
+  > 20	u8 bte_fuse_content[EFUSE_MAX_BT_BANK][EFUSE_MAX_HW_SIZE];
+  > 21	u8 bte_use_init_map[EFUSE_BT_MAX_MAP_LEN] = {0};
+  > 22	u8 bte_use_modified_map[EFUSE_BT_MAX_MAP_LEN] = {0};
+    23	
+  > 24	u32 fakebte_fuse_used_bytes;
+  > 25	u8 fakebte_fuse_content[EFUSE_MAX_BT_BANK][EFUSE_MAX_HW_SIZE];
+  > 26	u8 fakebte_use_init_map[EFUSE_BT_MAX_MAP_LEN] = {0};
+  > 27	u8 fakebte_use_modified_map[EFUSE_BT_MAX_MAP_LEN] = {0};
+    28	
+
 -- 
-2.34.1
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
