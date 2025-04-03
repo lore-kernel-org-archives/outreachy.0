@@ -1,79 +1,123 @@
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EBB602500DE;
-	Thu,  3 Apr 2025 14:11:04 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2E6B624EA88
+	for <outreachy@lists.linux.dev>; Thu,  3 Apr 2025 14:19:51 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1743689465; cv=none; b=EKxXlg7VdircQDwmMsSpI5PnTYYc8INte/XRtrA9zeP7iqALL5brCuqBUobYn8FDpP0JHkhrV5gtCbulVoEG0xius+pDdPr4IHymjZOkI0Yd9Fqd3+FvfhXb3anbL+tKbxAWgTKS0sLdfsI0YhjVIT2Qm4X9Fdqfadf6lrCGoR8=
+	t=1743689994; cv=none; b=rJURXXXC2vhzvTRbXhLxdwbJ3ZdkoJJa+2jku22TC1Upec1b/5Vi7AI16/eO9WWMLq4GxHrq3LLGjB6ciiQyoPMXzko0jS3V3BUVNdXysNxBFYIe+oVPaapfd0EuhsgHee99niVek+6TEQOgSWt2oRpzQOlXbrq0C+ZD1EHpSRs=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1743689465; c=relaxed/simple;
-	bh=nQl3cTdTbatl1g2M9BKMpP0FL0R93Xmbz3gVBMTA+1c=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=uF9LhBYVW1lh7STPBUgiXTl8KG6E/gDxm4uf/1IxE32BIy4t/eTZSn8e9lAN2x7Q8UeEgsB/QPQWwkF0ekKvwpqWtZlZWqyaGJw69TR4iEiTjSWql9I+cRV1RdsAsI5fTIlNt47Z2S/2f9oXhP0VIZh73qoEuNuiG0sKitYp09Q=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (1024-bit key) header.d=linuxfoundation.org header.i=@linuxfoundation.org header.b=ck5Bic97; arc=none smtp.client-ip=10.30.226.201
+	s=arc-20240116; t=1743689994; c=relaxed/simple;
+	bh=l32nJhWlvQpJaXMheQIHq7EaHrAGjn3ePH6vgGK3ZrM=;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+	 In-Reply-To:Content-Type; b=c74PvKxxvEjq2bDaKH61EzORJy51o12Z70qvJgezlr0eP6/Z1m0pyw+Ub/QkyDzZrbIaq7Kw9RsO8LsAYTN0fuGSjsQiNCd0h5uce6W5DF9kUBowdH2tQvIj5NHm7tXkIKbgtgbRGIZo+aS398EG+Iik5zf9X9oi/c/5Q/Boxpc=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=GBCVS14u; arc=none smtp.client-ip=170.10.133.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=linuxfoundation.org header.i=@linuxfoundation.org header.b="ck5Bic97"
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0D1CBC4CEE5;
-	Thu,  3 Apr 2025 14:11:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1743689464;
-	bh=nQl3cTdTbatl1g2M9BKMpP0FL0R93Xmbz3gVBMTA+1c=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ck5Bic97/mCQ3d+8QIehgZa4Qtq0CZK+lTbYWcWyWXKO+FV2tDN+OrRepgE3YK04W
-	 zP4OuYcXZy6GrJKNjuI+oepwK1TQc2jzh6NxfflkN6Chdv9LEhtulY1pOCcKw+IsFF
-	 qlRQTopj4nzPa3rTNBUvHfCXS3mOWhAl0Cqaom1A=
-Date: Thu, 3 Apr 2025 15:09:36 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: nancyenos <nicymimz@gmail.com>
-Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev
-Subject: Re: [PATCH] staging: octeon: Fix unused macro Argument 'x'
-Message-ID: <2025040315-squid-gloating-e0df@gregkh>
-References: <20250325100952.2956-1-nicymimz@gmail.com>
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="GBCVS14u"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1743689991;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=HRj4duMKWuLhK3/1HC13xNiJuwQlUGnDJUVVcga109M=;
+	b=GBCVS14uVsZbkK27B8a3WRQuSa9JjcQa4Tzaa1NKasPHBGFprqBS0YhWVXn9yLAj80WOwr
+	jL6aGSZ17XIrRCdWDQHYHl8v2kHur49Hu6ajILaGsrPNnb61sZT3ZAgpEZ4p9+YD4BFfDj
+	Zi4taa8fyuVDvnfK33B8l3ZajKsOIIo=
+Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
+ [209.85.218.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-594-FfJSzWmcOaaW8RbqI_20tA-1; Thu, 03 Apr 2025 10:19:49 -0400
+X-MC-Unique: FfJSzWmcOaaW8RbqI_20tA-1
+X-Mimecast-MFC-AGG-ID: FfJSzWmcOaaW8RbqI_20tA_1743689989
+Received: by mail-ej1-f72.google.com with SMTP id a640c23a62f3a-ac28f255a36so80630866b.3
+        for <outreachy@lists.linux.dev>; Thu, 03 Apr 2025 07:19:49 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1743689989; x=1744294789;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=HRj4duMKWuLhK3/1HC13xNiJuwQlUGnDJUVVcga109M=;
+        b=X63ga6GbEQ1JiAJZVXJyouATgsLBWVYe8ZtcWOJAaioZ1dB8xmnzx3vKl1vUEjfRFi
+         b1c/lT/ftzuM71uCQA9B7HwcpYXwV8XBfCBs05OOXQnwkt3H41VQAi7DL9xo9ADFR2IP
+         MpwZ83ggshW0cxUICK5+AAFDpugIrUuAqcb8lzmJ2E8RcUFeLgcdDDNemCqQtEKRXg+8
+         5+0Oa2Sog2wk6RMv92bhdlxmJPuU2Z4Win7SxRl0x1cs3DPUlADViF0DSrzswfXZ0VV5
+         epSHOIqK1x1A70H+iopHChMbSoRu8LCr52Y11Xf3UUuCdR4oBY8iWMgGBkMs0/5UUUOK
+         ENLA==
+X-Gm-Message-State: AOJu0YwjOzlkD/yeSsCe4mEwdyQe7uLpkKI4TLGMRCKuHtlR4E6/cXZA
+	5iqwoEi5zf6KWZUzep3rXRAxKMRKm8LnxMenOAuwHx8N8z1shYP6tCZ5JXz3QvmrpDAcriZptn6
+	7In223uCKp6OeT3UEG+3SOsRezNXZ5F3NzZ6VYXbAEt4pcuge3fM/H0eW+A==
+X-Gm-Gg: ASbGncsU7DAs3yh7z+g3HMZyDj1Yke9bafMH6AMSpMWUjZ8ogC9EZ5bfsZvH/EBhDRC
+	xpIK0S+u/CXf0zUyfIkU7rLz3bWwAnqFNlgBzEqXPV+BoxputUCBP2Hq0TbQJCrqMWfAyf119Wh
+	pCwxm/qMlV738KHpe4WcGDP6byRlOFqNO/RxqhAzVNqEWtA0kqKxnAzmyEU5ptKLLcWZxSHjxLl
+	u7JkXeFn94bcxP/4nNmoMCEimUUZ2xA+8WwDZXnvLhIfetsglWFwnL34HjMDld0HOyoxFyab0ab
+	zgiHREtRVM6M3RCTUaWFOfR+rDeAKW+zQxsfT6kUsFhlvqiESKkZ/6mRi1dBkNo8KnSpc6T9m0f
+	/HVJwLl8scN+sKKv/5PIvcxWibaOTMDZ8SqCsAhzgdAbs+ylYTpVvHrTyAYlRcgEn9Q==
+X-Received: by 2002:a17:907:72d1:b0:ac2:b9c8:b7ba with SMTP id a640c23a62f3a-ac73895fbbemr1917787866b.10.1743689988656;
+        Thu, 03 Apr 2025 07:19:48 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE389JF5t/NVOtZsuHT6ZzEofdOeTC/k4+UGMGsxdz2+Ni5DDJM4CsvuVwaY3ElTZolYu+ZhQ==
+X-Received: by 2002:a17:907:72d1:b0:ac2:b9c8:b7ba with SMTP id a640c23a62f3a-ac73895fbbemr1917786166b.10.1743689988309;
+        Thu, 03 Apr 2025 07:19:48 -0700 (PDT)
+Received: from ?IPV6:2001:1c00:c32:7800:5bfa:a036:83f0:f9ec? (2001-1c00-0c32-7800-5bfa-a036-83f0-f9ec.cable.dynamic.v6.ziggo.nl. [2001:1c00:c32:7800:5bfa:a036:83f0:f9ec])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ac7bfe5d44dsm102241066b.13.2025.04.03.07.19.47
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 03 Apr 2025 07:19:47 -0700 (PDT)
+Message-ID: <3beaf600-1670-44de-a782-6e34010061e3@redhat.com>
+Date: Thu, 3 Apr 2025 16:19:46 +0200
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250325100952.2956-1-nicymimz@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/3] staging: media: Remove duplicate NULL tests on a
+ value in pci
+To: Greg KH <gregkh@linuxfoundation.org>,
+ Abraham Samuel Adekunle <abrahamadekunle50@gmail.com>
+Cc: outreachy@lists.linux.dev, julia.lawall@inria.fr,
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+ andy@kernel.org, mchehab@kernel.org, sakari.ailus@linux.intel.com
+References: <cover.1743685415.git.abrahamadekunle50@gmail.com>
+ <26990d4a9d4419f9d4155a40595bc213acb671a0.1743685415.git.abrahamadekunle50@gmail.com>
+ <2025040320-fraction-bagel-ea64@gregkh>
+From: Hans de Goede <hdegoede@redhat.com>
+In-Reply-To: <2025040320-fraction-bagel-ea64@gregkh>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: H4tzNwWcrkJg5p_7V7rHnH-2Kzfm38iXhHiFgPWSHtM_1743689989
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US, nl
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 
-On Tue, Mar 25, 2025 at 03:09:52AM -0700, nancyenos wrote:
-> warning found by checkpath.pl
+Hi,
+
+On 3-Apr-25 3:54 PM, Greg KH wrote:
+> On Thu, Apr 03, 2025 at 02:26:41PM +0100, Abraham Samuel Adekunle wrote:
+>> When a value has been tested for NULL in an expression, a
+>> second NULL test on the same value in another expression
+>> is unnecessary when the value has not been assigned NULL.
+>>
+>> Remove unnecessary duplicate NULL tests on the same value that
+>> has previously been NULL tested.
+>>
+>> Found by Coccinelle
+>>
+>> Signed-off-by: Abraham Samuel Adekunle <abrahamadekunle50@gmail.com>
+>> ---
+>>  drivers/staging/media/atomisp/pci/atomisp_gmin_platform.c | 2 +-
 > 
-> Signed-off-by: nancyenos <nicymimz@gmail.com>
-> ---
->  drivers/staging/octeon/octeon-stubs.h | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/octeon/octeon-stubs.h b/drivers/staging/octeon/octeon-stubs.h
-> index 44cced319c11..0155f3c41657 100644
-> --- a/drivers/staging/octeon/octeon-stubs.h
-> +++ b/drivers/staging/octeon/octeon-stubs.h
-> @@ -8,8 +8,8 @@
->  #define OCTEON_IRQ_WORKQ0 0
->  #define OCTEON_IRQ_RML 0
->  #define OCTEON_IRQ_TIMER1 0
-> -#define OCTEON_IS_MODEL(x) 0
-> -#define octeon_has_feature(x)	0
-> +#define OCTEON_IS_MODEL(x) ((void)(x), 0)
-> +#define octeon_has_feature(x) ((void)(x), 0)
->  #define octeon_get_clock_rate()	0
->  
->  #define CVMX_SYNCIOBDMA		do { } while (0)
-> -- 
-> 2.25.1
-> 
-> 
+> I can't take any drivers/staging/media/ changes for outreachy
+> applications, sorry.  That should have been in the instructions
+> somewhere.
 
-You sent this twice?
+I don't know if this helps wrt outreachy but I can pick
+up this atomisp (and I plan to do so).
 
-And always test-build your patches before submitting them.  This
-obviously will not build :(
+Regards,
 
-thanks,
+Hans
 
-greg k-h
+
