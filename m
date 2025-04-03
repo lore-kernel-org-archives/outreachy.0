@@ -1,123 +1,54 @@
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2E6B624EA88
-	for <outreachy@lists.linux.dev>; Thu,  3 Apr 2025 14:19:51 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8F0192505CE
+	for <outreachy@lists.linux.dev>; Thu,  3 Apr 2025 14:47:23 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.104
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1743689994; cv=none; b=rJURXXXC2vhzvTRbXhLxdwbJ3ZdkoJJa+2jku22TC1Upec1b/5Vi7AI16/eO9WWMLq4GxHrq3LLGjB6ciiQyoPMXzko0jS3V3BUVNdXysNxBFYIe+oVPaapfd0EuhsgHee99niVek+6TEQOgSWt2oRpzQOlXbrq0C+ZD1EHpSRs=
+	t=1743691646; cv=none; b=H0j0ZJEEgtSaVPmh1BjNmTiYQy9V4XaMlV6LyBdoUKHIE90FJdfQY36Xr219ZiaOzC77DhQ8klNuHKwACrnXLHkynhc9K44jfETFfEU5wME2KVBz+fUv4nMVXmEuRTn5T+hQbzDQtyAkQ8XTvrprnakfZDTytFDKVciHP3QyZtU=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1743689994; c=relaxed/simple;
-	bh=l32nJhWlvQpJaXMheQIHq7EaHrAGjn3ePH6vgGK3ZrM=;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type; b=c74PvKxxvEjq2bDaKH61EzORJy51o12Z70qvJgezlr0eP6/Z1m0pyw+Ub/QkyDzZrbIaq7Kw9RsO8LsAYTN0fuGSjsQiNCd0h5uce6W5DF9kUBowdH2tQvIj5NHm7tXkIKbgtgbRGIZo+aS398EG+Iik5zf9X9oi/c/5Q/Boxpc=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=GBCVS14u; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+	s=arc-20240116; t=1743691646; c=relaxed/simple;
+	bh=mfsMO1t9Ct1zfC21KCewwTeMVHpbVbNrw/UswlPhOko=;
+	h=Date:From:To:Subject:Message-ID:MIME-Version:Content-Type; b=u7dlyI5qK/slJXdbFUkOMpiO6SZCxwfUaLqSDRJs/+ToaOucS1OTQe/o+581rrxhlfFXRG4OBLXIpYtefm+qqYPtayhVoXrw0F2RYx8+bWIOFdXZFPHg6nD1gI/atlD8M3G0t1vX5vorYoryrNlLy4AoARvTePkhXTjY/Av47gk=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=svKSkIKj; arc=none smtp.client-ip=192.134.164.104
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="GBCVS14u"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1743689991;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=HRj4duMKWuLhK3/1HC13xNiJuwQlUGnDJUVVcga109M=;
-	b=GBCVS14uVsZbkK27B8a3WRQuSa9JjcQa4Tzaa1NKasPHBGFprqBS0YhWVXn9yLAj80WOwr
-	jL6aGSZ17XIrRCdWDQHYHl8v2kHur49Hu6ajILaGsrPNnb61sZT3ZAgpEZ4p9+YD4BFfDj
-	Zi4taa8fyuVDvnfK33B8l3ZajKsOIIo=
-Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
- [209.85.218.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-594-FfJSzWmcOaaW8RbqI_20tA-1; Thu, 03 Apr 2025 10:19:49 -0400
-X-MC-Unique: FfJSzWmcOaaW8RbqI_20tA-1
-X-Mimecast-MFC-AGG-ID: FfJSzWmcOaaW8RbqI_20tA_1743689989
-Received: by mail-ej1-f72.google.com with SMTP id a640c23a62f3a-ac28f255a36so80630866b.3
-        for <outreachy@lists.linux.dev>; Thu, 03 Apr 2025 07:19:49 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743689989; x=1744294789;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=HRj4duMKWuLhK3/1HC13xNiJuwQlUGnDJUVVcga109M=;
-        b=X63ga6GbEQ1JiAJZVXJyouATgsLBWVYe8ZtcWOJAaioZ1dB8xmnzx3vKl1vUEjfRFi
-         b1c/lT/ftzuM71uCQA9B7HwcpYXwV8XBfCBs05OOXQnwkt3H41VQAi7DL9xo9ADFR2IP
-         MpwZ83ggshW0cxUICK5+AAFDpugIrUuAqcb8lzmJ2E8RcUFeLgcdDDNemCqQtEKRXg+8
-         5+0Oa2Sog2wk6RMv92bhdlxmJPuU2Z4Win7SxRl0x1cs3DPUlADViF0DSrzswfXZ0VV5
-         epSHOIqK1x1A70H+iopHChMbSoRu8LCr52Y11Xf3UUuCdR4oBY8iWMgGBkMs0/5UUUOK
-         ENLA==
-X-Gm-Message-State: AOJu0YwjOzlkD/yeSsCe4mEwdyQe7uLpkKI4TLGMRCKuHtlR4E6/cXZA
-	5iqwoEi5zf6KWZUzep3rXRAxKMRKm8LnxMenOAuwHx8N8z1shYP6tCZ5JXz3QvmrpDAcriZptn6
-	7In223uCKp6OeT3UEG+3SOsRezNXZ5F3NzZ6VYXbAEt4pcuge3fM/H0eW+A==
-X-Gm-Gg: ASbGncsU7DAs3yh7z+g3HMZyDj1Yke9bafMH6AMSpMWUjZ8ogC9EZ5bfsZvH/EBhDRC
-	xpIK0S+u/CXf0zUyfIkU7rLz3bWwAnqFNlgBzEqXPV+BoxputUCBP2Hq0TbQJCrqMWfAyf119Wh
-	pCwxm/qMlV738KHpe4WcGDP6byRlOFqNO/RxqhAzVNqEWtA0kqKxnAzmyEU5ptKLLcWZxSHjxLl
-	u7JkXeFn94bcxP/4nNmoMCEimUUZ2xA+8WwDZXnvLhIfetsglWFwnL34HjMDld0HOyoxFyab0ab
-	zgiHREtRVM6M3RCTUaWFOfR+rDeAKW+zQxsfT6kUsFhlvqiESKkZ/6mRi1dBkNo8KnSpc6T9m0f
-	/HVJwLl8scN+sKKv/5PIvcxWibaOTMDZ8SqCsAhzgdAbs+ylYTpVvHrTyAYlRcgEn9Q==
-X-Received: by 2002:a17:907:72d1:b0:ac2:b9c8:b7ba with SMTP id a640c23a62f3a-ac73895fbbemr1917787866b.10.1743689988656;
-        Thu, 03 Apr 2025 07:19:48 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IE389JF5t/NVOtZsuHT6ZzEofdOeTC/k4+UGMGsxdz2+Ni5DDJM4CsvuVwaY3ElTZolYu+ZhQ==
-X-Received: by 2002:a17:907:72d1:b0:ac2:b9c8:b7ba with SMTP id a640c23a62f3a-ac73895fbbemr1917786166b.10.1743689988309;
-        Thu, 03 Apr 2025 07:19:48 -0700 (PDT)
-Received: from ?IPV6:2001:1c00:c32:7800:5bfa:a036:83f0:f9ec? (2001-1c00-0c32-7800-5bfa-a036-83f0-f9ec.cable.dynamic.v6.ziggo.nl. [2001:1c00:c32:7800:5bfa:a036:83f0:f9ec])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ac7bfe5d44dsm102241066b.13.2025.04.03.07.19.47
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 03 Apr 2025 07:19:47 -0700 (PDT)
-Message-ID: <3beaf600-1670-44de-a782-6e34010061e3@redhat.com>
-Date: Thu, 3 Apr 2025 16:19:46 +0200
+	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="svKSkIKj"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+  d=inria.fr; s=dc;
+  h=date:from:to:subject:message-id:mime-version;
+  bh=X4BzDyPmHcfGykUgVmn7h/c6b2iaXODtHMgDzPeYyrw=;
+  b=svKSkIKjmT9MbYSoNIXl9pH0L1epb633bBFYJn2HYkpWuvBixUFevqZs
+   b8ff42r5J+1TkxkCJIYbPd6BSUj5g5tg0uZFCDESFVrzx2LGA506nSctV
+   3EcztLg5VKXRFZXOfWfAVgfi+rqk2D+80zLaL9NSPP7K1TuP1pNG7qtNA
+   k=;
+Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="6.15,184,1739833200"; 
+   d="scan'208";a="113385320"
+Received: from a81-173-67-6.dsl.pocosnet.nl (HELO hadrien) ([81.173.67.6])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Apr 2025 16:47:21 +0200
+Date: Thu, 3 Apr 2025 16:47:20 +0200 (CEST)
+From: Julia Lawall <julia.lawall@inria.fr>
+To: outreachy@lists.linux.dev
+Subject: patches applied
+Message-ID: <7ebfe5f5-d6b-bb13-795f-f7e61196cf99@inria.fr>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/3] staging: media: Remove duplicate NULL tests on a
- value in pci
-To: Greg KH <gregkh@linuxfoundation.org>,
- Abraham Samuel Adekunle <abrahamadekunle50@gmail.com>
-Cc: outreachy@lists.linux.dev, julia.lawall@inria.fr,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
- andy@kernel.org, mchehab@kernel.org, sakari.ailus@linux.intel.com
-References: <cover.1743685415.git.abrahamadekunle50@gmail.com>
- <26990d4a9d4419f9d4155a40595bc213acb671a0.1743685415.git.abrahamadekunle50@gmail.com>
- <2025040320-fraction-bagel-ea64@gregkh>
-From: Hans de Goede <hdegoede@redhat.com>
-In-Reply-To: <2025040320-fraction-bagel-ea64@gregkh>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: H4tzNwWcrkJg5p_7V7rHnH-2Kzfm38iXhHiFgPWSHtM_1743689989
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US, nl
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=US-ASCII
 
-Hi,
+Hello,
 
-On 3-Apr-25 3:54 PM, Greg KH wrote:
-> On Thu, Apr 03, 2025 at 02:26:41PM +0100, Abraham Samuel Adekunle wrote:
->> When a value has been tested for NULL in an expression, a
->> second NULL test on the same value in another expression
->> is unnecessary when the value has not been assigned NULL.
->>
->> Remove unnecessary duplicate NULL tests on the same value that
->> has previously been NULL tested.
->>
->> Found by Coccinelle
->>
->> Signed-off-by: Abraham Samuel Adekunle <abrahamadekunle50@gmail.com>
->> ---
->>  drivers/staging/media/atomisp/pci/atomisp_gmin_platform.c | 2 +-
-> 
-> I can't take any drivers/staging/media/ changes for outreachy
-> applications, sorry.  That should have been in the instructions
-> somewhere.
+Greg has applied all of the applicable patches now.  You can check his
+staging-testing branch, and if you find your patches, you can update the
+outreachy application patch with information about your contribution.
 
-I don't know if this helps wrt outreachy but I can pick
-up this atomisp (and I plan to do so).
+If you don't find your patch in his tree, please try to fix it up and try
+again.  If you need to resend a patch series, you should rebase against
+his tree and omit patches that have already been accepted.
 
-Regards,
-
-Hans
-
-
+julia
