@@ -1,126 +1,110 @@
-Received: from mail-qv1-f46.google.com (mail-qv1-f46.google.com [209.85.219.46])
+Received: from mail-vk1-f169.google.com (mail-vk1-f169.google.com [209.85.221.169])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AE7488494;
-	Thu,  3 Apr 2025 22:37:37 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.219.46
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C42011A5B8B;
+	Thu,  3 Apr 2025 23:32:12 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.169
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1743719859; cv=none; b=QiQVisOH0hYEgoWuIXj7VDmn9uvW9LqLNg0l7YCpmNhIcxchlTCVc7YIQGdkqd6/M+wWLfVCIxTe0qeFaFPb4Tcw56pge8xWK2Wi+dvP6LI0MoWRhcriQ7oxFxmxFxpq+yJc916b88OX0FiugSmUNs+z2l2XsLLjaqe6bYCyrWE=
+	t=1743723134; cv=none; b=E3lzTOHvvbZQDW1R5i54wSA5A00vMRpKfOHyQRPwLLuCVORFxcZkLBSxkjdVLk7wu2ubRa3rXyBjmCILu9/v72CtXvj8lY08luFyauxFMWAcq8N6gU9MlDPHgbGXaibl+ptuQ0k+VNbB7eQX4bXSwwhZPZh7Qid32yBGjss/hTE=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1743719859; c=relaxed/simple;
-	bh=At8uSe/LEVNX/ynY+/JK1XlphOknc3w2iRCiAYOjeM0=;
-	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type:
-	 Content-Disposition; b=tKckjoo20mnFyicud+3VXM0/YFyy5py/5oc5zH61s0f/ZDe+Nz3xQSEoU+sdZ/+qTQi+Mw85fMqbkcot2vojjzmuV16Ni5gI8a5pVkjicL41mQSBpBHd/yrtXJo9Yre9GLbpiywYhdHN4n53KWP8Y8AQPPGzHZA7B4+vAiuMi+M=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=FHxjCmxN; arc=none smtp.client-ip=209.85.219.46
+	s=arc-20240116; t=1743723134; c=relaxed/simple;
+	bh=ConqJ9yxOfg51AtX2KXDQrRifAARBrdGYo8uEJMersE=;
+	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
+	 To:Cc:Content-Type; b=YRBEYa0j/vA1BNqRmpuCb/kYQrTWvd2KYsa9IN2eGVB7AQ0TEpC1dqnLE/8Zc/icZcQRFovFE7rN8S1ehvgcyVXjz+bcyc+6AIRQIGdVV9gzoUbpG2U3QOczs72vwhORJlHRKbEsjmShJdEj0DMKyNJ6bQnKJsoSbZBLrCB/43c=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=Bq7RdEJN; arc=none smtp.client-ip=209.85.221.169
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="FHxjCmxN"
-Received: by mail-qv1-f46.google.com with SMTP id 6a1803df08f44-6e8f8657f29so11484566d6.3;
-        Thu, 03 Apr 2025 15:37:37 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Bq7RdEJN"
+Received: by mail-vk1-f169.google.com with SMTP id 71dfb90a1353d-525b44b7720so707577e0c.0;
+        Thu, 03 Apr 2025 16:32:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1743719856; x=1744324656; darn=lists.linux.dev;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=iS5DlcsngnCJobVCdaTdFPwlcd069NhSqsAB1daMs48=;
-        b=FHxjCmxN3LwjQUbsLNsjM3jYrmqsJOqiWvwZAQq4qSoSpaz0twK1qyp/qn46iy2VXX
-         UiSz/yx+TngSqotmmz+yDWGxE+pkZ9RIm1vv1siCOGY10gA5WKhUQXciztmaq9A69dz3
-         tG00Xbc/6WtaKJ5pa/p9LpqWc6sqW3QvPnp4qRyTwOAyWizO6FWY3ZT01tEcUHY/myWD
-         ZswbblT6MwxjGLz8TCArNLRt43wfPrO10/7pGP7jfvcfC9/8FxV3Uqqdvcnv2QMrs3kX
-         Ao/y3+Cu6+fTye737cu/LpsdmiqZFkuY0AIvhfDsJTuBLc5puaHaVoXorKDFX7UUhcbX
-         8hfQ==
+        d=gmail.com; s=20230601; t=1743723131; x=1744327931; darn=lists.linux.dev;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ConqJ9yxOfg51AtX2KXDQrRifAARBrdGYo8uEJMersE=;
+        b=Bq7RdEJNoKs96aPjdpFIoXYcU9/hn4xpCoYes3Z5thMD7F6lVg4Ra3TgHhJECzTjU5
+         ++0dm3eEylnqiFnbCwqkr+KtUfpU/YlaJlbaR5MEVRlyuSWUYJJ7MfSxT5+RBTiD7H8T
+         MF4UYMsYY3QyTwfIM3DHRIVHL+lOOYMnNDN79sc7QnL8aiPeyrncbE3q92G46K2JpZ8D
+         SRv0CURHtAuwflpxgeYncYqmQRZ9Ndn856syKuDulcI7ZXqH7cdT8QWBUXjDd0V5gPcv
+         RJkJ1DQMF34GoMHEu22gsGviXb/5xQJFlhIgwa8VkrMlDHuYBFSsaNruuI+lSIyatzef
+         OqqQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743719856; x=1744324656;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=iS5DlcsngnCJobVCdaTdFPwlcd069NhSqsAB1daMs48=;
-        b=fcjhH9kR6/kw3Sro3YesmNroR+qh1Nb91EBjbTyoLKW52kqtEAzkK/rBR7nULi+HlP
-         j8V82iQctnRVhFutDfkE3wGhXmCy5v+eGZ+8espBkIF/u0BAe6yd4+XoexB6NUYU0Ihm
-         T4gPJuRbkI5YSDNhYvBlDZ4EHHQdSUWwDtR4YSPpaQUqJ3dwjO+4Bbtv3/zMr1WhYQTR
-         LQNUk+B9wxsB5fOHWt7OdkNUeE7wvK0T1JFkG52e7BgRJSo9pPSswkD11TRqSs75DV+d
-         o4YT6YuOHZ4MAeI+jJtrjzJWGDcSpCIeBvYh7YfaQ2cLDooVzjcuv5ksy0zWyoqyAnJY
-         ZPRA==
-X-Forwarded-Encrypted: i=1; AJvYcCXot6UKJ/YQroJX1Uj0SDGKsLsT3A5THBMpr24Jk3j9YIQmjTTJyiYTpCZex5AbZvl25gGQwaWPF4g=@lists.linux.dev
-X-Gm-Message-State: AOJu0YyQiYT5MDypKrK9ulcU/aunACANGiVofjJVs33nFWsWit7B453i
-	2Ouhxlx17O2j+cAaBL/aSdoxXNyCgu0HHiNKsg5PJxpCDY3J4Vxo
-X-Gm-Gg: ASbGncu9G0MVoBBaM96tCY89VQl56itfUb4jO+ijz6HlJvPIEpcOj4HwpFQfqd8JabY
-	J30ZH24N2/V6o29rWTPYVE492idogOMpVq8qxW8gZaljdsWfocCdqT/L55YkJbpks5/FIaDvLaV
-	uJi4tdCy5rDia0gUpZCGkQyP+Y5b3IXa7KuL9TJKDVznrswtwHIm2tlji4b7lg2rMixanPwvXLn
-	FqTIvGa6MbUPRvXNIGraiZ56i4xxe+U6aCsmsSlX6xtalITl/TAEchhSgglPhbn/xd20a0cITJ3
-	Wsx5iC9gWrRh5K21Ckri1OXeC1rjvA3flTT71N6CEoQJyVLl
-X-Google-Smtp-Source: AGHT+IHOYzS/ETMdRtbIcc2MnSQWpwELYBtALOBruownenEL6MzCzPF39/WnjxszG3KCe1lFNRrCqQ==
-X-Received: by 2002:a05:6214:da7:b0:6ed:14cd:d179 with SMTP id 6a1803df08f44-6f00debc935mr14074396d6.3.1743719856558;
-        Thu, 03 Apr 2025 15:37:36 -0700 (PDT)
-Received: from HP-650 ([105.112.123.50])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6ef0f14e827sm12758436d6.109.2025.04.03.15.37.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 03 Apr 2025 15:37:36 -0700 (PDT)
-Date: Thu, 3 Apr 2025 23:37:24 +0100
-From: Abraham Samuel Adekunle <abrahamadekunle50@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Julia Lawall <julia.lawall@inria.fr>, outreachy@lists.linux.dev
-Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	Dan Carpenter <dan.carpenter@linaro.org>
-Subject: [PATCH v3] staging: rtl8723bs: modify struct field to use standard
- bool type
-Message-ID: <Z+8NpFYvxPTvjGje@HP-650>
+        d=1e100.net; s=20230601; t=1743723131; x=1744327931;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=ConqJ9yxOfg51AtX2KXDQrRifAARBrdGYo8uEJMersE=;
+        b=WtHAiqRx2PiX9IIe/mJvOF/nXyQNFp5S9A6dpXHImgUokQyczRpDYUzTjYCj2Sf76k
+         E30j1P36fEz9WMS2ZiQ87u0tP+224w+0AzYU4qKb0XzplqCOwz9Uq17mCbGdPWzRv3Dl
+         EOegaDlOSoDifoOt3o5ZW4pW1rLbTcX7/38SfyDH77lgJDRB9tBzvuWRWSkDt15aebZa
+         eFWuPEIW2KNw0JcpKJH97hfwybK+XlOYzqQqY4tJJDiBUgc5r69AbCKXt0En/IHAUyma
+         DYuvXyqlIpgxPSRVH/3+zCnPHyRVQx7etzxYyGjuK3+ly3UryvUSvfpHD1963LEUfL1R
+         8DWg==
+X-Forwarded-Encrypted: i=1; AJvYcCX5LDBc0maJsZXN2Z0axIPPqHy5mUumWZNgXrXmf2W4Qg8+8NcAoF8BVk044wiNnsFpxXO/weX51Lndxw3t@lists.linux.dev
+X-Gm-Message-State: AOJu0YwVyrydeHkolJDzPkigVLA98QStk5nKKdnsacTeWi669ajuV5nr
+	i6joDWWeahVA60vFGYF9NBj1vv1DoW+k6d4Etsyi537fjUFoaDN7c40fS2gPLF0EdW8axTyJov1
+	1uRm6b+pZ+rbuDe3riugm+xhaYws=
+X-Gm-Gg: ASbGncsTab+3OtTzktatCGCmszydWhtuCfON45mUWTrnCLZfrkgMsFxYEbB/CJt5YQ9
+	+9Ai6qURgFPSQFiQOI14kcqo5ur4rREmaW0VT4FQqWGbt99cKLwBtUHYkILyVMUcyBmAazpzC5e
+	WqxjGBfKXJY/TOrQX2ydiQHNyNYTQ=
+X-Google-Smtp-Source: AGHT+IHG8yvd4/Gvzr9bsPGoHBMSRP7NVpPpyONIrTuFi15RTw1YFf2XgcnaKkTPRoWR1r0MApg+ICHPmv4tFtGyyWI=
+X-Received: by 2002:a05:6122:8c01:b0:523:7316:7f31 with SMTP id
+ 71dfb90a1353d-52764494388mr1303595e0c.5.1743723131626; Thu, 03 Apr 2025
+ 16:32:11 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+References: <cover.1743685415.git.abrahamadekunle50@gmail.com>
+ <26990d4a9d4419f9d4155a40595bc213acb671a0.1743685415.git.abrahamadekunle50@gmail.com>
+ <Z-6Nwp5RUdgYt55B@smile.fi.intel.com>
+In-Reply-To: <Z-6Nwp5RUdgYt55B@smile.fi.intel.com>
+From: Samuel Abraham <abrahamadekunle50@gmail.com>
+Date: Fri, 4 Apr 2025 00:32:01 +0100
+X-Gm-Features: ATxdqUEbWVQJ00lu3HouPrhS-aMc9BZOWnPJCkk8kpjTlk_IjSIFvDUvpW1tCTw
+Message-ID: <CADYq+fa4FxmiynHg7BJRCusr3V-GqofEEddzP9Zzg1muPXGdqQ@mail.gmail.com>
+Subject: Re: [PATCH v2 1/3] staging: media: Remove duplicate NULL tests on a
+ value in pci
+To: Andy Shevchenko <andy@kernel.org>
+Cc: outreachy@lists.linux.dev, julia.lawall@inria.fr, 
+	gregkh@linuxfoundation.org, linux-staging@lists.linux.dev, 
+	linux-kernel@vger.kernel.org, hdegoede@redhat.com, mchehab@kernel.org, 
+	sakari.ailus@linux.intel.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-The struct field uses the uint values 0 and 1 to represent false and
-true values respectively.
+On Thu, Apr 3, 2025 at 2:31=E2=80=AFPM Andy Shevchenko <andy@kernel.org> wr=
+ote:
+>
+> On Thu, Apr 03, 2025 at 02:26:41PM +0100, Abraham Samuel Adekunle wrote:
+> > When a value has been tested for NULL in an expression, a
+> > second NULL test on the same value in another expression
+> > is unnecessary when the value has not been assigned NULL.
+> >
+> > Remove unnecessary duplicate NULL tests on the same value that
+> > has previously been NULL tested.
+> >
+> > Found by Coccinelle
+>
+> Missing period. And Subject should be as simple as
+>
+> "media: atomisp: Remove ..."
+>
+> ...
+>
+> Please, send this patch separately from the others.
+>
+> --
+Thank you very much for your review
+Unfortunately I have been told I cannot work on the media driver as an
+outreachy applicant.
+I do appreciate your apparent reviews.
+I will Cc your email when I apply your review to my rtl8723bs driver
+patch of the patchset.
+Thanks
 
-Convert cases to use the bool type instead to ensure consistency
-with other parts of the containing code where true or false has
-been used.
-
-reported by Coccinelle:
-
-Signed-off-by: Abraham Samuel Adekunle <abrahamadekunle50@gmail.com>
----
-Changes in v3:
-	- Added more patch recipients
-Changes in v2:
-	- Improved commit message based on suggestion from Julia Lawal
-	- Clarity was provided to Greg Kroah-Hartman by Dan Carpenter on why
-	it is safe to make the change to the struct.
-
- drivers/staging/rtl8723bs/core/rtw_ap.c      | 2 +-
- drivers/staging/rtl8723bs/include/sta_info.h | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/staging/rtl8723bs/core/rtw_ap.c b/drivers/staging/rtl8723bs/core/rtw_ap.c
-index ed6942e289a5..82f54f769ed1 100644
---- a/drivers/staging/rtl8723bs/core/rtw_ap.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_ap.c
-@@ -389,7 +389,7 @@ void update_bmc_sta(struct adapter *padapter)
- 		psta->qos_option = 0;
- 		psta->htpriv.ht_option = false;
- 
--		psta->ieee8021x_blocked = 0;
-+		psta->ieee8021x_blocked = false;
- 
- 		memset((void *)&psta->sta_stats, 0, sizeof(struct stainfo_stats));
- 
-diff --git a/drivers/staging/rtl8723bs/include/sta_info.h b/drivers/staging/rtl8723bs/include/sta_info.h
-index b3535fed3de7..63343998266a 100644
---- a/drivers/staging/rtl8723bs/include/sta_info.h
-+++ b/drivers/staging/rtl8723bs/include/sta_info.h
-@@ -86,7 +86,7 @@ struct sta_info {
- 	uint qos_option;
- 	u8 hwaddr[ETH_ALEN];
- 
--	uint	ieee8021x_blocked;	/* 0: allowed, 1:blocked */
-+	bool ieee8021x_blocked;
- 	uint	dot118021XPrivacy; /* aes, tkip... */
- 	union Keytype	dot11tkiptxmickey;
- 	union Keytype	dot11tkiprxmickey;
--- 
-2.34.1
-
+Adekunle
