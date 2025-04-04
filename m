@@ -1,134 +1,143 @@
-Received: from mail-wm1-f51.google.com (mail-wm1-f51.google.com [209.85.128.51])
+Received: from mail-vk1-f172.google.com (mail-vk1-f172.google.com [209.85.221.172])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 38B9116132F
-	for <outreachy@lists.linux.dev>; Fri,  4 Apr 2025 09:06:49 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.51
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 171011B0434;
+	Fri,  4 Apr 2025 10:14:03 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.172
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1743757612; cv=none; b=UB6HtYQBu1euWbCz/JwWsLG5kxTZAGPz5joqnUclmdxLo0BtWoIv6KM8FFXRBqfSKCRQFy/UOk2XBPr2vhyWwhTK027DEO9gWvhl5waFUWjJXXx225OPuXSDFwR3gQuwZthsN4khY3E8q5kLDi2NxxxpSuEVZUy8Um53dQYdqJU=
+	t=1743761645; cv=none; b=GmoHT3nq+NyU+Rvzkd1QOgX9z6UzdueeEWTWQ8IJcuEs1qUngUCX2e9+Ri//cA8jrUCJCh2NHMWqNP7XJXKE8V6hLU7y7olwSQETjo6sI4Q9y8lvtxscAk3xGQYZLTAQZi24QEZnRQG6VcPByv3hTc9ycQuMSo6AQ2q4dPM3HyE=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1743757612; c=relaxed/simple;
-	bh=LiQ46ouCDxXoz7PhA3FK5YU4CmrYA+nC5a7ln5wLKao=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=bh2dI41BpjMi6gXW6g2KjzM4ufoz1OWsBYskxHP5hU/bAR3E6/T1ZTOstUocton03ywgJkK5fnMpD++zftQdGpHHhNVJas7yoFF2PSBe0i8XwZcagWwfmIXH06m6UFzOEAlV0U559sSy65wAfXrbT1B5BGczKUsFr0HCY8+3SXE=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=xKDpV7Q1; arc=none smtp.client-ip=209.85.128.51
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
+	s=arc-20240116; t=1743761645; c=relaxed/simple;
+	bh=M1xR/ehUTlCqt5flnpbVHWZfT9TJ+6ACGN3OWuyHfIA=;
+	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
+	 To:Cc:Content-Type; b=qLIIF1LJhJUKVfy9sxTHnWn7VPwJlb5WObvRoC83o5Y5rhEpqpCN8+DCGCNQQZXXYufNp/uRbfQirmo+K7c3t+eweiLmo5FiJivdY+zOjnSDDkXI7MGulFpf/Pxz35RtNx/R5CegxFBYYv9WCtvvpFQyLET91SN7VrF/x1QmbuM=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=S5ll6N4p; arc=none smtp.client-ip=209.85.221.172
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="xKDpV7Q1"
-Received: by mail-wm1-f51.google.com with SMTP id 5b1f17b1804b1-43cf257158fso12084855e9.2
-        for <outreachy@lists.linux.dev>; Fri, 04 Apr 2025 02:06:49 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="S5ll6N4p"
+Received: by mail-vk1-f172.google.com with SMTP id 71dfb90a1353d-525b44b7720so882626e0c.0;
+        Fri, 04 Apr 2025 03:14:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1743757608; x=1744362408; darn=lists.linux.dev;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=SNN0dd0sba8DZbYpxdoTa0gXIaWxVL18lbiCGdG4AkU=;
-        b=xKDpV7Q10dPk1Q7y1De2hurTabKi6vjW7PdSCo/SsdVCeaJiXmCKUFP0mNebo+fLMK
-         yqDySVUXMQt4BaTg6c7ltufJR6LdU1ktrTmT09BepiN7umwXbo0LRe4tIjb9n2BFjFTt
-         7GmdujSg9ho2rzm3lBBV9t7p8ezMBUzGGWVhZh+SCIkVKNzNrcq45eWQFNQm4YfiGHul
-         arOh8RadO+rtLYDKhpeoc14GdDxaGRAOahve8JJb9rFVPHpFcR45iXgLJLwz27mF/cmu
-         NqDmeq8aHKA0sl799qKqbd7Rqg6Mg6fS7WJA/x5U8UNEoPw1YGuuy/LdFxfgrjzBgDuP
-         1oFA==
+        d=gmail.com; s=20230601; t=1743761643; x=1744366443; darn=lists.linux.dev;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Z6kQX7J4iPqcH4qqAuoXo8W2m8I6TgoA5VFu2BQ2/J4=;
+        b=S5ll6N4p59lqo2XJ6s2n++0WPdRfxn7d1H+urO77yCHiyg9HqAKInb+vjstZpDqzAk
+         RBye560cowfNQ9Q49aBaK/TAUCaZjQQRcSissYeU9ObB0uwqVaaY37Im55p8M9KQ7lE7
+         hLlchpGAmfouxqoBM4GQAkBFcR3B97FIpCpBNkqISyhyVsn0juZalCmNzc2VN4af9kd5
+         qHPJHyLOSY1rTwejaquqwiOxqiLNkclW4r+uCkxnOLyWDN0LrXI2N1N9iZqI8F7+fM2/
+         30O+fLttaa6zF6qhgcUh3ufkeh2rFRqikgN9cVhG54AOvY1U5yMmX5SgxV/ueGTlHHf1
+         qabg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1743757608; x=1744362408;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=SNN0dd0sba8DZbYpxdoTa0gXIaWxVL18lbiCGdG4AkU=;
-        b=FfAXvGRwo7aVhrFA2d64d2M4HiXXJVREXXq3isiBXdOHHG0svA9OUvS9FqQoB/dbz0
-         49IwLyb72hr2y667B4zAr7BlEJMg3qlhcsNPhE/epRGcWh/cwaSsZwQ+jaHlEXkb8Zgf
-         HXtweki6aNQPsiKAbmDEE9vH+CC/Cp9AsZee6mkMJ0mToin0qy3qTkWsW+lZMAtY4M5C
-         IzpeDhe+b0bJH4MjUDYW7oIlJq5zmCjNxjFlWxgpuLeGTiJnPHbi155vYHHSS0wgfaUE
-         bldQaKk3V+1cfjfiPptbsiPe0dopWqgcwwL9hTnMbybySg4BeEVXro5lK1auesNnh7+G
-         NkZQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXwsH0sGh7fdw1/h23ih9tsLFHTJjyw5zxcTNiZRoBrUL5OL9NY6doqg77ZO0kAzKGUaL5tOvAYgx4=@lists.linux.dev
-X-Gm-Message-State: AOJu0YxhXP3Kj29GR98A1MypZBrxq9TTsowqcJkKN7vqFy4CGj81X+ud
-	Reup49K+dnT6qybPD1PdJJFyadgWD8XkKxTAxkE0iKw1hVeiCssWS2h9UVyuxZR2Xk+B3RGmK/j
-	b
-X-Gm-Gg: ASbGncse+qn6IPWsSyJO4niZWlWOSnfaLxGBz10EZVT3JOGFDybIH6tJJp299Z+VSY5
-	WI2Ag53XL0lJBFJP262cTHhN4o1rrHPN6oIHIn7degmyOSlsu8SnqPc7dZhK2K8jKN2yc6iWEJz
-	+MJoaVyAoECUWz9reNFio2zGwb71Uj5xy+dxwQuoeSYXgDTZENKeDXHSaFkEGGhvwA9f//W3G3t
-	KCNQ1gax3ptwaWHWytgnLfpBVk+XhltJcSJktQdQ/k8tUHQwiQOOfFaImu7ohI2MsRofnjd29Ia
-	1NpgaYk4gkWtaLeF3auGYIPCzpmVQ4mKCni5OsiJgzQ6ic5VeQ==
-X-Google-Smtp-Source: AGHT+IEs4WAr/WvRqznAIBqenfGhWasugs8mzBZR/+3rbAiz8TrwlXeYTlnArjanLukZutn4NE/qlg==
-X-Received: by 2002:a05:600c:4fc6:b0:43b:cd0d:9466 with SMTP id 5b1f17b1804b1-43ecf86ab8cmr16814825e9.9.1743757608406;
-        Fri, 04 Apr 2025 02:06:48 -0700 (PDT)
-Received: from localhost ([196.207.164.177])
-        by smtp.gmail.com with UTF8SMTPSA id 5b1f17b1804b1-43ec342babfsm40758585e9.1.2025.04.04.02.06.47
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 04 Apr 2025 02:06:47 -0700 (PDT)
-Date: Fri, 4 Apr 2025 12:06:44 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Andy Shevchenko <andy.shevchenko@gmail.com>
-Cc: Abraham Samuel Adekunle <abrahamadekunle50@gmail.com>,
-	outreachy@lists.linux.dev, julia.lawall@inria.fr,
-	gregkh@linuxfoundation.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, andy@kernel.org
-Subject: Re: [v3 1/1] staging: rtl8723bs: Prevent duplicate NULL tests on a
- value
-Message-ID: <33a8d769-33b9-43df-9914-99175605b026@stanley.mountain>
-References: <cover.1743723590.git.abrahamadekunle50@gmail.com>
- <6fe7cb92811d07865830974cb366d99981ab1755.1743723591.git.abrahamadekunle50@gmail.com>
- <CAHp75Vem1E9wmmfXWsbawj2f+F=UkfzML7HyAnhTdsUqvjW91g@mail.gmail.com>
+        d=1e100.net; s=20230601; t=1743761643; x=1744366443;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=Z6kQX7J4iPqcH4qqAuoXo8W2m8I6TgoA5VFu2BQ2/J4=;
+        b=fWKHpN5aXU6NB45LzsOq0fZyejmhsmVl+vODSrTUHDhtnTPZeD/pWHfy+kTUxSwQ08
+         dsh5/c8BqnbrhkiAENDd1SEeZTrdQkJrQYxi/GybgH/yAHumYqGQ7zDZLr+fzzVFr7zU
+         eOiHw+yy34na8IGwOnnv2gUqABLopH0qCN1IyQSA4nL/JZwl07DecR9tFSOZdm+Sjt2B
+         0xWXLU6w+D4A5JrGXT74J9T1qaN8ztgco5fHx2TSFRD/Z/c1mb+80uKl9kRxt0kkoLaB
+         4gK1Cg08MRFmGs7FcdObonuoaQE1aU7bcpe9d5egmt5fYZcQkQ9adzeO92VRFQuVXjog
+         0CgQ==
+X-Forwarded-Encrypted: i=1; AJvYcCU6l7ayEZB/brNynxW8EU/72rhgeFcEm7FsprcytaNw41EfbLrGEMbvx5KSxgzS9u1VeTBYtnuYrQ5IDrXN@lists.linux.dev, AJvYcCWQz+daX0kwjumfnh/dL83ssrAOqh0Ftg2W1AhqbmSsIbjy5OfLartRdwQKM/WBxIxXy38oPJ9H2gur@lists.linux.dev
+X-Gm-Message-State: AOJu0YwEBL2RHEFB7kjVblH+PKV/FEpfppEN9Ogc//e4ocSsfAIobjSR
+	3DNsVKKD38NfBTIeKYtRCwt2kd62SXrG9f+o76L7xtqK7qnFuF59Pv25qs7kc4D1ptNsS3OhNWi
+	oGbj8sQiGFB8WdxzZItHevUetITs=
+X-Gm-Gg: ASbGncvQ8vtyBt0nskmFsd13WhzNMWSaXLTVyloJT4Uy5AcYodGZHi27AVmIR5vWEhd
+	IkThx+BNu/l7fXd5ABc0PQGNv1UHV2XnVXodwZ4PO5zSaKis36QfxojFYBmR2WsNCU5Mm/S7pj4
+	L+4KXPRzyMrKSk2tnbrC3g6U6+a0S91Lhk4vXr9A==
+X-Google-Smtp-Source: AGHT+IGHJ+mgde1bUNXVhTgyaQjWuFJcTsikHax7jYFsftnczff4N6TcT+1V1i3kwufL5PXiMgJCDcJcyRn2L3U7q74=
+X-Received: by 2002:a05:6122:886:b0:516:18cd:c1fc with SMTP id
+ 71dfb90a1353d-5276458254amr1626212e0c.8.1743761642817; Fri, 04 Apr 2025
+ 03:14:02 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAHp75Vem1E9wmmfXWsbawj2f+F=UkfzML7HyAnhTdsUqvjW91g@mail.gmail.com>
+References: <cover.1743723590.git.abrahamadekunle50@gmail.com>
+ <6fe7cb92811d07865830974cb366d99981ab1755.1743723591.git.abrahamadekunle50@gmail.com>
+ <CAHp75Vem1E9wmmfXWsbawj2f+F=UkfzML7HyAnhTdsUqvjW91g@mail.gmail.com> <33a8d769-33b9-43df-9914-99175605b026@stanley.mountain>
+In-Reply-To: <33a8d769-33b9-43df-9914-99175605b026@stanley.mountain>
+From: Samuel Abraham <abrahamadekunle50@gmail.com>
+Date: Fri, 4 Apr 2025 11:13:54 +0100
+X-Gm-Features: ATxdqUHTYgCeSt-ecqfOsTN05l_d53aRnie6hB7s9Rdi_fEEr2uHtQiBk9h1w2E
+Message-ID: <CADYq+fYKHsZCBN-z4ogcnAC_gK7i0P1=DHbfm=AC8o-uSUQ-7g@mail.gmail.com>
+Subject: Re: [v3 1/1] staging: rtl8723bs: Prevent duplicate NULL tests on a value
+To: Dan Carpenter <dan.carpenter@linaro.org>
+Cc: Andy Shevchenko <andy.shevchenko@gmail.com>, outreachy@lists.linux.dev, 
+	julia.lawall@inria.fr, gregkh@linuxfoundation.org, 
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, andy@kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-On Fri, Apr 04, 2025 at 10:53:22AM +0300, Andy Shevchenko wrote:
-> On Fri, Apr 4, 2025 at 3:03 AM Abraham Samuel Adekunle
-> <abrahamadekunle50@gmail.com> wrote:
+On Fri, Apr 4, 2025 at 10:06=E2=80=AFAM Dan Carpenter <dan.carpenter@linaro=
+.org> wrote:
+>
+> On Fri, Apr 04, 2025 at 10:53:22AM +0300, Andy Shevchenko wrote:
+> > On Fri, Apr 4, 2025 at 3:03=E2=80=AFAM Abraham Samuel Adekunle
+> > <abrahamadekunle50@gmail.com> wrote:
+> > >
+> > > When a value has been tested for NULL in an expression, a
+> > > second NULL test on the same value in another expression
+> > > is unnecessary when the value has not been assigned NULL.
+> > >
+> > > Remove unnecessary duplicate NULL tests on the same value that
+> > > has previously been NULL tested.
+> > >
+> > > Found by Coccinelle.
 > >
-> > When a value has been tested for NULL in an expression, a
-> > second NULL test on the same value in another expression
-> > is unnecessary when the value has not been assigned NULL.
+> > ...
 > >
-> > Remove unnecessary duplicate NULL tests on the same value that
-> > has previously been NULL tested.
+> > > +                       psta->sta_xmitpriv.txseq_tid[pattrib->priorit=
+y] &=3D 0xFFF;
 > >
-> > Found by Coccinelle.
-> 
-> ...
-> 
-> > +                       psta->sta_xmitpriv.txseq_tid[pattrib->priority] &= 0xFFF;
-> 
-> > +                                       psta->BA_starting_seqctrl[pattrib->priority & 0x0f] =
-> > +                                               (tx_seq + 1) & 0xfff;
-> 
-> > +                                       psta->BA_starting_seqctrl[pattrib->priority & 0x0f] =
-> > +                                               (pattrib->seqnum + 1) % 4096;
-> 
-> Logically it's obvious that you need to align all cases to have
-> consistent approach.
-> Besides that the commit message should mention this change. Something like this
-> "While at it, convert '& 0xfff' cases to use modulo operator and
-> decimal number to make the upper limit visible and clear what the
-> semantic of it is."
+> > > +                                       psta->BA_starting_seqctrl[pat=
+trib->priority & 0x0f] =3D
+> > > +                                               (tx_seq + 1) & 0xfff;
+> >
+> > > +                                       psta->BA_starting_seqctrl[pat=
+trib->priority & 0x0f] =3D
+> > > +                                               (pattrib->seqnum + 1)=
+ % 4096;
+> >
+> > Logically it's obvious that you need to align all cases to have
+> > consistent approach.
+> > Besides that the commit message should mention this change. Something l=
+ike this
+> > "While at it, convert '& 0xfff' cases to use modulo operator and
+> > decimal number to make the upper limit visible and clear what the
+> > semantic of it is."
+>
+> No, I'm sorry but that's really against the rules in drivers/staging.
+> Don't mix unrelated changes into a patch.  It needs to be done as a
+> separate patch if we're going to do that.
+>
+> To be honest, I don't even want people fixing line length issues or
+> adding spaces.  I would have accepted small white space changes but I
+> prefered the v2 version of this patch.  Once you start changing
+> "& 0xfff" to "% 4096" that's not white space and it must be done
+> in a separate patch. I use a script to review white space patches
+> because I'm always nervous someone will slip something malicious
+> into 100+ lines of reformated code.  It's really fast to review
+> patches with my script but once people start mixing things in then
+> it's a headache for me.
+>
+> Also if the change accidentally introduces a bug, I want it to be a
+> one liner change and not something hidden inside a giant reformat.
+>
+> regards,
+> dan carpenter
 
-No, I'm sorry but that's really against the rules in drivers/staging.
-Don't mix unrelated changes into a patch.  It needs to be done as a
-separate patch if we're going to do that.
+Hello Dan,
+Thank you for your review.
+Please can you provide some guidance on what the next steps should be for m=
+e
+as regards the patch?
+Thank you.
 
-To be honest, I don't even want people fixing line length issues or
-adding spaces.  I would have accepted small white space changes but I
-prefered the v2 version of this patch.  Once you start changing
-"& 0xfff" to "% 4096" that's not white space and it must be done
-in a separate patch. I use a script to review white space patches
-because I'm always nervous someone will slip something malicious
-into 100+ lines of reformated code.  It's really fast to review
-patches with my script but once people start mixing things in then
-it's a headache for me.
-
-Also if the change accidentally introduces a bug, I want it to be a
-one liner change and not something hidden inside a giant reformat.
-
-regards,
-dan carpenter
-
+Adekunle
