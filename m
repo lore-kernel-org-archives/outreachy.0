@@ -1,45 +1,42 @@
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6D6761A5BB8
-	for <outreachy@lists.linux.dev>; Sun,  6 Apr 2025 13:41:10 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.104
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BDB7C4A24;
+	Sun,  6 Apr 2025 15:39:19 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1743946873; cv=none; b=ajc7vPjTPzDmKbFUSCA12m8ZEFR3sLnVyRkHfoa0KoutFLcxKCyFY1xXeWPKAX5v46fo2uTGVyk+PIJl0kM96qlF/n5iya65Xczs1fYsPeXp9b4/LtDG6mFErK3Ls3YtRHZ8CJy1kFDjHExxdZo36k2tTVejRsVECMdtRTpjfUs=
+	t=1743953959; cv=none; b=jvx2su/9HO/hDqFe/lSP0fAJtjZj08IZ8cWh0dko+aJwfTjlMY2NnuOMmsEp/2bwOy+wE7YBD4bNPflPYO6IuwqkuRiezOYFSz5zHIG+oEe1hMwevy9zMwRJC98Ewsk5c5UFijkeRb7VwXN5Jb1YrkFgPQzikRnJy3PNcZ6JHMQ=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1743946873; c=relaxed/simple;
-	bh=n3PsmVxpGTJjdiSGMa7V3sbREy1N5myca5jeVf7zXKI=;
-	h=Date:From:To:cc:Subject:In-Reply-To:Message-ID:References:
-	 MIME-Version:Content-Type; b=dDPq9PI/SFBCoVN5r1y4tCIHZPvrrpumYeeylRcIUU+xniIT+HfU+C9j1I3MKLL+ouz632F7uTVLv2n/wKlJQRIGXt3o6+GqFlh3TAp312urHkQq5XsXJjXrOlp4zXkoJvZZ2TjkEW7x4WcvoqBstu7mKISne5Jjei2xQ96j7+g=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=BBnYUunA; arc=none smtp.client-ip=192.134.164.104
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
+	s=arc-20240116; t=1743953959; c=relaxed/simple;
+	bh=qaTOlHXyrdaLUQyAB5aniUKDe97RBKP8b4s4Rj2LP0Q=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=Eqcx9opqq9IeHXzSuCHAA7/EnAdC2H2Z0KcYDin26pFkd4qoQrNrbZfyQhLMdVemSNV1hvhhmqEoAq20+ClcHF7guSYIh1iYpDLxZDEx9GcpKeOlvPaEpmgOZOyHGvOI/CXkBeSJEdonKRiNPu4syNJdutTsyUfEsYANRRTVREA=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=k6x0zoLL; arc=none smtp.client-ip=10.30.226.201
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="BBnYUunA"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=Si/cVsUGXvzDhtSduZmcG+FZ4Sb8W8QmPh9TxHY2CC4=;
-  b=BBnYUunAJ1VZd7AQ5tlrxe0wz5H+gPTLAyjLnMeGm4iLmZkM2Cvm1P5p
-   nLb7chfKJ0EHqdRQa7OI0pIRnun5v8FnJHUAq5Krx9EFM1dPBfpmEx9pb
-   9i4GoldWfVFlN5qg3eOKE+zMteAtmlJLw+gAj70YmGZ4kZjSTBo8Sd/mo
-   I=;
-Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="6.15,193,1739833200"; 
-   d="scan'208";a="113563630"
-Received: from unknown (HELO hadrien) ([4.26.64.170])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Apr 2025 15:41:07 +0200
-Date: Sun, 6 Apr 2025 09:41:06 -0400 (EDT)
-From: Julia Lawall <julia.lawall@inria.fr>
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="k6x0zoLL"
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 06313C4CEE3;
+	Sun,  6 Apr 2025 15:39:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1743953959;
+	bh=qaTOlHXyrdaLUQyAB5aniUKDe97RBKP8b4s4Rj2LP0Q=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=k6x0zoLL7w0SD5juotegtP/HV3nuIw5RxjN92SiUWB95pTvYUqM3jSni1tsDfwJIi
+	 tn3Jjzw5T5vJWtylrFl36e4/ipW5X646wbe9CwtylNF28qx9Q5SlHc6h+ngY/HgGwt
+	 pPbo4W4DLEEdcEzybdNt6Vjp3wWBpjMP/wfTZkXYl8qfMYSWe5IxGeeBgOkVWtwWa4
+	 HYbHSd/Xm14mKOVrOOWuUijU2q7eTfp6jM+43VHpjj2GYssIQhDI2nypwPqcD5T1Xw
+	 2mHfilGDgKNuzM4h61LIF6PNqgTCXwUnw05Qf+apIhthh+2VF/ZDDqvJBNqMwYmiTH
+	 RDO7NKuj1LkYg==
+Date: Sun, 6 Apr 2025 16:39:13 +0100
+From: Jonathan Cameron <jic23@kernel.org>
 To: Brajesh Patil <brajeshpatil11@gmail.com>
-cc: linux-iio@vger.kernel.org, jic23@kernel.org, lars@metafoo.de, 
-    linux-kernel@vger.kernel.org, outreachy@lists.linux.dev
+Cc: linux-iio@vger.kernel.org, lars@metafoo.de,
+ linux-kernel@vger.kernel.org, outreachy@lists.linux.dev
 Subject: Re: [PATCH v1 1/1] iio: dummy: Add 3-axis compass (magnetometer)
  channels to the iio_simple_dummy
+Message-ID: <20250406163913.6a7234fb@jic23-huawei>
 In-Reply-To: <20250406133349.50633-1-brajeshpatil11@gmail.com>
-Message-ID: <99c44d74-1b8a-939c-d775-e41f8034ceb@inria.fr>
 References: <20250406133349.50633-1-brajeshpatil11@gmail.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.48; x86_64-pc-linux-gnu)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -47,27 +44,28 @@ List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-
-
-On Sun, 6 Apr 2025, Brajesh Patil wrote:
+On Sun,  6 Apr 2025 19:03:49 +0530
+Brajesh Patil <brajeshpatil11@gmail.com> wrote:
 
 > This patch adds support for 3-axis magnetometer data (X, Y, Z) in the
 > iio_simple_dummy driver. It introduces three new IIO_MAGN channels and
 > populates them with dummy values for testing and prototyping purposes.
 
-Is this intended as a contribution for outreachy?  It is not working on a
-staging driver.
+Why?  This needs a description of what parts of the ABI or subsystem this
+exercises that were not previously covered by this driver.
 
-julia
+I don't want to go down the path of adding examples for all channel types as
+that would be a huge and not bring much benefit.
 
->
+> 
 > Signed-off-by: Brajesh Patil <brajeshpatil11@gmail.com>
 > ---
 >  drivers/iio/dummy/iio_simple_dummy.c | 71 +++++++++++++++++++++++++++-
 >  drivers/iio/dummy/iio_simple_dummy.h |  6 +++
 >  2 files changed, 75 insertions(+), 2 deletions(-)
->
+> 
 > diff --git a/drivers/iio/dummy/iio_simple_dummy.c b/drivers/iio/dummy/iio_simple_dummy.c
 > index 8575d4a08..713b764c9 100644
 > --- a/drivers/iio/dummy/iio_simple_dummy.c
@@ -97,6 +95,10 @@ julia
 > +			.realbits = 16,
 > +			.storagebits = 16,
 > +			.shift = 0,
+
+shift = 0 is considered an obvious default so generally we don't bother
+setting it explicitly (it is set by the requirements of the C spec anyway)/
+
 > +		},
 > +	},
 > +	{
@@ -128,7 +130,7 @@ julia
 > +		},
 > +	},
 >  };
->
+>  
 >  static int __iio_dummy_read_raw(struct iio_dev *indio_dev,
 > @@ -294,6 +336,22 @@ static int __iio_dummy_read_raw(struct iio_dev *indio_dev,
 >         case IIO_ACCEL:
@@ -159,6 +161,10 @@ julia
 >                         }
 > +		case IIO_MAGN:
 > +			// Just add some dummy values
+Comment syntax is old style /* Add some dummy values */ for
+most kernel code (and all IIO other than SPDX tags in cases where // must
+be used).
+
 > +			*val = 0;
 > +			*val2 = 2;
 > +			return IIO_VAL_INT_PLUS_MICRO;
@@ -168,20 +174,26 @@ julia
 > @@ -562,6 +625,10 @@ static int iio_dummy_init_device(struct iio_dev *indio_dev)
 >         st->activity_running = 98;
 >         st->activity_walking = 4;
->
+
+Something odd going on in email formatting here as your quoted lines are using
+spaces not tabs.
+
+>  
 > +	st->buffer_compass[0] = 78;
 > +	st->buffer_compass[1] = 10;
 > +	st->buffer_compass[2] = 3;
 > +
 >         return 0;
 >  }
->
+>  
 > @@ -732,5 +799,5 @@ static struct iio_sw_device_type iio_dummy_device = {
 >  module_iio_sw_device_driver(iio_dummy_device);
->
+>  
 >  MODULE_AUTHOR("Jonathan Cameron <jic23@kernel.org>");
 > -MODULE_DESCRIPTION("IIO dummy driver");
 > +MODULE_DESCRIPTION("IIO dummy driver -> IIO dummy modified by Me");
+Accidental send?
+
 >  MODULE_LICENSE("GPL v2");
 > diff --git a/drivers/iio/dummy/iio_simple_dummy.h b/drivers/iio/dummy/iio_simple_dummy.h
 > index 8246f25db..e05d8b5cc 100644
@@ -190,7 +202,7 @@ julia
 > @@ -12,6 +12,7 @@
 >  struct iio_dummy_accel_calibscale;
 >  struct iio_dummy_regs;
->
+>  
 > +#define DUMMY_AXIS_XYZ 3
 >  /**
 >   * struct iio_dummy_state - device instance specific state.
@@ -208,13 +220,15 @@ julia
 >         DUMMY_INDEX_DIFFVOLTAGE_3M4,
 >         DUMMY_INDEX_ACCELX,
 > +	DUMMY_INDEX_SOFT_TIMESTAMP,
+Look at why we have timestamps at the end...
+(start with iio_push_to_buffers_with_timestamp)
+
+Jonathan
+
 > +	DUMMY_MAGN_X,
 > +	DUMMY_MAGN_Y,
 > +	DUMMY_MAGN_Z,
 >  };
->
+>  
 >  #ifdef CONFIG_IIO_SIMPLE_DUMMY_BUFFER
-> --
-> 2.43.0
->
->
+
