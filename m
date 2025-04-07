@@ -1,142 +1,133 @@
-Received: from mail-wm1-f41.google.com (mail-wm1-f41.google.com [209.85.128.41])
+Received: from mail-wm1-f53.google.com (mail-wm1-f53.google.com [209.85.128.53])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7FCE2224FD
-	for <outreachy@lists.linux.dev>; Mon,  7 Apr 2025 11:58:49 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.41
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9FEE814A4C6;
+	Mon,  7 Apr 2025 12:21:22 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.53
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1744027131; cv=none; b=r4speh9EklxG4MCNb6/KoKgyIeGdBfV1/nBOv24Tu74ZT8hHZ/b1JXPvUvs0A4poQ33iXwXphs/xTzpLgtSwBTXAD1a3s40kQZkR5WftLvmk3vYc032nrNb0vXHLTmzohmAv9bLeFZ8lS5uXrEnULDQj/ySdLX8nnmYhqFx/sPU=
+	t=1744028484; cv=none; b=hU+cIxQAKMyPHSVxTySbSaHqLwSc818EIVJ4pyYGvixPYr5E0w7DSNcmLWWtRMHfLs3TfEAH0Ci55y1jlFBYmdyjzkgjCWwL/kGoiTha5ffWLFc1YYSQxBgyFD4UIwHDwOMZt6f7foZ1sGx10u4z685Pr+4SdwoDUm5rPWZBBI4=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1744027131; c=relaxed/simple;
-	bh=y67/onIexqTW52Zbz8Gfge4aT2KSbYhO+cyVcFMbPxI=;
-	h=Message-ID:Subject:From:To:Cc:Date:Content-Type:MIME-Version; b=dalGCHUuCX2YShvVIWNFQz2smGfyT+T0LCnakyUprSuopnzTmi1v+VHkfVZJZdluamyMEsCdxlT2HesXxG5EIwdxStWIQ0MQLYY6pyg7nqLwZSCf1fSG2a/kNDrNR1+PkJzh8IHSeQs+0XEuBelBu/SU1jao6G8ZIODQ5MUzpxQ=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=JSjuF5cH; arc=none smtp.client-ip=209.85.128.41
+	s=arc-20240116; t=1744028484; c=relaxed/simple;
+	bh=dXDqJcnrYdDQC2YiFBN/WStaW5lex6NUThZVJBzqIns=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=CiKim9o3rTZZyLHDhHGfXkiAzKwPgwlSrcmo9wZPDdlSuxa6rHffAFmoGyQeIHLcou7C1D1Xd5PMhrmyDYLloQWoK/gkrU1e6CqNqhhl6b1YCLyx/5as0vYyoh4cqA4Kkwb02Vs5l551ytvOwaTLq7zYLQX7AHerXXFHg4EI3ko=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=QUS3sgv+; arc=none smtp.client-ip=209.85.128.53
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="JSjuF5cH"
-Received: by mail-wm1-f41.google.com with SMTP id 5b1f17b1804b1-43cf034d4abso46050565e9.3
-        for <outreachy@lists.linux.dev>; Mon, 07 Apr 2025 04:58:49 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="QUS3sgv+"
+Received: by mail-wm1-f53.google.com with SMTP id 5b1f17b1804b1-43ce71582e9so28350635e9.1;
+        Mon, 07 Apr 2025 05:21:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1744027127; x=1744631927; darn=lists.linux.dev;
-        h=mime-version:user-agent:date:cc:to:from:subject:message-id:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=y67/onIexqTW52Zbz8Gfge4aT2KSbYhO+cyVcFMbPxI=;
-        b=JSjuF5cHvGVdR6+igdlwJ8gC97IpsuHOm0+Y3vwEh0YKBEhFOWo3RdHUI2Ni91A2yW
-         DEmF1FSFAXSdgV1bm1IHqySjQYjDlUqarxgHSoFdXpWTf0mWb/aYaeBQixZ9yPVcHOoD
-         5JNq+K5Vz2UZW3ETobHVuFcQnEz9LReXDsM3keFNLRUbi4J/kEKWgo3o2XzIFoazU2xh
-         BHk94KstpJuJFr7Tdyv6Hh8whpp4fvrXcOdiVFxX0BxrDoH3UkIuFfaSI+lVAUvKEoB7
-         /TQxhmSc6blnEdnqSSDcBAtAd4QvgJgGOMuKSSW310hGmVspu0JRN1e8362Nfalpk0wR
-         zLZg==
+        d=gmail.com; s=20230601; t=1744028481; x=1744633281; darn=lists.linux.dev;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=mk7RPcv+2R4YAv/tAF8Qdd1Qu0WpDKQeLpxo+ejMbqY=;
+        b=QUS3sgv+s12XjoNOgLzC/HTDO2rNHQQYnQKlPVqmllPq5pmw556q4G8CcKaetXDR50
+         3tBFdY0xfx4ASPEYmVGkVUHlsocUl4wpHKTITpG781g4czVZbRZOuWXypWoAVcWLDzs/
+         wa4AJ38NuA58ZMPKWxk+FrnvsEJq10mgwv68xDbHgdWeMK9oLqK+SbXeP9eByEqxM6kj
+         Kcqv86eLP+5nAzGhFDXoBiTgCpdknROMOOQE1maVNiCfAXNPgWSiWXzOSmtlfVwTKmiL
+         C1sizu/JqtRmppY6FnIll42jXCJCn/qQ2PHpFEpj8AKWphOFUbehzVHvZfrPTKkFjnC8
+         ZU7g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744027127; x=1744631927;
-        h=mime-version:user-agent:date:cc:to:from:subject:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=y67/onIexqTW52Zbz8Gfge4aT2KSbYhO+cyVcFMbPxI=;
-        b=bmwT3/c1dTW/eDXVlgGQn8d4volB18kW5Gqdd5r68v1fgh2tVrCUNU86e5rgslPsJo
-         gVydboFJ5/RotQ7j9UZzt5wTdJDTq6YpoDyWWK2qNWyns1eVJLXDKN1Cir1HC1YCp03F
-         sMmbsLmClm7Aqo4AYIjaL53pc3sCmm2pmmhgY2t+9F9R5xg96/JQRsyQJ/kh/9MtvCJn
-         U5x7lFCkUlDj431i+RZ11FM0Z37B6OtPvIv7asJzYjjTiOGclyukqEisAGmMSJ11ULiG
-         fmb/gjl3npEdFzMyo9FGy/4mta/un/aTMPsVkiohj+F8B1FQLTD/m6QWdTZKcvHr+kcd
-         fR7Q==
-X-Gm-Message-State: AOJu0YwvZvN4eLEiqenPZfMbzlJfR3gI1XgIxx/tPnQ63G9qQAGQrwyr
-	eLMK/D2WfRjcscT62+cO2789fx8trxB642EFJNq62TIDnCSXsG4lpLWRaIMn
-X-Gm-Gg: ASbGncvxWXLi+E/5dE732S5ZxoB8aeU+WOTvHsOsHpPRohQTi7cLjd9C6tzusNrSzSQ
-	xrRF7RduRhjw1kwf84O8zSLBZwWiYntWhudWuOXTXnbhFkj/mNqtWS9phEZbGX/oPNuTezjs9wV
-	1OM4ltCmOcVwAMIEF8PECQf3Z2cYo0PKibFkRgrU4HZH50giowJ5p+2tNacwr40hXBUgxjcAJ7I
-	503ZStg29tpp2VqZR2gPdElzFI4EHDo+WKULHTgVA1Qc3zLnuLuYDtMKKPIYMPsfY8TYfk1c0EJ
-	EEph6tnYeD0vgyV9fUmbpfx4sULgkCYls2iUoVXrZ/ih616wH/fogOA=
-X-Google-Smtp-Source: AGHT+IGG3dXVztaQ0dpHVdnl+ITAQ5ER3TO/iy2P6xqHk/2rzpJH07twCUb639UM8YAp7E2gVG1pGQ==
-X-Received: by 2002:a05:600c:34ca:b0:43d:49eb:9675 with SMTP id 5b1f17b1804b1-43ee0768b1cmr76377805e9.22.1744027127215;
-        Mon, 07 Apr 2025 04:58:47 -0700 (PDT)
-Received: from [172.16.8.120] ([197.155.71.138])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43ec1630f21sm132422085e9.8.2025.04.07.04.58.44
+        d=1e100.net; s=20230601; t=1744028481; x=1744633281;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=mk7RPcv+2R4YAv/tAF8Qdd1Qu0WpDKQeLpxo+ejMbqY=;
+        b=jMRLRUg+LQyFkU71VR2al90FSag0o7+28NaJT1zIUt32ROOjMjCJuzv3ww9mFppJSz
+         wPLb8Nhj2mSo/N0XlejKNFkI5LZz0QKel3aDVg0KVhI4MwQLPM+D5ZoUWHthA8hs2QI1
+         DRxWKxg/Z9S4t0hpbAtPkDz5rYsqhDBAyczaKILuaQIAJdpbrbQQLtFiyk9IaA6WbkaQ
+         28p0bQqjDqfTr98O+UnxGR122rUIjQo5lRLhKON0KuDdeKlxKUcrrQK8po1ZCN5n3wjH
+         bpM9H23G0QijsE6ZQ+ssKY73XQNZD5NuYZVouFdS3Y7Vyj8DCDydqJ317xrEqvyi0kQA
+         0Aww==
+X-Forwarded-Encrypted: i=1; AJvYcCVvOjz/rZzqdJZOkGWWcXw0+WmLEt0pKjIWBMseScMadboxTe8g+yJJ/g17Uh91KZ89Zy3EvvHpMnmr@lists.linux.dev, AJvYcCWUUY1AC2CpGFlKyFFX1M38wvaXakardyLQbHGpYwnHPBpcgJPQ+o4GD8BpqeFrLsgTlwgYM4epEi69q4/l@lists.linux.dev
+X-Gm-Message-State: AOJu0Yx5xPV6uD8FkdmpQCjZzswGWwI4yGCUcph8cvOEaSnEVlPq0/oQ
+	WH8b02uaBM/adUVhEBW8+NC/KHYMjuGGhhQjilKnyORP7FIYN4eJ
+X-Gm-Gg: ASbGnctVoo8fNdXWRBr1A69pvZe52+xn4c/vPYY/UA1KxpQPWZPs9qGVvBjeeidbV2U
+	uHYooCPIWD/wtedecf9ePS9qn/UqhfGeoPkJs44j7IBc0MjPkBOyu5qz6zB+CWpM5wJmPja5yEt
+	kRziCeNFQEXUSaokMwNXGhU766BXgbJotMaSJZyt4b0EFejAGIvlN5uuqoyKqDFKGDET98I6aCy
+	Yd+FZtlNKWQ5S1OBw9IsAn/abPWX24x1Zp/Bct4j54RBlm3UVCjUQsQnJAb4AQP/dYHWdSnqx1e
+	rwI7DM/3huE8x9F56eNq7JeZ9rPR5MbA2IaUmiBMeC9ICUZtq+aodcEozTiyn2uIakDnO7j3rIN
+	Hioanyrs=
+X-Google-Smtp-Source: AGHT+IHYLR1EDZrWvod38pShwJcb9XIwrEvM/Ff6ZkWw6dYwPM+i0rz878gr+CGs8FOEgXf2AGrR7Q==
+X-Received: by 2002:a05:6000:420f:b0:39c:30fb:fd97 with SMTP id ffacd0b85a97d-39d07ad8accmr9499023f8f.1.1744028480684;
+        Mon, 07 Apr 2025 05:21:20 -0700 (PDT)
+Received: from pumpkin (82-69-66-36.dsl.in-addr.zen.co.uk. [82.69.66.36])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-39c3020d943sm12034152f8f.74.2025.04.07.05.21.19
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 07 Apr 2025 04:58:46 -0700 (PDT)
-Message-ID: <844b0916a2198527090255a2b065bffda9084188.camel@gmail.com>
-Subject: Local-variable initialization semantic patch update
-From: Erick Karanja <karanja99erick@gmail.com>
-To: outreachy@lists.linux.dev, Julia Lawall <Julia.Lawall@inria.fr>
-Cc: Dan Carpenter <dan.carpenter@linaro.org>
-Date: Mon, 07 Apr 2025 14:58:43 +0300
-Content-Type: multipart/mixed; boundary="=-mrgJpLU+qF4EcXMuOLmW"
-User-Agent: Evolution 3.52.3-0ubuntu1 
+        Mon, 07 Apr 2025 05:21:20 -0700 (PDT)
+Date: Mon, 7 Apr 2025 13:21:15 +0100
+From: David Laight <david.laight.linux@gmail.com>
+To: Greg KH <gregkh@linuxfoundation.org>
+Cc: Abraham Samuel Adekunle <abrahamadekunle50@gmail.com>,
+ julia.lawall@inria.fr, outreachy@lists.linux.dev,
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+ dan.carpenter@linaro.org, andy@kernel.org
+Subject: Re: [PATCH v4] staging: rtl8723bs: Use % 4096u instead of & 0xfff
+Message-ID: <20250407132115.11ded3d9@pumpkin>
+In-Reply-To: <2025040752-unrefined-labored-8c8c@gregkh>
+References: <Z/NxGilPLPy7KSQ3@ubuntu>
+	<2025040757-clergyman-finalist-0c63@gregkh>
+	<2025040752-unrefined-labored-8c8c@gregkh>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; arm-unknown-linux-gnueabihf)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
---=-mrgJpLU+qF4EcXMuOLmW
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On Mon, 7 Apr 2025 08:53:30 +0200
+Greg KH <gregkh@linuxfoundation.org> wrote:
 
-The original semantic patch had deficiencies in handling=20
-local variable initialization, especially with function calls in
-declarations.=20
-This reduced readability, obscured side effects and made debugging
-harder.
+> On Mon, Apr 07, 2025 at 08:36:35AM +0200, Greg KH wrote:
+> > On Mon, Apr 07, 2025 at 06:30:50AM +0000, Abraham Samuel Adekunle wrote:  
+> > > The sequence number is constrained to a range of [0, 4095], which
+> > > is a total of 4096 values. The bitmask operation using `0xfff` is
+> > > used to perform this wrap-around. While this is functionally correct,
+> > > it obscures the intended semantic of a 4096-based wrap.
+> > > 
+> > > Using a modulo operation with `4096u` makes the wrap-around logic  
+> > 
+> > <snip>
+> >   
+> > > -				psta->sta_xmitpriv.txseq_tid[pattrib->priority] &= 0xFFF;
+> > > +				psta->sta_xmitpriv.txseq_tid[pattrib->priority] &= 4096u;  
+> > 
+> > I do not see a modulo operation here, only another & operation.
+> >   
+> > >  				pattrib->seqnum = psta->sta_xmitpriv.txseq_tid[pattrib->priority];
+> > >  
+> > >  				SetSeqNum(hdr, pattrib->seqnum);
+> > > @@ -963,11 +963,11 @@ s32 rtw_make_wlanhdr(struct adapter *padapter, u8 *hdr, struct pkt_attrib *pattr
+> > >  					if (SN_LESS(pattrib->seqnum, tx_seq)) {
+> > >  						pattrib->ampdu_en = false;/* AGG BK */
+> > >  					} else if (SN_EQUAL(pattrib->seqnum, tx_seq)) {
+> > > -						psta->BA_starting_seqctrl[pattrib->priority & 0x0f] = (tx_seq+1)&0xfff;
+> > > +						psta->BA_starting_seqctrl[pattrib->priority & 0x0f] = (tx_seq+1)&4096u;  
+> > 
+> > This also looks odd, nothing is being "AND" here, it's an address value
+> > being set (and an odd one at that, but that's another issue...)  
+> 
+> Sorry, no, I was wrong, it is being & here, but not %.  My fault,
+> the lack of spaces here threw me.
 
-Suggested-by: Greg KH <gregkh@linuxfoundation.org>
-Suggested-by: Julia Lawall <Julia.Lawall@inria.fr>
-Suggested-by: Dan Carpenter <dan.carpenter@linaro.org>
+It is still wrong '& 0xfff' => '% 4096u'.
+But it is all rather pointless especially if you can't test it.
 
+Plausibly more useful would be to find ALL of the uses of 0xfff/4096 (I suspect
+there is an array lurking somewhere) and change them to use the same constant.
+But you need to be able to test the changes - or at least discover that
+they make absolutely no difference to the generated object code.
 
---=-mrgJpLU+qF4EcXMuOLmW
-Content-Disposition: attachment; filename="update_script.cocci"
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; name="update_script.cocci"; charset="UTF-8"
+	David
 
-QGluaXRpYWxpemU6b2NhbWxACkBACgpsZXQgYmlnY29kZSBwID0KICBsZXQgcCA9IExpc3QuaGQg
-cCBpbgogIChwLkNvY2NpbGliLmxpbmUgPD4gcC5Db2NjaWxpYi5saW5lX2VuZCkgfHwKICAocC5D
-b2NjaWxpYi5jb2xfZW5kIC0gcC5Db2NjaWxpYi5jb2wgPj0gNjApIAoKCkByMUAKdHlwZSBUOwpp
-ZGVudGlmaWVyIHg7CnBvc2l0aW9uIHA7CkBACgpUQHAgeDsKCkBiYWRyMUAKdHlwZSBULFQyOwpp
-ZGVudGlmaWVyIHIxLngseTsKc3RhdGVtZW50IFMxLFMyOwpwb3NpdGlvbiByMS5wOwpAQAoKVEBw
-IHg7Ci4uLiB3aGVuICE9IFMxClQyIHk7Ci4uLiB3aGVuICE9IFMyCnggPSA8Ky4uLiB5IC4uLis+
-OwoKQGJhZHIxYUAKdHlwZSBUOwpleHByZXNzaW9uIGUsZjsKaWRlbnRpZmllciByMS54OwpzdGF0
-ZW1lbnQgUyxTMSxTMjsKcG9zaXRpb24gcjEucDsKYmluYXJ5IG9wZXJhdG9yIG9wOwpAQAoKVEBw
-IHg7Ci4uLiB3aGVuICE9IFMKeCA9IGU7CmlmICg8Ky4uLlwoeCA9PSBOVUxMXHx4ICE9IE5VTExc
-fHggb3AgMFx8ZiguLi4seCwuLi4pXCkuLi4rPikgUzEgZWxzZSBTMgoKQGJhZHIxYkAKdHlwZSBU
-OwpleHByZXNzaW9uIGU7CmlkZW50aWZpZXIgcjEueDsKc3RhdGVtZW50IFM7CnBvc2l0aW9uIHIx
-LnA7CnBvc2l0aW9uIHEgOiBzY3JpcHQ6b2NhbWwoKSB7IGJpZ2NvZGUgcSB9OwpAQAoKVEBwIHg7
-Ci4uLiB3aGVuICE9IFMKeCA9IGVAcTsKCkBiYWRyX2Z1bmNfYXNzaWduQAp0eXBlIFQ7CmlkZW50
-aWZpZXIgcjEueDsKcG9zaXRpb24gcjEucDsKaWRlbnRpZmllciBmOwpzdGF0ZW1lbnQgUzsKQEAK
-ClRAcCB4OwouLi4gd2hlbiAhPSBTCnggPSBmKC4uLik7CgpAZGVwZW5kcyBvbiAhYmFkcjEgJiYg
-IWJhZHIxYSAmJiAhYmFkcjFiICYmICFiYWRyX2Z1bmNfYXNzaWduQAp0eXBlIFQ7CmlkZW50aWZp
-ZXIgcjEueDsKZXhwcmVzc2lvbiBlOwpzdGF0ZW1lbnQgUzsKcG9zaXRpb24gcjEucDsKQEAKClRA
-cCB4CisgPSBlCiAgOwouLi4gd2hlbiAhPSBTCi0geCA9IGU7CgovLyAtLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0KCkByMkAKdHlwZSBUOwppZGVudGlmaWVyIHg7CnBvc2l0aW9uIHA7CkBACgpU
-QHAgeDsKCkBiYWRyMkAKdHlwZSBULFQyOwppZGVudGlmaWVyIHIyLngseTsKc3RhdGVtZW50IFMx
-LFMyOwpwb3NpdGlvbiByMi5wOwpAQAoKVEBwIHg7Ci4uLiB3aGVuICE9IFMxClQyIHk7Ci4uLiB3
-aGVuICE9IFMyCnggPSA8Ky4uLiB5IC4uLis+OwoKQGJhZHIyYUAKdHlwZSBUOwpleHByZXNzaW9u
-IGUsZjsKaWRlbnRpZmllciByMi54OwpzdGF0ZW1lbnQgUyxTMSxTMjsKcG9zaXRpb24gcjIucDsK
-YmluYXJ5IG9wZXJhdG9yIG9wOwpAQAoKVEBwIHg7Ci4uLiB3aGVuICE9IFMKeCA9IGU7CmlmICg8
-Ky4uLlwoeCA9PSBOVUxMXHx4ICE9IE5VTExcfHggb3AgMFx8ZiguLi4seCwuLi4pXCkuLi4rPikg
-UzEgZWxzZSBTMgoKQGJhZHIyYkAKdHlwZSBUOwpleHByZXNzaW9uIGU7CmlkZW50aWZpZXIgcjIu
-eDsKc3RhdGVtZW50IFM7CnBvc2l0aW9uIHIyLnA7CnBvc2l0aW9uIHEgOiBzY3JpcHQ6b2NhbWwo
-KSB7IGJpZ2NvZGUgcSB9OwpAQAoKVEBwIHg7Ci4uLiB3aGVuICE9IFMKeCA9IGVAcTsKCkBiYWRy
-X2Z1bmNfYXNzaWduMkAKCnR5cGUgVDsKaWRlbnRpZmllciByMi54Owpwb3NpdGlvbiByMi5wOwpp
-ZGVudGlmaWVyIGY7CnN0YXRlbWVudCBTOwpAQAoKVEBwIHg7Ci4uLiB3aGVuICE9IFMKeCA9IGYo
-Li4uKTsKCkBkZXBlbmRzIG9uICFiYWRyMiAmJiAhYmFkcjJhICYmICFiYWRyMmIgJiYgIWJhZHJf
-ZnVuY19hc3NpZ24yQAp0eXBlIFQ7CmlkZW50aWZpZXIgcjIueDsKZXhwcmVzc2lvbiBlOwpzdGF0
-ZW1lbnQgUzsKcG9zaXRpb24gcjIucDsKQEAKClRAcCB4CisgPSBlCiAgOwouLi4gd2hlbiAhPSBT
-Ci0geCA9IGU7CgovLyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KCkByM0AKdHlwZSBUOwpp
-ZGVudGlmaWVyIHg7CnBvc2l0aW9uIHA7CkBACgpUQHAgeDsKCkBiYWRyM0AKdHlwZSBULFQyOwpp
-ZGVudGlmaWVyIHIzLngseTsKc3RhdGVtZW50IFMxLFMyOwpwb3NpdGlvbiByMy5wOwpAQAoKVEBw
-IHg7Ci4uLiB3aGVuICE9IFMxClQyIHk7Ci4uLiB3aGVuICE9IFMyCnggPSA8Ky4uLiB5IC4uLis+
-OwoKQGJhZHIzYUAKdHlwZSBUOwpleHByZXNzaW9uIGUsZjsKaWRlbnRpZmllciByMy54OwpzdGF0
-ZW1lbnQgUyxTMSxTMjsKcG9zaXRpb24gcjMucDsKYmluYXJ5IG9wZXJhdG9yIG9wOwpAQAoKVEBw
-IHg7Ci4uLiB3aGVuICE9IFMKeCA9IGU7CmlmICg8Ky4uLlwoeCA9PSBOVUxMXHx4ICE9IE5VTExc
-fHggb3AgMFx8ZiguLi4seCwuLi4pXCkuLi4rPikgUzEgZWxzZSBTMgoKQGJhZHIzYkAKdHlwZSBU
-OwpleHByZXNzaW9uIGU7CmlkZW50aWZpZXIgcjMueDsKc3RhdGVtZW50IFM7CnBvc2l0aW9uIHIz
-LnA7CnBvc2l0aW9uIHEgOiBzY3JpcHQ6b2NhbWwoKSB7IGJpZ2NvZGUgcSB9OwpAQAoKVEBwIHg7
-Ci4uLiB3aGVuICE9IFMKeCA9IGVAcTsKCkBiYWRyX2Z1bmNfYXNzaWduM0AKdHlwZSBUOwppZGVu
-dGlmaWVyIHIzLng7CnBvc2l0aW9uIHIzLnA7CmlkZW50aWZpZXIgZjsKc3RhdGVtZW50IFM7CkBA
-CgpUQHAgeDsKLi4uIHdoZW4gIT0gUwp4ID0gZiguLi4pOwoKQGRlcGVuZHMgb24gIWJhZHIzICYm
-ICFiYWRyM2EgJiYgIWJhZHIzYiAmJiAhYmFkcl9mdW5jX2Fzc2lnbjNACnR5cGUgVDsKaWRlbnRp
-ZmllciByMy54OwpleHByZXNzaW9uIGU7CnN0YXRlbWVudCBTOwpwb3NpdGlvbiByMy5wOwpAQAoK
-VEBwIHgKKyA9IGUKICA7Ci4uLiB3aGVuICE9IFMKLSB4ID0gZTsKCg==
+> 
+> thanks,
+> 
+> greg k-h
 
-
---=-mrgJpLU+qF4EcXMuOLmW--
