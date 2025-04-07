@@ -1,108 +1,75 @@
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 33C892459F5;
-	Mon,  7 Apr 2025 12:28:39 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.16
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CF523219306
+	for <outreachy@lists.linux.dev>; Mon,  7 Apr 2025 12:32:07 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.83
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1744028921; cv=none; b=k4QjDoxOiUfdPEgQST8VhamG70sCVxWfL+/qkClqkXPldd+cgXNacmqUdJYaXYI5xMvEvwouFM0hopJDeEDZIBQYWVePtArLDkadqmfMZQD0iEsg9wIb1Oj4qA5PBi6TH01aW3xYznXewfOrboxsQarXSvTwlX8D6qiTQyvHw8A=
+	t=1744029131; cv=none; b=fF9HKjlAqe5/vlHDoZff7bZg7WYNXuf5UZp6s/LWGGI8CNaMMT20GkWcwDJNf8J27FXrPOhUonNJWQ80llVxYemFAEUVq3g9jYsgI1kdTbKFJ/DnmARgb4JgvgqLj1+ZnrfaWaLJNBlbv4fP8RHfzUUJGXKE1YgkAWLgSez7FV4=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1744028921; c=relaxed/simple;
-	bh=dDCLsoBqPfjWbCG4p1BxBYTwjiD+HPi7id2DzJFDYuY=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=XkRoALacc34d2ZZSuZfeEFNQtz+pvHGV6NcKaB2vzAbmUIVDvaC8tRxDIahBreeMGlRibRI1eL1fiBW3FR3Q9K848j43fCoJaV+CVCtA1q5rKWxHE4DVi9mX8CpWhnWM27NvOyREfK4YkmUircND1fOazLnwY1ATlijwz2D8cP8=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=kernel.org; spf=fail smtp.mailfrom=kernel.org; arc=none smtp.client-ip=198.175.65.16
-Authentication-Results: smtp.subspace.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=kernel.org
-Authentication-Results: smtp.subspace.kernel.org; spf=fail smtp.mailfrom=kernel.org
-X-CSE-ConnectionGUID: y727OskHTSmLEC/Jii+pzg==
-X-CSE-MsgGUID: OLKqhjJOQo6jOFd96nSvUw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11397"; a="45503788"
-X-IronPort-AV: E=Sophos;i="6.15,194,1739865600"; 
-   d="scan'208";a="45503788"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
-  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Apr 2025 05:28:39 -0700
-X-CSE-ConnectionGUID: V7WAbuhdRRaCz1Fu5rD9lg==
-X-CSE-MsgGUID: cnCsxASrQrSUBASJDuV33w==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,194,1739865600"; 
-   d="scan'208";a="127924698"
-Received: from smile.fi.intel.com ([10.237.72.58])
-  by orviesa006.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Apr 2025 05:28:38 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.98.2)
-	(envelope-from <andy@kernel.org>)
-	id 1u1lac-0000000A44A-2D5l;
-	Mon, 07 Apr 2025 15:28:34 +0300
-Date: Mon, 7 Apr 2025 15:28:34 +0300
-From: Andy Shevchenko <andy@kernel.org>
-To: David Laight <david.laight.linux@gmail.com>
-Cc: Greg KH <gregkh@linuxfoundation.org>,
-	Abraham Samuel Adekunle <abrahamadekunle50@gmail.com>,
-	julia.lawall@inria.fr, outreachy@lists.linux.dev,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	dan.carpenter@linaro.org
-Subject: Re: [PATCH v4] staging: rtl8723bs: Use % 4096u instead of & 0xfff
-Message-ID: <Z_PE8usXhpLJ4sTd@smile.fi.intel.com>
-References: <Z/NxGilPLPy7KSQ3@ubuntu>
- <2025040757-clergyman-finalist-0c63@gregkh>
- <2025040752-unrefined-labored-8c8c@gregkh>
- <20250407132115.11ded3d9@pumpkin>
+	s=arc-20240116; t=1744029131; c=relaxed/simple;
+	bh=aSsEItFaQml3n1R4v0nnLaWlYqgFVH88aVqrO1puvGM=;
+	h=Date:From:To:cc:Subject:In-Reply-To:Message-ID:References:
+	 MIME-Version:Content-Type; b=EAQInxRduzGu3KYLa/WKWRgQFT0oFmzUW4UTeBez5Ddn0IdN1gL5iHgSb6p6L4xNLWV0RLfxBrLKMkeEmyoaF3UNOqsQ5p7eKGiMZk7xIBluxa57gbwCopr1ziOH4mhUB5dxG2Zu4hhnuwes7lUymyxdh2ASYvABAcKFP5WxPA4=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=TKSy4SdZ; arc=none smtp.client-ip=192.134.164.83
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="TKSy4SdZ"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+  d=inria.fr; s=dc;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=oia6Cxa9twVXUXiHnwzEhOaYEVghIpKqg6odN4ruy5Y=;
+  b=TKSy4SdZZIH8FW71pvKfbc/pB6sJJPnhue54n3313a5/tNXQixjpZ1YL
+   hBaPdD5jWqYL33XgsHJhex1uGKBSHP6UFfhajrumZGm5xUUSeJBIFispK
+   sBC8dQyiFHXFCcqCK3XdM/NJ9ztb0k8Lh2Mvel46qRWaJBzoT+lMimv6t
+   o=;
+Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="6.15,194,1739833200"; 
+   d="scan'208";a="216693171"
+Received: from unknown (HELO hadrien) ([4.26.64.170])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Apr 2025 14:32:05 +0200
+Date: Mon, 7 Apr 2025 08:32:03 -0400 (EDT)
+From: Julia Lawall <julia.lawall@inria.fr>
+To: Erick Karanja <karanja99erick@gmail.com>
+cc: outreachy@lists.linux.dev, Julia Lawall <Julia.Lawall@inria.fr>, 
+    Dan Carpenter <dan.carpenter@linaro.org>
+Subject: Re: Local-variable initialization semantic patch update
+In-Reply-To: <844b0916a2198527090255a2b065bffda9084188.camel@gmail.com>
+Message-ID: <9f6a8d2a-5829-3adb-3324-8eeeafb61038@inria.fr>
+References: <844b0916a2198527090255a2b065bffda9084188.camel@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250407132115.11ded3d9@pumpkin>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-
-On Mon, Apr 07, 2025 at 01:21:15PM +0100, David Laight wrote:
-> On Mon, 7 Apr 2025 08:53:30 +0200
-> Greg KH <gregkh@linuxfoundation.org> wrote:
-> > On Mon, Apr 07, 2025 at 08:36:35AM +0200, Greg KH wrote:
-> > > On Mon, Apr 07, 2025 at 06:30:50AM +0000, Abraham Samuel Adekunle wrote:  
-
-<snip>
-
-> > > > -				psta->sta_xmitpriv.txseq_tid[pattrib->priority] &= 0xFFF;
-> > > > +				psta->sta_xmitpriv.txseq_tid[pattrib->priority] &= 4096u;  
-> > > 
-> > > I do not see a modulo operation here, only another & operation.
-> > >   
-> > > >  				pattrib->seqnum = psta->sta_xmitpriv.txseq_tid[pattrib->priority];
-> > > >  
-> > > >  				SetSeqNum(hdr, pattrib->seqnum);
-> > > > @@ -963,11 +963,11 @@ s32 rtw_make_wlanhdr(struct adapter *padapter, u8 *hdr, struct pkt_attrib *pattr
-> > > >  					if (SN_LESS(pattrib->seqnum, tx_seq)) {
-> > > >  						pattrib->ampdu_en = false;/* AGG BK */
-> > > >  					} else if (SN_EQUAL(pattrib->seqnum, tx_seq)) {
-> > > > -						psta->BA_starting_seqctrl[pattrib->priority & 0x0f] = (tx_seq+1)&0xfff;
-> > > > +						psta->BA_starting_seqctrl[pattrib->priority & 0x0f] = (tx_seq+1)&4096u;  
-> > > 
-> > > This also looks odd, nothing is being "AND" here, it's an address value
-> > > being set (and an odd one at that, but that's another issue...)  
-> > 
-> > Sorry, no, I was wrong, it is being & here, but not %.  My fault,
-> > the lack of spaces here threw me.
-> 
-> It is still wrong '& 0xfff' => '% 4096u'.
-
-Why?
-
-> But it is all rather pointless especially if you can't test it.
-
-> Plausibly more useful would be to find ALL of the uses of 0xfff/4096 (I suspect
-> there is an array lurking somewhere) and change them to use the same constant.
-> But you need to be able to test the changes - or at least discover that
-> they make absolutely no difference to the generated object code.
-
-The problem with &, it's not non-power-of-2 tolerable solution. Also using
-hexadecimal there is not so helpful as when we are talking about sequences
-(or indices in the circular buffer), the decimal makes more sense.
-
--- 
-With Best Regards,
-Andy Shevchenko
+Content-Type: text/plain; charset=US-ASCII
 
 
+
+On Mon, 7 Apr 2025, Erick Karanja wrote:
+
+> The original semantic patch had deficiencies in handling
+> local variable initialization, especially with function calls in
+> declarations.
+> This reduced readability, obscured side effects and made debugging
+> harder.
+
+It is best to inline the semantic patches in the email, so that people can
+easily read and comment on it.
+
+Also, please try to be more direct in your comments.  "had deficiencies"
+is not informative.  What was the problem?  What have you done about it?
+The log message should be a guide to help the person receiving the new
+code to know what to look for and to find out what is going on.
+
+julia
+
+>
+> Suggested-by: Greg KH <gregkh@linuxfoundation.org>
+> Suggested-by: Julia Lawall <Julia.Lawall@inria.fr>
+> Suggested-by: Dan Carpenter <dan.carpenter@linaro.org>
+>
+>
