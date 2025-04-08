@@ -1,91 +1,106 @@
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.20])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-wm1-f48.google.com (mail-wm1-f48.google.com [209.85.128.48])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 781D42673A3;
-	Tue,  8 Apr 2025 09:36:40 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.20
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ABC21266EFC;
+	Tue,  8 Apr 2025 10:20:51 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.48
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1744105002; cv=none; b=c/O5UEn+nvrzfTrLBrWr7Wpi1IV98dnSDwvPrKgaLxWgTklkKCOYqRLD9DuLY/lrqY7OXgxEcb7AgifHMQwfZ5azM34Q5NmM2zPWvt2A8zpR7/Ynk4rpFTIfC/9AGU3tGrg4GGIrS3d8T5Moz5ZoulTr0IooNBkWxq2kgKDzK2U=
+	t=1744107653; cv=none; b=Sciol10529FFZSaBRMMNEWdTbIZx99JgbTdY1IVzdcjTq8I7fsYHAfWPV2q94oTie3FZ1iEvR82i29VI0gwhK8qyMr8JhKhqUdNnSJ496hMkckgQb50BC4h8hIKUHWsLmJo14012a2EM9SxsLObhtaCXMOBNkhfS3mAx8+EZyek=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1744105002; c=relaxed/simple;
-	bh=/wAMfOnvbOyuKLm6VluHvI2FFGfc5RccaFxv0fPTMdg=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=mGYDk7wuND2f+oCu/oo/y/WqvwPUymVZLn4Ibu2t23OYkDWP5VWrppKHfc0P/fU/dsEQd7EwSQxHqJoIdYYflXAk0P0Ry5YfobgKmQd5nklfFDzAt6grPTgmGIW+8e0nNaa4YhugGL2MB/vmWk9qbg2nQOr0NIsGeEjptB7SWTc=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com; spf=fail smtp.mailfrom=gmail.com; arc=none smtp.client-ip=198.175.65.20
-Authentication-Results: smtp.subspace.kernel.org; dmarc=fail (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=fail smtp.mailfrom=gmail.com
-X-CSE-ConnectionGUID: GMwNy+uLSvOkJDn18RYwfA==
-X-CSE-MsgGUID: DHvbD4OWSUmw7BWL7EOJkg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11397"; a="45242220"
-X-IronPort-AV: E=Sophos;i="6.15,197,1739865600"; 
-   d="scan'208";a="45242220"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
-  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Apr 2025 02:36:39 -0700
-X-CSE-ConnectionGUID: aDwbZGqRSGSggUrZ9cScyA==
-X-CSE-MsgGUID: Vb/4ZLnuS9KyIyn17FIcPw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,197,1739865600"; 
-   d="scan'208";a="159205187"
-Received: from smile.fi.intel.com ([10.237.72.58])
-  by orviesa002.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Apr 2025 02:36:37 -0700
-Received: from andy by smile.fi.intel.com with local (Exim 4.98.2)
-	(envelope-from <andy.shevchenko@gmail.com>)
-	id 1u25Ni-0000000AM4Z-1xmE;
-	Tue, 08 Apr 2025 12:36:34 +0300
-Date: Tue, 8 Apr 2025 12:36:34 +0300
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-To: Samuel Abraham <abrahamadekunle50@gmail.com>
-Cc: outreachy@lists.linux.dev, gregkh@linuxfoundation.org,
-	julia.lawall@inria.fr, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, david.laight.linux@gmail.com,
-	dan.carpenter@linaro.org
-Subject: Re: [PATCH v6 0/2] staging: rtl8723bs: Improve readability and
- clarity of sequence number wrapping
-Message-ID: <Z_TuIjwuihXF3mbM@smile.fi.intel.com>
-References: <cover.1744061673.git.abrahamadekunle50@gmail.com>
- <CAHp75VcCdS30LHPMwk3HO1o6db_0p+LDQoASx-7oCVw__MpMdw@mail.gmail.com>
- <CADYq+fYeXCUgXqWu_97gvUBOvTG+H4Q76TSX2M1s5jV7EWcuyA@mail.gmail.com>
+	s=arc-20240116; t=1744107653; c=relaxed/simple;
+	bh=ZJUu2kUTtBrtb8QIr/T5NE5Nfo4t+UHcls6R0+lYS24=;
+	h=From:To:Cc:Subject:Date:Message-Id:MIME-Version; b=m9Ro1i8TOMMt4ny2TBw+hfxCGfCuXboWRgSIT+ZPWV3cNOe4yKmiEO4ALMquX5WLq/OE12mV8YnYCE1f5E38OyE4eTyWZueoofRMRihqk5XzK1eyGmvx2540q4fGlH2UaeY82a47s2WdGs7rqZo6Uuu+hzFgi1111ocm/bt+ptE=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=mGkeik8f; arc=none smtp.client-ip=209.85.128.48
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="mGkeik8f"
+Received: by mail-wm1-f48.google.com with SMTP id 5b1f17b1804b1-43cec5cd73bso29752075e9.3;
+        Tue, 08 Apr 2025 03:20:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1744107650; x=1744712450; darn=lists.linux.dev;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=xeNglUB7597l+hXKgp8ZDR8E6Vs1eyzhEhyeNzv3D74=;
+        b=mGkeik8fq8i77RLD01RFr64FKQRmM6gayP9gdauPeyMerR68L9lJPRJKekfaSDO7OL
+         4HKCzEawZLcAA09LZfa/Vsogx0h1vJcgJnrvbt32xsyyofNbprYGXTttTpf3dfqKoiD/
+         OXLMHeZwYfImIy5wEZtW/hRxFtrjdzbwtEOyFlP5kE+8DAelkP3ROq1hOcXaEgXLJ2qy
+         gq0xN0PDXsCF5E48Ho7UBxlh8sYk5GG1QBYf/0KhNUFJQCLSoF/tGkewsCsr49xxJaXa
+         G4XouMiqtlNZBO1TerMMzURAhbStRxAUY10WRqwsSGLK9UPSTcA1qUa/RSwYDci6t4x+
+         wHtQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1744107650; x=1744712450;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=xeNglUB7597l+hXKgp8ZDR8E6Vs1eyzhEhyeNzv3D74=;
+        b=uwCDFUp3phIXALhkj4/Yq1DVdR4eWW2ZIuW3p2NcnCli5yPoHLnwtLP6bubRAO/C++
+         ZdnqY3C9qTXTPOGsU0YcvHm1qmB5USVxHK8cv/kws6sRSiljw0ZY0CdaLfbm248veTa7
+         0r5wRoNgcAadfY8HpbP2XLba1rcYsuHgr4n0PhAzQvk5Q07CABtraoAzPrWUyAyvP1Cg
+         sLXKjBwZOm94DKXJMp3edyMgFR4IpzHgQqT8vbZJOBQBKGoc8eD5RbiUZ8YQb9rs3gj7
+         Z5+jzM9eCDFarUZupsoOBTSlJvo7UtFInoinvbL4nszNuw0BFoSlP+xhoDxo917enuJK
+         AvmA==
+X-Forwarded-Encrypted: i=1; AJvYcCU3zdRFhVMu3V6KEqzW6aiFERav23NGPFVVwhGBf5xgBE0TyNuM4KlhLuOeYhMr+LmhGkAmMql11eKvjfti@lists.linux.dev
+X-Gm-Message-State: AOJu0YwJFqQkIwsV6B6Wfi6ooEj94srtpUWdkXCROSfDDOP8C0B89Bsj
+	BhehIs6CXRbo1Elecifk11QZ3lFfChBcPGaRuTgwaQ/XqIMJbUZ6
+X-Gm-Gg: ASbGnctaY1dzhsQakj8zJLChmNn2n+xI8ewodyN72DgIFrm36FIOm71xWA8WboBQyXF
+	AegXxv0wBf9x1269v5ZB+u02kX0aiQ96Me3Z/wwtQE1x7IPOyQBtTII/ulAiIfgOWtGOfEfwipI
+	tSswHW265g0iovLmK72k/t8odLNCJO4Uh4gf0zYMAZXd/iiunZmJiJ/GDRzT4g7UOqxJpE+MW44
+	jd9If3qyvR4hXuSjcCW/gjAiiXOh5cECluQHcu4XLVsWA1pGXjB/qYSqrk+l4s24bA0J1JAPq6N
+	YRcx41UwjrXsfyV0jLVMulyerZo=
+X-Google-Smtp-Source: AGHT+IGoCblA8039XA2SYcRuvHR7lv77+7fyVszqPklN9pnwKU/Q7bQYVLoa8hnC3VLSBmwSoVOR5Q==
+X-Received: by 2002:a05:600c:1c88:b0:43c:fe15:41d4 with SMTP id 5b1f17b1804b1-43ee06985d4mr96625295e9.18.1744107649775;
+        Tue, 08 Apr 2025 03:20:49 -0700 (PDT)
+Received: from parrot ([105.113.112.27])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43ec1f27a55sm159367605e9.2.2025.04.08.03.20.48
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 08 Apr 2025 03:20:49 -0700 (PDT)
+From: Richard Akintola <princerichard17a@gmail.com>
+To: outreachy@lists.linux.dev
+Cc: sudipm.mukherjee@gmail.com,
+	teddy.wang@siliconmotion.com,
+	gregkh@linuxfoundation.org,
+	linux-fbdev@vger.kernel.org,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	Richard Akintola <princerichard17a@gmail.com>
+Subject: [PATCH v2 0/8] staging: sm750fb: change function naming style
+Date: Tue,  8 Apr 2025 11:20:32 +0100
+Message-Id: <cover.1744105388.git.princerichard17a@gmail.com>
+X-Mailer: git-send-email 2.39.5
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <CADYq+fYeXCUgXqWu_97gvUBOvTG+H4Q76TSX2M1s5jV7EWcuyA@mail.gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 
-On Tue, Apr 08, 2025 at 10:28:36AM +0100, Samuel Abraham wrote:
-> On Tue, Apr 8, 2025 at 8:21 AM Andy Shevchenko
-> <andy.shevchenko@gmail.com> wrote:
-> > On Tue, Apr 8, 2025 at 12:54 AM Abraham Samuel Adekunle
-> > <abrahamadekunle50@gmail.com> wrote:
+Address checkpatch's "Avoid camelCase" for sm750fb module by changing
+function name to conform to kernel code style.
 
-...
+The patches are required to be applied in sequence.
 
-> > > Changes in v5:
-> >
-> > This is v6. Are there any changes in comparison to v5?
-> 
-> I added a cover letter and named it v6 to show it's a continuation
-> from v5 and to show I added a
-> new patch for spaces.
-> I was not sure where would be best to add the change log so I put it
-> in the cover letter.
-> But as it concerns the patch for the % operation, there is no change
-> between v5 and v6
+---
+changes in v2:
+  - Fixed typo in the commit message for patch 1
+  - Sent patches as patchset
 
-Then it should have
+Richard Akintola (8):
+  staging: sm750fb: change sii164GetDeviceID to snake_case
+  staging: sm750fb: change sii164ResetChip to snake_case
+  staging: sm750fb: change sii164SetPower to snake_case
+  staging: sm750fb: change sii164GetChipString to snake_case
+  staging: sm750fb: change sii164EnableHotPlugDetection to snake_case
+  staging: sm750fb: change sii164IsConnected to snake_case
+  staging: sm750fb: change sii164CheckInterrupt to snake_case
+  staging: sm750fb: change sii164ClearInterrupt to snake_case
 
-Changes in v6:
-- none
-
-which then questions the purpose of v6 :-)
+ drivers/staging/sm750fb/ddk750_dvi.c    | 16 +++++-----
+ drivers/staging/sm750fb/ddk750_sii164.c | 42 ++++++++++++-------------
+ drivers/staging/sm750fb/ddk750_sii164.h | 16 +++++-----
+ 3 files changed, 37 insertions(+), 37 deletions(-)
 
 -- 
-With Best Regards,
-Andy Shevchenko
-
+2.39.5
 
