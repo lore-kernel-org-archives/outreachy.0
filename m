@@ -1,110 +1,69 @@
-Received: from mail-vk1-f180.google.com (mail-vk1-f180.google.com [209.85.221.180])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A8B4422AE5E;
-	Tue,  8 Apr 2025 15:44:34 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.180
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 32394245015;
+	Tue,  8 Apr 2025 19:41:12 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.9
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1744127076; cv=none; b=lqHMfwKwsEHVZL9rBiepeLYikc2r6UBgU7FCA7G+NsP7tXvgZenleN2oZyhzKTJ6bT0Sjdc/ZpDPAVRZJAbz0NnXSpJk2P+Xe3ZQVw7hQvSoebA7YXbcpopXF115P69FesMEcq2lH2hyNm3+hPIjUwpTrx3cNN4xrTPBBgsUDw0=
+	t=1744141274; cv=none; b=aeRCiwfAW/3/n4SWCAQUfDD1RyQKphupse2rcAxM8p3l74GrgC1fqStj+dXiWoM6TFqVh7ziY42Zu8AOydeDjB9vMX5fYHTrNvXIdGau8wCYPZ5gGbqY9DI6yIGxPBXB/tcwJsYsOSAC8VGM6mpJkYm5NV2ZmlCe/ho6afTUorw=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1744127076; c=relaxed/simple;
-	bh=K5G2ZwYExtfm1cVAQRkf9bRTo5tSCqqa0BaWlL4b0yM=;
-	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
-	 To:Cc:Content-Type; b=gXCoPS0VRwGcek0uwnTi4nchk0FtzCLjJ2HTYudhxTAunfLNYJjgakc0jEQGnQ1JYF9QVeohytiw1I2tYSe+Z6d5V/0jW/3IwhtbRSsXz7stXjYwaivgfHxgZ4v4AhA7bI6mKiEhYsv39FMqC/wzgM+6cVCTnr8PjDDjQOAin8g=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=Mm3D2ivk; arc=none smtp.client-ip=209.85.221.180
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Mm3D2ivk"
-Received: by mail-vk1-f180.google.com with SMTP id 71dfb90a1353d-5241abb9761so2500461e0c.1;
-        Tue, 08 Apr 2025 08:44:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1744127073; x=1744731873; darn=lists.linux.dev;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=K5G2ZwYExtfm1cVAQRkf9bRTo5tSCqqa0BaWlL4b0yM=;
-        b=Mm3D2ivky620rBfZq05raqMGVwEzuoBmr1mqLaEdIDX96jWJl49Mq4ZYTBeCxX2LuH
-         Y/zW8DZ9LljIMBZnx26RRIu8/47Y7CkVJgvYr9nG4QZypCOKqFPsGziCqSf/qBqdrVQm
-         mwhj8K9GhDbjO3buxu6UPnf5tlqeYuqEQ9ofvLeqBBKnsGmkvnvWT/h0qjj3LdrjN6hy
-         eBQmplm/xK4tx/0yEmk8WsoKJCFOUNRkjK43lrt5dOj/jROUoz/TZ1WEZTNy0FvBqWiw
-         +fF5OeRo4rEwiI7WES96DuOQmtnhM4xV5VTTjkZHsJxUAQpmri/5EsUR2XkhODZun8XK
-         TZVg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744127073; x=1744731873;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=K5G2ZwYExtfm1cVAQRkf9bRTo5tSCqqa0BaWlL4b0yM=;
-        b=cWZl3Rg9DnWBY1pI1jHWlXkbJQo6CByUiUS4TaA+dspVHp1+GY6M0GR2uaeSxTBHqi
-         GyD/7e0Okq5DJoVt5ROAny2aR11Ml5JmplCSoNBKJcMlKz9s398FI6kgTGraw+T9o7kZ
-         u+hrGrA4Bl/pbGzuhk6kfcT38WDdyDdwPSCzAh+lmBRbrZjPCmw/duCPkoT6mze0eBgL
-         jxxhFSIvSI1jjgrksS6avexgvWmHfe61lSJ4RnbsrhjZ7TJ+ugykuzeFpMdJjUbpC785
-         q75jpRdFfe3rkb/xzfzG1iw26i+oBOww124jkBbmQ2C3Dwe/nQUh+Qo0p8ZlDXPW3Q32
-         2ZVw==
-X-Forwarded-Encrypted: i=1; AJvYcCVUqjdcxCxp9Oo1b9G7JbULz5tmjW0p0LskCBBVDcoKr7BMUZXrlahJ0ASeZA1N7kScrVDUHcG2kPtPxs27@lists.linux.dev
-X-Gm-Message-State: AOJu0YxctGlHcOetQqXWhpRcSe5wdjhNts05a2sUCoXkhnKAXEMTCuyg
-	GvzRCgC2IfDUQryoDsdzvp4s7lq8yec1oINRoCoYOZC40cqyIfiUmWwmXbBcLz9c5ADxGxnaEQr
-	t4QZgzofPtwnI4atP2AwmSgC6c74=
-X-Gm-Gg: ASbGncv9ToqGaL1eIE+likfTnDIYCmLYlXgA+L7JpjguXQxb5LQhoo4AST4ziVo0sKI
-	RzKneBPsmS3DKxXbwYo27tqCe+/JBrLSEYQYqZhwkQlstVp6b4AjA4OYPOxbdzDERIQENQEpZqb
-	yBtV4yJBEARkcWdHizTmfzpCIHVA==
-X-Google-Smtp-Source: AGHT+IEOAhODFXCQCQCyky6pL+wFmfnADJsayHXZE3pW2I0MMTvuO6cpstPg2O9EQVXHQS/6scTNoBoqj0OUtwsn1mE=
-X-Received: by 2002:a05:6122:1daa:b0:51f:3eee:89f2 with SMTP id
- 71dfb90a1353d-52765c2973fmr10907463e0c.2.1744127073729; Tue, 08 Apr 2025
- 08:44:33 -0700 (PDT)
+	s=arc-20240116; t=1744141274; c=relaxed/simple;
+	bh=WvyOxFcjnEQDjoY5VZPTMKfsaOU7pDlNTjjExeRbJ74=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=X+BAGPGFjy/A5bYJVQTLYU+b0AEQcN9xLloclbqV2HmwVzR7kMX7+Q+47iqqzZmWsj8YX8fg0PohdMRinkZJ5MW49olzg84AIBRG2BqxvpmEHDlwUhd25ngv2emN5IWW7qBXfNkplx4vO9gcRVl36yjpxTWGXavDGMg6F1LHn78=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=kernel.org; spf=fail smtp.mailfrom=kernel.org; arc=none smtp.client-ip=198.175.65.9
+Authentication-Results: smtp.subspace.kernel.org; dmarc=fail (p=quarantine dis=none) header.from=kernel.org
+Authentication-Results: smtp.subspace.kernel.org; spf=fail smtp.mailfrom=kernel.org
+X-CSE-ConnectionGUID: 6bCfUf6fQhClL4zoy7EVlQ==
+X-CSE-MsgGUID: VfG3CByCSzayo7ZyuSIXug==
+X-IronPort-AV: E=McAfee;i="6700,10204,11397"; a="68071124"
+X-IronPort-AV: E=Sophos;i="6.15,198,1739865600"; 
+   d="scan'208";a="68071124"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Apr 2025 12:41:13 -0700
+X-CSE-ConnectionGUID: sX2Fs3fhT6eBZGugaCpGcg==
+X-CSE-MsgGUID: 6EeWdHeHSJWq7OkGLUhRgg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,198,1739865600"; 
+   d="scan'208";a="128701364"
+Received: from smile.fi.intel.com ([10.237.72.58])
+  by fmviesa008.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Apr 2025 12:41:10 -0700
+Received: from andy by smile.fi.intel.com with local (Exim 4.98.2)
+	(envelope-from <andy@kernel.org>)
+	id 1u2Eol-0000000AVBT-34ii;
+	Tue, 08 Apr 2025 22:41:07 +0300
+Date: Tue, 8 Apr 2025 22:41:07 +0300
+From: Andy Shevchenko <andy@kernel.org>
+To: Abraham Samuel Adekunle <abrahamadekunle50@gmail.com>
+Cc: outreachy@lists.linux.dev, julia.lawall@inria.fr,
+	gregkh@linuxfoundation.org, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org, david.laight.linux@gmail.com,
+	dan.carpenter@linaro.org
+Subject: Re: [PATCH v8 0/2] staging: rtl8723bs: Improve readability and
+ clarity of sequence number wrapping
+Message-ID: <Z_V70-9Bk-aZ914y@smile.fi.intel.com>
+References: <cover.1744126058.git.abrahamadekunle50@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-References: <cover.1744117091.git.abrahamadekunle50@gmail.com>
- <c71ec1f13a2a5cc38a745314f134f6e7eb935227.1744117091.git.abrahamadekunle50@gmail.com>
- <Z_U2ohN4wbbOtepn@smile.fi.intel.com>
-In-Reply-To: <Z_U2ohN4wbbOtepn@smile.fi.intel.com>
-From: Samuel Abraham <abrahamadekunle50@gmail.com>
-Date: Tue, 8 Apr 2025 16:44:24 +0100
-X-Gm-Features: ATxdqUHHI5EBrUMCMRukwAxv7kKLnF4ZevAVt444jh7qUnEHaPD1eIkis-CJSoA
-Message-ID: <CADYq+fZFRF5SLLyfG12hUJLjNk+njWyC6H34S_warp61zYv8wQ@mail.gmail.com>
-Subject: Re: [PATCH v7 2/2] staging: rtl8723bs: Use % 4096 instead of & 0xfff
-To: Andy Shevchenko <andy@kernel.org>
-Cc: outreachy@lists.linux.dev, julia.lawall@inria.fr, 
-	gregkh@linuxfoundation.org, linux-staging@lists.linux.dev, 
-	linux-kernel@vger.kernel.org, david.laight.linux@gmail.com, 
-	dan.carpenter@linaro.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1744126058.git.abrahamadekunle50@gmail.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 
-On Tue, Apr 8, 2025 at 4:12=E2=80=AFPM Andy Shevchenko <andy@kernel.org> wr=
-ote:
->
-> On Tue, Apr 08, 2025 at 01:31:42PM +0000, Abraham Samuel Adekunle wrote:
-> > The sequence number is constrained to a range of [0, 4095], which
-> > is a total of 4096 values. The bitmask operation using `& 0xfff` is
-> > used to perform this wrap-around. While this is functionally correct,
-> > it obscures the intended semantic of a 4096-based wrap.
-> >
-> > Using a modulo operation `% 4096u` makes the wrap-around logic
-> > explicit and easier to understand. It clearly signals that the
-> > sequence number cycles through a range of 4096 values.
-> > It also makes the code robust against potential changes of the 4096
-> > upper limit, especially when it becomes a non power of 2 value while
->
-> power-of-2
->
-> > the AND(&) works solely for power of 2 values.
->
-> power-of-2
->
-> > The use of `% 4096u` also guarantees that the modulo operation is
-> > performed with unsigned arithmetic, preventing potential issues with
-> > the signed types.
->
-> Reviewed-by: Andy Shevchenko <andy@kernel.org>
+On Tue, Apr 08, 2025 at 03:41:55PM +0000, Abraham Samuel Adekunle wrote:
+> The patchset adds spaces around binary operators, breaks long lines to enhance readability
+> and provides clarity on sequence number wrapping by using a modulo operation % 4096u, in
+> place of the bitwise AND(&) operation & 0xfff.
+> The patches are required to be applied in sequence.
 
-Thank you, Andy for your patience with me and guidance and the review.
+You missed my tags I gave in a previous review round.
 
-I have sent the updated patch.
+-- 
+With Best Regards,
+Andy Shevchenko
 
-Adekunle.
+
