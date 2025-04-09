@@ -1,183 +1,164 @@
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-ed1-f46.google.com (mail-ed1-f46.google.com [209.85.208.46])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9E0062676D9;
-	Wed,  9 Apr 2025 15:41:58 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.83
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B1EC61D5175;
+	Wed,  9 Apr 2025 18:48:07 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.46
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1744213321; cv=none; b=o58KOK4eJ1MzRTGqPvzAT9hLKS8QKGBpmIk2QbrXRa0ybxzKb6usmKoVX+zNjMPyGoMbkNbE7ocvz2COtNvBV/vzIbBL+rZGLmACOZR3wGwwqg6P6n+FS6Z5ewyPvhz7H9kFgh+U8O1PqtWDS+uHW59UFZCK+bojHf2j9tbQIi0=
+	t=1744224489; cv=none; b=cftDuVf19Kn0WLDv8yL6vulOHLjjQLNmQgCWZX1+ny3q24KFC5ExSU8dTAVRU7b6fey38XU3814aW8U5hD8g2wbAcYe2gE2tSR44qJilWP3bdDs66lzftOJ9FAI1pxkv0a+FJWfIDsTNz731GwO0qSTmbboDo2bFgJLlp65ei54=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1744213321; c=relaxed/simple;
-	bh=Q6OGpSVxIa1TzU8YTuINcPALNgKDev2a8ASm19SQxQ0=;
-	h=Date:From:To:cc:Subject:In-Reply-To:Message-ID:References:
-	 MIME-Version:Content-Type; b=jra3xHuZU9sS/jwb9W3XRIGNoTt+KKohkjVnT5CVhNO7SPArSu/g3tXfSCLYgn+LB4zKEXMd/nEwcDBqBRUkAFpgif4ajTeERVu2hMAigU+hx5coSAWpU7v0c+5X206QKWDMnAreRxcU18vosdl2ZdZRJDR1vykwPyvWUhzuJyo=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=RPyiv0vG; arc=none smtp.client-ip=192.134.164.83
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
+	s=arc-20240116; t=1744224489; c=relaxed/simple;
+	bh=1H4eNwZl+2uYtagyQSgjMNSg+hVnARPITcSVUtNRMzA=;
+	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type:
+	 Content-Disposition; b=V+lQT7Dn4QfZqJX8Qqamgr73qX5ZLd4VFJ8Kpv4kS2HG15Gvi2OfXfJVIHyk71xfEMqNGNHtRo2LmctQDjSmNySmdLtZUQjLbDG4QwyDBK347DaH19TAhU/B6G4IijXOcmBlCb1cOqLPe8VyU7a37Wu6UbPP9aGcJHhg6F9lG+I=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=S5ZO86op; arc=none smtp.client-ip=209.85.208.46
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="RPyiv0vG"
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="S5ZO86op"
+Received: by mail-ed1-f46.google.com with SMTP id 4fb4d7f45d1cf-5e5e34f4e89so44788a12.1;
+        Wed, 09 Apr 2025 11:48:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=S+qn1CnEm9/PZdH4urciI0YYFqE/hTqAghA1/E92Jp0=;
-  b=RPyiv0vGv/s3jdJSIhzSTGQiMhP5yA96I0DQMXd0vCFqZjPAu+rGKnIp
-   2pOo14+CdPYOo2nSBeofqi5E+lCN0m0HYDoYBO4W2XfQH1EAXSe+k6bDG
-   4Iu5t4thKUe7d97T2xAPgcz7RVzftLBA5u8OyW/xWt5OIQJlC8dh6nhu2
-   o=;
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="6.15,200,1739833200"; 
-   d="scan'208";a="217160243"
-Received: from 74-95-99-105-richmond.hfc.comcastbusiness.net (HELO hadrien) ([74.95.99.105])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Apr 2025 17:41:56 +0200
-Date: Wed, 9 Apr 2025 11:41:54 -0400 (EDT)
-From: Julia Lawall <julia.lawall@inria.fr>
-To: Erick Karanja <karanja99erick@gmail.com>
-cc: gregkh@linuxfoundation.org, outreachy@lists.linux.dev, 
-    philipp.g.hortmann@gmail.com, linux-staging@lists.linux.dev, 
-    linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 2/2] staging: rtl8723bs: Initializing variables at
- declaration
-In-Reply-To: <0fb58ca930030af2a4c730b0f5328e64210b795b.1744192642.git.karanja99erick@gmail.com>
-Message-ID: <9dce3c-6ac-8b7e-fdbc-75e14f73fcc4@inria.fr>
-References: <cover.1744192642.git.karanja99erick@gmail.com> <0fb58ca930030af2a4c730b0f5328e64210b795b.1744192642.git.karanja99erick@gmail.com>
+        d=gmail.com; s=20230601; t=1744224486; x=1744829286; darn=lists.linux.dev;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=lnX1vda44PaMJmaZeQb8qZYsmPHm6NwVHNkMrOpfUIo=;
+        b=S5ZO86opNY3DnjIQ9MzX4o7j6JnqGkAlkkH4A6ftwe1OwWUgvl182QjrnX6pEdRnlL
+         1jRmoKdvOoXhy6kC3COy8IO8D6ZNqQzoZGBX9lf/XfOO7Vre9l9CiWHKx2L94w89++Pp
+         PcJoL5KQK2jhmOHlsgSDCwZMvQpUp1qqJ0Ill2k+pVj7kr8hj1JgudqiYepG9/sNSCdJ
+         d7J8LtenVZ7Row6CFgwLmRfhHl+WjiHXNlNtPUauKQxTSpuwpPR5GD6AZmnkiBoXG3AI
+         YUR1+SSB1xmesj+lLNKffMn7tW6A6bHxowfJzRdDlvpKwOxyydM3FFB2dWTh/nzcezKs
+         jDzg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1744224486; x=1744829286;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=lnX1vda44PaMJmaZeQb8qZYsmPHm6NwVHNkMrOpfUIo=;
+        b=cj39j/Gm6kyA6GH8uhU7mci14vR5eksjnlu5ttUMSSNqlM2advHDDe79hXhH5GVIBp
+         +6XarFWusqHseuZhbEvJJ6u5KIE32KCC2pmg5QA5gbt8gV7VO4HZfCrS4ZvpnUuYrACZ
+         tNw5awMyqLO3L8CvY9Kx9QzKwdO9TljO3sFpRqojIccX7jV6SpCIQ1GDPvN93JOJOG46
+         ecrPucEcW2xB35jxBGcIj5QGqiHAt9X2uUoUxIaixiH6FSRCINbPRsYIalkSUZBKaNEc
+         wLKVkflvUBp5gcj+b6Hyc+G8QLnvb09Ug/qaBiW7x7PRzY6HCDAQ7XYVJ3AYstV1E129
+         rGnw==
+X-Forwarded-Encrypted: i=1; AJvYcCWWMxpxK3HRLabgYT33S6F1cKV3jXKsU+7oAvh99ejBxpEL00RfcUtQBth+3CY2vw/EgEAE+WchfDiOcaFu@lists.linux.dev
+X-Gm-Message-State: AOJu0YwIOKeDuqIl0Z/OvKTF9LXzDpmKNqGB+mKb9hP1BybZCIcwolP6
+	b7y1BrxmI2uZsdbHQPNQn3dKRWnEFFKMNDFCmxcvlAu09uzVjCFL
+X-Gm-Gg: ASbGncseAli0XDmE5yfQkuGxnWn4rqZco+JlGigIxoTSWLINdOLTEJdyenabcdg01ER
+	JdBACCdH6Br157ttmksvVmCHKl1mz6eOWXrMqv3vbV19Pnmy/tGC2lk4tctExeYC+f5NhpZ7wEg
+	fCF68PBHZv+VEDYa7Ygcz4tO148R+Rp+JynpZZrbC96nXJfpfYGFy4I/iNbKWXLasnsPQH5vMRt
+	4JxC181W3M4+i01bC1fFuU+cjOxlxIkgVM9bmlPfxyq14so7SFqnSzXukjDqWqsVdTWFe3vHFlH
+	Q6/hIvPGvfrnxfIeV1Qnu5sb31SG5vPkgomMS/BPEXCOIg==
+X-Google-Smtp-Source: AGHT+IEMEJ+hDivWwYiY7mrjTZW5ePRCHfloRQGu/cGtiSz94x8ChLNbbLPeAY94qm2w4gF8WXnwTQ==
+X-Received: by 2002:a05:6402:35d2:b0:5e4:a88a:64e with SMTP id 4fb4d7f45d1cf-5f2f769cb6amr3380822a12.5.1744224485652;
+        Wed, 09 Apr 2025 11:48:05 -0700 (PDT)
+Received: from ubuntu ([105.112.112.184])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5f2fbc0851asm1135294a12.23.2025.04.09.11.48.04
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 09 Apr 2025 11:48:05 -0700 (PDT)
+Date: Wed, 9 Apr 2025 18:48:02 +0000
+From: Abraham Samuel Adekunle <abrahamadekunle50@gmail.com>
+To: outreachy@lists.linux.dev, julia.lawall@inria.fr
+Cc: gregkh@linuxfoundation.org, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org, david.laight.linux@gmail.com,
+	dan.carpenter@linaro.org, andy@kernel.org
+Subject: [PATCH] staging: rtl8723bs: Replace `& 0xfff` with `% 4096u`
+Message-ID: <Z/bA4tMF5uKLe55p@ubuntu>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
+The sequence number is constrained to a range of [0, 4095], which
+is a total of 4096 values. The bitmask operation using `& 0xfff` is
+used to perform this wrap-around. While this is functionally correct,
+it obscures the intended semantic of a 4096-based wrap.
 
+Using a modulo operation `% 4096u` makes the wrap-around logic
+explicit and easier to understand. It clearly signals that the
+sequence number cycles through a range of 4096 values.
+It also makes the code robust against potential changes of the 4096
+upper limit, especially when it becomes a non power-of-2 value while
+the AND(&) works solely for power-of-2 values.
 
-On Wed, 9 Apr 2025, Erick Karanja wrote:
+The use of `% 4096u` also guarantees that the modulo operation is
+performed with unsigned arithmetic, preventing potential issues with
+the signed types.
 
-> Make the code more readable by moving trivial
-> initializations up with the declarations instead
-> of wasting a line on that.
->
-> Signed-off-by: Erick Karanja <karanja99erick@gmail.com>
-> ---
->  .../staging/rtl8723bs/hal/rtl8723bs_xmit.c    | 39 ++++++-------------
->  1 file changed, 11 insertions(+), 28 deletions(-)
->
-> diff --git a/drivers/staging/rtl8723bs/hal/rtl8723bs_xmit.c b/drivers/staging/rtl8723bs/hal/rtl8723bs_xmit.c
-> index 5dc1c12fe03e..d134d185bfae 100644
-> --- a/drivers/staging/rtl8723bs/hal/rtl8723bs_xmit.c
-> +++ b/drivers/staging/rtl8723bs/hal/rtl8723bs_xmit.c
-> @@ -120,13 +120,10 @@ static s32 rtl8723_dequeue_writeport(struct adapter *padapter)
->   */
->  s32 rtl8723bs_xmit_buf_handler(struct adapter *padapter)
->  {
-> -	struct xmit_priv *pxmitpriv;
-> +	struct xmit_priv *pxmitpriv = &padapter->xmitpriv;
->  	u8 queue_empty, queue_pending;
->  	s32 ret;
->
-> -
-> -	pxmitpriv = &padapter->xmitpriv;
-> -
->  	if (wait_for_completion_interruptible(&pxmitpriv->xmit_comp)) {
->  		netdev_emerg(padapter->pnetdev,
->  			     "%s: down SdioXmitBufSema fail!\n", __func__);
-> @@ -242,8 +239,7 @@ static s32 xmit_xmitframes(struct adapter *padapter, struct xmit_priv *pxmitpriv
->  						/* pxmitbuf->priv_data will be NULL, and will crash here */
->  						if (pxmitbuf->len > 0 &&
->  						    pxmitbuf->priv_data) {
-> -							struct xmit_frame *pframe;
-> -							pframe = (struct xmit_frame *)pxmitbuf->priv_data;
-> +							struct xmit_frame *pframe = (struct xmit_frame *)pxmitbuf->priv_data;
+Found by Coccinelle.
 
-I'm not sure that it's worth making this change here given that it makes
-the line even longer.
+Suggested by Andy Shevchenko <andy@kernel.org>
+Signed-off-by: Abraham Samuel Adekunle <abrahamadekunle50@gmail.com>
+---
+Coccinelle semantic patch used to find cases:
+@@
+expression e;
 
->  							pframe->agg_num = k;
->  							pxmitbuf->agg_num = k;
->  							rtl8723b_update_txdesc(pframe, pframe->buf_addr);
-> @@ -326,8 +322,7 @@ static s32 xmit_xmitframes(struct adapter *padapter, struct xmit_priv *pxmitpriv
->  		/*  dump xmit_buf to hw tx fifo */
->  		if (pxmitbuf) {
->  			if (pxmitbuf->len > 0) {
-> -				struct xmit_frame *pframe;
-> -				pframe = (struct xmit_frame *)pxmitbuf->priv_data;
-> +				struct xmit_frame *pframe = (struct xmit_frame *)pxmitbuf->priv_data;
+@@
+* e & 0xfff
 
-This also makes a long line.
+To ensure this change does not affect the functional
+behaviour, I compared the generated object files before and
+after the change using the `cmp` which compares the two
+object files byte by byte as shown below:
 
->  				pframe->agg_num = k;
->  				pxmitbuf->agg_num = k;
->  				rtl8723b_update_txdesc(pframe, pframe->buf_addr);
-> @@ -357,12 +352,9 @@ static s32 xmit_xmitframes(struct adapter *padapter, struct xmit_priv *pxmitpriv
->   */
->  static s32 rtl8723bs_xmit_handler(struct adapter *padapter)
->  {
-> -	struct xmit_priv *pxmitpriv;
-> +	struct xmit_priv *pxmitpriv = &padapter->xmitpriv;
->  	s32 ret;
->
-> -
-> -	pxmitpriv = &padapter->xmitpriv;
-> -
->  	if (wait_for_completion_interruptible(&pxmitpriv->SdioXmitStart)) {
->  		netdev_emerg(padapter->pnetdev, "%s: SdioXmitStart fail!\n",
->  			     __func__);
-> @@ -408,13 +400,9 @@ static s32 rtl8723bs_xmit_handler(struct adapter *padapter)
->
->  int rtl8723bs_xmit_thread(void *context)
->  {
-> -	s32 ret;
-> -	struct adapter *padapter;
-> -	struct xmit_priv *pxmitpriv;
-> -
-> -	ret = _SUCCESS;
-> -	padapter = context;
-> -	pxmitpriv = &padapter->xmitpriv;
-> +	s32 ret = _SUCCESS;
-> +	struct adapter *padapter = context;
-> +	struct xmit_priv *pxmitpriv = &padapter->xmitpriv;
->
->  	allow_signal(SIGTERM);
->
-> @@ -435,16 +423,13 @@ s32 rtl8723bs_mgnt_xmit(
->  )
->  {
->  	s32 ret = _SUCCESS;
-> -	struct pkt_attrib *pattrib;
-> -	struct xmit_buf *pxmitbuf;
-> +	struct pkt_attrib *pattrib = &pmgntframe->attrib;
-> +	struct xmit_buf *pxmitbuf = pmgntframe->pxmitbuf;
->  	struct xmit_priv *pxmitpriv = &padapter->xmitpriv;
->  	struct dvobj_priv *pdvobjpriv = adapter_to_dvobj(padapter);
->  	u8 *pframe = (u8 *)(pmgntframe->buf_addr) + TXDESC_OFFSET;
->  	u8 txdesc_size = TXDESC_SIZE;
->
-> -	pattrib = &pmgntframe->attrib;
-> -	pxmitbuf = pmgntframe->pxmitbuf;
-> -
->  	rtl8723b_update_txdesc(pmgntframe, pmgntframe->buf_addr);
->
->  	pxmitbuf->len = txdesc_size + pattrib->last_txcmdsz;
-> @@ -557,15 +542,13 @@ s32 rtl8723bs_init_xmit_priv(struct adapter *padapter)
->
->  void rtl8723bs_free_xmit_priv(struct adapter *padapter)
->  {
-> -	struct xmit_priv *pxmitpriv;
-> +	struct xmit_priv *pxmitpriv = &padapter->xmitpriv;
->  	struct xmit_buf *pxmitbuf;
-> -	struct __queue *pqueue;
-> +	struct __queue *pqueue = &pxmitpriv->pending_xmitbuf_queue;
->  	struct list_head *plist, *phead;
->  	struct list_head tmplist;
->
->
-> -	pxmitpriv = &padapter->xmitpriv;
-> -	pqueue = &pxmitpriv->pending_xmitbuf_queue;
->  	phead = get_list_head(pqueue);
->  	INIT_LIST_HEAD(&tmplist);
->
-> --
-> 2.43.0
->
->
->
+$ make drivers/staging/rtl8723bs/core/rtw_xmit.o
+$ cmp rtw_xmit_before.o rtw_xmit_after.o
+
+No differences were found in the output, confirming that the
+change does not alter the compiled output.
+
+drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 2 +-
+drivers/staging/rtl8723bs/core/rtw_recv.c     | 6 +++---
+2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
+index 952ce6dd5af9..f712ea0cabee 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
++++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
+@@ -3511,7 +3511,7 @@ void issue_action_BA(struct adapter *padapter, unsigned char *raddr, unsigned ch
+ 			/* if ((psta = rtw_get_stainfo(pstapriv, pmlmeinfo->network.mac_address)) != NULL) */
+ 			psta = rtw_get_stainfo(pstapriv, raddr);
+ 			if (psta) {
+-				start_seq = (psta->sta_xmitpriv.txseq_tid[status & 0x07]&0xfff) + 1;
++				start_seq = (psta->sta_xmitpriv.txseq_tid[status & 0x07] % 4096u) + 1;
+ 
+ 				psta->BA_starting_seqctrl[status & 0x07] = start_seq;
+ 
+diff --git a/drivers/staging/rtl8723bs/core/rtw_recv.c b/drivers/staging/rtl8723bs/core/rtw_recv.c
+index a389ba5ecc6f..25411cc5c738 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_recv.c
++++ b/drivers/staging/rtl8723bs/core/rtw_recv.c
+@@ -1641,7 +1641,7 @@ static int check_indicate_seq(struct recv_reorder_ctrl *preorder_ctrl, u16 seq_n
+ 	struct dvobj_priv *psdpriv = padapter->dvobj;
+ 	struct debug_priv *pdbgpriv = &psdpriv->drv_dbg;
+ 	u8 wsize = preorder_ctrl->wsize_b;
+-	u16 wend = (preorder_ctrl->indicate_seq + wsize - 1) & 0xFFF;/*  4096; */
++	u16 wend = (preorder_ctrl->indicate_seq + wsize - 1) % 4096u;
+ 
+ 	/*  Rx Reorder initialize condition. */
+ 	if (preorder_ctrl->indicate_seq == 0xFFFF)
+@@ -1657,7 +1657,7 @@ static int check_indicate_seq(struct recv_reorder_ctrl *preorder_ctrl, u16 seq_n
+ 	/*  2. Incoming SeqNum is larger than the WinEnd => Window shift N */
+ 	/*  */
+ 	if (SN_EQUAL(seq_num, preorder_ctrl->indicate_seq)) {
+-		preorder_ctrl->indicate_seq = (preorder_ctrl->indicate_seq + 1) & 0xFFF;
++		preorder_ctrl->indicate_seq = (preorder_ctrl->indicate_seq + 1) % 4096u;
+ 
+ 	} else if (SN_LESS(wend, seq_num)) {
+ 		/*  boundary situation, when seq_num cross 0xFFF */
+@@ -1772,7 +1772,7 @@ static int recv_indicatepkts_in_order(struct adapter *padapter, struct recv_reor
+ 			list_del_init(&(prframe->u.hdr.list));
+ 
+ 			if (SN_EQUAL(preorder_ctrl->indicate_seq, pattrib->seq_num))
+-				preorder_ctrl->indicate_seq = (preorder_ctrl->indicate_seq + 1) & 0xFFF;
++				preorder_ctrl->indicate_seq = (preorder_ctrl->indicate_seq + 1) % 4096u;
+ 
+ 			/* Set this as a lock to make sure that only one thread is indicating packet. */
+ 			/* pTS->RxIndicateState = RXTS_INDICATE_PROCESSING; */
+-- 
+2.34.1
+
