@@ -1,164 +1,246 @@
-Received: from mail-ed1-f46.google.com (mail-ed1-f46.google.com [209.85.208.46])
+Received: from mail-wm1-f45.google.com (mail-wm1-f45.google.com [209.85.128.45])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B1EC61D5175;
-	Wed,  9 Apr 2025 18:48:07 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.208.46
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EBE241F09AD;
+	Thu, 10 Apr 2025 05:39:55 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.45
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1744224489; cv=none; b=cftDuVf19Kn0WLDv8yL6vulOHLjjQLNmQgCWZX1+ny3q24KFC5ExSU8dTAVRU7b6fey38XU3814aW8U5hD8g2wbAcYe2gE2tSR44qJilWP3bdDs66lzftOJ9FAI1pxkv0a+FJWfIDsTNz731GwO0qSTmbboDo2bFgJLlp65ei54=
+	t=1744263597; cv=none; b=ZX9aTul06MVUiGW8iY5YYNqMBz2AGStDx0vKKGsFClyMsEbO5G6QHIMn0G/0y0iXi4hNpi5dnCg+4LFQMdB8L0kBFG3TmhJnuCpwo4i8KB5TQ9MDJewaAMWDn6mRQgTTa1gcl/5XELJt0db88APNCEFH0DSk4aSizqOXohXnUWA=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1744224489; c=relaxed/simple;
-	bh=1H4eNwZl+2uYtagyQSgjMNSg+hVnARPITcSVUtNRMzA=;
-	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type:
-	 Content-Disposition; b=V+lQT7Dn4QfZqJX8Qqamgr73qX5ZLd4VFJ8Kpv4kS2HG15Gvi2OfXfJVIHyk71xfEMqNGNHtRo2LmctQDjSmNySmdLtZUQjLbDG4QwyDBK347DaH19TAhU/B6G4IijXOcmBlCb1cOqLPe8VyU7a37Wu6UbPP9aGcJHhg6F9lG+I=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=S5ZO86op; arc=none smtp.client-ip=209.85.208.46
+	s=arc-20240116; t=1744263597; c=relaxed/simple;
+	bh=fgwbzsingwUfnQ+gsoI2iEA9VoiPlOxSoyEJo7rzwYg=;
+	h=Message-ID:Subject:From:To:Cc:Date:In-Reply-To:References:
+	 Content-Type:MIME-Version; b=X7Te3w8skYktmry82komORDrVgfZyPWYwTHXJMN2Jpjk3d+O72Gjn/CTWAJnrvGXG28bNHWtLaIVJOyBfb12ls2Unfllvt/0ikBDQA9nnPhKffw09Vnw57Vxlwi6mpuV6+zTQIvsAsJKEeLj2gwbpHBQ84Ii/EFjNrVIkmhf6k4=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=cRG5gYOg; arc=none smtp.client-ip=209.85.128.45
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="S5ZO86op"
-Received: by mail-ed1-f46.google.com with SMTP id 4fb4d7f45d1cf-5e5e34f4e89so44788a12.1;
-        Wed, 09 Apr 2025 11:48:07 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="cRG5gYOg"
+Received: by mail-wm1-f45.google.com with SMTP id 5b1f17b1804b1-43cf06eabdaso3641875e9.2;
+        Wed, 09 Apr 2025 22:39:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1744224486; x=1744829286; darn=lists.linux.dev;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=lnX1vda44PaMJmaZeQb8qZYsmPHm6NwVHNkMrOpfUIo=;
-        b=S5ZO86opNY3DnjIQ9MzX4o7j6JnqGkAlkkH4A6ftwe1OwWUgvl182QjrnX6pEdRnlL
-         1jRmoKdvOoXhy6kC3COy8IO8D6ZNqQzoZGBX9lf/XfOO7Vre9l9CiWHKx2L94w89++Pp
-         PcJoL5KQK2jhmOHlsgSDCwZMvQpUp1qqJ0Ill2k+pVj7kr8hj1JgudqiYepG9/sNSCdJ
-         d7J8LtenVZ7Row6CFgwLmRfhHl+WjiHXNlNtPUauKQxTSpuwpPR5GD6AZmnkiBoXG3AI
-         YUR1+SSB1xmesj+lLNKffMn7tW6A6bHxowfJzRdDlvpKwOxyydM3FFB2dWTh/nzcezKs
-         jDzg==
+        d=gmail.com; s=20230601; t=1744263594; x=1744868394; darn=lists.linux.dev;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=c8MydQlA2RiT7SHimC4AoBdSKOF7b77708bmfRvloZ8=;
+        b=cRG5gYOgT1/adnAdLFSdrRUSZypvzHC7nFsZCRpCPxd4TxxBL8+XICk66AiyuE6WZv
+         hhmBHIuUBcPJujhCz96z6n8h33dK/qCi+IMuMrxjeJe6hxQd8PJ+cnAF7GjyAA1Ud74z
+         ZHaEE/4P4KhdN44dDNN21WJPnlx/5cAslw/UShdXaRK3CkD+S31+wZRYy5jR0fwz54AD
+         ZqB47nPki1iwDNqC2cqMPM13091qJM+Zw7fmD0bTzj7iTzuDbcvnPnkzCL1YVck7Ia52
+         uNQzdr57GV7iKFH/9hSPr+uytK674P98t1Q7GpzYFOZXLsYVlTMbtnQ+cms98mCd6qwB
+         amZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744224486; x=1744829286;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=lnX1vda44PaMJmaZeQb8qZYsmPHm6NwVHNkMrOpfUIo=;
-        b=cj39j/Gm6kyA6GH8uhU7mci14vR5eksjnlu5ttUMSSNqlM2advHDDe79hXhH5GVIBp
-         +6XarFWusqHseuZhbEvJJ6u5KIE32KCC2pmg5QA5gbt8gV7VO4HZfCrS4ZvpnUuYrACZ
-         tNw5awMyqLO3L8CvY9Kx9QzKwdO9TljO3sFpRqojIccX7jV6SpCIQ1GDPvN93JOJOG46
-         ecrPucEcW2xB35jxBGcIj5QGqiHAt9X2uUoUxIaixiH6FSRCINbPRsYIalkSUZBKaNEc
-         wLKVkflvUBp5gcj+b6Hyc+G8QLnvb09Ug/qaBiW7x7PRzY6HCDAQ7XYVJ3AYstV1E129
-         rGnw==
-X-Forwarded-Encrypted: i=1; AJvYcCWWMxpxK3HRLabgYT33S6F1cKV3jXKsU+7oAvh99ejBxpEL00RfcUtQBth+3CY2vw/EgEAE+WchfDiOcaFu@lists.linux.dev
-X-Gm-Message-State: AOJu0YwIOKeDuqIl0Z/OvKTF9LXzDpmKNqGB+mKb9hP1BybZCIcwolP6
-	b7y1BrxmI2uZsdbHQPNQn3dKRWnEFFKMNDFCmxcvlAu09uzVjCFL
-X-Gm-Gg: ASbGncseAli0XDmE5yfQkuGxnWn4rqZco+JlGigIxoTSWLINdOLTEJdyenabcdg01ER
-	JdBACCdH6Br157ttmksvVmCHKl1mz6eOWXrMqv3vbV19Pnmy/tGC2lk4tctExeYC+f5NhpZ7wEg
-	fCF68PBHZv+VEDYa7Ygcz4tO148R+Rp+JynpZZrbC96nXJfpfYGFy4I/iNbKWXLasnsPQH5vMRt
-	4JxC181W3M4+i01bC1fFuU+cjOxlxIkgVM9bmlPfxyq14so7SFqnSzXukjDqWqsVdTWFe3vHFlH
-	Q6/hIvPGvfrnxfIeV1Qnu5sb31SG5vPkgomMS/BPEXCOIg==
-X-Google-Smtp-Source: AGHT+IEMEJ+hDivWwYiY7mrjTZW5ePRCHfloRQGu/cGtiSz94x8ChLNbbLPeAY94qm2w4gF8WXnwTQ==
-X-Received: by 2002:a05:6402:35d2:b0:5e4:a88a:64e with SMTP id 4fb4d7f45d1cf-5f2f769cb6amr3380822a12.5.1744224485652;
-        Wed, 09 Apr 2025 11:48:05 -0700 (PDT)
-Received: from ubuntu ([105.112.112.184])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5f2fbc0851asm1135294a12.23.2025.04.09.11.48.04
+        d=1e100.net; s=20230601; t=1744263594; x=1744868394;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=c8MydQlA2RiT7SHimC4AoBdSKOF7b77708bmfRvloZ8=;
+        b=eWmaAdZ7BoZl+usS7KFEuRS7riAcKBOYF9OvshL6bgyTDjUIjc830bKUNhoLCvDLOA
+         Zt/L/U2gIU+lWLEwWvyYmSUbZnVKrhDpNPX8Ttb+Be2BJ5hSeG908+J1684A6sjxIrj3
+         RYa0FKGTMDBuGGc7bhnIq6X7fHFCVoHRjgiKcmHay4gN2Kj/f0cpPyvfy/XekniAdFSQ
+         MaqcjEMn12GHYN1WoYuHPIGkYg31SE1FZHV6RV4uRojr6x9yfiWzNBoeFocINYAqD2ai
+         NQiX8xBdO1rKPLf/tn945+OXLQYePR3sIoJgjQXfcwFPFzt4odVjNVUavodawkHYC8wx
+         GQug==
+X-Forwarded-Encrypted: i=1; AJvYcCUifDZjqeQZv9tz2wvfaDk8vtwSgv5oAjXbxvoqTfnnmWlghsZ2kFiEN+8Iqw+G78J56vupKYM/ekty@lists.linux.dev, AJvYcCXrRNcWxnA3SCP26ew+WyaO91MQ4ReDSu8I8j+7Kg6lINSBMTa6Ts6+XP16EKhUdZXMSIm+/ZpV9qf9YY/8@lists.linux.dev
+X-Gm-Message-State: AOJu0YwviJxioGv5kL9cQajXY1FGe9D4QScGwXRQlxFL9f5klaRuf2T0
+	HxRmBlomvssw3afrtwO7fhv2vSEKVqAQh79Qog3ZIOm1m902h8ma
+X-Gm-Gg: ASbGncveE9TkPABjbPixF+CZc6wnZY3DzLniCFhenF9uOR4PvJydzooN2FrBqlCqvbf
+	GfInN4BgnqnQcjsGCiNMZNY7EnHl2EKPiH1KTUVh3sRO3OWzkDSzSSpYRY6oBwEBpeTmm+E5Czy
+	M+POzBrfPfHpDXrlY0ebz8ZW4gX4qgJ+/EgIkd8UDxLG7HXx+WQezvN8py+Vf/QVLsZAeZt9pg6
+	/z5gjql/5XJ6vRzIEPi5jkwRDl6TdAGSoCiNRmLa99bvKgt437LaKp42dD2FIBJl65oqpUbbvyu
+	GSGQlojBJsGuRWTRM2G+ZiQ0QwP7BJSAxO8o0NUBPjFyru8ty54=
+X-Google-Smtp-Source: AGHT+IEu7GddxYv7ARpepPfXludN9b52TSG/j4MufAMrgSu7NbiFaPNKVwgFqPz+aOZCBhkP3Qx5zw==
+X-Received: by 2002:a05:600c:c17:b0:43d:b85:1831 with SMTP id 5b1f17b1804b1-43f2d6875c7mr15418175e9.0.1744263593886;
+        Wed, 09 Apr 2025 22:39:53 -0700 (PDT)
+Received: from [172.16.8.120] ([197.155.71.138])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43f23572b5bsm38513735e9.28.2025.04.09.22.39.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 09 Apr 2025 11:48:05 -0700 (PDT)
-Date: Wed, 9 Apr 2025 18:48:02 +0000
-From: Abraham Samuel Adekunle <abrahamadekunle50@gmail.com>
-To: outreachy@lists.linux.dev, julia.lawall@inria.fr
-Cc: gregkh@linuxfoundation.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, david.laight.linux@gmail.com,
-	dan.carpenter@linaro.org, andy@kernel.org
-Subject: [PATCH] staging: rtl8723bs: Replace `& 0xfff` with `% 4096u`
-Message-ID: <Z/bA4tMF5uKLe55p@ubuntu>
+        Wed, 09 Apr 2025 22:39:52 -0700 (PDT)
+Message-ID: <4dcbf1fc70d565b5845ab7bc823cb1e9a94f6084.camel@gmail.com>
+Subject: Re: [PATCH v2 2/2] staging: rtl8723bs: Initializing variables at
+ declaration
+From: Erick Karanja <karanja99erick@gmail.com>
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: gregkh@linuxfoundation.org, outreachy@lists.linux.dev, 
+	philipp.g.hortmann@gmail.com, linux-staging@lists.linux.dev, 
+	linux-kernel@vger.kernel.org
+Date: Thu, 10 Apr 2025 08:39:47 +0300
+In-Reply-To: <9dce3c-6ac-8b7e-fdbc-75e14f73fcc4@inria.fr>
+References: <cover.1744192642.git.karanja99erick@gmail.com>
+	 <0fb58ca930030af2a4c730b0f5328e64210b795b.1744192642.git.karanja99erick@gmail.com>
+	 <9dce3c-6ac-8b7e-fdbc-75e14f73fcc4@inria.fr>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.52.3-0ubuntu1 
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 
-The sequence number is constrained to a range of [0, 4095], which
-is a total of 4096 values. The bitmask operation using `& 0xfff` is
-used to perform this wrap-around. While this is functionally correct,
-it obscures the intended semantic of a 4096-based wrap.
-
-Using a modulo operation `% 4096u` makes the wrap-around logic
-explicit and easier to understand. It clearly signals that the
-sequence number cycles through a range of 4096 values.
-It also makes the code robust against potential changes of the 4096
-upper limit, especially when it becomes a non power-of-2 value while
-the AND(&) works solely for power-of-2 values.
-
-The use of `% 4096u` also guarantees that the modulo operation is
-performed with unsigned arithmetic, preventing potential issues with
-the signed types.
-
-Found by Coccinelle.
-
-Suggested by Andy Shevchenko <andy@kernel.org>
-Signed-off-by: Abraham Samuel Adekunle <abrahamadekunle50@gmail.com>
----
-Coccinelle semantic patch used to find cases:
-@@
-expression e;
-
-@@
-* e & 0xfff
-
-To ensure this change does not affect the functional
-behaviour, I compared the generated object files before and
-after the change using the `cmp` which compares the two
-object files byte by byte as shown below:
-
-$ make drivers/staging/rtl8723bs/core/rtw_xmit.o
-$ cmp rtw_xmit_before.o rtw_xmit_after.o
-
-No differences were found in the output, confirming that the
-change does not alter the compiled output.
-
-drivers/staging/rtl8723bs/core/rtw_mlme_ext.c | 2 +-
-drivers/staging/rtl8723bs/core/rtw_recv.c     | 6 +++---
-2 files changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-index 952ce6dd5af9..f712ea0cabee 100644
---- a/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_mlme_ext.c
-@@ -3511,7 +3511,7 @@ void issue_action_BA(struct adapter *padapter, unsigned char *raddr, unsigned ch
- 			/* if ((psta = rtw_get_stainfo(pstapriv, pmlmeinfo->network.mac_address)) != NULL) */
- 			psta = rtw_get_stainfo(pstapriv, raddr);
- 			if (psta) {
--				start_seq = (psta->sta_xmitpriv.txseq_tid[status & 0x07]&0xfff) + 1;
-+				start_seq = (psta->sta_xmitpriv.txseq_tid[status & 0x07] % 4096u) + 1;
- 
- 				psta->BA_starting_seqctrl[status & 0x07] = start_seq;
- 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_recv.c b/drivers/staging/rtl8723bs/core/rtw_recv.c
-index a389ba5ecc6f..25411cc5c738 100644
---- a/drivers/staging/rtl8723bs/core/rtw_recv.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_recv.c
-@@ -1641,7 +1641,7 @@ static int check_indicate_seq(struct recv_reorder_ctrl *preorder_ctrl, u16 seq_n
- 	struct dvobj_priv *psdpriv = padapter->dvobj;
- 	struct debug_priv *pdbgpriv = &psdpriv->drv_dbg;
- 	u8 wsize = preorder_ctrl->wsize_b;
--	u16 wend = (preorder_ctrl->indicate_seq + wsize - 1) & 0xFFF;/*  4096; */
-+	u16 wend = (preorder_ctrl->indicate_seq + wsize - 1) % 4096u;
- 
- 	/*  Rx Reorder initialize condition. */
- 	if (preorder_ctrl->indicate_seq == 0xFFFF)
-@@ -1657,7 +1657,7 @@ static int check_indicate_seq(struct recv_reorder_ctrl *preorder_ctrl, u16 seq_n
- 	/*  2. Incoming SeqNum is larger than the WinEnd => Window shift N */
- 	/*  */
- 	if (SN_EQUAL(seq_num, preorder_ctrl->indicate_seq)) {
--		preorder_ctrl->indicate_seq = (preorder_ctrl->indicate_seq + 1) & 0xFFF;
-+		preorder_ctrl->indicate_seq = (preorder_ctrl->indicate_seq + 1) % 4096u;
- 
- 	} else if (SN_LESS(wend, seq_num)) {
- 		/*  boundary situation, when seq_num cross 0xFFF */
-@@ -1772,7 +1772,7 @@ static int recv_indicatepkts_in_order(struct adapter *padapter, struct recv_reor
- 			list_del_init(&(prframe->u.hdr.list));
- 
- 			if (SN_EQUAL(preorder_ctrl->indicate_seq, pattrib->seq_num))
--				preorder_ctrl->indicate_seq = (preorder_ctrl->indicate_seq + 1) & 0xFFF;
-+				preorder_ctrl->indicate_seq = (preorder_ctrl->indicate_seq + 1) % 4096u;
- 
- 			/* Set this as a lock to make sure that only one thread is indicating packet. */
- 			/* pTS->RxIndicateState = RXTS_INDICATE_PROCESSING; */
--- 
-2.34.1
+On Wed, 2025-04-09 at 11:41 -0400, Julia Lawall wrote:
+>=20
+>=20
+> On Wed, 9 Apr 2025, Erick Karanja wrote:
+>=20
+> > Make the code more readable by moving trivial
+> > initializations up with the declarations instead
+> > of wasting a line on that.
+> >=20
+> > Signed-off-by: Erick Karanja <karanja99erick@gmail.com>
+> > ---
+> > =C2=A0.../staging/rtl8723bs/hal/rtl8723bs_xmit.c=C2=A0=C2=A0=C2=A0 | 39=
+ ++++++---------
+> > ----
+> > =C2=A01 file changed, 11 insertions(+), 28 deletions(-)
+> >=20
+> > diff --git a/drivers/staging/rtl8723bs/hal/rtl8723bs_xmit.c
+> > b/drivers/staging/rtl8723bs/hal/rtl8723bs_xmit.c
+> > index 5dc1c12fe03e..d134d185bfae 100644
+> > --- a/drivers/staging/rtl8723bs/hal/rtl8723bs_xmit.c
+> > +++ b/drivers/staging/rtl8723bs/hal/rtl8723bs_xmit.c
+> > @@ -120,13 +120,10 @@ static s32 rtl8723_dequeue_writeport(struct
+> > adapter *padapter)
+> > =C2=A0 */
+> > =C2=A0s32 rtl8723bs_xmit_buf_handler(struct adapter *padapter)
+> > =C2=A0{
+> > -	struct xmit_priv *pxmitpriv;
+> > +	struct xmit_priv *pxmitpriv =3D &padapter->xmitpriv;
+> > =C2=A0	u8 queue_empty, queue_pending;
+> > =C2=A0	s32 ret;
+> >=20
+> > -
+> > -	pxmitpriv =3D &padapter->xmitpriv;
+> > -
+> > =C2=A0	if (wait_for_completion_interruptible(&pxmitpriv-
+> > >xmit_comp)) {
+> > =C2=A0		netdev_emerg(padapter->pnetdev,
+> > =C2=A0			=C2=A0=C2=A0=C2=A0=C2=A0 "%s: down SdioXmitBufSema fail!\n",
+> > __func__);
+> > @@ -242,8 +239,7 @@ static s32 xmit_xmitframes(struct adapter
+> > *padapter, struct xmit_priv *pxmitpriv
+> > =C2=A0						/* pxmitbuf-
+> > >priv_data will be NULL, and will crash here */
+> > =C2=A0						if (pxmitbuf->len
+> > > 0 &&
+> > =C2=A0						=C2=A0=C2=A0=C2=A0 pxmitbuf-
+> > >priv_data) {
+> > -							struct
+> > xmit_frame *pframe;
+> > -							pframe =3D
+> > (struct xmit_frame *)pxmitbuf->priv_data;
+> > +							struct
+> > xmit_frame *pframe =3D (struct xmit_frame *)pxmitbuf->priv_data;
+>=20
+> I'm not sure that it's worth making this change here given that it
+> makes
+> the line even longer.
+Hello Julia. I will make the necessary changes.
+Thank you.
+>=20
+> > =C2=A0							pframe-
+> > >agg_num =3D k;
+> > =C2=A0							pxmitbuf-
+> > >agg_num =3D k;
+> > =C2=A0							rtl8723b_u
+> > pdate_txdesc(pframe, pframe->buf_addr);
+> > @@ -326,8 +322,7 @@ static s32 xmit_xmitframes(struct adapter
+> > *padapter, struct xmit_priv *pxmitpriv
+> > =C2=A0		/*=C2=A0 dump xmit_buf to hw tx fifo */
+> > =C2=A0		if (pxmitbuf) {
+> > =C2=A0			if (pxmitbuf->len > 0) {
+> > -				struct xmit_frame *pframe;
+> > -				pframe =3D (struct xmit_frame
+> > *)pxmitbuf->priv_data;
+> > +				struct xmit_frame *pframe =3D
+> > (struct xmit_frame *)pxmitbuf->priv_data;
+>=20
+> This also makes a long line.
+>=20
+> > =C2=A0				pframe->agg_num =3D k;
+> > =C2=A0				pxmitbuf->agg_num =3D k;
+> > =C2=A0				rtl8723b_update_txdesc(pframe,
+> > pframe->buf_addr);
+> > @@ -357,12 +352,9 @@ static s32 xmit_xmitframes(struct adapter
+> > *padapter, struct xmit_priv *pxmitpriv
+> > =C2=A0 */
+> > =C2=A0static s32 rtl8723bs_xmit_handler(struct adapter *padapter)
+> > =C2=A0{
+> > -	struct xmit_priv *pxmitpriv;
+> > +	struct xmit_priv *pxmitpriv =3D &padapter->xmitpriv;
+> > =C2=A0	s32 ret;
+> >=20
+> > -
+> > -	pxmitpriv =3D &padapter->xmitpriv;
+> > -
+> > =C2=A0	if (wait_for_completion_interruptible(&pxmitpriv-
+> > >SdioXmitStart)) {
+> > =C2=A0		netdev_emerg(padapter->pnetdev, "%s: SdioXmitStart
+> > fail!\n",
+> > =C2=A0			=C2=A0=C2=A0=C2=A0=C2=A0 __func__);
+> > @@ -408,13 +400,9 @@ static s32 rtl8723bs_xmit_handler(struct
+> > adapter *padapter)
+> >=20
+> > =C2=A0int rtl8723bs_xmit_thread(void *context)
+> > =C2=A0{
+> > -	s32 ret;
+> > -	struct adapter *padapter;
+> > -	struct xmit_priv *pxmitpriv;
+> > -
+> > -	ret =3D _SUCCESS;
+> > -	padapter =3D context;
+> > -	pxmitpriv =3D &padapter->xmitpriv;
+> > +	s32 ret =3D _SUCCESS;
+> > +	struct adapter *padapter =3D context;
+> > +	struct xmit_priv *pxmitpriv =3D &padapter->xmitpriv;
+> >=20
+> > =C2=A0	allow_signal(SIGTERM);
+> >=20
+> > @@ -435,16 +423,13 @@ s32 rtl8723bs_mgnt_xmit(
+> > =C2=A0)
+> > =C2=A0{
+> > =C2=A0	s32 ret =3D _SUCCESS;
+> > -	struct pkt_attrib *pattrib;
+> > -	struct xmit_buf *pxmitbuf;
+> > +	struct pkt_attrib *pattrib =3D &pmgntframe->attrib;
+> > +	struct xmit_buf *pxmitbuf =3D pmgntframe->pxmitbuf;
+> > =C2=A0	struct xmit_priv *pxmitpriv =3D &padapter->xmitpriv;
+> > =C2=A0	struct dvobj_priv *pdvobjpriv =3D
+> > adapter_to_dvobj(padapter);
+> > =C2=A0	u8 *pframe =3D (u8 *)(pmgntframe->buf_addr) + TXDESC_OFFSET;
+> > =C2=A0	u8 txdesc_size =3D TXDESC_SIZE;
+> >=20
+> > -	pattrib =3D &pmgntframe->attrib;
+> > -	pxmitbuf =3D pmgntframe->pxmitbuf;
+> > -
+> > =C2=A0	rtl8723b_update_txdesc(pmgntframe, pmgntframe->buf_addr);
+> >=20
+> > =C2=A0	pxmitbuf->len =3D txdesc_size + pattrib->last_txcmdsz;
+> > @@ -557,15 +542,13 @@ s32 rtl8723bs_init_xmit_priv(struct adapter
+> > *padapter)
+> >=20
+> > =C2=A0void rtl8723bs_free_xmit_priv(struct adapter *padapter)
+> > =C2=A0{
+> > -	struct xmit_priv *pxmitpriv;
+> > +	struct xmit_priv *pxmitpriv =3D &padapter->xmitpriv;
+> > =C2=A0	struct xmit_buf *pxmitbuf;
+> > -	struct __queue *pqueue;
+> > +	struct __queue *pqueue =3D &pxmitpriv-
+> > >pending_xmitbuf_queue;
+> > =C2=A0	struct list_head *plist, *phead;
+> > =C2=A0	struct list_head tmplist;
+> >=20
+> >=20
+> > -	pxmitpriv =3D &padapter->xmitpriv;
+> > -	pqueue =3D &pxmitpriv->pending_xmitbuf_queue;
+> > =C2=A0	phead =3D get_list_head(pqueue);
+> > =C2=A0	INIT_LIST_HEAD(&tmplist);
+> >=20
+> > --
+> > 2.43.0
+> >=20
+> >=20
+> >=20
 
