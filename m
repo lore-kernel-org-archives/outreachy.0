@@ -1,115 +1,116 @@
-Received: from mail-wr1-f42.google.com (mail-wr1-f42.google.com [209.85.221.42])
+Received: from mail-ej1-f44.google.com (mail-ej1-f44.google.com [209.85.218.44])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0FCB81F7904
-	for <outreachy@lists.linux.dev>; Sat, 12 Apr 2025 17:36:17 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.42
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CF6281F9F61;
+	Sat, 12 Apr 2025 17:53:10 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.218.44
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1744479380; cv=none; b=kypIozGEPwJOhVGjbHFbq4YGD2q0bK9VYiSwbBhV2YgO5rmysj1BMx+Xnzp+P7a0kq4ez48uXi9kpIClnbFqPnyZY91BrpA/zeLhPMGCVSE6jnT7nYhKnKWAPTstZLoOx5BIPqUjPwbQnJJvDQ126iglkuSoyTtc1Z3o6niqU8U=
+	t=1744480392; cv=none; b=G/vMbwzoX8DU6sq6pCrYhLR/S/Bi7dDbfn4ktDcwMofgBIXbQ/0fTxFbfgc0bWNF7sYYH35ykAPAro9cNHe9PSjK1rIQwyXhqW3OdMii07+YmtKwLMkiLDqzkrB3XxNkmoT9wFgDdRqAClw7XlaE+Q4kM8rgpzx4vm3OD4DQ2v8=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1744479380; c=relaxed/simple;
-	bh=VdpEtQHS4RANXbcAki1/hEz3qxnYZZMo5L/fS3da740=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=IlMlvGNgzAgxppD5Y4nO8o5bVgkk06BhmKHqCyRpFm2LEBRAipvCSJIgINsLXV5ZeU2I5ot/M1JU6o8p0Yeq4Y5qXc+jI/Dd+e1j8eTJqp3tjO8l4OieR2WppiANVJ+o1RIrs+t8xgDuwiwVCWKXMDODnANyovXXvRG7seuwLRA=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=lQBImZAy; arc=none smtp.client-ip=209.85.221.42
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
+	s=arc-20240116; t=1744480392; c=relaxed/simple;
+	bh=4/22I0xmiWJyIUEMNmDdSmsIbv7PSPfxkSn00iJPodU=;
+	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
+	 To:Cc:Content-Type; b=hIjv1tTCfTVKlU1ugeqx9sQ9VQnZJhllLstloQkgkbVu6hk6BM+GsHzDyaHXOHIGBdnleT4qrt9oy54EBKyLdmyFVWPfDfpm5sKVpqJZ5ScYlAvejKgOw6T8IyTIfplgRRfa0AEWLAK+Q+/PZ75wutexOkxiyYT9lmJWtTfJxnQ=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=EgbJ28j0; arc=none smtp.client-ip=209.85.218.44
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="lQBImZAy"
-Received: by mail-wr1-f42.google.com with SMTP id ffacd0b85a97d-39727fe912cso1377422f8f.3
-        for <outreachy@lists.linux.dev>; Sat, 12 Apr 2025 10:36:17 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="EgbJ28j0"
+Received: by mail-ej1-f44.google.com with SMTP id a640c23a62f3a-ac2aeada833so587241266b.0;
+        Sat, 12 Apr 2025 10:53:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1744479376; x=1745084176; darn=lists.linux.dev;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=X7dkdux/S+32xfZZQlqaPzDOWY9Jh7gDAqzffHnwOYA=;
-        b=lQBImZAy2oc+s1RRSYDcrxkNmWxiM9nExxFhddG+4+keoxlIkzOoa4oOjVmMGy7gjO
-         AE6Cp7mVhATh5Dls7YzUUPFwbHi1zcTp7P2p2XSEIMh6ZB1GnRLNzcFLnO0YBaXYi8oy
-         wqP/n16OouB+x+xiqxakKFK/v8BkI3Z6RtpYN6rmJ232dENA7DLuV/VyvcZ28C/P88U6
-         mnfZfP0EQoyf2tvtEr9h95jWvLROXNKlk2ZM1HOc7Q2amZGUUr3l3yrxmFfEa98Ds+Vv
-         LnHxvvtFcC7Nv01Hxyt1sByPwzAnpM6PCaQ9tKa1WHywwrIva4W2KbLKtD+czR3L0yOI
-         be/g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744479376; x=1745084176;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+        d=gmail.com; s=20230601; t=1744480389; x=1745085189; darn=lists.linux.dev;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=X7dkdux/S+32xfZZQlqaPzDOWY9Jh7gDAqzffHnwOYA=;
-        b=iIPlR3+3h0gMSY3RBzgcDx8/mN4ZeEZt7Fdya2BiuL2SPxBud9eRVUUT1tZiKAeraA
-         9EBnqeuLgnu3B1eKFJqUXYzGtcwpjCCBlv90BaYTjbDRQmhl/jlejtj/3CED3KNetRpY
-         fHGUkhxdUL60jAZRgtvg40QRWbMsHPOMkkS9NKR0m6gso/77fkv5bLB49+3eDAdUgVpD
-         hFvCnKKRB4igfunB2CB60H//G/V6qn85r+oKL8wSducm6F17mMeztw0Mjohr/botZdzk
-         Sd83HEsuAajWDMjJ61lnz5Bk2Yft139BriWPmsBFPA9Z5Ur61W7qTg02vFAe0Yd5gJWM
-         4ksw==
-X-Forwarded-Encrypted: i=1; AJvYcCXfAJsu2R1GeUd+9f2nvudxKA169KhsIW3POD/leBaTyDDz44JHxg0C+FlkaEC21+WwWnG61nVKdWE=@lists.linux.dev
-X-Gm-Message-State: AOJu0YwkIDdFRGm93yDjcRxBvAOPm+NaVGe6PZQzTzaBopaLiDnQ/WS5
-	7we1CHAVHQiSA2K2LKC56XVOxXmSmMlyiE2wTojEYfvWRuFjUSrscF4bkhX2W1g=
-X-Gm-Gg: ASbGncvS9ieHYhMahZnmsgCVxEnRVL9SFlNzTaarMfIGAMTs/W+uOHeyoFGRgSXrktt
-	f7FyGIqvyACOh6iZ27UBL28lgkkECeQk9lD15/Bj4XrHQr9+tLBSTRRcAQgAPyoc98jb7JCuIPP
-	OtK5GVrf3uH+jnyvRXY4i0PhmtiM6kEzIhenVNEvvE+kiL7kdFbYdiIJTomLCYCvnfFZ4IZyI4R
-	r2g0ny0LNZ6OkJaaAjH4spAM0gasIK/Yj5hAfW7mjctRUKPkX//IpzRk2jgGPabPH6CcRNfPdxS
-	j9uSWiF5rEFO9cQkrIrdqm1lh9OfjZlk+De9UqZiYrGA9A==
-X-Google-Smtp-Source: AGHT+IFUwejHUevcPeJvr4IraPW9g0C7hsZdWHMbJKLSZE5OrOow4mt8Oerm5HFlqnfXpeaKs6Touw==
-X-Received: by 2002:a05:6000:248a:b0:391:22e2:cd21 with SMTP id ffacd0b85a97d-39eaaebc6femr5723855f8f.36.1744479376207;
-        Sat, 12 Apr 2025 10:36:16 -0700 (PDT)
-Received: from localhost ([196.207.164.177])
-        by smtp.gmail.com with UTF8SMTPSA id ffacd0b85a97d-39eaf445515sm5508587f8f.89.2025.04.12.10.36.15
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 12 Apr 2025 10:36:15 -0700 (PDT)
-Date: Sat, 12 Apr 2025 20:36:09 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Erick Karanja <karanja99erick@gmail.com>
-Cc: gregkh@linuxfoundation.org, outreachy@lists.linux.dev,
-	philipp.g.hortmann@gmail.com, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 2/6] staging: rtl8723bs: Initialize variables at
- declaration in odm_HWConfig.c
-Message-ID: <04e0e0c1-5d21-4910-8063-c1ef67bc1eac@stanley.mountain>
-References: <cover.1744285781.git.karanja99erick@gmail.com>
- <f8fd7b9ec1a1fc1a65be5e7735b37c42032e9715.1744285781.git.karanja99erick@gmail.com>
+        bh=vTIDIk2RD4/cJXZhbbMkMN1ozONXGjfoBcOhKEuE5xo=;
+        b=EgbJ28j05i9MzNE4RnxZv3heLWW0G3EjBZowQAZqpkiLInw/AyInJK8ieI1SCini7T
+         3ZFegI6AdXsvx9qdJACTnoettsA+M41l3bFCGEQEBHOt4j4IAbUapBFSFXPztib8VBnX
+         Bf7h54NWey17cfDEiVEu2tmAmji5OI4SRP29Ltk+iCNU3B5MwMLrrhPbLfnGZYJn3jAF
+         U424CSrUodabi6zecYkauLU/iLKccXkbWF39jmj9pSiFKjrFyFA8QCE7RvDOrDTHTbk/
+         O1uuwwE8OkXz+QARJJsWsafP+NA5HBsaS60WqBDN6ODdIWDoJr8l+EMT+UB8CSHBNJNJ
+         dCow==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1744480389; x=1745085189;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=vTIDIk2RD4/cJXZhbbMkMN1ozONXGjfoBcOhKEuE5xo=;
+        b=TMkpxqid0+rtKMyHmj+1ethCTbAM57/1WGI1OdQXcG4OflJmtPku7h8YXtCKcM+wIP
+         ABwzABwV2SHEbT27UadkqrtK03DZgbXkToFkT22e51t8SRaNLhBWx57kcKrS+7s4Na57
+         Bk22wlsR0uvLl84eaJ0ePin/fv1zOh7BbUUo1a0aa2/4phXDvqn5BXYy9pHECMYiBSMW
+         Mf7E5VK4S2O0NHeww2dYz6FJV/k7I6BYNaPVj/VRfA8I7nmekxoI/xjib0eXuIIAbgE3
+         CT5U/UJA1LS2M71FH/3RhDWdIzU6ISWc718mi0kXIDb4/0+bFCr/Ouya5jNlwOuxwUPA
+         7tbw==
+X-Forwarded-Encrypted: i=1; AJvYcCWrLxEfrSKuZKUFwgvR8/FLLODTnVOSzbS5AKPT9YHq8AYF/tn1do0u1BlNPSSyFfjZ4/vrW4bp0KrIDC3D@lists.linux.dev, AJvYcCXSzuecqVisbyCgQcF12M04nNcf8bef2SNkPNd87qQkU/knr0HgeZBH/fPqwm+lSNBQEMcaZ7cFFhsP@lists.linux.dev
+X-Gm-Message-State: AOJu0YzeVUrmMammnYahTTtqFzT5soDWYT9FChWKQ1COokvMRT/d7dq+
+	rEriGGOLSpcyEad5GVqvTovgGJGbaK0VkN3g9/8fk6/FoPSv1RrJBcDkPCsjULhSbBtWOiI7vYQ
+	8nqqB8fnhwXuyPQeDPkZiPYqUOfs=
+X-Gm-Gg: ASbGncsq8ZzGD1A7lBEBBmCQtT7UyyVPi5O97u1GSqd10mv1likQq8guTIkNdwYLza6
+	ci7YDUjnJeUjn+9xO9uEvXU5VIxFUWR63NgKZDC1eyQnm28NnXoGiIUCcIZdhwEZ9R/ITwooa9e
+	Z1Q27HcPGRgAFTpZYceCzg5rvYbZCknYSk
+X-Google-Smtp-Source: AGHT+IGXxYy5GLEYPwhASMJUu7WvBGCB7hCpf2shHnOJpdkQ69BTD1P8Oi264iRYwSIR+Z+qGF/uXPzF4wK1YaliPgM=
+X-Received: by 2002:a17:906:f597:b0:ac8:1bbe:1a5b with SMTP id
+ a640c23a62f3a-acabbee7e6cmr876592166b.9.1744480388897; Sat, 12 Apr 2025
+ 10:53:08 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <f8fd7b9ec1a1fc1a65be5e7735b37c42032e9715.1744285781.git.karanja99erick@gmail.com>
+References: <Z/bA4tMF5uKLe55p@ubuntu> <CAHp75Vd0PUFv_tigmKp7MEiOOuHpFhB_i8u42jZdQ1jajjq0rw@mail.gmail.com>
+ <b4904b21-0a41-43f6-b386-dea4e27c7a27@stanley.mountain> <CAHp75VehJd4FUXBJSJh35a6KF3Qr2eBG6PiNogZ1m9SzBph0Ow@mail.gmail.com>
+ <209e5330-a4d4-4ecc-8d56-199f4a190c3c@stanley.mountain>
+In-Reply-To: <209e5330-a4d4-4ecc-8d56-199f4a190c3c@stanley.mountain>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Sat, 12 Apr 2025 20:52:32 +0300
+X-Gm-Features: ATxdqUFSwpWNfzAo0ElmV_5q1MvPxqlaMq7WQ98tAioZ7pVSAamB26tknu9iyQk
+Message-ID: <CAHp75Vdqnk_qNs8Rc4M-Rh5-AXCi4uV+iw6sbHXEZiaBaFoRyA@mail.gmail.com>
+Subject: Re: [PATCH] staging: rtl8723bs: Replace `& 0xfff` with `% 4096u`
+To: Dan Carpenter <dan.carpenter@linaro.org>
+Cc: Abraham Samuel Adekunle <abrahamadekunle50@gmail.com>, outreachy@lists.linux.dev, 
+	julia.lawall@inria.fr, gregkh@linuxfoundation.org, 
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, 
+	david.laight.linux@gmail.com, andy@kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-On Thu, Apr 10, 2025 at 04:06:07PM +0300, Erick Karanja wrote:
-> Make the code more concise and readable by integrating the initialization
-> directly into the variable declaration in cases where the initialization
-> is simple and doesn't depend on other variables or complex expressions.
-> 
-> Signed-off-by: Erick Karanja <karanja99erick@gmail.com>
-> ---
->  drivers/staging/rtl8723bs/hal/odm_HWConfig.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/rtl8723bs/hal/odm_HWConfig.c b/drivers/staging/rtl8723bs/hal/odm_HWConfig.c
-> index 994b8c578e7a..85cda5c3a5b5 100644
-> --- a/drivers/staging/rtl8723bs/hal/odm_HWConfig.c
-> +++ b/drivers/staging/rtl8723bs/hal/odm_HWConfig.c
-> @@ -52,9 +52,8 @@ static u8 odm_evm_db_to_percentage(s8 value)
->  	/*  */
->  	/*  -33dB~0dB to 0%~99% */
->  	/*  */
-> -	s8 ret_val;
-> +	s8 ret_val = value;
->  
-> -	ret_val = value;
->  	ret_val /= 2;
+On Sat, Apr 12, 2025 at 5:19=E2=80=AFPM Dan Carpenter <dan.carpenter@linaro=
+.org> wrote:
+> On Fri, Apr 11, 2025 at 03:47:40PM +0300, Andy Shevchenko wrote:
+> > On Fri, Apr 11, 2025 at 1:37=E2=80=AFPM Dan Carpenter <dan.carpenter@li=
+naro.org> wrote:
+> > > On Thu, Apr 10, 2025 at 08:43:53PM +0300, Andy Shevchenko wrote:
+> > > >
+> > > > > $ make drivers/staging/rtl8723bs/core/rtw_xmit.o
+> > > > > $ cmp rtw_xmit_before.o rtw_xmit_after.o
+> > > >
+> > > > cmp is good but not good enough in general. Here it shows the 1:1
+> > > > binary, but in some cases code can be the same, while binaries are
+> > > > different. To make sure the code is the same use the bloat-o-meter
+> > > > tool instead.
+> > >
+> > > I don't understand what you're saying at all.  cmp shows that the com=
+piler
+> > > was automaticall tanslating the "& 0xfff" into "% 04096u" so the resu=
+lting
+> > > object files are exactly the same.
+> >
+> > There is a possibility that the compiler changes the code to the
+> > equivalent and cmp will break, bloat-o-meter will check at least what
+> > happened to the size of the *code*. object file is not only a code. It
+> > may also contain debug symbols and other stuff which may break cmp,
+> > while the code can be *the same*.
+>
+> So far as I can see bloat-o-meter is only looking at the size.  I
+> deliberately introduced a bug to see if bloat-o-meter said anything but
+> it said the size was the same.
 
-Better to write this one as:
+Not "size", "size of the code" is more specific. That makes the
+difference to cmp which may lag even on the same code, but slightly
+different debuginfo, for example.
 
-	s8 ret_val = value / 2;
-
-regards,
-dan carpenter
-
->  
->  	if (ret_val >= 0)
-> -- 
-> 2.43.0
-> 
+--=20
+With Best Regards,
+Andy Shevchenko
