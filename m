@@ -1,100 +1,171 @@
-Received: from mail-pf1-f175.google.com (mail-pf1-f175.google.com [209.85.210.175])
+Received: from mail-pj1-f50.google.com (mail-pj1-f50.google.com [209.85.216.50])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DF46C3594E;
-	Wed, 16 Apr 2025 12:49:14 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.210.175
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 749F4FC0E
+	for <outreachy@lists.linux.dev>; Wed, 16 Apr 2025 13:43:07 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.216.50
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1744807756; cv=none; b=e8kb03aPmCPpgdLoBldOFNvqRRqaNd2PbD+TZOAs7AnhJXzAd/eZLnxECrnVmIS9/i37CTszt3EYn5P1TVFr7i3m45UtsborcQdW21FVhz82z6ASec7WHz/PzAWluUk/A5ZXlVkXyJIQo1rOpjwQZpwj8UN/WXLlDgefKBv42kU=
+	t=1744810988; cv=none; b=UDFKpjfgV2iBigSjynMjQW2OeSKSBhjljStGOw6x31XNJIXWmue9q6yC+oQQzMhOyO1+8uA2WeJ42ZmNsUfvRL1ZzgqDQwM4ACUEdF4LJYwbE5JPBB1xlyeFF/vI0jYAdadxo91Pq1Y8Q2YNDdQfd/XwhqtKGDsGf78de3aCyus=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1744807756; c=relaxed/simple;
-	bh=Oie0CA567N2TU0fwBupMchn1K0iHfp5AaY2vGOjyCIg=;
-	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type:
-	 Content-Disposition; b=jMgOaPRlMoGsDzcGtZ52EUml0pDtNeZhBSTLjD4JBzq1lhfhFFbJLbkwGUhjGF/AFdGzD4me4IxL5zFOphswvwW9DPWEzeAvyRcr3OEAdQ5AFw9kxl9AxUWwbNV455YUVkAi5wUql1EcainfQOGO74gDCngVuzLkk5ZwLzHlDhg=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=J+5vKUzI; arc=none smtp.client-ip=209.85.210.175
+	s=arc-20240116; t=1744810988; c=relaxed/simple;
+	bh=SgNW/vvh5b61ht92JsADJZKSKikWVs7QhnzVzAyVaA4=;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+	 In-Reply-To:Content-Type; b=YN1vFHAlTrnvM7tTuZx5MgOvmgQ26vRVHYBwhxJ7x9H8POBgo4j2t0TOb/NokH+w8jz67n9VHTJj6Z647cfYfaJo1uwtaUTqbielrMUzrIfIrQrezKQ1k/wfEg0sXXdSz6Kawb9pwko5oU1i83gSOAU/aaLGjmZQPkSRYqOCAkY=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=nVOkcUHz; arc=none smtp.client-ip=209.85.216.50
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="J+5vKUzI"
-Received: by mail-pf1-f175.google.com with SMTP id d2e1a72fcca58-736c1138ae5so6579522b3a.3;
-        Wed, 16 Apr 2025 05:49:14 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="nVOkcUHz"
+Received: by mail-pj1-f50.google.com with SMTP id 98e67ed59e1d1-2ff85fec403so726448a91.1
+        for <outreachy@lists.linux.dev>; Wed, 16 Apr 2025 06:43:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1744807754; x=1745412554; darn=lists.linux.dev;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+        d=gmail.com; s=20230601; t=1744810987; x=1745415787; darn=lists.linux.dev;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=ldt9IrsiOSqhio1MCd7bKSNWymFtZHgXwO+I+eYx310=;
-        b=J+5vKUzIta8aIe36cbr8+tU9rMdvvwFm4n5gHMhPC88vRzyEv2RcgkXYl5vy+joBW9
-         OeMqYgPf5/EKCbOvMqK/C5/VJUalbQ28abBN24k56e7dv18N3msLK2AXCoEn7qfFZyFL
-         JIA0hg3n/8b6VCh2PVVLHznS3itM1PKq9qcqMOr4T0LJZ9qMLuJfZOv18Q8OC8mnOXft
-         kNTJ7Eqxp7HLV8nqAWhzqP1YgRR07o+2XYmLBmFRgvHCAiPc/loxVEKofwv7VuLsA2Os
-         mMXFJoKYq3FZE5rubXfSTKB7Q4quuFe3VejOc+ewKJccWXwSzgMvAZFALRXBpK6g5UgZ
-         KeSA==
+        bh=9FMmsTxqI6R4LS4OuXpWt6I4p2kOrGqbZN4wMpdyEGk=;
+        b=nVOkcUHzecFhavfjfto3wyovryp48XV0cQPg46eN3hiJTZpgwiDCZif27mjv5AYxGf
+         y0crGIX32eUd2/zCZrUntHDQ1I5dNFdfa92jZeLZrjFBjCXBB2V5KHLsfplya2tgQwfP
+         KALs+1j4UrgCYswyWBslq0r3vg18U9Cs1sFNGyXr4XAif5JvfMu0VqSq13Fgp/sH+xRR
+         RU+tTp6nufkSlFJzAgVGjrjZbjlwSaOx9yKyRfdAiqmWrYj2euZJIP2IChRTg8c2t4Hi
+         8UzaTX7Jji+AviDcPxXX2uxuTcm8aR3AsXHi5q2xoBnqIgn55ljjwn+RLwsoM0UVnpc+
+         BBjA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1744807754; x=1745412554;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+        d=1e100.net; s=20230601; t=1744810987; x=1745415787;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=ldt9IrsiOSqhio1MCd7bKSNWymFtZHgXwO+I+eYx310=;
-        b=U82MLXReoZk2hTqkWcXHFHMPNPs/zUl/LhHEMBus+2vSCZ+TCdivi1IL+uZrbbCEuo
-         5+TjcBW2dSc/xVtQiUdaYhL8RZh6yLVbG6nMXfzjZ6Ygf8729BDw2PPMCESBCb3uTs+m
-         gGSB2bVko2rT+vpxcfpGIqnxx7Jf3qGhyZ+rN7SKyb180vfCQKe+ooIAOkmwGDr6LKGN
-         rrT/2aiJpf2d/EhpuwVfvQwL/WSZRoMChDxL5mI1nV0x6drAsCpRtsDA66hiKhL6Qzqj
-         HabbhXQvARFIAtB7wwuTGRZt2nyMwJa89u1Ptc2KVp8k8BxiqmnFm04wuvCv+dKW4Hp4
-         Ht6w==
-X-Forwarded-Encrypted: i=1; AJvYcCWcBlj3ZHTZQ+ZV7APb3/4dwu86A7bZtQe41n4oXJ4WW/7azs1sa7TL+NpUBaskp+dGTURkYox1SUbki2Po@lists.linux.dev, AJvYcCXCsDfJZrN6FzAEoHXLhM2hWzf/Z2OGmKMYagcB7Xi0lbIagTYvUYzOzl29P7feOHqmdMCzL66l9yU1@lists.linux.dev
-X-Gm-Message-State: AOJu0Yx4rUbWz/HhfaVtx9F42Dk6xy9bKZiOhEjehsWwYhja/o6CdYLB
-	HqA8+MnE+Bqn3YJrzfQ/+pq90XdRu8cAH9XqumzLdz+ZodZsLw1i
-X-Gm-Gg: ASbGncsg2g58AxoV3nbqPaSDsgLeQUVBmmXV5t/D+pO/UuZnj231WOK2K+tdJVv2YV5
-	wP/rYknZeVTOuW/eFDGEsL1+CVh+IPXeSdFoJbsDyDgXVwj2ZTyHw6FC6QY02JZnK1riDexBcIe
-	XV4HZvGAk7eWSczB+8BYzhR7o8BY0+tPzJP0QL3aBml+saxpwsppuHBgoLuleO4beMSyHPSztAH
-	ypSWwyZOI99Wgwoh+ZmTzVMOF3BG9KsuhONsIRB/XD+3Bfw0hPm9pN1HckaEhAqhrqQP2GLtQur
-	uFUqxulA8lJxSFJVHxm0Yum7Hp/K6uEpJUKtwRQMONg7poqPUw==
-X-Google-Smtp-Source: AGHT+IG/CPfVYEph2M7p99ubwZU+kSDnukahDwg624Hd0IVR4aChNY4Tva8+Qvi4aQGmrLXTd0OYrg==
-X-Received: by 2002:a05:6a00:2384:b0:736:2a73:6756 with SMTP id d2e1a72fcca58-73c267f55e2mr2454611b3a.21.1744807754007;
-        Wed, 16 Apr 2025 05:49:14 -0700 (PDT)
-Received: from brak3rDesk ([115.96.217.61])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-b0b220aa4b2sm1161674a12.5.2025.04.16.05.49.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Apr 2025 05:49:13 -0700 (PDT)
-Date: Wed, 16 Apr 2025 18:19:11 +0530
-From: Rujra Bhatt <braker.noob.kernel@gmail.com>
-To: dpenkler@gmail.com, gregkh@linuxfoundation.org,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev
-Cc: braker.noob.kernel@gmail.com
-Subject: [FIRST-PATCH] staging : gpib : agilent_82350b : agilent_82350b.c :
- fixes checks on the file
-Message-ID: <Z_-nR5Vt2A5kvbro@brak3rDesk>
+        bh=9FMmsTxqI6R4LS4OuXpWt6I4p2kOrGqbZN4wMpdyEGk=;
+        b=SEclqf1H2vAwqRGyhx4jvTHEudd/hYiCVbZiph3aCY9vVP3bz6d4wrf+wYOGnPjpgd
+         C9+R5crovd6OoNxdfeSSvl7jE1h79BuA8XeVYn51XwLbY5q2wmho6lJsfeMdNZ6YUgZa
+         382d33H0eoewJgRJglpZ13ABRWXXG8cuOijDMLZH5LjCNl7ftqET0/rhE87PPUwd0vWe
+         F4zvD3sqR0hUmXVintXsXom8iEXmVjJZu4/L6fWIMf9P0RvPAoCV/OrDY/tpzmcH1sOq
+         JDk1oJ9fDUwgRg6LlJ9491AjAvxphV4l4aDDz7/8+Kb8MvAjOuoYtBhw8SefvMwb9aFC
+         TnEA==
+X-Forwarded-Encrypted: i=1; AJvYcCUcuCKcd4LBifs/yVTJZBMHZYwXwW9SXXig5gZjZxGYkaDHsQSIHebVGfRZNRGOq87juzxwqUyB15k=@lists.linux.dev
+X-Gm-Message-State: AOJu0YwS4LzWSUl/5Mgp0/pTXGt3TkmKMCDqfb52LOaftmorqO2OG/el
+	qiGPJUTSdv0qqWKP1eYBej+BDy5PeohMVGKwhwzcIaXu8F+fW34f
+X-Gm-Gg: ASbGncvoI8JtEEyBVphPnjhf2onl7gTWU+Em6BIQB3NetZn31rGiAG6Z0DHc3knd+uw
+	Yk/sF+hMDJVFZy+UsHTvAT44eOI8MujhIMlT9yXw9lZ0AAaFUf8t+3pMPT8n9W3I62pblGQ9DQl
+	VG6yXbFvJlJZxz62kl0hmmeaivn+uZ5KscJXCheIG+R1NzYj1xLNULTUatSjWHdzsuZWzbkn4fW
+	O4zo+RoEQ/3sjR1CqbC9mvQbsjzfkXsyQxMawvXr1Tg+qBo0wg7wpWVx+qnssQcr0NdDSg5D1iZ
+	wBrCvRx5QpTTa5euP8h7MTw5tgv/IYa22OPOqQttXXjEwUJ8dNwx85EyMNRi8w==
+X-Google-Smtp-Source: AGHT+IGAF57xlY7daKKfqRRtAHwkl8kenWBXpKkqn7XNIBPG/hMwAVINPlWTUm60iHdirp3RHncuuQ==
+X-Received: by 2002:a17:90b:520d:b0:2ff:4a8d:74f9 with SMTP id 98e67ed59e1d1-308642a329amr2862011a91.10.1744810986689;
+        Wed, 16 Apr 2025 06:43:06 -0700 (PDT)
+Received: from [172.16.116.85] ([103.15.228.94])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-308613b370esm1720823a91.34.2025.04.16.06.43.03
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 16 Apr 2025 06:43:06 -0700 (PDT)
+Message-ID: <490ab216-982e-4707-abe4-a5b8d0444458@gmail.com>
+Date: Wed, 16 Apr 2025 19:13:02 +0530
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [FIRST-PATCH] staging : greybus : gb-beagleplay.c : fixing the
+ checks as first-patch
+To: rujra <braker.noob.kernel@gmail.com>, johan@kernel.org, elder@kernel.org,
+ gregkh@linuxfoundation.org, greybus-dev@lists.linaro.org,
+ outreachy@lists.linux.dev
+Cc: linux-kernel@vger.kernel.org
+References: <CAG+54DbvpWHyX8+ucEQpg2B6rNTJP11CRpYxcYVrKpKehzrK-A@mail.gmail.com>
+Content-Language: en-US
+From: Ayush Singh <ayushdevel1325@gmail.com>
+In-Reply-To: <CAG+54DbvpWHyX8+ucEQpg2B6rNTJP11CRpYxcYVrKpKehzrK-A@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 
-It has recommended to
-Prefer kzalloc(sizeof(*board->private_data)...)
-over kzalloc(sizeof(struct agilent_82350b_priv)...)
+On 4/16/25 17:47, rujra wrote:
 
-Signed-off-by: Rujra Bhatt <braker.noob.kernel@gmail.com>
----
- drivers/staging/gpib/agilent_82350b/agilent_82350b.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> added comments on spinlocks for producer-consumer model, rearranged the
+> lines on function calls where it should not end with "(" this bracket,
+> also removed white-spaces and aligned the arguments of function calls.
 
-diff --git a/drivers/staging/gpib/agilent_82350b/agilent_82350b.c b/drivers/staging/gpib/agilent_82350b/agilent_82350b.c
-index 445b9380ff98..956e21886eb6 100644
---- a/drivers/staging/gpib/agilent_82350b/agilent_82350b.c
-+++ b/drivers/staging/gpib/agilent_82350b/agilent_82350b.c
-@@ -479,7 +479,7 @@ static void agilent_82350b_return_to_local(struct gpib_board *board)
- 
- static int agilent_82350b_allocate_private(struct gpib_board *board)
- {
--	board->private_data = kzalloc(sizeof(struct agilent_82350b_priv), GFP_KERNEL);
-+	board->private_data = kzalloc(sizeof(struct * board->private_data), GFP_KERNEL);
- 	if (!board->private_data)
- 		return -ENOMEM;
- 	return 0;
--- 
-2.43.0
+Are these manual adjustments, or using clang-format?
+
+I do not care about formatting being "readable". As long as it can be 
+done by a tool like clang-format, that's fine with me.
+
+Of course if you are fixing some checkpatch error, that is okay, but if 
+now, please avoid formatting changes.
+
+The comments are fine. Although you probably want to add a space between 
+`//` and the sentence start.
+
+
+>
+> Signed-off-by: Rujra Bhatt <braker.noob.kernel@gmail.com>
+>
+>> 8------------------------------------------------------8<
+>   drivers/greybus/gb-beagleplay.c | 16 ++++++++--------
+>   1 file changed, 8 insertions(+), 8 deletions(-)
+>
+> diff --git a/drivers/greybus/gb-beagleplay.c b/drivers/greybus/gb-beagleplay.c
+> index 473ac3f2d382..fa1c3a40dd0b 100644
+> --- a/drivers/greybus/gb-beagleplay.c
+> +++ b/drivers/greybus/gb-beagleplay.c
+> @@ -73,7 +73,9 @@ struct gb_beagleplay {
+>          struct gb_host_device *gb_hd;
+>
+>          struct work_struct tx_work;
+> +       //used to ensure that only one producer can access the shared
+> resource at a time.
+>          spinlock_t tx_producer_lock;
+> +       //used to ensure that only one consumer can access the shared
+> resource at a time.
+>          spinlock_t tx_consumer_lock;
+>          struct circ_buf tx_circ_buf;
+>          u16 tx_crc;
+> @@ -642,8 +644,8 @@ static int cc1352_bootloader_wait_for_ack(struct
+> gb_beagleplay *bg)
+>   {
+>          int ret;
+>
+> -       ret = wait_for_completion_timeout(
+> -               &bg->fwl_ack_com, msecs_to_jiffies(CC1352_BOOTLOADER_TIMEOUT));
+> +       ret = wait_for_completion_timeout(&bg->fwl_ack_com,
+> +
+> msecs_to_jiffies(CC1352_BOOTLOADER_TIMEOUT));
+>          if (ret < 0)
+>                  return dev_err_probe(&bg->sd->dev, ret,
+>                                       "Failed to acquire ack semaphore");
+> @@ -680,9 +682,8 @@ static int cc1352_bootloader_get_status(struct
+> gb_beagleplay *bg)
+>          if (ret < 0)
+>                  return ret;
+>
+> -       ret = wait_for_completion_timeout(
+> -               &bg->fwl_cmd_response_com,
+> -               msecs_to_jiffies(CC1352_BOOTLOADER_TIMEOUT));
+> +       ret = wait_for_completion_timeout(&bg->fwl_cmd_response_com,
+> +
+> msecs_to_jiffies(CC1352_BOOTLOADER_TIMEOUT));
+>          if (ret < 0)
+>                  return dev_err_probe(&bg->sd->dev, ret,
+>                                       "Failed to acquire last status semaphore");
+> @@ -765,9 +766,8 @@ static int cc1352_bootloader_crc32(struct
+> gb_beagleplay *bg, u32 *crc32)
+>          if (ret < 0)
+>                  return ret;
+>
+> -       ret = wait_for_completion_timeout(
+> -               &bg->fwl_cmd_response_com,
+> -               msecs_to_jiffies(CC1352_BOOTLOADER_TIMEOUT));
+> +       ret = wait_for_completion_timeout(&bg->fwl_cmd_response_com,
+> +
+> msecs_to_jiffies(CC1352_BOOTLOADER_TIMEOUT));
+>          if (ret < 0)
+>                  return dev_err_probe(&bg->sd->dev, ret,
+>                                       "Failed to acquire last status semaphore");
+> --
+> 2.43.0
+
+
+Best Regards,
+
+Ayush Singh
 
