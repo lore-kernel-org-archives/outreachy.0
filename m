@@ -1,156 +1,67 @@
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C7DEA250BF5
-	for <outreachy@lists.linux.dev>; Wed, 16 Apr 2025 13:45:08 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.83
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 597621EE032;
+	Wed, 16 Apr 2025 13:51:18 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1744811112; cv=none; b=N83CzPsaueMn8eKqepeE7g2ZKFSnsBs7ZAMVySXdlKz3n+Uz46fpGhYKZeilH13f11CoMpWdvs5NeEvg+HLVG+DexHb6GH7YKYPnjL+/rTMuSvnx2NEO4WR1Aenw9YpisYFDMrrWf1zahLOw736Wq9nR5g5EulD1IbPWq4/BE6w=
+	t=1744811479; cv=none; b=UjgdO3uofN2zJCKht6V9SM0DZZ01ZYbCUDZ+sEm7m9NMF2e8A+uO0jSElfiuNW0zTz99jBVLcD9yqBpGqOnvfI3Yr7zvnt6wdoJQ4octyTPoCrNI77OowM8BOZTyu/ieg/gwOwsFTGlI435FF0MNXnFmXcaYQWbVQHNStOdPuMQ=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1744811112; c=relaxed/simple;
-	bh=SSGumOPO7KarJQZoMZ0YMRQJ+OOUafoEC97qoNhTAS4=;
-	h=Date:From:To:cc:Subject:In-Reply-To:Message-ID:References:
-	 MIME-Version:Content-Type; b=G0Va+JWQX542JbMlcfVv7upXQ5e3HlTxr/dJ2qgB84TVg5p7iYZ2ixzv0weRRAZ/V3lpLUeU1gzEkvUsAycYvmabhoRN74pH7/8zb+kAbI2ir8AT1qPSVXkqEhRXRPHZ9US0mXWwP6YbchuYyj5cT+A/aQfWDSjWFblzNUUI1i0=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=DIqVPSEp; arc=none smtp.client-ip=192.134.164.83
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
+	s=arc-20240116; t=1744811479; c=relaxed/simple;
+	bh=+wx2sC6I5mlk2PyZ3qWyksEMyQYV4JAGVPjVJfE7+BM=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=eZS5M/nlDQe4ykhXwBupz0q2kUVQlGj3Ko64bIe+IVRioKg5CpOkb+cwxOEmV7Fq2iosslXys4y/Mo4IcYlA+mStR1E/6ndnHqEY8peUtUifjx+vm/n+/+lrxbx4U6Ka31jUtc6CvJdrQgcSVlehCYVJIIW5Hje+BRkhEzW4y6M=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=MEl9mE9Q; arc=none smtp.client-ip=10.30.226.201
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="DIqVPSEp"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=Sse+MWmWlUd4okV9BvuTdMxj6pvfwR3JRfox5MJ9mM4=;
-  b=DIqVPSEpeLCVXm75PNoQiMZRvdri/xgpKOU7Ynad6EhLnwMuj1gOw5cd
-   n9ppAAvhr8GLhMDrR5ZYn+tucmhiIpQW0AJ4Ju63tf6GpX6Hg0itN83Bc
-   UWhgPHNNvcYa6TGD95MKDwHAny4suflBow3WZLRjTYqgDp9fR3ac026Qi
-   U=;
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="6.15,216,1739833200"; 
-   d="scan'208";a="218156110"
-Received: from dt-lawall.paris.inria.fr ([128.93.67.65])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Apr 2025 15:45:01 +0200
-Date: Wed, 16 Apr 2025 15:45:00 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-To: Ayush Singh <ayushdevel1325@gmail.com>
-cc: rujra <braker.noob.kernel@gmail.com>, johan@kernel.org, elder@kernel.org, 
-    gregkh@linuxfoundation.org, greybus-dev@lists.linaro.org, 
-    outreachy@lists.linux.dev, linux-kernel@vger.kernel.org
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="MEl9mE9Q"
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C3115C4CEE2;
+	Wed, 16 Apr 2025 13:51:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1744811478;
+	bh=+wx2sC6I5mlk2PyZ3qWyksEMyQYV4JAGVPjVJfE7+BM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=MEl9mE9Qz65zZEEe8CDmj9B6yMm90nyYxYB1fVvAbVMgHg0kDt3s6ZyDiANWHezbt
+	 QuNgb+QTfKC5QV2PWG7PDwuJVrBwxACR3GLyHs+c8R0H/gm+x0sRSqRmpzsdW15Zl+
+	 AsiYHsCZfVqMhrdlUYXlcF5H2GMvFlmQ2UvBl5oSKUCFhKs25BvSmTnQ7WlP3Myysd
+	 NU33Wj0GcjPVOLn7WI0VzeQFwnAs5wx7LL3HA3LASrBZ93J/MAWJGmKCtJ58Ux2Sbx
+	 3nykTBsgwSsXb2GJIpPbFlrim4T13lyKzAWQF6XQHfp86awEzmO8QEgkAujQqpSd7+
+	 zhnsyDOllKTFw==
+Received: from johan by xi.lan with local (Exim 4.97.1)
+	(envelope-from <johan@kernel.org>)
+	id 1u53Ab-000000002BI-28Ur;
+	Wed, 16 Apr 2025 15:51:17 +0200
+Date: Wed, 16 Apr 2025 15:51:17 +0200
+From: Johan Hovold <johan@kernel.org>
+To: rujra <braker.noob.kernel@gmail.com>
+Cc: ayushdevel1325@gmail.com, elder@kernel.org, gregkh@linuxfoundation.org,
+	greybus-dev@lists.linaro.org, outreachy@lists.linux.dev,
+	linux-kernel@vger.kernel.org
 Subject: Re: [FIRST-PATCH] staging : greybus : gb-beagleplay.c : fixing the
  checks as first-patch
-In-Reply-To: <490ab216-982e-4707-abe4-a5b8d0444458@gmail.com>
-Message-ID: <eec572fd-3074-8f2c-f978-94841edf7a6@inria.fr>
-References: <CAG+54DbvpWHyX8+ucEQpg2B6rNTJP11CRpYxcYVrKpKehzrK-A@mail.gmail.com> <490ab216-982e-4707-abe4-a5b8d0444458@gmail.com>
+Message-ID: <Z_-11fvQJtiwAxaA@hovoldconsulting.com>
+References: <CAG+54DbvpWHyX8+ucEQpg2B6rNTJP11CRpYxcYVrKpKehzrK-A@mail.gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAG+54DbvpWHyX8+ucEQpg2B6rNTJP11CRpYxcYVrKpKehzrK-A@mail.gmail.com>
 
+On Wed, Apr 16, 2025 at 05:47:41PM +0530, rujra wrote:
+> added comments on spinlocks for producer-consumer model, rearranged the
+> lines on function calls where it should not end with "(" this bracket,
+> also removed white-spaces and aligned the arguments of function calls.
+> 
+> Signed-off-by: Rujra Bhatt <braker.noob.kernel@gmail.com>
 
+You're doing too many things in one patch, the patch is white space
+damaged, and the patch prefix is wrong since this driver does not live
+in staging.
 
-On Wed, 16 Apr 2025, Ayush Singh wrote:
+If you want to practise creating patches, please make sure to work in
+drivers/staging where changes like these may be accepted. 
 
-> On 4/16/25 17:47, rujra wrote:
->
-> > added comments on spinlocks for producer-consumer model, rearranged the
-> > lines on function calls where it should not end with "(" this bracket,
-> > also removed white-spaces and aligned the arguments of function calls.
->
-> Are these manual adjustments, or using clang-format?
->
-> I do not care about formatting being "readable". As long as it can be done by
-> a tool like clang-format, that's fine with me.
->
-> Of course if you are fixing some checkpatch error, that is okay, but if now,
-> please avoid formatting changes.
->
-> The comments are fine. Although you probably want to add a space between `//`
-> and the sentence start.
-
-I don't think the kernel commonly uses // for comments.
-
-julia
-
->
->
-> >
-> > Signed-off-by: Rujra Bhatt <braker.noob.kernel@gmail.com>
-> >
-> > > 8------------------------------------------------------8<
-> >   drivers/greybus/gb-beagleplay.c | 16 ++++++++--------
-> >   1 file changed, 8 insertions(+), 8 deletions(-)
-> >
-> > diff --git a/drivers/greybus/gb-beagleplay.c
-> > b/drivers/greybus/gb-beagleplay.c
-> > index 473ac3f2d382..fa1c3a40dd0b 100644
-> > --- a/drivers/greybus/gb-beagleplay.c
-> > +++ b/drivers/greybus/gb-beagleplay.c
-> > @@ -73,7 +73,9 @@ struct gb_beagleplay {
-> >          struct gb_host_device *gb_hd;
-> >
-> >          struct work_struct tx_work;
-> > +       //used to ensure that only one producer can access the shared
-> > resource at a time.
-> >          spinlock_t tx_producer_lock;
-> > +       //used to ensure that only one consumer can access the shared
-> > resource at a time.
-> >          spinlock_t tx_consumer_lock;
-> >          struct circ_buf tx_circ_buf;
-> >          u16 tx_crc;
-> > @@ -642,8 +644,8 @@ static int cc1352_bootloader_wait_for_ack(struct
-> > gb_beagleplay *bg)
-> >   {
-> >          int ret;
-> >
-> > -       ret = wait_for_completion_timeout(
-> > -               &bg->fwl_ack_com,
-> > msecs_to_jiffies(CC1352_BOOTLOADER_TIMEOUT));
-> > +       ret = wait_for_completion_timeout(&bg->fwl_ack_com,
-> > +
-> > msecs_to_jiffies(CC1352_BOOTLOADER_TIMEOUT));
-> >          if (ret < 0)
-> >                  return dev_err_probe(&bg->sd->dev, ret,
-> >                                       "Failed to acquire ack semaphore");
-> > @@ -680,9 +682,8 @@ static int cc1352_bootloader_get_status(struct
-> > gb_beagleplay *bg)
-> >          if (ret < 0)
-> >                  return ret;
-> >
-> > -       ret = wait_for_completion_timeout(
-> > -               &bg->fwl_cmd_response_com,
-> > -               msecs_to_jiffies(CC1352_BOOTLOADER_TIMEOUT));
-> > +       ret = wait_for_completion_timeout(&bg->fwl_cmd_response_com,
-> > +
-> > msecs_to_jiffies(CC1352_BOOTLOADER_TIMEOUT));
-> >          if (ret < 0)
-> >                  return dev_err_probe(&bg->sd->dev, ret,
-> >                                       "Failed to acquire last status
-> > semaphore");
-> > @@ -765,9 +766,8 @@ static int cc1352_bootloader_crc32(struct
-> > gb_beagleplay *bg, u32 *crc32)
-> >          if (ret < 0)
-> >                  return ret;
-> >
-> > -       ret = wait_for_completion_timeout(
-> > -               &bg->fwl_cmd_response_com,
-> > -               msecs_to_jiffies(CC1352_BOOTLOADER_TIMEOUT));
-> > +       ret = wait_for_completion_timeout(&bg->fwl_cmd_response_com,
-> > +
-> > msecs_to_jiffies(CC1352_BOOTLOADER_TIMEOUT));
-> >          if (ret < 0)
-> >                  return dev_err_probe(&bg->sd->dev, ret,
-> >                                       "Failed to acquire last status
-> > semaphore");
-> > --
-> > 2.43.0
->
->
-> Best Regards,
->
-> Ayush Singh
->
->
->
+Johan
