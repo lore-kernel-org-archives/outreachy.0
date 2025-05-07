@@ -1,141 +1,163 @@
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.15])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 25A741EF36B
-	for <outreachy@lists.linux.dev>; Thu,  1 May 2025 14:16:45 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9ABB0221FAC;
+	Wed,  7 May 2025 07:58:59 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.15
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1746109007; cv=none; b=YPQ0NFWNjg+VN6tr7XMje92nEcCQ+QCA+0QecLUA1vc0Odfn8K5YzrUX2+oegxTBEwavQiwu1dGka9VX3dcI7KtfJtQyBmoiGRg+3TsV19oQ6zQ/vWG3tmfF4luz0zqoBT3guT2a/mobv5PfcIq1CJwTueR/jCXNATQ67fMu77U=
+	t=1746604741; cv=none; b=JE7Hl9hkec0zBLc76e3G9hPvNGle2HQyvRacqwsoxHhPtRIvP62EfJYyj9/URupKhGYeN0I0s5K9keGaBu74iAPS3dv6y2USlT1ITaxjFIZZdDj8sWO3dVBSlcOWQSaNgF2C4qnhlm0uWpvahq8ui+VrD8RZkZi8IPlfhwnU3E0=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1746109007; c=relaxed/simple;
-	bh=j5318m9W6gx9LdmB8iOipKQED2D4klFe6dI9Bxzwyac=;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type; b=KN/D7gzc0QN65Hwp8VaEFOnmYxH6tv1qWqSluzIKh3GEzfbROWGoHPWUo1ajtAVxbsFJqBN3cQQ1y5OWBbetYntVg0Zw4liF8sOJryv7WQDesif+1hGozwGCKiZvcs8LsfSZmVLIlWg/nDnzwGWLB/xzHYdnvFrRNSebthJUmX8=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=C8gECr5V; arc=none smtp.client-ip=170.10.129.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+	s=arc-20240116; t=1746604741; c=relaxed/simple;
+	bh=fLHCh/gSuXYbU1aAft/Unq8sl8yvQ7IS32/uXEPUDik=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=UM0hxpKDRSVqP3Uqsdpp97S7Lr844CqgwM2wSHh8fq8/nfJgEqLnFs+8MiajZe7JoWC84univr6lPGx7ziR3YghZWqQbYCQtz4XMhS2y9i0IoSiikhjqmwfrArK9y0DYQqy8TFrdSy6IEe89h6l++1UBQyy0N8vglvNHgjxxF54=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=FcVRxlId; arc=none smtp.client-ip=198.175.65.15
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="C8gECr5V"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1746109005;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=hh+psC7IriBNgbVFATZKlPoKU4gpMxFOg5Sx9dcAY8Y=;
-	b=C8gECr5VB+JMmkdbq0vTAdGKgEoxvJvCVtkzV+zvmVZ30d+AuIuaMxWfZGb/BZisdYWMyP
-	SJo4eXtPWRWqLiwkAKlUkGkWWw0IA5M2jngRdMthtiEWkp3R74fYYhaZwpooEp45CTRp+I
-	yFX1K6/UCfysDLMBBYkCZjO2jGz5bJg=
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-73-sawDU3NTMBCIJJtpKoGyIQ-1; Thu, 01 May 2025 10:16:42 -0400
-X-MC-Unique: sawDU3NTMBCIJJtpKoGyIQ-1
-X-Mimecast-MFC-AGG-ID: sawDU3NTMBCIJJtpKoGyIQ_1746109001
-Received: by mail-ed1-f71.google.com with SMTP id 4fb4d7f45d1cf-5edc07c75efso834576a12.1
-        for <outreachy@lists.linux.dev>; Thu, 01 May 2025 07:16:41 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1746109001; x=1746713801;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=hh+psC7IriBNgbVFATZKlPoKU4gpMxFOg5Sx9dcAY8Y=;
-        b=DyV7O9xf4sumj8BOvF5aTpIiTzzBeooxX3vO5lSesWjEoopImZYh4CBhralo3cksuo
-         BnF0876xFRCCHrfDZwDdeyra0eyZwRHHs1zlyV7sdwT2qket30K8unA7B//iNF+IRffw
-         lmCGmtZ0aJFIYvWpm+T7m9zmx6JWBVtOFGhqYFaQr+J1B74CqzW0W4VdvvU27ObvNw1/
-         RAkpP6vcSxdHiQIhrqXKoc8SSdCzA9bhA0vkpu1CvujI/FYnA8UWMN0DPHYuxf1EXTiO
-         WA4h9ja+RvK5RZgpIbu6piLxeyc7NEl3Pv5VdlQzXeyd0Rt1dn3jQr+yNN/1uJHRJ4WY
-         oTMw==
-X-Forwarded-Encrypted: i=1; AJvYcCWodufGUpWc88FwgJ6h7WAte+rECNkYyvuJwObhFBQRMQ/+L0eLfUP8FN0Zq72Qovf2Akrb1LMQbno=@lists.linux.dev
-X-Gm-Message-State: AOJu0YzdqWs+vpWSsg6iG+wNMs04mb23ztt3JEWdoI/wZFezpMpRb/un
-	zCw0QPNNaaqzWhlYQJ6N/BLlJheL71G0IiDWQevx6w+Xf9x7oKtiluOQTWFXWre1DIVUawmldTk
-	ZhVJwLK6iF+oCoA8YGsvw/7rdHGql6Tf+w6LHpFrfCnQjD7DhRMuk7pRbRQ==
-X-Gm-Gg: ASbGncvL4cG2Al7oFuVqzho91ZGihHd0oKq0QrKmZWxtnNPQAeZEHELje1iMfrj9HdR
-	uIvpffpFJKmIVmFjP5LaJZZfA+68QvNyLv+Y4CIMhJVy6gFXc0Js563pYJSZYu9iLToS1eadiEc
-	z9WmqVjTyn1NsrczOn/2GoGfWpnAKLICT9j8aRFPD+hdRT94Gjmhuy7FZ7KiY9LQ91rGtrk+YLW
-	lyat9tbbvAP1r1LVogMwKufbRH6Z5eyTgZ/288PvYi8mmK3CxkjmZBP7mUissNsK8px3HlDCYED
-	S4EuoqUIRlNbHDOHpTlwQ31UB6sHG7p5+/1IU1SY1GBnhK+Zmnw6ZfGAGQ//+WQuBVRh2aEeUQB
-	DIR8LVGgfT61UpwDBgbehkLYAoz2/fVMRKr/V3N5Sx3h/k12Qd8j5QJMkucb6qA==
-X-Received: by 2002:a17:907:3da8:b0:ace:dd27:7c68 with SMTP id a640c23a62f3a-acef49a523amr286269566b.46.1746109000792;
-        Thu, 01 May 2025 07:16:40 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IERxZ6UQgY7nJnQihqgXO4g35TCN9e9LK+eXe6+W9Ewkl+z5FgYaucMhPyRZQ4ao8P7tj61SQ==
-X-Received: by 2002:a17:907:3da8:b0:ace:dd27:7c68 with SMTP id a640c23a62f3a-acef49a523amr286267266b.46.1746109000405;
-        Thu, 01 May 2025 07:16:40 -0700 (PDT)
-Received: from ?IPV6:2001:1c00:c32:7800:5bfa:a036:83f0:f9ec? (2001-1c00-0c32-7800-5bfa-a036-83f0-f9ec.cable.dynamic.v6.ziggo.nl. [2001:1c00:c32:7800:5bfa:a036:83f0:f9ec])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ad0da516a9dsm45118166b.122.2025.05.01.07.16.39
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 01 May 2025 07:16:39 -0700 (PDT)
-Message-ID: <4200c8b5-ec1b-49f4-b530-9067b1dc22c2@redhat.com>
-Date: Thu, 1 May 2025 16:16:39 +0200
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="FcVRxlId"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1746604740; x=1778140740;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=fLHCh/gSuXYbU1aAft/Unq8sl8yvQ7IS32/uXEPUDik=;
+  b=FcVRxlId3kv9AS8IocCimoleNoUgFnjgyj/ddFPdKtX2Ayjw9FyuCnKX
+   ypAAQWDsxSv4DANEiqts26bNE+H4dtv/OJiFH5YNe1tiveJFvi5t1bccX
+   5EhPMwVmkPwU7tLuB9JSb2miVje+m8etOGzo/W2Roxx9C6gDNPp4toHNx
+   mtMQUy05MUuKNyKMLvwz4OSLck1XZC3itfV17RwPTAaY+rsbXL47J0aFw
+   K5R++YxowyXjy2kbWBrlQDpIeH1aRNcEBjh6tH8p352LoQNJsRo5JK8Zu
+   DgaOTjSnN8Pz2cAEUKtxxjTjycBknUL8tJnHIfi0KfKO39SQK+Dop1vLk
+   g==;
+X-CSE-ConnectionGUID: v1bcI65JSwWbdHu624KJIw==
+X-CSE-MsgGUID: 9LEdz8FPTJ+RZPr5nnXF3w==
+X-IronPort-AV: E=McAfee;i="6700,10204,11425"; a="51969511"
+X-IronPort-AV: E=Sophos;i="6.15,268,1739865600"; 
+   d="scan'208";a="51969511"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+  by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 May 2025 00:58:59 -0700
+X-CSE-ConnectionGUID: ga+p13QHS5el7YdWSvKUrg==
+X-CSE-MsgGUID: qBpMRESJSWalcyo/GjjFrA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,268,1739865600"; 
+   d="scan'208";a="159175156"
+Received: from lkp-server01.sh.intel.com (HELO 1992f890471c) ([10.239.97.150])
+  by fmviesa002.fm.intel.com with ESMTP; 07 May 2025 00:58:58 -0700
+Received: from kbuild by 1992f890471c with local (Exim 4.96)
+	(envelope-from <lkp@intel.com>)
+	id 1uCZg6-0007Mv-1x;
+	Wed, 07 May 2025 07:58:54 +0000
+Date: Wed, 7 May 2025 15:58:38 +0800
+From: kernel test robot <lkp@intel.com>
+To: Rujra Bhatt <braker.noob.kernel@gmail.com>, dpenkler@gmail.com,
+	gregkh@linuxfoundation.org, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org, outreachy@lists.linux.dev
+Cc: oe-kbuild-all@lists.linux.dev, braker.noob.kernel@gmail.com
+Subject: Re: [FIRST-PATCH] staging : gpib : agilent_82350b : agilent_82350b.c
+ : fixes checks on the file
+Message-ID: <202505071554.BLzezIJT-lkp@intel.com>
+References: <Z_-nR5Vt2A5kvbro@brak3rDesk>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/3] staging: media: Remove duplicate NULL tests on a
- value in pci
-To: Abraham Samuel Adekunle <abrahamadekunle50@gmail.com>,
- outreachy@lists.linux.dev, julia.lawall@inria.fr
-Cc: gregkh@linuxfoundation.org, linux-staging@lists.linux.dev,
- linux-kernel@vger.kernel.org, andy@kernel.org, mchehab@kernel.org,
- sakari.ailus@linux.intel.com
-References: <cover.1743685415.git.abrahamadekunle50@gmail.com>
- <26990d4a9d4419f9d4155a40595bc213acb671a0.1743685415.git.abrahamadekunle50@gmail.com>
-From: Hans de Goede <hdegoede@redhat.com>
-In-Reply-To: <26990d4a9d4419f9d4155a40595bc213acb671a0.1743685415.git.abrahamadekunle50@gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: G4lwCOtijHBb_ZWW45ZWAPZwjWqh5okEs58Sktjvzkg_1746109001
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US, nl
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <Z_-nR5Vt2A5kvbro@brak3rDesk>
 
-Hi,
+Hi Rujra,
 
-On 3-Apr-25 3:26 PM, Abraham Samuel Adekunle wrote:
-> When a value has been tested for NULL in an expression, a
-> second NULL test on the same value in another expression
-> is unnecessary when the value has not been assigned NULL.
-> 
-> Remove unnecessary duplicate NULL tests on the same value that
-> has previously been NULL tested.
-> 
-> Found by Coccinelle
-> 
-> Signed-off-by: Abraham Samuel Adekunle <abrahamadekunle50@gmail.com>
+kernel test robot noticed the following build errors:
 
-Thank you for your patch.
+[auto build test ERROR on staging/staging-testing]
+[also build test ERROR on staging/staging-next staging/staging-linus linus/master v6.15-rc5 next-20250506]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-I have merged this in my media-atomisp branch:
-https://git.kernel.org/pub/scm/linux/kernel/git/hansg/linux.git/log/?h=media-atomisp
+url:    https://github.com/intel-lab-lkp/linux/commits/Rujra-Bhatt/staging-gpib-agilent_82350b-agilent_82350b-c-fixes-checks-on-the-file/20250416-205032
+base:   staging/staging-testing
+patch link:    https://lore.kernel.org/r/Z_-nR5Vt2A5kvbro%40brak3rDesk
+patch subject: [FIRST-PATCH] staging : gpib : agilent_82350b : agilent_82350b.c : fixes checks on the file
+config: x86_64-randconfig-002-20250424 (https://download.01.org/0day-ci/archive/20250507/202505071554.BLzezIJT-lkp@intel.com/config)
+compiler: gcc-12 (Debian 12.2.0-14) 12.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250507/202505071554.BLzezIJT-lkp@intel.com/reproduce)
 
-And this patch will be included in my next
-pull-request to Mauro (to media subsystem maintainer)
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202505071554.BLzezIJT-lkp@intel.com/
 
-Regards,
+All errors (new ones prefixed by >>):
 
-Hans
+   In file included from include/linux/percpu.h:5,
+                    from include/linux/radix-tree.h:16,
+                    from include/linux/idr.h:15,
+                    from include/linux/kernfs.h:12,
+                    from include/linux/sysfs.h:16,
+                    from include/linux/kobject.h:20,
+                    from include/linux/energy_model.h:7,
+                    from include/linux/device.h:16,
+                    from drivers/staging/gpib/include/gpib_types.h:18,
+                    from drivers/staging/gpib/include/gpibP.h:12,
+                    from drivers/staging/gpib/agilent_82350b/agilent_82350b.h:7,
+                    from drivers/staging/gpib/agilent_82350b/agilent_82350b.c:11:
+   drivers/staging/gpib/agilent_82350b/agilent_82350b.c: In function 'agilent_82350b_allocate_private':
+>> drivers/staging/gpib/agilent_82350b/agilent_82350b.c:482:53: error: expected '{' before '*' token
+     482 |         board->private_data = kzalloc(sizeof(struct * board->private_data), GFP_KERNEL);
+         |                                                     ^
+   include/linux/alloc_tag.h:227:16: note: in definition of macro 'alloc_hooks_tag'
+     227 |         typeof(_do_alloc) _res;                                         \
+         |                ^~~~~~~~~
+   include/linux/slab.h:1041:49: note: in expansion of macro 'alloc_hooks'
+    1041 | #define kzalloc(...)                            alloc_hooks(kzalloc_noprof(__VA_ARGS__))
+         |                                                 ^~~~~~~~~~~
+   drivers/staging/gpib/agilent_82350b/agilent_82350b.c:482:31: note: in expansion of macro 'kzalloc'
+     482 |         board->private_data = kzalloc(sizeof(struct * board->private_data), GFP_KERNEL);
+         |                               ^~~~~~~
+>> drivers/staging/gpib/agilent_82350b/agilent_82350b.c:482:53: error: expected '{' before '*' token
+     482 |         board->private_data = kzalloc(sizeof(struct * board->private_data), GFP_KERNEL);
+         |                                                     ^
+   include/linux/alloc_tag.h:231:24: note: in definition of macro 'alloc_hooks_tag'
+     231 |                 _res = _do_alloc;                                       \
+         |                        ^~~~~~~~~
+   include/linux/slab.h:1041:49: note: in expansion of macro 'alloc_hooks'
+    1041 | #define kzalloc(...)                            alloc_hooks(kzalloc_noprof(__VA_ARGS__))
+         |                                                 ^~~~~~~~~~~
+   drivers/staging/gpib/agilent_82350b/agilent_82350b.c:482:31: note: in expansion of macro 'kzalloc'
+     482 |         board->private_data = kzalloc(sizeof(struct * board->private_data), GFP_KERNEL);
+         |                               ^~~~~~~
+>> drivers/staging/gpib/agilent_82350b/agilent_82350b.c:482:53: error: expected '{' before '*' token
+     482 |         board->private_data = kzalloc(sizeof(struct * board->private_data), GFP_KERNEL);
+         |                                                     ^
+   include/linux/alloc_tag.h:234:24: note: in definition of macro 'alloc_hooks_tag'
+     234 |                 _res = _do_alloc;                                       \
+         |                        ^~~~~~~~~
+   include/linux/slab.h:1041:49: note: in expansion of macro 'alloc_hooks'
+    1041 | #define kzalloc(...)                            alloc_hooks(kzalloc_noprof(__VA_ARGS__))
+         |                                                 ^~~~~~~~~~~
+   drivers/staging/gpib/agilent_82350b/agilent_82350b.c:482:31: note: in expansion of macro 'kzalloc'
+     482 |         board->private_data = kzalloc(sizeof(struct * board->private_data), GFP_KERNEL);
+         |                               ^~~~~~~
+   drivers/staging/gpib/agilent_82350b/agilent_82350b.c:482:29: warning: assignment to 'void *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+     482 |         board->private_data = kzalloc(sizeof(struct * board->private_data), GFP_KERNEL);
+         |                             ^
 
 
+vim +482 drivers/staging/gpib/agilent_82350b/agilent_82350b.c
 
+   479	
+   480	static int agilent_82350b_allocate_private(struct gpib_board *board)
+   481	{
+ > 482		board->private_data = kzalloc(sizeof(struct * board->private_data), GFP_KERNEL);
+   483		if (!board->private_data)
+   484			return -ENOMEM;
+   485		return 0;
+   486	}
+   487	
 
-> ---
->  drivers/staging/media/atomisp/pci/atomisp_gmin_platform.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/staging/media/atomisp/pci/atomisp_gmin_platform.c b/drivers/staging/media/atomisp/pci/atomisp_gmin_platform.c
-> index e176483df301..0abac820299a 100644
-> --- a/drivers/staging/media/atomisp/pci/atomisp_gmin_platform.c
-> +++ b/drivers/staging/media/atomisp/pci/atomisp_gmin_platform.c
-> @@ -1292,7 +1292,7 @@ static int gmin_get_config_dsm_var(struct device *dev,
->  	 * if it founds something different than string, letting it
->  	 * to fall back to the old code.
->  	 */
-> -	if (cur && cur->type != ACPI_TYPE_STRING) {
-> +	if (cur->type != ACPI_TYPE_STRING) {
->  		dev_info(dev, "found non-string _DSM entry for '%s'\n", var);
->  		ACPI_FREE(obj);
->  		return -EINVAL;
-
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
