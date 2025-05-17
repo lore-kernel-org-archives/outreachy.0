@@ -1,62 +1,68 @@
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.17])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-wr1-f52.google.com (mail-wr1-f52.google.com [209.85.221.52])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0EEF4266569;
-	Wed,  7 May 2025 12:19:44 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.17
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A9E28C2C6;
+	Sat, 17 May 2025 00:44:54 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.52
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1746620387; cv=none; b=to0GHj6Xjr2wnq0Rr4VTeLswJqBAdh5uDDSBXL29Ye7kbmuypKqj2ySLZBFikDkWJyEJWVCLykgHZX2rVPzrSjHZ4cCaE15AhyTvKBWTW4hRzOx+lZu+ed8Xda2/WrabDnSGLxqbdfqaLBK1FGagZAOuTHPRKM8IzVndVDldO94=
+	t=1747442696; cv=none; b=P/VGZMXRzSmSs6Kk110T16n9cturNFAnbGRcS4nn2vfRuRhurIIngZXeaTaWjydOdE8pcHp/XBDLKNOdGoCUcHFpmL3Z6ua8Y7Bu+GGBDfd9MUJ6coqOyeCCu5PzpKn6ZxLxBpXBdeKFtrXCpCvhv9t8Lyt3ZkLNPq53yUo0E0I=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1746620387; c=relaxed/simple;
-	bh=8j39bWyb9uVVAz08W3I2qYhnlhcc79hAb95yitzrSD4=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=By2jx3jRz4Tj+1UIDILMDm9cqWmWv8F9+IINAd4PEBjv/OmsAqX8cSTjD9rBmyUGnFXljJAYJ+wgl5QDsMdhVZYPZCGt90Qga9FzaPCLDComzYgDVytLsiJ5yKUMUCji8ePPPeQToZkm3G49XmPbgnXCAFigiBIRa2c6jaLCCsE=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=DiegJaQ8; arc=none smtp.client-ip=198.175.65.17
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
+	s=arc-20240116; t=1747442696; c=relaxed/simple;
+	bh=/+by3nXhLDhd4Fn1kND0TF0mFnJF6MSO/SS5g1gaZ1c=;
+	h=Date:From:To:Subject:Message-ID:MIME-Version:Content-Type:
+	 Content-Disposition; b=caQgblJzCcb7afX+5pG5i4ZSOgGqBbwXAENyQ1fUynkxRcwPsRKNK8E2xNBB0k7vtKc4cEHFO9/Ptcfo5som4UkW8eZqjKiWp9Rjzh8bfHU/Zmw2G8b8XLjeFbNQfrtCR6BI8IYCTvURWQrrX9OjtQiUW6fOunXNkskeix9tgVk=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=LkSVhwVm; arc=none smtp.client-ip=209.85.221.52
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="DiegJaQ8"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1746620385; x=1778156385;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=8j39bWyb9uVVAz08W3I2qYhnlhcc79hAb95yitzrSD4=;
-  b=DiegJaQ8vB1tD9xLSGiG6dAvNUoMPKrex+uB+3qmw2gIxBRqfqdrW0Z8
-   IajS1C5sgC4ASyN2CpHLkC3N+67hQoEn2VM0OqWnMNqoBfZznlAvk9gal
-   VO6h82B/3a1M5t3L7/aHzgbnu5ltE0yN8q5UChleUPlUbNqtgU8i21g8U
-   LgYv/2lAQ1VUmIVqC2yPKpjRNbBjcdoiQEtbDnZVaUA6i+iH8fq0eoQxZ
-   9Zbqmnw7g7KWSoaaQEEbGTNJYxsOK6jnCDE8n2odRhZfrlnXHpP8eB66c
-   bpzrO8ZBTnW13sh5cOJycJol6tJYEr3r7pQ4wTVWknTZVA3owtnrsjmXr
-   g==;
-X-CSE-ConnectionGUID: swHhuUerQJyTkH7xOWboug==
-X-CSE-MsgGUID: WSbm4nEcSs+6qrjIICuRxA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11426"; a="48361240"
-X-IronPort-AV: E=Sophos;i="6.15,269,1739865600"; 
-   d="scan'208";a="48361240"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
-  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 May 2025 05:19:45 -0700
-X-CSE-ConnectionGUID: ++rTbFTeQ8ONub8yGm5hDQ==
-X-CSE-MsgGUID: HHo4MBs2S0GvySho/XDvIw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,269,1739865600"; 
-   d="scan'208";a="135802177"
-Received: from lkp-server01.sh.intel.com (HELO 1992f890471c) ([10.239.97.150])
-  by orviesa010.jf.intel.com with ESMTP; 07 May 2025 05:19:43 -0700
-Received: from kbuild by 1992f890471c with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1uCdkS-0007lZ-17;
-	Wed, 07 May 2025 12:19:40 +0000
-Date: Wed, 7 May 2025 20:19:06 +0800
-From: kernel test robot <lkp@intel.com>
-To: Rujra Bhatt <braker.noob.kernel@gmail.com>, dpenkler@gmail.com,
-	gregkh@linuxfoundation.org, linux-staging@lists.linux.dev,
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="LkSVhwVm"
+Received: by mail-wr1-f52.google.com with SMTP id ffacd0b85a97d-3a0b5b90b7aso339850f8f.1;
+        Fri, 16 May 2025 17:44:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1747442692; x=1748047492; darn=lists.linux.dev;
+        h=content-disposition:mime-version:message-id:subject:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=KFi3hXb3LnVeh0HTaO/tFr2ZpFuhWH1qSxdp9khZGqY=;
+        b=LkSVhwVmh2mEpm0lyBg2Am6cvQE7W86/qBDbg1XmhhiMGDzSNDXLR/w7kPpib2O/4O
+         ui00zXNXhHPaY7LbzpCUzjCyJdo0elV2WXXT+/6IP+A1Bm2myAlmmS2o5MehyPEZvyj7
+         NGSibfq7DfNZnGx90is5GYgWNhSaAjshocj7umq7BsMBKrjJ4O8vRERbmPU35InvIThj
+         psa3c0WehGanieOk1lB4jF92TSQ32oqZCWTMORXXLL2Z8lXOIvpIDEnt+qOqi/pP9IFI
+         orccQz0IVj0OdGl/uuJ9ujmMCJIIu10xBDN/NdAwk59jwtRByUCpjCdLzio6wbgrDAIr
+         zZFA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1747442692; x=1748047492;
+        h=content-disposition:mime-version:message-id:subject:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=KFi3hXb3LnVeh0HTaO/tFr2ZpFuhWH1qSxdp9khZGqY=;
+        b=wcoo0WCRfZQbAfEOUfrm/Alb3Lv9T3qTsXKUXTMSYRJfIGeZHKZwnPk+PFlPIZ7v2N
+         4TPiOGFPtg8nQJsGmFPF3MgqVDJOWYXJBrjq2T+tq7l+DrWiqMdsrzaKOoFhwsIAQgSt
+         lt3wMbW1r0x29GZG/Dfev147Dq0Bj0qoMNQ6AhlJSHpe/AG3z/u9uHemC/NeTDVzVTul
+         v285v08XPFiTquxjincyhPIf7KHUuY5S0yOqhOzFBNcdetf6Tfa4dcXYRrxwYlVOSdRJ
+         mtJC/VQX4GbGg1BlJnH11vsM4MrcvEjgbwlUhWMQwwAfNOnCr1+OXtiRPjHR0FKxrNsK
+         aAMQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUEHCffT/WEFHVIC0h3vXrwSkFTvbeBWzLnkjqE2T63PC/0s/KajemXXBe/1smw7NudXy7dD0TWV6K3MGuB@lists.linux.dev, AJvYcCUWlDYS8zuCjJNvqTJMj/QDPs1cr8ZVGsaF4LE6iBI/DUQ1Fok+ISO/2DRrfs9lvSj28QD+sJ6dvKJ3@lists.linux.dev
+X-Gm-Message-State: AOJu0YwVnqxI9L++1COgpz1ljShBOK+/pqu+tbKi9g+bcGjoAzU3oLfr
+	YuG5qHp5deuaYVhUQdZqPxBy84O3EhBi9bRyS8aLfh/1nRAmyql29b+MkP+f+DCgaJxbiw==
+X-Gm-Gg: ASbGncvMV7koIhxvLul/E0eAiBa3hYfCEj2BLznHqCEtaGENuJ6KTSuTyk3LO7wZvK0
+	K2LHPemGGA6Mwprpipt0buQjRVAKEmY3qveJL6tDna2G+63jfpsZx+f0caM7W5KnM1h2wugr6wp
+	fJT+13tik0x004sRB4+zOXZKqR/RwRFqqGWXLRsS7EQLc66urP00ndy++FIc9zGYvfXrKR9pflM
+	R8gIJPTz2c1Tekq2GB9VkYI7pUaCz5AzbKtA//UrvOqHWOmlNw7zF8eyQhcC6yAURF7/VDWmDik
+	Ar1aN69NpUK0MNboSk4HgonM5yTxfVve+mVxLHpi4V3rCfzeTnB9G1Ive3AB0GH7vU6f4CwTA4W
+	+r3G7CYpNi3SitMWGoo8jqQ8Fa0UN1VE=
+X-Google-Smtp-Source: AGHT+IF7M0QjmcH5fM4rPfAaywYSX4Aye22dDXl+najl/T2IKNfDsnLuCvDvrs73TdZFi6lL5IR5JA==
+X-Received: by 2002:a05:6000:4201:b0:39c:1ef4:b0d1 with SMTP id ffacd0b85a97d-3a35c8450e1mr1882358f8f.10.1747442692288;
+        Fri, 16 May 2025 17:44:52 -0700 (PDT)
+Received: from milos-ThinkPad-T14-Gen-3 (global-184-11.n-1.net.cam.ac.uk. [131.111.184.11])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3a35ca8896dsm4417289f8f.73.2025.05.16.17.44.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 16 May 2025 17:44:51 -0700 (PDT)
+Date: Sat, 17 May 2025 01:44:50 +0100
+From: Milos <milospuric856@gmail.com>
+To: gregkh@linuxfoundation.org, linux-staging@lists.linux.dev,
 	linux-kernel@vger.kernel.org, outreachy@lists.linux.dev
-Cc: oe-kbuild-all@lists.linux.dev, braker.noob.kernel@gmail.com
-Subject: Re: [FIRST-PATCH] staging : gpib : agilent_82350b : agilent_82350b.c
- : fixes checks on the file
-Message-ID: <202505071942.wmYV0pa2-lkp@intel.com>
-References: <Z_-nR5Vt2A5kvbro@brak3rDesk>
+Subject: [PATCH] staging: rtl8723bs: Align next line to open parentheses in
+ core/rtw_xmit.c
+Message-ID: <aCfcAsM5OBo7HcOg@milos-ThinkPad-T14-Gen-3>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -65,99 +71,31 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <Z_-nR5Vt2A5kvbro@brak3rDesk>
 
-Hi Rujra,
+Adhere to Linux kernel coding style.
 
-kernel test robot noticed the following build warnings:
+Reported by checkpatch:
 
-[auto build test WARNING on staging/staging-testing]
-[also build test WARNING on staging/staging-next staging/staging-linus linus/master v6.15-rc5 next-20250507]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+CHECK: Alignment should match open parentheses
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Rujra-Bhatt/staging-gpib-agilent_82350b-agilent_82350b-c-fixes-checks-on-the-file/20250416-205032
-base:   staging/staging-testing
-patch link:    https://lore.kernel.org/r/Z_-nR5Vt2A5kvbro%40brak3rDesk
-patch subject: [FIRST-PATCH] staging : gpib : agilent_82350b : agilent_82350b.c : fixes checks on the file
-config: x86_64-randconfig-002-20250424 (https://download.01.org/0day-ci/archive/20250507/202505071942.wmYV0pa2-lkp@intel.com/config)
-compiler: gcc-12 (Debian 12.2.0-14) 12.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20250507/202505071942.wmYV0pa2-lkp@intel.com/reproduce)
+Signed-off-by: Milos <milospuric856@gmail.com>
+---
+ drivers/staging/rtl8723bs/core/rtw_xmit.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202505071942.wmYV0pa2-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
-   In file included from include/linux/percpu.h:5,
-                    from include/linux/radix-tree.h:16,
-                    from include/linux/idr.h:15,
-                    from include/linux/kernfs.h:12,
-                    from include/linux/sysfs.h:16,
-                    from include/linux/kobject.h:20,
-                    from include/linux/energy_model.h:7,
-                    from include/linux/device.h:16,
-                    from drivers/staging/gpib/include/gpib_types.h:18,
-                    from drivers/staging/gpib/include/gpibP.h:12,
-                    from drivers/staging/gpib/agilent_82350b/agilent_82350b.h:7,
-                    from drivers/staging/gpib/agilent_82350b/agilent_82350b.c:11:
-   drivers/staging/gpib/agilent_82350b/agilent_82350b.c: In function 'agilent_82350b_allocate_private':
-   drivers/staging/gpib/agilent_82350b/agilent_82350b.c:482:53: error: expected '{' before '*' token
-     482 |         board->private_data = kzalloc(sizeof(struct * board->private_data), GFP_KERNEL);
-         |                                                     ^
-   include/linux/alloc_tag.h:227:16: note: in definition of macro 'alloc_hooks_tag'
-     227 |         typeof(_do_alloc) _res;                                         \
-         |                ^~~~~~~~~
-   include/linux/slab.h:1041:49: note: in expansion of macro 'alloc_hooks'
-    1041 | #define kzalloc(...)                            alloc_hooks(kzalloc_noprof(__VA_ARGS__))
-         |                                                 ^~~~~~~~~~~
-   drivers/staging/gpib/agilent_82350b/agilent_82350b.c:482:31: note: in expansion of macro 'kzalloc'
-     482 |         board->private_data = kzalloc(sizeof(struct * board->private_data), GFP_KERNEL);
-         |                               ^~~~~~~
-   drivers/staging/gpib/agilent_82350b/agilent_82350b.c:482:53: error: expected '{' before '*' token
-     482 |         board->private_data = kzalloc(sizeof(struct * board->private_data), GFP_KERNEL);
-         |                                                     ^
-   include/linux/alloc_tag.h:231:24: note: in definition of macro 'alloc_hooks_tag'
-     231 |                 _res = _do_alloc;                                       \
-         |                        ^~~~~~~~~
-   include/linux/slab.h:1041:49: note: in expansion of macro 'alloc_hooks'
-    1041 | #define kzalloc(...)                            alloc_hooks(kzalloc_noprof(__VA_ARGS__))
-         |                                                 ^~~~~~~~~~~
-   drivers/staging/gpib/agilent_82350b/agilent_82350b.c:482:31: note: in expansion of macro 'kzalloc'
-     482 |         board->private_data = kzalloc(sizeof(struct * board->private_data), GFP_KERNEL);
-         |                               ^~~~~~~
-   drivers/staging/gpib/agilent_82350b/agilent_82350b.c:482:53: error: expected '{' before '*' token
-     482 |         board->private_data = kzalloc(sizeof(struct * board->private_data), GFP_KERNEL);
-         |                                                     ^
-   include/linux/alloc_tag.h:234:24: note: in definition of macro 'alloc_hooks_tag'
-     234 |                 _res = _do_alloc;                                       \
-         |                        ^~~~~~~~~
-   include/linux/slab.h:1041:49: note: in expansion of macro 'alloc_hooks'
-    1041 | #define kzalloc(...)                            alloc_hooks(kzalloc_noprof(__VA_ARGS__))
-         |                                                 ^~~~~~~~~~~
-   drivers/staging/gpib/agilent_82350b/agilent_82350b.c:482:31: note: in expansion of macro 'kzalloc'
-     482 |         board->private_data = kzalloc(sizeof(struct * board->private_data), GFP_KERNEL);
-         |                               ^~~~~~~
->> drivers/staging/gpib/agilent_82350b/agilent_82350b.c:482:29: warning: assignment to 'void *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
-     482 |         board->private_data = kzalloc(sizeof(struct * board->private_data), GFP_KERNEL);
-         |                             ^
-
-
-vim +482 drivers/staging/gpib/agilent_82350b/agilent_82350b.c
-
-   479	
-   480	static int agilent_82350b_allocate_private(struct gpib_board *board)
-   481	{
- > 482		board->private_data = kzalloc(sizeof(struct * board->private_data), GFP_KERNEL);
-   483		if (!board->private_data)
-   484			return -ENOMEM;
-   485		return 0;
-   486	}
-   487	
-
+diff --git a/drivers/staging/rtl8723bs/core/rtw_xmit.c b/drivers/staging/rtl8723bs/core/rtw_xmit.c
+index 026d58b4bd7f..8c6841f078b4 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_xmit.c
++++ b/drivers/staging/rtl8723bs/core/rtw_xmit.c
+@@ -381,7 +381,7 @@ static void update_attrib_vcs_info(struct adapter *padapter, struct xmit_frame *
+ 		while (true) {
+ 			/* IOT action */
+ 			if ((pmlmeinfo->assoc_AP_vendor == HT_IOT_PEER_ATHEROS) && (pattrib->ampdu_en == true) &&
+-				(padapter->securitypriv.dot11PrivacyAlgrthm == _AES_)) {
++			    (padapter->securitypriv.dot11PrivacyAlgrthm == _AES_)) {
+ 				pattrib->vcs_mode = CTS_TO_SELF;
+ 				break;
+ 			}
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.43.0
+
