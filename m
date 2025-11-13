@@ -1,100 +1,109 @@
-Received: from mail-wm1-f47.google.com (mail-wm1-f47.google.com [209.85.128.47])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from out203-205-221-245.mail.qq.com (out203-205-221-245.mail.qq.com [203.205.221.245])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5597D2EBBAA
-	for <outreachy@lists.linux.dev>; Mon, 10 Nov 2025 08:32:44 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.47
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9337734F47B;
+	Thu, 13 Nov 2025 12:53:02 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=203.205.221.245
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1762763566; cv=none; b=OgpTUDxR6Z5D5Xcmh/6KlnEU0lQ6AzxhhBQKSU6dZe3bZzDog3sM3hTjoSVBIo457+kbGnG40oY4lxT6FmYCgGxvrXInL0naBgNswyEv3Y/U+1UEXBzInLalo6SXqgK8W2Cm2EhOtiuRExdAdKS/LjtsHGNtTfPTZKCf1oJKzJs=
+	t=1763038385; cv=none; b=rUd5Uu8MEEGM9kezT6DsrozNli5/G+0gEJi7KWsTIsBRXqKIwCQFv9jv2yfSEARPrrkviT3CTRv7mp4limenrC1299BUleyxkGUuN/ZusqkcnSIAx1yp+qRFIjF/t59/kj7WzoaoPq8arKfzU5PIszSsro/2FXuMofIla2OJyJE=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1762763566; c=relaxed/simple;
-	bh=Kk1WJL5OvO8Dk0a049qkF4L/FOOdQuOXnHdfhx4ehaw=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=E95T+RUz/j4JCRWEdao5YSsYKQfAvCp802LyMh20yLL1nW8qKtp957hZTVCiTVkK8j3S4ZV3oIn+i7PBzhjhcuhjrGfNmzrd8ydYGk57n7I45fvS/EWNv32MNVKW8xWtwDnESRxzQQVjDVHJE2B5FPHXmC+IkMGDguKkHdUPt5o=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=PVtjJBrR; arc=none smtp.client-ip=209.85.128.47
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	s=arc-20240116; t=1763038385; c=relaxed/simple;
+	bh=sOv3gpVFSUTOf8qccBUFlmorrQlW6YAkct0+Z3bQd3Y=;
+	h=Message-ID:From:To:Cc:Subject:Date:MIME-Version; b=SRwdSK4C1oTvyh+cJpiP3BaSHkip4wpXc/6u81W34k5xrzhnA4w8FYEteZKLwFcgC2GZgGak4/FZxd9H02Ij5lD/PJcgq3v53CZV4EYoL1V9DKM12X5SVkEqEbZwu/Hmr8IM8VcJ7vqa/HAoXxTUv1UFXvXKtqniT1UWCyfWbrU=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=qq.com; spf=pass smtp.mailfrom=qq.com; dkim=pass (1024-bit key) header.d=qq.com header.i=@qq.com header.b=GPte10Uk; arc=none smtp.client-ip=203.205.221.245
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=qq.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=qq.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="PVtjJBrR"
-Received: by mail-wm1-f47.google.com with SMTP id 5b1f17b1804b1-477632d45c9so17685675e9.2
-        for <outreachy@lists.linux.dev>; Mon, 10 Nov 2025 00:32:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1762763563; x=1763368363; darn=lists.linux.dev;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=/w7B3riPQ5vl5Qmlqum2iiqORAdpBKrl5g+Ab18w8+4=;
-        b=PVtjJBrRBm4uoT4sApP0u/jlaLUpV3zITTLkat0h655oM9C/ywE/RqzonPR3yPk4G6
-         euNRKkJiPoIn9wEZ1eyYEHkpyai7+JfM/DxIc4Uhx0YPQ1kEZ6OSahKkupvv6haOvYaG
-         yEh9ZBFASl8XtsXC414NFn5LxISH5xQshVZRcD1kDCFeGTqgPHFJMtmvB46a0Q/tEnwb
-         Hf0CrG9yG7FHF4+vpJPSPrFjiOZdOgS4c5kRhYITMSmiewKBDeW+CSlmoUBGCwE5gWyI
-         pvTpxdkO09baRxantHJ3NYYic9hsvWdy0H8DYeWW8vqzeCz9lnfBSvark0mO4agH+Wjg
-         1B+w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1762763563; x=1763368363;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=/w7B3riPQ5vl5Qmlqum2iiqORAdpBKrl5g+Ab18w8+4=;
-        b=X03ew90eOdLF+14nfXGrVZo2NY1Fh9y8Cxie/F985xHQdDablmGxnbqGe5QyQ65VnV
-         usdslbpcE/vRTNKE9Gt8Aykt3ffTphQMc3zlCWikKDR6pCW9hOdycXRR4qH47bgY+TEF
-         ltI5xoJZX4duM9rLByvnu0blsvHMSewg79XRfpA1MHhG0DU3GO4vSTtBL/NNMerbdoij
-         FAdmMV7xGl+nh0GG+9snAsRe/oKyRK9GHUVTbORpci+kfSkxAxNWEqBVZ60pcpE9u/op
-         0//yCFYH2DDrDRpWAh9D/TUVotlkg0crs9snZ5enkTd6ciN3wk1anL64Kalk4ra5CiQT
-         EFvw==
-X-Forwarded-Encrypted: i=1; AJvYcCWwJD4LAH4WZVrvEmyhRVaU9++KIElIIp74lc4VhvmlUxSy41gGsz1yOLEjhSl1dHyGkWYOo/Cl8l0=@lists.linux.dev
-X-Gm-Message-State: AOJu0Yw7yXlwKkBf8JTbKUgjisRxI3WxpN4JtGKwSNbGoIqnzQMB0SK+
-	DkjG27flnqCC/ptQfpypZmO7XBys+DjH1rH+8IDB5NW3Z0mCjfL5kQas
-X-Gm-Gg: ASbGnctV+ceda3rc9O/K8Ol3UT0ROTFR+QKgpROw7pgTYT5FpHTa/Pd+xaJ0RF+JoOV
-	hqyTPA4cfrjUPHhgTr7hXQyAACUmFMmpaxHawXuDqpB5tg3btg2wNQjK9t3MXCsmV4iI9n7agVE
-	jY6OjftGtMy8nc89fShNLY8fvLVQqPu/7JiYpaXGNVgb1vLN1wZ4J16p4ASxHUqXpkr57emJexT
-	NnPFzFmL0FnWwzPo33XIoQgm3eEwMQ7+8X9ORkeiLqr6zX0PaDU3xJgYm9IMtOw0cD5l3sPx8tb
-	yoRqMLRl0Mavo2sVOT82Q7QJ3FMxKxA5Bj5MDC1G2LoQs73DjiR8Jc8uNHd9uCXUD1n+JlIYp9+
-	zWwLjS085SwxL0p6BFVv3sHwVw50O4zAy7oY9I4WjqFgUPjP8it5iWxpSli0RZd4o7uBbvyhK35
-	nKhi0QT2L4A8VxljN5
-X-Google-Smtp-Source: AGHT+IGhuQxvdIPqXmeyml0g9xi1//VxE7hSufLSKRdx3skhW6foVF8bcmEFQM/y9SQegjaQJUtq6w==
-X-Received: by 2002:a05:600c:4ecc:b0:477:28c1:26ce with SMTP id 5b1f17b1804b1-47773224fd3mr68310335e9.7.1762763562445;
-        Mon, 10 Nov 2025 00:32:42 -0800 (PST)
-Received: from egonzo (82-64-73-52.subs.proxad.net. [82.64.73.52])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-42abe62bf40sm20385624f8f.9.2025.11.10.00.32.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 10 Nov 2025 00:32:42 -0800 (PST)
-Date: Mon, 10 Nov 2025 09:32:40 +0100
-From: Dave Penkler <dpenkler@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Cc: Michail Tatas <michail.tatas@gmail.com>, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy@lists.linux.dev
-Subject: Re: [PATCH] staging: gpib: converted // to /**/ comments
-Message-ID: <aRGjKOJmbiFYua24@egonzo>
-References: <aRDo9UtYTwcoFCFm@michalis-linux>
- <2025111014-arguable-antelope-1d9b@gregkh>
+	dkim=pass (1024-bit key) header.d=qq.com header.i=@qq.com header.b="GPte10Uk"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+	t=1763038379; bh=/GQTtJfCoEQKgTxPit1J56QLlgdP/pwagyLI+EW9z0I=;
+	h=From:To:Cc:Subject:Date;
+	b=GPte10UksDW0uVsGPWgzOEPS5yhzbz4yxdSCBES7bVNEEWfBda4P4PlDtFsx+17IJ
+	 DjYx3v5f1GCyKT2ewr5M8+uxSz4L+FkBbo1mWlQ/YgpgjUvPL11NBvYgaK9DLTEeyp
+	 4GbfsmpVhgJ4r82Wkdc/8/zQkVDzDFZ5rCHWTt+8=
+Received: from cjz-VMware-Virtual-Platform ([110.176.66.153])
+	by newxmesmtplogicsvrszb20-1.qq.com (NewEsmtp) with SMTP
+	id D393A6E6; Thu, 13 Nov 2025 20:52:57 +0800
+X-QQ-mid: xmsmtpt1763038377towqfyh7c
+Message-ID: <tencent_67481983755837947ADD1DAD8BB36FEF880A@qq.com>
+X-QQ-XMAILINFO: MvUAcPkRmFBfRVa3KPbA1xUSqTPMJ44CrUz1iwiZsKDSpzjyo2Sr6sDvcPYZJm
+	 3BCS7uVdl9iraSveiOzE24J4FEXP6h9eKDUWhHCK8JQWzJq5K9umCDt53NxJm3+CGnRUB5UA7CDt
+	 OrCakPxHrv+iMXSznNA668OUpiBXzV54l97536ivDu803QZ2NpUi1KFu0FhMeAhowc+l71fONuzD
+	 7MvPhZXcmakgsjq1HPg8mNiGpCn/d0ImziZlXh9v2/Np07jcRlCr42aNvw1YU5QlGvg/lmOsRaDn
+	 kRpcbAvu7n+MQUrVaNQCtgYltagMKOqaN9dFhWJcjYv8l5JRTi4tDVsMAYF/LzcVdBm3yL5LoR9m
+	 MNkeqlD5cKIZtJ+1XaujN0car7jyFZNAAYapo0k4wkwErrN6DBrH+zxjrPuvmh3nj5QRTrrEkzX0
+	 oTvPXHrQ24XUkIij/zdPORFYYON/BpkSYO5tqBO+FRPPwTcy2B9fYlUGQBRxwt/jmQm4LfcnMrci
+	 z4yeD7IwQ0PbsuOQbJsHBhmWcRUXt9ilH1Q9S9mkXegDt4vwB6TpBsDRUxE2dFInUmgUtNYQha+3
+	 wpOqKpfoaejUEe0OhAjDTbrgaKwMKpouz7Oe+hQV++FsN/xV5wh53fAsG+qjAxIZPXrMEuZNJ304
+	 rjQDPGtvZEpOopV08vIf2dcTxR1q6TCrxHB00FGz6bxXnWqaafpVD9Ra8gIlpPrQZwpsTJNowgs4
+	 /ZVxLLuo9uDAjwlLfPvjuP2Giz6xQvYbl/ClNWqTsFnaZ8UVIWWs2viwrAjBiaaC7nSwx6/90LWB
+	 E3DpoII47GmesnuhG2JuWc8tyKznCRbn9gaAwu2fzYsIooLoHlo+P9H19z0nkOKcjvRiaeH5bDDr
+	 rpyFavu58U6mlSYcaM11VH0tYJ4h0FbLSRLl7/+lQGD3VAHPu7sh70iOU6av8bfLSTN51iLJeFRr
+	 Wr8ccLMZkxGRW7lifrAoCz6zHdn46nfKllWRlr5URMLSoRn+GGq2amUZZfWOfb51mcULlx42+GA2
+	 6V4xZbvgxp48AzW7Bs
+X-QQ-XMRINFO: NI4Ajvh11aEj8Xl/2s1/T8w=
+From: Chang Junzheng <guagua210311@qq.com>
+To: outreachy@lists.linux.dev
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	guagua210311@qq.com,
+	Chang Junzheng <guagua210311@outlook.com>
+Subject: [PATCH] staging: greybus: audio_manager_module: make envp array static const
+Date: Thu, 13 Nov 2025 20:52:52 +0800
+X-OQ-MSGID: <20251113125253.72693-1-guagua210311@qq.com>
+X-Mailer: git-send-email 2.43.0
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <2025111014-arguable-antelope-1d9b@gregkh>
+Content-Transfer-Encoding: 8bit
 
-On Mon, Nov 10, 2025 at 09:56:00AM +0900, Greg KH wrote:
-> On Sun, Nov 09, 2025 at 09:18:13PM +0200, Michail Tatas wrote:
-> > This patch converts comments from // to /**/ to make them
-> > consistent across the file as suggested by the TODO file in
-> > drivers/staging/gpib/todo
-> > 
-> > Signed-off-by: Michail Tatas <michail.tatas@gmail.com>
-> 
-> That todo file is a bit out of date, we now allow single-line //
-> comments, so this really isn't needed, unless the maintainer wants me to
-> take it?
->
+From: Chang Junzheng <guagua210311@outlook.com>
 
-No, I am fine with the // comments.
-I have a patch for the TODO in the pipeline.
-cheers,
--dave
+The envp array in send_add_uevent() function is declared as a non-const
+local array, which triggers the following checkpatch.pl warning:
 
-> thanks,
-> 
-> greg k-h
+WARNING: char * array declaration might be better as static const
+
+Change the declaration to 'static const char * const' to improve code
+safety by making the array read-only and allow for better compiler
+optimization. This follows the kernel coding style recommendations.
+
+Signed-off-by: Chang Junzheng <guagua210311@qq.com>
+---
+ drivers/staging/greybus/audio_manager_module.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/staging/greybus/audio_manager_module.c b/drivers/staging/greybus/audio_manager_module.c
+index 4a4dfb42f50f..ca6a2cd0bc4f 100644
+--- a/drivers/staging/greybus/audio_manager_module.c
++++ b/drivers/staging/greybus/audio_manager_module.c
+@@ -159,14 +159,14 @@ static void send_add_uevent(struct gb_audio_manager_module *module)
+ 	char ip_devices_string[64];
+ 	char op_devices_string[64];
+ 
+-	char *envp[] = {
+-		name_string,
+-		vid_string,
+-		pid_string,
+-		intf_id_string,
+-		ip_devices_string,
+-		op_devices_string,
+-		NULL
++	static const char * const envp[] = {
++						name_string,
++						vid_string,
++						pid_string,
++						intf_id_string,
++						ip_devices_string,
++						op_devices_string,
++						NULL
+ 	};
+ 
+ 	snprintf(name_string, 128, "NAME=%s", module->desc.name);
+-- 
+2.43.0
+
