@@ -1,109 +1,128 @@
-Received: from mail-wm1-f67.google.com (mail-wm1-f67.google.com [209.85.128.67])
+Received: from mail-wm1-f41.google.com (mail-wm1-f41.google.com [209.85.128.41])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EC6C732692D
-	for <outreachy@lists.linux.dev>; Tue, 10 Feb 2026 06:50:41 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.67
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 01C8E352F9C
+	for <outreachy@lists.linux.dev>; Tue, 10 Feb 2026 10:19:56 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.41
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1770706243; cv=none; b=P1bwfGYBUN7L7cw0QTKSDNWOYb/ti4T87bjI1lhNtdZOGddxyY+3+uXx/3MwM3vk47kXHofBflpdA3l1d2/buZ4cEnlAgVNgEr9NjGRhFGnCAUjQlapQE6/QeavdB1bRcos8ucTOpCu5q9X2nLyUAOhuNh/A5XkF2qXb983ZPw0=
+	t=1770718798; cv=none; b=YQL30cZ6sJDYJdva/b9brirqudiQtqzKkHkHGKKs5/mqzhc5Xf7UKpTEPXUxMTuf9jlU2UB5J01UNgn27HX+9O4Q1p8wDfCmgx6Z5f1fsq8if7g4eahLVTzHbslPlNpSnJmhQmnNIx1kDSth5sb/IyIzuPtjrBt3He4M3xWYHvg=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1770706243; c=relaxed/simple;
-	bh=ziIwfdWrLMZKQdz88g4/Gp2tXYcAS67ujYqr2k5I31I=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=YbW9ZONbFLZO853bkGcfLmE/KogoDZ6m6F1WLlc18I0rSlqmuuIOIOsJCsvOcUSTQtEIcD18y4e9ziFabLTweF0Rjhc8Uo/yTxmHUJe49fMidQ5jx6jPaygdqMdUOJjJrX4lueHs60ZIwLtddOya5xOSJHW9b/+/ZnR+7/ljYnw=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=YLdBn6G6; arc=none smtp.client-ip=209.85.128.67
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
+	s=arc-20240116; t=1770718798; c=relaxed/simple;
+	bh=a6vGBLE1u2hj1foMl06tHlMugPoZCqkWUUayvZUGFEM=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=kU2ORAmtn+9RIH3LR215qr/QdKVjswrtmqX6hfylTfoc3PNXixhT0YELpR2GrKJODKCkh+mMp2AeGe2D8DbmWKuFHhYCKsB3QFbCFbmAd2qzdhXumlmMaapmKonA+1RrHmTQuoweI8gQWSgSSfkTj0tKXI/HqPXd56DWfCs6ZRY=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=j6finY4u; arc=none smtp.client-ip=209.85.128.41
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="YLdBn6G6"
-Received: by mail-wm1-f67.google.com with SMTP id 5b1f17b1804b1-47ee0291921so35945015e9.3
-        for <outreachy@lists.linux.dev>; Mon, 09 Feb 2026 22:50:41 -0800 (PST)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="j6finY4u"
+Received: by mail-wm1-f41.google.com with SMTP id 5b1f17b1804b1-482f454be5bso54232075e9.0
+        for <outreachy@lists.linux.dev>; Tue, 10 Feb 2026 02:19:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1770706240; x=1771311040; darn=lists.linux.dev;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=ns007NcOBuy7TVgVTAMiclCNP5pgSsFA2zQweJd7GMY=;
-        b=YLdBn6G6whpdNFla3UyvkYw+UtNhxb41W8Kyqplp6LNWYbgY6VRydyQWzREYOZVkGW
-         680nhk4+YNfA7OaeOnskyHvv9hcCWRgt8Y5nE7oN1qOvDDtsiHd8Q8BUZLxQw0wrfy1Y
-         2y8YMD+wLbKERwyVVihOi0vlQzKfKD8bf9JifQmwexNlBMNMzjvFOBMgsdqx92BsekEU
-         jHdMSEhXasp4/MmHvIA7hcAXL7ZYCxJlr5iOpRRz0bWZaqnohWRAB5hT0lcuunLlkadQ
-         LNhXcx0/GZlAp7AT+I1XSZ3ivUQtxQYXyDXDLyupw9oDo1sSzuXX1Ss5pMecbVn4q1f7
-         XYGg==
+        d=gmail.com; s=20230601; t=1770718795; x=1771323595; darn=lists.linux.dev;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=fPmvvfUUyQ4LIE9KNYKtxQHjVRED/OZWx09lHdwFmBY=;
+        b=j6finY4ujcG2OOcus+jOoBp0JGCgGIBrXRpo2DDFcLzDmJ8QIX57w5rNmiHLG5rfGC
+         jr8Q8/+dLnY6JUUsq0seVq+zwGZ9Uvdx843oFof71Tf+fVCMN5U2vHOWhPzwg1Na99CQ
+         /imZqoAvNUYUOazvqKHIsf0AGQjR3KG/5CqVNtIjR2Gy6NC26aXc4X6cExOc/hHhl52e
+         aU1oo6I3E0aHN2RfyPqIcy38HM+4KPl2XN2YqZx5h8YsWb2j2hrm77chsV1RSxuw98qg
+         LKO6fAr/DoU3jmdnaYY96vVD9FIzTnOMc7W7ue2eL/RgIvXqmhFuWy3g1fiE4fOkFBDf
+         Uqsw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1770706240; x=1771311040;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ns007NcOBuy7TVgVTAMiclCNP5pgSsFA2zQweJd7GMY=;
-        b=UlGj/376LhfXc5e/XK9KNMHKhxNtceQWtt2BdsxY7Fw3/n3z4CQJg5uW2BNmTnAf2n
-         dis32ZPpmOYxv7JGu7KwUh3gTF2vmHDctxEzzGySCk9PiTZ2uJ/NctbzfIIclF8ISWx7
-         976IgcI0sjrhX5DEwIRuZ+gWOa3YiY+utc6bBgqQ4g7vuGwBYmqSshkEwTd6zC/Djk8f
-         5midu1SOwnYHtnmz1INsiFxkWhZpcXMMnyNhFKx5VXFbPIxlH5zFw2a1lXTJn8TyFCKS
-         Ww0Hwybpq3h9RMzKwAZ5GyUA+4p+nxrvW6P/qii2Wjp5B8itryOAW8BaaCknkfF2SREI
-         0EEw==
-X-Forwarded-Encrypted: i=1; AJvYcCUOHp0e9ApjflR7CAv/eQaxCUGDW5Lv2MZtPJ3yWbV5FHIYf8jZMMs9rTac1nv0FPIoDC916kp8f6Y=@lists.linux.dev
-X-Gm-Message-State: AOJu0YyFv+g6SDVFnSThsrkpvLqsBckdFBQ1ySwx6fpoyLmdoVmD67lg
-	8H+Y4WBLG+EuvaY7PHLzbW43yAoMfkaqq94NQ7BKOQ2RJBv+6bDwGtEWiNTIbZVciXM=
-X-Gm-Gg: AZuq6aKbDlMqy1XNv96swHmVGrpnCYJ6S9X/aK++ZQCyqX8V8aW4NqM7vafOvstm2UA
-	OiBmn8t5X6eNdQsJbuEe4mpbEhHfBFIGyJOxs5w7GoTn1E89ouXnZdqSMsmvXJEsifj8ShF4kqs
-	XMGN65NdKuv+Y7Pfw1tHmqc/kVq8SX1lk1Zd4n2SLbz6nsnQ4NHklvQsD2MdB4GAQ21Z/gwCYML
-	N83v+LsXUJNo7BdZR8ViUz9Et1DFH/9fMCOe/BVw3kbI+67KYdLPNWK6lXIZsiZdzr80ckz4gk2
-	9Rpa4T5cwtqXTMeJSo8N80i1J00gF6g02swDrNeAKl8ImcQgKckzNlSRT17RAmwRb9GtHubZ3mW
-	JymVunE78XjHuesPNOjgMOHo/zEgGLOnU+nXID6i709RC1wxyG8c0JX0m/XKvpB1G7nfojtAe3z
-	80MpYPIsNuhkSxtcZcZkK1Jhh9/FPP
-X-Received: by 2002:a05:600c:5253:b0:471:114e:5894 with SMTP id 5b1f17b1804b1-4832021c93cmr206793935e9.25.1770706240265;
-        Mon, 09 Feb 2026 22:50:40 -0800 (PST)
-Received: from localhost ([196.207.164.177])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4834d7d53c3sm42953265e9.7.2026.02.09.22.50.39
+        d=1e100.net; s=20230601; t=1770718795; x=1771323595;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=fPmvvfUUyQ4LIE9KNYKtxQHjVRED/OZWx09lHdwFmBY=;
+        b=MOdzbUso60YIJZJDEv1+75qDD4XA/3hk7qW8DZ3nmwknUkUYVpBfZdAWDLro9n4jEC
+         WrofViwDvVxpoqZVBHh12XvinxGsCc+OMx6mMFlHhgTTmDHMDB03/chFlijAXqZ4pGUv
+         rGi0ZifjeYC8Bgw6TZwev5CHeZlS0HlJ6+k4BG7trd8bfWN7Sw/DNO89nM2uQaeGsLNg
+         r9cH8gzdOnLAfLARGcMJQ1V6YpD/K1z3Quhls++YLN4VeOGbkI9VstiOTfqCvHgSc9EF
+         s566IcxWq8JdCukLOKwNhbLYXi0dW4CV/rgLt7V4m8EmX01s4/q5qF/MVO5RzyGk8KuR
+         TCtw==
+X-Forwarded-Encrypted: i=1; AJvYcCWsfR9xEWC94Y4CInfAAeL7CZVV3Ixh4t6RO5YQyZ1Gy1/T5TjrQes8cjZ8yD0gKJqptdxJ0osMBr8=@lists.linux.dev
+X-Gm-Message-State: AOJu0YxLqeG7c32R0c4ydyPBcrxbMFXN4ZpR4A6BtC4Apkhkm6fvA8VO
+	umebi9+pb1/OIo4zgudpAHDgs/zVRG1eRC1Neu4VHR+TxFyT47AIUFIb
+X-Gm-Gg: AZuq6aLZLwPk9JKkamB2p1MSMBFO2+hN58X0yeZCFZ2tHVORZ2cb3eg9STl8w51oESf
+	+x2cMh3dDCKJmS0D6Se6JE7H5ykKkVuoPoaU3VNXdGSJhDZ5S2naS5cDVtX9HEC7YnsC617QKpp
+	0V4IntIxaDadePBP/oNcoM30+w1tJ5mzF8OpXUi8Uy1HilQJiv85kfxdsbu3MFkhNusdxGamok3
+	+S1cN++32BTr6v33xicPaRCjPWXnWoVit2sWbrlAt/plIY8cgz2UzXbEAM7WbkcQ10xJ91MrKMK
+	RRGGK908qPB02vsfxcp9ruU53tqv3LRE1a2WJM7GdmP0w9GCbEZbZG+x+CYUrBf1Ksea+SfTsr1
+	Y5UFdWO5DbiOTd2g96bQxOqU3ZfRxA7X4xRQXnYkip4ap2bcgRTh2961RjUTPdKP4R2bb2KvZGk
+	nBL5GMAt3tg6pQCns2ir8lekS+bsPwSNWzpBRDxyXXd3vfmxdcJ1x0a2d1f4EMOQz3
+X-Received: by 2002:a05:600c:6c5:b0:47e:e48f:43b5 with SMTP id 5b1f17b1804b1-4834ffb25fdmr14935985e9.18.1770718795213;
+        Tue, 10 Feb 2026 02:19:55 -0800 (PST)
+Received: from pumpkin (82-69-66-36.dsl.in-addr.zen.co.uk. [82.69.66.36])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-436297462a8sm30950423f8f.30.2026.02.10.02.19.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Feb 2026 22:50:39 -0800 (PST)
-Date: Tue, 10 Feb 2026 09:50:37 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
+        Tue, 10 Feb 2026 02:19:54 -0800 (PST)
+Date: Tue, 10 Feb 2026 10:19:52 +0000
+From: David Laight <david.laight.linux@gmail.com>
 To: Yoelvis Oliveros <yoelvisoliveros@gmail.com>
 Cc: gregkh@linuxfoundation.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy@lists.linux.dev
-Subject: Re: [PATCH] staging: octeon: type change from uint<bits>_t to u<bits>
-Message-ID: <aYrVPUj1nma3DUPo@stanley.mountain>
+ linux-kernel@vger.kernel.org, outreachy@lists.linux.dev
+Subject: Re: [PATCH] staging: octeon: type change from uint<bits>_t to
+ u<bits>
+Message-ID: <20260210101952.631bf50c@pumpkin>
+In-Reply-To: <aYq028TNyXQWZ_v5@home-pc>
 References: <aYq028TNyXQWZ_v5@home-pc>
+X-Mailer: Claws Mail 4.1.1 (GTK 3.24.38; arm-unknown-linux-gnueabihf)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <aYq028TNyXQWZ_v5@home-pc>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 
-On Tue, Feb 10, 2026 at 12:36:31AM -0400, Yoelvis Oliveros wrote:
+On Tue, 10 Feb 2026 00:36:31 -0400
+Yoelvis Oliveros <yoelvisoliveros@gmail.com> wrote:
+
 > Runing the ckeckpatch.pl on the staging/octeon driver they where using
 > uint<8/16/32/64>_T as type declaration and the checkpatch.pl was
 > putting a [CHECK] flag on those and that they should be change to
 > u<8/16/32/64>
 > 
-> Signed-off-by: Yoelvis Oliveros <yoelvisoliveros@gmail.com>
-> ---
->  drivers/staging/octeon/octeon-stubs.h | 1922 +++++++++++++------------
->  1 file changed, 972 insertions(+), 950 deletions(-)
-> 
-> diff --git a/drivers/staging/octeon/octeon-stubs.h b/drivers/staging/octeon/octeon-stubs.h
-> index 35b5078ba51e..aea3dad37cfe 100644
-> --- a/drivers/staging/octeon/octeon-stubs.h
-> +++ b/drivers/staging/octeon/octeon-stubs.h
-> @@ -1,188 +1,190 @@
->  /* SPDX-License-Identifier: GPL-2.0 */
-> -#define CONFIG_CAVIUM_OCTEON_CVMSEG_SIZE	512
-> +#define CONFIG_CAVIUM_OCTEON_CVMSEG_SIZE 512
->  
->  #ifndef XKPHYS_TO_PHYS
-> -# define XKPHYS_TO_PHYS(p)			(p)
-> +#define XKPHYS_TO_PHYS(p) (p)
->  #endif
+...
+>  	struct {
+> -		u64 bufs         : 8;
+> -		u64 ip_offset    : 8;
+> -		u64 vlan_valid   : 1;
+>  		u64 vlan_stacked : 1;
+> -		u64 unassigned   : 1;
+> -		u64 vlan_cfi     : 1;
+> -		u64 vlan_id      : 12;
+> -		u64 pr           : 4;
+> -		u64 unassigned2  : 8;
+> -		u64 dec_ipcomp   : 1;
+> -		u64 tcp_or_udp   : 1;
+> -		u64 dec_ipsec    : 1;
+> -		u64 is_v6        : 1;
+> -		u64 software     : 1;
+> -		u64 L4_error     : 1;
+> -		u64 is_frag      : 1;
+> -		u64 IP_exc       : 1;
+> -		u64 is_bcast     : 1;
+> -		u64 is_mcast     : 1;
+> -		u64 not_IP       : 1;
+> -		u64 rcv_error    : 1;
+> -		u64 err_code     : 8;
+>  	} s;
 
-This isn't related to the commit message.  I'm not sure that it's
-really an improvement, either.  There is honestly a lot in this
-patch which is not necessarily more readable afterwards.
+As a separate issue, what is the purpose of all these bit-field structures?
+You can't portably use C bit-fields to map hardware registers or network
+packets.
+It isn't just byte-order, the 'bit order' can differ even for the same
+endianness.
 
-regards,
-dan carpenter
+It also doesn't seem ideal to base everything on u64.
+The (aligned) 8 bit fields should really be plain 'u8', there are places
+where it does make a difference.
+
+	David
+
+
 
