@@ -1,152 +1,109 @@
-Received: from mail-ej1-f50.google.com (mail-ej1-f50.google.com [209.85.218.50])
+Received: from mail-pl1-f176.google.com (mail-pl1-f176.google.com [209.85.214.176])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C71A73F6606
-	for <outreachy@lists.linux.dev>; Sat, 13 Jun 2026 15:38:37 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=pass smtp.client-ip=209.85.218.50
-ARC-Seal:i=2; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1781365120; cv=pass; b=hqW6KvHHJwAo/PKpLBIVuz3p6v/Jqm5puiR/x2ojjPxGcNRjx95MAQitAKDQue9rGBWDxPnlbrzj7SUc3W07/PiyXljWq/0R/8gI+yc/1ubcz0g6WwfET5v8TWb0A8s5ZseJn8nj+jbGNHlIaCnfP1krYPwu7Gv/wJfofFXgc8A=
-ARC-Message-Signature:i=2; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1781365120; c=relaxed/simple;
-	bh=VaQzUiho6R6X5BFdJKnwhM2JaGoPaixUC9YOjsiaI/o=;
-	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
-	 To:Cc:Content-Type; b=NgEwLolDpZRvuVpzP+d3V8JZD3fV2cXaFC7slfj6dE42LLo6h5ooiWRrivOpeDzf0dS0MPClJWnmVvVrn+QwPxxbGO1vxAFTmCxcnBeNm+Ag2o8rjERAFUOQji77U73U8mFn+yn+bOyjDZEKX5SeZ+NzXa0yoyRZat2XJgfi9k8=
-ARC-Authentication-Results:i=2; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=VKKF9+Xj; arc=pass smtp.client-ip=209.85.218.50
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 481672E229F
+	for <outreachy@lists.linux.dev>; Sat, 13 Jun 2026 15:58:20 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.214.176
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1781366302; cv=none; b=XyGGKUWjtpwh/0ps9MWFPrI8QI/mk2KHEnDJ5bOw3+cmiZuo8cCJIvM6rqr6QpuqZYxy3E2YdSc8YMklzA4uoKMSRfBiwqZyh7Am+2V8pOk77bvpvsvey6V0fl/Um8SiwARCsP+vLAnlF7vuLif6Mfm9GHAZDWcLV3tt4N8J7Ak=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1781366302; c=relaxed/simple;
+	bh=9+Ou08ya/EIgsRHxThJiDirDItH2ZegTIojPtclO47E=;
+	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version; b=Kff64QwPr8komaO0ZVpO4Fg+1cC7JiB4zpGlhTo/WXYPoI+FlXDrxO92MdojsuseeBLWJoDK5gzjIR0/aisUsp6HeaFHR6fM5GFH1/RQrfroXJU0i4wTlasrLsSwhYL5iYknI+2PNP4COsKg/zPrKYJFEapW3iKLoV8sJllVrNY=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=sWDxIFBb; arc=none smtp.client-ip=209.85.214.176
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="VKKF9+Xj"
-Received: by mail-ej1-f50.google.com with SMTP id a640c23a62f3a-bf046d4da1fso181285766b.3
-        for <outreachy@lists.linux.dev>; Sat, 13 Jun 2026 08:38:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1781365116; cv=none;
-        d=google.com; s=arc-20240605;
-        b=bmypGSivtAJfhaJyMmCxZFYK0gNWaEjlnOwdl1wNkzxQEu5z+Snk46lQVk/X/HDbUl
-         7Xq8dNIhpA16jLrxb1WVRWl6hme0qpCrxs4VTzmHWEHD79HlOK3ogKaXwmfW+WkSp+JW
-         Hw7J7UWpsE8fDt3+h8lPWtFVzCay5uF4rD4UAcLrEdJPdH3wA+JCYSnJkm/Oddu8bIH6
-         jd0P8st/vj43fboyORcET1VpP7OBKFTR0oFYCtGsm+B1leqkdGh5yTMdNr9BuKpBl6VY
-         tfpgFKCwlCHO8PYlpoO8GE5l1O12WWpgPsgZmbWLzZ3VXv5EouTmoMTY/BprXqvLuLmR
-         bf6w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=uOWDGizk9369FTjRLh6NLGNPGfs8z28wb9Xl2vEAMls=;
-        fh=nv95RBrYYZNbJooLSQJ9nzo7pQ/YBG4hqxofGl+xgrw=;
-        b=G1mnQv6jziSpIShwhgzzTs3aQaC7uNkanqyVbrj2Uvhu053FWkhli6vUMc9wHKww3d
-         6YTunkVz4wOsYKEpqN8LEajwihbqjwj4+NgV10zML2zAo2uvsg4LZ78skUAzLHdMvTok
-         CNv2Nm7kmEID2tt4s/K1i1wZhuQaIadibUF9nIhjh8MpS1G83CWWNu4tb496XDSqtCbN
-         Rf/xnppf9vMmzbNTg0tRK8EbFT3sptENa9imjDLWgGbSRnGPWEaIleH01gmw79JGE1UW
-         ZfZiwfgD/q4G7CLVGtMT8Se1qkSdGKPEjFJovrs2gfm1jLzMxLju3NyyJVJsxcnW854w
-         4Dcw==;
-        darn=lists.linux.dev
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="sWDxIFBb"
+Received: by mail-pl1-f176.google.com with SMTP id d9443c01a7336-2c27fc587ebso8354805ad.0
+        for <outreachy@lists.linux.dev>; Sat, 13 Jun 2026 08:58:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781365116; x=1781969916; darn=lists.linux.dev;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=uOWDGizk9369FTjRLh6NLGNPGfs8z28wb9Xl2vEAMls=;
-        b=VKKF9+Xj+VzDGdjWBhCsjiHMvCQGMSZEPSXNazkGNlTcgZDpe36Rig2EvZrMmY+KUv
-         EocepDXfa8Q9asmG9gf4J2OUncODKWJJ4gHTKbGeSAXC5j0M6XYTR7QwZq1aFJmWsKwz
-         L/ivheNvuEU+r1KlJ+JjuHKrIBhjJbKD5XhWRDMkHg6uaWaNiNn+03ric+xDoi+XrNKN
-         hhKXV7ts4FCI1X5qUQ546lh7sVqDaZwV57w7jHEYCFQjzdZNavf0GK4IM95K2R3JUusR
-         BpdAExxLEQufmllrmlfncqOR7LFcnKahy9lqpCWgspOT3S5T0eg1arNAMcyD1/Jpasu4
-         RfVw==
+        d=gmail.com; s=20251104; t=1781366299; x=1781971099; darn=lists.linux.dev;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=mKipWgHUtmHSGe9NlsV5we6jYGi0UF3OsZVbkNb4DI8=;
+        b=sWDxIFBbRTb/N4EWcI9XsTUdQ+LIxIUs03Syql3qBbRQZbcTIJZ7m2ERGSvy41Bzcb
+         qbaW3xY+VKbkg9wyVYfky4/cE9pYysKo2Of4ZqjSL6VpQ/bfSiplrFKgUnXafc8veJvF
+         LBJXEX3n0Ry8epWns6e1Suq2iQti8Hlq8Rxtw8KMfx/6d1IWPQLmGc2kEtnxnINwsqY3
+         VXKHmFZifAbNRoMOwMv72uWtfhzEqTqLMbqaXQvtQRC8qd70SksnLK2KnfzWBIeq+ahE
+         axiLosLVfxCysCv6uDM2YUCQx+DK/GQ3O+yy6hgqJ5Kh55iNLN014aBMkn6s7hi52bA7
+         AaKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781365116; x=1781969916;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=uOWDGizk9369FTjRLh6NLGNPGfs8z28wb9Xl2vEAMls=;
-        b=KDTwNyi3f8Cw039pjQ3CkhS+nMtt7RGGzjThhDzv7HFTIW3Ix2VHwlfVcDVMYwEBv0
-         sACPdU080R7BcsG3rtiUgP4bncnua26MJU3+BFX6EE5eQ6i1UlLBStjSKILui+tMFBeK
-         jKhC/cvmRpHOwGL+dGeRPCGGFZL9F6e8TTnBTXz+7MJfYafEtgpDDjz+0mRPVosRbsFv
-         k5ri08TWCyf3rW7QAD07BSBv+1LjGAL2uX0fBsfNvZE0MsmQAaA8MyWiyUp+CRBY7kCf
-         nwm4Urc9uGuD05s4hYuUt4owEdFsQgU6mfik4qX3SAOkvb2sO6hDd67wtwNlZiVuzX+C
-         hyvw==
-X-Forwarded-Encrypted: i=1; AFNElJ+v607BjbO+qmSD+WGnZEPC8rYCLgLcbwQOyTfG92Snj1S+pC0ZrOdJqrZe39OWMrTAuxp7gp3/yPY=@lists.linux.dev
-X-Gm-Message-State: AOJu0YzUyrO3vX66BOee02zZmu6DGo7txP9ebF5FyUqGNJckenTL/1Lm
-	AS26RUQDDc79BtNZdC07zrC0K/VVc1HYUxpyr3fAEC5gE8JPRX39yqkLli2uXNYf58r80HH7v1M
-	4NFESp9iPsX7iKvb6FKeYhifPN5uxORA=
-X-Gm-Gg: Acq92OHt8k+CEF8+5qd5sjdfp8je5b7fcydZdS2IIU0x96CT/gx/NyCSpG+N5icqkle
-	2+fcU3+72DJdd3YN2fu4m466f1uCSg3gdoicPySnFdV94IoE+v2zxglbzIMYOkQp/+XD/w6SL6w
-	Xcv5UmEz3S0G6yeUcXfE4GzaCczGsbdKA2uwM0/h2kili58ZiLY4i+9kIlPv/jq9nN+gsWluxvR
-	kGVYqvEOtVIyhWbmNjNlga95P3dYQewwDPMiwDkVdB6cTFTcaiDXveEYEFsJ7OvhLlRJTnu8Z5L
-	Vvb6vVKT6DSGEYV1hCFjqWI=
-X-Received: by 2002:a17:907:e895:b0:bed:d329:1ed9 with SMTP id
- a640c23a62f3a-bff4bdfcba1mr152037266b.33.1781365115721; Sat, 13 Jun 2026
- 08:38:35 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1781366299; x=1781971099;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=mKipWgHUtmHSGe9NlsV5we6jYGi0UF3OsZVbkNb4DI8=;
+        b=NiBkBJTScVUR+YXixmskGD5c8hCz9xMtJCrcVIepCWdMxKU0/h2B0wN5YLaDeHMsQo
+         jCuuA7DKug/VAjj+fGXexkltgV406fs0tCEo8JrVTTjWCHo1YJNKA9IglUBBWOIOr70R
+         XH7+GK9YK/JxlILcxTpPofiF6zMMucWW3B4JDH8BhUN5PBg5ADyeLmYmzCBO0A748Ah1
+         m3wNp+WVbk/CLa1zn7q5ypQDd+5xKweomFPT4qL9jPJm6D9mPNIf2yAqFZ3gNNyPksV0
+         fiis+VpmFJdwplbnQ0MVtPSWevCtHXWaj2NwDvuURFr7yJiDLLAgP7u3Zc4y9GM3NwUP
+         FQ8A==
+X-Forwarded-Encrypted: i=1; AFNElJ/6nh0I/6ZB8fxkvjE0spsmbN+5Cr68oqETCiSH6/HQjZwsMZisyQB5JYS41xrX5SNELmJoH6WNEns=@lists.linux.dev
+X-Gm-Message-State: AOJu0YwTiA75WGAbSQvJrqjiayKyfyf8097HwIjMLO90eRMuvcaZxtCL
+	yU8/EkE8W6n9oLY0qkB1Jp+g4SCjHay0jxJp4HDNHNmsIrl1jqECFFKU
+X-Gm-Gg: Acq92OF8rZOSbsFgwr8s7l+itFL1MGoq4YfMUG1BOI8oJ5uegDyFsQv75CQwFDjB7n+
+	FYosW0RTyEMJaEYVw5snVUyGJQRZXOVay7JXwVHOcgMjDQLyNd+SnQv5fpyG6zJktwSJZ9GHB7v
+	aQ/5LPJEbTSLv6wvfvCaVn2EyC9GCHQJPdEI+tYi0EllvmDofiXMhFrB/ZzD2NoVaHsBAwqKP0w
+	dJeixL3lwU1KSJp+LsJyDps6m472RJJBftXvcOdxPAb3hAIezISzZ/X1pvN5zeA3kqtUXTEgV05
+	m57KLxjnBujg66hvUXzUZDs2AknKHNcQtuX0refEFwcpy0fWboNBDS19kcpCPXDH/P4F9430Pq+
+	oE8touEBbm0Jh70SigBJ4xSQGX0mH7Dvcf4icyVa6SBX4rISXf/0SobEE9FOw5vFh9jJtVWYA74
+	XF+PX4NcMegVp6zUgU4SOTwbaadQ==
+X-Received: by 2002:a17:903:acf:b0:2bf:195d:21d2 with SMTP id d9443c01a7336-2c41206ffc7mr86878745ad.16.1781366299493;
+        Sat, 13 Jun 2026 08:58:19 -0700 (PDT)
+Received: from localhost.localdomain ([2604:3d08:2474:4800::857b])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2c42fbb4134sm47154115ad.30.2026.06.13.08.58.18
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 13 Jun 2026 08:58:18 -0700 (PDT)
+From: Brock Haftner <brockhaftner@gmail.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	outreachy@lists.linux.dev
+Cc: linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	Brock Haftner <brockhaftner@gmail.com>
+Subject: [PATCH] staging: rtl8723bs: fix spelling mistake in rtw_recv.c
+Date: Sat, 13 Jun 2026 08:58:07 -0700
+Message-ID: <20260613155807.18623-1-brockhaftner@gmail.com>
+X-Mailer: git-send-email 2.54.0
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-References: <20260613014905.48458-1-brockhaftner@gmail.com>
- <aiz1bMmAN-gQnm9x@stanley.mountain> <aiz14CLCduz7996E@stanley.mountain>
-In-Reply-To: <aiz14CLCduz7996E@stanley.mountain>
-From: Brock Haftner <brockhaftner@gmail.com>
-Date: Sat, 13 Jun 2026 08:38:24 -0700
-X-Gm-Features: AVVi8Cd5UbthRNShg8YEncP0KBxT_NGxx0mp2GrBPMxb4eVX4ZgEGIFccYFnCgs
-Message-ID: <CAAYiRaP0ahm9NsmPBdEy1A_TiCPCfGt-nBC_xf1-tN_RiuvmSA@mail.gmail.com>
-Subject: Re: [PATCH] staging: greybus: audio: add missing newline to
- sysfs_emit formats
-To: Dan Carpenter <error27@gmail.com>
-Cc: Vaibhav Agarwal <vaibhav.sr@gmail.com>, Mark Greer <mgreer@animalcreek.com>, 
-	Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, outreachy@lists.linux.dev, 
-	greybus-dev@lists.linaro.org, linux-staging@lists.linux.dev, 
-	linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 
-On Sat, Jun 13, 2026 at 09:17:08AM +0300, Dan Carpenter wrote:
-> On Sat, Jun 13, 2026 at 09:15:08AM +0300, Dan Carpenter wrote:
-> > On Fri, Jun 12, 2026 at 06:49:05PM -0700, Brock Haftner wrote:
-> > > The sysfs_emit() function is used to format strings that are returned
-> > > to userspace. According to the sysfs documentation, these outputs
-> > > should include a newline character for visual clarity.
-> > >
-> > > Fix the checkpatch.pl warnings by adding the missing '\n' to the
-> > > sysfs_emit() format strings inside several functions.
-> > >
-> > > Signed-off-by: Brock Haftner <brockhaftner@gmail.com>
-> >
-> > Please don't do this for existing code, only for new code.  There
-> > is a risck that user space relies on the old behavior.
->
-> We should delete this checkpatch warning really.  It could be a
-> sashiko rule which only applies for patches which introduce new
-> functions or something.
+Correct the spelling of the word "temporily" to "temporarily"
+in the comments within rtw_recv.c to improve code readability.
 
-Thank you for the explanation, apologies for the mistake. I did not
-consider user-space implications for adding the newline characters.
-I will drop this patch, thank you for the reply.
+Signed-off-by: Brock Haftner <brockhaftner@gmail.com>
+---
+ drivers/staging/rtl8723bs/core/rtw_recv.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Cheers,
-Brock
+diff --git a/drivers/staging/rtl8723bs/core/rtw_recv.c b/drivers/staging/rtl8723bs/core/rtw_recv.c
+index 86c5e2c4e7dd..0ffa69c38bca 100644
+--- a/drivers/staging/rtl8723bs/core/rtw_recv.c
++++ b/drivers/staging/rtl8723bs/core/rtw_recv.c
+@@ -815,7 +815,7 @@ static signed int ap2sta_data_frame(struct adapter *adapter, union recv_frame *p
+ 		}
+ 
+ 		if (GetFrameSubType(ptr) & BIT(6)) {
+-			/* No data, will not indicate to upper layer, temporily count it here */
++			/* No data, will not indicate to upper layer, temporarily count it here */
+ 			count_rx_stats(adapter, precv_frame, *psta);
+ 			ret = RTW_RX_HANDLED;
+ 			goto exit;
+@@ -895,7 +895,7 @@ static signed int sta2ap_data_frame(struct adapter *adapter, union recv_frame *p
+ 			process_wmmps_data(adapter, precv_frame);
+ 
+ 		if (GetFrameSubType(ptr) & BIT(6)) {
+-			/* No data, will not indicate to upper layer, temporily count it here */
++			/* No data, will not indicate to upper layer, temporarily count it here */
+ 			count_rx_stats(adapter, precv_frame, *psta);
+ 			ret = RTW_RX_HANDLED;
+ 			goto exit;
+-- 
+2.54.0
 
-
-On Fri, Jun 12, 2026 at 11:17=E2=80=AFPM Dan Carpenter <error27@gmail.com> =
-wrote:
->
-> On Sat, Jun 13, 2026 at 09:15:08AM +0300, Dan Carpenter wrote:
-> > On Fri, Jun 12, 2026 at 06:49:05PM -0700, Brock Haftner wrote:
-> > > The sysfs_emit() function is used to format strings that are returned
-> > > to userspace. According to the sysfs documentation, these outputs
-> > > should include a newline character for visual clarity.
-> > >
-> > > Fix the checkpatch.pl warnings by adding the missing '\n' to the
-> > > sysfs_emit() format strings inside several functions.
-> > >
-> > > Signed-off-by: Brock Haftner <brockhaftner@gmail.com>
-> >
-> > Please don't do this for existing code, only for new code.  There
-> > is a risck that user space relies on the old behavior.
->
-> We should delete this checkpatch warning really.  It could be a
-> sashiko rule which only applies for patches which introduce new
-> functions or something.
->
-> regards,
-> dan carpenter
->
