@@ -1,109 +1,84 @@
-Received: from mail-pl1-f176.google.com (mail-pl1-f176.google.com [209.85.214.176])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-alma10-1.taild15c8.ts.net [100.103.45.18])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 481672E229F
-	for <outreachy@lists.linux.dev>; Sat, 13 Jun 2026 15:58:20 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.214.176
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EDD0A3F1AD7;
+	Tue,  7 Jul 2026 11:19:55 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=100.103.45.18
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1781366302; cv=none; b=XyGGKUWjtpwh/0ps9MWFPrI8QI/mk2KHEnDJ5bOw3+cmiZuo8cCJIvM6rqr6QpuqZYxy3E2YdSc8YMklzA4uoKMSRfBiwqZyh7Am+2V8pOk77bvpvsvey6V0fl/Um8SiwARCsP+vLAnlF7vuLif6Mfm9GHAZDWcLV3tt4N8J7Ak=
+	t=1783423197; cv=none; b=iNXESncpio7vQ4q+Zdg9KTA60covIDFbRHbvbs03WQSJg7kD/EaVLMuTmMOFR9mv68sFAtIvJugAepy6dxiz46KjMjkXq5HVmfUHNBCJBbeJLlE+MycqxzngjvlQFEhpWbdO9lWvCwer+k3i16AyIhjn8XHQacY4h1Xv0nqXSrA=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1781366302; c=relaxed/simple;
-	bh=9+Ou08ya/EIgsRHxThJiDirDItH2ZegTIojPtclO47E=;
-	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version; b=Kff64QwPr8komaO0ZVpO4Fg+1cC7JiB4zpGlhTo/WXYPoI+FlXDrxO92MdojsuseeBLWJoDK5gzjIR0/aisUsp6HeaFHR6fM5GFH1/RQrfroXJU0i4wTlasrLsSwhYL5iYknI+2PNP4COsKg/zPrKYJFEapW3iKLoV8sJllVrNY=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=sWDxIFBb; arc=none smtp.client-ip=209.85.214.176
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	s=arc-20240116; t=1783423197; c=relaxed/simple;
+	bh=gFRd/BVcfDMpPLjGer56q8LsuprxKYXWmkQBKgNbM7E=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=HSMyaMG0KnvAVXHdK7Sjgia3kwn622TEuGg5fy93qZ6mtdXRKxAwA/oL5PH4CZbF5iEAKH0PVzbMrNBbgXPghMrmBXJJgKF9VtXHmO9jJ1k4828YR8nTC+6WM+EZFMJmrIhqjeXmlIsM0muRxGmbfOYSlNfFL7vjgQF0GCqn2PM=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (1024-bit key) header.d=linuxfoundation.org header.i=@linuxfoundation.org header.b=Tum4KKbV; arc=none smtp.client-ip=100.103.45.18
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="sWDxIFBb"
-Received: by mail-pl1-f176.google.com with SMTP id d9443c01a7336-2c27fc587ebso8354805ad.0
-        for <outreachy@lists.linux.dev>; Sat, 13 Jun 2026 08:58:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1781366299; x=1781971099; darn=lists.linux.dev;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=mKipWgHUtmHSGe9NlsV5we6jYGi0UF3OsZVbkNb4DI8=;
-        b=sWDxIFBbRTb/N4EWcI9XsTUdQ+LIxIUs03Syql3qBbRQZbcTIJZ7m2ERGSvy41Bzcb
-         qbaW3xY+VKbkg9wyVYfky4/cE9pYysKo2Of4ZqjSL6VpQ/bfSiplrFKgUnXafc8veJvF
-         LBJXEX3n0Ry8epWns6e1Suq2iQti8Hlq8Rxtw8KMfx/6d1IWPQLmGc2kEtnxnINwsqY3
-         VXKHmFZifAbNRoMOwMv72uWtfhzEqTqLMbqaXQvtQRC8qd70SksnLK2KnfzWBIeq+ahE
-         axiLosLVfxCysCv6uDM2YUCQx+DK/GQ3O+yy6hgqJ5Kh55iNLN014aBMkn6s7hi52bA7
-         AaKg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1781366299; x=1781971099;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=mKipWgHUtmHSGe9NlsV5we6jYGi0UF3OsZVbkNb4DI8=;
-        b=NiBkBJTScVUR+YXixmskGD5c8hCz9xMtJCrcVIepCWdMxKU0/h2B0wN5YLaDeHMsQo
-         jCuuA7DKug/VAjj+fGXexkltgV406fs0tCEo8JrVTTjWCHo1YJNKA9IglUBBWOIOr70R
-         XH7+GK9YK/JxlILcxTpPofiF6zMMucWW3B4JDH8BhUN5PBg5ADyeLmYmzCBO0A748Ah1
-         m3wNp+WVbk/CLa1zn7q5ypQDd+5xKweomFPT4qL9jPJm6D9mPNIf2yAqFZ3gNNyPksV0
-         fiis+VpmFJdwplbnQ0MVtPSWevCtHXWaj2NwDvuURFr7yJiDLLAgP7u3Zc4y9GM3NwUP
-         FQ8A==
-X-Forwarded-Encrypted: i=1; AFNElJ/6nh0I/6ZB8fxkvjE0spsmbN+5Cr68oqETCiSH6/HQjZwsMZisyQB5JYS41xrX5SNELmJoH6WNEns=@lists.linux.dev
-X-Gm-Message-State: AOJu0YwTiA75WGAbSQvJrqjiayKyfyf8097HwIjMLO90eRMuvcaZxtCL
-	yU8/EkE8W6n9oLY0qkB1Jp+g4SCjHay0jxJp4HDNHNmsIrl1jqECFFKU
-X-Gm-Gg: Acq92OF8rZOSbsFgwr8s7l+itFL1MGoq4YfMUG1BOI8oJ5uegDyFsQv75CQwFDjB7n+
-	FYosW0RTyEMJaEYVw5snVUyGJQRZXOVay7JXwVHOcgMjDQLyNd+SnQv5fpyG6zJktwSJZ9GHB7v
-	aQ/5LPJEbTSLv6wvfvCaVn2EyC9GCHQJPdEI+tYi0EllvmDofiXMhFrB/ZzD2NoVaHsBAwqKP0w
-	dJeixL3lwU1KSJp+LsJyDps6m472RJJBftXvcOdxPAb3hAIezISzZ/X1pvN5zeA3kqtUXTEgV05
-	m57KLxjnBujg66hvUXzUZDs2AknKHNcQtuX0refEFwcpy0fWboNBDS19kcpCPXDH/P4F9430Pq+
-	oE8touEBbm0Jh70SigBJ4xSQGX0mH7Dvcf4icyVa6SBX4rISXf/0SobEE9FOw5vFh9jJtVWYA74
-	XF+PX4NcMegVp6zUgU4SOTwbaadQ==
-X-Received: by 2002:a17:903:acf:b0:2bf:195d:21d2 with SMTP id d9443c01a7336-2c41206ffc7mr86878745ad.16.1781366299493;
-        Sat, 13 Jun 2026 08:58:19 -0700 (PDT)
-Received: from localhost.localdomain ([2604:3d08:2474:4800::857b])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2c42fbb4134sm47154115ad.30.2026.06.13.08.58.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 13 Jun 2026 08:58:18 -0700 (PDT)
-From: Brock Haftner <brockhaftner@gmail.com>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	outreachy@lists.linux.dev
-Cc: linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	Brock Haftner <brockhaftner@gmail.com>
-Subject: [PATCH] staging: rtl8723bs: fix spelling mistake in rtw_recv.c
-Date: Sat, 13 Jun 2026 08:58:07 -0700
-Message-ID: <20260613155807.18623-1-brockhaftner@gmail.com>
-X-Mailer: git-send-email 2.54.0
+	dkim=pass (1024-bit key) header.d=linuxfoundation.org header.i=@linuxfoundation.org header.b="Tum4KKbV"
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 478391F00A3A;
+	Tue,  7 Jul 2026 11:19:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linuxfoundation.org;
+	s=korg; t=1783423195;
+	bh=eobIkxVPBRDg0OEhqgcBqY7I9JDA4WWKtQ4KE5Nesi8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=Tum4KKbVPoWGXhbUSt0j+LbE2zltCTxSLWqF3rXYuXDTyVtl8qdyZ5Fu4XHZKGGIE
+	 lF3FGDD7/zlnjjaHUseWXQ1FT90zw7o/p5U/aFDPwE0eyg41XStqqLyuW5Crwi1Xp0
+	 yCSnHZYrJVOVveMAzzGwfhxAcqrbVsZ9wlQUhXjM=
+Date: Tue, 7 Jul 2026 13:19:53 +0200
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Brock Haftner <brockhaftner@gmail.com>
+Cc: outreachy@lists.linux.dev, linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] staging: rtl8723bs: fix spelling mistake in rtw_recv.c
+Message-ID: <2026070743-clapped-agility-7ec6@gregkh>
+References: <20260613155807.18623-1-brockhaftner@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260613155807.18623-1-brockhaftner@gmail.com>
 
-Correct the spelling of the word "temporily" to "temporarily"
-in the comments within rtw_recv.c to improve code readability.
+On Sat, Jun 13, 2026 at 08:58:07AM -0700, Brock Haftner wrote:
+> Correct the spelling of the word "temporily" to "temporarily"
+> in the comments within rtw_recv.c to improve code readability.
+> 
+> Signed-off-by: Brock Haftner <brockhaftner@gmail.com>
+> ---
+>  drivers/staging/rtl8723bs/core/rtw_recv.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/staging/rtl8723bs/core/rtw_recv.c b/drivers/staging/rtl8723bs/core/rtw_recv.c
+> index 86c5e2c4e7dd..0ffa69c38bca 100644
+> --- a/drivers/staging/rtl8723bs/core/rtw_recv.c
+> +++ b/drivers/staging/rtl8723bs/core/rtw_recv.c
+> @@ -815,7 +815,7 @@ static signed int ap2sta_data_frame(struct adapter *adapter, union recv_frame *p
+>  		}
+>  
+>  		if (GetFrameSubType(ptr) & BIT(6)) {
+> -			/* No data, will not indicate to upper layer, temporily count it here */
+> +			/* No data, will not indicate to upper layer, temporarily count it here */
+>  			count_rx_stats(adapter, precv_frame, *psta);
+>  			ret = RTW_RX_HANDLED;
+>  			goto exit;
+> @@ -895,7 +895,7 @@ static signed int sta2ap_data_frame(struct adapter *adapter, union recv_frame *p
+>  			process_wmmps_data(adapter, precv_frame);
+>  
+>  		if (GetFrameSubType(ptr) & BIT(6)) {
+> -			/* No data, will not indicate to upper layer, temporily count it here */
+> +			/* No data, will not indicate to upper layer, temporarily count it here */
+>  			count_rx_stats(adapter, precv_frame, *psta);
+>  			ret = RTW_RX_HANDLED;
+>  			goto exit;
+> -- 
+> 2.54.0
+> 
+> 
 
-Signed-off-by: Brock Haftner <brockhaftner@gmail.com>
----
- drivers/staging/rtl8723bs/core/rtw_recv.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Soeone already sent this patch before you did, sorry.
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_recv.c b/drivers/staging/rtl8723bs/core/rtw_recv.c
-index 86c5e2c4e7dd..0ffa69c38bca 100644
---- a/drivers/staging/rtl8723bs/core/rtw_recv.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_recv.c
-@@ -815,7 +815,7 @@ static signed int ap2sta_data_frame(struct adapter *adapter, union recv_frame *p
- 		}
- 
- 		if (GetFrameSubType(ptr) & BIT(6)) {
--			/* No data, will not indicate to upper layer, temporily count it here */
-+			/* No data, will not indicate to upper layer, temporarily count it here */
- 			count_rx_stats(adapter, precv_frame, *psta);
- 			ret = RTW_RX_HANDLED;
- 			goto exit;
-@@ -895,7 +895,7 @@ static signed int sta2ap_data_frame(struct adapter *adapter, union recv_frame *p
- 			process_wmmps_data(adapter, precv_frame);
- 
- 		if (GetFrameSubType(ptr) & BIT(6)) {
--			/* No data, will not indicate to upper layer, temporily count it here */
-+			/* No data, will not indicate to upper layer, temporarily count it here */
- 			count_rx_stats(adapter, precv_frame, *psta);
- 			ret = RTW_RX_HANDLED;
- 			goto exit;
--- 
-2.54.0
+thanks,
 
+greg k-h
