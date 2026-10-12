@@ -1,79 +1,130 @@
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C18B84DDB5F
-	for <outreachy@lists.linux.dev>; Mon, 12 Oct 2026 19:52:40 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.104
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6EC3D4C4F40;
+	Mon, 12 Oct 2026 20:45:54 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.83
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1791834768; cv=none; b=qy0ZNeB3nIj9lQZLR0FVbNNm6kBN3VA/vDQ67tVes3Ki5PiokUgV4fP7x0Epi+Q7w/5WqmO6zzZ6p6gjKl3Km7A3feZSgDpV0/JY6a7qE6ZZjIHiRldvzUryxPfUm3eJ80+6Wl6gK0kz7yFSm3DkaujMSAG9KKtOq1adZivyVFI=
+	t=1791837959; cv=none; b=ptRRRe3JTvDu6YuX9BOH7kXdpnTTGKWFdujoA4WR7y5y2llBEgm4GKrOiOY91xM/8ht/7tCrYhbB+8Mntf2IAUbh0ODpHg7Ra3VM6jd5oM6+1FrDUN5ZAs9JdDmBRzxIU8mkRII51vLdLCRT+EboN/Z2CAnLrhmuvqLvvHrKclY=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1791834768; c=relaxed/simple;
-	bh=Z/AgMco8mJZUVwMuNN0+Coqi7OMq3963BpoRZbUEH+g=;
-	h=Content-Type:From:Mime-Version:Subject:Date:Message-Id:References:
-	 Cc:In-Reply-To:To; b=mF8K465jM9WIiddWUB9Kvfty28efebxQzZQc8TL8cFpIaYjqDZsRM4WtDtLk6XHIJRnKEUGBgCcJjEJY68AKvTxCdCK11q/J1+jXelfViIi3K+9PqifyPW+bzoZR59/0FU6fNPd0ExF5G6w4WShoMKTED82wKeGH2Sla1ADE6+c=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=SwxRhbxU; arc=none smtp.client-ip=192.134.164.104
+	s=arc-20240116; t=1791837959; c=relaxed/simple;
+	bh=UH3cbq3ml4jimezvZ3Mh+yJx7fJ0JsfGMGnLKd514DQ=;
+	h=Date:From:To:cc:Subject:In-Reply-To:Message-ID:References:
+	 MIME-Version:Content-Type; b=CEZUreMayoKM/W0sF4u0NncDzhZ1jS2zLxP0pOoacTiTKyYWS1Ps9wM9pTLLuRlFQOqxWu6iU3un4wqMwXWzWnu70Rnrwr8rlOAoAu8Rh23BLoosBN0/AvBhUjz02BGGd7nW7qN9+babVJ8JZxdXUanIvZE1MrfUfbt/iWhL6sI=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=RO9m1tKQ; arc=none smtp.client-ip=192.134.164.83
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="SwxRhbxU"
+	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="RO9m1tKQ"
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
   d=inria.fr; s=dc;
-  h=content-transfer-encoding:from:mime-version:subject:date:
-   message-id:references:cc:in-reply-to:to;
-  bh=GoNSOBQDgddSWnuLwHd0rZS3/ScOhx0bgum1vzG4Oog=;
-  b=SwxRhbxUuGjNgW1cpvetb1N/sBaUdJuMuZ08Vc2S5DMOz2JWnovBVo3M
-   abWawkDwAsQieSDT3NMYC25eVC9pvqLznxXVHr2+iylRahbPkhmX9LKnB
-   ZXlXMtHsCSIQfZkXuEdNTs4VC20eDwZrAY4jv2qj5gJlJcR86OdVCq5dR
-   0=;
-X-CSE-ConnectionGUID: TvgN1eY1Tyeq/pde4N2T6A==
-X-CSE-MsgGUID: ZjmAowncR9Sc8d9qN5aimQ==
-Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=Julia.Lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=PE9aaz1f8WNw33OXbxxphrNcE9ceVoU6+8hsLajxbHQ=;
+  b=RO9m1tKQPzEubLUHexNabXgVn6Z1cIpGBOAIGM3tHwviGfJ/lOKZ/5V8
+   OixtOm+sexS9gKCZm7m48P9iJOhZ7yuKnZC1r1xgYVLXwagsjCbAyJLmD
+   TtNEjpp3/iXKoPTwCVYGecvnCjl9vaB4IXiURY4dZ6HOUoMnhEhrtgBm9
+   o=;
+X-CSE-ConnectionGUID: ngCFrpB8RxSekRMBqaidVQ==
+X-CSE-MsgGUID: DelHkQCqTReLioT1q8Tjsg==
+Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
 X-IronPort-AV: E=Sophos;i="6.27,154,1787004000"; 
-   d="scan'208";a="159605507"
-Received: from unknown (HELO smtpclient.apple) ([37.168.179.109])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Oct 2026 21:52:29 +0200
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-From: Julia Lawall <Julia.Lawall@inria.fr>
+   d="scan'208";a="299823727"
+Received: from unknown (HELO hadrien) ([12.202.65.58])
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Oct 2026 22:45:42 +0200
+Date: Mon, 12 Oct 2026 16:45:41 -0400 (EDT)
+From: Julia Lawall <julia.lawall@inria.fr>
+To: Jeremy Dean Clifton <deaner92@yahoo.com>
+cc: Marc Dietrich <marvin24@gmx.de>, 
+    Greg Kroah-Hartman <gregkh@linuxfoundation.org>, ac100@lists.launchpad.net, 
+    linux-tegra@vger.kernel.org, linux-staging@lists.linux.dev, 
+    linux-kernel@vger.kernel.org, outreachy@lists.linux.dev
+Subject: Re: [PATCH] staging: nvec: use guard(mutex) in nvec_write_sync()
+In-Reply-To: <20261012171312.5998-1-deaner92@yahoo.com>
+Message-ID: <b51c3755-a967-3de3-5f8c-3e4984d6e93c@inria.fr>
+References: <20261012171312.5998-1-deaner92.ref@yahoo.com> <20261012171312.5998-1-deaner92@yahoo.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
-Mime-Version: 1.0 (1.0)
-Subject: Re: Introduction - Outreachy Applicant
-Date: Mon, 12 Oct 2026 15:52:15 -0400
-Message-Id: <45F4C891-F6AF-49CE-AC12-C5A6422D4773@inria.fr>
-References: <as0HUy5rtCKSJF7v@user>
-Cc: outreachy@lists.linux.dev
-In-Reply-To: <as0HUy5rtCKSJF7v@user>
-To: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
-X-Mailer: iPhone Mail (23E261)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 
 
-> On 12 Oct 2026, at 14:09, Yalagada Pavan Kumar <pavankumaryalagada@gmail.c=
-om> wrote:
->=20
-> =EF=BB=BFHi Everyone!
->=20
-> I'm Pavan, a CSE graduate. I've been selected for the Initial application s=
-tage
-> of Outreachy.
->=20
-> I'm excited to participate in the Outreachy contribution period, learn fro=
-m
-> mentors and other contributors, and improve my Linux Kernel skills along t=
-he way.
->=20
-> Looking forward to learning and contributing!
->=20
 
-Great to meet you.  Please check the first patch tutorial for directions. An=
-d please feel free to send any questions here.
+On Mon, 12 Oct 2026, Jeremy Dean Clifton wrote:
 
-Julia
+> Use guard(mutex) for sync_write_mutex. The lock is released
+> automatically on every return path.
 
+The second sentence seems ambiguous to me.  Is this the motivation for
+doing the patch or the result of the patch.
 
-> Thank you!
->=20
+> This removes the three
+> mutex_unlock() calls and simplifies the -ENOMEM error path.
+>
+> No functional change.
+>
+> Assisted-by: LLM
 
+For Outreachy, I would encourage you to do the work by hand.  You are
+welcome to check the work with an LLM.  The goal in the application period
+is to learn how the patch submission process works, not necessarily to do
+it as fast as possible.
+
+Feel free to introduce yourself on the list as well.
+
+julia
+
+> Signed-off-by: Jeremy Dean Clifton <deaner92@yahoo.com>
+> ---
+>  drivers/staging/nvec/nvec.c | 9 ++-------
+>  1 file changed, 2 insertions(+), 7 deletions(-)
+>
+> diff --git a/drivers/staging/nvec/nvec.c b/drivers/staging/nvec/nvec.c
+> index 41cbdfdc1da6..716b1b482568 100644
+> --- a/drivers/staging/nvec/nvec.c
+> +++ b/drivers/staging/nvec/nvec.c
+> @@ -298,17 +298,15 @@ int nvec_write_sync(struct nvec_chip *nvec,
+>  		    const unsigned char *data, short size,
+>  		    struct nvec_msg **msg)
+>  {
+> -	mutex_lock(&nvec->sync_write_mutex);
+> +	guard(mutex)(&nvec->sync_write_mutex);
+>
+>  	if (msg)
+>  		*msg = NULL;
+>
+>  	nvec->sync_write_pending = (data[1] << 8) + data[0];
+>
+> -	if (nvec_write_async(nvec, data, size) < 0) {
+> -		mutex_unlock(&nvec->sync_write_mutex);
+> +	if (nvec_write_async(nvec, data, size) < 0)
+>  		return -ENOMEM;
+> -	}
+>
+>  	dev_dbg(nvec->dev, "nvec_sync_write: 0x%04x\n",
+>  		nvec->sync_write_pending);
+> @@ -316,7 +314,6 @@ int nvec_write_sync(struct nvec_chip *nvec,
+>  					  msecs_to_jiffies(2000)))) {
+>  		dev_warn(nvec->dev,
+>  			 "Timeout waiting for sync write to complete\n");
+> -		mutex_unlock(&nvec->sync_write_mutex);
+>  		return -ETIMEDOUT;
+>  	}
+>
+> @@ -327,8 +324,6 @@ int nvec_write_sync(struct nvec_chip *nvec,
+>  	else
+>  		nvec_msg_free(nvec, nvec->last_sync_msg);
+>
+> -	mutex_unlock(&nvec->sync_write_mutex);
+> -
+>  	return 0;
+>  }
+>  EXPORT_SYMBOL(nvec_write_sync);
+> --
+> 2.43.0
+>
+>
+>
