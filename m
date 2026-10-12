@@ -1,158 +1,79 @@
-Received: from mail-dy1-f172.google.com (mail-dy1-f172.google.com [74.125.82.172])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AEB57379EF7
-	for <outreachy@lists.linux.dev>; Mon, 12 Oct 2026 18:31:59 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=74.125.82.172
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C18B84DDB5F
+	for <outreachy@lists.linux.dev>; Mon, 12 Oct 2026 19:52:40 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.104
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1791829920; cv=none; b=fTSu1onmwE72wvajJKApjC2b2rXmGrmzuP8nawUZdpYTBe+z5g88w1Q8mh5l5Dz4NEi0/wnTxPvjR7PhFg7ogXXPYHWppbiDSPkmka0qwSQD0mJRsSvbYcgYYLN71KPDuCDImu3/0XRLOWurMkOyaxWWNsmQ7NMe1mj/v6q1xFY=
+	t=1791834768; cv=none; b=qy0ZNeB3nIj9lQZLR0FVbNNm6kBN3VA/vDQ67tVes3Ki5PiokUgV4fP7x0Epi+Q7w/5WqmO6zzZ6p6gjKl3Km7A3feZSgDpV0/JY6a7qE6ZZjIHiRldvzUryxPfUm3eJ80+6Wl6gK0kz7yFSm3DkaujMSAG9KKtOq1adZivyVFI=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1791829920; c=relaxed/simple;
-	bh=k9HtPMK4WmShh9hH2m6JsRRZjIhJbSVtYZbsq3mNdfE=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=haT+WH//xRooQNWo7jq8HK4S1UHEARSyMKIxnBjpf3tHbNia4o4Q5eQTpH3Uhw0KH1yoDjb0WrrdW88Du2xlzAMj6nQLYzebDHYWId7yF5r987QwVavtBWd19OpAf3IsA08dt/7vTDk7tYp2Pt0nlZiAUiIKFd7BKbL2MAVThtI=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=rD6etQKX; arc=none smtp.client-ip=74.125.82.172
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	s=arc-20240116; t=1791834768; c=relaxed/simple;
+	bh=Z/AgMco8mJZUVwMuNN0+Coqi7OMq3963BpoRZbUEH+g=;
+	h=Content-Type:From:Mime-Version:Subject:Date:Message-Id:References:
+	 Cc:In-Reply-To:To; b=mF8K465jM9WIiddWUB9Kvfty28efebxQzZQc8TL8cFpIaYjqDZsRM4WtDtLk6XHIJRnKEUGBgCcJjEJY68AKvTxCdCK11q/J1+jXelfViIi3K+9PqifyPW+bzoZR59/0FU6fNPd0ExF5G6w4WShoMKTED82wKeGH2Sla1ADE6+c=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=SwxRhbxU; arc=none smtp.client-ip=192.134.164.104
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="rD6etQKX"
-Received: by mail-dy1-f172.google.com with SMTP id 5a478bee46e88-33bf40b0c8bso487486eec.0
-        for <outreachy@lists.linux.dev>; Mon, 12 Oct 2026 11:31:59 -0700 (PDT)
+	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="SwxRhbxU"
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1791829919; x=1792434719; darn=lists.linux.dev;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :content-type:mime-version:references:message-id:subject:cc:to:from
-         :date:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=4vuxsYH17qqFJ+udnCi2xzzMEsHX7wYHv3CZAY6j8oU=;
-        b=rD6etQKXglndFcQG1HfbkxjpV8NzAaqS0oM3WfWhyoj1HIsgSy3vNIzh4wzLPmV2IO
-         SL3jsc1rnWSk+XzOB29l/3xk8AL2zGyHm+EHAcPj1Yo38H9vl47U2uu9mO/BpU2Rbx6o
-         UmJ40e02eqMHduMEcZWv0Y2giwz8KrXuvNTestwXZUiwAhGo3ipvEZAxnRkXB/GmUoJU
-         u3T91fMbYcAqw/NpR/nRg8ySxHhZsmx1tCDTKfeHSTPAtnQkYo1anQfzx8Zd5qCuoTSU
-         1m7+4PSUiVymzkdwHLiw+KH+zALA05/YMgB7YjGed7KsFcjHWXPAs6bE8L6zj7/EYpyG
-         tHww==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791829919; x=1792434719;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :content-type:mime-version:references:message-id:subject:cc:to:from
-         :date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=4vuxsYH17qqFJ+udnCi2xzzMEsHX7wYHv3CZAY6j8oU=;
-        b=jVoZ/GedD1/3g90zkt0mYo+XxDOG6HW9TUESjlVsfX6JzpNU7r1+9BMrIgFBpoB7nB
-         he1mOK2wXrtRzPDY3oE8E1jzDVvqHIVJQioN2+OvRpyupwrNuVvD5ntIj4Hlxbes1sG3
-         Xrr3dFm2nDBIvke/FbMrNBNyUWgrgrsRaPps2hxjDw5pPVJmnXMg9rZs/7CwHmFF2T66
-         2kCq5Y+BD+CgKvqAzQoxgOM/glauNClhfUFuH7MK4pNamT+ZoWLo5Lgd24ti5D2G6DFC
-         wgbSfHkxH5Bn94tIcD4mqk5cduuvczUvkcyaD4EV3aLkNjkHP2gk6ejdxJPEA7k7F+4A
-         ZRRQ==
-X-Forwarded-Encrypted: i=1; AKwUvBxqDuWLgM+Iafs6qy4XT5t1btkOQ8SMz895NqjrL4heiVqWAkTie1BPdFcLqJTZRGF0u8UKvbvUSW4=@lists.linux.dev
-X-Gm-Message-State: AFq9FYLczl1igSMvZtih05eHvKN2AxJrqPrXpk0MotP42SftoeQh3RQG
-	Qi79YM3k6ItwLVzPzAgqC2qQLZDye/aYnG4i4CRwUE2YVFjhM42mecIi
-X-Gm-Gg: AYBFou28u12NARz6AF5BwJYtK7PzkRAfpBz5f4oMQNg7tzuxXizHPQCb7m+a5J7NKjM
-	oY95AjfwTViGlQfgmRNd61jxRNn1uVnmuaR0Q7PD2kOPqPDsb8WiFY5ZX1WvjfQ3mMIJA04SHiV
-	eC745sC+xNzugWpdy9wY/Xz8itKzhIHHy5G6gYlg0z6uwAQ5EXk8KzBsNENLr0byy5DFufHNnhO
-	A3IMKnY0QOTkmk6yvhAqluDDBjobygG4IV6MengElUQ2z6q/0NskX0SG2iTeCEG1H++1Uw7IZJF
-	93GLaVZvLsoqqeEbR9WhbT2h68NuZ6mQEN6ZHT4axJCiT8GLZPEwsvCcGEvHAAQw1FbS09NfC54
-	0YHzkV2uf6aA9JbU1bQ00hL8sxkRA4lhg7dm0I+DjXajytw/kUF/eAhjFZ2eiDHXBCjOXqJoAd6
-	RaEgQBbM0a2822iN9DRtbVXpgw04U34CH+M+jgQ21CTf+8lEunNQzfaZZATw47s80BBvuEOhYih
-	4FyUi5nvmaNzB4=
-X-Received: by 2002:a05:693c:8811:20b0:356:7ddb:2e54 with SMTP id 5a478bee46e88-3567ddb2f02mr13073058eec.29.1791829918494;
-        Mon, 12 Oct 2026 11:31:58 -0700 (PDT)
-Received: from user ([2405:201:c052:b00b:c154:b925:c82b:b0a0])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3537cacb61asm37755039eec.21.2026.10.12.11.31.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 Oct 2026 11:31:57 -0700 (PDT)
-Date: Tue, 13 Oct 2026 00:01:33 +0530
-From: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
-To: Jeremy Clifton <gservice341@gmail.com>
-Cc: johan@kernel.org, gregkh@linuxfoundation.org, vireshk@kernel.org,
-	elder@kernel.org, greybus-dev@lists.linaro.org,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev
-Subject: Re: [PATCH] staging: greybus: replace PTR_ERR() with %pe in error
- messages
-Message-ID: <as0nhVbagZa8Birm@user>
-References: <20261012170014.68898-1-pavankumaryalagada@gmail.com>
- <CAC2RYzLMQSOi961mmyNkK1aVuMDafXdvRj_mCEAZQnU37sKA8w@mail.gmail.com>
+  d=inria.fr; s=dc;
+  h=content-transfer-encoding:from:mime-version:subject:date:
+   message-id:references:cc:in-reply-to:to;
+  bh=GoNSOBQDgddSWnuLwHd0rZS3/ScOhx0bgum1vzG4Oog=;
+  b=SwxRhbxUuGjNgW1cpvetb1N/sBaUdJuMuZ08Vc2S5DMOz2JWnovBVo3M
+   abWawkDwAsQieSDT3NMYC25eVC9pvqLznxXVHr2+iylRahbPkhmX9LKnB
+   ZXlXMtHsCSIQfZkXuEdNTs4VC20eDwZrAY4jv2qj5gJlJcR86OdVCq5dR
+   0=;
+X-CSE-ConnectionGUID: TvgN1eY1Tyeq/pde4N2T6A==
+X-CSE-MsgGUID: ZjmAowncR9Sc8d9qN5aimQ==
+Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=Julia.Lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="6.27,154,1787004000"; 
+   d="scan'208";a="159605507"
+Received: from unknown (HELO smtpclient.apple) ([37.168.179.109])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Oct 2026 21:52:29 +0200
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+From: Julia Lawall <Julia.Lawall@inria.fr>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAC2RYzLMQSOi961mmyNkK1aVuMDafXdvRj_mCEAZQnU37sKA8w@mail.gmail.com>
+Mime-Version: 1.0 (1.0)
+Subject: Re: Introduction - Outreachy Applicant
+Date: Mon, 12 Oct 2026 15:52:15 -0400
+Message-Id: <45F4C891-F6AF-49CE-AC12-C5A6422D4773@inria.fr>
+References: <as0HUy5rtCKSJF7v@user>
+Cc: outreachy@lists.linux.dev
+In-Reply-To: <as0HUy5rtCKSJF7v@user>
+To: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
+X-Mailer: iPhone Mail (23E261)
 
-On Mon, Oct 12, 2026 at 11:57:26AM -0600, Jeremy Clifton wrote:
-> For this patch I have only one immediate suggestion.
-> 
-> The firmware management case (case GREYBUS_PROTOCOL_FW_MANAGEMENT:)
-> should match the other cases. Found around line 96.
 
-Thanks for the review. I'll update the firmware management case to use %pe
-for consistency and send a revised patch.
+> On 12 Oct 2026, at 14:09, Yalagada Pavan Kumar <pavankumaryalagada@gmail.c=
+om> wrote:
+>=20
+> =EF=BB=BFHi Everyone!
+>=20
+> I'm Pavan, a CSE graduate. I've been selected for the Initial application s=
+tage
+> of Outreachy.
+>=20
+> I'm excited to participate in the Outreachy contribution period, learn fro=
+m
+> mentors and other contributors, and improve my Linux Kernel skills along t=
+he way.
+>=20
+> Looking forward to learning and contributing!
+>=20
 
-Thanks,
-Pavan
+Great to meet you.  Please check the first patch tutorial for directions. An=
+d please feel free to send any questions here.
 
-> 
-> You've changed the pointer variable to display and this seems correct.
-> 
-> For consistency, each should match.
-> 
-> On Mon, Oct 12, 2026 at 11:00 AM <pavankumaryalagada@gmail.com> wrote:
-> >
-> > From: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
-> >
-> > Use %pe to print error pointers directly and display their
-> > error names.
-> >
-> > Keep the other PTR_ERR() call because its return value is
-> > needed for ret.
-> >
-> > Signed-off-by: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
-> > ---
-> >  drivers/staging/greybus/fw-core.c | 12 ++++++------
-> >  1 file changed, 6 insertions(+), 6 deletions(-)
-> >
-> > diff --git a/drivers/staging/greybus/fw-core.c b/drivers/staging/greybus/fw-core.c
-> > index 2016a74f137f..7053afa9ab3e 100644
-> > --- a/drivers/staging/greybus/fw-core.c
-> > +++ b/drivers/staging/greybus/fw-core.c
-> > @@ -112,8 +112,8 @@ static int gb_fw_core_probe(struct gb_bundle *bundle,
-> >                         connection = gb_connection_create(bundle, cport_id,
-> >                                                           gb_fw_download_request_handler);
-> >                         if (IS_ERR(connection)) {
-> > -                               dev_err(&bundle->dev, "failed to create download connection (%ld)\n",
-> > -                                       PTR_ERR(connection));
-> > +                               dev_err(&bundle->dev, "failed to create download connection (%pe)\n",
-> > +                                       connection);
-> >                         } else {
-> >                                 fw_core->download_connection = connection;
-> >                         }
-> > @@ -131,8 +131,8 @@ static int gb_fw_core_probe(struct gb_bundle *bundle,
-> >                         connection = gb_connection_create(bundle, cport_id,
-> >                                                           NULL);
-> >                         if (IS_ERR(connection)) {
-> > -                               dev_err(&bundle->dev, "failed to create SPI connection (%ld)\n",
-> > -                                       PTR_ERR(connection));
-> > +                               dev_err(&bundle->dev, "failed to create SPI connection (%pe)\n",
-> > +                                       connection);
-> >                         } else {
-> >                                 fw_core->spi_connection = connection;
-> >                         }
-> > @@ -149,8 +149,8 @@ static int gb_fw_core_probe(struct gb_bundle *bundle,
-> >                         connection = gb_connection_create(bundle, cport_id,
-> >                                                           NULL);
-> >                         if (IS_ERR(connection)) {
-> > -                               dev_err(&bundle->dev, "failed to create Authentication connection (%ld)\n",
-> > -                                       PTR_ERR(connection));
-> > +                               dev_err(&bundle->dev, "failed to create Authentication connection (%pe)\n",
-> > +                                       connection);
-> >                         } else {
-> >                                 fw_core->cap_connection = connection;
-> >                         }
-> > --
-> > 2.43.0
-> >
-> >
+Julia
+
+
+> Thank you!
+>=20
+
