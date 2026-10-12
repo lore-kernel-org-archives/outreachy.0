@@ -1,85 +1,134 @@
 Received: from mail-dl1-f41.google.com (mail-dl1-f41.google.com [74.125.82.41])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8C4A4334C39
-	for <outreachy@lists.linux.dev>; Mon, 12 Oct 2026 16:14:42 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5D01A4B1B26
+	for <outreachy@lists.linux.dev>; Mon, 12 Oct 2026 17:00:35 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=74.125.82.41
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1791821683; cv=none; b=EIf7pvn8GsuKX6HGE68t5qRfeMM5B1AB11AfmP+T9kbaubaY9nc6SJe4MHH/KobdOrAEGMDBVzIrvK2raMAH7DxIOh2NlCnbIumHs+h0YXvbvHhy10GBk8vM8KHRFJGQr81oFMJocbmu+Z8S2bl76NvuR7aptBCNWpvnJvbLVt4=
+	t=1791824436; cv=none; b=GIuRis1jZnAe5nuavuHMs/mAjfU3bfbpccC6G5sRA6yBWqo8RSRPBHD9sNXCs1FggEd/QFPrLYarCr1BGJ0+YfwnJnLGr1VEWRVVSv7L1ncbriFVZ06BEA6LrwOxOsgo814bcbaJBQEndvM4uGE7MAGd22R5krXNr1irBtmWxiA=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1791821683; c=relaxed/simple;
-	bh=gR4IshrcV+CamRqK2s0sgqb+8aoXOAiroaSM/ojewb4=;
-	h=Date:From:To:Subject:Message-ID:MIME-Version:Content-Type:
-	 Content-Disposition; b=GKGjceM5tShgi0ekACSR7ltj7xBofbUQsXBRFuQqTfGku+ycnRt7gCtvb6GgVfmOzZh7FmHe12Hc6nLkyCqh7khYj8gofLyiole7KVfC4pgfsASPrbDN5htVUsZ9FnhYhBT7ifc/OvxSs3SSPqghUWIOP2BLdS1YypLkOSjIzYo=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=etrwhyxD; arc=none smtp.client-ip=74.125.82.41
+	s=arc-20240116; t=1791824436; c=relaxed/simple;
+	bh=NChA0uA8/+eZNHQkSxbcV+2zHzjxRFg/wQPl/jusgJw=;
+	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version; b=YDjUFiJDO8HZ2bIUD3a68tGPK8fKLSsvvSj/rpXQJbaWW0Sg+g4L4rWrZ72TBpOmKCDj0GtFo69VrJMyi4aPJYEsSbKh4j/hU2EN5uiH5PM6Oj+GWnMKvgckZNN1ahMiSPwe6/GFmrePn2ULqDslqsh1tomoS8ZypCqyKQqu52w=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=eIpxvGkh; arc=none smtp.client-ip=74.125.82.41
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="etrwhyxD"
-Received: by mail-dl1-f41.google.com with SMTP id a92af1059eb24-1517bda04a0so974765c88.0
-        for <outreachy@lists.linux.dev>; Mon, 12 Oct 2026 09:14:42 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="eIpxvGkh"
+Received: by mail-dl1-f41.google.com with SMTP id a92af1059eb24-1419d3416ceso2845515c88.0
+        for <outreachy@lists.linux.dev>; Mon, 12 Oct 2026 10:00:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1791821681; x=1792426481; darn=lists.linux.dev;
-        h=content-disposition:content-type:mime-version:message-id:subject:to
-         :from:date:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=gR4IshrcV+CamRqK2s0sgqb+8aoXOAiroaSM/ojewb4=;
-        b=etrwhyxDvvVTOPFNOQ7Fyhzz/yOD13SO6BSvcSdN351STN1PXhitDujyJiMQupRabv
-         +hcDNR8hTbQ3aNI39ryfgs5lVocNQGzFir8HUR1cHJWEypx4vaI8vbNNW5ldPu2gDqcC
-         4TdeWgo12yhUJFsbJp+CVNRYMOhvbxzeA1rWQBcI3sFHUbG5WbZF5hgSKMzOXee/sVQy
-         uoh1I6SHajgabDbcUZok1qfQA6I+ydbCvqhmfsfm2Mbnxfj6F0PFMxTZvUqq3E/88Ziz
-         FDGBSFAtejHd+qktzfbpF0sayPWW5y/TpSilMJzuhctxnDlgaHIC5VX0soj3ElFf1VHN
-         x3SA==
+        d=gmail.com; s=20251104; t=1791824434; x=1792429234; darn=lists.linux.dev;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=s4g8PCfH1fFoEZObwV6RdWowws5NfT3FAx6q9WXCp5o=;
+        b=eIpxvGkhdFmnl9EeAUFvH33PaKoBlfNpovesLcHuKtkeAOq3FhUpqxp3UnfT50jF3u
+         gsKbwZ6FgeA3f9afGXtjStWy0f+2BW/9+fPAnFn1bIgDo+2pheqzBV7DuVh9pEuK47jy
+         zXGH4wLaZvstOdHYQYQm/jzKZuKf7O91Vm+HxcUAur/QFE3Z5FJI8nT9CsiTr89+gRyr
+         5TJJHd05uEK3GQuSD/Q29yKNiSzgWehhcldVnsf2hocyw0znjt42ywjOrKFFDXIl1J3i
+         DA3/8+be5KKv54QJctABkvw9GNE2LEYQmeadhqChrO+p/74TEYRVRXna+p+zlOzii6eK
+         3lIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791821681; x=1792426481;
-        h=content-disposition:content-type:mime-version:message-id:subject:to
-         :from:date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=1e100.net; s=20260707; t=1791824434; x=1792429234;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=gR4IshrcV+CamRqK2s0sgqb+8aoXOAiroaSM/ojewb4=;
-        b=0B0N9WHH+xIfhjdGJbARTeK2k31gHMVeHpDY8i7HGpF1XHBB/6o8B/ZTxg8nMNFa1q
-         YoiET82IjefzG84SF2K7ZF2n6NCoejdcmdHmM8uop019A0K9kQ2sxyskdzPRp/cCHOhj
-         RZoW5F6lNSAt1sdfu16yonqzR7v5YPmPl5WZ9eX39w1evvfv6t+rRBx0hktXHc4897ay
-         kyYjp+U/Z3c2DwqybbnOqR6WvSRk7VFLSicE6R99elps3EewK8YsFzNvKBzVkCte1Kfb
-         PRx5ksPYQjaLXim0qMyYJtiutx6iLjr5qvvypahGBHq3zZfLOhMzkjdHAEwvjdHUzR2t
-         SZcw==
-X-Gm-Message-State: AFq9FYJEKTMGw6zQvVZV7aHmasmNntwBvTuOrDFgJ699LuUPtxero9U2
-	i/5uGOCAI8FlMsv5xsLRP4inE6Ftk3J8MKk6ME/0Eg9AQS5mMiSfM+8znhmn2FZM
-X-Gm-Gg: AYBFou35Ebn+Ao89V6chnPI6F/13h56UjsxmQ8k6gAMOzvw3Tsg+G7SQx91lm9JyXkH
-	MosyKqvR96vOfSH1YQGsNnKboS/+9RhuJowkAGlWg7kRGnS+dOlA+bCaBDlJk6G6OaIPyjMuU/w
-	pJCzTlxJCNzdpbCn59vD72UbsJkESkcSPQV3LI7rv5p1I09XIFL8neLYC8DvB7RPzR4zruIrsD5
-	QPCd9+PUOpFQZIeAQZVj/542Wqnwu+umTtqSeGwMSACTWs7Kx6I1t4q/8XJKDkx2qUsMnpUoQfA
-	uSG3SZu5nqREz1f2NIJ43Bpabp/+GXd4P4OzW+z72JkHdoa+s9z7S5j2BxzSHTqGOpVJViSJPVA
-	dYX96/m1+6gsOdZIInQwHtPS6unc6av/EnQNdOrazTaXAU6MogO4mJV83zHIOpZ60hY+uY8s8/6
-	r0srFzHiMywY1keHqsUQ7akH4jHljrMADiYzALrfyLrSXY4GwHt0LIVAYO9A+T0xxSFtBkO+zpc
-	0Z04kbRxbjNpw==
-X-Received: by 2002:a05:7022:e884:b0:14f:b80a:33a5 with SMTP id a92af1059eb24-16a5d35f1cdmr20627557c88.28.1791821681405;
-        Mon, 12 Oct 2026 09:14:41 -0700 (PDT)
-Received: from user ([2405:201:c052:b00b:c154:b925:c82b:b0a0])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-169a3f6186fsm32461804c88.14.2026.10.12.09.14.39
-        for <outreachy@lists.linux.dev>
+        bh=s4g8PCfH1fFoEZObwV6RdWowws5NfT3FAx6q9WXCp5o=;
+        b=XCXeGLRZDr3APHw5uLzm94jQ07MElQ/8Ni14H6IcpluTG1sOyMv1kAz64gOf18YOjY
+         ITg44KFf3r8x7OIcQZdyqCYDggEM5OC7MrxClQ6WUlHjE42mFCdhcQEWWo9Jx/GXh73y
+         DCOjjcIlPq8Hs3f4jznR6WdKtx8elyvt7ddNc0anE0Qupi737FDq/wWV3FO1VWzAXm7J
+         WenIZM7CvlIKEXbPtynGV3CmZxi6HHdCfQpgmqpSXFSoO8uKUDrmrY9K0O3foQ31+x0k
+         dqJQOWVdk54tnBngGLdZXS0oVX/31QVjXJ5cfnOnYE13eMtbWEZ/oef1uP8buftPCYFZ
+         2fPg==
+X-Forwarded-Encrypted: i=1; AKwUvByEWOBvllfJ79OzNqlaeQbJCxGNBKa+rh7JJ2bmr8YZzIy7qETJWWMdkkaG4hrphryJYHa06n1xq1c=@lists.linux.dev
+X-Gm-Message-State: AFq9FYLd7xwN4H7tLiN4+fJvFeWneLeOE+6feoDbdNpWTzNluM8zb84h
+	/9fe9HB19o09XWgMP6STHLoJCfasbcB8lObsujdUT2brjp5fXFPbLu7z
+X-Gm-Gg: AYBFou1oKMrSI3HiS1XbccjG5UoT4rb1fU5/XqUZRgkzeIZxQ2KLtOMQJvMJqSrVK+a
+	C2TnFZVKUHt5lUWyboOK5R60KWfWoMrs2PBnd7383ovSTAeFtdz4BCSwPRYkbnn40mjfgsBzTf+
+	E0V7+8AjkyPMFGvskk8n4EgPgwX+5fxlea+vVX61ccccu++FTvZMgunjvs4FYMu4bxh4p6dvgGZ
+	xahGdTysysgPNv7rBn9yybknyBRYdGHBOIVDVxODPJdfETNPLicCoo7QBYNkXGjK2fxXUWXU0p2
+	NYk9RBNiI5hXuc50qknPUB1rIjk7yd1kKuKYD3GJrp7Cj5LwWTZtlN6ZB2zmriHN//D1luVnQ7m
+	YjTzAI73sl9Pv/cgI5IpUSFfXtzF+NKXMYJQniTraKuY+y65D60Cu7OKtKat/7w6QK6zK/F+JBM
+	mcqkkYehtD9+Mwx5nxHOaRxS/rMtWHeZ0pfIgdG66iEFmsCvKTlln4Jhr6x60j35IkR0f5BfQGX
+	8sv/qc=
+X-Received: by 2002:a05:701b:230c:b0:14f:5cd:f286 with SMTP id a92af1059eb24-16a6203dc73mr15566611c88.34.1791824432780;
+        Mon, 12 Oct 2026 10:00:32 -0700 (PDT)
+Received: from user.. ([2405:201:c052:b00b:c154:b925:c82b:b0a0])
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-169a567aef5sm31171142c88.19.2026.10.12.10.00.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 Oct 2026 09:14:40 -0700 (PDT)
-Date: Mon, 12 Oct 2026 21:44:11 +0530
-From: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
-To: outreachy@lists.linux.dev
-Subject: Introduction - Outreachy Applicant
-Message-ID: <as0HUy5rtCKSJF7v@user>
+        Mon, 12 Oct 2026 10:00:32 -0700 (PDT)
+From: pavankumaryalagada@gmail.com
+To: johan@kernel.org,
+	gregkh@linuxfoundation.org
+Cc: vireshk@kernel.org,
+	elder@kernel.org,
+	greybus-dev@lists.linaro.org,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	outreachy@lists.linux.dev,
+	Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
+Subject: [PATCH] staging: greybus: replace PTR_ERR() with %pe in error messages
+Date: Mon, 12 Oct 2026 22:30:13 +0530
+Message-ID: <20261012170014.68898-1-pavankumaryalagada@gmail.com>
+X-Mailer: git-send-email 2.43.0
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
 
-Hi Everyone!
+From: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
 
-I'm Pavan, a CSE graduate. I've been selected for the Initial application stage
-of Outreachy.
+Use %pe to print error pointers directly and display their
+error names.
 
-I'm excited to participate in the Outreachy contribution period, learn from
-mentors and other contributors, and improve my Linux Kernel skills along the way.
+Keep the other PTR_ERR() call because its return value is
+needed for ret.
 
-Looking forward to learning and contributing!
+Signed-off-by: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
+---
+ drivers/staging/greybus/fw-core.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-Thank you!
+diff --git a/drivers/staging/greybus/fw-core.c b/drivers/staging/greybus/fw-core.c
+index 2016a74f137f..7053afa9ab3e 100644
+--- a/drivers/staging/greybus/fw-core.c
++++ b/drivers/staging/greybus/fw-core.c
+@@ -112,8 +112,8 @@ static int gb_fw_core_probe(struct gb_bundle *bundle,
+ 			connection = gb_connection_create(bundle, cport_id,
+ 							  gb_fw_download_request_handler);
+ 			if (IS_ERR(connection)) {
+-				dev_err(&bundle->dev, "failed to create download connection (%ld)\n",
+-					PTR_ERR(connection));
++				dev_err(&bundle->dev, "failed to create download connection (%pe)\n",
++					connection);
+ 			} else {
+ 				fw_core->download_connection = connection;
+ 			}
+@@ -131,8 +131,8 @@ static int gb_fw_core_probe(struct gb_bundle *bundle,
+ 			connection = gb_connection_create(bundle, cport_id,
+ 							  NULL);
+ 			if (IS_ERR(connection)) {
+-				dev_err(&bundle->dev, "failed to create SPI connection (%ld)\n",
+-					PTR_ERR(connection));
++				dev_err(&bundle->dev, "failed to create SPI connection (%pe)\n",
++					connection);
+ 			} else {
+ 				fw_core->spi_connection = connection;
+ 			}
+@@ -149,8 +149,8 @@ static int gb_fw_core_probe(struct gb_bundle *bundle,
+ 			connection = gb_connection_create(bundle, cport_id,
+ 							  NULL);
+ 			if (IS_ERR(connection)) {
+-				dev_err(&bundle->dev, "failed to create Authentication connection (%ld)\n",
+-					PTR_ERR(connection));
++				dev_err(&bundle->dev, "failed to create Authentication connection (%pe)\n",
++					connection);
+ 			} else {
+ 				fw_core->cap_connection = connection;
+ 			}
+-- 
+2.43.0
+
