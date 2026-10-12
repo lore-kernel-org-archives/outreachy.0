@@ -1,133 +1,177 @@
-Received: from sonic307-2.consmr.mail.bf2.yahoo.com (sonic307-2.consmr.mail.bf2.yahoo.com [74.6.134.41])
+Received: from mail-ej1-f42.google.com (mail-ej1-f42.google.com [209.85.218.42])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7A04A3BED61
-	for <outreachy@lists.linux.dev>; Mon, 12 Oct 2026 17:23:39 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=74.6.134.41
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1791825820; cv=none; b=SVonZp0PZWLsBpN0+rjxhRSPVl0Q/q5jcnWxS65xPDpxNL7wOYaaqzujlLQWCrjhII5ase5R4WKhPizDGm0HZfRzV4nrIeVLty3ef/44cytAHpFsQ4T6dqVNgFtv2p3ZvVPoO+QslC+K90YwFGwMD3SDYxaaBnTa7PQGQ3siAcc=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1791825820; c=relaxed/simple;
-	bh=Qq5lg+/KK8RrQalbUvmh4PsXiH2MEbm5xlw8OY6f0zY=;
-	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version:References; b=kQBYywWfObAKzdwGv9e1mvUzFlY7hbJFLY3CKID5lQDlY138tCyK9Kgds92S15g5pCTOULBQfVTJJtTUfnGUq9fBsmFTJvl1uwivl6MTShE9EmmEnNU3obXzQGrTT5CT5KeWQ0TvLCa3XQTcx9MW3IWy/VwZFeBMYdFP0kCf02Y=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=yahoo.com; spf=pass smtp.mailfrom=yahoo.com; dkim=pass (2048-bit key) header.d=yahoo.com header.i=@yahoo.com header.b=Bt/BdDPx; arc=none smtp.client-ip=74.6.134.41
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=yahoo.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=yahoo.com
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C99A74C33FF
+	for <outreachy@lists.linux.dev>; Mon, 12 Oct 2026 17:57:45 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=pass smtp.client-ip=209.85.218.42
+ARC-Seal:i=2; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1791827867; cv=pass; b=nMaSsFs/MEjr1bL8+9oCzf/mMpSYCeE5sk+HkCayl06immAnKbmSiie4aGbDhkY+A2eij0HFe2KFh9AGI/8KyZ1VyhtJ5JojJLFQcCf1JFpcCp94bc91xVo5ghi4p6mWcBUc3aBz8AGze4lREM//YyTTPhmjufFHSuyDI8x53XI=
+ARC-Message-Signature:i=2; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1791827867; c=relaxed/simple;
+	bh=tKHEGCY6r76koL/l5S9mzJ+wF3wLymIG9V6xeMYDS8Y=;
+	h=MIME-Version:References:In-Reply-To:From:Date:Message-ID:Subject:
+	 To:Cc:Content-Type; b=Z6yVrCb9ftv5TPYmBr9WVuHxtrnrQGcUfbtsAUyX0t1vGZA2vvjp1+E64khGYal1syQncdZv9/bqmBnYnSddAbB3WSDtAfcJIf+dXS3491fuPPOkAnUbg1VlBMhTuK3FwEAASDiVP7+wJ9nCTDiZRvHRBPNcLOuu0R/poruZATY=
+ARC-Authentication-Results:i=2; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=BZmGoWPY; arc=pass smtp.client-ip=209.85.218.42
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=yahoo.com header.i=@yahoo.com header.b="Bt/BdDPx"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1791825818; bh=aiPGsXoHuTrTDXi7HMPlxUVp/rFcxDZgwaZcH8dnfDg=; h=From:To:Cc:Subject:Date:References:From:Subject:Reply-To; b=Bt/BdDPx2jmQT0YirrHLrA6TrrkAicUvJQX3a0s2R3BYmnUR6cV2nJOpZ7rAYOG6xdX2ipaF9fM4VzVjPrFwFEFqEDuTKWpZZDuZ+HsyHjZyRC7nAHvAjJ4iqRW2akpgQoi2a1R0j2zlWQbyW8NlSGgjcdTtSvEn/jdFhIbRLs1KRIOFiokDxIfVIh8usEC6vaQAnDLAJIY1y7SIOBetcDIYHTeyd39ZfzrOLx4gCRhrHY03Kr3XHfiTJsgfdHwqinhgYrPc7irizwWSkJEWWj16hr7FGeWaKz74oXlM0nWRxR6+yhZLxGbJ5EyqZND9/RAq5iycm3iGJ3BxzHJyUQ==
-X-SONIC-DKIM-SIGN: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1791825818; bh=M1Gsj8ce8ecuwTn4RxcHUbs0R9YIzh3ynSTpF8AdC7B=; h=X-Sonic-MF:From:To:Subject:Date:From:Subject; b=coxuzcJCvI3qy49VAMI6QHFXtpnfs3vLyS9OnzMSod6h6cvQ5cxeoBgKp7iqa10ure8AXFRufhjBYqYWlE7hCa2dh0pAMteYWdfh0kk75BrCuVqbnU8I9C1a66UMYC+bbfuXklXHMIijjDdi2/hkOVc44shSbEGsgo/GuNYc+JGF3qYCDO/a9YDqGTYZVfrK1MhLSNT8z+skQB5YbMu0et4yvb+DYtL0yeEvcLxH9c5e2v7tovn0Ryhj+mpi4PYEr+H2RpFxM8IgreDPTyLNvI0vGkZVZd1NeCdpIbdlRLpnu0pmReydK0K51c74HpxYb+MGaOxiWB7z7Pc7UmJOQA==
-X-YMail-OSG: VdJdwSwVM1m2YEcr48bWkairBpFdQ5PWU0IVp2aZe9bLXz6J9zlBPjiKFh2DzmL
- yDH7a3ejtHaYg.CX20rCHtcB0l5m.jDz5zbkExFJ2htjwT7sK1b1C_j2LVBaAsB7XbGb9ao8kS2g
- fYvufSiGbqnS0gQxiD7SSnaPjExAY44rY78uIHufziiGHzGAoeKfCL.shATDhTTnwZZh.iTq59Gy
- atxWh_inT_876vQNwrXpc0Po7Fa3Td9iz7xaRkd6Tdv_BwRjbq83H1f8VaJ8R4_F.7O6VXfA8d5n
- Nos8_WVChG67qL0ZD4jWai.WiFsIgTIw32Lgc57zJa_kbLlWSkODoPTNQPc6Q8u0iFYP4DCTFUX0
- SgJaWAYHQ7EVXG.qLGnpQpCcgUSYGAoOZmUBKcxevJmpX4x.bew9MsaVqCefQwSsP3Ah4QlGpSER
- Fh69tNeLfXdoX_BGGZQxH5rVB3_nrNZyHOBvHKZG1SCnMl3YHS_fn6oglmxZBQdhhplEMfp3X9El
- QOYAkg6gf8R3_cu1mTIj8gtmt0M6a3XIhgy30VxnJ1SQ53hNHCAH9dEFDazRxiHjEfEocvbUSNm8
- rb.vbI1EWStrO6tL8BY4snMxH13.tReSJ3dZOtavKpnE8xQh0P7u0XbTHZj48AQNJAN.7DnP9Bmj
- El8vE1Y0Qmh0bCWvqDdWNXQxSeKMWuktdCPzbQHokBxbsqD54yZwkQ0kgfRieFx5uCTmtgKD__ew
- eI2ak6f4X9BFetaIWLXWJ81oDoya5g1WarypZXAa437uJW17fq0Cjef8mkjvm40XmbTrBg3inpzz
- na.KaLk6yEnAFb6i96RYn.YqG02zakdSTOwllGLMUxnm3PgQ9UGgh5nPngcHyH7QxlOizY84Mkpl
- PxwzV14o5N8Sd_P4vD.W_tx_JGTdFaO.fm6l5e2AskDUWo5wJyiq4xz198ggMu0fpLES8EJWgmfN
- PN_GVRyviUF.Ja0xGGtzioU51ddqeVY7nzh49rFRKSVdADDGMc7Tg0jTYhF6RH7GpJZ5ke9ZJAKT
- gHTx4xgjXYYeUvcszeU_71bqLxkkH9D_qo_1JalhIv_9Oir2_TNejlWq4nksVaeJZ3uXDvpLR4SB
- y.RtFrGtlW9nXsCmFeSJYjdmsJZ.kG1.8Va8o0Oxxf1FQJwNDeJHf4lfwkz41sWIzZo.SW9u_4Hx
- ...CZm_EoKm0jJHaOa2Jin2jLkjXfGl14lnGuKNFjlB3B_6Uh3c6lCkPsCgh0j.Wy6emiMc2phpc
- 7plhnNYRHmcxrHhvh9n6bMrHcLSfiKQj_85UvVhDIOrz8MMazrP6YpDBk6VASmh_YFxW9Hf6nqnw
- 3inKEnUhsDejGKROT_csPqtCI9Mq.E32WrR.FgsTFkyD76B59wXSUjikX8.z2LGRgtiScNH7UF8_
- GFHDTUOtxqel1h.r77FQiNRucao7m5WV2qtUkq0xQoxU66rTnmOgcAa24Le1WTkaLa2NXRggS3c7
- p8pNgCbsE7LcqlsYuCxR5h2vJgtIDSiJ1HVtC6wm41.dfwlayJlg56VY5R0Ka__gZXU85s7z_dyW
- Z5vjDR4tj3tInDPAfuabQmZFTcfsUyxJmLPgAKrBx3AK_k.rQkL1OGSGzA1UQxlqWQh67O8gSccD
- 440PEMK8JDIl.NTGRMtvsI.nB4cIdRo_jEsYdYF5NArfROKo7TXXZHH457.r4r5qWqVs86LRac9U
- xFGwNGc9pXv0KGYYtpRiBppwF3JrH9v1qYS2aDCAzuZ455_373snXLu7NpgU5NIHFqaCrD8n2pnu
- fW1d_OggrOPr44EsQ8Y7_h8sTN1Ur4tozCavxzHswcaup1vjb.yLjGJJKnrqTPio6T5FqGm.pF3w
- OEFdn2mCvgbBtyErrH7AB2gR7JdTIpKaY2rWQ2mbUWrTz0GVIRF4iRwnsz.tWInGYHOzpeS4uPBd
- F7.a3UGybDcIA2h5bEMkMR.XQF2GpTZNewFaurW07KGZtJizW__He7pr5aV1jCwE4SOSA_ormPK4
- dL7.EdwrVzJnYtVMIjIclfbkElSG.IoHPziVfOVEUKNjxrCcJgL2oJW55lYM_aCIEGln940mUf_0
- px2kBjIf1HxHP5qZ85lq1sTHbBlKYsRknvcvif92NjgALlJR0xD8Rd1k5S49m7ZGP651AbjitXb4
- psiqY4mAuzXG_1ytYxXj5BUk9Pq0WPeNcFV.BptAoTU970r8Y0QvGp7JHsGDVRkWnPl3HNBMq_hx
- y8I_d7c9rbKYOLS9Ld8l4Sn8fne4HlaT_IeGflEEDpBs-
-X-Sonic-MF: <deaner92@yahoo.com>
-X-Sonic-ID: 0b8be0f1-f212-4fa5-bb1a-6c7326a34fc0
-Received: from sonic.gate.mail.ne1.yahoo.com by sonic307.consmr.mail.bf2.yahoo.com with HTTP; Mon, 12 Oct 2026 17:23:38 +0000
-Received: by hermes--production-bf1-6d6877594b-ndv54 (Yahoo Inc. Hermes SMTP Server) with ESMTPA ID 0063891ab483cbb0d918918136582532;
-          Mon, 12 Oct 2026 17:13:22 +0000 (UTC)
-From: Jeremy Dean Clifton <deaner92@yahoo.com>
-To: Marc Dietrich <marvin24@gmx.de>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: ac100@lists.launchpad.net,
-	linux-tegra@vger.kernel.org,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev,
-	Jeremy Dean Clifton <deaner92@yahoo.com>
-Subject: [PATCH] staging: nvec: use guard(mutex) in nvec_write_sync()
-Date: Mon, 12 Oct 2026 17:13:12 +0000
-Message-ID: <20261012171312.5998-1-deaner92@yahoo.com>
-X-Mailer: git-send-email 2.43.0
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="BZmGoWPY"
+Received: by mail-ej1-f42.google.com with SMTP id a640c23a62f3a-c2e43f3d1fdso295869266b.3
+        for <outreachy@lists.linux.dev>; Mon, 12 Oct 2026 10:57:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1791827864; cv=none;
+        d=google.com; s=arc-20260327;
+        b=CedDdblr1XI/e8G54dPygzWsJpPavuXgHs3mKEbpOl0V19aQYWVyIXEqIF02m2Tc1Q
+         bi0O5ONYGjm3o1o845bkmXFZI5gYR9tCLSOspKjN5jH92Zbg0SrionZFvsHi6e8NxVIg
+         K1j5fpr41NDvdPL7RwHhqOHssdT4YlV7sfjQuLSltg3kAm9A8K+gZmC/uN9U9+hMPfI6
+         y82PHESi4TWjlXL7GS46rOCGyC6TJ6ReCojAcZ5CnvNvrt4S2eq9gH1BMjx9wGzkk0c3
+         jaR3NEJObj3iqcqn59iIxrNyNrDBO045MN3wyxkg5MHk9t6WisPhNVkv1mFwEDUv6/PS
+         Vp6A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=rvsjKUEKpCMLc9hcdJqN8gh1y0AqhQ0pFlm8r1MXE7M=;
+        fh=iaAWL3T1yFhxKPZD8KjrXhQ7r6fiaAES12CXeqsDbdI=;
+        b=jA+0ILEujTNL1EhYLbwkWdiXCy1mf6K8/cMdtZ+DMdfQMu+3lJNJTlbPf5AppF/LTW
+         lLInbGd1++55F1gJF/YJtsd4FUMZWkiIp2bQ762L33hPOPgrU1fXro+TvL7j8XR03OD+
+         vt0TlkzVD3VwXLO0eLURa916KHB8+BZg8I2NZ7oOr753kJ7wt0f0i4RzLfW2swJ1GbtA
+         s5O9jk2/DHu08SI2dVTwdQH+s9/6AjYKChzxxou3Kb80QY6XVEt9Awky/OdydPTzUDlA
+         2lEZyrKPSwiQaQJYKEcC8WSIJUMr3Ug0BKZ67iBqNJ89VhTscB2Kzq2ibYluH3ttAm+x
+         eJLw==;
+        darn=lists.linux.dev
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1791827864; x=1792432664; darn=lists.linux.dev;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=rvsjKUEKpCMLc9hcdJqN8gh1y0AqhQ0pFlm8r1MXE7M=;
+        b=BZmGoWPY+wYOz8gQJzdMJzGyE8L6wcc42YAwP1t1Fx29eTglJMGoWowqqOY3lmuE/g
+         KQE3oIk9ra+WT1qNRuAWl+ciS0pXAJuR0myiDiH3PQtpLka4GGMU1mRw7z/DfMfZIBr0
+         OjQaWc3CGnXer1R0tNWGhlZqxhziNBPIzck2vKqDvCsoiZY9mNLNysf0KFH3/U7CNyEP
+         1RZYlo2fY1DgsWSjX48e6k1/gsLiFSlbIMyjtCQmhabGrzUeWh6npQZyfr4WlvPf+rts
+         cGFPxmXD5bTLnYOfwjohOSgCG5Lm4yJe6zhhOvDlEPSEHnecQeA79YFH+lE6qYGiKTtK
+         ukOg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1791827864; x=1792432664;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=rvsjKUEKpCMLc9hcdJqN8gh1y0AqhQ0pFlm8r1MXE7M=;
+        b=XIl33GwspZclpZy8twsZ85wQOVoScImsTuPRFwL6LA04L6RR0EPMNAndKAlwqwG788
+         5NcCly3gLzELfQ+d2i/eX9ZzXmFQ/AO2eDBwUDiVk33uR0HNBOQFfg1j/Y1UqfYF6Aa3
+         YykpO314rwPC9ZCQSgJTu3XUEk2fGvMdYXdni4qisoCx2pnpRiCZhKAyNaaC5VAj49dK
+         ZrmFuB+5lzk2dEyBpT9WO7p9h9GJzPNJ+4meUSUstk6xsU6W/2qarXkRgoasIq1swT4P
+         eRZtNdltTmlxkeUHKYbHArpqsp2dgjvC23X+jaB27dOfUKAXeYFQUpeR/QVpZ2dNJi2j
+         LBNA==
+X-Forwarded-Encrypted: i=1; AKwUvBz2W20v5fDQD9L2yOtwOYFDx1ARutOUq5W+lm1RZ75ddtLTp1z/5w6XopD1JktJdKOkXKmofEyWZxE=@lists.linux.dev
+X-Gm-Message-State: AFq9FYJy0csFDo+oZfCUkYUqYIjDvnyv6Z5dU+lN7T+wG6MWCXUerRm8
+	Tkvl/vVLvP57p7ts1ECMN3zluNYP5M9byV49MfHUyhPS/1JdaUnYpxpBDEiAvsPgUUfGff6fu/p
+	A7oG7vqjxENSCpHppkh7PI+ABQBB4BQU=
+X-Gm-Gg: AYBFou0NF3dXAyaBS1YJQp0N/gCvOWLl6xzKpp8+s7EG+lyWnuDt7j4qMySSDGZzwt+
+	FC6Otm6u3u48EXbCaIbYKouhy2CPazui09xXoK7l7fcg+9k4V8pEsIfdrjXIDPeu65YnzY7VhpB
+	K3Syhz7t6kmccxdv2f6s4SayVYn0asL6UF1re7X37z0WxmjbF2XLYEUAekLPgMULn2l7ZCP9bz/
+	0lYUytLSMcExAYq2fxyWqW0fps8FrP66eyRJXB6G2yxlVfN7p3PTTMTAzZ8rLw8/UMuq6+QLl1A
+	gGP3cBDZoAJmUJ+nIvCLr2Hkhz24OwkOziJx4Esk/I/8cOXcEUMNarj4apuzh09nPTnmyRfsunr
+	bGHf7YS/flUAs
+X-Received: by 2002:a17:907:eccc:b0:c29:7953:6c06 with SMTP id
+ a640c23a62f3a-c31aa0f72bamr946074266b.49.1791827863579; Mon, 12 Oct 2026
+ 10:57:43 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-References: <20261012171312.5998-1-deaner92.ref@yahoo.com>
+References: <20261012170014.68898-1-pavankumaryalagada@gmail.com>
+In-Reply-To: <20261012170014.68898-1-pavankumaryalagada@gmail.com>
+From: Jeremy Clifton <gservice341@gmail.com>
+Date: Mon, 12 Oct 2026 11:57:26 -0600
+X-Gm-Features: AclHuK9ZnaJO_VOcPMtAKRiGApXxopBu_93ZaUEgo7I2pXSxZlLgJ0Tt_dcxXaQ
+Message-ID: <CAC2RYzLMQSOi961mmyNkK1aVuMDafXdvRj_mCEAZQnU37sKA8w@mail.gmail.com>
+Subject: Re: [PATCH] staging: greybus: replace PTR_ERR() with %pe in error messages
+To: pavankumaryalagada@gmail.com
+Cc: johan@kernel.org, gregkh@linuxfoundation.org, vireshk@kernel.org, 
+	elder@kernel.org, greybus-dev@lists.linaro.org, linux-staging@lists.linux.dev, 
+	linux-kernel@vger.kernel.org, outreachy@lists.linux.dev
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Use guard(mutex) for sync_write_mutex. The lock is released
-automatically on every return path. This removes the three
-mutex_unlock() calls and simplifies the -ENOMEM error path.
+For this patch I have only one immediate suggestion.
 
-No functional change.
+The firmware management case (case GREYBUS_PROTOCOL_FW_MANAGEMENT:)
+should match the other cases. Found around line 96.
 
-Assisted-by: LLM
-Signed-off-by: Jeremy Dean Clifton <deaner92@yahoo.com>
----
- drivers/staging/nvec/nvec.c | 9 ++-------
- 1 file changed, 2 insertions(+), 7 deletions(-)
+You've changed the pointer variable to display and this seems correct.
 
-diff --git a/drivers/staging/nvec/nvec.c b/drivers/staging/nvec/nvec.c
-index 41cbdfdc1da6..716b1b482568 100644
---- a/drivers/staging/nvec/nvec.c
-+++ b/drivers/staging/nvec/nvec.c
-@@ -298,17 +298,15 @@ int nvec_write_sync(struct nvec_chip *nvec,
- 		    const unsigned char *data, short size,
- 		    struct nvec_msg **msg)
- {
--	mutex_lock(&nvec->sync_write_mutex);
-+	guard(mutex)(&nvec->sync_write_mutex);
- 
- 	if (msg)
- 		*msg = NULL;
- 
- 	nvec->sync_write_pending = (data[1] << 8) + data[0];
- 
--	if (nvec_write_async(nvec, data, size) < 0) {
--		mutex_unlock(&nvec->sync_write_mutex);
-+	if (nvec_write_async(nvec, data, size) < 0)
- 		return -ENOMEM;
--	}
- 
- 	dev_dbg(nvec->dev, "nvec_sync_write: 0x%04x\n",
- 		nvec->sync_write_pending);
-@@ -316,7 +314,6 @@ int nvec_write_sync(struct nvec_chip *nvec,
- 					  msecs_to_jiffies(2000)))) {
- 		dev_warn(nvec->dev,
- 			 "Timeout waiting for sync write to complete\n");
--		mutex_unlock(&nvec->sync_write_mutex);
- 		return -ETIMEDOUT;
- 	}
- 
-@@ -327,8 +324,6 @@ int nvec_write_sync(struct nvec_chip *nvec,
- 	else
- 		nvec_msg_free(nvec, nvec->last_sync_msg);
- 
--	mutex_unlock(&nvec->sync_write_mutex);
--
- 	return 0;
- }
- EXPORT_SYMBOL(nvec_write_sync);
--- 
-2.43.0
+For consistency, each should match.
 
+On Mon, Oct 12, 2026 at 11:00=E2=80=AFAM <pavankumaryalagada@gmail.com> wro=
+te:
+>
+> From: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
+>
+> Use %pe to print error pointers directly and display their
+> error names.
+>
+> Keep the other PTR_ERR() call because its return value is
+> needed for ret.
+>
+> Signed-off-by: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
+> ---
+>  drivers/staging/greybus/fw-core.c | 12 ++++++------
+>  1 file changed, 6 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/staging/greybus/fw-core.c b/drivers/staging/greybus/=
+fw-core.c
+> index 2016a74f137f..7053afa9ab3e 100644
+> --- a/drivers/staging/greybus/fw-core.c
+> +++ b/drivers/staging/greybus/fw-core.c
+> @@ -112,8 +112,8 @@ static int gb_fw_core_probe(struct gb_bundle *bundle,
+>                         connection =3D gb_connection_create(bundle, cport=
+_id,
+>                                                           gb_fw_download_=
+request_handler);
+>                         if (IS_ERR(connection)) {
+> -                               dev_err(&bundle->dev, "failed to create d=
+ownload connection (%ld)\n",
+> -                                       PTR_ERR(connection));
+> +                               dev_err(&bundle->dev, "failed to create d=
+ownload connection (%pe)\n",
+> +                                       connection);
+>                         } else {
+>                                 fw_core->download_connection =3D connecti=
+on;
+>                         }
+> @@ -131,8 +131,8 @@ static int gb_fw_core_probe(struct gb_bundle *bundle,
+>                         connection =3D gb_connection_create(bundle, cport=
+_id,
+>                                                           NULL);
+>                         if (IS_ERR(connection)) {
+> -                               dev_err(&bundle->dev, "failed to create S=
+PI connection (%ld)\n",
+> -                                       PTR_ERR(connection));
+> +                               dev_err(&bundle->dev, "failed to create S=
+PI connection (%pe)\n",
+> +                                       connection);
+>                         } else {
+>                                 fw_core->spi_connection =3D connection;
+>                         }
+> @@ -149,8 +149,8 @@ static int gb_fw_core_probe(struct gb_bundle *bundle,
+>                         connection =3D gb_connection_create(bundle, cport=
+_id,
+>                                                           NULL);
+>                         if (IS_ERR(connection)) {
+> -                               dev_err(&bundle->dev, "failed to create A=
+uthentication connection (%ld)\n",
+> -                                       PTR_ERR(connection));
+> +                               dev_err(&bundle->dev, "failed to create A=
+uthentication connection (%pe)\n",
+> +                                       connection);
+>                         } else {
+>                                 fw_core->cap_connection =3D connection;
+>                         }
+> --
+> 2.43.0
+>
+>
