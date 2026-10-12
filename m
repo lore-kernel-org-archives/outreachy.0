@@ -1,154 +1,85 @@
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-dl1-f41.google.com (mail-dl1-f41.google.com [74.125.82.41])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 670864DF4BA
-	for <outreachy@lists.linux.dev>; Wed,  7 Oct 2026 18:23:20 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.83
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8C4A4334C39
+	for <outreachy@lists.linux.dev>; Mon, 12 Oct 2026 16:14:42 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=74.125.82.41
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1791397407; cv=none; b=EsoRdMGxh+F4Vej/yIK0t2GhaF9UHKo/VSxCAaXFO3GRVjGnDS/7VhWbSYMrm7AmeKUMbspo+kMFrrlom9+B4n7xXb29MbuCt68sg6klUBeHLdPzMh4Ks5ZRXIu37AEko4HCqqAoXENfS1J2xWj6EfOXRWBzX8HrIX7lDL2scqA=
+	t=1791821683; cv=none; b=EIf7pvn8GsuKX6HGE68t5qRfeMM5B1AB11AfmP+T9kbaubaY9nc6SJe4MHH/KobdOrAEGMDBVzIrvK2raMAH7DxIOh2NlCnbIumHs+h0YXvbvHhy10GBk8vM8KHRFJGQr81oFMJocbmu+Z8S2bl76NvuR7aptBCNWpvnJvbLVt4=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1791397407; c=relaxed/simple;
-	bh=c13izlUSSnPuNefwiVnzI5LDj8s2sux80zK5jCyFA/U=;
-	h=Date:From:To:cc:Subject:In-Reply-To:Message-ID:References:
-	 MIME-Version:Content-Type; b=k5GMKSTgb3ZpzB7mfqTEUGLDne3IxqHIrgfJO64KHwWSVjRsjl6RixqcWgsnaiO8PV+bagio3S6XO77yfzTmTeq+hrg2UH2kwgxeD22pm7kpB60mA6EVIP+8xk3hEPRQofyHYJukszL17NkPbhZKj5jG544SnD+irjZ4V7IPYy8=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=hp3ihqwa; arc=none smtp.client-ip=192.134.164.83
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
+	s=arc-20240116; t=1791821683; c=relaxed/simple;
+	bh=gR4IshrcV+CamRqK2s0sgqb+8aoXOAiroaSM/ojewb4=;
+	h=Date:From:To:Subject:Message-ID:MIME-Version:Content-Type:
+	 Content-Disposition; b=GKGjceM5tShgi0ekACSR7ltj7xBofbUQsXBRFuQqTfGku+ycnRt7gCtvb6GgVfmOzZh7FmHe12Hc6nLkyCqh7khYj8gofLyiole7KVfC4pgfsASPrbDN5htVUsZ9FnhYhBT7ifc/OvxSs3SSPqghUWIOP2BLdS1YypLkOSjIzYo=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=etrwhyxD; arc=none smtp.client-ip=74.125.82.41
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="hp3ihqwa"
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="etrwhyxD"
+Received: by mail-dl1-f41.google.com with SMTP id a92af1059eb24-1517bda04a0so974765c88.0
+        for <outreachy@lists.linux.dev>; Mon, 12 Oct 2026 09:14:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=qKSC2OmkU/gHZaDy1HKv096EzjZU+CfpA/kJ4eQJxhU=;
-  b=hp3ihqwalTKbmlaJBQKpYTMxN9DogcRrV74J9WXtRprHPQBYjqLxMfz7
-   Jz4sFROunrG0n2xjjHg/JZIIS54a7r/NEpQWxZumviyOd09mVMnoco88q
-   GvYXZ3ffLZHFffQSW95UEqHN3vzQ0w/fM1eR23cQ1Ab4GoDU0N0eDFhqU
-   U=;
-X-CSE-ConnectionGUID: jBq2QFzfRmK+S/FYaxZ4Cw==
-X-CSE-MsgGUID: h2NxaH+7SZC0fP1fWl/Jbw==
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="6.27,144,1787004000"; 
-   d="scan'208";a="299023143"
-Received: from ip-78-44-132-10.bb.vodafone.cz (HELO hadrien) ([78.44.132.10])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Oct 2026 20:23:13 +0200
-Date: Wed, 7 Oct 2026 20:23:11 +0200 (CEST)
-From: Julia Lawall <julia.lawall@inria.fr>
-To: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
-cc: outreachy@lists.linux.dev
-Subject: Re: Welcome 2026 applicants
-In-Reply-To: <asaNQwN2yVVxCmbV@user>
-Message-ID: <88d213f2-e390-476f-f3bd-ee481d99515a@inria.fr>
-References: <e493c213-c325-fa1f-ec14-aaea11f6611d@inria.fr> <asaNQwN2yVVxCmbV@user>
+        d=gmail.com; s=20251104; t=1791821681; x=1792426481; darn=lists.linux.dev;
+        h=content-disposition:content-type:mime-version:message-id:subject:to
+         :from:date:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=gR4IshrcV+CamRqK2s0sgqb+8aoXOAiroaSM/ojewb4=;
+        b=etrwhyxDvvVTOPFNOQ7Fyhzz/yOD13SO6BSvcSdN351STN1PXhitDujyJiMQupRabv
+         +hcDNR8hTbQ3aNI39ryfgs5lVocNQGzFir8HUR1cHJWEypx4vaI8vbNNW5ldPu2gDqcC
+         4TdeWgo12yhUJFsbJp+CVNRYMOhvbxzeA1rWQBcI3sFHUbG5WbZF5hgSKMzOXee/sVQy
+         uoh1I6SHajgabDbcUZok1qfQA6I+ydbCvqhmfsfm2Mbnxfj6F0PFMxTZvUqq3E/88Ziz
+         FDGBSFAtejHd+qktzfbpF0sayPWW5y/TpSilMJzuhctxnDlgaHIC5VX0soj3ElFf1VHN
+         x3SA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1791821681; x=1792426481;
+        h=content-disposition:content-type:mime-version:message-id:subject:to
+         :from:date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=gR4IshrcV+CamRqK2s0sgqb+8aoXOAiroaSM/ojewb4=;
+        b=0B0N9WHH+xIfhjdGJbARTeK2k31gHMVeHpDY8i7HGpF1XHBB/6o8B/ZTxg8nMNFa1q
+         YoiET82IjefzG84SF2K7ZF2n6NCoejdcmdHmM8uop019A0K9kQ2sxyskdzPRp/cCHOhj
+         RZoW5F6lNSAt1sdfu16yonqzR7v5YPmPl5WZ9eX39w1evvfv6t+rRBx0hktXHc4897ay
+         kyYjp+U/Z3c2DwqybbnOqR6WvSRk7VFLSicE6R99elps3EewK8YsFzNvKBzVkCte1Kfb
+         PRx5ksPYQjaLXim0qMyYJtiutx6iLjr5qvvypahGBHq3zZfLOhMzkjdHAEwvjdHUzR2t
+         SZcw==
+X-Gm-Message-State: AFq9FYJEKTMGw6zQvVZV7aHmasmNntwBvTuOrDFgJ699LuUPtxero9U2
+	i/5uGOCAI8FlMsv5xsLRP4inE6Ftk3J8MKk6ME/0Eg9AQS5mMiSfM+8znhmn2FZM
+X-Gm-Gg: AYBFou35Ebn+Ao89V6chnPI6F/13h56UjsxmQ8k6gAMOzvw3Tsg+G7SQx91lm9JyXkH
+	MosyKqvR96vOfSH1YQGsNnKboS/+9RhuJowkAGlWg7kRGnS+dOlA+bCaBDlJk6G6OaIPyjMuU/w
+	pJCzTlxJCNzdpbCn59vD72UbsJkESkcSPQV3LI7rv5p1I09XIFL8neLYC8DvB7RPzR4zruIrsD5
+	QPCd9+PUOpFQZIeAQZVj/542Wqnwu+umTtqSeGwMSACTWs7Kx6I1t4q/8XJKDkx2qUsMnpUoQfA
+	uSG3SZu5nqREz1f2NIJ43Bpabp/+GXd4P4OzW+z72JkHdoa+s9z7S5j2BxzSHTqGOpVJViSJPVA
+	dYX96/m1+6gsOdZIInQwHtPS6unc6av/EnQNdOrazTaXAU6MogO4mJV83zHIOpZ60hY+uY8s8/6
+	r0srFzHiMywY1keHqsUQ7akH4jHljrMADiYzALrfyLrSXY4GwHt0LIVAYO9A+T0xxSFtBkO+zpc
+	0Z04kbRxbjNpw==
+X-Received: by 2002:a05:7022:e884:b0:14f:b80a:33a5 with SMTP id a92af1059eb24-16a5d35f1cdmr20627557c88.28.1791821681405;
+        Mon, 12 Oct 2026 09:14:41 -0700 (PDT)
+Received: from user ([2405:201:c052:b00b:c154:b925:c82b:b0a0])
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-169a3f6186fsm32461804c88.14.2026.10.12.09.14.39
+        for <outreachy@lists.linux.dev>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 12 Oct 2026 09:14:40 -0700 (PDT)
+Date: Mon, 12 Oct 2026 21:44:11 +0530
+From: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
+To: outreachy@lists.linux.dev
+Subject: Introduction - Outreachy Applicant
+Message-ID: <as0HUy5rtCKSJF7v@user>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
+Hi Everyone!
 
+I'm Pavan, a CSE graduate. I've been selected for the Initial application stage
+of Outreachy.
 
-On Wed, 7 Oct 2026, Yalagada Pavan Kumar wrote:
+I'm excited to participate in the Outreachy contribution period, learn from
+mentors and other contributors, and improve my Linux Kernel skills along the way.
 
-> On Mon, Oct 05, 2026 at 07:44:06AM +0200, Julia Lawall wrote:
-> > Welcome Applicants,
-> >
-> > Thank you for your interest in the Linux Kernel Community!
-> >
-> > The 'Contribution Period' for the December 2026 Cohort runs until November
-> > 2.
->
-> Hi Julia,
->
-> I noticed that the Outreachy contribution period start date
-> has changed from October 5 to October 12.
+Looking forward to learning and contributing!
 
-Yes, I just noticed that this morning too.
-
->
-> I wanted to confirm whether I should begin my Linux Kernel contribution work
-> now or whether I should wait until October 12 to start the actual contribution.
-
-You can wait until October 12.
-
-Thanks for your interest!
-
-julia
-
-> Thanks,
-> Pavan
->
-> >
-> > Our contribution period process works entirely via this mailing list. Make
-> > sure that you read over the emails on this list daily.  I will be posting
-> > updates here. Most importantly, it is where you will learn from each other,
-> > by following the questions asked/answered, the patches submitted, and the
-> > reviewer feedback offered.
-> >
-> > You found this email, now make sure you are personally subscribed
-> > to this list:
-> > Subscribe: outreachy+subscribe@lists.linux.dev
-> > View the archive: https://lore.kernel.org/outreachy/
-> >
-> > Please feel free to introduce yourself on the mailing list.
-> >
-> > Ask your questions on the mailing list. If your question is directed at
-> > an individual, then CC the mailing list. This way you'll be able get
-> > quick responses to the issues you're facing. Please help other applicants
-> > who face issues that you've addressed.
-> >
-> > Your first task is to walk through our First Patch Tutorial:
-> > http://kernelnewbies.org/Outreachyfirstpatch
-> >
-> > The tutorial leads you through submitting your first patch. Please
-> > do not submit your second patch until your first patch is accepted.
-> > A key point is that it is really helpful and efficient (for both you
-> > and patch reviewers) to refine your patch-sending skills one patch
-> > at a time, rather than having multiple patches in flight that require
-> > similar rework.
-> >
-> > You must CC all patches to this Outreachy Mailing List and to the
-> > appropriate mailing lists and maintainers in get_maintainer.pl. The
-> > tutorial walks you through how to use get_maintainer.pl.
-> >
-> > Once that first patch is accepted, please record that contribution
-> > on the Outreachy website. It will serve to check your eligibility.
-> > Only eligible applicants will be able to log contributions on the
-> > Outreachy website.
-> >
-> > Congratulations on getting your first patch accepted into the Linux
-> > Kernel! Celebrate, then do more!
-> >
-> > Please note the following:
-> >
-> > * All patches should be on drivers/staging, but not on drivers/staging/media
-> >
-> > * You can use the check the scripts/checkpatch.pl -f to find simple style
-> >   problems in some files.  Use your judgment about whether a suggestion of
-> >   checkpatch is a good idea for a change.  Check the mailing list archives
-> >   for some changes that are regularly suggested by checkpatch but that are
-> >   rejected in practice.
-> >
-> > * There are not very many checkpatch reports on the current
-> >   drivers/staging.  Some other potential fixes to consider include memory
-> >   leaks, introducing new kernel features such as guard, scoped_guard, _obj
-> >   allocation functions, etc., finding unused functions or variables, etc.
-> >
-> > Once you have several cleanup patches accepted into drivers/staging by
-> > GregKH, we encourage applicants to move on to complete project Starter Tasks
-> > that will be outlined:
-> > https://www.outreachy.org/apply/project-selection/#linux-kernel
-> >
-> > Ping me individually if you think you are done, or close to done, with
-> > cleanups. Also, folks who already have cleanup patches from prior work,
-> > please get a few cleanup patches accepted, to refresh your memory about
-> > submitting kernel patches, and then email me about that too and let's see
-> > if we can move you on to project tasks.
-> >
-> > All the best and thank you for contributing to the Linux Kernel,
-> >
-> > Julia Lawall
-> > Kernel Community Coordinator
->
+Thank you!
