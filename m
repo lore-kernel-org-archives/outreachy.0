@@ -1,48 +1,48 @@
 Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6EC3D4C4F40;
-	Mon, 12 Oct 2026 20:45:54 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D39003C76A2;
+	Mon, 12 Oct 2026 21:48:20 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.83
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1791837959; cv=none; b=ptRRRe3JTvDu6YuX9BOH7kXdpnTTGKWFdujoA4WR7y5y2llBEgm4GKrOiOY91xM/8ht/7tCrYhbB+8Mntf2IAUbh0ODpHg7Ra3VM6jd5oM6+1FrDUN5ZAs9JdDmBRzxIU8mkRII51vLdLCRT+EboN/Z2CAnLrhmuvqLvvHrKclY=
+	t=1791841705; cv=none; b=Co9dF47qagUXQx8Y6zJooy/C0PGwfCpBNMn0aGN79+1QpSMrMR205FuqJioHXk2CkwsaWgGYILSRWbznIt8SeONTQkaxR9ehh0v/ZkmMhy0eplZdsspXX2cqOBw/+LbWvBOdBBd+Ll64l7jtOCW5VGC237qqS+2hg0Wk3p+sM2w=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1791837959; c=relaxed/simple;
-	bh=UH3cbq3ml4jimezvZ3Mh+yJx7fJ0JsfGMGnLKd514DQ=;
+	s=arc-20240116; t=1791841705; c=relaxed/simple;
+	bh=1BzDB2BTSbbVodXad2q5RCO9lRhGA9lDhMl+T93wIcA=;
 	h=Date:From:To:cc:Subject:In-Reply-To:Message-ID:References:
-	 MIME-Version:Content-Type; b=CEZUreMayoKM/W0sF4u0NncDzhZ1jS2zLxP0pOoacTiTKyYWS1Ps9wM9pTLLuRlFQOqxWu6iU3un4wqMwXWzWnu70Rnrwr8rlOAoAu8Rh23BLoosBN0/AvBhUjz02BGGd7nW7qN9+babVJ8JZxdXUanIvZE1MrfUfbt/iWhL6sI=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=RO9m1tKQ; arc=none smtp.client-ip=192.134.164.83
+	 MIME-Version:Content-Type; b=MrYogVZEvNthDx1u7iYTBevXO5cpLTQ5tANWYwI4+dq7Gw5QmfGpEWABYbQQ0tNGZagjNgA6sczQeFXZCCtsCzLciq6q4roNr3zCMRGzPkOJt+9esmOafNdAZYxZD4J2jigE9hT5w4euih08jH2qO1aIFV/I3SQ3sC9jMl3WGv4=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=he7gqmJQ; arc=none smtp.client-ip=192.134.164.83
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="RO9m1tKQ"
+	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="he7gqmJQ"
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
   d=inria.fr; s=dc;
   h=date:from:to:cc:subject:in-reply-to:message-id:
    references:mime-version;
-  bh=PE9aaz1f8WNw33OXbxxphrNcE9ceVoU6+8hsLajxbHQ=;
-  b=RO9m1tKQPzEubLUHexNabXgVn6Z1cIpGBOAIGM3tHwviGfJ/lOKZ/5V8
-   OixtOm+sexS9gKCZm7m48P9iJOhZ7yuKnZC1r1xgYVLXwagsjCbAyJLmD
-   TtNEjpp3/iXKoPTwCVYGecvnCjl9vaB4IXiURY4dZ6HOUoMnhEhrtgBm9
+  bh=GnlUzR+Z74pHpjx6iyzt6t0OY2yTax8lLgnC5uVbk90=;
+  b=he7gqmJQO32zM0F4dQtta0c77QPgzoikcAKmlwc+KkYvJQJMxKsLepU8
+   2lWWAwFFDuN50pgIPZ6/N0uu7UYKeCC/pKgiz7a6nRtN5tN8PxqIZCUv4
+   qISb0ZfvNUfrmNuThjLur1qfLsm/q+0wwew0vTjl/LC3g70dBOtEm2KGy
    o=;
-X-CSE-ConnectionGUID: ngCFrpB8RxSekRMBqaidVQ==
-X-CSE-MsgGUID: DelHkQCqTReLioT1q8Tjsg==
+X-CSE-ConnectionGUID: dTTSVntFS3OS6RxhQOSatA==
+X-CSE-MsgGUID: 8hJTNnKETceAo+HaZe9S3w==
 Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
 X-IronPort-AV: E=Sophos;i="6.27,154,1787004000"; 
-   d="scan'208";a="299823727"
+   d="scan'208";a="299829059"
 Received: from unknown (HELO hadrien) ([12.202.65.58])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Oct 2026 22:45:42 +0200
-Date: Mon, 12 Oct 2026 16:45:41 -0400 (EDT)
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 Oct 2026 23:48:14 +0200
+Date: Mon, 12 Oct 2026 17:48:11 -0400 (EDT)
 From: Julia Lawall <julia.lawall@inria.fr>
-To: Jeremy Dean Clifton <deaner92@yahoo.com>
+To: Jeremy Clifton <deaner92@yahoo.com>
 cc: Marc Dietrich <marvin24@gmx.de>, 
     Greg Kroah-Hartman <gregkh@linuxfoundation.org>, ac100@lists.launchpad.net, 
     linux-tegra@vger.kernel.org, linux-staging@lists.linux.dev, 
     linux-kernel@vger.kernel.org, outreachy@lists.linux.dev
 Subject: Re: [PATCH] staging: nvec: use guard(mutex) in nvec_write_sync()
-In-Reply-To: <20261012171312.5998-1-deaner92@yahoo.com>
-Message-ID: <b51c3755-a967-3de3-5f8c-3e4984d6e93c@inria.fr>
-References: <20261012171312.5998-1-deaner92.ref@yahoo.com> <20261012171312.5998-1-deaner92@yahoo.com>
+In-Reply-To: <492e9a13-b50b-48cb-bd41-3114573c7950@yahoo.com>
+Message-ID: <525671bb-35b-32fc-94a6-e4e066fc1966@inria.fr>
+References: <20261012171312.5998-1-deaner92.ref@yahoo.com> <20261012171312.5998-1-deaner92@yahoo.com> <b51c3755-a967-3de3-5f8c-3e4984d6e93c@inria.fr> <492e9a13-b50b-48cb-bd41-3114573c7950@yahoo.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -53,78 +53,31 @@ Content-Type: text/plain; charset=US-ASCII
 
 
 
-On Mon, 12 Oct 2026, Jeremy Dean Clifton wrote:
+On Mon, 12 Oct 2026, Jeremy Clifton wrote:
 
-> Use guard(mutex) for sync_write_mutex. The lock is released
-> automatically on every return path.
-
-The second sentence seems ambiguous to me.  Is this the motivation for
-doing the patch or the result of the patch.
-
-> This removes the three
-> mutex_unlock() calls and simplifies the -ENOMEM error path.
+> Thank you so much for your guidance and feedback.
 >
-> No functional change.
+> It is the result that the patch will produce. All the unlock calls will
+> be deleted and the out of memory path will have no braces, as per
+> the style guidelines.
 >
-> Assisted-by: LLM
+> The motivation behind the patch is to defer usage of manual locks
+> for new and improved guards, disallowing lock leaks.
+>
+> This way, there can be no error producing path by not calling unlock.
+>
+> Shall I send a v2 with motivation included?
 
-For Outreachy, I would encourage you to do the work by hand.  You are
-welcome to check the work with an LLM.  The goal in the application period
-is to learn how the patch submission process works, not necessarily to do
-it as fast as possible.
+Please adjust the second sentence to be clear that it is referring to the
+result, not the initial state.  If you would like to add something about
+the motivation, that would probably be good too.
 
-Feel free to introduce yourself on the list as well.
-
+thanks,
 julia
 
-> Signed-off-by: Jeremy Dean Clifton <deaner92@yahoo.com>
-> ---
->  drivers/staging/nvec/nvec.c | 9 ++-------
->  1 file changed, 2 insertions(+), 7 deletions(-)
 >
-> diff --git a/drivers/staging/nvec/nvec.c b/drivers/staging/nvec/nvec.c
-> index 41cbdfdc1da6..716b1b482568 100644
-> --- a/drivers/staging/nvec/nvec.c
-> +++ b/drivers/staging/nvec/nvec.c
-> @@ -298,17 +298,15 @@ int nvec_write_sync(struct nvec_chip *nvec,
->  		    const unsigned char *data, short size,
->  		    struct nvec_msg **msg)
->  {
-> -	mutex_lock(&nvec->sync_write_mutex);
-> +	guard(mutex)(&nvec->sync_write_mutex);
->
->  	if (msg)
->  		*msg = NULL;
->
->  	nvec->sync_write_pending = (data[1] << 8) + data[0];
->
-> -	if (nvec_write_async(nvec, data, size) < 0) {
-> -		mutex_unlock(&nvec->sync_write_mutex);
-> +	if (nvec_write_async(nvec, data, size) < 0)
->  		return -ENOMEM;
-> -	}
->
->  	dev_dbg(nvec->dev, "nvec_sync_write: 0x%04x\n",
->  		nvec->sync_write_pending);
-> @@ -316,7 +314,6 @@ int nvec_write_sync(struct nvec_chip *nvec,
->  					  msecs_to_jiffies(2000)))) {
->  		dev_warn(nvec->dev,
->  			 "Timeout waiting for sync write to complete\n");
-> -		mutex_unlock(&nvec->sync_write_mutex);
->  		return -ETIMEDOUT;
->  	}
->
-> @@ -327,8 +324,6 @@ int nvec_write_sync(struct nvec_chip *nvec,
->  	else
->  		nvec_msg_free(nvec, nvec->last_sync_msg);
->
-> -	mutex_unlock(&nvec->sync_write_mutex);
-> -
->  	return 0;
->  }
->  EXPORT_SYMBOL(nvec_write_sync);
-> --
-> 2.43.0
->
+> On 10/12/26 2:45 PM, Julia Lawall wrote:
+> > Is this the motivation for
+> > doing the patch or the result of the patch.
 >
 >
