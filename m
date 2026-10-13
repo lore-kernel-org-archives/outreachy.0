@@ -1,71 +1,76 @@
-Received: from sonic315-14.consmr.mail.bf2.yahoo.com (sonic315-14.consmr.mail.bf2.yahoo.com [74.6.134.124])
+Received: from mail-dy1-f175.google.com (mail-dy1-f175.google.com [74.125.82.175])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8D4F73E171E
-	for <outreachy@lists.linux.dev>; Mon, 12 Oct 2026 22:40:01 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=74.6.134.124
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 416703624A5
+	for <outreachy@lists.linux.dev>; Tue, 13 Oct 2026 02:24:14 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=74.125.82.175
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1791844802; cv=none; b=G967mdVjXEGY0cuTcHBwDjxI5P33u+4GbQNwm91OA9odevmjQbzhSpdJoxtFwE9rkdsBVck3z0Crk9pqPLjYXGZJ6zs19zfBDYe+mr7bzKUlvU3fum/BMw1JD7DNhGF8+wtG2cq66jmzmhiA/85kL6LRzdy96Th7mrsJV0n1OQo=
+	t=1791858255; cv=none; b=eBq8TexrHsI/TckfAhKcKELFpaOMe+0ctnTi+2OREdRIPfaXa/PmaDTamvg7Wgp32QmOOPyCuCpFPZ3++bRpmLGy2Aq3yb3Ywbu085Qy7rNbVoIEaFl8VmIWvElI9GlI1TyJieUQAuR6jMyHnnP+MPcsy/uBuid56OQ3xZJ36ck=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1791844802; c=relaxed/simple;
-	bh=gCXOaRk/vTK1DhL6qLIW+SHbOH4P6Jjkw3OH9+v59+M=;
-	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version:References; b=pq/OlojO8p2UBZW07+v2Y+K9i8sQyOmNkTWU/xpLpqWvfqIFdPUvF4XV5hzZOke7Vjgg7jWtGoxPBmZwC2e34g0ItTGqdPBoqkPrsE6I/krWp9OpLSheU3Onf95FR5hA+BBsQ1/CqYWsPEeJHHmYyV90fLJBU/4lygmyCyiN+SI=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=yahoo.com; spf=pass smtp.mailfrom=yahoo.com; dkim=pass (2048-bit key) header.d=yahoo.com header.i=@yahoo.com header.b=R+50VtBl; arc=none smtp.client-ip=74.6.134.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=yahoo.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=yahoo.com
+	s=arc-20240116; t=1791858255; c=relaxed/simple;
+	bh=MoMGSPOqTr4M6F5ZHRoW8h+LRARnD0C9eFYVg3JWUMk=;
+	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version; b=DKgPtionr7C/UXZGMVcXOMAhWvlq1h54x7YYQFCRL0R7Np9hZghIu7Ki6Z5m+46GGo6YWchpiNQ+mC7JnAOBnCNrIudiUZQiWnRjLGaC4xA1opUDiA0wJiMZCrxf5h8olxujIksCrdxJEpXB6j5x8jqlMbXui0KY8XGOOfFSooE=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=JT8lzspH; arc=none smtp.client-ip=74.125.82.175
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=yahoo.com header.i=@yahoo.com header.b="R+50VtBl"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1791844794; bh=1kalAvIfHRcDXkPRqDq1U6FEwWATH8wlkkkNkAB8hQU=; h=From:To:Cc:Subject:Date:References:From:Subject:Reply-To; b=R+50VtBl9iLl7Y6pO+oV09WYavOtuqrVAt83zqbVVMD2GItIWI0+oEWUPF5wvKf4HubyImVILycTei+leUJANDNT1yId7brChn/+sYsx4DEMWxhiSPiJc/3W1jKMeMV0hRC35CsJKWw9irCa8Dwed5Myd/RAgPMlMJgURnF7juMPGawskeS+7VFeJ2MSPYRXWvHfEMYBjHgM7LKD7d4hC1cpPKYmWQ9n+sSwb+gD6T5EcU+GIrouL+IGTFhEQgaRcXQs7Lastj6y8cyPx3aZCXyC5bjlDy3LmfJNxmra2SoxdvZBen01xUmrYBy7/XF0AOg8oO2WThTcx6T03d/3Eg==
-X-SONIC-DKIM-SIGN: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1791844794; bh=eL1xfAoZwZC+NSHYQAMKlvboJVgtKC4K2+ok0VGPavK=; h=X-Sonic-MF:From:To:Subject:Date:From:Subject; b=TQ7U+lkwLTlnfalFpzOqa6/OrfU4FJG6VeazsfajXqUUngUaIcKjwKPlCiruJzOdocXS3b83kqMgtZcCwWy0hV8kXUlcV/OB5W3VNfycDarPPPn9OP9xtobE/2q8bbmFcGw6sR6t5o1Rt7gKL1tPnkIF54r1N6CvnlN4pn1ZBaHIGjWtDu7j2iJ1CA1RTikHY8pcH7Otxzz1Ti+pn5dTjq/DI6zgwtrGJHzzrs7ySn6DuHv9t9l3CwdwcD4+tQmVA97N+07FE5DX9tHNQD3zIZugniXxarVteVXch68yRz1LtmfEbxmIw7WJsBpknQ80rZkGlA5uieI6fdH/8dFc4Q==
-X-YMail-OSG: WsPGVZ4VM1lk5rK6O8INNCb4QEKv4quJAIRBag814Wjy4Z_pNv8UvTlYC8wOQK8
- oC1ONmI9jqNUZ2Vml97YYPrS1PYkrbOMRP9bvB0FKNWD2jMhzKk3eTXrGkdfxfu6kFK7XHxTw2eV
- GvFCbUdETotJ3kOts530bBsaVRpKnBEBMCGgQtNXDuYeH4p0yHn4LNDRmFVTZFgJzNDVbLgIj_eV
- 3W4BotQgNHmEw.rhWhCc7LxCX4hdNkA3UZnsHLzA6MDhVVIDQ.gLKs.l7Xmr_9YkQdR6uDIA.Xa_
- epBLhDZYPdcBw_Zr1IR2kWI94WjP_dbT91dR4oNoK0Y6lCLUSGtrDu5MzOEincW2JRxuSD7ebbA_
- SrJ6s5CgWdDasS5oBlJ1JtwCi7MVjXxJmtu79K4ZYoH9ZyDAfmVNE6caZb8VJU4BZ8tIua4PyeNA
- cwYX0FYD5qOmQNyHU9_juJZIfQim5sBaM2gE1a0xXljJ0xzNQKXKO7aOvnYkKJKCKwUgN9XSbSxh
- LjiYOoacyJ7Qz8Zyjp9YjlONK42mY9eT1b062lEj359glBG4Q3ZpPkmusIDAU2E0TsmV4c.dWidA
- ZM8SIC9LRxo0XSs1Mjjkjkg9CCc9vepX2eFxsuYyIQ_wSAO3DueamvVibwGxBFIK980HO04yHOu9
- 8zV43_mRwpcldbixsr.oHg.dloVDz8DJN_HBBUODVoaNW.jiXUup3yQG3xgMgT2kipcdEIiRGsLK
- 6UGQUo7vxOedQOchdVHEN50a7R7jADSXA1Mjqk7o_Srql2pI7TUz1Pqc69NTURmllkufaqMx0yRl
- pQshNX1OcMnsT5tKqSN8FI7WmG9DJ8a0LNjuTWBvVH0Kw4uM01HCcYXxW9eBnW3iIEq8bLZ3ZQKm
- nDN.ilq2NfqX8jDilTkrpO9y1qkuVLqz8klQipypeA2aCVweDVwUv7KaVtuPBQdBVNrE35WNYTnK
- M88kMjBAeO2Nl7BMPIZcMXxcu0ycrT3yLrV9ru2k.JsXL5jiP4XcY24gtofK.8fsFd1qWbtIdRN2
- 1NmkPcn9kgYTaeiokrXlbFKZbHPzA1EwhGpmYZ0BMPA3aCYhXPlAd41V2KIOswwqI4H9NSZ2jfkH
- A1giNabkV9EvitU.UCIV2.ubHmQJNg.RCKCR4yLhzcadacgGyOpYXvOdum30PIOULHHKwNS2vLwc
- sajljcqGfENyHnBn4y26BWHjS6XAo9WlpLJ26NxpE6kaUrPt6.KZ_Zeb6sAdAAtyWvTxmJ0Vyd0W
- NY79l61YppTAKSTmrHqi62sgxEEu7jLNoy.mAl.2RpTWLYrpCmpPV5lkmHVhyhuedTzsNGKaTSkN
- asxiOg_f.W9owsf03AVpYO1hTavSKqxe.EFefYETrdzLz3v6lssSrfL8O7aauyZUAXzZYj.5Hqc2
- _1XdqOZlcYUruh3cL1rVLyHmvurIvmpTjdLJ_gflCC4BcEClA8B2rEPCuxpJrwJhLpHXGnOmDquO
- UJ7PNABoufp9Qh76fQticUKd0DhnLZymajmzgua3.klXwzI0NtEiDDjGmNYE3AT6U2Xe8ZXbd4.v
- veMPjFmyGBH4HSjVxYoi_X0COkXwDGucHOQT2n6KP5qKtYMMIcPaI11bgLTCosDRJhrzuQjrTOyj
- d0Tc6bY6_KgCqcUci.baGMSQXdlvBnrg82ftuk0Altdr7s5hfeTnn3Luc.IhoNjkDNZ6Rml26HUv
- atVrnZx_bLEDLIKTKTGF5WpKQATuPbGsa7TC5V33.21oE_l9admAoIiMWnoUfyFQHtFBP7vDyyIb
- YAKqcJNhQwBn1Bs_V8OLKVU89dhNZoBjNfoonf_F4uMyU9qBCq5aQgGhvo.amDnVpuBGA.HFtK6Z
- Kx_XMNdzH1eoPGtMOt.hCq4mLh.RTWvUiRKYx_C8Pa9wkXH8.3Ke.EmgZFw3696S1xbVjewnJHiR
- 0zVuUxoh9pq_nppSCgp9hUtVLqJyAGXD..j_QO.2_v6qSKkhFzTVRHVfVdSCip_V.XON5QRxGiLm
- n1ssUXIQkSKoPzQ1DMPJI4njM2qDIDDuAB0w.v_bgatW9.hyp3_ibc1mPT3bbOE_p_sdRZxghPtd
- LhS_bl7DAX6xE4N5is1VmCphjaBQ1Eb8_ijwfoa8NGbPZ8cYb7UJL3z1qVvTdVkVd9RUIRYUufLw
- RIEznecBoYG813GOwfnCfa7UjIWVSlWW_goqYF1jPSuThCIpuFErSu6zpTP6jJIx5DZxUNw4x5F0
- DoMzJHrJOkA9zsRw2AM1exAuNggsVjLe4ueww.GQNvxvt7yE-
-X-Sonic-MF: <deaner92@yahoo.com>
-X-Sonic-ID: 63af6003-ef7e-44ad-9aba-94ad906a4aae
-Received: from sonic.gate.mail.ne1.yahoo.com by sonic315.consmr.mail.bf2.yahoo.com with HTTP; Mon, 12 Oct 2026 22:39:54 +0000
-Received: by hermes--production-bf1-6d6877594b-hmvct (Yahoo Inc. Hermes SMTP Server) with ESMTPA ID d1b8cc93bac081ab1177366705bb57b9;
-          Mon, 12 Oct 2026 22:29:33 +0000 (UTC)
-From: Jeremy Dean Clifton <deaner92@yahoo.com>
-To: Marc Dietrich <marvin24@gmx.de>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: ac100@lists.launchpad.net,
-	linux-tegra@vger.kernel.org,
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="JT8lzspH"
+Received: by mail-dy1-f175.google.com with SMTP id 5a478bee46e88-35aa0cf7c40so1747451eec.1
+        for <outreachy@lists.linux.dev>; Mon, 12 Oct 2026 19:24:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1791858253; x=1792463053; darn=lists.linux.dev;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=2mt3JmLLgHj7BPLHepcEaqLDPCG5DVuA7mfVobinE+s=;
+        b=JT8lzspHS/s+C7RVix/+GxLqgG8vwxisll+7a/kGJEif4yPmJtwdWtgGKQyR3EBgcW
+         vTOH3g6PcfC0Ukfelr0A7L1XctiMGvPT8/BjZ2QJbbNuWJhCo7qMv62XTSfcEwI9+KFX
+         KRD7JaGBaoATpNKyM8HTGvsiC7mkfROzNOt8RuvwzOaBP5OUqAScfTklA3CBBrtn9Tu3
+         nj7dFA1i6DlySmvZ3nc2OGJ2zoIFTZDxHvAcbOlCmLSkrUf6a/NqoNPZb7DiiJ6e8l1I
+         9XSjD6Fj2zUqGHoLvCP1put+Car62BUXAJo9ygBckWpIfiLxUExCaW0soFLSOV3Uj96w
+         dAng==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1791858253; x=1792463053;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=2mt3JmLLgHj7BPLHepcEaqLDPCG5DVuA7mfVobinE+s=;
+        b=MCsx3qkawGAVhN3H5X1lIGeYI6UOjRLArDxHngfxNkxyPqFM5n3i/lOnidqerOhjTa
+         U7Y4ftzcjnvdJh9ijCZH9N54+gkV4y3AxZnYZPRk3Rs+NKIAFCfJWeqn1+IVT6XUpNwl
+         BFa5dcqfXqupE+iZucv0aihtRRP1bDlNRyndNO2qcypawkj9bAkwnjRjzHWWpgyxH6vF
+         ++ycSphmclxNCdT09cwG3srGqhPjkgnACqVEP9+xCeDjs4Sij7Hna4AejOLmNUcLo65S
+         MJBhScZXgRqINzGeRDYy4RDIHHHhy9Wd0RraxEnuUW0qI4ugDP87odU4YyG6EhyawyJn
+         Ztzw==
+X-Forwarded-Encrypted: i=1; AKwUvBwzEtYhT06kqMGUlzEViSsEFJZNAVP2UsglhqBG2FtQEnW0mx9GJHxXOnkASpFyN3ErRvsAlvbYUxY=@lists.linux.dev
+X-Gm-Message-State: AFq9FYKisU+Dk6U19KHigN793vJautEEA6/awnLHJrhEguQcnHSt6FH9
+	j4uKUVVAmGmk/vbE6VdpdodOJ/P400Qc5EvC0ZiF1qm+d91nissKWz2O
+X-Gm-Gg: AYBFou0Ta0Dcwngsy8nWvLLZjUPLxkF8TkXf9C+alIqHboScfY83e+WPEpVXjmwPK8O
+	o7lKayaLhIDmdFavltbYmZ6Pb65EBA8abNNyrAKJGBm4azfegt80c2TdImnaGKwQnQJa110tF49
+	y4duTmtZmf5yl2014FbMAKK+j+ZyAFeKVBNv1gfUTNH5q+Qvk+HPK+mkFGuL4483JVEURDTcOJk
+	yZJ8JXJ0Gw+lzUVb1157UWoJiDSVTJFBqRRufJj/G4ptyohepjSMcGdObowSFvWf4TC+LECfDD7
+	L1E9/0DzCBLObzxhoaMIvKUZ4PwIfZhwEMSVxb4JtQYTw/ccwfomt/zDGp0QzS5hrXa0d1sWico
+	zfT6DyF+qujeQEMrkbyYxa3O4mcFFmbqp5nxVOQtz6MKTk2YkxuEcuOvW6YjpVosXihuDAE8Ost
+	MBvtBfwcqj59OsD1tEbsiOqk7Gxqs7QyNX41fPmD/TGskValxmd1mqaL0LW8he4ox+/6Wc/DnsN
+	L4YUg==
+X-Received: by 2002:a05:693c:620f:b0:33b:c24c:d31c with SMTP id 5a478bee46e88-3537dfc7ddbmr19496412eec.7.1791858253173;
+        Mon, 12 Oct 2026 19:24:13 -0700 (PDT)
+Received: from user.. ([2405:201:c052:b00b:d39e:c181:5646:33b])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3537cb68e56sm34777638eec.29.2026.10.12.19.24.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 12 Oct 2026 19:24:12 -0700 (PDT)
+From: pavankumaryalagada@gmail.com
+To: johan@kernel.org,
+	gregkh@linuxfoundation.org
+Cc: vireshk@kernel.org,
+	elder@kernel.org,
+	greybus-dev@lists.linaro.org,
 	linux-staging@lists.linux.dev,
 	linux-kernel@vger.kernel.org,
 	outreachy@lists.linux.dev,
-	Julia Lawall <julia.lawall@inria.fr>,
-	Jeremy Dean Clifton <deaner92@yahoo.com>
-Subject: [PATCH v2] staging: nvec: use guard(mutex) in nvec_write_sync()
-Date: Mon, 12 Oct 2026 22:29:26 +0000
-Message-ID: <20261012222926.7754-1-deaner92@yahoo.com>
+	gservice341@gmail.com,
+	Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
+Subject: [PATCH v2] staging: greybus: replace PTR_ERR() with %pe in error messages
+Date: Tue, 13 Oct 2026 07:54:02 +0530
+Message-ID: <20261013022402.6322-1-pavankumaryalagada@gmail.com>
 X-Mailer: git-send-email 2.43.0
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
@@ -74,70 +79,74 @@ List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-References: <20261012222926.7754-1-deaner92.ref@yahoo.com>
 
-The three return paths of nvec_write_sync() each release
-sync_write_mutex with explicit unlock calls.
+From: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
 
-Use guard(mutex) to unlock the lock automatically on any return
-path.
+Use %pe to print error pointers directly and display their
+error names.
 
-This removes the three mutex_unlock() calls.
+Keep the other PTR_ERR() call because its return value is
+needed for ret.
 
-No functional change.
-
-Signed-off-by: Jeremy Dean Clifton <deaner92@yahoo.com>
+Signed-off-by: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
 ---
 v2:
- - Reword the commit message to state the motivation and to make
-   clear that removing the mutex_unlock() calls is the result of
-   the change (Julia Lawall).
-v1: https://lore.kernel.org/all/20261012171312.5998-1-deaner92@yahoo.com/
+- Use %pe in the firmware management case, as suggested by Jeremy Clifton,
+  to match the other cases.
 
- drivers/staging/nvec/nvec.c | 9 ++-------
- 1 file changed, 2 insertions(+), 7 deletions(-)
+v1: https://lore.kernel.org/outreachy/as0nhVbagZa8Birm@user/T/#t
+---
+ drivers/staging/greybus/fw-core.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/drivers/staging/nvec/nvec.c b/drivers/staging/nvec/nvec.c
-index 41cbdfdc1da6..716b1b482568 100644
---- a/drivers/staging/nvec/nvec.c
-+++ b/drivers/staging/nvec/nvec.c
-@@ -298,17 +298,15 @@ int nvec_write_sync(struct nvec_chip *nvec,
- 		    const unsigned char *data, short size,
- 		    struct nvec_msg **msg)
- {
--	mutex_lock(&nvec->sync_write_mutex);
-+	guard(mutex)(&nvec->sync_write_mutex);
+diff --git a/drivers/staging/greybus/fw-core.c b/drivers/staging/greybus/fw-core.c
+index 2016a74f137f..78321be80013 100644
+--- a/drivers/staging/greybus/fw-core.c
++++ b/drivers/staging/greybus/fw-core.c
+@@ -93,8 +93,8 @@ static int gb_fw_core_probe(struct gb_bundle *bundle,
+ 			if (IS_ERR(connection)) {
+ 				ret = PTR_ERR(connection);
+ 				dev_err(&bundle->dev,
+-					"failed to create management connection (%d)\n",
+-					ret);
++					"failed to create management connection (%pe)\n",
++					connection);
+ 				goto err_destroy_connections;
+ 			}
  
- 	if (msg)
- 		*msg = NULL;
- 
- 	nvec->sync_write_pending = (data[1] << 8) + data[0];
- 
--	if (nvec_write_async(nvec, data, size) < 0) {
--		mutex_unlock(&nvec->sync_write_mutex);
-+	if (nvec_write_async(nvec, data, size) < 0)
- 		return -ENOMEM;
--	}
- 
- 	dev_dbg(nvec->dev, "nvec_sync_write: 0x%04x\n",
- 		nvec->sync_write_pending);
-@@ -316,7 +314,6 @@ int nvec_write_sync(struct nvec_chip *nvec,
- 					  msecs_to_jiffies(2000)))) {
- 		dev_warn(nvec->dev,
- 			 "Timeout waiting for sync write to complete\n");
--		mutex_unlock(&nvec->sync_write_mutex);
- 		return -ETIMEDOUT;
- 	}
- 
-@@ -327,8 +324,6 @@ int nvec_write_sync(struct nvec_chip *nvec,
- 	else
- 		nvec_msg_free(nvec, nvec->last_sync_msg);
- 
--	mutex_unlock(&nvec->sync_write_mutex);
--
- 	return 0;
- }
- EXPORT_SYMBOL(nvec_write_sync);
+@@ -112,8 +112,8 @@ static int gb_fw_core_probe(struct gb_bundle *bundle,
+ 			connection = gb_connection_create(bundle, cport_id,
+ 							  gb_fw_download_request_handler);
+ 			if (IS_ERR(connection)) {
+-				dev_err(&bundle->dev, "failed to create download connection (%ld)\n",
+-					PTR_ERR(connection));
++				dev_err(&bundle->dev, "failed to create download connection (%pe)\n",
++					connection);
+ 			} else {
+ 				fw_core->download_connection = connection;
+ 			}
+@@ -131,8 +131,8 @@ static int gb_fw_core_probe(struct gb_bundle *bundle,
+ 			connection = gb_connection_create(bundle, cport_id,
+ 							  NULL);
+ 			if (IS_ERR(connection)) {
+-				dev_err(&bundle->dev, "failed to create SPI connection (%ld)\n",
+-					PTR_ERR(connection));
++				dev_err(&bundle->dev, "failed to create SPI connection (%pe)\n",
++					connection);
+ 			} else {
+ 				fw_core->spi_connection = connection;
+ 			}
+@@ -149,8 +149,8 @@ static int gb_fw_core_probe(struct gb_bundle *bundle,
+ 			connection = gb_connection_create(bundle, cport_id,
+ 							  NULL);
+ 			if (IS_ERR(connection)) {
+-				dev_err(&bundle->dev, "failed to create Authentication connection (%ld)\n",
+-					PTR_ERR(connection));
++				dev_err(&bundle->dev, "failed to create Authentication connection (%pe)\n",
++					connection);
+ 			} else {
+ 				fw_core->cap_connection = connection;
+ 			}
 -- 
 2.43.0
 
