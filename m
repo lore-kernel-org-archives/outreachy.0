@@ -1,175 +1,101 @@
-Received: from mail-dy1-f169.google.com (mail-dy1-f169.google.com [74.125.82.169])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-alma10-1.taild15c8.ts.net [100.103.45.18])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0F1413E1203
-	for <outreachy@lists.linux.dev>; Tue, 13 Oct 2026 15:51:21 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=74.125.82.169
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 01E6A370ADA;
+	Tue, 13 Oct 2026 16:03:33 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=100.103.45.18
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1791906683; cv=none; b=bo4GsldmepaWsFq/vz6jq4G99J8PPVew0kL50q4XtYmZsf1TqMjNfA7qj0pRpcN9992fo1hZ+Q1GkZm4hrGdU1zK54B9e6RwaqUxqq/zr17rZMOLTj//DkZ8RjFQJOsVJjxijtlUNvB7+EsgO6dA0GeouSBQmJ63ZWvzbz2nhjU=
+	t=1791907414; cv=none; b=kl6gpEPn6tgUVFZU5Mq0auFlNrUY3OlsnoMRFwe2D63XOK5U/Epmm7Uf7LO7it5UfwbNUpeDDLZg2hPlTbFx5QB9BMMJRinGH295MTVd7tJK5kPR9xej6GsOFnX1UbcMbVdlhxKC++Yttka3Nmh5ZiHvganIGSVgzcMuigC9fbw=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1791906683; c=relaxed/simple;
-	bh=+6W5Xp9SZMo9Oltzb7X3HjmuqNtZ4Jcqw3jS1Xm35dY=;
+	s=arc-20240116; t=1791907414; c=relaxed/simple;
+	bh=5WHoeUINkgZunqY8JUIYAZgXEPU5x9iKF8csd5FaLyk=;
 	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=E5LjjFVcIzbB/EPwq1oM6fnZLwygrxzq1JBnwl32V+LXHu6Pdx9b16F03hg4tZ7T7cgmKVwckNPBRiHwJ8vIPha9mKxyhIWK8JaiWq39ZC8YBs7/V5vY13ABmJp4mHAivmJagvPgMoHqfFdXZbdH9pjl9tujr/KoLXtUCRvysPA=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=CGqvkpDT; arc=none smtp.client-ip=74.125.82.169
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	 Content-Type:Content-Disposition:In-Reply-To; b=SN2Zu//SAimAR1OrwIdFykmi9VydW0zQJimE8Y032a+RNF7Lg7J/H7m8eT9yv1nwiApJ4wCOS6yhUe0h7tueCKQRsHLXX4kQA4z1LywQFZbjK+lBqLyyMOJ2b1Jj9MM7J6n/5cPiMuNCbTjlwS1ePnT6r9s6GJb8a9pDLN6URxs=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=HFJaatkP; arc=none smtp.client-ip=100.103.45.18
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="CGqvkpDT"
-Received: by mail-dy1-f169.google.com with SMTP id 5a478bee46e88-35b2c599f43so2682618eec.0
-        for <outreachy@lists.linux.dev>; Tue, 13 Oct 2026 08:51:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1791906681; x=1792511481; darn=lists.linux.dev;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=O+8RXyeJ461YZSLV5EydzuUNuSAQCn/Ul+q9Z99DN9k=;
-        b=CGqvkpDTsQwTj9D3LehowJ15qTEzElqOVI+e3hHGAQTk6emXtlY5lW1YeEyo8+jhj0
-         XZ9655ICxkCc0NpHN7D4Np6I/Kn5wJvLb/LFhxrut4OGhJ2EWDO9BHddx/29klW8psV9
-         o09lBGMyLc9ZCWEcCrddq4S/EufHtXUN1nU14ufc8eo32Q1Gd+JDzFznk5qLtzVyHDX4
-         BEpDVyjk5xCqOHFYR/x6Tna4rBx0MlgPDi4e31AeRslgDHnOGDhLLh/xi34Q1QAjANWS
-         8MXCJN0QveHfrA8x38ZajaN9AB7RLTtH5PTyjDL/HksCZDDEmCLcYsNhSeBl9mRby8Iq
-         9uFA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791906681; x=1792511481;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=O+8RXyeJ461YZSLV5EydzuUNuSAQCn/Ul+q9Z99DN9k=;
-        b=PCTIZqu/dv9yJew3WN+ZJPnfw3RXL78HF20Y9/SQMI1L8BqAaqKKGcr1gTqit72wHX
-         K61eMWeoYLWt4cX8kZYxL3qvs1EQ4sXDOYtt7fjfd10TuepJV2ZpFzrCFhGQrvuCFgUl
-         IRz4CU5YmUYLYFB3hzA4g8T8Qt6FBkyuepRN5gQfjeftSQas9hta8eYs/pL6TZfaxon5
-         Ng/7OY8gU7HK9r86+t94yZQykbhWidCY33POIOtLdA9NauXuXkaPXrpj4t98i7HyhdOT
-         EQZboXuR5/EFBsyEZ+nMVI39UCG9jL4rTGlTMUil362PnOSiJcZzoypI8q6i5T/XuAv/
-         PO1w==
-X-Gm-Message-State: AFq9FYIeaLzpW6blmspNvYgrUpH/3JA/vzms8Pe9IvXQr+5y++7QZUyJ
-	1n5aZyk8bNP2V6nefPGDmZxS1DLh0aAfUB+MSIuJ8WRI8sz+Tuw/hrQhAgIqTn+J
-X-Gm-Gg: AYBFou1cRNrg25yJd4AkIvpMmqUPIy4n2ADOC1o7aaN+B0ly+FxEHhXPqNB0fmGVFR4
-	a9FhTz3asseA8zfBew/xC6n/kOdXFSopyRSOKBNRHpKPxdUkSqdLtUsBzU1j2cMnLZBYs4KcXmT
-	4ZdCL3+AGX1cTxusTZ52xnUQQfw/Hx7RJpDyZlGuwsnXNXgoULwNiU60iLSEyA3UsGiPmC2xRrR
-	tplfM5cqpOnlXLh5KW3EA1Ct+9wvH9V7Hl8dbL7Dai/7FP0EeCJ/pdfg4/AlTb8Y5ZOJ8KEsjPr
-	FYBSmmkefRkvfJS0MbKjtuXhkEcxmnb3IAIVnqBRnNID6fhKAMy1nHlOonsyP1bbiQG8qwIYU5N
-	QqC2e/N8S7SpmP95k61/M44bFUVzNAaVB1wUk2WdorjFfReCiHb+HSaAsyH98qlZtOnVZDj6AVi
-	KhKuCOT8ot1gktln5DrelGU3LY+FUSDiO3rJfR98i0WUQ866i7bAIjlmP2Lo/9Xri+n7tMTPNJa
-	Hk=
-X-Received: by 2002:a05:7301:8607:b0:351:595:739c with SMTP id 5a478bee46e88-3537e06febcmr21002442eec.35.1791906680638;
-        Tue, 13 Oct 2026 08:51:20 -0700 (PDT)
-Received: from user ([2405:201:c052:b00b:7482:1179:c0d4:b9cc])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-35c89429484sm7329636eec.23.2026.10.13.08.51.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 13 Oct 2026 08:51:19 -0700 (PDT)
-Date: Tue, 13 Oct 2026 21:20:53 +0530
-From: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: outreachy@lists.linux.dev
-Subject: Re: Welcome 2026 applicants
-Message-ID: <as5TXewJ7Slm5KkR@user>
-References: <e493c213-c325-fa1f-ec14-aaea11f6611d@inria.fr>
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="HFJaatkP"
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5DED11F000FF;
+	Tue, 13 Oct 2026 16:03:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1791907413;
+	bh=s5v4uxkqBN5uEW7jS4QQBdALy0qidx9Gwm7FyQCTQOg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=HFJaatkPM8P3cKdqWx5HDHGyETlugYRtbcgnLGwDC6vfCzWcX5P0Po7bYmC/lvJ5R
+	 PZA9DERac7C1khJvwdImHMR59mJOSfzzUCbSOHxZXw1zVeHgq3eFORAZEiFcFFYL3N
+	 pEe2lR+ThCluEaX6c6zh+/cXTCL9Uz05YY+Lpubb3rfXYqzkf3Q1Tubij+K+H3lZni
+	 du/zHBLyRt0FP2ma+7bHpzECLZLhtx4HhX/UbuT73M8ZkkVPdbHtltBAOWyXl0vmWb
+	 IjRz6ptv0jI2J1ApjhCYWM8xCV4TE2GZxyKzG+DDHD6O/HdEYyCJX1zVMRUWtEmsKK
+	 OmOs4EW6yLA3Q==
+Date: Tue, 13 Oct 2026 18:03:31 +0200
+From: Thierry Reding <thierry.reding@kernel.org>
+To: Jeremy Clifton <deaner92@yahoo.com>
+Cc: Julia Lawall <julia.lawall@inria.fr>, Marc Dietrich <marvin24@gmx.de>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, ac100@lists.launchpad.net, linux-tegra@vger.kernel.org, 
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org, outreachy@lists.linux.dev
+Subject: Re: [PATCH] staging: nvec: use guard(mutex) in nvec_write_sync()
+Message-ID: <as5WES_Ec2KGWQsm@orome>
+References: <20261012171312.5998-1-deaner92.ref@yahoo.com>
+ <20261012171312.5998-1-deaner92@yahoo.com>
+ <b51c3755-a967-3de3-5f8c-3e4984d6e93c@inria.fr>
+ <492e9a13-b50b-48cb-bd41-3114573c7950@yahoo.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="hzewtzrna6tsl46x"
 Content-Disposition: inline
-In-Reply-To: <e493c213-c325-fa1f-ec14-aaea11f6611d@inria.fr>
+In-Reply-To: <492e9a13-b50b-48cb-bd41-3114573c7950@yahoo.com>
 
-On Mon, Oct 05, 2026 at 07:44:06AM +0200, Julia Lawall wrote:
-> Welcome Applicants,
-> 
-> Thank you for your interest in the Linux Kernel Community!
-> 
-> The 'Contribution Period' for the December 2026 Cohort runs until November
-> 2.
-> 
-> Our contribution period process works entirely via this mailing list. Make
-> sure that you read over the emails on this list daily.  I will be posting
-> updates here. Most importantly, it is where you will learn from each other,
-> by following the questions asked/answered, the patches submitted, and the
-> reviewer feedback offered.
-> 
-> You found this email, now make sure you are personally subscribed
-> to this list:
-> Subscribe: outreachy+subscribe@lists.linux.dev
-> View the archive: https://lore.kernel.org/outreachy/
-> 
-> Please feel free to introduce yourself on the mailing list.
-> 
-> Ask your questions on the mailing list. If your question is directed at
-> an individual, then CC the mailing list. This way you'll be able get
-> quick responses to the issues you're facing. Please help other applicants
-> who face issues that you've addressed.
-> 
-> Your first task is to walk through our First Patch Tutorial:
-> http://kernelnewbies.org/Outreachyfirstpatch
-> 
-> The tutorial leads you through submitting your first patch. Please
-> do not submit your second patch until your first patch is accepted.
 
-Hi Julia,
+--hzewtzrna6tsl46x
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH] staging: nvec: use guard(mutex) in nvec_write_sync()
+MIME-Version: 1.0
 
-My first patch has been added to staging-testing branch by Greg.
+On Mon, Oct 12, 2026 at 03:41:48PM -0600, Jeremy Clifton wrote:
+> Thank you so much for your guidance and feedback.
+>=20
+> It is the result that the patch will produce. All the unlock calls will
+> be deleted and the out of memory path will have no braces, as per
+> the style guidelines.
+>=20
+> The motivation behind the patch is to defer usage of manual locks
+> for new and improved guards, disallowing lock leaks.
+>=20
+> This way, there can be no error producing path by not calling unlock.
+>=20
+> Shall I send a v2 with motivation included?
 
-I have few doubts:
+Not a big deal in this case, but you might want to read up on how to
+properly reply to emails:
 
-   1. Does my patch need to reach staging-next or Linus's mainline tree to be
-      considered accepted, or is staging-testing enough?
+    https://subspace.kernel.org/etiquette.html#do-not-top-post-when-replying
 
-   2. Can i submit my second patch now or should i wait?
- 
-> A key point is that it is really helpful and efficient (for both you
-> and patch reviewers) to refine your patch-sending skills one patch
-> at a time, rather than having multiple patches in flight that require
-> similar rework.
-> 
-> You must CC all patches to this Outreachy Mailing List and to the
-> appropriate mailing lists and maintainers in get_maintainer.pl. The
-> tutorial walks you through how to use get_maintainer.pl.
-> 
-> Once that first patch is accepted, please record that contribution
-> on the Outreachy website. It will serve to check your eligibility.
+Thierry
 
-   3. Should i mention the date my patch was accepted or the date it was
-      merged.
+--hzewtzrna6tsl46x
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Thanks,
-Pavan
- 
-> Only eligible applicants will be able to log contributions on the
-> Outreachy website.
-> 
-> Congratulations on getting your first patch accepted into the Linux
-> Kernel! Celebrate, then do more!
-> 
-> Please note the following:
-> 
-> * All patches should be on drivers/staging, but not on drivers/staging/media
-> 
-> * You can use the check the scripts/checkpatch.pl -f to find simple style
->   problems in some files.  Use your judgment about whether a suggestion of
->   checkpatch is a good idea for a change.  Check the mailing list archives
->   for some changes that are regularly suggested by checkpatch but that are
->   rejected in practice.
-> 
-> * There are not very many checkpatch reports on the current
->   drivers/staging.  Some other potential fixes to consider include memory
->   leaks, introducing new kernel features such as guard, scoped_guard, _obj
->   allocation functions, etc., finding unused functions or variables, etc.
-> 
-> Once you have several cleanup patches accepted into drivers/staging by
-> GregKH, we encourage applicants to move on to complete project Starter Tasks
-> that will be outlined:
-> https://www.outreachy.org/apply/project-selection/#linux-kernel
-> 
-> Ping me individually if you think you are done, or close to done, with
-> cleanups. Also, folks who already have cleanup patches from prior work,
-> please get a few cleanup patches accepted, to refresh your memory about
-> submitting kernel patches, and then email me about that too and let's see
-> if we can move you on to project tasks.
-> 
-> All the best and thank you for contributing to the Linux Kernel,
-> 
-> Julia Lawall
-> Kernel Community Coordinator
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmrOVlIACgkQ3SOs138+
+s6Ey4Q/9HeWRPuZBHvX53s52PXGTjx7DIALN1o0lQS3b1+MxhUlcETBj+3LrS/GV
+zwtBFcTdqMirW9QE9n+dScPrkSoxRCuX0p5BBpMMccYd3f+S3yMCHGCQ6Sy33qQb
+B59hayWYN/uxCo8LkZfeNgsOr+UDJ8nJuLehH3/OBz+ya86RJ1Jaz1kQzcDIBVEq
+dHR0NPKdcdCOgJYTaq0v59GSCavBAAGepGfa/3HOEZUPf6d0u8iy4kJbGH1dQff3
+JZbvseri/M6ONxcXq1DO0+TNMa99QX0gJMVXF6HCmsCot93v1/7s7iwlYdewjebM
+00brAb7yX0PrtraFf840pKf4Fy8iQ2M4a3/PwYpjBSDKP3oBlV/aVXjBJLMTGFrR
+qFN+mDTEGwt3Sz5babpmvXmWxchkwO05ayoTrOWxy4QJQ73blJbmx7l5EjQMl+8/
+4lmQWug9/KfumoKnex73Am2YYNQDh+bkGks/FjvSsBVy617F07fX3j4TdN+n40ME
+qn3GmAxFd31vK78lqASap7xG764Li9IBKn0Wt0LIzUfH5IJnMMb8weFM6VxvcI63
+5IuEAoqCRgz6YaNw8NnNkjvvcM2P0neW3/FHAsjYZcr4rFh3izw/UhfV+fR7CXuf
+j56BBV+TN8hqoNvtfgUcNXTHfWGwhmCxHcT7fw/BdJfgy6xFJBE=
+=5cEq
+-----END PGP SIGNATURE-----
+
+--hzewtzrna6tsl46x--
