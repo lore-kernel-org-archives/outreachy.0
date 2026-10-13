@@ -1,61 +1,61 @@
-Received: from sonic310-14.consmr.mail.bf2.yahoo.com (sonic310-14.consmr.mail.bf2.yahoo.com [74.6.135.124])
+Received: from sonic308-2.consmr.mail.bf2.yahoo.com (sonic308-2.consmr.mail.bf2.yahoo.com [74.6.130.41])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C4EF651B168
-	for <outreachy@lists.linux.dev>; Tue, 13 Oct 2026 15:13:27 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=74.6.135.124
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5995F5208A4
+	for <outreachy@lists.linux.dev>; Tue, 13 Oct 2026 15:29:27 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=74.6.130.41
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1791904409; cv=none; b=ZI+OanS62o/mfvQUded+upOe7mvIah5F4FVWeFEoQjsgdpEHv2j3IIyXY3GwsefI5MB8CgzHRLgXH5dXH+H/WNEZhomj58apD6U5YdRNsM8a2+vE3FLIbAnwUlr2pwZYq1/It0X0DOd2JEcBiKaImNseN+kr5ke0kUS2+Cd8lDw=
+	t=1791905368; cv=none; b=XeREKWKJyNbBRGCLb2QeshdxKF9P/prBOkPXW4Sc7cQ52heEc8pmZuR3/kGuEMwwUhjKOuk45wgZurGvrp8cxufbIek6DdhfLMzMRJzjPOMK4OpR526uz2MvjN6BHKYWs9X7M/I36Vs9SNs9xneIjI5079VTrDnnfQ8BfU3sKLI=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1791904409; c=relaxed/simple;
-	bh=VWy8kOV5fpxV1rES9+rwWAo2HS95BTyvhW0F6FbOIyo=;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type; b=ENE274FvqZXLBbG+K08SnoOE9MN0EeJWFWeSDL4Hu6mvA7A6nEcswd/t0BwstdVYDTlRtQFeK61h0+8UFEP+sBzeh0767zW07/kmn3yffHSQH09mfSHnEOXEVLzT6MG0TpTAcXZCdtqZU7JcXkDnGKH+deqZjdlyM31fC3fFrEs=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=yahoo.com; spf=pass smtp.mailfrom=yahoo.com; dkim=pass (2048-bit key) header.d=yahoo.com header.i=@yahoo.com header.b=PtYbF22A; arc=none smtp.client-ip=74.6.135.124
+	s=arc-20240116; t=1791905368; c=relaxed/simple;
+	bh=p6HWLkTW6oy89RbnJel4TR/B9XM4cQOUil1ZLwkc434=;
+	h=Message-ID:Date:MIME-Version:To:From:Subject:Content-Type:
+	 References; b=pbm2j0Tmg3tIJoWhQMzzyqvgzdUWkSlBPQP/8V78wAlXCsbxywIdkzrxk97awCso2dXJn/jqY+FMvL+/7BTZH2maDP9Dwy5U5/Q5/zlsGZH8KXsmnTlA97P3+B92ii4EUBPPG4cObE0fjeC2DWmnfkdg/oNw0BXCYzFR4EtgEHk=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=yahoo.com; spf=pass smtp.mailfrom=yahoo.com; dkim=pass (2048-bit key) header.d=yahoo.com header.i=@yahoo.com header.b=MIWzUEUH; arc=none smtp.client-ip=74.6.130.41
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=yahoo.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=yahoo.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=yahoo.com header.i=@yahoo.com header.b="PtYbF22A"
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1791904405; bh=8CabwxGpw7QPwiwrmZsN8gni+LU43IXDehbaUPw+ozI=; h=Date:Subject:To:Cc:References:From:In-Reply-To:From:Subject:Reply-To; b=PtYbF22AjCydqZYKfK1+5YGHznj1DzR4VJvg6IFy8RhpQw7Q/K7PDYe0XhFMjNSLdQsb9Z3znJ+IN6pdvPR7RfyhFUNvUeh3bDYAOXVhzvTv4MEGLKEf+UOmvQRXepyJzyNy9YBTJR/qkpOJ2MBBxBbiQ8Hbo+iboP8eO9YMFzeyk247Uv+YCmTWaSlsnoMbhJxYXpoBowUjM26tN+TzAH2UHOtGuQ/VEBuvIFH+c2bV3r1h+WRyLsgTg6O0LC5bMJkn7LyRn1B5ycAKo8qvzRQfl6KYnGCHlf+L7hua0EJklvrAeVD67fv186RHwYhuPTVwXd/GCzD9gO76s4ZVKQ==
-X-SONIC-DKIM-SIGN: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1791904405; bh=Gfq3O0CiKPflBA23nNJaVaMPJskvZTeUcIbAnxCRspt=; h=X-Sonic-MF:Date:Subject:To:From:From:Subject; b=mKxgkDHcp1uvnfsI/qGVPQznvT7Gr74r+nvKy/+m7XHHAl/5HBxR9mIAkLSJCF/tLlSBMSCcpjU0wEIVy3UftLtrtw88Wje/HXPIqafLSakFE3KbeY0llI8Pu0jjr+lKJKfCkwk1G5Sd009g/+OahZSsU7nNVIc3D2WC1xHWXZhXqlBJPFxpXUGVgN4CQNjMib5nUTgzrdeD38nTl2iEEwJjTtIchV69YSGfrhYAE9P+uy1fEO8+nB1FaLvu6NLMOqX6ExJym27n0hdWsaF3REs2WjAR1fZqMVGNPb4cPCcvyTHLpMfAHzDWmVo1EMPbK3vA3ZrpuNAHDqskmuESBw==
-X-YMail-OSG: gJgxy3IVM1mZ7XAYp4Rr2laLCAMsgib0PHD.dxk9mBSDPTN4r2G8BaR7FW.FRiQ
- MXvqVK1y7z5ENAq82IcHoyn3bf5Pi23yrt7gmGWnQGRJpkEUj3hts9oXP5kOwWsv0n7uEX25mwH0
- cTgWmNvXaLY2Y_G2YZhtUDWq1nN_cu3ctxy6VSzVduNpcvV0CZun5n.beGqRH4ocEV_8Sx3P7IuK
- kfQTN_1DZ1cixunwsE8wCGs8mSqVnJgVn4rOyFz7zyFju3DxqIel3_yFbQXvnN3ZaCQ4JCnPpA_p
- 66eh1nPsbBXICwrG9sNRcX_.7d70ZvXFqLp4IDXW3_kJvPVCtMqToRxhskn0tlEpY0BFQDyEMCyU
- xvGiKzAQNUyt0rELZa2eLTKx_MU9a6jgthuAxu4ZZ6cB12B0BuD3MP9f.b1HmPAiCzRheKfQ9sQJ
- itfX.4CJgUPjnpSkzwbQz.CdGElKxzZaIz06iKCjUP3QOwKojsViBQ6k0MM2lmrAtg5Vc8cLebZk
- P4WdowcsPRb.MogqzE2uhDQOteNYuMSOm6jlzy8dMOTGDbkwLoAtPAtrOKk3jYFUk6WDa6JPJOhL
- g58TtQGpBF8hn6A1Qn6XUftfMPI52tfckIVx7UkMjTXXngeOKT9Rm3PGPS1mmlWImzMF3SKmA2OU
- 9RVhT0XtaK9jlxs79RaIgBjfCxy7Rgt5e0gp5OYZyrwXN6bG7fO6vkF_spjy8VCOob7FBEeKxFjj
- jWUxIWVOniOMlzmkPwdOFSwdkEZQ5hgox4XKfVM1bqGsB4Rto3sitCvjpnuBdJOxraY_.M5.9lVP
- q904aQGKRpKNoBQVenfJmf1_CEBeLO..3sgs0Bp1jOa3OcY1p_jTWDWiY7Y4PgrQf5bx3bah2PiC
- GEmVORyY4Pu13vYG11LD2CQNIaT02l97WGRkHX9uLHpraWyPFlmHu3KPWzeC6AqVLFvLmKs21kAf
- 45fptbhi8.9njzHcRbQ7EGxbkpycHjk0QXucVKDesq35JOePtA7wfZQVpHs4TdHfWT7RPrTR8Chy
- dzmYS9VOmoNub9WdBC4qKiFWrZNIHvmN0BoOwKl_hATOoP..Y8rzpgQyZJjEb56.7tq12jls20HM
- wlptF5WDKr1tWH5.T_G8kTYb_Fz0LG1yV7mFHnclOXs7okvqqvSGtR9h936Bg2WK4f4h3TT9iN.L
- ljTfH5V1uGmKzva0pJZczDMjFL4VO0838mjFpexj.zv1fi_xqhUVSyYzhqcitVbENWVdL7Yq9Nru
- h5vV3mX05V061R9fLBC6KkhINiPCRXxkSnczF2u7NiAJEvexTHL1cvp9O1dy13_38wnIySD.L7tx
- e8hVIrl_CW982im1QgKq7yYLclTKBLepOXYmQkWM1QzMZljYhv0addPEHGURn6N1rckL001fQSAA
- giT92u4WDr1VjnARblE35B.U8DaS8Ek8TllLD.dvWT9S6OQ0TVl3D2IUszoFM9E.yqOq1.qeAOIn
- 3PYmDSND83zUH6XHIMyuT4beCJS8W9zKfHDeesXFi3V7GKMKSH93VREnTlQigva4rLbCYJs2csCO
- n2exc9wQ4qdYikhQdyK3XWUmcrvYYUxK3CKkWKlfiOfK5Ay2FyJvWzNLrmoOnma5NaDP_UxQhteW
- aPS3_Bl_g37G0zmoJ.mrCguEiYsuQ0vAD36.VvlvqFp3hbAxe6ps1czsBlk2.0U1zfLyVj467sDP
- MmRKek_JLuu8z4LxiZbHNtWi3_DDU1F.Aj6j9YXjSR5tkcuNuwFJc0oB3nRiNqbZTm4LnxDHtiN_
- I.Z1rQLI3WLhwziQk3yeGQ3JNsRPmi6kPikm3.Tgzg6RgwCbE2GlU8em3LO6_p5A8BnuVu_Q5Uhj
- prMWLSQJ5eUPA6AjjsNU0HVp1J78dtRkZ__q55yJtRNSn0vosotLUWUO4O.nfPv1XfKzX6SEPgwL
- TmjtDqpBCo5fP5OvkB.IXhisTgK2zSxjQjLmCk2LRkq0achM3wdR3Kp0J4BFuJgsLXLzuWNi6d_j
- iYW2KWg2l0XfG2gNb2gR6xswkbsRR.WHi6kQYurP7L_KeRGOqYQJG2UOSmkwFltzv76XDUXXUqZs
- Oajq1kDilYPCqRDLQdrkvZc9zlZMySattgsjVUwCXLv_qHCPUd7XMza08HvyRzUy14ESbIWQxhbL
- RkrwL015E8McAeUSrmLC1GxoV1SBPnaqP9hHRbBKugNXT7OszzTkQkpZZchMBMjSUL66hFbaSdex
- 8fL3pYDPYjsw31tt1qBPBVv8UWc22fZ81W.9l5O5Ht5k-
+	dkim=pass (2048-bit key) header.d=yahoo.com header.i=@yahoo.com header.b="MIWzUEUH"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1791905365; bh=MEEy57dBzI9+ZqcMBCyUPjYUy4vh9dAUbQktjWInSwI=; h=Date:To:From:Subject:References:From:Subject:Reply-To; b=MIWzUEUHVL/KhJhil3j4jIbcCuI/Z5Gz4RAT0joVJIUA2xBc8r3LZ2Hpgn0ok1S9O4XvdStOZGvQEO7xcKbIEFlq0VV+VohnLUa1jZadtcbESVmdOFTBYsFE3WG4tXRJ4RvN8Zj9vAKgVpXjCK2iHu0zfVmXz6GQRGs2agqvw15mgxmGXpYNta53BFTgZjRpMuXBvBdlidghl/Xr6y8EmkP+9bivbdjPZO7mrCnknmbLgJMgl0zlq+8MCHS/hVNwctfMEGTSTJ3g6obdnRoIWVnqs/qMozdfpVqEoRRkqi4yFvA/qurLdiX8crKB8aTTpyExpsi/ArOiIiVepZva4A==
+X-SONIC-DKIM-SIGN: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1791905365; bh=cUgFLPDbidFVhULgo44VkvvKNQQmLlJ0r4WuI9R6/6/=; h=X-Sonic-MF:Date:To:From:Subject:From:Subject; b=UQn+5WfDovIKKXzFGnaagHiSkYH8q9Xn1pRop/gZ+pDW3PMIZppPj16SiGBCPiUH6qWwANxSDHdR+vOvzooaboB+NmquTfyjaAs7iVY38XJE37lCghjc79fbplZaqU8i1qlNun1xoCw4okHG5zuKvAr/QII5hvOIS+WdVo0FlS6emG1ZKvjObfCod58WaM4xgaADZx7i+uR8eG1qe96rCLfnSlsmLp6G4QvZyP9gaHtqfsSVE3hHrlyFoofsILaDLgnsFxmKfrMyfJvEgZpXG0WhlJ5zvjkDNwY0YzFJUB54OZAsTy3wSVgxMz3O18/mAXhtDitV/g99Mf1gMLSp/A==
+X-YMail-OSG: ENjcXbQVM1lsQ6Q8eIQlvINm4nk5sEF5xsYqWDMwNdNpvA5LrDtdvAqq_ZtO4ls
+ O5YpWw6saL4GPhVfXxFFHXQPUukoUSCzs0zSkV0JxqlPrNq3Ao3ORXLIdVcx50jCC.b3_iaszmSW
+ EOUd7Z2uTQayCHfK1o6779CuE0Pn2EfVtIp2ZTh5Gm.0giiOX3.Lu4.AfNrX14KYsMav.hausb33
+ uOMJdKDdwQBZ.Q.CkQhnF2dEBSvlxh0h7tDtc61rLB1zkD_VzaB2Kh2aujc9INLREWGl4hpXwQ_p
+ LjiU__711oACQYT1yZwyMQnmLO79uf.SUw6F_QUEErimggtjTp70fjEH1_txoULmw4rgH4idr4eU
+ BtPI3p71yldGue9pUer1qATrDiQF9KXhEMtxCGciBjgc3C9bxOAkbN4WlZSLHz4HgzNBThpXlwPs
+ eD3xxTGRwk4PLVTwohfIhRdoAEAr5wLiHRhGJ2m1QKwy8cNXzZzEvdG35dobkIgQJGhn3ag4rRMk
+ 5gBkPtsBhNZF08nIJoWkBXmy7F.pQvMnETLE2OfgUyCjo6mdTOBU7TEkultJLyvB9YkyUK1tapmP
+ Fp6n5fhK_PFE14avMJ19TqmaWzvp1o8bmwcA2qONgoe3oCon0Maxy2LXTnUjIllewfrbBNGKR7X8
+ rPsdGPj5_KTcw5NbfSxYq3yPf5qpcFBawGKMmQedTpttGrKsbMK26a0CoYFWn6tHoubWIUOBuNrl
+ zF_VyOPwrBdrwN9vQp8hSRN7Y31ELmQFQt8GhLWlEmmWWpHtKhgVMxl.K7TL6gKZbsoJez68IQaW
+ pey6MVPVD.oqG9p7fQdIoyF3iAXtyJ4QXlUqp_w68aQwKcCA6vMNmAWFW3liJ0oVSNQ4x0Tqmah2
+ 4e1JjESmsyRDNBWYaWy1Zar30QL7aq4Xw2gJ3KroCjDwyl9GmUJWtKhDnfCMGL0hr7P98t93DZw4
+ 9H6hZK7wfN7NO.zKMFzy59W_31cEcb6h1DX0FzHvqsuaV0TdVa4xUjcHhz75rXyUjGhb3RQ7A0SU
+ 9kAL9jH.xtB4r3o6MHvkQUzGzrN90OM9QdWuzcwLZqFq8DO8khcJoIn5EszYQ80PQ96gbv1j3xOh
+ 3OKGwJjPoHPOHKwnJAL4RVBBRRdllVgzCAu9V60GSqm9ZWM89H2Aq7QoJMmAhjyiUoM00rAYm72G
+ .35y3Xivon7DgNiqwY5s2qbwVSdc1t3MFlXBprV5RVFEXnYeu2CC6kI4d00xS9np6o.xL13n5FBs
+ LQFLC.MbESKgZj10qQRqnVh51r41wtxjQO09_bUO4vLdWfDicJr0Eb_TrbwlvKepNtFw4EBgmpHV
+ zu2_Q.B4hs62Hh4LGoNWVJABsyBGudrS6xfSfCn4jT2H0087sbY1X7NeqbAZvQO6EsUR8G6QxCZ1
+ WZPxdXUO8648qPuQ0k.x_PqRT7NbxrpGh1kFIHRK0MuwVsbziachhxTzjI88ElTxJTvySjoqKkre
+ S5uy5KT2iKkiqAMzA094_3zQGQ4_uApIkvwmKaWCM2f7uMcLl5Q5GI_JqtsJq.4PgN1XzGIL9r55
+ HOOX2HHVQ.Uh_kyAZ.giPpk0Zzybn.NqimGUQeh7TL_bIIMfGvOQBaB_VU2ix28blMFkhya6Vxpi
+ tKADr6jqbJGEyn_.MaMSFDiOvEktvQn4CLDRRvVreXwZSEFiBJepl6S5zaoAEb92g3zGwwQmM_cZ
+ IBn459rsaNEtQFLcCX02stwGqurxaNhC2nrU0Xrjgk94bpo.1OvgHrGkM6d7AGnLwcBzTmCUT8ek
+ dwxFhMvtIpNV6m1Jcv.SrZm3JztLuRvwdnvETVNOlUDDERP9gten9lwtWKeQVKAxRnF6LaslQ4A8
+ j3c7Ui5z06dwf7WTV2e78gjmAy5Enm_GqYKVhHrdeMAX3ULkUxAE7Uit0e.aWQgRl6H3aOdFwpVm
+ X1tkQhil0rb8Hmc8_yMNCAC2KTz8mP0r0RAPz7aSe853k3TwmxdgphO0O_DZmau.S89jH4bQoB8v
+ J.ICg2TUA_f.WixAuFNVCV6ZP1DXJwQthCdg1xHsmRw6AJW8smzDJr5rGB8nw9jipdvDxw54.avE
+ PrLT9nXHMRG746ZVw9SO0Sb3JX2rekTAuXy2x5PNKZyiuzZSnIZR7Dy9Y6qifDaIFmPptD0AMJsk
+ B1y3XCi8mBEN_EbTx4wx3Ubaja_RE3KS.632M2XP3ecEcAwIXcFiArG9ev5.AwcQnsg0lHQtbGcM
+ z6RpyhNPC7shvT4fLfQ--
 X-Sonic-MF: <deaner92@yahoo.com>
-X-Sonic-ID: 5157e8c7-a71a-4ed1-b34a-cdaf6e57793e
-Received: from sonic.gate.mail.ne1.yahoo.com by sonic310.consmr.mail.bf2.yahoo.com with HTTP; Tue, 13 Oct 2026 15:13:25 +0000
-Received: by hermes--production-bf1-6d6877594b-tqwxv (Yahoo Inc. Hermes SMTP Server) with ESMTPA ID efe0f48b2b69dba20bedb55f2cbb6290;
-          Tue, 13 Oct 2026 15:13:22 +0000 (UTC)
-Message-ID: <47090350-2dcd-4d7b-a73e-681f68ff3a1c@yahoo.com>
-Date: Tue, 13 Oct 2026 09:13:17 -0600
+X-Sonic-ID: bfa849d1-2aad-4108-aba2-c56aa66a31eb
+Received: from sonic.gate.mail.ne1.yahoo.com by sonic308.consmr.mail.bf2.yahoo.com with HTTP; Tue, 13 Oct 2026 15:29:25 +0000
+Received: by hermes--production-bf1-6d6877594b-68jnb (Yahoo Inc. Hermes SMTP Server) with ESMTPA ID 49f81e6be28396015cf92f730e2a0c46;
+          Tue, 13 Oct 2026 15:18:45 +0000 (UTC)
+Message-ID: <d87d55fd-8bb9-4a98-a93d-0c04de35f441@yahoo.com>
+Date: Tue, 13 Oct 2026 09:18:42 -0600
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -63,52 +63,22 @@ List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] staging: nvec: use guard(mutex) in nvec_write_sync()
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Marc Dietrich <marvin24@gmx.de>, ac100@lists.launchpad.net,
- linux-tegra@vger.kernel.org, linux-staging@lists.linux.dev,
- linux-kernel@vger.kernel.org, outreachy@lists.linux.dev,
- Julia Lawall <julia.lawall@inria.fr>
-References: <20261012222926.7754-1-deaner92.ref@yahoo.com>
- <20261012222926.7754-1-deaner92@yahoo.com>
- <2026101335-expansive-veteran-c4d6@gregkh>
 Content-Language: en-US
+To: outreachy@lists.linux.dev
 From: Jeremy Clifton <deaner92@yahoo.com>
-In-Reply-To: <2026101335-expansive-veteran-c4d6@gregkh>
+Subject: Patch Candidates
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+References: <d87d55fd-8bb9-4a98-a93d-0c04de35f441.ref@yahoo.com>
 X-Mailer: WebService/1.1.26668 mail.backend.jedi.jws.acl:role.jedi.acl.token.atz.jws.hermes.yahoo
 
-OK, it's understood. I'll look for another candidate.
+Hello Everyone,
 
-Thanks for your feedback.
+Greg said he won’t take guard() conversions in staging, and the welcome 
+email suggested them, so should applicants avoid guard/scoped_guard patches?
+
+The same question applies to the other suggested patch ideas. Are memory 
+leaks, _obj allocation functions, unused functions or variables 
+acceptable candidates as patches?
 
 Jeremy
-
-On 10/13/26 12:15 AM, Greg Kroah-Hartman wrote:
-> On Mon, Oct 12, 2026 at 10:29:26PM +0000, Jeremy Dean Clifton wrote:
->> The three return paths of nvec_write_sync() each release
->> sync_write_mutex with explicit unlock calls.
->>
->> Use guard(mutex) to unlock the lock automatically on any return
->> path.
->>
->> This removes the three mutex_unlock() calls.
->>
->> No functional change.
->>
->> Signed-off-by: Jeremy Dean Clifton <deaner92@yahoo.com>
->> ---
->> v2:
->>   - Reword the commit message to state the motivation and to make
->>     clear that removing the mutex_unlock() calls is the result of
->>     the change (Julia Lawall).
->> v1: https://lore.kernel.org/all/20261012171312.5998-1-deaner92@yahoo.com/
-> 
-> Please read the archives for why I will not take guard() rewrites of
-> staging drivers (nor do I want to see you use a LLM in here either.)
-> 
-> sorry,
-> 
-> greg k-h
-
