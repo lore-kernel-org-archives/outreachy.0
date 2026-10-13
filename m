@@ -1,98 +1,114 @@
-Received: from mail-oi1-f176.google.com (mail-oi1-f176.google.com [209.85.167.176])
+Received: from sonic310-14.consmr.mail.bf2.yahoo.com (sonic310-14.consmr.mail.bf2.yahoo.com [74.6.135.124])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C8B4A4078E0
-	for <outreachy@lists.linux.dev>; Tue, 13 Oct 2026 14:58:10 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=pass smtp.client-ip=209.85.167.176
-ARC-Seal:i=2; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1791903492; cv=pass; b=HReSSkGtCZY4jAAGtMo37Q7oQhPVc5eYDhp+JnYY9eD6SyhtMPPv3bhFqI4flYLSUcrNE+MGHJfwsRPD2pDmvM5N9SbMkOfLJ1tnhFViiFvPfttvzv+bfeJRTvw1ZgbWkYRTAseFn8V1YrEwKLrnaKRSfrg2HlANVhXd3dGIxHQ=
-ARC-Message-Signature:i=2; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1791903492; c=relaxed/simple;
-	bh=2cDGGFZn0hfB6oj6MjuZDl9c/8rb36j6OHqo66VpH8o=;
-	h=MIME-Version:From:Date:Message-ID:Subject:To:Content-Type; b=ijhTlhX/K6QMvAOEDkYaqdZLcut0onoi9V0MfsOE38PZoGTP6j5AHUTW/hDgYemxOsLMlJYkSjW16mCAnfNPpdnXuauN49yrkRoV10Sj8mpk6vIi1nvVNfpWWbgY8GI+QzHMiHn+AjgVcNmu8bkQ1LSLyaDD76RwQC7MGplKixE=
-ARC-Authentication-Results:i=2; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=RDchBzn0; arc=pass smtp.client-ip=209.85.167.176
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C4EF651B168
+	for <outreachy@lists.linux.dev>; Tue, 13 Oct 2026 15:13:27 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=74.6.135.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1791904409; cv=none; b=ZI+OanS62o/mfvQUded+upOe7mvIah5F4FVWeFEoQjsgdpEHv2j3IIyXY3GwsefI5MB8CgzHRLgXH5dXH+H/WNEZhomj58apD6U5YdRNsM8a2+vE3FLIbAnwUlr2pwZYq1/It0X0DOd2JEcBiKaImNseN+kr5ke0kUS2+Cd8lDw=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1791904409; c=relaxed/simple;
+	bh=VWy8kOV5fpxV1rES9+rwWAo2HS95BTyvhW0F6FbOIyo=;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+	 In-Reply-To:Content-Type; b=ENE274FvqZXLBbG+K08SnoOE9MN0EeJWFWeSDL4Hu6mvA7A6nEcswd/t0BwstdVYDTlRtQFeK61h0+8UFEP+sBzeh0767zW07/kmn3yffHSQH09mfSHnEOXEVLzT6MG0TpTAcXZCdtqZU7JcXkDnGKH+deqZjdlyM31fC3fFrEs=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=yahoo.com; spf=pass smtp.mailfrom=yahoo.com; dkim=pass (2048-bit key) header.d=yahoo.com header.i=@yahoo.com header.b=PtYbF22A; arc=none smtp.client-ip=74.6.135.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=yahoo.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=yahoo.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="RDchBzn0"
-Received: by mail-oi1-f176.google.com with SMTP id 5614622812f47-4a4cb36ae00so1760890b6e.0
-        for <outreachy@lists.linux.dev>; Tue, 13 Oct 2026 07:58:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1791903489; cv=none;
-        d=google.com; s=arc-20260327;
-        b=SxHgrNYR2+a7NB8aV70pjTE9jbQXw0mopMtLDC6ZWMS51/cNQBBItaVpcB8bkCbnO9
-         lIRvV+yFNNiHBNblUe035zi3dKpRn706VsAw76VuAB5kobGOEnrhuhkUAM8olEuFWPJK
-         ChnEJOIMf1cwXutNMDbmJuKFKC4uUA2QCr0P+2dVMYeS/R+4cn0Ee1u7dAnKGzX84tr5
-         CovqooqqBqHL/0Vba572Gio75XoHbwCDzjAQ3FxYpAQ+AYBcj8DvPODXpQP14y2oqzEa
-         eleLzX1gFVi1d0Cq+Wowx+Z4xN/lw+49MZNKsTh5MchaWPnUo0Nuzco+9yfUIm/CEKuU
-         mYgg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=to:subject:message-id:date:from:mime-version:dkim-signature;
-        bh=2cDGGFZn0hfB6oj6MjuZDl9c/8rb36j6OHqo66VpH8o=;
-        fh=ORcOwlulYhm0PlB4niEDenmGt0tg1PSeOtR/xiWpIK4=;
-        b=Zc4Ox0pX4LoV2KsytRfIbdPzJl6dFosxnI+VhRQvI9x0Iewb3PdUM6H1gjs2POJXAA
-         sKM0WSUXA1Dsft59gL5r+AV1uQaZ5gnDOTVm0VoPt61Rkd+xh2W1DlAe8FgDUuOa/8OP
-         JKDee8PIMWBCvrTBbxOUtRdx7lzQeo9cLZM8tGCXC1nZOmI6Q5+c1aRhNFh0fMWua2yT
-         a8dNMl2wXBxJFJnLeWiGQTlk8hN0DmYsVjdP5zpXBXDpw0H+oTJajLK/Ji00Z6pnLBFM
-         VvlEFNjPCOqAUewcR5U5dClN/erBPSquEriZu6r69jojwW6a8z/ZA70Ovo2MKcxwYXwW
-         QmxQ==;
-        darn=lists.linux.dev
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1791903489; x=1792508289; darn=lists.linux.dev;
-        h=content-type:to:subject:message-id:date:from:mime-version:from:to
-         :cc:subject:date:message-id:reply-to:content-type;
-        bh=2cDGGFZn0hfB6oj6MjuZDl9c/8rb36j6OHqo66VpH8o=;
-        b=RDchBzn0+P+flTslGkBZjFfKFzoUpe2AnSJfUDN8yijLq1/vQeJQH7jXLSmrCmbK+c
-         Is4Dfp2DOIL69Q75JKQImrC9UAXEvw4wAu80IAFPSYhpjYCcAWDPvmlduv2qgO2lQoNI
-         z4K1bC31u0unWXT/yqBtKB7/TM+YKP3J6ZuGGjcYxldNHoEyiiCJDHx6lDKwxyhlUsng
-         NucMkPuYSF+MYpC08fH+k6xBvyQzod3l4QqBg+QKv99W0gLNU3enHEWiJBv/mSVH9x02
-         Bc7aD7fbKeqh9WlO6YRrIOT0ppyGRUVQuF1iI3QlhwVwlX46JtVe7ZECIuTG+8H5xmN5
-         wQ2Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791903489; x=1792508289;
-        h=content-type:to:subject:message-id:date:from:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=2cDGGFZn0hfB6oj6MjuZDl9c/8rb36j6OHqo66VpH8o=;
-        b=GEr28eAFlSSkbVzTbO+5mQwQauqUsIDyrbUYfRQ3y3Og5LGlzaUYaRKHRAyyVP79Xh
-         NXo2ghYJvrDVVRmpMjWZRUB5jUtPz2Gz9X5r2N8IeYzrM4ww5KcXgm0r8NFvfrsEB9YV
-         k2LTPMUeu60jHY15GMtnRNZgo5q/vtugGQR2dViUCq9/O4r8RMXSA+FPG+vgO7OfD5/Q
-         a1FvcgHOYC0ZZa6XYBmBGtFmvQomB/2s7XLSMtejRKx5F9bvFJ223dVinvgXT0NZQQ5q
-         YlL07VyVTSyeZAUIjhPgyypBra/P4WK97/6J4TJqQOa9G0QjhVvBpif9AMzvTvqi3CbJ
-         O3xg==
-X-Gm-Message-State: AFq9FYK/8XCJsx3egrQma+G2w2CU9mRA/epCPm2VnahylTF9DeCPa1k2
-	XSQMTn/p6bYqHFMG5L6HnwKdldNMkl1yqZIQYxS+khhExK/8ppv51P/DosIpyBytVIKwx5ndpL9
-	Wqf1NEq4wXOw+Y8Y4sh7h4ztJaz6tbWd9ybxVG83SE5ObIwg=
-X-Gm-Gg: AYBFou2CjW9dfJgiUY37ifMWhnpWcaD6MK5qAuAM1QIayOSKNrwgcfvyKPlFQZwaUh/
-	6NwAZS0S85foMw8fAJXo9TA0EIS0SSGN2odjc3bz0qzHwED98BYGvRyPuLbOL1PQzZulYwCNXpx
-	A/7Ar+wAfa0Kym6BGopOxy22B/U9gvjzX8HA4Y1jifZPBixWIhUlRh4D3w7H4o4lb3flXdPW7vP
-	mSwsT4cZtqp6cIow6bU6OX9yMLtJwrOx/On5Rcthr+p1ZcwJtpFFPGtgaZ2FShmlgsCGnCsO3M1
-	vc1OG6EiIzvdxj09RJqhBPLJF0dpsXFe+tkL7zlfwE5CBBpOhE4SxoGqzk9SFF1aX3Huj/7hJBN
-	dosdPy/s5YkwiqWQaH2athlpTJVMshamD0xNz8DY8ySYpnYFQ3pe8P+8=
-X-Received: by 2002:a05:6808:660b:b0:4f5:5dbd:1328 with SMTP id
- 5614622812f47-50c574a2f53mr11494872b6e.42.1791903489549; Tue, 13 Oct 2026
- 07:58:09 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=yahoo.com header.i=@yahoo.com header.b="PtYbF22A"
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1791904405; bh=8CabwxGpw7QPwiwrmZsN8gni+LU43IXDehbaUPw+ozI=; h=Date:Subject:To:Cc:References:From:In-Reply-To:From:Subject:Reply-To; b=PtYbF22AjCydqZYKfK1+5YGHznj1DzR4VJvg6IFy8RhpQw7Q/K7PDYe0XhFMjNSLdQsb9Z3znJ+IN6pdvPR7RfyhFUNvUeh3bDYAOXVhzvTv4MEGLKEf+UOmvQRXepyJzyNy9YBTJR/qkpOJ2MBBxBbiQ8Hbo+iboP8eO9YMFzeyk247Uv+YCmTWaSlsnoMbhJxYXpoBowUjM26tN+TzAH2UHOtGuQ/VEBuvIFH+c2bV3r1h+WRyLsgTg6O0LC5bMJkn7LyRn1B5ycAKo8qvzRQfl6KYnGCHlf+L7hua0EJklvrAeVD67fv186RHwYhuPTVwXd/GCzD9gO76s4ZVKQ==
+X-SONIC-DKIM-SIGN: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1791904405; bh=Gfq3O0CiKPflBA23nNJaVaMPJskvZTeUcIbAnxCRspt=; h=X-Sonic-MF:Date:Subject:To:From:From:Subject; b=mKxgkDHcp1uvnfsI/qGVPQznvT7Gr74r+nvKy/+m7XHHAl/5HBxR9mIAkLSJCF/tLlSBMSCcpjU0wEIVy3UftLtrtw88Wje/HXPIqafLSakFE3KbeY0llI8Pu0jjr+lKJKfCkwk1G5Sd009g/+OahZSsU7nNVIc3D2WC1xHWXZhXqlBJPFxpXUGVgN4CQNjMib5nUTgzrdeD38nTl2iEEwJjTtIchV69YSGfrhYAE9P+uy1fEO8+nB1FaLvu6NLMOqX6ExJym27n0hdWsaF3REs2WjAR1fZqMVGNPb4cPCcvyTHLpMfAHzDWmVo1EMPbK3vA3ZrpuNAHDqskmuESBw==
+X-YMail-OSG: gJgxy3IVM1mZ7XAYp4Rr2laLCAMsgib0PHD.dxk9mBSDPTN4r2G8BaR7FW.FRiQ
+ MXvqVK1y7z5ENAq82IcHoyn3bf5Pi23yrt7gmGWnQGRJpkEUj3hts9oXP5kOwWsv0n7uEX25mwH0
+ cTgWmNvXaLY2Y_G2YZhtUDWq1nN_cu3ctxy6VSzVduNpcvV0CZun5n.beGqRH4ocEV_8Sx3P7IuK
+ kfQTN_1DZ1cixunwsE8wCGs8mSqVnJgVn4rOyFz7zyFju3DxqIel3_yFbQXvnN3ZaCQ4JCnPpA_p
+ 66eh1nPsbBXICwrG9sNRcX_.7d70ZvXFqLp4IDXW3_kJvPVCtMqToRxhskn0tlEpY0BFQDyEMCyU
+ xvGiKzAQNUyt0rELZa2eLTKx_MU9a6jgthuAxu4ZZ6cB12B0BuD3MP9f.b1HmPAiCzRheKfQ9sQJ
+ itfX.4CJgUPjnpSkzwbQz.CdGElKxzZaIz06iKCjUP3QOwKojsViBQ6k0MM2lmrAtg5Vc8cLebZk
+ P4WdowcsPRb.MogqzE2uhDQOteNYuMSOm6jlzy8dMOTGDbkwLoAtPAtrOKk3jYFUk6WDa6JPJOhL
+ g58TtQGpBF8hn6A1Qn6XUftfMPI52tfckIVx7UkMjTXXngeOKT9Rm3PGPS1mmlWImzMF3SKmA2OU
+ 9RVhT0XtaK9jlxs79RaIgBjfCxy7Rgt5e0gp5OYZyrwXN6bG7fO6vkF_spjy8VCOob7FBEeKxFjj
+ jWUxIWVOniOMlzmkPwdOFSwdkEZQ5hgox4XKfVM1bqGsB4Rto3sitCvjpnuBdJOxraY_.M5.9lVP
+ q904aQGKRpKNoBQVenfJmf1_CEBeLO..3sgs0Bp1jOa3OcY1p_jTWDWiY7Y4PgrQf5bx3bah2PiC
+ GEmVORyY4Pu13vYG11LD2CQNIaT02l97WGRkHX9uLHpraWyPFlmHu3KPWzeC6AqVLFvLmKs21kAf
+ 45fptbhi8.9njzHcRbQ7EGxbkpycHjk0QXucVKDesq35JOePtA7wfZQVpHs4TdHfWT7RPrTR8Chy
+ dzmYS9VOmoNub9WdBC4qKiFWrZNIHvmN0BoOwKl_hATOoP..Y8rzpgQyZJjEb56.7tq12jls20HM
+ wlptF5WDKr1tWH5.T_G8kTYb_Fz0LG1yV7mFHnclOXs7okvqqvSGtR9h936Bg2WK4f4h3TT9iN.L
+ ljTfH5V1uGmKzva0pJZczDMjFL4VO0838mjFpexj.zv1fi_xqhUVSyYzhqcitVbENWVdL7Yq9Nru
+ h5vV3mX05V061R9fLBC6KkhINiPCRXxkSnczF2u7NiAJEvexTHL1cvp9O1dy13_38wnIySD.L7tx
+ e8hVIrl_CW982im1QgKq7yYLclTKBLepOXYmQkWM1QzMZljYhv0addPEHGURn6N1rckL001fQSAA
+ giT92u4WDr1VjnARblE35B.U8DaS8Ek8TllLD.dvWT9S6OQ0TVl3D2IUszoFM9E.yqOq1.qeAOIn
+ 3PYmDSND83zUH6XHIMyuT4beCJS8W9zKfHDeesXFi3V7GKMKSH93VREnTlQigva4rLbCYJs2csCO
+ n2exc9wQ4qdYikhQdyK3XWUmcrvYYUxK3CKkWKlfiOfK5Ay2FyJvWzNLrmoOnma5NaDP_UxQhteW
+ aPS3_Bl_g37G0zmoJ.mrCguEiYsuQ0vAD36.VvlvqFp3hbAxe6ps1czsBlk2.0U1zfLyVj467sDP
+ MmRKek_JLuu8z4LxiZbHNtWi3_DDU1F.Aj6j9YXjSR5tkcuNuwFJc0oB3nRiNqbZTm4LnxDHtiN_
+ I.Z1rQLI3WLhwziQk3yeGQ3JNsRPmi6kPikm3.Tgzg6RgwCbE2GlU8em3LO6_p5A8BnuVu_Q5Uhj
+ prMWLSQJ5eUPA6AjjsNU0HVp1J78dtRkZ__q55yJtRNSn0vosotLUWUO4O.nfPv1XfKzX6SEPgwL
+ TmjtDqpBCo5fP5OvkB.IXhisTgK2zSxjQjLmCk2LRkq0achM3wdR3Kp0J4BFuJgsLXLzuWNi6d_j
+ iYW2KWg2l0XfG2gNb2gR6xswkbsRR.WHi6kQYurP7L_KeRGOqYQJG2UOSmkwFltzv76XDUXXUqZs
+ Oajq1kDilYPCqRDLQdrkvZc9zlZMySattgsjVUwCXLv_qHCPUd7XMza08HvyRzUy14ESbIWQxhbL
+ RkrwL015E8McAeUSrmLC1GxoV1SBPnaqP9hHRbBKugNXT7OszzTkQkpZZchMBMjSUL66hFbaSdex
+ 8fL3pYDPYjsw31tt1qBPBVv8UWc22fZ81W.9l5O5Ht5k-
+X-Sonic-MF: <deaner92@yahoo.com>
+X-Sonic-ID: 5157e8c7-a71a-4ed1-b34a-cdaf6e57793e
+Received: from sonic.gate.mail.ne1.yahoo.com by sonic310.consmr.mail.bf2.yahoo.com with HTTP; Tue, 13 Oct 2026 15:13:25 +0000
+Received: by hermes--production-bf1-6d6877594b-tqwxv (Yahoo Inc. Hermes SMTP Server) with ESMTPA ID efe0f48b2b69dba20bedb55f2cbb6290;
+          Tue, 13 Oct 2026 15:13:22 +0000 (UTC)
+Message-ID: <47090350-2dcd-4d7b-a73e-681f68ff3a1c@yahoo.com>
+Date: Tue, 13 Oct 2026 09:13:17 -0600
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-From: Okhuomon Ajayi <okhuomonajayi54@gmail.com>
-Date: Tue, 13 Oct 2026 15:57:57 +0100
-X-Gm-Features: AclHuK9mTimes_pMFurzdW3GpbWx87OLlccujZdhQFN95dSC_1b5OWc5Ll2IZ7Y
-Message-ID: <CAFpMFfB07baJZqdHTAhJWbB6D6m-qfBoswBgmXkn_N2KkumdRQ@mail.gmail.com>
-Subject: Introduction - Outreachy Applicant
-To: outreachy@lists.linux.dev
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] staging: nvec: use guard(mutex) in nvec_write_sync()
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Marc Dietrich <marvin24@gmx.de>, ac100@lists.launchpad.net,
+ linux-tegra@vger.kernel.org, linux-staging@lists.linux.dev,
+ linux-kernel@vger.kernel.org, outreachy@lists.linux.dev,
+ Julia Lawall <julia.lawall@inria.fr>
+References: <20261012222926.7754-1-deaner92.ref@yahoo.com>
+ <20261012222926.7754-1-deaner92@yahoo.com>
+ <2026101335-expansive-veteran-c4d6@gregkh>
+Content-Language: en-US
+From: Jeremy Clifton <deaner92@yahoo.com>
+In-Reply-To: <2026101335-expansive-veteran-c4d6@gregkh>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Mailer: WebService/1.1.26668 mail.backend.jedi.jws.acl:role.jedi.acl.token.atz.jws.hermes.yahoo
 
-Hi everyone,
+OK, it's understood. I'll look for another candidate.
 
-I'm Okhuomon Ajayi, an Outreachy applicant.
+Thanks for your feedback.
 
-I've set up my environment, cloned the staging tree and built the
-kernel, and I'm now working through the First Patch Tutorial. I'm
-looking forward to learning from the patches and reviews on this list.
+Jeremy
 
-Thanks,
-Okhuomon
+On 10/13/26 12:15 AM, Greg Kroah-Hartman wrote:
+> On Mon, Oct 12, 2026 at 10:29:26PM +0000, Jeremy Dean Clifton wrote:
+>> The three return paths of nvec_write_sync() each release
+>> sync_write_mutex with explicit unlock calls.
+>>
+>> Use guard(mutex) to unlock the lock automatically on any return
+>> path.
+>>
+>> This removes the three mutex_unlock() calls.
+>>
+>> No functional change.
+>>
+>> Signed-off-by: Jeremy Dean Clifton <deaner92@yahoo.com>
+>> ---
+>> v2:
+>>   - Reword the commit message to state the motivation and to make
+>>     clear that removing the mutex_unlock() calls is the result of
+>>     the change (Julia Lawall).
+>> v1: https://lore.kernel.org/all/20261012171312.5998-1-deaner92@yahoo.com/
+> 
+> Please read the archives for why I will not take guard() rewrites of
+> staging drivers (nor do I want to see you use a LLM in here either.)
+> 
+> sorry,
+> 
+> greg k-h
+
