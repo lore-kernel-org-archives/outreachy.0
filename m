@@ -1,115 +1,144 @@
-Received: from mail-qv1-f51.google.com (mail-qv1-f51.google.com [209.85.219.51])
+Received: from mail-dl1-f54.google.com (mail-dl1-f54.google.com [74.125.82.54])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7BE9A5328C6
-	for <outreachy@lists.linux.dev>; Wed, 14 Oct 2026 13:32:58 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.219.51
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 351873D7D9F
+	for <outreachy@lists.linux.dev>; Wed, 14 Oct 2026 16:40:59 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=74.125.82.54
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1791984785; cv=none; b=j5IXxGR+1xL08uspJPLWUwyDOS44nsBijqtVjnvbyefV1IB2YomQetgU82PkmDjxuHQL2wHGZpC8D+ogciPJneJMHj3VXXBkrxACBGXomKFWOHJBqU8uiNoeAD+tyGVur1c4BBJRGq+nIDV77GYEhY6jqD6jLu8TfbzzXue9qqI=
+	t=1791996060; cv=none; b=mlblrEwa622L8DCbqDT1gul9e99k94/sgwqCFLWbFi3dq6e5j/9NTFxH2PMFPK8P6tTNBHBRDFagXsE1F37nqLX512FHbM7AYZwYxIJNeAXsZ5h90Ld4pgF424hCtmKQzgIMdyv7ZiAEsrSCqdQ+ibPvQ7NT6ORSb44LzXny+rU=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1791984785; c=relaxed/simple;
-	bh=SPu80Je3dTPDgjXd/xtDzro2TjdOg+amy0NWrDljosw=;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type; b=NPX6L3dh23BFoMIGgnN3tA04JLB80CbCEVo9IRejkZBXcbtMV99FfgQlpmd5FXw4k0cmBQEQBRF8qzak+o7bu2XCO8ccX/TQmqy69ABiLhMQjn8egHTgYIykkZjVYgsZuJmlxiy+GeyVZQH2Tvep3LZGTb4DiE3gqDMJZBRdnAU=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=ieee.org; spf=pass smtp.mailfrom=ieee.org; dkim=pass (1024-bit key) header.d=ieee.org header.i=@ieee.org header.b=CFUoMUq9; arc=none smtp.client-ip=209.85.219.51
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=ieee.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=ieee.org
+	s=arc-20240116; t=1791996060; c=relaxed/simple;
+	bh=XfSNuOCiGSFrTrFIJ4lT3my+Lp1JTDESDqQCedNpmtc=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=Kzd9lHvH/Qcqx+r7IG135JGI+y1JkUb8lyTT8MoX+pYeYxbaa4MQw5pZXUr0wbX41XDBzBGC8bueiG51vbVst3lGcJGKgF1xUByOP5OCmixpU+5NeLUemD5UKz6/fw2OlXJ1TUUdMfUyZ30hxFBUJzLc35POoY/RXF41Q7ucQ5k=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=h/xaa1u7; arc=none smtp.client-ip=74.125.82.54
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=ieee.org header.i=@ieee.org header.b="CFUoMUq9"
-Received: by mail-qv1-f51.google.com with SMTP id 6a1803df08f44-9178d514951so3105516d6.0
-        for <outreachy@lists.linux.dev>; Wed, 14 Oct 2026 06:32:58 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="h/xaa1u7"
+Received: by mail-dl1-f54.google.com with SMTP id a92af1059eb24-15354aa70e8so3168380c88.1
+        for <outreachy@lists.linux.dev>; Wed, 14 Oct 2026 09:40:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ieee.org; s=google; t=1791984777; x=1792589577; darn=lists.linux.dev;
-        h=content-transfer-encoding:content-type:in-reply-to:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=73j1Xe+ZfqaJi3on6arYGnmiJ9i1fPqoI4qWuMUvRuk=;
-        b=CFUoMUq9mwNB6eRycjyvZV39J84fWGzW7QjOprnZijcbx/JrHTx/4Nbegw7QOnmecc
-         BjhV3uhDtLJuoJMB0QKsZ7BVLCriA4Z9ZMngFcKWAEK87nbysEuFvjgJRy6r/clr+wmu
-         opzZaqhi/6sRkOC+GVOCOrQvcrR6GgdIOC01Y=
+        d=gmail.com; s=20251104; t=1791996058; x=1792600858; darn=lists.linux.dev;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=UgGn+abtiqJOh+LR7c9Lyg9H/TKcLZIpibd1bP5k/sI=;
+        b=h/xaa1u7E6wqRtTF0AjHpLTdaEwkZEF4ry4dglO6iHwRnxa2idLMzSvL7GWVNo+6Rp
+         LFlcdNp1u+B5TUVL7Szv+IJEet/MaPmb0dGN6GkV9cgG2JI8NfaV2I9FV0t9VMOZ0iU7
+         3HrRZ1LtIJWx3/IaVjXFVpq9oHoUQXryFbzwtX0r6FzOYK4yYaIG+NEsBG8A0iSS3jA/
+         AM48ncpQI1l5hIoGFDrKT4W8JoBA6XrhoRlo1DqHPamixglJI7CIcn0M4jBmB+4zBwMJ
+         jY7iR4WZjVZzCsadZAgVoSC4k6aAcqwnBmA8bgDZabY4xYJeQsdXLRpoh++GXBkQYAEO
+         fY0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791984777; x=1792589577;
-        h=content-transfer-encoding:content-type:in-reply-to:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=73j1Xe+ZfqaJi3on6arYGnmiJ9i1fPqoI4qWuMUvRuk=;
-        b=j9G8gk+pIpm37ya3suW3ZwlqToWH2Vf4bU+hf2r/YOAJsjb8po58HUnfEeA19oqRaL
-         n51I0MnPIMHZV+It+uSGpXhwA7tbSU+sj1hXSfI14MB7N3KwH+C5fivnGQjLapc0Sp6t
-         01FLHMKq+8DwHXz1g/qqmLH3tZNNfo99KtZg64Tx69G3848XnJMRyODXYwJatj6liE/G
-         JJekFCPWaCUnRpXm0d2EKMzWfkA59EUU+jf8BvEY+JtScAFqpXNZ4RTC1TbZa4GJz4qW
-         aH7S5lSsxZ7RdMSzZde4jMYh0Krmovk8QO5w4P9gCVwjoMXazvmO9poilUb3fuMlN1tX
-         AqZw==
-X-Forwarded-Encrypted: i=1; AKwUvBwEnI1Jkum4rfk/doiYa9cNT5NHi2IZM9uhUgFWBmCWtMCF4WNBIHQ/LG3Y6fdvcjypmt89w0vPC3w=@lists.linux.dev
-X-Gm-Message-State: AFq9FYJKQxMZglx8KzkD+/PoorhB0yCN+bOsxNyllhIUqHcPxoBtdKA9
-	2/hTs8Ns/5bKVNiraTe/8JRW1V3w2jM3FCkIHnlZUI97WVrWQ/9i8eHgBbOJICuROQ==
-X-Gm-Gg: AYBFou1jmAnjlSBJY7bZA172yC6O64BmjwDpMys8s6r2b1/0mbcgVMmK1nW+xMGVBgn
-	RbOjMVI1wkme3/ANJtnAcMJACfUGHfNUUBxN8BnPkHk9iXVGAw6Q7yNb6TvcDZh2bpS8Sh8VpEy
-	ygI30LFJK+zIRwLvqKDvnhgBPewUrI73phhgcfOYWt6wL4Z+BM/JGvGqpQ27ZLKQ6n8WYvmelBj
-	Nc1qowQXTmJiX03KwLhRc1PMhZX44A6jUeU5Q3qOLyNRWw0OQGVevxBygFjtWS4KgI2y/+/RIW9
-	u72Tnzjw72C0MYcBG6tmdw0ZHEThZNo4CZY+fGvsF2bzBOi9BC1eLEtpAX9XXtZOpo/KtYHulID
-	VdImqzE+i1VRYoUPGY4XjQYehcqGWdkyqMeYgavf2a+uXH3RNuzR0o7QBME3npkPQ9Gbfo4hfzq
-	ipHqUMw4cONqzETR3XMJx+qGjuXA9YnV1u1SWfgoqwG14klib6OgtIh9tpzqxKsNq/uw==
-X-Received: by 2002:a05:6214:f62:b0:914:4bd3:d98a with SMTP id 6a1803df08f44-91b554ec1admr254244676d6.14.1791984776796;
-        Wed, 14 Oct 2026 06:32:56 -0700 (PDT)
-Received: from [172.22.22.28] ([73.62.185.64])
-        by smtp.googlemail.com with ESMTPSA id 6a1803df08f44-91b97b62225sm53259996d6.19.2026.10.14.06.32.55
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 14 Oct 2026 06:32:56 -0700 (PDT)
-Message-ID: <26a2a4af-5d27-4bd5-b284-3758fa7a67b2@ieee.org>
-Date: Wed, 14 Oct 2026 08:32:54 -0500
+        d=1e100.net; s=20260707; t=1791996058; x=1792600858;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=UgGn+abtiqJOh+LR7c9Lyg9H/TKcLZIpibd1bP5k/sI=;
+        b=dMU9joJD3O7LZeyiJOJFtcUD8x2RsJqiY5klBsGanUphAK+opLPwiAGYkkI8EqNuQP
+         JmLc9ck3bLcS5/4zoGBd78jdB+G3M2iw5/PmpdZbx1AvN15F9+WcJqwAD+vTKuYFbOdK
+         hKXvnxUbewabKUnuiZeTNZDqxGnIUbsQwEOkQVjdqqIANOdOdYPhHNiwSxWR4Z9U05Qa
+         0ObsDmUFGVyoocdHKwEI7usckzbuUt6nQ8HGjpbCakswpwBWApK9TRzp64aYXneoiS9D
+         1hbdX0sNFnn9lQKXs0Wy+lf31IBbR6YUE66XHSjT2LgKJAHYeddZMbjqB/MvJ7IxHK0K
+         6qjA==
+X-Forwarded-Encrypted: i=1; AKwUvBy5zIyf/R87qFHNiuDcst2gkQ58bSlm4nPD4xtuazrgwT4613DKMAxma+7x0NiH0giZH4GidgKoKrA=@lists.linux.dev
+X-Gm-Message-State: AFq9FYI0FnUdaxE8LJyD+KMNwFa4/KRxLC6ynInT+8Noz/njAKSVj8FL
+	ONh+AqXGPUlJawDifDQBsqSDVGNPpjlDBW4ClD+2VR/G9fcovB5swP5j
+X-Gm-Gg: AYBFou3OvgbxQGFI53E6p9C095P7QbVFr8kFSFyizbOkNtRr1ul4KaOl856mLYqKUIJ
+	cC7L3Mbj99gTLyw/QMU259nyhaX6sjtxttFKgZ7HnU7C+OoBseuJNWi6Z1a00Zq+3IoX3TcAsLZ
+	luJgumImupM7lbs8mB+tvNss7EC1GaJHHCqz7kA/ibq2N7894UOv+HWd9Ik496QYIoKozW0I1Fw
+	uDkgrRZD9bjlq0fOniIsuGFgmgo1s45uTGmKsCZyY7JkE7dnip+mTOVjCBTtl74+nWgsx4UygMw
+	wbgV0sg6XyJoO0pAow32NjvYUw/qf1u2v9IxruZyvOlG5RliVi/t+a7ZKEGM2nMFzAjNYrExgU+
+	kH/+T+DORLBry+TSEFiQRZNep9iULUt6qTYok2tzOIbuFLXz9sVciIaHjn2UWqDClhFZa+D1+Za
+	UDL0D3WuL9W4neyp8/l7b/SLgryr5mDxo8QCbT5kDn01LzjB+Wu7RXAimzvQHm+jCyqAS86qHeb
+	0M=
+X-Received: by 2002:a05:701b:42c9:10b0:15c:705f:b981 with SMTP id a92af1059eb24-16a6043c616mr24016690c88.32.1791996058090;
+        Wed, 14 Oct 2026 09:40:58 -0700 (PDT)
+Received: from user ([2405:201:c052:b00b:a8d1:172d:7ab0:de86])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3537cb68e56sm49903496eec.29.2026.10.14.09.40.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 14 Oct 2026 09:40:57 -0700 (PDT)
+Date: Wed, 14 Oct 2026 22:10:32 +0530
+From: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
+To: Alex Elder <elder@ieee.org>
+Cc: johan@kernel.org, gregkh@linuxfoundation.org, vireshk@kernel.org,
+	elder@kernel.org, greybus-dev@lists.linaro.org,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	outreachy@lists.linux.dev, gservice341@gmail.com
+Subject: Re: [PATCH v2] staging: greybus: replace PTR_ERR() with %pe in error
+ messages
+Message-ID: <as-wgGhJAGgYBZ7-@user>
+References: <20261013022402.6322-1-pavankumaryalagada@gmail.com>
+ <2fd23f9b-7eab-4afd-aa77-93a5b9ff0c75@ieee.org>
+ <as6mC7sZnpqIKxN6@user>
+ <26a2a4af-5d27-4bd5-b284-3758fa7a67b2@ieee.org>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] staging: greybus: replace PTR_ERR() with %pe in error
- messages
-To: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
-Cc: johan@kernel.org, gregkh@linuxfoundation.org, vireshk@kernel.org,
- elder@kernel.org, greybus-dev@lists.linaro.org,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
- outreachy@lists.linux.dev, gservice341@gmail.com
-References: <20261013022402.6322-1-pavankumaryalagada@gmail.com>
- <2fd23f9b-7eab-4afd-aa77-93a5b9ff0c75@ieee.org> <as6mC7sZnpqIKxN6@user>
-Content-Language: en-US
-From: Alex Elder <elder@ieee.org>
-In-Reply-To: <as6mC7sZnpqIKxN6@user>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <26a2a4af-5d27-4bd5-b284-3758fa7a67b2@ieee.org>
 
-On 10/13/26 4:43 PM, Yalagada Pavan Kumar wrote:
->> I think your suggested change is a net positive, but
->> doing it in some spots but not others means it is
->> adding a bit of inconsistency.
-> I agree that similar cases elsewhere in Greybus are worth
-> checking to keep error reporting consistent. I will look
-> at the other Greybus files for cases where using %pe would
-> be appropriate.
+On Wed, Oct 14, 2026 at 08:32:54AM -0500, Alex Elder wrote:
+> On 10/13/26 4:43 PM, Yalagada Pavan Kumar wrote:
+> > > I think your suggested change is a net positive, but
+> > > doing it in some spots but not others means it is
+> > > adding a bit of inconsistency.
+> > I agree that similar cases elsewhere in Greybus are worth
+> > checking to keep error reporting consistent. I will look
+> > at the other Greybus files for cases where using %pe would
+> > be appropriate.
+> > 
+> > Would you prefer me to extend this change to the other
+> > relevant Greybus files, or keep this patch focused on
+> > fw-core.c and submit a separate patch for the remaining
+> > changes?
 > 
-> Would you prefer me to extend this change to the other
-> relevant Greybus files, or keep this patch focused on
-> fw-core.c and submit a separate patch for the remaining
-> changes?
+> I guess I mainly wanted to understand your intent.  I don't
+> really mind your proposed change, but I would really prefer
+> to have it be part of an overall plan to upgrade all error
+> messages this way.
 
-I guess I mainly wanted to understand your intent.  I don't
-really mind your proposed change, but I would really prefer
-to have it be part of an overall plan to upgrade all error
-messages this way.
+I checked all Greybus source files to identify other places where
+%pe could be used.
 
-Ideally error (and other) messages are done consistently,
-and so changing them in just one file sort of raises a flag
-for me.
+> 
+> Ideally error (and other) messages are done consistently,
+> and so changing them in just one file sort of raises a flag
+> for me.
 
-Can you survey the messages elsewhere in the Greybus code
-and get a sense of how much work it will be to do this
-comprehensively?  Your current patch affects four spots in
-one source file; how many others would there be?
+I agree that keeping error messages consistent across Greybus.
 
-And if updating everything is a task you're willing to do,
-then I think I would prefer you extend this change.
+> 
+> Can you survey the messages elsewhere in the Greybus code
+> and get a sense of how much work it will be to do this
+> comprehensively?  Your current patch affects four spots in
+> one source file; how many others would there be?
 
-					-Alex
+I found 12 additional cases in arche-apb-ctrl.c and arche-platform.c
+where using %pe would be appropriate. I also found one additional
+case in uart.c:954 where the error message could be improved by
+printing the error name.
+
+I will keep PTR_ERR() calls that are needed to return error codes
+unchanged.
+
+> 
+> And if updating everything is a task you're willing to do,
+> then I think I would prefer you extend this change.
+
+I am willing to make these additional changes. Since my original patch
+is already in staging-next, should i send a v3 of the existing patch
+or submit a new patch covering all the relevant cases?
+
+Thanks for your guidance.
+
+Pavan
+
+> 
+> 					-Alex
