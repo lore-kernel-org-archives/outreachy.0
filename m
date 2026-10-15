@@ -1,288 +1,334 @@
-Received: from mail-dl1-f54.google.com (mail-dl1-f54.google.com [74.125.82.54])
+Received: from mail-qk1-f171.google.com (mail-qk1-f171.google.com [209.85.222.171])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DC9693CA4A0
-	for <outreachy@lists.linux.dev>; Thu, 15 Oct 2026 12:06:50 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=74.125.82.54
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D59AE48C405
+	for <outreachy@lists.linux.dev>; Thu, 15 Oct 2026 12:13:24 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.222.171
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1792066012; cv=none; b=UXcRgk9S9UFbEGcWf2WzX3v4Ck93ZrjoO8IQYo9++Ji3DTH8pGR5U3fyTKe8Rc2ZdDPXse6PAVh/ZdbV3caFZFZGjEUeXGrc11oTqghwm8RE8MAIUj6133J3bAnLIRmg0rlRpjvUtQRs3PiXWUUNxs2SHZzT8lEIMUZFSLCRuiQ=
+	t=1792066408; cv=none; b=k1HA2eT0V1tPrQuUwDX19IecTrmjtJuv6JTIjgY2thfHYKepP2KMS1iumGY3zGI/7KCLR2K8SG5ZX40j9lCTMI5m6ssGKfY4v+1qv+SHUH8x7bBN/KMpZ6IkxUqq/3qggSgeQLzJgMXAeLL0s5G2AmmkbR2yurKu3J0g+xlHBjY=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1792066012; c=relaxed/simple;
-	bh=cgSrAC4AHVBr99jQ1DICdOtH9llQAOcLAZmMTnDV0Rk=;
-	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version; b=dCYQ3/VmoataEXqu4lzojkVHD+0ZR+8QHXmXw4GrAQs2WtVgzYXO/amgpOcWD4NcZsEGGEnCnDreTFxPrs5XtWf7Nboyd/EM7qqwppziBU3xHuOF4GUrQCNwdUckeiEF8eEnfRAjZJqTPQa5EKKt/5VVjhHLKcyJ6af5UTn1s3g=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=AFucSMX3; arc=none smtp.client-ip=74.125.82.54
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	s=arc-20240116; t=1792066408; c=relaxed/simple;
+	bh=zdH+IOOBV2baj5d9rZ4dm40njWgoiWrQrN/U10L+YbE=;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+	 In-Reply-To:Content-Type; b=fzB6R+/sdVnxxV41mHZ4v3Gg2+PrPv9rB0Pw2FihCJV0NZ+ygDNZWPNLbmeDSL+2u+XGUAZDJeMXtHCeAL4a6ssxWvyijAsPYejnhZ/f59NjVBRfHZA7Nr6VZi95I3LzAB82FNmhyMxUnDnIfwC63gQmUVp4PHY55QAT5EzWYIY=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=ieee.org; spf=pass smtp.mailfrom=ieee.org; dkim=pass (1024-bit key) header.d=ieee.org header.i=@ieee.org header.b=KHS8Jil+; arc=none smtp.client-ip=209.85.222.171
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=ieee.org
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=ieee.org
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="AFucSMX3"
-Received: by mail-dl1-f54.google.com with SMTP id a92af1059eb24-15ea896ddc8so2868816c88.0
-        for <outreachy@lists.linux.dev>; Thu, 15 Oct 2026 05:06:50 -0700 (PDT)
+	dkim=pass (1024-bit key) header.d=ieee.org header.i=@ieee.org header.b="KHS8Jil+"
+Received: by mail-qk1-f171.google.com with SMTP id af79cd13be357-93e4c00d71aso396089685a.3
+        for <outreachy@lists.linux.dev>; Thu, 15 Oct 2026 05:13:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792066010; x=1792670810; darn=lists.linux.dev;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=l/PQRGA0PBTfcR1OxI5EM6MXmm9MO8wZxPeWGu+zgiU=;
-        b=AFucSMX3LAb7jYQc0IiaL9YmiHB1HXHKMmHd5Hr6w7pvEyKW46uLxuRlAqhf/vpYgx
-         9yHwfZX4vuQL1C15rqmoeUJSYDPZeKx7LKZhuvVQ88+muvfrf0KjbOjsf25qJEXzdunZ
-         axTmVe0GJQKaLJMymFwsTFdDGhm2lt3tLJpqGda2PJvin2T3Umy9Vv++D2QZj76umNLG
-         MVMbLTJyWqeEqtU49DO03DvHZ9XKNNZUyRRUoT4hvzsRAH8/VhXHeNJiO4xAfCApyksO
-         Bym2Khp4P1/RSVwAHTN+Xq8ZGVHVco2zjOUBqYogUXGSr4JCEPY21pDUz/Rp1eI3b1HJ
-         Omkg==
+        d=ieee.org; s=google; t=1792066404; x=1792671204; darn=lists.linux.dev;
+        h=content-transfer-encoding:content-type:in-reply-to:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=Nvo89qAGwSb+Yzea1kpe4OCQr5Gc5wnVwAn3hnKuGGw=;
+        b=KHS8Jil+JAXehgEnLq0bltVQK9OphBzwd7N2YroAgd1G81N8kYmpsZlg2Tjh3VnP9a
+         2ZgkkgpOTqKVkoJ3Iom3LfkvJOmZzOOd+G/6FsAFDcmFteAq7A+Rj5Nfey+mvBP5s4DY
+         3wXCxc5EQW5LENSDrFZH4R5UCBk+IYv4tV+TA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792066010; x=1792670810;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=1e100.net; s=20260707; t=1792066404; x=1792671204;
+        h=content-transfer-encoding:content-type:in-reply-to:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=l/PQRGA0PBTfcR1OxI5EM6MXmm9MO8wZxPeWGu+zgiU=;
-        b=OrkygGpuDiiVbTVj+n6B84WQ6WZgZWp5+Q6qU4R4ESWYo/EcnOY8HupwSzNjTNUuoZ
-         jU/0Xd2tDvPuXlPhcCrds2NRftF9snFDZamDIZmRqN8597lt6ct3i4608unsbjCxBBpz
-         5LXppV/Wc3lJk6IgjMRYX/msks4e2gwJOgUJ/82gVUwaIBlVNH6Movn/T2nLvSS9SLHu
-         BOMC/zecVnJJJGvz+jkond8CZghxLZZdfWMp70LE5sYACgXBx1tBkOz8MLRdQn6G6PNI
-         zQNOVWPDlB0E6/JPKcECqpV/XBbtFlSPU10wExATDyzNvCCfEWaL6umERAxPZ39la1WW
-         0pmQ==
-X-Forwarded-Encrypted: i=1; AKwUvBzVEtVVkRrOzKyElSeyTLTfpPar8yw0Au/mcoaeWtf5y27mZhYfynFPphAiRpRh+YloDF/9Qg7nxqw=@lists.linux.dev
-X-Gm-Message-State: AFq9FYLinEjGLwNSs8iO96UN/bfinzMe30gS5TzZxsKq9UcDXjHCXe7l
-	wDFXBMy7vK549fF2k0AwYxZl78LNfIkeqJwbSwTQRkuJCy8e3svTosV4
-X-Gm-Gg: AYBFou0IkzZGurK/Mp28avDp9CfRCwDLksRsViBHOPrHzI49m97lRGIvHzgDNhCc+Bi
-	eKRi1IpYd2r1WRC+njIEa/Vp1o6UmdDEaa9deBlZMyM5dGiOgD+OKQfVbUXygY1U+ZAqy2dk0a8
-	W9K3ecroIPFvUJVhqMFWw2akne0X21DJl6X0EjvDG3OwbSU2aVzWzE8OxBc6axzXiQR2xyKYStX
-	ykBOX1nLXoU7BgSDWMSZkvaQnlZvz4OGgXQ1/HP74995QvOy5JDW7Y4tHgoPsDS1HP8/YQWEZO6
-	OUmQTwf2FGicoa7ekiKK2hey/8BJMufqzCdGz7eRFsXDjORFfvIQ0e02HFDmp2Ze25d+PV3DNiX
-	B4IihudYJIe8R5lG+5C0dH7Nl/h67NSu5bq4Kr+MB2SATYj04t+FbpJJo5aoRvdDRalaOs3bT9n
-	xvUlwRw3u2VwN/9NoU73Z9Lba3EmpNd7I3aeW0xfotIqGdQkA8FYanr2AqpT8GqBoIlLsFlJIdD
-	A2jvbLEw/epJh+6KQ==
-X-Received: by 2002:a05:7022:eb53:20b0:170:64b:b388 with SMTP id a92af1059eb24-170064bb41amr20593658c88.46.1792066009771;
-        Thu, 15 Oct 2026 05:06:49 -0700 (PDT)
-Received: from user.. ([2405:201:c052:b00b:a490:42fc:1e02:1d0b])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-17dc865cbffsm21857896c88.6.2026.10.15.05.06.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 15 Oct 2026 05:06:48 -0700 (PDT)
-From: pavankumaryalagada@gmail.com
-To: gregkh@linuxfoundation.org,
-	outreachy@lists.linux.dev
-Cc: error27@gmail.com,
-	ethantidmore06@gmail.com,
-	luka.gejak@linux.dev,
-	dennylin0707@gmail.com,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
-Subject: [PATCH] staging: rtl8723bs: remove unnecessary parentheses
-Date: Thu, 15 Oct 2026 17:36:34 +0530
-Message-ID: <20261015120634.95218-1-pavankumaryalagada@gmail.com>
-X-Mailer: git-send-email 2.43.0
+        bh=Nvo89qAGwSb+Yzea1kpe4OCQr5Gc5wnVwAn3hnKuGGw=;
+        b=w1xZHFzIBKOVwEftr17Xzp2p7Q778h2nnou8L7z+QHeN7CJMKdyToATjJm1Z3smzRl
+         7n0GtSvdWgHBBaYVFQuKVaOOrh0447LF3qaTHJ3OKEkrhwyjUwb33Fmg+i0zzlA9S6B+
+         FkwElXDvaetn9CNXZHWQF5cCrHcSr2UTcKZ0AS9g5lTs8HIdCymtSwHCOG7UN232OmI2
+         2cGidfVprKNEn3awz04ErntYYc584PhZS4Oov230EDNariz9HfLKVnnj1LQ91VuHjNuW
+         lFvajRZPWEW9XJhI9YOfPZTF02XGBpMWA5XDtBf1c6MT/Fs7nH8w44i2vV8w5nT7VoJy
+         t/pg==
+X-Forwarded-Encrypted: i=1; AKwUvBwCPbxNQoadJZ4od1ZmyOQQKlOjEFf8dwbkKgw9harx1RxZPFdbZWJdQCIgrYQE3qxd90oKZvcWS84=@lists.linux.dev
+X-Gm-Message-State: AFq9FYIiOUXNxDeEmEDSnetJrjkJRX+qnviYRynchfRfTr/d/rF4OZqM
+	yVHuByTKZLzJnSR1s9xPKR8cq6hfleUcYwGzht/zRErdydzBGKup4VkmmQcMac9Wzw==
+X-Gm-Gg: AYBFou25YhQb5OxDlCH7PEyAAvWY6XPqkKdoyuJKI2mE7TPOyyW3ijjkRXEHHhD5qpp
+	p+Y/s/Qh29n6PZpvwgtoojddu87rrGL8fCHczSmlko5TbEXz+EqKJrbJp3ET4Bg4a+HrN4KmtsL
+	jBmlx+GJMWhsPXyQ8TOI6b2CpPxp5fjtHtviB384DkQrwgQPOGPzxE5nsAifhI8hJkVSUGdrgsB
+	IgSX1tHWVjRSZzL4zWSuUYXutSXuHq1OSi4dnHgUD03tgodB8/RM36xI+dBfisFJazh9f8I7LcV
+	vhs63rk8/sylDzmKiwroLOxfxjYnJDIOG5QKwW/GWdcjrdbWH40Z5TdS66+q3Fglybr2sDcawTc
+	ifhXJbf+xh2i6zhc2kh0suHCdJfBojg/3LsIgk0a2wYErQCs1AS/bCRYQlCZ7Ti+L8zBuOfavEY
+	9ens8y6knS1+UX41pAOxU+brqaA8wFEDG68TDR6qM5WNRXQZozCyNvZWlpzHgkWLVp+Q==
+X-Received: by 2002:a05:620a:4407:b0:939:a199:45b4 with SMTP id af79cd13be357-93ebd208f11mr3093274985a.39.1792066403617;
+        Thu, 15 Oct 2026 05:13:23 -0700 (PDT)
+Received: from [172.22.22.28] ([73.62.185.64])
+        by smtp.googlemail.com with ESMTPSA id af79cd13be357-93f13fff574sm78712285a.13.2026.10.15.05.13.22
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 15 Oct 2026 05:13:22 -0700 (PDT)
+Message-ID: <99cd529b-dffd-4315-b9be-9b0029973497@ieee.org>
+Date: Thu, 15 Oct 2026 07:13:21 -0500
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4] staging: greybus: replace PTR_ERR() with %pe in error
+ messages
+To: pavankumaryalagada@gmail.com, johan@kernel.org, gregkh@linuxfoundation.org
+Cc: vireshk@kernel.org, elder@kernel.org, greybus-dev@lists.linaro.org,
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+ outreachy@lists.linux.dev
+References: <20261015082238.65187-1-pavankumaryalagada@gmail.com>
+Content-Language: en-US
+From: Alex Elder <elder@ieee.org>
+In-Reply-To: <20261015082238.65187-1-pavankumaryalagada@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 
-From: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
+On 10/15/26 3:22 AM, pavankumaryalagada@gmail.com wrote:
+> From: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
+> 
+> Use %pe to print error pointers directly and display their
+> error names.
+> 
+> Keep PTR_ERR() calls when the numeric error value is needed
+> for returning the error code.
+> 
+> Signed-off-by: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
 
-Remove redundant parentheses around the address-of operator to
-follow kernel coding style.
+In a few places you are *adding* the error value where it was
+missing (which I think is an improvement).  I assume that the
+return values in this case are negative errnos.
 
-Signed-off-by: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
----
- .../staging/rtl8723bs/core/rtw_ieee80211.c    |  4 +--
- .../staging/rtl8723bs/core/rtw_ioctl_set.c    | 18 ++++++------
- drivers/staging/rtl8723bs/core/rtw_recv.c     | 28 +++++++++----------
- 3 files changed, 25 insertions(+), 25 deletions(-)
+It would have been worth mentioning this other type of change
+in the patch description too.  But it's not worth doing a new
+version for that.  I trust you found all the spots, and fixed
+them this way.  This looks good to me.
 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_ieee80211.c b/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
-index 4d211711f2ba..9917f1310b13 100644
---- a/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_ieee80211.c
-@@ -336,11 +336,11 @@ int rtw_generate_ie(struct registry_priv *pregistrypriv)
- 	}
- 
- 	/* DS parameter set */
--	ie = rtw_set_ie(ie, WLAN_EID_DS_PARAMS, 1, (u8 *)&(pdev_network->configuration.ds_config), &sz);
-+	ie = rtw_set_ie(ie, WLAN_EID_DS_PARAMS, 1, (u8 *)&pdev_network->configuration.ds_config, &sz);
- 
- 	/* IBSS Parameter Set */
- 
--	ie = rtw_set_ie(ie, WLAN_EID_IBSS_PARAMS, 2, (u8 *)&(pdev_network->configuration.atim_window), &sz);
-+	ie = rtw_set_ie(ie, WLAN_EID_IBSS_PARAMS, 2, (u8 *)&pdev_network->configuration.atim_window, &sz);
- 
- 	if (rate_len > 8)
- 		ie = rtw_set_ie(ie, WLAN_EID_EXT_SUPP_RATES, (rate_len - 8), (pdev_network->supported_rates + 8), &sz);
-diff --git a/drivers/staging/rtl8723bs/core/rtw_ioctl_set.c b/drivers/staging/rtl8723bs/core/rtw_ioctl_set.c
-index 2739d0e99098..2c6d10196130 100644
---- a/drivers/staging/rtl8723bs/core/rtw_ioctl_set.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_ioctl_set.c
-@@ -36,11 +36,11 @@ u8 rtw_do_join(struct adapter *padapter)
- {
- 	struct list_head	*plist, *phead;
- 	u8 *pibss = NULL;
--	struct	mlme_priv *pmlmepriv = &(padapter->mlmepriv);
--	struct __queue	*queue	= &(pmlmepriv->scanned_queue);
-+	struct	mlme_priv *pmlmepriv = &padapter->mlmepriv;
-+	struct __queue	*queue	= &pmlmepriv->scanned_queue;
- 	u8 ret = _SUCCESS;
- 
--	spin_lock_bh(&(pmlmepriv->scanned_queue.lock));
-+	spin_lock_bh(&pmlmepriv->scanned_queue.lock);
- 	phead = get_list_head(queue);
- 	plist = get_next(phead);
- 
-@@ -53,7 +53,7 @@ u8 rtw_do_join(struct adapter *padapter)
- 	pmlmepriv->to_join = true;
- 
- 	if (list_empty(&queue->queue)) {
--		spin_unlock_bh(&(pmlmepriv->scanned_queue.lock));
-+		spin_unlock_bh(&pmlmepriv->scanned_queue.lock);
- 		_clr_fwstate_(pmlmepriv, _FW_UNDER_LINKING);
- 
- 		/* when set_ssid/set_bssid for rtw_do_join(), but scanning queue is empty */
-@@ -74,7 +74,7 @@ u8 rtw_do_join(struct adapter *padapter)
- 	} else {
- 		int select_ret;
- 
--		spin_unlock_bh(&(pmlmepriv->scanned_queue.lock));
-+		spin_unlock_bh(&pmlmepriv->scanned_queue.lock);
- 		select_ret = rtw_select_and_join_from_scanned_queue(pmlmepriv);
- 		if (select_ret == _SUCCESS) {
- 			pmlmepriv->to_join = false;
-@@ -84,7 +84,7 @@ u8 rtw_do_join(struct adapter *padapter)
- 				/*  submit createbss_cmd to change to a ADHOC_MASTER */
- 
- 				/* pmlmepriv->lock has been acquired by caller... */
--				struct wlan_bssid_ex    *pdev_network = &(padapter->registrypriv.dev_network);
-+				struct wlan_bssid_ex    *pdev_network = &padapter->registrypriv.dev_network;
- 
- 				pmlmepriv->fw_state = WIFI_ADHOC_MASTER_STATE;
- 
-@@ -282,7 +282,7 @@ u8 rtw_set_802_11_infrastructure_mode(struct adapter *padapter,
- {
- 	struct	mlme_priv *pmlmepriv = &padapter->mlmepriv;
- 	struct	wlan_network	*cur_network = &pmlmepriv->cur_network;
--	enum nl80211_iftype *pold_state = &(cur_network->network.infrastructure_mode);
-+	enum nl80211_iftype *pold_state = &cur_network->network.infrastructure_mode;
- 
- 	if (*pold_state != networktype) {
- 		if (*pold_state == NL80211_IFTYPE_AP) {
-@@ -413,7 +413,7 @@ u8 rtw_set_802_11_authentication_mode(struct adapter *padapter, enum ndis_802_11
- u8 rtw_set_802_11_add_wep(struct adapter *padapter, struct ndis_802_11_wep *wep)
- {
- 	signed int		keyid, res;
--	struct security_priv *psecuritypriv = &(padapter->securitypriv);
-+	struct security_priv *psecuritypriv = &padapter->securitypriv;
- 	u8 ret = _SUCCESS;
- 
- 	keyid = wep->key_index & 0x3fffffff;
-@@ -435,7 +435,7 @@ u8 rtw_set_802_11_add_wep(struct adapter *padapter, struct ndis_802_11_wep *wep)
- 		break;
- 	}
- 
--	memcpy(&(psecuritypriv->dot11DefKey[keyid].skey[0]), &(wep->key_material), wep->key_length);
-+	memcpy(&psecuritypriv->dot11DefKey[keyid].skey[0], &wep->key_material, wep->key_length);
- 
- 	psecuritypriv->dot11DefKeylen[keyid] = wep->key_length;
- 
-diff --git a/drivers/staging/rtl8723bs/core/rtw_recv.c b/drivers/staging/rtl8723bs/core/rtw_recv.c
-index 7568fc514d7c..f836108a1cd2 100644
---- a/drivers/staging/rtl8723bs/core/rtw_recv.c
-+++ b/drivers/staging/rtl8723bs/core/rtw_recv.c
-@@ -59,9 +59,9 @@ signed int _rtw_init_recv_priv(struct recv_priv *precvpriv, struct adapter *pada
- 	precvframe = (union recv_frame *)precvpriv->precv_frame_buf;
- 
- 	for (i = 0; i < NR_RECVFRAME; i++) {
--		INIT_LIST_HEAD(&(precvframe->u.list));
-+		INIT_LIST_HEAD(&precvframe->u.list);
- 
--		list_add_tail(&(precvframe->u.list), &(precvpriv->free_recv_queue.queue));
-+		list_add_tail(&precvframe->u.list, &precvpriv->free_recv_queue.queue);
- 
- 		precvframe->u.hdr.pkt_newalloc = NULL;
- 		precvframe->u.hdr.pkt = NULL;
-@@ -161,11 +161,11 @@ int rtw_free_recvframe(union recv_frame *precvframe, struct __queue *pfree_recv_
- 
- 	spin_lock_bh(&pfree_recv_queue->lock);
- 
--	list_del_init(&(precvframe->u.hdr.list));
-+	list_del_init(&precvframe->u.hdr.list);
- 
- 	precvframe->u.hdr.len = 0;
- 
--	list_add_tail(&(precvframe->u.hdr.list), get_list_head(pfree_recv_queue));
-+	list_add_tail(&precvframe->u.hdr.list, get_list_head(pfree_recv_queue));
- 
- 	if (padapter) {
- 		if (pfree_recv_queue == &precvpriv->free_recv_queue)
-@@ -181,9 +181,9 @@ signed int _rtw_enqueue_recvframe(union recv_frame *precvframe, struct __queue *
- 	struct recv_priv *precvpriv = &padapter->recvpriv;
- 
- 	/* INIT_LIST_HEAD(&(precvframe->u.hdr.list)); */
--	list_del_init(&(precvframe->u.hdr.list));
-+	list_del_init(&precvframe->u.hdr.list);
- 
--	list_add_tail(&(precvframe->u.hdr.list), get_list_head(queue));
-+	list_add_tail(&precvframe->u.hdr.list, get_list_head(queue));
- 
- 	if (padapter)
- 		if (queue == &precvpriv->free_recv_queue)
-@@ -352,7 +352,7 @@ static signed int recvframe_chkmic(struct adapter *adapter,  union recv_frame *p
- 	struct security_priv *psecuritypriv = &adapter->securitypriv;
- 
- 	struct mlme_ext_priv *pmlmeext = &adapter->mlmeextpriv;
--	struct mlme_ext_info *pmlmeinfo = &(pmlmeext->mlmext_info);
-+	struct mlme_ext_info *pmlmeinfo = &pmlmeext->mlmext_info;
- 
- 	stainfo = rtw_get_stainfo(&adapter->stapriv, &prxattrib->ta[0]);
- 
-@@ -1059,7 +1059,7 @@ static union recv_frame *recvframe_defrag(struct adapter *adapter,
- 	plist = get_next(phead);
- 	prframe = (union recv_frame *)plist;
- 	pfhdr = &prframe->u.hdr;
--	list_del_init(&(prframe->u.list));
-+	list_del_init(&prframe->u.list);
- 
- 	if (curfragnum != pfhdr->attrib.frag_num) {
- 		/* the first fragment number must be 0 */
-@@ -1670,7 +1670,7 @@ static int amsdu_to_msdu(struct adapter *padapter, union recv_frame *prframe)
- 	u8 *pdata;
- 	struct sk_buff *sub_pkt, *subframes[MAX_SUBFRAME_COUNT];
- 	struct recv_priv *precvpriv = &padapter->recvpriv;
--	struct __queue *pfree_recv_queue = &(precvpriv->free_recv_queue);
-+	struct __queue *pfree_recv_queue = &precvpriv->free_recv_queue;
- 
- 	nr_subframes = 0;
- 
-@@ -1795,9 +1795,9 @@ static int enqueue_reorder_recvframe(struct recv_reorder_ctrl *preorder_ctrl, un
- 	/* spin_lock_irqsave(&ppending_recvframe_queue->lock, irql); */
- 	/* spin_lock(&ppending_recvframe_queue->lock); */
- 
--	list_del_init(&(prframe->u.hdr.list));
-+	list_del_init(&prframe->u.hdr.list);
- 
--	list_add_tail(&(prframe->u.hdr.list), plist);
-+	list_add_tail(&prframe->u.hdr.list, plist);
- 
- 	/* spin_unlock(&ppending_recvframe_queue->lock); */
- 	/* spin_unlock_irqrestore(&ppending_recvframe_queue->lock, irql); */
-@@ -1812,8 +1812,8 @@ static int rtw_recv_indicatepkt(struct adapter *padapter, union recv_frame *prec
- 	struct sk_buff *skb;
- 	struct rx_pkt_attrib *pattrib = &precv_frame->u.hdr.attrib;
- 
--	precvpriv = &(padapter->recvpriv);
--	pfree_recv_queue = &(precvpriv->free_recv_queue);
-+	precvpriv = &padapter->recvpriv;
-+	pfree_recv_queue = &precvpriv->free_recv_queue;
- 
- 	skb = precv_frame->u.hdr.pkt;
- 	if (!skb)
-@@ -1880,7 +1880,7 @@ static int recv_indicatepkts_in_order(struct adapter *padapter, struct recv_reor
- 
- 		if (!SN_LESS(preorder_ctrl->indicate_seq, pattrib->seq_num)) {
- 			plist = get_next(plist);
--			list_del_init(&(prframe->u.hdr.list));
-+			list_del_init(&prframe->u.hdr.list);
- 
- 			if (SN_EQUAL(preorder_ctrl->indicate_seq, pattrib->seq_num))
- 				preorder_ctrl->indicate_seq = (preorder_ctrl->indicate_seq + 1) % 4096u;
--- 
-2.43.0
+Reviewed-by: Alex Elder <elder@riscstar.com>
+
+> ---
+> v4:
+> - Return error codes directly instead of storing them in ret,
+>    as suggested by Julia Lawall.
+> - Remove the unused ret variable.
+> 
+> v3:
+> - Extend the %pe conversion throughout Greybus, as suggested by Alex Elder.
+> 
+> v2:
+> - Use %pe in the firmware management case, as suggested by Jeremy Clifton,
+>    to match the other cases.
+> 
+> v1: https://lore.kernel.org/outreachy/as0nhVbagZa8Birm@user/T/#t
+> ---
+>   drivers/staging/greybus/arche-apb-ctrl.c | 37 ++++++++++--------------
+>   drivers/staging/greybus/arche-platform.c | 26 +++++++----------
+>   drivers/staging/greybus/fw-core.c        | 16 +++++-----
+>   drivers/staging/greybus/uart.c           |  2 +-
+>   4 files changed, 35 insertions(+), 46 deletions(-)
+> 
+> diff --git a/drivers/staging/greybus/arche-apb-ctrl.c b/drivers/staging/greybus/arche-apb-ctrl.c
+> index 4302c2226126..d30174310828 100644
+> --- a/drivers/staging/greybus/arche-apb-ctrl.c
+> +++ b/drivers/staging/greybus/arche-apb-ctrl.c
+> @@ -144,10 +144,9 @@ static int fw_flashing_seq(struct platform_device *pdev)
+>   
+>   		apb->spi_en = devm_gpiod_get(dev, "spi-en", flags);
+>   		if (IS_ERR(apb->spi_en)) {
+> -			ret = PTR_ERR(apb->spi_en);
+> -			dev_err(dev, "Failed requesting SPI bus en GPIO: %d\n",
+> -				ret);
+> -			return ret;
+> +			dev_err(dev, "Failed requesting SPI bus en GPIO: %pe\n",
+> +				apb->spi_en);
+> +			return PTR_ERR(apb->spi_en);
+>   		}
+>   	}
+>   
+> @@ -318,43 +317,37 @@ static int apb_ctrl_get_fw_data(struct platform_device *pdev,
+>   				struct arche_apb_ctrl_drvdata *apb)
+>   {
+>   	struct device *dev = &pdev->dev;
+> -	int ret;
+>   
+>   	apb->resetn = devm_gpiod_get(dev, "reset", GPIOD_OUT_LOW);
+>   	if (IS_ERR(apb->resetn)) {
+> -		ret = PTR_ERR(apb->resetn);
+> -		dev_err(dev, "Failed requesting reset GPIO: %d\n", ret);
+> -		return ret;
+> +		dev_err(dev, "Failed requesting reset GPIO: %pe\n", apb->resetn);
+> +		return PTR_ERR(apb->resetn);
+>   	}
+>   
+>   	apb->boot_ret = devm_gpiod_get(dev, "boot-ret", GPIOD_OUT_LOW);
+>   	if (IS_ERR(apb->boot_ret)) {
+> -		ret = PTR_ERR(apb->boot_ret);
+> -		dev_err(dev, "Failed requesting bootret GPIO: %d\n", ret);
+> -		return ret;
+> +		dev_err(dev, "Failed requesting bootret GPIO: %pe\n", apb->boot_ret);
+> +		return PTR_ERR(apb->boot_ret);
+>   	}
+>   
+>   	/* It's not mandatory to support power management interface */
+>   	apb->pwroff = devm_gpiod_get_optional(dev, "pwr-off", GPIOD_IN);
+>   	if (IS_ERR(apb->pwroff)) {
+> -		ret = PTR_ERR(apb->pwroff);
+> -		dev_err(dev, "Failed requesting pwroff_n GPIO: %d\n", ret);
+> -		return ret;
+> +		dev_err(dev, "Failed requesting pwroff_n GPIO: %pe\n", apb->pwroff);
+> +		return PTR_ERR(apb->pwroff);
+>   	}
+>   
+>   	/* Do not make clock mandatory as of now (for DB3) */
+>   	apb->clk_en = devm_gpiod_get_optional(dev, "clock-en", GPIOD_OUT_LOW);
+>   	if (IS_ERR(apb->clk_en)) {
+> -		ret = PTR_ERR(apb->clk_en);
+> -		dev_err(dev, "Failed requesting APB clock en GPIO: %d\n", ret);
+> -		return ret;
+> +		dev_err(dev, "Failed requesting APB clock en GPIO: %pe\n", apb->clk_en);
+> +		return PTR_ERR(apb->clk_en);
+>   	}
+>   
+>   	apb->pwrdn = devm_gpiod_get(dev, "pwr-down", GPIOD_OUT_LOW);
+>   	if (IS_ERR(apb->pwrdn)) {
+> -		ret = PTR_ERR(apb->pwrdn);
+> -		dev_warn(dev, "Failed requesting power down GPIO: %d\n", ret);
+> -		return ret;
+> +		dev_warn(dev, "Failed requesting power down GPIO: %pe\n", apb->pwrdn);
+> +		return PTR_ERR(apb->pwrdn);
+>   	}
+>   
+>   	/* Regulators are optional, as we may have fixed supply coming in */
+> @@ -368,12 +361,12 @@ static int apb_ctrl_get_fw_data(struct platform_device *pdev,
+>   
+>   	apb->pinctrl = devm_pinctrl_get(&pdev->dev);
+>   	if (IS_ERR(apb->pinctrl)) {
+> -		dev_err(&pdev->dev, "could not get pinctrl handle\n");
+> +		dev_err(&pdev->dev, "could not get pinctrl handle: %pe\n", apb->pinctrl);
+>   		return PTR_ERR(apb->pinctrl);
+>   	}
+>   	apb->pin_default = pinctrl_lookup_state(apb->pinctrl, "default");
+>   	if (IS_ERR(apb->pin_default)) {
+> -		dev_err(&pdev->dev, "could not get default pin state\n");
+> +		dev_err(&pdev->dev, "could not get default pin state: %pe\n", apb->pin_default);
+>   		return PTR_ERR(apb->pin_default);
+>   	}
+>   
+> diff --git a/drivers/staging/greybus/arche-platform.c b/drivers/staging/greybus/arche-platform.c
+> index de5de59ea8ab..8e75accc34b6 100644
+> --- a/drivers/staging/greybus/arche-platform.c
+> +++ b/drivers/staging/greybus/arche-platform.c
+> @@ -444,35 +444,32 @@ static int arche_platform_probe(struct platform_device *pdev)
+>   
+>   	arche_pdata->svc_reset = devm_gpiod_get(dev, "svc,reset", flags);
+>   	if (IS_ERR(arche_pdata->svc_reset)) {
+> -		ret = PTR_ERR(arche_pdata->svc_reset);
+> -		dev_err(dev, "failed to request svc-reset GPIO: %d\n", ret);
+> -		return ret;
+> +		dev_err(dev, "failed to request svc-reset GPIO: %pe\n", arche_pdata->svc_reset);
+> +		return PTR_ERR(arche_pdata->svc_reset);
+>   	}
+>   	arche_platform_set_state(arche_pdata, ARCHE_PLATFORM_STATE_OFF);
+>   
+>   	arche_pdata->svc_sysboot = devm_gpiod_get(dev, "svc,sysboot",
+>   						  GPIOD_OUT_LOW);
+>   	if (IS_ERR(arche_pdata->svc_sysboot)) {
+> -		ret = PTR_ERR(arche_pdata->svc_sysboot);
+> -		dev_err(dev, "failed to request sysboot0 GPIO: %d\n", ret);
+> -		return ret;
+> +		dev_err(dev, "failed to request sysboot0 GPIO: %pe\n", arche_pdata->svc_sysboot);
+> +		return PTR_ERR(arche_pdata->svc_sysboot);
+>   	}
+>   
+>   	/* setup the clock request gpio first */
+>   	arche_pdata->svc_refclk_req = devm_gpiod_get(dev, "svc,refclk-req",
+>   						     GPIOD_IN);
+>   	if (IS_ERR(arche_pdata->svc_refclk_req)) {
+> -		ret = PTR_ERR(arche_pdata->svc_refclk_req);
+> -		dev_err(dev, "failed to request svc-clk-req GPIO: %d\n", ret);
+> -		return ret;
+> +		dev_err(dev, "failed to request svc-clk-req GPIO: %pe\n",
+> +			arche_pdata->svc_refclk_req);
+> +		return PTR_ERR(arche_pdata->svc_refclk_req);
+>   	}
+>   
+>   	/* setup refclk2 to follow the pin */
+>   	arche_pdata->svc_ref_clk = devm_clk_get(dev, "svc_ref_clk");
+>   	if (IS_ERR(arche_pdata->svc_ref_clk)) {
+> -		ret = PTR_ERR(arche_pdata->svc_ref_clk);
+> -		dev_err(dev, "failed to get svc_ref_clk: %d\n", ret);
+> -		return ret;
+> +		dev_err(dev, "failed to get svc_ref_clk: %pe\n", arche_pdata->svc_ref_clk);
+> +		return PTR_ERR(arche_pdata->svc_ref_clk);
+>   	}
+>   
+>   	platform_set_drvdata(pdev, arche_pdata);
+> @@ -483,9 +480,8 @@ static int arche_platform_probe(struct platform_device *pdev)
+>   	arche_pdata->wake_detect = devm_gpiod_get(dev, "svc,wake-detect",
+>   						  GPIOD_IN);
+>   	if (IS_ERR(arche_pdata->wake_detect)) {
+> -		ret = PTR_ERR(arche_pdata->wake_detect);
+> -		dev_err(dev, "Failed requesting wake_detect GPIO: %d\n", ret);
+> -		return ret;
+> +		dev_err(dev, "Failed requesting wake_detect GPIO: %pe\n", arche_pdata->wake_detect);
+> +		return PTR_ERR(arche_pdata->wake_detect);
+>   	}
+>   
+>   	arche_platform_set_wake_detect_state(arche_pdata, WD_STATE_IDLE);
+> diff --git a/drivers/staging/greybus/fw-core.c b/drivers/staging/greybus/fw-core.c
+> index 2016a74f137f..78321be80013 100644
+> --- a/drivers/staging/greybus/fw-core.c
+> +++ b/drivers/staging/greybus/fw-core.c
+> @@ -93,8 +93,8 @@ static int gb_fw_core_probe(struct gb_bundle *bundle,
+>   			if (IS_ERR(connection)) {
+>   				ret = PTR_ERR(connection);
+>   				dev_err(&bundle->dev,
+> -					"failed to create management connection (%d)\n",
+> -					ret);
+> +					"failed to create management connection (%pe)\n",
+> +					connection);
+>   				goto err_destroy_connections;
+>   			}
+>   
+> @@ -112,8 +112,8 @@ static int gb_fw_core_probe(struct gb_bundle *bundle,
+>   			connection = gb_connection_create(bundle, cport_id,
+>   							  gb_fw_download_request_handler);
+>   			if (IS_ERR(connection)) {
+> -				dev_err(&bundle->dev, "failed to create download connection (%ld)\n",
+> -					PTR_ERR(connection));
+> +				dev_err(&bundle->dev, "failed to create download connection (%pe)\n",
+> +					connection);
+>   			} else {
+>   				fw_core->download_connection = connection;
+>   			}
+> @@ -131,8 +131,8 @@ static int gb_fw_core_probe(struct gb_bundle *bundle,
+>   			connection = gb_connection_create(bundle, cport_id,
+>   							  NULL);
+>   			if (IS_ERR(connection)) {
+> -				dev_err(&bundle->dev, "failed to create SPI connection (%ld)\n",
+> -					PTR_ERR(connection));
+> +				dev_err(&bundle->dev, "failed to create SPI connection (%pe)\n",
+> +					connection);
+>   			} else {
+>   				fw_core->spi_connection = connection;
+>   			}
+> @@ -149,8 +149,8 @@ static int gb_fw_core_probe(struct gb_bundle *bundle,
+>   			connection = gb_connection_create(bundle, cport_id,
+>   							  NULL);
+>   			if (IS_ERR(connection)) {
+> -				dev_err(&bundle->dev, "failed to create Authentication connection (%ld)\n",
+> -					PTR_ERR(connection));
+> +				dev_err(&bundle->dev, "failed to create Authentication connection (%pe)\n",
+> +					connection);
+>   			} else {
+>   				fw_core->cap_connection = connection;
+>   			}
+> diff --git a/drivers/staging/greybus/uart.c b/drivers/staging/greybus/uart.c
+> index 172cf900eaf0..59a112cf47a0 100644
+> --- a/drivers/staging/greybus/uart.c
+> +++ b/drivers/staging/greybus/uart.c
+> @@ -951,7 +951,7 @@ static int gb_tty_init(void)
+>   					 TTY_DRIVER_DYNAMIC_DEV |
+>   					 TTY_DRIVER_RESET_SAVED_TERMIOS);
+>   	if (IS_ERR(gb_tty_driver)) {
+> -		pr_err("Can not allocate tty driver\n");
+> +		pr_err("Can not allocate tty driver: %pe\n", gb_tty_driver);
+>   		retval = PTR_ERR(gb_tty_driver);
+>   		goto fail_unregister_dev;
+>   	}
 
