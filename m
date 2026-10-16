@@ -1,111 +1,96 @@
-Received: from mail-wr1-f54.google.com (mail-wr1-f54.google.com [209.85.221.54])
+Received: from mail-wm1-f47.google.com (mail-wm1-f47.google.com [209.85.128.47])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0637425B09E
-	for <outreachy@lists.linux.dev>; Fri, 16 Oct 2026 08:23:17 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.54
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7383446E008
+	for <outreachy@lists.linux.dev>; Fri, 16 Oct 2026 12:08:40 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.47
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1792138999; cv=none; b=lyGU1QlMqPTCMZSpU7lHlLknL6ySMfp1fsmIm1h+2s/QnP2h3OMLSL8gU3fvQU8VPkbGzT9moez9EBoc8PU876sfFnHHV3l36X4PbpDv7Wl2WrK5uVmf9QnH09Wedrht/9t+MPBC06PdkQCnxZ97leHPJdfRLfOPWyduVtascZM=
+	t=1792152521; cv=none; b=oMk/ycEYMh6ayPoxpbcf8gmmq225876wUlD6aTCYlXq3KybTjG6/Ey+JGQmYRHweMhRhOYwcE4K/+ZO2Z5kfw3YzKiOEu7AdQx/wcIWt2SIZCPCie22RoCdzPy0pyQ0wev/YbAUqr8oygrk0h/5wbCQgW110f0vxXsBzZhvdLCk=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1792138999; c=relaxed/simple;
-	bh=DZv6DDtHGtCUMGuVyLhN4xONwNMm186CTnQ12diII60=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=b+UK3c79bgJm70vJ3VnXkWJv/wRi/lWi3qcU97X9xj+z8JgWjziNUjIKmec9yllAt6CItoSMaTh5Prqad9mlG+x2iy6Yxy5zvbgQUlaI3WkBLYEUKxGtmMsH1kQDqeFsLXRkqrsG0TTcc78YXHoFK/e9w8t7zJ3wg6fqu9BmBs4=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=GWWwDRmp; arc=none smtp.client-ip=209.85.221.54
+	s=arc-20240116; t=1792152521; c=relaxed/simple;
+	bh=A+sswS6q0EjZ4IF3rgNgWRNDNT50fkvXyfajFuBM/Zc=;
+	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version; b=GZZZn4JHnKy16eM9O9MYbMzCLvfmubfq/l5DjDGnz4FIMCSAmv0+CQmqYXJ6PMrTBdZWMpsaJLKUSH3d2g6lud6xtc4UK0IFqczKO/lnyMFBkQFYEIQJLY9hmce4lgW6JiYFJX0t5IOBPRihKUepnvD8Oj1xXGB5w/OiAHF4EV8=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=g86Ir0mz; arc=none smtp.client-ip=209.85.128.47
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="GWWwDRmp"
-Received: by mail-wr1-f54.google.com with SMTP id ffacd0b85a97d-48df8fe8513so1183260f8f.0
-        for <outreachy@lists.linux.dev>; Fri, 16 Oct 2026 01:23:17 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="g86Ir0mz"
+Received: by mail-wm1-f47.google.com with SMTP id 5b1f17b1804b1-4a16aaf2067so38100435e9.0
+        for <outreachy@lists.linux.dev>; Fri, 16 Oct 2026 05:08:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792138996; x=1792743796; darn=lists.linux.dev;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=7TWEwY0SXVP+rEBDt82SB2uJBfpkWKtnhEnFx3Zi2u8=;
-        b=GWWwDRmpuqKr0RoaFZsZYWIS7FjJE3E4aj83UgcLXnopMb81UX+ySGmUynupc7Wig/
-         ObafnDQ5O1uFO8Ej82auf4H6VogScM2dUlvYVLymnRzE/EnAKC6fBo/bTAksJ64sPij/
-         ZqfgiPbTfkWpFC959n4Jr/r2RwYjQ/QiOaV8tQFowFcIZ3Hm2t8RVdO/HUQryWB3BEbQ
-         NPfU5JFA/ZWrgaqZyut8sbUlzoezk/6M56Sv4BqgNMzgS48zHnf57EAFDi2wsSAQdjqq
-         vPly7sXjuJTJksHCo1fZLZ81dqJDUw6VG8X93+j6gsvSbXjsSAEBVPoAJ3QLCpJ50YPr
-         WWuQ==
+        d=gmail.com; s=20251104; t=1792152519; x=1792757319; darn=lists.linux.dev;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=S5MuLj9xJyRiQ+pSD/HllDDNqx9XycPOWxLYE88yFZE=;
+        b=g86Ir0mzdWr/LmU0OIkstx0hSZ+RWbmhpGvhJdGCkI7Cou7r/0A3ocl99u4yPXb8MY
+         wZWuYtREvPuCPVUnWVrKYYNebiVouo0k/a3OqQA51psqsTaD2lgYdN3w17dTlYrvfUQL
+         I+JkTd7bmLg5wTbRZBqhgkersRYN1IHITfdLM/SSzko+JUxZ7auy7+JiGpDpO0T7KwR5
+         dm1rYihq0Qletf79KsWQpK+GLlm3LCPkozkFW8WziAjl8uEGjbmN9EdBrTShCp4T2LNW
+         AxdN4HbygQfGMF1nFryTk5w+5jnzMcbl8Xdq3xXFsvZutvNukZp1Ldy7/WCDizzsVbyC
+         U1LA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792138996; x=1792743796;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=7TWEwY0SXVP+rEBDt82SB2uJBfpkWKtnhEnFx3Zi2u8=;
-        b=D+Tw1tAH1vFfy7Nkqc1T3vGyS8OnHoyZxEU+V2jWPz4inwYLAWsFQKFwpLDIJ0P7UO
-         /JYfJq7uU2U15wHXkS8eLcWgxGN6HU/6SNWrylSAozjCjswC1RzO3ziNYLQ1c8XhqzLK
-         cG1XyM6HRZFFTjLZcg3k9g5RLpxApfwwoXvuTxlRiaVAvEOGS4g6Tlae5PBSmKjDt0jl
-         igKtFeNbVjm7YVbpB44PLRi34pwJ5b4CUabf/ccrR+8Ep9vjEwYikY0JMKitWYhjASws
-         C6XeAfRd1/hQoxKai5n6UHCm2AeJPBR8ba7MmihV7hliZ5l8oLw30yMXv7EIvWjwGryW
-         B9Cw==
-X-Forwarded-Encrypted: i=1; AKwUvByWUYIpnn1v217FT+c1n/n7ZzEKdigljf9ainL/Q9LW1/UcfLGr553AoJnybbIVlfap4K0h4WRc4Qk=@lists.linux.dev
-X-Gm-Message-State: AFq9FYJxMtQizBBtWEG4XNGbuIOo1YavKDJXuvC08ctLqneR/VO5L4vb
-	U20FgoeBYgiUgZp1qs4oY1CjiqyNGmfUS3WyzZ7AQtKaOd1nbNC7l6U3
-X-Gm-Gg: AYBFou1THPSgmQyc6uPYvaYE2Dr+CQ09mk0dloZ2vWzOvlBJXp6lPCpTETa6HzY/+tx
-	EpAdHHeyNtW7BWHdnVyNPBZVyo/n4HWqDhjh48TI/mj+8AkmzoGvdgZKaC1g4Uf4K0Esb69W0dV
-	JJ0MFDViHPp+f9zUp4+r/ECd+biEZjYwfcTeqVTdpueapRP78A2VkHQaL758s7vu8k3uDaNI5Zx
-	NhAOcG1plBWnHZovdVkLPeI7xIB12u/C7l66E6m3VqO05B00fgUhYKGZHboSxPQeeyq121qNaLc
-	Otw1tTNXWV7PrNYx1c/Hel5yQL9tAyyfTtuteZomi35uUMIJTpIZAObv8A/Ifz3O9aMFWhrLWZL
-	Ub5nZs8kT0zG/dp5beOlWKaKQuZgX6te2DefuzL3zqc/Mke8MzXhUkCh/nzUGbwtw+4qGJMLepi
-	7Ldxuq+RHh2zhbiAeeskoLq0rsUsBmLrsQ3mb7kshDXmfbe9D3PIoWMXiPbrYJeY03QpiG
-X-Received: by 2002:a05:6000:611:b0:48d:f1b3:c02e with SMTP id ffacd0b85a97d-48df1b3c101mr11816607f8f.25.1792138995988;
-        Fri, 16 Oct 2026 01:23:15 -0700 (PDT)
-Received: from localhost ([2c0f:3d00:6be:8900:ce5e:9212:ea4b:f30])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48dfd471a72sm3918895f8f.4.2026.10.16.01.23.14
+        d=1e100.net; s=20260707; t=1792152519; x=1792757319;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=S5MuLj9xJyRiQ+pSD/HllDDNqx9XycPOWxLYE88yFZE=;
+        b=el+f7CuyHtRVTo1IGU7rN6Yb5qgAw2SNGdl52j6PY1PBsCIlyJn+DXqdE7oP5fmqvT
+         x2XB3Kfm658mzFLicqOyjcNACReGuJCmoqkhoZTrhgts9gcN2U9Cud7Xu1syBrwrkDKW
+         c/KWT6Ep79MX4XzHxv/m1ZAn6qyjxs2YwAPl4JXAGhHQQcybylqBsPH6HUtGyWztH3Rf
+         sNPcrYdDXnaKA+hqwvH9B3322kYu5ahP/2hNz2VXA91HvGWILg+yS2Cehlx3uVNbZ9KI
+         NEBcawq3PI9QG7YZcLHxQsydsB0KtoMPhvWHeKeKRhHsj9r8B5M2f4CEVaQcP4oWAXhc
+         eGjQ==
+X-Gm-Message-State: AFq9FYLi0qpToZ8wXSJdSqHBweW3weguFTyur0XAhtiKRcYkuTAGhhKd
+	HV5BK33vgdlSCVr13YO1FAGW2esbn6gwa+JhH3TidCqX8WCDoSnjApdqtoANQQ==
+X-Gm-Gg: AYBFou0b1i0PUczasxa22ORFCwh5maAOZFJwMrE3IoTvXQDSTOGaFj5rsEX85uKy1r7
+	m6xz8wUxRdlnKM85gR1R9umFcn9Qn59lLox7N2dbRcaRpgXiMa23gaG+2wgd7VnOMnl9AJ7fzem
+	Sk8wbju6uRpj3Nq1tFGwi+7P4aSQs2O7sz7fHnFoK5lolsiLfB28n2arl+fqhxEhm8drFmJCzTK
+	pMuxNIl6AS/bgept5EY1FNBmk0u7ylMiFAwk/kpCoWrz8FBWTSIV1CP9nPyMFgkmviNHFrdgQMR
+	Wh6J+8xnqMbicv06EiqPxgNj6p12+vsyNkY3UKP1oI/ya2Ncix84oHl6Uk3QLquY2a83pchVoAw
+	ve+yZQoMOa1S96nLYGnDqksph7/rrOs2ol+Lk//aMk2v2JGlzfnAJeYPBRsrknBjVQR+G7kGD4p
+	a+TzSsGIelNwmqpoPfrZlYcM9Eg+CKZPraRgpCHLVP87TSb3UbJY+NOYp7wogtPtmBJwy7FznJP
+	tpYeKJYePmK5b0O9couq3lEOoA=
+X-Received: by 2002:a05:600c:5489:b0:4a0:1c94:7042 with SMTP id 5b1f17b1804b1-4a18e4a5244mr435584895e9.8.1792152518571;
+        Fri, 16 Oct 2026 05:08:38 -0700 (PDT)
+Received: from DESKTOP-0KSTGNI.localdomain ([156.213.131.39])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4a1bd9b35a6sm138424555e9.6.2026.10.16.05.08.37
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 16 Oct 2026 01:23:14 -0700 (PDT)
-Date: Fri, 16 Oct 2026 11:23:10 +0300
-From: Dan Carpenter <error27@gmail.com>
-To: Ping-Ke Shih <pkshih@realtek.com>
-Cc: Luka Gejak <luka.gejak@linux.dev>,
-	Ethan Tidmore <ethantidmore06@gmail.com>,
-	"pavankumaryalagada@gmail.com" <pavankumaryalagada@gmail.com>,
-	"gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
-	"outreachy@lists.linux.dev" <outreachy@lists.linux.dev>,
-	"dennylin0707@gmail.com" <dennylin0707@gmail.com>,
-	"linux-staging@lists.linux.dev" <linux-staging@lists.linux.dev>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH] staging: rtl8723bs: remove unnecessary parentheses
-Message-ID: <atHe7m57n3zINclK@stanley.mountain>
-References: <20261015120634.95218-1-pavankumaryalagada@gmail.com>
- <5d577cb1b4a91e8cdfda171bc7100105ae90d91e@linux.dev>
- <DM5IYFCRBE9W.1U3KCU36BUE36@gmail.com>
- <atEtUV5q9MHRSTJb@stanley.mountain>
- <672f78b36290a4021d3f94d9ec401d23420febbc@linux.dev>
- <dec2320eb01dc6499948a936c94512ddfd47e2a4@linux.dev>
- <atHcT5GG8zzoH7kk@stanley.mountain>
- <78e3ad912e994e77813cba1af461c7c1@realtek.com>
+        Fri, 16 Oct 2026 05:08:38 -0700 (PDT)
+From: Temitope obabi <obabitemitope765@gmail.com>
+To: outreachy@lists.linux.dev
+Cc: Temitope obabi <obabitemitope765@gmail.com>
+Subject: [PATCH v2] staging: fbtft: Fix alignment in tinylcd driver
+Date: Fri, 16 Oct 2026 15:07:45 +0300
+Message-ID: <20261016120745.3134-1-obabitemitope765@gmail.com>
+X-Mailer: git-send-email 2.53.0
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <78e3ad912e994e77813cba1af461c7c1@realtek.com>
+Content-Transfer-Encoding: 8bit
 
-On Fri, Oct 16, 2026 at 08:21:34AM +0000, Ping-Ke Shih wrote:
-> Dan Carpenter <error27@gmail.com> wrote:
-> > Ah...  I didn't realize this patch was applied to a different tree.
-> > #Unexpected.
-> > 
-> > https://lore.kernel.org/all/7e53bd59b7b146caabebeca4347674c7@realtek.com/
-> > 
-> > That's a mistake.  Staging patches should go through the staging tree
-> > or atleast they should be Acked by the staging maintainer.
-> 
-> Sorry. I forgot to pick the ack [1] to the thread.
-> 
-> [1] https://lore.kernel.org/linux-wireless/cbf165fa6213c22e88559081ca1c160375c9009c@linux.dev/T/#m6311fc160b8c020f7f87a3d9435ce02d69d07e4d
-> 
+Align the continuation line with the open parenthesis.
 
-Ah, great.  Sorry for the noise then.
+Signed-off-by: Temitope obabi <obabitemitope765@gmail.com>
+---
+ drivers/staging/fbtft/fb_tinylcd.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-regards,
-dan carpenter
+diff --git a/drivers/staging/fbtft/fb_tinylcd.c b/drivers/staging/fbtft/fb_tinylcd.c
+index afa8f1c740c5..d58b1247262b 100644
+--- a/drivers/staging/fbtft/fb_tinylcd.c
++++ b/drivers/staging/fbtft/fb_tinylcd.c
+@@ -38,7 +38,7 @@ static int init_display(struct fbtft_par *par)
+ 	write_reg(par, 0xE5, 0x00);
+ 	write_reg(par, 0xF0, 0x36, 0xA5, 0x53);
+ 	write_reg(par, 0xE0, 0x00, 0x35, 0x33, 0x00, 0x00, 0x00,
+-		       0x00, 0x35, 0x33, 0x00, 0x00, 0x00);
++		  0x00, 0x35, 0x33, 0x00, 0x00, 0x00);
+ 	write_reg(par, MIPI_DCS_SET_PIXEL_FORMAT, 0x55);
+ 	write_reg(par, MIPI_DCS_EXIT_SLEEP_MODE);
+ 	fsleep(250);
+-- 
+2.53.0
+
