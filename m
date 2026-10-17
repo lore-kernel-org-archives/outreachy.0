@@ -1,106 +1,90 @@
-Received: from mail-dy1-f176.google.com (mail-dy1-f176.google.com [74.125.82.176])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E916B44470C
-	for <outreachy@lists.linux.dev>; Fri, 16 Oct 2026 23:50:16 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=74.125.82.176
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 10C3B214812;
+	Sat, 17 Oct 2026 01:53:22 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.104
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1792194618; cv=none; b=cm0fNe6ufyAz2lZydptkN/0lPzn8OQMaKbekRu9fvjk75lajjoG8J6RT3knQHMHomgNHNfAeB7Y5Z9Cl0qeEwxrmfuKIQhTyby1AiPhxgDvgCI70RGrYB/xDe7fZ6NLNsKMUfT3Y1gnvJi2ZOQbmjeOOLpTHrqSdQUsyRdHcUKk=
+	t=1792202006; cv=none; b=hWMxG4eH1D5IB5lKB38mQjhnwjm1oE+AZcqQ6kEddgxz9dzsuZ7aIWgIXmMw2OmAte6Jj/LaAAix2mBEFyKxgOBeMgNakf/FJ5hYdVMbXD7BPXm+S/JpMm6edUwBRYUK96vsbhWvfGKs45f3TA6MtBArNCsyN7tJTo8i/754ZEI=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1792194618; c=relaxed/simple;
-	bh=GYVffwSyA/tW73L1hgZM9lALroKhDjOBd+0Vmma8slA=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=MNGvGYqYO0mSShr8RWhizetli6KZQTqzfULUHC1fST0LGB10QCcwvwOgO3YysbfsflkB7kcttJp+ArGhuXYECxgij5Z9FjGk35Barv4xo6d574GZfuucW6xTCwzzxsRsTuaza7L83Fh+SkYAlmffmwIi4TikMCjc6b8gQZcFM2M=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=X6IHjBBs; arc=none smtp.client-ip=74.125.82.176
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	s=arc-20240116; t=1792202006; c=relaxed/simple;
+	bh=9wt4I1OyBWUfUa935ZUq7lyiS+AkihPokCouR4spTMQ=;
+	h=Content-Type:From:Mime-Version:Subject:Date:Message-Id:References:
+	 Cc:In-Reply-To:To; b=Fj5VA8KitTSpPtn7jKPvkoqpPAkDyS88slTDBJDwOAlgX0V6KE1ApizPTY5zJGjlUCVx/5FbRCgWWvf8+IZY0g4/bhJpjyQlfvSIwtQnIJZZJhzUWvEv2griaPjakEcUzZN/85s685XZOmc2TwdL067BDtgJOhN0YVTRd6brgHo=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=NiI7jgII; arc=none smtp.client-ip=192.134.164.104
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="X6IHjBBs"
-Received: by mail-dy1-f176.google.com with SMTP id 5a478bee46e88-35d7fa491deso495879eec.1
-        for <outreachy@lists.linux.dev>; Fri, 16 Oct 2026 16:50:16 -0700 (PDT)
+	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="NiI7jgII"
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792194616; x=1792799416; darn=lists.linux.dev;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=8SJKkat+VQh4F6rl2h/cHjhe4hX3sReiQ/IZr42ROVM=;
-        b=X6IHjBBsjZatc5BswiXprBvGr7Pwt5bdJpZgwSTxNa1WEIOFzz0huqx3EoTwWQUAfo
-         EzBt2Qm1zKkFxkTPUmYOSsm4kyvidTp2T1cu4GFW5vEY2ZLjPswxf6/7VkDtZ1ptvQW8
-         AftuJLdy2p6CogQEg/5jSa+kzUzm1ThWr/CJPuQBOpOMr13BM9tuhULvUfzwPLfun8kC
-         6TeF0Y7Br5yO68KBzxkTEIYhtpfGg8wa4hF3oKl9JOIsF4aiJ0xiYJVO79cajsguYD5w
-         u17Sfg91KWvzyP6mGkA6SNNdrW4AvLsyfjm5TmOaKudJ25uQ96fxw4bZOB1C8cLtg1lA
-         KY5A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792194616; x=1792799416;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=8SJKkat+VQh4F6rl2h/cHjhe4hX3sReiQ/IZr42ROVM=;
-        b=jIdCfwT5zzicnNUU6TQoznfJBz1TDwl5orgGsNJ5yHsVjhZSH3jIubgTMJmT+rfn61
-         UjYLnTS3kZ7Yzz9rn4ZiWlnNz77y6HC3NHkxx1j1XNWknC1TZ321+iiZt1iDXpKt1+kW
-         LP8Zqbn9RmB3SqCjozW4yyG0QtYokjW3supC5u0lyW7D+jF6laDaA9KX+drPI7cqoeJT
-         svsCZz6lRiMCWk+cYhRKKnoTD8hMOzKEWOI8UbLcd/0310U8yzlE27EHyb+zxwygky6S
-         zRyLPKHzMOPLCbifeH7kodETfBZSGT07rjD+roayjHE8BfVGZEBQkuTWDfSjdMaqRo2b
-         4q5g==
-X-Forwarded-Encrypted: i=1; AKwUvBwhFE57AEs2aN2hd9sA1lZAXafxCS+xnFgBrYrC8SRZp3Y54rKX59w8C3Souny65/kBjXyjroz7vnc=@lists.linux.dev
-X-Gm-Message-State: AFq9FYIOcY0+/M3qbCys5+1zCYmbaNGi9S78ef/85z4OiH9s9r0XQbal
-	9HWTT3qPc5G/yALQQ66tiTjv+Vg8IM1EH+aN388TCc2X79L44u/mEu6u
-X-Gm-Gg: AYBFou3vupZHRvJFZAVZAHMcNkIlr1LIJQY0muTsvBliKb0zaLF8ESiFij8OIcvcj2p
-	gKAhu6cSfZuYb2orrociZ6esBkFr2Egbu0jpqRfzCsV/7YVsNry3Hfv1htP6bgBJS7mCX7NDIKf
-	NcA8AbppW0ujyIG918FWqsEF2t28ErovZMC/bIzU0Ou3pkG6DThQUcvwOQbgdY6H5CmHX4j/rGH
-	X9OW03m7o4Anbfk9FvaJEa4T6Q3JHp63UEdWKl/AYatOf0rrX78dQ7GhQbV68eiNLf8lED1f5N8
-	DUAOGu+im2Nr2rn2Ahp5uuB7KKA+VZ57Uq1ggBUS+SxQMPcYfRQOo4M8skbTblhSbz0eQLmGnZN
-	WBOnzhNjW+xxuiRyM0XqFOuoCohBpyxmZJAoXPAiVBYuduTvHwS9zQIDG4A4yJJb6oNPIV4mC8G
-	lbm+tvtBz5tZHEaIhM9FPapjdscDF/vRragdzWBJMgI4wft5mX12ACiiYQmNCfQMDeKdl0GU0Ql
-	1g=
-X-Received: by 2002:a05:7300:f0c3:b0:35f:ab1:4792 with SMTP id 5a478bee46e88-3602d6e460dmr5639283eec.6.1792194615855;
-        Fri, 16 Oct 2026 16:50:15 -0700 (PDT)
-Received: from user ([2405:201:c052:b00b:a69d:8570:9766:5ea])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-360820a79c7sm9584342eec.18.2026.10.16.16.50.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 16 Oct 2026 16:50:15 -0700 (PDT)
-Date: Sat, 17 Oct 2026 05:19:59 +0530
-From: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
-To: Ethan Tidmore <ethantidmore06@gmail.com>
-Cc: pure.logic@nexus-software.ie, johan@kernel.org, elder@kernel.org,
-	gregkh@linuxfoundation.org, rmfrfs@gmail.com, vireshk@kernel.org,
-	greybus-dev@lists.linaro.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy@lists.linux.dev
-Subject: Re: [PATCH] staging: greybus: Align function arguments
-Message-ID: <atK4JxHU2SmM-HbV@user>
-References: <20261016063648.22795-1-pavankumaryalagada@gmail.com>
- <DM6MD2KJ8KS8.33P7OXVDIFUEP@gmail.com>
+  d=inria.fr; s=dc;
+  h=content-transfer-encoding:from:mime-version:subject:date:
+   message-id:references:cc:in-reply-to:to;
+  bh=9wt4I1OyBWUfUa935ZUq7lyiS+AkihPokCouR4spTMQ=;
+  b=NiI7jgII0pqqDKi7IPREKRsK53qrNZT6sHuoNB8UTfL3HS2ebUQJBZAg
+   C1IwaX9Rx1PJAx7s0r0df0ZrYTY2CD8M4WVWNBQi2tV3n9KwWVrrY14Ld
+   9zBlaqWlZTQzj+FyyPkWTJEyi+aZYXmr6Uf+3DURAuWc7SGKm3Hu8/XOs
+   c=;
+X-CSE-ConnectionGUID: 3ljZGwyLSL+6LRA4h36vsw==
+X-CSE-MsgGUID: VVbAmgotSS6VKi7Btxy7/w==
+Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=Julia.Lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="6.27,162,1787004000"; 
+   d="scan'208";a="160087304"
+Received: from 37-167-20-78.coucou-networks.fr (HELO smtpclient.apple) ([37.168.20.78])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Oct 2026 03:53:19 +0200
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+From: Julia Lawall <Julia.Lawall@inria.fr>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <DM6MD2KJ8KS8.33P7OXVDIFUEP@gmail.com>
+Mime-Version: 1.0 (1.0)
+Subject: Re: [PATCH] staging: greybus: Align function arguments
+Date: Fri, 16 Oct 2026 21:53:05 -0400
+Message-Id: <C560A15E-6F28-4FC8-8BE2-277B503340AD@inria.fr>
+References: <atK4JxHU2SmM-HbV@user>
+Cc: Ethan Tidmore <ethantidmore06@gmail.com>, pure.logic@nexus-software.ie,
+ johan@kernel.org, elder@kernel.org, gregkh@linuxfoundation.org,
+ rmfrfs@gmail.com, vireshk@kernel.org, greybus-dev@lists.linaro.org,
+ linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+ outreachy@lists.linux.dev
+In-Reply-To: <atK4JxHU2SmM-HbV@user>
+To: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
+X-Mailer: iPhone Mail (23E261)
 
-On Fri, Oct 16, 2026 at 05:34:44PM -0500, Ethan Tidmore wrote:
-> On Fri Oct 16, 2026 at 1:36 AM CDT, pavankumaryalagada wrote:
-> > From: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
-> >
-> > Align the function arguments to follow the coding style and
-> > improve readability, addressing the alignment warning reported by
-> > checkpatch.pl
-> >
-> > Signed-off-by: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
-> > ---
-> 
-> This doesn't apply. Are you using staging-next?
 
-I'm not using staging-next for this patch.
+Sent from my iPhone
 
-Should i rebase it onto staging-next and send v2?
+> On 16 Oct 2026, at 19:50, Yalagada Pavan Kumar <pavankumaryalagada@gmail.c=
+om> wrote:
+>=20
+> =EF=BB=BFOn Fri, Oct 16, 2026 at 05:34:44PM -0500, Ethan Tidmore wrote:
+>>> On Fri Oct 16, 2026 at 1:36 AM CDT, pavankumaryalagada wrote:
+>>> From: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
+>>>=20
+>>> Align the function arguments to follow the coding style and
+>>> improve readability, addressing the alignment warning reported by
+>>> checkpatch.pl
+>>>=20
+>>> Signed-off-by: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
+>>> ---
+>>=20
+>> This doesn't apply. Are you using staging-next?
+>=20
+> I'm not using staging-next for this patch.
+>=20
+> Should i rebase it onto staging-next and send v2?
 
-Thanks,
-Pavan
+Yes
 
-> 
+>=20
 > Thanks,
-> ET
+> Pavan
+>=20
+>>=20
+>> Thanks,
+>> ET
+>=20
+
