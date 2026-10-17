@@ -1,145 +1,117 @@
-Received: from mail-dy1-f174.google.com (mail-dy1-f174.google.com [74.125.82.174])
+Received: from mail-qk1-f171.google.com (mail-qk1-f171.google.com [209.85.222.171])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 82EDD47FAE0
-	for <outreachy@lists.linux.dev>; Sat, 17 Oct 2026 13:46:27 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=74.125.82.174
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1792244789; cv=none; b=JARhnSybWdtFNvK8bQNQRzg39iVMBL2x+61sIPkPQRExD7on7k0deb3jRZlK9ol9U9xUFW8w5oxyLr7G2ntbWdqOCkmnZ0P2tiRPE33ItnsR6BSV+UCPNh/k4fm4W5p4Pb+c/RR7FRC/dsi7XeIG/wbi7QIk0BVGztGTf49sIKI=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1792244789; c=relaxed/simple;
-	bh=3DPK6cH6FljcWcEzc8QBsxgrvL5qSlEw3yTx8FrNJmo=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=M7oSS1op/JOdBxC10qXiCfg5mOKN5qwxZRa7eAG/K+w0xihvHy+KvI8ZIwl/pJ1MjebxnbMhP9EnWRp3w1RXNhwTmO/i2HkEyhzqPWIbX69Hjfk3OtA55CGn5CKURc6tN4IKpgqZRE7S1LkZV0y9vECDKzZaGS9EZBTHZZADTAc=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=HKIrIKvp; arc=none smtp.client-ip=74.125.82.174
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E33CE39F160
+	for <outreachy@lists.linux.dev>; Sat, 17 Oct 2026 18:19:52 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=pass smtp.client-ip=209.85.222.171
+ARC-Seal:i=2; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1792261194; cv=pass; b=f2bT9gVwWEJBjx5TMlBGeoGOnOivBy5p8bv/jjSpQMQyzxxkSmVtHgkkOVfUWiRPKL3aYI29OVfihs/h2yOiqX+hRaJ2bsC3kdL842Fux9f2Cm/apLzUeeSyIXl4W+PfwrVjMzYbKXJCovuaosQiHht8vDCIUnUCjV5rGL7gq7A=
+ARC-Message-Signature:i=2; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1792261194; c=relaxed/simple;
+	bh=I+dN9nNXx8Ovg3LWlD2OLiYw5IYr6xye4HsrRXCT5GA=;
+	h=MIME-Version:From:Date:Message-ID:Subject:To:Content-Type; b=ZqTTwVe0QbWmuSee9lGlE+hGPPykD6NJwF1O4vllIWRrYkuUPaPPsZ+SZ3tkUFNaOs5HFv0KMWbULjwW6NIMhhx95QNTI3T7ilEmWwonLaQ0HLOOmgv8DeK+DEq8NVHMsPE9ISyOPj05+BBUwQ76oE5A6S3OQXb1qqkqHKXbypE=
+ARC-Authentication-Results:i=2; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=bejUDF8L; arc=pass smtp.client-ip=209.85.222.171
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="HKIrIKvp"
-Received: by mail-dy1-f174.google.com with SMTP id 5a478bee46e88-35aa0cf7c40so1401035eec.1
-        for <outreachy@lists.linux.dev>; Sat, 17 Oct 2026 06:46:27 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="bejUDF8L"
+Received: by mail-qk1-f171.google.com with SMTP id af79cd13be357-93e55db58cfso81371185a.1
+        for <outreachy@lists.linux.dev>; Sat, 17 Oct 2026 11:19:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792261192; cv=none;
+        d=google.com; s=arc-20260327;
+        b=omnUq0/mC2/xABjnK+l8UHmtylgYyawuFee7GApDSnAx3aOMS13s3r9PLl8/B/AZ2K
+         6oyMVN7GMmvRn7/q+w2J3OFitvgCfwuYaw2pvqbgwZflaThIWHkRpMksOc70xTM8lQz0
+         /S9KbHeuksLy/KmjHvfb+CH5oXVlINAI3dKjBMnLkrrLbgPNHpBKyocOTP3yAkAUmVDO
+         iX+IQQuCwRq/9po3bOfThh1o5mNPsSolfIrHOxKCx/dby13d6bERaHw1uE9QUTmAhnRH
+         sWprBKsU+tN/swF/0ZSVrsxsaZ3YjdP9vePEZn5b8MWBmEicq32It6sDSAStpS+hgg7o
+         Xu0A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=I+dN9nNXx8Ovg3LWlD2OLiYw5IYr6xye4HsrRXCT5GA=;
+        fh=ORcOwlulYhm0PlB4niEDenmGt0tg1PSeOtR/xiWpIK4=;
+        b=Zgt88EUpe/AjxtaYUOJHqK/v6KvfMCrQRRMdv4QkkX9C4glubevWL2wi6eK6K6an1R
+         Jev4t9dmvmve7OAWIZaN6Bexq4T5v9+dmUr3xz2Tj3g+NraDqHllgJ7GmUzMz44BrMx7
+         PhgdRJatKn0UpdVDdmtDnW/CemoyPOB5iSa/HStqP7T7Ia9a4cVI+AP+G0J/x6qqNVAE
+         11EAb6LkptubgaJBAcgldRHQ8U+E9qYc74RbiNRDPjF54eEhS0u0oOYUoQ4VIWP92wwz
+         XMxEKetB4ftELAHTrooxRChp78e62ZeDQRyHF7CpOvc1hWQsENGXoEXmfG25XoeTLbCp
+         E9OQ==;
+        darn=lists.linux.dev
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792244786; x=1792849586; darn=lists.linux.dev;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=BF3VtQyRsgICOKVzKwtZMUAurVHYZDeyL4UhBQXKZWc=;
-        b=HKIrIKvp/usdR19no0pbdygwsGAa6Z+BBp4I5UTYShZln4xde6IMtfv/3cjWikUGDK
-         HHBJwO/yQdQ8aeMme40ppNUNy5JNA1cCmXTQLmzFTNzevcMZbuu260kkQ+t+RR+acd9o
-         Ph47FhbjTUdqAzFnhhddYO12+/o8By1FBvLp1muA6/FzM5DJErzeDqzFKYovMSG1YpsK
-         wb73dcD9vqzTRSHprdaRVzsDquIMDcxepQBHaM2GeabHOHNDy0DSq7cDgDpQszlmptA+
-         Oha1r/IrYBtOBHRIAdqePFpdSNE13CQ2msvpFnMZuBWxLVY3WnafX1xBsOCVbonDZFZG
-         4nUw==
+        d=gmail.com; s=20251104; t=1792261192; x=1792865992; darn=lists.linux.dev;
+        h=content-type:to:subject:message-id:date:from:mime-version:from:to
+         :cc:subject:date:message-id:reply-to:content-type;
+        bh=I+dN9nNXx8Ovg3LWlD2OLiYw5IYr6xye4HsrRXCT5GA=;
+        b=bejUDF8L8i003LyrUXy+TOBdqwTJ5QtOPDG8qFO42kGpTYE93oRMOzRc+ukVbOrj9H
+         A6teiMcw7TQ5dPqEgVz/1AfxNeGdzJ0GdZFwnbn34sB2NZyIkcmMms/4Al/M64D6ZuqJ
+         PsiVcYOl37+XrZl9+82Hqj0NrS0YauD6pNowVjyuz2bNvswdqNmetQ+UIEPa/n9oF7be
+         4idoaLTxixWIxZgySk8dqG7qWEAhMM2HvaBmfLJoaeCtFopHPeUso5VmofcsVhAdy0w9
+         x7t7jjjP+zlVOep0H+SObvigE0cFEffkxoOULIjYltbR1azDDd3Kfsw7UZBhfwH2ouyD
+         XtoA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792244786; x=1792849586;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:x-gm-gg
+        d=1e100.net; s=20260707; t=1792261192; x=1792865992;
+        h=content-type:to:subject:message-id:date:from:mime-version:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=BF3VtQyRsgICOKVzKwtZMUAurVHYZDeyL4UhBQXKZWc=;
-        b=NfA0YZFGYV4Uba5RZBKWm+3RdnzXl3LcikvvILoWMKcbmICl3BxWdNvJqZja2IEGUi
-         P/1S0nL4vT/vStU7M01A1fn1zVaaPFhVMm/DjJVnuWC29z4zhZJMZtzsplkCJrE9i6n3
-         dw689NvJpN050iGkhj2ZJO3gqRgDddiBAhvJ2z1ladQCQ/NXIrgxsumwhIJviaNAAlSW
-         rzRGUj1IRVAgKgmSZGErspAGfxoe/FZwzwJWIdsME3Z50F6Adt4vtyMd71Y8BulBC6lx
-         fXF/cPDLjxIa7/nPJGZwhAMvBNN3O5gNuLX6m0uSoTMuYCXRIzu6rDEzYA4LFwy/ZfwR
-         FPfQ==
-X-Forwarded-Encrypted: i=1; AKwUvBw0cFZEk5bdl6rP+u1S+fZcNEp3geD7q9RsLAtMk0ymB7LfU5mgoP08KnilNt91ZtQUoUha2JZiwvE=@lists.linux.dev
-X-Gm-Message-State: AFq9FYLcEv24r9FUpYSfsxizsc7FmXscIEWskWlCwQaxvre6GRZcV2rG
-	U9FvM4qF3dQav56NmGK92/ZADxUrRXgqIyhyJSyjzinXd4OFa1lByiIf5mk+TeeS
-X-Gm-Gg: AYBFou36cuYqx6aFPVeVW605eRRM07wyY5uKOjM6y232loYniIOIad3SrabFs9zxq07
-	V/u9TDdqi+kWs55frgjKconEkJ6EXYWc7xaJx+QibhFgDGaySpjJUV6LodnzjO/bj8GE3vtWm7M
-	YHURGsT/d3ZSlg0og5EYzx4fJJQBQS+AItwnthpqgYuYXt7ipd5jyk2FPS9uIKVVZ766ptnK9yM
-	/N3a++Jx0z+rymdGGodxOmfvZT21j3LrD7Oq2RofoBYgbLn6kKnPnDwYDUVFseaNxX7S5bpt73t
-	6LqBxsLjiKlCsdbm/6oaixZshMQJKqYfBvM+6zMkNp0eYuRrv7ZFzfp15+XMFHm/lleOEp6RcDB
-	jbs5JBYlK9meAIy+l13H1bCHf2yUyBQwpEUCwuJLbx0h6C2ASZ/UfBUxHSqX0oap6YVcRw1cupn
-	lPoXIURQ/o1fLNLvoVfwc5o7REtylXC4MxeIJ5JdIhbBR5cJliLHD6OvBOzpLH/yWrSoucV3VIC
-	Jc4
-X-Received: by 2002:a05:7301:fc09:b0:34e:e7f4:cc78 with SMTP id 5a478bee46e88-3619ed14879mr3861986eec.5.1792244786348;
-        Sat, 17 Oct 2026 06:46:26 -0700 (PDT)
-Received: from user ([2405:201:c052:b00b:be87:82b8:3e01:5e1e])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3607ee0cab0sm20337821eec.3.2026.10.17.06.46.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 17 Oct 2026 06:46:25 -0700 (PDT)
-Date: Sat, 17 Oct 2026 19:15:57 +0530
-From: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Cc: johan@kernel.org, vireshk@kernel.org, elder@kernel.org,
-	greybus-dev@lists.linaro.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy@lists.linux.dev
-Subject: Re: [PATCH v4] staging: greybus: replace PTR_ERR() with %pe in error
- messages
-Message-ID: <atN8FallRb8IbXT0@user>
-References: <20261015082238.65187-1-pavankumaryalagada@gmail.com>
- <2026101707-routine-hatchback-4a35@gregkh>
+        bh=I+dN9nNXx8Ovg3LWlD2OLiYw5IYr6xye4HsrRXCT5GA=;
+        b=uAZCT/MNLsuya5xLiUDHH4C+814IxisKA7uYPrgKByc17p/3O0oMl2vTFbmQyE1pgV
+         vR94Hu0dKFnQbEgo3ccFWRldlZQ6JNXgTqK4rTjBbTxKmcBhSGYKBQqZpCeGSoSy7BHF
+         a+lrz/YzT8wvT5bsB9AjtuMt0azcElLnBG13K7f9xwgJR6pdil8ErrNSoPJl6xWq8iEH
+         2q1Sq9MNOb0jFxCUlDMSaTnv1kjnm1AWi3WTbwMshHv8kDRrk++BKG0MvNE4H/luay1C
+         jjfqZ1M5yUBlyc5HX+edO1J/lMJRaVha9Wj9AFWMEhHjG9e2ZVmneCQZh2Vu9FOoIVzm
+         zILQ==
+X-Gm-Message-State: AFq9FYIMahTchSBE5MzRx3HeLcdmSIEo66B2KoIDbckB6mieq5VhciYG
+	swgPY3f2TC5n7bMwOq0nKS+s5AMs18pxlq+nfjrNw/kf3zN0dDiR4fI+8wIBdmvLvZu7SIo96AO
+	mb2L538IT9w4zpRDlO720OivN1BSEHIHKUdOpBug=
+X-Gm-Gg: AYBFou0Urbg3VSRk1wvrmKmu0qPpA2zugvrJ4B6OY0C8Fzyw+KHDQeOwEg0z9EZut8U
+	BwF29opsU6RAA239ReeF1PfNWY8Ks/wYGvl3B5t7J2oQk7tB+NVadO9vLhjwavw6PDurTtVZh5f
+	vOxAiimtz+UFZH6knkhx8VpbQA6OpGtqIUQn70tMshjzkfZgD34tsxNpY9qc2eVG8xcaGfSVJpQ
+	LA8/vjO5cph5eSAX2imZuloycAJm2pokgut0mJDN3CPhJUWjkq3fIjqbnxDInfVllryUA/Zme9P
+	9SAaZ0i0nc1wDCHhvWoAzb7zbg3wQqzJSjwT8LIg/CNRHFokRaSUHGIVwHwZjTq00uLeXdHhzZE
+	+TwHt+bMwVcg=
+X-Received: by 2002:a05:620a:7103:b0:93a:3d67:391f with SMTP id
+ af79cd13be357-93f29b736demr563140185a.7.1792261191688; Sat, 17 Oct 2026
+ 11:19:51 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <2026101707-routine-hatchback-4a35@gregkh>
+From: haasham <haasham93@gmail.com>
+Date: Sat, 17 Oct 2026 23:19:40 +0500
+X-Gm-Features: AclHuK__wH6ULLiNIVhxiDocZeELMr45hbSq3Vy4Cfg2S2cba8VfVmPNzdLYL0I
+Message-ID: <CAFmYDUEb3SO46gzoZm=eXiTFZUBGCZY1wv45PHtTDcMitekJ4Q@mail.gmail.com>
+Subject: =?UTF-8?Q?Outreachy_December_2026_=E2=80=93_Linux_Kernel_Project_Pro?=
+	=?UTF-8?Q?gress_Update?=
+To: outreachy@lists.linux.dev
+Content-Type: text/plain; charset="UTF-8"
 
-On Sat, Oct 17, 2026 at 01:20:39PM +0200, Greg KH wrote:
-> On Thu, Oct 15, 2026 at 01:52:38PM +0530, pavankumaryalagada@gmail.com wrote:
-> > From: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
-> > 
-> > Use %pe to print error pointers directly and display their
-> > error names.
-> > 
-> > Keep PTR_ERR() calls when the numeric error value is needed
-> > for returning the error code.
-> > 
-> > Signed-off-by: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
-> > ---
-> > v4:
-> > - Return error codes directly instead of storing them in ret,
-> >   as suggested by Julia Lawall.
-> > - Remove the unused ret variable.
-> 
-> 
-> Hi,
-> 
-> This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
-> a patch that has triggered this response.  He used to manually respond
-> to these common problems, but in order to save his sanity (he kept
-> writing the same thing over and over, yet to different people), I was
-> created.  Hopefully you will not take offence and will fix the problem
-> in your patch and resubmit it so that it can be accepted into the Linux
-> kernel tree.
-> 
-> You are receiving this message because of the following common error(s)
-> as indicated below:
-> 
-> - Your patch did not apply to any known trees that Greg is in control
->   of.  Possibly this is because you made it against Linus's tree, not
->   the linux-next tree, which is where all of the development for the
->   next version of the kernel is at.  Please refresh your patch against
->   the linux-next tree, or even better yet, the development tree
->   specified in the MAINTAINERS file for the subsystem you are submitting
->   a patch for, and resend it.
+Hi everyone,
 
-This v4 patch did not apply because arche-apb-ctrl.c and arche-platform.c
-were removed by commit 2f75b2eac999.
+So far, I've set up my Ubuntu development environment in VirtualBox,
+installed the essential kernel development tools, and configured Git
+for development. I've also cloned Greg Kroah-Hartman's staging
+repository, checked out the staging-testing branch, and verified that
+my working tree is clean and up to date.
 
-The fw-core.c changes from my earlier v1 patch present in staging/staging-next.
+I've started exploring the drivers/staging/ tree to understand its
+structure and identify suitable cleanup opportunities. I've also begun
+familiarizing myself with the kernel contribution workflow, including
+checkpatch.pl and the importance of reviewing existing code and
+mailing-list discussions before proposing changes.
 
-Only the change to uart.c remains.
+My current focus is to identify a small, well-scoped cleanup that is
+appropriate for a first contribution, validate the change carefully,
+and follow the kernel's patch submission and review process. After
+getting familiar with the contribution workflow, I plan to move toward
+the project's starter tasks involving unused tracepoints.
 
-Should i send a v5 containing only the remaining change in uart.c?
+I'm continuing to build my understanding of the codebase and would
+appreciate any recommendations on areas worth investigating or
+guidance on selecting an appropriate first contribution.
 
-Also, should i keep Alex Elder's Reviewed-by tag in v5?
+Thank you for your time.
 
-Thanks,
-Pavan
-
-> 
-> If you wish to discuss this problem further, or you have questions about
-> how to resolve this issue, please feel free to respond to this email and
-> Greg will reply once he has dug out from the pending patches received
-> from other developers.
-> 
-> thanks,
-> 
-> greg k-h's patch email bot
+Best regards,
+Haasham
