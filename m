@@ -1,100 +1,105 @@
-Received: from mail-wr1-f46.google.com (mail-wr1-f46.google.com [209.85.221.46])
+Received: from mail-ed1-f41.google.com (mail-ed1-f41.google.com [209.85.208.41])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0032A21CFE0
-	for <outreachy@lists.linux.dev>; Sun, 18 Oct 2026 12:35:19 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.46
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1792326921; cv=none; b=A5vEu35ry32U5fdRID5DClbs1wokA/5or7Waj8rAr8bVLwlfGuAIQ18rpXBnGK4fFegNNpUPrV8xclhNPRza8Tn3/zCs0vO9IYTQMtwdy9Q2afIzipk5rtCJ5VxeE7bbzIrt0y7VOZw9iB1lt/hNDruC7ftUK7xHZOkRthANbb4=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1792326921; c=relaxed/simple;
-	bh=cg0uRSb4UEPzp01kbIS5zd8ide7ZgMWxvA/IgBjUUJg=;
-	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version; b=TVXQBRu0IinhFrAcZLAyodQtIPHcnbrTTr+innwRLxODwr4p65AwEbBy1F8fU1MyeQTVROQovtQ1DPqfCIQLpfzQKWtCeC5yymhS5SiS7L55+yOUxKSBoB1/gVl93gcxyP/yooFw4uUkTdJjpKYaTnHFc80i/N+GzoJ+nRWlC5o=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=ZwYExQ7v; arc=none smtp.client-ip=209.85.221.46
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D815548A2DF
+	for <outreachy@lists.linux.dev>; Sun, 18 Oct 2026 12:45:18 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=pass smtp.client-ip=209.85.208.41
+ARC-Seal:i=2; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1792327522; cv=pass; b=t35VK1DY/bCPINWfoB6oOCXAatJYJASHnX7zDMq9YiZwwChzpkN3sYzirnsP/9qNX4afxWmioZ3WvTPLPfmRqszUzt9TwC77IUaUHQRaHOZtmZHqUUdesbmALkThqZPNGcJ/X0daSCU+LmlmrbDSpmq1Z0ly4yI9X8pTzej7B7c=
+ARC-Message-Signature:i=2; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1792327522; c=relaxed/simple;
+	bh=ZcASPMFh4Dgw2AMBTbJGkLhMtLrcN7vyLN7Htio5p1g=;
+	h=MIME-Version:From:Date:Message-ID:Subject:To:Content-Type; b=aKZXi+nPzO+1Cg+uBWLO5OCh8biaT8yFIdojK0rq0szoDOr2CIn3KN63CjF8G7R4UzYkgGhmSNlv59h1mDei0D5jlDRKIcmohmwoRksTtc8YCfvQH0+Z1S/CbxcilFRRvphLMpJugjglx/5nVR6GJtZg66oLAUxqThOMdz5PtDE=
+ARC-Authentication-Results:i=2; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=Rcx7R+2h; arc=pass smtp.client-ip=209.85.208.41
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="ZwYExQ7v"
-Received: by mail-wr1-f46.google.com with SMTP id ffacd0b85a97d-48af4d4e61fso681923f8f.2
-        for <outreachy@lists.linux.dev>; Sun, 18 Oct 2026 05:35:19 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="Rcx7R+2h"
+Received: by mail-ed1-f41.google.com with SMTP id 4fb4d7f45d1cf-6b1aa29e06bso2017789a12.2
+        for <outreachy@lists.linux.dev>; Sun, 18 Oct 2026 05:45:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792327516; cv=none;
+        d=google.com; s=arc-20260327;
+        b=k0jvu1HwpDmvWzjxG6FSupADUd1b8BZJvJPoRkAtx/rrTqv2tveVQ7ncDEXVaDH/iD
+         WecMreM3pTna0YFv4Lfw4D+lGA3yoVKrYO40to3L8iC7xfzbWcXVQqcjwzhpYOZDnQQv
+         gTJEoygVdVZAh82N6dcjynPgbkhtNkc7Ofoy1jS2ELkDK5Ubqn78D4bThVNWK2N4dsz+
+         pWMZVZiSuaSnMcn9so/sZcScGzoDVCwZu+Uy2kNsJiJc9OMtVuhHW0MlovixewoBEBp5
+         uMdroznHvCC0BcN04uM/MsZ8RWg7fNogyFj4F2qmepqftF5ZcYIJL0qYF6kU+wzyW4on
+         6buQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=ZcASPMFh4Dgw2AMBTbJGkLhMtLrcN7vyLN7Htio5p1g=;
+        fh=ORcOwlulYhm0PlB4niEDenmGt0tg1PSeOtR/xiWpIK4=;
+        b=Pulii8YbjozOFaqbfFRu8KwCYpvEnBeMgcvv8X1WOLEu57bcwnZ4B3qqfpe+wcR9RO
+         uwvtdIDGNeiLI+GSbAdah2XcXGKG1MNnsmzVRPlaJdAtyjuJmkTYO6xchYJ+bV2v2uIs
+         ONnHqC1N9Zk5z5GjU+ZBYSqIxQusiZ628iPsggxr7wrCqCDiVDAW3gS/R5Ict6TvIBnd
+         84Ia/BroAi2NmoXnMsuRbv96XVz2TxBc4Q+HZQFxb0Al3qwf7DZ4Ohnbh1EebmXofVqd
+         UMlmZ+tNF8BUnKVyGFmTWBU9XP58EN9qHYYd+ON55Q57w/q8oqME98oHQ0DvHa/DmetF
+         e8iQ==;
+        darn=lists.linux.dev
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792326918; x=1792931718; darn=lists.linux.dev;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=yZRC1saK2lzqhpBjjhBU/Y8Q9XNxMDtAH2y6pyCBfUk=;
-        b=ZwYExQ7vWiDpqrQkH0x15gaC5prsr3Qgx/sDvg/R7TzOi6Dv1ngee0SPP3auH9Txqk
-         gQJlj/nGgGaDtWgKE4Ow1aMZhPeIaNBvnkQylhx7LOAYUEsuc7QI+aKlPDhPt8gnjI41
-         QESylFxg6NGDq5SjpglFytX62usVbZvetWp7klTxfUmpZm0QodIauZ/6i7b8AmJckhkY
-         xDXFOSc/aiVpFj52jPDJm34RbDthpaY7XRvmrvm2BD/5SKGL03MY5NR/QPBqm5GkTjeh
-         DTBTckOnbpSiMQMpiCsqZMG4SBL0Luev9QtPNWjdqCYshh9ghRwiNWQS5d8D3q1USAwE
-         NCcQ==
+        d=gmail.com; s=20251104; t=1792327516; x=1792932316; darn=lists.linux.dev;
+        h=content-type:to:subject:message-id:date:from:mime-version:from:to
+         :cc:subject:date:message-id:reply-to:content-type;
+        bh=ZcASPMFh4Dgw2AMBTbJGkLhMtLrcN7vyLN7Htio5p1g=;
+        b=Rcx7R+2hap1ddJmxtDHL7zwljF4aor0UpMdqWZl8znD2B0jAkCa0PjWKHoNX2aDNJ6
+         DZdy4IaPDT8j6tLC88E1fPfyy/nUAxvykxaHy9bIj5NU2DNBXIpSFDpWBY+xIPNvd56s
+         X3BejH8+c9T0+GodaRvmLryaqROSUVnpmn39aIeuoKx5gLYP1fbIkO/AoR378qoP9yrS
+         qRtQ+Dsh3sZs8/Dx9dir5H8gckXJ6oS4ZJhn9Te7Tu9tDRayFNtnNaRdKS42icIFYJlg
+         8A/xk00dZACWeVP0V4HLGxBDUza8g3XcW2S/xTZdJ0UELfANjqJ40XUS5ulcQBquF7tO
+         3tEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792326918; x=1792931718;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=yZRC1saK2lzqhpBjjhBU/Y8Q9XNxMDtAH2y6pyCBfUk=;
-        b=pKHqDldR9b1Wu3DABTHQl3faEPXvGlKyfQVwxHM+nBOkkHnFd7j/oytK9go1l2BQZn
-         PuXM2a/i5MyJROAZca4MhWVxMKCgQdeQ4nqLu4Ypno25tYjD4SyR3bkcuIRhxSuHXTDG
-         Hw/9jNpA0oX6QIYu8RqBV+mMGH0uWraOBDO9z7u0voCATWNJ/ykQRxEGGYUkF2Vul/an
-         MtyfyWNwaLcaEbVWHPzt52pjwB4FlEvyr0o+EsPkHaSum5U8gQmC6q6HOhuUMmU3kJmF
-         xP2YNx5awkDVxUfMgVpMBsSP18W34pces1ul8I98VdmsgeMoD3jd4+tae+5aksD8MEgz
-         +zuA==
-X-Forwarded-Encrypted: i=1; AKwUvByagpOXXS18yF2ZWOYYPgiw7HMz1zajS9rX91No3LOTli/c8Z4h+zww9xlERkCUT97zxVzyBRd+f04=@lists.linux.dev
-X-Gm-Message-State: AFq9FYIuTy9uX+Z+BHWZlR8LBrwoXRpPBctHpBHPjA5gv4dr9ufkdpd2
-	pMRou3fPXxzBfBIftVF22mMuVMFm1l1RCdxn9HngrULdV2BcR0DYULRL
-X-Gm-Gg: AYBFou20d1yL6Pth9uB6mTE3rB1fjixawNHm/Dy3C8uIi8VcmMVAbukVsU77GvsDSr5
-	v+Wd6hLAvKuW16erf2nkxqqBuq4rux0Ao5LR+D3GTi1HInc2TXarRIHGCfCHilQM0KtLQzJRb/d
-	mjgknMxStbHMiXmRUyIrja++RBjWwFar+/ActnluvFeFdfEOvTlKCUGcPgidJAgL7pge7GdSsyZ
-	Mc23KPfF+Foe7awbD7po31MsED41z0LM7GY6KQOQA9kF6rAtILM6syg3Ww3hX1RLjFQzGv7I/Ku
-	b/47VDZJKogXN4DDPUigBe8/mMEjqOfYjMqLMmDdsjkC2LEq65P0KtCpg9Zhi0fQ7q5oLcvgQMy
-	9vss5d7I68HVR4T3UxqXs8YgR6jl/2apoxWsu0hBqGUW7u7zdsqLQh5SR4KWvxEu3EM3qD75ed7
-	arB9JL4p96aCpyCm5Py5LebEqhfsCfXQo0ySE5FegbpGNNajJhOWrodYhKcUhK36IKEr670ou+Y
-	IHbJTg2KQ==
-X-Received: by 2002:a5d:584b:0:b0:48d:f831:2688 with SMTP id ffacd0b85a97d-48e079767e7mr10390179f8f.3.1792326917977;
-        Sun, 18 Oct 2026 05:35:17 -0700 (PDT)
-Received: from kali ([102.89.22.178])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48dfd503a0dsm17000429f8f.47.2026.10.18.05.35.16
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 18 Oct 2026 05:35:17 -0700 (PDT)
-From: Bashirah Lawal <bashirahlawal017@gmail.com>
-To: andy@kernel.org,
-	gregkh@linuxfoundation.org
-Cc: dri-devel@lists.freedesktop.org,
-	linux-fbdev@vger.kernel.org,
-	linux-staging@lists.linux.dev,
-	outreachy@lists.linux.dev,
-	Bashirah Lawal <bashirahlawal017@gmail.com>
-Subject: [PATCH] staging: fbtft: Fix continuation line alignment
-Date: Sun, 18 Oct 2026 08:34:30 -0400
-Message-ID: <20261018123430.148379-1-bashirahlawal017@gmail.com>
-X-Mailer: git-send-email 2.53.0
+        d=1e100.net; s=20260707; t=1792327516; x=1792932316;
+        h=content-type:to:subject:message-id:date:from:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=ZcASPMFh4Dgw2AMBTbJGkLhMtLrcN7vyLN7Htio5p1g=;
+        b=rc+ShYT4xEdqz9mdgub2sIPS6Rn6B9M1nMBeVaEi4e3mb8/Q3cXn43ZYYP/UbhQ2fK
+         gypqSSpVc3t6rHeX7Rve9OZObJLU3M7uE+jqWog5bHhm6uVcVrY6imA6SzYwKTGWmzn8
+         l16LXQ5KCyQd0GLJLS75xIiww/CYNxr1y06dGJB/Z0GIehnLNJ+3SsI6MoOhPP0ExrSe
+         lLr6bnj6hibN7jnDM23SaexLP9W+vU6ZUA/mohXutuizsAugIwEcZdaXQn2eEkTN8dzj
+         pJw9EJdQCxAWiK4b4Bot7QGQGndlTMCaKomOyMsTZlkhplztGKo9EcHvyHoz/oJO/PAX
+         K12g==
+X-Gm-Message-State: AFq9FYLURk0odT76MkLf39UE03/9sE8K1NqgL0qOM9C1uNXWx5+OSATh
+	2DpN4KwWJF0KuVKJvuT0IBlwBUu7IVazNCc39pcvkN6UMmAskS2DG0dQrhyVtewDmPggq3XKUeJ
+	XhQIb7eZMcpH2q5j1Sd3wu29khOfXdlzV1DC0TF16Cvolu04=
+X-Gm-Gg: AYBFou15ATwZsr1i1mlelPJwnv5drFYwkf/8tWpNjqfJvd0e7oAIjMghRs1up+RXP5F
+	bckHD9jzna/atzfWPbGZls8HoAChf4kSLqkpGLeTx0kBlpdBwyWuHk7B7I6h5q2kuH8zf+gsIHi
+	wQz0Z65+fINNIipfmNFDl1EWJUh29mQi9Qm9aChHFnD4MypnDLE3UZpY7gPBAkqovTgEAsi5ZMr
+	ByB3KJIRqj1HbwuqaJkKIhh7KVMWrc+h5b4WEd3kM2p8jaJnFwsXA43XOxY49Vicm4lk6GJGRbC
+	+FNRxm22HmLN05uyXilJmx7IVjVAh6gmN5UVzcm2jAJBvDfuVzJBEwQ=
+X-Received: by 2002:a17:907:d08d:b0:c29:5d41:dfe8 with SMTP id
+ a640c23a62f3a-c419fef7b80mr300027166b.43.1792327516486; Sun, 18 Oct 2026
+ 05:45:16 -0700 (PDT)
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+From: BASHIRAH LAWAL <bashirahlawal017@gmail.com>
+Date: Sun, 18 Oct 2026 13:45:05 +0100
+X-Gm-Features: AclHuK_N42tppvstpWQaKZZ0Nr-_qPwy8naTeb3o684q9iza5eG6q29Ce_CnY5o
+Message-ID: <CA+-H0e_z7o4=URXvOtg1f+hBWFX9x4fKb2MmiGUnbE+naFBEgA@mail.gmail.com>
+Subject: =?UTF-8?Q?Outreachy_applicant_=E2=80=94_Linux_kernel_first_patch?=
+To: outreachy@lists.linux.dev
+Content-Type: text/plain; charset="UTF-8"
 
-Signed-off-by: Bashirah Lawal <bashirahlawal017@gmail.com>
----
- drivers/staging/fbtft/fb_tinylcd.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Hi everyone,
 
-diff --git a/drivers/staging/fbtft/fb_tinylcd.c b/drivers/staging/fbtft/fb_tinylcd.c
-index afa8f1c740c5..d58b1247262b 100644
---- a/drivers/staging/fbtft/fb_tinylcd.c
-+++ b/drivers/staging/fbtft/fb_tinylcd.c
-@@ -38,7 +38,7 @@ static int init_display(struct fbtft_par *par)
- 	write_reg(par, 0xE5, 0x00);
- 	write_reg(par, 0xF0, 0x36, 0xA5, 0x53);
- 	write_reg(par, 0xE0, 0x00, 0x35, 0x33, 0x00, 0x00, 0x00,
--		       0x00, 0x35, 0x33, 0x00, 0x00, 0x00);
-+		  0x00, 0x35, 0x33, 0x00, 0x00, 0x00);
- 	write_reg(par, MIPI_DCS_SET_PIXEL_FORMAT, 0x55);
- 	write_reg(par, MIPI_DCS_EXIT_SLEEP_MODE);
- 	fsleep(250);
--- 
-2.53.0
+My name is Bashirah Lawal, and I'm an Outreachy applicant working
+through the Linux kernel first-patch tutorial.
 
+I've set up a Linux kernel development environment using Kali Linux in
+VirtualBox, built and booted a custom kernel, and practised modifying
+and testing a driver. I'm now exploring the staging tree for a
+suitable first contribution and learning to use checkpatch and compile
+individual driver files.
+
+I'd appreciate any guidance on suitable areas or issues for a first
+contribution.
+
+I'm looking forward to learning from the community and contributing.
+
+Best regards,
+Bashirah Lawal
