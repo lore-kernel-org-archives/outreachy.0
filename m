@@ -1,75 +1,72 @@
-Received: from mail-wm1-f45.google.com (mail-wm1-f45.google.com [209.85.128.45])
+Received: from mail-wr1-f54.google.com (mail-wr1-f54.google.com [209.85.221.54])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2F2383D5244
-	for <outreachy@lists.linux.dev>; Sun, 18 Oct 2026 22:42:48 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.45
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6A1783E2ABA
+	for <outreachy@lists.linux.dev>; Sun, 18 Oct 2026 23:16:00 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.54
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1792363369; cv=none; b=oZdvNJUIEh5pWftCR6xrZjFKlJSpBmEqpWF8SmOit6EpC2fZkecnKPnoYE3H8/wX+QZud5o+LbSvdr9yKh7JNl388J6DlMpeb4ULnJvVOipIj8ISJy0pZLwLmEAsnqev78RpCXNx/AjLyg8+BPw36nGUowP0NsmqX8mE71XGkCc=
+	t=1792365361; cv=none; b=ciEZijUtw+R6OonD+rR9yemg5A1tHTDr2TQrdG3HIXCLZghd3FyeauSm0KE2nLHM0uFBzXYlCO8GovzE3CAPqyVQ4+AXUdP+yLGTDeWdSZM11scKQz6kph3AZ95c8lksnZjvfZXMDoyGRYV3eDGSvASRsbJ8EkNSXlMeC0vkPf0=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1792363369; c=relaxed/simple;
-	bh=LLL8YnAyUQxPSK7+xdsfZLm9pB6HUgKQPfbKvkRhwDA=;
-	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version; b=OYJcwDespMsIWj6226mZp7THjThBVE8M1AIfx2Ddtfg5rAuTpqihCMIYQWT1EwkWHRvFCZkwklNHs4IsiBvF9TGuvDw0/mZ5wNgaY3x96/Fvx2cRIwapuUmxNEHrYcpAl2au/yjtaT9dD7Iqwd5lYSgS2XexpWyL/ioOMgoUS4Y=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=PdyMfspR; arc=none smtp.client-ip=209.85.128.45
+	s=arc-20240116; t=1792365361; c=relaxed/simple;
+	bh=S4bE2BgAbV/cAYIRrQlCKFuqyCJ3AdpaNeDWcqSlJtk=;
+	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version; b=KeddRgvhXKi24yoGrEIct/0CVUyxCeaoGUvHd4/ZdbQHqzUh2LPe61pLbPFuWNUec8iOCBXysb8KjhmX9/m7v6E68g5IOCTockfWgAnpO8tVSh0pNCriGoUQxkBZDoQq+IS9ybV6WNrziphwG4RTY1LnX0WrpvsWCCSPfPI535U=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=LVePqEdt; arc=none smtp.client-ip=209.85.221.54
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="PdyMfspR"
-Received: by mail-wm1-f45.google.com with SMTP id 5b1f17b1804b1-49d0da752ffso11847485e9.3
-        for <outreachy@lists.linux.dev>; Sun, 18 Oct 2026 15:42:47 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="LVePqEdt"
+Received: by mail-wr1-f54.google.com with SMTP id ffacd0b85a97d-48c45111bebso865365f8f.0
+        for <outreachy@lists.linux.dev>; Sun, 18 Oct 2026 16:16:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792363366; x=1792968166; darn=lists.linux.dev;
+        d=gmail.com; s=20251104; t=1792365358; x=1792970158; darn=lists.linux.dev;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=m1qlXxPCKnyZBMqZS+UI2tKQ3hqkztlpBKb9IkUQpHc=;
-        b=PdyMfspRfTrtapIRztgcZ2MR21XQDuMZ/pRFA9NSiMJi6fNIAJffmc2nafSAYQb1KS
-         KYCZN9/Ndu0a4hXzEuAXk1AnB//eqWZuGjuLUS3103g1s77fbe3zULSZsjzY/d/ub1DF
-         6bQA13Mk6ry6j1z3kWYwiNbzg78PDdI6jNpBNLarXc0rvsChxwtibIk5e1wh2fbEGkBc
-         ssRwyMKoqFIpP+sA++mMgeaqaobn9H+z92yh/54S9ChnOo24AeHPVVaCdI8OjUjTC4y1
-         n6CXtO85/n3Ac5YnNcHVzrRDhnWlecuJijFEcXFwAeUFIgZxbedj57OY334YKFHfiWa/
-         DjMw==
+        bh=QtdMrgS5OyN3BgVJlDrKUHEutVSv3PFnuFIUQXZ3F4g=;
+        b=LVePqEdtom0Jf9vY1AhZyryhgQIE3ERZZ2bpvRgZDRoXIe7vz8nF96zZAh2gfItd5v
+         AqQRTzRH7yBGM35Xw/XO/8GVQIrh89GSNOWRm47n5z/7Qmb7Sqv2+APluM9g75enaYms
+         eKPJtNMGCawZBh+EXqGntJ5bo8YaoYVNerEetraaX0YmZ5H3ygk7NPLYhQ4oOT9LjyMO
+         bY4hAfS0EUB+B/ZlsCCNvq1nHhb1fhXOAZEbyv71sG8S6TkVHy8AJ0fB0Yh6H7yyVXil
+         R6kg0kN+5ncNFx4edrq6Qb0UcIIoiGyBUucyvw6NTFAd/L4vknsTIKGuv32U6nk/InIr
+         L4JQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792363366; x=1792968166;
+        d=1e100.net; s=20260707; t=1792365358; x=1792970158;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=m1qlXxPCKnyZBMqZS+UI2tKQ3hqkztlpBKb9IkUQpHc=;
-        b=12LCHCQ+rRmI0gCxpZioYB+SsSdprhGwcIhIdxOleMim3EfR+2tYuWe+gj2tlH6pm0
-         umLugYNC63nhLKII2CNvaI30YayOuDf+xWOV4SwSVK2cd7+8WFjF67E9a1wOXc31x6vw
-         SI1a736CGe9bAbJaLvJjLU5TxciFkcjfpSnJ+zIx93jgW7mStDDoGo1UKiHExnlgCNE5
-         Hco3ZSjQQOzbbX2qWJbYEPhHP2gwb/gTJt3D3Hk8sCpB3ayaX20U1nT0wPuLWKK4rKgn
-         MYbybGEnDGMnu/0V626iF0VaYJYUfsj45KQEA0f4wYkwYEmpa7fOniBspFLEi9kONnP6
-         sUsg==
-X-Gm-Message-State: AFq9FYIf2MVvobrz534Kz7bgLq7xmJ7Gj7FOCXGJqDnRfAfTH4gkxC/+
-	VRMksTXeKG7aYPZ/eJrqgN0qyobwDFxFz31fi9/qfgCt7AbVjvK2MT2oLSLwPIKbF3K9Gw==
-X-Gm-Gg: AYBFou2qxRsR9qrvkFpwKPpMpthIjN9V4sCQ3nlEEv+lEGj4N2RYeNpj2mcDMHgJ8sC
-	oY+IzboQs9uUIXf6W375PV6yoqYYKxWYXP/7Vt7zxRdhssUBMiwRMP6pKZWoCLKHVbHNOXsVd59
-	qsCV9hb56jlbUF3M4o9dNc1xDwpxIy/kJlZXTg0VjN+M4p7dVLd3AFendfUUjRg32oMNBuJdp1a
-	6Ig3+ZPM7WxVwU3eKZstW0tAWgsu7eRCCkun7injoF4hRFeLAFuJQqxNo4bQn/mzUtRe/dH3EJS
-	uD3XGNygrdUo3YTGX2uAY7vS9ky6MqDzt84Y3jdUkAZ4tYxDy1+X+4A8PoCCle2bqdu/s2jxyuv
-	nW0b7G9Hq3OFjBW9oTG8TEljxwm1+HarjdKkkRlKIwhxStPUt0WE26QsNJwHXpUGUT6ZLJowGhq
-	HTp6zml352HRMciJ1tLqjZOqv7b8Q8qWpeE0dEFqPKik5hwSC0APMJW3zDJHZNWI0LflccC482e
-	SvqnDA7AWUe4BqUXFo8ZJGZQJDdTd0bEr9LM9yEgvQ+sM13mF79ltWa/C/EoQuKnVy+iVP5dOAG
-	F96kjh4ccNz08UJT4AdQ56ab8xftYIJQOpD7zlYvENnlE8AFMgW/ddSC/ISK8dMyW+jzmPiW
-X-Received: by 2002:a05:600c:4f82:b0:4a1:df52:3e36 with SMTP id 5b1f17b1804b1-4a1df523fa5mr94086665e9.27.1792363366271;
-        Sun, 18 Oct 2026 15:42:46 -0700 (PDT)
-Received: from localhost.localdomain ([102.88.166.8])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4a1df164777sm140396685e9.5.2026.10.18.15.42.44
+        bh=QtdMrgS5OyN3BgVJlDrKUHEutVSv3PFnuFIUQXZ3F4g=;
+        b=CvDAgjVc1tScZsbzZCsBUihH6YTkrSguslXex6WgncrEu2uNUGge2BF0cwr/kgjjX+
+         Ap6hBw2AdJgMOUOeq48K+0UatgBuBYo1wjf5oE2wZvb/F+p0AhZYLklbqaFgYq0cmjV9
+         5JcK7wZroINQZkb6gZkQz34sVUD0kTxniKH6UFId8m7+F65+7wAQ+NEPMkNjZR2tY+QJ
+         ojhUskryQwWyghbASagiCxbERdBj4QdMx7EbwkdWsE+rkI48Wcc0of8zlXkAK2flygVj
+         yqQu7CkXy/BsKht1oG5HSmZx/h/rHsVC49xkXihe8/+gfhyNmyl/yOyAKhOGmXM/JDAz
+         B+Mw==
+X-Gm-Message-State: AFq9FYIFFJWQ8IZnv6f9qT/BNve5xb9R+r5HQMCkhonUf0JR0HxuU6/Z
+	iuN7sDeIsFzpz/y4aoI91VR7E/kp8p0hnpbCXLdGFJXRXkxlzbzE9F/BEWaSKd7BBFlZIA==
+X-Gm-Gg: AYBFou2LDyi0R3JbOA0LDoEeFuz++Al04iGODfLJGJjOXYUTrVmTk1crycKK/LTvYUj
+	pQHRPw5TENGpYPBhXUukXskL5iyagr1DjpRkP3AucU9fCKxxil1vxNwsZZkWHZj3QJvXsAgoMUP
+	XA3c7SaklklxTPr8pWEmLmow45PF8LocHvdLrWq3AndpsqJH9gHpKbQkcAVnq4amRV9cHyFwy5e
+	qztBaOUBMcQlG+eHV/2NBIn0ITZpjLW4dOf8DB9MZF/n9axgLfdoMtijmTTvAIqK5+f45SR+hYj
+	S72dsofhTEx69z5VPm4Htb66RepdI48C9E/5XFlBHqlqSj1A9JSnifrc412QpZsmuHxnRhiRUcU
+	v2jRvwnxwCp2eLNDpblq0xsZD6P0xy9fQzyCtgZGMvPCKfXfj4ei2asOwhZHG4THi+w/4AjWnHr
+	GWZG3e+dM4dea3IN0idIrtU4RkQu4lCsvjW4V3S1hSEKuyAbl6HpmzHB47fQGs85w1GW4nHtvMT
+	scfwmLAbItmVODvO67ycP9spTdZ/YyYPnCdQJd3c6L/SWbHE7iM29bkZQjoIzUdvnHU65tpcCxc
+	tVhMfmBkzIln/FVt6QzOqqMEtkJoQVlBpBXeUeagR0Ve2Z6tmoFDrcBpRqbVpejA81t6hAD28W4
+	=
+X-Received: by 2002:a05:6000:46d4:b0:48d:f9dd:e3b9 with SMTP id ffacd0b85a97d-48e07fb2acdmr8466980f8f.17.1792365358372;
+        Sun, 18 Oct 2026 16:15:58 -0700 (PDT)
+Received: from localhost.localdomain ([102.88.166.203])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48dfd4e7889sm19432309f8f.24.2026.10.18.16.15.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 18 Oct 2026 15:42:45 -0700 (PDT)
+        Sun, 18 Oct 2026 16:15:57 -0700 (PDT)
 From: Okhuomon Ajayi <okhuomonajayi54@gmail.com>
 To: outreachy@lists.linux.dev
-Cc: Viresh Kumar <vireshk@kernel.org>,
-	Johan Hovold <johan@kernel.org>,
-	Alex Elder <elder@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	greybus-dev@lists.linaro.org,
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	linux-staging@lists.linux.dev,
 	linux-kernel@vger.kernel.org,
 	Okhuomon Ajayi <okhuomonajayi54@gmail.com>
-Subject: [PATCH] staging: greybus: fw-management: fix argument alignment
-Date: Sun, 18 Oct 2026 23:42:41 +0100
-Message-ID: <20261018224241.46011-1-okhuomonajayi54@gmail.com>
+Subject: [PATCH] staging: octeon: remove unused cvm_oct_transmit_qos declaration
+Date: Mon, 19 Oct 2026 00:15:38 +0100
+Message-ID: <20261018231538.74139-1-okhuomonajayi54@gmail.com>
 X-Mailer: git-send-email 2.43.0
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
@@ -79,31 +76,30 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-Align the arguments of the fw_mgmt_load_and_validate_operation()
-call with the opening parenthesis and split them across separate
-lines to avoid an overly long line.
+The cvm_oct_transmit_qos() function was removed by commit
+6568a2343639 ("Staging: Octeon Ethernet: Remove unused code."),
+but its declaration in ethernet-tx.h was left behind.
 
-CHECK: Alignment should match open parenthesis
+Remove the unused declaration.
 
 Signed-off-by: Okhuomon Ajayi <okhuomonajayi54@gmail.com>
 ---
- drivers/staging/greybus/fw-management.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/staging/octeon/ethernet-tx.h | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/staging/greybus/fw-management.c b/drivers/staging/greybus/fw-management.c
-index 5d01da6b6eb9..e20e9136c106 100644
---- a/drivers/staging/greybus/fw-management.c
-+++ b/drivers/staging/greybus/fw-management.c
-@@ -434,7 +434,8 @@ static int fw_mgmt_ioctl(struct fw_mgmt *fw_mgmt, unsigned int cmd,
- 			return -EFAULT;
+diff --git a/drivers/staging/octeon/ethernet-tx.h b/drivers/staging/octeon/ethernet-tx.h
+index b03d56b0d2b6..498a5d68407d 100644
+--- a/drivers/staging/octeon/ethernet-tx.h
++++ b/drivers/staging/octeon/ethernet-tx.h
+@@ -7,8 +7,6 @@
  
- 		ret = fw_mgmt_load_and_validate_operation(fw_mgmt,
--				intf_load.load_method, intf_load.firmware_tag);
-+							  intf_load.load_method,
-+							  intf_load.firmware_tag);
- 		if (ret)
- 			return ret;
- 
+ netdev_tx_t cvm_oct_xmit(struct sk_buff *skb, struct net_device *dev);
+ netdev_tx_t cvm_oct_xmit_pow(struct sk_buff *skb, struct net_device *dev);
+-int cvm_oct_transmit_qos(struct net_device *dev, void *work_queue_entry,
+-			 int do_free, int qos);
+ int cvm_oct_tx_initialize(struct platform_device *pdev);
+ void cvm_oct_tx_shutdown(void);
+ void cvm_oct_tx_shutdown_dev(struct net_device *dev);
 -- 
 2.43.0
 
