@@ -1,104 +1,134 @@
-Received: from mail-wm1-f51.google.com (mail-wm1-f51.google.com [209.85.128.51])
+Received: from mail-wm1-f43.google.com (mail-wm1-f43.google.com [209.85.128.43])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 88B82320A04
-	for <outreachy@lists.linux.dev>; Sun, 18 Oct 2026 14:27:57 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.51
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 11CCF3914F8
+	for <outreachy@lists.linux.dev>; Sun, 18 Oct 2026 15:37:56 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.43
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1792333678; cv=none; b=u+Z/vUHWTvyJILoBiDX0dzz6oWagnGd2C/Qn832ztfKUtbl9N2rrJRO0429ciMYnohsz04GqreYgAGIE4OuRgLVwke8niCejP4ZTXIhSwKa3uOXjRAvR9TRLDk2txewSIJBAMrST5QiLW0HmcIXkMonZOX0+KwR8cwLA5rvsVeA=
+	t=1792337877; cv=none; b=OyOkrdfy5SmlQxhFj3OYYSSA95vOT2OI8Cq5/4KwSMfOjHEu1pUmywkYDAKzuE/uLG3z5+2DueEZxa3dz4qnt+YQoXkVfmMK5A5qesHaA3+br5M7aZCyE/7EpwZEFwAdpbf1IPCxTMzhTJ0mmJdxPOuGNc8P18pltouJL4W5KK0=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1792333678; c=relaxed/simple;
-	bh=JrJwckTOeFLMYbWPldwO5xzUhS239iwNp6VMQuWtRPU=;
-	h=Message-ID:Subject:From:To:Cc:Date:In-Reply-To:References:
-	 Content-Type:MIME-Version; b=vF/v+5xUm1pml1WnfKu56d3wjT1Ql821jqVFXdmOExi+uCdF2x5t3oJIv6xHHbbDUBc4fWnexd6imx/ZhCwmLCuMOFjYCzL6oXMKzaf5WxZ4yHUOndylaPTRmyG6R3232kiLiDF1cT+0ZUtvEcd3r8Zpz33C9GlJhZrknhWZV4E=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=a/1lTLNs; arc=none smtp.client-ip=209.85.128.51
+	s=arc-20240116; t=1792337877; c=relaxed/simple;
+	bh=9NUrm+JR+AwAKle6F1upGyUXgd9H6U/Ig9Dkc6DFvyM=;
+	h=Date:From:To:Cc:Subject:Message-ID:MIME-Version:Content-Type:
+	 Content-Disposition; b=jKjrp78nEW8p2oIvakcqaeNdTzsdn3hbYVFQMmOXqihqNmWNvUS3KMjcw3vlSa+pu/vBLMwIJjmg/GqwUE1+Jb1TcbafsFv+g4Ub5JxefqXOpBSYzdzQsH9CWLK8wKlUTpIChbW68bEpgn/Gsg7kXFFRiP4znImzF5JGwsllHBY=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=hrT+GMEz; arc=none smtp.client-ip=209.85.128.43
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="a/1lTLNs"
-Received: by mail-wm1-f51.google.com with SMTP id 5b1f17b1804b1-4a16c1608faso15860355e9.0
-        for <outreachy@lists.linux.dev>; Sun, 18 Oct 2026 07:27:57 -0700 (PDT)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="hrT+GMEz"
+Received: by mail-wm1-f43.google.com with SMTP id 5b1f17b1804b1-4a1dfd49525so5764625e9.0
+        for <outreachy@lists.linux.dev>; Sun, 18 Oct 2026 08:37:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792333676; x=1792938476; darn=lists.linux.dev;
-        h=mime-version:user-agent:content-transfer-encoding:content-type
-         :references:in-reply-to:date:cc:to:from:subject:message-id:from:to
-         :cc:subject:date:message-id:reply-to:content-type;
-        bh=Eb46/O1NYU+eRR79pz07l5QZJgv8lcTTRms1awqeJB8=;
-        b=a/1lTLNsSqRMSG/9j+UcCmQegCqQSZb5s/IN8ZNP5vBAYLUMLAHqpdgBI0QHx6S3RX
-         aZqwRTQ2LscRDBIz13EfW6HhobpZf4I4SNZnwMIRyTFFQ8jZF8pYDK6SQXX+gtcsyuCM
-         u+QnTA/KrAYcdiTvhDFtB1BayWzACU634P6+bAKx2k0S6+59H8KGR15CH4RdL4i3nP2C
-         LeBFN16ZBauT0cwaDKM+PrZI32uO0fkt3OzkMobxv+DmLe48QgUZj+dIfdM8sD9c6o2I
-         oSqMzsN5x1I4CEdGsIfFE+vsHuQxQG3VgsT0AWPhW57ZZuAplTednRPnMn0BhRbDrRee
-         ZE0Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792333676; x=1792938476;
-        h=mime-version:user-agent:content-transfer-encoding:content-type
-         :references:in-reply-to:date:cc:to:from:subject:message-id:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+        d=gmail.com; s=20251104; t=1792337874; x=1792942674; darn=lists.linux.dev;
+        h=content-disposition:content-type:mime-version:message-id:subject:cc
+         :to:from:date:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=Eb46/O1NYU+eRR79pz07l5QZJgv8lcTTRms1awqeJB8=;
-        b=P9sbsNZ3A71FEtcizLVMV2RzKOJ+PHApigJCFXD5k09DZGISbnTN8JtUnZ9nr27jcg
-         g+HFQZpBK3/cbraDBwNPnsrW+yJEhe3MRrBCni4+N/EC56GPOgfafatyMEG+BDBnu/Nc
-         76ddMcE417QuEd0hkKZ02C2x3EBdLOhUKalVepN4LBSh8yVuJ6F6L/ZdNZZe3fUGU+Wh
-         9a3WMxaAnh4rnPDLUqQXDqDJdmVLV9D17uJaJ+gvAcKLt9BetgKP7C8+oYEBhfOEZO2K
-         b/VblkDT6IOmzctf2RtPEujGp12iI0jVwjlZJowC7z5K383ZMFHiqMk1f3MMmK7WStxE
-         Aimg==
-X-Forwarded-Encrypted: i=1; AKwUvBxkkhseXZ4fHN7n8aM3C3/Z91HyGWi8e6fCNifDxTbocUT1b2LJHZuq19bFQwSblC4r+D9W3IrVbYA=@lists.linux.dev
-X-Gm-Message-State: AFq9FYLtujmDKy8pRVyd3RzvuCit10etEMyUn7hoq7kXaFAKeUXJBsTK
-	kVm+KsHvh6ANI/su70vAxHAbZf0kXFFLaJi/6aLSYaUgwV67CYGlB+VR
-X-Gm-Gg: AYBFou0CjjnS1aLEAhGEER7H0JhRSmRjmGmpHZEkGNRRRh/86Hz8as4RQfxemvAWGvY
-	KWNrnUbLwfuk0bJmO046OlqDYWmTO5tPaKctrvR8kfBoZQmTewlbOQUY8BxlZcyfPfAmA/7wgIO
-	u/JU9+4ZP9dCcwso048sA4zhrQ+c9y/fA5jbZmLPFQfZnz83fbmIEm0m8MsRxVuq5TZHK8zX22M
-	Tuu7DgZ6Mb1/oc5hvkYhhNGViztJ3yPW9BK6/BLPVWEusEkaRs3Wdh/yzgyb2ZWbai1OszwZgO0
-	8qjJDBk3YNJrR9Ps/XKFFXE+yPYEtwOtH+7o31IaDZgxuLKf4JNhDAvFmfT4uD7l3e5GEKb9Dr8
-	ZLU92WatVeaEx62DOuJR50j8Y5sZRCzuCTEEaw50bWC91hA9ZCxZCLYN/K8i5A72m0hqet38BMw
-	hVnAGQSK7HTfvagRUr/CJLa0d/VXJuNxeHeQ2WnHcE2ZAxKyWq3CC5zww+lHtU2U2I4dFryzyeR
-	g==
-X-Received: by 2002:a05:600c:6297:b0:4a1:9ec4:d939 with SMTP id 5b1f17b1804b1-4a1c66cc3a4mr217236155e9.17.1792333675391;
-        Sun, 18 Oct 2026 07:27:55 -0700 (PDT)
-Received: from [192.168.0.50] ([102.91.104.190])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48dfd4ecac3sm19037389f8f.27.2026.10.18.07.27.51
+        bh=RynPPvVjqTV4luxl9PBymJrn2D7Dl4oqi1D5yk6iPS4=;
+        b=hrT+GMEz4LYbdrhLzPwDd9KnGWpBGD+v6cbWqjKDPTD4Oo7Z6pkDSoJB6rAhiZERr5
+         WS931vUMavqi7P1WbID5AllhYA8TesZidj7Ytz3Y16K24qKIZwaC/vrDSNi2huatGNaI
+         4DO7BkfFF2SGTTAik8xQbOJDTOXF86+s7BIoNrYKaiEFw7VMpIz+OTfhJmfSr7ENueD/
+         5BsRoE5xMsjVlAWpbnifol+ePH9x/YkMkqQ8y9+/UfjWJucAuFVSva8pjrJWOp85WJcW
+         922XMENfn++X+ECgJAXUV+YTdQi2LpYt9lgXac6OEQTo+zinv7rhxFXyuT3ZpRc2WDmc
+         iGHw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1792337874; x=1792942674;
+        h=content-disposition:content-type:mime-version:message-id:subject:cc
+         :to:from:date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=RynPPvVjqTV4luxl9PBymJrn2D7Dl4oqi1D5yk6iPS4=;
+        b=SW0k8kZdDPCjfi+l7KwbJNU/8vonkR+oBAkE/nzu4YsNe7h4hu2MZ+rYlPzxCmnKPY
+         BDfFYP41mNCAEoN10QKcx1LAF1aybD/AHkQFhLdPSq66Peb1pGgnueYihcZCzu5Im9QZ
+         wPOolWcx2k5FmxODugtKscOge4eqKjaMCSMGtYWpMI6vD5rTwMYXFs4LRbHNZPwrv4wh
+         DBxFZuhgvhStQ6sAiRaTtP8+7LYUljZRg4RgHkrmo5t0R4SSoLVjX8x0uafse85N5xux
+         qjGFeQGek9NGwEM20jWbg4R8aTyVdT3WlkHOa8yNQAn/hyZHokvWPq3XkwREisUj0ZW+
+         ry8w==
+X-Gm-Message-State: AFq9FYLSAtG9BOfVTQw2DGlRd/0wzeZ3TLtgPP0RC474NXqLA1DdlfKM
+	foZNEYQx9EMFYDZHVrIbYVjH8jf2S/EnCRq4L2j0DDZulPAbjuy0DZyqa4ttzZ3ZndwV/Q==
+X-Gm-Gg: AYBFou3ySlEi52/0DJ6jPiGXGpamT1Wa66+2Tp5mz/9TYJy5Jj3ev/VLDnbHN5hXYcr
+	tU2GwQdfo4MkBNNw9g8e/171mGE0Vt0+4faQb546OptFaSmksAXEBcyiMx0A56W/d6vmF8xpawF
+	1YAW5SY+Q7pUN1lTbGsl7y5PrEeq7vHDLBkn7BUPUwrY4whSqskfKcsseNWY5Xa2KebgmAo0rjl
+	UWbpOkoIudEBV6dq7HCBGhWrsxeof2Q0BipKJWkJIhPqDHL/cVcd1FubR9VnAXIfQmMuknXPGN9
+	jy0ZS+F3+lYAIjjjWIfS2mTd0gOyOKb1aFwQPsgoSx5wWbqc3ySpIeVkJfhUlnwre7L31PoQnrD
+	yUPU2HnJJdNbsh79yIifqAQGeghItwOPEakJXs4LnJ4dHtukqwWgaxoPmsPAisM4J7gW5CtFITh
+	LDwkb7WrssChyc0Er6hfGWdVQKPScnb7MkiLmy8x0Hy/JNvqG0JAOlWGigcls=
+X-Received: by 2002:a05:600c:548d:b0:4a1:e250:b191 with SMTP id 5b1f17b1804b1-4a1e250b1c7mr41260495e9.17.1792337874062;
+        Sun, 18 Oct 2026 08:37:54 -0700 (PDT)
+Received: from ubuntu ([102.91.81.39])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48dfd503862sm17479115f8f.46.2026.10.18.08.37.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 18 Oct 2026 07:27:54 -0700 (PDT)
-Message-ID: <b7a4167f8e188d7a0dfe72c2a3e6e51337a33336.camel@gmail.com>
-Subject: Re: [PATCH] staging: comedi: comedi_fops: fix alignment to match
- open parenthesis
+        Sun, 18 Oct 2026 08:37:53 -0700 (PDT)
+Date: Sun, 18 Oct 2026 16:35:34 +0100
 From: Comfort Oyewole <coyewole7@gmail.com>
-To: Greg KH <gregkh@linuxfoundation.org>
-Cc: abbotti@mev.co.uk, hsweeten@visiongravers.com,
- linux-kernel@vger.kernel.org, 	outreachy@lists.linux.dev,
- linux-staging@lists.linux.dev
-Date: Sun, 18 Oct 2026 15:26:20 +0100
-In-Reply-To: <2026101818-banish-scarf-eb6e@gregkh>
-References: <atTFT49xpaBEb7Wn@ubuntu> <2026101818-banish-scarf-eb6e@gregkh>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.56.2-9 
+To: gregkh@linuxfoundation.org, andy@kernel.org
+Cc: outreachy@lists.linux.dev, linux-staging@lists.linux.dev,
+	linux-fbdev@vger.kernel.org
+Subject: [PATCH] staging: fbtft: remove trailing semicolons from macro
+ definitions
+Message-ID: <atTnRr-JGIb9eLQR@ubuntu>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
------Original Message-----
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Comfort Oyewole <coyewole7@gmail.com>
-Cc: abbotti@mev.co.uk, hsweeten@visiongravers.com,
-linux-kernel@vger.kernel.org, outreachy@lists.linux.dev,
-linux-staging@lists.linux.dev
-Subject: Re: [PATCH] staging: comedi: comedi_fops: fix alignment to
-match open parenthesis
-Date: 10/18/2026 02:30:28 PM
+Remove trailing semicolons from macro definitions to allow the
+macros to be used where callers provide their own trailing semicolon
 
-On Sun, Oct 18, 2026 at 02:10:39PM +0100, Comfort Oyewole wrote:
-> Fix the alignment issue in order to adhere to kernel coding style
->=20
-> Signed-off-by: Comfort Oyewole <coyewole7@gmail.com>
-> ---
->  drivers/comedi/comedi_fops.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
+Signed-off-by: Comfort Oyewole <coyewole7@gmail.com>
+---
+ drivers/staging/fbtft/fbtft.h | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-Why was this sent twice?
-I apologize for the duplicate email. I thought my mutt configuration didn't=
- work the first time.
+diff --git a/drivers/staging/fbtft/fbtft.h b/drivers/staging/fbtft/fbtft.h
+index 40a7567df1eb..1ab1658e8321 100644
+--- a/drivers/staging/fbtft/fbtft.h
++++ b/drivers/staging/fbtft/fbtft.h
+@@ -277,7 +277,7 @@ static const struct of_device_id dt_ids[] = {					\
+ 	{ .compatible = _compatible },						\
+ 	{},									\
+ };										\
+-MODULE_DEVICE_TABLE(of, dt_ids);
++MODULE_DEVICE_TABLE(of, dt_ids)
+ 
+ #define FBTFT_SPI_DRIVER(_name, _compatible, _display, _spi_ids)		\
+ 										\
+@@ -301,7 +301,7 @@ static struct spi_driver fbtft_driver_spi_driver = {				\
+ 	.id_table = _spi_ids,							\
+ 	.probe = fbtft_driver_probe_spi,					\
+ 	.remove = fbtft_driver_remove_spi,					\
+-};
++}
+ 
+ #define FBTFT_REGISTER_DRIVER(_name, _compatible, _display)                \
+ 									   \
+@@ -350,8 +350,8 @@ static void __exit fbtft_driver_module_exit(void)                          \
+ 	platform_driver_unregister(&fbtft_driver_platform_driver);         \
+ }                                                                          \
+ 									   \
+-module_init(fbtft_driver_module_init);                                     \
+-module_exit(fbtft_driver_module_exit);
++module_init(fbtft_driver_module_init)                                     \
++module_exit(fbtft_driver_module_exit)
+ 
+ #define FBTFT_REGISTER_SPI_DRIVER(_name, _comp_vend, _comp_dev, _display)	\
+ 										\
+@@ -361,11 +361,11 @@ static const struct spi_device_id spi_ids[] = {					\
+ 	{ .name = _comp_dev },							\
+ 	{},									\
+ };										\
+-MODULE_DEVICE_TABLE(spi, spi_ids);						\
++MODULE_DEVICE_TABLE(spi, spi_ids)						\
+ 										\
+ FBTFT_SPI_DRIVER(_name, _comp_vend "," _comp_dev, _display, spi_ids)		\
+ 										\
+-module_spi_driver(fbtft_driver_spi_driver);
++module_spi_driver(fbtft_driver_spi_driver)
+ 
+ /* Debug macros */
+ 
+-- 
+2.53.0
+
