@@ -1,73 +1,45 @@
-Received: from mail-wm1-f44.google.com (mail-wm1-f44.google.com [209.85.128.44])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-alma10-1.taild15c8.ts.net [100.103.45.18])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CE698489FB1
-	for <outreachy@lists.linux.dev>; Mon, 19 Oct 2026 07:15:31 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.44
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4A8C848423C;
+	Mon, 19 Oct 2026 07:16:16 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=100.103.45.18
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1792394133; cv=none; b=JvJayxxZakzdubMJugtAEyDJQW1mFNh3hm/yjoFiAjD9KlYAhSPC9ScYPO2/+n/9kVXmFyICE+2rAAWGOOyziuzSRb6g3tENXG9EI12RrrhPNKlPdo3jVizZBInQRWvGupJoMZxNYDhzHS2z127gdxrK1JyEfNZa2OANRhGF6uU=
+	t=1792394178; cv=none; b=j6tS5YELxEs814B3wb9yXbM1U93OEJRHZoYSGLXm91H2X4lySrbUJksaeoyfhhn3zkuwcsOd+QRqPCZ6BpTXvay0t8WM1WwtXnl9K4mR6BBXQShw4XffFrI3QmgxD2Uk7I1mE3hCDG2KfbSHMYWoPW0qvESlfeoGCNmgn9IAn1E=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1792394133; c=relaxed/simple;
-	bh=euPFOSxanSFPi2Zpw8qrz5T/8Lck+/AaQ85OLuB2GjM=;
+	s=arc-20240116; t=1792394178; c=relaxed/simple;
+	bh=2BgtOKxU54Qrb38Y8VchBYSMlsdeK5aSiHA8l146HaA=;
 	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=b+Vvhe2n+m9M4wG+45DMZ08E5yKe7PXUQz8QAA4fWl+ynVFg/p9CAJsLB++68V04QXFnT+pVruylhYLcx/hDLXIslUXXc6kC5fIORkMS1lKk2r4MjiCT1ZOyavXyyRtbpZ1+vNKxiU+MLGzD2GcGIzevoUzWjpbjGi5jX+4iAbY=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=QAOV4fMd; arc=none smtp.client-ip=209.85.128.44
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	 Content-Type:Content-Disposition:In-Reply-To; b=pvjZYpPzpoTeFvWcMD9h3zoOHTxzABpqssjVxzTivP0by7h0E8owBdysXOQx9hzKboQeCxI1qZxyIjjRQljeAJi+v8LCEKmm3aDys/uGdjFKahU/tf9pOIAdRovNH2H5cWz4sFiXoAS/0FqnNbdQ+1jLWeL5Cql9kRS/sfhRG9A=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=hAHmBov3; arc=none smtp.client-ip=100.103.45.18
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="QAOV4fMd"
-Received: by mail-wm1-f44.google.com with SMTP id 5b1f17b1804b1-4a1dec056ddso9236475e9.1
-        for <outreachy@lists.linux.dev>; Mon, 19 Oct 2026 00:15:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792394130; x=1792998930; darn=lists.linux.dev;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=Lh/rfye6OYmPn+uBQKUoMnQVrTTMgM/f0x7DqQdwTJE=;
-        b=QAOV4fMdD52nFi46sTyhgb/lLmJWy87DtdzighmzWU1kedNtxefLBjRbwAK6DYVD4M
-         DiFiiv9MGE5VxKMskHWYP5z4KCHBvDX8w8RqTgnlHihGelqFfaaf7KywdhqX35eMplbH
-         azRbSi25TXEdC+X8eAYrAZ9XdHrYOunBuHCOTEsqoUKCo+1Pv1UgJN8h/BBEeddWovli
-         R4obBhc4MJv5x4ksA2rm5qjD4+hzWGvxfGYDYgvNPIaVJTNJeVH6iiugECRl+oiHSPfM
-         BYF6UF4CJk/n2qnYh/6coxgXtB9Y5zuAiZ20v/ctu+M2wWwwSSRPfDC9AJPagU1ghH4w
-         S8Pw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792394130; x=1792998930;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=Lh/rfye6OYmPn+uBQKUoMnQVrTTMgM/f0x7DqQdwTJE=;
-        b=m93qfZ1ge0KwHSPWS6QpI390kenrQUOD8kKcBohMi+pgXIKAIuyM2SrDeDUszD/x4M
-         fYWmuSs4x8ThoJ1//5WB3PGESuty7S0Xz8aZFK/Obo1NJcKO7cTj4VC9EqECkLBGNCEB
-         FOlfoEk/CQGrhSTXOwrSij878K5XJy5HdUZLmQ7Wqm9+xypNAAcM6y1q2VuU4HuWByKY
-         +ugU6Mz4UxsPKKYusew0Wk/mJi6PiDYv6ipOsoa5APJ+Lw4gAFO7rf31LQelLao93Rh4
-         k+sy3nLLggsFklvgH1wWEgkNW1QONeyKEPwmQAzZnE8DARsFNpGLaDiH8Aup3e0gM+T0
-         CyOw==
-X-Forwarded-Encrypted: i=1; AKwUvBxmc/hIs/XV0hX1gdBehPMOT5T/e9WpPGZ9xr3mxUuXQ2tb+W7yhzTyVzm7VYCdP+7W5SV/8/dWbpI=@lists.linux.dev
-X-Gm-Message-State: AFq9FYIkbX4G1JXOlDBTmG1fMUnysTuQaeqDujw012XYaPQskaNsfM+p
-	jgSto0IX5QoTpScd6p5B7UjeycIWTOpUNFo8A7lCgpXXTTOSt33rwMW+
-X-Gm-Gg: AYBFou2VMdc6PX0EndaQe1opfbx2OIgPQSUHYXGvDpWcOSoIbzjCenQgUB8Xy9YHtuw
-	32sYMM4LmwBAlGS3XIL+Tbg/f8tB5Dpl04vEftCQo3rtb+tfdI61d+VZ7YSKI6sMIM7edrLIRTP
-	ANUIjo1HsteejgUT07SADP5Bhrw9678B1bYOJcygazub4Tt8qMmWBuWJ0npsXhsC1VZ9pjJJywP
-	Q9kfnZG2ESz30aRRTWYWW+KX8fhXhqIcmPm3b4++N3lAHIqOZjPsj2aXRtG9lF+0hqDwQBYjA7p
-	R6pehpWAub5+DuqzKB9YyEftcc9InuB6Ntuh86jFFUW4yt06Ql/LDDLs0mJw13nKicE5V00/1G5
-	jMGOp0t8RetekMykal76c9MOV0MqvojIZJCtX7aQjNjv59sMxN0dJdHXuYfO6m/XfsOBaBrwY/W
-	sUuO3DYJ8VzPEuuFowguT30jAgw00RTGYrQ9xHgvCV0gGHz/Ep6Jws2qaPWHgpYevmE9A=
-X-Received: by 2002:a05:600c:348f:b0:4a1:e774:370c with SMTP id 5b1f17b1804b1-4a1e7743940mr39926855e9.30.1792394129754;
-        Mon, 19 Oct 2026 00:15:29 -0700 (PDT)
-Received: from localhost ([2c0f:3d00:6be:8900:ce5e:9212:ea4b:f30])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4a1cc642573sm208220875e9.2.2026.10.19.00.15.28
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 19 Oct 2026 00:15:29 -0700 (PDT)
-Date: Mon, 19 Oct 2026 10:15:25 +0300
-From: Dan Carpenter <error27@gmail.com>
-To: Comfort Oyewole <coyewole7@gmail.com>
-Cc: gregkh@linuxfoundation.org, andy@kernel.org, outreachy@lists.linux.dev,
-	linux-staging@lists.linux.dev, linux-fbdev@vger.kernel.org
-Subject: Re: [PATCH] staging: fbtft: remove trailing semicolons from macro
- definitions
-Message-ID: <atXDjUmhI38WQhaJ@stanley.mountain>
-References: <atTnRr-JGIb9eLQR@ubuntu>
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="hAHmBov3"
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D31941F000C4;
+	Mon, 19 Oct 2026 07:16:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1792394176;
+	bh=onWXFAHmMMCGwN2tiwRj411Wf9RiuZvpWrVfItiTRVc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=hAHmBov3qbWdm1CRJoAatPyi9CSI2ShozEfhbgYQe0REDnOtxWorNrds8fKfxurz1
+	 B2TEtvBxNU3zoMVDdE8c0o7Amc5YrJM1sFhBF5eGnfJ9NChPgu2Py3OQ+oCi/WeCWL
+	 3hlM/McUeB8ugJh2cu1R5EtBbniJfgWrs/hklYqY8GrY75R/ehz2i33EF5o+Ucb3ND
+	 eZDs0HQYAjhFWPzvoh/gjzDlWiqr4v6QCC7iq0oPqLPLGc406TmZp8F0VEw3x08o6E
+	 +P8yUU+RWSK2ByIRR+7aQGNeapvwlHoC61Conjo93AwZ7GoJ1vNoEMBi4WFJzMtoOL
+	 lqIhpSqJ8Yxnw==
+Received: from johan by xi.lan with local (Exim 4.99.5)
+	(envelope-from <johan@kernel.org>)
+	id 1xIhbS-00000008Fhe-2fUC;
+	Mon, 19 Oct 2026 09:16:14 +0200
+Date: Mon, 19 Oct 2026 09:16:14 +0200
+From: Johan Hovold <johan@kernel.org>
+To: pavankumaryalagada@gmail.com
+Cc: gregkh@linuxfoundation.org, outreachy@lists.linux.dev, elder@kernel.org,
+	dtwlin@gmail.com, vireshk@kernel.org, greybus-dev@lists.linaro.org,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
+	Alex Elder <elder@riscstar.com>
+Subject: Re: [PATCH v5] staging: greybus: use %pe in error messages
+Message-ID: <atXDvg_u1hQAZiYX@hovoldconsulting.com>
+References: <20261018084925.11793-1-pavankumaryalagada@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -76,17 +48,45 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <atTnRr-JGIb9eLQR@ubuntu>
+In-Reply-To: <20261018084925.11793-1-pavankumaryalagada@gmail.com>
 
-On Sun, Oct 18, 2026 at 04:35:34PM +0100, Comfort Oyewole wrote:
-> Remove trailing semicolons from macro definitions to allow the
-> macros to be used where callers provide their own trailing semicolon
+On Sun, Oct 18, 2026 at 02:19:25PM +0530, pavankumaryalagada@gmail.com wrote:
+> From: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
 > 
+> Use %pe to print the error pointer directly and display its
+> error name.
+> 
+> Keep PTR_ERR() calls when the numeric error value is needed
+> for returning the error code.
+> 
+> Signed-off-by: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
+> Reviewed-by: Alex Elder <elder@riscstar.com>
+> ---
+> v5:
+> - Drop arche-apb-ctrl.c and arche-platform.c changes because the
+>   files were removed.
+> - keep only the uart.c change, as the fw-core.c changes are already
+>   present in staging/staging-next.
 
-This doesn't match what the patch does.  I'm surprised that this code
-compiles with all the semi-colons removed, honestly.  :P
+The commit summary (Subject) is a bit misleading now.
 
-regards,
-dan carpenter
+> diff --git a/drivers/staging/greybus/uart.c b/drivers/staging/greybus/uart.c
+> index d47f00751e7a..74c9898c0eed 100644
+> --- a/drivers/staging/greybus/uart.c
+> +++ b/drivers/staging/greybus/uart.c
+> @@ -956,7 +956,7 @@ static int gb_tty_init(void)
+>  	gb_tty_driver = tty_alloc_driver(GB_NUM_MINORS, TTY_DRIVER_REAL_RAW |
+>  					 TTY_DRIVER_DYNAMIC_DEV);
+>  	if (IS_ERR(gb_tty_driver)) {
+> -		pr_err("Can not allocate tty driver\n");
+> +		pr_err("Can not allocate tty driver: %pe\n", gb_tty_driver);
 
+There's really no need to print the errno here as it will always be
+-ENOMEM if we ever hit it. You could even remove the error message
+completely.
 
+>  		retval = PTR_ERR(gb_tty_driver);
+>  		goto fail_unregister_dev;
+>  	}
+
+Johan
