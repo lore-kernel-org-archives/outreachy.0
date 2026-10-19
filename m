@@ -1,89 +1,77 @@
-Received: from mail-wr1-f43.google.com (mail-wr1-f43.google.com [209.85.221.43])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 138D941A8F
-	for <outreachy@lists.linux.dev>; Mon, 19 Oct 2026 00:05:44 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.43
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CA82A182D6
+	for <outreachy@lists.linux.dev>; Mon, 19 Oct 2026 00:26:02 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.104
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1792368346; cv=none; b=YnMHaI97hUz6P5/4+k7Jx5Gfa1taZuTlxqlTRm1UUSosJzrw3NAzNd0hYho8APaqzRD57X866oDkQaGLFvAn12BctFA6la2MGD5WEQLS72qUrUIx/p0UjEctyqMfw7bH7ZgRjgGuoKn38Ic0mga4ZRwRRKU/mJo1yPsjzFBUDdA=
+	t=1792369566; cv=none; b=D5ogy7rvD0MpBp0h4OZyg5stMllonRqCgsSYWPXmhwoH4JBgReO7gwqtPZm4Q35WvLOFR/oHOgayzLjd6RfJvxT4F+8ya1RAq0d1XkR/hywOuK1zFlfwJSc8S0gbDu12ppDwuG1wik08uHN29cv+3X+3LSeE9MR1rlWDb5s3T0A=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1792368346; c=relaxed/simple;
-	bh=ifjHrypS8OaIbgMtrNppOarqjtvx73eEWodHO2AKcL4=;
-	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version; b=G1v229ADPGNVZqu3R8J5mHtSPCyR8ZTAWBbTHLyi67hHaz0NwY8rhWVTQIdRYDva7990GSYS/Rd/m3jK13CRVSFrm4PlkY6K97OjVwdLhVaIEnImxaRr40Ihfkc+UdDFA+9QyQmkI3svU5u+p+sfP3srxuby2g7AvUU1i718x0I=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=SzETRaPf; arc=none smtp.client-ip=209.85.221.43
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	s=arc-20240116; t=1792369566; c=relaxed/simple;
+	bh=5E7axThs9MvdrUmVETnhG6+jhz1oJllRjr92H44UdDo=;
+	h=Date:From:To:cc:Subject:In-Reply-To:Message-ID:References:
+	 MIME-Version:Content-Type; b=R0SUY9rPwQpZGOp8v0XQKG5knMlKOMKPmtrDwEMiLhcQp7NjKHNGHhErCHlbdHCe2/8M7vrvMgYXu673pjLGaRe9gOmwPbZ+KsshlNAossM063oF9hm2RGWBzT3F/4bdGC6b7hazCBzunDRUw3AnI4pRroXYlbqegchgDIxDuYE=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=NDivlYUK; arc=none smtp.client-ip=192.134.164.104
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="SzETRaPf"
-Received: by mail-wr1-f43.google.com with SMTP id ffacd0b85a97d-48df4e9d2d4so862830f8f.3
-        for <outreachy@lists.linux.dev>; Sun, 18 Oct 2026 17:05:44 -0700 (PDT)
+	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="NDivlYUK"
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792368343; x=1792973143; darn=lists.linux.dev;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=ifjHrypS8OaIbgMtrNppOarqjtvx73eEWodHO2AKcL4=;
-        b=SzETRaPfKQMNltNSIxIFcKzmuD7c0heArJL1JqAy7Vwj+sCdQhpHjHA+wbGAvuca9U
-         +qX6t6ftynOuTi7PEvqcVmlAmlwjs9MnykHEOMhoLntxIDGvqXFmMwVJHV/jmi/ksjUQ
-         o40Kd+9D+SjIcVB3dZGVrN3uEvNAoBARRP+UqnITbsn8OCRufW72jbDPb6QQZUNXUrVB
-         a1mzC5hX8ZTPcfBrrrFaYaTnP6Ey4B2n9ilDmurKq6v3HZWo1zdQ5qTBl+xo25amBUVz
-         HAmCZWOqxls/DHqr/HXwVXloxEvQ146IqfvzsnKCyvEm3lBO3TsIhuQUAYK3cWWdU+PZ
-         q2/Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792368343; x=1792973143;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=ifjHrypS8OaIbgMtrNppOarqjtvx73eEWodHO2AKcL4=;
-        b=oMg1opTiMG07U5Dxpqk8271LiknCiE3f01Q0QGivFqKsx3vi76ZXAttYZxh6uYLpO7
-         b7nJLZqPIdJltplDAoQSwcVJPUXYPep6gtJKa4xjsYIagQWlDddlh+YeJqKCiPpgJt6+
-         PqniNpROAkodhas7ipfHkjrAs9el/BG1/czFrnksJPG5GAST4OxR9WCHVDhudJ6hURlG
-         lOdgXyRBPPO+p7ZILkpT3I6DvxlWPJZOJMjqqOeTYIKcg8Zlqgrr9UFSbWCANHPAjwaQ
-         HQudMnQvQLJLFX2QeMnlDhq+o4pLHQoeVLh2w34RM0RzOyidAKIalhslWhgptu1ylRFP
-         Q8Lg==
-X-Gm-Message-State: AFq9FYL/4zRU4hLELbRd8aa2P7RTuqNICiYdWHdfPYHHP3lbprY3pN3n
-	ABNF8qlVZ/gNmn+q88qwf8GBlWMPwfO8XWAmnip44rQw8l7H+kvR7D7Z
-X-Gm-Gg: AYBFou30DWrtvuSpJBv5VdsnKxwpLeKKvCQTA2asCBKo/I7Zxn1NSHXQVUtftLLw9H+
-	tI/6gwue6hXZzegt6g7yrP17yqKwgn7hbH/RgA7Vi7epx7U3S0DJbKzIeWqoIh30ounYEqQ+rOW
-	rInTI8GN+0Mm9PTqZvXc62jSC3wt/AEcgCKjtXYF9+1/VYXIPid25Eo32VfPQe8dfhklFrkhnhP
-	elGNVglIOBKT9dvqFZpvFdd+9ikfeBIPCM4Pl1uCRCM5UjEd1oqtPfgOH2CbaLC07CKTi5gIdY/
-	Th7kUFVmJAykZzekkVN0jkArBhipAd+fAoe2El2pIyhfjFZhywkPQ2wAQijVYXF0vhpLvLNXVs5
-	qjNea8oEv3JeQuBjubiLiklL/umWyfzB82VPGfNfknUUO5qZJRbLQgnee7+FjdRsBVbTLY4yGvA
-	fGrsVQXz2VEo/RVF8qJN7WKZhjbQ1aP/7+rWsll57KzvluYMRnM5JTun4knAObrnv4k8g1w3jkB
-	IY23cwYNtEyu37cklH6Io7KQ2g=
-X-Received: by 2002:a05:6000:41cb:b0:48b:10c8:2181 with SMTP id ffacd0b85a97d-48e07f9a2b1mr10996069f8f.27.1792368343069;
-        Sun, 18 Oct 2026 17:05:43 -0700 (PDT)
-Received: from DESKTOP-0KSTGNI.localdomain ([156.213.131.39])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48dfd5038b8sm19923438f8f.48.2026.10.18.17.05.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 18 Oct 2026 17:05:41 -0700 (PDT)
-From: Temitope obabi <obabitemitope765@gmail.com>
-To: gregkh@linuxfoundation.org
-Cc: outreachy@lists.linux.dev,
-	Sudip Mukherjee <sudipm.mukherjee@gmail.com>,
-	Teddy Wang <teddy.wang@siliconmotion.com>,
-	linux-fbdev@vger.kernel.org,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] staging: sm750fb: Remove redundant zero assignments
-Date: Mon, 19 Oct 2026 03:03:10 +0300
-Message-ID: <20261019000443.753-1-obabitemitope765@gmail.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <2026101838-oaf-bobcat-efa0@gregkh>
-References: <2026101838-oaf-bobcat-efa0@gregkh>
+  d=inria.fr; s=dc;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=x4hAZr7JC+sLeCVkzpe5lrwl0OD9+FTdeciAKrMi4+0=;
+  b=NDivlYUKpVSf2QTeub+95RWTWKpI6LRHqe6h1cNhLrYzjzKNpyhJpLN2
+   SfVRxVI0zGJHiTpwfo8ECA2qvddEzwX150z5nc1oeYepulwfsLyYoAXL3
+   o24uOsNYpUlHqxoF+9XCe48ZuR8kdL9zfd7eeZk94isuleLy7ml0u5TjK
+   c=;
+X-CSE-ConnectionGUID: 0GO/iXQHSlK1eXCiNmzq/Q==
+X-CSE-MsgGUID: s+XMTdHSSBeMax8kbm4zcA==
+Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="6.27,166,1787004000"; 
+   d="scan'208";a="160166223"
+Received: from c-76-123-3-53.hsd1.va.comcast.net (HELO hadrien) ([76.123.3.53])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Oct 2026 02:26:00 +0200
+Date: Sun, 18 Oct 2026 20:25:57 -0400 (EDT)
+From: Julia Lawall <julia.lawall@inria.fr>
+To: Comfort Oyewole <coyewole7@gmail.com>
+cc: outreachy@lists.linux.dev
+Subject: Re: [KERNEL NEWBIES ACCESS] ComfortOyewole
+In-Reply-To: <8e80fdd3bd43a3ac4e90085d3b33174e87af62eb.camel@gmail.com>
+Message-ID: <3942ed9-80c7-7a66-c61f-88f6142dea1b@inria.fr>
+References: <8e80fdd3bd43a3ac4e90085d3b33174e87af62eb.camel@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/mixed; boundary="8323329-967600680-1792369560=:3376"
 
-Hi Greg,
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Thank you for the feedback. I understand that keeping the explicit
-assignments is preferred, so I will drop this patch.
+--8323329-967600680-1792369560=:3376
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
-Thanks,
-Temitope
+
+
+On Sun, 18 Oct 2026, Comfort Oyewole wrote:
+
+> Hello Everyone,
+>
+> While following the steps in the Outreachyfirstpatch documentation, I
+> noticed that the link referenced for the Linux kernel coding style is
+> not accessible here:
+> http://elixir.free-electrons.com/linux/latest/source/Documentation/process/coding-style.rst
+>
+> I’d like to propose updating it to the official HTML version on
+> kernel.org, which is accessible here:
+> https://www.kernel.org/doc/html/latest/process/coding-style.html
+
+Thanks for the report.  On what page do you find that link?
+
+thanks,
+julia
+--8323329-967600680-1792369560=:3376--
