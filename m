@@ -1,80 +1,107 @@
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-alma10-1.taild15c8.ts.net [100.103.45.18])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from mail-wm1-f54.google.com (mail-wm1-f54.google.com [209.85.128.54])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9DE1F39099C;
-	Mon, 19 Oct 2026 06:43:58 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=100.103.45.18
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 232A9381EAB
+	for <outreachy@lists.linux.dev>; Mon, 19 Oct 2026 07:11:58 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.54
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1792392239; cv=none; b=FhiB6qPCmU4OoKqdPKvd3lcaqtJAc2/y6FQEkr7Y584lTM3IZH/LAVMkdbr9oN7/jEtlKmC10WnhMZfaQAr6BBJ0XNa79pHBpf9G32Erw+zbTLPjQ8UgxOgZcK0D8uzElbsG1mgNozldF04H7SIWlbnMAdQ+jV2KAbxBpIpOn3o=
+	t=1792393920; cv=none; b=l9HNyHLknTpWWKbw0++WhHKhuunZHERxV61EqeZrbBNezJwRf2PtRVIVJ1iC+WWTE0qb2SC1vuqMoG17rQNaFhCz/cqyNWrE8Racoc27ZO71gzkbbEYvICBoGPktUA8jqzKlmwdtK8rMbA0d6GO7p946lZRTH1dbcJa1KysEQ/8=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1792392239; c=relaxed/simple;
-	bh=/vA/9kVrCwE0fqkyOOMo/OA17ASjGtUth1+dNiQ41XY=;
-	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To; b=auefFJlRm5gLxcirx/ftB5bBxKoejzFoJGnZkg6JRI9WeKpSW0A2LLvZcB70H1qViJstZpjWveN8AZK4zVSkB2f7kdNzzYjFPvHex6Gxwx1yWN/Dt1HPgdx0wDPabf+YJsUaVG5qjQM34oc/Sh9haM1cKzNYCJNX/fisrAH81h4=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=FHPzZrBG; arc=none smtp.client-ip=100.103.45.18
+	s=arc-20240116; t=1792393920; c=relaxed/simple;
+	bh=f59ywmtVFYnZ4Aq+pryFem0695sG6gmNqlHEnXTKRdw=;
+	h=Message-ID:Subject:From:To:Cc:Date:In-Reply-To:References:
+	 Content-Type:MIME-Version; b=tooWkQBNeC7ALSTZuDl4UbdAsYNVu7ODsgoac0X4U4Hk7ruU6zcajCql/x4YKQAcb/usdelDEUjWxl7yfq/TKFHna8WeygkWU4iD4meNkX3lEj5zwHHoLCZR1J+nXl+wGx9jHm3+o0GtHpiCZBjHl+YWKMe2gogl0PAEbrqcjUM=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=nlWPIFhL; arc=none smtp.client-ip=209.85.128.54
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="FHPzZrBG"
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 527291F000C4;
-	Mon, 19 Oct 2026 06:43:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792392238;
-	bh=mqOfvKIVgzwAuj39nA2GPRCbFTmqDzZMfWz8fB+0D0Q=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=FHPzZrBGzAzJmEwxLevodGvwtiyw6wm4rC1+1TC6kFH5288WXxy2JoyRpx+Kg+DAn
-	 rxW9Asz1ludNlsW/kMkv4OHJXVZlIanPkZ8W4TNGz5iHrY3iasyM5RTMxM8xuwu9e3
-	 f2OHL+sMI/nbHurmj5FNe/zGA7VfxLY2zTfQR3aeUPb0o0Q3PnxyeqVpXwAzgzxGVL
-	 k7gssySDrk5O6/erpgshCFT/n3erUdfnEEr0Mtbrcft/jwryjP4wqxlZbv/ZYMHaH/
-	 EOeQE2WwsEqnPLgmFrIH8dBA/lrdSfp+/5lI3cuVyhW1oU1pTGRQFYK60kdFuvIwVG
-	 bDE84sE7rVvQA==
-Received: from johan by xi.lan with local (Exim 4.99.5)
-	(envelope-from <johan@kernel.org>)
-	id 1xIh6C-000000086Rc-1Lxt;
-	Mon, 19 Oct 2026 08:43:56 +0200
-Date: Mon, 19 Oct 2026 08:43:56 +0200
-From: Johan Hovold <johan@kernel.org>
-To: Torra Sowmya <sowmyatorra@gmail.com>
-Cc: outreachy@lists.linux.dev, elder@kernel.org, gregkh@linuxfoundation.org,
-	greybus-dev@lists.linaro.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] staging: greybus: fix loopback Kconfig help text
-Message-ID: <atW8LEl3lo5iS3Gv@hovoldconsulting.com>
-References: <20261018172711.8013-1-sowmyatorra@gmail.com>
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="nlWPIFhL"
+Received: by mail-wm1-f54.google.com with SMTP id 5b1f17b1804b1-4a19cba5c14so18961095e9.3
+        for <outreachy@lists.linux.dev>; Mon, 19 Oct 2026 00:11:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1792393917; x=1792998717; darn=lists.linux.dev;
+        h=mime-version:user-agent:content-transfer-encoding:content-type
+         :references:in-reply-to:date:cc:to:from:subject:message-id:from:to
+         :cc:subject:date:message-id:reply-to:content-type;
+        bh=0LfHoplEjhh4tbEt4TC5T5vqwj4BvFm1Yvwx89OeZD4=;
+        b=nlWPIFhLQKTF+DQk9Zh7udoD/ELSgeAle4nr49/IpskuyTrnGNVvO+fPumkKPecd1t
+         6lUdFHnLy2TF6lxvh2aeJoOpbU6UidnbMO460TS9HoWoCE/0IGonG8RdX3cJkIjyMqR/
+         Vz4IPP+ghfNg+tCM74GIELNMW2jLn4segMP9M/tOwUIHvpAio6lvMByfnXZMARV6q7x9
+         bec3QzeDdC8piD4tJvRoQ6QN32goiS8tsOaHOlJ1ocDXNSDe93I7S4cEK0oOzOENqufG
+         mB9/ou1yDyoAkxLOyhWsFXX9I10/5qcZr/716NL9EDUxUtyP9xL+3mxb58VS7vwNddrN
+         9lqA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1792393917; x=1792998717;
+        h=mime-version:user-agent:content-transfer-encoding:content-type
+         :references:in-reply-to:date:cc:to:from:subject:message-id:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=0LfHoplEjhh4tbEt4TC5T5vqwj4BvFm1Yvwx89OeZD4=;
+        b=fxYRZ0wz1D5O7aOSu1EK9bDBLx1B7tvdQw7EJpXJ/ZknLAoKHQI0IOXCbYxr4zzNuq
+         T05ynsFPCmoZWLh7sdUZzFaJp8GFunMlv412fnRnqC1ucioquG2e7uxEBygsLf4V/e7d
+         TD/s+FdpEQGTtuc/7wdhfxF++zgqfojn7faI7jlNF5swaG99atnKB6eYThuJuGSGAMrT
+         G1UlsqAHTphDH1/FKznqoHv4E0zZuTWzoqLmxnz/r02EgWNBqiO92Mc90ZKeAnO/eIHZ
+         xLINTisS6wHG/Bhc6wsLq7CbYZzdgnUf37fYdxK38x/8zrwOiQfYy6Ecb49jXnX/BnyA
+         JL5A==
+X-Gm-Message-State: AFq9FYJZ2dwNAmDO30ts8AevXcOEN6VKU0GSDjB2G59NfaOYdMJyaySo
+	V9PsKwtZLv2oHJsPUvY37B9zJg/PL+AJyLu5LT288xZo5S0k4rbjY+sz
+X-Gm-Gg: AYBFou3qN5s25KcNThzloAt3qevFDIhA0QNRBsLi+pt1BYULZCk+ZO7zhRxGm043VNe
+	r4tzD53hZsAb68HsJhClYxcIO6YYanW+Dj4ezTFDoqooUeJ+rw7t/7gqzSdDwNp84J2y6xLV1wU
+	06/phnkuYwmYYU3feYQlqeDm1VQwBB6JbQIghOGmf/Wyg/felnX9HvxEaGcXx+A4cYH88qyH7ka
+	yU6/7mfq1mQTqKPey/70+wKaJMkzCyBhBPc8Nccn7KZpSd2JYkJFbg7zhmlJyPrAGUuMuU2+0Qi
+	BO1H+F7cpxOyKU5BC7ZjA9BXHuD/W1dP7bR1nOsNP1VlfGpYfEWCGinwow84zAQ2go+eQ2Kb7mx
+	bpq2JvSy2u0UHPldKmefX2wkOyOMQFeGbAg1mhgRY0jlhz7rgsvFDOZ1iugxjEdMOnl0A7qCnpk
+	G1U/gMgzo/0WUWdQG1c2BwfPb0xlWzWONbrApaOd4szOuo0chiERL76zL5OAGgiphdKm/d59SWb
+	3USo5dSxIANiMSM30POYd+6g6PTgnrElIL+ZME3F8P60vUWTC2I1Q==
+X-Received: by 2002:a05:600c:c8c:b0:4a0:bc9:28c6 with SMTP id 5b1f17b1804b1-4a1d7643dadmr126374435e9.34.1792393916919;
+        Mon, 19 Oct 2026 00:11:56 -0700 (PDT)
+Received: from ?IPv6:2c0f:f5c0:520:5f56:3dd:2725:4098:ccfc? ([2c0f:f5c0:520:5f56:3dd:2725:4098:ccfc])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4a1e3ebb3aasm169594565e9.0.2026.10.19.00.11.55
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 19 Oct 2026 00:11:56 -0700 (PDT)
+Message-ID: <ccf48fa6a433c225c95299d27c7ecfac8a644887.camel@gmail.com>
+Subject: Re: [KERNEL NEWBIES ACCESS] ComfortOyewole
+From: Comfort Oyewole <coyewole7@gmail.com>
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: outreachy@lists.linux.dev
+Date: Mon, 19 Oct 2026 08:11:54 +0100
+In-Reply-To: <3942ed9-80c7-7a66-c61f-88f6142dea1b@inria.fr>
+References: <8e80fdd3bd43a3ac4e90085d3b33174e87af62eb.camel@gmail.com>
+	 <3942ed9-80c7-7a66-c61f-88f6142dea1b@inria.fr>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.2-9 
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20261018172711.8013-1-sowmyatorra@gmail.com>
 
-On Sun, Oct 18, 2026 at 10:57:11PM +0530, Torra Sowmya wrote:
-> The GREYBUS_LOOPBACK help text incorrectly describes the Debug Log
-> Class and names gb-log.ko as the module. Correct the description to
-> refer to the Loopback Class and name gb-loopback.ko, matching the
-> driver and Makefile.
+-----Original Message-----
+From: Julia Lawall <julia.lawall@inria.fr>
+To: Comfort Oyewole <coyewole7@gmail.com>
+Cc: outreachy@lists.linux.dev
+Subject: Re: [KERNEL NEWBIES ACCESS] ComfortOyewole
+Date: 10/19/2026 01:25:57 AM
 
-Nice find!
 
-> Signed-off-by: Torra Sowmya <sowmyatorra@gmail.com>
-> ---
->  drivers/staging/greybus/Kconfig | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/staging/greybus/Kconfig b/drivers/staging/greybus/Kconfig
-> index e1d7ffdf4a6f..3ff47550081d 100644
-> --- a/drivers/staging/greybus/Kconfig
-> +++ b/drivers/staging/greybus/Kconfig
-> @@ -75,10 +75,10 @@ config GREYBUS_LOOPBACK
->  	tristate "Greybus Loopback Class driver"
->  	help
->  	  Select this option if you have a device that follows the
-> -	  Greybus Debug Log Class specification.
-> +	  Greybus Loopback Class specification.
->  
->  	  To compile this code as a module, chose M here: the module
-> -	  will be called gb-log.ko
-> +	  will be called gb-loopback.ko
+On Sun, 18 Oct 2026, Comfort Oyewole wrote:
 
-Reviewed-by: Johan Hovold <johan@kernel.org>
+> Hello Everyone,
+>=20
+> While following the steps in the Outreachyfirstpatch documentation, I
+> noticed that the link referenced for the Linux kernel coding style is
+> not accessible here:
+> http://elixir.free-electrons.com/linux/latest/source/Documentation/proces=
+s/coding-style.rst
+>=20
+> I=E2=80=99d like to propose updating it to the official HTML version on
+> kernel.org, which is accessible here:
+> https://www.kernel.org/doc/html/latest/process/coding-style.html
+
+Thanks for the report.  On what page do you find that link?
+I found it in the Git post-commit hooks section of the Outreachyfirstpatch =
+page. I see that the link has now been updated to the .html version.
+thanks,
+julia
