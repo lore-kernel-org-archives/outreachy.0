@@ -1,77 +1,87 @@
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CA82A182D6
-	for <outreachy@lists.linux.dev>; Mon, 19 Oct 2026 00:26:02 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.104
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BD5C710F1;
+	Mon, 19 Oct 2026 00:29:07 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.134.164.83
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1792369566; cv=none; b=D5ogy7rvD0MpBp0h4OZyg5stMllonRqCgsSYWPXmhwoH4JBgReO7gwqtPZm4Q35WvLOFR/oHOgayzLjd6RfJvxT4F+8ya1RAq0d1XkR/hywOuK1zFlfwJSc8S0gbDu12ppDwuG1wik08uHN29cv+3X+3LSeE9MR1rlWDb5s3T0A=
+	t=1792369750; cv=none; b=ZWMlCVILs42Bkv+gLMHOe4qEoigXI7UvlH3XzsoCb88I0uNl/SKa/2iQyQ6YzwZstSV618cNJBWZGOX84URymbzviApeuThczWvaml6WQWjRjZxZdSjUb3BDpSns7vi/hn/jXpX/Qt+qXE5Txxv/8zgQP6etf5qxUUW9Tfl7GHo=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1792369566; c=relaxed/simple;
-	bh=5E7axThs9MvdrUmVETnhG6+jhz1oJllRjr92H44UdDo=;
+	s=arc-20240116; t=1792369750; c=relaxed/simple;
+	bh=m6Zj10IoU6U9egtozcmN0uHeXQWn+gwLqE0GJfQ24Ew=;
 	h=Date:From:To:cc:Subject:In-Reply-To:Message-ID:References:
-	 MIME-Version:Content-Type; b=R0SUY9rPwQpZGOp8v0XQKG5knMlKOMKPmtrDwEMiLhcQp7NjKHNGHhErCHlbdHCe2/8M7vrvMgYXu673pjLGaRe9gOmwPbZ+KsshlNAossM063oF9hm2RGWBzT3F/4bdGC6b7hazCBzunDRUw3AnI4pRroXYlbqegchgDIxDuYE=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=NDivlYUK; arc=none smtp.client-ip=192.134.164.104
+	 MIME-Version:Content-Type; b=DRwFKASKeWhxbjQ+VfFNyQUq3ggF2BWME+Tx7hrgw0zrGgwlBHm6G8jHPeUFpocJI79y9RQBkxHZMPBmFhB6QnQkRmu7wNOlx/+lGn88kBVnJ+i1fZYcEAUYLTGhXvoLYVtl26O7acdKW9j/tG3Fru1NJWWJQfjqeXnz0uqkrMM=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr; spf=pass smtp.mailfrom=inria.fr; dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b=S45bTdRV; arc=none smtp.client-ip=192.134.164.83
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="NDivlYUK"
+	dkim=pass (1024-bit key) header.d=inria.fr header.i=@inria.fr header.b="S45bTdRV"
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
   d=inria.fr; s=dc;
   h=date:from:to:cc:subject:in-reply-to:message-id:
    references:mime-version;
-  bh=x4hAZr7JC+sLeCVkzpe5lrwl0OD9+FTdeciAKrMi4+0=;
-  b=NDivlYUKpVSf2QTeub+95RWTWKpI6LRHqe6h1cNhLrYzjzKNpyhJpLN2
-   SfVRxVI0zGJHiTpwfo8ECA2qvddEzwX150z5nc1oeYepulwfsLyYoAXL3
-   o24uOsNYpUlHqxoF+9XCe48ZuR8kdL9zfd7eeZk94isuleLy7ml0u5TjK
-   c=;
-X-CSE-ConnectionGUID: 0GO/iXQHSlK1eXCiNmzq/Q==
-X-CSE-MsgGUID: s+XMTdHSSBeMax8kbm4zcA==
-Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+  bh=PX9P4epPwQGrFseDhd6txC4pMNLWfiLbHeHoD9TPFYg=;
+  b=S45bTdRVqIqKRLHuDeIcwLUVNoWdl+fDC2+tNKm4l3BHe/IiGO/Q1fYM
+   mL3Pr+5hKnqsJBqL1lX8sFJTlyZCoD3lu9IpuoUVJEJhPNadHNDpAgTS9
+   0ItLtnmjNZ8rkiyqCBDE938QFTbQvpXJ6Hh0MXezy4gx/yLj6wiZU2Rk7
+   o=;
+X-CSE-ConnectionGUID: ZX1RDQVJTku0PRIMR/E0VA==
+X-CSE-MsgGUID: fVzwDvrMQ1yHSljIa7uTtQ==
+Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
 X-IronPort-AV: E=Sophos;i="6.27,166,1787004000"; 
-   d="scan'208";a="160166223"
+   d="scan'208";a="300770566"
 Received: from c-76-123-3-53.hsd1.va.comcast.net (HELO hadrien) ([76.123.3.53])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Oct 2026 02:26:00 +0200
-Date: Sun, 18 Oct 2026 20:25:57 -0400 (EDT)
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Oct 2026 02:29:05 +0200
+Date: Sun, 18 Oct 2026 20:29:02 -0400 (EDT)
 From: Julia Lawall <julia.lawall@inria.fr>
-To: Comfort Oyewole <coyewole7@gmail.com>
-cc: outreachy@lists.linux.dev
-Subject: Re: [KERNEL NEWBIES ACCESS] ComfortOyewole
-In-Reply-To: <8e80fdd3bd43a3ac4e90085d3b33174e87af62eb.camel@gmail.com>
-Message-ID: <3942ed9-80c7-7a66-c61f-88f6142dea1b@inria.fr>
-References: <8e80fdd3bd43a3ac4e90085d3b33174e87af62eb.camel@gmail.com>
+To: Bashirah Lawal <bashirahlawal017@gmail.com>
+cc: andy@kernel.org, gregkh@linuxfoundation.org, 
+    dri-devel@lists.freedesktop.org, linux-fbdev@vger.kernel.org, 
+    linux-staging@lists.linux.dev, outreachy@lists.linux.dev
+Subject: Re: [PATCH] staging: fbtft: Fix continuation line alignment
+In-Reply-To: <20261018123430.148379-1-bashirahlawal017@gmail.com>
+Message-ID: <d1df7421-8b3-132-68c1-feb29ed47b41@inria.fr>
+References: <20261018123430.148379-1-bashirahlawal017@gmail.com>
 Precedence: bulk
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323329-967600680-1792369560=:3376"
-
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
-
---8323329-967600680-1792369560=:3376
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8BIT
+Content-Type: text/plain; charset=US-ASCII
 
 
 
-On Sun, 18 Oct 2026, Comfort Oyewole wrote:
+On Sun, 18 Oct 2026, Bashirah Lawal wrote:
 
-> Hello Everyone,
->
-> While following the steps in the Outreachyfirstpatch documentation, I
-> noticed that the link referenced for the Linux kernel coding style is
-> not accessible here:
-> http://elixir.free-electrons.com/linux/latest/source/Documentation/process/coding-style.rst
->
-> I’d like to propose updating it to the official HTML version on
-> kernel.org, which is accessible here:
-> https://www.kernel.org/doc/html/latest/process/coding-style.html
+Hello Bashirah,
 
-Thanks for the report.  On what page do you find that link?
+As noted by Greg's automatic message, you can't rely on the subject line
+to explain everything.  Every patch must have a comment saying what you
+have done and why.
 
-thanks,
 julia
---8323329-967600680-1792369560=:3376--
+
+> Signed-off-by: Bashirah Lawal <bashirahlawal017@gmail.com>
+> ---
+>  drivers/staging/fbtft/fb_tinylcd.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/staging/fbtft/fb_tinylcd.c b/drivers/staging/fbtft/fb_tinylcd.c
+> index afa8f1c740c5..d58b1247262b 100644
+> --- a/drivers/staging/fbtft/fb_tinylcd.c
+> +++ b/drivers/staging/fbtft/fb_tinylcd.c
+> @@ -38,7 +38,7 @@ static int init_display(struct fbtft_par *par)
+>  	write_reg(par, 0xE5, 0x00);
+>  	write_reg(par, 0xF0, 0x36, 0xA5, 0x53);
+>  	write_reg(par, 0xE0, 0x00, 0x35, 0x33, 0x00, 0x00, 0x00,
+> -		       0x00, 0x35, 0x33, 0x00, 0x00, 0x00);
+> +		  0x00, 0x35, 0x33, 0x00, 0x00, 0x00);
+>  	write_reg(par, MIPI_DCS_SET_PIXEL_FORMAT, 0x55);
+>  	write_reg(par, MIPI_DCS_EXIT_SLEEP_MODE);
+>  	fsleep(250);
+> --
+> 2.53.0
+>
+>
+>
