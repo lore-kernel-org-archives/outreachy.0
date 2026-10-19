@@ -1,131 +1,106 @@
-Received: from mail-dy1-f182.google.com (mail-dy1-f182.google.com [74.125.82.182])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=74.125.82.44
+ARC-Seal: i=1; d=subspace.kernel.org; s=arc20261015; a=rsa-sha256; cv=none;
+	t=1792429379;
+	b=uA/kDWZYcDcti/wkuwCQ6YiPNDf2oEp2tpgXOmgxFsdJWk41MRmbW+bo56sHoivMRn7g
+	 YlW6dutI03jTGS5fmGLBtE33ryORIl/zpjIz1vZEtnf+LVQyiixQA8spUmf6Wv8Tmgd5K
+	 oJDnod4voeOSvYGvxejttC86WfCjkfaCoPoC//tDBS/3AbWO0HoDqObVRrOdoU6Vxg4Xa
+	 Wgxbvqh5iDTwu36NGMPfMpb8l6RPv2W6av53QYJmlFfXqrDJ2NbA7tvodvVhVv8cMj4FA
+	 5Rbd6qywl8WesMBBgQyvVgTQ3H4LMfVahSrG7bbH5DKXoQbBRujOV837U/c5aF7aFog==
+ARC-Message-Signature: i=1; d=subspace.kernel.org; s=arc20261015;
+	a=rsa-sha256; c=relaxed/relaxed; t=1792429379;
+	h=DMARC-Filter:Received:DKIM-Signature:X-Google-DKIM-Signature:
+	 X-Gm-Message-State:X-Gm-Gg:X-Received:Received:Date:From:To:Subject:
+	 Message-ID:MIME-Version:Content-Type:Content-Disposition;
+	bh=t+rudXItXEK4LNmytAT27zswld1ia96eWlp9vIioMtI=;
+	b=Vq04gEoQ+XiQWLcAbEopD5xKThOVxe/WYNtpRXzTMS+S0MU9RXFItIYTXMORekZ7NDsa
+	 aqCAzxTKTAKgqSUPSK/H5MI2irh+Je+qbi0GCT75x/JOkQ4fwxTTR7Hm8UDXEt1e2RWAl
+	 OJHY/nqmGDxETZibIK+NeKJBJuTL5X8rS3HNNReT/ZkYsEJvuWjiOQW4ZIeNrdjXwr1qp
+	 RYmyTRq/TZkWjKxBy+xgUerCJbDbQhOpqUWGaN7wx4DivAYTqj2/Z+R4CxZg6/brHd1oV
+	 oVNw5ouG27mCCsYtNdcYduJVJlRhaG10Haivcb7UZ3pUVlrdw9s1L5i/1lWGhNp4hXg==
+ARC-Authentication-Results: i=1; smtp.subspace.kernel.org; 
+	dmarc=pass header.from=gmail.com;
+	spf=pass smtp.mailfrom=gmail.com;
+	dkim=pass header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=Imue+Hc+;
+	arc=none smtp.remote-ip=74.125.82.44
+Received: from mail-dl1-f44.google.com (mail-dl1-f44.google.com [74.125.82.44])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4DA784FFA5D
-	for <outreachy@lists.linux.dev>; Mon, 19 Oct 2026 13:57:30 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=74.125.82.182
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1792418253; cv=none; b=Jmm5QDio6K17sbCByjLKLLBZEyLRJhi6TCD5SX/yDB19fzFJToWUuMYhQ2y98lI0Y92gHB6aVh7JrQpcOLbelJZ2DiTKupXRQWNpIamS9avLR/vci1YpFXx7Q4XCJGYHwHWyxcbiVs3nV/rvJRTfWTAT4s7NPywx7JG46PaTh5s=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1792418253; c=relaxed/simple;
-	bh=fjvAi9gBmKMfVEEh1GwhVjdVvjqeXeo/SssrFZSAIlk=;
-	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version; b=F/gnFAoNX7miaAsmHP0Awefg+8FDo+RTlOpdmT1VVDtsXkqE3dzDb2I5k7AQ5g/0QC6Qg37QPNG01O33yRRgoIJjiqB1pMC9FfstwKZ13vy6nlD1NAEIsnUjjG2cKYznCWqhV0gfk4ciqZzYnlZxmqr7FKln+KrvCf4pQmgSyTg=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com; spf=pass smtp.mailfrom=gmail.com; dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b=ZAvcLZ5E; arc=none smtp.client-ip=74.125.82.182
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3F5E7606A33B
+	for <outreachy@lists.linux.dev>; Mon, 19 Oct 2026 17:02:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org 3F5E7606A33B
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.b="ZAvcLZ5E"
-Received: by mail-dy1-f182.google.com with SMTP id 5a478bee46e88-354ba08cfd1so3874688eec.1
-        for <outreachy@lists.linux.dev>; Mon, 19 Oct 2026 06:57:30 -0700 (PDT)
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=Imue+Hc+
+Received: by mail-dl1-f44.google.com with SMTP id a92af1059eb24-14394530ec6so1228495c88.1
+        for <outreachy@lists.linux.dev>; Mon, 19 Oct 2026 10:02:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792418249; x=1793023049; darn=lists.linux.dev;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=qHmwVRXgo6cTlOspH9FWDod09fxFDoidqai/OyNIW7c=;
-        b=ZAvcLZ5E7dZIw8GXOXZEvUJYejGCxlYorZomf041S6JytZ8lRTsrpJiButwSFyEsMV
-         D62Ba6fvtaaWYLX3eLACEJDVN+IuxmJ6pJrtDrrnIjGfACEVHdoKTL5/VvJcZF49tkZV
-         kSTaJPlUhHnx2k9tb5orqdi5Idyte4FtxfUYORd/LQWf9nvVnJNBLEw4dG1C2IOqYxs+
-         a/XBB227xh8oYeBjr/EbKPiHqtlPqbX2Lg1cs6AUBIM/JdPtGq9W7aksWzb+LBn4RiSc
-         1AJKuilVMSvBKLkCQEcYcn/E7WgXFAnWQEnDDf/PbSYS0md/u072dVoTLAmd+MPIYRyS
-         9oCA==
+        d=gmail.com; s=20251104; t=1792429378; x=1793034178; darn=lists.linux.dev;
+        h=content-disposition:content-type:mime-version:message-id:subject:to
+         :from:date:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=t+rudXItXEK4LNmytAT27zswld1ia96eWlp9vIioMtI=;
+        b=Imue+Hc+wSPh6QcMduXu2u6Dp+VLstkBJRrYnw9GUIGkw0JhcngkNYlQvK2R4nk0YM
+         m8ggZcR/w2QeWaMet7LIWY+NItUqy+3hQpJ1/Pl44Bsil76kqiUar7Q7Mf4cPuVg1d/c
+         zPnlWBAt194kR0IhPLgRA9+VxPSO3wMzb7R6kjcnmRC4wDwZSrTGAg6lyxoSlgFTrN5R
+         ojFym+SIbYF4skC0gla0+o44x0b0HnyG8lLDJkXmcY25qntFbSbSFnJdnzscXc4xx/Ua
+         Km4xGppEJFuCc9Rzkkans0OjgzSf3ZDJNzTsL57JzCCDL+4h9hI2ZOFPpATI7IQMhY9G
+         Hr2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792418249; x=1793023049;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=1e100.net; s=20260707; t=1792429378; x=1793034178;
+        h=content-disposition:content-type:mime-version:message-id:subject:to
+         :from:date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=qHmwVRXgo6cTlOspH9FWDod09fxFDoidqai/OyNIW7c=;
-        b=IAPEcSteJ3SspLvu8MsdygqTZk1QlKnm/nfJSUZxsVnPyZiAZrQnJaU5A0Rlvoxdwo
-         /vo5KBSUxBl+CCt0LyT7Q4rB9hMNRsSglNE8bGjQK0qC7vPm9WcL6/PPfMPGBXkZO/x6
-         uxaO2ALkESGZqCg0aYxCxbMQTp7ueky96eFE1Wcha27KD8bNs/WJiwVip/eZoE5o31SQ
-         Af/asLKcPST58u3lQSHzZ6DZyEArNK3wdjlPpZw9OK6yWCRmZ2UYWha2NssWVoTHBhl6
-         tU7/dPsW0zroGQtalXrQ3U2fScK0sJiJbDlsMx68xQtrXt5etgtPrEi1Oa5ZbgJH7ouF
-         RvEw==
-X-Forwarded-Encrypted: i=1; AKwUvBxlGrkUHqEAGADVspP/GUMy7Xy5irYZoO8fpOfHlWTHOljPDZKlVY1+D32bxcvrVSUvhMmqwQn8KFc=@lists.linux.dev
-X-Gm-Message-State: AFq9FYLMEfgTHpmNSR93PLb62FCV6OVqD8LnWvSCEW51YqsxD7MIQS+n
-	sXQDR65HAemu2QLpOmx97QND16nwjq4oy2SPkPKoc7cyz5XTtDpwYQpl
-X-Gm-Gg: AYBFou33+bXAH/shQxk2vQYe/kVh0Tvq4p/rVdiBJvLimadwmeNqs+yCpQS921OBDTo
-	6sA5hfA+Fb/xXtsTR61bBt0K0UjnbkWogqVn3l64LcIghTQRLXL/ud+eoQ3XBnFEtB4Mx0rqU0K
-	U9IVjqhmxYpTo/zXU/fnhfQxaZFpAwioHfBL2HJOP3buJNXTZR/XhYl8WDHnQgLsW0wVrOrwjw2
-	fsRDfaSEVMiGRSUaURDgRLydAwWYAoz+gAdjFj+E+JDvHOGO/t7RbrYy75eoFPvKgKIgFznnVoa
-	6tjDyY4pgxKpIVzo82ZOOcUc6LEHkqFzdftR6om8g64JVel2G8mwpMmAC1CpmuEDrTazmSrWv+d
-	l6YfQA4fXn1UANqEb5JF93YQaM5rJjHsYdQfBXKNCQC2eDetbtNbyLo9kGiEnZzMM1gSOUTVlRb
-	LJnowOt0HuGQg+CgcDYd97EoJMlMkgCiA1X9ySB3rOSjuIPwgPZFwAJtYtiMVMrg8nj+pSbo3oz
-	/nGPTk=
-X-Received: by 2002:a05:701b:4559:20b0:144:eb46:c31 with SMTP id a92af1059eb24-185120abebbmr10668293c88.17.1792418249139;
-        Mon, 19 Oct 2026 06:57:29 -0700 (PDT)
-Received: from user.. ([2405:201:c052:b00b:5c3b:b91a:15d0:4481])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1831acba710sm39831494c88.13.2026.10.19.06.57.23
+        bh=t+rudXItXEK4LNmytAT27zswld1ia96eWlp9vIioMtI=;
+        b=xHYAzI5xXQ1WxuorKhzfIhtAYKmqgQYvqoYcPt/BokOmEpUudQdQg3VzCZeCegQUaz
+         X7SotdvmJQu0dWHcURkxeVBMDlyMqWyyEsakGQ0FCqMNvXTLVcOsrufJbKQVnSU1d5n7
+         yPmRE42iLh4RALAGo3eNlXgJFXdkgR6rTuKQvVLEdBJa1D66Nr3kYJvgPP1FH/YSE4wy
+         6EEriPvQ3c3EkkqfC0PvMDNYjFh1dfJj1CxTFrqqHHj74kObpRLbQUlNh4OcsIsAjFw+
+         cwm0DAQ0vLTSPur0veqIsClVR0Qc93W6X+eQZQlGUIryxwJaHrrIDqxF5gzzX6o448Os
+         dhSQ==
+X-Gm-Message-State: AFq9FYKeaeaNdRtNp/64x7kk+m+NY5FRY4DHn+MVeDh95XtGqV94HGJG
+	NjldAt/V0/RT772p7AZUa9gljTTUJi3StJDrrjZYVSfTz/NGfXz1qKbWwkHD2KsB
+X-Gm-Gg: AYBFou1fxOoMZya3FHBZ28KC3T6E0krs2eRxHa1h2uhyyrbiH6xkmcjY/9844l8QMzY
+	JBvCh8LVuVVv9tXi5AKZ7CV45MP2EihN9KGude05ewZ314O2cGwGAO/aywSOc/V5n8wSLbJOjaO
+	A6PUrInauffbG6x1UWSSt/G5s2tUV234Cx+LZrqQAejpqyTDf5+Ge8+7WUWS9B32+9Sp9IDHIQp
+	mleVhBIPAy83Ew+9dXeX+izxF6u7yOYnPYonvcP4RP3+mTA2U5qTZB4uY4iXSRNgK30FV8d4egu
+	H85PH5/8X5aurLSknnoPR1iuAwWL3j8jUAkBCIGg4+XYiY/epivjiUuLvDDN8zkf2JVYriQr+RG
+	n+quS9tK2wpeskQU0Y6ZAvRGfc/FL/vn7KTJLt9HzOO+iCIpcPGzZ5JRxGlRYhKj+WFb5cQAiyr
+	UpZPGAaJv0024GLpFrB7QL/2VwFmrt7QUTC2bGUa2TNMGeSuSMsfnPNC5mi4jTmDq4h8GYA5dR3
+	HU=
+X-Received: by 2002:a05:7023:a4c:b0:144:fdf0:9d91 with SMTP id a92af1059eb24-1851285de14mr11186108c88.24.1792429378187;
+        Mon, 19 Oct 2026 10:02:58 -0700 (PDT)
+Received: from user ([2405:201:c052:b00b:4a5b:6025:cba1:1cd6])
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1831a6f5a13sm35783328c88.12.2026.10.19.10.02.56
+        for <outreachy@lists.linux.dev>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 19 Oct 2026 06:57:27 -0700 (PDT)
-From: pavankumaryalagada@gmail.com
-To: gregkh@linuxfoundation.org,
-	outreachy@lists.linux.dev
-Cc: dtwlin@gmail.com,
-	johan@kernel.org,
-	elder@kernel.org,
-	greybus-dev@lists.linaro.org,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>,
-	Alex Elder <elder@riscstar.com>
-Subject: [PATCH v6] staging: greybus: remove redundant error message
-Date: Mon, 19 Oct 2026 19:27:17 +0530
-Message-ID: <20261019135717.40979-1-pavankumaryalagada@gmail.com>
-X-Mailer: git-send-email 2.43.0
-Precedence: bulk
+        Mon, 19 Oct 2026 10:02:57 -0700 (PDT)
+Date: Mon, 19 Oct 2026 22:32:44 +0530
+From: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
+To: outreachy@lists.linux.dev
+Subject: Patch Submissions During the Merge Window
+Message-ID: <atZNNOiZIhzLf2f8@user>
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
+List-Post: <mailto:outreachy@lists.linux.dev>
+List-Help: <mailto:outreachy+help@lists.linux.dev>
 List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
+List-Owner: <mailto:outreachy+owner@lists.linux.dev>
+Precedence: list
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-From: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
+Hi,
 
-Remove the error message, as tty_alloc_driver() returns -ENOMEM
-when it fails, so printing the message is unnecessary.
+staging-next is currently closed due to the merge window.
 
-Signed-off-by: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
-Reviewed-by: Alex Elder <elder@riscstar.com>
----
-v6:
-- Remove the redundant error message, as suggested by Johan Hovold
+should we continue submitting patches to mailing list for review
+during this period, or wait until it reopens?
 
-v5:
-- Drop arche-apb-ctrl.c and arche-platform.c changes because the
-  files were removed.
-- keep only the uart.c change, as the fw-core.c changes are already
-  present in staging/staging-next.
+As the Outreachy contribution period ends on November 9, the time is
+quite limited. I wanted to check how we should proceed.
 
-v4:
-- Return error codes directly instead of storing them in ret,
-  as suggested by Julia Lawall.
-- Remove the unused ret variable.
-
-v3:
-- Extend the %pe conversion throughout Greybus, as suggested by Alex Elder.
-
-v2:
-- Use %pe in the firmware management case, as suggested by Jeremy Clifton,
-  to match the other cases.
-
-v1: https://lore.kernel.org/outreachy/as0nhVbagZa8Birm@user/T/#t
----
- drivers/staging/greybus/uart.c | 1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/drivers/staging/greybus/uart.c b/drivers/staging/greybus/uart.c
-index d47f00751e7a..4de61fca6725 100644
---- a/drivers/staging/greybus/uart.c
-+++ b/drivers/staging/greybus/uart.c
-@@ -956,7 +956,6 @@ static int gb_tty_init(void)
- 	gb_tty_driver = tty_alloc_driver(GB_NUM_MINORS, TTY_DRIVER_REAL_RAW |
- 					 TTY_DRIVER_DYNAMIC_DEV);
- 	if (IS_ERR(gb_tty_driver)) {
--		pr_err("Can not allocate tty driver\n");
- 		retval = PTR_ERR(gb_tty_driver);
- 		goto fail_unregister_dev;
- 	}
--- 
-2.43.0
-
+Thanks,
+Pavan
