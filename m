@@ -1,85 +1,95 @@
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=74.125.82.44
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=209.85.128.43
 ARC-Seal: i=1; d=subspace.kernel.org; s=arc20261015; a=rsa-sha256; cv=none;
-	t=1792429379;
-	b=uA/kDWZYcDcti/wkuwCQ6YiPNDf2oEp2tpgXOmgxFsdJWk41MRmbW+bo56sHoivMRn7g
-	 YlW6dutI03jTGS5fmGLBtE33ryORIl/zpjIz1vZEtnf+LVQyiixQA8spUmf6Wv8Tmgd5K
-	 oJDnod4voeOSvYGvxejttC86WfCjkfaCoPoC//tDBS/3AbWO0HoDqObVRrOdoU6Vxg4Xa
-	 Wgxbvqh5iDTwu36NGMPfMpb8l6RPv2W6av53QYJmlFfXqrDJ2NbA7tvodvVhVv8cMj4FA
-	 5Rbd6qywl8WesMBBgQyvVgTQ3H4LMfVahSrG7bbH5DKXoQbBRujOV837U/c5aF7aFog==
+	t=1792441286;
+	b=GC+IqRd0F4/nAA1nNGal+gTgpVeRNSqLdXr/OcorGx2XqCdyM9c4oFUOxLBmdZPgCjWC
+	 +vZf9KiNCXlzmPJGbtsvozqJK9Ab+71dIVHUnRE1vFsSJ67vVWyjMOYMv9nFYgr0WHT9q
+	 5mHxjoq+n/i332SpbKAvKbLfdIkIl89F/xWMsMzLIysZtQCH+GbhI6EX4a8CnqfRmRg7P
+	 lA6BXtit7RzUp+Cpk/Z0PTb6OFli2nDezJ69LuSYj1xgZeJ9sGLkS8e1nUJekcq14vnro
+	 JrpSs9ddWJBnetNRWavBWVDS7poY55eH+zASP6/AeAoP1Cuh1XuiB9F3UFzm11HAsKw==
 ARC-Message-Signature: i=1; d=subspace.kernel.org; s=arc20261015;
-	a=rsa-sha256; c=relaxed/relaxed; t=1792429379;
+	a=rsa-sha256; c=relaxed/relaxed; t=1792441286;
 	h=DMARC-Filter:Received:DKIM-Signature:X-Google-DKIM-Signature:
-	 X-Gm-Message-State:X-Gm-Gg:X-Received:Received:Date:From:To:Subject:
-	 Message-ID:MIME-Version:Content-Type:Content-Disposition;
-	bh=t+rudXItXEK4LNmytAT27zswld1ia96eWlp9vIioMtI=;
-	b=Vq04gEoQ+XiQWLcAbEopD5xKThOVxe/WYNtpRXzTMS+S0MU9RXFItIYTXMORekZ7NDsa
-	 aqCAzxTKTAKgqSUPSK/H5MI2irh+Je+qbi0GCT75x/JOkQ4fwxTTR7Hm8UDXEt1e2RWAl
-	 OJHY/nqmGDxETZibIK+NeKJBJuTL5X8rS3HNNReT/ZkYsEJvuWjiOQW4ZIeNrdjXwr1qp
-	 RYmyTRq/TZkWjKxBy+xgUerCJbDbQhOpqUWGaN7wx4DivAYTqj2/Z+R4CxZg6/brHd1oV
-	 oVNw5ouG27mCCsYtNdcYduJVJlRhaG10Haivcb7UZ3pUVlrdw9s1L5i/1lWGhNp4hXg==
+	 X-Forwarded-Encrypted:X-Gm-Message-State:X-Gm-Gg:X-Received:Received:
+	 From:To:Cc:Subject:Date:Message-ID:X-Mailer:MIME-Version:
+	 Content-Transfer-Encoding;
+	bh=5SGe5k/sxuefMjqMn88o6FMTCheBSXX/pG7tZNOtng0=;
+	b=ABlnwIYBVCYgsCG5x7KZg10sVTJ+R+1lenxyUQM08BWS2jMRkoFDQ6SkRvBo8r5ck7d0
+	 WmC6pqN1J0s6LAfRuRGeRY+lyBlDc22pAilgLMPqU/rmloLM0cX2EVqJXqobxiDNaOhKG
+	 64rxJM1Gb5icNKCqwui9ws3K6eh/+MqpAxu1KDcFt7rXV9/5ZEfV922qjvFVYfKBQqowT
+	 NnTnGV8yBmOjraybw8Ly65/6d+KvjZq2utyTAUA0nNxug9WrSNrcIde6U3cgsKzK6Hm64
+	 lN5ZyZSrzriivCyut/WYlKsPJljZ4D8LkTkg3yaZ5vvDPdzcjfiB8xx/x1ssr49Y51w==
 ARC-Authentication-Results: i=1; smtp.subspace.kernel.org; 
 	dmarc=pass header.from=gmail.com;
 	spf=pass smtp.mailfrom=gmail.com;
-	dkim=pass header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=Imue+Hc+;
-	arc=none smtp.remote-ip=74.125.82.44
-Received: from mail-dl1-f44.google.com (mail-dl1-f44.google.com [74.125.82.44])
+	dkim=pass header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=Lv6vZ0VU;
+	arc=none smtp.remote-ip=209.85.128.43
+Received: from mail-wm1-f43.google.com (mail-wm1-f43.google.com [209.85.128.43])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3F5E7606A33B
-	for <outreachy@lists.linux.dev>; Mon, 19 Oct 2026 17:02:59 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org 3F5E7606A33B
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D207F606A322
+	for <outreachy@lists.linux.dev>; Mon, 19 Oct 2026 20:21:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org D207F606A322
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=Imue+Hc+
-Received: by mail-dl1-f44.google.com with SMTP id a92af1059eb24-14394530ec6so1228495c88.1
-        for <outreachy@lists.linux.dev>; Mon, 19 Oct 2026 10:02:59 -0700 (PDT)
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=Lv6vZ0VU
+Received: by mail-wm1-f43.google.com with SMTP id 5b1f17b1804b1-4a021c809e3so22214295e9.0
+        for <outreachy@lists.linux.dev>; Mon, 19 Oct 2026 13:21:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792429378; x=1793034178; darn=lists.linux.dev;
-        h=content-disposition:content-type:mime-version:message-id:subject:to
-         :from:date:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=t+rudXItXEK4LNmytAT27zswld1ia96eWlp9vIioMtI=;
-        b=Imue+Hc+wSPh6QcMduXu2u6Dp+VLstkBJRrYnw9GUIGkw0JhcngkNYlQvK2R4nk0YM
-         m8ggZcR/w2QeWaMet7LIWY+NItUqy+3hQpJ1/Pl44Bsil76kqiUar7Q7Mf4cPuVg1d/c
-         zPnlWBAt194kR0IhPLgRA9+VxPSO3wMzb7R6kjcnmRC4wDwZSrTGAg6lyxoSlgFTrN5R
-         ojFym+SIbYF4skC0gla0+o44x0b0HnyG8lLDJkXmcY25qntFbSbSFnJdnzscXc4xx/Ua
-         Km4xGppEJFuCc9Rzkkans0OjgzSf3ZDJNzTsL57JzCCDL+4h9hI2ZOFPpATI7IQMhY9G
-         Hr2A==
+        d=gmail.com; s=20251104; t=1792441284; x=1793046084; darn=lists.linux.dev;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=5SGe5k/sxuefMjqMn88o6FMTCheBSXX/pG7tZNOtng0=;
+        b=Lv6vZ0VUNnB6umXYcQbgtEwYfSeWCSDPuh3wTha9ONuU3sOxG7ebves6+PuexYLeJe
+         qfSByl/P4Dne/ao+RuPkq2+wTWzW2F983iEy9sxw5hqb9Wn6auWIsFMZaASpa6joy9ey
+         WdwuN428CwqmaNekjJuh1FV1zEs4ZcQcBmNumZ/Phk/tMulTzBP/+NLysht6JlvAvqZu
+         pHkZMjIe+vwyHR9OJzK2+VSsnaaDyZttaSw9nzG8iISI4UOWOYtPN9MQCYzmcMMRODAx
+         z1eGZE6pfl/NbaSZU0C6U8WoxEFjVXGEstvMnsoxVnx9iKwz5FVh5mvisOdp42awrSI7
+         8zIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792429378; x=1793034178;
-        h=content-disposition:content-type:mime-version:message-id:subject:to
-         :from:date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=1e100.net; s=20260707; t=1792441284; x=1793046084;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=t+rudXItXEK4LNmytAT27zswld1ia96eWlp9vIioMtI=;
-        b=xHYAzI5xXQ1WxuorKhzfIhtAYKmqgQYvqoYcPt/BokOmEpUudQdQg3VzCZeCegQUaz
-         X7SotdvmJQu0dWHcURkxeVBMDlyMqWyyEsakGQ0FCqMNvXTLVcOsrufJbKQVnSU1d5n7
-         yPmRE42iLh4RALAGo3eNlXgJFXdkgR6rTuKQvVLEdBJa1D66Nr3kYJvgPP1FH/YSE4wy
-         6EEriPvQ3c3EkkqfC0PvMDNYjFh1dfJj1CxTFrqqHHj74kObpRLbQUlNh4OcsIsAjFw+
-         cwm0DAQ0vLTSPur0veqIsClVR0Qc93W6X+eQZQlGUIryxwJaHrrIDqxF5gzzX6o448Os
-         dhSQ==
-X-Gm-Message-State: AFq9FYKeaeaNdRtNp/64x7kk+m+NY5FRY4DHn+MVeDh95XtGqV94HGJG
-	NjldAt/V0/RT772p7AZUa9gljTTUJi3StJDrrjZYVSfTz/NGfXz1qKbWwkHD2KsB
-X-Gm-Gg: AYBFou1fxOoMZya3FHBZ28KC3T6E0krs2eRxHa1h2uhyyrbiH6xkmcjY/9844l8QMzY
-	JBvCh8LVuVVv9tXi5AKZ7CV45MP2EihN9KGude05ewZ314O2cGwGAO/aywSOc/V5n8wSLbJOjaO
-	A6PUrInauffbG6x1UWSSt/G5s2tUV234Cx+LZrqQAejpqyTDf5+Ge8+7WUWS9B32+9Sp9IDHIQp
-	mleVhBIPAy83Ew+9dXeX+izxF6u7yOYnPYonvcP4RP3+mTA2U5qTZB4uY4iXSRNgK30FV8d4egu
-	H85PH5/8X5aurLSknnoPR1iuAwWL3j8jUAkBCIGg4+XYiY/epivjiUuLvDDN8zkf2JVYriQr+RG
-	n+quS9tK2wpeskQU0Y6ZAvRGfc/FL/vn7KTJLt9HzOO+iCIpcPGzZ5JRxGlRYhKj+WFb5cQAiyr
-	UpZPGAaJv0024GLpFrB7QL/2VwFmrt7QUTC2bGUa2TNMGeSuSMsfnPNC5mi4jTmDq4h8GYA5dR3
-	HU=
-X-Received: by 2002:a05:7023:a4c:b0:144:fdf0:9d91 with SMTP id a92af1059eb24-1851285de14mr11186108c88.24.1792429378187;
-        Mon, 19 Oct 2026 10:02:58 -0700 (PDT)
-Received: from user ([2405:201:c052:b00b:4a5b:6025:cba1:1cd6])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1831a6f5a13sm35783328c88.12.2026.10.19.10.02.56
-        for <outreachy@lists.linux.dev>
+        bh=5SGe5k/sxuefMjqMn88o6FMTCheBSXX/pG7tZNOtng0=;
+        b=C5rbdQLvD7MiFT84F8fNFlzoXnVNhYe6keDAihGbfkpJQVjecFkrtjxjPqfiRr5VRR
+         rVeeAL8GKP05YWSGcYa153xYM1JEwhbFrxMrTiWLcVMRcubPBCFZKrHo1z//MLjipRhm
+         Vgq1S+sRikJNdyXvupiNhhry0jFcQxkGPi6AEb8AQO+/DGMou2wFKmXjktMX+otwMEU8
+         vlZ40P6cUzAj6OTR3qAfiuXBj5Ck30JusGruxXYqEn8uUEhsHl0xD/XdMwHCZZE1LBaM
+         xS6iqEA+I5gwtq5ZiLnbJiXfO7YkQeZRafTO9stP1HULSpc5jV889TJ9fORw1VO11bBb
+         xPgA==
+X-Forwarded-Encrypted: i=1; AKwUvBy8bxnp0t7EAB/lKkOHpSG2BZ63n97LwZXGFEBUtawt/7wvkfN86yVQTU537rXGSPnADe70HR1zDmc=@lists.linux.dev
+X-Gm-Message-State: AFq9FYLStD4iwKrQngflLzQzdi7+qosIYUnFPwS5v6q7GQG5mRmB1k+x
+	/Atmki3AULtlFQ/u4Eg6kCE1q+FE1CT5H70lkXqZ/sOKe6GPb3kbeR3s
+X-Gm-Gg: AYBFou3pSqS1buARSRICN46iZyl3R+OF9u7R8Y0CW4EK3GyhJoMtTbS1tx2Bwto1vXO
+	iNfjCRAta1nVixnGXJ3nkKYXIP0baN5ML2hNzRrN2xhgpNPtVbWnAA1ZCaF3rBggpX/2/go3qiD
+	CKTuSae1avJwA29hF1u/FvmYLB5DynrdBB4sZ+wuiNTT+b5BZPvvD5oWjr6AoJfvibOxkhz4U+S
+	ZlmY+TzeN1wOe54oxmhQ6G8gNAsAetPFdtCruiYivXjlj6bk2Sg0t0P77I9SqzzCxXTh6WUl8f6
+	GYrX1YkvZBsGo1YO6+Qb26s+nF5STPKkJl12bMU+lPBln9rkJgiwaV770uRlrLEenZMmfpFD58p
+	uK4NQihZvaTBOZNRtt5u19ctycQf2VSvcQymQBD51Y0IRk0Kaab0iE0ehaeHm0HCKqiLhsnie2R
+	UpDZLd9y+58RhqbyihTkHsM763BlHYcfXaNR00ufYS8wuQmL+GMAFlpNfBq9MN7GJBzCfaNTzdl
+	OVn2jcyyirIiZF6YQ25VJzEY5g=
+X-Received: by 2002:a05:600c:4f06:b0:4a1:e69d:90e8 with SMTP id 5b1f17b1804b1-4a1e69d931cmr119638455e9.22.1792441284070;
+        Mon, 19 Oct 2026 13:21:24 -0700 (PDT)
+Received: from DESKTOP-0KSTGNI.localdomain ([156.213.131.39])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48e1d817d8bsm943142f8f.24.2026.10.19.13.21.22
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 19 Oct 2026 10:02:57 -0700 (PDT)
-Date: Mon, 19 Oct 2026 22:32:44 +0530
-From: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
-To: outreachy@lists.linux.dev
-Subject: Patch Submissions During the Merge Window
-Message-ID: <atZNNOiZIhzLf2f8@user>
+        Mon, 19 Oct 2026 13:21:23 -0700 (PDT)
+From: Temitope obabi <obabitemitope765@gmail.com>
+To: sudipm.mukherjee@gmail.com,
+	teddy.wang@siliconmotion.com,
+	gregkh@linuxfoundation.org
+Cc: linux-fbdev@vger.kernel.org,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	outreachy@lists.linux.dev,
+	julia.lawall@inria.fr,
+	Temitope obabi <obabitemitope765@gmail.com>
+Subject: [PATCH v2] staging: sm750fb: Remove redundant NULL and zero assignments in probe
+Date: Mon, 19 Oct 2026 23:20:15 +0300
+Message-ID: <20261019202015.1724-1-obabitemitope765@gmail.com>
+X-Mailer: git-send-email 2.53.0
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Post: <mailto:outreachy@lists.linux.dev>
@@ -89,18 +99,49 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 List-Owner: <mailto:outreachy+owner@lists.linux.dev>
 Precedence: list
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
 
-Hi,
+The sm750_dev structure is allocated with devm_kzalloc() just above,
+so its memory is already zeroed. Remove the explicit NULL assignments
+to fbinfo[0] and fbinfo[1] and the zero assignment to mtrr.vram, which
+only set fields that are already zero.
 
-staging-next is currently closed due to the merge window.
+Signed-off-by: Temitope obabi <obabitemitope765@gmail.com>
 
-should we continue submitting patches to mailing list for review
-during this period, or wait until it reopens?
+---
+Changes in v2:
+- Remove an accidental duplicate of the note at the end of the patch.
+  No code changes.
 
-As the Outreachy contribution period ends on November 9, the time is
-quite limited. I wanted to check how we should proceed.
+Note: Greg replied to my earlier sm750fb patch that keeping the
+explicit zero assignments is good because it is clear what is
+happening. In that patch the allocation was in a different function.
+Here the assignments are in lynxfb_pci_probe(), just after the
+devm_kzalloc() call and its NULL check, so I think removing them may
+still be useful.
 
-Thanks,
-Pavan
+
+ drivers/staging/sm750fb/sm750.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/drivers/staging/sm750fb/sm750.c b/drivers/staging/sm750fb/sm750.c
+index 8b93bfeb217b..8702f6313f78 100644
+--- a/drivers/staging/sm750fb/sm750.c
++++ b/drivers/staging/sm750fb/sm750.c
+@@ -969,13 +969,10 @@ static int lynxfb_pci_probe(struct pci_dev *pdev,
+ 	if (!sm750_dev)
+ 		return err;
+ 
+-	sm750_dev->fbinfo[0] = NULL;
+-	sm750_dev->fbinfo[1] = NULL;
+ 	sm750_dev->devid = pdev->device;
+ 	sm750_dev->revid = pdev->revision;
+ 	sm750_dev->pdev = pdev;
+ 	sm750_dev->mtrr_off = g_nomtrr;
+-	sm750_dev->mtrr.vram = 0;
+ 	sm750_dev->accel_off = g_noaccel;
+ 	spin_lock_init(&sm750_dev->slock);
+ 
+-- 
+2.53.0
+
