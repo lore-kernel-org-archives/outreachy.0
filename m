@@ -1,95 +1,93 @@
-Authentication-Results: smtp.subspace.kernel.org; arc=fail smtp.remote-ip=209.85.160.44
-ARC-Seal: i=2; d=subspace.kernel.org; s=arc20261015; a=rsa-sha256; cv=fail;
-	t=1792473913;
-	b=1mKF8w8Ut+DtoqkHIwIFHScfYKxK1VBJDJ0vatERzMrYUManANGujtnt2nXoarHf8S4U
-	 AkAZieSAMwKSUU55SBEn87sdOT1HKpI1IHj9sC4bfJc9SPLUEVfC1z4nIBwtXkL6/+0Iy
-	 3NsGWWCrcKp0yuMh+hdkTmGA9UqtzblPIbYMK1QCQ0MjMQpLKTu8azVYnoymDCt089Wy7
-	 YPGGd1O78NiFs7pf4Lo7LHBLUZanL/CDXt5TGi8dvXY7x7ggHMTEsPIhZTcSSe723TmZc
-	 LAgWis/EfSjtV+z8ykl7rLFAFNLQBOgiC9LmIw6La5zcYv7/HUHyxnS518H6B7OxT4Q==
-ARC-Message-Signature: i=2; d=subspace.kernel.org; s=arc20261015;
-	a=rsa-sha256; c=relaxed/relaxed; t=1792473913;
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=209.85.221.54
+ARC-Seal: i=1; d=subspace.kernel.org; s=arc20261015; a=rsa-sha256; cv=none;
+	t=1792481424;
+	b=BJ7hfODYQerEHj3ZdX4tloxvWWJgF9mRqnuc5of39SPC9J9J2GhZFSHIrGh/d6S98W6l
+	 I6a1y9EXa1Y2uwI0q0UBpgrZORPbyENyXwJ1hGJEjRHx+2A0IeW/nybJdsZmoRkPNx7Pg
+	 K3rQzL3svnVnvsw9z7SQFUNwjj/ck3TE5D0f/vEc4+q7kpenTe6ksTapdiMuZ7wxamxOf
+	 BU1hFjDiOanqqpBBVfzYNBpEhJK+S4OrJk9hqnR2uhGdkOWE46EsX8k/tXKg/1IO+GjRm
+	 pmSp6xz39ADfbk42h8GP11vb8XijXGCdxmcQoRfZyin9yj89tRgs/fTGUDb0ryJpNAQ==
+ARC-Message-Signature: i=1; d=subspace.kernel.org; s=arc20261015;
+	a=rsa-sha256; c=relaxed/relaxed; t=1792481424;
 	h=DMARC-Filter:Received:DKIM-Signature:X-Google-DKIM-Signature:
-	 X-Gm-Message-State:X-Gm-Gg:X-Received:MIME-Version:From:Date:
-	 X-Gm-Features:Message-ID:Subject:To:Cc:Content-Type;
-	bh=nhsHJr+n/n04x97xr+Nbbiokr2GVVYS+2fdncs6l/fA=;
-	b=fTe4NWFlCTKM0Fptx6stRk64ZOitJ6CAq4CwVP6Z6voWx4PtYWd1lw3oBYVMCrWg/L5E
-	 RePU7/i5JiP6nYKZnYR0TWa6Dyc6oW3rGOG0smmzArMd1QOUgmBklL2vhR3IQX/SUcVOR
-	 NivBfA9pAwgD5nyItW6/nm0Nhw0Jbw82YOf7nYPprMwtJ7pN65x7F7hdgidz4HBaCFE8j
-	 MEAdqLnzqysl4VjLfQVew7fN2mnxYEZ98RfI5eILjCbPs/Wf1YvIvsK4lbk4gsDlD8FSa
-	 JwPWY3VHNbmyMHmDXdmv9ZBqjwuhCDrlJLBvr+LlJy2tGsaWv1Nu/EAM4FHmB5OoJUw==
-ARC-Authentication-Results: i=2; smtp.subspace.kernel.org; 
+	 X-Gm-Message-State:X-Gm-Gg:X-Received:Received:From:To:Cc:Subject:
+	 Date:Message-ID:X-Mailer:MIME-Version:Content-Transfer-Encoding;
+	bh=5tXRrlu6pVIT1vr+YhxUcVgo6aTbfODu2mQd8Xde0q8=;
+	b=xCmZAH2HhkRm3QJDpc9jE52z1Dn9lf7N3OEhgChvwcm1JC8ryQeWjlh6v3B1AB4zD5xR
+	 QgBo0HXRafjzYqF3+pCItNIyW76+9nGGN6bgnqaAAJLHpMet8gjclqiyOOuqOpUzQghQs
+	 brUxwHzk5VwImClQzeHoEfPy+dkftMuF8S93G2VztpiACK7LKhSlDC22+2OjWNGnJzAlG
+	 B2Y77ZsHjrc7DKfFKDZ/3K1rabpzKpQzgP0iFPt/3RLp0wJ7u9apuVCwsnerocnt+9Mv4
+	 F9fTLoqNCzb/OvQUjK7CytcWVDN6fvRF0UbBPjCf5gDNJ7VQMYzjutMAIDXQU4z0ZyA==
+ARC-Authentication-Results: i=1; smtp.subspace.kernel.org; 
 	dmarc=pass header.from=gmail.com;
 	spf=pass smtp.mailfrom=gmail.com;
-	dkim=pass header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=G8GzblXV;
-	arc=fail smtp.remote-ip=209.85.160.44
-Received: from mail-oa1-f44.google.com (mail-oa1-f44.google.com [209.85.160.44])
+	dkim=pass header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=S7zOiGwo;
+	arc=none smtp.remote-ip=209.85.221.54
+Received: from mail-wr1-f54.google.com (mail-wr1-f54.google.com [209.85.221.54])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3BDE9606A320
-	for <outreachy@lists.linux.dev>; Tue, 20 Oct 2026 05:25:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org 3BDE9606A320
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8B956606A31F
+	for <outreachy@lists.linux.dev>; Tue, 20 Oct 2026 07:30:23 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org 8B956606A31F
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=G8GzblXV
-Received: by mail-oa1-f44.google.com with SMTP id 586e51a60fabf-47b47de8b4cso2091293fac.3
-        for <outreachy@lists.linux.dev>; Mon, 19 Oct 2026 22:25:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1792473912; cv=none;
-        d=google.com; s=arc-20260327;
-        b=NUHDLpWCQ9mePjUYNVresZXT73VnrilqLYgfTQZLglyt/9qQ+CQTGMTjX/0Ss6R+Pq
-         4sGPc/jqbhO/fNoKX6KjoU9/+Yd1ND9Sl3IFNDiuS6B7f99bp06Yaj3mz8LLFuMw8Zz5
-         ORMqg3odRtlMiocQ4RHv9CJMsWsLjGgzven2nt2MT9u0vdrYjG+NKhEwBZQh5PkteM08
-         Ala36xo7oF8OHzToTA0DSJBbCptsDojMDOM7Mv1K4CXY+c/vF/DL5V+HLIKa0Y+ko58K
-         CHxicGNEi4Ea9wLVlXJO1mjULnwSs2PW8iD6QvkqUWhX4Y5H5GOFQhB9M/VGgSDj042n
-         MDdw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=cc:to:subject:message-id:date:from:mime-version:dkim-signature;
-        bh=nhsHJr+n/n04x97xr+Nbbiokr2GVVYS+2fdncs6l/fA=;
-        fh=9/exsoqcmAi1OPOPImyz7OG1cdIFGkX1Kdyg7+AOZ5Q=;
-        b=Y4gAxK36mQKpvEDu0NLQNlMePxf900+ZSYJ+E0CqFXCSO58Qw1SXaWSEL2H0JnnHN1
-         UXhJ8l2f/fnifcfDLsqjDD3y0trZkN8JJFgWjA3g/DSYl/SqMFATh/BrArPHmIML/z+Y
-         xq81A5fgOkS/rrCRMp+/yZz1vqMn2vEzkNqTPsQmKESche9ysXFxhSiSYw9z8n3GXkU3
-         B7O/3MHQHt5VSLIXbcl9zGmCft+3CV0G3eutHqgTRdsAY8+b+N85PpKdS8FE59YxF102
-         6qY4xcU1/Y3p/B3nsYJwCwMUSidCLOeeeqeDkG/iDbUcxlNN61RqTNWF+Lhm5EdSeb6r
-         ZJjA==;
-        darn=lists.linux.dev
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=S7zOiGwo
+Received: by mail-wr1-f54.google.com with SMTP id ffacd0b85a97d-48e0d1da913so321484f8f.1
+        for <outreachy@lists.linux.dev>; Tue, 20 Oct 2026 00:30:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792473912; x=1793078712; darn=lists.linux.dev;
-        h=content-type:cc:to:subject:message-id:date:from:mime-version:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=nhsHJr+n/n04x97xr+Nbbiokr2GVVYS+2fdncs6l/fA=;
-        b=G8GzblXVxcKvimg92hKo/GzVs+ddCbNYEZhNqpNENY26T7YwNVr/YNabt+LzWTxIk+
-         WmolB/2/idQ42DCa3tMxSaZkX64IhvWa49dbqELQyozrepyF73ASmp569H1oXjv/5Hzd
-         1Zd9HOrBn4UGSRJ7aYTAJ638yBRpI05R07xBQvVJk96zV+dG8ciryKwKVjdbXhH3J4D+
-         UIVPC7ORCXHqPTeTZxcWQg8tQCzdcA1RhFirhBlOYhxDm2SOD440hbMUcTlMfFgcm7xc
-         /ua2U+VfPVZNHzO0hOKbbs5zOf4KDNjVrqNBd3UN5YblJ4UYWr1adMc5r1kMyYbeRqGf
-         kUBw==
+        d=gmail.com; s=20251104; t=1792481422; x=1793086222; darn=lists.linux.dev;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=5tXRrlu6pVIT1vr+YhxUcVgo6aTbfODu2mQd8Xde0q8=;
+        b=S7zOiGwoiEjYgFnKS2/GauiS3LZPvZo4Ki8TRQhMASQv8mfWBnDu/ECFN+fqgq4GFx
+         kWocQoXBt9C9M3F2sD62ZpYQbGDoR730lNe0Xf+/AMLfqTMs8ogEGSBUmX2CIwrFq/85
+         xxiA9VFnvAsWXutw91Oy+8I/JbdNe0bNr2qR1CTaBzjrf8db9ChqQskGZEXzUWoqPgTy
+         WqkMguA3gCUiakwYPQWR31Vc4C7MMIPkv6goAjs2PlvKiC1mc0jzqlTyXdWTH53+WIPv
+         6dLcr0ewMbj40FCutOomkytvCf0Dgi66uo6zYyY4F4kj56FzRgCSp93adhVKgTLoROLk
+         LsFA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792473912; x=1793078712;
-        h=content-type:cc:to:subject:message-id:date:from:mime-version
-         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=nhsHJr+n/n04x97xr+Nbbiokr2GVVYS+2fdncs6l/fA=;
-        b=gMPHJa0gi0uUbPij5UtRA5X3tO21psJy7LLJz5fo8bOZMpsrxso4vFPQFBWsoFOAgh
-         u95uTYN8h/td1DbF0iwYrKRIgpV/llYV4HNBAHblXubmfJB4qOzmX+uhEGIcmTPg6S7I
-         YeKq89aJq4FO6KZyXoNnZgk0zDaXAq44LHiORDPDMeaaQFJqSTNrmycJ2G1cZF6dRdmz
-         MTjhJV700Mlt/HnMLmJNtGssi1HfPwppOuy1pAl4C8gA7Ib4/AdGWOvBxVFwhdxxQneY
-         w6DJ1Yz46roIB95UJrp1Q8RIX8qqdkdupuG4SYQXPmxMh/d2SUh/jNiCMi4xhFkKQ7F6
-         xj5A==
-X-Gm-Message-State: AFq9FYIQr/+ZuD6GmvooEh5HTDfNf5arO1GD8aoVehwKrmrAcw/GtfYO
-	NejYb+kFNvg3NACM31jctYBfXYDCCKfQCA17jBcPz62cZNwNW7SXp/2S24q8v+27xL3wxDCRHuw
-	zfYZ2zCK42kOVaeFyZREai05pLa271Tg=
-X-Gm-Gg: AYBFou3n/tFfL+ytKqDNfKV4vE5EvnUNEeASZ3RrodWpGK/R0bMi97LXvQoh+Bix9ge
-	YIXhYAlEKyiQtv3KecYNCRsYqNfR6scEyrmA4/pgOqPw2AEo/tR1Mcc5ZniZQiT/C6QLfohhAx4
-	9EaidGGnH4i138jEMrwDZMH9RlSOVNOln6wFe8jVk4M1iaNqH7xvPzgdpp4K//gANhppFMLXOuH
-	ZQTYvd7WOqSrktqncmbC+CCYZIohjfCgsDELKIvRo4/8LsKuNLXUlMN6RygVPjLF8oK13slc42v
-	g6wfdcTV8l+8a9xBNlBOY6lSa3U/ptAUEpgpV4KGWj3L3T7b2CGkoZ9GQl5/D6VBJD5qejEI0Mw
-	7euCA9coSqLeQlH7L960QKM3ZYQWtn9GD8SnoNQ==
-X-Received: by 2002:a05:6808:4f6a:b0:539:4d53:170e with SMTP id
- 5614622812f47-53cd2592db5mr9061786b6e.43.1792473912142; Mon, 19 Oct 2026
- 22:25:12 -0700 (PDT)
+        d=1e100.net; s=20260707; t=1792481422; x=1793086222;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=5tXRrlu6pVIT1vr+YhxUcVgo6aTbfODu2mQd8Xde0q8=;
+        b=byp4G0wV4Z+YIEeB/A5LruvOT9wcovnUNcHo6zkRjIqQ9BcZb88mUtO6sGiW2YXCBT
+         LrPmdCis6KlBNrcOLWsa1zFDpTYaPuDVymkrKJNSs6TJqJ5WWSeeUt4Yt0aWNZQQSgXU
+         ovhxjw52wMEltny2WAV/81aK/i2suYM5fBDO7yvyna+2C53Loz9NdBdtsXj4TIkOHvPk
+         Prw86PZtTs/UFTtmHOKhpJU54rIGejb0G7y860L/ilkB2/fAY8l+ZmVYzH9nYCzwFKKp
+         d8Nnc+8cl4dTdS6njx3b1CQxWHvJy41Niv+J3d7qVSeakr9VF8cK+Qt6krDwRoj49Cg9
+         pErA==
+X-Gm-Message-State: AFq9FYJusQK8qQ+EmJzchptBevxgddb6+6htPw3Tt8WsL/b8dSS4ZvN6
+	pjvnKtmEi7XPtFDT0MaHON11MP8xIDtYqVgZwjnzEOZQGdSahwc+V5Be1t6YfZtRHHWha68a
+X-Gm-Gg: AYBFou2rJfYzETjPaglyDkX08JGTlJhye3QTNzdU9T+FKFcdCEw9vZMs20jGYFpCXld
+	wAnvxE0PgeZOu7zWKaBIOasJwgjcFTdxfcmOMtPElo3kuqsUp26zG0cgoKdEEFhlsXiadrqGZDq
+	wEGowGjYJpSPyW1gwZhEtzPZzuzqsfigWLYVyeWxwi1r8QA9oq9vWLiuQ3wrtYMKAYLXP/gLswR
+	95+wahluhHQHZhf5zHZz733Jm1/LYiDTckVbe1Mb9mEozRiEvPqxE/BTpu4um0ys0aJkKvZ3lKR
+	AMx0ppewM4/lx+h0WzuiUrqvwLtnt7opcpQYmPLRD9B2B3Xuy3tqchQwtXcrPmUri7cyvsMIl52
+	ubwA07WCl95lRk9WFYxg1IVQyKb4ctpjoC784eXzUjM5gC1TIsFEQ4ZZHQX5rluJ+AtV1lD+6Hp
+	i1xvQQBhpgO0K0ib0igLxsuS+0hJuEVylOLX3aSmoy4LCB6X4fQ69mk25QW6qTDZqUGUPCRj/Lc
+	R3MULNe77N1M9xG1BK32So=
+X-Received: by 2002:a05:6000:617:b0:48d:f160:efad with SMTP id ffacd0b85a97d-48e1e9f12c3mr3046877f8f.30.1792481421580;
+        Tue, 20 Oct 2026 00:30:21 -0700 (PDT)
+Received: from kali ([102.209.31.129])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48e1d817d75sm4747712f8f.25.2026.10.20.00.30.19
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 20 Oct 2026 00:30:21 -0700 (PDT)
+From: Bashirah Lawal <bashirahlawal017@gmail.com>
+To: outreachy@lists.linux.dev
+Cc: Bashirah Lawal <bashirahlawal017@gmail.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] wifi: mt7601u: remove unused ee_read tracepoint
+Date: Tue, 20 Oct 2026 03:29:46 -0400
+Message-ID: <20261020072947.124586-1-bashirahlawal017@gmail.com>
+X-Mailer: git-send-email 2.53.0
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Post: <mailto:outreachy@lists.linux.dev>
@@ -99,24 +97,47 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 List-Owner: <mailto:outreachy+owner@lists.linux.dev>
 Precedence: list
 MIME-Version: 1.0
-From: Sowmya Torra <sowmyatorra@gmail.com>
-Date: Tue, 20 Oct 2026 10:55:00 +0530
-X-Gm-Features: AclHuK8pQMuWjRSd3iZJkBngQVOYEQ9vbdnDV_1PK6Po3xRqITz8RpsZ3HH2I3w
-Message-ID: <CAFsBPPkyeYDUPGz5q6_VJqn4LK49PqFphvGjbCBs0N79H17sbA@mail.gmail.com>
-Subject: Clarification on submitting another patch
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: outreachy@lists.linux.dev
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 
-Hi Julia,
+The ee_read trace event was added with the driver in commit
+c869f77d6abb ("add mt7601u driver"), but no call to
+trace_ee_read() has ever existed in the tree. Building with
+UT=1 reports the tracepoint as unused.
 
-I submitted my first Greybus patch, which received a Reviewed-by tag
-from Johan Hovold. The patch has not yet been applied, as staging-next
-is currently closed during the merge window.
+Each unused trace event wastes several KB of kernel memory.
+Remove it to avoid that waste.
 
-May I submit another cleanup patch for review while my first patch is
-awaiting application, or should I wait until it is applied?
-Thank you for your guidance.
+Signed-off-by: Bashirah Lawal <bashirahlawal017@gmail.com>
+---
+ drivers/net/wireless/mediatek/mt7601u/trace.h | 15 ---------------
+ 1 file changed, 15 deletions(-)
 
-Best regards,
- Sowmya
+diff --git a/drivers/net/wireless/mediatek/mt7601u/trace.h b/drivers/net/wireless/mediatek/mt7601u/trace.h
+index 07696b672161..208ab8b0117a 100644
+--- a/drivers/net/wireless/mediatek/mt7601u/trace.h
++++ b/drivers/net/wireless/mediatek/mt7601u/trace.h
+@@ -123,21 +123,6 @@ TRACE_EVENT(mt_vend_req,
+ 		  !!__entry->buf, __entry->buflen)
+ );
+ 
+-TRACE_EVENT(ee_read,
+-	TP_PROTO(struct mt7601u_dev *dev, int offset, u16 val),
+-	TP_ARGS(dev, offset, val),
+-	TP_STRUCT__entry(
+-		DEV_ENTRY
+-		__field(int, o) __field(u16, v)
+-	),
+-	TP_fast_assign(
+-		DEV_ASSIGN;
+-		__entry->o = offset;
+-		__entry->v = val;
+-	),
+-	TP_printk(DEV_PR_FMT "%04x=%04x", DEV_PR_ARG, __entry->o, __entry->v)
+-);
+-
+ DECLARE_EVENT_CLASS(dev_rf_reg_evt,
+ 	TP_PROTO(struct mt7601u_dev *dev, u8 bank, u8 reg, u8 val),
+ 	TP_ARGS(dev, bank, reg, val),
+-- 
+2.53.0
+
