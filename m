@@ -1,87 +1,95 @@
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=209.85.161.43
-ARC-Seal: i=1; d=subspace.kernel.org; s=arc20261015; a=rsa-sha256; cv=none;
-	t=1792462838;
-	b=AzrulaTU9wlgnVHuStlz3JPgG77Bc6geYg9kNyENFk8jI0urtGJjmKR8cPIF396sWy/+
-	 gmk5y7XnMs06ikENcnTBqxP6w+NtnY5Y0tO4dyn1mPn9g//p5oNAkbe4WR806pf2VJxQo
-	 Mftuwr1qS+qUYyONtj6MlLyT6aVES16vyZ3y7RcFUMCj3hp13g/piXcnd7GpzEHOLLWyy
-	 xGGSFtQ0VwZrttL5pdEzS022670K8Ltm4VCkWygi8NggsXOpEQ2AC/tEZQGY8Tq4nypMc
-	 gLcmr2z/1TVKU7HkMmdOqIIpJ1ThcKYO0O6tfkgh1lCYmWv2Ac6QadJFbsi8hRW3eJQ==
-ARC-Message-Signature: i=1; d=subspace.kernel.org; s=arc20261015;
-	a=rsa-sha256; c=relaxed/relaxed; t=1792462838;
+Authentication-Results: smtp.subspace.kernel.org; arc=fail smtp.remote-ip=209.85.160.44
+ARC-Seal: i=2; d=subspace.kernel.org; s=arc20261015; a=rsa-sha256; cv=fail;
+	t=1792473913;
+	b=1mKF8w8Ut+DtoqkHIwIFHScfYKxK1VBJDJ0vatERzMrYUManANGujtnt2nXoarHf8S4U
+	 AkAZieSAMwKSUU55SBEn87sdOT1HKpI1IHj9sC4bfJc9SPLUEVfC1z4nIBwtXkL6/+0Iy
+	 3NsGWWCrcKp0yuMh+hdkTmGA9UqtzblPIbYMK1QCQ0MjMQpLKTu8azVYnoymDCt089Wy7
+	 YPGGd1O78NiFs7pf4Lo7LHBLUZanL/CDXt5TGi8dvXY7x7ggHMTEsPIhZTcSSe723TmZc
+	 LAgWis/EfSjtV+z8ykl7rLFAFNLQBOgiC9LmIw6La5zcYv7/HUHyxnS518H6B7OxT4Q==
+ARC-Message-Signature: i=2; d=subspace.kernel.org; s=arc20261015;
+	a=rsa-sha256; c=relaxed/relaxed; t=1792473913;
 	h=DMARC-Filter:Received:DKIM-Signature:X-Google-DKIM-Signature:
-	 X-Forwarded-Encrypted:X-Gm-Message-State:X-Gm-Gg:X-Received:Received:
-	 Message-ID:Date:MIME-Version:User-Agent:Subject:To:Cc:References:
-	 Content-Language:From:In-Reply-To:Content-Type:
-	 Content-Transfer-Encoding;
-	bh=ov1JQi2JjMl24yFAFJ2MUTE1RthNQLp4XwRk7/4yijY=;
-	b=jPINAHH+BrL8LBAi2IUid0sycKt5XKO0by+7i9RBg4qoHuMKFYcqzr442ffJSmt2hLNj
-	 vAUYsVQBJAWyi/Yq4UxfkiQ4h556RMIyc5CsR3r4DW9cDTYiJ7UhXlR03ryB+BPOnuknp
-	 h2IT2ENcH0LXadJ4Rmb2gcZOw1ZzvOGytyRox/CzNgjsjom46ojxtwAg+oqnrdwXsJOC5
-	 NECtVCCDjLDjsEzIM3iQQqxd4Z7Jy7wfYXrDV0cLyXcIhQfAyiXDNoJx2HndwtM5sqZhl
-	 3KpbZGKFNLP6xcDdC3kXhHX+e2NPRh08I0b3VdUm98dLDxp62Rg1vIGvrjagGJ6Vq5g==
-ARC-Authentication-Results: i=1; smtp.subspace.kernel.org; 
+	 X-Gm-Message-State:X-Gm-Gg:X-Received:MIME-Version:From:Date:
+	 X-Gm-Features:Message-ID:Subject:To:Cc:Content-Type;
+	bh=nhsHJr+n/n04x97xr+Nbbiokr2GVVYS+2fdncs6l/fA=;
+	b=fTe4NWFlCTKM0Fptx6stRk64ZOitJ6CAq4CwVP6Z6voWx4PtYWd1lw3oBYVMCrWg/L5E
+	 RePU7/i5JiP6nYKZnYR0TWa6Dyc6oW3rGOG0smmzArMd1QOUgmBklL2vhR3IQX/SUcVOR
+	 NivBfA9pAwgD5nyItW6/nm0Nhw0Jbw82YOf7nYPprMwtJ7pN65x7F7hdgidz4HBaCFE8j
+	 MEAdqLnzqysl4VjLfQVew7fN2mnxYEZ98RfI5eILjCbPs/Wf1YvIvsK4lbk4gsDlD8FSa
+	 JwPWY3VHNbmyMHmDXdmv9ZBqjwuhCDrlJLBvr+LlJy2tGsaWv1Nu/EAM4FHmB5OoJUw==
+ARC-Authentication-Results: i=2; smtp.subspace.kernel.org; 
 	dmarc=pass header.from=gmail.com;
 	spf=pass smtp.mailfrom=gmail.com;
-	dkim=pass header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=j+5sHtAQ;
-	arc=none smtp.remote-ip=209.85.161.43
-Received: from mail-oo1-f43.google.com (mail-oo1-f43.google.com [209.85.161.43])
+	dkim=pass header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=G8GzblXV;
+	arc=fail smtp.remote-ip=209.85.160.44
+Received: from mail-oa1-f44.google.com (mail-oa1-f44.google.com [209.85.160.44])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 86045606A320
-	for <outreachy@lists.linux.dev>; Tue, 20 Oct 2026 02:20:37 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org 86045606A320
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3BDE9606A320
+	for <outreachy@lists.linux.dev>; Tue, 20 Oct 2026 05:25:13 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org 3BDE9606A320
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=j+5sHtAQ
-Received: by mail-oo1-f43.google.com with SMTP id 006d021491bc7-6dd4f3f696aso1662928eaf.1
-        for <outreachy@lists.linux.dev>; Mon, 19 Oct 2026 19:20:37 -0700 (PDT)
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=G8GzblXV
+Received: by mail-oa1-f44.google.com with SMTP id 586e51a60fabf-47b47de8b4cso2091293fac.3
+        for <outreachy@lists.linux.dev>; Mon, 19 Oct 2026 22:25:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792473912; cv=none;
+        d=google.com; s=arc-20260327;
+        b=NUHDLpWCQ9mePjUYNVresZXT73VnrilqLYgfTQZLglyt/9qQ+CQTGMTjX/0Ss6R+Pq
+         4sGPc/jqbhO/fNoKX6KjoU9/+Yd1ND9Sl3IFNDiuS6B7f99bp06Yaj3mz8LLFuMw8Zz5
+         ORMqg3odRtlMiocQ4RHv9CJMsWsLjGgzven2nt2MT9u0vdrYjG+NKhEwBZQh5PkteM08
+         Ala36xo7oF8OHzToTA0DSJBbCptsDojMDOM7Mv1K4CXY+c/vF/DL5V+HLIKa0Y+ko58K
+         CHxicGNEi4Ea9wLVlXJO1mjULnwSs2PW8iD6QvkqUWhX4Y5H5GOFQhB9M/VGgSDj042n
+         MDdw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=cc:to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=nhsHJr+n/n04x97xr+Nbbiokr2GVVYS+2fdncs6l/fA=;
+        fh=9/exsoqcmAi1OPOPImyz7OG1cdIFGkX1Kdyg7+AOZ5Q=;
+        b=Y4gAxK36mQKpvEDu0NLQNlMePxf900+ZSYJ+E0CqFXCSO58Qw1SXaWSEL2H0JnnHN1
+         UXhJ8l2f/fnifcfDLsqjDD3y0trZkN8JJFgWjA3g/DSYl/SqMFATh/BrArPHmIML/z+Y
+         xq81A5fgOkS/rrCRMp+/yZz1vqMn2vEzkNqTPsQmKESche9ysXFxhSiSYw9z8n3GXkU3
+         B7O/3MHQHt5VSLIXbcl9zGmCft+3CV0G3eutHqgTRdsAY8+b+N85PpKdS8FE59YxF102
+         6qY4xcU1/Y3p/B3nsYJwCwMUSidCLOeeeqeDkG/iDbUcxlNN61RqTNWF+Lhm5EdSeb6r
+         ZJjA==;
+        darn=lists.linux.dev
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792462836; x=1793067636; darn=lists.linux.dev;
-        h=content-transfer-encoding:content-type:in-reply-to:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=ov1JQi2JjMl24yFAFJ2MUTE1RthNQLp4XwRk7/4yijY=;
-        b=j+5sHtAQpyZ+B2BGjUyPDuH4iLlNjYzUpTtJJy4X1fYF9OKwWcOnfcYCAEN0JinXTb
-         kQaKMDFaBuGTrTCfqREetTQzQDNWOj3Us4NOiQZncL7jkzqsaU3HuWw0NksDcgoHs3d9
-         E757f7Ww55XzHvrEYvgRtz+pqNEsOt2RwTorjI9VVgbvE5zBlkQ0b19K5vgzLDYj2SjR
-         LuO5ATxG9ZjvO+7XXOM6RC36aJmY671SndeV4L2KdWaYdlVy4g+hIt82B51y5Q1RHIUd
-         E2vkgBRQtV2io9eHhp+vZnEFi5B3GKz9yg2JDfmn1I4WIV33QQKQX28NMDuGnesG26AS
-         maYg==
+        d=gmail.com; s=20251104; t=1792473912; x=1793078712; darn=lists.linux.dev;
+        h=content-type:cc:to:subject:message-id:date:from:mime-version:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=nhsHJr+n/n04x97xr+Nbbiokr2GVVYS+2fdncs6l/fA=;
+        b=G8GzblXVxcKvimg92hKo/GzVs+ddCbNYEZhNqpNENY26T7YwNVr/YNabt+LzWTxIk+
+         WmolB/2/idQ42DCa3tMxSaZkX64IhvWa49dbqELQyozrepyF73ASmp569H1oXjv/5Hzd
+         1Zd9HOrBn4UGSRJ7aYTAJ638yBRpI05R07xBQvVJk96zV+dG8ciryKwKVjdbXhH3J4D+
+         UIVPC7ORCXHqPTeTZxcWQg8tQCzdcA1RhFirhBlOYhxDm2SOD440hbMUcTlMfFgcm7xc
+         /ua2U+VfPVZNHzO0hOKbbs5zOf4KDNjVrqNBd3UN5YblJ4UYWr1adMc5r1kMyYbeRqGf
+         kUBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792462836; x=1793067636;
-        h=content-transfer-encoding:content-type:in-reply-to:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=ov1JQi2JjMl24yFAFJ2MUTE1RthNQLp4XwRk7/4yijY=;
-        b=pUoi1sWL8YigT5trcx3uK6uzmqDRPyAHgkq707HGzI6/nCc37mXMej5D7VEsotfQyY
-         8xVWLQlTRbtnJP19qfN5TdH5a4qsqDcQRvi0r8844+q9zcHsfl13N0CTg4YnzfqNWjGk
-         +W8yNDtPg1xH6RveJNM/x0hnXeEMdzzVQG8gjYnRKqkRxxhNOxAEPQa5GKCxdhaAahmy
-         QjoYNh/lXNrFJN2FfnF9FJK8TCwrXo8iZwvomNj7sKIxd9FTyJyvzuaADt9wY2WMAISv
-         j0ZBdRxwL3bwSzASuA3R9fBMdBohhKEBaYFGTSqF+TDzfjajImegFxe/2foOrYupm5Gq
-         nY8Q==
-X-Forwarded-Encrypted: i=1; AKwUvByrh9gooa5ywnPUGyPlcgqId/OIknIVGLa8lP9DZ1dMkToZmwkISbscmrYOBTN1cWRAoNMJu22nXKs=@lists.linux.dev
-X-Gm-Message-State: AFq9FYJ2yZG2z43VUgWLmlcO95S94tP5jtft+4eUR6aDwXaGHexi7x83
-	6UZ9XMQmSZwoiCGXuNndOEraOlTlKY9tHqZsNRNJcH9GCJzrQm06ukmDr571HzuJtw9PIw==
-X-Gm-Gg: AYBFou2deprxRevR+6Sp9cKXVInRLQA7g2zYbCQb04K5JQzQ1YjKRggs8PwFqwKi+Mm
-	kr4Ra5NsrTYFpCD/BHWW8OFqHZuV6iKEiEPHfjUYyUGgXHlTaUWRzwS66XDoZLs6TbatVf21Hzk
-	p0aoPtcxy3dTz9wK/fwtPHab3vfvowe8JoefJdmBPv4NI0ZiXNAQ01Vs0Vejyw519eq61qXYmr+
-	fee1/VpPeMCwuJwFugxcebM5j2a8kdT8NXNbFrTbAJsTTMw/+26RqkQuD0kc9eD/Z2CWBZM78MA
-	b03rV+tyK1C+a5QOYDTVvXIzwCdBORR6znhrbXIUyLbc1/H7XLYPrkKBAkDbQEQ5O7NEroE06H2
-	TAvhcvyDqtEIfS311Akesu7N9N8sj2ClAo6Qz9gAHP0MWmAindV2fzbrzgrvl3UW/RN5DiQYnwk
-	6uLAkjnaiGVussWnD6kR4mI0rnc2p9WNtoFDYvkg9TSXwGl71wLliKOpKnyLByab/ZISJgKqSnx
-	pvBoUrIULT3PZS0mpAa0iLY4w/kc+2dLXobCVw1iCk=
-X-Received: by 2002:a05:6820:82c:b0:6f8:3d45:b465 with SMTP id 006d021491bc7-70352783f61mr5261958eaf.11.1792462836179;
-        Mon, 19 Oct 2026 19:20:36 -0700 (PDT)
-Received: from [172.20.5.89] ([65.141.20.21])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-842a0f284d1sm10247392a34.2.2026.10.19.19.20.33
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 19 Oct 2026 19:20:34 -0700 (PDT)
-Message-ID: <cdcaf727-4433-4f8c-8e33-42094efcc6d8@gmail.com>
-Date: Mon, 19 Oct 2026 20:20:33 -0600
+        d=1e100.net; s=20260707; t=1792473912; x=1793078712;
+        h=content-type:cc:to:subject:message-id:date:from:mime-version
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=nhsHJr+n/n04x97xr+Nbbiokr2GVVYS+2fdncs6l/fA=;
+        b=gMPHJa0gi0uUbPij5UtRA5X3tO21psJy7LLJz5fo8bOZMpsrxso4vFPQFBWsoFOAgh
+         u95uTYN8h/td1DbF0iwYrKRIgpV/llYV4HNBAHblXubmfJB4qOzmX+uhEGIcmTPg6S7I
+         YeKq89aJq4FO6KZyXoNnZgk0zDaXAq44LHiORDPDMeaaQFJqSTNrmycJ2G1cZF6dRdmz
+         MTjhJV700Mlt/HnMLmJNtGssi1HfPwppOuy1pAl4C8gA7Ib4/AdGWOvBxVFwhdxxQneY
+         w6DJ1Yz46roIB95UJrp1Q8RIX8qqdkdupuG4SYQXPmxMh/d2SUh/jNiCMi4xhFkKQ7F6
+         xj5A==
+X-Gm-Message-State: AFq9FYIQr/+ZuD6GmvooEh5HTDfNf5arO1GD8aoVehwKrmrAcw/GtfYO
+	NejYb+kFNvg3NACM31jctYBfXYDCCKfQCA17jBcPz62cZNwNW7SXp/2S24q8v+27xL3wxDCRHuw
+	zfYZ2zCK42kOVaeFyZREai05pLa271Tg=
+X-Gm-Gg: AYBFou3n/tFfL+ytKqDNfKV4vE5EvnUNEeASZ3RrodWpGK/R0bMi97LXvQoh+Bix9ge
+	YIXhYAlEKyiQtv3KecYNCRsYqNfR6scEyrmA4/pgOqPw2AEo/tR1Mcc5ZniZQiT/C6QLfohhAx4
+	9EaidGGnH4i138jEMrwDZMH9RlSOVNOln6wFe8jVk4M1iaNqH7xvPzgdpp4K//gANhppFMLXOuH
+	ZQTYvd7WOqSrktqncmbC+CCYZIohjfCgsDELKIvRo4/8LsKuNLXUlMN6RygVPjLF8oK13slc42v
+	g6wfdcTV8l+8a9xBNlBOY6lSa3U/ptAUEpgpV4KGWj3L3T7b2CGkoZ9GQl5/D6VBJD5qejEI0Mw
+	7euCA9coSqLeQlH7L960QKM3ZYQWtn9GD8SnoNQ==
+X-Received: by 2002:a05:6808:4f6a:b0:539:4d53:170e with SMTP id
+ 5614622812f47-53cd2592db5mr9061786b6e.43.1792473912142; Mon, 19 Oct 2026
+ 22:25:12 -0700 (PDT)
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Post: <mailto:outreachy@lists.linux.dev>
@@ -91,77 +99,24 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 List-Owner: <mailto:outreachy+owner@lists.linux.dev>
 Precedence: list
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] staging: comedi: comedi_fops: fix alignment to match open
- parenthesis
-To: Comfort Oyewole <coyewole7@gmail.com>
-Cc: abbotti@mev.co.uk, hsweeten@visionengravers.com,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
- outreachy@lists.linux.dev
-References: <8a960200525367f0fadca6b83ca57273e469f225.camel@gmail.com>
- <53D6A234-940A-4B29-89B2-7EB0E459F077@inria.fr>
-Content-Language: en-US
-From: Jeremy Dean Clifton <gservice341@gmail.com>
-In-Reply-To: <53D6A234-940A-4B29-89B2-7EB0E459F077@inria.fr>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+From: Sowmya Torra <sowmyatorra@gmail.com>
+Date: Tue, 20 Oct 2026 10:55:00 +0530
+X-Gm-Features: AclHuK8pQMuWjRSd3iZJkBngQVOYEQ9vbdnDV_1PK6Po3xRqITz8RpsZ3HH2I3w
+Message-ID: <CAFsBPPkyeYDUPGz5q6_VJqn4LK49PqFphvGjbCBs0N79H17sbA@mail.gmail.com>
+Subject: Clarification on submitting another patch
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: outreachy@lists.linux.dev
+Content-Type: text/plain; charset="UTF-8"
 
-On 10/18/26 11:09 AM, Julia Lawall wrote:
-> 
-> 
->> On 18 Oct 2026, at 10:18, Comfort Oyewole <coyewole7@gmail.com> wrote:
->>
->> ﻿-----Original Message-----
->> From: Greg KH <gregkh@linuxfoundation.org>
->> To: Comfort Oyewole <coyewole7@gmail.com>
->> Cc: abbotti@mev.co.uk, hsweeten@visionengravers.com,
->> linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
->> outreachy@lists.linux.dev
->> Subject: Re: [PATCH] staging: comedi: comedi_fops: fix alignment to
->> match open parenthesis
->> Date: 10/18/2026 02:30:05 PM
->>
->>> On Sun, Oct 18, 2026 at 02:22:49PM +0100, Comfort Oyewole wrote:
->>> Fix the alignment issue in order to adhere to kernel coding style
->>>
->>> Signed-off-by: Comfort Oyewole <coyewole7@gmail.com>
->>> ---
->>> drivers/comedi/comedi_fops.c | 4 +++-
->>> 1 file changed, 3 insertions(+), 1 deletion(-)
->>
->> This is not a staging driver, why is staging in the subject line and the
->> cc list?
->> Sorry, I made a mistake while working on my first patch. I just realised the staging drivers are located under drivers/staging dir.
->> Is there anything I can do to correct this?
-> 
-> Just work on something else.
-> 
-Comfort,
+Hi Julia,
 
-The comedi driver isn't part of staging. You can see who looks after it 
-in the MAINTAINERS file
-or with:
+I submitted my first Greybus patch, which received a Reviewed-by tag
+from Johan Hovold. The patch has not yet been applied, as staging-next
+is currently closed during the merge window.
 
-   ./scripts/get_maintainer.pl -f drivers/comedi/comedi_fops.c
+May I submit another cleanup patch for review while my first patch is
+awaiting application, or should I wait until it is applied?
+Thank you for your guidance.
 
-That lists Ian Abbott and H Hartley Sweeten as maintainers, with
-linux-kernel@vger.kernel.org as the list.
-
-There's no dedicated patchwork for comedi. Some subsystems do have one.
-https://patchwork.kernel.org/
-
-Drivers outside staging have different
-expectations. A clean-up style fix may not warrant a change.
-
-You can still send it if you'd like to see that change in the driver, 
-but I think it could be separate from Outreachy and staging.
-
-Good luck with your next patch.
-
-Jeremy
-
-> Julia
-> 
->>
-> 
-
+Best regards,
+ Sowmya
