@@ -1,50 +1,96 @@
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=100.103.45.18
-ARC-Seal: i=1; d=subspace.kernel.org; s=arc20261015; a=rsa-sha256; cv=none;
-	t=1792563461;
-	b=D6vck7Qr0a+fMi+DALuuc8NQLNZicAWfYKKBhwJVkNjx8KXs/hD68xvWR/p8UBlcXVqn
-	 4GkEerGLgcr8dzajAs5sQXRymYnYyFDsN3/syzRYWAa4RM1mj7xwTvxi1J9q6cLt1cN/H
-	 q9CvJ7IVYDdC1RuPS3X28WY/u75GDHQAsaZW9pjnibD5luofrUBj8Qd82hQd9Z2c4X1+b
-	 58x5PVfPyyol4tHGs8Mg9HRGrnpJ/e1KPUx6WsseLbRGnXnvzTLO+SETDRgw0XGnYguIn
-	 3RE5CAaijZtMph466zv6k3/QBUXHTtp7drlBTPjn6aPk5wuiVPwFzTKTeTYOIp1IFHQ==
-ARC-Message-Signature: i=1; d=subspace.kernel.org; s=arc20261015;
-	a=rsa-sha256; c=relaxed/relaxed; t=1792563461;
-	h=Received:DKIM-Signature:Date:From:To:Cc:Subject:Message-ID:
-	 References:MIME-Version:Content-Type:Content-Disposition:In-Reply-To;
-	bh=jIzS21RviZF9D+g6xi3HQyZzWhxx+ciqv+ffWW6njQQ=;
-	b=fVESemAz3MZ36JFTvRrxjAHAfgATcG91XKqQSsCIwIV0i0r7okYDee7/bo6rQy/fTEGB
-	 XtjhpQlDIILNG4U6v8rflzm2Nk5lg7ABcc2F0/EGjPhjugCEGwD52TCJNHIu3VenhyhhZ
-	 /FRtCG+lpRO26Poizi3lqU6k/aAbn3vncrThPIhnqORsu161USrEF6F0h9UXOAdZT12As
-	 DA5lxpRXefYd9Rn7eqlEYytPP7RQmF2pGedbSbviTwrHKo58f10Lz/VlwE+oZH10OvHHy
-	 l2J9updgxLmlGuukucaM0lVlLhj58e9pGyPD+SJdsygWZ1+o8veP7vg8YJaMgdqlV7Q==
-ARC-Authentication-Results: i=1; smtp.subspace.kernel.org; 
-	dkim=pass header.d=linuxfoundation.org header.i=@linuxfoundation.org header.a=rsa-sha256 header.s=korg header.b=z9o4LCBY;
-	arc=none smtp.remote-ip=100.103.45.18
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1))
+Authentication-Results: smtp.subspace.kernel.org; arc=pass header.oldest-pass=0 smtp.remote-ip=209.85.167.180
+ARC-Seal: i=2; d=subspace.kernel.org; s=arc20261015; a=rsa-sha256; cv=pass;
+	t=1792565280;
+	b=UI/O8EXJlVngoHgAxirqNqIjQDrL4PzeTyiveIXUEAsxfM/shjoWlrA/LlsRRmcRaU4y
+	 jpNQ/ozaBp/S6vqNEuCCJqc6IXvqiUNPIZ9z7YDAWpNgisIOcDwFRRZaaWOOxZJKWxxvo
+	 Xae9bMmo/pYd2G4uu466nFA5BweN2muvIG/Khik+U4rOYxQpzGGlo0xvifTwPy0xebzLF
+	 AcqDC4Gxg1zIz7WnJht6FkzMgZow87T9Kfc0PFVc0pdPs5anQwuUCoYUhspXaJXlnISZY
+	 ZqWCQPdXrUq1LJNFPltxxdge6BAQYkE07CsZCnTpmPF71jUhzkaanyM4ALZ7G+gcOkw==
+ARC-Message-Signature: i=2; d=subspace.kernel.org; s=arc20261015;
+	a=rsa-sha256; c=relaxed/relaxed; t=1792565280;
+	h=DMARC-Filter:Received:DKIM-Signature:X-Google-DKIM-Signature:
+	 X-Gm-Message-State:X-Gm-Gg:X-Received:MIME-Version:From:Date:
+	 X-Gm-Features:Message-ID:Subject:To:Cc:Content-Type;
+	bh=FUI0roKtUY3lJwsyDO29iRhWxSCZDhBG6j3ZdyYdfzw=;
+	b=AzS2bKa4qLn/E/GB1jusDE5FjExGGBMMTw1qr3LUBWf7oeQ/qEcaeMg0WwRnaWrnZWIb
+	 ZST79AxFRhxOOujLmIjHR5tJf8hoc23OHa8BEX59oNO1VV1Zt4NdNafyTRIFTk6q3exjX
+	 SaObcWuS0g0zrRSfsknwMZ0nNNKfHt+W5XpxphB3tVl9CD5lrZ5yOGJ1DoIzzJ4e0hWiI
+	 KJYgokwY7sBfsiW8e/NqiFmr3g1loq4LvTgChw1zatwt32P/kkQedpQhHvpnCaQoz/Vh/
+	 m1leiDqHJIT3qHfGqoDbP8SX3Zsn1+e5fzJ/hQ7UVnDiPN+h8FnmDmsSwot13MwT8Rw==
+ARC-Authentication-Results: i=2; smtp.subspace.kernel.org; 
+	dmarc=pass header.from=gmail.com;
+	spf=pass smtp.mailfrom=gmail.com;
+	dkim=pass header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=QIaxCN6i;
+	arc=pass header.oldest-pass=0 smtp.remote-ip=209.85.167.180
+Received: from mail-oi1-f180.google.com (mail-oi1-f180.google.com [209.85.167.180])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 26DD7606A331;
-	Wed, 21 Oct 2026 06:17:40 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 086F1606A325
+	for <outreachy@lists.linux.dev>; Wed, 21 Oct 2026 06:47:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org 086F1606A325
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=linuxfoundation.org header.i=@linuxfoundation.org header.a=rsa-sha256 header.s=korg header.b=z9o4LCBY
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 285331F000CB;
-	Wed, 21 Oct 2026 06:17:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linuxfoundation.org;
-	s=korg; t=1792563460;
-	bh=jIzS21RviZF9D+g6xi3HQyZzWhxx+ciqv+ffWW6njQQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=z9o4LCBYCBHx2wjIEjWST9yNxvWMCmV4tODd3dPy+xAsspPysTIzxeUL7oAb1KtWZ
-	 zCTBYPp2yM9UeiYMyjCYj4OWg1lAYZYIIYIAe0pTCk4Fkz6HP+mDG+DN6ryD735A0M
-	 jRM6cikJx9bAwkz0wW6+5wljVdxCRU/dcAq1ZbK8=
-Date: Wed, 21 Oct 2026 08:17:38 +0200
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Haasham Khan <haasham93@gmail.com>
-Cc: pure.logic@nexus-software.ie, johan@kernel.org, elder@kernel.org,
-	greybus-dev@lists.linaro.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy@lists.linux.dev
-Subject: Re: [PATCH v2] staging: greybus: remove unnecessary goto
-Message-ID: <2026102127-support-dangling-2fb3@gregkh>
-References: <20261020163636.7629-1-haasham93@gmail.com>
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=QIaxCN6i
+Received: by mail-oi1-f180.google.com with SMTP id 5614622812f47-4b28d7c729fso211514b6e.0
+        for <outreachy@lists.linux.dev>; Tue, 20 Oct 2026 23:47:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792565279; cv=none;
+        d=google.com; s=arc-20260327;
+        b=m3Wtz3NqvdWv+U6Ferl+AXyyxmY3VKfpZ7xPqC8VArT9jpt6fu+Ux+LRohGWPf5z/B
+         gf2Dbg+vytvc5sYiVdjWOZfesUl7IXkOlwQQDVZBDMUvd+VQLQq4wa6qb81Sym7aNAXv
+         j1Ap3o6z3AjMD8pVFYVfxv/FDKzZZJgPxQDBa29mv+a24J3BautR5uDM5twBzyvnXQ/p
+         vQ3Ut3CCpcCftp0F7CU5o2fR/LqYUDL8oCivqQRgmLsYxYUMxhXfK2O6kprNnyczZlNi
+         2J6CckQ7lLVGpTcn5S2+r261QlFbx9sDGZXK/iRDU9F/wA7PSLv52h92PVxqjXqMDiun
+         msEg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=cc:to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=FUI0roKtUY3lJwsyDO29iRhWxSCZDhBG6j3ZdyYdfzw=;
+        fh=y1PvHPvWvgG3qNkG9RzXiGcskA/sAGhsvrcVfkDQPyQ=;
+        b=JRhzWOwcjigfpfevtIbdRgKFsS6TM0aJW/nYYkZrhzNsslfaMgaHlmh+pmYFucZTEM
+         YizR0BYeXHRJbXPeh+9k75lAr6Xa7KCFuX0XOefLHrnTbLMoe7c21tNp+f2DG+Z9nR5y
+         8kI6BaNiDlE9CNgpFlj5qapiUjWnglqKf1+caqv/qV303UP28Z/FzHWK66hRkATyI5Y1
+         V7MLCOVrRqxzCjUhY+xA3sfDC4c9moXJ00fETKdOTaaIIZeeUO0Px9nF6GWoSSFFbzHU
+         jJzVfCgC/5FBSwW01m+swOYXrZMnFjA6nOVkMNG9prDr7W+irdj3LLBbPQSQsuSoFdOU
+         fiPg==;
+        darn=lists.linux.dev
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1792565279; x=1793170079; darn=lists.linux.dev;
+        h=content-type:cc:to:subject:message-id:date:from:mime-version:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=FUI0roKtUY3lJwsyDO29iRhWxSCZDhBG6j3ZdyYdfzw=;
+        b=QIaxCN6ibkKW1r998JY/aPy7ahCk8sYLqNoFAxbsy1gMkZG6HMGqycLeVdN3MKf5RH
+         5xQUQhQQKU9U4d66M4GVIs7vKxYYJI7Ptt1H4ovtpt/PplsliNL7tpzm+gFTmijTgPlY
+         Bg8YeZ7gbl1yq2hSAUxDsxbxUOxdY+c5gLEaPS0rImEtv7macaKM2PKQsm1xKD7L47yw
+         f7wmwR+pav/gaeU0LqSUSA5AXPie6L4N+a9/22ISwuNKTKMpaIUoLMVVyNhI/YBOj6Pu
+         eCuEtlBEVaVp96uSQ0v5jFIKOhAtjAr7VrXIVr12LDbksy7Mw7J2IkV5Fw7405yS8dWy
+         a2EQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1792565279; x=1793170079;
+        h=content-type:cc:to:subject:message-id:date:from:mime-version
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=FUI0roKtUY3lJwsyDO29iRhWxSCZDhBG6j3ZdyYdfzw=;
+        b=pFNXW8RVj9DD0Y3vRv4QhAnDJEiaE1q/VOeJ5enwHwk3H4G2AwZ0wPjxBUWKqeRL3a
+         wL4bpLJpM8cDkgmA6c4WSVHUmKiGPDOllRQS3uZhW51ZvE+wuEblMp7LRzrSA+k2WV87
+         tTD7aIRrXScjA41DLsM0DJrrm6X+gau831FzIAbPVpwVoG5P9Xzb1MG4EzTmIrMz68vI
+         fV1EF5VeYUr5ZFx9KhBEYrxLBYrwt86vH9QqhUXhrNRzYazzXmWtEN7QYTYjuDle6Esq
+         OhjzXVSBZ1xJKgqgm1DVFdX5uwHklpHX4jGtkwwyw7HsZUAlglAesFpalasNM1tU9n1s
+         zl0A==
+X-Gm-Message-State: AFq9FYKKkvk6TbcE7N74G1dbXG0oNbfn5kwjrHTZi5f+dYhYuzAugkTn
+	CsUcfjW2MKCS+Esj3eadEqH6GvbiVon28yDWh6vOh7pKmenY9BBrnl4WFeCmZ1s+ODSCmwsZrKE
+	siqQdyksQ7ZbKUUccF25gxT4wH6Uepi8oxkPlTMw=
+X-Gm-Gg: AYBFou1PBfatF+f/7OjETOlS83FShUerwZH3HxGACGyx0COSjXOfdofelRCl97jwc+s
+	7ILw4VWHjkM9QBsCVfKvRlrM91cO0aGHKdX1gEME4VSUtkwP433M8yKI6R64gwbfDAe5rxpXzh0
+	75b6Pn/zTm3Q/wRd+5MmTA/suBmra7H5Ucqgmkmmr2Bo6BQktGkDILz4BQIhEYiQfA70QOG7ugm
+	JPEZCS3Gh8iQo+xjVPWYFhZ2/5RRXvC0LPBITLf2Yq4x5uZoYQOpK4aCq2E6NNcc0iMNQ9bNG2g
+	YUpLc5b545eGXmj22TICqrwb41uWBL/G9i7el8/FRbz198LgZPBWt7hPNFcGp0fhr0sgVevFIio
+	E09QkS9K0zqZlRlR9xuaXMvxJUhcicEWgpoEqABCrH/BsRHj9b6O+TkVuOKJTsi60a/4fi7oX/E
+	I3HnsCIFAOOl9U2Qnirp3cP11Q7KopTjrgXyMU8wFtiAkSwvMxugFI
+X-Received: by 2002:a05:6808:6f98:b0:545:d05c:7cf8 with SMTP id
+ 5614622812f47-5535818ce22mr709217b6e.34.1792565278631; Tue, 20 Oct 2026
+ 23:47:58 -0700 (PDT)
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Post: <mailto:outreachy@lists.linux.dev>
@@ -54,65 +100,38 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 List-Owner: <mailto:outreachy+owner@lists.linux.dev>
 Precedence: list
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20261020163636.7629-1-haasham93@gmail.com>
+From: Sowmya Torra <sowmyatorra@gmail.com>
+Date: Wed, 21 Oct 2026 12:17:47 +0530
+X-Gm-Features: AclHuK_TIWgPrBEfoR_GYVklwAw1PBu3gjzhd4l_M_O7l1_tKAQZfq2G_1y5om4
+Message-ID: <CAFsBPP=ZecgyvM_w3zstpFfoF9mKniAMehJpUy6QPCrXUCwy=w@mail.gmail.com>
+Subject: Request for Feedback on a Possible Greybus Audio Manager Cleanup
+To: outreachy@lists.linux.dev
+Cc: Julia Lawall <julia.lawall@inria.fr>
+Content-Type: text/plain; charset="UTF-8"
 
-On Tue, Oct 20, 2026 at 04:36:36PM +0000, Haasham Khan wrote:
-> Remove the conditional jump to gb_error, as both success and error
-> paths proceed to free the request and return the result.
-> 
-> This simplifies the control flow without changing the function's
-> behavior.
-> 
-> Signed-off-by: Haasham Khan <haasham93@gmail.com>
-> ---
->  drivers/staging/greybus/loopback.c | 4 ----
->  1 file changed, 4 deletions(-)
-> 
-> diff --git a/drivers/staging/greybus/loopback.c b/drivers/staging/greybus/loopback.c
-> index efc69c10cffe..284935fded12 100644
-> --- a/drivers/staging/greybus/loopback.c
-> +++ b/drivers/staging/greybus/loopback.c
-> @@ -609,10 +609,6 @@ static int gb_loopback_async_transfer(struct gb_loopback *gb, u32 len)
->  					     request, len + sizeof(*request),
->  					     len + response_len,
->  					     gb_loopback_async_transfer_complete);
-> -	if (retval)
-> -		goto gb_error;
-> -
-> -gb_error:
->  	kfree(request);
->  	return retval;
->  }
-> -- 
-> 2.53.0
-> 
+Hi Julia and everyone,
 
-Hi,
+I've been learning about memory allocation in the Linux kernel,
+especially GFP_KERNEL and GFP_ATOMIC.
 
-This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
-a patch that has triggered this response.  He used to manually respond
-to these common problems, but in order to save his sanity (he kept
-writing the same thing over and over, yet to different people), I was
-created.  Hopefully you will not take offence and will fix the problem
-in your patch and resubmit it so that it can be accepted into the Linux
-kernel tree.
+While looking through the Greybus code, I came across
+gb_audio_manager_module_create() in
+drivers/staging/greybus/audio_manager_module.c, which uses GFP_ATOMIC.
 
-You are receiving this message because of the following common error(s)
-as indicated below:
+I wanted to understand why it was used here, so I looked at the caller
+and noticed that gb_audio_manager_add() uses GFP_KERNEL. I also saw
+that the function calls kobject_init_and_add(), which uses GFP_KERNEL
+internally.
 
-- This looks like a new version of a previously submitted patch, but you
-  did not list below the --- line any changes from the previous version.
-  Please read the section entitled "The canonical patch format" in the
-  kernel file, Documentation/process/submitting-patches.rst for what
-  needs to be done here to properly describe this.
+This got me wondering whether GFP_ATOMIC is really needed here, since
+it looks like sleeping should be allowed in this context.
 
-If you wish to discuss this problem further, or you have questions about
-how to resolve this issue, please feel free to respond to this email and
-Greg will reply once he has dug out from the pending patches received
-from other developers.
+I compiled the existing Greybus Audio code successfully and am
+considering removing the explicit GFP_ATOMIC argument.
 
-thanks,
+Would this be a useful cleanup, or am I missing something about the
+allocation context?
+Thanks for your time and guidance!
 
-greg k-h's patch email bot
+Best regards,
+Sowmya
