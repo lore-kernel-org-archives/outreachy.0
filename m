@@ -1,65 +1,64 @@
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=192.134.164.104
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=192.134.164.83
 ARC-Seal: i=1; d=subspace.kernel.org; s=arc20261015; a=rsa-sha256; cv=none;
-	t=1792675842;
-	b=NhN3VbIqBNZ3+an/W6DTX/kijAPu+RymRdMjdclJwJiPDsDm4UqJ5slGdFoxEY7ck0o2
-	 Gac5WDj62w9p09yz1VOybxGXpkv49+XL9Ea35pttcaZCL2tvs7A4ompaZWmqJ2yaxnr5l
-	 5pS3O4WyXIVkfhM5DnmLpXuQgcoJQ2nc8oW3ojsWNfr0uBDqhB3ChMOAaXF6Sobx9cKu1
-	 rGxCMc2LXwI/Fn0POQzhc8gT8r10NdYWeoFrLuuuZycmu1X6FlBrKp19867wIvYQRBw26
-	 ZuHUdiqo8w2cgNCEGzZraE3Demx/1AXbOcJouRWkOUrtSrQ87lqdZa79+Lp2Qcmf9Nw==
+	t=1792676129;
+	b=YlSEcCIbtYlPvp8TdS9jllUHJjuCfDYBiHQ5jZjZrm5ZcCZKs0n4U90QFUf4aCAgGdqL
+	 a8O06vrnqYxESNk/7GjPbP6/1K1S/dv4RoJIzdUu6MU9Y6RQE2wjPXKfM9uGQYi/KvxLG
+	 3hKTnQA/40uFIPZlj6efEU4zjCnXz/8DJzXAHepfyaL+2zFgxzampjGINr9e6dpyzLQKm
+	 8YLTNyyVss9i5p2ZQpqO2tkN3brl2e+NpE3bq8s7oTQPRFpRwticKSXAu/jXJAAP44dOZ
+	 pZ3BVZhO7/wN210ZYMoC2NgxJgbPiO9xBw7H8mtzkV4l1zJGY/Cd2AnQoN+UMMpU+sA==
 ARC-Message-Signature: i=1; d=subspace.kernel.org; s=arc20261015;
-	a=rsa-sha256; c=relaxed/relaxed; t=1792675842;
+	a=rsa-sha256; c=relaxed/relaxed; t=1792676129;
 	h=DMARC-Filter:DKIM-Signature:X-CSE-ConnectionGUID:X-CSE-MsgGUID:
 	 X-IronPort-AV:Received:Date:From:To:cc:Subject:In-Reply-To:Message-ID:
 	 References:MIME-Version:Content-Type;
-	bh=XOZqn71pVavvTKy71++IgxHnK+qgoJzxDKpxvsFhUAA=;
-	b=nfFPlhtqxJ5geXWj/yWUAOMIdacDs+VpdnRd70/W/u6uQTyqphFwdpe7l1r9YBZ+CMR3
-	 anPivEDLvD/0M6w+Fblg0znpt71mZ3lNaCQotFUGkltm09vMgRhd95ckBx4Uasx8ogQCk
-	 KOAU3IL166r8rLSvJ7yA4/FfIBCBvwxU0++DXUB7o8eAgMNVbk4I9nk68KokbAoTQR+DQ
-	 gky04j/Kgjv0zZUhTzOytSG5HxPQWrgq5wAwo0ecrRQHbNhAg+KNZXQAPj++P+cgMRTH8
-	 Yx+NF5UZCIF7eomFkRNtB6woUqbsqNNL3TV33QWvjTzd/FiMraQqQ2SvvFzpULjhuYw==
+	bh=b+enJ4/aTvt+mAJ0vWs0JTWM5U1pomDLS1TrQR3CHRI=;
+	b=5C6whyYRWa0wAg4XMEbGNkgKC2970YGIi5IF+xkFuz1W786RvVV0x8zdiUoqSGQuB2Fq
+	 s0r/QV1fI2wrsvREyRvQOA5S+H5cNLaNU+V+5t2tkh/9xEFaKZDy02tbcYXV3YcFQRn+K
+	 qXCm4op9P68mf+0PDVQVCpaP4mPzHLFpya55t5V4A2Mpfqy0welkQIOgXSZPb6MAONrQ2
+	 F7+EbL3usTtifNDHGfyJR8T+mzEHh4J/629y05cAjgIa6QgRpNge/mXR0D2Z1nPaWJ347
+	 a6VCJH73MbSLe/Oof80kjT0VKjV80UM6nnFKkkvkyafxBghyX08E2jCzdQK+2KtOomw==
 ARC-Authentication-Results: i=1; smtp.subspace.kernel.org; 
 	dmarc=pass header.from=inria.fr;
 	spf=pass smtp.mailfrom=inria.fr;
-	dkim=pass header.d=inria.fr header.i=@inria.fr header.a=rsa-sha256 header.s=dc header.b=XR7Cj3HA;
-	arc=none smtp.remote-ip=192.134.164.104
-Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
+	dkim=pass header.d=inria.fr header.i=@inria.fr header.a=rsa-sha256 header.s=dc header.b=iffJxoHF;
+	arc=none smtp.remote-ip=192.134.164.83
+Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5F753606A31D;
-	Thu, 22 Oct 2026 13:30:39 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org 5F753606A31D
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7BAD6606A319;
+	Thu, 22 Oct 2026 13:35:27 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org 7BAD6606A319
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=inria.fr header.i=@inria.fr header.a=rsa-sha256 header.s=dc header.b=XR7Cj3HA
+	dkim=pass (1024-bit key, unprotected) header.d=inria.fr header.i=@inria.fr header.a=rsa-sha256 header.s=dc header.b=iffJxoHF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
   d=inria.fr; s=dc;
   h=date:from:to:cc:subject:in-reply-to:message-id:
    references:mime-version;
-  bh=XOZqn71pVavvTKy71++IgxHnK+qgoJzxDKpxvsFhUAA=;
-  b=XR7Cj3HAK8igPfIosx5R71ECVpCiK7efIR18Gy2chvipCJ9Godn01JM8
-   JSHUNuuRZ/SsgHAckbovG8zgVBVDnVq1nGEraaiGQdYgO5xC4k/ShWyNa
-   pK/u8ldHlVmAHLlSzLA1Cb/YMIaH0wTRPD1QBocXhv+SAUAqn7vKW1eRh
-   U=;
-X-CSE-ConnectionGUID: IF5VVBG6Tla+ikNMG3ij/w==
-X-CSE-MsgGUID: qxDlp+foRMOLqy43/enSQw==
-Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+  bh=b+enJ4/aTvt+mAJ0vWs0JTWM5U1pomDLS1TrQR3CHRI=;
+  b=iffJxoHFxGvZuWZN6vwT4LR4zpOSZhu2/heHml/4tNZAyprN+mK4NyzV
+   SlvmNvy6GWDxKefeaXvFzT6Nmocj8Zko+EiCxqTkoJcd8KfOeq47nKSup
+   X/ly9rw3u8Tl6tVnPLY8mK7AvBZ7z1KsqyGbkXc8TwHF9LTWYFb4grFX7
+   Q=;
+X-CSE-ConnectionGUID: HcacyPO+T0uagYMzpd4VAw==
+X-CSE-MsgGUID: aiW8raj1ROOd7cMTYQJdGg==
+Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
 X-IronPort-AV: E=Sophos;i="6.27,172,1787004000"; 
-   d="scan'208";a="160604364"
+   d="scan'208";a="301890556"
 Received: from c-76-123-3-53.hsd1.va.comcast.net (HELO hadrien) ([76.123.3.53])
-  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Oct 2026 15:30:29 +0200
-Date: Thu, 22 Oct 2026 09:30:26 -0400 (EDT)
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Oct 2026 15:35:17 +0200
+Date: Thu, 22 Oct 2026 09:35:16 -0400 (EDT)
 From: Julia Lawall <julia.lawall@inria.fr>
 To: Alex Elder <elder@ieee.org>
 cc: pavankumaryalagada@gmail.com, greybus-dev@lists.linaro.org, 
     linux-staging@lists.linux.dev, outreachy@lists.linux.dev, johan@kernel.org, 
     elder@kernel.org, gregkh@linuxfoundation.org, vaibhav.sr@gmail.com, 
     mgreer@animalcreek.com, vireshk@kernel.org, rmfrfs@gmail.com, 
-    dtwlin@gmail.com, pure.logic@nexus-software.ie, 
-    linux-kernel@vger.kernel.org
+    dtwlin@gmail.com, linux-kernel@vger.kernel.org
 Subject: Re: [PATCH] staging: greybus: Replace format specifiers
 In-Reply-To: <3433f922-bffb-4f1c-8e06-a7a87f5dbcaf@ieee.org>
-Message-ID: <77adf02-43a9-7621-a94-9da41f8c5a56@inria.fr>
+Message-ID: <d0a4a257-1ec9-7096-11db-5ff4b3244bac@inria.fr>
 References: <20261021163437.280930-1-pavankumaryalagada@gmail.com> <3433f922-bffb-4f1c-8e06-a7a87f5dbcaf@ieee.org>
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -71,6 +70,14 @@ List-Owner: <mailto:outreachy+owner@lists.linux.dev>
 Precedence: list
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
+
+Does anyone on the greybus list know anything about this person:
+
+Bryan O'Donoghue <pure.logic@nexus-software.ie>
+
+The email address is not valid, which is somewhat tiresome...
+
+julia
 
 
 
@@ -89,15 +96,6 @@ On Thu, 22 Oct 2026, Alex Elder wrote:
 > 32 bits--would print correctly no matter what their value.  But I
 > think it at least does no harm to convert the format specifier to
 > unsigned in all of these cases.
-
-I was suprised the compiler doesn't complain about this.  It seems to
-complain a lot about type-related format specifiers.  Yalagada maybe it
-could be worth adding something clearly invalid in one of the argument
-lists to see if the code is actually getting compiled, or if you need to
-set some config option to make that happen.
-
-julia
-
 >
 > I have highlighted below an existing bug that should be fixed.  It
 > gives an example of something to look for when you do this sort of
