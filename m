@@ -1,97 +1,97 @@
-Authentication-Results: smtp.subspace.kernel.org; arc=pass header.oldest-pass=0 smtp.remote-ip=209.85.218.42
+Authentication-Results: smtp.subspace.kernel.org; arc=pass header.oldest-pass=0 smtp.remote-ip=209.85.218.53
 ARC-Seal: i=2; d=subspace.kernel.org; s=arc20261015; a=rsa-sha256; cv=pass;
-	t=1792922003;
-	b=nJH37DTCHwH37BtaZ0ZkmdRAueXwITL6KAERcPRCM3WuUNnmS7urHuhkoG00WF7shbQW
-	 6VkcolYkG6RTGgRpicNkh6vEOpaD6LSY+mu4gX3QEZ19Ktl8/sZDyjhCUOvb8ev2ODGzw
-	 IHYsNtPcah9Vz7wbdaBPynP18ot/G5YJ907wUxKfuT9UU3/iIPkyU/blR/wtGlmrVTmj7
-	 /sB5KAvABe08/0FWOcm/aFPTxnbJNtEU9+jr9EDN42b4Vq7hZRWG26JKdkeP+OxC7boDX
-	 Nv8ebwf8zaJTc0r7pOdYCCrOIKwSPVZ1v7Vr4Ztb7DzjOzcZkWN9wYpYhU5mT79EmiQ==
+	t=1792925646;
+	b=LksUffhTeQf71gvIcfKsdzLUN5BoJbjz9D0UQ1bSSlu7sutt25gU1iCwTcUrQwwwgegz
+	 OZW6ArmOpQAyAeWysbFNH99gHXYwDCr8hYyp8LQABVbxFxTshWYFBToGgZuOIjPqd9ZBv
+	 27XJ8DaL+BtDK+ZPts8yEIVg4gzP3MQnF8S4FQUnmuBZ6NxtJhi0GleCqk9wowQb9kKlW
+	 lkQdQimYYok6IxhViIUveKiPTiAu6jg1AaEO8YMGEBfvAxiWz1Sia+lSCVV+GxP5hIzgS
+	 OfLfZyhCGjftDHRFmq4hC8HiB3DZVLvCzXKd2HeM/PpugbflcPrsQhH66cPIJk7DHCA==
 ARC-Message-Signature: i=2; d=subspace.kernel.org; s=arc20261015;
-	a=rsa-sha256; c=relaxed/relaxed; t=1792922003;
+	a=rsa-sha256; c=relaxed/relaxed; t=1792925646;
 	h=DMARC-Filter:Received:DKIM-Signature:X-Google-DKIM-Signature:
 	 X-Forwarded-Encrypted:X-Gm-Message-State:X-Gm-Gg:X-Received:
 	 MIME-Version:From:Date:X-Gm-Features:Message-ID:Subject:To:Cc:
 	 Content-Type;
-	bh=6PtEA2UtMTqcqVdkWoMV++OnOcpG82BOix7xLgA714w=;
-	b=oJmciRVICej5WjzRbx6jmhDRM44rO69o+IM1QBWMZaIrlhqcZs5LqVXoWPDkYwBtlsqD
-	 o+J1k6OltSfJRtI9MFWpMwvTfaoXLnvFw7WsS58+N+368dSpQwddfuDKRptmqUCPLUC5/
-	 p2JeILdTVeidj4bRvy6bXHQsfGdDycP7cjVrjzo6sfovFGJPjp86HoXjNZRqWXTBQxq6h
-	 C96YOdDlwCJ7f4Qcv77g7LMXTTZ6Bayx5bTKVhF7reMnzfajw0n40Zvz70nxtmnf8WD/L
-	 0NFWL8tVmaAhCHGJHTCbJxEcnhREXcZfZ5A/TNENDuSVysU2zAdMmgl7+TlcClheVXw==
+	bh=MtahZLniFEJWP8SrmHT3ICGVYOg1SiAxfLPOaOBltmM=;
+	b=DTY2oPieqqg7ZHbrOvI6scTcfSXkKfj0R392NvbUZ/7ZFqHM8eu7lnborHgZSxLgrfBh
+	 FmRfJp1DS0CMoFALVARevN840lgke9bseNhCvmndJmglglOO92GAjKikf9zGCQxHhtcsw
+	 X0veovAvs/fs2tmGWsCjLJEI82xrHNC3hV52qvuE+P6Ds5Jj/3lCSA0XJ7xAjvjVkXjjS
+	 xHWH2bRdEcwsCOLx3YcBRtQtABlnFOIvAvG7OHKKroJcGCc2LVVh5miEBRTkg8IfEHV0L
+	 BXKEHvFLiOnpygu8EsXPhyLAm6gLK69LXW5rPyuvuhg00FwblBft4MKWWtudCD5BdeQ==
 ARC-Authentication-Results: i=2; smtp.subspace.kernel.org; 
 	dmarc=pass header.from=gmail.com;
 	spf=pass smtp.mailfrom=gmail.com;
-	dkim=pass header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=q1QAVOsx;
-	arc=pass header.oldest-pass=0 smtp.remote-ip=209.85.218.42
-Received: from mail-ej1-f42.google.com (mail-ej1-f42.google.com [209.85.218.42])
+	dkim=pass header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=CN58dwws;
+	arc=pass header.oldest-pass=0 smtp.remote-ip=209.85.218.53
+Received: from mail-ej1-f53.google.com (mail-ej1-f53.google.com [209.85.218.53])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0E7A4606A31E
-	for <outreachy@lists.linux.dev>; Sun, 25 Oct 2026 09:53:22 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org 0E7A4606A31E
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B77FC606A31A
+	for <outreachy@lists.linux.dev>; Sun, 25 Oct 2026 10:54:05 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org B77FC606A31A
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=q1QAVOsx
-Received: by mail-ej1-f42.google.com with SMTP id a640c23a62f3a-c315869241fso253060366b.0
-        for <outreachy@lists.linux.dev>; Sun, 25 Oct 2026 02:53:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1792922001; cv=none;
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=CN58dwws
+Received: by mail-ej1-f53.google.com with SMTP id a640c23a62f3a-c4395d31228so319059766b.1
+        for <outreachy@lists.linux.dev>; Sun, 25 Oct 2026 03:54:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792925644; cv=none;
         d=google.com; s=arc-20260327;
-        b=XljXSWc3+7kDcInXXgtHXlfO6oiIbVLJ1m2KPWdrUr91ZQjqCBlPtFai1qWk7I4ajR
-         vMguGLgNZSIcGNDFDToPDzbsU+CMCXyZXie9ZVh3fL+wR4XpUb5YfaVLOEQwyhNHd9tU
-         E19zrgNFShiOJXG5Zvk0GSwSiq24Ua6Jrr8ZNTCPzGr995meHLQG2rWhsvZjgKmvZYKO
-         ZimbnVezo3G+ZM7EBMc3T+US9akFuujif8VWZtL/ffkvR2lEzSsUYSk3QTb7eooLqZTR
-         PQNYOTUxW5eSFaq+fH7wEQictq+mpprQCKcKh9VD9UonXII4YT1CyEaey6etlwpO2iko
-         GBGw==
+        b=b2DUHvVxbA9/wU8ovSAJKlKtsh8dazqsCEEOIHsmbSSMYbQWSDwE/Cb3v3Ns93nGZY
+         wwkLKCkiojM0SwX6RW152iLZzJa4KxkFV0+MX2PtjkTRP4ulKV+L1cwI6d+XlKBl99TL
+         R2tC1Hb3lfCmwKPKk/I7Yia/he5QiKasf+AKqvehhDcy2lN2Ium9y5LU9ra0N0u+T363
+         y6uE+3ZfEqrIoAwxdpi/RzNSrVTf5ON3J/x7LJ7j2QLNN9tUnXHAq0ryb5ysmjgMi6ID
+         EF5Qgywxri9sTVMGRgZZjWUv4R2piXcABRFD1NXO1XN2QcJZBmwItGMc1ljPBbjv7ugO
+         W7Hg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
         h=cc:to:subject:message-id:date:from:mime-version:dkim-signature;
-        bh=6PtEA2UtMTqcqVdkWoMV++OnOcpG82BOix7xLgA714w=;
-        fh=e6Yn7CsB9KQfV9WOO3XS9Uf84rVkfQKO9tpsDhOXCnk=;
-        b=PGXuu7Tz/9ate/qviqlDoOhVSE6JdvvfQFwQIWIWbgxW9MCHRDd1cVhm65UyhsmWrn
-         +lnXDOhIToGoTUQVd5BEUb4fKwZOY0iNonCHPajUuUL5Cq6+FjscH8lRKAxD8rMLFQ5j
-         kJYu0iOuMniKWmxmGGjHB+FRQmw5KuVa5TDYbk+CPcUouMPt3EHWnvoPj9sUV40IR/wf
-         6xuoKeg6l3aSUq/dyYQs8FcdG+BvKbGW9BB0PM3NHP0z+NFePIhTJ/o7G6pXcwrTHjXB
-         TlUj3U5NlrLcKePjF8xBguYU5T8xYisWjuu+QYGF3U7lFBkJAaup3krValo7EdkYpPb4
-         /+YQ==;
+        bh=MtahZLniFEJWP8SrmHT3ICGVYOg1SiAxfLPOaOBltmM=;
+        fh=kF7ilSsZD+fAB347BtL+CoHd3+nqw8tNUjiBGl82HzU=;
+        b=DQQzDDo4jf3EgA+kmxRkHKNqtOKHi9QbTKDbboiwZtYvweRvol05529xuosjVHVICe
+         0QlWciI/33RZn8pK4o8Se52PCiicKIFf8Io2seivQ0mJxVTUXPXSE2286+MWYIrL5FzX
+         C/BoOVrfvVJPmRQMAJbzbYn8trRZSTRRokwzScS8evpErpB/+aYE/SYcLJYFx+6SyC6O
+         DdmWcftuvLOD+a6nXhUfaC13CRrWzaQVLxXqiIIo6FutI72EslKFSznlKa6za6pfliD/
+         8GZVAv80uT2TFAkJhn4Ec5LyCAcsnKws+WTk0VqonOA4sck6X81/HNs7BSlBnNFDkECP
+         VL2Q==;
         darn=lists.linux.dev
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792922001; x=1793526801; darn=lists.linux.dev;
+        d=gmail.com; s=20251104; t=1792925644; x=1793530444; darn=lists.linux.dev;
         h=content-type:cc:to:subject:message-id:date:from:mime-version:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=6PtEA2UtMTqcqVdkWoMV++OnOcpG82BOix7xLgA714w=;
-        b=q1QAVOsxJI2rkuJ1BWMjyxePsP7YBS4jBxUbuNDzYcfR1wPNoyBOedgyA+GpXOIQBz
-         tyQ91Q+8m4ZjDR8czFtTzgXl3ZUnnKkq7qCSU956+bKqFLoPS1MWY1Q1/BkC3NBN40sc
-         79oQfrLt1L2nsIvDDGoFNa/3LQ5ko/i7LVZ2KBUshn0P4hDhogwZB4mt1O+HZd33NUm7
-         0Sy3S0DUicLr9R7u1CYSlqBFk2XeTYv/31TCm3T2jmK/DDZ20IeCiCugIBQXPKpSoMut
-         dLtRumvJdbbMTdEdkxVGXbSuIz/lTjT5wOYqP3ezcdLSYeOzzt4jMw4eUi1209ZLNbNB
-         zxYA==
+        bh=MtahZLniFEJWP8SrmHT3ICGVYOg1SiAxfLPOaOBltmM=;
+        b=CN58dwwsfQL5uuPoKH0CZx/zXBAak+FKG/LXbWyvSdPdv91EWHvC3LGTOd1KtogmmI
+         VU/SX4IizQ1eetduFkNcqiybn7tREpdofIHg8w8CmVEzIIkGtlfb6emT5fWfhiXAGmLj
+         +80IDMkzRkqIZEMcu5vjJcn1GpSJbaInJZEuHU/RO9cunlq+AcNQf3UWvndJXu8d5Jbi
+         YlTnUPx4PfqLobfLhWO+DV4eIqoffc80137Wg0xUb20ehIHwEpd/QvUcZ0qPBXpQDlbE
+         i5KBv4fNSFU/bimDXWrkLJYBUbcT7Xrwv2CNHcV85aJb13FA/QzsX5pbCvRARTHkJoNQ
+         xz9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792922001; x=1793526801;
+        d=1e100.net; s=20260707; t=1792925644; x=1793530444;
         h=content-type:cc:to:subject:message-id:date:from:mime-version
          :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to:content-type;
-        bh=6PtEA2UtMTqcqVdkWoMV++OnOcpG82BOix7xLgA714w=;
-        b=xh72EvJtcGde6oaclE8p6x10hLN40SXzmyxQ+5RU0LIscpOXGVN2Hpv/QD+kNcxRy/
-         cJbYUDISeHmjdN54el61UasU02bM7ejrVLKnHPCg8mL+GF/mOB7OiMXVRKwmnm8rEfzw
-         /Y9hMpbAPMj3FohFKBjKhHSwYDHoxThPooCkG8yRmKPPKzCzAYV88nryGsujELyNQ1w7
-         aPFnniK6PdkOkw0DVragYv4LQJVMz8iN0KyFVvZ7Bww3l6Mw0aylykLnXK2LlJCnYPZS
-         JMKlvHgZscfnMtjlCmDGsZUejpv1kIBy44s7kKCLE1+vGm64Zaaf0ugxD8UJ6Gtz/zLh
-         qC1Q==
-X-Forwarded-Encrypted: i=1; AKwUvBye6eNbRyWCBVeyuQI3S0gXrQmjib3LUEDJKPHblLvZ1XRw0bGMjcDFi4T/AjykYU+BLdvhwIZmqtU=@lists.linux.dev
-X-Gm-Message-State: AFq9FYJHHcAOzpW+vSSN9m5T9677WcomeA5logY/9iDTylqzbq8LUb0q
-	8IB6P/YmorFqWpUk2KtlXvKCz9w16dYc49ZH6yb4xS5WD6hgOroE+mnZTRPvntc1l7Dsa316XOs
-	XVmuZOVZtcI5rnDXQDyiIgKc+c6SXaKI=
-X-Gm-Gg: AYBFou38XzUT+qziyO/kIrfC3hJq6fAl42d7GU63swnf9wDU+tsrLopUkeTOE7PdPGt
-	GIYoLhLPJVXj66r62Gev/8tJ5ePjgOUS4NJum+3PWpJru5x7jBPF/wWWhmA5U858SL8bVwKGJ5x
-	/BffJyYiLqqYdkM160aT+1HFVw57rowmImPrVGe5qnsdVPhWYk4oOe3SxCB0SFuXLM1JFiELtta
-	s2udmksJ1gz6sBHXifzUc4wjUpCCnUr6/JhENQCsKwriuel9kXl2Hqp1LlVJqHDy6jdGr7KLLu9
-	IY+WBo0bN87Elz9110JrkLav/0k/JOADC7y4wa3goxagwCShTtJrMyg+RaOP15J7hwwsxQ8m5Aw
-	vXLwF1tM79doJEuAM473OkYCv4D6Xr5kT3+gPCGkoO6NnwrpgJhtB61HHTMogUApGxFk=
-X-Received: by 2002:a17:907:9d1a:b0:c2e:2d8c:4585 with SMTP id
- a640c23a62f3a-c46bde8a1f2mr445903566b.36.1792922000889; Sun, 25 Oct 2026
- 02:53:20 -0700 (PDT)
+        bh=MtahZLniFEJWP8SrmHT3ICGVYOg1SiAxfLPOaOBltmM=;
+        b=sbKuG45K34E2KvRWCoVcQR2MW8UKaovfMsV1erOckoj6aPQk/gWiY65seCGGCYGRxJ
+         aGLZN3dEDxAumBzX7MJ+auLV205+w4dUazH4wjWYM3USvejYp51xtvBJLnQZKIFCXZUY
+         K9ZLgAXeBTsZEkWRUOOWA6YLzCpwTLcvA87N7IWOSXISoqRLgpc/dVqPDJiIEFzU/CX2
+         3G+QgV3bzyriE0Do+VTREnrr/bgHRmlgF+z2d4grSk2l+IfafRtsVq1JXTKu5QOrP9WJ
+         NGuBkzG00Qfw6cNm0OGS83DKkFZvUdePXrzhEmXALZ2nsjPlewg6vKZIOJhpyLyOHk+n
+         FI7Q==
+X-Forwarded-Encrypted: i=1; AKwUvByn0nsXjF9NwGKQFJ4VKCKskY6c/LxJ+y9tfTzAHr2QG9oMiOwAaLi4KOM1exl+7wop+KOr2V7Bkqg=@lists.linux.dev
+X-Gm-Message-State: AFq9FYIN/M7imXKV+24UCbILLGzqZLeE0dOY/d8K+NbGtdXMKOyUhoN2
+	3fmjmPUyMyIhxfMQym27+22Az/J8rknbhUa8COmiqxlwrWRg+WdVXB7M2jdJqb42ZxIjAaQOwlX
+	BkxS270Q8JqBYs4A2CaXd7I9CboQ+Vpc=
+X-Gm-Gg: AYBFou2SDgMDYbdmfqIyFS2pnLa97XM18pANUHfJzo8x60NCqfSrqFfBZGqxNCJDCif
+	xskqhGpsIjJmdhmKOUd+KjeuO6r73QJkjGB3S+ILB2j6ye1bCIr6zE0MmlHtICuIlAuTlgxR1bU
+	QlkjhuKrjLUbqEr25nVPhpbp++wsT7jGijFya8Wx/Lc7XHWtHajUAPvf8OoS7mNee772R1QSnXu
+	KTV04/ZYLOpLom0JdiOnboGwlkZm8w3P2pcBJdVbej9m+zsYl596vefIQdVWMVZ+w2JRNfzGHr1
+	F+HQBlMv4iMFlX/XPnc9GNvBdoiCjOhUfV2IGY7K1RgVhW39PpqvP2PLOat9jJq7RoNrdfYG92v
+	6D1y4++nhz0cIUZ3rObRaKeeOhWuib5nalslMVfPD6HfN4kM7ngsrMsbAmklvEV6c+gNI
+X-Received: by 2002:a17:906:dc8b:b0:c29:659e:2fd6 with SMTP id
+ a640c23a62f3a-c46bddb549fmr450364866b.10.1792925643928; Sun, 25 Oct 2026
+ 03:54:03 -0700 (PDT)
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Post: <mailto:outreachy@lists.linux.dev>
@@ -102,81 +102,125 @@ List-Owner: <mailto:outreachy+owner@lists.linux.dev>
 Precedence: list
 MIME-Version: 1.0
 From: Abubakar Musa Samaila <abubakarmusasamaila@gmail.com>
-Date: Sun, 25 Oct 2026 10:53:07 +0100
-X-Gm-Features: AclHuK_xZzMIUgzgDxUYS0S8n_we1GNSKAQQHoI-f2BeDz1YvWNvfoIENaxJN_0
-Message-ID: <CAHxSwT_ya=kxLdQkx5iY6DdVbxDv9MP5shRUF5-yDUvM=cFpKw@mail.gmail.com>
-Subject: [PATCH v2] staging: fbtft: fb_upd161704: Replace udelay() with usleep_range()
-To: andy@kernel.org, gregkh@linuxfoundation.org, outreachy@lists.linux.dev, 
-	julia.lawall@inria.fr
+Date: Sun, 25 Oct 2026 11:53:49 +0100
+X-Gm-Features: AclHuK9TY3j97je9JyLB2E5dU6k-0NiwAm7rcWLnTy2tP6DroPMgj8seRuA_E5c
+Message-ID: <CAHxSwT8zGKHDLjAbkR=EZL7QVwzS_47TPB283YTHKEQsE0mvFA@mail.gmail.com>
+Subject: [PATCH] staging: fbtft: fb_ra8875: Replace mdelay() and udelay() with
+ sleep alternatives
+To: andy@kernel.org, gregkh@linuxfoundation.org, outreachy@lists.linux.dev
 Cc: linux-staging@lists.linux.dev, linux-fbdev@vger.kernel.org, 
-	linux-kernel@vger.kernel.org
+	linux-kernel@vger.kernel.org, julia.lawall@inria.fr
 Content-Type: text/plain; charset="UTF-8"
 
-From 778030aa9291e3a7d40ffb03b19e6877041cddc8 Mon Sep 17 00:00:00 2001
+From 474546adc013fab098dfda25e6503413fddb9929 Mon Sep 17 00:00:00 2001
 From: Abubakar Musa Samaila <abubakarmusasamaila@gmail.com>
-Date: Sat, 24 Oct 2026 12:02:25 +0100
-Subject: [PATCH v2] staging: fbtft: fb_upd161704: Replace udelay() with
- usleep_range()
+Date: Sun, 25 Oct 2026 11:38:17 +0100
+Subject: [PATCH] staging: fbtft: fb_ra8875: Replace mdelay() and udelay() with
+ sleep alternatives
 
 Signed-off-by: Abubakar Musa Samaila <abubakarmusasamaila@gmail.com>
 ---
-v2:
-- Send patch inline in the email body rather than as an attachment.
-- No functional changes to the code diff itself.
+ drivers/staging/fbtft/fb_ra8875.c | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
 
-v1:
- drivers/staging/fbtft/fb_upd161704.c | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+diff --git a/drivers/staging/fbtft/fb_ra8875.c
+b/drivers/staging/fbtft/fb_ra8875.c
+index 0ab1de664..ded953636 100644
+--- a/drivers/staging/fbtft/fb_ra8875.c
++++ b/drivers/staging/fbtft/fb_ra8875.c
+@@ -47,12 +47,12 @@ static int init_display(struct fbtft_par *par)
+                /* PLL clock frequency */
+                write_reg(par, 0x88, 0x0A);
+                write_reg(par, 0x89, 0x02);
+-               mdelay(10);
++               usleep_range(10000, 11000);
+                /* color deep / MCU Interface */
+                write_reg(par, 0x10, 0x0C);
+                /* pixel clock period  */
+                write_reg(par, 0x04, 0x03);
+-               mdelay(1);
++               usleep_range(1000, 2000);
+                /* horizontal settings */
+                write_reg(par, 0x14, 0x27);
+                write_reg(par, 0x15, 0x00);
+@@ -72,12 +72,12 @@ static int init_display(struct fbtft_par *par)
+                /* PLL clock frequency  */
+                write_reg(par, 0x88, 0x0A);
+                write_reg(par, 0x89, 0x02);
+-               mdelay(10);
++               usleep_range(10000, 11000);
+                /* color deep / MCU Interface */
+                write_reg(par, 0x10, 0x0C);
+                /* pixel clock period  */
+                write_reg(par, 0x04, 0x82);
+-               mdelay(1);
++               usleep_range(1000, 2000);
+                /* horizontal settings */
+                write_reg(par, 0x14, 0x3B);
+                write_reg(par, 0x15, 0x00);
+@@ -97,12 +97,12 @@ static int init_display(struct fbtft_par *par)
+                /* PLL clock frequency */
+                write_reg(par, 0x88, 0x0B);
+                write_reg(par, 0x89, 0x02);
+-               mdelay(10);
++               usleep_range(10000, 11000);
+                /* color deep / MCU Interface */
+                write_reg(par, 0x10, 0x0C);
+                /* pixel clock period */
+                write_reg(par, 0x04, 0x01);
+-               mdelay(1);
++               usleep_range(1000, 2000);
+                /* horizontal settings */
+                write_reg(par, 0x14, 0x4F);
+                write_reg(par, 0x15, 0x05);
+@@ -122,12 +122,12 @@ static int init_display(struct fbtft_par *par)
+                /* PLL clock frequency */
+                write_reg(par, 0x88, 0x0B);
+                write_reg(par, 0x89, 0x02);
+-               mdelay(10);
++               usleep_range(10000, 11000);
+                /* color deep / MCU Interface */
+                write_reg(par, 0x10, 0x0C);
+                /* pixel clock period */
+                write_reg(par, 0x04, 0x81);
+-               mdelay(1);
++               usleep_range(1000, 2000);
+                /* horizontal settings */
+                write_reg(par, 0x14, 0x63);
+                write_reg(par, 0x15, 0x03);
+@@ -150,11 +150,11 @@ static int init_display(struct fbtft_par *par)
+        /* PWM clock */
+        write_reg(par, 0x8a, 0x81);
+        write_reg(par, 0x8b, 0xFF);
+-       mdelay(10);
++       usleep_range(10000, 11000);
 
-diff --git a/drivers/staging/fbtft/fb_upd161704.c
-b/drivers/staging/fbtft/fb_upd161704.c
-index 7288140e7..94ae5bbf0 100644
---- a/drivers/staging/fbtft/fb_upd161704.c
-+++ b/drivers/staging/fbtft/fb_upd161704.c
-@@ -32,27 +32,27 @@ static int init_display(struct fbtft_par *par)
+        /* Display ON */
+        write_reg(par, 0x01, 0x80);
+-       mdelay(10);
++       usleep_range(10000, 11000);
 
-        /* oscillator start */
-        write_reg(par, 0x003A, 0x0001); /*Oscillator 0: stop, 1: operation */
+        return 0;
+ }
+@@ -210,7 +210,7 @@ static void write_reg8_bus8(struct fbtft_par *par,
+int len, ...)
+        }
+        len--;
+
 -       udelay(100);
 +       usleep_range(100, 150);
 
-        /* y-setting */
-        write_reg(par, 0x0024, 0x007B); /* amplitude setting */
--       udelay(10);
-+       usleep_range(10, 20);
-        write_reg(par, 0x0025, 0x003B); /* amplitude setting */
-        write_reg(par, 0x0026, 0x0034); /* amplitude setting */
--       udelay(10);
-+       usleep_range(10, 20);
-        write_reg(par, 0x0027, 0x0004); /* amplitude setting */
-        write_reg(par, 0x0052, 0x0025); /* circuit setting 1 */
--       udelay(10);
-+       usleep_range(10, 20);
-        write_reg(par, 0x0053, 0x0033); /* circuit setting 2 */
-        write_reg(par, 0x0061, 0x001C); /* adjustment V10 positive polarity */
--       udelay(10);
-+       usleep_range(10, 20);
-        write_reg(par, 0x0062, 0x002C); /* adjustment V9 negative polarity */
-        write_reg(par, 0x0063, 0x0022); /* adjustment V34 positive polarity */
--       udelay(10);
-+       usleep_range(10, 20);
-        write_reg(par, 0x0064, 0x0027); /* adjustment V31 negative polarity */
--       udelay(10);
-+       usleep_range(10, 20);
-        write_reg(par, 0x0065, 0x0014); /* adjustment V61 negative polarity */
--       udelay(10);
-+       usleep_range(10, 20);
-        write_reg(par, 0x0066, 0x0010); /* adjustment V61 negative polarity */
+        if (len) {
+                buf = (u8 *)par->buf;
+@@ -231,7 +231,7 @@ static void write_reg8_bus8(struct fbtft_par *par,
+int len, ...)
 
-        /* Basical clock for 1 line (BASECOUNT[7:0]) number specified */
-@@ -60,7 +60,7 @@ static int init_display(struct fbtft_par *par)
+        /* restore user spi-speed */
+        par->fbtftops.write = fbtft_write_spi;
+-       udelay(100);
++       usleep_range(100, 150);
+ }
 
-        /* Power supply setting */
-        write_reg(par, 0x0019, 0x0000); /* DC/DC output setting */
--       udelay(200);
-+       usleep_range(200, 250);
-        write_reg(par, 0x001A, 0x1000); /* DC/DC frequency setting */
-        write_reg(par, 0x001B, 0x0023); /* DC/DC rising setting */
-        write_reg(par, 0x001C, 0x0C01); /* Regulator voltage setting */
+ static int write_vmem16_bus8(struct fbtft_par *par, size_t offset, size_t len)
 -- 
 2.34.1
