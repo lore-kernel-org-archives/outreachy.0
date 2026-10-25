@@ -1,76 +1,76 @@
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=192.198.163.19
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=198.175.65.18
 ARC-Seal: i=1; d=subspace.kernel.org; s=arc20261015; a=rsa-sha256; cv=none;
-	t=1792939836;
-	b=xj31b2vVewm2f1RMGrFMj0hrcGYzxkXhB4DH+7JYE8fDygePUKhJ1JvvyzUy8FfbaWEF
-	 kIOuYzHHIvedS7cx0CpvUtOoyLZfbu8MNEWBNOIW+2q0BLbGUu72j7DPsrOAX9Q1/M7oJ
-	 ia/NkxV0D2D1UnSCcqbAyIPUWEQ2c0Fuw4Ib5XvCRlS/vm5nlCT+/4Ju5p+BuXR21Vtaa
-	 Zy7FqZ1p1BIWuaSz4j4RuCN5cnYqGUJQhJOtDxpyVT1TX6EZMjiRhGs+5qj/YQ03R1HSP
-	 OGY9fPmBfRuem39DvdSzCubC16NcdAaU/jOCyzAVtrhfFDfZeHu8pKdyr+J7TvV9f5Q==
+	t=1792940662;
+	b=MUZtmvvPIjuRy+biDL0ajr92939B4o6k/mJcvcdk49f7P40B1s3+mUuQ1gX8iP3yporV
+	 Ks1r9ZPdF4ZuzelOR0ScHJ0if84dM/NVr+KUPWvgVA6OCqymRZ8KZg1XYvYFuvQ9clBb4
+	 63rIddeLRmA/JJX51s0pFYlRcDmhtuHop61ezBNBPP0NFTaT7HMEZsqW509mUN3rzN3Nn
+	 s1XpRwb5MkIXepeiXaB4D0xRk0Mrem4k45tS4QSC788O/4vyvbVG1Mvye2jY4yuc/3ozj
+	 CY7X5O4qjQ2HAtmEcfkdGZOzW0lACHGA2SOCQpCyDowNRuVlVc/3RMIql97HhcnaQlg==
 ARC-Message-Signature: i=1; d=subspace.kernel.org; s=arc20261015;
-	a=rsa-sha256; c=relaxed/relaxed; t=1792939836;
+	a=rsa-sha256; c=relaxed/relaxed; t=1792940662;
 	h=DMARC-Filter:DKIM-Signature:X-CSE-ConnectionGUID:X-CSE-MsgGUID:
 	 X-IronPort-AV:X-IronPort-AV:Received:X-CSE-ConnectionGUID:
 	 X-CSE-MsgGUID:X-ExtLoop1:X-IronPort-AV:Received:Date:From:To:Cc:
 	 Subject:Message-ID:References:MIME-Version:Content-Type:
 	 Content-Disposition:In-Reply-To:Organization;
-	bh=6Pxhpwyug/cohEo6PD4X5ffzTblLzmuMS1iKA6wHYTY=;
-	b=l3jSRz8G7rysjN+1dspMoOePzqxvcMgXzEPHEhvrAceEP1cDF2jDLTMb2MwEsZEqtz/v
-	 l4XZSURJE4oq4aAlkW9MqZR1GQm6Qou9ByYlY5oJYPlVAr9fMWfaZEGUTXBAfXYG1u6MO
-	 0Zcn2mlhYRJKua8bQ56itnmqMUIDmuZ2xY5gYJUNJ5Llofe1jvECVFDnsT+Hz7t1tPauI
-	 demlM/Edxtc8Xz647YurAtxW3D0y9MqejCxlKw5srYMhL/t5oaMQK1gVmvTSyuyg8+Ucs
-	 gGibUk0pddp6XhwHN44hxQ04aRHqarv9at+v9YAMtEfjxXwyqcKvgZuAjz2Uba4Jqfw==
+	bh=rS3/wqoyUiFC/nwlEVyVdFa4VAmvnpE3Qb2WkVE+lSE=;
+	b=bcZ9VzS6F3TrNo12P6fD6LMegpDK0qytxBMF+HD/Ev1yJh0S92BWDwrdn9CigEO8hzpY
+	 gNbOgFY4oL4rxWI2ySoiZ1yIcaZsJi/BeEaO2cZKkzT1A9xEYYNmAjIqJC9DqcN1bA6Q5
+	 lLP4GnBZcEqX9kGoMggjc+cnPOADHYrx08Z+9JqnTTq52OKO3eAvmmQlpX9SlvzVDixWD
+	 kSzUAakdyWs3hVbuNDM+2nhQzS1xe41wbCAuebBgOsnlIkVQcnc5epk8NV+YLMK0/t1Zg
+	 zUuVKRQk3T/5X1tBv7YYSK9opnHUL+v+tZmAH+niYI8fMsSJQs85AzU4Pui9/OohQAA==
 ARC-Authentication-Results: i=1; smtp.subspace.kernel.org; 
 	dmarc=pass header.from=intel.com;
 	spf=pass smtp.mailfrom=intel.com;
-	dkim=pass header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=PshC8Di0;
-	arc=none smtp.remote-ip=192.198.163.19
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.19])
+	dkim=pass header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=NT8kzVzT;
+	arc=none smtp.remote-ip=198.175.65.18
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.18])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E6372606A31A;
-	Sun, 25 Oct 2026 14:50:35 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org E6372606A31A
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 63B2C606A31A;
+	Sun, 25 Oct 2026 15:04:21 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org 63B2C606A31A
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=PshC8Di0
+	dkim=pass (2048-bit key, unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=NT8kzVzT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1792939836; x=1824475836;
+  t=1792940661; x=1824476661;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=H4I93okhC8Zg01N6xJwsIKRDh9uxsIAKt5AaymrgcT4=;
-  b=PshC8Di0VvoCJPT1LPZrWYHCax+1tWNXg4qka93dGdGFM084thK169kR
-   tUpvUQOnhDQ4SYrazUarH4D2Fa11pglepfTL05qWsDkHwHoMDXL+pbCVk
-   RI78SJMRKlEJRXWcVsnvEWeTQ3Jpep8i7LTpi/0SjO3mXVgKYjnu/avvG
-   eN+7OU9gKE+khRVtmp1R1l4GdVVDkN+zmhKoG4CWQ9qzyhalkT+JvIpcR
-   Lr5zDMDJQNJDphOMgc2W/Gvxgbub+ql88xDHBhe6x2OnfIMts0Rv2ANLa
-   swPU4fe0XL/4s+nghzskjR9EGa0LKJdUE1nabLhHebvYCFu9OduATy6gK
-   A==;
-X-CSE-ConnectionGUID: +wDDyThkQo2UX10U7J5qLA==
-X-CSE-MsgGUID: qlgxi24PR6OFnJKO0n56Fw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11946"; a="1724552"
+  bh=mbitdxTff249OBDqO5321R0i6ugZINRmq8qsd0e14/U=;
+  b=NT8kzVzTDbOLMSXUsBaCvB7A4KRSJGK2b+C4a4c+yZpz0qpdpUozKdWa
+   ML2W/d4UK9xQKJZe7baMbDdIpXEDLpIW8PZzWvWPM30QlhmkhoD3P5Ia1
+   vSGXgLg/TY7tr5zEorNxfA86Bkyqr+79NPkbXa3o0o3mO9n11Ya/3GuJ7
+   wxaRwu4TGXKrg+gXZ7Rc4VpFu3UnA57w4u9Eg2Y6PW0DwxlGK4V85pfY6
+   2vQzhJQ1kxGo7EHrcwA0ToCXJ13fLQwQOmS+heVfceuRp0CohQiS1Lfus
+   97Dq3rxGzemlHj/v7sgvoxgYyjbnoeYzp7IJ2oTzgpCn+LIaR8Rj14eBX
+   g==;
+X-CSE-ConnectionGUID: AgGMeNiRQ8eWdp3ejQaG9Q==
+X-CSE-MsgGUID: wLeXOgLDRiWapXGwgZE+Hw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11946"; a="1623170"
 X-IronPort-AV: E=Sophos;i="6.27,178,1787036400"; 
-   d="scan'208";a="1724552"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
-  by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Oct 2026 07:50:35 -0700
-X-CSE-ConnectionGUID: ZsO6uhFNQiSLWYBDVmp0rQ==
-X-CSE-MsgGUID: /noBoKB5Qp24wD3Z0bBbcg==
+   d="scan'208";a="1623170"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+  by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Oct 2026 08:04:21 -0700
+X-CSE-ConnectionGUID: pobX85RvRdSp/PhX9BTmGw==
+X-CSE-MsgGUID: g5SvmkfrRiurS7nX9CyIDg==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.27,178,1787036400"; 
-   d="scan'208";a="4060247"
+   d="scan'208";a="4404121"
 Received: from hrotuna-mobl2.ger.corp.intel.com (HELO localhost) ([10.245.245.10])
-  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Oct 2026 07:50:33 -0700
-Date: Sun, 25 Oct 2026 16:50:30 +0200
+  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Oct 2026 08:04:18 -0700
+Date: Sun, 25 Oct 2026 17:04:16 +0200
 From: Andy Shevchenko <andriy.shevchenko@intel.com>
 To: Abubakar Musa Samaila <abubakarmusasamaila@gmail.com>
-Cc: andy@kernel.org, gregkh@linuxfoundation.org, outreachy@lists.linux.dev,
-	linux-staging@lists.linux.dev, linux-fbdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: staging: fbtft: fb_upd161704: Replace udelay() with
+Cc: julia.lawall@inria.fr, gregkh@linuxfoundation.org, andy@kernel.org,
+	outreachy@lists.linux.dev, linux-staging@lists.linux.dev,
+	linux-fbdev@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3] staging: fbtft: fb_upd161704: Replace udelay() with
  usleep_range()
-Message-ID: <at4XNunsk8UWquPB@ashevche-desk.local>
-References: <CAHxSwT8=ZA2sFqXNjfX2=Bf369+gNRLfCO+VtVmmWiTzenLwWQ@mail.gmail.com>
+Message-ID: <at4acP_svOxU9_mP@ashevche-desk.local>
+References: <CAHxSwT_bdBdiwwXpGpr9+rGizZU3p+RsB18hPH5TxqMuMZOsQw@mail.gmail.com>
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Post: <mailto:outreachy@lists.linux.dev>
@@ -82,19 +82,18 @@ Precedence: list
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <CAHxSwT8=ZA2sFqXNjfX2=Bf369+gNRLfCO+VtVmmWiTzenLwWQ@mail.gmail.com>
+In-Reply-To: <CAHxSwT_bdBdiwwXpGpr9+rGizZU3p+RsB18hPH5TxqMuMZOsQw@mail.gmail.com>
 Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
  krs, Bertel Jungin Aukio 5, 02600 Espoo
 
-On Sat, Oct 24, 2026 at 04:32:11PM +0100, Abubakar Musa Samaila wrote:
-> Hi Andy and Greg,
-> 
-> Please find attached the patch that replaces non-atomic udelay()
-> instances with appropriate usleep_range() bounds in
-> drivers/staging/fbtft/fb_upd161704.c.
+On Sun, Oct 25, 2026 at 03:22:30PM +0100, Abubakar Musa Samaila wrote:
+> Replace udelay() calls inside the init_display() initialization
+> sequence with usleep_range() to avoid CPU busy-waiting. Since
+> init_display() runs in a non-atomic context, sleeping allows the CPU
+> to yield, improving power efficiency and system responsiveness.
 
-Please. study the respective mail archive on lore.kernel.org to understand
-why this patch is no-go.
+Please, slow down. I have already answered on very beginning version.
+Don't waste time on this.
 
 -- 
 With Best Regards,
