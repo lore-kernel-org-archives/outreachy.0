@@ -1,57 +1,96 @@
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=192.134.164.83
-ARC-Seal: i=1; d=subspace.kernel.org; s=arc20261015; a=rsa-sha256; cv=none;
-	t=1792928515;
-	b=h78t+ZxxONg3RS3N24dQJe3ZI2ZV5ZjggKj6rtHcD0UK4OhRHdfDthznlDGPTTM9kWcK
-	 D9dqsR4MUwM70VbFHXWCeA4MR2JWrJZ8Kzn8lrtLXAszeQ6+MRf5f2QMm7mmR0YCCiX8g
-	 zh8g7H5ErKxrOomDLAf0ZUgxndG/u+IzMHWHK7tKPBGd23zb3YKWcehBYlqL3bp2zIT8K
-	 5Q38p51om2GGpqpoqopArJAhbrKb03avNr4ylKIkkAmJuJV9zvheaXwBnab6pJhDvF7S/
-	 zDlGUB7p5sr6PIlv+KQjM74V7NN8/I0dapJ/omXARIzdIL+16sWxlIGvOM159495I0g==
-ARC-Message-Signature: i=1; d=subspace.kernel.org; s=arc20261015;
-	a=rsa-sha256; c=relaxed/relaxed; t=1792928515;
-	h=DMARC-Filter:DKIM-Signature:X-CSE-ConnectionGUID:X-CSE-MsgGUID:
-	 X-IronPort-AV:Received:Content-Type:Content-Transfer-Encoding:From:
-	 Mime-Version:Subject:Date:Message-Id:References:Cc:In-Reply-To:To:
-	 X-Mailer;
-	bh=KbsdRHpqg1KqFzqFFAQ9GvFksML0SMYhMlnLwPDnewc=;
-	b=tkKd4JHJdCJY4L3hRbtim8xISQRrF06yZJzUvL0Le2eQBDLPY5zH4+nvXJSNFTSvbqrb
-	 z19EyCfpOwGp77zN7y1XoshQbu7LxL53qyBcN9zmC83U8wgymbNUc4qeS3QWXGQaAni3z
-	 0Vw7SXWA+3e4XxY08F/id1e/f7aPCDOCKxx2uVtNIAG+TIyqa1mtTxtXvrmFB6/OYbsks
-	 xIl7rWajU2p1d5hLicnQ1/5g9P7Aflei4NRhWxA73m1x1NdIJH/c9zPYIRjszpXY3kq7f
-	 Zdf1nQHA1E+YyoGPcoszNl7Uz3FkaEMWDL0PdCu/YXpyG243HJ4xSmsuoO35Yt4fEmA==
-ARC-Authentication-Results: i=1; smtp.subspace.kernel.org; 
-	dmarc=pass header.from=inria.fr;
-	spf=pass smtp.mailfrom=inria.fr;
-	dkim=pass header.d=inria.fr header.i=@inria.fr header.a=rsa-sha256 header.s=dc header.b=OikXoF75;
-	arc=none smtp.remote-ip=192.134.164.83
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+Authentication-Results: smtp.subspace.kernel.org; arc=pass header.oldest-pass=0 smtp.remote-ip=209.85.210.47
+ARC-Seal: i=2; d=subspace.kernel.org; s=arc20261015; a=rsa-sha256; cv=pass;
+	t=1792928606;
+	b=zo+wJ78oGcrGvP4ZHa878LEbPzw/K6/jtgDbIcYtaYtdJWiuBErDFLHCidyr6Y3FeI4h
+	 MFzmCxmMT8PiVdJDjcUeA19tDrE1Gc5gyoth8dbcd8c6nuV01gKRMQhTzyEnPuQurpCSl
+	 MpOL5KWpqxEXh4NOFp7qzPErI6lRn+VN/9ROMysfsTZSYpT5P01ALjP0p8WuPeFZmRAUo
+	 krH69CjCA/oJzmwzyVxSHXd587zL0v4UJuOqClIu7HDLOBviy+hCpZWfHyBbjO3U+3/Gm
+	 coz1PxUYnMAfFUDd6eAYvhabih7/nf6cr0zzVC2FoRm+aJUMH70lXzbTqsyWhUAIMHw==
+ARC-Message-Signature: i=2; d=subspace.kernel.org; s=arc20261015;
+	a=rsa-sha256; c=relaxed/relaxed; t=1792928606;
+	h=DMARC-Filter:Received:DKIM-Signature:X-Google-DKIM-Signature:
+	 X-Gm-Message-State:X-Gm-Gg:X-Received:MIME-Version:From:Date:
+	 X-Gm-Features:Message-ID:Subject:To:Cc:Content-Type;
+	bh=dgfL+xx40QgBxTp2AfOrFmzdWWLsceJLDhEh6HE2uYA=;
+	b=5JWpelVQAL+F/3bxyhgqC8p/pWZHo7V2ad5FAP2ScbQJhzMO1r3Pvnux1lvwXGwEu0LH
+	 gbE8PzWF52cjVrpJjqaTa2R/lRKFxjx0eoWFWPMaf7N/56ddDDWoE/zhMwmtyPkNb9TMb
+	 qkP65k7kRtHVN75idqEg2gM5XcKt5bT/uVjpBuqn9ZE80QnI6UuC3u0jztHkiIYVGpQif
+	 q300SsU0uUdiExKKqd9v+nvkMkkuM5UN5sy+XDF/GWxTUsnufrKsQ6Rydcz99+oIdKcS8
+	 998KcSId50dDYAmujau7xUGQnqudlB8AB7oJdkqe5QMfrjCSNjB2QVPRe1u+1Ms3XtA==
+ARC-Authentication-Results: i=2; smtp.subspace.kernel.org; 
+	dmarc=pass header.from=gmail.com;
+	spf=pass smtp.mailfrom=gmail.com;
+	dkim=pass header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=jLLaqiM0;
+	arc=pass header.oldest-pass=0 smtp.remote-ip=209.85.210.47
+Received: from mail-ot1-f47.google.com (mail-ot1-f47.google.com [209.85.210.47])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4F717606A31B;
-	Sun, 25 Oct 2026 11:41:51 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org 4F717606A31B
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B528A606A339
+	for <outreachy@lists.linux.dev>; Sun, 25 Oct 2026 11:43:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org B528A606A339
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=inria.fr header.i=@inria.fr header.a=rsa-sha256 header.s=dc header.b=OikXoF75
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=jLLaqiM0
+Received: by mail-ot1-f47.google.com with SMTP id 46e09a7af769-83bbcfba0ffso1505895a34.0
+        for <outreachy@lists.linux.dev>; Sun, 25 Oct 2026 04:43:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792928604; cv=none;
+        d=google.com; s=arc-20260327;
+        b=Pv5ho7hYLuGkSN4S9D8VqDPlFRvRj+LHYE1SVkzLgrsFNdVwxUSCA9hKeD+1RjzccC
+         a/BDf3aGOkcKcgH+Cglc7wyZNHN3s99L3doi8GGlzk8hyIXCC7VRh99MCD3Tvfrr5+hN
+         H8hAGKkZZ/GgvX+MH06JYVx2Qgi0sbVMQar+yu4P38ICSNGASqFyEHdaIgWUtbyFY8ut
+         J5G+tiy5QRmrdDzkgT9Y+oc96e8j8WCLsKnBRaaXX88fRH4MBz57DzEQheYvoBxJiSsN
+         3QAeFO04M1jWO3YIMed6iQdN4INfB6LOhzjmQ9xcMcDFeL+a+dZgKwqVM1uEO7vTDtes
+         r9YA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=cc:to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=dgfL+xx40QgBxTp2AfOrFmzdWWLsceJLDhEh6HE2uYA=;
+        fh=uEAWOBDz/a8a2YprtgEsqSgPvnHv4mIvO0XAGKI+f54=;
+        b=p2jXRGXKD1bOXIRNDyHe/zxaFtKQLvWGCTLabLU/mpHlJ14QuMRQ74Wjg5OBrNwhWU
+         b2Pm2wN3fxk/amh1SqLl2HsEu5B+Sy7blYcLR81nKZctCRg7GfP1WIAJOONLn2sGu+8e
+         DNvrD+ZbMzkk8tnmjHkc4pqN1GERks8wc4lvrJkb5i96t6TBgu/6zm5NYtqtMAZvnDKy
+         Pu7TyXFJe2ZbcTDnBdV4DbNwxr/xCW7v05lUDAn18tV6aBY+xswA0NLb8o9I7sU2AUdC
+         oEY50BoLevB9oVUNfGqCorrPkQep5ZpRT/+NUAH+jGqdSRAPNEEDERF9Q5FW+AlRcmz1
+         NSVw==;
+        darn=lists.linux.dev
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=content-transfer-encoding:from:mime-version:subject:date:
-   message-id:references:cc:in-reply-to:to;
-  bh=KbsdRHpqg1KqFzqFFAQ9GvFksML0SMYhMlnLwPDnewc=;
-  b=OikXoF755J/CTql/wDRgEMEgTZzmyMAOtLltc3gVl7GMj+YtdJm/opgT
-   ctBtjXVv8T1ySGHs2BsW4HepEqCTQvrzNT0NZh1rUXvMCUNzOGw3Zbpqz
-   qMeZls1BXT7utt0JsIQ5LqyceUPLTBTYHpF9Df7zKhck6MyP6+zsXH6xD
-   Y=;
-X-CSE-ConnectionGUID: DbtlcMypTCG9i3bDwhzwiw==
-X-CSE-MsgGUID: Rb2sav4iQY2qd9gkiG63zQ==
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=Julia.Lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="6.27,177,1787004000"; 
-   d="scan'208";a="302212097"
-Received: from c-76-123-3-53.hsd1.va.comcast.net (HELO smtpclient.apple) ([76.123.3.53])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Oct 2026 12:41:43 +0100
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-From: Julia Lawall <Julia.Lawall@inria.fr>
+        d=gmail.com; s=20251104; t=1792928604; x=1793533404; darn=lists.linux.dev;
+        h=content-type:cc:to:subject:message-id:date:from:mime-version:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=dgfL+xx40QgBxTp2AfOrFmzdWWLsceJLDhEh6HE2uYA=;
+        b=jLLaqiM0t02XUzFmlb+JA7gW02shfAQ9xYj3ybHatecG6oi/PyGMyMeBB9juBblqm3
+         iqlXGSLQczyrtTHAvDbmQqNQsuPwSOU5oIBlrbMwr0x+7OYiZcW9eGc98VMhOsYp1k5k
+         mvAWltVMjIku+higXfcozoB7gp7N0CjaCS3kMMkB7qfA+u9S+ffxPll+PsExFMdngB/O
+         79vNijqx1zwmBbyNfO6kJ97PBL+wjJYNaDZvaVneSzgKdojYik8jL4JD0hsAaVGBjSqQ
+         ELlr9WjG3337CYGyNgkCWAVIRCZ+1TavrLUm6HHZoJyxIeCWt0vaG75pdKWlJU11yRSM
+         MH+w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1792928604; x=1793533404;
+        h=content-type:cc:to:subject:message-id:date:from:mime-version
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=dgfL+xx40QgBxTp2AfOrFmzdWWLsceJLDhEh6HE2uYA=;
+        b=0KpYs1GKgKCJmlJPc7KzE1QE6EZ/Nyjn9SislcTYc5n11CPXuYtd7YobHCgkMvYzC8
+         ACwne/ZQIzrKnz99H2xPaz4acrlDioYp4rwv0wlBGwNNtOeUqXbDfHfH+g+xW8Peb9vM
+         Ha70cf7GHDoylgzuouX73foVBYKbVNtDxdnlR9A+DKXqvuZZejj6l626vrxq2pIUezwn
+         a8+bDiM5YocNE4L4HKcDsZSko92Shgv4ndEWGLpE/1f4XF8MJLuSlACB00DIQhW4e/oP
+         BMkIlqdMA9wJJRuoewyNMErY3GmnkMwBhrofpa71h2QR7Z+ogDHsmysw3V9lMf2mWKns
+         wAkA==
+X-Gm-Message-State: AFq9FYKfqLeXM6NzvwIaDG42cNze2hjhkcFetmAVjR9PySp2HFmFE+03
+	3HxDuFmjqcdx4JUugM/dty/+ELYoElZg3l+QriD+xOAF7BG+XBUnTHCqerjJoa+5jSDppii4o0E
+	niWjduEC1yAHLsXucbO226ib7VclmVp5/jAH80lY=
+X-Gm-Gg: AYBFou1UoL48QYMAz7AWU66XTArmzIqJgpYTVPEfagLCKn03xT3pYF02O10ft82rZET
+	l9kVUy9s86GhZl8XF3wzwMO01/1CeQSgIzZA38CT3phL8oQUA7M7sgC71T9Hm1WVKHuX7vuVi84
+	Nb3NahMaGfGZujQDI1o3TWrD6zRIZu2mzNCTvQLjMZYr4J3xGT8MacpQaiaRr3s8L/TnLbMLchK
+	ybY400sl8l8aomVTluiYd5R/SaroR0IB1othM3N/q8r6sOgzMafbO6o71EM7eUUwiSLNYluiy6/
+	UarPnXKD8KFBYUIAzNilhkB5NF/C8AR7o3VODsnh1IBuvz/RX+2H8S4ykjuO8JLVUmBYgwkde7e
+	LX8NIZ3JQSmgLa9GgxkRfJRheJXu274D6an5c0FWJkfr6pz4tbQRb3aC8NI99Di7CHZJIvfzV6S
+	kwx0t61i7UUzcpHt2JGsuqKfhHps4FPSTGbAe1g10Ku/Og1G4CRPE0
+X-Received: by 2002:a05:6808:c296:b0:4d6:9355:7547 with SMTP id
+ 5614622812f47-55c00325c5bmr2425508b6e.66.1792928604574; Sun, 25 Oct 2026
+ 04:43:24 -0700 (PDT)
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Post: <mailto:outreachy@lists.linux.dev>
@@ -60,114 +99,51 @@ List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 List-Owner: <mailto:outreachy+owner@lists.linux.dev>
 Precedence: list
-Mime-Version: 1.0 (1.0)
-Subject: Re: [PATCH v2] staging: fbtft: fb_upd161704: Replace udelay() with usleep_range()
-Date: Sun, 25 Oct 2026 07:41:31 -0400
-Message-Id: <A0882440-865F-43CB-BA8A-FBB2A07B7404@inria.fr>
-References: <CAHxSwT_ya=kxLdQkx5iY6DdVbxDv9MP5shRUF5-yDUvM=cFpKw@mail.gmail.com>
-Cc: andy@kernel.org, gregkh@linuxfoundation.org, outreachy@lists.linux.dev,
- linux-staging@lists.linux.dev, linux-fbdev@vger.kernel.org,
- linux-kernel@vger.kernel.org
-In-Reply-To: <CAHxSwT_ya=kxLdQkx5iY6DdVbxDv9MP5shRUF5-yDUvM=cFpKw@mail.gmail.com>
-To: Abubakar Musa Samaila <abubakarmusasamaila@gmail.com>
-X-Mailer: iPhone Mail (23E261)
+MIME-Version: 1.0
+From: Sowmya Torra <sowmyatorra@gmail.com>
+Date: Sun, 25 Oct 2026 17:13:13 +0530
+X-Gm-Features: AclHuK-pJN6LZ3ZieT84hg4yyoiKGGqg19O9zVi504ZaQKS7Lblp0T5srE9yJXk
+Message-ID: <CAFsBPPndmdUMYbiq98qmeBJ_fbYFCNxRngxxx4jB3JHg-G-02g@mail.gmail.com>
+Subject: Investigating unused SCSI zone tracepoints
+To: outreachy@lists.linux.dev
+Cc: "rostedt@goodmis.org" <rostedt@goodmis.org>, julianbraha@gmail.com, 
+	Julia Lawall <julia.lawall@inria.fr>
+Content-Type: text/plain; charset="UTF-8"
 
+Hello everyone,
 
+While building the kernel with UT=1 using the provided configuration,
+I came across two unused SCSI tracepoint warnings:
 
-> On 25 Oct 2026, at 05:53, Abubakar Musa Samaila <abubakarmusasamaila@gmail=
-.com> wrote:
->=20
-> =EF=BB=BF=46rom 778030aa9291e3a7d40ffb03b19e6877041cddc8 Mon Sep 17 00:00:=
-00 2001
-> From: Abubakar Musa Samaila <abubakarmusasamaila@gmail.com>
-> Date: Sat, 24 Oct 2026 12:02:25 +0100
-> Subject: [PATCH v2] staging: fbtft: fb_upd161704: Replace udelay() with
-> usleep_range()
+scsi_prepare_zone_append
+scsi_zone_wp_update
 
-This is still not correct. All of this From, Date information should not be i=
-n the message. And there should be a log message describing the change, not j=
-ust a description in the subject line. Please look at the patches sent by ot=
-hers and reread the tutorial to see what steps you have done wrong.
+I decided to investigate why these tracepoints were no longer being used.
 
+After tracing their references and looking through the Git history, I
+found that commit 1846f308d66f ("scsi: sd: Use the block layer zone
+append emulation") removed both tracepoint calls when zone append
+emulation was moved to the block layer.
 
->=20
-> Signed-off-by: Abubakar Musa Samaila <abubakarmusasamaila@gmail.com>
-> ---
-> v2:
-> - Send patch inline in the email body rather than as an attachment.
-> - No functional changes to the code diff itself.
->=20
-> v1:
-> drivers/staging/fbtft/fb_upd161704.c | 18 +++++++++---------
-> 1 file changed, 9 insertions(+), 9 deletions(-)
->=20
-> diff --git a/drivers/staging/fbtft/fb_upd161704.c
-> b/drivers/staging/fbtft/fb_upd161704.c
-> index 7288140e7..94ae5bbf0 100644
-> --- a/drivers/staging/fbtft/fb_upd161704.c
-> +++ b/drivers/staging/fbtft/fb_upd161704.c
-> @@ -32,27 +32,27 @@ static int init_display(struct fbtft_par *par)
->=20
->        /* oscillator start */
->        write_reg(par, 0x003A, 0x0001); /*Oscillator 0: stop, 1: operation *=
-/
-> -       udelay(100);
-> +       usleep_range(100, 150);
+However, their definitions still remain in drivers/scsi/sd_trace.h,
+and sd_zbc.c continues to include this header with
+CREATE_TRACE_POINTS.
 
-You need to also check the archives to see whether the change is welcome. Gr=
-eg tends to reject this change unless you have tested it because you are cha=
-nging the behavior of the driver.  Without testing you don=E2=80=99t know if=
- you have chosen the correct range.
+I also searched the repository for both tracepoints and couldn't find
+any remaining callers. Additionally, I checked the compiled sd_zbc.o
+and found that code and data for these unused events are still being
+generated.
 
-Julia
+Based on these findings, I believe removing the obsolete tracepoint
+definitions, along with the unused header and its inclusion, would be
+a useful cleanup. I plan to rebuild with UT=1 afterward to verify that
+the warnings are resolved.
+I plan to work on this cleanup. Please let me know if it overlaps with
+an existing effort.
+I'd appreciate any feedback on my investigation and the proposed
+approach before I proceed with the patch.
 
+Thank you for your guidance.
 
-
->=20
->        /* y-setting */
->        write_reg(par, 0x0024, 0x007B); /* amplitude setting */
-> -       udelay(10);
-> +       usleep_range(10, 20);
->        write_reg(par, 0x0025, 0x003B); /* amplitude setting */
->        write_reg(par, 0x0026, 0x0034); /* amplitude setting */
-> -       udelay(10);
-> +       usleep_range(10, 20);
->        write_reg(par, 0x0027, 0x0004); /* amplitude setting */
->        write_reg(par, 0x0052, 0x0025); /* circuit setting 1 */
-> -       udelay(10);
-> +       usleep_range(10, 20);
->        write_reg(par, 0x0053, 0x0033); /* circuit setting 2 */
->        write_reg(par, 0x0061, 0x001C); /* adjustment V10 positive polarity=
- */
-> -       udelay(10);
-> +       usleep_range(10, 20);
->        write_reg(par, 0x0062, 0x002C); /* adjustment V9 negative polarity *=
-/
->        write_reg(par, 0x0063, 0x0022); /* adjustment V34 positive polarity=
- */
-> -       udelay(10);
-> +       usleep_range(10, 20);
->        write_reg(par, 0x0064, 0x0027); /* adjustment V31 negative polarity=
- */
-> -       udelay(10);
-> +       usleep_range(10, 20);
->        write_reg(par, 0x0065, 0x0014); /* adjustment V61 negative polarity=
- */
-> -       udelay(10);
-> +       usleep_range(10, 20);
->        write_reg(par, 0x0066, 0x0010); /* adjustment V61 negative polarity=
- */
->=20
->        /* Basical clock for 1 line (BASECOUNT[7:0]) number specified */
-> @@ -60,7 +60,7 @@ static int init_display(struct fbtft_par *par)
->=20
->        /* Power supply setting */
->        write_reg(par, 0x0019, 0x0000); /* DC/DC output setting */
-> -       udelay(200);
-> +       usleep_range(200, 250);
->        write_reg(par, 0x001A, 0x1000); /* DC/DC frequency setting */
->        write_reg(par, 0x001B, 0x0023); /* DC/DC rising setting */
->        write_reg(par, 0x001C, 0x0C01); /* Regulator voltage setting */
-> --
-> 2.34.1
-
+Best regards,
+Sowmya
