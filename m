@@ -1,49 +1,55 @@
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=100.103.45.18
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=216.40.44.11
 ARC-Seal: i=1; d=subspace.kernel.org; s=arc20261015; a=rsa-sha256; cv=none;
-	t=1792933303;
-	b=3fgho4LLA/asV8KnuX3AhLkb+rkWVrLCao57o6lAr+asUbx5GIckJ3ebvHhBBH1OmTJT
-	 VhER5IgccRaNV0/5rhxPCksZKO3yaD7kZmJTYA0aJbfhxJUHKosWZ4HThAT4pvssyhttS
-	 EGgivsSooQX1SxPuN5nBZat0TvAXTt6alhBFmdT4tEk7TZO8iDBK/NcWso/9MeIECBmkf
-	 DB3+mHydoa1+DVWATEXI7NNFWw+P0/LVmpC7zmwJ0PYK0xm16puyiI6kv9/1hFgl2jOPW
-	 L3M79e1VSx9cOt0pah5/3ARNks/wgvRwqzc0bR/tzluweRu9a/WQNSDghcn3jQncGUQ==
+	t=1792936310;
+	b=zMRSl85Cr4ViVrk9FpBbge/I3KQPlgKDPQVWif3y4JHP5NDMoKu2Nk6hSz1Q/VFSaSbU
+	 Ed0fX92kXYVVPPsxXzjoWluM7qfw+aX+Vt0YdTV/akXQyaNMs5ZFPIj0HpX4QX9GBgL34
+	 jAPtIPMwZz0qy+7anDEyApynQluTOpqqY/FLcbgdAcpXIrAgU4VSk5zGnS7XaWLngi0BO
+	 S2coC45Z1vsirZD0pv/laWKqeGk+gMAwmKU70C8xzf8vrZ0rN6UN0IRyziwxQol9VnoTx
+	 Tam6nof09lMfV7wcBijQsdCfOK9fxmG81youKGqBOUME0YWx2O2aec2BLBQvPoAWdRQ==
 ARC-Message-Signature: i=1; d=subspace.kernel.org; s=arc20261015;
-	a=rsa-sha256; c=relaxed/relaxed; t=1792933303;
-	h=Received:DKIM-Signature:Date:From:To:Cc:Subject:Message-ID:
-	 References:MIME-Version:Content-Type:Content-Disposition:In-Reply-To;
-	bh=WkUsZJXlaMLbhP4mLDHkT3W0LsOojMM5ad3kaWkpguw=;
-	b=eujczOAvNouJwtmS26C3NOc6roHcSkK4RScLmWGqTQopMNdNcpS6tcWwx2xQbZaSY7BD
-	 7py6NcyWyhScP9gkyel/2pwPILcN9xYhfj9W9Yd2lmbwhOA0gi2VC4hD5DEMPN3qzuD6U
-	 exq/sG5EG3u59dP1LaGL05eAGVa3vqPgOqucip8FZ3FcybqtxmMHZAwOnoAHxZ+ZavkoW
-	 XiKnbyW1tFmJOrgHVDFQXiH2CgY40pR28EycIUpQFI2os9ifzTEquuqbhzlrwbPCXG58X
-	 qD0eTxhF+/jU35dUQq2mRjnOtBDFGputVYmuAyd5ZmZlPir6AJ/q/jvIFXdDUmb86TA==
+	a=rsa-sha256; c=relaxed/relaxed; t=1792936310;
+	h=DMARC-Filter:Received:Received:Date:From:To:Cc:Subject:Message-ID:
+	 In-Reply-To:References:X-Mailer:MIME-Version:Content-Type:
+	 Content-Transfer-Encoding:X-Rspamd-Server:X-Rspamd-Queue-Id:
+	 X-Stat-Signature:X-Spam-Status:X-Session-Marker:X-Session-ID:
+	 DKIM-Signature:X-HE-Tag:X-HE-Meta;
+	bh=lWfiRzR65OEVxPQJ5iSF37S5Bpyxi8ZgRyancGamCLs=;
+	b=CRNNBblJSYbMnH1vKirJUxe2UM0ysBDwZY9JormT+zh27ncJg7DRnMfn/u2EWi/qEyGT
+	 KvCFvk/UHs8+4Lk9Xv8dJ+dUvht6MIW6FU280tj2HpFOdpTomSoNv9eA4n1/+Mv2S77Dm
+	 c0cXlf6pQOt0BNwa+TkVXv+o/eQjZG+vboh39OtHYdU0SJKYH2piwEPebAzpju1IDPr8P
+	 talx96n5vkF227Lakh9iq8aTEqJa50sF3txMLuuqBc6Fx8v1pMaVh8CgcILhKAViV5qgQ
+	 nkYACRbZ5xTm92EhYOi1rYF7yeE8vRwX5ht/MuoSovigqb439zM5JBPJwlcl0LEN59g==
 ARC-Authentication-Results: i=1; smtp.subspace.kernel.org; 
-	dkim=pass header.d=linuxfoundation.org header.i=@linuxfoundation.org header.a=rsa-sha256 header.s=korg header.b="d2cDsi/v";
-	arc=none smtp.remote-ip=100.103.45.18
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	dmarc=pass header.from=goodmis.org;
+	spf=pass smtp.mailfrom=goodmis.org;
+	dkim=pass header.d=goodmis.org header.i=@goodmis.org header.a=rsa-sha256 header.s=dkim1 header.b="1TtFv+/6";
+	arc=none smtp.remote-ip=216.40.44.11
+Received: from relay.hostedemail.com (smtprelay0011.hostedemail.com [216.40.44.11])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1))
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 852CA606A31A;
-	Sun, 25 Oct 2026 13:01:43 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 18D51606A31A
+	for <outreachy@lists.linux.dev>; Sun, 25 Oct 2026 13:51:48 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org 18D51606A31A
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=goodmis.org
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=goodmis.org
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=linuxfoundation.org header.i=@linuxfoundation.org header.a=rsa-sha256 header.s=korg header.b=d2cDsi/v
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7B16E1F01825;
-	Sun, 25 Oct 2026 13:01:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linuxfoundation.org;
-	s=korg; t=1792933303;
-	bh=WkUsZJXlaMLbhP4mLDHkT3W0LsOojMM5ad3kaWkpguw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=d2cDsi/v4FUWVnk7eMGr00SXOGV2DDtgRd7d74m/sCZsBIsCgFTr418nVN4GAHLsc
-	 igFcgQ0MMOGyzjeLhCvyhqjV4rXIDAgGJLwvAiOdBAwA4TxnMFvNs7VpSDsEv+WVJy
-	 +vJs10VIblh2JEMKBL2wqLeTbi+iPfFWRVjeAgrw=
-Date: Sun, 25 Oct 2026 14:01:43 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Haasham Khan <haasham93@gmail.com>
-Cc: linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev
-Subject: Re: [PATCH] staging: rtl8723bs: remove unnecessary goto
-Message-ID: <2026102523-marbles-essence-3887@gregkh>
-References: <20261025122504.8404-1-haasham93@gmail.com>
+	dkim=pass (1024-bit key, unprotected) header.d=goodmis.org header.i=@goodmis.org header.a=rsa-sha256 header.s=dkim1 header.b=1TtFv+/6
+Received: from omf14.hostedemail.com (lb01a-stub [10.200.18.249])
+	by unirelay07.hostedemail.com (Postfix) with ESMTP id 95A1C1605BE;
+	Sun, 25 Oct 2026 13:51:41 +0000 (UTC)
+Received: from [HIDDEN] (Authenticated sender: rostedt@goodmis.org) by omf14.hostedemail.com (Postfix) with ESMTPA id D063D30;
+	Sun, 25 Oct 2026 13:51:39 +0000 (UTC)
+Date: Sun, 25 Oct 2026 09:51:38 -0400
+From: Steven Rostedt <rostedt@goodmis.org>
+To: Sowmya Torra <sowmyatorra@gmail.com>
+Cc: outreachy@lists.linux.dev, julianbraha@gmail.com, Julia Lawall
+ <julia.lawall@inria.fr>
+Subject: Re: Investigating unused SCSI zone tracepoints
+Message-ID: <20261025095138.3bca1822@fedora>
+In-Reply-To: <CAFsBPPndmdUMYbiq98qmeBJ_fbYFCNxRngxxx4jB3JHg-G-02g@mail.gmail.com>
+References: <CAFsBPPndmdUMYbiq98qmeBJ_fbYFCNxRngxxx4jB3JHg-G-02g@mail.gmail.com>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-redhat-linux-gnu)
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Post: <mailto:outreachy@lists.linux.dev>
@@ -53,69 +59,54 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 List-Owner: <mailto:outreachy+owner@lists.linux.dev>
 Precedence: list
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20261025122504.8404-1-haasham93@gmail.com>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Rspamd-Server: rspamout05
+X-Rspamd-Queue-Id: D063D30
+X-Stat-Signature: 5p7uzt93bhpjrm9kcisx6836ybwn5j7p
+X-Session-Marker: 726F737465647440676F6F646D69732E6F7267
+X-Session-ID: U2FsdGVkX1+j4ADdLOgL8btHvmWSex0QmdkrLU/+BL4=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=goodmis.org; h=date:from:to:cc:subject:message-id:in-reply-to:references:mime-version:content-type:content-transfer-encoding; s=dkim1; bh=lWfiRzR65OEVxPQJ5iSF37S5Bpyxi8ZgRyancGamCLs=; b=1TtFv+/6xzXjpOrDsasAcxuXnem0hjaLO3fiInkta17qZNaCBJf+2PyT1TY6tR6tYDt3PGUU7SX2Rn61hyqw37+jD/JPgDhIw0sTEFq+HaoEmqQPVYbDVVo+Kesuhy+au6ghMuZorkhzGwgW0O97RPwM6xylv5KxO+D0kftmPD8=
+X-HE-Tag: 1792936299-574341
+X-HE-Meta: U2FsdGVkX1835Kd7pFJQUjrEeQT2laZJrPSyqj9kT87Vpbf//KyYdtRrIF3XLL38re5iUk923TVReYVFnS+mfTHmy/ZxPKe638M7sDqRqoqS75tGFr/kDjMuoRD+t7o+pg6O5VzpQQgVXEK5xFXZeu3gIC8vy/EgSvDya+VORID+kZFTd0JJpIgZtb8hpNe9TJci70V+vW3Dl/nIgz2vQX5oimujwsL6wtxTo4lpV/8ZarGcb2/qMnaZjA65gUBGNvFiNujplrZFfIdq/6c6GFAZu6zLqdCaIsDQRhbHksM6OaY7BCujRl9+9AlmkEvLiaDRFsVE1TarMzZPv2UTaPSGwaALA2lP
 
-On Sun, Oct 25, 2026 at 12:25:04PM +0000, Haasham Khan wrote:
-> The goto exit statement jumps to the next statement, so it has no
-> effect. Remove it and the now-unnecessary label, and simplify the
-> conditional block.
+On Sun, 25 Oct 2026 17:13:13 +0530
+Sowmya Torra <sowmyatorra@gmail.com> wrote:
+
+> Hello everyone,
 > 
-> Signed-off-by: Haasham Khan <haasham93@gmail.com>
-> ---
->  drivers/staging/rtl8723bs/core/rtw_recv.c | 5 +----
->  1 file changed, 1 insertion(+), 4 deletions(-)
+> While building the kernel with UT=1 using the provided configuration,
+> I came across two unused SCSI tracepoint warnings:
 > 
-> diff --git a/drivers/staging/rtl8723bs/core/rtw_recv.c b/drivers/staging/rtl8723bs/core/rtw_recv.c
-> index 6f4bdad00f60..c2d0cd314b81 100644
-> --- a/drivers/staging/rtl8723bs/core/rtw_recv.c
-> +++ b/drivers/staging/rtl8723bs/core/rtw_recv.c
-> @@ -2005,12 +2005,9 @@ static int recv_func_prehandle(struct adapter *padapter, union recv_frame *rfram
->  
->  	/* check the frame crtl field and decache */
->  	ret = validate_recv_frame(padapter, rframe);
-> -	if (ret != _SUCCESS) {
-> +	if (ret != _SUCCESS)
->  		rtw_free_recvframe(rframe, pfree_recv_queue);/* free this recv_frame */
-> -		goto exit;
-> -	}
->  
-> -exit:
->  	return ret;
->  }
->  
-> -- 
-> 2.53.0
+> scsi_prepare_zone_append
+> scsi_zone_wp_update
 > 
+> I decided to investigate why these tracepoints were no longer being used.
 > 
+> After tracing their references and looking through the Git history, I
+> found that commit 1846f308d66f ("scsi: sd: Use the block layer zone
+> append emulation") removed both tracepoint calls when zone append
+> emulation was moved to the block layer.
+> 
+> However, their definitions still remain in drivers/scsi/sd_trace.h,
+> and sd_zbc.c continues to include this header with
+> CREATE_TRACE_POINTS.
+> 
+> I also searched the repository for both tracepoints and couldn't find
+> any remaining callers. Additionally, I checked the compiled sd_zbc.o
+> and found that code and data for these unused events are still being
+> generated.
+> 
+> Based on these findings, I believe removing the obsolete tracepoint
+> definitions, along with the unused header and its inclusion, would be
+> a useful cleanup. I plan to rebuild with UT=1 afterward to verify that
+> the warnings are resolved.
+> I plan to work on this cleanup. Please let me know if it overlaps with
+> an existing effort.
+> I'd appreciate any feedback on my investigation and the proposed
+> approach before I proceed with the patch.
 
-Hi,
+Everything you mention above sounds appropriate. I look forward to the
+patch you produce to clean this up.
 
-This is the friendly patch-bot of Greg Kroah-Hartman.  You have sent him
-a patch that has triggered this response.  He used to manually respond
-to these common problems, but in order to save his sanity (he kept
-writing the same thing over and over, yet to different people), I was
-created.  Hopefully you will not take offence and will fix the problem
-in your patch and resubmit it so that it can be accepted into the Linux
-kernel tree.
-
-You are receiving this message because of the following common error(s)
-as indicated below:
-
-- Your patch did not apply to any known trees that Greg is in control
-  of.  Possibly this is because you made it against Linus's tree, not
-  the linux-next tree, which is where all of the development for the
-  next version of the kernel is at.  Please refresh your patch against
-  the linux-next tree, or even better yet, the development tree
-  specified in the MAINTAINERS file for the subsystem you are submitting
-  a patch for, and resend it.
-
-If you wish to discuss this problem further, or you have questions about
-how to resolve this issue, please feel free to respond to this email and
-Greg will reply once he has dug out from the pending patches received
-from other developers.
-
-thanks,
-
-greg k-h's patch email bot
+-- Steve
