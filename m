@@ -1,96 +1,95 @@
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=209.85.218.49
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=209.85.128.42
 ARC-Seal: i=1; d=subspace.kernel.org; s=arc20261015; a=rsa-sha256; cv=none;
-	t=1793297998;
-	b=ASlAXjHuUHfFqqhUTf8jMe6jSRqyJijA/0+GYB9ySLEnp6c/pGareHLYryxOyqy0zFUb
-	 HSltFJAGBPBEMF43VGXzA+YpxyGV0Amn1DQ4FyfbAIQAOk+yXg+mIFnKMV3qLHG4YmRfD
-	 quJa+X488xTeKrfHQdWFs4fWz6pO+1Rmg476wW/klId2KzkfaiU1FzpR6QKuW+T00PMMp
-	 ySGRDedTRyjLz6ZD2FITgYvmnmRrCJgTdcMaU/8mdC+mfB7MkgG00nTvLTOkWT+hoi689
-	 fAhvD1xWLELqBgsVGaMoXZzGzo6HocTFsqS2//J189KXfhY2Npq2seDvUMJjX6KYVAA==
+	t=1793300001;
+	b=5tpu3ZyN+2z3R+EiNS0DxKteHPY9E6Vamo9oad7VJPsjdecibJcfNivnKyoCfVruwjkr
+	 Rw12vz1lXCaCT2eOM1ofeUEyCC8yv8sVPLWCsr3GCAvTr2SR+dXAod4Eg4zOqOvbd7iqE
+	 TPQ0QVOByiQj2aQInf47TGi2dwU2pBH5WW3MbcCvV25vVcIo4ziBBZn2XmslAg1eJ7Llm
+	 V5o1FD5QWSU/Qs6d+x7NMh4lg/f02Ww4NIFxjk8wFuwi4Jihx8d7sPUMikuNB9NZugYMn
+	 S5gLCULA0HQ1ClpLvT68fCBhll5vzHgNtAJOYX0B64vsnyAP+xIhcjoyZ+pzSq7sruQ==
 ARC-Message-Signature: i=1; d=subspace.kernel.org; s=arc20261015;
-	a=rsa-sha256; c=relaxed/relaxed; t=1793297998;
+	a=rsa-sha256; c=relaxed/relaxed; t=1793300001;
 	h=DMARC-Filter:Received:DKIM-Signature:X-Google-DKIM-Signature:
-	 X-Gm-Message-State:X-Gm-Gg:X-Received:Received:From:To:Cc:Subject:
-	 Date:Message-ID:X-Mailer:MIME-Version:Content-Transfer-Encoding;
-	bh=iX/5kcgJLHYenTjEkqTynO0b70ye+PYgd2o/7R7g0Oc=;
-	b=2xXGriYEyefjOit+1Sa9vpY1jqrpj4qdSqDx1AOOOQAmiDHB7QrSNbbaBw7yuhZws9MO
-	 9EZBZqFGr4tI4DpQ6ySULxXSZKPCVkuktYRokPX6gENFZV9GcxbXAC8NfT3hoj9Q+tyXC
-	 iIrLIwW9t2hALjaCBV8u9hTWAL4ETMG2cJxAa0Ji5KoLlqkHKp4iY1u5q642zS321kk/3
-	 LcxkobyXQ61QuI/2jJY3vsbwgzRGekZJnCU5X3vnaPOJ9UINRJERVn908fnXn8SP6OoC8
-	 Xhxd0bdCgYRIvwLOIii1BPEbAoOnQr5OuebIMTmWX+PaUcLRcfXBuYUgnULtJ7rIOOw==
+	 X-Gm-Message-State:X-Gm-Gg:X-Received:Received:Date:From:To:Cc:
+	 Subject:Message-ID:References:MIME-Version:Content-Type:
+	 Content-Disposition:In-Reply-To;
+	bh=ZmWPzm2rbQXWS/0JLk7KpqQzmeNK5xYsM/YYzmVQZ7I=;
+	b=TU1pQYOhGF4tb/7voANPcddVU0K6fqlWuIF4GW9JVtaV6zIIynuFaFRDC7XzlSo19BTe
+	 azo/UyOzplVLWWdxJG8GmBiczaCduox88rcOwtda/5q8j3kyQTnZ+dnKMLXeaFnoo9dts
+	 V1KTGrfBrOoyBTmpGbbHJUrSk/7YNt0n/gcCmd7vZ3qsodiwiOB8xFTRJvuuM37El7UGj
+	 PPhp+38msnBmRhmYzOGwpykGD5vev9lsx3LBPRIb9qsLBx1xDI+1c3TJhD6vQWAKeOw4t
+	 DnWPkJv7LqT81R5dS9FjYFB1rxNt9cfBbSFJcsXxe0iSBtwiHxLIn2Ny+MbcaFo+W4g==
 ARC-Authentication-Results: i=1; smtp.subspace.kernel.org; 
 	dmarc=pass header.from=gmail.com;
 	spf=pass smtp.mailfrom=gmail.com;
-	dkim=pass header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=YNRetcNi;
-	arc=none smtp.remote-ip=209.85.218.49
-Received: from mail-ej1-f49.google.com (mail-ej1-f49.google.com [209.85.218.49])
+	dkim=pass header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=NzqB2VJZ;
+	arc=none smtp.remote-ip=209.85.128.42
+Received: from mail-wm1-f42.google.com (mail-wm1-f42.google.com [209.85.128.42])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0136D606A31E
-	for <outreachy@lists.linux.dev>; Thu, 29 Oct 2026 18:19:57 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org 0136D606A31E
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D3013606A31A
+	for <outreachy@lists.linux.dev>; Thu, 29 Oct 2026 18:53:20 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org D3013606A31A
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=YNRetcNi
-Received: by mail-ej1-f49.google.com with SMTP id a640c23a62f3a-c4395d31228so391191066b.1
-        for <outreachy@lists.linux.dev>; Thu, 29 Oct 2026 11:19:57 -0700 (PDT)
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=NzqB2VJZ
+Received: by mail-wm1-f42.google.com with SMTP id 5b1f17b1804b1-4a208d93758so25710735e9.3
+        for <outreachy@lists.linux.dev>; Thu, 29 Oct 2026 11:53:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793297996; x=1793902796; darn=lists.linux.dev;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=iX/5kcgJLHYenTjEkqTynO0b70ye+PYgd2o/7R7g0Oc=;
-        b=YNRetcNioRbw88kB8q0hzVCt+n2IH7gm5+0ajIiDW5nbpKEyAZacRw65KH0lRE5/l9
-         xv1Mfi4Lfnr9ItChvZYFDPg1EmyQGGgxseZoNjF0JXuE/CEd1GHbOHzyzdlCcF6C9VVj
-         4Gi+N7uqUL7eXKSrdzN3KXTnDcBzhIQcKlCDMlyXIoWU+BGvXLdHEmmrqnCniJiWQYoy
-         woyvNOM6HhgJ96FMthr7vRrJtd7Gnk0KaHhUtBQT1BLdotQP2+RvUYxevD3LLNCivjFM
-         hTzKjkLQHCJII3XIrgvzcLAIuU0sOztpmuD28kZ4BCIPRrARojlqBprDJ7SFgxggsOUw
-         6+dA==
+        d=gmail.com; s=20260707; t=1793299999; x=1793904799; darn=lists.linux.dev;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=ZmWPzm2rbQXWS/0JLk7KpqQzmeNK5xYsM/YYzmVQZ7I=;
+        b=NzqB2VJZH6/6JuUX9hDORNMzLqZi3/qpz8IjKGvjEPI7Dap+W7ySGilxFPiSbikbPj
+         9nK52aerev2myO5lv0ngSBeEtWcwuUPneh2rTcm+BjkxCgyAdkWAeBcykbVfuCS4sMA8
+         jYlk3y3RJZUbM89TcAwZQ7fS+ukMAR/bszu9U23KXNZKXFTILEywmEBAtVCsBPxvfviW
+         jA2hGpg6RDLSWRXxU8mSSQ2Kh01CeW/08W2KJJRJ/MvcS6QD+MMFeUs76wcUEJyOnxhg
+         PF74IvLCFTC/7zdDtrYmQYA7pfdB4yTCnvIOCmGrO1C0YZyHJjxVQOTqxd9AwF112B84
+         nwbA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793297996; x=1793902796;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=iX/5kcgJLHYenTjEkqTynO0b70ye+PYgd2o/7R7g0Oc=;
-        b=tXLX9rK5Arm22+hM+e8HKU+FnnY/+dhfje+QpNCWZ++rS/7MscIh6p6oecJS/oR5QU
-         57Y+JxPaLSf0IogUtrTZgwqu/GZQE9qSrm6y1kTo8wuN2ly85s3+dFztvSNkuLKnx575
-         ENcVe6uPrpWfoYSMICIpfpbEOzAJpZjPtqap77arYdKwoj5nWaPMf/nMmHa6uD1h7kJ2
-         MoBE6UFNP+WaClzM23PbyniKq87oGylT1E7b4hd7ZHf1uGNkGRmJrfWA45/+URyEC2/M
-         ctFs3UivFqiv3g0tUw+2yTaCYvPJx2Rev2XuumKRcGfPACPVV9kCiTcYq66t+SvtOOds
-         ailA==
-X-Gm-Message-State: AFq9FYKsKIJMrhJ6b+kcwmJ1MbuMvoM+qlg78zrzAQFD1Qw9RiHT0K6u
-	XL6O7WoFde6D8rBr2LXd/mSYlDd42QLMsp6Del+7uwkxOzuLpqWQvEXS
-X-Gm-Gg: AYBFou0S4+6AuJ9zMheUuVQcCnRrIyBdC/qUqPnUSXwnkw9tZwHaOtnTravlZqRwBn8
-	pXgEK2eBbawZPmY1NXyOeUtlOnmPZ2ja+4FRB2aQW83gibCifb8LbH/cscwBR/dg1MfsfQ0heOl
-	4Lujxc/ofGUOUoPxRJe1GCsMYMJfwUsjO71Lxxll0c99flpzmN6cNI+Nrw2HA+CDpSQxjmPEZln
-	PtE27RrXrmmx+35UrGQbgfrWyEDDu/2WSLsfKbkXmu3n2f5xpdpI/tCRvP6uzJmre4naQwyA6J4
-	BpLxetk+IHti9uEqkzUCHRIjMzI/u+5lXSSlMaAP+FZiJf2TNdq/adBAwuNPgFKyYiIOzgfJUYH
-	skd7tdoV+BgrRsCzC46qGTdDuJa44QuvCnycEvxaRD0EQjaC+j4mnDNtZ8UEFfpK/wergxgaytN
-	/kWSlwcREL2O1MLr8Y6UU9kQFojzDSF4vgmnnfgk5eSCjl4yyx2gQ86iddI8E1dkZyuY1BdXyMM
-	iqNjPKq+4UK4vBRVYZiGEwHJw3EewT3anrv0NVCm/XX9A2FokPBuRJb2VfN68xCEOO71LSJvqfd
-	hNa0kq3rp+Lgwgt2plvcC2jVRO5oyh/V2ODIfx8nJxQTVIRbhfeEURkiI+JH3fnm5rBOdX5B3xS
-	opRDMvby8iSBs8UyxBNUA3Yjw6hwtcaONbLjbJi+9UqV7SKs/vNG+s1ZELa45OVve
-X-Received: by 2002:a17:906:448:b0:c41:1e13:8896 with SMTP id a640c23a62f3a-c49c635f4b8mr354049166b.28.1793297996159;
-        Thu, 29 Oct 2026 11:19:56 -0700 (PDT)
-Received: from maria-VMware-Virtual-Platform ([182.186.0.95])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-c4ca2de1b78sm10323466b.2.2026.10.29.11.19.55
+        d=1e100.net; s=20260707; t=1793299999; x=1793904799;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=ZmWPzm2rbQXWS/0JLk7KpqQzmeNK5xYsM/YYzmVQZ7I=;
+        b=S7Y/feeyOCT9qs4kDbOPvEyD1+30vRWl+UwaW+wOOJ/bEuWfQIxfIepwD7oAIfk67/
+         GtsQppNkF+JekOUAfQVfYcb7fOpEUHHRIF+CUtTDYjol0rJHflS7YtpGGG5HR0fr8L2n
+         95Wh0mZW//tXHr9dn6t9tRULDBpjPd7DYY0AYWJWHInOli60qc6qslmxVwjyS95Ek0VI
+         8RdcWHCwB0IJeY8ea6jn6ZqMTaFHMvO0IROPKY1700M1XJl+cJ/G12zmahUAFnxRBrqA
+         H7RpRKRrP/PSmMt+L/ccmejxFIgxT3bFh+jJtz/rSX58u4MXZo+0iIpfD9HITCxqVIt6
+         pPgA==
+X-Gm-Message-State: AFq9FYI+lFPVH0tiwwnB0AyVcuwtV/rtAJ4Dy/DH/04syyOENL9szJc6
+	ODlRHMwENjZR6fjkTOU5avHx1M5W8z2uvoMQLeuMG0nYslumw8d6alvk
+X-Gm-Gg: AYBFou25tZzSdpa3BTGu10lYbrg6Fz/747V1J8WeJQGoaeIyVF8554R+/mYkbrc/OL8
+	i1LFijghdhTs966/wB5oo7DB4ROYs44m6S5k9ues+t2Y14ifZSnFLZ+wOYhk7sS8cmX09pT48zG
+	zj3CFrpFoOKj+yBMd0ExqJLA1kWa04yVZE/zK6iIUYq7sO+XNREY6hIELSRDq1CoHDPcHWQvGKk
+	j5qCEUKT6zZcPm/g1JqtvOxPvKFDKzarsMWU29XMMbRE+2vlxKE9DCNeWMnjJ06WkjZyuV+pOYQ
+	J18Hd/J5qv61WGJHC8xu2V+chYI0vvgJECXoMIlJhirrHlXhV7YyzpUpSdimaJX8HaPS8y+0Tf4
+	CYXVvAZd4C+yyri5jcUcRbdHTqQEZzhX7cxF6+WaJyD8YFz+QZaydX5TRE5SOWZlR7pFkl7drws
+	eAlxw/qN6tTEomv32dt7WCOgmFp1kW1AabRlNuocfYPD9/U79RPynXcl1dqttX4JWimeMe2jNpQ
+	BEh3gWHoCVWPdqJgzsoOS1igLHSmS+d2Gk3/VLTZQTXgF1k7p+U+SO9j5c3urwxmOyscX2VUvc5
+	Cad/0I5p8fCc9tDipUceNj0I8sdFBjPqJZA0Ql74A91eZ9FQpZGgFSsECldcCMx/gjjYlSFKO/p
+	t9aeUK5H1w4Ik2x3y4DJoKufx+LUJR51cJpF4TVK/+kR74vRXAeMHA4dFGN5D/r9O26U=
+X-Received: by 2002:a05:600c:3153:b0:4a1:9661:14b5 with SMTP id 5b1f17b1804b1-4a9677cb34amr150195915e9.29.1793299998954;
+        Thu, 29 Oct 2026 11:53:18 -0700 (PDT)
+Received: from localhost ([2c0f:3d00:6be:8900:ce5e:9212:ea4b:f30])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4abf7146621sm4779985e9.13.2026.10.29.11.53.17
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 29 Oct 2026 11:19:55 -0700 (PDT)
-From: Maria Sheikh <mariasheikh812@gmail.com>
-To: outreachy@lists.linux.dev,
-	vaibhav.sr@gmail.com,
-	mgreer@animalcreek.com,
-	johan@kernel.org,
-	elder@kernel.org,
-	gregkh@linuxfoundation.org,
-	greybus-dev@lists.linaro.org,
-	linux-staging@lists.linux.dev,
+        Thu, 29 Oct 2026 11:53:18 -0700 (PDT)
+Date: Thu, 29 Oct 2026 21:53:14 +0300
+From: Dan Carpenter <error27@gmail.com>
+To: Maria Sheikh <mariasheikh812@gmail.com>
+Cc: outreachy@lists.linux.dev, vaibhav.sr@gmail.com, mgreer@animalcreek.com,
+	johan@kernel.org, elder@kernel.org, gregkh@linuxfoundation.org,
+	greybus-dev@lists.linaro.org, linux-staging@lists.linux.dev,
 	linux-kernel@vger.kernel.org
-Cc: Maria Sheikh <mariasheikh812@gmail.com>
-Subject: [PATCH] staging: greybus: audio_manager: Add newline to sysfs output
-Date: Thu, 29 Oct 2026 23:19:40 +0500
-Message-ID: <20261029181948.13121-1-mariasheikh812@gmail.com>
-X-Mailer: git-send-email 2.53.0
+Subject: Re: [PATCH] staging: greybus: audio_manager: Add newline to sysfs
+ output
+Message-ID: <auOWGu-Hja90eAmV@stanley.mountain>
+References: <20261029181948.13121-1-mariasheikh812@gmail.com>
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Post: <mailto:outreachy@lists.linux.dev>
@@ -100,79 +99,24 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 List-Owner: <mailto:outreachy+owner@lists.linux.dev>
 Precedence: list
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20261029181948.13121-1-mariasheikh812@gmail.com>
 
-Fix checkpatch warning:
+On Thu, Oct 29, 2026 at 11:19:40PM +0500, Maria Sheikh wrote:
+> Fix checkpatch warning:
+> 
+> WARNING: return sysfs_emit(. . .) formats should include a terminating
+> newline.
+> 
+> Add "\n" to the sysfs_emit() format strings of the name, vid, pid,
+> intf_id, ip_devices and op_devices attributes.
+> 
+> Signed-off-by: Maria Sheikh <mariasheikh812@gmail.com>
 
-WARNING: return sysfs_emit(. . .) formats should include a terminating
-newline.
+This changes how the sysfs file appears to the user and potentially
+breaks a script or something.  You can't do it without testing.
 
-Add "\n" to the sysfs_emit() format strings of the name, vid, pid,
-intf_id, ip_devices and op_devices attributes.
-
-Signed-off-by: Maria Sheikh <mariasheikh812@gmail.com>
----
- drivers/staging/greybus/audio_manager_module.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/staging/greybus/audio_manager_module.c b/drivers/staging/greybus/audio_manager_module.c
-index dc90cc2d2308..5737f2a32f5a 100644
---- a/drivers/staging/greybus/audio_manager_module.c
-+++ b/drivers/staging/greybus/audio_manager_module.c
-@@ -75,7 +75,7 @@ static void gb_audio_module_release(struct kobject *kobj)
- static ssize_t gb_audio_module_name_show(struct gb_audio_manager_module *module,
- 					 struct gb_audio_manager_module_attribute *attr, char *buf)
- {
--	return sysfs_emit(buf, "%s", module->desc.name);
-+	return sysfs_emit(buf, "%s\n", module->desc.name);
- }
- 
- static struct gb_audio_manager_module_attribute gb_audio_module_name_attribute =
-@@ -84,7 +84,7 @@ static struct gb_audio_manager_module_attribute gb_audio_module_name_attribute =
- static ssize_t gb_audio_module_vid_show(struct gb_audio_manager_module *module,
- 					struct gb_audio_manager_module_attribute *attr, char *buf)
- {
--	return sysfs_emit(buf, "%d", module->desc.vid);
-+	return sysfs_emit(buf, "%d\n", module->desc.vid);
- }
- 
- static struct gb_audio_manager_module_attribute gb_audio_module_vid_attribute =
-@@ -93,7 +93,7 @@ static struct gb_audio_manager_module_attribute gb_audio_module_vid_attribute =
- static ssize_t gb_audio_module_pid_show(struct gb_audio_manager_module *module,
- 					struct gb_audio_manager_module_attribute *attr, char *buf)
- {
--	return sysfs_emit(buf, "%d", module->desc.pid);
-+	return sysfs_emit(buf, "%d\n", module->desc.pid);
- }
- 
- static struct gb_audio_manager_module_attribute gb_audio_module_pid_attribute =
-@@ -103,7 +103,7 @@ static ssize_t gb_audio_module_intf_id_show(struct gb_audio_manager_module *modu
- 					    struct gb_audio_manager_module_attribute *attr,
- 					    char *buf)
- {
--	return sysfs_emit(buf, "%d", module->desc.intf_id);
-+	return sysfs_emit(buf, "%d\n", module->desc.intf_id);
- }
- 
- static struct gb_audio_manager_module_attribute
-@@ -114,7 +114,7 @@ static ssize_t gb_audio_module_ip_devices_show(struct gb_audio_manager_module *m
- 					       struct gb_audio_manager_module_attribute *attr,
- 					       char *buf)
- {
--	return sysfs_emit(buf, "0x%X", module->desc.ip_devices);
-+	return sysfs_emit(buf, "0x%X\n", module->desc.ip_devices);
- }
- 
- static struct gb_audio_manager_module_attribute
-@@ -125,7 +125,7 @@ static ssize_t gb_audio_module_op_devices_show(struct gb_audio_manager_module *m
- 					       struct gb_audio_manager_module_attribute *attr,
- 					       char *buf)
- {
--	return sysfs_emit(buf, "0x%X", module->desc.op_devices);
-+	return sysfs_emit(buf, "0x%X\n", module->desc.op_devices);
- }
- 
- static struct gb_audio_manager_module_attribute
--- 
-2.53.0
+regards,
+dan carpenter
 
