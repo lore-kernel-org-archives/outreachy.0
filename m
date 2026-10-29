@@ -1,95 +1,57 @@
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=209.85.128.42
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=192.134.164.104
 ARC-Seal: i=1; d=subspace.kernel.org; s=arc20261015; a=rsa-sha256; cv=none;
-	t=1793300001;
-	b=5tpu3ZyN+2z3R+EiNS0DxKteHPY9E6Vamo9oad7VJPsjdecibJcfNivnKyoCfVruwjkr
-	 Rw12vz1lXCaCT2eOM1ofeUEyCC8yv8sVPLWCsr3GCAvTr2SR+dXAod4Eg4zOqOvbd7iqE
-	 TPQ0QVOByiQj2aQInf47TGi2dwU2pBH5WW3MbcCvV25vVcIo4ziBBZn2XmslAg1eJ7Llm
-	 V5o1FD5QWSU/Qs6d+x7NMh4lg/f02Ww4NIFxjk8wFuwi4Jihx8d7sPUMikuNB9NZugYMn
-	 S5gLCULA0HQ1ClpLvT68fCBhll5vzHgNtAJOYX0B64vsnyAP+xIhcjoyZ+pzSq7sruQ==
+	t=1793302911;
+	b=47CjIGM+aBG8SzbgameKivG88P2pKZW5DbJygJzzx0jFAQWLXs8QqGglhbNqLMwtkTtf
+	 BAJuu4gK+XstzC2eH1yfwi+uJrQUqh3AKaz66JUU4BVbCWsydIis3c6GhefDSCVLyHlXy
+	 sZlcXnLMM4THwX7n+NwgDG3XRg56qtsJ66KlSnoE70sZXDtwoz0HdFC68h9fdnKVJwgyO
+	 6JaxArhcLhEHa9SqSOSlc1gsgn7k1ABJ9WA3AVDuSyPiIuRe+9FgQjI1ZtjhDy28VjWJu
+	 olkCdDFz1P1J2oZk+pKrj37Qvzc1sQsknx7mpoCaAYKZ7GeXXBgx6xF+zEWaa38b3gw==
 ARC-Message-Signature: i=1; d=subspace.kernel.org; s=arc20261015;
-	a=rsa-sha256; c=relaxed/relaxed; t=1793300001;
-	h=DMARC-Filter:Received:DKIM-Signature:X-Google-DKIM-Signature:
-	 X-Gm-Message-State:X-Gm-Gg:X-Received:Received:Date:From:To:Cc:
-	 Subject:Message-ID:References:MIME-Version:Content-Type:
-	 Content-Disposition:In-Reply-To;
-	bh=ZmWPzm2rbQXWS/0JLk7KpqQzmeNK5xYsM/YYzmVQZ7I=;
-	b=TU1pQYOhGF4tb/7voANPcddVU0K6fqlWuIF4GW9JVtaV6zIIynuFaFRDC7XzlSo19BTe
-	 azo/UyOzplVLWWdxJG8GmBiczaCduox88rcOwtda/5q8j3kyQTnZ+dnKMLXeaFnoo9dts
-	 V1KTGrfBrOoyBTmpGbbHJUrSk/7YNt0n/gcCmd7vZ3qsodiwiOB8xFTRJvuuM37El7UGj
-	 PPhp+38msnBmRhmYzOGwpykGD5vev9lsx3LBPRIb9qsLBx1xDI+1c3TJhD6vQWAKeOw4t
-	 DnWPkJv7LqT81R5dS9FjYFB1rxNt9cfBbSFJcsXxe0iSBtwiHxLIn2Ny+MbcaFo+W4g==
+	a=rsa-sha256; c=relaxed/relaxed; t=1793302911;
+	h=DMARC-Filter:DKIM-Signature:X-CSE-ConnectionGUID:X-CSE-MsgGUID:
+	 X-IronPort-AV:Received:Content-Type:Content-Transfer-Encoding:From:
+	 Mime-Version:Subject:Date:Message-Id:References:Cc:In-Reply-To:To:
+	 X-Mailer;
+	bh=XRi8pcTf4rfC4VLA5r1QxQ3Of7atJjfiNOnycg20qTU=;
+	b=iEoRvEZVHlMf+q1q3GPhawRdW06V7Zn7ze8pVcOyiRkdK9PpfmVDSqs4ikSvQufI+CKS
+	 jIl4coBTyiIWPQWfxFROrj+v86/Lie9VggeCfWWo7fUJB6sGzIKdoMz4GzrtsY4g9y2/M
+	 maIqRgybiNK+GWgYlL8sCZhPdiw2NkexkKaQlhgRvCID89k+bt9rsAwyoztyHOjV1rxE3
+	 QAvbH5ELpEMkR+YowCwadchEeR5DbCaGMtyuDOkGEWKTc11wWFZjYiEYjusMDdXsq9fS+
+	 aC/E2xqc229gnIIbrD75DvcvJKzhuxw8UwoFkzWo3ZBfU0LLVmL3D37fWOFnQ2FV8qQ==
 ARC-Authentication-Results: i=1; smtp.subspace.kernel.org; 
-	dmarc=pass header.from=gmail.com;
-	spf=pass smtp.mailfrom=gmail.com;
-	dkim=pass header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=NzqB2VJZ;
-	arc=none smtp.remote-ip=209.85.128.42
-Received: from mail-wm1-f42.google.com (mail-wm1-f42.google.com [209.85.128.42])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	dmarc=pass header.from=inria.fr;
+	spf=pass smtp.mailfrom=inria.fr;
+	dkim=pass header.d=inria.fr header.i=@inria.fr header.a=rsa-sha256 header.s=dc header.b=epaaUSOf;
+	arc=none smtp.remote-ip=192.134.164.104
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D3013606A31A
-	for <outreachy@lists.linux.dev>; Thu, 29 Oct 2026 18:53:20 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org D3013606A31A
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 89BA9606A31C;
+	Thu, 29 Oct 2026 19:41:49 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org 89BA9606A31C
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=NzqB2VJZ
-Received: by mail-wm1-f42.google.com with SMTP id 5b1f17b1804b1-4a208d93758so25710735e9.3
-        for <outreachy@lists.linux.dev>; Thu, 29 Oct 2026 11:53:20 -0700 (PDT)
+	dkim=pass (1024-bit key, unprotected) header.d=inria.fr header.i=@inria.fr header.a=rsa-sha256 header.s=dc header.b=epaaUSOf
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793299999; x=1793904799; darn=lists.linux.dev;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=ZmWPzm2rbQXWS/0JLk7KpqQzmeNK5xYsM/YYzmVQZ7I=;
-        b=NzqB2VJZH6/6JuUX9hDORNMzLqZi3/qpz8IjKGvjEPI7Dap+W7ySGilxFPiSbikbPj
-         9nK52aerev2myO5lv0ngSBeEtWcwuUPneh2rTcm+BjkxCgyAdkWAeBcykbVfuCS4sMA8
-         jYlk3y3RJZUbM89TcAwZQ7fS+ukMAR/bszu9U23KXNZKXFTILEywmEBAtVCsBPxvfviW
-         jA2hGpg6RDLSWRXxU8mSSQ2Kh01CeW/08W2KJJRJ/MvcS6QD+MMFeUs76wcUEJyOnxhg
-         PF74IvLCFTC/7zdDtrYmQYA7pfdB4yTCnvIOCmGrO1C0YZyHJjxVQOTqxd9AwF112B84
-         nwbA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793299999; x=1793904799;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=ZmWPzm2rbQXWS/0JLk7KpqQzmeNK5xYsM/YYzmVQZ7I=;
-        b=S7Y/feeyOCT9qs4kDbOPvEyD1+30vRWl+UwaW+wOOJ/bEuWfQIxfIepwD7oAIfk67/
-         GtsQppNkF+JekOUAfQVfYcb7fOpEUHHRIF+CUtTDYjol0rJHflS7YtpGGG5HR0fr8L2n
-         95Wh0mZW//tXHr9dn6t9tRULDBpjPd7DYY0AYWJWHInOli60qc6qslmxVwjyS95Ek0VI
-         8RdcWHCwB0IJeY8ea6jn6ZqMTaFHMvO0IROPKY1700M1XJl+cJ/G12zmahUAFnxRBrqA
-         H7RpRKRrP/PSmMt+L/ccmejxFIgxT3bFh+jJtz/rSX58u4MXZo+0iIpfD9HITCxqVIt6
-         pPgA==
-X-Gm-Message-State: AFq9FYI+lFPVH0tiwwnB0AyVcuwtV/rtAJ4Dy/DH/04syyOENL9szJc6
-	ODlRHMwENjZR6fjkTOU5avHx1M5W8z2uvoMQLeuMG0nYslumw8d6alvk
-X-Gm-Gg: AYBFou25tZzSdpa3BTGu10lYbrg6Fz/747V1J8WeJQGoaeIyVF8554R+/mYkbrc/OL8
-	i1LFijghdhTs966/wB5oo7DB4ROYs44m6S5k9ues+t2Y14ifZSnFLZ+wOYhk7sS8cmX09pT48zG
-	zj3CFrpFoOKj+yBMd0ExqJLA1kWa04yVZE/zK6iIUYq7sO+XNREY6hIELSRDq1CoHDPcHWQvGKk
-	j5qCEUKT6zZcPm/g1JqtvOxPvKFDKzarsMWU29XMMbRE+2vlxKE9DCNeWMnjJ06WkjZyuV+pOYQ
-	J18Hd/J5qv61WGJHC8xu2V+chYI0vvgJECXoMIlJhirrHlXhV7YyzpUpSdimaJX8HaPS8y+0Tf4
-	CYXVvAZd4C+yyri5jcUcRbdHTqQEZzhX7cxF6+WaJyD8YFz+QZaydX5TRE5SOWZlR7pFkl7drws
-	eAlxw/qN6tTEomv32dt7WCOgmFp1kW1AabRlNuocfYPD9/U79RPynXcl1dqttX4JWimeMe2jNpQ
-	BEh3gWHoCVWPdqJgzsoOS1igLHSmS+d2Gk3/VLTZQTXgF1k7p+U+SO9j5c3urwxmOyscX2VUvc5
-	Cad/0I5p8fCc9tDipUceNj0I8sdFBjPqJZA0Ql74A91eZ9FQpZGgFSsECldcCMx/gjjYlSFKO/p
-	t9aeUK5H1w4Ik2x3y4DJoKufx+LUJR51cJpF4TVK/+kR74vRXAeMHA4dFGN5D/r9O26U=
-X-Received: by 2002:a05:600c:3153:b0:4a1:9661:14b5 with SMTP id 5b1f17b1804b1-4a9677cb34amr150195915e9.29.1793299998954;
-        Thu, 29 Oct 2026 11:53:18 -0700 (PDT)
-Received: from localhost ([2c0f:3d00:6be:8900:ce5e:9212:ea4b:f30])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4abf7146621sm4779985e9.13.2026.10.29.11.53.17
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 29 Oct 2026 11:53:18 -0700 (PDT)
-Date: Thu, 29 Oct 2026 21:53:14 +0300
-From: Dan Carpenter <error27@gmail.com>
-To: Maria Sheikh <mariasheikh812@gmail.com>
-Cc: outreachy@lists.linux.dev, vaibhav.sr@gmail.com, mgreer@animalcreek.com,
-	johan@kernel.org, elder@kernel.org, gregkh@linuxfoundation.org,
-	greybus-dev@lists.linaro.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] staging: greybus: audio_manager: Add newline to sysfs
- output
-Message-ID: <auOWGu-Hja90eAmV@stanley.mountain>
-References: <20261029181948.13121-1-mariasheikh812@gmail.com>
+  d=inria.fr; s=dc;
+  h=content-transfer-encoding:from:mime-version:subject:date:
+   message-id:references:cc:in-reply-to:to;
+  bh=XRi8pcTf4rfC4VLA5r1QxQ3Of7atJjfiNOnycg20qTU=;
+  b=epaaUSOfb0zSZpemikoEL1jRlpVBGP2WHyK3QRbuv05yjQrd3VFSqACS
+   rnKiAcEjy2mjwRFOBRA7C7SArzo4npYsQsbxNsEi+7bBJ1GZrq241apHU
+   U2yhBvyALYzabx7EE4rrB4wphL57AQw36HheQY7y+lN/R8TJ7yFdL4+p7
+   A=;
+X-CSE-ConnectionGUID: URfV2/lBQt+woBOfA5N9bA==
+X-CSE-MsgGUID: PKaJ28FpQM2EwgDc7biwzQ==
+Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=Julia.Lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="6.27,185,1787004000"; 
+   d="scan'208";a="161239336"
+Received: from 37-167-22-2.coucou-networks.fr (HELO smtpclient.apple) ([37.168.22.2])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Oct 2026 20:41:24 +0100
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+From: Julia Lawall <Julia.Lawall@inria.fr>
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Post: <mailto:outreachy@lists.linux.dev>
@@ -98,25 +60,113 @@ List-Subscribe: <mailto:outreachy+subscribe@lists.linux.dev>
 List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 List-Owner: <mailto:outreachy+owner@lists.linux.dev>
 Precedence: list
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Mime-Version: 1.0 (1.0)
+Subject: Re: [PATCH] staging: greybus: audio_manager: Add newline to sysfs output
+Date: Thu, 29 Oct 2026 15:40:58 -0400
+Message-Id: <3B73BF88-AA02-4965-8FAC-82881C192E69@inria.fr>
+References: <20261029181948.13121-1-mariasheikh812@gmail.com>
+Cc: outreachy@lists.linux.dev, vaibhav.sr@gmail.com, mgreer@animalcreek.com,
+ johan@kernel.org, elder@kernel.org, gregkh@linuxfoundation.org,
+ greybus-dev@lists.linaro.org, linux-staging@lists.linux.dev,
+ linux-kernel@vger.kernel.org, Maria Sheikh <mariasheikh812@gmail.com>
 In-Reply-To: <20261029181948.13121-1-mariasheikh812@gmail.com>
+To: Maria Sheikh <mariasheikh812@gmail.com>
+X-Mailer: iPhone Mail (23E261)
 
-On Thu, Oct 29, 2026 at 11:19:40PM +0500, Maria Sheikh wrote:
-> Fix checkpatch warning:
-> 
+Please read the recent mailing list archives. A similar patch was already re=
+jected.
+
+> On 29 Oct 2026, at 14:25, Maria Sheikh <mariasheikh812@gmail.com> wrote:
+>=20
+> =EF=BB=BFFix checkpatch warning:
+>=20
 > WARNING: return sysfs_emit(. . .) formats should include a terminating
 > newline.
-> 
+>=20
 > Add "\n" to the sysfs_emit() format strings of the name, vid, pid,
 > intf_id, ip_devices and op_devices attributes.
-> 
+>=20
 > Signed-off-by: Maria Sheikh <mariasheikh812@gmail.com>
-
-This changes how the sysfs file appears to the user and potentially
-breaks a script or something.  You can't do it without testing.
-
-regards,
-dan carpenter
+> ---
+> drivers/staging/greybus/audio_manager_module.c | 12 ++++++------
+> 1 file changed, 6 insertions(+), 6 deletions(-)
+>=20
+> diff --git a/drivers/staging/greybus/audio_manager_module.c b/drivers/stag=
+ing/greybus/audio_manager_module.c
+> index dc90cc2d2308..5737f2a32f5a 100644
+> --- a/drivers/staging/greybus/audio_manager_module.c
+> +++ b/drivers/staging/greybus/audio_manager_module.c
+> @@ -75,7 +75,7 @@ static void gb_audio_module_release(struct kobject *kobj=
+)
+> static ssize_t gb_audio_module_name_show(struct gb_audio_manager_module *m=
+odule,
+>                     struct gb_audio_manager_module_attribute *attr, char *=
+buf)
+> {
+> -    return sysfs_emit(buf, "%s", module->desc.name);
+> +    return sysfs_emit(buf, "%s\n", module->desc.name);
+> }
+>=20
+> static struct gb_audio_manager_module_attribute gb_audio_module_name_attri=
+bute =3D
+> @@ -84,7 +84,7 @@ static struct gb_audio_manager_module_attribute gb_audio=
+_module_name_attribute =3D
+> static ssize_t gb_audio_module_vid_show(struct gb_audio_manager_module *mo=
+dule,
+>                    struct gb_audio_manager_module_attribute *attr, char *b=
+uf)
+> {
+> -    return sysfs_emit(buf, "%d", module->desc.vid);
+> +    return sysfs_emit(buf, "%d\n", module->desc.vid);
+> }
+>=20
+> static struct gb_audio_manager_module_attribute gb_audio_module_vid_attrib=
+ute =3D
+> @@ -93,7 +93,7 @@ static struct gb_audio_manager_module_attribute gb_audio=
+_module_vid_attribute =3D
+> static ssize_t gb_audio_module_pid_show(struct gb_audio_manager_module *mo=
+dule,
+>                    struct gb_audio_manager_module_attribute *attr, char *b=
+uf)
+> {
+> -    return sysfs_emit(buf, "%d", module->desc.pid);
+> +    return sysfs_emit(buf, "%d\n", module->desc.pid);
+> }
+>=20
+> static struct gb_audio_manager_module_attribute gb_audio_module_pid_attrib=
+ute =3D
+> @@ -103,7 +103,7 @@ static ssize_t gb_audio_module_intf_id_show(struct gb_=
+audio_manager_module *modu
+>                        struct gb_audio_manager_module_attribute *attr,
+>                        char *buf)
+> {
+> -    return sysfs_emit(buf, "%d", module->desc.intf_id);
+> +    return sysfs_emit(buf, "%d\n", module->desc.intf_id);
+> }
+>=20
+> static struct gb_audio_manager_module_attribute
+> @@ -114,7 +114,7 @@ static ssize_t gb_audio_module_ip_devices_show(struct g=
+b_audio_manager_module *m
+>                           struct gb_audio_manager_module_attribute *attr,
+>                           char *buf)
+> {
+> -    return sysfs_emit(buf, "0x%X", module->desc.ip_devices);
+> +    return sysfs_emit(buf, "0x%X\n", module->desc.ip_devices);
+> }
+>=20
+> static struct gb_audio_manager_module_attribute
+> @@ -125,7 +125,7 @@ static ssize_t gb_audio_module_op_devices_show(struct g=
+b_audio_manager_module *m
+>                           struct gb_audio_manager_module_attribute *attr,
+>                           char *buf)
+> {
+> -    return sysfs_emit(buf, "0x%X", module->desc.op_devices);
+> +    return sysfs_emit(buf, "0x%X\n", module->desc.op_devices);
+> }
+>=20
+> static struct gb_audio_manager_module_attribute
+> --
+> 2.53.0
+>=20
+>=20
 
