@@ -1,54 +1,54 @@
 Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=192.134.164.83
 ARC-Seal: i=1; d=subspace.kernel.org; s=arc20261015; a=rsa-sha256; cv=none;
-	t=1793453555;
-	b=iI0mFU4ja18QwOM8tL/nzn0rlmDUgUX/N93MCIt4HCOAWFTfSo+0JkgCFE38biwscVME
-	 1b+t2A7/QFofYooW/V9TLE4F7aUduLNbiyzC9kCI9SaBY3uwT7qQ4rCTPlzGCay7vT2WK
-	 1zUNz2fVOh0bx36U8JaFkwIp/ygVCsDtSNXW2P05ctPnC9xSXNXZREEI7/CXcaAv6MEfg
-	 DfBdclv9wmj3zr3rseArtEByTFj+jxP26PhCMvUljsRK184R2rM0pWw9EcWEmTDK5mhdT
-	 IUD+YhF6J+/3sKHE+K+ISOQKm5vnJLff0WvPZaYbBSrWdx4ayXcpAHJ9rq6YBlKCrDw==
+	t=1793455075;
+	b=JOTZypbObqdaHfF0rP5M9j61lv15pqteXxbhShEkV7d4x/mGeImT16bQK+deN7+rO4Z4
+	 UejzBvKBQeQ9hAejaXXs6/aNXtsDdD6wJTtF5W7vu0D6qht44Q+tgL/ztRjDXPaFmGQ/M
+	 0ymjQ63sbtWS2N0h8blHMosRAf1JkkDzT+W06IilIMjJwbWRBsEzmE79pDQAXB8o4aaoz
+	 rvbNWlGB+eZDZRgMH129AmO8jC/L+dXzHTunIlkKeQtkOmMr+OYZ1RDYbxOZUiiS+ac67
+	 2AAeFtbGC3rEujVu/KUKhEm5uxEC8lyqZBkIb7YAr5h5oB3FKBqJ5INxCuvk/Nvu1sw==
 ARC-Message-Signature: i=1; d=subspace.kernel.org; s=arc20261015;
-	a=rsa-sha256; c=relaxed/relaxed; t=1793453555;
+	a=rsa-sha256; c=relaxed/relaxed; t=1793455075;
 	h=DMARC-Filter:DKIM-Signature:X-CSE-ConnectionGUID:X-CSE-MsgGUID:
 	 X-IronPort-AV:Received:Content-Type:Content-Transfer-Encoding:From:
 	 Mime-Version:Subject:Date:Message-Id:References:Cc:In-Reply-To:To:
 	 X-Mailer;
-	bh=D7LvaphkkZhIV8sWBjj5XfC38F7LHAzLjBycln5nMTQ=;
-	b=bqnqVGcINL0zv9aWcg0KIrKvgwUM2b8SiMhZMQ7FGVY66dBj5St+vQq3al8iFknbASeu
-	 VrZv9q619jcBrQq+NOc3M5kJzSLplmY3RlmJnL7NBfd0s2J9wgTuzisJGuWlYb0KC9Lc3
-	 EIyfLksKCTUxsDk3lUAmXuK4Q4tKDfQbo/8N49/OJTfUSbKXHg3KxBr9rKHMQA6ZVqI1u
-	 jycWIo7y4BlNK7YcB1A01EKvlVkZ/hu7kysN3PyU29xtq6W4o2na327Y1waagFoHnt+UZ
-	 +feUNV+uVb+kdRAWlWs7UktlReAXFTSanejUG1Na/gQwxx2mjR5/GLG2a/HHkJuNpNg==
+	bh=fOxXv8E2gtfOnjk3x7zNBJexiMId+LyvUodoXHe85ug=;
+	b=Fkib1Ygo4+Mbgczu7wTD6/ePmxxXu+HoVg8fdwPIpjZBcYtqO2o1qo7TbGG45GMwCkiB
+	 rwMeR9PwhKeulsPSIE7LOo/I2jXZrjUDaOy9xcVmK++cZa6AJvxYJu9afeyXpTs8Lxgb0
+	 YbAFxzDDyyihxmHgvb/WWOloA563Ev6eBYuEZ/pJWi6R4IliXC1RvXRSEjzGpGD6uPX29
+	 i7QUw21YRSg0Mz7ttR65E/wSfeiCymHHqt6T050h+cts1Bz8S6AGYFldqrrntNOSXnV3v
+	 u8vZy2OSMS8GK4oFtS754J0fr9vnmLAofxndKeAYu3qqABFqoQTQsZA4kjkgyymJUMQ==
 ARC-Authentication-Results: i=1; smtp.subspace.kernel.org; 
 	dmarc=pass header.from=inria.fr;
 	spf=pass smtp.mailfrom=inria.fr;
-	dkim=pass header.d=inria.fr header.i=@inria.fr header.a=rsa-sha256 header.s=dc header.b=p5HdaAwh;
+	dkim=pass header.d=inria.fr header.i=@inria.fr header.a=rsa-sha256 header.s=dc header.b=GVeqTMq4;
 	arc=none smtp.remote-ip=192.134.164.83
 Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BB73D606A31E;
-	Sat, 31 Oct 2026 13:32:32 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org BB73D606A31E
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 31412606A31A
+	for <outreachy@lists.linux.dev>; Sat, 31 Oct 2026 13:57:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org 31412606A31A
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=inria.fr header.i=@inria.fr header.a=rsa-sha256 header.s=dc header.b=p5HdaAwh
+	dkim=pass (1024-bit key, unprotected) header.d=inria.fr header.i=@inria.fr header.a=rsa-sha256 header.s=dc header.b=GVeqTMq4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
   d=inria.fr; s=dc;
   h=content-transfer-encoding:from:mime-version:subject:date:
    message-id:references:cc:in-reply-to:to;
-  bh=D7LvaphkkZhIV8sWBjj5XfC38F7LHAzLjBycln5nMTQ=;
-  b=p5HdaAwhI5g3hTzWI43jKfRzRQZLNw+Bu1TShoYLkXBKR6ktAymmpBBx
-   fVXldhYgKWBQT4XU0y9EvHEQxK8FnDwS5ujelMz1fpD+mBTdk+lwxj9QP
-   sjVG660D6P6mrQqgu/7gm8js0Qm2DbM+nqhLd9j+2iMC+QeUbwM5sH/FH
-   E=;
-X-CSE-ConnectionGUID: 0JLDJ17zQY60Wwg+oM/8bQ==
-X-CSE-MsgGUID: DKW+yWdNSEOI4tCpgy1QHQ==
+  bh=fOxXv8E2gtfOnjk3x7zNBJexiMId+LyvUodoXHe85ug=;
+  b=GVeqTMq4C2CXTE7nugj9JAYLEawtl1s2GBUt+Cluum1pgaQdMlk3FMni
+   1WxOEv9HnkENqw1DHOAXiHAp8etY9sKBrDsXxCk7/n1RlNVvGdO8kzwwM
+   S/RtGZCSHKJ57O1W5mZ20PZMyX3OcHuGsTxHMhrbnPDaGav0fz0m+FbUo
+   c=;
+X-CSE-ConnectionGUID: RGRQesfYQ1iIhcXJlhDCqQ==
+X-CSE-MsgGUID: LzYSmFNGRuu+7UlB+lJRmg==
 Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=Julia.Lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
 X-IronPort-AV: E=Sophos;i="6.27,188,1787004000"; 
-   d="scan'208";a="303148185"
+   d="scan'208";a="303149103"
 Received: from c-76-123-3-53.hsd1.va.comcast.net (HELO smtpclient.apple) ([76.123.3.53])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Oct 2026 14:32:29 +0100
+  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Oct 2026 14:57:50 +0100
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 From: Julia Lawall <Julia.Lawall@inria.fr>
@@ -61,54 +61,64 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 List-Owner: <mailto:outreachy+owner@lists.linux.dev>
 Precedence: list
 Mime-Version: 1.0 (1.0)
-Subject: Re: [PATCH] staging: fbtft: fb_tinylcd: align argument with open parenthesis
-Date: Sat, 31 Oct 2026 09:32:19 -0400
-Message-Id: <9445966A-996E-4F2F-9E8F-E71E9C90A6C5@inria.fr>
-References: <20261031064705.9513-1-mariasheikh812@gmail.com>
-Cc: outreachy@lists.linux.dev, andy@kernel.org, gregkh@linuxfoundation.org,
- dri-devel@lists.freedesktop.org, linux-fbdev@vger.kernel.org,
- linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
- Maria Sheikh <mariasheikh812@gmail.com>
-In-Reply-To: <20261031064705.9513-1-mariasheikh812@gmail.com>
-To: Maria Sheikh <mariasheikh812@gmail.com>
+Subject: Re: [PATCH] nfs: Only define atomic open tracepoints when NFSv4 is enabled
+Date: Sat, 31 Oct 2026 09:57:38 -0400
+Message-Id: <E78430D8-5F7C-47FD-ADE7-6AA995F88A53@inria.fr>
+References: <20261031130419.87555-1-pavankumaryalagada@gmail.com>
+Cc: outreachy@lists.linux.dev, rostedt@goodmis.org, julianbraha@gmail.com,
+ Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
+In-Reply-To: <20261031130419.87555-1-pavankumaryalagada@gmail.com>
+To: pavankumaryalagada@gmail.com
 X-Mailer: iPhone Mail (23E261)
 
 
 
-> On 31 Oct 2026, at 02:47, Maria Sheikh <mariasheikh812@gmail.com> wrote:
+> On 31 Oct 2026, at 09:04, pavankumaryalagada@gmail.com wrote:
 >=20
-> =EF=BB=BFAlign the continuation line of the write_reg() call with the open=
+> =EF=BB=BFFrom: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
+>=20
+> The nfs_atomic_open_enter and nfs_atomic_open_exit tracepoints
+> are used only in fs/nfs/dir.c, but they are defined unconditionally
+> in fs/nfs/nfstrace.h. This causes unused tracepoint warnings
+> when CONFIG_NFS_V4 is disabled.
+>=20
+> Guard both tracepoint definitions in fs/nfs/nfstrace.h with
+> CONFIG_NFS_V4 so they are only compiled when NFSv4 is enabled.
 
-> parenthesis to fix the checkpatch.pl check "Alignment should match open
-> parenthesis".
-
-I believe that this patch had already been proposed by another applicant and=
- rejected. Please check the mailing list archives before sending a patch.
+Please add the suggested information about why removing tracepoint definitio=
+ns is useful.
 
 Julia
 
 >=20
-> Signed-off-by: Maria Sheikh <mariasheikh812@gmail.com>
+> Fixes: 6e0d0be715fe ("NFS: Add event tracing for generic NFS lookups")
+> Signed-off-by: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
 > ---
-> drivers/staging/fbtft/fb_tinylcd.c | 2 +-
-> 1 file changed, 1 insertion(+), 1 deletion(-)
+> fs/nfs/nfstrace.h | 2 ++
+> 1 file changed, 2 insertions(+)
 >=20
-> diff --git a/drivers/staging/fbtft/fb_tinylcd.c b/drivers/staging/fbtft/fb=
-_tinylcd.c
-> index afa8f1c740c5..d58b1247262b 100644
-> --- a/drivers/staging/fbtft/fb_tinylcd.c
-> +++ b/drivers/staging/fbtft/fb_tinylcd.c
-> @@ -38,7 +38,7 @@ static int init_display(struct fbtft_par *par)
->    write_reg(par, 0xE5, 0x00);
->    write_reg(par, 0xF0, 0x36, 0xA5, 0x53);
->    write_reg(par, 0xE0, 0x00, 0x35, 0x33, 0x00, 0x00, 0x00,
-> -               0x00, 0x35, 0x33, 0x00, 0x00, 0x00);
-> +          0x00, 0x35, 0x33, 0x00, 0x00, 0x00);
->    write_reg(par, MIPI_DCS_SET_PIXEL_FORMAT, 0x55);
->    write_reg(par, MIPI_DCS_EXIT_SLEEP_MODE);
->    fsleep(250);
+> diff --git a/fs/nfs/nfstrace.h b/fs/nfs/nfstrace.h
+> index b15c1732c869..1b17e8b02692 100644
+> --- a/fs/nfs/nfstrace.h
+> +++ b/fs/nfs/nfstrace.h
+> @@ -514,6 +514,7 @@ DEFINE_NFS_LOOKUP_EVENT(nfs_readdir_lookup);
+> DEFINE_NFS_LOOKUP_EVENT(nfs_readdir_lookup_revalidate_failed);
+> DEFINE_NFS_LOOKUP_EVENT_DONE(nfs_readdir_lookup_revalidate);
+>=20
+> +#if IS_ENABLED(CONFIG_NFS_V4)
+> TRACE_EVENT(nfs_atomic_open_enter,
+>        TP_PROTO(
+>            const struct inode *dir,
+> @@ -590,6 +591,7 @@ TRACE_EVENT(nfs_atomic_open_exit,
+>            __get_str(name)
+>        )
+> );
+> +#endif /* CONFIG_NFS_V4 */
+>=20
+> TRACE_EVENT(nfs_create_enter,
+>        TP_PROTO(
 > --
-> 2.53.0
+> 2.43.0
 >=20
 >=20
 
