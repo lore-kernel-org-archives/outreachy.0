@@ -1,94 +1,89 @@
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=209.85.218.50
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=74.125.82.54
 ARC-Seal: i=1; d=subspace.kernel.org; s=arc20261015; a=rsa-sha256; cv=none;
-	t=1793429248;
-	b=BLh9kbg6rK5qT0tAObZm2jCvczpF8Xg3ODAWNquxERcfdJHJooTvlU9fSvDxwmGtst3v
-	 G9u+CdTywZxRSA1fESczQgg+ab57h/ZZUCy4dSgAxhNhT+ZI01H8XOk5ctkz3yLThNyli
-	 S+8sd2umIXw3hv8oMoIwJjVgvgjOag8DI06PjPTUVRVOby6ROoLpBTSY0TOEznQWbn1jx
-	 l52Wu6KL4TQPLHwJk/n1KnxgV+RsK09CLy4rFtwHnjoUtzcOVEqC1lDJ4mV1dazW3f71i
-	 rB80SSGTbZP8Pl6JZQ6ZLDlqQbVh1a9paa03W2pQmb8YmjON79o2h2xyYey8CDJTrdw==
+	t=1793451874;
+	b=3QaWoJwSwmFJZ+J1TZUBx0hw8U573nHzMeTrJsyuM50axPmoWAz4G0kgiw/tZOwEyWeI
+	 GPWds6Y48eLrGM0uE04JkuczuycEEgk0uzsON/ICFDvWtzwgr8w1SfbBY7KtCQZTyy2eD
+	 O6ZrDqKKomufi/62/Xa9zc971o0i+kSX8ynCogvZUjZ1hpZIM3Lx+9OUETsRgARRDG/N5
+	 VZGA7GniL+N7IHfXznuiI8yp7TBZXLhi62PzICT5KFE5usRu9bFG1q1ngwGNehJIpx9Sd
+	 Pvg8GnYEx7l8d37fmJzDfikFlcDXhncW/Yve5tg3Wd+YReF9h6FwGTFqJuCOCXVdAJQ==
 ARC-Message-Signature: i=1; d=subspace.kernel.org; s=arc20261015;
-	a=rsa-sha256; c=relaxed/relaxed; t=1793429248;
+	a=rsa-sha256; c=relaxed/relaxed; t=1793451874;
 	h=DMARC-Filter:Received:DKIM-Signature:X-Google-DKIM-Signature:
 	 X-Gm-Message-State:X-Gm-Gg:X-Received:Received:From:To:Cc:Subject:
 	 Date:Message-ID:X-Mailer:MIME-Version:Content-Transfer-Encoding;
-	bh=9U3dWfP9wuIKNIASQMC6j7LlTeXrOraHdMR5EURM28M=;
-	b=eatxFObC6W72Fv5LmL8PIqr7gyhUNFFyMDfEl1MY7NUcWnDWrWXkkJ0aL4tOmCkF+Gob
-	 5ZDYzAqkjCmO5urCCXhjOJoav//hPgcAqiBipBDSY/raYZlR6qc0p/s/orT0kiOz1Z30c
-	 zB/yV+y59wN7oFkyuX84rCJtbHpWV/qchwnX74LAKUnpyzKCHJ+GzesZG3gNDAEcEA0IU
-	 Ls+exAgKSDJUYjqm54tLR0zov4i6Xfab/6Ziu6V9youW129xUGlBgaHWWLzpzG8bOLwTJ
-	 AkSB6+utNb8DCpWews6Zto37LL2z3jFPzzpFD28kmclWltDqAem7rgb3Ea5viAlBF+A==
+	bh=dTcXMZ/cwpfH7imi8hGRW83QiEkYCliZtejgmjMpq2A=;
+	b=XJgy6J+YfZfsdyNgxltWYL4SqbXjjY/sW8UL8UPXaMcU5gPCtvR6Mbos6ESGiQTm4qeU
+	 /tKtVzyCfgMgy7kaC/AeFMtCJf8JEBF4IigR8L87DcdHttZpo0JpjzHS8QZ0dRAfrbwjZ
+	 j9SATQnhtW+x7Ib61zOkStSCfGRk8rSxeWt5TGIKUo5hKOuaoo63lVmFYhoYOMabxUDXU
+	 lTvGYr69ZD7j9D6CE5PB2haH/jPslmodeL9H/D5lPRO+SgrLoIk3MI+Rs/ChEGcuqndp0
+	 cdJdhsYS6ewAuKYpGfqFUuX80ysWWHmz1mStrO0Dv9xfBANurLkzHBfvhvxCyet17UA==
 ARC-Authentication-Results: i=1; smtp.subspace.kernel.org; 
 	dmarc=pass header.from=gmail.com;
 	spf=pass smtp.mailfrom=gmail.com;
-	dkim=pass header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b="CextaM/u";
-	arc=none smtp.remote-ip=209.85.218.50
-Received: from mail-ej1-f50.google.com (mail-ej1-f50.google.com [209.85.218.50])
+	dkim=pass header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=uaBe0v2B;
+	arc=none smtp.remote-ip=74.125.82.54
+Received: from mail-dl1-f54.google.com (mail-dl1-f54.google.com [74.125.82.54])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7B5BD606A31D
-	for <outreachy@lists.linux.dev>; Sat, 31 Oct 2026 06:47:27 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org 7B5BD606A31D
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D219F606A31A
+	for <outreachy@lists.linux.dev>; Sat, 31 Oct 2026 13:04:33 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org D219F606A31A
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=CextaM/u
-Received: by mail-ej1-f50.google.com with SMTP id a640c23a62f3a-c49c32650adso173883066b.0
-        for <outreachy@lists.linux.dev>; Fri, 30 Oct 2026 23:47:27 -0700 (PDT)
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=uaBe0v2B
+Received: by mail-dl1-f54.google.com with SMTP id a92af1059eb24-1846bc43c28so1859238c88.0
+        for <outreachy@lists.linux.dev>; Sat, 31 Oct 2026 06:04:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793429246; x=1794034046; darn=lists.linux.dev;
+        d=gmail.com; s=20260707; t=1793451872; x=1794056672; darn=lists.linux.dev;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=9U3dWfP9wuIKNIASQMC6j7LlTeXrOraHdMR5EURM28M=;
-        b=CextaM/uhnUhvU0XgqLXLOrm2KorM3IwDgZWKwZiNyfa4i2aod8ZsQliiK5NH8bsQl
-         +a6/Jek5nehbMgfl5Tq6O+vifjzRQ7Fb5lKZljR/aJfaaLO9xBiJqrTCBWukbgEfj88u
-         yrDwgS/WJ9y1cMFYyZqFgvF/6JeRdyoI9O0aq8uNRlai4fk2IBTDzIVZWc4Png5wddqV
-         hvJ5L1FdmysOZorNoqRHEY+NKseILhXixTKc635Fx6XHgVHMFCUpAn+S+X1P7bwGv8t1
-         VeuswA8AfUnBTUqaYsauBbjWnqEC5PHTzqYnVUXR7BjVzojgwVkBFIzneTJpZSyBXChl
-         TIlQ==
+        bh=dTcXMZ/cwpfH7imi8hGRW83QiEkYCliZtejgmjMpq2A=;
+        b=uaBe0v2B7cnxyKn3hWLbBpGoVFEpSdUefxDcZ7FwuLqNEvHeaqurN/xOVMX8i+QmWp
+         9dFP3iJIR+CTv7Vgwe05r4hAa1fK3GFZnUFalUUamA3QcHpJp7MsqCmxAOgRTTN8Xjmb
+         Uy/A4dW76QvPpGB1VEUWhk6WpcW6xaXZ881V7wIKZnA014FQAMisIKKdqt8MzBGqfmr1
+         mOOdC5t0Kstr9G/5ns5cqh64tBPIcZg4ce+TsEqeOteDsct3+PwrPf1d73BQo8gu5kz9
+         f/FOAFCK+gbWd847Q0t6b7P9T1+Ze9HiOp7uSM1gSRCKltZlNE7askNWpmvJChCpIAnM
+         cWQw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793429246; x=1794034046;
+        d=1e100.net; s=20260707; t=1793451872; x=1794056672;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=9U3dWfP9wuIKNIASQMC6j7LlTeXrOraHdMR5EURM28M=;
-        b=dbKIAPCI0o2hRvCYmuApnCEsms9GczQi/Gf3AlVMOpmHA73eFDZBFY/On193fFJgyt
-         xtuqq2col5TDHFXwN3mLNU8ePtU5+5sDCzyd0MugERqMPjke8LpgmrsPI0Cqju2BvN0Q
-         qg1AuFqyW4iwSL+ApwOfr9d1BgTYsaOU4zGcgOvbL8hpmFA1gZAsdzQpKkME94txSBPt
-         u4JfaQ8D9olbJijIIwOtJfZuTfDsnYUpzWKlgUwbDDWTldS6vqeHBQ5eD7qO4ZbD7Wsk
-         HG/8Jkj5RgKL8dnnaa96pcIxRgbUslBMuR3qmLtzeLcwlHxqf1h3vdazdEyGht4jvgx7
-         U+7A==
-X-Gm-Message-State: AFq9FYLg8NBCP+zR14HM6JAV+U4hp3La3SIWW4rAFwQMeJM1OwYPjXed
-	cETDzd98oVclAHGGO43e4JIap0ji90APmYctd1gwD72mCaYQjsDgfXTS
-X-Gm-Gg: AYBFou3DyULVLlCx9Qnqxuib2vo90IQG/4pAJcCuTYjDHg2WBHBW4Doyxw48BCZYJMm
-	lPcYzJ4sdb5n8B8thXCIiF4VycOUGYvepyymwLAG946D74ZlzuRVa7xy0wrspNH81iaiqMo2yH3
-	EanYdpmCYyHKRE9DNgOLipk2bvXE0hoaMePVl5Kijbh96/kWQ+aeoTdL6Yj8aO8wfE8+ixbgSp/
-	pphpjWMa/FF2Gg9NqEtQ5wSKk2/57AnFxcKLKMvFX43R4WH0yhgnM8xr90ZpULMF8sRq5X/wieb
-	+shyomURf3ViCY45r4e1Fc8DDZWyvU/S9SxDyLR6iNTRWRqi2Nwl+c7a+zlarmUrapqmpRCvyJ9
-	gqQf3mcCDgVPqBE5HkaC5KmBkOueaLUR3uV6TB37AFu5jqU1SPBnoWOBtdhvByPMBL/6AnjkuMV
-	NH9ytWwpxvmH5x9u3NsthNo112sOEtyxiYDoPbkqOPmeMFj5/QQcTtPL2KfbqjL7tbG1Ek4cah4
-	BswvVUwYxBlmcezz71LT2xUpMTPt+0c4vdthhLJtAKr4BJbU8C5gqXyQVEEAhPpLmHtA1ZCLyu6
-	MxiqgFRSuNbKvG1Bl7UqlIVY7DSczcfe3PUcafZDiY54SEjNN5zn3S19A50Sh130opxbRSIPfZr
-	YFVUbuIzVIxCXQ42sKNVKJ2XeYB0iIrR0b3jgsSWAsHzG6fZk0W7Jdf6brBKPjZQnKa8=
-X-Received: by 2002:a17:907:9346:b0:c49:b9b6:4b5e with SMTP id a640c23a62f3a-c4ca7b1f727mr373328966b.20.1793429245709;
-        Fri, 30 Oct 2026 23:47:25 -0700 (PDT)
-Received: from maria-VMware-Virtual-Platform ([182.186.37.126])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-c4cabf43b19sm145030266b.87.2026.10.30.23.47.22
+        bh=dTcXMZ/cwpfH7imi8hGRW83QiEkYCliZtejgmjMpq2A=;
+        b=J3kijlCSWkRyPmyPC+pwDilnO6etSuQZfhajk7XHq/vCMhTMZNnSFOQrLCjbrh3nG1
+         vzLKTrxFpvmXwvHRM7TStaF5oSJthmPccDeZk1CcGiJv7ZtYiVPpVCJp2g3A8zIeiuIZ
+         J19QNXoeJj1xpM5pjsuaRs7G6Gnee/QwBB8V8Lt59MBdMkMdNo5QaUT/YVBd7c4JbVg2
+         Vh9ZGpgnFTLit6RP1dpGFagFa0p0P4QFqEGD3/TmgStuQzbMOis4DzpG9oAmtPZASc9v
+         xfVebk0EEXExd7dps0FKxBzhc3xcmhPi2cHzme6wScTkLtyBvJmRRJoRG4LONo95CR9c
+         nFgQ==
+X-Gm-Message-State: AFq9FYJ7LrJ+ljZJPK4NsUFJ/04DDfHsXYOvVOdmISU+Wwc5wRzFURev
+	nCWWSFf411mgRkxbmPWU0wpglPK56rpy6c0z/TDDooL2BtLfBUloqujtulb/xmPe
+X-Gm-Gg: AYBFou1NajjL3PYkX7Bub4v8yV4xZliB7MObl5qOjwiVgTweW6AK1lLjHrvUm7t3Xf2
+	NBjoBkYyA6vWvIt2gDH1qwxLUTWzZmV6VSouzihoIcN9Xln+jcwV5gjt5JzIyzftU+ID9ouT4y5
+	ZQSieDkVIOh89l/V33gjDwO2IcuVOj1cxM6pk2YhaoUFhT8fbs/JnMBaVQrzrk9a1bKEHRvFxjv
+	lnM2IrPpuFcRElXqfy1ADWZVVKtoBdpUguIys+posTf20yLBDzdk+hkuR9Fzwg92W5C6zlRMTEO
+	6Bj6Cxnpg+uW+wc/jMe55zGv8lfdTtBGdrzZ/8lrCouwGaJvDAahDsZqwfYMBx1SYIhOIQNAVDx
+	inlRI2sTrn/IA4pOgFG3NAMAXAy+GhrZI0mv9EcDfglT46ZuXja9oNuGDKTwJmbu25fAd6bHctO
+	HPsr/JCwoaiiQX+WSrrgIBrR1j5NytxHWZOsBSlZkbzg0wVJFk1ju4dEwAix8JpXsqso2MzguHS
+	6Hp9ZYrJttOG3h+7NtjxJEWyqbHKTmlIt5eL/EYvPWOxP8sb/doprMa2gwFGLrvrXIQZqX/ahkx
+	RssFO3roU03T+WHaySd1WcQM2lgsx7DXkBWE
+X-Received: by 2002:a05:701b:451b:10b0:1ae:4ead:8cef with SMTP id a92af1059eb24-1ae4ead97a8mr3765424c88.30.1793451872303;
+        Sat, 31 Oct 2026 06:04:32 -0700 (PDT)
+Received: from user.. ([2405:201:c052:b00b:8ff5:62f1:8136:8210])
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1ac192c27cdsm27656529c88.10.2026.10.31.06.04.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 30 Oct 2026 23:47:24 -0700 (PDT)
-From: Maria Sheikh <mariasheikh812@gmail.com>
-To: outreachy@lists.linux.dev,
-	andy@kernel.org,
-	gregkh@linuxfoundation.org,
-	dri-devel@lists.freedesktop.org,
-	linux-fbdev@vger.kernel.org,
-	linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org
-Cc: Maria Sheikh <mariasheikh812@gmail.com>
-Subject: [PATCH] staging: fbtft: fb_tinylcd: align argument with open parenthesis
-Date: Sat, 31 Oct 2026 11:46:59 +0500
-Message-ID: <20261031064705.9513-1-mariasheikh812@gmail.com>
-X-Mailer: git-send-email 2.53.0
+        Sat, 31 Oct 2026 06:04:31 -0700 (PDT)
+From: pavankumaryalagada@gmail.com
+To: outreachy@lists.linux.dev
+Cc: rostedt@goodmis.org,
+	julianbraha@gmail.com,
+	Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
+Subject: [PATCH] nfs: Only define atomic open tracepoints when NFSv4 is enabled
+Date: Sat, 31 Oct 2026 18:34:19 +0530
+Message-ID: <20261031130419.87555-1-pavankumaryalagada@gmail.com>
+X-Mailer: git-send-email 2.43.0
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Post: <mailto:outreachy@lists.linux.dev>
@@ -100,28 +95,42 @@ Precedence: list
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-Align the continuation line of the write_reg() call with the open
-parenthesis to fix the checkpatch.pl check "Alignment should match open
-parenthesis".
+From: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
 
-Signed-off-by: Maria Sheikh <mariasheikh812@gmail.com>
+The nfs_atomic_open_enter and nfs_atomic_open_exit tracepoints
+are used only in fs/nfs/dir.c, but they are defined unconditionally
+in fs/nfs/nfstrace.h. This causes unused tracepoint warnings
+when CONFIG_NFS_V4 is disabled.
+
+Guard both tracepoint definitions in fs/nfs/nfstrace.h with
+CONFIG_NFS_V4 so they are only compiled when NFSv4 is enabled.
+
+Fixes: 6e0d0be715fe ("NFS: Add event tracing for generic NFS lookups")
+Signed-off-by: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
 ---
- drivers/staging/fbtft/fb_tinylcd.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ fs/nfs/nfstrace.h | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/staging/fbtft/fb_tinylcd.c b/drivers/staging/fbtft/fb_tinylcd.c
-index afa8f1c740c5..d58b1247262b 100644
---- a/drivers/staging/fbtft/fb_tinylcd.c
-+++ b/drivers/staging/fbtft/fb_tinylcd.c
-@@ -38,7 +38,7 @@ static int init_display(struct fbtft_par *par)
- 	write_reg(par, 0xE5, 0x00);
- 	write_reg(par, 0xF0, 0x36, 0xA5, 0x53);
- 	write_reg(par, 0xE0, 0x00, 0x35, 0x33, 0x00, 0x00, 0x00,
--		       0x00, 0x35, 0x33, 0x00, 0x00, 0x00);
-+		  0x00, 0x35, 0x33, 0x00, 0x00, 0x00);
- 	write_reg(par, MIPI_DCS_SET_PIXEL_FORMAT, 0x55);
- 	write_reg(par, MIPI_DCS_EXIT_SLEEP_MODE);
- 	fsleep(250);
+diff --git a/fs/nfs/nfstrace.h b/fs/nfs/nfstrace.h
+index b15c1732c869..1b17e8b02692 100644
+--- a/fs/nfs/nfstrace.h
++++ b/fs/nfs/nfstrace.h
+@@ -514,6 +514,7 @@ DEFINE_NFS_LOOKUP_EVENT(nfs_readdir_lookup);
+ DEFINE_NFS_LOOKUP_EVENT(nfs_readdir_lookup_revalidate_failed);
+ DEFINE_NFS_LOOKUP_EVENT_DONE(nfs_readdir_lookup_revalidate);
+ 
++#if IS_ENABLED(CONFIG_NFS_V4)
+ TRACE_EVENT(nfs_atomic_open_enter,
+ 		TP_PROTO(
+ 			const struct inode *dir,
+@@ -590,6 +591,7 @@ TRACE_EVENT(nfs_atomic_open_exit,
+ 			__get_str(name)
+ 		)
+ );
++#endif /* CONFIG_NFS_V4 */
+ 
+ TRACE_EVENT(nfs_create_enter,
+ 		TP_PROTO(
 -- 
-2.53.0
+2.43.0
 
