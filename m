@@ -1,90 +1,61 @@
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=74.125.82.174
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=192.134.164.104
 ARC-Seal: i=1; d=subspace.kernel.org; s=arc20261015; a=rsa-sha256; cv=none;
-	t=1793537927;
-	b=duX38gtcIe79MRwVZVF1FqgP0Mx5R1P+oAzUZluTd7QAixJ2bHoCNyvDsmacaLpvuE0c
-	 KYIZQ6fRwmYd2b6/1vBBmFxLOnbv5kb4b5hr/V5FyiwSgPnNVr+QS6SSPHbRO9cAOVr1Y
-	 +NmcqACO7RLwe8tZ+cbGAPWOMrPfmyGSGNil44tBck8TbagcNmNOSL/JRypK+rlaKDgsC
-	 ThFKZSb8DodP58yXr2NIzxmQ7QjfoZU0Ga8eGmt8KBfKXwzpPRKc2WBBDimbgAXrk5oNV
-	 CGM2rG/1z97ytFYQlZRVDHIvJRihr00cc3PLa/m28H3wCtrzxI+tLEzhDZB4osItLNg==
+	t=1793545400;
+	b=VXUSHos5CRX/6KViPUrZo0gdmFwY/GnzBmS7lDWk+FfTI9ExBCv4p0sgQ9V7RlArQQVa
+	 Y6vazaif/YYjcoPyQ5Ke7xJ4zdzywSL5Ehjfgyaj4mELKIBPWwINqeAgASi4TDtCvPLra
+	 4OH6DdiSeA5IphYKwmtWssFwcgdvK9Zp4GcPuMXeYW+HXrLcHVG7k0qLMxJbnkA5axl29
+	 3yfqa6mC5XMm8OZpcUgZR1LrP8IcTwCim8atp/EsXLJwb6zx3WDUNTGIyDKuK3jQNoytX
+	 iJmL9YnlvogZYwGGh0QTpJHm3CMN26JjQ9Ez0x6SW3HmaKXm1u3MfXajQgyzRBZnSwA==
 ARC-Message-Signature: i=1; d=subspace.kernel.org; s=arc20261015;
-	a=rsa-sha256; c=relaxed/relaxed; t=1793537927;
-	h=DMARC-Filter:Received:DKIM-Signature:X-Google-DKIM-Signature:
-	 X-Gm-Message-State:X-Gm-Gg:X-Received:Received:From:To:Cc:Subject:
-	 Date:Message-ID:X-Mailer:MIME-Version:Content-Transfer-Encoding;
-	bh=kBrM554nRDZeqaMMS+gTRrl9THt/dcYcfIH9FMvdP8I=;
-	b=U1kwcYszaOythqq4yUbw3yWkVZznK2sDA2GOpONp2uXLq6qBMNMIYFx46MSzuySv4soR
-	 3mWt1SuLU6KkGqU5W2ktbTqc8JjWEAaTGh86o8vxH3joWRdnANiAJkc6WhiuRHGDx9AMd
-	 UJOWMk8pddh0y+6DTxCnk0SllDC0z3E8YU9h/oD1ftzL5SU0ojoz8rk6tY7mFDSpE8rKE
-	 VAsuUR9LYOOYAZuL02UIc+N9/7d5zjQ+OYNdJahg0nbKGwlcnTH8z+YECfIT7ZPWEYUfM
-	 VlGib9PNfAJGCrlnsfAdBFfXbElxUiV2vvQOIf0ybRXgN8r6UQ5SdcYx1vv3VrYQAPQ==
+	a=rsa-sha256; c=relaxed/relaxed; t=1793545400;
+	h=DMARC-Filter:DKIM-Signature:X-CSE-ConnectionGUID:X-CSE-MsgGUID:
+	 X-IronPort-AV:Received:Date:From:To:cc:Subject:In-Reply-To:Message-ID:
+	 References:MIME-Version:Content-Type;
+	bh=oSJY2cXD8ZiJr1Gj1vtOx9aKr4eqCoNdm8cwcFBnE6Y=;
+	b=DUqRiMlQwW0nteXHa/MBJmLZWucXDyenmBmcYHs3cVsA0QsfY9GbPBE6EAMtQdLpc4vT
+	 c+tVLQsaf0KG1m3DgUDevSDYvvv5qiCDl/ENnLX4Bwj7+fzNsTnaeAQnQhuxArgQDGLYQ
+	 RRlWdNdZl3ZbuJUfsAkpK1DsLV6xysUDgZvo5MXdpxwOFLdMLAh6hw52QfQiI8RO2A6aq
+	 1XwuRHuWd3hJpQ5vFvEcMSIO7dgF0VacbgjDLRCjPdSy7Nzy7j6DeMOexCutu/n2TAaGP
+	 GqbwIvgI2a1VDaUOrY9rd2oJQAaSGJrxrPc/ZKAAHjsRMnaKjlH40XdTjepXCXCXvrA==
 ARC-Authentication-Results: i=1; smtp.subspace.kernel.org; 
-	dmarc=pass header.from=gmail.com;
-	spf=pass smtp.mailfrom=gmail.com;
-	dkim=pass header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b="VR/4Js66";
-	arc=none smtp.remote-ip=74.125.82.174
-Received: from mail-dy1-f174.google.com (mail-dy1-f174.google.com [74.125.82.174])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	dmarc=pass header.from=inria.fr;
+	spf=pass smtp.mailfrom=inria.fr;
+	dkim=pass header.d=inria.fr header.i=@inria.fr header.a=rsa-sha256 header.s=dc header.b=HTZ3jdwi;
+	arc=none smtp.remote-ip=192.134.164.104
+Received: from mail3-relais-sop.national.inria.fr (mail3-relais-sop.national.inria.fr [192.134.164.104])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3350C606A324
-	for <outreachy@lists.linux.dev>; Sun,  1 Nov 2026 12:58:47 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org 3350C606A324
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6FFAC606A32E
+	for <outreachy@lists.linux.dev>; Sun,  1 Nov 2026 15:03:18 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org 6FFAC606A32E
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=VR/4Js66
-Received: by mail-dy1-f174.google.com with SMTP id 5a478bee46e88-369f33df08eso4350338eec.0
-        for <outreachy@lists.linux.dev>; Sun, 01 Nov 2026 04:58:47 -0800 (PST)
+	dkim=pass (1024-bit key, unprotected) header.d=inria.fr header.i=@inria.fr header.a=rsa-sha256 header.s=dc header.b=HTZ3jdwi
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793537926; x=1794142726; darn=lists.linux.dev;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=kBrM554nRDZeqaMMS+gTRrl9THt/dcYcfIH9FMvdP8I=;
-        b=VR/4Js66GihtCxZI//bUVqV51fy93QFtdK0ESzcW2WxBGhWahI3dNlZcFmBvu5tfCI
-         /EHTVKsjcRRwN12B6a1ddRQFij/QCAy0otKNqBhKVQzwktnkiYzWK6GdLl0iLl2PwOpW
-         f0HNGRTP1KO4BJhdNDKVkwreHBEEAbGmRXX+iVJv+CWRydRV/78SplJ/XIISOGyLAzNP
-         i0w4VckeOPxqUaIsCz+eB/+zngie8B/eVvc8JAGDx0f/Mp7Kwc9WVrAAAo0rEG0Egq3t
-         XNIl0T2YHhS8IkSFXCQ/gUtzXrwhP5Q4jB+AcvMi26Bn3hd31Phz3pNUyeZ/pwPIigDx
-         tSBw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793537926; x=1794142726;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=kBrM554nRDZeqaMMS+gTRrl9THt/dcYcfIH9FMvdP8I=;
-        b=uLtTGjMCFmnUJ0Gmxw7+xsX4gHomrj5XZ9ekVEYeAN3gsYZN5Q751u6RK02aaJzvz0
-         VQMW9RNrq8kwMf8DXMExsertgXNkhLhgrOwzOxa1u4EDgkvykXkKPp2NroM956Ytyg1S
-         OGHCeRh4xEavbxsyiPQgCa+Gpc3/9si2v/GuEq/UXtgGKebnIzqMZvjwUP+sFuQmFQZZ
-         3gHgW5XIy4NHhQO9Sse4+bjD8J6ROVaH7NlTYf2Bm3uaLjDhdkJzAd8IVvpdplyWHT7/
-         SvaZmOp53wm03FcApK/Rynvn5uAJg970JbKHH6G2rJE3GtCQNT9kGtvMFb6TbDmTaFEz
-         pDTA==
-X-Gm-Message-State: AFq9FYJXRMcz7feOu926VFbW63GdgjJesh7KSGEI9TDSfYw3ByIdfywh
-	imI+GnfcoP0LhfGt1Ayy435WIRLssjluDAnnj3pktlTIdiAy4W2zzvU5MQkeH5NMgME=
-X-Gm-Gg: AYBFou3MLQwzIXZVsh7ZPR0dnjQFXUz9VY47MfRbtVZ5zgJXiUZ00/GosTjGOiAm5F4
-	oUXv5DF27uGQhy7aQm2YeSuF+B4o10xA0x/jPD957NIr0DqtkGHXpsO2Br+Z9qlHjZOPcDsI+8F
-	nG6gCwPr2hNucU5uecyYnQ4Pr144Sao8Dss24Pg4UVaIumIW/IvODkVzHon9ASAm4aZzhL3GoLh
-	olqmO1D3vpeFOwWQt5cnQ5tao6PN3q3AFl3TndxDw23HYyHtz23HXIRERf1UPSQeP/OqzzFY7t6
-	/vCctHuCmRKEjcP2L9Lon9kK3AOusfG6DZ8HtfAHRsbQoVncbzyAV1ZWDPN3EO1ImmQWQzz6DDE
-	ZBKW+f9mi4qBD8mBnpwXqRAk3RYxYkyEotwJfDaqgl8FhqbPjQqAmgm5Osi18TP3q2E03aO32Cc
-	PSrRwm/zxRljXHkdQoM9tgsptjB/WYz4QNg+HdvsQoBeuHYBViTQYCAf9xyNzF3n3QQcky+A2u+
-	SdZLJJXk9B+VsWf7FsUiiwtSUrAyU3xTsBywRSmWPZ+2e2YWmeyYUjWHV/OCNTK3IpnH/A7fX35
-	bDOz2NHjRIXtrDIBbcU9YvxxNsZhlIRY7Mbm+POqm8ExFrw2BxOcGZFZ3bRR/2fO7DYaN6wlWSd
-	fFlzv4Wj8YYSMRt+J6ytInT++8w==
-X-Received: by 2002:a05:7022:f908:b0:14c:d84c:7182 with SMTP id a92af1059eb24-1ac5da75597mr9765898c88.22.1793537926085;
-        Sun, 01 Nov 2026 04:58:46 -0800 (PST)
-Received: from localhost.localdomain ([2406:b400:d4:acc8:a024:59b8:c312:eefd])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1ac19f4b08bsm28069908c88.16.2026.11.01.04.58.43
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 01 Nov 2026 04:58:45 -0800 (PST)
-From: Torra Sowmya <sowmyatorra@gmail.com>
-To: outreachy@lists.linux.dev
-Cc: rostedt@goodmis.org,
-	julianbraha@gmail.com,
-	julia.lawall@inria.fr
-Subject: [PATCH] drm/xe: Remove unused xe_vm_restart tracepoint
-Date: Sun,  1 Nov 2026 18:28:08 +0530
-Message-ID: <20261101125808.9770-1-sowmyatorra@gmail.com>
-X-Mailer: git-send-email 2.47.3
+  d=inria.fr; s=dc;
+  h=date:from:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=oSJY2cXD8ZiJr1Gj1vtOx9aKr4eqCoNdm8cwcFBnE6Y=;
+  b=HTZ3jdwiDgU/GTkH46K/Tpni8e5dPdlAKs/8B0T7vwQdTX8NTngK7N2b
+   OTux7XF6z0puRLnoKN07zMByEYHvTjcxCh5abDlii270vc30P3SUznwhl
+   pWC+sP9mSOdIT2xygL7c4FsLB8YIpjBpQKzQilmc5FSBzR45OI0kBOrds
+   w=;
+X-CSE-ConnectionGUID: AYOyAAVGQIqXEzb0/M4uTw==
+X-CSE-MsgGUID: iZp1oOA5RDGcHDUyFY/PJQ==
+Authentication-Results: mail3-relais-sop.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
+X-IronPort-AV: E=Sophos;i="6.27,190,1787004000"; 
+   d="scan'208";a="161413494"
+Received: from 88-188-149-159.subs.proxad.net (HELO hadrien-2.home) ([88.188.149.159])
+  by mail3-relais-sop.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Nov 2026 16:03:17 +0100
+Date: Sun, 1 Nov 2026 16:03:15 +0100 (CET)
+From: Julia Lawall <julia.lawall@inria.fr>
+To: Torra Sowmya <sowmyatorra@gmail.com>
+cc: outreachy@lists.linux.dev, rostedt@goodmis.org, julianbraha@gmail.com
+Subject: Re: [PATCH] drm/xe: Remove unused xe_vm_restart tracepoint
+In-Reply-To: <20261101125808.9770-1-sowmyatorra@gmail.com>
+Message-ID: <73bc6cb3-c1ea-f563-d619-5130a3a3f339@inria.fr>
+References: <20261101125808.9770-1-sowmyatorra@gmail.com>
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Post: <mailto:outreachy@lists.linux.dev>
@@ -94,36 +65,47 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 List-Owner: <mailto:outreachy+owner@lists.linux.dev>
 Precedence: list
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
 
-Commit f3e9b1f43458 ("drm/xe: Remove async worker and rework sync
-binds") removed the call to trace_xe_vm_restart(), but left the
-event definition behind.
 
-Remove the unused definition from xe_trace_bo.h to avoid generating
-code and data for an event that has no callers.
 
-Signed-off-by: Torra Sowmya <sowmyatorra@gmail.com>
----
- drivers/gpu/drm/xe/xe_trace_bo.h | 5 -----
- 1 file changed, 5 deletions(-)
+On Sun, 1 Nov 2026, Torra Sowmya wrote:
 
-diff --git a/drivers/gpu/drm/xe/xe_trace_bo.h b/drivers/gpu/drm/xe/xe_trace_bo.h
-index 86323cf3be2c..fa91dd2b2174 100644
---- a/drivers/gpu/drm/xe/xe_trace_bo.h
-+++ b/drivers/gpu/drm/xe/xe_trace_bo.h
-@@ -228,11 +228,6 @@ DEFINE_EVENT(xe_vm, xe_vm_cpu_bind,
- 	     TP_ARGS(vm)
- );
- 
--DEFINE_EVENT(xe_vm, xe_vm_restart,
--	     TP_PROTO(struct xe_vm *vm),
--	     TP_ARGS(vm)
--);
--
- DEFINE_EVENT(xe_vm, xe_vm_rebind_worker_enter,
- 	     TP_PROTO(struct xe_vm *vm),
- 	     TP_ARGS(vm)
--- 
-2.47.3
+> Commit f3e9b1f43458 ("drm/xe: Remove async worker and rework sync
+> binds") removed the call to trace_xe_vm_restart(), but left the
+> event definition behind.
 
+Please include some information about the amount of memory saved, as in
+Steve's commit in my original mail about tracepoints.
+
+julia
+
+>
+> Remove the unused definition from xe_trace_bo.h to avoid generating
+> code and data for an event that has no callers.
+>
+> Signed-off-by: Torra Sowmya <sowmyatorra@gmail.com>
+> ---
+>  drivers/gpu/drm/xe/xe_trace_bo.h | 5 -----
+>  1 file changed, 5 deletions(-)
+>
+> diff --git a/drivers/gpu/drm/xe/xe_trace_bo.h b/drivers/gpu/drm/xe/xe_trace_bo.h
+> index 86323cf3be2c..fa91dd2b2174 100644
+> --- a/drivers/gpu/drm/xe/xe_trace_bo.h
+> +++ b/drivers/gpu/drm/xe/xe_trace_bo.h
+> @@ -228,11 +228,6 @@ DEFINE_EVENT(xe_vm, xe_vm_cpu_bind,
+>  	     TP_ARGS(vm)
+>  );
+>
+> -DEFINE_EVENT(xe_vm, xe_vm_restart,
+> -	     TP_PROTO(struct xe_vm *vm),
+> -	     TP_ARGS(vm)
+> -);
+> -
+>  DEFINE_EVENT(xe_vm, xe_vm_rebind_worker_enter,
+>  	     TP_PROTO(struct xe_vm *vm),
+>  	     TP_ARGS(vm)
+> --
+> 2.47.3
+>
+>
