@@ -1,90 +1,96 @@
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=74.125.82.182
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=209.85.128.53
 ARC-Seal: i=1; d=subspace.kernel.org; s=arc20261015; a=rsa-sha256; cv=none;
-	t=1793645043;
-	b=buxOFa6/aQQmRBgk+mO7j0mDC9308pJtZ/pMZT2heNU4kVLa+TdsatGNFYaoNIriRAy0
-	 RuV770cnbRTj+fFszLDxUB0pgud/cFg+bMLBnpDRbEObFXLP1625ngKhKKQj1xMN0p9kg
-	 +sWmLaJ1vwDfcyImRmQyZR4lE1nR6BijyShFiWjx7bL+nIpGNRsa9xooiHQ/5E4ZfbfEf
-	 ljnWUoJYevEyv4ZgYNIGktSF12MYccZPrtfkHAsqlbWOLbS8U/gaRjJAi1O9xtPYQ6uWJ
-	 lo94+vO7WyY8ZAYCSlMPAahvYYEgur5Kf9gcX+B70aRjDWWV1I2spqvya94CP5ONGOg==
+	t=1793649220;
+	b=z1nN/K/R+jjG0CwcmYR+Jbcem6mbtJMrw2XF5Yhu5RyGE2g5bUOZujMwEJO8dYBiEpAL
+	 U9tEigkPoi7RJ6ODgWUsm+QFcxh8/+xOpMdMhwet84XLvBm1Okhf4LOcX6saHwwGuJyuD
+	 jx/rk7x2hZEsXpQM6gyITmNRP29IwhwDgHw4S6aBT4rx6AGlaxVYuxtWnkf4HYQIgUd2j
+	 TLa1ExbiUiBvl7cfeveZUdNF4gJucoE0EvqKL97gCWY+ZBXZspoF2AmBTgUhWwn60p9TZ
+	 lHRcSla+TIr3cVPGPMS7R/aOxk0hBQgLs3KkwzjCMuk58pCtN7yhlm04i5PveuFK9ZA==
 ARC-Message-Signature: i=1; d=subspace.kernel.org; s=arc20261015;
-	a=rsa-sha256; c=relaxed/relaxed; t=1793645043;
+	a=rsa-sha256; c=relaxed/relaxed; t=1793649220;
 	h=DMARC-Filter:Received:DKIM-Signature:X-Google-DKIM-Signature:
-	 X-Gm-Message-State:X-Gm-Gg:X-Received:Received:From:To:Cc:Subject:
-	 Date:Message-ID:X-Mailer:MIME-Version:Content-Transfer-Encoding;
-	bh=OkXGErPhmP5eVAxbao2yBu/Rk3POxU4quClJxNwo0dE=;
-	b=cFVEuxAKNHKmm9dd/LeCC/cqDGZQBpLR/9tAuSV0az2as9TqBfut2rWfXjQXBtNC/16t
-	 wd6gpjngEFR4NHY5b/3CVEBya6QPIme0R9ixv/vfG9WzKyV9m5qDOuaK+s6NU0jcZu+zW
-	 0uQrg6PP4+5UxQLTIzVjACEVavJlcbAOfo5b9K2Patinq+O0QxooHJgnmP5iLt52WyoCp
-	 uJiDPKi7WjJShzEZ8gi+jIBZOrX7lbdUz707pXEQV9Ibxf80dGfahI8F7TA/4+sBx8A+s
-	 xFVqmSYD0dcUQcAQo0iWDHaiuXUBGYtN1MDE6LxlmYv4kYZYtY1MmJjSqJpzOHAnUMg==
+	 X-Forwarded-Encrypted:X-Gm-Message-State:X-Gm-Gg:X-Received:Received:
+	 From:To:Cc:Subject:Date:Message-ID:X-Mailer:MIME-Version:
+	 Content-Transfer-Encoding;
+	bh=TT+JdKCO8FQmAWG62bqZ1mtZpW2RojAaKod9k+xaBw0=;
+	b=GL1RiUbKnXT2NZuGo8DGNLSW5gtmVwRZ4Rb2BDsc+sMOGn05HwkzfjgwNvGgDv/1jkC9
+	 KHSlMA7uSyTkhjvJJPP1G3WGup72gKaTKkwMV4fGXuE5tnWpnfomg4+eGUhO/1SwjL0xm
+	 w8WHEYuNz1kcb9gfCSzFfiJCFR3snlcJmhZCLFbGx5tZLq+DLyDEssEFyV0v5KCC3QM3i
+	 7S4R2vov4IZKw4ZnYQUOqagnsxAxGXioLfiJu7Vbq0++xzKELqHs/Rnn+YFMypwkXMGnE
+	 ooOPVHjZ+ElEcSsDZ500CsDUN9PQSjsWInEE0FEg+0xYJnXcZllN3cU/ehZ5q7TLKOA==
 ARC-Authentication-Results: i=1; smtp.subspace.kernel.org; 
 	dmarc=pass header.from=gmail.com;
 	spf=pass smtp.mailfrom=gmail.com;
-	dkim=pass header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=uaNex0CH;
-	arc=none smtp.remote-ip=74.125.82.182
-Received: from mail-dy1-f182.google.com (mail-dy1-f182.google.com [74.125.82.182])
+	dkim=pass header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=ioEO9Uof;
+	arc=none smtp.remote-ip=209.85.128.53
+Received: from mail-wm1-f53.google.com (mail-wm1-f53.google.com [209.85.128.53])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E54C6606A324
-	for <outreachy@lists.linux.dev>; Mon,  2 Nov 2026 18:44:02 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org E54C6606A324
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F1CDE606EEB1
+	for <outreachy@lists.linux.dev>; Mon,  2 Nov 2026 19:53:39 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org F1CDE606EEB1
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=uaNex0CH
-Received: by mail-dy1-f182.google.com with SMTP id 5a478bee46e88-369f33df08eso6585370eec.0
-        for <outreachy@lists.linux.dev>; Mon, 02 Nov 2026 10:44:02 -0800 (PST)
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=ioEO9Uof
+Received: by mail-wm1-f53.google.com with SMTP id 5b1f17b1804b1-4a59100fa83so30741105e9.0
+        for <outreachy@lists.linux.dev>; Mon, 02 Nov 2026 11:53:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793645042; x=1794249842; darn=lists.linux.dev;
+        d=gmail.com; s=20260707; t=1793649218; x=1794254018; darn=lists.linux.dev;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=OkXGErPhmP5eVAxbao2yBu/Rk3POxU4quClJxNwo0dE=;
-        b=uaNex0CHpnn31y9nhw9aYmhVAVkOjfBWILJGVxyduL7p44n5R0FzaWN7ldLKPYl+Dg
-         iiw4C3LgZ+7vE95LvrscGF65Udx2xp7Xzb/OP+YTuVa7C9s+NYXOis4K/tPEWgzTJ64+
-         WykOzP8VV1JVveQ5raY1QuPvC+SkD6+IY0xFkdXXqvymxOdFuUWkTp09+XnNeYQgQ7R2
-         hn37yA7GVhNTqd9He0ABT/e+5aDnCiYWujJ42JlMvXvFDP4rbeokY4tQdAoVswl6zs1P
-         JEf4/Ny+43/WujAcfuAkM2+sw7p6RRnfu2JYeLhsAZHApiq7rE0pi2Tla+AD6GdkV3W7
-         AeFQ==
+        bh=TT+JdKCO8FQmAWG62bqZ1mtZpW2RojAaKod9k+xaBw0=;
+        b=ioEO9Uof/2Um+4+4CQqp9SdR1Wsr0UsZXS+EVax9rNpvlGIVLpz2j97f32W7braXdC
+         rMQLS08RwaCa2RUEUZPjDfBwcj09WvO7gLpLqV4vgXPMPdOHPwXzuJlBifyqY4ZZUc3O
+         pynMsck4cuFdfiyfVoRN3HAVsNsvYKfgLWqRZizB5ddCW9bCEQ5y8wmB6eT9sgOTST6h
+         HwLMgmaRyO8eHUm9UePwYBn+TNW8Yc4Nqv+8hkrndmyIwO5/Jiqyz8M/G7A1GQiG/bkV
+         KgJdy5kRlzijkCdRjuwe8ttl6EkFil8oySULRpMbAXnUdbUMbw60oJZcKjO1GDuWUGeV
+         36qA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793645042; x=1794249842;
+        d=1e100.net; s=20260707; t=1793649218; x=1794254018;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=OkXGErPhmP5eVAxbao2yBu/Rk3POxU4quClJxNwo0dE=;
-        b=OPHc3dYAjo6tqNKKj8iDIeUfcaJEHLeKtSCTnOB9nZQomRQUAm1M+18bWy79TqGA8J
-         jYZ1qGR0HyX5VtMuwcfhS2m4b3FnbQj/0DZ5BAGDR911ejBQ5HvTj9LLarhY9FPZ5PNz
-         UJmA1bJ32as3A+6r+rHynzs+SF8u8MPciQQev4gBe1fBppw7F21UNWyp+o5SMfsw8s/s
-         2xrASGtB9P9bYThEJHB/56PBk9eMDqSlTo5ghwJehRgJZ6tAGaJpTscnxk0QTX9xupX/
-         K6EDnHZFff0ie6vCRtCX5EmfzmoDiIjt9vWtF/jbHYjoUU9QuaytZHg3qrJ6VMYpe54T
-         tsEg==
-X-Gm-Message-State: APuU4Z/DEa9o47wcbb6YAHqmSrQq02ZMrKOtA9Gy7njzPjQgemz4/ilB
-	2f3Yfj5pUcVOKSXwpltG+K0sX53trBzO6w2q7nmxeUPqMxxzUhl+xauk81S40U9PYZ4=
-X-Gm-Gg: AYBFou0UHxdcXmIkMLbKokandbrLQiqo8LKTdOq3sIkWdj7uEfNyv3nhhJ52eNUEM9e
-	K0jCPM670fvilK6FNUodGKPL9Xo2PFsiMuWyoNZ5F3zBnHjyLRPzzU5+7PDkAXcje2BijdYvr1m
-	4RfJLcqISmQcl2mAQCuMBmIAz+5Jj+SrpJo2hmg3q4psRtU0vi6qg8brYNFOzYQ1f/7/AW6sQfL
-	Qi386py7yt8Qgl3dfPH2FuEoBzW0kNQgy8DdfniTHMI3a/G9pkfiqnwLnPRIj7U+9Xa2FhKwerm
-	UWJuRYIIG7B1NsMNYXScocCHrc0oq5lP7BXgPmr0GDfSbbaPQh9ArvLt5TJGHhjCvrjc8HrSAXO
-	jTUqXlehmqWVhyAYyDMa+ggCWTlg1sgH8D/XiSetH2AVqLGch59wRfsYWbnfL7MI31OlLPwNwMX
-	A2PlBlJg77/iM3MyjHw5hi4nuGuyv6W+tyvUH948NAO6rV4Fi0n/PABngsYyfMr2PDTwaDwwb3s
-	5Jfboa3ofeuzzUxnmVA5kW6oZb9KvVGt6BCAo0kNF6+NhxNjlPX7w/A2B34J48oDZC+bcohKl7Z
-	wy+SuR6ogFnQbP1OsQAMtQdLox82DMLjU43Oi/HXy4j9oV/iQNHoxhtY/lYpbtpQRwoeG5OsAYw
-	H7HirMVRYOjRO32vheNXuXf65Ag==
-X-Received: by 2002:a05:7301:b10:b0:368:a825:bf7f with SMTP id 5a478bee46e88-36a42368932mr15750302eec.13.1793645041831;
-        Mon, 02 Nov 2026 10:44:01 -0800 (PST)
-Received: from localhost.localdomain ([2406:b400:d4:acc8:a024:59b8:c312:eefd])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-36a42952e1csm41949704eec.20.2026.11.02.10.43.58
+        bh=TT+JdKCO8FQmAWG62bqZ1mtZpW2RojAaKod9k+xaBw0=;
+        b=bSfdzzbJw85l2SX/Cc+5EOyn6GHaKfJpStnbkvo1dukvpAAoZOYRp0JoUorxV1Ss6y
+         dO7XQdbpi+Z0NEYH9oKI+c4kim2rLVtPoURvPHhTsViC9aaDRdzTiwXM+5SJG5BgrkHP
+         IVhuhc+ed79PB2346Dm0tlVWXnKGEiT2QlbmOAC+PE1u+O4W4n66h3t7RWinab9kJ5c4
+         0CozJdUWXzeFFTj4CeJQ5/oBoTr5ChksUPX97WWqKIJWkHkptwIhEoFOEBzDsi+tu0wu
+         XfaK2o2h/FTRrHZkDs3EF3SsGPOJv+/5FV1ixeoPwhwS3O5s93TbMbA+0jpEezghcoo7
+         uNsA==
+X-Forwarded-Encrypted: i=1; AKwUvBycSsQbSgIWCIu/YMB4PGqR7KnV0ZWw9L65w70q/4otKkx1mk5/SFW3UQ/bU+pID6eN0VPoPam3mlE=@lists.linux.dev
+X-Gm-Message-State: AFq9FYKjjdyuneFZdLO61Qe3rPDoi8AX/pX8zhogZRSAy9ZXWvlVs1HV
+	dI0gM+YSM2JCfMwhkcruC8m10VWU9elgUMX1i88rTOV7scJP0FYK+E8z
+X-Gm-Gg: AYBFou1ml6YZgtNRHRRflsPFeXnae1FGDldMlmfsi3Ut6pYoPwsaeIAhGNGfosMJcDB
+	4Vx5TTsjrgpNRmOWI2vdvlFdfHQDdWVHKKCgsHxgUm44HBY1CNgP9NqyfNYPkZR3AnrVwf9jp6/
+	AQRU43pHiLyO5r78P1ABhC+J9kF1ixYV46iyegKFxYB7sLJHd4fiFo92F+7sld9WwVkzw78xKbd
+	94u0gxUyxfwY0Y1Mu6zJHgppQS9b0f8+MQwl7qZ2xORb4ZCn3V3SV15McUEvq3UaM65WfAFnX4k
+	eU0qLZWjrf5X/kEyykynvtJ3SVPbO83PrCFMaagXliLYBgG0tEvyYa5clLVCTaEmKu3wPWcTUfi
+	Fs6Zl5waX42FG5o+aQmi4J3hX2N6x+dRhLoYjJSfxxEPsdztTmJ+vbqnOpfm/uIF0MJi43P+zWr
+	ALzIX53LqZwLlacCWN/Pz4c0azTAu9MyRJnIrhWIPO5KKrErJEZOlcEf5H7DYbLifQSbY1mzach
+	SWPwZLdg0bFLaqJR4SAoFYdO3NgEaxbEFGQTsAaH1urv1eAgrLGb50DxIWgceLlTGHDA0XhYtG2
+	hTO2bDSexveginH6Mtv2xfjiY116yz7yaq1d1xjD6mSDFqUyYekp2ZXgxsfu2uC7g1KBkeGFb1U
+	GoIex9jk0p/DkWw4JWjtmckkOfjibDoR+B0W8mg==
+X-Received: by 2002:a05:600c:848c:b0:4a1:efd3:9862 with SMTP id 5b1f17b1804b1-4ac1765d977mr237853695e9.21.1793649218121;
+        Mon, 02 Nov 2026 11:53:38 -0800 (PST)
+Received: from x1e ([196.189.152.19])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48e71b727c6sm23542852f8f.16.2026.11.02.11.53.37
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 02 Nov 2026 10:44:01 -0800 (PST)
-From: Torra Sowmya <sowmyatorra@gmail.com>
-To: outreachy@lists.linux.dev
-Cc: rostedt@goodmis.org,
-	julianbraha@gmail.com,
-	julia.lawall@inria.fr
-Subject: [PATCH] drm/xe: Remove unused xe_vma_flush tracepoint
-Date: Tue,  3 Nov 2026 00:11:48 +0530
-Message-ID: <20261102184148.11176-1-sowmyatorra@gmail.com>
-X-Mailer: git-send-email 2.47.3
+        Mon, 02 Nov 2026 11:53:37 -0800 (PST)
+From: Maritu Hone <marehone12@gmail.com>
+To: Johan Hovold <johan@kernel.org>,
+	Alex Elder <elder@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: greybus-dev@lists.linaro.org,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	outreachy@lists.linux.dev,
+	Maritu Hone <marehone12@gmail.com>
+Subject: [PATCH] staging: greybus: uart: fix heap buffer overflow in gb_tty->buffer
+Date: Mon,  2 Nov 2026 22:53:32 +0300
+Message-ID: <20261102195332.19860-1-marehone12@gmail.com>
+X-Mailer: git-send-email 2.43.0
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Post: <mailto:outreachy@lists.linux.dev>
@@ -96,38 +102,73 @@ Precedence: list
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-Commit f3e9b1f43458 ("drm/xe: Remove async worker and rework sync
-binds") removed the async worker and its calls to
-trace_xe_vma_flush(), leaving the event definition unused.
+gb_tty->buffer is allocated once in gb_uart_probe() and reused for
+every outgoing chunk as the backing store for a
+struct gb_uart_send_data_request:
 
-Remove the definition from xe_trace_bo.h to avoid generating code
-and data for an event with no remaining callers.
+	struct gb_uart_send_data_request {
+		__le16	size;
+		__u8	data[];
+	} __packed;
 
-With the tested x86-64 configuration, size reports a reduction of
-452 bytes in xe_trace_bo.o, from 20262 to 19810 bytes: 156 bytes
-in text and 296 bytes in data.
+In gb_uart_tx_write_work():
 
-Signed-off-by: Torra Sowmya <sowmyatorra@gmail.com>
+	request = gb_tty->buffer;
+	...
+	send_size = gb_tty->buffer_payload_max;
+	if (send_size > gb_tty->credits)
+		send_size = gb_tty->credits;
+	send_size = kfifo_out_peek(&gb_tty->write_fifo,
+				   &request->data[0], send_size);
+
+request->data starts 2 bytes (sizeof(request->size)) into
+gb_tty->buffer, and up to buffer_payload_max bytes are written there
+whenever enough data is queued and credits allow it. That needs
+buffer_payload_max + sizeof(struct gb_uart_send_data_request) bytes
+of backing storage, i.e. max_payload bytes.
+
+gb_tty->buffer is allocated with only buffer_payload_max bytes:
+
+	gb_tty->buffer_payload_max = max_payload -
+			sizeof(struct gb_uart_send_data_request);
+	gb_tty->buffer = kzalloc(gb_tty->buffer_payload_max, GFP_KERNEL);
+
+so a full-size write overruns the allocation by exactly
+sizeof(struct gb_uart_send_data_request) (2) bytes, corrupting
+whatever follows it on the heap.
+
+Allocate max_payload bytes instead, which is exactly
+sizeof(struct gb_uart_send_data_request) + buffer_payload_max, so the
+buffer is large enough for the header and the full data payload it is
+used to hold.
+
+Fixes: dd1c64ede97f ("greybus: uart: kmalloc for send_data once only")
+Signed-off-by: Maritu Hone <marehone12@gmail.com>
 ---
- drivers/gpu/drm/xe/xe_trace_bo.h | 5 -----
- 1 file changed, 5 deletions(-)
+ drivers/staging/greybus/uart.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/xe/xe_trace_bo.h b/drivers/gpu/drm/xe/xe_trace_bo.h
-index 86323cf3be2c..72c4107adc13 100644
---- a/drivers/gpu/drm/xe/xe_trace_bo.h
-+++ b/drivers/gpu/drm/xe/xe_trace_bo.h
-@@ -115,11 +115,6 @@ DECLARE_EVENT_CLASS(xe_vma,
- 			      __entry->end, __entry->ptr)
- )
+diff --git a/drivers/staging/greybus/uart.c b/drivers/staging/greybus/uart.c
+index e1b73db6a17c..7bbac2603726 100644
+--- a/drivers/staging/greybus/uart.c
++++ b/drivers/staging/greybus/uart.c
+@@ -842,7 +842,15 @@ static int gb_uart_probe(struct gbphy_device *gbphy_dev,
+ 	gb_tty->buffer_payload_max = max_payload -
+ 			sizeof(struct gb_uart_send_data_request);
  
--DEFINE_EVENT(xe_vma, xe_vma_flush,
--	     TP_PROTO(struct xe_vma *vma),
--	     TP_ARGS(vma)
--);
--
- DEFINE_EVENT(xe_vma, xe_vma_pagefault,
- 	     TP_PROTO(struct xe_vma *vma),
- 	     TP_ARGS(vma)
+-	gb_tty->buffer = kzalloc(gb_tty->buffer_payload_max, GFP_KERNEL);
++	/*
++	 * gb_tty->buffer is reused in gb_uart_tx_write_work() as the
++	 * backing store for a struct gb_uart_send_data_request, whose
++	 * variable-length data[] field holds up to buffer_payload_max
++	 * bytes starting right after the struct's header. The allocation
++	 * therefore needs room for the header plus buffer_payload_max
++	 * bytes of data, i.e. max_payload bytes, not buffer_payload_max.
++	 */
++	gb_tty->buffer = kzalloc(max_payload, GFP_KERNEL);
+ 	if (!gb_tty->buffer) {
+ 		retval = -ENOMEM;
+ 		goto exit_put_port;
 -- 
-2.47.3
+2.43.0
 
