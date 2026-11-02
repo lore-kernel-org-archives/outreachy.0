@@ -1,96 +1,56 @@
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=209.85.221.44
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=216.40.44.11
 ARC-Seal: i=1; d=subspace.kernel.org; s=arc20261015; a=rsa-sha256; cv=none;
-	t=1793631281;
-	b=WmyNukQS5XRiY1nC3MGybEHgPSnKPtyrPRzSRLo3S9dI8USSahTl/2ZYF7PbztF/VZvt
-	 DUiXFk4JM3/xoP4DHVgn6H0sQP1Db4u4M3OQKBynBfbW2tkxm2/NlB9DOC0sfUHGXareU
-	 yU/qZFKgg/4GOtPBA8jHPtKDYIm0GA27BrJFbQq+b7YEfb3q8BrSzzbdyoCYW7DHJR2Vb
-	 E+m/iI/HqAiobUDT3iRTclRieFYZs4rDOTRJ7Uaei4ph8a8Jk8Rr4pLVBBGLCXlyBXL97
-	 uZFamw6OqBrCdWDl4aS0u7mr+IQYcHrl60Cy1E36twakuwv1T3La80m+gzsCmFV+PlQ==
+	t=1793640465;
+	b=ZIleyCIc/jw+dfcatl9M7ebNvNdJ2/06IEilgwprSjIqY8K0lohauaepTjGFZYce8cON
+	 BD/yvsfXaWPMLPJmxs9++mb/7pLtiiFCx950JFaXcFD56MGvVkKPcEbZwfcb3woL5Z5yW
+	 ZiG024J+fJJMmiscHE7k90xwfcIzeuTCqZ7TOL/DVfhIud2tKPva0szf7TABROS/JI6S6
+	 /mJUCb/H8MPFITonn+pruaco3cnSbY2LCwwR6eHaqmbFlGSt8eb+EVpwgTqRvGX25SKaQ
+	 Cb/D04druIBRpoahQuicK5nQsN6BzbLPpnqf0Rb94lD8hsVKiv0EaKRKbKR7qmSp+2Q==
 ARC-Message-Signature: i=1; d=subspace.kernel.org; s=arc20261015;
-	a=rsa-sha256; c=relaxed/relaxed; t=1793631281;
-	h=DMARC-Filter:Received:DKIM-Signature:X-Google-DKIM-Signature:
-	 X-Forwarded-Encrypted:X-Gm-Message-State:X-Gm-Gg:X-Received:Received:
-	 Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
-	 Content-Type:Content-Disposition:In-Reply-To;
-	bh=jHCujAV4TSmNU4uGy8hxkAD9bn+1UUbLxy5pyDl6AaQ=;
-	b=GkEGt5XwUQ44s05xrzwE7lM9LqlNoTl9CaGJcvbDr4y9zCeCFElCMeNhbu6IcYwqlAOM
-	 KCgvojgxLFvsBbm1T8lB704g12Pe1GJYd3O1JLkQC+xR1ulpjeu/frjCjQdapVWWYhj6Y
-	 N9RrPkCs2HzxsELN4b0ATyZuBje3TTqFc3w2+/WBmtu4JUdvPIJmjzgV6b5/r2sVZ+fhm
-	 uKtKGZ7LYdYPPmPBWfItuQLobfrr1hHC6jFCC680iMacdgMgXF0z5ihv2+5+3tlalHk+u
-	 KCNgEkkBawoc8l9f43Qk3OhUi7NEbbuCRtZlmS/cgEZffLIz6uf4mJhPv9YmwgL6uTA==
+	a=rsa-sha256; c=relaxed/relaxed; t=1793640465;
+	h=DMARC-Filter:Received:Received:Date:From:To:Cc:Subject:Message-ID:
+	 In-Reply-To:References:X-Mailer:MIME-Version:Content-Type:
+	 Content-Transfer-Encoding:X-Rspamd-Server:X-Rspamd-Queue-Id:
+	 X-Stat-Signature:X-Spam-Status:X-Session-Marker:X-Session-ID:
+	 DKIM-Signature:X-HE-Tag:X-HE-Meta;
+	bh=RjoyTZJML3c1K2YdL+CERM8hMROoUEuOvlQoiRd69XY=;
+	b=i+YD+Xdgkvw/MRbPh6O8X1M7zNAK1DaOYQhv1mCx4Gqv5rMlR8CgWGSWl+geRJHxhRG/
+	 MXsCVhwoA081Dv3CywxDIED0C1G3hsAXbkd3eLmgvvvNBNiYDs4eV3hh6V8iBJvlyhnCR
+	 oF7vxEXYPqUtkZLzXKx0//FdGFBLr8y65Kec0FLzGUiG1IiSJ09lyoELgQWm9hWehvh6D
+	 gTS1ubzr07qxECHhf387lo2XXnm2UY1QhXd0v/KwWn8sDgReKtw2C9dtbWnkeTAefufI+
+	 JeSHUndj52PvBTQw5QwsTiLBAptb2LI4MXLVAWIYGXQoPc7jUTjlU8Z5CRJO2ooYIKQ==
 ARC-Authentication-Results: i=1; smtp.subspace.kernel.org; 
-	dmarc=pass header.from=gmail.com;
-	spf=pass smtp.mailfrom=gmail.com;
-	dkim=pass header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=Nn+H+qCk;
-	arc=none smtp.remote-ip=209.85.221.44
-Received: from mail-wr1-f44.google.com (mail-wr1-f44.google.com [209.85.221.44])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	dmarc=pass header.from=goodmis.org;
+	spf=pass smtp.mailfrom=goodmis.org;
+	dkim=pass header.d=goodmis.org header.i=@goodmis.org header.a=rsa-sha256 header.s=dkim1 header.b=3QJD3w8P;
+	arc=none smtp.remote-ip=216.40.44.11
+Received: from relay.hostedemail.com (smtprelay0011.hostedemail.com [216.40.44.11])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 76B3E607A89E
-	for <outreachy@lists.linux.dev>; Mon,  2 Nov 2026 14:54:41 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org 76B3E607A89E
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AB878606A585
+	for <outreachy@lists.linux.dev>; Mon,  2 Nov 2026 17:27:44 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org AB878606A585
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=goodmis.org
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=goodmis.org
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=Nn+H+qCk
-Received: by mail-wr1-f44.google.com with SMTP id ffacd0b85a97d-48e0d885929so2568437f8f.3
-        for <outreachy@lists.linux.dev>; Mon, 02 Nov 2026 06:54:41 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793631280; x=1794236080; darn=lists.linux.dev;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=jHCujAV4TSmNU4uGy8hxkAD9bn+1UUbLxy5pyDl6AaQ=;
-        b=Nn+H+qCkc0Zda0vm1J1K8ZTZJJJporbC/2bTUK5Nk3otSUWhCGU8J/2OSbnrXDyr+t
-         LCFdiaPjoJWEyS3XMI6sFfnJjnKHNPpHDjd3hFXmjXB9qettXjGkNjyAlCSwzf/sdBKB
-         IsgEWCwB2USWNmAlWU17WknXMobFQMdA0LxjN10ZWk/QPGtnmzloZuAD+eiRwvzJzlyN
-         6n2pJRNYt+SY2VwFvck7eaGulQxlNJIyCGzqgthodSZopOCdpelqnSiBqAZb9kPzQd7y
-         AiyZXoiOHK73b30vFzGvioqKfITwdyIrLtKN/pdPV1RP98aFy9Cyt0FxCEfCVGUlLxIV
-         W2/g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793631280; x=1794236080;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=jHCujAV4TSmNU4uGy8hxkAD9bn+1UUbLxy5pyDl6AaQ=;
-        b=r8xkLic6ugCckFt5jncjLcNnJjSiJ6opcuyoMAqZNswvyZYMGJSPcVWAgAvdgMn+hT
-         EO4quPoY1I5u/EKNGvBck55pwj6PCKVmAfFvRKl1kTOgWiTrnjEf7a5yczkP/vWUzTIH
-         dYyn6ZPa4ZANd9XXQb2qvRHkCCgmJmkkUkcKnLx8AQcqdJXWYqrFuoDbPi6o8lzuZfRp
-         L9kptXI1PG+nuAqIctmxLmGFE7aHq78WkR7MtzxlQaMqG/0zsSosbnGL1FQlHHtovykx
-         fJ6ve+omJM1TjK1bk4t0+N90rjWshEzxsz7w50aUW2Z9DnMLtj9IupeJvWpw3Lnd+HEW
-         YNbQ==
-X-Forwarded-Encrypted: i=1; AKwUvByUX9rPvwp493UDetR92WRgeD6yRUIxj7bY7qdlaBj5/6I9XSHrbhCGvX46rhLXIM1Qu+8cWzEKtG4=@lists.linux.dev
-X-Gm-Message-State: AFq9FYLXa0js/kA4y4cOeTf6mKCcKbgKY9F0HqbjKsiPovLvo/tlKYR3
-	kgu6ngXq3bXc3nQrtc9oSuOl67l5zSl/+T+VVnaeU4WLOyLObWrRdD3C
-X-Gm-Gg: AYBFou1sMY2jbRQTMig8kgt+33rEuyBjxQ/83OUfrUT1GzgP6CrFcsuNwUT6kITYu+c
-	M+sDRivjVlCCRhoBkq3PwsRABci5L5iJbJoUiHoxgwKxTPNRK9oUwl+3+6v9R4kiD8PK+8AgTWG
-	B5lNC+OjM6Ue62cKvVgDizhvf8qxtChQjv40RgO6Qs4yCPswk+/HpDYECLnZjYyCIi/ScsAz+Gp
-	45Vm3owJuLhxci4iID0DepIw2/CqiukFOzJdWE+/VoWF9eJMltsIUgPfxJlF7JzuF/fbet8Deik
-	2SfyVBLq/Hu5XIeyteNlHspRHXCwVvq0EILTex0pkEai8G+cmD0JGvLtxMb3a8dWbEnHH1JdQgA
-	gwmLjCOcAC1x1QC4h6hFSj+1wAXkrkfhF12p2Ej4G+He4eP2xzUhhx9ZNnpNwpFSVo89MtfxYYh
-	MOD+g7DVefTLBB90UCFAx1PZaW4V5LE0mIRak+VGhsZ5VVQj7fg3jIMZuMZThc+A6zlefXLG57S
-	xoeYegYCZY2N1pf8cOgCyAqFrI+1AANv3L7pFw6/4FqIxFd/rfPFE7ugaI5e03lEu8q51p2Um0W
-	QABcbOlOX/SJFvoXyc/HekqSj330Ytopa/4xxqPOQi9Sgs+/k0YJoKuOeKNrxQByoA+3/aeQavs
-	c4hkjr4lnwDRZCsKk9YZcDVfY5SFNQRpoS+lfmoKi+D55CoyEfG/cRhKxDk5Xx1kV8a0=
-X-Received: by 2002:a05:600c:638f:b0:4a2:c2b:a91b with SMTP id 5b1f17b1804b1-4ac17d168a6mr229177725e9.10.1793631279890;
-        Mon, 02 Nov 2026 06:54:39 -0800 (PST)
-Received: from localhost ([2c0f:3d00:6be:8900:ce5e:9212:ea4b:f30])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4ac09ad5ff8sm195665515e9.4.2026.11.02.06.54.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 02 Nov 2026 06:54:39 -0800 (PST)
-Date: Mon, 2 Nov 2026 17:54:35 +0300
-From: Dan Carpenter <error27@gmail.com>
-To: Maritu Hone <marehone12@gmail.com>
-Cc: vireshk@kernel.org, johan@kernel.org, elder@kernel.org,
-	gregkh@linuxfoundation.org, greybus-dev@lists.linaro.org,
-	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org,
-	outreachy@lists.linux.dev
-Subject: Re: [PATCH] staging: greybus: fw-management: validate firmware_tag
- is NUL-terminated
-Message-ID: <auikK_2xehWSG4eS@stanley.mountain>
-References: <20261102141221.87646-1-marehone12@gmail.com>
+	dkim=pass (1024-bit key, unprotected) header.d=goodmis.org header.i=@goodmis.org header.a=rsa-sha256 header.s=dkim1 header.b=3QJD3w8P
+Received: from omf11.hostedemail.com (lb01a-stub [10.200.18.249])
+	by unirelay02.hostedemail.com (Postfix) with ESMTP id 4448412015C;
+	Mon,  2 Nov 2026 17:27:43 +0000 (UTC)
+Received: from [HIDDEN] (Authenticated sender: rostedt@goodmis.org) by omf11.hostedemail.com (Postfix) with ESMTPA id 9061E2002C;
+	Mon,  2 Nov 2026 17:27:41 +0000 (UTC)
+Date: Mon, 2 Nov 2026 12:27:40 -0500
+From: Steven Rostedt <rostedt@goodmis.org>
+To: Julia Lawall <julia.lawall@inria.fr>
+Cc: Temitope obabi <obabitemitope765@gmail.com>, outreachy@lists.linux.dev,
+ julianbraha@gmail.com
+Subject: Re: [PATCH] rxrpc: Remove unused rxrpc_drop_ack tracepoint
+Message-ID: <20261102122740.4a0add43@gandalf.local.home>
+In-Reply-To: <9935ee97-6f95-8e8c-5ff-27332a393521@inria.fr>
+References: <20261102093350.36811-1-obabitemitope765@gmail.com>
+	<9935ee97-6f95-8e8c-5ff-27332a393521@inria.fr>
+X-Mailer: Claws Mail 3.20.0git84 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Post: <mailto:outreachy@lists.linux.dev>
@@ -100,56 +60,54 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 List-Owner: <mailto:outreachy+owner@lists.linux.dev>
 Precedence: list
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20261102141221.87646-1-marehone12@gmail.com>
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Rspamd-Server: rspamout07
+X-Rspamd-Queue-Id: 9061E2002C
+X-Stat-Signature: jpd6ip38q65y9htk5diio63en8e68p5z
+X-Session-Marker: 726F737465647440676F6F646D69732E6F7267
+X-Session-ID: U2FsdGVkX1+Z+r+X/1SkpWPLDix2eCEPT3lt6N5Sjz8=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=goodmis.org; h=date:from:to:cc:subject:message-id:in-reply-to:references:mime-version:content-type:content-transfer-encoding; s=dkim1; bh=RjoyTZJML3c1K2YdL+CERM8hMROoUEuOvlQoiRd69XY=; b=3QJD3w8Pnr+2ssQ2BF8L36W9hyRTWdUsS7Jr7B+ynaeb7C37u6KE7cEwmR0lIPGADQQayNxVUMhLmhbqaYXGxFZN5gzuk+PeDC6zb104R5Bsf4a3TiVQeQCiadeUplHaEbOEsJLWXx74em4leICectd2azxOQELRUV3Yn62zArk=
+X-HE-Tag: 1793640461-859317
+X-HE-Meta: U2FsdGVkX1+ObXGlmtzKSUHMz6OGtmHRW3Q3mnhyINVexTGAAhS2OQd50qpkDxC2aySIY8h4xn1OSH14Uxrw9qeuWi33Sx2PqRHCTr1bm1bk8cG/lMaZzXmo7+V2zAdf1RbVNPsAY5F7ryvg/3Cjt5OwsJ4FzCsaX4s626aPOp632DA9d8Ay7eLlZMu2woUQMQztwBDrtWB4TpxfnVcK4VBMWmzkr989400hgoFuV5baSeu3u8HMdYAhOjc1v2ap30/5xWwFgzhpZCX0w8e830t6zNAzJrrsmjgcfAfjkzVwoC+q63w2ZrUUg0+/Z5lmlpZDXdtgWzxtmt8mTa/e0s0flrqL3588
 
-On Mon, Nov 02, 2026 at 05:12:21PM +0300, Maritu Hone wrote:
-> fw_mgmt_ioctl() copies struct fw_mgmt_ioc_get_backend_version,
-> struct fw_mgmt_ioc_intf_load_and_validate and
-> struct fw_mgmt_ioc_backend_fw_update directly from userspace via
-> copy_from_user(). Each of these contains a fixed-size
-> firmware_tag[GB_FIRMWARE_U_TAG_MAX_SIZE] array that is never checked
-> for NUL-termination before being used.
+On Mon, 2 Nov 2026 10:58:11 +0100 (CET)
+Julia Lawall <julia.lawall@inria.fr> wrote:
+
+> On Mon, 2 Nov 2026, Temitope obabi wrote:
 > 
-> While the array is eventually copied into a Greybus request via
-> strscpy_pad(), which safely bounds its read and always NUL-terminates
-> its destination, three error paths print the original, unterminated
-> userspace buffer directly with "%s":
+> > The only caller of trace_rxrpc_drop_ack() was removed by
+> > commit 5e6ef4f1017c ("rxrpc: Make the I/O thread take over the call and local processor work").
+
+Note, this patch should probably contain a Fixes tag with the above. Also,
+line wrap the change log to at most 76 bytes. Naming a commit in the change
+log should still line wrap. Although, lines in a Fixes tag do not line wrap.
+
+> > The tracepoint has had no users since, so remove its definition.
+> >
+> > Tracepoints that are defined take up around 5K each, even if they are not used. Remove it.  
 > 
->   fw_mgmt_backend_fw_version_operation():
->     dev_err(..., "failed to get version of %s backend firmware (%d)\n",
->             fw_info->firmware_tag, ret);
-
-The strscpy_pad() function returns -E2BIG if the string is too large
-so if "fw_info->firmware_tag" is too large then it will never reach this
-printk().
-
->     dev_err(..., "Firmware with tag %s is not supported by Interface\n",
->             fw_info->firmware_tag);
+> It is not clear what "it" refers to.  Tracepoints is plural, so it can't
+> be that.
 > 
->   fw_mgmt_backend_fw_update_operation():
->     dev_err(..., "backend %s firmware update request failed (%d)\n",
->             tag, ret);
+> Also, a question for Steven, is the 5K just the code size or is the
+> concern that data is allocated at runtime as well, even if the tracepoint
+> is not used?
 
-Same for this one as well so these are all false positives.
+It is a combination of code and data. It could be even more with allocated
+data for each tracepoint after boot. I just look at what gets placed in the
+text and data sections to get to the 5K. It's an approximate size, as each
+tracepoint has different amount of data they take up.
 
 > 
-> If a caller supplies exactly GB_FIRMWARE_U_TAG_MAX_SIZE non-NUL bytes,
-> "%s" has no terminator inside the array and reads past it into
-> adjacent kernel stack memory until it happens to find a zero byte,
-> leaking that memory into dmesg.
+> > Signed-off-by: Temitope obabi <obabitemitope765@gmail.com>
+> > ---
+> > I used AI assistance (Claude) while preparing this patch. I checked that there are no callers of the tracepoint, found the commit that removed the last call, and built net/rxrpc with CONFIG_AF_RXRPC=m.  
 > 
-> Reject the ioctl up front when firmware_tag is not NUL-terminated,
-> mirroring the existing check already used for the equivalent
-> Greybus-module-supplied field in fw_download_find_firmware().
-> 
-> Fixes: 013e66537273 ("greybus: fw-management: Add firmware-management protocol driver")
-> Signed-off-by: Maritu Hone <marehone12@gmail.com>
+> This seems to say that you used AI to find that there are no callers of
+> the tracepoint.  Was that really necessary?
 
-If this were a real bug then this wouldn't be the correct Fixes
-tag.
+Yeah. None of this work should require any use of AI. It's a learning
+process to know the kernel. AI would basically take away what you learn.
 
-regards,
-dan carpenter
-
+-- Steve
