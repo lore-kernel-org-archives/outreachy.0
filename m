@@ -1,56 +1,89 @@
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=216.40.44.11
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=209.85.221.42
 ARC-Seal: i=1; d=subspace.kernel.org; s=arc20261015; a=rsa-sha256; cv=none;
-	t=1793640465;
-	b=ZIleyCIc/jw+dfcatl9M7ebNvNdJ2/06IEilgwprSjIqY8K0lohauaepTjGFZYce8cON
-	 BD/yvsfXaWPMLPJmxs9++mb/7pLtiiFCx950JFaXcFD56MGvVkKPcEbZwfcb3woL5Z5yW
-	 ZiG024J+fJJMmiscHE7k90xwfcIzeuTCqZ7TOL/DVfhIud2tKPva0szf7TABROS/JI6S6
-	 /mJUCb/H8MPFITonn+pruaco3cnSbY2LCwwR6eHaqmbFlGSt8eb+EVpwgTqRvGX25SKaQ
-	 Cb/D04druIBRpoahQuicK5nQsN6BzbLPpnqf0Rb94lD8hsVKiv0EaKRKbKR7qmSp+2Q==
+	t=1793644943;
+	b=V8Y3CzfUY1lvWBx7dFJlaBYJle4YaPjKSVQP/Sy/fe2Smwwod8AqKjAYO5fQMQqR6BSi
+	 oVzHN5jR/xQaf1Silhohf+vGVy1yq5RgZ/5fI5uNq/nXXmXGM2vEcmOPy3RSKnxE2JwCT
+	 VKe6rOQ21ocS3+Mitv2gGPzFZ2qW2gaMPwL+ZhaPijAsHNcGwAu66IkZlRtKHEowyLTUD
+	 o7BDDR674u0FOJIhqEAC663TeOGEiKIgmwPV+NedWiSvKICvGYIv7QzIA/ig2m5lN/j8T
+	 ZehGolkHpsN2Luxe5+TCe1IX0r5qiBfhzNkcbE0nFaGl0vxjhK3H2+P2z5MAiRhE7Mw==
 ARC-Message-Signature: i=1; d=subspace.kernel.org; s=arc20261015;
-	a=rsa-sha256; c=relaxed/relaxed; t=1793640465;
-	h=DMARC-Filter:Received:Received:Date:From:To:Cc:Subject:Message-ID:
-	 In-Reply-To:References:X-Mailer:MIME-Version:Content-Type:
-	 Content-Transfer-Encoding:X-Rspamd-Server:X-Rspamd-Queue-Id:
-	 X-Stat-Signature:X-Spam-Status:X-Session-Marker:X-Session-ID:
-	 DKIM-Signature:X-HE-Tag:X-HE-Meta;
-	bh=RjoyTZJML3c1K2YdL+CERM8hMROoUEuOvlQoiRd69XY=;
-	b=i+YD+Xdgkvw/MRbPh6O8X1M7zNAK1DaOYQhv1mCx4Gqv5rMlR8CgWGSWl+geRJHxhRG/
-	 MXsCVhwoA081Dv3CywxDIED0C1G3hsAXbkd3eLmgvvvNBNiYDs4eV3hh6V8iBJvlyhnCR
-	 oF7vxEXYPqUtkZLzXKx0//FdGFBLr8y65Kec0FLzGUiG1IiSJ09lyoELgQWm9hWehvh6D
-	 gTS1ubzr07qxECHhf387lo2XXnm2UY1QhXd0v/KwWn8sDgReKtw2C9dtbWnkeTAefufI+
-	 JeSHUndj52PvBTQw5QwsTiLBAptb2LI4MXLVAWIYGXQoPc7jUTjlU8Z5CRJO2ooYIKQ==
+	a=rsa-sha256; c=relaxed/relaxed; t=1793644943;
+	h=DMARC-Filter:Received:DKIM-Signature:X-Google-DKIM-Signature:
+	 X-Gm-Message-State:X-Gm-Gg:X-Received:Received:From:To:Cc:Subject:
+	 Date:Message-ID:X-Mailer:MIME-Version:Content-Transfer-Encoding;
+	bh=9ujouwqjLzG8fYSIkA2s99VHJAJxX5OE5Cl6m5JGnwA=;
+	b=S0h5y3xQN86EOIRKiqz89LgZBd6VtfLxf0vLXFk1tGHOPcb1SSzQwjuV875xB90CQ5wD
+	 Rx8UbqpCgCcAyqE7g5iVCMxipLPAJgoihDmVVbSK8SY1jX9MFteI/+8UHiL8LTdjL60Zz
+	 fC0YRZ5rXkN08zAay58CkvzQlKPlTIx+glB4zJtnNJDucMDw3geKS5qilW6PhexOvQCqK
+	 8FxaiHL9Xyk8KSN5CU+bULhLJskb88+cfi0f0I37Q0a4pJudmkpXWopRzqHbuzadYelW/
+	 +6HGXLtPFoEetAKdKQQY0T8C7Yd+tyct7ufVQrDUXoJmhhq/reN8r8NizASqfmOBvOA==
 ARC-Authentication-Results: i=1; smtp.subspace.kernel.org; 
-	dmarc=pass header.from=goodmis.org;
-	spf=pass smtp.mailfrom=goodmis.org;
-	dkim=pass header.d=goodmis.org header.i=@goodmis.org header.a=rsa-sha256 header.s=dkim1 header.b=3QJD3w8P;
-	arc=none smtp.remote-ip=216.40.44.11
-Received: from relay.hostedemail.com (smtprelay0011.hostedemail.com [216.40.44.11])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	dmarc=pass header.from=gmail.com;
+	spf=pass smtp.mailfrom=gmail.com;
+	dkim=pass header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=yW79pt41;
+	arc=none smtp.remote-ip=209.85.221.42
+Received: from mail-wr1-f42.google.com (mail-wr1-f42.google.com [209.85.221.42])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AB878606A585
-	for <outreachy@lists.linux.dev>; Mon,  2 Nov 2026 17:27:44 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org AB878606A585
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=goodmis.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=goodmis.org
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 23B82606A32D
+	for <outreachy@lists.linux.dev>; Mon,  2 Nov 2026 18:42:22 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org 23B82606A32D
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=goodmis.org header.i=@goodmis.org header.a=rsa-sha256 header.s=dkim1 header.b=3QJD3w8P
-Received: from omf11.hostedemail.com (lb01a-stub [10.200.18.249])
-	by unirelay02.hostedemail.com (Postfix) with ESMTP id 4448412015C;
-	Mon,  2 Nov 2026 17:27:43 +0000 (UTC)
-Received: from [HIDDEN] (Authenticated sender: rostedt@goodmis.org) by omf11.hostedemail.com (Postfix) with ESMTPA id 9061E2002C;
-	Mon,  2 Nov 2026 17:27:41 +0000 (UTC)
-Date: Mon, 2 Nov 2026 12:27:40 -0500
-From: Steven Rostedt <rostedt@goodmis.org>
-To: Julia Lawall <julia.lawall@inria.fr>
-Cc: Temitope obabi <obabitemitope765@gmail.com>, outreachy@lists.linux.dev,
- julianbraha@gmail.com
-Subject: Re: [PATCH] rxrpc: Remove unused rxrpc_drop_ack tracepoint
-Message-ID: <20261102122740.4a0add43@gandalf.local.home>
-In-Reply-To: <9935ee97-6f95-8e8c-5ff-27332a393521@inria.fr>
-References: <20261102093350.36811-1-obabitemitope765@gmail.com>
-	<9935ee97-6f95-8e8c-5ff-27332a393521@inria.fr>
-X-Mailer: Claws Mail 3.20.0git84 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=yW79pt41
+Received: by mail-wr1-f42.google.com with SMTP id ffacd0b85a97d-48c4d99c32bso2322117f8f.1
+        for <outreachy@lists.linux.dev>; Mon, 02 Nov 2026 10:42:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1793644941; x=1794249741; darn=lists.linux.dev;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=9ujouwqjLzG8fYSIkA2s99VHJAJxX5OE5Cl6m5JGnwA=;
+        b=yW79pt41BGqHYn/ksLoSf6u+PBgSit/6cqhPfrgjL15BNYzkcctoIcUGg5bCecZq2z
+         6EEBbm6j9m8S0X9y5T6grrWyYzEr+mqOkwXAx4v0JrGvpr0cSoeRVMbfWsUglw5vbQCs
+         1v00kGBfXE8SraFwTcd6t4Sn+36pBXUKC+ky2TDhsyUElIa3EnJ6vuVXX79BHagQoOIi
+         pokOyy1UchpYM9yQoTqovEUIQQ7XPBRvXDigBLg1HhAkmClDNcO5o224/d5aLEEjX7K/
+         KvGFG9bP4xe0xmEPUovMSFHA5c3P/dZzpuyevi5UP5jpf6yEnlchJnie/hg/GUbbgWml
+         iFyw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1793644941; x=1794249741;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=9ujouwqjLzG8fYSIkA2s99VHJAJxX5OE5Cl6m5JGnwA=;
+        b=lNPOSz0clpRcGCemhaT9OtH+9HYXxCHt+WBn+zSZY/mc3eqJ8uDI6cj9QB3C0X/kAW
+         H1FzqhHIK+bosGEWUanl+jkMi1SL/o2HcGOcDimBExrczPd4MLQON3BliI6y9rh7UU4J
+         PnB20IdMSN4PQyp8RrKaVyUNqGiAJDM0kTNiUWWJhqzhq0uszPFjsbJOEGZJVjGRxzo7
+         mWNfLl160pmkJ9hgbztU4YUY8jaR2VBwA9YDkM+1x2IIluBjS/4S/MWG24vi6SmUZtHH
+         jKoAkTtAz4nhS43XQhTQI5Ezx93zCnH11xNBSTKDRjzN6RubtjFnT+ahNi64786Zo0MM
+         tK1g==
+X-Gm-Message-State: APuU4Z/Cft/iuh/pq2+MudOvhHZNZb3qU4FA0FTYa39OQsXzffz3sg0w
+	WuMLW3rQd8JDhejRMAIfyuzbcf6q/8JX15q8POSZd+pZpLz+uqhnT0kSbxNUug==
+X-Gm-Gg: AYBFou3LyyfBwlXzkpSVtZE3hZM7ziHH0VdVMWTFfLt7X2MJiFDYa0lihqbrltam2Eo
+	QHiBErlCSBhovfTBFiF4seSku31G1bl16zrC83/dRWcU1+FAPqR4uoinLnPwOa5woEPyYb8vJlr
+	zw4vhHBck2MScJoMeEiKIR5Z5HdR6ci8PaQ4ZTRZjHLiXBfGTGNNGxMJrTLh/0957foDluiYmNG
+	sHafSkBwgPIT5VQ4PP0g6fcTBmUhQdgM/verEl1WJzKuzIZ1Smdg2VDn+QEEkhPHRuwRSYZTzaI
+	T3isStR2JVRm81RRcxZJzElXs1lKAgZkLbHRn0c0qs/Ny5KaI/2h8aDOvJRCxyUvUEEHh9YMkc0
+	Coy8dDN8vzcIYm3vaoUPf9JWwWOXSHHI3KpUrhd1OWLJPVDYXBuydThmVe07I6qq7EsFnR0lV9S
+	fxuaF26cyBVwI0leeUc0uo1j5A5dyU8HjpJlQnMdplbnjXHhsT2Ev+bRMiJcivOiz4g5+Muxwmp
+	V7H50VG1gVnYSgoWCP+F5X4vM8LZLXLK3MSx6POwQhypmVhA2f+YsEzv0T/I3rNAndlhlOyOJ15
+	ZJq7jKy4xH95g0ZHb2jjJKXuQQ8uN29VOMcMG7yCJSC+Dz+IJ6XInjyuvw==
+X-Received: by 2002:adf:e3cf:0:b0:48e:69ff:b8a3 with SMTP id ffacd0b85a97d-48e6e500986mr17154816f8f.38.1793644941212;
+        Mon, 02 Nov 2026 10:42:21 -0800 (PST)
+Received: from DESKTOP-0KSTGNI.localdomain ([197.52.161.162])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48e71b723bfsm20045474f8f.15.2026.11.02.10.42.19
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 02 Nov 2026 10:42:20 -0800 (PST)
+From: Temitope obabi <obabitemitope765@gmail.com>
+To: outreachy@lists.linux.dev
+Cc: rostedt@goodmis.org,
+	julianbraha@gmail.com,
+	Temitope obabi <obabitemitope765@gmail.com>
+Subject: [PATCH v3] rxrpc: Remove unused rxrpc_drop_ack tracepoint
+Date: Mon,  2 Nov 2026 20:38:46 +0200
+Message-ID: <20261102183847.38109-1-obabitemitope765@gmail.com>
+X-Mailer: git-send-email 2.53.0
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Post: <mailto:outreachy@lists.linux.dev>
@@ -60,54 +93,67 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 List-Owner: <mailto:outreachy+owner@lists.linux.dev>
 Precedence: list
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Rspamd-Server: rspamout07
-X-Rspamd-Queue-Id: 9061E2002C
-X-Stat-Signature: jpd6ip38q65y9htk5diio63en8e68p5z
-X-Session-Marker: 726F737465647440676F6F646D69732E6F7267
-X-Session-ID: U2FsdGVkX1+Z+r+X/1SkpWPLDix2eCEPT3lt6N5Sjz8=
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=goodmis.org; h=date:from:to:cc:subject:message-id:in-reply-to:references:mime-version:content-type:content-transfer-encoding; s=dkim1; bh=RjoyTZJML3c1K2YdL+CERM8hMROoUEuOvlQoiRd69XY=; b=3QJD3w8Pnr+2ssQ2BF8L36W9hyRTWdUsS7Jr7B+ynaeb7C37u6KE7cEwmR0lIPGADQQayNxVUMhLmhbqaYXGxFZN5gzuk+PeDC6zb104R5Bsf4a3TiVQeQCiadeUplHaEbOEsJLWXx74em4leICectd2azxOQELRUV3Yn62zArk=
-X-HE-Tag: 1793640461-859317
-X-HE-Meta: U2FsdGVkX1+ObXGlmtzKSUHMz6OGtmHRW3Q3mnhyINVexTGAAhS2OQd50qpkDxC2aySIY8h4xn1OSH14Uxrw9qeuWi33Sx2PqRHCTr1bm1bk8cG/lMaZzXmo7+V2zAdf1RbVNPsAY5F7ryvg/3Cjt5OwsJ4FzCsaX4s626aPOp632DA9d8Ay7eLlZMu2woUQMQztwBDrtWB4TpxfnVcK4VBMWmzkr989400hgoFuV5baSeu3u8HMdYAhOjc1v2ap30/5xWwFgzhpZCX0w8e830t6zNAzJrrsmjgcfAfjkzVwoC+q63w2ZrUUg0+/Z5lmlpZDXdtgWzxtmt8mTa/e0s0flrqL3588
+Content-Transfer-Encoding: 8bit
 
-On Mon, 2 Nov 2026 10:58:11 +0100 (CET)
-Julia Lawall <julia.lawall@inria.fr> wrote:
+The only call to trace_rxrpc_drop_ack(), in rxrpc_send_ACK(), was removed
+by commit 5e6ef4f1017c ("rxrpc: Make the I/O thread take over the call and
+local processor work"). The tracepoint is no longer reached by any caller.
 
-> On Mon, 2 Nov 2026, Temitope obabi wrote:
-> 
-> > The only caller of trace_rxrpc_drop_ack() was removed by
-> > commit 5e6ef4f1017c ("rxrpc: Make the I/O thread take over the call and local processor work").
+Removing this tracepoint avoids keeping unused tracing code and makes the
+code easier to maintain. Each defined tracepoint also takes up around 5K of
+code and data, even when it is never used.
 
-Note, this patch should probably contain a Fixes tag with the above. Also,
-line wrap the change log to at most 76 bytes. Naming a commit in the change
-log should still line wrap. Although, lines in a Fixes tag do not line wrap.
+Fixes: 5e6ef4f1017c ("rxrpc: Make the I/O thread take over the call and local processor work")
+Signed-off-by: Temitope obabi <obabitemitope765@gmail.com>
+---
+Changes in v3:
+- Added a Fixes tag.
+- Wrapped the commit message at 76 characters.
+- Clarified that the 5K refers to both code and data.
 
-> > The tracepoint has had no users since, so remove its definition.
-> >
-> > Tracepoints that are defined take up around 5K each, even if they are not used. Remove it.  
-> 
-> It is not clear what "it" refers to.  Tracepoints is plural, so it can't
-> be that.
-> 
-> Also, a question for Steven, is the 5K just the code size or is the
-> concern that data is allocated at runtime as well, even if the tracepoint
-> is not used?
+ include/trace/events/rxrpc.h | 29 -----------------------------
+ 1 file changed, 29 deletions(-)
 
-It is a combination of code and data. It could be even more with allocated
-data for each tracepoint after boot. I just look at what gets placed in the
-text and data sections to get to the 5K. It's an approximate size, as each
-tracepoint has different amount of data they take up.
+diff --git a/include/trace/events/rxrpc.h b/include/trace/events/rxrpc.h
+index 56dc9b614071..ec145da21ca8 100644
+--- a/include/trace/events/rxrpc.h
++++ b/include/trace/events/rxrpc.h
+@@ -1837,35 +1837,6 @@ TRACE_EVENT(rxrpc_send_ack,
+ 		      __entry->serial)
+ 	    );
+ 
+-TRACE_EVENT(rxrpc_drop_ack,
+-	    TP_PROTO(struct rxrpc_call *call, enum rxrpc_propose_ack_trace why,
+-		     u8 ack_reason, rxrpc_serial_t serial, bool nobuf),
+-
+-	    TP_ARGS(call, why, ack_reason, serial, nobuf),
+-
+-	    TP_STRUCT__entry(
+-		    __field(unsigned int,			call)
+-		    __field(enum rxrpc_propose_ack_trace,	why)
+-		    __field(rxrpc_serial_t,			serial)
+-		    __field(u8,					ack_reason)
+-		    __field(bool,				nobuf)
+-			     ),
+-
+-	    TP_fast_assign(
+-		    __entry->call	= call->debug_id;
+-		    __entry->why	= why;
+-		    __entry->serial	= serial;
+-		    __entry->ack_reason	= ack_reason;
+-		    __entry->nobuf	= nobuf;
+-			   ),
+-
+-	    TP_printk("c=%08x %s %s r=%08x nbf=%u",
+-		      __entry->call,
+-		      __print_symbolic(__entry->why, rxrpc_propose_ack_traces),
+-		      __print_symbolic(__entry->ack_reason, rxrpc_ack_names),
+-		      __entry->serial, __entry->nobuf)
+-	    );
+-
+ TRACE_EVENT(rxrpc_retransmit,
+ 	    TP_PROTO(struct rxrpc_call *call,
+ 		     struct rxrpc_send_data_req *req,
+-- 
+2.53.0
 
-> 
-> > Signed-off-by: Temitope obabi <obabitemitope765@gmail.com>
-> > ---
-> > I used AI assistance (Claude) while preparing this patch. I checked that there are no callers of the tracepoint, found the commit that removed the last call, and built net/rxrpc with CONFIG_AF_RXRPC=m.  
-> 
-> This seems to say that you used AI to find that there are no callers of
-> the tracepoint.  Was that really necessary?
-
-Yeah. None of this work should require any use of AI. It's a learning
-process to know the kernel. AI would basically take away what you learn.
-
--- Steve
