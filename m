@@ -1,90 +1,91 @@
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=209.85.128.52
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=74.125.82.182
 ARC-Seal: i=1; d=subspace.kernel.org; s=arc20261015; a=rsa-sha256; cv=none;
-	t=1793847795;
-	b=t+FZoir/lmlM8hSu9/gQ61LNC3OS1/WKSE9c01mlPbQhORIPWLjqiCpCMQIvEKYFyN/t
-	 MMEtvGb+xo7YL+QLmjD5kYAn4vA7LFv0gm8XV8Sf9Y3+VMDG18XtHwAZ49gSGK4k/UBYC
-	 3/fp/DYtwsOvzSOPWFC1xMRkYUtsDFiJ55+g6gtasos4fGuU0cjN6Rm/JJJSMj4/t19tL
-	 gh1yeGSUYWe3qxjEsoYfeneix3jVqeV2Scjy9GMq+XHC+4DJKzgNvdU711irgmJWQ/8As
-	 soliF5wW0BbT0hncTD2VUvRPYConVv2WaeBUIb5Xo4/kQV35iS31WJS5t0aOdni0k5Q==
+	t=1793873573;
+	b=zwuEeAyBsoMgyWN2umYpcEZM3WoccxtrHIRwQEr2Rl4Z7ubLbcG05ZKldn75ORuHt7Y/
+	 OcHHPabr1sZORZPQwl1mSMyr7ZJ8bJUIdLMq9BSqPayNAkBVoiewrOj2b75JjZdKjd6ca
+	 XovArdc1ToIzxRwpRp5kHAmq2O/KTkaIJ9S3W/tr8Ej9fQjTTp0c6Bu1J4NIOZcUfUOEn
+	 NkOg0RsNLeAJSu8ra1Fy7jM3TxXXFNOXxnNLZkbPjw2fDs+oAQGPVkKhj8dfPuCSaZRj0
+	 4jDjUnvi7+z+4kNYn8pb8UULF812XSL+kzNDuUke80Yo79EmljVSgj6UctAdG0YfTeA==
 ARC-Message-Signature: i=1; d=subspace.kernel.org; s=arc20261015;
-	a=rsa-sha256; c=relaxed/relaxed; t=1793847795;
+	a=rsa-sha256; c=relaxed/relaxed; t=1793873573;
 	h=DMARC-Filter:Received:DKIM-Signature:X-Google-DKIM-Signature:
 	 X-Gm-Message-State:X-Gm-Gg:X-Received:Received:From:To:Cc:Subject:
 	 Date:Message-ID:X-Mailer:MIME-Version:Content-Transfer-Encoding;
-	bh=+XgAKvL9Yz88WJI2U+RHkRWBYREJXUrZL2P4iN0ZY3c=;
-	b=sCWrh1TfZ/inONyv074w5dSmoCUM5hOr954nYzEZiAuHgHV/g3Xk8XUgLiLwoAWi7u18
-	 PfTNNa6/LcN5ryEC29M4pVQ9ovXUmiWEpjfOQVKK/usCxfKhJWnanIu2K1LOAMA+ECJTD
-	 Y8Qrl98iuFyRBuWxSGtYpj0QaGJKaxrRhosw+aov502grrr5Nq5Q95/PM15UTReMIPWGJ
-	 84vord19oyAb3mtZ449E6Xj7RLehQALRu0UaLzh26u7+OAX35iPSNUMQi2+S1UA4jPlJo
-	 qtryKuvRus5bknEeHXHLSIAxXx22Crai8ySQlNGoSwQGVtXgtwL4L6fB2smKAW6zI2A==
+	bh=P+/zfjidL1R10zub9C45JZCt5+i82Kyb9zsDu0eixEE=;
+	b=RrpDGM7lswqDZULF/NSGzi6xC+5Vb5DTae7X1pofK2vycfXK9g/cStMqe3DQRXOX2D1O
+	 qNooTE0MBm8fJTYsr1HZ1fMqAfZc6qynLbZp/zejkK8NefAl3aJoBj3mxif1fbOza+Mh4
+	 UU6NIfnlyWcz5nVmtS3UBXe+0mvkcmVgv92Byv7zg/Hx6S5abalr6DBfbsc1jWyH5zHtF
+	 Q9+4EofPoKC3NE0RvkRcshHRCG7QO44znbBqAqHFjJfxV6KKxjosrrlf2BOHDuBwfseDq
+	 143c7cD9RTI676Zuz9x5z2ULhOZrUVgBbSD3k1JcF38Pio/MjVwHDvrXiD16kdtvjEA==
 ARC-Authentication-Results: i=1; smtp.subspace.kernel.org; 
 	dmarc=pass header.from=gmail.com;
 	spf=pass smtp.mailfrom=gmail.com;
-	dkim=pass header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=KrT+HdkG;
-	arc=none smtp.remote-ip=209.85.128.52
-Received: from mail-wm1-f52.google.com (mail-wm1-f52.google.com [209.85.128.52])
+	dkim=pass header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b="Uhil/rYd";
+	arc=none smtp.remote-ip=74.125.82.182
+Received: from mail-dy1-f182.google.com (mail-dy1-f182.google.com [74.125.82.182])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5F0DB606A31B
-	for <outreachy@lists.linux.dev>; Thu,  5 Nov 2026 03:03:15 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org 5F0DB606A31B
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C5B4F606EE89
+	for <outreachy@lists.linux.dev>; Thu,  5 Nov 2026 10:12:52 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org C5B4F606EE89
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=KrT+HdkG
-Received: by mail-wm1-f52.google.com with SMTP id 5b1f17b1804b1-4ac95761c85so9671755e9.2
-        for <outreachy@lists.linux.dev>; Wed, 04 Nov 2026 19:03:15 -0800 (PST)
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=Uhil/rYd
+Received: by mail-dy1-f182.google.com with SMTP id 5a478bee46e88-36661f953e4so2325176eec.1
+        for <outreachy@lists.linux.dev>; Thu, 05 Nov 2026 02:12:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793847794; x=1794452594; darn=lists.linux.dev;
+        d=gmail.com; s=20260707; t=1793873572; x=1794478372; darn=lists.linux.dev;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=+XgAKvL9Yz88WJI2U+RHkRWBYREJXUrZL2P4iN0ZY3c=;
-        b=KrT+HdkGAgi8ylK+rCjolParKb5wZPtFPvKJFOa3SN8Sf/h5LbyNhBGwNct5NTrA75
-         Fgxz76e46T7xQrPo/Y3brUHHJGjncEXSBq6Cw8nf1HXBnRfcpOyWrJH2APiAkhdVnl//
-         jasuB+0exLTG3f1MvMcBmJQoP6tCYDhDqr9a2ZOZCGkZ6y8h6S3YTpR+q0RVhDO9kNnC
-         b7jtRn2/rIDagXkMO14LfNoPtQ1mAhlcXps+bfCOy6FUVUGc4YBB2d2v63ZIGyFu+ZNA
-         bQGaXuDGG4u2r9UX9HaFlFljsQpwxy0g5j0HysXX0P+bCNLd3ut9a2cAEck4Fv76oTEN
-         cXgA==
+        bh=P+/zfjidL1R10zub9C45JZCt5+i82Kyb9zsDu0eixEE=;
+        b=Uhil/rYdzzdzznA7I/mc+Av9KMnDeZU712gSpRiyB1WDvIQPgEJeBJGRH2woXW4VGR
+         0ekpp4UGYw6wV7W6sCE2vLsFj9wr+X1JW50hpZCIs8+6hTOZhd1PZga3bbqNDpiUgD9l
+         VqBTPav8KN6uI9lkhSoDwu8zTCt9tn2uaTqbrosONni+yxCKir38ja+rNkklfzA/2uN+
+         feF05TqjpV3PgoRiVWuZb/GieGVJ9EhxH+oIopiRz3P/ePRPsgWPDuuwMbcGJMR/u3nO
+         7K9ZSCiMf9dQx6kSXOtoQacEz8GWZU3P+5HhO5dOLEgIB4FrYt73tl69WqSBrL9VoITx
+         wjqg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793847794; x=1794452594;
+        d=1e100.net; s=20260707; t=1793873572; x=1794478372;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=+XgAKvL9Yz88WJI2U+RHkRWBYREJXUrZL2P4iN0ZY3c=;
-        b=Q97MuFqEiVFhceV6BHjN9HAVNJy20SDv9K4K0/OR1JgK3w+Oj4DqvdPfpiRRA5B1Y2
-         riM0fUdGiY9nn+5t6BdovxOj/Jj+dsIu3+ttMYhPYrM12JduhsMAIM2qk+tzph7BSHrP
-         DOFx+mskYPGGdZE6DXMEdH3f42Kt7gEmOzcfSJec5RF9HIcpHC+tVMEj95VTPkSJ+Xyj
-         kubEj2FAkmC9jaoESgIFzhfckazl8BOpS/bzSYaL3rc1K256zIhyU1bFhlw8xmnFqhrI
-         1voVUzE31UcC6kg2dBxh2oplg6fvUk+G9TKHSGWwXHYzZqrTb8lU4sJF1SUzBx5a43tw
-         2RMw==
-X-Gm-Message-State: APuU4Z+ituFrnLgQVrFuTAbabVpearlG551LrH7wKIPykN5qriWRyMqL
-	Jy5hDNa1s1cadSUIuW838IM8IAUD1pE8sHtPF4Rsz6FY+OnRH+z+cb7j
-X-Gm-Gg: AYBFou3W0TezqwFj0fvEyABPS5XfnCrGeXAhZHla5lkfb6ElyRD2PKIS4Yjf0gLSV0H
-	ynW5IR6z82TdQl/UL1dRVNKg5bF/+43ShikdULNmaUpMU40gPPEATVheuGHGH+cGs32AuUUkI6p
-	VdTFoveWKLyLU/eggNg/z9kM6QZvof5bfWaaajfOgsscn0vjjgREY16/EB5bn59DbZPffH3U6yE
-	PVO8D0u4G9pvVlBlf2beinwSp5eyWZZeJfIjecWx5KT+Qnpt8Amu8n9l43/DJXHafOlZMhauzYG
-	UiHT7faC2AeX5XK+q/1x76fe9/vgOdv6DswyxEZOj4osD89J6XvPuYFYJ+waVR2h0jazB1DSYQ5
-	aKJ+ynB53pOOOwv3AJ5vNuVw9ofUuSc+0ItoIAjpzHdccVQ4ca8LDHpPf7rK6ykEaIt5Be/6cv/
-	srbJkTlgZOszXN/7y5nhaddaenoXcNofGR7nas30jIuQCuieuHRLnV7ayeEGh5jZdToZKvgaRsS
-	iEbZFaMceqC8enXhNDbnEcUjqFlnN9dwk6a6dSVALc1romdi+fbBu8qVbXkdirlgugupfOt/3CT
-	cElCZVg0/Khk1zutjNLsB4Pk/SRHMIZlQYFJ/B1dKAKX4el58YGjRmDJRrI+/2an/EXMGIjO3TE
-	xdR7yBmUqYnFHa0xAlhgpJi2RvAY2I5LpC5Z+H7Ans3GRqBz/E1T98ofG3ojwiCYMe70JhhrXYC
-	ECscAT8RiUYoOJ
-X-Received: by 2002:a05:600c:8b61:b0:4a2:1398:dd05 with SMTP id 5b1f17b1804b1-4ac17752ee4mr365377435e9.16.1793847793414;
-        Wed, 04 Nov 2026 19:03:13 -0800 (PST)
-Received: from maria-VMware-Virtual-Platform ([187.55.86.118])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4b57317cae5sm43662175e9.12.2026.11.04.19.03.11
+        bh=P+/zfjidL1R10zub9C45JZCt5+i82Kyb9zsDu0eixEE=;
+        b=HS48PQJnnqyhmRIYN0jY8qGJ/lzZClr3pCM8EXcXoKoNAPS+iLgQYvvwJY36ydMrc2
+         IpGniXQY+WnQtafWUFiTJ8DXc4qGLxmuBLLl3v8S7rdwK1ZsHy8DRzTmBiHuril8strF
+         flOWzKfNELvxFzxbo4311Rwuwx7KxurcCSxdMClgSxGQee9NOEVIVmk+1ISudilMM48o
+         ydywtQOu1hZFA2F8ZqA2+3Su/NRK5Qmpv8Rjb8YTFuzy4oyDhh2fu5UXTjGRla2y8pt7
+         X7n4gRo10XS9VYPpqzTy3w9hnoNQxkseTi4Onn2PDqyJHp5O6+AgDwBJo/og5WodFAdm
+         0Eng==
+X-Gm-Message-State: APuU4Z92bIbGfMY+5abpNChKkVnZo7q2gu+TNYXlzBgSmtCX3pxaUI95
+	9NYzsJ9e6+fTOTwEg7hFx0K2qQ0MNEIdt/r2qeZLgI95dq1S+yTLohg0dxIffjAJu/w=
+X-Gm-Gg: AYBFou2kf6sSRwNRAlTSp8zNP330FV2LQt+VzpkfBgp19Pzc+UewM6ST47t8DEcJVEj
+	FvWtiNueGVuQSFLF65fDw0UtHWalu6wyhjv2rGaHGNCeLhL8gp2I0fLpbnX8FmPUDpab1AZfvs+
+	jyrn0PGVFlIrelxbK3sFhJyeHsDZZIgAFP1cirJqJorm73SbD5TpRGE4ljao7tNkEy3iHAF1lts
+	CarChjDJ7c+J4ra7FLb92JTo2/bL/r8cN8Dy9/2j+nuhLeXc2o7LY/vI6x+P36UZ10qamXa1Lj3
+	CmEoDh/JPVq+OwTrWKbPwXY56bOYty6rPm89byjR0mE9SceVlku/C5PXp7QP549DphrvHeXMhYO
+	lehF7X5tdaKRMwy+O2pqylasWlMyZvsBHmNKhtUJsbcOG2qmMx0QSuY0SV73qDS5VXt0DJv7AJC
+	ii5VFJDe0bLV9wFu4SjcITstjvsXNyaX5m4i8sWbvgTMLLrdYOb8EWb6IIL4hpa6RtCevkyhnwH
+	lrGBctnEjvFY1ExADtP68RqCcq2qTQQd8s9HtpckACiZlXG6oczve4+8xbUSLKK35m61UzbmByL
+	Vj/sLJ/wMk1wIwoMBk5zgxfpL0YBmWNFYwnLnoDJIyMDZEltbV4=
+X-Received: by 2002:a05:7301:d589:b0:36c:9e26:88b6 with SMTP id 5a478bee46e88-36c9e268949mr9074147eec.9.1793873571639;
+        Thu, 05 Nov 2026 02:12:51 -0800 (PST)
+Received: from Anonymous.localdomain ([223.181.63.2])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-36ca38a6d3dsm18812234eec.7.2026.11.05.02.12.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Nov 2026 19:03:12 -0800 (PST)
-From: Maria Sheikh <mariasheikh812@gmail.com>
-To: outreachy@lists.linux.dev,
-	rostedt@goodmis.org,
-	julianbraha@gmail.com
-Cc: Maria Sheikh <mariasheikh812@gmail.com>
-Subject: [PATCH] sunrpc: Remove unused rpc_socket_reset_connection tracepoint
-Date: Thu,  5 Nov 2026 08:02:57 +0500
-Message-ID: <20261105030258.48868-1-mariasheikh812@gmail.com>
+        Thu, 05 Nov 2026 02:12:51 -0800 (PST)
+From: Hussain Sitamouwala <husainsitamuwala21@gmail.com>
+To: outreachy@lists.linux.dev
+Cc: parthiban.veerasooran@microchip.com,
+	christian.gromm@microchip.com,
+	gregkh@linuxfoundation.org,
+	linux-staging@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	Hussain Sitamouwala <husainsitamuwala21@gmail.com>
+Subject: [PATCH] staging: most: video: document lock fields
+Date: Thu,  5 Nov 2026 10:12:22 +0000
+Message-ID: <20261105101222.5478-1-husainsitamuwala21@gmail.com>
 X-Mailer: git-send-email 2.53.0
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
@@ -97,32 +98,40 @@ Precedence: list
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 
-Tracepoint definitions consume kernel memory even when they are not
-used. The rpc_socket_reset_connection tracepoint has had no callers
-since commit 4efdd92c9211 ("SUNRPC: Remove TCP client connection reset
-hack") removed the code that used it, but its definition was left
-behind.
-Remove unused definition. This reduces the size of sunrpc.ko by 628
-bytes.
+Fix checkpatch.pl checks:
 
-Fixes: 4efdd92c9211 ("SUNRPC: Remove TCP client connection reset hack")
-Signed-off-by: Maria Sheikh <mariasheikh812@gmail.com>
+CHECK: spinlock_t definition without comment
+CHECK: struct mutex definition without comment
+
+Add a comment to each lock in struct most_video_dev describing what it
+protects. No functional change.
+
+Signed-off-by: Hussain Sitamouwala <husainsitamuwala21@gmail.com>
 ---
- include/trace/events/sunrpc.h | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/staging/most/video/video.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/include/trace/events/sunrpc.h b/include/trace/events/sunrpc.h
-index ff855197880d..a0d02d735a7c 100644
---- a/include/trace/events/sunrpc.h
-+++ b/include/trace/events/sunrpc.h
-@@ -950,7 +950,6 @@ DECLARE_EVENT_CLASS(xs_socket_event_done,
- DEFINE_RPC_SOCKET_EVENT(rpc_socket_state_change);
- DEFINE_RPC_SOCKET_EVENT_DONE(rpc_socket_connect);
- DEFINE_RPC_SOCKET_EVENT_DONE(rpc_socket_error);
--DEFINE_RPC_SOCKET_EVENT_DONE(rpc_socket_reset_connection);
- DEFINE_RPC_SOCKET_EVENT(rpc_socket_close);
- DEFINE_RPC_SOCKET_EVENT(rpc_socket_shutdown);
+diff --git a/drivers/staging/most/video/video.c b/drivers/staging/most/video/video.c
+index 3a0445ff62f4..d60be8a741ed 100644
+--- a/drivers/staging/most/video/video.c
++++ b/drivers/staging/most/video/video.c
+@@ -33,14 +33,14 @@ struct most_video_dev {
+ 	bool mute;
  
+ 	struct list_head pending_mbos;
+-	spinlock_t list_lock;
++	spinlock_t list_lock; /* protects pending_mbos */
+ 
+ 	struct v4l2_device v4l2_dev;
+ 	atomic_t access_ref;
+ 	struct video_device *vdev;
+ 	unsigned int ctrl_input;
+ 
+-	struct mutex lock;
++	struct mutex lock; /* serialization lock used by the V4L2 core */
+ 
+ 	wait_queue_head_t wait_data;
+ };
 -- 
 2.53.0
 
