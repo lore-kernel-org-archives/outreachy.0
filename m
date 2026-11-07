@@ -1,62 +1,54 @@
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=192.134.164.83
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=216.40.44.11
 ARC-Seal: i=1; d=subspace.kernel.org; s=arc20261015; a=rsa-sha256; cv=none;
-	t=1794075646;
-	b=X7Tk7QXPTN1EwphxxGjOg3SlkZM3sLJT0JnmfbYcb4y2gKx+2KrVn74kmx1VWILGUTYW
-	 gwdcvePmcpdvEdOIGyC7E9nJKzKq5wf4LbCKcLF3Q/J4fg6i3dz9TTeznZIE6BX0NBSvO
-	 3+utftLsdneQawyxPKuk/dmHzUtAHpPI8ABsFAPnAK3LHh9Ku94bm63jPA84XqA4E2NqN
-	 lLLA/ot5I4H16Gh+xceISj1GB+qy3pr3yZhhITRW9naTAXtjTW6GgJ4+jiQOLi+mVyJoq
-	 /IrKQz2NA6KK58DUIeNoZgo2YsReNPzRX8y33dVCBTNGUKfpaM0IVa5eAFR+mX9ve0Q==
+	t=1794075655;
+	b=ma458QUxeGE73oG7C5V4F8tGkRwoBoaFb8+FH5UdwCzRY+DxVXdfg2TSntxAnzDAkJGe
+	 Llkau8rxGLUrO4n4TxMkc9K0DhOLEwDRqegQMcWe6r3HTzXNYTkI2sY7/wruhtPcfm9nE
+	 1rC8PrlCRpCqMsVmL2U862hUqJtRyq4vJ5eJ+tC3fZekoyx1z8zIi0z+R/yMgY2Xn5Moa
+	 gKWl6wOzW7LMVUqPn0lEduCvypIydl1jIJ2ru5GXWxa8tq0FzzsiHm3rWT2ELpbySTvIx
+	 DtOnKAj/JeDXRMP4xoobWiMEn/werLf/uK77Mk3lCcKEbIXyKXOxe9+Dkbf0qy1H0Dg==
 ARC-Message-Signature: i=1; d=subspace.kernel.org; s=arc20261015;
-	a=rsa-sha256; c=relaxed/relaxed; t=1794075646;
-	h=DMARC-Filter:DKIM-Signature:X-CSE-ConnectionGUID:X-CSE-MsgGUID:
-	 X-IronPort-AV:Received:Date:From:To:cc:Subject:In-Reply-To:Message-ID:
-	 References:MIME-Version:Content-Type;
-	bh=+M7HEl2reaNNIQSe0UOTzqpDOtyrqDjmg5K1zpNBsE8=;
-	b=IKin1EUdt7jKA9PBC9KUABYeFWnuT1/j3Jn+H4bfFaigWaYnWmaz1tuCCvbpKVBOoNXe
-	 iN0t4DzoWkP6sFRxwW+mEGwTpSV7491pjlzcfB3xCepTZnx8UremRyM6UvnsjQ0VHDo+5
-	 0E6s7I3MoY/XaONBJ2u/vmHE1pcKC1G9b23VNXRviE3cyK9CECozuxnhl+IYC7N9AquNu
-	 Wo+i5dxh4uoAHPW68hCdYE0wNV30P/TrzyKRolDnB430N4Zq0SEqX4TkDbmsL2N3F76Mf
-	 VI7814v4jJKY5uqACvUEAtpCRxAnwW/wEaH0F63NoUepwJExjqojY9ujz9w0mQTkAlg==
+	a=rsa-sha256; c=relaxed/relaxed; t=1794075655;
+	h=DMARC-Filter:Received:Received:Date:From:To:Cc:Subject:Message-ID:
+	 In-Reply-To:References:X-Mailer:MIME-Version:Content-Type:
+	 Content-Transfer-Encoding:X-Stat-Signature:X-Rspamd-Server:
+	 X-Rspamd-Queue-Id:X-Spam-Status:X-Session-Marker:X-Session-ID:
+	 DKIM-Signature:X-HE-Tag:X-HE-Meta;
+	bh=zuON+gv5Oqn11SGxoLEH/MA3sUurHyokAlzX4VaqqGg=;
+	b=HWb9rth7IAQ8dhfKrbKpBmGA7RE0Rc2chwuRSwZyvAmQ6N5A1+6oqGkqLdMuU+PinaI7
+	 56xIBbOjcCI0vvv4S56C76hm8/I4GBkOL6yRUQQC8bLesL4qhjT3vSAO5w669B5Km5nES
+	 Ei/2L50ikNSK0U8y+vvWzeldtS3UTw1yB6s2p1pRgb9Pq6DU2aZhUbA8sWOO4dKllkY2q
+	 anteNb3/E0o8gAb73dEv5iHsqTd1R6p0Q/aYfk2DxVw2gf3imPToYFtARuC2guE+Ix2JT
+	 E/LRgJZh4VjvR73BAUAR4ryEhSz7J1ZxL+27Gx1avGuZM85D3qmjE1jpiEU8jONlgeg==
 ARC-Authentication-Results: i=1; smtp.subspace.kernel.org; 
-	dmarc=pass header.from=inria.fr;
-	spf=pass smtp.mailfrom=inria.fr;
-	dkim=pass header.d=inria.fr header.i=@inria.fr header.a=rsa-sha256 header.s=dc header.b="S/5XFYW0";
-	arc=none smtp.remote-ip=192.134.164.83
-Received: from mail2-relais-roc.national.inria.fr (mail2-relais-roc.national.inria.fr [192.134.164.83])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	dmarc=pass header.from=goodmis.org;
+	spf=pass smtp.mailfrom=goodmis.org;
+	dkim=pass header.d=goodmis.org header.i=@goodmis.org header.a=rsa-sha256 header.s=dkim1 header.b=yAsX9yFe;
+	arc=none smtp.remote-ip=216.40.44.11
+Received: from relay.hostedemail.com (smtprelay0011.hostedemail.com [216.40.44.11])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D6E64606A326
-	for <outreachy@lists.linux.dev>; Sat,  7 Nov 2026 18:20:43 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org D6E64606A326
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=inria.fr
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=inria.fr
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3D670606A326
+	for <outreachy@lists.linux.dev>; Sat,  7 Nov 2026 18:20:53 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org 3D670606A326
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=goodmis.org
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=goodmis.org
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=inria.fr header.i=@inria.fr header.a=rsa-sha256 header.s=dc header.b=S/5XFYW0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-  d=inria.fr; s=dc;
-  h=date:from:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=+M7HEl2reaNNIQSe0UOTzqpDOtyrqDjmg5K1zpNBsE8=;
-  b=S/5XFYW07mx5dgHT9YJ9u7O1aHEtsr85XD0ODAQVAb7Vo9FeHNi5sqd6
-   7Rbk0nsfz8/yFQhdKR8Zy9HVrh4hBslDmHq4vyQcK5cRyj6ZhUuHlNTwE
-   tehw1B70/FoPOvOB+NUbnVIxHw+yKkC3TmDE/OkWMgPrJ7LggpegqcUjt
-   k=;
-X-CSE-ConnectionGUID: qOI60wZrRlKWPWQmOVy2ig==
-X-CSE-MsgGUID: SsrAzLo/SEuamzDT8xbmOQ==
-Authentication-Results: mail2-relais-roc.national.inria.fr; dkim=none (message not signed) header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr; dmarc=fail (p=none dis=none) d=inria.fr
-X-IronPort-AV: E=Sophos;i="6.27,200,1787004000"; 
-   d="scan'208";a="304350952"
-Received: from 88-188-149-159.subs.proxad.net (HELO hadrien.home) ([88.188.149.159])
-  by mail2-relais-roc.national.inria.fr with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Nov 2026 19:20:42 +0100
-Date: Sat, 7 Nov 2026 19:20:41 +0100 (CET)
-From: Julia Lawall <julia.lawall@inria.fr>
-To: Steven Rostedt <rostedt@goodmis.org>
-cc: Temitope obabi <obabitemitope765@gmail.com>, outreachy@lists.linux.dev, 
-    julianbraha@gmail.com
-Subject: Re: [PATCH v3] rxrpc: Remove unused rxrpc_drop_ack tracepoint
-In-Reply-To: <20261107131249.69e8ff4d@fedora>
-Message-ID: <78562cf-8079-9cec-52b6-d7c520708aaa@inria.fr>
-References: <20261102183847.38109-1-obabitemitope765@gmail.com> <20261107131249.69e8ff4d@fedora>
+	dkim=pass (1024-bit key) header.d=goodmis.org header.i=@goodmis.org header.a=rsa-sha256 header.s=dkim1 header.b=yAsX9yFe
+Received: from omf07.hostedemail.com (lb01a-stub [10.200.18.249])
+	by unirelay02.hostedemail.com (Postfix) with ESMTP id E713D1203B5;
+	Sat,  7 Nov 2026 18:20:52 +0000 (UTC)
+Received: from [HIDDEN] (Authenticated sender: rostedt@goodmis.org) by omf07.hostedemail.com (Postfix) with ESMTPA id 082B92002D;
+	Sat,  7 Nov 2026 18:20:47 +0000 (UTC)
+Date: Sat, 7 Nov 2026 13:20:34 -0500
+From: Steven Rostedt <rostedt@goodmis.org>
+To: Temitope obabi <obabitemitope765@gmail.com>
+Cc: outreachy@lists.linux.dev, julianbraha@gmail.com
+Subject: Re: [PATCH] ASoC: Intel: Remove unused sst_ipc_msg_tx tracepoint
+Message-ID: <20261107132034.4a55b0ed@fedora>
+In-Reply-To: <20261105135118.836-1-obabitemitope765@gmail.com>
+References: <20261105135118.836-1-obabitemitope765@gmail.com>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-redhat-linux-gnu)
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Post: <mailto:outreachy@lists.linux.dev>
@@ -67,30 +59,64 @@ List-Owner: <mailto:outreachy+owner@lists.linux.dev>
 Precedence: list
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Stat-Signature: 5kdpnhx4xq8i7njn9nwjxcde4fbzsiob
+X-Rspamd-Server: rspamout04
+X-Rspamd-Queue-Id: 082B92002D
+X-Session-Marker: 726F737465647440676F6F646D69732E6F7267
+X-Session-ID: U2FsdGVkX18ckZOG7WOpwYEftyj1Iqo+u6CsKq+DcIQ=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=goodmis.org; h=date:from:to:cc:subject:message-id:in-reply-to:references:mime-version:content-type:content-transfer-encoding; s=dkim1; bh=zuON+gv5Oqn11SGxoLEH/MA3sUurHyokAlzX4VaqqGg=; b=yAsX9yFeKofBEdLrZ0pCi8uDHcDgF4r5P6tU3n2BdQGeLDsVONJbDqHSKhTHOLmVtz/8VUxWtoVG+7w6bz9CjoPCG1i44nXNpXjCplGvZbQumM0fo7IILhk0rjIYg/9Yz2Mf6h1iOFWYfHb8CjrAf9ueExCMPsEAxaLh9cEcV9M=
+X-HE-Tag: 1794075647-196428
+X-HE-Meta: U2FsdGVkX1/VxfyqANhRts0/AqjEOg+YiMRFaQkaH92smzcvn6q/3+sY8YGz5az/Tv9I628dU/to2mnA4Hn2QFJiCc1qfe9DHn0HBB81NosaW/GvnSbszhgUkq4iYnK/WY3mmOmODueKz/wQiKweWSFrJP8Ayk6jfKZvOu3Vc3tRIhQJE6nGcBkUhF5280bszMSosjyvahL4YlSMAIDXVyfAZ6InN7Ay1sm+UJyA5aa7y4YTH8baxA7YssT0zQPjuSe42EDRFYS4FhqeS6Hc16yo5xT9+z681OEjX4N7YYREQwiFTBN5bLgJbEoEgl5G/yrFhbyQOb6xg9O3BIsz/Hg3q/wimENG
+
+On Thu,  5 Nov 2026 15:51:18 +0200
+Temitope obabi <obabitemitope765@gmail.com> wrote:
+
+> The sst_ipc_msg_tx tracepoint has had no callers since commit 37465972015c
+> ("ASoC: Intel: Remove unused DSP operations").
+> 
+> Tracepoints that are defined take up around 5K each, even if they are not
+> used. Remove this unused tracepoint.
+
+It looks like a lot more events were removed than just this event. Can
+you read the git commit logs and try to see if what the general trace
+events were tracing was removed. If that's the case then the change log
+needs to give a little history of what the changes did and that the
+code no longer exists for what these events were tracing.
+
+Note, this project is not just about blindly removing unused
+tracepoints. It's to look at what changed, analyze it, and show the
+history that lead to why these tracepoints are no longer needed.
+
+Thanks,
+
+-- Steve
 
 
+> 
+> Fixes: 37465972015c ("ASoC: Intel: Remove unused DSP operations")
+> Signed-off-by: Temitope obabi <obabitemitope765@gmail.com>
+> ---
+>  include/trace/events/intel-sst.h | 8 --------
+>  1 file changed, 8 deletions(-)
+> 
+> diff --git a/include/trace/events/intel-sst.h b/include/trace/events/intel-sst.h
+> index 0416e91f8181..c318ae9bc3c3 100644
+> --- a/include/trace/events/intel-sst.h
+> +++ b/include/trace/events/intel-sst.h
+> @@ -33,14 +33,6 @@ DECLARE_EVENT_CLASS(sst_ipc_msg,
+>  	TP_printk("0x%8.8x", (unsigned int)__entry->val)
+>  );
+>  
+> -DEFINE_EVENT(sst_ipc_msg, sst_ipc_msg_tx,
+> -
+> -	TP_PROTO(unsigned int val),
+> -
+> -	TP_ARGS(val)
+> -
+> -);
+> -
+>  DEFINE_EVENT(sst_ipc_msg, sst_ipc_msg_rx,
+>  
+>  	TP_PROTO(unsigned int val),
 
-On Sat, 7 Nov 2026, Steven Rostedt wrote:
-
-> On Mon,  2 Nov 2026 20:38:46 +0200
-> Temitope obabi <obabitemitope765@gmail.com> wrote:
->
-> > The only call to trace_rxrpc_drop_ack(), in rxrpc_send_ACK(), was removed
-> > by commit 5e6ef4f1017c ("rxrpc: Make the I/O thread take over the call and
-> > local processor work"). The tracepoint is no longer reached by any caller.
-> >
-> > Removing this tracepoint avoids keeping unused tracing code and makes the
-> > code easier to maintain. Each defined tracepoint also takes up around 5K of
-> > code and data, even when it is never used.
-> >
-> > Fixes: 5e6ef4f1017c ("rxrpc: Make the I/O thread take over the call and local processor work")
-> > Signed-off-by: Temitope obabi <obabitemitope765@gmail.com>
->
-> LGTM.
-
-Temitope, this means that you are now free to resubmit the patch to the
-maintainers that you find with get_maintainer.  There is no guarantee that
-the patch will be accepted by the end of the application period, but it
-should be accepted eventually.
-
-julia
