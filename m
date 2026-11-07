@@ -1,90 +1,54 @@
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=209.85.221.48
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=216.40.44.11
 ARC-Seal: i=1; d=subspace.kernel.org; s=arc20261015; a=rsa-sha256; cv=none;
-	t=1793900456;
-	b=nNfFi1IsMJZPFavEYJ2VL6JfEQfo/VdLQa9dvZ5eAll4ih8MdOMjcKRSWOQuvOPqfWx8
-	 DwFmeYQS+Yx+28/lPzi2fPB1yjUlei6oBDshTHIY07F7lBxWxtpgyUVvNXqnjJOFs5bqE
-	 zkcmdqVgmLZrPoTNvfyW9VqzNSPZpQo8yKVE2cFiH2jXPPno+6PMG/j1fdwj4ImSCv0pw
-	 EzHLdSNSBXngI8wGYZ770TPo/97A5SouY6TDPebrUNLiJ1E6YcLJdL3r0I8ZwLfZ/1HNk
-	 QTEp96oss6bVZbeP2Qp6H+v5TsZVXaBg+wXaZaNrHN+4gji81VQXf9hu4KhZhXtyo4A==
+	t=1794075191;
+	b=pBJTHJXGfZq/BzYrqce0Au7wm2+Bg9qkFFzajp8wPX2yeq62+BGtVRCBecqYZMHPXOaY
+	 o4sBklpiQg3FingOqZHp4Z3u1iVQC+x7fWQ+64TUrRx2mOuUMYKOpQnBugAqh8kkWyflR
+	 g791wa78l56kH0M2tpqMiSGSRwmqPFPlw5FzX4HdFAtbNP2PrqvqTYM79UIt3E158d2m1
+	 MUJYG5hxgWqpWuK91/zayOLkr2ECVdwgHfdD5b9sV8S9nVynfXdyLuyjBJh2ekbAivQ00
+	 v/ROmRTdpi3+5UD/0TFQzjOjAJNog7o7t4doezJZoyo+Fi/GdZUhOen9eN1ufhRPnLQ==
 ARC-Message-Signature: i=1; d=subspace.kernel.org; s=arc20261015;
-	a=rsa-sha256; c=relaxed/relaxed; t=1793900456;
-	h=DMARC-Filter:Received:DKIM-Signature:X-Google-DKIM-Signature:
-	 X-Gm-Message-State:X-Gm-Gg:X-Received:Received:From:To:Cc:Subject:
-	 Date:Message-ID:X-Mailer:MIME-Version:Content-Transfer-Encoding;
-	bh=VB2LitvrMsFAHtRwW6EllkEHijj3Ro3+SCmrdZOxjv8=;
-	b=TNHiJM8Kcy+lUwcyxnf0VTmhzHFul0ZLwzybqzsugh528jqCK0pIPJZTPkNuPWQVM1K2
-	 Ud28tJjNYo9A/e4jjsSwD9KmCPdYV/eKtwyZ0VLPoebwaJcn/LMwFplZXf7rKY0Iwreat
-	 rYfix8dHJrw9BRUbsaI2fClCdJYH8/VdnaeYEWk1sBYDtse3i5sLagMwQ4zAIDe0HcYgV
-	 rDVqDiLC4oO/Z4amkle52jn9ABlEOWP8frYtPwKG4/uFcdiODf/Rgc516sHlqc+/pzwj5
-	 e0P0cThS2K21pMkSeeIqWBVdfntP0OggzJjVIRJxIB99vVQK3BJkEy7dR7pIiZg4/pQ==
+	a=rsa-sha256; c=relaxed/relaxed; t=1794075191;
+	h=DMARC-Filter:Received:Received:Date:From:To:Cc:Subject:Message-ID:
+	 In-Reply-To:References:X-Mailer:MIME-Version:Content-Type:
+	 Content-Transfer-Encoding:X-Rspamd-Queue-Id:X-Rspamd-Server:
+	 X-Stat-Signature:X-Spam-Status:X-Session-Marker:X-Session-ID:
+	 DKIM-Signature:X-HE-Tag:X-HE-Meta;
+	bh=ro5/d82taB8kDN3mAcOXRvqOwm0rPaVZm2N9HQ8gFUI=;
+	b=i2beNw9kXsa1eblB1jhfb3ROlyIPSILinbIO0fP3wURSL9lFhetBfigWohPvGJRPPWbl
+	 SakvNJUrzLTEdW9OmS/nT0QkequkAThidkUHJPC97lfCgm2AVNdzoPWDpt3o2u/nY41RR
+	 zWvcw8OF3rcmS4n2xt57RXjwmSDTtST2wrbCjHc5JrSHGfnyyhaxNHuvFr/p6R/ATtGCC
+	 uUNfv61fr3+7jyzJH7h3E/STzlj9wRsz5EBBdZ/iej82vQzalp7EcaIlCb9GEVjQx5dl3
+	 xk0vA9uUIf1oEHUw84Uvq3kg5Do36dhmJkX7gUN7DsL3r82mxbtD0Ol9uUqHEh5a+ZQ==
 ARC-Authentication-Results: i=1; smtp.subspace.kernel.org; 
-	dmarc=pass header.from=gmail.com;
-	spf=pass smtp.mailfrom=gmail.com;
-	dkim=pass header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=0KJbZLG2;
-	arc=none smtp.remote-ip=209.85.221.48
-Received: from mail-wr1-f48.google.com (mail-wr1-f48.google.com [209.85.221.48])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	dmarc=pass header.from=goodmis.org;
+	spf=pass smtp.mailfrom=goodmis.org;
+	dkim=pass header.d=goodmis.org header.i=@goodmis.org header.a=rsa-sha256 header.s=dkim1 header.b="V/k83Lsm";
+	arc=none smtp.remote-ip=216.40.44.11
+Received: from relay.hostedemail.com (smtprelay0011.hostedemail.com [216.40.44.11])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C7D03606A31B
-	for <outreachy@lists.linux.dev>; Thu,  5 Nov 2026 17:40:55 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org C7D03606A31B
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 33D2A606A326
+	for <outreachy@lists.linux.dev>; Sat,  7 Nov 2026 18:13:09 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org 33D2A606A326
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=goodmis.org
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=goodmis.org
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=0KJbZLG2
-Received: by mail-wr1-f48.google.com with SMTP id ffacd0b85a97d-48e1d0e5dafso593069f8f.1
-        for <outreachy@lists.linux.dev>; Thu, 05 Nov 2026 09:40:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793900454; x=1794505254; darn=lists.linux.dev;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=VB2LitvrMsFAHtRwW6EllkEHijj3Ro3+SCmrdZOxjv8=;
-        b=0KJbZLG2Q2tjiufyxOMJPz0JSxO0Ek86/4p2xKWgLPFPaEJW4CyQPajDDs332kHN8C
-         D3w3TVn9X3GktlDx5heHtfEgOSg+1+Tgy6HFvt5KkWQOZ0uJKLei4zdanz9FEgkXjFRT
-         /FC7Jb5V2icS4bI2imJL7sRiIBawu/hdPJ48u9XIPrZQ2edykxcFwGjSXZQfnYq/HXQG
-         kOsWzTodpxwr3GLplN2JsTqf+AVbmjy6D1Cs+Dj8TeD2sDL91c6fUBe+vZv1NvG0ldyo
-         MZVsfxObdWjThLVsl/jKrjcV5HES8F+SEOaUaqdOll5m3ESyXR/Pndh9XQHBt1O/+S2x
-         99SA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793900454; x=1794505254;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=VB2LitvrMsFAHtRwW6EllkEHijj3Ro3+SCmrdZOxjv8=;
-        b=ilrfy0q8T8bxWpgIIsXuMzd/lKRdsMzwXB8iG/fz6VyoMm7PugzC2pfYh7/Gd5xOiR
-         lduPF7l9VtEDjd8My/clAEMvCnBSeKIhayFxwk0lxMh08M9XbQB5RMbibwGlZJxb7wgh
-         UoBgsiOAV2DwJdxHH6o4zhfW3umH2xEb0GuIfl90XKBXv+47CJGwSFy5voOA3JQx9170
-         v22lWJ39JugxUV//xQRVuuCS22e8mThMfNuTBENzL+8YvvmkKXDx+YyORf+Np05RJMo6
-         gwuKrv8DfQAF7BXLhClCnpOupUn8/ZZUcE4dIOQuiDQ48aDj5g+jRgOr5NNFeBsnWP9Y
-         V+Eg==
-X-Gm-Message-State: APuU4Z855eWhk+WqWNF69J3Bk6Xx1eAXxbgDBT+BMc94d81AxYzbfTqa
-	zZCiS6hf5X2ddahK7IBfIE1ZoE39M64e5cfXGtLw03A48PwchcG/M0s7Gq3+0BN3
-X-Gm-Gg: AYBFou3LYUdaH4hHtIi9AbyJQ0YjSNnx25/rVeeSWRUhZVUbaY+O9cfkqCuVauPCaCx
-	Ych/B1j4LdxuVF6V5akq7+HgAeJopWAXtLSiXdhkzmIjpOua5/MtYWnFoJBeHy4jntncHFVoRXp
-	qZfMzUHHhcUeCXWr1JfXMSXtRvzgAs0ZZ+oUOZUa/qzzhJ5OXPxQ9ZfHz5hV8IRQ1iaQk88sjU8
-	Exc1qbfncchqySvVX4hjKIADnYxtld6GkFbBhfWjJnV9V5JJD+T8xo0bxsaLcZZ4L5yPdny9nFA
-	MuIlme+sMcConG4moRnikfCfuzh3kfGaV2V+VLKkW6RcT2gZkcM5o62tLzM/SEDdJStTa2v4TWd
-	HfL5qs+N3y8WM4yG5LjGbMw3SSeQPmI/kvelsReevqbKk8ig1+tOm98kMjdMzY2ikNgwa9GgiNU
-	pwmUWOoo1EG/Fd0YPQsgZo8bS12Xzc/9R36Yp5lUsnIcxP37U2PEyfOgNfYg4SVf2sEVGno06Uc
-	o3mh/OlaZ24DGCGgF9oeicjqgYoohrxB6TM2CwfavpcUABh95DASu1tkRApALcGzGs6Pqbke3QH
-	43/eS9shagKgiXkHwDXfE0zcEt2JrGaO35EQSQsetI/hLypxozA2kDUsV/zJx0nxPEB6rwY7aMZ
-	IjJ5nRNcvESC6ANbunJcQYOOqoPBSZMiT/B/ufoo0UhQIXma14FQmyKuhXrZzIGIK
-X-Received: by 2002:a05:6000:2385:b0:492:3f98:506e with SMTP id ffacd0b85a97d-4923f9851f0mr2149028f8f.19.1793900454065;
-        Thu, 05 Nov 2026 09:40:54 -0800 (PST)
-Received: from maria-VMware-Virtual-Platform ([182.186.5.36])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48fed553441sm10175209f8f.43.2026.11.05.09.40.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 05 Nov 2026 09:40:53 -0800 (PST)
-From: Maria Sheikh <mariasheikh812@gmail.com>
-To: outreachy@lists.linux.dev,
-	rostedt@goodmis.org,
-	julianbraha@gmail.com
-Cc: Maria Sheikh <mariasheikh812@gmail.com>
-Subject: [PATCH] drm/xe: Remove unused xe_vma_acc tracepoint
-Date: Thu,  5 Nov 2026 22:40:21 +0500
-Message-ID: <20261105174023.6512-1-mariasheikh812@gmail.com>
-X-Mailer: git-send-email 2.53.0
+	dkim=pass (1024-bit key, unprotected) header.d=goodmis.org header.i=@goodmis.org header.a=rsa-sha256 header.s=dkim1 header.b=V/k83Lsm
+Received: from omf06.hostedemail.com (lb01a-stub [10.200.18.249])
+	by unirelay07.hostedemail.com (Postfix) with ESMTP id A92691603E4;
+	Sat,  7 Nov 2026 18:13:08 +0000 (UTC)
+Received: from [HIDDEN] (Authenticated sender: rostedt@goodmis.org) by omf06.hostedemail.com (Postfix) with ESMTPA id AED0E20011;
+	Sat,  7 Nov 2026 18:13:02 +0000 (UTC)
+Date: Sat, 7 Nov 2026 13:12:49 -0500
+From: Steven Rostedt <rostedt@goodmis.org>
+To: Temitope obabi <obabitemitope765@gmail.com>
+Cc: outreachy@lists.linux.dev, julianbraha@gmail.com
+Subject: Re: [PATCH v3] rxrpc: Remove unused rxrpc_drop_ack tracepoint
+Message-ID: <20261107131249.69e8ff4d@fedora>
+In-Reply-To: <20261102183847.38109-1-obabitemitope765@gmail.com>
+References: <20261102183847.38109-1-obabitemitope765@gmail.com>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-redhat-linux-gnu)
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Post: <mailto:outreachy@lists.linux.dev>
@@ -94,37 +58,31 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 List-Owner: <mailto:outreachy+owner@lists.linux.dev>
 Precedence: list
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Rspamd-Queue-Id: AED0E20011
+X-Rspamd-Server: rspamout08
+X-Stat-Signature: xdkpctoami751swmmce1ustqu17ygi6r
+X-Session-Marker: 726F737465647440676F6F646D69732E6F7267
+X-Session-ID: U2FsdGVkX1+SR7d3X+s56pMNeiXeD0MD+3NdoeJvp7I=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=goodmis.org; h=date:from:to:cc:subject:message-id:in-reply-to:references:mime-version:content-type:content-transfer-encoding; s=dkim1; bh=ro5/d82taB8kDN3mAcOXRvqOwm0rPaVZm2N9HQ8gFUI=; b=V/k83Lsmy1iQjlrrbMmveFLX5OlOnwWdgDgpRzhKnAhQosZZLeN/eRCFOIzopIlQofX6o4lccxlroEZ4lbP3f0bAudYTZB9GXieL6nR4ngGTAT0qpj5vipDXGHHGkIN/d94O6aH3TF3YCa9lU+nZC5p5eNUVKlxk6kfcDrXFupk=
+X-HE-Tag: 1794075182-678902
+X-HE-Meta: U2FsdGVkX187oRz9500YI62LH5/ETrgURvpWyTzY/sSWZ5qRhvVhjCN7GyaPxsdAOKa+a4gnTwJTKy3qM29d9g4fZztR3xrGe4inJ6u1ZtIDUS+swIZs5VKGN36PBw9ZYw5eculPH9W2g5QDVElVmt1myz+c5/msubgqf/zx82lu8qtZxmQn3buRmyBsff/O+MB3BmXCJ7Q7nevqUhn56zyx7HiHY3wWASJq7vtpSwF+Axph/PREDJ/IuHIKi3WSbJRizK7GJlISEFO+therorsLblFoVo27RqvyfsuSB/18ezxaJabw+gc9G2vF4m6R76iOOcCJGoLqnQWKPRwSuzNTeBE1mO4e
 
-Tracepoint definitions consume kernel memory even when they are not
-used. The xe_vma_acc has had no callers since commit 816e12793c6d
-("drm/xe: Remove unused GT page fault code") removed the code that used
-it, but its definition was left behind.
-Remove the unused definition. This reduces the size of xe_trace_bo.o by
-452 bytes.
+On Mon,  2 Nov 2026 20:38:46 +0200
+Temitope obabi <obabitemitope765@gmail.com> wrote:
 
-Fixes: 816e12793c6d ("drm/xe: Remove unused GT page fault code")
-Signed-off-by: Maria Sheikh <mariasheikh812@gmail.com>
----
- drivers/gpu/drm/xe/xe_trace_bo.h | 5 -----
- 1 file changed, 5 deletions(-)
+> The only call to trace_rxrpc_drop_ack(), in rxrpc_send_ACK(), was removed
+> by commit 5e6ef4f1017c ("rxrpc: Make the I/O thread take over the call and
+> local processor work"). The tracepoint is no longer reached by any caller.
+> 
+> Removing this tracepoint avoids keeping unused tracing code and makes the
+> code easier to maintain. Each defined tracepoint also takes up around 5K of
+> code and data, even when it is never used.
+> 
+> Fixes: 5e6ef4f1017c ("rxrpc: Make the I/O thread take over the call and local processor work")
+> Signed-off-by: Temitope obabi <obabitemitope765@gmail.com>
 
-diff --git a/drivers/gpu/drm/xe/xe_trace_bo.h b/drivers/gpu/drm/xe/xe_trace_bo.h
-index 36fc7eb65882..1025bf9e571a 100644
---- a/drivers/gpu/drm/xe/xe_trace_bo.h
-+++ b/drivers/gpu/drm/xe/xe_trace_bo.h
-@@ -130,11 +130,6 @@ DEFINE_EVENT(xe_vma, xe_vma_pagefault,
- 	     TP_ARGS(vma)
- );
- 
--DEFINE_EVENT(xe_vma, xe_vma_acc,
--	     TP_PROTO(struct xe_vma *vma),
--	     TP_ARGS(vma)
--);
--
- DEFINE_EVENT(xe_vma, xe_vma_bind,
- 	     TP_PROTO(struct xe_vma *vma),
- 	     TP_ARGS(vma)
--- 
-2.53.0
+LGTM.
 
+-- Steve
