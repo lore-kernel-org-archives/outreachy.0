@@ -1,55 +1,60 @@
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=216.40.44.14
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=100.103.45.18
 ARC-Seal: i=1; d=subspace.kernel.org; s=arc20261015; a=rsa-sha256; cv=none;
-	t=1794088420;
-	b=FxAi7SzDEH8lsti09k9jCIdkliEA1JHjX8qyjwWsVIs0ZFnVjNA4NLeuep579oDR+aeQ
-	 kKd0k/QSpMZgjSdr4P+U2XJnyfR/qHVyF1+fQOYo7MisMmI88A0bE3/EmDAE4xaIIRa0E
-	 a3baQQC1Qfpt0+uVcCYigckkME9gRp6RbhB39dRmT/PsJsTTFBfQjSVu+b0rOQ/LA45gn
-	 PGhaB+QaSpX1DFSS876MBRa38ratK2gyxcq25wHuU/XcUqUBdOp9dQiWvRgUf6DIMt9iP
-	 n7jPSjQZJj2BcCGH5M7TEiaKEpzC5xWN7+UZCzc7yK1R3Y7fckTTK1rE9pJsyVYB1Bg==
+	t=1794090724;
+	b=LGsESpZTfqYd8FxRpySuLdwJVuFCA7CQEskan5A1uDyTgbTIW0OnHjCzXDDvc0JSA24B
+	 X/q4ap8YKz7kIeX8/Jrg2gau329H/kZi1KZPlEa2ZKgnT168uNN/5kOzR70UUunv9xB9s
+	 ZnbVuScH/aMuiuqbvcDUvXJVDZInKWACkY8nUJXrS/de2srMEghTBqCfNjNqmZ0DGh5Np
+	 eHFZKpFvlYIqqn7vnrgff7jsDXxCXSJ2MOY6XQf41y9BeZMwzARAtG9PumuftsWbs2Hah
+	 xQ4BLDbhsZaOyb84Iw6J2ve6eCrLG9tW8FPqDnM8Mcz8bCnmPALqH+BBbh8gxswPqsA==
 ARC-Message-Signature: i=1; d=subspace.kernel.org; s=arc20261015;
-	a=rsa-sha256; c=relaxed/relaxed; t=1794088420;
-	h=DMARC-Filter:Received:Received:Date:From:To:Cc:Subject:Message-ID:
+	a=rsa-sha256; c=relaxed/relaxed; t=1794090724;
+	h=Received:DKIM-Signature:Date:From:To:Cc:Subject:Message-ID:
 	 In-Reply-To:References:X-Mailer:MIME-Version:Content-Type:
-	 Content-Transfer-Encoding:X-Spam-Status:X-Rspamd-Server:
-	 X-Stat-Signature:X-Rspamd-Queue-Id:X-Session-Marker:X-Session-ID:
-	 DKIM-Signature:X-HE-Tag:X-HE-Meta;
-	bh=lES+ZmiD51452lYZSusQ2GpD+35O8VUJl8X0Z7ZPI0A=;
-	b=oES7OFN47GLPOBlvfi7QN+8QLJivzB6Klc7ZL6be510Z8wlTOg72dmSOmSXrOBeO1KDD
-	 gxHCABznHkIH0z3V6UbYtmDRxNgDEzyve6gTFDewy1GSsuPvbb4U+AywupU+HFDpff+wV
-	 oNHHaIgef4KD12RS9677MTiWF9k3IE1oq3HNIQbJl9d2HdkfOBYoZcVbGFJe0xJ094KrS
-	 PW5WHblTrRVvuAmWJWnPh8eQKa7J6rwvNLonrAafoAAcTOwN03KvvosvpJgFEfUS3tRk2
-	 V2115/lNlvauuh9qVz3WUdH+mc10wv22F3nrfY/mpD0dPZwZdmJPZT02sV/ANXrUwUg==
+	 Content-Transfer-Encoding;
+	bh=5KMHHkzr0VrWngWsjnMLo1w51qe8S4fGQdolu2SQuO4=;
+	b=PHtmjtc4HCWdbIp0FP+RMIG7NI8idR0eOy6/ci04lCXG0u+3mQDR92xQ8iF/8JiGSAgp
+	 N3iD4zi5mYxVNaCQgAlbly/5P1woOagYQHRfA0DufdKOmFpSNVvt6kuXDoGHFW22b3h1I
+	 MC88hL4blkLhheyR9EuvT6Bo9+CyIyQ9gLOdeaVh91KDmUIWnjoADGsI9h0jPvN9Wbu2H
+	 r79zCKt5dUiLXTFsGqt8dNyupCRJZX6i45DzPcS5MPjeaFTTdOI4TLeyYOMmNg2IK5luO
+	 OD00eumcEL4XOsMKWcFD6i3er9UI4XdfsCqGku2mdstvFs0YOvYKkrRoW7krfe7EPoQ==
 ARC-Authentication-Results: i=1; smtp.subspace.kernel.org; 
-	dmarc=pass header.from=goodmis.org;
-	spf=pass smtp.mailfrom=goodmis.org;
-	dkim=pass header.d=goodmis.org header.i=@goodmis.org header.a=rsa-sha256 header.s=dkim1 header.b=zAwxlIdS;
-	arc=none smtp.remote-ip=216.40.44.14
-Received: from relay.hostedemail.com (smtprelay0014.hostedemail.com [216.40.44.14])
+	dkim=pass header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=OwxhDpva;
+	arc=none smtp.remote-ip=100.103.45.18
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	 key-exchange X25519 server-signature ECDSA (prime256v1))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 15430606A326
-	for <outreachy@lists.linux.dev>; Sat,  7 Nov 2026 21:53:38 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org 15430606A326
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=goodmis.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=goodmis.org
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 04DD4606A326;
+	Sat,  7 Nov 2026 22:32:03 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key, unprotected) header.d=goodmis.org header.i=@goodmis.org header.a=rsa-sha256 header.s=dkim1 header.b=zAwxlIdS
-Received: from omf09.hostedemail.com (lb01a-stub [10.200.18.249])
-	by unirelay08.hostedemail.com (Postfix) with ESMTP id A61541403D1;
-	Sat,  7 Nov 2026 21:53:37 +0000 (UTC)
-Received: from [HIDDEN] (Authenticated sender: rostedt@goodmis.org) by omf09.hostedemail.com (Postfix) with ESMTPA id BA1B920028;
-	Sat,  7 Nov 2026 21:53:31 +0000 (UTC)
-Date: Sat, 7 Nov 2026 16:53:18 -0500
-From: Steven Rostedt <rostedt@goodmis.org>
-To: pavankumaryalagada@gmail.com
-Cc: outreachy@lists.linux.dev, julianbraha@gmail.com
-Subject: Re: [PATCH v3] nfs: Only define atomic open tracepoints when NFSv4
- is enabled
-Message-ID: <20261107165318.6bc5a2d1@fedora>
-In-Reply-To: <20261101000843.188761-1-pavankumaryalagada@gmail.com>
-References: <20261101000843.188761-1-pavankumaryalagada@gmail.com>
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-redhat-linux-gnu)
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=OwxhDpva
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 152B91F0089F;
+	Sat,  7 Nov 2026 22:32:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794090723;
+	bh=5KMHHkzr0VrWngWsjnMLo1w51qe8S4fGQdolu2SQuO4=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=OwxhDpva3J+9FWhxhiI/B455DDEj+6L0o1HyPtEKO6nsUvHWRafl6zGPrfbtyNzwF
+	 k/hDZyedVKqCEWscPg/sBuMU9SvbGSAWemT0rTTK9ehUNYG63FCt3BlJH1YLOwyk9Z
+	 Q4+wsi9kR8KxAql11d6H0yfWaVj1i9MsexVF8FWongIkUJKiiEbzKI4TwMuwB988pj
+	 XKyBQjgDDF09qo0bwj7SpiHpEMp7ok8eA0S4FnOT6WhzmxRA2o37UfHDM7+kZc52tm
+	 9R0z6v158Voqv41KfdUFFoqJom295YFMTbW4Fft8KMy+2Vz+ODmdeF62chB3ayORtV
+	 8kk77Qy1ovIig==
+Date: Sat, 7 Nov 2026 22:31:56 +0000
+From: Jonathan Cameron <jic23@kernel.org>
+To: Joshua Crofts <joshua.crofts1@gmail.com>
+Cc: Maria Sheikh <mariasheikh812@gmail.com>, outreachy@lists.linux.dev,
+ nuno.sa@analog.com, Michael.Hennerich@analog.com, dlechner@baylibre.com,
+ andy@kernel.org, gregkh@linuxfoundation.org, linux@analog.com,
+ linux-iio@vger.kernel.org, linux-staging@lists.linux.dev,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] staging: iio: addac: adt7316: return 0 in
+ _adt7316_store_enabled
+Message-ID: <20261107223156.7d64b095@jic23-hlaptop>
+In-Reply-To: <20261104090008.00002b25@gmail.com>
+References: <20261104041237.7978-1-mariasheikh812@gmail.com>
+	<20261104090008.00002b25@gmail.com>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Post: <mailto:outreachy@lists.linux.dev>
@@ -61,41 +66,35 @@ Precedence: list
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Rspamd-Server: rspamout06
-X-Stat-Signature: odkuiwxhb7s8qqjs4wgzmyqiwjbezyw3
-X-Rspamd-Queue-Id: BA1B920028
-X-Session-Marker: 726F737465647440676F6F646D69732E6F7267
-X-Session-ID: U2FsdGVkX1/ZoyZUqxnjszaEH1Xq0haZpv2lk/O2WL4=
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=goodmis.org; h=date:from:to:cc:subject:message-id:in-reply-to:references:mime-version:content-type:content-transfer-encoding; s=dkim1; bh=lES+ZmiD51452lYZSusQ2GpD+35O8VUJl8X0Z7ZPI0A=; b=zAwxlIdSY0g6I90OKveYcxEPXkG84kYUCw7MtoeVPNLpGtRjboKJLDRt7RZDQngCVvsogLnsbfhaMVzt986obX+OruWgn6gNhwyCRh4VDN877pVBwnEfrGQ3knt2ckGEi4pJzRWVUHZIoff/GhLftmC6BRVWAsRPIsOFnL+6Hm4=
-X-HE-Tag: 1794088411-572889
-X-HE-Meta: U2FsdGVkX18bZzA58Bdov2uVYH1OmIldu/P59mUJEBNWFrpyv4PV4wS647aToI7jddPM5SISzuGuEapOa3VMAUPhLFOHThX44flidSjvZvGW3FXlvQpu0uAKDCuJb+bcft2izyWOdFtVBi7bZgUjwb9/QzcAzO7H0z+7nZzGDia+P+PV6JctJ70/3TA4uamB16opzkHZaPJ8e7SgJkNE3y5t5k5+/o2USt8ySU5ICGDve77sAO0AsCrbcUyadeaPdouSIuMpl0uC9LOWK+v/moYHwdeK5bXT3NHz635ZupV7AUDCPO7FojCjJApZsIBr+z8+gbm5wd5bWXuqLbCx07VfItl+GFsU
 
-On Sun,  1 Nov 2026 05:38:43 +0530
-pavankumaryalagada@gmail.com wrote:
+On Wed, 4 Nov 2026 09:00:08 +0100
+Joshua Crofts <joshua.crofts1@gmail.com> wrote:
 
-> From: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
+> On Wed,  4 Nov 2026 09:10:45 +0500
+> Maria Sheikh <mariasheikh812@gmail.com> wrote:
 > 
-> Tracepoint definitions consume kernel memory even when they are not
-> used. When tracepoints are only used in code compiled under a specific
-> configuration, their definitions should also be guarded by the same
-> configuration to avoid wasting memory.
+> > _adt7316_store_enabled() writes the config register and returns -EIO if
+> > the write fails. When execution reaches the final "return ret;", the
+> > write has succeeded, so ret is always 0. Return 0 directly to make the
+> > success path obvious.
+> > 
+> > Found with cppcheck (identicalConditionAfterEarlyExit). All callers
+> > either check for a negative return value or pass it through, so
+> > behavior does not change.
+> > 
+> > Compile-tested with W=1. The disassembly of adt7316.o is identical
+> > before and after this change.  
 > 
-> The nfs_atomic_open_enter and nfs_atomic_open_exit tracepoints are
-> only used in nfs_atomic_open() in fs/nfs/dir.c, which is compiled
-> only when CONFIG_NFS_V4 is enabled. Guard their definitions with
-
-Could you reword the above slightly, as I read the "which is complied"
-to be fs/nfs/dir.c and not the function. Perhaps just remove the "in
-fs/nfs/dir.c" part. The nfs_atomic_open() should be unique enough to
-know where the issue is.
-
-Thanks,
-
--- Steve
-
-
-> the same config to avoid unused tracepoints and reduce memory usage
-> by approximately 8 KiB.
+> I'd move the testing info below the ---, as it's only compile tested.
+> No need to resend however, this can be fixed up when applying.
 > 
-> Fixes: 6e0d0be715fe ("NFS: Add event tracing for generic NFS lookups")
-> Signed-off-by: Yalagada Pavan Kumar <pavankumaryalagada@gmail.com>
+Done whilst applying.
+
+Applied to the testing branch of iio.git
+
+thanks,
+
+Jonathan
+
+> Reviewed-by: Joshua Crofts <crofts@kernel.org>
+> 
