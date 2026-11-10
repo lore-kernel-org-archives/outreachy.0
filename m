@@ -1,95 +1,101 @@
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=74.125.82.174
-ARC-Seal: i=1; d=subspace.kernel.org; s=arc20261015; a=rsa-sha256; cv=none;
-	t=1794287101;
-	b=YqRBP5aGLlII7uQblQfjeOa+90ajMohuf7OTisTZrBzpsxGS+Bf9Oi4kCRQ7+jdwcOrY
-	 C3of5H8Jknrr5ttJIDCaJtKuX36LlOMH/J6UUAvFLDgICV0eU22t/VmyTEPX5X3cxUpM+
-	 iq5Xntg2NZVjbjCq9N1wM+pr8xovKmftKmqzHM/XF5Eba1EV9q6n3HWqJ0Rtash5J8/eG
-	 FfhMolLOHYz7B1FI4emLwXFke0iFs1CXjU+mOKQrNWGM15JERiL1Ik0rPnb/5CfHQIyR+
-	 xsSG6wOvjfVyAd2HmK0Z98JsruivOq9jzG+3PF2veLxRvGAe/Wg92J5lrMBNwEBF8aA==
-ARC-Message-Signature: i=1; d=subspace.kernel.org; s=arc20261015;
-	a=rsa-sha256; c=relaxed/relaxed; t=1794287101;
+Authentication-Results: smtp.subspace.kernel.org; arc=pass header.oldest-pass=0 smtp.remote-ip=209.85.128.181
+ARC-Seal: i=2; d=subspace.kernel.org; s=arc20261015; a=rsa-sha256; cv=pass;
+	t=1794301260;
+	b=vXcYhRwhjYtQy1c8znFA6hS75YPjorYf9JQoSuOfG3VZeq3cZ6fbfwR7pyWAYKvILQ+C
+	 QIFE3jWj+Rui5+YNt4NutetTnkxQp5cEJjdlLrh+cUUq8bBok0YTrC6k8Y3lUPQqlaJS/
+	 0Ug84qswHnpbbKeF1AECqWXiOhgzI7b7qob2ZyReSxA2P/ZyciVjw4UqksWZjzPaP7I+K
+	 vPdC6cEa/9HNf0FLXABdRd7KlEyW37UCaSs8HAURGrGzoU59EnFQx0AdjIiJ5x8cjyP9l
+	 qzSdL/u5iGboa8u7gJ8USNtYd/toplS9g0/2MESQKRXyzXBeRXu39PJ58+mTy6iOs5w==
+ARC-Message-Signature: i=2; d=subspace.kernel.org; s=arc20261015;
+	a=rsa-sha256; c=relaxed/relaxed; t=1794301260;
 	h=DMARC-Filter:Received:DKIM-Signature:X-Google-DKIM-Signature:
-	 X-Gm-Message-State:X-Gm-Gg:X-Received:Received:From:To:Cc:Subject:
-	 Date:Message-ID:X-Mailer:MIME-Version:Content-Transfer-Encoding;
-	bh=x28Xh8Kl636Xj0Syxm9iILHuaCS0bk0qyS/PVv+3B/0=;
-	b=Y9jBj+6u31abTew5nxIWlwj2a/uRcbOcjVT/SGfEIxgNpjLzNITuspOq/uK5cxF20aFz
-	 +SENBDqIQtkNaGtofcB6LP/T6CvpSfkyBVqWaeI/oFGyO9dC1tZ5OlaW+nn5ybkZsKxgi
-	 3yLXpqJ7zyeGyWCwI7dBfOj5Ti8izNfc3Iixk08anDSkFVKJetRY5P0vbLrSL0b6+mn7d
-	 vzTrBz6dlYgz0BjFWhpB4u7pR37eAM/KyoRgmOoRu2Zn7FmQ3z7fvOc2rq4RPaj11F0lO
-	 RicIfqRy49GYeqtOD9Y5dnTRdunA5eOZhbTd2v2Dw0vL94TtS0BZEAVS++S4iMbOxgg==
-ARC-Authentication-Results: i=1; smtp.subspace.kernel.org; 
+	 X-Gm-Message-State:X-Gm-Gg:X-Received:MIME-Version:References:
+	 In-Reply-To:From:Date:X-Gm-Features:Message-ID:Subject:To:Cc:
+	 Content-Type:Content-Transfer-Encoding;
+	bh=D/l1DG9pW0EG2fGxLRQvmW7PF5RxeWs5LWhd8jRdOqg=;
+	b=YImjZ9qZCSvzaSi9St7Ax0KRsOJASU0dhoXVrJmbZWLhSggIR/KfJRxzH9mIN3Y5W7+q
+	 9Qvxi6yz9pA4hu8TcjzY5h/iSDt2aVFKWw720avjvVx0SDp9TG6e3iYP4eZw/5nyGSnP2
+	 409iCKybDJvh1kSMbLBkXiBXuDtq9klTYtBCqVVdoYoT5wlA8MHvqJBNps1ELh+HVb18S
+	 uz/pCu0zTOwigKuCRViQE8G+4B17tokcmu1o9U36495gOFWtB+w0GMKPjQvpmi0mGGCtX
+	 OiKIyFR1LJQ7+8M+EHzH1Du003Ykolso3IOl4Zx7+547EEY/sWaSsFk8eE44VNbCmyA==
+ARC-Authentication-Results: i=2; smtp.subspace.kernel.org; 
 	dmarc=pass header.from=gmail.com;
 	spf=pass smtp.mailfrom=gmail.com;
-	dkim=pass header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=A3gFn72e;
-	arc=none smtp.remote-ip=74.125.82.174
-Received: from mail-dy1-f174.google.com (mail-dy1-f174.google.com [74.125.82.174])
+	dkim=pass header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=O4Xp+jeT;
+	arc=pass header.oldest-pass=0 smtp.remote-ip=209.85.128.181
+Received: from mail-yw1-f181.google.com (mail-yw1-f181.google.com [209.85.128.181])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D5597606D6B7
-	for <outreachy@lists.linux.dev>; Tue, 10 Nov 2026 05:05:00 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org D5597606D6B7
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B0B59606A321
+	for <outreachy@lists.linux.dev>; Tue, 10 Nov 2026 09:00:59 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp.subspace.kernel.org B0B59606A321
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=gmail.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=gmail.com
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=A3gFn72e
-Received: by mail-dy1-f174.google.com with SMTP id 5a478bee46e88-33bf40b0c8bso2858224eec.0
-        for <outreachy@lists.linux.dev>; Mon, 09 Nov 2026 21:05:00 -0800 (PST)
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=O4Xp+jeT
+Received: by mail-yw1-f181.google.com with SMTP id 00721157ae682-8b30ff12f84so12220507b3.2
+        for <outreachy@lists.linux.dev>; Tue, 10 Nov 2026 01:00:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1794301258; cv=none;
+        d=google.com; s=arc-20260327;
+        b=L0q4qxxP4TL24nFIEzCJKWUhcAhQkPrArRm70rVOoeg1x2SYOwP9ePvk4yUY/p4J7w
+         vY9OFUs9VqqnMcGACsuJHCpcfXJijeacrOEZXRH1DYy5FG17R7OdJvVKgThhkCtFsvnU
+         +lTlK1MK4s25czPvZcWCkz1q0E7F1+Cw+/x3gu1pO5OwEZVNXN3t89bLM/10LWTj1RNx
+         aENKen7lSA9F8Sy29xjulYAjqG5athqebfYsC+m8wBY2+PPQcuKC7bS/CddKOyV4ghcj
+         sbSQTakp7TlyMzgxxyQlCZfyqm7Rfz48oBWbCIdrvtZ3xt54lfLC5PTc1/5Hwny6zFS/
+         6Geg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=D/l1DG9pW0EG2fGxLRQvmW7PF5RxeWs5LWhd8jRdOqg=;
+        fh=SRHMLzRtX6O5xgvsrn0SLNTb6s4ZA3h7XiLQhTxN7hs=;
+        b=qJvSrETlQymZrznoRGK2ryYB0netWhK3dhO7egmYwb0B8lSx+R8DI/VMCXKgjpmnkD
+         W8jDPxAu1ozNjJoXGVtV5VPic23MBD2yFpvB7A2zJ4pREc1ln1ALBxFAidg4SstdfL5e
+         m7pxPIbyM2oD7Z4d1M0ml2TVG3msw8shYU+0gjNeh6KRXRNoZORpaYOzJnwIjPd7DOM/
+         4XqtiAJ/E2KFzVga1IzPG+Bv/WX8I8h+sN2CggKBtKkOTC0ZR5i1bYFEUuaShOhPKcfj
+         kBCfKs/MfBriNGD1I8AhEq5KwhYvwj5YN0JQcOH8joOyICe5hq0VDYE8aBUsdNCoBuz6
+         O7BQ==;
+        darn=lists.linux.dev
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794287100; x=1794891900; darn=lists.linux.dev;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=x28Xh8Kl636Xj0Syxm9iILHuaCS0bk0qyS/PVv+3B/0=;
-        b=A3gFn72eurXMtrSluasD2njgHMGwLgyxSh20ZtNcUqWs0BRBVU3ar+8OtBWPmq9IUs
-         k1y5U+rX9vMPxqY3gPzLxRnw6cqgEcfTxZIUsXY+q/Dyn5ouGwLUsm7W6p0xnqhrj9qT
-         +D2mpMq59K2S3hR+5XnixLt+WPNBa9THhaaiRlOeNepI8OmTJKM3RPO1nCGh/I/Ck6BB
-         WIxEJ1cFcbDyOwYOlrVlEpl+fUVnpa9H9ub3ZQr+apyw/e3zO42iDqA6g7gK18qAJBQ5
-         J1Y16ZXC3rETcpbGHt+YaiutcUB1GRA7SJw816izH+Ow47R4kjJ57PIQuYCm3lxI6xmh
-         ZTkQ==
+        d=gmail.com; s=20260707; t=1794301258; x=1794906058; darn=lists.linux.dev;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=D/l1DG9pW0EG2fGxLRQvmW7PF5RxeWs5LWhd8jRdOqg=;
+        b=O4Xp+jeTj2R8Z3fW0uoIbG7I1IUaSyW7LF0KN8g9yotE8LDr7iTcZ+mXkRuk5OIPOt
+         s1T4nQfaUzLbYt1Qx96hdQC4XuyFm0XHmpzg9cPHlAkBhfKDqrklHoHWM6Xgrm3/cX+R
+         CiJcaanajfT/3SUm9ldjzFL4thPXCNpGdV8Gz51rHKYtY6qYVmYdRxhWGaQEsfosJBDD
+         zJ2CFdQ8AmpDzgojLJQ2g9hOvmE+6EHsMhHHS+51JAVjibZrrwQwb2PoFEADmE9qQymI
+         gD+UmA6vz+YIKujtccEkj9uMmtuWDEsFdEKZapyGi4vbgiuP5ZJpKaBGhuIdew4XpbdG
+         zzUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794287100; x=1794891900;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=x28Xh8Kl636Xj0Syxm9iILHuaCS0bk0qyS/PVv+3B/0=;
-        b=YcSTKdbLsc1Y8lUzpfY21RgOBx8NYVPu5Ly1Zg9OSkT8VAepIZZx04t0hX1ep7zjZL
-         liVOmw9lL14hmcAx2R5YsU7TSKmzlUcQucPNMRcejsM1VM7owUrK8spLY4I0EwRYpx+i
-         H5XUYjYhg5rEpN7eqGL+6ZpD7CoR7mAfoDExPahI1AuxbpasPU+1lsWUoSjJ8qb9sC8E
-         ByOVy6ZcMlhbUY6x6Icvbx/WqaIW6xZOsZ7zeDSMlMquxjmOP0XzvaKrYN7aicL0rXST
-         qPjmwywDEZFIbrhapQzOoPMQfUwIFDzKiVjrIsDlSU94ZkngROLFdv6j1jdZDkvtfdoz
-         NnZw==
-X-Gm-Message-State: APuU4Z+88JhmsQMaKbQcQUZrE5g/HyEmYAp9OfoL52ppTWJID8XtcIrg
-	Zg/HVpZtsnhrBumulw1PjEOZEfiLGujUGm+QvL/lBfJKvEDgsIbZzEqQ+am5Oe67u4Q=
-X-Gm-Gg: AYBFou1G3DSz+3IwIA3Lmol/LEA43BlMFso3T19nEFPTsOpjPV6JTgkTw3Ux1nNx/xh
-	TZaJjy1yxFS79bGDL99rGMU1o9ljf6tSjVY6W9RMC8dMDmr1J+4inNJckGDID1BBxm4M3E3MPEy
-	gUF7TgjyV7hMwfRHPjvk7ndSAO/E/pGRc0nQ44CSGJDWL+Aa5m4ycd0gNWqWUY0sjaz58hLbMYp
-	nsfr1ejXCE7jy04ggtZPe+/1FuJyl+WD0N5jb/0rBFxovvj2Q+KihAsJaCHcrhrvVmnUNLnf49r
-	zWtwh0SJQ5AqCFnYclLr+mnxpcgTi36rnvTCKjLI1eCxPR/6mUsVPCy4I/69nQV/Dt63+afpdh3
-	9Y4N/cwDY3TFsNeq73swFXFFm3biGuFVTFKnoqPqAx1bjqZcu+rJfjTlA6SKe8Hoz8vhi7y078W
-	CuZidv9EAz8Ct7YUtMOzlyL8sHeY3SMeM9zUswvKu4FqZYuVRk8bBLPxbvHLuVFzXR2SiGTEfrH
-	cfK8V0gNPqyNrvf4FU8yi1vyoKwVkkIYWHnzBL1ufwAqk32uAHogyIve8V0rsCCGJ4LWOfcDp4g
-	tu9YSp6S2WExyHPnyE+2Wb+ekyPmyRX2QoHC77x7rzauoR1lZqAuoYhXmVFLFPqgjtCcSGUhFg+
-	HJ7ehGoTFCUW6Q8Sv9GjvScbpVUY8b6NolW+FUDU=
-X-Received: by 2002:a05:7301:4d14:b0:375:4f3e:643d with SMTP id 5a478bee46e88-3754f3e6572mr1368404eec.27.1794287099742;
-        Mon, 09 Nov 2026 21:04:59 -0800 (PST)
-Received: from localhost.localdomain ([203.92.58.30])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-375212e9e03sm6550235eec.23.2026.11.09.21.04.55
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 09 Nov 2026 21:04:58 -0800 (PST)
-From: Shivani Patel <patelshivani2283@gmail.com>
-To: outreachy@lists.linux.dev,
-	Hans de Goede <hansg@kernel.org>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Andy Shevchenko <andy@kernel.org>,
-	linux-staging@lists.linux.dev,
-	linux-media@vger.kernel.org,
-	Shivani Patel <patelshivani2283@gmail.com>
-Subject: [PATCH] staging: media: atomisp: Fix leading space indentation
-Date: Tue, 10 Nov 2026 10:34:48 +0530
-Message-ID: <20261110050448.69521-1-patelshivani2283@gmail.com>
-X-Mailer: git-send-email 2.50.1
+        d=1e100.net; s=20260707; t=1794301258; x=1794906058;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=D/l1DG9pW0EG2fGxLRQvmW7PF5RxeWs5LWhd8jRdOqg=;
+        b=ySQk8NQ8k6wWjmhtf62FJKrONAg9Q/RrVb4e3NREvI94SSCMYo4H/ndx7AkxWOm/Mc
+         FPiD8zw6z6+2C2VO3QUhGU8AucE1/pkCNKf1vdvCKWU2YBliz+M+Yh2mWxcQVo4NVPdJ
+         xWF8XuC8sBfKFQ1/EUSSwrm51FyY8JYAbGxwyCCuMAyeSX8FNujxcJyHJFZ2IDUKPC8l
+         5EPLnGF6/astgxliXe+RoSE+ns6v7/Z5uwTBsAT8ukdZHtDk2lHtulOGy1xojxHNk5m4
+         aEznthZuthlOq+WDxFn1IdS7LAzkFBx/01m/FXfIQXUeaxTw0afeKtmeQkn8oav5H44f
+         h8Kw==
+X-Gm-Message-State: APuU4Z8quDmiP9m6sYzE5+fOIB43f/ACwM+JIc1u49wWVbpRmJPdZY0z
+	/JFjyo9M1uyvkDt+p4hv/DfEML+3mFCSANUmjofgE+i9wvhkod3T/bgh7/ZnZnLkjU4KyNQtzMP
+	1oRx3lqLz8XF/1qk6wFZ3WVPNwXMOo/0=
+X-Gm-Gg: AYBFou2SJ3eJNLgOA2To4Qzkorca1+7EMoIPgHFZRt4/p7HR0GM6Rd8vHjfdYUz4uX4
+	18y5xGAQiF3pycFoJkzCwUPWsKlVRtgu1CmXX0GxwgL0ao8c057iPfAY2/I+7VrjYA5DaZoiuAC
+	SEdrWTtrA2pNyuu3iYzV1EqniVaOYjOmfHMn5pTaIfBWfZInke8CkZ7Mr93sBJ+du/cBUdv2PoO
+	TNPulUBM7PsbnAVDg2pKmZlZGssDKzYS1/Gd4u0D3BQXYYYlzcjtNl3Z9OyjzNXlaHlwD5BCB5i
+	hZo1U7YZJVjhTK/rsoK4p6mPerGOSCOSbIskaphqjQEuxJBJUiG1JU4ddYDREpzLbAlAHuPYgW0
+	uJRu4Cbr9Z6EwVV1JRv+neXqr36Qp4DUvHC4Hag171C7wvNi2olKId+1P1PRww32A8ZhLyZlfIW
+	X/VGHyA0Scg2Bf3cWffadBbqY+CallrcTRVhVR8vBRv8KH9aUSWV4qctgcC0Y+hqzLJIrd3qBW0
+	mdHGE1YERSGg3uMXAhOVCrYSRqf2SsT43gC5CrjFIqDwc0yGq0QcOn2fRsKcGw=
+X-Received: by 2002:a05:690c:6e83:b0:8af:1843:a9e5 with SMTP id
+ 00721157ae682-8b3929e7519mr14686337b3.23.1794301258389; Tue, 10 Nov 2026
+ 01:00:58 -0800 (PST)
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Post: <mailto:outreachy@lists.linux.dev>
@@ -99,30 +105,51 @@ List-Unsubscribe: <mailto:outreachy+unsubscribe@lists.linux.dev>
 List-Owner: <mailto:outreachy+owner@lists.linux.dev>
 Precedence: list
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20261110050448.69521-1-patelshivani2283@gmail.com>
+In-Reply-To: <20261110050448.69521-1-patelshivani2283@gmail.com>
+From: Andy Shevchenko <andy.shevchenko@gmail.com>
+Date: Tue, 10 Nov 2026 11:00:21 +0200
+X-Gm-Features: AclHuK9lhRV4tkWDS8XhwM4LHpotMMW9vXUbmZoMQV9ygME13b4eHzMp8NHQLR4
+Message-ID: <CAHp75Ve3E7qCXOQi_q9SmTkwhfSnPdWZy1cse0G=BFJ0FBoptg@mail.gmail.com>
+Subject: Re: [PATCH] staging: media: atomisp: Fix leading space indentation
+To: Shivani Patel <patelshivani2283@gmail.com>
+Cc: outreachy@lists.linux.dev, Hans de Goede <hansg@kernel.org>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Sakari Ailus <sakari.ailus@linux.intel.com>, Andy Shevchenko <andy@kernel.org>, 
+	linux-staging@lists.linux.dev, linux-media@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Replace spaces at the beginning of the line with a tab in
-atomisp_find_in_fmt_conv_by_atomisp_in_fmt() function parameter list
-to conform to the Linux kernel coding style.
+On Tue, Nov 10, 2026 at 7:05=E2=80=AFAM Shivani Patel
+<patelshivani2283@gmail.com> wrote:
+>
+> Replace spaces at the beginning of the line with a tab in
+> atomisp_find_in_fmt_conv_by_atomisp_in_fmt() function parameter list
+> to conform to the Linux kernel coding style.
 
-Signed-off-by: Shivani Patel <patelshivani2283@gmail.com>
----
- drivers/staging/media/atomisp/pci/atomisp_subdev.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Nice try! But, sorry, no.
 
-diff --git a/drivers/staging/media/atomisp/pci/atomisp_subdev.c b/drivers/staging/media/atomisp/pci/atomisp_subdev.c
-index bdd2d9b18..773fcea56 100644
---- a/drivers/staging/media/atomisp/pci/atomisp_subdev.c
-+++ b/drivers/staging/media/atomisp/pci/atomisp_subdev.c
-@@ -96,7 +96,7 @@ const struct atomisp_in_fmt_conv *atomisp_find_in_fmt_conv(u32 code)
- }
- 
- const struct atomisp_in_fmt_conv *atomisp_find_in_fmt_conv_by_atomisp_in_fmt(
--    enum atomisp_input_format atomisp_in_fmt)
-+	enum atomisp_input_format atomisp_in_fmt)
- {
- 	int i;
- 
--- 
-2.50.1 (Apple Git-155)
+...
 
+>  const struct atomisp_in_fmt_conv *atomisp_find_in_fmt_conv_by_atomisp_in=
+_fmt(
+> -    enum atomisp_input_format atomisp_in_fmt)
+> +       enum atomisp_input_format atomisp_in_fmt)
+
+The whole format of this prototype is broken (in v4l2 is a strong
+requirement to follow the 80 character per line rule). On top of that
+is it really the only issue of a kind?
+
+>  {
+
+...
+
+Also note, this kind of patch for _this_ driver will be ignored, it's
+not a priority for it *at all*. Try something better like [1].
+
+[1]: https://lore.kernel.org/linux-media/20261027230807.2407261-1-vladurare=
+s@gmail.com/
+
+--=20
+With Best Regards,
+Andy Shevchenko
