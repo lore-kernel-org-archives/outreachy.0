@@ -1,52 +1,51 @@
 Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.remote-ip=100.103.45.18
 ARC-Seal: i=1; d=subspace.kernel.org; s=arc20261015; a=rsa-sha256; cv=none;
-	t=1795158710;
-	b=Y6IBsm1tj4RC6x5bpprHoHDvBHk9OA0qJcKidA/TcMo7i1gEFnZA4Z6dQckCc8YyNTOm
-	 RXG40yNu85gMIhxCpzVC8KLy4mZMNPgeUH1loiVRI2fOPmcImVFOMkbUgSiqpPXpw2YNw
-	 Mm+jDwmQMWvtHr56T26XE0ycrpBTM1N38DYb41e+H8Kr05hjO/D6uGlxImeezsPdm/osM
-	 sB4mOE56oJjEdy12mFbBp6mv31aGSRZOpsHyzJGQHghudI2qKhdFw2YYuqpRy4krjLcXX
-	 GfUmL7OzUq6y+yS/xzaklumHVmZ7TSYJtEg0E0BF9/b3ws4NdhOTb5GWbSmLm0U/KLQ==
+	t=1795159295;
+	b=Tf8TcLRhn4lq8gLHy4Jgwe2L+Y5S9oazA9iqepzvoNGjh352wJCKuvMEmrGWaxu1opYa
+	 CoMmdQdjWVBs2SIlyUlBm5PjrftZqidMek7qALHhYyaqCLuwaXNRqLqQx+7LuCYkTuY/c
+	 xFzVC7b6jbv2tpYzrj25UJv6dyo3/EQmBqocNhxgsMNocpcYhnoG0GYbHbVlaXK/WdX2u
+	 TaFEFKlqEg2zdJo4bHGMYKPXsQT9i7l0iobMh1rHqRCNFn6voe9IJdAXIhiMEDO9Cwrfr
+	 NzTWXTiKyrz19NHQCyxpQezAOY5koag9S+GL85mx5te4hXGvBxqw6NKE/RIkVu5fMjA==
 ARC-Message-Signature: i=1; d=subspace.kernel.org; s=arc20261015;
-	a=rsa-sha256; c=relaxed/relaxed; t=1795158710;
+	a=rsa-sha256; c=relaxed/relaxed; t=1795159295;
 	h=Received:DKIM-Signature:Date:From:To:Cc:Subject:Message-ID:
 	 References:MIME-Version:Content-Type:Content-Disposition:In-Reply-To;
-	bh=3d6BYKx617y+5C/yVo6hbgQboIQwul5S916z2T5RP8Q=;
-	b=RO34DR4Iv+Y6u68KaGKoyR/N1XYL4pzbPNHJH0nj5Y2UAyu5xVEeGAnweawYsxoL8wJw
-	 k+U0og7CIBjhk1Bjj6VNYolL1xvQUIcnmxr/MwPomYfz1V8gRi4DkvtyqIBv7RtIJRl9r
-	 SVl6hnEe515i2gEL2SQ1UdDO1Tep5BRkmuiWavetZBdM9+5Q70dWe2OCtVT/XTMthPBFO
-	 xguO/e11czmdoF+G6/6rUes+pFy7VO5T7hT9EXmg8ivtPMOJ+ZBO1YRmkxs+AzBIj3SU4
-	 gEqmZMwZHaY79l397+hddMomX90uT52XD4mQPERRrvG9GzOf9M3BH97mq3UKQsassYg==
+	bh=M7Bh0/DB2r5mE9Li9xoXdR7i1rPYM3me1B8VD5yp6AQ=;
+	b=dLo4nXJZ14OFtlcHzQzI++BUPM8z1IyBsWLUOhHUm2dHVn2FihpGPOPjFNS2cM/TDPcj
+	 Ec+GLo7QDIt4KSuysd8bzqyHDSrE4WeMV5mv6l9CSaC+pdpPKRUnssyFmYDzN0p56gowS
+	 jSsWNdcRA30xWxVqxIykylyD7+gebpWatX2Txcjrnspa3EiT70lF2M6QSzWgiYUuZVOem
+	 QEIycQjgq8Q9DyXOJ4S1RldujACvcfyD94FLpZz9qiIUsd8gUjad20pAiKLaah1LRsdVX
+	 1dTI3GkyJ5f3fC3gHTtTTUGkufjpn3jam1eNjX2ceAOVnQ7sDQ5nIihWJRrnqNJNhIQ==
 ARC-Authentication-Results: i=1; smtp.subspace.kernel.org; 
-	dkim=pass header.d=linuxfoundation.org header.i=@linuxfoundation.org header.a=rsa-sha256 header.s=korg header.b=fGnujN7N;
+	dkim=pass header.d=linuxfoundation.org header.i=@linuxfoundation.org header.a=rsa-sha256 header.s=korg header.b=H6QJYMsY;
 	arc=none smtp.remote-ip=100.103.45.18
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DBDD4606A320;
-	Fri, 20 Nov 2026 07:11:50 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B814D606A326;
+	Fri, 20 Nov 2026 07:21:35 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=linuxfoundation.org header.i=@linuxfoundation.org header.a=rsa-sha256 header.s=korg header.b=fGnujN7N
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DA43C1F000C4;
-	Fri, 20 Nov 2026 07:11:49 +0000 (UTC)
+	dkim=pass (1024-bit key) header.d=linuxfoundation.org header.i=@linuxfoundation.org header.a=rsa-sha256 header.s=korg header.b=H6QJYMsY
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A99B81F000C4;
+	Fri, 20 Nov 2026 07:21:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linuxfoundation.org;
-	s=korg; t=1795158710;
-	bh=3d6BYKx617y+5C/yVo6hbgQboIQwul5S916z2T5RP8Q=;
+	s=korg; t=1795159295;
+	bh=M7Bh0/DB2r5mE9Li9xoXdR7i1rPYM3me1B8VD5yp6AQ=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=fGnujN7Nfb2qjPyKFY65gCBntef2fLHWpdgIoWoOlbdUT4quRBxbGL4Oa8hnBLSXc
-	 yIyhZTjrUmnfq3uYZMfSx5MIsQ8GM53dRGMrYLEMMpIzVRVDBiPFsFTUV7YiRoIwZZ
-	 gowc/VNKFUUSCrDAcJLY5h6ewxI+Lt9zTjFc/88U=
-Date: Fri, 20 Nov 2026 08:11:47 +0100
+	b=H6QJYMsYXRXp4xvZ5R1RljOhw3jvEbOF47BGD6lbzWQX3TPqHHv4491+XTIYxyB2d
+	 4rHID1C5rdLl1NGGhiVFe34Olm0CF/QSohYe4z88w5/+HVsgbuf8Yy1axa8FSc73ZD
+	 V2v/umg5+obNFkOZMKFvqm6izSePPod70AD04YMM=
+Date: Fri, 20 Nov 2026 08:21:32 +0100
 From: Greg KH <gregkh@linuxfoundation.org>
-To: Temitope obabi <obabitemitope765@gmail.com>
-Cc: sudipm.mukherjee@gmail.com, teddy.wang@siliconmotion.com,
-	linux-fbdev@vger.kernel.org, linux-staging@lists.linux.dev,
-	linux-kernel@vger.kernel.org, outreachy@lists.linux.dev,
-	julia.lawall@inria.fr
-Subject: Re: [PATCH v2] staging: sm750fb: Remove redundant NULL and zero
- assignments in probe
-Message-ID: <2026112033-diagnoses-cartload-9d93@gregkh>
-References: <20261019202015.1724-1-obabitemitope765@gmail.com>
+To: Maria Sheikh <mariasheikh812@gmail.com>
+Cc: outreachy@lists.linux.dev, andy@kernel.org,
+	dri-devel@lists.freedesktop.org, linux-fbdev@vger.kernel.org,
+	linux-staging@lists.linux.dev, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] staging: fbtft: fb_tinylcd: align argument with open
+ parenthesis
+Message-ID: <2026112023-skyrocket-backache-43a0@gregkh>
+References: <20261031064705.9513-1-mariasheikh812@gmail.com>
 X-Mailing-List: outreachy@lists.linux.dev
 List-Id: <outreachy.lists.linux.dev>
 List-Post: <mailto:outreachy@lists.linux.dev>
@@ -58,30 +57,27 @@ Precedence: list
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20261019202015.1724-1-obabitemitope765@gmail.com>
+In-Reply-To: <20261031064705.9513-1-mariasheikh812@gmail.com>
 
-On Mon, Oct 19, 2026 at 11:20:15PM +0300, Temitope obabi wrote:
-> The sm750_dev structure is allocated with devm_kzalloc() just above,
-> so its memory is already zeroed. Remove the explicit NULL assignments
-> to fbinfo[0] and fbinfo[1] and the zero assignment to mtrr.vram, which
-> only set fields that are already zero.
+On Sat, Oct 31, 2026 at 11:46:59AM +0500, Maria Sheikh wrote:
+> Align the continuation line of the write_reg() call with the open
+> parenthesis to fix the checkpatch.pl check "Alignment should match open
+> parenthesis".
 > 
-> Signed-off-by: Temitope obabi <obabitemitope765@gmail.com>
-> 
+> Signed-off-by: Maria Sheikh <mariasheikh812@gmail.com>
 > ---
-> Changes in v2:
-> - Remove an accidental duplicate of the note at the end of the patch.
->   No code changes.
+>  drivers/staging/fbtft/fb_tinylcd.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> Note: Greg replied to my earlier sm750fb patch that keeping the
-> explicit zero assignments is good because it is clear what is
-> happening. In that patch the allocation was in a different function.
-> Here the assignments are in lynxfb_pci_probe(), just after the
-> devm_kzalloc() call and its NULL check, so I think removing them may
-> still be useful.
+> diff --git a/drivers/staging/fbtft/fb_tinylcd.c b/drivers/staging/fbtft/fb_tinylcd.c
+> index afa8f1c740c5..d58b1247262b 100644
+> --- a/drivers/staging/fbtft/fb_tinylcd.c
+> +++ b/drivers/staging/fbtft/fb_tinylcd.c
+> @@ -38,7 +38,7 @@ static int init_display(struct fbtft_par *par)
+>  	write_reg(par, 0xE5, 0x00);
+>  	write_reg(par, 0xF0, 0x36, 0xA5, 0x53);
+>  	write_reg(par, 0xE0, 0x00, 0x35, 0x33, 0x00, 0x00, 0x00,
+> -		       0x00, 0x35, 0x33, 0x00, 0x00, 0x00);
+> +		  0x00, 0x35, 0x33, 0x00, 0x00, 0x00);
 
-Let's leave them as-is, it's nice to be explicit at times.
-
-thanks,
-
-greg k-h
+No, the original code here is correct, right?
